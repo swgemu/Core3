@@ -183,6 +183,9 @@ public:
 	const static int SKILLBUFF = 0x4000042;
 	const static int DROIDDEED = 0x4000043;
 	const static int DROIDCUSTOMKIT = 0x4000044;
+	const static int DESTROYMISSIONTEMPLATE = 0x4000045;
+	const static int DYNAMICSPAWNTEMPLATE = 0x4000046;
+	const static int THEATERSPAWNTEMPLATE = 0x4000047;
 
 public:
 	SharedObjectTemplate();

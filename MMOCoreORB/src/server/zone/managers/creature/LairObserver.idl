@@ -46,7 +46,7 @@ import engine.core.ManagedObject;
 import engine.util.Observer;
 import engine.util.Observable;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.templates.mobile.LairTemplate;
+include server.zone.templates.spawn.LairTemplate;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.managers.creature.HealLairObserverEvent;
 

@@ -692,6 +692,9 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("DRAFTSCHEMATIC", SharedObjectTemplate::DRAFTSCHEMATIC);
 	luaTemplatesInstance->setGlobalInt("NPCCREATURE", SharedObjectTemplate::NPCCREATURE);
 	luaTemplatesInstance->setGlobalInt("LAIRTEMPLATE", SharedObjectTemplate::LAIRTEMPLATE);
+	luaTemplatesInstance->setGlobalInt("DESTROYMISSIONTEMPLATE", SharedObjectTemplate::DESTROYMISSIONTEMPLATE);
+	luaTemplatesInstance->setGlobalInt("DYNAMICSPAWNTEMPLATE", SharedObjectTemplate::DYNAMICSPAWNTEMPLATE);
+	luaTemplatesInstance->setGlobalInt("THEATERSPAWNTEMPLATE", SharedObjectTemplate::THEATERSPAWNTEMPLATE);
 	luaTemplatesInstance->setGlobalInt("FACTORY", SharedObjectTemplate::FACTORY);
 	luaTemplatesInstance->setGlobalInt("STIMPACK", SharedObjectTemplate::STIMPACK);
 	luaTemplatesInstance->setGlobalInt("RANGEDSTIMPACK", SharedObjectTemplate::RANGEDSTIMPACK);

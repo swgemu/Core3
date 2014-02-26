@@ -29,7 +29,7 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
-#include "server/zone/templates/mobile/LairTemplate.h"
+#include "server/zone/templates/spawn/LairTemplate.h"
 #include "server/zone/managers/planet/HuntingTargetEntry.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
@@ -41,7 +41,7 @@ void MissionManagerImplementation::loadLuaSettings() {
 		Lua* lua = new Lua();
 		lua->init();
 
-		lua->runFile("scripts/managers/mission_manager.lua");
+		lua->runFile("scripts/managers/mission/mission_manager.lua");
 
 		LuaObject items = lua->getGlobalObject("crafting_mission_items");
 

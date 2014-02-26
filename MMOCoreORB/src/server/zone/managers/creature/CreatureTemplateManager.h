@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/mobile/ConversationTemplate.h"
-#include "server/zone/templates/mobile/LairTemplate.h"
+#include "server/zone/templates/spawn/LairTemplate.h"
 #include "server/zone/templates/mobile/PatrolPathTemplate.h"
 #include "server/zone/templates/mobile/MobileOutfitGroup.h"
 #include "SpawnGroup.h"

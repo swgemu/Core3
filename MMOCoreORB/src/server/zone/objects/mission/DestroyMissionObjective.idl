@@ -53,7 +53,7 @@ import server.zone.objects.scene.SceneObject;
 include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
-import server.zone.templates.mobile.LairTemplate;
+import server.zone.templates.spawn.LairTemplate;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.Zone;
 

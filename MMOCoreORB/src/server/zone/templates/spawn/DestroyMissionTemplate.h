@@ -1,12 +1,6 @@
-/*
- * LairTemplate.h
- *
- *  Created on: 29/08/2011
- *      Author: TheAnswer
- */
 
-#ifndef LAIRTEMPLATE_H_
-#define LAIRTEMPLATE_H_
+#ifndef DESTROYMISSIONTEMPLATE_H_
+#define DESTROYMISSIONTEMPLATE_H_
 
 #include "engine/engine.h"
 #include "server/zone/managers/gcw/GCWManager.h"
@@ -14,15 +8,15 @@
 namespace server {
 namespace zone {
 namespace templates {
-namespace mobile {
+namespace spawn {
 
-class LairTemplate : public Object {
+class DestroyMissionTemplate : public Object {
 public:
 	enum LairType {CREATURE, NPC};
 
 protected:
+	// String = mobileTemplate, int = number of levels to offset from mission level
 	VectorMap<String, int> mobiles;
-	int spawnLimit;
 
 	VectorMap<uint32, Reference<Vector<String>*> > buildings;
 
@@ -37,14 +31,16 @@ public:
 
 	//      0-20 20-40 40-60 60-80 80+
 
-	LairTemplate(const String& templateName) {
+	DestroyMissionTemplate(const String& templateName) {
 		buildings.setAllowDuplicateInsertPlan();
 		buildings.setNullValue(NULL);
 
 		name = templateName;
+		faction = 0;
+		lairType = CREATURE;
 	}
 
-	virtual ~LairTemplate() {
+	virtual ~DestroyMissionTemplate() {
 	}
 
 	String getBuilding(int level) {
@@ -75,7 +71,6 @@ public:
 	}
 
 	void readObject(LuaObject* templateData) {
-		spawnLimit = templateData->getIntField("spawnLimit");
 
 		if (templateData->getStringField("faction").length() > 0) {
 			String factionString = templateData->getStringField("faction");
@@ -84,20 +79,12 @@ public:
 				faction = GCWManager::IMPERIALHASH;
 			} else if (factionString == "rebel") {
 				faction = GCWManager::REBELHASH;
-			} else {
-				faction = 0;
 			}
-		} else {
-			faction = 0;
 		}
 
 		if (templateData->getStringField("lairType").length() > 0) {
 			if (templateData->getStringField("lairType") == "npc")
 				lairType = NPC;
-			else
-				lairType = CREATURE;
-		} else {
-			lairType = CREATURE;
 		}
 
 		LuaObject mobs = templateData->getObjectField("mobiles");
@@ -193,15 +180,11 @@ public:
 
 	}
 
-	int getSpawnLimit() {
-		return spawnLimit;
-	}
-
 	VectorMap<String, int>* getMobiles() {
 		return &mobiles;
 	}
 
-	bool isLairTemplate() {
+	bool isDestroyMissionTemplate() {
 		return true;
 	}
 
@@ -224,7 +207,7 @@ public:
 }
 }
 
-using namespace server::zone::templates::mobile;
+using namespace server::zone::templates::spawn;
 
 
-#endif /* LAIRTEMPLATE_H_ */
+#endif /* DESTROYMISSIONTEMPLATE_H_ */

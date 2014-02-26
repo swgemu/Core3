@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "events/RemoveNoSpawnAreaTask.h"
 #include "server/ServerCore.h"
-#include "server/zone/templates/mobile/LairTemplate.h"
+#include "server/zone/templates/spawn/LairTemplate.h"
 
 void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())

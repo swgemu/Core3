@@ -21,7 +21,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
-#include "server/zone/templates/mobile/LairTemplate.h"
+#include "server/zone/templates/spawn/LairTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 
 void DestroyMissionObjectiveImplementation::setLairTemplateToSpawn(const String& sp) {
