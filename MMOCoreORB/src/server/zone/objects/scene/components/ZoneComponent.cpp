@@ -186,9 +186,14 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) {
 	ManagedReference<SceneObject*> parent = sceneObject->getParent();
 	Zone* zone = sceneObject->getZone();
+	ManagedReference<SceneObject*> sceneObjectRootParent = sceneObject->getRootParent();
 
-	if (zone == NULL)
-		zone = parent->getRootParent().get()->getZone();
+	if (zone == NULL) {
+		if (sceneObjectRootParent == NULL)
+			return;
+
+		zone = sceneObjectRootParent->getZone();
+	}
 
 	if (parent != NULL && (parent->isVehicleObject() || parent->isMount()))
 		sceneObject->updateVehiclePosition(sendPackets);
