@@ -181,8 +181,8 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
-	if (surveyer->isRidingMount()) {
-		surveyer->sendSystemMessage("@error_message:survey_on_mount");
+	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isVehicleObject() ) {
+		surveyer->sendSystemMessage("You cannot perform that action while driving a vehicle.");
 		return;
 	}
 
@@ -210,8 +210,8 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		}
 	}
 
-	// Player must be kneeling to sample
-	if (!surveyer->isKneeling()) {
+	// Player must be kneeling to sample (if unmounted)
+	if (!surveyer->isKneeling() && !surveyer->isRidingMount() ) {
 		surveyer->setPosture(CreaturePosture::CROUCHED, true);
 	}
 
@@ -310,7 +310,7 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 	surveyer->sendSystemMessage("@survey:node_waypoint");
 
 	// Player must be kneeling to sample
-	if (!surveyer->isStanding())
+	if (!surveyer->isStanding() && !surveyer->isRidingMount() )
 		surveyer->setPosture(CreaturePosture::UPRIGHT, true);
 }
 
