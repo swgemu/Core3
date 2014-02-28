@@ -163,7 +163,7 @@ void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* a
 }
 
 void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
-	if (lair->isDestroyed() || getLairType() == LairTemplate::NPC)
+	if (lair->isDestroyed() || getMobType() == LairTemplate::NPC)
 		return;
 
 	if (!(getLivingCreatureCount() > 0 && lair->getConditionDamage() > 0))
@@ -225,7 +225,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 
 	if (forceSpawn) {
 		spawnNumber++;
-	} else if (lairTemplate->getLairType() == LairTemplate::NPC) {
+	} else if (getMobType() == LairTemplate::NPC) {
 		return false;
 	} else {
 		int conditionDamage = lair->getConditionDamage();
@@ -259,7 +259,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 	VectorMap<String, int>* objectsToSpawn = lairTemplate->getMobiles();
 	int amountToSpawn = 0;
 
-	if (lairTemplate->getLairType() == LairTemplate::CREATURE) {
+	if (getMobType() == LairTemplate::CREATURE) {
 		amountToSpawn = System::random(3) + ((lairTemplate->getSpawnLimit() / 3) - 2);
 	} else {
 		amountToSpawn = System::random(lairTemplate->getSpawnLimit() / 2) + (lairTemplate->getSpawnLimit() / 2);

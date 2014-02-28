@@ -1,4 +1,4 @@
-dofile("scripts/managers/mission_npc_spawn_points.lua");
+dofile("scripts/managers/mission/mission_npc_spawn_points.lua");
 
 crafting_mission_items = {
 	"object/draft_schematic/item/quest_item/attunement_grid.iff",

@@ -164,9 +164,10 @@ class MissionManager extends Observer implements Logger {
 
 	public native NpcSpawnPoint getRandomFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
 	public native void createSpawnPoint(CreatureObject player, final string spawnTypes);
-	
+
 	@local
 	public native LairSpawn getRandomLairSpawn(CreatureObject player, final int faction, unsigned int type);
+
 	@local
 	@dereferenced
 	public native Vector3 getRandomBountyTargetPosition(CreatureObject player);
