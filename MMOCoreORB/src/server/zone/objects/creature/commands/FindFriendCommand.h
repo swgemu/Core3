@@ -79,14 +79,6 @@ public:
 
 		String name = arguments.toString().toLowerCase();
 
-		if (!ghost->hasFriend(name)) {
-			ManagedReference<StringIdChatParameter*> message = new StringIdChatParameter("@ui_cmnty:friend_invalid"); // Invalid friend name specified: %TU
-			message->setTU(name);
-
-			player->sendSystemMessage(*message);
-			return GENERALERROR;
-		}
-
 		ChatManager* chatManager = server->getChatManager();
 
 		ManagedReference<CreatureObject*> targetPlayer = chatManager->getPlayer(name);
