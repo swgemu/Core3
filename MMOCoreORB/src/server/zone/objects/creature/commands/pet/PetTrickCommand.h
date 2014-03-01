@@ -82,10 +82,16 @@ public:
 		int willHeal = pet->getBaseHAM(CreatureAttribute::WILLPOWER) * 0.20 * trickNumber;
 		int shockHeal = 100 * trickNumber;
 
+		// Heal wounds
 		pet->addWounds(CreatureAttribute::MIND, -mindHeal);
 		pet->addWounds(CreatureAttribute::FOCUS, -focusHeal);
 		pet->addWounds(CreatureAttribute::WILLPOWER, -willHeal);
+
+		// Heal battle fatigue
 		pet->addShockWounds(-shockHeal);
+
+		// Heal damage
+		mindHeal = MIN( mindHeal, pet->getMaxHAM(CreatureAttribute::MIND) - pet->getHAM(CreatureAttribute::MIND) );
 		pet->inflictDamage(pet, CreatureAttribute::MIND, -mindHeal, false);
 
 		// Perform trick animation
