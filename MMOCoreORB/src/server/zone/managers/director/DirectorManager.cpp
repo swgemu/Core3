@@ -1486,31 +1486,50 @@ int DirectorManager::spawnMobileRandom(lua_State* L) {
 }
 
 int DirectorManager::spawnSceneObject(lua_State* L) {
-	if (checkArgumentCount(L, 10) == 1) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 10 && numberOfArguments != 7) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::spawnSceneObject");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
 
-	float dz = lua_tonumber(L, -1);
-	float dy = lua_tonumber(L, -2);
-	float dx = lua_tonumber(L, -3);
-	float dw = lua_tonumber(L, -4);
-	uint64 parentID = lua_tointeger(L, -5);
-	float y = lua_tonumber(L, -6);
-	float z = lua_tonumber(L, -7);
-	float x = lua_tonumber(L, -8);
-	String script = lua_tostring(L, -9);
-	String zoneid = lua_tostring(L, -10);
+	float dz, dy, dx, dw, x, y, z;
+	uint64 parentID;
+	String script, zoneID;
+
+	if (numberOfArguments == 10) {
+		dz = lua_tonumber(L, -1);
+		dy = lua_tonumber(L, -2);
+		dx = lua_tonumber(L, -3);
+		dw = lua_tonumber(L, -4);
+		parentID = lua_tointeger(L, -5);
+		y = lua_tonumber(L, -6);
+		z = lua_tonumber(L, -7);
+		x = lua_tonumber(L, -8);
+		script = lua_tostring(L, -9);
+		zoneID = lua_tostring(L, -10);
+	} else {
+		Quaternion direction;
+		direction.setHeadingDirection(lua_tonumber(L, -1));
+		dz = direction.getZ();
+		dy = direction.getY();
+		dx = direction.getX();
+		dw = direction.getW();
+		parentID = lua_tointeger(L, -2);
+		y = lua_tonumber(L, -3);
+		z = lua_tonumber(L, -4);
+		x = lua_tonumber(L, -5);
+		script = lua_tostring(L, -6);
+		zoneID = lua_tostring(L, -7);
+	}
 
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
-	Zone* zone = zoneServer->getZone(zoneid);
+	Zone* zone = zoneServer->getZone(zoneID);
 
 	if (zone == NULL) {
 		lua_pushnil(L);
 		return 1;
 	}
-
 
 	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), 0);
 
