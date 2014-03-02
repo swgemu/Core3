@@ -1556,9 +1556,11 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		object->createChildObjects();
 
 		object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
-	}
 
-	lua_pushlightuserdata(L, object.get());
+		lua_pushlightuserdata(L, object.get());
+	} else {
+		lua_pushnil(L);
+	}
 
 	return 1;
 }
