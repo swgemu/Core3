@@ -8,6 +8,8 @@ DirectorManagerMocks.playerObjects = {}
 DirectorManagerMocks.sceneObjects = {}
 DirectorManagerMocks.stringIds = {}
 
+WAYPOINTWHITE = 0
+
 -- Function to be called in the setup method for a test to prepare the mocks.
 function DirectorManagerMocks.mocks.setup()
 end
