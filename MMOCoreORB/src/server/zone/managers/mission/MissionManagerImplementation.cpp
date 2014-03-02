@@ -804,12 +804,13 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 		mission->setMissionTargetName(nm->makeCreatureName());
 
-		Vector3 endPos = getRandomBountyTargetPosition(player);
 		String planet = playerZone->getZoneName();
 		if (level == 3 && bhTargetZones.size() > 0) {
 			int randomNumber = System::random(bhTargetZones.size() - 1);
 			planet = bhTargetZones.get(randomNumber);
 		}
+
+		Vector3 endPos = getRandomBountyTargetPosition(player, planet);
 		mission->setEndPosition(endPos.getX(), endPos.getY(), planet, true);
 
 		String targetTemplate = bhTargetsAtMissionLevel.get((unsigned int)level)->get(System::random(bhTargetsAtMissionLevel.get((unsigned int)level)->size() - 1));
@@ -1573,28 +1574,30 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	return lairSpawn;
 }
 
-Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObject* player) {
+Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObject* player, const String& planet) {
 	Vector3 position;
-	//TODO use correct zone.
+	// Use the zone the target is on.
 
-	Zone* playerZone = player->getZone();
+	// Zone* playerZone = player->getZone();
 
-	if (playerZone == NULL) {
+	Zone* targetZone = server->getZone(planet);
+
+	if (targetZone == NULL) {
 		return position;
 	}
 
 	bool found = false;
-	float radiusX = player->getZone()->getMaxX() - player->getZone()->getMinX();
-	float radiusY = player->getZone()->getMaxY() - player->getZone()->getMinY();
+	float radiusX = targetZone->getMaxX() - targetZone->getMinX();
+	float radiusY = targetZone->getMaxY() - targetZone->getMinY();
 	float radius = radiusX > radiusY ? radiusX : radiusY;
 	int retries = 20;
 
 	while (!found && retries > 0) {
 		position = player->getWorldCoordinate(System::random(radius), System::random(360));
 
-		if (playerZone->isWithinBoundaries(position)) {
-			found = playerZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL) &&
-					!playerZone->getPlanetManager()->isInWater(position.getX(), position.getY());
+		if (targetZone->isWithinBoundaries(position)) {
+			found = targetZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL) &&
+					!targetZone->getPlanetManager()->isInWater(position.getX(), position.getY());
 		}
 
 		retries--;

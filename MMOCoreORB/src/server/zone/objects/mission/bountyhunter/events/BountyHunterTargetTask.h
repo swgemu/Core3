@@ -80,7 +80,7 @@ public:
 		currentPosition.setX(mission->getEndPositionX());
 		currentPosition.setY(mission->getEndPositionY());
 		currentPosition.setZ(0);
-		nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player);
+		nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player, zoneName);
 		nextPosition.setZ(0);
 
 		if (mission->getMissionLevel() > 1) {
@@ -157,7 +157,7 @@ private:
 			currentPosition = currentPosition + (10 * movementUpdate);
 		} else {
 			currentPosition = nextPosition;
-			nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player);
+			nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player, zoneName);
 			nextPosition.setZ(0);
 		}
 	}
