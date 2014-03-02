@@ -3,6 +3,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/creature/ValidMountScaleRange.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/creature/AiAgent.h"
@@ -501,12 +502,23 @@ uint32 PetManagerImplementation::calculateIncapacitationTimer(AiAgent* pet, int 
 }
 
 void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
+
+	// TODO REMOVE AFTER TESTING
+	bool attackerIsAdmin = false;
+	// END REMOVE
+
 	StringIdChatParameter stringId;
 
 	if (attacker->isPlayerCreature()) {
 		stringId.setStringId("base_player", "prose_target_dead");
 		stringId.setTT(pet->getObjectID());
 		(cast<CreatureObject*>(attacker))->sendSystemMessage(stringId);
+
+		// TODO REMOVE AFTER TESTING
+		ManagedReference<PlayerObject*> ghost = (cast<CreatureObject*>(attacker))->getPlayerObject();
+		if (ghost != NULL && ghost->isPrivileged())
+			attackerIsAdmin = true;
+		// END REMOVE
 	}
 
 	pet->setCurrentSpeed(0);
@@ -516,6 +528,8 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 
 	pet->updateTimeOfDeath();
 	pet->clearBuffs(false);
+
+
 
 	ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
@@ -530,7 +544,7 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 			petControlDevice->destroyObjectFromWorld(true);
 			petControlDevice->destroyObjectFromDatabase(true);
 
-		} else if (!attacker->isPlayerCreature() && !attacker->isPet()) {
+		} else if ( (!attacker->isPlayerCreature() && !attacker->isPet()) || attackerIsAdmin) { // TODO REMOVE attackerIsAdmin AFTER TESTING
 
 			if (pet->getCooldownTimerMap() != NULL && pet->getCooldownTimerMap()->isPast("vitalityLossCooldown")) {
 
