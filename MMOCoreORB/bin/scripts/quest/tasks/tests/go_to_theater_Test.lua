@@ -5,6 +5,10 @@ local SpawnMobilesMocks = require("utils.mocks.spawn_mobiles_mocks")
 local READ_DISK_ERROR_STRING = "quest/force_sensitive/intro:read_disk_error"
 local THEATER_SUM_STRING = "quest/force_sensitive/intro:theater_sum"
 
+local WAYPOINT_ID_STRING = "waypointId"
+local ACTIVE_AREA_ID_STRING = "activeAreaId"
+local THEATER_ID_STRING = "theaterId"
+
 local testGoToTheater = GoToTheater:new {
 	taskName = "testGoToTheater",
 	minimumDistance = 768,
@@ -36,6 +40,8 @@ describe("GoToTheater", function()
 	local pPlayerObject = { "playerObjectPointer" }
 	local playerObject
 	local waypointId = 1234
+	local activeArea
+	local activeAreaId = 34567890
 
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
@@ -67,11 +73,18 @@ describe("GoToTheater", function()
 
 		playerObject = {}
 		playerObject.addWaypoint = spy.new(function() return waypointId end)
+		playerObject.removeWaypoint = spy.new(function() end)
 		DirectorManagerMocks.playerObjects[pPlayerObject] = playerObject
 
 		theaterObject = {}
 		theaterObject.getObjectID = spy.new(function() return theaterObjectId end)
+		theaterObject.destroyObjectFromWorld = spy.new(function() end)
 		DirectorManagerMocks.sceneObjects[pTheater] = theaterObject
+
+		activeArea = {}
+		activeArea.getObjectID = spy.new(function() return activeAreaId end)
+		activeArea.destroyObjectFromWorld = spy.new(function() end)
+		DirectorManagerMocks.sceneObjects[pActiveArea] = activeArea
 	end)
 
 	describe("start", function()
@@ -123,7 +136,7 @@ describe("GoToTheater", function()
 					it("Should save the object id of the theater on the player.", function()
 						testGoToTheater:start(pCreatureObject)
 
-						assert.spy(writeData).was.called_with(playerObjectId .. testGoToTheater.taskName .. "theater", theaterObjectId)
+						assert.spy(writeData).was.called_with(playerObjectId .. testGoToTheater.taskName .. THEATER_ID_STRING, theaterObjectId)
 					end)
 
 					it("Should spawn the mobiles at the theater.", function()
@@ -162,10 +175,20 @@ describe("GoToTheater", function()
 								writeData = spy.new(function(string, value)
 									writeDataTimes = writeDataTimes + 1
 									if writeDataTimes == 2 then
-										assert.same(playerObjectId .. testGoToTheater.taskName .. "waypointId", string)
+										assert.same(playerObjectId .. testGoToTheater.taskName .. ACTIVE_AREA_ID_STRING, string)
+										assert.same(activeAreaId, value)
+									end
+									if writeDataTimes == 3 then
+										assert.same(playerObjectId .. testGoToTheater.taskName .. WAYPOINT_ID_STRING, string)
 										assert.same(waypointId, value)
 									end
 								end)
+							end)
+
+							it("Should save the id of the active area on the player.", function()
+								testGoToTheater:start(pCreatureObject)
+
+								assert.spy(writeData).was.called(3)
 							end)
 
 							it("Should generate an active waypoint for the player to the theater.", function()
@@ -177,7 +200,7 @@ describe("GoToTheater", function()
 							it("Should store the id of the waypoint on the player", function()
 								testGoToTheater:start(pCreatureObject)
 
-								assert.spy(writeData).was.called(2)
+								assert.spy(writeData).was.called(3)
 							end)
 
 							it("Should schedule the despawn event.", function()
@@ -276,6 +299,106 @@ describe("GoToTheater", function()
 					testGoToTheater:start(pCreatureObject)
 
 					assert.spy(testGoToTheater.finish).was.called_with(testGoToTheater, pCreatureObject)
+				end)
+			end)
+		end)
+	end)
+
+	describe("taskFinish", function()
+		describe("When called with a pointer to a creature object", function()
+			before_each(function()
+				readData = spy.new(function(key)
+					if key == playerObjectId .. testGoToTheater.taskName .. WAYPOINT_ID_STRING then
+						return waypointId
+					end
+					if key == playerObjectId .. testGoToTheater.taskName .. ACTIVE_AREA_ID_STRING then
+						return activeAreaId
+					end
+					if key == playerObjectId .. testGoToTheater.taskName .. THEATER_ID_STRING then
+						return activeAreaId
+					end
+				end)
+			end)
+
+			it("Should read the waypoint id from the player.", function()
+				testGoToTheater:taskFinish(pCreatureObject)
+
+				assert.spy(readData).was.called(3)
+			end)
+
+			it("Should remove the waypoint from the player.", function()
+				testGoToTheater:taskFinish(pCreatureObject)
+
+				assert.spy(playerObject.removeWaypoint).was.called_with(playerObject, waypointId, true)
+			end)
+
+			it("Should read the active area id from the player.", function()
+				testGoToTheater:taskFinish(pCreatureObject)
+
+				assert.spy(readData).was.called(3)
+			end)
+
+			it("Should get the active area pointer with the read id.", function()
+				testGoToTheater:taskFinish(pCreatureObject)
+
+				assert.spy(getSceneObject).was.called_with(activeAreaId)
+			end)
+
+			describe("and a pointer to an object was returned", function()
+				before_each(function()
+					getSceneObject = spy.new(function() return pActiveArea end)
+				end)
+
+				it("Should remove the active area from the world.", function()
+					testGoToTheater:taskFinish(pCreatureObject)
+
+					assert.spy(activeArea.destroyObjectFromWorld).was.called_with(activeArea)
+				end)
+			end)
+
+			describe("and a pointer to an object was not returned", function()
+				it("Should not remove the active area from the world.", function()
+					testGoToTheater:taskFinish(pCreatureObject)
+
+					assert.spy(activeArea.destroyObjectFromWorld).was.not_called()
+				end)
+			end)
+
+			it("Should despawn the mobiles.", function()
+				testGoToTheater:taskFinish(pCreatureObject)
+
+				assert.spy(SpawnMobilesMocks.despawnMobiles).was.called_with(pCreatureObject, testGoToTheater.taskName)
+			end)
+
+			it("Should read the theater id from the player.", function()
+				testGoToTheater:taskFinish(pCreatureObject)
+
+				assert.spy(readData).was.called(3)
+			end)
+
+			it("Should get the theater pointer with the read id.", function()
+				testGoToTheater:taskFinish(pCreatureObject)
+
+				assert.spy(getSceneObject).was.called_with(activeAreaId)
+			end)
+
+			describe("and a pointer to an object was returned", function()
+				before_each(function()
+					getSceneObject = spy.new(function() return pTheater end)
+				end)
+
+				it("Should remove the theater from the world.", function()
+					testGoToTheater:taskFinish(pCreatureObject)
+
+					assert.spy(theaterObject.destroyObjectFromWorld).was.called_with(theaterObject)
+				end)
+			end)
+
+			describe("and a pointer to an object was not returned", function()
+				it("Should not remove the theater from the world.", function()
+					testGoToTheater:taskFinish(pCreatureObject)
+
+					assert.spy(theaterObject.destroyObjectFromWorld).was.not_called()
 				end)
 			end)
 		end)

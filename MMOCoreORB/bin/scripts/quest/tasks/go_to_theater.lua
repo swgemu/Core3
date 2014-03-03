@@ -18,6 +18,10 @@ local ACTIVE_AREA_IFF = "object/active_area.iff"
 local READ_DISK_ERROR_STRING = "quest/force_sensitive/intro:read_disk_error"
 local THEATER_SUM_STRING = "quest/force_sensitive/intro:theater_sum"
 
+local WAYPOINT_ID_STRING = "waypointId"
+local ACTIVE_AREA_ID_STRING = "activeAreaId"
+local THEATER_ID_STRING = "theaterId"
+
 GoToTheater = Task:new {
 	-- Task properties
 	taskName = "",
@@ -42,7 +46,7 @@ function GoToTheater:taskStart(pCreatureObject)
 			local pTheater = spawnSceneObject(creatureObject:getZoneName(), self.theater, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, math.random(0, 359))
 
 			if ObjectManager.withSceneObject(pTheater, function(theater)
-				writeData(creatureObject:getObjectID() .. self.taskName .. "theater", theater:getObjectID())
+				writeData(creatureObject:getObjectID() .. self.taskName .. THEATER_ID_STRING, theater:getObjectID())
 				return pTheater
 			end) ~= nil then
 				local spawnedMobilesList = SpawnMobiles.spawnMobiles(pCreatureObject, self.taskName, self.mobileList)
@@ -51,12 +55,16 @@ function GoToTheater:taskStart(pCreatureObject)
 					local pActiveArea = spawnSceneObject(creatureObject:getZoneName(), ACTIVE_AREA_IFF, spawnPoint[1], 0, spawnPoint[3], 0, 0)
 
 					if pActiveArea ~= nil then
+						ObjectManager.withSceneObject(pActiveArea, function(activeArea)
+							writeData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, activeArea:getObjectID())
+						end)
+
 						local waypointId = ObjectManager.withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
 							return playerObject:addWaypoint(creatureObject:getZoneName(), self.waypointDescription, "", spawnPoint[1], spawnPoint[3], WAYPOINTWHITE, true, true)
 						end)
 
 						if waypointId ~= nil then
-							writeData(creatureObject:getObjectID() .. self.taskName .. "waypointId", waypointId)
+							writeData(creatureObject:getObjectID() .. self.taskName .. WAYPOINT_ID_STRING, waypointId)
 							createEvent(self.despawnTime, "handleDespawnTheater", self.taskName, pCreatureObject)
 							self:callFunctionIfNotNil(self.onSuccessfulSpawn, pCreatureObject)
 							return
@@ -69,6 +77,27 @@ function GoToTheater:taskStart(pCreatureObject)
 		-- Something failed above, clean up and end the task.
 		self:callFunctionIfNotNil(self.onFailedSpawn, pCreatureObject)
 		self:finish(pCreatureObject)
+	end)
+end
+
+function GoToTheater:taskFinish(pCreatureObject)
+	ObjectManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
+		local waypointId = readData(creatureObject:getObjectID() .. self.taskName .. WAYPOINT_ID_STRING)
+		playerObject:removeWaypoint(waypointId, true)
+
+		local activeAreaId = readData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
+		local pActiveArea = getSceneObject(activeAreaId)
+		ObjectManager.withSceneObject(pActiveArea, function(activeArea)
+			activeArea:destroyObjectFromWorld()
+		end)
+
+		SpawnMobiles.despawnMobiles(pCreatureObject, self.taskName)
+
+		local theaterId = readData(creatureObject:getObjectID() .. self.taskName .. THEATER_ID_STRING)
+		local pTheater = getSceneObject(theaterId)
+		ObjectManager.withSceneObject(pTheater, function(theater)
+			theater:destroyObjectFromWorld()
+		end)
 	end)
 end
 
