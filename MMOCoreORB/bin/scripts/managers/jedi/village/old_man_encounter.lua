@@ -16,10 +16,10 @@ OldManEncounter = Encounter:new {
 	-- Encounter properties
 	--minimumTimeUntilEncounter = 12 * 60 * 60 * 1000, -- 12 hours
 	--maximumTimeUntilEncounter = 24 * 60 * 60 * 1000, -- 24 hours
-	minimumTimeUntilEncounter = 30 * 1000, -- 12 hours
-	maximumTimeUntilEncounter = 60 * 1000, -- 24 hours
+	minimumTimeUntilEncounter = 5 * 60 * 1000, -- 12 hours
+	maximumTimeUntilEncounter = 10 * 60 * 1000, -- 24 hours
 	--encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
-	encounterDespawnTime = 60 * 1000, -- 5 minutes
+	encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	spawnObjectList = {
 		{ template = "old_man", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true }
 	},
@@ -146,6 +146,7 @@ end
 -- Handling of finishing the encounter.
 -- @param pCreatureObject pointer to the creature object of the player.
 function OldManEncounter:taskFinish(pCreatureObject)
+	Logger:log("Finishing " .. self.taskName .. " and starting SithShadowEncounter.", LT_INFO)
 	SithShadowEncounter:start(pCreatureObject)
 end
 

@@ -193,6 +193,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getTimestamp", getTimestamp);
 	lua_register(luaEngine->getLuaState(), "getTimestampMilli", getTimestampMilli);
 	lua_register(luaEngine->getLuaState(), "getSpawnPoint", getSpawnPoint);
+	lua_register(luaEngine->getLuaState(), "getSpawnArea", getSpawnArea);
 	lua_register(luaEngine->getLuaState(), "makeCreatureName", makeCreatureName);
 	lua_register(luaEngine->getLuaState(), "getGCWDiscount", getGCWDiscount);
 	lua_register(luaEngine->getLuaState(), "getTerrainHeight", getTerrainHeight);

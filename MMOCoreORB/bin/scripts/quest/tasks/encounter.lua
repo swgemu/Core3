@@ -209,7 +209,11 @@ function Encounter:handleDespawnEvent(pCreatureObject)
 
 	SpawnMobiles.despawnMobiles(pCreatureObject, self.taskName)
 
-	self:taskStart(pCreatureObject)
+	if not self:callFunctionIfNotNil(self.isEncounterFinished, pCreatureObject) then
+		self:taskStart(pCreatureObject)
+	else
+		self:finish(pCreatureObject)
+	end
 end
 
 return Encounter

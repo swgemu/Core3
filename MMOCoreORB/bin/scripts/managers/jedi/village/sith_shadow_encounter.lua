@@ -3,9 +3,12 @@ local QuestManager = require("managers.quest.quest_manager")
 local ObjectManager = require("managers.object.object_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
 local Logger = require("utils.logger")
+local SithShadowIntroTheater = require("managers.jedi.village.sith_shadow_intro_theater")
 
 SITH_SHADOW_THREATEN_STRING = "@quest/force_sensitive/intro:military_threaten"
 SITH_SHADOW_MILITARY_TAKE_CRYSTAL = "@quest/force_sensitive/intro:military_take_crystal"
+local READ_DISK_1_STRING = "@quest/force_sensitive/intro:read_disk1"
+local READ_DISK_ERROR_STRING = "@quest/force_sensitive/intro:read_disk_error"
 
 SithShadowEncounter = Encounter:new {
 	-- Task properties
@@ -13,10 +16,10 @@ SithShadowEncounter = Encounter:new {
 	-- Encounter properties
 	--minimumTimeUntilEncounter = 12 * 60 * 60 * 1000, -- 12 hours
 	--maximumTimeUntilEncounter = 24 * 60 * 60 * 1000, -- 24 hours
-	minimumTimeUntilEncounter = 30 * 1000, -- 12 hours
-	maximumTimeUntilEncounter = 60 * 1000, -- 24 hours
+	minimumTimeUntilEncounter = 5 * 60 * 1000, -- 12 hours
+	maximumTimeUntilEncounter = 10 * 60 * 1000, -- 24 hours
 	--encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
-	encounterDespawnTime = 60 * 1000, -- 5 minutes
+	encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	spawnObjectList = {
 		{ template = "sith_shadow", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true },
 		{ template = "sith_shadow", minimumDistance = 4, maximumDistance = 8, referencePoint = 1, followPlayer = true }
@@ -119,6 +122,26 @@ end
 -- @return true if the encounter is finished. I.e. the player has access to the village or lost the crystal.
 function SithShadowEncounter:isEncounterFinished(pCreatureObject)
 	return not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
+end
+
+-- Handling of the activation of the looted datapad.
+-- @param pSceneObject pointer to the datapad object.
+-- @param pCreatureObject pointer to the creature object who activated the datapad.
+function SithShadowEncounter:useDatapad(pSceneObject, pCreatureObject)
+	Logger:log("Player used the looted datapad.", LT_INFO)
+	if QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1) then
+		SithShadowIntroTheater:start(pCreatureObject)
+		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+			creatureObject:sendSystemMessage(READ_DISK_1_STRING)
+		end)
+		ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
+			sceneObject:destroyObjectFromWorld()
+		end)
+	else
+		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+			creatureObject:sendSystemMessage(READ_DISK_ERROR_STRING)
+		end)
+	end
 end
 
 return SithShadowEncounter
