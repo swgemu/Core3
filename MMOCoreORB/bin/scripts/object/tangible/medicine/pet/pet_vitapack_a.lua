@@ -42,17 +42,17 @@
 
 
 object_tangible_medicine_pet_pet_vitapack_a = object_tangible_medicine_pet_shared_pet_vitapack_a:new {
+	gameObjectType = 8246,
 
-
-	numberExperimentalProperties = {1, 1, 1, 1, 1},
-	experimentalProperties = {"XX", "XX", "XX", "XX", "XX"},
-	experimentalWeights = {1, 1, 1, 1, 1},
-	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
-	experimentalSubGroupTitles = {"null", "null", "strength", "decayrate", "hitpoints"},
-	experimentalMin = {0, 0, 10, 15, 1000},
-	experimentalMax = {0, 0, 40, 15, 1000},
-	experimentalPrecision = {0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 4},
+	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
+	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},
+	experimentalWeights = {1, 1, 2, 1, 2, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "exp_charges", "null", "null"},
+	experimentalSubGroupTitles = {"null", "null", "strength", "charges", "decayrate", "hitpoints"},
+	experimentalMin = {0, 0, 10, 5, 15, 1000},
+	experimentalMax = {0, 0, 40, 10, 15, 1000},
+	experimentalPrecision = {0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 4},
 }
 
 ObjectTemplates:addTemplate(object_tangible_medicine_pet_pet_vitapack_a, "object/tangible/medicine/pet/pet_vitapack_a.iff")
