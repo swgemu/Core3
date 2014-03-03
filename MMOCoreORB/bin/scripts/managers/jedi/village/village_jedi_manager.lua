@@ -3,6 +3,7 @@ require("managers.jedi.village.village_jedi_manager_holocron")
 require("managers.jedi.village.old_man_conv_handler")
 local Glowing = require("managers.jedi.village.glowing")
 local Logger = require("utils.logger")
+local SithShadowEncounter = require("managers.jedi.village.sith_shadow_encounter")
 
 jediManagerName = "VillageJediManager"
 
@@ -23,6 +24,9 @@ function VillageJediManager:useItem(pSceneObject, itemType, pCreatureObject)
 	Logger:log("useItem called with item type " .. itemType, LT_INFO)
 	if itemType == ITEMHOLOCRON then
 		VillageJediManagerHolocron.useHolocron(pSceneObject, pCreatureObject)
+	end
+	if itemType == ITEMWAYPOINTDATAPAD then
+		SithShadowEncounter:useDatapad(pSceneObject, pCreatureObject)
 	end
 end
 

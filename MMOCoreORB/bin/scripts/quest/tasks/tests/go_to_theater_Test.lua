@@ -403,4 +403,28 @@ describe("GoToTheater", function()
 			end)
 		end)
 	end)
+
+	describe("handleDespawnEvent", function()
+		describe("When called with a player object", function()
+			local realFinish
+
+			setup(function()
+				realFinish = testGoToTheater.finish
+			end)
+
+			teardown(function()
+				testGoToTheater.finish = realFinish
+			end)
+
+			before_each(function()
+				testGoToTheater.finish = spy.new(function() end)
+			end)
+
+			it("Should call finish.", function()
+				testGoToTheater:handleDespawnEvent(pCreatureObject)
+
+				assert.spy(testGoToTheater.finish).was.called_with(testGoToTheater, pCreatureObject)
+			end)
+		end)
+	end)
 end)
