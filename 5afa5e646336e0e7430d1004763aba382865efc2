@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_2fb425f1",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectType.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-03T22:07:48Z",
+      "side": 1,
+      "message": "PETMEDECINE \u003d 0x201B;\n\nDid you try using this type rather than making a new one?",
+      "revId": "5afa5e646336e0e7430d1004763aba382865efc2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_4fbf71d1",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/pharmaceutical/VitalityPackImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-03T22:07:48Z",
+      "side": 1,
+      "message": "According to http://wayback.archive.org/web/20050208195544/http://swgcreatures.com/vitalitypacks.asp\n\n\"Q: My pet lost 50 vitality. Can I use two vitality packs, one after the other, to heal him?\n\nA: No. The first pack you use will do the job, even if the pack is not strong enough, but you will suffer additional vitality loss.\"\n\n\nSounds like to me that a pet will always have max vitality after using a pack, but if the pack is weak, you\u0027ll lose more max.",
+      "revId": "5afa5e646336e0e7430d1004763aba382865efc2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_6fba2de3",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/pharmaceutical/VitalityPackImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-03T22:07:48Z",
+      "side": 1,
+      "message": "According to http://wayback.archive.org/web/20050208195544/http://swgcreatures.com/vitalitypacks.asp\n\n\"Q: Can I use a vitality pack more than once?\n\nA: No, all vitality packs are one use only.\"",
+      "revId": "5afa5e646336e0e7430d1004763aba382865efc2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
