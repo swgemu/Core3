@@ -80,6 +80,8 @@ function GoToTheater:taskStart(pCreatureObject)
 	end)
 end
 
+-- Handle the task finish event.
+-- @param pCreatureObject pointer to the creature object of the player that the event was triggered for.
 function GoToTheater:taskFinish(pCreatureObject)
 	ObjectManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
 		local waypointId = readData(creatureObject:getObjectID() .. self.taskName .. WAYPOINT_ID_STRING)
@@ -99,6 +101,12 @@ function GoToTheater:taskFinish(pCreatureObject)
 			theater:destroyObjectFromWorld()
 		end)
 	end)
+end
+
+-- Handle the despawn event.
+-- @param pCreatureObject pointer to the creature object of the player that the event was triggered for.
+function GoToTheater:handleDespawnEvent(pCreatureObject)
+	self:finish(pCreatureObject)
 end
 
 return GoToTheater
