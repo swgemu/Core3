@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_af9ed561",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectType.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-04T07:24:48Z",
+      "side": 1,
+      "message": "I didn\u0027t try that one.  They are PHARMACEUTICAL (x200D) in the TRE but I thought that should be overridden like the *pack objects.\n\nI\u0027ll try PETMEDECINE, though.  Looks like a good candidate.",
+      "parentUuid": "3a3291f1_2fb425f1",
+      "revId": "5afa5e646336e0e7430d1004763aba382865efc2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_4fbf71d1",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/pharmaceutical/VitalityPackImplementation.cpp",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_ef94dd45",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/pharmaceutical/VitalityPackImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-04T07:24:48Z",
+      "side": 1,
+      "message": "I agree with your interpretation.  I\u0027ll make the change.",
+      "parentUuid": "3a3291f1_4fbf71d1",
+      "revId": "5afa5e646336e0e7430d1004763aba382865efc2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_6fba2de3",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/pharmaceutical/VitalityPackImplementation.cpp",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-03-03T22:07:48Z",
       "side": 1,
       "message": "According to http://wayback.archive.org/web/20050208195544/http://swgcreatures.com/vitalitypacks.asp\n\n\"Q: Can I use a vitality pack more than once?\n\nA: No, all vitality packs are one use only.\"",
+      "revId": "5afa5e646336e0e7430d1004763aba382865efc2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_cf912154",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/pharmaceutical/VitalityPackImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-04T07:24:48Z",
+      "side": 1,
+      "message": "Thanks, I missed that.",
+      "parentUuid": "3a3291f1_6fba2de3",
       "revId": "5afa5e646336e0e7430d1004763aba382865efc2",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
