@@ -67,15 +67,17 @@ ActionShot1Command = {
 		0, 
 		0 
 	  ),
-	  StateEffect( 
-		ACTIONDEGRADE_EFFECT, 
-		{}, 
-		{}, 
-		{}, 
-		100, 
-		100, 
-		30 
-	  )
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING, 
+		{ "resistance_bleeding", "bleed_resist" },
+		ACTION,
+		true,
+		125,
+		100,
+		60, 
+		60
+	  )	  
 	},
 
 	range = -1
