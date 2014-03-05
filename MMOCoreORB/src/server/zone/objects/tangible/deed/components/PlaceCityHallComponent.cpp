@@ -53,6 +53,7 @@ int PlaceCityHallComponent::placeStructure(StructureDeed* deed, CreatureObject* 
 	inputBox->setPromptTitle("@city/city:city_name_t"); //Enter City Name
 	inputBox->setPromptText("@city/city:city_name_d"); //Enter the desired name for your new city. Note that you must have at least 10 citizens join your city within 24 hours of placement in order for your city to be approved.
 	inputBox->setForceCloseDisabled();
+	inputBox->setMaxInputSize(40);
 	inputBox->setCallback(new PlaceCityHallSuiCallback(creature->getZone(), deed, x, y, angle));
 
 	ghost->addSuiBox(inputBox);
