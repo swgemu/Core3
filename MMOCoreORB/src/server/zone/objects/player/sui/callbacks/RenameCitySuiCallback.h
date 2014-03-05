@@ -38,9 +38,25 @@ public:
 
 		NameManager* nameManager = NameManager::instance();
 
-		if (nameManager->isProfane(cityName) || cityName.contains("\\") || cityName.contains("#")) {
+		int result = nameManager->validateName(cityName);
+
+		switch (result) {
+		case NameManagerResult::DECLINED_PROFANE:
+		case NameManagerResult::DECLINED_DEVELOPER:
+		case NameManagerResult::DECLINED_FICT_RESERVED:
+		case NameManagerResult::DECLINED_RESERVED:
 			creature->sendSystemMessage("@player_structure:obscene"); //That name was rejected by the name filter. Try a different name.
 			return;
+			break;
+
+		case NameManagerResult::DECLINED_RACE_INAPP:
+		case NameManagerResult::DECLINED_EMPTY:
+		case NameManagerResult::DECLINED_SYNTAX:
+			creature->sendSystemMessage("@player_structure:not_valid_name"); // That is not a valid name.
+			return;
+			break;
+		case NameManagerResult::ACCEPTED:
+			break;
 		}
 
 		CityManager* cityManager = server->getCityManager();

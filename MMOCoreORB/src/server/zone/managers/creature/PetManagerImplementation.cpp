@@ -379,7 +379,7 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 		ZoneProcessServer* zps = pet->getZoneProcessServer();
 		NameManager* nameManager = zps->getNameManager();
 
-		if (nameManager->validateName(parsedName, -1) != NameManagerResult::ACCEPTED) {
+		if (nameManager->validateName(parsedName) != NameManagerResult::ACCEPTED) {
 			return true;
 		}
 
