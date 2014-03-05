@@ -274,7 +274,7 @@ int NameManager::validateName(const String& name, int species) {
 	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
 
-	if (name.length() < 3)
+	if (name.length() < 3 || name.length() > 40)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
 	if (isProfane(name))
@@ -292,6 +292,9 @@ int NameManager::validateName(const String& name, int species) {
 	//Make sure that only valid characters are allowed in the name.
 	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
 		return NameManagerResult::DECLINED_SYNTAX;
+
+	if (species == -1)
+		return NameManagerResult::ACCEPTED;
 
 	String fname, lname;
 
