@@ -2274,6 +2274,7 @@ void CityManagerImplementation::sendChangeCityName(CityRegion* city, CreatureObj
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(mayor, SuiWindowType::CITY_RENAME, 0);
 	inputBox->setPromptTitle("@city/city:city_name_new_t"); //Change City Name
 	inputBox->setPromptText("@city/city:city_name_new_d"); //Enter the new city name below.  Your city must be uniquely named for this planet.  Note that the citizens of your town will receive an email notifying them of the city name change.
+	inputBox->setMaxInputSize(40);
 	inputBox->setCallback(new RenameCitySuiCallback(mayor->getZone(), city) );
 
 	ghost->addSuiBox(inputBox);
