@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_ef6cdd38",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/loot/loot_schematic/bubble_tank_schematic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-07T21:44:10Z",
+      "side": 1,
+      "message": "Is there not a skill requirement to learn this schematic?",
+      "revId": "70cee234510202fd0106664f57ba03a606885b8b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
