@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_af76d504",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/survey/SurveySessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-07T21:50:47Z",
+      "side": 1,
+      "message": "After telling the surveyor to dismount, you should check again that they are, in fact, dismounted. If their mount/dismount cooldown wasn\u0027t past, or for whatever other reason they didn\u0027t actually dismount, you don\u0027t want them to sample while mounted.",
+      "revId": "3fc943bbd0d367600020a98289963342421f47de",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
