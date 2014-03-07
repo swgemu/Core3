@@ -186,6 +186,17 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
+	// Force dismount from creature pets
+	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isPet() ) {
+		surveyer->executeObjectControllerAction(String("dismount").hashCode());
+	}
+
+	// Verify dismount was successful
+	if( surveyer->isRidingMount() ){
+		surveyer->sendSystemMessage("@error_message:survey_on_mount"); // "You cannot perform that action while mounted on a creature or driving a vehicle."
+		return;
+	}
+
 	//Get actual cost based upon player's Quickness
 	int actionCost = surveyer->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 200);
 
@@ -210,8 +221,8 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		}
 	}
 
-	// Player must be kneeling to sample (if unmounted)
-	if (!surveyer->isKneeling() && !surveyer->isRidingMount() ) {
+	// Player must be kneeling to sample
+	if (!surveyer->isKneeling() ) {
 		surveyer->setPosture(CreaturePosture::CROUCHED, true);
 	}
 
@@ -310,7 +321,7 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 	surveyer->sendSystemMessage("@survey:node_waypoint");
 
 	// Player must be kneeling to sample
-	if (!surveyer->isStanding() && !surveyer->isRidingMount() )
+	if (!surveyer->isStanding() )
 		surveyer->setPosture(CreaturePosture::UPRIGHT, true);
 }
 
