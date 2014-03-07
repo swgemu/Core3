@@ -288,7 +288,7 @@ class AiAgent extends CreatureObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
-	public native void loadTemplateData(CreatureTemplate templateData);
+	public native void loadTemplateData(CreatureTemplate templateData, bool randomHam = true);
 	
 	/**
 	 * Inflicts damage into the object
