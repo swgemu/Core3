@@ -129,8 +129,8 @@ public:
 
 		uint64 ticketoid = target;
 
-		// If only one ticket and no target use the first ticket
-		if (tickets.size() == 1 && ticketoid == 0) {
+		// If only one ticket, use the first ticket
+		if (tickets.size() == 1) {
 			ticketoid = tickets.get(0)->getObjectID();
 		}
 
