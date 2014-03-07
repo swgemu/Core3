@@ -80,7 +80,7 @@ float AiAgentImplementation::calculateAttackSpeed(int level) {
 	return speed;
 }
 
-void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
+void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData, bool randomHam) {
 	npcTemplate = templateData;
 
 	setPvpStatusBitmask(npcTemplate->getPvpBitmask());
@@ -136,9 +136,14 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	int ham;
 	baseHAM.removeAll();
+
 	for (int i = 0; i < 9; ++i) {
 		if (i % 3 == 0) {
-			ham = System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM();
+			if (randomHam)
+				ham = System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM();
+			else
+				ham = ((npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) / 2) + npcTemplate->getBaseHAM();
+
 			baseHAM.add(ham);
 		} else
 			baseHAM.add(ham/100);

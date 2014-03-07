@@ -389,7 +389,7 @@ bool CreatureImplementation::canCollectDna(CreatureObject* player) {
 }
 
 void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateData) {
-	loadTemplateData(templateData);
+	loadTemplateData(templateData, false);
 
 	//npcTemplate->getCreatureBitmask() + CreatureFlag::BABY; -- TODO: need to add a bitmask for AI (pack, herd, etc)
 
