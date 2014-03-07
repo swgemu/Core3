@@ -836,15 +836,13 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 		//1 minute minimum listen/watch time
 		int timeElapsed = time(0) - getEntertainerBuffStartTime(creature, performanceType);
 		if(timeElapsed < 60) {
-			creature->sendSystemMessage("@performance:buff_time_failed");
+			creature->sendSystemMessage("You must listen or watch a performer for at least 1 minute in order to gain the entertainer buffs.");
 			return;
 		}
 
 		// Returns a % of base stat
 		int campModTemp = 100;
 
-		/*if (creature->isInCamp())
-			campModTemp = getCampModifier();*/
 
 		float buffStrength = getEntertainerBuffStrength(creature, performanceType) / 100.0f;
 
