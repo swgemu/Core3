@@ -4,11 +4,11 @@ includeFile("lair/lair.lua")
 
 --Sub folders
 includeFile("lair/creature_dynamic/serverobjects.lua")
+includeFile("lair/creature_lair/serverobjects.lua")
 includeFile("lair/creature_mission/serverobjects.lua")
-includeFile("lair/creature_wild_lair/serverobjects.lua")
 includeFile("lair/npc_dynamic/serverobjects.lua")
 includeFile("lair/npc_mission/serverobjects.lua")
-includeFile("lair/npc_wild_camp/serverobjects.lua")
+includeFile("lair/npc_theater/serverobjects.lua")
 
 --misc/unused
 includeFile("lair/banner_corellia.lua")
