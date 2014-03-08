@@ -43,6 +43,12 @@
 
 object_tangible_loot_loot_schematic_bubble_tank_schematic = object_tangible_loot_loot_schematic_shared_bubble_tank_schematic:new {
 
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "combat_smuggler_spice_02",	
+	targetDraftSchematic = "object/draft_schematic/furniture/furniture_bubble_tank.iff",
+	targetUseCount = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_bubble_tank_schematic, "object/tangible/loot/loot_schematic/bubble_tank_schematic.iff")
