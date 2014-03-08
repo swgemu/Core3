@@ -262,17 +262,21 @@ describe("Encounter", function()
 		describe("handleDespawnEvent", function()
 			describe("When called with a player", function()
 				local realtaskStart
+				local realFinish
 
 				setup(function()
 					realtaskStart = testEncounter.taskStart
+					realFinish = testEncounter.finish
 				end)
 
 				teardown(function()
 					testEncounter.taskStart = realtaskStart
+					testEncounter.finish = realFinish
 				end)
 
 				before_each(function()
 					testEncounter.taskStart = spy.new(function() end)
+					testEncounter.finish = spy.new(function() end)
 				end)
 
 				it("Should despawn the encounter objects.", function()
@@ -281,10 +285,24 @@ describe("Encounter", function()
 					assert.spy(SpawnMobilesMocks.despawnMobiles).was.called_with(pCreatureObject, testEncounter.taskName)
 				end)
 
-				it("Should call the taskStart function.", function()
-					testEncounter:handleDespawnEvent(pCreatureObject)
+				describe("and the encounter is finished", function()
+					before_each(function()
+						testEncounter.isEncounterFinished = spy.new(function() return true end)
+					end)
 
-					assert.spy(testEncounter.taskStart).was.called_with(testEncounter, pCreatureObject)
+					it("Should call the taskStart function.", function()
+						testEncounter:handleDespawnEvent(pCreatureObject)
+
+						assert.spy(testEncounter.finish).was.called_with(testEncounter, pCreatureObject)
+					end)
+				end)
+
+				describe("and the encounter is finished", function()
+					it("Should call the taskStart function.", function()
+						testEncounter:handleDespawnEvent(pCreatureObject)
+
+						assert.spy(testEncounter.taskStart).was.called_with(testEncounter, pCreatureObject)
+					end)
 				end)
 			end)
 		end)

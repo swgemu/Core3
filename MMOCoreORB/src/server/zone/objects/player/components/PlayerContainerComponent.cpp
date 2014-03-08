@@ -78,10 +78,15 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>( object);
 		int bladeColor = weapon->getBladeColor();
 
-		if (weapon->isJediWeapon() && bladeColor == 31){
-			errorDescription = "@jedi_spam:lightsaber_no_color";
-
-			return TransferErrorCode::PLAYERUSEMASKERROR;
+		if (weapon->isJediWeapon()){
+			if (bladeColor == 31) {
+				errorDescription = "@jedi_spam:lightsaber_no_color";
+				return TransferErrorCode::PLAYERUSEMASKERROR;
+			}
+			if (weapon->getCraftersName() != creo->getFirstName()) {
+				errorDescription = "@jedi_spam:not_your_lightsaber";
+				return TransferErrorCode::PLAYERUSEMASKERROR;
+			}
 		}
 	}
 

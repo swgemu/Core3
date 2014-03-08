@@ -54,6 +54,8 @@ function Task:start(pCreatureObject)
 		Logger:log("Starting task " .. self.taskName, LT_INFO)
 		self:setTaskStarted(pCreatureObject)
 		self:callFunctionIfNotNil(self.taskStart, pCreatureObject)
+	else
+		Logger:log("Task " .. self.taskName .. " is already started.", LT_INFO)
 	end
 end
 
@@ -64,6 +66,8 @@ function Task:finish(pCreatureObject)
 		Logger:log("Finishing task " .. self.taskName, LT_INFO)
 		self:callFunctionIfNotNil(self.taskFinish, pCreatureObject)
 		self:setTaskFinished(pCreatureObject)
+	else
+		Logger:log("Task " .. self.taskName .. " is not started.", LT_INFO)
 	end
 end
 

@@ -3,10 +3,13 @@ local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local QuestManagerMocks = require("managers.quest.mocks.quest_manager_mocks")
 local SpawnMobilesMocks = require("utils.mocks.spawn_mobiles_mocks")
 local OldManEncounterMocks = require("managers.jedi.village.mocks.old_man_encounter_mocks")
+local SithShadowIntroTheaterMocks = require("managers.jedi.village.mocks.sith_shadow_intro_theater_mocks")
 
 LOOTCREATURE = 53
 SITH_SHADOW_THREATEN_STRING = "@quest/force_sensitive/intro:military_threaten"
 SITH_SHADOW_MILITARY_TAKE_CRYSTAL = "@quest/force_sensitive/intro:military_take_crystal"
+local READ_DISK_1_STRING = "@quest/force_sensitive/intro:read_disk1"
+local READ_DISK_ERROR_STRING = "@quest/force_sensitive/intro:read_disk_error"
 
 describe("Sith Shadow Encounter", function()
 	local pCreatureObject = { "creatureObjectPointer" }
@@ -25,12 +28,15 @@ describe("Sith Shadow Encounter", function()
 	local pThreatenStringId = { "threatenPointer" }
 	local threatenStringId
 	local playerFirstName = "firstName"
+	local pDatapad = { "datapadPointer" }
+	local datapad
 
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
 		SpawnMobilesMocks.mocks.setup()
 		OldManEncounterMocks.mocks.setup()
 		QuestManagerMocks.mocks.setup()
+		SithShadowIntroTheaterMocks.mocks.setup()
 	end)
 
 	teardown(function()
@@ -38,6 +44,7 @@ describe("Sith Shadow Encounter", function()
 		SpawnMobilesMocks.mocks.teardown()
 		OldManEncounterMocks.mocks.teardown()
 		QuestManagerMocks.mocks.teardown()
+		SithShadowIntroTheaterMocks.mocks.teardown()
 	end)
 
 	before_each(function()
@@ -45,9 +52,11 @@ describe("Sith Shadow Encounter", function()
 		SpawnMobilesMocks.mocks.before_each()
 		OldManEncounterMocks.mocks.before_each()
 		QuestManagerMocks.mocks.before_each()
+		SithShadowIntroTheaterMocks.mocks.before_each()
 
 		creatureObject = {}
 		creatureObject.getFirstName = spy.new(function() return playerFirstName end)
+		creatureObject.sendSystemMessage = spy.new(function() end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObject
 
 		firstSithShadowObject = {}
@@ -63,6 +72,10 @@ describe("Sith Shadow Encounter", function()
 		threatenStringId._getObject = spy.new(function() return pThreatenStringId end)
 		threatenStringId.setTT = spy.new(function() end)
 		DirectorManagerMocks.stringIds[SITH_SHADOW_THREATEN_STRING] = threatenStringId
+
+		datapad = {}
+		datapad.destroyObjectFromWorld = spy.new(function() end)
+		DirectorManagerMocks.sceneObjects[pDatapad] = datapad
 	end)
 
 	describe("onEncounterSpawned", function()
@@ -295,6 +308,54 @@ describe("Sith Shadow Encounter", function()
 				SithShadowEncounter:onEncounterClosingIn(pCreatureObject, spawnedSithShadowList)
 
 				assert.spy(QuestManagerMocks.activateQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.LOOT_DATAPAD_1)
+			end)
+		end)
+	end)
+
+	describe("useDatapad", function()
+		describe("When called with a scene object and a player object", function()
+			it("Should check if the player object has looted a datapad.", function()
+				SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+
+				assert.spy(QuestManagerMocks.hasCompletedQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.LOOT_DATAPAD_1)
+			end)
+
+			describe("and the player has looted a datapad", function()
+				before_each(function()
+					QuestManagerMocks.hasCompletedQuest = spy.new(function() return true end)
+				end)
+
+				it("Should activate the sith shadow intro theater for the player.", function()
+					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+
+					assert.spy(SithShadowIntroTheaterMocks.start).was.called_with(SithShadowIntroTheaterMocks, pCreatureObject)
+				end)
+
+				it("Should send a system message to the player with information about the data on the disk.", function()
+					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+
+					assert.spy(creatureObject.sendSystemMessage).was.called_with(creatureObject, READ_DISK_1_STRING)
+				end)
+
+				it("Should destroy the datapad.", function()
+					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+
+					assert.spy(datapad.destroyObjectFromWorld).was.called_with(datapad)
+				end)
+			end)
+
+			describe("and the player has not looted a datapad", function()
+				it("Should not activate the sith shadow intro theater for the player.", function()
+					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+
+					assert.spy(SithShadowIntroTheaterMocks.start).was.not_called()
+				end)
+
+				it("Should send an error string to the player.", function()
+					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+
+					assert.spy(creatureObject.sendSystemMessage).was.called_with(creatureObject, READ_DISK_ERROR_STRING)
+				end)
 			end)
 		end)
 	end)
