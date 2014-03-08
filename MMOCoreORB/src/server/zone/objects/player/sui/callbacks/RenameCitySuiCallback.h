@@ -31,21 +31,48 @@ public:
 		if(cancelPressed)
 			return;
 
-		if(city == NULL || zne == NULL || server == NULL)
+		if(city == NULL || server == NULL)
+			return;
+
+		ManagedReference<Zone*> zone = this->zne.get();
+
+		if (zone == NULL)
 			return;
 
 		String cityName = args->get(0).toString();
 
 		NameManager* nameManager = NameManager::instance();
 
-		if (nameManager->isProfane(cityName) || cityName.contains("\\") || cityName.contains("#")) {
+		int result = nameManager->validateName(cityName);
+
+		switch (result) {
+		case NameManagerResult::DECLINED_PROFANE:
+		case NameManagerResult::DECLINED_DEVELOPER:
+		case NameManagerResult::DECLINED_FICT_RESERVED:
+		case NameManagerResult::DECLINED_RESERVED:
 			creature->sendSystemMessage("@player_structure:obscene"); //That name was rejected by the name filter. Try a different name.
 			return;
+			break;
+
+		case NameManagerResult::DECLINED_RACE_INAPP:
+		case NameManagerResult::DECLINED_EMPTY:
+		case NameManagerResult::DECLINED_SYNTAX:
+			creature->sendSystemMessage("@player_structure:not_valid_name"); // That is not a valid name.
+			return;
+			break;
+		case NameManagerResult::ACCEPTED:
+			break;
 		}
 
 		CityManager* cityManager = server->getCityManager();
+		PlanetManager* planetManager = zone->getPlanetManager();
+
+		if (!planetManager->validateRegionName(cityName) || !cityManager->validateCityName(cityName)) {
+			creature->sendSystemMessage("@player_structure:cityname_not_unique"); //Another city already has this name. Your city's name must be unique.
+			return;
+		}
+
 		ManagedReference<CityRegion*> cityObject = city.get();
-		ManagedReference<Zone*> zone = zne.get();
 
 		if(cityObject->getMayorID() != creature->getObjectID())
 			return;
@@ -68,13 +95,13 @@ public:
 		cityObject->setCustomRegionName(cityName);
 
 		if(cityObject->hasShuttleInstallation()) {
-			Reference<PlanetTravelPoint*> tp = zone->getPlanetManager()->getPlanetTravelPoint(oldName);
+			Reference<PlanetTravelPoint*> tp = planetManager->getPlanetTravelPoint(oldName);
 
 			if(tp != NULL) {
 				Reference<PlanetTravelPoint*> newTP = tp;
 				newTP->setPointName(cityName);
-				zone->getPlanetManager()->removePlayerCityTravelPoint(oldName);
-				zone->getPlanetManager()->addPlayerCityTravelPoint(newTP);
+				planetManager->removePlayerCityTravelPoint(oldName);
+				planetManager->addPlayerCityTravelPoint(newTP);
 			}
 		}
 		if(isRegistered)
