@@ -1,4 +1,4 @@
-lok_destroy_mission = {
+lok_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -144,4 +144,4 @@ lok_destroy_mission = {
 	}
 }
 
-addLairGroup("lok_destroy_mission", lok_destroy_mission);
+addLairGroup("lok_destroy_missions", lok_destroy_missions);

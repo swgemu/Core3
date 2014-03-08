@@ -1,4 +1,4 @@
-naboo_destroy_mission = {
+naboo_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -270,4 +270,4 @@ naboo_destroy_mission = {
 	}
 }
 
-addLairGroup("naboo_destroy_mission", naboo_destroy_mission);
+addLairGroup("naboo_destroy_missions", naboo_destroy_missions);

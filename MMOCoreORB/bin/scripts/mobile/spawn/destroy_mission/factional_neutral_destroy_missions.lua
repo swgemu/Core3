@@ -1,4 +1,4 @@
-factional_neutral = {
+factional_neutral_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -18,4 +18,4 @@ factional_neutral = {
 	}
 }
 
-addLairGroup("factional_neutral", factional_neutral);
+addLairGroup("factional_neutral_destroy_missions", factional_neutral_destroy_missions);

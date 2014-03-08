@@ -1,4 +1,4 @@
-dantooine_destroy_mission = {
+dantooine_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -126,4 +126,4 @@ dantooine_destroy_mission = {
 	}
 }
 
-addLairGroup("dantooine_destroy_mission", dantooine_destroy_mission);
+addLairGroup("dantooine_destroy_missions", dantooine_destroy_missions);

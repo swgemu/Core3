@@ -1,4 +1,4 @@
-corellia_destroy_mission = {
+corellia_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -243,4 +243,4 @@ corellia_destroy_mission = {
 	}
 }
 
-addLairGroup("corellia_destroy_mission", corellia_destroy_mission);
+addLairGroup("corellia_destroy_missions", corellia_destroy_missions);

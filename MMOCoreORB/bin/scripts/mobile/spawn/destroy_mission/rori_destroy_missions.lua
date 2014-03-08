@@ -1,4 +1,4 @@
-rori_destroy_mission = {
+rori_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -207,4 +207,4 @@ rori_destroy_mission = {
 	}
 }
 
-addLairGroup("rori_destroy_mission", rori_destroy_mission);
+addLairGroup("rori_destroy_missions", rori_destroy_missions);

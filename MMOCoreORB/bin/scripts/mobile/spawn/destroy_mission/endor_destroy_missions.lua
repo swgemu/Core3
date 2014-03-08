@@ -1,4 +1,4 @@
-endor_destroy_mission = {
+endor_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -135,4 +135,4 @@ endor_destroy_mission = {
 	}
 }
 
-addLairGroup("endor_destroy_mission", endor_destroy_mission);
+addLairGroup("endor_destroy_missions", endor_destroy_missions);

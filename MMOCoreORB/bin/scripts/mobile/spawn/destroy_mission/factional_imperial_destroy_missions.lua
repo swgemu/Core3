@@ -1,4 +1,4 @@
-factional_imperial = {
+factional_imperial_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -59,4 +59,4 @@ factional_imperial = {
 	}
 }
 
-addLairGroup("factional_imperial", factional_imperial);
+addLairGroup("factional_imperial_destroy_missions", factional_imperial_destroy_missions);

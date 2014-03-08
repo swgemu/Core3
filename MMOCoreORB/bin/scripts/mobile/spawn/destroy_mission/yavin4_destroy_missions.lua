@@ -1,4 +1,4 @@
-yavin_destroy_mission = {
+yavin4_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -153,4 +153,4 @@ yavin_destroy_mission = {
 	}
 }
 
-addLairGroup("yavin_destroy_mission", yavin_destroy_mission);
+addLairGroup("yavin4_destroy_missions", yavin4_destroy_missions);

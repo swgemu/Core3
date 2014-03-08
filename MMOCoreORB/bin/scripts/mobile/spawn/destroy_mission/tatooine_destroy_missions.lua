@@ -1,4 +1,4 @@
-tatooine_destroy_mission = {
+tatooine_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -243,4 +243,4 @@ tatooine_destroy_mission = {
 	}
 }
 
-addLairGroup("tatooine_destroy_mission", tatooine_destroy_mission);
+addLairGroup("tatooine_destroy_missions", tatooine_destroy_missions);

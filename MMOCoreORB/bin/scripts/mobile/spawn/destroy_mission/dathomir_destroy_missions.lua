@@ -1,4 +1,4 @@
-dathomir_destroy_mission = {
+dathomir_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -162,4 +162,4 @@ dathomir_destroy_mission = {
 	}
 }
 
-addLairGroup("dathomir_destroy_mission", dathomir_destroy_mission);
+addLairGroup("dathomir_destroy_missions", dathomir_destroy_missions);

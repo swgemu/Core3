@@ -1,4 +1,4 @@
-talus_destroy_mission = {
+talus_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -207,4 +207,4 @@ talus_destroy_mission = {
 	}
 }
 
-addLairGroup("talus_destroy_mission", talus_destroy_mission);
+addLairGroup("talus_destroy_missions", talus_destroy_missions);

@@ -1,4 +1,4 @@
-factional_rebel = {
+factional_rebel_destroy_missions = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -68,4 +68,4 @@ factional_rebel = {
 	}
 }
 
-addLairGroup("factional_rebel", factional_rebel);
+addLairGroup("factional_rebel_destroy_missions", factional_rebel_destroy_missions);
