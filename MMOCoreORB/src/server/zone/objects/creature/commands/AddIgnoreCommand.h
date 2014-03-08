@@ -85,6 +85,8 @@ public:
 		PlayerManager* playerManager = server->getPlayerManager();
 
 		bool validName = playerManager->existsName(nameLower);
+		validName = validName &&
+				(creature->getFirstName().toLowerCase().compareTo( nameLower ) != 0); // mantis 0004851
 
 		if (!validName) {
 			StringIdChatParameter param("cmnty", "ignore_not_found");
