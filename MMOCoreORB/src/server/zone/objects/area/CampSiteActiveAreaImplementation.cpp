@@ -79,15 +79,14 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 
 		object->registerObserver(ObserverEventType::STARTCOMBAT, campObserver);
 
-	} else {
-
-		StringIdChatParameter stringID("camp", "prose_camp_enter");
-		stringID.setTO(terminal->getDisplayedName());
-		player->sendSystemMessage(stringID);
-
-		player->sendSystemMessage("@camp:sys_camp_heal"); // While in the camp, medics and entertainers can heal your wounds.
-
 	}
+
+	StringIdChatParameter stringID("camp", "prose_camp_enter");
+	stringID.setTO(terminal->getDisplayedName());
+	player->sendSystemMessage(stringID);
+
+	player->sendSystemMessage("@camp:sys_camp_heal"); // While in the camp, medics and entertainers can heal your wounds.
+
 
 	if (object->isPlayerCreature() && !visitors.contains(object->getObjectID()))
 		visitors.add(object->getObjectID());
@@ -114,12 +113,12 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 	if (camp != NULL)
 		camp->removeTemplateSkillMods(player);
 
-	if(abandoned || object != campOwner) {
-		StringIdChatParameter stringID("camp", "prose_camp_exit");
-		stringID.setTO(terminal->getDisplayedName());
-		player->sendSystemMessage(stringID);
+	StringIdChatParameter stringID("camp", "prose_camp_exit");
+	stringID.setTO(terminal->getDisplayedName());
+	player->sendSystemMessage(stringID);
+
+	if(abandoned || object != campOwner)
 		return;
-	}
 
 	Locker locker(&taskMutex);
 
