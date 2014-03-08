@@ -2,8 +2,8 @@ local GoToTheater = require("quest.tasks.go_to_theater")
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local SpawnMobilesMocks = require("utils.mocks.spawn_mobiles_mocks")
 
-local READ_DISK_ERROR_STRING = "quest/force_sensitive/intro:read_disk_error"
-local THEATER_SUM_STRING = "quest/force_sensitive/intro:theater_sum"
+local READ_DISK_ERROR_STRING = "@quest/force_sensitive/intro:read_disk_error"
+local THEATER_SUM_STRING = "@quest/force_sensitive/intro:theater_sum"
 
 local WAYPOINT_ID_STRING = "waypointId"
 local ACTIVE_AREA_ID_STRING = "activeAreaId"
@@ -142,7 +142,7 @@ describe("GoToTheater", function()
 					it("Should spawn the mobiles at the theater.", function()
 						testGoToTheater:start(pCreatureObject)
 
-						assert.spy(SpawnMobilesMocks.spawnMobiles).was.called_with(pCreatureObject, testGoToTheater.taskName, testGoToTheater.mobileList)
+						assert.spy(SpawnMobilesMocks.spawnMobiles).was.called_with(pTheater, testGoToTheater.taskName, testGoToTheater.mobileList)
 					end)
 
 					describe("and the mobiles was spawned", function()
@@ -315,7 +315,16 @@ describe("GoToTheater", function()
 						return activeAreaId
 					end
 					if key == playerObjectId .. testGoToTheater.taskName .. THEATER_ID_STRING then
-						return activeAreaId
+						return theaterObjectId
+					end
+				end)
+
+				getSceneObject = spy.new(function(id)
+					if id == activeAreaId then
+						return pActiveArea
+					end
+					if id == theaterObjectId then
+						return pTheater
 					end
 				end)
 			end)
@@ -341,14 +350,10 @@ describe("GoToTheater", function()
 			it("Should get the active area pointer with the read id.", function()
 				testGoToTheater:taskFinish(pCreatureObject)
 
-				assert.spy(getSceneObject).was.called_with(activeAreaId)
+				assert.spy(getSceneObject).was.called(2)
 			end)
 
 			describe("and a pointer to an object was returned", function()
-				before_each(function()
-					getSceneObject = spy.new(function() return pActiveArea end)
-				end)
-
 				it("Should remove the active area from the world.", function()
 					testGoToTheater:taskFinish(pCreatureObject)
 
@@ -357,6 +362,10 @@ describe("GoToTheater", function()
 			end)
 
 			describe("and a pointer to an object was not returned", function()
+				before_each(function()
+					getSceneObject = spy.new(function() return nil end)
+				end)
+
 				it("Should not remove the active area from the world.", function()
 					testGoToTheater:taskFinish(pCreatureObject)
 
@@ -367,7 +376,7 @@ describe("GoToTheater", function()
 			it("Should despawn the mobiles.", function()
 				testGoToTheater:taskFinish(pCreatureObject)
 
-				assert.spy(SpawnMobilesMocks.despawnMobiles).was.called_with(pCreatureObject, testGoToTheater.taskName)
+				assert.spy(SpawnMobilesMocks.despawnMobiles).was.called_with(pTheater, testGoToTheater.taskName)
 			end)
 
 			it("Should read the theater id from the player.", function()
@@ -379,14 +388,10 @@ describe("GoToTheater", function()
 			it("Should get the theater pointer with the read id.", function()
 				testGoToTheater:taskFinish(pCreatureObject)
 
-				assert.spy(getSceneObject).was.called_with(activeAreaId)
+				assert.spy(getSceneObject).was.called(2)
 			end)
 
 			describe("and a pointer to an object was returned", function()
-				before_each(function()
-					getSceneObject = spy.new(function() return pTheater end)
-				end)
-
 				it("Should remove the theater from the world.", function()
 					testGoToTheater:taskFinish(pCreatureObject)
 
@@ -395,11 +400,39 @@ describe("GoToTheater", function()
 			end)
 
 			describe("and a pointer to an object was not returned", function()
+				before_each(function()
+					getSceneObject = spy.new(function() return nil end)
+				end)
+
 				it("Should not remove the theater from the world.", function()
 					testGoToTheater:taskFinish(pCreatureObject)
 
 					assert.spy(theaterObject.destroyObjectFromWorld).was.not_called()
 				end)
+			end)
+		end)
+	end)
+
+	describe("handleDespawnEvent", function()
+		describe("When called with a player object", function()
+			local realFinish
+
+			setup(function()
+				realFinish = testGoToTheater.finish
+			end)
+
+			teardown(function()
+				testGoToTheater.finish = realFinish
+			end)
+
+			before_each(function()
+				testGoToTheater.finish = spy.new(function() end)
+			end)
+
+			it("Should call finish.", function()
+				testGoToTheater:handleDespawnEvent(pCreatureObject)
+
+				assert.spy(testGoToTheater.finish).was.called_with(testGoToTheater, pCreatureObject)
 			end)
 		end)
 	end)

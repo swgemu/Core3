@@ -113,7 +113,7 @@ public:
 				if (object == NULL)
 					return GENERALERROR;
 
-				if (object->isBuildingObject() || object->isIntangibleObject())
+				if (object->isIntangibleObject())
 					return GENERALERROR;
 
 				float x = creature->getPositionX();
@@ -129,6 +129,8 @@ public:
 					parent->transferObject(object, -1);
 				else
 					creature->getZone()->transferObject(object, -1, true);
+
+				object->createChildObjects();
 
 				//object->insertToZone(creature->getZone());
 

@@ -2,6 +2,7 @@ local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local GlowingMocks = require("managers.jedi.village.mocks.glowing_mocks")
 local VillageJediManager = require("managers.jedi.village.village_jedi_manager")
 local VillageJediManagerHolocronMocks = require("managers.jedi.village.mocks.village_jedi_manager_holocron_mocks")
+local SithShadowEncounterMocks = require("managers.jedi.village.mocks.sith_shadow_encounter_mocks")
 
 describe("Village Jedi Manager", function()
 	local pCreatureObject = { "creatureObjectPointer" }
@@ -14,18 +15,21 @@ describe("Village Jedi Manager", function()
 		DirectorManagerMocks.mocks.setup()
 		GlowingMocks.mocks.setup()
 		VillageJediManagerHolocronMocks.setup()
+		SithShadowEncounterMocks.mocks.setup()
 	end)
 
 	teardown(function()
 		DirectorManagerMocks.mocks.teardown()
 		GlowingMocks.mocks.teardown()
 		VillageJediManagerHolocronMocks.teardown()
+		SithShadowEncounterMocks.mocks.teardown()
 	end)
 
 	before_each(function()
 		DirectorManagerMocks.mocks.before_each()
 		GlowingMocks.mocks.before_each()
 		VillageJediManagerHolocronMocks.before_each()
+		SithShadowEncounterMocks.mocks.before_each()
 
 		creatureObject = {}
 		creatureObject.sendSystemMessage = spy.new(function() end)
@@ -43,6 +47,14 @@ describe("Village Jedi Manager", function()
 					VillageJediManager:useItem(pSceneObject, ITEMHOLOCRON, pCreatureObject)
 
 					assert.spy(VillageJediManagerHolocron.useHolocron).was.called_with(pSceneObject, pCreatureObject)
+				end)
+			end)
+
+			describe("When called with a datapad and creature object", function()
+				it("Should call the useHolocron function in the VillageJediManagerHolocron", function()
+					VillageJediManager:useItem(pSceneObject, ITEMWAYPOINTDATAPAD, pCreatureObject)
+
+					assert.spy(SithShadowEncounterMocks.useDatapad).was.called_with(SithShadowEncounterMocks, pSceneObject, pCreatureObject)
 				end)
 			end)
 		end)
