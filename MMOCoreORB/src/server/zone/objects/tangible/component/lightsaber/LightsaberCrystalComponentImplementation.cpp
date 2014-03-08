@@ -33,15 +33,21 @@ void LightsaberCrystalComponentImplementation::loadTemplateData(SharedObjectTemp
 
 void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm, object);
+	PlayerObject* player = object->getPlayerObject();
 
-	if (owner == ""){
-		StringBuffer str;
-		str << "\\#FF6600" << "UNTUNED" ;
-		alm->insertAttribute("crystal_owner", str);
-	} else {
-		alm->insertAttribute("crystal_owner", owner);
+	if (player->getJediState() > 1 || player->isPrivileged()){	
+	
+		if (getColor() == 31){
+			if (owner == ""){
+				StringBuffer str;
+				str << "\\#FF6600" << "UNTUNED" ;
+				alm->insertAttribute("crystal_owner", str);
+			} else {
+				alm->insertAttribute("crystal_owner", owner);
+			}
+		}		
+	
 	}
-
 
 	if (getColor() != 31){
 		StringBuffer str;
@@ -49,8 +55,7 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 		alm->insertAttribute("color", str);
 	}
 
-	PlayerObject* player = object->getPlayerObject();
-	if (player->getJediState() > 1){
+	if (player->getJediState() > 1 || player->isPrivileged()){
 
 		if (getColor() == 31){
 			if (owner != ""){
