@@ -6,8 +6,8 @@ local TASK_SCREEN_PLAY_STARTED = 0xABCD
 
 local testTask = Task:new {
 	taskName = "testTask",
-	taskStart = spy.new(function() end),
-	taskFinish = spy.new(function() end)
+	taskStart = spy.new(function() return true end),
+	taskFinish = spy.new(function() return true end)
 }
 
 describe("Task", function()
@@ -57,7 +57,7 @@ describe("Task", function()
 			testTask.hasTaskStarted = spy.new(function() return false end)
 			testTask.setTaskStarted = spy.new(function() end)
 			testTask.setTaskFinished = spy.new(function() end)
-			testTask.callFunctionIfNotNil = spy.new(function() end)
+			testTask.callFunctionIfNotNil = spy.new(function() return false end)
 		end)
 
 		describe("start", function()
@@ -69,16 +69,30 @@ describe("Task", function()
 				end)
 
 				describe("and the player do not have the task started.", function()
-					it("Should set the task started on the player.", function()
-						testTask:start(pCreatureObject)
-
-						assert.spy(testTask.setTaskStarted).was.called_with(testTask, pCreatureObject)
-					end)
-
 					it("Should call the taskStart function.", function()
 						testTask:start(pCreatureObject)
 
-						assert.spy(testTask.callFunctionIfNotNil).was.called_with(testTask, testTask.taskStart, pCreatureObject)
+						assert.spy(testTask.callFunctionIfNotNil).was.called_with(testTask, testTask.taskStart, true, pCreatureObject)
+					end)
+
+					describe("and the taskStart function returns true", function()
+						before_each(function()
+							testTask.callFunctionIfNotNil = spy.new(function() return true end)
+						end)
+
+						it("Should set the task started on the player.", function()
+							testTask:start(pCreatureObject)
+
+							assert.spy(testTask.setTaskStarted).was.called_with(testTask, pCreatureObject)
+						end)
+					end)
+
+					describe("and the taskStart function returns false", function()
+						it("Should not set the task started on the player.", function()
+							testTask:start(pCreatureObject)
+
+							assert.spy(testTask.setTaskStarted).was.not_called()
+						end)
 					end)
 				end)
 
@@ -115,16 +129,30 @@ describe("Task", function()
 						testTask.hasTaskStarted = spy.new(function() return true end)
 					end)
 
-					it("Should set the task finished on the player.", function()
-						testTask:finish(pCreatureObject)
-
-						assert.spy(testTask.setTaskFinished).was.called_with(testTask, pCreatureObject)
-					end)
-
 					it("Should call the taskFinish function.", function()
 						testTask:finish(pCreatureObject)
 
-						assert.spy(testTask.callFunctionIfNotNil).was.called_with(testTask, testTask.taskFinish, pCreatureObject)
+						assert.spy(testTask.callFunctionIfNotNil).was.called_with(testTask, testTask.taskFinish, true, pCreatureObject)
+					end)
+
+					describe("and taskFinish returns true", function()
+						before_each(function()
+							testTask.callFunctionIfNotNil = spy.new(function() return true end)
+						end)
+
+						it("Should set the task finished on the player.", function()
+							testTask:finish(pCreatureObject)
+
+							assert.spy(testTask.setTaskFinished).was.called_with(testTask, pCreatureObject)
+						end)
+					end)
+
+					describe("and taskFinish returns false", function()
+						it("Should not set the task finished on the player.", function()
+							testTask:finish(pCreatureObject)
+
+							assert.spy(testTask.setTaskFinished).was.not_called()
+						end)
 					end)
 				end)
 
@@ -201,7 +229,7 @@ describe("Task", function()
 				it("Should call the function with the argument.", function()
 					local theFunction = spy.new(function() end)
 
-					testTask:callFunctionIfNotNil(theFunction, pCreatureObject)
+					testTask:callFunctionIfNotNil(theFunction, nil, pCreatureObject)
 
 					assert.spy(theFunction).was.called_with(testTask, pCreatureObject)
 				end)
@@ -210,13 +238,15 @@ describe("Task", function()
 					local returnValue = { "returnValue" }
 					local theFunction = spy.new(function() return returnValue end)
 
-					assert.same(returnValue, testTask:callFunctionIfNotNil(theFunction, pCreatureObject))
+					assert.same(returnValue, testTask:callFunctionIfNotNil(theFunction, nil, pCreatureObject))
 				end)
 			end)
 
 			describe("When called with the function equal to nil", function()
-				it("Should return nil.", function()
-					assert.is_nil(testTask:callFunctionIfNotNil(nil, pCreatureObject))
+				it("Should return the nil return value.", function()
+					local returnValue = { "returnValue" }
+
+					assert.same(returnValue, testTask:callFunctionIfNotNil(nil, returnValue, pCreatureObject))
 				end)
 			end)
 		end)

@@ -42,6 +42,7 @@ function PersistentEvent:taskStart(pCreatureObject)
 	local time = self:getTime()
 	Logger:log("Creating event with scheduled execution time in " .. time .. " for task " .. self.taskName, LT_INFO)
 	createEvent(true, time, self.handlerName, self.handlerFunction, pCreatureObject)
+	return true
 end
 
 return PersistentEvent

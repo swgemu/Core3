@@ -38,12 +38,12 @@ end
 -- An error will be issued if the function is nil.
 -- @param theFunction the function to call.
 -- @param argument the argument to use for the function.
-function Task:callFunctionIfNotNil(theFunction, ...)
+function Task:callFunctionIfNotNil(theFunction, returnIfNil, ...)
 	if theFunction ~= nil then
 		return theFunction(self, unpack(arg))
 	else
 		Logger:log("The function to call is nil in " .. Task.taskName .. ".", LT_INFO)
-		return nil
+		return returnIfNil
 	end
 end
 
@@ -52,8 +52,10 @@ end
 function Task:start(pCreatureObject)
 	if not self:hasTaskStarted(pCreatureObject) then
 		Logger:log("Starting task " .. self.taskName, LT_INFO)
-		self:setTaskStarted(pCreatureObject)
-		self:callFunctionIfNotNil(self.taskStart, pCreatureObject)
+		if self:callFunctionIfNotNil(self.taskStart, true, pCreatureObject) == true then
+			Logger:log(self.taskName .. " started.", LT_INFO)
+			self:setTaskStarted(pCreatureObject)
+		end
 	else
 		Logger:log("Task " .. self.taskName .. " is already started.", LT_INFO)
 	end
@@ -64,8 +66,10 @@ end
 function Task:finish(pCreatureObject)
 	if self:hasTaskStarted(pCreatureObject) then
 		Logger:log("Finishing task " .. self.taskName, LT_INFO)
-		self:callFunctionIfNotNil(self.taskFinish, pCreatureObject)
-		self:setTaskFinished(pCreatureObject)
+		if self:callFunctionIfNotNil(self.taskFinish, true, pCreatureObject) == true then
+			Logger:log(self.taskName .. " finished.", LT_INFO)
+			self:setTaskFinished(pCreatureObject)
+		end
 	else
 		Logger:log("Task " .. self.taskName .. " is not started.", LT_INFO)
 	end

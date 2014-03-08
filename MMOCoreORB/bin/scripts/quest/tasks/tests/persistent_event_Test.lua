@@ -4,7 +4,7 @@ local PersistentEvent = require("quest.tasks.persistent_event")
 local testPersistentEvent = PersistentEvent:new {
 	-- Task properties
 	taskName = "testPersistentEvent",
-	taskFinish = spy.new(function() end),
+	taskFinish = spy.new(function() return true end),
 	-- PersistentEvent properties
 	minimumTimeUntilEvent = 10,
 	maximumTimeUntilEvent = 10,
@@ -49,7 +49,7 @@ describe("Persistent Event", function()
 			end)
 
 			before_each(function()
-				testPersistentEvent.taskStart = spy.new(function() end)
+				testPersistentEvent.taskStart = spy.new(function() return true end)
 			end)
 
 			describe("When called with a player", function()
@@ -73,7 +73,7 @@ describe("Persistent Event", function()
 			end)
 
 			before_each(function()
-				testPersistentEvent.taskFinish = spy.new(function() end)
+				testPersistentEvent.taskFinish = spy.new(function() return true end)
 				creatureObject.getScreenPlayState = spy.new(function() return TASK_STARTED end)
 			end)
 

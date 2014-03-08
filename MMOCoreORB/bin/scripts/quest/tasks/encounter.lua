@@ -86,6 +86,7 @@ function Encounter:taskStart(pCreatureObject)
 	Logger:log("Starting spawn task in " .. self.taskName, LT_INFO)
 	self:setupSpawnAndDespawnEvents()
 	self.spawnTask:start(pCreatureObject)
+	return true
 end
 
 -- Check if the player is online.
@@ -130,7 +131,7 @@ end
 function Encounter:handleEncounterClosingIn(pCreatureObject)
 	Logger:log("Mobiles closing in in encounter " .. self.taskName .. ".", LT_INFO)
 	local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
-	self:callFunctionIfNotNil(self.onEncounterClosingIn, pCreatureObject, spawnedObjects)
+	self:callFunctionIfNotNil(self.onEncounterClosingIn, nil, pCreatureObject, spawnedObjects)
 end
 
 -- Empty handler for the handleEncounterAtPlayer event.
@@ -139,7 +140,7 @@ function Encounter:handleEncounterAtPlayer(pCreatureObject)
 	Logger:log("Mobiles at player in encounter " .. self.taskName .. ".", LT_INFO)
 	local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
 	self:setSpawnedObjectsToFollow(spawnedObjects, nil)
-	self:callFunctionIfNotNil(self.onEncounterAtPlayer, pCreatureObject, spawnedObjects)
+	self:callFunctionIfNotNil(self.onEncounterAtPlayer, nil, pCreatureObject, spawnedObjects)
 end
 
 -- Create the events for the encounter.
@@ -176,7 +177,7 @@ function Encounter:createEncounter(pCreatureObject)
 		Logger:log("Set spawned mobiles to follow in encounter " .. self.taskName .. ".", LT_INFO)
 		self:setSpawnedObjectsToFollow(spawnedObjects, pCreatureObject)
 		self:createEncounterEvents(pCreatureObject, spawnedObjects)
-		self:callFunctionIfNotNil(self.onEncounterSpawned, pCreatureObject, spawnedObjects)
+		self:callFunctionIfNotNil(self.onEncounterSpawned, nil, pCreatureObject, spawnedObjects)
 	end
 end
 
@@ -188,7 +189,7 @@ function Encounter:handleSpawnEvent(pCreatureObject)
 	self:setupSpawnAndDespawnEvents()
 	self.spawnTask:finish(pCreatureObject)
 
-	if not self:callFunctionIfNotNil(self.isEncounterFinished, pCreatureObject) then
+	if not self:callFunctionIfNotNil(self.isEncounterFinished, true, pCreatureObject) then
 		if self:isPlayerInPositionForEncounter(pCreatureObject) then
 			self:createEncounter(pCreatureObject)
 		end
@@ -209,7 +210,7 @@ function Encounter:handleDespawnEvent(pCreatureObject)
 
 	SpawnMobiles.despawnMobiles(pCreatureObject, self.taskName)
 
-	if not self:callFunctionIfNotNil(self.isEncounterFinished, pCreatureObject) then
+	if not self:callFunctionIfNotNil(self.isEncounterFinished, true, pCreatureObject) then
 		self:taskStart(pCreatureObject)
 	else
 		self:finish(pCreatureObject)
