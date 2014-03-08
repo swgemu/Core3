@@ -57,7 +57,7 @@ void ObjectControllerImplementation::finalize() {
 	queueCommands = NULL;
 }
 
-bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient) {
+bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient, bool allowOverflow) {
 	ManagedReference<SceneObject*> parent = objectToTransfer->getParent();
 
 	if (parent == NULL) {
@@ -67,7 +67,7 @@ bool ObjectControllerImplementation::transferObject(SceneObject* objectToTransfe
 
 	uint32 oldContainmentType = objectToTransfer->getContainmentType();
 
-	if (!destinationObject->transferObject(objectToTransfer, containmentType, notifyClient)) {
+	if (!destinationObject->transferObject(objectToTransfer, containmentType, notifyClient, allowOverflow)) {
 		error("could not add objectToTransfer to destinationObject in ObjectManager::transferObject");
 		parent->transferObject(objectToTransfer, oldContainmentType);
 

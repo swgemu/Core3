@@ -147,18 +147,23 @@ public:
 
 					ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
 
-					if (!objectController->transferObject(objectToRemove, parent, -1, true))
+					if (!objectController->transferObject(objectToRemove, parent, -1, true, true))
 						return GENERALERROR;
+
+					if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true)) {
+						objectController->transferObject(objectToRemove, destinationObject, transferType, true);
+						return GENERALERROR;
+					}
 				}
 			} else if (transferPreProcess != 0) {
 				if (errorDescription.length() > 1)
 					creature->sendSystemMessage(errorDescription);
 
 				return GENERALERROR;
+			} else {
+				if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
+					return GENERALERROR;
 			}
-
-			if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
-				return GENERALERROR;
 
 			if (creature == destinationObject) {
 

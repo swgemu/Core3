@@ -79,7 +79,7 @@ class ObjectController extends ManagedService implements Logger {
 	
 	public native void loadCommands();
 	
-	public native boolean transferObject(SceneObject objectToTransfer, SceneObject destinationObject, int containmentType, boolean notifyClient = false);
+	public native boolean transferObject(SceneObject objectToTransfer, SceneObject destinationObject, int containmentType, boolean notifyClient = false, boolean allowOverflow = false);
 	
 	/**
 	 * Activates a queue command from a creature object
