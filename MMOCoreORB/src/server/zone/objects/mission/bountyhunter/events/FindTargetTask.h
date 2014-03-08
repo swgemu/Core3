@@ -85,7 +85,7 @@ class FindTargetTask : public Task, public Logger {
 		if (arakyd) {
 			player->sendSystemMessage("@mission/mission_generic:probe_droid_takeoff");
 		} else {
-			player->sendSystemMessage("@mission/mission_generic:seeker_droid_launched");
+			player->sendSystemMessage("Biological scan received. Commencing planetary search pattern."); // mantis 4849
 		}
 
 		reschedule(5 * 1000);
