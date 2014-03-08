@@ -83,7 +83,6 @@ HealthShot1Command = {
 	},	
 
 	range = -1
-
 }
 
 AddCommand(HealthShot1Command)
