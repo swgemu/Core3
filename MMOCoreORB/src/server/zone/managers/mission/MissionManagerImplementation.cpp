@@ -41,7 +41,7 @@ void MissionManagerImplementation::loadLuaSettings() {
 		Lua* lua = new Lua();
 		lua->init();
 
-		lua->runFile("scripts/managers/mission_manager.lua");
+		lua->runFile("scripts/managers/mission/mission_manager.lua");
 
 		LuaObject items = lua->getGlobalObject("crafting_mission_items");
 
