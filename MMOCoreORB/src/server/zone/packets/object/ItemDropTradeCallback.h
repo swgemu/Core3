@@ -44,6 +44,10 @@ public:
 		}
 
 		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
+
+		if (targetPlayer->getPlayerObject()->isIgnoring(player->getFirstName().toLowerCase()))
+			return;
+
 		PlayerObject* ghost = player->getPlayerObject();
 
 		ManagedReference<TradeSession*> playerTradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
