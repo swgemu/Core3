@@ -7,7 +7,7 @@ global_imperial_cadet_squadleader_camp_imperial_small_theater = Lair:new {
 	buildingsHard = {"object/tangible/lair/base/objective_banner_imperial.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_imperial.iff"},
 	faction = "imperial",
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("global_imperial_cadet_squadleader_camp_imperial_small_theater", global_imperial_cadet_squadleader_camp_imperial_small_theater)

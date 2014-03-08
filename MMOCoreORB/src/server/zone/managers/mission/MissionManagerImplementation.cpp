@@ -639,6 +639,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	}
 
 	String messageDifficulty;
+	String missionType;
 
 	if (difficulty <= 20)
 		messageDifficulty = "_easy";
@@ -647,8 +648,13 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	else
 		messageDifficulty = "_hard";
 
-	mission->setMissionTitle("mission/mission_destroy_neutral" + messageDifficulty + "_creature", "m" + String::valueOf(randTexts) + "t");
-	mission->setMissionDescription("mission/mission_destroy_neutral" +  messageDifficulty + "_creature", "m" + String::valueOf(randTexts) + "d");
+	if (lairTemplateObject->getMobType() == LairTemplate::NPC)
+		missionType = "_npc";
+	else
+		missionType = "_creature";
+
+	mission->setMissionTitle("mission/mission_destroy_neutral" + messageDifficulty + missionType, "m" + String::valueOf(randTexts) + "t");
+	mission->setMissionDescription("mission/mission_destroy_neutral" +  messageDifficulty + missionType, "m" + String::valueOf(randTexts) + "d");
 
 	switch (faction) {
 		case MissionObject::FACTIONIMPERIAL:

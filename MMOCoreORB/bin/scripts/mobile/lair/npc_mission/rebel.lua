@@ -7,7 +7,7 @@ rebel = Lair:new {
 	buildingsHard = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_generator.iff"},
 	faction = "rebel",
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("rebel", rebel)

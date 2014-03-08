@@ -6,7 +6,7 @@ rori_kobola_underboss_base_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_power_node.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_power_node.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_node.iff"},
-	lairType = "npc",
+	mobType = "npc",
 }
 
 addLairTemplate("rori_kobola_underboss_base_neutral_large_theater", rori_kobola_underboss_base_neutral_large_theater)

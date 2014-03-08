@@ -7,7 +7,7 @@ tatooine_moisture_settler_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/lair_base_hovel.iff"},
 	buildingsHard = {"object/tangible/lair/base/lair_base_hovel.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/lair_base_hovel.iff"},
-	lairType = "npc",
+	mobType = "npc",
 }
 
 addLairTemplate("tatooine_moisture_settler_neutral_medium_theater", tatooine_moisture_settler_neutral_medium_theater)

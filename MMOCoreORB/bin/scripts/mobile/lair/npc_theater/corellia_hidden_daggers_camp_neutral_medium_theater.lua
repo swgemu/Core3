@@ -6,7 +6,7 @@ corellia_hidden_daggers_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_banner_corellia.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_banner_corellia.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_corellia.iff"},
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("corellia_hidden_daggers_camp_neutral_medium_theater", corellia_hidden_daggers_camp_neutral_medium_theater)

@@ -6,7 +6,7 @@ lok_canyon_corsair_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/lair_base_hovel.iff"},
 	buildingsHard = {"object/tangible/lair/base/lair_base_hovel.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/lair_base_hovel.iff"},
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("lok_canyon_corsair_camp_neutral_medium_theater", lok_canyon_corsair_camp_neutral_medium_theater)

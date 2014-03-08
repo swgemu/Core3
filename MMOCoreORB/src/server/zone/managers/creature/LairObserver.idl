@@ -100,8 +100,8 @@ class LairObserver extends Observer implements Logger {
 
 	public native int getLivingCreatureCount();
 
-	public int getLairType() {
-		return lairTemplate.getLairType();
+	public int getMobType() {
+		return lairTemplate.getMobType();
 	}
 
 	public int getSpawnNumber() {

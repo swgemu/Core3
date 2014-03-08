@@ -6,7 +6,7 @@ global_criminal_neutral_none = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_generator.iff"},
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("global_criminal_neutral_none", global_criminal_neutral_none)

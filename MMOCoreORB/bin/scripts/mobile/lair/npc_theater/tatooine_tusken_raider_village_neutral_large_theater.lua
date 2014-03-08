@@ -6,7 +6,7 @@ tatooine_tusken_raider_village_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/tusken_raider/lair_tusken_raider_npc.iff"},
 	buildingsHard = {"object/tangible/lair/tusken_raider/lair_tusken_raider_npc.iff"},
 	buildingsVeryHard = {"object/tangible/lair/tusken_raider/lair_tusken_raider_npc.iff"},
-	lairType = "npc",
+	mobType = "npc",
 }
 
 addLairTemplate("tatooine_tusken_raider_village_neutral_large_theater", tatooine_tusken_raider_village_neutral_large_theater)

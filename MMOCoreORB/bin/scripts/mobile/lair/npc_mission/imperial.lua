@@ -7,7 +7,7 @@ imperial = Lair:new {
 	buildingsHard = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_generator.iff"},
 	faction = "imperial",
-	lairType = "npc"
+	mobType = "npc"
 
 }
 

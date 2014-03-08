@@ -6,7 +6,7 @@ jabba_swooper_camp = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_banner_generic_1.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_banner_generic_1.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_generic_1.iff"},
-	lairType = "npc",
+	mobType = "npc",
 }
 
 addLairTemplate("jabba_swooper_camp", jabba_swooper_camp)

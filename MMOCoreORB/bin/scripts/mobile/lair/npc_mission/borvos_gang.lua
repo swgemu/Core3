@@ -6,7 +6,7 @@ borvos_gang = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_power_transformer.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_power_transformer.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_transformer.iff"},
-	lairType = "npc",
+	mobType = "npc",
 }
 
 addLairTemplate("borvos_gang", borvos_gang)

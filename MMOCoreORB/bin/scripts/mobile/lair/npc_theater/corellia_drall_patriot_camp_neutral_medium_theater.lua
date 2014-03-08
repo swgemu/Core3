@@ -6,7 +6,7 @@ corellia_drall_patriot_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("corellia_drall_patriot_camp_neutral_medium_theater", corellia_drall_patriot_camp_neutral_medium_theater)

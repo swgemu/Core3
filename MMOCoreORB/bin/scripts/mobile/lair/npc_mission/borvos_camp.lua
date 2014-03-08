@@ -6,7 +6,7 @@ borvos_camp = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_banner_generic_1.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_banner_generic_1.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_generic_1.iff"},
-	lairType = "npc",
+	mobType = "npc",
 }
 
 addLairTemplate("borvos_camp", borvos_camp)

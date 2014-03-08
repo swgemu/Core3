@@ -6,7 +6,7 @@ criminal_base = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_generator.iff"},
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("criminal_base", criminal_base)

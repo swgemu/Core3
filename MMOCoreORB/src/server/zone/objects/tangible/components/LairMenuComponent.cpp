@@ -33,7 +33,7 @@ void LairMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectM
 			break;
 	}
 
-	if(player->hasSkill("outdoors_scout_novice") && player->getDistanceTo(sceneObject) < 8 && lairObserver && lairObserver->getLairType() != LairTemplate::NPC) {
+	if(player->hasSkill("outdoors_scout_novice") && player->getDistanceTo(sceneObject) < 8 && lairObserver && lairObserver->getMobType() != LairTemplate::NPC) {
 		menuResponse->addRadialMenuItem(50, 3, "@lair_n:search_lair"); //Search Lair
 	}
 

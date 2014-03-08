@@ -7,7 +7,7 @@ global_stormtrooper = Lair:new {
 	buildingsHard = {"object/tangible/lair/base/objective_banner_imperial.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_imperial.iff"},
 	faction = "imperial",
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("global_stormtrooper", global_stormtrooper)

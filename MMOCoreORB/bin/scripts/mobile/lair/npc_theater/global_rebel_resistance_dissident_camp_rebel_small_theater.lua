@@ -7,7 +7,7 @@ global_rebel_resistance_dissident_camp_rebel_small_theater = Lair:new {
 	buildingsHard = {"object/tangible/lair/base/objective_banner_rebel.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_rebel.iff"},
 	faction = "rebel",
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("global_rebel_resistance_dissident_camp_rebel_small_theater", global_rebel_resistance_dissident_camp_rebel_small_theater)

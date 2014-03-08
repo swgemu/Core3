@@ -7,7 +7,7 @@ dantooine_mokk_leader_camp_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_dantari_monolith.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_dantari_monolith.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_dantari_monolith.iff"},
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("dantooine_mokk_leader_camp_neutral_large_theater", dantooine_mokk_leader_camp_neutral_large_theater)

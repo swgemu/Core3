@@ -6,7 +6,7 @@ dantooine_janta_scout_neutral_none = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_dantari_monolith.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_dantari_monolith.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_dantari_monolith.iff"},
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("dantooine_janta_scout_neutral_none", dantooine_janta_scout_neutral_none)

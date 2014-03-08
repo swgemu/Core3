@@ -18,7 +18,7 @@ namespace mobile {
 
 class LairTemplate : public Object {
 public:
-	enum LairType {CREATURE, NPC};
+	enum MobType {CREATURE, NPC};
 
 protected:
 	VectorMap<String, int> mobiles;
@@ -30,7 +30,7 @@ protected:
 
 	unsigned int faction;
 
-	LairType lairType;
+	MobType mobType;
 
 public:
 	enum { VERYEASY = 0, EASY, MEDIUM, HARD, VERYHARD};
@@ -38,8 +38,11 @@ public:
 	//      0-20 20-40 40-60 60-80 80+
 
 	LairTemplate(const String& templateName) {
+		spawnLimit = 0;
 		buildings.setAllowDuplicateInsertPlan();
 		buildings.setNullValue(NULL);
+		faction = 0;
+		mobType = CREATURE;
 
 		name = templateName;
 	}
@@ -84,20 +87,12 @@ public:
 				faction = GCWManager::IMPERIALHASH;
 			} else if (factionString == "rebel") {
 				faction = GCWManager::REBELHASH;
-			} else {
-				faction = 0;
 			}
-		} else {
-			faction = 0;
 		}
 
-		if (templateData->getStringField("lairType").length() > 0) {
-			if (templateData->getStringField("lairType") == "npc")
-				lairType = NPC;
-			else
-				lairType = CREATURE;
-		} else {
-			lairType = CREATURE;
+		if (templateData->getStringField("mobType").length() > 0) {
+			if (templateData->getStringField("mobType") == "npc")
+				mobType = NPC;
 		}
 
 		LuaObject mobs = templateData->getObjectField("mobiles");
@@ -213,8 +208,8 @@ public:
 		return faction;
 	}
 
-	LairType getLairType() {
-		return lairType;
+	MobType getMobType() {
+		return mobType;
 	}
 
 };

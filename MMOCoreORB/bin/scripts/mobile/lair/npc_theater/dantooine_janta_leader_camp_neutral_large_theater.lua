@@ -7,7 +7,7 @@ dantooine_janta_leader_camp_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("dantooine_janta_leader_camp_neutral_large_theater", dantooine_janta_leader_camp_neutral_large_theater)

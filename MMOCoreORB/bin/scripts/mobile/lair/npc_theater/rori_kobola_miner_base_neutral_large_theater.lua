@@ -6,7 +6,7 @@ rori_kobola_miner_base_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_generator.iff"},
-	lairType = "npc",
+	mobType = "npc",
 }
 
 addLairTemplate("rori_kobola_miner_base_neutral_large_theater", rori_kobola_miner_base_neutral_large_theater)

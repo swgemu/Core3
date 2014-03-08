@@ -6,7 +6,7 @@ valarian_swooper_camp = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_generator.iff"},
-	lairType = "npc",
+	mobType = "npc",
 }
 
 addLairTemplate("valarian_swooper_camp", valarian_swooper_camp)

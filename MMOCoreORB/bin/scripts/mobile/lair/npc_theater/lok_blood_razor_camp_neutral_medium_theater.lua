@@ -6,7 +6,7 @@ lok_blood_razor_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_banner_generic_1.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_banner_generic_1.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_generic_1.iff"},
-	lairType = "npc"
+	mobType = "npc"
 }
 
 addLairTemplate("lok_blood_razor_camp_neutral_medium_theater", lok_blood_razor_camp_neutral_medium_theater)

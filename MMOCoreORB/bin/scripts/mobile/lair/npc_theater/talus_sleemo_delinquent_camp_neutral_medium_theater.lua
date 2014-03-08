@@ -6,7 +6,7 @@ talus_sleemo_delinquent_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_power_transformer.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_power_transformer.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_transformer.iff"},
-	lairType = "npc",
+	mobType = "npc",
 }
 
 addLairTemplate("talus_sleemo_delinquent_camp_neutral_medium_theater", talus_sleemo_delinquent_camp_neutral_medium_theater)

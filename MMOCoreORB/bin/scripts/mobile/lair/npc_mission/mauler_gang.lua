@@ -6,7 +6,7 @@ mauler_gang = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_power_node.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_power_node.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_node.iff"},
-	lairType = "npc",
+	mobType = "npc",
 }
 
 addLairTemplate("mauler_gang", mauler_gang)
