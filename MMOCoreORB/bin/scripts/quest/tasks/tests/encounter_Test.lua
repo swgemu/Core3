@@ -119,7 +119,7 @@ describe("Encounter", function()
 			end)
 
 			before_each(function()
-				testEncounter.taskStart = spy.new(function() end)
+				testEncounter.taskStart = spy.new(function() return true end)
 			end)
 
 			describe("When called with a player", function()
@@ -143,7 +143,7 @@ describe("Encounter", function()
 			end)
 
 			before_each(function()
-				testEncounter.taskFinish = spy.new(function() end)
+				testEncounter.taskFinish = spy.new(function() return true end)
 				creatureObject.getScreenPlayState = spy.new(function() return TASK_STARTED end)
 			end)
 
@@ -275,7 +275,7 @@ describe("Encounter", function()
 				end)
 
 				before_each(function()
-					testEncounter.taskStart = spy.new(function() end)
+					testEncounter.taskStart = spy.new(function() return true end)
 					testEncounter.finish = spy.new(function() end)
 				end)
 

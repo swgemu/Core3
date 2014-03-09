@@ -69,8 +69,8 @@ function GoToTheater:taskStart(pCreatureObject)
 						if waypointId ~= nil then
 							writeData(creatureObject:getObjectID() .. self.taskName .. WAYPOINT_ID_STRING, waypointId)
 							createEvent(self.despawnTime, "handleDespawnTheater", self.taskName, pCreatureObject)
-							self:callFunctionIfNotNil(self.onSuccessfulSpawn, pCreatureObject)
-							return
+							self:callFunctionIfNotNil(self.onSuccessfulSpawn, nil, pCreatureObject)
+							return true
 						end
 					end
 				end
@@ -79,9 +79,11 @@ function GoToTheater:taskStart(pCreatureObject)
 
 		-- Something failed above, clean up and end the task.
 		Logger:log("Failed to spawn " .. self.taskName .. " theater.", LT_ERROR)
-		self:callFunctionIfNotNil(self.onFailedSpawn, pCreatureObject)
+		self:callFunctionIfNotNil(self.onFailedSpawn, nil, pCreatureObject)
 		self:finish(pCreatureObject)
 	end)
+
+	return false
 end
 
 -- Handle the task finish event.
@@ -107,6 +109,8 @@ function GoToTheater:taskFinish(pCreatureObject)
 			theater:destroyObjectFromWorld()
 		end)
 	end)
+
+	return true
 end
 
 -- Handle the despawn event.
