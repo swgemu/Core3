@@ -20,7 +20,7 @@ namespace creature {
 		int maxDifficulty;
 		int numberToSpawn;
 		int weighting;
-		int size;
+		float size;
 
 		String lairTemplateName;
 
@@ -67,7 +67,7 @@ namespace creature {
 			maxDifficulty = obj.getIntField("maxDifficulty");
 			numberToSpawn = obj.getIntField("numberToSpawn");
 			weighting = obj.getIntField("weighting");
-			size = obj.getIntField("size");
+			size = obj.getFloatField("size");
 			lairTemplateName = obj.getStringField("lairTemplateName");
 		}
 
@@ -91,7 +91,7 @@ namespace creature {
 			return weighting;
 		}
 
-		int getSize() {
+		float getSize() {
 			return size;
 		}
 

@@ -70,7 +70,7 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
 }
 
-TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, unsigned int faction) {
+TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, unsigned int faction, float size) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == NULL)
@@ -115,6 +115,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  	lairObserver->setLairTemplate(lairTmpl);
  	lairObserver->setDifficulty(difficulty);
  	lairObserver->setObserverType(ObserverType::LAIR);
+ 	lairObserver->setSize(size);
 
  	building->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);
  	building->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);

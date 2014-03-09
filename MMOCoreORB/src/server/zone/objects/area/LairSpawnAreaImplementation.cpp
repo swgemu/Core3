@@ -155,43 +155,6 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL)
 		return 5;
 
-	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
-
-	Vector3 randomPosition = getRandomPosition(object);
-
-	if (randomPosition.getX() == 0 && randomPosition.getY() == 0) {
-		return 6;
-	}
-
-	float spawnZ = zone->getHeight(randomPosition.getX(), randomPosition.getY());
-
-	randomPosition.setZ(spawnZ);
-
-	//lets check if we intersect with some object (buildings, etc..)
-	if (CollisionManager::checkSphereCollision(randomPosition, 90, zone))
-		return 7;
-
-	//dont spawn in cities
-	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
-	zone->getInRangeActiveAreas(randomPosition.getX(), randomPosition.getY(), &activeAreas, true);
-
-	for (int i = 0; i < activeAreas.size(); ++i) {
-		ActiveArea* area = activeAreas.get(i);
-
-		if (area->isRegion() || area->isMunicipalZone() || area->isNoSpawnArea())
-			return 8;
-	}
-
-	//check in range objects for no build radi
-	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY(), object)) {
-		return 9;
-	}
-
-	// Only spawn on relatively flat land
-	if (planetManager->getTerrainManager()->getHighestHeightDifference(randomPosition.getX() - 10, randomPosition.getY() - 10, randomPosition.getX() + 10, randomPosition.getY() + 10) > 10.0) {
-		return 13;
-	}
-
 	//Lets choose 3 random spawns;
 	LairSpawn* firstSpawn = lairs->get(System::random(totalSize - 1));
 	LairSpawn* secondSpawn = lairs->get(System::random(totalSize - 1));
@@ -209,6 +172,43 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 		finalSpawn = secondSpawn;
 	} else {
 		finalSpawn = thirdSpawn;
+	}
+
+	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+	Vector3 randomPosition = getRandomPosition(object);
+
+	if (randomPosition.getX() == 0 && randomPosition.getY() == 0) {
+		return 6;
+	}
+
+	float spawnZ = zone->getHeight(randomPosition.getX(), randomPosition.getY());
+
+	randomPosition.setZ(spawnZ);
+
+	//lets check if we intersect with some object (buildings, etc..)
+	if (CollisionManager::checkSphereCollision(randomPosition, 64.f + finalSpawn->getSize(), zone))
+		return 7;
+
+	//dont spawn in cities
+	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+	zone->getInRangeActiveAreas(randomPosition.getX(), randomPosition.getY(), &activeAreas, true);
+
+	for (int i = 0; i < activeAreas.size(); ++i) {
+		ActiveArea* area = activeAreas.get(i);
+
+		if (area->isRegion() || area->isMunicipalZone() || area->isNoSpawnArea())
+			return 8;
+	}
+
+	//check in range objects for no build radi
+	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY(), object, finalSpawn->getSize())) {
+		return 9;
+	}
+
+	// Only spawn on relatively flat land
+	if (planetManager->getTerrainManager()->getHighestHeightDifference(randomPosition.getX() - 10, randomPosition.getY() - 10, randomPosition.getX() + 10, randomPosition.getY() + 10) > 10.0) {
+		return 13;
 	}
 
 	int spawnLimit = finalSpawn->getSpawnLimit();
@@ -231,14 +231,7 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 
 	int difficulty = System::random(finalSpawn->getMaxDifficulty() - finalSpawn->getMinDifficulty()) + finalSpawn->getMinDifficulty();
 
-	LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairHashCode);
-
-	if (lair == NULL)
-		return 12;
-
-	unsigned int faction = lair->getFaction();
-
-	ManagedReference<SceneObject*> obj = creatureManager->spawnLair(lairHashCode, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), faction);
+	ManagedReference<SceneObject*> obj = creatureManager->spawnLair(lairHashCode, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), 0, finalSpawn->getSize());
 
 	if (obj != NULL) {
 		StringBuffer msg;

@@ -629,7 +629,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setTargetOptionalTemplate(lairTemplate);
 	mission->setRewardCredits(System::random(difficulty * 100) + (difficulty * (player->isGrouped() ? 275 : 200)));
 	mission->setMissionDifficulty(difficulty, diffDisplay);
-
+	mission->setSize(randomLairSpawn->getSize());
 	mission->setFaction(faction);
 
 	int factionPointsReward = randomLairSpawn->getMinDifficulty();
