@@ -33,6 +33,7 @@
 #include "server/zone/objects/player/sui/callbacks/StructureStatusSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/StructureSelectShopSignSuiCallback.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
 #include "server/zone/managers/gcw/GCWManager.h"
@@ -1086,6 +1087,87 @@ void StructureManager::promptPayMaintenance(StructureObject* structure,
 
 	ghost->addSuiBox(sui);
 	creature->sendMessage(sui->generateMessage());
+}
+
+void StructureManager::promptSelectShopSign(StructureObject* structure, CreatureObject* player){
+
+	if( !structure->isBuildingObject() )
+		return;
+
+	// Check that player has appropriate skill
+	if (!player->hasSkill("crafting_merchant_management_01")){
+		player->sendSystemMessage( "You lack the skill to change signs" );
+		return;
+	}
+
+	// Check building template has shop signs configured
+	Reference<SharedStructureObjectTemplate*> structureTemplate = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+	if( structureTemplate == NULL ){
+		player->sendSystemMessage( "ERROR: Unable to get structure template" );
+		return;
+	}
+
+	if( structureTemplate->getShopSignsSize() == 0 ){
+		player->sendSystemMessage( "This building does not have any signs configured" );
+		return;
+	}
+
+	SuiListBox* signBox = new SuiListBox(player, SuiWindowType::STRUCTURE_SELECT_SIGN);
+	signBox->setCallback(new StructureSelectShopSignSuiCallback(player->getZoneServer()));
+	signBox->setPromptTitle("@player_structure:changesign_title"); // "Sign Selection"
+	signBox->setPromptText("@player_structure:changesign_prompt"); // "Select the sign type that you would like to display"
+	signBox->setUsingObject(structure);
+	signBox->setCancelButton(true, "@cancel");
+
+	signBox->addMenuItem("@player_structure:shop_sign1");
+
+	if (player->hasSkill("crafting_merchant_management_02") && structureTemplate->getShopSignsSize() >= 2 )
+		signBox->addMenuItem("@player_structure:shop_sign2");
+
+	if (player->hasSkill("crafting_merchant_management_03") && structureTemplate->getShopSignsSize() >= 3)
+		signBox->addMenuItem("@player_structure:shop_sign3");
+
+	if (player->hasSkill("crafting_merchant_management_04") && structureTemplate->getShopSignsSize() >= 4)
+		signBox->addMenuItem("@player_structure:shop_sign4");
+
+	player->sendMessage(signBox->generateMessage());
+	player->getPlayerObject()->addSuiBox(signBox);
+
+}
+
+void StructureManager::setShopSign(StructureObject* structure, CreatureObject* player, String shopSign ){
+
+	if( !structure->isBuildingObject() )
+		return;
+
+	// shopSign comes in as "@player_structure:shop_signX"
+	int signNum = Integer::valueOf( shopSign.charAt( shopSign.length()-1 ) );
+
+	// Check building template has shop signs configured
+	Reference<SharedStructureObjectTemplate*> structureTemplate = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+	if( structureTemplate == NULL ){
+		player->sendSystemMessage( "ERROR: Unable to get structure template" );
+		return;
+	}
+
+	if( structureTemplate->getShopSignsSize() == 0 ){
+		player->sendSystemMessage( "This building does not have any signs configured" );
+		return;
+	}
+
+	BuildingObject* building = cast<BuildingObject*>(structure);
+	if( building == NULL )
+		return;
+
+	// Remove existing shop sign
+	building->removeSign();
+
+	// Find matching sign in the template
+	int signIdx = signNum-1;
+	if( signIdx >= 0 && signIdx < structureTemplate->getShopSignsSize() ){
+		building->addShopSign( structureTemplate->getShopSign( signIdx ) );
+	}
+
 }
 
 void StructureManager::payMaintenance(StructureObject* structure,
