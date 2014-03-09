@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_8f2b1994",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-09T02:27:32Z",
+      "side": 1,
+      "message": "player and ghost are the same thing..",
+      "revId": "7543bb6a0177f7e00a13bb16d962240d9f5d3804",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_6f18ed84",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-09T02:27:32Z",
+      "side": 1,
+      "message": "player and ghost are the same thing",
+      "revId": "7543bb6a0177f7e00a13bb16d962240d9f5d3804",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
