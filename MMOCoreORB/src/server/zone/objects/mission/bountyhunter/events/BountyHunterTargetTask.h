@@ -113,7 +113,7 @@ public:
 		if (objectiveRef->getPlayerOwner() == NULL)
 			return;
 
-		if (move) {
+		if (move && playerRef->getZone() != NULL) {
 			updatePosition(playerRef);
 		}
 
