@@ -116,4 +116,16 @@ function ObjectManager.withSceneObjectFromId(objectId, performThisFunction)
 	return ObjectManager.withSceneObject(getSceneObject(objectId), performThisFunction)
 end
 
+-- Perform the supplied function with an active area.
+-- @param pActiveArea pointer to the active area.
+-- @param performThisFunction a function that takes an active area as argument.
+-- @return whatever performThisFunction returns or nil if the pActiveArea is nil.
+function ObjectManager.withActiveArea(pActiveArea, performThisFunction)
+	if pActiveArea == nil then
+		return nil
+	end
+	local activeArea = LuaActiveArea(pActiveArea)
+	return performThisFunction(activeArea)
+end
+
 return ObjectManager
