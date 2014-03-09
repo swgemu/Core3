@@ -1473,58 +1473,68 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	if (zone == NULL)
 		return NULL;
 
-	CreatureManager* creatureManager = zone->getCreatureManager();
+	Vector<Reference<LairSpawn*> >* availableLairList;
 
-	Vector<ManagedReference<SpawnArea* > >* worldAreas;
+	if (type == MissionObject::DESTROY) {
+		String missionGroup;
 
-	if (faction == MissionObject::FACTIONNEUTRAL) {
-		if (type == MissionObject::DESTROY)
-			worldAreas = creatureManager->getNonfactionalMissionSpawnAreas();
-		else
-			worldAreas = creatureManager->getWorldSpawnAreas();
-	} else {
-		bool neutralMission = true;
+		if (faction == MissionObject::FACTIONNEUTRAL) {
+			missionGroup = zone->getZoneName() + "_destroy_missions";
+		} else {
+			bool neutralMission = true;
 
-		if (player->getFaction() != 0 && player->getFaction() == faction) {
-			ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+			if (player->getFaction() != 0 && player->getFaction() == faction) {
+				ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-			if (ghost->getFactionStatus() == FactionStatus::OVERT || ghost->getFactionStatus() == FactionStatus::COVERT) {
-				neutralMission = false;
+				if (ghost->getFactionStatus() == FactionStatus::OVERT || ghost->getFactionStatus() == FactionStatus::COVERT) {
+					neutralMission = false;
+				}
+			}
+
+			if (neutralMission) {
+				missionGroup = "factional_neutral_destroy_missions";
+			} else if (faction == MissionObject::FACTIONIMPERIAL) {
+				missionGroup = "factional_imperial_destroy_missions";
+			} else {
+				missionGroup = "factional_rebel_destroy_missions";
 			}
 		}
 
-		if (neutralMission) {
-			worldAreas = creatureManager->getFactionalNeutralMissionSpawnAreas();
-		} else if (faction == MissionObject::FACTIONIMPERIAL) {
-			worldAreas = creatureManager->getFactionalImperialMissionSpawnAreas();
-		} else {
-			worldAreas = creatureManager->getFactionalRebelMissionSpawnAreas();
+		DestroyMissionSpawnGroup* destroyMissionGroup = CreatureTemplateManager::instance()->getDestroyMissionGroup(missionGroup.hashCode());
+
+		if (destroyMissionGroup == NULL) {
+			return NULL;
 		}
+
+		availableLairList = destroyMissionGroup->getDestroyMissionList();
+
+	} else if (type == MissionObject::HUNTING) {
+		CreatureManager* creatureManager = zone->getCreatureManager();
+		Vector<ManagedReference<SpawnArea* > >* worldAreas = creatureManager->getWorldSpawnAreas();
+
+		ManagedReference<SpawnArea*> spawnArea;
+
+		if (worldAreas == NULL || worldAreas->size() == 0) {
+			return NULL;
+		}
+
+		int rand = System::random(worldAreas->size() - 1);
+
+		spawnArea = worldAreas->get(rand);
+
+		if (spawnArea == NULL || !spawnArea->isLairSpawnArea()) {
+			return NULL;
+		}
+
+		LairSpawnArea* lairSpawnArea = cast<LairSpawnArea*>(spawnArea.get());
+		LairSpawnGroup* lairSpawnGroup = lairSpawnArea->getSpawnGroup();
+
+		if (lairSpawnGroup == NULL) {
+			return NULL;
+		}
+
+		availableLairList = lairSpawnGroup->getLairList();
 	}
-
-
-	ManagedReference<SpawnArea*> spawnArea;
-
-	if (worldAreas == NULL || worldAreas->size() == 0) {
-		return NULL;
-	}
-
-	int rand = System::random(worldAreas->size() - 1);
-
-	spawnArea = worldAreas->get(rand);
-
-	if (spawnArea == NULL || !spawnArea->isLairSpawnArea()) {
-		return NULL;
-	}
-
-	LairSpawnArea* lairSpawnArea = cast<LairSpawnArea*>(spawnArea.get());
-	LairSpawnGroup* lairSpawnGroup = lairSpawnArea->getSpawnGroup();
-
-	if (lairSpawnGroup == NULL) {
-		return NULL;
-	}
-
-	Vector<Reference<LairSpawn*> >* availableLairList = lairSpawnGroup->getLairList();
 
 	if (availableLairList == NULL || availableLairList->size() == 0) {
 		return NULL;

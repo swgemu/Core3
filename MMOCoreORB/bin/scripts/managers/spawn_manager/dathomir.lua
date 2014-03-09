@@ -3,17 +3,17 @@
 -- Tier is a bit mask with the following possible values where each hexadecimal position is one possible configuration.
 -- That means that it is not possible to have both a world spawn area and imperial spawn area in the same region, but
 -- a dynamic rebel spawn area that is also a no build zone is possible.
+
 UNDEFINEDAREA       = 0x0000
 WORLDSPAWNAREA      = 0x0001
 REBELSPAWNAREA      = 0x0002
 IMPERIALSPAWNAREA   = 0x0004
 NEUTRALSPAWNAREA    = 0x0008
-NONFACTIONSPAWNAREA = 0x0010
-STATICSPAWNAREA     = 0x0100
-DYNAMICSPAWNAREA    = 0x0200
-LAIRSPAWNAREA       = 0x0400
-NOSPAWNAREA         = 0x1000
-NOBUILDZONEAREA     = 0x10000
+STATICSPAWNAREA     = 0x0010
+DYNAMICSPAWNAREA    = 0x0020
+LAIRSPAWNAREA       = 0x0040
+NOSPAWNAREA         = 0x0100
+NOBUILDZONEAREA     = 0x1000
 
 dathomir_regions = {
 	{"a_restricted_area",0,0,{1,0},UNDEFINEDAREA,1},
@@ -137,10 +137,6 @@ dathomir_regions = {
 	{"vass_meindras_6",0,0,{1,0},UNDEFINEDAREA,1},
         {"wall",7439,-3018,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"western_mountains",0,0,{1,0},UNDEFINEDAREA,1},
-	{"world_factional_imperial",0,0,{1,-1},LAIRSPAWNAREA + IMPERIALSPAWNAREA,1,"factional_imperial"},
-	{"world_factional_neutral",0,0,{1,-1},LAIRSPAWNAREA + NEUTRALSPAWNAREA,1,"factional_neutral"},
-	{"world_factional_rebel",0,0,{1,-1},LAIRSPAWNAREA + REBELSPAWNAREA,1,"factional_rebel"},
-	{"world_nonfaction_destroy_mission",0,0,{1,-1},LAIRSPAWNAREA + NONFACTIONSPAWNAREA,1,"dathomir_destroy_mission"},
 	{"world_spawner",0,0,{1,-1},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dathomir_world_creatures"},
 	{"sarlacc_spawner",-2075,3135,{1,1250},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dathomir_sarlacc_mutant"},
 	{"tarpits_spawner",645,-4890,{1,1250},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dathomir_sarlacc_mutant"},

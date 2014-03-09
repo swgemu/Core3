@@ -25,12 +25,11 @@ protected:
 	static const int REBELSPAWNAREA      = 0x00000002;
 	static const int IMPERIALSPAWNAREA   = 0x00000004;
 	static const int NEUTRALSPAWNAREA    = 0x00000008;
-	static const int NONFACTIONSPAWNAREA = 0x00000010;
-	static const int STATICSPAWNAREA     = 0x00000100;
-	static const int DYNAMICSPAWNAREA    = 0x00000200;
-	static const int LAIRSPAWNAREA       = 0x00000400;
-	static const int NOSPAWNAREA         = 0x00001000;
-	static const int NOBUILDZONEAREA     = 0x00010000;
+	static const int STATICSPAWNAREA     = 0x00000010;
+	static const int DYNAMICSPAWNAREA    = 0x00000020;
+	static const int LAIRSPAWNAREA       = 0x00000040;
+	static const int NOSPAWNAREA         = 0x00000100;
+	static const int NOBUILDZONEAREA     = 0x00001000;
 
 	ManagedReference<Zone*> zone;
 
@@ -38,13 +37,11 @@ protected:
 
 	Vector<ManagedReference<SpawnArea*> > worldSpawnAreas;
 
-	Vector<ManagedReference<SpawnArea*> > factionalNeutralMissionSpawnAreas;
+	Vector<ManagedReference<SpawnArea*> > factionalNeutralSpawnAreas;
 
-	Vector<ManagedReference<SpawnArea*> > factionalRebelMissionSpawnAreas;
+	Vector<ManagedReference<SpawnArea*> > factionalRebelSpawnAreas;
 
-	Vector<ManagedReference<SpawnArea*> > factionalImperialMissionSpawnAreas;
-
-	Vector<ManagedReference<SpawnArea*> > nonfactionalMissionSpawnAreas;
+	Vector<ManagedReference<SpawnArea*> > factionalImperialSpawnAreas;
 
 	Vector<Vector3> trainerObjects;
 
@@ -78,21 +75,18 @@ public:
 		return &worldSpawnAreas;
 	}
 
-	Vector<ManagedReference<SpawnArea*> >* getFactionalNeutralMissionSpawnAreas() {
-		return &factionalNeutralMissionSpawnAreas;
+	Vector<ManagedReference<SpawnArea*> >* getFactionalNeutralSpawnAreas() {
+		return &factionalNeutralSpawnAreas;
 	}
 
-	Vector<ManagedReference<SpawnArea*> >* getFactionalRebelMissionSpawnAreas() {
-		return &factionalRebelMissionSpawnAreas;
+	Vector<ManagedReference<SpawnArea*> >* getFactionalRebelSpawnAreas() {
+		return &factionalRebelSpawnAreas;
 	}
 
-	Vector<ManagedReference<SpawnArea*> >* getFactionalImperialMissionSpawnAreas() {
-		return &factionalImperialMissionSpawnAreas;
+	Vector<ManagedReference<SpawnArea*> >* getFactionalImperialSpawnAreas() {
+		return &factionalImperialSpawnAreas;
 	}
 
-	Vector<ManagedReference<SpawnArea*> >* getNonfactionalMissionSpawnAreas() {
-		return &nonfactionalMissionSpawnAreas;
-	}
 };
 
 
