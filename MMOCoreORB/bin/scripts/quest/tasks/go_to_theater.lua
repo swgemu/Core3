@@ -33,9 +33,43 @@ GoToTheater = Task:new {
 	waypointDescription = "",
 	mobileList = {},
 	despawnTime = 0,
+	activeAreaRadius = 0,
 	onFailedSpawn = nil,
 	onSuccessfulSpawn = nil
 }
+
+-- Setup the active area around the theater.
+-- @param pCreatureObject pointer to the creature object for whom the theater is created for.
+-- @param spawnPoint the coordinates to spawn the active area at.
+-- @return true if setup was successful, false otherwise.
+function GoToTheater:setupActiveArea(pCreatureObject, spawnPoint)
+	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		local pActiveArea = spawnSceneObject(creatureObject:getZoneName(), ACTIVE_AREA_IFF, spawnPoint[1], 0, spawnPoint[3], 0, 0)
+
+		return ObjectManager.withActiveArea(pActiveArea, function(activeArea)
+			writeData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, activeArea:getObjectID())
+			activeArea:setRadius(self.activeAreaRadius)
+			createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
+			return true
+		end) == true
+	end) == true
+end
+
+-- Handle the entered active area event.
+-- @param pActiveArea pointer to the active area that is entered.
+-- @param pCreatureObject pointer to the creature who is entering the active area.
+-- @param nothing not used.
+function GoToTheater:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothing)
+	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		local storedActiveAreaId = readData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
+		ObjectManager.withSceneObject(pActiveArea, function(activeArea)
+			if storedActiveAreaId == activeArea:getObjectID() then
+				local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
+				self:callFunctionIfNotNil(self.onEnteredActiveArea, nil, pCreatureObject, spawnedObjects)
+			end
+		end)
+	end)
+end
 
 -- Start the GoToTheater.
 -- @param pCreatureObject pointer to the creature object of the player.
@@ -55,13 +89,7 @@ function GoToTheater:taskStart(pCreatureObject)
 				local spawnedMobilesList = SpawnMobiles.spawnMobiles(pTheater, self.taskName, self.mobileList)
 
 				if spawnedMobilesList ~= nil then
-					local pActiveArea = spawnSceneObject(creatureObject:getZoneName(), ACTIVE_AREA_IFF, spawnPoint[1], 0, spawnPoint[3], 0, 0)
-
-					if pActiveArea ~= nil then
-						ObjectManager.withSceneObject(pActiveArea, function(activeArea)
-							writeData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, activeArea:getObjectID())
-						end)
-
+					if self:setupActiveArea(pCreatureObject, spawnPoint) then
 						local waypointId = ObjectManager.withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
 							return playerObject:addWaypoint(creatureObject:getZoneName(), self.waypointDescription, "", spawnPoint[1], spawnPoint[3], WAYPOINTWHITE, true, true)
 						end)
@@ -95,8 +123,7 @@ function GoToTheater:taskFinish(pCreatureObject)
 		playerObject:removeWaypoint(waypointId, true)
 
 		local activeAreaId = readData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
-		local pActiveArea = getSceneObject(activeAreaId)
-		ObjectManager.withSceneObject(pActiveArea, function(activeArea)
+		ObjectManager.withSceneObjectFromId(activeAreaId, function(activeArea)
 			activeArea:destroyObjectFromWorld()
 		end)
 

@@ -17,8 +17,10 @@ local testGoToTheater = GoToTheater:new {
 	waypointDescription = "waypointDescription",
 	mobileList = { "mobileList" },
 	despawnTime = 10,
+	activeAreaRadius = 20,
 	onFailedSpawn = nil,
-	onSuccessfulSpawn = nil
+	onSuccessfulSpawn = nil,
+	onEnteredActiveArea = nil
 }
 
 describe("GoToTheater", function()
@@ -42,6 +44,9 @@ describe("GoToTheater", function()
 	local waypointId = 1234
 	local activeArea
 	local activeAreaId = 34567890
+	local pSpawnedMobile1 = { "spawnedMobilePointer1" }
+	local pSpawnedMobile2 = { "spawnedMobilePointer2" }
+	local spawnedMobiles = { pSpawnedMobile1, pSpawnedMobile2 }
 
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
@@ -59,6 +64,7 @@ describe("GoToTheater", function()
 
 		testGoToTheater.onFailedSpawn = spy.new(function() end)
 		testGoToTheater.onSuccessfulSpawn = spy.new(function() end)
+		testGoToTheater.onEnteredActiveArea = spy.new(function() end)
 
 		creatureObject = {}
 		creatureObject.getObjectID = spy.new(function() return playerObjectId end)
@@ -84,7 +90,10 @@ describe("GoToTheater", function()
 		activeArea = {}
 		activeArea.getObjectID = spy.new(function() return activeAreaId end)
 		activeArea.destroyObjectFromWorld = spy.new(function() end)
+		activeArea.setRadius = spy.new(function() end)
 		DirectorManagerMocks.sceneObjects[pActiveArea] = activeArea
+		DirectorManagerMocks.activeAreas[pActiveArea] = activeArea
+
 	end)
 
 	describe("start", function()
@@ -146,8 +155,21 @@ describe("GoToTheater", function()
 					end)
 
 					describe("and the mobiles was spawned", function()
+						local spawnSceneObjectTimes
+
 						before_each(function()
+							spawnSceneObjectTimes = 0
+
 							SpawnMobilesMocks.spawnMobiles = spy.new(function() return spawnedMobilesList end)
+
+							spawnSceneObject = spy.new(function()
+								spawnSceneObjectTimes = spawnSceneObjectTimes + 1
+								if spawnSceneObjectTimes == 1 then
+									return pTheater
+								else
+									return pActiveArea
+								end
+							end)
 						end)
 
 						it("Should setup and active area at the spawn point.", function()
@@ -157,21 +179,11 @@ describe("GoToTheater", function()
 						end)
 
 						describe("and the active area was spawned", function()
-							local spawnSceneObjectTimes = 0
-							local writeDataTimes = 0
+							local writeDataTimes
 
 							before_each(function()
-								spawnSceneObjectTimes = 0
 								writeDataTimes = 0
 
-								spawnSceneObject = spy.new(function()
-									spawnSceneObjectTimes = spawnSceneObjectTimes + 1
-									if spawnSceneObjectTimes == 1 then
-										return pTheater
-									else
-										return pActiveArea
-									end
-								end)
 								writeData = spy.new(function(string, value)
 									writeDataTimes = writeDataTimes + 1
 									if writeDataTimes == 2 then
@@ -183,6 +195,18 @@ describe("GoToTheater", function()
 										assert.same(waypointId, value)
 									end
 								end)
+							end)
+
+							it("Should set the radius of the active area.", function()
+								testGoToTheater:start(pCreatureObject)
+
+								assert.spy(activeArea.setRadius).was.called_with(activeArea, testGoToTheater.activeAreaRadius)
+							end)
+
+							it("Should create an observer for entering the active area.", function()
+								testGoToTheater:start(pCreatureObject)
+
+								assert.spy(createObserver).was.called_with(ENTEREDAREA, testGoToTheater.taskName, "handleEnteredAreaEvent", pActiveArea)
 							end)
 
 							it("Should save the id of the active area on the player.", function()
@@ -433,6 +457,37 @@ describe("GoToTheater", function()
 				testGoToTheater:handleDespawnEvent(pCreatureObject)
 
 				assert.spy(testGoToTheater.finish).was.called_with(testGoToTheater, pCreatureObject)
+			end)
+		end)
+	end)
+
+	describe("handleEnteredAreaEvent", function()
+		describe("When called with an active area and a pointer to the player", function()
+			it("Should check if the theater is for the player", function()
+				testGoToTheater:handleEnteredAreaEvent(pActiveArea, pCreatureObject, 0)
+
+				assert.spy(readData).was.called_with(playerObjectId .. testGoToTheater.taskName .. ACTIVE_AREA_ID_STRING)
+			end)
+
+			describe("and the theater is for the player", function()
+				before_each(function()
+					readData = spy.new(function() return activeAreaId end)
+					SpawnMobilesMocks.getSpawnedMobiles = spy.new(function() return spawnedMobiles end)
+				end)
+
+				it("Should call the onEnteredActiveArea function.", function()
+					testGoToTheater:handleEnteredAreaEvent(pActiveArea, pCreatureObject, 0)
+
+					assert.spy(testGoToTheater.onEnteredActiveArea).was.called_with(testGoToTheater, pCreatureObject, spawnedMobiles)
+				end)
+			end)
+
+			describe("and the theater isn't for the player", function()
+				it("Should not call the onEnteredActiveArea function.", function()
+					testGoToTheater:handleEnteredAreaEvent(pActiveArea, pCreatureObject, 0)
+
+					assert.spy(testGoToTheater.onEnteredActiveArea).was.not_called()
+				end)
 			end)
 		end)
 	end)
