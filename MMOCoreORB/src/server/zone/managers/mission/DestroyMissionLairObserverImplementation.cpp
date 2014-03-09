@@ -85,7 +85,22 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 		if (creatureTemplate == NULL)
 			continue;
 
-		ManagedReference<CreatureObject*> creo = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
+		float tamingChance = creatureTemplate->getTame();
+
+		ManagedReference<CreatureObject*> creo = NULL;
+
+		if (tamingChance > 0) {
+			if (babiesSpawned == 0 && System::random(500) < (tamingChance * 100.0f)) {
+				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
+				babiesSpawned++;
+			} else if (System::random(500 * babiesSpawned) < (tamingChance * 100.0f)) {
+				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
+				babiesSpawned++;
+			} else
+				creo = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
+
+		} else
+			creo = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
 
 		if (creo == NULL)
 			continue;
