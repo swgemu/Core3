@@ -21,7 +21,11 @@ public:
 	void run() {
 		Locker locker(creature);
 
-		if (creature->isDizzied()) {
+		// Small chance to stand up while dizzy, about 10%?
+		int rand = System::random(100);
+		int chance = 10; // Percent.
+
+		if (creature->isDizzied() && (100 - rand <= chance)) {
 			if (creature->isRidingMount()) {
 				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
