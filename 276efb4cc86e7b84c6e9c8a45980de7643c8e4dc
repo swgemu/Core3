@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_2f6d4505",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DuelCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-09T02:22:37Z",
+      "side": 1,
+      "message": ".toLowerCase",
+      "revId": "276efb4cc86e7b84c6e9c8a45980de7643c8e4dc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_0f7289e5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/InviteCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-09T02:22:37Z",
+      "side": 1,
+      "message": "toLowerCase",
+      "revId": "276efb4cc86e7b84c6e9c8a45980de7643c8e4dc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_ef761dd8",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/ItemDropTradeCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-09T02:22:37Z",
+      "side": 1,
+      "message": "toLowerCase",
+      "revId": "276efb4cc86e7b84c6e9c8a45980de7643c8e4dc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
