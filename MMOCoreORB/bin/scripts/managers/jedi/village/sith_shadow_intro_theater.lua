@@ -14,8 +14,10 @@ SithShadowIntroTheater = GoToTheater:new {
 		{ template = "sith_shadow", minimumDistance = 12, maximumDistance = 24, referencePoint = 0 }
 	},
 	despawnTime = 2 * 60* 60* 1000, -- 2 hours
+	activeAreaRadius = 64,
 	onFailedSpawn = nil,
-	onSuccessfulSpawn = nil
+	onSuccessfulSpawn = nil,
+	onEnteredActiveArea = nil
 }
 
 return SithShadowIntroTheater
