@@ -8,12 +8,14 @@ describe("Object Manager", function()
 	local pPlayerObject = { "playerObjectPointer" }
 	local pSceneObject = { "sceneObjectPointer" }
 	local pCityRegion = { "cityRegionPointer" }
+	local pActiveArea = { "activeAreaPointer" }
 	local aiAgent = { "aiAgent" }
 	local sceneObject = { "sceneObject" }
 	local creatureObject = { "creatureObject" }
 	local playerObject = { "playerObject" }
 	local cityRegion = { "cityRegion" }
 	local pInventory = { "inventoryPointer" }
+	local activeArea = { "activeArea" }
 	local objectId = 12345
 
 	setup(function()
@@ -31,6 +33,7 @@ describe("Object Manager", function()
 		DirectorManagerMocks.sceneObjects[pSceneObject] = sceneObject
 		DirectorManagerMocks.playerObjects[pPlayerObject] = playerObject
 		DirectorManagerMocks.cityRegions[pCityRegion] = cityRegion
+		DirectorManagerMocks.activeAreas[pActiveArea] = activeArea
 
 		creatureObject.getPlayerObject = spy.new(function() return pPlayerObject end)
 		creatureObject.getSlottedObject = spy.new(function() return pInventory end)
@@ -209,6 +212,19 @@ describe("Object Manager", function()
 			it("Should return nil.", function()
 				assert.is.Nil(ObjectManager.withSceneObjectFromId(objectId, function() end))
 			end)
+		end)
+	end)
+
+	describe("withActiveAreaObject", function()
+		it("Should return nil if the scene object pointer is nil to the withSActiveAreaObject function.", function()
+			assert.is.Nil(ObjectManager.withActiveArea(nil, function(activeArea) end))
+		end)
+
+		it("Should call the supplied lambda expression with the ActiveArea when calling the withSceneObject function.", function()
+			local activeAreaArgument = nil
+
+			ObjectManager.withActiveArea(pActiveArea, function(activeArea) activeAreaArgument = activeArea end)
+			assert.same(activeAreaArgument, activeArea)
 		end)
 	end)
 end)

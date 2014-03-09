@@ -7,6 +7,7 @@ DirectorManagerMocks.creatureObjects = {}
 DirectorManagerMocks.playerObjects = {}
 DirectorManagerMocks.sceneObjects = {}
 DirectorManagerMocks.stringIds = {}
+DirectorManagerMocks.activeAreas = {}
 
 WAYPOINTWHITE = 0
 
@@ -72,6 +73,14 @@ function DirectorManagerMocks.mocks.before_each()
 			return nil
 		end
 		return DirectorManagerMocks.sceneObjects[pSceneObject]
+	end)
+
+	LuaActiveArea = spy.new(function(pActiveArea)
+		if pActiveArea == nil then
+			assert.not_nil(pActiveArea)
+			return nil
+		end
+		return DirectorManagerMocks.activeAreas[pActiveArea]
 	end)
 
 	LuaStringIdChatParameter = spy.new(function(stringId)
