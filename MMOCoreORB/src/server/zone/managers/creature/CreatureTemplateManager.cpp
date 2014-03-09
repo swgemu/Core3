@@ -37,6 +37,7 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua_register(lua->getLuaState(), "addConversationTemplate", addConversationTemplate);
 	lua_register(lua->getLuaState(), "addLairTemplate", addLairTemplate);
 	lua_register(lua->getLuaState(), "addLairGroup", addLairGroup);
+	lua_register(lua->getLuaState(), "addDestroyMissionGroup", addDestroyMissionGroup);
 	lua_register(lua->getLuaState(), "addPatrolPathTemplate", addPatrolPathTemplate);
 	lua_register(lua->getLuaState(), "addOutfitGroup", addOutfitGroup);
 
@@ -270,6 +271,22 @@ int CreatureTemplateManager::addLairTemplate(lua_State* L) {
 	templ->readObject(&obj);
 
 	CreatureTemplateManager::instance()->lairTemplates.put(crc, templ);
+
+	return 0;
+}
+
+int CreatureTemplateManager::addDestroyMissionGroup(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addDestroyMissionGroup");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String ascii = lua_tostring(L, -2);
+	uint32 crc = (uint32) ascii.hashCode();
+
+	LuaObject obj(L);
+	CreatureTemplateManager::instance()->destroyMissionGroupMap.put(crc, new DestroyMissionSpawnGroup(ascii, obj));
 
 	return 0;
 }

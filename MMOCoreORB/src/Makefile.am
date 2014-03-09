@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/creature/buffs/GallopBuff.cpp \
+core3_IDLS =	autogen/server/zone/managers/mission/DestroyMissionLairObserver.cpp \
+				autogen/server/zone/objects/creature/buffs/GallopBuff.cpp \
 				autogen/server/zone/managers/creature/PetManager.cpp \
 				autogen/server/zone/objects/creature/DroidObject.cpp \
 				autogen/server/zone/objects/tangible/deed/droid/DroidDeed.cpp \
@@ -740,6 +741,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/HuntingMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/ReconMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
+		server/zone/managers/mission/DestroyMissionLairObserverImplementation.cpp \
 		server/zone/objects/installation/components/TurretObserverImplementation.cpp \
 		server/zone/objects/mission/bountyhunter/BountyHunterDroid.cpp \
 		server/zone/templates/string/StringFile.cpp \
