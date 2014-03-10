@@ -1320,6 +1320,16 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 		return;
 	}
 
+	if (objectToTrade->getContainerObjectsSize() > 0){
+		for (int i = 0; i < objectToTrade->getContainerObjectsSize(); ++i) {
+			if (objectToTrade->getContainerObject(i)->isNoTrade()) {
+				player->sendSystemMessage("@container_error_message:container26");
+				handleAbortTradeMessage(player);
+				return;
+			}
+		}
+	}
+
 	if(objectToTrade->isControlDevice()) {
 		cast<ControlDevice*>(objectToTrade.get())->storeObject(player, true);
 	}
