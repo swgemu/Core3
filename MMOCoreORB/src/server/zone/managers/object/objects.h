@@ -86,6 +86,7 @@
 #include "server/zone/objects/tangible/pharmaceutical/RevivePack.h"
 #include "server/zone/objects/tangible/pharmaceutical/StatePack.h"
 #include "server/zone/objects/tangible/pharmaceutical/DotPack.h"
+#include "server/zone/objects/tangible/pharmaceutical/VitalityPack.h"
 #include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
