@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_725e90eb",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-10T16:15:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be objectToTrade\u0027s containerObjects that you want to check rather than it\u0027s slottedObjects?\n\nAlso, wouldn\u0027t you want to make the check recursive?",
+      "revId": "1be00d16ea82fdc53bba7f50a1d91c843fc02fd2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
