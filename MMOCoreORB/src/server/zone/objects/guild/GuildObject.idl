@@ -70,7 +70,11 @@ class GuildObject extends SceneObject {
 	protected unsigned int guildID;
 	protected string guildName;
 	protected string guildAbbrev;
-	
+
+	protected string pendingNewName;
+	protected string pendingNewAbbrev;
+	protected boolean renamePending;
+
 	@dereferenced
 	protected transient ReadWriteLock waringGuildsMutex; 
 	
@@ -98,6 +102,8 @@ class GuildObject extends SceneObject {
 		guildLeaderID = 0;
 		guildID = 0;
 		chatRoom = null;
+
+		renamePending = false;
 		
 		waringGuilds.setAllowOverwriteInsertPlan();
 		sponsoredPlayers.setNoDuplicateInsertPlan();
@@ -190,7 +196,31 @@ class GuildObject extends SceneObject {
 	public string getGuildName() {
 		return guildName;
 	}
+
+	public void setPendingNewName(final string newName) {
+		pendingNewName = newName;
+		setRenamePending(true);
+	}
 	
+	public string getPendingNewName() {
+		return pendingNewName;
+	}
+
+	public void setPendingNewAbbrev(final string newAbbrev) {
+		pendingNewAbbrev = newAbbrev;
+	}
+	
+	public string getPendingNewAbbrev() {
+		return pendingNewAbbrev;
+	}
+
+	public void setRenamePending(boolean pending) {
+		renamePending = pending;
+	}
+	public boolean isRenamePending() {
+		return renamePending;
+	}
+
 	public string getGuildKey() {
 		string guildKey = String.valueOf(guildID) + ":" + guildAbbrev;
 		return guildKey;
