@@ -644,7 +644,6 @@ tatooine_static_spawns = {
 	{"muftak",60,20.2,-0.9,5,107,1082877, "happy", ""},
 	{"nalan_cheel",60,0.54,-0.894992,-17.13,38.0011,1082880, "themepark_music_1", "Nalan Cheel"},
 	{"nassa_ei",60,-23.2909,1.29891,-10.3943,67.506,926475, "neutral", "Nassa E'i"},
-	{"nitra_vendallan",60,-2.95305,0.40827,-9.30713,12.2342,1213345, "calm", "Nitra Vendallan"},
 	{"noble",60,-3.6,0.4,-0.2,209,1028491, "npc_sitting_chair", ""},
 	{"noble",60,18.4,1.3,5.2,150,926475, "threaten", ""},
 	{"noble",60,19.5,1.3,5.2,236,926475, "angry", ""},
