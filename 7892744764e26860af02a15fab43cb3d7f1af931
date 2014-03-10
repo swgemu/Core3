@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_325808fa",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/pharmaceutical/VitalityPackImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-10T16:25:25Z",
+      "side": 1,
+      "message": "Should a player with consent be able to use a vitality pack on another player\u0027s pet? I would have thought that they\u0027d be owner only. Another player wouldn\u0027t be able to see the pet\u0027s vitality, so how could they know what strength of pack to use? Just doesn\u0027t seem like a good idea to me, but I\u0027ve no source to say one way or another.",
+      "revId": "7892744764e26860af02a15fab43cb3d7f1af931",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
