@@ -315,8 +315,7 @@ public:
 		}
 	}
 
-	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, StimPack* pharma,
-			float range) {
+	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, StimPack* pharma, float range) {
 
 		Zone* zone = creature->getZone();
 
@@ -337,7 +336,7 @@ public:
 				if (!object->isPlayerCreature() && !object->isPet())
 					continue;
 
-				if (object == areaCenter || object == creature || object->isDroidObject())
+				if (object == areaCenter /*|| object == creature*/ || object->isDroidObject())
 					continue;
 
 				if (!areaCenter->isInRange(object, range))
