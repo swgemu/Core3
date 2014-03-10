@@ -16,6 +16,24 @@
       "revId": "1be00d16ea82fdc53bba7f50a1d91c843fc02fd2",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_92ffbcaa",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-03-10T22:57:18Z",
+      "side": 1,
+      "message": "Yeah, you are correct about the method used, I\u0027ll fix and re-upload.\n\nAs for recursive, should what I wrote already just get every object inside the container and check to see if 1 of the objects is marked as \"notrade\" ?",
+      "parentUuid": "3a3291f1_725e90eb",
+      "revId": "1be00d16ea82fdc53bba7f50a1d91c843fc02fd2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
