@@ -52,7 +52,7 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 	if (guildObject->hasDisbandPermission(playerID))
 		menuResponse->addRadialMenuItemToRadialID(193, 191, 3, "@guild:menu_disband"); //Disband Guild
 
-	if (guildObject->hasNamePermission(playerID))
+	if (guildObject->hasNamePermission(playerID) || player->getPlayerObject()->isPrivileged())
 		menuResponse->addRadialMenuItemToRadialID(193, 192, 3, "@guild:menu_namechange"); //Change Guild Name
 
 	menuResponse->addRadialMenuItemToRadialID(193, 68, 3, "@guild:menu_enable_elections"); //Enable/Disable Elections
@@ -105,6 +105,9 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		break;
 	case 190:
 		guildManager->sendGuildSponsorTo(player, guildObject, _this.get());
+		break;
+	case 192:
+		guildManager->sendGuildChangeNameTo(player, guildObject, _this.get());
 		break;
 	case 195:
 		guildManager->sendAcceptLotsTo(player, _this.get());
