@@ -16,6 +16,7 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
+#include "server/zone/objects/guild/RenameGuildTask.h"
 #include "server/zone/objects/guild/UpdateWarStatusTask.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -29,6 +30,8 @@
 
 #include "server/zone/objects/guild/sui/GuildCreateNameResponseSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildCreateAbbrevResponseSuiCallback.h"
+#include "server/zone/objects/guild/sui/GuildChangeNameResponseSuiCallback.h"
+#include "server/zone/objects/guild/sui/GuildChangeAbbrevResponseSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildDisbandSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildMemberListSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildMemberOptionsSuiCallback.h"
@@ -127,7 +130,29 @@ void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, G
 	player->sendMessage(inputBox->generateMessage());
 }
 
-bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const String& guildName) {
+void GuildManagerImplementation::sendGuildChangeNameTo(CreatureObject* player, GuildObject* guild, GuildTerminal* terminal) {
+	if (!guild->hasNamePermission(player->getObjectID()) && !player->getPlayerObject()->isPrivileged()) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
+		return;
+	}
+
+	if (guild->isRenamePending()) {
+		player->sendSystemMessage("A guild rename is already pending.");
+		return;
+	}
+
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CHANGE_NAME);
+	inputBox->setCallback(new GuildChangeNameResponseSuiCallback(server, guild));
+	inputBox->setPromptTitle("@guild:namechange_name_title"); // Change Guild Name
+	inputBox->setPromptText("@guild:namechange_name_prompt"); // Enter the name to which you wish to change your guild. Guild names must be between 1 and 25 characters. Name changes take approximately 7 days to take effect.
+	inputBox->setMaxInputSize(24);
+	inputBox->setUsingObject(terminal);
+
+	player->getPlayerObject()->addSuiBox(inputBox);
+	player->sendMessage(inputBox->generateMessage());
+}
+
+bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const String& guildName, GuildObject* guild) {
 	if (guildName.length() < 1 || guildName.length() > 25) {
 		player->sendSystemMessage("@guild:create_fail_name_bad_length"); //Guild names must be 1-25 characters in length.
 		return false;
@@ -140,14 +165,16 @@ bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const
 
 	NameManager* nameManager = processor->getNameManager();
 
-	if (!nameManager->validateName(guildName, 0)) {
-		player->sendSystemMessage("@guild:create_fail_name_in_use"); //That guild name is already in use.
+	if (!nameManager->validateName(guildName)) {
+		player->sendSystemMessage("@guild:create_fail_name_not_allowed"); //That guild name is not allowed.
 		return false;
 	}
 
 	if (guildNameExists(guildName)) {
-		player->sendSystemMessage("@guild:create_fail_name_not_allowed"); //That guild name is not allowed.
-		return false;
+		if (guild == NULL || guildName != guild->getGuildName()) {
+			player->sendSystemMessage("@guild:create_fail_name_in_use"); //That guild name is already in use.
+			return false;
+		}
 	}
 
 	return true;
@@ -197,28 +224,94 @@ void GuildManagerImplementation::sendGuildCreateAbbrevTo(CreatureObject* player,
 	player->sendMessage(inputBox->generateMessage());
 }
 
-bool GuildManagerImplementation::validateGuildAbbrev(CreatureObject* player, const String& guildAbbrev) {
+void GuildManagerImplementation::sendGuildChangeAbbrevTo(CreatureObject* player, GuildObject* guild, GuildTerminal* terminal) {
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CHANGE_ABBREV);
+	inputBox->setCallback(new GuildChangeAbbrevResponseSuiCallback(server, guild));
+	inputBox->setPromptTitle("@guild:namechange_abbrev_title"); // Change Guild Abbreviation
+	inputBox->setPromptText("@guild:namechange_abbrev_prompt"); // Enter the abbreviation for your guild's new name. Guild abbreviations must be between 1 and 5 characters in length.
+	inputBox->setMaxInputSize(4);
+	inputBox->setUsingObject(terminal);
+
+	player->getPlayerObject()->addSuiBox(inputBox);
+	player->sendMessage(inputBox->generateMessage());
+}
+
+bool GuildManagerImplementation::validateGuildAbbrev(CreatureObject* player, const String& guildAbbrev, GuildObject* guild) {
 	if (guildAbbrev.length() < 1 || guildAbbrev.length() > 5) {
 		player->sendSystemMessage("@guild:create_fail_abbrev_bad_length"); //Guild abbreviations must be 1-5 characters in length.
 		return false;
 	}
 	if (guildAbbrev.contains("\\") || guildAbbrev.contains("\n") || guildAbbrev.contains("\r") || guildAbbrev.contains("#")) {
-		player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); //That guild name is not allowed sinc it contains special characters
+		player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); // That guild abbreviation is not allowed.
 		return false;
 	}
 	NameManager* nameManager = processor->getNameManager();
 
-	if (!nameManager->validateName(guildAbbrev, 0)) {
-		player->sendSystemMessage("@guild:create_fail_abbrev_in_use"); //That guild abbreviation is already in use.
-		return false;
-	}
-
-	if (guildAbbrevExists(guildAbbrev)) {
+	if (!nameManager->validateName(guildAbbrev)) {
 		player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); //That guild abbreviation is not allowed.
 		return false;
 	}
 
+	if (guildAbbrevExists(guildAbbrev)) {
+		if (guild == NULL || guildAbbrev != guild->getGuildAbbrev()) {
+			player->sendSystemMessage("@guild:create_fail_abbrev_in_use"); //That guild abbreviation is already in use.
+			return false;
+		}
+	}
+
 	return true;
+}
+
+void GuildManagerImplementation::scheduleGuildRename(CreatureObject* player, GuildObject* guild) {
+	if (!guild->isRenamePending())
+		return;
+
+	RenameGuildTask* task = new RenameGuildTask(player, server, guild);
+
+	if (player->getPlayerObject()->isPrivileged()) {
+		task->execute();
+		return;
+	}
+
+	StringIdChatParameter params("@guild:namechange_self");
+	params.setTU(guild->getPendingNewName());
+	params.setTT(guild->getPendingNewAbbrev());
+	player->sendSystemMessage(params); // You have set your guild's name and abbreviation to bechanged to '%TU' and '%TT' respectively. The change will take place in approximately 7 days, if there are no conflicts at that time.
+
+	task->schedule(3600000); // 1 hour for testing
+	//task->schedule(604800000); // 1 week
+}
+
+void GuildManagerImplementation::renameGuild(GuildObject* guild, const String& newName, const String& newAbbrev) {
+	Locker _lock(_this.get());
+
+	if (guildList.contains(guild->getGuildKey())) {
+		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
+		gildd3->startUpdate(0x04);
+		guildList.drop(guild->getGuildKey(), gildd3);
+		gildd3->close();
+
+		_lock.release();
+		//Send the delta to everyone currently online!
+		chatManager->broadcastMessage(gildd3);
+	}
+
+	guild->setGuildName(newName);
+	guild->setGuildAbbrev(newAbbrev);
+
+	Locker _locker(_this.get());
+
+	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
+	gildd3->startUpdate(0x04);
+	guildList.add(guild->getGuildKey(), guild, gildd3);
+	gildd3->close();
+
+	_locker.release();
+
+	//Send the delta to everyone currently online!
+	chatManager->broadcastMessage(gildd3);
+
+	guild->setRenamePending(false);
 }
 
 void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
@@ -1050,7 +1143,7 @@ void GuildManagerImplementation::setMemberTitle(CreatureObject* player, Creature
 
 	NameManager* nameManager = processor->getNameManager();
 
-	if (!nameManager->validateName(title, 0)) {
+	if (!nameManager->validateName(title)) {
 		player->sendSystemMessage("@guild:title_fail_not_allowed"); //That title is not allowed.
 		return;
 	}
