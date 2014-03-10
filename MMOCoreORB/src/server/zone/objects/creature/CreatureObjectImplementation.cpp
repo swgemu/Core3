@@ -508,7 +508,7 @@ void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 	}
 }
 
-void CreatureObjectImplementation::setLevel(int level) {
+void CreatureObjectImplementation::setLevel(int level, bool randomHam) {
 	if (this->level == level && level >= 0)
 		return;
 
