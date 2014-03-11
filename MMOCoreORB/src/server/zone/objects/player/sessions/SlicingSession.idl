@@ -144,7 +144,8 @@ class SlicingSession extends Facade {
 		else
 			player.sendSystemMessage("Your attempt to slice the object has failed.");
 		
-		if (tangibleObject.isContainerObject()) {		
+		if (tangibleObject.isContainerObject()) {
+			ManagedReference<Container*> container = tangibleObject.castTo<Container*>()		
 			relockEvent = new RelockLootContainerEvent(tangibleObject);
 			relockEvent.schedule(30 * 1000); // This will reactivate the 'broken' lock.
 			boolean sliced = true;

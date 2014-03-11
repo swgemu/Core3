@@ -707,14 +707,16 @@ void SlicingSessionImplementation::handleContainerSlice() {
 		if (container == NULL)
 			return;
 
-		lootManager->createLoot(container, "staticContainer");
+		//lootManager->createLoot(container, "staticContainer");
 
 		container->setSliced(true);
 		container->setLockedStatus(false);
 
-		relockEvent = new RelockLootContainerEvent(container);
-		relockEvent->schedule(3600 * 1000); // How long before Relock?? (1 Hour)
-
+		if(!container->isRelocking())
+		{
+			relockEvent = new RelockLootContainerEvent(container);
+			relockEvent->schedule(container->getLockTime()); // How long before Relock?? (1 Hour)
+		}
 	} else
 		return;
 
@@ -743,9 +745,17 @@ void SlicingSessionImplementation::handleSliceFailed() {
 
 
 	if (tangibleObject->isContainerObject()) {
-		relockEvent = new RelockLootContainerEvent(tangibleObject);
-		relockEvent->schedule(3600 * 1000); // This will reactivate the 'broken' lock. (1 Hour)
 		tangibleObject->setSliced(true);
+		ManagedReference<Container*> container = tangibleObject.castTo<Container*>();
+
+		if(!container)
+			return;
+		if(!container->isRelocking())
+		{
+			relockEvent = new RelockLootContainerEvent(tangibleObject);
+			relockEvent->schedule(container->getLockTime()); // This will reactivate the 'broken' lock. (1 Hour)
+		}
+
 	} else if (isBaseSlice()){
 
 		Zone* zone = player->getZone();
