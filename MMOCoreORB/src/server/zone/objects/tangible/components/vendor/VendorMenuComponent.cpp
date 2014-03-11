@@ -65,7 +65,7 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	} else {
 
 		menuResponse->addRadialMenuItemToRadialID(70, 71, 3, "@player_structure:vendor_status");
-		menuResponse->addRadialMenuItemToRadialID(70, 72, 3, "@player_structure:change_name");
+		//menuResponse->addRadialMenuItemToRadialID(70, 72, 3, "@player_structure:change_name");
 		menuResponse->addRadialMenuItemToRadialID(70, 73, 3, "@player_structure:pay_vendor_t");
 		menuResponse->addRadialMenuItemToRadialID(70, 74, 3, "@player_structure:withdraw_vendor_t");
 
