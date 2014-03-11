@@ -29,6 +29,8 @@ protected:
 	int cityMaintenanceBase;
 	int cityMaintenanceRate;
 
+	Vector<ChildObject> shopSigns;
+
 public:
 	SharedStructureObjectTemplate() {
 		cityRankRequired = 0;
@@ -102,6 +104,14 @@ public:
 
 	inline virtual bool isPublicStructure() {
 		return false;
+	}
+
+	inline int getShopSignsSize() {
+		return shopSigns.size();
+	}
+
+	inline ChildObject* getShopSign(int idx) {
+		return &shopSigns.get(idx);
 	}
 };
 

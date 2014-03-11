@@ -49,6 +49,14 @@ object_building_player_player_house_tatooine_medium_style_01 = object_building_p
 			{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = -4, z = 2, y = 12.55, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = 6.94, z = 0.489743, y = 7.98, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 2, containmentType = -1},
 	},
+	shopSigns = {
+			-- Order of signs here must match order of SuiListBox sent to player in StructureManager
+			{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = -4, z = 2, y = 12.55, ox = 0, oy = -1, oz = 0, ow = 0, cellid = -1, containmentType = -1},				
+			{templateFile = "object/tangible/sign/player/shop_sign_s01.iff", x = -11, z = 0.5, y = 16, ox = 0, oy = 0, oz = 0, ow =  1, cellid = -1, containmentType = -1},
+			{templateFile = "object/tangible/sign/player/shop_sign_s02.iff", x = -11, z = 0.5, y = 16, ox = 0, oy = 0, oz = 0, ow =  1, cellid = -1, containmentType = -1},
+			{templateFile = "object/tangible/sign/player/shop_sign_s03.iff", x = -11, z = 0.5, y = 16, ox = 0, oy = 0, oz = 0, ow =  1, cellid = -1, containmentType = -1},
+			{templateFile = "object/tangible/sign/player/shop_sign_s04.iff", x = -11, z = 0.5, y = 16, ox = 0, oy = 0, oz = 0, ow =  1, cellid = -1, containmentType = -1},			
+	},	
 	constructionMarker = "object/building/player/construction/construction_player_house_tatooine_medium_style_01.iff",
 	length = 5,
 	publicStructure = 0,

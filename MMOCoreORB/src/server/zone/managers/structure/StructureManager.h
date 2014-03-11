@@ -193,6 +193,20 @@ public:
 	 */
 	void promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	/**
+	 * Sends the transfer box prompting for selection of sign
+	 * @param structure The structure having a sign added
+	 * @param player The player attempting to choose sign
+	 */
+	void promptSelectSign(StructureObject* structure, CreatureObject* player);
+
+	/**
+	 * Attempts to set the requested sign on the structure and notifies the creature.
+	 * @param structure The structure to be signed.
+	 * @param creature The creature attempting to set sign.
+	 * @param signIndex index of sign in the structure template
+	 */
+	void setSign(StructureObject* structure, CreatureObject* creature, int signIndex);
 
 	/**
 	 * Attempts to pay the requested amount to the structure, and notifies the creature.
