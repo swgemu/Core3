@@ -55,6 +55,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 class Container extends TangibleObject {
 
 	protected boolean locked;
+	protected transient boolean relocking;
 
 	public Container() {
 		Logger.setLoggingName("Container");
@@ -66,6 +67,8 @@ class Container extends TangibleObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	public native void initializeTransientMembers();
 	
+	@local
+	public native void notifyLoadFromDatabase();
 	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
@@ -108,8 +111,25 @@ class Container extends TangibleObject {
 		return locked;
 	}
 
+	public boolean isRelocking() {
+		return relocking;	
+	}
+
 	public void setLockedStatus(boolean lock) {
 		locked = lock;
+	}
+
+	public void setRelockingStatus(boolean relock){
+		relocking = relock;	
+	}
+
+	public long getRelockingTime(){
+		return 60*30*1000; 	// 30 minutes 
+	}
+	
+	
+	public int getLockChance(){
+		return 15;		// 15% chance to lock	
 	}
 
 }
