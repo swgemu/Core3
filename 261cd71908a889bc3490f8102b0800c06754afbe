@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_b2c75864",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/vendor/VendorMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-11T16:53:36Z",
+      "side": 1,
+      "message": "Remove it.  Don\u0027t just comment out.",
+      "revId": "261cd71908a889bc3490f8102b0800c06754afbe",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_92c45c60",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/vendor/VendorMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-11T16:53:36Z",
+      "side": 1,
+      "message": "Remove this dead case as well.",
+      "revId": "261cd71908a889bc3490f8102b0800c06754afbe",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
