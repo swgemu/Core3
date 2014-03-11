@@ -57,8 +57,30 @@ which carries forward this exception.
 void ContainerImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 
+	relocking = false;
 	setLoggingName("Container");
 
+}
+
+
+void ContainerImplementation::notifyLoadFromDatabase()
+{
+	if (getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER)
+	{
+
+		if(System::random(100) < getLockChance()())
+		{
+			setLockedStatus(true);
+			setSliceable(true);
+			setSliced(false);
+		}
+		else
+		{
+			setLockedStatus(false);
+			setSliceable(false);
+			setSliced(false);
+		}
+	}
 }
 
 void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -110,7 +132,7 @@ void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 
 		menuResponse->addRadialMenuItem(50, 3, "@base_player:set_name"); //Set Name
 
-	if (isSliceable() && isContainerLocked() && player->hasSkill("combat_smuggler_novice"))
+	if (!isSliced() && isSliceable() && isContainerLocked() && player->hasSkill("combat_smuggler_novice"))
 		menuResponse->addRadialMenuItem(69, 3, "@slicing/slicing:slice"); // Slice
 }
 

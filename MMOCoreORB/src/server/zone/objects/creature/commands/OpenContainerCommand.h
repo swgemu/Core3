@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/Container.h"
 
+#include "server/zone/objects/tangible/RelockLootContainerEvent.h"
+
 class OpenContainerCommand : public QueueCommand {
 public:
 
@@ -88,6 +90,8 @@ public:
 		if(objectToOpen->getParent() != NULL && objectToOpen->getParent().get()->isCraftingStation())
 			return GENERALERROR;
 
+
+
 		Locker clocker(objectToOpen, creature);
 
 /*
@@ -112,10 +116,36 @@ public:
 		}
 
 */
+
+
+
+
 		if (objectToOpen->checkContainerPermission(creature, ContainerPermissions::OPEN)) {
+
+			if(objectToOpen->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
+
+				ManagedReference<Container*> container = objectToOpen.castTo<Container*>();
+				if(container == NULL)
+					return GENERALERROR;
+
+				if(container->isContainerLocked() == true) {
+					creature->sendSystemMessage("@slicing/slicing:locked");
+					return SUCCESS;
+				}
+
+
+				if(!container->isRelocking()) {
+
+					Reference<RelockLootContainerEvent *> relockEvent = new RelockLootContainerEvent(container);
+					relockEvent->schedule(container->getRelockingTime()); // How long before Relock?? (1 Hour)
+				}
+			}
+
 			objectToOpen->openContainerTo(creature);
 
 			objectToOpen->notifyObservers(ObserverEventType::OPENCONTAINER, creature);
+
+
 		} else {
 			//You do not have permission to access this container.
 			creature->sendSystemMessage("@error_message:perm_no_open");
