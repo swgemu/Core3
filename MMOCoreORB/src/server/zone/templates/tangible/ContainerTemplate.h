@@ -27,6 +27,10 @@ public:
 
 		lock = templateData->getByteField("locked");
 
+		if(lock == true)
+		{
+			System::out << "Locked == true " << this->getDetailedDescription() << endl;
+		}
     }
 
 	inline bool getLocked() const {
