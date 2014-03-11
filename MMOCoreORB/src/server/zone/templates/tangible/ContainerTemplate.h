@@ -10,7 +10,7 @@
 
 #include "../SharedTangibleObjectTemplate.h"
 
-class ContainerTemplate : public SharedTangibleObjectTemplate {
+class ContainerTemplate: public SharedTangibleObjectTemplate {
 	bool lock;
 
 public:
@@ -27,7 +27,7 @@ public:
 
 		lock = templateData->getByteField("locked");
 
-    }
+	}
 
 	inline bool getLocked() const {
 		return lock;

@@ -26,8 +26,10 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 		bool hasSkill = true;
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-		if ((gameObjectType == SceneObjectType::PLAYERLOOTCRATE || sceneObject->isContainerObject()) && !player->hasSkill("combat_smuggler_novice"))
+		if ((gameObjectType == SceneObjectType::PLAYERLOOTCRATE) && !player->hasSkill("combat_smuggler_novice"))
 			hasSkill = false;
+		else if( sceneObject->isContainerObject())
+			hasSkill = false; // Let container handle our menu items
 		else if (sceneObject->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
 			hasSkill = false;
 		else if (sceneObject->isWeaponObject() && (!inventory->hasObjectInContainer(sceneObject->getObjectID()) || !player->hasSkill("combat_smuggler_slicing_02")))
