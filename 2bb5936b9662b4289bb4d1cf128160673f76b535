@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_3299286f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/recruiters/recruiters.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-12T15:34:05Z",
+      "side": 1,
+      "message": "The commit message made it sound like you\u0027d be putting the check here as well.",
+      "revId": "2bb5936b9662b4289bb4d1cf128160673f76b535",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
