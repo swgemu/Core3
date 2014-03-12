@@ -16,6 +16,24 @@
       "revId": "3da03f79a3b741b84b83445d070a69ad5396836e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_12ececc6",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-03-12T21:40:49Z",
+      "side": 1,
+      "message": "OK, yeah that makes sense. In case someone is trying to trade it within other nested items, like bookcases, I was only considering main containers since they cannot be nested. I\u0027ll work on the new method",
+      "parentUuid": "3a3291f1_32b008dd",
+      "revId": "3da03f79a3b741b84b83445d070a69ad5396836e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
