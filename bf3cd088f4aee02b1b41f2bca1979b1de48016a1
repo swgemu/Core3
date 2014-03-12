@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_f2a28099",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DizzyFallDownEvent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-12T15:39:14Z",
+      "side": 1,
+      "message": "Is there a particular reason you chose 10% as the chance?",
+      "revId": "bf3cd088f4aee02b1b41f2bca1979b1de48016a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
