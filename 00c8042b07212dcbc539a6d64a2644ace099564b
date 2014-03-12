@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_72b690de",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/pharmaceutical/VitalityPackImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-12T16:41:35Z",
+      "side": 1,
+      "message": "I don\u0027t think this formula really works given what the guide says (though I wish we had access to his raw data).\n\nI might have done something more like the following:\n\nint vitalityLost \u003d controlDevice-\u003egetMaxVitality() - controlDevice-\u003egetVitality();\n\nint vitalityLoss \u003d 1;\n\nif (effectiveness \u003c 45)\n      vitalityLoss +\u003d (vitalityLost / 8) + (vitalityLost / 12);\n} else if (effectiveness \u003c 75) {\n      vitalityLoss +\u003d (vitalityLost / 18) + (vitalityLost / 27);\n} else {\n      vitalityLoss +\u003d (vitalityLost / 28) + (vitalityLost / 42);\n}\n\nvitalityLoss *\u003d ((vitalityLost - 1) / effectiveness) + 1;\n\nIt\u0027s certainly more complicated and could use further refinement, but I think this would capture the gist of what the guide says, especially the ranges given and what the author says in the following:\n\n\"Q: What should I do if my pet loses a LOT of vitality (30+)?\n\nA: My suggestion would be to get the highest vitality pack you can find. Once you go beyond the ideal range for vitality packs, the permanent loss scales upward in a nonlinear fashion, and can get very large if you exceed the power of the vitpack. See the raw data for more info.\"",
+      "revId": "00c8042b07212dcbc539a6d64a2644ace099564b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
