@@ -44,86 +44,53 @@ which carries forward this exception.
 
 package server.zone.objects.tangible.pharmaceutical;
 
-import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.Zone;
-import engine.lua.LuaObject;
+import server.zone.objects.tangible.pharmaceutical.PharmaceuticalObject;
+import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.scene.AttributeListMessage;
-import server.zone.packets.object.ObjectMenuResponse;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.ZoneServer;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
-class PharmaceuticalObject extends TangibleObject {
-	protected int medicineUseRequired;
+
+class VitalityPack extends PharmaceuticalObject {
+	protected int effectiveness;
 	
-	public PharmaceuticalObject() {
-		setLoggingName("PharmaceuticalObject");
-		
-		medicineUseRequired = 0;
+	public VitalityPack() {
+		setLoggingName("VitalityPack");		
+		effectiveness = 0;
 	}
 	
-	public int getMedicineUseRequired() {
-		return medicineUseRequired;
+	@local
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
+		effectiveness = values.getCurrentValue("strength");
+		setUseCount(1);
 	}
 	
-	public abstract float getRange(CreatureObject creature = null) {
-		return 5;
+	public int getEffectiveness() {
+		return effectiveness;
 	}
 	
-	public abstract boolean isArea() {
-		return false;
-	}
-	
-	public abstract float getArea() {
-		return 0;
-	}
-	
-	public boolean isPharmaceuticalObject() {
+	public boolean isVitalityPack() {
 		return true;
 	}
 	
-	public abstract boolean isStimPack() {
-		return false;
-	}
-
-	public abstract boolean isPetStimPack() {
-		return false;
-	}
-
-	public abstract boolean isDroidRepairKit() {
-		return false;
-	}
-
-	public abstract boolean isRangedStimPack() {
-		return false;
-	}
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	@local
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
-	public abstract boolean isEnhancePack() {
-		return false;
-	}
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
-	public abstract boolean isWoundPack() {
-		return false;
-	}
-
-	public abstract boolean isDroidReconstructionKit() {
-		return false;
-	}
-
-	public abstract boolean isCurePack() {
-		return false;
-	}
-	
-	public abstract boolean isStatePack() {
-		return false;
-	}
-	
-	public abstract boolean isRevivePack() {
-		return false;
-	}
-	
-	public abstract boolean isVitalityPack() {
-		return false;
-	}	
 }
