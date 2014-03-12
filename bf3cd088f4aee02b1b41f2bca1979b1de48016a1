@@ -16,6 +16,24 @@
       "revId": "bf3cd088f4aee02b1b41f2bca1979b1de48016a1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_52e274d6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DizzyFallDownEvent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-03-12T21:38:17Z",
+      "side": 1,
+      "message": "No real reason, I think the chance should be between 10-20% based off the evidence in the mantis ticket, so it can be changed to whatever amount seems appropriate after further testing.",
+      "parentUuid": "3a3291f1_f2a28099",
+      "revId": "bf3cd088f4aee02b1b41f2bca1979b1de48016a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
