@@ -16,6 +16,24 @@
       "revId": "00c8042b07212dcbc539a6d64a2644ace099564b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_d2cd445f",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/pharmaceutical/VitalityPackImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-12T22:59:11Z",
+      "side": 1,
+      "message": "Can you code that on the Vitality Packs tab of the checklist so that QA can compare it side-by-side with this patch\u0027s forumla?\n\nhttps://docs.google.com/spreadsheet/ccc?key\u003d0AgjBDOFpOsM5dF9uNnowRVlvQ2VCdVBDd1g0RGJ2X2c\u0026usp\u003ddrive_web#gid\u003d16",
+      "parentUuid": "3a3291f1_72b690de",
+      "revId": "00c8042b07212dcbc539a6d64a2644ace099564b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
