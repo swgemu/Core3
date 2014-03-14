@@ -24,13 +24,13 @@ lareen_dantara = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_noble_old_human_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "lareen_dantara_mission_giver_convotemplate",
 	attacks = {
 	}
 }

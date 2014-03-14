@@ -194,6 +194,7 @@ createMissionGiverConvoTemplate("nitra_vendallan_mission_giver_convotemplate", "
 
 -- Naboo
 createMissionGiverConvoTemplate("gavyn_sykes_mission_giver_convotemplate", "gavyn_sykes_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("lareen_dantara_mission_giver_convotemplate", "lareen_dantara_mission_giver_conv_handler")
 
 -- Dantooine
 createMissionGiverConvoTemplate("drakka_judarrl_mission_giver_convotemplate", "drakka_judarrl_mission_giver_conv_handler")
