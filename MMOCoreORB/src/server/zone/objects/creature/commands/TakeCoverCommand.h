@@ -95,6 +95,9 @@ public:
 		}
 
 		creature->setCoverState();
+		
+		if (creature->isDizzied())
+			creature->queueDizzyFallEvent();				
 
 		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, false);
 
