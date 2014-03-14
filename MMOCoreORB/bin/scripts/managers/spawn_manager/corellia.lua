@@ -341,7 +341,7 @@ corellia_static_spawns = {
 	{"corsec_rogue",60,-5059.06,21,-2399.08,180.005,0, "conversation", ""},
 	{"corsec_rogue",60,7.8197,1.00001,-7.0104,0,3075366, "conversation", ""},
 	{"corsec_sergeant",60,24.3471,1.28309,8.93357,360.011,1855549, "conversation", ""},
-	{"corsec_sergeant",60,-5410.17,20.9418,-2789.21,215.169,0, "calm", ""},
+	{"corsec_sergeant",60,-5410.17,20.9418,-2789.21,215.169,0, "", ""},
 	{"corsec_sergeant",60,29.3506,13.25,10.8359,180.011,1935841, "conversation", ""},
 	{"corsec_sergeant",60,3154.04,300,5172.07,0,0, "conversation", ""},
 	{"corsec_sergeant",60,-3.23192,0.184067,-4.20004,180.012,4345354, "conversation", ""},

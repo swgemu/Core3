@@ -1,7 +1,6 @@
 bartender = Creature:new {
-	objectName = "",
-	generateRandomName =true,
-	customName = "Bartender",
+	objectName = "@aprilfools:bartender_name",
+	generateRandomName = true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

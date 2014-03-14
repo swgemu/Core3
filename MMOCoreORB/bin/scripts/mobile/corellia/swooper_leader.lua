@@ -21,8 +21,8 @@ swooper_leader = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
-	creatureBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

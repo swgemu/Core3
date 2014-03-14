@@ -82,7 +82,7 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	--Guild Hall -5417 -2723
 	spawnMobile("corellia", "miner", 60,3.29,1.13306,-9.58,249.007,1935454)
 	spawnMobile("corellia", "trainer_artisan", 0,0,1.13306,-14,0,1935454)
-	spawnMobile("corellia", "coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,1935453)
+	--spawnMobile("corellia", "coa3_information_rebel", 60,14.1936,1.13306,-8.97227,335.228,1935453)
 
 	--Guild Hall -5463 -2722
 	--spawnMobile("corellia", "coa3_tactical_rebel", 60,9.53575,1.13306,0.330446,310.824,1935441)
