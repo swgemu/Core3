@@ -65,7 +65,7 @@ object_draft_schematic_space_engine_eng_mk1 = object_draft_schematic_space_engin
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"engine_housing", "engine_core", "engine_upgrade", "fuel_mixing_chamber", "engine_nozzles"},
    ingredientSlotType = {0, 0, 3, 0, 0},
-   resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/engine/shared_eng_mk1.iff", "iron", "aluminum"},
+   resourceTypes = {"steel", "radioactive", "object/tangible/ship/crafted/engine/shared_base_engine_subcomponent_mk1.iff", "iron", "aluminum"},
    resourceQuantities = {50, 50, 1, 50, 50},
    contribution = {100, 100, 100, 100, 100},
 
