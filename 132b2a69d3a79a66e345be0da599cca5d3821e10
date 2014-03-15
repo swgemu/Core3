@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_f253a06a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CurePackCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-15T19:00:44Z",
+      "side": 1,
+      "message": "Just remove this check rather than commenting.",
+      "revId": "132b2a69d3a79a66e345be0da599cca5d3821e10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_d250a460",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealDamageCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-15T19:00:44Z",
+      "side": 1,
+      "message": "Just remove this check rather than commenting.",
+      "revId": "132b2a69d3a79a66e345be0da599cca5d3821e10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
