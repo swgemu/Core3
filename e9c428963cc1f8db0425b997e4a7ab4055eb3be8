@@ -16,6 +16,24 @@
       "revId": "e9c428963cc1f8db0425b997e4a7ab4055eb3be8",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_12d62cc6",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-15T19:58:58Z",
+      "side": 1,
+      "message": "That sounds like a good idea.  I\u0027ll make the change.",
+      "parentUuid": "3a3291f1_924a1cab",
+      "revId": "e9c428963cc1f8db0425b997e4a7ab4055eb3be8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
