@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_924a1cab",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-15T19:24:24Z",
+      "side": 1,
+      "message": "I\u0027m wondering if it\u0027d be better to merge removeSign() into addSign() and just call it changeSign() or something similar. Then you\u0027d be able to find and remove from world the original sign but keep a pointer to the object. If adding the new sign fails for any reason (typo in template name, etc.), you can send an error message and restore the original sign so the building won\u0027t be left without a sign.\n\nJust a thought. Let me know what you think.",
+      "revId": "e9c428963cc1f8db0425b997e4a7ab4055eb3be8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
