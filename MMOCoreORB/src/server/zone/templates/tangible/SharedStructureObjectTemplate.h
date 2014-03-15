@@ -29,6 +29,7 @@ protected:
 	int cityMaintenanceBase;
 	int cityMaintenanceRate;
 
+
 public:
 	SharedStructureObjectTemplate() {
 		cityRankRequired = 0;
@@ -103,6 +104,7 @@ public:
 	inline virtual bool isPublicStructure() {
 		return false;
 	}
+
 };
 
 #endif /* SHAREDSTRUCTUREOBJECTTEMPLATE_H_ */

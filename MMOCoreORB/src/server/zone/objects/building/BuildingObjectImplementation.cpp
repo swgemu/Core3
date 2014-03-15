@@ -1414,3 +1414,77 @@ void BuildingObjectImplementation::destroyChildObjects() {
 		child->destroyObjectFromDatabase(true);
 	}
 }
+
+void BuildingObjectImplementation::changeSign( SignTemplate* signConfig ){
+
+	if (signConfig == NULL)
+		return;
+
+	if (getZone() == NULL)
+		return;
+
+	ZoneServer* zoneServer = getZone()->getZoneServer();
+
+	ManagedReference<SceneObject*> signSceno = zoneServer->createObject(signConfig->getTemplateFile().hashCode(), 1);
+	if (signSceno == NULL || !signSceno->isSignObject() )
+		return;
+
+	ManagedReference<SignObject*> signObject = signSceno.castTo<SignObject*>();
+	if( signObject == NULL )
+		return;
+
+	Vector3 signPosition = signConfig->getPosition();
+	childObjects.put(signSceno);
+	signObject->initializePosition(signPosition.getX(), signPosition.getZ(), signPosition.getY());
+	signObject->setDirection(signConfig->getDirection());
+
+	//Create the object outdoors in relation to parent structure.
+	Vector3 position = getPosition();
+
+	float angle = direction.getRadians();
+
+	float x = (Math::cos(angle) * signPosition.getX()) + (signPosition.getY() * Math::sin(angle));
+	float y = (Math::cos(angle) * signPosition.getY()) - (signPosition.getX() * Math::sin(angle));
+
+	x += position.getX();
+	y += position.getY();
+
+	float z = position.getZ() + signPosition.getZ();
+
+	float degrees = direction.getDegrees();
+
+	Quaternion dir = signConfig->getDirection();
+
+	signObject->initializePosition(x, z, y);
+	signObject->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
+
+	getZone()->transferObject(signObject, -1, false);
+
+	// Set sign permissions
+	ContainerPermissions* permissions = signSceno->getContainerPermissions();
+	permissions->setOwner(getObjectID());
+	permissions->setInheritPermissionsFromParent(false);
+	permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+	permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
+
+	// Remove old sign (but save its name)
+	UnicodeString signName = "@sign_name:sign";
+	SignObject* oldSign = getSignObject();
+	if( oldSign != NULL ){
+		signName = oldSign->getCustomObjectName();
+
+		Locker clock( oldSign, _this.get() );
+		if( childObjects.contains(oldSign) ){
+			childObjects.removeElement(oldSign);
+		}
+		oldSign->destroyObjectFromWorld(true);
+		oldSign->destroyObjectFromDatabase(true);
+
+	}
+
+	// Finish initializing new sign
+	signObject->initializeChildObject(_this.get());  // should call BuildingObject::setSignObject
+
+	// Set to old sign name
+	setCustomObjectName( signName, true );
+}
