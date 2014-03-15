@@ -46,12 +46,13 @@ which carries forward this exception.
 #define HEALALLSELF2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "ForceHealQueueCommand.h"
 
-class HealAllSelf2Command : public QueueCommand {
+class HealAllSelf2Command : public ForceHealQueueCommand {
 public:
 
 	HealAllSelf2Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: ForceHealQueueCommand(name, server) {
 
 	}
 
@@ -76,6 +77,10 @@ public:
 			return NOJEDIARMOR;
 		}
 
+		if (isWarcried(creature)) {
+			return GENERALERROR;
+		}
+
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
 
@@ -91,7 +96,7 @@ public:
 				return GENERALERROR;
 
 
-		int forceCost = 0;
+		int forceCostDeducted = forceCost;
 
 		// Lets see how much healing they are doing.
 
@@ -100,7 +105,7 @@ public:
 		uint32 mindHealed = creature->healDamage(creature, CreatureAttribute::MIND, 1500);
 
 			
-		forceCost = MIN(((healthHealed + actionHealed + mindHealed) / 9.5), 470);
+		forceCostDeducted = MIN(((healthHealed + actionHealed + mindHealed) / 9.5), forceCost);
 
 			
 		// Send system message(s).
@@ -127,12 +132,7 @@ public:
 			creature->sendSystemMessage(message3);			
 		}
 
-			
-		// Play client effect, and deduct Force Power.
-
-
-		creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
+		playerObject->setForcePower(playerObject->getForcePower() - forceCostDeducted);
 			
 		return SUCCESS;
 		}

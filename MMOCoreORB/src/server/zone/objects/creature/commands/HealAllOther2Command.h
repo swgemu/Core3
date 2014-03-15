@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/object/CombatAction.h"
-#include "QueueCommand.h"
+#include "ForceHealQueueCommand.h"
 
-class HealAllOther2Command : public QueueCommand {
+class HealAllOther2Command : public ForceHealQueueCommand {
 protected:
 	int forceCost;
 
@@ -64,7 +64,7 @@ protected:
 	String effectName;
 public:
 	HealAllOther2Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: ForceHealQueueCommand(name, server) {
 		forceCost = 0;
 
 		range = 32;
@@ -76,13 +76,6 @@ public:
 		heal = 1500;		
 
 		speed = 3.0;
-	}
-	
-	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (creatureTarget == creature)
-			creature->playEffect("clienteffect/pl_force_healing.cef", "");
-		 else 
-			creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
 	}
 
 	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
@@ -112,42 +105,6 @@ public:
 		return true;
 	}
 	
-	
-	void sendHealMessage(CreatureObject* object, CreatureObject* target, int healthDamage, int actionDamage, int mindDamage) {
-		if (!object->isPlayerCreature()) 
-			return;
-			
-		if (!target->isPlayerCreature())
-			return;
-
-		CreatureObject* creature = cast<CreatureObject*>( object);
-		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
-
-		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
-
-		if (healthDamage > 0 && actionDamage > 0 && mindDamage > 0) {
-			msgBody << healthDamage << " health, " << actionDamage << " action, and "  << mindDamage << " mind";
-		} else if (healthDamage > 0) {
-			msgBody << healthDamage << " health";
-		} else if (actionDamage > 0) {
-			msgBody << actionDamage << " action";
-		} else if (mindDamage > 0) {
-			msgBody << mindDamage << " mind";
-		} else {
-			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other"); //Your target has no damage of that type to heal.
-			return; 
-		}
-
-		msgTail << " damage.";
-
-			msgPlayer << "You heal " << creatureTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString(); // You heal %TT for %DI points of %TO.
-			msgTarget << "You are healed for " << msgBody.toString() << " points of damage by " << creature->getFirstName(); // You are healed for %DI points of %TO by %TT.
-
-			creature->sendSystemMessage(msgPlayer.toString());
-			creatureTarget->sendSystemMessage(msgTarget.toString());
-
-	}	
-	
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION) && !creatureTarget->hasDamage(CreatureAttribute::MIND)) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other"); //Your target has no damage of that type to heal.
@@ -155,6 +112,10 @@ public:
 		}
 
 		if (creature->isProne()) {
+			return false;
+		}
+
+		if (creature->isKnockedDown()) {
 			return false;
 		}
 			
@@ -180,6 +141,9 @@ public:
 			return NOJEDIARMOR;
 		}
 		
+		if (isWarcried(creature)) {
+			return GENERALERROR;
+		}
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
@@ -227,14 +191,11 @@ public:
 		
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 		
-		if (playerObject->getForcePower() <= 340) {
-			creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have enough force to do that.
-			return GENERALERROR;
-		}
+		int forceCostDeducted = forceCost;
+
+		forceCostDeducted = MIN(((healedHealth + healedAction + healedMind) / 9.5), forceCost);
 		
-		forceCost = MIN(((healedHealth + healedAction + healedMind) / 9.5), 470);
-		
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost); // Deduct force.	
+		playerObject->setForcePower(playerObject->getForcePower() - forceCostDeducted); // Deduct force.
 
 		sendHealMessage(creature, creatureTarget, healedHealth, healedAction, healedMind);
 		

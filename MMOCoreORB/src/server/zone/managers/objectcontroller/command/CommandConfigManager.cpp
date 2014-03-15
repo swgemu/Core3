@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "CommandConfigManager.h"
 #include "server/zone/objects/creature/commands/commands.h"
@@ -634,8 +634,18 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 				Logger::console.error("unknown variable " + varName + " in squadleader command " + slashCommand->getQueueCommandName());
 				command.pop();
 			}
+
 		} else {
 			Logger::console.error("unknown variable " + varName + " in combat command " + slashCommand->getQueueCommandName());
+			command.pop();
+		}
+
+	} else if (slashCommand->isForceHealCommand()) {
+		ForceHealQueueCommand* healCommand = cast<ForceHealQueueCommand*>(slashCommand);
+		if (varName == "forceCost")
+			healCommand->setForceCost(Lua::getIntParameter(L));
+		else {
+			Logger::console.error("unknown variable " + varName + " in force healing command " + slashCommand->getQueueCommandName());
 			command.pop();
 		}
 	} else {
