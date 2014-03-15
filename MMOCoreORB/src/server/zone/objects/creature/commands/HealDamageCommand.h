@@ -337,7 +337,7 @@ public:
 				if (!object->isPlayerCreature() && !object->isPet())
 					continue;
 
-				if (object == areaCenter || object == creature || object->isDroidObject())
+				if (object == areaCenter || object->isDroidObject())
 					continue;
 
 				if (!areaCenter->isInRange(object, range))
