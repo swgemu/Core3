@@ -43,6 +43,7 @@
 
 HealAllOther2Command = {
         name = "healallother2",
+	forceCost = 350,
 }
 
 AddCommand(HealAllOther2Command)
