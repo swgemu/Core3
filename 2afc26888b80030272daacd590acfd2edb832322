@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_b2763805",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSession.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-15T18:43:04Z",
+      "side": 1,
+      "message": "Why are you adding this line to a block of commented code?",
+      "revId": "2afc26888b80030272daacd590acfd2edb832322",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_7260d035",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-15T18:43:04Z",
+      "side": 1,
+      "message": "What is the reason for commenting this out? If it\u0027s unnecessary (i.e. handled elsewhere), then remove it rather than commenting it out.",
+      "revId": "2afc26888b80030272daacd590acfd2edb832322",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_92733c15",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/ContainerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-15T18:43:04Z",
+      "side": 1,
+      "message": "Isn\u0027t this redundant? isSliceable() already returns false if it\u0027s sliced.",
+      "revId": "2afc26888b80030272daacd590acfd2edb832322",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_5265d443",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/RelockLootContainerEvent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-15T18:43:04Z",
+      "side": 1,
+      "message": "In the constructor you\u0027re adding the possibility for tano to be NULL. Should you not then check for NULL before trying to call any methods with tano?",
+      "revId": "2afc26888b80030272daacd590acfd2edb832322",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
