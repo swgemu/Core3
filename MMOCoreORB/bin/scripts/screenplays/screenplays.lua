@@ -23,6 +23,7 @@ includeFile("dungeon/death_watch_bunker.lua")
 includeFile("dungeon/geonosian_lab/geonosian_lab.lua")
 includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
+includeFile("dungeon/corvette/corvette_main.lua")
 
 -- Task/Quest
 includeFile("tasks/ajuva_vanasterin.lua")
