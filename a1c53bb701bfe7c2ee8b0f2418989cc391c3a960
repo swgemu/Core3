@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_f26cc038",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-15T18:00:24Z",
+      "side": 1,
+      "message": "All of these comments explaining why you\u0027re checking for NULL are really unnecessary and just clutter up the code and make it harder to read.\n\nComments explaining the intent behind the logic of a block of code are fine, but obvious things like checks for null do not need to be explained.",
+      "revId": "a1c53bb701bfe7c2ee8b0f2418989cc391c3a960",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_12886ce6",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/EntertainingSessionImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-15T18:00:24Z",
+      "side": 1,
+      "message": "If the code doesn\u0027t belong, remove it. Don\u0027t comment it out. If you feel the need to explain why you\u0027re removing it, make a comment in gerrit (like this one) after you push the patch rather than adding it directly into the code.",
+      "revId": "a1c53bb701bfe7c2ee8b0f2418989cc391c3a960",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
