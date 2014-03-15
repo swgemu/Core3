@@ -38,4 +38,25 @@ void SharedStructureObjectTemplate::readObject(LuaObject* templateData) {
 	cityMaintenanceBase = templateData->getIntField("cityMaintenanceBase");
 
 	cityMaintenanceRate = templateData->getIntField("cityMaintenanceRate");
+
+	LuaObject signNodes = templateData->getObjectField("shopSigns");
+	if (signNodes.isValidTable()) {
+		for (int i = 1; i < signNodes.getTableSize() + 1; ++i) {
+			lua_State* L = templateData->getLuaState();
+			lua_rawgeti(L, -1, i);
+			LuaObject signNode(L);
+
+			if (signNode.isValidTable()) {
+				SignTemplate shopSign;
+				shopSign.parseFromLua(&signNode);
+
+				shopSigns.add(shopSign);
+			}
+
+			signNode.pop();
+		}
+	}
+
+	signNodes.pop();
+
 }

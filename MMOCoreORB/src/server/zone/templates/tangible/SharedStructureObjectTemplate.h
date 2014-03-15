@@ -9,6 +9,7 @@
 #define SHAREDSTRUCTUREOBJECTTEMPLATE_H_
 
 #include "../SharedTangibleObjectTemplate.h"
+#include "server/zone/templates/tangible/SignTemplate.h"
 
 class SharedStructureObjectTemplate : public SharedTangibleObjectTemplate {
 protected:
@@ -28,6 +29,8 @@ protected:
 	//If it has a maintenance rate, then it is a civic structure.
 	int cityMaintenanceBase;
 	int cityMaintenanceRate;
+
+	Vector<SignTemplate> shopSigns;
 
 public:
 	SharedStructureObjectTemplate() {
@@ -102,6 +105,14 @@ public:
 
 	inline virtual bool isPublicStructure() {
 		return false;
+	}
+
+	inline int getShopSignsSize() {
+		return shopSigns.size();
+	}
+
+	inline SignTemplate* getShopSign(int idx) {
+		return &shopSigns.get(idx);
 	}
 };
 
