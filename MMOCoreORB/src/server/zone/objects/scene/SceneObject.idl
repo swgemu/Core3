@@ -151,6 +151,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected int planetMapCategory;
 	protected int planetMapSubCategory;
 	
+	protected int planetMapLocationActiveCode;
+	
 	protected unicode customName;
 
 	@weakReference
@@ -1964,6 +1966,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	public abstract boolean isMount() {
 		return false;
-	}	
+	}
+	
+	public native boolean isPlanetMapLocationActive();
+	
+	public native int getPlanetMapLocationActiveCode();
+	
+	public native void setPlanetMapLocationActiveCode(int activeCode);
+	
 }
 

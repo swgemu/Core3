@@ -47,7 +47,7 @@ object_building_corellia_hospital_corellia = object_building_corellia_shared_hos
 		{"private_med_wound_health", 100},
 		{"private_med_wound_action", 100}
 	},
-
+	gameObjectType = 517,
 	planetMapCategory = "medicalcenter",
 	
 	childObjects = {

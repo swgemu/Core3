@@ -47,6 +47,7 @@ object_building_corellia_cantina_corellia = object_building_corellia_shared_cant
 		{"private_buff_mind", 100},
 		{"private_med_battle_fatigue", 5}
 	},
+	gameObjectType = 518,
 	planetMapCategory = "cantina"
 }
 
