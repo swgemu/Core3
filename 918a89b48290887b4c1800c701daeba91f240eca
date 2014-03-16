@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_d25ae44f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AddIgnoreCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-16T02:43:17Z",
+      "side": 1,
+      "message": "Please remove the bug number.  We don\u0027t typically track changes in the code like this",
+      "revId": "918a89b48290887b4c1800c701daeba91f240eca",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
