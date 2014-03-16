@@ -45,6 +45,7 @@ object_building_corellia_ply_corl_house_m_s01_fp1 = object_building_corellia_sha
 
 -- Used as tavern for: Dantooine Mining Outpost, Dantooine Pirate Outpost, Rori Rebel Outpost.
 
+	gameObjectType = 519,
 	planetMapCategory = "tavern",
 	
 	skillMods = {

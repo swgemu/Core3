@@ -55,15 +55,60 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	// swg.wikia.com/wiki/Register_(Ability)
+	// swg.wikia.com/wiki/Register_Location_(Ability)
 
-		if (!checkStateMask(creature))
+	int doQueueCommand(CreatureObject* player, const uint64& target, const UnicodeString& arguments) {
+
+		if (!checkStateMask(player))
 			return INVALIDSTATE;
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(player))
 			return INVALIDLOCOMOTION;
 
+		if (!player->isPlayerCreature())
+			return GENERALERROR;
+
+		// If outside don't bother doing anything ...
+		if(player->getParentID() != 0) { // getParentID()==0 means outside
+			bool flagDoc = player->isNoviceDoctor();
+			bool flagEnt = player->isNoviceEntertainer();
+			bool flagImD = player->isNoviceImageDesigner();
+			if ( flagDoc || flagEnt || flagImD ) {
+				if (flagDoc && player->isInMedicalBuilding()) {
+						addPlayerToBuilding(player);
+						return SUCCESS;
+				}
+				// NOT else if! (Char is both a doctor and an entertainer, etc.)
+				if (flagEnt && player->isInEntertainingBuilding()) {
+						addPlayerToBuilding(player);
+						return SUCCESS;
+				}
+				// NOT else if! (Char is both a doctor and an entertainer, etc.)
+				if (flagImD && player->isInSalonBuilding()) {
+						addPlayerToBuilding(player);
+						return SUCCESS;
+				}
+				player->sendSystemMessage("Not a valid registration location.");
+			}
+			else {
+				player->sendSystemMessage("@cmd_err:ability_prose"); // You do not have sufficient abilities to %TO.
+			}
+		}
+		else {
+			// 36640: stringFiles[555].addEntry("cannot_register", "You cannot register at a location that is not registered with the planetary map.");
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:cannot_register");
+		}
+
 		return SUCCESS;
+	}
+
+	void addPlayerToBuilding(CreatureObject* player) {
+		ManagedReference<SceneObject*> root = player->getRootParent();
+		if (root != NULL) {
+			ManagedReference<BuildingObject*> building = root.castTo<BuildingObject*>();
+			building->registerProfessional(player);
+		}
 	}
 
 };

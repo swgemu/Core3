@@ -47,6 +47,7 @@ object_building_general_cantina_general = object_building_general_shared_cantina
 		{"private_buff_mind", 100},
 		{"private_med_battle_fatigue", 5}
 	},
+	gameObjectType = 518,
 	planetMapCategory = "cantina"
 }
 
