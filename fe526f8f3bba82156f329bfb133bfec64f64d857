@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_32b6c88b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-03-16T01:13:07Z",
+      "side": 1,
+      "message": "Wouldn\u0027t dropping the equals make it NOT drop to zero?",
+      "parentUuid": "3a3291f1_d2fe6438",
+      "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_12ed0c8c",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-03-16T00:20:32Z",
       "side": 1,
       "message": "return true;",
+      "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_12bbcc73",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-03-16T01:13:07Z",
+      "side": 1,
+      "message": "If you look at my check, I am expecting it to return true, isn\u0027t it just semantics to reverse that and the check?",
+      "parentUuid": "3a3291f1_12ed0c8c",
       "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_f2af202a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-03-16T01:13:07Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "3a3291f1_f201603a",
+      "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_529a7415",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealAllOther2Command.h",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_d2ac2438",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealAllOther2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-03-16T01:13:07Z",
+      "side": 1,
+      "message": "Right, forgot about that.",
+      "parentUuid": "3a3291f1_529a7415",
+      "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_329fe805",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealAllOther2Command.h",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2014-03-16T00:20:32Z",
       "side": 1,
       "message": "You don\u0027t need this here now that it\u0027s in ForceHealQueueCommand.",
+      "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_b2a99826",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealAllOther2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-03-16T01:13:07Z",
+      "side": 1,
+      "message": "(See above)",
+      "parentUuid": "3a3291f1_329fe805",
       "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
