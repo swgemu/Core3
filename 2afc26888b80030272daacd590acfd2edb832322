@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_d2f42489",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSession.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 813
+      },
+      "writtenOn": "2014-03-16T21:09:32Z",
+      "side": 1,
+      "message": "I realized after editing this entire block of code was commented out by another. Hence the unused reference to container. Didn\u0027t mean to commit.",
+      "revId": "2afc26888b80030272daacd590acfd2edb832322",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_7260d035",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSessionImplementation.cpp",
         "patchSetId": 1
@@ -30,6 +47,24 @@
       "writtenOn": "2014-03-15T18:43:04Z",
       "side": 1,
       "message": "What is the reason for commenting this out? If it\u0027s unnecessary (i.e. handled elsewhere), then remove it rather than commenting it out.",
+      "revId": "2afc26888b80030272daacd590acfd2edb832322",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_75ff9a02",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 813
+      },
+      "writtenOn": "2014-03-16T21:09:32Z",
+      "side": 1,
+      "message": "The LUA handler for openContainer automatically spawns loot as the container is opened. The check inside openContainer only checked if items \u003e 0 and if so assumed the 30 minute timer to fill the container had already fired. Once the container dropped back to zero it refilled it and started the 30 minute loot timer on the container.\n\nI will remove this",
+      "parentUuid": "3a3291f1_7260d035",
       "revId": "2afc26888b80030272daacd590acfd2edb832322",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_55049e14",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/ContainerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 813
+      },
+      "writtenOn": "2014-03-16T21:09:32Z",
+      "side": 1,
+      "message": "A container can be locked and not sliceable (technically) a container can be sliceable but not already sliced. It may seem redundant but I did not create these variables and the !isSliced() was necessary to originally remove it off the radial. I will test this more",
+      "parentUuid": "3a3291f1_92733c15",
+      "revId": "2afc26888b80030272daacd590acfd2edb832322",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_5265d443",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/RelockLootContainerEvent.h",
         "patchSetId": 1
@@ -64,6 +117,24 @@
       "writtenOn": "2014-03-15T18:43:04Z",
       "side": 1,
       "message": "In the constructor you\u0027re adding the possibility for tano to be NULL. Should you not then check for NULL before trying to call any methods with tano?",
+      "revId": "2afc26888b80030272daacd590acfd2edb832322",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_3509122d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/RelockLootContainerEvent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 813
+      },
+      "writtenOn": "2014-03-16T21:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_5265d443",
       "revId": "2afc26888b80030272daacd590acfd2edb832322",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
