@@ -50,6 +50,7 @@ object_building_player_city_hospital_tatooine = object_building_player_city_shar
 	allowedZones = {"dantooine", "lok", "tatooine"},
 	length = 5,
 	width = 5,
+	gameObjectType = 517,
 	planetMapCategory = "medicalcenter",
 	cityRankRequired = 3,
 	abilityRequired = "place_hospital",

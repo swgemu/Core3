@@ -47,6 +47,7 @@ object_building_player_city_cantina_naboo = object_building_player_city_shared_c
 	allowedZones = {"dantooine", "naboo", "rori"},
 	length = 7,
 	width = 7,
+	gameObjectType = 518,
 	planetMapCategory = "cantina",
 	cityRankRequired = 2,
 	limitToOnePerCity = 0,

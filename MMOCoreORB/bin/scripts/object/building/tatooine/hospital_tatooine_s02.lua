@@ -47,7 +47,7 @@ object_building_tatooine_hospital_tatooine_s02 = object_building_tatooine_shared
 		{"private_med_wound_health", 100},
 		{"private_med_wound_action", 100}
 	},
-
+	gameObjectType = 517,
 	planetMapCategory = "medicalcenter",
 	ejectionPoint = {4, 24}
 }

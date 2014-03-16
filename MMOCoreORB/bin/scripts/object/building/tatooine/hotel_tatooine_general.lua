@@ -42,6 +42,7 @@
 
 
 object_building_tatooine_hotel_tatooine_general = object_building_tatooine_shared_hotel_tatooine_general:new {
+	gameObjectType = 523,
 	planetMapCategory = "hotel"
 }
 

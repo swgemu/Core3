@@ -47,7 +47,7 @@ object_building_naboo_cantina_naboo = object_building_naboo_shared_cantina_naboo
 		{"private_buff_mind", 100},
 		{"private_med_battle_fatigue", 5}
 	},
-	
+	gameObjectType = 518,
 	planetMapCategory = "cantina"
 }
 

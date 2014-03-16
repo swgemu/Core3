@@ -446,6 +446,34 @@ void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
 	mapLocations->dropObject(object);
 }
 
+bool ZoneImplementation::isObjectRegisteredWithPlanetaryMap(SceneObject* object, const String& mapObjectLocationType) {
+
+	bool flag = false;
+
+#ifndef WITH_STM
+	mapLocations->rlock();
+#endif
+
+	try {
+		SortedVector<MapLocationEntry>& entryVector = mapLocations->getLocation(mapObjectLocationType);
+		for (int i = 0; i < entryVector.size(); ++i) {
+			MapLocationEntry entry = entryVector.get(i);
+			if (object->getObjectID() == entry.getObject()->getObjectID()) {
+				flag = true;
+				break;
+			}
+		}
+	} catch (...) {
+		// We don't do anything here?
+	}
+
+#ifndef WITH_STM
+	mapLocations->runlock();
+#endif
+
+	return flag;
+}
+
 void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 	objectMap->remove(object->getObjectID());
 	unregisterObjectWithPlanetaryMap(object);

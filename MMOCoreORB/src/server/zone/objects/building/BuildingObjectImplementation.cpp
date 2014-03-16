@@ -47,6 +47,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 
+#include "server/zone/managers/planet/MapLocationType.h"
+
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
@@ -54,6 +56,8 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	
 	updatePaidAccessList();
 	
+	registeredPlayerIdList.removeAll();
+
 	if(isGCWBase()) {
 		SharedBuildingObjectTemplate* buildingTemplateData =
 				dynamic_cast<SharedBuildingObjectTemplate*> (getObjectTemplate());
@@ -708,6 +712,14 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 
 	addTemplateSkillMods(player);
 
+	// If an injured customer/player enters a healing place
+	// (med center, cantina, etc.), set the icon to moon/1,
+	// but only if not already set to moon (or star)
+	if ( (this->getPlanetMapLocationActiveCode() == 0) &&
+			BuildingObjectImplementation::hasCustomersInProfessionalBuilding() ) {
+		this->setPlanetMapLocationActiveCode(1); // 0 == Nada, 1 == Moon, 2 == Star
+	}
+
 	Locker acessLock(&paidAccessListMutex);
 
 	
@@ -785,6 +797,17 @@ void BuildingObjectImplementation::onExit(CreatureObject* player, uint64 parenti
 		return;
 
 	removeTemplateSkillMods(player);
+
+	// If the last injured customer/player leaves a healing place
+	// (med center, cantina, etc.), set the icon to none/0
+	// but only if set to moon.  unregisterProfessional(..) handles
+	// if a registered professional leaves the building.
+	if ( (this->getPlanetMapLocationActiveCode() == 1) &&
+			(! BuildingObjectImplementation::hasCustomersInProfessionalBuilding()) ) {
+		this->setPlanetMapLocationActiveCode(0); // 0 == Nada, 1 == Moon, 2 == Star
+	}
+
+	unregisterProfessional(player); // Handles star to none/moon
 
 	notifyObservers(ObserverEventType::EXITEDBUILDING, player, parentid);
 }
@@ -950,6 +973,202 @@ void BuildingObjectImplementation::updateSignName(bool notifyClient)  {
 	if (signObject != NULL) {
 		signObject->setCustomObjectName(signNameToSet, notifyClient);
 	}
+}
+
+String BuildingObjectImplementation::getBuildingMapType() {
+
+	if (this->getGameObjectType() == SceneObjectType::HOSPITALBUILDING) {
+		return "medicalcenter";
+	}
+	else if (this->getGameObjectType() == SceneObjectType::HOTELBUILDING) {
+		return "hotel";
+	}
+	else if (this->getGameObjectType() == SceneObjectType::RECREATIONBUILDING) {
+		return "cantina";
+	}
+	else if (this->getGameObjectType() == SceneObjectType::THEATERBUILDING) {
+		/* You can have a theater show up either under
+		 * 'Guild Hall/Theater' (guild_theater)
+		 *         or
+		 * 'Theater' (theater)
+		 * categories on the planetary map. */
+		return BuildingObjectImplementation::isInPlayerCity() ? "theater" : "guild_theater";
+	}
+	else if (this->getGameObjectType() == SceneObjectType::TAVERNBUILDING) {
+		return "tavern";
+	}
+	else if (this->getGameObjectType() == SceneObjectType::SALONBUILDING) {
+		return "salon";
+	}
+	else {
+		return "";
+	}
+
+}
+
+bool BuildingObjectImplementation::isInPlayerCity() {
+	ManagedReference<CityRegion*> city = this->getCityRegion().get();
+	if (city != NULL) {
+		return (! city->isClientRegion()); // Client region is static, is planet not player
+	}
+	return false;
+}
+
+void BuildingObjectImplementation::registerProfessional(CreatureObject* player) {
+
+	if(!player->isPlayerCreature())
+		return;
+
+	if(! registeredPlayerIdList.contains(player->getObjectID())) {
+
+		// Determine what building type the player is in ...
+		String buildingMapType = BuildingObjectImplementation::getBuildingMapType();
+		if (buildingMapType.length() == 0) { // RegisterWithLocationCommand should prevent this from happening, but just in case.
+			// "You cannot register at a location that is not registered with the planetary map."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:cannot_register");
+			return;
+		}
+
+		// Check for improper faction situations ...
+		if ( player->isNeutral() && (!this->isNeutral())) {
+			// "Neutrals may only register at neutral (non-aligned) locations."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_neutrals");
+			return;
+		}
+
+		if ( (player->isImperial() && this->isRebel()) || (player->isRebel() && this->isImperial())) {
+			// "You may not register at a location that is factionally opposed."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_opposition");
+			return;
+		}
+
+		// Add to the planetary map list ...
+		if (getZone()->isObjectRegisteredWithPlanetaryMap(_this.get(), buildingMapType)) {
+
+			// Register the building as occupied ...
+			this->setPlanetMapLocationActiveCode(2); // 0 None, 1 Moon, 2 Star
+
+			// Add to our internal list ...
+			registeredPlayerIdList.add(player->getObjectID());
+
+			// Notify the player ...
+			// "You successfully register with this location."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:success");
+		}
+
+	}
+	else {
+		// "But you are already registered at this location."
+		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:already_registered");
+	}
+
+}
+
+void BuildingObjectImplementation::unregisterProfessional(CreatureObject* player) {
+
+	if(!player->isPlayerCreature())
+		return;
+
+	if(registeredPlayerIdList.contains(player->getObjectID())) {
+
+		// Determine what building the player is in ...
+		String buildingMapType = BuildingObjectImplementation::getBuildingMapType();
+		if (buildingMapType.length() == 0) {
+			player->sendSystemMessage("Unable to unregister.");
+			return;
+		}
+
+		registeredPlayerIdList.removeElement(player->getObjectID());
+
+		if (registeredPlayerIdList.size() == 0) {
+
+			if (getZone()->isObjectRegisteredWithPlanetaryMap(_this.get(), buildingMapType)) {
+
+				// Last Entertainer/Doctor out.  If there are still injured players in the
+				// building, set icon from star to a moon.  Otherwise, change star to blank
+
+				if (BuildingObjectImplementation::hasCustomersInProfessionalBuilding()) {
+					this->setPlanetMapLocationActiveCode(1); // 0 == Nada, 1 == Moon, 2 == Star
+				}
+				else {
+					this->setPlanetMapLocationActiveCode(0); // 0 == Nada, 1 == Moon, 2 == Star
+				}
+
+			}
+
+		}
+
+		player->sendSystemMessage(
+			"You have been unregistered from your previously registered location.");
+	}
+
+}
+
+bool BuildingObjectImplementation::hasCustomersInProfessionalBuilding() {
+
+	for (uint32 i = 1; i <= this->getTotalCellNumber(); ++i) {
+		ManagedReference<CellObject*> cellObject = this->getCell(i);
+
+		int childObjects = cellObject->getContainerObjectsSize();
+
+		if (cellObject == NULL || childObjects <= 0)
+			continue;
+
+		//Traverse the vector backwards since the size will change as objects are removed.
+		for (int j = childObjects - 1; j >= 0; --j) {
+
+			ReadLocker rlocker(cellObject->getContainerLock());
+			ManagedReference<SceneObject*> obj = cellObject->getContainerObject(j);
+			rlocker.release();
+
+			if (obj->isPlayerCreature()) {
+
+				CreatureObject* playerCreature = cast<CreatureObject*>(obj.get());
+				Locker plocker(playerCreature);
+
+				int woundP = playerCreature->getWounds(0);
+				woundP += playerCreature->getWounds(1);
+				woundP += playerCreature->getWounds(2);
+				woundP += playerCreature->getWounds(3);
+				woundP += playerCreature->getWounds(4);
+				woundP += playerCreature->getWounds(5);
+
+				int woundM = playerCreature->getWounds(6);
+				woundM += playerCreature->getWounds(7);
+				woundM += playerCreature->getWounds(8);
+
+				info("woundP: " + String::valueOf(woundP), true);
+				info("woundM: " + String::valueOf(woundM), true);
+
+				switch (this->getGameObjectType()) {
+					case SceneObjectType::HOSPITALBUILDING:
+						if (woundP >= 1) {
+							return true;
+						}
+						break;
+					case SceneObjectType::RECREATIONBUILDING: // Cantina
+					case SceneObjectType::HOTELBUILDING:
+					case SceneObjectType::THEATERBUILDING:
+						if (woundM >= 1) {
+							return true;
+						}
+						break;
+					case SceneObjectType::TAVERNBUILDING: // Both a Hospital and a Cantina
+						if ((woundM >= 1) || (woundP >= 1) ) {
+							return true;
+						}
+						break;
+					case SceneObjectType::SALONBUILDING:
+						return true;
+				}
+
+			}
+
+		}
+
+	}
+
+	return false;
 }
 
 void BuildingObjectImplementation::promptPayAccessFee(CreatureObject* player) {
