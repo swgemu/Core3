@@ -1,4 +1,8 @@
 includeFile("tatooine/aaph_koden.lua")
+includeFile("tatooine/talia_reede.lua")
+includeFile("tatooine/aaph_koden_cl28.lua")
+includeFile("tatooine/aaph_koden_cl25.lua")
+
 includeFile("tatooine/afroh_orah.lua")
 includeFile("tatooine/alkhara_bandit_king.lua")
 includeFile("tatooine/alkhara_bandit.lua")

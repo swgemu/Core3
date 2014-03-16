@@ -1,9 +1,9 @@
 aaph_koden = Creature:new {
 	objectName = "",
 	customName = "Aaph Koden",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
@@ -24,13 +24,13 @@ aaph_koden = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_aaph_koden.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "aaph_koden_mission_giver_convotemplate",
 	attacks = {
 	}
 }

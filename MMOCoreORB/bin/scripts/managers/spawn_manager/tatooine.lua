@@ -341,7 +341,7 @@ tatooine_regions = {
 }
 
 tatooine_static_spawns = {
-	{"aaph_koden",60,130.071,52,-5399.6,282.412,0, "", "Aaph Koden"},
+	--{"aaph_koden",60,130.071,52,-5399.6,282.412,0, "", "Aaph Koden"},
 	{"afroh_orah",60,-1211.37,12,-3637.48,26.5441,0, "neutral", "Afroh Orah"},
 	{"agriculturalist",60,3247.43,4.00222,-4850.96,0.276961,0, "conversation", ""},
 	{"agriculturalist",60,3247.43,4.00848,-4849.66,180.005,0, "conversation", ""},
