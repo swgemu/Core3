@@ -47,6 +47,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 
+#include "server/zone/managers/planet/MapLocationType.h"
+
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
@@ -54,6 +56,8 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	
 	updatePaidAccessList();
 	
+	registeredPlayerIdList.removeAll();
+
 	if(isGCWBase()) {
 		SharedBuildingObjectTemplate* buildingTemplateData =
 				dynamic_cast<SharedBuildingObjectTemplate*> (getObjectTemplate());
@@ -786,6 +790,8 @@ void BuildingObjectImplementation::onExit(CreatureObject* player, uint64 parenti
 
 	removeTemplateSkillMods(player);
 
+	unregisterProfessional(player);
+
 	notifyObservers(ObserverEventType::EXITEDBUILDING, player, parentid);
 }
 
@@ -950,6 +956,154 @@ void BuildingObjectImplementation::updateSignName(bool notifyClient)  {
 	if (signObject != NULL) {
 		signObject->setCustomObjectName(signNameToSet, notifyClient);
 	}
+}
+
+String BuildingObjectImplementation::getBuildingMapType() {
+
+	if (this->getGameObjectType() == SceneObjectType::HOSPITALBUILDING) {
+		return "medicalcenter";
+	}
+	else if (this->getGameObjectType() == SceneObjectType::HOTELBUILDING) {
+		return "hotel";
+	}
+	else if (this->getGameObjectType() == SceneObjectType::RECREATIONBUILDING) {
+		return "cantina";
+	}
+	else if (this->getGameObjectType() == SceneObjectType::THEATERBUILDING) {
+		/* You can have a theater show up either under
+		 * 'Guild Hall/Theater' (guild_theater)
+		 *         or
+		 * 'Theater' (theater)
+		 * categories on the planetary map. */
+		bool flag = BuildingObjectImplementation::isInPlayerCity();
+		info("Player(1) or Planet(0) Theater? --> " + String::valueOf(flag), true);
+		return flag ? "theater" : "guild_theater";
+	}
+	else if (this->getGameObjectType() == SceneObjectType::TAVERNBUILDING) {
+		return "tavern";
+	}
+	else if (this->getGameObjectType() == SceneObjectType::SALONBUILDING) {
+		return "salon";
+	}
+	else {
+		return "";
+	}
+
+}
+
+bool BuildingObjectImplementation::isInPlayerCity() {
+	ManagedReference<CityRegion*> city = this->getCityRegion().get();
+	if (city != NULL) {
+		return (! city->isClientRegion()); // Client region is static is planet not player
+	}
+	return false;
+	// return (! BuildingObjectImplementation::isStaticBuilding());
+}
+
+void BuildingObjectImplementation::registerProfessional(CreatureObject* player) {
+
+	if(!player->isPlayerCreature())
+		return;
+
+	if(! registeredPlayerIdList.contains(player->getObjectID())) {
+
+		// Determine what building type the player is in ...
+		String buildingType = BuildingObjectImplementation::getBuildingMapType();
+		info("buildingType: " + buildingType, true);
+		if (buildingType.length() == 0) { // RegisterWithLocationCommand should prevent this from happening, but just in case.
+			// "You cannot register at a location that is not registered with the planetary map."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:cannot_register");
+			return;
+		}
+
+		// Check for improper faction situations ...
+		if ( player->isNeutral() && (!this->isNeutral())) {
+			// "Neutrals may only register at neutral (non-aligned) locations."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_neutrals");
+			return;
+		}
+
+		if ( (player->isImperial() && this->isRebel()) || (player->isRebel() && this->isImperial())) {
+			// "You may not register at a location that is factionally opposed."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_opposition");
+			return;
+		}
+
+		// Add to the planetary map list ...
+
+		SortedVector<ManagedReference<SceneObject*> > planetaryLocs;
+		planetaryLocs = getZone()->getPlanetaryObjectList(buildingType);
+		for (int j = 0; j < planetaryLocs.size(); j++) {
+			SceneObject* obj = planetaryLocs.get(j);
+
+			if (this->getObjectID() == obj->getObjectID()) {
+
+				// Register the building as occupied ...
+				ManagedReference<CityRegion*> city = this->getCityRegion().get();
+				String name = city != NULL ? city->getRegionName() : "?";
+				info("Setting planetary map location ACTIVE: ["+buildingType+"][" + name + "(" + String::valueOf(obj->getObjectID()) + ")]", true);
+				this->setPlanetMapLocationActiveCode(2); // 0 None, 1 Moon, 2 Star
+
+				// Add to our internal list ...
+				registeredPlayerIdList.add(player->getObjectID());
+
+				// Notify the player ...
+				// "You successfully register with this location."
+				player->sendSystemMessage("@faction/faction_hq/faction_hq_response:success");
+				break;
+			}
+		}
+
+	}
+	else {
+		// "But you are already registered at this location."
+		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:already_registered");
+	}
+
+}
+
+void BuildingObjectImplementation::unregisterProfessional(CreatureObject* player) {
+
+	if(!player->isPlayerCreature())
+		return;
+
+	if(registeredPlayerIdList.contains(player->getObjectID())) {
+
+		// Determine what building the player is in ...
+		String buildingType = BuildingObjectImplementation::getBuildingMapType();
+		info("buildingType: " + buildingType, true);
+		if (buildingType.length() == 0) {
+			player->sendSystemMessage("Unable to unregister.");
+			return;
+		}
+
+		registeredPlayerIdList.removeElement(player->getObjectID());
+
+		if (registeredPlayerIdList.size() == 0) {
+
+			SortedVector<ManagedReference<SceneObject*> > planetaryLocs;
+			planetaryLocs = getZone()->getPlanetaryObjectList(buildingType);
+			for (int j = 0; j < planetaryLocs.size(); j++) {
+				SceneObject* obj = planetaryLocs.get(j);
+				if (this->getObjectID() == obj->getObjectID()) {
+					ManagedReference<CityRegion*> city = this->getCityRegion().get();
+					String name = city != NULL ? city->getRegionName() : "?";
+					info("Setting planetary map location INACTIVE: ["+buildingType+"][" + name + "(" + String::valueOf(obj->getObjectID()) + ")]", true);
+					// Live would never set the icon back to empty, but instead
+					// set it to moon to show that at one point there was a person
+					// registered there, but now its empty.  swg.wikia.com/wiki/Register_(Ability)
+					this->setPlanetMapLocationActiveCode(1); // 0 == Nada, 1 == Moon, 2 == Star
+					break;
+				}
+			}
+
+		}
+
+		player->sendSystemMessage(
+			"You have been unregistered from your previously registered location.");
+
+	}
+
 }
 
 void BuildingObjectImplementation::promptPayAccessFee(CreatureObject* player) {

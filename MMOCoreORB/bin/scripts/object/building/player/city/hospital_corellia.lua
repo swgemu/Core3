@@ -47,6 +47,7 @@ object_building_player_city_hospital_corellia = object_building_player_city_shar
 	},
 	lotSize = 3,
 	baseMaintenanceRate = 50,
+	gameObjectType = 517,
 	planetMapCategory = "medicalcenter",
 	allowedZones = {"corellia", "talus"},
 	length = 5,

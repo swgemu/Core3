@@ -2883,4 +2883,131 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(player, petsToStore);
 		task->execute();
 	}
+
+}
+
+bool CreatureObjectImplementation::isNoviceDoctor() {
+	if (isPlayerCreature()) {
+		CreatureObject* player = _this.get().castTo<CreatureObject*>();
+		return player->hasSkill("science_doctor_novice");
+	}
+	return false;
+}
+
+bool CreatureObjectImplementation::isNoviceEntertainer() {
+	if (isPlayerCreature()) {
+		CreatureObject* player = _this.get().castTo<CreatureObject*>();
+		return (player->hasSkill("social_musician_novice") ||
+				player->hasSkill("social_dancer_novice"));
+	}
+	return false;
+}
+
+bool CreatureObjectImplementation::isNoviceImageDesigner() {
+	if (isPlayerCreature()) {
+		CreatureObject* player = _this.get().castTo<CreatureObject*>();
+		return player->hasSkill("social_imagedesigner_novice");
+	}
+	return false;
+}
+
+bool CreatureObjectImplementation::isInMedicalBuilding() {
+	bool flag = false;
+	CreatureObject* creature = _this.get().castTo<CreatureObject*>();
+	ManagedReference<SceneObject*> root = creature->getRootParent();
+	if (root != NULL) {
+		switch (root->getGameObjectType()) {
+			case SceneObjectType::HOSPITALBUILDING:
+			case SceneObjectType::TAVERNBUILDING:
+				flag = true;
+				break;
+		}
+	}
+	info("Building type Medical (multiple)?  " + String::valueOf(flag), true);
+	return flag;
+}
+
+bool CreatureObjectImplementation::isInEntertainingBuilding() {
+	bool flag = false;
+	CreatureObject* creature = _this.get().castTo<CreatureObject*>();
+	// Below copied from EntertainingSessionImplementation::isInEntertainingBuilding (added TAVERNBUILDING)
+	ManagedReference<SceneObject*> root = creature->getRootParent();
+	if (root != NULL) {
+		switch (root->getGameObjectType()) {
+			case SceneObjectType::RECREATIONBUILDING: // Cantina
+			case SceneObjectType::HOTELBUILDING:
+			case SceneObjectType::THEATERBUILDING:
+			case SceneObjectType::TAVERNBUILDING:
+				flag = true;
+				break;
+		}
+	}
+	info("Building type Entertaining (multiple)?  " + String::valueOf(flag), true);
+	return flag;
+}
+
+bool CreatureObjectImplementation::isInHospitalBuilding() {
+	bool flag = false;
+	CreatureObject* creature = _this.get().castTo<CreatureObject*>();
+	ManagedReference<SceneObject*> root = creature->getRootParent();
+	if (root != NULL) {
+		flag = (root->getGameObjectType() == SceneObjectType::HOSPITALBUILDING);
+	}
+	info("Building type Hospital?  " + String::valueOf(flag), true);
+	return flag;
+}
+
+bool CreatureObjectImplementation::isInHotelBuilding() {
+	bool flag = false;
+	CreatureObject* creature = _this.get().castTo<CreatureObject*>();
+	ManagedReference<SceneObject*> root = creature->getRootParent();
+	if (root != NULL) {
+		flag = (root->getGameObjectType() == SceneObjectType::HOTELBUILDING);
+	}
+	info("Building type Hotel?  " + String::valueOf(flag), true);
+	return flag;
+}
+
+bool CreatureObjectImplementation::isInRecreationalBuilding() { // Cantina
+	bool flag = false;
+	CreatureObject* creature = _this.get().castTo<CreatureObject*>();
+	ManagedReference<SceneObject*> root = creature->getRootParent();
+	if (root != NULL) {
+		flag = (root->getGameObjectType() == SceneObjectType::RECREATIONBUILDING);
+	}
+	info("Building type Recreational (Cantina)?  " + String::valueOf(flag), true);
+	return flag;
+}
+
+bool CreatureObjectImplementation::isInTheaterBuilding() {
+	bool flag = false;
+	CreatureObject* creature = _this.get().castTo<CreatureObject*>();
+	ManagedReference<SceneObject*> root = creature->getRootParent();
+	if (root != NULL) {
+		flag = (root->getGameObjectType() == SceneObjectType::THEATERBUILDING);
+	}
+	info("Building type Theater?  " + String::valueOf(flag), true);
+	return flag;
+}
+
+bool CreatureObjectImplementation::isInTavernBuilding() {
+	bool flag = false;
+	CreatureObject* creature = _this.get().castTo<CreatureObject*>();
+	ManagedReference<SceneObject*> root = creature->getRootParent();
+	if (root != NULL) {
+		flag = (root->getGameObjectType() == SceneObjectType::TAVERNBUILDING);
+	}
+	info("Building type Tavern?  " + String::valueOf(flag), true);
+	return flag;
+}
+
+bool CreatureObjectImplementation::isInSalonBuilding() {
+	bool flag = false;
+	CreatureObject* creature = _this.get().castTo<CreatureObject*>();
+	ManagedReference<SceneObject*> root = creature->getRootParent();
+	if (root != NULL) {
+		flag = (root->getGameObjectType() == SceneObjectType::SALONBUILDING);
+	}
+	info("Building type Salon?  " + String::valueOf(flag), true);
+	return flag;
 }

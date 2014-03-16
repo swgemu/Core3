@@ -1724,4 +1724,19 @@ class CreatureObject extends TangibleObject {
 	public native void updateSpeedAndAccelerationMods();
 
 	public native void setFaction(unsigned int crc);
+	
+	public native boolean isNoviceDoctor();
+	public native boolean isNoviceEntertainer();
+	public native boolean isNoviceImageDesigner();
+	
+	public native boolean isInMedicalBuilding();
+	public native boolean isInEntertainingBuilding();
+	
+	public native boolean isInHospitalBuilding();
+	public native boolean isInSalonBuilding();
+	public native boolean isInHotelBuilding();
+	public native boolean isInRecreationalBuilding();
+	public native boolean isInTheaterBuilding();
+	public native boolean isInTavernBuilding();
+	
 }

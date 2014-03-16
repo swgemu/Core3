@@ -42,6 +42,7 @@
 
 
 object_building_general_hotel_general_style_2 = object_building_general_shared_hotel_general_style_2:new {
+	gameObjectType = 523,
 	planetMapCategory = "hotel",
 	skillMods = {
 		{"private_buff_mind", 100},

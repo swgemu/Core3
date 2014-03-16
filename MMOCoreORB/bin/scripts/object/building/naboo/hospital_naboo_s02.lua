@@ -47,7 +47,7 @@ object_building_naboo_hospital_naboo_s02 = object_building_naboo_shared_hospital
 		{"private_med_wound_health", 100},
 		{"private_med_wound_action", 100}
 	},
-
+	gameObjectType = 517,
 	planetMapCategory = "medicalcenter"
 }
 

@@ -55,15 +55,59 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* player, const uint64& target, const UnicodeString& arguments) {
 
-		if (!checkStateMask(creature))
+		if (!checkStateMask(player))
 			return INVALIDSTATE;
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(player))
 			return INVALIDLOCOMOTION;
 
+		if (!player->isPlayerCreature())
+			return GENERALERROR;
+
+		// If outside don't bother doing anything ...
+		if(player->getParentID() != 0) { // getParentID()==0 means outside
+			bool flagDoc = player->isNoviceDoctor();
+			bool flagEnt = player->isNoviceEntertainer();
+			bool flagImD = player->isNoviceImageDesigner();
+			if ( flagDoc || flagEnt || flagImD ) {
+				if (flagDoc && player->isInMedicalBuilding()) {
+						addPlayerToBuilding(player);
+						return SUCCESS;
+				}
+				// NOT else if! (Char is both a doctor and an entertainer, etc.)
+				if (flagEnt && player->isInEntertainingBuilding()) {
+						addPlayerToBuilding(player);
+						return SUCCESS;
+				}
+				// NOT else if! (Char is both a doctor and an entertainer, etc.)
+				if (flagImD && player->isInSalonBuilding()) {
+						addPlayerToBuilding(player);
+						return SUCCESS;
+				}
+				// Right profession, wrong place ...
+				player->sendSystemMessage("This building is not a valid registration location for your profession.");
+			}
+			//  Client handles the 'else' scenario
+		}
+		else {
+			// "You cannot register at a location that is not registered with the planetary map."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:cannot_register");
+		}
+
 		return SUCCESS;
+	}
+
+	void addPlayerToBuilding(CreatureObject* player) {
+		ManagedReference<SceneObject*> root = player->getRootParent();
+		if ((root != NULL) && root->isBuildingObject()) {
+			ManagedReference<BuildingObject*> building = root.castTo<BuildingObject*>();
+			if (building != NULL) {
+				Locker blocker(building, player);
+				building->registerProfessional(player);
+			}
+		}
 	}
 
 };

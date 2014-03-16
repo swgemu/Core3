@@ -153,6 +153,8 @@ void SceneObjectImplementation::initializePrivateData() {
 	planetMapCategory = 0;
 	planetMapSubCategory = 0;
 
+	planetMapLocationActiveCode = 0;
+
 	gameObjectType = 0;
 
 	containmentType = 4;
@@ -1672,4 +1674,13 @@ bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object)
 
 int SceneObjectImplementation::getArrangementDescriptorSize() {
 	return templateObject->getArrangementDescriptors().size();
+}
+
+int SceneObjectImplementation::getPlanetMapLocationActiveCode() {
+	return planetMapLocationActiveCode;
+}
+
+/** 0 = None, 1 = Moon, 2 = Star */
+void SceneObjectImplementation::setPlanetMapLocationActiveCode(int activeCode) {
+	planetMapLocationActiveCode = activeCode;
 }
