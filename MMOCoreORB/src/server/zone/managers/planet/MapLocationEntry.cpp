@@ -139,7 +139,8 @@ bool MapLocationEntry::insertToMessage(BaseMessage* message, unsigned int factio
 
 	message->insertByte(category->getIndex());
 	message->insertByte((object->getPlanetMapSubCategory() != NULL) ? object->getPlanetMapSubCategory()->getIndex() : 0);
-	message->insertByte(active);
+
+	message->insertByte(object->getPlanetMapLocationActiveCode()); //active); // 1 == Moon, 2 == Sun
 
 	return true;
 }

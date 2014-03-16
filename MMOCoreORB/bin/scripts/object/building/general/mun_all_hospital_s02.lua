@@ -47,7 +47,7 @@ object_building_general_mun_all_hospital_s02 = object_building_general_shared_mu
 		{"private_med_wound_health", 100},
 		{"private_med_wound_action", 100}
 	},
-
+	gameObjectType = 517,
 	planetMapCategory = "medicalcenter"
 }
 

@@ -45,6 +45,7 @@ object_building_tatooine_housing_tatt_style02_med = object_building_tatooine_sha
 
 -- Used as tavern for: Mos Taike?
 
+	gameObjectType = 519,
 	planetMapCategory = "tavern",
 	
 	skillMods = {

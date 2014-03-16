@@ -55,15 +55,107 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* player, const uint64& target, const UnicodeString& arguments) {
 
-		if (!checkStateMask(creature))
+		if (!checkStateMask(player))
 			return INVALIDSTATE;
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(player))
 			return INVALIDLOCOMOTION;
 
+		if (!player->isPlayerCreature())
+			return GENERALERROR;
+
+		// If outside don't bother doing anything ...
+		if(player->getParentID() != 0) { // getParentID()==0 means outside
+			bool flagDoc = isNoviceDoctor(player);
+			bool flagEnt = isNoviceEntertainer(player);
+			bool flagImD = isNoviceImageDesigner(player);
+			if ( flagDoc || flagEnt || flagImD ) {
+				if (flagDoc && isInMedicalBuilding(player)) {
+						addPlayerToBuilding(player);
+						return SUCCESS;
+				}
+				// NOT else if! (Char is both a doctor and an entertainer, etc.)
+				if (flagEnt && isInEntertainingBuilding(player)) {
+						addPlayerToBuilding(player);
+						return SUCCESS;
+				}
+				// NOT else if! (Char is both a doctor and an entertainer, etc.)
+				if (flagImD && isInSalonBuilding(player)) {
+						addPlayerToBuilding(player);
+						return SUCCESS;
+				}
+				// Right profession, wrong place ...
+				player->sendSystemMessage("This building is not a valid registration location for your profession.");
+			}
+			//  Client handles the 'else' scenario
+		}
+		else {
+			// "You cannot register at a location that is not registered with the planetary map."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:cannot_register");
+		}
+
 		return SUCCESS;
+	}
+
+	void addPlayerToBuilding(CreatureObject* player) {
+		ManagedReference<SceneObject*> root = player->getRootParent();
+		if ((root != NULL) && root->isBuildingObject()) {
+			ManagedReference<BuildingObject*> building = root.castTo<BuildingObject*>();
+			if (building != NULL) {
+				Locker blocker(building, player);
+				building->registerProfessional(player);
+			}
+		}
+	}
+
+	bool isNoviceDoctor(CreatureObject* player) {
+		return player->hasSkill("science_doctor_novice");
+	}
+
+	bool isNoviceEntertainer(CreatureObject* player) {
+		return (player->hasSkill("social_musician_novice") ||
+				player->hasSkill("social_dancer_novice"));
+	}
+
+	bool isNoviceImageDesigner(CreatureObject* player) {
+		return player->hasSkill("social_imagedesigner_novice");
+	}
+
+	bool isInMedicalBuilding(CreatureObject* player) {
+		ManagedReference<SceneObject*> root = player->getRootParent();
+		if (root != NULL) {
+			switch (root->getGameObjectType()) {
+				case SceneObjectType::HOSPITALBUILDING:
+				case SceneObjectType::TAVERNBUILDING:
+					return true;
+			}
+		}
+		return false;
+	}
+
+	bool isInEntertainingBuilding(CreatureObject* player) {
+		// Below copied from EntertainingSessionImplementation::isInEntertainingBuilding (added TAVERNBUILDING)
+		ManagedReference<SceneObject*> root = player->getRootParent();
+		if (root != NULL) {
+			switch (root->getGameObjectType()) {
+				case SceneObjectType::RECREATIONBUILDING: // Cantina
+				case SceneObjectType::HOTELBUILDING:
+				case SceneObjectType::THEATERBUILDING:
+				case SceneObjectType::TAVERNBUILDING:
+					return true;
+			}
+		}
+		return false;
+	}
+
+	bool isInSalonBuilding(CreatureObject* player) {
+		ManagedReference<SceneObject*> root = player->getRootParent();
+		if (root != NULL) {
+			return (root->getGameObjectType() == SceneObjectType::SALONBUILDING);
+		}
+		return false;
 	}
 
 };

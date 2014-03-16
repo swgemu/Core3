@@ -47,6 +47,7 @@ object_building_player_city_cantina_corellia = object_building_player_city_share
 	allowedZones = {"corellia", "talus"},
 	length = 7,
 	width = 7,
+	gameObjectType = 518,
 	planetMapCategory = "cantina",
 	cityRankRequired = 2,
 	limitToOnePerCity = 0,
