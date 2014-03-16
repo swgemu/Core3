@@ -87,6 +87,9 @@ class BuildingObject extends StructureObject {
 	@dereferenced
 	protected SortedVector<CreatureObject> childCreatureObjects;
 
+	@dereferenced
+	protected Vector<unsigned long> registeredPlayerIdList;
+
 	public boolean publicStructure;
 	
 	public static final int MAXPLAYERITEMS = 400;
@@ -384,6 +387,12 @@ class BuildingObject extends StructureObject {
 	public native void updatePaidAccessList();
 
 	//public native boolean isGCWBase();
+	
+	public native void registerProfessional(CreatureObject player);
+	public native void unregisterProfessional(CreatureObject player);
+	public native string getBuildingMapType();
+	public native boolean isInPlayerCity();
+	public native boolean hasCustomersInProfessionalBuilding();
 
 	public native void createChildObjects();
 

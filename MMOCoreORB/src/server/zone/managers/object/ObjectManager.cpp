@@ -175,6 +175,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::FACTIONBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::HOTELBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::THEATERBUILDING);
+	objectFactory.registerObject<BuildingObject>(SceneObjectType::TAVERNBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::COMBATBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::COMMERCEBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::UNIVERSITYBUILDING);
