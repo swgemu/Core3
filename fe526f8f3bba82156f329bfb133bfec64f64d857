@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_d2fe6438",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-16T00:20:32Z",
+      "side": 1,
+      "message": "Should force power be able to drop to zero? If so, drop the \u003d",
+      "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_12ed0c8c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-16T00:20:32Z",
+      "side": 1,
+      "message": "return true;",
+      "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_f201603a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-16T00:20:32Z",
+      "side": 1,
+      "message": "return false;",
+      "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_529a7415",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealAllOther2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-16T00:20:32Z",
+      "side": 1,
+      "message": "You don\u0027t need this here now that it\u0027s in ForceHealQueueCommand.",
+      "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_329fe805",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealAllOther2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-16T00:20:32Z",
+      "side": 1,
+      "message": "You don\u0027t need this here now that it\u0027s in ForceHealQueueCommand.",
+      "revId": "fe526f8f3bba82156f329bfb133bfec64f64d857",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
