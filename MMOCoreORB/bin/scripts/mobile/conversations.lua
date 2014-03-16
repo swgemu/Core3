@@ -63,6 +63,7 @@ includeFile("conversations/tasks/hedon_istee_conv.lua")
 includeFile("conversations/tasks/serene_floater_conv.lua")
 includeFile("conversations/tasks/ris_armor_quest_conv.lua")
 includeFile("conversations/tasks/librarian_conv.lua")
+includeFile("conversations/tasks/aaph_koden_conv.lua")
 
 -- Village
 includeFile("conversations/village/old_man_conv.lua")
