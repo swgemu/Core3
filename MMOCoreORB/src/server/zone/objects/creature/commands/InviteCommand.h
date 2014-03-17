@@ -78,7 +78,8 @@ public:
 		if (object->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( object.get());
 
-			groupManager->inviteToGroup(creature, player);
+			if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()))
+				groupManager->inviteToGroup(creature, player);
 		}
 
 		return SUCCESS;

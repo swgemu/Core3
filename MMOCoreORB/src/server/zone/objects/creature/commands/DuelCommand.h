@@ -75,8 +75,10 @@ public:
 			return TOOFAR;
 
 		CombatManager* combatManager = CombatManager::instance();
+		CreatureObject* player = cast<CreatureObject*>(targetObject.get());
 
-		combatManager->requestDuel(creature, cast<CreatureObject*>(targetObject.get()));
+		if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()))
+			combatManager->requestDuel(creature, player);
 
 		return SUCCESS;
 	}
