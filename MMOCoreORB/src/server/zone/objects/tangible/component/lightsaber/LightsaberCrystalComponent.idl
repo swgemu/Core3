@@ -140,17 +140,14 @@ class LightsaberCrystalComponent extends Component {
 	public float getAttackSpeed() {
 		return attackSpeed;
 	}
-
 	
 	public int getSacAction() {
 		return sacAction;
 	}
-
 	
 	public int getSacMind() {
 		return sacMind;
 	}
-
 	
 	public int getWoundChance() {
 		return woundChance;
@@ -211,8 +208,7 @@ class LightsaberCrystalComponent extends Component {
 	public void setWoundChance(int value) {
 		woundChance = value;
 	}
-	
-	
+		
 	public boolean isLightsaberCrystalObject() {
 		return true; 
 	}
