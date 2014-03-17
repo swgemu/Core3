@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_350fd2e3",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-17T18:40:09Z",
+      "side": 1,
+      "message": "This will give an out of bounds exception if there are any nested containers with items inside because getContainerObject doesn\u0027t get objects recursively.\n\nI did not say to use that recursive method to get the number of items in trade. I said that you should create a new recursive method to do this check for no trade items. I pointed you to another recursive method as an example of how they function.",
+      "revId": "16dfcd0595de5199f30ee6d65bb90252d95d9f2a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
