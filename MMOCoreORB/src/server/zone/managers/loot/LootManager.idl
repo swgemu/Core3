@@ -80,6 +80,8 @@ class LootManager extends ManagedService implements Logger {
 	private transient float legendaryModifier;
 
 	private transient float skillModChance;
+	
+	private transient float junkValueModifier;
 
 	@dereferenced
 	private transient SortedVector<int> randomDotAttribute;

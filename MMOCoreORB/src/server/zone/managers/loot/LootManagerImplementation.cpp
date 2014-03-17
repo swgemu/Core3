@@ -67,6 +67,7 @@ bool LootManagerImplementation::loadConfigData() {
 	legendaryChance = lua->getGlobalFloat("legendaryChance");
 	legendaryModifier = lua->getGlobalFloat("legendaryModifier");
 	skillModChance = lua->getGlobalFloat("skillModChance");
+	junkValueModifier = lua->getGlobalFloat("junkValueModifier");
 
 	LuaObject dotAttributeTable = lua->getGlobalObject("randomDotAttribute");
 
@@ -255,7 +256,9 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	String serial = craftingManager->generateSerial();
 	prototype->setSerialNumber(serial);
 	prototype->setJunkDealerNeeded(templateObject->getJunkDealerTypeNeeded());
-	float fJunkValue = templateObject->getJunkMinValue()+System::random(templateObject->getJunkMaxValue()-templateObject->getJunkMinValue());
+	float junkMinValue = templateObject->getJunkMinValue() * junkValueModifier;
+	float junkMaxValue = templateObject->getJunkMaxValue() * junkValueModifier;
+	float fJunkValue = junkMinValue+System::random(junkMaxValue-junkMinValue);
 
 	if (level>0 && templateObject->getJunkDealerTypeNeeded()>1){
 		fJunkValue=fJunkValue + (fJunkValue * ((float)level / 100)); // This is the loot value calculation if the item has a level
