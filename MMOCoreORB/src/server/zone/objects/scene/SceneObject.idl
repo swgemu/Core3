@@ -1948,6 +1948,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public native boolean isInWater();
 
+	public native boolean containsNoTradeObjectRecursive();
+
 	public native string getDisplayedName();
 	
 	public boolean doSendToClient() {
