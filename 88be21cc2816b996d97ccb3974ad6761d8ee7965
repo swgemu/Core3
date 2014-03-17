@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_55313ea1",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T23:06:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_3558f2f9",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_155df6e9",
         "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-03-17T18:26:25Z",
       "side": 1,
       "message": "Please remove any debugging code before patch submission.",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_752c3a4b",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T23:06:28Z",
+      "side": 1,
+      "message": "I actually only left the ones that I thought QA would benefit having.  I can remove them though.",
+      "parentUuid": "3a3291f1_155df6e9",
       "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_55bffed0",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T23:06:28Z",
+      "side": 1,
+      "message": "I\u0027ll add the method to Zone as you\u0027ve instructed.",
+      "parentUuid": "3a3291f1_f5714a78",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_b56bc284",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2014-03-17T18:26:25Z",
       "side": 1,
       "message": "I\u0027d rather you not add the above methods, but simply do hasSkill() checks within RegisterWithPlanetaryMapCommand.",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_b502a2b2",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T23:06:28Z",
+      "side": 1,
+      "message": "I need to do that in multiple places though, and didnt want to clipboard copy/paste identical code to multiple places (at the command and in the building).  This way makes the code cleaner to read, and one point of code for debugging fixing, that would carry to all the locations that needed the fix.",
+      "parentUuid": "3a3291f1_b56bc284",
       "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_95ffa6aa",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1740,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T23:06:28Z",
+      "side": 1,
+      "message": "They are all being used.",
+      "parentUuid": "3a3291f1_75055ac1",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_9568c688",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2014-03-17T18:26:25Z",
       "side": 1,
       "message": "I think you would be better served by checking for register location with planetary map ability rather than checking what skill boxes they have. If they have the ability, you can then check profession vs. building type.",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_d5f52ecc",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T23:06:28Z",
+      "side": 1,
+      "message": "Well at this point this is just receiving the command. We don\u0027t even know if we\u0027re in a building yet or not.  I don\u0027t want to do allot of work if I don\u0027t have to, which is why I check if we\u0027re even in any kind of building first (via the getParentID()).\n\nI didn\u0027t want to pollute building logic inside of the command, but just instead verify that the player can issue the command successfully or not, and then let the building itself decide if its valid or not to acknowledge and process the command.  This way you have a clean delineation of processing.  Also, when the user exits a building, they are auto-unregistered, and that happens from the building logic as well.\n\nAnd I need to know what skills they have, because it is a requirement as to if they can issue the command or not (Medics cannot, Doctors can).\n\nMy preference would be to leave this as is.",
+      "parentUuid": "3a3291f1_9568c688",
       "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
