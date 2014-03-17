@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_95b56633",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "As this is specific to the planetary map, perhaps rename it to something like getBuildingMapType() so people don\u0027t think it\u0027s for something more generic.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_7582fa53",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "Our style is typically to just list the string in the comments.  Aka, just \"You cannot register at a location....\"\n\nstringfiles.js is actually a file for a conversation editor tool a dev wrote and not really something we should be referencing in code.  It\u0027s just handy reference.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_5587fe61",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "If this is TODO, comment it as such.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_357c7272",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "Rather than looping over the entire map and trying to find the building, would this work?\n\nthis-\u003esetPlanetMapLocationActiveCode(2);\ngetZone()-\u003eunregisterObjectWithPlanetaryMap(this);\ngetZone()-\u003eregisterObjectWithPlanetaryMap(this);\n\nSeems cleaner than this loop. Would it also eliminate the need for the getBuildingType?",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_1581764a",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "Same question as above.  Modify the building\u0027s flag, unregister it and register?",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_f595ca88",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "We don\u0027t typically reference websites in the code.  You can point it out in gerrit or on the checklist for reference, though.  The assumption is that we used all available sources of information.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_55eede23",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "You have to send build and send StringIdChatParameter message whenever you see a message with %TO or %TT or such.  You have to provide what the value is to be substituted for the plcaehold.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_d592ce9e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "Check root type:\nif( root !\u003d NULL \u0026\u0026 root-\u003eisBuildingObject() )",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_b58f4275",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "Check if building is null before using.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_75e9da19",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "Need to lock the building object before calling regsiter:\n\nLocker blocker( building, player );\n\nThis is a cross-lock.  The player object already comes in locked, so you just ask for an additional lock on building.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_958c4681",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-17T04:38:47Z",
+      "side": 1,
+      "message": "Is this method used?  I didn\u0027t see it at a glance.  Remove it if not.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
