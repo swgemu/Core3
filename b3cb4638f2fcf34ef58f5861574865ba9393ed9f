@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_951686f0",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-17T22:57:40Z",
+      "side": 1,
+      "message": "\u0026\u0026 otherwise the it will try to run ghost-\u003eisPr.. when ghost is NULL",
+      "revId": "b3cb4638f2fcf34ef58f5861574865ba9393ed9f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_75d31a39",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-17T22:57:40Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "b3cb4638f2fcf34ef58f5861574865ba9393ed9f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
