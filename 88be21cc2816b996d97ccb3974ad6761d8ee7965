@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_3558f2f9",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-17T18:26:25Z",
+      "side": 1,
+      "message": "Please don\u0027t include commented code in your patches unless it\u0027s marked as a TODO.",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_155df6e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-17T18:26:25Z",
+      "side": 1,
+      "message": "Please remove any debugging code before patch submission.",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_f5714a78",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-17T18:26:25Z",
+      "side": 1,
+      "message": "I think you\u0027d be better served by adding a method to Zone.idl to check if an object is registered. Call it something like:\nisObjectRegisteredWithPlanetaryMap(SceneObject object);\n\nYou can then use the method in unregisterProfessional() as well.",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_b56bc284",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-17T18:26:25Z",
+      "side": 1,
+      "message": "I\u0027d rather you not add the above methods, but simply do hasSkill() checks within RegisterWithPlanetaryMapCommand.",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_75055ac1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1740,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-17T18:26:25Z",
+      "side": 1,
+      "message": "If you aren\u0027t going to be using all of these methods, then there\u0027s no reason to add them. Just add the ones you use. The others can be added later if the need arises.",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_9568c688",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-17T18:26:25Z",
+      "side": 1,
+      "message": "I think you would be better served by checking for register location with planetary map ability rather than checking what skill boxes they have. If they have the ability, you can then check profession vs. building type.",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
