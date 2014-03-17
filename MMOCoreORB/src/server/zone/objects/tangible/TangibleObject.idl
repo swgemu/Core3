@@ -584,7 +584,7 @@ class TangibleObject extends SceneObject {
 	}
 	public native void setSerialNumber(final string serial);
 	
-	public abstract void setLevel(int lev) {
+	public abstract void setLevel(int lev, boolean randomHam = true) {
 		level = lev;
 	}
 	

@@ -215,7 +215,7 @@ class AiAgent extends CreatureObject {
 	
 	public native void doMovement();
 	
-	public native void setLevel(int lvl);
+	public native void setLevel(int lvl, boolean randomHam = true);
 	
 	/**
 	 * Sends the CREO baseline messages of this object to the specified player
@@ -288,7 +288,7 @@ class AiAgent extends CreatureObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
-	public native void loadTemplateData(CreatureTemplate templateData, boolean randomHam = true);
+	public native void loadTemplateData(CreatureTemplate templateData);
 	
 	/**
 	 * Inflicts damage into the object

@@ -713,7 +713,7 @@ class CreatureObject extends TangibleObject {
 	public native void notifySelfPositionUpdate();
 	public native void notifyPostureChange(int newPosture);
 	
-	public native void setLevel(int level);
+	public native void setLevel(int level, boolean randomHam = true);
 	
 	public native void updateToDatabaseAllObjects(boolean startTask);
 

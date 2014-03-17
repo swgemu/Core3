@@ -80,7 +80,7 @@ float AiAgentImplementation::calculateAttackSpeed(int level) {
 	return speed;
 }
 
-void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData, bool randomHam) {
+void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	npcTemplate = templateData;
 
 	setPvpStatusBitmask(npcTemplate->getPvpBitmask());
@@ -139,11 +139,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData, boo
 
 	for (int i = 0; i < 9; ++i) {
 		if (i % 3 == 0) {
-			if (randomHam)
-				ham = System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM();
-			else
-				ham = ((npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) / 2) + npcTemplate->getBaseHAM();
-
+			ham = System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM();
 			baseHAM.add(ham);
 		} else
 			baseHAM.add(ham/100);
@@ -245,7 +241,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData, boo
 	}
 }
 
-void AiAgentImplementation::setLevel(int lvl) {
+void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 	if (lvl == 0)
 		return;
 
@@ -294,7 +290,11 @@ void AiAgentImplementation::setLevel(int lvl) {
 
 	for (int i = 0; i < 9; ++i) {
 		if (i % 3 == 0) {
-			ham = System::random(baseHamMax - baseHam) + baseHam;
+			if (randomHam)
+				ham = System::random(baseHamMax - baseHam) + baseHam;
+			else
+				ham = ((baseHamMax - baseHam) / 2) + baseHam;
+
 			setBaseHAM(i, ham);
 		} else
 			setBaseHAM(i, ham / 100);
