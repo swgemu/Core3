@@ -259,8 +259,25 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 	if (!channel->hasPlayer(sender))
 		return;
 
+	Zone* zone = sender->getZone();
+	if( zone == NULL ){
+		return;
+	}
+
+	ManagedReference<ChatRoom*> planetRoom = zone->getChatRoom();
+
 	BaseMessage* msg = new ChatRoomMessage(name, message, roomID);
-	channel->broadcastMessage(msg);
+
+	// Auction Chat and Planet Chat should adhere to player ignore list
+	if( auctionRoom != NULL && auctionRoom->getRoomID() == roomID ){
+		channel->broadcastMessageCheckIgnore(msg, name);
+	}
+	else if( planetRoom != NULL && planetRoom->getRoomID() == roomID ){
+		channel->broadcastMessageCheckIgnore(msg, name);
+	}
+	else{
+		channel->broadcastMessage(msg);
+	}
 
 	BaseMessage* amsg = new ChatOnSendRoomMessage(counter);
 	channel->broadcastMessage(amsg);
@@ -927,7 +944,7 @@ void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const U
 	ManagedReference<ChatRoom*> room = zone->getChatRoom();
 	if (room != NULL) {
 		BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
-		room->broadcastMessage(msg);
+		room->broadcastMessageCheckIgnore(msg, name);
 	}
 
 }
@@ -961,7 +978,7 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 
 	if (auctionRoom != NULL) {
 		BaseMessage* msg = new ChatRoomMessage(name, message, auctionRoom->getRoomID());
-		auctionRoom->broadcastMessage(msg);
+		auctionRoom->broadcastMessageCheckIgnore(msg, name);
 	}
 
 }
