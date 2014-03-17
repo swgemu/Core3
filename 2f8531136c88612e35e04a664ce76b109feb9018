@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_35ca32a2",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_95b56633",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_7582fa53",
         "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-03-17T04:38:47Z",
       "side": 1,
       "message": "Our style is typically to just list the string in the comments.  Aka, just \"You cannot register at a location....\"\n\nstringfiles.js is actually a file for a conversation editor tool a dev wrote and not really something we should be referencing in code.  It\u0027s just handy reference.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_15cf36b2",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_7582fa53",
       "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_f5c38a88",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_5587fe61",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_357c7272",
         "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2014-03-17T04:38:47Z",
       "side": 1,
       "message": "Rather than looping over the entire map and trying to find the building, would this work?\n\nthis-\u003esetPlanetMapLocationActiveCode(2);\ngetZone()-\u003eunregisterObjectWithPlanetaryMap(this);\ngetZone()-\u003eregisterObjectWithPlanetaryMap(this);\n\nSeems cleaner than this loop. Would it also eliminate the need for the getBuildingType?",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_d5c08e7e",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "I need to confirm that the building in question is already registered with the planetary map.  If I understand what you put, that would just take any building and add it to the map (register/unregister), which we don\u0027t want.  We only want to toggle the image for buildings that are already on the map.\n\nI could go through the whole list of registered buildings, and not need the getBuildingType, but that\u0027s assuming that a building can\u0027t appear more than once, and I\u0027m worried that there may be a one-off scenario for that, so looping through seemed easy enough to do.\n\nI\u0027d suggest leaving this code as is.",
+      "parentUuid": "3a3291f1_357c7272",
       "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_b5bd0205",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "Again, the player could enter a building that has not been registered yet (a player city med center but the city hasn\u0027t been registered.  Need to confirm that the building is *already* on the pmap, and not just add it.",
+      "parentUuid": "3a3291f1_1581764a",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_f595ca88",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
         "patchSetId": 2
@@ -98,6 +188,24 @@
       "writtenOn": "2014-03-17T04:38:47Z",
       "side": 1,
       "message": "We don\u0027t typically reference websites in the code.  You can point it out in gerrit or on the checklist for reference, though.  The assumption is that we used all available sources of information.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_f5dcaa76",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_f595ca88",
       "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_55d5be41",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_55eede23",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_d592ce9e",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
         "patchSetId": 2
@@ -132,6 +258,24 @@
       "writtenOn": "2014-03-17T04:38:47Z",
       "side": 1,
       "message": "Check root type:\nif( root !\u003d NULL \u0026\u0026 root-\u003eisBuildingObject() )",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_d5d9ae84",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_d592ce9e",
       "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_95e32633",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_b58f4275",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_75e9da19",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
         "patchSetId": 2
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_75d0ba53",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RegisterWithLocationCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_75e9da19",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_958c4681",
         "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObject.idl",
         "patchSetId": 2
@@ -183,6 +363,24 @@
       "writtenOn": "2014-03-17T04:38:47Z",
       "side": 1,
       "message": "Is this method used?  I didn\u0027t see it at a glance.  Remove it if not.",
+      "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_15f856e4",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-17T07:18:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3291f1_958c4681",
       "revId": "2f8531136c88612e35e04a664ce76b109feb9018",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
