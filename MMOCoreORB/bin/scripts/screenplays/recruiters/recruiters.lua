@@ -89,6 +89,12 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		
 		createEvent(30000, "recruiter_convo_handler", "handleGoOvert", conversingPlayer)
 	elseif (screenID == "accepted_go_covert") then
+	
+      --printf("pew pew fired1\n")
+       if (player:hasSkill("force_title_jedi_rank_03")) then
+       		return
+       end	
+	
 		if (playerObjectPointer ~= nil) then
 			local playerObject = LuaPlayerObject(playerObjectPointer)
 			playerObject:setFactionStatus(3)
@@ -96,6 +102,12 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		
 		createEvent(300000, "recruiter_convo_handler", "handleGoCovert", conversingPlayer)
 	elseif (screenID == "accepted_go_on_leave") then
+	
+      --printf("pew pew fired2\n")
+       if (player:hasSkill("force_title_jedi_rank_03")) then
+       		return
+       end	
+	
 		if (playerObjectPointer ~= nil) then
 			local playerObject = LuaPlayerObject(playerObjectPointer)
 			playerObject:setFactionStatus(3)
@@ -103,6 +115,12 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		
 		createEvent(300000, "recruiter_convo_handler", "handleGoOnLeave", conversingPlayer)
 	elseif (screenID == "accepted_resign") then
+	
+      --printf("pew pew fired3\n")
+       if (player:hasSkill("force_title_jedi_rank_03")) then
+       		return
+       end
+	
 		if (playerObjectPointer ~= nil) then
 			local playerObject = LuaPlayerObject(playerObjectPointer)
 			
