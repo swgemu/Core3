@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_55525e14",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2014-03-17T02:37:05Z",
+      "side": 1,
+      "message": "No need to add the convo in here if you are using themepark logic",
+      "revId": "1e03d2d343079b8e62e199e14a2134deba734e63",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_d53d2ebd",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/tasks/orig_aaph_koden_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2014-03-17T02:37:05Z",
+      "side": 1,
+      "message": "same here. this convo file isnt needed if you are using themepark logic.",
+      "revId": "1e03d2d343079b8e62e199e14a2134deba734e63",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_155cd624",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/screenplays.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2014-03-17T02:37:05Z",
+      "side": 1,
+      "message": "need to rebase/pull from lastest. this file was modified recently in review 1491",
+      "revId": "1e03d2d343079b8e62e199e14a2134deba734e63",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_f5402a37",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/aaph_koden.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2014-03-17T02:37:05Z",
+      "side": 1,
+      "message": "does this mission converse with you?",
+      "revId": "1e03d2d343079b8e62e199e14a2134deba734e63",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
