@@ -38,7 +38,10 @@ int LightsaberObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
-	if (!sceneObject->isASubChildOf(player))
+	Reference<PlayerObject*> playObject = player->getPlayerObject();
+
+	// Admins should be able to open.
+	if (!sceneObject->isASubChildOf(player) && !playObject->isPrivileged())
 		return 0;
 
 	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject);
