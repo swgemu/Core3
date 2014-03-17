@@ -158,14 +158,8 @@ class ChatRoom extends ManagedObject {
 	public native void removePlayer(CreatureObject player, boolean doLock = true);
 	public native void removePlayer(final string player);
 
-	public native void broadcastMessage(BaseMessage msg); /* {
-		for (int i = 0; i < playerList.size(); ++i) {
-			CreatureObject player = playerList.get(i);
-			player.sendMessage(msg.clone());
-		}
-
-		msg.finalize();
-	}*/
+	public native void broadcastMessage(BaseMessage msg);
+	public native void broadcastMessageCheckIgnore(BaseMessage msg, string senderName );
 	
 	@local 
 	public synchronized void broadcastMessages(Vector<BaseMessage> messages) {
