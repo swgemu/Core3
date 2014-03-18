@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/Container.h"
+#include "server/zone/objects/tangible/RelockLootContainerEvent.h"
 
 class OpenContainerCommand : public QueueCommand {
 public:
@@ -112,7 +113,23 @@ public:
 		}
 
 */
+
+		ManagedReference<Container*> container = objectToOpen.castTo<Container*>();
+		if(container != NULL && container->isContainerLocked()) {
+			creature->sendSystemMessage("@slicing/slicing:locked");
+			return SUCCESS;
+		}
+
+
 		if (objectToOpen->checkContainerPermission(creature, ContainerPermissions::OPEN)) {
+
+			if(objectToOpen->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
+				if(container != NULL && container->isRelocking() == false) {
+					Reference<RelockLootContainerEvent*> relockEvent = new RelockLootContainerEvent(container);
+					relockEvent->schedule(container->getLockTime());
+				}
+			}
+
 			objectToOpen->openContainerTo(creature);
 
 			objectToOpen->notifyObservers(ObserverEventType::OPENCONTAINER, creature);

@@ -14,22 +14,32 @@
 #include "server/zone/objects/tangible/Container.h"
 
 class RelockLootContainerEvent: public Task {
-	ManagedReference<TangibleObject*> tano;
+	ManagedReference<Container*> container;
 
 public:
-	RelockLootContainerEvent(TangibleObject* object) {
-		tano = object;
+	RelockLootContainerEvent(Container* object) {
+		
+		container = object;
+		container->setRelockingStatus(true);
+		
 	}
 
 	void run() {
-		// Relocks static loot containers
-		if (tano->getGameObjectType() != SceneObjectType::STATICLOOTCONTAINER && !tano->isContainerObject())
-			return;
 
-		Container* container = cast<Container*>( tano.get());
+        Locker locker(container);
 
 		container->setSliced(false);
-		container->setLockedStatus(true);
+		container->setRelockingStatus(false);
+
+		if ((System::random(100)) < container->getLockChance()) {
+			container->setSliceable(true);
+			container->setLockedStatus(true);
+		}
+		else
+		{
+			container->setLockedStatus(false);
+			container->setSliceable(false);
+		}
 
 	}
 

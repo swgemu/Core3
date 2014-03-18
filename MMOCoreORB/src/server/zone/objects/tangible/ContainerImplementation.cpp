@@ -56,11 +56,27 @@ which carries forward this exception.
 
 void ContainerImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
-
+	relocking = false;
 	setLoggingName("Container");
 
 }
 
+void ContainerImplementation::notifyLoadFromDatabase()
+{
+    TangibleObjectImplementation::notifyLoadFromDatabase();
+	if(getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
+
+		if(System::random(100) < getLockChance()) {
+			setLockedStatus(true);
+			setSliceable(true);
+			setSliced(false);
+		} else {
+			setLockedStatus(false);
+			setSliceable(false);
+			setSliced(false);
+		}
+	}
+}
 void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
@@ -72,6 +88,8 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 		return;
 
 	locked = containerTemplate->getLocked();
+
+
 }
 
 /*void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
