@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_20b0b2f3",
+        "filename": "MMOCoreORB/bin/scripts/object/mobile/objects.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 154172,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-18T17:57:05Z",
+      "side": 1,
+      "message": "You should not change this file. The lines you are changing are comments and won\u0027t actually change anything in game.",
+      "revId": "c2740c5784e669ffcc09758b378d6b7aa069eea6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
