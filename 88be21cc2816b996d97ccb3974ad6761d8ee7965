@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_35823201",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-18T00:13:21Z",
+      "side": 1,
+      "message": "QA won\u0027t benefit from any of it because they cannot see the console when on Nova.",
+      "parentUuid": "3a3291f1_752c3a4b",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_f5714a78",
         "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
         "patchSetId": 3
@@ -142,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_d5788e2d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-18T00:13:21Z",
+      "side": 1,
+      "message": "I only see you using them once each, within RegisterWithLocationCommand. Am I missing something?",
+      "parentUuid": "3a3291f1_b502a2b2",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_75055ac1",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
         "patchSetId": 3
@@ -171,6 +207,24 @@
       "side": 1,
       "message": "They are all being used.",
       "parentUuid": "3a3291f1_75055ac1",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_7588ba22",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1740,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-18T00:13:21Z",
+      "side": 1,
+      "message": "I see isInMedicalBuilding(), isInEntertainingBuilding(), and isInSalonBuilding() being used in RegisterWithLocationCommand.\n\nMaybe I\u0027m missing something, but I do not see isInHospitalBuilding(), isInHotelBuilding(), isInRecreationalBuilding(), isInTheaterBuilding(), or isInTavernBuilding() being used at all.",
+      "parentUuid": "3a3291f1_95ffa6aa",
       "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
