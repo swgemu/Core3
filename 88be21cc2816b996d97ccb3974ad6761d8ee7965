@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_958fa6cc",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-18T06:36:04Z",
+      "side": 1,
+      "message": "Ah ok, didn\u0027t know.  I\u0027ve already removed them.",
+      "parentUuid": "3a3291f1_35823201",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_f5714a78",
         "filename": "MMOCoreORB/src/server/zone/objects/building/BuildingObjectImplementation.cpp",
         "patchSetId": 3
@@ -178,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_55c13ee3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1730,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-18T06:36:04Z",
+      "side": 1,
+      "message": "Apologies, you are correct.  They were being used in multiple places, but then I optimized coding in CreatureObjectImplementation, and wasn\u0027t using it any more after that in multiple places.  I\u0027ll migrate them back to the command class.",
+      "parentUuid": "3a3291f1_d5788e2d",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_75055ac1",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
         "patchSetId": 3
@@ -225,6 +261,24 @@
       "side": 1,
       "message": "I see isInMedicalBuilding(), isInEntertainingBuilding(), and isInSalonBuilding() being used in RegisterWithLocationCommand.\n\nMaybe I\u0027m missing something, but I do not see isInHospitalBuilding(), isInHotelBuilding(), isInRecreationalBuilding(), isInTheaterBuilding(), or isInTavernBuilding() being used at all.",
       "parentUuid": "3a3291f1_95ffa6aa",
+      "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_15bbb673",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1740,
+      "author": {
+        "id": 841
+      },
+      "writtenOn": "2014-03-18T06:36:04Z",
+      "side": 1,
+      "message": "I think I was using them in the methods you mentioned, but then broke them out so that I wasn\u0027t grabbing reference objects over and over inside of isInMedicalBulding() (for example).\n\nI\u0027ll go ahead and scan them for usage, and remove them if they\u0027re not used.",
+      "parentUuid": "3a3291f1_7588ba22",
       "revId": "88be21cc2816b996d97ccb3974ad6761d8ee7965",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
