@@ -100,8 +100,8 @@ public:
 			}
 		}
 
-		structureObject->destroyObjectFromWorld(true);
 		structureObject->destroyObjectFromDatabase(true);
+		structureObject->destroyObjectFromWorld(true);
 		structureObject->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, structureObject, 0);
 	}
 };
