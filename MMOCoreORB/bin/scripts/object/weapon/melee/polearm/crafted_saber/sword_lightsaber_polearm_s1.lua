@@ -123,8 +123,6 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s1 = object_w
 	
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 
-	noTrade = 1,
-
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "SR", "UT", "CD", "OQ", "OQ", "OQ", "OQ"},
 	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1},
