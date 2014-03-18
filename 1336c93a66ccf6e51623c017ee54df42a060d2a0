@@ -16,6 +16,24 @@
       "revId": "1336c93a66ccf6e51623c017ee54df42a060d2a0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_40997e6d",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-03-18T18:18:31Z",
+      "side": 1,
+      "message": "Probably wouldn\u0027t hurt.   I think at the end of the day the price gets rounded off anyway.",
+      "parentUuid": "3a3291f1_a0726247",
+      "revId": "1336c93a66ccf6e51623c017ee54df42a060d2a0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
