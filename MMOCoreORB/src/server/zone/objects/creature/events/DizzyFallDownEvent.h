@@ -25,7 +25,7 @@ public:
 		int rand = System::random(100);
 		int chance = 5; // Percent.
 
-		if (creature->isDizzied() && (100 - rand <= chance)) {
+		if (creature->isDizzied() && (100 - rand >= chance)) {
 			if (creature->isRidingMount()) {
 				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
