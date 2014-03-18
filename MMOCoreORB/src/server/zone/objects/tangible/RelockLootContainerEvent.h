@@ -19,9 +19,18 @@ class RelockLootContainerEvent: public Task {
 public:
 	RelockLootContainerEvent(TangibleObject* object) {
 		tano = object;
+		Container *container = cast<Container*> (tano.get());
+		if(container)
+			container->setRelockingStatus(true);
+		else
+			tano = NULL;
 	}
 
 	void run() {
+
+		if(!tano)
+			return;
+
 		// Relocks static loot containers
 		if (tano->getGameObjectType() != SceneObjectType::STATICLOOTCONTAINER && !tano->isContainerObject())
 			return;
@@ -29,7 +38,17 @@ public:
 		Container* container = cast<Container*>( tano.get());
 
 		container->setSliced(false);
-		container->setLockedStatus(true);
+		container->setRelockingStatus(false);
+
+		if ((System::random(100)) < container->getLockChance()) {
+			container->setSliceable(true);
+			container->setLockedStatus(true);
+		}
+		else
+		{
+			container->setLockedStatus(false);
+			container->setSliceable(false);
+		}
 
 	}
 
