@@ -47,12 +47,14 @@ public:
 					cast<BuildingObject*>(structureObject.get());
 
 			for (uint32 i = 1; i <= buildingObject->getTotalCellNumber(); ++i) {
-				ManagedReference<CellObject*> cellObject = buildingObject->getCell(
-						i);
+				ManagedReference<CellObject*> cellObject = buildingObject->getCell(i);
+
+				if (cellObject == NULL)
+					continue;
 
 				int childObjects = cellObject->getContainerObjectsSize();
 
-				if (cellObject == NULL || childObjects <= 0)
+				if (childObjects <= 0)
 					continue;
 
 				//Traverse the vector backwards since the size will change as objects are removed.
@@ -64,7 +66,7 @@ public:
 
 					rlocker.release();
 
-					if (obj->isPlayerCreature()) {
+					if (obj->isPlayerCreature() || obj->isPet()) {
 						CreatureObject* playerCreature =
 								cast<CreatureObject*>(obj.get());
 
@@ -79,32 +81,6 @@ public:
 						}
 
 						structureObject->wlock();
-					} else if (obj->isVendor()) {
-						Reference<VendorDataComponent*> vendorData = cast<VendorDataComponent*>(obj->getDataObjectComponent());
-
-						if (vendorData != NULL) {
-							ManagedReference<SceneObject*> vendorOwner = zone->getZoneServer()->getObject(vendorData->getOwnerId());
-
-							if (vendorOwner != NULL) {
-								ManagedReference<SceneObject*> vendorOwnersGhost = vendorOwner->getSlottedObject("ghost");
-
-								if (vendorOwnersGhost != NULL && vendorOwnersGhost->isPlayerObject()) {
-									PlayerObject* playo = cast<PlayerObject*>(vendorOwnersGhost.get());
-
-									structureObject->unlock();
-
-									try {
-										Locker plocker(vendorOwner);
-
-										playo->removeVendor(obj);
-									} catch (...) {
-										vendorOwner->error("unreported exception caught while removing vendor");
-									}
-
-									structureObject->wlock();
-								}
-							}
-						}
 					}
 				}
 			}
