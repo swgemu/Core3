@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_608d9a31",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoom.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-18T18:08:00Z",
+      "side": 1,
+      "message": "It looks fine as is, but I would probably not add a new method. Rather, I would add an optional argument to the existing method (string senderName \u003d \"\"). You can then check within the method if senderName is empty or not and check ignore if it\u0027s not.\n\nJust an idea. Either way would be fine. I\u0027ll leave it up to you whether you want to change your patch or not.",
+      "revId": "4fe0b1ddb147f83bd27c978212b332875f1bb64b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
