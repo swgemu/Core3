@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_a0726247",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-03-18T18:14:51Z",
+      "side": 1,
+      "message": "Would it not be better if junkMinValue and junkMaxValue were floats rather than ints?",
+      "revId": "1336c93a66ccf6e51623c017ee54df42a060d2a0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
