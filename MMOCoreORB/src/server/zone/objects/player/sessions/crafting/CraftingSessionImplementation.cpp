@@ -627,7 +627,7 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 	if (state == 2) {
 
 		// Flag to get the experimenting window
-		if (craftingStation != NULL)
+		if (craftingStation != NULL && (manufactureSchematic->getCraftingValues()->getVisibleExperimentalPropertyTitleSize() > 0 || manufactureSchematic->allowFactoryRun()))
 			// Assemble with Experimenting
 			state = 3;
 
