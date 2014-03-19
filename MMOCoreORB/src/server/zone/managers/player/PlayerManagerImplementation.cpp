@@ -111,7 +111,7 @@
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
-				Logger("PlayerManager") {
+										Logger("PlayerManager") {
 	server = zoneServer;
 	processor = impl;
 
@@ -993,16 +993,16 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			if (group != NULL)
 				xpAmount *= groupExpMultiplier;
 
-				//Jedi experience doesn't count towards combat experience supposedly.
-				if (xpType != "jedi_general")
-					combatXp += xpAmount;
+			//Jedi experience doesn't count towards combat experience supposedly.
+			if (xpType != "jedi_general")
+				combatXp += xpAmount;
 
-				if( winningFaction == player->getFaction()){
-					xpAmount *= gcwBonus;
-					combatXp *= gcwBonus;
-				}
-				//Award individual weapon exp.
-				awardExperience(player, xpType, xpAmount);
+			if( winningFaction == player->getFaction()){
+				xpAmount *= gcwBonus;
+				combatXp *= gcwBonus;
+			}
+			//Award individual weapon exp.
+			awardExperience(player, xpType, xpAmount);
 		}
 
 		combatXp /= 10.f;
@@ -1315,6 +1315,13 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 	}
 
 	if (objectToTrade->isNoTrade()) {
+		player->sendSystemMessage("@container_error_message:container26");
+		handleAbortTradeMessage(player);
+		return;
+	}
+
+	// Containers containing notrade items...
+	if (objectToTrade->containsNoTradeObjectRecursive()) {
 		player->sendSystemMessage("@container_error_message:container26");
 		handleAbortTradeMessage(player);
 		return;
@@ -3190,8 +3197,8 @@ bool PlayerManagerImplementation::offerTeaching(CreatureObject* teacher, Creatur
 
 	StringBuffer prompt;
 	prompt << teacher->getDisplayedName()
-									<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
-									<< " " << expname  << " experience cost).";
+															<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
+															<< " " << expname  << " experience cost).";
 
 	suibox->setPromptText(prompt.toString());
 	suibox->setCallback(new PlayerTeachConfirmSuiCallback(server, skill));
