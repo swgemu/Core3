@@ -49,26 +49,35 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 	
 	}
 	
+
 	if (player->getJediState() > 1 || player->isPrivileged())	{	
 
 		if (getColor() != 31){
-			if (owner == ""){
-				StringBuffer str;
-				StringBuffer str2;
-				str << "\\#FF6600" << "UNTUNED" ;
-				str2 << "@jedi_spam:saber_color_" << getColor();				
+			StringBuffer str;
+			str << "\\#FF6600" << "UNTUNED" ;		
+			if (owner == ""){			 
 				alm->insertAttribute("crystal_owner", str);
-				alm->insertAttribute("color", str2);
 			} else {
-				StringBuffer str3;
-				str3 << "@jedi_spam:saber_color_" << getColor();
-				alm->insertAttribute("crystal_owner", owner);				
-				alm->insertAttribute("color", str3);
-			}
+				alm->insertAttribute("crystal_owner", owner);	
+			}	
 		}	
-			
 	}
+	
 
+	if (getColor() != 31){
+		if (owner == ""){
+			StringBuffer str2;
+			str2 << "@jedi_spam:saber_color_" << getColor();	
+			alm->insertAttribute("color", str2);				
+		} else {
+			StringBuffer str3;
+			str3 << "@jedi_spam:saber_color_" << getColor();			
+			alm->insertAttribute("color", str3);
+		}
+	}	
+	
+	
+	
 	if (player->getJediState() > 1 || player->isPrivileged()){
 
 		if (getColor() == 31){
@@ -94,10 +103,8 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 }
 
 void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-		
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");	
-	
-	if ((inventory != NULL) && (owner == "") && player->hasSkill("force_title_jedi_rank_01")){
+			
+	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01")){
 		String text = "@jedi_spam:tune_crystal";
 		menuResponse->addRadialMenuItem(128, 3, text);
 	}
@@ -141,7 +148,7 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 		} else {
 			player->sendSystemMessage("This crystal has already been successfully tuned.");
 		
-		}	
+	}	
 		
 }
 
