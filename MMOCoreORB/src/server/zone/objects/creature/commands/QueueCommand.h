@@ -317,6 +317,10 @@ public:
 		return false;
 	}
 
+	virtual bool isForceHealCommand() {
+		return false;
+	}
+
 	inline int getSkillModSize() {
 		return skillMods.size();
 	}
