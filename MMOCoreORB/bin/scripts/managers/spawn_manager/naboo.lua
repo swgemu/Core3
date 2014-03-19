@@ -119,7 +119,7 @@ naboo_regions = {
 	{"keren_easy_newbie",1685,2620,{1,1360},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"naboo_starter_creatures"},
 	{"keren_medium_newbie",1685,2620,{3,1240,2200},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"naboo_medium_creatures"},
 	{"lainorm_swamp_2",0,0,{1,0},UNDEFINEDAREA,1},
-	{"lake_retreat",-5555,-34,{1,200},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
+	{"lake_retreat",-5555,-34,{1,400},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"lake_retreat_gazebo",-5637,174,{1,40},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"lasay_swamp",0,0,{1,0},UNDEFINEDAREA,1},
 	{"lianorm_swamp_1",0,0,{1,0},UNDEFINEDAREA,1},
