@@ -63,6 +63,9 @@ randomDotDuration = {30, 240} -- Set for poison. Fire will be x1.5, disease x5.
 randomDotPotency = {1, 100}
 randomDotUses = {250, 9999}
 
+-- Modifier applied to min/max junk values found in loot item lua
+junkValueModifier = 10;
+
 lootableArmorAttachmentStatMods = {
 	"aim",
 	"alert",
