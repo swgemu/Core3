@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_0696ee94",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/ContainerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-20T02:37:14Z",
+      "side": 1,
+      "message": "TangibleObjectImplementation::notifyLoadFromDatabase()",
+      "revId": "67f2b035655c789e1714b6c972e1017deba70f65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_467cf672",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/RelockLootContainerEvent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-20T02:37:14Z",
+      "side": 1,
+      "message": "why dont you do this check before creating the event? thus avoiding creating it, queuing it and running it..",
+      "revId": "67f2b035655c789e1714b6c972e1017deba70f65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_2681ea4a",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/RelockLootContainerEvent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-20T02:37:14Z",
+      "side": 1,
+      "message": "needs \n\nLocker locker(tano);",
+      "revId": "67f2b035655c789e1714b6c972e1017deba70f65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
