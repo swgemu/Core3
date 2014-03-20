@@ -25,6 +25,7 @@ includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 
 -- Task/Quest
+includeFile("tasks/aaph_koden.lua")
 includeFile("tasks/ajuva_vanasterin.lua")
 includeFile("tasks/biribas_tarun.lua")
 includeFile("tasks/booto_lubble.lua")
