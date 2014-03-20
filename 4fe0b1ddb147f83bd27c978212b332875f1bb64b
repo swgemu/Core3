@@ -34,6 +34,23 @@
       "revId": "4fe0b1ddb147f83bd27c978212b332875f1bb64b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_a68cba80",
+        "filename": "MMOCoreORB/src/server/chat/room/ChatRoomImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-20T02:38:31Z",
+      "side": 1,
+      "message": "should either pass toLowerCase or calculate it before the loop to optimize it a bit",
+      "revId": "4fe0b1ddb147f83bd27c978212b332875f1bb64b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
