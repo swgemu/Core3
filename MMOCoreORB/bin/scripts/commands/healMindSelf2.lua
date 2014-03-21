@@ -43,6 +43,7 @@
 
 HealMindSelf2Command = {
         name = "healmindself2",
+	forceCost = 100,
 }
 
 AddCommand(HealMindSelf2Command)

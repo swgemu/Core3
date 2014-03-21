@@ -46,12 +46,13 @@ which carries forward this exception.
 #define HEALHEALTHSELF1COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "ForceHealQueueCommand.h"
 
-class HealHealthSelf1Command : public QueueCommand {
+class HealHealthSelf1Command : public ForceHealQueueCommand {
 public:
 
 	HealHealthSelf1Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: ForceHealQueueCommand(name, server) {
 
 	}
 
@@ -76,56 +77,51 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
-
-		if (playerObject != NULL) {
-			if (playerObject->getForcePower() <= 65) {
-				creature->sendSystemMessage("@jedi_spam:no_force_power");
-				return GENERALERROR;
-			}
-
-			// At this point, the player has enough Force... Can they perform skill?
-
-			if (!canPerformSkill(creature))
-				return GENERALERROR;
-
-
-			int forceCost = 0;
-
-			// Lets see how much healing they are doing.
-			uint32 healthHealed = creature->healDamage(creature, CreatureAttribute::HEALTH, 500);
-
-
-
-			// Send system message(s).
-
-
-			if (healthHealed > 0){
-				StringIdChatParameter message2("jedi_spam", "heal_self");
-				message2.setDI(healthHealed);
-				message2.setTO("@jedi_spam:health_damage");
-				creature->sendSystemMessage(message2);
-			
-
-				// Play client effect, and deduct Force Power.
-
-				forceCost = MIN((healthHealed / 7), 65);
-
-				creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
-				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-			}
-		
-		
-		return SUCCESS;
+		if (isWarcried(creature)) {
+			return GENERALERROR;
 		}
 
-		return GENERALERROR;
-	}
+
+		if (!checkForceCost(creature)) {
+			creature->sendSystemMessage("@jedi_spam:no_force_power");
+			return GENERALERROR;
+		}
+
+		// At this point, the player has enough Force... Can they perform skill?
+
+		if (!canPerformSkill(creature))
+			return GENERALERROR;
 
 
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
-		return defaultTime * 3.0;
+		int forceCostDeducted = forceCost;
+
+		// Lets see how much healing they are doing.
+		int healAmount = 500;
+
+		uint32 healthHealed = creature->healDamage(creature, CreatureAttribute::HEALTH, healAmount);
+
+
+		forceCostDeducted = MIN((healthHealed / 7), forceCost);
+
+
+		// Send system message(s).
+
+		if (healthHealed > 0){
+			StringIdChatParameter message1("jedi_spam", "heal_self");
+			message1.setDI(healthHealed);
+			message1.setTO("@jedi_spam:health_damage");
+			creature->sendSystemMessage(message1);
+		}
+
+		doAnimations(creature, creature);
+
+
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+		if (playerObject != NULL)
+			playerObject->setForcePower(playerObject->getForcePower() - forceCostDeducted);
+
+		return SUCCESS;
 	}
 };
 
