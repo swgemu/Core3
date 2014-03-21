@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_c1c7b063",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/RelockLootContainerEvent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 813
+      },
+      "writtenOn": "2014-03-21T03:00:35Z",
+      "side": 1,
+      "message": "Force of habit, not used to the whole managed pointer routine in C++. I\u0027ll change this and resubmit it tonight.",
+      "parentUuid": "3a3291f1_467cf672",
+      "revId": "67f2b035655c789e1714b6c972e1017deba70f65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_2681ea4a",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/RelockLootContainerEvent.h",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2014-03-20T02:37:14Z",
       "side": 1,
       "message": "needs \n\nLocker locker(tano);",
+      "revId": "67f2b035655c789e1714b6c972e1017deba70f65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_a1c4a45f",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/RelockLootContainerEvent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 813
+      },
+      "writtenOn": "2014-03-21T03:00:35Z",
+      "side": 1,
+      "message": "Is this true for any instance that container is accessed outside of the container class? Or only on data writes?",
+      "parentUuid": "3a3291f1_2681ea4a",
       "revId": "67f2b035655c789e1714b6c972e1017deba70f65",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
