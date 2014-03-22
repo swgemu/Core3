@@ -144,6 +144,28 @@ void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 	delete msg;
 }
 
+void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, String& senderName) {
+	Locker locker(_this.get());
+
+	String lowerName = senderName.toLowerCase();
+
+	for (int i = 0; i < playerList.size(); ++i) {
+		ManagedReference<CreatureObject*> player = playerList.get(i);
+
+		if (player){
+			PlayerObject* ghost = player->getPlayerObject();
+			if (ghost == NULL)
+				continue;
+
+			if (!ghost->isIgnoring(lowerName)) {
+				player->sendMessage(msg->clone());
+			}
+		}
+	}
+
+	delete msg;
+}
+
 void ChatRoomImplementation::removeAllPlayers() {
 	Locker locker(_this.get());
 
