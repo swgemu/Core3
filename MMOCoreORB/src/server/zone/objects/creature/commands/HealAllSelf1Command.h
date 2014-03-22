@@ -40,18 +40,19 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef HEALALLSELF1COMMAND_H_
 #define HEALALLSELF1COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "ForceHealQueueCommand.h"
 
-class HealAllSelf1Command : public QueueCommand {
+class HealAllSelf1Command : public ForceHealQueueCommand {
 public:
 
 	HealAllSelf1Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+: ForceHealQueueCommand(name, server) {
 
 	}
 
@@ -60,11 +61,12 @@ public:
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
 			return false;
 		}
-		
+
 		return true;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -76,33 +78,35 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+		if (isWarcried(creature)) {
+			return GENERALERROR;
+		}
 
 
-		if (playerObject != NULL) {
-			if (playerObject->getForcePower() <= 340) {
-				creature->sendSystemMessage("@jedi_spam:no_force_power");
-				return GENERALERROR;
-			}
+		if (!checkForceCost(creature)) {
+			creature->sendSystemMessage("@jedi_spam:no_force_power");
+			return GENERALERROR;
+		}
 
 		// At this point, the player has enough Force... Can they perform skill?
 
 		if (!canPerformSkill(creature))
-				return GENERALERROR;
+			return GENERALERROR;
 
 
-		int forceCost = 0;
+		int forceCostDeducted = forceCost;
 
 		// Lets see how much healing they are doing.
+		int healAmount = 1500;
 
-		uint32 healthHealed = creature->healDamage(creature, CreatureAttribute::HEALTH, 500);
-		uint32 actionHealed = creature->healDamage(creature, CreatureAttribute::ACTION, 500);
-		uint32 mindHealed = creature->healDamage(creature, CreatureAttribute::MIND, 500);
+		uint32 healthHealed = creature->healDamage(creature, CreatureAttribute::HEALTH, healAmount);
+		uint32 actionHealed = creature->healDamage(creature, CreatureAttribute::ACTION, healAmount);
+		uint32 mindHealed = creature->healDamage(creature, CreatureAttribute::MIND, healAmount);
 
-			
-		forceCost = MIN(((healthHealed + actionHealed + mindHealed) / 4), 340);
 
-			
+		forceCostDeducted = MIN(((healthHealed + actionHealed + mindHealed) / 9.5), forceCost);
+
+
 		// Send system message(s).
 
 		if (healthHealed > 0){
@@ -127,22 +131,15 @@ public:
 			creature->sendSystemMessage(message3);			
 		}
 
-			
-		// Play client effect, and deduct Force Power.
+		doAnimations(creature, creature);
 
 
-		creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-			
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+		if (playerObject != NULL)
+			playerObject->setForcePower(playerObject->getForcePower() - forceCostDeducted);
+
 		return SUCCESS;
-		}
-
-		return GENERALERROR;
-	}
-
-
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
-		return defaultTime * 3.0;
 	}
 
 };

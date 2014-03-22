@@ -46,12 +46,13 @@ which carries forward this exception.
 #define HEALMINDSELF1COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "ForceHealQueueCommand.h"
 
-class HealMindSelf1Command : public QueueCommand {
+class HealMindSelf1Command : public ForceHealQueueCommand {
 public:
 
 	HealMindSelf1Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: ForceHealQueueCommand(name, server) {
 
 	}
 
@@ -67,6 +68,7 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
+
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -77,56 +79,50 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
-
-		if (playerObject != NULL) {
-			if (playerObject->getForcePower() <= 65) {
-				creature->sendSystemMessage("@jedi_spam:no_force_power");
-				return GENERALERROR;
-			}
-
-			// At this point, the player has enough Force... Can they perform skill?
-
-			if (!canPerformSkill(creature))
-				return GENERALERROR;
-
-
-			int forceCost = 0;
-
-			// Lets see how much healing they are doing.
-			uint32 mindHealed = creature->healDamage(creature, CreatureAttribute::MIND, 500);
-
-
-
-			// Send system message(s).
-
-
-			if (mindHealed > 0){
-				StringIdChatParameter message2("jedi_spam", "heal_self");
-				message2.setDI(mindHealed);
-				message2.setTO("@jedi_spam:mind_damage");
-				creature->sendSystemMessage(message2);
-
-
-				// Play client effect, and deduct Force Power.
-
-				forceCost = MIN((mindHealed / 7), 65);
-
-				creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
-				playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-			}
-
-			
-		return SUCCESS;
+		if (isWarcried(creature)) {
+			return GENERALERROR;
 		}
 
-		return GENERALERROR;
-	}
+
+		if (!checkForceCost(creature)) {
+			creature->sendSystemMessage("@jedi_spam:no_force_power");
+			return GENERALERROR;
+		}
+
+		// At this point, the player has enough Force... Can they perform skill?
+
+		if (!canPerformSkill(creature))
+			return GENERALERROR;
 
 
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
-		return defaultTime * 3.0;
+		int forceCostDeducted = forceCost;
+
+		// Lets see how much healing they are doing.
+		int healAmount = 500;
+
+		uint32 mindHealed = creature->healDamage(creature, CreatureAttribute::MIND, healAmount);
+
+		forceCostDeducted = MIN((mindHealed / 7), forceCost);
+
+
+		// Send system message(s).
+
+		if (mindHealed > 0){
+			StringIdChatParameter message3("jedi_spam", "heal_self");
+			message3.setDI(mindHealed);
+			message3.setTO("@jedi_spam:mind_damage");
+			creature->sendSystemMessage(message3);
+		}
+
+		doAnimations(creature, creature);
+
+
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+		if (playerObject != NULL)
+			playerObject->setForcePower(playerObject->getForcePower() - forceCostDeducted);
+
+		return SUCCESS;
 	}
 };
 
