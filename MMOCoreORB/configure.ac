@@ -19,7 +19,7 @@ AC_PROG_MAKE_SET
 AC_CHECK_HEADER(lua.h, [], [AC_MSG_ERROR([*** lua.h is required, install lua header files])])	 AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
 AC_CHECK_HEADER(mysql/mysql.h, [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])	 AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
 #AC_CHECK_HEADER(db_cxx.h, [], [AC_MSG_ERROR([*** db_cxx.h is required, install berkleydb header files])])	 AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
-
+AC_CHECK_PROG([USING_HOMEBREW],[brew],[yes])
 #AC_CHECK_LIB(liblua, lua_open, [], [AC_MSG_ERROR([*** libblua.a is required, install lua library files])])	 
 #AC_CHECK_LIB(libmysqlclient, mysql_init, [], [AC_MSG_ERROR([*** libmysqlclient.a is required, install mysql library files])])	 
 #AC_CHECK_LIB(db_cxx.a, db_env_create, [], [AC_MSG_ERROR([*** libdb_cxx.a is required, install berkleydb library files])])	 
@@ -32,10 +32,21 @@ case "$host_cpu-$host_os" in
       USER_LIBS_PATH="/usr/local/lib"
       ;;
      *darwin*)
-      SYSTEM_INCLUDES="-I/opt/local/include"
-      SYSTEM_LIBS="-lpthread"
-      USER_INCLUDES_PATH="/opt/local/include"
-      USER_LIBS_PATH="/opt/local/lib"
+	  if test x"${USING_HOMEBREW}" == x"yes" ; then
+	  	AC_DEFINE([HAS_HOMEBREW],[],["Using Homebrew"])
+		AC_MSG_RESULT("configuring for homebrew paths")
+      	SYSTEM_INCLUDES="-I/usr/local/include"
+      	SYSTEM_LIBS="-lpthread"
+      	USER_INCLUDES_PATH="/usr/local/include"
+      	USER_LIBS_PATH="/usr/local/lib"
+	  else
+	  	AC_DEFINE([HAS_MACPORTS],[],["Using Macports"])
+		AC_MSG_RESULT("configuring for macports paths")
+      	SYSTEM_INCLUDES="-I/opt/local/include"
+      	SYSTEM_LIBS="-lpthread"
+      	USER_INCLUDES_PATH="/opt/local/include"
+      	USER_LIBS_PATH="/opt/local/lib"
+	  fi
       ;;
     *cygwin*)
       SYSTEM_INCLUDES=""

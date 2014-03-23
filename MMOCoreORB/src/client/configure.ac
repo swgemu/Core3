@@ -8,6 +8,7 @@ AM_INIT_AUTOMAKE
 AM_INIT_AUTOMAKE([subdir-objects])
 
 CXXFLAGS="$CXXFLAGS $C_EXTRA_FLAGS "
+AC_CHECK_PROG([USING_HOMEBREW],[brew],[yes])
 
 AC_PROG_CC
 AC_PROG_CXX
@@ -21,10 +22,21 @@ case "$host_cpu-$host_os" in
       USER_LIBS_PATH="/usr/local/lib"
       ;;
      *darwin*)
-      SYSTEM_INCLUDES="-I/opt/local/include"
-      SYSTEM_LIBS="-lpthread"
-      USER_INCLUDES_PATH="/opt/local/include"
-      USER_LIBS_PATH="/opt/local/lib"
+	  if test x"${USING_HOMEBREW}" == x"yes" ; then
+	  	AC_DEFINE([HAS_HOMEBREW],[],["Using Homebrew"])
+		AC_MSG_RESULT("configuring for homebrew paths")
+      	SYSTEM_INCLUDES="-I/usr/local/include"
+      	SYSTEM_LIBS="-lpthread"
+      	USER_INCLUDES_PATH="/usr/local/include"
+      	USER_LIBS_PATH="/usr/local/lib"
+	  else
+	  	AC_DEFINE([HAS_MACPORTS],[],["Using Macports"])
+		AC_MSG_RESULT("configuring for macports paths")
+      	SYSTEM_INCLUDES="-I/opt/local/include"
+      	SYSTEM_LIBS="-lpthread"
+      	USER_INCLUDES_PATH="/opt/local/include"
+      	USER_LIBS_PATH="/opt/local/lib"
+	  fi	 
       ;;
     *cygwin*)
       SYSTEM_INCLUDES=""
