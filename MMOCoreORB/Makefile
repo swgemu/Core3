@@ -81,8 +81,9 @@ config:
 	#cd ../MMOEngine/external/ptmalloc3 && make
 	#done
 
-clean: cleanidl
+clean: cleanidl	
 	cd build/unix && make clean
+	cd utils/gtest-1.6.0 && make clean
 	#cd build/unix/src && rm *
 	#cd build/unix/src/.deps && rm *
 	#done
