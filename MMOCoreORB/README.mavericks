@@ -1,0 +1,74 @@
+To compile you will need the following:
+
+1.) Install homebrew
+ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+
+2.) Install the following homebrew packages
+brew install automake
+brew install lua
+brew install luarocks
+brew install mysql
+brew install autoconf
+brew install libtool
+brew install apple-gcc42 (if you want to compile with older gcc)
+
+* Special note about berkeley-db
+	You need version 5.0 however homebrew installs 5.3 so you will need to edit it.
+	to edit a home brew recipe type brew edit berkeley-db
+
+** Berkeley-db patch
+** begin patch
+diff --git a/Library/Formula/berkeley-db.rb b/Library/Formula/berkeley-db.rb
+index e51cbe7..dd65d99 100644
+--- a/Library/Formula/berkeley-db.rb
++++ b/Library/Formula/berkeley-db.rb
+@@ -2,8 +2,10 @@ require 'formula'
+
+ class BerkeleyDb < Formula
+   homepage 'http://www.oracle.com/technology/products/berkeley-db/index.html'
+-  url 'http://download.oracle.com/berkeley-db/db-5.3.28.tar.gz'
+-  sha1 'fa3f8a41ad5101f43d08bc0efb6241c9b6fc1ae9'
++  url 'http://download.oracle.com/berkeley-db/db-5.0.32.tar.gz'
++  md5 'b63afbd6ab191d0f19e00927f25d66fe'
++  #sha1 'fa3f8a41ad5101f43d08bc0efb6241c9b6fc1ae9'
+
+   bottle do
+     cellar :any
+@@ -48,10 +50,10 @@ class BerkeleyDb < Formula
+ end
+
+ __END__
+-diff --git a/src/dbinc/atomic.h b/src/dbinc/atomic.h
++diff --git a/dbinc/atomic.h b/dbinc/atomic.h
+ index 096176a..561037a 100644
+---- a/src/dbinc/atomic.h
+-+++ b/src/dbinc/atomic.h
++--- a/dbinc/atomic.h
+++++ b/dbinc/atomic.h
+ @@ -144,7 +144,7 @@ typedef LONG volatile *interlocked_val;
+  #define       atomic_inc(env, p)      __atomic_inc(p)
+  #define       atomic_dec(env, p)      __atomic_dec(p)
+** end patch
+
+Once your edit is complete you can do:	
+brew install berkeley-db
+
+3.) Setup myql as normal
+
+4.) env variables
+Setup the following variables for compiling
+export CC=clang
+export CXX=clang++
+export CPPFLAGS="-w -lstdc++ -DGTEST_USE_OWN_TR1_TUPLE=1"
+export CXXFLAGS="-lstdc++ -stdlib=libstdc++"
+export CLASSPATH="PROJECT_PATH/MMOEngine/bin/idlc.jar"
+
+5.) Install idlc to /usr/local/bin
+cp PROJECT_PATH/MMOEngine/bin/idlc* /usr/local/bin
+
+6.) Create a symlink for mysql
+mkdir /usr/local/include/mysql5
+ln -s /usr/local/include/mysql /usr/local/include/mysql5/mysql
+
+7.) make clean && make config && make build
+8.) Profit!
