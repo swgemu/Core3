@@ -81,8 +81,9 @@ config:
 	#cd ../MMOEngine/external/ptmalloc3 && make
 	#done
 
-clean: cleanidl
+clean: cleanidl	
 	cd build/unix && make clean
+	cd utils/gtest-1.6.0 && make clean
 	#cd build/unix/src && rm *
 	#cd build/unix/src/.deps && rm *
 	#done
@@ -102,7 +103,7 @@ ifeq ($(PLATFORM),Linux)
 	ENGINE3_DIR:=$(shell find /opt -name engine3* -print -quit)
 else 
 ifeq ($(PLATFORM),Darwin)
-  	CPU_CORES:=$(shell system_profiler | awk '/Number Of CPUs/{print $4}{next;}')
+  	CPU_CORES:=$(sysctl hw.ncpu | awk '{print $2}')
 
 	ENGINE3_DIR:=$(shell find /opt -name engine3* -depth 0)
 endif
