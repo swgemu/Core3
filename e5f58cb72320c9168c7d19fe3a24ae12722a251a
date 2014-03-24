@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_6936a205",
+        "filename": "MMOCoreORB/utils/gtest-1.6.0/Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 813
+      },
+      "writtenOn": "2014-03-24T02:20:56Z",
+      "side": 1,
+      "message": "Should just use CXX flags to avoid extraneous warnings from the compiler about duplicate flags",
+      "revId": "e5f58cb72320c9168c7d19fe3a24ae12722a251a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
