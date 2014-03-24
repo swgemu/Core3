@@ -86,6 +86,24 @@
       "revId": "67f2b035655c789e1714b6c972e1017deba70f65",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_8c267cb9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/RelockLootContainerEvent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-03-24T03:46:22Z",
+      "side": 1,
+      "message": "usually any instance where the data you are accessing might be modified by another thread",
+      "parentUuid": "3a3291f1_a1c4a45f",
+      "revId": "67f2b035655c789e1714b6c972e1017deba70f65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
