@@ -51,6 +51,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.creature.AiAgent;
 import server.zone.objects.area.ActiveArea;
 import engine.util.u3d.Coordinate;
+import server.zone.packets.scene.AttributeListMessage;
 
 class DroidObject extends AiAgent {
 	
