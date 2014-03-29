@@ -80,11 +80,13 @@ function createMissionTargetConvoTemplate(templateName, convoHandler)
 	addConversationTemplate(templateName, mission_target_convotemplate);
 end
 
---Themeparks
+
+-- Themeparks
 createMissionTargetConvoTemplate("theme_park_rebel_mission_target_convotemplate","theme_park_rebel_mission_target_conv_handler")
 createMissionTargetConvoTemplate("theme_park_jabba_mission_target_convotemplate","theme_park_jabba_mission_target_conv_handler")
 createMissionTargetConvoTemplate("theme_park_marauder_mission_target_convotemplate","theme_park_marauder_mission_target_conv_handler")
 createMissionTargetConvoTemplate("theme_park_imperial_mission_target_convotemplate","theme_park_imperial_mission_target_conv_handler")
+
 
 -- Tatooine
 createMissionTargetConvoTemplate("hedon_istee_mission_target_convotemplate","hedon_istee_mission_target_conv_handler")
@@ -96,8 +98,14 @@ createMissionTargetConvoTemplate("vardias_tyne_mission_target_convotemplate","va
 createMissionTargetConvoTemplate("nitra_vendallan_mission_target_convotemplate","nitra_vendallan_mission_target_conv_handler")
 createMissionTargetConvoTemplate("aaph_koden_mission_target_convotemplate","aaph_koden_mission_target_conv_handler")
 
+
 -- Naboo
 createMissionTargetConvoTemplate("gavyn_sykes_mission_target_convotemplate","gavyn_sykes_mission_target_conv_handler")
+
+
+-- Talus
+createMissionTargetConvoTemplate("kathikiis_ruwahurr_mission_target_convotemplate","kathikiis_ruwahurr_mission_target_conv_handler")
+
 
 -- Dantooine
 createMissionTargetConvoTemplate("drakka_judarrl_mission_target_convotemplate","drakka_judarrl_mission_target_conv_handler")
@@ -108,10 +116,12 @@ createMissionTargetConvoTemplate("lx_466_mission_target_convotemplate","lx_466_m
 createMissionTargetConvoTemplate("sg_567_mission_target_convotemplate","sg_567_mission_target_conv_handler")
 createMissionTargetConvoTemplate("xaan_talmaron_mission_target_convotemplate","xaan_talmaron_mission_target_conv_handler")
 
---Dathomir
+
+-- Dathomir
 createMissionTargetConvoTemplate("singular_nak_mission_target_convotemplate", "singular_nak_mission_target_conv_handler")
 
---Rori
+
+-- Rori
 createMissionTargetConvoTemplate("ajuva_vanasterin_mission_target_convotemplate","ajuva_vanasterin_mission_target_conv_handler")
 createMissionTargetConvoTemplate("biribas_tarun_mission_target_convotemplate","biribas_tarun_mission_target_conv_handler")
 createMissionTargetConvoTemplate("booto_lubble_mission_target_convotemplate","booto_lubble_mission_target_conv_handler")
@@ -121,6 +131,7 @@ createMissionTargetConvoTemplate("indintra_imbru_yerevan_mission_target_convotem
 createMissionTargetConvoTemplate("sloan_rusper_mission_target_convotemplate","sloan_rusper_mission_target_conv_handler")
 createMissionTargetConvoTemplate("zeelius_kraymunder_mission_target_convotemplate","zeelius_kraymunder_mission_target_conv_handler")
 
---Corellia
+
+-- Corellia
 createMissionTargetConvoTemplate("diktatTargetConvo","diktatTargetHandler")
 

@@ -1,5 +1,5 @@
-kathikiis_ruwahurr = Creature:new {
-	objectName = "@mob/creature_names:kathikiis_ruwahurr",
+kathikiis_assist = Creature:new {
+	objectName = "",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -29,8 +29,8 @@ kathikiis_ruwahurr = Creature:new {
 	templates = {"object/mobile/selonian_female.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "kathikiis_ruwahurr_mission_giver_convotemplate",
+	conversationTemplate = "kathikiis_ruwahurr_mission_target_convotemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(kathikiis_ruwahurr, "kathikiis_ruwahurr")
+CreatureTemplates:addCreatureTemplate(kathikiis_assist, "kathikiis_assist")

@@ -182,6 +182,7 @@ createMissionGiverConvoTemplate("theme_park_jabba_mission_giver_convotemplate", 
 createMissionGiverConvoTemplate("theme_park_marauder_mission_giver_convotemplate", "theme_park_marauder_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_imperial_mission_giver_convotemplate", "theme_park_imperial_mission_giver_conv_handler")
 
+
 -- Tatooine
 createMissionGiverConvoTemplate("hedon_istee_mission_giver_convotemplate", "hedon_istee_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("kitster_banai_mission_giver_convotemplate", "kitster_banai_mission_giver_conv_handler")
@@ -198,6 +199,11 @@ createMissionGiverConvoTemplate("aaph_koden_mission_giver_convotemplate", "aaph_
 createMissionGiverConvoTemplate("gavyn_sykes_mission_giver_convotemplate", "gavyn_sykes_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("lareen_dantara_mission_giver_convotemplate", "lareen_dantara_mission_giver_conv_handler")
 
+
+-- Talus
+createMissionGiverConvoTemplate("kathikiis_ruwahurr_mission_giver_convotemplate", "kathikiis_ruwahurr_mission_giver_conv_handler")
+
+
 -- Dantooine
 createMissionGiverConvoTemplate("drakka_judarrl_mission_giver_convotemplate", "drakka_judarrl_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("jatrian_lytus_mission_giver_convotemplate", "jatrian_lytus_mission_giver_conv_handler")
@@ -207,8 +213,10 @@ createMissionGiverConvoTemplate("lx_466_mission_giver_convotemplate", "lx_466_mi
 createMissionGiverConvoTemplate("sg_567_mission_giver_convotemplate", "sg_567_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("xaan_talmaron_mission_giver_convotemplate","xaan_talmaron_mission_giver_conv_handler")
 
+
 --Dathomir
 createMissionGiverConvoTemplate("singular_nak_mission_giver_convotemplate", "singular_nak_mission_giver_conv_handler")
+
 
 --Rori
 createMissionGiverConvoTemplate("ajuva_vanasterin_mission_giver_convotemplate","ajuva_vanasterin_mission_giver_conv_handler")
@@ -220,6 +228,7 @@ createMissionGiverConvoTemplate("indintra_imbru_yerevan_mission_giver_convotempl
 createMissionGiverConvoTemplate("magur_torigai_mission_giver_convotemplate","magur_torigai_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("sloan_rusper_mission_giver_convotemplate","sloan_rusper_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("zeelius_kraymunder_mission_giver_convotemplate","zeelius_kraymunder_mission_giver_conv_handler")
+
 
 --Corellia
 createMissionGiverConvoTemplate("diktatGiverConvo","diktatGiverHandler")
