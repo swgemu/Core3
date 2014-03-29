@@ -42,10 +42,10 @@
 
 
 object_tangible_medicine_pet_pet_vitapack_a = object_tangible_medicine_pet_shared_pet_vitapack_a:new {
-
+	gameObjectType = 8219,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1},
-	experimentalProperties = {"XX", "XX", "XX", "XX", "XX"},
+	experimentalProperties = {"XX", "XX", "OQ", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "null", "null"},
 	experimentalSubGroupTitles = {"null", "null", "strength", "decayrate", "hitpoints"},

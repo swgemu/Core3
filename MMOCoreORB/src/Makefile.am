@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/creature/buffs/GallopBuff.cpp \
+core3_IDLS =	autogen/server/zone/objects/tangible/pharmaceutical/VitalityPack.cpp \
+				autogen/server/zone/objects/creature/buffs/GallopBuff.cpp \
 				autogen/server/zone/managers/creature/PetManager.cpp \
 				autogen/server/zone/objects/creature/DroidObject.cpp \
 				autogen/server/zone/objects/tangible/deed/droid/DroidDeed.cpp \
@@ -571,6 +572,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/vehicle/VehicleDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resource/ResourceDeedImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp \
+		server/zone/objects/tangible/pharmaceutical/VitalityPackImplementation.cpp \
 		server/zone/objects/tangible/pharmaceutical/WoundPackImplementation.cpp \
 		server/zone/objects/tangible/sign/SignObjectImplementation.cpp \
 		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
