@@ -11,6 +11,8 @@
 #include "engine/engine.h"
 
 class ChildObject : public Object {
+
+protected:
 	Vector3 position;
 	Quaternion direction;
 	String templateFile;

@@ -152,6 +152,7 @@ public:
 	static const uint16 STRUCTURE_CONSENT_PAY_ACCESS_FEE = 154;
 	static const uint16 STRUCTURE_VENDOR_PAY = 155;
 	static const uint16 STRUCTURE_VENDOR_WITHDRAW = 156;
+	static const uint16 STRUCTURE_SELECT_SIGN = 157;
 
 	//Admin 171 - 220
 	static const uint16 ADMIN_COMMANDS = 171;

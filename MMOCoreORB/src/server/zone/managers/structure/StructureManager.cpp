@@ -12,9 +12,11 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
+#include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sessions/PlaceStructureSession.h"
@@ -33,6 +35,7 @@
 #include "server/zone/objects/player/sui/callbacks/StructureStatusSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/StructureSelectSignSuiCallback.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
 #include "server/zone/managers/gcw/GCWManager.h"
@@ -1086,6 +1089,89 @@ void StructureManager::promptPayMaintenance(StructureObject* structure,
 
 	ghost->addSuiBox(sui);
 	creature->sendMessage(sui->generateMessage());
+}
+
+void StructureManager::promptSelectSign(StructureObject* structure, CreatureObject* player){
+
+	if( !structure->isBuildingObject() )
+		return;
+
+	// Check building template has signs configured
+	Reference<SharedBuildingObjectTemplate*> buildingTemplate = dynamic_cast<SharedBuildingObjectTemplate*>(structure->getObjectTemplate());
+	if( buildingTemplate == NULL ){
+		player->sendSystemMessage( "ERROR: Unable to get structure template" );
+		return;
+	}
+
+	if( buildingTemplate->getShopSignsSize() == 0 ){
+		player->sendSystemMessage( "This building does not have any additional signs configured" );
+		return;
+	}
+
+	SuiListBox* signBox = new SuiListBox(player, SuiWindowType::STRUCTURE_SELECT_SIGN);
+	signBox->setCallback(new StructureSelectSignSuiCallback(player->getZoneServer()));
+	signBox->setPromptTitle("@player_structure:changesign_title"); // "Sign Selection"
+	signBox->setPromptText("@player_structure:changesign_prompt"); // "Select the sign type that you would like to display"
+	signBox->setUsingObject(structure);
+	signBox->setCancelButton(true, "@cancel");
+
+	// Loop over all configured signs and add them to the list
+	for( int i=0; i < buildingTemplate->getShopSignsSize(); i++ ){
+
+		SignTemplate* signTemplate = buildingTemplate->getShopSign(i);
+
+		// suiItem string can't be empty
+		if( signTemplate->getSuiItem().isEmpty() ){
+			continue;
+		}
+
+		// Check required skill (if any)
+		if( signTemplate->getRequiredSkill().isEmpty() ){
+			signBox->addMenuItem( signTemplate->getSuiItem() );
+		}
+		else{
+			if( player->hasSkill( signTemplate->getRequiredSkill() ) ){
+				signBox->addMenuItem( signTemplate->getSuiItem() );
+			}
+		}
+	}
+
+	player->sendMessage(signBox->generateMessage());
+	player->getPlayerObject()->addSuiBox(signBox);
+
+}
+
+void StructureManager::setSign(StructureObject* structure, CreatureObject* player, String signSuiItem ){
+
+	if( !structure->isBuildingObject() )
+		return;
+
+	// Check building template has shop signs configured
+	Reference<SharedBuildingObjectTemplate*> buildingTemplate = dynamic_cast<SharedBuildingObjectTemplate*>(structure->getObjectTemplate());
+	if( buildingTemplate == NULL ){
+		player->sendSystemMessage( "ERROR: Unable to get structure template" );
+		return;
+	}
+
+	if( buildingTemplate->getShopSignsSize() == 0 ){
+		player->sendSystemMessage( "This building does not have any signs configured" );
+		return;
+	}
+
+	BuildingObject* building = cast<BuildingObject*>(structure);
+	if( building == NULL )
+		return;
+
+	// Find matching sign in the template and change sign
+	for( int i=0; i < buildingTemplate->getShopSignsSize(); i++){
+
+		SignTemplate* signTemplate =  buildingTemplate->getShopSign(i);
+		if( signTemplate->getSuiItem() == signSuiItem ){
+			building->changeSign( signTemplate );
+			return;
+		}
+	}
+
 }
 
 void StructureManager::payMaintenance(StructureObject* structure,

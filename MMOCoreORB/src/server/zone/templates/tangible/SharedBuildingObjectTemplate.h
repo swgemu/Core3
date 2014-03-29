@@ -10,6 +10,7 @@
 
 #include "SharedStructureObjectTemplate.h"
 #include "../ChildCreatureObject.h"
+#include "server/zone/templates/tangible/SignTemplate.h"
 
 class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	StringParam terrainModificationFileName;
@@ -27,6 +28,8 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	Vector3 ejectionPoint;
 
 	int factionBaseType;
+
+	Vector<SignTemplate> shopSigns;
 
 public:
 	SharedBuildingObjectTemplate() {
@@ -85,6 +88,14 @@ public:
 
 	inline int getFactionBaseType() {
 		return factionBaseType;
+	}
+
+	inline int getShopSignsSize() {
+		return shopSigns.size();
+	}
+
+	inline SignTemplate* getShopSign(int idx) {
+		return &shopSigns.get(idx);
 	}
 };
 

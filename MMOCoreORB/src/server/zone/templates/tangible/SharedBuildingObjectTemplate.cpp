@@ -60,6 +60,28 @@ void SharedBuildingObjectTemplate::parseVariableData(const String& varName, LuaO
 		ejectPoint.pop();
 	} else if (varName == "factionBaseType") {
 		factionBaseType = Lua::getIntParameter(state);
+	} else if (varName == "shopSigns" ){
+
+		LuaObject luaItemList(state);
+
+		int size = luaItemList.getTableSize();
+
+		lua_State* L = luaItemList.getLuaState();
+
+		for (int i = 0; i < size; ++i) {
+			lua_rawgeti(L, -1, i + 1);
+			LuaObject a(L);
+
+			SignTemplate sign;
+			sign.parseFromLua(&a);
+
+			shopSigns.add(sign);
+
+			a.pop();
+		}
+
+		luaItemList.pop();
+
 	} else {
 
 		templateData->pop();

@@ -56,6 +56,8 @@ import server.zone.objects.tangible.sign.SignObject;
 import server.zone.ZoneServer;
 import server.zone.Zone;
 import server.zone.templates.SharedObjectTemplate;
+include server.zone.templates.ChildObject;
+include server.zone.templates.tangible.SignTemplate;
 import engine.util.u3d.Vector3;
 import system.lang.StackTrace;
 include server.zone.objects.cell.CellObject;
@@ -408,4 +410,13 @@ class BuildingObject extends StructureObject {
 	public int getFactionBaseType() {
 		return factionBaseType;
 	}
+	
+	/**
+	 * Adds the desired sign as a child object, removing any current sign
+	 * @param SignTemplate sign config from structure lua
+	 * @pre structure object is locked
+	 * @post structure object is locked 
+	 */
+	@local
+	public native void changeSign( SignTemplate signConfig );	
 }
