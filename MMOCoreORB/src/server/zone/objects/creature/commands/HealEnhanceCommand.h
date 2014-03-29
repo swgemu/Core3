@@ -122,6 +122,12 @@ public:
 	}
 
 	bool canPerformSkill(CreatureObject* enhancer, CreatureObject* patient, EnhancePack* enhancePack) {
+
+		if (!needsEnhancement(patient)) {
+			enhancer->sendSystemMessage("Target has no attributes that require enhancement.");
+			return false;
+		}
+
 		if (patient->isDead())
 			return false;
 
@@ -183,22 +189,57 @@ public:
 		return true;
 	}
 
-	void parseModifier(const String& modifier, uint8& attribute, uint64& objectId) {
+	uint8 getBuffAttributeBasedOnModifier(const String& modifier) {
 		if (!modifier.isEmpty()) {
 			StringTokenizer tokenizer(modifier);
 			tokenizer.setDelimeter("|");
-
 			String attributeName;
-
 			tokenizer.getStringToken(attributeName);
-			attribute = BuffAttribute::getAttribute(attributeName);
-
-			if (tokenizer.hasMoreTokens())
-				objectId = tokenizer.getLongToken();
-		} else {
-			attribute = BuffAttribute::UNKNOWN;
-			objectId = 0;
+			return BuffAttribute::getAttribute(attributeName);
 		}
+		else {
+			return BuffAttribute::UNKNOWN;
+		}
+	}
+
+	bool needsEnhancement(CreatureObject* creatureTarget) {
+		return( (!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::ACTION))) ||
+				(!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::CONSTITUTION))) ||
+				(!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::HEALTH))) ||
+				(!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::QUICKNESS))) ||
+				(!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::STAMINA))) ||
+				(!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::STRENGTH))) );
+	}
+
+	EnhancePack* getEnhancePackBasedOnStateAndInventory(CreatureObject* creature, CreatureObject* creatureTarget) {
+
+		EnhancePack* pack = NULL;
+
+		if ((!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::ACTION))) && (pack == NULL)) {
+			pack = findEnhancePack(creature, BuffAttribute::ACTION);
+		}
+
+		if ((!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::CONSTITUTION))) && (pack == NULL)) {
+			pack = findEnhancePack(creature, BuffAttribute::CONSTITUTION);
+		}
+
+		if ((!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::HEALTH))) && (pack == NULL)) {
+			pack = findEnhancePack(creature, BuffAttribute::HEALTH);
+		}
+
+		if ((!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::QUICKNESS))) && (pack == NULL)) {
+			pack = findEnhancePack(creature, BuffAttribute::QUICKNESS);
+		}
+
+		if ((!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::STAMINA))) && (pack == NULL)) {
+			pack = findEnhancePack(creature, BuffAttribute::STAMINA);
+		}
+
+		if ((!creatureTarget->hasBuff(BuffCRC::getMedicalBuff(BuffAttribute::STRENGTH))) && (pack == NULL)) {
+			pack = findEnhancePack(creature, BuffAttribute::STRENGTH);
+		}
+
+		return pack;
 	}
 
 	void sendEnhanceMessage(CreatureObject* creature, CreatureObject* target, uint8 attribute, uint32 buffApplied) {
@@ -298,34 +339,33 @@ public:
 		} else
 			object = creature;		
 
-		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
-		uint8 attribute = BuffAttribute::UNKNOWN;
-		uint64 objectId = 0;
-
-		if (!targetCreature->isInRange(creature, range))
+		if (!creatureTarget->isInRange(creature, range))
 			return TOOFAR;
 
-		parseModifier(arguments.toString(), attribute, objectId);
-
-		if (attribute == BuffAttribute::UNKNOWN) {
-			enhancer->sendSystemMessage("@healing_response:healing_response_75"); //You must specify a valid attribute.
-			return GENERALERROR;
-		}
-
+		uint8 attribute = BuffAttribute::UNKNOWN;
 		ManagedReference<EnhancePack*> enhancePack = NULL;
 
-		if (objectId != 0) {
-			SceneObject* inventory = creature->getSlottedObject("inventory");
-
-			if (inventory != NULL) {
-				enhancePack = inventory->getContainerObject(objectId).castTo<EnhancePack*>();
+		if (!arguments.toString().isEmpty()) {
+			attribute = getBuffAttributeBasedOnModifier(arguments.toString());
+			if (attribute == BuffAttribute::UNKNOWN) {
+				enhancer->sendSystemMessage("@healing_response:healing_response_75"); //You must specify a valid attribute.
+				return GENERALERROR;
 			}
-		} else {
 			enhancePack = findEnhancePack(creature, attribute);
 		}
+		else {
+			enhancePack = getEnhancePackBasedOnStateAndInventory(creature, creatureTarget);
+			if (enhancePack != NULL) {
+				attribute = enhancePack->getAttribute();
+				if (attribute == BuffAttribute::UNKNOWN) {
+					return GENERALERROR;
+				}
+			}
+		}
 
-		CreatureObject* patient = cast<CreatureObject*>( targetCreature);
+		CreatureObject* patient = cast<CreatureObject*>(creatureTarget);
 
 		Locker clocker(patient, creature);
 
@@ -371,8 +411,8 @@ public:
 
 		uint32 amountEnhanced = playerManager->healEnhance(enhancer, patient, attribute, buffPower, enhancePack->getDuration());
 
-		if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
-			playerManager->sendBattleFatigueMessage(creature, targetCreature);
+		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
+			playerManager->sendBattleFatigueMessage(creature, creatureTarget);
 		}
 
 		sendEnhanceMessage(enhancer, patient, attribute, amountEnhanced);
