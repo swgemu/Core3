@@ -5,19 +5,21 @@ pistols = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "pistol_cdef", weight = 1700000},
-		{itemTemplate = "pistol_d18", weight = 1450000},
-		{itemTemplate = "pistol_dh17", weight = 1300000},
-		{itemTemplate = "pistol_dl44", weight = 1200000},
-		{itemTemplate = "pistol_dl44_metal", weight = 900000},
-		{itemTemplate = "pistol_dx2", weight = 50000},
-		{itemTemplate = "pistol_fwg5", weight = 100000},
-		{itemTemplate = "pistol_power5", weight = 1100000},
-		{itemTemplate = "pistol_republic_blaster", weight = 50000},
-		{itemTemplate = "pistol_scatter", weight = 100000},
+		{itemTemplate = "pistol_cdef", weight = 1200000},
+		{itemTemplate = "pistol_d18", weight = 1000000},
+		{itemTemplate = "pistol_dh17", weight = 1000000},
+		{itemTemplate = "pistol_dl44", weight = 1000000},
+		{itemTemplate = "pistol_dl44_metal", weight = 800000},
+		{itemTemplate = "pistol_dx2", weight = 300000},
+		{itemTemplate = "pistol_fwg5", weight = 500000},
+		{itemTemplate = "pistol_launcher", weight = 400000},
+		{itemTemplate = "pistol_power5", weight = 500000},
+		{itemTemplate = "pistol_republic_blaster", weight = 300000},
+		{itemTemplate = "pistol_scatter", weight = 400000},
 		{itemTemplate = "pistol_scout_trooper", weight = 700000},
-		{itemTemplate = "pistol_sr_combat", weight = 750000},
-		{itemTemplate = "pistol_striker", weight = 600000}
+		{itemTemplate = "pistol_sr_combat", weight = 700000},
+		{itemTemplate = "pistol_striker", weight = 700000},
+		{itemTemplate = "pistol_tangle", weight = 500000},
 	}
 }
 
