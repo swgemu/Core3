@@ -353,6 +353,15 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 	if(useCount > 1)
 		alm->insertAttribute("quantity", useCount);
+
+	if (gameObjectType == SceneObjectType::PLAYERLOOTCRATE) {
+		if( isSliceable() ){
+			alm->insertAttribute( "lock_mechanism", "@obj_attr_n:slicable" );
+		}
+		else{
+			alm->insertAttribute( "lock_mechanism", "@obj_attr_n:broken" );
+		}
+	}
 }
 
 void TangibleObjectImplementation::setCustomizationVariable(byte type, int16 value, bool notifyClient) {
