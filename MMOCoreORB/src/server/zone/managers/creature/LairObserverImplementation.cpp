@@ -293,10 +293,10 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 		ManagedReference<CreatureObject*> creo = NULL;
 
 		if (tamingChance > 0) {
-			if (babiesSpawned == 0 && System::random(100) < (tamingChance * 100.0f)) {
+			if (babiesSpawned == 0 && System::random(250) < (tamingChance * 100.0f)) {
 				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
 				babiesSpawned++;
-			} else if (System::random(100 * babiesSpawned) < (tamingChance * 100.0f)) {
+			} else if (System::random(250 * babiesSpawned) < (tamingChance * 100.0f)) {
 				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
 				babiesSpawned++;
 			} else
