@@ -664,7 +664,7 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 	return false;
 }
 
-bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneObject* object) {
+bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneObject* object, float margin) {
 	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 
 	Vector3 targetPos(x, y, zone->getHeight(x, y));
@@ -679,7 +679,7 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 		}
 	}
 
-	if (isInObjectsNoBuildZone(x, y, 0)) {
+	if (isInObjectsNoBuildZone(x, y, margin)) {
 		return false;
 	}
 

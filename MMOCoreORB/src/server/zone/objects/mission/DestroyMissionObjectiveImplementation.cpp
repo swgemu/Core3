@@ -96,13 +96,14 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 
 	float distance = 128;
 	int tries = 0;
+	float size = mission.get()->getSize();
 
 	position.set(newX, height, newY);
 
 	while ((!zone->isWithinBoundaries(position) ||
 			(terrain->getWaterHeight(newX, newY, waterHeight) && waterHeight > height)
-			|| CollisionManager::checkSphereCollision(position, 25.f , zone) ||
-			zone->getPlanetManager()->isInObjectsNoBuildZone(newX, newY, 25) ||
+			|| CollisionManager::checkSphereCollision(position, size + 25.f , zone) ||
+			zone->getPlanetManager()->isInObjectsNoBuildZone(newX, newY, size) ||
 			terrain->getHighestHeightDifference(newX - 10, newY - 10, newX + 10, newY + 10) > 10.0) && tries < 256) {
 		newX = spawnActiveArea->getPositionX() + (distance - (float) System::random(distance * 2));
 		newY = spawnActiveArea->getPositionY() + (distance - (float) System::random(distance * 2));
@@ -205,6 +206,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	 	lairObserver->setLairTemplate(lair);
 	 	lairObserver->setDifficulty(difficulty);
 	 	lairObserver->setObserverType(ObserverType::LAIR);
+	 	lairObserver->setSize(mission->getSize());
 
 	 	lairObject->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);
 	 	lairObject->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);

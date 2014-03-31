@@ -73,7 +73,9 @@ class MissionObject extends IntangibleObject {
 	protected int missionNumber;
 	protected int faction;
 	protected int missionLevel;
-	
+
+	protected float size;
+
 	protected float startPositionX;
 	protected float startPositionY;
 	protected string startPlanet;
@@ -141,7 +143,9 @@ class MissionObject extends IntangibleObject {
 		rewardCredits = 100;
 		rewardFactionPointsRebel = 0;
 		rewardFactionPointsImperial = 0;
-		
+
+		size = 20;
+
 		startPositionX = 0;
 		startPositionY = 0;
 
@@ -377,5 +381,13 @@ class MissionObject extends IntangibleObject {
 	
 	public int getMissionLevel() {
 		return missionLevel;
+	}
+
+	public void setSize(float siz) {
+		size = siz;
+	}
+
+	public float getSize() {
+		return size;
 	}
 }

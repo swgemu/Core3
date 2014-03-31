@@ -64,6 +64,8 @@ class LairObserver extends Observer implements Logger {
 
 	protected int babiesSpawned;
 
+	protected float size;
+
 	public LairObserver() {
 		super();
 
@@ -75,6 +77,7 @@ class LairObserver extends Observer implements Logger {
 		healLairEvent = null;
 		spawnNumber = 0;
 		babiesSpawned = 0;
+		size = 20;
 	}
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
@@ -92,6 +95,10 @@ class LairObserver extends Observer implements Logger {
 
 	public void setDifficulty(int diff) {
 		difficulty = diff;
+	}
+
+	public void setSize(float siz) {
+		size = siz;
 	}
 
 	public boolean isLairObserver() {
