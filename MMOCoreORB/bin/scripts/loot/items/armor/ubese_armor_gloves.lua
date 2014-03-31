@@ -18,6 +18,10 @@ ubese_armor_gloves = {
 	--no color pallets for customizing for ubese armor gloves
 	customizationStringNames = {},
 	customizationValues = {},
+
+	junkDealerTypeNeeded = JUNKARMOUR,
+	junkMinValue = 45,
+	junkMaxValue = 90
 }
 
 addLootItemTemplate("ubese_armor_gloves", ubese_armor_gloves)

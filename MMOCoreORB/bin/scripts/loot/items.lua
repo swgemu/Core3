@@ -326,6 +326,7 @@ includeFile("items/armor/ubese_armor_gloves.lua")
 includeFile("items/armor/ubese_armor_helmet.lua")
 includeFile("items/armor/ubese_armor_jacket.lua")
 includeFile("items/armor/ubese_armor_pants.lua")
+includeFile("items/armor/ubese_armor_shirt.lua")
 
 --forage sub-folder
 includeFile("items/forage/foraged_alever_tweth_pek.lua")

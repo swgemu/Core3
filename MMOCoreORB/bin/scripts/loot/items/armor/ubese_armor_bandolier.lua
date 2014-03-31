@@ -14,6 +14,10 @@ ubese_armor_bandolier = {
 	--no color pallets for customizing for ubese armor bandolier
 	customizationStringNames = {},
 	customizationValues = {},
+
+	junkDealerTypeNeeded = JUNKARMOUR,
+	junkMinValue = 45,
+	junkMaxValue = 90
 }
 
 addLootItemTemplate("ubese_armor_bandolier", ubese_armor_bandolier)
