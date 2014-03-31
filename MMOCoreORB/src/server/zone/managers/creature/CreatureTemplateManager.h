@@ -18,6 +18,7 @@
 #include "StaticSpawnGroup.h"
 #include "DynamicSpawnGroup.h"
 #include "LairSpawnGroup.h"
+#include "server/zone/managers/mission/DestroyMissionSpawnGroup.h"
 
 namespace server {
 namespace zone {
@@ -36,6 +37,7 @@ protected:
 
 	HashTable<uint32, Reference<LairTemplate*> > lairTemplates;
 	HashTable<uint32, Reference<LairSpawnGroup*> > lairSpawnGroupMap;
+	HashTable<uint32, Reference<DestroyMissionSpawnGroup*> > destroyMissionGroupMap;
 	HashTable<String, Reference<PatrolPathTemplate*> > patrolPaths;
 	HashTable<String, Reference<MobileOutfitGroup*> > outfits;
 	static AtomicInteger loadedMobileTemplates;
@@ -55,9 +57,10 @@ public:
 	static int addWeapon(lua_State* L);
 	static int addDynamicGroup(lua_State* L);
 	static int addStaticGroup(lua_State* L);
+	static int addLairGroup(lua_State* L);
+	static int addDestroyMissionGroup(lua_State* L);
 	static int addConversationTemplate(lua_State* L);
 	static int addLairTemplate(lua_State* L);
-	static int addLairGroup(lua_State* L);
 	static int addPatrolPathTemplate(lua_State* L);
 	static int addOutfitGroup(lua_State* L);
 
@@ -125,6 +128,10 @@ public:
 
 	LairTemplate* getLairTemplate(uint32 crc) {
 		return lairTemplates.get(crc);
+	}
+
+	DestroyMissionSpawnGroup* getDestroyMissionGroup(uint32 crc) {
+		return destroyMissionGroupMap.get(crc);
 	}
 
 };
