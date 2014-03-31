@@ -9,7 +9,7 @@ ith_bodysuit_s06 = {
     customizationStringNames = {"/shared_owner/index_color_0","/shared_owner/index_color_1"},
     customizationValues = {
         {0,1},
-        {0,1,2,3,4,5}
+        {0,1,2,3,4,5,6}
     },
     junkDealerTypeNeeded = JUNKCLOTHESANDJEWELLERY,
     junkMinValue = 55,
