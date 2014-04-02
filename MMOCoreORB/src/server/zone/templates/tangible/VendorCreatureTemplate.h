@@ -13,6 +13,8 @@
 class VendorCreatureTemplate : public SharedCreatureObjectTemplate {
 	Vector<String> outfits;
 	Vector<String> hairFile;
+	Vector<String> customizationStringNames;
+	Vector<Vector<int> > customizationValues;
 
 public:
 	VendorCreatureTemplate() {
@@ -44,6 +46,34 @@ public:
 
 		clothesTemplate.pop();
 
+		LuaObject customizationStringNamesList = templateData->getObjectField("customizationStringNames");
+
+		for (int i = 1; i <= customizationStringNamesList.getTableSize(); ++i) {
+			customizationStringNames.add(customizationStringNamesList.getStringAt(i));
+		}
+
+		customizationStringNamesList.pop();
+
+		LuaObject custValues = templateData->getObjectField("customizationValues");
+
+		for (int i = 1; i <= custValues.getTableSize(); ++i) {
+			lua_rawgeti(templateData->getLuaState(), -1, i);
+
+			LuaObject values(templateData->getLuaState());
+
+			Vector<int> valuesVector;
+
+			for (int j = 1; j <= values.getTableSize(); ++j) {
+				valuesVector.add(values.getIntAt(j));
+			}
+
+			customizationValues.add(valuesVector);
+
+			values.pop();
+		}
+
+		custValues.pop();
+
     }
 
 	inline String getHairFile(int idx) {
@@ -58,6 +88,25 @@ public:
 			return "";
 
 		return outfits.get(idx);
+	}
+
+	inline int getCustomizationStringNamesSize() {
+		return customizationStringNames.size();
+	}
+
+	inline String getCustomizationStringName(int idx) {
+		if (idx < 0 || idx >= customizationStringNames.size())
+			return "";
+
+		return customizationStringNames.get(idx);
+	}
+
+	inline int getCustomizationValuesSize(){
+		return customizationValues.size();
+	}
+
+	inline Vector<int> getCustomizationValues( int idx ) {
+		return customizationValues.get(idx);
 	}
 
 	inline int getOutfitsSize() {
