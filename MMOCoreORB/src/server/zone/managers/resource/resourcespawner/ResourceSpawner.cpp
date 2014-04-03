@@ -717,6 +717,9 @@ void ResourceSpawner::sendResourceListForSurvey(CreatureObject* player,
 	for (int i = 0; i < zoneMap->size(); ++i) {
 		resourceSpawn = zoneMap->get(i);
 
+		if (!resourceSpawn->inShift())
+			continue;
+
 		if (resourceSpawn->getSurveyToolType() == toolType) {
 			matchingResources.add(resourceSpawn);
 			message->addResource(resourceSpawn->getName(),
@@ -1187,8 +1190,8 @@ void ResourceSpawner::listResourcesForPlanetOnScreen(CreatureObject* creature, c
 			continue;
 
 		StringBuffer info;
-		int hours = (((resourceSpawn->getDespawned() - System::getTime()) / 60) /60);
-		int minutes = ((resourceSpawn->getDespawned() - System::getTime()) % 60);
+		int hours = (((resourceSpawn->getDespawned() - System::getTime()) / 60) / 60);
+		int minutes = (((resourceSpawn->getDespawned() - System::getTime()) / 60) % 60);
 
 		info << resourceSpawn->getFinalClass() << "   |   " << resourceSpawn->getName()
 			 << "   |   " << "Despawns in: " << hours << " hours " << minutes << " minutes.";
