@@ -53,6 +53,10 @@ public:
 		return groupTemplates.size();
 	}
 
+	bool lootGroupExisits(const String& group) {
+		return groupTemplates.containsKey(group);
+	}
+
 private:
 	void registerFunctions();
 	void registerGlobals();
