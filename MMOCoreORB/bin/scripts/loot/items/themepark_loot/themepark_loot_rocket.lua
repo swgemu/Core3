@@ -1,4 +1,4 @@
-theme_park_loot_rocket = {
+themepark_loot_rocket = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	customObjectName = "Rocket Launcher",
@@ -9,4 +9,4 @@ theme_park_loot_rocket = {
 	customizationValues = {}
 }
 
-addLootItemTemplate("theme_park_loot_rocket", theme_park_loot_rocket)
+addLootItemTemplate("themepark_loot_rocket", themepark_loot_rocket)

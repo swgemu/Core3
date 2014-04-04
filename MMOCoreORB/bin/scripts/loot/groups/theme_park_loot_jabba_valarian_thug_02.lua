@@ -3,7 +3,7 @@ theme_park_loot_jabba_valarian_thug_02 = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "theme_park_loot_rantok", weight = 10000000}
+		{itemTemplate = "themepark_loot_rantok", weight = 10000000}
 	}
 }
 

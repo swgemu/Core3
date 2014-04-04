@@ -3,7 +3,7 @@ theme_park_loot_shipping_manifest = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "theme_park_loot_shipping_manifest", weight = 10000000}
+		{itemTemplate = "themepark_loot_shipping_manifest", weight = 10000000}
 	}
 }
 

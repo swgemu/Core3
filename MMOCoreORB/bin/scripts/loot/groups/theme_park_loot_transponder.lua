@@ -3,7 +3,7 @@ theme_park_loot_transponder = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "theme_park_loot_transponder", weight = 10000000}
+		{itemTemplate = "themepark_loot_transponder", weight = 10000000}
 	}
 }
 

@@ -1,4 +1,4 @@
-theme_park_loot_jabba_ledger = {
+themepark_loot_jabba_ledger = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "Ledger",
@@ -9,4 +9,4 @@ theme_park_loot_jabba_ledger = {
 	customizationValues = {}
 }
 
-addLootItemTemplate("theme_park_loot_jabba_ledger", theme_park_loot_jabba_ledger)
+addLootItemTemplate("themepark_loot_jabba_ledger", themepark_loot_jabba_ledger)

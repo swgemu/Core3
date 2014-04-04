@@ -5,7 +5,7 @@ theme_park_loot_imperial_officer_emil = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "theme_park_loot_code_cylinder", weight = 10000000}
+		{itemTemplate = "themepark_loot_code_cylinder", weight = 10000000}
 	}
 }
 

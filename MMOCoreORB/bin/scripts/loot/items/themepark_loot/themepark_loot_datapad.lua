@@ -1,4 +1,4 @@
-theme_park_loot_datapad = {
+themepark_loot_datapad = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "Datapad",
@@ -9,4 +9,4 @@ theme_park_loot_datapad = {
 	customizationValues = {}
 }
 
-addLootItemTemplate("theme_park_loot_datapad", theme_park_loot_datapad)
+addLootItemTemplate("themepark_loot_datapad", themepark_loot_datapad)

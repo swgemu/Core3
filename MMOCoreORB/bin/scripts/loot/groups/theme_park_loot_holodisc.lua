@@ -3,7 +3,7 @@ theme_park_loot_holodisc = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "theme_park_loot_holodisc", weight = 10000000}
+		{itemTemplate = "themepark_loot_holodisc", weight = 10000000}
 	}
 }
 
