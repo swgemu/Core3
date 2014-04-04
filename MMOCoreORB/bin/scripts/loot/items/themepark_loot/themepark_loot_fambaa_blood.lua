@@ -1,4 +1,4 @@
-theme_park_loot_fambaa_blood = {
+themepark_loot_fambaa_blood = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	customObjectName = "Jar of Fambaa Blood",
@@ -9,4 +9,4 @@ theme_park_loot_fambaa_blood = {
 	customizationValues = {}
 }
 
-addLootItemTemplate("theme_park_loot_fambaa_blood", theme_park_loot_fambaa_blood)
+addLootItemTemplate("themepark_loot_fambaa_blood", themepark_loot_fambaa_blood)

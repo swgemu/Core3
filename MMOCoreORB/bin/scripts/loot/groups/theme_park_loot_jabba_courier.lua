@@ -3,7 +3,7 @@ theme_park_loot_jabba_courier = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "theme_park_loot_jabba_ledger", weight = 10000000},
+		{itemTemplate = "themepark_loot_jabba_ledger", weight = 10000000},
 	}
 }
 

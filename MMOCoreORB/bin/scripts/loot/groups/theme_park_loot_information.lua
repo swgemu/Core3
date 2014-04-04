@@ -3,7 +3,7 @@ theme_park_loot_information = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "theme_park_loot_information", weight = 10000000}
+		{itemTemplate = "themepark_loot_information", weight = 10000000}
 	}
 }
 

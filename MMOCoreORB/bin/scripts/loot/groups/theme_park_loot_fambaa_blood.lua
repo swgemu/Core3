@@ -3,7 +3,7 @@ theme_park_loot_fambaa_blood = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "theme_park_loot_fambaa_blood", weight = 10000000}
+		{itemTemplate = "themepark_loot_fambaa_blood", weight = 10000000}
 	}
 }
 

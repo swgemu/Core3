@@ -1,4 +1,4 @@
-theme_park_loot_chicken_leg = {
+themepark_loot_chicken_leg = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	customObjectName = "Chicken Leg",
@@ -9,4 +9,4 @@ theme_park_loot_chicken_leg = {
 	customizationValues = {}
 }
 
-addLootItemTemplate("theme_park_loot_chicken_leg", theme_park_loot_chicken_leg)
+addLootItemTemplate("themepark_loot_chicken_leg", themepark_loot_chicken_leg)

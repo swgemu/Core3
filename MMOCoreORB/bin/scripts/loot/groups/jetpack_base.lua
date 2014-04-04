@@ -5,7 +5,7 @@ jetpack_base = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "jetpack_base", weight = 10000000}
+		{itemTemplate = "jet_pack_base", weight = 10000000}
 	}
 }
 

@@ -1,4 +1,4 @@
-theme_park_loot_plans = {
+themepark_loot_plans = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	customObjectName = "Plans",
@@ -9,4 +9,4 @@ theme_park_loot_plans = {
 	customizationValues = {}
 }
 
-addLootItemTemplate("theme_park_loot_plans", theme_park_loot_plans)
+addLootItemTemplate("themepark_loot_plans", themepark_loot_plans)

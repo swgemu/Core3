@@ -1,7 +1,7 @@
-theme_park_loot_holodisc = {
+themepark_loot_shipping_manifest = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Holodisc",
+	customObjectName = "Shipping Manifest",
 	directObjectTemplate = "object/tangible/mission/mission_datadisk.iff",
 	craftingValues = {
 	},
@@ -9,4 +9,4 @@ theme_park_loot_holodisc = {
 	customizationValues = {}
 }
 
-addLootItemTemplate("theme_park_loot_holodisc", theme_park_loot_holodisc)
+addLootItemTemplate("themepark_loot_shipping_manifest", themepark_loot_shipping_manifest)

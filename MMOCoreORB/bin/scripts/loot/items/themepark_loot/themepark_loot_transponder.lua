@@ -1,4 +1,4 @@
-theme_park_loot_transponder = {
+themepark_loot_transponder = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	customObjectName = "Transponder",
@@ -9,4 +9,4 @@ theme_park_loot_transponder = {
 	customizationValues = {}
 }
 
-addLootItemTemplate("theme_park_loot_transponder", theme_park_loot_transponder)
+addLootItemTemplate("themepark_loot_transponder", themepark_loot_transponder)

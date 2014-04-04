@@ -5,7 +5,7 @@ theme_park_loot_imperial_sergeant_montage = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "theme_park_loot_compound", weight = 10000000}
+		{itemTemplate = "themepark_loot_compound", weight = 10000000}
 	}
 }
 

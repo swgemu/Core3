@@ -5,7 +5,7 @@ theme_park_loot_imperial_captain_sargon = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "theme_park_loot_design_documents", weight = 10000000}
+		{itemTemplate = "themepark_loot_design_documents", weight = 10000000}
 	}
 }
 
