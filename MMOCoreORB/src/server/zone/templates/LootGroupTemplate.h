@@ -13,23 +13,23 @@
 class LootGroupTemplate : public Object {
 	String templateName;
 
-	VectorMap<String, int> itemMap;
+	VectorMap<String, int> entryMap;
 
 public:
 	LootGroupTemplate(const String& name) {
 		templateName = name;
 
-		itemMap.setNoDuplicateInsertPlan();
-		itemMap.setNullValue(0);
+		entryMap.setNoDuplicateInsertPlan();
+		entryMap.setNullValue(0);
 	}
 
 	LootGroupTemplate(const LootGroupTemplate& lgt) : Object() {
 		templateName = lgt.templateName;
 
-		itemMap.setNoDuplicateInsertPlan();
-		itemMap.setNullValue(0);
+		entryMap.setNoDuplicateInsertPlan();
+		entryMap.setNullValue(0);
 
-		itemMap = lgt.itemMap;
+		entryMap = lgt.entryMap;
 	}
 
 	LootGroupTemplate& operator=(const LootGroupTemplate& lgt) {
@@ -37,16 +37,16 @@ public:
 			return *this;
 
 		templateName = lgt.templateName;
-		itemMap = lgt.itemMap;
+		entryMap = lgt.entryMap;
 
 		return *this;
 	}
 
-	String getLootItemTemplateForRoll(int roll) {
+	String getLootGroupEntryForRoll(int roll) {
 		int totalChance = 0;
 
-		for (int i = 0; i < itemMap.size(); ++i) {
-			VectorMapEntry<String, int>* entry = &itemMap.elementAt(i);
+		for (int i = 0; i < entryMap.size(); ++i) {
+			VectorMapEntry<String, int>* entry = &entryMap.elementAt(i);
 
 			totalChance += entry->getValue();
 
@@ -59,18 +59,18 @@ public:
 	}
 
 	int size(){
-		return itemMap.size();
+		return entryMap.size();
 	}
 
-	String getLootItemTemplateAt( int i ){
+	String getLootGroupEntryAt( int i ){
 
 		if( i < 0 )
 			return "";
 
-		if( i >= itemMap.size() )
+		if( i >= entryMap.size() )
 			return "";
 
-		VectorMapEntry<String, int>* entry = &itemMap.elementAt(i);
+		VectorMapEntry<String, int>* entry = &entryMap.elementAt(i);
 		return entry->getKey();
 
 	}
@@ -88,9 +88,13 @@ public:
 			LuaObject lootItem(L);
 
 			String itemTemplate = lootItem.getStringField("itemTemplate");
+			String groupTemplate = lootItem.getStringField("groupTemplate");
 			int chance = lootItem.getIntField("weight");
 
-			itemMap.put(itemTemplate, chance);
+			if (itemTemplate.isEmpty())
+				entryMap.put(groupTemplate, chance);
+			else
+				entryMap.put(itemTemplate, chance);
 
 			lootItem.pop();
 		}

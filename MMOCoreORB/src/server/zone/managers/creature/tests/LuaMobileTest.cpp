@@ -29,6 +29,39 @@ public:
 	void TearDown() {
 		// Perform clean up of common constructs here.
 	}
+
+	void checkLootGroupEntryRecursive(LootGroupMap* lootGroupMap, String& entryName, Vector<String>* parentGroups) {
+		if (entryName.isEmpty())
+			return;
+
+		//Check for infinite recursion
+		for (int i = 0; i < parentGroups->size(); i++) {
+			String parentName = parentGroups->get(i);
+
+			EXPECT_FALSE( parentName == entryName ) << "Loot group " << std::string(parentName.toCharArray()) << " failed recursion check.";
+
+			if (parentName == entryName)
+				return;
+		}
+
+		if (lootGroupMap->lootGroupExists(entryName)) {
+
+			LootGroupTemplate* lootGroupTemplate = lootGroupMap->getLootGroupTemplate(entryName);
+
+			for (int j = 0; j < lootGroupTemplate->size(); j++) {
+
+				String entry = lootGroupTemplate->getLootGroupEntryAt(j);
+
+				parentGroups->add(entryName);
+
+				checkLootGroupEntryRecursive(lootGroupMap, entry, parentGroups);
+			}
+
+		} else {
+			Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate( entryName );
+			EXPECT_TRUE( itemTemplate != NULL ) << "Item template " << std::string(entryName.toCharArray()) << " from " << std::string(parentGroups->get(parentGroups->size() - 1).toCharArray()) << " was not found in LootGroupMap";
+		}
+	}
 };
 
 TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
@@ -92,31 +125,39 @@ TEST_F(LuaMobileTest, LuaLootGroupsTest) {
 	LootGroupMap* lootGroupMap = LootGroupMap::instance();
 	ASSERT_EQ(lootGroupMap->initialize(), 0);
 
+	//Make sure that no loot items have the same name as a loot group
+	HashTableIterator<String, Reference<LootItemTemplate*> > itemIter = lootGroupMap->itemTemplates.iterator();
+	while (itemIter.hasNext()) {
+
+		LootItemTemplate* lootItemTemplate = itemIter.next();
+		String itemTemplateName( lootItemTemplate->getTemplateName().toCharArray() );
+
+		EXPECT_FALSE( lootGroupMap->lootGroupExists(itemTemplateName) ) << "Loot item " << std::string(itemTemplateName.toCharArray()) << " has the same name as a loot group.";
+	}
+
 	HashTableIterator<String, Reference<LootGroupTemplate*> > iter = lootGroupMap->groupTemplates.iterator();
 	while (iter.hasNext()) {
 
 		LootGroupTemplate* lootGroupTemplate = iter.next();
-		std::string groupTemplateName( lootGroupTemplate->getTemplateName().toCharArray() );
+		String groupTemplateName( lootGroupTemplate->getTemplateName().toCharArray() );
 
-		// Check non-empty loot groups
-		if( lootGroupTemplate->getLootItemTemplateForRoll(-1).length() > 0  ){
-			EXPECT_GT( lootGroupTemplate->getLootItemTemplateForRoll(10000000).length(), 0 ) << "Item total chance is less than 10000000: " << groupTemplateName;
-			EXPECT_EQ( lootGroupTemplate->getLootItemTemplateForRoll(10000001).length(), 0 ) << "Item total chance is greater than 10000000: " << groupTemplateName;
+		// Check non-empty loot groups to make sure their chances total correctly
+		if( lootGroupTemplate->getLootGroupEntryForRoll(-1).length() > 0  ){
+			EXPECT_GT( lootGroupTemplate->getLootGroupEntryForRoll(10000000).length(), 0 ) << "Item total chance is less than 10000000: " << std::string(groupTemplateName.toCharArray());
+			EXPECT_EQ( lootGroupTemplate->getLootGroupEntryForRoll(10000001).length(), 0 ) << "Item total chance is greater than 10000000: " << std::string(groupTemplateName.toCharArray());
 		}
 
-		// Check that all items are configured correctly
+		// Check that all loot group entries are valid
 		for( int i = 0; i < lootGroupTemplate->size(); i++ ){
 
-			String itemTemplateName = lootGroupTemplate->getLootItemTemplateAt(i);
-			if( !itemTemplateName.isEmpty() ){
-				Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate( itemTemplateName );
-				EXPECT_TRUE( itemTemplate != NULL ) << "Item template " << std::string(itemTemplateName.toCharArray()) << " from " << groupTemplateName << " was not found in LootGroupMap";
-			}
+			Vector<String> parentGroups;
+			parentGroups.add(groupTemplateName);
 
+			String entryName = lootGroupTemplate->getLootGroupEntryAt(i);
+
+			checkLootGroupEntryRecursive(lootGroupMap, entryName, &parentGroups);
 		}
 
 	}
 
 }
-
-
