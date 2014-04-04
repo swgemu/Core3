@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_537384b1",
+        "filename": "MMOCoreORB/src/server/zone/templates/LootGroupTemplate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-04-04T22:55:20Z",
+      "side": 1,
+      "message": "To help make the config clearer about what is a group and what is an item, what if you made it so that this method looked for \"itemTemplate\" and \"groupTemplate\".   Internally it makes no difference as they both get thrown into the entryMap, but just gives us a way easily differentiate groups from items in the lua config.",
+      "revId": "e790007078987ab39c0b389c9d0eb7b3163865db",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
