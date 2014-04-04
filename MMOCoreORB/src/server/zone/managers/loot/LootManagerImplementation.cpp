@@ -625,10 +625,17 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 	//Now we do the third roll for the item out of the group.
 	int roll = System::random(10000000);
 
-	Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate(group->getLootItemTemplateForRoll(roll));
+	String selection = group->getLootGroupEntryForRoll(roll);
+
+	//Check to see if the group entry is another group
+	if (lootGroupMap->lootGroupExists(selection))
+		return createLoot(container, selection, level, maxCondition);
+
+	//Entry wasn't another group, it should be a loot item
+	Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate(selection);
 
 	if (itemTemplate == NULL) {
-		warning("Loot item template requested does not exist: " + group->getLootItemTemplateForRoll(roll) + " for templateName: " + group->getTemplateName());
+		warning("Loot item template requested does not exist: " + group->getLootGroupEntryForRoll(roll) + " for templateName: " + group->getTemplateName());
 		return false;
 	}
 
