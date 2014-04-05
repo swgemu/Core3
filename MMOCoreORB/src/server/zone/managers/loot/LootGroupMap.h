@@ -14,7 +14,7 @@ class LootItemTemplate;
 //class LootGroupTemplate;
 #include "server/zone/templates/LootGroupTemplate.h"
 
-class LootGroupMap : public Singleton<LootGroupMap>, public Object {
+class LootGroupMap : public Singleton<LootGroupMap>, public Object, public Logger {
 public:
 	static Lua* lua;
 	enum LUA_ERROR_CODE { NO_ERROR = 0, GENERAL_ERROR };
@@ -58,6 +58,8 @@ public:
 	}
 
 private:
+	static String currentFilename;
+
 	void registerFunctions();
 	void registerGlobals();
 
