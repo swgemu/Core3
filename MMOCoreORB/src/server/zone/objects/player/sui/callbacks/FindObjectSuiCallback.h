@@ -37,6 +37,8 @@ public:
 		if (object == NULL)
 			return;
 
+		Zone* zone = object->getZone();
+
 		if(otherPressed) {
 			StringBuffer arguments;
 
@@ -44,12 +46,19 @@ public:
 
 			if (object->getParent().get() != NULL) {
 				arguments << String::valueOf(object->getPositionX()) << " " << String::valueOf(object->getPositionY());
-				arguments << " " << object->getZone()->getZoneName();
+
+				if (zone) {
+					arguments << " " << zone->getZoneName();
+				}
+
 				arguments << " " << String::valueOf(object->getPositionZ());
 				arguments << " " << String::valueOf(object->getParentID());
 			} else {
 				arguments << String::valueOf(object->getWorldPositionX()) << " " << String::valueOf(object->getWorldPositionY());
-				arguments << " " << object->getZone()->getZoneName();
+
+				if (zone) {
+					arguments << " " << zone->getZoneName();
+				}
 			}
 
 			ManagedReference<ObjectController*> objectController = server->getObjectController();
