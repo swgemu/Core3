@@ -40,7 +40,7 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-IDLC = /usr/local/bin/idlc 
+IDLC = ../MMOEngine/bin/idlc 
 				
 IDL_CLASSPATH = ../MMOEngine/include
 
@@ -99,12 +99,12 @@ PLATFORM:=$(shell uname -s)
 ifeq ($(PLATFORM),Linux)
 	CPU_CORES:=$(shell grep -c processor /proc/cpuinfo)
 
-	ENGINE3_DIR:=$(shell find /opt -name engine3* -print -quit)
+#	ENGINE3_DIR:=$(shell find /opt -name engine3* -print -quit)
 else 
 ifeq ($(PLATFORM),Darwin)
-  	CPU_CORES:=$(shell system_profiler | awk '/Number Of CPUs/{print $4}{next;}')
+  	CPU_CORES:=2#$(shell system_profiler | awk '/Number Of CPUs/{print $4}{next;}')
 
-	ENGINE3_DIR:=$(shell find /opt -name engine3* -depth 0)
+#	ENGINE3_DIR:=$(shell find /opt -name engine3* -depth 0)
 endif
 endif
 
