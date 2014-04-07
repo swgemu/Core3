@@ -18,6 +18,9 @@
 #include "server/chat/StringIdChatParameterVector.h"
 #include "server/chat/WaypointChatParameterVector.h"
 
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/region/CitizenList.h"
+
 #include "server/zone/packets/chat/ChatOnSendPersistentMessage.h"
 
 class ChatPersistentMessageToServerCallback : public MessageCallback {
@@ -117,6 +120,52 @@ public:
 			}
 
 			return 0;
+		}
+		else if (recipient == "citizens") {
+
+			ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
+			PlayerObject* ghost = player->getPlayerObject();
+			if (ghost == NULL)
+				return 0;
+
+			// Pull the player's residence
+			uint64 declaredOidResidence = ghost->getDeclaredResidence();
+			ManagedReference<BuildingObject*> declaredResidence = player->getZoneServer()->getObject(declaredOidResidence).castTo<BuildingObject*>();
+			if (declaredResidence == NULL){
+				player->sendSystemMessage("@error_message:insufficient_permissions");
+				return 0;
+			}
+
+			// Player must be the mayor of the city where he resides
+			ManagedReference<CityRegion*> declaredCity = declaredResidence->getCityRegion();
+			if( declaredCity != NULL && declaredCity->isMayor(player->getObjectID()) ){
+
+				Locker cityLocker( declaredCity );
+
+				CitizenList* citizenList = declaredCity->getCitizenList();
+				if (citizenList == NULL)
+					return 0;
+
+				for (int i = 0; i < citizenList->size(); ++i) {
+					uint64 citizenID = citizenList->get(i);
+
+					ManagedReference<SceneObject*> receiver = player->getZoneServer()->getObject(citizenID);
+
+					if (receiver == NULL || !receiver->isPlayerCreature())
+						continue;
+
+					CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
+					sendMailToPlayer(receiverPlayer->getFirstName());
+
+				}
+
+				return 0;
+			}
+			else{
+				player->sendSystemMessage("@error_message:insufficient_permissions");
+				return 0;
+			}
+
 		}
 
 		return sendMailToPlayer(recipient);
