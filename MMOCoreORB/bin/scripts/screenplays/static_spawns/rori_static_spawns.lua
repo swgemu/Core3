@@ -25,7 +25,7 @@ RoriStaticSpawnsScreenPlay = ScreenPlay:new {
 		},
 		{
 			groups = {
-				{group = "armor_looted", chance = 3700000},
+				{group = "armor_all", chance = 3700000},
 				{group = "junk", chance = 3500000},
 				{group = "carbines", chance = 600000},
 				{group = "melee_weapons", chance = 600000},

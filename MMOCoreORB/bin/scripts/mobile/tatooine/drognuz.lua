@@ -32,7 +32,7 @@ drognuz = Creature:new {
 		{
 			groups = {
 				{group = "junk", chance = 3500000},
-				{group = "armor_looted", chance = 2000000},
+				{group = "armor_all", chance = 2000000},
 				{group = "melee_weapons", chance = 2500000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "loot_kit_parts", chance = 1000000}

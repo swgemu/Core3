@@ -42,11 +42,11 @@ frenzied_marauder = Creature:new {
 		},
 		{
 			groups = {
-				{group = "bone_armor_looted", chance = 2000000},
-				{group = "chitin_armor_looted", chance = 2000000},
-				{group = "mabari_armor_looted", chance = 2000000},
-				{group = "tantel_armor_looted", chance = 2000000},
-				{group = "ubese_armor_looted", chance = 2000000},
+				{group = "bone_armor", chance = 2000000},
+				{group = "chitin_armor", chance = 2000000},
+				{group = "mabari_armor", chance = 2000000},
+				{group = "tantel_armor", chance = 2000000},
+				{group = "ubese_armor", chance = 2000000},
 			},
 			lootChance = 2800000
 		}

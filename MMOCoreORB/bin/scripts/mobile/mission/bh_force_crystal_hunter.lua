@@ -47,7 +47,7 @@ bh_force_crystal_hunter = Creature:new {
 				{group = "crystals_good", chance = 500000},
 				{group = "crystals_okay", chance = 500000},
 				{group = "color_crystals", chance = 2500000},
-				{group = "armor_looted", chance = 2000000},
+				{group = "armor_all", chance = 2000000},
 				{group = "armor_attachments", chance = 1500000},
 				{group = "clothing_attachments", chance = 1500000}
 			},

@@ -1,4 +1,4 @@
-mabari_armor_looted = {
+mabari_armor = {
 	description = "",
 	minimumLevel = 0,
 	maximumLevel = -1,
@@ -12,4 +12,4 @@ mabari_armor_looted = {
 	}
 }
 
-addLootGroupTemplate("mabari_armor_looted", mabari_armor_looted)
+addLootGroupTemplate("mabari_armor", mabari_armor)

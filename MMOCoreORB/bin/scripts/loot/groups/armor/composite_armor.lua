@@ -1,4 +1,4 @@
-composite_armor_looted = {
+composite_armor = {
 	description = "",
 	minimumLevel = 0,
 	maximumLevel = -1,
@@ -15,4 +15,4 @@ composite_armor_looted = {
 	}
 }
 
-addLootGroupTemplate("composite_armor_looted", composite_armor_looted)
+addLootGroupTemplate("composite_armor", composite_armor)

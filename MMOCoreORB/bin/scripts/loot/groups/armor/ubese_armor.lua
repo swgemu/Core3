@@ -1,4 +1,4 @@
-ubese_armor_looted = {
+ubese_armor = {
 	description = "",
 	minimumLevel = 0,
 	maximumLevel = -1,
@@ -16,4 +16,4 @@ ubese_armor_looted = {
 	}
 }
 
-addLootGroupTemplate("ubese_armor_looted", ubese_armor_looted)
+addLootGroupTemplate("ubese_armor", ubese_armor)

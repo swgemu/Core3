@@ -36,7 +36,7 @@ grovo = Creature:new {
 				{group = "rifles", chance = 750000},
 				{group = "carbines", chance = 500000},
 				{group = "grenades_looted", chance = 500000},
-				{group = "armor_looted", chance = 1000000},
+				{group = "armor_all", chance = 1000000},
 				{group = "melee_unarmed", chance = 1000000}
 			},
 			lootChance = 4000000

@@ -33,7 +33,7 @@ exiled_gungan = Creature:new {
 				{group = "junk", chance = 4400000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000},
-				{group = "composite_armor_looted", chance = 1000000},
+				{group = "composite_armor", chance = 1000000},
 				{group = "melee_two_handed", chance = 1000000},
 				{group = "clothing_attachments", chance = 300000},
 				{group = "armor_attachments", chance = 300000},

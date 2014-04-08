@@ -1,4 +1,4 @@
-bone_armor_looted = {
+bone_armor = {
 	description = "",
 	minimumLevel = 0,
 	maximumLevel = -1,
@@ -15,4 +15,4 @@ bone_armor_looted = {
 	}
 }
 
-addLootGroupTemplate("bone_armor_looted", bone_armor_looted)
+addLootGroupTemplate("bone_armor", bone_armor)

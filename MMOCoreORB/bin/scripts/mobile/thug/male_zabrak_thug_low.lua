@@ -31,7 +31,7 @@ male_zabrak_thug_low = Creature:new {
 		{
 	        groups = {
 			{group = "junk", chance = 5500000},
-			{group = "armor_looted", chance = 500000},
+			{group = "armor_all", chance = 500000},
 			{group = "rifles", chance = 1000000},
 			{group = "pistols", chance = 1000000},
 			{group = "melee_weapons", chance = 1000000},

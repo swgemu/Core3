@@ -38,8 +38,8 @@ canyon_krayt_dragon = Creature:new {
 		},
 		{
 	        groups = {
-				{group = "composite_armor_looted", chance = 2500000},
-				{group = "ubese_armor_looted", chance = 2500000},
+				{group = "composite_armor", chance = 2500000},
+				{group = "ubese_armor", chance = 2500000},
 				{group = "melee_two_handed", chance = 2500000},
 				{group = "rifles", chance = 2500000}				
 			},

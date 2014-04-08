@@ -1,4 +1,4 @@
-padded_armor_looted = {
+padded_armor = {
 	description = "",
 	minimumLevel = 0,
 	maximumLevel = -1,
@@ -16,4 +16,4 @@ padded_armor_looted = {
 	}
 }
 
-addLootGroupTemplate("padded_armor_looted", padded_armor_looted)
+addLootGroupTemplate("padded_armor", padded_armor)

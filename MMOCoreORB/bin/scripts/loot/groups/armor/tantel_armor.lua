@@ -1,4 +1,4 @@
-tantel_armor_looted = {
+tantel_armor = {
 	description = "",
 	minimumLevel = 0,
 	maximumLevel = -1,
@@ -10,4 +10,4 @@ tantel_armor_looted = {
 	}
 }
 
-addLootGroupTemplate("tantel_armor_looted", tantel_armor_looted)
+addLootGroupTemplate("tantel_armor", tantel_armor)
