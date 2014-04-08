@@ -182,6 +182,10 @@ public:
 
 	}
 
+	String& getTemplateName() {
+		return templateName;
+	}
+
 	String& getDirectObjectTemplate() {
 		return directObjectTemplate;
 	}

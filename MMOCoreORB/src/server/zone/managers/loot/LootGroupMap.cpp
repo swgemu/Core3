@@ -12,8 +12,9 @@
 
 Lua* LootGroupMap::lua = NULL;
 int LootGroupMap::ERROR_CODE = NO_ERROR;
+String LootGroupMap::currentFilename = "";
 
-LootGroupMap::LootGroupMap() {
+LootGroupMap::LootGroupMap() : Logger("LootGroupMap") {
 	lua = NULL;
 
 	itemTemplates.setNullValue(NULL);
@@ -56,6 +57,10 @@ void LootGroupMap::registerGlobals() {
 int LootGroupMap::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
 
+	String file = filename.subString(filename.lastIndexOf("/") + 1, filename.lastIndexOf("."));
+
+	currentFilename = file;
+
 	bool res = Lua::runFile("scripts/loot/" + filename, L);
 
 	if (!res)
@@ -74,6 +79,9 @@ int LootGroupMap::addLootGroupTemplate(lua_State* L) {
 
 	instance()->putLootGroupTemplate(name, group);
 
+	if (currentFilename != name)
+		instance()->warning("Loot group template name: " + name + " does not match file name: " + currentFilename);
+
 	return 0;
 }
 
@@ -86,6 +94,9 @@ int LootGroupMap::addLootItemTemplate(lua_State* L) {
 	item->readObject(&obj);
 
 	instance()->putLootItemTemplate(name, item);
+
+	if (currentFilename != name)
+		instance()->warning("Loot item template name: " + name + " does not match file name: " + currentFilename);
 
 	return 0;
 }
