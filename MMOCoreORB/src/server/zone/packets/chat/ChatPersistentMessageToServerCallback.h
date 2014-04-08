@@ -146,6 +146,8 @@ public:
 				if (citizenList == NULL)
 					return 0;
 
+				Vector<String> players;
+
 				for (int i = 0; i < citizenList->size(); ++i) {
 					uint64 citizenID = citizenList->get(i);
 
@@ -155,8 +157,14 @@ public:
 						continue;
 
 					CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
-					sendMailToPlayer(receiverPlayer->getFirstName());
 
+					players.add(receiverPlayer->getFirstName());
+				}
+
+				cityLocker.release();
+
+				for (int i = 0; i < players.size(); ++i) {
+					sendMailToPlayer(players.get(i));
 				}
 
 				return 0;
@@ -189,6 +197,8 @@ public:
 
 		if (receiver == NULL || !receiver->isPlayerCreature())
 			return 0;
+
+		Locker locker(receiver);
 
 		CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
 		ManagedReference<PlayerObject*> ghost = receiverPlayer->getPlayerObject();
