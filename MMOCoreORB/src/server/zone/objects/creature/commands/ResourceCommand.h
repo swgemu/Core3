@@ -165,7 +165,7 @@ public:
 		creature->sendSystemMessage("******** " + spawn->getName() + " *********");
 
 		int hours = (((spawn->getDespawned() - System::getTime()) / 60) /60);
-		int minutes = ((spawn->getDespawned() - System::getTime()) % 60);
+		int minutes = (((spawn->getDespawned() - System::getTime()) / 60) % 60);
 
 		if(hours > 0 || minutes > 0) {
 			creature->sendSystemMessage("Expires: " + String::valueOf(hours) + " hours " + String::valueOf(minutes) + " minutes");
