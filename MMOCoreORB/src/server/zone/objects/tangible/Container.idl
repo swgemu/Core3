@@ -129,7 +129,7 @@ class Container extends TangibleObject {
 	}
 
 	public boolean setRelockingStatus(boolean relock) {
-		relocking = relock;	
+		return relocking = relock;	
 	}
 
 }
