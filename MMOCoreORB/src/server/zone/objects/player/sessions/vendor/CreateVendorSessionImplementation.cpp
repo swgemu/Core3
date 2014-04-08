@@ -21,7 +21,6 @@
 #include "server/zone/templates/tangible/VendorCreatureTemplate.h"
 #include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
 
-
 int CreateVendorSessionImplementation::initializeSession() {
 
 	ManagedReference<CreatureObject*> player = this->player.get();
@@ -270,19 +269,41 @@ void CreateVendorSessionImplementation::randomizeVendorLooks(CreatureObject* ven
 		vendor->transferObject(obj, 4);
 	}
 
-//	VectorMap<String, Reference<CustomizationVariable*> > variables;
-//
-//	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(vendorTempl->getAppearanceFilename().hashCode(), variables, true);
-//	Reference<RangedIntCustomizationVariable*> color = cast<RangedIntCustomizationVariable*>(variables.get("index_color_skin"));
-//	Reference<RangedIntCustomizationVariable*> skinny = cast<RangedIntCustomizationVariable*>(variables.get("blend_skinny"));
-//	Reference<RangedIntCustomizationVariable*> fat = cast<RangedIntCustomizationVariable*>(variables.get("blend_fat"));
-//
-//	if(color != NULL) {
-//		int value = color->g
-//	}
-//
-//	// Customization Variables -- TESTING
-//	vendor->setCustomizationVariable("index_color_skin", 230);
-//	vendor->setCustomizationVariable("blend_skinny", 0);
-//	vendor->setCustomizationVariable("blend_fat", (((1 - .5f) / .5f) * 255));
+	// Randomize Configured Customization Variables
+	for( int i = 0; i < vendorTempl->getCustomizationStringNamesSize(); i++ ){
+		String customizationStringName = vendorTempl->getCustomizationStringName(i);
+
+		if( i >= vendorTempl->getCustomizationValuesSize() )
+			continue;
+
+		Vector<int> values = vendorTempl->getCustomizationValues(i);
+		if( values.isEmpty() )
+			continue;
+
+		// Select random value from array
+		int randomValue = values.get(System::random(values.size() - 1));
+
+		// Some customization strings are mutually exclusive pairs of names separated by
+		// a comma.  Client expects only one of those names to be non-zero.  The other
+		// should be zero.  Randomly choose which one to give a value from the values array
+		int idx = customizationStringName.indexOf( ',' );
+		if( idx >= 0 ){
+			String customizationStringName1 = customizationStringName.subString( 0, idx );
+			String customizationStringName2 = customizationStringName.subString( idx+1 );
+			if( System::random(1) == 1 ){
+				vendor->setCustomizationVariable( customizationStringName1, randomValue, false );
+				vendor->setCustomizationVariable( customizationStringName2, 0, false );
+			}
+			else{
+				vendor->setCustomizationVariable( customizationStringName1, 0, false );
+				vendor->setCustomizationVariable( customizationStringName2, randomValue, false );
+			}
+
+		}
+		else{
+			// Set single variable
+			vendor->setCustomizationVariable( customizationStringName, randomValue, false );
+		}
+	} // foreach customizationStringName
+
 }
