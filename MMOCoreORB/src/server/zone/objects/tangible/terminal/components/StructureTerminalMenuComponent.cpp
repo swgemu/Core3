@@ -41,6 +41,11 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 				menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@player_structure:management_name_structure"); //Name Structure
 				menuResponse->addRadialMenuItemToRadialID(118, 201, 3, "@player_structure:delete_all_items"); //Delete all items
 				menuResponse->addRadialMenuItemToRadialID(118, 202, 3, "@player_structure:move_first_item"); //Find Lost Items
+
+				// Not all civic buildings have signs.  Check to see if build already has one before allowing a change
+				BuildingObject* building = cast<BuildingObject*>(structureObject.get());
+				if( building != NULL && building->getSignObject() != NULL )
+					menuResponse->addRadialMenuItemToRadialID(118, 69, 3, "@player_structure:management_change_sign"); //Change Sign
 			}
 		}
 
