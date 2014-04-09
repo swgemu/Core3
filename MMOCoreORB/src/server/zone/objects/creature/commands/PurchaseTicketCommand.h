@@ -141,16 +141,11 @@ public:
 
 		ManagedReference<CityRegion*> destCity = arrivalShuttle->getCityRegion();
 
-		int arrivalTax = 0;
-
 		if (destCity != NULL){
 			if (destCity.get()->isBanned(creature->getObjectID())) {
 				creature->sendSystemMessage("@city/city:banned_from_that_city");  // You have been banned from traveling to that city by the city militia
 				return GENERALERROR;
 			}
-
-			if(!destCity->isClientRegion())
-				arrivalTax = destCity->getTax(CityRegion::TAX_TRAVEL);
 		}
 
 		//Check to see if this point can be reached from this location.
@@ -160,14 +155,14 @@ public:
 		if (roundTrip && !pmArrival->isTravelToLocationPermitted(arrivalPoint, departurePlanet, departurePoint))
 			return GENERALERROR; //If they are doing a round trip, make sure they can travel back.
 
-		int fare = pmDeparture->getTravelFare(departurePlanet, arrivalPlanet);
+		int baseFare = pmDeparture->getTravelFare(departurePlanet, arrivalPlanet);
 
-		if (fare == 0) { // Make sure that the travel route is valid
+		if (baseFare == 0) { // Make sure that the travel route is valid
 			creature->sendSystemMessage("Invalid travel route specified.");
 			return GENERALERROR;
 		}
 
-		fare = fare + departureTax;
+		int fare = baseFare + departureTax;
 
 		if (roundTrip)
 			fare *= 2;
@@ -204,9 +199,8 @@ public:
 		}
 
 
-
 		StringIdChatParameter params("@base_player:prose_pay_acct_success"); //You successfully make a payment of %DI credits to %TO.
-		params.setDI(fare);
+		params.setDI(baseFare + (roundTrip * baseFare));
 		params.setTO("@money/acct_n:travelsystem"); //the Galactic Travel Commission
 
 		creature->sendSystemMessage(params);
@@ -223,15 +217,16 @@ public:
 		}
 		_lock.release();
 
-		if(currentCity != NULL && !currentCity->isClientRegion()){
+		if(currentCity != NULL && !currentCity->isClientRegion() && departureTax > 0){
 			Locker clocker(currentCity, creature);
-			currentCity->addToCityTreasury(departureTax + (roundTrip * departureTax));
+			int taxPaid = departureTax + (roundTrip * departureTax);
+			currentCity->addToCityTreasury(taxPaid);
 
-		}
+			StringIdChatParameter param("@base_player:prose_pay_acct_success"); //You successfully make a payment of %DI credits to %TO.
+			param.setDI(taxPaid);
+			param.setTO(currentCity->getRegionName());
 
-		if(destCity != NULL && !destCity->isClientRegion()){
-			Locker clocker(destCity, creature);
-			destCity->addToCityTreasury(arrivalTax + (roundTrip * arrivalTax));
+			creature->sendSystemMessage(param);
 		}
 
 		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, 0);
