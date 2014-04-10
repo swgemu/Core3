@@ -23,6 +23,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/templates/mobile/LairTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/mission/DestroyMissionLairObserver.h"
 
 void DestroyMissionObjectiveImplementation::setLairTemplateToSpawn(const String& sp) {
 	lairTemplate = sp;
@@ -166,26 +167,51 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairTemplate.hashCode());
 
 	if (lair == NULL) {
-		error("incorrect lair template in lair mission objective " + lairTemplate);
+		error("incorrect lair template in destroy mission objective " + lairTemplate);
 		return;
 	}
 
-	unsigned int faction = lair->getFaction();
-
 	if (lairObject == NULL) {
-		CreatureManager* creatureManager = zone->getCreatureManager();
+		String buildingToSpawn = lair->getBuilding(difficulty);
 
-		lairObject = creatureManager->spawnLair(lairTemplate.hashCode(), difficulty, pos.getX(), pos.getZ(), pos.getY(), faction);
+	 	if (buildingToSpawn.isEmpty()) {
+	 		error("error spawning " + buildingToSpawn);
+	 		return;
+	 	}
 
-		if (lairObject != NULL) {
-			ManagedReference<MissionObserver*> observer = new MissionObserver(_this.get());
-			addObserver(observer, true);
+		lairObject = zone->getZoneServer()->createObject(buildingToSpawn.hashCode(), 0).castTo<TangibleObject*>();
 
-			Locker locker(lairObject);
+	 	if (lairObject == NULL) {
+	 		error("error spawning " + buildingToSpawn);
+	 		return;
+	 	}
 
-			lairObject->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
-		}
+	 	Locker locker(lairObject);
 
+	 	lairObject->setFaction(lair->getFaction());
+	 	lairObject->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
+	 	lairObject->setOptionsBitmask(0, false);
+	 	lairObject->setMaxCondition(difficulty * 1000);
+	 	lairObject->setConditionDamage(0, false);
+	 	lairObject->initializePosition(pos.getX(), pos.getZ(), pos.getY());
+
+		ManagedReference<MissionObserver*> observer = new MissionObserver(_this.get());
+		addObserver(observer, true);
+
+		lairObject->registerObserver(ObserverEventType::OBJECTDESTRUCTION, observer);
+
+	 	ManagedReference<DestroyMissionLairObserver*> lairObserver = new DestroyMissionLairObserver();
+	 	lairObserver->deploy();
+	 	lairObserver->setLairTemplate(lair);
+	 	lairObserver->setDifficulty(difficulty);
+	 	lairObserver->setObserverType(ObserverType::LAIR);
+
+	 	lairObject->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);
+	 	lairObject->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);
+
+		zone->transferObject(lairObject, -1, true);
+
+		lairObserver->checkForNewSpawns(lairObject, true);
 	}
 
 	if (lairObject != NULL && lairObject->getZone() == NULL) {

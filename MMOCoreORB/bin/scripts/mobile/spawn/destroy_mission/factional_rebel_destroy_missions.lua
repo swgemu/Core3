@@ -3,69 +3,45 @@ factional_rebel_destroy_missions = {
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 0,
 
-	lairSpawns = {
-		
+	destroyMissionSpawns = {
 		{
-			lairTemplateName = "imperial_banner",
-			spawnLimit = 0,
+			lairtemplateName = "imperial_banner",
 			minDifficulty = 14,
 			maxDifficulty = 20,
-			numberToSpawn = 0,
-			weighting = 5,
-			size = 15,
-		},	
-		{
-			lairTemplateName = "imperial",
-			spawnLimit = 0,
-			minDifficulty = 22,
-			maxDifficulty = 28,
-			numberToSpawn = 0,
-			weighting = 5,
-			size = 15,
-		},
-		
-		{
-			lairTemplateName = "global_stormtrooper",
-			spawnLimit = -1,
-			minDifficulty = 22,
-			maxDifficulty = 28,
-			numberToSpawn = 0,
-			weighting = 5,
-			size = 15,
+			size = 25,
 		},
 		{
-			lairTemplateName = "global_imperial_cadet_camp_imperial_small_theater",
-			spawnLimit = 0,
+			lairtemplateName = "imperial",
+			minDifficulty = 22,
+			maxDifficulty = 28,
+			size = 25,
+		},
+		{
+			lairtemplateName = "global_stormtrooper",
+			minDifficulty = 22,
+			maxDifficulty = 28,
+			size = 25,
+		},
+		{
+			lairtemplateName = "global_imperial_cadet_camp_imperial_small_theater",
 			minDifficulty = 6,
 			maxDifficulty = 8,
-			numberToSpawn = 0,
-			weighting = 5,
-			size = 15,
+			size = 25,
 		},
-        {
-			lairTemplateName = "global_imperial_cadet_senior_camp_imperial_small_theater",
-			spawnLimit = 0,
+        	{
+			lairtemplateName = "global_imperial_cadet_senior_camp_imperial_small_theater",
 			minDifficulty = 8,
 			maxDifficulty = 12,
-			numberToSpawn = 0,
-			weighting = 5,
-			size = 15,
+			size = 25,
 		},
 		{
-			lairTemplateName = "global_imperial_cadet_squadleader_camp_imperial_small_theater",
-			spawnLimit = 0,
+			lairtemplateName = "global_imperial_cadet_squadleader_camp_imperial_small_theater",
 			minDifficulty = 9,
 			maxDifficulty = 13,
-			numberToSpawn = 0,
-			weighting = 5,
-			size = 15,
+			size = 25,
 		},
-	
-	
-	
 	}
 }
 
-addLairGroup("factional_rebel_destroy_missions", factional_rebel_destroy_missions);
+addDestroyMissionGroup("factional_rebel_destroy_missions", factional_rebel_destroy_missions);
