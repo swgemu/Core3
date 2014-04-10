@@ -132,10 +132,10 @@ naboo_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "naboo_fambaa_lair_neutral_large",
-			minDifficulty = 30,
-			maxDifficulty = 38,
-			size = 25,
+			lairTemplateName = "fambaa",
+			minDifficulty = 34,
+			maxDifficulty = 39,
+			size = 30,
 		},
  		{
  			lairTemplateName = "naboo_gungan_hermit_neutral_small_theater",

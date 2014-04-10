@@ -22,6 +22,7 @@ public:
 
 protected:
 	VectorMap<String, int> mobiles;
+	VectorMap<String, int> bossMobiles;
 	int spawnLimit;
 
 	VectorMap<uint32, Reference<Vector<String>*> > buildings;
@@ -113,6 +114,24 @@ public:
 
 		mobs.pop();
 
+		LuaObject bossMobs = templateData->getObjectField("bossMobiles");
+
+		for (int i = 1; i <= bossMobs.getTableSize(); ++i) {
+			lua_rawgeti(bossMobs.getLuaState(), -1, i);
+			LuaObject bossMobile(bossMobs.getLuaState());
+
+			if (bossMobile.isValidTable()) {
+				String bossMob = bossMobile.getStringAt(1);
+				int number = (int)bossMobile.getIntAt(2);
+
+				bossMobiles.put(bossMob, number);
+			}
+
+			bossMobile.pop();
+		}
+
+		bossMobs.pop();
+
 		LuaObject veryEasy = templateData->getObjectField("buildingsVeryEasy");
 		Vector<String>* buildings = this->buildings.get((uint32)VERYEASY);
 
@@ -194,6 +213,14 @@ public:
 
 	VectorMap<String, int>* getMobiles() {
 		return &mobiles;
+	}
+
+	VectorMap<String, int>* getBossMobiles() {
+		return &bossMobiles;
+	}
+
+	bool hasBossMobs() {
+		return bossMobiles.size() > 0;
 	}
 
 	bool isLairTemplate() {

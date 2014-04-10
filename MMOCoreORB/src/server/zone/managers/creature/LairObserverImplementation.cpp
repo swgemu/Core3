@@ -71,12 +71,12 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 
 		// if there are living creatures, make them aggro
 		if(livingCreatureCount > 0 ){
-			Reference<LairAggroTask*> task = new LairAggroTask(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), _this.get());
+			Reference<LairAggroTask*> task = new LairAggroTask(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), _this.get(), false);
 			task->execute();
 		}
 
 		// if new creatures have spawned or there are live creatures near the lair
-		if( checkForNewSpawns(cast<TangibleObject*>(observable)) || livingCreatureCount > 0 )
+		if( checkForNewSpawns(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1)) || livingCreatureCount > 0 )
 			checkForHeal(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1));
 
 		break;
@@ -141,7 +141,7 @@ int LairObserverImplementation::getLivingCreatureCount() {
 	return alive;
 }
 
-void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker){
+void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker, bool allAttack){
 
 	for (int i = 0; i < spawnedCreatures.size() ; ++i) {
 			CreatureObject* creo = spawnedCreatures.get(i);
@@ -149,7 +149,7 @@ void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* a
 			if (creo->isDead() || creo->getZone() == NULL)
 				continue;
 
-			if (creo->isAiAgent() && (System::random(1) == 1) && attacker != NULL) {
+			if (creo->isAiAgent() && attacker != NULL && (allAttack || (System::random(1) == 1))) {
 				// TODO: only set defender if needed
 				AiAgent* ai = cast<AiAgent*>( creo);
 				Locker clocker(creo, lair);
@@ -216,7 +216,7 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 	lair->broadcastMessage(healLoc, false);
 }
 
-bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
+bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {
 	if (lair->getZone() == NULL)
 		return false;
 

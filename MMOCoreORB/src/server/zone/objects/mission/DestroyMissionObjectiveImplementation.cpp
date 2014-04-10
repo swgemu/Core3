@@ -213,7 +213,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 		zone->transferObject(lairObject, -1, true);
 
-		lairObserver->checkForNewSpawns(lairObject, true);
+		lairObserver->checkForNewSpawns(lairObject, NULL, true);
 	}
 
 	if (lairObject != NULL && lairObject->getZone() == NULL) {
