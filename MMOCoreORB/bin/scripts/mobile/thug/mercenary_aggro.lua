@@ -38,7 +38,8 @@ mercenary_aggro = Creature:new {
 		{
 	        groups = {
 				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 5700000},
+				{group = "junk", chance = 3700000},
+				{group = "wearables_common", chance = 2000000},				
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
                 		{group = "melee_weapons", chance = 1000000},

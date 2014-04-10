@@ -31,7 +31,8 @@ bounty_hunter_thug = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3500000},
+				{group = "junk", chance = 1500000},
+				{group = "wearables_common", chance = 2000000},				
 				{group = "grenades_looted", chance = 1000000},
 				{group = "armor_all", chance = 1500000},
 				{group = "rifles", chance = 1000000},
