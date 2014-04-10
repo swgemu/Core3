@@ -277,8 +277,8 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 
 		CreatureManager* creatureManager = lair->getZone()->getCreatureManager();
 
-		float x = lair->getPositionX() + (20.0f - System::random(400) / 10.0f);
-		float y = lair->getPositionY() + (20.0f - System::random(400) / 10.0f);
+		float x = lair->getPositionX() + (size - System::random(size * 20) / 10.0f);
+		float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
 		float z = lair->getZone()->getHeight(x, y);
 
 		int levelDiff = objectsToSpawn->get(templateToSpawn);
