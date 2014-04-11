@@ -32,7 +32,8 @@ corsec_special_ops_lieutenant = Creature:new {
 	lootGroups = {
 	  {
 			groups = {
-				{group = "junk", chance = 5500000},
+				{group = "junk", chance = 4500000},
+				{group = "wearables_rare", chance = 1000000},
                                 {group = "clothing_attachments", chance = 250000},
 				{group = "armor_attachments", chance = 250000},
 				{group = "corsec_weapons", chance = 2500000},
