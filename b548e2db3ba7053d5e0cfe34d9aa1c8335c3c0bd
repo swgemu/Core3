@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_93bb2cc4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TotalHealSelfCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-04-11T09:18:42Z",
+      "side": 1,
+      "message": "Here\u0027s your typo: healWoundAmoun ... missing the t",
+      "revId": "b548e2db3ba7053d5e0cfe34d9aa1c8335c3c0bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
