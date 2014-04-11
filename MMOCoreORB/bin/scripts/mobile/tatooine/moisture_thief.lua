@@ -29,10 +29,12 @@ moisture_thief = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 6000000},
+				{group = "junk", chance = 2000000},
+				{group = "wearables_common", chance = 2000000},				
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "printer_parts", chance = 1000000},
+				{group = "pistols", chance = 2000000},
 			},
 			lootChance = 2200000
 		}				

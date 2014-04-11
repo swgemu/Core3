@@ -27,7 +27,18 @@ rodian_clan_captain = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_rodian_clan_captain.iff"},
-	lootGroups = {},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 3000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "heavy_weapons", chance = 2000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(marksmannovice,brawlernovice)
