@@ -86,6 +86,44 @@ public:
 
 	}
 
+
+
+	void sendWoundMessage(CreatureObject* creature, int healthWound, int actionWound, int mindWound, int strengthWound, int constitutionWound, int quicknessWound, int staminaWound, int focusWound, int willpowerWound) {
+
+		StringBuffer msgPlayer, msgBody, msgTail;
+
+		if (healthWound > 0 && strengthWound > 0 && constitutionWound > 0 && actionWound > 0 && quicknessWound > 0 && staminaWound > 0 && mindWound > 0 && focusWound > 0 && willpowerWound > 0) {
+			msgBody << healthWound << " health, " << strengthWound << " strength, " << constitutionWound << " constitution " << actionWound << " action, " << quicknessWound << " quickness, " << staminaWound << " stamina " << mindWound << " mind, " << focusWound << " focus, and "  << willpowerWound << " willpower";;
+		} else if (healthWound > 0) {
+			msgBody << healthWound << " health";
+		} else if (strengthWound > 0) {
+			msgBody << strengthWound << " strength";
+		} else if (constitutionWound > 0) {
+			msgBody << constitutionWound << " constitution";
+		} else if (actionWound > 0) {
+			msgBody << actionWound << " action";
+		} else if (quicknessWound > 0) {
+			msgBody << quicknessWound << " quickness";
+		} else if (staminaWound > 0) {
+			msgBody << staminaWound << " stamina";
+		} else if (mindWound > 0) {
+			msgBody << mindWound << " mind";
+		} else if (focusWound > 0) {
+			msgBody << focusWound << " focus";
+		} else if (willpowerWound > 0) {
+			msgBody << willpowerWound << " willpower";
+		} else {
+			creature->sendSystemMessage("@healing_response:healing_response_67"); // You have no wounds of that type.
+			return;
+		}
+
+		msgTail << " wounds.";
+
+			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
+			creature->sendSystemMessage(msgPlayer.toString());
+
+	}
+
 	int healBattleFatigue(CreatureObject* creature, int damage){
 
 		int currentValue = creature->getShockWounds();
@@ -112,7 +150,19 @@ public:
 	}
 
 	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
-		return defaultTime * 3.0;
+		return defaultTime * getSpeedMultiplierMod();
+	}
+
+	int getSpeedMultiplierMod() {
+		int value = 0;
+
+		if (name.contains("healstatesself")) // HealStatesSelf = 4 sec
+			value = 3;
+		else
+			value = 4; // Other healing commands = 6 seconds
+
+		return value;
+
 	}
 };
 

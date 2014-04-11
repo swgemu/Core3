@@ -53,127 +53,25 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
-#include "QueueCommand.h"
+#include "ForceHealQueueCommand.h"
 
-class TotalHealSelfCommand : public QueueCommand {
-protected:
+class TotalHealSelfCommand : public ForceHealQueueCommand {
 
-	int forceCost;
-	int heal;	
-
-	int healthHealed;
-	int actionHealed;
-	int mindHealed;
-
-	int healthWoundHealed;
-	int strengthWoundHealed;
-	int constitutionWoundHealed;
-	
-	int actionWoundHealed;
-	int quicknessWoundHealed;
-	int staminaWoundHealed;	
-	
-	int mindWoundHealed;
-	int focusWoundHealed;
-	int willpowerWoundHealed;	
-
-	float speed;
-	float range;
-	String effectName;
-	
 public:
 	TotalHealSelfCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+: ForceHealQueueCommand(name, server) {
 
-	forceCost = 0;
-	heal = 6000;
-		
-	healthHealed = 0;
-	actionHealed = 0;
-	mindHealed = 0;
-		
-	healthWoundHealed = 0;
-	strengthWoundHealed = 0;
-	constitutionWoundHealed = 0;		
-		
-	actionWoundHealed = 0;
-	quicknessWoundHealed = 0;
-	staminaWoundHealed = 0;	
-
-	mindWoundHealed = 0;
-	focusWoundHealed = 0;
-	willpowerWoundHealed = 0;	
-
-	speed = 3.0f;
-	
 	}
-	
-	void doAnimations(CreatureObject* creature) {
-			creature->playEffect("clienteffect/pl_force_healing.cef", "");
-	}
-		
-	
-	void sendWoundMessage(CreatureObject* creature, int healthWound, int actionWound, int mindWound, int strengthWound, int constitutionWound, int quicknessWound, int staminaWound, int focusWound, int willpowerWound) {
 
-		StringBuffer msgPlayer, msgBody, msgTail;
-
-		if (healthWound > 0 && strengthWound > 0 && constitutionWound > 0 && actionWound > 0 && quicknessWound > 0 && staminaWound > 0 && mindWound > 0 && focusWound > 0 && willpowerWound > 0) {
-			msgBody << healthWound << " health, " << strengthWound << " strength, " << constitutionWound << " constitution " << actionWound << " action, " << quicknessWound << " quickness, " << staminaWound << " stamina " << mindWound << " mind, " << focusWound << " focus, and "  << willpowerWound << " willpower";;
-		} else if (healthWound > 0) {
-			msgBody << healthWound << " health";
-		} else if (strengthWound > 0) {
-			msgBody << strengthWound << " strength";
-		} else if (constitutionWound > 0) {
-			msgBody << constitutionWound << " constitution";
-		} else if (actionWound > 0) {
-			msgBody << actionWound << " action";
-		} else if (quicknessWound > 0) {
-			msgBody << quicknessWound << " quickness";
-		} else if (staminaWound > 0) {
-			msgBody << staminaWound << " stamina";
-		} else if (mindWound > 0) {
-			msgBody << mindWound << " mind";
-		} else if (focusWound > 0) {
-			msgBody << focusWound << " focus";
-		} else if (willpowerWound > 0) {
-			msgBody << willpowerWound << " willpower";			
-		} else {
-			creature->sendSystemMessage("@healing_response:healing_response_67"); // You have no wounds of that type.
-			return;
+	bool canPerformSkill(CreatureObject* creature) {
+		if (!creature->getWounds(CreatureAttribute::HEALTH) && !creature->getWounds(CreatureAttribute::STRENGTH) && !creature->getWounds(CreatureAttribute::CONSTITUTION) && !creature->getWounds(CreatureAttribute::ACTION) && !creature->getWounds(CreatureAttribute::QUICKNESS) && !creature->getWounds(CreatureAttribute::STAMINA) && !creature->getWounds(CreatureAttribute::MIND) && !creature->getWounds(CreatureAttribute::FOCUS) && !creature->getWounds(CreatureAttribute::WILLPOWER) && !creature->hasDamage(CreatureAttribute::HEALTH) && !creature->hasDamage(CreatureAttribute::ACTION) && !creature->hasDamage(CreatureAttribute::MIND) && !creature->hasState(CreatureState::STUNNED) && !creature->hasState(CreatureState::DIZZY) && !creature->hasState(CreatureState::INTIMIDATED) && !creature->hasState(CreatureState::BLINDED)) {
+			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
+			return false;
 		}
 
-		msgTail << " wounds.";
-
-			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
-			creature->sendSystemMessage(msgPlayer.toString());
-
-	}
-	
-	void sendHealMessage(CreatureObject* creature, int healthDamage, int actionDamage, int mindDamage) {
-
-		StringBuffer msgPlayer, msgBody, msgTail;
-
-		if (healthDamage > 0 && actionDamage > 0 && mindDamage > 0) {
-			msgBody << healthDamage << " health, " << actionDamage << " action, and "  << mindDamage << " mind";
-		} else if (healthDamage > 0) {
-			msgBody << healthDamage << " health";
-		} else if (actionDamage > 0) {
-			msgBody << actionDamage << " action";
-		} else if (mindDamage > 0) {
-			msgBody << mindDamage << " mind";
-		} else {
-			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
-			return;
-		}	
-
-		msgTail << " damage.";
-
-			msgPlayer << "You heal yourself for " << msgBody.toString() << " points of" << msgTail.toString(); // You heal yourself for %DI points of %TO.
-			creature->sendSystemMessage(msgPlayer.toString());
-
+		return true;
 	}	
-		
-		
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -184,63 +82,72 @@ public:
 
 		if (isWearingArmor(creature)) {
 			return NOJEDIARMOR;
-		}	
-				
-		if (!creature->getWounds(CreatureAttribute::HEALTH) && !creature->getWounds(CreatureAttribute::STRENGTH) && !creature->getWounds(CreatureAttribute::CONSTITUTION) && !creature->getWounds(CreatureAttribute::ACTION) && !creature->getWounds(CreatureAttribute::QUICKNESS) && !creature->getWounds(CreatureAttribute::STAMINA) && !creature->getWounds(CreatureAttribute::MIND) && !creature->getWounds(CreatureAttribute::FOCUS) && !creature->getWounds(CreatureAttribute::WILLPOWER) && !creature->hasDamage(CreatureAttribute::HEALTH) && !creature->hasDamage(CreatureAttribute::ACTION) && !creature->hasDamage(CreatureAttribute::MIND) && !creature->hasState(CreatureState::STUNNED) && !creature->hasState(CreatureState::DIZZY) && !creature->hasState(CreatureState::INTIMIDATED) && !creature->hasState(CreatureState::BLINDED)) {
-			creature->sendSystemMessage("You have nothing of that type to heal."); // You have nothing of that type to heal.
-			return false;
 		}
-		
-		int healDisease = creature->healDot(CreatureState::DISEASED, 300);
-		int healPoison = creature->healDot(CreatureState::POISONED, 300);
-		int healBleeding = creature->healDot(CreatureState::BLEEDING, 300);
-		int healOnFire = creature->healDot(CreatureState::ONFIRE, 300);			
-		
-		int healedHealthWound = creature->healWound(creature, CreatureAttribute::HEALTH, heal);
-		int healedStrengthWound = creature->healWound(creature, CreatureAttribute::STRENGTH, heal);
-		int healedConstitutionWound = creature->healWound(creature, CreatureAttribute::CONSTITUTION, heal);
-		
-		int healedActionWound = creature->healWound(creature, CreatureAttribute::ACTION, heal);
-		int healedQuicknessWound = creature->healWound(creature, CreatureAttribute::QUICKNESS, heal);
-		int healedStaminaWound = creature->healWound(creature, CreatureAttribute::STAMINA, heal);
-		
-		int healedMindWound = creature->healWound(creature, CreatureAttribute::MIND, heal);
-		int healedFocusWound = creature->healWound(creature, CreatureAttribute::FOCUS, heal);
-		int healedWillpowerWound = creature->healWound(creature, CreatureAttribute::WILLPOWER, heal);
-		
-		int healedHealth = creature->healDamage(creature, CreatureAttribute::HEALTH, heal);
-		int healedAction = creature->healDamage(creature, CreatureAttribute::ACTION, heal);
-		int healedMind = creature->healDamage(creature, CreatureAttribute::MIND, heal, true, false);		
 
-		creature->addShockWounds(-1000);
-		
-		creature->removeStateBuff(CreatureState::STUNNED);
-
-		creature->removeStateBuff(CreatureState::DIZZY);
-
-		creature->removeStateBuff(CreatureState::BLINDED);
-
-		creature->removeStateBuff(CreatureState::INTIMIDATED);
-			
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-		
-		if (playerObject->getForcePower() <= 400) {
-			creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have enough force to do that.
+		if (isWarcried(creature)) {
 			return GENERALERROR;
 		}
-		
-		
-		forceCost = MIN(((healedHealth + healedAction + healedMind + healedHealthWound + healedStrengthWound + healedConstitutionWound + healedActionWound + healedQuicknessWound + healedStaminaWound + healedMindWound + healedFocusWound + healedWillpowerWound + healDisease + healPoison + healBleeding + healOnFire) / 20), 400);
 
-		
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost); // Deduct force.	
 
-		sendHealMessage(creature, healedHealth, healedAction, healedMind);
-		
+		if (!checkForceCost(creature)) {
+			creature->sendSystemMessage("@jedi_spam:no_force_power");
+			return GENERALERROR;
+		}
+
+		// At this point, the player has enough Force... Can they perform skill?
+
+		if (!canPerformSkill(creature))
+			return GENERALERROR;
+
+
+		int forceCostDeducted = forceCost;
+
+		// Lets see how much healing they are doing.
+		int healAmount = 1500;
+		int healDotAmount = 300;
+		int healWoundAmount = 500;
+
+		uint32 healDisease = creature->healDot(CreatureState::DISEASED, healDotAmount);
+		uint32 healPoison = creature->healDot(CreatureState::POISONED, healDotAmount);
+		uint32 healBleeding = creature->healDot(CreatureState::BLEEDING, healDotAmount);
+		uint32 healOnFire = creature->healDot(CreatureState::ONFIRE, healDotAmount);
+
+		uint32 healedHealthWound = creature->healWound(creature, CreatureAttribute::HEALTH, healWoundAmount);
+		uint32 healedStrengthWound = creature->healWound(creature, CreatureAttribute::STRENGTH, healWoundAmount);
+		uint32 healedConstitutionWound = creature->healWound(creature, CreatureAttribute::CONSTITUTION, healWoundAmoun);
+
+		uint32 healedActionWound = creature->healWound(creature, CreatureAttribute::ACTION, healWoundAmoun);
+		uint32 healedQuicknessWound = creature->healWound(creature, CreatureAttribute::QUICKNESS, healWoundAmoun);
+		uint32 healedStaminaWound = creature->healWound(creature, CreatureAttribute::STAMINA, healWoundAmoun);
+
+		uint32 healedMindWound = creature->healWound(creature, CreatureAttribute::MIND, healWoundAmoun);
+		uint32 healedFocusWound = creature->healWound(creature, CreatureAttribute::FOCUS, healWoundAmoun);
+		uint32 healedWillpowerWound = creature->healWound(creature, CreatureAttribute::WILLPOWER, healWoundAmoun);
+
+		uint32 healthHealed = creature->healDamage(creature, CreatureAttribute::HEALTH, healAmount);
+		uint32 actionHealed = creature->healDamage(creature, CreatureAttribute::ACTION, healAmount);
+		uint32 mindHealed = creature->healDamage(creature, CreatureAttribute::MIND, healAmount);
+
+		creature->removeStateBuff(CreatureState::STUNNED);
+		creature->removeStateBuff(CreatureState::DIZZY);
+		creature->removeStateBuff(CreatureState::BLINDED);
+		creature->removeStateBuff(CreatureState::INTIMIDATED);
+
+		healBattleFatigue(creature, 1000);
+
+		forceCostDeducted = MIN(((healthHealed + actionHealed + mindHealed + healedHealthWound + healedStrengthWound + healedConstitutionWound + healedActionWound + healedQuicknessWound + healedStaminaWound + healedMindWound + healedFocusWound + healedWillpowerWound + healDisease + healPoison + healBleeding + healOnFire) / 20), forceCost);
+
+		doAnimations(creature, creature);
+
+		sendHealMessage(creature, creature, healthHealed, actionHealed, mindHealed);
+
 		sendWoundMessage(creature, healedHealthWound, healedActionWound,  healedMindWound, healedStrengthWound, healedConstitutionWound, healedQuicknessWound, healedStaminaWound, healedFocusWound, healedWillpowerWound);
-				
-		doAnimations(creature);	
-			
+
+		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+
+		if (playerObject != NULL)
+			playerObject->setForcePower(playerObject->getForcePower() - forceCostDeducted);
+
 		return SUCCESS;
 	}
 
