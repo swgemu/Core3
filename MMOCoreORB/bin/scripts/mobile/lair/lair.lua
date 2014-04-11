@@ -1,5 +1,6 @@
 Lair = {
 	mobiles = {}, -- mobile, level?
+	bossMobiles = {}, -- mobile template, number to spawn
 	
 	spawnLimit = 0,
 	

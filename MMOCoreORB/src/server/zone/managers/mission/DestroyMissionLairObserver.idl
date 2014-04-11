@@ -61,7 +61,7 @@ class DestroyMissionLairObserver extends LairObserver {
 
 	public native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
 
-	public native boolean checkForNewSpawns(TangibleObject lair, boolean forceSpawn = false);
+	public native boolean checkForNewSpawns(TangibleObject lair, TangibleObject attacker, boolean forceSpawn = false);
 
 	public boolean isDestroyMissionLairObserver() {
 		return true;

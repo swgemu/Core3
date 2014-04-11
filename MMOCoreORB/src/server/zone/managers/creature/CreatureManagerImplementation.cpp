@@ -123,7 +123,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	zone->transferObject(building, -1, false);
 
-	lairObserver->checkForNewSpawns(building, true);
+	lairObserver->checkForNewSpawns(building, NULL, true);
 
  	return building;
 }

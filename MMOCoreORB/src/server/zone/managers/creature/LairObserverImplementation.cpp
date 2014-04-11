@@ -71,12 +71,12 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 
 		// if there are living creatures, make them aggro
 		if(livingCreatureCount > 0 ){
-			Reference<LairAggroTask*> task = new LairAggroTask(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), _this.get());
+			Reference<LairAggroTask*> task = new LairAggroTask(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), _this.get(), false);
 			task->execute();
 		}
 
 		// if new creatures have spawned or there are live creatures near the lair
-		if( checkForNewSpawns(cast<TangibleObject*>(observable)) || livingCreatureCount > 0 )
+		if( checkForNewSpawns(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1)) || livingCreatureCount > 0 )
 			checkForHeal(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1));
 
 		break;
@@ -141,7 +141,7 @@ int LairObserverImplementation::getLivingCreatureCount() {
 	return alive;
 }
 
-void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker){
+void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker, bool allAttack){
 
 	for (int i = 0; i < spawnedCreatures.size() ; ++i) {
 			CreatureObject* creo = spawnedCreatures.get(i);
@@ -149,7 +149,7 @@ void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* a
 			if (creo->isDead() || creo->getZone() == NULL)
 				continue;
 
-			if (creo->isAiAgent() && (System::random(1) == 1) && attacker != NULL) {
+			if (creo->isAiAgent() && attacker != NULL && (allAttack || (System::random(1) == 1))) {
 				// TODO: only set defender if needed
 				AiAgent* ai = cast<AiAgent*>( creo);
 				Locker clocker(creo, lair);
@@ -216,11 +216,11 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 	lair->broadcastMessage(healLoc, false);
 }
 
-bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
+bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {
 	if (lair->getZone() == NULL)
 		return false;
 
-	if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
+	if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit() && !lairTemplate->hasBossMobs())
 		return false;
 
 	if (forceSpawn) {
@@ -236,7 +236,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 			spawnNumber++;
 			break;
 		case 1:
-			if (conditionDamage > (maxCondition / 4)) {
+			if (conditionDamage > (maxCondition / 10)) {
 				spawnNumber++;
 			} else {
 				return false;
@@ -250,38 +250,61 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 			}
 			break;
 		case 3:
+			if (lairTemplate->hasBossMobs() && conditionDamage > ((maxCondition * 9) / 10)) {
+				spawnNumber++;
+			} else {
+				return false;
+			}
+			break;
+		default:
 			return false;
 			break;
 		}
 	}
-	//SortedVector<uint32>* objectsToSpawn = getObjectsToSpawn();
 
-	VectorMap<String, int>* objectsToSpawn = lairTemplate->getMobiles();
-	int amountToSpawn = 0;
+	VectorMap<String, int> objectsToSpawn; // String mobileTemplate, int number to spawn
 
-	if (getMobType() == LairTemplate::CREATURE) {
-		amountToSpawn = System::random(3) + ((lairTemplate->getSpawnLimit() / 3) - 2);
+	if (spawnNumber == 4) {
+		VectorMap<String, int>* mobs = lairTemplate->getBossMobiles();
+
+		for (int i = 0; i < mobs->size(); i++) {
+			objectsToSpawn.put(mobs->elementAt(i).getKey(), mobs->elementAt(i).getValue());
+		}
+
 	} else {
-		amountToSpawn = System::random(lairTemplate->getSpawnLimit() / 2) + (lairTemplate->getSpawnLimit() / 2);
+		VectorMap<String, int>* mobiles = lairTemplate->getMobiles();
+		int amountToSpawn = 0;
+
+		if (getMobType() == LairTemplate::CREATURE) {
+			amountToSpawn = System::random(3) + ((lairTemplate->getSpawnLimit() / 3) - 2);
+		} else {
+			amountToSpawn = System::random(lairTemplate->getSpawnLimit() / 2) + (lairTemplate->getSpawnLimit() / 2);
+		}
+
+		if (amountToSpawn < 1)
+			amountToSpawn = 1;
+
+		for (int i = 0; i < amountToSpawn; i++) {
+			int num = System::random(mobiles->size() - 1);
+			String mob = mobiles->elementAt(num).getKey();
+
+			if (objectsToSpawn.contains(mob)) {
+				int value = objectsToSpawn.get(mob);
+				objectsToSpawn.drop(mob);
+				objectsToSpawn.put(mob, value + 1);
+			} else {
+				objectsToSpawn.put(mob, 1);
+			}
+		}
 	}
 
-	if (amountToSpawn < 1)
-		amountToSpawn = 1;
+	for(int i = 0; i < objectsToSpawn.size(); ++i) {
 
-	for(int i = 0; i < amountToSpawn; ++i) {
-
-		if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
+		if (spawnNumber != 4 && spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
 			return true;
 
-		String templateToSpawn = objectsToSpawn->elementAt((int)System::random(objectsToSpawn->size() - 1)).getKey();
-
-		CreatureManager* creatureManager = lair->getZone()->getCreatureManager();
-
-		float x = lair->getPositionX() + (size - System::random(size * 20) / 10.0f);
-		float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
-		float z = lair->getZone()->getHeight(x, y);
-
-		int levelDiff = objectsToSpawn->get(templateToSpawn);
+		String templateToSpawn = objectsToSpawn.elementAt(i).getKey();
+		int numberToSpawn = objectsToSpawn.get(templateToSpawn);
 
 		CreatureTemplate* creatureTemplate = CreatureTemplateManager::instance()->getTemplate(templateToSpawn);
 
@@ -289,41 +312,60 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 			continue;
 
 		float tamingChance = creatureTemplate->getTame();
+		int levelDiff = 0;
 
-		ManagedReference<CreatureObject*> creo = NULL;
+		if (spawnNumber != 4) {
+			VectorMap<String, int>* mobiles = lairTemplate->getMobiles();
+			levelDiff = mobiles->get(templateToSpawn);
+		}
 
-		if (tamingChance > 0) {
-			if (babiesSpawned == 0 && System::random(250) < (tamingChance * 100.0f)) {
-				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
-				babiesSpawned++;
-			} else if (System::random(250 * babiesSpawned) < (tamingChance * 100.0f)) {
-				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
-				babiesSpawned++;
+		CreatureManager* creatureManager = lair->getZone()->getCreatureManager();
+
+		for (int j = 0; j < numberToSpawn; j++) {
+
+			float x = lair->getPositionX() + (size - System::random(size * 20) / 10.0f);
+			float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
+			float z = lair->getZone()->getHeight(x, y);
+
+			ManagedReference<CreatureObject*> creo = NULL;
+
+			if (tamingChance > 0) {
+				if (babiesSpawned == 0 && System::random(250) < (tamingChance * 100.0f)) {
+					creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
+					babiesSpawned++;
+				} else if (System::random(250 * babiesSpawned) < (tamingChance * 100.0f)) {
+					creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
+					babiesSpawned++;
+				} else
+					creo = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
+
 			} else
 				creo = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
 
-		} else
-			creo = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
+			if (creo == NULL)
+				continue;
 
-		if (creo == NULL)
-			continue;
+			if (!creo->isAiAgent()) {
+				error("spawned non player creature with template " + templateToSpawn);
+			} else {
+				AiAgent* ai = cast<AiAgent*>( creo.get());
 
-		if (!creo->isAiAgent()) {
-			error("spawned non player creature with template " + templateToSpawn);
-		} else {
-			AiAgent* ai = cast<AiAgent*>( creo.get());
+				//Locker clocker(npc, lair);
 
-			//Locker clocker(npc, lair);
+				ai->setDespawnOnNoPlayerInRange(false);
+				ai->setHomeLocation(x, z, y);
+				ai->setRespawnTimer(0);
 
-			ai->setDespawnOnNoPlayerInRange(false);
-			ai->setHomeLocation(x, z, y);
-			ai->setRespawnTimer(0);
-
-			spawnedCreatures.add(creo);
-
+				spawnedCreatures.add(creo);
+			}
 		}
 	}
 
-	return amountToSpawn > 0;
+	if (spawnNumber == 4) {
+		Reference<LairAggroTask*> task = new LairAggroTask(lair, attacker, _this.get(), true);
+		task->schedule(1000);
+	}
+
+	return objectsToSpawn.size() > 0;
 }
 
