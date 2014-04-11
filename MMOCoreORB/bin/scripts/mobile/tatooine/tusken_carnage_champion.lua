@@ -30,8 +30,9 @@ tusken_carnage_champion = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 1500000},
-				{group = "tusken_common", chance = 5000000},
+				{group = "junk", chance = 1000000},
+				{group = "tusken_common", chance = 4000000},
+				{group = "wearables_all", chance = 1500000},			
 				{group = "bone_armor", chance = 750000},
 				{group = "chitin_armor", chance = 750000},
 				{group = "armor_attachments", chance = 500000},
