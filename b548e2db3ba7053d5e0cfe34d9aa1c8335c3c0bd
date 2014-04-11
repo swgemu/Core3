@@ -16,6 +16,24 @@
       "revId": "b548e2db3ba7053d5e0cfe34d9aa1c8335c3c0bd",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_53b5c4cb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TotalHealSelfCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-04-11T09:20:42Z",
+      "side": 1,
+      "message": "Thanks, not sure why it didn\u0027t commit right in the 2nd patchset but I already saw the typo from the Jenkins logs in the first failure...\n\nI\u0027ll re-submit another patchset tomorrow.",
+      "parentUuid": "3a3291f1_93bb2cc4",
+      "revId": "b548e2db3ba7053d5e0cfe34d9aa1c8335c3c0bd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
