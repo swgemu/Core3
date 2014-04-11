@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_93e20cd4",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/DestroyMissionLairObserverImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-04-11T10:40:48Z",
+      "side": 1,
+      "message": "I intentionally left the chance for the boss to spawn at 100% for testing. I\u0027ll reduce it later.",
+      "revId": "3262883a874d6bdf929199a98c4fa3ff2ff0e93e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
