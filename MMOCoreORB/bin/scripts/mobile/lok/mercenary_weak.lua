@@ -31,7 +31,18 @@ mercenary_weak = Creature:new {
 			"object/mobile/dressed_mercenary_weak_hum_f.iff",
 			"object/mobile/dressed_mercenary_weak_rod_m.iff"
 			},
-	lootGroups = {},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 3000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "rifles", chance = 2000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

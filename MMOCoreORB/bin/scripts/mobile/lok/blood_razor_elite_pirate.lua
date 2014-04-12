@@ -35,7 +35,7 @@ blood_razor_elite_pirate = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5510000},
+				{group = "junk", chance = 3800000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "color_crystals", chance = 400000},
 				{group = "crystals_okay", chance = 400000},
@@ -44,7 +44,7 @@ blood_razor_elite_pirate = Creature:new {
 				{group = "pistols", chance = 600000},
 				{group = "clothing_attachments", chance = 300000},
 				{group = "armor_attachments", chance = 300000},
-				{group = "bloodrazor_common", chance = 290000}
+				{group = "bloodrazor_common", chance = 2000000}
 			},
 			lootChance = 3500000
 		}
