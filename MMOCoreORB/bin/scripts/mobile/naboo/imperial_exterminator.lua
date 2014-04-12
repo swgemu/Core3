@@ -30,7 +30,8 @@ imperial_exterminator = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 5200000},
+				{group = "junk", chance = 3200000},
+				{group = "wearables_common", chance = 2000000},				
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "pistols", chance = 1000000},
