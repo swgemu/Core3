@@ -16,6 +16,24 @@
       "revId": "18d36f99d8f755ec2a8cd517d03e7761fc0d4882",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_f376f005",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2014-04-12T11:20:54Z",
+      "side": 1,
+      "message": "i\u0027ll have to revisit the xp lost for tiers later",
+      "parentUuid": "3a3291f1_730c4095",
+      "revId": "18d36f99d8f755ec2a8cd517d03e7761fc0d4882",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
