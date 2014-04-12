@@ -38,10 +38,11 @@ krayt_dragon_ancient = Creature:new {
 		},
 		{
 	        groups = {
-				{group = "composite_armor", chance = 2500000},
-				{group = "ubese_armor", chance = 2500000},
-				{group = "melee_two_handed", chance = 2500000},
-				{group = "rifles", chance = 2500000}				
+				{group = "composite_armor", chance = 2000000},
+				{group = "ubese_armor", chance = 2000000},
+				{group = "melee_two_handed", chance = 2000000},
+				{group = "rifles", chance = 2000000},
+				{group = "wearables_all", chance = 2000000},				
 			},
 			lootChance = 3500000
 		}

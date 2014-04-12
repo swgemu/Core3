@@ -3,7 +3,8 @@ jawa_common = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{itemTemplate = "jawa_beads", weight = 10000000}
+		{itemTemplate = "jawa_beads", weight = 3000000},
+		{groupTemplate = "wearables_common", weight = 7000000}
 	}
 }
 
