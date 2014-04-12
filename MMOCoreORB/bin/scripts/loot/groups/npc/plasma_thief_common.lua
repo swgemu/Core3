@@ -3,7 +3,8 @@ plasma_thief_common = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "kitchen_utensils", weight = 10000000}
+		{itemTemplate = "kitchen_utensils", weight = 2500000},
+		{groupTemplate = "wearables_common", weight = 7500000},
 	}
 }
 

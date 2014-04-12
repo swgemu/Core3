@@ -27,7 +27,18 @@ plasma_thieving_swamp_trooper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_swamp_trooper.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 2000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "wearables_uncommon", chance = 2000000},
+			},
+			lootChance = 3200000
+		}					
+	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster)
