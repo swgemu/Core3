@@ -33,7 +33,8 @@ aakuari_assassin = Creature:new {
 	lootGroups = {
 	    {
 		    groups = {
-				{group = "junk", chance = 6600000},
+				{group = "junk", chance = 4600000},
+				{group = "wearables_all", chance = 2000000},				
 				{group = "aakuan_common", chance = 2300000},
 				{group = "armor_attachments", chance = 200000},
 				{group = "rifles", chance = 300000},
