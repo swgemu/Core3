@@ -82,8 +82,6 @@ public:
 		if (!inflictHAM(player, healthCost, actionCost, mindCost))
 			return GENERALERROR;
 
-//		shoutCommand(player, group);
-
 		int amount = 5 + skillMod;
 
 		if (!doSteadyAim(player, group, amount))
