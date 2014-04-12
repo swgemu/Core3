@@ -32,7 +32,19 @@ mercenary_commander = Creature:new {
 		"object/mobile/dressed_mercenary_commander_wee_m.iff",
 		"object/mobile/dressed_mercenary_commander_zab_m.iff"
 		},
-	lootGroups = {},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 3000000},
+				{group = "wearables_common", chance = 1500000},
+				{group = "wearables_uncommon", chance = 500000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "heavy_weapons", chance = 2000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

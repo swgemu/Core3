@@ -27,7 +27,19 @@ nym_droideka = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/droideka.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 4500000},
+				{group = "wearables_uncommon", chance = 2000000},
+				{group = "nyms_common", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 3500000
+		}
+	},
 	defaultAttack = "creaturerangedattack",
 	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",
 }
