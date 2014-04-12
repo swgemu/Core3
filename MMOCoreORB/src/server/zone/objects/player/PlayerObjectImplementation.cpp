@@ -1166,9 +1166,6 @@ void PlayerObjectImplementation::notifyOnline() {
 		if (player != NULL) {
 			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, "Core3", true);
 			parent->sendMessage(notifyStatus);
-		} else {
-			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(name, "Core3", false);
-			parent->sendMessage(notifyStatus);
 		}
 	}
 
