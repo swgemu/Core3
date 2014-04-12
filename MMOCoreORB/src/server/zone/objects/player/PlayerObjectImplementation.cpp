@@ -116,6 +116,7 @@ which carries forward this exception.
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
+#include "events/ForceRegenerationEvent.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -1429,9 +1430,6 @@ void PlayerObjectImplementation::doRecovery() {
 	creature->activateHAMRegeneration();
 	creature->activateStateRecovery();
 
-	if (getForcePowerMax() > 0  && (getForcePowerMax() - getForcePower() > 0))
-	activateForceRegen();
-
 	CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
 
 	if (cooldownTimerMap->isPast("digestEvent")) {
@@ -1470,6 +1468,9 @@ void PlayerObjectImplementation::doRecovery() {
 	}
 
 	activateRecovery();
+
+	if (isJedi())
+		activateForcePowerRegen();
 }
 
 void PlayerObjectImplementation::activateRecovery() {
@@ -1477,6 +1478,17 @@ void PlayerObjectImplementation::activateRecovery() {
 		recoveryEvent = new PlayerRecoveryEvent(_this.get());
 
 		recoveryEvent->schedule(3000);
+	}
+}
+
+void PlayerObjectImplementation::activateForcePowerRegen() {
+	if (forceRegenerationEvent == NULL) {
+		forceRegenerationEvent = new ForceRegenerationEvent(_this.get());
+
+		float timer = getForcePowerRegen() / 5;
+		float scheduledTime = 10 / timer;
+		uint64 miliTime = scheduledTime * 1000;
+		forceRegenerationEvent->schedule(miliTime);
 	}
 }
 
@@ -1588,6 +1600,11 @@ void PlayerObjectImplementation::clearRecoveryEvent() {
 	recoveryEvent = NULL;
 }
 
+void PlayerObjectImplementation::clearForceRegenerationEvent() {
+	forceRegenerationEvent = NULL;
+}
+
+
 
 WaypointObject* PlayerObjectImplementation::getSurveyWaypoint() {
 	WaypointList* list = getWaypointList();
@@ -1687,10 +1704,11 @@ void PlayerObjectImplementation::activateForceRegen() {
 
 	float modifier = 1.f;
 
+	// TODO: Re-factor Force Meditate so TKA meditate doesn't effect.
 	if (creature->isMeditating())
 		modifier = 3.f;
 
-	uint32 forceTick = getForcePowerRegen() / 5 * modifier;
+	uint32 forceTick = (getForcePowerMax() / (getForcePowerRegen() / 10)) * modifier;
 
 	if (forceTick < 1)
 		forceTick = 1;
