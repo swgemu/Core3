@@ -67,9 +67,7 @@ public:
 			return GENERALERROR;
 
 		if (!creature->hasSkill("outdoors_squadleader_offense_01")) {
-//			StringIdChatParameter params("@error_message:prose_nsf_skill_cmd"); //You lack sufficient skill to use the %TO command.	
-//			params.setTO("@skl_n:" + skill->getSkillName());
-			creature->sendSystemMessage("You lack sufficient skill to use the SetSteadyaim command."); //SetSteadyaim isn't a skill...		
+			creature->sendSystemMessage("You lack sufficient skill to use the SetSteadyaim command.");	
 			return GENERALERROR;
 		}			
 			

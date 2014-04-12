@@ -81,8 +81,6 @@ public:
 		if (!inflictHAM(player, healthCost, actionCost, mindCost))
 			return GENERALERROR;
 
-//		shoutCommand(player, group);
-
 		if (!doFormUp(player, group))
 			return GENERALERROR;
 			

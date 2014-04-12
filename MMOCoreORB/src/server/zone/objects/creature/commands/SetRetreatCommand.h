@@ -55,7 +55,7 @@ public:
 		: SquadLeaderCommand(name, server) {
 	}
 
-	int doQueueCommand(CreatureObject* creature, /*Skill* skill,*/ const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -67,9 +67,7 @@ public:
 			return GENERALERROR;
 		
 		if (!creature->hasSkill("outdoors_squadleader_support_03")) {
-//			StringIdChatParameter params("@error_message:prose_nsf_skill_cmd"); //You lack sufficient skill to use the %TO command.	
-//			params.setTO("@skl_n:" + skill->getSkillName());
-			creature->sendSystemMessage("You lack sufficient skill to use the SetRetreat command."); //SetRetreat isn't a skill...		
+			creature->sendSystemMessage("You lack sufficient skill to use the SetRetreat command.");	
 			return GENERALERROR;
 		}			
 			

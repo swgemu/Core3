@@ -113,8 +113,6 @@ public:
 		if (!inflictHAM(player, 0, actionCost, mindCost))
 			return GENERALERROR;
 
-//		shoutCommand(player, group);
-
 		for (int i = 1; i < group->getGroupSize(); ++i) {
 			ManagedReference<SceneObject*> member = group->getGroupMember(i);
 
