@@ -30,7 +30,8 @@ dim_u_priestess = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 6500000},
+				{group = "junk", chance = 4500000},
+				{group = "wearables_common", chance = 2000000},				
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "dim_u_common", chance = 500000}
