@@ -30,7 +30,18 @@ cobral_mugger = Creature:new {
 	templates = {
 		"object/mobile/dressed_cobral_mugger_human_male_01.iff",
 		"object/mobile/dressed_cobral_mugger_human_female_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+      	{
+			groups = {
+				{group = "junk", chance = 3000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "melee_weapons", chance = 2000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
