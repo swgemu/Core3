@@ -29,7 +29,14 @@ gnarled_pubam_spiritmaster = Creature:new {
 	templates = {
 			"object/mobile/dulok_male.iff",
 			"object/mobile/dulok_female.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 10000000}
+			},
+			lootChance = 2300000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
