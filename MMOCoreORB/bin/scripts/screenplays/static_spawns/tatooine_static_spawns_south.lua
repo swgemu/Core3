@@ -1,6 +1,31 @@
 TatooineStaticSpawnsSouthScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
+	screenplayName = "TatooineStaticSpawnsSouthScreenPlay",
+
+	lootContainers = {	
+		1106593 -- -5350 -4438
+	},
+
+	lootLevel = 26,
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 700000},
+				{group = "junk", chance = 5500000},
+				{group = "wearables_all", chance = 2000000},
+				{group = "rifles", chance = 600000},
+				{group = "pistols", chance = 600000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
+			},
+			lootChance = 8000000
+		}
+	},
+
+	lootContainerRespawn = 1800 -- 30 minutes
+
 }
 
 registerScreenPlay("TatooineStaticSpawnsSouthScreenPlay", true)
@@ -8,6 +33,7 @@ registerScreenPlay("TatooineStaticSpawnsSouthScreenPlay", true)
 function TatooineStaticSpawnsSouthScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then
 		self:spawnMobiles()
+		self:initializeLootContainers()
 	end
 end
 
