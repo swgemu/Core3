@@ -16,6 +16,58 @@
       "revId": "845a465cfd6eb9a9caa9f1438f606557e49df23c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_9368ccf6",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-13T23:09:34Z",
+      "side": 1,
+      "message": "Create a method that retrieves the event but returns NULL if it doesn\u0027t exist. Call that method in both functions. In create, create the event if the function returns NULL otherwise error. In the get method just push a boolean telling if the event exists or not.",
+      "parentUuid": "3a3291f1_93c1ece6",
+      "revId": "845a465cfd6eb9a9caa9f1438f606557e49df23c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_b363c819",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-13T23:09:34Z",
+      "side": 1,
+      "message": "use break instead. continue does not break the while loop.",
+      "revId": "845a465cfd6eb9a9caa9f1438f606557e49df23c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_736d6004",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-13T23:09:34Z",
+      "side": 1,
+      "message": "change the name to hasServerEvent instead.",
+      "revId": "845a465cfd6eb9a9caa9f1438f606557e49df23c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
