@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_d3f8944b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-13T11:57:44Z",
+      "side": 1,
+      "message": "Write it as 3 * 7 * 24 * 60 * 60 * 1000 instead.",
+      "revId": "b5b9f19ad106a7880cc9943c8cfcf9ce163f52ce",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_b39508e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-13T11:57:44Z",
+      "side": 1,
+      "message": "readStringData isn\u0027t persistant.",
+      "revId": "b5b9f19ad106a7880cc9943c8cfcf9ce163f52ce",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_939a0c13",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-13T11:57:44Z",
+      "side": 1,
+      "message": "This won\u0027t work, the event isn\u0027t persistent and we do not have any object to register if the persistent event has been created or not.",
+      "revId": "b5b9f19ad106a7880cc9943c8cfcf9ce163f52ce",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
