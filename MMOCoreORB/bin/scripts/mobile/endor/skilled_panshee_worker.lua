@@ -39,7 +39,8 @@ skilled_panshee_worker = Creature:new {
 	lootGroups = {
 		 {
 	        groups = {
-				{group = "ewok", chance = 10000000}
+				{group = "ewok", chance = 9000000},
+				{group = "wearables_uncommon", chance = 1000000},
 			},
 			lootChance = 3000000
 		}

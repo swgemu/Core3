@@ -29,7 +29,15 @@ pubam_dark_shaman = Creature:new {
 	templates = {
 			"object/mobile/dulok_male.iff",
 			"object/mobile/dulok_female.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 9000000},
+				{group = "wearables_all", chance = 1000000},
+			},
+			lootChance = 2300000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
