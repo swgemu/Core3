@@ -8,7 +8,7 @@ LT_TRACE = 1
 
 local MAX_NUMBER_OF_ENTRIES = 100
 
-local FORCE_PRINT = false
+local FORCE_PRINT = true
 
 Logger = {}
 Logger.logEntries = {}

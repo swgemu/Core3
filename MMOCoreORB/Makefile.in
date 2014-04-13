@@ -198,6 +198,7 @@ SYSTEM_INCLUDES = @SYSTEM_INCLUDES@
 SYSTEM_LIBS = @SYSTEM_LIBS@
 USER_INCLUDES_PATH = @USER_INCLUDES_PATH@
 USER_LIBS_PATH = @USER_LIBS_PATH@
+USING_HOMEBREW = @USING_HOMEBREW@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -567,7 +568,7 @@ distcheck: dist
 	*.zip*) \
 	  unzip $(distdir).zip ;;\
 	esac
-	chmod -R a-w $(distdir); chmod a+w $(distdir)
+	chmod -R a-w $(distdir); chmod u+w $(distdir)
 	mkdir $(distdir)/_build
 	mkdir $(distdir)/_inst
 	chmod a-w $(distdir)

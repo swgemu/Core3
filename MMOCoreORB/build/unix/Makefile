@@ -198,6 +198,7 @@ SYSTEM_INCLUDES =
 SYSTEM_LIBS = -lrt -ldl -pthread
 USER_INCLUDES_PATH = /usr/local/include
 USER_LIBS_PATH = /usr/local/lib
+USING_HOMEBREW = 
 VERSION = 1.0
 abs_builddir = /home/swgemu/workspace/Core3/MMOCoreORB/build/unix
 abs_srcdir = /home/swgemu/workspace/Core3/MMOCoreORB/build/unix/../..
@@ -567,7 +568,7 @@ distcheck: dist
 	*.zip*) \
 	  unzip $(distdir).zip ;;\
 	esac
-	chmod -R a-w $(distdir); chmod a+w $(distdir)
+	chmod -R a-w $(distdir); chmod u+w $(distdir)
 	mkdir $(distdir)/_build
 	mkdir $(distdir)/_inst
 	chmod a-w $(distdir)
