@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_93c1ece6",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-04-13T15:08:55Z",
+      "side": 1,
+      "message": "The retrieval of the event in 2 methods seems a bit redundant, is there anyway I can simplify it?",
+      "revId": "845a465cfd6eb9a9caa9f1438f606557e49df23c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
