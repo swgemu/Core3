@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_d32bf492",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/FsVillageAreaImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-14T23:30:54Z",
+      "side": 1,
+      "message": "Should this check be moved to the if statement below so that creatures without ghosts gets repelled as well?",
+      "revId": "ebd7aa5eb5025e231c2769919e9896a160483d42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
