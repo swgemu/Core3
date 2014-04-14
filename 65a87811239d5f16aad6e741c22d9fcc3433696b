@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_53402456",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-14T23:27:48Z",
+      "side": 1,
+      "message": "You should use the events to swap phase so only one event should be used.\n\nWe need to find another object to store the phase of the village on, probably in the VillageJediManager.lua module. Perhaps it can store that information in a local file or so.\n\nSo the current phase should be read from the VillageJediManager and used here to load correct village layout and screen play.",
+      "revId": "65a87811239d5f16aad6e741c22d9fcc3433696b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_332598c2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-14T23:27:48Z",
+      "side": 1,
+      "message": "How will we handle servers that are up several weeks in a row? We can probably update the village on the fly if we save all ids of the created objects.",
+      "revId": "65a87811239d5f16aad6e741c22d9fcc3433696b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_13229cb9",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-14T23:27:48Z",
+      "side": 1,
+      "message": "you need to return here to not create an copy of the existing event.",
+      "revId": "65a87811239d5f16aad6e741c22d9fcc3433696b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
