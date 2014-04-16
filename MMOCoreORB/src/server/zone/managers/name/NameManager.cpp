@@ -277,25 +277,6 @@ int NameManager::validateName(const String& name, int species) {
 	if (name.length() < 3 || name.length() > 40)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
-	if (isProfane(name))
-		return NameManagerResult::DECLINED_PROFANE;
-
-	if (isDeveloper(name))
-		return NameManagerResult::DECLINED_DEVELOPER;
-
-	if (isFiction(name))
-		return NameManagerResult::DECLINED_FICT_RESERVED;
-
-	if (isReserved(name))
-		return NameManagerResult::DECLINED_RESERVED;
-
-	//Make sure that only valid characters are allowed in the name.
-	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
-		return NameManagerResult::DECLINED_SYNTAX;
-
-	if (species == -1)
-		return NameManagerResult::ACCEPTED;
-
 	String fname, lname;
 
 	//Split the name into first and last
@@ -307,6 +288,25 @@ int NameManager::validateName(const String& name, int species) {
 		fname = name;
 		lname = "";
 	}
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+
+	if (isDeveloper(name))
+		return NameManagerResult::DECLINED_DEVELOPER;
+
+	if (isFiction(name))
+		return NameManagerResult::DECLINED_FICT_RESERVED;
+
+	if (isReserved(name) || isReserved(fname) )
+		return NameManagerResult::DECLINED_RESERVED;
+
+	//Make sure that only valid characters are allowed in the name.
+	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	if (species == -1)
+		return NameManagerResult::ACCEPTED;
 
 	if (fname.length() < 3 || fname.length() > 15 || lname.length() > 20)
 		return NameManagerResult::DECLINED_RACE_INAPP;
