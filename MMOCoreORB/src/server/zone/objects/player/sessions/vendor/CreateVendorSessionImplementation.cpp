@@ -221,30 +221,25 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 void CreateVendorSessionImplementation::randomizeVendorLooks(CreatureObject* vendor) {
 
 	VendorCreatureTemplate* vendorTempl = dynamic_cast<VendorCreatureTemplate*> (vendor->getObjectTemplate());
-
 	if (vendorTempl == NULL)
 		return;
+
+	randomizeVendorClothing( vendor, vendorTempl );
+	randomizeVendorHair( vendor, vendorTempl );
+	randomizeVendorFeatures( vendor, vendorTempl );
+	randomizeVendorHeight( vendor, vendorTempl );
+
+}
+
+void CreateVendorSessionImplementation::randomizeVendorClothing(CreatureObject* vendor, VendorCreatureTemplate* vendorTempl) {
 
 	String randomOutfit = vendorTempl->getOutfitName(System::random(vendorTempl->getOutfitsSize() -1));
 	if (randomOutfit.isEmpty())
 		return;
 
 	Reference<Outfit*> outfit = VendorOutfitManager::instance()->getOutfit(randomOutfit);
-
 	if (outfit == NULL)
 		return;
-
-	String hairFile = vendorTempl->getHairFile(System::random(vendorTempl->getHairSize() - 1));
-	ManagedReference<SceneObject*> hairSlot = vendor->getSlottedObject("hair");
-
-	if (hairSlot == NULL && !hairFile.isEmpty()) {
-		String hairCustomization;
-		ManagedReference<PlayerManager*> pman = player->getZoneServer()->getPlayerManager();
-		TangibleObject* hair = pman->createHairObject(hairFile, hairCustomization);
-
-		if (hair != NULL)
-			vendor->transferObject(hair, 4);
-	}
 
 	Vector<uint32>* clothing = outfit->getClothing();
 
@@ -268,6 +263,26 @@ void CreateVendorSessionImplementation::randomizeVendorLooks(CreatureObject* ven
 
 		vendor->transferObject(obj, 4);
 	}
+
+}
+
+void CreateVendorSessionImplementation::randomizeVendorHair(CreatureObject* vendor, VendorCreatureTemplate* vendorTempl) {
+
+	String hairFile = vendorTempl->getHairFile(System::random(vendorTempl->getHairSize() - 1));
+	ManagedReference<SceneObject*> hairSlot = vendor->getSlottedObject("hair");
+
+	if (hairSlot == NULL && !hairFile.isEmpty()) {
+		String hairCustomization;
+		ManagedReference<PlayerManager*> pman = player->getZoneServer()->getPlayerManager();
+		TangibleObject* hair = pman->createHairObject(hairFile, hairCustomization);
+
+		if (hair != NULL)
+			vendor->transferObject(hair, 4);
+	}
+
+}
+
+void CreateVendorSessionImplementation::randomizeVendorFeatures(CreatureObject* vendor, VendorCreatureTemplate* vendorTempl) {
 
 	// Randomize Configured Customization Variables
 	for( int i = 0; i < vendorTempl->getCustomizationStringNamesSize(); i++ ){
@@ -305,5 +320,15 @@ void CreateVendorSessionImplementation::randomizeVendorLooks(CreatureObject* ven
 			vendor->setCustomizationVariable( customizationStringName, randomValue, false );
 		}
 	} // foreach customizationStringName
+}
 
+void CreateVendorSessionImplementation::randomizeVendorHeight(CreatureObject* vendor, VendorCreatureTemplate* vendorTempl) {
+
+	// minScale/maxScale are floats with two significant digits past the decimal
+	int minScale = vendorTempl->getMinScale()*100;
+	int maxScale = vendorTempl->getMaxScale()*100;
+	int heightMod = System::random( maxScale - minScale );
+
+	float height = (minScale + heightMod)/100.0;
+	vendor->setHeight( height, false );
 }
