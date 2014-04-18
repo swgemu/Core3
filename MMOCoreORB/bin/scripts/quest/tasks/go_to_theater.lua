@@ -47,10 +47,12 @@ function GoToTheater:setupActiveArea(pCreatureObject, spawnPoint)
 		local pActiveArea = spawnSceneObject(creatureObject:getZoneName(), ACTIVE_AREA_IFF, spawnPoint[1], 0, spawnPoint[3], 0, 0)
 
 		return ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-			writeData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, activeArea:getObjectID())
-			activeArea:setRadius(self.activeAreaRadius)
-			createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
-			return true
+			return ObjectManager.withSceneObject(pActiveArea, function(activeAreaSceneObject)
+				writeData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, activeAreaSceneObject:getObjectID())
+				activeArea:setRadius(self.activeAreaRadius)
+				createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
+				return true
+			end) == true
 		end) == true
 	end) == true
 end
