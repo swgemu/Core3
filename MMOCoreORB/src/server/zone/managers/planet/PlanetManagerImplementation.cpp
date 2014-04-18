@@ -380,7 +380,7 @@ bool PlanetManagerImplementation::isTravelToLocationPermitted(const String& depa
 
 void PlanetManagerImplementation::sendPlanetTravelPointListResponse(CreatureObject* player) {
 	PlanetTravelPointListResponse* ptplr = new PlanetTravelPointListResponse(zone->getZoneName());
-	planetTravelPointList->insertToMessage(ptplr);
+	planetTravelPointList->insertToMessage(ptplr, getNearestPlanetTravelPoint(player));
 
 	player->sendMessage(ptplr);
 }

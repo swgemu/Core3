@@ -20,7 +20,7 @@ public:
 		setNullValue(NULL);
 	}
 
-	void insertToMessage(BaseMessage* message) {
+	void insertToMessage(BaseMessage* message, PlanetTravelPoint* origin) {
 		rlock();
 
 		int totalPoints = size();
@@ -69,7 +69,10 @@ public:
 				}
 				ManagedReference<CityRegion*> city = shuttle->getCityRegion().get();
 
-				message->insertInt(city->getTax(CityRegion::TAX_TRAVEL));
+				if (ptp == origin)
+					message->insertInt(city->getTax(CityRegion::TAX_TRAVEL));
+				else
+					message->insertInt(0);
 			}
 		}
 
