@@ -322,6 +322,15 @@ naboo_world_creatures = {
 			size = 25
 		},
 		{
+			lairTemplateName = "naboo_fambaa_lair_neutral_large_boss_01",
+			spawnLimit = -1,
+			minDifficulty = 34,
+			maxDifficulty = 34,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
 			lairTemplateName = "naboo_gualama_small_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 13,

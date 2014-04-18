@@ -13,16 +13,18 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 class LairAggroTask : public Task {
 
+	bool all;
 	ManagedWeakReference<TangibleObject*> lair;
 	ManagedWeakReference<LairObserver*> observer;
 	ManagedWeakReference<TangibleObject*> attacker;
 
 public:
 
-	LairAggroTask(TangibleObject* obj, ManagedWeakReference<TangibleObject*> attacker, LairObserver* observer) {
-		 lair = obj;
-		 this->attacker = attacker;
-		 this->observer = observer;
+	LairAggroTask(TangibleObject* obj, ManagedWeakReference<TangibleObject*> attacker, LairObserver* observer, bool allAttack) {
+		all = allAttack;
+		lair = obj;
+		this->attacker = attacker;
+		this->observer = observer;
 	}
 
 	void run() {
@@ -40,7 +42,7 @@ public:
 
 		Locker locker(strongRef);
 
-		strongObserver->doAggro(strongRef, strongAttackerRef);
+		strongObserver->doAggro(strongRef, strongAttackerRef, all);
 	}
 };
 
