@@ -4,7 +4,7 @@ nitra_vendallan_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "nitra_vendallan_imp", planetName = "tatooine", npcName = "Dienn Biktor (a Imperial Non-Comm defector)" } 
+			{ npcTemplate = "nitra_vendallan_imp", planetName = "tatooine", npcName = "Drenn Biktor (an Imperial Non-Comm defector)" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -17,7 +17,7 @@ nitra_vendallan_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "nitra_vendallan_imp2", planetName = "tatooine", npcName = "Nitra Vendallan (a Weaponsmith)" } 
+			{ npcTemplate = "nitra_vendallan_imp2", planetName = "tatooine", npcName = "Vil Sembian" } 
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 
@@ -35,6 +35,7 @@ npcMapNitraVendallan =
 		worldPosition = { x = 134.7, y = -5347.1 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/tatooine/nitra_vendallan", 
+		hasWaypointNames = "no",
 		missions = nitra_vendallan_missions 
 	},
 }
