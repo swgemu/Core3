@@ -428,7 +428,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	// Update Timestamp
 	resourceHopperTimestamp.updateToCurrentTime();
 
-	if(getHopperSize() >= getHopperSizeMax())
+	if((int)getHopperSize() >= (int)getHopperSizeMax())
 		shutdownAfterUpdate = true;
 
 	if(spawnExpireTimestamp.compareTo(currentTime) > 0) {
