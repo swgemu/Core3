@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a3291f1_0517f3ee",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/sidoras_child.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-04-19T21:15:38Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this use the target template rather than the giver template?",
+      "revId": "18d36f99d8f755ec2a8cd517d03e7761fc0d4882",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_730c4095",
         "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
         "patchSetId": 1
