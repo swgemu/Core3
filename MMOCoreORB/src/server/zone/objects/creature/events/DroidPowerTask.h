@@ -82,10 +82,10 @@ public:
 
 		// Consume power if available
 		if ( droid->hasPower() ) {
-			droid->usePower(10);
+			droid->usePower(4);
 		}
 
-		reschedule( 60000 ); // 60 secs
+		reschedule( 120000 ); // 2 min
 	}
 };
 
