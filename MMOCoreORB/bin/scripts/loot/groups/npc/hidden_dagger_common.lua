@@ -3,9 +3,10 @@ hidden_dagger_common = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "spinner_blade", weight = 3333334},
-		{itemTemplate = "skill_buff_carbine_accuracy", weight = 3333333},
-		{itemTemplate = "skill_buff_carbine_speed", weight = 3333333}
+		{itemTemplate = "spinner_blade", weight = 2500000},
+		{itemTemplate = "skill_buff_carbine_accuracy", weight = 2500000},
+		{itemTemplate = "skill_buff_carbine_speed", weight = 2500000},
+		{groupTemplate = "wearables_common", weight = 2500000},
 	}
 }
 
