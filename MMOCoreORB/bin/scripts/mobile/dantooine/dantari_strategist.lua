@@ -35,7 +35,8 @@ dantari_strategist = Creature:new {
 				{group = "junk", chance = 6000000},
 				{group = "loot_kit_parts", chance = 3000000},
 				{group = "armor_attachments", chance = 500000},
-				{group = "clothing_attachments", chance = 500000}
+				{group = "clothing_attachments", chance = 500000},
+				{group = "wearables_common", chance = 2000000}
 			},
 			lootChance = 3000000
 		}	
