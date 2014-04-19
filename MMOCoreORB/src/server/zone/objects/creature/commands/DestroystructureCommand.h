@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/player/sessions/DestroyStructureSession.h"
+#include "server/zone/objects/tangible/terminal/Terminal.h"
+#include "server/zone/objects/tangible/components/CampTerminalMenuComponent.h"
 
 class DestroystructureCommand : public QueueCommand {
 public:
@@ -88,6 +90,9 @@ public:
 			return INVALIDTARGET;
 		}
 
+		if (structure->isCampStructure())
+			return disbandCamp(creature, structure);
+
 		String message = structure->getRedeedMessage();
 		if(!message.isEmpty()) {
 			creature->sendSystemMessage("@player_structure:" + message);
@@ -100,6 +105,30 @@ public:
 		return SUCCESS;
 	}
 
+	int disbandCamp(CreatureObject* creature, StructureObject* structure) {
+		Terminal* campTerminal = NULL;
+		SortedVector < ManagedReference<SceneObject*> > *childObjects = structure->getChildObjects();
+
+		for (int i = 0; i < childObjects->size(); ++i) {
+			if (childObjects->get(i)->isTerminal()) {
+				campTerminal = cast<Terminal*> (childObjects->get(i).get());
+				break;
+			}
+		}
+
+		if (campTerminal == NULL) {
+			return GENERALERROR;
+		}
+
+		CampTerminalMenuComponent* campMenu = cast<CampTerminalMenuComponent*>(campTerminal->getObjectMenuComponent());
+
+		if (campMenu == NULL)
+			return GENERALERROR;
+
+		campMenu->disbandCamp(campTerminal, creature);
+
+		return SUCCESS;
+	}
 };
 
 #endif //DESTROYSTRUCTURECOMMAND_H_
