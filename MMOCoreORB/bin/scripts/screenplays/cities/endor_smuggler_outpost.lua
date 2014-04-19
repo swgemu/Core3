@@ -27,11 +27,11 @@ function EndorSmugglerOutpostScreenPlay:spawnMobiles()
 	spawnMobile("endor", "commoner", 60, -896.026, 80, 1621.19, 243.324, 0)
 	spawnMobile("endor", "scientist", 60, -874.656, 80, 1564.76, 108.353, 0)
 	spawnMobile("endor", "scientist", 60, -845.301, 79.5, 1599.49, 197.393, 0)
-	spawnMobile("endor", "smuggler", 60, -889.786, 76, 1591.32, 182.753, 0)
-	spawnMobile("endor", "smuggler", 60, -890.91, 76, 1591.38, 253.162, 0)
-	spawnMobile("endor", "smuggler", 60, -889.732, 76, 1592.45, 319.914, 0)
+	spawnMobile("endor", "smuggler", 300, -889.786, 76, 1591.32, 182.753, 0)
+	spawnMobile("endor", "smuggler", 300, -890.91, 76, 1591.38, 253.162, 0)
+	spawnMobile("endor", "smuggler", 300, -889.732, 76, 1592.45, 319.914, 0)
 	spawnMobile("endor", "noble", 60, -829.243, 76, 1567.61, 95.886, 0)
-	spawnMobile("endor", "criminal", 60, 4.60144, 0.125266, 3.19878, 160.261, 3605972)
+	spawnMobile("endor", "criminal", 300, 4.60144, 0.125266, 3.19878, 160.261, 3605972)
 
 		--Left these in endor.lua because of the custom name etc
 	--{"kilnstrider",60,-3.44448,0.624999,-6.82681,331.362,9925367, "npc_imperial", ""},

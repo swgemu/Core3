@@ -164,9 +164,9 @@ function LokImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("lok", "commoner_technician", 300, -2002.1, 11.9, -3129.0, 0, 0)
 	spawnMobile("lok", "commoner_technician", 300, -1999.0, 11.9, -3112.0, -90, 0)
 	spawnMobile("lok", "commoner", 300, -2018.3, 11.9, -3051.0, 180, 0)
-	spawnMobile("lok", "thug", 30, -2018.3, 11.9, -3040.6, 180, 0)
-	spawnMobile("lok", "thug", 30, -2012.3, 11.9, -3034.8, 90, 0)
-	spawnMobile("lok", "thug", 30, -2012.3, 11.9, -3029.8, 90, 0)
+	spawnMobile("lok", "thug", 300, -2018.3, 11.9, -3040.6, 180, 0)
+	spawnMobile("lok", "thug", 300, -2012.3, 11.9, -3034.8, 90, 0)
+	spawnMobile("lok", "thug", 300, -2012.3, 11.9, -3029.8, 90, 0)
 	spawnMobile("lok", "commoner", 300, -1986.4, 11.9, -3073.4, 45, 0)
 	spawnMobile("lok", "commoner", 300, -1986.4, 11.9, -3077.9, -90, 0)
 
@@ -330,7 +330,7 @@ function LokImperialOutpostScreenPlay:spawnMobiles()
 
 	spawnMobile("lok", "imperial_recruiter", 300, 14.4, 1.0, -21.5, 0, 8615424)
 
-	spawnMobile("lok", "stormtrooper_medic", 60, -3.0, 1.0, -21.1, -120, 8615425)
+	spawnMobile("lok", "stormtrooper_medic", 300, -3.0, 1.0, -21.1, -120, 8615425)
 
 	spawnMobile("lok", "imperial_warrant_officer_i", 300, -18.1, 1.0, 21.1, 0, 8615422)
 

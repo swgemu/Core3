@@ -14,65 +14,65 @@ end
 
 function TalusDearicScreenPlay:spawnMobiles()
 	--thugs
-	spawnMobile("talus", "chunker_nitwit", 60, 152, 6, -3013, 146, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 157, 6, -3017, 192, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 161, 6, -3007, 2, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 163, 6, -3016, 314, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 21, 6, -2826, 268, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 24, 6, -2823, 37, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 28, 6, -2823, 337, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 31, 6, -2836, 89, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 461, 6, -3112, 226, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 464, 6, -3106, 80, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 470, 6, -3110, 48, 0)
-	spawnMobile("talus", "chunker_nitwit", 60, 471, 6, -3106, 223, 0)
-	spawnMobile("talus", "chunker_punk", 60, 202, 6, -2860, 129, 0)
-	spawnMobile("talus", "chunker_punk", 60, 206, 6, -2867, 80, 0)
-	spawnMobile("talus", "chunker_punk", 60, 208, 6, -2860, 137, 0)
-	spawnMobile("talus", "chunker_punk", 60, 209, 6, -2864, 97, 0)
-	spawnMobile("talus", "chunker_punk", 60, 763, 6, -3279, 244, 0)
-	spawnMobile("talus", "chunker_punk", 60, 777, 6, -3285, 269, 0)
-	spawnMobile("talus", "chunker_punk", 60, 778, 6, -3287, 175, 0)
-	spawnMobile("talus", "chunker_punk", 60, 780, 6, -3286, 172, 0)
-	spawnMobile("talus", "chunker_swindler", 60, 101, 9, -3210, 232, 0)
-	spawnMobile("talus", "chunker_swindler", 60, 104, 8, -3206, 110, 0)
-	spawnMobile("talus", "chunker_swindler", 60, 113, 7, -3197, 15, 0)
-	spawnMobile("talus", "criminal", 60, 146, 6, -3066, 303, 0)
-	spawnMobile("talus", "criminal", 60, 155, 6, -3032, 72, 0)
-	spawnMobile("talus", "criminal", 60, 287, 6, -3055, 265, 0)
-	spawnMobile("talus", "criminal", 60, 373, 6, -2764, 333, 0)
-	spawnMobile("talus", "criminal", 60, 470, 6, -3222, 220, 0)
-	spawnMobile("talus", "criminal", 60, 636, 6, -2979, 141, 0)
-	spawnMobile("talus", "fed_dub_captain", 60, 286, 6, -3106, 318, 0)
-	spawnMobile("talus", "fed_dub_captain", 60, 718, 6, -2859, 171, 0)
-	spawnMobile("talus", "fed_dub_captain", 60, 730, 6, -3198, 179, 0)
-	spawnMobile("talus", "fed_dub_constable", 60, 138, 6, -2978, 113, 0)
-	spawnMobile("talus", "fed_dub_constable", 60, 283, 6, -3109, 179, 0)
-	spawnMobile("talus", "fed_dub_constable", 60, 500, 6, -3192, 357, 0)
-	spawnMobile("talus", "fed_dub_constable", 60, 517, 6, -3170, 152, 0)
-	spawnMobile("talus", "fed_dub_constable", 60, 537, 6, -3197, 85, 0)
-	spawnMobile("talus", "fed_dub_constable", 60, 539, 6, -3202, 115, 0)
-	spawnMobile("talus", "fed_dub_constable", 60, 563, 6, -2911, 10, 0)
-	spawnMobile("talus", "fed_dub_investigator", 60, 198, 6, -2794, 71, 0)
-	spawnMobile("talus", "fed_dub_investigator", 60, 201, 6, -3099, 318, 0)
-	spawnMobile("talus", "fed_dub_investigator", 60, 376, 6, -2923, 271, 0)
-	spawnMobile("talus", "fed_dub_investigator", 60, 390, 6, -3184, 180, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 144, 6, -3098, 134, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 200, 6, -2794, 88, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 200, 6, -3099, 275, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 201, 6, -2796, 225, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 202, 6, -3099, 359, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 287, 6, -3107, 218, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 287, 6, -3135, 184, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 287, 6, -3136, 10, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 289, 6, -2794, -96, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 377, 6, -2923, 267, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 532, 6, -3196, 146, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 541, 6, -2994, 270, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 586, 6, -3193, 271, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 635, 6, -3182, 85, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 715, 6, -2844, 180, 0)
-	spawnMobile("talus", "fed_dub_patrolman", 60, 716, 6, -2866, 318, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 152, 6, -3013, 146, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 157, 6, -3017, 192, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 161, 6, -3007, 2, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 163, 6, -3016, 314, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 21, 6, -2826, 268, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 24, 6, -2823, 37, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 28, 6, -2823, 337, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 31, 6, -2836, 89, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 461, 6, -3112, 226, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 464, 6, -3106, 80, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 470, 6, -3110, 48, 0)
+	spawnMobile("talus", "chunker_nitwit", 300, 471, 6, -3106, 223, 0)
+	spawnMobile("talus", "chunker_punk", 300, 202, 6, -2860, 129, 0)
+	spawnMobile("talus", "chunker_punk", 300, 206, 6, -2867, 80, 0)
+	spawnMobile("talus", "chunker_punk", 300, 208, 6, -2860, 137, 0)
+	spawnMobile("talus", "chunker_punk", 300, 209, 6, -2864, 97, 0)
+	spawnMobile("talus", "chunker_punk", 300, 763, 6, -3279, 244, 0)
+	spawnMobile("talus", "chunker_punk", 300, 777, 6, -3285, 269, 0)
+	spawnMobile("talus", "chunker_punk", 300, 778, 6, -3287, 175, 0)
+	spawnMobile("talus", "chunker_punk", 300, 780, 6, -3286, 172, 0)
+	spawnMobile("talus", "chunker_swindler", 300, 101, 9, -3210, 232, 0)
+	spawnMobile("talus", "chunker_swindler", 300, 104, 8, -3206, 110, 0)
+	spawnMobile("talus", "chunker_swindler", 300, 113, 7, -3197, 15, 0)
+	spawnMobile("talus", "criminal", 300, 146, 6, -3066, 303, 0)
+	spawnMobile("talus", "criminal", 300, 155, 6, -3032, 72, 0)
+	spawnMobile("talus", "criminal", 300, 287, 6, -3055, 265, 0)
+	spawnMobile("talus", "criminal", 300, 373, 6, -2764, 333, 0)
+	spawnMobile("talus", "criminal", 300, 470, 6, -3222, 220, 0)
+	spawnMobile("talus", "criminal", 300, 636, 6, -2979, 141, 0)
+	spawnMobile("talus", "fed_dub_captain", 300, 286, 6, -3106, 318, 0)
+	spawnMobile("talus", "fed_dub_captain", 300, 718, 6, -2859, 171, 0)
+	spawnMobile("talus", "fed_dub_captain", 300, 730, 6, -3198, 179, 0)
+	spawnMobile("talus", "fed_dub_constable", 300, 138, 6, -2978, 113, 0)
+	spawnMobile("talus", "fed_dub_constable", 300, 283, 6, -3109, 179, 0)
+	spawnMobile("talus", "fed_dub_constable", 300, 500, 6, -3192, 357, 0)
+	spawnMobile("talus", "fed_dub_constable", 300, 517, 6, -3170, 152, 0)
+	spawnMobile("talus", "fed_dub_constable", 300, 537, 6, -3197, 85, 0)
+	spawnMobile("talus", "fed_dub_constable", 300, 539, 6, -3202, 115, 0)
+	spawnMobile("talus", "fed_dub_constable", 300, 563, 6, -2911, 10, 0)
+	spawnMobile("talus", "fed_dub_investigator", 300, 198, 6, -2794, 71, 0)
+	spawnMobile("talus", "fed_dub_investigator", 300, 201, 6, -3099, 318, 0)
+	spawnMobile("talus", "fed_dub_investigator", 300, 376, 6, -2923, 271, 0)
+	spawnMobile("talus", "fed_dub_investigator", 300, 390, 6, -3184, 180, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 144, 6, -3098, 134, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 200, 6, -2794, 88, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 200, 6, -3099, 275, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 201, 6, -2796, 225, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 202, 6, -3099, 359, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 287, 6, -3107, 218, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 287, 6, -3135, 184, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 287, 6, -3136, 10, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 289, 6, -2794, -96, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 377, 6, -2923, 267, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 532, 6, -3196, 146, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 541, 6, -2994, 270, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 586, 6, -3193, 271, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 635, 6, -3182, 85, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 715, 6, -2844, 180, 0)
+	spawnMobile("talus", "fed_dub_patrolman", 300, 716, 6, -2866, 318, 0)
 
 	--misc
 	spawnMobile("talus", "informant_npc_lvl_1",0,286,6,-3101,180,0)
@@ -260,13 +260,13 @@ function TalusDearicScreenPlay:spawnMobiles()
 	--{"medic",60,-44.5373,0.105009,-20.8963,0,3175403, "conversation", ""},
 	--{"pilot",60,-44.5373,0.104709,-19.7963,180.005,3175403, "conversation", ""},
 	--{"agriculturalist",60,12.85,-0.894992,1.20077,360.011,3175391, "conversation", ""},
-	--{"scoundrel",60,12.85,-0.894992,2.30077,180.005,3175391, "conversation", ""},
+	--{"scoundrel",300,12.85,-0.894992,2.30077,180.005,3175391, "conversation", ""},
 	--{"slicer",60,18.5617,-0.894992,17.5882,360.011,3175393, "conversation", ""},
 	--{"vendor",60,18.5617,-0.894992,18.6882,180.006,3175393, "conversation", ""},
 	--{"bounty_hunter",60,34.3579,0.105,2.70668,135.004,3175390, "conversation", ""},
 	--{"businessman",60,35.4579,0.105,2.70668,180.005,3175390, "conversation", ""},
 	--{"farmer",60,43.6156,0.104999,0.752079,0,3175389, "conversation", ""},
-	--{"smuggler",60,43.6156,0.104999,1.85208,180.005,3175389, "conversation", ""},
+	--{"smuggler",300,43.6156,0.104999,1.85208,180.005,3175389, "conversation", ""},
 
 	--Guild Hall
 	--{"bothan_information_broker",60,-2.33557,1.75,-12.7738,180.008,3175434, "conversation", ""},
@@ -279,7 +279,7 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "noble",60,19.26,2.12847,56.13,266.008,3175572)
 
 	--Hotel
-	--{"bodyguard",60,-10.227,1.00006,-2.52106,360.011,3175594, "conversation", ""},
+	--{"bodyguard",300,-10.227,1.00006,-2.52106,360.011,3175594, "conversation", ""},
 	--{"brawler",60,-10.227,1.00005,-1.42106,180.007,3175594, "conversation", ""},
 	--{"commoner",60,25.6926,1.28309,6.24509,0,3175593, "conversation", ""},
 	--{"miner",60,21.574,1.28309,-2.39703,0,3175593, "conversation", ""},
@@ -290,7 +290,7 @@ function TalusDearicScreenPlay:spawnMobiles()
 	--Capital
 	--{"bothan_diplomat",60,9.32783,0.3,-0.595898,180.007,6255467, "conversation", ""},
 	--{"businessman",60,8.22783,0.3,-0.595898,135.005,6255467, "conversation", ""},
-	--{"fringer",60,9.32783,0.3,-1.6959,360.011,6255467, "conversation", ""},
+	--{"fringer",300,9.32783,0.3,-1.6959,360.011,6255467, "conversation", ""},
 	spawnMobile("talus", "noble",60,22.4751,3.22324,19.4502,107.651,6255473)
 	spawnMobile("talus", "businessman",60,-18.8153,3.22324,21.6509,252.41,6255472)
 end

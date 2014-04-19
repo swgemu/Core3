@@ -18,10 +18,10 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 
 	--Tavern -5106 -6615
 	--{"entertainer",60,6.82411,0.40827,-8.7422,0,1499419, "conversation", ""},
-	--{"rodian_clan_warchief",60,6.82411,0.408269,-7.6422,180,1499419, "conversation", ""},
+	--{"rodian_clan_warchief",300,6.82411,0.408269,-7.6422,180,1499419, "conversation", ""},
 	--{"commoner_technician",60,5.72411,0.408269,-7.6422,135.001,1499419, "conversation", ""},
 	spawnMobile("tatooine", "trainer_medic",0,-8.4035,1.00421,8.19643,110,1499420)
-	spawnMobile("tatooine", "criminal",90,-7.85116,-3.96617,6.43429,272.53,1499424)
+	spawnMobile("tatooine", "criminal",300,-7.85116,-3.96617,6.43429,272.53,1499424)
 
 	--Guild Hall
 	--{"artisan",60,11.9085,0.991253,-0.950462,0,1134533, "conversation", ""},
@@ -29,29 +29,29 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	--{"nomad",60,-9.6227,0.995934,0.354028,180.009,1134533, "conversation", ""},
 	--{"rancher",60,11.9085,0.991375,0.149539,180.01,1134533, "conversation", ""},
 	spawnMobile("tatooine", "businessman",60,-20.9216,-3.99571,2.67462,119.091,1718359)
-	--{"dim_u_priestess",60,14.8335,-3.99038,5.61296,180.016,1718360, "conversation", ""}
+	--{"dim_u_priestess",300,14.8335,-3.99038,5.61296,180.016,1718360, "conversation", ""}
 	--{"gambler",60,14.8335,-3.99038,4.51296,0,1718360, "conversation", ""},
 
 	--Cantina
 	--{"artisan",60,34.4931,0.104999,-6.47601,180,1134559, "conversation", ""},
-	--{"smuggler",60,34.4931,0.104999,-7.576,0,1134559, "conversation", ""},
+	--{"smuggler",300,34.4931,0.104999,-7.576,0,1134559, "conversation", ""},
 	--{"artisan",60,-3.85346,-0.894991,6.73775,0,1134560, "conversation", ""},
 	spawnMobile("tatooine", "bartender",60,-11.0018,-0.894992,1.78678,213.433,1134560)
 	spawnMobile("tatooine", "businessman",60,4.86041,-0.894992,6.38401,249.175,1134560)
 	spawnMobile("tatooine", "noble",60,-5.69909,-0.894992,-10.4035,79.4873,1134560)
 	--{"osweri_hepa",60,11.3838,-0.894992,-2.63465,180.006,1134560, "conversation", "Osweri Hepa"},
-	--{"rodian_clan_medic",60,11.3838,-0.894992,-3.73465,0,1134560, "conversation", ""},
-	--{"rodian_clan_warchief",60,10.2838,-0.894992,-2.63465,135.005,1134560, "conversation", ""},
-	--{"squatter",60,-3.85346,-0.894991,7.83775,180.003,1134560, "conversation", ""},
+	--{"rodian_clan_medic",300,11.3838,-0.894992,-3.73465,0,1134560, "conversation", ""},
+	--{"rodian_clan_warchief",300,10.2838,-0.894992,-2.63465,135.005,1134560, "conversation", ""},
+	--{"squatter",300,-3.85346,-0.894991,7.83775,180.003,1134560, "conversation", ""},
 	--{"stanic_wavingstar",60,17.9368,-0.894992,22.6329,180,1134562, "calm", "Stanic Wavingstar"},
 	spawnMobile("tatooine", "trainer_bountyhunter",0,19,-0.894,-17,0,1134561)
 	--{"yondalla",60,20.1921,-0.894996,-19.0778,25.109,1134561, "calm", "Yondalla"},
 	--{"farmer",60,-25.6583,-0.894991,24.4065,134.995,1134569, "conversation", ""},
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-5216,75,-6563,270,0)
 	spawnMobile("tatooine", "informant_npc_lvl_3",0,-31.4241,-0.894991,19.0307,70,1134569)
-	--{"rodian_clan_captain",60,-24.5583,-0.894991,23.3065,360.011,1134569, "conversation", ""},
-	--{"rodian_clan_warchief",60,-24.5583,-0.894991,24.4065,179.993,1134569, "conversation", ""},
-	spawnMobile("tatooine", "criminal",90,-25.6591,-0.519991,10.6171,15.7251,1134570)
+	--{"rodian_clan_captain",300,-24.5583,-0.894991,23.3065,360.011,1134569, "conversation", ""},
+	--{"rodian_clan_warchief",300,-24.5583,-0.894991,24.4065,179.993,1134569, "conversation", ""},
+	spawnMobile("tatooine", "criminal",300,-25.6591,-0.519991,10.6171,15.7251,1134570)
 
 	--Outside
 	spawnMobile("tatooine", "cll8_binary_load_lifter",60,-5204.46,75,-6481.04,153.365,0)
@@ -74,7 +74,7 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "commoner_tatooine",60,-5155.04,75,-6500.75,115.651,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-5176.26,75,-6611.98,128.905,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-5120.75,75,-6594.69,212.419,0)
-	spawnMobile("tatooine", "criminal",90,-5210.29,75,-6570.98,235.683,0)
+	spawnMobile("tatooine", "criminal",300,-5210.29,75,-6570.98,235.683,0)
 	spawnMobile("tatooine", "informant_npc_lvl_2",0,-5205,75,-6503,315,0)
 	spawnMobile("tatooine", "jabba_enforcer",360,-5233.49,75,-6571.71,339.496,0)
 	spawnMobile("tatooine", "jabba_enforcer",360,-5248.39,75,-6549.52,120.944,0)

@@ -37,8 +37,8 @@ function DantooineAgroOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "commoner", 60, 1614, 4, -6428, 192, 0)
 	spawnMobile("dantooine", "criminal", 300, 1601, 4, -6367, 109, 0)
 	spawnMobile("dantooine", "noble", 60, 1558, 4, -6367, 143, 0)
-	spawnMobile("dantooine", "pirate", 60, 1539, 4, -6407, 34, 0)
-	spawnMobile("dantooine", "pirate", 60, 1556, 4, -6411, 188, 0)
+	spawnMobile("dantooine", "pirate", 300, 1539, 4, -6407, 34, 0)
+	spawnMobile("dantooine", "pirate", 300, 1556, 4, -6411, 188, 0)
 	spawnMobile("dantooine", "scientist", 60, 1583, 4, -6439, 7, 0)
 
 	---Left these in dantooine.lua because of the custom name etc

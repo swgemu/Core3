@@ -14,54 +14,54 @@ end
 
 function LokNymStrongholdScreenPlay:spawnMobiles()
 	--thugs
-	spawnMobile("lok", "nym_surveyer",60,484.493,11.9154,5091.56,180.005,0)
-	spawnMobile("lok", "nym_guard_weak",60,551.4,12,5169.8,200,0)
-	spawnMobile("lok", "nym_guard_weak",60,535.7,11.9,5105.3,90,0)
-	spawnMobile("lok", "nym_guard_weak",60,331.611,11.9777,4898.94,14.0896,0)
-	spawnMobile("lok", "nym_guard_weak",60,322.8,12.1,5050,216,0)
-	spawnMobile("lok", "nym_guard_weak",60,343.53,12.5909,4902.71,356.744,0)
-	spawnMobile("lok", "nym_guard_weak",60,348.219,12.1248,4940.84,19.7209,0)
-	spawnMobile("lok", "nym_guard_elite",60,381.62,12,5013.95,350,0)
-	spawnMobile("lok", "nym_guard_elite",60,381.4,12,5015.13,170,0)
-	spawnMobile("lok", "nym_guard_elite",60,384.094,11.9992,4996.7,286.256,0)
-	spawnMobile("lok", "nym_guard_elite",60,550.517,11.7979,5167.25,10.2375,0)
-	spawnMobile("lok", "nym_guard_elite",60,518.4,12,5100.5,300,0)
-	spawnMobile("lok", "nym_guard_elite",60,405,12.5,5032,230,0)
-	spawnMobile("lok", "nym_guard_elite",60,435.932,12.5279,5024.65,247.747,0)
-	spawnMobile("lok", "nym_guard_elite",60,389.1,12,5034.2,260,0)
-	spawnMobile("lok", "nym_guard_elite",60,441,12.5,5025,90,0)
-	spawnMobile("lok", "nym_guard_strong",60,405.3,12.5,5030,349,0)
-	spawnMobile("lok", "nym_guard_strong",60,537.325,11.9367,5112.7,290,0)
-	spawnMobile("lok", "nym_guard_strong",60,540.129,12.073,5124.46,348.152,0)
-	spawnMobile("lok", "nym_guard_strong",60,538.5,11.9,5102.6,45,0)
-	spawnMobile("lok", "nym_guard_strong",60,406.311,11.8705,4991.53,286.282,0)
-	spawnMobile("lok", "nym_guard_strong",60,334.572,11.9605,4892.89,349.707,0)
-	spawnMobile("lok", "nym_guard_strong",60,350.446,12.0004,4975.94,216.027,0)
-	spawnMobile("lok", "nym_guard_weak",60,400.5,12.5,5047.2,90,0)
-	spawnMobile("lok", "nym_guard_weak",60,520.4,12,5128.8,180,0)
+	spawnMobile("lok", "nym_surveyer",300,484.493,11.9154,5091.56,180.005,0)
+	spawnMobile("lok", "nym_guard_weak",300,551.4,12,5169.8,200,0)
+	spawnMobile("lok", "nym_guard_weak",300,535.7,11.9,5105.3,90,0)
+	spawnMobile("lok", "nym_guard_weak",300,331.611,11.9777,4898.94,14.0896,0)
+	spawnMobile("lok", "nym_guard_weak",300,322.8,12.1,5050,216,0)
+	spawnMobile("lok", "nym_guard_weak",300,343.53,12.5909,4902.71,356.744,0)
+	spawnMobile("lok", "nym_guard_weak",300,348.219,12.1248,4940.84,19.7209,0)
+	spawnMobile("lok", "nym_guard_elite",300,381.62,12,5013.95,350,0)
+	spawnMobile("lok", "nym_guard_elite",300,381.4,12,5015.13,170,0)
+	spawnMobile("lok", "nym_guard_elite",300,384.094,11.9992,4996.7,286.256,0)
+	spawnMobile("lok", "nym_guard_elite",300,550.517,11.7979,5167.25,10.2375,0)
+	spawnMobile("lok", "nym_guard_elite",300,518.4,12,5100.5,300,0)
+	spawnMobile("lok", "nym_guard_elite",300,405,12.5,5032,230,0)
+	spawnMobile("lok", "nym_guard_elite",300,435.932,12.5279,5024.65,247.747,0)
+	spawnMobile("lok", "nym_guard_elite",300,389.1,12,5034.2,260,0)
+	spawnMobile("lok", "nym_guard_elite",300,441,12.5,5025,90,0)
+	spawnMobile("lok", "nym_guard_strong",300,405.3,12.5,5030,349,0)
+	spawnMobile("lok", "nym_guard_strong",300,537.325,11.9367,5112.7,290,0)
+	spawnMobile("lok", "nym_guard_strong",300,540.129,12.073,5124.46,348.152,0)
+	spawnMobile("lok", "nym_guard_strong",300,538.5,11.9,5102.6,45,0)
+	spawnMobile("lok", "nym_guard_strong",300,406.311,11.8705,4991.53,286.282,0)
+	spawnMobile("lok", "nym_guard_strong",300,334.572,11.9605,4892.89,349.707,0)
+	spawnMobile("lok", "nym_guard_strong",300,350.446,12.0004,4975.94,216.027,0)
+	spawnMobile("lok", "nym_guard_weak",300,400.5,12.5,5047.2,90,0)
+	spawnMobile("lok", "nym_guard_weak",300,520.4,12,5128.8,180,0)
 
-	spawnMobile("lok", "nym_guard_weak",60,18.98,2.29948,10.51,181.005,6595511)
-	spawnMobile("lok", "nym_guard_weak",60,-20.26,2.29947,-18.62,3.00005,6595511)
-	spawnMobile("lok", "nym_guard_strong",60,-18.91,2.29916,9.74,178.005,6595511)
-	spawnMobile("lok", "nym_bodyguard",60,5.86,1.3,-5.04,283.008,6595511)
-	spawnMobile("lok", "nym_bodyguard",60,-3.58,1.3,4.01,89.0026,6595511)
-	spawnMobile("lok", "nym_brawler",60,-8.11,1.3,-1.06,177.005,6595511)
-	spawnMobile("lok", "nym_brawler",60,4.17,1.3,-5.62,33.001,6595511)
-	spawnMobile("lok", "nym_guard_elite",60,3.12,4.0782,-9.55,359.01,6595511)
-	spawnMobile("lok", "nym_guard_elite",60,-3.1239,4.0782,-9.55698,359.01,6595511)
-	spawnMobile("lok", "nym_guard_elite",60,1.98,8.9,-30.5,0,6595511)
-	spawnMobile("lok", "nym_guard_elite",60,-1.91,8.9,-30.5,360.011,6595511)
-	spawnMobile("lok", "nym_destroyer",60,-1.79,1.3,3.94,267.008,6595511)
-	spawnMobile("lok", "nym_surveyer",60,-8.05,1.3,-2.3,7.00022,6595511)
-	spawnMobile("lok", "nym_surveyer",60,4.39,1.3,-3.87,149.004,6595511)
+	spawnMobile("lok", "nym_guard_weak",300,18.98,2.29948,10.51,181.005,6595511)
+	spawnMobile("lok", "nym_guard_weak",300,-20.26,2.29947,-18.62,3.00005,6595511)
+	spawnMobile("lok", "nym_guard_strong",300,-18.91,2.29916,9.74,178.005,6595511)
+	spawnMobile("lok", "nym_bodyguard",300,5.86,1.3,-5.04,283.008,6595511)
+	spawnMobile("lok", "nym_bodyguard",300,-3.58,1.3,4.01,89.0026,6595511)
+	spawnMobile("lok", "nym_brawler",300,-8.11,1.3,-1.06,177.005,6595511)
+	spawnMobile("lok", "nym_brawler",300,4.17,1.3,-5.62,33.001,6595511)
+	spawnMobile("lok", "nym_guard_elite",300,3.12,4.0782,-9.55,359.01,6595511)
+	spawnMobile("lok", "nym_guard_elite",300,-3.1239,4.0782,-9.55698,359.01,6595511)
+	spawnMobile("lok", "nym_guard_elite",300,1.98,8.9,-30.5,0,6595511)
+	spawnMobile("lok", "nym_guard_elite",300,-1.91,8.9,-30.5,360.011,6595511)
+	spawnMobile("lok", "nym_destroyer",300,-1.79,1.3,3.94,267.008,6595511)
+	spawnMobile("lok", "nym_surveyer",300,-8.05,1.3,-2.3,7.00022,6595511)
+	spawnMobile("lok", "nym_surveyer",300,4.39,1.3,-3.87,149.004,6595511)
 
-	spawnMobile("lok", "nym_bodyguard",60,-29.1,2.3,1.5,200,6595515)
+	spawnMobile("lok", "nym_bodyguard",300,-29.1,2.3,1.5,200,6595515)
 
-	spawnMobile("lok", "nym_pirate_elite",60,37.49,2.29422,-1.17,88.0026,6595518)
-	spawnMobile("lok", "nym_pirate_elite",60,36.71,2.29422,-2.92,88.0026,6595518)
+	spawnMobile("lok", "nym_pirate_elite",300,37.49,2.29422,-1.17,88.0026,6595518)
+	spawnMobile("lok", "nym_pirate_elite",300,36.71,2.29422,-2.92,88.0026,6595518)
 
-	spawnMobile("lok", "nym_surveyer",60,1.83273,-0.894992,-14.2461,180.009,8145381)
-	spawnMobile("lok", "nym_surveyer",60,-2.13049,-0.894991,6.9956,360.011,8145378)
+	spawnMobile("lok", "nym_surveyer",300,1.83273,-0.894992,-14.2461,180.009,8145381)
+	spawnMobile("lok", "nym_surveyer",300,-2.13049,-0.894991,6.9956,360.011,8145378)
 
 	--misc
 	spawnMobile("lok", "informant_npc_lvl_3",60,369,11.89,5087,90,0)
@@ -95,19 +95,19 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	--{"artisan",60,-23.8096,1.6,-5.16968,180.005,8145362, "conversation", ""},
 	--{"bapibac",60,14.5598,0.26,3.77176,360.011,2745866, "conversation", "Bapibac One-Oesp"},
 	spawnMobile("lok", "bartender",60,-11.2794,-0.894992,1.36624,33.4279,8145378)
-	spawnMobile("lok", "bodyguard",90,15.64,14.26,-0.951844,303.334,2745876)
-	--{"bodyguard",60,3.95102,7.26,9.58572,179.998,2745872, "conversation", ""},
-	--{"bodyguard",60,-1.26922,0.999998,-0.973796,180.006,8145356, "conversation", ""},
-	--{"bodyguard",60,4.27638,1.00001,-7.08525,134.999,8145356, "conversation", ""},
-	--{"bodyguard",60,-3.37845,0.999947,7.55641,135,8145356, "conversation", ""},
-	--{"bodyguard",60,-23.1849,1.58923,0.850721,0.0559546,8145358, "conversation", ""},
+	spawnMobile("lok", "bodyguard",300,15.64,14.26,-0.951844,303.334,2745876)
+	--{"bodyguard",300,3.95102,7.26,9.58572,179.998,2745872, "conversation", ""},
+	--{"bodyguard",300,-1.26922,0.999998,-0.973796,180.006,8145356, "conversation", ""},
+	--{"bodyguard",300,4.27638,1.00001,-7.08525,134.999,8145356, "conversation", ""},
+	--{"bodyguard",300,-3.37845,0.999947,7.55641,135,8145356, "conversation", ""},
+	--{"bodyguard",300,-23.1849,1.58923,0.850721,0.0559546,8145358, "conversation", ""},
 	--{"bothan_diplomat",60,18.7783,1.28309,9.1449,135.004,8145357, "conversation", ""},
 	--{"bothan_information_broker",60,-0.243796,7.26,-12.1226,135.01,2745872, "conversation", ""},
 	--{"bothan_information_broker",60,-25.6603,0.26,-0.532375,135.011,2745870, "conversation", ""},
 	--{"bothan_information_broker",60,19.6068,1.28309,-14.4961,180.006,8145357, "conversation", ""},
 	--{"bothan_information_broker",60,-11.545,1,-3.99877,45.0052,8145358, "conversation", ""},
-	spawnMobile("lok", "bounty_hunter",60,16.74,14.26,-0.951844,283.416,2745876)
-	--{"bounty_hunter",60,29.0555,0.26,7.22789,360.011,2745866, "conversation", ""},
+	spawnMobile("lok", "bounty_hunter",300,16.74,14.26,-0.951844,283.416,2745876)
+	--{"bounty_hunter",300,29.0555,0.26,7.22789,360.011,2745866, "conversation", ""},
 	--{"brawler",60,4.19353,13.5019,8.75924,180,2745876, "conversation", ""},
 	--{"brawler",60,32.2156,14.26,-9.06471,0.0395659,2745876, "conversation", ""},
 	--{"brawler",60,9.48372,0.26,-7.07547,135.009,2745866, "conversation", ""},
@@ -146,9 +146,9 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	--{"commoner_tatooine",60,14.3,-0.9,23.3,181,8145380, "npc_sitting_chair", "Berema"},
 	--{"commoner_tatooine",60,-2.27845,0.999959,6.45641,0,8145356, "conversation", ""},
 	--{"commoner_technician",60,0.856204,7.26,-13.2226,0,2745872, "conversation", ""},
-	spawnMobile("lok", "criminal",90,226.672,12.0826,4954.08,267.001,0)
-	spawnMobile("lok", "criminal",90,221.718,11.9626,4987.57,135.742,0)
-	spawnMobile("lok", "criminal",90,525.319,11.8584,5156.53,159.79,0)
+	spawnMobile("lok", "criminal",300,226.672,12.0826,4954.08,267.001,0)
+	spawnMobile("lok", "criminal",300,221.718,11.9626,4987.57,135.742,0)
+	spawnMobile("lok", "criminal",300,525.319,11.8584,5156.53,159.79,0)
 	--{"entertainer",60,30.0714,7.25,12.3841,135.011,2745874, "conversation", ""},
 	--{"entertainer",60,-30.1395,0.25801,9.73541,135.01,2745870, "conversation", ""},
 	--{"entertainer",60,-5.72977,-0.894994,22.9507,180.008,8145384, "conversation", ""},
@@ -165,7 +165,7 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	--{"farmer",60,-14.6521,1.0008,7.50857,0,8145358, "conversation", ""},
 	--{"farmer",60,484.493,11.8719,5090.56,2.49081,0, "conversation", ""},
 	spawnMobile("lok", "farmer_rancher",60,18.1642,-0.894992,19.3991,79.3056,8145380)
-	--{"fringer",60,10.5837,0.26,-7.07547,180.014,2745866, "conversation", ""},
+	--{"fringer",300,10.5837,0.26,-7.07547,180.014,2745866, "conversation", ""},
 	--{"gambler",60,0.856204,7.26,-12.1226,180.015,2745872, "conversation", ""},
 	--{"gambler",60,43.6314,0.104999,0.264886,0.0791317,8145376, "conversation", ""},
 	--{"gambler",60,19.8783,1.28309,9.1449,180.006,8145357, "conversation", ""},
@@ -186,8 +186,8 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	--{"mercenary",60,25.7848,-0.894993,-8.75091,180.009,8145378, "conversation", ""},
 	--{"mercenary",60,24.6848,-0.894992,-8.75091,135.009,8145378, "conversation", ""},
 	--{"mercenary",60,432.639,12,5218.48,0,0, "conversation", ""},
-	--{"mercenary_weak",60,5.94117,-0.894992,21.7966,180.007,8145382, "conversation", ""},
-	--{"mercenary_weak",60,23.1893,-0.894993,9.8231,180.01,8145378, "conversation", ""},
+	--{"mercenary_weak",300,5.94117,-0.894992,21.7966,180.007,8145382, "conversation", ""},
+	--{"mercenary_weak",300,23.1893,-0.894993,9.8231,180.01,8145378, "conversation", ""},
 	--{"miner",60,4.19353,13.5019,7.65925,360.011,2745876, "conversation", ""},
 	--{"miner",60,-13.7191,0.26,-10.4865,360.011,2745870, "conversation", ""},
 	--{"miner",60,-14.4486,0.26,6.76362,134.998,2745870, "conversation", ""},
@@ -210,10 +210,10 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	--{"scientist",60,5.37638,1.00001,-7.08525,180.006,8145356, "conversation", ""},
 	--{"scoundrel",60,-30.1395,0.259061,8.63541,45.0015,2745870, "conversation", ""},
 	--{"scoundrel",60,-24.251,-0.894991,22.5325,360.011,8145387, "conversation", ""},
-	--{"smuggler",60,3.95102,7.26,8.48572,360.011,2745872, "conversation", ""},
-	--{"smuggler",60,10.5837,0.26,-8.17547,0,2745866, "conversation", ""},
-	--{"smuggler",60,4.84117,-0.894992,21.7966,135.006,8145382, "conversation", ""},
-	--{"smuggler",60,-4.95629,-0.894992,-5.43149,179.998,8145378, "conversation", ""},
+	--{"smuggler",300,3.95102,7.26,8.48572,360.011,2745872, "conversation", ""},
+	--{"smuggler",300,10.5837,0.26,-8.17547,0,2745866, "conversation", ""},
+	--{"smuggler",300,4.84117,-0.894992,21.7966,135.006,8145382, "conversation", ""},
+	--{"smuggler",300,-4.95629,-0.894992,-5.43149,179.998,8145378, "conversation", ""},
 	--{"spacer",60,391.143,12,5056.74,0,0, "conversation", ""},
 	--{"spacer",60,31.1166,14.26,-7.96455,135.032,2745876, "conversation", ""},
 	--{"spacer",60,-13.3486,0.26,6.76362,179.996,2745870, "conversation", ""},

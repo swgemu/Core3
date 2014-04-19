@@ -18,7 +18,7 @@ function EndorDulokVillageSouthScreenPlay:spawnMobiles()
 	spawnMobile("endor", "donkuwah_scout",300, 5933.2, 234.7, -2505.3, -95, 0)
 
 	spawnMobile("endor", "crafty_donkuwah_scout",300, 5997.3, 250, -2510.4, -148, 0)
-	spawnMobile("endor", "beguiling_donkuwah_scout",3000, 5993.7, 250, -2500.4, -104, 0)
+	spawnMobile("endor", "beguiling_donkuwah_scout",300, 5993.7, 250, -2500.4, -104, 0)
 	spawnMobile("endor", "tricky_donkuwah_scout",300, 5995.5, 250, -2482.3, -49, 0)
 
 	spawnMobile("endor", "tricky_donkuwah_scout",300, 6075.6, 260, -2525.9, -179, 0)

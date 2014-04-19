@@ -19,44 +19,44 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	--Starport
 	--{"bothan_diplomat",60,56.669,-0.521137,33.7689,180.017,1855678, "conversation", ""},
 	spawnMobile("corellia", "bothan_diplomat",60,8.5,0.6,74.4,-93,1855672)
-	--{"corsec_cadet",60,37.163,0.639417,40.7061,180.01,1855678, "conversation", ""},
+	--{"corsec_cadet",300,37.163,0.639417,40.7061,180.01,1855678, "conversation", ""},
 	--{"gambler",60,-4.61669,0.639424,67.8263,180.012,1855675, "conversation", ""},
-	--{"hunter",60,8.65132,0.639421,75.5483,256.69,1855672, "calm", ""},
+	--{"hunter",300,8.65132,0.639421,75.5483,256.69,1855672, "calm", ""},
 	--{"miner",60,37.163,0.639417,39.6061,0,1855678, "conversation", ""},
 	--{"scientist",60,56.669,-0.521137,32.6689,360.011,1855678, "conversation", ""},
 	--{"slicer",60,-4.61669,0.639424,66.7263,0,1855675, "conversation", ""},
 	--{"farmer",60,-62.7673,2.63942,40.6604,360.011,1855683, "conversation", ""},
-	--{"mercenary",60,-62.7673,2.63942,41.7604,179.995,1855683, "conversation", ""},
+	--{"mercenary",300,-62.7673,2.63942,41.7604,179.995,1855683, "conversation", ""},
 
 	--Guild Hall -275 -4700
-	--{"bodyguard",60,-9.42234,1.75,-18.7259,180.005,1855484, "conversation", ""},
-	--{"corsec_agent",60,-10.5223,1.75,-18.7259,134.999,1855484, "conversation", ""},
+	--{"bodyguard",300,-9.42234,1.75,-18.7259,180.005,1855484, "conversation", ""},
+	--{"corsec_agent",300,-10.5223,1.75,-18.7259,134.999,1855484, "conversation", ""},
 	--{"farmer",60,-9.42234,1.75,-19.8259,0,1855484, "conversation", ""},
 	spawnMobile("corellia", "farmer",60,11.9421,1.75,-18.7404,129.059,1855484)
 	--{"noble",60,11.9421,1.75,-19.8404,0,1855484, "conversation", ""},
 	spawnMobile("corellia", "rikkh",60,0.180826,1.75,-21.4842,28.861,1855484)
 	spawnMobile("corellia", "rhea",60,1.70956,1.75,-14.1406,4.76848,1855483)
 	--{"brawler",60,16.2045,2.25,19.3968,135.003,1855477, "conversation", ""},
-	--{"corsec_cadet",60,17.3045,2.25,19.3968,180.006,1855477, "conversation", ""},
+	--{"corsec_cadet",300,17.3045,2.25,19.3968,180.006,1855477, "conversation", ""},
 	--{"explorer",60,17.3045,2.25,18.2968,360.011,1855477, "conversation", ""},
 
 	--Hotel
 	--{"corellia_times_investigator",60,7.44572,1.00001,-8.00652,0,1855548, "conversation", ""},
-	--{"corsec_agent",60,7.44572,1.00001,-6.90652,179.997,1855548, "conversation", ""},
+	--{"corsec_agent",300,7.44572,1.00001,-6.90652,179.997,1855548, "conversation", ""},
 	--{"artisan",60,17.2826,1.28309,-11.8404,179.994,1855549, "conversation", ""},
-	--{"bodyguard",60,24.3471,1.28309,10.0336,180.007,1855549, "conversation", ""},
-	--{"corsec_sergeant",60,24.3471,1.28309,8.93357,360.011,1855549, "conversation", ""},
+	--{"bodyguard",300,24.3471,1.28309,10.0336,180.007,1855549, "conversation", ""},
+	--{"corsec_sergeant",300,24.3471,1.28309,8.93357,360.011,1855549, "conversation", ""},
 	spawnMobile("corellia", "grobber",60,-15.4768,1,-8.20706,245.925,1855551)
 	spawnMobile("corellia", "zekka_thyne",60,-22.3764,1.6,-15.0418,86.3112,1855554)
 	--{"commoner",60,-24,1.6,-4,160,1855554, "calm", "Pex (an elite storyteller vendor)"},
 
 	--Cantina
 	spawnMobile("corellia", "bartender",60,7.60649,-0.894992,1.42464,324.005,8105496)
-	--{"bodyguard",60,3.61201,-0.894992,-8.73417,135.006,8105496, "conversation", ""},
-	--{"bodyguard",60,2.80432,-0.894991,10.6543,180.012,8105496, "conversation", ""}
+	--{"bodyguard",300,3.61201,-0.894992,-8.73417,135.006,8105496, "conversation", ""},
+	--{"bodyguard",300,2.80432,-0.894991,10.6543,180.012,8105496, "conversation", ""}
 	--{"businessman",60,-7.91375,-0.894992,-4.88587,179.995,8105496, "conversation", ""},
-	--{"corsec_major",60,-7.91375,-0.894992,-5.88587,0,8105496, "conversation", ""},
-	--{"corsec_rogue",60,4.71201,-0.894992,-8.73417,180.01,8105496, "conversation", ""},
+	--{"corsec_major",300,-7.91375,-0.894992,-5.88587,0,8105496, "conversation", ""},
+	--{"corsec_rogue",300,4.71201,-0.894992,-8.73417,180.01,8105496, "conversation", ""},
 	--{"entertainer",60,2.80432,-0.894991,9.55434,360.011,8105496, "conversation", ""},
 	--{"farmer_rancher",60,4.71201,-0.894992,-9.83418,360.011,8105496, "conversation", ""},
 	--{"criminal",60,-5.02826,-0.894991,-21.3375,60.6357,8105501, "calm", ""},
@@ -97,7 +97,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	--{"daclif_gallamby",60,-35.6875,1.29422,-1.70805,88.4786,1855467, "calm", ""}, Task dont add this
 	--{"brawler",60,16.2045,2.25,19.3968,135.003,1855477, "conversation", ""},
 	--{"brawler",60,-1.72746,7.9,-32.175,0,1855463, "conversation", ""},
-	--{"corsec_agent",60,-0.332123,0.3,-2.90219,134.998,1855463, "conversation", ""},
+	--{"corsec_agent",300,-0.332123,0.3,-2.90219,134.998,1855463, "conversation", ""},
 	--{"entertainer",60,0.767877,0.3,-2.90219,180.005,1855463, "conversation", ""},
 	--{"farmer",60,-18.6014,1.30259,-11.3146,360.011,1855463, "conversation", ""},
 	--{"farmer",60,0.767877,0.3,-4.00219,0,1855463, "conversation", ""},
@@ -107,19 +107,19 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	--{"scientist",60,-1.72746,7.9,-31.075,180.005,1855463, "conversation", ""},
 	--{"slicer",60,-18.6014,1.30292,-10.2146,180.006,1855463, "conversation", ""},
 	spawnMobile("corellia", "thale_dustrunner",60,-0.052739,3.0782,-10.9388,187.319,1855463)
-	--{"corsec_detective",60,-20.2743,3.22324,22.781,180.005,1855468, "conversation", ""},
+	--{"corsec_detective",300,-20.2743,3.22324,22.781,180.005,1855468, "conversation", ""},
 	--{"farmer",60,-20.2743,3.22324,21.681,0,1855468, "conversation", ""},
 	--{"info_broker",60,21.8079,3.22324,26.617,180.006,1855469, "conversation", ""},
-	--{"corsec_lieutenant",60,21.8079,3.22324,25.517,360.011,1855469, "conversation", ""},
+	--{"corsec_lieutenant",300,21.8079,3.22324,25.517,360.011,1855469, "conversation", ""},
 	--{"farmer",60,37.1168,1.29422,-4.41488,0,1855470, "conversation", ""},
 	--{"businessman",60,37.1168,1.29422,-3.41488,180.005,1855470, "conversation", ""},
 
 	--Guild Hall/Theater -207 -4133
-	--{"fringer",60,3.66172,0.6,-2.64185,180.005,2365392, "conversation", ""},
+	--{"fringer",300,3.66172,0.6,-2.64185,180.005,2365392, "conversation", ""},
 	--{"commoner",60,2.56172,0.6,-2.64185,135,2365392, "conversation", ""},
 	--{"bothan_information_broker",60,22.2962,0.688613,43.2884,180.006,2365397, "conversation", ""},
 	--{"businessman",60,-6.12488,2.6,13.0431,0,2365397, "conversation", ""},
-	--{"corsec_commissioner",60,22.2962,0.788717,42.1976,5.2426,2365397, "conversation", ""},
+	--{"corsec_commissioner",300,22.2962,0.788717,42.1976,5.2426,2365397, "conversation", ""},
 	--{"explorer",60,-6.12488,2.6,14.1431,180.005,2365397, "conversation", ""},
 	--{"farmer",60,-17.5041,0.887194,41.0759,180.006,2365397, "conversation", ""},
 	--{"info_broker",60,-17.5041,0.992207,39.9855,5.50246,2365397, "conversation", ""},
@@ -186,22 +186,22 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	--{"commoner",60,-51.7918,28,-4662.65,360.011,0, "calm", "Hunter Javeezo"},
 
 	--Corsec Outside
-	spawnMobile("corellia", "corsec_deserter",60,-671.712,6.15933,-4169.03,37.6923,0)
-	spawnMobile("corellia", "corsec_detective",60,-526.1,28,-4702,-41,0)
-	spawnMobile("corellia", "corsec_master_sergeant",60,-172.8,28,-4167.1,0,0)
-	spawnMobile("corellia", "corsec_renegade",60,-662.805,9.26289,-4182.05,196.426,0)
-	spawnMobile("corellia", "corsec_traitor",60,-672.123,5.60327,-4164.83,340.354,0)
-	spawnMobile("corellia", "corsec_trooper",60,-240.2,28,-4450.9,94,0)
-	spawnMobile("corellia", "corsec_trooper",60,-172.8,28.0929,-4165.5,179,0)
-	spawnMobile("corellia", "corsec_trooper",60,-528.144,28,-4699.89,132.784,0)
-	spawnMobile("corellia", "corsec_trooper",60,0.3,28,-4464.5,-87,0)
-	spawnMobile("corellia", "corsec_trooper",60,-1.67932,28,-4464.42,93.3597,0)
-	spawnMobile("corellia", "corsec_trooper",60,-60,28.5,-4597.2,-96,0)
-	spawnMobile("corellia", "corsec_trooper",60,-344.9,28,-4444.3,-48,0)
-	spawnMobile("corellia", "corsec_trooper",60,-347.5,28,-4442.6,123,0)
+	spawnMobile("corellia", "corsec_deserter",300,-671.712,6.15933,-4169.03,37.6923,0)
+	spawnMobile("corellia", "corsec_detective",300,-526.1,28,-4702,-41,0)
+	spawnMobile("corellia", "corsec_master_sergeant",300,-172.8,28,-4167.1,0,0)
+	spawnMobile("corellia", "corsec_renegade",300,-662.805,9.26289,-4182.05,196.426,0)
+	spawnMobile("corellia", "corsec_traitor",300,-672.123,5.60327,-4164.83,340.354,0)
+	spawnMobile("corellia", "corsec_trooper",300,-240.2,28,-4450.9,94,0)
+	spawnMobile("corellia", "corsec_trooper",300,-172.8,28.0929,-4165.5,179,0)
+	spawnMobile("corellia", "corsec_trooper",300,-528.144,28,-4699.89,132.784,0)
+	spawnMobile("corellia", "corsec_trooper",300,0.3,28,-4464.5,-87,0)
+	spawnMobile("corellia", "corsec_trooper",300,-1.67932,28,-4464.42,93.3597,0)
+	spawnMobile("corellia", "corsec_trooper",300,-60,28.5,-4597.2,-96,0)
+	spawnMobile("corellia", "corsec_trooper",300,-344.9,28,-4444.3,-48,0)
+	spawnMobile("corellia", "corsec_trooper",300,-347.5,28,-4442.6,123,0)
 
 	--Imperial Npc's Outside
-	--{"crackdown_command_security_guard",60,-175.887,28,-4765.95,86.2823,0, "npc_imperial", ""},
+	--{"crackdown_command_security_guard",300,-175.887,28,-4765.95,86.2823,0, "npc_imperial", ""},
 	spawnMobile("corellia", "crackdown_dark_trooper",400,-574.2,28,-4247,333.01,0)
 	spawnMobile("corellia", "crackdown_dark_trooper",400,-303.8,28,-4144.4,304.009,0)
 	spawnMobile("corellia", "crackdown_dark_trooper",400,111.5,28,-4464.9,26.0008,0)
@@ -293,41 +293,41 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "karin_featherlight",60,-185.082,28,-4460.71,86.3314,0)
 
 	--Meatlump's outside
-	spawnMobile("corellia", "meatlump_buffoon",600,-145,28.9,-4959.8,63,0)
-	spawnMobile("corellia", "meatlump_buffoon",600,-54.3,28.2,-4963.4,-90,0)
-	spawnMobile("corellia", "meatlump_buffoon",600,-20.1,28,-4922.2,109,0)
-	spawnMobile("corellia", "meatlump_buffoon",600,266.9,28.5,-4656.5,-109,0)
-	spawnMobile("corellia", "meatlump_buffoon",600,284.5,29,-4541.7,-175,0)
-	spawnMobile("corellia", "meatlump_buffoon",600,258.2,28,-4424.1,-5,0)
-	spawnMobile("corellia", "meatlump_buffoon",600,-365.3,28,-4658.5,26,0)
-	spawnMobile("corellia", "meatlump_buffoon",600,-270.1,28,-4923,-97,0)
-	spawnMobile("corellia", "meatlump_clod",600,-130.2,31.1,-4993.8,72,0)
-	spawnMobile("corellia", "meatlump_clod",600,-11.4,28,-4920.5,63,0)
-	spawnMobile("corellia", "meatlump_clod",600,93.4,27.1,-4865,60,0)
-	spawnMobile("corellia", "meatlump_cretin",600,-89.4,30.3,-4985.2,33,0)
-	spawnMobile("corellia", "meatlump_cretin",600,188.1,27.1,-4770.2,-99,0)
-	spawnMobile("corellia", "meatlump_cretin",600,287.1,29.3,-4558,-95,0)
-	spawnMobile("corellia", "meatlump_cretin",600,-236.2,28.4,-4947.9,-16,0)
-	spawnMobile("corellia", "meatlump_fool",600,172.6,27.9,-4773,-87,0)
-	spawnMobile("corellia", "meatlump_fool",600,277.9,28.6,-4545.9,-99,0)
-	spawnMobile("corellia", "meatlump_fool",600,266.6,28,-4408.9,68,0)
-	spawnMobile("corellia", "meatlump_fool",600,-361.8,28,-4655,164,0)
-	spawnMobile("corellia", "meatlump_fool",600,-297.3,28,-4918.8,-86,0)
-	spawnMobile("corellia", "meatlump_fool",600,-257,30,-4968.4,24,0)
-	spawnMobile("corellia", "meatlump_loon",600,-163,28.2,-49493,102,0)
-	spawnMobile("corellia", "meatlump_loon",600,176,27.3,-4763.6,-7,0)
-	spawnMobile("corellia", "meatlump_oaf",600,-136,28.8,-4958.5,83,0)
-	spawnMobile("corellia", "meatlump_oaf",600,-72,28,-4973.1,-77,0)
-	spawnMobile("corellia", "meatlump_oaf",600,97.6,26.6,-4867.1,101,0)
-	spawnMobile("corellia", "meatlump_oaf",600,255,28.3,-4666.8,-51,0)
-	spawnMobile("corellia", "meatlump_oaf",600,249.6,28,-4418.9,92,0)
-	spawnMobile("corellia", "meatlump_oaf",600,-366,28,-4655,148,0)
-	spawnMobile("corellia", "meatlump_oaf",600,-308,28,-4897.9,64,0)
-	spawnMobile("corellia", "meatlump_stooge",600,-133.5,28.2,-4946,72,0)
-	spawnMobile("corellia", "meatlump_stooge",600,-12.6,27.9,-4931.6,-19,0)
-	spawnMobile("corellia", "meatlump_stooge",600,90.7,26.6,-4872.1,73,0)
-	spawnMobile("corellia", "meatlump_stooge",600,252.9,28.3,-4657.7,-3,0)
-	spawnMobile("corellia", "meatlump_stooge",600,293.9,29.7,-4552.4,-93,0)
+	spawnMobile("corellia", "meatlump_buffoon",300,-145,28.9,-4959.8,63,0)
+	spawnMobile("corellia", "meatlump_buffoon",300,-54.3,28.2,-4963.4,-90,0)
+	spawnMobile("corellia", "meatlump_buffoon",300,-20.1,28,-4922.2,109,0)
+	spawnMobile("corellia", "meatlump_buffoon",300,266.9,28.5,-4656.5,-109,0)
+	spawnMobile("corellia", "meatlump_buffoon",300,284.5,29,-4541.7,-175,0)
+	spawnMobile("corellia", "meatlump_buffoon",300,258.2,28,-4424.1,-5,0)
+	spawnMobile("corellia", "meatlump_buffoon",300,-365.3,28,-4658.5,26,0)
+	spawnMobile("corellia", "meatlump_buffoon",300,-270.1,28,-4923,-97,0)
+	spawnMobile("corellia", "meatlump_clod",300,-130.2,31.1,-4993.8,72,0)
+	spawnMobile("corellia", "meatlump_clod",300,-11.4,28,-4920.5,63,0)
+	spawnMobile("corellia", "meatlump_clod",300,93.4,27.1,-4865,60,0)
+	spawnMobile("corellia", "meatlump_cretin",300,-89.4,30.3,-4985.2,33,0)
+	spawnMobile("corellia", "meatlump_cretin",300,188.1,27.1,-4770.2,-99,0)
+	spawnMobile("corellia", "meatlump_cretin",300,287.1,29.3,-4558,-95,0)
+	spawnMobile("corellia", "meatlump_cretin",300,-236.2,28.4,-4947.9,-16,0)
+	spawnMobile("corellia", "meatlump_fool",300,172.6,27.9,-4773,-87,0)
+	spawnMobile("corellia", "meatlump_fool",300,277.9,28.6,-4545.9,-99,0)
+	spawnMobile("corellia", "meatlump_fool",300,266.6,28,-4408.9,68,0)
+	spawnMobile("corellia", "meatlump_fool",300,-361.8,28,-4655,164,0)
+	spawnMobile("corellia", "meatlump_fool",300,-297.3,28,-4918.8,-86,0)
+	spawnMobile("corellia", "meatlump_fool",300,-257,30,-4968.4,24,0)
+	spawnMobile("corellia", "meatlump_loon",300,-163,28.2,-49493,102,0)
+	spawnMobile("corellia", "meatlump_loon",300,176,27.3,-4763.6,-7,0)
+	spawnMobile("corellia", "meatlump_oaf",300,-136,28.8,-4958.5,83,0)
+	spawnMobile("corellia", "meatlump_oaf",300,-72,28,-4973.1,-77,0)
+	spawnMobile("corellia", "meatlump_oaf",300,97.6,26.6,-4867.1,101,0)
+	spawnMobile("corellia", "meatlump_oaf",300,255,28.3,-4666.8,-51,0)
+	spawnMobile("corellia", "meatlump_oaf",300,249.6,28,-4418.9,92,0)
+	spawnMobile("corellia", "meatlump_oaf",300,-366,28,-4655,148,0)
+	spawnMobile("corellia", "meatlump_oaf",300,-308,28,-4897.9,64,0)
+	spawnMobile("corellia", "meatlump_stooge",300,-133.5,28.2,-4946,72,0)
+	spawnMobile("corellia", "meatlump_stooge",300,-12.6,27.9,-4931.6,-19,0)
+	spawnMobile("corellia", "meatlump_stooge",300,90.7,26.6,-4872.1,73,0)
+	spawnMobile("corellia", "meatlump_stooge",300,252.9,28.3,-4657.7,-3,0)
+	spawnMobile("corellia", "meatlump_stooge",300,293.9,29.7,-4552.4,-93,0)
 
 	--Misc
 	--{"r2",60,-13.4312,1.6,-15.4443,7.68027,1935827, "calm", "R2-P9"},
@@ -335,29 +335,29 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	--{"r3",60,-182.479,28,-4731.42,293.019,0, "calm", "R3-S1"},
 
 	--Ragtag's outside
-	spawnMobile("corellia", "ragtag_kook",120,-217.315,28,-4927.23,40.3799,0)
-	spawnMobile("corellia", "ragtag_kook",60,-213.219,28,-4926.08,204.867,0)
-	spawnMobile("corellia", "ragtag_kook",60,-225.238,28,-4931.01,254.658,0)
-	spawnMobile("corellia", "ragtag_kook",60,-212.993,28,-4922.77,38.0909,0)
-	spawnMobile("corellia", "ragtag_kook",60,-712.063,5.13106,-4304.96,315.72,0)
-	spawnMobile("corellia", "ragtag_kook",60,-719.18,4.19027,-4309.55,164.033,0)
-	spawnMobile("corellia", "ragtag_kook",60,-703.067,2.97988,-4657.98,93.9451,0)
-	spawnMobile("corellia", "ragtag_kook",60,-711.002,2.29761,-4657.71,82.4599,0)
-	spawnMobile("corellia", "ragtag_loon",60,-396.754,28,-4869.82,8.29735,0)
-	spawnMobile("corellia", "ragtag_loon",60,-397.655,28,-4875.17,8.04579,0)
-	spawnMobile("corellia", "ragtag_loon",60,227.709,28,-4494.78,296.837,0)
-	spawnMobile("corellia", "ragtag_loon",60,229.296,28,-4484.62,54.5993,0)
-	spawnMobile("corellia", "ragtag_loon",60,234.249,28,-4490.03,258.204,0)
-	spawnMobile("corellia", "ragtag_loon",60,227.363,28,-4490.61,140.577,0)
-	spawnMobile("corellia", "ragtag_loon",60,177.412,28,-4413.68,227.101,0)
-	spawnMobile("corellia", "ragtag_loon",60,177.412,28,-4411.68,159.855,0)
-	spawnMobile("corellia", "ragtag_loon",60,-205.027,28.3091,-3998.32,80.3182,0)
-	spawnMobile("corellia", "ragtag_loon",60,-208.5,29.2,-3999.9,191.197,0)
-	spawnMobile("corellia", "ragtag_loon",60,-205.027,29.2182,-4001.32,192.016,0)
-	spawnMobile("corellia", "ragtag_loon",60,-201.8,28.6,-4000.2,-122,0)
-	spawnMobile("corellia", "ragtag_loon",60,-525.124,5.82557,-4079.84,207.519,0)
-	spawnMobile("corellia", "ragtag_loon",60,-534.124,6.67109,-4078.84,149.496,0)
-	spawnMobile("corellia", "ragtag_maniac",60,-691.483,7.08209,-4227.75,29.5129,0)
+	spawnMobile("corellia", "ragtag_kook",300,-217.315,28,-4927.23,40.3799,0)
+	spawnMobile("corellia", "ragtag_kook",300,-213.219,28,-4926.08,204.867,0)
+	spawnMobile("corellia", "ragtag_kook",300,-225.238,28,-4931.01,254.658,0)
+	spawnMobile("corellia", "ragtag_kook",300,-212.993,28,-4922.77,38.0909,0)
+	spawnMobile("corellia", "ragtag_kook",300,-712.063,5.13106,-4304.96,315.72,0)
+	spawnMobile("corellia", "ragtag_kook",300,-719.18,4.19027,-4309.55,164.033,0)
+	spawnMobile("corellia", "ragtag_kook",300,-703.067,2.97988,-4657.98,93.9451,0)
+	spawnMobile("corellia", "ragtag_kook",300,-711.002,2.29761,-4657.71,82.4599,0)
+	spawnMobile("corellia", "ragtag_loon",300,-396.754,28,-4869.82,8.29735,0)
+	spawnMobile("corellia", "ragtag_loon",300,-397.655,28,-4875.17,8.04579,0)
+	spawnMobile("corellia", "ragtag_loon",300,227.709,28,-4494.78,296.837,0)
+	spawnMobile("corellia", "ragtag_loon",300,229.296,28,-4484.62,54.5993,0)
+	spawnMobile("corellia", "ragtag_loon",300,234.249,28,-4490.03,258.204,0)
+	spawnMobile("corellia", "ragtag_loon",300,227.363,28,-4490.61,140.577,0)
+	spawnMobile("corellia", "ragtag_loon",300,177.412,28,-4413.68,227.101,0)
+	spawnMobile("corellia", "ragtag_loon",300,177.412,28,-4411.68,159.855,0)
+	spawnMobile("corellia", "ragtag_loon",300,-205.027,28.3091,-3998.32,80.3182,0)
+	spawnMobile("corellia", "ragtag_loon",300,-208.5,29.2,-3999.9,191.197,0)
+	spawnMobile("corellia", "ragtag_loon",300,-205.027,29.2182,-4001.32,192.016,0)
+	spawnMobile("corellia", "ragtag_loon",300,-201.8,28.6,-4000.2,-122,0)
+	spawnMobile("corellia", "ragtag_loon",300,-525.124,5.82557,-4079.84,207.519,0)
+	spawnMobile("corellia", "ragtag_loon",300,-534.124,6.67109,-4078.84,149.496,0)
+	spawnMobile("corellia", "ragtag_maniac",300,-691.483,7.08209,-4227.75,29.5129,0)
 	spawnMobile("corellia", "ral_mundi",60,-138.975,28,-4718.86,10.0036,0)
 	spawnMobile("corellia", "tarth_jaxx",60,-137.464,28,-4718.83,342.825,0)
 

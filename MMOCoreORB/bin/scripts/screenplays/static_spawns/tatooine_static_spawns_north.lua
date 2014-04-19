@@ -75,12 +75,12 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	--Square Frame (6528,5522)
 
 	--Oasis (6663,5455)
-	spawnMobile("tatooine", "drooling_nuna", 30, 6655.4, 1.1, 5468.2, 125, 0)
-	spawnMobile("tatooine", "drooling_nuna", 30, 6659.1, 1.1, 5471.5, 125, 0)
-	spawnMobile("tatooine", "drooling_nuna", 30, 6663.7, 1.1, 5475.0, 115, 0)
-	spawnMobile("tatooine", "drooling_nuna", 30, 6665.6, 1.1, 5485.4, 145, 0)
-	spawnMobile("tatooine", "drooling_nuna", 30, 6675.8, 1.1, 5473.4, 175, 0)
-	spawnMobile("tatooine", "cu_pa", 210, 6677.8, 1.3, 5445.0, -45, 0)
+	spawnMobile("tatooine", "drooling_nuna", 300, 6655.4, 1.1, 5468.2, 125, 0)
+	spawnMobile("tatooine", "drooling_nuna", 300, 6659.1, 1.1, 5471.5, 125, 0)
+	spawnMobile("tatooine", "drooling_nuna", 300, 6663.7, 1.1, 5475.0, 115, 0)
+	spawnMobile("tatooine", "drooling_nuna", 300, 6665.6, 1.1, 5485.4, 145, 0)
+	spawnMobile("tatooine", "drooling_nuna", 300, 6675.8, 1.1, 5473.4, 175, 0)
+	spawnMobile("tatooine", "cu_pa", 300, 6677.8, 1.3, 5445.0, -45, 0)
 
 	--Sandcrawler (5770,4007) already populate in its own screenplay
 

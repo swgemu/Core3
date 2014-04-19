@@ -27,7 +27,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--Guild Hall -1239 -3580
 	--{"coa3_tactical_imperial",60,9.74537,1.13306,0.300803,93.0077,1028549, "npc_imperial", ""},
 	spawnMobile("tatooine", "trainer_scout",0,-13,1.1,4.8,180,1028550)
-	spawnMobile("tatooine", "hunter",60,-14.01,1.13306,-8.53,120.004,1028553)
+	spawnMobile("tatooine", "hunter",300,-14.01,1.13306,-8.53,120.004,1028553)
 	spawnMobile("tatooine", "trainer_brawler",0,-11,1.1,-14,0,1028553)
 	spawnMobile("tatooine", "trainer_marksman",0,0,1.13306,-13,0,1028552)
 	spawnMobile("tatooine", "businessman",60,3.32,1.13306,-8.49,228.007,1028552)
@@ -59,13 +59,13 @@ function TatooineBestineScreenPlay:spawnMobiles()
 
 	--Tavern -1009 -3544
 	--{"noble",60,-3.6,0.4,-0.2,209,1028491, "npc_sitting_chair", ""},
-	--{"dim_u_priestess",60,-1.05454,0.408271,-5.70312,360.011,1028491, "conversation", ""}
+	--{"dim_u_priestess",300,-1.05454,0.408271,-5.70312,360.011,1028491, "conversation", ""}
 	--{"bothan_information_broker",60,-1.05454,0.408271,-4.40312,180.006,1028491, "conversation", ""},
 
 	--Hotel
 	--{"crix_yarrow",60,7.39833,1.00001,-7.63485,360.011,1223849, "calm", "Crix Yarrow"},
-	--{"darklighter_guard",60,-2.76865,0.999996,-0.495484,180.008,1223849, "conversation", ""},
-	--{"dim_u_cleric",60,-2.76865,0.999998,-1.49548,0,1223849, "conversation", ""},
+	--{"darklighter_guard",300,-2.76865,0.999996,-0.495484,180.008,1223849, "conversation", ""},
+	--{"dim_u_cleric",300,-2.76865,0.999998,-1.49548,0,1223849, "conversation", ""},
 	--{"freelance_pilot",60,1.36242,0.999987,4.17823,16.6163,1223849, "neutral", ""},
 	--{"r2",60,-15.8302,1.0008,1.57165,93.4669,1223851, "calm", "R2-U6"},
 	--{"commoner_tatooine",60,-14.8302,1.00067,0.571647,270.007,1223851, "conversation", ""},
@@ -79,7 +79,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 
 	--Guild Hall -1093 -3660
 	--{"businessman",60,0.697709,0.50772,-2.44977,360.011,1028169, "conversation", ""},
-	--{"rodian_clan_warchief",60,0.697709,0.50772,-1.14977,180.009,1028169, "conversation", ""},
+	--{"rodian_clan_warchief",300,0.697709,0.50772,-1.14977,180.009,1028169, "conversation", ""},
 	--{"lilas_dinhint",60,22.6945,0.198179,-0.151074,187.601,1028172, "neutral", "Lilas Dinhint (museum curator)"},
 
 	--Capitol
@@ -146,8 +146,8 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "commoner_tatooine",60,-1041.87,12,-3711.58,273.462,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1033.88,12,-3644.68,209.933,0)
 	spawnMobile("tatooine", "commoner_tatooine",60,-1010.28,12,-3728.59,85.9413,0)
-	spawnMobile("tatooine", "criminal",60,-1257.34,12,-3539.31,207.196,0)
-	spawnMobile("tatooine", "criminal",60,-983.47,10,-3538.5,142.826,0)
+	spawnMobile("tatooine", "criminal",300,-1257.34,12,-3539.31,207.196,0)
+	spawnMobile("tatooine", "criminal",300,-983.47,10,-3538.5,142.826,0)
 	--{"gerak_vurtimis",60,-1252.5,12,-3617.35,278.1,0, "calm", "Gerak Vurtimis"},
 	--{"gert_talnin",60,-1287.3,12,-3587.16,169.676,0, "neutral", ""},
 	--{"ihatha_hawit",60,-1291.36,12,-3634.94,301.333,0, "neutral", "Ihatha Hawit"},
@@ -184,9 +184,9 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "trainer_scout",0,-1295.83,12,-3563.27,51,0)
 	spawnMobile("tatooine", "trainer_squadleader",0,-1019,10,-3532,180,0)
 	spawnMobile("tatooine", "trainer_tailor",0,-1348,12,-3677,180,0)
-	spawnMobile("tatooine", "valarian_swooper_leader",60,-1158.7,12,-3661.7,270,0)
-	spawnMobile("tatooine", "valarian_swooper_leader",60,-1161,12,-3662,90,0)
-	spawnMobile("tatooine", "valarian_swooper_leader",60,-1161.6,12,-3647.1,-61,0)
+	spawnMobile("tatooine", "valarian_swooper_leader",300,-1158.7,12,-3661.7,270,0)
+	spawnMobile("tatooine", "valarian_swooper_leader",300,-1161,12,-3662,90,0)
+	spawnMobile("tatooine", "valarian_swooper_leader",300,-1161.6,12,-3647.1,-61,0)
 	--{"viconya_tili",60,-1001.04,10,-3550.02,271.672,0, "calm", "Vi`conya T`ili"},
 	--{"wlinc_tchrr",60,-1288.15,12,-3588.42,276.296,0, "neutral", ""},
 
@@ -241,36 +241,36 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--{"tk_471",400,-1048.04,12,-3699.53,275.497,0, "npc_imperial", "TK-471"},
 
 	--Creatures
-	spawnMobile("tatooine", "lesser_desert_womprat",120,-1062.1,23.7,-3451.8,-110,0)
-	spawnMobile("tatooine", "lesser_desert_womprat",120,-1068.2,23.2,-3452.5,98,0)
-	spawnMobile("tatooine", "lesser_desert_womprat",120,-1064.3,22.7,-3455.2,27,0)
-	spawnMobile("tatooine", "lesser_desert_womprat",120,-1057.7,23.8,-3452.7,-92,0)
+	spawnMobile("tatooine", "lesser_desert_womprat",300,-1062.1,23.7,-3451.8,-110,0)
+	spawnMobile("tatooine", "lesser_desert_womprat",300,-1068.2,23.2,-3452.5,98,0)
+	spawnMobile("tatooine", "lesser_desert_womprat",300,-1064.3,22.7,-3455.2,27,0)
+	spawnMobile("tatooine", "lesser_desert_womprat",300,-1057.7,23.8,-3452.7,-92,0)
 
-	spawnMobile("tatooine", "minor_worrt",120,-927.86,27.7005,-3784.58,229.599,0)
-	spawnMobile("tatooine", "minor_worrt",120,-922.653,26.6572,-3778.35,225.778,0)
-	spawnMobile("tatooine", "minor_worrt",120,-923.222,25.6505,-3774.92,187.309,0)
-	spawnMobile("tatooine", "minor_worrt",120,-910.093,26.277,-3783.93,117.558,0)
-	spawnMobile("tatooine", "minor_worrt",120,-913.601,27.1392,-3784.15,69.6335,0)
-	spawnMobile("tatooine", "minor_worrt",120,-912.848,25.8267,-3794.42,276.507,0)
-	spawnMobile("tatooine", "worrt",120,-930.225,29.785,-3796.81,106.152,0)
-	spawnMobile("tatooine", "worrt",120,-939.612,24.6046,-3781.1,308.507,0)
+	spawnMobile("tatooine", "minor_worrt",300,-927.86,27.7005,-3784.58,229.599,0)
+	spawnMobile("tatooine", "minor_worrt",300,-922.653,26.6572,-3778.35,225.778,0)
+	spawnMobile("tatooine", "minor_worrt",300,-923.222,25.6505,-3774.92,187.309,0)
+	spawnMobile("tatooine", "minor_worrt",300,-910.093,26.277,-3783.93,117.558,0)
+	spawnMobile("tatooine", "minor_worrt",300,-913.601,27.1392,-3784.15,69.6335,0)
+	spawnMobile("tatooine", "minor_worrt",300,-912.848,25.8267,-3794.42,276.507,0)
+	spawnMobile("tatooine", "worrt",300,-930.225,29.785,-3796.81,106.152,0)
+	spawnMobile("tatooine", "worrt",300,-939.612,24.6046,-3781.1,308.507,0)
 
-	spawnMobile("tatooine", "minor_worrt",120,-1150.79,22.8276,-3410.77,286.41,0)
-	spawnMobile("tatooine", "minor_worrt",120,-1148.52,28.0683,-3402.47,295.148,0)
-	spawnMobile("tatooine", "minor_worrt",120,-1158.11,29.9266,-3393.44,290.62,0)
-	spawnMobile("tatooine", "minor_worrt",120,-1152.38,31.805,-3390,28.2254,0)
-	spawnMobile("tatooine", "minor_worrt",120,-1144.7,30.4,-3395.4,-121,0)
-	spawnMobile("tatooine", "minor_worrt",120,-1158.7,26.2,-3403.5,68,0)
+	spawnMobile("tatooine", "minor_worrt",300,-1150.79,22.8276,-3410.77,286.41,0)
+	spawnMobile("tatooine", "minor_worrt",300,-1148.52,28.0683,-3402.47,295.148,0)
+	spawnMobile("tatooine", "minor_worrt",300,-1158.11,29.9266,-3393.44,290.62,0)
+	spawnMobile("tatooine", "minor_worrt",300,-1152.38,31.805,-3390,28.2254,0)
+	spawnMobile("tatooine", "minor_worrt",300,-1144.7,30.4,-3395.4,-121,0)
+	spawnMobile("tatooine", "minor_worrt",300,-1158.7,26.2,-3403.5,68,0)
 
-	spawnMobile("tatooine", "rill",120,-907.188,18.3242,-3573.35,360.011,0)
-	spawnMobile("tatooine", "rill",120,-901.808,18.7395,-3570.88,360.011,0)
-	spawnMobile("tatooine", "rill",120,-908.624,18.0014,-3571.89,0,0)
-	spawnMobile("tatooine", "rill",120,-903.859,19.9334,-3579.55,0,0)
-	spawnMobile("tatooine", "rockmite",120,-895.802,10.7364,-3546.49,145.129,0)
-	spawnMobile("tatooine", "rockmite",120,-904.8,14.6023,-3552.38,322.681,0)
+	spawnMobile("tatooine", "rill",300,-907.188,18.3242,-3573.35,360.011,0)
+	spawnMobile("tatooine", "rill",300,-901.808,18.7395,-3570.88,360.011,0)
+	spawnMobile("tatooine", "rill",300,-908.624,18.0014,-3571.89,0,0)
+	spawnMobile("tatooine", "rill",300,-903.859,19.9334,-3579.55,0,0)
+	spawnMobile("tatooine", "rockmite",300,-895.802,10.7364,-3546.49,145.129,0)
+	spawnMobile("tatooine", "rockmite",300,-904.8,14.6023,-3552.38,322.681,0)
 
-	spawnMobile("tatooine", "worrt",120,-1337.3,16.2,-3430.4,-152,0)
-	spawnMobile("tatooine", "worrt",120,-1340.4,16,-3431.5,-152,0)
-	spawnMobile("tatooine", "worrt",120,-1341.43,15.3175,-3434.23,284.1,0)
-	spawnMobile("tatooine", "worrt",120,-1337.28,15.0418,-3434.8,360.011,0)
+	spawnMobile("tatooine", "worrt",300,-1337.3,16.2,-3430.4,-152,0)
+	spawnMobile("tatooine", "worrt",300,-1340.4,16,-3431.5,-152,0)
+	spawnMobile("tatooine", "worrt",300,-1341.43,15.3175,-3434.23,284.1,0)
+	spawnMobile("tatooine", "worrt",300,-1337.28,15.0418,-3434.8,360.011,0)
 end

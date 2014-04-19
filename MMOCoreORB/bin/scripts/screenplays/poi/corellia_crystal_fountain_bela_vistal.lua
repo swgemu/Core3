@@ -21,7 +21,7 @@ function CrystalFountainBelaVistalScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "ging_darjeek", 60, -24.6629, -0.519991, 7.12104, 148.001, 3375365)
 	
 	--Guild Hall 6857 -5783
-	spawnMobile("corellia", "hunter", 90, -14.01, 1.13306, -8.53, 120.004, 2365770)
+	spawnMobile("corellia", "hunter", 300, -14.01, 1.13306, -8.53, 120.004, 2365770)
 	spawnMobile("corellia", "businessman", 60, 3.32, 1.13306, -8.49, 228.007, 2365769)
 	
 	--Outside
@@ -43,7 +43,7 @@ function CrystalFountainBelaVistalScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "commoner", 60, 6761.43, 315, -5695.98, 3.51103, 0)
 	spawnMobile("corellia", "commoner", 60, 6755.2, 314.926, -5625.98, 139.418, 0)
 	spawnMobile("corellia", "commoner", 60, 6740.98, 315, -5674.9, 168.837, 0)
-	spawnMobile("corellia", "criminal", 90, 6871.34, 315, -5753.42, 355.947, 0)
+	spawnMobile("corellia", "criminal", 300, 6871.34, 315, -5753.42, 355.947, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6847.6, 315, -5838.6, -1, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6852.5, 315, -5838.8, -24, 0) 
 	spawnMobile("corellia", "corsec_trooper", 360, 6855.7, 315, -5837.1, -34, 0)

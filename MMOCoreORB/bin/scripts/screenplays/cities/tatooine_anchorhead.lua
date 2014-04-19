@@ -38,14 +38,14 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "commoner_tatooine",60,114.69,52,-5404.19,89.678,0)
 	--{"commoner_technician",60,-108.399,65,-5298.05,0,0, "conversation", ""},
 	--{"aaph_koden",60,130.071,52,-5399.6,282.412,0, "", "Aaph Koden"},
-	--{"bounty_hunter",60,-162.748,65,-5312.84,0,0, "conversation", ""},
-	--{"scavenger",60,-108.399,65,-5297.05,180.005,0, "conversation", ""},
+	--{"bounty_hunter",300,-162.748,65,-5312.84,0,0, "conversation", ""},
+	--{"scavenger",300,-108.399,65,-5297.05,180.005,0, "conversation", ""},
 	--{"mercenary",60,-162.748,65,-5311.84,180.005,0, "conversation", ""},
 	--{"r3",60,-180.482,65,-5314.98,96.2472,0, "calm", "R3-C5"},
 	--{"r3",60,116.569,52,-5341.57,2.26464,0, "calm", "R3-O8"},
 	--{"r4",60,75.9409,52,-5355.36,178.447,0, "calm", "R4-I0"},
 	--{"junk_dealer",0,129.9,52,-5400.9,-87,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
-	spawnMobile("tatooine", "bantha",60,216.9,11.7,-5425.4,-121,0)
+	spawnMobile("tatooine", "bantha",300,216.9,11.7,-5425.4,-121,0)
 	spawnMobile("tatooine", "crackdown_rebel_command_security_guard",400,65.685,52,-5349.49,-4,0)
 	spawnMobile("tatooine", "crackdown_rebel_command_security_guard",400,49.2,52,-5351,350,0)
 	spawnMobile("tatooine", "crackdown_rebel_command_security_guard",400,125.5,52,-5416,279.008,0)
@@ -60,22 +60,22 @@ function TatooineAnchorheadScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "crackdown_rebel_guardsman",400,89.9,52,-5393.8,313.009,0)
 	spawnMobile("tatooine", "crackdown_rebel_guardsman",400,151,52,-5316,37.8685,0)
 	spawnMobile("tatooine", "crackdown_rebel_guardsman",400,159,52,-5320,331.012,0)
-	spawnMobile("tatooine", "cu_pa",60,75.5625,88.9439,-5217.41,276.531,0)
-	spawnMobile("tatooine", "cu_pa",60,81.1976,85.0672,-5200.6,174.759,0)
-	spawnMobile("tatooine", "cu_pa",60,14.564,23.6794,-5543.66,99.0125,0)
-	spawnMobile("tatooine", "cu_pa",60,26.8762,12.236,-5564.46,284.743,0)
-	spawnMobile("tatooine", "cu_pa",60,163.943,12.072,-5473.22,272.381,0)
-	spawnMobile("tatooine", "cu_pa",60,210.837,16.4247,-5464.01,32.0514,0)
-	spawnMobile("tatooine", "cu_pa",60,188.14,9.71503,-5485.52,63.2364,0)
-	spawnMobile("tatooine", "cu_pa",60,186.305,14.9233,-5467.36,145.471,0)
-	spawnMobile("tatooine", "cu_pa",60,166.736,4.42212,-5483.28,304.088,0)
+	spawnMobile("tatooine", "cu_pa",300,75.5625,88.9439,-5217.41,276.531,0)
+	spawnMobile("tatooine", "cu_pa",300,81.1976,85.0672,-5200.6,174.759,0)
+	spawnMobile("tatooine", "cu_pa",300,14.564,23.6794,-5543.66,99.0125,0)
+	spawnMobile("tatooine", "cu_pa",300,26.8762,12.236,-5564.46,284.743,0)
+	spawnMobile("tatooine", "cu_pa",300,163.943,12.072,-5473.22,272.381,0)
+	spawnMobile("tatooine", "cu_pa",300,210.837,16.4247,-5464.01,32.0514,0)
+	spawnMobile("tatooine", "cu_pa",300,188.14,9.71503,-5485.52,63.2364,0)
+	spawnMobile("tatooine", "cu_pa",300,186.305,14.9233,-5467.36,145.471,0)
+	spawnMobile("tatooine", "cu_pa",300,166.736,4.42212,-5483.28,304.088,0)
 	spawnMobile("tatooine", "rebel_recruiter",60,69.6872,52,-5349.47,360.011,0)
-	spawnMobile("tatooine", "scyk",120,3.34558,86.6525,-5245.25,82.0905,0)
-	spawnMobile("tatooine", "scyk",120,-26.4483,85.5717,-5227.67,257.612,0)
-	spawnMobile("tatooine", "scyk",120,-4.51558,88.9463,-5226.49,314.221,0)
-	spawnMobile("tatooine", "scyk",120,16.8025,87.749,-5249.62,280.51,0)
-	spawnMobile("tatooine", "zucca_boar",60,176.37,29.6614,-5228.44,23.7572,0)
-	spawnMobile("tatooine", "zucca_boar",60,177.37,29.3367,-5227.44,202.645,0)
-	spawnMobile("tatooine", "zucca_boar",60,171.993,33.695,-5229.99,181.173,0)
-	spawnMobile("tatooine", "zucca_boar",60,-35.6792,30,-5439.35,11.3066,0)
+	spawnMobile("tatooine", "scyk",300,3.34558,86.6525,-5245.25,82.0905,0)
+	spawnMobile("tatooine", "scyk",300,-26.4483,85.5717,-5227.67,257.612,0)
+	spawnMobile("tatooine", "scyk",300,-4.51558,88.9463,-5226.49,314.221,0)
+	spawnMobile("tatooine", "scyk",300,16.8025,87.749,-5249.62,280.51,0)
+	spawnMobile("tatooine", "zucca_boar",300,176.37,29.6614,-5228.44,23.7572,0)
+	spawnMobile("tatooine", "zucca_boar",300,177.37,29.3367,-5227.44,202.645,0)
+	spawnMobile("tatooine", "zucca_boar",300,171.993,33.695,-5229.99,181.173,0)
+	spawnMobile("tatooine", "zucca_boar",300,-35.6792,30,-5439.35,11.3066,0)
 end

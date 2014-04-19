@@ -15,7 +15,7 @@ end
 function DathomirScienceOutpostScreenPlay:spawnMobiles()
 
 	--In a building
-	spawnMobile("dathomir", "criminal", 60, -3.46893, 0.624996, -1.80359, 9.95605, 2835552)
+	spawnMobile("dathomir", "criminal", 300, -3.46893, 0.624996, -1.80359, 9.95605, 2835552)
 
 	--Outside
 	spawnMobile("dathomir", "businessman", 60, -70.8878, 18, -1646.08, 315.408, 0)

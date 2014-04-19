@@ -92,8 +92,8 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	--{"talon_karrde",60,-25.6775,-0.519991,8.77374,12.497,1082887, "neutral", ""},
 
 	--Tavern 3339 -4894
-	--{"dim_u_abbot",60,-3.56731,0.408271,-0.572452,135.005,1187893, "conversation", ""},
-	--{"hunter",60,-2.46731,0.408271,-0.572452,180.01,1187893, "conversation", ""},
+	--{"dim_u_abbot",300,-3.56731,0.408271,-0.572452,135.005,1187893, "conversation", ""},
+	--{"hunter",300,-2.46731,0.408271,-0.572452,180.01,1187893, "conversation", ""},
 	--{"rancher",60,-2.46731,0.408271,-1.67245,0,1187893, "conversation", ""},
 
 	--Guild Hall 3429 -4730
@@ -132,35 +132,35 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	--{"kavas_urdano",60,-13.7911,7.01,-3.96167,12.0127,1076943, "calm", "Kavas"},
 	spawnMobile("tatooine", "ind",60,-24.6235,9.01,-8.0138,133.595,1076944)
 	--{"lady_valarian",60,-23.836,9.01,0.605811,147.031,1076945, "calm", "Lady Valarian"},
-	spawnMobile("tatooine", "criminal",60,5.61884,7.01001,14.3502,118.356,1076949)
-	spawnMobile("tatooine", "criminal",60,6.01244,7.01,-14.2554,63.6677,1076948)
+	spawnMobile("tatooine", "criminal",300,5.61884,7.01001,14.3502,118.356,1076949)
+	spawnMobile("tatooine", "criminal",300,6.01244,7.01,-14.2554,63.6677,1076948)
 	spawnMobile("tatooine", "informant_npc_lvl_3",0,3.8,7,-12.5,84,1076948)
 	--Lower Floor
 	--{"gambler",60,30.8955,-0.255725,2.05785,180.009,1076968, "conversation", ""},
-	--{"rodian_gladiator",60,30.8955,-0.255725,0.957845,360.011,1076968, "conversation", ""},
+	--{"rodian_gladiator",300,30.8955,-0.255725,0.957845,360.011,1076968, "conversation", ""},
 	--{"miner",60,29.7955,-0.255725,2.05785,135.01,1076968, "conversation", ""},
-	--{"rodian_clan_medic",60,15.48,-0.255725,6.58106,0,1076966, "conversation", ""},
-	--{"dim_u_cleric",60,15.48,-0.255725,7.68106,180.005,1076966, "conversation", ""},
-	--{"rodian_clan_warchief",60,12.087,0.01,2.23598,360.011,1076961, "conversation", ""},
-	--{"bodyguard",60,12.087,0.01,3.33598,180.011,1076961, "conversation", ""},
+	--{"rodian_clan_medic",300,15.48,-0.255725,6.58106,0,1076966, "conversation", ""},
+	--{"dim_u_cleric",300,15.48,-0.255725,7.68106,180.005,1076966, "conversation", ""},
+	--{"rodian_clan_warchief",300,12.087,0.01,2.23598,360.011,1076961, "conversation", ""},
+	--{"bodyguard",300,12.087,0.01,3.33598,180.011,1076961, "conversation", ""},
 	--{"shamdon_kree",60,-3.61827,0.01,-8.8941,199.448,1076952, "neutral", ""},
 	--{"gambler",60,-4.67224,0.0100001,12.0395,0,1076956, "conversation", ""},
-	--{"dim_u_preacher",60,-4.67224,0.01,13.1395,179.996,1076956, "conversation", ""},
+	--{"dim_u_preacher",300,-4.67224,0.01,13.1395,179.996,1076956, "conversation", ""},
 	--{"bothan_information_broker",60,-19.4889,0.0100002,1.51058,180.015,1076958, "conversation", ""},
 	--{"businessman",60,-20.5889,0.0100002,1.51058,135.012,1076958, "conversation", ""},
 	--{"scientist",60,-19.4889,0.0100002,0.410576,360.011,1076958, "conversation", ""},
 
 	--Guild Hall/Theater
 	--{"bounty_hunter",60,5.07127,2.6,7.75958,180.005,1105851, "conversation", ""},
-	--{"comm_operator",60,-3.43834,2.6,11.8623,357,1105851, "conversation", ""},
-	--{"dim_u_monastery_nun",60,-3.43834,2.6,12.9623,180.01,1105851, "conversation", ""},
-	--{"moisture_farmer",60,3.97127,2.6,7.75958,135.005,1105851, "conversation", ""},
+	--{"comm_operator",300,-3.43834,2.6,11.8623,357,1105851, "conversation", ""},
+	--{"dim_u_monastery_nun",300,-3.43834,2.6,12.9623,180.01,1105851, "conversation", ""},
+	--{"moisture_farmer",300,3.97127,2.6,7.75958,135.005,1105851, "conversation", ""},
 	spawnMobile("tatooine", "noble",60,28.93,2.12878,58.19,222.007,1105852)
 	spawnMobile("tatooine", "noble",60,19.26,2.12847,56.13,266.008,1105853)
 	--{"brawler",60,17.0318,2.12878,75.3601,0,1105853, "conversation", ""},
 	--{"dede_chesmi",60,26.7839,2.12847,70.8524,180.013,1105853, "conversation", "Dede Chesmi"},
 	--{"mebi_axane",60,26.7839,2.12876,69.7524,360.011,1105853, "conversation", "Mebi Axane"},
-	--{"rodian_clan_medic",60,17.0318,2.12878,76.3601,179.996,1105853, "conversation", ""},
+	--{"rodian_clan_medic",300,17.0318,2.12878,76.3601,179.996,1105853, "conversation", ""},
 	spawnMobile("tatooine", "theater_manager",60,21.99,2.12804,64.05,4.00007,1105853)
 	spawnMobile("tatooine", "trainer_dancer",0,17.9873,2.12874,53.6448,1,1105853)
 
@@ -238,10 +238,10 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	--{"lt_harburik",60,3485.35,4.93096,-4740.37,234.883,0, "calm", "Lt. Harburik"},
 
 	--More Misc Outside
-	--{"criminal",60,3331.07,5,-4485.81,123.98,0, "worried", ""},
-	spawnMobile("tatooine", "criminal",90,3364.26,5,-4854.56,0.24067,0)
-	--{"criminal",60,3352.2,0,-4821.5,90,0, "npc_sitting_chair", ""},
-	spawnMobile("tatooine", "criminal",90,3401.83,5,-4868.72,295.372,0)
+	--{"criminal",300,3331.07,5,-4485.81,123.98,0, "worried", ""},
+	spawnMobile("tatooine", "criminal",300,3364.26,5,-4854.56,0.24067,0)
+	--{"criminal",300,3352.2,0,-4821.5,90,0, "npc_sitting_chair", ""},
+	spawnMobile("tatooine", "criminal",300,3401.83,5,-4868.72,295.372,0)
 	spawnMobile("tatooine", "eg6_power_droid",60,3650.68,5,-4734.71,276.881,0)
 	--{"errik_darksider",60,3380.6,0,-4498,160,0, "angry", "Errik Darksider"},
 	--{"explorer",60,3421,5,-4953.33,180.005,0, "conversation", ""},
@@ -262,30 +262,30 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "jawa",60,3654.1,5,-4784.9,150,0)
 	spawnMobile("tatooine", "jawa",60,3655.6,5,-4785,-116,0)
 	spawnMobile("tatooine", "jawa",60,3654.8,5,-4786.2,-25,0)
-	--{"jawa_engineer",60,3661.1,5,-4748.9,230,0, "npc_use_terminal_high", ""},
-	spawnMobile("tatooine", "jawa_henchman",60,3663,5,-4858.6,348,0)
-	spawnMobile("tatooine", "jawa_henchman",60,3658,5,-4748.7,135,0)
-	spawnMobile("tatooine", "jawa_smuggler",60,3469.3,4.13017,-4861.5,354.361,0)
-	spawnMobile("tatooine", "jawa_thief",60,3425.73,4.00067,-4907.72,217.107,0)
-	spawnMobile("tatooine", "jawa_thief",60,3655.3,5,-4801.2,118,0)
-	spawnMobile("tatooine", "jawa_thief",60,3658.7,5,-4801.1,-155,0)
-	--{"jawa_warlord",60,3450.7,0,-4526.2,20,0, "conversation", ""},
-	--{"jawa_warlord",60,3663.3,5,-4856,143,0, "scared", ""},
-	--{"jawa_warlord",60,3665,5,-4856.8,300,0, "worried", ""},
+	--{"jawa_engineer",300,3661.1,5,-4748.9,230,0, "npc_use_terminal_high", ""},
+	spawnMobile("tatooine", "jawa_henchman",300,3663,5,-4858.6,348,0)
+	spawnMobile("tatooine", "jawa_henchman",300,3658,5,-4748.7,135,0)
+	spawnMobile("tatooine", "jawa_smuggler",300,3469.3,4.13017,-4861.5,354.361,0)
+	spawnMobile("tatooine", "jawa_thief",300,3425.73,4.00067,-4907.72,217.107,0)
+	spawnMobile("tatooine", "jawa_thief",300,3655.3,5,-4801.2,118,0)
+	spawnMobile("tatooine", "jawa_thief",300,3658.7,5,-4801.1,-155,0)
+	--{"jawa_warlord",300,3450.7,0,-4526.2,20,0, "conversation", ""},
+	--{"jawa_warlord",300,3663.3,5,-4856,143,0, "scared", ""},
+	--{"jawa_warlord",300,3665,5,-4856.8,300,0, "worried", ""},
 	--{"junk_dealer",0,3699.2,5,-4822,92,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	--{"kahfr_oladi",60,3473.4,5,-4974.8,104,0, "npc_sitting_chair", ""},
 	--{"lorne_prestar",60,3376,5,-4786,123,0, "", "Lorne Prestar"},
-	--{"mos_eisley_police_officer",120,3385.18,4.68287,-4792.87,298.466,0, "calm", "Lt Ogo (a Planet record keeper)"},
-	--{"mos_eisley_police_officer",120,3243.7,5,-4533.1,137,0, "calm", ""},
-	--{"mos_eisley_police_officer",120,3407,0,-4505,255,0, "npc_accusing", ""},
-	--{"mos_eisley_police_officer",120,3405.2,0,-4505.5,75,0, "npc_angry", ""},
-	spawnMobile("tatooine", "mos_eisley_police_officer",120,3298.17,4.72998,-4655.93,335.574,0)
-	spawnMobile("tatooine", "mos_eisley_police_officer",120,3286.4,5,-4870.7,-1,0)
-	spawnMobile("tatooine", "mos_eisley_police_officer",120,3371.8,5,-4731.5,161,0)
-	spawnMobile("tatooine", "mos_eisley_police_officer",120,3318.3,5,-4613,229.675,0)
-	spawnMobile("tatooine", "mos_eisley_police_officer",120,3287.5,5,-4682.63,144.337,0)
-	spawnMobile("tatooine", "mos_eisley_police_officer",120,3426.18,5,-4963.54,310,0)
-	spawnMobile("tatooine", "mos_eisley_police_officer",120,3536.3,5,-4799.3,226,0)
+	--{"mos_eisley_police_officer",300,3385.18,4.68287,-4792.87,298.466,0, "calm", "Lt Ogo (a Planet record keeper)"},
+	--{"mos_eisley_police_officer",300,3243.7,5,-4533.1,137,0, "calm", ""},
+	--{"mos_eisley_police_officer",300,3407,0,-4505,255,0, "npc_accusing", ""},
+	--{"mos_eisley_police_officer",300,3405.2,0,-4505.5,75,0, "npc_angry", ""},
+	spawnMobile("tatooine", "mos_eisley_police_officer",300,3298.17,4.72998,-4655.93,335.574,0)
+	spawnMobile("tatooine", "mos_eisley_police_officer",300,3286.4,5,-4870.7,-1,0)
+	spawnMobile("tatooine", "mos_eisley_police_officer",300,3371.8,5,-4731.5,161,0)
+	spawnMobile("tatooine", "mos_eisley_police_officer",300,3318.3,5,-4613,229.675,0)
+	spawnMobile("tatooine", "mos_eisley_police_officer",300,3287.5,5,-4682.63,144.337,0)
+	spawnMobile("tatooine", "mos_eisley_police_officer",300,3426.18,5,-4963.54,310,0)
+	spawnMobile("tatooine", "mos_eisley_police_officer",300,3536.3,5,-4799.3,226,0)
 	--{"noble",60,3247.46,4.9251,-4842.99,45.064,0, "conversation", ""},
 	spawnMobile("tatooine", "noble",60,3542.38,5,-4826.12,295.121,0)
 	--{"noble",60,3410.4,0,-4632.8,330,0, "npc_use_terminal_high", ""},
@@ -293,67 +293,67 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	--{"r4",60,3466.08,4,-4883.93,56.7343,0, "calm", "R4-W5"},
 	--{"r5",60,3324.84,4.14982,-4819.95,222.5,0, "calm", "R5-D5"},
 	--{"r5",60,3460.21,4.00358,-4888.86,241.665,0, "calm", "R5-Q7"},
-	--{"rodian_clan_captain",60,3421,5,-4954.63,360.011,0, "conversation", ""},
-	--{"rodian_clan_warchief",60,3248.76,5,-4841.69,180.005,0, "conversation", ""},
-	--{"scavenger",60,3248.76,4.9251,-4842.99,3.29811,0, "conversation", ""},
-	--{"scavenger",60,3356.9,5,-4780,56,0, "npc_sitting_table", ""},
+	--{"rodian_clan_captain",300,3421,5,-4954.63,360.011,0, "conversation", ""},
+	--{"rodian_clan_warchief",300,3248.76,5,-4841.69,180.005,0, "conversation", ""},
+	--{"scavenger",300,3248.76,4.9251,-4842.99,3.29811,0, "conversation", ""},
+	--{"scavenger",300,3356.9,5,-4780,56,0, "npc_sitting_table", ""},
 	spawnMobile("tatooine", "scientist",60,3666.51,5,-4856.14,121.288,0)
 	spawnMobile("tatooine", "scientist",60,3348.69,5,-4513.14,182.356,0)
-	--{"settler",60,3420.74,5,-5007.61,2.42392,0, "conversation", ""},
-	--{"smuggler",60,3358.7,5,-4779.7,256,0, "npc_sitting_table", ""},
+	--{"settler",300,3420.74,5,-5007.61,2.42392,0, "conversation", ""},
+	--{"smuggler",300,3358.7,5,-4779.7,256,0, "npc_sitting_table", ""},
 	--{"vanvi_hotne",60,3312.29,5,-4655.46,228.889,0, "neutral", ""},
 
 	--Creatures
-	spawnMobile("tatooine", "minor_worrt",120,3863.8,5,-4809.5,170,0)
-	spawnMobile("tatooine", "minor_worrt",120,3857.8,5,-4814.4,127,0)
-	spawnMobile("tatooine", "minor_worrt",120,3856.5,5,-4826.1,45,0)
-	spawnMobile("tatooine", "minor_worrt",120,3864.6,5,-4826.3,-1,0)
-	spawnMobile("tatooine", "minor_worrt",120,3870.9,5,-4818.6,-74,0)
-	spawnMobile("tatooine", "minor_worrt",120,3867.6,5,-4811.8,-128,0)
+	spawnMobile("tatooine", "minor_worrt",300,3863.8,5,-4809.5,170,0)
+	spawnMobile("tatooine", "minor_worrt",300,3857.8,5,-4814.4,127,0)
+	spawnMobile("tatooine", "minor_worrt",300,3856.5,5,-4826.1,45,0)
+	spawnMobile("tatooine", "minor_worrt",300,3864.6,5,-4826.3,-1,0)
+	spawnMobile("tatooine", "minor_worrt",300,3870.9,5,-4818.6,-74,0)
+	spawnMobile("tatooine", "minor_worrt",300,3867.6,5,-4811.8,-128,0)
 
-	spawnMobile("tatooine", "rill",120,3851.3,5,-4725,-175,0)
-	spawnMobile("tatooine", "rill",120,3845.2,5,-4734.8,36,0)
-	spawnMobile("tatooine", "tempest_rill",120,3855,5,-4733,53,0)
+	spawnMobile("tatooine", "rill",300,3851.3,5,-4725,-175,0)
+	spawnMobile("tatooine", "rill",300,3845.2,5,-4734.8,36,0)
+	spawnMobile("tatooine", "tempest_rill",300,3855,5,-4733,53,0)
 
-	spawnMobile("tatooine", "rockmite",120,3957.1,5,-4739.8,67,0)
-	spawnMobile("tatooine", "rockmite",120,3964.5,5,-4744.8,11,0)
-	spawnMobile("tatooine", "rockmite",120,3970.4,5,-4739.3,-72,0)
-	spawnMobile("tatooine", "rockmite",120,3966.1,5,-4731.9,-135,0)
+	spawnMobile("tatooine", "rockmite",300,3957.1,5,-4739.8,67,0)
+	spawnMobile("tatooine", "rockmite",300,3964.5,5,-4744.8,11,0)
+	spawnMobile("tatooine", "rockmite",300,3970.4,5,-4739.3,-72,0)
+	spawnMobile("tatooine", "rockmite",300,3966.1,5,-4731.9,-135,0)
 
-	spawnMobile("tatooine", "rockmite",120,3979.2,5,-4824.1,-174,0)
-	spawnMobile("tatooine", "rockmite",120,3972.4,5,-4829,110,0)
-	spawnMobile("tatooine", "rockmite",120,3973.6,5,-4836.5,35,0)
-	spawnMobile("tatooine", "rockmite",120,3981.7,5,-4836.7,-23,0)
+	spawnMobile("tatooine", "rockmite",300,3979.2,5,-4824.1,-174,0)
+	spawnMobile("tatooine", "rockmite",300,3972.4,5,-4829,110,0)
+	spawnMobile("tatooine", "rockmite",300,3973.6,5,-4836.5,35,0)
+	spawnMobile("tatooine", "rockmite",300,3981.7,5,-4836.7,-23,0)
 
-	spawnMobile("tatooine", "rockmite",120,3597.7,11.6,-5046,156,0)
-	spawnMobile("tatooine", "rockmite",120,3593,11.6,-5050.2,93,0)
-	spawnMobile("tatooine", "rockmite",120,3597.7,13.2,-5055.8,14,0)
-	spawnMobile("tatooine", "rockmite",120,3602.2,11.3,-5049.7,-80,0)
+	spawnMobile("tatooine", "rockmite",300,3597.7,11.6,-5046,156,0)
+	spawnMobile("tatooine", "rockmite",300,3593,11.6,-5050.2,93,0)
+	spawnMobile("tatooine", "rockmite",300,3597.7,13.2,-5055.8,14,0)
+	spawnMobile("tatooine", "rockmite",300,3602.2,11.3,-5049.7,-80,0)
 
-	spawnMobile("tatooine", "rockmite",120,3859.5,5.5,-4919.3,25,0)
-	spawnMobile("tatooine", "rockmite",120,3865.8,5,-4919.4,-2,0)
-	spawnMobile("tatooine", "rockmite",120,3867.8,5,-4912,-110,0)
-	spawnMobile("tatooine", "rockmite",120,3860.9,5,-4909,130,0)
+	spawnMobile("tatooine", "rockmite",300,3859.5,5.5,-4919.3,25,0)
+	spawnMobile("tatooine", "rockmite",300,3865.8,5,-4919.4,-2,0)
+	spawnMobile("tatooine", "rockmite",300,3867.8,5,-4912,-110,0)
+	spawnMobile("tatooine", "rockmite",300,3860.9,5,-4909,130,0)
 
-	spawnMobile("tatooine", "rockmite",120,3765.2,5,-4651.9,-163,0)
-	spawnMobile("tatooine", "rockmite",120,3758.3,5,-4654.4,120,0)
-	spawnMobile("tatooine", "rockmite",120,3763.3,5,-4660.2,18,0)
-	spawnMobile("tatooine", "rockmite",120,3767.8,5,-4657.5,-80,0)
+	spawnMobile("tatooine", "rockmite",300,3765.2,5,-4651.9,-163,0)
+	spawnMobile("tatooine", "rockmite",300,3758.3,5,-4654.4,120,0)
+	spawnMobile("tatooine", "rockmite",300,3763.3,5,-4660.2,18,0)
+	spawnMobile("tatooine", "rockmite",300,3767.8,5,-4657.5,-80,0)
 
-	spawnMobile("tatooine", "rockmite",120,3767.7,5,-4913.8,-44,0)
-	spawnMobile("tatooine", "rockmite",120,3768.4,5,-4907,-107,0)
-	spawnMobile("tatooine", "rockmite",120,3760.2,5,-4905.1,148,0)
-	spawnMobile("tatooine", "rockmite",120,3760.4,5,-4912.9,54,0)
+	spawnMobile("tatooine", "rockmite",300,3767.7,5,-4913.8,-44,0)
+	spawnMobile("tatooine", "rockmite",300,3768.4,5,-4907,-107,0)
+	spawnMobile("tatooine", "rockmite",300,3760.2,5,-4905.1,148,0)
+	spawnMobile("tatooine", "rockmite",300,3760.4,5,-4912.9,54,0)
 
-	spawnMobile("tatooine", "worrt",120,3659.4,5,-4601.8,-179,0)
-	spawnMobile("tatooine", "worrt",120,3662.9,5,-4612.5,-26,0)
-	spawnMobile("tatooine", "worrt",120,3651.5,5,-4612,31,0)
-	spawnMobile("tatooine", "worrt",120,3652.1,5,-4602.8,123,0)
+	spawnMobile("tatooine", "worrt",300,3659.4,5,-4601.8,-179,0)
+	spawnMobile("tatooine", "worrt",300,3662.9,5,-4612.5,-26,0)
+	spawnMobile("tatooine", "worrt",300,3651.5,5,-4612,31,0)
+	spawnMobile("tatooine", "worrt",300,3652.1,5,-4602.8,123,0)
 
-	spawnMobile("tatooine", "worrt",120,3584.9,5,-4536.4,-19,0)
-	spawnMobile("tatooine", "worrt",120,3585.7,5,-4530.5,-81,0)
-	spawnMobile("tatooine", "worrt",120,3573.9,5,-4529.6,108,0)
-	spawnMobile("tatooine", "worrt",120,3580.5,5,-4544.8,34,0)
+	spawnMobile("tatooine", "worrt",300,3584.9,5,-4536.4,-19,0)
+	spawnMobile("tatooine", "worrt",300,3585.7,5,-4530.5,-81,0)
+	spawnMobile("tatooine", "worrt",300,3573.9,5,-4529.6,108,0)
+	spawnMobile("tatooine", "worrt",300,3580.5,5,-4544.8,34,0)
 
 	--Trainers Outside
 	spawnMobile("tatooine", "trainer_artisan",0,3503,5,-4809,42,0)

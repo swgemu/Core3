@@ -18,8 +18,8 @@ function NabooTheedScreenPlay:spawnMobiles()
 
 	--Outside
 	--{"agriculturalist",60,-5827.81,6,4173.98,180.005,0, "conversation", ""},
-	--{"bodyguard",60,-5258.93,6,4187.17,180.005,0, "conversation", ""},
-	spawnMobile("naboo", "bounty_hunter",60,-5082.41,6,4261.15,180.005,0)
+	--{"bodyguard",300,-5258.93,6,4187.17,180.005,0, "conversation", ""},
+	spawnMobile("naboo", "bounty_hunter",300,-5082.41,6,4261.15,180.005,0)
 	--{"coa2_imperial_coordinator",0,-5431.8,6,4168.58,145.531,0, "npc_imperial", ""},
 	spawnMobile("naboo", "commoner",60,-5394.06,6,4519.32,169.904,0)
 	spawnMobile("naboo", "commoner",60,-5384.95,6,4283.38,71.1905,0)
@@ -150,8 +150,8 @@ function NabooTheedScreenPlay:spawnMobiles()
 	--{"commoner",60,-5778.43,6,4397.54,180.005,0, "conversation", ""},
 	spawnMobile("naboo", "explorer",60,-5127.71,6,4336.34,0,0)
 	spawnMobile("naboo", "explorer",60,-4870.86,6,4179.63,0,0)
-	spawnMobile("naboo", "gungan_hunter",60,-5138.49,6,4229.36,180.005,0)
-	--{"gungan_outcast",60,-5827.81,6,4172.98,0,0, "conversation", ""},
+	spawnMobile("naboo", "gungan_hunter",300,-5138.49,6,4229.36,180.005,0)
+	--{"gungan_outcast",300,-5827.81,6,4172.98,0,0, "conversation", ""},
 	spawnMobile("naboo", "imperial_recruiter",0,-4928,6,4231,174,0)
 	spawnMobile("naboo", "imperial_recruiter",0,-4936,6,4231,174,0)
 	spawnMobile("naboo", "informant_npc_lvl_1",0,-4833,6,4134,0,0)
@@ -167,11 +167,11 @@ function NabooTheedScreenPlay:spawnMobiles()
 	--{"junk_dealer",0,-5885.3,6,4214.7,83,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	spawnMobile("naboo", "miner",60,-4965.4,6,4194.15,180.005,0)
 	--{"miner",60,-5886.59,6,4369.23,180.005,0, "conversation", ""},
-	spawnMobile("naboo", "naboo_police",60,-5138.49,6,4228.36,0,0)
-	spawnMobile("naboo", "naboo_police",60,-4911.53,6,4089.7,127.784,0)
-	--{"official",60,-5886.59,6,4368.23,0,0, "conversation", ""},
+	spawnMobile("naboo", "naboo_police",300,-5138.49,6,4228.36,0,0)
+	spawnMobile("naboo", "naboo_police",300,-4911.53,6,4089.7,127.784,0)
+	--{"official",300,-5886.59,6,4368.23,0,0, "conversation", ""},
 	spawnMobile("naboo", "patron",60,-5538,6,4365.1,103.215,0)
-	spawnMobile("naboo", "rsf_security_guard",60,-5032.08,6,4091.71,67.385,0)
+	spawnMobile("naboo", "rsf_security_guard",300,-5032.08,6,4091.71,67.385,0)
 	spawnMobile("naboo", "stormtrooper",400,-5206.32,6,4182.8,329.254,0)
 	spawnMobile("naboo", "stormtrooper",400,-4800,6,4113,121.097,0)
 	spawnMobile("naboo", "stormtrooper",400,-5126.48,6.52214,4130.79,184.164,0)
@@ -210,75 +210,75 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_unarmed",0,-5649,6,4206,0,0)
 
 	--Creatures
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -5195, 6, math.random(10) + 3988, math.random(360), 0)
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -5200, 6, math.random(10) + 3997, math.random(360), 0)
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -5207, 6, math.random(10) + 3992, math.random(360), 0)
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -5205, 6, math.random(10) + 3989, math.random(360), 0)
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -5201, 6, math.random(10) + 3981, math.random(360), 0)
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -5202, 6, math.random(10) + 3975, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -5195, 6, math.random(10) + 3988, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -5200, 6, math.random(10) + 3997, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -5207, 6, math.random(10) + 3992, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -5205, 6, math.random(10) + 3989, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -5201, 6, math.random(10) + 3981, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -5202, 6, math.random(10) + 3975, math.random(360), 0)
 
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5152.02, 6, math.random(10) + 3882.86, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5156.30, 6, math.random(10) + 3880.18, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5145.15, 6, math.random(10) + 3882.41, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5148.77, 6, math.random(10) + 3879.10, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5153.03, 6, math.random(10) + 3876.91, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5143.66, 6, math.random(10) + 3875.17, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5152.02, 6, math.random(10) + 3882.86, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5156.30, 6, math.random(10) + 3880.18, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5145.15, 6, math.random(10) + 3882.41, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5148.77, 6, math.random(10) + 3879.10, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5153.03, 6, math.random(10) + 3876.91, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5143.66, 6, math.random(10) + 3875.17, math.random(360), 0)
 
-	spawnMobile("naboo", "nuna", 60, math.random(10) + -5054.71, 6, math.random(10) + 3959.16, math.random(360), 0)
-	spawnMobile("naboo", "nuna", 60, math.random(10) + -5049.91, 6, math.random(10) + 3959.13, math.random(360), 0)
-	spawnMobile("naboo", "nuna", 60, math.random(10) + -5056.38, 6, math.random(10) + 3954.13, math.random(360), 0)
-	spawnMobile("naboo", "nuna", 60, math.random(10) + -5050.76, 6, math.random(10) + 3955.11, math.random(360), 0)
-	spawnMobile("naboo", "nuna", 60, math.random(10) + -5046.74, 6, math.random(10) + 3956.10, math.random(360), 0)
-	spawnMobile("naboo", "nuna", 60, math.random(10) + -5050.08, 6, math.random(10) + 3951.88, math.random(360), 0)
+	spawnMobile("naboo", "nuna", 300, math.random(10) + -5054.71, 6, math.random(10) + 3959.16, math.random(360), 0)
+	spawnMobile("naboo", "nuna", 300, math.random(10) + -5049.91, 6, math.random(10) + 3959.13, math.random(360), 0)
+	spawnMobile("naboo", "nuna", 300, math.random(10) + -5056.38, 6, math.random(10) + 3954.13, math.random(360), 0)
+	spawnMobile("naboo", "nuna", 300, math.random(10) + -5050.76, 6, math.random(10) + 3955.11, math.random(360), 0)
+	spawnMobile("naboo", "nuna", 300, math.random(10) + -5046.74, 6, math.random(10) + 3956.10, math.random(360), 0)
+	spawnMobile("naboo", "nuna", 300, math.random(10) + -5050.08, 6, math.random(10) + 3951.88, math.random(360), 0)
 
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -5068.63, 6, math.random(10) + 3874.93, math.random(360), 0)
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -5063.50, 6, math.random(10) + 3874.98, math.random(360), 0)
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -5059.21, 6, math.random(10) + 3873.08, math.random(360), 0)
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -5064.77, 6, math.random(10) + 3870.68, math.random(360), 0)
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -5069.20, 6, math.random(10) + 3867.40, math.random(360), 0)
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -5059.54, 6, math.random(10) + 3866.31, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -5068.63, 6, math.random(10) + 3874.93, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -5063.50, 6, math.random(10) + 3874.98, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -5059.21, 6, math.random(10) + 3873.08, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -5064.77, 6, math.random(10) + 3870.68, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -5069.20, 6, math.random(10) + 3867.40, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -5059.54, 6, math.random(10) + 3866.31, math.random(360), 0)
 
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -5062.01, 6, math.random(10) + 3771.87, math.random(360), 0)
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -5070.54, 6, math.random(10) + 3772.20, math.random(360), 0)
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -5067.63, 6, math.random(10) + 3777.25, math.random(360), 0)
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -5072.20, 6, math.random(10) + 3778.46, math.random(360), 0)
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -5065.83, 6, math.random(10) + 3781.39, math.random(360), 0)
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -5061.01, 6, math.random(10) + 3779.68, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -5062.01, 6, math.random(10) + 3771.87, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -5070.54, 6, math.random(10) + 3772.20, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -5067.63, 6, math.random(10) + 3777.25, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -5072.20, 6, math.random(10) + 3778.46, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -5065.83, 6, math.random(10) + 3781.39, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -5061.01, 6, math.random(10) + 3779.68, math.random(360), 0)
 
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -4952.30, 6, math.random(10) + 3863.72, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -4947.92, 6, math.random(10) + 3863.87, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -4944.95, 6, math.random(10) + 3866.25, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -4948.41, 6, math.random(10) + 3869.46, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -4946.46, 6, math.random(10) + 3873.06, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -4952.32, 6, math.random(10) + 3873.58, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -4952.30, 6, math.random(10) + 3863.72, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -4947.92, 6, math.random(10) + 3863.87, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -4944.95, 6, math.random(10) + 3866.25, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -4948.41, 6, math.random(10) + 3869.46, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -4946.46, 6, math.random(10) + 3873.06, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -4952.32, 6, math.random(10) + 3873.58, math.random(360), 0)
 
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -4969.69, 6, math.random(10) + 3767.96, math.random(360), 0)
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -4962.60, 6, math.random(10) + 3767.81, math.random(360), 0)
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -4960.24, 6, math.random(10) + 3772.21, math.random(360), 0)
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -4965.28, 6, math.random(10) + 3772.93, math.random(360), 0)
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -4970.08, 6, math.random(10) + 3776.47, math.random(360), 0)
-	spawnMobile("naboo", "hermit_spider", 60, math.random(10) + -4967.46, 6, math.random(10) + 3780.19, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -4969.69, 6, math.random(10) + 3767.96, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -4962.60, 6, math.random(10) + 3767.81, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -4960.24, 6, math.random(10) + 3772.21, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -4965.28, 6, math.random(10) + 3772.93, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -4970.08, 6, math.random(10) + 3776.47, math.random(360), 0)
+	spawnMobile("naboo", "hermit_spider", 300, math.random(10) + -4967.46, 6, math.random(10) + 3780.19, math.random(360), 0)
 
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -4862.57, 6, math.random(10) + 3768.61, math.random(360), 0)
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -4854.70, 6, math.random(10) + 3768.47, math.random(360), 0)
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -4858.64, 6, math.random(10) + 3773.44, math.random(360), 0)
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -4866.15, 6, math.random(10) + 3775.88, math.random(360), 0)
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -4860.42, 6, math.random(10) + 3778.87, math.random(360), 0)
-	spawnMobile("naboo", "flewt", 60, math.random(10) + -4856.47, 6, math.random(10) + 3776.79, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -4862.57, 6, math.random(10) + 3768.61, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -4854.70, 6, math.random(10) + 3768.47, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -4858.64, 6, math.random(10) + 3773.44, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -4866.15, 6, math.random(10) + 3775.88, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -4860.42, 6, math.random(10) + 3778.87, math.random(360), 0)
+	spawnMobile("naboo", "flewt", 300, math.random(10) + -4856.47, 6, math.random(10) + 3776.79, math.random(360), 0)
 
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5041, 6, math.random(10) + 3681, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5050, 6, math.random(10) + 3682, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5046, 6, math.random(10) + 3675, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5040, 6, math.random(10) + 3671, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5039, 6, math.random(10) + 3685, math.random(360), 0)
-	spawnMobile("naboo", "nightspider", 60, math.random(10) + -5047, 6, math.random(10) + 3686, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5041, 6, math.random(10) + 3681, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5050, 6, math.random(10) + 3682, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5046, 6, math.random(10) + 3675, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5040, 6, math.random(10) + 3671, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5039, 6, math.random(10) + 3685, math.random(360), 0)
+	spawnMobile("naboo", "nightspider", 300, math.random(10) + -5047, 6, math.random(10) + 3686, math.random(360), 0)
 
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -4946.98, 6, math.random(10) + 3644.18, math.random(360), 0)
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -4939.79, 6, math.random(10) + 3645.60, math.random(360), 0)
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -4942.72, 6, math.random(10) + 3647.44, math.random(360), 0)
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -4946.78, 6, math.random(10) + 3650.67, math.random(360), 0)
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -4943.30, 6, math.random(10) + 3652.44, math.random(360), 0)
-	spawnMobile("naboo", "mott_calf", 60, math.random(10) + -4939.35, 6, math.random(10) + 3653.82, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -4946.98, 6, math.random(10) + 3644.18, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -4939.79, 6, math.random(10) + 3645.60, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -4942.72, 6, math.random(10) + 3647.44, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -4946.78, 6, math.random(10) + 3650.67, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -4943.30, 6, math.random(10) + 3652.44, math.random(360), 0)
+	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -4939.35, 6, math.random(10) + 3653.82, math.random(360), 0)
 
 	--ID Tent
 	spawnMobile("naboo", "trainer_merchant",0,-4.4,0.6,-4.0,82,189545)
@@ -289,7 +289,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_doctor",0,16.0979,0.26,-0.105232,266,1697360)
 	spawnMobile("naboo", "trainer_medic",0,13.7645,0.26,4.7703,149,1697360)
 	spawnMobile("naboo", "trainer_medic",0,-17.1613,0.26,-0.82884,167,1697364)
-	spawnMobile("naboo", "comm_operator",60,-32.8,0.3,13.892,92,1697365)
+	spawnMobile("naboo", "comm_operator",300,-32.8,0.3,13.892,92,1697365)
 	spawnMobile("naboo", "commoner_technician",60,-5041.71,13.3,4193.94,180.005,0)
 	spawnMobile("naboo", "commoner",60,-5041.71,13.3,4192.84,0,0)
 
@@ -300,19 +300,19 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "commoner",60,-23.2681,1.6,11.3505,90.0019,1697379)
 	spawnMobile("naboo", "commoner_technician",60,-1.60874,0.999962,6.25947,360.011,1697377)
 	spawnMobile("naboo", "explorer",60,-23.0798,1.59166,3.00121,180.006,1697379)
-	spawnMobile("naboo", "gungan_hermit",60,-1.60874,0.999952,7.35947,180,1697377)
-	spawnMobile("naboo", "naboo_monk",60,18.9004,1.28309,-6.40631,0,1697378)
-	spawnMobile("naboo", "otolla_gungan",60,7.0973,1.00001,8.95992,0,1697377)
-	spawnMobile("naboo", "otolla_gungan",60,-24.1798,1.5815,3.00112,135.006,1697379)
+	spawnMobile("naboo", "gungan_hermit",300,-1.60874,0.999952,7.35947,180,1697377)
+	spawnMobile("naboo", "naboo_monk",300,18.9004,1.28309,-6.40631,0,1697378)
+	spawnMobile("naboo", "otolla_gungan",300,7.0973,1.00001,8.95992,0,1697377)
+	spawnMobile("naboo", "otolla_gungan",300,-24.1798,1.5815,3.00112,135.006,1697379)
 	--{"commoner",60,-24,1.6,-4,77.8869,1697383, "calm", "An Event Promoter"},
 	spawnMobile("naboo", "explorer",60,-21.5772,1.6,-14.1795,180.023,1697383)
 	spawnMobile("naboo", "explorer",60,-7.0383,1.6,-12.1532,360.011,1697381)
 	spawnMobile("naboo", "miner",60,-7.0383,1.6,-11.0532,179.988,1697381)
 
 	--Guild Hall -5450 4267
-	--{"rsf_security_guard",60,6.3,1.2,-3.9,-89,1305892, "conversation", ""},
-	--{"rsf_security_officer",60,5.4,1.2,-3.9,87,1305892, "conversation", ""},
-	--{"bodyguard",60,11.7898,1.75,-1.89849,180.002,1305892, "conversation", ""},
+	--{"rsf_security_guard",300,6.3,1.2,-3.9,-89,1305892, "conversation", ""},
+	--{"rsf_security_officer",300,5.4,1.2,-3.9,87,1305892, "conversation", ""},
+	--{"bodyguard",300,11.7898,1.75,-1.89849,180.002,1305892, "conversation", ""},
 	--{"commoner",60,-17.0001,2.25,17.4832,270.003,1305888, "conversation", ""},
 	--{"commoner",60,-19.0001,2.25,17.4832,90.0053,1305888, "conversation", ""},
 
@@ -336,29 +336,29 @@ function NabooTheedScreenPlay:spawnMobiles()
 	--{"businessman",60,-4.2087,0.999986,2.15452,179.993,1677394, "conversation", ""},
 	--{"gambler",60,4.2931,1,-7.62435,360.011,1677394, "conversation", ""},
 	--{"gambler",60,-11.7266,1.6,-16.4722,0,1677399, "conversation", ""},
-	--{"naboo_nomad",60,16.6641,1.28309,-3.47071,360.011,1677395, "conversation", ""},
-	--{"philosopher",60,-11.7266,1.6,-15.4722,180.001,1677399, "conversation", ""},
-	spawnMobile("naboo", "scout_trooper",60,16.6641,1.28309,-2.37071,180.007,1677395)
-	--{"scoundrel",60,-4.2087,0.999986,1.15452,0,1677394, "conversation", ""},
+	--{"naboo_nomad",300,16.6641,1.28309,-3.47071,360.011,1677395, "conversation", ""},
+	--{"philosopher",300,-11.7266,1.6,-15.4722,180.001,1677399, "conversation", ""},
+	spawnMobile("naboo", "scout_trooper",300,16.6641,1.28309,-2.37071,180.007,1677395)
+	--{"scoundrel",300,-4.2087,0.999986,1.15452,0,1677394, "conversation", ""},
 	--{"ysnide_omewror",60,4.2931,1.00001,-6.52435,180.012,1677394, "conversation", ""},
 	--{"event_perk_vendor",0,-24,1.6,-4,240.351,1677400, "calm", "Pex (a storyteller vendor)"},
-	--{"gungan_hermit",60,-22.6115,1.6,-10.3739,179.996,1677400, "conversation", ""},
-	--{"naboo_holy_man",60,-22.6115,1.6,-11.4739,0,1677400, "conversation", ""},
+	--{"gungan_hermit",300,-22.6115,1.6,-10.3739,179.996,1677400, "conversation", ""},
+	--{"naboo_holy_man",300,-22.6115,1.6,-11.4739,0,1677400, "conversation", ""},
 
 	--Guild Hall/Theater
 	--{"mercenary",60,-6.34119,0.6,-9.37965,360.011,5475480, "conversation", ""},
-	--{"rsf_palace_guard",60,-6.34119,0.6,-8.27965,180.012,5475480, "conversation", ""},
+	--{"rsf_palace_guard",300,-6.34119,0.6,-8.27965,180.012,5475480, "conversation", ""},
 	--{"brawler",60,19.6394,0.764492,42.4583,354.768,5475485, "conversation", ""},
 	--{"commoner_technician",60,-22.5486,1.61223,33.2294,354.768,5475485, "conversation", ""},
 	--{"entertainer",60,19.6394,0.664388,43.5491,180.018,5475485, "conversation", ""},
 	--{"etheli_drenel",60,12.4716,2.31216,25.6024,180.001,5475485, "conversation", ""},
-	--{"gungan_guard",60,12.4716,2.41226,24.5116,5.24304,5475485, "conversation", ""},
+	--{"gungan_guard",300,12.4716,2.41226,24.5116,5.24304,5475485, "conversation", ""},
 	--{"noble",60,-16.4118,1.02908,39.5837,179.999,5475485, "conversation", ""},
-	--{"rsf_palace_guard",60,18.5394,0.664266,43.5491,134.79,5475485, "conversation", ""},
-	--{"rsf_pilot",60,-16.4118,1.12919,38.4929,5.24439,5475485, "conversation", ""},
-	--{"rsf_pilot",60,-22.5486,1.52122,34.221,180.016,5475485, "conversation", ""},
+	--{"rsf_palace_guard",300,18.5394,0.664266,43.5491,134.79,5475485, "conversation", ""},
+	--{"rsf_pilot",300,-16.4118,1.12919,38.4929,5.24439,5475485, "conversation", ""},
+	--{"rsf_pilot",300,-22.5486,1.52122,34.221,180.016,5475485, "conversation", ""},
 	--{"explorer",60,3.05224,2.12878,72.5469,180.005,5475487, "conversation", ""},
-	--{"fringer",60,3.05224,2.12878,71.4469,0,5475487, "conversation", ""},
+	--{"fringer",300,3.05224,2.12878,71.4469,0,5475487, "conversation", ""},
 	--{"medic",60,-11.5446,2.12878,75.9709,0,5475487, "conversation", ""},
 	spawnMobile("naboo", "trainer_dancer",0,18.2374,2.12871,53.9343,6,5475487)
 	spawnMobile("naboo", "trainer_entertainer",0,28.3235,2.12854,73.5353,90,5475487)
@@ -368,7 +368,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 
 	--Starport
 	--{"trainer_shipwright",0,0.2,0.7,-71.4,-177,1692101, "", "a shipwright trainer"},
-	--{"bodyguard",60,-29.8622,7.9418,10.8957,180.008,1692104, "conversation", ""},
-	--{"bodyguard",60,-37.5788,7.9418,22.3791,0,1692104, "conversation", ""},
+	--{"bodyguard",300,-29.8622,7.9418,10.8957,180.008,1692104, "conversation", ""},
+	--{"bodyguard",300,-37.5788,7.9418,22.3791,0,1692104, "conversation", ""},
 
 end

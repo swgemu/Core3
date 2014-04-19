@@ -179,13 +179,13 @@ end
 function RoriImperialEncampmentScreenPlay:spawnMobiles()
 	--outside the walls
 
-	spawnMobile("rori", "thug", 21, -5574.1, 75.9, -5759.4, 120, 0)
-	spawnMobile("rori", "thug", 21, -5559.4, 75.9, -5761.8, 90, 0)
-	spawnMobile("rori", "thug", 21, -5557.3, 75.9, -5773.4, 0, 0)
-	spawnMobile("rori", "thug", 21, -5562.1, 75.9, -5772.7, -90, 0)
-	spawnMobile("rori", "thug", 21, -5569.1, 75.9, -5778.4, -30, 0)
-	spawnMobile("rori", "thug", 21, -5551.1, 75.9, -5782.5, 30, 0)
-	spawnMobile("rori", "thug", 21, -5559.1, 75.9, -5781.4, -75, 0)
-	spawnMobile("rori", "thug", 21, -5562.1, 75.9, -5784.3, 45, 0)
+	spawnMobile("rori", "thug", 300, -5574.1, 75.9, -5759.4, 120, 0)
+	spawnMobile("rori", "thug", 300, -5559.4, 75.9, -5761.8, 90, 0)
+	spawnMobile("rori", "thug", 300, -5557.3, 75.9, -5773.4, 0, 0)
+	spawnMobile("rori", "thug", 300, -5562.1, 75.9, -5772.7, -90, 0)
+	spawnMobile("rori", "thug", 300, -5569.1, 75.9, -5778.4, -30, 0)
+	spawnMobile("rori", "thug", 300, -5551.1, 75.9, -5782.5, 30, 0)
+	spawnMobile("rori", "thug", 300, -5559.1, 75.9, -5781.4, -75, 0)
+	spawnMobile("rori", "thug", 300, -5562.1, 75.9, -5784.3, 45, 0)
 		
 end
