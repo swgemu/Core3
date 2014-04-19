@@ -271,7 +271,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 		// Submit new power task
 		Reference<Task*> droidPowerTask = new DroidPowerTask( droid );
-		droid->addPendingTask("droid_power", droidPowerTask, 60000); // 60 secs
+		droid->addPendingTask("droid_power", droidPowerTask, 120000); // 2 min
 
 		if( droid->hasPower() ){
 			// TODO Temporarily set to autofollow player
@@ -371,7 +371,7 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 
 	Time currentTime;
 	uint32 timeDelta = currentTime.getTime() - lastGrowth.getTime();
-	int stagesToGrow = timeDelta / 3600; // 1 hour, for testing. TODO: Change to correct frequency (12h)
+	int stagesToGrow = timeDelta / 43200; // 12 hour
 
 	if (stagesToGrow == 0)
 		return true;

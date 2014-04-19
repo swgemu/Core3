@@ -127,5 +127,5 @@ function CrystalFountainBelaVistalScreenPlay:spawnMobiles()
 	--{"r2",60,6857.06,315,-5702.8,0,0, "calm", "R2-J9"},
 	--{"junk_malik",0,6756.1,315,-5778,88,0, "", "Malik Pendron",JUNKCORSEC,JUNKCONVMALIKVISTAL},
 	--{"junk_dealer",0,6970,330,-5588,92,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
-	--{"junk_dealer",0,6840,315,-5630,-32,0, "", "",JUNKCLOTHESANDJEWELLERY,JUNKCONVFINARY},
+	--{"junk_dealer",0,6840,315,-5630,-32,0, "", "",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR,JUNKCONVFINARY},
 end

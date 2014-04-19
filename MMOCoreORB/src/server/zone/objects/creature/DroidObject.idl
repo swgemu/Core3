@@ -73,7 +73,7 @@ class DroidObject extends AiAgent {
 	/**
 	 * Maximum paint charges
 	 */
-	public static final int PAINTCHARGES = 20;
+	public static final int PAINTCHARGES = 999;
 	
 	public DroidObject() {
 		Logger.setLoggingName("DroidObject");

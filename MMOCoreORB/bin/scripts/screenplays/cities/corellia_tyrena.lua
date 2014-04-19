@@ -311,7 +311,7 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "informant_npc_lvl_1", 0,-5097,21,-2344,270,0)
 	--{"j_pai_brek",60,-5073.17,21,-2342.77,33.2325,0, "neutral", ""},
 	--{"jom_irimore",60,-5520,21.3,-2630.99,0,0, "calm", "Jom Irimore"},
-	--{"junk_dealer",0,-5639.2,21,-2799.2,-40,0, "", "",JUNKCLOTHESANDJEWELLERY,JUNKCONVFINARY},
+	--{"junk_dealer",0,-5639.2,21,-2799.2,-40,0, "", "",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR,JUNKCONVFINARY},
 	--{"junk_dealer",0,-5203.6,21,-2285.9,-11,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	--{"larek_tatham",60,-5050.23,21,-2291.69,113.059,0, "neutral", ""},
 	--{"medic",60,-5095.02,21,-2514.56,0,0, "conversation", ""},
