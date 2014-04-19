@@ -43,6 +43,7 @@ namespace server {
  namespace zone {
   namespace managers {
    namespace director {
+   class PersistentEvent;
 
 	class DirectorManager : public Singleton<DirectorManager>, public Object, public Logger, public ReadWriteLock {
 		ThreadLocal<Lua*> localLua;
@@ -79,6 +80,8 @@ namespace server {
 		static int registerScreenPlay(lua_State* L);
 		static int includeFile(lua_State* L);
 		static int createEvent(lua_State* L);
+		static int createServerEvent(lua_State* L);
+		static int hasServerEvent(lua_State* L);
 		static int createObserver(lua_State* L);
 		static int spawnMobile(lua_State* L);
 		static int spawnMobileRandom(lua_State* L);
@@ -135,6 +138,7 @@ namespace server {
 		int loadScreenPlays(Lua* luaEngine);
 		void loadJediManager(Lua* luaEngine);
 		static Vector3 generateSpawnPoint(CreatureObject* creatureObject, float x, float y, float minimumDistance, float maximumDistance, float extraNoBuildRadius, float sphereCollision);
+		static PersistentEvent* getServerEvent(String eventName);
 	};
 
    }

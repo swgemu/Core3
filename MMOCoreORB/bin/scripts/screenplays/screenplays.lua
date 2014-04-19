@@ -218,3 +218,6 @@ includeFile("static_spawns/yavin4_static_spawns.lua")
 
 --Race Tracks
 includeFile("racetracks/racetracks.lua")
+
+-- Village
+includeFile("village/village.lua")
