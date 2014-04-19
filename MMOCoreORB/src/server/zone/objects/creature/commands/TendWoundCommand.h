@@ -56,7 +56,7 @@ public:
 		effectName = "clienteffect/healing_healwound.cef";
 
 		mindCost = 400;
-		mindWoundCost = 10;
+		mindWoundCost = 5;
 
 		woundPool = 1;
 		woundsHealed = 25;
