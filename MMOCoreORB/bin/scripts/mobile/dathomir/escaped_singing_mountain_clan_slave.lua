@@ -30,9 +30,10 @@ escaped_singing_mountain_clan_slave = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 6000000},
+				{group = "junk", chance = 4500000},
 				{group = "tailor_components", chance = 2500000},
-				{group = "loot_kit_parts", chance = 1500000}
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "wearables_common", chance = 1500000}
 			},
 			lootChance = 1500000
 		}
