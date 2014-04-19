@@ -250,6 +250,10 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 	}
 
 	String name = sender->getFirstName();
+	if( sender->getPlayerObject()->isPrivileged() ){
+		String tag = PermissionLevelList::instance()->getPermissionTag(sender->getPlayerObject()->getAdminLevel()).toString();
+		name = name + " [" + tag + "]";
+	}
 
 	ChatRoom* channel = getChatRoom(roomID);
 
@@ -739,7 +743,14 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 
 	uint32 sequence = message->getSequence();
 
-	ManagedReference<CreatureObject*> receiver = getPlayer(message->getName());
+	// Pull out first name
+	String fname = message->getName();
+	int spc = fname.indexOf(" ");
+	if (spc != -1) {
+		fname = fname.subString(0, spc);
+	}
+
+	ManagedReference<CreatureObject*> receiver = getPlayer(fname);
 
 	if (receiver == NULL || !receiver->isOnline()) {
 		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_OFFLINE);
@@ -764,7 +775,13 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 		return;
 	}
 
-	BaseMessage* msg = new ChatInstantMessageToClient("SWG", sender->getZoneServer()->getGalaxyName(), sender->getFirstName(), text);
+	String name = sender->getFirstName();
+	if( sender->getPlayerObject()->isPrivileged() ){
+		String tag = PermissionLevelList::instance()->getPermissionTag(sender->getPlayerObject()->getAdminLevel()).toString();
+		name = name + " [" + tag + "]";
+	}
+
+	BaseMessage* msg = new ChatInstantMessageToClient("SWG", sender->getZoneServer()->getGalaxyName(), name, text);
 	receiver->sendMessage(msg);
 
 	BaseMessage* amsg = new ChatOnSendInstantMessage(message->getSequence(), IM_SUCCESS);
@@ -833,6 +850,10 @@ void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const Un
 	}
 
 	String name = sender->getFirstName();
+	if( sender->getPlayerObject()->isPrivileged() ){
+		String tag = PermissionLevelList::instance()->getPermissionTag(sender->getPlayerObject()->getAdminLevel()).toString();
+		name = name + " [" + tag + "]";
+	}
 
 	ManagedReference<GroupObject*> group = sender->getGroup();
 	if (group == NULL) {
@@ -888,6 +909,10 @@ void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const Un
 	}
 
 	String name = sender->getFirstName();
+	if( sender->getPlayerObject()->isPrivileged() ){
+		String tag = PermissionLevelList::instance()->getPermissionTag(sender->getPlayerObject()->getAdminLevel()).toString();
+		name = name + " [" + tag + "]";
+	}
 
 	ManagedReference<GuildObject*> guild = sender->getGuildObject();
 	if (guild == NULL) {
@@ -929,6 +954,10 @@ void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const U
 	}
 
 	String name = sender->getFirstName();
+	if( sender->getPlayerObject()->isPrivileged() ){
+		String tag = PermissionLevelList::instance()->getPermissionTag(sender->getPlayerObject()->getAdminLevel()).toString();
+		name = name + " [" + tag + "]";
+	}
 
 	Zone* zone = sender->getZone();
 	if( zone == NULL ){
@@ -969,6 +998,10 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 	}
 
 	String name = sender->getFirstName();
+	if( sender->getPlayerObject()->isPrivileged() ){
+		String tag = PermissionLevelList::instance()->getPermissionTag(sender->getPlayerObject()->getAdminLevel()).toString();
+		name = name + " [" + tag + "]";
+	}
 
 	StringTokenizer args(message.toString());
 	if (!args.hasMoreTokens()) {
