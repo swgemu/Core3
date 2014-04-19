@@ -61,6 +61,7 @@ function ScreenPlay:spawnContainerLoot(pContainer)
 
 	--If it has loot already, then exit.
 	if (container:getContainerObjectsSize() > 0) then
+		writeData(container:getObjectID(), time + self.lootContainerRespawn)
 		return
 	end
 
