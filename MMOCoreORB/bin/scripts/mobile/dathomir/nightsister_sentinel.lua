@@ -32,13 +32,15 @@ nightsister_sentinel = Creature:new {
 			groups = {
 				{group = "crystals_quality", chance = 500000},
 				{group = "color_crystals", chance = 500000},
-				{group = "nightsister_common", chance = 2500000},
+				{group = "nightsister_common", chance = 2000000},
 				{group = "armor_attachments", chance = 250000},
 				{group = "clothing_attachments", chance = 250000},
-				{group = "melee_weapons", chance = 2700000},
-				{group = "rifles", chance = 1100000},
-				{group = "pistols", chance = 1100000},
-				{group = "carbines", chance = 1100000}
+				{group = "melee_weapons", chance = 2500000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "wearables_common", chance = 500000},
+				{group = "wearables_uncommon", chance = 500000}
 			},
 			lootChance = 2700000
 		}
