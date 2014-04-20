@@ -144,6 +144,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 
 	lua_register(luaEngine->getLuaState(), "includeFile", includeFile);
 	lua_register(luaEngine->getLuaState(), "createEvent", createEvent);
+	lua_register(luaEngine->getLuaState(), "createEventActualTime", createEventActualTime);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spawnMobileRandom", spawnMobileRandom);
@@ -830,7 +831,6 @@ int DirectorManager::createEvent(lua_State* L) {
 			pevent->setScreenplay(play);
 			pevent->setTimeStamp(mili);
 			pevent->setCurTime(currentTime);
-
 			ObjectManager::instance()->persistObject(pevent, 1, "events");
 
 			task->setPersistentEvent(pevent);
@@ -839,6 +839,30 @@ int DirectorManager::createEvent(lua_State* L) {
 
 	return 0;
 }
+
+int DirectorManager::createEventActualTime(lua_State* L) {
+	if (checkArgumentCount(L, 3) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::createEventActualTime");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+	SceneObject* obj = (SceneObject*) NULL;
+	String key = lua_tostring(L, -1);
+	String play = lua_tostring(L, -2);
+	uint32 timeInMinutes = lua_tonumber(L, -3);
+	ManagedReference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play);
+	Time actualTime = Time(timeInMinutes);
+	Time now;
+	uint64 days=now.getMiliTime()/(24*60*60000);
+	uint64 dModifier = now.getMiliTime() - (days * (24*60*60000));
+	uint64 interval =(24*60*60000);
+	if (actualTime.getMiliTime()<= dModifier){
+		interval =(24*60*60000) - (dModifier - actualTime.getMiliTime());
+	}
+	task->schedule(interval);
+	return 0;
+}
+
 
 int DirectorManager::getChatMessage(lua_State* L) {
 	if (checkArgumentCount(L, 1) == 1) {
@@ -1572,12 +1596,15 @@ int DirectorManager::createObserver(lua_State* L) {
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
-
+	//std::cout << "Starting\n";
 	SceneObject* sceneObject = (SceneObject*) lua_touserdata(L, -1);
+	//std::cout << "Got SceneObject\n";
 	String key = lua_tostring(L, -2);
+	//std::cout << "Got Key:" <<  key.toCharArray() << "\n";
 	String play = lua_tostring(L, -3);
+	//std::cout << "Got play:" << play.toCharArray() << "\n";
 	uint32 eventType = lua_tonumber(L, -4);
-
+	//std::cout << "play:" << play.toCharArray() << " Key:" <<  key.toCharArray() << " Event:" << eventType <<"\n";
 	ManagedReference<ScreenPlayObserver*> observer = dynamic_cast<ScreenPlayObserver*>(ObjectManager::instance()->createObject("ScreenPlayObserver", 0, ""));
 	observer->setScreenPlay(play);
 	observer->setScreenKey(key);

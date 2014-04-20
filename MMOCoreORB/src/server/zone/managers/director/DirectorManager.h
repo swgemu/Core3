@@ -79,6 +79,7 @@ namespace server {
 		static int registerScreenPlay(lua_State* L);
 		static int includeFile(lua_State* L);
 		static int createEvent(lua_State* L);
+		static int createEventActualTime(lua_State* L);
 		static int createObserver(lua_State* L);
 		static int spawnMobile(lua_State* L);
 		static int spawnMobileRandom(lua_State* L);
