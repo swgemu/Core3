@@ -30,7 +30,7 @@ bh_spiderclan_auspex = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4000000},
+				{group = "junk", chance = 3500000},
 				{group = "crystals_quality", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "melee_weapons", chance = 1000000},
@@ -39,6 +39,7 @@ bh_spiderclan_auspex = Creature:new {
 				{group = "pistols", chance = 1000000},
 				{group = "rifles", chance = 1000000},
 				{group = "carbines", chance = 1000000},
+				{group = "wearables_all", chance = 500000}
 			},
 			lootChance = 4800000
 		},

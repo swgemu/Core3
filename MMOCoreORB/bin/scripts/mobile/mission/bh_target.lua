@@ -30,11 +30,13 @@ informant_npc = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 6000000},
+				{group = "junk", chance = 5000000},
 				{group = "carbines", chance = 1000000},
 				{group = "rifles", chance = 1000000},
 				{group = "armor_attachments", chance = 1000000},
-				{group = "clothing_attachments", chance = 1000000}
+				{group = "clothing_attachments", chance = 1000000},
+				{group = "wearables_common", chance = 500000},
+				{group = "wearables_uncommon", chance = 500000}
 			},
 			lootChance = 3000000
 		}	
