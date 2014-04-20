@@ -14,6 +14,9 @@ mine_anti_vehicle = {
 		{"maxrangemod",0,0,0},
 		{"midrange",0,0,0},
 		{"midrangemod",0,0,0},
+		{"attackhealthcost",0,0,0},
+		{"attackactioncost",0,0,0},
+		{"attackmindcost",0,0,0},
 	},
 
 	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
