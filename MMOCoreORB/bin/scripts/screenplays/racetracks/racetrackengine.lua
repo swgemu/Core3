@@ -2,21 +2,23 @@ local ObjectManager = require("managers.object.object_manager")
 
 RaceTrack =ScreenPlay:new {}
 
-function RaceTrack:createRaceTrack(callBackClassName)
+function RaceTrack:createRaceTrack()
 	for lc = 1, table.getn(self.trackConfig.waypoints) , 1 do
 		local pWaypointAA = spawnSceneObject(self.trackConfig.planetName, "object/active_area.iff", self.trackConfig.waypoints[lc].x, 0, self.trackConfig.waypoints[lc].y, 0, 0, 0, 0, 0)
 		if (pWaypointAA ~= nil) then
 			local activeArea = LuaActiveArea(pWaypointAA)
 			activeArea:setRadius(self.trackConfig.waypointRadius)
-			createObserver(ENTEREDAREA, callBackClassName, "enteredWaypoint" , pWaypointAA)
+			createObserver(ENTEREDAREA, self.trackConfig.className, "enteredWaypoint" , pWaypointAA)
 			--printf(" : x=" .. waypoint.x .. " y=" .. waypoint.y .. " Planet :"..planetName.." Radius :"..radius .. "\n")
 		end
 	end
+  self:createResetBestTimeEvent()
 end
 
 function RaceTrack:startRacing(pObject)
   ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject, playerObject)
-  		clearScreenPlayData(pObject,self.trackConfig.trackName )
+  	clearScreenPlayData(pObject,self.trackConfig.trackName )
+    self:createResetPlayerUnfinishedEvent(pObject)
 		local waypointID = playerObject:addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. "0",self.trackConfig.trackCheckpoint .. "0",self.trackConfig.waypoints[1].x,self.trackConfig.waypoints[1].y,WAYPOINTWHITE,true,true)
 		--local time = os.time()
 		local time = getTimestampMilli()
@@ -78,6 +80,7 @@ end
 function RaceTrack:getLaptime(pObject)
 	local startTime = readScreenPlayData(pObject, self.trackConfig.trackName, "starttime")
 	local seconds = getTimestampMilli() - tonumber(startTime)
+	writeScreenPlayData(pObject, self.trackConfig.trackName, "laptime",seconds)
 	return seconds
 end
 
@@ -99,23 +102,46 @@ function RaceTrack:checkPersonalTime(pObject)
 end
 function RaceTrack:checkServerRecordTime(pObject)
 	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject,playerObject)
-		local recordTime = readSharedMemory(self.trackConfig.trackName ..".recordtime")
-		if recordTime == 0 then
-			recordTime = 9999999999
-		end
-		local seconds = self:getLaptime(pObject)
-		if recordTime > seconds then
-			creatureObject:sendSystemMessage("@theme_park/racing/racing:beat_the_record")
-			writeSharedMemory(self.trackConfig.trackName ..".recordtime",seconds)
-			local playername = creatureObject:getFirstName()
-			if playername ~= nil then
-				writeStringSharedMemory(self.trackConfig.trackName ..".recordholder",playername)
-			end
-			if playerObject:hasBadge(self.trackConfig.badgeToAward) == false then
-				playerObject:awardBadge(self.trackConfig.badgeToAward)
-			end
-		end
+	  local resPos =0
+	  local seconds = self:getLaptime(pObject)
+    for lc = 1, 5 , 1 do
+  		local recordTime = readSharedMemory(self.trackConfig.trackName ..".recordtime."..lc)
+  		if recordTime == 0 then
+  			recordTime = 9999999999
+  		end	
+  		if seconds < recordTime then
+  		  resPos=lc
+  		  break
+  		end
+  	end
+  	if self.trackConfig.debugMode==1 then
+  	   printf("Position :"..resPos)
+  	end
+  	if resPos>0 then			
+      self:adjustResultPositions(resPos,creatureObject:getFirstName(),seconds)
+      if resPos==1 and playerObject:hasBadge(self.trackConfig.badgeToAward) == false then
+          creatureObject:sendSystemMessage("@theme_park/racing/racing:beat_the_record")
+          playerObject:awardBadge(self.trackConfig.badgeToAward)
+      else
+          if resPos==1 then
+              creatureObject:sendSystemMessage("@theme_park/racing/racing:beat_the_record")
+          else
+              creatureObject:sendSystemMessage("Congratulations! You have beaten position ".. resPos .. " for this track! Record saved")
+          end
+      end
+    end
 	end)
+end
+function RaceTrack:adjustResultPositions(resPos,playerName,seconds)
+  for lc = 5,resPos,-1 do
+    writeSharedMemory(self.trackConfig.trackName ..".recordtime."..lc,readSharedMemory(self.trackConfig.trackName ..".recordtime."..(lc-1)))
+    writeStringSharedMemory(self.trackConfig.trackName ..".recordholder."..lc,readStringSharedMemory(self.trackConfig.trackName ..".recordholder."..(lc-1)))
+  end
+  if playerName == nil then
+    playerName="[name error]"
+  end
+  writeStringSharedMemory(self.trackConfig.trackName ..".recordholder."..resPos,playerName)
+  writeSharedMemory(self.trackConfig.trackName ..".recordtime."..resPos,seconds)
 end
 function RaceTrack:getWaypointIndex(pActiveArea)
 	return ObjectManager.withSceneObject(pActiveArea, function(sceneObject)
@@ -145,14 +171,56 @@ end
 
 function RaceTrack:displayTrackBestTime(pObject,trackConfig)
 	ObjectManager.withCreatureObject(pObject, function(creatureObject)
-		local recordTime = tonumber(readSharedMemory(self.trackConfig.trackName ..".recordtime"))
-		creatureObject:sendSystemMessage("@theme_park/racing/racing:current_record_holder")
-		if recordTime == 0 then
-			creatureObject:sendSystemMessage("No Time Set!")
-		else
-			creatureObject:sendSystemMessage(readStringSharedMemory(self.trackConfig.trackName ..".recordholder") .. " with a time of " .. self:roundNumber(recordTime/1000) .. "s")
+    local numericPositions = {"1st","2nd","3rd","4th","5th"}
+		creatureObject:sendSystemMessage("Record Holders")
+		local results =""
+		for lc = 1, 5 , 1 do
+  		local recordTime = tonumber(readSharedMemory(self.trackConfig.trackName ..".recordtime."..lc))
+  		if recordTime == 0 then
+  			results=results .. numericPositions[lc].." : No Time Set!\n"
+  		else
+  			results=results .. numericPositions[lc].." : " .. self:roundNumber(recordTime/1000) .. "s by " .. readStringSharedMemory(self.trackConfig.trackName ..".recordholder."..lc) .."\n"
+  		end
 		end
+		creatureObject:sendSystemMessage(results)
 	end)
+end
+
+function RaceTrack:createResetBestTimeEvent()
+    createEventActualTime(self.trackConfig.resetTime, self.trackConfig.className, "resetBestTimeEventHandler")
+    if self.trackConfig.debugMode==1 then
+      printf("Created CallBack Event for :" .. self.trackConfig.trackName .. "\n")
+    end
+end
+
+function RaceTrack:resetBestTimeEventHandler()
+    if self.trackConfig.debugMode==1 then
+      printf("Doing resetBestTimeEventHandler Event for :" .. self.trackConfig.trackName .. "\n")
+    end
+    for lc = 1, 5 , 1 do
+      deleteSharedMemory(self.trackConfig.trackName ..".recordtime."..lc)
+      deleteSharedMemory(self.trackConfig.trackName ..".recordholder."..lc)
+    end
+    createEvent(24*60*60*1000, self.trackConfig.className, "resetBestTimeEventHandler",nil)
+end
+
+function RaceTrack:createResetPlayerUnfinishedEvent(pObject)
+    createEvent(self.trackConfig.expiryTime, self.trackConfig.className, "resetPlayerUnfinishedEventHandler",pObject)
+    if self.trackConfig.debugMode==1 then
+      printf("Created Reset Player CallBack Event for :" .. self.trackConfig.trackName .. " in \n")
+    end
+end
+function RaceTrack:resetPlayerUnfinishedEventHandler(pObject)
+    local startTime = tonumber(readScreenPlayData(pObject, self.trackConfig.trackName , "starttime"))
+    if not(startTime == nil) then 
+      local time = getTimestampMilli()
+      if  math.abs((time/1000) - (startTime/1000)) > self.trackConfig.expiryTime then
+        clearScreenPlayData(pObject,self.trackConfig.trackName )
+        if self.trackConfig.debugMode==1 then
+          printf("Reset Player for :" .. self.trackConfig.trackName .. "\n")
+        end
+      end 
+    end
 end
 
 return RaceTrack

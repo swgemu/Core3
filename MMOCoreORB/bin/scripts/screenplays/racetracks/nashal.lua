@@ -4,11 +4,16 @@ RaceTrack = require("screenplays.racetracks.racetrackengine")
 
 nashal_racetrack_screenplay = RaceTrack:new {
 	trackConfig={
+    debugMode=1, -- 0 = off, 1 = print debug messages
 		planetName = "talus", -- The planet the Track is on
 		badgeToAward=BDG_RACING_NASHAL_RIVER,  -- Badge to be awarded for best daily time
 		trackName="NASHALRT",  -- Internal trackname , should be unique to the track
+		className="nashal_racetrack_screenplay", -- Class name of this class
 		trackCheckpoint="@theme_park/racing/racing:nashal_waypoint_name_checkpoint", --Waypoint names
 		trackLaptime="@theme_park/racing/racing:nashal_laptime_checkpoint", -- System message sent at each waypoint
+		timeResolution=2, -- number of decimal places to use for the laptimes 0 = none, 1 = well 1 etc
+		expiryTime = (1*3600), --Amount of time in seconds that a player will be expired from the track (stops silly times over this limit)
+    resetTime = (22*3600)+(10*60), --Time of day in seconds that track resets High Scores
 		waypointRadius=10, -- size of the waypoint observer
 		raceCoordinator = {x=4199,y=5286,z=2}, -- Location of the race coordinator. Note the Z coord is VERY important or conversations break
 		waypoints = { {x = 3787, y = 4764}, -- The coords of the waypoints
@@ -40,7 +45,7 @@ registerScreenPlay("nashal_racetrack_screenplay", true)
 function nashal_racetrack_screenplay:start()
 	if (isZoneEnabled(self.trackConfig.planetName)) then
 		self:spawnMobiles()
-		self:createRaceTrack("nashal_racetrack_screenplay")
+		self:createRaceTrack()
 	end
 end
 
