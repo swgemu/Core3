@@ -30,13 +30,14 @@ imprisoned_jabba_employee = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 7400000},
+				{group = "junk", chance = 6400000},
 				{group = "color_crystals", chance = 600000},
 				{group = "crystals_good", chance = 400000},
 				{group = "melee_polearm", chance = 600000},
 				{group = "pistols", chance = 600000},
 				{group = "clothing_attachments", chance = 200000},
-				{group = "armor_attachments", chance = 200000}
+				{group = "armor_attachments", chance = 200000},
+				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2500000
 		}

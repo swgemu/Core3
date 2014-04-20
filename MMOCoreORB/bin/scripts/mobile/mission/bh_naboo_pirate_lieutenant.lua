@@ -37,9 +37,10 @@ bh_naboo_pirate_lieutenant = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 6000000},
+				{group = "junk", chance = 5000000},
 				{group = "tailor_components", chance = 2000000},
-				{group = "loot_kit_parts", chance = 2000000}
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 3200000
 		}
