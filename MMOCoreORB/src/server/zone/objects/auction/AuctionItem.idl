@@ -57,6 +57,7 @@ class AuctionItem extends ManagedObject {
 	
 	protected unsigned long auctionedItemObjectID;
 	protected int itemType;
+	protected int size;
 
 	protected unsigned long ownerID;
 	protected string ownerName;
@@ -97,6 +98,7 @@ class AuctionItem extends ManagedObject {
 	public AuctionItem(unsigned long objectid) {
 		auctionedItemObjectID = objectid;
 		itemType = 0;
+		size = 1;
 		
 		ownerID = 0;
 		offerToID = 0;
@@ -318,4 +320,12 @@ class AuctionItem extends ManagedObject {
 		return true;
 	}
 
+	public void setSize(int s) {
+		size = s;
+	}
+
+	@read
+	public int getSize() {
+		return size;
+	}
 }

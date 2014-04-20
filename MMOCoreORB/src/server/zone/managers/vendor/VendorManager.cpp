@@ -143,7 +143,7 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 					continue;
 
 				if (item->getStatus() == AuctionItem::FORSALE)
-					itemsForSaleCount++;
+					itemsForSaleCount += item->getSize();
 			}
 		}
 	}

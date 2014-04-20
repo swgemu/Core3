@@ -801,6 +801,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native int getContainedObjectsRecursive();
 	
 	public abstract native int getCountableObjectsRecursive();
+
+	public abstract native int getSizeOnVendorRecursive();
 	
 	/**
 	 * Returns a Facade session

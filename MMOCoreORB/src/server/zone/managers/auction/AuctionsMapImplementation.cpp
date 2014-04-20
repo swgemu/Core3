@@ -182,7 +182,15 @@ int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
 	if(vendorItems == NULL)
 		return 0;
 
-	return vendorItems->size();
+	int size = 0;
+
+	for (int i = 0; i < vendorItems->size(); ++i) {
+		AuctionItem* item = vendorItems->get(i);
+
+		size += item->getSize();
+	}
+
+	return size;
 }
 
 void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {

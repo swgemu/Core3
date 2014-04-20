@@ -1637,6 +1637,23 @@ int SceneObjectImplementation::getContainedObjectsRecursive() {
 	return count;
 }
 
+int SceneObjectImplementation::getSizeOnVendorRecursive() {
+	int count = 0;
+
+	Locker locker(&containerLock);
+
+	if (containerObjects.size() == 0)
+		++count;
+
+	for (int i = 0; i < containerObjects.size(); ++i) {
+		ManagedReference<SceneObject*> obj = containerObjects.get(i);
+
+		count += obj->getSizeOnVendorRecursive();
+	}
+
+	return count;
+}
+
 bool SceneObjectImplementation::isDecoration(){
 	return (templateObject != NULL &&
 			(templateObject->getFullTemplateString().contains("object/tangible/furniture/city") ||
