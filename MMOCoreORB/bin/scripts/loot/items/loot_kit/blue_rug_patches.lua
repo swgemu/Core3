@@ -8,7 +8,10 @@ blue_rug_patches = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = JUNKGENERIC,
+	junkMinValue = 100,
+	junkMaxValue = 100
 }
 
 addLootItemTemplate("blue_rug_patches", blue_rug_patches)

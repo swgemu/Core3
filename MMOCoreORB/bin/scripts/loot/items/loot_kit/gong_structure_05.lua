@@ -8,7 +8,10 @@ gong_structure_05 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = JUNKGENERIC,
+	junkMinValue = 100,
+	junkMaxValue = 100
 }
 
 addLootItemTemplate("gong_structure_05", gong_structure_05)
