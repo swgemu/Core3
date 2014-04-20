@@ -35,10 +35,11 @@ spiderclan_sentry = Creature:new {
 				{group = "color_crystals", chance = 500000},
 				{group = "armor_attachments", chance = 350000},
 				{group = "clothing_attachments", chance = 350000},
-				{group = "melee_weapons", chance = 3200000},
-				{group = "pistols", chance = 1200000},
-				{group = "rifles", chance = 1200000},
-				{group = "carbines", chance = 1200000},
+				{group = "melee_weapons", chance = 2800000},
+				{group = "pistols", chance = 1000000},
+				{group = "rifles", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 1500000
 		}			

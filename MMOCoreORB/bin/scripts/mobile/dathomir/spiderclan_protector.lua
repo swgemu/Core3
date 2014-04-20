@@ -35,10 +35,11 @@ spiderclan_protector = Creature:new {
 				{group = "color_crystals", chance = 500000},
 				{group = "armor_attachments", chance = 450000},
 				{group = "clothing_attachments", chance = 450000},
-				{group = "melee_weapons", chance = 3300000},
-				{group = "pistols", chance = 1100000},
-				{group = "rifles", chance = 1100000},
-				{group = "carbines", chance = 1100000},
+				{group = "melee_weapons", chance = 3100000},
+				{group = "pistols", chance = 1000000},
+				{group = "rifles", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "wearables_all", chance = 500000}
 			},
 			lootChance = 3600000
 		}			
