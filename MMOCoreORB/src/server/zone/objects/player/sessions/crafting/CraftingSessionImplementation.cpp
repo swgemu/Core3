@@ -626,15 +626,6 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 
 	if (state == 2) {
 
-		// Flag to get the experimenting window
-		if (craftingStation != NULL && (manufactureSchematic->getCraftingValues()->getVisibleExperimentalPropertyTitleSize() > 0 || manufactureSchematic->allowFactoryRun()))
-			// Assemble with Experimenting
-			state = 3;
-
-		else
-			// Assemble without Experimenting
-			state = 4;
-
 		initialAssembly(clientCounter);
 
 	} else if (state == 3) {
@@ -681,16 +672,6 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	String custskill = draftSchematic->getCustomizationSkill();
 	int custpoints = int(crafter->getSkillMod(custskill));
 
-	// Start DPLAY9 ***********************************************************
-	// Updates the stage of crafting, sets the number of experimentation points
-	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(crafter->getPlayerObject());
-	dplay9->setCraftingState(state); // 3 If Experimenting is active, 4 if already experimented/ No experimenting
-	dplay9->setExperimentationPoints(experimentationPointsTotal);
-	dplay9->close();
-
-	crafter->sendMessage(dplay9);
-	// End DPLAY9 *************************************************************
-
 	// Determine the outcome of the craft, Amazing through Critical
 	assemblyResult = craftingManager.get()->calculateAssemblySuccess(crafter,
 			draftSchematic, craftingTool->getEffectiveness());
@@ -704,6 +685,25 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	Reference<CraftingValues*> craftingValues = manufactureSchematic->getCraftingValues();
 	craftingValues->setManufactureSchematic(manufactureSchematic);
 	craftingValues->setPlayer(crafter);
+
+	// Flag to get the experimenting window
+	if (craftingStation != NULL && (craftingValues->getVisibleExperimentalPropertyTitleSize() > 0 || manufactureSchematic->allowFactoryRun()))
+		// Assemble with Experimenting
+		state = 3;
+
+	else
+		// Assemble without Experimenting
+		state = 4;
+
+	// Start DPLAY9 ***********************************************************
+	// Updates the stage of crafting, sets the number of experimentation points
+	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(crafter->getPlayerObject());
+	dplay9->setCraftingState(state); // 3 If Experimenting is active, 4 if already experimented/ No experimenting
+	dplay9->setExperimentationPoints(experimentationPointsTotal);
+	dplay9->close();
+
+	crafter->sendMessage(dplay9);
+	// End DPLAY9 *************************************************************
 
 	// Set Crafter name and generate serial number
 	String name = crafter->getFirstName();
