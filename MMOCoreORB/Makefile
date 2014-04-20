@@ -53,7 +53,7 @@ all: #build
 	#cp build/unix/src/core3 bin
 
 build: idl gtest
-	cd build/unix && make -j4 UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)" #CC=clang CXX=clang++
+	cd build/unix && make -j8 UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)" #CC=clang CXX=clang++
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	#cd bin/conf && svnversion > rev.txt

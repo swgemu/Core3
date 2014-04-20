@@ -90,7 +90,7 @@ ZonesEnabled = {
 	--"11",
 	--"character_farm",
 	--"cinco_city_test_m5",
-	--"corellia",
+	"corellia",
 	--"creature_test",
 	--"dantooine",
 	--"dathomir",
@@ -124,7 +124,7 @@ ZonesEnabled = {
 	--"space_yavin4",
 	--"taanab",
 	--"talus",
-	"tatooine",
+	--"tatooine",
 	--"test_wearables",
 	"tutorial",
 	--"umbra",
@@ -134,7 +134,7 @@ ZonesEnabled = {
 
 
 -- directory of tres with live.cfg
-TrePath = "/home/swgemu/Desktop/SWGEmu"
+TrePath = "/home/swgemu/workspace/tre"
 
 TreFiles = {
 	"default_patch.tre",
