@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_a5e81f7d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-04-20T23:26:53Z",
+      "side": 1,
+      "message": "I know you just moved this method from TotalHealSelfCommand, but you should rewrite it to support multiple use cases.\n\nRather than the long chain of else ifs, I would evaluate and add each attribute individually.\n\nif (healthWound \u003e 0)\n   msgBody \u003c\u003c healthWound \u003c\u003c \" health\";\n\nif (strengthWound \u003e 0)\n   msgBody \u003c\u003c strengthWound \u003c\u003c \" strength\";\n\netc.\n\nIn this way, each attribute that you are healing is added to the message and any that you don\u0027t won\u0027t be.",
+      "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_05e2539f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-04-20T23:26:53Z",
+      "side": 1,
+      "message": "Will this method only be called from self heal commands? Or will you also use it for heal other commands? If the latter, please change it to support both.",
+      "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_25e54fa8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-04-20T23:26:53Z",
+      "side": 1,
+      "message": "Your comments don\u0027t match the values. Which is correct?",
+      "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_85ed238e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TotalHealSelfCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-04-20T23:26:53Z",
+      "side": 1,
+      "message": "Since the force cost isn\u0027t a flat value for this skill and you haven\u0027t calculated or assigned it yet, this call isn\u0027t doing any good.\n\nYou need to devise a way to calculate the cost before actually healing/curing. That way you can evaluate if the player has enough force or not.",
+      "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
