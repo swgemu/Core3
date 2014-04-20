@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_656d9732",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "use lowerCamelCase for variables.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_25778f04",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "Remove trailing white spaces.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_456a9b1b",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "Please move the event handler to this file instead of the screenplay file.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_057493fb",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "skip p prefix, nextPhase isn\u0027t a pointer.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_c5656b46",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "Use modulo operator istead. currentPhase \u003d currentPhase + 1 % VILLAGE_TOTAL_NUMBER_OF_PHASES",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_a55a5f81",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "Use the new helper function, foreach instead.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_45517b61",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "use ObjectManager.withSceneObject instead. It will take care of any nil pointers as well.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_855f6372",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "foreach",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_254e6fc2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "use ObjectManager.withSceneObject instead.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_65547754",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "foreach",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_054b73b1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "use ObjectManager.withSceneObject instead.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_c5cc4b38",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "foreach",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_e5c74711",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-20T22:44:50Z",
+      "side": 1,
+      "message": "use ObjectManager.withSceneObject instead.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
