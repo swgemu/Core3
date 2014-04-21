@@ -220,6 +220,23 @@
       "revId": "3d08707092865385c0a230ebc9cda755810a060c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_85a40358",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-04-21T00:39:13Z",
+      "side": 1,
+      "message": "I am unsure if the task is actually executed with a NULL object while the server is still running.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
