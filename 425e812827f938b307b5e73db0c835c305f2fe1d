@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_25fc2f3e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-04-21T00:35:59Z",
+      "side": 1,
+      "message": "Okay I will rework this.",
+      "parentUuid": "3a3291f1_a5e81f7d",
+      "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_05e2539f",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-04-20T23:26:53Z",
       "side": 1,
       "message": "Will this method only be called from self heal commands? Or will you also use it for heal other commands? If the latter, please change it to support both.",
+      "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_05f9334d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-04-21T00:35:59Z",
+      "side": 1,
+      "message": "It will probably be supporting both, I will change it.",
+      "parentUuid": "3a3291f1_05e2539f",
       "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_e59507e5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-04-21T00:35:59Z",
+      "side": 1,
+      "message": "It\u0027s a multiplier for the defaultTime which is set in the command stuffs, rather than a static value... So that should be correct.",
+      "parentUuid": "3a3291f1_25e54fa8",
+      "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_85ed238e",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TotalHealSelfCommand.h",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2014-04-20T23:26:53Z",
       "side": 1,
       "message": "Since the force cost isn\u0027t a flat value for this skill and you haven\u0027t calculated or assigned it yet, this call isn\u0027t doing any good.\n\nYou need to devise a way to calculate the cost before actually healing/curing. That way you can evaluate if the player has enough force or not.",
+      "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_c59a0b14",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TotalHealSelfCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-04-21T00:35:59Z",
+      "side": 1,
+      "message": "It is a flat value, it is assigned in the LUA script file pertaining to the command (I forgot to include that in my review patch set.)",
+      "parentUuid": "3a3291f1_85ed238e",
       "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
