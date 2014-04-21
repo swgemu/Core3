@@ -495,15 +495,13 @@ float WeaponObjectImplementation::getAttackSpeed(bool withPup) {
 	if(sliced)
 		speed *= speedSlice;
 
-	if(powerupObject != NULL && withPup) {
+	if(powerupObject != NULL && withPup)
 		speed -= (abs(speed) * powerupObject->getPowerupStat("attackSpeed"));
-		return speed + getConditionReduction(speed);
-	}
 
 	float calcSpeed = speed + getConditionReduction(speed);
 
-	if(calcSpeed < 1)
-		calcSpeed = 1;
+	if(calcSpeed < 0.1)
+		calcSpeed = 0.1;
 
 	return calcSpeed;
 }
