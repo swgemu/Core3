@@ -139,6 +139,24 @@
       "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_45861bbb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TotalHealSelfCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-04-21T01:17:58Z",
+      "side": 1,
+      "message": "Down below you are calculating a forceCostDeducted and deducting that amount from the player. If the cost is supposed to be a flat value then that calculation is unnecessary and should be removed..",
+      "parentUuid": "3a3291f1_c59a0b14",
+      "revId": "425e812827f938b307b5e73db0c835c305f2fe1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
