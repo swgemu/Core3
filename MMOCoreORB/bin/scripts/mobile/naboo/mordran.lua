@@ -32,10 +32,11 @@ mordran = Creature:new {
 				{group = "junk", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000},
-				{group = "composite_armor", chance = 2000000},
-				{group = "melee_two_handed", chance = 2000000},
+				{group = "composite_armor", chance = 1500000},
+				{group = "melee_two_handed", chance = 1500000},
 				{group = "clothing_attachments", chance = 500000},
 				{group = "armor_attachments", chance = 500000},
+				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 4500000
 		}
