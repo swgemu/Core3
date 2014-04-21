@@ -138,4 +138,8 @@ class FactoryCrate extends TangibleObject {
 	public abstract native int getCountableObjectsRecursive() {
 		return 0;
 	}
+
+	public abstract native int getSizeOnVendorRecursive() {
+		return 1;
+	}
 }
