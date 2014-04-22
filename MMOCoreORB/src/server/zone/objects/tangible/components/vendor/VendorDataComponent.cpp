@@ -145,20 +145,25 @@ void VendorDataComponent::runVendorUpdate() {
 			mail1Sent = true;
 		}
 
-		if(!mail2Sent && time(0) - emptyTimer.getTime() > SECONDWARNING) {
+		else if(!mail2Sent && time(0) - emptyTimer.getTime() > SECONDWARNING) {
 			StringIdChatParameter body("@auction:vendor_status_endangered");
 			body.setTO(parent.get()->getDisplayedName());
 			cman->sendMail(sender, subject, body, owner->getFirstName());
 			mail2Sent = true;
 		}
 
-		if(time(0) - emptyTimer.getTime() > EMPTYDELETE) {
+		else if(time(0) - emptyTimer.getTime() > EMPTYDELETE) {
 			StringIdChatParameter body("@auction:vendor_status_deleted");
 			cman->sendMail(sender, subject, body, owner->getFirstName());
 			VendorManager::instance()->destroyVendor(parent.get());
 			vendorCheckTask->cancel();
 			return;
 		}
+
+	} else {
+		mail1Sent = false;
+		mail2Sent = false;
+		emptyTimer.updateToCurrentTime();
 	}
 
 	if(isOnStrike()) {
