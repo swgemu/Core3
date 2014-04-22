@@ -4,6 +4,7 @@ require("managers.jedi.village.old_man_conv_handler")
 local Glowing = require("managers.jedi.village.glowing")
 local Logger = require("utils.logger")
 local SithShadowEncounter = require("managers.jedi.village.sith_shadow_encounter")
+require("managers.jedi.village.village_jedi_manager_township")
 
 jediManagerName = "VillageJediManager"
 

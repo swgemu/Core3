@@ -57,12 +57,12 @@ class PersistentEvent extends ManagedObject {
 	protected string key;
 	protected string play;
 	protected SceneObject obj;
+
+	protected string eventName;
 	
 	protected boolean eventExecuted;
 	
 	public PersistentEvent() {
-		play = "";
-		
 		eventExecuted = false;
 	}
 	
@@ -84,6 +84,14 @@ class PersistentEvent extends ManagedObject {
 
 	public int getCurTime() {
 		return curTime;
+	}
+
+	public final string getEventName() {
+		return eventName;
+	}
+	
+	public void setEventName(final string en) {
+		eventName = en;
 	}
 
 	public void setCurTime(int time) {
