@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_880e5a33",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 418
+      },
+      "writtenOn": "2014-04-22T23:57:57Z",
+      "side": 1,
+      "message": "Should add the isPrivileged check here as well",
+      "revId": "76de6320d62c2dfb0685a982b1fa42838a648d81",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
