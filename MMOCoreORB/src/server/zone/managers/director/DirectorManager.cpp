@@ -145,6 +145,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "includeFile", includeFile);
 	lua_register(luaEngine->getLuaState(), "createEvent", createEvent);
 	lua_register(luaEngine->getLuaState(), "createEventActualTime", createEventActualTime);
+	lua_register(luaEngine->getLuaState(), "createServerEvent", createServerEvent);
+	lua_register(luaEngine->getLuaState(), "hasServerEvent", hasServerEvent);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spawnMobileRandom", spawnMobileRandom);
@@ -831,9 +833,10 @@ int DirectorManager::createEvent(lua_State* L) {
 			pevent->setScreenplay(play);
 			pevent->setTimeStamp(mili);
 			pevent->setCurTime(currentTime);
+
 			ObjectManager::instance()->persistObject(pevent, 1, "events");
 
-			task->setPersistentEvent(pevent);
+			task->setPersistentEvent(pevent.get());
 		}
 	}
 
@@ -846,6 +849,7 @@ int DirectorManager::createEventActualTime(lua_State* L) {
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
+
 	SceneObject* obj = (SceneObject*) NULL;
 	String key = lua_tostring(L, -1);
 	String play = lua_tostring(L, -2);
@@ -863,6 +867,93 @@ int DirectorManager::createEventActualTime(lua_State* L) {
 	return 0;
 }
 
+int DirectorManager::createServerEvent(lua_State* L) {
+	if (checkArgumentCount(L, 4) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::createServerEvent");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String eventName = lua_tostring(L, -1);
+	String key = lua_tostring(L, -2);
+	String play = lua_tostring(L, -3);
+	uint32 mili = lua_tonumber(L, -4);
+
+
+	PersistentEvent* pEvent = getServerEvent(eventName);
+
+	if (pEvent != NULL) {
+		instance()->error("The server event already exists, exiting...");
+		ERROR_CODE = GENERAL_ERROR;
+		return 0;
+	}
+
+	Time expireTime;
+	uint64 currentTime = expireTime.getMiliTime();
+
+	Reference<ScreenPlayTask*> task = new ScreenPlayTask(NULL, key, play);
+	task->schedule(mili);
+
+	ManagedReference<PersistentEvent*> pevent = new PersistentEvent();
+	pevent->setTimeStamp(mili);
+	pevent->setCurTime(currentTime);
+	pevent->setEventName(eventName);
+	pevent->setKey(key);
+	pevent->setScreenplay(play);
+
+	ObjectManager::instance()->persistObject(pevent, 1, "events");
+
+	return 0;
+}
+
+int DirectorManager::hasServerEvent(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getServerEvent");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String eventName = lua_tostring(L, -1);
+
+	PersistentEvent* pEvent = getServerEvent(eventName);
+
+	if (pEvent != NULL)
+		lua_pushboolean(L, true);
+	else
+		lua_pushboolean(L, false);
+
+	return 1;
+}
+
+PersistentEvent* DirectorManager::getServerEvent(String eventName) {
+
+	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+	ObjectDatabase* eventDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("events", true);
+
+	if (eventDatabase == NULL) {
+		instance()->error("Could not load the event database.");
+		ERROR_CODE = GENERAL_ERROR;
+		return 0;
+	}
+
+	try {
+		ObjectDatabaseIterator iterator(eventDatabase);
+
+		uint64 objectID;
+
+		while (iterator.getNextKey(objectID)) {
+			Reference<PersistentEvent*> pEventCheck = Core::getObjectBroker()->lookUp(objectID).castTo<PersistentEvent*>();
+			if (eventName == pEventCheck->getEventName()){
+				return pEventCheck;
+			}
+		}
+	} catch (DatabaseException& e) {
+		instance()->error("Error in checking event database in DirectorManager::getServerEvent");
+		ERROR_CODE = GENERAL_ERROR;
+	}
+
+	return NULL;
+}
 
 int DirectorManager::getChatMessage(lua_State* L) {
 	if (checkArgumentCount(L, 1) == 1) {
