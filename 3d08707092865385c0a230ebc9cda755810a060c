@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_c54fab91",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-22T01:40:09Z",
+      "side": 1,
+      "message": "VillageJediManagerCommon",
+      "parentUuid": "3a3291f1_059013eb",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_057493fb",
         "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_common.lua",
         "patchSetId": 6
@@ -134,6 +152,24 @@
       "side": 1,
       "message": "What would be the correct syntax to use foreach, right now I have:\n\n\tforeach(VillagerMobiles, function(value)\n\t\t\tspawnMobile(\"dathomir\", value[1], value[2], value[3], value[4], value[5], value[6], value[7])\n\t\tend)\n\nI get no errors, but also no spawns.",
       "parentUuid": "3a3291f1_a55a5f81",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_a5449f74",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-22T01:40:09Z",
+      "side": 1,
+      "message": "That is correct syntax. Can you print the value you get in the anonymous function?",
+      "parentUuid": "3a3291f1_e5bce76e",
       "revId": "3d08707092865385c0a230ebc9cda755810a060c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -270,6 +306,24 @@
       "writtenOn": "2014-04-21T00:39:13Z",
       "side": 1,
       "message": "I am unsure if the task is actually executed with a NULL object while the server is still running.",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_8549a38d",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-22T01:40:09Z",
+      "side": 1,
+      "message": "I got no idea, we need to verify this.",
+      "parentUuid": "3a3291f1_85a40358",
       "revId": "3d08707092865385c0a230ebc9cda755810a060c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
