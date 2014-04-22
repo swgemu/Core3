@@ -194,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "3a3291f1_85408357",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-22T09:36:45Z",
+      "side": 1,
+      "message": "You have to rearrange the code so that you do not have any circular dependencies. There is no other way around that problem",
+      "parentUuid": "3a3291f1_455bbb54",
+      "revId": "3d08707092865385c0a230ebc9cda755810a060c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_45517b61",
         "filename": "MMOCoreORB/bin/scripts/screenplays/village/village.lua",
         "patchSetId": 6
