@@ -11,6 +11,7 @@
 #include "AuctionTerminalMap.h"
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
@@ -167,6 +168,23 @@ TerminalListVector AuctionsMapImplementation::getBazaarTerminalData(const String
 	Locker locker(_this.get());
 	
 	return bazaarItemsForSale.getTerminalData(planet, region, vendor);
+}
+int AuctionsMapImplementation::getPlayerItemCount(CreatureObject* player) {
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return 0;
+
+	SortedVector<unsigned long long>* ownedVendors = ghost->getOwnedVendors();
+	int total = 0;
+
+	for (int i = 0; i < ownedVendors->size(); i++) {
+		ManagedReference<SceneObject*> vendor = player->getZoneServer()->getObject(ownedVendors->elementAt(i));
+
+		total += getVendorItemCount(vendor);
+	}
+
+	return total;
 }
 
 int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {

@@ -393,7 +393,7 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 			vendorData = cast<VendorDataComponent*>(data->get());
 
 		if (player->getObjectID() == vendorData->getOwnerId()) {
-			if ((auctionMap->getVendorItemCount(vendor) + object->getSizeOnVendorRecursive()) > player->getSkillMod("vendor_item_limit"))
+			if ((auctionMap->getPlayerItemCount(player) + object->getSizeOnVendorRecursive()) > player->getSkillMod("vendor_item_limit"))
 				return ItemSoldMessage::TOOMANYITEMS;
 		} else {
 			if (auctionMap->getCommodityCount(player) >= MAXSALES)

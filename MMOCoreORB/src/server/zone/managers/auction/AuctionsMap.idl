@@ -111,6 +111,8 @@ class AuctionsMap extends ManagedObject {
 	
 	private native void sendVendorUpdateMail(SceneObject vendor, boolean isEmpty);
 
+	public native int getPlayerItemCount(CreatureObject player);
+
 	public native int getVendorItemCount(SceneObject vendor);
 	
 	public native void deleteTerminalItems(SceneObject vendor);

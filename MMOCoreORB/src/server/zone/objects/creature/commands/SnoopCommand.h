@@ -47,6 +47,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/managers/auction/AuctionManager.h"
+#include "server/zone/managers/auction/AuctionsMap.h"
 
 class SnoopCommand : public QueueCommand {
 public:
@@ -153,13 +155,20 @@ public:
 	int sendVendorInfo(CreatureObject* creature, CreatureObject* target) {
 		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
 
-		if (targetGhost == NULL || ghost == NULL)
+		if (targetGhost == NULL || ghost == NULL || auctionManager == NULL)
+			return GENERALERROR;
+
+		ManagedReference<AuctionsMap*> auctionsMap = auctionManager->getAuctionMap();
+		if(auctionsMap == NULL)
 			return GENERALERROR;
 
 		StringBuffer body;
 		body << "Player Name:\t" << target->getFirstName() << endl;
-		body << "Max # of vendors:\t" << target->getSkillMod("manage_vendor") << endl << endl;
+		body << "Max # of vendors:\t" << target->getSkillMod("manage_vendor") << endl;
+		body << "Max # of items:\t" << target->getSkillMod("vendor_item_limit") << endl;
+		body << "Total # of items:\t" << auctionsMap->getPlayerItemCount(target) << endl << endl;
 		body << "Vendors:" << endl;
 
 		SortedVector<unsigned long long>* ownedVendors = targetGhost->getOwnedVendors();
@@ -193,7 +202,7 @@ public:
 				init = true;
 
 			body << "    Initialized?\t" << (init ? "Yes" : "No");
-			body << endl;
+			body << endl << "    # of items:\t" << auctionsMap->getVendorItemCount(vendor) << endl;
 
 			body << "    ParentID:\t";
 
