@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_88253aad",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-23T21:12:30Z",
+      "side": 1,
+      "message": "name this argument mobile instead.",
+      "revId": "47bcf36d8587e05fffa70c022fafb1deead57f09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_683a0ecf",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-23T21:12:30Z",
+      "side": 1,
+      "message": "mobile",
+      "revId": "47bcf36d8587e05fffa70c022fafb1deead57f09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_483752e4",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-23T21:12:30Z",
+      "side": 1,
+      "message": "mobile",
+      "revId": "47bcf36d8587e05fffa70c022fafb1deead57f09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_08314aec",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-23T21:12:30Z",
+      "side": 1,
+      "message": "villageMobile",
+      "revId": "47bcf36d8587e05fffa70c022fafb1deead57f09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_c8522213",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-23T21:12:30Z",
+      "side": 1,
+      "message": "Please remove trailing white spaces.",
+      "revId": "47bcf36d8587e05fffa70c022fafb1deead57f09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_283406dd",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-23T21:12:30Z",
+      "side": 1,
+      "message": "mobile",
+      "revId": "47bcf36d8587e05fffa70c022fafb1deead57f09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_e84dde73",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-23T21:12:30Z",
+      "side": 1,
+      "message": "villageMobile",
+      "revId": "47bcf36d8587e05fffa70c022fafb1deead57f09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_a857d601",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/PersistentEvent.idl",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-04-23T21:12:30Z",
+      "side": 1,
+      "message": "trailing white space",
+      "revId": "47bcf36d8587e05fffa70c022fafb1deead57f09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
