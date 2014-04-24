@@ -1026,6 +1026,7 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 				SharedObjectTemplate* newTemplate = TemplateManager::instance()->getTemplate(minusShared.hashCode());
 
 				prototype->loadTemplateData(newTemplate);
+				prototype->updateCraftingValues(manufactureSchematic->getCraftingValues(), false);
 
 				prototype->sendDestroyTo(crafter);
 				prototype->sendTo(crafter, true);
