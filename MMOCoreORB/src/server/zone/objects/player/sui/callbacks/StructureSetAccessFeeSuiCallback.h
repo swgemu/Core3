@@ -32,7 +32,7 @@ public:
 		try {
 			int fee = Integer::valueOf(args->get(0).toString());
 
-			if(fee > 0 || fee <= 50000)
+			if(fee > 0 && fee <= 50000)
 				session->setAccessFee(fee);
 			else
 				session->promptSetAccessFee();
