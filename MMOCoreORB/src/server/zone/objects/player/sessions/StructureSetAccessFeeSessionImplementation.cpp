@@ -21,7 +21,7 @@ int StructureSetAccessFeeSessionImplementation::initializeSession() {
 		return 0;
 	}
 
-	if(!structure->isOwnerOf(player)) {
+	if(!structure->isOnAdminList(player)) {
 		cancelSession();
 		return 0;
 	}
@@ -58,7 +58,7 @@ int StructureSetAccessFeeSessionImplementation::clearSession() {
 
 void StructureSetAccessFeeSessionImplementation::promptSetAccessFee() {
 
-	if(!structure->isOwnerOf(player)) {
+	if(!structure->isOnAdminList(player)) {
 		cancelSession();
 		return;
 	}
@@ -74,6 +74,7 @@ void StructureSetAccessFeeSessionImplementation::promptSetAccessFee() {
 		feeAmountBox->setCallback(new StructureSetAccessFeeSuiCallback(player->getZoneServer()));
 		feeAmountBox->setPromptTitle("@player_structure:access_fee_t"); //Access Fee
 		feeAmountBox->setUsingObject(structure);
+		feeAmountBox->setMaxInputSize(4);
 		feeAmountBox->setPromptText("@player_structure:access_fee"); // How much would you like to charge people to enter the building
 	}
 
@@ -87,7 +88,7 @@ void StructureSetAccessFeeSessionImplementation::setAccessFee(const int fee) {
 }
 
 void StructureSetAccessFeeSessionImplementation::promptSetAccessDuration() {
-	if(!structure->isOwnerOf(player)) {
+	if(!structure->isOnAdminList(player)) {
 		cancelSession();
 		return;
 	}
@@ -103,6 +104,7 @@ void StructureSetAccessFeeSessionImplementation::promptSetAccessDuration() {
 		durationBox->setCallback(new StructureSetAccessDurationSuiCallback(player->getZoneServer()));
 		durationBox->setPromptTitle("@player_structure:access_time_t"); //Access Fee
 		durationBox->setUsingObject(structure);
+		durationBox->setMaxInputSize(3);
 		durationBox->setPromptText("@player_structure:access_time"); // How much would you like to charge people to enter the building
 	}
 
