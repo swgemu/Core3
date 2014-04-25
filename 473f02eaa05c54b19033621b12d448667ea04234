@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_486512e0",
+        "filename": "MMOCoreORB/src/server/zone/packets/zone/SelectCharacterCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-04-25T04:28:18Z",
+      "side": 1,
+      "message": "You shouldn\u0027t return here. Rather do:\n\nif (auctionChat !\u003d NULL) {\n   auctionChat-\u003esendTo(player);\n   auctionChat-\u003eaddPlayer(player);\n}",
+      "revId": "473f02eaa05c54b19033621b12d448667ea04234",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
