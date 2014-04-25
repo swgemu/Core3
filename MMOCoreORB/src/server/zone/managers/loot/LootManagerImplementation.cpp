@@ -319,21 +319,25 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 			float minMod = (max >= min) ? 2000.f : -2000.f;
 			float maxMod = (max >= min) ? 500.f : -500.f;
 
-			min = (min * level / minMod) + min;
-			max = (max * level / maxMod) + max;
-
 			if (max >= min && max > 0) {
-				min *= excMod;
-				max *= excMod;
+				min = ((min * level / minMod) + min) * excMod;
+				max = ((max * level / maxMod) + max) * excMod;
+
 			} else if (max <= min && max > 0) {
-				min /= excMod;
-				max /= excMod;
+				min = ((min * level / minMod) + min) / excMod;
+				max = ((max * level / maxMod) + max) / excMod;
+
 			} else if (max <= min && max <= 0) {
-				min *= excMod;
-				max *= excMod;
+				minMod *= -1;
+				maxMod *= -1;
+				min = ((min * level / minMod) + min) * excMod;
+				max = ((max * level / maxMod) + max) * excMod;
+
 			} else {
-				min /= excMod;
-				max /= excMod;
+				minMod *= -1;
+				maxMod *= -1;
+				min = ((min * level / minMod) + min) / excMod;
+				max = ((max * level / maxMod) + max) / excMod;
 			}
 		} else {
 			if (excMod != 1.0) {
