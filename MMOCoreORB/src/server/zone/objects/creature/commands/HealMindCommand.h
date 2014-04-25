@@ -190,7 +190,7 @@ public:
 		}
 
 		float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
-		int healPower = (int) (System::random(300)+700) * modSkill / 100; // 700-1000 heal
+		int healPower = (int) (System::random(500)+800) * modSkill / 100;
 		
 		// Check BF
 		healPower = (int) (healPower * (1 - creature->calculateBFRatio()) * (1 - creatureTarget->calculateBFRatio()));
