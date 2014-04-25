@@ -169,6 +169,13 @@ public:
 			chatManager->addPlayer(player);
 			chatManager->loadMail(player);
 
+			// Join auction chat room
+			ManagedReference<ChatRoom*> auctionChat = chatManager->getAuctionRoom();
+			if( auctionChat != NULL ){
+				auctionChat->sendTo(player);
+				auctionChat->addPlayer(player);
+			}
+
 			ghost->notifyOnline();
 
 			PlayerManager* playerManager = zoneServer->getPlayerManager();
