@@ -263,7 +263,7 @@ bool CraftingManagerImplementation::loadBioSkillMods() {
 	Reference<Lua* > lua = new Lua();
 	lua->init();
 
-	if (!lua->runFile("scripts/crafting/bio_skill_mods.lua")) {
+	if (!lua->runFile("scripts/managers/crafting/bio_skill_mods.lua")) {
 		return false;
 	}
 

@@ -23,7 +23,7 @@ void ResourceLabratory::initialize(ZoneServer* server) {
 	SharedLabratory::initialize(server);
 	Reference<Lua* > lua = new Lua();
 	lua->init();
-	if (!lua->runFile("scripts/crafting/bio_skill_mods.lua")) {
+	if (!lua->runFile("scripts/managers/crafting/bio_skill_mods.lua")) {
 		return;
 	}
 	LuaObject bioModsTable = lua->getGlobalObject("bioSkillMods");

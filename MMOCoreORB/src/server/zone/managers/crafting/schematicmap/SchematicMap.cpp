@@ -141,7 +141,7 @@ void SchematicMap::loadDraftSchematicDatabase() {
 }
 
 void SchematicMap::loadDraftSchematicFile() {
-	runFile("scripts/crafting/config.lua");
+	runFile("scripts/managers/crafting/schematics.lua");
 
 	// Read and create all the items in the config unless they
 	// were already loaded from database.
