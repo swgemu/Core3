@@ -2653,6 +2653,9 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	if (isInvisible())
 		return false;
 
+	if (isAttackableBy(object))
+		return false;
+
 	PlayerObject* ghost = object->getPlayerObject(); // ghost is the healer
 	PlayerObject* targetGhost = getPlayerObject();
 
