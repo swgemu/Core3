@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_284be65a",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/PersistentEvent.idl",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-04-25T03:57:45Z",
+      "side": 1,
+      "message": "How can I easily get rid of this trailing whitespace in the commit?",
+      "revId": "6d7cf434749bf37c4086efa3b68d171c831cd0f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
