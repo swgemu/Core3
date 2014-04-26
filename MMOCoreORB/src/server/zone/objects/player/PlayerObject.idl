@@ -1274,7 +1274,12 @@ class PlayerObject extends IntangibleObject {
 	public boolean isLoggingOut() {
 		return onlineStatus == LOGGINGOUT;
 	}
-	
+
+	@local
+	public Time getLastLogout() {
+		return logoutTimeStamp;
+	}
+
 	public void setSkillPoints(int points) {
 		skillPoints = points;
 	}	

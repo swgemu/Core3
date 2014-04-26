@@ -238,8 +238,9 @@ public:
 
 				if(ghost->isOnline())
 					line << " \\#00FF00(ONLINE)\\#FFFFFF ";
-				else
-					line << " \\#AAAAAA(OFFLINE)\\#FFFFFF ";
+				else {
+					line << " \\#AAAAAA(Last On: " << ghost->getLastLogout()->getFormattedTime() << ")\\#FFFFFF ";
+				}
 				/// last seen
 				///ghost->getClientLastMovementStamp();
 			} else {
