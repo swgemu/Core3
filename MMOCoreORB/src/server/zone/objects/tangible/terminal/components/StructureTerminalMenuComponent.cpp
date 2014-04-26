@@ -135,6 +135,9 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 			case 124:
 				creature->executeObjectControllerAction(0x13F7E585, structureObject->getObjectID(), ""); //structureStatus
 				break;
+			case 69:
+				structureManager->promptSelectSign(structureObject, creature);
+				break;
 			}
 		}
 
