@@ -169,7 +169,10 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 
 	clientLastMovementStamp = 0;
 
-	setLinkDead();
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	if (creature->getZone() != NULL)
+		setLinkDead();
 
 	activateRecovery();
 }
@@ -1412,6 +1415,13 @@ void PlayerObjectImplementation::doRecovery() {
 		} else {
 			info("keeping dead linked player in game");
 		}
+	} else if (isOffline()) {
+		creature->clearUpdateToDatabaseTask();
+
+		if (creature->getClient() != NULL)
+			creature->getClient()->closeConnection(false, true);
+
+		return;
 	}
 
 	creature->activateHAMRegeneration();
