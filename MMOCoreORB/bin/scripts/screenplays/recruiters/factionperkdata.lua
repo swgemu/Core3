@@ -352,6 +352,13 @@ imperial_racial_penalty = {
 	},
 
 	imperial_hireling_list = {
+		"assault_trooper",
+		"bombardier",
+		"command_security_guard",
+		"compforce_trooper",
+		"gunner",
+		"imperial_private",
+		"imperial_trooper",
 		"sand_trooper",
 		"scout_trooper",
 		"storm_commando",
@@ -364,6 +371,13 @@ imperial_racial_penalty = {
 	},
 	
 	imperial_hireling = {
+		assault_trooper = { type=faction_reward_type.hireling, display="@mob/creature_names:assault_trooper", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="assault_trooper", cost=420},
+		bombardier = { type=faction_reward_type.hireling, display="@mob/creature_names:bombardier", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="bombardier", cost=105},
+		command_security_guard = { type=faction_reward_type.hireling, display="@mob/creature_names:command_security_guard", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="command_security_guard", cost=105},
+		compforce_trooper = { type=faction_reward_type.hireling, display="@mob/creature_names:compforce_trooper", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="compforce_trooper", cost=367},
+		gunner = { type=faction_reward_type.hireling, display="@mob/creature_names:gunner", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="gunner", cost=105},
+		imperial_private = { type=faction_reward_type.hireling, display="@mob/creature_names:imperial_private", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="imperial_private", cost=105},
+		imperial_trooper = { type=faction_reward_type.hireling, display="@mob/creature_names:imperial_trooper", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="imperial_trooper", cost=105},
 		sand_trooper = { type=faction_reward_type.hireling, display="@mob/creature_names:sand_trooper", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="sand_trooper", cost=420},
 		scout_trooper = { type=faction_reward_type.hireling, display="@mob/creature_names:scout_trooper", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="scout_trooper", cost=420},
 		storm_commando = { type=faction_reward_type.hireling, display="@mob/creature_names:storm_commando", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="storm_commando", cost=462},
@@ -377,6 +391,13 @@ imperial_racial_penalty = {
 	
 	rebel_hireling_list = {
 		"rebel_trooper",
+		"senior_specforce_heavy_weapons_specialist",
+		"senior_specforce_infiltrator",
+		"senior_specforce_marine",
+		"senior_specforce_pathfinder",
+		"senior_specforce_technician",
+		"senior_specforce_urban_guerrilla",
+		"senior_specforce_wilderness_fighter",
 		"specforce_heavy_weapons_specialist",
 		"specforce_infiltrator",
 		"specforce_interrogator",
@@ -389,6 +410,13 @@ imperial_racial_penalty = {
 	
 	rebel_hireling = {
 		rebel_trooper = { type=faction_reward_type.hireling, display="@mob/creature_names:rebel_trooper", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="rebel_trooper", cost=150},
+		senior_specforce_heavy_weapons_specialist = { type=faction_reward_type.hireling, display="@mob/creature_names:senior_specforce_heavy_weapons_specialist", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="senior_specforce_heavy_weapons_specialist", cost=450},
+		senior_specforce_infiltrator = { type=faction_reward_type.hireling, display="@mob/creature_names:senior_specforce_infiltrator", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="senior_specforce_infiltrator", cost=450},
+		senior_specforce_marine = { type=faction_reward_type.hireling, display="@mob/creature_names:senior_specforce_marine", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="senior_specforce_marine", cost=450},
+		senior_specforce_pathfinder = { type=faction_reward_type.hireling, display="@mob/creature_names:senior_specforce_pathfinder", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="senior_specforce_pathfinder", cost=450},
+		senior_specforce_technician = { type=faction_reward_type.hireling, display="@mob/creature_names:senior_specforce_technician", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="senior_specforce_technician", cost=450},
+		senior_specforce_urban_guerrilla = { type=faction_reward_type.hireling, display="@mob/creature_names:senior_specforce_guerrilla", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="senior_specforce_urban_guerrilla", cost=450},
+		senior_specforce_wilderness_fighter = { type=faction_reward_type.hireling, display="@mob/creature_names:senior_specforce_wilderness_trooper", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="senior_specforce_wilderness_fighter", cost=450},
 		specforce_heavy_weapons_specialist = { type=faction_reward_type.hireling, display="@mob/creature_names:specforce_heavy_weapons_specialist", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="specforce_heavy_weapons_specialist", cost=375},
 		specforce_infiltrator = { type=faction_reward_type.hireling, display="@mob/creature_names:specforce_infiltrator", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="specforce_infiltrator", cost=375},
 		specforce_interrogator = { type=faction_reward_type.hireling, display="@mob/creature_names:specforce_interrogator", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="specforce_interrogator", cost=375},

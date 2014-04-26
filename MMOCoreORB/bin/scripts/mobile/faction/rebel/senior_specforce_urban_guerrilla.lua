@@ -1,5 +1,5 @@
 senior_specforce_urban_guerrilla = Creature:new {
-	objectName = "@mob/creature_names:mission_senior_specforce_guerrilla",
+	objectName = "@mob/creature_names:senior_specforce_guerrilla",
 	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",

@@ -26,7 +26,7 @@ command_security_guard = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
+	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {
 		{
 			groups = {
