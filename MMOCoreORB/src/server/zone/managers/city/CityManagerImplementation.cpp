@@ -618,10 +618,12 @@ void CityManagerImplementation::depositToCityTreasury(CityRegion* city,
 		return;
 	}
 
-	//if (total > creature->getCashCredits()) {
-	//Player doesn't have that many credits
-	//return;
-	//}
+	float currentTreasury = city->getCityTreasury();
+
+	if ((int)currentTreasury + total > 100000000) {
+		creature->sendSystemMessage("The maximum treasury a city can have is 100.000.000");
+		return;
+	}
 
 	city->addToCityTreasury(total);
 	creature->subtractCashCredits(total);

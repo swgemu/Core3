@@ -383,6 +383,10 @@ class CityRegion extends ManagedObject implements Logger {
 		if (cityTreasury < 0) {
 			cityTreasury = 0;
 		}
+
+		if (cityTreasury > 100000000) {
+			cityTreasury = 100000000;
+		}
 		
 		return cityTreasury;
 	}
