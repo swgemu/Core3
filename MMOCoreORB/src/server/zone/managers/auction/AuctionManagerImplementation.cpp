@@ -246,8 +246,6 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 			return;
 		}
 
-		auctionMap->deleteItem(vendor, oldItem);
-
 	}
 
 	ManagedReference<Zone*> zone = vendor->getZone();
@@ -263,6 +261,15 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 
 	if (res != 0) {
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, res);
+		player->sendMessage(soldMessage);
+		return;
+	}
+
+	if (oldItem != NULL)
+		auctionMap->deleteItem(vendor, oldItem);
+
+	if(auctionMap->containsItem(objectToSell->getObjectID())) {
+		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::ALREADYFORSALE);
 		player->sendMessage(soldMessage);
 		return;
 	}
@@ -378,9 +385,6 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 		error("NULL Vendor");
 		return ItemSoldMessage::UNKNOWNERROR;
 	}
-
-	if(auctionMap->containsItem(object->getObjectID()))
-		return ItemSoldMessage::ALREADYFORSALE;
 
 	if (price < 1)
 		return ItemSoldMessage::INVALIDSALEPRICE;
