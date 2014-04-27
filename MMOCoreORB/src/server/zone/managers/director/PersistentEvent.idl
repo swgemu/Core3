@@ -51,64 +51,54 @@ include server.zone.objects.scene.SceneObject;
 
 class PersistentEvent extends ManagedObject {
 	protected int timeStamp;
-
 	protected int curTime;
-
 	protected string key;
 	protected string play;
 	protected SceneObject obj;
-	
+	protected string eventName;
 	protected boolean eventExecuted;
 	
 	public PersistentEvent() {
-		play = "";
-		
 		eventExecuted = false;
 	}
-	
 	public int getTimeStamp() {
 		return timeStamp;
 	}
-	
 	public final string getKey() {
 		return key;
 	}
-
 	public final string getScreenplay() {
 		return play;
 	}
-
 	public SceneObject getObject() {
 		return obj;
 	}
-
 	public int getCurTime() {
 		return curTime;
 	}
-
+	public final string getEventName() {
+		return eventName;
+	}
+	public void setEventName(final string en) {
+		eventName = en;
+	}
 	public void setCurTime(int time) {
 		curTime = time;
 	}
-	
 	public void setTimeStamp(int stamp) {
 		timeStamp = stamp;
 	}
-
 	public void setKey(final string k) {
 		key = k;
 	}
-
 	public void setScreenplay(final string sp) {
 		play = sp;
 	}
-
 	public void setObject(SceneObject o) {
 		obj = o;
 	}
-	
 	public void setEventExecuted(boolean val) {
 		eventExecuted = val;
 	}
-
 	public native void notifyLoadFromDatabase();
 }
