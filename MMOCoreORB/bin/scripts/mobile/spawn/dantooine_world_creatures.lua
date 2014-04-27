@@ -64,8 +64,8 @@ dantooine_world_creatures = {
 		{
 			lairTemplateName = "dantooine_bol_lair_neutral_medium_boss_01",
 			spawnLimit = -1,
-			minDifficulty = 34,
-			maxDifficulty = 34,
+			minDifficulty = 29,
+			maxDifficulty = 29,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

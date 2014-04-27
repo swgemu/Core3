@@ -196,7 +196,7 @@ corellia_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "corellia_dire_cat_pack_neutral_none",
+			lairTemplateName = "corellia_dire_cat_lair_neutral_medium_boss_01",
 			spawnLimit = -1,
 			minDifficulty = 14,
 			maxDifficulty = 14,

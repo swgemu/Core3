@@ -106,6 +106,15 @@ endor_world_creatures = {
 			size = 25
 		},
 		{
+			lairTemplateName = "endor_squill_festering_neutral_small_boss_01",
+			spawnLimit = -1,
+			minDifficulty = 31,
+			maxDifficulty = 31,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
 			lairTemplateName = "endor_bordok_stud_mare_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 34,

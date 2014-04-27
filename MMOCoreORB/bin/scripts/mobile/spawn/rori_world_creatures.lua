@@ -310,7 +310,16 @@ rori_world_creatures = {
 			maxDifficulty = 34,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
+			size = 30
+		},
+		{
+			lairTemplateName = "rori_ravenous_torton_lair_neutral_large_boss_01",
+			spawnLimit = -1,
+			minDifficulty = 34,
+			maxDifficulty = 34,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 30
 		},
 		{
 			lairTemplateName = "pugoriss",
@@ -328,7 +337,7 @@ rori_world_creatures = {
 			maxDifficulty = 34,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
+			size = 30
 		},
 		{
 			lairTemplateName = "rori_mountain_ikopi_lair_neutral_medium",
