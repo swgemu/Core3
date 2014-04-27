@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_08526add",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-04-27T00:13:05Z",
+      "side": 1,
+      "message": "Not sure if these are necessary or if simply returning would be fine.",
+      "revId": "a75d87b1410e419fdf0b2328799d2f57e3fa37a7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
