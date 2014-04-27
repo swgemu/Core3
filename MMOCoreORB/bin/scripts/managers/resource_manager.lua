@@ -59,12 +59,12 @@ aveduration = 86400 -- In seconds
   -- JTL resources are in shift between (13 * aveduration) and (22 * aveduration)
   -- Set to 86400 for standard SOE behavior
 
-spawnThrottling = 60 -- *** 10-90 ***
-  -- This will add a throttle to the spawner so
-  -- that 90% of resources will have stats less than
-  -- x * maxGate.  So if a resource has stat 0-1000
-  -- and this is set at 70, 90% of resources will have 
-  -- a value of < 700 and 10% > 700.
+spawnThrottling = 70 -- *** 10-90 ***
+  -- This will add a throttle to the spawner so that 90% of
+  -- resource stats will be less than x * maxGate. So if a
+  -- resource stat has a range of 0-1000 and this is set
+  -- at 70, there's a 90% chance that the stat will have
+  -- a value of < 700 and a 10% chance it will be > 700.
   -- Set to 90 for standard SOE behavior
 
 lowerGateOverride = 1000 -- 1-1000  
