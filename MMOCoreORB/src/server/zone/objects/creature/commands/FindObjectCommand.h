@@ -132,7 +132,10 @@ public:
 
 				String name = object->getDisplayedName();
 
-				if (!name.toLowerCase().contains(objectFilter.toLowerCase()))
+				if (objectFilter == "-p") {
+					if (!object->isPlayerCreature())
+						continue;
+				} else if (!name.toLowerCase().contains(objectFilter.toLowerCase()))
 					continue;
 
 				results << name;
