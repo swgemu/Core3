@@ -168,10 +168,6 @@ void PlayerObjectImplementation::notifyLoadFromDatabase() {
 	lastValidatedPosition.update(getParent().get());
 
 	clientLastMovementStamp = 0;
-
-	setLinkDead();
-
-	activateRecovery();
 }
 
 void PlayerObjectImplementation::unloadSpawnedChildren() {
@@ -1412,6 +1408,8 @@ void PlayerObjectImplementation::doRecovery() {
 		} else {
 			info("keeping dead linked player in game");
 		}
+	} else if (isOffline()) {
+		return;
 	}
 
 	creature->activateHAMRegeneration();
