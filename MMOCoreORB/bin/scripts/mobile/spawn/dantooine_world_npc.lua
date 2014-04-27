@@ -3,7 +3,7 @@ dantooine_world_npc = {
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 1024,
+	maxSpawnLimit = 256,
 
 	lairSpawns = {
 		{
@@ -13,7 +13,7 @@ dantooine_world_npc = {
 			maxDifficulty = 75,
 			numberToSpawn = 5,
 			weighting = 15,
-			size = 15
+			size = 20
 		},
 		{
 			lairTemplateName = "dantooine_janta_rockshaper_camp_neutral_medium_theater",
@@ -31,7 +31,7 @@ dantooine_world_npc = {
 			maxDifficulty = 60,
 			numberToSpawn = 5,
 			weighting = 15,
-			size = 15
+			size = 20
 		},
 		{
 			lairTemplateName = "dantooine_janta_warrior_camp_neutral_medium_theater",
@@ -40,7 +40,7 @@ dantooine_world_npc = {
 			maxDifficulty = 70,
 			numberToSpawn = 5,
 			weighting = 15,
-			size = 15
+			size = 20
 		},
 		{
 			lairTemplateName = "dantooine_kunga_rockshaper_camp_neutral_medium_theater",
@@ -49,7 +49,7 @@ dantooine_world_npc = {
 			maxDifficulty = 71,
 			numberToSpawn = 5,
 			weighting = 15,
-			size = 15
+			size = 20
 		},
 		{
 			lairTemplateName = "dantooine_kunga_warrior_camp_neutral_medium_theater",
@@ -58,7 +58,7 @@ dantooine_world_npc = {
 			maxDifficulty = 70,
 			numberToSpawn = 5,
 			weighting = 15,
-			size = 15
+			size = 20
 		},
 		{
 			lairTemplateName = "dantooine_kunga_leader_camp_neutral_large_theater",
@@ -67,7 +67,7 @@ dantooine_world_npc = {
 			maxDifficulty = 75,
 			numberToSpawn = 5,
 			weighting = 15,
-			size = 15
+			size = 20
 		},
 		{
 			lairTemplateName = "dantooine_mokk_leader_camp_neutral_large_theater",
@@ -76,7 +76,7 @@ dantooine_world_npc = {
 			maxDifficulty = 75,
 			numberToSpawn = 5,
 			weighting = 15,
-			size = 15
+			size = 20
 		},
 		{
 			lairTemplateName = "dantooine_mokk_shaman_camp_neutral_medium_theater",
@@ -85,7 +85,7 @@ dantooine_world_npc = {
 			maxDifficulty = 60,
 			numberToSpawn = 5,
 			weighting = 15,
-			size = 15
+			size = 20
 		},
 		{
 			lairTemplateName = "dantooine_mokk_soothsayer_camp_neutral_medium_theater",
@@ -94,7 +94,7 @@ dantooine_world_npc = {
 			maxDifficulty = 43,
 			numberToSpawn = 5,
 			weighting = 15,
-			size = 15
+			size = 20
 		}
 	}
 }

@@ -187,6 +187,15 @@ talus_world_creatures = {
 			size = 25
 		},
 		{
+			lairTemplateName = "talus_kima_lair_neutral_medium_boss_01",
+			spawnLimit = -1,
+			minDifficulty = 18,
+			maxDifficulty = 18,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
 			lairTemplateName = "talus_mire_marauder_neutral_none",
 			spawnLimit = -1,			
 			minDifficulty = 56,

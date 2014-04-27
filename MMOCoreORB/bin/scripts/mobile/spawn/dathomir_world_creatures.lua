@@ -207,7 +207,7 @@ dathomir_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dathomir_kamurith_defiler_neutral_none",
+			lairTemplateName = "dathomir_kamurith_defiler_lair_neutral_medium_boss_01",
 			spawnLimit = -1,
 			minDifficulty = 50,
 			maxDifficulty = 50,

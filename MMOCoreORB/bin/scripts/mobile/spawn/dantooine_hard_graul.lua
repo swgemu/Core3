@@ -3,7 +3,7 @@ dantooine_hard_graul = {
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 1024,
+	maxSpawnLimit = 32,
 
 	lairSpawns = {
 		{
@@ -13,7 +13,7 @@ dantooine_hard_graul = {
 			maxDifficulty = 50,
 			numberToSpawn = 5,
 			weighting = 15,
-			size = 15
+			size = 30
 		},
 		{
 			lairTemplateName = "dantooine_graul_frenzied_lair_neutral_large",
@@ -21,8 +21,8 @@ dantooine_hard_graul = {
 			minDifficulty = 56,
 			maxDifficulty = 56,
 			numberToSpawn = 5,
-			weighting = 15,
-			size = 15
+			weighting = 10,
+			size = 30
 		}
 	}
 }
