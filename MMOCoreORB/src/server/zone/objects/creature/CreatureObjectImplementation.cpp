@@ -1955,7 +1955,7 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 
 	skillManager->updateXpLimits(ghost);
 
-	if (getZone() != NULL && ghost->isOffline())
+	if (getZone() != NULL)
 		ghost->setLinkDead();
 }
 
