@@ -515,9 +515,9 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 		(cast<CreatureObject*>(attacker))->sendSystemMessage(stringId);
 
 		// TODO REMOVE AFTER TESTING
-		ManagedReference<PlayerObject*> ghost = (cast<CreatureObject*>(attacker))->getPlayerObject();
-		if (ghost != NULL && ghost->isPrivileged())
-			attackerIsAdmin = true;
+		//ManagedReference<PlayerObject*> ghost = (cast<CreatureObject*>(attacker))->getPlayerObject();
+		//if (ghost != NULL && ghost->isPrivileged())
+		//	attackerIsAdmin = true;
 		// END REMOVE
 	}
 
