@@ -97,7 +97,7 @@ function HedonIstee:handleTreasureMapCallback(pCreature, pSui, cancelPressed)
 			
 			if (pPlayerObject ~= nil) then
 				local playerObject = LuaPlayerObject(pPlayerObject)
-				local waypointID = playerObject:addWaypoint("tatooine", "Ancient Treasure Location", "", HedonIstee.mapX, HedonIstee.mapY, WAYPOINTGREEN, true, true)
+				local waypointID = playerObject:addWaypoint("tatooine", "Ancient Treasure Location", "", HedonIstee.mapX, HedonIstee.mapY, WAYPOINTGREEN, true, true, 0)
 				local activeAreaID = self:spawnActiveArea()
 				writeData(creature:getObjectID() .. ":scytheTreasureWaypointID", waypointID)
 				writeData(creature:getObjectID() .. ":treasureActiveAreaID", activeAreaID)
@@ -129,7 +129,7 @@ function HedonIstee:spawnTreasure(pTreasureMap, pPlayer)
 		local y = HedonIstee.mapY - math.random(200)
 		local z = getTerrainHeight(pPlayer, x, y)
 
-		playerObject:addWaypoint("tatooine", "Ancient Treasure Location", "", x, y, WAYPOINTGREEN, true, true)
+		playerObject:addWaypoint("tatooine", "Ancient Treasure Location", "", x, y, WAYPOINTGREEN, true, true, 0)
 
 		local pChest = spawnSceneObject("tatooine", "object/tangible/container/drum/treasure_drum.iff", x, z, y, 0, 0, 0, 0, 0)
 		local pKrayt = spawnMobile("tatooine", "canyon_krayt_dragon", 0, x, z, y, 0, 0)
