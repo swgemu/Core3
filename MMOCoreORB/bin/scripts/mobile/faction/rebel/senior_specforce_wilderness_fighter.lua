@@ -26,7 +26,12 @@ senior_specforce_wilderness_fighter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_specforce_pathfinder_human_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_pathfinder_moncal_female_01.iff",
+	             "object/mobile/dressed_rebel_specforce_pathfinder_rodian_female_01.iff",
+	             "object/mobile/dressed_rebel_specforce_pathfinder_twk_female_01.iff",
+	             "object/mobile/dressed_rebel_specforce_pathfinder_twk_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_pathfinder_zabrak_female_fat_01.iff",},
 	lootGroups = {
 		{
 	        groups = {
@@ -34,8 +39,8 @@ senior_specforce_wilderness_fighter = Creature:new {
 				{group = "junk", chance = 4700000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-                {group = "melee_weapons", chance = 1000000},
-                {group = "carbines", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000},
 				{group = "wearables_common", chance = 1000000}
