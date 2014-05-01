@@ -238,14 +238,14 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 		if (closeObjects != NULL) {
 			try {
-			while (closeObjects->size() > 0) {
-				ManagedReference<QuadTreeEntry*> obj = closeObjects->get(0);
+				while (closeObjects->size() > 0) {
+					ManagedReference<QuadTreeEntry*> obj = closeObjects->get(0);
 
-				if (obj != object && obj->getCloseObjects() != NULL)
-					obj->removeInRangeObject(object);
+					if (obj != NULL && obj != object && obj->getCloseObjects() != NULL)
+						obj->removeInRangeObject(object);
 
-				object->removeInRangeObject((int) 0);
-			}
+					object->removeInRangeObject((int) 0);
+				}
 			} catch (...) {
 			}
 		} else {
@@ -256,7 +256,7 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			for (int i = 0; i < closeSceneObjects.size(); ++i) {
 				QuadTreeEntry* obj = closeSceneObjects.get(i);
 
-				if (obj != object && obj->getCloseObjects() != NULL)
+				if (obj != NULL && obj != object && obj->getCloseObjects() != NULL)
 					obj->removeInRangeObject(object);
 			}
 		}
