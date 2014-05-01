@@ -5,7 +5,8 @@ local Logger = require("utils.logger")
 Task = Object:new {
 	taskName = "",
 	taskStart = nil,
-	taskFinish = nil
+	taskFinish = nil,
+	persistentTask = true
 }
 
 local TASK_STARTED = 0xABCD
@@ -14,7 +15,11 @@ local TASK_STARTED = 0xABCD
 -- @param pCreatureObject pointer to the creature object of the player.
 function Task:hasTaskStarted(pCreatureObject)
 	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		return creatureObject:getScreenPlayState(self.taskName) == TASK_STARTED
+		if (persistentTask == true) then
+			return creatureObject:getScreenPlayState(self.taskName) == TASK_STARTED
+		else
+			return readData(creatureObject:getObjectID() .. self.taskName) == TASK_STARTED
+		end
 	end) == true
 end
 
@@ -22,7 +27,11 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 function Task:setTaskStarted(pCreatureObject)
 	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		creatureObject:setScreenPlayState(TASK_STARTED, self.taskName)
+		if (persistentTask == true) then
+			creatureObject:setScreenPlayState(TASK_STARTED, self.taskName)
+		else
+			writeData(creatureObject:getObjectID() .. self.taskName, TASK_STARTED)
+		end
 	end)
 end
 
@@ -30,7 +39,11 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 function Task:setTaskFinished(pCreatureObject)
 	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		creatureObject:removeScreenPlayState(TASK_STARTED, self.taskName)
+		if (persistentTask == true) then
+			creatureObject:removeScreenPlayState(TASK_STARTED, self.taskName)
+		else
+			deleteData(creatureObject:getObjectID() .. self.taskName)
+		end
 	end)
 end
 
