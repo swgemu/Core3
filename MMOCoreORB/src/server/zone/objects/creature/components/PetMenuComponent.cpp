@@ -199,9 +199,13 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 	if (!player->getPlayerObject()->isPrivileged() && pet->getLinkedCreature() != player)
 		return 0;
 
+	if (pet->getLinkedCreature() != player) {
+		player = pet->getLinkedCreature().get();
+	}
+
 	ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
-	if (petControlDevice == NULL)
+	if (petControlDevice == NULL || player == NULL)
 		return 0;
 
 	PetManager* petManager = pet->getZoneServer()->getPetManager();
