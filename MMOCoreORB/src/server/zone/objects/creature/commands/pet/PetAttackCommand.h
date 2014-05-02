@@ -43,6 +43,9 @@ public:
 		Reference<SceneObject*> targetObject = server->getZoneServer()->getObject(target, true).castTo<SceneObject*>();
 		if (targetObject == NULL || !targetObject->isPlayerCreature() ) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+			ManagedReference<CreatureObject*> player = pet->getLinkedCreature().get();
+			if (player != NULL)
+				player->sendSystemMessage("Pets may only attack players right now.");
 			return GENERALERROR;
 		}
 
