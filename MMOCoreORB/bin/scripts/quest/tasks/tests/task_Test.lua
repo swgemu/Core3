@@ -7,13 +7,15 @@ local TASK_SCREEN_PLAY_STARTED = 0xABCD
 local testTask = Task:new {
 	taskName = "testTask",
 	taskStart = spy.new(function() return true end),
-	taskFinish = spy.new(function() return true end)
+	taskFinish = spy.new(function() return true end),
+	persistentTask = spy.new(function() return true end)
 }
 
 describe("Task", function()
 	local pCreatureObject = { "creatureObjectPointer" }
 	local creatureObject
 	local realTaskName
+	local objectID
 
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
@@ -30,6 +32,7 @@ describe("Task", function()
 		creatureObject.getScreenPlayState = spy.new(function() return false end)
 		creatureObject.removeScreenPlayState = spy.new(function() end)
 		creatureObject.setScreenPlayState = spy.new(function() end)
+		creatureObject.getObjectID = spy.new(function() return objectID end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObject
 	end)
 
@@ -176,25 +179,49 @@ describe("Task", function()
 	describe("Private functions", function()
 		describe("hasTaskStarted", function()
 			describe("When called with a player", function()
-				it("Should check if the player has a screen play state with the task name set.", function()
-					testTask:hasTaskStarted(pCreatureObject)
+				describe("and persistent task is true.", function()
+					it("Should check if the player has a screen play state with the task name set.", function()
+						testTask:hasTaskStarted(pCreatureObject)
+						assert.spy(creatureObject.getScreenPlayState).was.called_with(creatureObject, testTask.taskName)
+					end)
 
-					assert.spy(creatureObject.getScreenPlayState).was.called_with(creatureObject, testTask.taskName)
-				end)
+					describe("and the screen play state is set", function()
+						it("Should return true.", function()
+							creatureObject.getScreenPlayState = spy.new(function() return TASK_SCREEN_PLAY_STARTED end)
 
-				describe("and the screen play state is set", function()
-					it("Should return true.", function()
-						creatureObject.getScreenPlayState = spy.new(function() return TASK_SCREEN_PLAY_STARTED end)
+							assert.is_true(testTask:hasTaskStarted(pCreatureObject))
+						end)
+					end)
 
-						assert.is_true(testTask:hasTaskStarted(pCreatureObject))
+					describe("and the screen play state is not set", function()
+						it("Should return false.", function()
+							assert.is_false(testTask:hasTaskStarted(pCreatureObject))
+						end)
 					end)
 				end)
 
-				describe("and the screen play state is not set", function()
-					it("Should return false.", function()
-						assert.is_false(testTask:hasTaskStarted(pCreatureObject))
+				describe("and persistentTask is false", function()
+					it("Should check if the DirectorManager has data set with the object ID and task name.", function()
+						testTask:hasTaskStarted(pCreatureObject)
+						assert.spy(creatureObject.getObjectID).was.called(1)
+						assert.spy(readData).was.called_with(objectID .. testTask.taskName)
+					end)
+
+					describe("and the data is set", function()
+						it("Should return true.", function()
+							readData = spy.new(function() return TASK_SCREEN_PLAY_STARTED end)
+
+							assert.is_true(testTask:hasTaskStarted(pCreatureObject))
+						end)
+					end)
+
+					describe("and the data is not set", function()
+						it("Should return false.", function()
+							assert.is_false(testTask:hasTaskStarted(pCreatureObject))
+						end)
 					end)
 				end)
+
 			end)
 
 			describe("When called with nil as argument", function()
@@ -205,21 +232,43 @@ describe("Task", function()
 		end)
 
 		describe("setTaskStarted", function()
-			describe("When called with a player", function()
-				it("Should set the screen play to the task started value on the player.", function()
-					testTask:setTaskStarted(pCreatureObject)
+			describe("When called with a player ", function()
+				describe("and persistentTask is true.", function()
+					it("Should set the screen play to the task started value on the player.", function()
+						testTask:setTaskStarted(pCreatureObject)
 
-					assert.spy(creatureObject.setScreenPlayState).was.called_with(creatureObject, TASK_SCREEN_PLAY_STARTED, testTask.taskName)
+						assert.spy(creatureObject.setScreenPlayState).was.called_with(creatureObject, TASK_SCREEN_PLAY_STARTED, testTask.taskName)
+					end)
+				end)
+
+				describe("and persistentTask is false.", function()
+					it("Should set the task started value in the DirectorManager's shared memory.", function()
+						testTask:setTaskStarted(pCreatureObject)
+
+						assert.spy(creatureObject.getObjectID).was.called(1)
+						assert.spy(writeData).was.called_with(objectID .. testTask.taskName, TASK_SCREEN_PLAY_STARTED)
+					end)
 				end)
 			end)
 		end)
 
 		describe("setTaskFinished", function()
 			describe("When called with a player and a value", function()
-				it("Should remove the task started value on the screen play state on the player.", function()
-					testTask:setTaskFinished(pCreatureObject)
+				describe("and persistentTask is true.", function()
+					it("Should remove the task started value on the screen play state on the player.", function()
+						testTask:setTaskFinished(pCreatureObject)
 
-					assert.spy(creatureObject.removeScreenPlayState).was.called_with(creatureObject, TASK_SCREEN_PLAY_STARTED, testTask.taskName)
+						assert.spy(creatureObject.removeScreenPlayState).was.called_with(creatureObject, TASK_SCREEN_PLAY_STARTED, testTask.taskName)
+					end)
+				end)
+
+				describe("and when persistentTask is false", function()
+					it("Should delete the task started value from the DirectorManager's shared memory.", function()
+						testTask:setTaskFinished(pCreatureObject)
+
+						assert.spy(creatureObject.getObjectID).was.called(1)
+						assert.spy(deleteData).was.called_with(objectID .. testTask.taskName)
+					end)
 				end)
 			end)
 		end)
