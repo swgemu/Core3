@@ -34,6 +34,7 @@ function DirectorManagerMocks.mocks.before_each()
 	spatialChat = spy.new(function() end)
 	spawnMobile = spy.new(function() return nil end)
 	writeData = spy.new(function() end)
+	deleteData = spy.new(function() end)
 
 	LuaAiAgent = spy.new(function(pAiAgent)
 		if pAiAgent == nil then
