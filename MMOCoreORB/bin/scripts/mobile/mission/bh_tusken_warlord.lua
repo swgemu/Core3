@@ -1,17 +1,17 @@
-bh_nightsister_outcast = Creature:new {
-	objectName = "@mob/creature_names:nightsister_outcast",
-	socialGroup = "nightsister",
-	pvpFaction = "nightsister",
-	faction = "nightsister",
-	level = 81,
-	chanceHit = 0.75,
-	damageMin = 555,
-	damageMax = 820,
-	baseXp = 7761,
-	baseHAM = 12000,
-	baseHAMmax = 15000,
+bh_tusken_warlord = Creature:new {
+	objectName = "@mob/creature_names:tusken_warlord",
+	socialGroup = "tusken_raider",
+	pvpFaction = "tusken_raider",
+	faction = "tusken_raider",
+	level = 62,
+	chanceHit = 0.62,
+	damageMin = 455,
+	damageMax = 620,
+	baseXp = 6013,
+	baseHAM = 11000,
+	baseHAMmax = 14000,
 	armor = 1,
-	resists = {30,30,30,100,100,100,100,100,-1},
+	resists = {45,25,15,80,-1,40,-1,15,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,21 +26,22 @@ bh_nightsister_outcast = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_dathomir_nightsister_outcast.iff"},
+	templates = {"object/mobile/tusken_raider.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "crystals_good", chance = 500000},
+				{group = "junk", chance = 1500000},
+				{group = "tusken_common", chance = 3500000},
+				{group = "wearables_common", chance = 1000000},
+				{group = "wearables_uncommon", chance = 500000},
+				{group = "bone_armor", chance = 750000},
+				{group = "chitin_armor", chance = 750000},
+				{group = "armor_attachments", chance = 500000},
+				{group = "clothing_attachments", chance = 500000},
 				{group = "color_crystals", chance = 500000},
-				{group = "nightsister_common", chance = 5500000},
-				{group = "armor_attachments", chance = 550000},
-				{group = "clothing_attachments", chance = 550000},
-				{group = "melee_baton", chance = 700000},
-				{group = "melee_two_handed", chance = 700000},
-				{group = "wearables_common", chance = 500000},
-				{group = "wearables_uncommon", chance = 500000}
+				{group = "crystals_good", chance = 500000}
 			},
-			lootChance = 5400000
+			lootChance = 3200000
 		},
 		{
 			groups = {
@@ -60,16 +61,16 @@ bh_nightsister_outcast = Creature:new {
 				{group = "crystals_select", chance = 500000},
 				{group = "crystals_good", chance = 500000},
 				{group = "color_crystals", chance = 2500000},
-				{group = "melee_weapons", chance = 2000000},
+				{group = "armor_all", chance = 2000000},
 				{group = "armor_attachments", chance = 1500000},
 				{group = "clothing_attachments", chance = 1500000}
 			},
 			lootChance = 6000000
 		}
 	},
-	weapons = {"mixed_force_weapons"},
+	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster,brawlermaster)
+	attacks = merge(brawlernovice,marksmannovice,fencermaster,riflemanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(bh_nightsister_outcast, "bh_nightsister_outcast")
+CreatureTemplates:addCreatureTemplate(bh_tusken_warlord, "bh_tusken_warlord")
