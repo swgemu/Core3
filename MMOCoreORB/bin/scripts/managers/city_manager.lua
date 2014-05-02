@@ -61,8 +61,8 @@ CityVotingCycles = 3
 CityVotingCyclesUntilLocked = 2
 
 --The amount of time in minutes before the city performs an update.
---CityUpdateInterval = 10080
-CityUpdateInterval = 2880
+CityUpdateInterval = 10080
+--CityUpdateInterval = 2880
 
 --The amount of time in minutes a new city has to gain enough citizens to remain a city.
 NewCityGracePeriod = 1440
@@ -74,8 +74,8 @@ OldCityGracePeriod = 30240
 EnableCityWarn = false
 
 --The number of citizens required to achieve each city rank. (Outpost, Village, Township, City, Metropolis)
-CitizensPerRank = {1, 2, 3, 5, 8}
---CitizensPerRank = {10, 20, 35, 55, 85}
+--CitizensPerRank = {1, 2, 3, 5, 8}
+CitizensPerRank = {10, 20, 35, 55, 85}
 
 --The radius in meters of the city at each city rank. (Outpost, Village, Township, City, Metropolis)
 RadiusPerRank = {150, 200, 300, 400, 450}
