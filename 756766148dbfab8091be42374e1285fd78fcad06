@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_88889ae8",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T02:01:30Z",
+      "side": 1,
+      "message": "Create a local variable above for the id, return that variable here and check for the variable below.",
+      "revId": "756766148dbfab8091be42374e1285fd78fcad06",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_081dcabd",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T02:01:30Z",
+      "side": 1,
+      "message": "These three functions should be mocked in the director_manager_mocks.lua since they originate directly from the director manager.",
+      "revId": "756766148dbfab8091be42374e1285fd78fcad06",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_e8795efd",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T02:01:30Z",
+      "side": 1,
+      "message": "Test one thing per test. Create another test if you want to verify the persistenTask member variable.",
+      "revId": "756766148dbfab8091be42374e1285fd78fcad06",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_a88356cb",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T02:01:30Z",
+      "side": 1,
+      "message": "You need to check that the data has the creatureObjectId-number as the argument.",
+      "revId": "756766148dbfab8091be42374e1285fd78fcad06",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_c87ea2e4",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T02:01:30Z",
+      "side": 1,
+      "message": "You should set the persistentTask to false before calling the setTaskStarted function.",
+      "revId": "756766148dbfab8091be42374e1285fd78fcad06",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
