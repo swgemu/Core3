@@ -16,6 +16,108 @@
       "revId": "1c10c9eb86e4a74708c6d639a104be3cddfbd484",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_c8cc6238",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T09:52:30Z",
+      "side": 1,
+      "message": "You should not use a spy here, just a boolean value.",
+      "revId": "1c10c9eb86e4a74708c6d639a104be3cddfbd484",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_e8c71e11",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T09:52:30Z",
+      "side": 1,
+      "message": "Give it a value.",
+      "revId": "1c10c9eb86e4a74708c6d639a104be3cddfbd484",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_a8d116cf",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T09:52:30Z",
+      "side": 1,
+      "message": "Add a before_each function before the tests here where you set the persistentTask member of testTask to false.",
+      "revId": "1c10c9eb86e4a74708c6d639a104be3cddfbd484",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_88d65ac4",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T09:52:30Z",
+      "side": 1,
+      "message": "No need to check that getObjectID is called, you can check that indirectly with the readData spy instead. This will make the test a bit more robust and will allow us to refactor the code in the future more easily, i.e. to perhaps save the object id somewhere else, or rename the function.",
+      "revId": "1c10c9eb86e4a74708c6d639a104be3cddfbd484",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_68db2eee",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T09:52:30Z",
+      "side": 1,
+      "message": "add a before_each function and set the persistentTask member of testTask to false.",
+      "revId": "1c10c9eb86e4a74708c6d639a104be3cddfbd484",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_48d872ef",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/task_Test.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-03T09:52:30Z",
+      "side": 1,
+      "message": "add a before_each function and set the persistentTask member of testTask to false.",
+      "revId": "1c10c9eb86e4a74708c6d639a104be3cddfbd484",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
