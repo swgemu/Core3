@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_284e46c2",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/task.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-03T06:12:29Z",
+      "side": 1,
+      "message": "I can\u0027t figure out how to fix this error busted is giving:\n\"./quest/tasks/task.lua:21: attempt to call method \u0027getObjectID\u0027 (a nil value)\"\n\nMy suspicion is that inheritance is what\u0027s causing it. getObjectID() is a method in LuaSceneObject and I\u0027m calling it with a creo. LuaCreatureObject does inherit LuaSceneObject and calling that method with a creo works in practice.\n\nI suspect that busted isn\u0027t aware of that inheritance and is throwing the error because LuaCreatureObject doesn\u0027t have a method named getObjectID. I have no idea what we\u0027d need to do to rectify that (if it is, in fact, the case).",
+      "revId": "1c10c9eb86e4a74708c6d639a104be3cddfbd484",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
