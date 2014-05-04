@@ -267,6 +267,8 @@ class PlayerObject extends IntangibleObject {
 	
 	protected int holoEmoteUseCount;
 	
+	protected string spouseName;
+	
 	/**
 	 * the key is the quest.hashCode()
 	 */
@@ -353,6 +355,8 @@ class PlayerObject extends IntangibleObject {
 		installedHoloEmote = "";
 		
 		holoEmoteUseCount = 0;
+		
+		spouseName = "";
 		
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -1491,6 +1495,22 @@ class PlayerObject extends IntangibleObject {
 		holoEmoteUseCount = holoEmoteUseCount - 1;
 		if( holoEmoteUseCount < 0 )
 			holoEmoteUseCount = 0;
+	}
+	
+	public boolean isMarried(){	
+		return spouseName != "";
+	}
+	
+	public string getSpouseName(){
+		return spouseName;
+	}
+	
+	public void setSpouseName( string firstName ){
+		 spouseName = firstName;
+	}
+	
+	public void removeSpouse(){
+		spouseName = "";
 	}
 }
 
