@@ -1,17 +1,17 @@
-bh_bounty_hunter_thug = Creature:new {
-	objectName = "@mob/creature_names:bounty_hunter",
-	socialGroup = "Mercenary",
+bh_brigand_leader = Creature:new {
+	objectName = "@mob/creature_names:brigand_leader",
+	socialGroup = "Brigand",
 	pvpFaction = "",
 	faction = "",
-	level = 24,
-	chanceHit = 0.350000,
-	damageMin = 220,
-	damageMax = 230,
-	baseXp = 2443,
-	baseHAM = 6300,
-	baseHAMmax = 7700,
+	level = 20,
+	chanceHit = 0.330000,
+	damageMin = 180,
+	damageMax = 190,
+	baseXp = 1803,
+	baseHAM = 4500,
+	baseHAMmax = 5500,
 	armor = 0,
-	resists = {20,20,0,0,0,0,-1,-1,-1},
+	resists = {10,20,0,0,0,0,0,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,24 +22,19 @@ bh_bounty_hunter_thug = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	optionsBitmask = 128,
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bountyhunter_trainer_01.iff",
-			"object/mobile/dressed_bountyhunter_trainer_02.iff",
-			"object/mobile/dressed_bountyhunter_trainer_03.iff",
-			"object/mobile/dressed_bounty_hunter_zabrak_female_01.iff"
-		},
+	templates = {"object/mobile/dressed_criminal_thug_human_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 6000000},
-				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kit_parts", chance = 1500000},
-				{group = "wearables_common", chance = 1000000}
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 3000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
 			},
-			lootChance = 4500000
+			lootChance = 3000000
 		},
 		{
 			groups = {
@@ -59,4 +54,4 @@ bh_bounty_hunter_thug = Creature:new {
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(bh_bounty_hunter_thug, "bh_bounty_hunter_thug")
+CreatureTemplates:addCreatureTemplate(bh_brigand_leader, "bh_brigand_leader")

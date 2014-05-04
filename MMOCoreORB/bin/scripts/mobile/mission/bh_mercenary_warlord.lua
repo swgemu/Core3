@@ -21,8 +21,8 @@ bh_mercenary_warlord = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
-	creatureBitmask = PACK + KILLER + STALKER,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
