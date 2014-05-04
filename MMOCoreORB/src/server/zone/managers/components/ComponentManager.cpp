@@ -56,6 +56,7 @@
 #include "server/zone/objects/tangible/components/DroidCustomKitObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/SaberInventoryContainerComponent.h"
 #include "server/zone/objects/tangible/components/generic/LootSchematicAttributeListComponent.h"
+#include "server/zone/objects/tangible/components/RingObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/RobeObjectAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/SkillBuffObjectAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/SkillBuffObjectMenuComponent.h"
@@ -158,6 +159,8 @@ ComponentManager::ComponentManager() {
 
 	components.put("AttributeListComponent", new AttributeListComponent());
 	components.put("LootSchematicAttributeListComponent", new LootSchematicAttributeListComponent());
+
+	components.put("RingObjectMenuComponent", new RingObjectMenuComponent());
 
 	components.put("RobeObjectAttributeListComponent", new RobeObjectAttributeListComponent());
 

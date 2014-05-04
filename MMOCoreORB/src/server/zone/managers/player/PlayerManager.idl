@@ -227,6 +227,57 @@ class PlayerManager extends Observer implements Logger {
 	public native void lootAll(CreatureObject player, CreatureObject creature);
 	
 	/**
+	 * Starts the ProposeUnitySession
+	 * @param askingPlayer Player iniating the proposal
+	 * @param respondingPlayer Player responding to the proposal
+	 * @param askingPlayerRing The ring object selected by the player iniating the propsal
+	 * @pre askingPlayer locked
+	 * @post askingPlayer locked
+	 */
+	public native void proposeUnity( CreatureObject askingPlayer, CreatureObject respondingPlayer, SceneObject askingPlayerRing );
+	
+	/**
+	 * Responder has denied unity
+	 * @param respondingPlayer Player responding to the proposal
+	 * @pre respondingPlayer locked
+	 * @post respondingPlayer locked
+	 */
+	public native void denyUnity(CreatureObject respondingPlayer);
+
+	/**
+	 * Responder has accepted unity;  Prompt for ring
+	 * @param respondingPlayer Player responding to the proposal
+	 * @pre respondingPlayer locked
+	 * @post respondingPlayer locked
+	 */
+	public native void acceptUnity(CreatureObject respondingPlayer);
+	
+	/**
+	 * Responder has selected a ring; Exchange rings with asker and assign as spouse
+	 * @param respondingPlayer Player responding to the proposal
+	 * @pre respondingPlayer locked
+	 * @post respondingPlayer locked
+	 */
+	public native void completeUnity(CreatureObject respondingPlayer, unsigned long respondingPlayerRing);	
+	
+	/**
+	 * Cancel the propose unity session
+	 * @param respondingPlayer Player responding to the proposal
+	 * @param askingPlayer Player iniating the proposal
+	 * @pre respondingPlayer and askingPlayer locked
+	 * @post respondingPlayer and askingPlayerlocked
+	 */
+	protected native void cancelProposeUnitySession(CreatureObject respondingPlayer, CreatureObject askingPlayer);
+	
+	/**
+	 * Nullify unity
+	 * @param Player requesting divorce
+	 * @pre player locked
+	 * @post player locked
+	 */
+	public native void grantDivorce(CreatureObject player);	
+	
+	/**
 	 * Enhances the patients attribute by a specified amount for a specified duration.
 	 * @param patient The patient to enhance.
 	 * @param attribute The attribute to enhance.

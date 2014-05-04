@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/managers/mission/DestroyMissionLairObserver.cpp \
+core3_IDLS =	autogen/server/zone/objects/player/sessions/ProposeUnitySession.cpp \
+				autogen/server/zone/managers/mission/DestroyMissionLairObserver.cpp \
 				autogen/server/zone/objects/tangible/pharmaceutical/VitalityPack.cpp \
 				autogen/server/zone/objects/creature/buffs/GallopBuff.cpp \
 				autogen/server/zone/managers/creature/PetManager.cpp \
@@ -430,6 +431,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/SaberInventoryContainerComponent.cpp \
 		server/zone/objects/tangible/components/VehicleCustomKitObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/DroidCustomKitObjectMenuComponent.cpp \
+		server/zone/objects/tangible/components/RingObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/RobeObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/SkillBuffObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/ShellfishHarvesterMenuComponent.cpp \

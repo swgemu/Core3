@@ -42,6 +42,7 @@
 
 
 object_tangible_wearables_ring_ring_mark_hero = object_tangible_wearables_ring_shared_ring_mark_hero:new {
+	objectMenuComponent = {"cpp", "RingObjectMenuComponent"},
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
 				"object/creature/player/human_male.iff",
