@@ -30,6 +30,7 @@ public:
 	const static int SURVEY = 18;
 	const static int SETSTRUCTUREACCESSFEE = 19;
 	const static int VENDORADBARKING = 20;
+	const static int PROPOSEUNITY = 21;
 
 };
 

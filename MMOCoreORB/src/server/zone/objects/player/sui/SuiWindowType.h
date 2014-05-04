@@ -240,6 +240,8 @@ public:
 	static const uint16 CUSTOMIZE_KIT = 1015;//listbox to select FRAME or TRIM
 	static const uint16 MOUNT_GROWTH_ARREST = 1016;
 	static const uint16 HOLO_EMOTE_HELP = 1017;
+	static const uint16 PROPOSE_UNITY = 1018;
+	static const uint16 SELECT_UNITY_RING = 1019;
 };
 
 #endif /*SuiWindowType_H_*/

@@ -49,6 +49,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 void PlayerObjectMenuComponent::fillObjectMenuResponse(
 		SceneObject* sceneObject, ObjectMenuResponse* menuResponse,
@@ -81,6 +82,11 @@ void PlayerObjectMenuComponent::fillObjectMenuResponse(
 					"@radial_performance:watch_stop");
 	}
 
+	// Allow admins to grant divorce to married players
+	if( creature->getPlayerObject() != NULL && creature->getPlayerObject()->isMarried() && player->getPlayerObject()->isPrivileged() ){
+		menuResponse->addRadialMenuItem(117, 3, "@unity:mnu_divorce"); // "Divorce"
+	}
+
 }
 
 int PlayerObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
@@ -111,6 +117,12 @@ int PlayerObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	case 51:
 		player->executeObjectControllerAction(0x5041F83A,
 				sceneObject->getObjectID(), ""); // teach
+		break;
+
+	case 117:
+		Locker( ownerPlayer, player );
+		PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
+		playerManager->grantDivorce( ownerPlayer );
 		break;
 
 	}

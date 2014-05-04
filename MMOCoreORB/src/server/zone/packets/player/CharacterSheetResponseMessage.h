@@ -97,7 +97,7 @@ public:
 			insertAscii("");
 		}
 
-		insertUnicode(""); //Spouse Name
+		insertUnicode(ghost->getSpouseName()); //Spouse Name
 		insertInt(ghost->getLotsRemaining()); //Lots Remaining
 
 		insertInt(player->getFaction()); //Faction CRC (or hashCode?)
