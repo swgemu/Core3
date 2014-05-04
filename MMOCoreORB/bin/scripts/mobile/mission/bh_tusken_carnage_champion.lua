@@ -1,17 +1,17 @@
-bh_spiderclan_auspex = Creature:new {
-	objectName = "@mob/creature_names:spider_nightsister_spell_weaver",
-	socialGroup = "spider_nightsister",
-	pvpFaction = "spider_nightsister",
-	faction = "spider_nightsister",
-	level = 107,
-	chanceHit = 1,
-	damageMin = 645,
-	damageMax = 1000,
-	baseXp = 10174,
-	baseHAM = 24000,
-	baseHAMmax = 30000,
+bh_tusken_carnage_champion = Creature:new {
+	objectName = "@mob/creature_names:tusken_fort_tusken_champion",
+	socialGroup = "tusken_raider",
+	pvpFaction = "tusken_raider",
+	faction = "tusken_raider",
+	level = 116,
+	chanceHit = 3.85,
+	damageMin = 750,
+	damageMax = 1210,
+	baseXp = 11015,
+	baseHAM = 43000,
+	baseHAMmax = 53000,
 	armor = 2,
-	resists = {55,100,100,75,100,100,90,55,-1},
+	resists = {85,60,30,100,-1,100,-1,-1,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -22,26 +22,25 @@ bh_spiderclan_auspex = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HEALER,
+	creatureBitmask = PACK + HERD + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_dathomir_spider_nightsister_spellweaver.iff"},
+	templates = {"object/mobile/tusken_raider.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3500000},
-				{group = "crystals_quality", chance = 500000},
-				{group = "color_crystals", chance = 500000},
-				{group = "melee_weapons", chance = 1000000},
+				{group = "junk", chance = 1000000},
+				{group = "tusken_common", chance = 4000000},
+				{group = "wearables_all", chance = 1500000},
+				{group = "bone_armor", chance = 750000},
+				{group = "chitin_armor", chance = 750000},
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000},
-				{group = "pistols", chance = 1000000},
-				{group = "rifles", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "wearables_all", chance = 500000}
+				{group = "color_crystals", chance = 500000},
+				{group = "crystals_select", chance = 500000}
 			},
-			lootChance = 4800000
+			lootChance = 4300000
 		},
 		{
 			groups = {
@@ -61,16 +60,16 @@ bh_spiderclan_auspex = Creature:new {
 				{group = "crystals_select", chance = 500000},
 				{group = "crystals_good", chance = 500000},
 				{group = "color_crystals", chance = 2500000},
-				{group = "melee_weapons", chance = 2000000},
+				{group = "armor_all", chance = 2000000},
 				{group = "armor_attachments", chance = 1500000},
 				{group = "clothing_attachments", chance = 1500000}
 			},
 			lootChance = 6000000
 		}
 	},
-	weapons = {"mixed_force_weapons"},
+	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,pikemanmaster,forcewielder)
+	attacks = merge(marksmanmaster,brawlermaster,fencermaster,riflemanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(bh_spiderclan_auspex, "bh_spiderclan_auspex")
+CreatureTemplates:addCreatureTemplate(bh_tusken_carnage_champion, "bh_tusken_carnage_champion")

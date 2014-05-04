@@ -1,16 +1,16 @@
-bh_feral_force_wielder = Creature:new {
-	objectName = "@mob/creature_names:feral_force_wilder",
-	socialGroup = "force",
+bh_dark_adept = Creature:new {
+	objectName = "@mob/creature_names:dark_adept",
+	socialGroup = "Dark Jedi",
 	pvpFaction = "",
 	faction = "",
-	level = 115,
-	chanceHit = 1,
-	damageMin = 820,
-	damageMax = 1350,
-	baseXp = 10921,
-	baseHAM = 24000,
-	baseHAMmax = 30000,
-	armor = 1,
+	level = 120,
+	chanceHit = 47.5,
+	damageMin = 945,
+	damageMax = 1600,
+	baseXp = 13178,
+	baseHAM = 50000,
+	baseHAMmax = 61000,
+	armor = 2,
 	resists = {80,80,80,80,80,80,80,80,-1},
 	meatType = "",
 	meatAmount = 0,
@@ -22,25 +22,27 @@ bh_feral_force_wielder = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
+	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_feral_force_wielder.iff"},
+	templates = {"object/mobile/dressed_dark_jedi_human_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "crystals_poor", chance = 500000},
-				{group = "color_crystals", chance = 500000},
-				{group = "holocron_dark", chance = 500000},
-				{group = "holocron_light", chance = 500000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "armor_attachments", chance = 1000000},
-				{group = "clothing_attachments", chance = 1000000},
-				{group = "wearables_all", chance = 1000000}
+				{group = "holocron_dark", chance = 400000},
+				{group = "holocron_light", chance = 400000},
+				{group = "crystals_premium", chance = 400000},
+				{group = "color_crystals", chance = 1000000},
+				{group = "rifles", chance = 1300000},
+				{group = "pistols", chance = 1300000},
+				{group = "melee_weapons", chance = 1300000},
+				{group = "armor_attachments", chance = 900000},
+				{group = "clothing_attachments", chance = 900000},
+				{group = "carbines", chance = 1300000},
+				{group = "wearables_rare", chance = 800000}
 			},
-			lootChance = 4500000
+			lootChance = 5500000
 		},
 		{
 			groups = {
@@ -60,16 +62,16 @@ bh_feral_force_wielder = Creature:new {
 				{group = "crystals_select", chance = 500000},
 				{group = "crystals_good", chance = 500000},
 				{group = "color_crystals", chance = 2500000},
-				{group = "melee_weapons", chance = 2000000},
+				{group = "armor_all", chance = 2000000},
 				{group = "armor_attachments", chance = 1500000},
 				{group = "clothing_attachments", chance = 1500000}
 			},
 			lootChance = 6000000
-		},			
+		}
 	},
-	weapons = {"mixed_force_weapons"},
+	weapons = {"dark_jedi_weapons_gen2"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster)
+	attacks = merge(lightsabermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(bh_feral_force_wielder, "bh_feral_force_wielder")
+CreatureTemplates:addCreatureTemplate(bh_dark_adept, "bh_dark_adept")
