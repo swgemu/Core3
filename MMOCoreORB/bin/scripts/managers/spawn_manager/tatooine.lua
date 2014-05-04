@@ -318,7 +318,7 @@ tatooine_regions = {
 	{"two_stone_blocks",1880,-3028,{1,20},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"underground_fire",-3268,2689,{1,20},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"valley_of_the_wind",0,0,{1,0},UNDEFINEDAREA,1},
-	{"village_ruins",5716,1878,{1,75},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
+	{"village_ruins",5695,1877,{1,200},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"w_dune_sea_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"w_dune_sea_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"w_dune_sea_3",0,0,{1,0},UNDEFINEDAREA,1},
