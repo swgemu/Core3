@@ -163,8 +163,7 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 			creo->stopEntertaining();
 	}
 
-	if (creo->getPlayerObject()->isJedi())
-	{
+	if (creo->getPlayerObject().get() != NULL && creo->getPlayerObject()->isJedi()) {
 		if ((object->isRobeObject() && cast<RobeObject*>( object)->getSkillRequired() != "") || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon()))
 			VisibilityManager::instance()->increaseVisibility(creo);
 	}
