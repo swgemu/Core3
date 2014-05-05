@@ -1408,8 +1408,6 @@ void PlayerObjectImplementation::doRecovery() {
 		} else {
 			info("keeping dead linked player in game");
 		}
-	} else if (isOffline()) {
-		return;
 	}
 
 	creature->activateHAMRegeneration();
