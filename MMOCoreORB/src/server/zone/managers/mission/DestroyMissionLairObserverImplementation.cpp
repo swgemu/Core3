@@ -64,6 +64,9 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 	VectorMap<String, int> objectsToSpawn; // String mobileTemplate, int number to spawn
 
 	if (spawnNumber == 4) {
+		if (System::random(100) > 4)
+			return false;
+
 		VectorMap<String, int>* mobs = lairTemplate->getBossMobiles();
 
 		for (int i = 0; i < mobs->size(); i++) {
