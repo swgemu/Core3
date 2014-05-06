@@ -194,6 +194,11 @@ public:
 
 				LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairHashCode);
 
+				if (lair == NULL) {
+					creature->sendSystemMessage("You must specify a valid lair template.");
+					return GENERALERROR;
+				}
+
 				unsigned int faction = lair->getFaction();
 
 				CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
