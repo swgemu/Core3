@@ -205,22 +205,29 @@ function RaceTrack:resetBestTimeEventHandler()
 end
 
 function RaceTrack:createResetPlayerUnfinishedEvent(pObject)
-    createEvent(self.trackConfig.expiryTime, self.trackConfig.className, "resetPlayerUnfinishedEventHandler",pObject)
+    createEvent(self.trackConfig.expiryTime*1000, self.trackConfig.className, "resetPlayerUnfinishedEventHandler",pObject)
     if self.trackConfig.debugMode==1 then
       printf("Created Reset Player CallBack Event for :" .. self.trackConfig.trackName .. " in \n")
     end
 end
 function RaceTrack:resetPlayerUnfinishedEventHandler(pObject)
+  ObjectManager.withCreaturePlayerObject(pObject, function(playerObject)
     local startTime = tonumber(readScreenPlayData(pObject, self.trackConfig.trackName , "starttime"))
     if not(startTime == nil) then 
       local time = getTimestampMilli()
-      if  math.abs((time/1000) - (startTime/1000)) > self.trackConfig.expiryTime then
+      if  math.abs((time/1000) - (startTime/1000)) > (self.trackConfig.expiryTime-5) then
+        local lastWaypointID =  readScreenPlayData(pObject, self.trackConfig.trackName, "waypointID")
         clearScreenPlayData(pObject,self.trackConfig.trackName )
+        if lastWaypointID=="" then
+          return nil -- Somethings gone wrong
+        end
+        playerObject:removeWaypoint(tonumber(lastWaypointID),true)
         if self.trackConfig.debugMode==1 then
           printf("Reset Player for :" .. self.trackConfig.trackName .. "\n")
         end
       end 
     end
+  end)
 end
 
 return RaceTrack
