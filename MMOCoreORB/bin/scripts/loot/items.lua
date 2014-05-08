@@ -439,6 +439,7 @@ includeFile("items/painting/valley_view_painting.lua")
 
 --quest sub-folder
 includeFile("items/quest/waypoint_datapad.lua")
+includeFile("items/quest/theater_datapad.lua")
 
 --recycler sub-folder
 includeFile("items/recycler/agitator_motor_schematic.lua")
