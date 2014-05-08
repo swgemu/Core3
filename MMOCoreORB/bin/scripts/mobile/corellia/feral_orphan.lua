@@ -26,7 +26,7 @@ feral_orphan = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/dire_cat_hue.iff"},
+	templates = {"object/mobile/dire_cat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/narglatch_hue.iff",
 	lootGroups = {},
 	weapons = {},
