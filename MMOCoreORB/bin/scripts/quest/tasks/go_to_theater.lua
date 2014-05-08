@@ -35,7 +35,8 @@ GoToTheater = Task:new {
 	despawnTime = 0,
 	activeAreaRadius = 0,
 	onFailedSpawn = nil,
-	onSuccessfulSpawn = nil
+	onSuccessfulSpawn = nil,
+	onEnteredActiveArea = nil
 }
 
 -- Setup the active area around the theater.
@@ -66,6 +67,7 @@ function GoToTheater:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothin
 		local storedActiveAreaId = readData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
 		ObjectManager.withSceneObject(pActiveArea, function(activeArea)
 			if storedActiveAreaId == activeArea:getObjectID() then
+				Logger:log("Player entered active area of " .. self.taskName .. " theater.", LT_INFO)
 				local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
 				self:callFunctionIfNotNil(self.onEnteredActiveArea, nil, pCreatureObject, spawnedObjects)
 			end
@@ -99,7 +101,7 @@ function GoToTheater:taskStart(pCreatureObject)
 						if waypointId ~= nil then
 							writeData(creatureObject:getObjectID() .. self.taskName .. WAYPOINT_ID_STRING, waypointId)
 							createEvent(self.despawnTime, "handleDespawnTheater", self.taskName, pCreatureObject)
-							self:callFunctionIfNotNil(self.onSuccessfulSpawn, nil, pCreatureObject)
+							self:callFunctionIfNotNil(self.onSuccessfulSpawn, nil, pCreatureObject, spawnedMobilesList)
 							return true
 						end
 					end
