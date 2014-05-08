@@ -236,7 +236,7 @@ describe("GoToTheater", function()
 							it("Should call the onSuccessfulSpawn function.", function()
 								testGoToTheater:start(pCreatureObject)
 
-								assert.spy(testGoToTheater.onSuccessfulSpawn).was.called_with(testGoToTheater, pCreatureObject)
+								assert.spy(testGoToTheater.onSuccessfulSpawn).was.called_with(testGoToTheater, pCreatureObject, spawnedMobilesList)
 							end)
 
 							it("Should not finish the task.", function()
