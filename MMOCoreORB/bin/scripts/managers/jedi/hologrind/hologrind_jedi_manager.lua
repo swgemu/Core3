@@ -69,7 +69,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the created player.
 function HologrindJediManager:onPlayerCreated(pCreatureObject)
 	local skillList = HologrindJediManager.getGrindableProfessionList()
-	HologrindJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		for i = 1, NUMBEROFPROFESSIONSTOMASTER, 1 do
 			local numberOfSkillsInList = table.getn(skillList)
 			local skillNumber = math.random(1, numberOfSkillsInList)
@@ -83,7 +83,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player which should get its number of mastered professions counted.
 -- @return the number of mastered hologrind professions.
 function HologrindJediManager.getNumberOfMasteredProfessions(pCreatureObject)
-	return HologrindJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+	return ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		local professions = playerObject:getHologrindProfessions()
 		local masteredNumberOfProfessions = 0
 		for i = 1, table.getn(professions), 1 do
@@ -99,7 +99,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player to check if he is jedi.
 -- @return returns if the player is jedi or not.
 function HologrindJediManager.isJedi(pCreatureObject)
-	return HologrindJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+	return ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		return playerObject:isJedi()
 	end)
 end
@@ -119,7 +119,7 @@ end
 -- Award skill and jedi status to the player.
 -- @param pCreatureObject pointer to the creature object of the player who unlocked jedi.
 function HologrindJediManager.awardJediStatusAndSkill(pCreatureObject)
-	HologrindJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		awardSkill(pCreatureObject, "force_title_jedi_novice")
 		playerObject:setJediState(1)
 	end)
@@ -176,19 +176,22 @@ end
 -- @param pCreatureObject pointer to the creature object of the player who used the holocron.
 function HologrindJediManager.sendHolocronMessage(pCreatureObject)
 	if HologrindJediManager.getNumberOfMasteredProfessions(pCreatureObject) >= MAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON then
-		HologrindJediManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 			-- The Holocron is quiet. The ancients' knowledge of the Force will no longer assist you
   			-- on your journey. You must continue seeking on your own.
 			creatureObject:sendSystemMessage("@jedi_spam:holocron_quiet")
 		end)
 		return true
 	else
-		HologrindJediManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
+		ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 			local professions = playerObject:getHologrindProfessions()
 			for i = 1, table.getn(professions), 1 do
 				if not playerObject:hasBadge(professions[i]) then
 					local professionText = HologrindJediManager.getProfessionStringIdFromBadgeNumber(professions[i])
-					creatureObject:sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)
+					ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)					
++							creatureObject:sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)
++					end)
++					break
 				end
 			end
 		end)
