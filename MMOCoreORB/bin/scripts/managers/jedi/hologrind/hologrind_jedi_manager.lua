@@ -189,9 +189,9 @@ function HologrindJediManager.sendHolocronMessage(pCreatureObject)
 				if not playerObject:hasBadge(professions[i]) then
 					local professionText = HologrindJediManager.getProfessionStringIdFromBadgeNumber(professions[i])
 					ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)					
-+							creatureObject:sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)
-+					end)
-+					break
+							creatureObject:sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)
+					end)
+					break
 				end
 			end
 		end)
