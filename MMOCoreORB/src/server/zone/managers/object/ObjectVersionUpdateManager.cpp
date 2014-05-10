@@ -39,6 +39,10 @@ int ObjectVersionUpdateManager::run() {
 		updateStructurePermissionLists();
 		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 4);
 		return 0;
+	} else if (version == INITIAL_DATABASE_VERSION + 4) {
+		updateCityTreasuryToDouble();
+		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 5);
+		return 0;
 	}  else {
 
 		info("database on latest version : " + String::valueOf(version), true);
@@ -454,7 +458,6 @@ void ObjectVersionUpdateManager::setResidence(uint64 buildingID, bool isResidenc
 	}
 }
 
-
 void ObjectVersionUpdateManager::updateCityTreasury(){
 
 	info("---------------MOdifying City Treasury---------------------",true);
@@ -499,7 +502,67 @@ void ObjectVersionUpdateManager::updateCityTreasury(){
 
 
 				} else {
-					info("Error... city " + String::valueOf(objectID) + " doesn't have regionname variable",true);
+					info("Error... city " + String::valueOf(objectID) + " doesn't have cityTreasury variable",true);
+				}
+			}
+
+			objectData.clear();
+
+
+		}
+
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	}
+
+}
+
+void ObjectVersionUpdateManager::updateCityTreasuryToDouble(){
+
+	info("---------------MOdifying City Treasury---------------------",true);
+	info("Converting treasury to double for all cities ", true);
+	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
+	ObjectInputStream objectData(2000);
+
+	String className;
+	ObjectDatabaseIterator iterator(database);
+
+	uint64 objectID = 0;
+	int count = 0;
+	try {
+		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
+
+			String className;
+			try {
+
+				if (!Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)) {
+
+					objectData.clear();
+					continue;
+				}
+			} catch (...) {
+				objectData.clear();
+				continue;
+			}
+			float funds;
+			double floatFunds = 5;
+
+			if (className == "CityRegion") {
+				count++;
+				printf("\r\tUpdating city treasury [%d] / [?]\t", count);
+				if ( Serializable::getVariable<float>(String("CityRegion.cityTreasury").hashCode(), &funds, &objectData)){
+
+					floatFunds = funds;
+					ObjectOutputStream newFunds;
+					TypeInfo<double>::toBinaryStream(&floatFunds, &newFunds );
+					ObjectOutputStream* test = changeVariableData(String("CityRegion.cityTreasury").hashCode(), &objectData, &newFunds);
+					test->reset();
+					database->putData(objectID, test, NULL);
+
+
+				} else {
+					info("Error... city " + String::valueOf(objectID) + " doesn't have cityTreasury variable",true);
 				}
 			}
 
