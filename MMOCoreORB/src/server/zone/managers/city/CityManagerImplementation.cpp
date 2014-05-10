@@ -618,7 +618,7 @@ void CityManagerImplementation::depositToCityTreasury(CityRegion* city,
 		return;
 	}
 
-	float currentTreasury = city->getCityTreasury();
+	double currentTreasury = city->getCityTreasury();
 
 	if ((int)currentTreasury + total > 100000000) {
 		creature->sendSystemMessage("The maximum treasury a city can have is 100.000.000");
