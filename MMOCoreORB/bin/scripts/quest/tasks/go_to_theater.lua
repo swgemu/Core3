@@ -39,6 +39,18 @@ GoToTheater = Task:new {
 	onEnteredActiveArea = nil
 }
 
+-- Get the spawned mobile list for the theater.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @return the spawned mobile list for the theater.
+function GoToTheater:getSpawnedMobileList(pCreatureObject)
+	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		Logger:log("Getting the spawned mobile list for " .. self.taskName .. " theater.", LT_INFO)
+		local theaterId = readData(creatureObject:getObjectID() .. self.taskName .. THEATER_ID_STRING)
+		local pTheater = getSceneObject(theaterId)
+		return SpawnMobiles.getSpawnedMobiles(pTheater, self.taskName)
+	end)
+end
+
 -- Setup the active area around the theater.
 -- @param pCreatureObject pointer to the creature object for whom the theater is created for.
 -- @param spawnPoint the coordinates to spawn the active area at.
@@ -68,7 +80,7 @@ function GoToTheater:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothin
 		ObjectManager.withSceneObject(pActiveArea, function(activeArea)
 			if storedActiveAreaId == activeArea:getObjectID() then
 				Logger:log("Player entered active area of " .. self.taskName .. " theater.", LT_INFO)
-				local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
+				local spawnedObjects = self:getSpawnedMobileList(pCreatureObject)
 				self:callFunctionIfNotNil(self.onEnteredActiveArea, nil, pCreatureObject, spawnedObjects)
 			end
 		end)

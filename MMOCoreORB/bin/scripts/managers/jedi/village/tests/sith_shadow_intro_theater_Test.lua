@@ -3,8 +3,12 @@ local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local QuestManagerMocks = require("managers.quest.mocks.quest_manager_mocks")
 local SpawnMobilesMocks = require("utils.mocks.spawn_mobiles_mocks")
 
+local THEATER_ID_STRING = "theaterId"
+
 describe("SithShadowIntroTheater", function()
 	local pCreatureObject = { "creatureObjectPointer" }
+	local creatureObject
+	local playerObjectId = 12345678
 	local pFirstSithShadow = { "firstSithShadowObjectPointer" }
 	local pSecondSithShadow = { "spawnedMobile2Pointer" }
 	local firstSithShadowObject
@@ -15,6 +19,8 @@ describe("SithShadowIntroTheater", function()
 	local secondSithShadowId = 23456
 	local pDatapad = { "datapadPointer" }
 	local datapad
+	local theaterObjectId = 45678901
+	local pTheater = { "theaterObjectPointer" }
 
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
@@ -33,6 +39,10 @@ describe("SithShadowIntroTheater", function()
 		QuestManagerMocks.mocks.before_each()
 		SpawnMobilesMocks.mocks.before_each()
 
+		creatureObject = {}
+		creatureObject.getObjectID = spy.new(function() return playerObjectId end)
+		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObject
+
 		firstSithShadowObject = {}
 		firstSithShadowObject.setFollowObject = spy.new(function() end)
 		firstSithShadowObject.getObjectID = spy.new(function() return firstSithShadowId end)
@@ -45,6 +55,18 @@ describe("SithShadowIntroTheater", function()
 		secondSithShadowObject.getObjectID = spy.new(function() return secondSithShadowId end)
 		DirectorManagerMocks.creatureObjects[pSecondSithShadow] = secondSithShadowObject
 		DirectorManagerMocks.aiAgents[pSecondSithShadow] = secondSithShadowObject
+
+		readData = spy.new(function(key)
+			if key == playerObjectId .. SithShadowIntroTheater.taskName .. THEATER_ID_STRING then
+				return theaterObjectId
+			end
+		end)
+
+		getSceneObject = spy.new(function(id)
+			if id == theaterObjectId then
+				return pTheater
+			end
+		end)
 	end)
 
 	describe("onEnteredActiveArea", function()
@@ -79,7 +101,7 @@ describe("SithShadowIntroTheater", function()
 			it("Should get the list of spawned sith shadows for the looter.", function()
 				SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
-				assert.spy(SpawnMobilesMocks.getSpawnedMobiles).was.called_with(pCreatureObject, SithShadowIntroTheater.taskName)
+				assert.spy(SpawnMobilesMocks.getSpawnedMobiles).was.called_with(pTheater, SithShadowIntroTheater.taskName)
 			end)
 
 			describe("and the player has a list of spawned sith shadows", function()
