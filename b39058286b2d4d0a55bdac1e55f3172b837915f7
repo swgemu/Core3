@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3a3291f1_db742a9e",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-10T11:10:34Z",
+      "side": 1,
+      "message": "You need to require the ObjectManager into a local variable.",
+      "revId": "b39058286b2d4d0a55bdac1e55f3172b837915f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_3b3e8eb9",
         "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
         "patchSetId": 1
