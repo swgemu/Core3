@@ -1,3 +1,4 @@
+local ObjectManager = require("managers.object.object_manager")
 JediManager = require("managers.jedi.jedi_manager")
 
 jediManagerName = "HologrindJediManager"
