@@ -40,7 +40,13 @@ local NUMBER_OF_SPAWNS_STRING = "_number_of_spawns"
 -- @return true if the prefix is free to use.
 function SpawnMobiles.isPrefixFree(pSceneObject, prefix)
 	return ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
-		return readData(sceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING) ~= PREFIX_IN_USE
+		local inUse = readData(sceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING)
+		if inUse == PREFIX_IN_USE then
+			Logger:log(sceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING .. " = true")
+		else
+			Logger:log(sceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING .. " = false")
+		end
+		return inUse ~= PREFIX_IN_USE
 	end)
 end
 

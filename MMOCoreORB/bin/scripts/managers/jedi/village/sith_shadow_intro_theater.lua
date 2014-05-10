@@ -28,7 +28,7 @@ SithShadowIntroTheater = GoToTheater:new {
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return true if the sith shadow is the first one spawned for the player.
 function SithShadowIntroTheater:isTheFirstSithShadowOfThePlayer(pSithShadow, pCreatureObject)
-	local spawnedSithShadows = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
+	local spawnedSithShadows = self:getSpawnedMobileList(pCreatureObject)
 
 	if spawnedSithShadows ~= nil then
 		return ObjectManager.withCreatureObject(spawnedSithShadows[1], function(sithShadowInList)
@@ -41,7 +41,7 @@ function SithShadowIntroTheater:isTheFirstSithShadowOfThePlayer(pSithShadow, pCr
 	end
 end
 
--- Create the waypoint data pad as loot on the sith shadow.
+-- Create the waypoint datapad as loot on the sith shadow.
 -- @param pSithShadow pointer to the creature object of the sith shadow.
 function SithShadowIntroTheater:addWaypointDatapadAsLoot(pSithShadow)
 	ObjectManager.withInventoryPointer(pSithShadow, function(pInventory)
@@ -59,6 +59,7 @@ function SithShadowIntroTheater:onLoot(pLootedCreature, pLooter, nothing)
 	if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
 		self:addWaypointDatapadAsLoot(pLootedCreature)
 		QuestManager.completeQuest(pLooter, QuestManager.quests.FS_THEATER_CAMP)
+		QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_2)
 		return 1
 	end
 
@@ -75,6 +76,7 @@ function SithShadowIntroTheater:onEnteredActiveArea(pCreatureObject, spawnedSith
 			mobile:setFollowObject(pCreatureObject)
 		end)
 	end)
+	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_2)
 end
 
 -- Event handler for the successful spawn event.

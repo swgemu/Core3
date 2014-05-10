@@ -152,7 +152,8 @@ describe("Sith Shadow Encounter", function()
 				it("Should complete the sith shadow ambush quests.", function()
 					SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
-					assert.spy(QuestManagerMocks.completeQuest).was.called(2)
+					assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.TwO_MILITARY)
+					assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_1)
 				end)
 			end)
 
@@ -215,7 +216,9 @@ describe("Sith Shadow Encounter", function()
 			it("Should reset the sith shadow ambush quests.", function()
 				SithShadowEncounter:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
 
-				assert.spy(QuestManagerMocks.resetQuest).was.called(2)
+				assert.spy(QuestManagerMocks.resetQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.TwO_MILITARY)
+				assert.spy(QuestManagerMocks.resetQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.LOOT_DATAPAD_1)
+				assert.spy(QuestManagerMocks.resetQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_1)
 			end)
 
 			it("Should send spatial chat about returning the crystal.", function()
@@ -317,7 +320,7 @@ describe("Sith Shadow Encounter", function()
 			it("Should check if the player object has looted a datapad.", function()
 				SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
 
-				assert.spy(QuestManagerMocks.hasCompletedQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.LOOT_DATAPAD_1)
+				assert.spy(QuestManagerMocks.hasCompletedQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_1)
 			end)
 
 			describe("and the player has looted a datapad", function()
@@ -341,6 +344,12 @@ describe("Sith Shadow Encounter", function()
 					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
 
 					assert.spy(datapad.destroyObjectFromWorld).was.called_with(datapad)
+				end)
+
+				it("Should complete the loot datapad 1 quests.", function()
+					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+
+					assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.LOOT_DATAPAD_1)
 				end)
 			end)
 
