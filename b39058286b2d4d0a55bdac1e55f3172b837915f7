@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_3b3e8eb9",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-10T10:31:45Z",
+      "side": 1,
+      "message": "This function should take both creatureObject and playerObject.\n\nThen you can remove the extra withCreatureObject that you added below.",
+      "revId": "b39058286b2d4d0a55bdac1e55f3172b837915f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_1b4bd25a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-10T10:31:45Z",
+      "side": 1,
+      "message": "Remove the + characters here.",
+      "revId": "b39058286b2d4d0a55bdac1e55f3172b837915f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
