@@ -56,11 +56,13 @@ end
 -- @return 1 if the correct player looted the creature to remove the observer, 0 otherwise to keep the observer.
 function SithShadowIntroTheater:onLoot(pLootedCreature, pLooter, nothing)
 	Logger:log("Looting the sith shadow.", LT_INFO)
-	if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
-		self:addWaypointDatapadAsLoot(pLootedCreature)
-		QuestManager.completeQuest(pLooter, QuestManager.quests.FS_THEATER_CAMP)
-		QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_2)
-		return 1
+	if QuestManager.hasActiveQuest(pLooter, QuestManager.quests.FS_THEATER_CAMP) then
+		if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
+			self:addWaypointDatapadAsLoot(pLootedCreature)
+			QuestManager.completeQuest(pLooter, QuestManager.quests.FS_THEATER_CAMP)
+			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_2)
+			return 1
+		end
 	end
 
 	return 0
@@ -86,6 +88,30 @@ end
 function SithShadowIntroTheater:onSuccessfulSpawn(pCreatureObject, spawnedSithShadowsList)
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
 	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedSithShadowsList[1])
+	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
+end
+
+-- Handle the event PLAYERKILLED.
+-- @param pCreatureObject pointer to the creature object of the killed player.
+-- @param pKiller pointer to the creature object of the killer.
+-- @param noting unused variable for the default footprint of event handlers.
+-- @return 1 if the player was killed by one of the sith shadows, otherwise 0 to keep the observer.
+function SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pKiller, nothing)
+	Logger:log("Player was killed.", LT_INFO)
+	if SpawnMobiles.isFromSpawn(pCreatureObject, SithShadowIntroTheater.taskName, pKiller) then
+		OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+		spatialChat(pKiller, SITH_SHADOW_MILITARY_TAKE_CRYSTAL)
+		OldManEncounter:start(pCreatureObject)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.TWO_MILITARY)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_1)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.FS_THEATER_CAMP)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_2)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_2)
+		return 1
+	end
+
+	return 0
 end
 
 return SithShadowIntroTheater

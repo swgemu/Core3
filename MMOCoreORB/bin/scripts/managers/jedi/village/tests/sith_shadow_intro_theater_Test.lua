@@ -2,6 +2,7 @@ local SithShadowIntroTheater = require("managers.jedi.village.sith_shadow_intro_
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local QuestManagerMocks = require("managers.quest.mocks.quest_manager_mocks")
 local SpawnMobilesMocks = require("utils.mocks.spawn_mobiles_mocks")
+local OldManEncounterMocks = require("managers.jedi.village.mocks.old_man_encounter_mocks")
 
 local THEATER_ID_STRING = "theaterId"
 
@@ -26,18 +27,21 @@ describe("SithShadowIntroTheater", function()
 		DirectorManagerMocks.mocks.setup()
 		QuestManagerMocks.mocks.setup()
 		SpawnMobilesMocks.mocks.setup()
+		OldManEncounterMocks.mocks.setup()
 	end)
 
 	teardown(function()
 		DirectorManagerMocks.mocks.teardown()
 		QuestManagerMocks.mocks.teardown()
 		SpawnMobilesMocks.mocks.teardown()
+		OldManEncounterMocks.mocks.teardown()
 	end)
 
 	before_each(function()
 		DirectorManagerMocks.mocks.before_each()
 		QuestManagerMocks.mocks.before_each()
 		SpawnMobilesMocks.mocks.before_each()
+		OldManEncounterMocks.mocks.before_each()
 
 		creatureObject = {}
 		creatureObject.getObjectID = spy.new(function() return playerObjectId end)
@@ -99,77 +103,107 @@ describe("SithShadowIntroTheater", function()
 
 				assert.spy(createObserver).was.called_with(LOOTCREATURE, SithShadowIntroTheater.taskName, "onLoot", pFirstSithShadow)
 			end)
+
+			it("Should register an observer for OBJECTDESTRUCTION on the player.", function()
+				SithShadowIntroTheater:onSuccessfulSpawn(pCreatureObject, spawnedSithShadowList)
+
+				assert.spy(createObserver).was.called_with(OBJECTDESTRUCTION, SithShadowIntroTheater.taskName, "onPlayerKilled", pCreatureObject)
+			end)
 		end)
 	end)
 
 	describe("onLoot", function()
 		describe("When called with a pointer to a creature and a pointer to the looter", function()
-			it("Should get the list of spawned sith shadows for the looter.", function()
+			it("Should check if the player has the encounter quest active.", function()
 				SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
-				assert.spy(SpawnMobilesMocks.getSpawnedMobiles).was.called_with(pTheater, SithShadowIntroTheater.taskName)
+				assert.spy(QuestManagerMocks.hasActiveQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.FS_THEATER_CAMP)
 			end)
 
-			describe("and the player has a list of spawned sith shadows", function()
+			describe("and the player has the quest active", function()
 				before_each(function()
-					SpawnMobilesMocks.getSpawnedMobiles = spy.new(function() return spawnedSithShadowList end)
+					QuestManagerMocks.hasActiveQuest = spy.new(function() return true end)
 				end)
 
-				it("Should get the id of the first sith shadow in the list", function()
-					SithShadowIntroTheater:onLoot(pSecondSithShadow, pCreatureObject, 0)
+				it("Should get the list of spawned sith shadows for the looter.", function()
+					SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
-					assert.spy(firstSithShadowObject.getObjectID).was.called_with(firstSithShadowObject)
+					assert.spy(SpawnMobilesMocks.getSpawnedMobiles).was.called_with(pTheater, SithShadowIntroTheater.taskName)
 				end)
 
-				it("Should get the id of the looted creature", function()
-					SithShadowIntroTheater:onLoot(pSecondSithShadow, pCreatureObject, 0)
-
-					assert.spy(secondSithShadowObject.getObjectID).was.called_with(secondSithShadowObject)
-				end)
-
-				describe("and both ids are identical", function()
-					it("Should create loot in the inventory of the sith shadow.", function()
-						SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0)
-
-						assert.spy(createLoot).was.called_with(pInventory, "sith_shadow_intro_theater_datapad", 0, true)
+				describe("and the player has a list of spawned sith shadows", function()
+					before_each(function()
+						SpawnMobilesMocks.getSpawnedMobiles = spy.new(function() return spawnedSithShadowList end)
 					end)
 
-					it("Should return 1 to remove the observer.", function()
-						assert.same(1, SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0))
+					it("Should get the id of the first sith shadow in the list", function()
+						SithShadowIntroTheater:onLoot(pSecondSithShadow, pCreatureObject, 0)
+
+						assert.spy(firstSithShadowObject.getObjectID).was.called_with(firstSithShadowObject)
 					end)
 
-					it("Should complete the quests.", function()
+					it("Should get the id of the looted creature", function()
+						SithShadowIntroTheater:onLoot(pSecondSithShadow, pCreatureObject, 0)
+
+						assert.spy(secondSithShadowObject.getObjectID).was.called_with(secondSithShadowObject)
+					end)
+
+					describe("and both ids are identical", function()
+						it("Should create loot in the inventory of the sith shadow.", function()
+							SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0)
+
+							assert.spy(createLoot).was.called_with(pInventory, "sith_shadow_intro_theater_datapad", 0, true)
+						end)
+
+						it("Should return 1 to remove the observer.", function()
+							assert.same(1, SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0))
+						end)
+
+						it("Should complete the quests.", function()
+							SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0)
+
+							assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.FS_THEATER_CAMP)
+							assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_2)
+						end)
+					end)
+
+					describe("and both ids are not identical", function()
+						it("Should not create loot in the inventory of the looted sith shadow.", function()
+							SithShadowIntroTheater:onLoot(pSecondSithShadow, pCreatureObject, 0)
+
+							assert.spy(createLoot).was.not_called()
+						end)
+
+						it("Should return 0 to keep the observer.", function()
+							assert.same(0, SithShadowIntroTheater:onLoot(pSecondSithShadow, pCreatureObject, 0))
+						end)
+					end)
+
+					it("Should complete the sith shadow ambush quests.", function()
 						SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
 						assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.FS_THEATER_CAMP)
-						assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_2)
 					end)
 				end)
 
-				describe("and both ids are not identical", function()
+				describe("and the player has no spawned sith shadows", function()
+					before_each(function()
+						SpawnMobilesMocks.getSpawnedMobiles = spy.new(function() return nil end)
+					end)
+
 					it("Should not create loot in the inventory of the looted sith shadow.", function()
-						SithShadowIntroTheater:onLoot(pSecondSithShadow, pCreatureObject, 0)
+						SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
 						assert.spy(createLoot).was.not_called()
 					end)
 
 					it("Should return 0 to keep the observer.", function()
-						assert.same(0, SithShadowIntroTheater:onLoot(pSecondSithShadow, pCreatureObject, 0))
+						assert.same(0, SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0))
 					end)
-				end)
-
-				it("Should complete the sith shadow ambush quests.", function()
-					SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0)
-
-					assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.FS_THEATER_CAMP)
 				end)
 			end)
 
-			describe("and the player has no spawned sith shadows", function()
-				before_each(function()
-					SpawnMobilesMocks.getSpawnedMobiles = spy.new(function() return nil end)
-				end)
-
+			describe("and the player does not have the quest active", function()
 				it("Should not create loot in the inventory of the looted sith shadow.", function()
 					SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
@@ -179,6 +213,77 @@ describe("SithShadowIntroTheater", function()
 				it("Should return 0 to keep the observer.", function()
 					assert.same(0, SithShadowIntroTheater:onLoot(pFirstSithShadow, pCreatureObject, 0))
 				end)
+			end)
+		end)
+	end)
+
+	describe("onPlayerKilled", function()
+		it("Should check if the killer is from the sith shadow spawn of the player.", function()
+			SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
+
+			assert.spy(SpawnMobilesMocks.isFromSpawn).was.called_with(pCreatureObject, SithShadowIntroTheater.taskName, pFirstSithShadow)
+		end)
+
+		describe("and the killer is one of the sith shadows of the player", function()
+			before_each(function()
+				SpawnMobilesMocks.isFromSpawn = spy.new(function() return true end)
+			end)
+
+			it("Should remove the crystal from the player.", function()
+				SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
+
+				assert.spy(OldManEncounterMocks.removeForceCrystalFromPlayer).was.called_with(OldManEncounterMocks, pCreatureObject)
+			end)
+
+			it("Should restart the old man encounter.", function()
+				SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
+
+				assert.spy(OldManEncounterMocks.start).was.called_with(OldManEncounterMocks, pCreatureObject)
+			end)
+
+			it("Should reset the sith intro theater quests.", function()
+				SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
+
+				assert.spy(QuestManagerMocks.resetQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.TWO_MILITARY)
+				assert.spy(QuestManagerMocks.resetQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.LOOT_DATAPAD_1)
+				assert.spy(QuestManagerMocks.resetQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_1)
+				assert.spy(QuestManagerMocks.resetQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.FS_THEATER_CAMP)
+				assert.spy(QuestManagerMocks.resetQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.LOOT_DATAPAD_2)
+				assert.spy(QuestManagerMocks.resetQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_2)
+			end)
+
+			it("Should send spatial chat about returning the crystal.", function()
+				SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
+
+				assert.spy(spatialChat).was.called_with(pFirstSithShadow, SITH_SHADOW_MILITARY_TAKE_CRYSTAL)
+			end)
+
+			it("Should return 1 to remove the observer.", function()
+				assert.same(1, SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0))
+			end)
+		end)
+
+		describe("and the killer is not one of the sith shadows of the player", function()
+			it("Should not remove the crystal from the player.", function()
+				SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
+
+				assert.spy(OldManEncounterMocks.removeForceCrystalFromPlayer).was.not_called()
+			end)
+
+			it("Should not restart the old man encounter.", function()
+				SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
+
+				assert.spy(OldManEncounterMocks.start).was.not_called()
+			end)
+
+			it("Should not reset the sith shadow intro theater quests.", function()
+				SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
+
+				assert.spy(QuestManagerMocks.resetQuest).was.not_called()
+			end)
+
+			it("Should return 0 to keep the observer.", function()
+				assert.same(0, SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0))
 			end)
 		end)
 	end)

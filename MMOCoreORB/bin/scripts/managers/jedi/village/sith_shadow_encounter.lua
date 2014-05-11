@@ -63,11 +63,13 @@ end
 -- @return 1 if the correct player looted the creature to remove the observer, 0 otherwise to keep the observer.
 function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
 	Logger:log("Looting the sith shadow.", LT_INFO)
-	if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
-		self:addWaypointDatapadAsLoot(pLootedCreature)
-		QuestManager.completeQuest(pLooter, QuestManager.quests.TwO_MILITARY)
-		QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_1)
-		return 1
+	if QuestManager.hasActiveQuest(pLooter, QuestManager.quests.TwO_MILITARY) then
+		if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
+			self:addWaypointDatapadAsLoot(pLootedCreature)
+			QuestManager.completeQuest(pLooter, QuestManager.quests.TwO_MILITARY)
+			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_1)
+			return 1
+		end
 	end
 
 	return 0
