@@ -16,8 +16,8 @@ SithShadowEncounter = Encounter:new {
 	-- Encounter properties
 	--minimumTimeUntilEncounter = 12 * 60 * 60 * 1000, -- 12 hours
 	--maximumTimeUntilEncounter = 24 * 60 * 60 * 1000, -- 24 hours
-	minimumTimeUntilEncounter = 5 * 60 * 1000, -- 12 hours
-	maximumTimeUntilEncounter = 10 * 60 * 1000, -- 24 hours
+	minimumTimeUntilEncounter = 1 * 60 * 1000, -- 12 hours
+	maximumTimeUntilEncounter = 1 * 60 * 1000, -- 24 hours
 	--encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	spawnObjectList = {
@@ -66,7 +66,7 @@ function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
 	if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
 		self:addWaypointDatapadAsLoot(pLootedCreature)
 		QuestManager.completeQuest(pLooter, QuestManager.quests.TwO_MILITARY)
-		QuestManager.completeQuest(pLooter, QuestManager.quests.LOOT_DATAPAD_1)
+		QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_1)
 		return 1
 	end
 
@@ -86,6 +86,7 @@ function SithShadowEncounter:onPlayerKilled(pCreatureObject, pKiller, nothing)
 		OldManEncounter:start(pCreatureObject)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.TwO_MILITARY)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_1)
 		return 1
 	end
 
@@ -129,7 +130,7 @@ end
 -- @param pCreatureObject pointer to the creature object who activated the datapad.
 function SithShadowEncounter:useDatapad(pSceneObject, pCreatureObject)
 	Logger:log("Player used the looted datapad.", LT_INFO)
-	if QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1) then
+	if QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_1) then
 		SithShadowIntroTheater:start(pCreatureObject)
 		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 			creatureObject:sendSystemMessage(READ_DISK_1_STRING)
@@ -137,6 +138,7 @@ function SithShadowEncounter:useDatapad(pSceneObject, pCreatureObject)
 		ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
 			sceneObject:destroyObjectFromWorld()
 		end)
+		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 	else
 		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 			creatureObject:sendSystemMessage(READ_DISK_ERROR_STRING)
