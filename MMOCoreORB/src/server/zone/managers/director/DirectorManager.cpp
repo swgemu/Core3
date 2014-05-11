@@ -259,6 +259,10 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("WAYPOINTWHITE", WaypointObject::COLOR_WHITE);
 	luaEngine->setGlobalInt("WAYPOINTORANGE", WaypointObject::COLOR_ORANGE);
 
+	//Waypoint Special Types
+	luaEngine->setGlobalInt("WAYPOINTTHEMEPARK", WaypointObject::SPECIALTYPE_THEMEPARK);
+	luaEngine->setGlobalInt("WAYPOINTRACETRACK", WaypointObject::SPECIALTYPE_RACETRACK);
+
 	luaEngine->setGlobalInt("HEALTH", CreatureAttribute::HEALTH);
 	luaEngine->setGlobalInt("CONSTITUTION", CreatureAttribute::CONSTITUTION);
 	luaEngine->setGlobalInt("STAMINA", CreatureAttribute::STAMINA);

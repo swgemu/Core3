@@ -16,18 +16,17 @@ function RaceTrack:createRaceTrack()
 end
 
 function RaceTrack:startRacing(pObject)
-  ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject, playerObject)
-  	clearScreenPlayData(pObject,self.trackConfig.trackName )
-    self:createResetPlayerUnfinishedEvent(pObject)
-		local waypointID = playerObject:addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. "0",self.trackConfig.trackCheckpoint .. "0",self.trackConfig.waypoints[1].x,self.trackConfig.waypoints[1].y,WAYPOINTWHITE,true,true)
+	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject, playerObject)
+		clearScreenPlayData(pObject,self.trackConfig.trackName )
+		self:createResetPlayerUnfinishedEvent(pObject)
+		local waypointID = playerObject:addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. "0",self.trackConfig.trackCheckpoint .. "0",self.trackConfig.waypoints[1].x,self.trackConfig.waypoints[1].y,WAYPOINTWHITE,true,true,WAYPOINTRACETRACK)
 		--local time = os.time()
 		local time = getTimestampMilli()
 		writeScreenPlayData(pObject, self.trackConfig.trackName, "starttime", time)
-		writeScreenPlayData(pObject, self.trackConfig.trackName, "waypointID", waypointID)
 		writeScreenPlayData(pObject, self.trackConfig.trackName, "waypoint", 1)
 		creatureObject:sendSystemMessage("@theme_park/racing/racing:go_fly")
 		creatureObject:playMusicMessage("sound/music_combat_bfield_lp.snd")
-   end)
+	end)
 end
 
 function RaceTrack:processWaypoint(pActiveArea, pObject)
@@ -36,11 +35,6 @@ function RaceTrack:processWaypoint(pActiveArea, pObject)
 		if lastIndex ~= "" then
 			local index = self:getWaypointIndex(pActiveArea)
 			if tonumber(lastIndex)==index then
-				local lastWaypointID =  readScreenPlayData(pObject, self.trackConfig.trackName, "waypointID")
-				if lastWaypointID=="" then
-					return nil -- Somethings gone wrong
-				end
-				playerObject:removeWaypoint(tonumber(lastWaypointID),true)
 				if tonumber(index)==table.getn(self.trackConfig.waypoints) then
 					self:finalWaypoint(pActiveArea, pObject)
 				else
@@ -59,22 +53,22 @@ end
 
 function RaceTrack:actuallyProcessWaypoint(pObject,index)
 	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject,playerObject)
-		local waypointID = playerObject:addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. index,self.trackConfig.trackCheckpoint .. index,self.trackConfig.waypoints[index+1].x,self.trackConfig.waypoints[index+1].y,WAYPOINTWHITE,true,true)
+		local waypointID = playerObject:addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. index,self.trackConfig.trackCheckpoint .. index,self.trackConfig.waypoints[index+1].x,self.trackConfig.waypoints[index+1].y,WAYPOINTWHITE,true,true,WAYPOINTRACETRACK)
 		local seconds = self:getLaptime(pObject)
 		creatureObject:sendSystemMessage(self.trackConfig.trackLaptime .. index)
 		creatureObject:sendSystemMessage("Time " .. self:roundNumber(seconds/1000) .. "s")
-		writeScreenPlayData(pObject, self.trackConfig.trackName, "waypointID", waypointID)
 		writeScreenPlayData(pObject,self.trackConfig.trackName, "waypoint", index+1)
 		creatureObject:playMusicMessage("sound/music_combat_bfield_lp.snd")
 	end)
 end
 
 function  RaceTrack:finalWaypoint(pActiveArea, pObject)
-	ObjectManager.withCreatureObject(pObject, function(creatureObject)
+	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject,playerObject)
 		creatureObject:playMusicMessage("sound/music_combat_bfield_vict.snd")
 		self:checkPersonalTime(pObject)
 		self:checkServerRecordTime(pObject)
 		clearScreenPlayData(pObject,self.trackConfig.trackName )
+		playerObject:removeWaypointBySpecialType(WAYPOINTRACETRACK)
 	end)
 end
 function RaceTrack:getLaptime(pObject)
@@ -216,12 +210,8 @@ function RaceTrack:resetPlayerUnfinishedEventHandler(pObject)
     if not(startTime == nil) then 
       local time = getTimestampMilli()
       if  math.abs((time/1000) - (startTime/1000)) > (self.trackConfig.expiryTime-5) then
-        local lastWaypointID =  readScreenPlayData(pObject, self.trackConfig.trackName, "waypointID")
         clearScreenPlayData(pObject,self.trackConfig.trackName )
-        if lastWaypointID=="" then
-          return nil -- Somethings gone wrong
-        end
-        playerObject:removeWaypoint(tonumber(lastWaypointID),true)
+        playerObject:removeWaypointBySpecialType(WAYPOINTRACETRACK)
         if self.trackConfig.debugMode==1 then
           printf("Reset Player for :" .. self.trackConfig.trackName .. "\n")
         end

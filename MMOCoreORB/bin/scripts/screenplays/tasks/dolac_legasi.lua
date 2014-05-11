@@ -574,7 +574,7 @@ function dolac_legasi_handler:beginQuest1(player)
 	local pPlayerObject = player:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
 
-	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_1", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_1", dolac_legasi_screenplay.loc.prisoner.x, dolac_legasi_screenplay.loc.prisoner.y, WAYPOINTBLUE, true, true)
+	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_1", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_1", dolac_legasi_screenplay.loc.prisoner.x, dolac_legasi_screenplay.loc.prisoner.y, WAYPOINTBLUE, true, true, 0)
 
 	dolac_legasi_screenplay:setState(player, dolac_legasi_screenplay.states.quest1.started)
 end
@@ -583,7 +583,7 @@ function dolac_legasi_handler:beginQuest2(player)
 	local pPlayerObject = player:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
 
-	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_2", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_2", dolac_legasi_screenplay.loc.djk.x, dolac_legasi_screenplay.loc.djk.y, WAYPOINTBLUE, true, true)
+	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_2", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_2", dolac_legasi_screenplay.loc.djk.x, dolac_legasi_screenplay.loc.djk.y, WAYPOINTBLUE, true, true, 0)
 	dolac_legasi_screenplay:setState(player, dolac_legasi_screenplay.states.quest2.started)
 end
 
@@ -591,7 +591,7 @@ function dolac_legasi_handler:beginQuest3(player)
 	local pPlayerObject = player:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
 
-	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_3", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_3", dolac_legasi_screenplay.loc.djm.x, dolac_legasi_screenplay.loc.djm.y, WAYPOINTBLUE, true, true)
+	playerObject:addWaypoint("dathomir", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_name_3", "@static_npc/dathomir/dathomir_imperialprison_dolac_legasi:waypoint_description_3", dolac_legasi_screenplay.loc.djm.x, dolac_legasi_screenplay.loc.djm.y, WAYPOINTBLUE, true, true, 0)
 	dolac_legasi_screenplay:setState(player, dolac_legasi_screenplay.states.quest3.started)
 end
 

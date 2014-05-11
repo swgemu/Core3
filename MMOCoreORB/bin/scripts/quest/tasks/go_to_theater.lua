@@ -107,7 +107,7 @@ function GoToTheater:taskStart(pCreatureObject)
 				if spawnedMobilesList ~= nil then
 					if self:setupActiveArea(pCreatureObject, spawnPoint) then
 						local waypointId = ObjectManager.withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
-							return playerObject:addWaypoint(creatureObject:getZoneName(), self.waypointDescription, "", spawnPoint[1], spawnPoint[3], WAYPOINTWHITE, true, true)
+							return playerObject:addWaypoint(creatureObject:getZoneName(), self.waypointDescription, "", spawnPoint[1], spawnPoint[3], WAYPOINTWHITE, true, true, 0)
 						end)
 
 						if waypointId ~= nil then

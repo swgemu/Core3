@@ -1,4 +1,5 @@
 require("screenplays.screenplay")
+local ObjectManager = require("managers.object.object_manager")
 
 WAYPOINT_COLOR_PURPLE = 5
 SIT = 1
@@ -685,28 +686,14 @@ function ThemeParkLogic:getDefaultWaypointName(pConversingPlayer, direction)
 	end
 end
 
-function ThemeParkLogic:removeWaypoint(pConversingPlayer)
-	if pConversingPlayer ~= nil then
-		local creature = LuaCreatureObject(pConversingPlayer)
-		local pGhost = creature:getPlayerObject()
-		if pGhost ~= nil then
-			local ghost = LuaPlayerObject(pGhost)
-			local waypointID = readData(creature:getObjectID() .. "themePark:waypointID")
-			ghost:removeWaypoint(waypointID, true)
-		end
-	end
-end
-
 function ThemeParkLogic:updateWaypoint(pConversingPlayer, planetName, x, y, direction)
-	self:removeWaypoint(pConversingPlayer)
 	if pConversingPlayer ~= nil then
 		local creature = LuaCreatureObject(pConversingPlayer)
 		local pGhost = creature:getPlayerObject()
 		if pGhost ~= nil then
 			local ghost = LuaPlayerObject(pGhost)
 
-			waypointID = ghost:addWaypoint(planetName, self:getMissionDescription(pConversingPlayer, direction), "", x, y, WAYPOINT_COLOR_PURPLE, true, true)
-			writeData(creature:getObjectID() .. "themePark:waypointID", waypointID)
+			waypointID = ghost:addWaypoint(planetName, self:getMissionDescription(pConversingPlayer, direction), "", x, y, WAYPOINT_COLOR_PURPLE, true, true, WAYPOINTTHEMEPARK)
 		end
 	end
 end
@@ -966,7 +953,9 @@ function ThemeParkLogic:cleanUpMission(pConversingPlayer)
 		return false
 	end
 
-	self:removeWaypoint(pConversingPlayer)
+	ObjectManager.withCreaturePlayerObject(pConversingPlayer, function(playerObject)
+		playerObject:removeWaypointBySpecialType(WAYPOINTTHEMEPARK)
+	end)
 
 	local creature = LuaCreatureObject(pConversingPlayer)
 

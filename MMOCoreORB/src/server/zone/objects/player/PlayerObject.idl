@@ -467,7 +467,7 @@ class PlayerObject extends IntangibleObject {
 	 */
 	@local
 	public native WaypointObject addWaypoint(final string planet, float positionX, float positionY, boolean notifyClient = true);
-	
+
 	/**
 	 * Removes a waypoint from this player
 	 * @pre { this is locked }
@@ -476,7 +476,16 @@ class PlayerObject extends IntangibleObject {
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
 	public native void removeWaypoint(unsigned long waypointID, boolean notifyClient = true);
-	
+
+	/**
+	 * Removes a waypoint of a special type from this player
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint list doesnt contain a waypoint of the special type }
+	 * @param specialTypeID id of special type to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
+	public native void removeWaypointBySpecialType(int specialTypeID, boolean notifyClient = true);
+
 	/**
 	 * Adds new abilities commands to player
 	 * @pre { this is locked }

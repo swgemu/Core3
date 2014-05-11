@@ -24,6 +24,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "decreaseFactionStanding", &LuaPlayerObject::decreaseFactionStanding },
 		{ "addWaypoint", &LuaPlayerObject::addWaypoint },
 		{ "removeWaypoint", &LuaPlayerObject::removeWaypoint },
+		{ "removeWaypointBySpecialType", &LuaPlayerObject::removeWaypointBySpecialType },
 		{ "addRewardedSchematic", &LuaPlayerObject::addRewardedSchematic },
 		{ "addPermissionGroup", &LuaPlayerObject::addPermissionGroup },
 		{ "removePermissionGroup", &LuaPlayerObject::removePermissionGroup },
@@ -127,16 +128,20 @@ int LuaPlayerObject::decreaseFactionStanding(lua_State* L) {
 
 //addWaypoint(planet, name, desc, x, y, color, active, notifyClient)
 int LuaPlayerObject::addWaypoint(lua_State* L) {
-	String planet = lua_tostring(L, -8);
-	String customName = lua_tostring(L, -7);
-	String desc = lua_tostring(L, -6);
-	float x = lua_tonumber(L, -5);
-	float y = lua_tonumber(L, -4);
-	int color = lua_tointeger(L, -3);
-	bool active = lua_toboolean(L, -2);
-	bool notifyClient = lua_toboolean(L, -1);
+	String planet = lua_tostring(L, -9);
+	String customName = lua_tostring(L, -8);
+	String desc = lua_tostring(L, -7);
+	float x = lua_tonumber(L, -6);
+	float y = lua_tonumber(L, -5);
+	int color = lua_tointeger(L, -4);
+	bool active = lua_toboolean(L, -3);
+	bool notifyClient = lua_toboolean(L, -2);
+	int specialTypeID = lua_tointeger(L, -1);
 
-	ManagedReference<WaypointObject*> waypoint = realObject->addWaypoint(planet, x, y, false);
+	ManagedReference<WaypointObject*> waypoint = realObject->getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+	waypoint->setPlanetCRC(planet.hashCode());
+	waypoint->setPosition(x, 0, y);
+	waypoint->setSpecialTypeID(specialTypeID);
 	waypoint->setCustomObjectName(customName, false);
 	waypoint->setColor(color);
 	waypoint->setActive(active);
@@ -144,7 +149,7 @@ int LuaPlayerObject::addWaypoint(lua_State* L) {
 	if (!desc.isEmpty())
 		waypoint->setDetailedDescription(desc);
 
-	realObject->setWaypoint(waypoint, notifyClient);
+	realObject->addWaypoint(waypoint, false, notifyClient);
 
 	lua_pushinteger(L, waypoint->getObjectID());
 
@@ -156,6 +161,14 @@ int LuaPlayerObject::removeWaypoint(lua_State* L) {
 	bool notifyClient = lua_toboolean(L, -1);
 
 	realObject->removeWaypoint(waypointID, notifyClient);
+
+	return 0;
+}
+
+int LuaPlayerObject::removeWaypointBySpecialType(lua_State* L) {
+	int specialTypeID = lua_tointeger(L, -1);
+
+	realObject->removeWaypointBySpecialType(specialTypeID);
 
 	return 0;
 }

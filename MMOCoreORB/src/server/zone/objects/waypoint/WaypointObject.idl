@@ -34,6 +34,8 @@ class WaypointObject extends IntangibleObject {
 	public static final int SPECIALTYPE_FINDMYTRAINER = 4;
 	public static final int SPECIALTYPE_FINDOBJECT = 5;
 	public static final int SPECIALTYPE_RESOURCE = 6;
+	public static final int SPECIALTYPE_THEMEPARK = 7;
+	public static final int SPECIALTYPE_RACETRACK = 8;
 	
 	public WaypointObject() {
 		Logger.setLoggingName("WaypointObject");

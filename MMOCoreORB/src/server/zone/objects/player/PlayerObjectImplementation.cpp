@@ -688,6 +688,25 @@ void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyCl
 
 }
 
+void PlayerObjectImplementation::removeWaypointBySpecialType(int specialTypeID, bool notifyClient) {
+	uint64 waypointID = waypointList.getWaypointBySpecialType(specialTypeID);
+
+	while (waypointID != 0) {
+		if (notifyClient) {
+			PlayerObjectDeltaMessage8* msg = new PlayerObjectDeltaMessage8(this);
+			msg->startUpdate(1);
+			waypointList.drop(waypointID, msg, 1);
+			msg->close();
+
+			sendMessage(msg);
+		} else {
+			waypointList.drop(waypointID);
+		}
+
+		waypointID = waypointList.getWaypointBySpecialType(specialTypeID);
+	}
+
+}
 
 WaypointObject* PlayerObjectImplementation::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
 	ManagedReference<WaypointObject*> obj = getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
