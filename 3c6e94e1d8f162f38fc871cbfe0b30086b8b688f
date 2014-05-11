@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_3bda0e79",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3599,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-11T23:42:10Z",
+      "side": 1,
+      "message": "It\u0027s an edge case, but what happens if one or both rings are gone and the last item in each inventory is a wearable object? Neither will be NULL and they\u0027ll end up exchanging these other items if I\u0027m not mistaken. You need to either ensure that the objects will be NULL if the correct rings aren\u0027t found, or find a different way to verify the objects are the correct rings.",
+      "revId": "3c6e94e1d8f162f38fc871cbfe0b30086b8b688f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_1be75242",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3608,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-11T23:42:10Z",
+      "side": 1,
+      "message": "The transfer will fail if the responding player\u0027s inventory is full.\n\nIf you add one more true to the method arguments it will ignore the inventory limit and allow the transfer to happen regardless of whether the inventory is full or not.",
+      "revId": "3c6e94e1d8f162f38fc871cbfe0b30086b8b688f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_5bddda6f",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SessionFacadeType.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-11T23:42:10Z",
+      "side": 1,
+      "message": "Did you mean to set it to 21?",
+      "revId": "3c6e94e1d8f162f38fc871cbfe0b30086b8b688f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
