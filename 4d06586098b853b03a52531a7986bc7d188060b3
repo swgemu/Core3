@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_bb871e61",
+        "filename": "MMOCoreORB/src/server/zone/objects/region/CityRegion.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-11T02:08:42Z",
+      "side": 1,
+      "message": "Double does not exist according to idlc. Any idea what to use or if we can update it to support double?\n\nWe want to do this to avoid any truncation from the cityTreasury when adding small amounts to an already large value, i.e. 10 000 003 + 100 \u003d 10 000 100 (3 credits just dissapeard).",
+      "revId": "4d06586098b853b03a52531a7986bc7d188060b3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
