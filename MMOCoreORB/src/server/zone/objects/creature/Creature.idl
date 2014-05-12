@@ -238,7 +238,7 @@ class Creature extends AiAgent {
 			return 0;
 
 		if (isBaby())
-			return (super.npcTemplate.getBaseXp() / 10);
+			return 0;
 		else
 			return super.npcTemplate.getBaseXp();
 	}
