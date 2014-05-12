@@ -153,7 +153,7 @@ public:
 			checkRange = weapon->getMaxRange();
 		}
 
-		if (creature->isDead())
+		if (creature->isDead() || (creature->isPet() && creature->isIncapacitated()))
 			return INVALIDLOCOMOTION;
 
 		if (creature->isPlayerCreature()){
