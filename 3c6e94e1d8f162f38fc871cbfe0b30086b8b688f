@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a2f8d8d_6b26a1bc",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3599,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-05-13T03:39:10Z",
+      "side": 1,
+      "message": "Agree.  I\u0027ll fix it so that respondingRing and askingRing are non-null only if they pass the checks.",
+      "parentUuid": "3a3291f1_3bda0e79",
+      "revId": "3c6e94e1d8f162f38fc871cbfe0b30086b8b688f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_1be75242",
         "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1a2f8d8d_4b2be582",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3608,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-05-13T03:39:10Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "3a3291f1_1be75242",
+      "revId": "3c6e94e1d8f162f38fc871cbfe0b30086b8b688f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3291f1_5bddda6f",
         "filename": "MMOCoreORB/src/server/zone/objects/scene/SessionFacadeType.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2014-05-11T23:42:10Z",
       "side": 1,
       "message": "Did you mean to set it to 21?",
+      "revId": "3c6e94e1d8f162f38fc871cbfe0b30086b8b688f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a2f8d8d_2b20999a",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SessionFacadeType.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-05-13T03:39:10Z",
+      "side": 1,
+      "message": "Whoops.  Will fix.",
+      "parentUuid": "3a3291f1_5bddda6f",
       "revId": "3c6e94e1d8f162f38fc871cbfe0b30086b8b688f",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
