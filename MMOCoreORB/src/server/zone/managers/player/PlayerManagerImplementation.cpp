@@ -662,7 +662,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	if (attacker->getFaction() != 0) {
 		if (attacker->isPlayerCreature()) {
 			CreatureObject* attackerCreature = cast<CreatureObject*>(attacker);
-			//FactionManager::instance()->awardPvpFactionPoints()
 			PlayerObject* attackerGhost = attackerCreature->getPlayerObject();
 			PlayerObject* ghost = player->getPlayerObject();
 
@@ -680,8 +679,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	player->notifyObjectKillObservers(attacker);
 
-	/*Reference<Task*> task = new PlayerIncapacitationRecoverTask(player, true);
-	task->schedule(10 * 1000);*/
 }
 
 void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* player, int typeofdeath) {
@@ -885,8 +882,11 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	player->notifyObservers(ObserverEventType::PLAYERCLONED, player, 0);
 
 	// Jedi experience loss.
-	if (ghost->getJediState() > 1)
+	// TODO: REDO THIS. should be based on skillpoints/bh db	
+	
+/*	if (ghost->getJediState() > 1)
 		awardExperience(player, "jedi_general", -200000, true);
+*/		
 }
 
 void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player) {

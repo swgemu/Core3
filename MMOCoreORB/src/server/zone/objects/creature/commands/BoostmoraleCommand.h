@@ -83,8 +83,6 @@ public:
 		if (!inflictHAM(player, healthCost, actionCost, mindCost))
 			return GENERALERROR;
 
-//		shoutCommand(player, group);
-
 		int wounds[9] = {0,0,0,0,0,0,0,0,0};
 		if (!getWounds(player, group, wounds))
 			return GENERALERROR;

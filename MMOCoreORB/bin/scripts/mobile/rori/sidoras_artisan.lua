@@ -1,9 +1,8 @@
-sidoras_bey = Creature:new {
+sidoras_artisan = Creature:new {
 	objectName = "",
-	customName = "Sidoras Bey",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+	socialGroup = "Townsperson",
+	pvpFaction = "Townsperson",
+	faction = "",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -27,12 +26,12 @@ sidoras_bey = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_sidoras_bey.iff"},
+	templates = {"object/mobile/dressed_artisan_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "sidoras_bey_mission_giver_convotemplate",
+	conversationTemplate = "sidoras_bey_mission_target_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(sidoras_bey, "sidoras_bey")
+CreatureTemplates:addCreatureTemplate(sidoras_artisan, "sidoras_artisan")

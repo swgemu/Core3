@@ -1,9 +1,8 @@
-sidoras_bey = Creature:new {
-	objectName = "",
-	customName = "Sidoras Bey",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+sidoras_child = Creature:new {
+	objectName = "@mob/creature_names:leia_organa",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -27,12 +26,12 @@ sidoras_bey = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_sidoras_bey.iff"},
+	templates = {"object/mobile/leia_organa.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "sidoras_bey_mission_giver_convotemplate",
+	conversationTemplate = "sidoras_bey_mission_target_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(sidoras_bey, "sidoras_bey")
+CreatureTemplates:addCreatureTemplate(sidoras_child, "sidoras_child")
