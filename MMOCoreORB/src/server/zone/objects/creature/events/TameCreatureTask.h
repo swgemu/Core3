@@ -119,17 +119,18 @@ public:
 
 		controlDevice->setControlledObject(creature);
 
-		creature->setCustomObjectName("", false);
 		StringId s;
 		s.setStringId(creature->getObjectName()->getFullPath());
+
 		controlDevice->setObjectName(s);
 		controlDevice->setPetType(PetManager::CREATUREPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
 		controlDevice->setGrowthStage(1);
 		controlDevice->updateStatus(1);
-		datapad->transferObject(controlDevice, -1);
+		controlDevice->setCustomObjectName(creature->getCustomObjectName(), true);
 
+		datapad->transferObject(controlDevice, -1);
 		objectManager->persistSceneObjectsRecursively(creature, 1);
 
 		creature->setControlDevice(controlDevice);
