@@ -118,18 +118,29 @@ public:
 			return;
 
 		controlDevice->setControlledObject(creature);
-
 		creature->setCustomObjectName("", false);
+
 		StringId s;
 		s.setStringId(creature->getObjectName()->getFullPath());
+
 		controlDevice->setObjectName(s);
 		controlDevice->setPetType(PetManager::CREATUREPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
 		controlDevice->setGrowthStage(1);
 		controlDevice->updateStatus(1);
-		datapad->transferObject(controlDevice, -1);
 
+		String _pet_name = "";
+		_pet_name = "a " + s.getStringID() + " (baby)";
+
+		//Set pet name to indicate tamed baby
+		if (!_pet_name.isEmpty())
+		{
+			creature->setCustomObjectName(_pet_name, true);
+			controlDevice->setCustomObjectName(_pet_name, true);
+		}
+
+		datapad->transferObject(controlDevice, -1);
 		objectManager->persistSceneObjectsRecursively(creature, 1);
 
 		creature->setControlDevice(controlDevice);
