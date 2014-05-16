@@ -16,6 +16,24 @@
       "revId": "7d2947a47e7a16d79751b4301b87f5567630e191",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_8a30abe9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/TameCreatureTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 947
+      },
+      "writtenOn": "2014-05-16T08:34:33Z",
+      "side": 1,
+      "message": "I tried that and it didn\u0027t fix the issue completely as the datapad item still has no baby at the end.\n\nI could remove one line of my fix, but we still have to set the custom name of the control device.\n\nIf you\u0027d like I can remove the creature-\u003esetCustomObjectName call from within the brackets and remove the call above. But, the rest of the code still needs to be there.",
+      "parentUuid": "fa5d592f_ca36a3e7",
+      "revId": "7d2947a47e7a16d79751b4301b87f5567630e191",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
