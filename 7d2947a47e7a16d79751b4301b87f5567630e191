@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_ca36a3e7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/TameCreatureTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-16T07:49:24Z",
+      "side": 1,
+      "message": "If you want a tamed baby to retain the (baby) in it\u0027s name after it\u0027s been tamed, simply removing this line should do the trick. There\u0027s no need for all the rest.",
+      "revId": "7d2947a47e7a16d79751b4301b87f5567630e191",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
