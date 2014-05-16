@@ -46,6 +46,7 @@ which carries forward this exception.
 #define SETFACTIONSTANDINGCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/faction/FactionManager.h"
 
 class SetFactionStandingCommand : public QueueCommand {
 public:
@@ -56,7 +57,7 @@ public:
 	}
 
 	void sendInvalidParameterMessage(CreatureObject* creature){
-		creature->sendSystemMessage("Invalid parameter. Format is /setFactionStanding <player> <rebel | imperial> <value>");
+		creature->sendSystemMessage("Invalid parameter. Format is /setFactionStanding <player> <faction name> <value>");
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -96,7 +97,7 @@ public:
 		tokenizer.getStringToken(faction);
 
 		// check for valid rebel/imperial faction specification
-		if ( faction != "rebel" && faction != "imperial" ) {
+		if (!FactionManager::instance()->isFaction(faction)) {
 			sendInvalidParameterMessage(creature);
 			return INVALIDPARAMETERS;
 		}
@@ -124,19 +125,19 @@ public:
 		int intCurrentFaction = targetPlayer->getFactionStanding(faction);
 		int factionDif = intCurrentFaction - factionValue;
 
-		if ( factionValue >= 1 && factionValue <= 100000 && factionDif != 0) {
+		if ( factionValue >= -5000 && factionValue <= 100000 && factionDif != 0) {
 			if ( factionValue > intCurrentFaction)
 				targetPlayer->increaseFactionStanding(faction,factionValue-intCurrentFaction);
 			else
 				targetPlayer->decreaseFactionStanding(faction, intCurrentFaction - factionValue);
 
-			creature->sendSystemMessage("Faction standing set to " + String::valueOf(factionValue) + " for " + targetCreature->getFirstName());
+			creature->sendSystemMessage(faction + " faction standing set to " + String::valueOf(factionValue) + " for " + targetCreature->getFirstName());
 
 		} else {
 			if ( factionDif == 0 )
 				creature->sendSystemMessage("No faction change");
 			else
-				creature->sendSystemMessage("Invalid faction amount.  Must be between 1 and 100k");
+				creature->sendSystemMessage("Invalid faction amount.  Must be between -5000 and 100k");
 		}
 		return SUCCESS;
 	}
