@@ -70,6 +70,9 @@ public:
 		return rank >= factionRanks.getCount() - 1 || rank >= 15;
 	}
 
+	bool isEnemy(const String& faction1, const String& faction2);
+	bool isAlly(const String& faction1, const String& faction2);
+
 protected:
 	void loadFactionRanks();
 	void loadLuaConfig();

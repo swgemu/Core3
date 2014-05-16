@@ -176,3 +176,23 @@ int FactionManager::getFactionPointsCap(int rank) {
 
 	return MAX(1000, getRankCost(rank) * 20);
 }
+
+bool FactionManager::isEnemy(const String& faction1, const String& faction2) {
+
+	if (!factionMap.contains(faction1) || !factionMap.contains(faction2))
+		return false;
+
+	Faction* faction = factionMap.getFaction(faction1);
+
+	return faction->getEnemies()->contains(faction2);
+}
+
+bool FactionManager::isAlly(const String& faction1, const String& faction2) {
+
+	if (!factionMap.contains(faction1) || !factionMap.contains(faction2))
+		return false;
+
+	Faction* faction = factionMap.getFaction(faction1);
+
+	return faction->getAllies()->contains(faction2);
+}
