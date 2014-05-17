@@ -324,6 +324,8 @@ bool PlayerManagerImplementation::kickUser(const String& name, const String& adm
 
 	if(session != NULL)
 		session->disconnect(true);
+	else if (ghost != NULL)
+		ghost->disconnect(false, true);
 
 	/// 10 min ban
 	if(doBan) {
