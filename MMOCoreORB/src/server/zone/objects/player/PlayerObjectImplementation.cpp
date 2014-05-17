@@ -1427,6 +1427,9 @@ void PlayerObjectImplementation::doRecovery() {
 		} else {
 			info("keeping dead linked player in game");
 		}
+	} else if (creature != NULL && creature->getZone() != NULL && creature->getClient() == NULL) {
+		setLinkDead();
+		return;
 	}
 
 	creature->activateHAMRegeneration();
