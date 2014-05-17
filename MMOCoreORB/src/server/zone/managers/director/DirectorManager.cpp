@@ -245,6 +245,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("BADGEAWARDED", ObserverEventType::BADGEAWARDED);
 	luaEngine->setGlobalInt("FACTIONBASEFLIPPED", ObserverEventType::FACTIONBASEFLIPPED);
 	luaEngine->setGlobalInt("LOOTCREATURE", ObserverEventType::LOOTCREATURE);
+	luaEngine->setGlobalInt("SCREENPLAYSTATECHANGED", ObserverEventType::SCREENPLAYSTATECHANGED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
