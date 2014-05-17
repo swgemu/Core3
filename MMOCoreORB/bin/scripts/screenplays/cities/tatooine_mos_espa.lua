@@ -166,7 +166,6 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "eg6_power_droid",300,-2833.22,5,1899.71,245.01,0)
 	spawnMobile("tatooine", "eg6_power_droid",300,-2928.04,5,1977.68,330.633,0)
 	spawnMobile("tatooine", "eg6_power_droid",300,-2945.98,5,2470.9,186.376,0)
-	spawnMobile("tatooine", "eg6_power_droid",300,-2946.98,5,2470.9,169.897,0)
 	--{"giaal_itotr",60,-3102.7,5,2185,118,0, "npc_sitting_chair", ""},
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-2804,5,2237,315,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,-2836,5,2275,45,0)
