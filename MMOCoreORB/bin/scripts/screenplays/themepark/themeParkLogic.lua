@@ -10,7 +10,9 @@ FACTIONREBEL = 0x16148850
 ThemeParkLogic = ScreenPlay:new {
 	numberOfActs = 1,
 	npcMap = {},
+	waypointMap = {},
 	permissionMap = {},
+	sceneObjectMap = {},
 	className = "ThemeParkLogic",
 	screenPlayState = "theme_park_general",
 	distance = 1000,
@@ -21,6 +23,7 @@ ThemeParkLogic = ScreenPlay:new {
 
 function ThemeParkLogic:start()
 	self:spawnNpcs()
+	self:spawnSceneObjects()
 	self:permissionObservers()
 end
 
@@ -37,12 +40,31 @@ function ThemeParkLogic:spawnNpcs()
 	end
 end
 
+function ThemeParkLogic:spawnSceneObjects()
+	if self.sceneObjectMap ~= nil then
+		for i = 1, # self.sceneObjectMap do
+			local objectSpawnData = self.sceneObjectMap[i].spawnData
+			if isZoneEnabled(objectSpawnData.planetName) then
+				local pObject = spawnSceneObject(objectSpawnData.planetName, objectSpawnData.objectTemplate, objectSpawnData.x, objectSpawnData.z, objectSpawnData.y, objectSpawnData.cellID, objectSpawnData.dw, objectSpawnData.dx, objectSpawnData.dy, objectSpawnData.dz)
+				if pObject ~= nil and self.sceneObjectMap[i].customObjectName ~= nil and self.sceneObjectMap[i].customObjectName ~= "" then
+					luaObject = LuaSceneObject(pObject)
+					luaObject:setCustomObjectName(self.sceneObjectMap[i].customObjectName)
+				end
+				if pObject ~= nil and self.sceneObjectMap[i].objectIdLabel ~= nil and self.sceneObjectMap[i].objectIdLabel ~= "" then
+					luaObject = LuaSceneObject(pObject)
+					objectId = luaObject:getObjectID()
+					writeData(self.sceneObjectMap[i].objectIdLabel, objectId)
+				end
+			end
+		end
+	end
+end
+
 function ThemeParkLogic:permissionObservers()
 	for i = 1, # self.permissionMap, 1 do
 		local permission = self.permissionMap[i]
 		self:setupPermissionGroups(permission)
 		local pRegion = getRegion(permission.planetName, permission.regionName)
-
 		if pRegion ~= nil then
 			createObserver(ENTEREDAREA, self.className, "cellPermissionsObserver", pRegion)
 		end
@@ -119,6 +141,10 @@ function ThemeParkLogic:hasPermission(conditions, pCreature)
 			if self:hasMissionState(conditions[i].mission, conditions[i].missionState, pCreature) == false then
 				hasPermission = false
 			end
+		elseif conditions[i].permissionType == "npcState" then
+			if self:hasNpcMissionState(conditions[i].npcState, conditions[i].state, pCreature) == false then
+				hasPermission = false
+			end
 		end
 	end
 	return hasPermission
@@ -168,6 +194,19 @@ function ThemeParkLogic:hasMissionState(mission, missionState, pCreature)
 	else
 		return false
 	end
+end
+
+function ThemeParkLogic:hasNpcMissionState(npcState, state, pCreature)
+	if pCreature == nil then
+		return false
+	end
+
+	local creature = LuaCreatureObject(pCreature)
+	if creature:hasScreenPlayState(state, npcState) == 1 then
+		return true
+	end
+
+	return false
 end
 
 function ThemeParkLogic:getNpcNumber(pNpc)
@@ -854,7 +893,7 @@ function ThemeParkLogic:handleMissionReward(pConversingPlayer)
 			self:giveFaction(pConversingPlayer, reward.faction, reward.amount)
 		elseif reward.rewardType == "loot" then
 			self:giveLoot(pConversingPlayer, reward.lootGroup)
-		elseif reward.rewardType == "badge" then
+		elseif reward.cc == "badge" then
 			self:giveBadge(pConversingPlayer, reward.badge)
 		elseif reward.rewardType == "permission" then
 			self:givePermission(pConversingPlayer, reward.permissionGroup)
