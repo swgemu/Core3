@@ -25,6 +25,7 @@
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/loot/LootManager.h"
@@ -1678,13 +1679,37 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 
 	uint32 targetFaction = target->getFaction();
 
+	PlayerObject* ghost = target->getPlayerObject();
+
 	if (getFaction() != 0 && targetFaction != 0) {
-		PlayerObject* ghost = target->getPlayerObject();
 
 		if (ghost == NULL && (targetFaction != getFaction()))
 			return true;
 		else if (ghost != NULL && (targetFaction != getFaction()) && ghost->getFactionStatus() != FactionStatus::ONLEAVE)
 			return true;
+	}
+
+	String pvpFaction = getPvPFaction();
+
+	if (!pvpFaction.isEmpty()) {
+		if (target->isPlayerCreature() && ghost != NULL) {
+			float targetsStanding = ghost->getFactionStanding(pvpFaction);
+
+			if (targetsStanding <= -3000)
+				return true;
+			else if (targetsStanding >= 3000)
+				return false;
+
+		} else if (target->isAiAgent()) {
+			AiAgent* targetAi = cast<AiAgent*>(target);
+
+			if (targetAi != NULL) {
+				if (FactionManager::instance()->isEnemy(pvpFaction, targetAi->getPvPFaction()))
+					return true;
+				else
+					return false;
+			}
+		}
 	}
 
 	if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
