@@ -311,7 +311,7 @@ int LuaCreatureObject::setScreenPlayState(lua_State *L) {
 	uint64 stateToSet = lua_tointeger(L, -2);
 
 	realObject->setScreenPlayState(play, stateToSet | realObject->getScreenPlayState(play));
-
+	realObject->notifyObservers(ObserverEventType::SCREENPLAYSTATECHANGED, realObject);
 	return 0;
 }
 
@@ -321,6 +321,7 @@ int LuaCreatureObject::removeScreenPlayState(lua_State* L) {
 
 	if (realObject != NULL) {
 		realObject->setScreenPlayState(play, realObject->getScreenPlayState(play) & (~stateToClear));
+		realObject->notifyObservers(ObserverEventType::SCREENPLAYSTATECHANGED, realObject);
 	}
 	return 0;
 }
