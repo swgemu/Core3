@@ -70,8 +70,6 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 
 
 	--quest
-	spawnMobile("lok", "jinkins",60,3.07003,3.29302,-21.31,0,6595511)
-	spawnMobile("lok", "kole",60,-3,3.4,-19.6,0,6595511)
 	spawnMobile("lok", "nym_fuel_tech",0,374.599,11.9876,4986.77,31.5798,0)
 	spawnMobile("lok", "ramna",60,19.5548,-0.894995,-20.1381,20.176,8145379)
 	spawnMobile("lok", "warvog_arkon",60,-12.1246,1.6,-16.3553,291.827,8145361)
