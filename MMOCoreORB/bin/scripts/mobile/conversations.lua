@@ -14,6 +14,15 @@ includeFile("conversations/themepark/tutorial/stormtrooper_filler_conv.lua")
 includeFile("conversations/themepark/tutorial/panic_npc_1_conv.lua")
 includeFile("conversations/themepark/tutorial/protocol_droid_3po_silver_conv.lua")
 
+-- Nym Themepark
+includeFile("conversations/themepark/nym/berema_conv.lua")
+includeFile("conversations/themepark/nym/choster_conv.lua")
+includeFile("conversations/themepark/nym/jinkins_conv.lua")
+includeFile("conversations/themepark/nym/lok_hacker_conv.lua")
+includeFile("conversations/themepark/nym/nym_conv.lua")
+includeFile("conversations/themepark/nym/sergeant_moore_conv.lua")
+includeFile("conversations/themepark/nym/kole_conv.lua")
+
 -- Rebel Themepark
 includeFile("conversations/themepark/rebel/mission_giver_conv.lua")
 includeFile("conversations/themepark/rebel/mission_target_conv.lua")
