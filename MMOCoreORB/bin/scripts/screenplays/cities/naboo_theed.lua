@@ -281,7 +281,7 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "mott_calf", 300, math.random(10) + -4939.35, 6, math.random(10) + 3653.82, math.random(360), 0)
 
 	--ID Tent
-	spawnMobile("naboo", "trainer_merchant",0,-4.4,0.6,-4.0,82,189545)
+	--spawnMobile("naboo", "trainer_merchant",0,-4.4,0.6,-4.0,82,189545)
 
 	--Med Center
 	spawnMobile("naboo", "trainer_combatmedic",0,-16.4871,0.26,10.7738,176,1697364)
