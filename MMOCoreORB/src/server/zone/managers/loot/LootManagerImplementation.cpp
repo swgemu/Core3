@@ -239,6 +239,9 @@ int LootManagerImplementation::calculateLootCredits(int level) {
 
 TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject, int level, bool maxCondition) {
 
+	if(level < 1)
+		level = 1;
+
 	if(level > 300)
 		level = 300;
 
