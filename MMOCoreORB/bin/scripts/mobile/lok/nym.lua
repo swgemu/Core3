@@ -23,13 +23,13 @@ nym = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/nym.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "nymConvoTemplate",
 	attacks = {
 	}
 }
