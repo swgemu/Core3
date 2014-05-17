@@ -186,7 +186,7 @@ int VehicleObjectImplementation::calculateRepairCost(CreatureObject* player) {
 	if (player->getPlayerObject()->isPrivileged())
 		return 0;
 
-	return getConditionDamage() * 5;
+	return getConditionDamage() * 4;
 }
 
 int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
