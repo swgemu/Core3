@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_6a0577c1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/nym/themeParkNym.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-05-18T10:10:57Z",
+      "side": 1,
+      "message": "Please use the functions in the ObjectManager instead of calling LuaSceneObject, LuaCreatureObject, LuaPlayerObject etc directly. They contain nil checks and therefore improves the code so that the server doesn\u0027t crash if a nil object is being converted.",
+      "revId": "f7c6fce25c9ee9d6908d03b308bdf653192a5693",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
