@@ -436,7 +436,10 @@ void BountyMissionObjectiveImplementation::removeObserver(int observerNumber, un
 	}
 
 	ManagedReference<MissionObserver*> observer = getObserver(observerNumber);
-	creature->dropObserver(observerType, observer);
+
+	if (creature != NULL)
+	 creature->dropObserver(observerType, observer);
+
 	dropObserver(observer, true);
 }
 
