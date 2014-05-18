@@ -1295,14 +1295,12 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	while (!foundPosition && maximumNumberOfTries-- > 0) {
 		position = player->getWorldCoordinate(System::random(3000) + 1000, (float)System::random(360));
 
-		if (playerZone->isWithinBoundaries(position)) {
-			//Check if it is a position where you can build and away from any travel points.
-			if (playerZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
-				Reference<PlanetTravelPoint*> travelPoint = playerZone->getPlanetManager()->getNearestPlanetTravelPoint(position);
+		//Check if it is a position where you can build and away from any travel points.
+		if (playerZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
+			Reference<PlanetTravelPoint*> travelPoint = playerZone->getPlanetManager()->getNearestPlanetTravelPoint(position);
 
-				if (travelPoint->getArrivalPosition().distanceTo(position) > 1000.0f) {
-					foundPosition = true;
-				}
+			if (travelPoint->getArrivalPosition().distanceTo(position) > 1000.0f) {
+				foundPosition = true;
 			}
 		}
 	}
@@ -1610,10 +1608,7 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 	while (!found && retries > 0) {
 		position = player->getWorldCoordinate(System::random(radius), System::random(360));
 
-		if (targetZone->isWithinBoundaries(position)) {
-			found = targetZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL) &&
-					!targetZone->getPlanetManager()->isInWater(position.getX(), position.getY());
-		}
+		found = targetZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
 
 		retries--;
 	}
