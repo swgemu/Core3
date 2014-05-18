@@ -163,7 +163,9 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	//TODO: find correct string id
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
-	player->sendSystemMessage("Transmission Received: Mission Target has been located.  Mission waypoint has been updated to exact location");
+	if (player != NULL) {
+		player->sendSystemMessage("Transmission Received: Mission Target has been located.  Mission waypoint has been updated to exact location");
+	}
 
 	LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairTemplate.hashCode());
 
