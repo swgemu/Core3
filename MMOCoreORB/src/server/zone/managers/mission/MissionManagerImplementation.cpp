@@ -1471,7 +1471,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	if (zone == NULL)
 		return NULL;
 
-	Vector<Reference<LairSpawn*> >* availableLairList;
+	Vector<Reference<LairSpawn*> >* availableLairList = NULL;
 
 	if (type == MissionObject::DESTROY) {
 		String missionGroup;
