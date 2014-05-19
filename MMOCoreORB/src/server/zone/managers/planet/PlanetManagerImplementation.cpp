@@ -669,6 +669,9 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 
 	Vector3 targetPos(x, y, zone->getHeight(x, y));
 
+	if (!zone->isWithinBoundaries(targetPos))
+		return false;
+
 	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
 
 	for (int i = 0; i < activeAreas.size(); ++i) {

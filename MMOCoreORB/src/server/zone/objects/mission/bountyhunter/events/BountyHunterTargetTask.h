@@ -204,11 +204,8 @@ private:
 
 		Zone* zone = playerRef->getZone();
 
-		if (zone->isWithinBoundaries(position)) {
-			if (zone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL) &&
-					!zone->getPlanetManager()->isInWater(position.getX(), position.getY())) {
-				return true;
-			}
+		if (zone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
+			return true;
 		}
 
 		return true;
