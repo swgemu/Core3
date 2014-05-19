@@ -1767,6 +1767,17 @@ void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) 
 	}
 }
 
+Vector<uint64>* MissionManagerImplementation::getHuntersHuntingTarget(uint64 targetId) {
+	Locker listLocker(&playerBountyListMutex);
+
+	BountyTargetListElement* list = playerBountyList.get(targetId);
+
+	if (list != NULL)
+		return list->getActiveBountyHunters();
+
+	return NULL;
+}
+
 void MissionManagerImplementation::allocateMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager) {
 	//Lock mission spawn points.
 	Locker missionSpawnLocker(&missionNpcSpawnMap);

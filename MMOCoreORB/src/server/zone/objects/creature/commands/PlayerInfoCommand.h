@@ -13,6 +13,7 @@
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/mission/MissionManager.h"
 
 class PlayerInfoCommand {
 public:
@@ -90,6 +91,19 @@ public:
 
 				promptText << "@skl_n:" + stringKey << endl;
 			}
+
+			promptText << endl << "Visibility = " << ghost->getVisibility() << endl;
+
+			MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
+			Vector<uint64>* hunterList =  missionManager->getHuntersHuntingTarget(targetObject->getObjectID());
+
+			if (hunterList != NULL) {
+				for (int i = 0; i < hunterList->size(); i++) {
+					promptText << "Hunter #" << i << ": " << hunterList->get(i) << endl;
+				}
+			}
+
+			promptText << endl;
 		}
 
 		ManagedReference<SceneObject*> inventory = targetObject->getSlottedObject("inventory");
