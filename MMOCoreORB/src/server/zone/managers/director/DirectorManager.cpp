@@ -1020,6 +1020,8 @@ int DirectorManager::spatialMoodChat(lua_State* L) {
 	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -3);
 	int mood = lua_tonumber(L, -1);
 
+	Locker locker(creature);
+
 	if (lua_isuserdata(L, -2)) {
 		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -2);
 
