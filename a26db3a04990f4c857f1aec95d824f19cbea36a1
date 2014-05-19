@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_aa9ecf61",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-19T09:58:31Z",
+      "side": 1,
+      "message": "Use ObjectManager.withSceneObject here. You can encapsulate both of the if statements inside.",
+      "revId": "a26db3a04990f4c857f1aec95d824f19cbea36a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_ca910354",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-19T09:58:31Z",
+      "side": 1,
+      "message": "Use objectManager.withCreatureObject here",
+      "revId": "a26db3a04990f4c857f1aec95d824f19cbea36a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
