@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_0a039b74",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ObjectCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-20T06:13:21Z",
+      "side": 1,
+      "message": "May want to check for negative ranges just in case.",
+      "revId": "47a43c15fe70263cac25c915a89a8ae104883ed4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_eaf7278b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ObjectCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-20T06:13:21Z",
+      "side": 1,
+      "message": "Add a check for negative level.",
+      "revId": "47a43c15fe70263cac25c915a89a8ae104883ed4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_caf46389",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ObjectCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-20T06:13:21Z",
+      "side": 1,
+      "message": "I think you should allow this to overflow a player\u0027s inventory. That way if it\u0027s being used to distribute a reward after an event, a player with a full inventory won\u0027t be left out.",
+      "revId": "47a43c15fe70263cac25c915a89a8ae104883ed4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
