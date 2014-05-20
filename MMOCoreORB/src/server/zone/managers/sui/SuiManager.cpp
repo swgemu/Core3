@@ -491,17 +491,6 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				player->addDotState(CreatureState::ONFIRE, scob->getObjectID(), 100, CreatureAttribute::HEALTH, 60, 80, 0);
 			} else if (templatePath == "clear_dots") {
 				player->clearDots();
-			} else if (templatePath == "apply_states") {
-				ManagedReference<SceneObject*> scob = cbSui->getUsingObject();
-				player->setStunnedState(60); // CreatureState::STUNNED
-				player->setDizziedState(60); // CreatureState::DIZZY
-				player->setBlindedState(60); // CreatureState::BLINDED
-				player->setIntimidatedState(100, 60); // CreatureState::INTIMIDATED
-			} else if (templatePath == "clear_states") {
-				player->clearState(CreatureState::STUNNED, true);
-				player->clearState(CreatureState::DIZZY, true);
-				player->clearState(CreatureState::BLINDED, true);
-				player->clearState(CreatureState::INTIMIDATED, true);
 			} else if (templatePath == "max_xp") {
 				ghost->maximizeExperience();
 				player->sendSystemMessage("You have maximized all xp types.");
