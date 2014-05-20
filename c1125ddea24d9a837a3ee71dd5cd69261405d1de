@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_6a60d735",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-05-20T23:48:55Z",
+      "side": 1,
+      "message": "these returns you added will break broadcasting message for creatures/ai",
+      "revId": "c1125ddea24d9a837a3ee71dd5cd69261405d1de",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
