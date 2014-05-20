@@ -209,7 +209,9 @@ int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
 
 		int itemSize = item->getSize();
 
-		if (itemSize > 0)
+		if (itemSize > 50)
+			size += 50;
+		else if (itemSize > 0)
 			size += itemSize;
 		else
 			size++;

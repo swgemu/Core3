@@ -23,11 +23,13 @@ jinkins = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/jinkins.iff"},
 	lootGroups = {},
 	weapons = {},
+	conversationTemplate = "jinkinsConvoTemplate",
 	attacks = {}
 }
 
