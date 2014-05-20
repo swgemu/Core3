@@ -1510,8 +1510,6 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"Credits", "credits",
 			"Apply DOTs", "apply_dots",
 			"Clear DOTs", "clear_dots",
-			"Apply States", "apply_states",
-			"Clear States", "clear_states",
 			"Max XP", "max_xp",
 			"Faction Points",
 			{

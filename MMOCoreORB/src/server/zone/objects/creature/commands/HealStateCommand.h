@@ -139,12 +139,6 @@ public:
 	}
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StatePack* statePack) {
-
-		if (!isInBadState(creatureTarget)) {
-			creature->sendSystemMessage("Target has no states to remove.");
-			return false;
-		}
-
 		if (!creature->canTreatStates()) {
 			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
 			return false;
@@ -208,47 +202,23 @@ public:
 		return NULL;
 	}
 
-	uint64 getStateBasedOnModifier(const String& modifier) {
+	void parseModifier(const String& modifier, uint64& state, uint64& objectId) {
 		if (!modifier.isEmpty()) {
 			StringTokenizer tokenizer(modifier);
 			tokenizer.setDelimeter("|");
+
 			String stateName;
+
 			tokenizer.getStringToken(stateName);
-			return CreatureState::instance()->getState(stateName);
+
+			state = CreatureState::instance()->getState(stateName);
+
+			if (tokenizer.hasMoreTokens())
+				objectId = tokenizer.getLongToken();
+		} else {
+			state = CreatureState::INVALID;
+			objectId = 0;
 		}
-		else {
-			return CreatureState::INVALID;
-		}
-	}
-
-	bool isInBadState(CreatureObject* creatureTarget) {
-		return (creatureTarget->isStunned() ||
-				creatureTarget->isDizzied() ||
-				creatureTarget->isBlinded() ||
-				creatureTarget->isIntimidated() );
-	}
-
-	StatePack* getStatePackBasedOnStateAndInventory(CreatureObject* creature, CreatureObject* creatureTarget) {
-
-		StatePack* pack = NULL;
-
-		if (creatureTarget->isStunned() && pack == NULL) {
-			pack = findStatePack(creature, CreatureState::STUNNED);
-		}
-
-		if (creatureTarget->isDizzied() && pack == NULL) {
-			pack = findStatePack(creature, CreatureState::DIZZY);
-		}
-
-		if (creatureTarget->isBlinded() && pack == NULL) {
-			pack = findStatePack(creature, CreatureState::BLINDED);
-		}
-
-		if (creatureTarget->isIntimidated() && pack == NULL) {
-			pack = findStatePack(creature, CreatureState::INTIMIDATED);
-		}
-
-		return pack;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -274,7 +244,7 @@ public:
 		} else
 			object = creature;
 
-		CreatureObject* creatureTarget = cast<CreatureObject*>(object.get());
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(creatureTarget, creature);
 
@@ -282,25 +252,25 @@ public:
 			creatureTarget = creature;
 
 		uint64 state = CreatureState::INVALID;
+		uint64 objectId = 0;
+
+		parseModifier(arguments.toString(), state, objectId);
+
+		if (state == CreatureState::INVALID) {
+			creature->sendSystemMessage("@healing_response:healing_response_70"); //You must specify a valid state type.
+			return GENERALERROR;
+		}
+
+		SceneObject* inventory = creature->getSlottedObject("inventory");
+
 		ManagedReference<StatePack*> statePack = NULL;
 
-		if (!arguments.toString().isEmpty()) {
-			state = getStateBasedOnModifier(arguments.toString());
-			if (state == CreatureState::INVALID) {
-				creature->sendSystemMessage("@healing_response:healing_response_70"); //You must specify a valid state type.
-				return GENERALERROR;
-			}
+		if (inventory != NULL) {
+			statePack = inventory->getContainerObject(objectId).castTo<StatePack*>();
+		}
+
+		if (statePack == NULL)
 			statePack = findStatePack(creature, state);
-		}
-		else {
-			statePack = getStatePackBasedOnStateAndInventory(creature, creatureTarget);
-			if (statePack != NULL) {
-				state = statePack->getState();
-				if (state == CreatureState::INVALID) {
-					return GENERALERROR;
-				}
-			}
-		}
 
 		if (!canPerformSkill(creature, creatureTarget, statePack))
 			return GENERALERROR;
