@@ -48,6 +48,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/ZoneServer.h"
 
@@ -60,6 +61,7 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+		PlayerObject* playerObject = creature->getPlayerObject();
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -78,7 +80,7 @@ public:
 		if (object->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( object.get());
 
-			if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()))
+			if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()) || playerObject->isPrivileged())
 				groupManager->inviteToGroup(creature, player);
 		}
 

@@ -32,8 +32,14 @@ public:
 
 	void run() {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
+		ManagedReference<PlayerObject*> playerObject = NULL;
 
 		if (player == NULL)
+			return;
+
+		playerObject = player->getPlayerObject();
+
+		if (playerObject == NULL)
 			return;
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(targetToTrade);
@@ -45,7 +51,7 @@ public:
 
 		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
 
-		if (targetPlayer->getPlayerObject()->isIgnoring(player->getFirstName().toLowerCase()))
+		if (targetPlayer->getPlayerObject()->isIgnoring(player->getFirstName().toLowerCase()) && !playerObject->isPrivileged())
 			return;
 
 		PlayerObject* ghost = player->getPlayerObject();

@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "server/zone/packets/chat/ChatOnLeaveRoom.h"
 #include "server/zone/packets/chat/ChatOnEnteredRoom.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 void ChatRoomImplementation::sendTo(CreatureObject* player) {
 	ChatRoomList* crl = new ChatRoomList();
@@ -146,18 +147,26 @@ void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 
 void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, String& senderName) {
 	Locker locker(_this.get());
-
 	String lowerName = senderName.toLowerCase();
+	PlayerManager* playerManager = server->getPlayerManager();
+	ManagedReference<CreatureObject*> sender = NULL;
+	ManagedReference<PlayerObject*> senderPlayer = NULL;
+	sender = playerManager->getPlayer(lowerName);
+
+	if (sender == NULL)
+		return;
+
+	senderPlayer = sender->getPlayerObject();
 
 	for (int i = 0; i < playerList.size(); ++i) {
 		ManagedReference<CreatureObject*> player = playerList.get(i);
 
 		if (player){
-			PlayerObject* ghost = player->getPlayerObject();
-			if (ghost == NULL)
+			ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+			if (ghost == NULL || senderPlayer == NULL)
 				continue;
 
-			if (!ghost->isIgnoring(lowerName)) {
+			if (!ghost->isIgnoring(lowerName) || (senderPlayer->isPrivileged() && !(senderPlayer == ghost))) {
 				player->sendMessage(msg->clone());
 			}
 		}

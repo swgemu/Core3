@@ -124,7 +124,7 @@ public:
 		else if (recipient == "citizens") {
 
 			ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
-			PlayerObject* ghost = player->getPlayerObject();
+			ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 			if (ghost == NULL)
 				return 0;
 
@@ -181,8 +181,14 @@ public:
 
 	int sendMailToPlayer(const String& recipientName) {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
+		ManagedReference<PlayerObject*> sender = NULL;
 		
 		if (player == NULL)
+			return 0;
+
+		sender = player->getPlayerObject();
+
+		if (sender == NULL)
 			return 0;
 			
 		ChatManager* chatManager = server->getChatManager();
@@ -203,7 +209,7 @@ public:
 		CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
 		ManagedReference<PlayerObject*> ghost = receiverPlayer->getPlayerObject();
 
-		if (ghost == NULL || ghost->isIgnoring(player->getFirstName().toLowerCase())) {
+		if (ghost == NULL || ((ghost->isIgnoring(player->getFirstName().toLowerCase())) && !sender->isPrivileged())) {
 			StringIdChatParameter err("ui_pm", "recipient_ignored_prose");
 			err.setTT(recipientName);
 			player->sendSystemMessage(err);
