@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_2a353f46",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-20T08:47:56Z",
+      "side": 1,
+      "message": "Need to check that myGhost is not NULL before calling a method with it.\n\nRather than check myGhost with every iteration of the for loop, why not move the check to before it and assign the result to a boolean? Something like the following:\n\nbool privileged \u003d false;\nif (myGhost !\u003d NULL \u0026\u0026 myGhost-\u003eisPrivileged())\n   privileged \u003d true;\n\nThen just evaluate the boolean here.",
+      "revId": "048a793993bf6839a74e74a2bccd26d6d156e31c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_ea3e0729",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-20T08:47:56Z",
+      "side": 1,
+      "message": "Don\u0027t continue if playerObject is NULL. Do as above and move the NULL and privilege checks to before the for loop and assigned the result to a boolean that you can evaluate inside.",
+      "revId": "048a793993bf6839a74e74a2bccd26d6d156e31c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_ca3b4337",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-20T08:47:56Z",
+      "side": 1,
+      "message": "Check for NULL senderGhost before calling a method with it.",
+      "revId": "048a793993bf6839a74e74a2bccd26d6d156e31c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_aa480fcd",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-20T08:47:56Z",
+      "side": 1,
+      "message": "Make sure sender isn\u0027t NULL before calling methods with it. Same for senderPlayer.",
+      "revId": "048a793993bf6839a74e74a2bccd26d6d156e31c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_8a454bb5",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-20T08:47:56Z",
+      "side": 1,
+      "message": "Make sure sender isn\u0027t NULL before calling methods with it. Same for senderPlayer.",
+      "revId": "048a793993bf6839a74e74a2bccd26d6d156e31c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
