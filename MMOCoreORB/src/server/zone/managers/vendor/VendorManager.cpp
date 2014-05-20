@@ -142,14 +142,14 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 				if (item == NULL)
 					continue;
 
-				if (item->getStatus() == AuctionItem::FORSALE) {
-					int itemSize = item->getSize();
+				int itemSize = item->getSize();
 
-					if (itemSize > 0)
-						itemsForSaleCount += itemSize;
-					else
-						itemsForSaleCount++;
-				}
+				if (itemSize > 50)
+					itemsForSaleCount += 50;
+				else if (itemSize > 0)
+					itemsForSaleCount += itemSize;
+				else
+					itemsForSaleCount++;
 			}
 		}
 	}
