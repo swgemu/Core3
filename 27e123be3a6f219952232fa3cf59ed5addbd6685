@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_2ae89f7b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/RingObjectMenuComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-21T06:49:42Z",
+      "side": 1,
+      "message": "Move this check inside the if statement below.",
+      "revId": "27e123be3a6f219952232fa3cf59ed5addbd6685",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
