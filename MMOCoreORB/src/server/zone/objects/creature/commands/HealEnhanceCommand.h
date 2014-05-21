@@ -255,7 +255,7 @@ public:
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
-		int amount = (int)round((float)power * 0.5f);
+		int amount = (int)round((float)power * 2.5f);
 
 		if (amount <= 0)
 			return;

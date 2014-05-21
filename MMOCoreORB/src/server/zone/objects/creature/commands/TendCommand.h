@@ -259,7 +259,7 @@ public:
 			sendWoundMessage(creature, creatureTarget, attribute, healedWounds);
 
 			if (creatureTarget != creature && healedWounds > 0)
-				awardXp(creature, "medical", round(healedWounds * 0.5f));
+				awardXp(creature, "medical", round(healedWounds * 2.5f));
 		} else
 			return GENERALERROR;
 
