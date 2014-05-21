@@ -166,11 +166,57 @@ public:
 
 				ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
 				resourceManager->givePlayerResource(creature, resourceName, quantity);
+			} else if (commandType.beginsWith("createarealoot")) {
+				String lootGroup;
+				args.getStringToken(lootGroup);
+
+				int range = 32;
+				if (args.hasMoreTokens())
+					range = args.getIntToken();
+
+				if( range < 0 )
+					range = 32;
+
+				if( range > 128 )
+					range = 128;
+
+				int level = 1;
+				if (args.hasMoreTokens())
+					level = args.getIntToken();
+
+				ManagedReference<LootManager*> lootManager = creature->getZoneServer()->getLootManager();
+				if (lootManager == NULL)
+					return INVALIDPARAMETERS;
+
+				// Find all objects in range
+				SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+				Zone* zone = creature->getZone();
+				zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+
+				// Award loot group to all players in range
+				for (int i = 0; i < closeObjects.size(); i++) {
+					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+
+					if (targetObject->isPlayerCreature() && creature->isInRange(targetObject, range)) {
+
+						CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);
+						Locker tlock( targetPlayer, creature );
+
+						ManagedReference<SceneObject*> inventory = targetPlayer->getSlottedObject("inventory");
+						if (inventory != NULL) {
+							if( lootManager->createLoot(inventory, lootGroup, level) )
+								targetPlayer->sendSystemMessage( "You have received a loot item!");
+						}
+
+						tlock.release();
+					}
+				}
 			}
 		} catch (Exception& e) {
 			creature->sendSystemMessage("SYNTAX: /object createitem <objectTemplatePath> [<quantity>]");
 			creature->sendSystemMessage("SYNTAX: /object createresource <resourceName> [<quantity>]");
 			creature->sendSystemMessage("SYNTAX: /object createloot <loottemplate> [<level>]");
+			creature->sendSystemMessage("SYNTAX: /object createarealoot <loottemplate> [<range>] [<level>]");
 
 			return INVALIDPARAMETERS;
 		}
