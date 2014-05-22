@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_2d09d92c",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-22T08:59:13Z",
+      "side": 1,
+      "message": "Nest the senderGhost declaration, assignment, NULL check, and isPrivileged check within the isPlayerCreature check below.\n\nWe only want to return for a NULL ghost if sender is a playerCreature and since we\u0027re using the privileged bool, senderGhost is not needed anywhere else.",
+      "revId": "49dad8fca126b2eac152a5c797548c1beceb2cab",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_0d0e1535",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-22T08:59:13Z",
+      "side": 1,
+      "message": "Let\u0027s not restrict this method\u0027s use to senders that are players.\n\nEncapsulate the assignments, NULL checks, and isPrivileged() check within an isPlayerCreature() check.",
+      "revId": "49dad8fca126b2eac152a5c797548c1beceb2cab",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_ed12a157",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-22T08:59:13Z",
+      "side": 1,
+      "message": "Do the same as in the other sendMail method above.",
+      "revId": "49dad8fca126b2eac152a5c797548c1beceb2cab",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
