@@ -120,7 +120,7 @@ createMissionTargetConvoTemplate("xaan_talmaron_mission_target_convotemplate","x
 
 -- Dathomir
 createMissionTargetConvoTemplate("singular_nak_mission_target_convotemplate", "singular_nak_mission_target_conv_handler")
-
+createMissionTargetConvoTemplate("wallaw_loowobbli_mission_target_convotemplate", "wallaw_loowobbli_mission_target_conv_handler")
 
 -- Rori
 createMissionTargetConvoTemplate("ajuva_vanasterin_mission_target_convotemplate","ajuva_vanasterin_mission_target_conv_handler")
