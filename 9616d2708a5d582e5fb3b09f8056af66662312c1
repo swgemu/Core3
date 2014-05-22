@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_ea24c7c7",
+        "filename": "MMOCoreORB/bin/scripts/mobile/thug/brigand_leader.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-22T07:43:51Z",
+      "side": 1,
+      "message": "add + ENEMY\n\nDo the same for the standard brigands.",
+      "revId": "9616d2708a5d582e5fb3b09f8056af66662312c1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
