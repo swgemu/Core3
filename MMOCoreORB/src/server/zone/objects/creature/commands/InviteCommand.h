@@ -67,6 +67,15 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		PlayerObject* playerObject = creature->getPlayerObject();
+		bool privileged = false;
+
+		if (playerObject)
+		{
+			if (playerObject->isPrivileged())
+				privileged = true;
+		}
+
 		GroupManager* groupManager = GroupManager::instance();
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
@@ -78,7 +87,7 @@ public:
 		if (object->isPlayerCreature()) {
 			CreatureObject* player = cast<CreatureObject*>( object.get());
 
-			if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()))
+			if (!player->getPlayerObject()->isIgnoring(creature->getFirstName().toLowerCase()) || privileged)
 				groupManager->inviteToGroup(creature, player);
 		}
 

@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "server/zone/packets/chat/ChatOnLeaveRoom.h"
 #include "server/zone/packets/chat/ChatOnEnteredRoom.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 void ChatRoomImplementation::sendTo(CreatureObject* player) {
 	ChatRoomList* crl = new ChatRoomList();
@@ -146,8 +147,28 @@ void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
 
 void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, String& senderName) {
 	Locker locker(_this.get());
-
 	String lowerName = senderName.toLowerCase();
+	PlayerManager* playerManager = server->getPlayerManager();
+	ManagedReference<CreatureObject*> sender = NULL;
+	bool privileged = false;
+	ManagedReference<PlayerObject*> senderPlayer = NULL;
+
+	if (playerManager == NULL)
+		return;
+
+	sender = playerManager->getPlayer(lowerName);
+
+	if (sender == NULL)
+		return;
+
+	senderPlayer = sender->getPlayerObject();
+
+	if (senderPlayer == NULL)
+		return;
+
+	if (senderPlayer->isPrivileged())
+		privileged = true;
+
 
 	for (int i = 0; i < playerList.size(); ++i) {
 		ManagedReference<CreatureObject*> player = playerList.get(i);
@@ -157,7 +178,7 @@ void ChatRoomImplementation::broadcastMessageCheckIgnore(BaseMessage* msg, Strin
 			if (ghost == NULL)
 				continue;
 
-			if (!ghost->isIgnoring(lowerName)) {
+			if (!ghost->isIgnoring(lowerName) || privileged) {
 				player->sendMessage(msg->clone());
 			}
 		}
