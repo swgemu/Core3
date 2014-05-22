@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_caac6338",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dantooine/stoos_stormtrooper_squad_leader.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-22T05:37:41Z",
+      "side": 1,
+      "message": "This is a delivery target. Are you sure you want him to be attackable?",
+      "revId": "786979ec7e8d422fae0a598b4e663db79ff93ff4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_eaaf272a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dantooine/stoos_olko.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-22T05:37:41Z",
+      "side": 1,
+      "message": "Given the faction of the targets and the reward, I\u0027m assuming that this should be restricted to imperial players. If so, you need to declare the faction here.\n\nfaction \u003d FACTIONIMPERIAL",
+      "revId": "786979ec7e8d422fae0a598b4e663db79ff93ff4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
