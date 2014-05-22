@@ -194,16 +194,23 @@ public:
 		}
 
 		ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(receiverObjectID);
+		ManagedReference<PlayerObject*> sender = NULL;
+		sender = player->getPlayerObject();
 
-		if (receiver == NULL || !receiver->isPlayerCreature())
+		if (receiver == NULL || !receiver->isPlayerCreature() || sender == NULL)
 			return 0;
+
+		bool privileged = false;
+
+		if (sender->isPrivileged())
+			privileged = true;
 
 		Locker locker(receiver);
 
 		CreatureObject* receiverPlayer = cast<CreatureObject*>(receiver.get());
 		ManagedReference<PlayerObject*> ghost = receiverPlayer->getPlayerObject();
 
-		if (ghost == NULL || ghost->isIgnoring(player->getFirstName().toLowerCase())) {
+		if (ghost == NULL || (ghost->isIgnoring(player->getFirstName().toLowerCase()) && !privileged)) {
 			StringIdChatParameter err("ui_pm", "recipient_ignored_prose");
 			err.setTT(recipientName);
 			player->sendSystemMessage(err);
