@@ -1,4 +1,4 @@
-wallow_loowobbli = Creature:new {
+wallaw_loowobbli = Creature:new {
 	objectName = "",
 	customName = "Wallaw Loowobbli",
 	socialGroup = "townsperson",
@@ -23,16 +23,16 @@ wallow_loowobbli = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_wallaw_loowobbli.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "wallaw_loowobbli_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(wallow_loowobbli, "wallow_loowobbli")
+CreatureTemplates:addCreatureTemplate(wallaw_loowobbli, "wallaw_loowobbli")
