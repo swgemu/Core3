@@ -36,8 +36,16 @@ int CreateVendorSessionImplementation::initializeSession() {
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == NULL) {
+		cancelSession();
 		return 0;
+	}
+
+	if (ghost->getVendorCount() >= player->getSkillMod("manage_vendor")) {
+		player->sendSystemMessage("@player_structure:full_vendors"); // You are already managing your maximum number of vendors. Fire someone or remove a terminal first!
+		cancelSession();
+		return 0;
+	}
 
 	SortedVector<unsigned long long>* ownedVendors = ghost->getOwnedVendors();
 	for (int i = 0; i < ownedVendors->size(); i++) {
@@ -56,14 +64,9 @@ int CreateVendorSessionImplementation::initializeSession() {
 
 		if (!vendorData->isInitialized()) {
 			player->sendSystemMessage("@player_structure:already_creating"); // You are already creating a vendor.
+			cancelSession();
 			return 0;
 		}
-	}
-
-	if (ghost->getVendorCount() >= player->getSkillMod("manage_vendor")) {
-		player->sendSystemMessage("@player_structure:full_vendors"); // You are already managing your maximum number of vendors. Fire someone or remove a terminal first!
-		cancelSession();
-		return 0;
 	}
 
 	currentNode = VendorManager::instance()->getRootNode();
