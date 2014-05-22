@@ -45,7 +45,6 @@ function DathomirTradeOutpostScreenPlay:spawnMobiles()
 	--{"r4",60,620.654,6,3085.98,191.123,0, "calm", "R4-W3"},
 	--{"r4",60,619.822,6,3097.36,339.758,0, "calm", "R4-L1"},
 	--{"r5",60,627.744,6,3086.77,278.522,0, "calm", "R5-O6"},
-	--{"wallow_loowobbli",60,1.19457,0.624999,6.04704,232.283,6955367, "calm", "Wallaw Loowobbli"},
 	--{"nirame_sakute",60,-2.1912,0.624999,-6.92293,24.0649,6955369, "neutral", ""},
 
 end
