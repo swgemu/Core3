@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_aa924ff4",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-22T05:02:52Z",
+      "side": 1,
+      "message": "if (level \u003c 1)",
+      "revId": "0909b1b43a3ebd226bed4434885cee62598f6f0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_ea8847c8",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-22T05:02:52Z",
+      "side": 1,
+      "message": "You\u0027re passing one too many arguments. The true is already telling it to allow overflow. You don\u0027t need to add the additional argument to createLoot().",
+      "revId": "0909b1b43a3ebd226bed4434885cee62598f6f0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_ca8583ae",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ObjectCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-22T05:02:52Z",
+      "side": 1,
+      "message": "By telling you to allow overflow, I meant to remove the container full check.",
+      "revId": "0909b1b43a3ebd226bed4434885cee62598f6f0d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
