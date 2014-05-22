@@ -483,24 +483,31 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 
 void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
 	Zone* zone = player->getZone();
+	PlayerObject* myGhost = NULL;
+	bool privileged = false;
 
 	if (zone == NULL)
 		return;
 
 	int language = 0;
-
 	String firstName;
 
 	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
 		CreatureObject* playerCreature = cast<CreatureObject*>(player);
+		if (playerCreature)
+		{
+			firstName = playerCreature->getFirstName().toLowerCase();
+			myGhost = playerCreature->getPlayerObject();
+		}
 
-		firstName = playerCreature->getFirstName().toLowerCase();
-		PlayerObject* myGhost = playerCreature->getPlayerObject();
+		if (myGhost)
+			language = myGhost->getLanguageID();
+	}
 
-		if (myGhost == NULL)
-			return;
-
-		language = myGhost->getLanguageID();
+	if (myGhost)
+	{
+		if (myGhost->isPrivileged())
+			privileged = true;
 	}
 
 	StringIdChatParameter* param = NULL;
@@ -540,7 +547,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 					if (ghost == NULL)
 						continue;
 
-					if (!ghost->isIgnoring(firstName)) {
+					if (!ghost->isIgnoring(firstName) || privileged) {
 						SpatialChat* cmsg = NULL;
 
 						if (param == NULL) {
@@ -593,24 +600,31 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringIdChatParameter& message,  uint64 target, uint32 moodid, uint32 mood2) {
 	Zone* zone = player->getZone();
+	PlayerObject* myGhost = NULL;
+	bool privileged = false;
 
 	if (zone == NULL)
 		return;
 
 	int language = 0;
-
 	String firstName;
 
 	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
 		CreatureObject* playerCreature = cast<CreatureObject*>(player);
 
-		firstName = playerCreature->getFirstName().toLowerCase();
-		PlayerObject* myGhost = playerCreature->getPlayerObject();
+		if (playerCreature)
+		{
+			firstName = playerCreature->getFirstName().toLowerCase();
+			myGhost = playerCreature->getPlayerObject();
+		}
 
-		if (myGhost == NULL)
-			return;
+		if (myGhost)
+		{
+			language = myGhost->getLanguageID();
 
-		language = myGhost->getLanguageID();
+			if (myGhost->isPrivileged())
+				privileged = true;
+		}
 	}
 
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
@@ -644,7 +658,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 					if (ghost == NULL)
 						continue;
 
-					if (!ghost->isIgnoring(firstName)) {
+					if (!ghost->isIgnoring(firstName) || privileged) {
 						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
 
 						creature->sendMessage(cmsg);
@@ -719,15 +733,20 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 //TODO: Refactor into a sendInstantMessage() method that returns a returnCode.
 void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantMessageToCharacter* message) {
 	ManagedReference<CreatureObject*> sender = cast<CreatureObject*>(message->getClient()->getPlayer().get().get());
+	bool privileged = false;
 
 	if (sender == NULL)
 		return;
 
 	if (sender->isPlayerCreature()) {
-		ManagedReference<PlayerObject*> senderGhost = sender->getPlayerObject();
+		ManagedReference<PlayerObject*> senderGhost = NULL;
+		senderGhost = sender->getPlayerObject();
 
 		if (senderGhost == NULL)
 			return;
+
+		if (senderGhost->isPrivileged())
+			privileged = true;
 
 		if (senderGhost->isMuted()) {
 			String reason = senderGhost->getMutedReason();
@@ -759,7 +778,7 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 		return;
 	}
 
-	if (receiver->getPlayerObject()->isIgnoring(sender->getFirstName())) {
+	if (receiver->getPlayerObject()->isIgnoring(sender->getFirstName()) && !privileged) {
 		BaseMessage* amsg = new ChatOnSendInstantMessage(sequence, IM_IGNORED);
 		sender->sendMessage(amsg);
 
@@ -1018,7 +1037,6 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 
 void ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name) {
 	uint64 receiverObjectID = playerManager->getObjectID(name);
-
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 
@@ -1071,8 +1089,9 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 
 int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters) {
 	uint64 receiverObjectID = playerManager->getObjectID(recipientName);
-
 	ManagedReference<SceneObject*> obj = server->getObject(receiverObjectID);
+	ManagedReference<CreatureObject*> sender = NULL;
+	bool privileged = false;
 
 	if (obj == NULL || !obj->isPlayerCreature())
 		return IM_OFFLINE;
@@ -1080,9 +1099,25 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 	if (body.length() > PM_MAXSIZE)
 		return IM_TOOLONG;
 
+	sender = playerManager->getPlayer(sendername.toLowerCase());
+
+	if (sender)
+	{
+		if (sender->isPlayerCreature()) {
+			ManagedReference<PlayerObject*> senderPlayer = NULL;
+			senderPlayer = sender->getPlayerObject();
+
+			if (senderPlayer == NULL)
+				return IM_OFFLINE;
+
+			if (senderPlayer->isPrivileged())
+				privileged = true;
+		}
+	}
+
 	CreatureObject* receiver = cast<CreatureObject*>(obj.get());
 
-	if (receiver->getPlayerObject()->isIgnoring(sendername))
+	if (receiver->getPlayerObject()->isIgnoring(sendername) && !privileged)
 		return IM_IGNORED;
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
@@ -1129,15 +1164,31 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, StringIdChatParameter& body, const String& recipientName, WaypointObject* waypoint) {
 	uint64 receiverObjectID = playerManager->getObjectID(recipientName);
-
 	ManagedReference<SceneObject*> obj = server->getObject(receiverObjectID);
+	ManagedReference<CreatureObject*> sender = NULL;
+	bool privileged = false;
 
 	if (obj == NULL || !obj->isPlayerCreature())
 		return IM_OFFLINE;
 
 	CreatureObject* receiver = cast<CreatureObject*>(obj.get());
+	sender = playerManager->getPlayer(sendername.toLowerCase());
 
-	if (receiver->getPlayerObject()->isIgnoring(sendername))
+	if (sender)
+	{
+		if (sender->isPlayerCreature()) {
+			ManagedReference<PlayerObject*> senderPlayer = NULL;
+			senderPlayer = sender->getPlayerObject();
+
+			if (senderPlayer == NULL)
+				return IM_OFFLINE;
+
+			if (senderPlayer->isPrivileged())
+				privileged = true;
+		}
+	}
+
+	if (receiver->getPlayerObject()->isIgnoring(sendername) && !privileged)
 		return IM_IGNORED;
 
 	ManagedReference<PersistentMessage*> mail = new PersistentMessage();
