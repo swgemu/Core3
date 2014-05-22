@@ -45,7 +45,7 @@ stormtrooper_medic = Creature:new {
 		}						
 	},
 	weapons = {"stormtrooper_weapons"},
-	conversationTemplate = "imperial_recruiter_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 
