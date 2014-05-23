@@ -807,6 +807,12 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	PlayerObject* ghost = player->getPlayerObject();
 
+	if (ghost == NULL)	{
+		error("The player to be cloned is null");
+		return;
+	}
+
+
 	CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(cloner->getObjectTemplate());
 
 	if (cbot == NULL) {
@@ -815,6 +821,11 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	}
 
 	BuildingObject* cloningBuilding = cloner.castTo<BuildingObject*>();
+
+	if (cloningBuilding == NULL)  {
+		error("Cloning building is null");
+		return;
+	}
 
 	CloneSpawnPoint* clonePoint = cbot->getRandomSpawnPoint();
 

@@ -306,6 +306,9 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(parent.get().get());
 
+	if (creature == NULL)
+		return;
+
 	creature->sendBuffsTo(creature);
 
 	GuildObject* guild = creature->getGuildObject();
