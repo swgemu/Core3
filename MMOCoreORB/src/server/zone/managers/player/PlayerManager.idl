@@ -80,6 +80,7 @@ include server.zone.managers.player.OnlineZoneClientMap;
 import system.thread.ReadWriteLock;
 import engine.util.u3d.CloseObjectsVector;
 include server.zone.managers.collision.IntersectionResults;
+include server.zone.managers.player.VeteranRewardList;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -95,6 +96,12 @@ class PlayerManager extends Observer implements Logger {
 	protected int baseStoredDroids;
 	protected int baseStoredVehicles;
 	protected int baseStoredShips;
+	
+	@dereferenced
+	private SortedVector<int> veteranRewardMilestones;
+	
+	@dereferenced 
+	private VeteranRewardList veteranRewards;
 
 	@dereferenced
 	private transient VectorMap<int, string> badgeMap;
@@ -276,6 +283,44 @@ class PlayerManager extends Observer implements Logger {
 	 * @post player locked
 	 */
 	public native void grantDivorce(CreatureObject player);	
+
+	/**
+	 * Checks whether the player qualifies for any veteran rewards
+	 * and prompts for selection of reward if so
+	 * @param Player requesting veteran rewards
+	 * @pre player locked
+	 * @post player locked
+	 */
+	public native void claimVeteranRewards(CreatureObject player);
+	
+	/**
+	 * Returns the minimum veteran reward milestone the for which the account is eligible
+	 * Returns -1 if not eligible
+	 * @param playerGhost player requesting veteran rewards
+	 * @param account requesting veteran rewards
+	 */
+	public native int getEligibleMilestone(PlayerObject playerGhost, Account account);	
+	
+	/**
+	 * Cancels the current reward session
+	 * @param player requesting veteran rewards
+	 */
+	public native void cancelVeteranRewardSession( CreatureObject player );
+
+	/**
+	 * Asks the player to confirm selection of the given veteran reward
+	 * @param player requesting veteran rewards
+	 * @param itemIndex index to item in veteranRewards list
+	 */
+	public native void confirmVeteranReward( CreatureObject player, int itemIndex );	
+	
+	/**
+	 * Generates the selected reward for the player. Starts a new reward session
+	 * if player is eligible for additional milestones
+	 * @param player requesting veteran rewards
+	 * @param itemIndex index to item in veteranRewards list
+	 */
+	public native void generateVeteranReward( CreatureObject player );
 	
 	/**
 	 * Enhances the patients attribute by a specified amount for a specified duration.
@@ -425,5 +470,13 @@ class PlayerManager extends Observer implements Logger {
 
 	public int getBaseStoredShips() {
 		return baseStoredShips;
+	}
+	
+	public int getNumVeteranRewardMilestones(){
+		return veteranRewardMilestones.size();
+	}
+	
+	public int getVeteranRewardMilestone( int index ){
+		return veteranRewardMilestones.get(index);
 	}
 }

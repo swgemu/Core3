@@ -24,6 +24,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/conf/ConfigManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/player/VeteranRewardList.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/skill/Performance.h"
 #include "server/zone/managers/collision/CollisionManager.h"
@@ -35,6 +36,7 @@
 #include "server/zone/packets/player/LogoutMessage.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/objects/player/sessions/ProposeUnitySession.h"
+#include "server/zone/objects/player/sessions/VeteranRewardSession.h"
 #include "server/zone/objects/tangible/OptionBitmask.h"
 
 #include "server/zone/objects/intangible/ShipControlDevice.h"
@@ -99,6 +101,8 @@
 #include "server/zone/objects/player/sui/callbacks/PlayerTeachConfirmSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/ProposeUnitySuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/SelectUnityRingSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/SelectVeteranRewardSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/ConfirmVeteranRewardSuiCallback.h"
 
 #include "server/zone/managers/stringid/StringIdManager.h"
 
@@ -112,6 +116,8 @@
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
+
+#include <iostream>
 
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
@@ -175,6 +181,33 @@ void PlayerManagerImplementation::loadLuaConfig() {
 	baseStoredDroids = lua->getGlobalInt("baseStoredDroids");
 	baseStoredVehicles = lua->getGlobalInt("baseStoredVehicles");
 	baseStoredShips = lua->getGlobalInt("baseStoredShips");
+
+
+	LuaObject rewardMilestonesLua = lua->getGlobalObject("veteranRewardMilestones");
+	for (int i = 1; i <= rewardMilestonesLua.getTableSize(); ++i) {
+		veteranRewardMilestones.add(rewardMilestonesLua.getIntAt(i));
+	}
+	rewardMilestonesLua.pop();
+
+	LuaObject rewardsListLua = lua->getGlobalObject("veteranRewards");
+	int size = rewardsListLua.getTableSize();
+
+	lua_State* L = rewardsListLua.getLuaState();
+
+	for (int i = 0; i < size; ++i) {
+		lua_rawgeti(L, -1, i + 1);
+		LuaObject a(L);
+
+		VeteranReward reward;
+		reward.parseFromLua(&a);
+		veteranRewards.add(reward);
+
+		a.pop();
+	}
+
+	rewardsListLua.pop();
+
+	info("Loaded " + String::valueOf(veteranRewards.size()) + " veteran rewards.", true);
 
 	delete lua;
 	lua = NULL;
@@ -3704,6 +3737,203 @@ void PlayerManagerImplementation::grantDivorce(CreatureObject* player){
 		playerGhost->removeSpouse();
 	}
 
+}
+
+void PlayerManagerImplementation::claimVeteranRewards(CreatureObject* player){
+
+	if( player == NULL || !player->isPlayerCreature() )
+		return;
+
+	PlayerObject* playerGhost = player->getPlayerObject();
+
+	// Get account
+	ManagedReference<Account*> account = getAccount( playerGhost->getAccountID() );
+	if( account == NULL )
+		return;
+
+	// Send message with current account age
+	StringIdChatParameter timeActiveMsg;
+	timeActiveMsg.setStringId("veteran", "self_time_active"); // You have %DI days logged for veteran rewards.
+	timeActiveMsg.setDI( account->getAgeInDays() );
+	player->sendSystemMessage( timeActiveMsg );
+
+	// Verify player is eligible for a reward
+	int milestone = getEligibleMilestone( playerGhost, account );
+	if( milestone < 0){
+		player->sendSystemMessage( "@veteran:not_eligible"); // You are not currently eligible for a veteran reward.
+		return;
+	}
+
+	// Verify player is not already choosing a reward
+	if( player->getActiveSession(SessionFacadeType::VETERANREWARD) != NULL ){
+		player->sendSystemMessage( "You are already attempting to claim a veteran reward." );
+		return;
+	}
+
+	// Create session
+	ManagedReference<VeteranRewardSession*> rewardSession =	new VeteranRewardSession( milestone );
+	player->addActiveSession(SessionFacadeType::VETERANREWARD, rewardSession);
+
+	// Build and SUI list box of rewards
+	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::SELECT_VETERAN_REWARD, SuiListBox::HANDLETWOBUTTON);
+	box->setCallback(new SelectVeteranRewardSuiCallback(server));
+	box->setPromptText("@veteran_new:choice_description" ); // You may choose one of the items listed below. This item will be placed in your inventory.
+	box->setPromptTitle("@veteran_new:item_grant_box_title"); // Reward
+	box->setOkButton(true, "@ok");
+	box->setCancelButton(true, "@cancel");
+
+	for( int i = 0; i < veteranRewards.size(); i++ ){
+
+		// Any rewards at or below current milestone are eligible
+		VeteranReward reward = veteranRewards.get(i);
+		if( reward.getMilestone() <= milestone ){
+
+			// Filter out one-time rewards already claimed
+			if( reward.isOneTime() && playerGhost->hasChosenVeteranReward( reward.getTemplateFile() ) ){
+				continue;
+			}
+
+			SharedObjectTemplate* rewardTemplate = TemplateManager::instance()->getTemplate( reward.getTemplateFile().hashCode() );
+			if( rewardTemplate != NULL ){
+				if( reward.getDescription().isEmpty() ){
+					box->addMenuItem( rewardTemplate->getDetailedDescription(), i);
+				}
+				else{
+					box->addMenuItem( reward.getDescription(), i);
+				}
+			}
+		}
+	}
+
+	box->setUsingObject(NULL);
+	playerGhost->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
+
+}
+
+void PlayerManagerImplementation::cancelVeteranRewardSession(CreatureObject* player){
+	player->dropActiveSession(SessionFacadeType::VETERANREWARD);
+}
+
+void PlayerManagerImplementation::confirmVeteranReward(CreatureObject* player, int itemIndex ){
+
+	if( player == NULL || !player->isPlayerCreature() ){
+		return;
+	}
+
+	if( itemIndex < 0 || itemIndex >= veteranRewards.size() ){
+		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession( player );
+		return;
+	}
+
+	// Get account
+	PlayerObject* playerGhost = player->getPlayerObject();
+	ManagedReference<Account*> account = getAccount( playerGhost->getAccountID() );
+	if( account == NULL ){
+		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession( player );
+		return;
+	}
+
+	// Check session
+	ManagedReference<VeteranRewardSession*> rewardSession = player->getActiveSession(SessionFacadeType::VETERANREWARD).castTo<VeteranRewardSession*>();
+	if( rewardSession == NULL ){
+		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		return;
+	}
+
+	VeteranReward reward = veteranRewards.get(itemIndex);
+	rewardSession->setSelectedRewardIndex(itemIndex);
+
+	// Generate confirmation dialog if item is one-time.  Otherwise, just generate it.
+	if( reward.isOneTime() ){
+
+		ManagedReference<SuiMessageBox*> suibox = new SuiMessageBox(player, SuiWindowType::CONFIRM_VETERAN_REWARD);
+		suibox->setPromptTitle("@veteran_new:unique_are_you_sure_box_title"); // Reward
+		suibox->setPromptText( "@veteran_new:item_unique_are_you_sure"); // The item you are selecting can only be selected as a reward item once for the the lifetime of your account. Are you sure you wish to continue selecting this item?
+		suibox->setCallback(new ConfirmVeteranRewardSuiCallback(server));
+		suibox->setOkButton(true, "@yes");
+		suibox->setCancelButton(true, "@no");
+
+		playerGhost->addSuiBox(suibox);
+		player->sendMessage(suibox->generateMessage());
+
+	}
+	else{
+		generateVeteranReward( player );
+	}
+
+}
+
+void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player ){
+
+	if( player == NULL || !player->isPlayerCreature() ){
+		return;
+	}
+
+	// Get account
+	PlayerObject* playerGhost = player->getPlayerObject();
+	ManagedReference<Account*> account = getAccount( playerGhost->getAccountID() );
+	if( account == NULL ){
+		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession( player );
+		return;
+	}
+
+	// Check session
+	ManagedReference<VeteranRewardSession*> rewardSession = player->getActiveSession(SessionFacadeType::VETERANREWARD).castTo<VeteranRewardSession*>();
+	if( rewardSession == NULL ){
+		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		return;
+	}
+
+	// Generate item
+	SceneObject* inventory = player->getSlottedObject("inventory");
+	VeteranReward reward = veteranRewards.get(rewardSession->getSelectedRewardIndex());
+	Reference<SceneObject*> rewardSceno = server->createObject(reward.getTemplateFile().hashCode(), 1);
+	if( rewardSceno == NULL || inventory == NULL ){
+		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession( player );
+		return;
+	}
+
+	// Transfer to player
+	if( !inventory->transferObject(rewardSceno, -1, false, true) ){ // Allow overflow
+		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession( player );
+		return;
+	}
+
+	inventory->broadcastObject(rewardSceno, true);
+	player->sendSystemMessage( "@veteran:reward_given");  // Your reward has been placed in your inventory.
+
+	// TODO: Record reward in all characters registered to the account
+	playerGhost->addChosenVeteranReward( rewardSession->getMilestone(), reward.getTemplateFile() );
+	cancelVeteranRewardSession( player );
+
+	// If player is eligible for another reward, kick off selection
+	if( getEligibleMilestone( playerGhost, account ) >= 0 ){
+		player->enqueueCommand(String("claimveteranreward").hashCode(), 0, 0, "");
+	}
+}
+
+int PlayerManagerImplementation::getEligibleMilestone( PlayerObject *playerGhost, Account* account ){
+
+	if( account == NULL || playerGhost == NULL )
+		return -1;
+
+	int accountAge = account->getAgeInDays();
+
+	// Return the first milestone for which the player is eligible and has not already claimed
+	for( int i=0; i < veteranRewardMilestones.size(); i++){
+		int milestone = veteranRewardMilestones.get(i);
+		if( accountAge >= milestone && playerGhost->getChosenVeteranReward(milestone).isEmpty() ){
+			return milestone;
+		}
+	}
+
+	return -1;
 }
 
 bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSession* client) {

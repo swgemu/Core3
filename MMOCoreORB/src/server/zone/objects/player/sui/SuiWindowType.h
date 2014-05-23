@@ -242,6 +242,8 @@ public:
 	static const uint16 HOLO_EMOTE_HELP = 1017;
 	static const uint16 PROPOSE_UNITY = 1018;
 	static const uint16 SELECT_UNITY_RING = 1019;
+	static const uint16 SELECT_VETERAN_REWARD = 1020;
+	static const uint16 CONFIRM_VETERAN_REWARD = 1021;
 };
 
 #endif /*SuiWindowType_H_*/

@@ -31,6 +31,7 @@ public:
 	const static int SETSTRUCTUREACCESSFEE = 19;
 	const static int VENDORADBARKING = 20;
 	const static int PROPOSEUNITY = 21;
+	const static int VETERANREWARD = 22;
 
 };
 

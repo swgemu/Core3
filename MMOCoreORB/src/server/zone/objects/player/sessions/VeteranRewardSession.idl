@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,41 +38,33 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
+
 */
 
-#ifndef CLAIMVETERANREWARDCOMMAND_H_
-#define CLAIMVETERANREWARDCOMMAND_H_
+package server.zone.objects.player.sessions;
+import engine.core.ManagedObject;
+import engine.util.Facade;
 
-#include "server/zone/objects/scene/SceneObject.h"
-
-class ClaimVeteranRewardCommand : public QueueCommand {
-public:
-
-	ClaimVeteranRewardCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+class VeteranRewardSession extends Facade {
+	
+	protected unsigned int milestone;
+	
+	protected int selectedRewardIndex;
+	
+	public VeteranRewardSession( unsigned int days ) {
+		milestone = days;
 	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		if( !creature->isPlayerCreature() )
-			return GENERALERROR;
-
-		PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
-		if( playerManager == NULL )
-			return GENERALERROR;
-
-		playerManager->claimVeteranRewards( creature );
-
-		return SUCCESS;
+		
+	public unsigned int getMilestone() {
+		return milestone;
 	}
-
-};
-
-#endif //CLAIMVETERANREWARDCOMMAND_H_
+	
+	public int getSelectedRewardIndex(){
+		return selectedRewardIndex;
+	}
+	
+	public void setSelectedRewardIndex( int idx ){
+		selectedRewardIndex = idx;
+	}
+	
+}
