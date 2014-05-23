@@ -137,6 +137,8 @@ public:
 			return sendLots(creature, targetObj);
 		} else if (container == "vendors") {
 			return sendVendorInfo(creature, targetObj);
+		}else if( container == "veteranrewards" ){
+			return sendVeteranRewardInfo( creature, targetObj );
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
@@ -150,6 +152,43 @@ public:
 
 
 		return SUCCESS;
+	}
+
+	int sendVeteranRewardInfo(CreatureObject* creature, CreatureObject* target) {
+		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+
+		if (targetGhost == NULL || ghost == NULL || playerManager == NULL)
+			return GENERALERROR;
+
+		StringBuffer body;
+		body << "Player Name:\t" << target->getFirstName() << endl;
+		body << "Claimed Rewards:" << endl;
+		body << "\tMilestone\tReward"<< endl;
+		for( int i = 0; i < playerManager->getNumVeteranRewardMilestones(); i++ ){
+			int milestone = playerManager->getVeteranRewardMilestone(i);
+			body << "\t" << String::valueOf(milestone);
+			String claimedReward = targetGhost->getChosenVeteranReward(milestone);
+			if( claimedReward.isEmpty() ){
+				body << "\t\t" << "Unclaimed" << endl;
+			}
+			else{
+				body << "\t\t" << claimedReward << endl;
+			}
+		}
+
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
+		box->setPromptTitle("Veteran Reward Info");
+		box->setPromptText(body.toString());
+		box->setUsingObject(target);
+		box->setForceCloseDisabled();
+
+		ghost->addSuiBox(box);
+		creature->sendMessage(box->generateMessage());
+
+		return SUCCESS;
+
 	}
 
 	int sendVendorInfo(CreatureObject* creature, CreatureObject* target) {

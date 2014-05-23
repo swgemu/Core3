@@ -269,6 +269,9 @@ class PlayerObject extends IntangibleObject {
 	
 	protected string spouseName;
 	
+	@dereferenced
+	protected VectorMap<unsigned int, string> chosenVeteranRewards; // milestone, templateFile
+	
 	/**
 	 * the key is the quest.hashCode()
 	 */
@@ -330,6 +333,7 @@ class PlayerObject extends IntangibleObject {
 		persistentMessages.setNoDuplicateInsertPlan();
 		consentList.setNoDuplicateInsertPlan();
 		activePets.setNoDuplicateInsertPlan();
+		chosenVeteranRewards.setNoDuplicateInsertPlan();
 
 		accountID = 0;		
 		
@@ -1512,5 +1516,15 @@ class PlayerObject extends IntangibleObject {
 	public void removeSpouse(){
 		spouseName = "";
 	}
+	
+	public string getChosenVeteranReward( unsigned int milestone ){
+		return chosenVeteranRewards.get(milestone);
+	}
+	
+	public void addChosenVeteranReward( unsigned int milestone, string rewardTemplate ){
+		chosenVeteranRewards.put( milestone, rewardTemplate );
+	}
+	
+	public native boolean hasChosenVeteranReward( final string rewardTemplate );
 }
 
