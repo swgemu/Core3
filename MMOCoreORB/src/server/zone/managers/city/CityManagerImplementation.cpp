@@ -2171,6 +2171,7 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city,
 #endif
 	StringIdChatParameter params("city/city", "rceb"); //%TO has entered the race for mayor. You can now vote for this candidate at the city voting terminal.
 	params.setTO(creature->getDisplayedName());
+	sendMail(city, "@city/city:new_city_from", "@city/city:registered_citizen_email_subject", params, NULL);
 
 	//Loop through all citizens, and send this message
 	CitizenList* citizenList = city->getCitizenList();
@@ -2188,7 +2189,9 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city,
 			continue;
 
 		CreatureObject* creo = cast<CreatureObject*> (obj.get());
-		creo->sendSystemMessage(params);
+
+		if (creo)
+			creo->sendSystemMessage(params);
 	}
 }
 
