@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_4da08df4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/oxil_sarban.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-23T23:02:48Z",
+      "side": 1,
+      "message": "Should this be oxil_art_dealer?",
+      "revId": "fc23d039bdf0fb2d3698c914a6ca2d732a6ca7f7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
