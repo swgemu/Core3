@@ -11,7 +11,6 @@ end
 function NymConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	return ObjectManager.withSceneObject(conversingNPC, function(npcObject)
 		if (npcObject:getCustomObjectName() == "Hacker") then
-			createObserver(SCREENPLAYSTATECHANGED, self.themePark.className, "cellPlayerPermissionsObserver", conversingPlayer)
 			return self:runHackerScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 		elseif (npcObject:getObjectName() == "nym") then
 			return self:runNymScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
@@ -319,6 +318,7 @@ end
 function NymConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	return ObjectManager.withSceneObject(pNpc, function(npcObject)
 		if (npcObject:getCustomObjectName() == "Hacker") then
+		  createObserver(SCREENPLAYSTATECHANGED, self.themePark.className, "cellPlayerPermissionsObserver", pPlayer)
 			return self:getInitialHackerScreen(pPlayer, pNpc, pConversationTemplate)
 		elseif (npcObject:getObjectName() == "nym") then
 			return self:getInitialNymScreen(pPlayer, pNpc, pConversationTemplate)

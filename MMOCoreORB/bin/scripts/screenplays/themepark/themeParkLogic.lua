@@ -197,12 +197,13 @@ function ThemeParkLogic:hasMissionState(mission, missionState, pCreature)
 end
 
 function ThemeParkLogic:hasNpcMissionState(npcState, state, pCreature)
-	ObjectManager.withCreatureObject(pCreature, function(creature)
+	return ObjectManager.withCreatureObject(pCreature, function(creature)
 		if creature:hasScreenPlayState(state, npcState) == 1 then
 			return true
+		else
+		  return false
 		end
 	end)
-	return false
 end
 
 function ThemeParkLogic:getNpcNumber(pNpc)
