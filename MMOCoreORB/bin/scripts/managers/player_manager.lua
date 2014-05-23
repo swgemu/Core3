@@ -64,4 +64,51 @@ baseStoredDroids = 5
 baseStoredVehicles = 3
 baseStoredShips = 3
 
+-----------------------------------
+--VETERAN REWARDS CONFIG
+-----------------------------------
+-- TODO: CHANGE TO 90, 180, 270, 360 AFTER TESTING
+veteranRewardMilestones = {3, 6, 9, 12} --days, must be sorted low to high
 
+veteranRewards = {
+
+	-- 90 Day Rewards
+	-- TODO: CHANGE TO 90 AFTER TESTING
+	-- Disabled until harvester is functional {templateFile = "object/tangible/veteran_reward/harvester.iff", milestone=90, oneTime=true},
+	{templateFile = "object/tangible/veteran_reward/data_terminal_s1.iff", milestone=3, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/data_terminal_s2.iff", milestone=3, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/data_terminal_s3.iff", milestone=3, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/data_terminal_s4.iff", milestone=3, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_vet_protocol_droid_toy.iff", milestone=3, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_vet_r2_toy.iff", milestone=3, oneTime=false},
+
+	-- 180 Day Rewards
+	-- TODO: CHANGE TO 180 AFTER TESTING
+	{templateFile = "object/tangible/veteran_reward/resource.iff", milestone=6, oneTime=true},
+	{templateFile = "object/tangible/veteran_reward/frn_couch_falcon_corner_s01.iff", milestone=6, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_couch_falcon_section_s01.iff", milestone=6, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_vet_tie_fighter_toy.iff", milestone=6, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_vet_x_wing_toy.iff", milestone=6, oneTime=false},
+
+	-- 270 Day Rewards
+	-- TODO: CHANGE TO 270 AFTER TESTING
+	{templateFile = "object/tangible/deed/vehicle_deed/speederbike_flash_deed.iff", milestone=9, oneTime=false},
+	{templateFile = "object/tangible/wearables/goggles/goggles_s01.iff", milestone=9, oneTime=false},
+	{templateFile = "object/tangible/wearables/goggles/goggles_s02.iff", milestone=9, oneTime=false},
+	{templateFile = "object/tangible/wearables/goggles/goggles_s03.iff", milestone=9, oneTime=false},
+	{templateFile = "object/tangible/wearables/goggles/goggles_s04.iff", milestone=9, oneTime=false},
+	{templateFile = "object/tangible/wearables/goggles/goggles_s05.iff", milestone=9, oneTime=false},
+	{templateFile = "object/tangible/wearables/goggles/goggles_s06.iff", milestone=9, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_vet_darth_vader_toy.iff", milestone=9, oneTime=false},
+
+	-- 360 Day Rewards
+	-- TODO: CHANGE TO 360 AFTER TESTING
+	{templateFile = "object/tangible/veteran_reward/frn_tech_console_sectional_a.iff", milestone=12, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_tech_console_sectional_b.iff", milestone=12, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_tech_console_sectional_c.iff", milestone=12, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_tech_console_sectional_d.iff", milestone=12, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_vet_jabba_toy.iff", milestone=12, oneTime=false},
+	{templateFile = "object/tangible/veteran_reward/frn_vet_stormtrooper_toy.iff", milestone=12, oneTime=false},
+	--Disabled until kits are functional {templateFile = "object/tangible/veteran_reward/antidecay.iff", milestone=12, oneTime=true},
+	
+}

@@ -143,3 +143,10 @@ CharacterListEntry* AccountImplementation::getCharacterBan(const uint32 galaxy, 
 CharacterList* AccountImplementation::getCharacterList() {
 	return characterList;
 }
+
+uint32 AccountImplementation::getAgeInDays(){
+	Time currentTime;
+	Time createdTime(getTimeCreated());
+	uint32 ageSecs = currentTime.getTime() - createdTime.getTime();
+	return ageSecs / 24 / 60 / 60;
+}

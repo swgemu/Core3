@@ -134,4 +134,7 @@ class Account extends ManagedObject implements Logger {
 	
 	@local
 	public native CharacterListEntry getCharacterBan(final unsigned int  galaxy, final string name);
+	
+	@local
+	public native unsigned int getAgeInDays();
 }
