@@ -23,14 +23,14 @@ sindra_lintikoor = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_sindra_lintikoor.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+  conversationTemplate = "sindra_lintikoor_mission_giver_convotemplate",
 	attacks = {
 	}
 }
