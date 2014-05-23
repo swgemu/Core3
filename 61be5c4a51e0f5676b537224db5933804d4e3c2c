@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_8d47a54b",
+        "filename": "MMOCoreORB/bin/scripts/mobile/rori/jaleela_protestor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-23T21:36:04Z",
+      "side": 1,
+      "message": "You shouldn\u0027t use the enemy flag if you aren\u0027t also using the aggressive one.",
+      "revId": "61be5c4a51e0f5676b537224db5933804d4e3c2c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa5d592f_6d74719c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/jaleela_bindoo.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-23T21:36:04Z",
+      "side": 1,
+      "message": "400 seems rather close for missions from a city as large as Narmle. I would use 800 minimum unless you have a source that says otherwise.",
+      "revId": "61be5c4a51e0f5676b537224db5933804d4e3c2c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
