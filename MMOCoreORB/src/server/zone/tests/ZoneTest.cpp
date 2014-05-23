@@ -13,6 +13,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/conf/ConfigManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class ZoneTest : public ::testing::Test {
 protected:
@@ -66,6 +67,10 @@ public:
 		// Perform clean up of common constructs here.
 	}
 };
+
+TEST_F(ZoneTest, PlayerManager) {
+	PlayerManager* playerManager = new PlayerManager( zoneServer, processServer );
+}
 
 TEST_F(ZoneTest, TreLoad) {
 	TemplateManager::instance();
