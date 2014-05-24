@@ -132,9 +132,9 @@ math_problem = ConvoScreen:new {
 	leftDialog = "@celebrity/lok_hacker:math_problem", -- It says, "Finish this number pair sequence... 1-2, 3-6, 4-24, 5-120, 6-?
 	stopConversation = "false",
 	options = {
-		{"@celebrity/lok_hacker:seven_twenty", "wrong_answer"}, -- It's multiplying. 720.
+		{"@celebrity/lok_hacker:seven_twenty", "right_answer"}, -- It's multiplying. 720.
 		{"@celebrity/lok_hacker:two_twenty", "wrong_answer"}, -- Uh...220.
-		{"@celebrity/lok_hacker:nine", "right_answer"} -- It's nine.  I'm sure of it.
+		{"@celebrity/lok_hacker:nine", "wrong_answer"} -- It's nine.  I'm sure of it.
 	}
 }
 lokHackerConvoTemplate:addScreen(math_problem);
