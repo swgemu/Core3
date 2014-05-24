@@ -24,13 +24,13 @@ vordin_sildor = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_vordin_sildor.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "vordin_sildor_mission_giver_convotemplate",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

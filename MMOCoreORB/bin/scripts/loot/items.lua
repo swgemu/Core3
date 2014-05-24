@@ -496,6 +496,7 @@ includeFile("items/task_loot/padawan_braid.lua")
 includeFile("items/task_loot/rakir_banai_contract.lua")
 includeFile("items/task_loot/squill_carcass.lua")
 includeFile("items/task_loot/two_handed_sword_scythe_schematic.lua")
+includeFile("items/task_loot/vordin_sildor_datadisc.lua")
 includeFile("items/task_loot/womp_rat_hide.lua")
 
 --task_reward sub-folder
