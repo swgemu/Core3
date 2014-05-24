@@ -194,7 +194,6 @@ rori_regions = {
 rori_static_spawns = {
 
 	--Rebel Outpost
-	{"raxa_binn", 60, -4.0, 0.1, -4.2, 140, 4505669, "npc_sitting_chair", ""},
 	{"vordin_sildor", 60, 4.2, 0.1, 0.8, 196, 4505667, "npc_sitting_chair", ""},
 	{"entertainer", 360, 10, 0, 3.6, 270, 4505634, "happy", ""},
 	{"commoner", 360, 3.7, 0.6, 0.7, 90, 4505634, "npc_sitting_chair", ""},
