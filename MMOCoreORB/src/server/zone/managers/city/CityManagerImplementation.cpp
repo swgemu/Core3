@@ -1017,7 +1017,7 @@ void CityManagerImplementation::sendMaintenanceRepairEmail(CityRegion* city, Str
 			*/
 			StringIdChatParameter emailBody("@city/city:structure_repaired_body");
 			emailBody.setTO(mayor);
-			emailBody.setTT(structure);
+			emailBody.setTT(structure->getDisplayedName());
 
 			Locker clock(mayor, city);
 			ChatManager* chatManager = zoneServer->getChatManager();
@@ -1037,7 +1037,7 @@ void CityManagerImplementation::sendMaintenanceDecayEmail(CityRegion* city, Stru
 				stringFiles[81].addEntry("structure_damaged_subject", "Insufficient Maintenance, Structure Damaged");
 				*/
 				StringIdChatParameter emailBody("@city/city:structure_damaged_body");
-				emailBody.setTO(structure);
+				emailBody.setTO(structure->getDisplayedName());
 				emailBody.setTT(mayor);
 				emailBody.setDI(maintenanceDue);
 
