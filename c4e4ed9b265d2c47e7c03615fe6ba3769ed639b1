@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5d592f_ad8f0975",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/rori/sindra_lintikoor.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-24T00:36:01Z",
+      "side": 1,
+      "message": "Is it Lakbo or Labko?",
+      "revId": "c4e4ed9b265d2c47e7c03615fe6ba3769ed639b1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
