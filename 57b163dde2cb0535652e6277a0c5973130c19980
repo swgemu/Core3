@@ -16,6 +16,24 @@
       "revId": "57b163dde2cb0535652e6277a0c5973130c19980",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_296e6dca",
+        "filename": "MMOCoreORB/bin/scripts/mobile/yavin4/woolamander_harvester.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-05-24T21:58:31Z",
+      "side": 1,
+      "message": "creatureareaattack doesnt exist as an attack in the string files...thats why the bug exists. There\u0027s a creatureareaknockdown, but the attack name is listed as \"Force Strike\", which makes it seem like its a force user AoE. There arent any other knockdown aoe options for creatures that I\u0027ve found.",
+      "parentUuid": "da6255ed_6974659c",
+      "revId": "57b163dde2cb0535652e6277a0c5973130c19980",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
