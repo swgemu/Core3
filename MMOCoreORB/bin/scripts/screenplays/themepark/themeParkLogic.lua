@@ -670,8 +670,8 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 	if self.missionDescriptionStf == "" then
 		local wpNames = self:getHasWaypointNames(activeNpcNumber)
 		local currentMissionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
-
-		if wpNames == "no" then
+		local curMission = self:getMission(activeNpcNumber, currentMissionNumber)
+		if wpNames == "no" or curMission.hasWaypointName == "no" then
 			return self:getDefaultWaypointName(pConversingPlayer, direction)
 		else
 			local stfFile = self:getStfFile(activeNpcNumber)
