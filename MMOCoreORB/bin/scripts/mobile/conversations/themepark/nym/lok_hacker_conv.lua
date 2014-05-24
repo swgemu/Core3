@@ -144,9 +144,9 @@ wrong_answer = ConvoScreen:new {
 	leftDialog = "@celebrity/lok_hacker:wrong_answer", -- I don't think so...
 	stopConversation = "false",
 	options = {
-		{"@celebrity/lok_hacker:seven_twenty", "wrong_answer"}, -- It's multiplying. 720.
+		{"@celebrity/lok_hacker:seven_twenty", "right_answer"}, -- It's multiplying. 720.
 		{"@celebrity/lok_hacker:two_twenty", "wrong_answer"}, -- Uh...220.
-		{"@celebrity/lok_hacker:nine", "right_answer"} -- It's nine.  I'm sure of it.
+		{"@celebrity/lok_hacker:nine", "wrong_answer"} -- It's nine.  I'm sure of it.
 	}
 }
 lokHackerConvoTemplate:addScreen(wrong_answer);
