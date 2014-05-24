@@ -153,6 +153,7 @@ includeFile("groups/task_loot/task_loot_grizzled_dewback_hide.lua")
 includeFile("groups/task_loot/task_loot_padawan_braid.lua")
 includeFile("groups/task_loot/task_loot_rakir_banai_contract.lua")
 includeFile("groups/task_loot/task_loot_squill_carcass.lua")
+includeFile("groups/task_loot/task_loot_vordin_sildor_datadisc.lua")
 includeFile("groups/task_loot/task_loot_womp_rat_hide.lua")
 
 -- task_reward sub-folder

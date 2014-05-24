@@ -830,6 +830,7 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 				break;
 			case CreatureState::AIMING:
 				playEffect("clienteffect/combat_special_attacker_aim.cef");
+				showFlyText("combat_effects", "go_steady", 0, 0xFF, 0);
 				break;
 			case CreatureState::COVER:
 				playEffect("clienteffect/combat_special_attacker_cover.cef");
@@ -896,6 +897,7 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 		case CreatureState::BERSERK:
 			break;
 		case CreatureState::AIMING:
+			showFlyText("combat_effects", "no_steady", 0xFF, 0, 0);
 			break;
 		case CreatureState::COVER: {
 			if (hasBuff(CreatureState::COVER)) {
@@ -2052,6 +2054,9 @@ void CreatureObjectImplementation::setDizziedState(int durationSeconds) {
 void CreatureObjectImplementation::setAimingState(int durationSeconds) {
 	if (!hasState(CreatureState::AIMING)) {
 		StateBuff* aiming = new StateBuff(_this.get(), CreatureState::AIMING, durationSeconds);
+
+		aiming->setStartFlyText("combat_effects", "go_steady", 0, 0xFF, 0);
+		aiming->setEndFlyText("combat_effects", "no_steady", 0xFF, 0, 0);
 
 		int aimMods = 0;
 		Vector<String>* creatureAimMods = weapon->getCreatureAimModifiers();
