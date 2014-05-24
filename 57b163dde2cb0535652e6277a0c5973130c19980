@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_6974659c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/yavin4/woolamander_harvester.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-24T21:53:51Z",
+      "side": 1,
+      "message": "What\u0027s your source for changing this to a poison?\n\nThe prima guide list it\u0027s attacks as Area attack (knockdown) and Dizzy attack.",
+      "revId": "57b163dde2cb0535652e6277a0c5973130c19980",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
