@@ -238,6 +238,7 @@ createMissionGiverConvoTemplate("vordin_sildor_mission_giver_convotemplate","vor
 createMissionGiverConvoTemplate("zeelius_kraymunder_mission_giver_convotemplate","zeelius_kraymunder_mission_giver_conv_handler")
 
 --Yavin4
+createMissionGiverConvoTemplate("gins_darone_mission_giver_convotemplate","gins_darone_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("ruwan_tokai_mission_giver_convotemplate","ruwan_tokai_mission_giver_conv_handler")
 
 --Corellia
