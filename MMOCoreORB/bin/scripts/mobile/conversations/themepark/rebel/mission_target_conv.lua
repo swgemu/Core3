@@ -138,6 +138,8 @@ createMissionTargetConvoTemplate("sloan_rusper_mission_target_convotemplate","sl
 createMissionTargetConvoTemplate("vordin_sildor_mission_target_convotemplate","vordin_sildor_mission_target_conv_handler")
 createMissionTargetConvoTemplate("zeelius_kraymunder_mission_target_convotemplate","zeelius_kraymunder_mission_target_conv_handler")
 
+-- Yavin4
+createMissionTargetConvoTemplate("ruwan_tokai_mission_target_convotemplate","ruwan_tokai_mission_target_conv_handler")
 
 -- Corellia
 createMissionTargetConvoTemplate("diktatTargetConvo","diktatTargetHandler")
