@@ -21,7 +21,7 @@ bh_naboo_pirate_lieutenant = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 

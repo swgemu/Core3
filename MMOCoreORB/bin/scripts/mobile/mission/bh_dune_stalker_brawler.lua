@@ -21,8 +21,8 @@ bh_dune_stalker_brawler = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = PACK + STALKER,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

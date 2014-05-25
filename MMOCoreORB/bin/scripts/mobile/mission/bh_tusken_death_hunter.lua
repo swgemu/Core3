@@ -1,17 +1,17 @@
-bh_force_sensitive_crypt_crawler = Creature:new {
-	objectName = "@mob/creature_names:force_sensitive_crypt_crawler",
-	socialGroup = "kun",
-	pvpFaction = "",
-	faction = "",
-	level = 95,
-	chanceHit = 0.9,
-	damageMin = 685,
-	damageMax = 1080,
-	baseXp = 9057,
-	baseHAM = 16000,
-	baseHAMmax = 19000,
-	armor = 2,
-	resists = {75,75,40,40,40,40,40,40,-1},
+bh_tusken_death_hunter = Creature:new {
+	objectName = "@mob/creature_names:tusken_death_hunter",
+	socialGroup = "tusken_raider",
+	pvpFaction = "tusken_raider",
+	faction = "tusken_raider",
+	level = 50,
+	chanceHit = 0.5,
+	damageMin = 395,
+	damageMax = 500,
+	baseXp = 4916,
+	baseHAM = 10000,
+	baseHAMmax = 12000,
+	armor = 1,
+	resists = {40,40,30,30,0,30,0,30,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -26,21 +26,22 @@ bh_force_sensitive_crypt_crawler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_force_sensitive_crypt_crawler.iff"},
+	templates = {"object/mobile/tusken_raider.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "crystals_poor", chance = 500000},
+				{group = "junk", chance = 1500000},
+				{group = "tusken_common", chance = 3500000},
+				{group = "wearables_common", chance = 1000000},
+				{group = "wearables_uncommon", chance = 500000},
+				{group = "bone_armor", chance = 750000},
+				{group = "chitin_armor", chance = 750000},
+				{group = "armor_attachments", chance = 500000},
+				{group = "clothing_attachments", chance = 500000},
 				{group = "color_crystals", chance = 500000},
-				{group = "holocron_dark", chance = 500000},
-				{group = "holocron_light", chance = 500000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "armor_attachments", chance = 1000000},
-				{group = "clothing_attachments", chance = 1000000},
-				{group = "wearables_all", chance = 1000000}
+				{group = "crystals_okay", chance = 500000}
 			},
-			lootChance = 4500000
+			lootChance = 3000000
 		},
 		{
 			groups = {
@@ -60,16 +61,16 @@ bh_force_sensitive_crypt_crawler = Creature:new {
 				{group = "crystals_select", chance = 500000},
 				{group = "crystals_good", chance = 500000},
 				{group = "color_crystals", chance = 2500000},
-				{group = "melee_weapons", chance = 2000000},
+				{group = "armor_all", chance = 2000000},
 				{group = "armor_attachments", chance = 1500000},
 				{group = "clothing_attachments", chance = 1500000}
 			},
 			lootChance = 6000000
-		},
+		}
 	},
-	weapons = {"mixed_force_weapons"},
+	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster)
+	attacks = merge(marksmanmaster,brawlermaster,fencermaster,riflemanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(bh_force_sensitive_crypt_crawler, "bh_force_sensitive_crypt_crawler")
+CreatureTemplates:addCreatureTemplate(bh_tusken_death_hunter, "bh_tusken_death_hunter")
