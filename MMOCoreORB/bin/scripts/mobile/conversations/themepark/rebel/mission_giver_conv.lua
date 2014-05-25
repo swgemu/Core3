@@ -237,6 +237,8 @@ createMissionGiverConvoTemplate("sloan_rusper_mission_giver_convotemplate","sloa
 createMissionGiverConvoTemplate("vordin_sildor_mission_giver_convotemplate","vordin_sildor_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("zeelius_kraymunder_mission_giver_convotemplate","zeelius_kraymunder_mission_giver_conv_handler")
 
+--Yavin4
+createMissionGiverConvoTemplate("ruwan_tokai_mission_giver_convotemplate","ruwan_tokai_mission_giver_conv_handler")
 
 --Corellia
 createMissionGiverConvoTemplate("diktatGiverConvo","diktatGiverHandler")
