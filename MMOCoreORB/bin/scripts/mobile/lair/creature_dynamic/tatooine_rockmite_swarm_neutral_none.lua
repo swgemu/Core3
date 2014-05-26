@@ -1,5 +1,5 @@
 tatooine_rockmite_swarm_neutral_none = Lair:new {
-	mobiles = {{"rockmite", 0}},
+	mobiles = {{"rockmite", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff","object/tangible/lair/base/poi_all_lair_mound_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff","object/tangible/lair/base/poi_all_lair_mound_small.iff"},

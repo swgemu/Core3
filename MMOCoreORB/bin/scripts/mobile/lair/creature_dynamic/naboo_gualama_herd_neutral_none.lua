@@ -1,5 +1,5 @@
 naboo_gualama_herd_neutral_none = Lair:new {
-	mobiles = {{"maverick_gualama", 0}},
+	mobiles = {{"maverick_gualama", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/gualama/lair_gualama.iff"},
 	buildingsEasy = {"object/tangible/lair/gualama/lair_gualama.iff"},

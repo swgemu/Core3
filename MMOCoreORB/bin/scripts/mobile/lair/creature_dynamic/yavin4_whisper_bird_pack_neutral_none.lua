@@ -1,5 +1,5 @@
 yavin4_whisper_bird_pack_neutral_none = Lair:new {
-	mobiles = {{"whisper_bird_hatchling", 0}},
+	mobiles = {{"whisper_bird_hatchling", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_nest_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_nest_large.iff"},

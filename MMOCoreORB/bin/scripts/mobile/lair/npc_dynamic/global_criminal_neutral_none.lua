@@ -1,5 +1,5 @@
 global_criminal_neutral_none = Lair:new {
-	mobiles = {{"criminal", 0}},
+	mobiles = {{"criminal", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_power_generator.iff"},

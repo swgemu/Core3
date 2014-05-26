@@ -1,5 +1,5 @@
 yavin4_gackle_bat_herd_neutral_none = Lair:new {
-	mobiles = {{"gackle_bat_hunter", 0}},
+	mobiles = {{"gackle_bat_hunter", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_nest_small_evil_fire_red.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_nest_small_evil_fire_red.iff"},

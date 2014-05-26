@@ -1,5 +1,5 @@
 tusk_cat = Lair:new {
-	mobiles = {{"tusk_cat", 0}},
+	mobiles = {{"tusk_cat", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy =  {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff","object/tangible/lair/base/poi_all_lair_mound_small.iff"},
 	buildingsEasy =  {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff","object/tangible/lair/base/poi_all_lair_mound_small.iff"},

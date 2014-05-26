@@ -1,5 +1,5 @@
 bantha_herd = Lair:new {
-	mobiles = {{"bantha_matriarch", 0}},
+	mobiles = {{"bantha_matriarch", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_brambles_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_brambles_large.iff"},

@@ -1,5 +1,5 @@
 naboo_diseased_nuna_lair_neutral_small = Lair:new {
-	mobiles = {{"diseased_nuna", 0}},
+	mobiles = {{"diseased_nuna", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/nuna/lair_nuna_grassland.iff"},
 	buildingsEasy = {"object/tangible/lair/nuna/lair_nuna_grassland.iff"},

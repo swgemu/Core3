@@ -1,5 +1,5 @@
 imperial_banner = Lair:new {
-	mobiles = {{"imperial_sharpshooter", 17}},
+	mobiles = {{"imperial_sharpshooter", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_power_generator.iff"},

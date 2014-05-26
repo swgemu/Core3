@@ -1,5 +1,5 @@
 imperial = Lair:new {
-	mobiles = {{"stormtrooper_bombardier", 25}},
+	mobiles = {{"stormtrooper_bombardier", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_power_generator.iff"},

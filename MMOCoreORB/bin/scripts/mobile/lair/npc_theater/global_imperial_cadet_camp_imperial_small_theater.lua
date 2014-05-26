@@ -1,5 +1,5 @@
 global_imperial_cadet_camp_imperial_small_theater = Lair:new {
-	mobiles = {{"imperial_cadet", 0}},
+	mobiles = {{"imperial_cadet", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_banner_imperial.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_banner_imperial.iff"},

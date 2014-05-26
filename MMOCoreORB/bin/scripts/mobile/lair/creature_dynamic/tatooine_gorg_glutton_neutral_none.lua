@@ -1,5 +1,5 @@
 tatooine_gorg_glutton_neutral_none = Lair:new {
-	mobiles = {{"gorg_glutton", 0}},
+	mobiles = {{"gorg_glutton", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_mound_small_fog_mustard.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_mound_small_fog_mustard.iff"},

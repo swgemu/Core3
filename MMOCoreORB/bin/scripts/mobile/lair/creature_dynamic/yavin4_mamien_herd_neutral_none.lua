@@ -1,5 +1,5 @@
 yavin4_mamien_herd_neutral_none = Lair:new {
-	mobiles = {{"mamien_youth", 0}},
+	mobiles = {{"mamien_youth", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/mamien/lair_mamien.iff"},
 	buildingsEasy = {"object/tangible/lair/mamien/lair_mamien.iff"},

@@ -1,5 +1,5 @@
 talus_sleemo_delinquent_camp_neutral_medium_theater = Lair:new {
-	mobiles = {{"sleemo_delinquent", 0}, {"sleemo_punk", 0}},
+	mobiles = {{"sleemo_delinquent", 1}, {"sleemo_punk", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_transformer.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_power_transformer.iff"},

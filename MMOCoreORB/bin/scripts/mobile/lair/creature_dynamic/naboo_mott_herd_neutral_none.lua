@@ -1,5 +1,5 @@
 naboo_mott_herd_neutral_none = Lair:new {
-	mobiles = {{"mott", -3}, {"mott_bull", 0}},
+	mobiles = {{"mott", 1}, {"mott_bull", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/mott/lair_mott.iff"},
 	buildingsEasy = {"object/tangible/lair/mott/lair_mott.iff"},

@@ -1,5 +1,5 @@
 dantooine_mokk_scout_neutral_none = Lair:new {
-	mobiles = {{"mokk_scout", 0}},
+	mobiles = {{"mokk_scout", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},

@@ -1,5 +1,5 @@
 veermok_forest = Lair:new {
-	mobiles = {{"veermok", 0}},
+	mobiles = {{"veermok", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/lair_base_crevice_dark.iff"},
 	buildingsEasy = {"object/tangible/lair/base/lair_base_crevice_dark.iff"},

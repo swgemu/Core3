@@ -1,5 +1,5 @@
 naboo_krevol_lair_neutral_small = Lair:new {
-	mobiles = {{"spiked_krevol", 0}},
+	mobiles = {{"spiked_krevol", 1}},
 	spawnLimit = 20,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_brambles_small_fog_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_brambles_small_fog_green.iff"},

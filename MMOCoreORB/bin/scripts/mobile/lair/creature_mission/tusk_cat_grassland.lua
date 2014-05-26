@@ -1,5 +1,5 @@
 tusk_cat_grassland = Lair:new {
-	mobiles = {{"tusk_cat", 0}},
+	mobiles = {{"tusk_cat", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/lair_base_cave_lion_light.iff"},
 	buildingsEasy = {"object/tangible/lair/base/lair_base_cave_lion_light.iff"},

@@ -1,5 +1,5 @@
 lok_kimogilla_pack2_neutral_none = Lair:new {
-	mobiles = {{"kimogila_hatchling", 0}},
+	mobiles = {{"kimogila_hatchling", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/kimogila/lair_kimogila_grassland.iff"},
 	buildingsEasy = {"object/tangible/lair/kimogila/lair_kimogila_grassland.iff"},

@@ -1,5 +1,5 @@
 endor_arachne_venom_filled_neutral_none = Lair:new {
-	mobiles = {{"venom_filled_arachne", -22},{"arachne_widow", 0}},
+	mobiles = {{"venom_filled_arachne", 1},{"arachne_widow", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_fog_red.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_fog_red.iff"},

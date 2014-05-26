@@ -1,5 +1,5 @@
 lok_perlek_pack_neutral_none = Lair:new {
-	mobiles = {{"perlek", -1},{"perlek_scavenger", 0}},
+	mobiles = {{"perlek", 1},{"perlek_scavenger", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_nest_small_fog_mustard.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_nest_small_fog_mustard.iff"},

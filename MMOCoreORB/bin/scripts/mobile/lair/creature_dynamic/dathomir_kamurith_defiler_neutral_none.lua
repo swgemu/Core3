@@ -1,5 +1,5 @@
 dathomir_kamurith_defiler_neutral_none = Lair:new {
-	mobiles = {{"kamurith_defiler", 0}},
+	mobiles = {{"kamurith_defiler", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small_evil_fire_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small_evil_fire_small.iff"},

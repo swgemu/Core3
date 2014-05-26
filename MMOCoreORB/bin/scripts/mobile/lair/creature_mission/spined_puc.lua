@@ -1,5 +1,5 @@
 spined_puc = Lair:new {
-	mobiles = {{"spined_puc", 0}},
+	mobiles = {{"spined_puc", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_garbage_small_fog_mustard.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_garbage_small_fog_mustard.iff"},

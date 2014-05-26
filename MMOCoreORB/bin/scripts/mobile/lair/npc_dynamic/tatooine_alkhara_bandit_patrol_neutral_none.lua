@@ -1,5 +1,5 @@
 tatooine_alkhara_bandit_patrol_neutral_none = Lair:new {
-	mobiles = {{"alkhara_bandit",0}},
+	mobiles = {{"alkhara_bandit",1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_banner_tatooine.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_banner_tatooine.iff"},

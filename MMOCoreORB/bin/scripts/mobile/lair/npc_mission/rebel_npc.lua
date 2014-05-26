@@ -1,5 +1,5 @@
 rebel_npc = Lair:new {
-	mobiles = {{"rebel_corporal", 15}},
+	mobiles = {{"rebel_corporal", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_power_generator.iff"},

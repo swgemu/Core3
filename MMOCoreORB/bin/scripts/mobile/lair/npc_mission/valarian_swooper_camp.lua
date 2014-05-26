@@ -1,5 +1,5 @@
 valarian_swooper_camp = Lair:new {
-	mobiles = {{"valarian_swooper_leader", 0},{"valarian_swooper", 0}},
+	mobiles = {{"valarian_swooper_leader", 1},{"valarian_swooper", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_power_generator.iff"},

@@ -1,5 +1,5 @@
 dathomir_brackaset_surefoot_neutral_none = Lair:new {
-	mobiles = {{"surefoot_brackaset", 0}},
+	mobiles = {{"surefoot_brackaset", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/brackaset/lair_brackaset_desert.iff"},
 	buildingsEasy = {"object/tangible/lair/brackaset/lair_brackaset_desert.iff"},

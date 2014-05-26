@@ -1,5 +1,5 @@
 rori_nudfuh_pack_neutral_none = Lair:new {
-	mobiles = {{"nudfuh", 0}},
+	mobiles = {{"nudfuh", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},

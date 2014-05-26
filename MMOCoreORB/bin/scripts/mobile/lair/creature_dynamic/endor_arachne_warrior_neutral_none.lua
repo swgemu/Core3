@@ -1,5 +1,5 @@
 endor_arachne_warrior_neutral_none = Lair:new {
-	mobiles = {{"arachne_warrior", 0}},
+	mobiles = {{"arachne_warrior", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_fog_red.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_fog_red.iff"},

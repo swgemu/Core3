@@ -1,5 +1,5 @@
 corellia_meatlump_camp_neutral_medium_theater = Lair:new {
-	mobiles = {{"meatlump_cretin", 0}, {"meatlump_loon", 0}, {"meatlump_oaf", 0}},
+	mobiles = {{"meatlump_cretin", 1}, {"meatlump_loon", 1}, {"meatlump_oaf", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_banner_generic_2.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_banner_generic_2.iff"},

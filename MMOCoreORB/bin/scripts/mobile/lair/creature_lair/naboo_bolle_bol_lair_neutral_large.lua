@@ -1,5 +1,5 @@
 naboo_bolle_bol_lair_neutral_large = Lair:new {
-	mobiles = {{"bolle_bol", 0}},
+	mobiles = {{"bolle_bol", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_red.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_red.iff"},

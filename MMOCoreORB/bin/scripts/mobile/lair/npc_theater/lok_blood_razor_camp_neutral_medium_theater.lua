@@ -1,5 +1,5 @@
 lok_blood_razor_camp_neutral_medium_theater = Lair:new {
-	mobiles = {{"blood_razor_cutthroat", 0},{"blood_razor_berzerker", 0}},
+	mobiles = {{"blood_razor_cutthroat", 1},{"blood_razor_berzerker", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_banner_generic_1.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_banner_generic_1.iff"},

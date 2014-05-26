@@ -1,5 +1,5 @@
 naboo_flesh_eating_chuba_lair_neutral_small = Lair:new {
-	mobiles = {{"flesh_eating_chuba", 0}},
+	mobiles = {{"flesh_eating_chuba", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/chuba/lair_chuba_swamp.iff"},
 	buildingsEasy = {"object/tangible/lair/chuba/lair_chuba_swamp.iff"},

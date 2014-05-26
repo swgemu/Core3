@@ -1,5 +1,5 @@
 mauler_gang = Lair:new {
-	mobiles = {{"mauler_acolyte", 0}, {"mauler_apprentice", 0}, {"mauler", 0}},
+	mobiles = {{"mauler_acolyte", 1}, {"mauler_apprentice", 1}, {"mauler", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_node.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_power_node.iff"},

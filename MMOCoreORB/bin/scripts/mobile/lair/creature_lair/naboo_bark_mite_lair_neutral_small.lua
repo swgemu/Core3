@@ -1,5 +1,5 @@
 naboo_bark_mite_lair_neutral_small = Lair:new {
-	mobiles = {{"bark_mite", 0}, {"bark_mite_hatchling", -1}},
+	mobiles = {{"bark_mite", 1}, {"bark_mite_hatchling", 1}},
 	spawnLimit = 20,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_red.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_red.iff"},

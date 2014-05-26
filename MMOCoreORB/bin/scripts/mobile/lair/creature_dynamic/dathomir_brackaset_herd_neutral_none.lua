@@ -1,5 +1,5 @@
 dathomir_brackaset_herd_neutral_none = Lair:new {
-	mobiles = {{"lowland_brackaset", 0}},
+	mobiles = {{"lowland_brackaset", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/brackaset/lair_brackaset.iff"},
 	buildingsEasy = {"object/tangible/lair/brackaset/lair_brackaset.iff"},

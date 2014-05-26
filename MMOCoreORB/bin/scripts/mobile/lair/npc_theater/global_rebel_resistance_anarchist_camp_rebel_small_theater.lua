@@ -1,5 +1,5 @@
 global_rebel_resistance_anarchist_camp_rebel_small_theater = Lair:new {
-	mobiles = {{"rebel_resistance_anarchist", 9}},
+	mobiles = {{"rebel_resistance_anarchist", 1}},
 	spawnLimit = 8,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_banner_rebel.iff"},
 	buildingsEasy = {"object/tangible/lair/base/objective_banner_rebel.iff"},

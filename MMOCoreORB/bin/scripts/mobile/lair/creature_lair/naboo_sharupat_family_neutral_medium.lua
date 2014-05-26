@@ -1,5 +1,5 @@
 naboo_sharupat_family_neutral_medium = Lair:new {
-	mobiles = {{"shaupaut", 0}},
+	mobiles = {{"shaupaut", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/earthmound_dark.iff"},
 	buildingsEasy = {"object/tangible/lair/base/earthmound_dark.iff"},

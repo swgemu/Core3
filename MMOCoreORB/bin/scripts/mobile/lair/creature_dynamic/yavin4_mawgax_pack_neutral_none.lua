@@ -1,5 +1,5 @@
 yavin4_mawgax_pack_neutral_none = Lair:new {
-	mobiles = {{"mawgax_raptor", 0}},
+	mobiles = {{"mawgax_raptor", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},

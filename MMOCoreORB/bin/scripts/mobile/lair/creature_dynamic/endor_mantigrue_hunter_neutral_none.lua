@@ -1,5 +1,5 @@
 endor_mantigrue_hunter_neutral_none = Lair:new {
-	mobiles = {{"mantigrue_hunter", 0}},
+	mobiles = {{"mantigrue_hunter", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/antpile_light.iff"},
 	buildingsEasy = {"object/tangible/lair/base/antpile_light.iff"},

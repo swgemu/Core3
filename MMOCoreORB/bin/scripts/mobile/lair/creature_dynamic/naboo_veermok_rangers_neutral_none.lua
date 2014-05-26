@@ -1,5 +1,5 @@
 naboo_veermok_rangers_neutral_none = Lair:new {
-	mobiles = {{"veermok_hunter", 0}, {"veermok_scavenger", -2}},
+	mobiles = {{"veermok_hunter", 1}, {"veermok_scavenger", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/lair_base_crevice_dark.iff"},
 	buildingsEasy = {"object/tangible/lair/base/lair_base_crevice_dark.iff"},

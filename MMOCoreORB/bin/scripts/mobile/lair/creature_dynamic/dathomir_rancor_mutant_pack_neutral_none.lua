@@ -1,5 +1,5 @@
 dathomir_rancor_mutant_pack_neutral_none = Lair:new {
-	mobiles = {{"mutant_rancor",0}},
+	mobiles = {{"mutant_rancor",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/rancor/lair_rancor_mountain.iff"},
 	buildingsEasy = {"object/tangible/lair/rancor/lair_rancor_mountain.iff"},

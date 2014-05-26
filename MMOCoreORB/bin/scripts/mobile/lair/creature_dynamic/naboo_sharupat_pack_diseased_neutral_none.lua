@@ -1,5 +1,5 @@
 naboo_sharupat_pack_diseased_neutral_none = Lair:new {
-	mobiles = {{"shaupaut_hunter", 0}},
+	mobiles = {{"shaupaut_hunter", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/earthmound_dark.iff"},
 	buildingsEasy = {"object/tangible/lair/base/earthmound_dark.iff"},

@@ -1,5 +1,5 @@
 yavin4_crystal_snake_herd_neutral_none = Lair:new {
-	mobiles = {{"hooded_crystal_snake", 0}},
+	mobiles = {{"hooded_crystal_snake", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_leaf_medium.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_leaf_medium.iff"},

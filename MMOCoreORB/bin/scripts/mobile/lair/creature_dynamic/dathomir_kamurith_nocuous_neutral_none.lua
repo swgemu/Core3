@@ -1,5 +1,5 @@
 dathomir_kamurith_nocuous_neutral_none = Lair:new {
-	mobiles = {{"nocuous_kamurith", 0}},
+	mobiles = {{"nocuous_kamurith", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small_evil_fire_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small_evil_fire_small.iff"},
