@@ -1,5 +1,5 @@
 rori_forest_mite_lair_neutral_small = Lair:new {
-	mobiles = {{"forest_mite", 0}},
+	mobiles = {{"forest_mite", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},

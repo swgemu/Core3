@@ -1,5 +1,5 @@
 endor_mantigrue_screecher_lair_neutral_small = Lair:new {
-	mobiles = {{"mantigrue_screecher", 0}},
+	mobiles = {{"mantigrue_screecher", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/antpile_light.iff"},
 	buildingsEasy = {"object/tangible/lair/base/antpile_light.iff"},

@@ -1,5 +1,5 @@
 talus_paralope_lair_neutral_medium = Lair:new {
-	mobiles = {{"paralope", 0}},
+	mobiles = {{"paralope", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_small.iff"},

@@ -1,5 +1,5 @@
 talus_woodland_kima_lair_neutral_medium = Lair:new {
-	mobiles = {{"woodland_kima", 0}},
+	mobiles = {{"woodland_kima", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/kima/lair_kima.iff"},
 	buildingsEasy = {"object/tangible/lair/kima/lair_kima.iff"},

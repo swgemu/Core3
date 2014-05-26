@@ -1,5 +1,5 @@
 dathomir_mutant_baz_nitch_lair_neutral_small = Lair:new {
-	mobiles = {{"mutant_baz_nitch", 0}},
+	mobiles = {{"mutant_baz_nitch", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/baz_nitch/lair_baz_nitch_forest.iff"},
 	buildingsEasy = {"object/tangible/lair/baz_nitch/lair_baz_nitch_forest.iff"},

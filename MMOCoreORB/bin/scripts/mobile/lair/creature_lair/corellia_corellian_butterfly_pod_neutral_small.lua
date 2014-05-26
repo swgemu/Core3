@@ -1,5 +1,5 @@
 corellia_corellian_butterfly_pod_neutral_small = Lair:new {
-	mobiles = {{"corellian_butterfly", 0}},
+	mobiles = {{"corellian_butterfly", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_evil_fire_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_evil_fire_green.iff"},

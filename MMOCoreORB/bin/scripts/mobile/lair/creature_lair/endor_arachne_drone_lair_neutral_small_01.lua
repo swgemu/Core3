@@ -1,5 +1,5 @@
 endor_arachne_drone_lair_neutral_small_01 = Lair:new {
-	mobiles = {{"arachne_drone", 0}},
+	mobiles = {{"arachne_drone", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_fog_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_fog_green.iff"},

@@ -1,5 +1,5 @@
 talus_savage_humbaba_lair_neutral_medium = Lair:new {
-	mobiles = {{"savage_humbaba", 0}},
+	mobiles = {{"savage_humbaba", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_mound_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_mound_large.iff"},

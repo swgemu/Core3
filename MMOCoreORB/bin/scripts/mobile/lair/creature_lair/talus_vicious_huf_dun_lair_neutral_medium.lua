@@ -1,5 +1,5 @@
 talus_vicious_huf_dun_lair_neutral_medium = Lair:new {
-	mobiles = {{"vicious_huf_dun", 0}},
+	mobiles = {{"vicious_huf_dun", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/huf_dun/lair_huf_dun.iff"},
 	buildingsEasy = {"object/tangible/lair/huf_dun/lair_huf_dun.iff"},

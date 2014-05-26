@@ -1,5 +1,5 @@
 talus_giant_dalyrake_lair_neutral_medium = Lair:new {
-	mobiles = {{"giant_dalyrake", 0}},
+	mobiles = {{"giant_dalyrake", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/dalyrake/lair_dalyrake.iff"},
 	buildingsEasy = {"object/tangible/lair/dalyrake/lair_dalyrake.iff"},

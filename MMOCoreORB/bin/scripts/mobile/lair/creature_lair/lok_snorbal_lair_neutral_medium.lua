@@ -1,5 +1,5 @@
 lok_snorbal_lair_neutral_medium = Lair:new {
-	mobiles = {{"snorbal", 0}},
+	mobiles = {{"snorbal", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},

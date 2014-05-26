@@ -1,5 +1,5 @@
 talus_famished_sludge_panther_lair_neutral_mdium = Lair:new {
-	mobiles = {{"famished_sludge_panther", 0}},
+	mobiles = {{"famished_sludge_panther", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large.iff"},

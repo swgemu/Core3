@@ -1,5 +1,5 @@
 talus_kima_lair_neutral_medium_boss_01 = Lair:new {
-	mobiles = {{"kima", 0}},
+	mobiles = {{"kima", 1}},
 	bossMobiles = {{"ferine_razorfang", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/kima/lair_kima.iff"},

@@ -1,5 +1,5 @@
 talus_tortur_lair_neutral_large = Lair:new {
-	mobiles = {{"tortur", 0}},
+	mobiles = {{"tortur", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_brambles_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_brambles_large.iff"},

@@ -1,5 +1,5 @@
 corellia_dire_cat_lair_neutral_medium_boss_01 = Lair:new {
-	mobiles = {{"dire_cat", 0}},
+	mobiles = {{"dire_cat", 1}},
 	bossMobiles = {{"feral_orphan", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/lair_base_cave_lion_light.iff", "object/tangible/lair/base/lair_base_cave_lion_dark.iff"},

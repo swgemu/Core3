@@ -1,5 +1,5 @@
 tatooine_dragonet_lair_neutral_medium = Lair:new {
-	mobiles = {{"dragonet", 0}},
+	mobiles = {{"dragonet", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/lair_base_trash_dark.iff"},
 	buildingsEasy = {"object/tangible/lair/base/lair_base_trash_dark.iff"},

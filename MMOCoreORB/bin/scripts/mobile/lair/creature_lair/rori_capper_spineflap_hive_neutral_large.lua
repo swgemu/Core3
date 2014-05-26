@@ -1,5 +1,5 @@
 rori_capper_spineflap_hive_neutral_large = Lair:new {
-	mobiles = {{"capper_spineflap_drone", 0}},
+	mobiles = {{"capper_spineflap_drone", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap_forest.iff"},
 	buildingsEasy = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap_forest.iff"},

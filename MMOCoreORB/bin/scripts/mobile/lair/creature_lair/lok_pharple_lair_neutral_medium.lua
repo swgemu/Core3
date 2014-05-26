@@ -1,5 +1,5 @@
 lok_pharple_lair_neutral_medium = Lair:new {
-	mobiles = {{"pharple", 0}},
+	mobiles = {{"pharple", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_nest_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_nest_small.iff"},

@@ -1,5 +1,5 @@
 endor_bark_mite_burrower_worker_lair_neutral_small = Lair:new {
-	mobiles = {{"bark_mite_burrower_worker", 0}},
+	mobiles = {{"bark_mite_burrower_worker", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_evil_fire_red.iff","object/tangible/lair/base/poi_all_lair_dead_log_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small_evil_fire_red.iff","object/tangible/lair/base/poi_all_lair_dead_log_small.iff"},

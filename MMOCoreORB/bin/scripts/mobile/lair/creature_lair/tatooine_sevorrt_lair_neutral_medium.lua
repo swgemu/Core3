@@ -1,5 +1,5 @@
 tatooine_sevorrt_lair_neutral_medium = Lair:new {
-	mobiles = {{"sevorrt", 0}},
+	mobiles = {{"sevorrt", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/earthmound_dark.iff"},
 	buildingsEasy = {"object/tangible/lair/base/earthmound_dark.iff"},

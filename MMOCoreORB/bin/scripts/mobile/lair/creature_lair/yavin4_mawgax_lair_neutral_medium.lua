@@ -1,5 +1,5 @@
 yavin4_mawgax_lair_neutral_medium = Lair:new {
-	mobiles = {{"giant_mawgax", 0}},
+	mobiles = {{"giant_mawgax", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},

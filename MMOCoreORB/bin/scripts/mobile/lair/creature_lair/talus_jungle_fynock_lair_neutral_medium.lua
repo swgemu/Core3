@@ -1,5 +1,5 @@
 talus_jungle_fynock_lair_neutral_medium = Lair:new {
-	mobiles = {{"jungle_fynock", 0}},
+	mobiles = {{"jungle_fynock", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_thicket_small.iff","object/tangible/lair/base/poi_all_lair_nest_small_fog_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_thicket_small.iff","object/tangible/lair/base/poi_all_lair_nest_small_fog_green.iff"},

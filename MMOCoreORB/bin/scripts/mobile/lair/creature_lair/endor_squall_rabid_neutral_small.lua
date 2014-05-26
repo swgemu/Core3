@@ -1,5 +1,5 @@
 endor_squall_rabid_neutral_small = Lair:new {
-	mobiles = {{"rabid_squall", 0}},
+	mobiles = {{"rabid_squall", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},

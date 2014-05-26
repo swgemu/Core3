@@ -1,5 +1,5 @@
 talus_rot_mite_lair_neutral_small = Lair:new {
-	mobiles = {{"rot_mite", 0}},
+	mobiles = {{"rot_mite", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff"},
