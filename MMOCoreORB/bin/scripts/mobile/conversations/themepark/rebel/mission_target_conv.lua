@@ -101,6 +101,7 @@ createMissionTargetConvoTemplate("aaph_koden_mission_target_convotemplate","aaph
 
 -- Naboo
 createMissionTargetConvoTemplate("gavyn_sykes_mission_target_convotemplate","gavyn_sykes_mission_target_conv_handler")
+createMissionTargetConvoTemplate("tamvar_senzen_mission_target_convotemplate","tamvar_senzen_mission_target_conv_handler")
 
 
 -- Talus
