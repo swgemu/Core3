@@ -1,4 +1,4 @@
-commander_byrne = Creature:new {
+lian_byrne = Creature:new {
 	objectName = "@mob/creature_names:commander_byrne",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
@@ -21,9 +21,9 @@ commander_byrne = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lian_byrne.iff"},
@@ -41,8 +41,8 @@ commander_byrne = Creature:new {
 		}		
 	},
 	weapons = {"imperial_weapons_heavy"},
-	conversationTemplate = "",
+	conversationTemplate = "lian_byrne_mission_giver_convotemplate",
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(commander_byrne, "commander_byrne")
+CreatureTemplates:addCreatureTemplate(lian_byrne, "lian_byrne")

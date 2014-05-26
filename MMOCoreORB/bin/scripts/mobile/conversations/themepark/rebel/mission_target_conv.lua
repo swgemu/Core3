@@ -140,6 +140,7 @@ createMissionTargetConvoTemplate("zeelius_kraymunder_mission_target_convotemplat
 
 -- Yavin4
 createMissionTargetConvoTemplate("gins_darone_mission_target_convotemplate","gins_darone_mission_target_conv_handler")
+createMissionTargetConvoTemplate("lian_byrne_mission_target_convotemplate","lian_byrne_mission_target_conv_handler")
 createMissionTargetConvoTemplate("ruwan_tokai_mission_target_convotemplate","ruwan_tokai_mission_target_conv_handler")
 
 -- Corellia

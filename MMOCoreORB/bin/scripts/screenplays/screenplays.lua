@@ -70,6 +70,7 @@ includeFile("tasks/tatooine/rakir_banai.lua")
 includeFile("tasks/tatooine/tekil_barje.lua")
 includeFile("tasks/tatooine/vardias_tyne.lua")
 includeFile("tasks/yavin4/gins_darone.lua")
+includeFile("tasks/yavin4/lian_byrne.lua")
 includeFile("tasks/yavin4/ruwan_tokai.lua")
 
 -- Caves
