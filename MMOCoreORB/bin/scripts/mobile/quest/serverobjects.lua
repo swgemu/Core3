@@ -63,13 +63,17 @@ includeFile("quest/dathomir/wallaw_bull_rancor.lua")
 -- Lok
 
 -- Naboo
+includeFile("quest/naboo/boss_nass.lua")
+includeFile("quest/naboo/fassa.lua")
 includeFile("quest/naboo/gavyn_sykes.lua")
 includeFile("quest/naboo/haf_mandrox.lua")
+includeFile("quest/naboo/jaanie.lua")
 includeFile("quest/naboo/lareen_dantara.lua")
 includeFile("quest/naboo/large_berzerk_ikopi.lua")
 includeFile("quest/naboo/leb_merchant.lua")
 includeFile("quest/naboo/leb_slesher.lua")
 includeFile("quest/naboo/librarian.lua")
+includeFile("quest/naboo/pol_revver.lua")
 includeFile("quest/naboo/shandara.lua")
 includeFile("quest/naboo/tamvar_senzen.lua")
 includeFile("quest/naboo/zim_zam_blattis.lua")

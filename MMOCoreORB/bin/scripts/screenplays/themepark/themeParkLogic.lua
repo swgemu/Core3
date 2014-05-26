@@ -859,10 +859,14 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 
 	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+  local wpNames = self:getHasWaypointNames(npcNumber)
+  local curMission = self:getMission(npcNumber, missionNumber)
 
 	if self.missionCompletionMessageStf == "" then
-		local stfFile = self:getStfFile(npcNumber)
-		creature:sendSystemMessage(stfFile .. ":return_waypoint_description_" .. missionNumber)
+    if wpNames ~= "no" and curMission.hasWaypointName ~= "no" then	
+		  local stfFile = self:getStfFile(npcNumber)
+		  creature:sendSystemMessage(stfFile .. ":return_waypoint_description_" .. missionNumber)
+    end
 	else
 		creature:sendSystemMessage(self.missionCompletionMessageStf)
 	end
