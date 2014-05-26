@@ -198,7 +198,7 @@ createMissionGiverConvoTemplate("aaph_koden_mission_giver_convotemplate", "aaph_
 -- Naboo
 createMissionGiverConvoTemplate("gavyn_sykes_mission_giver_convotemplate", "gavyn_sykes_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("lareen_dantara_mission_giver_convotemplate", "lareen_dantara_mission_giver_conv_handler")
-
+createMissionGiverConvoTemplate("tamvar_senzen_mission_giver_convotemplate", "tamvar_senzen_mission_giver_conv_handler")
 
 -- Talus
 createMissionGiverConvoTemplate("kathikiis_ruwahurr_mission_giver_convotemplate", "kathikiis_ruwahurr_mission_giver_conv_handler")

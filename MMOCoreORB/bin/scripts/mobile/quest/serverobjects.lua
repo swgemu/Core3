@@ -68,6 +68,8 @@ includeFile("quest/naboo/haf_mandrox.lua")
 includeFile("quest/naboo/lareen_dantara.lua")
 includeFile("quest/naboo/large_berzerk_ikopi.lua")
 includeFile("quest/naboo/librarian.lua")
+includeFile("quest/naboo/shandara.lua")
+includeFile("quest/naboo/tamvar_senzen.lua")
 includeFile("quest/naboo/zim_zam_blattis.lua")
 
 -- Rori
