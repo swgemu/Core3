@@ -78,14 +78,10 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	String buildingToSpawn;
 
- 	VectorMap<String, int>* mobiles = lairTmpl->getMobiles();
+ 	Vector<String>* mobiles = lairTmpl->getWeightedMobiles();
 
  	if (mobiles->size() == 0)
  		return NULL;
-
- 	int rand = System::random(mobiles->size() - 1);
-
- 	String mobile = mobiles->elementAt(rand).getKey();
 
  	buildingToSpawn = lairTmpl->getBuilding((uint32)difficulty);
 

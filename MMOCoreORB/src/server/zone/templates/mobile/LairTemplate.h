@@ -21,8 +21,9 @@ public:
 	enum MobType {CREATURE, NPC};
 
 protected:
-	VectorMap<String, int> mobiles;
-	VectorMap<String, int> bossMobiles;
+	VectorMap<String, int> mobiles; // mobile template, weighting
+	Vector<String> weightedMobiles;
+	VectorMap<String, int> bossMobiles; // mobile template, number to spawn
 	int spawnLimit;
 
 	VectorMap<uint32, Reference<Vector<String>*> > buildings;
@@ -104,9 +105,13 @@ public:
 
 			if (mobile.isValidTable()) {
 				String mob = mobile.getStringAt(1);
-				int level = (int)mobile.getIntAt(2);
+				int weight = (int)mobile.getIntAt(2);
 
-				mobiles.put(mob, level);
+				mobiles.put(mob, weight);
+
+				for (int j = 0; j < weight; ++j) {
+					weightedMobiles.add(mob);
+				}
 			}
 
 			mobile.pop();
@@ -213,6 +218,10 @@ public:
 
 	VectorMap<String, int>* getMobiles() {
 		return &mobiles;
+	}
+
+	Vector<String>* getWeightedMobiles() {
+		return &weightedMobiles;
 	}
 
 	VectorMap<String, int>* getBossMobiles() {
