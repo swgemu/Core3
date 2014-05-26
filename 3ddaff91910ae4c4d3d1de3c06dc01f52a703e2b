@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_09e28903",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/LairObserverImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-05-26T19:14:52Z",
+      "side": 1,
+      "message": "How about moving this loop to inside LairTemplate so that it only runs once after the lua is parsed?\n\nThen add a lairTemplate-\u003egetWeightedMobiles() method to return the weighted list of mobs.",
+      "revId": "3ddaff91910ae4c4d3d1de3c06dc01f52a703e2b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
