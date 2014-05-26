@@ -119,4 +119,8 @@ class LairObserver extends Observer implements Logger {
 	public Vector<CreatureObject> getSpawnedCreatures() {
 		return spawnedCreatures;
 	}
+
+	public string getLairTemplateName() {
+		return lairTemplate.getName();
+	}
 }
