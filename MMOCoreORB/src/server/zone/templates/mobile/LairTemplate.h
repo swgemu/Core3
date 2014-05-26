@@ -21,8 +21,8 @@ public:
 	enum MobType {CREATURE, NPC};
 
 protected:
-	VectorMap<String, int> mobiles;
-	VectorMap<String, int> bossMobiles;
+	VectorMap<String, int> mobiles;  // mobile template, weighting
+	VectorMap<String, int> bossMobiles; // mobile template, number to spawn
 	int spawnLimit;
 
 	VectorMap<uint32, Reference<Vector<String>*> > buildings;
