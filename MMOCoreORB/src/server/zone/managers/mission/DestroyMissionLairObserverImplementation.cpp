@@ -74,7 +74,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 		}
 
 	} else {
-		VectorMap<String, int>* mobiles = lairTemplate->getMobiles();
+		Vector<String>* mobiles = lairTemplate->getWeightedMobiles();
 		int amountToSpawn = 0;
 
 		if (getMobType() == LairTemplate::CREATURE) {
@@ -88,7 +88,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 
 		for (int i = 0; i < amountToSpawn; i++) {
 			int num = System::random(mobiles->size() - 1);
-			String mob = mobiles->elementAt(num).getKey();
+			String mob = mobiles->get(num);
 
 			if (objectsToSpawn.contains(mob)) {
 				int value = objectsToSpawn.get(mob);
@@ -114,12 +114,6 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 			continue;
 
 		float tamingChance = creatureTemplate->getTame();
-		int levelDiff = 0;
-
-		if (spawnNumber != 4) {
-			VectorMap<String, int>* mobiles = lairTemplate->getMobiles();
-			levelDiff = mobiles->get(templateToSpawn);
-		}
 
 		CreatureManager* creatureManager = lair->getZone()->getCreatureManager();
 
@@ -144,7 +138,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 			}
 
 			if (creo == NULL)
-				creo = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
+				creo = creatureManager->spawnCreature(templateToSpawn.hashCode(), 0, x, z, y);
 
 			if (creo == NULL)
 				continue;

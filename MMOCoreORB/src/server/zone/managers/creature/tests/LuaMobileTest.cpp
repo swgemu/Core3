@@ -118,6 +118,35 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		}
 	}
 
+	HashTableIterator<uint32, Reference<LairTemplate*> > itera = CreatureTemplateManager::instance()->lairTemplateIterator();
+	while (itera.hasNext()) {
+		LairTemplate* lair = itera.next();
+		std::string templateName( lair->getName().toCharArray() );
+
+		// Verify that mobiles exist and that their weighting is positive
+		VectorMap<String, int>* mobiles = lair->getMobiles();
+		for (int i = 0; i < mobiles->size(); i++) {
+			int weighting = mobiles->elementAt(i).getValue();
+			String mobile = mobiles->elementAt(i).getKey();
+			std::string mobName = mobile.toCharArray();
+			EXPECT_TRUE( CreatureTemplateManager::instance()->getTemplate(mobile) != NULL ) << "Mobile " << mobName << " in lair template " << templateName << " does not exist";
+			EXPECT_TRUE( weighting > 0 ) << "Mobile " << mobName << " in lair template " << templateName << " has a non positive weighting";
+		}
+
+		// Verify that boss mobiles exist and that their count is positive
+		VectorMap<String, int>* bossMobiles = lair->getBossMobiles();
+		for (int i = 0; i < bossMobiles->size(); i++) {
+			int count = bossMobiles->elementAt(i).getValue();
+			String bossMob = bossMobiles->elementAt(i).getKey();
+			std::string bossName = bossMob.toCharArray();
+			EXPECT_TRUE( CreatureTemplateManager::instance()->getTemplate(bossMob) != NULL ) << "Boss mobile " << bossName << " in lair template " << templateName << " does not exist";
+			EXPECT_TRUE( count > 0 ) << "Boss mobile " << bossName << " in lair template " << templateName << " has a non positive spawn count";
+		}
+
+		// Verify spawn limit is positive
+		int limit = lair->getSpawnLimit();
+		EXPECT_TRUE( limit > 0 ) << "Spawn limit in lair template " << templateName << " is not positive";
+	}
 }
 
 TEST_F(LuaMobileTest, LuaLootGroupsTest) {

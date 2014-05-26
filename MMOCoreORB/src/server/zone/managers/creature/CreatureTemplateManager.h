@@ -74,6 +74,10 @@ public:
 		return hashTable.iterator();
 	}
 
+	HashTableIterator<uint32, Reference<LairTemplate*> > lairTemplateIterator() {
+		return lairTemplates.iterator();
+	}
+
 	CreatureTemplate* getTemplate(uint32 crc) {
 		return hashTable.get(crc);
 	}
