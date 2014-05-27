@@ -584,6 +584,12 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 			return false;
 		}
 
+		if (numberStored >= maxStoredPets) {
+			player->sendSystemMessage("@pet/pet_menu:targ_too_many_stored"); // That person has too many stored pets. Transfer failed.
+			receiver->sendSystemMessage("@pet/pet_menu:sys_too_many_stored"); // There are too many pets stored in this container. Release some of them to make room for more.
+			return false;
+		}
+
 		for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 			ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
