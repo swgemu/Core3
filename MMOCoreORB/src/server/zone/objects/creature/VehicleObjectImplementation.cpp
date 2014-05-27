@@ -212,11 +212,13 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 			if (attacker != _this.get()) {
 				Locker clocker(linkedCreature, attacker);
 
+				linkedCreature->updateCooldownTimer("mount_dismount", 0);
 				linkedCreature->executeObjectControllerAction(String("dismount").hashCode());
 
 			} else {
 				Locker locker(linkedCreature);
 
+				linkedCreature->updateCooldownTimer("mount_dismount", 0);
 				linkedCreature->executeObjectControllerAction(String("dismount").hashCode());
 			}
 

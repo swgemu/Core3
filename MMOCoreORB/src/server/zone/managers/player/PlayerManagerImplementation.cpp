@@ -589,6 +589,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		return 1;
 
 	if (playerCreature->isRidingMount()) {
+		playerCreature->updateCooldownTimer("mount_dismount", 0);
 		playerCreature->executeObjectControllerAction(String("dismount").hashCode());
 	}
 
@@ -648,6 +649,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	}
 
 	if (player->isRidingMount()) {
+		player->updateCooldownTimer("mount_dismount", 0);
 		player->executeObjectControllerAction(String("dismount").hashCode());
 	}
 

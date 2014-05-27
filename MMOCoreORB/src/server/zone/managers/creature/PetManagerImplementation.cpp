@@ -445,8 +445,10 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 	if (destructedObject->isMount() && destructedObject->hasRidingCreature()) {
 		Reference<CreatureObject*> rider = destructedObject->getSlottedObject("rider").castTo<CreatureObject*>();
 
-		if (rider != NULL)
+		if (rider != NULL) {
+			rider->updateCooldownTimer("mount_dismount", 0);
 			rider->executeObjectControllerAction(String("dismount").hashCode());
+		}
 	}
 
 	destructor->removeDefender(destructedObject);
