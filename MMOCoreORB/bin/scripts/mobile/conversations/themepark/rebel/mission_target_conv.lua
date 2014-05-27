@@ -100,6 +100,7 @@ createMissionTargetConvoTemplate("aaph_koden_mission_target_convotemplate","aaph
 
 
 -- Naboo
+createMissionTargetConvoTemplate("arven_wendik_mission_target_convotemplate","arven_wendik_mission_target_conv_handler")
 createMissionTargetConvoTemplate("boss_nass_mission_target_convotemplate","boss_nass_mission_target_conv_handler")
 createMissionTargetConvoTemplate("gavyn_sykes_mission_target_convotemplate","gavyn_sykes_mission_target_conv_handler")
 createMissionTargetConvoTemplate("leb_slesher_mission_target_convotemplate","leb_slesher_mission_target_conv_handler")
