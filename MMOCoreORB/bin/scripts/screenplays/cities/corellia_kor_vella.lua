@@ -493,7 +493,7 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "trainer_chef", 0, -11, 1.1, -14, 0, 2955417)
 
 		--Guild Hall (-3412,3364)
-	spawnMobile("corellia", "junk_dealer", 0, -14.5, 1.1, 2.5, 88, 2955424)
+	--spawnMobile("corellia", "junk_dealer", 0, -14.5, 1.1, 2.5, 88, 2955424)
 	spawnMobile("corellia", "trainer_scout", 0, -12, 1.13, 5.5, 180, 2955424)
 	spawnMobile("corellia", "trainer_marksman", 0, 0, 1.13, -14, 0, 2955426)
 	spawnMobile("corellia", "trainer_brawler", 0, -11, 1.13, -14, 0, 2955427)

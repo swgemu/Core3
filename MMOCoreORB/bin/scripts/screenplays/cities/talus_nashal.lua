@@ -65,7 +65,7 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "informant_npc_lvl_1",0,4530,2,5094,250,0)
 	spawnMobile("talus", "informant_npc_lvl_2",0,4542,2,5329,20,0)
 	spawnMobile("talus", "informant_npc_lvl_3",0,4529,2,5371,260,0)
-	spawnMobile("talus", "junk_dealer",0,4541.9,2,5278.5,-64,0)
+	--spawnMobile("talus", "junk_dealer",0,4541.9,2,5278.5,-64,0)
 	spawnMobile("talus", "rebel_recruiter",1,4072,2,5289,135,0)
 
 	--quest
