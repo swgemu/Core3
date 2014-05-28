@@ -200,6 +200,7 @@ naboo_static_spawns = {
 	{"gungan_hermit",300,-22.6115,1.6,-10.3739,179.996,1677400, "conversation", ""},
 	{"gungan_outcast",300,-5827.81,6,4172.98,0,0, "conversation", ""},
 	{"junk_dealer",0,-5222.4,6,4217.4,-137,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_dealer",0,5143.9,-192,6818,47,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_sheani",0,-5496,4.2,-71,112,0, "", "Sheani Lake",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR,JUNKCONVSHEANILAKE},
 	{"junk_dealer",0,1371.6,13,2705.3,177,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_lila",0,4809.5,4.2,-4663,112,0, "", "Lila Rawlkiss",JUNKWEAPONS,JUNKCONVLILABORVO},
