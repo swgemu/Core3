@@ -482,6 +482,7 @@ corellia_static_spawns = {
 	{"junk_dealer",10,-3133.8,31,2975.5,7,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_dealer",0,-5639.2,21,-2799.2,-40,0, "", "",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR,JUNKCONVFINARY},
 	{"junk_dealer",0,-5203.6,21,-2285.9,-11,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_dealer",0,-14.5, 1.1, 2.5, 88, 2955424, "", "",JUNKWEAPONS,JUNKCONVARMS},
 	{"karena_keer",60,-7.91182,-0.895002,18.5763,115.51,2625361, "calm", "Karena Keer"},
 	{"larek_tatham",60,-5050.23,21,-2291.69,113.059,0, "neutral", ""},
 	{"medic",60,-0.332123,0.3,-4.00219,45.0054,1855463, "conversation", ""},
