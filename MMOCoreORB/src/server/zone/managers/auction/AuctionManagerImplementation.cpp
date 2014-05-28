@@ -22,6 +22,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -215,6 +216,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	ManagedReference<AuctionItem*> oldItem = auctionMap->getItem(objectid);
 	ManagedReference<SceneObject*> objectToSell = zoneServer->getObject(objectid);
 	String vendorUID = getVendorUID(vendor);
+	bool stockroomSale = false;
 
 	if (objectToSell == NULL) {
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
@@ -246,6 +248,12 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 			return;
 		}
 
+		stockroomSale = true;
+
+		ManagedReference<SceneObject*> oldVendor = zoneServer->getObject(oldItem->getVendorID());
+
+		if (oldVendor != NULL && oldVendor->isVendor())
+			vendor = oldVendor;
 	}
 
 	ManagedReference<Zone*> zone = vendor->getZone();
@@ -257,7 +265,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	}
 
 
-	int res = checkSaleItem(player, objectToSell, vendor, price, premium);
+	int res = checkSaleItem(player, objectToSell, vendor, price, premium, stockroomSale);
 
 	if (res != 0) {
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, res);
@@ -379,7 +387,7 @@ String AuctionManagerImplementation::getVendorUID(SceneObject* vendor) {
 	return uid;
 }
 
-int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObject* object, SceneObject* vendor, int price, bool premium) {
+int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObject* object, SceneObject* vendor, int price, bool premium, bool stockroomSale) {
 
 	if(vendor == NULL) {
 		error("NULL Vendor");
@@ -389,6 +397,9 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 	if (price < 1)
 		return ItemSoldMessage::INVALIDSALEPRICE;
 
+	if (player->getPlayerObject()->getVendorCount() > player->getSkillMod("manage_vendor"))
+		return ItemSoldMessage::TOOMANYITEMS;
+
 	if(vendor->isVendor()) {
 
 		VendorDataComponent* vendorData = NULL;
@@ -397,8 +408,13 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 			vendorData = cast<VendorDataComponent*>(data->get());
 
 		if (player->getObjectID() == vendorData->getOwnerId()) {
-			if ((auctionMap->getPlayerItemCount(player) + object->getSizeOnVendorRecursive()) > player->getSkillMod("vendor_item_limit"))
-				return ItemSoldMessage::TOOMANYITEMS;
+			if (stockroomSale) {
+				if (auctionMap->getPlayerItemCount(player) > player->getSkillMod("vendor_item_limit"))
+					return ItemSoldMessage::TOOMANYITEMS;
+			} else {
+				if ((auctionMap->getPlayerItemCount(player) + object->getSizeOnVendorRecursive()) > player->getSkillMod("vendor_item_limit"))
+					return ItemSoldMessage::TOOMANYITEMS;
+			}
 		} else {
 			if (auctionMap->getCommodityCount(player) >= MAXSALES)
 				return ItemSoldMessage::TOOMANYITEMS;
@@ -866,17 +882,6 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 	}
 
-	if(saleItem->isIntangibleObject()) {
-		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
-		if (datapad->getCountableObjectsRecursive() >= datapad->getContainerVolumeLimit())
-			return RetrieveAuctionItemResponseMessage::FULLINVENTORY;
-	} else {
-		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-		if (inventory->getCountableObjectsRecursive() >= inventory->getContainerVolumeLimit())
-			return RetrieveAuctionItemResponseMessage::FULLINVENTORY;
-	}
-
 	ManagedReference<AuctionItem*> item = auctionMap->getItem(objectIdToRetrieve);
 	if (item == NULL || item->getStatus() == AuctionItem::RETRIEVED) {
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
@@ -884,6 +889,18 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 
 	if(item->isAuction() && item->getStatus() == AuctionItem::FORSALE)
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+
+	int size = item->getSize();
+	if(saleItem->isIntangibleObject()) {
+		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+		if (datapad->getCountableObjectsRecursive() + size >= datapad->getContainerVolumeLimit())
+			return RetrieveAuctionItemResponseMessage::FULLINVENTORY;
+	} else {
+		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+		if (inventory->getCountableObjectsRecursive() + size >= inventory->getContainerVolumeLimit())
+			return RetrieveAuctionItemResponseMessage::FULLINVENTORY;
+	}
 
 	/*
 	if(item->getStatus() == AuctionItem::SOLD && player->getObjectID() == item->getOwnerID()) {
