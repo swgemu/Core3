@@ -227,6 +227,5 @@ function NabooKadaaraScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "informant_npc_lvl_3", 1, 5009, -192, 6652, 315, 0)
 	spawnMobile("naboo", "informant_npc_lvl_3", 1, 5277, -192, 6560, 0, 0)
 
-	spawnMobile("naboo", "junk_dealer", 1, 5143.9, -192, 6818, 47, 0)
 
 end
