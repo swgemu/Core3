@@ -81,6 +81,9 @@ includeFile("quest/naboo/pol_revver.lua")
 includeFile("quest/naboo/shandara.lua")
 includeFile("quest/naboo/tamvar_senzen.lua")
 includeFile("quest/naboo/zim_zam_blattis.lua")
+includeFile("quest/naboo/vana_captain.lua")
+includeFile("quest/naboo/vana_pilot.lua")
+includeFile("quest/naboo/vana_sage.lua")
 
 -- Rori
 includeFile("quest/rori/ablest.lua")
