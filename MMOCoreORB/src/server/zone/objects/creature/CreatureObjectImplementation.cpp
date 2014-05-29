@@ -45,6 +45,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "CreatureState.h"
 #include "CreatureFlag.h"
+#include "FsExperienceTypes.h"
 
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -1372,9 +1373,9 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	}
 
 	posture = newPosture;
-	
+
 	updateSpeedAndAccelerationMods();
-	
+
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
 	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
@@ -1401,7 +1402,7 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	}
 
 	if(posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE
-				&& posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING ) {
+			&& posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING ) {
 		setCurrentSpeed(0);
 	}
 
@@ -2886,5 +2887,26 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 
 		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(player, petsToStore);
 		task->execute();
+	}
+}
+
+void CreatureObjectImplementation::updateForceSensitiveElegibleExperiences(int type) {
+	Reference<PlayerObject*> ghost = getPlayerObject();
+
+	if (ghost != NULL) {
+		DeltaVectorMap<String, int>* xpList = ghost->getExperienceList();
+
+		// Clear the vector for new strings...
+		for (int i=0; i < fsEligibleExperiences.size(); ++i) {
+			fsEligibleExperiences.remove(i);
+		}
+
+		for (int i=0; i < xpList->size(); ++i){
+			String xpString = xpList->getKeyAt(i);
+			if (FsExperienceTypes::isValid(type, xpString)) {
+				if (!fsEligibleExperiences.contains(xpList->getKeyAt(i)))
+				fsEligibleExperiences.add(xpList->getKeyAt(i));
+			}
+		}
 	}
 }

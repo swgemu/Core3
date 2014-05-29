@@ -82,6 +82,8 @@ namespace creature {
 		int addDotState(lua_State* L);
 		int checkCooldownRecovery(lua_State* L);
 		int addCooldown(lua_State* L);
+		int getExperienceForType(lua_State* L);
+		int getExperienceType(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

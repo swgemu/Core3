@@ -45,6 +45,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "hasCompletedQuestsBitSet", &LuaPlayerObject::hasCompletedQuestsBitSet },
 		{ "setCompletedQuestsBit", &LuaPlayerObject::setCompletedQuestsBit },
 		{ "clearCompletedQuestsBit", &LuaPlayerObject::clearCompletedQuestsBit },
+		{ "getExperience", &LuaPlayerObject::getExperience },
 		{ 0, 0 }
 };
 
@@ -339,4 +340,12 @@ int LuaPlayerObject::clearCompletedQuestsBit(lua_State* L) {
 	realObject->clearCompletedQuestsBit(quest, true);
 
 	return 0;
+}
+
+int LuaPlayerObject::getExperience(lua_State* L) {
+	String type = lua_tostring(L, -1);
+
+	lua_pushinteger(L, realObject->getExperience(type));
+
+	return 1;
 }
