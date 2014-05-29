@@ -202,6 +202,7 @@ createMissionGiverConvoTemplate("gavyn_sykes_mission_giver_convotemplate", "gavy
 createMissionGiverConvoTemplate("lareen_dantara_mission_giver_convotemplate", "lareen_dantara_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("leb_slesher_mission_giver_convotemplate", "leb_slesher_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("tamvar_senzen_mission_giver_convotemplate", "tamvar_senzen_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("vana_sage_mission_giver_convotemplate", "vana_sage_mission_giver_conv_handler")
 
 -- Talus
 createMissionGiverConvoTemplate("kathikiis_ruwahurr_mission_giver_convotemplate", "kathikiis_ruwahurr_mission_giver_conv_handler")

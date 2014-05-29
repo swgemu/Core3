@@ -105,6 +105,7 @@ createMissionTargetConvoTemplate("boss_nass_mission_target_convotemplate","boss_
 createMissionTargetConvoTemplate("gavyn_sykes_mission_target_convotemplate","gavyn_sykes_mission_target_conv_handler")
 createMissionTargetConvoTemplate("leb_slesher_mission_target_convotemplate","leb_slesher_mission_target_conv_handler")
 createMissionTargetConvoTemplate("tamvar_senzen_mission_target_convotemplate","tamvar_senzen_mission_target_conv_handler")
+createMissionTargetConvoTemplate("vana_sage_mission_target_convotemplate","vana_sage_mission_target_conv_handler")
 
 
 -- Talus
