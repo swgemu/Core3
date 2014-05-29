@@ -86,6 +86,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject},
 		{ "checkCooldownRecovery", &LuaCreatureObject::checkCooldownRecovery},
 		{ "addCooldown", &LuaCreatureObject::addCooldown},
+		{ "getExperienceForType", &LuaCreatureObject::getExperienceForType},
+		{ "getExperienceType", &LuaCreatureObject::getExperienceType},
 		{ 0, 0 }
 };
 
@@ -588,3 +590,36 @@ int LuaCreatureObject::addCooldown(lua_State* L) {
 
 	return 0;
 }
+int LuaCreatureObject::getExperienceForType(lua_State* L) {
+	int type = lua_tointeger(L, -1);
+
+	realObject->updateForceSensitiveElegibleExperiences(type);
+	Vector<String>* experiences = realObject->getForceSensitiveElegibleExperiences();
+
+	lua_newtable(L);
+
+	for (int i=0; i < experiences->size(); ++i) {
+		String value = experiences->get(i);
+		lua_pushstring(L, value.toCharArray());
+		Logger::console.info("Pushed " + value, true);
+	}
+
+
+	for (int j = experiences->size(); j > 0; --j) {
+		lua_rawseti(L, -j - 1, j);
+	}
+
+
+	return 1;
+}
+
+int LuaCreatureObject::getExperienceType(lua_State* L) {
+	int type = lua_tointeger(L, -1);
+
+	String experience = realObject->getForceSensitiveElegibleExperienceType(type);
+
+	lua_pushstring(L, experience.toCharArray());
+
+	return 1;
+}
+
