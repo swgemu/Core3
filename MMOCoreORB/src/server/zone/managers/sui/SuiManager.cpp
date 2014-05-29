@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "SuiManager.h"
 
@@ -294,7 +294,7 @@ void SuiManager::handleTicketCollectorResponse(CreatureObject* player, SuiBox* s
 	TicketObject* ticket = cast<TicketObject*>( tano);
 	ticket->handleObjectMenuSelect(player, 20);
 }
-*/
+ */
 void SuiManager::handleBankTransfer(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
 	if (!suiBox->isBankTransferBox() || cancel != 0)
 		return;
@@ -341,26 +341,26 @@ void SuiManager::handleFishingAction(CreatureObject* player, SuiBox* suiBox, uin
 	uint32 newBoxID = 0;
 
 	switch (index + 1) {
-		case FishingManager::TUGUP:
-			newBoxID = manager->createWindow(player, suiBox->getBoxID());
-			break;
-		case FishingManager::TUGRIGHT:
-			newBoxID = manager->createWindow(player, suiBox->getBoxID());
-			break;
-		case FishingManager::TUGLEFT:
-			newBoxID = manager->createWindow(player, suiBox->getBoxID());
-			break;
-		case FishingManager::REEL:
-			newBoxID = manager->createWindow(player, suiBox->getBoxID());
-			break;
-		case FishingManager::STOPFISHING:
-			player->sendSystemMessage("@fishing:stop_fishing"); //You reel-in your line and stop fishing...
-			manager->stopFishing(player, suiBox->getBoxID(), true);
-			return;
-			break;
-		default:
-			newBoxID = manager->createWindow(player, suiBox->getBoxID());
-			break;
+	case FishingManager::TUGUP:
+		newBoxID = manager->createWindow(player, suiBox->getBoxID());
+		break;
+	case FishingManager::TUGRIGHT:
+		newBoxID = manager->createWindow(player, suiBox->getBoxID());
+		break;
+	case FishingManager::TUGLEFT:
+		newBoxID = manager->createWindow(player, suiBox->getBoxID());
+		break;
+	case FishingManager::REEL:
+		newBoxID = manager->createWindow(player, suiBox->getBoxID());
+		break;
+	case FishingManager::STOPFISHING:
+		player->sendSystemMessage("@fishing:stop_fishing"); //You reel-in your line and stop fishing...
+		manager->stopFishing(player, suiBox->getBoxID(), true);
+		return;
+		break;
+	default:
+		newBoxID = manager->createWindow(player, suiBox->getBoxID());
+		break;
 	}
 
 	manager->setFishBoxID(player, suiBox->getBoxID());
@@ -665,7 +665,7 @@ void SuiManager::sendMessageBox(SceneObject* usingObject, SceneObject* player, c
 	}
 }
 
-void SuiManager::sendListBox(SceneObject* usingObject, SceneObject* player, const String& title, const String& text, const uint8& numOfButtons, const String& cancelButton, const String& otherButton, const String& okButton, const String& screenplay, const String& callback) {
+void SuiManager::sendListBox(SceneObject* usingObject, SceneObject* player, const String& title, const String& text, const uint8& numOfButtons, const String& cancelButton, const String& otherButton, const String& okButton, LuaObject& options, const String& screenplay, const String& callback) {
 	if (usingObject == NULL)
 		return;
 
@@ -702,6 +702,14 @@ void SuiManager::sendListBox(SceneObject* usingObject, SceneObject* player, cons
 		default:
 			return;
 			break;
+		}
+
+		if(options.isValidTable()){
+			for(int i = 1; i <= options.getTableSize(); ++i){
+				String optionString = options.getStringAt(i);
+				box->addMenuItem(optionString);
+			}
+			options.pop();
 		}
 
 		box->setCallback(new LuaSuiCallback(creature->getZoneServer(), screenplay, callback));
