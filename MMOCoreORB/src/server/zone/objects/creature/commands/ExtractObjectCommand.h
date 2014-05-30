@@ -81,7 +81,6 @@ public:
 
 			if (!crate->extractObjectToParent()) {
 				//error("Error extracting object in ExtractObjectCommand");
-				creature->sendSystemMessage("Error extracting object in ExtractObjectCommand");
 			}
 
 		} catch (Exception& e) {
