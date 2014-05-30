@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_c9691127",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/naboo/vana_sage.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-30T00:46:20Z",
+      "side": 1,
+      "message": "I think you meant to use the gungan_thug template here as you did below.",
+      "revId": "90bacd3f2fac66ffd86b0d354dc9befc94a948aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
