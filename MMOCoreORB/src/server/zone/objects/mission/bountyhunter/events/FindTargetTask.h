@@ -85,7 +85,7 @@ class FindTargetTask : public Task, public Logger {
 		if (arakyd) {
 			player->sendSystemMessage("@mission/mission_generic:probe_droid_takeoff");
 		} else {
-			player->sendSystemMessage("Biological scan received. Commencing planetary search pattern."); // mantis 4849
+			player->sendSystemMessage("Biological scan received. Commencing planetary search pattern.");
 		}
 
 		reschedule(5 * 1000);
@@ -256,8 +256,8 @@ class FindTargetTask : public Task, public Logger {
 
 	int getDistanceToTarget(CreatureObject* player, BountyMissionObjective* objective) {
 		Vector3 playerCoordinate;
-		playerCoordinate.setX(player->getPositionX());
-		playerCoordinate.setY(player->getPositionY());
+		playerCoordinate.setX(player->getWorldPositionX());
+		playerCoordinate.setY(player->getWorldPositionY());
 
 		Vector3 targetCoordinate = objective->getTargetPosition();
 
@@ -266,8 +266,8 @@ class FindTargetTask : public Task, public Logger {
 
 	String getDirectionToTarget(CreatureObject* player, BountyMissionObjective* objective) {
 		Vector3 targetCoordinate = objective->getTargetPosition();
-		float dx = targetCoordinate.getX() - player->getPositionX();
-		float dy = targetCoordinate.getY() - player->getPositionY();
+		float dx = targetCoordinate.getX() - player->getWorldPositionX();
+		float dy = targetCoordinate.getY() - player->getWorldPositionY();
 
 		if (dx > 0) {
 			if (dy > 0) {
