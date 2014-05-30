@@ -502,6 +502,9 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 			item->setExpireTime(commodityExpire);
 		} else {
 			item->setExpireTime(vendorExpire);
+
+			if(auctionMap->getVendorItemCount(vendor, true) == 0)
+				sendVendorUpdateMail(vendor, false);
 		}
 	} else {
 		item->setExpireTime(commodityExpire);
@@ -647,6 +650,9 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		UnicodeString blankBody;
 		cman->sendMail(sender, sellerSubject, blankBody, sellerName, &sellerBodyVector, &sellerWaypointVector);
 		cman->sendMail(sender, buyerSubject, blankBody, item->getBidderName(), &buyerBodyVector, &buyerWaypointVector);
+
+		if(auctionMap->getVendorItemCount(vendor, true) == 0)
+			sendVendorUpdateMail(vendor, true);
 
 	} else {
 
@@ -1291,6 +1297,7 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 	uint64 availableTime = 0;
+	bool forSaleOnVendor = false;
 
 	if (item->getStatus() == AuctionItem::FORSALE) {
 		if(item->getOwnerID() != player->getObjectID()) {
@@ -1302,8 +1309,10 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 
 		if(item->isOnBazaar())
 			availableTime = currentTime + AuctionManager::COMMODITYEXPIREPERIOD;
-		else
+		else {
 			availableTime = currentTime + AuctionManager::VENDOREXPIREPERIOD;
+			forSaleOnVendor = true;
+		}
 
 	} else if (item->getStatus() == AuctionItem::OFFERED) {
 		if(item->getOfferToID() != player->getObjectID() &&
@@ -1380,6 +1389,12 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 	BaseMessage* msg = new CancelLiveAuctionResponseMessage(objectID, 0);
 	player->sendMessage(msg);
 
+	if(forSaleOnVendor) {
+		ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
+
+		if(vendor != NULL && auctionMap->getVendorItemCount(vendor, true) == 0)
+			sendVendorUpdateMail(vendor, true);
+	}
 }
 
 void AuctionManagerImplementation::expireSale(AuctionItem* item) {
@@ -1416,6 +1431,13 @@ void AuctionManagerImplementation::expireSale(AuctionItem* item) {
 	item->setStatus(AuctionItem::EXPIRED);
 	item->setExpireTime(availableTime);
 	item->clearAuctionWithdraw();
+
+	if (!item->isOnBazaar()) {
+		ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
+
+		if(vendor != NULL && auctionMap->getVendorItemCount(vendor, true) == 0)
+			sendVendorUpdateMail(vendor, true);
+	}
 }
 
 void AuctionManagerImplementation::expireBidAuction(AuctionItem* item) {
@@ -1631,4 +1653,40 @@ void AuctionManagerImplementation::updateAuctionOwner(AuctionItem* item, Creatur
 		return;
 
 	auctionMap->addToCommodityLimit(item);
+}
+
+void AuctionManagerImplementation::sendVendorUpdateMail(SceneObject* vendor, bool isEmpty) {
+	//Send the mail to the vendor owner
+	if (vendor == NULL || !vendor->isVendor())
+		return;
+
+	VendorDataComponent* vendorData = NULL;
+	DataObjectComponentReference* data = vendor->getDataObjectComponent();
+	if(data != NULL && data->get() != NULL && data->get()->isVendorData())
+		vendorData = cast<VendorDataComponent*>(data->get());
+
+	if(vendorData == NULL)
+		return;
+
+	ManagedReference<ChatManager*> cman = vendor->getZoneServer()->getChatManager();
+	ManagedReference<CreatureObject*> owner = vendor->getZoneServer()->getObject(vendorData->getOwnerId()).castTo<CreatureObject*>();
+
+	String sender = vendor->getDisplayedName();
+	UnicodeString subject("@auction:vendor_status_subject");
+
+	if (cman == NULL || owner == NULL)
+		return;
+
+	if (isEmpty) {
+		StringIdChatParameter body("@auction:vendor_status_empty");
+		body.setTO(vendor->getDisplayedName());
+		cman->sendMail(sender, subject, body, owner->getFirstName());
+		vendorData->setEmpty();
+		VendorManager::instance()->handleUnregisterVendor(owner, cast<TangibleObject*>(vendor));
+	} else {
+		StringIdChatParameter body("@auction:vendor_status_normal");
+		body.setTO(vendor->getDisplayedName());
+		cman->sendMail(sender, subject, body, owner->getFirstName());
+	}
+
 }

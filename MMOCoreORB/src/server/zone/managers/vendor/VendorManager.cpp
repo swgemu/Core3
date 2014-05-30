@@ -325,6 +325,11 @@ void VendorManager::handleRegisterVendorCallback(CreatureObject* player, Tangibl
 		return;
 	}
 
+	if (vendorData->isEmpty()) {
+		player->sendSystemMessage("You cannot register an empty vendor.");
+		return;
+	}
+
 	Reference<PlanetMapCategory*> planetMapCategory = TemplateManager::instance()->getPlanetMapCategoryByName("vendor");
 	Reference<PlanetMapCategory*> planetMapSubCategory = TemplateManager::instance()->getPlanetMapCategoryByName("vendor_" + planetMapCategoryName);
 

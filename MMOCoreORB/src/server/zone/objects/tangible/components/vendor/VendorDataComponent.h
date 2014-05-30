@@ -177,7 +177,7 @@ public:
 			return false;
 		}
 
-		return auctionsMap->getVendorItemCount(parent.get()) == 0;
+		return auctionsMap->getVendorItemCount(parent.get(), true) == 0;
 	}
 
 	inline void setEmpty() {

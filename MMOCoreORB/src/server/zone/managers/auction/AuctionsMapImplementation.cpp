@@ -71,9 +71,6 @@ int AuctionsMapImplementation::addVendorItem(CreatureObject* player, const Strin
 
 	allItems.put(item->getAuctionedItemObjectID(), item);
 
-	if(vendorItems->size() == 1 && player != NULL)
-		sendVendorUpdateMail(vendor, false);
-
 	return ItemSoldMessage::SUCCESS;
 }
 
@@ -129,13 +126,8 @@ void AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionIte
 
 	//Locker vlocker(vendorItems);
 
-	if(vendorItems->removeElement(item)) {
-
-		if(vendorItems->size() == 0)
-			sendVendorUpdateMail(vendor, true);
-
+	if(vendorItems->removeElement(item))
 		return;
-	}
 
 	logger.error("unable to remove vendor item");
 }
@@ -187,7 +179,7 @@ int AuctionsMapImplementation::getPlayerItemCount(CreatureObject* player) {
 	return total;
 }
 
-int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
+int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor, bool forSaleOnly) {
 	Locker locker(_this.get());
 	
 	if(vendor == NULL) {
@@ -205,6 +197,9 @@ int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
 	for (int i = 0; i < vendorItems->size(); ++i) {
 		AuctionItem* item = vendorItems->get(i);
 		if (item == NULL)
+			continue;
+
+		if (forSaleOnly && item->getStatus() != AuctionItem::FORSALE)
 			continue;
 
 		int itemSize = item->getSize();
@@ -238,42 +233,6 @@ void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
 	}
 
 	vendorItemsForSale.dropTerminalListing(vendor);
-}
-
-void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool isEmpty) {
-	//Send the mail to the vendor owner
-	if (vendor == NULL || !vendor->isVendor())
-		return;
-
-	VendorDataComponent* vendorData = NULL;
-	DataObjectComponentReference* data = vendor->getDataObjectComponent();
-	if(data != NULL && data->get() != NULL && data->get()->isVendorData())
-		vendorData = cast<VendorDataComponent*>(data->get());
-
-	if(vendorData == NULL)
-		return;
-
-	ManagedReference<ChatManager*> cman = vendor->getZoneServer()->getChatManager();
-	ManagedReference<CreatureObject*> owner = vendor->getZoneServer()->getObject(vendorData->getOwnerId()).castTo<CreatureObject*>();
-
-	String sender = vendor->getDisplayedName();
-	UnicodeString subject("@auction:vendor_status_subject");
-
-	if (cman == NULL || owner == NULL)
-		return;
-
-	if (isEmpty) {
-		StringIdChatParameter body("@auction:vendor_status_empty");
-		body.setTO(vendor->getDisplayedName());
-		cman->sendMail(sender, subject, body, owner->getFirstName());
-		vendorData->setEmpty();
-		VendorManager::instance()->handleUnregisterVendor(owner, cast<TangibleObject*>(vendor));
-	} else {
-		StringIdChatParameter body("@auction:vendor_status_normal");
-		body.setTO(vendor->getDisplayedName());
-		cman->sendMail(sender, subject, body, owner->getFirstName());
-	}
-
 }
 
 void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
