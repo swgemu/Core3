@@ -63,6 +63,10 @@ includeFile("quest/dathomir/singular_nak.lua")
 includeFile("quest/dathomir/trujhazii.lua")
 includeFile("quest/dathomir/wallaw_loowobbli.lua")
 includeFile("quest/dathomir/wallaw_bull_rancor.lua")
+includeFile("quest/dathomir/xarot_korlin.lua")
+includeFile("quest/dathomir/xarot_nightsister_in_training.lua")
+includeFile("quest/dathomir/xarot_nightsister_witch.lua")
+includeFile("quest/dathomir/xarot_singing_mountain_clan_witch.lua")
 
 -- Endor
 
