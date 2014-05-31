@@ -1,4 +1,4 @@
-swamp_humbab = Creature:new {
+swamp_humbaba = Creature:new {
 	objectName = "@mob/creature_names:swamp_humbaba",
 	socialGroup = "humbaba",
 	pvpFaction = "",
@@ -12,7 +12,7 @@ swamp_humbab = Creature:new {
 	baseHAMmax = 6100,
 	armor = 0,
 	resists = {10,10,10,10,10,10,10,-1,-1},
-	meatType = "meat_carnivore",
+	meatType = "meat_domesticated",
 	meatAmount = 250,
 	hideType = "hide_leathery",
 	hideAmount = 150,
@@ -36,4 +36,4 @@ swamp_humbab = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(swamp_humbab, "swamp_humbab")
+CreatureTemplates:addCreatureTemplate(swamp_humbaba, "swamp_humbaba")
