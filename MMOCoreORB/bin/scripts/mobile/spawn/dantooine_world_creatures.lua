@@ -158,7 +158,7 @@ dantooine_world_creatures = {
 		},
 		{
 			--picket_longhorn level = 37
-			lairTemplateName = "dantooine_picket_longhorn_lair_neutral_medium",
+			lairTemplateName = "dantooine_piket_longhorn_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 37,
 			maxDifficulty = 37,
