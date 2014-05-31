@@ -224,6 +224,7 @@ createMissionGiverConvoTemplate("xaan_talmaron_mission_giver_convotemplate","xaa
 
 
 --Dathomir
+createMissionGiverConvoTemplate("dolac_legasi_mission_giver_convotemplate", "dolac_legasi_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("singular_nak_mission_giver_convotemplate", "singular_nak_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("wallaw_loowobbli_mission_giver_convotemplate", "wallaw_loowobbli_mission_giver_conv_handler")
 
