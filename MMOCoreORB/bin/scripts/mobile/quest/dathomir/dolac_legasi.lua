@@ -30,7 +30,7 @@ dolac_legasi = Creature:new {
 	templates = {"object/mobile/dressed_dolac_legasi.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "dolac_legasi_convotemplate",
+	conversationTemplate = "dolac_legasi_mission_giver_convotemplate",
 	attacks = {
 	}
 }
