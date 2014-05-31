@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_6931050b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/dathomir/dolac_legasi.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-31T08:30:42Z",
+      "side": 1,
+      "message": "This is not an attackable mob. Did you mean to use mozo_escaped_tkm here?",
+      "revId": "8556a513389eff4cbdf2e4bd518d5bf1c5fc67ae",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
