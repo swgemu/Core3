@@ -1,4 +1,4 @@
-xarotkorlin = Creature:new {
+xarot_korlin = Creature:new {
 	objectName = "",
 	customName = "Xarot Korlin",
 	socialGroup = "imperial",
@@ -23,16 +23,16 @@ xarotkorlin = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_xarot_korlin.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "xarot_korlin_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(xarotkorlin, "xarotkorlin")
+CreatureTemplates:addCreatureTemplate(xarot_korlin, "xarot_korlin")
