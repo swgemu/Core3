@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_494f6193",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/SelectVeteranRewardSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-05-31T05:13:40Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you cancel the session here?",
+      "revId": "993a22450f727f370d76e238182929944bcfb572",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
