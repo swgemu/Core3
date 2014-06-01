@@ -47,7 +47,7 @@ which carries forward this exception.
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/objects/area/SpawnObserver.h"
+#include "server/zone/objects/area/SpawnAreaObserver.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "events/RemoveNoSpawnAreaTask.h"
@@ -244,7 +244,7 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 	}
 
 	if (exitObserver == NULL) {
-		exitObserver = new SpawnObserver(_this.get());
+		exitObserver = new SpawnAreaObserver(_this.get());
 		exitObserver->deploy();
 	}
 

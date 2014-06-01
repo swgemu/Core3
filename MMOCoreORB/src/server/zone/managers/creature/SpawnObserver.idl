@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,30 +38,81 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
+
 */
 
-package server.zone.objects.area;
-
-import server.zone.objects.area.SpawnArea;
-import system.util.SortedVector;
-import server.zone.managers.object.ObjectManager;
+package server.zone.managers.creature;
 import engine.core.ManagedObject;
-import server.zone.objects.creature.AiAgent;
-import server.zone.objects.creature.aigroup.AiGroup;
-import server.zone.objects.area.SpawnAreaObserver;
+import engine.util.Observer;
 import engine.util.Observable;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.AiAgent;
+include server.zone.templates.mobile.LairTemplate;
 
-class StaticSpawnArea extends SpawnArea {
+class SpawnObserver extends Observer implements Logger {
+
+	protected transient LairTemplate lairTemplate;
+
 	@dereferenced
-	protected SortedVector<AiGroup> groups;
-	
-	public StaticSpawnArea() {
-		Logger.setLoggingName("StaticSpawnArea");
+	protected Vector<CreatureObject> spawnedCreatures;
+
+	protected int difficulty;
+
+	protected int babiesSpawned;
+
+	protected float size;
+
+	public SpawnObserver() {
+		super();
+
+		Logger.setLoggingName("SpawnObserver");
+
+		lairTemplate = null;
+
+		difficulty = 50;
+		babiesSpawned = 0;
+		size = 20;
 	}
-	
-	public native void spawnCreatures();
-	
-	public abstract boolean isStaticArea() {
+
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
+		return 1;
+}
+
+	@local
+	public void setLairTemplate(LairTemplate tmpl) {
+		lairTemplate = tmpl;
+	}
+
+	public void setDifficulty(int diff) {
+		difficulty = diff;
+	}
+
+	public void setSize(float siz) {
+		size = siz;
+	}
+
+	public string getLairTemplateName() {
+		return lairTemplate.getName();
+	}
+
+	@local
+	public Vector<CreatureObject> getSpawnedCreatures() {
+		return spawnedCreatures;
+	}
+
+	public boolean isSpawnObserver() {
 		return true;
+	}
+
+	public boolean isLairObserver() {
+		return false;
+	}
+
+	public boolean isDestroyMissionLairObserver() {
+		return false;
+	}
+
+	public boolean isTheaterSpawnObserver() {
+		return false;
 	}
 }
