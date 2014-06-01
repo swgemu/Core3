@@ -83,7 +83,7 @@ public:
 			StringTokenizer tokenizer(arguments.toString());
 
 			if(!tokenizer.hasMoreTokens()) {
-				creature->sendSystemMessage("Usage: /GenerateCraftedItem SERVERSCRIPTPATH [Quantity]");
+				creature->sendSystemMessage("Usage: /GenerateCraftedItem SERVERSCRIPTPATH [Quantity] [Template Number]");
 				return GENERALERROR;
 			}
 
@@ -107,8 +107,35 @@ public:
 
 			manuSchematic->createChildObjects();
 
+			int quantity = 1;
+
+			if(tokenizer.hasMoreTokens())
+				quantity = tokenizer.getIntToken();
+
+			if(quantity == 0)
+				quantity = 1;
+
+			unsigned int targetTemplate = draftSchematic->getTanoCRC();
+
+			if (draftSchematic->getTemplateListSize() > 0) {
+				if (tokenizer.hasMoreTokens()) {
+					int index = tokenizer.getIntToken();
+
+					if (index >= draftSchematic->getTemplateListSize() || index < 0) {
+						creature->sendSystemMessage("Invalid template requested.");
+						return GENERALERROR;
+					}
+
+					String requestedTemplate = draftSchematic->getTemplate(index);
+
+					String templateName = requestedTemplate.subString(0, requestedTemplate.lastIndexOf('/') + 1) + requestedTemplate.subString(requestedTemplate.lastIndexOf('/') + 8);
+
+					targetTemplate = templateName.hashCode();
+				}
+			}
+
 			ManagedReference<TangibleObject *> prototype =  (
-					creature->getZoneServer()->createObject(draftSchematic->getTanoCRC(), 2)).castTo<TangibleObject*>();
+					creature->getZoneServer()->createObject(targetTemplate, 2)).castTo<TangibleObject*>();
 
 			if(prototype == NULL) {
 				creature->sendSystemMessage("Unable to create target item, is it implemented yet?");
@@ -132,14 +159,6 @@ public:
 
 			String serial = craftingManager->generateSerial();
 			prototype->setSerialNumber(serial);
-
-			int quantity = 1;
-
-			if(tokenizer.hasMoreTokens())
-				quantity = tokenizer.getIntToken();
-
-			if(quantity == 0)
-				quantity = 1;
 
 			ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
