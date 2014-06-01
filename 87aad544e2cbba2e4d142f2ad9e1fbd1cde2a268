@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_cc647fe7",
+        "filename": "MMOCoreORB/src/server/zone/objects/guild/sui/GuildChangeAbbrevResponseSuiCallback.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-06-01T07:05:17Z",
+      "side": 1,
+      "message": "Locker glocker( guild, player )",
+      "revId": "87aad544e2cbba2e4d142f2ad9e1fbd1cde2a268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_ec6743e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/guild/sui/GuildChangeNameResponseSuiCallback.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-06-01T07:05:17Z",
+      "side": 1,
+      "message": "Locker glocker( guild, player )",
+      "revId": "87aad544e2cbba2e4d142f2ad9e1fbd1cde2a268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
