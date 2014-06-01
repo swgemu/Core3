@@ -153,6 +153,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 				ai->setDespawnOnNoPlayerInRange(false);
 				ai->setHomeLocation(x, z, y);
 				ai->setRespawnTimer(0);
+				ai->setHomeObject(lair);
 
 				spawnedCreatures.add(creo);
 

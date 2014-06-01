@@ -7,7 +7,7 @@
 
 #include "server/zone/objects/area/DynamicSpawnArea.h"
 #include "server/zone/objects/area/SpawnDynamicAreaCreatureTask.h"
-#include "server/zone/objects/area/SpawnObserver.h"
+#include "server/zone/objects/area/SpawnAreaObserver.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DynamicSpawnGroup.h"
 #include "server/zone/managers/object/ObjectManager.h"
@@ -22,12 +22,12 @@ void DynamicSpawnAreaImplementation::registerObservers() {
 	for (int i = 0; i < noSpawnAreas.size(); ++i) {
 		ManagedReference<SpawnArea*> notHere = noSpawnAreas.get(i);
 
-		ManagedReference<SpawnObserver*> enterObserver = new SpawnObserver(_this.get());
+		ManagedReference<SpawnAreaObserver*> enterObserver = new SpawnAreaObserver(_this.get());
 		ObjectManager::instance()->persistObject(enterObserver, 1, "spawnobservers");
 		notHere->registerObserver(ObserverEventType::ENTEREDAREA, enterObserver);
 		observers.put(enterObserver);
 
-		ManagedReference<SpawnObserver*> exitObserver = new SpawnObserver(_this.get());
+		ManagedReference<SpawnAreaObserver*> exitObserver = new SpawnAreaObserver(_this.get());
 		ObjectManager::instance()->persistObject(exitObserver, 1, "spawnobservers");
 		notHere->registerObserver(ObserverEventType::EXITEDAREA, exitObserver);
 		observers.put(exitObserver);

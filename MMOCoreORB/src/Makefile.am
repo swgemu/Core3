@@ -97,7 +97,10 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/player/sessions/ProposeUnitySession.cpp \
+core3_IDLS =	autogen/server/zone/managers/creature/TheaterSpawnObserver.cpp \
+				autogen/server/zone/managers/creature/SpawnObserver.cpp \
+				autogen/server/zone/objects/player/sessions/VeteranRewardSession.cpp \
+				autogen/server/zone/objects/player/sessions/ProposeUnitySession.cpp \
 				autogen/server/zone/managers/mission/DestroyMissionLairObserver.cpp \
 				autogen/server/zone/objects/tangible/pharmaceutical/VitalityPack.cpp \
 				autogen/server/zone/objects/creature/buffs/GallopBuff.cpp \
@@ -148,7 +151,7 @@ core3_IDLS =	autogen/server/zone/objects/player/sessions/ProposeUnitySession.cpp
 				autogen/server/zone/objects/area/SpawnArea.cpp \
 				autogen/server/zone/objects/area/DynamicSpawnArea.cpp \
 				autogen/server/zone/objects/area/StaticSpawnArea.cpp \
-				autogen/server/zone/objects/area/SpawnObserver.cpp \
+				autogen/server/zone/objects/area/SpawnAreaObserver.cpp \
 				autogen/server/zone/objects/area/CampSiteObserver.cpp \
 				autogen/server/zone/objects/area/areashapes/AreaShape.cpp \
 				autogen/server/zone/objects/area/areashapes/CircularAreaShape.cpp \
@@ -388,6 +391,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/LuaTangibleObject.cpp \
 		server/zone/objects/area/LairSpawnAreaImplementation.cpp \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
+		server/zone/managers/creature/TheaterSpawnObserverImplementation.cpp \
 		server/zone/managers/customization/CustomizationIdManager.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
 		server/zone/managers/director/PersistentEventImplementation.cpp \

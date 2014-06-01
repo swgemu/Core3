@@ -719,6 +719,8 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 		cell->transferObject(_this.get(), -1);
 	else
 		zone->transferObject(_this.get(), -1, true);
+
+	respawnCounter++;
 }
 
 void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
@@ -784,6 +786,12 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	//_this.get()->printReferenceHolders();
 
 	//printf("%d ref count\n", _this.get()->getReferenceCount());
+
+	if (homeObject != NULL) {
+		info("Notifying creature despawned.", true);
+		homeObject->notifyObservers(ObserverEventType::CREATUREDESPAWNED, _this.get());
+		return;
+	}
 
 	if (respawnTimer == 0) {
 		//zone->getCreatureManager()->addToReservePool(_this.get());

@@ -1,8 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-
 This File is part of Core3.
-
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -40,30 +38,28 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
+
 */
 
-package server.zone.objects.area;
-
-import server.zone.objects.area.SpawnArea;
-import system.util.SortedVector;
-import server.zone.managers.object.ObjectManager;
+package server.zone.managers.creature;
 import engine.core.ManagedObject;
-import server.zone.objects.creature.AiAgent;
-import server.zone.objects.creature.aigroup.AiGroup;
-import server.zone.objects.area.SpawnAreaObserver;
+import engine.util.Observer;
 import engine.util.Observable;
+import server.zone.managers.creature.SpawnObserver;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.AiAgent;
 
-class StaticSpawnArea extends SpawnArea {
-	@dereferenced
-	protected SortedVector<AiGroup> groups;
-	
-	public StaticSpawnArea() {
-		Logger.setLoggingName("StaticSpawnArea");
+class TheaterSpawnObserver extends SpawnObserver {
+
+	public TheaterSpawnObserver() {
+		super();
+
+		Logger.setLoggingName("TheaterSpawnObserver");
 	}
-	
-	public native void spawnCreatures();
-	
-	public abstract boolean isStaticArea() {
+
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+
+	public boolean isTheaterSpawnObserver() {
 		return true;
 	}
 }

@@ -50,7 +50,7 @@ import server.zone.objects.creature.aigroup.AiGroup;
 import server.zone.objects.area.SpawnArea;
 import engine.util.Observable;
 import server.zone.managers.creature.LairSpawnGroup;
-import server.zone.objects.area.SpawnObserver;
+import server.zone.objects.area.SpawnAreaObserver;
 import system.util.HashTable;
 import system.lang.Time;
 
@@ -59,7 +59,7 @@ class LairSpawnArea extends SpawnArea {
 	protected transient LairSpawnGroup spawnGroup;
 	protected int currentlySpawnedLairs;
 	
-	protected SpawnObserver exitObserver;
+	protected SpawnAreaObserver exitObserver;
 	
 	@dereferenced
 	protected HashTable<unsigned int, int> spawnedGroupsCount;

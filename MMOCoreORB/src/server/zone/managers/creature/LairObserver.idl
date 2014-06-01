@@ -45,39 +45,24 @@ package server.zone.managers.creature;
 import engine.core.ManagedObject;
 import engine.util.Observer;
 import engine.util.Observable;
+import server.zone.managers.creature.SpawnObserver;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.templates.mobile.LairTemplate;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.managers.creature.HealLairObserverEvent;
 
-class LairObserver extends Observer implements Logger {
-	protected transient LairTemplate lairTemplate;
-
-	@dereferenced
-	protected Vector<CreatureObject> spawnedCreatures;
+class LairObserver extends SpawnObserver {
 
 	protected int spawnNumber;
 
 	protected transient HealLairObserverEvent healLairEvent;
-
-	protected int difficulty;
-
-	protected int babiesSpawned;
-
-	protected float size;
 
 	public LairObserver() {
 		super();
 
 		Logger.setLoggingName("LairObserver");
 
-		difficulty = 50;
-
-		lairTemplate = null;
 		healLairEvent = null;
 		spawnNumber = 0;
-		babiesSpawned = 0;
-		size = 20;
 	}
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
@@ -88,18 +73,6 @@ class LairObserver extends Observer implements Logger {
 	public native void healLair(TangibleObject lair, TangibleObject attacker);
 	public abstract native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
 	public native void doAggro(TangibleObject lair, TangibleObject attacker, boolean allAttack = false);
-	@local
-	public void setLairTemplate(LairTemplate tmpl) {
-		lairTemplate = tmpl;
-	}
-
-	public void setDifficulty(int diff) {
-		difficulty = diff;
-	}
-
-	public void setSize(float siz) {
-		size = siz;
-	}
 
 	public boolean isLairObserver() {
 		return true;
@@ -108,19 +81,10 @@ class LairObserver extends Observer implements Logger {
 	public native int getLivingCreatureCount();
 
 	public int getMobType() {
-		return lairTemplate.getMobType();
+		return super.lairTemplate.getMobType();
 	}
 
 	public int getSpawnNumber() {
 		return spawnNumber;
-	}
-
-	@local
-	public Vector<CreatureObject> getSpawnedCreatures() {
-		return spawnedCreatures;
-	}
-
-	public string getLairTemplateName() {
-		return lairTemplate.getName();
 	}
 }
