@@ -95,12 +95,6 @@ yavin4_destroy_missions = {
 			maxDifficulty = 36,
 			size = 25,
 		},
-		{
-			lairTemplateName = "yavin4_hutt_expedition_force_camp_hutt_medium_theater",
-			minDifficulty = 14,
-			maxDifficulty = 22,
-			size = 25,
-		},
 	}
 }
 

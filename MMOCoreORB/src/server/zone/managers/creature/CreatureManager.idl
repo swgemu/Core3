@@ -71,7 +71,9 @@ class CreatureManager extends ZoneManager {
 	}
 	
 	public native TangibleObject spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, unsigned int faction, float size = 20);
-	
+
+	public native TangibleObject spawnTheater(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size = 10);
+
 	/**
 	 * Spawns the specified creature into zone
 	 * @pre { this unlocked }

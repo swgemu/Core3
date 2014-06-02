@@ -19,6 +19,7 @@ namespace mobile {
 class LairTemplate : public Object {
 public:
 	enum MobType {CREATURE, NPC};
+	enum BuildingType {LAIR, THEATER, NONE};
 
 protected:
 	VectorMap<String, int> mobiles; // mobile template, weighting
@@ -33,6 +34,7 @@ protected:
 	unsigned int faction;
 
 	MobType mobType;
+	BuildingType buildingType;
 
 public:
 	enum { VERYEASY = 0, EASY, MEDIUM, HARD, VERYHARD};
@@ -45,6 +47,7 @@ public:
 		buildings.setNullValue(NULL);
 		faction = 0;
 		mobType = CREATURE;
+		buildingType = LAIR;
 
 		name = templateName;
 	}
@@ -95,6 +98,13 @@ public:
 		if (templateData->getStringField("mobType").length() > 0) {
 			if (templateData->getStringField("mobType") == "npc")
 				mobType = NPC;
+		}
+
+		if (templateData->getStringField("buildingType").length() > 0) {
+			if (templateData->getStringField("buildingType") == "theater")
+				buildingType = THEATER;
+			else if (templateData->getStringField("buildingType") == "none")
+				buildingType = NONE;
 		}
 
 		LuaObject mobs = templateData->getObjectField("mobiles");
@@ -248,6 +258,9 @@ public:
 		return mobType;
 	}
 
+	BuildingType getBuildingType() {
+		return buildingType;
+	}
 };
 
 }

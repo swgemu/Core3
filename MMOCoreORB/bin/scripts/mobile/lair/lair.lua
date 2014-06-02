@@ -11,7 +11,8 @@ Lair = {
 	buildingsVeryHard = {},
 
 	faction = "neutral",
-	mobType = "creature"
+	mobType = "creature",
+	buildingType = "lair"
 }
 
 function Lair:new (o)

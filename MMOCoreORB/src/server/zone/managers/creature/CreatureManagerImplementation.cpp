@@ -40,6 +40,7 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/managers/creature/TheaterSpawnObserver.h"
 #include "server/zone/packets/object/SpatialChat.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 
@@ -73,7 +74,7 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, unsigned int faction, float size) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
-	if (lairTmpl == NULL)
+	if (lairTmpl == NULL || lairTmpl->getBuildingType() != LairTemplate::LAIR)
 		return NULL;
 
  	String buildingToSpawn;
@@ -120,6 +121,52 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  	zone->transferObject(building, -1, false);
 
 	lairObserver->checkForNewSpawns(building, NULL, true);
+
+ 	return building;
+}
+
+TangibleObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size) {
+	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
+
+	if (lairTmpl == NULL || lairTmpl->getBuildingType() != LairTemplate::THEATER)
+		return NULL;
+
+ 	Vector<String>* mobiles = lairTmpl->getWeightedMobiles();
+
+ 	if (mobiles->size() == 0)
+ 		return NULL;
+
+ 	String buildingToSpawn = lairTmpl->getBuilding((uint32)difficulty);
+
+ 	if (buildingToSpawn.isEmpty()) {
+ 		error("error spawning " + buildingToSpawn);
+ 		return NULL;
+ 	}
+
+ 	ManagedReference<TangibleObject*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<TangibleObject*>();
+
+ 	if (building == NULL) {
+ 		error("error spawning " + buildingToSpawn);
+ 		return NULL;
+ 	}
+
+ 	Locker blocker(building);
+
+ 	building->initializePosition(x, z, y);
+
+ 	ManagedReference<TheaterSpawnObserver*> theaterObserver = new TheaterSpawnObserver();
+ 	theaterObserver->deploy();
+ 	theaterObserver->setLairTemplate(lairTmpl);
+ 	theaterObserver->setDifficulty(difficulty);
+ 	theaterObserver->setObserverType(ObserverType::THEATER);
+ 	theaterObserver->setSize(size);
+
+ 	building->registerObserver(ObserverEventType::CREATUREDESPAWNED, theaterObserver);
+
+
+ 	zone->transferObject(building, -1, false);
+
+ 	theaterObserver->spawnInitialMobiles(building);
 
  	return building;
 }
