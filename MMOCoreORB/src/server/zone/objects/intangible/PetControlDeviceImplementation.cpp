@@ -869,3 +869,17 @@ void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {
 	trainedAsMount = true;
 	pet->setOptionsBitmask(0x1080);
 }
+
+void PetControlDeviceImplementation::resetNamingCommands() {
+	if (namingCommands.isEmpty())
+		return;
+
+	int size = namingCommands.size() - 1;
+
+	if (size < 0)
+		return;
+
+	for (int i = size; i >= 0; i--) {
+		namingCommands.remove(i);
+	}
+}

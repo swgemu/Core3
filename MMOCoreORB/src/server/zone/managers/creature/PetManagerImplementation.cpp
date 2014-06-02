@@ -383,12 +383,12 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 		if (nameManager->validateName(parsedName) != NameManagerResult::ACCEPTED) {
 			return true;
 		}
-
-		if (futureName == parsedName)
-			pcd->incrementNamingProgress();
+		if (futureName == parsedName  && !pcd->hasUsedNamingCommand(trainingCommand)) {
+			pcd->incrementNamingProgress(trainingCommand);
+		}
 		else {
 			pcd->resetNamingProgress();
-			pcd->incrementNamingProgress();
+			pcd->incrementNamingProgress(trainingCommand);
 			pcd->setFutureName(parsedName);
 			return true;
 		}
@@ -404,6 +404,7 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 		UnicodeString newName = "(" + futureName + ")";
 		pcd->setCustomObjectName(newName, true);
 		pet->setCustomObjectName(newName, true);
+		pcd->resetNamingProgress();
 	}
 
 	return true;
