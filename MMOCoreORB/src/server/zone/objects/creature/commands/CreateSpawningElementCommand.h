@@ -84,15 +84,14 @@ public:
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 
-		if (player == NULL) {
-			creature->sendSystemMessage("Spawn: /createSpawningElement self spawn path/to/object.iff");
-			creature->sendSystemMessage("Delete: /createSpawningElement self delete oid");
+		if (player == NULL)
 			return GENERALERROR;
-		}
 
 		if (!args.hasMoreTokens()) {
-			creature->sendSystemMessage("Spawn: /createSpawningElement self spawn path/to/object.iff");
-			creature->sendSystemMessage("Delete: /createSpawningElement self delete oid");
+			creature->sendSystemMessage("Spawn: /createSpawningElement spawn path/to/object.iff");
+			creature->sendSystemMessage("Delete: /createSpawningElement delete oid");
+			creature->sendSystemMessage("Lair: /createSpawningElement lair lair_template level");
+			creature->sendSystemMessage("Theater: /createSpawningElement theater lair_template level");
 			return INVALIDPARAMETERS;
 		}
 
@@ -101,10 +100,8 @@ public:
 
 		ZoneServer* zserv = server->getZoneServer();
 
-		try
-		{
-			if (itemtype.toLowerCase() == "spawn")
-			{
+		try {
+			if (itemtype.toLowerCase() == "spawn") {
 				String objectTemplate;
 				args.getStringToken(objectTemplate);
 
@@ -137,11 +134,8 @@ public:
 
 				uint64 objectID = object->getObjectID();
 				creature->sendSystemMessage("oid: " + String::valueOf(objectID));
-			}
 
-			else if (itemtype.toLowerCase() == "delete")
-			{
-
+			} else if (itemtype.toLowerCase() == "delete") {
 
 				String chatObjectID;
 				args.getStringToken(chatObjectID);
@@ -170,9 +164,8 @@ public:
 				object->destroyObjectFromWorld(true);
 
 				creature->sendSystemMessage("Object " + chatObjectID + " deleted.");
-			}
 
-			else if (itemtype.toLowerCase() == "lair") {
+			} else if (itemtype.toLowerCase() == "lair" || itemtype.toLowerCase() == "theater") {
 				String lairTemplate;
 				args.getStringToken(lairTemplate);
 
@@ -185,10 +178,12 @@ public:
 					return GENERALERROR;
 				}
 
-				// TODO: should this grab the lair template and get the diffs from the template?
-				int minLevel = args.getIntToken();
-				int maxLevel = args.getIntToken();
-				int level = System::random(maxLevel - minLevel) + minLevel;
+				int level = args.getIntToken();
+
+				if (level < 1)
+					level = 1;
+				else if (level > 300)
+					level = 300;
 
 				unsigned int lairHashCode = lairTemplate.hashCode();
 
@@ -199,28 +194,43 @@ public:
 					return GENERALERROR;
 				}
 
-				unsigned int faction = lair->getFaction();
-
 				CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
 
-				TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), level, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), faction);
+				if (itemtype.toLowerCase() == "lair") {
+					if (lair->getBuildingType() != LairTemplate::LAIR) {
+						creature->sendSystemMessage("Template must be a lair type.");
+						return GENERALERROR;
+					}
 
-				if (tano != NULL) {
-					creature->sendSystemMessage("lair spawned");
-					//String className = TypeInfo<TangibleObject>::getClassName(tano, true);
-					creature->sendSystemMessage("pvpStatusBitmask " + String::valueOf(tano->getPvpStatusBitmask()));
+					unsigned int faction = lair->getFaction();
 
-					//creature->sendSystemMessage(className + " class created");
-				} else
-					creature->sendSystemMessage("error spawning lair");
+					TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), level, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), faction);
+
+					if (tano != NULL)
+						creature->sendSystemMessage("lair spawned");
+					else
+						creature->sendSystemMessage("error spawning lair");
+
+				} else if (itemtype.toLowerCase() == "theater") {
+
+					if (lair->getBuildingType() != LairTemplate::THEATER) {
+						creature->sendSystemMessage("Template must be a theater type.");
+						return GENERALERROR;
+					}
+
+					TangibleObject* tano = creatureManager->spawnTheater(lairTemplate.hashCode(), level, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
+
+					if (tano != NULL)
+						creature->sendSystemMessage("theater spawned");
+					else
+						creature->sendSystemMessage("error spawning theater");
+				}
 			}
-		}
-
-		catch (Exception& e)
-		{
-			creature->sendSystemMessage("Spawn: /createSpawningElement self spawn path/to/object.iff");
-			creature->sendSystemMessage("Spawn: /createSpawningElement lair lair_template min_level max_level");
-			creature->sendSystemMessage("Delete: /createSpawningElement self delete oid");
+		} catch (Exception& e) {
+			creature->sendSystemMessage("Spawn: /createSpawningElement spawn path/to/object.iff");
+			creature->sendSystemMessage("Delete: /createSpawningElement delete oid");
+			creature->sendSystemMessage("Lair: /createSpawningElement lair lair_template level");
+			creature->sendSystemMessage("Theater: /createSpawningElement theater lair_template level");
 		}
 
 		return SUCCESS;
