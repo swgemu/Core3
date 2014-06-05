@@ -176,7 +176,7 @@ class AiAgent extends CreatureObject {
 
 		showNextMovementPosition = true;
 		
-		despawnOnNoPlayerInRange = true;
+		despawnOnNoPlayerInRange = false;
 		numberOfPlayersInRange = 0;
 		
 		loadedOutfit = false;
