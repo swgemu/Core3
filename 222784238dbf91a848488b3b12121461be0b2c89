@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_ccc0ff7e",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-05T04:11:21Z",
+      "side": 1,
+      "message": "Why not simply use namingCommands.removeAll() instead?",
+      "revId": "222784238dbf91a848488b3b12121461be0b2c89",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
