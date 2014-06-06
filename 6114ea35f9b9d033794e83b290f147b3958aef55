@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_8c51e7da",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-06-06T03:26:39Z",
+      "side": 1,
+      "message": "If a creature despawns this way, is that basically the same effect as killing it (respawn, lair spawning wise)?",
+      "revId": "6114ea35f9b9d033794e83b290f147b3958aef55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
