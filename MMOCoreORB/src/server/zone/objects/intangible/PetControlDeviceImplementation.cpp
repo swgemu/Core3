@@ -106,6 +106,10 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	int level = pet->getLevel();
 
 	if (petType == PetManager::CREATUREPET) {
+		ManagedReference<Creature*> creaturePet = cast<Creature*>(pet.get());
+		if (creaturePet == NULL)
+			return;
+
 		bool ch = player->hasSkill("outdoors_creaturehandler_novice");
 
 		if (ch) {
@@ -113,13 +117,12 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 			maxLevelofPets = player->getSkillMod("tame_level");
 		}
 
-		if (level > maxLevelofPets) {
+		if (creaturePet->getAdultLevel() > maxLevelofPets) {
 			player->sendSystemMessage("@pet/pet_menu:control_exceeded"); // Calling this pet would exceed your Control Level ability.
 			return;
 		}
 
-		ManagedReference<Creature*> creaturePet = cast<Creature*>(pet.get());
-		if (creaturePet != NULL && creaturePet->isVicious() && (player->getSkillMod("tame_aggro") <= 0 || !ch)) {
+		if (creaturePet->isVicious() && (player->getSkillMod("tame_aggro") <= 0 || !ch)) {
 			player->sendSystemMessage("@pet/pet_menu:lack_skill"); // You lack the skill to call a pet of this type.
 			return;
 		}
@@ -564,7 +567,7 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 		int numberStored = numberInTrade;
 		int maxStoredPets = playerManager->getBaseStoredCreaturePets();
 		int maxLevelofPets = 10;
-		int level = pet->getLevel();
+		int level = pet->getAdultLevel();
 		bool ch = receiver->hasSkill("outdoors_creaturehandler_novice");
 
 		if (ch) {
