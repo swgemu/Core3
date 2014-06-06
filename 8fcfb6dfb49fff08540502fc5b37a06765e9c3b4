@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da6255ed_0c5df7e9",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/TheaterSpawnObserverImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-06T03:55:17Z",
+      "side": 1,
+      "message": "Excellent idea, though I think I\u0027d rather handle that in a subsequent patch.",
+      "parentUuid": "da6255ed_ec4aa326",
+      "revId": "8fcfb6dfb49fff08540502fc5b37a06765e9c3b4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6255ed_cc47df1c",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DespawnTheaterTask.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-06T03:23:18Z",
       "side": 1,
       "message": "I don\u0027t have the code handy... does this destroy all child objects too?",
+      "revId": "8fcfb6dfb49fff08540502fc5b37a06765e9c3b4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_ec718378",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DespawnTheaterTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-06T03:55:17Z",
+      "side": 1,
+      "message": "Good question. I\u0027d have to look into it. Most theaters, however, should not have any child objects, at least server side.",
+      "parentUuid": "da6255ed_cc47df1c",
       "revId": "8fcfb6dfb49fff08540502fc5b37a06765e9c3b4",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
