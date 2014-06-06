@@ -268,6 +268,20 @@ String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {
 	return templateToSpawn;
 }
 
+bool CreatureManagerImplementation::checkSpawnAsBaby(float tamingChance, int babiesSpawned, int chance) {
+	if (tamingChance > 0) {
+		if (babiesSpawned == 0) {
+			if (System::random(chance) < (tamingChance * 100.0f)) {
+				return true;
+			}
+		} else if (System::random(chance * babiesSpawned) < (tamingChance * 100.0f)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templateCRC, float x, float z, float y, uint64 parentID) {
 	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
 

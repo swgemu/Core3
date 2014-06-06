@@ -88,16 +88,9 @@ void TheaterSpawnObserverImplementation::spawnInitialMobiles(TangibleObject* the
 
 			ManagedReference<CreatureObject*> creo = NULL;
 
-			if (tamingChance > 0) {
-				if (babiesSpawned == 0) {
-					if (System::random(1000) < (tamingChance * 100.0f)) {
-						creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
-						babiesSpawned++;
-					}
-				} else if (System::random(1000 * babiesSpawned) < (tamingChance * 100.0f)) {
-					creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
-					babiesSpawned++;
-				}
+			if (creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, 500)) {
+				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
+				babiesSpawned++;
 			}
 
 			if (creo == NULL)

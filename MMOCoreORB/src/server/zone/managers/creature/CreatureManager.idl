@@ -94,7 +94,9 @@ class CreatureManager extends ZoneManager {
 	
 	@dereferenced
 	public native string getTemplateToSpawn(unsigned int templateCRC);
-	
+
+	public native boolean checkSpawnAsBaby(float tamingChance, int babiesSpawned, int chance);
+
 	/**
 	 * @pre { destructor and destructedObject locked }
 	 * @post { destructor and destructedObject locked }
