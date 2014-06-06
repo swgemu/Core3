@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_ec4aa326",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/TheaterSpawnObserverImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-06-06T03:23:18Z",
+      "side": 1,
+      "message": "We\u0027ve got this almost exact same baby-spawning code in three places now.   Is there some way to consolidate it?\n\nI also wonder if there should be a lua config value for \"wild lair\", \"mission lair\", or \"theater lair\" baby chance.",
+      "revId": "8fcfb6dfb49fff08540502fc5b37a06765e9c3b4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_cc47df1c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DespawnTheaterTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-06-06T03:23:18Z",
+      "side": 1,
+      "message": "I don\u0027t have the code handy... does this destroy all child objects too?",
+      "revId": "8fcfb6dfb49fff08540502fc5b37a06765e9c3b4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
