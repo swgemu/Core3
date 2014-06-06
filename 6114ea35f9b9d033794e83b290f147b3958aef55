@@ -16,6 +16,24 @@
       "revId": "6114ea35f9b9d033794e83b290f147b3958aef55",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_4c63efb1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-06T03:47:15Z",
+      "side": 1,
+      "message": "Pretty much. That task calls destroyObjectFromWorld() and then notifyDespawn().\n\nWhen a creature is killed it calls CreatureManager::notifyDestruction() which handles checking the threat map to know who to give loot permission to, creating the loot, disseminates xp and faction, and scheduling a DespawnCreatureTask.\n\nThe only difference between the two tasks is that DespawnCreatureOnPlayerDissappear will abort if a player is nearby. The same two methods are called by each.\n\nWith this patch, the only time a creature will have despawnOnNoPlayerInRange set to true is when it\u0027s lair is destroyed. Then, when a player leave\u0027s it\u0027s vicinity and if there are no other players nearby, it will schedule this task to despawn the creature 30 seconds later. If a player is in range when the task runs, it aborts. When the player leaves the vicinity a new task is scheduled and so on until the creature is actually despawned. As I mentioned in the commit message, the intent is so that creatures won\u0027t be left hanging around the world if it\u0027s lair is destroyed and it isn\u0027t killed.",
+      "parentUuid": "da6255ed_8c51e7da",
+      "revId": "6114ea35f9b9d033794e83b290f147b3958aef55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
