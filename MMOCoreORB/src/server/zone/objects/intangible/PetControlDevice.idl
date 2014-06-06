@@ -88,6 +88,9 @@ class PetControlDevice extends ControlDevice {
 	protected Time lastGrowth;
 
 	protected boolean trainedAsMount;
+	
+	@dereferenced
+	protected Vector<unsigned int> namingCommands;
 
 	public PetControlDevice() {
 		Logger.setLoggingName("PetControlDevice");
@@ -222,6 +225,13 @@ class PetControlDevice extends ControlDevice {
 		return false;
 	}
 
+	public boolean hasUsedNamingCommand(unsigned int command) {
+		if (namingCommands.contains(command))
+			return true;
+
+		return false;
+	}
+
 	public string getTrainedCommand(unsigned int command) {
 		return trainedCommands.get(command);
 	}
@@ -242,13 +252,17 @@ class PetControlDevice extends ControlDevice {
 		return namingProgress;
 	}
 
-	public void incrementNamingProgress() {
+	public void incrementNamingProgress(unsigned int command) {
 		namingProgress++;
+		namingCommands.add(command);
 	}
 
 	public void resetNamingProgress() {
 		namingProgress = 0;
+		resetNamingCommands();
 	}
+
+	native public void resetNamingCommands();
 
 	public boolean isPetControlDevice() {
 		return true;
