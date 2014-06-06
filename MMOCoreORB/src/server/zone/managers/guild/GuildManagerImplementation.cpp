@@ -282,7 +282,7 @@ void GuildManagerImplementation::scheduleGuildRename(CreatureObject* player, Gui
 	//task->schedule(604800000); // 1 week
 }
 
-void GuildManagerImplementation::renameGuild(GuildObject* guild, const String& newName, const String& newAbbrev) {
+void GuildManagerImplementation::renameGuild(GuildObject* guild, CreatureObject* player, const String& newName, const String& newAbbrev) {
 	Locker _lock(_this.get());
 
 	if (guildList.contains(guild->getGuildKey())) {
@@ -312,6 +312,15 @@ void GuildManagerImplementation::renameGuild(GuildObject* guild, const String& n
 	chatManager->broadcastMessage(gildd3);
 
 	guild->setRenamePending(false);
+
+	// Send emails to guild
+	StringIdChatParameter params;
+	params.setStringId("@guildmail:namechange_text"); //%TO has renamed the guild to %TU <%TT>
+	params.setTO(player->getFirstName());
+	params.setTU(newName);
+	params.setTT(newAbbrev);
+
+	sendGuildMail("@guildmail:namechange_subject", params, guild);
 }
 
 void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
@@ -524,7 +533,12 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 	oldLeader->sendSystemMessage("@guild:ml_success");  // PA leadership transferred.  YOu are now a normal member of the PA.
 	newLeader->sendSystemMessage("@guild:ml_you_are_leader"); // You have been made leader of your PA
 
+	// Send emails to guild
+	StringIdChatParameter params;
+	params.setStringId("@guildmail:leaderchange_text"); //%TU is the new guild leader.
+	params.setTU(newLeader->getFirstName());
 
+	sendGuildMail("@guildmail:leaderchange_subject", params, guild);
 }
 
 // pre: newOwner locked ... old owner not locked
@@ -837,6 +851,13 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildTermi
 		}
 	}
 	_lock.release();
+
+	// Send emails to guild
+	StringIdChatParameter params;
+	params.setStringId("@guildmail:namechange_text"); //The guild has been disbanded by %TU
+	params.setTU(player->getFirstName());
+
+	sendGuildMail("@guildmail:disband_subject", params, guild);
 
 	//TODO: This could probably be moved to the GuildObject destructor!
 	for (int i = 0; i < memberList->size(); ++i) {

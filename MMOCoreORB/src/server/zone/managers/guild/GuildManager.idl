@@ -188,7 +188,7 @@ class GuildManager extends ManagedService implements Logger {
 
 	public native void scheduleGuildRename(CreatureObject player, GuildObject guild);
 
-	public native void renameGuild(GuildObject guild, final string newName, final string newAbbrev);
+	public native void renameGuild(GuildObject guild, CreatureObject player, final string newName, final string newAbbrev);
 
 	public native GuildObject createGuild(CreatureObject player, GuildTerminal guildTerminal, final string guildName, final string guildAbbrev);
 	
