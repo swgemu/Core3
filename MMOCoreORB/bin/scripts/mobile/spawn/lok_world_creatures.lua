@@ -189,4 +189,4 @@ lok_world_creatures = {
 	}
 }
 
-addLairGroup("lok_world_creatures", lok_world_creatures);
+addSpawnGroup("lok_world_creatures", lok_world_creatures);

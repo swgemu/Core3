@@ -117,4 +117,4 @@ naboo_starter_creatures = {
 	}
 }
 
-addLairGroup("naboo_starter_creatures", naboo_starter_creatures);
+addSpawnGroup("naboo_starter_creatures", naboo_starter_creatures);

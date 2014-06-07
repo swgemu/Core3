@@ -1525,7 +1525,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 		}
 
 		LairSpawnArea* lairSpawnArea = cast<LairSpawnArea*>(spawnArea.get());
-		LairSpawnGroup* lairSpawnGroup = lairSpawnArea->getSpawnGroup();
+		SpawnGroup* lairSpawnGroup = lairSpawnArea->getSpawnGroup();
 
 		if (lairSpawnGroup == NULL) {
 			return NULL;

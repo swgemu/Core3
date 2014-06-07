@@ -99,4 +99,4 @@ tatooine_starter_creatures = {
 	}
 }
 
-addLairGroup("tatooine_starter_creatures", tatooine_starter_creatures);
+addSpawnGroup("tatooine_starter_creatures", tatooine_starter_creatures);

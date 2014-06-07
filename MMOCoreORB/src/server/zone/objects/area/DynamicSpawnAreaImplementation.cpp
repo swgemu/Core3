@@ -9,7 +9,7 @@
 #include "server/zone/objects/area/SpawnDynamicAreaCreatureTask.h"
 #include "server/zone/objects/area/SpawnAreaObserver.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
-#include "server/zone/managers/creature/DynamicSpawnGroup.h"
+#include "server/zone/managers/creature/SpawnGroup.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/aigroup/AiGroup.h"
@@ -117,7 +117,7 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC) {
 	int numberOfSpawnsToGenerate = getNumberOfSpawnsToGenerate();
 
 	while(numberOfSpawnsToGenerate-- > 0) {
-		DynamicSpawnGroup* templ = CreatureTemplateManager::instance()->getDynamicGroup(templateCRC);
+		SpawnGroup* templ = CreatureTemplateManager::instance()->getSpawnGroup(templateCRC);
 
 		uint32 crc;
 		switch (templ->getType()) {
@@ -153,7 +153,7 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC) {
 			//group->insertToZone(getZone());
 			getZone()->transferObject(group, -1, true);
 
-			group->setup(templ);
+			//group->setup(templ);
 
 			spawnedGroups.put(group);
 		}

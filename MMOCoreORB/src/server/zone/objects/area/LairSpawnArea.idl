@@ -49,14 +49,14 @@ import system.util.VectorMap;
 import server.zone.objects.creature.aigroup.AiGroup;
 import server.zone.objects.area.SpawnArea;
 import engine.util.Observable;
-import server.zone.managers.creature.LairSpawnGroup;
+import server.zone.managers.creature.SpawnGroup;
 import server.zone.objects.area.SpawnAreaObserver;
 import system.util.HashTable;
 import system.lang.Time;
 
 class LairSpawnArea extends SpawnArea {
 	
-	protected transient LairSpawnGroup spawnGroup;
+	protected transient SpawnGroup spawnGroup;
 	protected int currentlySpawnedLairs;
 	
 	protected SpawnAreaObserver exitObserver;
@@ -98,10 +98,10 @@ class LairSpawnArea extends SpawnArea {
 	}
 	
 	@local
-	public void setSpawnGroup(LairSpawnGroup group) {
+	public void setSpawnGroup(SpawnGroup group) {
 		spawnGroup = group;
 	}
 	
 	@local
-	public native LairSpawnGroup getSpawnGroup();
+	public native SpawnGroup getSpawnGroup();
 }

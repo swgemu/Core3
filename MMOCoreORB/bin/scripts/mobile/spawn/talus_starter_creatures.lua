@@ -72,4 +72,4 @@ talus_starter_creatures = {
 	}
 }
 
-addLairGroup("talus_starter_creatures", talus_starter_creatures);
+addSpawnGroup("talus_starter_creatures", talus_starter_creatures);

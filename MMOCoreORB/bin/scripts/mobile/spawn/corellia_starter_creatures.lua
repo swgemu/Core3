@@ -162,4 +162,4 @@ corellia_starter_creatures = {
 	}
 }
 
-addLairGroup("corellia_starter_creatures", corellia_starter_creatures);
+addSpawnGroup("corellia_starter_creatures", corellia_starter_creatures);

@@ -153,4 +153,4 @@ rori_medium_creatures = {
 	}
 }
 
-addLairGroup("rori_medium_creatures", rori_medium_creatures);
+addSpawnGroup("rori_medium_creatures", rori_medium_creatures);

@@ -369,4 +369,4 @@ rori_world_creatures = {
 	}
 }
 
-addLairGroup("rori_world_creatures", rori_world_creatures);
+addSpawnGroup("rori_world_creatures", rori_world_creatures);
