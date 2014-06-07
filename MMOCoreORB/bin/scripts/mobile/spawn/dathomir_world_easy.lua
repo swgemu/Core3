@@ -126,4 +126,4 @@ dathomir_world_easy = {
 	}
 }
 
-addLairGroup("dathomir_world_easy", dathomir_world_easy);
+addSpawnGroup("dathomir_world_easy", dathomir_world_easy);

@@ -216,4 +216,4 @@ endor_world_creatures = {
 	}
 }
 
-addLairGroup("endor_world_creatures", endor_world_creatures);
+addSpawnGroup("endor_world_creatures", endor_world_creatures);

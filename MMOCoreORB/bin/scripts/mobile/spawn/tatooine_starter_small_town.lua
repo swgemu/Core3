@@ -126,4 +126,4 @@ tatooine_starter_small_town = {
 	}
 }
 
-addLairGroup("tatooine_starter_small_town", tatooine_starter_small_town);
+addSpawnGroup("tatooine_starter_small_town", tatooine_starter_small_town);

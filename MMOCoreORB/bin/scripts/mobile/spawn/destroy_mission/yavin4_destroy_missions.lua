@@ -4,7 +4,7 @@ yavin4_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "yavin4_tanc_mite_lair_neutral_medium",
 			minDifficulty = 8,

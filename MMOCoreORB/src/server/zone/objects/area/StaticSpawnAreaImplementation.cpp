@@ -7,7 +7,7 @@
 
 #include "server/zone/objects/area/StaticSpawnArea.h"
 #include "server/zone/objects/area/SpawnAreaObserver.h"
-#include "server/zone/managers/creature/StaticSpawnGroup.h"
+#include "server/zone/managers/creature/SpawnGroup.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
@@ -20,7 +20,7 @@ void StaticSpawnAreaImplementation::spawnCreatures() {
 	for (int i = 0; i < spawnCreatureTemplates.size(); ++i) {
 		uint32 templateCRC = spawnCreatureTemplates.get(i);
 
-		StaticSpawnGroup* templ = CreatureTemplateManager::instance()->getStaticGroup(templateCRC);
+		SpawnGroup* templ = CreatureTemplateManager::instance()->getSpawnGroup(templateCRC);
 
 		uint32 crc;
 		switch (templ->getType()) {
@@ -42,16 +42,16 @@ void StaticSpawnAreaImplementation::spawnCreatures() {
 		if (group == NULL)
 			continue;
 
-		float x = templ->getX() + getPositionX();
-		float y = templ->getY() + getPositionY();
-		float z = templ->getZ() + getPositionZ();
+		//float x = templ->getX() + getPositionX();
+		//float y = templ->getY() + getPositionY();
+		//float z = templ->getZ() + getPositionZ();
 
-		group->setPosition(x, z, y);
+		//group->setPosition(x, z, y);
 
 		//group->insertToZone(getZone());
 		getZone()->transferObject(group, -1, true);
 
-		group->setup(templ);
+		//group->setup(templ);
 
 		groups.put(group);
 	}

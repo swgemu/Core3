@@ -4,7 +4,7 @@ factional_imperial_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			
 			lairTemplateName = "rebel_npc",

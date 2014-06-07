@@ -369,4 +369,4 @@ naboo_world_creatures = {
 	}
 }
 
-addLairGroup("naboo_world_creatures", naboo_world_creatures);
+addSpawnGroup("naboo_world_creatures", naboo_world_creatures);

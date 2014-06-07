@@ -315,4 +315,4 @@ yavin_world_creatures = {
 	}
 }
 
-addLairGroup("yavin_world_creatures", yavin_world_creatures);
+addSpawnGroup("yavin_world_creatures", yavin_world_creatures);

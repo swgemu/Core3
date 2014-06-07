@@ -4,7 +4,7 @@ rori_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "rori_squall_warren_neutral_medium",
 			minDifficulty = 5,

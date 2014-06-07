@@ -18,4 +18,4 @@ peko_albatross = {
 	}
 }
 
-addLairGroup("peko_albatross", peko_albatross);
+addSpawnGroup("peko_albatross", peko_albatross);

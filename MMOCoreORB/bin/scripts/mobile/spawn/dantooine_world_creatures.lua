@@ -209,4 +209,4 @@ dantooine_world_creatures = {
 	}
 }
 
-addLairGroup("dantooine_world_creatures", dantooine_world_creatures);
+addSpawnGroup("dantooine_world_creatures", dantooine_world_creatures);

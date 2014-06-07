@@ -243,4 +243,4 @@ tatooine_creatures_world = {
 	}
 }
 
-addLairGroup("tatooine_creatures_world", tatooine_creatures_world);
+addSpawnGroup("tatooine_creatures_world", tatooine_creatures_world);

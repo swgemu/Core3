@@ -4,7 +4,7 @@ lok_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "lok_pharple_lair_neutral_medium",
 			minDifficulty = 4,

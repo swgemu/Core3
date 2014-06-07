@@ -43,7 +43,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/area/LairSpawnArea.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/creature/LairSpawnGroup.h"
+#include "server/zone/managers/creature/SpawnGroup.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -111,11 +111,11 @@ int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Obs
 	return 1;
 }
 
-LairSpawnGroup* LairSpawnAreaImplementation::getSpawnGroup() {
+SpawnGroup* LairSpawnAreaImplementation::getSpawnGroup() {
 	if (spawnGroup == NULL && spawnCreatureTemplates.size() != 0) {
 		uint32 templateGroupCRC = spawnCreatureTemplates.get(0);
 
-		spawnGroup = CreatureTemplateManager::instance()->getLairGroup(templateGroupCRC);
+		spawnGroup = CreatureTemplateManager::instance()->getSpawnGroup(templateGroupCRC);
 	}
 
 	return spawnGroup;
@@ -125,7 +125,7 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 	if (spawnGroup == NULL && spawnCreatureTemplates.size() != 0) {
 		uint32 templateGroupCRC = spawnCreatureTemplates.get(0);
 
-		spawnGroup = CreatureTemplateManager::instance()->getLairGroup(templateGroupCRC);
+		spawnGroup = CreatureTemplateManager::instance()->getSpawnGroup(templateGroupCRC);
 	}
 
 	if (spawnGroup == NULL) {
@@ -133,7 +133,7 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 		return 1;
 	}
 
-	Vector<Reference<LairSpawn*> >* lairs = spawnGroup->getLairList();
+	Vector<Reference<LairSpawn*> >* lairs = spawnGroup->getSpawnList();
 
 	int totalSize = lairs->size();
 

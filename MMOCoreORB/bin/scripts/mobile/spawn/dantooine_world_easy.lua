@@ -90,4 +90,4 @@ dantooine_world_easy = {
 	}
 }
 
-addLairGroup("dantooine_world_easy", dantooine_world_easy);
+addSpawnGroup("dantooine_world_easy", dantooine_world_easy);

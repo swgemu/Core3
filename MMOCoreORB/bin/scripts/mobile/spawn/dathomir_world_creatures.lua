@@ -237,4 +237,4 @@ dathomir_world_creatures = {
 	}
 }
 
-addLairGroup("dathomir_world_creatures", dathomir_world_creatures);
+addSpawnGroup("dathomir_world_creatures", dathomir_world_creatures);

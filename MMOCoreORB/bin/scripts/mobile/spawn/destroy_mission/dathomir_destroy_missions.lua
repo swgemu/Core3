@@ -4,7 +4,7 @@ dathomir_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "dathomir_verne_herd_neutral_none",
 			minDifficulty = 7,

@@ -4,7 +4,7 @@ tatooine_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "tatooine_kreetle_lair_neutral_small",
 			minDifficulty = 3,

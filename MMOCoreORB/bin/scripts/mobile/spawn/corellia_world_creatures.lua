@@ -261,4 +261,4 @@ corellia_world_creatures = {
 	}
 }
 
-addLairGroup("corellia_world_creatures", corellia_world_creatures);
+addSpawnGroup("corellia_world_creatures", corellia_world_creatures);

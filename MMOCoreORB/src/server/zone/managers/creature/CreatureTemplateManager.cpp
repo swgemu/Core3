@@ -6,7 +6,7 @@
  */
 
 #include "CreatureTemplateManager.h"
-#include "LairSpawnGroup.h"
+#include "SpawnGroup.h"
 #include "server/conf/ConfigManager.h"
 
 AtomicInteger CreatureTemplateManager::loadedMobileTemplates;
@@ -32,11 +32,9 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua_register(lua->getLuaState(), "includeFile", includeFile);
 	lua_register(lua->getLuaState(), "addTemplate", addTemplate);
 	lua_register(lua->getLuaState(), "addWeapon", addWeapon);
-	lua_register(lua->getLuaState(), "addDynamicGroup", addDynamicGroup);
-	lua_register(lua->getLuaState(), "addStaticGroup", addStaticGroup);
 	lua_register(lua->getLuaState(), "addConversationTemplate", addConversationTemplate);
 	lua_register(lua->getLuaState(), "addLairTemplate", addLairTemplate);
-	lua_register(lua->getLuaState(), "addLairGroup", addLairGroup);
+	lua_register(lua->getLuaState(), "addSpawnGroup", addSpawnGroup);
 	lua_register(lua->getLuaState(), "addDestroyMissionGroup", addDestroyMissionGroup);
 	lua_register(lua->getLuaState(), "addPatrolPathTemplate", addPatrolPathTemplate);
 	lua_register(lua->getLuaState(), "addOutfitGroup", addOutfitGroup);
@@ -207,39 +205,7 @@ int CreatureTemplateManager::addWeapon(lua_State* L) {
 	return 0;
 }
 
-int CreatureTemplateManager::addDynamicGroup(lua_State* L) {
-	if (checkArgumentCount(L, 2) == 1) {
-		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addDynamicGroup");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	String ascii = lua_tostring(L, -2);
-	uint32 crc = (uint32) ascii.hashCode();
-
-	LuaObject obj(L);
-	CreatureTemplateManager::instance()->dynamicGroupMap.put(crc, new DynamicSpawnGroup(ascii, obj));
-
-	return 0;
-}
-
-int CreatureTemplateManager::addStaticGroup(lua_State* L) {
-	if (checkArgumentCount(L, 2) == 1) {
-		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addStaticGroup");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	String ascii = lua_tostring(L, -2);
-	uint32 crc = (uint32) ascii.hashCode();
-
-	LuaObject obj(L);
-	CreatureTemplateManager::instance()->staticGroupMap.put(crc, new StaticSpawnGroup(ascii, obj));
-
-	return 0;
-}
-
-int CreatureTemplateManager::addLairGroup(lua_State* L) {
+int CreatureTemplateManager::addSpawnGroup(lua_State* L) {
 	if (checkArgumentCount(L, 2) == 1) {
 		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addLairGroup");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
@@ -250,7 +216,7 @@ int CreatureTemplateManager::addLairGroup(lua_State* L) {
 	uint32 crc = (uint32) ascii.hashCode();
 
 	LuaObject obj(L);
-	CreatureTemplateManager::instance()->lairSpawnGroupMap.put(crc, new LairSpawnGroup(ascii, obj));
+	CreatureTemplateManager::instance()->spawnGroupMap.put(crc, new SpawnGroup(ascii, obj));
 
 	return 0;
 }
@@ -286,7 +252,7 @@ int CreatureTemplateManager::addDestroyMissionGroup(lua_State* L) {
 	uint32 crc = (uint32) ascii.hashCode();
 
 	LuaObject obj(L);
-	CreatureTemplateManager::instance()->destroyMissionGroupMap.put(crc, new DestroyMissionSpawnGroup(ascii, obj));
+	CreatureTemplateManager::instance()->destroyMissionGroupMap.put(crc, new SpawnGroup(ascii, obj));
 
 	return 0;
 }

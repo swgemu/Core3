@@ -4,7 +4,7 @@ endor_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "endor_squall_rabid_neutral_small",
 			minDifficulty = 8,

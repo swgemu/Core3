@@ -72,4 +72,4 @@ dathomir_sarlacc_mutant = {
 	}
 }
 
-addLairGroup("dathomir_sarlacc_mutant", dathomir_sarlacc_mutant);
+addSpawnGroup("dathomir_sarlacc_mutant", dathomir_sarlacc_mutant);

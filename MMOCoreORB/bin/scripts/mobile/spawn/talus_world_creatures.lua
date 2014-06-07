@@ -360,4 +360,4 @@ talus_world_creatures = {
 	}
 }
 
-addLairGroup("talus_world_creatures", talus_world_creatures);
+addSpawnGroup("talus_world_creatures", talus_world_creatures);

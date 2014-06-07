@@ -4,7 +4,7 @@ talus_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "talus_dalyrake_nest_neutral_medium",		
 			minDifficulty = 6,
