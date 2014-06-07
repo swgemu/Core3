@@ -38,6 +38,7 @@ protected:
 	StringIdParam objectName;
 	StringIdParam detailedDescription;
 	StringIdParam lookAtText;
+	String customName;
 
 	BoolParam snapToTerrain;
 	IntegerParam containerType;
@@ -274,6 +275,10 @@ public:
 
 	inline String getObjectName() const {
 		return objectName.getFullString();
+	}
+
+	inline String getCustomName() const {
+		return customName;
 	}
 
 	inline bool getOnlyVisibleInTools() const {

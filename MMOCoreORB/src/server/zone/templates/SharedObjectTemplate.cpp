@@ -63,6 +63,8 @@ void SharedObjectTemplate::parseVariableData(const String& varName, LuaObject* t
 		detailedDescription = Lua::getStringParameter(state);
 	} else if (varName == "lookAtText") {
 		lookAtText = Lua::getStringParameter(state);
+	} else if (varName == "customName") {
+		customName = Lua::getStringParameter(state);
 	} else if (varName == "snapToTerrain") {
 		snapToTerrain = Lua::getByteParameter(state);
 	} else if (varName == "containerType") {

@@ -43,6 +43,7 @@
 
 object_tangible_lair_gualama_lair_gualama_grassland = object_tangible_lair_gualama_shared_lair_gualama_grassland:new {
 	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	customName = "a grassland gualama lair"
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_gualama_lair_gualama_grassland, "object/tangible/lair/gualama/lair_gualama_grassland.iff")

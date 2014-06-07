@@ -175,6 +175,7 @@ void SceneObjectImplementation::initializePrivateData() {
 
 void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	objectName.setStringId(templateData->getObjectName());
+	customName = templateData->getCustomName();
 	//detailedDescription.setStringId(templateData->getDetailedDescription());
 
 	gameObjectType = templateData->getGameObjectType();

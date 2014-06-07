@@ -43,6 +43,7 @@
 
 object_tangible_lair_crystal_snake_lair_crystal_snake_swamp = object_tangible_lair_crystal_snake_shared_lair_crystal_snake_swamp:new {
 	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	customName = "a swamp crystal snake lair"
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_crystal_snake_lair_crystal_snake_swamp, "object/tangible/lair/crystal_snake/lair_crystal_snake_swamp.iff")
