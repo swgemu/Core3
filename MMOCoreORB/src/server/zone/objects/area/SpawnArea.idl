@@ -46,66 +46,83 @@ package server.zone.objects.area;
 
 import server.zone.objects.area.ActiveArea;
 import system.util.SortedVector;
+import system.util.HashTable;
 import engine.core.ManagedObject;
 import server.zone.objects.creature.aigroup.AiGroup;
+import server.zone.managers.creature.SpawnGroup;
 import server.zone.objects.area.SpawnAreaObserver;
 import engine.util.Observable;
 import server.zone.objects.scene.SceneObject;
+import system.lang.Time;
 
 class SpawnArea extends ActiveArea {
+	protected transient SpawnGroup spawnGroup;
+	protected int currentlySpawnedLairs;
+
 	@dereferenced
-	protected SortedVector<unsigned int> spawnCreatureTemplates;
-	
+	protected HashTable<unsigned int, int> spawnedGroupsCount;
+
 	@dereferenced
-	protected SortedVector<SpawnAreaObserver> observers;
-	
+	protected HashTable<unsigned long, unsigned int> lairTypes;
+
+	@dereferenced
+	protected Time lastSpawn;
+
+	protected SpawnAreaObserver exitObserver;
+
+	protected unsigned int spawnGroupTemplateCRC;
+
 	@dereferenced
 	protected Vector<SpawnArea> noSpawnAreas;
-	
+
 	protected int tier;
 	protected int spawnConstant;
-	
+
+	public final static int MINSPAWNINTERVAL = 2000; //msec
+
 	public SpawnArea() {
+		spawnGroupTemplateCRC = 0;
+		currentlySpawnedLairs = 0;
+		lairTypes.setNullValue(0);
+		exitObserver = null;
 		spawnConstant = 0;
 		Logger.setLoggingName("SpawnArea");
 	}
-	
-	public abstract void registerObservers() {
-	}
-	
+
 	@local
 	@dereferenced
 	public native Vector3 getRandomPosition(SceneObject player);
-	
-	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
-		return 1;
+
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+
+	public void setTemplate(unsigned int tempCRC) {
+		spawnGroupTemplateCRC = tempCRC;
 	}
-	
-	public void addTemplate(unsigned int tempCRC) {
-		spawnCreatureTemplates.add(tempCRC);
-	}
-	
+
 	public void setTier(int n) {
 		tier = n;
 	}
-	
+
 	public void setSpawnConstant(int n) {
 		spawnConstant = n;
 	}
-	
+
 	public void addNoSpawnArea(SpawnArea area) {
 		noSpawnAreas.add(area);
 	}
-	
-	public abstract boolean isStaticArea() {
-		return false;
+
+	@local
+	public void setSpawnGroup(SpawnGroup group) {
+		spawnGroup = group;
 	}
-	
-	public abstract boolean isDynamicArea() {
-		return false;
-	}
-	
-	public abstract boolean isLairSpawnArea() {
-		return false;
-	}
+
+	@local
+	public native SpawnGroup getSpawnGroup();
+
+	public native void notifyEnter(SceneObject object);
+	public native void notifyExit(SceneObject object);
+
+	public native void notifyPositionUpdate(QuadTreeEntry obj);
+
+	public native int trySpawnLair(SceneObject object);
 }

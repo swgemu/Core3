@@ -1,4 +1,4 @@
-dynamic_spawn_area = SharedObjectTemplate:new {
+spawn_area = SharedObjectTemplate:new {
 clientTemplateFileName = "", 
 	 planetMapCategory = "",
 	 planetMapSubCategory = "",
@@ -10,4 +10,4 @@ clientTemplateFileName = "",
 	gameObjectType = 33554436
 }
 
-ObjectTemplates:addTemplate(dynamic_spawn_area, "object/dynamic_spawn_area.iff")
+ObjectTemplates:addTemplate(spawn_area, "object/spawn_area.iff")

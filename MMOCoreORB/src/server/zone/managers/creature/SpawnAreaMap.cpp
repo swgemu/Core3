@@ -175,6 +175,9 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	int tier = areaObj.getIntAt(5);
 	int constant = areaObj.getIntAt(6);
 
+	if (tier == UNDEFINEDAREA)
+		return;
+
 	float radius = 0;
 	float width = 0;
 	float height = 0;
@@ -203,18 +206,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	if (radius == 0 && width == 0 && height == 0 && innerRadius == 0 && outerRadius == 0)
 		return;
 
-	uint32 crc = 0;
-
-	if (tier & STATICSPAWNAREA) {
-		crc = String("object/static_spawn_area.iff").hashCode();
-	} else if (tier & DYNAMICSPAWNAREA) {
-		crc = String("object/dynamic_spawn_area.iff").hashCode();
-	} else if (tier & LAIRSPAWNAREA) {
-		crc = String("object/lair_spawn_area.iff").hashCode();
-	} else {
-		error("Unknown region tier " + String::valueOf(tier));
-		crc = String("object/dynamic_spawn_area.iff").hashCode();
-	}
+	uint32 crc = String("object/spawn_area.iff").hashCode();
 
 	ManagedReference<SpawnArea*> area = dynamic_cast<SpawnArea*>(ObjectManager::instance()->createObject(crc, 0, "spawnareas"));
 	if (area == NULL)
@@ -251,19 +243,13 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 
 	area->setSpawnConstant(constant);
 
-	for (int j = 7; j <= areaObj.getTableSize(); ++j)
-		area->addTemplate(areaObj.getStringAt(j).hashCode());
+	if (tier & SPAWNAREA)
+		area->setTemplate(areaObj.getStringAt(7).hashCode());
 
-	if ((radius != -1) && !(tier & (WORLDSPAWNAREA | REBELSPAWNAREA | IMPERIALSPAWNAREA | NEUTRALSPAWNAREA))) {
+	if ((radius != -1) && !(tier & WORLDSPAWNAREA)) {
 		zone->transferObject(area, -1, true);
 	} else {
-		if (tier & NEUTRALSPAWNAREA) {
-			factionalNeutralSpawnAreas.add(area);
-		} else if (tier & REBELSPAWNAREA) {
-			factionalRebelSpawnAreas.add(area);
-		} else if (tier & IMPERIALSPAWNAREA) {
-			factionalImperialSpawnAreas.add(area);
-		} else if (tier & WORLDSPAWNAREA) {
+		if (tier & WORLDSPAWNAREA) {
 			worldSpawnAreas.add(area);
 		}
 
@@ -282,14 +268,6 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 		area->setNoBuildArea(true);
 	}
 
-	if (area->isStaticArea() && (tier & STATICSPAWNAREA)) {
-		StaticSpawnArea* staticArea = cast<StaticSpawnArea*>(area.get());
-		staticArea->spawnCreatures();
-	}
-	if (area->isDynamicArea() && (tier & DYNAMICSPAWNAREA)) {
-		DynamicSpawnArea* dynamicArea = cast<DynamicSpawnArea*>(area.get());
-		dynamicArea->addSpawnTask();
-	}
 }
 
 Vector3 SpawnAreaMap::getRandomJediTrainer() {
