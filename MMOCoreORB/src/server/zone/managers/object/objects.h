@@ -109,9 +109,7 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
-#include "server/zone/objects/area/DynamicSpawnArea.h"
-#include "server/zone/objects/area/StaticSpawnArea.h"
-#include "server/zone/objects/area/LairSpawnArea.h"
+#include "server/zone/objects/area/SpawnArea.h"
 
 #include "server/zone/objects/creature/aigroup/AiGroup.h"
 #include "server/zone/objects/creature/aigroup/HerdGroup.h"

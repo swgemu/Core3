@@ -87,14 +87,12 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<StaticObject>(SceneObjectType::FLORA);
 
 	objectFactory.registerObject<FsVillageArea>(SceneObjectType::FSVILLAGEAREA);
-	objectFactory.registerObject<LairSpawnArea>(SceneObjectType::LAIRSPAWNAREA);
 	objectFactory.registerObject<ActiveArea>(SceneObjectType::ACTIVEAREA);
 	objectFactory.registerObject<BadgeActiveArea>(SceneObjectType::BADGEAREA);
 	objectFactory.registerObject<GarageArea>(SceneObjectType::GARAGEAREA);
 	objectFactory.registerObject<MissionSpawnActiveArea>(SceneObjectType::MISSIONSPAWNAREA);
 	objectFactory.registerObject<MissionReconActiveArea>(SceneObjectType::MISSIONRECONAREA);
-	objectFactory.registerObject<DynamicSpawnArea>(SceneObjectType::DYNAMICSPAWNAREA);
-	objectFactory.registerObject<StaticSpawnArea>(SceneObjectType::STATICSPAWNAREA);
+	objectFactory.registerObject<SpawnArea>(SceneObjectType::SPAWNAREA);
 	objectFactory.registerObject<CampSiteActiveArea>(SceneObjectType::CAMPAREA);
 	objectFactory.registerObject<Region>(SceneObjectType::REGIONAREA);
 	objectFactory.registerObject<StaticObject>(SceneObjectType::STATICOBJECT);

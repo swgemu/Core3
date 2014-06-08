@@ -34,7 +34,6 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/area/StaticSpawnArea.h"
 #include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"

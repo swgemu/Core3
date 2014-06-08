@@ -20,7 +20,7 @@
 #include "server/zone/objects/mission/BountyMissionObjective.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/region/Region.h"
-#include "server/zone/objects/area/LairSpawnArea.h"
+#include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -1520,18 +1520,17 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 		spawnArea = worldAreas->get(rand);
 
-		if (spawnArea == NULL || !spawnArea->isLairSpawnArea()) {
+		if (spawnArea == NULL) {
 			return NULL;
 		}
 
-		LairSpawnArea* lairSpawnArea = cast<LairSpawnArea*>(spawnArea.get());
-		SpawnGroup* lairSpawnGroup = lairSpawnArea->getSpawnGroup();
+		SpawnGroup* spawnGroup = spawnArea->getSpawnGroup();
 
-		if (lairSpawnGroup == NULL) {
+		if (spawnGroup == NULL) {
 			return NULL;
 		}
 
-		availableLairList = lairSpawnGroup->getSpawnList();
+		availableLairList = spawnGroup->getSpawnList();
 	}
 
 	if (availableLairList == NULL || availableLairList->size() == 0) {
