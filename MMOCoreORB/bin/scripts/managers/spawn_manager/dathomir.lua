@@ -132,7 +132,7 @@ dathomir_regions = {
 	{"vass_meindras_6",0,0,{1,0},UNDEFINEDAREA,1},
         {"wall",7439,-3018,{1,30},NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"western_mountains",0,0,{1,0},UNDEFINEDAREA,1},
-	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,1,"dathomir_world_creatures"},
+	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,1,"dathomir_world"},
 	{"sarlacc_spawner",-2075,3135,{1,1250},SPAWNAREA,1,"dathomir_sarlacc_mutant"},
 	{"tarpits_spawner",645,-4890,{1,1250},SPAWNAREA,1,"dathomir_sarlacc_mutant"},
         {"worship_shrine",-6949,-3034,{1,30},NOSPAWNAREA + NOBUILDZONEAREA,1},

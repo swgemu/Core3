@@ -1,9 +1,9 @@
-tatooine_starter_small_town = {
+tatooine_easy = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 75,
+	maxSpawnLimit = 512,
 
 	lairSpawns = {
 		{
@@ -29,24 +29,6 @@ tatooine_starter_small_town = {
 			spawnLimit = -1,
 			minDifficulty = 2,
 			maxDifficulty = 4,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "tatooine_evil_settlement_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 2,
-			maxDifficulty = 5,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "tatooine_moisture_settler_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 3,
-			maxDifficulty = 5,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -113,17 +95,8 @@ tatooine_starter_small_town = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
-		},
-		{
-			lairTemplateName = "tatooine_alkhara_bandit_patrol_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 11,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
 		}
 	}
 }
 
-addSpawnGroup("tatooine_starter_small_town", tatooine_starter_small_town);
+addSpawnGroup("tatooine_easy", tatooine_easy);

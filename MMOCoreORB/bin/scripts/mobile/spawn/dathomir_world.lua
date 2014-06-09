@@ -1,4 +1,4 @@
-dathomir_world_creatures = {
+dathomir_world = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -237,4 +237,4 @@ dathomir_world_creatures = {
 	}
 }
 
-addSpawnGroup("dathomir_world_creatures", dathomir_world_creatures);
+addSpawnGroup("dathomir_world", dathomir_world);

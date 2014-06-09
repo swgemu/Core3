@@ -1,4 +1,4 @@
-rori_medium_creatures = {
+rori_medium = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -153,4 +153,4 @@ rori_medium_creatures = {
 	}
 }
 
-addSpawnGroup("rori_medium_creatures", rori_medium_creatures);
+addSpawnGroup("rori_medium", rori_medium);

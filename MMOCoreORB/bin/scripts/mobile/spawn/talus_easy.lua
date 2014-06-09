@@ -1,4 +1,4 @@
-talus_starter_creatures = {
+talus_easy = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -72,4 +72,4 @@ talus_starter_creatures = {
 	}
 }
 
-addSpawnGroup("talus_starter_creatures", talus_starter_creatures);
+addSpawnGroup("talus_easy", talus_easy);

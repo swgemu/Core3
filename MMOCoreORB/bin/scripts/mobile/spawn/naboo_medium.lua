@@ -1,4 +1,4 @@
-naboo_medium_creatures = {
+naboo_medium = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -144,4 +144,4 @@ naboo_medium_creatures = {
 	}
 }
 
-addSpawnGroup("naboo_medium_creatures", naboo_medium_creatures);
+addSpawnGroup("naboo_medium", naboo_medium);

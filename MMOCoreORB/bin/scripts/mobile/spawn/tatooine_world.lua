@@ -1,4 +1,4 @@
-tatooine_creatures_world = {
+tatooine_world = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -243,4 +243,4 @@ tatooine_creatures_world = {
 	}
 }
 
-addSpawnGroup("tatooine_creatures_world", tatooine_creatures_world);
+addSpawnGroup("tatooine_world", tatooine_world);

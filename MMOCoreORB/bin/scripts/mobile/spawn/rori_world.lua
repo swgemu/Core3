@@ -1,4 +1,4 @@
-rori_world_creatures = {
+rori_world = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -369,4 +369,4 @@ rori_world_creatures = {
 	}
 }
 
-addSpawnGroup("rori_world_creatures", rori_world_creatures);
+addSpawnGroup("rori_world", rori_world);

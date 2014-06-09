@@ -1,4 +1,4 @@
-dantooine_world_creatures = {
+dantooine_world = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -209,4 +209,4 @@ dantooine_world_creatures = {
 	}
 }
 
-addSpawnGroup("dantooine_world_creatures", dantooine_world_creatures);
+addSpawnGroup("dantooine_world", dantooine_world);

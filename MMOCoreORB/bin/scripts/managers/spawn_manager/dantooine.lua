@@ -223,7 +223,7 @@ dantooine_regions = {
 	{"western_steppes_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"western_steppes_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"wooden_bridge",4132,-1708,{1,30},NOSPAWNAREA + NOBUILDZONEAREA,1},
-	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,1,"dantooine_world_creatures"},
+	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,1,"dantooine_world"},
         {"worship_area",6092,-6475,{1,50},NOSPAWNAREA + NOBUILDZONEAREA,1},
 }
 

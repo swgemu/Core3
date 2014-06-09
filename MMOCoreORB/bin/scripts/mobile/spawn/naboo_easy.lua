@@ -1,4 +1,4 @@
-rori_starter_creatures = {
+naboo_easy = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -7,7 +7,34 @@ rori_starter_creatures = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "rori_squall_meek_avenger_neutral_none",
+			lairTemplateName = "naboo_gnort_lair_neutral_small",
+			spawnLimit = -1,
+			minDifficulty = 4,
+			maxDifficulty = 4,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_mott_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 4,
+			maxDifficulty = 4,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_chuba_lair_neutral_small",
+			spawnLimit = -1,
+			minDifficulty = 5,
+			maxDifficulty = 5,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_capper_spineflap_nest_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 6,
 			maxDifficulty = 6,
@@ -16,7 +43,7 @@ rori_starter_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_squall_pack_neutral_none",
+			lairTemplateName = "naboo_flesh_eating_chuba_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 6,
 			maxDifficulty = 6,
@@ -25,7 +52,7 @@ rori_starter_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_squall_warren_neutral_medium",
+			lairTemplateName = "naboo_diseased_nuna_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 6,
 			maxDifficulty = 6,
@@ -34,25 +61,7 @@ rori_starter_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_capper_spineflap_pod_neutral_small",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 6,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "rori_capper_spineflap_hive_neutral_large",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 6,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "rori_nightspider_lair_neutral_small",
+			lairTemplateName = "naboo_flewt_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 7,
 			maxDifficulty = 7,
@@ -61,7 +70,7 @@ rori_starter_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_ikopi_lair_neutral_medium",
+			lairTemplateName = "naboo_hermit_spider_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 7,
 			maxDifficulty = 7,
@@ -70,42 +79,42 @@ rori_starter_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "krevol",
+			lairTemplateName = "naboo_nightspider_lair_neutral_small",
 			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 8,
+			minDifficulty = 7,
+			maxDifficulty = 7,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_sickle_rasp_nest_neutral_medium",
+			lairTemplateName = "naboo_ikopi_lair_neutral_medium",
 			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 8,
+			minDifficulty = 7,
+			maxDifficulty = 7,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_nudfuh_lair_neutral_medium",
+			lairTemplateName = "naboo_sharupat_family_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 7,
+			maxDifficulty = 7,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_flewt_lair_neutral_small_01",
 			spawnLimit = -1,
 			minDifficulty = 9,
 			maxDifficulty = 9,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
-		},
-		{
-			lairTemplateName = "barkmite_hills",
-			spawnLimit = -1,
-			minDifficulty = 9,
-			maxDifficulty = 9,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
+		}
 	}
 }
 
-addSpawnGroup("rori_starter_creatures", rori_starter_creatures);
+addSpawnGroup("naboo_easy", naboo_easy);

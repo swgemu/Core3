@@ -1,4 +1,4 @@
-endor_world_creatures = {
+endor_world = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -216,4 +216,4 @@ endor_world_creatures = {
 	}
 }
 
-addSpawnGroup("endor_world_creatures", endor_world_creatures);
+addSpawnGroup("endor_world", endor_world);

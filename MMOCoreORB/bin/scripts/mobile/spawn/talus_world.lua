@@ -1,4 +1,4 @@
-talus_world_creatures = {
+talus_world = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -360,4 +360,4 @@ talus_world_creatures = {
 	}
 }
 
-addSpawnGroup("talus_world_creatures", talus_world_creatures);
+addSpawnGroup("talus_world", talus_world);

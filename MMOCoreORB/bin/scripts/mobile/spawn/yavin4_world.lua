@@ -1,4 +1,4 @@
-yavin_world_creatures = {
+yavin4_world = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -315,4 +315,4 @@ yavin_world_creatures = {
 	}
 }
 
-addSpawnGroup("yavin_world_creatures", yavin_world_creatures);
+addSpawnGroup("yavin4_world", yavin4_world);

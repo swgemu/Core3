@@ -1,4 +1,4 @@
-lok_world_creatures = {
+lok_world = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -189,4 +189,4 @@ lok_world_creatures = {
 	}
 }
 
-addSpawnGroup("lok_world_creatures", lok_world_creatures);
+addSpawnGroup("lok_world", lok_world);

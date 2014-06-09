@@ -117,7 +117,7 @@ yavin4_regions = {
 	{"wayward_jungle_6",0,0,{1,0},UNDEFINEDAREA,1},
 	{"western_peak",0,0,{1,0},UNDEFINEDAREA,1},
 	{"woolamander_temple",525,-642,{1,150},NOSPAWNAREA + NOBUILDZONEAREA,1},
-	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,1,"yavin_world_creatures"},
+	{"world_spawner",0,0,{1,-1},SPAWNAREA + WORLDSPAWNAREA,1,"yavin4_world"},
 	{"yavin4_imperial_base",4032.5,-6235.0,{1,225},NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"yavin4_imperial_base_2",4030.5,-6508.0,{1,65},NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"yavin4_imperial_fort",0,0,{1,0},UNDEFINEDAREA,1},
