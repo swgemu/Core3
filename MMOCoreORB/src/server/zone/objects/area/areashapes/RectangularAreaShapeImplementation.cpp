@@ -35,14 +35,18 @@ Vector3 RectangularAreaShapeImplementation::getRandomPosition() {
 Vector3 RectangularAreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) {
 	bool found = false;
 	Vector3 position;
+	int retries = 5;
 
-	while (!found) {
+	while (!found && retries-- > 0) {
 		int distance = System::random((int)(maxDistance - minDistance)) + minDistance;
 		int angle = System::random(360) * Math::DEG2RAD;
 		position.set(origin.getX() + distance * Math::cos(angle), 0, origin.getY() + distance * Math::sin(angle));
 
 		found = containsPoint(position);
 	}
+
+	if (!found)
+		return getRandomPosition();
 
 	return position;
 }
