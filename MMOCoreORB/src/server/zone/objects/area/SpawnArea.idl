@@ -57,13 +57,13 @@ import system.lang.Time;
 
 class SpawnArea extends ActiveArea {
 	protected transient SpawnGroup spawnGroup;
-	protected int currentlySpawnedLairs;
+	protected int totalSpawnCount;
 
 	@dereferenced
-	protected HashTable<unsigned int, int> spawnedGroupsCount;
+	protected HashTable<unsigned int, int> spawnCountByType;
 
 	@dereferenced
-	protected HashTable<unsigned long, unsigned int> lairTypes;
+	protected HashTable<unsigned long, unsigned int> spawnTypes;
 
 	@dereferenced
 	protected Time lastSpawn;
@@ -82,8 +82,8 @@ class SpawnArea extends ActiveArea {
 
 	public SpawnArea() {
 		spawnGroupTemplateCRC = 0;
-		currentlySpawnedLairs = 0;
-		lairTypes.setNullValue(0);
+		totalSpawnCount = 0;
+		spawnTypes.setNullValue(0);
 		exitObserver = null;
 		spawnConstant = 0;
 		Logger.setLoggingName("SpawnArea");
@@ -124,5 +124,5 @@ class SpawnArea extends ActiveArea {
 
 	public native void notifyPositionUpdate(QuadTreeEntry obj);
 
-	public native int trySpawnLair(SceneObject object);
+	public native int tryToSpawn(SceneObject object);
 }

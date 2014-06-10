@@ -55,17 +55,17 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 
 	Locker locker(_this.get());
 
-	uint32 lairTemplate = lairTypes.remove(tano->getObjectID());
+	uint32 lairTemplate = spawnTypes.remove(tano->getObjectID());
 
 	if (lairTemplate != 0) {
-		int currentSpawnCount = spawnedGroupsCount.get(lairTemplate) - 1;
+		int currentSpawnCount = spawnCountByType.get(lairTemplate) - 1;
 
 		if (currentSpawnCount < 1)
-			spawnedGroupsCount.remove(lairTemplate);
+			spawnCountByType.remove(lairTemplate);
 		else
-			spawnedGroupsCount.put(lairTemplate, currentSpawnCount);
+			spawnCountByType.put(lairTemplate, currentSpawnCount);
 
-		--currentlySpawnedLairs;
+		--totalSpawnCount;
 
 		locker.release();
 
@@ -105,7 +105,7 @@ void SpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (object->getCityRegion() != NULL)
 		return;
 
-	trySpawnLair(object);
+	tryToSpawn(object);
 }
 
 void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
@@ -123,14 +123,14 @@ void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		return;
 
 	if (System::random(25) == 1)
-		trySpawnLair(creature);
+		tryToSpawn(creature);
 }
 
 void SpawnAreaImplementation::notifyExit(SceneObject* object) {
 
 }
 
-int SpawnAreaImplementation::trySpawnLair(SceneObject* object) {
+int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	if (spawnGroup == NULL && spawnGroupTemplateCRC != 0)
 		spawnGroup = CreatureTemplateManager::instance()->getSpawnGroup(spawnGroupTemplateCRC);
 
@@ -155,7 +155,7 @@ int SpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 		return 3;
 	}
 
-	if (currentlySpawnedLairs >= spawnGroup->getMaxSpawnLimit())
+	if (totalSpawnCount >= spawnGroup->getMaxSpawnLimit())
 		return 4;
 
 	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL)
@@ -226,7 +226,7 @@ int SpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 	String lairTemplate = finalSpawn->getLairTemplateName();
 	uint32 lairHashCode = lairTemplate.hashCode();
 
-	int currentSpawnCount = spawnedGroupsCount.get(lairHashCode);
+	int currentSpawnCount = spawnCountByType.get(lairHashCode);
 
 	if (spawnLimit != -1) {
 		if (currentSpawnCount >= spawnLimit)
@@ -237,7 +237,7 @@ int SpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 
 	int difficulty = System::random(finalSpawn->getMaxDifficulty() - finalSpawn->getMinDifficulty()) + finalSpawn->getMinDifficulty();
 
-	ManagedReference<SceneObject*> obj = creatureManager->spawnLair(lairHashCode, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), 0, finalSpawn->getSize());
+	ManagedReference<SceneObject*> obj = creatureManager->spawn(lairHashCode, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), finalSpawn->getSize());
 
 	if (obj != NULL) {
 		StringBuffer msg;
@@ -254,15 +254,15 @@ int SpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 		exitObserver->deploy();
 	}
 
-	lairTypes.put(obj->getObjectID(), lairHashCode);
+	spawnTypes.put(obj->getObjectID(), lairHashCode);
 
 	Locker objLocker(obj);
 
 	obj->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, exitObserver);
 
-	++currentlySpawnedLairs;
+	++totalSpawnCount;
 
-	spawnedGroupsCount.put(lairTemplate.hashCode(), currentSpawnCount);
+	spawnCountByType.put(lairTemplate.hashCode(), currentSpawnCount);
 
 	return 0;
 }

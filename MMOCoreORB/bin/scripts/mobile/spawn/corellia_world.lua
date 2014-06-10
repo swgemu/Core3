@@ -257,6 +257,15 @@ corellia_world = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
+		},
+		{
+			lairTemplateName = "corellia_swooper_camp_neutral_small_theater",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 12,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 15
 		}
 	}
 }

@@ -312,6 +312,15 @@ yavin4_world = {
 			weighting = 15,
 			size = 25
 		},
+		{
+			lairTemplateName = "yavin4_hutt_expedition_force_camp_hutt_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 17,
+			maxDifficulty = 21,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 15
+		},
 	}
 }
 

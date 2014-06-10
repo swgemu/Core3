@@ -1,16 +1,15 @@
-swooper_gangmember = Creature:new {
+swooper_corellia = Creature:new {
 	objectName = "@mob/creature_names:swooper",
-	customName = "a swooper gangmember",
 	socialGroup = "cor_swoop",
 	pvpFaction = "cor_swoop",
 	faction = "cor_swoop",
-	level = 9,
+	level = 8,
 	chanceHit = 0.27,
-	damageMin = 80,
-	damageMax = 90,
-	baseXp = 235,
-	baseHAM = 675,
-	baseHAMmax = 825,
+	damageMin = 70,
+	damageMax = 75,
+	baseXp = 187,
+	baseHAM = 405,
+	baseHAMmax = 495,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -23,12 +22,11 @@ swooper_gangmember = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = STALKER,
+	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_criminal_swooper_zabrak_female_01.iff",
-				"object/mobile/dressed_criminal_swooper_human_male_01.iff"},
+	templates = {"object/mobile/dressed_criminal_swooper_human_female_01.iff"},
 	lootGroups = {
       	{
 			groups = {
@@ -43,7 +41,7 @@ swooper_gangmember = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(swooper_gangmember, "swooper_gangmember")
+CreatureTemplates:addCreatureTemplate(swooper_corellia, "swooper_corellia")

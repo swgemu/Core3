@@ -70,7 +70,21 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
 }
 
-TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, unsigned int faction, float size) {
+TangibleObject* CreatureManagerImplementation::spawn(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size) {
+	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
+
+	if (lairTmpl == NULL)
+		return NULL;
+
+	if (lairTmpl->getBuildingType() == LairTemplate::LAIR)
+		return spawnLair(lairTemplate, difficulty, x, z, y, size);
+	else if (lairTmpl->getBuildingType() == LairTemplate::THEATER)
+		return spawnTheater(lairTemplate, difficulty, x, z, y, size);
+
+	return NULL;
+}
+
+TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == NULL || lairTmpl->getBuildingType() != LairTemplate::LAIR)
@@ -99,7 +113,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	Locker blocker(building);
 
- 	building->setFaction(faction);
+ 	building->setFaction(lairTmpl->getFaction());
  	building->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
  	building->setOptionsBitmask(0, false);
  	building->setMaxCondition(difficulty * 1000);
