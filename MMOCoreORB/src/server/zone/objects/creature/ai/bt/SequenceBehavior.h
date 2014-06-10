@@ -20,10 +20,17 @@ namespace bt {
 
 class SequenceBehavior: public CompositeBehavior {
 public:
-	SequenceBehavior(BehaviorTree* sequenceTree);
+	SequenceBehavior(AiAgent* _agent, String className);
+	void childSucceeded();
+	void childFailed();
+/*public:
+	SequenceBehavior(BehaviorTree* sequenceTree, AiActor* _actor);
 	virtual ~SequenceBehavior();
+
 protected:
 	BehaviorTree* tree;
+	AiAgent* actor;
+
 	virtual void onInitialize(AiAgent* actor);
 	virtual int update(AiAgent* actor) { return RUNNING; }
 	virtual void observe(AiAgent* actor);
@@ -33,7 +40,7 @@ protected:
 	virtual void addChild(Behavior* child) {
 		CompositeBehavior::addChild(child);
 		end = children.size();
-	}
+	}*/
 };
 
 }

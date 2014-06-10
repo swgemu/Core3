@@ -30,6 +30,7 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/ai/AiActor.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/db/ServerDatabase.h"
@@ -273,6 +274,11 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 
 	placeCreature(creature, x, z, y, parentID);
 
+	if (creature != NULL && creature->isAiAgent()) {
+		AiAgent* npc = cast<AiAgent*>(creature);
+		npc->activateMovementEvent();
+	}
+
 	return creature;
 }
 
@@ -397,17 +403,6 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 void CreatureManagerImplementation::loadSpawnAreas() {
 	info("loading spawn areas...", true);
 	spawnAreaMap.loadMap(zone);
-}
-
-void CreatureManagerImplementation::loadAiTemplates() {
-
-	Locker locker(&loadMutex);
-
-	info("loading ai templates...", true);
-	aiMap = AiMap::instance();
-	aiMap->initialize();
-	String msg = String("loaded ") + String::valueOf(aiMap->getSize()) + String(" ai templates.");
-	info(msg, true);
 }
 
 void CreatureManagerImplementation::loadSingleSpawns() {

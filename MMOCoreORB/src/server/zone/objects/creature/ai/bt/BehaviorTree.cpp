@@ -10,12 +10,14 @@
 #include "engine/engine.h"
 
 BehaviorTree::BehaviorTree() {
+	behaviors.setNoDuplicateInsertPlan();
 }
 
 BehaviorTree::~BehaviorTree() {
+	behaviors.removeAll();
 }
 
-void BehaviorTree::start(Behavior* behavior,AiAgent* actor) {
+/*void BehaviorTree::start(Behavior* behavior,AiAgent* actor) {
 	actor->addBehaviorToTree(this,behavior);
 }
 void BehaviorTree::stop(Behavior* behavior, AiAgent* actor) {
@@ -48,4 +50,4 @@ bool BehaviorTree::step(AiAgent* actor) {
 		actor->addBehaviorToTree(this,current);
 	}
 	return true;
-}
+}*/

@@ -20,8 +20,11 @@
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/creature/ai/bt/Behavior.h"
+#include "server/zone/objects/creature/ai/bt/CompositeBehavior.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/templates/AiTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
@@ -240,6 +243,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 			}
 		}
 	}
+
+	// TODO (dannuic): load the AI template from the creature template. For now, just use an example template
+	setupBehaviorTree(AiMap::instance()->getTemplate("example"));
 }
 
 void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
@@ -350,6 +356,7 @@ void AiAgentImplementation::doRecovery() {
 	activateRecovery();
 }
 
+// TODO (dannuic): Move this logic into user-definable luas (as various behaviors)
 void AiAgentImplementation::doAttack() {
 	if (isDead() || getWeapon() == NULL) {
 		removeDefenders();
@@ -1184,8 +1191,13 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	return found;
 }
 
+// TODO (dannuic): All of the AI goes into the movement cycle, the recovery cycle is only for HAM/status recovery
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
+	if (tree != NULL)
+		tree->doAction();
+
+	// TODO (dannuic): Move this logic into user-definable luas (as various behaviors)
 	ManagedReference<SceneObject*> storage = followObject.get();
 
 	if (currentSpeed != 0) {
@@ -1901,34 +1913,108 @@ bool AiAgentImplementation::isEventMob() {
 
 	return false;
 }
-int AiAgentImplementation::getBehaviorStatus(Behavior* b) {
-		return statuses.get(b);
-}
-void AiAgentImplementation::setBehaviorStatus(Behavior* b,int status) {
-		statuses.put(b,status);
-}
-void AiAgentImplementation::addBehaviorToTree(BehaviorTree* tree, Behavior* b) {
-	if (trees.containsKey(tree)) {
-		BehaviorTreeList* list = trees.get(tree);
-		list->add(b);
-	} else {
-		BehaviorTreeList* list = new BehaviorTreeList();
-		list->add(b);
-		trees.put(tree,list);
+
+void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
+	Vector<Reference<LuaAiTemplate*> > treeTemplate = aiTemplate->getTree();
+
+	VectorMap<String, Reference<Behavior*> > behaviors; // Behaviors keyed with id
+	behaviors.put("none", NULL);
+
+	VectorMap<String, Vector<String> > parents; // id's keyed by parents
+	parents.setAllowOverwriteInsertPlan();
+
+	// first build the maps
+	for (int i=0; i < treeTemplate.size(); i++) {
+		Reference<LuaAiTemplate*> temp = treeTemplate.get(i);
+		Reference<Behavior*> behavior = AiMap::createNewInstance(_this.get(), temp->className, temp->classType);
+		//System::out << temp->className << " " << temp->id << " " << npcTemplate->getTemplateName() << endl;
+		behaviors.put(temp->id, behavior);
+
+		Vector<String> ids = parents.get(temp->parent);
+		ids.add(temp->id);
+		parents.put(temp->parent, ids);
 	}
-}
-Behavior* AiAgentImplementation::getNextBehaviorFromTree(BehaviorTree* tree) {
-	if (trees.containsKey(tree)) {
-		BehaviorTreeList* list = trees.get(tree);
-		return list->remove();
-	} else {
-		return NULL;
+
+	// now set parents
+	for (int i = 0; i < parents.size(); i++) {
+		VectorMapEntry<String, Vector<String> > element = parents.elementAt(i);
+		if (element.getKey() == "none") // this is the parent of the root node, just skip it.
+			continue;
+
+		Behavior* b = behaviors.get(element.getKey()).get();
+
+		if (b == NULL || !b->isComposite()) { // parent is not composite, this will probably break the tree
+			error("Failed to load " + element.getKey() + " as a parent in tree: " + aiTemplate->getTemplateName());
+			continue;
+		}
+
+		Reference<CompositeBehavior*> parent = cast<CompositeBehavior*>(b);
+
+		Vector<String> ids = element.getValue();
+
+		for (int j = 0; j < ids.size(); j++) {
+			Reference<Behavior*> child = behaviors.get(ids.get(j));
+
+			if (child == NULL) {
+				error("Failed to load " + ids.get(i) + " as a child in tree: " + aiTemplate->getTemplateName());
+				continue;
+			}
+
+			addBehaviorToTree(child, parent);
+		}
 	}
-}
-void AiAgentImplementation::resetBehaviorList(BehaviorTree* tree) {
-	if (trees.containsKey(tree)) {
-		BehaviorTreeList* list = trees.get(tree);
-		trees.remove(tree);
-		delete list;
+
+	// now tree is complete, set the root node as the current node
+	Vector<String> roots = parents.get("none");
+	if (roots.size() > 1) {
+		error("Multiple root nodes in tree: " + aiTemplate->getTemplateName());
+		return; // all References will be lost here
 	}
+
+	String rootString = roots.get(0);
+	Reference<Behavior*> rootBehavior = behaviors.get(rootString);
+	if (rootBehavior == NULL) {
+		error("Failed to get root instance in " + aiTemplate->getTemplateName());
+		return;
+	}
+
+	setCurrentBehavior(rootBehavior);
+	root = rootBehavior;
+}
+
+void AiAgentImplementation::setCurrentBehavior(Behavior* b) {
+	tree = b;
+	if (tree)
+		tree->start();
+}
+
+int AiAgentImplementation::getBehaviorStatus() {
+	if (!tree)
+		return AiMap::INVALID;
+
+	return tree->getStatus();
+}
+
+void AiAgentImplementation::setBehaviorStatus(int status) {
+	if (tree)
+		tree->setStatus((uint8)status);
+}
+
+void AiAgentImplementation::addBehaviorToTree(Behavior* b, CompositeBehavior* parent) {
+	if (b)
+		b->setParent(parent);
+	if (parent)
+		parent->addChild(b);
+}
+
+Behavior* AiAgentImplementation::getNextBehavior() {
+	// TODO (dannuic): walk the tree here based on status
+	return tree;
+}
+
+/**
+ * move the tree back to the root node
+ */
+void AiAgentImplementation::resetBehaviorList() {
+	tree = root;
 }

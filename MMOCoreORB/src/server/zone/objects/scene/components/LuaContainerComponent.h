@@ -6,7 +6,7 @@
  */
 
 #ifndef LUACONTAINERCOMPONENT_H_
-#define LUACONTAINERUCOMPONENT_H_
+#define LUACONTAINERCOMPONENT_H_
 
 #include "ContainerComponent.h"
 

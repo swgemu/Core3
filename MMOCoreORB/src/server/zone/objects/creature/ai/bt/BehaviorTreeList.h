@@ -15,6 +15,8 @@ namespace creature {
 namespace ai {
 namespace bt {
 
+class Behavior;
+
 class BehaviorTreeList: public ArrayQueue<Behavior*> {
 
 };

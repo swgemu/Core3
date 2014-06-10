@@ -8,7 +8,8 @@
 #include "LuaSequence.h"
 
 
-LuaSequence::LuaSequence(): SequenceBehavior(NULL) {
+LuaSequence::LuaSequence(String name) : LuaBehavior(name) {
+	this->className = name;
 }
 
 LuaSequence::~LuaSequence() {

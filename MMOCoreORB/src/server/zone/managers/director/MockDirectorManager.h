@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef MOCKIRECTORMANAGER_H_
+#ifndef MOCKDIRECTORMANAGER_H_
 #define MOCKDIRECTORMANAGER_H_
 
 #include "DirectorManager.h"

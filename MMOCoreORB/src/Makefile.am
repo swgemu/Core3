@@ -51,8 +51,8 @@ GMOCK_PATH=../../../utils/gmock-1.6.0
 
 AUTOGEN_PATH=../../../src/autogen
 
-#CC = clang
-#CXX = clang++
+CC = clang
+CXX = clang++
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
@@ -632,6 +632,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/ai/bt/BehaviorTree.cpp \
+		server/zone/objects/creature/ai/bt/Behavior.cpp \
 		server/zone/objects/creature/ai/bt/SequenceBehavior.cpp \
 		server/zone/objects/creature/ai/AiActorImplementation.cpp \
 		server/zone/objects/creature/ai/LuaAiActor.cpp \

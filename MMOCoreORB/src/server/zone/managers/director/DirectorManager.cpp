@@ -60,6 +60,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/creature/AiMap.h"
 #include "server/chat/LuaStringIdChatParameter.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
@@ -283,12 +284,6 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);
 	luaEngine->setGlobalInt("MOVEOUT", ContainerPermissions::MOVEOUT);
 	luaEngine->setGlobalInt("WALKIN", ContainerPermissions::WALKIN);
-
-	luaEngine->setGlobalInt("BEHAVIOR_SUCCESS",Behavior::SUCCESS);
-	luaEngine->setGlobalInt("BEHAVIOR_FAILURE",Behavior::FAILURE);
-	luaEngine->setGlobalInt("BEHAVIOR_RUNNING",Behavior::RUNNING);
-	luaEngine->setGlobalInt("BEHAVIOR_SUSPENDED",Behavior::SUSPENDED);
-	luaEngine->setGlobalInt("BEHAVIOR_INVALID",Behavior::INVALID);
 
 	// Badges
 	luaEngine->setGlobalInt("COUNT_5", Badge::COUNT_5);
@@ -1720,6 +1715,7 @@ Lua* DirectorManager::getLuaInstance() {
 		initializeLuaEngine(lua);
 		loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
+		AiMap::instance()->initialize(lua);
 
 		localLua.set(lua);
 	}
@@ -1736,6 +1732,7 @@ int DirectorManager::runScreenPlays() {
 		initializeLuaEngine(lua);
 		ret = loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
+		AiMap::instance()->initialize(lua);
 
 		localLua.set(lua);
 	}

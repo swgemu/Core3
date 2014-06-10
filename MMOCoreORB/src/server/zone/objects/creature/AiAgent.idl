@@ -80,8 +80,8 @@ include server.zone.objects.creature.variables.CreatureTemplateReference;
 include system.thread.ReadWriteLock;
 include server.zone.objects.creature.variables.CurrentFoundPath;
 import server.zone.objects.creature.ai.bt.Behavior;
-include server.zone.objects.creature.ai.bt.BehaviorTreeList;
-import server.zone.objects.creature.ai.bt.BehaviorTree;
+import server.zone.objects.creature.ai.bt.CompositeBehavior;
+include server.zone.templates.AiTemplate;
 import server.zone.objects.intangible.ControlDevice;
 
 @mock
@@ -151,6 +151,13 @@ class AiAgent extends CreatureObject {
 	protected boolean loadedOutfit;
 	
 	protected transient DespawnCreatureOnPlayerDissappear despawnEvent;
+
+	// AI bit
+	protected Behavior tree;
+	protected Behavior root;
+	
+	@dereferenced
+	protected transient string templateName;
 	
 	public static final int UPDATEMOVEMENTINTERVAL = 500; // msec
 	
@@ -159,13 +166,6 @@ class AiAgent extends CreatureObject {
 	public static final int STALKING = 2;
 	public static final int FOLLOWING = 3;
 	public static final int PATROLING = 4;
-
-	// AI bits
-	@dereferenced
-	protected transient HashTable<Behavior, int> statuses;
-	
-	@dereferenced
-	protected transient HashTable<BehaviorTree, BehaviorTreeList> trees;
 	
 	
 	public AiAgent() {
@@ -768,19 +768,41 @@ class AiAgent extends CreatureObject {
 		
 		return npcTemplate.get().getPvpFaction();
 	}
-	@local
-	public native int getBehaviorStatus(Behavior b);
+	
+	/**
+	 * Pull an AI template from AiMap and set up the tree using the rules from the template. Then 
+	 * store the root behavior in the trees Map.
+	 * 
+	 * TODO: Should we store the active (instead of root) node in the trees map? I like that idea -- dannuic
+	 * 
+	 * Maintain an unsorted vector of Behaviors for reference (TODO: needed? -- dannuic)
+	 * 
+	 * TODO: Do we actually need a map, or is one tree just fine? Only implement one AI per AiAgent for now,
+	 * we can implement a multi-AI system later if it's appropriate -- dannuic
+	 * 
+	 * Status is passed to the parent upon execution of doAction, which then sets the next Behavior
+	 * to the tree and runs it.
+	 */
 	
 	@local
-	public native void setBehaviorStatus(Behavior b,int status);
-	
+	public native void setupBehaviorTree(AiTemplate aiTemplate);
+
 	@local
-	public native void addBehaviorToTree(BehaviorTree tree, Behavior b);
-	
+	public native void setCurrentBehavior(Behavior b);
+
 	@local
-	public native Behavior getNextBehaviorFromTree(BehaviorTree tree);
-	
+	public native int getBehaviorStatus();
+
 	@local
-	public native void resetBehaviorList(BehaviorTree tree);
+	public native void setBehaviorStatus(int status);
+
+	@local
+	public native void addBehaviorToTree(Behavior b, CompositeBehavior parent);
+
+	@local
+	public native Behavior getNextBehavior();
+
+	@local
+	public native void resetBehaviorList();
 	
 }

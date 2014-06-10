@@ -8,7 +8,8 @@
 #ifndef LUASEQUENCE_H_
 #define LUASEQUENCE_H_
 
-#include "SequenceBehavior.h"
+#include "engine/engine.h"
+#include "LuaBehavior.h"
 
 namespace server {
 namespace zone {
@@ -17,13 +18,13 @@ namespace creature {
 namespace ai {
 namespace bt {
 
-class LuaSequence: public SequenceBehavior {
+class LuaSequence : public LuaBehavior {
+protected:
+	String className;
+
 public:
-	LuaSequence();
+	LuaSequence(String name);
 	virtual ~LuaSequence();
-	void setTree(BehaviorTree* tree) {
-		this->tree = tree;
-	}
 };
 
 }

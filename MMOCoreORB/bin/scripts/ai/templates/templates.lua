@@ -1,0 +1,2 @@
+
+includeAiFile("templates/example.lua")

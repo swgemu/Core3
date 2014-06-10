@@ -43,14 +43,14 @@ void AiActorImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	npcTemplate = templateData;
 
-	aiTemplate = AiMap::instance()->get(npcTemplate->getAiTemplate());
+	aiTemplate = AiMap::instance()->getTemplate(npcTemplate->getAiTemplate());
 
 	if (aiTemplate == NULL) {
 		error("no ai template in AiActor " + templateData->getTemplateName());
 		return;
 	}
 
-	defaultStateName = aiTemplate->getDefaultName();
+	defaultStateName = aiTemplate->getTemplateName();
 	currentStateName = defaultStateName;
 	currentState = ComponentManager::instance()->getComponent<AiStateComponent*>(currentStateName);
 

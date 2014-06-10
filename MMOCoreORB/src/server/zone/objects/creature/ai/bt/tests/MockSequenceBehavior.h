@@ -23,7 +23,7 @@ namespace bt {
 
 class MockSequenceBehavior: public SequenceBehavior {
 public:
-	MockSequenceBehavior(BehaviorTree *tree, uint32 size) : SequenceBehavior(tree) {
+/*	MockSequenceBehavior(BehaviorTree *tree, uint32 size) : SequenceBehavior(tree) {
 		for(uint32 i=0;i<size;i++) {
 			children.add(new MockBehavior());
 		}
@@ -44,7 +44,7 @@ public:
     MockBehavior& operator[](uint32 index)
     {
         return *static_cast<MockBehavior*>(children.get(index));
-    }
+    }*/
 };
 
 }

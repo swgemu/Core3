@@ -30,7 +30,7 @@ namespace test {
 
 class BehaviorTest : public ::testing::Test {
 public:
-	Reference<MockAiAgent*> actor;
+	//Reference<MockAiAgent*> actor;
 	BehaviorTest() {
 		// Perform creation setup here.
 	}
@@ -40,14 +40,14 @@ public:
 	}
 
 	void SetUp() {
-		actor = new MockAiAgent();
+		//actor = new MockAiAgent();
 	}
 
 	void TearDown() {
 		// Perform clean up of common constructs here.
 	}
 };
-TEST_F(BehaviorTest, testInitialize) {
+/*TEST_F(BehaviorTest, testInitialize) {
 	MockBehavior mock;
 	BehaviorTree tree;
 	ON_CALL(mock,update(_)).WillByDefault(Return(Behavior::RUNNING));
@@ -137,7 +137,7 @@ TEST_F(BehaviorTest, testTwoNodeWithRunningBehavior) {
 	tree.tick(actor);
 	EXPECT_CALL(mock,update(_)).WillOnce(Return(Behavior::RUNNING));
 	tree.tick(actor);
-}
+}*/
 
 }
 }

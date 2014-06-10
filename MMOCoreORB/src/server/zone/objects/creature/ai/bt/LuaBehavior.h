@@ -8,7 +8,8 @@
 #ifndef LUABEHAVIOR_H_
 #define LUABEHAVIOR_H_
 
-#include "Behavior.h"
+#include "engine/engine.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
 namespace server {
 namespace zone {
@@ -17,14 +18,34 @@ namespace creature {
 namespace ai {
 namespace bt {
 
-class LuaBehavior: public Behavior {
+class LuaBehavior : public Object {
 public:
 
 	LuaBehavior(String name);
 	virtual ~LuaBehavior();
-	virtual int update(AiAgent* actor);
-	virtual void onInitialize(AiAgent* actor);
-	virtual void onTerminate(AiAgent* actor, int s);
+
+	LuaBehavior(const LuaBehavior& b) : Object() {
+		className = b.className;
+	}
+
+	LuaBehavior& operator=(const LuaBehavior& b) {
+		if (this == &b)
+			return *this;
+
+		className = b.className;
+
+		return *this;
+	}
+
+	bool initialize();
+
+	bool checkConditions(AiAgent* agent);
+	void start(AiAgent* agent);
+	void end(AiAgent* agent);
+	int doAction(AiAgent* agent);
+
+	virtual uint16 getType();
+
 protected:
 	String className;
 };

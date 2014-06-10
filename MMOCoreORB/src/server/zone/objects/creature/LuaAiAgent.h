@@ -33,6 +33,9 @@ namespace creature {
 		int _setObject(lua_State* L);
 		int _getObject(lua_State* L);
 		int setFollowObject(lua_State* L);
+		int setBehaviorStatus(lua_State* L);
+		int getBehaviorStatus(lua_State* L);
+		int info(lua_State* L);
 	private:
 		ManagedReference<AiAgent*> realObject;
 	};
