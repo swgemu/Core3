@@ -1526,5 +1526,10 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native boolean hasChosenVeteranReward( final string rewardTemplate );
+	
+	public void clearVeteranReward( unsigned int milestone ){
+		if( chosenVeteranRewards.contains(milestone) )
+			chosenVeteranRewards.drop( milestone );
+	}
 }
 
