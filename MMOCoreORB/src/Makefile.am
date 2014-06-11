@@ -631,6 +631,10 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/ai/bt/Behavior.cpp \
 		server/zone/objects/creature/ai/bt/SequenceBehavior.cpp \
 		server/zone/objects/creature/ai/bt/SelectorBehavior.cpp \
+		server/zone/objects/creature/ai/bt/NonDeterministicBehavior.cpp \
+		server/zone/objects/creature/ai/bt/ParallelBehavior.cpp \
+		server/zone/objects/creature/ai/bt/ParallelSequenceBehavior.cpp \
+		server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.cpp \
 		server/zone/objects/creature/ai/AiActorImplementation.cpp \
 		server/zone/objects/creature/ai/LuaAiActor.cpp \
 		server/zone/objects/creature/ai/bt/LuaBehavior.cpp \

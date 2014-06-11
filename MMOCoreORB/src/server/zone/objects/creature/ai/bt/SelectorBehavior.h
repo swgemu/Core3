@@ -17,7 +17,7 @@ namespace creature {
 namespace ai {
 namespace bt {
 
-class SelectorBehavior : public CompositeBehavior {
+class SelectorBehavior : public virtual CompositeBehavior {
 public:
 	SelectorBehavior(AiAgent* _agent, String className);
 	void childSucceeded();

@@ -14,6 +14,10 @@
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "server/zone/objects/creature/ai/bt/SequenceBehavior.h"
 #include "server/zone/objects/creature/ai/bt/SelectorBehavior.h"
+#include "server/zone/objects/creature/ai/bt/NonDeterministicSequenceBehavior.h"
+#include "server/zone/objects/creature/ai/bt/NonDeterministicSelectorBehavior.h"
+#include "server/zone/objects/creature/ai/bt/ParallelSequenceBehavior.h"
+#include "server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.h"
 #include "server/zone/objects/creature/ai/bt/LuaBehavior.h"
 #include "server/zone/objects/creature/ai/bt/LuaSequence.h"
 
@@ -141,10 +145,9 @@ private:
 	}
 
 	static int addAiBehavior(lua_State* L) {
-		String name = lua_tostring(L, -2);
-		uint16 type = lua_tointeger(L, -1);
+		String name = lua_tostring(L, -1);
 
-		Reference<LuaBehavior*> b = makeBehavior(name, type); // this could probably just be new LuaBehavior(name);
+		Reference<LuaBehavior*> b = new LuaBehavior(name);
 
 		if (b->initialize()) {
 			AiMap::instance()->putBehavior(name, b);
@@ -154,27 +157,6 @@ private:
 		}
 
 		return 0;
-	}
-
-	static LuaBehavior* makeBehavior(String n, uint16 t) { // TODO (dannuic): I don't think this is necessary...
-		LuaBehavior* b;
-
-		switch (t) {
-		case AiMap::SEQUENCEBEHAVIOR:
-			b = new LuaSequence(n);
-			break;
-		case AiMap::SELECTORBEHAVIOR:
-		case AiMap::NONDETERMINISTICSEQUENCEBEHAVIOR:
-		case AiMap::NONDETERMINISTICSELECTORBEHAVIOR:
-		case AiMap::PARALLELSEQUENCEBEHAVIOR:
-		case AiMap::PARALLELSELECTORBEHAVIOR:
-		case AiMap::BEHAVIOR:
-		default:
-			b = new LuaBehavior(n);
-			break;
-		}
-
-		return b;
 	}
 
 public:
@@ -189,9 +171,17 @@ public:
 			newBehavior = new SelectorBehavior(_agent, _name);
 			break;
 		case AiMap::NONDETERMINISTICSEQUENCEBEHAVIOR:
+			newBehavior = new NonDeterministicSequenceBehavior(_agent, _name);
+			break;
 		case AiMap::NONDETERMINISTICSELECTORBEHAVIOR:
+			newBehavior = new NonDeterministicSelectorBehavior(_agent, _name);
+			break;
 		case AiMap::PARALLELSEQUENCEBEHAVIOR:
+			newBehavior = new ParallelSequenceBehavior(_agent, _name);
+			break;
 		case AiMap::PARALLELSELECTORBEHAVIOR:
+			newBehavior = new ParallelSelectorBehavior(_agent, _name);
+			break;
 		case AiMap::BEHAVIOR:
 		default:
 			newBehavior = new Behavior(_agent, _name);

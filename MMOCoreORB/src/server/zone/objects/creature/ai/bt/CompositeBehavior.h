@@ -18,7 +18,7 @@ namespace creature {
 namespace ai {
 namespace bt {
 
-class CompositeBehavior : public Behavior{
+class CompositeBehavior : public Behavior {
 protected:
 	Vector<Reference<Behavior*> > children;
 	uint32 currentPos;
@@ -54,14 +54,19 @@ public:
 		return true;
 	}
 
-	virtual void childSucceeded() = 0;
-	virtual void childFailed() = 0;
+	virtual void childSucceeded() {
+		endWithSuccess();
+	}
 
-	bool checkConditions() {
+	virtual void childFailed() {
+		endWithFailure();
+	}
+
+	virtual bool checkConditions() {
 		return children.size() > 0 && Behavior::checkConditions();
 	}
 
-	void start() {
+	virtual void start() {
 		currentPos = 0;
 		Reference<Behavior*> currentChild = children.get(currentPos);
 		if (currentChild == NULL)
@@ -70,7 +75,7 @@ public:
 		Behavior::start();
 	}
 
-	void doAction() {
+	virtual void doAction() {
 		if (finished()) {
 			Behavior::doAction();
 			return;
@@ -87,7 +92,7 @@ public:
 
 		if (!currentChild->started())
 			currentChild->start();
-		if (currentChild->finished()) {
+		else if (currentChild->finished()) {
 			if (currentChild->succeeded())
 				this->childSucceeded();
 			else if (currentChild->failed())
