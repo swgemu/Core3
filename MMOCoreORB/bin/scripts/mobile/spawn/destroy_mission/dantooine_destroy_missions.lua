@@ -4,7 +4,7 @@ dantooine_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "dantooine_bol_herd_neutral_none",
 			minDifficulty = 8,

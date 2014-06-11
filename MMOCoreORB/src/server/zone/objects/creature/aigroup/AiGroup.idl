@@ -51,8 +51,6 @@ import engine.util.u3d.Coordinate;
 import system.util.SortedVector;
 import system.util.Vector;
 import server.zone.objects.creature.AiAgent;
-import server.zone.managers.creature.StaticSpawnGroup;
-import server.zone.managers.creature.DynamicSpawnGroup;
 import engine.util.Observable;
 import server.zone.objects.creature.aigroup.AiGroupObserver;
 
@@ -106,11 +104,11 @@ class AiGroup extends SceneObject {
 	public native void setPatrolPoints();
 	public native void setPatrolPoint(AiAgent member);
 	
-	@local
-	public native void setup(StaticSpawnGroup templ);
+	//@local
+	//public native void setup(StaticSpawnGroup templ);
 	
-	@local
-	public native void setup(DynamicSpawnGroup templ);
+	//@local
+	//public native void setup(DynamicSpawnGroup templ);
 	
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	

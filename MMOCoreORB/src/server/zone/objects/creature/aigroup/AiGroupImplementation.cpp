@@ -13,8 +13,6 @@
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/managers/creature/SpawnGroup.h"
-#include "server/zone/managers/creature/StaticSpawnGroup.h"
-#include "server/zone/managers/creature/DynamicSpawnGroup.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
@@ -54,7 +52,7 @@ void AiGroupImplementation::setPatrolPoint(AiAgent* member) {
 	member->activateWaitEvent();
 }
 
-void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
+/*void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 	// in static groups, all members are protectors
 	// designate the first in the template as the leader
 	isStatic = true;
@@ -182,7 +180,7 @@ void AiGroupImplementation::setup(DynamicSpawnGroup* templ) {
 	}
 
 	setPatrolPoints();
-}
+}*/
 
 int AiGroupImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	AiAgent* member = cast<AiAgent*>(observable);

@@ -35,12 +35,12 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/area/StaticSpawnArea.h"
 #include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/managers/creature/TheaterSpawnObserver.h"
 #include "server/zone/packets/object/SpatialChat.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 
@@ -71,10 +71,24 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
 }
 
-TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, unsigned int faction, float size) {
+TangibleObject* CreatureManagerImplementation::spawn(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == NULL)
+		return NULL;
+
+	if (lairTmpl->getBuildingType() == LairTemplate::LAIR)
+		return spawnLair(lairTemplate, difficulty, x, z, y, size);
+	else if (lairTmpl->getBuildingType() == LairTemplate::THEATER)
+		return spawnTheater(lairTemplate, difficulty, x, z, y, size);
+
+	return NULL;
+}
+
+TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size) {
+	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
+
+	if (lairTmpl == NULL || lairTmpl->getBuildingType() != LairTemplate::LAIR)
 		return NULL;
 
  	String buildingToSpawn;
@@ -100,7 +114,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	Locker blocker(building);
 
- 	building->setFaction(faction);
+ 	building->setFaction(lairTmpl->getFaction());
  	building->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
  	building->setOptionsBitmask(0, false);
  	building->setMaxCondition(difficulty * 1000);
@@ -121,6 +135,52 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  	zone->transferObject(building, -1, false);
 
 	lairObserver->checkForNewSpawns(building, NULL, true);
+
+ 	return building;
+}
+
+TangibleObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size) {
+	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
+
+	if (lairTmpl == NULL || lairTmpl->getBuildingType() != LairTemplate::THEATER)
+		return NULL;
+
+ 	Vector<String>* mobiles = lairTmpl->getWeightedMobiles();
+
+ 	if (mobiles->size() == 0)
+ 		return NULL;
+
+ 	String buildingToSpawn = lairTmpl->getBuilding((uint32)difficulty);
+
+ 	if (buildingToSpawn.isEmpty()) {
+ 		error("error spawning " + buildingToSpawn);
+ 		return NULL;
+ 	}
+
+ 	ManagedReference<TangibleObject*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<TangibleObject*>();
+
+ 	if (building == NULL) {
+ 		error("error spawning " + buildingToSpawn);
+ 		return NULL;
+ 	}
+
+ 	Locker blocker(building);
+
+ 	building->initializePosition(x, z, y);
+
+ 	ManagedReference<TheaterSpawnObserver*> theaterObserver = new TheaterSpawnObserver();
+ 	theaterObserver->deploy();
+ 	theaterObserver->setLairTemplate(lairTmpl);
+ 	theaterObserver->setDifficulty(difficulty);
+ 	theaterObserver->setObserverType(ObserverType::THEATER);
+ 	theaterObserver->setSize(size);
+
+ 	building->registerObserver(ObserverEventType::CREATUREDESPAWNED, theaterObserver);
+
+
+ 	zone->transferObject(building, -1, false);
+
+ 	theaterObserver->spawnInitialMobiles(building);
 
  	return building;
 }
@@ -220,6 +280,20 @@ String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {
 	}
 
 	return templateToSpawn;
+}
+
+bool CreatureManagerImplementation::checkSpawnAsBaby(float tamingChance, int babiesSpawned, int chance) {
+	if (tamingChance > 0) {
+		if (babiesSpawned == 0) {
+			if (System::random(chance) < (tamingChance * 100.0f)) {
+				return true;
+			}
+		} else if (System::random(chance * babiesSpawned) < (tamingChance * 100.0f)) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templateCRC, float x, float z, float y, uint64 parentID) {

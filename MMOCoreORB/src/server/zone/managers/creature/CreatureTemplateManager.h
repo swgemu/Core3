@@ -15,10 +15,6 @@
 #include "server/zone/templates/mobile/PatrolPathTemplate.h"
 #include "server/zone/templates/mobile/MobileOutfitGroup.h"
 #include "SpawnGroup.h"
-#include "StaticSpawnGroup.h"
-#include "DynamicSpawnGroup.h"
-#include "LairSpawnGroup.h"
-#include "server/zone/managers/mission/DestroyMissionSpawnGroup.h"
 
 namespace server {
 namespace zone {
@@ -28,16 +24,14 @@ namespace creature {
 class CreatureTemplateManager : public Singleton<CreatureTemplateManager>, public Object, public Logger {
 protected:
 	VectorMap<uint32, Vector<String> > weaponMap;
-	VectorMap<uint32, Reference<DynamicSpawnGroup*> > dynamicGroupMap;
-	VectorMap<uint32, Reference<StaticSpawnGroup*> > staticGroupMap;
 	Reference<Lua*> lua;
 	HashTable<uint32, Reference<CreatureTemplate*> > hashTable;
 
 	HashTable<uint32, Reference<ConversationTemplate*> > conversations;
 
 	HashTable<uint32, Reference<LairTemplate*> > lairTemplates;
-	HashTable<uint32, Reference<LairSpawnGroup*> > lairSpawnGroupMap;
-	HashTable<uint32, Reference<DestroyMissionSpawnGroup*> > destroyMissionGroupMap;
+	HashTable<uint32, Reference<SpawnGroup*> > spawnGroupMap;
+	HashTable<uint32, Reference<SpawnGroup*> > destroyMissionGroupMap;
 	HashTable<String, Reference<PatrolPathTemplate*> > patrolPaths;
 	HashTable<String, Reference<MobileOutfitGroup*> > outfits;
 	static AtomicInteger loadedMobileTemplates;
@@ -55,9 +49,7 @@ public:
 	static int includeFile(lua_State* L);
 	static int addTemplate(lua_State* L);
 	static int addWeapon(lua_State* L);
-	static int addDynamicGroup(lua_State* L);
-	static int addStaticGroup(lua_State* L);
-	static int addLairGroup(lua_State* L);
+	static int addSpawnGroup(lua_State* L);
 	static int addDestroyMissionGroup(lua_State* L);
 	static int addConversationTemplate(lua_State* L);
 	static int addLairTemplate(lua_State* L);
@@ -110,31 +102,15 @@ public:
 		return weaponMap.get(ascii.hashCode());
 	}
 
-	DynamicSpawnGroup* getDynamicGroup(uint32 crc) {
-		return dynamicGroupMap.get(crc);
-	}
-
-	DynamicSpawnGroup* getDynamicGroup(String ascii) {
-		return dynamicGroupMap.get(ascii.hashCode());
-	}
-
-	StaticSpawnGroup* getStaticGroup(uint32 crc) {
-		return staticGroupMap.get(crc);
-	}
-
-	LairSpawnGroup* getLairGroup(uint32 crc) {
-		return lairSpawnGroupMap.get(crc);
-	}
-
-	StaticSpawnGroup* getStaticGroup(String ascii) {
-		return staticGroupMap.get(ascii.hashCode());
+	SpawnGroup* getSpawnGroup(uint32 crc) {
+		return spawnGroupMap.get(crc);
 	}
 
 	LairTemplate* getLairTemplate(uint32 crc) {
 		return lairTemplates.get(crc);
 	}
 
-	DestroyMissionSpawnGroup* getDestroyMissionGroup(uint32 crc) {
+	SpawnGroup* getDestroyMissionGroup(uint32 crc) {
 		return destroyMissionGroupMap.get(crc);
 	}
 

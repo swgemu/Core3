@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/managers/creature/SpawnObserver.cpp \
+core3_IDLS =	autogen/server/zone/managers/creature/TheaterSpawnObserver.cpp \
+				autogen/server/zone/managers/creature/SpawnObserver.cpp \
 				autogen/server/zone/objects/player/sessions/VeteranRewardSession.cpp \
 				autogen/server/zone/objects/player/sessions/ProposeUnitySession.cpp \
 				autogen/server/zone/managers/mission/DestroyMissionLairObserver.cpp \
@@ -124,7 +125,6 @@ core3_IDLS =	autogen/server/zone/managers/creature/SpawnObserver.cpp \
 				autogen/server/zone/objects/player/sessions/StructureSetAccessFeeSession.cpp \
 				autogen/server/zone/objects/creature/buffs/StateBuff.cpp \
 				autogen/server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
-				autogen/server/zone/objects/area/LairSpawnArea.cpp \
 				autogen/server/zone/managers/creature/LairObserver.cpp \
 				autogen/server/zone/managers/director/ScreenPlayObserver.cpp \
 				autogen/server/zone/managers/director/PersistentEvent.cpp \
@@ -148,8 +148,6 @@ core3_IDLS =	autogen/server/zone/managers/creature/SpawnObserver.cpp \
 				autogen/server/zone/objects/area/MissionSpawnActiveArea.cpp \
 				autogen/server/zone/objects/area/MissionReconActiveArea.cpp \
 				autogen/server/zone/objects/area/SpawnArea.cpp \
-				autogen/server/zone/objects/area/DynamicSpawnArea.cpp \
-				autogen/server/zone/objects/area/StaticSpawnArea.cpp \
 				autogen/server/zone/objects/area/SpawnAreaObserver.cpp \
 				autogen/server/zone/objects/area/CampSiteObserver.cpp \
 				autogen/server/zone/objects/area/areashapes/AreaShape.cpp \
@@ -388,8 +386,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/threat/ThreatMapObserverImplementation.cpp \
 		server/zone/objects/area/LuaActiveArea.cpp \
 		server/zone/objects/tangible/LuaTangibleObject.cpp \
-		server/zone/objects/area/LairSpawnAreaImplementation.cpp \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
+		server/zone/managers/creature/TheaterSpawnObserverImplementation.cpp \
 		server/zone/managers/customization/CustomizationIdManager.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
 		server/zone/managers/director/PersistentEventImplementation.cpp \
@@ -536,8 +534,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/area/FsVillageAreaImplementation.cpp \
 		server/zone/objects/area/CampSiteActiveAreaImplementation.cpp \
 		server/zone/objects/area/SpawnAreaImplementation.cpp \
-		server/zone/objects/area/DynamicSpawnAreaImplementation.cpp \
-		server/zone/objects/area/StaticSpawnAreaImplementation.cpp \
 		server/zone/objects/area/areashapes/AreaShapeImplementation.cpp \
 		server/zone/objects/area/areashapes/CircularAreaShapeImplementation.cpp \
 		server/zone/objects/area/areashapes/RectangularAreaShapeImplementation.cpp \

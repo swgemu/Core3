@@ -124,6 +124,8 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected CreatureTemplateReference npcTemplate;
 
+	protected SceneObject homeObject;
+
 	//DEBUG
 	protected boolean showNextMovementPosition;
 	@dereferenced
@@ -145,6 +147,7 @@ class AiAgent extends CreatureObject {
 	protected transient Time lastDamageReceived;
 	
 	protected float respawnTimer;
+	protected int respawnCounter;
 	protected boolean randomRespawn;
 	protected int numberOfPlayersInRange;
 	
@@ -176,7 +179,7 @@ class AiAgent extends CreatureObject {
 
 		showNextMovementPosition = true;
 		
-		despawnOnNoPlayerInRange = true;
+		despawnOnNoPlayerInRange = false;
 		numberOfPlayersInRange = 0;
 		
 		loadedOutfit = false;
@@ -424,6 +427,10 @@ class AiAgent extends CreatureObject {
 
 	public void setRandomRespawn(boolean resp) {
 		randomRespawn = resp;
+	}
+
+	public void resetRespawnCounter() {
+		respawnCounter = 0;
 	}
 
 	/**
@@ -735,6 +742,10 @@ class AiAgent extends CreatureObject {
 		return randomRespawn;
 	}
 
+	public int getRespawnCounter() {
+		return respawnCounter;
+	}
+
 	@local
 	public PatrolPoint getHomeLocation() {
 		return homeLocation;
@@ -804,5 +815,8 @@ class AiAgent extends CreatureObject {
 
 	@local
 	public native void resetBehaviorList();
-	
+
+	public native void setHomeObject(SceneObject home) {
+		homeObject = home;
+	}
 }

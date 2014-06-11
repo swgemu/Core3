@@ -4,7 +4,7 @@ factional_rebel_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "imperial_banner",
 			minDifficulty = 14,

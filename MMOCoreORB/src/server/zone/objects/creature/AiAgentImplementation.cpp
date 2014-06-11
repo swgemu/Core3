@@ -726,6 +726,8 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 		cell->transferObject(_this.get(), -1);
 	else
 		zone->transferObject(_this.get(), -1, true);
+
+	respawnCounter++;
 }
 
 void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
@@ -792,6 +794,11 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 
 	//printf("%d ref count\n", _this.get()->getReferenceCount());
 
+	if (homeObject != NULL) {
+		homeObject->notifyObservers(ObserverEventType::CREATUREDESPAWNED, _this.get());
+		return;
+	}
+
 	if (respawnTimer == 0) {
 		//zone->getCreatureManager()->addToReservePool(_this.get());
 		return;
@@ -825,9 +832,9 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 		setFollowObject(NULL);
 
 	if (scno->isPlayerCreature()) {
-		if ((--numberOfPlayersInRange <= 0)  && (despawnEvent == NULL)) {
-			/*despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
-			despawnEvent->schedule(30000);*/
+		if ((--numberOfPlayersInRange <= 0)  && despawnOnNoPlayerInRange && (despawnEvent == NULL) && !isPet()) {
+			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
+			despawnEvent->schedule(30000);
 		}
 	}
 }

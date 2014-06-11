@@ -25,11 +25,20 @@ Vector3 RingAreaShapeImplementation::getRandomPosition() {
 }
 
 Vector3 RingAreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) {
-	float distance = System::random((int)(maxDistance - minDistance)) + minDistance;
-	float angle = System::random(360) * Math::DEG2RAD;
-
 	Vector3 position;
-	position.set(origin.getX() + distance * Math::cos(angle), 0, origin.getY() + distance * Math::sin(angle));
+	bool found = false;
+	int retries = 5;
+
+	while (!found && retries-- > 0) {
+		float distance = System::random((int)(maxDistance - minDistance)) + minDistance;
+		float angle = System::random(360) * Math::DEG2RAD;
+		position.set(origin.getX() + distance * Math::cos(angle), 0, origin.getY() + distance * Math::sin(angle));
+
+		found = containsPoint(position);
+	}
+
+	if (!found)
+		return getRandomPosition();
 
 	return position;
 }

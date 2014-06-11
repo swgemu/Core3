@@ -4,7 +4,7 @@ corellia_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "corellia_gubbur_lair_neutral_small",
 			minDifficulty = 5,

@@ -43,6 +43,7 @@
 
 object_tangible_lair_kliknik_lair_kliknik_forest = object_tangible_lair_kliknik_shared_lair_kliknik_forest:new {
 	objectMenuComponent = {"cpp", "LairMenuComponent"},
+	customName = "a forest kliknik lair"
 }
 
 ObjectTemplates:addTemplate(object_tangible_lair_kliknik_lair_kliknik_forest, "object/tangible/lair/kliknik/lair_kliknik_forest.iff")

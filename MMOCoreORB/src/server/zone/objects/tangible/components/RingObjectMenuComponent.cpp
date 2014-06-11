@@ -28,7 +28,13 @@ void RingObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, O
 
 	ManagedReference<CreatureObject*> target = server->getObject(targetID, true).castTo<CreatureObject*>();
 	if (target != NULL && target->isPlayerCreature() && !wearable->isEquipped() && !wearable->isNoTrade() ) {
-		menuResponse->addRadialMenuItem(22, 3, "@unity:mnu_propose"); // Propose Unity
+
+		if( player->getPlayerObject() != NULL ){
+			if( player->getPlayerObject()->isMarried() )
+				menuResponse->addRadialMenuItem(234, 3, "@unity:mnu_divorce"); // Divorce
+			else
+				menuResponse->addRadialMenuItem(22, 3, "@unity:mnu_propose"); // Propose Unity
+		}
 	}
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
@@ -52,6 +58,16 @@ int RingObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cr
 			player->sendSystemMessage("@unity:bad_target"); // "You must have a valid player target to Propose Unity."
 			return 0;
 		}
+
+	}
+	else if (selectedID == 234) { // Divorce
+
+		if (!sceneObject->isASubChildOf(player))
+			return 0;
+
+		PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
+		playerManager->promptDivorce( player );
+		return 0;
 
 	}
 	else{

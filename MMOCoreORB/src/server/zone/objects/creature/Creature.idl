@@ -254,5 +254,9 @@ class Creature extends AiAgent {
 
 	@dirty
 	public native void sendMessage(BasePacket msg);
+
+	public int getAdultLevel() {
+		return super.npcTemplate.getLevel();
+	}
 }
 

@@ -121,6 +121,14 @@ class RingAreaShape extends AreaShape {
 	}
 
 	/**
+	 * Get the minimum radius of a circle bounding the area shape.
+	 * @return the minimum bonding radius.
+	 */
+	public float getRadius() {
+		return outerRadius;
+	}
+
+	/**
 	 * Check if the coordinate is within the area shape.
 	 * @param x the x coordinate.
 	 * @param y the y coordinate.

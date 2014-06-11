@@ -125,16 +125,9 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 
 			ManagedReference<CreatureObject*> creo = NULL;
 
-			if (tamingChance > 0) {
-				if (babiesSpawned == 0) {
-					if (System::random(1000) < (tamingChance * 100.0f)) {
-						creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
-						babiesSpawned++;
-					}
-				} else if (System::random(1000 * babiesSpawned) < (tamingChance * 100.0f)) {
-					creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
-					babiesSpawned++;
-				}
+			if (creatureManager->checkSpawnAsBaby(tamingChance, babiesSpawned, 1000)) {
+				creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
+				babiesSpawned++;
 			}
 
 			if (creo == NULL)
@@ -153,6 +146,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 				ai->setDespawnOnNoPlayerInRange(false);
 				ai->setHomeLocation(x, z, y);
 				ai->setRespawnTimer(0);
+				ai->setHomeObject(lair);
 
 				spawnedCreatures.add(creo);
 

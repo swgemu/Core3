@@ -244,6 +244,7 @@ public:
 	static const uint16 SELECT_UNITY_RING = 1019;
 	static const uint16 SELECT_VETERAN_REWARD = 1020;
 	static const uint16 CONFIRM_VETERAN_REWARD = 1021;
+	static const uint16 CONFIRM_DIVORCE = 1022;
 };
 
 #endif /*SuiWindowType_H_*/

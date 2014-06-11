@@ -275,6 +275,14 @@ class PlayerManager extends Observer implements Logger {
 	 * @post respondingPlayer and askingPlayerlocked
 	 */
 	protected native void cancelProposeUnitySession(CreatureObject respondingPlayer, CreatureObject askingPlayer);
+
+	/**
+	 * Prompt player to confirm divorce
+	 * @param Player requesting divorce
+	 * @pre player locked
+	 * @post player locked
+	 */
+	public native void promptDivorce(CreatureObject player);	
 	
 	/**
 	 * Nullify unity

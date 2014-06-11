@@ -101,6 +101,7 @@
 #include "server/zone/objects/player/sui/callbacks/PlayerTeachConfirmSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/ProposeUnitySuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/SelectUnityRingSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/ConfirmDivorceSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/SelectVeteranRewardSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/ConfirmVeteranRewardSuiCallback.h"
 
@@ -3692,6 +3693,31 @@ void PlayerManagerImplementation::cancelProposeUnitySession(CreatureObject* resp
 	respondingPlayer->dropActiveSession(SessionFacadeType::PROPOSEUNITY);
 	askingPlayer->removePendingTask( "propose_unity" );
 	respondingPlayer->removePendingTask( "propose_unity" );
+}
+
+void PlayerManagerImplementation::promptDivorce(CreatureObject* player){
+
+	if( player == NULL || !player->isPlayerCreature())
+		return;
+
+	// Check if player is married
+	PlayerObject* playerGhost = player->getPlayerObject();
+	if( !playerGhost->isMarried() ){
+		player->sendSystemMessage( "You are not united with anyone!" );
+		return;
+	}
+
+	// Build and confirmation window
+	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::CONFIRM_DIVORCE);
+	suiBox->setCallback(new ConfirmDivorceSuiCallback(server));
+	suiBox->setPromptTitle("Confirm Divorce?"); // "Accept Unity Proposal?"
+	suiBox->setPromptText( "Do you wish to nullify your unity with " + playerGhost->getSpouseName() + "?" );
+	suiBox->setCancelButton(true, "@no");
+	suiBox->setOkButton(true, "@yes");
+
+	playerGhost->addSuiBox(suiBox);
+	player->sendMessage(suiBox->generateMessage());
+
 }
 
 void PlayerManagerImplementation::grantDivorce(CreatureObject* player){

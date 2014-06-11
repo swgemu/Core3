@@ -4,7 +4,7 @@ factional_neutral_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "global_criminal_neutral_none",
 			minDifficulty = 7,

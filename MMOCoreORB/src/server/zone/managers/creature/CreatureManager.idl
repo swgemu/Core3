@@ -66,9 +66,13 @@ class CreatureManager extends ZoneManager {
 		loadMissionSpawns();
 		loadInformants();
 	}
-	
-	public native TangibleObject spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, unsigned int faction, float size = 20);
-	
+
+	public native TangibleObject spawn(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size);
+
+	public native TangibleObject spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size = 20);
+
+	public native TangibleObject spawnTheater(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size = 10);
+
 	/**
 	 * Spawns the specified creature into zone
 	 * @pre { this unlocked }
@@ -89,7 +93,9 @@ class CreatureManager extends ZoneManager {
 	
 	@dereferenced
 	public native string getTemplateToSpawn(unsigned int templateCRC);
-	
+
+	public native boolean checkSpawnAsBaby(float tamingChance, int babiesSpawned, int chance);
+
 	/**
 	 * @pre { destructor and destructedObject locked }
 	 * @post { destructor and destructedObject locked }

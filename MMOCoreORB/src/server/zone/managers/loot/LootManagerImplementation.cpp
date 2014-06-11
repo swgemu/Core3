@@ -296,8 +296,6 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	String subtitle;
 	bool yellow = false;
 
-	float percentage = System::random(10000) / 10000.f; //Generate a base percentage. We will deviate slightly from this on each stat.
-
 	for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
 		subtitle = craftingValues.getExperimentalPropertySubtitle(i);
 
@@ -370,9 +368,9 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		craftingValues.setMinValue(subtitle, min);
 		craftingValues.setMaxValue(subtitle, max);
 
-		float deviation = (((float) System::random(400)) - 200) / 1000.f; //Deviate up to 2%
+		float percentage = System::random(10000) / 10000.f;
 
-		craftingValues.setCurrentPercentage(subtitle, percentage + deviation);
+		craftingValues.setCurrentPercentage(subtitle, percentage);
 	}
 
 	if (yellow) {

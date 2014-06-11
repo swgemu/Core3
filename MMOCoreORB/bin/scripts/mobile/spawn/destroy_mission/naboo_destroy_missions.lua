@@ -4,7 +4,7 @@ naboo_destroy_missions = {
 
 	type = LAIR,
 
-	destroyMissionSpawns = {
+	lairSpawns = {
 		{
 			lairTemplateName = "naboo_gnort_lair_neutral_small",
 			minDifficulty = 3,

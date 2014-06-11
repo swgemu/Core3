@@ -47,7 +47,7 @@ public:
 			return;
 		}
 
-		guildManager->renameGuild(guild, newName, newAbbrev);
+		guildManager->renameGuild(guild, player, newName, newAbbrev);
 	}
 };
 
