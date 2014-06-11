@@ -1,8 +1,5 @@
 dantooine_hard_graul = {
-	wanderRadius = 10,
-	commandLevel = 0,
 
-	type = LAIR,
 	maxSpawnLimit = 32,
 
 	lairSpawns = {

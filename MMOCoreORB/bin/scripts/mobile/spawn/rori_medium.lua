@@ -1,8 +1,5 @@
 rori_medium = {
-	wanderRadius = 10,
-	commandLevel = 0,
 
-	type = LAIR,
 	maxSpawnLimit = 384,
 
 	lairSpawns = {

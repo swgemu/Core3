@@ -1,8 +1,5 @@
 corellia_world = {
-	wanderRadius = 10,
-	commandLevel = 0,
 
-	type = LAIR,
 	maxSpawnLimit = 2048,
 
 	lairSpawns = {

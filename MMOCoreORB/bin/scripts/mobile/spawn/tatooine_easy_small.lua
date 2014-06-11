@@ -1,8 +1,5 @@
 tatooine_easy_small = {
-	wanderRadius = 10,
-	commandLevel = 0,
 
-	type = LAIR,
 	maxSpawnLimit = 75,
 
 	lairSpawns = {
