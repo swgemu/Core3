@@ -245,7 +245,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	}
 
 	// TODO (dannuic): load the AI template from the creature template. For now, just use an example template
-	setupBehaviorTree(AiMap::instance()->getTemplate("example"));
+	//setupBehaviorTree(AiMap::instance()->getTemplate("example"));
 }
 
 void AiAgentImplementation::setLevel(int lvl, bool randomHam) {

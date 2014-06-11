@@ -1,5 +1,5 @@
 example = {
-	{"root", "Sequence", "none", SEQUENCEBEHAVIOR},
+	{"root", "Selector", "none", SELECTORBEHAVIOR},
 	{"find", "FindNearestEnemy", "root", BEHAVIOR}
 }
 

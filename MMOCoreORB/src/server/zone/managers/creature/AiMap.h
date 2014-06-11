@@ -13,6 +13,7 @@
 #include "server/zone/templates/AiTemplate.h"
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "server/zone/objects/creature/ai/bt/SequenceBehavior.h"
+#include "server/zone/objects/creature/ai/bt/SelectorBehavior.h"
 #include "server/zone/objects/creature/ai/bt/LuaBehavior.h"
 #include "server/zone/objects/creature/ai/bt/LuaSequence.h"
 
@@ -83,7 +84,7 @@ public:
 	}
 
 private:
-	static const uint8 DEBUG_MODE = 1;
+	static const uint8 DEBUG_MODE = 0;
 
 	void registerFunctions(Lua* lua) {
 		lua_register(lua->getLuaState(), "addAiTemplate", addAiTemplate);
@@ -143,7 +144,7 @@ private:
 		String name = lua_tostring(L, -2);
 		uint16 type = lua_tointeger(L, -1);
 
-		Reference<LuaBehavior*> b = makeBehavior(name, type);
+		Reference<LuaBehavior*> b = makeBehavior(name, type); // this could probably just be new LuaBehavior(name);
 
 		if (b->initialize()) {
 			AiMap::instance()->putBehavior(name, b);
@@ -155,7 +156,7 @@ private:
 		return 0;
 	}
 
-	static LuaBehavior* makeBehavior(String n, uint16 t) {
+	static LuaBehavior* makeBehavior(String n, uint16 t) { // TODO (dannuic): I don't think this is necessary...
 		LuaBehavior* b;
 
 		switch (t) {
@@ -185,6 +186,8 @@ public:
 			newBehavior = new SequenceBehavior(_agent, _name);
 			break;
 		case AiMap::SELECTORBEHAVIOR:
+			newBehavior = new SelectorBehavior(_agent, _name);
+			break;
 		case AiMap::NONDETERMINISTICSEQUENCEBEHAVIOR:
 		case AiMap::NONDETERMINISTICSELECTORBEHAVIOR:
 		case AiMap::PARALLELSEQUENCEBEHAVIOR:

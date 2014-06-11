@@ -46,8 +46,10 @@ which carries forward this exception.
 #define CREATECREATURECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/creature/AiMap.h"
 
 
 class CreateCreatureCommand : public QueueCommand {
@@ -116,18 +118,21 @@ public:
 		uint32 templ = tempName.hashCode();
 		uint32 objTempl = objName.length() > 0 ? objName.hashCode() : 0;
 
-		CreatureObject* npc = NULL;
+		AiAgent* npc = NULL;
 		if (baby)
-			npc = creatureManager->spawnCreatureAsBaby(templ, posX, posZ, posY, parID);
+			npc = cast<AiAgent*>(creatureManager->spawnCreatureAsBaby(templ, posX, posZ, posY, parID));
 		else if (tempName.indexOf(".iff") != -1)
-			npc = creatureManager->spawnCreature(templ, posX, posZ, posY, parID);
+			npc = cast<AiAgent*>(creatureManager->spawnCreature(templ, posX, posZ, posY, parID));
 		else
-			npc = creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID);
+			npc = cast<AiAgent*>(creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID));
 
 		if (baby && npc == NULL)
 			creature->sendSystemMessage("You cannot spawn " + tempName + " as a baby.");
 		else if (npc == NULL)
 			creature->sendSystemMessage("could not spawn " + arguments.toString());
+
+		npc->setupBehaviorTree(AiMap::instance()->getTemplate("example"));
+		npc->activateMovementEvent();
 
 		return SUCCESS;
 	}

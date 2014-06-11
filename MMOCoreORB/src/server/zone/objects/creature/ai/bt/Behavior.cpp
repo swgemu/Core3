@@ -29,6 +29,7 @@ void Behavior::start() {
 }
 
 void Behavior::end() {
+	result = AiMap::SUSPEND;
 	interface->end(agent);
 }
 
@@ -42,8 +43,8 @@ void Behavior::doAction() {
 			parent->doAction();
 			return;
 		} else {
+			this->end();
 			agent->activateMovementEvent();
-			result = AiMap::SUSPEND;
 			return;
 		}
 	}

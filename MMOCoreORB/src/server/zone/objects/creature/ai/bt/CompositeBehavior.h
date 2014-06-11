@@ -87,14 +87,14 @@ public:
 
 		if (!currentChild->started())
 			currentChild->start();
-
 		if (currentChild->finished()) {
-			currentChild->end();
-			agent->setCurrentBehavior(this);
 			if (currentChild->succeeded())
 				this->childSucceeded();
-			if (currentChild->failed())
+			else if (currentChild->failed())
 				this->childFailed();
+
+			agent->setCurrentBehavior(this);
+			currentChild->end();
 		} else {
 			agent->setCurrentBehavior(currentChild);
 			currentChild->doAction();
