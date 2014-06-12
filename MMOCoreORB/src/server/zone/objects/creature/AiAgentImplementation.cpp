@@ -1923,9 +1923,10 @@ bool AiAgentImplementation::isEventMob() {
 
 void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 	if (aiTemplate == NULL) {
-		error("Invalid aiTemplate in AIAgent::setupBehaviorTree");
+		error("Invalid aiTemplate in AiAgent::setupBehaviorTree");
 		return;
 	}
+
 	Vector<Reference<LuaAiTemplate*> > treeTemplate = aiTemplate->getTree();
 
 	VectorMap<String, Reference<Behavior*> > behaviors; // Behaviors keyed with id

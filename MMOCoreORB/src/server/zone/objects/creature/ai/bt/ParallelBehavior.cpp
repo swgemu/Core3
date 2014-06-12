@@ -31,6 +31,9 @@ void ParallelBehavior::doAction() {
 		return;
 	}
 
+	if (!started())
+		this->start();
+
 	for (int i = 0; i < children.size(); i++) {
 		Reference<Behavior*> currentChild = children.get(i);
 

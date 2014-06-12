@@ -20,6 +20,8 @@ void NonDeterministicBehavior::start() {
 		temp = children.set(i, children.get(index));
 		children.set(index, temp);
 	}
+
+	CompositeBehavior::start();
 }
 
 
