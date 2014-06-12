@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_0c5f3774",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3975,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-12T07:09:07Z",
+      "side": 1,
+      "message": "Wouldn\u0027t you want this to be an || instead of an \u0026\u0026?",
+      "revId": "0e8a15f4170cd92bf9eb384666e72a4cb9cec181",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
