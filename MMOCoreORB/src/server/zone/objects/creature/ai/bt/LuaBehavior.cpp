@@ -39,7 +39,7 @@ bool LuaBehavior::checkConditions(AiAgent* agent) {
 
 	int result = lua_tointeger(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
-	return (bool)result;
+	return result != 0;
 }
 
 void LuaBehavior::start(AiAgent* agent) {

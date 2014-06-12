@@ -66,47 +66,9 @@ public:
 		return children.size() > 0 && Behavior::checkConditions();
 	}
 
-	virtual void start() {
-		currentPos = 0;
-		Reference<Behavior*> currentChild = children.get(currentPos);
-		if (currentChild == NULL)
-			agent->error("NULL child or empty children list in CompositeBehavior");
+	virtual void start();
 
-		Behavior::start();
-	}
-
-	virtual void doAction() {
-		if (finished()) {
-			Behavior::doAction();
-			return;
-		}
-
-		Reference<Behavior*> currentChild = children.get(currentPos);
-
-		if (currentChild == NULL) {
-			agent->error("NULL child or empty children list in CompositeBehavior");
-			endWithError();
-			Behavior::doAction();
-			return;
-		}
-
-		if (!currentChild->started())
-			currentChild->start();
-		else if (currentChild->finished()) {
-			if (currentChild->succeeded())
-				this->childSucceeded();
-			else if (currentChild->failed())
-				this->childFailed();
-
-			agent->setCurrentBehavior(this);
-			currentChild->end();
-		} else {
-			agent->setCurrentBehavior(currentChild);
-			currentChild->doAction();
-		}
-
-		Behavior::doAction();
-	}
+	virtual void doAction();
 };
 
 }

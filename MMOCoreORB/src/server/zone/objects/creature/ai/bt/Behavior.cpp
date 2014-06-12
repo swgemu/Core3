@@ -29,13 +29,19 @@ void Behavior::start() {
 }
 
 void Behavior::end() {
-	result = AiMap::SUSPEND;
 	interface->end(agent);
 }
 
 void Behavior::doAction() {
+	if (agent->isDead() || agent->isIncapacitated() || (agent->getZone() == NULL)) {
+		agent->setFollowObject(NULL);
+		return;
+	}
+
 	if (!started())
 		this->start();
+
+	agent->setCurrentBehavior(this);
 
 	if (finished()) {
 		if (parent != NULL) {
@@ -44,7 +50,8 @@ void Behavior::doAction() {
 			return;
 		} else {
 			this->end();
-			agent->activateMovementEvent();
+			result = AiMap::SUSPEND;
+			agent->activateMovementEvent(); // this is an automatic recycle decorator for the root node
 			return;
 		}
 	}
@@ -89,7 +96,7 @@ bool Behavior::failed() {
 }
 
 bool Behavior::finished() {
-	return result != AiMap::RUNNING && result != AiMap::SUSPEND;
+	return result == AiMap::SUCCESS || result == AiMap::FAILURE || result == AiMap::INVALID;
 }
 
 bool Behavior::started() {

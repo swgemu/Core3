@@ -20,6 +20,14 @@ function Selector:terminate(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		agent:info("Selector end...")
+		local res = agent:getBehaviorStatus()
+		if (res == BEHAVIOR_SUCCESS) then
+			agent:spatialChat("I have finished successfully.")
+			agent:info("Success!")
+		elseif (res == BEHAVIOR_FAILURE) then 
+			agent:spatialChat("I have finished in failure.")
+			agent:info("Failure!")
+		end
 	end
 	return 0
 end
@@ -35,4 +43,4 @@ function Selector:doAction(pAgent)
 	end
 end
 
-addAiBehavior("Selector", SELECTORBEHAVIOR)
+addAiBehavior("Selector")

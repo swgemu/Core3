@@ -36,6 +36,7 @@ namespace creature {
 		int setBehaviorStatus(lua_State* L);
 		int getBehaviorStatus(lua_State* L);
 		int info(lua_State* L);
+		int spatialChat(lua_State* L);
 	private:
 		ManagedReference<AiAgent*> realObject;
 	};

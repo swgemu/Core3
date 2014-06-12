@@ -59,19 +59,16 @@ void ParallelBehavior::doAction() {
 		}
 	}
 
+	if (unfinishedChildren.isEmpty())
+		this->finish();
+
 	Behavior::doAction();
 }
 
 void ParallelBehavior::childFailed() {
 	numFailed++;
-
-	if (unfinishedChildren.isEmpty())
-		this->finished();
 }
 
 void ParallelBehavior::childSucceeded() {
 	numSucceeded++;
-
-	if (unfinishedChildren.isEmpty())
-		this->finished();
 }

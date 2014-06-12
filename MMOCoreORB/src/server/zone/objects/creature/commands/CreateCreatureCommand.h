@@ -77,6 +77,7 @@ public:
 
 		String objName = "", tempName = "object/mobile/boba_fett.iff";
 		bool baby = false;
+		String aiTemplate = "";
 
 		if (!arguments.isEmpty()) {
 			UnicodeTokenizer tokenizer(arguments);
@@ -91,8 +92,11 @@ public:
 			if (!objName.isEmpty() && objName == "baby")
 				baby = true;
 
-			if (!objName.isEmpty() && objName.indexOf("object") == -1 && objName.length() < 6 && !baby) {
-				posX = Float::valueOf(objName);
+			if (!objName.isEmpty() && objName.indexOf("object") == -1 && !baby) {
+				if (objName.length() < 6)
+					posX = Float::valueOf(objName);
+				else
+					aiTemplate = objName;
 				objName = "";
 			} else
 				if (tokenizer.hasMoreTokens())
@@ -131,8 +135,10 @@ public:
 		else if (npc == NULL)
 			creature->sendSystemMessage("could not spawn " + arguments.toString());
 
-		npc->setupBehaviorTree(AiMap::instance()->getTemplate("example"));
-		npc->activateMovementEvent();
+		if (!aiTemplate.isEmpty()) {
+			npc->setupBehaviorTree(AiMap::instance()->getTemplate(aiTemplate));
+			npc->activateMovementEvent();
+		}
 
 		return SUCCESS;
 	}

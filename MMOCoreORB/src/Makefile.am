@@ -629,6 +629,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/ai/bt/BehaviorTree.cpp \
 		server/zone/objects/creature/ai/bt/Behavior.cpp \
+		server/zone/objects/creature/ai/bt/CompositeBehavior.cpp \
 		server/zone/objects/creature/ai/bt/SequenceBehavior.cpp \
 		server/zone/objects/creature/ai/bt/SelectorBehavior.cpp \
 		server/zone/objects/creature/ai/bt/NonDeterministicBehavior.cpp \

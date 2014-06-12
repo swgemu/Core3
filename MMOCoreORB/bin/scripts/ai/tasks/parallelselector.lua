@@ -20,6 +20,14 @@ function ParallelSelector:terminate(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		agent:info("ParallelSelector end...")
+		local res = agent:getBehaviorStatus()
+		if (res == BEHAVIOR_SUCCESS) then
+			agent:spatialChat("I have finished successfully.")
+			agent:info("Success!")
+		elseif (res == BEHAVIOR_FAILURE) then 
+			agent:spatialChat("I have finished in failure.")
+			agent:info("Failure!")
+		end
 	end
 	return 0
 end
@@ -35,4 +43,4 @@ function ParallelSelector:doAction(pAgent)
 	end
 end
 
-addAiBehavior("ParallelSelector", PARALLELSELECTORBEHAVIOR)
+addAiBehavior("ParallelSelector")

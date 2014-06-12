@@ -1,2 +1,7 @@
-
-includeAiFile("templates/example.lua")
+includeAiFile("templates/sequencetest0.lua")
+includeAiFile("templates/selectortest0.lua")
+includeAiFile("templates/selectortest1.lua")
+includeAiFile("templates/parallelsequencetest0.lua")
+includeAiFile("templates/parallelselectortest0.lua")
+includeAiFile("templates/nondeterministicsequencetest0.lua")
+includeAiFile("templates/nondeterministicselectortest0.lua")

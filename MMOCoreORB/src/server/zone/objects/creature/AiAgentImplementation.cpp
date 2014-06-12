@@ -1201,10 +1201,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 // TODO (dannuic): All of the AI goes into the movement cycle, the recovery cycle is only for HAM/status recovery
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
-	if (tree != NULL)
-		tree->doAction();
-
-	// TODO (dannuic): Move this logic into user-definable luas (as various behaviors)
+	// TODO (dannuic): Move this logic into user-definable luas (as various behaviors/templates)
 	ManagedReference<SceneObject*> storage = followObject.get();
 
 	if (currentSpeed != 0) {
@@ -1216,6 +1213,9 @@ void AiAgentImplementation::doMovement() {
 		setFollowObject(NULL);
 		return;
 	}
+
+	if (tree != NULL)
+		tree->doAction();
 
 	if (!isStanding()) {
 		activateMovementEvent();
@@ -1922,6 +1922,10 @@ bool AiAgentImplementation::isEventMob() {
 }
 
 void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
+	if (aiTemplate == NULL) {
+		error("Invalid aiTemplate in AIAgent::setupBehaviorTree");
+		return;
+	}
 	Vector<Reference<LuaAiTemplate*> > treeTemplate = aiTemplate->getTree();
 
 	VectorMap<String, Reference<Behavior*> > behaviors; // Behaviors keyed with id
@@ -1991,7 +1995,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 
 void AiAgentImplementation::setCurrentBehavior(Behavior* b) {
 	tree = b;
-	if (tree)
+	if (tree != NULL && !tree->started())
 		tree->start();
 }
 

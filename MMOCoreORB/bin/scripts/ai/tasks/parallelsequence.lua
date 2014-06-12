@@ -20,6 +20,14 @@ function ParallelSequence:terminate(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		agent:info("ParallelSequence end...")
+		local res = agent:getBehaviorStatus()
+		if (res == BEHAVIOR_SUCCESS) then
+			agent:spatialChat("I have finished successfully.")
+			agent:info("Success!")
+		elseif (res == BEHAVIOR_FAILURE) then 
+			agent:spatialChat("I have finished in failure.")
+			agent:info("Failure!")
+		end
 	end
 	return 0
 end
@@ -35,4 +43,4 @@ function ParallelSequence:doAction(pAgent)
 	end
 end
 
-addAiBehavior("ParallelSequence", PARALLELSEQUENCEBEHAVIOR)
+addAiBehavior("ParallelSequence")
