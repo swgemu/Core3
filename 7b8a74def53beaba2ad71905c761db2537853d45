@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_cc3b5f37",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-12T05:40:07Z",
+      "side": 1,
+      "message": "It would be better to filter out weapons in getInsurableItems() instead.",
+      "revId": "7b8a74def53beaba2ad71905c761db2537853d45",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
