@@ -307,7 +307,15 @@ class PlayerManager extends Observer implements Logger {
 	 * @param playerGhost player requesting veteran rewards
 	 * @param account requesting veteran rewards
 	 */
-	public native int getEligibleMilestone(PlayerObject playerGhost, Account account);	
+	public native int getEligibleMilestone(PlayerObject playerGhost, Account account);
+	
+	/**
+	 * Returns the next veteran reward milestone the account will be eligible for
+	 * Returns -1 if no further rewards
+	 * @param playerGhost player requesting veteran rewards
+	 * @param account requesting veteran rewards
+	 */
+	public native int getFirstIneligibleMilestone(PlayerObject playerGhost, Account account);	
 	
 	/**
 	 * Cancels the current reward session
