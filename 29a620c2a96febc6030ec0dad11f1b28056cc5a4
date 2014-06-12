@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_6cc7d313",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1702,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-12T07:31:29Z",
+      "side": 1,
+      "message": "Your new method\u0027s name is too similar to this one. I would rename this one to doForceRegen() or doForcePowerRegen().",
+      "revId": "29a620c2a96febc6030ec0dad11f1b28056cc5a4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
