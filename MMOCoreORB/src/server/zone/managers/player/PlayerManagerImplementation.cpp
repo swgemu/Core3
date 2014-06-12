@@ -712,8 +712,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 			if (!areInDuel) {
 				FactionManager::instance()->awardPvpFactionPoints(attackerCreature, player);
 			}
-		} else {
-			FactionManager::instance()->awardPvpFactionPoints(attacker, player);
 		}
 	}
 
