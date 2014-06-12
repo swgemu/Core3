@@ -3960,6 +3960,24 @@ int PlayerManagerImplementation::getEligibleMilestone( PlayerObject *playerGhost
 	return -1;
 }
 
+int PlayerManagerImplementation::getFirstIneligibleMilestone( PlayerObject *playerGhost, Account* account ){
+
+	if( account == NULL || playerGhost == NULL )
+		return -1;
+
+	int accountAge = account->getAgeInDays();
+
+	// Return the first milestone the player has not already claimed
+	for( int i=0; i < veteranRewardMilestones.size(); i++){
+		int milestone = veteranRewardMilestones.get(i);
+		if( accountAge < milestone && !playerGhost->getChosenVeteranReward(milestone).isEmpty() ){
+			return milestone;
+		}
+	}
+
+	return -1;
+}
+
 bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSession* client) {
 	Locker locker(&onlineMapMutex);
 
