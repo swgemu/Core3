@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_4c9acf15",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-13T08:20:18Z",
+      "side": 1,
+      "message": "Remove this. For this to work correctly, we need to separate it from the recovery event and make it into it\u0027s own event that is triggered independently.\n\nI think it would likely be best to create an observer on the player and notify the observer each time force power is used. Have the observer call activateForcePowerRegen()",
+      "revId": "8f85a9f5d3d2366e859f7bb7a58fd4f2002776cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_cc859fae",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1717,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-13T08:20:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the tick always be 5 (or 15 if force meditating)?",
+      "revId": "8f85a9f5d3d2366e859f7bb7a58fd4f2002776cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_8c8fa7cc",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-13T08:20:18Z",
+      "side": 1,
+      "message": "activateForcePowerRegen() (within the else block).",
+      "revId": "8f85a9f5d3d2366e859f7bb7a58fd4f2002776cb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
