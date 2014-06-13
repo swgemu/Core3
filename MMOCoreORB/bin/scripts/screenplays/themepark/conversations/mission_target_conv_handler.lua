@@ -32,10 +32,10 @@ function mission_target_conv_handler:getNextConversationScreen(pConversationTemp
 		if nextConversationScreen ~= nil then
 			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
 		else
-			nextConversationScreen = conversation:getScreen("npc_breech_n")
+			nextConversationScreen = conversation:getScreen("missiontype")
 		end
 	else
-		nextConversationScreen = conversation:getScreen("npc_breech_n")
+		nextConversationScreen = conversation:getScreen("missiontype")
 	end
 	return nextConversationScreen
 end

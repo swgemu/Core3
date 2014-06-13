@@ -9,9 +9,8 @@ function createMissionTargetConvoTemplate(templateName, convoHandler)
 	mission_target_npc_breech_n = ConvoScreen:new {
 		id = "npc_breech_n",
 		leftDialog = ":npc_breech_1",
-		stopConversation = "false",
+		stopConversation = "true",
 		options = {
-			{ "@mission/mission_generic:yes", "missiontype" }
 		}
 	}
 	
