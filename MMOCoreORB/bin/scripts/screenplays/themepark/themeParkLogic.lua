@@ -418,6 +418,16 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 		local pNpc = self:spawnNpc(mainNpcs[i], spawnPoints[i], pConversingPlayer, i)
 		if pNpc ~= nil then
 			if i == 1 then
+				if (mission.hasBreechMessage ~= "no") then
+					local pBreechArea = spawnSceneObject(mainNpcs[i].planetName, "object/active_area.iff", spawnPoints[i][1], spawnPoints[i][2], spawnPoints[i][3], 0, 0, 0, 0, 0)
+					ObjectManager.withActiveArea(pBreechArea, function(activeArea)
+						activeArea:setRadius(50)
+						createObserver(ENTEREDAREA, self.className, "notifyEnteredBreechArea", pBreechArea)
+						ObjectManager.withCreatureObject(pNpc, function(breechNpc)
+							writeData(creature:getObjectID() .. ":breechNpcID", breechNpc:getObjectID())
+						end)
+					end)
+				end
 				self:updateWaypoint(pConversingPlayer, mainNpcs[i].planetName, spawnPoints[i][1], spawnPoints[i][3], "target")
 			end
 			if mission.missionType == "assassinate" then
@@ -535,6 +545,24 @@ function ThemeParkLogic:getMissionLootCount(pLooter)
 	else
 		return 0
 	end
+end
+
+function ThemeParkLogic:notifyEnteredBreechArea(pActiveArea, pPlayer)
+	ObjectManager.withCreatureObject(pPlayer, function(player)
+		local playerID = player:getObjectID()
+		local breechNpcID = readData(playerID .. ":breechNpcID")
+		if (breechNpcID ~= nil and breechNpcID ~= 0) then
+			local pNpc = getSceneObject(breechNpcID)
+			local npcNumber = self:getActiveNpcNumber(pPlayer)
+			local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
+			local stfFile = self:getStfFile(npcNumber)
+			spatialChat(pNpc, stfFile .. ":npc_breech_" .. missionNumber)
+			ObjectManager.withSceneObject(pActiveArea, function(activeArea)
+				activeArea:destroyObjectFromWorld()
+			end)
+		end
+	end)	
+	return 0
 end
 
 function ThemeParkLogic:notifyDefeatedTarget(pVictim, pAttacker)
