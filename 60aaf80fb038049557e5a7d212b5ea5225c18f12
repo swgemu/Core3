@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_acfb8b46",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-13T07:11:44Z",
+      "side": 1,
+      "message": "You should also use withCreatureObject() here.",
+      "revId": "60aaf80fb038049557e5a7d212b5ea5225c18f12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
