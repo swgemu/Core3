@@ -2,11 +2,11 @@
 rori_sickle_rasp_nest_neutral_medium = Lair:new {
 	mobiles = {{"sickle_rasp", 1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/horned_rasp/lair_horned_rasp.iff"},
-	buildingsEasy = {"object/tangible/lair/horned_rasp/lair_horned_rasp.iff"},
-	buildingsMedium = {"object/tangible/lair/horned_rasp/lair_horned_rasp.iff"},
-	buildingsHard = {"object/tangible/lair/horned_rasp/lair_horned_rasp.iff"},
-	buildingsVeryHard = {"object/tangible/lair/horned_rasp/lair_horned_rasp.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_nest_small.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_nest_small.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_nest_small.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_nest_small.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_nest_small.iff"},
 }
 
 addLairTemplate("rori_sickle_rasp_nest_neutral_medium", rori_sickle_rasp_nest_neutral_medium)
