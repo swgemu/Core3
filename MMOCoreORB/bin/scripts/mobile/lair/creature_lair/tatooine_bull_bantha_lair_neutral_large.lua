@@ -5,8 +5,8 @@ tatooine_bull_bantha_lair_neutral_large = Lair:new {
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff"},
 	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff"},
-	buildingsVeryHard = {}
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff"}
 }
 
 addLairTemplate("tatooine_bull_bantha_lair_neutral_large", tatooine_bull_bantha_lair_neutral_large)
