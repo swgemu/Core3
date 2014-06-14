@@ -27,6 +27,7 @@ wood_mite_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/wood_mite_matriarch.iff"},
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
