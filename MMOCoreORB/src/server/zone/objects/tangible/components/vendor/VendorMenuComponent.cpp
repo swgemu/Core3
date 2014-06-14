@@ -28,6 +28,11 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		return;
 	}
 
+	PlayerObject* playerObject = player->getPlayerObject();
+
+	if (playerObject == NULL)
+		return;
+
 	DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
 	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
 		return;
@@ -40,14 +45,16 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 	bool owner = vendorData->getOwnerId() == player->getObjectID();
 
-	if(!owner && !player->getPlayerObject()->isPrivileged())
+	if(!owner && !playerObject->isPrivileged())
 		return;
 
 	menuResponse->addRadialMenuItem(70, 3, "@player_structure:vendor_control");
 
 	if (!owner) {
-		if (vendorData->isInitialized())
+		if (vendorData->isInitialized()) {
 			menuResponse->addRadialMenuItemToRadialID(70, 71, 3, "@player_structure:vendor_status");
+			menuResponse->addRadialMenuItemToRadialID(70, 72, 3, "@player_structure:change_name");
+		}
 
 		return;
 	}
@@ -65,7 +72,10 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	} else {
 
 		menuResponse->addRadialMenuItemToRadialID(70, 71, 3, "@player_structure:vendor_status");
-		menuResponse->addRadialMenuItemToRadialID(70, 72, 3, "@player_structure:change_name");
+
+		if (playerObject->isPrivileged())
+			menuResponse->addRadialMenuItemToRadialID(70, 72, 3, "@player_structure:change_name");
+
 		menuResponse->addRadialMenuItemToRadialID(70, 73, 3, "@player_structure:pay_vendor_t");
 		menuResponse->addRadialMenuItemToRadialID(70, 74, 3, "@player_structure:withdraw_vendor_t");
 
