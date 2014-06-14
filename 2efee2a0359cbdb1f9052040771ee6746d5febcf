@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_6c18f384",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/vendor/VendorMenuComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-14T12:01:40Z",
+      "side": 1,
+      "message": "Put the rename item here as well. As you have it, the only time it will show up is if the player is owner and privileged. We want all privileged players to have it.",
+      "revId": "2efee2a0359cbdb1f9052040771ee6746d5febcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
