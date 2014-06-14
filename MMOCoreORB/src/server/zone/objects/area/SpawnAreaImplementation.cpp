@@ -94,6 +94,9 @@ SpawnGroup* SpawnAreaImplementation::getSpawnGroup() {
 }
 
 void SpawnAreaImplementation::notifyEnter(SceneObject* object) {
+	if (tier & SpawnAreaMap::NOSPAWNAREA)
+		return;
+
 	if (!object->isPlayerCreature())
 		return;
 
@@ -109,6 +112,9 @@ void SpawnAreaImplementation::notifyEnter(SceneObject* object) {
 }
 
 void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
+	if (tier & SpawnAreaMap::NOSPAWNAREA)
+		return;
+
 	CreatureObject* creature = dynamic_cast<CreatureObject*>(obj);
 
 	if (creature == NULL)
@@ -135,7 +141,7 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 		spawnGroup = CreatureTemplateManager::instance()->getSpawnGroup(spawnGroupTemplateCRC);
 
 	if (spawnGroup == NULL) {
-		error("spawnGroup is NULL");
+		error("spawnGroup is NULL in spawn area: " + getDisplayedName());
 		return 1;
 	}
 
