@@ -28,6 +28,7 @@ savage_pugoriss = Creature:new {
 
 	templates = {"object/mobile/pugoriss_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/pugoriss_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

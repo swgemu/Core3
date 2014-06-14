@@ -2,11 +2,11 @@
 rori_mammoth_jax_lair_neutral_large = Lair:new {
 	mobiles = {{"mammoth_bearded_jax", 1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/bearded_jax/lair_bearded_jax.iff"},
-	buildingsEasy = {"object/tangible/lair/bearded_jax/lair_bearded_jax.iff"},
-	buildingsMedium = {"object/tangible/lair/bearded_jax/lair_bearded_jax.iff"},
-	buildingsHard = {"object/tangible/lair/bearded_jax/lair_bearded_jax.iff"},
-	buildingsVeryHard = {"object/tangible/lair/bearded_jax/lair_bearded_jax.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
 }
 
 addLairTemplate("rori_mammoth_jax_lair_neutral_large", rori_mammoth_jax_lair_neutral_large)

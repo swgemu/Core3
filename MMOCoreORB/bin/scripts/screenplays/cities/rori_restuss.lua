@@ -80,12 +80,12 @@ function RoriRestussScreenPlay:spawnMobiles()
 	spawnMobile("rori", "frail_squall", 300,math.random(10) + 5211.5, 79.7,math.random(10) + 5378.5, math.random(360), 0)
 	spawnMobile("rori", "frail_squall", 300,math.random(10) + 5211.5, 79.7,math.random(10) + 5378.5, math.random(360), 0)
 
-	spawnMobile("rori", "capper_spineflap", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
-	spawnMobile("rori", "capper_spineflap", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
-	spawnMobile("rori", "capper_spineflap", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
-	spawnMobile("rori", "capper_spineflap", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
-	spawnMobile("rori", "capper_spineflap", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
-	spawnMobile("rori", "capper_spineflap", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
+	spawnMobile("rori", "pigmy_pugoriss", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
+	spawnMobile("rori", "pigmy_pugoriss", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
+	spawnMobile("rori", "pigmy_pugoriss", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
+	spawnMobile("rori", "pigmy_pugoriss", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
+	spawnMobile("rori", "pigmy_pugoriss", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
+	spawnMobile("rori", "pigmy_pugoriss", 300,math.random(10) + 5056, 78.2,math.random(10) + 5372, math.random(360), 0)
 
 	--Thugs
 	spawnMobile("rori", "fringer", 300, 5399.5, 80.0, 5676.8, 161, 0)

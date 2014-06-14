@@ -184,15 +184,6 @@ rori_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_kai_tok_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 31,
-			maxDifficulty = 31,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "rori_elder_pugoriss_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 17,

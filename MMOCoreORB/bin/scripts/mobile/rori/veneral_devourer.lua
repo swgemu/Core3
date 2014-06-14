@@ -28,6 +28,7 @@ veneral_devourer = Creature:new {
 
 	templates = {"object/mobile/pugoriss.iff"},
 	controlDeviceTemplate = "object/intangible/pet/pugoriss_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

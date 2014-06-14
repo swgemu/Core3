@@ -28,6 +28,7 @@ deadly_forest_mite_guardian = Creature:new {
 
 	templates = {"object/mobile/forest_mite.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

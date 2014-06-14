@@ -27,6 +27,7 @@ sap_covered_forest_mite_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/forest_mite.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

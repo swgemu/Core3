@@ -27,6 +27,7 @@ ikopi_stag = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/ikopi_hue.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
