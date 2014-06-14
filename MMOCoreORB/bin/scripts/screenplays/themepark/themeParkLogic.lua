@@ -647,12 +647,17 @@ function ThemeParkLogic:giveMissionItems(mission, pConversingPlayer)
 	writeData(creature:getObjectID() .. ":missionItems", table.getn(itemsToGive))
 
 	for i = 1, table.getn(itemsToGive), 1 do
-		local pItem = giveItem(pInventory, itemsToGive[i].itemTemplate, -1)
-
-		if (pItem ~= nil) then
-			local item = LuaSceneObject(pItem)
-			item:setCustomObjectName(itemsToGive[i].itemName)
-			writeData(creature:getObjectID() .. ":missionItem:no" .. i, item:getObjectID())
+		local pInvItem = getContainerObjectByTemplate(pInventory, itemsToGive[i].itemTemplate, true)
+		if (pInvItem == nil) then
+			local pItem = giveItem(pInventory, itemsToGive[i].itemTemplate, -1)
+			ObjectManager.withSceneObject(pItem, function(item)
+				item:setCustomObjectName(itemsToGive[i].itemName)
+				writeData(creature:getObjectID() .. ":missionItem:no" .. i, item:getObjectID())
+			end)
+		else
+			ObjectManager.withSceneObject(pInvItem, function(item)
+				writeData(creature:getObjectID() .. ":missionItem:no" .. i, item:getObjectID())
+			end)
 		end
 	end
 end
