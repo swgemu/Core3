@@ -20,6 +20,7 @@
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "ScreenPlayTask.h"
@@ -172,6 +173,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "checkTooManyHirelings", checkTooManyHirelings);
 	lua_register(luaEngine->getLuaState(), "checkInt64Lua", checkInt64Lua);
 	lua_register(luaEngine->getLuaState(), "getChatMessage", getChatMessage);
+	lua_register(luaEngine->getLuaState(), "getStringId", getStringId);
 	lua_register(luaEngine->getLuaState(), "getRankName", getRankName);
 	lua_register(luaEngine->getLuaState(), "getRankCost", getRankCost);
 	lua_register(luaEngine->getLuaState(), "getRankDelegateRatioFrom", getRankDelegateRatioFrom);
@@ -1820,6 +1822,20 @@ int DirectorManager::createConversationScreen(lua_State* L) {
 	ConversationScreen* screen = new ConversationScreen();
 
 	lua_pushlightuserdata(L, screen);
+
+	return 1;
+}
+
+int DirectorManager::getStringId(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getStringId");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String stringid = lua_tostring(L, -1);
+	String stringvalue = StringIdManager::instance()->getStringId(stringid.hashCode()).toString();
+	lua_pushstring(L, stringvalue.toCharArray());
 
 	return 1;
 }

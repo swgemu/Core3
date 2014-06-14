@@ -164,6 +164,14 @@ function ThemeParkLogic:isInFaction(faction, pCreature)
 	end
 end
 
+function ThemeParkLogic:isValidConvoString(stfFile, stringid)
+	if (getStringId(stfFile .. stringid) ~= "") then
+		return true
+	else
+		return false
+	end
+end
+
 function ThemeParkLogic:getGlobalFaction()
 	if self.faction == nil then
 		return 0

@@ -163,6 +163,16 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 
 	mission_giver_convotemplate:addScreen(mission_giver_npc_reset_n);
 
+	mission_giver_npc_reset = ConvoScreen:new {
+		id = "npc_reset",
+		leftDialog = ":npc_reset",
+		stopConversation = "true",
+		options = {
+		}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_npc_reset);
+
 	mission_giver_npc_backtowork_n = ConvoScreen:new {
 		id = "npc_backtowork_n",
 		leftDialog = ":npc_backtowork_1",
@@ -172,6 +182,16 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 	}
 
 	mission_giver_convotemplate:addScreen(mission_giver_npc_backtowork_n);
+
+	mission_giver_npc_backtowork = ConvoScreen:new {
+		id = "npc_backtowork",
+		leftDialog = ":npc_backtowork",
+		stopConversation = "true",
+		options = {
+		}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_npc_backtowork);
 
 	mission_giver_npc_reward_n = ConvoScreen:new {
 		id = "npc_reward_n",

@@ -63,9 +63,9 @@ function mission_giver_conv_handler:runScreenHandlers(pConversationTemplate, pCo
 		pConversationScreen = self:handleScreenNotIt(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "npc_reward_n" then
 		pConversationScreen = self:handleScreenReward(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "npc_reset_n" then
+	elseif screenID == "npc_reset_n" or screenID == "npc_reset"  then
 		pConversationScreen = self:handleScreenReset(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "npc_backtowork_n" then
+	elseif screenID == "npc_backtowork_n" or screenID == "npc_backtowork" then
 		pConversationScreen = self:handleScreenBackToWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "next" then
 		pConversationScreen = self:handleScreenNext(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
@@ -75,8 +75,6 @@ function mission_giver_conv_handler:runScreenHandlers(pConversationTemplate, pCo
 		pConversationScreen = self:handleScreenCantWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "no_faction" then
 		pConversationScreen = self:handleScreenNoFaction(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "npc_backtowork_n" then
-		pConversationScreen = self:handleScreenBackToWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	end
 	return pConversationScreen
 end
@@ -236,9 +234,33 @@ function mission_giver_conv_handler:handleScreenWork(pConversationTemplate, pCon
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_work_" .. missionNumber)
 
 	clonedScreen:removeAllOptions()
+	if (self.themePark:isValidConvoString(stfFile, ":player_reset_" .. missionNumber)) then
+		if (self.themePark:isValidConvoString(stfFile, ":npc_reset_" .. missionNumber)) then
+			clonedScreen:addOption(stfFile .. ":player_reset_" .. missionNumber, "npc_reset_n")
+		else
+			clonedScreen:addOption(stfFile .. ":player_reset_" .. missionNumber, "npc_reset")
+		end
+	else
+		if (self.themePark:isValidConvoString(stfFile, ":npc_reset_" .. missionNumber)) then
+			clonedScreen:addOption(stfFile .. ":player_reset", "npc_reset_n")
+		else
+			clonedScreen:addOption(stfFile .. ":player_reset", "npc_reset")
+		end
+	end
 
-	clonedScreen:addOption(stfFile .. ":player_reset_" .. missionNumber, "npc_reset_n")
-	clonedScreen:addOption(stfFile .. ":player_sorry_" .. missionNumber, "npc_backtowork_n")
+	if (self.themePark:isValidConvoString(stfFile, ":player_sorry_" .. missionNumber)) then
+		if (self.themePark:isValidConvoString(stfFile, ":npc_backtowork_" .. missionNumber)) then
+			clonedScreen:addOption(stfFile .. ":player_sorry_" .. missionNumber, "npc_backtowork_n")
+		else
+			clonedScreen:addOption(stfFile .. ":player_sorry_" .. missionNumber, "npc_backtowork")
+		end
+	else
+		if (self.themePark:isValidConvoString(stfFile, ":npc_backtowork_" .. missionNumber)) then
+			clonedScreen:addOption(stfFile .. ":player_sorry", "npc_backtowork_n")
+		else
+			clonedScreen:addOption(stfFile .. ":player_sorry", "npc_backtowork")
+		end
+	end
 
 	return pConversationScreen
 end
@@ -269,8 +291,11 @@ function mission_giver_conv_handler:handleScreenReset(pConversationTemplate, pCo
 	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
-
-	clonedScreen:setDialogTextStringId(stfFile .. ":npc_reset_" .. missionNumber)
+	if (self.themePark:isValidConvoString(stfFile, ":npc_reset_" .. missionNumber)) then
+		clonedScreen:setDialogTextStringId(stfFile .. ":npc_reset_" .. missionNumber)
+	else
+		clonedScreen:setDialogTextStringId(stfFile .. ":npc_reset")
+	end
 
 	self.themePark:resetCurrentMission(pConversingPlayer)
 
@@ -285,8 +310,12 @@ function mission_giver_conv_handler:handleScreenBackToWork(pConversationTemplate
 	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
-
-	clonedScreen:setDialogTextStringId(stfFile .. ":npc_backtowork_" .. missionNumber)
+	
+	if (self.themePark:isValidConvoString(stfFile, ":npc_backtowork_" .. missionNumber)) then
+		clonedScreen:setDialogTextStringId(stfFile .. ":npc_backtowork_" .. missionNumber)
+	else
+		clonedScreen:setDialogTextStringId(stfFile .. ":npc_backtowork")
+	end
 
 	return pConversationScreen
 end
@@ -365,20 +394,6 @@ function mission_giver_conv_handler:handleScreenNoFaction(pConversationTemplate,
 	local clonedScreen = LuaConversationScreen(pConversationScreen)
 
 	clonedScreen:setDialogTextStringId("@theme_park/messages:no_faction")
-
-	return pConversationScreen
-end
-
-function mission_giver_conv_handler:handleScreenBackToWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
-	local clonedScreen = LuaConversationScreen(pConversationScreen)
-
-	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
-	local stfFile = self.themePark:getStfFile(npcNumber)
-
-	clonedScreen:setDialogTextStringId(stfFile .. ":npc_backtowork_" .. missionNumber)
 
 	return pConversationScreen
 end
