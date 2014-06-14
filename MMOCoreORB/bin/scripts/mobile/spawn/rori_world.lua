@@ -67,15 +67,6 @@ rori_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_nudfuh_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 13,
-			maxDifficulty = 13,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "rori_forest_mite_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 14,

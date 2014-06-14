@@ -27,6 +27,7 @@ shallow_torton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shallow_torton.iff"},
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
