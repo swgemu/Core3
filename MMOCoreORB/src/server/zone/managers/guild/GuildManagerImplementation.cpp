@@ -854,7 +854,7 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildTermi
 
 	// Send emails to guild
 	StringIdChatParameter params;
-	params.setStringId("@guildmail:namechange_text"); //The guild has been disbanded by %TU
+	params.setStringId("@guildmail:disband_text"); //The guild has been disbanded by %TU
 	params.setTU(player->getFirstName());
 
 	sendGuildMail("@guildmail:disband_subject", params, guild);
