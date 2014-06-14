@@ -28,6 +28,7 @@ ravenous_torton = Creature:new {
 
 	templates = {"object/mobile/torton_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/torton_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

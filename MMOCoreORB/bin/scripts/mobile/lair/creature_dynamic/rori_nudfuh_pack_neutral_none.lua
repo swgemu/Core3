@@ -1,11 +1,12 @@
 rori_nudfuh_pack_neutral_none = Lair:new {
-	mobiles = {{"nudfuh", 1}},
+	mobiles = {{"nudfuh", 1},{"pudgy_nudfuh",2}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
-	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
-	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"}
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("rori_nudfuh_pack_neutral_none", rori_nudfuh_pack_neutral_none)

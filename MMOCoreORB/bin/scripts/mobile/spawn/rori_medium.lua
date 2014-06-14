@@ -76,15 +76,6 @@ rori_medium = {
 			size = 25
 		},
 		{
-			lairTemplateName = "rori_nudfuh_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 13,
-			maxDifficulty = 13,
-			numberToSpawn = 10,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "rori_vrobal_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 14,
