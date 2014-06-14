@@ -28,6 +28,7 @@ vicious_squall = Creature:new {
 
 	templates = {"object/mobile/squall.iff"},
 	controlDeviceTemplate = "object/intangible/pet/squall_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

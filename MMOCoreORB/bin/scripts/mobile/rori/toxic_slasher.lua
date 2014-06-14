@@ -28,6 +28,7 @@ toxic_slasher = Creature:new {
 
 	templates = {"object/mobile/vir_vur_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/vir_vur_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ leviasquall = Creature:new {
 
 	templates = {"object/mobile/leviasquall.iff"},
 	controlDeviceTemplate = "object/intangible/pet/squall_hue.iff",
+	scale = 1.5,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

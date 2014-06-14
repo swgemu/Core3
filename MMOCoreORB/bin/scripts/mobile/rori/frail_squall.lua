@@ -28,6 +28,7 @@ frail_squall = Creature:new {
 
 	templates = {"object/mobile/squall_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/squall_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

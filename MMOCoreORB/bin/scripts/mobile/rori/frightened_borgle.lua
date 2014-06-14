@@ -1,5 +1,5 @@
-frenzied_borgle = Creature:new {
-	objectName = "@mob/creature_names:fierce_borgle",
+frightened_borgle = Creature:new {
+	objectName = "@mob/creature_names:frightened_borgle",
 	socialGroup = "borgle",
 	pvpFaction = "",
 	faction = "",
@@ -24,10 +24,11 @@ frenzied_borgle = Creature:new {
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
 	optionsBitmask = 128,
-	diet = CARNIVORE,
+	diet = HERBIVORE,
 
 	templates = {"object/mobile/borgle_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/borgle_hue.iff",
+	scale = 0.95,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -36,4 +37,4 @@ frenzied_borgle = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(frenzied_borgle, "frenzied_borgle")
+CreatureTemplates:addCreatureTemplate(frightened_borgle, "frightened_borgle")

@@ -27,6 +27,7 @@ meek_avenging_squall = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/squall_hue.iff"},
+	scale = 0.95,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

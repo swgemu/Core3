@@ -4,24 +4,6 @@ rori_easy = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "rori_squall_meek_avenger_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 6,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "rori_squall_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 6,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "rori_squall_warren_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 6,
