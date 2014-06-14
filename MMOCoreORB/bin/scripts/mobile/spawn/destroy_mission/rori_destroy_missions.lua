@@ -50,12 +50,6 @@ rori_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "rori_nudfuh_pack_neutral_none",
-			minDifficulty = 11,
-			maxDifficulty = 15,
-			size = 25,
-		},
-		{
 			lairTemplateName = "rori_gualama_small_lair_neutral_medium",
 			minDifficulty = 11,
 			maxDifficulty = 15,
