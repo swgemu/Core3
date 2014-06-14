@@ -4,25 +4,7 @@ rori_world = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "rori_squall_meek_avenger_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 6,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "rori_squall_warren_neutral_medium",
-			spawnLimit = -1,
-			minDifficulty = 6,
-			maxDifficulty = 6,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "rori_squall_pack_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 6,
 			maxDifficulty = 6,
@@ -341,15 +323,6 @@ rori_world = {
 			spawnLimit = -1,
 			minDifficulty = 17,
 			maxDifficulty = 17,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "rori_dreaded_vir_vur_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 38,
-			maxDifficulty = 38,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

@@ -28,6 +28,7 @@ spineflap_guard = Creature:new {
 
 	templates = {"object/mobile/capper_spineflap_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/capper_spineflap_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

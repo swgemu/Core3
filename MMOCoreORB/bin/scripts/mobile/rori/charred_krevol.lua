@@ -28,6 +28,7 @@ charred_krevol = Creature:new {
 
 	templates = {"object/mobile/horned_krevol.iff"},
 	controlDeviceTemplate = "object/intangible/pet/horned_krevol_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
