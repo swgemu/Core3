@@ -484,15 +484,6 @@ void CreatureManagerImplementation::loadAiTemplates() {
 	info(msg, true);
 }
 
-void CreatureManagerImplementation::loadSingleSpawns() {
-	info("Loading single spawns...", true);
-
-	//TODO: Convert to Lua
-	//Use zoneName
-
-	//info("Static creatures spawned: " + String::valueOf(i), true);
-}
-
 int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
 	if (destructedObject->isDead())
 		return 1;
@@ -594,23 +585,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		destructor->wlock(destructedObject);
 
 	return 1;
-}
-
-void CreatureManagerImplementation::loadTrainers() {
-	info("loading trainers...", true);
-	//TODO: Load trainers in same Lua as creatures.
-}
-
-void CreatureManagerImplementation::loadMissionSpawns() {
-	info("loading mission spawns...", true);
-
-	//TODO: Load in same lua as creatures.
-}
-
-void CreatureManagerImplementation::loadInformants() {
-	info("loading informants...", true);
-
-	//TODO: Load in same lua as creatures.
 }
 
 void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* player, int selectedID) {
