@@ -36,6 +36,16 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 
 	mission_giver_convotemplate:addScreen(mission_giver_cant_work);
 
+	mission_giver_cantwork = ConvoScreen:new {
+		id = "cantwork",
+		leftDialog = ":cantwork",
+		stopConversation = "true",
+		options = {
+		}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_cantwork);
+
 	mission_giver_next = ConvoScreen:new {
 		id = "next",
 		leftDialog = ":next",
