@@ -23,9 +23,9 @@ includeFile("conversations/themepark/nym/nym_conv.lua")
 includeFile("conversations/themepark/nym/sergeant_moore_conv.lua")
 includeFile("conversations/themepark/nym/kole_conv.lua")
 
--- Rebel Themepark
-includeFile("conversations/themepark/rebel/mission_giver_conv.lua")
-includeFile("conversations/themepark/rebel/mission_target_conv.lua")
+-- Themepark Logic Convos
+includeFile("conversations/themepark/logic/mission_giver_conv.lua")
+includeFile("conversations/themepark/logic/mission_target_conv.lua")
 
 -- ** DUNGEONS **
 
