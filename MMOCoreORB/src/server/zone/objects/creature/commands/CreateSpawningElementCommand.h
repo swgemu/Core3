@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/templates/mobile/LairTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 class CreateSpawningElementCommand : public QueueCommand {
 public:
@@ -100,10 +101,33 @@ public:
 
 		ZoneServer* zserv = server->getZoneServer();
 
+		if (creature->getZone() == NULL)
+			return GENERALERROR;
+
 		try {
 			if (itemtype.toLowerCase() == "spawn") {
 				String objectTemplate;
 				args.getStringToken(objectTemplate);
+
+				float x = creature->getPositionX();
+				float y = creature->getPositionY();
+				float z = creature->getPositionZ();
+
+				SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(TemplateManager::instance()->getTemplate(objectTemplate.hashCode()));
+				if (serverTemplate != NULL) {
+					if (creature->getParent() != NULL) {
+						creature->sendSystemMessage("You need to be outside and unmounted to spawn a structure");
+
+						return GENERALERROR;
+					}
+
+					StructureObject* structure = StructureManager::instance()->placeStructure(creature, objectTemplate, x, y, creature->getDirectionAngle(), 0);
+					if (structure == NULL)
+						return GENERALERROR;
+
+					creature->sendSystemMessage("oid: " + String::valueOf(structure->getObjectID()));
+					return SUCCESS;
+				}
 
 				ManagedReference<SceneObject*> object =  zserv->createObject(objectTemplate.hashCode(), 0);
 
@@ -112,10 +136,6 @@ public:
 
 				if (object->isIntangibleObject())
 					return GENERALERROR;
-
-				float x = creature->getPositionX();
-				float y = creature->getPositionY();
-				float z = creature->getPositionZ();
 
 				ManagedReference<SceneObject*> parent = creature->getParent();
 
@@ -168,9 +188,6 @@ public:
 			} else if (itemtype.toLowerCase() == "lair" || itemtype.toLowerCase() == "theater") {
 				String lairTemplate;
 				args.getStringToken(lairTemplate);
-
-				if (creature->getZone() == NULL)
-					return GENERALERROR;
 
 				if (creature->getParent() != NULL) {
 					creature->sendSystemMessage("You need to be outside and unmounted to execute this command");

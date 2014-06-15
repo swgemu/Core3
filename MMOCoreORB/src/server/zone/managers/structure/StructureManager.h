@@ -104,7 +104,7 @@ public:
 	/**
 	 * Simply creates and places a structure at the provided coordinates.
 	 */
-	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle);
+	StructureObject* placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle, int persistenceLevel = 1);
 
 	/**
 	 * Destroys the structure after the confirmation of the player.
