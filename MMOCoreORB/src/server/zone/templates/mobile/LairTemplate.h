@@ -82,6 +82,23 @@ public:
 			return String();
 	}
 
+	Vector<String>* getBuildings( int level ){
+
+		if (level <= 20) {
+			return buildings.get((uint32)VERYEASY);
+		} else if (level <= 40) {
+			return buildings.get((uint32)EASY);
+		} else if (level <= 60) {
+			return buildings.get((uint32)MEDIUM);
+		} else if (level <= 80) {
+			return buildings.get((uint32)HARD);
+		} else {
+			return buildings.get((uint32)VERYHARD);
+		}
+
+		return NULL;
+	}
+
 	void readObject(LuaObject* templateData) {
 		spawnLimit = templateData->getIntField("spawnLimit");
 
