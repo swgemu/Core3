@@ -86,6 +86,8 @@ createMissionTargetConvoTemplate("theme_park_jabba_mission_target_convotemplate"
 createMissionTargetConvoTemplate("theme_park_marauder_mission_target_convotemplate","theme_park_marauder_mission_target_conv_handler")
 createMissionTargetConvoTemplate("theme_park_imperial_mission_target_convotemplate","theme_park_imperial_mission_target_conv_handler")
 
+-- Epic Quest Chains
+createMissionTargetConvoTemplate("zicx_bug_bomb_mission_target_convotemplate","zicx_bug_bomb_mission_target_conv_handler")
 
 -- Tatooine
 createMissionTargetConvoTemplate("hedon_istee_mission_target_convotemplate","hedon_istee_mission_target_conv_handler")
