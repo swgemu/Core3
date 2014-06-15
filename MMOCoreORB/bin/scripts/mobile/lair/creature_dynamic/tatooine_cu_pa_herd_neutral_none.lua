@@ -1,5 +1,5 @@
 tatooine_cu_pa_herd_neutral_none = Lair:new {
-	mobiles = {{"cu_pa",1}},
+	mobiles = {{"cu_pa",1},{"wasteland_cu_pa",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

@@ -1,5 +1,5 @@
 tatooine_cupa_cupa_neutral_medium_boss_01 = Lair:new {
-	mobiles = {{"wasteland_cu_pa",1}},
+	mobiles = {{"cu_pa",1}},
 	bossMobiles = {{"wonderous_cu_pa",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
