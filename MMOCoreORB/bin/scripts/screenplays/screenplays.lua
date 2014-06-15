@@ -1,9 +1,9 @@
 package.path = package.path .. ";scripts/screenplays/themepark/?.lua;scripts/screenplays/?.lua"
 require("screenplay")
+require("themeParkLogic")
 
 -- Theme parks
-require("themeParkLogic")
---includeFile("themepark/themeParkLogic.lua")
+includeFile("themepark/conversations/goru_conv_handler.lua")
 includeFile("themepark/conversations/mission_giver_conv_handler.lua")
 includeFile("themepark/conversations/mission_target_conv_handler.lua")
 includeFile("themepark/conversations/nym_conv_handler.lua")
@@ -41,6 +41,7 @@ includeFile("tasks/dathomir/dolac_legasi.lua")
 includeFile("tasks/dathomir/singular_nak.lua")
 includeFile("tasks/dathomir/wallaw_loowobbli.lua")
 includeFile("tasks/dathomir/xarot_korlin.lua")
+includeFile("tasks/epic_quests/zicxBugBomb.lua")
 includeFile("tasks/naboo/arven_wendik.lua")
 includeFile("tasks/naboo/boss_nass.lua")
 includeFile("tasks/naboo/captain_gavyn_sykes.lua")

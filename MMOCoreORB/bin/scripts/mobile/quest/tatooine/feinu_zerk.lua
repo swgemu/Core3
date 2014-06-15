@@ -24,13 +24,13 @@ feinu_zerk = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_feinu_zerk.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "zicx_bug_bomb_mission_target_convotemplate",
 	attacks = {
 	}
 }
