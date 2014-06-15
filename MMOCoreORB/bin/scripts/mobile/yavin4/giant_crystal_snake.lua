@@ -28,7 +28,7 @@ giant_crystal_snake = Creature:new {
 
 	templates = {"object/mobile/giant_crystal_snake.iff"},
 	controlDeviceTemplate = "object/intangible/pet/crystal_snake.iff",
-	scale = 1.5,
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",

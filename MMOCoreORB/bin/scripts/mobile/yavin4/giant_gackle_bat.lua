@@ -27,6 +27,7 @@ giant_gackle_bat = Creature:new {
 
 	templates = {"object/mobile/giant_gackle_bat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gackle_bat_hue.iff",
+	scale = 1.5,
 	lootGroups = {},
 	weapons = {},
 	attacks = {

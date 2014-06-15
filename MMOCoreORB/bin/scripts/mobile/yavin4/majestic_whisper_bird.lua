@@ -28,6 +28,7 @@ majestic_whisper_bird = Creature:new {
 
 	templates = {"object/mobile/whisper_bird_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/lantern_bird_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ whisper_bird_male = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/whisper_bird.iff"},
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
