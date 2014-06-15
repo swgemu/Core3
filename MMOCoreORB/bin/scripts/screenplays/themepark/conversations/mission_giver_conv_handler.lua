@@ -71,7 +71,7 @@ function mission_giver_conv_handler:runScreenHandlers(pConversationTemplate, pCo
 		pConversationScreen = self:handleScreenNext(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "notyet" then
 		pConversationScreen = self:handleScreenNotYet(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "cant_work" then
+	elseif screenID == "cant_work" or screenID == "cantwork" then
 		pConversationScreen = self:handleScreenCantWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "no_faction" then
 		pConversationScreen = self:handleScreenNoFaction(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
@@ -382,8 +382,13 @@ function mission_giver_conv_handler:handleScreenCantWork(pConversationTemplate, 
 
 	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
 	local stfFile = self.themePark:getStfFile(npcNumber)
-
-	clonedScreen:setDialogTextStringId(stfFile .. ":cant_work")
+	if (self.themePark:isValidConvoString(stfFile, ":cant_work")) then
+		clonedScreen:setDialogTextStringId(stfFile .. ":cant_work")
+	elseif (self.themePark:isValidConvoString(stfFile, ":cantwork")) then
+		clonedScreen:setDialogTextStringId(stfFile .. ":cantwork")
+	else
+		clonedScreen:setDialogTextStringId("@npc_mission/static_quest:cantwork")
+	end
 
 	return pConversationScreen
 end
