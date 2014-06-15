@@ -1044,10 +1044,6 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 
 	BaseMessage* msg = NULL;
 
-	if (fullName == "") {
-
-	}
-
 	if (auctionRoom != NULL) {
 		if (fullName == "")
 			msg = new ChatRoomMessage(name, message, roomID);
