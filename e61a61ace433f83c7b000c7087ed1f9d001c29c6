@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_cf1c7116",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lair/creature_dynamic/tatooine_eopie_herd_neutral_none.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-15T22:50:58Z",
+      "side": 1,
+      "message": "I would think that domestic eopies would not be running in a wild herd but hanging out with farmers or something (i.e spawn with npcs).",
+      "revId": "e61a61ace433f83c7b000c7087ed1f9d001c29c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_2fdd4d43",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lair/creature_dynamic/tatooine_gorg_glutton_neutral_none.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-15T22:50:58Z",
+      "side": 1,
+      "message": "May not end up mattering, but I\u0027d prefer if you remove the buildings.",
+      "revId": "e61a61ace433f83c7b000c7087ed1f9d001c29c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_0fe28903",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lair/creature_dynamic/tatooine_gorg_herd_neutral_none.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-15T22:50:58Z",
+      "side": 1,
+      "message": "remove the buildings",
+      "revId": "e61a61ace433f83c7b000c7087ed1f9d001c29c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
