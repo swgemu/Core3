@@ -74,6 +74,12 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	LootGroupMap* lootGroupMap = LootGroupMap::instance();
 	ASSERT_EQ(lootGroupMap->initialize(), 0);
 
+	// Load Templates
+	ASSERT_TRUE( TemplateManager::instance() != NULL );
+	if( TemplateManager::instance()->loadedTemplatesCount == 0 ){
+		TemplateManager::instance()->loadLuaTemplates();
+	}
+
 	// Test Creature Templates
 	HashTableIterator<uint32, Reference<CreatureTemplate*> > creatureIterator = CreatureTemplateManager::instance()->iterator();
 	while (creatureIterator.hasNext()) {
@@ -148,6 +154,30 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		// Verify spawn limit is positive
 		int limit = lair->getSpawnLimit();
 		EXPECT_TRUE( limit > 0 ) << "Spawn limit in lair template " << templateName << " is not positive";
+
+		// Verify any configured buildings exist
+		for(int i=0; i<=4; i++){
+
+			Vector<String>* buildings = lair->getBuildings( i );
+			if( buildings == NULL )
+				continue;
+
+			for( int j=0; j < buildings->size(); j++ ){
+				String buildingTemplate = buildings->get(j);
+				std::string buildingStr = buildingTemplate.toCharArray();
+				SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(buildingTemplate.hashCode());
+				EXPECT_TRUE( templateObject != NULL && templateObject->isSharedTangibleObjectTemplate() ) << "Building template " << buildingStr << " in lair template " << templateName << " does not exist";
+				if( lair->getBuildingType() == LairTemplate::LAIR ){
+					EXPECT_TRUE( buildingTemplate.beginsWith( "object/tangible/lair/") ) << "Building template " << buildingStr << " in lair template " << templateName << " is not a child of object/tangible/lair/";
+				}
+				if( lair->getBuildingType() == LairTemplate::THEATER ){
+					EXPECT_TRUE( buildingTemplate.beginsWith( "object/building/poi/") ) << "Building template " << buildingStr << " in lair template " << templateName << " is not a child of object/building/poi/";
+				}
+			}
+		}
+
+		// TODO: Add test to enforce LAIRs and THEATERs have at least one building configured
+
 	}
 
 	// Test Spawn Groups

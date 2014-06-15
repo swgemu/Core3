@@ -82,6 +82,10 @@ public:
 			return String();
 	}
 
+	Vector<String>* getBuildings( int difficulty ){
+		return buildings.get((uint32)difficulty);
+	}
+
 	void readObject(LuaObject* templateData) {
 		spawnLimit = templateData->getIntField("spawnLimit");
 
