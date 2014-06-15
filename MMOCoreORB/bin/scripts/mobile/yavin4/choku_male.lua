@@ -28,6 +28,7 @@ choku_male = Creature:new {
 
 	templates = {"object/mobile/choku_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/choku_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

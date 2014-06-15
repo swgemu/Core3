@@ -4,15 +4,6 @@ yavin4_world = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "yavin4_whisper_bird_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 7,
-			maxDifficulty = 7,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "yavin4_mamien_herd_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 9,
@@ -58,24 +49,6 @@ yavin4_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "yavin4_gackle_bat_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 15,
-			maxDifficulty = 15,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "yavin4_choku_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 18,
-			maxDifficulty = 18,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "yavin4_whisper_bird_male_neutral_medium_boss_01",
 			spawnLimit = -1,
 			minDifficulty = 16,
@@ -107,15 +80,6 @@ yavin4_world = {
 			spawnLimit = -1,
 			minDifficulty = 17,
 			maxDifficulty = 17,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "yavin4_choku_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 21,
-			maxDifficulty = 21,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -229,37 +193,10 @@ yavin4_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "yavin4_crystal_snake_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 25,
-			maxDifficulty = 25,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "yavin4_tybis_pack_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 26,
 			maxDifficulty = 26,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "yavin4_angler_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 27,
-			maxDifficulty = 27,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "yavin4_angler_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 30,
-			maxDifficulty = 30,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
