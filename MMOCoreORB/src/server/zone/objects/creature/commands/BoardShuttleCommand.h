@@ -202,7 +202,7 @@ public:
 
 		p.initializePosition(arrivalPoint->getArrivalPosition());
 
-		ManagedReference<CityRegion*> region = targetShuttleObject->getCityRegion();
+		ManagedReference<CityRegion*> region = targetShuttleObject != NULL ? targetShuttleObject->getCityRegion() : NULL;
 
 		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other
 		// For NPC cities, use the generic method
