@@ -222,6 +222,8 @@ createMissionGiverConvoTemplate("theme_park_jabba_mission_giver_convotemplate", 
 createMissionGiverConvoTemplate("theme_park_marauder_mission_giver_convotemplate", "theme_park_marauder_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_imperial_mission_giver_convotemplate", "theme_park_imperial_mission_giver_conv_handler")
 
+-- Epic Quest Chains
+createMissionGiverConvoTemplate("zicx_bug_bomb_mission_giver_convotemplate", "zicx_bug_bomb_mission_giver_conv_handler")
 
 -- Tatooine
 createMissionGiverConvoTemplate("hedon_istee_mission_giver_convotemplate", "hedon_istee_mission_giver_conv_handler")

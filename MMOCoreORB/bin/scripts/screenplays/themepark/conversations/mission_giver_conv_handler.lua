@@ -91,6 +91,7 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 		local npcCompare = thisNpcNumber - activeNpcNumber
 		local globalFaction = self.themePark:getGlobalFaction()
 		local currentMissionNumber = self.themePark:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
+		local missionPreReqItem = self.themePark:getMissionPreReqItem(pConversingPlayer)
 		local missionFaction
 
 		if currentMissionNumber > 0 then
@@ -122,7 +123,15 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 					nextScreenName = "npc_reward_n"
 				end
 			else
-				nextScreenName = "npc_1_n"
+				if missionPreReqItem ~= 0 then
+					if readData(creature:getObjectID() .. ":hasPreReqItem") == 1 or self.themePark:doPreReqItemCheck(pConversingPlayer, missionPreReqItem) == true then
+						nextScreenName = "npc_1_n"
+					else
+						nextScreenName = "notyet"
+					end
+				else
+					nextScreenName = "npc_1_n"
+				end
 			end
 		elseif npcCompare < 0 then
 			nextScreenName = "next"

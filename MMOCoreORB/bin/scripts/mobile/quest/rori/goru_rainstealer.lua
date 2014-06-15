@@ -1,6 +1,6 @@
-jowir_arlensa = Creature:new {
+goru_rainstealer = Creature:new {
 	objectName = "",
-	customName = "Jowir Ar'Lensa",
+	customName = "Goru Rainstealer",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -24,15 +24,15 @@ jowir_arlensa = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_commoner_tatooine_sullustan_male_01.iff"},
+	templates = {"object/mobile/dressed_goru_rainstealer.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "goruConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(jowir_arlensa, "jowir_arlensa")
+CreatureTemplates:addCreatureTemplate(goru_rainstealer, "goru_rainstealer")
