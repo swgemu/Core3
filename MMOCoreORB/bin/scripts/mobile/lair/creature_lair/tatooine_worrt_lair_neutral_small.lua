@@ -1,11 +1,11 @@
 tatooine_worrt_lair_neutral_small = Lair:new {
-	mobiles = {},
+	mobiles = {{"worrt",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {},
-	buildingsEasy = {},
-	buildingsMedium = {},
-	buildingsHard = {},
-	buildingsVeryHard = {},
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
 }
 
 addLairTemplate("tatooine_worrt_lair_neutral_small", tatooine_worrt_lair_neutral_small)

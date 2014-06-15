@@ -13,7 +13,7 @@ tatooine_easy_small = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tatooine_rockmite_swarm_neutral_none",
+			lairTemplateName = "tatooine_rockmite_click_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 2,
 			maxDifficulty = 4,
