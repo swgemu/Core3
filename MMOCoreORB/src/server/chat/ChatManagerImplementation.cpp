@@ -250,9 +250,10 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 	}
 
 	String name = sender->getFirstName();
+	String fullName = "";
 	if( sender->getPlayerObject()->isPrivileged() ){
 		String tag = PermissionLevelList::instance()->getPermissionTag(sender->getPlayerObject()->getAdminLevel()).toString();
-		name = name + " [" + tag + "]";
+		fullName = name + " [" + tag + "]";
 	}
 
 	ChatRoom* channel = getChatRoom(roomID);
@@ -270,7 +271,12 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 
 	ManagedReference<ChatRoom*> planetRoom = zone->getChatRoom();
 
-	BaseMessage* msg = new ChatRoomMessage(name, message, roomID);
+	BaseMessage* msg = NULL;
+
+	if (fullName == "")
+		msg = new ChatRoomMessage(name, message, roomID);
+	else
+		msg = new ChatRoomMessage(fullName, message, roomID);
 
 	// Auction Chat and Planet Chat should adhere to player ignore list
 	if( auctionRoom != NULL && auctionRoom->getRoomID() == roomID ){
@@ -973,9 +979,10 @@ void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const U
 	}
 
 	String name = sender->getFirstName();
+	String fullName = "";
 	if( sender->getPlayerObject()->isPrivileged() ){
 		String tag = PermissionLevelList::instance()->getPermissionTag(sender->getPlayerObject()->getAdminLevel()).toString();
-		name = name + " [" + tag + "]";
+		fullName = name + " [" + tag + "]";
 	}
 
 	Zone* zone = sender->getZone();
@@ -990,8 +997,14 @@ void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const U
 	}
 
 	ManagedReference<ChatRoom*> room = zone->getChatRoom();
+	BaseMessage* msg = NULL;
+
 	if (room != NULL) {
-		BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
+		if (fullName == "")
+				msg = new ChatRoomMessage(name, message, roomID);
+			else
+				msg = new ChatRoomMessage(fullName, message, roomID);
+
 		room->broadcastMessageCheckIgnore(msg, name);
 	}
 
@@ -1017,9 +1030,10 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 	}
 
 	String name = sender->getFirstName();
+	String fullName = "";
 	if( sender->getPlayerObject()->isPrivileged() ){
 		String tag = PermissionLevelList::instance()->getPermissionTag(sender->getPlayerObject()->getAdminLevel()).toString();
-		name = name + " [" + tag + "]";
+		fullName = name + " [" + tag + "]";
 	}
 
 	StringTokenizer args(message.toString());
@@ -1028,8 +1042,18 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 		return;
 	}
 
+	BaseMessage* msg = NULL;
+
+	if (fullName == "") {
+
+	}
+
 	if (auctionRoom != NULL) {
-		BaseMessage* msg = new ChatRoomMessage(name, message, auctionRoom->getRoomID());
+		if (fullName == "")
+			msg = new ChatRoomMessage(name, message, roomID);
+		else
+			msg = new ChatRoomMessage(fullName, message, roomID);
+
 		auctionRoom->broadcastMessageCheckIgnore(msg, name);
 	}
 
