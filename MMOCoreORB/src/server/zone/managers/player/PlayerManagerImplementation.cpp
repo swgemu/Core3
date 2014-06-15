@@ -226,6 +226,8 @@ void PlayerManagerImplementation::loadStartingLocations() {
 
 	startingLocationList.parseFromIffStream(iffStream);
 
+	delete iffStream;
+
 	info("Loaded " + String::valueOf(startingLocationList.getTotalLocations()) + " starting locations.", true);
 }
 
@@ -242,6 +244,7 @@ void PlayerManagerImplementation::loadBadgeMap() {
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
 
+	highestBadgeIndex = 0;
 
 	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
 		int idx = 0;
@@ -256,7 +259,9 @@ void PlayerManagerImplementation::loadBadgeMap() {
 			highestBadgeIndex = idx;
 	}
 
-	info("Loaded " + String::valueOf(badgeMap.size()) + " badges.", true);
+	info("Loaded " + String::valueOf(badgeMap.size()) + " badges.", true);ç
+
+	delete iffStream;
 }
 
 void PlayerManagerImplementation::loadPermissionLevels() {
