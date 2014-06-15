@@ -184,7 +184,7 @@ tatooine_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tatooine_cannibal_dewback_herd_neutral_none",
+			lairTemplateName = "tatooine_cannibal_dewback_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 21,
 			maxDifficulty = 21,

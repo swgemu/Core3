@@ -1,11 +1,12 @@
 tatooine_cupa_cupa_neutral_medium_boss_01 = Lair:new {
-	mobiles = {},
+	mobiles = {{"wasteland_cu_pa",1}},
+	bossMobiles = {{"wonderous_cu_pa",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {},
-	buildingsEasy = {},
-	buildingsMedium = {},
-	buildingsHard = {},
-	buildingsVeryHard = {},
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_dead_log_small.iff","object/tangible/lair/base/poi_all_lair_garbage_small.iff"}
 }
 
 addLairTemplate("tatooine_cupa_cupa_neutral_medium_boss_01", tatooine_cupa_cupa_neutral_medium_boss_01)
