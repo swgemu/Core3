@@ -25,11 +25,11 @@ lian_byrne_missions =
       missionType = "escort",
       primarySpawns =
       {
-        { npcTemplate = "lian_imperial_operative", planetName = "yavin4", npcName = "" }
+        { npcTemplate = "lian_imperial_operative", planetName = "yavin4", npcName = "Imperial Operative" }
       },
       secondarySpawns = {
-        { npcTemplate = "lian_thief", planetName = "yavin4", npcName = "" },
-        { npcTemplate = "lian_thief", planetName = "yavin4", npcName = "" }
+        { npcTemplate = "lian_thief", planetName = "yavin4", npcName = "Scavenger" },
+        { npcTemplate = "lian_thief", planetName = "yavin4", npcName = "Scavenger" }
       },
       itemSpawns = {},
       rewards =
@@ -42,7 +42,7 @@ lian_byrne_missions =
       missionType = "confiscate",
       primarySpawns =
       {
-        { npcTemplate = "lian_spynet_operative", planetName = "yavin4", npcName = "" }
+        { npcTemplate = "lian_spynet_operative", planetName = "yavin4", npcName = "Rebel Spy" }
       },
       secondarySpawns = {},
       itemSpawns =

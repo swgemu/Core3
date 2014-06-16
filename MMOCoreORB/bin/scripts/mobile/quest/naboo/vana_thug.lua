@@ -1,15 +1,15 @@
-gins_thug = Creature:new {
+vana_thug = Creature:new {
 	objectName = "@mob/creature_names:thug",
 	socialGroup = "thug",
 	pvpFaction = "thug",
 	faction = "thug",
-	level = 15,
+	level = 7,
 	chanceHit = 0.26,
-	damageMin = 85,
-	damageMax = 105,
-	baseXp = 207,
-	baseHAM = 500,
-	baseHAMmax = 550,
+	damageMin = 55,
+	damageMax = 65,
+	baseXp = 187,
+	baseHAM = 270,
+	baseHAMmax = 330,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -21,8 +21,8 @@ gins_thug = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + ENEMY + AGGRESSIVE,
-	creatureBitmask = PACK,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
@@ -61,4 +61,4 @@ gins_thug = Creature:new {
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(gins_thug, "gins_thug")
+CreatureTemplates:addCreatureTemplate(vana_thug, "vana_thug")

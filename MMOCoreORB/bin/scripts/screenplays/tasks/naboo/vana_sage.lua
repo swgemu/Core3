@@ -8,8 +8,8 @@ vana_sage_missions =
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "naboo", npcName = "Thug" },
-				{ npcTemplate = "thug", planetName = "naboo", npcName = "Thug" },
+				{ npcTemplate = "vana_thug", planetName = "naboo", npcName = "Thug" },
+				{ npcTemplate = "vana_thug", planetName = "naboo", npcName = "Thug" },
 			},
 			itemSpawns =
 			{
@@ -62,7 +62,7 @@ npcMapVanaSage =
 	{
 		{
 			spawnData = { planetName = "naboo", npcTemplate = "vana_sage", x = 1276.1, z = 13.0, y = 2744.8, direction = -82, cellID = 0, position = STAND },
-			worldPosition = { x = 4973, y = 6709 },
+			worldPosition = { x = 1276, y = 2744 },
 			npcNumber = 1,
 			stfFile = "@static_npc/naboo/vana_sage",
 			hasWaypointNames = "no",

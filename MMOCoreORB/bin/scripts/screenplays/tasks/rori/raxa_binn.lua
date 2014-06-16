@@ -25,8 +25,8 @@ raxa_binn_missions =
         { npcTemplate = "raxa_rebel_scout", planetName = "rori", npcName = "Rebel Scout" }
       },
       secondarySpawns = {
-        { npcTemplate = "raxa_stormtrooper", planetName = "rori", npcName = "" },
-        { npcTemplate = "raxa_stormtrooper", planetName = "rori", npcName = "" }
+        { npcTemplate = "raxa_stormtrooper_commando", planetName = "rori", npcName = "" },
+        { npcTemplate = "raxa_stormtrooper_commando", planetName = "rori", npcName = "" }
       },
       itemSpawns = {},
       rewards =

@@ -6,7 +6,10 @@ mozo_bondog_missions =
 			{
 				{ npcTemplate = "mozo_escaped_tkm", planetName = "dathomir", npcName = "Escaped Prisoner" }
 			},
-			secondarySpawns = {},
+			secondarySpawns = 
+			{
+				{ npcTemplate = "nightsister_rancor_tamer", planetName = "dathomir", npcName = "" }
+			},
 			itemSpawns = {},
 			rewards =
 			{
