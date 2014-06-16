@@ -44,7 +44,7 @@ function mission_giver_conv_handler:runScreenHandlers(pConversationTemplate, pCo
 	local screen = LuaConversationScreen(pConversationScreen)
 
 	local screenID = screen:getScreenID()
-
+	
 	if screenID == "init" then
 		pConversationScreen = self:handleScreenInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "accept" then
@@ -107,14 +107,16 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 			if self.themePark:missionStatus(pConversingPlayer) == 1 then
 				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "escort" and self.themePark:escortedNpcCloseEnough(pConversingPlayer) == true then
 					nextScreenName = "npc_reward_n"
-				elseif self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "retrieve" and self.themePark:hasRequiredItem(pConversingPlayer) == true then
-					self.themePark:removeDeliverItem(pConversingPlayer)
-					nextScreenName = "npc_reward_n"
 				else
 					nextScreenName = "npc_work_n"
 				end
 			elseif self.themePark:missionStatus(pConversingPlayer) == 2 then
 				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "confiscate" and not self.themePark:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer) == true then
+					nextScreenName = "npc_work_n"
+				elseif self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "retrieve" and self.themePark:hasRequiredItem(pConversingPlayer) == true then
+					self.themePark:removeDeliverItem(pConversingPlayer)
+					nextScreenName = "npc_reward_n"
+				elseif self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "retrieve" and self.themePark:hasRequiredItem(pConversingPlayer) == false then
 					nextScreenName = "npc_work_n"
 				else
 					nextScreenName = "npc_reward_n"
