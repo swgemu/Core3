@@ -506,6 +506,7 @@ includeFile("items/task_loot/squill_carcass.lua")
 includeFile("items/task_loot/two_handed_sword_scythe_schematic.lua")
 includeFile("items/task_loot/vordin_sildor_datadisc.lua")
 includeFile("items/task_loot/womp_rat_hide.lua")
+includeFile("items/task_loot/xalox_guul_datadisc.lua")
 
 --task_reward sub-folder
 includeFile("items/task_reward/hedon_istee_treasure_map.lua")

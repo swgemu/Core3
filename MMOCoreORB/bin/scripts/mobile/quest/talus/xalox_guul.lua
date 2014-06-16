@@ -1,4 +1,4 @@
-xolox_guul = Creature:new {
+xalox_guul = Creature:new {
 	objectName = "",
 	customName = "Xalox Guul",
 	socialGroup = "townsperson",
@@ -24,15 +24,15 @@ xolox_guul = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commander_xalox_guul.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "xalox_guul_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(xolox_guul, "xolox_guul")
+CreatureTemplates:addCreatureTemplate(xalox_guul, "xalox_guul")

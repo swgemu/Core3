@@ -163,6 +163,7 @@ includeFile("groups/task_loot/task_loot_spice_jar.lua")
 includeFile("groups/task_loot/task_loot_squill_carcass.lua")
 includeFile("groups/task_loot/task_loot_vordin_sildor_datadisc.lua")
 includeFile("groups/task_loot/task_loot_womp_rat_hide.lua")
+includeFile("groups/task_loot/task_loot_xalox_guul_datadisc.lua")
 
 -- task_reward sub-folder
 includeFile("groups/task_reward/task_reward_drakka_judarrl.lua")

@@ -114,6 +114,7 @@ createMissionTargetConvoTemplate("vana_sage_mission_target_convotemplate","vana_
 
 -- Talus
 createMissionTargetConvoTemplate("kathikiis_ruwahurr_mission_target_convotemplate","kathikiis_ruwahurr_mission_target_conv_handler")
+createMissionTargetConvoTemplate("xalox_guul_mission_target_convotemplate","xalox_guul_mission_target_conv_handler")
 
 
 -- Dantooine

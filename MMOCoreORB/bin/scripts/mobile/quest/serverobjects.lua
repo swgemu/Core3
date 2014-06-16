@@ -262,6 +262,12 @@ includeFile("quest/talus/kathikiis_assist.lua")
 includeFile("quest/talus/kathikiis_bh.lua")
 includeFile("quest/talus/kathikiis_ruwahurr.lua")
 includeFile("quest/talus/kathikiis_thug.lua")
+includeFile("quest/talus/xalox_criminal.lua")
+includeFile("quest/talus/xalox_guul.lua")
+includeFile("quest/talus/xalox_informant.lua")
+includeFile("quest/talus/xalox_slicer.lua")
+includeFile("quest/talus/xalox_smuggler.lua")
+includeFile("quest/talus/xalox_smuggler2.lua")
 
 -- Tatooine
 includeFile("quest/tatooine/aaph_koden.lua")
