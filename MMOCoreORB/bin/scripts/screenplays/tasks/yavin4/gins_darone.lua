@@ -44,7 +44,7 @@ gins_darone_missions =
       missionType = "assassinate",
       primarySpawns =
       {
-        { npcTemplate = "gins_thug", planetName = "yavin4", npcName = "" }
+        { npcTemplate = "gins_scientist", planetName = "yavin4", npcName = "Rebel Scientist" }
       },
       secondarySpawns = {},
       itemSpawns = {},
