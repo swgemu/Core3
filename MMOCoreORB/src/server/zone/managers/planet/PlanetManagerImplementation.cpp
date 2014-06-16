@@ -72,6 +72,11 @@ void PlanetManagerImplementation::initialize() {
 		area->setRadius(512.f);
 		area->initializePosition(5306, 0, -4145);
 		zone->transferObject(area, -1, true);
+
+		Reference<ActiveArea*> sarlaccArea = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+		sarlaccArea->setRadius(50.f);
+		sarlaccArea->initializePosition(-2085, 0, 3147);
+		zone->transferObject(sarlaccArea, -1, true);
 	}
 
 	if (zone->getZoneName() == "tatooine") {
