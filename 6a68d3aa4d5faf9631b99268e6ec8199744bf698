@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_afda5d15",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/components/SarlaccMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-06-16T05:52:14Z",
+      "side": 1,
+      "message": "Locker plocker( player, sceneObject );",
+      "revId": "6a68d3aa4d5faf9631b99268e6ec8199744bf698",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_8fd799ed",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/components/SarlaccMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-06-16T05:52:14Z",
+      "side": 1,
+      "message": "Need to check inside containers and packs.",
+      "revId": "6a68d3aa4d5faf9631b99268e6ec8199744bf698",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_6f04657e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/components/SarlaccMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-06-16T05:52:14Z",
+      "side": 1,
+      "message": "You handled this selection.  Go ahead and return from inside the if.  No need to let TangibleObject also handle it.",
+      "revId": "6a68d3aa4d5faf9631b99268e6ec8199744bf698",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
