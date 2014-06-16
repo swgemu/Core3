@@ -37,6 +37,11 @@ void ArmorObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, 
 				return;
 		}
 	}
+	else
+	{
+		if (!sceneObject->isASubChildOf(player))
+			return;
+	}
 
 	String text = "Color Change";
 	menuResponse->addRadialMenuItem(81, 3, text);
@@ -68,8 +73,12 @@ int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 					return 0;
 			}
 		}
+		else
+		{
+			if (!sceneObject->isASubChildOf(player))
+				return 0;
+		}
 
-		
 		ZoneServer* server = player->getZoneServer();
 
 		if (server != NULL) {		
