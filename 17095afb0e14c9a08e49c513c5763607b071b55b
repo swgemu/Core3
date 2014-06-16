@@ -16,6 +16,24 @@
       "revId": "17095afb0e14c9a08e49c513c5763607b071b55b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_cf78f12d",
+        "filename": "MMOCoreORB/src/server/zone/templates/mobile/LairTemplate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-06-16T01:14:37Z",
+      "side": 1,
+      "message": "Sure thing.",
+      "parentUuid": "da6255ed_4f8d2131",
+      "revId": "17095afb0e14c9a08e49c513c5763607b071b55b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
