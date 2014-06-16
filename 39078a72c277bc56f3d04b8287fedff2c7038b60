@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_cf3b5137",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/SarlaccAreaImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-16T09:29:16Z",
+      "side": 1,
+      "message": "This disease will only be applied if the player\u0027s inventory contains the coverall. You should move the dot application to below the inventory search and simply return here if the coverall if equipped.",
+      "revId": "39078a72c277bc56f3d04b8287fedff2c7038b60",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
