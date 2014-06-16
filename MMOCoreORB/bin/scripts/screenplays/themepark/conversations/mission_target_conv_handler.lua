@@ -180,7 +180,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 		end
 	elseif mission.missionType == "retrieve" then
 		if correctNpc == true then
-			if activeMission ~= 1 then
+			if activeMission ~= 2 then
 				self.themePark:giveMissionItems(mission, pConversingPlayer)
 				self.themePark:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
 			end

@@ -371,7 +371,7 @@ end
 
 function ThemeParkLogic:handleRetrieveMissionAccept(mission, pConversingPlayer, missionNumber)
 	if self:spawnMissionNpcs(mission, pConversingPlayer) == true then
-		self:writeData(pConversingPlayer, ":activeMission", 0)
+		self:writeData(pConversingPlayer, ":activeMission", 1)
 		return true
 	else
 		return false
@@ -655,7 +655,15 @@ function ThemeParkLogic:giveMissionItems(mission, pConversingPlayer)
 	end
 
 	local creature = LuaCreatureObject(pConversingPlayer)
-	writeData(creature:getObjectID() .. ":activeMission", 1)
+	
+	local activeNpcNumber = self:getActiveNpcNumber(pConversingPlayer)
+	local currentMissionType = self:getMissionType(activeNpcNumber, pConversingPlayer)
+	
+	if (currentMissionType == "retrieve") then
+		writeData(creature:getObjectID() .. ":activeMission", 2)
+	else
+		writeData(creature:getObjectID() .. ":activeMission", 1)
+	end
 
 	local itemsToGive = mission.itemSpawns
 
