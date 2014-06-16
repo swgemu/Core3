@@ -176,7 +176,10 @@ function mission_giver_conv_handler:handleScreenNpc1(pConversationTemplate, pCon
 
 	clonedScreen:addOption(stfFile .. ":player_1_" .. missionNumber, "accept")
 	clonedScreen:addOption(stfFile .. ":player_2_" .. missionNumber, "npc_3_n")
-	clonedScreen:addOption(stfFile .. ":player_3_" .. missionNumber, "npc_4_n")
+	
+	if (self.themePark:isValidConvoString(stfFile, ":player_3_" .. missionNumber)) then
+		clonedScreen:addOption(stfFile .. ":player_3_" .. missionNumber, "npc_4_n")
+	end
 
 	return pConversationScreen
 end
