@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_4f8d2131",
+        "filename": "MMOCoreORB/src/server/zone/templates/mobile/LairTemplate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-16T01:12:25Z",
+      "side": 1,
+      "message": "I\u0027d rather you change the parameter to expect the value of the enum and then get directly with it. One thing I\u0027m still planning to do with lairs is to refactor how the various building difficulties are chosen and used.",
+      "revId": "17095afb0e14c9a08e49c513c5763607b071b55b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
