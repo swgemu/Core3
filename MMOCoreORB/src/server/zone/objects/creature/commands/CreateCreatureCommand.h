@@ -129,6 +129,9 @@ public:
 		else if (npc == NULL)
 			creature->sendSystemMessage("could not spawn " + arguments.toString());
 
+		if (npc != NULL)
+			npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
+
 		return SUCCESS;
 	}
 
