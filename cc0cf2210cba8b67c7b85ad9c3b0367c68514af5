@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_0fbba973",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1644,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-17T22:36:34Z",
+      "side": 1,
+      "message": "This would cause the \"owner\" to show up on every AiAgent when examined. Furthermore, the owner would always be listed as the player who is doing the examination.",
+      "revId": "cc0cf2210cba8b67c7b85ad9c3b0367c68514af5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
