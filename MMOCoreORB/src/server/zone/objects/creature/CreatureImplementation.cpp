@@ -123,6 +123,18 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 		return;
 	}
 
+	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
+	if( linkedCreature == NULL )
+		return;
+
+
+	StringBuffer fullName;
+	fullName << linkedCreature->getFirstName();
+	if(!linkedCreature->getLastName().isEmpty())
+		fullName << " " << linkedCreature->getLastName();
+
+	alm->insertAttribute("@obj_attr_n:owner", fullName.toString());
+
 	if (creaKnowledge >= 5) {
 		if (isAggressiveTo(player))
 			alm->insertAttribute("aggro", "yes");

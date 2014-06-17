@@ -1635,6 +1635,13 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 
 	if (getLightSaber() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
+
+	StringBuffer fullName;
+	fullName << player->getFirstName();
+	if(!player->getLastName().isEmpty())
+		fullName << " " << player->getLastName();
+
+	alm->insertAttribute("@obj_attr_n:owner", fullName.toString());
 }
 
 
