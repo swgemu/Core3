@@ -17,12 +17,6 @@ class SpawnAreaMap : public VectorMap<uint32, ManagedReference<SpawnArea*> > , p
 	Lua* lua;
 protected:
 
-	static const int UNDEFINEDAREA       = 0x00000000;
-	static const int SPAWNAREA           = 0x00000001;
-	static const int NOSPAWNAREA         = 0x00000002;
-	static const int WORLDSPAWNAREA      = 0x00000010;
-	static const int NOBUILDZONEAREA     = 0x00000100;
-
 	ManagedReference<Zone*> zone;
 
 	Vector<ManagedReference<SpawnArea*> > noSpawnAreas;
@@ -35,6 +29,13 @@ protected:
 	void loadStaticSpawns();
 
 public:
+
+	static const int UNDEFINEDAREA       = 0x00000000;
+	static const int SPAWNAREA           = 0x00000001;
+	static const int NOSPAWNAREA         = 0x00000002;
+	static const int WORLDSPAWNAREA      = 0x00000010;
+	static const int NOBUILDZONEAREA     = 0x00000100;
+
 	SpawnAreaMap() : Logger("SpawnAreaMap") {
 		lua = new Lua();
 		setAllowDuplicateInsertPlan();

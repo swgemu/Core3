@@ -501,10 +501,12 @@ includeFile("items/task_loot/padawan_braid.lua")
 includeFile("items/task_loot/rakir_banai_contract.lua")
 includeFile("items/task_loot/singing_mountain_clan_force_crystal.lua")
 includeFile("items/task_loot/sith_altar.lua")
+includeFile("items/task_loot/spice_jar.lua")
 includeFile("items/task_loot/squill_carcass.lua")
 includeFile("items/task_loot/two_handed_sword_scythe_schematic.lua")
 includeFile("items/task_loot/vordin_sildor_datadisc.lua")
 includeFile("items/task_loot/womp_rat_hide.lua")
+includeFile("items/task_loot/xalox_guul_datadisc.lua")
 
 --task_reward sub-folder
 includeFile("items/task_reward/hedon_istee_treasure_map.lua")
@@ -517,6 +519,8 @@ includeFile("items/task_reward/painting_endor_style_01.lua")
 includeFile("items/task_reward/schematic_shellfish_harvester.lua")
 includeFile("items/task_reward/shield_generator_personal_imperial_test_schematic.lua")
 includeFile("items/task_reward/skull_bol.lua")
+includeFile("items/task_reward/treated_protective_coverall.lua")
+includeFile("items/task_reward/zicx_bug_jar.lua")
 
 --themepark_loot sub-folder
 includeFile("items/themepark_loot/big_creature_cage.lua")

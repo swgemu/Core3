@@ -27,6 +27,7 @@ whisper_bird_hatchling = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/whisper_bird_hatchling.iff"},
+	scale = 0.7,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

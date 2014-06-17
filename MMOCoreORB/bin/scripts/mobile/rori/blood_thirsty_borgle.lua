@@ -28,6 +28,7 @@ blood_thirsty_borgle = Creature:new {
 
 	templates = {"object/mobile/borgle_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/borgle_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -1,8 +1,5 @@
 dantooine_world_npc = {
-	wanderRadius = 10,
-	commandLevel = 0,
 
-	type = LAIR,
 	maxSpawnLimit = 256,
 
 	lairSpawns = {

@@ -28,6 +28,7 @@ stout_ikopi_buck = Creature:new {
 
 	templates = {"object/mobile/ikopi_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/ikopi_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

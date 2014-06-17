@@ -20,11 +20,6 @@ class SpawnGroup : public Object {
 protected:
 	String templateName;
 
-	float wanderRadius;
-	int commandLevel;
-
-	unsigned int type;
-
 	Vector<Reference<LairSpawn*> > spawnList;
 	int maxSpawnLimit;
 
@@ -33,9 +28,6 @@ public:
 
 	SpawnGroup(const String& tempName, LuaObject& group) {
 		templateName = tempName;
-		wanderRadius = group.getFloatField("wanderRadius");
-		commandLevel = group.getIntField("commandLevel");
-		type = group.getIntField("type");
 		maxSpawnLimit = group.getIntField("maxSpawnLimit");
 		LuaObject lairSpawns = group.getObjectField("lairSpawns");
 
@@ -59,9 +51,6 @@ public:
 
 	SpawnGroup(const SpawnGroup& gr) : Object() {
 		templateName = gr.templateName;
-		wanderRadius = gr.wanderRadius;
-		commandLevel = gr.commandLevel;
-		type = gr.type;
 		spawnList = gr.spawnList;
 		maxSpawnLimit = gr.maxSpawnLimit;
 	}
@@ -73,9 +62,6 @@ public:
 			return *this;
 
 		templateName = gr.templateName;
-		wanderRadius = gr.wanderRadius;
-		commandLevel = gr.commandLevel;
-		type = gr.type;
 		spawnList = gr.spawnList;
 		maxSpawnLimit = gr.maxSpawnLimit;
 
@@ -86,18 +72,6 @@ public:
 		return templateName;
 	}
 
-	float getWanderRadius() const {
-		return wanderRadius;
-	}
-
-	int getCommandLevel() const {
-		return commandLevel;
-	}
-
-	unsigned int getType() const {
-		return type;
-	}
-
 	Vector<Reference<LairSpawn*> >* getSpawnList() {
 		return &spawnList;
 	}
@@ -106,16 +80,8 @@ public:
 		return maxSpawnLimit;
 	}
 
-	void setWanderRadius(float wanderRadius) {
-		this->wanderRadius = wanderRadius;
-	}
-
 	void setTemplateName(String templateName) {
 		this->templateName = templateName;
-	}
-
-	void setCommandLevel(int commandLevel) {
-		this->commandLevel = commandLevel;
 	}
 
 };

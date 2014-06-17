@@ -28,6 +28,7 @@ fuzzy_jax = Creature:new {
 
 	templates = {"object/mobile/bearded_jax_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bearded_jax_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

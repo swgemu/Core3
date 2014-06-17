@@ -27,6 +27,7 @@ young_borgle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/borgle.iff"},
+	scale = 0.85,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

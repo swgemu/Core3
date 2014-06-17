@@ -27,6 +27,7 @@ elder_pugoriss = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/elder_pugoriss.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

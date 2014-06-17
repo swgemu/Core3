@@ -28,7 +28,7 @@ hooded_crystal_snake = Creature:new {
 
 	templates = {"object/mobile/crystal_snake.iff"},
 	controlDeviceTemplate = "object/intangible/pet/crystal_snake.iff",
-	scale = 0.9,
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ vampiric_gackle_bat = Creature:new {
 
 	templates = {"object/mobile/gackle_bat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gackle_bat_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

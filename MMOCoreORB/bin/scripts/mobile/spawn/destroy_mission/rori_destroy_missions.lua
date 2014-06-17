@@ -1,8 +1,4 @@
 rori_destroy_missions = {
-	wanderRadius = 10,
-	commandLevel = 0,
-
-	type = LAIR,
 
 	lairSpawns = {
 		{
@@ -49,12 +45,6 @@ rori_destroy_missions = {
 		},
 		{
 			lairTemplateName = "rori_fuzzy_jax_lair_neutral_medium",
-			minDifficulty = 11,
-			maxDifficulty = 15,
-			size = 25,
-		},
-		{
-			lairTemplateName = "rori_nudfuh_pack_neutral_none",
 			minDifficulty = 11,
 			maxDifficulty = 15,
 			size = 25,

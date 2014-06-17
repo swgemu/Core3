@@ -1,8 +1,4 @@
 factional_rebel_destroy_missions = {
-	wanderRadius = 10,
-	commandLevel = 0,
-
-	type = LAIR,
 
 	lairSpawns = {
 		{

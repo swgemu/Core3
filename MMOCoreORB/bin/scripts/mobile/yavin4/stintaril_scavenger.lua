@@ -28,6 +28,7 @@ stintaril_scavenger = Creature:new {
 
 	templates = {"object/mobile/stintaril_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/stintaril_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

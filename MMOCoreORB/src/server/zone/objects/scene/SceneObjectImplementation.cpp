@@ -1614,9 +1614,11 @@ int SceneObjectImplementation::getCountableObjectsRecursive() {
 	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> obj = containerObjects.get(i);
 
-		++count;
+		if (obj != NULL) {
+			++count;
 
-		count += obj->getCountableObjectsRecursive();
+			count += obj->getCountableObjectsRecursive();
+		}
 	}
 
 	return count;

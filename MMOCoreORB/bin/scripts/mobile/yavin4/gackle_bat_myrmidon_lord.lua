@@ -28,6 +28,7 @@ gackle_bat_myrmidon_lord = Creature:new {
 
 	templates = {"object/mobile/gackle_bat_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gackle_bat_hue.iff",
+	scale = 1.3,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

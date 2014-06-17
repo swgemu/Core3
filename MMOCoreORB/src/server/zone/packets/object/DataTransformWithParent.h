@@ -262,7 +262,7 @@ public:
 		if (!ghost->isPrivileged()) {
 			SceneObject* inventory = object->getSlottedObject("inventory");
 
-			if (inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
+			if (inventory != NULL && inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
 				object->sendSystemMessage("Inventory Overloaded - Cannot Move");
 				bounceBack(object, pos);
 				return;

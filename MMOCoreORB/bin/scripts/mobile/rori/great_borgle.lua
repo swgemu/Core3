@@ -28,6 +28,7 @@ great_borgle = Creature:new {
 
 	templates = {"object/mobile/great_borgle.iff"},
 	controlDeviceTemplate = "object/intangible/pet/borgle_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

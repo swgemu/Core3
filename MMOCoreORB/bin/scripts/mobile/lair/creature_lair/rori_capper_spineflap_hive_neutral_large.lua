@@ -1,11 +1,11 @@
 rori_capper_spineflap_hive_neutral_large = Lair:new {
-	mobiles = {{"capper_spineflap_drone", 1}},
+	mobiles = {{"capper_spineflap", 1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap_forest.iff"},
-	buildingsEasy = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap_forest.iff"},
-	buildingsMedium = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap_forest.iff"},
-	buildingsHard = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap_forest.iff"},
-	buildingsVeryHard = {"object/tangible/lair/capper_spineflap/lair_capper_spineflap_forest.iff"},
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_large.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_large.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_insecthill_large.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_insecthill_large.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_insecthill_large.iff"},
 }
 
 addLairTemplate("rori_capper_spineflap_hive_neutral_large", rori_capper_spineflap_hive_neutral_large)

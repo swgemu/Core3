@@ -406,7 +406,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 }
 
 StructureObject* StructureManager::placeStructure(CreatureObject* creature,
-		const String& structureTemplatePath, float x, float y, int angle) {
+		const String& structureTemplatePath, float x, float y, int angle, int persistenceLevel) {
 	ManagedReference<Zone*> zone = creature->getZone();
 
 	if (zone == NULL)
@@ -464,7 +464,7 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 
 	ManagedReference<SceneObject*> obj =
 			ObjectManager::instance()->createObject(
-					structureTemplatePath.hashCode(), 1, strDatabase);
+					structureTemplatePath.hashCode(), persistenceLevel, strDatabase);
 
 	if (obj == NULL || !obj->isStructureObject()) {
 		if (obj != NULL)

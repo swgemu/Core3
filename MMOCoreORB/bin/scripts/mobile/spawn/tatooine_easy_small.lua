@@ -1,8 +1,5 @@
 tatooine_easy_small = {
-	wanderRadius = 10,
-	commandLevel = 0,
 
-	type = LAIR,
 	maxSpawnLimit = 75,
 
 	lairSpawns = {
@@ -16,7 +13,7 @@ tatooine_easy_small = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tatooine_rockmite_swarm_neutral_none",
+			lairTemplateName = "tatooine_rockmite_click_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 2,
 			maxDifficulty = 4,
@@ -61,7 +58,7 @@ tatooine_easy_small = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tatooine_gorg_herd_neutral_none",
+			lairTemplateName = "tatooine_gorg_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 4,
 			maxDifficulty = 6,
@@ -80,15 +77,6 @@ tatooine_easy_small = {
 		},
 		{
 			lairTemplateName = "tatooine_sevorrt_lair_neutral_medium",
-			spawnLimit = -1,
-			minDifficulty = 5,
-			maxDifficulty = 7,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "tatooine_gorg_glutton_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 5,
 			maxDifficulty = 7,

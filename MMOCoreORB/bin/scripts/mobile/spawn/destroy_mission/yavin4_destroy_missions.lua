@@ -1,8 +1,4 @@
 yavin4_destroy_missions = {
-	wanderRadius = 10,
-	commandLevel = 0,
-
-	type = LAIR,
 
 	lairSpawns = {
 		{
@@ -27,12 +23,6 @@ yavin4_destroy_missions = {
 			lairTemplateName = "yavin4_stintaril_lair_neutral_medium",
 			minDifficulty = 12,
 			maxDifficulty = 16,
-			size = 25,
-		},
-		{
-			lairTemplateName = "yavin4_choku_herd_neutral_none",
-			minDifficulty = 13,
-			maxDifficulty = 18,
 			size = 25,
 		},
 		{
@@ -81,12 +71,6 @@ yavin4_destroy_missions = {
 			lairTemplateName = "yavin4_crystal_snake_lair_neutral_medium",
 			minDifficulty = 22,
 			maxDifficulty = 28,
-			size = 25,
-		},
-		{
-			lairTemplateName = "yavin4_angler_pack_neutral_none",
-			minDifficulty = 26,
-			maxDifficulty = 34,
 			size = 25,
 		},
 		{

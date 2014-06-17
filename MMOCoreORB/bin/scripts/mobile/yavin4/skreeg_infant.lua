@@ -27,6 +27,7 @@ skreeg_infant = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/skreeg_infant.iff"},
+	scale = 0.6,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

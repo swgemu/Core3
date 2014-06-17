@@ -1,11 +1,12 @@
 yavin4_crystal_snake_herd_neutral_none = Lair:new {
-	mobiles = {{"hooded_crystal_snake", 1}},
+	mobiles = {{"crystal_snake", 1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_leaf_medium.iff"},
-	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_leaf_medium.iff"},
-	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_leaf_medium.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_leaf_medium.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_leaf_medium.iff"}
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("yavin4_crystal_snake_herd_neutral_none", yavin4_crystal_snake_herd_neutral_none)

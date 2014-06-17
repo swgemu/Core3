@@ -28,6 +28,7 @@ dusk_vir_vur = Creature:new {
 
 	templates = {"object/mobile/vir_vur_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/vir_vur_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -113,6 +113,7 @@ core3_IDLS =	autogen/server/zone/managers/creature/TheaterSpawnObserver.cpp \
 				autogen/server/zone/objects/player/sessions/StructureStatusSession.cpp \
 				autogen/server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				autogen/server/zone/objects/area/FsVillageArea.cpp \
+				autogen/server/zone/objects/area/SarlaccArea.cpp \
 				autogen/server/zone/objects/player/sessions/TradeSession.cpp \
 				autogen/server/zone/objects/tangible/powerup/PowerupObject.cpp \
 				autogen/server/zone/managers/minigames/FishingSession.cpp \
@@ -349,6 +350,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/ElevatorDownMenuComponent.cpp \
 		server/zone/managers/player/PermissionLevelList.cpp \
 		server/zone/objects/creature/components/TrainerMenuComponent.cpp \
+		server/zone/objects/creature/components/SarlaccMenuComponent.cpp \
 		server/zone/objects/creature/components/PetMenuComponent.cpp \
 		server/zone/objects/creature/variables/CreatureTemplateReference.cpp \
 		server/zone/objects/player/sessions/ImageDesignPositionObserverImplementation.cpp \
@@ -532,6 +534,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/WorldCoordinates.cpp \
 		server/zone/objects/area/ActiveAreaImplementation.cpp \
 		server/zone/objects/area/FsVillageAreaImplementation.cpp \
+		server/zone/objects/area/SarlaccAreaImplementation.cpp \
 		server/zone/objects/area/CampSiteActiveAreaImplementation.cpp \
 		server/zone/objects/area/SpawnAreaImplementation.cpp \
 		server/zone/objects/area/areashapes/AreaShapeImplementation.cpp \

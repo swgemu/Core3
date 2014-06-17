@@ -28,6 +28,7 @@ skreeg_gatherer = Creature:new {
 
 	templates = {"object/mobile/skreeg_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/skreeg_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

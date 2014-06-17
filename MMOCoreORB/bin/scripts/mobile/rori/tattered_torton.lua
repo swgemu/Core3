@@ -27,6 +27,7 @@ tattered_torton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/torton_hue.iff"},
+	scale = 0.85,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

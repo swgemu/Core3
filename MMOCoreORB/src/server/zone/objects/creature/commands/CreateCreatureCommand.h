@@ -140,6 +140,9 @@ public:
 			npc->activateMovementEvent();
 		}
 
+		if (npc != NULL)
+			npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
+
 		return SUCCESS;
 	}
 

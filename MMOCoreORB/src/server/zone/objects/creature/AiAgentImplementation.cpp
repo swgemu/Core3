@@ -1274,6 +1274,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 }
 
 // TODO (dannuic): All of the AI goes into the movement cycle, the recovery cycle is only for HAM/status recovery
+// TODO (dannuic): Implement an interrupt system for Behaviors (through Observers)
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
 

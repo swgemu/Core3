@@ -74,9 +74,16 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	LootGroupMap* lootGroupMap = LootGroupMap::instance();
 	ASSERT_EQ(lootGroupMap->initialize(), 0);
 
-	HashTableIterator<uint32, Reference<CreatureTemplate*> > iter = CreatureTemplateManager::instance()->iterator();
-	while (iter.hasNext()) {
-		CreatureTemplate* creature = iter.next();
+	// Load Templates
+	ASSERT_TRUE( TemplateManager::instance() != NULL );
+	if( TemplateManager::instance()->loadedTemplatesCount == 0 ){
+		TemplateManager::instance()->loadLuaTemplates();
+	}
+
+	// Test Creature Templates
+	HashTableIterator<uint32, Reference<CreatureTemplate*> > creatureIterator = CreatureTemplateManager::instance()->iterator();
+	while (creatureIterator.hasNext()) {
+		CreatureTemplate* creature = creatureIterator.next();
 		std::string templateName( creature->getTemplateName().toCharArray() );
 
 		// Verify loot group percentages
@@ -118,9 +125,10 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		}
 	}
 
-	HashTableIterator<uint32, Reference<LairTemplate*> > itera = CreatureTemplateManager::instance()->lairTemplateIterator();
-	while (itera.hasNext()) {
-		LairTemplate* lair = itera.next();
+	// Test Lair Templates
+	HashTableIterator<uint32, Reference<LairTemplate*> > lairIterator = CreatureTemplateManager::instance()->lairTemplateIterator();
+	while (lairIterator.hasNext()) {
+		LairTemplate* lair = lairIterator.next();
 		std::string templateName( lair->getName().toCharArray() );
 
 		// Verify that mobiles exist and that their weighting is positive
@@ -146,6 +154,104 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		// Verify spawn limit is positive
 		int limit = lair->getSpawnLimit();
 		EXPECT_TRUE( limit > 0 ) << "Spawn limit in lair template " << templateName << " is not positive";
+
+		// Verify any configured buildings exist
+		for(int i=0; i<=4; i++){
+
+			Vector<String>* buildings = lair->getBuildings( i );
+			if( buildings == NULL )
+				continue;
+
+			for( int j=0; j < buildings->size(); j++ ){
+				String buildingTemplate = buildings->get(j);
+				std::string buildingStr = buildingTemplate.toCharArray();
+				SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(buildingTemplate.hashCode());
+				EXPECT_TRUE( templateObject != NULL && templateObject->isSharedTangibleObjectTemplate() ) << "Building template " << buildingStr << " in lair template " << templateName << " does not exist";
+				if( lair->getBuildingType() == LairTemplate::LAIR ){
+					EXPECT_TRUE( buildingTemplate.beginsWith( "object/tangible/lair/") ) << "Building template " << buildingStr << " in lair template " << templateName << " is not a child of object/tangible/lair/";
+				}
+				if( lair->getBuildingType() == LairTemplate::THEATER ){
+					EXPECT_TRUE( buildingTemplate.beginsWith( "object/building/poi/") ) << "Building template " << buildingStr << " in lair template " << templateName << " is not a child of object/building/poi/";
+				}
+			}
+		}
+
+		// TODO: Add test to enforce LAIRs and THEATERs have at least one building configured
+
+	}
+
+	// Test Spawn Groups
+	HashTableIterator<uint32, Reference<SpawnGroup*> > spawnIterator = CreatureTemplateManager::instance()->spawnGroupIterator();
+	while (spawnIterator.hasNext()) {
+		SpawnGroup* group = spawnIterator.next();
+		std::string templateName( group->getTemplateName().toCharArray() );
+
+		// Verify spawn limit is not negative
+		int limit = group->getMaxSpawnLimit();
+		EXPECT_TRUE( limit >= 0 ) << "Max spawn limit in spawn group " << templateName << " is negative";
+
+		// Verify spawn list
+		Vector<Reference<LairSpawn*> >* spawnList = group->getSpawnList();
+		for (int i = 0; i < spawnList->size(); i++) {
+			LairSpawn* spawn = spawnList->get(i);
+			std::string lairName( spawn->getLairTemplateName().toCharArray() );
+
+			// Verify lair template exists
+			String lairTemplateName = spawn->getLairTemplateName();
+			Reference<LairTemplate*> lairTemplate = CreatureTemplateManager::instance()->getLairTemplate(lairTemplateName.hashCode());
+			EXPECT_TRUE( lairTemplate != NULL ) << "Lair template " << lairName << " in spawn group " << templateName << " does not exist.";
+
+			// Verify spawn limit is at least -1
+			float spawnLimit = spawn->getSpawnLimit();
+			EXPECT_TRUE( spawnLimit >= -1 ) << "SpawnLimit for lairTemplate " << lairName << " in spawn group " << templateName << " is less than -1.";
+
+			// Verify difficulties
+			int minDiff = spawn->getMinDifficulty();
+			int maxDiff = spawn->getMaxDifficulty();
+			EXPECT_TRUE( minDiff > 0 ) << "MinDifficulty for lairTemplate " << lairName << " in spawn group " << templateName << " is not positive.";
+			EXPECT_TRUE( maxDiff >= minDiff ) << "MaxDifficulty for lairTemplate " << lairName << " in spawn group " << templateName << " is less than min difficulty.";
+
+			// Verify number to spawn is not negative
+			int numberToSpawn = spawn->getNumberToSpawn();
+			EXPECT_TRUE( numberToSpawn >= 0 ) << "NumberToSpawn for lairTemplate " << lairName << " in spawn group " << templateName << " is negative.";
+
+			// Verify weighting is positive
+			int weighting = spawn->getWeighting();
+			EXPECT_TRUE( weighting > 0 ) << "Weighting for lairTemplate " << lairName << " in spawn group " << templateName << " is not positive.";
+
+			// Verify size is at least 1
+			float size = spawn->getSize();
+			EXPECT_TRUE( size >= 1 ) << "Size for lairTemplate " << lairName << " in spawn group " << templateName << " is less than 1.";
+		}
+	}
+
+	// Test Destroy Mission Spawn Groups
+	HashTableIterator<uint32, Reference<SpawnGroup*> > missionIterator = CreatureTemplateManager::instance()->destroyMissionGroupIterator();
+	while (missionIterator.hasNext()) {
+		SpawnGroup* group = missionIterator.next();
+		std::string templateName( group->getTemplateName().toCharArray() );
+
+		// Verify spawn list
+		Vector<Reference<LairSpawn*> >* spawnList = group->getSpawnList();
+		for (int i = 0; i < spawnList->size(); i++) {
+			LairSpawn* spawn = spawnList->get(i);
+			std::string lairName( spawn->getLairTemplateName().toCharArray() );
+
+			// Verify lair template exists
+			String lairTemplateName = spawn->getLairTemplateName();
+			Reference<LairTemplate*> lairTemplate = CreatureTemplateManager::instance()->getLairTemplate(lairTemplateName.hashCode());
+			EXPECT_TRUE( lairTemplate != NULL ) << "Lair template " << lairName << " in spawn group " << templateName << " does not exist.";
+
+			// Verify difficulties
+			int minDiff = spawn->getMinDifficulty();
+			int maxDiff = spawn->getMaxDifficulty();
+			EXPECT_TRUE( minDiff > 0 ) << "MinDifficulty for lairTemplate " << lairName << " in spawn group " << templateName << " is not positive.";
+			EXPECT_TRUE( maxDiff >= minDiff ) << "MaxDifficulty for lairTemplate " << lairName << " in spawn group " << templateName << " is less than min difficulty.";
+
+			// Verify size is at least 1
+			float size = spawn->getSize();
+			EXPECT_TRUE( size >= 1 ) << "Size for lairTemplate " << lairName << " in spawn group " << templateName << " is less than 1.";
+		}
 	}
 }
 

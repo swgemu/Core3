@@ -50,7 +50,7 @@ class CreatureManager extends ZoneManager {
 	public static final short DNADEATH = 0x03;
 	
 	public CreatureManager(Zone planet) {
-		super("CreatureManager");
+		super("CreatureManager " + planet.getZoneName());
 		
 		zone = planet;
 		
@@ -61,10 +61,6 @@ class CreatureManager extends ZoneManager {
 	
 	public void initialize() {
 		loadSpawnAreas();
-		loadTrainers();
-		loadSingleSpawns();
-		loadMissionSpawns();
-		loadInformants();
 	}
 
 	public native TangibleObject spawn(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size);
@@ -104,10 +100,6 @@ class CreatureManager extends ZoneManager {
 	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition);
 	
 	public native void loadSpawnAreas();
-	public native void loadSingleSpawns();
-	public native void loadTrainers();
-	public native void loadMissionSpawns();
-	public native void loadInformants();
 	
 	private native boolean createCreatureChildrenObjects(CreatureObject creature, unsigned int templateCRC, boolean persistent = false, unsigned int mobileTemplateCRC = 0);
 	

@@ -9,9 +9,8 @@ function createMissionTargetConvoTemplate(templateName, convoHandler)
 	mission_target_npc_breech_n = ConvoScreen:new {
 		id = "npc_breech_n",
 		leftDialog = ":npc_breech_1",
-		stopConversation = "false",
+		stopConversation = "true",
 		options = {
-			{ "@mission/mission_generic:yes", "missiontype" }
 		}
 	}
 	
@@ -87,6 +86,8 @@ createMissionTargetConvoTemplate("theme_park_jabba_mission_target_convotemplate"
 createMissionTargetConvoTemplate("theme_park_marauder_mission_target_convotemplate","theme_park_marauder_mission_target_conv_handler")
 createMissionTargetConvoTemplate("theme_park_imperial_mission_target_convotemplate","theme_park_imperial_mission_target_conv_handler")
 
+-- Epic Quest Chains
+createMissionTargetConvoTemplate("zicx_bug_bomb_mission_target_convotemplate","zicx_bug_bomb_mission_target_conv_handler")
 
 -- Tatooine
 createMissionTargetConvoTemplate("hedon_istee_mission_target_convotemplate","hedon_istee_mission_target_conv_handler")
@@ -113,6 +114,7 @@ createMissionTargetConvoTemplate("vana_sage_mission_target_convotemplate","vana_
 
 -- Talus
 createMissionTargetConvoTemplate("kathikiis_ruwahurr_mission_target_convotemplate","kathikiis_ruwahurr_mission_target_conv_handler")
+createMissionTargetConvoTemplate("xalox_guul_mission_target_convotemplate","xalox_guul_mission_target_conv_handler")
 
 
 -- Dantooine

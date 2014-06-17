@@ -108,6 +108,7 @@ namespace server {
 		static int checkInt64Lua(lua_State* L);
 		static int getChatMessage(lua_State* L);
 		static int createConversationScreen(lua_State* L);
+		static int getStringId(lua_State* L);
 		static int getRankName(lua_State* L);
 		static int getRankCost(lua_State* L);
 		static int getRankDelegateRatioFrom(lua_State* L);

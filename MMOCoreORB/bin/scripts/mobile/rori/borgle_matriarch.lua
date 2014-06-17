@@ -27,6 +27,7 @@ borgle_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/borgle_hue.iff"},
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

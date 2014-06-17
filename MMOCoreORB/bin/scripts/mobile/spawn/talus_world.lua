@@ -1,8 +1,5 @@
 talus_world = {
-	wanderRadius = 10,
-	commandLevel = 0,
 
-	type = LAIR,
 	maxSpawnLimit = 2048,
 
 	lairSpawns = {
@@ -313,7 +310,7 @@ talus_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "talus_voracious_rasp_lair_neutral_none",
+			lairTemplateName = "talus_voracious_rasp_neutral_none",
 			spawnLimit = -1,			
 			minDifficulty = 40,
 			maxDifficulty = 40,

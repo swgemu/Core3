@@ -27,6 +27,7 @@ elder_gualama = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gualama_hue.iff"},
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

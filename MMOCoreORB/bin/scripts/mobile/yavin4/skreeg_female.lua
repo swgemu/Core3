@@ -27,6 +27,7 @@ skreeg_female = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/skreeg_hue.iff"},
+	scale = 0.95,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

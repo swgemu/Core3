@@ -27,6 +27,7 @@ tanc_mite_warrior = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tanc_mite_hue.iff"},
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ choku_packmaster = Creature:new {
 
 	templates = {"object/mobile/choku_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/choku_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

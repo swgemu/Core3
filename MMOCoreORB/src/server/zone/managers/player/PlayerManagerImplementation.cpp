@@ -226,6 +226,8 @@ void PlayerManagerImplementation::loadStartingLocations() {
 
 	startingLocationList.parseFromIffStream(iffStream);
 
+	delete iffStream;
+
 	info("Loaded " + String::valueOf(startingLocationList.getTotalLocations()) + " starting locations.", true);
 }
 
@@ -242,6 +244,7 @@ void PlayerManagerImplementation::loadBadgeMap() {
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
 
+	highestBadgeIndex = 0;
 
 	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
 		int idx = 0;
@@ -257,6 +260,8 @@ void PlayerManagerImplementation::loadBadgeMap() {
 	}
 
 	info("Loaded " + String::valueOf(badgeMap.size()) + " badges.", true);
+
+	delete iffStream;
 }
 
 void PlayerManagerImplementation::loadPermissionLevels() {
@@ -712,8 +717,6 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 			if (!areInDuel) {
 				FactionManager::instance()->awardPvpFactionPoints(attackerCreature, player);
 			}
-		} else {
-			FactionManager::instance()->awardPvpFactionPoints(attacker, player);
 		}
 	}
 
@@ -2696,9 +2699,9 @@ void PlayerManagerImplementation::addInsurableItemsRecursive(SceneObject* obj, S
 
 		TangibleObject* item = cast<TangibleObject*>( object);
 
-		if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
+		if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
 			items->put(item);
-		} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
+		} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
 			items->put(item);
 		}
 
@@ -2727,9 +2730,9 @@ SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getIn
 		if (container->isTangibleObject()) {
 			TangibleObject* item = cast<TangibleObject*>( container);
 
-			if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
+			if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
 				insurableItems.put(item);
-			} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
+			} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
 				insurableItems.put(item);
 			}
 		}
@@ -3955,6 +3958,24 @@ int PlayerManagerImplementation::getEligibleMilestone( PlayerObject *playerGhost
 	for( int i=0; i < veteranRewardMilestones.size(); i++){
 		int milestone = veteranRewardMilestones.get(i);
 		if( accountAge >= milestone && playerGhost->getChosenVeteranReward(milestone).isEmpty() ){
+			return milestone;
+		}
+	}
+
+	return -1;
+}
+
+int PlayerManagerImplementation::getFirstIneligibleMilestone( PlayerObject *playerGhost, Account* account ){
+
+	if( account == NULL || playerGhost == NULL )
+		return -1;
+
+	int accountAge = account->getAgeInDays();
+
+	// Return the first milestone the player has not already claimed
+	for( int i=0; i < veteranRewardMilestones.size(); i++){
+		int milestone = veteranRewardMilestones.get(i);
+		if( accountAge < milestone && !playerGhost->getChosenVeteranReward(milestone).isEmpty() ){
 			return milestone;
 		}
 	}

@@ -28,6 +28,7 @@ giant_spined_puc = Creature:new {
 
 	templates = {"object/mobile/giant_spined_puc.iff"},
 	controlDeviceTemplate = "object/intangible/pet/spined_puc_hue.iff",
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

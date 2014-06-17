@@ -1,8 +1,5 @@
 rori_medium = {
-	wanderRadius = 10,
-	commandLevel = 0,
 
-	type = LAIR,
 	maxSpawnLimit = 384,
 
 	lairSpawns = {
@@ -75,15 +72,6 @@ rori_medium = {
 			minDifficulty = 13,
 			maxDifficulty = 13,
 			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "rori_nudfuh_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 13,
-			maxDifficulty = 13,
-			numberToSpawn = 10,
 			weighting = 15,
 			size = 25
 		},

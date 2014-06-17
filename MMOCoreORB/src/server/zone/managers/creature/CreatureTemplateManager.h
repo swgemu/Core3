@@ -70,6 +70,14 @@ public:
 		return lairTemplates.iterator();
 	}
 
+	HashTableIterator<uint32, Reference<SpawnGroup*> > spawnGroupIterator() {
+		return spawnGroupMap.iterator();
+	}
+
+	HashTableIterator<uint32, Reference<SpawnGroup*> > destroyMissionGroupIterator() {
+		return destroyMissionGroupMap.iterator();
+	}
+
 	CreatureTemplate* getTemplate(uint32 crc) {
 		return hashTable.get(crc);
 	}

@@ -1,8 +1,4 @@
 naboo_destroy_missions = {
-	wanderRadius = 10,
-	commandLevel = 0,
-
-	type = LAIR,
 
 	lairSpawns = {
 		{
@@ -141,11 +137,13 @@ naboo_destroy_missions = {
  			lairTemplateName = "naboo_gungan_hermit_neutral_small_theater",
  			minDifficulty = 10,
  			maxDifficulty = 15,
+			size = 15,
  		},
  		{
  			lairTemplateName = "naboo_gungan_mercenary_camp_neutral_large_theater",
  			minDifficulty = 13,
  			maxDifficulty = 27,
+			size = 15,
  		},
 		{
 			lairTemplateName = "naboo_nightspider_lair_neutral_small",

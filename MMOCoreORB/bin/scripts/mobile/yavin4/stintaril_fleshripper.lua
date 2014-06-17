@@ -28,6 +28,7 @@ stintaril_fleshripper = Creature:new {
 
 	templates = {"object/mobile/stintaril_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/stintaril_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

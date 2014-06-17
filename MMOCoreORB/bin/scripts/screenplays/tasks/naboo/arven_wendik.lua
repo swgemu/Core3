@@ -59,7 +59,7 @@ npcMapArvenWendik =
   {
     {
       spawnData = { planetName = "naboo", npcTemplate = "arven_wendik", x = 4713.5, z = 330, y = -1432.5, direction = -99, cellID = 0, position = STAND },
-      worldPosition = { x = 4712, y = 1432 },
+      worldPosition = { x = 4712, y = -1432 },
       npcNumber = 1,
       stfFile = "@static_npc/naboo/arven_wendik",
       hasWaypointNames = "no",

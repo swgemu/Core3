@@ -28,6 +28,7 @@ deadly_tanc_mite = Creature:new {
 
 	templates = {"object/mobile/tanc_mite_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/tanc_mite_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
