@@ -162,6 +162,8 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected transient string templateName;
 	
+	protected int waitTime;
+	
 	public static final int UPDATEMOVEMENTINTERVAL = 500; // msec
 	
 	public static final int OBLIVIOUS = 0;
@@ -240,7 +242,7 @@ class AiAgent extends CreatureObject {
 
 	public native boolean isConcealed(CreatureObject target);
 	
-	public native boolean findNextPosition(float maxDistance);
+	public native boolean findNextPosition(float maxDistance, boolean walk = false);
 	
 	@local
 	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
@@ -494,7 +496,7 @@ class AiAgent extends CreatureObject {
 	public void setOblivious() {
 		followState = OBLIVIOUS;
 		setTargetObject(null);
-		activateMovementEvent();
+		//activateMovementEvent();
 	}
 	
 	public void setWatchObject(SceneObject obj) {
@@ -505,7 +507,7 @@ class AiAgent extends CreatureObject {
 			followState = WATCHING;
 
 			setTargetObject(obj);
-			activateMovementEvent();
+			//activateMovementEvent();
 		}
 	}
 	
@@ -517,7 +519,7 @@ class AiAgent extends CreatureObject {
 			followState = STALKING;
 
 			setTargetObject(obj);
-			activateMovementEvent();
+			//activateMovementEvent();
 		}
 	}
 	
@@ -529,7 +531,7 @@ class AiAgent extends CreatureObject {
 			followState = FOLLOWING;
 
 			setTargetObject(obj);
-			activateMovementEvent();
+			//activateMovementEvent();
 		}
 	}
 	
@@ -552,6 +554,10 @@ class AiAgent extends CreatureObject {
 	public native float getMaxDistance();
 	public native int setDestination();
 	public native boolean completeMove();
+	
+	public native void setWait(int wait) {
+		waitTime = wait;
+	}
 	
 	public native void selectWeapon();
 	public native boolean validateStateAttack(CreatureObject target, string args);

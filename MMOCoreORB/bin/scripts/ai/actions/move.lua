@@ -27,7 +27,7 @@ function Move:doAction(pAgent)
 			agent:completeMove()
 		end
 		
-		if (agent:findNextPosition(agent:getMaxDistance())) then
+		if (agent:findNextPosition(agent:getMaxDistance(), true)) then
 			return BEHAVIOR_RUNNING
 		else
 			return BEHAVIOR_SUCCESS

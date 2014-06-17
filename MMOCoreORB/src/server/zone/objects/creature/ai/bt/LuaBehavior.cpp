@@ -57,7 +57,7 @@ void LuaBehavior::start(AiAgent* agent) {
 	lua_pop(lua->getLuaState(), 1);
 }
 
-void LuaBehavior::end(AiAgent* agent) {
+float LuaBehavior::end(AiAgent* agent) {
 	// Use DirectorManager in order to have access to AiAgent
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	// TODO (dannuic): should I check for valid table here?
@@ -67,8 +67,10 @@ void LuaBehavior::end(AiAgent* agent) {
 	runMethod.callFunction();
 	agent->info(className + " end...", true);
 
-	int result = lua_tointeger(lua->getLuaState(), -1);
+	float result = lua_tonumber(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
+
+	return result;
 }
 
 int LuaBehavior::doAction(AiAgent* agent) {

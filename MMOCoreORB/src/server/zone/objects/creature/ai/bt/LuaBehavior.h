@@ -41,7 +41,7 @@ public:
 
 	bool checkConditions(AiAgent* agent);
 	void start(AiAgent* agent);
-	void end(AiAgent* agent);
+	float end(AiAgent* agent);
 	int doAction(AiAgent* agent);
 
 	virtual uint16 getType();

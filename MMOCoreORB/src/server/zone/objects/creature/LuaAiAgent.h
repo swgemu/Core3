@@ -39,6 +39,7 @@ namespace creature {
 		int generatePatrol(lua_State* L);
 		int setDestination(lua_State* L);
 		int completeMove(lua_State* L);
+		int setWait(lua_State* L);
 		int getCurrentSpeed(lua_State* L);
 		int setCurrentSpeed(lua_State* L);
 		int setBehaviorStatus(lua_State* L);

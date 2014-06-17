@@ -921,7 +921,7 @@ void AiAgentImplementation::checkNewAngle() {
 	}
 }
 
-bool AiAgentImplementation::findNextPosition(float maxDistance) {
+bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	Locker locker(&targetMutex);
 
 	Vector3 thisWorldPos = getWorldPosition();
@@ -930,9 +930,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance) {
 	//ManagedReference<SceneObject*> strongFollow = followObject.get();
 
 	float newSpeed = runSpeed * 1.5f; // FIXME (dannuic): Why is this *1.5? Is that some magic number?
-
-	/*if (followObject == NULL && !isFleeing() && !isRetreating() && !isInCombat()) // TODO: think about implementing a more generic "walk, don't run" criterion
-		newSpeed = walkSpeed;*/
+	if (walk)
+		newSpeed = walkSpeed;
 
 	if(hasState(CreatureState::IMMOBILIZED))
 		newSpeed = newSpeed / 2.f;
@@ -1054,12 +1053,13 @@ bool AiAgentImplementation::findNextPosition(float maxDistance) {
 
 		if (targetDistance > maxDistance) // target position if farther away than the "radius" of approach
 			maxDist = MIN(newSpeed, targetDistance - maxDistance);
-		else if (followState == AiAgent::PATROLLING) {
-			PatrolPoint oldPoint = patrolPoints.remove(0);
-			patrolPoints.add(oldPoint);
-			maxDist = maxDistance - targetDistance;
-		} else { // we are already where we need to be, so we have no new position
+		else { // we are already where we need to be, so we have no new position
 			//activateMovementEvent();
+			if (followState == AiAgent::PATROLLING) {
+				PatrolPoint oldPoint = patrolPoints.remove(0);
+				patrolPoints.add(oldPoint);
+			}
+
 			return false;
 		}
 
@@ -1276,12 +1276,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance) {
 // TODO (dannuic): All of the AI goes into the movement cycle, the recovery cycle is only for HAM/status recovery
 void AiAgentImplementation::doMovement() {
 	//info("doMovement", true);
-	// TODO (dannuic): Logic is in luas now, remove from here and use the tree to move
-
-	// This is in move.lua
-/*	if (currentSpeed != 0) {
-		completeMove();
-	}*/
 
 	// Do pre-checks (these should remain hard-coded)
 	if (isDead() || isIncapacitated() || (getZone() == NULL)) {
@@ -1292,24 +1286,6 @@ void AiAgentImplementation::doMovement() {
 	// activate AI
 	if (tree != NULL)
 		tree->doAction();
-/*
-	// Do more pre-checks (in all the movement behaviors)
-	if (!isStanding()) {
-		activateMovementEvent();
-		return;
-	}
-
-	// Attack if we can TODO (dannuic): not scripted yet
-	doAttack();
-
-	// Find where we will go to by next movement update
-	// setdestination.lua
-	setDestination();
-	// findnextposition.lua
-	findNextPosition(getMaxDistance());
-
-	// Recycle the movement because we have a destination and haven't reached it yet
-	activateMovementEvent();*/
 }
 
 bool AiAgentImplementation::generatePatrol(int num, float dist) {
@@ -1341,7 +1317,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 }
 
 float AiAgentImplementation::getMaxDistance() {
-	if (isRetreating() || isFleeing())
+	if (isRetreating() || isFleeing()) // TODO (dannuic): this should end up as logic in BT luas
 		return 0.5;
 
 	switch (followState) {
@@ -1469,18 +1445,23 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (getZone() == NULL)
 		return;
 
+	if (waitTime > 0 && moveEvent != NULL)
+		moveEvent->cancel();
+
 	if (moveEvent == NULL) {
 		moveEvent = new AiMoveEvent(_this.get());
 
-		moveEvent->schedule(UPDATEMOVEMENTINTERVAL);
+		moveEvent->schedule(waitTime > 0 ? waitTime : UPDATEMOVEMENTINTERVAL);
 	}
 
 	try {
 		if (!moveEvent->isScheduled())
-			moveEvent->schedule(UPDATEMOVEMENTINTERVAL);
+			moveEvent->schedule(waitTime > 0 ? waitTime : UPDATEMOVEMENTINTERVAL);
 	} catch (IllegalArgumentException& e) {
 
 	}
+
+	setWait(0);
 }
 
 void AiAgentImplementation::activateWaitEvent() {
