@@ -27,6 +27,7 @@ tybis_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tybis_youth.iff"},
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

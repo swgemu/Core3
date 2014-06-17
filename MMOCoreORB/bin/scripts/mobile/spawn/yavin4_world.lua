@@ -139,15 +139,6 @@ yavin4_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "yavin4_tybis_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 23,
-			maxDifficulty = 23,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "yavin4_mawgax_herd_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 25,
@@ -188,15 +179,6 @@ yavin4_world = {
 			spawnLimit = -1,
 			minDifficulty = 25,
 			maxDifficulty = 25,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "yavin4_tybis_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 26,
-			maxDifficulty = 26,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

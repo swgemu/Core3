@@ -27,6 +27,7 @@ male_tybis = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tybis.iff"},
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

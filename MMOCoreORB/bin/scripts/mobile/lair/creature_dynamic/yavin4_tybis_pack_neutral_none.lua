@@ -1,11 +1,12 @@
 yavin4_tybis_pack_neutral_none = Lair:new {
-	mobiles = {{"grand_tybis", 1}},
+	mobiles = {{"enraged_tybis", 1},{"tybis",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_fog_green.iff"},
-	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_fog_green.iff"},
-	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_dead_log_large_fog_green.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_dead_log_large_fog_green.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_dead_log_large_fog_green.iff"},
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none",
 }
 
 addLairTemplate("yavin4_tybis_pack_neutral_none", yavin4_tybis_pack_neutral_none)

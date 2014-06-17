@@ -28,6 +28,7 @@ skreeg_warrior_elite = Creature:new {
 
 	templates = {"object/mobile/skreeg_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/skreeg_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ poisonous_spined_puc = Creature:new {
 
 	templates = {"object/mobile/spined_puc_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/spined_puc_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
