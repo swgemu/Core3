@@ -28,6 +28,14 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "_setObject", &LuaAiAgent::_setObject },
 		{ "_getObject", &LuaAiAgent::_getObject },
 		{ "setFollowObject", &LuaAiAgent::setFollowObject },
+		{ "getFollowObject", &LuaAiAgent::getFollowObject },
+		{ "findNextPosition", &LuaAiAgent::findNextPosition },
+		{ "getMaxDistance", &LuaAiAgent::getMaxDistance },
+		{ "generatePatrol", &LuaAiAgent::generatePatrol },
+		{ "setDestination", &LuaAiAgent::setDestination },
+		{ "completeMove", &LuaAiAgent::completeMove },
+		{ "getCurrentSpeed", &LuaAiAgent::getCurrentSpeed },
+		{ "setCurrentSpeed", &LuaAiAgent::setCurrentSpeed },
 		{ "setBehaviorStatus", &LuaAiAgent::setBehaviorStatus },
 		{ "getBehaviorStatus", &LuaAiAgent::getBehaviorStatus },
 		{ "info", &LuaAiAgent::info },
@@ -56,7 +64,6 @@ int LuaAiAgent::_getObject(lua_State* L) {
 }
 
 int LuaAiAgent::setFollowObject(lua_State* L) {
-	//setFollowObject(SceneObject obj)
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
 
 	realObject->setFollowObject(obj);
@@ -64,8 +71,79 @@ int LuaAiAgent::setFollowObject(lua_State* L) {
 	return 0;
 }
 
+int LuaAiAgent::getFollowObject(lua_State* L) {
+	lua_pushlightuserdata(L, realObject->getFollowObject());
+
+	return 1;
+}
+
+/**
+ * @param takes a float maxDistance argument
+ * @return bool to lua depending on if a new position was found or not
+ */
+int LuaAiAgent::findNextPosition(lua_State* L) {
+	uint16 maxDistance = lua_tonumber(L, -1);
+
+	bool found = realObject->findNextPosition(maxDistance);
+
+	lua_pushboolean(L, found);
+
+	return 1;
+}
+
+int LuaAiAgent::getMaxDistance(lua_State* L) {
+	float maxDistance = realObject->getMaxDistance();
+
+	lua_pushnumber(L, maxDistance);
+
+	return 1;
+}
+
+int LuaAiAgent::generatePatrol(lua_State* L) {
+	int num = lua_tointeger(L, -1);
+	float dist = lua_tonumber(L, -2);
+
+	bool retVal = realObject->generatePatrol(num, dist);
+
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaAiAgent::setDestination(lua_State* L) {
+	int retVal = realObject->setDestination();
+
+	lua_pushinteger(L, retVal);
+
+	return 1;
+}
+
+int LuaAiAgent::completeMove(lua_State* L) {
+	bool retVal = realObject->completeMove();
+
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaAiAgent::getCurrentSpeed(lua_State* L) {
+	float currentSpeed = realObject->getCurrentSpeed();
+
+	lua_pushnumber(L, currentSpeed);
+
+	return 1;
+}
+
+int LuaAiAgent::setCurrentSpeed(lua_State* L) {
+	float currentSpeed = lua_tonumber(L, -1);
+
+	realObject->setCurrentSpeed(currentSpeed);
+
+	return 0;
+}
+
 int LuaAiAgent::setBehaviorStatus(lua_State* L) {
-	uint8 status = (uint8) lua_tonumber(L, -1);
+	uint8 status = (uint8) lua_tointeger(L, -1);
 
 	realObject->setBehaviorStatus(status);
 

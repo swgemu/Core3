@@ -5,7 +5,7 @@ function Failure:checkConditions(pAgent)
 		local agent = LuaAiAgent(pAgent)
 		agent:info("Failure check...")
 	end
-	return 1
+	return true
 end
 
 function Failure:start(pAgent)
@@ -25,7 +25,6 @@ function Failure:terminate(pAgent)
 end
 
 function Failure:doAction(pAgent)
-	--spatialChat(pAgent, "I have failed!")
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		agent:info("Failure do...")

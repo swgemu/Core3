@@ -36,10 +36,11 @@ bool LuaBehavior::checkConditions(AiAgent* agent) {
 	runMethod << agent;
 
 	runMethod.callFunction();
+	agent->info(className + " check...", true);
 
-	int result = lua_tointeger(lua->getLuaState(), -1);
+	bool result = lua_toboolean(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
-	return result != 0;
+	return result;
 }
 
 void LuaBehavior::start(AiAgent* agent) {
@@ -50,6 +51,7 @@ void LuaBehavior::start(AiAgent* agent) {
 	runMethod << agent;
 
 	runMethod.callFunction();
+	agent->info(className + " start...", true);
 
 	int result = lua_tointeger(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
@@ -63,6 +65,7 @@ void LuaBehavior::end(AiAgent* agent) {
 	runMethod << agent;
 
 	runMethod.callFunction();
+	agent->info(className + " end...", true);
 
 	int result = lua_tointeger(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
@@ -76,6 +79,7 @@ int LuaBehavior::doAction(AiAgent* agent) {
 	runMethod << agent;
 
 	runMethod.callFunction();
+	agent->info(className + " do...", true);
 
 	int result = lua_tointeger(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);

@@ -168,7 +168,7 @@ class AiAgent extends CreatureObject {
 	public static final int WATCHING = 1;
 	public static final int STALKING = 2;
 	public static final int FOLLOWING = 3;
-	public static final int PATROLING = 4;
+	public static final int PATROLLING = 4;
 	
 	
 	public AiAgent() {
@@ -240,7 +240,7 @@ class AiAgent extends CreatureObject {
 
 	public native boolean isConcealed(CreatureObject target);
 	
-	protected native boolean findNextPosition(float maxDistance, WorldCoordinates nextPosition);
+	public native boolean findNextPosition(float maxDistance);
 	
 	@local
 	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
@@ -543,9 +543,15 @@ class AiAgent extends CreatureObject {
 		}
 	}
 	
+	public native boolean generatePatrol(int num, float dist);
+	
 	public SceneObject getFollowObject() {
 		return followObject;
 	}
+	
+	public native float getMaxDistance();
+	public native int setDestination();
+	public native boolean completeMove();
 	
 	public native void selectWeapon();
 	public native boolean validateStateAttack(CreatureObject target, string args);
@@ -809,9 +815,6 @@ class AiAgent extends CreatureObject {
 
 	@local
 	public native void addBehaviorToTree(Behavior b, CompositeBehavior parent);
-
-	@local
-	public native Behavior getNextBehavior();
 
 	@local
 	public native void resetBehaviorList();

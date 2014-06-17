@@ -51,7 +51,6 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 	runTrajectory = runTrajectory * (100 / runTrajectory.length());
 	runTrajectory += target->getPosition();
 
-	patrolPoints.removeAll();
 	setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get());
 
 	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);

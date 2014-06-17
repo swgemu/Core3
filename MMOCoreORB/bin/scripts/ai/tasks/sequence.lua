@@ -3,15 +3,15 @@ Sequence = {}
 function Sequence:checkConditions(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
-		agent:info("Sequence checking...")
+		--agent:info("Sequence checking...")
 	end
-	return 1
+	return true
 end
 
 function Sequence:start(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
-		agent:info("Sequence start...")
+		--agent:info("Sequence start...")
 	end
 	return 0
 end
@@ -19,7 +19,7 @@ end
 function Sequence:terminate(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
-		agent:info("Sequence end...")
+		--agent:info("Sequence end...")
 		local res = agent:getBehaviorStatus()
 		if (res == BEHAVIOR_SUCCESS) then
 			agent:spatialChat("I have finished successfully.")
@@ -35,7 +35,7 @@ end
 function Sequence:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
-		agent:info("Sequence do...")
+		--agent:info("Sequence do...")
 		local res = agent:getBehaviorStatus()
 		return res
 	else

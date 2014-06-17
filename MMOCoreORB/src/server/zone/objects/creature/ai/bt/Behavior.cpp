@@ -25,11 +25,13 @@ void Behavior::start() {
 
 	result = AiMap::RUNNING;
 
-	interface->start(agent);
+	if (interface != NULL)
+		interface->start(agent);
 }
 
 void Behavior::end() {
-	interface->end(agent);
+	if (interface != NULL)
+		interface->end(agent);
 }
 
 void Behavior::doAction() {
@@ -40,6 +42,8 @@ void Behavior::doAction() {
 
 	if (!started())
 		this->start();
+	else if (!checkConditions())
+		endWithFailure();
 
 	agent->setCurrentBehavior(this);
 
@@ -56,7 +60,9 @@ void Behavior::doAction() {
 		}
 	}
 
-	int res = interface->doAction(agent);
+	int res = AiMap::INVALID;
+	if (interface != NULL)
+		res = interface->doAction(agent);
 
 	switch(res) {
 	case AiMap::SUCCESS:

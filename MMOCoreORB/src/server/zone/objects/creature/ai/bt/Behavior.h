@@ -68,7 +68,10 @@ public:
 	 * @return true if we can update, false if not
 	 */
 	virtual bool checkConditions() {
-		return interface->checkConditions(agent);
+		if (interface != NULL)
+			return interface->checkConditions(agent);
+
+		return false;
 	}
 
 	/**

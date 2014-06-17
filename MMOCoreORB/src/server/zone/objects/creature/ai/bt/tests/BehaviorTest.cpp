@@ -8,11 +8,11 @@
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 #include "MockBehavior.h"
-#include "MockSequenceBehavior.h"
-#include "../BehaviorTree.h"
+#include "server/zone/managers/creature/AiMap.h"
 
 using ::testing::_;
 using ::testing::AtLeast;
+using ::testing::AnyNumber;
 using ::testing::Return;
 using ::testing::Invoke;
 using ::testing::Sequence;
@@ -30,7 +30,7 @@ namespace test {
 
 class BehaviorTest : public ::testing::Test {
 public:
-	//Reference<MockAiAgent*> actor;
+	Reference<MockAiAgent*> agent;
 	BehaviorTest() {
 		// Perform creation setup here.
 	}
@@ -40,7 +40,7 @@ public:
 	}
 
 	void SetUp() {
-		//actor = new MockAiAgent();
+		agent = new MockAiAgent();
 	}
 
 	void TearDown() {

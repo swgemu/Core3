@@ -3,15 +3,15 @@ Selector = {}
 function Selector:checkConditions(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
-		agent:info("Selector checking...")
+		--agent:info("Selector checking...")
 	end
-	return 1
+	return true
 end
 
 function Selector:start(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
-		agent:info("Selector start...")
+		--agent:info("Selector start...")
 	end
 	return 0
 end
@@ -19,7 +19,7 @@ end
 function Selector:terminate(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
-		agent:info("Selector end...")
+		--agent:info("Selector end...")
 		local res = agent:getBehaviorStatus()
 		if (res == BEHAVIOR_SUCCESS) then
 			agent:spatialChat("I have finished successfully.")
@@ -35,7 +35,7 @@ end
 function Selector:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
-		agent:info("Selector do...")
+		--agent:info("Selector do...")
 		local res = agent:getBehaviorStatus()
 		return res
 	else

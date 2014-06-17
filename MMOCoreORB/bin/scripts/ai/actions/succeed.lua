@@ -5,7 +5,7 @@ function Succeed:checkConditions(pAgent)
 		local agent = LuaAiAgent(pAgent)
 		agent:info("Succeed check...")
 	end
-	return 1
+	return true
 end
 
 function Succeed:start(pAgent)
@@ -25,7 +25,6 @@ function Succeed:terminate(pAgent)
 end
 
 function Succeed:doAction(pAgent)
-	--spatialChat(pAgent, "I have succeeded!")
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		agent:info("Succeed do...")

@@ -33,6 +33,8 @@ void CompositeBehavior::doAction() {
 
 	if (!started())
 		this->start();
+	else if (!checkConditions())
+		endWithFailure();
 
 	if (finished()) {
 		Behavior::doAction();
@@ -50,7 +52,7 @@ void CompositeBehavior::doAction() {
 
 	if (!currentChild->started())
 		currentChild->start();
-	else if (currentChild->finished()) {
+	if (currentChild->finished()) {
 		if (currentChild->succeeded())
 			this->childSucceeded();
 		else if (currentChild->failed())
