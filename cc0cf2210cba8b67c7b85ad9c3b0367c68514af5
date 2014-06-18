@@ -16,6 +16,23 @@
       "revId": "cc0cf2210cba8b67c7b85ad9c3b0367c68514af5",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_cfac7138",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-06-18T00:39:35Z",
+      "side": 1,
+      "message": "Don\u0027t return here.  Just put the owner attribute in a !\u003d NULL if statement.  It\u0027s perfectly valid for a non-pet creature to have no linkedCreature.",
+      "revId": "cc0cf2210cba8b67c7b85ad9c3b0367c68514af5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
