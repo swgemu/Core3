@@ -164,6 +164,9 @@ class AiAgent extends CreatureObject {
 	
 	protected int waitTime;
 	
+	protected unsigned int nextActionCRC;
+	protected string nextActionArgs;
+	
 	public static final int UPDATEMOVEMENTINTERVAL = 500; // msec
 	
 	public static final int OBLIVIOUS = 0;
@@ -233,6 +236,10 @@ class AiAgent extends CreatureObject {
 	public native int calculateAttackMinDamage(int level);
 	public native int calculateAttackMaxDamage(int level);
 	public native float calculateAttackSpeed(int level);
+	
+	public native boolean getTargetFromMap();
+	public native boolean getTargetFromDefenders();
+	public native boolean validateTarget();
 	
 	public abstract native boolean isCamouflaged(CreatureObject target) {
 		return false;
@@ -442,6 +449,9 @@ class AiAgent extends CreatureObject {
 	 * @return returns true if the creature object can attack this 
 	 */
 	public boolean isAttackableBy(CreatureObject object) {
+		if (object == null)
+			return false;
+		
 		if (object == this)
 			return false;
 
@@ -551,6 +561,10 @@ class AiAgent extends CreatureObject {
 		return followObject;
 	}
 	
+	public unsigned int getFollowState() {
+		return followState;
+	}
+	
 	public native float getMaxDistance();
 	public native int setDestination();
 	public native boolean completeMove();
@@ -558,9 +572,15 @@ class AiAgent extends CreatureObject {
 	public native void setWait(int wait) {
 		waitTime = wait;
 	}
-	
+
 	public native void selectWeapon();
+	public native void selectDefaultWeapon();
 	public native boolean validateStateAttack(CreatureObject target, string args);
+	public native void selectSpecialAttack();
+	public native void selectSpecialAttack(int attackNum);
+	public native void selectDefaultAttack();
+	public native boolean validateStateAttack();
+	public native void enqueueAttack();
 	
 	public boolean isRetreating() {
 		return !homeLocation.isReached();

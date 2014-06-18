@@ -1,4 +1,4 @@
-Failure = {}
+Failure = Ai:new {}
 
 function Failure:checkConditions(pAgent)
 	if (pAgent ~= nil) then

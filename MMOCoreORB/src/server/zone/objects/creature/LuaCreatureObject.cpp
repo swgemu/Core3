@@ -86,6 +86,9 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject},
 		{ "checkCooldownRecovery", &LuaCreatureObject::checkCooldownRecovery},
 		{ "addCooldown", &LuaCreatureObject::addCooldown},
+		{ "isDead", &LuaCreatureObject::isDead},
+		{ "getLevel", &LuaCreatureObject::getLevel},
+		{ "getQueueSize", &LuaCreatureObject::getQueueSize },
 		{ 0, 0 }
 };
 
@@ -587,4 +590,28 @@ int LuaCreatureObject::addCooldown(lua_State* L) {
 	realObject->addCooldown(cooldownName, milliseconds);
 
 	return 0;
+}
+
+int LuaCreatureObject::isDead(lua_State* L) {
+	bool retVal = realObject->isDead();
+
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaCreatureObject::getLevel(lua_State* L) {
+	int level = realObject->getLevel();
+
+	lua_pushinteger(L, level);
+
+	return 1;
+}
+
+int LuaCreatureObject::getQueueSize(lua_State* L) {
+	int size = realObject->getCommandQueueSize();
+
+	lua_pushinteger(L, size);
+
+	return 1;
 }

@@ -1,16 +1,4 @@
-GeneratePatrol = {}
-
-function GeneratePatrol:checkConditions(pAgent)
-	return true
-end
-
-function GeneratePatrol:start(pAgent)
-	return 0
-end
-
-function GeneratePatrol:terminate(pAgent)
-	return 0
-end
+GeneratePatrol = Ai:new {}
 
 function GeneratePatrol:doAction(pAgent)
 	if (pAgent ~= nil) then

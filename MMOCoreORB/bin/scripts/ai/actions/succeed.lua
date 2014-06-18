@@ -1,4 +1,4 @@
-Succeed = {}
+Succeed = Ai:new {}
 
 function Succeed:checkConditions(pAgent)
 	if (pAgent ~= nil) then

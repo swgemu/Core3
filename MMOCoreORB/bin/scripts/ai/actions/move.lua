@@ -1,4 +1,4 @@
-Move = {}
+Move = Ai:new {}
 
 function Move:checkConditions(pAgent)
 	if (pAgent ~= nil) then
@@ -11,14 +11,6 @@ function Move:checkConditions(pAgent)
 	return false
 end
 
-function Move:start(pAgent)
-	return 0
-end
-
-function Move:terminate(pAgent)
-	return 0
-end
-
 function Move:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
@@ -27,13 +19,24 @@ function Move:doAction(pAgent)
 			agent:completeMove()
 		end
 		
-		if (agent:findNextPosition(agent:getMaxDistance(), true)) then
+		if (self:findNextPosition(pAgent)) then
 			return BEHAVIOR_RUNNING
 		else
 			return BEHAVIOR_SUCCESS
 		end
 	end
 	return BEHAVIOR_FAILURE
+end
+
+-- default action is to run
+function Move:findNextPosition(pAgent)
+	if (pAgent ~= nil) then
+		local agent = LuaAiAgent(pAgent)
+		if (agent:findNextPosition(agent:getMaxDistance(), false)) then
+			return true
+		end
+	end
+	return false
 end
 
 addAiBehavior("Move")

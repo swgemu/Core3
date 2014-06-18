@@ -281,6 +281,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("DISEASED", CreatureState::DISEASED);
 	luaEngine->setGlobalInt("ONFIRE", CreatureState::ONFIRE);
 	luaEngine->setGlobalInt("BLEEDING", CreatureState::BLEEDING);
+	luaEngine->setGlobalInt("PEACE", CreatureState::PEACE);
 
 	luaEngine->setGlobalInt("OPEN", ContainerPermissions::OPEN);
 	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);

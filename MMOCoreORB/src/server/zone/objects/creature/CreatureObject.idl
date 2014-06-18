@@ -1335,6 +1335,10 @@ class CreatureObject extends TangibleObject {
 	public CommandQueueActionVector getCommandQueue() {
 		return commandQueue;
 	}
+	
+	public int getCommandQueueSize() {
+		return commandQueue.size();
+	}
 
 	public float getRunSpeed() {
 		return runSpeed;

@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 
 #include "server/zone/templates/AiTemplate.h"
+#include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "server/zone/objects/creature/ai/bt/SequenceBehavior.h"
 #include "server/zone/objects/creature/ai/bt/SelectorBehavior.h"
@@ -110,6 +111,12 @@ private:
 		lua->setGlobalInt("NONDETERMINISTICSELECTORBEHAVIOR",AiMap::NONDETERMINISTICSELECTORBEHAVIOR);
 		lua->setGlobalInt("PARALLELSEQUENCEBEHAVIOR",AiMap::PARALLELSEQUENCEBEHAVIOR);
 		lua->setGlobalInt("PARALLELSELECTORBEHAVIOR",AiMap::PARALLELSELECTORBEHAVIOR);
+
+		lua->setGlobalInt("OBLIVIOUS",AiAgent::OBLIVIOUS);
+		lua->setGlobalInt("WATCHING",AiAgent::WATCHING);
+		lua->setGlobalInt("STALKING",AiAgent::STALKING);
+		lua->setGlobalInt("FOLLOWING",AiAgent::FOLLOWING);
+		lua->setGlobalInt("PATROLLING",AiAgent::PATROLLING);
 	}
 
 	static int includeFile(lua_State* L) {

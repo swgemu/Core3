@@ -1,8 +1,4 @@
-Wait10 = {}
-
-function Wait10:checkConditions(pAgent)
-	return true
-end
+Wait10 = Ai:new {}
 
 function Wait10:start(pAgent)
 	if (pAgent ~= nil) then
@@ -10,14 +6,6 @@ function Wait10:start(pAgent)
 		agent:setWait(10)
 	end
 	return 0
-end
-
-function Wait10:terminate(pAgent)
-	return 0
-end
-
-function Wait10:doAction(pAgent)
-	return BEHAVIOR_SUCCESS
 end
 
 addAiBehavior("Wait10")

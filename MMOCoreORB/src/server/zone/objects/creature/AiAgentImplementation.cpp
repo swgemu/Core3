@@ -351,21 +351,58 @@ void AiAgentImplementation::doRecovery() {
 		damageOverTimeList.activateDots(_this.get());
 	}
 
-	doAttack();
-
 	activateRecovery();
 }
 
-// TODO (dannuic): Move this logic into user-definable luas (as various behaviors)
-void AiAgentImplementation::doAttack() {
-	if (isDead() || getWeapon() == NULL) {
-		removeDefenders();
-
-		setFollowObject(NULL);
-
+void AiAgentImplementation::selectSpecialAttack() {
+	if (npcTemplate == NULL || npcTemplate->getAttacks() == NULL) {
+		selectDefaultAttack();
 		return;
 	}
 
+	CreatureAttackMap* attackMap = npcTemplate->getAttacks();
+	selectSpecialAttack(attackMap->getRandomAttackNumber());
+}
+
+void AiAgentImplementation::selectSpecialAttack(int attackNum) {
+	if (npcTemplate == NULL || npcTemplate->getAttacks() == NULL) {
+		selectDefaultAttack();
+		return;
+	}
+
+	CreatureAttackMap* attackMap = npcTemplate->getAttacks();
+
+	if (attackNum >= 0 && attackNum < attackMap->size()) {
+		String args = attackMap->getArguments(attackNum);
+		nextActionCRC = attackMap->getCommand(attackNum).hashCode();
+		nextActionArgs = attackMap->getArguments(attackNum);
+	} else
+		selectDefaultAttack();
+}
+
+void AiAgentImplementation::selectDefaultAttack() {
+	if (npcTemplate == NULL)
+		nextActionCRC = String("defaultattack").hashCode();
+	else
+		nextActionCRC = npcTemplate->getDefaultAttack().hashCode();
+
+	nextActionArgs = "";
+}
+
+void AiAgentImplementation::enqueueAttack() {
+	enqueueCommand(nextActionCRC, 0, followObject->getObjectID(), nextActionArgs);
+	nextActionCRC = 0;
+	nextActionArgs = "";
+}
+
+bool AiAgentImplementation::validateStateAttack() {
+	if (!followObject->isCreatureObject())
+		return false;
+
+	return validateStateAttack(cast<CreatureObject*>(followObject.get()), nextActionArgs);
+}
+
+bool AiAgentImplementation::getTargetFromMap() {
 	CreatureObject* target = getThreatMap()->getHighestThreatCreature();
 
 	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this.get()) < 128.f && target->isAttackableBy(_this.get()) && lastDamageReceived.miliDifference() < 20000)
@@ -375,7 +412,21 @@ void AiAgentImplementation::doAttack() {
 		target = NULL;
 	}
 
-	if (target == NULL && defenderList.size() > 0) {
+	if (target != followObject) {
+		//setDefender(target);
+		setFollowObject(target);
+
+		if (target != NULL)
+			setDefender(target);
+	}
+
+	return followObject != NULL;
+}
+
+bool AiAgentImplementation::getTargetFromDefenders() {
+	CreatureObject* target = NULL;
+
+	if (defenderList.size() > 0) {
 		for (int i = 0; i < defenderList.size(); ++i) {
 			SceneObject* tarObj = defenderList.get(i);
 
@@ -394,37 +445,6 @@ void AiAgentImplementation::doAttack() {
 		}
 	}
 
-	if (isDead()) {
-		if (target)
-			removeDefender(target);
-
-		return;
-	}
-
-	if (!isInCombat() || defenderList.size() <= 0 || target == NULL) {
-		tryRetreat();
-		activateRecovery();
-		return;
-	}
-
-	if (target != NULL && (!target->isInRange(_this.get(), 128) || !target->isAttackableBy(_this.get()) || target->isDead() || target->isIncapacitated()
-			|| (target->hasState(CreatureState::PEACE) && (System::random(level) == 1)))) {
-		//Locker clocker(target, _this.get());
-		/*if (defenderList.size() == 1 && defenderList.contains(target)) {
-			CombatManager::instance()->forcePeace(_this.get()); //calling this on target will cause a deadlock, needs to be called in a new task
-		} else*/
-
-		removeDefender(target);
-
-		activateRecovery();
-		return;
-	}
-
-	if (commandQueue->size() > 5) {
-		activateRecovery();
-		return;
-	}
-
 	if (target != followObject) {
 		//setDefender(target);
 		setFollowObject(target);
@@ -433,42 +453,11 @@ void AiAgentImplementation::doAttack() {
 			setDefender(target);
 	}
 
-	selectWeapon();
+	return followObject != NULL;
+}
 
-	if (npcTemplate != NULL && commandQueue->size() < 3) {
-		// do special attack
-		CreatureAttackMap* attackMap = npcTemplate->getAttacks();
-		int attackNum = attackMap->getRandomAttackNumber();
-
-		if (attackNum < 0 || attackNum >= attackMap->size()) {
-			enqueueCommand(npcTemplate->getDefaultAttack().hashCode(), 0, target->getObjectID(), "");
-		} else {
-			String args = attackMap->getArguments(attackNum);
-
-			if (!validateStateAttack(target, args)) {
-				// do default attack
-				enqueueCommand(npcTemplate->getDefaultAttack().hashCode(), 0, target->getObjectID(), "");
-			} else {
-				// queue special attack
-				unsigned int actionCRC = attackMap->getCommand(attackNum).hashCode();
-				enqueueCommand(actionCRC, 0, target->getObjectID(), args);
-
-				//if (System::random(4) == 0) {
-					// queue second special attack (rudimentary combo)
-					int secondAttackNum = attackMap->getRandomAttackNumber();
-					args = attackMap->getArguments(secondAttackNum);
-
-					if (validateStateAttack(target, args) && secondAttackNum != attackNum) {
-						actionCRC = attackMap->getCommand(attackNum).hashCode();
-						enqueueCommand(actionCRC, 0, target->getObjectID(), args);
-					} else {
-						enqueueCommand(npcTemplate->getDefaultAttack().hashCode(), 0, target->getObjectID(), "");
-					}
-				//}
-			}
-		}
-	} else if (npcTemplate == NULL)
-		enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
+bool AiAgentImplementation::validateTarget() {
+	return followObject != NULL && followObject->isInRange(_this.get(), 128) && followObject->isCreatureObject() && cast<CreatureObject*>(followObject.get())->isAttackableBy(_this.get()) && !cast<CreatureObject*>(followObject.get())->isDead() && !cast<CreatureObject*>(followObject.get())->isIncapacitated();
 }
 
 int AiAgentImplementation::notifyAttack(Observable* observable) {
@@ -507,8 +496,6 @@ void AiAgentImplementation::selectWeapon() {
 	float diff = 1024.f;
 	WeaponObject* finalWeap = getWeapon();
 
-	Vector<WeaponObject*> selections(5, 5);
-
 	for (int i = 0; i < weapons.size(); ++i) {
 		WeaponObject* weap = weapons.get(i);
 
@@ -523,13 +510,14 @@ void AiAgentImplementation::selectWeapon() {
 	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
 	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
-	if ((dist < 6) && (finalWeap->isRangedWeapon() || (finalWeap->isMeleeWeapon() && System::random(10) == 0))) {
+	// TODO (dannuic): this is an awful way to randomly not have a weapon. It would be far better to randomize the weapons vector on load in (based on some chance in the template lua)
+/*	if ((dist < 6) && (finalWeap->isRangedWeapon() || (finalWeap->isMeleeWeapon() && System::random(10) == 0))) {
 		float range = fabs(defaultWeapon->getIdealRange() - dist);
 
 		if (range < diff) {
 			finalWeap = defaultWeapon;
 		}
-	}
+	}*/
 
 	if (currentWeapon != finalWeap) {
 		if (currentWeapon != NULL && currentWeapon != defaultWeapon) {
@@ -548,6 +536,14 @@ void AiAgentImplementation::selectWeapon() {
 	}
 
 	//setWeapon(finalWeap, true);
+}
+
+void AiAgentImplementation::selectDefaultWeapon() {
+	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
+	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
+
+	if (currentWeapon != NULL && currentWeapon != defaultWeapon)
+		currentWeapon->destroyObjectFromWorld(false);
 }
 
 bool AiAgentImplementation::validateStateAttack(CreatureObject* target, String& args) {
@@ -657,7 +653,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 			getThreatMap()->dropDamage(cast<CreatureObject*>(defender));
 	}
 
-	if (followObject == defender) {
+/*	if (followObject == defender) {
 		CreatureObject* target = getThreatMap()->getHighestThreatCreature();
 
 		if (target == NULL && defenderList.size() > 0) {
@@ -671,7 +667,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 		} else  {
 			setDefender(target);
 		}
-	}
+	}*/
 
 	activateRecovery();
 }
@@ -688,7 +684,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 	if (threatMap != NULL)
 		threatMap->removeAll();
 
-	setOblivious();
+	//setOblivious();
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
@@ -1343,14 +1339,27 @@ float AiAgentImplementation::getMaxDistance() {
 }
 
 int AiAgentImplementation::setDestination() {
-	switch (followState) {
+	switch (followState) { // TODO (dannuic): Move all or most of this to BT luas
 	case AiAgent::OBLIVIOUS:
 		if (followObject)
 			setOblivious();
+
+		if (!homeLocation.isInRange(_this.get(), 1.5)) {
+			homeLocation.setReached(false);
+			clearPatrolPoints();
+			addPatrolPoint(homeLocation);
+		} else
+			homeLocation.setReached(true);
+
 		break;
 	case AiAgent::PATROLLING:
 		break;
 	case AiAgent::WATCHING:
+		if (followObject == NULL) {
+			setOblivious();
+			return setDestination();
+		}
+
 		setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent().get()); // sets patrolPoints[0] to current position
 		setDirection(atan2(followObject->getPositionX() - getPositionX(), followObject->getPositionX() - getPositionX()));
 		checkNewAngle(); // sends update zone packet
@@ -1359,6 +1368,11 @@ int AiAgentImplementation::setDestination() {
 		break;
 	case AiAgent::STALKING:
 	case AiAgent::FOLLOWING:
+		if (followObject == NULL) {
+			setOblivious();
+			return setDestination();
+		}
+
 		setNextPosition(followObject->getPositionX(), followObject->getPositionZ(), followObject->getPositionY(), followObject->getParent().get());
 		break;
 	default:
