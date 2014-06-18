@@ -77,12 +77,14 @@ public:
 			Reference<SceneObject*> object = server->getZoneServer()->getObject(target);
 			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object.get());
 
-			ManagedReference<Buff*> buff = new Buff(creatureTarget, getNameCRC(), 120, BuffType::JEDI);
-			buff->setAttributeModifier(CreatureAttribute::HEALTH, -600);
-			buff->setAttributeModifier(CreatureAttribute::ACTION, -600);
-			buff->setAttributeModifier(CreatureAttribute::MIND, -600);
+			if (creatureTarget != NULL) {
+				ManagedReference<Buff*> buff = new Buff(creatureTarget, getNameCRC(), 120, BuffType::JEDI);
+				buff->setAttributeModifier(CreatureAttribute::HEALTH, -600);
+				buff->setAttributeModifier(CreatureAttribute::ACTION, -600);
+				buff->setAttributeModifier(CreatureAttribute::MIND, -600);
 
-			creatureTarget->addBuff(buff);
+				creatureTarget->addBuff(buff);
+			}
 
 		}
 

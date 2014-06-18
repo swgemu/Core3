@@ -71,7 +71,12 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 	if( linkedCreature == NULL )
 		return;
 
-	msg->insertAttribute("@obj_attr_n:owner", linkedCreature->getFirstName());
+	StringBuffer fullName;
+	fullName << linkedCreature->getFirstName();
+	if(!linkedCreature->getLastName().isEmpty())
+		fullName << " " << linkedCreature->getLastName();
+
+	msg->insertAttribute("@obj_attr_n:owner", fullName.toString());
 
 }
 
