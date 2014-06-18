@@ -260,6 +260,10 @@ includeFile("quest/rori/zeelius_kraymunder.lua")
 includeFile("quest/rori/zeelius_partner.lua")
 
 -- Talus
+includeFile("quest/talus/champhra_agriculturalist.lua")
+includeFile("quest/talus/champhra_biahin.lua")
+includeFile("quest/talus/champhra_farmer.lua")
+includeFile("quest/talus/champhra_thug.lua")
 includeFile("quest/talus/kathikiis_assist.lua")
 includeFile("quest/talus/kathikiis_bh.lua")
 includeFile("quest/talus/kathikiis_ruwahurr.lua")

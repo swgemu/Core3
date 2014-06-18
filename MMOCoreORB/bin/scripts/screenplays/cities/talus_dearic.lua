@@ -95,7 +95,6 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "rebel_recruiter",60,17,3,-36,0,6255475)
 
 	--quest
-	spawnMobile("talus", "champhra_biahin",60,2.71297,0.184067,4.54045,204.639,3305354)
 	spawnMobile("talus", "hagrin_zeed",60,-35.3278,1.29422,-2.33246,90,6255471)
 	spawnMobile("talus", "haleen_snowline",60,-0.837967,3.11758,21.9704,245.493,6255466)
 	spawnMobile("talus", "mourno_draver",60,-21.1088,2.12878,74.7211,63.5207,3175573)
