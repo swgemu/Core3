@@ -64,5 +64,7 @@ int SarlaccMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 
 		return 1;
 	}
+
+	return 0;
 }
 
