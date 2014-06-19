@@ -117,6 +117,7 @@ createMissionTargetConvoTemplate("champhra_biahin_mission_target_convotemplate",
 createMissionTargetConvoTemplate("mourno_draver_mission_target_convotemplate","mourno_draver_mission_target_conv_handler")
 createMissionTargetConvoTemplate("kathikiis_ruwahurr_mission_target_convotemplate","kathikiis_ruwahurr_mission_target_conv_handler")
 createMissionTargetConvoTemplate("xalox_guul_mission_target_convotemplate","xalox_guul_mission_target_conv_handler")
+createMissionTargetConvoTemplate("hagrin_zeed_mission_target_convotemplate","hagrin_zeed_mission_target_conv_handler")
 
 
 -- Dantooine

@@ -255,7 +255,7 @@ createMissionGiverConvoTemplate("champhra_biahin_mission_giver_convotemplate", "
 createMissionGiverConvoTemplate("mourno_draver_mission_giver_convotemplate", "mourno_draver_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("kathikiis_ruwahurr_mission_giver_convotemplate", "kathikiis_ruwahurr_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("xalox_guul_mission_giver_convotemplate", "xalox_guul_mission_giver_conv_handler")
-
+createMissionGiverConvoTemplate("hagrin_zeed_mission_giver_convotemplate", "hagrin_zeed_mission_giver_conv_handler")
 
 -- Dantooine
 createMissionGiverConvoTemplate("drakka_judarrl_mission_giver_convotemplate", "drakka_judarrl_mission_giver_conv_handler")
