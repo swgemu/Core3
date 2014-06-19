@@ -6,10 +6,10 @@ function Wait10:start(pAgent)
 		agent:setWait(10)
 	end
 	
-	createObserver(DAMAGERECEIVED, "Move", "interrupt", pAgent)
-	createObserver(STARTCOMBAT, "Move", "interrupt", pAgent)
-	createObserver(DEFENDERADDED, "Move", "interrupt", pAgent)
-	createObserver(DEFENDERDROPPED, "Move", "interrupt", pAgent)
+	createObserver(DAMAGERECEIVED, "Wait10", "interrupt", pAgent)
+	createObserver(STARTCOMBAT, "Wait10", "interrupt", pAgent)
+	createObserver(DEFENDERADDED, "Wait10", "interrupt", pAgent)
+	createObserver(DEFENDERDROPPED, "Wait10", "interrupt", pAgent)
 	return 0
 end
 
