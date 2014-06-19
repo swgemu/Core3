@@ -25,6 +25,16 @@ function Ai:doAction(pAgent)
 	return BEHAVIOR_SUCCESS
 end
 
+function Ai:interrupt(pAgent)
+	self:terminate(pAgent)
+	if (pAgent ~= nil) then
+		local agent = LuaAiAgent(pAgent)
+		agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
+		agent:resetBehaviorList()
+		agent:executeBehavior()
+	end
+end
+
 --[[ Load Actions and Tasks ]]
 includeAiFile("actions/actions.lua")
 includeAiFile("tasks/tasks.lua")

@@ -63,6 +63,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "activateRecovery", &LuaAiAgent::activateRecovery },
 		{ "setBehaviorStatus", &LuaAiAgent::setBehaviorStatus },
 		{ "getBehaviorStatus", &LuaAiAgent::getBehaviorStatus },
+		{ "resetBehaviorList", &LuaAiAgent::resetBehaviorList },
+		{ "executeBehavior", &LuaAiAgent::executeBehavior },
 		{ "info", &LuaAiAgent::info },
 		{ "spatialChat", &LuaAiAgent::spatialChat },
 		{ 0, 0 }
@@ -369,6 +371,16 @@ int LuaAiAgent::getBehaviorStatus(lua_State* L) {
 	lua_pushnumber(L, realObject->getBehaviorStatus());
 
 	return 1;
+}
+
+int LuaAiAgent::resetBehaviorList(lua_State* L) {
+	realObject->resetBehaviorList();
+	return 0;
+}
+
+int LuaAiAgent::executeBehavior(lua_State* L) {
+	realObject->activateMovementEvent();
+	return 0;
 }
 
 int LuaAiAgent::info(lua_State* L) {

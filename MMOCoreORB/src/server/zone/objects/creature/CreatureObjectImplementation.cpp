@@ -119,7 +119,6 @@
 #include "server/zone/objects/player/events/LogoutTask.h"
 #include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
 
-#include "server/zone/objects/creature/ai/AiActor.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 #include "buffs/BuffDurationEvent.h"
@@ -716,8 +715,6 @@ void CreatureObjectImplementation::setCombatState() {
 }
 
 void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
-	if (isAiActor()) getActorObject()->next(AiActor::FORGOT);
-
 	//info("trying to clear CombatState");
 	if (stateBitmask & CreatureState::COMBAT) {
 		if (stateBitmask & CreatureState::PEACE)
@@ -956,12 +953,6 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	if (this->isIncapacitated() || this->isDead())
 		return 0;
-
-	if (isAiActor()) {
-		ManagedReference<AiActor*> actor = getActorObject();
-		actor->updateLastDamageReceived();
-		actor->next(AiActor::ATTACKED);
-	}
 
 	int currentValue = hamList.get(damageType);
 
@@ -2514,10 +2505,6 @@ Reference<PlayerObject*> CreatureObjectImplementation::getPlayerObject() {
 	return getSlottedObject("ghost").castTo<PlayerObject*> ();
 }
 
-AiActor* CreatureObjectImplementation::getActorObject() {
-	return dynamic_cast<AiActor*> (getSlottedObject("ghost").get());
-}
-
 bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	/*if (duelList.contains(object) && object.requestedDuelTo(this))
 	 return true;*/
@@ -2722,15 +2709,6 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 		playerManager->notifyDestruction(attacker, _this.get(), condition);
 	}
 
-	AiActor* actor = getActorObject();
-
-	if (actor != NULL) {
-		CreatureManager* creatureManager = getZone()->getCreatureManager();
-
-		// TODO: need to rewrite this for AiActor or CreatureObject
-		//creatureManager->notifyDestruction(attacker, host, condition);
-	}
-
 	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 
@@ -2815,7 +2793,7 @@ CampSiteActiveArea* CreatureObjectImplementation::getCurrentCamp() {
 }
 
 int CreatureObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (isDead() && isAiActor() && !isPet()) {
+	if (isDead() && !isPet()) {
 		switch (selectedID) {
 		case 35:
 			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "");

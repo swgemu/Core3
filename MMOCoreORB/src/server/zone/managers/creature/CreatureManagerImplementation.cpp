@@ -30,7 +30,6 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
-#include "server/zone/objects/creature/ai/AiActor.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/db/ServerDatabase.h"
@@ -241,7 +240,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithLevel(unsigned i
 }
 
 CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templateCRC, float x, float z, float y, SceneObject* cell, bool persistent) {
-	ManagedReference<SceneObject*> object = zoneServer->createObject(String("object/creature/ai/ai_actor.iff").hashCode(), persistent);
+/*	ManagedReference<SceneObject*> object = zoneServer->createObject(String("object/creature/ai/ai_actor.iff").hashCode(), persistent);
 	if (object == NULL || !object->isActorObject()) {
 		error("could not spawn actor");
 		return NULL;
@@ -259,7 +258,8 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templa
 
 	CreatureObject* host = actor->getHost();
 
-	return host;
+	return host;*/
+	return NULL;
 }
 
 String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {

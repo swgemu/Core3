@@ -13,6 +13,7 @@ public:
 	const static int LAIR = 1;
 	const static int IMAGEDESIGNPOSITION = 2;
 	const static int THEATER = 3;
+	const static int SCREENPLAY = 4;
 };
 
 #endif /* OBSERVERTYPE_H_ */

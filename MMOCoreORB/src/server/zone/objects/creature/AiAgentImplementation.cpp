@@ -5,57 +5,105 @@
  *      Author: victor
  */
 
-#include "server/zone/objects/creature/AiAgent.h"
+#include <engine/core/ManagedReference.h>
+#include <engine/core/ManagedWeakReference.h>
+#include <engine/util/Singleton.h>
+#include <engine/util/u3d/CloseObjectsVector.h>
+#include <engine/util/u3d/Coordinate.h>
+#include <engine/util/u3d/Quaternion.h>
+#include <engine/util/u3d/Triangle.h>
+#include <engine/util/u3d/Vector3.h>
+#include <system/io/StringTokenizer.h>
+#include <system/lang/IllegalArgumentException.h>
+#include <system/lang/ref/Reference.h>
+#include <system/lang/ref/WeakReference.h>
+#include <system/lang/String.h>
+#include <system/lang/StringBuffer.h>
+#include <system/lang/System.h>
+#include <system/lang/Time.h>
+#include <system/lang/UnicodeString.h>
+#include <system/platform.h>
+#include <system/thread/Locker.h>
+#include <system/thread/Mutex.h>
+#include <system/thread/ReadLocker.h>
+#include <system/util/ArrayList.h>
+#include <system/util/SortedVector.h>
+#include <system/util/Vector.h>
+#include <system/util/VectorMap.h>
+#include <cmath>
+#include <cstdlib>
 
-#include "events/AiThinkEvent.h"
-#include "events/AiMoveEvent.h"
-#include "events/AiWaitEvent.h"
+#include "../../../../autogen/server/zone/managers/creature/CreatureManager.h"
+#include "../../../../autogen/server/zone/managers/creature/PetManager.h"
+#include "../../../../autogen/server/zone/managers/planet/PlanetManager.h"
+#include "../../../../autogen/server/zone/managers/player/PlayerManager.h"
+#include "../../../../autogen/server/zone/objects/cell/CellObject.h"
+#include "../../../../autogen/server/zone/objects/creature/AiAgent.h"
+#include "../../../../autogen/server/zone/objects/creature/conversation/ConversationObserver.h"
+#include "../../../../autogen/server/zone/objects/player/PlayerObject.h"
+#include "../../../../autogen/server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "../../../../autogen/server/zone/Zone.h"
+#include "../../../../autogen/server/zone/ZoneProcessServer.h"
+#include "../../../../autogen/server/zone/ZoneServer.h"
+#include "../../managers/collision/CollisionManager.h"
+#include "../../managers/collision/PathFinderManager.h"
+#include "../../managers/combat/CombatManager.h"
+#include "../../managers/components/ComponentManager.h"
+#include "../../managers/conversation/ConversationManager.h"
+#include "../../managers/creature/AiMap.h"
+#include "../../managers/creature/CreatureTemplateManager.h"
+#include "../../managers/faction/FactionManager.h"
+#include "../../managers/name/NameManager.h"
+#include "../../managers/stringid/StringIdManager.h"
+#include "../../packets/object/StartNpcConversation.h"
+#include "../../packets/scene/AttributeListMessage.h"
+#include "../../packets/scene/LightUpdateTransformMessage.h"
+#include "../../packets/scene/LightUpdateTransformWithParentMessage.h"
+#include "../../packets/scene/UpdateTransformMessage.h"
+#include "../../packets/scene/UpdateTransformWithParentMessage.h"
+#include "../../templates/AiTemplate.h"
+#include "../../templates/mobile/CreatureTemplate.h"
+#include "../../templates/mobile/MobileOutfit.h"
+#include "../../templates/mobile/MobileOutfitGroup.h"
+#include "../../templates/SharedObjectTemplate.h"
+#include "../../ZoneReference.h"
+#include "../player/FactionStatus.h"
+#include "../scene/ObserverEventType.h"
+#include "../scene/variables/DeltaVector.h"
+#include "../scene/variables/StringId.h"
+#include "../scene/WorldCoordinates.h"
+#include "../tangible/threat/ThreatMap.h"
+#include "ai/bt/CompositeBehavior.h"
+#include "components/AiDefaultComponent.h"
+#include "CreatureAttribute.h"
+#include "CreatureFlag.h"
+#include "CreaturePosture.h"
+#include "CreatureState.h"
+#include "damageovertime/DamageOverTimeList.h"
 #include "events/AiAwarenessEvent.h"
-#include "events/RespawnCreatureTask.h"
-#include "events/DespawnCreatureOnPlayerDissappear.h"
-#include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/creature/CreatureManager.h"
-#include "server/zone/managers/conversation/ConversationManager.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/conversation/ConversationObserver.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/tangible/weapon/WeaponObject.h"
-#include "server/zone/objects/creature/ai/bt/Behavior.h"
-#include "server/zone/objects/creature/ai/bt/CompositeBehavior.h"
-#include "server/zone/managers/templates/TemplateManager.h"
-#include "server/zone/templates/mobile/CreatureTemplate.h"
-#include "server/zone/templates/AiTemplate.h"
-#include "server/zone/managers/creature/CreatureTemplateManager.h"
-#include "server/zone/managers/creature/PetManager.h"
-#include "server/zone/managers/combat/CombatManager.h"
-#include "server/zone/managers/faction/FactionManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/loot/LootManager.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
-#include "server/zone/managers/name/NameManager.h"
-#include "server/zone/managers/collision/PathFinderManager.h"
-#include "server/zone/managers/collision/CollisionManager.h"
-#include "server/zone/packets/scene/UpdateTransformMessage.h"
-#include "server/zone/packets/scene/LightUpdateTransformMessage.h"
-#include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
-#include "server/zone/packets/scene/UpdateTransformWithParentMessage.h"
-#include "server/zone/packets/object/StringList.h"
-#include "server/zone/packets/object/NpcConversationMessage.h"
-#include "server/zone/packets/object/StartNpcConversation.h"
-#include "server/zone/packets/object/StopNpcConversation.h"
-#include "server/zone/objects/creature/events/DespawnCreatureTask.h"
-#include "server/zone/Zone.h"
-#include "server/zone/ZoneServer.h"
-#include "PatrolPoint.h"
-#include "server/zone/templates/appearance/PortalLayout.h"
-#include "server/zone/templates/appearance/FloorMesh.h"
-#include "server/zone/objects/tangible/threat/ThreatMap.h"
-#include "server/zone/packets/ui/CreateClientPathMessage.h"
-#include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
-#include "server/zone/managers/components/ComponentManager.h"
-#include "server/zone/objects/creature/components/AiDefaultComponent.h"
+#include "events/AiMoveEvent.h"
+#include "events/AiThinkEvent.h"
+#include "events/AiWaitEvent.h"
 #include "events/CamoTask.h"
+#include "events/DespawnCreatureOnPlayerDissappear.h"
+#include "events/DespawnCreatureTask.h"
+#include "events/RespawnCreatureTask.h"
+#include "PatrolPoint.h"
+#include "PatrolPointsVector.h"
+//#include "server/zone/managers/loot/LootManager.h"
+//#include "server/zone/managers/templates/TemplateManager.h"
+//#include "server/zone/objects/creature/ai/bt/Behavior.h"
+//#include "server/zone/objects/creature/CreatureObject.h"
+//#include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
+//#include "server/zone/packets/object/NpcConversationMessage.h"
+//#include "server/zone/packets/object/StopNpcConversation.h"
+//#include "server/zone/packets/object/StringList.h"
+//#include "server/zone/packets/ui/CreateClientPathMessage.h"
+//#include "server/zone/templates/appearance/FloorMesh.h"
+//#include "server/zone/templates/appearance/PortalLayout.h"
+#include "variables/CreatureAttackMap.h"
+#include "variables/CreatureTemplateReference.h"
+#include "variables/CurrentFoundPath.h"
 
 
 //#define SHOW_WALK_PATH
@@ -351,7 +399,15 @@ void AiAgentImplementation::doRecovery() {
 		damageOverTimeList.activateDots(_this.get());
 	}
 
-	activateRecovery();
+	// we only want to activate recovery if we need to -- it will restart when we need it
+	if (defenderList.size() > 0 || damageOverTimeList.hasDot()
+			|| getHAM(CreatureAttribute::HEALTH) < getMaxHAM(CreatureAttribute::HEALTH)
+			|| getHAM(CreatureAttribute::ACTION) < getMaxHAM(CreatureAttribute::ACTION)
+			|| getHAM(CreatureAttribute::MIND) < getMaxHAM(CreatureAttribute::MIND)
+			|| getWounds(CreatureAttribute::CONSTITUTION) > 0 || getWounds(CreatureAttribute::STRENGTH) > 0
+			|| getWounds(CreatureAttribute::QUICKNESS) > 0 || getWounds(CreatureAttribute::STAMINA) > 0
+			|| getWounds(CreatureAttribute::FOCUS) > 0 || getWounds(CreatureAttribute::WILLPOWER) > 0)
+		activateRecovery();
 }
 
 void AiAgentImplementation::selectSpecialAttack() {
@@ -653,7 +709,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 			getThreatMap()->dropDamage(cast<CreatureObject*>(defender));
 	}
 
-/*	if (followObject == defender) {
+	if (followObject == defender) {
 		CreatureObject* target = getThreatMap()->getHighestThreatCreature();
 
 		if (target == NULL && defenderList.size() > 0) {
@@ -662,12 +718,9 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 				target = cast<CreatureObject*>(tarObj);
 		}
 
-		if (target == NULL) {
-			setOblivious();
-		} else  {
+		if (target != NULL)
 			setDefender(target);
-		}
-	}*/
+	}
 
 	activateRecovery();
 }
@@ -1056,6 +1109,22 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				patrolPoints.add(oldPoint);
 			}
 
+			if (isRetreating())
+				homeLocation.setReached(true);
+
+			if (isFleeing())
+				fleeing = false;
+
+			if (followObject == NULL)
+				notifyObservers(ObserverEventType::DESTINATIONREACHED);
+
+			currentSpeed = 0;
+
+			completeMove();
+
+			if (followObject != NULL && !(isRetreating() || isFleeing()))
+				checkNewAngle();
+
 			return false;
 		}
 
@@ -1235,13 +1304,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		nextStepPosition.setPosition(nextPosition->getX(), nextPosition->getZ(), nextPosition->getY());
 		nextStepPosition.setCell(nextPosition->getCell());
 
-		float directionangle = atan2(nextPosition->getX() - getPositionX(), nextPosition->getY() - getPositionY());
-
-		if (directionangle < 0)
-			directionangle = 2 * M_PI + directionangle;
-
-		direction.setHeadingDirection(directionangle);
-
 		nextStepPosition.setReached(false);
 
 		// Tell the clients where to expect us next tick -- requires that we have found a destination
@@ -1259,7 +1321,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
 		currentSpeed = 0;
+
+		completeMove();
 	}
+
+	if (followObject != NULL && !(isRetreating() || isFleeing()))
+		checkNewAngle();
 
 	delete nextPosition;
 
@@ -1361,9 +1428,8 @@ int AiAgentImplementation::setDestination() {
 		}
 
 		setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent().get()); // sets patrolPoints[0] to current position
-		setDirection(atan2(followObject->getPositionX() - getPositionX(), followObject->getPositionX() - getPositionX()));
 		checkNewAngle(); // sends update zone packet
-		if (patrolPoints.size() > 0) // FIXME (dannuic): this should always be true, and it seems redundant. Why do we need to update zone twice when we know we don't move? Is there a creep issue?
+		if (patrolPoints.size() > 0)
 			updateCurrentPosition(&patrolPoints.get(0));
 		break;
 	case AiAgent::STALKING:
@@ -2098,4 +2164,6 @@ void AiAgentImplementation::addBehaviorToTree(Behavior* b, CompositeBehavior* pa
  */
 void AiAgentImplementation::resetBehaviorList() {
 	tree = root;
+	tree->setStatus(AiMap::SUSPEND);
+	moveEvent->cancel();
 }

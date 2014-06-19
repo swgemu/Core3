@@ -20,7 +20,6 @@
 #include "server/zone/objects/creature/ai/bt/ParallelSequenceBehavior.h"
 #include "server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.h"
 #include "server/zone/objects/creature/ai/bt/LuaBehavior.h"
-#include "server/zone/objects/creature/ai/bt/LuaSequence.h"
 
 class AiMap : public Singleton<AiMap>, public Logger, public Object {
 public:

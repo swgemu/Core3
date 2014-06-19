@@ -68,6 +68,8 @@ namespace creature {
 		int activateRecovery(lua_State* L);
 		int setBehaviorStatus(lua_State* L);
 		int getBehaviorStatus(lua_State* L);
+		int resetBehaviorList(lua_State* L);
+		int executeBehavior(lua_State* L);
 		int info(lua_State* L);
 		int spatialChat(lua_State* L);
 	private:

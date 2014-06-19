@@ -320,7 +320,6 @@ core3_IDLS =	autogen/server/zone/managers/creature/TheaterSpawnObserver.cpp \
 				autogen/server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
 				autogen/server/zone/objects/tangible/ticket/TicketObject.cpp \
 				autogen/server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp \
-				autogen/server/zone/objects/creature/ai/AiActor.cpp \
 				autogen/server/zone/managers/gcw/GCWManager.cpp \
 				autogen/server/zone/objects/tangible/threat/ThreatMapObserver.cpp \
 				autogen/server/zone/objects/creature/conversation/ConversationObserver.cpp \
@@ -623,14 +622,12 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/commands/QueueCommand.cpp \
 		server/zone/objects/creature/LuaCreatureObject.cpp \
 		server/zone/objects/creature/LuaAiAgent.cpp \
-		server/zone/objects/creature/ai/components/AiStateComponent.cpp \
 		server/zone/objects/scene/LuaSceneObject.cpp \
 		server/zone/managers/sui/LuaSuiManager.cpp \
 		server/zone/objects/player/sui/LuaSuiBox.cpp \
 		server/zone/objects/creature/DroidObjectImplementation.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
-		server/zone/objects/creature/ai/bt/BehaviorTree.cpp \
 		server/zone/objects/creature/ai/bt/Behavior.cpp \
 		server/zone/objects/creature/ai/bt/CompositeBehavior.cpp \
 		server/zone/objects/creature/ai/bt/SequenceBehavior.cpp \
@@ -639,10 +636,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/ai/bt/ParallelBehavior.cpp \
 		server/zone/objects/creature/ai/bt/ParallelSequenceBehavior.cpp \
 		server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.cpp \
-		server/zone/objects/creature/ai/AiActorImplementation.cpp \
-		server/zone/objects/creature/ai/LuaAiActor.cpp \
 		server/zone/objects/creature/ai/bt/LuaBehavior.cpp \
-		server/zone/objects/creature/ai/bt/LuaSequence.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/LairGroupImplementation.cpp \

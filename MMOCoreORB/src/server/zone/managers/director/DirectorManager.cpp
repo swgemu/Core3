@@ -40,7 +40,6 @@
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/LuaAiAgent.h"
-#include "server/zone/objects/creature/ai/LuaAiActor.h"
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "server/zone/objects/area/LuaActiveArea.h"
 #include "server/zone/templates/mobile/ConversationScreen.h"
@@ -150,6 +149,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "createServerEvent", createServerEvent);
 	lua_register(luaEngine->getLuaState(), "hasServerEvent", hasServerEvent);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
+	lua_register(luaEngine->getLuaState(), "dropObserver", dropObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spawnMobileRandom", spawnMobileRandom);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
@@ -447,7 +447,6 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaSuiBox>::Register(luaEngine->getLuaState());
 	Luna<LuaObjectMenuResponse>::Register(luaEngine->getLuaState());
 	Luna<LuaDeed>::Register(luaEngine->getLuaState());
-	Luna<LuaAiActor>::Register(luaEngine->getLuaState());
 	Luna<LuaCityRegion>::Register(luaEngine->getLuaState());
 	Luna<LuaStringIdChatParameter>::Register(luaEngine->getLuaState());
 }
@@ -1704,8 +1703,29 @@ int DirectorManager::createObserver(lua_State* L) {
 	ManagedReference<ScreenPlayObserver*> observer = dynamic_cast<ScreenPlayObserver*>(ObjectManager::instance()->createObject("ScreenPlayObserver", 0, ""));
 	observer->setScreenPlay(play);
 	observer->setScreenKey(key);
+	observer->setObserverType(ObserverType::SCREENPLAY);
 
 	sceneObject->registerObserver(eventType, observer);
+
+	return 0;
+}
+
+int DirectorManager::dropObserver(lua_State* L) {
+	if (checkArgumentCount(L, 2) > 0) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::dropObserver");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	SceneObject* sceneObject = (SceneObject*) lua_touserdata(L, -1);
+	uint32 eventType = lua_tonumber(L, -2);
+
+	SortedVector<ManagedReference<Observer* > > observers = sceneObject->getObservers(eventType);
+	for (int i = 0; i < observers.size(); i++) {
+		Observer* observer = observers.get(i);
+		if (observer != NULL && observer->isObserverType(ObserverType::SCREENPLAY))
+			sceneObject->dropObserver(eventType, observer);
+	}
 
 	return 0;
 }
