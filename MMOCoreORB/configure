@@ -600,6 +600,7 @@ USER_LIBS_PATH
 USER_INCLUDES_PATH
 SYSTEM_LIBS
 SYSTEM_INCLUDES
+USING_HOMEBREW
 EGREP
 GREP
 CPP
@@ -5069,6 +5070,42 @@ fi
 
 
 #AC_CHECK_HEADER(db_cxx.h, [], [AC_MSG_ERROR([*** db_cxx.h is required, install berkleydb header files])])	 AC_CHECK_HEADER([mysql/mysql.h], [], [AC_MSG_ERROR([*** mysql.h is required, install mysql header files])])
+# Extract the first word of "brew", so it can be a program name with args.
+set dummy brew; ac_word=$2
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+$as_echo_n "checking for $ac_word... " >&6; }
+if test "${ac_cv_prog_USING_HOMEBREW+set}" = set; then :
+  $as_echo_n "(cached) " >&6
+else
+  if test -n "$USING_HOMEBREW"; then
+  ac_cv_prog_USING_HOMEBREW="$USING_HOMEBREW" # Let the user override the test.
+else
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  test -z "$as_dir" && as_dir=.
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if { test -f "$as_dir/$ac_word$ac_exec_ext" && $as_test_x "$as_dir/$ac_word$ac_exec_ext"; }; then
+    ac_cv_prog_USING_HOMEBREW="yes"
+    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+fi
+fi
+USING_HOMEBREW=$ac_cv_prog_USING_HOMEBREW
+if test -n "$USING_HOMEBREW"; then
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $USING_HOMEBREW" >&5
+$as_echo "$USING_HOMEBREW" >&6; }
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+fi
+
 
 #AC_CHECK_LIB(liblua, lua_open, [], [AC_MSG_ERROR([*** libblua.a is required, install lua library files])])
 #AC_CHECK_LIB(libmysqlclient, mysql_init, [], [AC_MSG_ERROR([*** libmysqlclient.a is required, install mysql library files])])
@@ -5082,10 +5119,27 @@ case "$host_cpu-$host_os" in
       USER_LIBS_PATH="/usr/local/lib"
       ;;
      *darwin*)
-      SYSTEM_INCLUDES="-I/opt/local/include"
-      SYSTEM_LIBS="-lpthread"
-      USER_INCLUDES_PATH="/opt/local/include"
-      USER_LIBS_PATH="/opt/local/lib"
+	  if test x"${USING_HOMEBREW}" == x"yes" ; then
+
+$as_echo "#define HAS_HOMEBREW /**/" >>confdefs.h
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: \"configuring for homebrew paths\"" >&5
+$as_echo "\"configuring for homebrew paths\"" >&6; }
+      	SYSTEM_INCLUDES="-I/usr/local/include"
+      	SYSTEM_LIBS="-lpthread"
+      	USER_INCLUDES_PATH="/usr/local/include"
+      	USER_LIBS_PATH="/usr/local/lib"
+	  else
+
+$as_echo "#define HAS_MACPORTS /**/" >>confdefs.h
+
+		{ $as_echo "$as_me:${as_lineno-$LINENO}: result: \"configuring for macports paths\"" >&5
+$as_echo "\"configuring for macports paths\"" >&6; }
+      	SYSTEM_INCLUDES="-I/opt/local/include"
+      	SYSTEM_LIBS="-lpthread"
+      	USER_INCLUDES_PATH="/opt/local/include"
+      	USER_LIBS_PATH="/opt/local/lib"
+	  fi
       ;;
     *cygwin*)
       SYSTEM_INCLUDES=""
@@ -6728,3 +6782,5 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
 $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
+
+

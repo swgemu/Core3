@@ -62,7 +62,7 @@ function mission_target_conv_handler:handleScreenNotIt(pConversationTemplate, pC
 	pConversationScreen = screen:cloneScreen()
 	local clonedScreen = LuaConversationScreen(pConversationScreen)
 
-	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
+	local npcNumber = self.themePark:getActiveNpcNumber(pConversingNpc)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 

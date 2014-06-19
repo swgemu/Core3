@@ -970,6 +970,7 @@ ThemeParkRebel = ThemeParkLogic:new {
 	screenPlayState = "rebel_theme_park",
 	missionDescriptionStf = "@theme_park_rebel/quest_details:rebel_hideout_",
 	missionCompletionMessageStf = "@theme_park/messages:rebel_completion_message",
+	distance = 200,
 	faction = FACTIONREBEL
 }
 
