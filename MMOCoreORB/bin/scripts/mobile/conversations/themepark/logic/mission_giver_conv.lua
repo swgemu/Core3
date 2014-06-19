@@ -252,6 +252,7 @@ createMissionGiverConvoTemplate("vana_sage_mission_giver_convotemplate", "vana_s
 
 -- Talus
 createMissionGiverConvoTemplate("champhra_biahin_mission_giver_convotemplate", "champhra_biahin_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("mourno_draver_mission_giver_convotemplate", "mourno_draver_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("kathikiis_ruwahurr_mission_giver_convotemplate", "kathikiis_ruwahurr_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("xalox_guul_mission_giver_convotemplate", "xalox_guul_mission_giver_conv_handler")
 
