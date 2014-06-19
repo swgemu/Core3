@@ -15,7 +15,6 @@ gavyn_sykes_missions =
 	},
 	{
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "large_berzerk_ikopi", planetName = "naboo", npcName = "Large Berzerk Ikopi" } 
@@ -46,7 +45,6 @@ gavyn_sykes_missions =
 	},
 	{ 
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "gungan_leader", planetName = "naboo", npcName = "Gungan Leader" } 

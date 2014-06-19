@@ -2,7 +2,6 @@ magur_torigai_missions =
 {
 	{ 
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "giant_gubber", planetName = "rori", npcName = "" }
@@ -22,7 +21,6 @@ magur_torigai_missions =
 	},
 	{
 		missionType = "assassinate", 
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "guf_drolg", planetName = "rori", npcName = "" }	

@@ -22,7 +22,6 @@ hefsen_zindalai_missions =
 	},
 	{
 		missionType = "escort",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "runaway_gualama", planetName = "rori", npcName = "a runaway gualama" }

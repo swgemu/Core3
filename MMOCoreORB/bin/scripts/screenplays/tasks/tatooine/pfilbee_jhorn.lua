@@ -2,7 +2,6 @@ pfilbee_jhorn_missions =
 {
 	{ 
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "greater_desert_womp_rat", planetName = "tatooine", npcName = "a greater desert womp rat" } 
@@ -16,7 +15,6 @@ pfilbee_jhorn_missions =
 	},
 	{
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "tatooine_mynock", planetName = "tatooine", npcName = "a tatooine mynock" } 
@@ -30,7 +28,6 @@ pfilbee_jhorn_missions =
 	},
 	{
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "dragonet", planetName = "tatooine", npcName = "a dragonet" } 
@@ -45,7 +42,6 @@ pfilbee_jhorn_missions =
 	},	
 	{
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "dune_lizard", planetName = "tatooine", npcName = "a dune lizard" } 

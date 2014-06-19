@@ -2,7 +2,6 @@ mat_rags_missions =
 {
 	{ 
 		missionType = "confiscate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "mat_rags_desert_squill", planetName = "tatooine", npcName = "desert squill" } 
@@ -19,7 +18,6 @@ mat_rags_missions =
 	},
 	{
 		missionType = "confiscate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "mat_rags_greater_desert_womp_rat", planetName = "tatooine", npcName = "a greater desert womp rat" } 
@@ -36,7 +34,6 @@ mat_rags_missions =
 	},
 	{
 		missionType = "confiscate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "mat_rags_bantha_matriarch", planetName = "tatooine", npcName = "a bantha matriarch" } 
@@ -53,7 +50,6 @@ mat_rags_missions =
 	},	
 	{
 		missionType = "confiscate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "mat_rags_grizzled_dewback", planetName = "tatooine", npcName = "a grizzled dewback" } 

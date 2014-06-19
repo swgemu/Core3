@@ -2,7 +2,6 @@ huff_zinga_missions =
 	{
 		{
 			missionType = "assassinate",
-			silentTarget = "yes",
 			primarySpawns =
 			{
 				{ npcTemplate = "huff_blistmok", planetName = "naboo", npcName = "Adult blistmok" }
@@ -16,7 +15,6 @@ huff_zinga_missions =
 		},
 		{
 			missionType = "assassinate",
-			silentTarget = "yes",
 			primarySpawns =
 			{
 				{ npcTemplate = "bocatt", planetName = "naboo", npcName = "Bocatt" }
@@ -30,7 +28,6 @@ huff_zinga_missions =
 		},
 		{
 			missionType = "assassinate",
-			silentTarget = "yes",
 			primarySpawns =
 			{
 				{ npcTemplate = "sharptooth_langlatch", planetName = "naboo", npcName = "Langlatch" }
@@ -44,7 +41,6 @@ huff_zinga_missions =
 		},
 		{
 			missionType = "assassinate",
-			silentTarget = "yes",
 			primarySpawns =
 			{
 				{ npcTemplate = "grassland_slice_hound", planetName = "naboo", npcName = "Corellian Slice Hound" }

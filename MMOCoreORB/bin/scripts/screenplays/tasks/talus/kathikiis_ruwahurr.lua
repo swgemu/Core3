@@ -19,8 +19,7 @@ kathikiis_ruwahurr_missions =
 		}
 	},
 	{
-		missionType = "assassinate", 
-		silentTarget = "no",					
+		missionType = "assassinate", 				
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "kathikiis_bh", planetName = "talus", npcName = "a Bounty Hunter" } 

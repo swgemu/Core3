@@ -2,7 +2,6 @@ sloan_rusper_missions =
 {
 	{ 
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "deadly_forest_mite_guardian", planetName = "rori", npcName = "" } 

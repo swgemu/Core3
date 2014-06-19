@@ -39,7 +39,6 @@ vana_sage_missions =
 		},
 		{
 			missionType = "assassinate",
-			silentTarget = "yes",
 			primarySpawns =
 			{
 				{ npcTemplate = "gungan_leader", planetName = "naboo", npcName = "Gungan Leader" }

@@ -22,7 +22,6 @@ raglith_missions =
 	},
 	{
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns =
 		{
 			{ npcTemplate = "lantern_bird", planetName = "endor", npcName = "" }
@@ -72,7 +71,6 @@ fightmaster_jorak_missions =
 {
 	{
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns =
 		{
 			{ npcTemplate = "bloodseeker_mite", planetName = "endor", npcName = "" }
@@ -92,7 +90,6 @@ fightmaster_jorak_missions =
 	},
 	{
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns =
 		{
 			{ npcTemplate = "crimson_blurrg", planetName = "endor", npcName = "" }
@@ -112,7 +109,6 @@ fightmaster_jorak_missions =
 	},
 	{
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns =
 		{
 			{ npcTemplate = "deranged_mantigrue", planetName = "endor", npcName = "" }
@@ -263,7 +259,6 @@ scholar_szingo_missions =
 	},
 	{
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns =
 		{
 			{ npcTemplate = "arachne_webmaster", planetName = "endor", npcName = "" }

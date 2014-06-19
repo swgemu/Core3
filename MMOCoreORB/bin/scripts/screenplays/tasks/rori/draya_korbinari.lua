@@ -2,7 +2,6 @@ draya_korbinari_missions =
 {
 	{
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns =
 		{ 
 			{ npcTemplate = "tusk_cat", planetName = "rori", npcName = "a Tusk Cat" }
