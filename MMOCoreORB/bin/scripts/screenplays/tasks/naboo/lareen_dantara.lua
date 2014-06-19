@@ -2,7 +2,6 @@ lareen_dantara_missions =
 {
 	{
 		missionType = "assassinate", 
-		silentTarget = "yes",	
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "krahbu", planetName = "naboo", npcName = "a Crazy Krahbu" } 
@@ -15,8 +14,7 @@ lareen_dantara_missions =
 		}
 	},
 	{
-		missionType = "assassinate", 
-		silentTarget = "yes",		
+		missionType = "assassinate", 		
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "mott", planetName = "naboo", npcName = "a Infected Mott" } 

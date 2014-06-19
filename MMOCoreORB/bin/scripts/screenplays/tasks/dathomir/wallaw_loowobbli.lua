@@ -2,7 +2,6 @@ wallaw_loowobbli_missions =
   {
     {
       missionType = "escort",
-      silentTarget = "yes",
       primarySpawns =
       {
         { npcTemplate = "wallaw_bull_rancor", planetName = "dathomir", npcName = "Bull Rancor" }

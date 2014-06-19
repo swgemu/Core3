@@ -411,6 +411,11 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 	if pConversingPlayer == nil then
 		return false
 	end
+	
+	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
+	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local stfFile = self:getStfFile(npcNumber)
+			
 	local creature = LuaCreatureObject(pConversingPlayer)
 	local numberOfSpawns = table.getn(mission.primarySpawns) + table.getn(mission.secondarySpawns)
 
@@ -426,7 +431,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 		local pNpc = self:spawnNpc(mainNpcs[i], spawnPoints[i], pConversingPlayer, i)
 		if pNpc ~= nil then
 			if i == 1 then
-				if (mission.silentTarget ~= "yes") then
+				if (self:isValidConvoString(stfFile, ":npc_breech_" .. missionNumber)) then
 					local pBreechArea = spawnSceneObject(mainNpcs[i].planetName, "object/active_area.iff", spawnPoints[i][1], spawnPoints[i][2], spawnPoints[i][3], 0, 0, 0, 0, 0)
 					ObjectManager.withActiveArea(pBreechArea, function(activeArea)
 						activeArea:setRadius(50)

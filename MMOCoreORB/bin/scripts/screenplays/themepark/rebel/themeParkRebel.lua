@@ -758,7 +758,6 @@ luke_missions =
 	},
 	{
 		missionType = "confiscate", 
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_rebel_big_creature", planetName = "yavin4", npcName = "Big Creature" }
@@ -788,7 +787,6 @@ luke_missions =
 	},
 	{
 		missionType = "confiscate",  
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_rebel_big_creature_cage", planetName = "yavin4", npcName = "Big Creature" }

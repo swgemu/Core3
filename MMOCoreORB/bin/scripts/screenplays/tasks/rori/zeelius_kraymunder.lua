@@ -2,7 +2,6 @@ zeelius_kraymunder_missions =
 {
 	{ 
 		missionType = "assassinate",
-		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "hermit_spider", planetName = "rori", npcName = "Hermit Spider" } 

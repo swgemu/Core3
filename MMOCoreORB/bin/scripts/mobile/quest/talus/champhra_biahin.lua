@@ -1,6 +1,5 @@
-hagrin_zeed = Creature:new {
-	objectName = "",
-	customName = "Hagrin Zeed",
+champhra_biahin = Creature:new {
+	objectName = "@mob/creature_names:champhra_biahin",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -23,16 +22,16 @@ hagrin_zeed = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_hagrin_zeed.iff"},
+	templates = {"object/mobile/dressed_champhra_biahin.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "champhra_biahin_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(hagrin_zeed, "hagrin_zeed")
+CreatureTemplates:addCreatureTemplate(champhra_biahin, "champhra_biahin")

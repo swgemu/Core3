@@ -1,0 +1,36 @@
+champhra_farmer = Creature:new {
+	objectName = "",
+	socialGroup = "",
+	pvpFaction = "",
+	faction = "",
+	level = 17,
+	chanceHit = 0.32,
+	damageMin = 170,
+	damageMax = 180,
+	baseXp = 1257,
+	baseHAM = 3500,
+	baseHAMmax = 4300,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,0,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
+	diet = HERBIVORE,
+
+	templates = { "object/mobile/dressed_quest_farmer.iff" },
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "champhra_biahin_mission_target_convotemplate",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(champhra_farmer, "champhra_farmer")
