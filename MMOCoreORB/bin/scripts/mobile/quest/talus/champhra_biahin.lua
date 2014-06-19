@@ -22,14 +22,14 @@ champhra_biahin = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_champhra_biahin.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "champhra_biahin_mission_giver_convotemplate",
 	attacks = {
 	}
 }
