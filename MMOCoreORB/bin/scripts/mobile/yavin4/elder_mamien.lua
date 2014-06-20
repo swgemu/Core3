@@ -27,6 +27,7 @@ elder_mamien = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mamien.iff"},
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
