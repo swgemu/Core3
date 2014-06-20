@@ -27,6 +27,7 @@ diseased_nuna = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/nuna_hue.iff"},
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

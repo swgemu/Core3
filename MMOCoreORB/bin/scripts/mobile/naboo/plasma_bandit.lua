@@ -1,4 +1,4 @@
-plasma_bantid = Creature:new {
+plasma_bandit = Creature:new {
 	objectName = "",
 	customName = "a Plasma Bandit",
 	socialGroup = "plasma_thief",
@@ -44,4 +44,4 @@ plasma_bantid = Creature:new {
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(plasma_bantid, "plasma_bantid")
+CreatureTemplates:addCreatureTemplate(plasma_bandit, "plasma_bandit")

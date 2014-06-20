@@ -28,6 +28,7 @@ elder_pulverizer = Creature:new {
 
 	templates = {"object/mobile/bolle_bol_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bolle_bol_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
