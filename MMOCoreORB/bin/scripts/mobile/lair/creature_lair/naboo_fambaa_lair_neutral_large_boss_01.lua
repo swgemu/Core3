@@ -1,12 +1,12 @@
 naboo_fambaa_lair_neutral_large_boss_01 = Lair:new {
-	mobiles = {{"fambaa", 1}},
-	bossMobiles = {{"furious_devastator", 1}},
+	mobiles = {{"fambaa",1}},
+	bossMobiles = {{"furious_devastator",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_thicket_large.iff"},
-	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_thicket_large.iff"},
-	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_thicket_large.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_thicket_large.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_thicket_large.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_red.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_red.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_red.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_red.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_red.iff"},
 }
 
 addLairTemplate("naboo_fambaa_lair_neutral_large_boss_01", naboo_fambaa_lair_neutral_large_boss_01)

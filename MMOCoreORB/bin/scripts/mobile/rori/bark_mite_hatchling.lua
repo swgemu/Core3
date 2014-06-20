@@ -27,6 +27,7 @@ bark_mite_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite_hatchling.iff"},
+	scale = 0.85,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
