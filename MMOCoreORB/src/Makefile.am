@@ -51,8 +51,8 @@ GMOCK_PATH=../../../utils/gmock-1.6.0
 
 AUTOGEN_PATH=../../../src/autogen
 
-CC = clang
-CXX = clang++
+#CC = clang
+#CXX = clang++
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
