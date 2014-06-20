@@ -27,6 +27,7 @@ kliknik_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik_hatchling.iff"},
+	scale = 0.65,
 	lootGroups = {
 	 {
 	        groups = {

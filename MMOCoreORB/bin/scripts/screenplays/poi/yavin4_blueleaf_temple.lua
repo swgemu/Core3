@@ -42,12 +42,12 @@ end
 
 function BlueleafTempleScreenPlay:spawnMobiles()
 	-- Outside Temple	
-	spawnMobile("yavin4", "kliknik",600,-895.6,84.8,-2059,-139,0)
-	spawnMobile("yavin4", "kliknik",600,-896.2,84.8,-2064.1,42,0)
-	spawnMobile("yavin4", "kliknik",600,-892.3,84.8,-2062.4,-109,0)
-	spawnMobile("yavin4", "kliknik",600,-884.4,84.8,-2026.1,-96,0)
-	spawnMobile("yavin4", "kliknik",600,-888.5,84.8,-2023.3,155,0)
-	spawnMobile("yavin4", "kliknik",600,-888.6,84.8,-2028.8,35,0)
+	spawnMobile("yavin4", "kliknik_dark_hunter",600,-895.6,84.8,-2059,-139,0)
+	spawnMobile("yavin4", "kliknik_dark_hunter",600,-896.2,84.8,-2064.1,42,0)
+	spawnMobile("yavin4", "kliknik_dark_hunter",600,-892.3,84.8,-2062.4,-109,0)
+	spawnMobile("yavin4", "kliknik_dark_hunter",600,-884.4,84.8,-2026.1,-96,0)
+	spawnMobile("yavin4", "kliknik_dark_hunter",600,-888.5,84.8,-2023.3,155,0)
+	spawnMobile("yavin4", "kliknik_dark_hunter",600,-888.6,84.8,-2028.8,35,0)
 	
 	-- Inside Temple
 	spawnMobile("yavin4", "kliknik_dark_defender",600,-9,-37.3,-9,48,468319)
@@ -64,6 +64,6 @@ function BlueleafTempleScreenPlay:spawnMobiles()
 	spawnMobile("yavin4", "kliknik_dark_worker",600,12.1,-1.3,-23.4,21,468319)
 	spawnMobile("yavin4", "kliknik_dark_worker",600,23.4,-1.3,11,-77,468319)
 	
-	spawnMobile("yavin4", "kliknik_warrior",600,12.4,-1.3,32.4,-93,468318)
-	spawnMobile("yavin4", "kliknik_warrior",600,-12.8,-1.3,32,93,468318)
+	spawnMobile("yavin4", "kliknik_dark_warrior",600,12.4,-1.3,32.4,-93,468318)
+	spawnMobile("yavin4", "kliknik_dark_warrior",600,-12.8,-1.3,32,93,468318)
 end

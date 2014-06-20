@@ -28,6 +28,7 @@ mamien_jungle_lord = Creature:new {
 
 	templates = {"object/mobile/mamien_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/mamien_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

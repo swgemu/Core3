@@ -28,6 +28,7 @@ kliknik = Creature:new {
 
 	templates = {"object/mobile/kliknik.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kliknik_hue.iff",
+	scale = 0.9,
 	lootGroups = {
 	    {
 	        groups = {
