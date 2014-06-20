@@ -28,6 +28,7 @@ grizzled_bark_mite = Creature:new {
 
 	templates = {"object/mobile/bark_mite.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
