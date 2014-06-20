@@ -77,9 +77,10 @@ TEST_F(ZoneTest, TreLoad) {
 
 	ASSERT_EQ(TemplateManager::ERROR_CODE, 0);
 
-	TemplateManager::instance()->loadLuaTemplates();
-
-	ASSERT_EQ(TemplateManager::ERROR_CODE, 0);
+	if (TemplateManager::instance()->loadedTemplatesCount == 0) {
+		TemplateManager::instance()->loadLuaTemplates();
+		ASSERT_EQ(TemplateManager::ERROR_CODE, 0);
+	}
 }
 
 TEST_F(ZoneTest, InRangeTest) {
