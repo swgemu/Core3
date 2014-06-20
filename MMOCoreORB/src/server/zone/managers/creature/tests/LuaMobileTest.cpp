@@ -11,12 +11,16 @@
 #include "server/zone/managers/loot/LootGroupMap.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollectionEntry.h"
+#include "server/conf/ConfigManager.h"
+#include "server/zone/managers/templates/DataArchiveStore.h"
 
 class LuaMobileTest : public ::testing::Test {
 public:
 
 	LuaMobileTest() {
 		// Perform creation setup here.
+		ConfigManager::instance()->loadConfigData();
+		DataArchiveStore::instance()->loadTres(ConfigManager::instance()->getTrePath(), ConfigManager::instance()->getTreFiles());
 	}
 
 	~LuaMobileTest() {
@@ -78,6 +82,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	ASSERT_TRUE( TemplateManager::instance() != NULL );
 	if( TemplateManager::instance()->loadedTemplatesCount == 0 ){
 		TemplateManager::instance()->loadLuaTemplates();
+		ASSERT_EQ(TemplateManager::ERROR_CODE, 0);
 	}
 
 	// Test Creature Templates
