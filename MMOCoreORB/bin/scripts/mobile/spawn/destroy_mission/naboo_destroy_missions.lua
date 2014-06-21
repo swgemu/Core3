@@ -86,12 +86,6 @@ naboo_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "naboo_gualama_herd_neutral_none",
-			minDifficulty = 13,
-			maxDifficulty = 17,
-			size = 25,
-		},
-		{
 			lairTemplateName = "tusk_cat_grassland",
 			minDifficulty = 14,
 			maxDifficulty = 20,

@@ -28,6 +28,7 @@ swamp_stalker = Creature:new {
 
 	templates = {"object/mobile/male_swamp_tusk_cat.iff", "object/mobile/female_swamp_tusk_cat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/tusk_cat_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

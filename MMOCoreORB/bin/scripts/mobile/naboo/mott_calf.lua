@@ -27,6 +27,7 @@ mott_calf = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mott_calf.iff"},
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
