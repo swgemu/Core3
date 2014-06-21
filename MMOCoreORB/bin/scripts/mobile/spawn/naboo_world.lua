@@ -103,15 +103,6 @@ naboo_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_mott_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 11,
-			maxDifficulty = 11,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "naboo_bark_mite_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 10,
@@ -188,15 +179,6 @@ naboo_world = {
 			spawnLimit = -1,
 			minDifficulty = 15,
 			maxDifficulty = 15,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "naboo_gualama_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 14,
-			maxDifficulty = 14,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -283,25 +265,7 @@ naboo_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_fanned_rawl_hunter_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 24,
-			maxDifficulty = 24,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "naboo_bolle_bol_lair_neutral_large",
-			spawnLimit = -1,
-			minDifficulty = 27,
-			maxDifficulty = 27,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "naboo_bolle_bol_herd_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 27,
 			maxDifficulty = 27,

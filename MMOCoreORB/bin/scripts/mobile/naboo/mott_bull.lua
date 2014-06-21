@@ -28,6 +28,7 @@
 
 	templates = {"object/mobile/mott_bull.iff"},
 	controlDeviceTemplate = "object/intangible/pet/mott_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

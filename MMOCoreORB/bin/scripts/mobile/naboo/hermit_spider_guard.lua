@@ -27,6 +27,7 @@ hermit_spider_guard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hermit_spider_hue.iff"},
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

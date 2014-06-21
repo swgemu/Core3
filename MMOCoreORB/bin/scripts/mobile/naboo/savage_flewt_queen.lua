@@ -27,6 +27,7 @@ savage_flewt_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/savage_flewt_queen.iff"},
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

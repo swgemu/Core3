@@ -27,6 +27,7 @@ massive_gnort = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gnort_hue.iff"},
+	scale = 2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
