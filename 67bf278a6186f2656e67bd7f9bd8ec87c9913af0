@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_b202c6b2",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lok/trained_veermok.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-21T08:05:04Z",
+      "side": 1,
+      "message": "+ ENEMY\n\nDo the same for all of the pirates.",
+      "revId": "67bf278a6186f2656e67bd7f9bd8ec87c9913af0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
