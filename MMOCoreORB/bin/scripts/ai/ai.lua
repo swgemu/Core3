@@ -1,4 +1,4 @@
-package.path = package.path .. ";scripts/ai/?.lua"
+package.path = package.path .. ";scripts/ai/actions/?.lua;scripts/ai/tasks/?.lua;scripts/ai/templates/?.lua;scripts/ai/?.lua"
 local ObjectManager = require("managers.object.object_manager")
 Ai = { }
 
@@ -34,8 +34,3 @@ function Ai:interrupt(pAgent)
 		agent:executeBehavior()
 	end
 end
-
---[[ Load Actions and Tasks ]]
-includeAiFile("actions/actions.lua")
-includeAiFile("tasks/tasks.lua")
-includeAiFile("templates/templates.lua")

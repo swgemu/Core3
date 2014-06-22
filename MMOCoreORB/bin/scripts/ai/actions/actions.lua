@@ -1,3 +1,4 @@
+includeAiFile("actions/none.lua")
 includeAiFile("actions/succeed.lua")
 includeAiFile("actions/failure.lua")
 includeAiFile("actions/move.lua")
