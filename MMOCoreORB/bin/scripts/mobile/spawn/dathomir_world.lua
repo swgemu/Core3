@@ -22,8 +22,7 @@ dathomir_world = {
 			size = 25
 		},
 		{
-			--lowland brackaset always have level = 10
-			lairTemplateName = "dathomir_brackaset_herd_neutral_none",
+			lairTemplateName = "dathomir_brackaset_family_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 10,
@@ -65,16 +64,6 @@ dathomir_world = {
 			maxDifficulty = 19,
 			numberToSpawn = 0,
 			weighting = 30,
-			size = 25
-		},
-		{
-			--3 types of bolma in this lair ranging from level 19 to 27
-			lairTemplateName = "dathomir_bolma_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 19,
-			maxDifficulty = 27,
-			numberToSpawn = 0,
-			weighting = 20,
 			size = 25
 		},
 		{
@@ -150,7 +139,7 @@ dathomir_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dathomir_brackaset_surefoot_neutral_none",
+			lairTemplateName = "dathomir_brackaset_surefoot_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 46,
 			maxDifficulty = 46,
@@ -159,7 +148,7 @@ dathomir_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dathomir_kamurith_nocuous_neutral_none",
+			lairTemplateName = "dathomir_kamurith_nocuous_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 46,
 			maxDifficulty = 46,
@@ -222,8 +211,7 @@ dathomir_world = {
 			size = 25
 		},
 		{
-			--multiple mobs in this lair, leaving the range 70-95
-			lairTemplateName = "dathomir_malkloc_plainswalker_neutral_none",
+			lairTemplateName = "dathomir_malkloc_bull_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 70,
 			maxDifficulty = 95,
