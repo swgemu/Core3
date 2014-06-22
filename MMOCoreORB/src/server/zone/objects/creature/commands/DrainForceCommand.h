@@ -72,7 +72,7 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isCreatureObject())
+		if (object == NULL || !object->isCreatureObject() || object->isDead())
 			return INVALIDTARGET;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
@@ -91,7 +91,7 @@ public:
 		if (targetCreature->isAiAgent())
 			return INVALIDTARGET;
 
-		if (targetGhost != NULL && targetGhost->getForcePower() < 0) {
+		if (targetGhost->getForcePower() < 0) {
 			creature->sendSystemMessage("@jedi_spam:target_no_force");
 			return GENERALERROR;
 		}
@@ -99,6 +99,8 @@ public:
 		if (targetGhost->getForcePower() > 0 && targetCreature->isAttackableBy(creature)) {
 			targetGhost->setForcePower(targetGhost->getForcePower() - 100);
 			playerObject->setForcePower(playerObject->getForcePower() + 100);
+			
+			//why?
 			return doCombatAction(creature, target);
 		}
 

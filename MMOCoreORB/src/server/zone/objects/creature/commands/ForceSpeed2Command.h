@@ -75,7 +75,7 @@ public:
 
 
 		// Force cost of skill.
-		int forceCost = 100;
+		int forceCost = 300;
 
 
 		//Check for and deduct Force cost.
@@ -94,7 +94,7 @@ public:
 		StringIdChatParameter startStringId("jedi_spam", "apply_forcespeed2");
 		StringIdChatParameter endStringId("jedi_spam", "remove_forcespeed2");
 
-		int duration = 420;
+		int duration = 360;
 
 		ManagedReference<Buff*> buff = new Buff(creature, buffcrc2, duration, BuffType::JEDI);
 		buff->setStartMessage(startStringId);

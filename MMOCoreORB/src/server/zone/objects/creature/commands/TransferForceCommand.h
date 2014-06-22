@@ -71,7 +71,7 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isCreatureObject())
+		if (object == NULL || !object->isCreatureObject() || object->isDead())
 			return INVALIDTARGET;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
@@ -93,6 +93,8 @@ public:
 		if (targetGhost->getForcePower() > 0  && targetCreature->isHealableBy(creature)) {
 			targetGhost->setForcePower(targetGhost->getForcePower() + 200);
 			playerObject->setForcePower(playerObject->getForcePower() - 200);
+			
+			//why??
 			creature->doCombatAnimation(targetCreature,String("force_transfer_1").hashCode(),0,0xFF);
 		}
 
