@@ -1,11 +1,12 @@
 dantooine_bol_herd_neutral_none = Lair:new {
-	mobiles = {{"lesser_plains_bol", 1}},
+	mobiles = {{"bol_pack_runner", 2},{"swift_charging_bol", 1},{"baby_bol", 1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
-	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
-	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff","object/tangible/lair/base/poi_all_lair_rocks_large.iff"}
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("dantooine_bol_herd_neutral_none", dantooine_bol_herd_neutral_none)
