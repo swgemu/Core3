@@ -40,6 +40,10 @@ public:
 
 	HashTable<String, Reference<AiTemplate*> > aiMap;
 	HashTable<String, Reference<LuaBehavior*> > behaviors;
+	HashTable<unsigned int, Reference<AiTemplate*> > getTargets;
+	HashTable<unsigned int, Reference<AiTemplate*> > selectAttacks;
+	HashTable<unsigned int, Reference<AiTemplate*> > combatMoves;
+	HashTable<unsigned int, Reference<AiTemplate*> > idles;
 
 	AiMap() : Logger("AiMap") {
 		aiMap.setNullValue(NULL);
@@ -60,7 +64,12 @@ public:
 
 		if (DEBUG_MODE)
 			info("Initializing...", true);
-		lua->runFile("scripts/ai/ai.lua");
+		lua->runFile("scripts/ai/ais.lua");
+
+		putTemplate(lua, "getTarget", &getTargets);
+		putTemplate(lua, "selectAttack", &selectAttacks);
+		putTemplate(lua, "combatMove", &combatMoves);
+		putTemplate(lua, "idle", &idles);
 	}
 
 	int getTemplateSize() {
@@ -85,6 +94,22 @@ public:
 
 	Reference<LuaBehavior*> getBehavior(String name) {
 		return behaviors.get(name);
+	}
+
+	Reference<AiTemplate*> getGetTargetTemplate(unsigned int bitMask) {
+		return getTemplate(bitMask, getTargets);
+	}
+
+	Reference<AiTemplate*> getSelectAttackTemplate(unsigned int bitMask) {
+		return getTemplate(bitMask, selectAttacks);
+	}
+
+	Reference<AiTemplate*> getCombatMoveTemplate(unsigned int bitMask) {
+		return getTemplate(bitMask, combatMoves);
+	}
+
+	Reference<AiTemplate*> getIdleTemplate(unsigned int bitMask) {
+		return getTemplate(bitMask, idles);
 	}
 
 private:
@@ -116,6 +141,34 @@ private:
 		lua->setGlobalInt("STALKING",AiAgent::STALKING);
 		lua->setGlobalInt("FOLLOWING",AiAgent::FOLLOWING);
 		lua->setGlobalInt("PATROLLING",AiAgent::PATROLLING);
+	}
+
+	void putTemplate(Lua* lua, String key, HashTable<unsigned int, Reference<AiTemplate*> >* table) {
+		LuaObject obj = lua->getGlobalObject(key);
+		if (obj.isValidTable()) {
+			for (int i = 1; i <= obj.getTableSize(); i++) {
+				lua_rawgeti(lua->getLuaState(), -1, i);
+				LuaObject temp(lua->getLuaState());
+				table->put(temp.getIntAt(1), AiMap::instance()->getTemplate(temp.getStringAt(2)));
+				temp.pop();
+			}
+		}
+	}
+
+	Reference<AiTemplate*> getTemplate(unsigned int bitMask, HashTable<unsigned int, Reference<AiTemplate*> > table) {
+		HashTableIterator<unsigned int, Reference<AiTemplate*> > iter = table.iterator();
+
+		unsigned int key;
+		Reference<AiTemplate*> val;
+
+		while (iter.hasNext()) {
+			iter.getNextKeyAndValue(key, val);
+
+			if ((key & bitMask) == key)
+				return table.get(key);
+		}
+
+		return table.get(CreatureFlag::NONE); // this is the default template, but the flow shouldn't get here because 0 & anything == 0
 	}
 
 	static int includeFile(lua_State* L) {

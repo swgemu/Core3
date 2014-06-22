@@ -547,6 +547,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	// path from our position to path node
 	Vector<Triangle*>* trianglePath = NULL;
 
+	// FIXME (dannuic): can nodes only have 1 entry? ArrayOutOfBoundsException for nodes->get(1)
 	int res = getFloorPath(pointA.getPoint(), nodes->get(1)->getPosition(), floorMesh1, trianglePath);
 
 	if (res != -1 && trianglePath != NULL)

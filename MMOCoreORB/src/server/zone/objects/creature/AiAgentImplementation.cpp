@@ -104,6 +104,7 @@
 #include "variables/CreatureAttackMap.h"
 #include "variables/CreatureTemplateReference.h"
 #include "variables/CurrentFoundPath.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 
 //#define SHOW_WALK_PATH
@@ -140,7 +141,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		closeobjects = NULL;
 
 	optionsBitmask = npcTemplate->getOptionsBitmask();
-	//npcTemplate->getCreatureBitmask(); -- TODO: need to add a bitmask for AI (pack, herd, etc)
+	creatureBitmask = npcTemplate->getCreatureBitmask(); // TODO: need to add a bitmask for AI (pack, herd, etc)
 	level = npcTemplate->getLevel();
 
 	float minDmg = calculateAttackMinDamage(level);
@@ -293,8 +294,18 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	}
 
 	// TODO (dannuic): load the AI template from the creature template. For now, just use an example template
-	if (pvpStatusBitmask & CreatureFlag::ATTACKABLE)
-		setupBehaviorTree(AiMap::instance()->getTemplate("example"));
+/*	if (pvpStatusBitmask & CreatureFlag::ATTACKABLE)
+		setupBehaviorTree(AiMap::instance()->getTemplate("example"));*/
+
+	// need to make sure that our templates are loaded in this thread (since lua is not thread-safe)
+	DirectorManager::instance()->getLuaInstance();
+
+	AiTemplate* getTarget = AiMap::instance()->getGetTargetTemplate(creatureBitmask);
+	AiTemplate* selectAttack = AiMap::instance()->getSelectAttackTemplate(creatureBitmask);
+	AiTemplate* combatMove = AiMap::instance()->getCombatMoveTemplate(creatureBitmask);
+	AiTemplate* idle = AiMap::instance()->getIdleTemplate(creatureBitmask);
+
+	setupBehaviorTree(getTarget, selectAttack, combatMove, idle);
 }
 
 void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
@@ -2070,7 +2081,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 
 	Vector<Reference<LuaAiTemplate*> > treeTemplate = aiTemplate->getTree();
 
-	VectorMap<String, Reference<Behavior*> > behaviors; // Behaviors keyed with id
+	VectorMap<String, Behavior*> behaviors; // Behaviors keyed with id
 	behaviors.put("none", NULL);
 
 	VectorMap<String, Vector<String> > parents; // id's keyed by parents
@@ -2078,9 +2089,13 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 
 	// first build the maps
 	for (int i=0; i < treeTemplate.size(); i++) {
-		Reference<LuaAiTemplate*> temp = treeTemplate.get(i);
-		Reference<Behavior*> behavior = AiMap::createNewInstance(_this.get(), temp->className, temp->classType);
-		//System::out << temp->className << " " << temp->id << " " << npcTemplate->getTemplateName() << endl;
+		LuaAiTemplate* temp = treeTemplate.get(i).get();
+		if (temp == NULL) {
+			error("Null template");
+			//continue;
+		}
+
+		Behavior* behavior = AiMap::createNewInstance(_this.get(), temp->className, temp->classType);
 		behaviors.put(temp->id, behavior);
 
 		Vector<String> ids = parents.get(temp->parent);
@@ -2094,7 +2109,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 		if (element.getKey() == "none") // this is the parent of the root node, just skip it.
 			continue;
 
-		Behavior* b = behaviors.get(element.getKey()).get();
+		Behavior* b = behaviors.get(element.getKey());
 
 		if (b == NULL || !b->isComposite()) { // parent is not composite, this will probably break the tree
 			error("Failed to load " + element.getKey() + " as a parent in tree: " + aiTemplate->getTemplateName());
@@ -2131,14 +2146,34 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 		return;
 	}
 
-	setCurrentBehavior(rootBehavior);
 	root = rootBehavior;
+	setCurrentBehavior(rootBehavior);
+}
+
+void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate* selectAttack, AiTemplate* combatMove, AiTemplate* idle) {
+	CompositeBehavior* rootSelector = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), "Composite", AiMap::SELECTORBEHAVIOR));
+	CompositeBehavior* attackSequence = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), "Composite", AiMap::SEQUENCEBEHAVIOR));
+
+	addBehaviorToTree(attackSequence, rootSelector);
+
+	setupBehaviorTree(getTarget);
+	addBehaviorToTree(root, attackSequence);
+
+	setupBehaviorTree(selectAttack);
+	addBehaviorToTree(root, attackSequence);
+
+	setupBehaviorTree(combatMove);
+	addBehaviorToTree(root, attackSequence);
+
+	setupBehaviorTree(idle);
+	addBehaviorToTree(root, rootSelector);
+
+	root = rootSelector;
+	setCurrentBehavior(rootSelector);
 }
 
 void AiAgentImplementation::setCurrentBehavior(Behavior* b) {
 	tree = b;
-	if (tree != NULL && !tree->started())
-		tree->start();
 }
 
 int AiAgentImplementation::getBehaviorStatus() {
@@ -2167,4 +2202,26 @@ void AiAgentImplementation::resetBehaviorList() {
 	tree = root;
 	tree->setStatus(AiMap::SUSPEND);
 	moveEvent->cancel();
+}
+
+void AiAgentImplementation::clearBehaviorList() {
+	resetBehaviorList();
+	clearBehavior(root);
+	root = NULL;
+}
+
+void AiAgentImplementation::clearBehavior(Behavior* b) {
+	if (b == NULL)
+		return;
+
+	if (b->isComposite()) {
+		CompositeBehavior* cb = cast<CompositeBehavior*>(b);
+		Vector<Reference<Behavior*> > children = cb->getChildren();
+		for (int i = 0; i < children.size(); i++)
+			clearBehavior(children.get(i));
+
+		cb->clearChildren();
+	}
+
+	b->setParent(NULL);
 }

@@ -161,6 +161,7 @@ class AiAgent extends CreatureObject {
 	
 	@dereferenced
 	protected transient string templateName;
+	protected unsigned int creatureBitmask;
 	
 	protected int waitTime;
 	
@@ -832,6 +833,9 @@ class AiAgent extends CreatureObject {
 	
 	@local
 	public native void setupBehaviorTree(AiTemplate aiTemplate);
+	
+	@local
+	public native void setupBehaviorTree(AiTemplate getTarget, AiTemplate selectAttack, AiTemplate combatMove, AiTemplate idle);
 
 	@local
 	public native void setCurrentBehavior(Behavior b);
@@ -847,6 +851,12 @@ class AiAgent extends CreatureObject {
 
 	@local
 	public native void resetBehaviorList();
+	
+	@local
+	public native void clearBehaviorList();
+	
+	@local
+	private native void clearBehavior(Behavior b);
 
 	public native void setHomeObject(SceneObject home) {
 		homeObject = home;
