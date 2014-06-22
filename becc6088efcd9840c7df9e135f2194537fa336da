@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_b2ac068e",
+        "filename": "MMOCoreORB/bin/scripts/mobile/spawn/dantooine_world.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-22T08:26:49Z",
+      "side": 1,
+      "message": "Don\u0027t have this lair listed twice in the same spawn area.",
+      "revId": "becc6088efcd9840c7df9e135f2194537fa336da",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
