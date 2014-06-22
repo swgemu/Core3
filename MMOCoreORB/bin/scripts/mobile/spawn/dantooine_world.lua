@@ -77,16 +77,6 @@ dantooine_world = {
 			size = 25
 		},
 		{
-			--piket_plains_walker level = 32
-			lairTemplateName = "dantooine_piket_plains_walker_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 32,
-			maxDifficulty = 32,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "dantooine_quenker_bile_drenched_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 34,
@@ -124,18 +114,8 @@ dantooine_world = {
 			size = 25
 		},
 		{
-			--picket_longhorn_female level = 30, picket_longhorn level = 37
-			lairTemplateName = "dantooine_piket_longhorn_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 37,
-			maxDifficulty = 37,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			--hostile_thune_mother level = 30, thune_grassland_guardian level = 40
-			lairTemplateName = "dantooine_thune_guardian_neutral_none",
+			--thune
+			lairTemplateName = "dantooine_thune_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 40,
 			maxDifficulty = 40,
@@ -144,8 +124,8 @@ dantooine_world = {
 			size = 25
 		},
 		{
-			--hostile_thune_mother level = 30, thune_herd_leader level = 48
-			lairTemplateName = "dantooine_thune_herd_neutral_none",
+			--thune
+			lairTemplateName = "dantooine_thune_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 48,
 			maxDifficulty = 48,
@@ -164,8 +144,8 @@ dantooine_world = {
 			size = 25
 		},
 		{
-			--fierce_picket_protector level = 45
-			lairTemplateName = "dantooine_piket_protector_herd_neutral_none",
+			--piket_longhorn, piket_longhorn_female, piket
+			lairTemplateName = "dantooine_piket_longhorn_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 45,
 			maxDifficulty = 45,
@@ -174,7 +154,7 @@ dantooine_world = {
 			size = 25
 		},
 		{
-			--fierce_picket_protector level = 45, enraged_defendor level = 49
+			--fierce_picket_protector level = 45
 			lairTemplateName = "dantooine_picket_protector_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 49,
