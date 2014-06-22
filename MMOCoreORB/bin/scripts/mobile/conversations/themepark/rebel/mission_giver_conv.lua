@@ -254,4 +254,4 @@ createMissionGiverConvoTemplate("ruwan_tokai_mission_giver_convotemplate","ruwan
 
 --Corellia
 createMissionGiverConvoTemplate("diktatGiverConvo","diktatGiverHandler")
-
+createMissionGiverConvoTemplate("kirkin_giver_convo","kirkin_giver_handler")

@@ -153,6 +153,6 @@ createMissionTargetConvoTemplate("gins_darone_mission_target_convotemplate","gin
 createMissionTargetConvoTemplate("lian_byrne_mission_target_convotemplate","lian_byrne_mission_target_conv_handler")
 createMissionTargetConvoTemplate("ruwan_tokai_mission_target_convotemplate","ruwan_tokai_mission_target_conv_handler")
 
--- Corellia
+--Corellia
 createMissionTargetConvoTemplate("diktatTargetConvo","diktatTargetHandler")
-
+createMissionTargetConvoTemplate("kirkin_target_convo","kirkin_target_handler")
