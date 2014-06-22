@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_32825601",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/talus/nurla_slinthiss.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-22T07:16:33Z",
+      "side": 1,
+      "message": "This is too close.",
+      "revId": "51427ba15ce03f5c5eb65dfaed8f661882eaf760",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
