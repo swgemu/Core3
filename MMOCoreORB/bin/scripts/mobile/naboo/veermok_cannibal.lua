@@ -28,6 +28,7 @@ veermok_cannibal = Creature:new {
 
 	templates = {"object/mobile/veermok_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/veermok_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

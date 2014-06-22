@@ -27,6 +27,7 @@ poisonous_krevol_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/poisonous_krevol_queen.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",

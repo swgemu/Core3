@@ -28,6 +28,7 @@ veermok_sentry = Creature:new {
 
 	templates = {"object/mobile/veermok_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/veermok_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

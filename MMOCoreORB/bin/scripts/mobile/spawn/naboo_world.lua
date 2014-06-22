@@ -166,33 +166,6 @@ naboo_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_peko_peko_solitary_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 14,
-			maxDifficulty = 14,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "naboo_krevol_click_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 15,
-			maxDifficulty = 15,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "naboo_veermok_rangers_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 17,
-			maxDifficulty = 17,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "naboo_plains_tusk_cat_pride_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 16,
@@ -229,37 +202,10 @@ naboo_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_narglatch_male_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 22,
-			maxDifficulty = 22,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "naboo_veermok_camp_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 22,
 			maxDifficulty = 22,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "naboo_sharupat_pack_diseased_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 22,
-			maxDifficulty = 22,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "naboo_peko_peko_giant_pair_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 23,
-			maxDifficulty = 23,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -305,15 +251,6 @@ naboo_world = {
 			spawnLimit = -1,
 			minDifficulty = 16,
 			maxDifficulty = 16,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "naboo_nightspider_lair_neutral_small",
-			spawnLimit = -1,
-			minDifficulty = 7,
-			maxDifficulty = 7,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
