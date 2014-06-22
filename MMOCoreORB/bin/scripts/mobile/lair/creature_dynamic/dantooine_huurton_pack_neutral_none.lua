@@ -2,11 +2,12 @@
 dantooine_huurton_pack_neutral_none = Lair:new {
 	mobiles = {{"huurton", 1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/huurton/lair_huurton.iff"},
-	buildingsEasy = {"object/tangible/lair/huurton/lair_huurton.iff"},
-	buildingsMedium = {"object/tangible/lair/huurton/lair_huurton.iff"},
-	buildingsHard = {"object/tangible/lair/huurton/lair_huurton.iff"},
-	buildingsVeryHard = {"object/tangible/lair/huurton/lair_huurton.iff"}
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("dantooine_huurton_pack_neutral_none", dantooine_huurton_pack_neutral_none)

@@ -5,7 +5,7 @@ dantooine_world = {
 	lairSpawns = {
 		{
 			--Lesser Plains Bol always has level = 10 (non ch mount creature)
-			lairTemplateName = "dantooine_bol_herd_neutral_none",
+			lairTemplateName = "dantooine_bol_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 10,
 			maxDifficulty = 10,
@@ -23,7 +23,7 @@ dantooine_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dantooine_huurton_pack_neutral_none",
+			lairTemplateName = "dantooine_huurton_howler_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 18,
 			maxDifficulty = 18,
@@ -179,16 +179,6 @@ dantooine_world = {
 			spawnLimit = -1,
 			minDifficulty = 49,
 			maxDifficulty = 49,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			--seething_bol_crusher level = 44
-			lairTemplateName = "dantooine_bol_seething_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 44,
-			maxDifficulty = 44,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
