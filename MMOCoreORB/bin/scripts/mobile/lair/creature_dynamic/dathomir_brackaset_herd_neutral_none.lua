@@ -1,11 +1,12 @@
 dathomir_brackaset_herd_neutral_none = Lair:new {
-	mobiles = {{"lowland_brackaset", 1}},
+	mobiles = {{"brackaset",2},{"brackaset_female",2},{"brackaset_male",2},{"infant_brackaset",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/brackaset/lair_brackaset.iff"},
-	buildingsEasy = {"object/tangible/lair/brackaset/lair_brackaset.iff"},
-	buildingsMedium = {"object/tangible/lair/brackaset/lair_brackaset.iff"},
-	buildingsHard = {"object/tangible/lair/brackaset/lair_brackaset.iff"},
-	buildingsVeryHard = {"object/tangible/lair/brackaset/lair_brackaset.iff"},
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("dathomir_brackaset_herd_neutral_none", dathomir_brackaset_herd_neutral_none)
