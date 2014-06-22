@@ -1,11 +1,12 @@
 dathomir_reptilian_enraged_flyer_flock_neutral_none = Lair:new {
-	mobiles = {{"enraged_reptilian_flier", 1}},
+	mobiles = {{"enraged_reptilian_flier", 1},{"reptilian_flier", 1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/bramble_dark.iff"},
-	buildingsEasy = {"object/tangible/lair/base/bramble_dark.iff"},
-	buildingsMedium = {"object/tangible/lair/base/bramble_dark.iff"},
-	buildingsHard = {"object/tangible/lair/base/bramble_dark.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/bramble_dark.iff"},
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("dathomir_reptilian_enraged_flyer_flock_neutral_none", dathomir_reptilian_enraged_flyer_flock_neutral_none)
