@@ -2,11 +2,12 @@
 dathomir_reptilian_flyer_flock_neutral_none = Lair:new {
 	mobiles = {{"reptilian_flier", 1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large_fog_green.iff"},
-	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large_fog_green.iff"},
-	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rocks_large_fog_green.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rocks_large_fog_green.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rocks_large_fog_green.iff"}
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("dathomir_reptilian_flyer_flock_neutral_none", dathomir_reptilian_flyer_flock_neutral_none)

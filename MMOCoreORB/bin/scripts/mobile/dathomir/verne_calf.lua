@@ -1,4 +1,4 @@
-verne_call = Creature:new {
+verne_calf = Creature:new {
 	objectName = "@mob/creature_names:verne_calf",
 	socialGroup = "verne",
 	pvpFaction = "",
@@ -34,4 +34,4 @@ verne_call = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(verne_call, "verne_call")
+CreatureTemplates:addCreatureTemplate(verne_calf, "verne_calf")

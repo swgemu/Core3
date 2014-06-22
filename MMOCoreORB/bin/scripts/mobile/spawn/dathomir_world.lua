@@ -4,7 +4,7 @@ dathomir_world = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "dathomir_verne_herd_neutral_none",
+			lairTemplateName = "dathomir_verne_bull_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 8,
 			maxDifficulty = 8,
@@ -31,7 +31,7 @@ dathomir_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dathomir_reptilian_flyer_flock_neutral_none",
+			lairTemplateName = "dathomir_reptilian_ancient_flyer_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 16,
 			maxDifficulty = 16,
@@ -40,7 +40,7 @@ dathomir_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dathomir_shear_mite_pack_neutral_none",
+			lairTemplateName = "dathomir_shear_mite_queen_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 16,
 			maxDifficulty = 16,
@@ -85,7 +85,7 @@ dathomir_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dathomir_reptilian_ancient_flyer_flock_neutral_none",
+			lairTemplateName = "dathomir_reptilian_mature_flyer_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 25,
 			maxDifficulty = 25,
@@ -121,21 +121,12 @@ dathomir_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dathomir_rhoa_kwi_neutral_none",
+			lairTemplateName = "dathomir_rhoa_kwi_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 35,
 			maxDifficulty = 35,
 			numberToSpawn = 0,
 			weighting = 12,
-			size = 25
-		},
-		{
-			lairTemplateName = "dathomir_rhoa_kwi_hunter_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 43,
-			maxDifficulty = 43,
-			numberToSpawn = 0,
-			weighting = 15,
 			size = 25
 		},
 		{
@@ -166,7 +157,7 @@ dathomir_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dathomir_rhoa_kwi_pack_leader_neutral_none",
+			lairTemplateName = "dathomir_rhoa_kwi_pack_leader_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 50,
 			maxDifficulty = 50,
