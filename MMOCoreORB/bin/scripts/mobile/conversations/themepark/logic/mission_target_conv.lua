@@ -161,4 +161,4 @@ createMissionTargetConvoTemplate("ruwan_tokai_mission_target_convotemplate","ruw
 
 -- Corellia
 createMissionTargetConvoTemplate("diktatTargetConvo","diktatTargetHandler")
-
+createMissionTargetConvoTemplate("kirkin_target_convo","kirkin_target_handler")

@@ -1,6 +1,6 @@
-kirkin_liawoon = Creature:new {
-	objectName = "",
-	customName = "Kirkin Lianwoon",
+lacnor_liawoon = Creature:new {
+	objectName = "@mob/creature_names:selonian",
+	customName = "Lacnor Lianwoon",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -24,15 +24,15 @@ kirkin_liawoon = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/selonian_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "kirkin_target_convo",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(kirkin_liawoon, "kirkin_liawoon")
+CreatureTemplates:addCreatureTemplate(lacnor_liawoon, "lacnor_liawoon")
