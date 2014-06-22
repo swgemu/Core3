@@ -28,6 +28,7 @@ female_narglatch = Creature:new {
 
 	templates = {"object/mobile/narglatch_female.iff"},
 	controlDeviceTemplate = "object/intangible/pet/narglatch_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ narglatch_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/narglatch_female_hue.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

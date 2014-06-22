@@ -28,7 +28,7 @@ giant_veermok = Creature:new {
 
 	templates = {"object/mobile/giant_veermok.iff"},
 	controlDeviceTemplate = "object/intangible/pet/veermok_hue.iff",
-	scale = 1.2,
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
