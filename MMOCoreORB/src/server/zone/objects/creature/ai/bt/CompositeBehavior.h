@@ -28,6 +28,14 @@ public:
 		children.add(child);
 	}
 
+	Vector<Reference<Behavior*> > getChildren() {
+		return children;
+	}
+
+	void clearChildren() {
+		children.removeAll();
+	}
+
 	CompositeBehavior(AiAgent* _agent, String className) : Behavior(_agent, className) {
 		currentPos = 0;
 	}
