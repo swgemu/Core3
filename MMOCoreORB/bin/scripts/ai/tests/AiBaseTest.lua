@@ -1,4 +1,4 @@
-includeFile = spy.new(function() end)
+--[[includeFile = spy.new(function() end)
 require("ai.ai")
 
 describe("Basic Behavior Tests", function()
@@ -6,4 +6,4 @@ describe("Basic Behavior Tests", function()
     assert.is.truthy(Ai)
   end)
 
-end)
+end)]]
