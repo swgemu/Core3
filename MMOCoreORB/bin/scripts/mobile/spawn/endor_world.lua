@@ -67,24 +67,6 @@ endor_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "endor_blooming_jax_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 27,
-			maxDifficulty = 27,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "endor_mantigrue_night_stalker_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 28,
-			maxDifficulty = 28,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "endor_blushing_jax_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 27,
@@ -125,15 +107,6 @@ endor_world = {
 			spawnLimit = -1,
 			minDifficulty = 35,
 			maxDifficulty = 35,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
-		},
-		{
-			lairTemplateName = "endor_mantigrue_hunter_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 38,
-			maxDifficulty = 38,
 			numberToSpawn = 0,
 			weighting = 10,
 			size = 25

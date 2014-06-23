@@ -28,6 +28,7 @@ insane_mantigrue_berserker = Creature:new {
 
 	templates = {"object/mobile/mantigrue_night_stalker.iff"},
 	controlDeviceTemplate = "object/intangible/pet/perlek_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

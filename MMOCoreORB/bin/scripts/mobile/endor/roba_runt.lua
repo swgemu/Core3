@@ -27,6 +27,7 @@ roba_runt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/roba_hue.iff"},
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

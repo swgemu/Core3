@@ -27,6 +27,7 @@ bounding_jax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bearded_jax_hue.iff"},
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
