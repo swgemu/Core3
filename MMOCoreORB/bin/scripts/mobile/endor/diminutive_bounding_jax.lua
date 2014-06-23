@@ -28,6 +28,7 @@ diminutive_bounding_jax = Creature:new {
 
 	templates = {"object/mobile/bearded_jax_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bearded_jax_hue.iff",
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

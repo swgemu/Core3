@@ -27,6 +27,7 @@ reclusive_roba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/roba_hue.iff"},
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

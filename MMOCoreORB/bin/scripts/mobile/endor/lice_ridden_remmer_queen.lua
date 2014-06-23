@@ -27,6 +27,7 @@ lice_ridden_remmer_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/lice_ridden_remmer_queen.iff"},
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
