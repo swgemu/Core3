@@ -2169,11 +2169,16 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 	addBehaviorToTree(root, rootSelector);
 
 	root = rootSelector;
-	setCurrentBehavior(rootSelector);
+	resetBehaviorList();
+	setCurrentBehavior(root);
+
+	//info(root->print(), true);
 }
 
 void AiAgentImplementation::setCurrentBehavior(Behavior* b) {
 	tree = b;
+	if (tree != NULL)
+		activateMovementEvent();
 }
 
 int AiAgentImplementation::getBehaviorStatus() {
@@ -2202,6 +2207,7 @@ void AiAgentImplementation::resetBehaviorList() {
 	tree = root;
 	tree->setStatus(AiMap::SUSPEND);
 	moveEvent->cancel();
+	//info(root->print(), true);
 }
 
 void AiAgentImplementation::clearBehaviorList() {

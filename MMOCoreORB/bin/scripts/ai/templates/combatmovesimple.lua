@@ -1,5 +1,5 @@
 combatmovesimple = {
-	{"root", "Move", "none", BEHAVIOR},
+	{"root", "CombatMove", "none", BEHAVIOR},
 }
 
 addAiTemplate("combatmovesimple", combatmovesimple)

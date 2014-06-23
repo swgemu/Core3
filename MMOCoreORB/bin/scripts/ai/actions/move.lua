@@ -11,22 +11,6 @@ function Move:checkConditions(pAgent)
 	return false
 end
 
-function Move:start(pAgent)
-	createObserver(DAMAGERECEIVED, "Move", "interrupt", pAgent)
-	createObserver(STARTCOMBAT, "Move", "interrupt", pAgent)
-	createObserver(DEFENDERADDED, "Move", "interrupt", pAgent)
-	createObserver(DEFENDERDROPPED, "Move", "interrupt", pAgent)
-	return 0
-end
-
-function Move:terminate(pAgent)
-	dropObserver(DAMAGERECEIVED, pAgent)
-	dropObserver(STARTCOMBAT, pAgent)
-	dropObserver(DEFENDERADDED, pAgent)
-	dropObserver(DEFENDERDROPPED, pAgent)
-	return 0
-end
-
 function Move:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)

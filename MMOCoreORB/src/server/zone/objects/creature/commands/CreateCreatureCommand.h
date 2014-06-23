@@ -140,6 +140,8 @@ public:
 			npc->activateMovementEvent();
 		}
 
+		//npc->setupBehaviorTree(AiMap::instance()->getGetTargetTemplate(0), AiMap::instance()->getSelectAttackTemplate(0), AiMap::instance()->getCombatMoveTemplate(0), AiMap::instance()->getIdleTemplate(0));
+
 		if (npc != NULL)
 			npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
 

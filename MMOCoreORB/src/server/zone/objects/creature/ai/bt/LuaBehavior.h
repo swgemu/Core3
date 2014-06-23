@@ -46,6 +46,10 @@ public:
 
 	virtual uint16 getType();
 
+	String print() {
+		return this->className;
+	}
+
 protected:
 	String className;
 };

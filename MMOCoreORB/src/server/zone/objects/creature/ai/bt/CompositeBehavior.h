@@ -62,6 +62,15 @@ public:
 		return true;
 	}
 
+	String print() {
+		StringBuffer stream;
+		stream << Behavior::print() << " ";
+		for (int i = 0; i < children.size(); i ++) {
+			stream << children.get(i)->print() << " ";
+		}
+		return stream.toString();
+	}
+
 	virtual void childSucceeded() {
 		endWithSuccess();
 	}

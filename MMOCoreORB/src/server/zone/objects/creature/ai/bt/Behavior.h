@@ -63,6 +63,14 @@ public:
 		return false;
 	}
 
+	LuaBehavior* getInterface() {
+		return interface;
+	}
+
+	virtual String print() {
+		return interface->print();
+	}
+
 	/**
 	 * Virtual to check to see if the behavior can be updated
 	 * @return true if we can update, false if not
