@@ -27,6 +27,7 @@ rotten_gut_remmer_king = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rotten_gut_remmer_king.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

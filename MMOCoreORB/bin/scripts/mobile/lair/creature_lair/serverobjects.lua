@@ -193,6 +193,7 @@ includeFile("lair/creature_lair/endor_hanadak_young_rock_crusher_neutral_small.l
 includeFile("lair/creature_lair/endor_lantern_bird_gleaming_neutral_small.lua")
 includeFile("lair/creature_lair/endor_lantern_bird_neutral_small.lua")
 includeFile("lair/creature_lair/endor_lantern_bird_shimmering_neutral_small.lua")
+includeFile("lair/creature_lair/endor_mantigrue_deranged_neutral_none_boss_01.lua")
 includeFile("lair/creature_lair/endor_mantigrue_night_stalker_lair_neutral_small.lua")
 includeFile("lair/creature_lair/endor_mantigrue_reaper_lair_neutral_small.lua")
 includeFile("lair/creature_lair/endor_mantigrue_screecher_lair_neutral_small.lua")

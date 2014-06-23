@@ -27,6 +27,7 @@ minor_gorax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gorax.iff"},
+	scale = 0.75,
 	lootGroups = {
 	    {
 	        groups = {

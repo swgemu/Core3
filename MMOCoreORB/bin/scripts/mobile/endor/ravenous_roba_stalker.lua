@@ -28,6 +28,7 @@ ravenous_roba_stalker = Creature:new {
 
 	templates = {"object/mobile/roba_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/roba_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
