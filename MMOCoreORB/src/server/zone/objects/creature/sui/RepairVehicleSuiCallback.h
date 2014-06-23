@@ -64,6 +64,11 @@ public:
 
 		vehicle->healDamage(player, 0, vehicle->getConditionDamage(), true);
 
+		String vehicleName = vehicle->getDisplayedName();
+
+		if (vehicleName.beginsWith("(disabled)"))
+			vehicle->setCustomObjectName(vehicleName.subString(11), true);
+
 		if( city != NULL && tax > 0){
 
 			_lock.release();
