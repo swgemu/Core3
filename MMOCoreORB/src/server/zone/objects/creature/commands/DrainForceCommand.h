@@ -88,17 +88,18 @@ public:
 		if (targetGhost == NULL || playerObject == NULL)
 			return GENERALERROR;
 
-		if (targetCreature->isAiAgent())
+		if (targetCreature->isAiAgent() || targetCreature->isDead())
 			return INVALIDTARGET;
 
-		if (targetGhost != NULL && targetGhost->getForcePower() < 0) {
+		if (targetGhost->getForcePower() <= 0) {
 			creature->sendSystemMessage("@jedi_spam:target_no_force");
 			return GENERALERROR;
 		}
 
-		if (targetGhost->getForcePower() > 0 && targetCreature->isAttackableBy(creature)) {
+		if (targetCreature->isAttackableBy(creature)) {
 			targetGhost->setForcePower(targetGhost->getForcePower() - 100);
 			playerObject->setForcePower(playerObject->getForcePower() + 100);
+			
 			return doCombatAction(creature, target);
 		}
 

@@ -78,6 +78,14 @@ public:
 
 		if (targetCreature == NULL)
 			return INVALIDTARGET;
+			
+ 		if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return GENERALERROR;
+ 		}	
+ 		
+ 		if (!creature->isInRange(targetCreature, 32))
+			return TOOFAR;			
 
 		Locker clocker(targetCreature, creature);
 
@@ -87,12 +95,13 @@ public:
 		if (targetGhost == NULL || playerObject == NULL)
 			return GENERALERROR;
 
-		if (targetCreature->isAiAgent())
+		if (targetCreature->isAiAgent() || targetCreature->isDead())
 			return INVALIDTARGET;
 
 		if (targetGhost->getForcePower() > 0  && targetCreature->isHealableBy(creature)) {
 			targetGhost->setForcePower(targetGhost->getForcePower() + 200);
 			playerObject->setForcePower(playerObject->getForcePower() - 200);
+			
 			creature->doCombatAnimation(targetCreature,String("force_transfer_1").hashCode(),0,0xFF);
 		}
 
