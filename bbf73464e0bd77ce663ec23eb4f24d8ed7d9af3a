@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_125f5274",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/themepark/logic/mission_giver_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "Please use the naming scheme seen under the other planets.\ncreateMissionGiverConvoTemplate(\"firstname_lastname_mission_giver_convotemplate\",\"firstname_lastname_mission_giver\n_conv_handler\")",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_f2539e6a",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/themepark/logic/mission_target_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "Same as mission giver file, please use the naming scheme from the other quests.",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_325a5684",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/corellia/human_thug.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "Please make sure you\u0027re naming your mobiles specific to the quest you\u0027re working on. Generic names like \"human_thug\" are confusing when they are placed in the quest folders. In this case, kirkin_thug.lua would be more appropriate.",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_d2509a60",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/corellia/kiantryl_liawoon.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "136 is all thats needed here to make him conversable.",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_b24d26c7",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/corellia/kirkin_liawoon.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "Again, use 136.",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_924a22ab",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/corellia/lacnor_liawoon.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "136 here as well.",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_72c7ae13",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/screenplays.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "As with the other comments, follow the naming scheme for the other quests (not the diktat quest). firstname_lastname.lua",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_f2da7ee8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/kirkin_quest.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "firstname_lastname_missions",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_52ccaa35",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/kirkin_quest.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "naming scheme should be npcMapFirstLast",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_32d136ce",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/kirkin_quest.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "Scheme should be FirstLast",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_12d632c6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/kirkin_quest.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-06-23T06:26:52Z",
+      "side": 1,
+      "message": "should be firstname_lastname_quest",
+      "revId": "bbf73464e0bd77ce663ec23eb4f24d8ed7d9af3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
