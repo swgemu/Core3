@@ -100,6 +100,10 @@ public:
 		else if(harvesttype == "bone" && !cr->getBoneType().isEmpty())
 			type = 236;
 		else {
+			if (harvesttype != "") {
+				player->sendSystemMessage("@error_message:no_resource");
+				return GENERALERROR;
+			}
 			Vector<int> types;
 			if(!cr->getMeatType().isEmpty()) {
 				types.add(234);
