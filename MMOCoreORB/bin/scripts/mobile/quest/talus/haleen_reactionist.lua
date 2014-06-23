@@ -29,7 +29,7 @@ haleen_reactionist = Creature:new {
 	templates = {"object/mobile/dressed_talus_sif_mercenary_trand_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "haleen_snowline_mission_target_convotemplate",
+	conversationTemplate = "haleen_snowline_hagrin_zeed_mission_target_convotemplate",
 	attacks = {}
 }
 
