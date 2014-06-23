@@ -117,6 +117,7 @@ public:
 			creatureBank->sendWithoutParentTo(creature);
 			creatureBank->openContainerTo(creature);
 		} else if (container == "credits") {
+			ManagedReference<PlayerObject*> targetGhost = targetObj->getPlayerObject();
 			int cash = targetObj->getCashCredits();
 			int bank = targetObj->getBankCredits();
 			StringBuffer body;
@@ -124,6 +125,9 @@ public:
 			body << "Player Name:\t" << targetObj->getFirstName();
 			body << "\nCash Credits:\t" << String::valueOf(cash);
 			body << "\nBank Credits:\t" << String::valueOf(bank);
+
+			if (targetGhost != NULL)
+				body << "\nBank Location:\t" << targetGhost->getBankLocation();
 
 			ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::ADMIN_PLAYER_CREDITS);
 			box->setPromptTitle("Player Credits");
