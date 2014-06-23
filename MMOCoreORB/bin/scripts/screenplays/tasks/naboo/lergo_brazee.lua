@@ -74,7 +74,6 @@ npcMapLergoBrazee =
       worldPosition = { x = 2103, y = 2531 },
       npcNumber = 1,
       stfFile = "@static_npc/naboo/lergo_brazee",
-      hasWaypointNames = "no",
       missions = lergo_brazee_missions
     }
   }

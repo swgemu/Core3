@@ -62,7 +62,6 @@ npcMapHuffZinga =
 			worldPosition = { x = 5155, y = 6636 },
 			npcNumber = 1,
 			stfFile = "@static_npc/naboo/huff_zinga",
-			hasWaypointNames = "no",
 			missions = huff_zinga_missions
 		}
 	}

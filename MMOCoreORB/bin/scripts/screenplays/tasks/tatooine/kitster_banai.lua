@@ -120,7 +120,6 @@ npcMapKitsterBanai =
 		spawnData = { planetName = "tatooine", npcTemplate = "kitster_banai", x = -2887, z = 5, y = 2494, direction = 330, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/tatooine/kitster_banai",
-		hasWaypointNames = "no",
 		missions = kitster_banai_missions
 	},
 }

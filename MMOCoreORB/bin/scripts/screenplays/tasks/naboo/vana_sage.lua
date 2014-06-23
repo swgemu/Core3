@@ -64,7 +64,6 @@ npcMapVanaSage =
 			worldPosition = { x = 1276, y = 2744 },
 			npcNumber = 1,
 			stfFile = "@static_npc/naboo/vana_sage",
-			hasWaypointNames = "no",
 			missions = vana_sage_missions
 		}
 	}

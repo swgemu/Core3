@@ -25,7 +25,6 @@ npcMapMulludBombo =
 			worldPosition = { x = 5046, y = 6787 },
 			npcNumber = 1,
 			stfFile = "@static_npc/naboo/mullud_bombo",
-			hasWaypointNames = "no",
 			missions = mullud_bombo_missions
 		}
 	}

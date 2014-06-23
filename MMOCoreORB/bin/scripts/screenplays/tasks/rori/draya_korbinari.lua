@@ -89,7 +89,6 @@ npcMapDrayaKorbinari =
 		worldPosition = { x = 5305, y = 5859 }, 
 		npcNumber = 1,
 		stfFile = "@static_npc/rori/rori_restuss_draya_korbinari",
-		hasWaypointNames = "no",
 		missions = draya_korbinari_missions
 	},
 }

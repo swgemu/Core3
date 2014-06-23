@@ -34,7 +34,6 @@ npcMapLareenDantara =
 		spawnData = { planetName = "naboo", npcTemplate = "lareen_dantara", x = -5495.0, z = -150.0, y = -5.0, direction = 345.343, cellID = 0, position = STAND }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/naboo/lareen_dantara", 
-		hasWaypointNames = "no",		
 		missions = lareen_dantara_missions 
 	},
 }

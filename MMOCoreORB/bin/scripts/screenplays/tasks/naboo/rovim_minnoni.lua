@@ -55,7 +55,6 @@ npcMapRovinMinnoni =
 			worldPosition = { x = -5551, y = -51 },
 			npcNumber = 1,
 			stfFile = "@static_npc/naboo/rovim_minnoni",
-			hasWaypointNames = "no",
 			missions = rovim_minnoni_missions
 		}
 	}

@@ -41,7 +41,6 @@ npcMapLebSlesher =
       worldPosition = { x = 4973, y = 6709 },
       npcNumber = 1,
       stfFile = "@static_npc/naboo/leb_slesher",
-      hasWaypointNames = "no",
       missions = leb_slesher_missions
     }
   }

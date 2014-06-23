@@ -62,7 +62,6 @@ npcMapAaphKoden =
 		spawnData = { planetName = "tatooine", npcTemplate = "aaph_koden", x = 130.0, z = 52.0, y = -5399.6, direction = -67, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/tatooine/aaph_koden",
-		hasWaypointNames = "no",
 		missions = aaph_koden_missions
 	},
 }

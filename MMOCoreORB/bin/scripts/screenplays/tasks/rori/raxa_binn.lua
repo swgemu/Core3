@@ -37,7 +37,6 @@ raxa_binn_missions =
     },
     {
       missionType = "assassinate",
-      hasWaypointName = "no",
       primarySpawns =
       {
         { npcTemplate = "raxa_stormtrooper_squad_leader", planetName = "rori", npcName = "Stormtrooper Squad Leader" }

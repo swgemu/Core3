@@ -35,7 +35,6 @@ npcMapNitraVendallan =
 		worldPosition = { x = 134.7, y = -5347.1 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/tatooine/nitra_vendallan", 
-		hasWaypointNames = "no",
 		missions = nitra_vendallan_missions 
 	},
 }

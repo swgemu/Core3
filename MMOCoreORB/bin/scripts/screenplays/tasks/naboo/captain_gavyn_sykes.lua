@@ -69,7 +69,6 @@ npcMapGavynSykes =
 		worldPosition = { x = 1419.1, y = 2761.7 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/naboo/gavyn_sykes", 
-		hasWaypointNames = "no", 
 		missions = gavyn_sykes_missions 
 	},
 }

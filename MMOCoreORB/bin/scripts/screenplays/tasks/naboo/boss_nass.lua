@@ -79,7 +79,6 @@ npcMapBossNass =
       worldPosition = { x = -1991, y = -5422 },
       npcNumber = 1,
       stfFile = "@static_npc/naboo/boss_nass",
-      hasWaypointNames = "no",
       missions = boss_nass_missions
     }
   }
