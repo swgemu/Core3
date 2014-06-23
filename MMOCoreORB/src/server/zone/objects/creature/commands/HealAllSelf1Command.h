@@ -97,7 +97,7 @@ public:
 		int forceCostDeducted = forceCost;
 
 		// Lets see how much healing they are doing.
-		int healAmount = 1500;
+		int healAmount = 500;
 
 		uint32 healthHealed = creature->healDamage(creature, CreatureAttribute::HEALTH, healAmount);
 		uint32 actionHealed = creature->healDamage(creature, CreatureAttribute::ACTION, healAmount);
