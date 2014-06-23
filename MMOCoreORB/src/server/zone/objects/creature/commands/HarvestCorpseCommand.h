@@ -100,24 +100,7 @@ public:
 		else if(harvesttype == "bone" && !cr->getBoneType().isEmpty())
 			type = 236;
 		else {
-			Vector<int> types;
-			if(!cr->getMeatType().isEmpty()) {
-				types.add(234);
-			}
-
-			if(!cr->getHideType().isEmpty()) {
-				types.add(235);
-			}
-
-			if(!cr->getBoneType().isEmpty()) {
-				types.add(236);
-			}
-			if(types.size() > 0)
-				type = types.get(System::random(types.size() -1));
-		}
-
-		if(type == 0) {
-			player->sendSystemMessage("This creature has no resources");
+			player->sendSystemMessage("@error_message:no_resource");
 			return GENERALERROR;
 		}
 
