@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_b21f66b7",
+        "filename": "MMOCoreORB/bin/scripts/mobile/thug/human_thug.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-23T03:42:41Z",
+      "side": 1,
+      "message": "Put this file in the quest/corellia/ folder along with the other new mobs.",
+      "revId": "de2c2c1530b917116206add15b65fd832e325597",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_921c62c3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/kirkin_quest.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-23T03:42:41Z",
+      "side": 1,
+      "message": "npcName doesn\u0027t match which template you\u0027re using.",
+      "revId": "de2c2c1530b917116206add15b65fd832e325597",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
