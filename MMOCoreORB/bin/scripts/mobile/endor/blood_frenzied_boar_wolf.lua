@@ -27,6 +27,7 @@ blood_frenzied_boar_wolf = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/boar_wolf_hue.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

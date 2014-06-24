@@ -112,15 +112,6 @@ endor_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "endor_arachne_warrior_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 42,
-			maxDifficulty = 42,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "endor_bark_mite_burrower_worker_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 45,
@@ -163,24 +154,6 @@ endor_world = {
 			maxDifficulty = 55,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 25
-		},
-		{
-			lairTemplateName = "endor_arachne_venom_filled_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 58,
-			maxDifficulty = 58,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
-		},
-		{
-			lairTemplateName = "endor_blurrg_raptor_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 141,
-			maxDifficulty = 141,
-			numberToSpawn = 0,
-			weighting = 3,
 			size = 25
 		},
 	}

@@ -28,6 +28,7 @@ bordok_foal = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bordok_foal.iff"},
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

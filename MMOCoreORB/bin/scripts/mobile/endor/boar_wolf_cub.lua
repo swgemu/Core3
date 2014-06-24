@@ -27,6 +27,7 @@ boar_wolf_cub = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/boar_wolf_cub.iff"},
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

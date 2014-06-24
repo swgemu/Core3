@@ -27,6 +27,7 @@ bolle_bol_colt = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolle_bol_hue.iff"},
+	scale = 0.8,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
