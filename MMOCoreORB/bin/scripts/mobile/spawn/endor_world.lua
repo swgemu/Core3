@@ -130,15 +130,6 @@ endor_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "endor_gurreck_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 50,
-			maxDifficulty = 50,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
-		},
-		{
 			lairTemplateName = "endor_bark_mite_burrower_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 55,

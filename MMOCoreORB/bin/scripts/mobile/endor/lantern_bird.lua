@@ -28,6 +28,7 @@ lantern_bird = Creature:new {
 
 	templates = {"object/mobile/lantern_bird_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/lantern_bird_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

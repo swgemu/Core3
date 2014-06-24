@@ -28,6 +28,7 @@ merek_assassin = Creature:new {
 
 	templates = {"object/mobile/merek_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/merek_hue.iff",
+	scale = 0.85,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

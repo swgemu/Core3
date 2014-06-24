@@ -28,6 +28,7 @@ gurreck = Creature:new {
 
 	templates = {"object/mobile/gurreck.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

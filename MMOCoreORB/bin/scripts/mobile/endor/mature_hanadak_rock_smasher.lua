@@ -28,6 +28,7 @@ mature_hanadak_rock_smasher = Creature:new {
 
 	templates = {"object/mobile/hanadak_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/hanadak_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

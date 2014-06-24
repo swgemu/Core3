@@ -27,6 +27,7 @@ queen_merek_harvester = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/queen_merek_harvester.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

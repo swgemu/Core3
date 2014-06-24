@@ -61,12 +61,6 @@ endor_destroy_missions = {
 			maxDifficulty = 55,
 			size = 25,
 		},
-		{
-			lairTemplateName = "endor_gurreck_neutral_none",
-			minDifficulty = 45,
-			maxDifficulty = 55,
-			size = 25,
-		}
 	}
 }
 

@@ -28,6 +28,7 @@ blood_stained_merek = Creature:new {
 
 	templates = {"object/mobile/merek_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/merek_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
