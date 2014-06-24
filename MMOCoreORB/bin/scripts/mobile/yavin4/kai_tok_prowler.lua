@@ -28,6 +28,7 @@ kai_tok_prowler = Creature:new {
 
 	templates = {"object/mobile/kai_tok_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kai_tok_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",

@@ -17,3 +17,4 @@ src/client/build/*
 INSTALL
 .settings/*
 
+/insert_strings.sql

@@ -28,6 +28,7 @@ female_mamien = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mamien_hue.iff"},
+	scale = 0.95,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

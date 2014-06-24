@@ -27,6 +27,7 @@ kliknik_queen_harvester = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik_hue.iff"},
+	scale = 1.2,
 	lootGroups = {
 	 {
 	        groups = {
