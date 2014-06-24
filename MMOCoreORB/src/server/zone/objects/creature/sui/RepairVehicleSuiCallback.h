@@ -36,7 +36,7 @@ public:
 
 		Locker _lock(vehicle, player);
 
-		if (!vehicle->checkInRangeGarage()) {
+		if (!vehicle->checkInRangeGarage() && !player->getPlayerObject()->isPrivileged()) {
 			player->sendSystemMessage("@pet/pet_menu:repair_unrecognized_garages"); //Your vehicle does not recognize any local garages. Try again in a garage repair zone.
 			return;
 		}
