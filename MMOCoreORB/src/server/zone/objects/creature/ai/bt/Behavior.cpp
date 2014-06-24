@@ -48,16 +48,13 @@ void Behavior::doAction() {
 	agent->setCurrentBehavior(this);
 
 	if (finished()) {
-		if (parent != NULL) {
-			agent->setCurrentBehavior(parent);
-			parent->doAction();
-			return;
-		} else {
+		if (parent == NULL) {
 			this->end();
 			result = AiMap::SUSPEND;
 			agent->activateMovementEvent(); // this is an automatic recycle decorator for the root node
-			return;
 		}
+
+		return;
 	}
 
 	int res = AiMap::INVALID;
@@ -78,7 +75,8 @@ void Behavior::doAction() {
 		break;
 	}
 
-	agent->activateMovementEvent();
+	if (!finished() || parent == NULL)
+		agent->activateMovementEvent();
 }
 
 void Behavior::endWithFailure() {

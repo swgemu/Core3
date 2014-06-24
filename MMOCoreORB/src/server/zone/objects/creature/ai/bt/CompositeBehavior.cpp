@@ -41,31 +41,37 @@ void CompositeBehavior::doAction() {
 		return;
 	}
 
-	Reference<Behavior*> currentChild = children.get(currentPos);
+	Behavior* currentChild;
 
-	if (currentChild == NULL) {
-		agent->error("NULL child or empty children list in CompositeBehavior");
-		endWithError();
-		Behavior::doAction();
-		return;
-	}
+	do {
+		currentChild = children.get(currentPos).get();
 
-	if (!currentChild->started())
-		currentChild->start();
-	if (currentChild->finished()) {
-		if (currentChild->succeeded())
-			this->childSucceeded();
-		else if (currentChild->failed())
-			this->childFailed();
+		if (currentChild == NULL) {
+			agent->error("NULL child or empty children list in CompositeBehavior");
+			endWithError();
+			Behavior::doAction();
+			return;
+		}
 
-		currentChild->end();
-	} else {
-		currentChild->doAction();
-	}
+		if (!currentChild->started())
+			currentChild->start();
+		else if (!currentChild->checkConditions()) // if this isn't here, I can get a single recursion where the child will call the parent's (this) doAction()
+			endWithFailure();
+
+		if (!currentChild->finished())
+			currentChild->doAction();
+
+		if (currentChild->finished()) {
+			if (currentChild->succeeded())
+				this->childSucceeded();
+			else if (currentChild->failed())
+				this->childFailed();
+
+			currentChild->end();
+		}
+	} while (currentChild != NULL && currentChild->finished() && !this->finished() && currentPos < children.size());
 
 	Behavior::doAction();
-	if (!currentChild->finished())
-		agent->setCurrentBehavior(currentChild);
 }
 
 

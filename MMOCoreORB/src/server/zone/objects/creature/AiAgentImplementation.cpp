@@ -2079,7 +2079,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 		return;
 	}
 
-	Vector<Reference<LuaAiTemplate*> > treeTemplate = aiTemplate->getTree();
+	Vector<Reference<LuaAiTemplate*> >* treeTemplate = aiTemplate->getTree();
 
 	VectorMap<String, Behavior*> behaviors; // Behaviors keyed with id
 	behaviors.put("none", NULL);
@@ -2088,11 +2088,11 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 	parents.setAllowOverwriteInsertPlan();
 
 	// first build the maps
-	for (int i=0; i < treeTemplate.size(); i++) {
-		LuaAiTemplate* temp = treeTemplate.get(i).get();
+	for (int i=0; i < treeTemplate->size(); i++) {
+		LuaAiTemplate* temp = treeTemplate->get(i).get();
 		if (temp == NULL) {
-			error("Null template");
-			//continue;
+			error("Null AI template"); // FIXME (dannuic): This still happens sometimes. Why?
+			continue;
 		}
 
 		Behavior* behavior = AiMap::createNewInstance(_this.get(), temp->className, temp->classType);
@@ -2206,7 +2206,8 @@ void AiAgentImplementation::addBehaviorToTree(Behavior* b, CompositeBehavior* pa
 void AiAgentImplementation::resetBehaviorList() {
 	tree = root;
 	tree->setStatus(AiMap::SUSPEND);
-	moveEvent->cancel();
+	if (moveEvent != NULL)
+		moveEvent->cancel();
 	//info(root->print(), true);
 }
 

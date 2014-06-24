@@ -103,8 +103,8 @@ public:
 		return templateName;
 	}
 
-	Vector<Reference<LuaAiTemplate*> > getTree() {
-		return tree;
+	Vector<Reference<LuaAiTemplate*> >* getTree() {
+		return &tree;
 	}
 };
 
