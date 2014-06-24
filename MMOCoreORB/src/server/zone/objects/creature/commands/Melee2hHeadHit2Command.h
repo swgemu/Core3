@@ -67,7 +67,7 @@ public:
 
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 
-		if (!weapon->isTwoHandMeleeWeapon()) {
+		if (weapon == NULL || !weapon->isTwoHandMeleeWeapon() || weapon->isJediWeapon()) {
 			return INVALIDWEAPON;
 		}
 
