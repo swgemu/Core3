@@ -27,6 +27,7 @@ enhanced_kwi = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/kwi.iff"},
+	scale = 1.4,
 	lootGroups = {
 		{
 			groups = {

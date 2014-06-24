@@ -27,6 +27,7 @@ kliknik_dark_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik_hue.iff"},
+	scale = 1.15,
 	lootGroups = {
 	 {
 	        groups = {

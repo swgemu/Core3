@@ -19,7 +19,7 @@ giant_mawgax = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 70,
 	milk = 0,
-	tamingChance = 0.02,
+	tamingChance = 0.2,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -28,6 +28,7 @@ giant_mawgax = Creature:new {
 
 	templates = {"object/mobile/giant_mawgax.iff"},
 	controlDeviceTemplate = "object/intangible/pet/mawgax_hue.iff",
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

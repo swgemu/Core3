@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/packets/object/CombatSpam.h"
 #include "server/chat/ChatMessage.h"
 #include "CombatQueueCommand.h"
 
@@ -72,8 +73,10 @@ public:
 
 		int res = doCombatAction(creature, target);
 
-		if (res == TOOFAR && creature->isPlayerCreature()) 
-			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, creature->getWeapon(), 0, "intim_out_of_range");
+		if (res == TOOFAR && creature->isPlayerCreature()) {
+			CombatSpam* msg = new CombatSpam(creature, targetObject.castTo<TangibleObject*>(), creature->getWeapon(), 0, "cbt_spam", "intim_out_of_range", creature);
+			creature->sendMessage(msg);
+		}
 		
 		if (res == GENERALERROR)
 			creature->sendSystemMessage("@combat_effects:intimidated_miss");

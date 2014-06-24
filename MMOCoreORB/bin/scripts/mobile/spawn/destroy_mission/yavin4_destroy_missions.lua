@@ -38,12 +38,6 @@ yavin4_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "yavin4_mamien_pack_neutral_none",
-			minDifficulty = 16,
-			maxDifficulty = 21,
-			size = 25,
-		},
-		{
 			lairTemplateName = "yavin4_skreeg_lair_neutral_hard",
 			minDifficulty = 16,
 			maxDifficulty = 22,
@@ -53,12 +47,6 @@ yavin4_destroy_missions = {
 			lairTemplateName = "yavin4_angler_lair_neutral_medium",
 			minDifficulty = 19,
 			maxDifficulty = 25,
-			size = 25,
-		},
-		{
-			lairTemplateName = "yavin4_mawgax_herd_neutral_none",
-			minDifficulty = 20,
-			maxDifficulty = 26,
 			size = 25,
 		},
 		{

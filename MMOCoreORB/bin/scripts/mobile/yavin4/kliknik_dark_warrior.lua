@@ -28,6 +28,7 @@ kliknik_dark_warrior = Creature:new {
 
 	templates = {"object/mobile/kliknik_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kliknik_hue.iff",
+	scale = 1.2,
 	lootGroups = {
 	 {
 	        groups = {

@@ -27,6 +27,7 @@ enhanced_kliknik = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik.iff"},
+	scale = 1.4,
 	lootGroups = {
 	 {
 	        groups = {

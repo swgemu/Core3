@@ -28,6 +28,7 @@ kai_tok_bloodreaver = Creature:new {
 
 	templates = {"object/mobile/kai_tok_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kai_tok_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

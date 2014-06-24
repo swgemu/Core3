@@ -27,6 +27,7 @@ male_mawgax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mawgax.iff"},
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

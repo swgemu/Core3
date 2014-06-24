@@ -28,6 +28,7 @@ enhanced_force_kliknik = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik_hue.iff"},
+	scale = 1.45,
 	lootGroups = {
 	 {
 	        groups = {
