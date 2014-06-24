@@ -27,6 +27,7 @@ borgle_life_sapper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/borgle_hue.iff"},
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",

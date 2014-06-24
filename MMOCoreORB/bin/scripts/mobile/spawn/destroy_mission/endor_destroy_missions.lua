@@ -56,12 +56,6 @@ endor_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "endor_arachne_warrior_neutral_none",
-			minDifficulty = 34,
-			maxDifficulty = 48,
-			size = 25,
-		},
-		{
 			lairTemplateName = "endor_blurrg_lair_neutral_small",
 			minDifficulty = 45,
 			maxDifficulty = 55,
