@@ -27,6 +27,7 @@ arachne_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/arachne_hatchling.iff"},
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

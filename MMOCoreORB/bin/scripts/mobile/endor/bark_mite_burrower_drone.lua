@@ -27,6 +27,7 @@ bark_mite_burrower_drone = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite_hue.iff"},
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
