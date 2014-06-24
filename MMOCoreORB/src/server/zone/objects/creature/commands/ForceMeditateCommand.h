@@ -70,6 +70,11 @@ public:
 		if (isWearingArmor(creature)) {
 			return NOJEDIARMOR;
 		}
+		
+		if (creature->isInCombat()) {
+			creature->sendSystemMessage("@jedi_spam:not_while_in_combat");
+			return GENERALERROR;
+		}		
 
 		// Meditate
 		CreatureObject* player = creature;
@@ -79,15 +84,13 @@ public:
 			return GENERALERROR;
 		}
 
-		// Increase Force Regen times 3.
-
-
 		// Play Client Effect once.
 
 		player->playEffect("clienteffect/pl_force_meditate_self.cef", "");
 
 		// Force Meditate Task
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		
 		creature->sendSystemMessage("@teraskasi:med_begin");
 		Reference<ForceMeditateTask*> fmeditateTask = new ForceMeditateTask(player);
 		fmeditateTask->setMoodString(player->getMoodString());
@@ -95,7 +98,7 @@ public:
 
 		player->setMeditateState();
 
-		PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();
+		PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();	
 		player->registerObserver(ObserverEventType::POSTURECHANGED, playermgr);
 
 		return SUCCESS;
