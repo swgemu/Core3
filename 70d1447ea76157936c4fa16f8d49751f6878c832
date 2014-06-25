@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_7d5e5feb",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-25T08:29:58Z",
+      "side": 1,
+      "message": "I know I suggested the observer, but now I don\u0027t think it\u0027s necessary. Just call activateForcePowerRegen() right here rather than notifying an observer and having it call that method.",
+      "revId": "70d1447ea76157936c4fa16f8d49751f6878c832",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_1d5d23ea",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-25T08:29:58Z",
+      "side": 1,
+      "message": "According to your source, shouldn\u0027t the tick always be 5 (or 15 if force meditating)? It\u0027s just the frequency of the ticks that changes, correct?",
+      "revId": "70d1447ea76157936c4fa16f8d49751f6878c832",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
