@@ -94,7 +94,7 @@ lok_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "lok_kimogilla_pack2_neutral_none",
+			lairTemplateName = "lok_kimogilla_lair2_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 22,
 			maxDifficulty = 22,
@@ -157,7 +157,7 @@ lok_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "lok_kimogilla_pack_neutral_none",
+			lairTemplateName = "lok_kimogilla_lair_neutral_medium",
 			spawnLimit = 15,
 			minDifficulty = 139,
 			maxDifficulty = 139,
@@ -166,7 +166,7 @@ lok_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "lok_kimogilla_dune_neutral_none",
+			lairTemplateName = "lok_kimogilla_dune_lair_neutral_medium",
 			spawnLimit = 12,
 			minDifficulty = 123,
 			maxDifficulty = 123,
@@ -175,7 +175,7 @@ lok_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "lok_kimogilla_enraged_dune_neutral_none",
+			lairTemplateName = "lok_kimogilla_giant_dune_lair_neutral_medium",
 			spawnLimit = 10,
 			minDifficulty = 148,
 			maxDifficulty = 148,
