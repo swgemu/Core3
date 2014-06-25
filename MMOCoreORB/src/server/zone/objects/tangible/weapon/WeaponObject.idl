@@ -485,15 +485,15 @@ class WeaponObject extends TangibleObject {
 	}
 	
 	public boolean isOneHandMeleeWeapon() {
-		return super.gameObjectType == SceneObjectType.ONEHANDMELEEWEAPON;
+		return (super.gameObjectType == SceneObjectType.ONEHANDMELEEWEAPON && !isJediOneHandedWeapon());
 	}
 	
 	public boolean isPolearmWeaponObject() {
-		return super.gameObjectType == SceneObjectType.POLEARM;
+		return (super.gameObjectType == SceneObjectType.POLEARM && !isJediPolearmWeapon());
 	}
 	
 	public boolean isTwoHandMeleeWeapon() {
-		return super.gameObjectType == SceneObjectType.TWOHANDMELEEWEAPON;
+		return (super.gameObjectType == SceneObjectType.TWOHANDMELEEWEAPON && !isJediTwoHandedWeapon());
 	}
 	
 	public boolean isMineWeapon() {
