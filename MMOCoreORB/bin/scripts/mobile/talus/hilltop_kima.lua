@@ -28,6 +28,7 @@ hilltop_kima = Creature:new {
 
 	templates = {"object/mobile/kima_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kima_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

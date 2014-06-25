@@ -28,6 +28,7 @@ ferine_razorfang = Creature:new {
 
 	templates = {"object/mobile/kima_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kima_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

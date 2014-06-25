@@ -1,11 +1,11 @@
 talus_savage_guf_drolg_lair_neutral_medium = Lair:new {
-	mobiles = {{"savage_guf_drolg", 1}},
+	mobiles = {{"savage_guf_drolg",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/guf_drolg/lair_guf_drolg.iff"},
-	buildingsEasy = {"object/tangible/lair/guf_drolg/lair_guf_drolg.iff"},
-	buildingsMedium = {"object/tangible/lair/guf_drolg/lair_guf_drolg.iff"},
-	buildingsHard = {"object/tangible/lair/guf_drolg/lair_guf_drolg.iff"},
-	buildingsVeryHard = {"object/tangible/lair/guf_drolg/lair_guf_drolg.iff"},
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_brambles_large_evil_fire_red.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_brambles_large_evil_fire_red.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_brambles_large_evil_fire_red.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_brambles_large_evil_fire_red.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_brambles_large_evil_fire_red.iff"},
 }
 
 addLairTemplate("talus_savage_guf_drolg_lair_neutral_medium", talus_savage_guf_drolg_lair_neutral_medium)
