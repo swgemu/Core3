@@ -57,7 +57,7 @@ BleedingShotCommand = {
 	dotEffects = {
 	  DotEffect( 
 		BLEEDING, 
-		{ "resistance_bleeding", "bleed_resist" },
+		{ "resistance_bleeding", "bleed_resist", "combat_bleeding_defense" },
 		MIND,
 		true,
 		125,
