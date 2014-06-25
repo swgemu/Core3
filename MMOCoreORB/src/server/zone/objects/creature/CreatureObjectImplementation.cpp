@@ -67,6 +67,7 @@
 #include "server/zone/packets/object/SitOnObject.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
 #include "server/zone/packets/object/CombatAction.h"
+#include "server/zone/packets/object/WeaponRanges.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/packets/player/NewbieTutorialRequest.h"
 #include "server/zone/packets/ui/NewbieTutorialEnableHudElement.h"
@@ -493,9 +494,6 @@ void CreatureObjectImplementation::clearQueueAction(uint32 actioncntr,
 
 void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 		bool notifyClient) {
-	if (weapon == weao)
-		return;
-
 	weapon = weao;
 
 	if (notifyClient) {
@@ -505,6 +503,9 @@ void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 		msg->close();
 
 		broadcastMessage(msg, true);
+
+		WeaponRanges* ranges = new WeaponRanges(_this.get(), getWeapon());
+		sendMessage(ranges);
 	}
 }
 

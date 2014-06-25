@@ -16,6 +16,7 @@
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/packets/object/WeaponRanges.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/Zone.h"
@@ -147,6 +148,11 @@ void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 	BaseMessage* weao6 = new WeaponObjectMessage6(_this.get());
 	player->sendMessage(weao6);
+
+	if (player->isCreatureObject()) {
+		BaseMessage* ranges = new WeaponRanges(cast<CreatureObject*>(player), _this.get());
+		player->sendMessage(ranges);
+	}
 }
 
 String WeaponObjectImplementation::getWeaponType() {
