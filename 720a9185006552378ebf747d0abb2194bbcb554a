@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_bd8f3775",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/weapon/WeaponObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-06-25T07:11:53Z",
+      "side": 1,
+      "message": "I should have been more specific. It would be better if you check for the specific jedi weapon type since you know that the jedi weapons in question that are the problem are derived from the specific types. It may be nitpicky, but in the case of polearm weapons, you are making three calls to .contains() instead of simply one.",
+      "revId": "720a9185006552378ebf747d0abb2194bbcb554a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
