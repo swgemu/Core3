@@ -57,6 +57,7 @@ import server.zone.objects.creature.AiAgent;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
+import server.zone.objects.player.events.ForceRegenerationEvent;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
 import server.zone.objects.tangible.tool.CraftingTool;
@@ -207,6 +208,9 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected transient Reference<PlayerRecoveryEvent> recoveryEvent;
+
+	@dereferenced
+	protected transient Reference<ForceRegenerationEvent> forceRegenerationEvent;
 	
 	@dereferenced
 	protected Time logoutTimeStamp;
@@ -619,6 +623,8 @@ class PlayerObject extends IntangibleObject {
 	public native void clearScreenPlayData(final string screenPlay);
 	
 	public native void activateRecovery();
+
+	public native void activateForcePowerRegen();
 	
 	public native void doRecovery();
 	
@@ -863,7 +869,7 @@ class PlayerObject extends IntangibleObject {
 
 	public native void setForcePowerMax(int newValue, boolean notifyClient = true);
 
-	public native void activateForceRegen();
+	public native void doForceRegen();
 	
 	public void setForcePowerRegen(int val) {
 		forcePowerRegen = val;
@@ -1267,6 +1273,8 @@ class PlayerObject extends IntangibleObject {
 	public native void clearDisconnectEvent();
 	
 	public native void clearRecoveryEvent();
+
+	public native void clearForceRegenerationEvent();
 	
 	public boolean isOnline() {
 		return onlineStatus != OFFLINE && onlineStatus != LINKDEAD;

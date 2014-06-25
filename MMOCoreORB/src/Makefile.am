@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/managers/creature/TheaterSpawnObserver.cpp \
+core3_IDLS =	autogen/server/zone/objects/player/ForcePowerObserver.cpp \
+				autogen/server/zone/managers/creature/TheaterSpawnObserver.cpp \
 				autogen/server/zone/managers/creature/SpawnObserver.cpp \
 				autogen/server/zone/objects/player/sessions/VeteranRewardSession.cpp \
 				autogen/server/zone/objects/player/sessions/ProposeUnitySession.cpp \
@@ -215,6 +216,7 @@ core3_IDLS =	autogen/server/zone/managers/creature/TheaterSpawnObserver.cpp \
 				autogen/server/zone/objects/player/sessions/ConversationSession.cpp \
 				autogen/server/zone/objects/player/sessions/TrainerConversationSession.cpp \
 				autogen/server/zone/objects/player/EntertainingObserver.cpp \
+				autogen/server/zone/objects/player/ForcePowerObserver.cpp \
 				autogen/server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
 				autogen/server/zone/objects/cell/CellObject.cpp \
 				autogen/server/zone/objects/group/GroupObject.cpp \

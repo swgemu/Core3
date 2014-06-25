@@ -4,7 +4,6 @@ Copyright (C) 2007 <SWGEmu>
 This File is part of Core3.
 
 This program is free software; you can redistribute
-it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
 Foundation; either version 2 of the License,
 or (at your option) any later version.
@@ -40,7 +39,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "server/zone/objects/player/PlayerObject.h"
 
@@ -116,6 +115,8 @@ which carries forward this exception.
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
+#include "events/ForceRegenerationEvent.h"
+#include "server/zone/objects/player/ForcePowerObserver.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -223,14 +224,14 @@ void PlayerObjectImplementation::unload() {
 		savedTerrainName = creature->getZone()->getZoneName();
 
 		//if (creature->isInQuadTree()) {
-			if (creoParent != NULL) {
-				savedParentID = creoParent->getObjectID();
+		if (creoParent != NULL) {
+			savedParentID = creoParent->getObjectID();
 
-				savedParent = creoParent;
-			} else
-				savedParentID = 0;
+			savedParent = creoParent;
+		} else
+			savedParentID = 0;
 
-			creature->destroyObjectFromWorld(true);
+		creature->destroyObjectFromWorld(true);
 		//}
 	}
 
@@ -1190,6 +1191,12 @@ void PlayerObjectImplementation::notifyOnline() {
 
 	//Login to jedi manager
 	JediManager::instance()->onPlayerLoggedIn(playerCreature);
+
+	// Activate observer for Force Power.
+	if (isJedi()) {
+		ForcePowerObserver* observer = new ForcePowerObserver();
+		playerCreature->registerObserver(ObserverEventType::FORCEPOWERUSED, observer);
+	}
 }
 
 void PlayerObjectImplementation::notifyOffline() {
@@ -1435,9 +1442,6 @@ void PlayerObjectImplementation::doRecovery() {
 	creature->activateHAMRegeneration();
 	creature->activateStateRecovery();
 
-	if (getForcePowerMax() > 0  && (getForcePowerMax() - getForcePower() > 0))
-	activateForceRegen();
-
 	CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
 
 	if (cooldownTimerMap->isPast("digestEvent")) {
@@ -1483,6 +1487,17 @@ void PlayerObjectImplementation::activateRecovery() {
 		recoveryEvent = new PlayerRecoveryEvent(_this.get());
 
 		recoveryEvent->schedule(3000);
+	}
+}
+
+void PlayerObjectImplementation::activateForcePowerRegen() {
+	if (forceRegenerationEvent == NULL) {
+		forceRegenerationEvent = new ForceRegenerationEvent(_this.get());
+
+		float timer = getForcePowerRegen() / 5;
+		float scheduledTime = 10 / timer;
+		uint64 miliTime = scheduledTime * 1000;
+		forceRegenerationEvent->schedule(miliTime);
 	}
 }
 
@@ -1594,6 +1609,11 @@ void PlayerObjectImplementation::clearRecoveryEvent() {
 	recoveryEvent = NULL;
 }
 
+void PlayerObjectImplementation::clearForceRegenerationEvent() {
+	forceRegenerationEvent = NULL;
+}
+
+
 
 WaypointObject* PlayerObjectImplementation::getSurveyWaypoint() {
 	WaypointList* list = getWaypointList();
@@ -1669,6 +1689,11 @@ void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
 	if(fp == getForcePower())
 		return;
 
+	if (fp < getForcePower()) {
+		CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
+		creature->notifyObservers(ObserverEventType::FORCEPOWERUSED, _this.get().get(), fp);
+	}
+
 	forcePower = fp;
 
 	if (notifyClient == true){
@@ -1682,7 +1707,7 @@ void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
 
 }
 
-void PlayerObjectImplementation::activateForceRegen() {
+void PlayerObjectImplementation::doForceRegen() {
 	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	if (creature->isIncapacitated() || creature->isDead())
@@ -1693,10 +1718,11 @@ void PlayerObjectImplementation::activateForceRegen() {
 
 	float modifier = 1.f;
 
+	// TODO: Re-factor Force Meditate so TKA meditate doesn't effect.
 	if (creature->isMeditating())
 		modifier = 3.f;
 
-	uint32 forceTick = getForcePowerRegen() / 5 * modifier;
+	uint32 forceTick = (getForcePowerMax() / ((getForcePowerRegen() * modifier) / 10));
 
 	if (forceTick < 1)
 		forceTick = 1;
