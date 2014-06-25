@@ -8,7 +8,7 @@ tatooine_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "tatooine_rockmite_swarm_neutral_none",
+			lairTemplateName = "tatooine_rockmite_click_neutral_small",
 			minDifficulty = 3,
 			maxDifficulty = 5,
 			size = 25,
@@ -20,7 +20,7 @@ tatooine_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "tatooine_gorg_herd_neutral_none",
+			lairTemplateName = "tatooine_gorg_lair_neutral_small",
 			minDifficulty = 5,
 			maxDifficulty = 7,
 			size = 25,
