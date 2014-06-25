@@ -167,7 +167,7 @@ public:
 
 			creatureTarget->sendSystemMessage(stringId2);
 
-			dotDMG = creatureTarget->addDotState(CreatureState::POISONED, dotPack->getServerObjectCRC(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_poison"));
+			dotDMG = creatureTarget->addDotState(CreatureState::POISONED, dotPack->getServerObjectCRC(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_poison") + creatureTarget->getSkillMod("poison_disease_resist"));
 		} else {
 			StringIdChatParameter stringId("healing", "apply_disease_self");
 			stringId.setTT(creatureTarget->getObjectID());
@@ -179,7 +179,7 @@ public:
 
 			creatureTarget->sendSystemMessage(stringId2);
 
-			dotDMG = creatureTarget->addDotState(CreatureState::DISEASED, dotPack->getServerObjectCRC(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_disease"));
+			dotDMG = creatureTarget->addDotState(CreatureState::DISEASED, dotPack->getServerObjectCRC(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_disease") + creatureTarget->getSkillMod("poison_disease_resist"));
 		}
 
 		if (dotDMG) {
