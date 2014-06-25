@@ -494,6 +494,9 @@ void CreatureObjectImplementation::clearQueueAction(uint32 actioncntr,
 
 void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 		bool notifyClient) {
+	if (weao == NULL)
+		weao = TangibleObjectImplementation::getSlottedObject("default_weapon").castTo<WeaponObject*>();
+
 	weapon = weao;
 
 	if (notifyClient) {
