@@ -438,14 +438,23 @@ int CombatManager::calculatePostureModifier(CreatureObject* creature, WeaponObje
 	if (creature->isPlayerCreature()) // moving the setter to DataTransform, leaving calculateSpeed to set the last combat pos
 		creature->calculateSpeed();
 
+	int movePenalty = 0;
+
 	switch (CreaturePosture::instance()->getSpeed(creature->getPosture(), creature->getLocomotion())) {
 	case CreatureLocomotion::FAST:
-		accuracy -= 50;
+		movePenalty -= 50;
 		break;
 	case CreatureLocomotion::SLOW:
-		accuracy -= 10;
+		movePenalty -= 10;
 		break;
 	}
+
+	movePenalty += creature->getSkillMod(weapon->getWeaponType() + "_hit_while_moving");
+
+	if (movePenalty > 0)
+		movePenalty = 0;
+
+	accuracy += movePenalty;
 
 	return accuracy;
 }
