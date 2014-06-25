@@ -28,6 +28,7 @@ woodland_kima = Creature:new {
 
 	templates = {"object/mobile/kima.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kima_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ vicious_huf_dun = Creature:new {
 
 	templates = {"object/mobile/huf_dun.iff"},
 	controlDeviceTemplate = "object/intangible/pet/huf_dun_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ puss_covered_decay_mite_soldier = Creature:new {
 
 	templates = {"object/mobile/decay_mite.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ mire_marauder = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/minor_sludge_panther.iff"},
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
