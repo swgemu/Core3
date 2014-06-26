@@ -28,6 +28,7 @@ oozing_dung_mite_guardian = Creature:new {
 
 	templates = {"object/mobile/dung_mite.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

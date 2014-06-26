@@ -27,6 +27,7 @@ bloated_gubber = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gubbur_hue.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

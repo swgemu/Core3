@@ -28,6 +28,7 @@ acicular_defender = Creature:new {
 
 	templates = {"object/mobile/paralope_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/swirl_prong_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

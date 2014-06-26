@@ -4,15 +4,6 @@ corellia_easy = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "corellia_gubbur_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 2,
-			maxDifficulty = 4,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "corellia_gubbur_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 4,
