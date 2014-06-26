@@ -1,11 +1,12 @@
 corellia_gubbur_herd_neutral_none = Lair:new {
-	mobiles = {{"minor_gubbur", 1}},
+	mobiles = {{"minor_gubbur",1},{"gubbur",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/gubbur/lair_gubbur.iff"},
-	buildingsEasy = {"object/tangible/lair/gubbur/lair_gubbur.iff"},
-	buildingsMedium = {"object/tangible/lair/gubbur/lair_gubbur.iff"},
-	buildingsHard = {"object/tangible/lair/gubbur/lair_gubbur.iff"},
-	buildingsVeryHard = {"object/tangible/lair/gubbur/lair_gubbur.iff"}
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none",
 }
 
 addLairTemplate("corellia_gubbur_herd_neutral_none", corellia_gubbur_herd_neutral_none)

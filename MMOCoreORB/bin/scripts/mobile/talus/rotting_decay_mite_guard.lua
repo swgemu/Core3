@@ -28,6 +28,7 @@ rotting_decay_mite_guard = Creature:new {
 
 	templates = {"object/mobile/decay_mite_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -4,15 +4,6 @@ corellia_world = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "corellia_gubbur_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 4,
-			maxDifficulty = 4,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "corellia_gubbur_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 6,
@@ -226,15 +217,6 @@ corellia_world = {
 			maxDifficulty = 18,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 25
-		},
-		{
-			lairTemplateName = "corellia_humbaba_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 19,
-			maxDifficulty = 19,
-			numberToSpawn = 0,
-			weighting = 15,
 			size = 25
 		},
 		{

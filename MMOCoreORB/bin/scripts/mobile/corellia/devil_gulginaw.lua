@@ -28,6 +28,7 @@ devil_gulginaw = Creature:new {
 
 	templates = {"object/mobile/devil_gulginaw.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gulginaw_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",

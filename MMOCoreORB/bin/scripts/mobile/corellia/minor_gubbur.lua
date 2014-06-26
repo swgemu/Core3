@@ -27,6 +27,7 @@ minor_gubbur = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/minor_gubbur.iff"},
+	scale = 0.85,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

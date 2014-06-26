@@ -28,6 +28,7 @@ dung_mite_worker = Creature:new {
 
 	templates = {"object/mobile/sickening_dung_mite_worker.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

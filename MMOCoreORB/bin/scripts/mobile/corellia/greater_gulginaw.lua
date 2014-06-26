@@ -28,6 +28,7 @@ greater_gulginaw = Creature:new {
 
 	templates = {"object/mobile/greater_gulginaw.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gulginaw_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
