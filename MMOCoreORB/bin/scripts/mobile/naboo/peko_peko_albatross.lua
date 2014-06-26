@@ -25,9 +25,9 @@ peko_peko_albatross = Creature:new {
 	creatureBitmask = PACK + HERD + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
-	scale = 2.0,
 
 	templates = {"object/mobile/peko_peko_hue.iff"},
+	scale = 2.0,
 	lootGroups = {
 	 {
 	        groups = {

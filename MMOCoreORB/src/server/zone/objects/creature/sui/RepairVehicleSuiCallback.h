@@ -36,7 +36,7 @@ public:
 
 		Locker _lock(vehicle, player);
 
-		if (!vehicle->checkInRangeGarage()) {
+		if (!vehicle->checkInRangeGarage() && !player->getPlayerObject()->isPrivileged()) {
 			player->sendSystemMessage("@pet/pet_menu:repair_unrecognized_garages"); //Your vehicle does not recognize any local garages. Try again in a garage repair zone.
 			return;
 		}
@@ -63,6 +63,11 @@ public:
 		player->sendSystemMessage(params);
 
 		vehicle->healDamage(player, 0, vehicle->getConditionDamage(), true);
+
+		String vehicleName = vehicle->getDisplayedName();
+
+		if (vehicleName.beginsWith("(disabled)"))
+			vehicle->setCustomObjectName(vehicleName.subString(11), true);
 
 		if( city != NULL && tax > 0){
 

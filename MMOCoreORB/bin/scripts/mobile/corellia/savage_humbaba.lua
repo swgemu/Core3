@@ -29,6 +29,7 @@ savage_humbaba = Creature:new {
 
 	templates = {"object/mobile/savage_humbaba.iff"},
 	controlDeviceTemplate = "object/intangible/pet/falumpaset_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

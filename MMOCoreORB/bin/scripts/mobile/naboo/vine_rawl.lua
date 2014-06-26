@@ -28,6 +28,7 @@ vine_rawl = Creature:new {
 
 	templates = {"object/mobile/fanned_rawl.iff"},
 	controlDeviceTemplate = "object/intangible/pet/fanned_rawl_hue.iff",
+	scale = 1.3,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

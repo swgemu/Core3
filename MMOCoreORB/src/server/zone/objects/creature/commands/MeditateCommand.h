@@ -67,6 +67,11 @@ public:
 
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
+			
+		if (creature->isInCombat()) {
+			creature->sendSystemMessage("@jedi_spam:not_while_in_combat");
+			return GENERALERROR;
+		}			
 
 		// Meditate
 		CreatureObject* player = cast<CreatureObject*>(creature);

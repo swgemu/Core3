@@ -102,66 +102,90 @@ describe("Sith Shadow Encounter", function()
 
 	describe("onLoot", function()
 		describe("When called with a pointer to a creature and a pointer to the looter", function()
-			it("Should get the list of spawned sith shadows for the looter.", function()
+			it("Should check if the player has the encounter quest active.", function()
 				SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
-				assert.spy(SpawnMobilesMocks.getSpawnedMobiles).was.called_with(pCreatureObject, SithShadowEncounter.taskName)
+				assert.spy(QuestManagerMocks.hasActiveQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.TwO_MILITARY)
 			end)
 
-			describe("and the player has a list of spawned sith shadows", function()
+			describe("and the player has the quest active", function()
 				before_each(function()
-					SpawnMobilesMocks.getSpawnedMobiles = spy.new(function() return spawnedSithShadowList end)
+					QuestManagerMocks.hasActiveQuest = spy.new(function() return true end)
 				end)
 
-				it("Should get the id of the first sith shadow in the list", function()
-					SithShadowEncounter:onLoot(pSecondSithShadow, pCreatureObject, 0)
+				it("Should get the list of spawned sith shadows for the looter.", function()
+					SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
-					assert.spy(firstSithShadowObject.getObjectID).was.called_with(firstSithShadowObject)
+					assert.spy(SpawnMobilesMocks.getSpawnedMobiles).was.called_with(pCreatureObject, SithShadowEncounter.taskName)
 				end)
 
-				it("Should get the id of the looted creature", function()
-					SithShadowEncounter:onLoot(pSecondSithShadow, pCreatureObject, 0)
+				describe("and the player has a list of spawned sith shadows", function()
+					before_each(function()
+						SpawnMobilesMocks.getSpawnedMobiles = spy.new(function() return spawnedSithShadowList end)
+					end)
 
-					assert.spy(secondSithShadowObject.getObjectID).was.called_with(secondSithShadowObject)
-				end)
+					it("Should get the id of the first sith shadow in the list", function()
+						SithShadowEncounter:onLoot(pSecondSithShadow, pCreatureObject, 0)
 
-				describe("and both ids are identical", function()
-					it("Should create loot in the inventory of the sith shadow.", function()
+						assert.spy(firstSithShadowObject.getObjectID).was.called_with(firstSithShadowObject)
+					end)
+
+					it("Should get the id of the looted creature", function()
+						SithShadowEncounter:onLoot(pSecondSithShadow, pCreatureObject, 0)
+
+						assert.spy(secondSithShadowObject.getObjectID).was.called_with(secondSithShadowObject)
+					end)
+
+					describe("and both ids are identical", function()
+						it("Should create loot in the inventory of the sith shadow.", function()
+							SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0)
+
+							assert.spy(createLoot).was.called_with(pInventory, "sith_shadow_encounter_datapad", 0, true)
+						end)
+
+						it("Should return 1 to remove the observer.", function()
+							assert.same(1, SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0))
+						end)
+					end)
+
+					describe("and both ids are not identical", function()
+						it("Should not create loot in the inventory of the looted sith shadow.", function()
+							SithShadowEncounter:onLoot(pSecondSithShadow, pCreatureObject, 0)
+
+							assert.spy(createLoot).was.not_called()
+						end)
+
+						it("Should return 0 to keep the observer.", function()
+							assert.same(0, SithShadowEncounter:onLoot(pSecondSithShadow, pCreatureObject, 0))
+						end)
+					end)
+
+					it("Should complete the sith shadow ambush quests.", function()
 						SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
-						assert.spy(createLoot).was.called_with(pInventory, "sith_shadow_encounter_datapad", 0, true)
-					end)
-
-					it("Should return 1 to remove the observer.", function()
-						assert.same(1, SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0))
+						assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.TwO_MILITARY)
+						assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_1)
 					end)
 				end)
 
-				describe("and both ids are not identical", function()
+				describe("and the player has no spawned sith shadows", function()
+					before_each(function()
+						SpawnMobilesMocks.getSpawnedMobiles = spy.new(function() return nil end)
+					end)
+
 					it("Should not create loot in the inventory of the looted sith shadow.", function()
-						SithShadowEncounter:onLoot(pSecondSithShadow, pCreatureObject, 0)
+						SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
 						assert.spy(createLoot).was.not_called()
 					end)
 
 					it("Should return 0 to keep the observer.", function()
-						assert.same(0, SithShadowEncounter:onLoot(pSecondSithShadow, pCreatureObject, 0))
+						assert.same(0, SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0))
 					end)
-				end)
-
-				it("Should complete the sith shadow ambush quests.", function()
-					SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0)
-
-					assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.TwO_MILITARY)
-					assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_1)
 				end)
 			end)
 
-			describe("and the player has no spawned sith shadows", function()
-				before_each(function()
-					SpawnMobilesMocks.getSpawnedMobiles = spy.new(function() return nil end)
-				end)
-
+			describe("and the player does not have the quest active", function()
 				it("Should not create loot in the inventory of the looted sith shadow.", function()
 					SithShadowEncounter:onLoot(pFirstSithShadow, pCreatureObject, 0)
 
@@ -176,20 +200,6 @@ describe("Sith Shadow Encounter", function()
 	end)
 
 	describe("onPlayerKilled", function()
-		local realFinish
-
-		setup(function()
-			realFinish = SithShadowEncounter.finish
-		end)
-
-		teardown(function()
-			SithShadowEncounter.finish = realFinish
-		end)
-
-		before_each(function()
-			SithShadowEncounter.finish = spy.new(function() end)
-		end)
-
 		it("Should check if the killer is from the sith shadow spawn of the player.", function()
 			SithShadowEncounter:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
 
@@ -245,7 +255,7 @@ describe("Sith Shadow Encounter", function()
 				assert.spy(OldManEncounterMocks.start).was.not_called()
 			end)
 
-			it("Should reset the sith shadow ambush quests.", function()
+			it("Should not reset the sith shadow ambush quests.", function()
 				SithShadowEncounter:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0)
 
 				assert.spy(QuestManagerMocks.resetQuest).was.not_called()

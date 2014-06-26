@@ -1,3 +1,46 @@
+haleen_snowline_missions =
+	{
+		{
+			missionType = "deliver",
+			primarySpawns =
+			{
+				{ npcTemplate = "haleen_reactionist", planetName = "talus", npcName = "" }
+			},
+			secondarySpawns =
+			{
+				{ npcTemplate = "haleen_thug", planetName = "talus", npcName = "a Thug" },
+			},
+			itemSpawns =
+			{
+				{ itemTemplate = "object/tangible/mission/quest_item/haleen_snowline_q1_needed.iff", itemName = "" }
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 25 },
+			}
+		},
+		{
+			missionType = "confiscate",
+			primarySpawns =
+			{
+				{ npcTemplate = "haleen_activist", planetName = "talus", npcName = "" }
+			},
+			secondarySpawns =
+			{
+				{ npcTemplate = "haleen_reactionist2", planetName = "talus", npcName = "" },
+				{ npcTemplate = "haleen_reactionist2", planetName = "talus", npcName = "" },
+			},
+			itemSpawns =
+			{
+				{ itemTemplate = "object/tangible/mission/quest_item/haleen_snowline_q2_needed.iff", itemName = "" }
+			},
+			rewards =
+			{
+				{ rewardType = "credits", amount = 40 },
+			}
+		}
+	}
+
 hagrin_zeed_missions =
 	{
 		{
@@ -74,31 +117,38 @@ hagrin_zeed_missions =
 		},
 	}
 
-npcMapHagrinZeed =
+npcMapHaleenSnowlineHagrinZeed =
 	{
+		{
+			spawnData = { planetName = "talus", npcTemplate = "haleen_snowline", x = -0.1, z = 3.12, y = 19.3, direction = 0, cellID = 6255466, position = STAND },
+			worldPosition = { x = 683, y = -3152 },
+			npcNumber = 1,
+			stfFile = "@static_npc/talus/talus_dearic_haleen_snowline",
+			missions = haleen_snowline_missions
+		},
 		{
 			spawnData = { planetName = "talus", npcTemplate = "hagrin_zeed", x = -35.8, z = 1.3, y = -3.0, direction = 53, cellID = 6255471, position = SIT },
 			worldPosition = { x = 653, y = -3177 },
-			npcNumber = 1,
+			npcNumber = 2,
 			stfFile = "@static_npc/talus/talus_dearic_hagrin_zeed",
 			missions = hagrin_zeed_missions
 		},
 	}
 
-HagrinZeed = ThemeParkLogic:new {
+HaleenSnowlineHagrinZeed = ThemeParkLogic:new {
 	numberOfActs = 1,
-	npcMap = npcMapHagrinZeed,
-	className = "HagrinZeed",
-	screenPlayState = "hagrin_zeed_quest",
+	npcMap = npcMapHaleenSnowlineHagrinZeed,
+	className = "HaleenSnowlineHagrinZeed",
+	screenPlayState = "haleen_snowline_hagrin_zeed_quest",
 	distance = 800,
 	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 }
 
-registerScreenPlay("HagrinZeed", true)
+registerScreenPlay("HaleenSnowlineHagrinZeed", true)
 
-hagrin_zeed_mission_giver_conv_handler = mission_giver_conv_handler:new {
-	themePark = HagrinZeed
+haleen_snowline_hagrin_zeed_mission_giver_conv_handler = mission_giver_conv_handler:new {
+	themePark = HaleenSnowlineHagrinZeed
 }
-hagrin_zeed_mission_target_conv_handler = mission_target_conv_handler:new {
-	themePark = HagrinZeed
+haleen_snowline_hagrin_zeed_mission_target_conv_handler = mission_target_conv_handler:new {
+	themePark = HaleenSnowlineHagrinZeed
 }

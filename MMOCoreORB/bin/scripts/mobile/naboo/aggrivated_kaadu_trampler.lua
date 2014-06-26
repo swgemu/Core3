@@ -28,6 +28,7 @@ aggrivated_kaadu_trampler = Creature:new {
 
 	templates = {"object/mobile/kaadu_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kaadu_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

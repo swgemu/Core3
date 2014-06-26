@@ -129,6 +129,16 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		vehicle->setCreatureLink(player);
 		vehicle->setControlDevice(_this.get());
 		
+		if (vehicle->isDestroyed())
+		{
+			String vehicleName = vehicle->getDisplayedName();
+			if (!vehicleName.beginsWith("(disabled)"))
+			{
+				UnicodeString disabledName = "(disabled) " + vehicle->getDisplayedName();
+				vehicle->setCustomObjectName(disabledName, true);
+			}
+		}
+
 	}
 	
 	Zone* zone = player->getZone();

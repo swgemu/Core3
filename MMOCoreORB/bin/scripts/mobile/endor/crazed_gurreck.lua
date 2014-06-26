@@ -28,6 +28,7 @@ crazed_gurreck = Creature:new {
 
 	templates = {"object/mobile/gurreck_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
+	scale = 0.95,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

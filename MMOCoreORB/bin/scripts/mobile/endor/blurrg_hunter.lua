@@ -27,6 +27,7 @@ blurrg_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blurrg_hue.iff"},
+	scale = 0.85,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

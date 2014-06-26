@@ -67,24 +67,6 @@ endor_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "endor_blooming_jax_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 27,
-			maxDifficulty = 27,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "endor_mantigrue_night_stalker_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 28,
-			maxDifficulty = 28,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "endor_blushing_jax_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 27,
@@ -130,24 +112,6 @@ endor_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "endor_mantigrue_hunter_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 38,
-			maxDifficulty = 38,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
-		},
-		{
-			lairTemplateName = "endor_arachne_warrior_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 42,
-			maxDifficulty = 42,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "endor_bark_mite_burrower_worker_lair_neutral_small",
 			spawnLimit = -1,
 			minDifficulty = 45,
@@ -158,15 +122,6 @@ endor_world = {
 		},
 		{
 			lairTemplateName = "endor_blurrg_lair_neutral_small",
-			spawnLimit = -1,
-			minDifficulty = 50,
-			maxDifficulty = 50,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
-		},
-		{
-			lairTemplateName = "endor_gurreck_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 50,
 			maxDifficulty = 50,
@@ -190,24 +145,6 @@ endor_world = {
 			maxDifficulty = 55,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 25
-		},
-		{
-			lairTemplateName = "endor_arachne_venom_filled_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 58,
-			maxDifficulty = 58,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
-		},
-		{
-			lairTemplateName = "endor_blurrg_raptor_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 141,
-			maxDifficulty = 141,
-			numberToSpawn = 0,
-			weighting = 3,
 			size = 25
 		},
 	}

@@ -1001,9 +1001,9 @@ void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const U
 
 	if (room != NULL) {
 		if (fullName == "")
-				msg = new ChatRoomMessage(name, message, roomID);
+				msg = new ChatRoomMessage(name, message, room->getRoomID());
 			else
-				msg = new ChatRoomMessage(fullName, message, roomID);
+				msg = new ChatRoomMessage(fullName, message, room->getRoomID());
 
 		room->broadcastMessageCheckIgnore(msg, name);
 	}
@@ -1046,9 +1046,9 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 
 	if (auctionRoom != NULL) {
 		if (fullName == "")
-			msg = new ChatRoomMessage(name, message, roomID);
+			msg = new ChatRoomMessage(name, message, auctionRoom->getRoomID());
 		else
-			msg = new ChatRoomMessage(fullName, message, roomID);
+			msg = new ChatRoomMessage(fullName, message, auctionRoom->getRoomID());
 
 		auctionRoom->broadcastMessageCheckIgnore(msg, name);
 	}

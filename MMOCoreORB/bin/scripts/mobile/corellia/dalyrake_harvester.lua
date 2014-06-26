@@ -28,6 +28,7 @@ dalyrake_harvester = Creature:new {
 
 	templates = {"object/mobile/dalyrake_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/dalyrake_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

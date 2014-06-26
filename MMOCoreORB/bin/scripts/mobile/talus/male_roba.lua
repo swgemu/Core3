@@ -28,6 +28,7 @@ male_roba = Creature:new {
 
 	templates = {"object/mobile/roba_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/roba_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

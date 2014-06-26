@@ -2847,6 +2847,21 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 			area->notifyEnter(_this.get());
 		}
 
+		Zone* currentZone = getZone();
+
+		if (currentZone != NULL) {
+			// Notify nearby active areas of faction change
+			SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+			currentZone->getInRangeActiveAreas(player->getPositionX(), player->getPositionY(), &activeAreas, true);
+
+			for (int i = 0; i < activeAreas.size(); i++) {
+				ActiveArea* area = activeAreas.get(i);
+
+				if (area != NULL)
+					area->notifyEnter(_this.get());
+			}
+		}
+
 		PlayerObject* ghost = player->getPlayerObject();
 
 		if (ghost == NULL)

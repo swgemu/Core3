@@ -86,7 +86,7 @@ lok_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "lok_kimogilla_pack_neutral_none",
+			lairTemplateName = "lok_kimogilla_lair_neutral_medium",
 			spawnLimit = 15,
 			minDifficulty = 85,
 			maxDifficulty = 150,

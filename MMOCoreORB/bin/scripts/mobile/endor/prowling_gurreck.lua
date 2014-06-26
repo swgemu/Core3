@@ -28,6 +28,7 @@ prowling_gurreck = Creature:new {
 
 	templates = {"object/mobile/gurreck_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

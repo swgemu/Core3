@@ -27,6 +27,7 @@ sanguin_bloodseeker_hierarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bloodseeker_mite_hue.iff"},
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

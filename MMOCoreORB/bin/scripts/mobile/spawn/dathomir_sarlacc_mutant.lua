@@ -4,7 +4,7 @@ dathomir_sarlacc_mutant = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "dathomir_reptilian_enraged_flyer_flock_neutral_none",
+			lairTemplateName = "dathomir_reptilian_mature_flyer_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 27,
 			maxDifficulty = 27,
@@ -22,7 +22,7 @@ dathomir_sarlacc_mutant = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dathomir_kamurith_nocuous_neutral_none",
+			lairTemplateName = "dathomir_kamurith_nocuous_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 46,
 			maxDifficulty = 46,
@@ -58,7 +58,7 @@ dathomir_sarlacc_mutant = {
 			size = 25
 		},
 		{
-			lairTemplateName = "dathomir_rancor_mutant_pack_neutral_none",
+			lairTemplateName = "dathomir_rancor_enraged_bull_lair_neutral_large_boss_01",
 			spawnLimit = -1,
 			minDifficulty = 75,
 			maxDifficulty = 75,

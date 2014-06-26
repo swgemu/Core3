@@ -153,7 +153,6 @@ void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
 		BaseMessage* ranges = new WeaponRanges(cast<CreatureObject*>(player), _this.get());
 		player->sendMessage(ranges);
 	}
-
 }
 
 String WeaponObjectImplementation::getWeaponType() {

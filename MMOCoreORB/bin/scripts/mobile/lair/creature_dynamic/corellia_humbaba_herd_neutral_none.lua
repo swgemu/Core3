@@ -1,11 +1,12 @@
 corellia_humbaba_herd_neutral_none = Lair:new {
-	mobiles = {{"swamp_humbaba", 1}, {"humbaba", 1}},
+	mobiles = {{"humbaba",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/lair_base_mound_bramble_dark.iff"},
-	buildingsEasy = {"object/tangible/lair/base/lair_base_mound_bramble_dark.iff"},
-	buildingsMedium = {"object/tangible/lair/base/lair_base_mound_bramble_dark.iff"},
-	buildingsHard = {"object/tangible/lair/base/lair_base_mound_bramble_dark.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/lair_base_mound_bramble_dark.iff"},
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none",
 }
 
 addLairTemplate("corellia_humbaba_herd_neutral_none", corellia_humbaba_herd_neutral_none)

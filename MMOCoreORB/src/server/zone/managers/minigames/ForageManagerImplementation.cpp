@@ -35,6 +35,12 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 		return;
 	}
 
+	// Check if mounted
+	if (player->isRidingMount()) {
+		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
+		return;
+	}
+
 	//Check if player is inside a structure.
 	if (player->getParentID() != 0) {
 		if (forageType == ForageManager::SHELLFISH)

@@ -30,7 +30,7 @@ hagrin_zeed = Creature:new {
 	templates = {"object/mobile/dressed_hagrin_zeed.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "hagrin_zeed_mission_giver_convotemplate",
+	conversationTemplate = "haleen_snowline_hagrin_zeed_mission_giver_convotemplate",
 	attacks = {
 	}
 }

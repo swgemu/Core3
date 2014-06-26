@@ -28,6 +28,7 @@ large_chuba = Creature:new {
 
 	templates = {"object/mobile/chuba_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/chuba_hue.iff",
+	scale = 1.3,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

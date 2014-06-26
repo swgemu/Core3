@@ -22,7 +22,6 @@ npcMapTamvarSenzen =
       worldPosition = { x = 5188, y = 6819 },
       npcNumber = 1,
       stfFile = "@static_npc/naboo/tamvar_senzen",
-      hasWaypointNames = "no",
       missions = tamvar_senzen_missions
     },
 

@@ -27,6 +27,7 @@ bark_mite_burrower_swarmling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite_hue.iff"},
+	scale = 0.7,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

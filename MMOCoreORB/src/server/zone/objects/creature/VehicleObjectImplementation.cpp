@@ -208,6 +208,15 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 
 	if (linkedCreature != NULL) {
 		linkedCreature->sendSystemMessage("@pet/pet_menu:veh_disabled");
+
+		ManagedReference<VehicleObject*> vehicle = _this.get();
+		String vehicleName = vehicle->getDisplayedName();
+		if (!vehicleName.beginsWith("(disabled)"))
+		{
+			UnicodeString disabledName = "(disabled) " + vehicleName;
+			vehicle->setCustomObjectName(disabledName, true);
+		}
+
 		try {
 			if (attacker != _this.get()) {
 				Locker clocker(linkedCreature, attacker);

@@ -28,6 +28,7 @@ deadly_hooded_rawl = Creature:new {
 
 	templates = {"object/mobile/fanned_rawl_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/fanned_rawl_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

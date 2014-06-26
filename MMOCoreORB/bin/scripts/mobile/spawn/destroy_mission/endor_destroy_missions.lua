@@ -38,12 +38,6 @@ endor_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "endor_mantigrue_night_stalker_neutral_none",
-			minDifficulty = 24,
-			maxDifficulty = 30,
-			size = 25,
-		},
-		{
 			lairTemplateName = "endor_blushing_jax_lair_neutral_small",
 			minDifficulty = 24,
 			maxDifficulty = 30,
@@ -62,29 +56,11 @@ endor_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "endor_mantigrue_hunter_neutral_none",
-			minDifficulty = 32,
-			maxDifficulty = 44,
-			size = 25,
-		},
-		{
-			lairTemplateName = "endor_arachne_warrior_neutral_none",
-			minDifficulty = 34,
-			maxDifficulty = 48,
-			size = 25,
-		},
-		{
 			lairTemplateName = "endor_blurrg_lair_neutral_small",
 			minDifficulty = 45,
 			maxDifficulty = 55,
 			size = 25,
 		},
-		{
-			lairTemplateName = "endor_gurreck_neutral_none",
-			minDifficulty = 45,
-			maxDifficulty = 55,
-			size = 25,
-		}
 	}
 }
 

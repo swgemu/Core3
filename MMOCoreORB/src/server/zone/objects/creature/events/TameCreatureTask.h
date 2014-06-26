@@ -107,15 +107,19 @@ public:
 
 		ManagedReference<PetControlDevice*> controlDevice = zoneServer->createObject(objectString.hashCode(), 1).castTo<PetControlDevice*>();
 
-		if (controlDevice == NULL)
+		if (controlDevice == NULL) {
+			creature->setPvpStatusBitmask(originalMask, true);
 			return;
+		}
 
 		SceneObject* datapad = player->getSlottedObject("datapad");
 		PlayerManager* playerManager = zoneServer->getPlayerManager();
 		ObjectManager* objectManager = zoneServer->getObjectManager();
 
-		if (datapad == NULL || playerManager == NULL || objectManager == NULL)
+		if (datapad == NULL || playerManager == NULL || objectManager == NULL) {
+			creature->setPvpStatusBitmask(originalMask, true);
 			return;
+		}
 
 		controlDevice->setControlledObject(creature);
 

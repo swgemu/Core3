@@ -60,7 +60,7 @@ owetary = Creature:new {
 					},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "hagrin_zeed_mission_target_convotemplate",
+	conversationTemplate = "haleen_snowline_hagrin_zeed_mission_target_convotemplate",
 	attacks = {
 	}
 }

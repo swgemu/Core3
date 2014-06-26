@@ -27,6 +27,7 @@ stoneskin_hanadak = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hanadak_hue.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

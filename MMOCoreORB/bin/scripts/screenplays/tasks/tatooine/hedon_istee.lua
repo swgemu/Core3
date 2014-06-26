@@ -50,7 +50,6 @@ npcMapHedonIstee =
 		spawnData = { planetName = "tatooine", npcTemplate = "hedon_istee", x = 1390, z = 7, y = 3197, direction = 0, cellID = 0, position = STAND },
 		npcNumber = 1,
 		stfFile = "@static_npc/tatooine/hedon_istee",
-		hasWaypointNames = "no",
 		missions = hedon_istee_missions
 	},
 }

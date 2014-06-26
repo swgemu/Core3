@@ -28,6 +28,7 @@ blurrg = Creature:new {
 
 	templates = {"object/mobile/blurrg.iff"},
 	controlDeviceTemplate = "object/intangible/pet/blurrg_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

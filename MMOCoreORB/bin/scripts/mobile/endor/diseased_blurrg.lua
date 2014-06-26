@@ -27,6 +27,7 @@ diseased_blurrg = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/blurrg_hue.iff"},
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ knotted_krevol = Creature:new {
 
 	templates = {"object/mobile/horned_krevol_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/horned_krevol_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ shaupaut_hunter = Creature:new {
 
 	templates = {"object/mobile/shaupaut_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/shaupaut_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

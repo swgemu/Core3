@@ -58,15 +58,6 @@ naboo_medium = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_mott_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 11,
-			maxDifficulty = 11,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "veermok_forest",
 			spawnLimit = -1,
 			minDifficulty = 13,
@@ -80,33 +71,6 @@ naboo_medium = {
 			spawnLimit = -1,
 			minDifficulty = 13,
 			maxDifficulty = 13,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "naboo_gualama_herd_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 14,
-			maxDifficulty = 14,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "naboo_peko_peko_solitary_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 14,
-			maxDifficulty = 14,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "naboo_krevol_click_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 15,
-			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

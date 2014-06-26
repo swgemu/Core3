@@ -28,6 +28,7 @@ veermok_scavenger = Creature:new {
 
 	templates = {"object/mobile/veermok_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/veermok_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

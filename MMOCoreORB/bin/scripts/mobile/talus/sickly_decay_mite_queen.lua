@@ -27,6 +27,7 @@ sickly_decay_mite_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/decay_mite.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

@@ -2,7 +2,7 @@ dathomir_destroy_missions = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "dathomir_verne_herd_neutral_none",
+			lairTemplateName = "dathomir_verne_bull_lair_neutral_large",
 			minDifficulty = 7,
 			maxDifficulty = 10,
 			size = 25,
@@ -14,13 +14,13 @@ dathomir_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "dathomir_reptilian_flyer_flock_neutral_none",
+			lairTemplateName = "dathomir_reptilian_mature_flyer_lair_neutral_large",
 			minDifficulty = 14,
 			maxDifficulty = 18,
 			size = 25,
 		},
 		{
-			lairTemplateName = "dathomir_shear_mite_pack_neutral_none",
+			lairTemplateName = "dathomir_shear_mite_queen_lair_neutral_large",
 			minDifficulty = 14,
 			maxDifficulty = 18,
 			size = 25,
@@ -50,7 +50,7 @@ dathomir_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "dathomir_reptilian_ancient_flyer_flock_neutral_none",
+			lairTemplateName = "dathomir_reptilian_ancient_flyer_lair_neutral_large",
 			minDifficulty = 22,
 			maxDifficulty = 28,
 			size = 25,
@@ -74,13 +74,13 @@ dathomir_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "dathomir_rhoa_kwi_neutral_none",
+			lairTemplateName = "dathomir_rhoa_kwi_lair_neutral_medium",
 			minDifficulty = 32,
 			maxDifficulty = 39,
 			size = 25,
 		},
 		{
-			lairTemplateName = "dathomir_kamurith_nocuous_neutral_none",
+			lairTemplateName = "dathomir_kamurith_nocuous_lair_neutral_medium",
 			minDifficulty = 40,
 			maxDifficulty = 52,
 			size = 25,

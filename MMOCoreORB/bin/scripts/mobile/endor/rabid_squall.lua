@@ -28,6 +28,7 @@ rabid_squall = Creature:new {
 
 	templates = {"object/mobile/squall_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/squall_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -1410,7 +1410,7 @@ void AuctionManagerImplementation::expireSale(AuctionItem* item) {
 	//Send the mail to the vendor owner
 	String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
 
-	UnicodeString sellerSubject("@auction:subject_vendor_seller"); // Vendor Sale Complete
+	UnicodeString sellerSubject("@auction:subject_auction_unsuccessful"); // Auction Unsuccessful
 
 	StringIdChatParameter sellerBody("@auction:seller_fail"); // Your auction of %TO has been completed and has not been purchased.
 	sellerBody.setTO(item->getItemName());

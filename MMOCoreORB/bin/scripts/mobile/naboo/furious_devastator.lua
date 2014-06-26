@@ -28,6 +28,7 @@ furious_devastator = Creature:new {
 
 	templates = {"object/mobile/fambaa_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/fambaa_hue.iff",
+	scale = 1.3,
 	lootGroups = {
 	 {
 	        groups = {

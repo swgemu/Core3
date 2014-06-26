@@ -28,6 +28,7 @@ guf_drolg_female = Creature:new {
 
 	templates = {"object/mobile/guf_drolg_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/guf_drolg_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

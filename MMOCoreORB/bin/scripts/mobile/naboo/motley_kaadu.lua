@@ -28,6 +28,7 @@ motley_kaadu = Creature:new {
 
 	templates = {"object/mobile/kaadu_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kaadu_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

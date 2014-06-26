@@ -193,15 +193,6 @@ talus_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "talus_mire_marauder_neutral_none",
-			spawnLimit = -1,			
-			minDifficulty = 56,
-			maxDifficulty = 56,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "talus_mutated_kahmurra_lair_neutral_medium",
 			spawnLimit = -1,			
 			minDifficulty = 26,

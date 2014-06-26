@@ -28,6 +28,7 @@ bolle_bol_calf = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolle_bol_calf.iff"},
+	scale = 0.65,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

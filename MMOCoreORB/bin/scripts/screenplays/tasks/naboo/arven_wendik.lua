@@ -62,7 +62,6 @@ npcMapArvenWendik =
       worldPosition = { x = 4712, y = -1432 },
       npcNumber = 1,
       stfFile = "@static_npc/naboo/arven_wendik",
-      hasWaypointNames = "no",
       missions = arven_wendik_missions
     }
   }
