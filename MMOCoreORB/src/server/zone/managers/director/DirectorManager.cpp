@@ -1739,6 +1739,8 @@ Lua* DirectorManager::getLuaInstance() {
 		loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
 		AiMap::instance()->initialize(lua);
+		if (!AiMap::instance()->isLoaded())
+			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
 	}
@@ -1756,6 +1758,8 @@ int DirectorManager::runScreenPlays() {
 		ret = loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
 		AiMap::instance()->initialize(lua);
+		if (!AiMap::instance()->isLoaded())
+			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
 	}

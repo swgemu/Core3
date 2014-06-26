@@ -17,7 +17,7 @@ void SelectorBehavior::childSucceeded() {
 }
 
 void SelectorBehavior::childFailed() {
-	Reference<Behavior*> currentChild;
+	Behavior* currentChild;
 
 	try {
 		do {

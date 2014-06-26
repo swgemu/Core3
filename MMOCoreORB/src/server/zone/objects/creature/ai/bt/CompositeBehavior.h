@@ -8,8 +8,8 @@
 #ifndef COMPOSITEBEHAVIOR_H_
 #define COMPOSITEBEHAVIOR_H_
 
-#include "Behavior.h"
 #include "engine/engine.h"
+#include "Behavior.h"
 
 namespace server {
 namespace zone {
@@ -20,7 +20,7 @@ namespace bt {
 
 class CompositeBehavior : public Behavior {
 protected:
-	Vector<Reference<Behavior*> > children;
+	Vector<Behavior*> children;
 	uint32 currentPos;
 
 public:
@@ -28,7 +28,7 @@ public:
 		children.add(child);
 	}
 
-	Vector<Reference<Behavior*> > getChildren() {
+	Vector<Behavior*> getChildren() {
 		return children;
 	}
 
@@ -36,40 +36,32 @@ public:
 		children.removeAll();
 	}
 
-	CompositeBehavior(AiAgent* _agent, String className) : Behavior(_agent, className) {
-		currentPos = 0;
-	}
+	CompositeBehavior(AiAgent* _agent, String className);
 
-	CompositeBehavior(const CompositeBehavior& b) : Behavior(b) {
-		this->children = b.children;
-		this->currentPos = b.currentPos;
-	}
+	CompositeBehavior(const CompositeBehavior& b);
 
 	CompositeBehavior& operator=(const CompositeBehavior& b) {
 		if (this == &b)
 			return *this;
 
-		this->children = b.children;
-		this->currentPos = b.currentPos;
-		this->agent = b.agent;
-		this->result = b.result;
-		this->parent = b.parent;
+		agent = b.agent;
+		result = b.result;
+		parent = b.parent;
+		interface = b.interface;
+		children = b.children;
+		currentPos = b.currentPos;
 
 		return *this;
+	}
+
+	virtual ~CompositeBehavior() {
 	}
 
 	bool isComposite() {
 		return true;
 	}
 
-	String print() {
-		StringBuffer stream;
-		stream << Behavior::print() << " ";
-		for (int i = 0; i < children.size(); i ++) {
-			stream << children.get(i)->print() << " ";
-		}
-		return stream.toString();
-	}
+	String print();
 
 	virtual void childSucceeded() {
 		endWithSuccess();
@@ -79,9 +71,7 @@ public:
 		endWithFailure();
 	}
 
-	virtual bool checkConditions() {
-		return children.size() > 0 && Behavior::checkConditions();
-	}
+	virtual bool checkConditions();
 
 	virtual void start();
 

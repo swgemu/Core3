@@ -544,10 +544,17 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		return NULL;
 	}
 
+	// FIXME (dannuic): Sometimes nodes only have one entry.... why?
+	if (nodes->size() == 1) {
+		error("Only one node");
+
+		delete path;
+		return NULL;
+	}
+
 	// path from our position to path node
 	Vector<Triangle*>* trianglePath = NULL;
 
-	// FIXME (dannuic): can nodes only have 1 entry? ArrayOutOfBoundsException for nodes->get(1)
 	int res = getFloorPath(pointA.getPoint(), nodes->get(1)->getPosition(), floorMesh1, trianglePath);
 
 	if (res != -1 && trianglePath != NULL)

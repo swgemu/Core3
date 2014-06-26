@@ -30,5 +30,3 @@ function SelectWeapon:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
-
-addAiBehavior("SelectWeapon")

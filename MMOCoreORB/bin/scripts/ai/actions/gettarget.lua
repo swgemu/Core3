@@ -37,5 +37,3 @@ function GetTarget:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
-
-addAiBehavior("GetTarget")

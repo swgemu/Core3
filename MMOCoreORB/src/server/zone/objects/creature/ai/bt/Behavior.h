@@ -24,11 +24,11 @@ namespace bt {
 
 class CompositeBehavior;
 
-class Behavior : public Object {
+class Behavior {
 protected:
 	ManagedReference<AiAgent*> agent; // this is like the blackboard
 	uint8 result;
-	Reference<Behavior*> parent; // the parent must be a composite
+	Behavior* parent; // the parent must be a composite
 	Reference<LuaBehavior*> interface;
 
 public:
@@ -38,7 +38,7 @@ public:
 	 */
 	Behavior(AiAgent* _agent, String className);
 
-	Behavior(const Behavior& b) : Object() {
+	Behavior(const Behavior& b) {
 		agent = b.agent;
 		result = b.result;
 		parent = b.parent;
@@ -57,7 +57,8 @@ public:
 		return *this;
 	}
 
-	virtual ~Behavior() {}
+	virtual ~Behavior() {
+	}
 
 	virtual bool isComposite() {
 		return false;

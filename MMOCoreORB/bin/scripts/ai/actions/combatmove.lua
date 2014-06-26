@@ -13,5 +13,3 @@ function CombatMove:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
-
-addAiBehavior("CombatMove")

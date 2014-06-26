@@ -35,7 +35,7 @@ void ParallelBehavior::doAction() {
 		this->start();
 
 	for (int i = 0; i < children.size(); i++) {
-		Reference<Behavior*> currentChild = children.get(i);
+		Behavior* currentChild = children.get(i);
 
 		if (currentChild == NULL) { // this shouldn't happen. Bail.
 			agent->error("NULL child or empty children list in ParallelBehavior");

@@ -42,5 +42,3 @@ function ParallelSequence:doAction(pAgent)
 		return BEHAVIOR_INVALID
 	end
 end
-
-addAiBehavior("ParallelSequence")

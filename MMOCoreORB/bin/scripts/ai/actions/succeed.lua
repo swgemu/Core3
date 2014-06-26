@@ -31,5 +31,3 @@ function Succeed:doAction(pAgent)
 	end
 	return BEHAVIOR_SUCCESS
 end
-
-addAiBehavior("Succeed")

@@ -9,12 +9,12 @@
 #define LUABEHAVIOR_H_
 
 #include "engine/engine.h"
-#include "server/zone/objects/creature/AiAgent.h"
 
 namespace server {
 namespace zone {
 namespace objects {
 namespace creature {
+class AiAgent;
 namespace ai {
 namespace bt {
 

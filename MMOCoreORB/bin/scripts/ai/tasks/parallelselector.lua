@@ -42,5 +42,3 @@ function ParallelSelector:doAction(pAgent)
 		return BEHAVIOR_INVALID
 	end
 end
-
-addAiBehavior("ParallelSelector")

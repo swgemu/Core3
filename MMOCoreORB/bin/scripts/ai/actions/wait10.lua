@@ -20,5 +20,3 @@ function Wait10:terminate(pAgent)
 	dropObserver(DEFENDERDROPPED, pAgent)
 	return 0
 end
-
-addAiBehavior("Wait10")

@@ -139,7 +139,9 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected transient Mutex targetMutex;
 	@dereferenced
-	protected transient Mutex awernessEventMutex;
+	protected transient Mutex awarenessEventMutex;
+	@dereferenced
+	protected transient Mutex movementEventMutex;
 	
 	protected boolean fleeing;
 	
@@ -156,8 +158,9 @@ class AiAgent extends CreatureObject {
 	protected transient DespawnCreatureOnPlayerDissappear despawnEvent;
 
 	// AI bit
-	protected Behavior tree;
-	protected Behavior root;
+	protected string currentBehaviorID;
+	@dereferenced
+	protected VectorMap<string, Behavior> behaviors;
 	
 	@dereferenced
 	protected transient string templateName;
@@ -194,6 +197,8 @@ class AiAgent extends CreatureObject {
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 		
+		behaviors.setNoDuplicateInsertPlan();
+		
 		fleeing = false;
 	}
 	
@@ -206,6 +211,7 @@ class AiAgent extends CreatureObject {
 	
 	public void finalize() {
 		//Logger.info("deleting from ram", true);
+		clearBehaviorList();
 	}
 	
 	public abstract native void activateRecovery();
@@ -854,9 +860,6 @@ class AiAgent extends CreatureObject {
 	
 	@local
 	public native void clearBehaviorList();
-	
-	@local
-	private native void clearBehavior(Behavior b);
 
 	public native void setHomeObject(SceneObject home) {
 		homeObject = home;

@@ -31,5 +31,3 @@ function Failure:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
-
-addAiBehavior("Failure")

@@ -10,7 +10,7 @@
 #include "server/zone/managers/creature/AiMap.h"
 #include "LuaBehavior.h"
 
-Behavior::Behavior(AiAgent* _agent, String className) : Object() {
+Behavior::Behavior(AiAgent* _agent, String className) {
 	agent = _agent;
 	result = AiMap::SUSPEND;
 	parent = NULL;

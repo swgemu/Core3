@@ -1,5 +1,5 @@
 gettargetreactive = {
-	{"root", "GetTarget", "none", BEHAVIOR},
+	{"gtroot", "GetTarget", "none", BEHAVIOR},
 }
 
 addAiTemplate("gettargetreactive", gettargetreactive)

@@ -42,5 +42,3 @@ function NonDeterministicSelector:doAction(pAgent)
 		return BEHAVIOR_INVALID
 	end
 end
-
-addAiBehavior("NonDeterministicSelector")

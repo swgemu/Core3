@@ -6,13 +6,23 @@
  */
 
 #include "CompositeBehavior.h"
+#include "Behavior.h"
 #include "server/zone/managers/creature/AiMap.h"
+
+CompositeBehavior::CompositeBehavior(AiAgent* _agent, String className) : Behavior(_agent, className) {
+	currentPos = 0;
+}
+
+CompositeBehavior::CompositeBehavior(const CompositeBehavior& b) : Behavior(b) {
+	children = b.children;
+	currentPos = b.currentPos;
+}
 
 void CompositeBehavior::start() {
 	currentPos = 0;
 
 	for (int i = 0; i < children.size(); i++) {
-		Reference<Behavior*> currentChild = children.get(i);
+		Behavior* currentChild = children.get(i);
 
 		if (currentChild == NULL) {
 			agent->error("NULL child in CompositeBehavior");
@@ -44,7 +54,7 @@ void CompositeBehavior::doAction() {
 	Behavior* currentChild;
 
 	do {
-		currentChild = children.get(currentPos).get();
+		currentChild = children.get(currentPos);
 
 		if (currentChild == NULL) {
 			agent->error("NULL child or empty children list in CompositeBehavior");
@@ -72,6 +82,20 @@ void CompositeBehavior::doAction() {
 	} while (currentChild != NULL && currentChild->finished() && !this->finished() && currentPos < children.size());
 
 	Behavior::doAction();
+}
+
+String CompositeBehavior::print() {
+	StringBuffer stream;
+	stream << Behavior::print() << "[";
+	for (int i = 0; i < children.size(); i ++) {
+		stream << children.get(i)->print() << " ";
+	}
+	stream << "]";
+	return stream.toString();
+}
+
+bool CompositeBehavior::checkConditions() {
+	return children.size() > 0 && Behavior::checkConditions();
 }
 
 

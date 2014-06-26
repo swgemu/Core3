@@ -19,7 +19,7 @@ namespace bt {
 
 class ParallelBehavior : public CompositeBehavior {
 protected:
-	Vector<Reference<Behavior*> > unfinishedChildren;
+	Vector<Behavior*> unfinishedChildren;
 	uint16 numFailed;
 	uint16 numSucceeded;
 

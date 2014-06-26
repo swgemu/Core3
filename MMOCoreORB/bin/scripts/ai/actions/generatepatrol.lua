@@ -11,5 +11,3 @@ function GeneratePatrol:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
-
-addAiBehavior("GeneratePatrol")

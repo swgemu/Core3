@@ -36,5 +36,3 @@ function SelectAttack:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
-
-addAiBehavior("SelectAttack")

@@ -26,5 +26,3 @@ function Walk:findNextPosition(pAgent)
 	end
 	return false
 end
-
-addAiBehavior("Walk")

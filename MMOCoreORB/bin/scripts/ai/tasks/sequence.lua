@@ -42,5 +42,3 @@ function Sequence:doAction(pAgent)
 		return BEHAVIOR_INVALID
 	end
 end
-
-addAiBehavior("Sequence")

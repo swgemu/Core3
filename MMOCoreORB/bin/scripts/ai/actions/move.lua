@@ -38,5 +38,3 @@ function Move:findNextPosition(pAgent)
 	end
 	return false
 end
-
-addAiBehavior("Move")

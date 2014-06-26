@@ -42,5 +42,3 @@ function Selector:doAction(pAgent)
 		return BEHAVIOR_INVALID
 	end
 end
-
-addAiBehavior("Selector")

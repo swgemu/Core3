@@ -21,5 +21,3 @@ function Composite:doAction(pAgent)
 		return BEHAVIOR_INVALID
 	end
 end
-
-addAiBehavior("Composite")

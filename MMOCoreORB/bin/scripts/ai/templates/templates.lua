@@ -12,3 +12,39 @@ includeAiFile("templates/idlewander.lua")
 includeAiFile("templates/gettargetreactive.lua")
 includeAiFile("templates/selectattacksimple.lua")
 includeAiFile("templates/combatmovesimple.lua")
+
+getTarget = {
+	{NONE, "gettargetreactive"},
+}
+
+selectAttack = {
+	{NONE, "selectattacksimple"},
+}
+
+combatMove = {
+	{NONE, "combatmovesimple"},
+}
+
+idle = {
+	{NONE, "idlewander"},
+}
+
+addAiBehavior("Composite")
+addAiBehavior("None")
+addAiBehavior("Wait10")
+addAiBehavior("Move")
+addAiBehavior("Walk")
+addAiBehavior("CombatMove")
+addAiBehavior("GeneratePatrol")
+addAiBehavior("GetTarget")
+addAiBehavior("SelectAttack")
+addAiBehavior("SelectWeapon")
+
+addAiBehavior("NonDeterministicSelector")
+addAiBehavior("NonDeterministicSequence")
+addAiBehavior("ParallelSelector")
+addAiBehavior("ParallelSequence")
+addAiBehavior("Selector")
+addAiBehavior("Sequence")
+addAiBehavior("Failure")
+addAiBehavior("Succeed")

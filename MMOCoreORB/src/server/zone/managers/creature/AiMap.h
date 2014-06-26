@@ -44,10 +44,17 @@ public:
 	HashTable<unsigned int, Reference<AiTemplate*> > selectAttacks;
 	HashTable<unsigned int, Reference<AiTemplate*> > combatMoves;
 	HashTable<unsigned int, Reference<AiTemplate*> > idles;
+	bool loaded;
 
 	AiMap() : Logger("AiMap") {
 		aiMap.setNullValue(NULL);
 		behaviors.setNullValue(NULL);
+		getTargets.setNullValue(NULL);
+		selectAttacks.setNullValue(NULL);
+		combatMoves.setNullValue(NULL);
+		idles.setNullValue(NULL);
+
+		loaded = false;
 	}
 
 	~AiMap() {
@@ -64,12 +71,30 @@ public:
 
 		if (DEBUG_MODE)
 			info("Initializing...", true);
+
 		lua->runFile("scripts/ai/ais.lua");
+	}
+
+	void loadTemplates(Lua* lua) {
+		if (lua == NULL) {
+			error("Could not get lua AiMap::instance from DirectorManager");
+			return;
+		}
+
+		if (DEBUG_MODE)
+			info("Loading templates...", true);
+
+		lua->runFile("scripts/ai/templates/templates.lua");
 
 		putTemplate(lua, "getTarget", &getTargets);
 		putTemplate(lua, "selectAttack", &selectAttacks);
 		putTemplate(lua, "combatMove", &combatMoves);
 		putTemplate(lua, "idle", &idles);
+		loaded = true;
+	}
+
+	bool isLoaded() {
+		return loaded;
 	}
 
 	int getTemplateSize() {

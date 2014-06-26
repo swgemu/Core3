@@ -13,7 +13,7 @@ NonDeterministicBehavior::NonDeterministicBehavior(AiAgent* _agent, String class
 
 void NonDeterministicBehavior::start() {
 	// this is literally just a shuffle algorithm
-	Reference<Behavior*> temp;
+	Behavior* temp;
 	int index;
 	for (int i = 0; i < children.size(); i++) {
 		index = (int) System::random(children.size() - 1 - i) + i;
