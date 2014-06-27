@@ -220,15 +220,6 @@ talus_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "talus_rasp_flite_large_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 8,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "talus_roba_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 26,
@@ -296,15 +287,6 @@ talus_world = {
 			spawnLimit = -1,			
 			minDifficulty = 19,
 			maxDifficulty = 19,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "talus_voracious_rasp_neutral_none",
-			spawnLimit = -1,			
-			minDifficulty = 40,
-			maxDifficulty = 40,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

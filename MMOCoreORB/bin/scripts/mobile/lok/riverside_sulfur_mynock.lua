@@ -1,4 +1,4 @@
-riverside_sulfur_mynok = Creature:new {
+riverside_sulfur_mynock = Creature:new {
 	objectName = "@mob/creature_names:riverside_sulfur_mynock",
 	socialGroup = "mynock",
 	pvpFaction = "",
@@ -37,4 +37,4 @@ riverside_sulfur_mynok = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(riverside_sulfur_mynok, "riverside_sulfur_mynok")
+CreatureTemplates:addCreatureTemplate(riverside_sulfur_mynock, "riverside_sulfur_mynock")

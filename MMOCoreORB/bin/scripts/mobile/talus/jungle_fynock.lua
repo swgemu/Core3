@@ -28,6 +28,7 @@ jungle_fynock = Creature:new {
 
 	templates = {"object/mobile/fynock_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/fynock_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

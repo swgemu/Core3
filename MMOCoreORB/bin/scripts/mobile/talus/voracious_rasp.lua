@@ -27,6 +27,7 @@ voracious_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/plumed_rasp.iff"},
+	scale = 1.35,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

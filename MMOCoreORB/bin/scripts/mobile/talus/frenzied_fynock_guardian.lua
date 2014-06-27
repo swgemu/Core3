@@ -28,6 +28,7 @@ frenzied_fynock_guardian = Creature:new {
 
 	templates = {"object/mobile/fynock_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/fynock_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

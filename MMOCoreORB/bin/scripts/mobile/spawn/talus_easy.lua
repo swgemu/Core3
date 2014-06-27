@@ -22,15 +22,6 @@ talus_easy = {
 			size = 25
 		},
 		{
-			lairTemplateName = "talus_rasp_flite_large_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 4,
-			maxDifficulty = 7,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "talus_vynock_lair_neutral_medium",
 			spawnLimit = -1,			
 			minDifficulty = 4,

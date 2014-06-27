@@ -29,6 +29,7 @@ genetically_enchanced_kahmurra = Creature:new {
 
 	templates = {"object/mobile/kahmurra.iff"},
 	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

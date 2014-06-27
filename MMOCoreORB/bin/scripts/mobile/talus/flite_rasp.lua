@@ -27,6 +27,7 @@ flite_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flite_rasp.iff"},
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -26,12 +26,14 @@ int TrainerMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 	if (selectedID == 72) {
 		ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
 
-		if (city != NULL)
+		if (city != NULL && city->isMayor(player->getObjectID()))
+		{
 			city->removeSkillTrainers(sceneObject);
 
-		//TODO: Move this to CityRegion::removeSkillTrainer()
-		sceneObject->destroyObjectFromWorld(false);
-		sceneObject->destroyObjectFromDatabase(false);
+			//TODO: Move this to CityRegion::removeSkillTrainer()
+			sceneObject->destroyObjectFromWorld(false);
+			sceneObject->destroyObjectFromDatabase(false);
+		}
 
 		return 0;
 
