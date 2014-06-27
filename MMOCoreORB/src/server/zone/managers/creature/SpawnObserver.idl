@@ -69,7 +69,7 @@ class SpawnObserver extends Observer implements Logger {
 
 		lairTemplate = null;
 
-		difficulty = 50;
+		difficulty = 2;
 		babiesSpawned = 0;
 		size = 20;
 	}

@@ -194,7 +194,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	 	lairObject->setFaction(lair->getFaction());
 	 	lairObject->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
 	 	lairObject->setOptionsBitmask(0, false);
-	 	lairObject->setMaxCondition(difficulty * 1000);
+	 	lairObject->setMaxCondition(difficultyLevel * (900 + System::random(200)));
 	 	lairObject->setConditionDamage(0, false);
 	 	lairObject->initializePosition(pos.getX(), pos.getZ(), pos.getY());
 
