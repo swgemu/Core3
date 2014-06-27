@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_3db0e7dc",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/LuaSceneObject.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-06-27T12:31:29Z",
+      "side": 1,
+      "message": "you shouldnt expose this method to lua.\n\nsetParent should be only called by the transfer methods and only there, otherwise you can fuck up the parent and it will crash on inserting to zone",
+      "revId": "eb915c8952bd7b3cf63ff6b18ebdba810e8d7b5d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
