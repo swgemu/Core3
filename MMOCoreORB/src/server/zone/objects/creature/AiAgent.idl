@@ -142,6 +142,8 @@ class AiAgent extends CreatureObject {
 	protected transient Mutex awarenessEventMutex;
 	@dereferenced
 	protected transient Mutex movementEventMutex;
+	@dereferenced
+	protected transient Mutex behaviorMutex;
 	
 	protected boolean fleeing;
 	

@@ -293,14 +293,12 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		}
 	}
 
-	if (creatureBitmask != 0) {
-		AiTemplate* getTarget = AiMap::instance()->getGetTargetTemplate(creatureBitmask);
-		AiTemplate* selectAttack = AiMap::instance()->getSelectAttackTemplate(creatureBitmask);
-		AiTemplate* combatMove = AiMap::instance()->getCombatMoveTemplate(creatureBitmask);
-		AiTemplate* idle = AiMap::instance()->getIdleTemplate(creatureBitmask);
+	AiTemplate* getTarget = AiMap::instance()->getGetTargetTemplate(creatureBitmask);
+	AiTemplate* selectAttack = AiMap::instance()->getSelectAttackTemplate(creatureBitmask);
+	AiTemplate* combatMove = AiMap::instance()->getCombatMoveTemplate(creatureBitmask);
+	AiTemplate* idle = AiMap::instance()->getIdleTemplate(creatureBitmask);
 
-		setupBehaviorTree(getTarget, selectAttack, combatMove, idle);
-	}
+	setupBehaviorTree(getTarget, selectAttack, combatMove, idle);
 }
 
 void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
@@ -2080,6 +2078,8 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 
 	Vector<Reference<LuaAiTemplate*> >* treeTemplate = aiTemplate->getTree();
 
+	Locker locker(&behaviorMutex);
+
 	behaviors.put("none", NULL);
 
 	VectorMap<String, Vector<String> > parents; // id's keyed by parents
@@ -2154,8 +2154,12 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 	CompositeBehavior* rootSelector = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), "Composite", AiMap::SELECTORBEHAVIOR));
 	CompositeBehavior* attackSequence = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), "Composite", AiMap::SEQUENCEBEHAVIOR));
 
+	clearBehaviorList();
+
+	Locker locker(&behaviorMutex);
 	behaviors.put("root", rootSelector);
 	behaviors.put("attackSequence", attackSequence);
+	locker.release();
 
 	addBehaviorToTree(attackSequence, rootSelector);
 
@@ -2178,10 +2182,22 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 }
 
 void AiAgentImplementation::setCurrentBehavior(Behavior* b) {
+	Locker locker(&behaviorMutex);
+	if (behaviors.size() <= 0) {
+		error("Behavior tree is empty in setCurrentBehavior.");
+		return;
+	}
+
 	int i = 0;
 	for (i = 0; i < behaviors.size(); i++)
 		if (behaviors.get(i) == b)
 			break;
+
+	if (i >= behaviors.size()) {
+		error("Behavior does not exist in tree in setCurrentBehavior.");
+		return;
+	}
+
 
 	VectorMapEntry<String, Behavior*> entry = behaviors.SortedVector<VectorMapEntry<String, Behavior*> >::get(i);
 	currentBehaviorID = entry.getKey();
@@ -2193,6 +2209,7 @@ void AiAgentImplementation::setCurrentBehavior(Behavior* b) {
 }
 
 int AiAgentImplementation::getBehaviorStatus() {
+	Locker locker(&behaviorMutex);
 	Behavior* b = behaviors.get(currentBehaviorID);
 	if (b == NULL)
 		return AiMap::INVALID;
@@ -2201,6 +2218,7 @@ int AiAgentImplementation::getBehaviorStatus() {
 }
 
 void AiAgentImplementation::setBehaviorStatus(int status) {
+	Locker locker(&behaviorMutex);
 	Behavior* b = behaviors.get(currentBehaviorID);
 	if (b != NULL)
 		b->setStatus((uint8)status);
@@ -2217,6 +2235,7 @@ void AiAgentImplementation::addBehaviorToTree(Behavior* b, CompositeBehavior* pa
  * move the tree back to the root node
  */
 void AiAgentImplementation::resetBehaviorList() {
+	Locker bLocker(&behaviorMutex);
 	currentBehaviorID = "root";
 	Behavior* b = behaviors.get(currentBehaviorID);
 	b->setStatus(AiMap::SUSPEND);
@@ -2228,11 +2247,13 @@ void AiAgentImplementation::resetBehaviorList() {
 }
 
 void AiAgentImplementation::clearBehaviorList() {
-	resetBehaviorList();
+	Locker locker(&behaviorMutex);
 	for (int i = 0; i < behaviors.size(); i++) {
 		Behavior* b = behaviors.get(i);
-		if (b != NULL)
+		if (b != NULL) {
 			delete b;
+			b = NULL;
+		}
 	}
 
 	currentBehaviorID = "";
