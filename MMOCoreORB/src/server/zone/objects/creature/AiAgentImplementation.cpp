@@ -1311,6 +1311,19 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		nextStepPosition.setCell(nextPosition->getCell());
 
 		nextStepPosition.setReached(false);
+		Vector3 thisPos = getPosition();
+
+		float directionangle = atan2(nextStepPosition.getPositionX() - thisPos.getX(), nextStepPosition.getPositionY() - thisPos.getY());
+
+		if (directionangle < 0) {
+			float a = M_PI + directionangle;
+			directionangle = M_PI + a;
+		}
+
+		float err = fabs(directionangle - direction.getRadians());
+
+		if (err >= 0.05)
+			direction.setHeadingDirection(directionangle);
 
 		// Tell the clients where to expect us next tick -- requires that we have found a destination
 		broadcastNextPositionUpdate(&nextStepPosition);
@@ -1331,7 +1344,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		completeMove();
 	}
 
-	if (followObject != NULL && !(isRetreating() || isFleeing()))
+	if (!(isRetreating() || isFleeing()))
 		checkNewAngle();
 
 	delete nextPosition;
