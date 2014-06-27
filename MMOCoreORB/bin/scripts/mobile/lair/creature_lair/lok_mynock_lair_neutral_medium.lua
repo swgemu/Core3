@@ -1,5 +1,5 @@
 lok_mynock_lair_neutral_medium = Lair:new {
-	mobiles = {{"sulfer_pool_mynock", 1},{"riverside_sulfur_mynok", 1}},
+	mobiles = {{"salt_mynock", 1},{"lowland_salt_mynock", 1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/mynock/lair_mynock.iff"},
 	buildingsEasy = {"object/tangible/lair/mynock/lair_mynock.iff"},

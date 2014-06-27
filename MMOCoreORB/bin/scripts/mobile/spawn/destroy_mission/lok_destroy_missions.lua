@@ -32,7 +32,7 @@ lok_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "lok_perlek_pack_neutral_none",
+			lairTemplateName = "lok_perlek_lair_neutral_medium",
 			minDifficulty = 13,
 			maxDifficulty = 17,
 			size = 25,
@@ -50,7 +50,7 @@ lok_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "lok_mynock_pack_neutral_none",
+			lairTemplateName = "lok_mynock_lair_neutral_medium",
 			minDifficulty = 22,
 			maxDifficulty = 30,
 			size = 25,

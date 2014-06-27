@@ -1,5 +1,5 @@
 lok_spinded_snake_lair_neutral_medium = Lair:new {
-	mobiles = {{"spined_snake_recluse", 1}},
+	mobiles = {{"spined_snake", 2},{"giant_spined_snake", 1}},	
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_nest_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_nest_small.iff"},
