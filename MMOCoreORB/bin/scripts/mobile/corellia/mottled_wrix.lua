@@ -28,6 +28,7 @@ mottled_wrix = Creature:new {
 
 	templates = {"object/mobile/wrix_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

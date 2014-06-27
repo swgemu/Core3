@@ -27,6 +27,7 @@ percussive_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flite_rasp_hue.iff"},
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

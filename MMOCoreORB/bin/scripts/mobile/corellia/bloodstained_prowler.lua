@@ -28,6 +28,7 @@ bloodstained_prowler = Creature:new {
 
 	templates = {"object/mobile/gurreck_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
+	scale = 1.35,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
