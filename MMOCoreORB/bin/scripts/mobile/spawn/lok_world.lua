@@ -49,15 +49,6 @@ lok_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "lok_perlek_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 15,
-			maxDifficulty = 15,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "lok_spinded_snake_lair2_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 17,
@@ -71,15 +62,6 @@ lok_world = {
 			spawnLimit = -1,
 			minDifficulty = 18,
 			maxDifficulty = 18,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "lok_langlatch_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 20,
-			maxDifficulty = 20,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -110,16 +92,7 @@ lok_world = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
-		},
-		{
-			lairTemplateName = "lok_mynock_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 26,
-			maxDifficulty = 26,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
+		},		
 		{
 			lairTemplateName = "lok_gurk_lair_neutral_small",
 			spawnLimit = -1,
