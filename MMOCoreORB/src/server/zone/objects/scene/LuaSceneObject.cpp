@@ -285,6 +285,17 @@ int LuaSceneObject::getParent(lua_State* L) {
 	return 1;
 }
 
+
+int LuaSceneObject::setParent(lua_State* L) {
+	SceneObject* parent = (SceneObject*)lua_touserdata(L, -1);
+
+	if (parent == NULL)
+		return 0;
+
+	realObject->setParent(parent);
+	return 1;
+}
+
 int LuaSceneObject::getContainerObject(lua_State* L) {
 	int idx = lua_tonumber(L, -1);
 
