@@ -64,14 +64,16 @@ class DestroyMissionObjective extends MissionObjective {
 	protected MissionSpawnActiveArea spawnActiveArea;
 	
 	protected TangibleObject lairObject;
-	
+
+	int difficultyLevel;
 	int difficulty;
 	
 	public DestroyMissionObjective(MissionObject mission) {
 		super(mission);
-		
-		difficulty = 0;
-		
+
+		difficultyLevel = 0;
+		difficulty = 2;
+
 		Logger.setLoggingName("DestroyMissionObjective");
 	}
 	
@@ -106,11 +108,15 @@ class DestroyMissionObjective extends MissionObjective {
 	
 	@local
 	public native void setLairTemplateToSpawn(final string sp);
-	
+
+	public void setDifficultyLevel(int diff) {
+		difficultyLevel = diff;
+	}
+
 	public void setDifficulty(int diff) {
 		difficulty = diff;
 	}
-	
+
 	@dereferenced
 	@local
 	public native Vector3 getEndPosition();

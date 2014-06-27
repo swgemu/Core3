@@ -195,13 +195,6 @@ public:
 					return GENERALERROR;
 				}
 
-				int level = args.getIntToken();
-
-				if (level < 1)
-					level = 1;
-				else if (level > 300)
-					level = 300;
-
 				unsigned int lairHashCode = lairTemplate.hashCode();
 
 				LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairHashCode);
@@ -220,8 +213,14 @@ public:
 					}
 
 					unsigned int faction = lair->getFaction();
+					int level = args.getIntToken();
 
-					TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), level, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), faction);
+					if (level < 1)
+						level = 1;
+					else if (level > 300)
+						level = 300;
+
+					TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), level, 2, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), faction);
 
 					if (tano != NULL)
 						creature->sendSystemMessage("lair spawned");
@@ -235,7 +234,7 @@ public:
 						return GENERALERROR;
 					}
 
-					TangibleObject* tano = creatureManager->spawnTheater(lairTemplate.hashCode(), level, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
+					TangibleObject* tano = creatureManager->spawnTheater(lairTemplate.hashCode(), 2, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
 
 					if (tano != NULL)
 						creature->sendSystemMessage("theater spawned");
@@ -247,7 +246,7 @@ public:
 			creature->sendSystemMessage("Spawn: /createSpawningElement spawn path/to/object.iff");
 			creature->sendSystemMessage("Delete: /createSpawningElement delete oid");
 			creature->sendSystemMessage("Lair: /createSpawningElement lair lair_template level");
-			creature->sendSystemMessage("Theater: /createSpawningElement theater lair_template level");
+			creature->sendSystemMessage("Theater: /createSpawningElement theater lair_template");
 		}
 
 		return SUCCESS;
