@@ -855,7 +855,10 @@ class AiAgent extends CreatureObject {
 	public native void setBehaviorStatus(int status);
 
 	@local
-	public native void addBehaviorToTree(Behavior b, CompositeBehavior parent);
+	private native void addBehaviorToTree(Behavior b, CompositeBehavior parent);
+
+	@local
+	private native void addCurrentBehaviorToTree(CompositeBehavior parent);
 
 	@local
 	public native void resetBehaviorList();

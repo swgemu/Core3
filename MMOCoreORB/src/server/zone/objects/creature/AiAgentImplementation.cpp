@@ -2164,16 +2164,16 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 	addBehaviorToTree(attackSequence, rootSelector);
 
 	setupBehaviorTree(getTarget);
-	addBehaviorToTree(behaviors.get(currentBehaviorID), attackSequence);
+	addCurrentBehaviorToTree(attackSequence);
 
 	setupBehaviorTree(selectAttack);
-	addBehaviorToTree(behaviors.get(currentBehaviorID), attackSequence);
+	addCurrentBehaviorToTree(attackSequence);
 
 	setupBehaviorTree(combatMove);
-	addBehaviorToTree(behaviors.get(currentBehaviorID), attackSequence);
+	addCurrentBehaviorToTree(attackSequence);
 
 	setupBehaviorTree(idle);
-	addBehaviorToTree(behaviors.get(currentBehaviorID), rootSelector);
+	addCurrentBehaviorToTree(rootSelector);
 
 	resetBehaviorList();
 	setCurrentBehavior(rootSelector);
@@ -2229,6 +2229,12 @@ void AiAgentImplementation::addBehaviorToTree(Behavior* b, CompositeBehavior* pa
 		b->setParent(par);
 	if (par)
 		par->addChild(b);
+}
+
+void AiAgentImplementation::addCurrentBehaviorToTree(CompositeBehavior* par) {
+	Locker locker(&behaviorMutex);
+	Behavior* b = behaviors.get(currentBehaviorID);
+	addBehaviorToTree(b, par);
 }
 
 /**
