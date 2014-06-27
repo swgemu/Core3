@@ -211,15 +211,6 @@ corellia_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "corellia_deranged_wrix_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 18,
-			maxDifficulty = 18,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
-		},
-		{
 			lairTemplateName = "corellia_gronda_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 19,

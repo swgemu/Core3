@@ -80,12 +80,6 @@ talus_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "talus_rasp_flite_large_neutral_none",
-			minDifficulty = 6,
-			maxDifficulty = 9,
-			size = 25,
-		},
-		{
 			lairTemplateName = "talus_roba_lair_neutral_large",
 			minDifficulty = 23,
 			maxDifficulty = 29,

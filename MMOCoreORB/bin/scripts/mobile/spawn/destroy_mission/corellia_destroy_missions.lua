@@ -122,12 +122,6 @@ corellia_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "corellia_deranged_wrix_pack_neutral_none",
-			minDifficulty = 15,
-			maxDifficulty = 21,
-			size = 25,
-		},
-		{
 			lairTemplateName = "corellia_gronda_lair_neutral_large",
 			minDifficulty = 17,
 			maxDifficulty = 21,

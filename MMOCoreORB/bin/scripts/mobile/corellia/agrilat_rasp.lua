@@ -28,6 +28,7 @@ agrilat_rasp = Creature:new {
 
 	templates = {"object/mobile/flite_rasp_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/horned_rasp_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

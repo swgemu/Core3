@@ -27,6 +27,7 @@ majestic_plumed_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/plumed_rasp_hue.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

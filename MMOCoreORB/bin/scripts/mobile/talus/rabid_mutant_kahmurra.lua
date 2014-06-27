@@ -28,6 +28,7 @@ rabid_mutant_kahmurra = Creature:new {
 
 	templates = {"object/mobile/mutated_kahmurra.iff"},
 	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
+	scale = 1.3,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

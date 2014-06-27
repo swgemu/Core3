@@ -28,6 +28,7 @@ grand_wrix = Creature:new {
 
 	templates = {"object/mobile/grand_wrix.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
