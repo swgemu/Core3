@@ -17,6 +17,7 @@
 #include "server/zone/objects/tangible/LuaTangibleObject.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
@@ -163,6 +164,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "writeStringSharedMemory", writeStringSharedMemory);
 	lua_register(luaEngine->getLuaState(), "deleteStringSharedMemory", deleteStringSharedMemory);
 	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
+	lua_register(luaEngine->getLuaState(), "spawnBuilding", spawnBuilding);
 	lua_register(luaEngine->getLuaState(), "getSceneObject", getSceneObject);
 	lua_register(luaEngine->getLuaState(), "getCreatureObject", getCreatureObject);
 	lua_register(luaEngine->getLuaState(), "addStartingItemsInto", addStartingItemsInto);
@@ -1608,6 +1610,42 @@ int DirectorManager::spawnMobileRandom(lua_State* L) {
 
 	return 1;
 	//public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
+}
+
+int DirectorManager::spawnBuilding(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 5) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::spawnBuilding");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	float x, y, angle;
+	uint64 parentID;
+	String script, zoneID;
+
+	angle = lua_tointeger(L, -1);
+	y = lua_tonumber(L, -2);
+	x = lua_tonumber(L, -3);
+	script = lua_tostring(L, -4);
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -5);
+
+	SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(TemplateManager::instance()->getTemplate(script.hashCode()));
+
+	if (serverTemplate == NULL) {
+		instance()->error("Unable to find template for building " + script);
+		lua_pushnil(L);
+	} else {
+		StructureObject* structure = StructureManager::instance()->placeStructure(creature, script, x, y, 0, 0);
+		if (structure == NULL) {
+			instance()->error("Unable to spawn building " + script);
+			lua_pushnil(L);
+		} else {
+			structure->_setUpdated(true);
+			lua_pushlightuserdata(L, structure);
+		}
+	}
+	return 1;
 }
 
 int DirectorManager::spawnSceneObject(lua_State* L) {
