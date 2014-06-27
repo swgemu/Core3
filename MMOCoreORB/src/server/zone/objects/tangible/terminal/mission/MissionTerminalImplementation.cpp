@@ -51,13 +51,15 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 		ManagedReference<CityRegion*> city = player->getCityRegion();
 
-		if (city != NULL)
+		if (city != NULL && city->isMayor(player->getObjectID()))
+		{
 			city->removeMissionTerminal(_this.get());
 
-		destroyObjectFromWorld(true);
-		destroyObjectFromDatabase(false);
+			destroyObjectFromWorld(true);
+			destroyObjectFromDatabase(false);
 
-		return 0;
+			return 0;
+		}
 	}
 
 	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
