@@ -28,6 +28,7 @@ female_razor_cat = Creature:new {
 
 	templates = {"object/mobile/corellian_sand_panther_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/corellian_sand_panther_hue.iff",
+	scale = 0.95,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

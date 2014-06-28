@@ -29,6 +29,7 @@ forest_murra = Creature:new {
 
 	templates = {"object/mobile/forest_murra.iff"},
 	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
