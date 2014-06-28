@@ -1,5 +1,5 @@
 dantooine_huurton_stalker_pack_neutral_none = Lair:new {
-	mobiles = {{"huurton_stalker",1}},
+	mobiles = {{"huurton_stalker",10},{"huurton_reaper",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

@@ -27,6 +27,7 @@ huurton_reaper = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huurton_hue.iff"},
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

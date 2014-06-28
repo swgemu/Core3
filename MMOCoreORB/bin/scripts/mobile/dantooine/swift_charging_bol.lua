@@ -28,6 +28,7 @@ swift_charging_bol = Creature:new {
 
 	templates = {"object/mobile/bol_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bol_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ huurton = Creature:new {
 
 	templates = {"object/mobile/huurton.iff"},
 	controlDeviceTemplate = "object/intangible/pet/huurton_hue.iff",
+	scale = 0.95,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

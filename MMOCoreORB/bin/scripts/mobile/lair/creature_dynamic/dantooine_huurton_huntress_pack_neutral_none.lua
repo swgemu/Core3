@@ -1,5 +1,5 @@
 dantooine_huurton_huntress_pack_neutral_none = Lair:new {
-	mobiles = {{"huurton_matron",1},{"huurton_huntress",1},{"huurton_reaper",1}},
+	mobiles = {{"huurton_huntress",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
