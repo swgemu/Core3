@@ -153,6 +153,7 @@ includeFile("groups/task_loot/task_loot_gins_darone_special_forces_vibroknuckler
 includeFile("groups/task_loot/task_loot_gins_darone_stranded_rebels_weapon.lua")
 includeFile("groups/task_loot/task_loot_grizzled_dewback_hide.lua")
 includeFile("groups/task_loot/task_loot_haleen_snowline_evidence.lua")
+includeFile("groups/task_loot/task_loot_igbi_freemo_spice.lua")
 includeFile("groups/task_loot/task_loot_lian_byrne_rebel_spy_report.lua")
 includeFile("groups/task_loot/task_loot_mozo_bondog_bondogs_backpack.lua")
 includeFile("groups/task_loot/task_loot_nurla_slinthiss_datadisc.lua")
