@@ -175,39 +175,12 @@ corellia_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "corellia_carrion_spat_flock_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 13,
-			maxDifficulty = 13,
-			numberToSpawn = 0,
-			weighting = 10,
-			size = 25
-		},
-		{
 			lairTemplateName = "corellia_dire_cat_lair_neutral_medium_boss_01",
 			spawnLimit = -1,
 			minDifficulty = 14,
 			maxDifficulty = 14,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "corellia_canoid_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 18,
-			maxDifficulty = 18,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "corellia_giant_carrion_spat_flock_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 18,
-			maxDifficulty = 18,
-			numberToSpawn = 0,
-			weighting = 8,
 			size = 25
 		},
 		{

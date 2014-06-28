@@ -27,6 +27,7 @@ corellian_butterfly_monarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_butterfly_monarch.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
