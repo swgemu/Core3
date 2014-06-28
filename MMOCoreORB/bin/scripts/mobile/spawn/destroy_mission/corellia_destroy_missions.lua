@@ -78,13 +78,7 @@ corellia_destroy_missions = {
 			minDifficulty = 9,
 			maxDifficulty = 12,
 			size = 25,
-		},
-		{
-			lairTemplateName = "corellia_drall_patriot_camp_neutral_medium_theater",
-			minDifficulty = 10,
-			maxDifficulty = 16,
-			size = 25,
-		},
+		},		
 		{
 			lairTemplateName = "corellia_gulginaw_nest_neutral_medium",
 			minDifficulty = 11,

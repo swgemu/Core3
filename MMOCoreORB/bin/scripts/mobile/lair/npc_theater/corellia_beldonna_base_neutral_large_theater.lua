@@ -1,11 +1,12 @@
 corellia_beldonna_base_neutral_large_theater = Lair:new {
-	mobiles = {},
+	mobiles = {{"beldonnas_league_enforcer",1},{"beldonnas_league_marshal",1},{"beldonnas_league_scout",1},{"beldonnas_league_soldier",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {},
-	buildingsEasy = {},
-	buildingsMedium = {},
-	buildingsHard = {},
-	buildingsVeryHard = {},
+	buildingsVeryEasy = {"object/building/poi/corellia_beldonna_large1.iff","object/building/poi/corellia_beldonna_large2.iff","object/building/poi/corellia_beldonna_large3.iff"},
+	buildingsEasy = {"object/building/poi/corellia_beldonna_large1.iff","object/building/poi/corellia_beldonna_large2.iff","object/building/poi/corellia_beldonna_large3.iff"},
+	buildingsMedium = {"object/building/poi/corellia_beldonna_large1.iff","object/building/poi/corellia_beldonna_large2.iff","object/building/poi/corellia_beldonna_large3.iff"},
+	buildingsHard = {"object/building/poi/corellia_beldonna_large1.iff","object/building/poi/corellia_beldonna_large2.iff","object/building/poi/corellia_beldonna_large3.iff"},
+	buildingsVeryHard = {"object/building/poi/corellia_beldonna_large1.iff","object/building/poi/corellia_beldonna_large2.iff","object/building/poi/corellia_beldonna_large3.iff"},
+	buildingType = "theater"
 }
 
 addLairTemplate("corellia_beldonna_base_neutral_large_theater", corellia_beldonna_base_neutral_large_theater)
