@@ -28,6 +28,7 @@ grassland_slice_hound = Creature:new {
 
 	templates = {"object/mobile/female_grassland_slice_hound.iff"},
 	controlDeviceTemplate = "object/intangible/pet/corellian_slice_hound_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

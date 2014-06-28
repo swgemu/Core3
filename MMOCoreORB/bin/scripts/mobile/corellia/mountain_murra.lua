@@ -29,6 +29,7 @@ mountain_murra = Creature:new {
 
 	templates = {"object/mobile/mountain_murra.iff"},
 	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ great_plains_stalker = Creature:new {
 
 	templates = {"object/mobile/corellian_sand_panther_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/corellian_sand_panther_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
