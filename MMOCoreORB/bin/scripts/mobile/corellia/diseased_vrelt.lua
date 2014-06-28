@@ -28,6 +28,7 @@ diseased_vrelt = Creature:new {
 
 	templates = {"object/mobile/vrelt.iff"},
 	controlDeviceTemplate = "object/intangible/pet/stintaril_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

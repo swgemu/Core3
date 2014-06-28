@@ -28,6 +28,7 @@ violent_krahbu = Creature:new {
 
 	templates = {"object/mobile/violent_krahbu.iff"},
 	controlDeviceTemplate = "object/intangible/pet/krahbu_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

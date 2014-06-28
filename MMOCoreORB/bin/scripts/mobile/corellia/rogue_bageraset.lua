@@ -29,6 +29,7 @@ rogue_bageraset = Creature:new {
 
 	templates = {"object/mobile/bageraset_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bageraset_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

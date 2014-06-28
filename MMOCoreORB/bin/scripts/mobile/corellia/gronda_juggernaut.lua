@@ -27,6 +27,7 @@ gronda_juggernaut = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gronda_hue.iff"},
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

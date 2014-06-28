@@ -27,6 +27,7 @@ gronda_patriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gronda_hue.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ crazed_durni = Creature:new {
 
 	templates = {"object/mobile/crazed_durni.iff"},
 	controlDeviceTemplate = "object/intangible/pet/durni_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
