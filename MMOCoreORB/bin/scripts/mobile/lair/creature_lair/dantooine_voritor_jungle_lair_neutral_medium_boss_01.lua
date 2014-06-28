@@ -1,5 +1,5 @@
 dantooine_voritor_jungle_lair_neutral_medium_boss_01 = Lair:new {
-	mobiles = {{"horned_voritor_lizard",1},{"voritor_lizard",1}},
+	mobiles = {{"horned_voritor_lizard",1}},
 	bossMobiles = {{"spiked_slasher",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_leaf_small_fog_red.iff","object/tangible/lair/base/poi_all_lair_thicket_small_fog_red.iff"},

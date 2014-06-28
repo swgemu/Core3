@@ -28,6 +28,7 @@ hostile_thune_mother = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/thune_hue.iff"},
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

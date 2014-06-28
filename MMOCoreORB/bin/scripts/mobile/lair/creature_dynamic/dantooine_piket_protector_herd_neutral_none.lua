@@ -1,5 +1,5 @@
 dantooine_piket_protector_herd_neutral_none = Lair:new {
-	mobiles = {{"fierce_piket_protector", 1},{"piket", 1}},
+	mobiles = {{"fierce_piket_protector",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

@@ -82,6 +82,7 @@ includeFile("lair/creature_lair/dantooine_huurton_howler_lair_neutral_medium_bos
 includeFile("lair/creature_lair/dantooine_huurton_matron_lair_neutral_medium.lua")
 includeFile("lair/creature_lair/dantooine_picket_protector_lair_neutral_medium.lua")
 includeFile("lair/creature_lair/dantooine_piket_longhorn_lair_neutral_medium.lua")
+includeFile("lair/creature_lair/dantooine_piket_protector_herd_neutral_none_boss_01.lua")
 includeFile("lair/creature_lair/dantooine_quenker_bile_drenched_lair_neutral_medium.lua")
 includeFile("lair/creature_lair/dantooine_quenker_lair_neutral_medium.lua")
 includeFile("lair/creature_lair/dantooine_quenker_ravager_lair_neutral_medium.lua")

@@ -1,5 +1,5 @@
 dantooine_quenker_ravager_lair_neutral_medium = Lair:new {
-	mobiles = {{"quenker_ravager",2},{"quenker",1}},
+	mobiles = {{"quenker_ravager",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_warren_small_evil_fire_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_warren_small_evil_fire_green.iff"},

@@ -27,12 +27,13 @@ grassland_voritor_tracker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/grassland_voritor_tracker.iff"},
+	scale = 1.1,
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "voritor_lizard_common", chance = 10000000}
 			},
-			lootChance = 2300000
+			lootChance = 2400000
 		}
 	},
 	weapons = {},
