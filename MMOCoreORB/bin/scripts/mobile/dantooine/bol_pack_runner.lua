@@ -27,6 +27,7 @@ bol_pack_runner = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bol_pack_runner.iff"},
+	scale = 0.95,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

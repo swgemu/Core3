@@ -40,6 +40,7 @@ includeFile("quest/corellia/zoda_burb.lua")
 
 -- Dantooine
 includeFile("quest/dantooine/ackbar.lua")
+includeFile("quest/dantooine/ancient_reptillian.lua")
 includeFile("quest/dantooine/aroho_preni.lua")
 includeFile("quest/dantooine/chino.lua")
 includeFile("quest/dantooine/coer_clem.lua")
@@ -74,6 +75,7 @@ includeFile("quest/dantooine/theme_park_rebel_bothan_spy.lua")
 includeFile("quest/dantooine/theme_park_rebel_disgruntled_citizen.lua")
 includeFile("quest/dantooine/theme_park_rebel_jeremes_kelton.lua")
 includeFile("quest/dantooine/theme_park_rebel_teria_alessie.lua")
+includeFile("quest/dantooine/untrained_padawan.lua")
 includeFile("quest/dantooine/xaan_bandit.lua")
 includeFile("quest/dantooine/xaan_talmaron.lua")
 

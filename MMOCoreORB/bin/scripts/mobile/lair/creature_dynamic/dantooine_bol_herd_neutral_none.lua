@@ -1,5 +1,5 @@
 dantooine_bol_herd_neutral_none = Lair:new {
-	mobiles = {{"bol_pack_runner", 2},{"swift_charging_bol", 1},{"baby_bol", 1}},
+	mobiles = {{"bol_pack_runner",1},{"bol",1},{"baby_bol",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

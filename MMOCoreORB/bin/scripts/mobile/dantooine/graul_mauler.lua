@@ -28,6 +28,7 @@ graul_mauler = Creature:new {
 
 	templates = {"object/mobile/graul_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/graul_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

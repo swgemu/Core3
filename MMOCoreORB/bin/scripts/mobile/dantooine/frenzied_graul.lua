@@ -28,6 +28,7 @@ frenzied_graul = Creature:new {
 
 	templates = {"object/mobile/frenzied_graul.iff"},
 	controlDeviceTemplate = "object/intangible/pet/graul_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
