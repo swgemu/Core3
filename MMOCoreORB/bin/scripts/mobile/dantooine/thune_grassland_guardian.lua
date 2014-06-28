@@ -29,6 +29,7 @@ thune_grassland_guardian = Creature:new {
 
 	templates = {"object/mobile/thune_grassland_guardian.iff"},
 	controlDeviceTemplate = "object/intangible/pet/thune_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ mammoth_thune = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/thune_hue.iff"},
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

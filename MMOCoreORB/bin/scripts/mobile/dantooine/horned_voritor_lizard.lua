@@ -27,12 +27,13 @@ horned_voritor_lizard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/voritor_lizard_hue.iff"},
+	scale = 1.2,
 	lootGroups = {
-	 {
-	        groups = {
+		{
+			groups = {
 				{group = "voritor_lizard_common", chance = 10000000}
 			},
-			lootChance = 2300000
+			lootChance = 2500000
 		}
 	},
 	weapons = {},

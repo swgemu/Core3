@@ -1,5 +1,5 @@
 dantooine_voritor_tracker_neutral_none = Lair:new {
-	mobiles = {{"grassland_voritor_tracker", 1}},
+	mobiles = {{"grassland_voritor_tracker",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

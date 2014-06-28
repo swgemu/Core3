@@ -27,6 +27,7 @@ quenker_relic_reaper = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/quenker_relic_reaper.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

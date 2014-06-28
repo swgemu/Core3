@@ -28,12 +28,13 @@ spiked_slasher = Creature:new {
 
 	templates = {"object/mobile/voritor_lizard_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/voritor_lizard_hue.iff",
+	scale = 1.3,
 	lootGroups = {
-	 {
-	        groups = {
+		{
+			groups = {
 				{group = "voritor_lizard_common", chance = 10000000}
 			},
-			lootChance = 2300000
+			lootChance = 2600000
 		}
 	},
 	weapons = {},
