@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_fdda4fe8",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-28T22:36:57Z",
+      "side": 1,
+      "message": "You should probably change cash to credits in both of these messages.",
+      "revId": "ec5375ea779e2a140e29b62b5da0d2de29056eb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
