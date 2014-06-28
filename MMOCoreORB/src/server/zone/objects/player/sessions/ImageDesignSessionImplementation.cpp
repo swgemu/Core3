@@ -248,25 +248,30 @@ int ImageDesignSessionImplementation::doPayment() {
 	ManagedReference<CreatureObject*> designerCreature = this->designerCreature.get();
 	ManagedReference<CreatureObject*> targetCreature = this->targetCreature.get();
 
-	int targetCash = targetCreature->getCashCredits();
+	int targetCredits = targetCreature->getCashCredits() + targetCreature->getBankCredits();
 
 	uint32 requiredPayment = imageDesignData.getRequiredPayment();
 
-	// The client should pervent this, but in case it doesn't
-	if (targetCash < requiredPayment) {
-		targetCreature->sendSystemMessage("You do not have enough cash to pay the required payment.");
-		designerCreature->sendSystemMessage("Target does not have enough cash for the required payment.");
+	// The client should prevent this, but in case it doesn't
+	if (targetCredits < requiredPayment) {
+		targetCreature->sendSystemMessage("You do not have enough credits to pay the required payment.");
+		designerCreature->sendSystemMessage("Target does not have enough credits for the required payment.");
 
 		cancelSession();
 
 		return 0;
 	}
 
-	targetCreature->subtractCashCredits(requiredPayment);
-	designerCreature->addCashCredits(requiredPayment);
-
+	if (requiredPayment <= targetCreature->getCashCredits()) {
+		targetCreature->subtractCashCredits(requiredPayment);
+		designerCreature->addCashCredits(requiredPayment);
+	} else {
+		int requiredBankCredits = requiredPayment - targetCreature->getCashCredits();
+		targetCreature->subtractCashCredits(targetCreature->getCashCredits());
+		targetCreature->subtractBankCredits(requiredBankCredits);
+		designerCreature->addCashCredits(requiredPayment);
+	}
 	return 1;
-
 }
 
 void ImageDesignSessionImplementation::checkDequeueEvent(SceneObject* scene) {
