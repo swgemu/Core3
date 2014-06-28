@@ -1,11 +1,12 @@
 corellia_corsec_camp_neutral_medium_theater = Lair:new {
-	mobiles = {},
+	mobiles = {{"corsec_major",1},{"corsec_master_sergeant",1},{"corsec_sergeant",1},{"corsec_trooper",1},{"corsec_soldier",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {},
-	buildingsEasy = {},
-	buildingsMedium = {},
-	buildingsHard = {},
-	buildingsVeryHard = {},
+	buildingsVeryEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsMedium = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsVeryHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingType = "theater"
 }
 
 addLairTemplate("corellia_corsec_camp_neutral_medium_theater", corellia_corsec_camp_neutral_medium_theater)
