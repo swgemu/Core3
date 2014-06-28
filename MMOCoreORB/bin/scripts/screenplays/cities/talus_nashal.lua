@@ -72,7 +72,6 @@ function TalusNashalScreenPlay:spawnMobiles()
 	spawnMobile("talus", "durgur_pyne",60,3,0,4.3,342,4265614)
 	spawnMobile("talus", "green_laser",60,10.1,-0.9,19.5,293,4265379)
 	spawnMobile("talus", "jusani_zhord",60,20,1.3,-1,270,4265423)
-	spawnMobile("talus", "sigrix_slix",60,17.2,-0.9,-6.8,25,4265375)
 	spawnMobile("talus", "slooni_jong",60,11,1,-18,0,4265440)
 
 	--trainers
