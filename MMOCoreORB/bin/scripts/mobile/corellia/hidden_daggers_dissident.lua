@@ -1,4 +1,4 @@
-hidden_dagger_dissident = Creature:new {
+hidden_daggers_dissident = Creature:new {
 	objectName = "@mob/creature_names:hidden_daggers_dissident",
 	socialGroup = "hidden_daggers",
 	pvpFaction = "hidden_daggers",
@@ -55,4 +55,4 @@ hidden_dagger_dissident = Creature:new {
 	attacks = merge(brawlernovice,marksmannovice)
 }
 
-CreatureTemplates:addCreatureTemplate(hidden_dagger_dissident, "hidden_dagger_dissident")
+CreatureTemplates:addCreatureTemplate(hidden_daggers_dissident, "hidden_daggers_dissident")

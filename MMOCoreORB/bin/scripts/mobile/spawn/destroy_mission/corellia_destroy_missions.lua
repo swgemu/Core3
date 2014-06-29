@@ -97,18 +97,6 @@ corellia_destroy_missions = {
 			maxDifficulty = 21,
 			size = 25,
 		},
-		{
-			lairTemplateName = "corellia_hidden_daggers_camp_neutral_medium_theater",
-			minDifficulty = 9,
-			maxDifficulty = 15,
-			size = 25,
-		},
-		{
-			lairTemplateName = "corellia_meatlump_camp_neutral_medium_theater",
-			minDifficulty = 8,
-			maxDifficulty = 11,
-			size = 25,
-		}
 	}
 }
 

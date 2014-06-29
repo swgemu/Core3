@@ -1,12 +1,13 @@
 corellia_meatlump_camp_neutral_medium_theater = Lair:new {
-	mobiles = {{"meatlump_cretin", 1}, {"meatlump_loon", 1}, {"meatlump_oaf", 1}},
-	spawnLimit = 8,
-	buildingsVeryEasy = {"object/tangible/lair/base/objective_banner_generic_2.iff"},
-	buildingsEasy = {"object/tangible/lair/base/objective_banner_generic_2.iff"},
-	buildingsMedium = {"object/tangible/lair/base/objective_banner_generic_2.iff"},
-	buildingsHard = {"object/tangible/lair/base/objective_banner_generic_2.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_generic_2.iff"},
+	mobiles = {{"meatlump_buffoon", 1},{"meatlump_cretin", 1}, {"meatlump_loon", 1}, {"meatlump_oaf", 1}},
+	spawnLimit = 15,
+	buildingsVeryEasy = {"object/building/poi/corellia_meatlump_small1.iff","object/building/poi/corellia_meatlump_small2.iff","object/building/poi/corellia_meatlump_small3.iff"},
+	buildingsEasy = {"object/building/poi/corellia_meatlump_small1.iff","object/building/poi/corellia_meatlump_small2.iff","object/building/poi/corellia_meatlump_small3.iff"},
+	buildingsMedium = {"object/building/poi/corellia_meatlump_small1.iff","object/building/poi/corellia_meatlump_small2.iff","object/building/poi/corellia_meatlump_small3.iff"},
+	buildingsHard = {"object/building/poi/corellia_meatlump_small1.iff","object/building/poi/corellia_meatlump_small2.iff","object/building/poi/corellia_meatlump_small3.iff"},
+	buildingsVeryHard = {"object/building/poi/corellia_meatlump_small1.iff","object/building/poi/corellia_meatlump_small2.iff","object/building/poi/corellia_meatlump_small3.iff"},
 	mobType = "npc",
+	buildingType = "theater"
 }
 
 addLairTemplate("corellia_meatlump_camp_neutral_medium_theater", corellia_meatlump_camp_neutral_medium_theater)

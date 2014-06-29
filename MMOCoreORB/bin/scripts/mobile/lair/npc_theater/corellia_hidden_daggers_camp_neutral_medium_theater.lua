@@ -1,12 +1,13 @@
 corellia_hidden_daggers_camp_neutral_medium_theater = Lair:new {
-	mobiles = {{"hidden_daggers_extremist",1}, {"hidden_dagger_dissident",1}},
+	mobiles = {{"hidden_daggers_extremist",1}, {"hidden_daggers_dissident",1},{"hidden_daggers_activist",1},{"hidden_daggers_lieutenant",1},{"hidden_daggers_leader",1}},
 	spawnLimit = 8,
-	buildingsVeryEasy = {"object/tangible/lair/base/objective_banner_corellia.iff"},
-	buildingsEasy = {"object/tangible/lair/base/objective_banner_corellia.iff"},
-	buildingsMedium = {"object/tangible/lair/base/objective_banner_corellia.iff"},
-	buildingsHard = {"object/tangible/lair/base/objective_banner_corellia.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_corellia.iff"},
-	mobType = "npc"
+	buildingsVeryEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsMedium = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsVeryHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	mobType = "npc",
+	buildingType = "theater"
 }
 
 addLairTemplate("corellia_hidden_daggers_camp_neutral_medium_theater", corellia_hidden_daggers_camp_neutral_medium_theater)
