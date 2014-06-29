@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_985ec111",
+        "filename": "MMOCoreORB/bin/scripts/mobile/spawn/destroy_mission/dantooine_destroy_missions.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-29T23:24:32Z",
+      "side": 1,
+      "message": "Remove this. We can\u0027t have theaters be destroy missions.",
+      "revId": "69b3acaeacce328acda0e038878096b8b1e97c3a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
