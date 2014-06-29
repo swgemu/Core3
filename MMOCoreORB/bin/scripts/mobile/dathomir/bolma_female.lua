@@ -28,6 +28,7 @@ bolma_female = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolma_hue.iff"},
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

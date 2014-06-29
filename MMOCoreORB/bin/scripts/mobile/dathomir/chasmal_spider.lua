@@ -28,6 +28,7 @@ chasmal_spider = Creature:new {
 
 	templates = {"object/mobile/gaping_spider_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gaping_spider_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

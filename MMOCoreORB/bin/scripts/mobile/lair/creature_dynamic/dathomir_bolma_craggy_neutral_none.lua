@@ -1,5 +1,5 @@
 dathomir_bolma_craggy_neutral_none = Lair:new {
-	mobiles = {{"craggy_bolma", 1}},
+	mobiles = {{"craggy_bolma",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

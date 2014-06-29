@@ -27,6 +27,7 @@ bolma_pack_master = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolma_hue.iff"},
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

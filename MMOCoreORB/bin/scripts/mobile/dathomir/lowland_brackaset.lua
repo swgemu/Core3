@@ -29,6 +29,7 @@ lowland_brackaset = Creature:new {
 
 	templates = {"object/mobile/brackaset_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/brackaset_hue.iff",
+	scale = 0.9,
 	lootGroups = {
 	 {
 	        groups = {
