@@ -43,6 +43,8 @@
 
 object_tangible_loot_quest_force_sensitive_force_crystal = object_tangible_loot_quest_force_sensitive_sharred_force_crystal:new {
 
+	noTrade = 1,
+
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_force_crystal, "object/tangible/loot/quest/force_sensitive/force_crystal.iff")

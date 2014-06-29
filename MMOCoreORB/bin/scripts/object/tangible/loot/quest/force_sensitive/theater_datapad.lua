@@ -44,6 +44,9 @@
 object_tangible_loot_quest_force_sensitive_theater_datapad = object_tangible_loot_quest_force_sensitive_shared_theater_datapad:new {
 
 	objectMenuComponent = {"cpp", "WaypointDatapadMenuComponent"},
+	
+	noTrade = 1,
+	
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_force_sensitive_theater_datapad, "object/tangible/loot/quest/force_sensitive/theater_datapad.iff")
