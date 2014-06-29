@@ -99,15 +99,16 @@ public:
 		if (targetGhost->getForcePower() <= 0) {
 			creature->sendSystemMessage("@jedi_spam:target_no_force"); //That target does not have any Force Power.
 			return GENERALERROR;
-		}
-		
-		if (playerObject->getForcePower() >= playerObject->getForcePowerMax())
-			return GENERALERROR;			
+		}		
 
 		if (targetCreature->isAttackableBy(creature)) {
 			targetGhost->setForcePower(targetGhost->getForcePower() - 100);
 			playerObject->setForcePower(playerObject->getForcePower() + 100);
 			
+				// Set force back to max incase player goes
+				if (playerObject->getForcePower() >= playerObject->getForcePowerMax())
+					playerObject->setForcePower(playerObject->getForcePowerMax());		
+
 			return doCombatAction(creature, target);
 		}
 

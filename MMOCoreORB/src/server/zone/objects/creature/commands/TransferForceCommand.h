@@ -110,6 +110,10 @@ public:
 			targetGhost->setForcePower(targetGhost->getForcePower() + 200);
 			playerObject->setForcePower(playerObject->getForcePower() - 200);
 			
+				// Incase they somehow get over cap....Set force back to max
+				if (targetGhost->getForcePower() >= targetGhost->getForcePowerMax())
+					targetGhost->setForcePower(targetGhost->getForcePowerMax());					
+			
 			creature->doCombatAnimation(targetCreature,String("force_transfer_1").hashCode(),0,0xFF);
 		}
 
