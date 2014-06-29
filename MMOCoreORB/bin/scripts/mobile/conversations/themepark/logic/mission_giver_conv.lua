@@ -303,4 +303,6 @@ createMissionGiverConvoTemplate("ruwan_tokai_mission_giver_convotemplate","ruwan
 
 --Corellia
 createMissionGiverConvoTemplate("diktatGiverConvo","diktatGiverHandler")
+createMissionGiverConvoTemplate("kirkin_liawoon_mission_giver_convotemplate","kirkin_liawoon_mission_giver_conv_handler")
+
 
