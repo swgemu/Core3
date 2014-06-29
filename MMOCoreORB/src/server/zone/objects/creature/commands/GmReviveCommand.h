@@ -237,6 +237,12 @@ public:
 		patient->setPosture(CreaturePosture::UPRIGHT);
 
 		patient->broadcastPvpStatusBitmask();
+				
+		ManagedReference<PlayerObject*> targetGhost = patient->getPlayerObject();
+
+		if (targetGhost->getJediState() > 1){	
+			targetGhost->setForcePower(targetGhost->getForcePowerMax());			
+		}		
 
 		if (patient->isPlayerCreature()) {
 			patient->sendSystemMessage("You have been restored.");
