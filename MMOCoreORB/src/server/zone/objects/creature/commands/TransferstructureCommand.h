@@ -236,18 +236,23 @@ public:
 		structure->setOwnerName(targetCreature->getFirstName());
 		structure->revokePermission("ADMIN", creature->getFirstName());
 
-		//Update the cell permissions if the structure is private and a building.
-		if (!structure->isPublicStructure() && structure->isBuildingObject()) {
+		if (structure->isBuildingObject()) {
 			BuildingObject* buildingObject = cast<BuildingObject*>( structure);
 
-			buildingObject->updateCellPermissionsTo(targetCreature);
-			buildingObject->updateCellPermissionsTo(creature);
+			//Update the cell permissions if private building.
+			if(!structure->isPublicStructure()) {
+				buildingObject->updateCellPermissionsTo(targetCreature);
+				buildingObject->updateCellPermissionsTo(creature);
+			}
+
+			//Remove access fee if the new owner doesn't have the required merchant skill.
+			if(buildingObject->hasAccessFee() && !targetCreature->hasSkill("crafting_artisan_business_01"))
+				buildingObject->removeAccessFee();
 		}
 
 		StringIdChatParameter params("@player_structure:ownership_transferred_in"); //%TT has transfered ownership of the structure to you
 		params.setTT(creature->getFirstName());
 		targetCreature->sendSystemMessage(params);
-
 
 		params.setStringId("@player_structure:ownership_transferred_out"); //Ownership of the structure has been transferred to %NT.
 		params.setTT(targetCreature->getFirstName());
