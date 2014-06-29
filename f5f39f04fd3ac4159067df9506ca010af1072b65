@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_3db6a78b",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lair/npc_theater/corellia_afarathu_cult_outpost_neutral_medium.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-29T01:20:18Z",
+      "side": 1,
+      "message": "missing building type",
+      "revId": "f5f39f04fd3ac4159067df9506ca010af1072b65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
