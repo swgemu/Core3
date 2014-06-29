@@ -1,3 +1,14 @@
+buildingMourno =
+	{ 
+		type = "destructible",
+		building = { template = "object/building/military/pirate_warehouse.iff", planet = "talus" },
+		terminal = { template = "object/tangible/terminal/terminal_destructible_building.iff", vectorCellID = 3, x = 0, z = 0.3, y = -6.0 },
+		childNpcs = 
+		{
+			{ npcTemplate = "mourno_surveyor", npcName = "Hutt Expeditionary Force Surveyor", vectorCellID = 3, x = 0, z = 0.3, y = -3.0 }
+		}
+	}
+
 mourno_draver_missions =
 	{
 		{
@@ -17,13 +28,11 @@ mourno_draver_missions =
 				{ rewardType = "credits", amount = 75 },
 			}
 		},
-		{ -- TODO: Give this quest a spawnable building when feature is implemented.
-			missionType = "assassinate", 
-			primarySpawns =
-			{
-				{ npcTemplate = "mourno_surveyor", planetName = "talus", npcName = "Hutt Expeditionary Force Surveyor" }
-			},
-			secondarySpawns =	{},
+		{
+			missionType = "destroy", 
+			buildingSpawn = buildingMourno,
+			primarySpawns = { },
+			secondarySpawns =	{ { npcTemplate = "mourno_thug", planetName = "talus", npcName = "a Thug" }, { npcTemplate = "mourno_thug", planetName = "talus", npcName = "a Thug" } },
 			itemSpawns = {	},
 			rewards =
 			{

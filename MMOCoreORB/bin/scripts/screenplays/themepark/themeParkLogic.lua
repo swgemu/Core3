@@ -209,7 +209,7 @@ function ThemeParkLogic:hasNpcMissionState(npcState, state, pCreature)
 		if creature:hasScreenPlayState(state, npcState) == 1 then
 			return true
 		else
-		  return false
+			return false
 		end
 	end)
 end
@@ -330,6 +330,8 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 		return self:handleAssassinateMissionAccept(mission, pConversingPlayer, missionNumber)
 	elseif mission.missionType == "confiscate" then
 		return self:handleConfiscateMissionAccept(mission, pConversingPlayer, missionNumber)
+	elseif mission.missionType == "destroy" then
+		return self:handleDestroyMissionAccept(mission, pConversingPlayer, missionNumber)
 	end
 end
 
@@ -381,6 +383,16 @@ function ThemeParkLogic:handleEscortMissionAccept(mission, pConversingPlayer, mi
 	end
 end
 
+function ThemeParkLogic:handleDestroyMissionAccept(mission, pConversingPlayer, missionNumber)
+	if self:spawnDestroyBuilding(mission, pConversingPlayer) == true then
+		self:spawnMissionNpcs(mission, pConversingPlayer)
+		self:writeData(pConversingPlayer, ":activeMission", 1)
+		return true
+	else
+		return false
+	end
+end
+
 function ThemeParkLogic:handleAssassinateMissionAccept(mission, pConversingPlayer, missionNumber)
 	if self:spawnMissionNpcs(mission, pConversingPlayer) == true then
 		self:writeData(pConversingPlayer, ":activeMission", 1)
@@ -401,23 +413,80 @@ function ThemeParkLogic:handleConfiscateMissionAccept(mission, pConversingPlayer
 	end
 end
 
+function ThemeParkLogic:spawnDestroyBuilding(mission, pConversingPlayer)
+	if pConversingPlayer == nil then
+		return false
+	end
+
+	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
+	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local stfFile = self:getStfFile(npcNumber)
+
+	local buildingData = mission.buildingSpawn
+
+	if buildingData == nil then
+		printf("null building data in ThemeParkLogic:spawnDestroyBuilding for %s", self.className);
+		return false
+	end
+
+	local spawnDistance = self.distance
+	return ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+		local spawnPoint = getSpawnArea(pConversingPlayer, creature:getWorldPositionX(), creature:getWorldPositionY(), spawnDistance, (spawnDistance/2)*3, 20, 5)
+		local pBuilding = spawnBuilding(pConversingPlayer, buildingData.building.template, spawnPoint[1], spawnPoint[3], 0)
+
+		if (pBuilding == nil) then
+			return false
+		end
+
+		createObserver(OBJECTDESTRUCTION, self.className, "notifyDestroyedBuilding", pBuilding)
+
+		return ObjectManager.withBuildingObject(pBuilding, function(buildingObject)
+			return ObjectManager.withSceneObject(pBuilding, function(buildingSceo)
+				return ObjectManager.withSceneObject(buildingObject:getCell(buildingData.terminal.vectorCellID), function(targetCellObject)
+					local pTerminal = spawnSceneObject(buildingData.building.planet, buildingData.terminal.template, buildingData.terminal.x, buildingData.terminal.z, buildingData.terminal.y, targetCellObject:getObjectID(), 1, 0, 0, 0)
+					writeData(creature:getObjectID() .. ":destroyableBuildingID", buildingSceo:getObjectID())
+					self:updateWaypoint(pConversingPlayer, buildingData.building.planet, spawnPoint[1], spawnPoint[3], "target")
+					self:spawnDestroyMissionNpcs(mission, pConversingPlayer)
+					return true
+				end)
+			end)
+		end)
+	end)
+end
+
 function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 	if pConversingPlayer == nil then
 		return false
 	end
-	
+
+	local player = LuaCreatureObject(pConversingPlayer)
+	local playerID = player:getObjectID()
+
 	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local stfFile = self:getStfFile(npcNumber)
-			
-	local creature = LuaCreatureObject(pConversingPlayer)
+	local currentMissionType = self:getMissionType(npcNumber, pConversingPlayer)
+	local spawnPoints
+
 	local numberOfSpawns = table.getn(mission.primarySpawns) + table.getn(mission.secondarySpawns)
 
-	local spawnPoints = self:getSpawnPoints(numberOfSpawns, creature:getWorldPositionX(), creature:getWorldPositionY(), pConversingPlayer)
+	if (currentMissionType == "destroy") then
+		local buildingID = readData(playerID .. ":destroyableBuildingID")
+		local pBuilding = getSceneObject(buildingID)
+		ObjectManager.withSceneObject(pBuilding, function(buildingSceo)
+			spawnPoints = self:getSpawnPoints(numberOfSpawns, buildingSceo:getWorldPositionX(), buildingSceo:getWorldPositionY(), pConversingPlayer)
+		end)
+	else
+		ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+			spawnPoints = self:getSpawnPoints(numberOfSpawns, creature:getWorldPositionX(), creature:getWorldPositionY(), pConversingPlayer)
+		end)
+	end
+
 	if table.getn(spawnPoints) ~= numberOfSpawns then
 		return false
 	end
 
+	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":missionSpawns", numberOfSpawns)
 
 	local mainNpcs = mission.primarySpawns
@@ -457,6 +526,51 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 	end
 
 	return true
+end
+
+function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
+	if pConversingPlayer == nil then
+		return false
+	end
+	ObjectManager.withCreatureObject(pConversingPlayer, function(player)
+		local playerID = player:getObjectID()
+
+		local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
+		local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+		local stfFile = self:getStfFile(npcNumber)
+		local currentMissionType = self:getMissionType(npcNumber, pConversingPlayer)
+
+		local buildingData = mission.buildingSpawn
+		local childNpcs = buildingData.childNpcs
+		local numberOfChildNpcs = table.getn(childNpcs)
+
+		local buildingID = readData(playerID .. ":destroyableBuildingID")
+		local pBuilding = getSceneObject(buildingID)
+
+		ObjectManager.withBuildingObject(pBuilding, function(buildingObject)
+			for i = 1, numberOfChildNpcs, 1 do
+				local targetCellObject = LuaSceneObject(buildingObject:getCell(childNpcs[i].vectorCellID))
+				local pNpc = spawnMobile(buildingData.building.planet, childNpcs[i].npcTemplate, 0, childNpcs[i].x, childNpcs[i].z, childNpcs[i].y, math.random(-180, 180), targetCellObject:getObjectID())
+
+				ObjectManager.withCreatureObject(pNpc, function(npc)
+					local npcName = self:getNpcName(childNpcs[i].npcName)
+					npc:setCustomObjectName(npcName)
+					if i == 1 then
+						if (self:isValidConvoString(stfFile, ":npc_breech_" .. missionNumber)) then
+							local pBreechArea = spawnSceneObject(buildingData.building.planet, "object/active_area.iff", childNpcs[i].x, childNpcs[i].z, childNpcs[i].y, childNpcs[i].vectorCellID, 0, 0, 0, 0)
+							ObjectManager.withActiveArea(pBreechArea, function(activeArea)
+								activeArea:setRadius(20)
+								createObserver(ENTEREDAREA, self.className, "notifyEnteredBreechArea", pBreechArea)
+								ObjectManager.withCreatureObject(pNpc, function(breechNpc)
+									writeData(player:getObjectID() .. ":breechNpcID", breechNpc:getObjectID())
+								end)
+							end)
+						end
+					end
+				end)
+			end
+		end)
+	end)
 end
 
 function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
@@ -556,7 +670,7 @@ function ThemeParkLogic:getMissionPreReqItem(pPlayer)
 	if mission.preReqItem == nil or mission.preReqItem == 0 then
 		return 0
 	else
-		return mission.preReqItem	
+		return mission.preReqItem
 	end
 end
 
@@ -575,7 +689,7 @@ function ThemeParkLogic:notifyEnteredBreechArea(pActiveArea, pPlayer)
 				activeArea:destroyObjectFromWorld()
 			end)
 		end
-	end)	
+	end)
 	return 0
 end
 
@@ -600,6 +714,19 @@ function ThemeParkLogic:notifyDefeatedTarget(pVictim, pAttacker)
 	end
 
 	return 1
+end
+
+function ThemeParkLogic:notifyDestroyedBuilding(pBuilding, pBuilding2)
+	if pBuilding == nil then
+		return 0
+	end
+
+	return ObjectManager.withBuildingObject(pBuilding, function(buildingObject)
+		local ownerID = buildingObject:getOwnerID()
+		local pPlayer = getCreatureObject(ownerID)
+		self:completeMission(pPlayer)
+		return 1
+	end)
 end
 
 function ThemeParkLogic:getMissionKillCount(pAttacker)
@@ -654,10 +781,10 @@ function ThemeParkLogic:giveMissionItems(mission, pConversingPlayer)
 	end
 
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	local activeNpcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local currentMissionType = self:getMissionType(activeNpcNumber, pConversingPlayer)
-	
+
 	if (currentMissionType == "retrieve") then
 		writeData(creature:getObjectID() .. ":activeMission", 2)
 	else
@@ -769,13 +896,34 @@ end
 function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, pConversingPlayer)
 	local spawnPoints = {}
 
+	if (numberOfSpawns == 0) then
+		return spawnPoints
+	end
+
+	local firstSpawnPoint
+
+	local activeNpcNumber = self:getActiveNpcNumber(pConversingPlayer)
+	local currentMissionType = self:getMissionType(activeNpcNumber, pConversingPlayer)
+	local currentMissionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
+	local mission = self:getMission(activeNpcNumber, currentMissionNumber)
+
 	local spawnDistance = self.distance
 
-	local firstSpawnPoint = getSpawnPoint(pConversingPlayer, x, y, spawnDistance, (spawnDistance/2)*3)
+	if currentMissionType == "destroy" then
+		firstSpawnPoint = getSpawnPoint(pConversingPlayer, x, y, 10, 20)
+	else
+		firstSpawnPoint = getSpawnPoint(pConversingPlayer, x, y, spawnDistance, (spawnDistance/2)*3)
+	end
+
 	if firstSpawnPoint ~= nil then
 		table.insert(spawnPoints, firstSpawnPoint)
 		for i = 2, numberOfSpawns, 1 do
-			local nextSpawnPoint = getSpawnPoint(pConversingPlayer, firstSpawnPoint[1], firstSpawnPoint[3], 5, 15)
+			local nextSpawnPoint
+			if currentMissionType == "destroy" then
+				nextSpawnPoint = getSpawnPoint(pConversingPlayer, firstSpawnPoint[1], firstSpawnPoint[3], 10, 20)
+			else
+				nextSpawnPoint = getSpawnPoint(pConversingPlayer, firstSpawnPoint[1], firstSpawnPoint[3], 5, 15)
+			end
 			if nextSpawnPoint ~= nil then
 				table.insert(spawnPoints, nextSpawnPoint)
 			end

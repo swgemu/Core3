@@ -64,6 +64,7 @@
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceGCWBaseComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceDecorationComponent.h"
+#include "server/zone/objects/tangible/terminal/components/DestructibleBuildingMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/HQMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/UplinkTerminalMenuComponent.h"
@@ -254,6 +255,7 @@ ComponentManager::ComponentManager() {
 	components.put("ElevatorMenuComponent", new ElevatorMenuComponent());
 	components.put("ElevatorUpMenuComponent", new ElevatorUpMenuComponent());
 	components.put("ElevatorDownMenuComponent", new ElevatorDownMenuComponent());
+	components.put("DestructibleBuildingMenuComponent", new DestructibleBuildingMenuComponent());
 	components.put("UplinkTerminalMenuComponent", new UplinkTerminalMenuComponent());
 	components.put("SecurityTerminalMenuComponent", new SecurityTerminalMenuComponent());
 	components.put("OverrideTerminalMenuComponent", new OverrideTerminalMenuComponent());
