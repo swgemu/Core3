@@ -26,7 +26,7 @@ novice_force_mystic = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_novice_force_mystic.iff"},
 	lootGroups = {
 		{
 			groups = {
