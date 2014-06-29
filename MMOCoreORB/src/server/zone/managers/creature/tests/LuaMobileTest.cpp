@@ -137,8 +137,21 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			int weighting = mobiles->elementAt(i).getValue();
 			String mobile = mobiles->elementAt(i).getKey();
 			std::string mobName = mobile.toCharArray();
-			EXPECT_TRUE( CreatureTemplateManager::instance()->getTemplate(mobile) != NULL ) << "Mobile " << mobName << " in lair template " << templateName << " does not exist";
+			CreatureTemplate* creature = CreatureTemplateManager::instance()->getTemplate(mobile);
+			EXPECT_TRUE( creature != NULL ) << "Mobile " << mobName << " in lair template " << templateName << " does not exist";
 			EXPECT_TRUE( weighting > 0 ) << "Mobile " << mobName << " in lair template " << templateName << " has a non positive weighting";
+
+			// Verify mobile templates are valid
+			if( creature != NULL ){
+				Vector<String> objTemps = creature->getTemplates();
+				EXPECT_FALSE( objTemps.isEmpty() ) << "Mobile " << mobName << " does not have any templates configured";
+				for( int j=0; j< objTemps.size(); j++ ){
+					SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(objTemps.get(j).hashCode());
+					std::string templateName = objTemps.get(j).toCharArray();
+					EXPECT_TRUE( templateData != NULL ) << "Mobile " << mobName << " has invalid template configured: " << templateName;
+				}
+			}
+
 		}
 
 		// Verify that boss mobiles exist and that their count is positive
@@ -147,8 +160,20 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			int count = bossMobiles->elementAt(i).getValue();
 			String bossMob = bossMobiles->elementAt(i).getKey();
 			std::string bossName = bossMob.toCharArray();
-			EXPECT_TRUE( CreatureTemplateManager::instance()->getTemplate(bossMob) != NULL ) << "Boss mobile " << bossName << " in lair template " << templateName << " does not exist";
+			CreatureTemplate* bossCreature = CreatureTemplateManager::instance()->getTemplate(bossMob);
+			EXPECT_TRUE( bossCreature != NULL ) << "Boss mobile " << bossName << " in lair template " << templateName << " does not exist";
 			EXPECT_TRUE( count > 0 ) << "Boss mobile " << bossName << " in lair template " << templateName << " has a non positive spawn count";
+
+			// Verify mobile templates are valid
+			if( bossCreature != NULL ){
+				Vector<String> objTemps = bossCreature->getTemplates();
+				EXPECT_FALSE( objTemps.isEmpty() ) << "Boss mobile " << bossName << " does not have any templates configured";
+				for( int j=0; j< objTemps.size(); j++ ){
+					SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(objTemps.get(j).hashCode());
+					std::string templateName = objTemps.get(j).toCharArray();
+					EXPECT_TRUE( templateData != NULL ) << "Boss mobile " << bossName << " has invalid template configured: " << templateName;
+				}
+			}
 		}
 
 		// Verify spawn limit is positive
