@@ -86,7 +86,7 @@ corellia_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "corellia_tabage_lair_neutral_none",
+			lairTemplateName = "corellia_tabage_lair_neutral_medium",
 			minDifficulty = 11,
 			maxDifficulty = 15,
 			size = 25,

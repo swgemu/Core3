@@ -139,7 +139,7 @@ corellia_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "corellia_tabage_lair_neutral_none",
+			lairTemplateName = "corellia_tabage_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 14,
 			maxDifficulty = 14,
