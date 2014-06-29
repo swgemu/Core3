@@ -110,7 +110,6 @@ miners = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@celebrity/kole:mining_facility", "gas_info"}, -- Won't the facility be filled with poison?
-		{"@celebrity/kole:probe_droid", "droid_info"}, -- What other threats are out there?
 	}
 }
 koleConvoTemplate:addScreen(miners);
@@ -170,7 +169,7 @@ here_is_gas = ConvoScreen:new {
 	leftDialog = "@celebrity/kole:here_is_gas", -- Good. I'm gonna mark the location of the mine in your datapad. This will be a tough mission, though; if you have any friends, you'd might want to ask for their help. Or least tell them how you want your remains handled.
 	stopConversation = "false",
 	options = {
-		{"@celebrity/kole:anything_else", "not_really"}, -- Is there anything else you can tell me?
+		{"@celebrity/kole:probe_droid", "droid_info"}, -- What other threats are out there?
 	}
 }
 koleConvoTemplate:addScreen(here_is_gas);
