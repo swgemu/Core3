@@ -371,6 +371,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/components/MinefieldMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/HQMenuComponent.cpp \
+		server/zone/objects/tangible/terminal/components/DestructibleBuildingMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/UplinkTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/SecurityTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/OverrideTerminalMenuComponent.cpp \

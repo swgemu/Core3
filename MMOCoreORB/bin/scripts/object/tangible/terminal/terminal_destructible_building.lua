@@ -41,12 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_building_military_pirate_warehouse = object_building_military_shared_pirate_warehouse:new {
-
-structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",
-
-
-
+object_tangible_terminal_terminal_destructible_building = object_tangible_hq_destructible_shared_uplink_terminal:new {
+	objectMenuComponent = "DestructibleBuildingMenuComponent",
 }
 
-ObjectTemplates:addTemplate(object_building_military_pirate_warehouse, "object/building/military/pirate_warehouse.iff")
+ObjectTemplates:addTemplate(object_tangible_terminal_terminal_destructible_building, "object/tangible/terminal/terminal_destructible_building.iff")
