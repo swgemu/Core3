@@ -44,7 +44,7 @@
 MindBlast2Command = {
         name = "mindblast2",
 
-    damage = 1500,
+	damage = 1500,
 	speed = 4.0,
 	forceCost = 160,
 	accuracySkillMod = "mindblast_accuracy";
@@ -57,7 +57,7 @@ MindBlast2Command = {
 		{}, 
 		{ "jedi_state_defense" }, 
 		{}, 
-		65, 
+		55, 
 		100, 
 		10 
 	  )
@@ -65,11 +65,23 @@ MindBlast2Command = {
 	
 	stateEffects = {
 	  StateEffect( 
+		BLIND_EFFECT, 
+		{}, 
+		{ "jedi_state_defense" }, 
+		{}, 
+		55, 
+		100, 
+		10 
+	  )
+	},	
+	
+	stateEffects = {
+	  StateEffect( 
 		DIZZY_EFFECT, 
 		{}, 
 		{ "jedi_state_defense" }, 
 		{}, 
-		65, 
+		55, 
 		100, 
 		10 
 	  )
@@ -80,7 +92,7 @@ MindBlast2Command = {
 
 	combatSpam = "mindblast2",
 	
-	poolsToDamage = MIND_ATTRIBUTE,
+	poolsToDamage = RANDOM_ATTRIBUTE,
 	
 	attackType = FORCEATTACK,
 
