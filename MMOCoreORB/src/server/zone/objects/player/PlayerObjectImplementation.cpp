@@ -1669,7 +1669,15 @@ void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
 	if(fp == getForcePower())
 		return;
 
-	forcePower = fp;
+	// Set forcepower back to 0 incase player goes below	
+	if (fp < 0)
+		fp = 0;	
+
+	// Set force back to max incase player goes over
+	if (fp > getForcePowerMax())
+		fp = getForcePowerMax(); 		
+
+	forcePower = fp;			
 
 	if (notifyClient == true){
 		// Update the force power bar.
@@ -1687,9 +1695,6 @@ void PlayerObjectImplementation::activateForceRegen() {
 
 	if (creature->isIncapacitated() || creature->isDead())
 		return;
-
-	if (getForcePower() < 0)
-		setForcePower(0);
 
 	float modifier = 1.f;
 
