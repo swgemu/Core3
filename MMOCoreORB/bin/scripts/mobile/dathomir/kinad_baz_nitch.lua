@@ -28,6 +28,7 @@ kinad_baz_nitch = Creature:new {
 
 	templates = {"object/mobile/baz_nitch_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/nuna_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

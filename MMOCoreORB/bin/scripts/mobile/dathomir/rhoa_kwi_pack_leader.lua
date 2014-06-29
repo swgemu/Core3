@@ -28,6 +28,7 @@ rhoa_kwi_pack_leader = Creature:new {
 
 	templates = {"object/mobile/kwi_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kwi_hue.iff",
+	scale = 1.3,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

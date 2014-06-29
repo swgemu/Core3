@@ -28,6 +28,7 @@ craggy_bolma = Creature:new {
 
 	templates = {"object/mobile/bolma.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bolma_hue.iff",
+	scale = 1.3,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -1,5 +1,5 @@
 dathomir_gaping_spider_hunter_pack_neutral_none = Lair:new {
-	mobiles = {{"gaping_spider_hunter",2},{"gaping_spider",1},{"gaping_spider_broodling",1}},
+	mobiles = {{"gaping_spider_hunter",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

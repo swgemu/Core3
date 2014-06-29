@@ -28,6 +28,7 @@ bolma_male = Creature:new {
 
 	templates = {"object/mobile/bolma_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bolma_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

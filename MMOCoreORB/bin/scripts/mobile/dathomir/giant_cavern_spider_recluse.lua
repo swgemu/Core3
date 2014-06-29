@@ -25,9 +25,9 @@ giant_cavern_spider_recluse = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
-	scale = 2.0,
 
 	templates = {"object/mobile/gaping_spider_recluse.iff"},
+	scale = 2.0,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
