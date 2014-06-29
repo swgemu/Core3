@@ -1,4 +1,4 @@
-cavern_spider_broodline = Creature:new {
+cavern_spider_broodling = Creature:new {
 	objectName = "@mob/creature_names:cave_gaping_spider_broodling",
 	socialGroup = "spider",
 	pvpFaction = "",
@@ -34,4 +34,4 @@ cavern_spider_broodline = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(cavern_spider_broodline, "cavern_spider_broodline")
+CreatureTemplates:addCreatureTemplate(cavern_spider_broodling, "cavern_spider_broodling")
