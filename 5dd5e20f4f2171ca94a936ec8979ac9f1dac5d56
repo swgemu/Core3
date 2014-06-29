@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_fd5daf49",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/tatooine_ben_kenobis_house.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-29T05:26:46Z",
+      "side": 1,
+      "message": "remove this",
+      "revId": "5dd5e20f4f2171ca94a936ec8979ac9f1dac5d56",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
