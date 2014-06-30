@@ -1693,7 +1693,7 @@ void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
 
 
 	// Activate regeneration.
-	if (fp < getForcePower()) {
+	if (fp < getForcePowerMax()) {
 		activateForcePowerRegen();
 	}
 
