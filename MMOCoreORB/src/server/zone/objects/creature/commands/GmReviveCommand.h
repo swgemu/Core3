@@ -240,7 +240,7 @@ public:
 				
 		ManagedReference<PlayerObject*> targetGhost = patient->getPlayerObject();
 
-		if (targetGhost->getJediState() > 1){	
+		if (targetGhost != NULL && targetGhost->getJediState() > 1){
 			targetGhost->setForcePower(targetGhost->getForcePowerMax());			
 		}		
 
