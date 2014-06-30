@@ -1,5 +1,5 @@
 dathomir_purbole_hunter_pack_neutral_none = Lair:new {
-	mobiles = {{"purbole_hunter",1},{"purbole",1}},
+	mobiles = {{"purbole_hunter",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

@@ -28,6 +28,7 @@ reclusive_shear_mite = Creature:new {
 
 	templates = {"object/mobile/shear_mite.iff"},
 	controlDeviceTemplate = "object/intangible/pet/shear_mite_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

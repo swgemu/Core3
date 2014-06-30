@@ -27,6 +27,7 @@ rancor_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rancor_youth.iff"},
+	scale = 0.8,
 	lootGroups = {
 		{
 			groups = {

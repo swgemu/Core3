@@ -28,6 +28,7 @@ foul_desecrator = Creature:new {
 
 	templates = {"object/mobile/voritor_lizard_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/voritor_lizard_hue.iff",
+	scale = 1.35,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

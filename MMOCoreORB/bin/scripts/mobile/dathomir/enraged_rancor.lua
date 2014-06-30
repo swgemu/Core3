@@ -27,6 +27,7 @@ enraged_rancor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rancor_hue.iff"},
+	scale = 1.15,
 	lootGroups = {
 		{
 			groups = {

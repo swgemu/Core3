@@ -28,6 +28,7 @@ purbole_scout = Creature:new {
 
 	templates = {"object/mobile/purbole_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/purbole_hue.iff",
+	scale = 0.95,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

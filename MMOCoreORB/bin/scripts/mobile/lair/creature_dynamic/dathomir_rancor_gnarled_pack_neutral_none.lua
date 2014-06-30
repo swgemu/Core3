@@ -1,5 +1,5 @@
 dathomir_rancor_gnarled_pack_neutral_none = Lair:new {
-	mobiles = {{"gnarled_rancor",1},{"rancor",1}},
+	mobiles = {{"gnarled_rancor",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

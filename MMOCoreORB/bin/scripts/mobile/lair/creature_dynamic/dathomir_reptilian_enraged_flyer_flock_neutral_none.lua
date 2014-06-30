@@ -1,5 +1,5 @@
 dathomir_reptilian_enraged_flyer_flock_neutral_none = Lair:new {
-	mobiles = {{"enraged_reptilian_flier", 1},{"reptilian_flier", 1}},
+	mobiles = {{"enraged_reptilian_flier",15},{"reptilian_life_stealer",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

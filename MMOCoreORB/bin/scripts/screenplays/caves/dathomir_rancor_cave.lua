@@ -48,10 +48,10 @@ function RancorCaveScreenPlay:spawnMobiles()
         spawnMobile("dathomir", "enraged_bull_rancor", 600, -23.6, -27.5, -8.1, 87, 4335463)
 
         --Cell[4335464]
-        spawnMobile("dathomir", "enraged_bull_rancor", 600, -23.8, -42.4, -64.0, 0, 4335464)
-        spawnMobile("dathomir", "enraged_bull_rancor", 600, -50.6, -48.9, -61.7, 127, 4335464)
+        spawnMobile("dathomir", "enraged_rancor", 600, -23.8, -42.4, -64.0, 0, 4335464)
+        spawnMobile("dathomir", "enraged_rancor", 600, -50.6, -48.9, -61.7, 127, 4335464)
         spawnMobile("dathomir", "gnarled_rancor", 600, -49.1, -47.4, -12.0, 177, 4335464)
-        spawnMobile("dathomir", "enraged_bull_rancor", 600, -54.4, -68.3, -40.0, -82, 4335464)
+        spawnMobile("dathomir", "enraged_rancor", 600, -54.4, -68.3, -40.0, -82, 4335464)
 
         --Cell[4335473]
         spawnMobile("dathomir", "enraged_bull_rancor", 600, -93.4, -46.6, -128.6, 3, 4335473)
