@@ -1,4 +1,4 @@
-bewitdiing_korga_dark_shaman = Creature:new {
+bewitching_korga_dark_shaman = Creature:new {
 	objectName = "@mob/creature_names:bewitching_korga_dark_shaman",
 	socialGroup = "korga_tribe",
 	pvpFaction = "korga_tribe",
@@ -36,4 +36,4 @@ bewitdiing_korga_dark_shaman = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(bewitdiing_korga_dark_shaman, "bewitdiing_korga_dark_shaman")
+CreatureTemplates:addCreatureTemplate(bewitching_korga_dark_shaman, "bewitching_korga_dark_shaman")
