@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_98e36133",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/tests/LuaMobileTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-30T01:28:31Z",
+      "side": 1,
+      "message": "Move this test up to here so every mobile template gets checked, rather than just those hooked up to a lair template.",
+      "revId": "96a561729dd04b64288b18e595679ee973f3693d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
