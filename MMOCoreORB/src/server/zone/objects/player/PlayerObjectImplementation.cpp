@@ -1191,6 +1191,9 @@ void PlayerObjectImplementation::notifyOnline() {
 
 	//Login to jedi manager
 	JediManager::instance()->onPlayerLoggedIn(playerCreature);
+
+	if (getForcePowerMax() > 0 && getForcePower() < getForcePowerMax())
+		activateForcePowerRegen();
 }
 
 void PlayerObjectImplementation::notifyOffline() {
@@ -1693,7 +1696,7 @@ void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
 
 
 	// Activate regeneration.
-	if (fp < getForcePower()) {
+	if (fp < getForcePowerMax()) {
 		activateForcePowerRegen();
 	}
 
