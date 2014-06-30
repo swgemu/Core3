@@ -90,6 +90,9 @@ public:
 
 		if (!pup->isASubChildOf(creature))
 			return GENERALERROR;
+			
+		if (weapon->isJediWeapon())
+			return GENERALERROR;			
 
 		if((weapon->isRangedWeapon() && pup->isRanged()) ||
 				(weapon->isMeleeWeapon() && pup->isMelee()) ||
