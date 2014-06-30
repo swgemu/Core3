@@ -1,5 +1,5 @@
 dathomir_rancor_pack_neutral_none = Lair:new {
-	mobiles = {{"rancor",2},{"rancor_youth",1}},
+	mobiles = {{"rancor",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

@@ -28,6 +28,7 @@ female_malkloc_plainswalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/malkloc_hue.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ injured_verne = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/verne.iff"},
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

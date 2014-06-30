@@ -28,6 +28,7 @@ shear_mite_soldier = Creature:new {
 
 	templates = {"object/mobile/shear_mite_soldier.iff"},
 	controlDeviceTemplate = "object/intangible/pet/shear_mite_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

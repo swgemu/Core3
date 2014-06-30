@@ -28,6 +28,7 @@ shear_mite_broodling = Creature:new {
 
 	templates = {"object/mobile/shear_mite_broodling.iff"},
 	controlDeviceTemplate = "object/intangible/pet/shear_mite_hue.iff",
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

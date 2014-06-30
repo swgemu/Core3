@@ -28,6 +28,7 @@ gnarled_rancor = Creature:new {
 
 	templates = {"object/mobile/rancor_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/rancor_hue.iff",
+	scale = 0.9,
 	lootGroups = {
 		{
 			groups = {

@@ -27,6 +27,7 @@ grovo = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/nsister_rancor_grovo.iff"},
+	scale = 1.25,
 	lootGroups = {
 		{
 			groups = {

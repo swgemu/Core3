@@ -27,6 +27,7 @@ nightsister_bull_rancor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bull_rancor.iff"},
+	scale = 1.1,
 	lootGroups = {
 		{
 			groups = {
