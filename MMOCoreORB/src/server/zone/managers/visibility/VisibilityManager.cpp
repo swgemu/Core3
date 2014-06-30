@@ -66,7 +66,7 @@ void VisibilityManager::removePlayerFromBountyList(CreatureObject* creature) {
 }
 
 int VisibilityManager::calculateReward(float visibility) {
-	//Minimum reward = 25k TODO: FRS jedis should have 50 k as minimum reward.
+	//Minimum reward = 25k TODO: FRS Jedi should have 50k as minimum reward.
 	//Maximum reward = 98k
 	return 25000 + (visibility - 24) * (100 + System::random(50)) + System::random(1000);
 }
@@ -82,16 +82,23 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
 			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
+			
 			if (obj->isCreatureObject()) {
-				ManagedReference<CreatureObject*> c = cast<CreatureObject*>(obj);
-				if (c->isNonPlayerCreatureObject()) {
-					if (creature->getFaction() == 0 || (c->getFaction() != factionImperial && c->getFaction() != factionRebel)) {
-						visibilityIncrease += 0.5;
+			
+				ManagedReference<CreatureObject*> visgenerator = cast<CreatureObject*>(obj); // NPC OR Player that gens vis for Jedi
+				
+				if (visgenerator->isNonPlayerCreatureObject()) {
+					if (creature->getFaction() == 0 || (visgenerator->getFaction() != factionImperial && visgenerator->getFaction() != factionRebel)) {
+						visibilityIncrease += 0.5; // Jedi & Object neutral faction results in .5 vis increase
 					} else {
-						if (creature->getFaction() == c->getFaction()) {
-							visibilityIncrease += 0.25;
+						if (creature->getFaction() == visgenerator->getFaction()) {
+							visibilityIncrease += 0.25; // Jedi & Object same faction results in .25 vis increase
 						} else {
-							visibilityIncrease += 1;
+							if (creature->getFaction() != visgenerator->getFaction()) {
+								visibilityIncrease += 1; // Jedi & Object same faction results in 1 vis increase
+							} else {
+								visibilityIncrease == 0; // All other cases no vis is generated.
+							}	
 						}
 					}
 				}
