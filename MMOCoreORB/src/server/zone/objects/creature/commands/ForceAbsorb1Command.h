@@ -96,11 +96,13 @@ public:
 
 		StringIdChatParameter startStringId("jedi_spam", "apply_forceabsorb1");
 		StringIdChatParameter endStringId("jedi_spam", "remove_forceabsorb1");
+		
+		int duration = 30;		
 
 		Vector<unsigned int> eventTypes;
 		eventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
-		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc1, 60, BuffType::JEDI, getNameCRC());
+		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc1, duration, BuffType::JEDI, getNameCRC());
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("force_absorb", 1);
