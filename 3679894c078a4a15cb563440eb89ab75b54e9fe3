@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_d847991c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-30T03:28:49Z",
+      "side": 1,
+      "message": "I think you should move this whole block to it\u0027s own method and call it from within spawnDestroyBuilding().",
+      "revId": "3679894c078a4a15cb563440eb89ab75b54e9fe3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_b854e5ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/terminal/components/DestructibleBuildingMenuComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-30T03:28:49Z",
+      "side": 1,
+      "message": "Put the dead and incapped checks here just like in the above method.",
+      "revId": "3679894c078a4a15cb563440eb89ab75b54e9fe3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
