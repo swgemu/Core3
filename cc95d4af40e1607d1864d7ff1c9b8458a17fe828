@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_98ffe1aa",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-30T06:03:37Z",
+      "side": 1,
+      "message": "Remove this call to activateForcePowerRegen(). It\u0027s called from within setForcePower().",
+      "revId": "cc95d4af40e1607d1864d7ff1c9b8458a17fe828",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
