@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_f8dc9d76",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1728,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-06-30T01:24:28Z",
+      "side": 1,
+      "message": "This is now redundant since it\u0027s called from within setForcePower(). Remove this one.",
+      "revId": "53c0413bf6978c336a0ae1bba26baa5b92536a91",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
