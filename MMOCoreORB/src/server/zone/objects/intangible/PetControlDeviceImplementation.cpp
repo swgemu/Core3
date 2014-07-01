@@ -704,18 +704,19 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 
 			if (petType == PetManager::CREATUREPET) {
 				CreatureAttackMap* attMap = pet->getAttackMap();
-				if (attMap->size() > 0) {
-					String str = StringIdManager::instance()->getStringId(("@combat_effects:" + pet->getAttackMap()->getCommand(0)).hashCode()).toString();
-					alm->insertAttribute("spec_atk_1", str);
-				} else
-					alm->insertAttribute("spec_atk_1", " ---");
+				if (attMap != NULL) {
+					if (attMap->size() > 0) {
+						String str = StringIdManager::instance()->getStringId(("@combat_effects:" + pet->getAttackMap()->getCommand(0)).hashCode()).toString();
+						alm->insertAttribute("spec_atk_1", str);
+					} else
+						alm->insertAttribute("spec_atk_1", " ---");
 
-				if (attMap->size() > 1) {
-					String str = StringIdManager::instance()->getStringId(("@combat_effects:" + pet->getAttackMap()->getCommand(1)).hashCode()).toString();
-					alm->insertAttribute("spec_atk_2", str);
-				} else
-					alm->insertAttribute("spec_atk_2", " ---");
-
+					if (attMap->size() > 1) {
+						String str = StringIdManager::instance()->getStringId(("@combat_effects:" + pet->getAttackMap()->getCommand(1)).hashCode()).toString();
+						alm->insertAttribute("spec_atk_2", str);
+					} else
+						alm->insertAttribute("spec_atk_2", " ---");
+				}
 				CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
 				if (creatureTemplate != NULL) {
 					if (creatureTemplate->getWeapons().size() > 0)
