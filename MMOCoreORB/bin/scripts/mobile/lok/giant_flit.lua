@@ -28,6 +28,7 @@ giant_flit = Creature:new {
 
 	templates = {"object/mobile/giant_flit.iff"},
 	controlDeviceTemplate = "object/intangible/pet/flit_hue.iff",
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

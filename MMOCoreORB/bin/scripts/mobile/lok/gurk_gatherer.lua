@@ -27,6 +27,7 @@ gurk_gatherer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurk.iff"},
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

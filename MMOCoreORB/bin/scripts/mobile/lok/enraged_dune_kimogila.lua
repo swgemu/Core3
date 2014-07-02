@@ -27,6 +27,7 @@ enraged_dune_kimogila = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kimogila_hue.iff"},
+	scale = 1.05,
 	lootGroups = {
 	 {
 	        groups = {

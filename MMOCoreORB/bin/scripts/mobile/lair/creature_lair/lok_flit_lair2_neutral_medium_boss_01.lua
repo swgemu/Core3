@@ -1,5 +1,5 @@
 lok_flit_lair2_neutral_medium_boss_01 = Lair:new {
-	mobiles = {{"flit_bloodsucker", 1},{"giant_flit", 1}},
+	mobiles = {{"giant_flit",1}},
 	bossMobiles = {{"lethargic_behemoth",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_nest_small_fog_green.iff"},

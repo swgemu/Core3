@@ -28,6 +28,7 @@ crazed_gurk_destroyer = Creature:new {
 
 	templates = {"object/mobile/gurk_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gurk_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

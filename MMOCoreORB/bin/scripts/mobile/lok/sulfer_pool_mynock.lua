@@ -28,6 +28,7 @@ sulfer_pool_mynock = Creature:new {
 
 	templates = {"object/mobile/riverside_sulfur_mynock.iff"},
 	controlDeviceTemplate = "object/intangible/pet/salt_mynock_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ enraged_kimogila = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kimogila_hue.iff"},
+	scale = 0.9,
 	lootGroups = {
 	 {
 	        groups = {

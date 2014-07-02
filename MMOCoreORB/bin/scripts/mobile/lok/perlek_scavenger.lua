@@ -28,6 +28,7 @@ perlek_scavenger = Creature:new {
 
 	templates = {"object/mobile/perlek_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/perlek_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

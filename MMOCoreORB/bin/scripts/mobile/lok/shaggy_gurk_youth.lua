@@ -27,6 +27,7 @@ shaggy_gurk_youth = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shaggy_gurk_youth.iff"},
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

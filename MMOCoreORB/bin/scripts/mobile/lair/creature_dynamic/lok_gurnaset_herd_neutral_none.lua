@@ -1,5 +1,5 @@
 lok_gurnaset_herd_neutral_none = Lair:new {
-	mobiles = {{"gurnaset", 1},{"gurnaset_hatchling", 1}},
+	mobiles = {{"gurnaset",1},{"gurnaset_hatchling",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

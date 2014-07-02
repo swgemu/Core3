@@ -27,6 +27,7 @@ reclusive_gurk_king = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/recluse_gurk_king.iff"},
+	scale = 1.4,
 	lootGroups = {
 	 {
 	        groups = {
