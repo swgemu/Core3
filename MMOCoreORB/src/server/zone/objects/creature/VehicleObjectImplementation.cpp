@@ -33,13 +33,51 @@ void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 		menuResponse->addRadialMenuItem(62, 3, "@pet/pet_menu:menu_repair_vehicle"); //Repair Vehicle
 }
 
-void VehicleObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
+void VehicleObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object){
+
+	alm->insertAttribute("armorrating", "@obj_attr_n:armor_pierce_none"); //None
+
+	StringBuffer kin;
+	kin << Math::getPrecision(getKinetic(),1) << "%";
+	alm->insertAttribute("cat_armor_special_protection.armor_eff_kinetic", kin.toString());
+
+	StringBuffer ene;
+	ene << Math::getPrecision(getEnergy(),1) << "%";
+	alm->insertAttribute("cat_armor_effectiveness.armor_eff_energy", ene.toString());
+
+	StringBuffer bla;
+	bla << Math::getPrecision(getBlast(),1) << "%";
+	alm->insertAttribute("cat_armor_effectiveness.armor_eff_blast", bla.toString());
+
+	StringBuffer stu;
+	stu << Math::getPrecision(getStun(),1) << "%";
+	alm->insertAttribute("cat_armor_effectiveness.armor_eff_stun", stu.toString());
+
+	StringBuffer lig;
+	lig << Math::getPrecision(getLightSaber(),1) << "%";
+	alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", lig.toString());
+
+	StringBuffer hea;
+	hea << Math::getPrecision(getHeat(),1) << "%";
+	alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat", hea.toString());
+
+	StringBuffer col;
+	col << Math::getPrecision(getCold(),1) << "%";
+	alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold", col.toString());
+
+	StringBuffer aci;
+	aci << Math::getPrecision(getAcid(),1) << "%";
+	alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid", aci.toString());
+
+	StringBuffer ele;
+	ele << Math::getPrecision(getElectricity(),1) << "%";
+	alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical", ele.toString());
 
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
 	if( linkedCreature == NULL )
 		return;
 
-	msg->insertAttribute("@obj_attr_n:owner", linkedCreature->getFirstName());
+	alm->insertAttribute("@obj_attr_n:owner", linkedCreature->getFirstName());
 
 }
 

@@ -791,8 +791,7 @@ ArmorObject* CombatManager::getPSGArmor(CreatureObject* defender) {
 	return NULL;
 }
 
-
-int CombatManager::getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon) {
+int CombatManager::getArmorNpcReduction(AiAgent* defender, WeaponObject* weapon) {
 	int damageType = weapon->getDamageType();
 
 	float resist = 0;
@@ -833,16 +832,69 @@ int CombatManager::getArmorNpcReduction(CreatureObject* attacker, AiAgent* defen
 	return (int)resist;
 }
 
-int CombatManager::getArmorReduction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data) {
+int CombatManager::getArmorVehicleReduction(VehicleObject* defender, WeaponObject* weapon) {
+	int damageType = weapon->getDamageType();
+
+	float resist = 0;
+
+	switch (damageType) {
+	case WeaponObject::KINETIC:
+		resist = defender->getKinetic();
+		break;
+	case WeaponObject::ENERGY:
+		resist = defender->getEnergy();
+		break;
+	case WeaponObject::ELECTRICITY:
+		resist = defender->getElectricity();
+		break;
+	case WeaponObject::STUN:
+		resist = defender->getStun();
+		break;
+	case WeaponObject::BLAST:
+		resist = defender->getBlast();
+		break;
+	case WeaponObject::HEAT:
+		resist = defender->getHeat();
+		break;
+	case WeaponObject::COLD:
+		resist = defender->getCold();
+		break;
+	case WeaponObject::ACID:
+		resist = defender->getAcid();
+		break;
+	case WeaponObject::LIGHTSABER:
+		resist = defender->getLightSaber();
+		break;
+	case WeaponObject::FORCE:
+		resist = 0;
+		break;
+	}
+
+	return (int)resist;
+}
+
+int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data){
 	if (poolToDamage == 0)
+		return 0;
+
+	if(weapon == NULL)
 		return 0;
 
 	// the easy calculation
 	if (defender->isAiAgent()) {
-		float armorReduction = getArmorNpcReduction(attacker, cast<AiAgent*>(defender), weapon);
+		float armorReduction = getArmorNpcReduction(cast<AiAgent*>(defender), weapon);
 
 		if (armorReduction >= 0)
 			damage *= getArmorPiercing(cast<AiAgent*>(defender), weapon);
+
+		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
+
+		return damage;
+	} else if (defender->isVehicleObject()) {
+		float armorReduction = getArmorVehicleReduction(cast<VehicleObject*>(defender), weapon);
+
+		if (armorReduction >= 0)
+			damage *= getArmorPiercing(cast<VehicleObject*>(defender), weapon);
 
 		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
@@ -912,6 +964,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, WeaponObject* wea
 		float armorReduction = getArmorObjectReduction(weapon, armor);
 
 		damage *= armorPiercing;
+
 		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
 		// inflict condition damage
@@ -936,6 +989,9 @@ float CombatManager::getArmorPiercing(TangibleObject* defender, WeaponObject* we
 
 		if (armorDefender != NULL && !armorDefender->isBroken())
 			armorReduction = armorDefender->getRating();
+	} else if (defender->isVehicleObject()) {
+		VehicleObject* vehicleDefender = cast<VehicleObject*>(defender);
+		armorReduction = vehicleDefender->getArmor();
 	} else {
 		DataObjectComponentReference* data = defender->getDataObjectComponent();
 		if(data != NULL){
@@ -2095,77 +2151,6 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 
 	return damage;
 	return 0;
-}
-
-
-int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data){
-	if (poolToDamage == 0)
-		return 0;
-
-	if(weapon == NULL)
-		return 0;
-
-	// the easy calculation
-	if (defender->isAiAgent()) {
-		float armorReduction = getArmorNpcReduction(NULL, cast<AiAgent*>(defender), weapon);
-
-		if (armorReduction >= 0)
-			damage *= getArmorPiercing(cast<AiAgent*>(defender), weapon);
-
-		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
-
-		return damage;
-	}
-
-	// start with PSG reduction
-	ManagedReference<ArmorObject*> psg = getPSGArmor(defender);
-
-	if (psg != NULL && !psg->isVulnerable(weapon->getDamageType())) {
-		float armorPiercing = getArmorPiercing(psg, weapon);
-		float armorReduction =  getArmorObjectReduction(weapon, psg);
-
-		if (armorPiercing > 1) damage *= armorPiercing;
-		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
-
-		// inflict condition damage
-		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
-		// it can be fixed by doing condition damage after all damage reductions
-		psg->inflictDamage(psg, 0, damage * 0.1, true, true);
-	}
-
-	if (data.getAttackType() == CombatManager::WEAPONATTACK) {
-		// Force Armor
-		float rawDamage = damage;
-
-		int forceArmor = defender->getSkillMod("force_armor");
-		if (forceArmor > 0)
-			defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, rawDamage - (damage *= 1.f - (forceArmor / 100.f)));
-	}
-
-	// now apply the rest of the damage to the regular armor
-	ManagedReference<ArmorObject*> armor = NULL;
-
-	if (poolToDamage & CombatManager::HEALTH)
-		armor = getHealthArmor(defender);
-	else if (poolToDamage & CombatManager::ACTION)
-		armor = getActionArmor(defender);
-	else if (poolToDamage & CombatManager::MIND)
-		armor = getMindArmor(defender);
-
-	if (armor != NULL && !armor->isVulnerable(weapon->getDamageType())) {
-		// use only the damage applied to the armor for piercing (after the PSG takes some off)
-		float armorPiercing = getArmorPiercing(armor, weapon);
-		float armorReduction = getArmorObjectReduction(weapon, armor);
-
-		damage *= armorPiercing;
-
-		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
-
-		// inflict condition damage
-		armor->inflictDamage(armor, 0, damage * 0.1, true, true);
-	}
-
-	return damage;
 }
 
 int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, WeaponObject* weapon){
