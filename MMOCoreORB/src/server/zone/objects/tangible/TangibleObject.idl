@@ -621,7 +621,7 @@ class TangibleObject extends SceneObject {
 		if(ratio < 75.0)
 			return 0;
 		
-		float reductionPercent = (ratio - 75.0) / 12.5;
+		float reductionPercent = (ratio - 75.0) / 50;
 			
 		return reductionPercent * value;
 	}
