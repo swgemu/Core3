@@ -1074,6 +1074,7 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 	self:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
 
 	writeData(creature:getObjectID() .. ":activeMission", 2)
+	writeData(creature:getObjectID() .. ":destroyableBuildingID", 0)
 end
 
 function ThemeParkLogic:handleMissionReward(pConversingPlayer)
@@ -1194,6 +1195,17 @@ function ThemeParkLogic:cleanUpMission(pConversingPlayer)
 	end)
 
 	local creature = LuaCreatureObject(pConversingPlayer)
+	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
+	local currentMissionType = self:getMissionType(npcNumber, pConversingPlayer)
+
+	if (currentMissionType == "destroy") then
+		local buildingID = readData(creature:getObjectID() .. ":destroyableBuildingID")
+		if (buildingID ~= 0) then
+			removeObservers(getSceneObject(buildingID), OBJECTDESTRUCTION)
+			destroyBuilding(buildingID)
+		end
+		writeData(creature:getObjectID() .. ":destroyableBuildingID", 0)
+	end
 
 	local numberOfSpawns = readData(creature:getObjectID() .. ":missionSpawns")
 	for i = 1, numberOfSpawns, 1 do
