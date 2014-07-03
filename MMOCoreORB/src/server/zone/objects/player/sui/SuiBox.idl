@@ -268,6 +268,10 @@ class SuiBox extends ManagedObject implements Logger {
 		return false;
 	}
 
+	public abstract boolean isFireworkDelayBox() {
+		return false;
+	}
+
 	public abstract boolean isMessageBox() {
 		return false;
 	}
