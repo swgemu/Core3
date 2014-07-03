@@ -1,10 +1,3 @@
-/*
- * CampKitMenuComponent
- *
- *  Created on: 12/1/2012
- *      Author: kyle
- */
-
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/Zone.h"

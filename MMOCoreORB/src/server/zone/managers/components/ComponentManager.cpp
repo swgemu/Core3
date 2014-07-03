@@ -64,10 +64,10 @@
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceGCWBaseComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceDecorationComponent.h"
-#include "server/zone/objects/tangible/terminal/components/DestructibleBuildingMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/HQMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/UplinkTerminalMenuComponent.h"
+#include "server/zone/objects/tangible/terminal/components/DestructibleBuildingMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/SecurityTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/OverrideTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/PowerRegulatorMenuComponent.h"
@@ -95,7 +95,9 @@
 #include "server/zone/objects/building/components/CityHallZoneComponent.h"
 #include "server/zone/objects/installation/components/ShuttleInstallationZoneComponent.h"
 #include "server/zone/objects/tangible/firework/components/FireworkMenuComponent.h"
+#include "server/zone/objects/tangible/firework/components/FireworkShowContainerComponent.h"
 #include "server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.h"
+#include "server/zone/objects/tangible/firework/components/FireworkShowDataComponent.h"
 #include "server/zone/objects/structure/components/StructureZoneComponent.h"
 #include "server/zone/objects/creature/components/TrainerMenuComponent.h"
 #include "server/zone/objects/creature/components/SarlaccMenuComponent.h"
@@ -236,6 +238,9 @@ ComponentManager::ComponentManager() {
 
 	components.put("FireworkMenuComponent", new FireworkMenuComponent());
 	components.put("FireworkShowMenuComponent", new FireworkShowMenuComponent());
+	components.put("FireworkShowContainerComponent", new FireworkShowContainerComponent());
+	dataObjectFactory.registerObject<FireworkShowDataComponent>("FireworkShowDataComponent");
+
 	components.put("TrainerMenuComponent", new TrainerMenuComponent());
 	components.put("PetMenuComponent", new PetMenuComponent());
 
@@ -255,8 +260,8 @@ ComponentManager::ComponentManager() {
 	components.put("ElevatorMenuComponent", new ElevatorMenuComponent());
 	components.put("ElevatorUpMenuComponent", new ElevatorUpMenuComponent());
 	components.put("ElevatorDownMenuComponent", new ElevatorDownMenuComponent());
-	components.put("DestructibleBuildingMenuComponent", new DestructibleBuildingMenuComponent());
 	components.put("UplinkTerminalMenuComponent", new UplinkTerminalMenuComponent());
+	components.put("DestructibleBuildingMenuComponent", new DestructibleBuildingMenuComponent());
 	components.put("SecurityTerminalMenuComponent", new SecurityTerminalMenuComponent());
 	components.put("OverrideTerminalMenuComponent", new OverrideTerminalMenuComponent());
 	components.put("PowerRegulatorMenuComponent", new PowerRegulatorMenuComponent());
