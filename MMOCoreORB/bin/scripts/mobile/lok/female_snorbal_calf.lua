@@ -28,6 +28,7 @@ female_snorbal_calf = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/female_snorbal_calf.iff"},
+	scale = 0.6,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

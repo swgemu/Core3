@@ -28,6 +28,7 @@ desert_vesp = Creature:new {
 
 	templates = {"object/mobile/vesp_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/vesp_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

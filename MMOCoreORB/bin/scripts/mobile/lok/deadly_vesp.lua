@@ -27,6 +27,7 @@ deadly_vesp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vesp_hue.iff"},
+	scale = 1.35,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

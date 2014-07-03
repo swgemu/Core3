@@ -28,6 +28,7 @@ spined_snake = Creature:new {
 
 	templates = {"object/mobile/spined_snake.iff"},
 	controlDeviceTemplate = "object/intangible/pet/spined_snake_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",

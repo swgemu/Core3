@@ -28,6 +28,7 @@ vesp_scavenger = Creature:new {
 
 	templates = {"object/mobile/vesp.iff"},
 	controlDeviceTemplate = "object/intangible/pet/vesp_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

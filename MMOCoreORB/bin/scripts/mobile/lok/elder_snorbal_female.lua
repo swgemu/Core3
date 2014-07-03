@@ -28,6 +28,7 @@ elder_snorbal_female = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/elder_snorbal_female.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
