@@ -1,4 +1,4 @@
-naboo_pirate_cuttroat = Creature:new {
+naboo_pirate_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:naboo_pirate_cutthroat",
 	socialGroup = "naboo_pirate",
 	pvpFaction = "naboo_pirate",
@@ -51,4 +51,4 @@ naboo_pirate_cuttroat = Creature:new {
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(naboo_pirate_cuttroat, "naboo_pirate_cuttroat")
+CreatureTemplates:addCreatureTemplate(naboo_pirate_cutthroat, "naboo_pirate_cutthroat")

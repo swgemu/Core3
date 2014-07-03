@@ -55,32 +55,32 @@ function ImperialVsGunganScreenPlay:spawnMobiles()
 
 	--imperials
 
-	spawnMobile("naboo", "swamp_trooper", 300, 4742.5, 10.2, -3836.4, -165, 0)
-	spawnMobile("naboo", "imperial_corporal", 300, 4791.3, 11.4, -3821.6, -167, 0)
-	spawnMobile("naboo", "imperial_surface_marshall", 300, 4759.2, 10.7, -3830.4, 72, 0)
-	spawnMobile("naboo", "swamp_trooper", 300, 4757.2, 10.7, -3826.7, 72, 0)
-	spawnMobile("naboo", "imperial_pilot", 300, 4784.7, 11.3, -3820.7, 95, 0)
-	spawnMobile("naboo", "imperial_pilot", 300, 4768.4, 10.9, -3825.0, 35, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4742.5, 10.2, -3836.4, -165, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper_captain", 300, 4791.3, 11.4, -3821.6, -167, 0)
+	spawnMobile("naboo", "imperial_exterminator", 300, 4759.2, 10.7, -3830.4, 72, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4757.2, 10.7, -3826.7, 72, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper_captain", 300, 4784.7, 11.3, -3820.7, 95, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4768.4, 10.9, -3825.0, 35, 0)
 
-	spawnMobile("naboo", "swamp_trooper", 300, 4781.3, 12.0, -3847.1, 161, 0)
-	spawnMobile("naboo", "swamp_trooper", 300, 4740.9, 10.7, -3851.5, -90, 0)
-	spawnMobile("naboo", "swamp_trooper", 300, 4784.3, 12.0, -3845.9, 160, 0)
-	spawnMobile("naboo", "swamp_trooper", 300, 4778.3, 12.0, -3849.5, 170, 0)
-	spawnMobile("naboo", "swamp_trooper", 300, 4768.7, 11.8, -3854.9, 175, 0)
-	spawnMobile("naboo", "swamp_trooper", 300, 4761.2, 11.8, -3856.0, 175, 0)
-	spawnMobile("naboo", "swamp_trooper", 300, 4754.7, 11.7, -3858.0, 175, 0)
-	spawnMobile("naboo", "swamp_trooper", 300, 4747.7, 11.6, -3859.1, 175, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4781.3, 12.0, -3847.1, 161, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4740.9, 10.7, -3851.5, -90, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4784.3, 12.0, -3845.9, 160, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4778.3, 12.0, -3849.5, 170, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper_captain", 300, 4768.7, 11.8, -3854.9, 175, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4761.2, 11.8, -3856.0, 175, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4754.7, 11.7, -3858.0, 175, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4747.7, 11.6, -3859.1, 175, 0)
 
-	spawnMobile("naboo", "swamp_trooper", 300, 4726.2, 9.6, -3825.6, 175, 0)
-	spawnMobile("naboo", "swamp_trooper", 300, 4712.3, 11.2, -3871.0, 15, 0)
-	spawnMobile("naboo", "swamp_trooper", 300, 4808.3, 11.7, -3836.6, 166, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4726.2, 9.6, -3825.6, 175, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4712.3, 11.2, -3871.0, 15, 0)
+	spawnMobile("naboo", "plasma_thieving_swamp_trooper", 300, 4808.3, 11.7, -3836.6, 166, 0)
 
 end
 
 function ImperialVsGunganScreenPlay:spawnObservedMobiles()
 
-	local pMarshall = spawnMobile("naboo", "imperial_surface_marshall", 420, 4761.4, 10.7, -3823.9, -175, 0)
-        createObserver(OBJECTDESTRUCTION, "ImperialVsGunganScreenPlay", "notifyMarshallDead", pMarshall)
+	local pMarshall = spawnMobile("naboo", "imperial_exterminator", 420, 4761.4, 10.7, -3823.9, -175, 0)
+        createObserver(OBJECTDESTRUCTION, "ImperialVsGunganScreenPlay", "notifyExtermDead", pMarshall)
 
 	local pPriest = spawnMobile("naboo", "gungan_priest", 420, 4760.9, 13.7, -3894.2, 11, 0)
         createObserver(OBJECTDESTRUCTION, "ImperialVsGunganScreenPlay", "notifyPriestDead", pPriest)
@@ -90,9 +90,9 @@ end
 		--Imperials
 	--Imperial Surface Marshall
 
-function ImperialVsGunganScreenPlay:notifyMarshallDead(pMarshall, pKiller)
-	if (readData("nabooimperialvgungan:imperial_army_captain") == 0) then
-		local pCaptain = spawnMobile("naboo", "imperial_army_captain", 0, 4758.1, 10.6, -3824.5, 133, 0)
+function ImperialVsGunganScreenPlay:notifyExtermDead(pMarshall, pKiller)
+	if (readData("nabooimperialvgungan:imperial_veermok") == 0) then
+		local pCaptain = spawnMobile("naboo", "imperial_veermok", 0, 4758.1, 10.6, -3824.5, 133, 0)
 
 		--[[ temporarily disabled to prevent infestation of swamp troopers, should work once AI is done and they fight on their own 
 
@@ -113,15 +113,15 @@ function ImperialVsGunganScreenPlay:notifyMarshallDead(pMarshall, pKiller)
 			spawnMobile("naboo", "swamp_trooper", 0, 4723.7, 10.1, -3839.1, 180, 0)
 		]]
 
-		createObserver(OBJECTDESTRUCTION, "ImperialVsGunganScreenPlay", "notifyCaptainDead", pCaptain)
-		writeData("nabooimperialvgungan:imperial_army_captain",1)
+		createObserver(OBJECTDESTRUCTION, "ImperialVsGunganScreenPlay", "notifyImperialVeermokDead", pImperialVeermok)
+		writeData("nabooimperialvgungan:imperial_veermok",1)
 	end
      
 	return 0
 end
 
-function ImperialVsGunganScreenPlay:notifyCaptainDead(pCaptain, pKiller)
-	writeData("nabooimperialvgungan:imperial_army_captain", 0)
+function ImperialVsGunganScreenPlay:notifyImperialVeermokDead(pImperialVeermok, pKiller)
+	writeData("nabooimperialvgungan:imperial_veermok", 0)
      
 	return 1
 end
@@ -154,14 +154,14 @@ function ImperialVsGunganScreenPlay:notifyPriestDead(pPriest, pKiller)
 
 		]]
 
-		createObserver(OBJECTDESTRUCTION, "ImperialVsGunganScreenPlay", "notifyVeermokDead", pVeermok)
+		createObserver(OBJECTDESTRUCTION, "ImperialVsGunganScreenPlay", "notifyGunganVeermokDead", pGunganVeermok)
 		writeData("nabooimperialvgungan:gungan_veermok",1)
 	end
      
 	return 0
 end
 
-function ImperialVsGunganScreenPlay:notifyVeermokDead(pVeermok, pKiller)
+function ImperialVsGunganScreenPlay:notifyGunganVeermokDead(pGunganVeermok, pKiller)
 	writeData("nabooimperialvgungan:gungan_veermok", 0)
      
 	return 1
