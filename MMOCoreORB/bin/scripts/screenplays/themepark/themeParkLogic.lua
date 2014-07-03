@@ -1194,6 +1194,17 @@ function ThemeParkLogic:cleanUpMission(pConversingPlayer)
 	end)
 
 	local creature = LuaCreatureObject(pConversingPlayer)
+	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
+	local currentMissionType = self:getMissionType(npcNumber, pConversingPlayer)
+
+	if (currentMissionType == "destroy") then
+		local buildingID = readData(creature:getObjectID() .. ":destroyableBuildingID")
+		if (buildingID ~= 0) then
+			removeObservers(getSceneObject(buildingID))
+			destroyBuilding(buildingID)
+		end
+		writeData(creature:getObjectID() .. ":destroyableBuildingID", 0)
+	end
 
 	local numberOfSpawns = readData(creature:getObjectID() .. ":missionSpawns")
 	for i = 1, numberOfSpawns, 1 do
