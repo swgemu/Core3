@@ -46,6 +46,10 @@ public:
 		return false;
 	}
 
+	virtual bool isFireworkShowData() {
+		return false;
+	}
+
 	virtual bool isVendorData() {
 		return false;
 	}
