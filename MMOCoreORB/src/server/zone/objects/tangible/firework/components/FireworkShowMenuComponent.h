@@ -10,6 +10,7 @@
 
 #include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/firework/FireworkObject.h"
+#include "FireworkShowDataComponent.h"
 
 class FireworkShowMenuComponent : public TangibleObjectMenuComponent {
 public:
@@ -32,11 +33,15 @@ public:
 	 */
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
 
-private:
-
-	void startShow(CreatureObject* player, FireworkObject* firework);
-
 	void addEvent(CreatureObject* player, FireworkObject* firework);
+
+	void removeEvent(CreatureObject* player, FireworkObject* firework);
+
+	void modifyEvent(CreatureObject* player, FireworkObject* firework);
+
+	void reorderShow(CreatureObject* player, FireworkObject* firework);
+
+	void showData(CreatureObject* player, FireworkObject* firework);
 
 };
 

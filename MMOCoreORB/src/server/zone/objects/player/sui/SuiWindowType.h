@@ -220,6 +220,12 @@ public:
 	static const uint16 HQ_TERMINAL = 420;
 	static const uint16 HQ_TURRET_TERMINAL = 421;
 
+	// Firework Show 500-503
+	static const uint16 FIREWORK_SHOW_ADDEVENT = 500;
+	static const uint16 FIREWORK_SHOW_REMOVEEVENT = 501;
+	static const uint16 FIREWORK_SHOW_REORDERSHOW = 502;
+	static const uint16 FIREWORK_SHOW_MODIFYEVENT = 503;
+	static const uint16 FIREWORK_SHOW_DELAYSELECTION = 504;
 
 	//Miscellaneous 1000+
 	static const uint16 OBJECT_NAME = 1000;
