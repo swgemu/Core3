@@ -35,8 +35,8 @@ panshee_elder = Creature:new {
 		"object/mobile/dressed_ewok_f_08.iff",
 		"object/mobile/dressed_ewok_f_09.iff",
 		"object/mobile/dressed_ewok_m_12.iff",
-		"object/mobile/dressed_ewok_m.iff",
-		"object/mobile/dressed_ewok_m_01.iff"},
+		"object/mobile/dressed_ewok_m_01.iff",
+		"object/mobile/dressed_ewok_m_02.iff"},
 	lootGroups = {
 		 {
 	        groups = {
