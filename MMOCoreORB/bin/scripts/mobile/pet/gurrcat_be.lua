@@ -26,7 +26,7 @@ gurrcat_be = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/gurrcat_hue.iff"},
+	templates = {"object/mobile/gurrcat.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

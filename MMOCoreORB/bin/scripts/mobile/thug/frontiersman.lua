@@ -27,7 +27,8 @@ frontiersman = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
+			     "object/mobile/dressed_criminal_thug_bothan_female_01.iff"},
 	lootGroups = {
       	{
 			groups = {

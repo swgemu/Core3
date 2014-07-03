@@ -35,7 +35,6 @@ proficient_panshee_worker = Creature:new {
 		"object/mobile/dressed_ewok_f_08.iff",
 		"object/mobile/dressed_ewok_f_09.iff",
 		"object/mobile/dressed_ewok_f_12.iff",
-		"object/mobile/dressed_ewok_m.iff",
 		"object/mobile/dressed_ewok_m_01.iff"},
 	lootGroups = {
 		 {

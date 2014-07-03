@@ -27,7 +27,6 @@ naive_panshee_workling = Creature:new {
 
 	templates = {
 		"object/mobile/dressed_ewok_f_01.iff",
-		"object/mobile/dressed_ewok_m.iff",
 		"object/mobile/dressed_ewok_m_01.iff"},
 	lootGroups = {
 		 {

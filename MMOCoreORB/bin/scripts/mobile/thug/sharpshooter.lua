@@ -25,7 +25,8 @@ sharpshooter = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+				 "object/mobile/dressed_criminal_thug_rodian_female_01.iff"},
 	lootGroups = {
       	{
 			groups = {

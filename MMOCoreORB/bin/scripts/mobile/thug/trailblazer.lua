@@ -27,7 +27,12 @@ trailblazer = Creature:new {
         optionsBitmask = 128,
         diet = HERBIVORE,
 
-        templates = {},
+        templates = {"object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff",
+        			 "object/mobile/dressed_commoner_tatooine_trandoshan_female_02.iff",
+        			 "object/mobile/dressed_commoner_tatooine_trandoshan_female_03.iff",
+        			 "object/mobile/dressed_commoner_tatooine_trandoshan_female_04.iff",
+        			 "object/mobile/dressed_commoner_tatooine_trandoshan_male_01.iff",
+        			 "object/mobile/dressed_commoner_tatooine_trandoshan_male_02.iff"},
 		lootGroups = {
 	      	{
 				groups = {
