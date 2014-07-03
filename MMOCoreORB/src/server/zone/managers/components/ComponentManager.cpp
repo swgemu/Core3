@@ -95,7 +95,9 @@
 #include "server/zone/objects/building/components/CityHallZoneComponent.h"
 #include "server/zone/objects/installation/components/ShuttleInstallationZoneComponent.h"
 #include "server/zone/objects/tangible/firework/components/FireworkMenuComponent.h"
+#include "server/zone/objects/tangible/firework/components/FireworkShowContainerComponent.h"
 #include "server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.h"
+#include "server/zone/objects/tangible/firework/components/FireworkShowDataComponent.h"
 #include "server/zone/objects/structure/components/StructureZoneComponent.h"
 #include "server/zone/objects/creature/components/TrainerMenuComponent.h"
 #include "server/zone/objects/creature/components/SarlaccMenuComponent.h"
@@ -236,6 +238,9 @@ ComponentManager::ComponentManager() {
 
 	components.put("FireworkMenuComponent", new FireworkMenuComponent());
 	components.put("FireworkShowMenuComponent", new FireworkShowMenuComponent());
+	components.put("FireworkShowContainerComponent", new FireworkShowContainerComponent());
+	dataObjectFactory.registerObject<FireworkShowDataComponent>("FireworkShowDataComponent");
+
 	components.put("TrainerMenuComponent", new TrainerMenuComponent());
 	components.put("PetMenuComponent", new PetMenuComponent());
 
