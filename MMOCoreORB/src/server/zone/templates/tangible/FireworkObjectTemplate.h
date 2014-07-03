@@ -27,7 +27,7 @@ public:
 		SharedTangibleObjectTemplate::readObject(templateData);
 
 		fireworkObject = templateData->getStringField("fireworkObject");
-		show = templateData->getIntField("showPackage");
+		show = templateData->getBooleanField("showPackage");
 	}
 
     inline String getFireworkObject() const {

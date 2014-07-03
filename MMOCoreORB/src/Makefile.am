@@ -191,6 +191,7 @@ core3_IDLS =	autogen/server/zone/managers/creature/TheaterSpawnObserver.cpp \
 				autogen/server/zone/objects/player/PlayerObject.cpp \
 				autogen/server/zone/objects/player/sui/SuiBox.cpp \
 				autogen/server/zone/objects/player/sui/keypadbox/SuiKeypadBox.cpp \
+				autogen/server/zone/objects/player/sui/fireworkdelaybox/SuiFireworkDelayBox.cpp \
 				autogen/server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 				autogen/server/zone/objects/player/sui/listbox/SuiListBox.cpp \
 				autogen/server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
@@ -362,6 +363,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
 		server/zone/objects/tangible/firework/components/FireworkMenuComponent.cpp \
 		server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp \
+		server/zone/objects/tangible/firework/components/FireworkShowContainerComponent.cpp \
 		server/zone/objects/installation/components/InstallationObjectMenuComponent.cpp \
 		server/zone/objects/installation/components/TurretZoneComponent.cpp \
 		server/zone/objects/installation/components/MinefieldZoneComponent.cpp \
@@ -371,8 +373,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/components/MinefieldMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/HQMenuComponent.cpp \
-		server/zone/objects/tangible/terminal/components/DestructibleBuildingMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/UplinkTerminalMenuComponent.cpp \
+		server/zone/objects/tangible/terminal/components/DestructibleBuildingMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/SecurityTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/OverrideTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/PowerRegulatorMenuComponent.cpp \

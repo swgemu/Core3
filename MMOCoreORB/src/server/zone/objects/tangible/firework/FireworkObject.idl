@@ -89,10 +89,14 @@ class FireworkObject extends TangibleObject {
 	
 	@local
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects);
 	
 	public native void launch(CreatureObject player, int removeTime = 30);
 	 
 	public native void completeLaunch(CreatureObject player, int removeDelay);
+
+	public native void beginShowLaunch(CreatureObject player);
 
 	/*public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 
@@ -109,6 +113,9 @@ class FireworkObject extends TangibleObject {
 		return delay;
 	}
 	
+	public string getFireworkObjectPath() {
+		return fireworkObject;
+	}
 	public boolean isFireworkObject() {
 		return true;
 	}
