@@ -86,6 +86,15 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		CreatureTemplate* creature = creatureIterator.next();
 		std::string templateName( creature->getTemplateName().toCharArray() );
 
+		// Check configured templates
+		Vector<String> objTemps = creature->getTemplates();
+		EXPECT_FALSE( objTemps.isEmpty() ) << "Mobile " << templateName << " does not have any templates configured";
+		for( int j=0; j< objTemps.size(); j++ ){
+			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(objTemps.get(j).hashCode());
+			std::string objName = objTemps.get(j).toCharArray();
+			EXPECT_TRUE( templateData != NULL ) << "Mobile " << templateName << " has invalid template configured: " << objName;
+		}
+
 		// Verify loot group percentages
 		LootGroupCollection* groupCollection = creature->getLootGroups();
 		if( groupCollection->count() > 0 ){
