@@ -1682,7 +1682,7 @@ int DirectorManager::spawnBuilding(lua_State* L) {
 
 int DirectorManager::spawnSceneObject(lua_State* L) {
 	int numberOfArguments = lua_gettop(L);
-	if (numberOfArguments != 10 && numberOfArguments != 7) {
+	if (numberOfArguments != 10 && numberOfArguments != 7 && numberOfArguments != 11 && numberOfArguments != 8) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::spawnSceneObject");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
@@ -1691,8 +1691,21 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 	float dz, dy, dx, dw, x, y, z;
 	uint64 parentID;
 	String script, zoneID;
+	int persistenceLevel = 0;
 
-	if (numberOfArguments == 10) {
+	if (numberOfArguments == 11) {
+		persistenceLevel = lua_tointeger(L, -1);
+		dz = lua_tonumber(L, -2);
+		dy = lua_tonumber(L, -3);
+		dx = lua_tonumber(L, -4);
+		dw = lua_tonumber(L, -5);
+		parentID = lua_tointeger(L, -6);
+		y = lua_tonumber(L, -7);
+		z = lua_tonumber(L, -8);
+		x = lua_tonumber(L, -9);
+		script = lua_tostring(L, -10);
+		zoneID = lua_tostring(L, -11);
+	} else if (numberOfArguments == 10) {
 		dz = lua_tonumber(L, -1);
 		dy = lua_tonumber(L, -2);
 		dx = lua_tonumber(L, -3);
@@ -1703,6 +1716,20 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		x = lua_tonumber(L, -8);
 		script = lua_tostring(L, -9);
 		zoneID = lua_tostring(L, -10);
+	} else if (numberOfArguments == 8) {
+		persistenceLevel = lua_tointeger(L, -1);
+		Quaternion direction;
+		direction.setHeadingDirection(lua_tonumber(L, -2));
+		dz = direction.getZ();
+		dy = direction.getY();
+		dx = direction.getX();
+		dw = direction.getW();
+		parentID = lua_tointeger(L, -3);
+		y = lua_tonumber(L, -4);
+		z = lua_tonumber(L, -5);
+		x = lua_tonumber(L, -6);
+		script = lua_tostring(L, -7);
+		zoneID = lua_tostring(L, -8);
 	} else {
 		Quaternion direction;
 		direction.setHeadingDirection(lua_tonumber(L, -1));
@@ -1726,7 +1753,7 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		return 1;
 	}
 
-	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), 0);
+	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), persistenceLevel);
 
 	if (object != NULL) {
 		object->initializePosition(x, z, y);
