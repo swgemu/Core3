@@ -306,8 +306,6 @@ includeFile("lair/creature_dynamic/rori_tattered_torton_pack_neutral_large.lua")
 includeFile("lair/creature_dynamic/rori_torton_pack_neutral_none.lua")
 includeFile("lair/creature_dynamic/rori_vrobal_bull_pack_neutral_none.lua")
 includeFile("lair/creature_dynamic/rori_vrobal_pack_neutral_none.lua")
-includeFile("lair/creature_dynamic/rori_vrobalr_bull_pack_neutral_none.lua")
-includeFile("lair/creature_dynamic/rori_vrobalr_pack_neutral_none.lua")
 includeFile("lair/creature_dynamic/rori_wood_mite_swarm_neutral_none.lua")
 includeFile("lair/creature_dynamic/rori_wormed_vrobal_pack_neutral_none.lua")
 
