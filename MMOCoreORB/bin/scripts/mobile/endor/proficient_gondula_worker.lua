@@ -27,7 +27,6 @@ proficient_gondula_worker = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_ewok_f.iff",
 		"object/mobile/dressed_ewok_f_01.iff",
 		"object/mobile/dressed_ewok_f_03.iff",
 		"object/mobile/dressed_ewok_f_04.iff",
@@ -36,7 +35,6 @@ proficient_gondula_worker = Creature:new {
 		"object/mobile/dressed_ewok_f_08.iff",
 		"object/mobile/dressed_ewok_f_09.iff",
 		"object/mobile/dressed_ewok_f_12.iff",
-		"object/mobile/dressed_ewok_m.iff",
 		"object/mobile/dressed_ewok_m_01.iff"},
 	lootGroups = {},
 	weapons = {"ewok_weapons"},

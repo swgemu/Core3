@@ -27,7 +27,7 @@ herald_dathomir_denbar = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_nsister_rancor_cave_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -26,7 +26,7 @@ darknovatrooper = Creature:new {
 	optionsBitmask = 0,
 	diet = NONE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_black_black.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

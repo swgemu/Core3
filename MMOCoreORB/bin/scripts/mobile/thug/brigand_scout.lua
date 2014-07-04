@@ -26,7 +26,12 @@ brigand_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff"
+	},
 	lootGroups = {
       	{
 			groups = {

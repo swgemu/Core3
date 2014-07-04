@@ -25,7 +25,7 @@ foot_of_solitude = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	attacks = merge(brawlernovice,marksmannovice)
