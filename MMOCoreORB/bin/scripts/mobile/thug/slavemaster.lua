@@ -25,7 +25,8 @@ slavemaster = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_trandoshan_slaver.iff",
+				 "object/mobile/dressed_tatooine_slaver.iff"},
 	lootGroups = {
       	{
 			groups = {

@@ -25,7 +25,7 @@ signalman = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

@@ -27,7 +27,9 @@ teras_kasi_master = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_unarmed_trainer_01.iff",
+				 "object/mobile/dressed_unarmed_trainer_02.iff",
+				 "object/mobile/dressed_unarmed_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -25,7 +25,7 @@ veteran_compforce_trooper = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_groupleader_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	attacks = merge(riflemanmaster,carbineermaster)

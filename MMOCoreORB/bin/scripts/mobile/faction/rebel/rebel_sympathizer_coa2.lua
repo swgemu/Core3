@@ -27,7 +27,14 @@ rebel_sympathizer_coa2 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_rebel_scout_bothan_male_01.iff",
+		"object/mobile/dressed_rebel_scout_human_female_01.iff",
+		"object/mobile/dressed_rebel_scout_human_female_02.iff",
+		"object/mobile/dressed_rebel_scout_human_male_01.iff",
+		"object/mobile/dressed_rebel_scout_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_scout_zabrak_female_01.iff"
+	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

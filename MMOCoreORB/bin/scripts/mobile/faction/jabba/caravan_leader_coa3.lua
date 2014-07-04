@@ -27,7 +27,9 @@ caravan_leader_coa3 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_gran_thug_male_01.iff",
+				 "object/mobile/dressed_gran_thug_male_02.iff"
+	},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
