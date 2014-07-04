@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_388355ce",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/firework/show.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "Are you actually using the container component for anything? If not, may as well remove it.",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_f86c9d38",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/FireworkShowAddEventSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "Why not put this check in the menu component before you send the sui?",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_1811b1ac",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/FireworkObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "Will it mess up your for loop if you remove the items as you go?",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_d822f900",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/FireworkObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "if (firework !\u003d NULL)\n     firework-\u003edestroyObjectFromDatabase(false);",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_587e09e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/FireworkShowLaunchFireworkEvent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "Rather than create a new task for each event, why not just reschedule the same one?",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_b81f45b7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "remove, reorder, and modify should only display if there is an event already added to the show (look at the screenshots in the guide).",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_d869d926",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "Before putting together the sui box, check to see if the player already has a firework sui box. We only want them to have one at a time.",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_188891e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "Rather than just filtering out this show package by it\u0027s object id, you should filter out all show packages.",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_5865e943",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "Before putting together the sui box, check to see if the player already has a firework sui box. We only want them to have one at a time.",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_b8762505",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "Before putting together the sui box, check to see if the player already has a firework sui box. We only want them to have one at a time.",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_98736115",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "Before putting together the sui box, check to see if the player already has a firework sui box. We only want them to have one at a time.",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_7860ad35",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T01:19:26Z",
+      "side": 1,
+      "message": "Before putting together the sui box, check to see if the player already has a firework sui box. We only want them to have one at a time.",
+      "revId": "d45b07a327f29c73e301c0c66fad6545ed94533d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
