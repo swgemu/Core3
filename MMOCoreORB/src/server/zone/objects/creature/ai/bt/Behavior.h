@@ -30,6 +30,7 @@ protected:
 	uint8 result;
 	Behavior* parent; // the parent must be a composite
 	Reference<LuaBehavior*> interface;
+	String id;
 
 public:
 	/**
@@ -58,6 +59,10 @@ public:
 	}
 
 	virtual ~Behavior() {
+	}
+
+	inline void setID(String _id) {
+		this->id = _id;
 	}
 
 	virtual bool isComposite() {

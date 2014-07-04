@@ -846,7 +846,7 @@ class AiAgent extends CreatureObject {
 	public native void setupBehaviorTree(AiTemplate getTarget, AiTemplate selectAttack, AiTemplate combatMove, AiTemplate idle);
 
 	@local
-	public native void setCurrentBehavior(Behavior b);
+	public native void setCurrentBehavior(final string b);
 
 	@local
 	public native int getBehaviorStatus();

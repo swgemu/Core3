@@ -45,7 +45,7 @@ void Behavior::doAction() {
 	else if (!checkConditions())
 		endWithFailure();
 
-	agent->setCurrentBehavior(this);
+	agent->setCurrentBehavior(id);
 
 	if (finished()) {
 		if (parent == NULL) {

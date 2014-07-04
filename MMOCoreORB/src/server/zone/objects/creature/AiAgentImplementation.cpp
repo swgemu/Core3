@@ -2107,6 +2107,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 		}
 
 		Behavior* behavior = AiMap::createNewInstance(_this.get(), temp->className, temp->classType);
+		behavior->setID(temp->id);
 		behaviors.put(temp->id, behavior);
 
 		Vector<String> ids = parents.get(temp->parent);
@@ -2160,7 +2161,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 		return;
 	}
 
-	setCurrentBehavior(rootBehavior);
+	setCurrentBehavior(rootString);
 }
 
 void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate* selectAttack, AiTemplate* combatMove, AiTemplate* idle) {
@@ -2189,34 +2190,14 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 	addCurrentBehaviorToTree(rootSelector);
 
 	resetBehaviorList();
-	setCurrentBehavior(rootSelector);
+	setCurrentBehavior(String("root"));
 
 	//info(behaviors.get(currentBehaviorID)->print(), true);
 }
 
-void AiAgentImplementation::setCurrentBehavior(Behavior* b) {
+void AiAgentImplementation::setCurrentBehavior(const String& b) {
 	Locker locker(&behaviorMutex);
-	if (behaviors.size() <= 0) {
-		error("Behavior tree is empty in setCurrentBehavior.");
-		return;
-	}
-
-	int i = 0;
-	for (i = 0; i < behaviors.size(); i++)
-		if (behaviors.get(i) == b)
-			break;
-
-	if (i >= behaviors.size()) {
-		error("Behavior does not exist in tree in setCurrentBehavior.");
-		return;
-	}
-
-
-	VectorMapEntry<String, Behavior*> entry = behaviors.SortedVector<VectorMapEntry<String, Behavior*> >::get(i);
-	currentBehaviorID = entry.getKey();
-
-	//info("Setting current action ID:" + currentBehaviorID, true);
-
+	currentBehaviorID = b;
 	if (behaviors.get(currentBehaviorID) != NULL)
 		activateMovementEvent();
 }
