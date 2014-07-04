@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_78c78d13",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T02:28:53Z",
+      "side": 1,
+      "message": "Doesn\u0027t really have to do with this current patch, but you may want to write this data when a destroy type mission completes as well.",
+      "revId": "7639666d3093ca7cd01b20241ed3dc7bc17e544c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_38d115ce",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1796,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-04T02:28:53Z",
+      "side": 1,
+      "message": "Make sure the sceneObject isn\u0027t null before calling methods with it.",
+      "revId": "7639666d3093ca7cd01b20241ed3dc7bc17e544c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
