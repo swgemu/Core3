@@ -116,6 +116,7 @@ which carries forward this exception.
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
+#include "events/ForceRegenerationEvent.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -1190,6 +1191,9 @@ void PlayerObjectImplementation::notifyOnline() {
 
 	//Login to jedi manager
 	JediManager::instance()->onPlayerLoggedIn(playerCreature);
+
+	if (getForcePowerMax() > 0 && getForcePower() < getForcePowerMax())
+		activateForcePowerRegen();
 }
 
 void PlayerObjectImplementation::notifyOffline() {
@@ -1435,9 +1439,6 @@ void PlayerObjectImplementation::doRecovery() {
 	creature->activateHAMRegeneration();
 	creature->activateStateRecovery();
 
-	if (getForcePowerMax() > 0  && (getForcePowerMax() - getForcePower() > 0))
-	activateForceRegen();
-
 	CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
 
 	if (cooldownTimerMap->isPast("digestEvent")) {
@@ -1483,6 +1484,17 @@ void PlayerObjectImplementation::activateRecovery() {
 		recoveryEvent = new PlayerRecoveryEvent(_this.get());
 
 		recoveryEvent->schedule(3000);
+	}
+}
+
+void PlayerObjectImplementation::activateForcePowerRegen() {
+	if (forceRegenerationEvent == NULL) {
+		forceRegenerationEvent = new ForceRegenerationEvent(_this.get());
+
+		float timer = getForcePowerRegen() / 5;
+		float scheduledTime = 10 / timer;
+		uint64 miliTime = scheduledTime * 1000;
+		forceRegenerationEvent->schedule(miliTime);
 	}
 }
 
@@ -1594,6 +1606,11 @@ void PlayerObjectImplementation::clearRecoveryEvent() {
 	recoveryEvent = NULL;
 }
 
+void PlayerObjectImplementation::clearForceRegenerationEvent() {
+	forceRegenerationEvent = NULL;
+}
+
+
 
 WaypointObject* PlayerObjectImplementation::getSurveyWaypoint() {
 	WaypointList* list = getWaypointList();
@@ -1669,7 +1686,21 @@ void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
 	if(fp == getForcePower())
 		return;
 
-	forcePower = fp;
+	// Set forcepower back to 0 incase player goes below	
+	if (fp < 0)
+		fp = 0;	
+
+	// Set force back to max incase player goes over
+	if (fp > getForcePowerMax())
+		fp = getForcePowerMax();
+
+
+	// Activate regeneration.
+	if (fp < getForcePowerMax()) {
+		activateForcePowerRegen();
+	}
+
+	forcePower = fp;			
 
 	if (notifyClient == true){
 		// Update the force power bar.
@@ -1682,28 +1713,30 @@ void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
 
 }
 
-void PlayerObjectImplementation::activateForceRegen() {
+void PlayerObjectImplementation::doForceRegen() {
 	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	if (creature->isIncapacitated() || creature->isDead())
 		return;
 
-	if (getForcePower() < 0)
-		setForcePower(0);
+	uint32 tick = 5;
 
-	float modifier = 1.f;
+	uint32 modifier = 1;
 
+	// TODO: Re-factor Force Meditate so TKA meditate doesn't effect.
 	if (creature->isMeditating())
 		modifier = 3.f;
 
-	uint32 forceTick = getForcePowerRegen() / 5 * modifier;
+	uint32 forceTick = tick * modifier;
 
 	if (forceTick < 1)
 		forceTick = 1;
 
 	if (forceTick > getForcePowerMax() - getForcePower()){   // If the player's Force Power is going to regen again and it's close to max,
 		setForcePower(getForcePowerMax());             // Set it to max, so it doesn't go over max.
-	} else setForcePower(getForcePower() + forceTick); // Otherwise regen normally.
+	} else {
+		setForcePower(getForcePower() + forceTick); // Otherwise regen normally.
+	}
 }
 
 void PlayerObjectImplementation::clearScreenPlayData(const String& screenPlay) {

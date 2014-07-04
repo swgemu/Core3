@@ -27,6 +27,7 @@ rhoa_kwi_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kwi_hue.iff"},
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -39,8 +39,6 @@ protected:
 public:
 	enum { VERYEASY = 0, EASY, MEDIUM, HARD, VERYHARD};
 
-	//      0-20 20-40 40-60 60-80 80+
-
 	LairTemplate(const String& templateName) {
 		spawnLimit = 0;
 		buildings.setAllowDuplicateInsertPlan();
@@ -55,20 +53,13 @@ public:
 	virtual ~LairTemplate() {
 	}
 
-	String getBuilding(int level) {
+	String getBuilding(uint32 difficulty) {
+		if (buildingType == NONE)
+			return String();
+
 		Vector<String>* objects = NULL;
 
-		if (level <= 20) {
-			objects = buildings.get((uint32)VERYEASY);
-		} else if (level <= 40) {
-			objects = buildings.get((uint32)EASY);
-		} else if (level <= 60) {
-			objects = buildings.get((uint32)MEDIUM);
-		} else if (level <= 80) {
-			objects = buildings.get((uint32)HARD);
-		} else {
-			objects = buildings.get((uint32)VERYHARD);
-		}
+		objects = buildings.get(difficulty);
 
 		if (objects == NULL) {
 			for (int i = 0; i < buildings.size() && objects == NULL; ++i) {

@@ -1,5 +1,5 @@
 lok_flit_pack_neutral_none = Lair:new {
-	mobiles = {{"flit", 1},{"flit_youth", 1}},
+	mobiles = {{"flit",1},{"flit_youth",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

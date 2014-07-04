@@ -1,11 +1,11 @@
 dathomir_rancor_enraged_bull_lair_neutral_large = Lair:new {
-	mobiles = {{"bull_rancor",1}},
+	mobiles = {{"enraged_bull_rancor",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_green.iff","object/tangible/lair/base/poi_all_lair_rocks_large_evil_fire_green.iff","object/tangible/lair/base/poi_all_lair_bones_large_evil_fire_green.iff"},
-	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_green.iff","object/tangible/lair/base/poi_all_lair_rocks_large_evil_fire_green.iff","object/tangible/lair/base/poi_all_lair_bones_large_evil_fire_green.iff"},
-	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_green.iff","object/tangible/lair/base/poi_all_lair_rocks_large_evil_fire_green.iff","object/tangible/lair/base/poi_all_lair_bones_large_evil_fire_green.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_green.iff","object/tangible/lair/base/poi_all_lair_rocks_large_evil_fire_green.iff","object/tangible/lair/base/poi_all_lair_bones_large_evil_fire_green.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_green.iff","object/tangible/lair/base/poi_all_lair_rocks_large_evil_fire_green.iff","object/tangible/lair/base/poi_all_lair_bones_large_evil_fire_green.iff"},
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_bones_large_fog_green.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_bones_large_fog_green.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_bones_large_fog_green.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_bones_large_fog_green.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_bones_large_fog_green.iff"},
 }
 
 addLairTemplate("dathomir_rancor_enraged_bull_lair_neutral_large", dathomir_rancor_enraged_bull_lair_neutral_large)

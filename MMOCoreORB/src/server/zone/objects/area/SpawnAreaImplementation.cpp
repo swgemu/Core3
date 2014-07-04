@@ -81,8 +81,6 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 		task->schedule(300000);
 	}
 
-	//info("removing spawned lair from here", true);
-
 	return 1;
 }
 
@@ -205,7 +203,7 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	if (CollisionManager::checkSphereCollision(randomPosition, 64.f + finalSpawn->getSize(), zone))
 		return 7;
 
-	//dont spawn in cities
+	//don't spawn in cities
 	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 	zone->getInRangeActiveAreas(randomPosition.getX(), randomPosition.getY(), &activeAreas, true);
 
@@ -242,11 +240,17 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 			return 10;
 	}
 
+	int maxDiff = finalSpawn->getMaxDifficulty();
+	int minDiff = finalSpawn->getMinDifficulty();
+	int difficultyLevel = System::random(maxDiff - minDiff) + minDiff;
+	int difficulty = (difficultyLevel - minDiff) / ((maxDiff > (minDiff + 5) ? maxDiff - minDiff : 5) / 5);
+
+	if (difficulty == 5)
+		difficulty = 4;
+
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
-	int difficulty = System::random(finalSpawn->getMaxDifficulty() - finalSpawn->getMinDifficulty()) + finalSpawn->getMinDifficulty();
-
-	ManagedReference<SceneObject*> obj = creatureManager->spawn(lairHashCode, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), finalSpawn->getSize());
+	ManagedReference<SceneObject*> obj = creatureManager->spawn(lairHashCode, difficultyLevel, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), finalSpawn->getSize());
 
 	if (obj != NULL) {
 		StringBuffer msg;

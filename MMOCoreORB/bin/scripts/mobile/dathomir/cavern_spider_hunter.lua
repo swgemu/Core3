@@ -27,6 +27,7 @@ cavern_spider_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_hue.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",

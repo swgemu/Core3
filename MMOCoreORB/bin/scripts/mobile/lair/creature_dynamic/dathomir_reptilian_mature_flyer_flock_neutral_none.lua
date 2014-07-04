@@ -1,5 +1,5 @@
 dathomir_reptilian_mature_flyer_flock_neutral_none = Lair:new {
-	mobiles = {{"mature_reptilian_flier", 2},{"reptilian_flier", 1}},
+	mobiles = {{"mature_reptilian_flier",1},{"reptilian_flier",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

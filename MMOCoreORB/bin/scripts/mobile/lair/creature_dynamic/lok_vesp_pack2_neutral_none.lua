@@ -1,5 +1,5 @@
 lok_vesp_pack2_neutral_none = Lair:new {
-	mobiles = {{"deadly_vesp", 1}},
+	mobiles = {{"deadly_vesp",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

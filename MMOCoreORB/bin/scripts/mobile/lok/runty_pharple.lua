@@ -27,6 +27,7 @@ runty_pharple = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/runty_pharple.iff"},
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ kusak_mauler = Creature:new {
 
 	templates = {"object/mobile/kusak_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/kusak_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

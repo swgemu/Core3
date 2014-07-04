@@ -27,6 +27,7 @@ young_malkloc = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/young_malkloc.iff"},
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

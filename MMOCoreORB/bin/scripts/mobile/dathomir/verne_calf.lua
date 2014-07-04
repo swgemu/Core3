@@ -27,6 +27,7 @@ verne_calf = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/verne_calf.iff"},
+	scale = 0.85,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

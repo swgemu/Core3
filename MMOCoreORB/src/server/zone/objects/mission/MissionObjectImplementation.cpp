@@ -115,16 +115,14 @@ void MissionObjectImplementation::setMissionTargetName(const String& target, boo
 	}
 }
 
-void MissionObjectImplementation::setMissionDifficulty(int difficulty, bool notifyClient) {
-	setMissionDifficulty(difficulty, difficulty, notifyClient);
+void MissionObjectImplementation::setMissionDifficulty(int diffLevel, bool notifyClient) {
+	setMissionDifficulty(diffLevel, diffLevel, 2, notifyClient);
 }
 
-void MissionObjectImplementation::setMissionDifficulty(int difficulty, int display, bool notifyClient) {
-	if (difficultyLevel == difficulty)
-		return;
-
-	difficultyLevel = difficulty;
+void MissionObjectImplementation::setMissionDifficulty(int diffLevel, int display, int diff, bool notifyClient) {
+	difficultyLevel = diffLevel;
 	difficultyDisplay = display;
+	difficulty = diff;
 
 	if (!notifyClient)
 		return;

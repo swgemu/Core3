@@ -28,6 +28,7 @@ diseased_vrelt_matriarch = Creature:new {
 
 	templates = {"object/mobile/vrelt.iff"},
 	controlDeviceTemplate = "object/intangible/pet/stintaril_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",

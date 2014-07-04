@@ -28,6 +28,7 @@ canoid_hunter = Creature:new {
 
 	templates = {"object/mobile/canoid.iff"},
 	controlDeviceTemplate = "object/intangible/pet/boar_wolf_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

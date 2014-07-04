@@ -1,5 +1,5 @@
 dathomir_kwi_pack_neutral_none = Lair:new {
-	mobiles = {{"kwi", 2},{"female_kwi",2},{"injured_kwi",1}},
+	mobiles = {{"female_kwi",2},{"injured_kwi",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

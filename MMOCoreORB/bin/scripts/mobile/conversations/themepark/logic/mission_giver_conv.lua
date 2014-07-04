@@ -256,7 +256,10 @@ createMissionGiverConvoTemplate("mourno_draver_mission_giver_convotemplate", "mo
 createMissionGiverConvoTemplate("kathikiis_ruwahurr_mission_giver_convotemplate", "kathikiis_ruwahurr_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("xalox_guul_mission_giver_convotemplate", "xalox_guul_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("haleen_snowline_hagrin_zeed_mission_giver_convotemplate", "haleen_snowline_hagrin_zeed_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("igbi_freemo_mission_giver_convotemplate", "igbi_freemo_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("nurla_slinthiss_mission_giver_convotemplate", "nurla_slinthiss_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("radlee_mathiss_mission_giver_convotemplate", "radlee_mathiss_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("sigrix_slix_mission_giver_convotemplate", "sigrix_slix_mission_giver_conv_handler")
 
 -- Dantooine
 createMissionGiverConvoTemplate("drakka_judarrl_mission_giver_convotemplate", "drakka_judarrl_mission_giver_conv_handler")
@@ -300,4 +303,6 @@ createMissionGiverConvoTemplate("ruwan_tokai_mission_giver_convotemplate","ruwan
 
 --Corellia
 createMissionGiverConvoTemplate("diktatGiverConvo","diktatGiverHandler")
+createMissionGiverConvoTemplate("kirkin_liawoon_mission_giver_convotemplate","kirkin_liawoon_mission_giver_conv_handler")
+
 

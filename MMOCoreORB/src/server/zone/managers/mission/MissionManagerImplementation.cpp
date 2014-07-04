@@ -216,7 +216,8 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 void MissionManagerImplementation::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<DestroyMissionObjective*> objective = new DestroyMissionObjective(mission);
 	objective->setLairTemplateToSpawn(mission->getTargetOptionalTemplate());
-	objective->setDifficulty(mission->getDifficultyLevel());
+	objective->setDifficultyLevel(mission->getDifficultyLevel());
+	objective->setDifficulty(mission->getDifficulty());
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
@@ -557,8 +558,15 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	}
 
 	int playerLevel = server->getPlayerManager()->calculatePlayerLevel(player);
-	int difficulty = System::random(randomLairSpawn->getMaxDifficulty() - randomLairSpawn->getMinDifficulty()) + randomLairSpawn->getMinDifficulty();
-	int diffDisplay = difficulty + playerLevel + 7;
+	int maxDiff = randomLairSpawn->getMaxDifficulty();
+	int minDiff = randomLairSpawn->getMinDifficulty();
+	int difficultyLevel = System::random(maxDiff - minDiff) + minDiff;
+	int difficulty = (difficultyLevel - minDiff) / ((maxDiff > (minDiff + 5) ? maxDiff - minDiff : 5) / 5);
+
+	if (difficulty == 5)
+		difficulty = 4;
+
+	int diffDisplay = difficultyLevel + playerLevel + 7;
 	if (player->isGrouped())
 		diffDisplay += player->getGroup()->getGroupLevel();
 	else
@@ -627,8 +635,8 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setMissionTargetName("@lair_n:" + lairTemplateObject->getName());
 	mission->setTargetTemplate(templateObject);
 	mission->setTargetOptionalTemplate(lairTemplate);
-	mission->setRewardCredits(System::random(difficulty * 100) + (difficulty * (player->isGrouped() ? 275 : 200)));
-	mission->setMissionDifficulty(difficulty, diffDisplay);
+	mission->setRewardCredits(System::random(difficultyLevel * 100) + (difficultyLevel * (player->isGrouped() ? 275 : 200)));
+	mission->setMissionDifficulty(difficultyLevel, diffDisplay, difficulty);
 	mission->setSize(randomLairSpawn->getSize());
 	mission->setFaction(faction);
 
@@ -641,9 +649,9 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	String messageDifficulty;
 	String missionType;
 
-	if (difficulty <= 20)
+	if (difficulty < 2)
 		messageDifficulty = "_easy";
-	else if (difficulty <= 40)
+	else if (difficulty == 2)
 		messageDifficulty = "_medium";
 	else
 		messageDifficulty = "_hard";

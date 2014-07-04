@@ -27,6 +27,7 @@ infant_brackaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/infant_brackaset.iff"},
+	scale = 0.6,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

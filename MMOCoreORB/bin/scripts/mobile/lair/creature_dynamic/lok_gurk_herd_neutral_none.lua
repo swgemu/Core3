@@ -1,5 +1,5 @@
 lok_gurk_herd_neutral_none = Lair:new {
-	mobiles = {{"gurk",1},{"shaggy_gurk_youth",1},{"gurk_whelp",1}},
+	mobiles = {{"crazed_gurk_destroyer",1},{"shaggy_gurk_youth",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

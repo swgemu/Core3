@@ -27,6 +27,7 @@ giant_gaping_spider_recluse = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_recluse.iff"},
+	scale = 1.75,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",

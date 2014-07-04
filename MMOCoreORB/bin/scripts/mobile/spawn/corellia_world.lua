@@ -49,15 +49,6 @@ corellia_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "corellia_scavenger_rat_neutral_small",
-			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 8,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "corellia_dalyrake_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 9,
@@ -119,15 +110,6 @@ corellia_world = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
-		},	
-		{
-			lairTemplateName = "corellia_murra_lair_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 10,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
 		},
 		{
 			lairTemplateName = "corellia_diseased_vrelt_lair_neutral_small_01",
@@ -148,15 +130,6 @@ corellia_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "corellia_gurrcat_hunt_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 12,
-			maxDifficulty = 12,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "corellia_gulginaw_nest_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 13,
@@ -166,21 +139,12 @@ corellia_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "corellia_tabage_lair_neutral_none",
+			lairTemplateName = "corellia_tabage_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 14,
 			maxDifficulty = 14,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "corellia_carrion_spat_flock_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 13,
-			maxDifficulty = 13,
-			numberToSpawn = 0,
-			weighting = 10,
 			size = 25
 		},
 		{
@@ -193,37 +157,10 @@ corellia_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "corellia_canoid_pack_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 18,
-			maxDifficulty = 18,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "corellia_giant_carrion_spat_flock_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 18,
-			maxDifficulty = 18,
-			numberToSpawn = 0,
-			weighting = 8,
-			size = 25
-		},
-		{
 			lairTemplateName = "corellia_gronda_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 19,
 			maxDifficulty = 19,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "corellia_sharnaff_lair_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 31,
-			maxDifficulty = 31,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

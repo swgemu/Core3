@@ -28,6 +28,7 @@ tabage_protector = Creature:new {
 
 	templates = {"object/mobile/tabage.iff"},
 	controlDeviceTemplate = "object/intangible/pet/langlatch_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ corellian_butterfly_warrior = Creature:new {
 
 	templates = {"object/mobile/corellian_butterfly_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/corellian_butterfly_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

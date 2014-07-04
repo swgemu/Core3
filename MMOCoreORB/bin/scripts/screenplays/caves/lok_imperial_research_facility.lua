@@ -13,8 +13,8 @@ end
 
 function LokImpResearchFacilityScreenPlay:spawnMobiles()
 
-	spawnMobile("lok", "mercenary_aggro", 1, 901.484, 13.046, -4204.310, 6.873, 0)
-	spawnMobile("lok", "mercenary_aggro", 1, 892.789, 13.012, -4186.390, 63.481, 0)
+	spawnMobile("lok", "mercenary_aggro", 300, 901.484, 13.046, -4204.310, 6.873, 0)
+	spawnMobile("lok", "mercenary_aggro", 300, 892.789, 13.012, -4186.390, 63.481, 0)
 
 	spawnMobile("lok", "droideka", 300, 0.119, 0.250, 3.433, 3.717, 5126272)
 	spawnMobile("lok", "mercenary_aggro", 300, 3.468, 0.250, -4.477, 47.560, 5126273)

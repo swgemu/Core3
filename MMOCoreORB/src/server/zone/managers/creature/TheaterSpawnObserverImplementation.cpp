@@ -46,7 +46,9 @@ void TheaterSpawnObserverImplementation::spawnInitialMobiles(TangibleObject* the
 	if (theater->getZone() == NULL)
 		return;
 
-	int totalNumberToSpawn = lairTemplate->getSpawnLimit() / 3;
+	int spawnLimitAdjustment = difficulty - 2;
+
+	int totalNumberToSpawn = (lairTemplate->getSpawnLimit() / 3) + spawnLimitAdjustment;
 	VectorMap<String, int> objectsToSpawn; // String mobileTemplate, int number to spawn
 	Vector<String>* mobiles = lairTemplate->getWeightedMobiles();
 

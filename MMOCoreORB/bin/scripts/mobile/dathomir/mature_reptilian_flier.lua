@@ -28,6 +28,7 @@ mature_reptilian_flier = Creature:new {
 
 	templates = {"object/mobile/reptilian_flier_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/pet_control.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

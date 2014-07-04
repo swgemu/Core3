@@ -72,31 +72,13 @@ corellia_destroy_missions = {
 			minDifficulty = 9,
 			maxDifficulty = 12,
 			size = 25,
-		},	
-		{
-			lairTemplateName = "corellia_murra_lair_neutral_none",
-			minDifficulty = 9,
-			maxDifficulty = 12,
-			size = 25,
 		},
 		{
 			lairTemplateName = "corellia_diseased_vrelt_lair_neutral_small_01",
 			minDifficulty = 9,
 			maxDifficulty = 12,
 			size = 25,
-		},
-		{
-			lairTemplateName = "corellia_gurrcat_hunt_neutral_none",
-			minDifficulty = 9,
-			maxDifficulty = 13,
-			size = 25,
-		},
-		{
-			lairTemplateName = "corellia_drall_patriot_camp_neutral_medium_theater",
-			minDifficulty = 10,
-			maxDifficulty = 16,
-			size = 25,
-		},
+		},		
 		{
 			lairTemplateName = "corellia_gulginaw_nest_neutral_medium",
 			minDifficulty = 11,
@@ -104,21 +86,9 @@ corellia_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "corellia_tabage_lair_neutral_none",
+			lairTemplateName = "corellia_tabage_lair_neutral_medium",
 			minDifficulty = 11,
 			maxDifficulty = 15,
-			size = 25,
-		},
-		{
-			lairTemplateName = "corellia_dire_cat_pack_neutral_none",
-			minDifficulty = 12,
-			maxDifficulty = 16,
-			size = 25,
-		},
-		{
-			lairTemplateName = "corellia_giant_carrion_spat_flock_neutral_none",
-			minDifficulty = 15,
-			maxDifficulty = 21,
 			size = 25,
 		},
 		{
@@ -127,24 +97,6 @@ corellia_destroy_missions = {
 			maxDifficulty = 21,
 			size = 25,
 		},
-		{
-			lairTemplateName = "corellia_sharnaff_lair_neutral_none",
-			minDifficulty = 28,
-			maxDifficulty = 34,
-			size = 25,
-		},
-		{
-			lairTemplateName = "corellia_hidden_daggers_camp_neutral_medium_theater",
-			minDifficulty = 9,
-			maxDifficulty = 15,
-			size = 25,
-		},
-		{
-			lairTemplateName = "corellia_meatlump_camp_neutral_medium_theater",
-			minDifficulty = 8,
-			maxDifficulty = 11,
-			size = 25,
-		}
 	}
 }
 

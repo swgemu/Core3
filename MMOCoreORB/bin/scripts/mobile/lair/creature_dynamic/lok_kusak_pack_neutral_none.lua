@@ -1,5 +1,5 @@
 lok_kusak_pack_neutral_none = Lair:new {
-	mobiles = {{"kusak", 1},{"kusak_pup", 1},{"kusak_hunter", 1},{"kusak_stalker", 1}},
+	mobiles = {{"kusak",1},{"kusak_pup",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

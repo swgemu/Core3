@@ -27,6 +27,7 @@ giant_spined_snake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_spined_snake.iff"},
+	scale = 1.5,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -1,11 +1,12 @@
 corellia_canoid_pack_neutral_none = Lair:new {
-	mobiles = {{"canoid_pack_leader", 1},{"canoid_hunter", 1}},
+	mobiles = {{"canoid_pack_leader",1},{"canoid_hunter",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rocks_small.iff"},
-	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rocks_small.iff"},
-	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_rocks_small.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_rocks_small.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_rocks_small.iff"},
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	buildingType = "none",
 }
 
 addLairTemplate("corellia_canoid_pack_neutral_none", corellia_canoid_pack_neutral_none)

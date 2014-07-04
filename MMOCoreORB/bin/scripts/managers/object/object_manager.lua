@@ -58,6 +58,18 @@ function ObjectManager.withPlayerObject(pPlayerObject, performThisFunction)
 	return performThisFunction(playerObject)
 end
 
+-- Perform the supplied function with a building object created from the pointer.
+-- @param pBuildingObject a pointer to a building object.
+-- @param performThisFunction a function that takes a building object as its argument.
+-- @return whatever performThisFunction returns or nil if the pBuildingObject pointer is nil.
+function ObjectManager.withBuildingObject(pBuildingObject, performThisFunction)
+	if pBuildingObject == nil then
+		return nil
+	end
+	local buildingObject = LuaBuildingObject(pBuildingObject)
+	return performThisFunction(buildingObject)
+end
+
 -- Perform the supplied function with a city region created from the pointer.
 -- @param pCityRegion a pointer to a city region.
 -- @param performThisFunction a function that takes a city region as its argument.

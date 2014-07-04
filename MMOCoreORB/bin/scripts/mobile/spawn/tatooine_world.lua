@@ -219,15 +219,6 @@ tatooine_world = {
 			weighting = 15,
 			size = 25
 		},
-		{
-			lairTemplateName = "lair_insecthill",
-			spawnLimit = -1,
-			minDifficulty = 29,
-			maxDifficulty = 29,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		}
 	}
 }
 

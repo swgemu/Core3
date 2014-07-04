@@ -29,6 +29,7 @@ piket_plains_walker = Creature:new {
 
 	templates = {"object/mobile/piket_plains_walker.iff"},
 	controlDeviceTemplate = "object/intangible/pet/piket_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

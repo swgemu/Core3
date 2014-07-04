@@ -28,7 +28,14 @@ voritor_lizard = Creature:new {
 
 	templates = {"object/mobile/voritor_lizard.iff"},
 	controlDeviceTemplate = "object/intangible/pet/voritor_lizard_hue.iff",
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "voritor_lizard_common", chance = 10000000}
+			},
+			lootChance = 1900000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

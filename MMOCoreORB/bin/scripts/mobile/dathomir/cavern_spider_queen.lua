@@ -27,6 +27,7 @@ cavern_spider_queen = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider_queen.iff"},
+	scale = 1.3,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

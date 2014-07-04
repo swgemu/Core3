@@ -28,6 +28,7 @@ relentless_purbole = Creature:new {
 
 	templates = {"object/mobile/purbole_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/purbole_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

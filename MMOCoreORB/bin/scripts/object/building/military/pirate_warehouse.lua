@@ -43,7 +43,7 @@
 
 object_building_military_pirate_warehouse = object_building_military_shared_pirate_warehouse:new {
 
-
+structureFootprintFileName = "footprint/battlefield/shared_destructible_base.sfp",
 
 
 

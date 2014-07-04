@@ -27,6 +27,7 @@ monstrous_brute = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rancor_hue.iff"},
+	scale = 1.35,
 	lootGroups = {
 		{
 			groups = {

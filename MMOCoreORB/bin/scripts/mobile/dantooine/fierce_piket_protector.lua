@@ -27,6 +27,7 @@ fierce_piket_protector = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/piket_hue.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

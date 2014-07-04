@@ -28,6 +28,7 @@ enraged_tabage_mother = Creature:new {
 
 	templates = {"object/mobile/tabage.iff"},
 	controlDeviceTemplate = "object/intangible/pet/langlatch_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

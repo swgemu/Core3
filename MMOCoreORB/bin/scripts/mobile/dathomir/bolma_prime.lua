@@ -28,6 +28,7 @@ bolma_prime = Creature:new {
 
 	templates = {"object/mobile/alpha_bolma.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bolma_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

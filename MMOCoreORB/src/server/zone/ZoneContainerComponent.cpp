@@ -168,6 +168,8 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 					build->onExit(creature, parentID);
 			}
 		}
+	} else {
+		object->setParent(NULL);
 	}
 
 	object->setZone(newZone);

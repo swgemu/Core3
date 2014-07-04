@@ -95,7 +95,7 @@ class VehicleObject extends CreatureObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);	
+	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);	
 	
 	public native boolean checkInRangeGarage();
 	
@@ -232,5 +232,45 @@ class VehicleObject extends CreatureObject {
 
 	public boolean isVehicleObject() {
 		return true;
+	}
+
+	public unsigned int getArmor() {
+		return 0;
+	}
+
+	public float getKinetic() {
+		return 30 - getConditionReduction(30);
+	}
+	
+	public float getEnergy() {
+		return 25 - getConditionReduction(25);
+	}
+	
+	public float getElectricity() {
+		return 25 - getConditionReduction(25);
+	}
+	
+	public float getStun() {
+		return 25 - getConditionReduction(25);
+	}
+	
+	public float getBlast() {
+		return 25 - getConditionReduction(25);
+	}
+	
+	public float getHeat() {
+		return 25 - getConditionReduction(25);
+	}
+	
+	public float getCold() {
+		return 25 - getConditionReduction(25);
+	}
+	
+	public float getAcid() {
+		return 25 - getConditionReduction(25);
+	}
+	
+	public float getLightSaber() {
+		return 25 - getConditionReduction(25);
 	}
 }

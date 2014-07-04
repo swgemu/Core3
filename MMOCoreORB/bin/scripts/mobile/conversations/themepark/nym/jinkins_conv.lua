@@ -140,7 +140,6 @@ quest_info = ConvoScreen:new {
 	leftDialog = "@celebrity/jinkins:quest_info", -- Actually, there is something I'd like you to look into, if you can.  I recently intercepted a distress call from a starship that crashed-landed on Lok. Ships nose-dive into the planet all the time, but this one took off from an Imperial mining installation on Lok and never made it into the atmosphere. I think it slammed down near the hideout of the Sulfur Lake Pirates. I'm very interested in this vessel...
 	stopConversation = "false",
 	options = {
-		{"@celebrity/jinkins:sulfur_lake_pirates", "pirate_info"}, -- Who are the Sulfur Lake Pirates?
 		{"@celebrity/jinkins:distress_call", "crashed_ship"}, -- You intercepted a distress call?
 	}
 }
@@ -171,7 +170,7 @@ heres_droid_memory = ConvoScreen:new {
 	leftDialog = "@celebrity/jinkins:heres_droid_memory", -- Excellent.  I'll provide you with a waypoint to the Sulfur Lake.  Our scouts learned that the Sulfur Lake Pirates have already taken the cargo - including the droid - from the crashed starship, so don't waste your time looking through the wreckage. Just head to the pirates' lair, locate the droid, and grab the memory module. Oh, and watch out for the pirates' "bridge troll." I'm not sure what that is, but it sounds dangerous...
 	stopConversation = "true",
 	options = {
-		{"@celebrity/jinkins:anything_else", "you_know_all"}, -- Is there anything else you can tell me?
+		{"@celebrity/jinkins:sulfur_lake_pirates", "pirate_info"}, -- Who are the Sulfur Lake Pirates?
 	}
 }
 jinkinsConvoTemplate:addScreen(heres_droid_memory);

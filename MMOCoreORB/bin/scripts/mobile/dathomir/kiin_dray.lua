@@ -25,9 +25,9 @@ kiin_dray = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
-    scale = 4.0,
 
 	templates = {"object/mobile/gaping_spider_recluse_giant_kiin_dray.iff"},
+	scale = 4.0,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",

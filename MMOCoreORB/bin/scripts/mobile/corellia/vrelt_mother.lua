@@ -28,6 +28,7 @@ vrelt_mother = Creature:new {
 
 	templates = {"object/mobile/startled_vrelt_mother.iff"},
 	controlDeviceTemplate = "object/intangible/pet/stintaril_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

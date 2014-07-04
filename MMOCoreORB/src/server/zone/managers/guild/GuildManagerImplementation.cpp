@@ -1103,7 +1103,7 @@ void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObje
 
 	uint64 targetID = target->getObjectID();
 
-	if(guild->getGuildLeaderID() == player->getObjectID()) {
+	if(guild->getGuildLeaderID() == targetID) {
 		player->sendSystemMessage("Guild leader cannot be kicked from the guild");
 		return;
 	}

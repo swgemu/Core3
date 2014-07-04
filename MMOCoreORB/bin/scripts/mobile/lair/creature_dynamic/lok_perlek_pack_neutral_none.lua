@@ -1,5 +1,5 @@
 lok_perlek_pack_neutral_none = Lair:new {
-	mobiles = {{"perlek",1},{"perlek_ravager", 1}},
+	mobiles = {{"perlek",1},{"perlek_scavenger",2},{"perlek_ravager",2}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

@@ -28,6 +28,7 @@ swamp_gurrcat = Creature:new {
 
 	templates = {"object/mobile/gurrcat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/tusk_cat_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

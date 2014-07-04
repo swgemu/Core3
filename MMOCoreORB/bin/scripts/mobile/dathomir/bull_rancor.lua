@@ -28,6 +28,7 @@ bull_rancor = Creature:new {
 
 	templates = {"object/mobile/bull_rancor.iff"},
 	controlDeviceTemplate = "object/intangible/pet/rancor_hue.iff",
+	scale = 1.1,
 	lootGroups = {
 		{
 			groups = {

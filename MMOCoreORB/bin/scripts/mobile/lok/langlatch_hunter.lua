@@ -28,6 +28,7 @@ langlatch_hunter = Creature:new {
 
 	templates = {"object/mobile/langlatch_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/langlatch_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

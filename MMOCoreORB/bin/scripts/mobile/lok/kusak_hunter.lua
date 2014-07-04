@@ -27,6 +27,7 @@ kusak_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kusak_hue.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

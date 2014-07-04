@@ -27,6 +27,7 @@ giant_pharple = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_pharple.iff"},
+	scale = 1.5,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

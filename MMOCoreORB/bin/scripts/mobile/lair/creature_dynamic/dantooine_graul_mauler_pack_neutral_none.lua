@@ -1,5 +1,5 @@
 dantooine_graul_mauler_pack_neutral_none = Lair:new {
-	mobiles = {{"graul", 1},{"graul_mauler", 2}},
+	mobiles = {{"graul",1},{"graul_mauler",2}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

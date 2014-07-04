@@ -1,6 +1,6 @@
 lok_kimogilla_pack2_neutral_none = Lair:new {
-	mobiles = {{"kimogila", 1},{"enraged_kimogila", 1}},
-	spawnLimit = 7,
+	mobiles = {{"kimogila",1},{"enraged_kimogila",1}},
+	spawnLimit = 6,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},
