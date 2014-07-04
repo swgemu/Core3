@@ -27,7 +27,7 @@ warehouse_thug_coa3 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_tatooine_jabba_thug.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

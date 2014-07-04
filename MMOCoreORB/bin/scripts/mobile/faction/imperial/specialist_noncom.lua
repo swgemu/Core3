@@ -25,7 +25,7 @@ specialist_noncom = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

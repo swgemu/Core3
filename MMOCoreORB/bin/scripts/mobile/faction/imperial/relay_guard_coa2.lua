@@ -27,7 +27,7 @@ relay_guard_coa2 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",

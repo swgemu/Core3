@@ -27,7 +27,7 @@ rebel_research_attacker_2_coa3 = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_stormtrooper_commando_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
