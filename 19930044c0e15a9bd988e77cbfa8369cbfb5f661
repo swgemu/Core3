@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_18bbf173",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/fs_experience_converter3test2.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "Fix indentation in this file.",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_f8affd29",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/paemos.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "Give it a better name. No need for test and the numbers.",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_d8ac3938",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "Indentation",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_b8a98526",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "Remove trailing white spaces.",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_98a6c152",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "use the foreach function from utils instead.",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_78630d1b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "use better names for variables.",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_586849f5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "Can\u0027t you just check if the player has the skill box or not? Isn\u0027t that better since you could surrender the skills boxes? How will the surrender skill action modify the screen play states used here?",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_386d9505",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "foreach instead.",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_1872d1e5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "Remove white spaces.",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_d87319e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "Can\u0027t you move all this logic to the player object instead? It has no need to be on the creature object.",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_b880658c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2901,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "This will not work. If you start with 4 elements int the vector, you remove element 0, 3 elements remains, you remove element 1, 2 elements remains you remove element 2 which does not exist...",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_f876ddd7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2908,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-04T11:04:47Z",
+      "side": 1,
+      "message": "indentaion + use curley brackets",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
