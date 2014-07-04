@@ -16,6 +16,7 @@
 #include "server/zone/managers/city/CityDecorationTask.h"
 
 void CityDecorationMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
 	ManagedReference<CityRegion*> city = player->getCityRegion();
 
@@ -41,14 +42,16 @@ int CityDecorationMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 		Reference<CityDecorationTask*> task = new CityDecorationTask(player, sceneObject, CityDecorationTask::PLACE);
 		task->execute();
+		return 0;
 
 	} else if (selectedID == 234) {
 
 		Reference<CityDecorationTask*> task = new CityDecorationTask(player, sceneObject, CityDecorationTask::REMOVE);
 		task->execute();
+		return 0;
 	}
 
-	return 0;
+	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }
 
 bool CityDecorationMenuComponent::isInInventory(SceneObject* sceneObject, CreatureObject* player){
