@@ -26,7 +26,7 @@ acicular_defender = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/paralope_hue.iff"},
+	templates = {"object/mobile/paralope.iff"},
 	controlDeviceTemplate = "object/intangible/pet/swirl_prong_hue.iff",
 	scale = 1.2,
 	lootGroups = {},

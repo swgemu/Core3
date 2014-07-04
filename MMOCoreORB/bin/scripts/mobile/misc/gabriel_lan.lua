@@ -27,7 +27,7 @@ gabriel_lan = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

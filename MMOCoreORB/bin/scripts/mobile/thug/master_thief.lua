@@ -25,7 +25,14 @@ master_thief = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_kobola_thief_rodian_male_01.iff",
+		"object/mobile/dressed_kobola_thief_rodian_female_01.iff",
+		"object/mobile/dressed_binayre_thief_twk_male_01.iff",
+		"object/mobile/dressed_binayre_thief_twk_female_01.iff",
+		"object/mobile/dressed_plasma_thief_leader.iff",
+		"object/mobile/dressed_plasma_thief.iff"
+	},
 	lootGroups = {
       	{
 			groups = {

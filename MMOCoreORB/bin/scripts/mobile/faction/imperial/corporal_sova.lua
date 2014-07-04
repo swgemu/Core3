@@ -26,7 +26,7 @@ corporal_sova = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_imperial_major_m.iff"},
 	lootGroups = {
 		{
 			groups = {

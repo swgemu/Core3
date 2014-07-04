@@ -25,7 +25,7 @@ hand_of_solitude = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	attacks = merge(brawlernovice,marksmannovice)

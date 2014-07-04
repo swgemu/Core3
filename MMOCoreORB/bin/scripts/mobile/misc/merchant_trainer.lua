@@ -26,7 +26,9 @@ merchant_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_merchant_trainer_01.iff",
+	    	     "object/mobile/dressed_merchant_trainer_02.iff",
+	    	     "object/mobile/dressed_merchant_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

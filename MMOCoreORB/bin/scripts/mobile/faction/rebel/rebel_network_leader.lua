@@ -26,7 +26,14 @@ rebel_network_leader = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/selonian_female.iff",
+		"object/mobile/selonian_male.iff",
+		"object/mobile/bothan_female.iff",
+		"object/mobile/bothan_male.iff",
+		"object/mobile/aqualish_female.iff",
+		"object/mobile/aqualish_male.iff"
+	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
