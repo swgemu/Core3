@@ -169,6 +169,7 @@ includeFile("groups/task_loot/task_loot_womp_rat_hide.lua")
 includeFile("groups/task_loot/task_loot_xalox_guul_datadisc.lua")
 
 -- task_reward sub-folder
+includeFile("groups/task_reward/task_reward_blerx_tango.lua")
 includeFile("groups/task_reward/task_reward_drakka_judarrl.lua")
 includeFile("groups/task_reward/task_reward_hedon_istee.lua")
 includeFile("groups/task_reward/task_reward_jatrian_lytus.lua")

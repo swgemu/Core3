@@ -512,6 +512,7 @@ includeFile("items/task_loot/womp_rat_hide.lua")
 includeFile("items/task_loot/xalox_guul_datadisc.lua")
 
 --task_reward sub-folder
+includeFile("items/task_reward/blerx_tango_nalargon.lua")
 includeFile("items/task_reward/hedon_istee_treasure_map.lua")
 includeFile("items/task_reward/kitster_banai_anakin_droid_brain.lua")
 includeFile("items/task_reward/kitster_banai_anakin_podrace_helmet.lua")

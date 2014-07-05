@@ -235,6 +235,7 @@ createMissionGiverConvoTemplate("tekil_barje_mission_giver_convotemplate", "teki
 createMissionGiverConvoTemplate("vardias_tyne_mission_giver_convotemplate", "vardias_tyne_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("nitra_vendallan_mission_giver_convotemplate", "nitra_vendallan_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("aaph_koden_mission_giver_convotemplate", "aaph_koden_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("blerx_tango_mission_giver_convotemplate", "blerx_tango_mission_giver_conv_handler")
 
 
 -- Naboo
