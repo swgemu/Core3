@@ -616,8 +616,7 @@ function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
 
 			if pItem ~= nil then
 				local item = LuaSceneObject(pItem)
-
-				if requiredItems[j].itemTemplate == item:getTemplateObjectPath() and requiredItems[j].itemName == item:getCustomObjectName() then
+				if requiredItems[j].itemTemplate == item:getTemplateObjectPath() and (requiredItems[j].itemName == item:getCustomObjectName() or requiredItems[j].itemName == item:getDisplayedName()) then
 					createObserver(ITEMLOOTED, self.className, "notifyItemLooted", pItem)
 					writeData(item:getObjectID() .. ":missionOwnerID", attacker:getObjectID())
 					break
@@ -1050,7 +1049,7 @@ function ThemeParkLogic:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer
 
 			if pItem ~= nil then
 				local item = LuaSceneObject(pItem)
-				if requiredItems[j].itemTemplate == item:getTemplateObjectPath() and requiredItems[j].itemName == item:getCustomObjectName() then
+				if requiredItems[j].itemTemplate == item:getTemplateObjectPath() and (requiredItems[j].itemName == item:getCustomObjectName() or requiredItems[j].itemName == item:getDisplayedName()) then
 					table.insert(itemsToDestroy, item)
 					unmatchedItems = unmatchedItems - 1
 					break
