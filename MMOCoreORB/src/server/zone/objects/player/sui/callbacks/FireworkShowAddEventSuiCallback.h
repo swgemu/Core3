@@ -66,6 +66,11 @@ public:
 			firework->destroyObjectFromWorld(true);
 		}
 
+		ManagedReference<TangibleObject*> fireworkShowObject = fireworkShow.castTo<TangibleObject*>();
+
+		if (fireworkShowObject != NULL )
+			fireworkShowObject->setUseCount(fireworkShowObject->getUseCount() + 1, true);
+
 		FireworkShowMenuComponent* showMenu = cast<FireworkShowMenuComponent*>(fireworkShow->getObjectMenuComponent());
 		showMenu->addEvent(player, fireworkShow.castTo<FireworkObject*>());
 	}
