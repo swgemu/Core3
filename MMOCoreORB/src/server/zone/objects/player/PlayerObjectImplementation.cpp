@@ -1041,16 +1041,14 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 			(cast<CreatureObject*>(parent.get().get()))->sendSystemMessage(param);
 		}
 
-		return;
+	} else {
+		PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
+
+		if (playerToRemoveGhost != NULL) {
+			playerToRemoveGhost->removeReverseFriend((cast<CreatureObject*>(parent.get().get()))->getFirstName());
+			playerToRemoveGhost->updateToDatabase();
+		}
 	}
-
-	PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
-
-	if (playerToRemoveGhost == NULL)
-		return;
-
-	playerToRemoveGhost->removeReverseFriend((cast<CreatureObject*>(parent.get().get()))->getFirstName());
-	playerToRemoveGhost->updateToDatabase();
 
 	ManagedReference<SceneObject*> parent = getParent();
 
