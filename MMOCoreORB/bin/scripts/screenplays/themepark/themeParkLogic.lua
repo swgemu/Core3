@@ -508,21 +508,30 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 			end
 			if mission.missionType == "assassinate" then
 				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTarget", pNpc)
-				local npc = LuaCreatureObject(pNpc)
-				local creature = LuaCreatureObject(pConversingPlayer)
-				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+				ObjectManager.withCreatureObject(pNpc, function(npc)
+					ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+						npc:setPvpStatusBitmask(35) -- AGGRESSIVE + ATTACKABLE + ENEMY
+						writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+					end)
+				end)
 			elseif mission.missionType == "confiscate" then
 				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTargetWithLoot", pNpc)
-				local npc = LuaCreatureObject(pNpc)
-				local creature = LuaCreatureObject(pConversingPlayer)
-				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+				ObjectManager.withCreatureObject(pNpc, function(npc)
+					ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+						npc:setPvpStatusBitmask(35) -- AGGRESSIVE + ATTACKABLE + ENEMY
+						writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+					end)
+				end)
 			end
 		end
 	end
 
 	local secondaryNpcs = mission.secondarySpawns
 	for i = 1 + table.getn(mission.primarySpawns), numberOfSpawns, 1 do
-		self:spawnNpc(secondaryNpcs[i - table.getn(mission.primarySpawns)], spawnPoints[i], pConversingPlayer, i)
+		local pNpc = self:spawnNpc(secondaryNpcs[i - table.getn(mission.primarySpawns)], spawnPoints[i], pConversingPlayer, i)
+		ObjectManager.withCreatureObject(pNpc, function(npc)
+			npc:setPvpStatusBitmask(35) -- AGGRESSIVE + ATTACKABLE + ENEMY
+		end)
 	end
 
 	return true

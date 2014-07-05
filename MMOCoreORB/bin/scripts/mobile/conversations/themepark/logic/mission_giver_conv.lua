@@ -260,6 +260,7 @@ createMissionGiverConvoTemplate("igbi_freemo_mission_giver_convotemplate", "igbi
 createMissionGiverConvoTemplate("nurla_slinthiss_mission_giver_convotemplate", "nurla_slinthiss_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("radlee_mathiss_mission_giver_convotemplate", "radlee_mathiss_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("sigrix_slix_mission_giver_convotemplate", "sigrix_slix_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("slooni_jong_mission_giver_convotemplate", "slooni_jong_mission_giver_conv_handler")
 
 -- Dantooine
 createMissionGiverConvoTemplate("drakka_judarrl_mission_giver_convotemplate", "drakka_judarrl_mission_giver_conv_handler")
