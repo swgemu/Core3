@@ -27,7 +27,7 @@ public:
 	 * Loads faction ranks from datatable
 	 * Sets up faction relationships
 	 */
-	void loadData();
+	bool loadData();
 
 	/**
 	 * Lua Interface function that adds a faction relationship to the FactionMap.
@@ -75,8 +75,8 @@ public:
 	bool isAlly(const String& faction1, const String& faction2);
 
 protected:
-	void loadFactionRanks();
-	void loadLuaConfig();
+	bool loadFactionRanks();
+	bool loadLuaConfig();
 };
 
 #endif /* FACTIONMANAGER_H_ */

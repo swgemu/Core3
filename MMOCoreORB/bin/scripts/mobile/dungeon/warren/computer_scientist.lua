@@ -1,6 +1,6 @@
 computer_scientist = Creature:new {
 	objectName = "@mob/creature_names:warren_insane_comp_sci",
-	socialGroup = "warren",
+	socialGroup = "warren_scientist",
 	pvpFaction = "",
 	faction = "",
 	level = 33,

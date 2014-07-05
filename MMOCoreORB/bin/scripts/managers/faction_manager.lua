@@ -53,7 +53,7 @@ addFaction("naboo_security_force","borvo,naboo_pirate,plasma_thief,swamp_rat,tra
 addFaction("narmle","kobola,spice_collective","restuss")
 addFaction("nightsister","mtn_clan","")
 addFaction("nym","bloodrazor,canyon_corsair","")
-addFaction("olag_grek","beldonnas_league,corsec","")
+addFaction("olag_greck","beldonnas_league,corsec","")
 addFaction("panshee_tribe","donkuwah_tribe,korga_tribe,pubam,endor_marauder","gondula_tribe")
 addFaction("pirate","","")
 addFaction("plasma_thief","gungan","")
