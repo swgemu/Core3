@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da6255ed_034b822c",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3950,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T07:37:13Z",
+      "side": 1,
+      "message": "Whoops.",
+      "parentUuid": "da6255ed_c3e68a44",
+      "revId": "b3dc054751443cca89ba11f4b557bb15395fbbb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6255ed_83d09254",
         "filename": "MMOCoreORB/src/server/zone/managers/player/creation/PlayerCreationManager.cpp",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "da6255ed_23468624",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/creation/PlayerCreationManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T07:37:13Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "da6255ed_83d09254",
+      "revId": "b3dc054751443cca89ba11f4b557bb15395fbbb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6255ed_a3e39632",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ClearVeteranRewardCommand.h",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-07-05T06:30:19Z",
       "side": 1,
       "message": "Do you really want to send a system message for each character?",
+      "revId": "b3dc054751443cca89ba11f4b557bb15395fbbb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_43417a0a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ClearVeteranRewardCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T07:37:13Z",
+      "side": 1,
+      "message": "I forgot about the one in PlayerManager, but since this is an admin command it seems okay",
+      "parentUuid": "da6255ed_a3e39632",
       "revId": "b3dc054751443cca89ba11f4b557bb15395fbbb0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
