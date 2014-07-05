@@ -248,7 +248,7 @@ void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cre
 }
 
 bool ArmorObjectImplementation::isVulnerable(int type) {
-	return (!isSpecial(type) && (vulnerabilites & type));
+	return isBroken() || (!isSpecial(type) && (vulnerabilites & type));
 }
 
 float ArmorObjectImplementation::getTypeValue(int type, float value) {
