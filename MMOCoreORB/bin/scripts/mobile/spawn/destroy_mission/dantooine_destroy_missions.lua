@@ -61,18 +61,6 @@ dantooine_destroy_missions = {
 			maxDifficulty = 50,
 			size = 25,
 		},
-		{
-			lairTemplateName = "dantooine_mokk_scout_neutral_none",
-			minDifficulty = 35,
-			maxDifficulty = 55,
-			size = 25,
-		},
-		{
-			lairTemplateName = "dantooine_kunga_scout_neutral_none",
-			minDifficulty = 35,
-			maxDifficulty = 55,
-			size = 25,
-		},
 	}
 }
 
