@@ -117,6 +117,16 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			EXPECT_TRUE( FactionManager::instance()->isFaction(pvpFaction) ) << "PvpFaction, " << pvpFaction.toCharArray() << ", from mobile template " << templateName << " does not exist.";
 		}
 
+		// Verify damage
+		int minDamage = creature->getDamageMin();
+		int maxDamage = creature->getDamageMax();
+		EXPECT_TRUE( maxDamage >= minDamage ) << "Max damage is lower than min damage on mobile " << templateName;
+
+		// Verify HAM
+		int minHam = creature->getBaseHAM();
+		int maxHam = creature->getBaseHAMmax();
+		EXPECT_TRUE( maxHam >= minHam ) << "Base ham max is lower than base ham on mobile " << templateName;
+
 		// Verify creature resources
 		String meat = creature->getMeatType();
 		float meatMax = creature->getMeatMax();
