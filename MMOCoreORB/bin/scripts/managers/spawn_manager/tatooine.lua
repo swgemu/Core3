@@ -359,7 +359,6 @@ tatooine_static_spawns = {
 	{"brawler",60,17.0318,2.12878,75.3601,0,1105853, "conversation", ""},
 	{"brawler",60,3.25667,2.12878,71.8841,360.011,1153603, "conversation", ""},
 	{"brawler",60,-2918.94,5,2169.6,0,0, "conversation", ""},
-	{"bren_kingal",60,3770.8,8.3,2346.7,20,0, "calm", "Bren Kingal"},
 	{"bronell",60,-6.70663,5.8,97.8841,180.641,1177469, "calm", "Bronell"},
 	{"bruce_mcbrain",60,7.71724,0.2,130.294,292.061,1177466, "calm", "Bruce McBrain"},
 	{"businessman",60,-143.907,65,-5335.05,0,0, "conversation", ""},

@@ -46,6 +46,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isPlayerCreature", &LuaSceneObject::isPlayerCreature },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
+		{ "getDisplayedName", &LuaSceneObject::getDisplayedName },
 		{ "getObjectName", &LuaSceneObject::getObjectName },
 		{ "getContainerObjectById", &LuaSceneObject::getContainerObjectById },
 		{ "setDirectionalHeading", &LuaSceneObject::setDirectionalHeading },
@@ -452,6 +453,14 @@ int LuaSceneObject::sendTo(lua_State* L) {
 
 int LuaSceneObject::getCustomObjectName(lua_State* L) {
 	String objname = realObject->getCustomObjectName().toString();
+
+	lua_pushstring(L, objname.toCharArray());
+
+	return 1;
+}
+
+int LuaSceneObject::getDisplayedName(lua_State* L) {
+	String objname = realObject->getDisplayedName();
 
 	lua_pushstring(L, objname.toCharArray());
 

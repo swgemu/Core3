@@ -99,6 +99,7 @@ createMissionTargetConvoTemplate("vardias_tyne_mission_target_convotemplate","va
 createMissionTargetConvoTemplate("nitra_vendallan_mission_target_convotemplate","nitra_vendallan_mission_target_conv_handler")
 createMissionTargetConvoTemplate("aaph_koden_mission_target_convotemplate","aaph_koden_mission_target_conv_handler")
 createMissionTargetConvoTemplate("blerx_tango_mission_target_convotemplate","blerx_tango_mission_target_conv_handler")
+createMissionTargetConvoTemplate("bren_kingal_mission_target_convotemplate","bren_kingal_mission_target_conv_handler")
 
 
 -- Naboo

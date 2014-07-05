@@ -61,6 +61,7 @@ namespace scene {
 		int sendTo(lua_State* L);
 		int getCustomObjectName(lua_State* L);
 		int setCustomObjectName(lua_State* L);
+		int getDisplayedName(lua_State* L);
 		int getObjectName(lua_State* L);
 		int getContainerObjectById(lua_State* L);
 		int hasFullContainerObjects(lua_State* L);
