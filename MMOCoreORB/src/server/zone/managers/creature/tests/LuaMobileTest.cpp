@@ -76,7 +76,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	ASSERT_EQ(lootGroupMap->initialize(), 0);
 
 	// Verify factions load
-	ASSERT_EQ(FactionManager::instance()->loadData(), true);
+	FactionManager::instance()->loadData();
+	ASSERT_FALSE(FactionManager::instance()->getFactionMap()->isEmpty());
 
 	// Load Templates
 	ASSERT_TRUE( TemplateManager::instance() != NULL );
