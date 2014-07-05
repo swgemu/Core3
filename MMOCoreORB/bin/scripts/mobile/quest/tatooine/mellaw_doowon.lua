@@ -1,6 +1,6 @@
-blerx_tango = Creature:new {
-	objectName = "@npc_name:bith_base_male",
-	customName = "Blerx Tango",
+mellaw_doowon = Creature:new {
+	objectName = "",
+	customName = "Mellaw Doowon",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -24,15 +24,14 @@ blerx_tango = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_blerx_tango.iff"},
+	templates = {"object/mobile/ithorian_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "blerx_tango_mission_target_convotemplate",
 	attacks = {
 	}
 }
-
-CreatureTemplates:addCreatureTemplate(blerx_tango, "blerx_tango")
+CreatureTemplates:addCreatureTemplate(mellaw_doowon, "mellaw_doowon")

@@ -344,7 +344,6 @@ tatooine_static_spawns = {
 	{"awwaschlu_witubrarq",60,-29.0928,1.63942,51.3406,0,1261660, "conversation", "Awwaschlu Witubrarq"},
 	{"bartender",60,-11.5,-0.9,2,230,1082877, "conversation", ""},
 	{"beissa",60,8.11982,2,34.2394,295.264,1177487, "neutral", ""},
-	{"blerx_tango",60,-19.161,7.01,-8.09835,111.274,1153497, "", "Blerx Tango"},
 	{"boba_fett",60,-1,3,31,322.95,1177487, "neutral", ""},
 	{"bodyguard",300,12.087,0.01,3.33598,180.011,1076961, "conversation", ""},
 	{"bodyguard",300,17.1949,7.01,1.93821,135.005,1153501, "conversation", ""},
