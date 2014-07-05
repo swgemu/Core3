@@ -14,6 +14,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "_setObject", &LuaAiAgent::_setObject },
 		{ "_getObject", &LuaAiAgent::_getObject },
 		{ "setFollowObject", &LuaAiAgent::setFollowObject },
+		{ "setDefender", &LuaAiAgent::setDefender },
 		{ 0, 0 }
 };
 
@@ -38,10 +39,18 @@ int LuaAiAgent::_getObject(lua_State* L) {
 }
 
 int LuaAiAgent::setFollowObject(lua_State* L) {
-	//setFollowObject(SceneObject obj)
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
 
 	realObject->setFollowObject(obj);
+
+	return 0;
+}
+
+int LuaAiAgent::setDefender(lua_State* L) {
+	//setFollowObject(SceneObject obj)
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+
+	realObject->setDefender(obj);
 
 	return 0;
 }

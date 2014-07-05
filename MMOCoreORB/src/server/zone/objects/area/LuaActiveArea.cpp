@@ -17,6 +17,7 @@ Luna<LuaActiveArea>::RegType LuaActiveArea::Register[] = {
 		{ "getRadius", &LuaActiveArea::getRadius },
 		{ "setNoBuildArea", &LuaActiveArea::setNoBuildArea },
 		{ "isNoBuildArea", &LuaActiveArea::isNoBuildArea },
+		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "setCellObjectID", &LuaActiveArea::setCellObjectID },
 		{ "getCellObjectID", &LuaActiveArea::getCellObjectID },
 		{ 0, 0 }
