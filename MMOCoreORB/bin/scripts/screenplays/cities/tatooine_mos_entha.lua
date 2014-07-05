@@ -67,7 +67,6 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 
 	--Fallen Star Cantina
 	--{"artisan",60,-3.4032,7.01,5.99576,180,1153497, "conversation", ""},
-	--{"blerx_tango",60,-19.161,7.01,-8.09835,111.274,1153497, "", "Blerx Tango"},
 	--{"smuggler",300,-3.4032,7.01,4.89576,360.011,1153497, "conversation", ""},
 	spawnMobile("tatooine", "businessman",60,-25.2156,9.01,-0.754679,77.0153,1153499)
 	--{"commoner_tatooine",60,-24.5917,9.01,2.41044,135.004,1153499, "conversation", ""},
