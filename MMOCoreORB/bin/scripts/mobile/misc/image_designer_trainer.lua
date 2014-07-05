@@ -1,7 +1,7 @@
 image_designer_trainer = Creature:new {
 	objectName = "@mob/creature_names:trainer_imagedesigner",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

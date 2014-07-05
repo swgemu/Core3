@@ -1,8 +1,8 @@
 teraud_loyalist_cyborg = Creature:new {
 	objectName = "@mob/creature_names:warren_teraud_loyalist_cyborg",
 	socialGroup = "warren_cyborg",
-	pvpFaction = "warren_cyborg",
-	faction = "warren_cyborg",
+	pvpFaction = "",
+	faction = "",
 	level = 38,
 	chanceHit = 0.43,
 	damageMin = 335,

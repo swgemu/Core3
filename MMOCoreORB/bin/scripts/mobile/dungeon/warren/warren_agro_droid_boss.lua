@@ -1,6 +1,6 @@
 warren_agro_droid_boss = Creature:new {
 	objectName = "@mob/creature_names:warren_agro_droid_boss",
-	socialGroup = "warren",
+	socialGroup = "warren_imperial",
 	pvpFaction = "",
 	faction = "",
 	level = 46,

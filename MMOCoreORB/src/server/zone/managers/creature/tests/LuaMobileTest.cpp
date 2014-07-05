@@ -8,6 +8,7 @@
 #include "gtest/gtest.h"
 #include "server/zone/templates/LootItemTemplate.h"
 #include "server/zone/templates/LootGroupTemplate.h"
+#include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/loot/LootGroupMap.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollectionEntry.h"
@@ -74,6 +75,9 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	LootGroupMap* lootGroupMap = LootGroupMap::instance();
 	ASSERT_EQ(lootGroupMap->initialize(), 0);
 
+	// Verify factions load
+	ASSERT_EQ(FactionManager::instance()->loadData(), true);
+
 	// Load Templates
 	ASSERT_TRUE( TemplateManager::instance() != NULL );
 	if( TemplateManager::instance()->loadedTemplatesCount == 0 ){
@@ -101,6 +105,16 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			SharedObjectTemplate* controlDeviceTemplateData = TemplateManager::instance()->getTemplate(controlDeviceTemplate.hashCode());
 			EXPECT_TRUE( controlDeviceTemplateData != NULL ) << "Control device template " << controlDeviceTemplate.toCharArray() << " from " << templateName << " does not exist.";
 			EXPECT_TRUE( controlDeviceTemplate.beginsWith("object/intangible/pet/") ) << "Control device template " << controlDeviceTemplate.toCharArray() << " from " << templateName << " is not a pet/droid control device template.";
+		}
+
+		// Verify that faction and pvpFaction are valid
+		String faction = creature->getFaction();
+		if (!faction.isEmpty()) {
+			EXPECT_TRUE( FactionManager::instance()->isFaction(faction) ) << "Faction, " << faction.toCharArray() << ", from mobile template " << templateName << " does not exist.";
+		}
+		String pvpFaction = creature->getPvpFaction();
+		if (!pvpFaction.isEmpty()) {
+			EXPECT_TRUE( FactionManager::instance()->isFaction(pvpFaction) ) << "PvpFaction, " << pvpFaction.toCharArray() << ", from mobile template " << templateName << " does not exist.";
 		}
 
 		// Verify loot group percentages

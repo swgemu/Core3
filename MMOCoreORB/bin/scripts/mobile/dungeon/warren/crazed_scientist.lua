@@ -1,8 +1,8 @@
 crazed_scientist = Creature:new {
 	objectName = "@mob/creature_names:warren_irradiated_worker",
 	socialGroup = "warren_imperial_worker",
-	pvpFaction = "warren_imperial_worker",
-	faction = "warren_imperial_worker",
+	pvpFaction = "",
+	faction = "",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,
