@@ -235,7 +235,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	--{"crackdown_stormtrooper",400,3242.3,5,-4532.3,151,0, "npc_imperial", ""},
 	spawnMobile("tatooine", "crackdown_stormtrooper_rifleman",400,3756.71,5,-4845.03,78.2181,0)
 	--{"imperial_colonel",400,3490.5,5,-4733.94,305,0, "npc_imperial", ""},
-	--{"lt_harburik",60,3485.35,4.93096,-4740.37,234.883,0, "calm", "Lt. Harburik"},
 
 	--More Misc Outside
 	--{"criminal",300,3331.07,5,-4485.81,123.98,0, "worried", ""},

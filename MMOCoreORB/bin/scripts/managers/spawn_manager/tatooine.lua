@@ -603,7 +603,6 @@ tatooine_static_spawns = {
 	{"lilas_dinhint",60,22.6945,0.198179,-0.151074,187.601,1028172, "neutral", "Lilas Dinhint (museum curator)"},
 	{"lorne_prestar",60,3376,5,-4786,123,0, "", "Lorne Prestar"},
 	{"lorne_prestar",60,3826.5,20,2367.9,260,0, "calm", "Lorne Prestar"},
-	{"lt_harburik",60,3485.35,4.93096,-4740.37,234.883,0, "calm", "Lt. Harburik"},
 	{"lt_sabol",60,-1291.67,12,-3539,118,0, "npc_imperial", "Lt. Sabol"},
 	{"malakili",60,19,-11,42,23.355,1177502, "neutral", "Malakili"},
 	{"marco_vahn",60,-9.34,-0.894992,5.66,59.306,1082877, "calm", "Marco Vahn (a booking agent)"},
