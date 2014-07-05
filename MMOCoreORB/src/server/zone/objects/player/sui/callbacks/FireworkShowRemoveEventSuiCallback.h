@@ -57,7 +57,10 @@ public:
 		inventory->transferObject(firework, -1, false);
 		firework->sendTo(player, true);
 
-		int curFireworks = fireworkShowData->getTotalFireworkCount();
+		ManagedReference<TangibleObject*> fireworkShowObject = fireworkShow.castTo<TangibleObject*>();
+
+		if (fireworkShowObject != NULL )
+			fireworkShowObject->setUseCount(fireworkShowObject->getUseCount() - 1, true);
 
 		FireworkShowMenuComponent* showMenu = cast<FireworkShowMenuComponent*>(fireworkShow->getObjectMenuComponent());
 		showMenu->removeEvent(player, fireworkShow.castTo<FireworkObject*>());
