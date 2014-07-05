@@ -117,6 +117,24 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			EXPECT_TRUE( FactionManager::instance()->isFaction(pvpFaction) ) << "PvpFaction, " << pvpFaction.toCharArray() << ", from mobile template " << templateName << " does not exist.";
 		}
 
+		// Verify creature resources
+		String meat = creature->getMeatType();
+		float meatMax = creature->getMeatMax();
+		if (!meat.isEmpty())
+			EXPECT_TRUE( meatMax > 0 ) << "Meat amount on mobile " << templateName << " is zero.";
+		String hide = creature->getHideType();
+		float hideMax = creature->getHideMax();
+		if (!hide.isEmpty())
+			EXPECT_TRUE( hideMax > 0 ) << "Hide amount on mobile " << templateName << " is zero.";
+		String bone = creature->getBoneType();
+		float boneMax = creature->getBoneMax();
+		if (!bone.isEmpty())
+			EXPECT_TRUE( boneMax > 0 ) << "Bone amount on mobile " << templateName << " is zero.";
+		String milk = creature->getMilkType();
+		float milkMax = creature->getMilk();
+		if (!milk.isEmpty())
+			EXPECT_TRUE( milkMax > 0 ) << "Milk amount on mobile " << templateName << " is zero.";
+
 		// Verify loot group percentages
 		LootGroupCollection* groupCollection = creature->getLootGroups();
 		if( groupCollection->count() > 0 ){
