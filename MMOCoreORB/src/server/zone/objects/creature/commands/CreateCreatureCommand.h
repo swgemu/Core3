@@ -75,6 +75,7 @@ public:
 
 		String objName = "", tempName = "object/mobile/boba_fett.iff";
 		bool baby = false;
+		bool event = false;
 
 		if (!arguments.isEmpty()) {
 			UnicodeTokenizer tokenizer(arguments);
@@ -89,7 +90,10 @@ public:
 			if (!objName.isEmpty() && objName == "baby")
 				baby = true;
 
-			if (!objName.isEmpty() && objName.indexOf("object") == -1 && objName.length() < 6 && !baby) {
+			if (!objName.isEmpty() && objName == "event")
+				event = true;
+
+			if (!objName.isEmpty() && objName.indexOf("object") == -1 && objName.length() < 6 && !baby && !event) {
 				posX = Float::valueOf(objName);
 				objName = "";
 			} else
@@ -119,6 +123,8 @@ public:
 		CreatureObject* npc = NULL;
 		if (baby)
 			npc = creatureManager->spawnCreatureAsBaby(templ, posX, posZ, posY, parID);
+		else if (event)
+			npc = creatureManager->spawnCreatureAsEventMob(templ, posX, posZ, posY, parID);
 		else if (tempName.indexOf(".iff") != -1)
 			npc = creatureManager->spawnCreature(templ, posX, posZ, posY, parID);
 		else
@@ -127,7 +133,7 @@ public:
 		if (baby && npc == NULL)
 			creature->sendSystemMessage("You cannot spawn " + tempName + " as a baby.");
 		else if (npc == NULL)
-			creature->sendSystemMessage("could not spawn " + arguments.toString());
+			creature->sendSystemMessage("Could not spawn " + arguments.toString());
 
 		if (npc != NULL)
 			npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));

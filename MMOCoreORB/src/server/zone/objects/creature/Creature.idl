@@ -197,14 +197,14 @@ class Creature extends AiAgent {
 	}
 	
 	public float getMilk() {
-		if (super.npcTemplate == null)
+		if (super.npcTemplate == null || isEventMob())
 			return 0;
 		
 		return super.npcTemplate.getMilk();
 	}
 	
 	public float getHideMax() {
-		if (super.npcTemplate == null)
+		if (super.npcTemplate == null || isEventMob())
 			return 0;
 
 		if (isBaby())
@@ -214,7 +214,7 @@ class Creature extends AiAgent {
 	}
 	
 	public float getBoneMax() {
-		if (super.npcTemplate == null)
+		if (super.npcTemplate == null || isEventMob())
 			return 0;
 
 		if (isBaby())
@@ -224,7 +224,7 @@ class Creature extends AiAgent {
 	}
 	
 	public float getMeatMax() {
-		if (super.npcTemplate == null)
+		if (super.npcTemplate == null || isEventMob())
 			return 0;
 
 		if (isBaby())
@@ -237,7 +237,7 @@ class Creature extends AiAgent {
 		if (super.npcTemplate == null)
 			return 0;
 
-		if (isBaby())
+		if (isBaby() || isEventMob())
 			return 0;
 		else
 			return super.npcTemplate.getBaseXp();

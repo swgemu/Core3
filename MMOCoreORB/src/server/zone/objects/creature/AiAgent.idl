@@ -706,7 +706,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	public abstract int getBaseXp() {
-		if (npcTemplate.get() == null)
+		if (npcTemplate.get() == null || isEventMob())
 			return 0;
 
 		return npcTemplate.get().getBaseXp();
@@ -729,7 +729,7 @@ class AiAgent extends CreatureObject {
 	
 	@local
 	public LootGroupCollection getLootGroups() {
-		if (npcTemplate.get() == null)
+		if (npcTemplate.get() == null || isEventMob())
 			return null;
 		
 		return npcTemplate.get().getLootGroups();
