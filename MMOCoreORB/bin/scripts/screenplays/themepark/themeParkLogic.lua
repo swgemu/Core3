@@ -497,10 +497,11 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 				if (self:isValidConvoString(stfFile, ":npc_breech_" .. missionNumber)) then
 					local pBreechArea = spawnSceneObject(mainNpcs[i].planetName, "object/active_area.iff", spawnPoints[i][1], spawnPoints[i][2], spawnPoints[i][3], 0, 0, 0, 0, 0)
 					ObjectManager.withActiveArea(pBreechArea, function(activeArea)
-						activeArea:setRadius(50)
+						activeArea:setRadius(65)
 						createObserver(ENTEREDAREA, self.className, "notifyEnteredBreechArea", pBreechArea)
 						ObjectManager.withCreatureObject(pNpc, function(breechNpc)
 							writeData(creature:getObjectID() .. ":breechNpcID", breechNpc:getObjectID())
+							writeData(creature:getObjectID() .. ":breechAreaID", activeArea:getObjectID())
 						end)
 					end)
 				end
@@ -508,21 +509,30 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 			end
 			if mission.missionType == "assassinate" then
 				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTarget", pNpc)
-				local npc = LuaCreatureObject(pNpc)
-				local creature = LuaCreatureObject(pConversingPlayer)
-				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+				ObjectManager.withCreatureObject(pNpc, function(npc)
+					ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+						writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+					end)
+				end)
 			elseif mission.missionType == "confiscate" then
 				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTargetWithLoot", pNpc)
-				local npc = LuaCreatureObject(pNpc)
-				local creature = LuaCreatureObject(pConversingPlayer)
-				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+				ObjectManager.withCreatureObject(pNpc, function(npc)
+					ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+						writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+					end)
+				end)
 			end
 		end
 	end
 
 	local secondaryNpcs = mission.secondarySpawns
 	for i = 1 + table.getn(mission.primarySpawns), numberOfSpawns, 1 do
-		self:spawnNpc(secondaryNpcs[i - table.getn(mission.primarySpawns)], spawnPoints[i], pConversingPlayer, i)
+		local pNpc = self:spawnNpc(secondaryNpcs[i - table.getn(mission.primarySpawns)], spawnPoints[i], pConversingPlayer, i)
+		ObjectManager.withCreatureObject(pNpc, function(npc)
+			ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+			end)
+		end)
 	end
 
 	return true
@@ -563,6 +573,7 @@ function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
 								createObserver(ENTEREDAREA, self.className, "notifyEnteredBreechArea", pBreechArea)
 								ObjectManager.withCreatureObject(pNpc, function(breechNpc)
 									writeData(player:getObjectID() .. ":breechNpcID", breechNpc:getObjectID())
+									writeData(player:getObjectID() .. ":breechAreaID", activeArea:getObjectID())
 								end)
 							end)
 						end
@@ -675,22 +686,57 @@ function ThemeParkLogic:getMissionPreReqItem(pPlayer)
 end
 
 function ThemeParkLogic:notifyEnteredBreechArea(pActiveArea, pPlayer)
-	ObjectManager.withCreatureObject(pPlayer, function(player)
-		local playerID = player:getObjectID()
-		local breechNpcID = readData(playerID .. ":breechNpcID")
-		if (breechNpcID ~= nil and breechNpcID ~= 0) then
-			local pNpc = getSceneObject(breechNpcID)
-			local npcNumber = self:getActiveNpcNumber(pPlayer)
-			local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
-			local stfFile = self:getStfFile(npcNumber)
-			spatialChat(pNpc, stfFile .. ":npc_breech_" .. missionNumber)
-			writeData(playerID .. ":breechNpcID", 0)
-			ObjectManager.withSceneObject(pActiveArea, function(activeArea)
-				activeArea:destroyObjectFromWorld()
-			end)
-		end
+	ObjectManager.withActiveArea(pActiveArea, function(activeArea)
+		ObjectManager.withCreatureObject(pPlayer, function(player)
+			local playerID = player:getObjectID()
+			local breechNpcID = readData(playerID .. ":breechNpcID")
+			local breechAreaID = readData(playerID .. ":breechAreaID")
+			if (activeArea:getObjectID() == breechAreaID) then
+				self:setNpcDefender(pPlayer)
+				if (breechNpcID ~= nil and breechNpcID ~= 0) then
+					local pNpc = getSceneObject(breechNpcID)
+					local npcNumber = self:getActiveNpcNumber(pPlayer)
+					local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
+					local stfFile = self:getStfFile(npcNumber)
+					spatialChat(pNpc, stfFile .. ":npc_breech_" .. missionNumber)
+					writeData(playerID .. ":breechNpcID", 0)
+					ObjectManager.withSceneObject(pActiveArea, function(activeArea)
+						activeArea:destroyObjectFromWorld()
+					end)
+				end
+			end
+		end)
 	end)
 	return 0
+end
+
+function ThemeParkLogic:setNpcDefender(pPlayer)
+	ObjectManager.withCreatureObject(pPlayer, function(player)
+		local playerID = player:getObjectID()
+		local npcNumber = self:getActiveNpcNumber(pPlayer)
+		local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
+		local mission = self:getMission(npcNumber, missionNumber)
+		local currentMissionType = self:getMissionType(npcNumber, pPlayer)
+	
+		local numberOfSpawns = readData(player:getObjectID() .. ":missionSpawns")
+		for i = 1, numberOfSpawns, 1 do
+			local objectID = readData(playerID .. ":missionSpawn:no" .. i)
+			if readData(objectID .. ":missionOwnerID") == playerID then
+				local pNpc = getSceneObject(objectID)
+				if (i <= table.getn(mission.primarySpawns)) then
+					if currentMissionType == "assassinate" or currentMissionType == "confiscate" or currentMissionType == "destroy" then
+						ObjectManager.withCreatureAiAgent(pNpc, function(mobile)
+							mobile:setDefender(pPlayer)
+						end)
+					end
+				elseif i > table.getn(mission.primarySpawns) then
+					ObjectManager.withCreatureAiAgent(pNpc, function(mobile)
+						mobile:setDefender(pPlayer)
+					end)
+				end
+			end
+		end
+	end)			
 end
 
 function ThemeParkLogic:notifyDefeatedTarget(pVictim, pAttacker)
@@ -1314,6 +1360,7 @@ function ThemeParkLogic:resetCurrentMission(pConversingPlayer)
 	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":activeMission", 0)
 	writeData(creature:getObjectID() .. ":breechNpcID", 0)
+	writeData(creature:getObjectID() .. ":breechAreaID", 0)
 	writeData(creature:getObjectID() .. ":hasPreReqItem", 0)
 	writeStringData(creature:getObjectID() .. ":activeScreenPlay", "")
 
