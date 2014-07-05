@@ -38,7 +38,7 @@ untrained_padawan = Creature:new {
 		}
 	},	
 	weapons = {"mixed_force_weapons"},
-	conversationTemplate = "luthik_uwyr_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(pikemanmaster)
 }
 

@@ -1,4 +1,4 @@
-theme_park_fambaa = Creature:new {
+theme_park_imperial_fambaa = Creature:new {
 	objectName = "@mob/creature_names:fambaa",
 	socialGroup = "fambaa",
 	pvpFaction = "",
@@ -37,11 +37,11 @@ theme_park_fambaa = Creature:new {
 		}
 	},
 	weapons = {},
-	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = {
 		{"dizzyattack","dizzyChance=50"},
 		{"posturedownattack","postureDownChance=50"}
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(theme_park_fambaa, "theme_park_fambaa")
+CreatureTemplates:addCreatureTemplate(theme_park_imperial_fambaa, "theme_park_imperial_fambaa")

@@ -36,7 +36,7 @@ theme_park_imperial_slicer = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_light"},
-	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

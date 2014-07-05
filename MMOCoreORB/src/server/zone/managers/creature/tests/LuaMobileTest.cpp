@@ -132,6 +132,15 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			Vector<String> group = CreatureTemplateManager::instance()->getWeapons(weaponGroup);
 			EXPECT_TRUE( group.size() > 0 ) << "Weapon group " << groupName << " from " << templateName << " was not found in weaponMap";
 		}
+
+		// Verify conversation template exist, and the mob has converse option bit
+		uint32 convoTemplate = creature->getConversationTemplate();
+		uint32 optionsBitmask = creature->getOptionsBitmask();
+		if (convoTemplate != 0) {
+			ConversationTemplate* convoTemp = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
+			EXPECT_TRUE( convoTemp != NULL ) << "Conversation template from " << templateName << " was not found.";
+			EXPECT_TRUE( optionsBitmask & OptionBitmask::CONVERSE ) << templateName << " has a convo template but not the CONVERSE options bit.";
+		}
 	}
 
 	// Test Lair Templates

@@ -21,7 +21,7 @@ kathikiis_bh = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -48,23 +48,10 @@ kathikiis_bh = Creature:new {
 				{group = "wearables_common", chance = 500000}
 			},
 			lootChance = 3500000
-		},
-		{
-			groups = {
-				{group = "color_crystals", chance = 1500000},
-				{group = "crystals_poor", chance = 1000000},
-				{group = "crystals_good", chance = 1000000},
-				{group = "grenades_looted", chance = 1500000},
-				{group = "carbines", chance = 1500000},
-				{group = "pistols", chance = 1500000},
-				{group = "clothing_attachments", chance = 1000000},
-				{group = "armor_attachments", chance = 1000000}
-			},
-			lootChance = 6000000
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},
-	conversationTemplate = "kathikiis_ruwahurr_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(riflemanmaster,commandomaster,carbineermaster,brawlermaster)
 }
 

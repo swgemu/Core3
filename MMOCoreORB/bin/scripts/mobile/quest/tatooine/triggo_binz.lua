@@ -21,7 +21,7 @@ triggo_binz = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
+	pvpBitmask = AGGRESSIVE,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -40,7 +40,7 @@ triggo_binz = Creature:new {
 		}
 },
 	weapons = {"pirate_weapons_light"},
-	conversationTemplate = "rakir_banai_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 

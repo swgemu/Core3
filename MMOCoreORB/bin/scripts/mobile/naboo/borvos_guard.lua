@@ -30,7 +30,7 @@ borvos_guard = Creature:new {
 	templates = {"object/mobile/dressed_borvos_soldier.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "borvos_guard_convotemplate",
+	conversationTemplate = "",
 	attacks = {},
 }
 

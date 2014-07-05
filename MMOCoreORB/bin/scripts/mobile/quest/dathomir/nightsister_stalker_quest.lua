@@ -29,7 +29,7 @@ nightsister_stalker_quest = Creature:new {
 	templates = {"object/mobile/dressed_dathomir_nightsister_stalker.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "singular_nak_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

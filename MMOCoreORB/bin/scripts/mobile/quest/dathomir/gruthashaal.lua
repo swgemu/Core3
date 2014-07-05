@@ -39,7 +39,7 @@ gruthashaal = Creature:new {
 		},
 	},
 	weapons = {},
-	conversationTemplate = "singular_nak_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(tkamaster, brawlermaster)
 }
 
