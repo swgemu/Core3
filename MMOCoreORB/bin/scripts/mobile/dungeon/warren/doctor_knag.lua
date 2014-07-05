@@ -29,7 +29,7 @@ doctor_knag = Creature:new {
 	templates = {"object/mobile/warren_knag_garhun.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "knag_convtemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

@@ -30,7 +30,7 @@ governor_grayed_wintozzen = Creature:new {
 	templates = {"object/mobile/dressed_imperial_moff_m.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "imperial_retreat_governor_grayed_wintozzen_convotemplate",
+	conversationTemplate = "",
 	attacks = {
 	}
 }

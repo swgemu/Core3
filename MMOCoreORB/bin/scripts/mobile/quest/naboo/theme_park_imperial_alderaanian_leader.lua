@@ -36,7 +36,7 @@ theme_park_imperial_alderaanian_leader = Creature:new {
 		}	
 	},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(pistoleermaster,brawlermaster)
 }
 

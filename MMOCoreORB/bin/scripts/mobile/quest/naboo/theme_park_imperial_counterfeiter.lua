@@ -37,7 +37,7 @@ theme_park_imperial_counterfeiter = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_light"},
-	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

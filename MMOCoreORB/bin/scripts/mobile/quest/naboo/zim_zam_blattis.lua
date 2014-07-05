@@ -40,7 +40,7 @@ zim_zam_blattis = Creature:new {
 		}					
 	},
 	weapons = {"pirate_weapons_medium"},
-	conversationTemplate = "gavyn_sykes_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

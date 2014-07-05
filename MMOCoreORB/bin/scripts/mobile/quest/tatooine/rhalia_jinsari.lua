@@ -39,7 +39,7 @@ rhalia_jinsari = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_heavy"},
-	conversationTemplate = "vardias_tyne_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = {
 	}
 }
