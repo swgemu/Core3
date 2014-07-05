@@ -95,6 +95,14 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			EXPECT_TRUE( templateData != NULL ) << "Mobile " << templateName << " has invalid template configured: " << objName;
 		}
 
+		// Verify that control device template is valid
+		String controlDeviceTemplate = creature->getControlDeviceTemplate();
+		if (!controlDeviceTemplate.isEmpty()) {
+			SharedObjectTemplate* controlDeviceTemplateData = TemplateManager::instance()->getTemplate(controlDeviceTemplate.hashCode());
+			EXPECT_TRUE( controlDeviceTemplateData != NULL ) << "Control device template " << controlDeviceTemplate.toCharArray() << " from " << templateName << " does not exist.";
+			EXPECT_TRUE( controlDeviceTemplate.beginsWith("object/intangible/pet/") ) << "Control device template " << controlDeviceTemplate.toCharArray() << " from " << templateName << " is not a pet/droid control device template.";
+		}
+
 		// Verify loot group percentages
 		LootGroupCollection* groupCollection = creature->getLootGroups();
 		if( groupCollection->count() > 0 ){
