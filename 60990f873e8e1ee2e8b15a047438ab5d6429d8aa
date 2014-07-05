@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_e33d0ebd",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/FireworkShowAddEventSuiCallback.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T02:20:45Z",
+      "side": 1,
+      "message": "I believe player is already locked",
+      "revId": "60990f873e8e1ee2e8b15a047438ab5d6429d8aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_c34a0a55",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/FireworkShowDelaySelectionSuiCallback.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T02:20:45Z",
+      "side": 1,
+      "message": "I think you should always store the delay internally as milliseconds.   Everything else I\u0027ve seen in the core has time as either seconds or milliseconds.   It\u0027s confusing having something be tenths of a second.    You can still accept and display tenths to the player, though.   Just convert it asap to millis.",
+      "revId": "60990f873e8e1ee2e8b15a047438ab5d6429d8aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_a347164b",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/FireworkShowDelaySelectionSuiCallback.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T02:20:45Z",
+      "side": 1,
+      "message": "If the player can type in an invalid number, Float::valueOf will throw an exception (I think).   Would probaly be a good idea to catch the exception and prompt them with the delay sui again (if that\u0027s not too difficult).  Or at a minimum send them an error message",
+      "revId": "60990f873e8e1ee2e8b15a047438ab5d6429d8aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_8374129d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/FireworkShowRemoveEventSuiCallback.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T02:20:45Z",
+      "side": 1,
+      "message": "I believe player is already locked.",
+      "revId": "60990f873e8e1ee2e8b15a047438ab5d6429d8aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_43573a03",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/FireworkObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T02:20:45Z",
+      "side": 1,
+      "message": "getFirework(i) but removeFirework(0) ?",
+      "revId": "60990f873e8e1ee2e8b15a047438ab5d6429d8aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_834d3275",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/FireworkObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T02:20:45Z",
+      "side": 1,
+      "message": "If you want to keep these, it should probably be a log statement instead",
+      "revId": "60990f873e8e1ee2e8b15a047438ab5d6429d8aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_63523e15",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/FireworkObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T02:20:45Z",
+      "side": 1,
+      "message": "Same here.  Logs instead of printfs.",
+      "revId": "60990f873e8e1ee2e8b15a047438ab5d6429d8aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_235c4625",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/FireworkShowLaunchFireworkEvent.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T02:20:45Z",
+      "side": 1,
+      "message": "Should  this be *1000 for millis?  If not, throw in a comment to explain the units",
+      "revId": "60990f873e8e1ee2e8b15a047438ab5d6429d8aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_03414239",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/FireworkShowLaunchFireworkEvent.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-05T02:20:45Z",
+      "side": 1,
+      "message": "Remove unneeded code",
+      "revId": "60990f873e8e1ee2e8b15a047438ab5d6429d8aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
