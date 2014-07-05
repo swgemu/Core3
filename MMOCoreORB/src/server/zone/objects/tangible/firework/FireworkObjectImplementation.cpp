@@ -65,30 +65,82 @@ void FireworkObjectImplementation::destroyObjectFromDatabase(bool destroyContain
 	TangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-void FireworkObjectImplementation::updateCraftingValues(CraftingValues* values,
-		bool firstUpdate) {
+void FireworkObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
+	TangibleObjectImplementation::fillAttributeList(alm, object);
 
-	if (values->hasProperty("charges")) {
-		if(isShow) {
-			capacity = values->getCurrentValue("charges");
-		} else {
-			setUseCount(values->getCurrentValue("charges"));
+	ManagedReference<FireworkObject*> firework = _this.get();
+
+	if (firework == NULL)
+		return;
+
+	DataObjectComponent* data = firework->getDataObjectComponent()->get();
+
+	if (data == NULL || !data->isFireworkShowData()) {
+		String effect = "@firework_n:" + fireworkObject.subString(fireworkObject.lastIndexOf("/") + 1, fireworkObject.lastIndexOf("."));
+		alm->insertAttribute("@obj_attr_n:pattern", effect);
+	} else {
+		FireworkShowDataComponent* fireworkShowData = cast<FireworkShowDataComponent*>(data);
+
+		if (fireworkShowData == NULL)
+			return;
+
+		int totalFireworks = fireworkShowData->getTotalFireworkCount();
+		alm->insertAttribute("blank_entry", "");
+		alm->insertAttribute("length", "\\#pcontrast2 " + String::valueOf(totalFireworks) + " Fireworks");
+
+		for (int i = 0; i < totalFireworks; i++) {
+			ManagedReference<FireworkObject*> firework = fireworkShowData->getFirework(i);
+			if (firework == NULL)
+				continue;
+			String fireworkObj = firework->getFireworkObjectPath();
+			String effect = "@firework_n:" + fireworkObj.subString(fireworkObj.lastIndexOf("/") + 1, fireworkObj.lastIndexOf("."));
+			alm->insertAttribute("pattern", effect);
 		}
+
+	}
+
+}
+
+void FireworkObjectImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+
+	ManagedReference<FireworkObject*> firework = _this.get();
+
+	if (firework == NULL)
+		return;
+
+	DataObjectComponent* data = firework->getDataObjectComponent()->get();
+
+	if (data != NULL && data->isFireworkShowData()) {
+		FireworkShowDataComponent* fireworkShowData = cast<FireworkShowDataComponent*>(data);
+
+		if (fireworkShowData == NULL)
+			return;
+
+		capacity = values->getCurrentValue("charges");
+	} else {
+		setUseCount(values->getCurrentValue("charges"));
 	}
 }
 
 int FireworkObjectImplementation::getDisplayedUseCount() {
 
-	if(getContainerObjectsSize() < 1)
-		return TangibleObjectImplementation::getDisplayedUseCount();
+	ManagedReference<FireworkObject*> firework = _this.get();
 
-	ManagedReference<SceneObject*> fireworkHopper = getContainerObject(0);
-
-	if(fireworkHopper == NULL) {
+	if (firework == NULL)
 		return 0;
+
+	DataObjectComponent* data = firework->getDataObjectComponent()->get();
+
+	if (data != NULL && data->isFireworkShowData()) {
+		FireworkShowDataComponent* fireworkShowData = cast<FireworkShowDataComponent*>(data);
+
+		if (fireworkShowData == NULL)
+			return 0;
+
+		return fireworkShowData->getTotalFireworkCount();
 	}
 
-	return fireworkHopper->getContainerObjectsSize();
+	return TangibleObjectImplementation::getDisplayedUseCount();
 }
 
 void FireworkObjectImplementation::launch(CreatureObject* player, int removeDelay) {
@@ -186,8 +238,10 @@ void FireworkObjectImplementation::beginShowLaunch(CreatureObject* player) {
 	showLauncherObject->initializePosition(x, z, y);
 	player->getZone()->transferObject(showLauncherObject, -1, true);
 
+	fireworkShow->destroyObjectFromWorld(true);
+
 	int launchDelay = fireworkShowData->getFireworkDelay(0);
-	Reference<FireworkShowLaunchFireworkEvent*> fireworkShowLaunchFireworkEvent = new FireworkShowLaunchFireworkEvent(player, fireworkShowData, showLauncherObject);
+	Reference<FireworkShowLaunchFireworkEvent*> fireworkShowLaunchFireworkEvent = new FireworkShowLaunchFireworkEvent(player, fireworkShow, fireworkShowData, showLauncherObject);
 	fireworkShowLaunchFireworkEvent->schedule(launchDelay);
 
 }

@@ -56,14 +56,16 @@ which carries forward this exception.
 
 class FireworkShowLaunchFireworkEvent : public Task {
 	ManagedReference<FireworkShowDataComponent*> fireworkShowData;
+	ManagedReference<FireworkObject*> fireworkShow;
 	ManagedWeakReference<CreatureObject*> player;
 	ManagedReference<StaticObject*> worldFireworkShow;
 	int removeDelay;
 
 public:
-	FireworkShowLaunchFireworkEvent(CreatureObject* player, FireworkShowDataComponent* fireworkShowData, StaticObject* worldFireworkShow) : Task(1000) {
+	FireworkShowLaunchFireworkEvent(CreatureObject* player, FireworkObject* fireworkShow, FireworkShowDataComponent* fireworkShowData, StaticObject* worldFireworkShow) : Task(1000) {
 		this->fireworkShowData = fireworkShowData;
 		this->player = player;
+		this->fireworkShow = fireworkShow;
 		this->worldFireworkShow = worldFireworkShow;
 		this->removeDelay = 30000; // Launched firework stays in world for 30 secs
 	}
@@ -72,8 +74,9 @@ public:
 		ManagedReference<FireworkShowDataComponent*> fireworkShowData = this->fireworkShowData.get();
 		ManagedReference<CreatureObject*> player = this->player.get();
 		ManagedReference<StaticObject*> worldFireworkShow = this->worldFireworkShow.get();
+		ManagedReference<FireworkObject*> fireworkShow = this->fireworkShow.get();
 
-		if (player == NULL || worldFireworkShow == NULL || fireworkShowData == NULL)
+		if (player == NULL || worldFireworkShow == NULL || fireworkShowData == NULL || fireworkShow == NULL)
 			return;
 
 		if (fireworkShowData->getTotalFireworkCount() == 0)
@@ -112,6 +115,7 @@ public:
 			} else {
 				Reference<FireworkRemoveEvent*> fireworkRemoveEvent = new FireworkRemoveEvent(player, worldFireworkShow);
 				fireworkRemoveEvent->schedule(2000);
+				fireworkShow->destroyObjectFromDatabase(false);
 			}
 
 		} catch (Exception& e) {
