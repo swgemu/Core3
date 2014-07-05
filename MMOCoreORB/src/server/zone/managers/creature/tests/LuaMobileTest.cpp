@@ -141,6 +141,13 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			EXPECT_TRUE( convoTemp != NULL ) << "Conversation template from " << templateName << " was not found.";
 			EXPECT_TRUE( optionsBitmask & OptionBitmask::CONVERSE ) << templateName << " has a convo template but not the CONVERSE options bit.";
 		}
+
+		// Verify that outfits exist
+		String outfit = creature->getOutfit();
+		if (!outfit.isEmpty()) {
+			MobileOutfitGroup* outfitGroup = CreatureTemplateManager::instance()->getMobileOutfitGroup(outfit);
+			EXPECT_TRUE( outfitGroup != NULL ) << "Outfit group " << outfit.toCharArray() << " from " << templateName << " was not found.";
+		}
 	}
 
 	// Test Lair Templates
