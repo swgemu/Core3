@@ -24,13 +24,13 @@ farious_gletch = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_farious_gletch.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "farious_gletch_mission_giver_convotemplate",
 	attacks = {
 	}
 }
