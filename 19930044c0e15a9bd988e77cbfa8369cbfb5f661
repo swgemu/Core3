@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "da6255ed_23aa06d5",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/paemos.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-07-05T03:55:17Z",
+      "side": 1,
+      "message": "OK, will do, I was just using the name Nee gave me for the script.",
+      "parentUuid": "da6255ed_f8affd29",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6255ed_d8ac3938",
         "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
         "patchSetId": 3
@@ -47,6 +65,24 @@
       "writtenOn": "2014-07-04T11:04:47Z",
       "side": 1,
       "message": "Indentation",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_03af02e5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-07-05T03:55:17Z",
+      "side": 1,
+      "message": "Actually, I recently discovered the str string file with these in there, so they need replacing anyway...",
+      "parentUuid": "da6255ed_d8ac3938",
       "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -121,6 +157,24 @@
     },
     {
       "key": {
+        "uuid": "da6255ed_c3b8ca2c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-07-05T03:55:17Z",
+      "side": 1,
+      "message": "The check is for the player unlocking the tree to be able to learn the skill box, Noldan actually teaches the skillboxes. So I think stored screenplays are appropriate, personally, until the process gets more fleshed out can possibly be replaced by completedQuest.",
+      "parentUuid": "da6255ed_586849f5",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6255ed_386d9505",
         "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
         "patchSetId": 3
@@ -132,6 +186,24 @@
       "writtenOn": "2014-07-04T11:04:47Z",
       "side": 1,
       "message": "foreach instead.",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_e3abced4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-07-05T03:55:17Z",
+      "side": 1,
+      "message": "Noted.",
+      "parentUuid": "da6255ed_386d9505",
       "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -172,6 +244,24 @@
     },
     {
       "key": {
+        "uuid": "da6255ed_a3b5d632",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-07-05T03:55:17Z",
+      "side": 1,
+      "message": "Yeah, you are right, it would be better suited in PLAY.",
+      "parentUuid": "da6255ed_d87319e6",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6255ed_b880658c",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
         "patchSetId": 3
@@ -183,6 +273,24 @@
       "writtenOn": "2014-07-04T11:04:47Z",
       "side": 1,
       "message": "This will not work. If you start with 4 elements int the vector, you remove element 0, 3 elements remains, you remove element 1, 2 elements remains you remove element 2 which does not exist...",
+      "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_8382d250",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2901,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-07-05T03:55:17Z",
+      "side": 1,
+      "message": "Is there a way to drop/remove all the vector elements, then?",
+      "parentUuid": "da6255ed_b880658c",
       "revId": "19930044c0e15a9bd988e77cbfa8369cbfb5f661",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
