@@ -1,11 +1,12 @@
 lok_blood_razor_camp_neutral_easy_theater = Lair:new {
-	mobiles = {},
+	mobiles = {{"blood_razor_strong_pirate", 1},{"blood_razor_berzerker", 1},{"blood_razor_weak_pirate", 1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {},
-	buildingsEasy = {},
-	buildingsMedium = {},
-	buildingsHard = {},
-	buildingsVeryHard = {},
+	buildingsVeryEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsMedium = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsVeryHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingType = "theater"
 }
 
 addLairTemplate("lok_blood_razor_camp_neutral_easy_theater", lok_blood_razor_camp_neutral_easy_theater)

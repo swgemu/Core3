@@ -68,24 +68,6 @@ lok_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "lok_blood_razor_camp_neutral_medium_theater",
-			minDifficulty = 30,
-			maxDifficulty = 40,
-			size = 25,
-		},
-		{
-			lairTemplateName = "lok_canyon_corsair_camp_neutral_medium_theater",
-			minDifficulty = 26,
-			maxDifficulty = 34,
-			size = 25,
-		},
-		{
-			lairTemplateName = "lok_canyon_corsair_camp2_neutral_medium_theater",
-			minDifficulty = 36,
-			maxDifficulty = 50,
-			size = 25,
-		},
-		{
 			lairTemplateName = "lok_kimogilla_lair_neutral_medium",
 			spawnLimit = 15,
 			minDifficulty = 85,
