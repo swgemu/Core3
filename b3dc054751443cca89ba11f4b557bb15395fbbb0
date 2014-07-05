@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_c3e68a44",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3950,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-05T06:30:19Z",
+      "side": 1,
+      "message": "Did you mean to leave this here?",
+      "revId": "b3dc054751443cca89ba11f4b557bb15395fbbb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_83d09254",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/creation/PlayerCreationManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-05T06:30:19Z",
+      "side": 1,
+      "message": "I think it would be a good idea to check for NULL and only break if the alt is not NULL.",
+      "revId": "b3dc054751443cca89ba11f4b557bb15395fbbb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_a3e39632",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ClearVeteranRewardCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-05T06:30:19Z",
+      "side": 1,
+      "message": "Do you really want to send a system message for each character?",
+      "revId": "b3dc054751443cca89ba11f4b557bb15395fbbb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
