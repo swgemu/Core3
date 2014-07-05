@@ -117,15 +117,53 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			EXPECT_TRUE( FactionManager::instance()->isFaction(pvpFaction) ) << "PvpFaction, " << pvpFaction.toCharArray() << ", from mobile template " << templateName << " does not exist.";
 		}
 
+		// Verify level
+		int level = creature->getLevel();
+		EXPECT_TRUE( level > 0 ) << "Level is not a positive value on mobile: " << templateName;
+
+		// Verify hit chance
+		float hitChance = creature->getChanceHit();
+		EXPECT_TRUE( hitChance > 0 ) << "ChanceHit is not a positive value on mobile: " << templateName;
+
+		// Verify xp
+		int xp = creature->getBaseXp();
+		EXPECT_TRUE( xp >= 0 ) << "Xp has a negative value on mobile: " << templateName;
+
 		// Verify damage
 		int minDamage = creature->getDamageMin();
 		int maxDamage = creature->getDamageMax();
-		EXPECT_TRUE( maxDamage >= minDamage ) << "Max damage is lower than min damage on mobile " << templateName;
+		EXPECT_TRUE( minDamage > 0 ) << "Min damage is not a positive value on mobile: " << templateName;
+		EXPECT_TRUE( maxDamage >= minDamage ) << "Max damage is lower than min damage on mobile: " << templateName;
 
 		// Verify HAM
 		int minHam = creature->getBaseHAM();
 		int maxHam = creature->getBaseHAMmax();
-		EXPECT_TRUE( maxHam >= minHam ) << "Base ham max is lower than base ham on mobile " << templateName;
+		EXPECT_TRUE( minHam > 0 ) << "Base ham is not a positive value on mobile: " << templateName;
+		EXPECT_TRUE( maxHam >= minHam ) << "Base ham max is lower than base ham on mobile: " << templateName;
+
+		// Verify armor
+		int armor = creature->getArmor();
+		EXPECT_TRUE( armor >= 0 && armor <= 3 ) << "Armor is not a valid value on mobile: " << templateName;
+
+		// Verify resists
+		float kinetic = creature->getKinetic();
+		EXPECT_TRUE( kinetic >= -1 && kinetic <= 100 ) << "Kinetic resist is not a valid value on mobile: " << templateName;
+		float energy = creature->getEnergy();
+		EXPECT_TRUE( energy >= -1 && energy <= 100 ) << "Energy resist is not a valid value on mobile: " << templateName;
+		float electricity = creature->getElectricity();
+		EXPECT_TRUE( electricity >= -1 && electricity <= 100 ) << "Electricity resist is not a valid value on mobile: " << templateName;
+		float stun = creature->getStun();
+		EXPECT_TRUE( stun >= -1 && stun <= 100 ) << "Stun resist is not a valid value on mobile: " << templateName;
+		float blast = creature->getBlast();
+		EXPECT_TRUE( blast >= -1 && blast <= 100 ) << "Blast resist is not a valid value on mobile: " << templateName;
+		float heat = creature->getHeat();
+		EXPECT_TRUE( heat >= -1 && heat <= 100 ) << "Heat resist is not a valid value on mobile: " << templateName;
+		float cold = creature->getCold();
+		EXPECT_TRUE( cold >= -1 && cold <= 100 ) << "Cold resist is not a valid value on mobile: " << templateName;
+		float acid = creature->getAcid();
+		EXPECT_TRUE( acid >= -1 && acid <= 100 ) << "Acid resist is not a valid value on mobile: " << templateName;
+		float lightSaber = creature->getLightSaber();
+		EXPECT_TRUE( lightSaber >= -1 && lightSaber <= 100 ) << "LightSaber resist is not a valid value on mobile: " << templateName;
 
 		// Verify creature resources
 		String meat = creature->getMeatType();
@@ -144,6 +182,14 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		float milkMax = creature->getMilk();
 		if (!milk.isEmpty())
 			EXPECT_TRUE( milkMax > 0 ) << "Milk amount on mobile " << templateName << " is zero.";
+
+		// Verify taming chance
+		float tamingChance = creature->getTame();
+		EXPECT_TRUE( tamingChance >= 0 && tamingChance <= 1 ) << "Taming chance is not a valid value on mobile: " << templateName;
+
+		// Verify scale
+		float scale = creature->getScale();
+		EXPECT_TRUE( scale > 0 ) << "Scale is not a positive value on mobile: " << templateName;
 
 		// Verify loot group percentages
 		LootGroupCollection* groupCollection = creature->getLootGroups();
