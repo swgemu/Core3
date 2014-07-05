@@ -16,18 +16,17 @@ FactionManager::FactionManager() {
 	setLogging(false);
 }
 
-bool FactionManager::loadData() {
-	bool res = loadLuaConfig();
-	bool res2 = loadFactionRanks();
-	return res && res2;
+void FactionManager::loadData() {
+	loadLuaConfig();
+	loadFactionRanks();
 }
 
-bool FactionManager::loadFactionRanks() {
+void FactionManager::loadFactionRanks() {
 	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/faction/rank.iff");
 
 	if (iffStream == NULL) {
 		warning("Faction ranks could not be found.");
-		return false;
+		return;
 	}
 
 	DataTableIff dtiff;
@@ -38,10 +37,9 @@ bool FactionManager::loadFactionRanks() {
 	delete iffStream;
 
 	info("loaded " + String::valueOf(factionRanks.getCount()) + " ranks", true);
-	return true;
 }
 
-bool FactionManager::loadLuaConfig() {
+void FactionManager::loadLuaConfig() {
 	info("Loading config file.", true);
 
 	Lua* lua = new Lua();
@@ -50,12 +48,11 @@ bool FactionManager::loadLuaConfig() {
 	lua_register(lua->getLuaState(), "addFaction", addFaction);
 
 	//Load the faction manager lua file.
-	bool res = lua->runFile("scripts/managers/faction_manager.lua");
+	lua->runFile("scripts/managers/faction_manager.lua");
 
 	delete lua;
 	lua = NULL;
 
-	return res;
 }
 
 int FactionManager::addFaction(lua_State* L) {
