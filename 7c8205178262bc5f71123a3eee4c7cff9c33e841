@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_43585afa",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/firework/FireworkObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-05T08:10:30Z",
+      "side": 1,
+      "message": "I wouldn\u0027t return here but rather incorporate the check into the if statement below.",
+      "revId": "7c8205178262bc5f71123a3eee4c7cff9c33e841",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
