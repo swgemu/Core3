@@ -62,13 +62,13 @@ dantooine_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "dantooine_mokk_scout_neutral_none",
+			lairTemplateName = "dantooine_mokk_soothsayer_camp_neutral_medium_theater",
 			minDifficulty = 35,
 			maxDifficulty = 55,
 			size = 25,
 		},
 		{
-			lairTemplateName = "dantooine_kunga_scout_neutral_none",
+			lairTemplateName = "dantooine_kunga_warrior_camp_neutral_medium_theater",
 			minDifficulty = 35,
 			maxDifficulty = 55,
 			size = 25,
