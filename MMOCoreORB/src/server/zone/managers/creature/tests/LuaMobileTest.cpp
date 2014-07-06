@@ -167,22 +167,34 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		EXPECT_TRUE( lightSaber >= -1 && lightSaber <= 100 ) << "LightSaber resist is not a valid value on mobile: " << templateName;
 
 		// Verify creature resources
+		String meatResources = "meat_domesticated,meat_wild,meat_herbivore,meat_carnivore,meat_reptilian,meat_avian,meat_insect";
+		String hideResources = "hide_bristley,hide_leathery,hide_scaley,hide_wooly";
+		String boneResources = "bone_avian,bone_mammal";
+		String milkResources = "milk_domesticated,milk_wild";
 		String meat = creature->getMeatType();
 		float meatMax = creature->getMeatMax();
-		if (!meat.isEmpty())
+		if (!meat.isEmpty()) {
+			EXPECT_TRUE( meatResources.contains(meat) ) << "Meat type on mobile " << templateName << " is not a valid meat resource";
 			EXPECT_TRUE( meatMax > 0 ) << "Meat amount on mobile " << templateName << " is zero.";
+		}
 		String hide = creature->getHideType();
 		float hideMax = creature->getHideMax();
-		if (!hide.isEmpty())
+		if (!hide.isEmpty()) {
+			EXPECT_TRUE( hideResources.contains(hide) ) << "Hide type on mobile " << templateName << " is not a valid hide resource";
 			EXPECT_TRUE( hideMax > 0 ) << "Hide amount on mobile " << templateName << " is zero.";
+		}
 		String bone = creature->getBoneType();
 		float boneMax = creature->getBoneMax();
-		if (!bone.isEmpty())
+		if (!bone.isEmpty()) {
+			EXPECT_TRUE( boneResources.contains(bone) ) << "Bone type on mobile " << templateName << " is not a valid bone resource";
 			EXPECT_TRUE( boneMax > 0 ) << "Bone amount on mobile " << templateName << " is zero.";
+		}
 		String milk = creature->getMilkType();
 		float milkMax = creature->getMilk();
-		if (!milk.isEmpty())
+		if (!milk.isEmpty()) {
+			EXPECT_TRUE( milkResources.contains(milk) ) << "Milk type on mobile " << templateName << " is not a valid milk resource";
 			EXPECT_TRUE( milkMax > 0 ) << "Milk amount on mobile " << templateName << " is zero.";
+		}
 
 		// Verify taming chance
 		float tamingChance = creature->getTame();
