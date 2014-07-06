@@ -176,7 +176,7 @@ public:
 				return INVALIDPARAMETERS;
 			}
 		} else {
-			if (!playerManager->existsName(targetName)) {
+			if ((action == "add" || (action == "toggle" && !structureObject->isOnPermissionList(listName, targetName, true))) && !playerManager->existsName(targetName)) {
 				StringIdChatParameter params("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
 				params.setTO(targetName);
 

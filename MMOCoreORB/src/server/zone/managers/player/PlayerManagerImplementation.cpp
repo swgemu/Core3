@@ -3937,8 +3937,21 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player )
 	inventory->broadcastObject(rewardSceno, true);
 	player->sendSystemMessage( "@veteran:reward_given");  // Your reward has been placed in your inventory.
 
-	// TODO: Record reward in all characters registered to the account
-	playerGhost->addChosenVeteranReward( rewardSession->getMilestone(), reward.getTemplateFile() );
+	// Record reward in all characters registered to the account
+	CharacterList* characters = account->getCharacterList();
+	for(int i = 0; i < characters->size(); ++i) {
+		CharacterListEntry* entry = &characters->get(i);
+		if(entry->getGalaxyID() == server->getGalaxyID()) {
+
+			ManagedReference<CreatureObject*> altPlayer = getPlayer(entry->getFirstName());
+			if(altPlayer != NULL && altPlayer->getPlayerObject() != NULL) {
+				Locker alocker(altPlayer, player);
+				altPlayer->getPlayerObject()->addChosenVeteranReward( rewardSession->getMilestone(), reward.getTemplateFile() );
+				alocker.release();
+			}
+		}
+	}
+
 	cancelVeteranRewardSession( player );
 
 	// If player is eligible for another reward, kick off selection

@@ -25,7 +25,9 @@ industrial_spy = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_criminal_smuggler_human_female_01.iff",
+				 "object/mobile/dressed_criminal_smuggler_human_male_01.iff"
+	},
 	lootGroups = {
       	{
 			groups = {

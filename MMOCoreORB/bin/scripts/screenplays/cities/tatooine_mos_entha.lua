@@ -67,7 +67,6 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 
 	--Fallen Star Cantina
 	--{"artisan",60,-3.4032,7.01,5.99576,180,1153497, "conversation", ""},
-	--{"blerx_tango",60,-19.161,7.01,-8.09835,111.274,1153497, "", "Blerx Tango"},
 	--{"smuggler",300,-3.4032,7.01,4.89576,360.011,1153497, "conversation", ""},
 	spawnMobile("tatooine", "businessman",60,-25.2156,9.01,-0.754679,77.0153,1153499)
 	--{"commoner_tatooine",60,-24.5917,9.01,2.41044,135.004,1153499, "conversation", ""},
@@ -175,7 +174,6 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "criminal",300,1621.1,7,3317.4,18,0)
 	--{"dim_u_monastery_nun",300,1326.93,7,3164.39,180.005,0, "conversation", ""},
 	spawnMobile("tatooine", "eg6_power_droid",60,1332.45,7.90682,3237.09,8.18614,0)
-	--{"ikka_gesul",60,1499.45,7,3009.43,191.517,0, "", "Ikka Gesul"},
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,1266,7,3184,225,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,1727,7,3093,225,0)
 	--{"junk_dealer",0,1308.1,7,3085.2,1,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},

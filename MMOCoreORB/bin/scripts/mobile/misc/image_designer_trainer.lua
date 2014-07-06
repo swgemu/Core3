@@ -1,7 +1,7 @@
 image_designer_trainer = Creature:new {
 	objectName = "@mob/creature_names:trainer_imagedesigner",
-	socialGroup = "Townperson",
-	pvpFaction = "Townperson",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
 	faction = "",
 	level = 100,
 	chanceHit = 1,
@@ -26,7 +26,9 @@ image_designer_trainer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_image_designer_trainer_01.iff",
+				 "object/mobile/dressed_image_designer_trainer_02.iff",
+				 "object/mobile/dressed_image_designer_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

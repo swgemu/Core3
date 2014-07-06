@@ -58,6 +58,7 @@ includeFile("conversations/dungeon/geonosian_lab/biogenic_scientist_human_convo.
 -- ** OTHER **
 
 includeFile("conversations/trainer/trainers_conv.lua")
+includeFile("conversations/trainer/trainer_fs_conv.lua")
 
 -- Missions
 includeFile("conversations/mission/deliver_npc.lua")

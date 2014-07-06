@@ -42,7 +42,7 @@ theme_park_imperial_rebel_sympathizer = Creature:new {
 		}	
 	},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(pistoleermaster,brawlermaster)
 }
 

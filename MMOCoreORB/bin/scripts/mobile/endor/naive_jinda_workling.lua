@@ -1,7 +1,7 @@
 naive_jinda_workling = Creature:new {
 	objectName = "@mob/creature_names:naive_jinda_workling",
 	socialGroup = "jinda_tribe",
-	pvpFaction = "jinda_tribe",
+	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

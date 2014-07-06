@@ -26,7 +26,10 @@ novice_creature_handler = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_creaturehandler_trainer_human_male_01.iff",
+				 "object/mobile/dressed_creaturehandler_trainer_rodian_female_01.iff",
+				 "object/mobile/dressed_creaturehandler_trainer_zabrak_male_01.iff"
+	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",

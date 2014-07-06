@@ -26,7 +26,7 @@ sulfur_lake_pirate = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = { "object/mobile/dressed_criminal_pirate_human_male_01.iff" },
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

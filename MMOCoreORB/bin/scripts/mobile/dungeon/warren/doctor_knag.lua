@@ -1,6 +1,6 @@
 doctor_knag = Creature:new {
 	objectName = "@theme_park/warren/warren_system_messages:name_knag",
-	socialGroup = "warren",
+	socialGroup = "warren_scientist",
 	pvpFaction = "",
 	faction = "",
 	level = 11,
@@ -29,7 +29,7 @@ doctor_knag = Creature:new {
 	templates = {"object/mobile/warren_knag_garhun.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "knag_convtemplate",
+	conversationTemplate = "",
 	attacks = {}
 }
 

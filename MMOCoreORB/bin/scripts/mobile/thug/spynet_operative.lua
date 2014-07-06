@@ -25,7 +25,9 @@ spynet_operative = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_eisley_officer_bothan_female_01.iff",
+		"object/mobile/dressed_eisley_officer_bothan_male_01.iff"},
 	lootGroups = {
       	{
 			groups = {

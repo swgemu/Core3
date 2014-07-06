@@ -610,6 +610,40 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	playerManager->addPlayer(playerCreature);
 
+	// Copy claimed veteran rewards from player's alt character
+	uint32 accID = client->getAccountID();
+	ManagedReference<Account*> playerAccount = playerManager->getAccount(accID);
+	if (playerAccount != NULL && ghost != NULL) {
+
+		// Find the first alt character
+		ManagedReference<CreatureObject*> altPlayer = NULL;
+		CharacterList* characters = playerAccount->getCharacterList();
+		for(int i = 0; i < characters->size(); ++i) {
+			CharacterListEntry* entry = &characters->get(i);
+			if(entry->getGalaxyID() == zoneServer.get()->getGalaxyID() &&
+		       entry->getFirstName() != playerCreature->getFirstName() ) {
+
+				altPlayer = playerManager->getPlayer(entry->getFirstName());
+				if( altPlayer != NULL ){
+					break;
+				}
+			}
+		}
+
+		// Record the rewards if alt player was found
+		if( altPlayer != NULL && altPlayer->getPlayerObject() != NULL){
+
+			Locker alocker( altPlayer );
+			for( int i = 0; i < playerManager->getNumVeteranRewardMilestones(); i++ ){
+				int milestone = playerManager->getVeteranRewardMilestone(i);
+				String claimedReward = altPlayer->getPlayerObject()->getChosenVeteranReward(milestone);
+				if( !claimedReward.isEmpty() ){
+					ghost->addChosenVeteranReward(milestone,claimedReward);
+				}
+			}
+		}
+	}
+
 	client->addCharacter(playerCreature->getObjectID(), zoneServer.get()->getGalaxyID());
 
 	JediManager::instance()->onPlayerCreated(playerCreature);

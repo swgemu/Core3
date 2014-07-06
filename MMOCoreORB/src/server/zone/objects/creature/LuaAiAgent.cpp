@@ -67,6 +67,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "executeBehavior", &LuaAiAgent::executeBehavior },
 		{ "info", &LuaAiAgent::info },
 		{ "spatialChat", &LuaAiAgent::spatialChat },
+		{ "setDefender", &LuaAiAgent::setDefender },
 		{ 0, 0 }
 };
 
@@ -411,6 +412,14 @@ int LuaAiAgent::spatialChat(lua_State* L) {
 			chatManager->broadcastMessage(realObject, message, 0, 0, 0);
 		}
 	}
+
+	return 0;
+}
+
+int LuaAiAgent::setDefender(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+
+	realObject->setDefender(obj);
 
 	return 0;
 }

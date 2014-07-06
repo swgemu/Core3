@@ -25,7 +25,7 @@ kahmurra_be = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/kahmurra_hue.iff"},
+	templates = {"object/mobile/kahmurra.iff"},
 	lootGroups = {},
 	weapons = {},
 	attacks = {}

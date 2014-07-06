@@ -191,6 +191,7 @@ core3_IDLS =	autogen/server/zone/managers/creature/TheaterSpawnObserver.cpp \
 				autogen/server/zone/objects/player/PlayerObject.cpp \
 				autogen/server/zone/objects/player/sui/SuiBox.cpp \
 				autogen/server/zone/objects/player/sui/keypadbox/SuiKeypadBox.cpp \
+				autogen/server/zone/objects/player/sui/fireworkdelaybox/SuiFireworkDelayBox.cpp \
 				autogen/server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
 				autogen/server/zone/objects/player/sui/listbox/SuiListBox.cpp \
 				autogen/server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \

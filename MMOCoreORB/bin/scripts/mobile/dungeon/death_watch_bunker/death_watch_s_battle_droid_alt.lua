@@ -1,7 +1,7 @@
 death_watch_s_battle_droid_alt = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_super_battle_droid",
 	socialGroup = "death_watch",
-	pvpFaction = "death_watch",
+	pvpFaction = "",
 	faction = "",
 	level = 200,
 	chanceHit = 18,
@@ -21,7 +21,7 @@ death_watch_s_battle_droid_alt = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = KILLER,
 	optionsBitmask = 128,
 	diet = NONE,

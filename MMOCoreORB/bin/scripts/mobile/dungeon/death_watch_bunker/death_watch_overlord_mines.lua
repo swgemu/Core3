@@ -1,7 +1,7 @@
 death_watch_overlord_mines = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_dthwatch_gold",
 	socialGroup = "death_watch",
-	pvpFaction = "death_watch",
+	pvpFaction = "",
 	faction = "",
 	level = 221,
 	chanceHit = 19,

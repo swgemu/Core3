@@ -28,6 +28,7 @@ domestic_eopie = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/eopie.iff"},
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

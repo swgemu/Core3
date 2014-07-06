@@ -27,6 +27,7 @@ woolamander_reaper = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/woolamander_hue.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ bull_bantha = Creature:new {
 
 	templates = {"object/mobile/bantha_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bantha_hue.iff",
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

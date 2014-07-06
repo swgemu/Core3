@@ -26,7 +26,12 @@ tactical_officer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_first_lieutenant_bothan_male_01.iff",
+				 "object/mobile/dressed_rebel_first_lieutenant_human_female_01.iff",
+				 "object/mobile/dressed_rebel_first_lieutenant_human_male_01.iff",
+				 "object/mobile/dressed_rebel_first_lieutenant_moncal_female_01.iff",
+				 "object/mobile/dressed_rebel_first_lieutenant_moncal_female_02.iff",
+				 "object/mobile/dressed_rebel_first_lieutenant_sullustan_male_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

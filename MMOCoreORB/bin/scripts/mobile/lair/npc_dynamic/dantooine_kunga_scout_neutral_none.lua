@@ -1,12 +1,13 @@
 dantooine_kunga_scout_neutral_none = Lair:new {
-	mobiles = {{"kunga_scout", 1}},
+	mobiles = {{"kunga_scout", 1},{"kunga_warrior", 1}},
 	spawnLimit = 8,
-	buildingsVeryEasy = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
-	buildingsEasy = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
-	buildingsMedium = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
-	buildingsHard = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/objective_dantari_fire_pit.iff"},
-	mobType = "npc"
+	buildingsVeryEasy = {},
+	buildingsEasy = {},
+	buildingsMedium = {},
+	buildingsHard = {},
+	buildingsVeryHard = {},
+	mobType = "npc",
+	buildingType = "none"
 }
 
 addLairTemplate("dantooine_kunga_scout_neutral_none", dantooine_kunga_scout_neutral_none)

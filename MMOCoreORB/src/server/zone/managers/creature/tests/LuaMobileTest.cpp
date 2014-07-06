@@ -8,6 +8,7 @@
 #include "gtest/gtest.h"
 #include "server/zone/templates/LootItemTemplate.h"
 #include "server/zone/templates/LootGroupTemplate.h"
+#include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/loot/LootGroupMap.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollectionEntry.h"
@@ -78,6 +79,10 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	LootGroupMap* lootGroupMap = LootGroupMap::instance();
 	ASSERT_EQ(lootGroupMap->initialize(), 0);
 
+	// Verify factions load
+	FactionManager::instance()->loadData();
+	ASSERT_FALSE(FactionManager::instance()->getFactionMap()->isEmpty());
+
 	// Load Templates
 	ASSERT_TRUE( TemplateManager::instance() != NULL );
 	if( TemplateManager::instance()->loadedTemplatesCount == 0 ){
@@ -90,6 +95,158 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	while (creatureIterator.hasNext()) {
 		CreatureTemplate* creature = creatureIterator.next();
 		std::string templateName( creature->getTemplateName().toCharArray() );
+
+		// Check configured templates
+		Vector<String> objTemps = creature->getTemplates();
+		EXPECT_FALSE( objTemps.isEmpty() ) << "Mobile " << templateName << " does not have any templates configured";
+		for( int j=0; j< objTemps.size(); j++ ){
+			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(objTemps.get(j).hashCode());
+			std::string objName = objTemps.get(j).toCharArray();
+			EXPECT_TRUE( templateData != NULL ) << "Mobile " << templateName << " has invalid template configured: " << objName;
+		}
+
+		// Verify that control device template is valid
+		String controlDeviceTemplate = creature->getControlDeviceTemplate();
+		if (!controlDeviceTemplate.isEmpty()) {
+			SharedObjectTemplate* controlDeviceTemplateData = TemplateManager::instance()->getTemplate(controlDeviceTemplate.hashCode());
+			EXPECT_TRUE( controlDeviceTemplateData != NULL ) << "Control device template " << controlDeviceTemplate.toCharArray() << " from " << templateName << " does not exist.";
+			EXPECT_TRUE( controlDeviceTemplate.beginsWith("object/intangible/pet/") ) << "Control device template " << controlDeviceTemplate.toCharArray() << " from " << templateName << " is not a pet/droid control device template.";
+		}
+
+		// Verify that faction and pvpFaction are valid
+		String faction = creature->getFaction();
+		if (!faction.isEmpty()) {
+			EXPECT_TRUE( FactionManager::instance()->isFaction(faction) ) << "Faction, " << faction.toCharArray() << ", from mobile template " << templateName << " does not exist.";
+		}
+		String pvpFaction = creature->getPvpFaction();
+		if (!pvpFaction.isEmpty()) {
+			EXPECT_TRUE( FactionManager::instance()->isFaction(pvpFaction) ) << "PvpFaction, " << pvpFaction.toCharArray() << ", from mobile template " << templateName << " does not exist.";
+		}
+
+		// Verify level
+		int level = creature->getLevel();
+		EXPECT_TRUE( level > 0 ) << "Level is not a positive value on mobile: " << templateName;
+
+		// Verify hit chance
+		float hitChance = creature->getChanceHit();
+		EXPECT_TRUE( hitChance > 0 ) << "ChanceHit is not a positive value on mobile: " << templateName;
+
+		// Verify xp
+		int xp = creature->getBaseXp();
+		EXPECT_TRUE( xp >= 0 ) << "Xp has a negative value on mobile: " << templateName;
+
+		// Verify damage
+		int minDamage = creature->getDamageMin();
+		int maxDamage = creature->getDamageMax();
+		EXPECT_TRUE( minDamage > 0 ) << "Min damage is not a positive value on mobile: " << templateName;
+		EXPECT_TRUE( maxDamage >= minDamage ) << "Max damage is lower than min damage on mobile: " << templateName;
+
+		// Verify HAM
+		int minHam = creature->getBaseHAM();
+		int maxHam = creature->getBaseHAMmax();
+		EXPECT_TRUE( minHam > 0 ) << "Base ham is not a positive value on mobile: " << templateName;
+		EXPECT_TRUE( maxHam >= minHam ) << "Base ham max is lower than base ham on mobile: " << templateName;
+
+		// Verify armor
+		int armor = creature->getArmor();
+		EXPECT_TRUE( armor >= 0 && armor <= 3 ) << "Armor is not a valid value on mobile: " << templateName;
+
+		// Verify resists
+		float kinetic = creature->getKinetic();
+		EXPECT_TRUE( kinetic >= -1 && kinetic <= 100 ) << "Kinetic resist is not a valid value on mobile: " << templateName;
+		float energy = creature->getEnergy();
+		EXPECT_TRUE( energy >= -1 && energy <= 100 ) << "Energy resist is not a valid value on mobile: " << templateName;
+		float electricity = creature->getElectricity();
+		EXPECT_TRUE( electricity >= -1 && electricity <= 100 ) << "Electricity resist is not a valid value on mobile: " << templateName;
+		float stun = creature->getStun();
+		EXPECT_TRUE( stun >= -1 && stun <= 100 ) << "Stun resist is not a valid value on mobile: " << templateName;
+		float blast = creature->getBlast();
+		EXPECT_TRUE( blast >= -1 && blast <= 100 ) << "Blast resist is not a valid value on mobile: " << templateName;
+		float heat = creature->getHeat();
+		EXPECT_TRUE( heat >= -1 && heat <= 100 ) << "Heat resist is not a valid value on mobile: " << templateName;
+		float cold = creature->getCold();
+		EXPECT_TRUE( cold >= -1 && cold <= 100 ) << "Cold resist is not a valid value on mobile: " << templateName;
+		float acid = creature->getAcid();
+		EXPECT_TRUE( acid >= -1 && acid <= 100 ) << "Acid resist is not a valid value on mobile: " << templateName;
+		float lightSaber = creature->getLightSaber();
+		EXPECT_TRUE( lightSaber >= -1 && lightSaber <= 100 ) << "LightSaber resist is not a valid value on mobile: " << templateName;
+
+		// Verify creature resources
+		String meat = creature->getMeatType();
+		float meatMax = creature->getMeatMax();
+		if (!meat.isEmpty()) {
+			String meatResources = "meat_domesticated,meat_wild,meat_herbivore,meat_carnivore,meat_reptilian,meat_avian,meat_insect";
+			StringTokenizer tokenizer(meatResources);
+			tokenizer.setDelimeter(",");
+			bool match = false;
+			String token;
+			while (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(token);
+				if (meat == token)
+					match = true;
+			}
+			EXPECT_TRUE( match ) << "Meat type on mobile " << templateName << " is not a valid meat resource";
+			EXPECT_TRUE( meatMax > 0 ) << "Meat amount on mobile " << templateName << " is zero.";
+		}
+
+		String hide = creature->getHideType();
+		float hideMax = creature->getHideMax();
+		if (!hide.isEmpty()) {
+			String hideResources = "hide_bristley,hide_leathery,hide_scaley,hide_wooly";
+			StringTokenizer tokenizer(hideResources);
+			tokenizer.setDelimeter(",");
+			bool match = false;
+			String token;
+			while (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(token);
+				if (hide == token)
+					match = true;
+			}
+			EXPECT_TRUE( match ) << "Hide type on mobile " << templateName << " is not a valid hide resource";
+			EXPECT_TRUE( hideMax > 0 ) << "Hide amount on mobile " << templateName << " is zero.";
+		}
+
+		String bone = creature->getBoneType();
+		float boneMax = creature->getBoneMax();
+		if (!bone.isEmpty()) {
+			String boneResources = "bone_avian,bone_mammal";
+			StringTokenizer tokenizer(boneResources);
+			tokenizer.setDelimeter(",");
+			bool match = false;
+			String token;
+			while (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(token);
+				if (bone == token)
+					match = true;
+			}
+			EXPECT_TRUE( match ) << "Bone type on mobile " << templateName << " is not a valid bone resource";
+			EXPECT_TRUE( boneMax > 0 ) << "Bone amount on mobile " << templateName << " is zero.";
+		}
+
+		String milk = creature->getMilkType();
+		float milkMax = creature->getMilk();
+		if (!milk.isEmpty()) {
+			String milkResources = "milk_domesticated,milk_wild";
+			StringTokenizer tokenizer(milkResources);
+			tokenizer.setDelimeter(",");
+			bool match = false;
+			String token;
+			while (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(token);
+				if (milk == token)
+					match = true;
+			}
+			EXPECT_TRUE( match ) << "Milk type on mobile " << templateName << " is not a valid milk resource";
+			EXPECT_TRUE( milkMax > 0 ) << "Milk amount on mobile " << templateName << " is zero.";
+		}
+
+		// Verify taming chance
+		float tamingChance = creature->getTame();
+		EXPECT_TRUE( tamingChance >= 0 && tamingChance <= 1 ) << "Taming chance is not a valid value on mobile: " << templateName;
+
+		// Verify scale
+		float scale = creature->getScale();
+		EXPECT_TRUE( scale > 0 ) << "Scale is not a positive value on mobile: " << templateName;
 
 		// Verify loot group percentages
 		LootGroupCollection* groupCollection = creature->getLootGroups();
@@ -127,6 +284,22 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			std::string groupName( weaponGroup.toCharArray() );
 			Vector<String> group = CreatureTemplateManager::instance()->getWeapons(weaponGroup);
 			EXPECT_TRUE( group.size() > 0 ) << "Weapon group " << groupName << " from " << templateName << " was not found in weaponMap";
+		}
+
+		// Verify conversation template exist, and the mob has converse option bit
+		uint32 convoTemplate = creature->getConversationTemplate();
+		uint32 optionsBitmask = creature->getOptionsBitmask();
+		if (convoTemplate != 0) {
+			ConversationTemplate* convoTemp = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
+			EXPECT_TRUE( convoTemp != NULL ) << "Conversation template from " << templateName << " was not found.";
+			EXPECT_TRUE( optionsBitmask & OptionBitmask::CONVERSE ) << templateName << " has a convo template but not the CONVERSE options bit.";
+		}
+
+		// Verify that outfits exist
+		String outfit = creature->getOutfit();
+		if (!outfit.isEmpty()) {
+			MobileOutfitGroup* outfitGroup = CreatureTemplateManager::instance()->getMobileOutfitGroup(outfit);
+			EXPECT_TRUE( outfitGroup != NULL ) << "Outfit group " << outfit.toCharArray() << " from " << templateName << " was not found.";
 		}
 	}
 

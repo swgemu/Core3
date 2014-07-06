@@ -52,6 +52,7 @@ void FactionManager::loadLuaConfig() {
 
 	delete lua;
 	lua = NULL;
+
 }
 
 int FactionManager::addFaction(lua_State* L) {

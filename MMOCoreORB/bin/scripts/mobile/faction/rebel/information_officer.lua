@@ -26,7 +26,14 @@ information_officer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_rebel_corporal_bith_female_01.iff",
+		"object/mobile/dressed_rebel_corporal_bothan_male_01.iff",
+		"object/mobile/dressed_rebel_corporal_human_female_01.iff",
+		"object/mobile/dressed_rebel_corporal_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_corporal_rodian_female_01.iff",
+		"object/mobile/dressed_rebel_corporal_sullustan_male_01.iff"
+	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

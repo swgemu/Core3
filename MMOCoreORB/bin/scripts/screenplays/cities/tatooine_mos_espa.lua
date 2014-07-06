@@ -33,7 +33,6 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	--Cantina
 	spawnMobile("tatooine", "bartender",60,-11.1703,-0.894992,1.53149,33.4278,1256058)
 	--{"dorn_gestros",60,-6.00754,-0.894992,-5.35219,231.068,1256058, "calm", "Dorn Gestros"},
-	--{"jilljoo_jab",60,10.5758,-0.894992,-3.56401,237.701,1256058, "", "Jilljoo Jab"},
 	--{"medic",60,12.1732,-0.894991,3.93609,180.003,1256058, "conversation", ""},
 	--{"squatter",300,12.1732,-0.894992,2.93609,360.011,1256058, "conversation", ""},
 	--{"tatooine_militiaman",300,2.1656,-0.894992,-15.9672,360.011,1256061, "conversation", ""},

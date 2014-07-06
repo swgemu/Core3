@@ -27,7 +27,7 @@ kwin_moonraiser = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/darklight_guard.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

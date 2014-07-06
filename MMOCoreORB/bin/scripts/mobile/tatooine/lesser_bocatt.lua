@@ -28,6 +28,7 @@ lesser_bocatt = Creature:new {
 
 	templates = {"object/mobile/bocatt_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bocatt_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

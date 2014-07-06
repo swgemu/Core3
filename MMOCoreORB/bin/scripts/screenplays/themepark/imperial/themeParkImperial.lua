@@ -312,7 +312,7 @@ thrawn_missions =
 		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_fambaa", planetName = "naboo", npcName = "a Fambaa" } 
+			{ npcTemplate = "theme_park_imperial_fambaa", planetName = "naboo", npcName = "a Fambaa" } 
 		}, 
 		secondarySpawns = {	
 		}, 

@@ -78,6 +78,7 @@ public:
 		String objName = "", tempName = "object/mobile/boba_fett.iff";
 		bool baby = false;
 		String aiTemplate = "";
+		bool event = false;
 
 		if (!arguments.isEmpty()) {
 			UnicodeTokenizer tokenizer(arguments);
@@ -91,6 +92,9 @@ public:
 
 			if (!objName.isEmpty() && objName == "baby")
 				baby = true;
+
+			if (!objName.isEmpty() && objName == "event")
+				event = true;
 
 			if (!objName.isEmpty() && objName.indexOf("object") == -1 && !baby) {
 				if (objName.length() < 6)

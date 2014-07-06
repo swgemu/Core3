@@ -1,7 +1,7 @@
 light_jedi_sentinel = Creature:new {
 	objectName = "@mob/creature_names:light_jedi_sentinel",
 	socialGroup = "self",
-	pvpFaction = "self",
+	pvpFaction = "",
 	faction = "",
 	level = 301,
 	chanceHit = 300,

@@ -1,7 +1,7 @@
 seasoned_jinda_warrior = Creature:new {
 	objectName = "@mob/creature_names:seasoned_jinda_warrior",
 	socialGroup = "jinda_tribe",
-	pvpFaction = "jinda_tribe",
+	pvpFaction = "",
 	faction = "",
 	level = 35,
 	chanceHit = 0.41,

@@ -28,6 +28,7 @@ eopie_herdmaster = Creature:new {
 
 	templates = {"object/mobile/eopie.iff"},
 	controlDeviceTemplate = "object/intangible/pet/eopie_hue.iff",
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

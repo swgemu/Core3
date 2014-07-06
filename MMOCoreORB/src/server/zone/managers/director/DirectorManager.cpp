@@ -151,6 +151,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "hasServerEvent", hasServerEvent);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "dropObserver", dropObserver);
+	lua_register(luaEngine->getLuaState(), "removeObservers", removeObservers);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spawnMobileRandom", spawnMobileRandom);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
@@ -1758,11 +1759,36 @@ int DirectorManager::dropObserver(lua_State* L) {
 	SceneObject* sceneObject = (SceneObject*) lua_touserdata(L, -1);
 	uint32 eventType = lua_tonumber(L, -2);
 
+	if (sceneObject == NULL)
+		return 0;
+
 	SortedVector<ManagedReference<Observer* > > observers = sceneObject->getObservers(eventType);
 	for (int i = 0; i < observers.size(); i++) {
-		Observer* observer = observers.get(i);
+		Observer* observer = observers.get(i).get();
 		if (observer != NULL && observer->isObserverType(ObserverType::SCREENPLAY))
 			sceneObject->dropObserver(eventType, observer);
+	}
+
+	return 0;
+}
+
+int DirectorManager::removeObservers(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 2) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::removeObservers");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+	}
+
+	int observerType = lua_tonumber(L, -1);
+	SceneObject* sceneObject = (SceneObject*) lua_touserdata(L, -2);
+
+	if (sceneObject == NULL)
+		return 0;
+
+	SortedVector<ManagedReference<Observer*> > observers = sceneObject->getObservers(observerType);
+
+	for (int i = 0; i < observers.size(); i++) {
+		sceneObject->dropObserver(observerType, observers.get(i).get());
 	}
 
 	return 0;
