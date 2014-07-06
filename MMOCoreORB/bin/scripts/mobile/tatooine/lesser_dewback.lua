@@ -28,6 +28,7 @@ lesser_dewback = Creature:new {
 
 	templates = {"object/mobile/dewback_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/dewback_hue.iff",
+	scale = 0.8,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ sandreaver = Creature:new {
 
 	templates = {"object/mobile/dewback.iff"},
 	controlDeviceTemplate = "object/intangible/pet/dewback_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

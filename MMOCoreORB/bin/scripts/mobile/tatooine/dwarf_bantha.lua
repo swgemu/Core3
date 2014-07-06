@@ -28,6 +28,7 @@ dwarf_bantha = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dwarf_bantha.iff"},
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

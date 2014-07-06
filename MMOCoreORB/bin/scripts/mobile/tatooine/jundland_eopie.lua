@@ -29,6 +29,7 @@ jundland_eopie = Creature:new {
 
 	templates = {"object/mobile/eopie.iff"},
 	controlDeviceTemplate = "object/intangible/pet/eopie_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

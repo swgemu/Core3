@@ -1,6 +1,6 @@
 tatooine_giant_canyon_krayt_dragon_pack_neutral_none = Lair:new {
-	mobiles = {{"giant_canyon_krayt_dragon",1},{"canyon_krayt_dragon",4},{"juvenile_canyon_krayt_dragon",2}},
-	spawnLimit = 15,
+	mobiles = {{"giant_canyon_krayt_dragon",1},{"canyon_krayt_dragon",1},{"juvenile_canyon_krayt_dragon",2}},
+	spawnLimit = 9,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},

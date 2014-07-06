@@ -29,6 +29,7 @@ tusken_bantha = Creature:new {
 
 	templates = {"object/mobile/bantha_saddle_hue.iff",
 			"object/mobile/bantha_saddle.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

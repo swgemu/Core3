@@ -27,6 +27,7 @@ grizzled_dewback = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dewback.iff"},
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ dwarf_nuna = Creature:new {
 
 	templates = {"object/mobile/dwarf_nuna.iff"},
 	controlDeviceTemplate = "object/intangible/pet/dwarf_nuna_hue.iff",
+	scale = 0.65,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

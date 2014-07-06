@@ -28,6 +28,7 @@ dwarf_eopie = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dwarf_eopie.iff"},
+	scale = 0.7,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
