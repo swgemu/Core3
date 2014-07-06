@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_c3920af6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/tatooine/jilljoo_jab.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-06T10:08:11Z",
+      "side": 1,
+      "message": "too small",
+      "revId": "23d953406489284abf1d5542cd795f98fcba1d8a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
