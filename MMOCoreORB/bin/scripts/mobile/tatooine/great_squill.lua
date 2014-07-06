@@ -28,6 +28,7 @@ great_squill = Creature:new {
 
 	templates = {"object/mobile/squill_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/squill_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

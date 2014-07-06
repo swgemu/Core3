@@ -28,6 +28,7 @@ minor_worrt = Creature:new {
 
 	templates = {"object/mobile/worrt_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/worrt_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

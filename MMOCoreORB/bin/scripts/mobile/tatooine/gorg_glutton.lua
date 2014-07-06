@@ -27,6 +27,7 @@ gorg_glutton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gorg.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

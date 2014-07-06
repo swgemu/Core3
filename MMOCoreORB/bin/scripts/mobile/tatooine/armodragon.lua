@@ -28,6 +28,7 @@ armodragon = Creature:new {
 
 	templates = {"object/mobile/dune_lizard.iff"},
 	controlDeviceTemplate = "object/intangible/pet/dune_lizard_hue.iff",
+	scale = 1.3,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
