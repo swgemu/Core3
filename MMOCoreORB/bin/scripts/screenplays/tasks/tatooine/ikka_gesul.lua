@@ -40,7 +40,7 @@ ikka_gesul_missions =
 
 npcMapIkkaGesul =
 	{
-		{{"ikka_gesul",60,1499.45,7,3009.43,191.517,0, "", "Ikka Gesul"},
+		{
 			spawnData = { planetName = "tatooine", npcTemplate = "ikka_gesul", x = 1499.45, z = 7, y = 3009.43, direction = 191.517, cellID = 0, position = STAND },
 			worldPosition = { x = 1500, y = 3010 },
 			npcNumber = 1,

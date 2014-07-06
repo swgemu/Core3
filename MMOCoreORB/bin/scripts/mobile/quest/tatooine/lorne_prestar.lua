@@ -24,13 +24,13 @@ lorne_prestar = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/mos_taike_guard_old.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "lorne_prestar_mission_giver_convotemplate",
 	outfit = "mos_taike_guard_old_outfit",
 	attacks = {
 	}
