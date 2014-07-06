@@ -24,13 +24,13 @@ kaeline_ungasan = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_kaeline_ungasan.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "kaeline_ungasan_mission_giver_convotemplate",
 	outfit = "kaeline_ungasan_outfit",
 	attacks = {
 	}

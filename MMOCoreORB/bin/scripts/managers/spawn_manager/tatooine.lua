@@ -588,7 +588,6 @@ tatooine_static_spawns = {
 	{"junk_nado",60,4.4,-0.5,1.3,-133,1255997, "", "Nado",JUNKGENERIC,JUNKCONVNADOWATTOS},
 	{"junk_sneg",60,-1.63376,7.01,7.35289,203.569,1076943, "calm", "Sneg the Hand",JUNKWEAPONS,JUNKCONVSNEGVALARIAN},
 	{"junk_nathan",60,3817.7,16.2,2340.5,0,0, "calm", "Nathan Blyskipper (a Junk Dealer)",JUNKJAWA,JUNKCONVNATHANTAIKE},
-	{"kaeline_ungasan",60,-2815.58,5,1940.55,335.154,0, "", "Kaeline Ungasan"},
 	{"kahfr_oladi",60,3473.4,5,-4974.8,104,0, "npc_sitting_chair", ""},
 	{"kavas_urdano",60,-13.7911,7.01,-3.96167,12.0127,1076943, "calm", "Kavas"},
 	{"keanna_likyna",60,-18.8886,3.22324,20.608,214.006,926480, "neutral", "Keanna Li`kyna"},

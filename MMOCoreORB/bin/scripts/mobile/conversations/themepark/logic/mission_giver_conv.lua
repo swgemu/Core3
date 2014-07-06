@@ -241,6 +241,7 @@ createMissionGiverConvoTemplate("farious_gletch_mission_giver_convotemplate", "f
 createMissionGiverConvoTemplate("lt_harburik_mission_giver_convotemplate", "lt_harburik_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("ikka_gesul_mission_giver_convotemplate", "ikka_gesul_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("jilljoo_jab_mission_giver_convotemplate", "jilljoo_jab_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("kaeline_ungasan_mission_giver_convotemplate", "kaeline_ungasan_mission_giver_conv_handler")
 
 
 -- Naboo
