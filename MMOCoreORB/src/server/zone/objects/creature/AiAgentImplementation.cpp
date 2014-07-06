@@ -2167,6 +2167,8 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate* selectAttack, AiTemplate* combatMove, AiTemplate* idle) {
 	CompositeBehavior* rootSelector = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), "Composite", AiMap::SELECTORBEHAVIOR));
 	CompositeBehavior* attackSequence = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), "Composite", AiMap::SEQUENCEBEHAVIOR));
+	rootSelector->setID(String("root"));
+	attackSequence->setID(String("attackSequence"));
 
 	clearBehaviorList();
 
@@ -2198,8 +2200,9 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 void AiAgentImplementation::setCurrentBehavior(const String& b) {
 	Locker locker(&behaviorMutex);
 	currentBehaviorID = b;
-	if (behaviors.get(currentBehaviorID) != NULL)
+	if (behaviors.get(currentBehaviorID) != NULL) {
 		activateMovementEvent();
+	}
 }
 
 int AiAgentImplementation::getBehaviorStatus() {

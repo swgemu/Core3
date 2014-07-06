@@ -110,6 +110,9 @@ public:
 	}
 
 	Reference<AiTemplate*> getTemplate(String name) {
+		if (name == "none")
+			return NULL;
+
 		return aiMap.get(name);
 	}
 
