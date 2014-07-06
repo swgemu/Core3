@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_a3739614",
+        "filename": "MMOCoreORB/bin/scripts/mobile/spawn/destroy_mission/lok_destroy_missions.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-06T03:39:23Z",
+      "side": 1,
+      "message": "You should remove this one as well",
+      "revId": "35485c2e321c6c9f91983b348089d00c1970db33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
