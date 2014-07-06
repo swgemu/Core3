@@ -1,5 +1,5 @@
 tatooine_sevorrt_pack_neutral_none = Lair:new {
-	mobiles = {{"sevorrt", 1}},
+	mobiles = {{"sevorrt",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

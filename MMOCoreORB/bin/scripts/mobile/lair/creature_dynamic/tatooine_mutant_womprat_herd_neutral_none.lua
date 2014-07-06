@@ -1,5 +1,5 @@
 tatooine_mutant_womprat_herd_neutral_none = Lair:new {
-	mobiles = {{"mutant_womp_rat",1}},
+	mobiles = {{"mutant_womp_rat",1},{"variegated_womp_rat",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

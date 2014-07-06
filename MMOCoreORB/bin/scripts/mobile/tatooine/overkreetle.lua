@@ -27,6 +27,7 @@ overkreetle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kreetle.iff"},
+	scale = 4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
