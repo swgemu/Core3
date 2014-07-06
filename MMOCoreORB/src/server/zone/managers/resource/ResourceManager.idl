@@ -77,7 +77,7 @@ class ResourceManager extends Observer implements Logger {
 	private transient int shiftInterval;
 	private transient Lua lua;
 	
-	public static final int RESOURCE_DEED_QUANTITY = 100000;
+	public static final int RESOURCE_DEED_QUANTITY = 30000;
 	
 	public ResourceManager(ZoneServer server, ZoneProcessServer impl, 
 			ObjectManager objectMan) {
