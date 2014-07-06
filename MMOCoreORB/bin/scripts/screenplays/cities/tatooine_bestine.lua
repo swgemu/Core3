@@ -162,7 +162,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--{"issirx",60,-1074.37,12,-3676.69,21.1437,0, "neutral", "Issirx"},
 	--{"isuss",60,-1294.3,12,-3500.88,45.8365,0, "neutral", "Isuss"},
 	--{"junk_dealer",0,-1392,185,-3847.9,8,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
-	--{"kormund_thrylle",60,-1043.98,10,-3530.5,221.746,0, "", "Kormund Thrylle"},
 	spawnMobile("tatooine", "noble",60,-1250.18,12,-3545.35,279.206,0)
 	spawnMobile("tatooine", "noble",60,-1023.25,12,-3746.26,261.847,0)
 	--{"oohiani",60,-1120.21,12,-3639.71,204.893,0, "neutral", "Oohiani"},
