@@ -28,6 +28,7 @@ kreetle = Creature:new {
 
 	templates = {"object/mobile/kreetle.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
+	scale = 0.75,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

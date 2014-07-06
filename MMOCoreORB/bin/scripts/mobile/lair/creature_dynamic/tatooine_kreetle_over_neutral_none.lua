@@ -1,5 +1,5 @@
 tatooine_kreetle_over_neutral_none = Lair:new {
-	mobiles = {{"kreetle_swarmling",1},{"kreetle",2}},
+	mobiles = {{"kreetle_swarmling",10},{"overkreetle",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

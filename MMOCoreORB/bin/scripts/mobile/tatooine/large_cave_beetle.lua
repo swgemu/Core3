@@ -28,6 +28,7 @@ large_cave_beetle = Creature:new {
 
 	templates = {"object/mobile/giant_sand_beetle.iff"},
 	controlDeviceTemplate = "object/intangible/pet/rock_mite_hue.iff",
+	scale = 1.6,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ rockmite = Creature:new {
 
 	templates = {"object/mobile/rock_mite.iff"},
 	controlDeviceTemplate = "object/intangible/pet/rock_mite_hue.iff",
+	scale = 0.6,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
