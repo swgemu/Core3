@@ -102,9 +102,10 @@ void FireworkShowMenuComponent::addEvent(CreatureObject* player, FireworkObject*
 	FireworkShowDataComponent* fireworkShowData = cast<FireworkShowDataComponent*>(data);
 
 	int curFireworks = fireworkShowData->getTotalFireworkCount();
+	int showCapacity = fireworkShow->getCapacity();
 
-	if (curFireworks == 20) {
-		player->sendSystemMessage("This firework show has reached its limit of 20 fireworks.");
+	if (curFireworks == showCapacity) {
+		player->sendSystemMessage("This firework show is at full capacity.");
 		return;
 	}
 
