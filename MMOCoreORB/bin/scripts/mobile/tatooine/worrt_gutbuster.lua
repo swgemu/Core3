@@ -27,6 +27,7 @@ worrt_gutbuster = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/worrt.iff"},
+	scale = 4.5,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

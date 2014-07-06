@@ -27,6 +27,7 @@ female_mountain_squill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mountain_squill.iff"},
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
