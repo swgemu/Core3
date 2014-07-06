@@ -239,6 +239,7 @@ createMissionGiverConvoTemplate("blerx_tango_mission_giver_convotemplate", "bler
 createMissionGiverConvoTemplate("bren_kingal_mission_giver_convotemplate", "bren_kingal_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("farious_gletch_mission_giver_convotemplate", "farious_gletch_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("lt_harburik_mission_giver_convotemplate", "lt_harburik_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("ikka_gesul_mission_giver_convotemplate", "ikka_gesul_mission_giver_conv_handler")
 
 
 -- Naboo

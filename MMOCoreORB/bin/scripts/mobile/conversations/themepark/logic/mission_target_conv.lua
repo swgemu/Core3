@@ -102,6 +102,7 @@ createMissionTargetConvoTemplate("blerx_tango_mission_target_convotemplate","ble
 createMissionTargetConvoTemplate("bren_kingal_mission_target_convotemplate","bren_kingal_mission_target_conv_handler")
 createMissionTargetConvoTemplate("farious_gletch_mission_target_convotemplate","farious_gletch_mission_target_conv_handler")
 createMissionTargetConvoTemplate("lt_harburik_mission_target_convotemplate","lt_harburik_mission_target_conv_handler")
+createMissionTargetConvoTemplate("ikka_gesul_mission_target_convotemplate","ikka_gesul_mission_target_conv_handler")
 
 
 -- Naboo

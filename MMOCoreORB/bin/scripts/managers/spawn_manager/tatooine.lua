@@ -537,7 +537,6 @@ tatooine_static_spawns = {
 	{"hermit",60,54.6956,-0.521137,37.0243,360.011,4005523, "conversation", ""},
 	{"hunter",300,-2.46731,0.408271,-0.572452,180.01,1187893, "conversation", ""},
 	{"ihatha_hawit",60,-1291.36,12,-3634.94,301.333,0, "neutral", "Ihatha Hawit"},
-	{"ikka_gesul",60,1499.45,7,3009.43,191.517,0, "", "Ikka Gesul"},
 	{"imi_eficoaw",60,-1013.14,12,-3695.87,233.295,0, "neutral", "Imi Eficoaw"},
 	{"imperial_army_captain",400,-1307.46,12,-3662.44,218.566,0, "npc_imperial", ""},
 	{"imperial_cadet",400,0.6,0,-9.7,188,1280131, "npc_use_terminal_high", ""},

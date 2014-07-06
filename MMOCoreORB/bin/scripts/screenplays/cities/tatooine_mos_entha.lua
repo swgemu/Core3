@@ -174,7 +174,6 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "criminal",300,1621.1,7,3317.4,18,0)
 	--{"dim_u_monastery_nun",300,1326.93,7,3164.39,180.005,0, "conversation", ""},
 	spawnMobile("tatooine", "eg6_power_droid",60,1332.45,7.90682,3237.09,8.18614,0)
-	--{"ikka_gesul",60,1499.45,7,3009.43,191.517,0, "", "Ikka Gesul"},
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,1266,7,3184,225,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,1727,7,3093,225,0)
 	--{"junk_dealer",0,1308.1,7,3085.2,1,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
