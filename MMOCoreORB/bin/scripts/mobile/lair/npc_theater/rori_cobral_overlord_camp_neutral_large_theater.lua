@@ -1,11 +1,12 @@
 rori_cobral_overlord_camp_neutral_large_theater = Lair:new {
-	mobiles = {},
-	spawnLimit = 15,
-	buildingsVeryEasy = {},
-	buildingsEasy = {},
-	buildingsMedium = {},
-	buildingsHard = {},
-	buildingsVeryHard = {},
+	mobiles = {{"neo_cobral_overlord",1},{"cobral_hooligan",1},{"neo_cobral_thief",1},{"neo_cobral_bandit",1}},
+	spawnLimit = 12,
+	buildingsVeryEasy = {"object/building/poi/naboo_gunrunners_medium.iff"},
+	buildingsEasy = {"object/building/poi/naboo_gunrunners_medium.iff"},
+	buildingsMedium = {"object/building/poi/naboo_gunrunners_medium.iff"},
+	buildingsHard = {"object/building/poi/naboo_gunrunners_medium.iff"},
+	buildingsVeryHard = {"object/building/poi/naboo_gunrunners_medium.iff"},
+	buildingType = "theater"
 }
 
 addLairTemplate("rori_cobral_overlord_camp_neutral_large_theater", rori_cobral_overlord_camp_neutral_large_theater)
