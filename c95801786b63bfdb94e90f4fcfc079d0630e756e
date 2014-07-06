@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_8312d2b2",
+        "filename": "MMOCoreORB/bin/scripts/mobile/spawn/destroy_mission/dantooine_destroy_missions.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-06T02:45:58Z",
+      "side": 1,
+      "message": "We can\u0027t have theater spawns for destroy missions. Remove them.",
+      "revId": "c95801786b63bfdb94e90f4fcfc079d0630e756e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
