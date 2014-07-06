@@ -594,7 +594,6 @@ tatooine_static_spawns = {
 	{"kiosait_eetwaka",60,-3.78237,2.27819,-25.8455,324.158,926475, "neutral", "Kiosait Eetwaka"},
 	{"klepa_laeel",60,-2769.5,5,2111.1,104,0, "npc_sitting_chair", ""},
 	{"kolka_zteht",60,1521.78,7,3259.81,184.256,0, "neutral", ""},
-	{"kormund_thrylle",60,-1043.98,10,-3530.5,221.746,0, "", "Kormund Thrylle"},
 	{"lady_valarian",60,-23.836,9.01,0.605811,147.031,1076945, "calm", "Lady Valarian"},
 	{"le_repair_droid",60,23.67,0.2,76.43,130.65,1177479, "calm", ""},
 	{"lilas_dinhint",60,22.6945,0.198179,-0.151074,187.601,1028172, "neutral", "Lilas Dinhint (museum curator)"},
