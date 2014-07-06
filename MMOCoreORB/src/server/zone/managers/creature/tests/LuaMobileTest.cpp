@@ -169,20 +169,71 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		// Verify creature resources
 		String meat = creature->getMeatType();
 		float meatMax = creature->getMeatMax();
-		if (!meat.isEmpty())
+		if (!meat.isEmpty()) {
+			String meatResources = "meat_domesticated,meat_wild,meat_herbivore,meat_carnivore,meat_reptilian,meat_avian,meat_insect";
+			StringTokenizer tokenizer(meatResources);
+			tokenizer.setDelimeter(",");
+			bool match = false;
+			String token;
+			while (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(token);
+				if (meat == token)
+					match = true;
+			}
+			EXPECT_TRUE( match ) << "Meat type on mobile " << templateName << " is not a valid meat resource";
 			EXPECT_TRUE( meatMax > 0 ) << "Meat amount on mobile " << templateName << " is zero.";
+		}
+
 		String hide = creature->getHideType();
 		float hideMax = creature->getHideMax();
-		if (!hide.isEmpty())
+		if (!hide.isEmpty()) {
+			String hideResources = "hide_bristley,hide_leathery,hide_scaley,hide_wooly";
+			StringTokenizer tokenizer(hideResources);
+			tokenizer.setDelimeter(",");
+			bool match = false;
+			String token;
+			while (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(token);
+				if (hide == token)
+					match = true;
+			}
+			EXPECT_TRUE( match ) << "Hide type on mobile " << templateName << " is not a valid hide resource";
 			EXPECT_TRUE( hideMax > 0 ) << "Hide amount on mobile " << templateName << " is zero.";
+		}
+
 		String bone = creature->getBoneType();
 		float boneMax = creature->getBoneMax();
-		if (!bone.isEmpty())
+		if (!bone.isEmpty()) {
+			String boneResources = "bone_avian,bone_mammal";
+			StringTokenizer tokenizer(boneResources);
+			tokenizer.setDelimeter(",");
+			bool match = false;
+			String token;
+			while (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(token);
+				if (bone == token)
+					match = true;
+			}
+			EXPECT_TRUE( match ) << "Bone type on mobile " << templateName << " is not a valid bone resource";
 			EXPECT_TRUE( boneMax > 0 ) << "Bone amount on mobile " << templateName << " is zero.";
+		}
+
 		String milk = creature->getMilkType();
 		float milkMax = creature->getMilk();
-		if (!milk.isEmpty())
+		if (!milk.isEmpty()) {
+			String milkResources = "milk_domesticated,milk_wild";
+			StringTokenizer tokenizer(milkResources);
+			tokenizer.setDelimeter(",");
+			bool match = false;
+			String token;
+			while (tokenizer.hasMoreTokens()) {
+				tokenizer.getStringToken(token);
+				if (milk == token)
+					match = true;
+			}
+			EXPECT_TRUE( match ) << "Milk type on mobile " << templateName << " is not a valid milk resource";
 			EXPECT_TRUE( milkMax > 0 ) << "Milk amount on mobile " << templateName << " is zero.";
+		}
 
 		// Verify taming chance
 		float tamingChance = creature->getTame();
