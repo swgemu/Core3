@@ -24,14 +24,14 @@ jilljoo_jab = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_jilljoo_jab.iff"},
 	lootGroups = {},
 	weapons = {},
 	outfit = "jilljoo_jab_outfit",
-	conversationTemplate = "",
+	conversationTemplate = "jilljoo_jab_mission_giver_convotemplate",
 	attacks = {
 	}
 }

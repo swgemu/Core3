@@ -574,7 +574,6 @@ tatooine_static_spawns = {
 	{"jawa_warlord",300,3450.7,0,-4526.2,20,0, "conversation", ""},
 	{"jawa_warlord",300,3663.3,5,-4856,143,0, "scared", ""},
 	{"jawa_warlord",300,3665,5,-4856.8,300,0, "worried", ""},
-	{"jilljoo_jab",60,10.5758,-0.894992,-3.56401,237.701,1256058, "", "Jilljoo Jab"},
 	{"junk_jawa",0,-6228.01, 23.63, 1868.02,10,0, "", "Jawa Trader",JUNKCLOTHESANDJEWELLERY+JUNKARMOUR,JUNKCONVJAWAFINARY},
 	{"junk_jawa",0,-6223.90, 23.70, 1887.03,10,0, "", "Jawa Trader",JUNKGENERIC,JUNKCONVJAWAGENERIC},
 	{"junk_jawa",0, -6204.08, 23.63, 1846.91,10,0, "", "Jawa Trader",JUNKWEAPONS,JUNKCONVJAWAARMS},
