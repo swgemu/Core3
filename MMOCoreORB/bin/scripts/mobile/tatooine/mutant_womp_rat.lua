@@ -28,6 +28,7 @@ mutant_womp_rat = Creature:new {
 
 	templates = {"object/mobile/womp_rat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/womp_rat_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

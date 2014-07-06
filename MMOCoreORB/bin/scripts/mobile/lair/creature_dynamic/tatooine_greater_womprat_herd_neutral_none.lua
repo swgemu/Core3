@@ -1,5 +1,5 @@
 tatooine_greater_womprat_herd_neutral_none = Lair:new {
-	mobiles = {{"greater_desert_womp_rat", 1},{"womp_rat", 2}},
+	mobiles = {{"greater_desert_womp_rat",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

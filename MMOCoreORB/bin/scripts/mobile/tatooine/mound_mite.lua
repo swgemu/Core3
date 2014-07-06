@@ -28,6 +28,7 @@ mound_mite = Creature:new {
 
 	templates = {"object/mobile/mound_mite.iff"},
 	controlDeviceTemplate = "object/intangible/pet/rock_mite_hue.iff",
+	scale = 0.8,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

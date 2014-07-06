@@ -28,6 +28,7 @@ sevorrt = Creature:new {
 
 	templates = {"object/mobile/sevorrt.iff"},
 	controlDeviceTemplate = "object/intangible/pet/worrt_hue.iff",
+	scale = 1.5,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

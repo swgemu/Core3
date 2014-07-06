@@ -28,6 +28,7 @@ slum_rat = Creature:new {
 
 	templates = {"object/mobile/lesser_desert_womp_rat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/womp_rat_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

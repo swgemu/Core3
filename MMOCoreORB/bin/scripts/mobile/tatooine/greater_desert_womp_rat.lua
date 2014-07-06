@@ -28,6 +28,7 @@ greater_desert_womp_rat = Creature:new {
 
 	templates = {"object/mobile/greater_desert_womp_rat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/womp_rat_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

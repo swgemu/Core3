@@ -71,17 +71,18 @@ function SennexCaveScreenPlay:spawnMobiles()
 
 	--Beetles
 	spawnMobile("tatooine", "cave_beetle", 300, 84.6138, -46.3756, -111.955, 0, 5995569)
-	spawnMobile("tatooine", "large_rock_beetle", 300, 90.6391, -46.5946, -107.052, 0, 5995569)
+	spawnMobile("tatooine", "large_cave_beetle", 300, 90.6391, -46.5946, -107.052, 0, 5995569)
 	spawnMobile("tatooine", "cave_beetle", 300, 94.9631, -46.6007, -134.941, 0, 5995575)
 	spawnMobile("tatooine", "cave_beetle", 300, 88.5285, -46.5252, -146.986, 0, 5995575)
 	spawnMobile("tatooine", "large_cave_beetle", 300, 82.3354, -46.5893, -144.681, 0, 5995575)
 	spawnMobile("tatooine", "cave_beetle", 300, 77.9578, -46.3635, -137.141, 0, 5995575)
-	spawnMobile("tatooine", "rock_beetle", 300, 49.3657, -51.5992, -82.1096, 0, 5995574)
+	spawnMobile("tatooine", "cave_beetle", 300, 49.3657, -51.5992, -82.1096, 0, 5995574)
 	spawnMobile("tatooine", "cave_beetle", 300, 54.0389, -48.7402, -105.26, 0, 5995574)
-	spawnMobile("tatooine", "rock_beetle", 300, 47.5229, -51.848, -87.5113, 0, 5995574)
+	spawnMobile("tatooine", "cave_beetle", 300, 47.5229, -51.848, -87.5113, 0, 5995574)
 
 	---OutSide Beetles
-	--spawnCreature(duneBeetle, 8, 6547.05, -1311.56)
-	--spawnCreature(duneBeetle, 8, 6552.22, -1325.97)
-	--spawnCreature(duneBeetle, 8, 6566.36, -1330.49)
+	spawnMobile("tatooine", "dune_beetle", 300, 6547.05, 108.1, -1311.56, 0, 0)
+	spawnMobile("tatooine", "dune_beetle", 300, 6552.22, 101.1, -1325.97, 0, 0)
+	spawnMobile("tatooine", "dune_beetle", 300, 6566.36, 103.5, -1330.49, 0, 0)
+
 end

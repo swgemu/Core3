@@ -1,5 +1,5 @@
 tatooine_kreetle_herd_neutral_none = Lair:new {
-	mobiles = {{"kreetle", 1}},
+	mobiles = {{"kreetle",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
