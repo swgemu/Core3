@@ -27,7 +27,7 @@ cannibal_dewback = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dewback_hue.iff"},
-	scale = 1.2,
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

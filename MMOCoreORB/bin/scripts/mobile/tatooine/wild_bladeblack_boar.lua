@@ -11,7 +11,7 @@ wild_bladeblack_boar = Creature:new {
 	baseHAM = 9100,
 	baseHAMmax = 11100,
 	armor = 0,
-	resists = {0,0,0,0,0,0,0,0,0},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 120,
 	hideType = "hide_leathery",
@@ -27,6 +27,7 @@ wild_bladeblack_boar = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/zucca_boar_hue.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

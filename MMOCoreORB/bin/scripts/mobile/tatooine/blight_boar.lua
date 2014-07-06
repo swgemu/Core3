@@ -28,6 +28,7 @@ blight_boar = Creature:new {
 
 	templates = {"object/mobile/zucca_boar.iff"},
 	controlDeviceTemplate = "object/intangible/pet/zucca_boar_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

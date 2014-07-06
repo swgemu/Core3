@@ -1,5 +1,5 @@
 tatooine_cannibal_dewback_herd_neutral_none = Lair:new {
-	mobiles = {{"cannibal_dewback", 1}},
+	mobiles = {{"cannibal_dewback",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

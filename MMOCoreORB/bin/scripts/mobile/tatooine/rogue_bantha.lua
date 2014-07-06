@@ -28,6 +28,7 @@ rogue_bantha = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bantha.iff"},
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

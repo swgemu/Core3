@@ -28,6 +28,7 @@ bantha_matriarch = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/matriarch_bantha.iff"},
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

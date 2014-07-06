@@ -28,6 +28,7 @@ mountain_dewback = Creature:new {
 
 	templates = {"object/mobile/mountain_dewback.iff"},
 	controlDeviceTemplate = "object/intangible/pet/dewback_hue.iff",
+	scale = 1.05,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

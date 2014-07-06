@@ -1,5 +1,5 @@
 tatooine_canyon_krayt_dragon_pack_none = Lair:new {
-	mobiles = {{"canyon_krayt_dragon",4},{"juvenile_canyon_krayt_dragon",1}},
+	mobiles = {},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

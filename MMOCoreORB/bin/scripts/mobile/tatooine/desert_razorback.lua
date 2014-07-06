@@ -28,6 +28,7 @@ desert_razorback = Creature:new {
 
 	templates = {"object/mobile/zucca_boar_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/zucca_boar_hue.iff",
+	scale = 1.15,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

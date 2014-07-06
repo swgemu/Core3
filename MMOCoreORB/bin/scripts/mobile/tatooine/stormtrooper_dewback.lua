@@ -27,6 +27,7 @@ stormtrooper_dewback = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dewback.iff"},
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
