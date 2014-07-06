@@ -28,6 +28,7 @@ tempest_rill = Creature:new {
 
 	templates = {"object/mobile/rill.iff"},
 	controlDeviceTemplate = "object/intangible/pet/dune_lizard_hue.iff",
+	scale = 0.7,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

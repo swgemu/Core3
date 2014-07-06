@@ -28,6 +28,7 @@ volatile_scyk = Creature:new {
 
 	templates = {"object/mobile/scyk.iff"},
 	controlDeviceTemplate = "object/intangible/pet/dune_lizard_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
