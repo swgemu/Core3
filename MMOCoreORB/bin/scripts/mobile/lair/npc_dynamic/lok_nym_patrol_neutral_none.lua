@@ -1,11 +1,12 @@
 lok_nym_patrol_neutral_none = Lair:new {
-	mobiles = {},
-	spawnLimit = 15,
+	mobiles = {{"nym_surveyer",1},{"nym_patrol_weak",1}},
+	spawnLimit = 9,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("lok_nym_patrol_neutral_none", lok_nym_patrol_neutral_none)
