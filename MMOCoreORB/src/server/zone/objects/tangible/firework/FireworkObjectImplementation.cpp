@@ -84,6 +84,8 @@ void FireworkObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 		if (fireworkShowData == NULL)
 			return;
 
+		alm->insertAttribute("examine_hoppersize", firework->getCapacity());
+
 		int totalFireworks = fireworkShowData->getTotalFireworkCount();
 		alm->insertAttribute("blank_entry", "");
 		alm->insertAttribute("length", "\\#pcontrast2 " + String::valueOf(totalFireworks) + " Fireworks");
@@ -117,6 +119,7 @@ void FireworkObjectImplementation::updateCraftingValues(CraftingValues* values, 
 			return;
 
 		capacity = values->getCurrentValue("charges");
+
 	} else {
 		setUseCount(values->getCurrentValue("charges"));
 	}

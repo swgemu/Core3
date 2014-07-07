@@ -273,7 +273,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	--{"jawa_warlord",300,3665,5,-4856.8,300,0, "worried", ""},
 	--{"junk_dealer",0,3699.2,5,-4822,92,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	--{"kahfr_oladi",60,3473.4,5,-4974.8,104,0, "npc_sitting_chair", ""},
-	--{"lorne_prestar",60,3376,5,-4786,123,0, "", "Lorne Prestar"},
 	--{"mos_eisley_police_officer",300,3385.18,4.68287,-4792.87,298.466,0, "calm", "Lt Ogo (a Planet record keeper)"},
 	--{"mos_eisley_police_officer",300,3243.7,5,-4533.1,137,0, "calm", ""},
 	--{"mos_eisley_police_officer",300,3407,0,-4505,255,0, "npc_accusing", ""},

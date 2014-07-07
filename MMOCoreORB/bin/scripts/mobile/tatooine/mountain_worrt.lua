@@ -28,6 +28,7 @@ mountain_worrt = Creature:new {
 
 	templates = {"object/mobile/mountain_worrt.iff"},
 	controlDeviceTemplate = "object/intangible/pet/worrt_hue.iff",
+	scale = 1.25,
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",

@@ -56,7 +56,7 @@ jilljoo_jab_missions =
 
 npcMapJilljooJab =
 	{
-		{	{"jilljoo_jab",60,10.5758,-0.894992,-3.56401,237.701,1256058, "", "Jilljoo Jab"},
+		{
 			spawnData = { planetName = "tatooine", npcTemplate = "jilljoo_jab", x = 10.58, z = -0.89, y = -3.56, direction = 237.7, cellID = 1256058, position = STAND },
 			worldPosition = { x = -3001, y = 2161 },
 			npcNumber = 1,

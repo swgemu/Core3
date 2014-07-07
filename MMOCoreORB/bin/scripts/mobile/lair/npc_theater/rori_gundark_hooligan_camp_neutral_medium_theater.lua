@@ -1,11 +1,12 @@
 rori_gundark_hooligan_camp_neutral_medium_theater = Lair:new {
-	mobiles = {},
-	spawnLimit = 15,
-	buildingsVeryEasy = {},
-	buildingsEasy = {},
-	buildingsMedium = {},
-	buildingsHard = {},
-	buildingsVeryHard = {},
+	mobiles = {{"gundark_desperado",1},{"gundark_hooligan",1},{"gundark_ruffian",1}},
+	spawnLimit = 12,
+	buildingsVeryEasy = {"object/building/poi/naboo_swamp_rat_gang_camp_medium.iff","object/building/poi/naboo_mauler_medium.iff"},
+	buildingsEasy = {"object/building/poi/naboo_swamp_rat_gang_camp_medium.iff","object/building/poi/naboo_mauler_medium.iff"},
+	buildingsMedium = {"object/building/poi/naboo_swamp_rat_gang_camp_medium.iff","object/building/poi/naboo_mauler_medium.iff"},
+	buildingsHard = {"object/building/poi/naboo_swamp_rat_gang_camp_medium.iff","object/building/poi/naboo_mauler_medium.iff"},
+	buildingsVeryHard = {"object/building/poi/naboo_swamp_rat_gang_camp_medium.iff","object/building/poi/naboo_mauler_medium.iff"},
+	buildingType = "theater"
 }
 
 addLairTemplate("rori_gundark_hooligan_camp_neutral_medium_theater", rori_gundark_hooligan_camp_neutral_medium_theater)

@@ -111,8 +111,9 @@ function librarian_handler:runScreenHandlers(conversationTemplate, conversingPla
 	end
 
 	if (self:existsInTable(wrongResponses, screenID)) then
+		currentQuestion = readData(objectID .. ":librarian")
 		writeData(objectID .. ":librarian", 1)
-		clonedConversation:addOption("@celebrity/librarian:yes", "question_1")
+		clonedConversation:addOption("@celebrity/librarian:yes", "question_" .. currentQuestion)
 		clonedConversation:addOption("@celebrity/librarian:no", "good_bye")
 	end
 

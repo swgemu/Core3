@@ -115,18 +115,6 @@ rori_destroy_missions = {
 			maxDifficulty = 38,
 			size = 25,
 		},
-		{
-			lairTemplateName = "rori_kobola_miner_base_neutral_large_theater",
-			minDifficulty = 6,
-			maxDifficulty = 14,
-			size = 25,
-		},
-		{
-			lairTemplateName = "rori_kobola_underboss_base_neutral_large_theater",
-			minDifficulty = 19,
-			maxDifficulty = 28,
-			size = 25,
-		}
 	}
 }
 

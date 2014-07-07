@@ -68,6 +68,7 @@ class FireworkObject extends TangibleObject {
 		fireworkObject = "object/static/firework/fx_01.iff";
 		
 		delay = 0;
+		capacity = 2;
 
 		isShow = false;
 	}
@@ -108,6 +109,10 @@ class FireworkObject extends TangibleObject {
 	
 	public int getDelay() {
 		return delay;
+	}
+
+	public int getCapacity() {
+		return capacity;
 	}
 	
 	public string getFireworkObjectPath() {

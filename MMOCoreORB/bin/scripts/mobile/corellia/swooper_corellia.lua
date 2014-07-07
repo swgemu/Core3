@@ -26,7 +26,10 @@ swooper_corellia = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_criminal_swooper_human_female_01.iff"},
+	templates = {"object/mobile/dressed_criminal_swooper_human_female_01.iff",
+		"object/mobile/dressed_criminal_swooper_human_male_01.iff",
+		"object/mobile/dressed_criminal_swooper_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_swooper_zabrak_male_01.iff"},
 	lootGroups = {
       	{
 			groups = {

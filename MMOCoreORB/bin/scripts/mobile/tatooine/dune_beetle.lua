@@ -28,6 +28,7 @@ dune_beetle = Creature:new {
 
 	templates = {"object/mobile/giant_sand_beetle.iff"},
 	controlDeviceTemplate = "object/intangible/pet/rock_mite_hue.iff",
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
