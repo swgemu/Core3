@@ -182,6 +182,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 			EXPECT_TRUE( match ) << "Meat type on mobile " << templateName << " is not a valid meat resource";
 			EXPECT_TRUE( meatMax > 0 ) << "Meat amount on mobile " << templateName << " is zero.";
+		} else {
+			EXPECT_TRUE( meatMax == 0 ) << "MeatAmount is not zero yet has no type defined on mobile " << templateName;
 		}
 
 		String hide = creature->getHideType();
@@ -199,6 +201,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 			EXPECT_TRUE( match ) << "Hide type on mobile " << templateName << " is not a valid hide resource";
 			EXPECT_TRUE( hideMax > 0 ) << "Hide amount on mobile " << templateName << " is zero.";
+		} else {
+			EXPECT_TRUE( hideMax == 0 ) << "HideAmount is not zero yet has no type defined on mobile " << templateName;
 		}
 
 		String bone = creature->getBoneType();
@@ -216,6 +220,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 			EXPECT_TRUE( match ) << "Bone type on mobile " << templateName << " is not a valid bone resource";
 			EXPECT_TRUE( boneMax > 0 ) << "Bone amount on mobile " << templateName << " is zero.";
+		} else {
+			EXPECT_TRUE( boneMax == 0 ) << "BoneAmount is not zero yet has no type defined on mobile " << templateName;
 		}
 
 		String milk = creature->getMilkType();
@@ -233,6 +239,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 			EXPECT_TRUE( match ) << "Milk type on mobile " << templateName << " is not a valid milk resource";
 			EXPECT_TRUE( milkMax > 0 ) << "Milk amount on mobile " << templateName << " is zero.";
+		} else {
+			EXPECT_TRUE( milkMax == 0 ) << "Milk is not zero yet has no type defined on mobile " << templateName;
 		}
 
 		// Verify taming chance
