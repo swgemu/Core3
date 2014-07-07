@@ -466,11 +466,12 @@ TEST_F(LuaMobileTest, LuaLootGroupsTest) {
 		LootGroupTemplate* lootGroupTemplate = iter.next();
 		String groupTemplateName( lootGroupTemplate->getTemplateName().toCharArray() );
 
-		// Check non-empty loot groups to make sure their chances total correctly
-		if( lootGroupTemplate->getLootGroupEntryForRoll(-1).length() > 0  ){
-			EXPECT_GT( lootGroupTemplate->getLootGroupEntryForRoll(10000000).length(), 0 ) << "Item total chance is less than 10000000: " << std::string(groupTemplateName.toCharArray());
-			EXPECT_EQ( lootGroupTemplate->getLootGroupEntryForRoll(10000001).length(), 0 ) << "Item total chance is greater than 10000000: " << std::string(groupTemplateName.toCharArray());
-		}
+		// Verify that group is not empty
+		EXPECT_TRUE( lootGroupTemplate->getLootGroupEntryForRoll(-1).length() > 0 ) << "No entries in loot group: " << std::string(groupTemplateName.toCharArray());
+
+		// Check loot group to make sure their chances total correctly
+		EXPECT_GT( lootGroupTemplate->getLootGroupEntryForRoll(10000000).length(), 0 ) << "Item total chance is less than 10000000: " << std::string(groupTemplateName.toCharArray());
+		EXPECT_EQ( lootGroupTemplate->getLootGroupEntryForRoll(10000001).length(), 0 ) << "Item total chance is greater than 10000000: " << std::string(groupTemplateName.toCharArray());
 
 		// Check that all loot group entries are valid
 		for( int i = 0; i < lootGroupTemplate->size(); i++ ){
