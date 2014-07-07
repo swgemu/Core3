@@ -1564,7 +1564,7 @@ void AiAgentImplementation::activateMovementEvent() {
 
 	}
 
-	setWait(0);
+	//setWait(0);
 }
 
 void AiAgentImplementation::activateWaitEvent() {

@@ -13,6 +13,18 @@ function Wait10:start(pAgent)
 	return 0
 end
 
+function Wait10:doAction(pAgent)
+	if (pAgent ~= nil) then
+		local agent = LuaAiAgent(pAgent)
+		local waitTime = agent:getWait()
+		if (waitTime ~= 0) then
+			agent:setWait(0)
+			return BEHAVIOR_RUNNING
+		end
+	end
+	return BEHAVIOR_SUCCESS
+end
+
 function Wait10:terminate(pAgent)
 	dropObserver(DAMAGERECEIVED, pAgent)
 	dropObserver(STARTCOMBAT, pAgent)

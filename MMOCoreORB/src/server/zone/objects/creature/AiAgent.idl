@@ -581,8 +581,12 @@ class AiAgent extends CreatureObject {
 	public native int setDestination();
 	public native boolean completeMove();
 	
-	public native void setWait(int wait) {
+	public void setWait(int wait) {
 		waitTime = wait;
+	}
+	
+	public int getWait() {
+		return waitTime;
 	}
 
 	public native void selectWeapon();
