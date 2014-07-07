@@ -56,8 +56,6 @@ IkkaGesul = ThemeParkLogic:new {
 	screenPlayState = "ikka_gesul_quest",
 	distance = 800,
 	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
-	faction = FACTIONREBEL
-
 }
 
 registerScreenPlay("IkkaGesul", true)

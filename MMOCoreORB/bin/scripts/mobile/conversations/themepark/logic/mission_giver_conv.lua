@@ -245,6 +245,7 @@ createMissionGiverConvoTemplate("kaeline_ungasan_mission_giver_convotemplate", "
 createMissionGiverConvoTemplate("kormund_thrylle_mission_giver_convotemplate", "kormund_thrylle_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("lorne_prestar_mission_giver_convotemplate", "lorne_prestar_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("phinea_shantee_mission_giver_convotemplate", "phinea_shantee_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("prefect_talmont_mission_giver_convotemplate", "prefect_talmont_mission_giver_conv_handler")
 
 
 -- Naboo
