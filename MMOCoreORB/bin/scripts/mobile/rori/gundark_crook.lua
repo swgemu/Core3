@@ -1,4 +1,4 @@
-gundarkcrook = Creature:new {
+gundark_crook = Creature:new {
 	objectName = "@mob/creature_names:gundark_crook",
 	socialGroup = "gundark_gang",
 	pvpFaction = "thug",
@@ -46,4 +46,4 @@ gundarkcrook = Creature:new {
 	attacks = merge(brawlernovice,marksmannovice)
 }
 
-CreatureTemplates:addCreatureTemplate(gundarkcrook, "gundarkcrook")
+CreatureTemplates:addCreatureTemplate(gundark_crook, "gundark_crook")
