@@ -6,9 +6,10 @@ includeAiFile("templates/parallelselectortest0.lua")
 includeAiFile("templates/nondeterministicsequencetest0.lua")
 includeAiFile("templates/nondeterministicselectortest0.lua")
 includeAiFile("templates/movetest0.lua")
-includeAiFile("templates/none.lua")
 includeAiFile("templates/example.lua")
+includeAiFile("templates/stationary.lua")
 includeAiFile("templates/idlewander.lua")
+includeAiFile("templates/idlewait.lua")
 includeAiFile("templates/gettargetreactive.lua")
 includeAiFile("templates/selectattacksimple.lua")
 includeAiFile("templates/combatmovesimple.lua")
@@ -27,6 +28,7 @@ combatMove = {
 
 idle = {
 	{NONE, "idlewander"},
+	{STATIC, "idlewait"},
 }
 
 addAiBehavior("Composite")

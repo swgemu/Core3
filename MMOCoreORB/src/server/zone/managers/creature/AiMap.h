@@ -20,6 +20,7 @@
 #include "server/zone/objects/creature/ai/bt/ParallelSequenceBehavior.h"
 #include "server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.h"
 #include "server/zone/objects/creature/ai/bt/LuaBehavior.h"
+#include "server/zone/objects/creature/CreatureFlag.h"
 
 class AiMap : public Singleton<AiMap>, public Logger, public Object {
 public:
@@ -169,6 +170,16 @@ private:
 		lua->setGlobalInt("STALKING",AiAgent::STALKING);
 		lua->setGlobalInt("FOLLOWING",AiAgent::FOLLOWING);
 		lua->setGlobalInt("PATROLLING",AiAgent::PATROLLING);
+
+		lua->setGlobalInt("NONE",CreatureFlag::NONE);
+		lua->setGlobalInt("PACK",CreatureFlag::PACK);
+		lua->setGlobalInt("HERD",CreatureFlag::HERD);
+		lua->setGlobalInt("KILLER",CreatureFlag::KILLER);
+		lua->setGlobalInt("STALKER",CreatureFlag::STALKER);
+		lua->setGlobalInt("BABY",CreatureFlag::BABY);
+		lua->setGlobalInt("LAIR",CreatureFlag::LAIR);
+		lua->setGlobalInt("HEALER",CreatureFlag::HEALER);
+		lua->setGlobalInt("STATIC",CreatureFlag::STATIC);
 	}
 
 	void putTemplate(Lua* lua, String key, HashTable<unsigned int, Reference<AiTemplate*> >* table) {

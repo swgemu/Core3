@@ -1548,8 +1548,11 @@ void AiAgentImplementation::activateMovementEvent() {
 
 	Locker locker(&movementEventMutex);
 
-	if (waitTime > 0 && moveEvent != NULL)
+	if (waitTime != 0 && moveEvent != NULL)
 		moveEvent->cancel();
+
+	if (waitTime < 0)
+		return;
 
 	if (moveEvent == NULL) {
 		moveEvent = new AiMoveEvent(_this.get());
@@ -1563,8 +1566,6 @@ void AiAgentImplementation::activateMovementEvent() {
 	} catch (IllegalArgumentException& e) {
 
 	}
-
-	//setWait(0);
 }
 
 void AiAgentImplementation::activateWaitEvent() {
