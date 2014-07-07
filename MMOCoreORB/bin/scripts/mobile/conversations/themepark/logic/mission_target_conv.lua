@@ -106,6 +106,7 @@ createMissionTargetConvoTemplate("ikka_gesul_mission_target_convotemplate","ikka
 createMissionTargetConvoTemplate("jilljoo_jab_mission_target_convotemplate","jilljoo_jab_mission_target_conv_handler")
 createMissionTargetConvoTemplate("kaeline_ungasan_mission_target_convotemplate","kaeline_ungasan_mission_target_conv_handler")
 createMissionTargetConvoTemplate("kormund_thrylle_mission_target_convotemplate","kormund_thrylle_mission_target_conv_handler")
+createMissionTargetConvoTemplate("prefect_talmont_mission_target_convotemplate","prefect_talmont_mission_target_conv_handler")
 
 
 -- Naboo

@@ -72,8 +72,6 @@ JilljooJab = ThemeParkLogic:new {
 	screenPlayState = "jilljoo_jab_quest",
 	distance = 800,
 	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
-	faction = FACTIONREBEL
-
 }
 
 registerScreenPlay("JilljooJab", true)

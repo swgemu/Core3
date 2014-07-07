@@ -84,7 +84,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 
 	--Capitol
 	--{"ekoarili_eichreemo",60,-2.83709,3.18179,19.5635,187.088,926474, "neutral", "Ek'oarili Eichreemo"},
-	--{"willhalm_skrim",60,28.8936,1.29568,-5.97518,39.8127,926482, "npc_imperial", "Wilhalm Skrim"},
 	--{"indigo_siyan",60,24.6402,3.22324,-30.7135,341.212,926483, "neutral", "Indigo Siyan"},
 	--{"sean_trenwell",60,19.4653,3.22324,-35.9776,345,926483, "neutral", "Sean Trenwell"},
 	--{"victor_visalis",60,-26.4873,3.22324,20.2943,140.257,926480, "neutral", "Victor Visalis"},
@@ -103,7 +102,6 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--{"nassa_ei",60,-23.2909,1.29891,-10.3943,67.506,926475, "neutral", "Nassa E'i"},
 	--{"noble",60,18.4,1.3,5.2,150,926475, "threaten", ""},
 	--{"noble",60,19.5,1.3,5.2,236,926475, "angry", ""},
-	--{"prefect_talmont",60,-1.9,3,-10,180,926475, "npc_imperial", ""},
 	--{"tl_017",400,6.1,0.3,-0.49,96.7754,926475, "npc_imperial", "TL-017"},
 
 	--Outside
