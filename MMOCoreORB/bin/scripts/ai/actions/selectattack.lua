@@ -11,10 +11,6 @@ function SelectAttack:checkConditions(pAgent)
 			return false
 		end
 		
-		if (creature:getQueueSize() > 3) then
-			return false
-		end
-		
 		return true
 	end
 	return false
@@ -24,6 +20,10 @@ function SelectAttack:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		local creature = LuaCreatureObject(pAgent)
+		
+		if (creature:getQueueSize() > 3) then
+			return BEHAVIOR_SUCCESS
+		end
 		
 		agent:selectSpecialAttack(-1)
 		if (not agent:validateStateAttack() or math.random(5) == 1) then

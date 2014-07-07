@@ -852,6 +852,10 @@ class AiAgent extends CreatureObject {
 	@local
 	public native void setCurrentBehavior(final string b);
 
+	public string getCurrentBehavior() {
+		return currentBehaviorID;
+	}
+
 	@local
 	public native int getBehaviorStatus();
 

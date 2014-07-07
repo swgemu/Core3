@@ -3,10 +3,7 @@ Wait = Ai:new {}
 function Wait:start(pAgent)
 	self:setWait(pAgent)
 	
-	createObserver(DAMAGERECEIVED, "Wait", "interrupt", pAgent)
 	createObserver(STARTCOMBAT, "Wait", "interrupt", pAgent)
-	createObserver(DEFENDERADDED, "Wait", "interrupt", pAgent)
-	createObserver(DEFENDERDROPPED, "Wait", "interrupt", pAgent)
 	return 0
 end
 
@@ -23,10 +20,7 @@ function Wait:doAction(pAgent)
 end
 
 function Wait:terminate(pAgent)
-	dropObserver(DAMAGERECEIVED, pAgent)
 	dropObserver(STARTCOMBAT, pAgent)
-	dropObserver(DEFENDERADDED, pAgent)
-	dropObserver(DEFENDERDROPPED, pAgent)
 	return 0
 end
 
