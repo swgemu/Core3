@@ -1,5 +1,5 @@
-willhalm_skrim = Creature:new {
-	objectName = "@theme_park_name:willhalm_skrim",
+prefect_talmont = Creature:new {
+	objectName = "@mob/creature_names:prefect_talmont",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
@@ -23,15 +23,15 @@ willhalm_skrim = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_wilhalm_skrim.iff"},
+	templates = {"object/mobile/prefect_talmont.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "prefect_talmont_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(willhalm_skrim, "willhalm_skrim")
+CreatureTemplates:addCreatureTemplate(prefect_talmont, "prefect_talmont")
