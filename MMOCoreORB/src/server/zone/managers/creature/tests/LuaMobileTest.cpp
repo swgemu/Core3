@@ -337,11 +337,14 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		EXPECT_TRUE( limit > 0 ) << "Spawn limit in lair template " << templateName << " is not positive";
 
 		// Verify any configured buildings exist
+		int buildingCount = 0;
 		for(int i=0; i<=4; i++){
 
 			Vector<String>* buildings = lair->getBuildings( i );
 			if( buildings == NULL )
 				continue;
+
+			buildingCount += buildings->size();
 
 			for( int j=0; j < buildings->size(); j++ ){
 				String buildingTemplate = buildings->get(j);
@@ -357,7 +360,13 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 		}
 
-		// TODO: Add test to enforce LAIRs and THEATERs have at least one building configured
+		if( lair->getBuildingType() == LairTemplate::THEATER ){
+			EXPECT_TRUE( buildingCount > 0 ) << "There are no buildings configured in theater type lair template " << templateName;
+		}
+		if( lair->getBuildingType() == LairTemplate::NONE ){
+			EXPECT_TRUE( buildingCount == 0 ) << "There are buildings configured in 'none' type lair template " << templateName;
+		}
+		// TODO: Add test to enforce LAIRs have at least one building configured
 
 	}
 

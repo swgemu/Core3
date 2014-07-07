@@ -6,7 +6,7 @@ rori_kobola_assasin_neutral_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
-	buildingType = "theater"
+	buildingType = "none"
 }
 
 addLairTemplate("rori_kobola_assasin_neutral_none", rori_kobola_assasin_neutral_none)
