@@ -164,6 +164,12 @@ function ThemeParkLogic:isInFaction(faction, pCreature)
 	end
 end
 
+function ThemeParkLogic:isOnLeave(pPlayer)
+	return ObjectManager.withCreaturePlayerObject(pPlayer, function(player)
+		return player:isOnLeave()
+	end)
+end
+
 function ThemeParkLogic:isValidConvoString(stfFile, stringid)
 	if (getStringId(stfFile .. stringid) ~= "") then
 		return true

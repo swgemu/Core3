@@ -187,6 +187,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 			EXPECT_TRUE( match ) << "Meat type on mobile " << templateName << " is not a valid meat resource";
 			EXPECT_TRUE( meatMax > 0 ) << "Meat amount on mobile " << templateName << " is zero.";
+		} else {
+			EXPECT_TRUE( meatMax == 0 ) << "MeatAmount is not zero yet has no type defined on mobile " << templateName;
 		}
 
 		String hide = creature->getHideType();
@@ -204,6 +206,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 			EXPECT_TRUE( match ) << "Hide type on mobile " << templateName << " is not a valid hide resource";
 			EXPECT_TRUE( hideMax > 0 ) << "Hide amount on mobile " << templateName << " is zero.";
+		} else {
+			EXPECT_TRUE( hideMax == 0 ) << "HideAmount is not zero yet has no type defined on mobile " << templateName;
 		}
 
 		String bone = creature->getBoneType();
@@ -221,6 +225,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 			EXPECT_TRUE( match ) << "Bone type on mobile " << templateName << " is not a valid bone resource";
 			EXPECT_TRUE( boneMax > 0 ) << "Bone amount on mobile " << templateName << " is zero.";
+		} else {
+			EXPECT_TRUE( boneMax == 0 ) << "BoneAmount is not zero yet has no type defined on mobile " << templateName;
 		}
 
 		String milk = creature->getMilkType();
@@ -238,6 +244,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 			EXPECT_TRUE( match ) << "Milk type on mobile " << templateName << " is not a valid milk resource";
 			EXPECT_TRUE( milkMax > 0 ) << "Milk amount on mobile " << templateName << " is zero.";
+		} else {
+			EXPECT_TRUE( milkMax == 0 ) << "Milk is not zero yet has no type defined on mobile " << templateName;
 		}
 
 		// Verify taming chance
@@ -334,11 +342,14 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		EXPECT_TRUE( limit > 0 ) << "Spawn limit in lair template " << templateName << " is not positive";
 
 		// Verify any configured buildings exist
+		int buildingCount = 0;
 		for(int i=0; i<=4; i++){
 
 			Vector<String>* buildings = lair->getBuildings( i );
 			if( buildings == NULL )
 				continue;
+
+			buildingCount += buildings->size();
 
 			for( int j=0; j < buildings->size(); j++ ){
 				String buildingTemplate = buildings->get(j);
@@ -354,7 +365,13 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 		}
 
-		// TODO: Add test to enforce LAIRs and THEATERs have at least one building configured
+		if( lair->getBuildingType() == LairTemplate::THEATER ){
+			EXPECT_TRUE( buildingCount > 0 ) << "There are no buildings configured in theater type lair template " << templateName;
+		}
+		if( lair->getBuildingType() == LairTemplate::NONE ){
+			EXPECT_TRUE( buildingCount == 0 ) << "There are buildings configured in 'none' type lair template " << templateName;
+		}
+		// TODO: Add test to enforce LAIRs have at least one building configured
 
 	}
 
@@ -454,11 +471,12 @@ TEST_F(LuaMobileTest, LuaLootGroupsTest) {
 		LootGroupTemplate* lootGroupTemplate = iter.next();
 		String groupTemplateName( lootGroupTemplate->getTemplateName().toCharArray() );
 
-		// Check non-empty loot groups to make sure their chances total correctly
-		if( lootGroupTemplate->getLootGroupEntryForRoll(-1).length() > 0  ){
-			EXPECT_GT( lootGroupTemplate->getLootGroupEntryForRoll(10000000).length(), 0 ) << "Item total chance is less than 10000000: " << std::string(groupTemplateName.toCharArray());
-			EXPECT_EQ( lootGroupTemplate->getLootGroupEntryForRoll(10000001).length(), 0 ) << "Item total chance is greater than 10000000: " << std::string(groupTemplateName.toCharArray());
-		}
+		// Verify that group is not empty
+		EXPECT_TRUE( lootGroupTemplate->getLootGroupEntryForRoll(-1).length() > 0 ) << "No entries in loot group: " << std::string(groupTemplateName.toCharArray());
+
+		// Check loot group to make sure their chances total correctly
+		EXPECT_GT( lootGroupTemplate->getLootGroupEntryForRoll(10000000).length(), 0 ) << "Item total chance is less than 10000000: " << std::string(groupTemplateName.toCharArray());
+		EXPECT_EQ( lootGroupTemplate->getLootGroupEntryForRoll(10000001).length(), 0 ) << "Item total chance is greater than 10000000: " << std::string(groupTemplateName.toCharArray());
 
 		// Check that all loot group entries are valid
 		for( int i = 0; i < lootGroupTemplate->size(); i++ ){
