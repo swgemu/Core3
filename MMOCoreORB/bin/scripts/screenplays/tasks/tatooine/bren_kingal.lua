@@ -62,6 +62,10 @@ bren_kingal_missions =
 			{
 				{ itemTemplate = "object/tangible/mission/quest_item/bren_kingal_q4_needed.iff", itemName = "AT-ST pilot's helmet" }
 			},
+			staticObjects =
+			{
+				{ objectTemplate = "object/static/vehicle/static_speeder_bike.iff", planetName = "tatooine" }
+			},
 			rewards =
 			{
 				{ rewardType = "credits", amount = 30 },
