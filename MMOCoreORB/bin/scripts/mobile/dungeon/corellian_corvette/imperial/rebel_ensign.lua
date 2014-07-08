@@ -1,17 +1,17 @@
-rebel_engineer = Creature:new {
-	objectName = "@mob/creature_names:corvette_rebel_engineer",
+rebel_ensign = Creature:new {
+	objectName = "@mob/creature_names:corvette_rebel_ensign",
 	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",
-	level = 106,
-	chanceHit = 1.75,
-	damageMin = 670,
-	damageMax = 1050,
-	baseXp = 10081,
-	baseHAM = 29000,
-	baseHAMmax = 36000,
-	armor = 0,
-	resists = {45,45,0,0,30,30,80,65,-1},
+	level = 72,
+	chanceHit = 0.7,
+	damageMin = 495,
+	damageMax = 700,
+	baseXp = 6931,
+	baseHAM = 12000,
+	baseHAMmax = 15000,
+	armor = 1,
+	resists = {45,35,25,25,30,30,80,65,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -21,8 +21,8 @@ rebel_engineer = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = PACK + KILLER + HEALER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
@@ -49,4 +49,4 @@ rebel_engineer = Creature:new {
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_engineer, "rebel_engineer")
+CreatureTemplates:addCreatureTemplate(rebel_ensign, "rebel_ensign")

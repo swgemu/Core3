@@ -1,17 +1,17 @@
-elite_novatrooper = Creature:new {
-	objectName = "@mob/creature_names:stormtrooper_novatrooper_elite",
+novatrooper_cadet = Creature:new {
+	objectName = "@mob/creature_names:stormtrooper_novatrooper_cadet",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
-	level = 162,
-	chanceHit = 100,
-	damageMin = 945,
-	damageMax = 1600,
-	baseXp = 15360,
-	baseHAM = 95000,
-	baseHAMmax = 116000,
-	armor = 2,
-	resists = {65,65,80,30,35,35,30,45,-1},
+	level = 72,
+	chanceHit = 0.7,
+	damageMin = 495,
+	damageMax = 700,
+	baseXp = 6931,
+	baseHAM = 12000,
+	baseHAMmax = 15000,
+	armor = 1,
+	resists = {40,35,80,30,30,20,30,45,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -21,7 +21,7 @@ elite_novatrooper = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -38,7 +38,8 @@ elite_novatrooper = Creature:new {
                 {group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
-				{group = "wearables_rare", chance = 1000000}
+				{group = "wearables_common", chance = 500000},
+				{group = "wearables_uncommon", chance = 500000}
 			},
 			lootChance = 2800000
 		}						
@@ -48,4 +49,4 @@ elite_novatrooper = Creature:new {
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(elite_novatrooper, "elite_novatrooper")
+CreatureTemplates:addCreatureTemplate(novatrooper_cadet, "novatrooper_cadet")

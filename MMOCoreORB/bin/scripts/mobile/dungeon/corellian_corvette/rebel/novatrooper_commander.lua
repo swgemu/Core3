@@ -1,17 +1,17 @@
-novatrooper_captain = Creature:new {
-	objectName = "@mob/creature_names:stormtrooper_novatrooper_captain",
+novatrooper_commander = Creature:new {
+	objectName = "@mob/creature_names:stormtrooper_novatrooper_commander",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
-	level = 142,
-	chanceHit = 70,
-	damageMin = 845,
-	damageMax = 1400,
-	baseXp = 13462,
-	baseHAM = 68000,
-	baseHAMmax = 83000,
-	armor = 2,
-	resists = {60,50,80,30,25,25,30,45,-1},
+	level = 182,
+	chanceHit = 130,
+	damageMin = 1045,
+	damageMax = 1800,
+	baseXp = 17274,
+	baseHAM = 126000,
+	baseHAMmax = 154000,
+	armor = 0,
+	resists = {65,65,80,30,0,0,30,45,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -21,12 +21,12 @@ novatrooper_captain = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_captain_black_gold.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_commander_black_gold.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -49,4 +49,4 @@ novatrooper_captain = Creature:new {
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(novatrooper_captain, "novatrooper_captain")
+CreatureTemplates:addCreatureTemplate(novatrooper_commander, "novatrooper_commander")

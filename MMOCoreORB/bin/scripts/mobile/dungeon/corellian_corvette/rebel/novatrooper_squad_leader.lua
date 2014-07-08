@@ -1,17 +1,17 @@
-novatrooper = Creature:new {
-	objectName = "@mob/creature_names:stormtrooper_novatrooper",
+novatrooper_squad_leader = Creature:new {
+	objectName = "@mob/creature_names:stormtrooper_novatrooper_squad_leader",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
-	level = 97,
-	chanceHit = 0.95,
-	damageMin = 620,
-	damageMax = 950,
-	baseXp = 9243,
-	baseHAM = 20000,
-	baseHAMmax = 25000,
-	armor = 1,
-	resists = {40,35,80,30,30,30,30,45,-1},
+	level = 122,
+	chanceHit = 40,
+	damageMin = 745,
+	damageMax = 1200,
+	baseXp = 11577,
+	baseHAM = 44000,
+	baseHAMmax = 54000,
+	armor = 0,
+	resists = {55,45,80,30,0,0,30,45,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -21,12 +21,12 @@ novatrooper = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_black_gold.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_squad_leader_black_gold.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -38,8 +38,7 @@ novatrooper = Creature:new {
                 {group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
-				{group = "wearables_common", chance = 500000},
-				{group = "wearables_uncommon", chance = 500000}
+				{group = "wearables_all", chance = 1000000}
 			},
 			lootChance = 2800000
 		}						
@@ -49,4 +48,4 @@ novatrooper = Creature:new {
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(novatrooper, "novatrooper")
+CreatureTemplates:addCreatureTemplate(novatrooper_squad_leader, "novatrooper_squad_leader")
