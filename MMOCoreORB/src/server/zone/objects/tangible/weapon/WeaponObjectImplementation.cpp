@@ -730,6 +730,14 @@ void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
 	}
 }
 
+bool WeaponObjectImplementation::isEquipped() {
+	ManagedReference<SceneObject*> parent = getParent();
+	if (parent != NULL && parent->isPlayerCreature())
+		return true;
+
+	return false;
+}
+
 void WeaponObjectImplementation::applySkillModsTo(CreatureObject* creature) {
 	if (creature == NULL) {
 		return;

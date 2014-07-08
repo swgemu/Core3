@@ -1,6 +1,6 @@
 /*
 Copyright (C) 2007 <SWGEmu>
-This File is part of Core3.
+This File is part of Core3. 
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -51,12 +51,23 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 
 int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
-
+	
+	ManagedReference<SceneObject*> p = sceneObject->getParent();
+		
+	if (p != NULL){
+		
+		int containment = p->getContainmentType();
+		
+		if (containment == 4){
+		errorDescription = "@jedi_spam:saber_not_while_equpped";
+		return TransferErrorCode::INVALIDTYPE;
+		}	
+	}
+	
 	if (!object->isLightsaberCrystalObject()) {
 		errorDescription = "@jedi_spam:saber_not_crystal";
 		return TransferErrorCode::INVALIDTYPE;
 	}
-
 
 	LightsaberCrystalComponent* crystal = cast<LightsaberCrystalComponent*> (object);
 
@@ -64,26 +75,21 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 		errorDescription = "@jedi_spam:saber_crystal_not_tuned";
 		return TransferErrorCode::INVALIDTYPE;
 	}
-
-	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(object->getParent().get().get());
+	
+	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(object->getParent().get().get());	
 
 	if (creature != NULL && crystal->getOwner() != creature->getDisplayedName()){
 		errorDescription = "@jedi_spam:saber_crystal_not_owner";
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
-	if (containmentType == 4){
-		errorDescription = "@jedi_spam:saber_crystal_not_while_equipped";
-		return TransferErrorCode::INVALIDTYPE;
-	}
-
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
+
 
 	if (containerObjects->size() >= sceneObject->getContainerVolumeLimit()) {
 		errorDescription = "@container_error_message:container03"; //This container is full.
 		return TransferErrorCode::CONTAINERFULL;
 	}
-
 
 	for (int i = 0; i < containerObjects->size(); i++){
 		Reference<LightsaberCrystalComponent*> crystalInside =  sceneObject->getContainerObject(i).castTo<LightsaberCrystalComponent*>();
@@ -152,4 +158,3 @@ int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObje
 
 	return sceneObject->notifyObjectRemoved(object);
 }
-
