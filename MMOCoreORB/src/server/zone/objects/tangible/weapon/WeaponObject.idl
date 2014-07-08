@@ -271,6 +271,8 @@ class WeaponObject extends TangibleObject {
 		return certified;
 	}
 	
+	public native boolean isEquipped();	
+	
 	public native int getPointBlankAccuracy(boolean withPup = true);
 	
 	public void setPointBlankAccuracy(int value) {
