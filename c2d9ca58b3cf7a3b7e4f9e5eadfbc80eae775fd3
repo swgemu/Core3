@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_1e875911",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-09T03:42:08Z",
+      "side": 1,
+      "message": "No need to destroy the object from database since it\u0027s not presistent.",
+      "revId": "c2d9ca58b3cf7a3b7e4f9e5eadfbc80eae775fd3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
