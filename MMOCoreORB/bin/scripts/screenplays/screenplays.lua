@@ -27,6 +27,9 @@ includeFile("dungeon/geonosian_lab/geonosian_lab.lua")
 includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 
+-- Village
+includeFile("village/fs_experience_converter_conv_handler.lua")
+
 -- Task/Quest
 includeFile("tasks/corellia/diktatQuest.lua")
 includeFile("tasks/corellia/kirkin_liawoon.lua")
