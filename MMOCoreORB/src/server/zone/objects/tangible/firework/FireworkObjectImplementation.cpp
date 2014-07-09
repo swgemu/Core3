@@ -199,7 +199,7 @@ void FireworkObjectImplementation::completeLaunch(CreatureObject* player, int re
 }
 
 void FireworkObjectImplementation::beginShowLaunch(CreatureObject* player) {
-	if (player == NULL)
+	if (player == NULL || player->getParent() != NULL)
 		return;
 
 	ManagedReference<FireworkObject*> fireworkShow = _this.get();
