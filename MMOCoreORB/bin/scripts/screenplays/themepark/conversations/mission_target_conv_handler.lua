@@ -47,6 +47,8 @@ function mission_target_conv_handler:runScreenHandlers(pConversationTemplate, pC
 
 	if screenID == "missiontype" then
 		pConversationScreen = self:handleScreenMissionType(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	elseif screenID == "inv_full" then
+		pConversationScreen = self:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "npc_smuggle_n" then
 		pConversationScreen = self:handleScreenSmuggle(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "npc_takeme_n" then
@@ -54,6 +56,16 @@ function mission_target_conv_handler:runScreenHandlers(pConversationTemplate, pC
 	elseif screenID == "notit_n" then
 		pConversationScreen = self:handleScreenNotIt(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	end
+	return pConversationScreen
+end
+
+function mission_target_conv_handler:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	local screen = LuaConversationScreen(pConversationScreen)
+	pConversationScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConversationScreen)
+
+	clonedScreen:setDialogTextStringId("@conversation/crafting_contractor:s_82c3e20a") -- It looks like your inventory is full. Talk to me again when you free up some space.
+
 	return pConversationScreen
 end
 
@@ -159,11 +171,15 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 		end
 	elseif mission.missionType == "retrieve" then
 		if correctNpc == true then
-			if activeMission ~= 2 then
+			if activeMission ~= 2 and self.themePark:hasFullInventory(pConversingPlayer) == false then
 				self.themePark:giveMissionItems(mission, pConversingPlayer)
 				self.themePark:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
+				nextScreenID = "npc_smuggle_n"
+			elseif activeMission ~= 2 and self.themePark:hasFullInventory(pConversingPlayer) == true then
+				nextScreenID = "inv_full"
+			else
+				nextScreenID = "npc_smuggle_n"
 			end
-			nextScreenID = "npc_smuggle_n"
 		else
 			nextScreenID = "dontknowyou_n"
 		end
