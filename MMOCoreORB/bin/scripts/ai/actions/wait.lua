@@ -10,9 +10,7 @@ end
 function Wait:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
-		local waitTime = agent:getWait()
-		if (waitTime ~= 0) then
-			agent:setWait(0)
+		if (agent:isWaiting()) then
 			return BEHAVIOR_RUNNING
 		end
 	end
@@ -20,6 +18,11 @@ function Wait:doAction(pAgent)
 end
 
 function Wait:terminate(pAgent)
+	if (pAgent ~= nil) then
+		local agent = LuaAiAgent(pAgent)
+		agent:setWait(0)
+	end
+	
 	dropObserver(STARTCOMBAT, pAgent)
 	return 0
 end

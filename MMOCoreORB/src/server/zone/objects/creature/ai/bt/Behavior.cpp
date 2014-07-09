@@ -15,6 +15,9 @@ Behavior::Behavior(AiAgent* _agent, String className) {
 	result = AiMap::SUSPEND;
 	parent = NULL;
 	interface = AiMap::instance()->getBehavior(className);
+
+	if (interface == NULL)
+		agent->error("Null interface in Behavior: " + className);
 }
 
 void Behavior::start() {
@@ -39,6 +42,8 @@ void Behavior::doAction() {
 		agent->setFollowObject(NULL);
 		return;
 	}
+
+	//agent->info(id, true);
 
 	if (!started())
 		this->start();

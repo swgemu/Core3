@@ -169,6 +169,7 @@ class AiAgent extends CreatureObject {
 	protected unsigned int creatureBitmask;
 	
 	protected int waitTime;
+	protected boolean waiting;
 	
 	protected unsigned int nextActionCRC;
 	protected string nextActionArgs;
@@ -580,10 +581,20 @@ class AiAgent extends CreatureObject {
 	
 	public void setWait(int wait) {
 		waitTime = wait;
+		if (waitTime != 0)
+			waiting = true;
 	}
 	
 	public int getWait() {
 		return waitTime;
+	}
+	
+	public boolean isWaiting() {
+		return waiting;
+	}
+	
+	public void stopWaiting() {
+		waiting = false;
 	}
 
 	public native void selectWeapon();

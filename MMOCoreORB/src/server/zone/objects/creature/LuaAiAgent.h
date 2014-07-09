@@ -45,6 +45,8 @@ namespace creature {
 		int completeMove(lua_State* L);
 		int setWait(lua_State* L);
 		int getWait(lua_State* L);
+		int isWaiting(lua_State* L);
+		int stopWaiting(lua_State* L);
 		int getCurrentSpeed(lua_State* L);
 		int setCurrentSpeed(lua_State* L);
 		int getTargetFromMap(lua_State* L);

@@ -22,6 +22,15 @@ void SelectorBehavior::childFailed() {
 	try {
 		do {
 			currentPos++;
+
+			// TODO (dannuic): This if block is here because the out of bounds exception doesn't work like expected
+			if (currentPos >= children.size()) {
+				currentChild = NULL;
+				currentPos = 0;
+				endWithFailure();
+				return;
+			}
+
 			currentChild = children.get(currentPos);
 
 			if (currentChild == NULL) { // uh oh, this shouldn't happen
@@ -31,7 +40,7 @@ void SelectorBehavior::childFailed() {
 			}
 
 		} while (!currentChild->checkConditions());
-	} catch (ArrayIndexOutOfBoundsException &e) { // this is fine, it just means we've gone through all the children
+	} catch (ArrayIndexOutOfBoundsException &e) { // TODO (dannuic): Why doesn't this ever happen? currentPos just decrements and no exception is thrown...
 		currentChild = NULL;
 		currentPos = 0;
 		endWithFailure();

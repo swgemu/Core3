@@ -33,6 +33,7 @@ idle = {
 
 addAiBehavior("Composite")
 addAiBehavior("None")
+addAiBehavior("Wait")
 addAiBehavior("Wait10")
 addAiBehavior("Move")
 addAiBehavior("Walk")

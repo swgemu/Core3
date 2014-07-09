@@ -106,6 +106,8 @@
 #include "variables/CurrentFoundPath.h"
 #include "server/zone/managers/director/DirectorManager.h"
 
+#include "server/chat/ChatManager.h"
+
 
 //#define SHOW_WALK_PATH
 //#define DEBUG
@@ -713,10 +715,11 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 void AiAgentImplementation::removeDefender(SceneObject* defender) {
 	CreatureObjectImplementation::removeDefender(defender);
 
-	if (defender != NULL) {
-		if (defender->isCreatureObject())
-			getThreatMap()->dropDamage(cast<CreatureObject*>(defender));
-	}
+	if (defender == NULL)
+		return;
+
+	if (defender->isCreatureObject())
+		getThreatMap()->dropDamage(cast<CreatureObject*>(defender));
 
 	if (followObject == defender) {
 		CreatureObject* target = getThreatMap()->getHighestThreatCreature();
@@ -729,6 +732,8 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 
 		if (target != NULL)
 			setDefender(target);
+		else
+			setOblivious();
 	}
 
 	activateRecovery();
@@ -755,8 +760,10 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 	if (scno == _this.get())
 		return;
 
-	if (scno->isPlayerCreature())
+	if (scno->isPlayerCreature()) {
 		++numberOfPlayersInRange;
+		activateMovementEvent();
+	}
 }
 
 void AiAgentImplementation::clearDespawnEvent() {
@@ -1369,6 +1376,9 @@ void AiAgentImplementation::doMovement() {
 		return;
 	}
 
+	if (isWaiting())
+		stopWaiting();
+
 	//info("Performing action ID: " + currentBehaviorID, true);
 	// activate AI
 	Behavior* current = behaviors.get(currentBehaviorID);
@@ -1439,8 +1449,10 @@ int AiAgentImplementation::setDestination() {
 			homeLocation.setReached(false);
 			clearPatrolPoints();
 			addPatrolPoint(homeLocation);
-		} else
+		} else {
 			homeLocation.setReached(true);
+			clearPatrolPoints();
+		}
 
 		break;
 	case AiAgent::PATROLLING:
@@ -1552,11 +1564,17 @@ void AiAgentImplementation::activateMovementEvent() {
 
 	Locker locker(&movementEventMutex);
 
-	if (waitTime != 0 && moveEvent != NULL)
+	if (isWaiting() && moveEvent != NULL)
 		moveEvent->cancel();
 
-	if (waitTime < 0)
+	if ((waitTime < 0 || numberOfPlayersInRange <= 0) && !isRetreating()) {
+		if (moveEvent != NULL) {
+			moveEvent->clearCreatureObject();
+			moveEvent = NULL;
+		}
+
 		return;
+	}
 
 	if (moveEvent == NULL) {
 		moveEvent = new AiMoveEvent(_this.get());
@@ -2203,6 +2221,12 @@ void AiAgentImplementation::setCurrentBehavior(const String& b) {
 	currentBehaviorID = b;
 	if (behaviors.get(currentBehaviorID) != NULL) {
 		activateMovementEvent();
+
+		// This is for debugging:
+/*		ZoneServer* zoneServer = ServerCore::getZoneServer();
+		ChatManager* chatManager = zoneServer->getChatManager();
+
+		chatManager->broadcastMessage(_this.get(), currentBehaviorID, 0, 0, 0);*/
 	}
 }
 
@@ -2218,8 +2242,15 @@ int AiAgentImplementation::getBehaviorStatus() {
 void AiAgentImplementation::setBehaviorStatus(int status) {
 	Locker locker(&behaviorMutex);
 	Behavior* b = behaviors.get(currentBehaviorID);
-	if (b != NULL)
+	if (b != NULL) {
 		b->setStatus((uint8)status);
+
+		// This is for debugging:
+/*		ZoneServer* zoneServer = ServerCore::getZoneServer();
+		ChatManager* chatManager = zoneServer->getChatManager();
+
+		chatManager->broadcastMessage(_this.get(), String::valueOf(status), 0, 0, 0);*/
+	}
 }
 
 void AiAgentImplementation::addBehaviorToTree(Behavior* b, CompositeBehavior* par) {
