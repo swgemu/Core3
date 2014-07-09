@@ -1439,16 +1439,13 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, C
 	}
 
 	String xpType;
-	switch (data.getAttackType()) {
-	case CombatManager::FORCEATTACK:
+
+	if (data.getAttackType() == CombatManager::FORCEATTACK)
 		xpType = "jedi_general";
-		break;
-	default:
+	else if (attacker->isPet())
+		xpType = "creaturehandler";
+	else
 		xpType = weapon->getXpType();
-		break;
-	}
-
-
 
 	if (poolsToDamage & HEALTH) {
 		healthDamage = getArmorReduction(attacker, weapon, defender, damage, HEALTH, data) * damageMultiplier * data.getHealthDamageMultiplier();
