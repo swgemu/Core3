@@ -350,9 +350,10 @@ class PlayerManager extends Observer implements Logger {
 	
 	@local
 	public native void disseminateExperience(TangibleObject destructedObject, ThreatMap threatMap, Vector<CreatureObject> lairSpawnedCreatures = null);
-	
+
 	public native int calculatePlayerLevel(CreatureObject player);
-	
+	public native int calculatePlayerLevel(CreatureObject player, string xpType);
+
 	public native void sendLoginMessage(CreatureObject player);
 	public native void resendLoginMessageToAll();
 	
