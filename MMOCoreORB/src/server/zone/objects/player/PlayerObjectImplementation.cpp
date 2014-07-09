@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "server/zone/objects/player/PlayerObject.h"
 
@@ -117,6 +117,7 @@ which carries forward this exception.
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 #include "events/ForceRegenerationEvent.h"
+#include "FsExperienceTypes.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -224,14 +225,14 @@ void PlayerObjectImplementation::unload() {
 		savedTerrainName = creature->getZone()->getZoneName();
 
 		//if (creature->isInQuadTree()) {
-			if (creoParent != NULL) {
-				savedParentID = creoParent->getObjectID();
+		if (creoParent != NULL) {
+			savedParentID = creoParent->getObjectID();
 
-				savedParent = creoParent;
-			} else
-				savedParentID = 0;
+			savedParent = creoParent;
+		} else
+			savedParentID = 0;
 
-			creature->destroyObjectFromWorld(true);
+		creature->destroyObjectFromWorld(true);
 		//}
 	}
 
@@ -2008,4 +2009,22 @@ bool PlayerObjectImplementation::hasChosenVeteranReward( const String& rewardTem
 
 	return false;
 
+}
+
+void PlayerObjectImplementation::updateForceSensitiveElegibleExperiences(int type) {
+	DeltaVectorMap<String, int>* xpList = getExperienceList();
+
+	// Clear the vector for new strings...
+	for (int i=0; i < fsEligibleExperiences.size(); ++i) {
+		fsEligibleExperiences.remove(i);
+	}
+
+	for (int i=0; i < xpList->size(); ++i){
+		String xpString = xpList->getKeyAt(i);
+		if (FsExperienceTypes::isValid(type, xpString)) {
+			if (!fsEligibleExperiences.contains(xpList->getKeyAt(i))) {
+				fsEligibleExperiences.add(xpList->getKeyAt(i));
+			}
+		}
+	}
 }
