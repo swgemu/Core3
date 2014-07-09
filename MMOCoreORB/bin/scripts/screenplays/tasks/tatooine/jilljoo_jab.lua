@@ -70,8 +70,7 @@ JilljooJab = ThemeParkLogic:new {
 	npcMap = npcMapJilljooJab,
 	className = "JilljooJab",
 	screenPlayState = "jilljoo_jab_quest",
-	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 }
 
 registerScreenPlay("JilljooJab", true)

@@ -86,7 +86,6 @@ LtHarburik = ThemeParkLogic:new {
 	className = "LtHarburik",
 	screenPlayState = "lt_harburik_quest",
 	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 	faction = FACTIONIMPERIAL
 
 }

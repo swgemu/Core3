@@ -64,7 +64,6 @@ RovinMinnoni = ThemeParkLogic:new {
 	npcMap = npcMapRovinMinnoni,
 	className = "RovinMinnoni",
 	screenPlayState = "rovim_minnoni_quest",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 	distance = 600
 }
 

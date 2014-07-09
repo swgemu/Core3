@@ -75,8 +75,7 @@ LornePrestar = ThemeParkLogic:new {
 	npcMap = npcMapLornePrestar,
 	className = "LornePrestar",
 	screenPlayState = "lorne_prestar_quest",
-	distance = 600,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 600
 }
 
 registerScreenPlay("LornePrestar", true)

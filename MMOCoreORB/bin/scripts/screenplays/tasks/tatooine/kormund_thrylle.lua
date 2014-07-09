@@ -54,7 +54,6 @@ KormundThrylle = ThemeParkLogic:new {
 	className = "KormundThrylle",
 	screenPlayState = "kormund_thrylle_quest",
 	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 	faction = FACTIONREBEL
 
 }

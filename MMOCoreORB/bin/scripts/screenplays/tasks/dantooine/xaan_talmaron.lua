@@ -77,8 +77,6 @@ XaanTalmaron = ThemeParkLogic:new {
 	className = "XaanTalmaron",
 	screenPlayState = "xaan_talmaron_quest",
 	distance = 1000,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "",
 	faction = FACTIONIMPERIAL
 }
 

@@ -71,7 +71,6 @@ ArvenWendik = ThemeParkLogic:new {
   npcMap = npcMapArvenWendik,
   className = "ArvenWendik",
   screenPlayState = "arven_wendik_quest",
-  missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
   distance = 600,
   faction = FACTIONREBEL
 }

@@ -58,8 +58,6 @@ LuthikUwyr = ThemeParkLogic:new {
 	className = "LuthikUwyr",
 	screenPlayState = "luthik_uwyr_quest",
 	distance = 1000,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "",
 	faction = FACTIONIMPERIAL
 }
 

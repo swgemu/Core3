@@ -202,9 +202,6 @@ diktatQuest = ThemeParkLogic:new {
 	className = "diktatQuest",
 	screenPlayState = "diktatQuestState",
 	distance = 1000,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "",
-	faction = NONE
 }
 
 registerScreenPlay("diktatQuest", true)

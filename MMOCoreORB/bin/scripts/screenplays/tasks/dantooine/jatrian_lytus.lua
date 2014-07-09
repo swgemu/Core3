@@ -82,8 +82,6 @@ JatrianLytus = ThemeParkLogic:new {
 	className = "JatrianLytus",
 	screenPlayState = "jatrian_lytus_quest",
 	distance = 1000,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "",
 	faction = FACTIONIMPERIAL
 }
 

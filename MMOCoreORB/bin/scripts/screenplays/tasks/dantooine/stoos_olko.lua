@@ -79,8 +79,6 @@ StoosOlko = ThemeParkLogic:new {
   className = "StoosOlko",
   screenPlayState = "stoos_olko_quest",
   distance = 800,
-  missionDescriptionStf = "",
-  missionCompletionMessageStf = "",
 }
 
 registerScreenPlay("StoosOlko", true)
