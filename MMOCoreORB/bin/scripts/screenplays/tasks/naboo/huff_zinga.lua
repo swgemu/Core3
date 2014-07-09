@@ -71,7 +71,6 @@ HuffZinga = ThemeParkLogic:new {
 	npcMap = npcMapHuffZinga,
 	className = "HuffZinga",
 	screenPlayState = "huff_zinga_quest",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 	distance = 600
 }
 

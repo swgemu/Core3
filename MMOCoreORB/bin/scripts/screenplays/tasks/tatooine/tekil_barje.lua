@@ -73,9 +73,7 @@ TekilBarje = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "TekilBarje",
 	screenPlayState = "tekil_barje_task",
-	distance = 500,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	distance = 500
 }
 
 registerScreenPlay("TekilBarje", true)

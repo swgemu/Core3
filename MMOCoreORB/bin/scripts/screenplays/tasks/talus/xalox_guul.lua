@@ -77,8 +77,7 @@ XaloxGuul = ThemeParkLogic:new {
 	npcMap = npcMapXaloxGuul,
 	className = "XaloxGuul",
 	screenPlayState = "xalox_guul_quest",
-	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 	faction = FACTIONIMPERIAL
 }
 

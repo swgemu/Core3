@@ -56,8 +56,7 @@ SigrixSlix = ThemeParkLogic:new {
 	npcMap = npcMapSigrixSlix,
 	className = "SigrixSlix",
 	screenPlayState = "sigrix_slix_quest",
-	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 }
 
 registerScreenPlay("SigrixSlix", true)

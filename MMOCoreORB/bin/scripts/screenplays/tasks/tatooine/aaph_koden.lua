@@ -72,9 +72,7 @@ AaphKoden = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "AaphKoden",
 	screenPlayState = "aaph_koden_quest",
-	distance = 600,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 600
 	faction = FACTIONREBEL
 
 }

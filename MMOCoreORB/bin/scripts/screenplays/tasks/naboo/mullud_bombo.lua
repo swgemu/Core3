@@ -34,7 +34,6 @@ MulludBombo = ThemeParkLogic:new {
 	npcMap = npcMapMulludBombo,
 	className = "MulludBombo",
 	screenPlayState = "mullud_bombo_quest",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 	distance = 600
 }
 

@@ -83,7 +83,6 @@ LergoBrazee = ThemeParkLogic:new {
   npcMap = npcMapLergoBrazee,
   className = "LergoBrazee",
   screenPlayState = "lergo_brazee_quest",
-  missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
   distance = 600,
 }
 

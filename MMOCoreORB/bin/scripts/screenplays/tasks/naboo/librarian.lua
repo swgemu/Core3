@@ -13,10 +13,7 @@ Librarian = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "Librarian",
 	screenPlayState = "librarian",
-	distance = 500,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "",
-
+	distance = 500
 }
 
 registerScreenPlay("Librarian", true)

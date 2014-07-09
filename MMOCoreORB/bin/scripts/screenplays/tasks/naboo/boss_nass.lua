@@ -88,7 +88,6 @@ BossNass = ThemeParkLogic:new {
   npcMap = npcMapBossNass,
   className = "BossNass",
   screenPlayState = "boss_nass_quest",
-  missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
   distance = 1000,
   faction = FACTIONREBEL
 }

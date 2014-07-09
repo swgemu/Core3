@@ -83,9 +83,7 @@ MatRags = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "MatRags",
 	screenPlayState = "mat_rags_quest",
-	distance = 1000,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	distance = 1000
 }
 
 registerScreenPlay("MatRags", true)

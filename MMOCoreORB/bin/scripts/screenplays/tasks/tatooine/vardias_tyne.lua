@@ -47,9 +47,7 @@ VardiasTyne = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "VardiasTyne",
 	screenPlayState = "vardias_tyne_quest",
-	distance = 500,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	distance = 600
 }
 
 registerScreenPlay("VardiasTyne", true)

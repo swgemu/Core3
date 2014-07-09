@@ -77,8 +77,6 @@ DrakkaJudarrl = ThemeParkLogic:new {
 	className = "DrakkaJudarrl",
 	screenPlayState = "drakka_judarrl_quest",
 	distance = 1000,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "",
 	faction = FACTIONREBEL
 }
 
