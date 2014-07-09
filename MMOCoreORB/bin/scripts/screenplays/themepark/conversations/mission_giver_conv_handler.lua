@@ -47,6 +47,8 @@ function mission_giver_conv_handler:runScreenHandlers(pConversationTemplate, pCo
 
 	if screenID == "init" then
 		pConversationScreen = self:handleScreenInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	elseif screenID == "inv_full" then
+		pConversationScreen = self:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "accept" then
 		pConversationScreen = self:handleScreenAccept(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "npc_1_n" then
@@ -153,19 +155,29 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 	else
 		nextScreenName = "cant_work"
 	end
-
 	return self:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, conversationTemplate:getScreen(nextScreenName))
+end
+
+function mission_giver_conv_handler:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	local screen = LuaConversationScreen(pConversationScreen)
+	pConversationScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConversationScreen)
+
+	clonedScreen:setDialogTextStringId("@conversation/crafting_contractor:s_82c3e20a") -- It looks like your inventory is full. Talk to me again when you free up some space.
+
+	return pConversationScreen
 end
 
 function mission_giver_conv_handler:handleScreenAccept(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	-- TODO verify that mission items can be spawned, spawn them, update screen play state etc.
-	--Test
+
 	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 
 	local nextScreenName = "npc_noloc_n"
-	if self.themePark:handleMissionAccept(npcNumber, missionNumber, pConversingPlayer) == true then
+	if self.themePark:getMissionType(npcNumber, pConversingPlayer) == "deliver" and self.themePark:hasFullInventory(pConversingPlayer) == true then
+		nextScreenName = "inv_full"
+	elseif self.themePark:handleMissionAccept(npcNumber, missionNumber, pConversingPlayer) == true then
 		nextScreenName = "npc_2_n"
 	else
 		self.themePark:resetCurrentMission(pConversingPlayer)

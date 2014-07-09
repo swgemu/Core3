@@ -36,6 +36,7 @@ public:
 	String getOwnerName(uint64 ownerID);
 
 	void updateCityTreasury();
+	void updateCityTreasuryToDouble();
 	int run();
 
 

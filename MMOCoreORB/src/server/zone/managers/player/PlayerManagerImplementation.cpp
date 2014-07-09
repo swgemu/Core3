@@ -1022,7 +1022,6 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 		CreatureObject* player = threatMap->elementAt(i).getKey();
 
-
 		if (!player->isPlayerCreature())
 			continue;
 
@@ -1042,7 +1041,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			xpAmount *= (float) damage / totalDamage;
 
 			//Cap xp based on player level
-			xpAmount = MIN(xpAmount, calculatePlayerLevel(player) * 300.f);
+			xpAmount = MIN(xpAmount, calculatePlayerLevel(player, xpType) * 300.f);
 
 			//Apply group bonus if in group
 			if (group != NULL)
@@ -2744,6 +2743,7 @@ SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getIn
 }
 
 int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
+
 	ManagedReference<WeaponObject*> weapon = player->getWeapon();
 
 	if (weapon == NULL) {
@@ -2753,6 +2753,37 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
 	}
 
 	String weaponType = weapon->getWeaponType();
+	int skillMod = player->getSkillMod("private_" + weaponType + "_combat_difficulty");
+
+	if (player->getPlayerObject() != NULL && player->getPlayerObject()->isJedi())
+		skillMod += player->getSkillMod("private_jedi_difficulty");
+
+	int level = MIN(25, skillMod / 100 + 1);
+
+	return level;
+}
+
+int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player, String& xpType) {
+	if (xpType.isEmpty() || xpType == "jedi_general")
+		return calculatePlayerLevel(player);
+
+	String weaponType;
+	if (xpType.contains("onehand"))
+		weaponType = "onehandmelee";
+	else if (xpType.contains("polearm"))
+		weaponType = "polearm";
+	else if (xpType.contains("twohand"))
+		weaponType = "twohandmelee";
+	else if (xpType.contains("unarmed"))
+		weaponType = "unarmed";
+	else if (xpType.contains("carbine"))
+		weaponType = "carbine";
+	else if (xpType.contains("pistol"))
+		weaponType = "pistol";
+	else if (xpType.contains("rifle"))
+		weaponType = "rifle";
+	else
+		weaponType = "heavyweapon";
 
 	int level = MIN(25, player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100 + 1);
 

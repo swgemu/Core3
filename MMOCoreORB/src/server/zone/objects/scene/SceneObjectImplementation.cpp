@@ -1061,6 +1061,8 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 		}
 	};
 
+	parent->setPosition(getPositionX(), getPositionZ(), getPositionY());
+
 	UpdateVehiclePositionTask* task = new UpdateVehiclePositionTask(parent,
 			direction, getPositionX(), getPositionZ(), getPositionY(),
 			sendPackets);

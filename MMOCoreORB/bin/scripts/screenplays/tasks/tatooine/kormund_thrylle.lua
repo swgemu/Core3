@@ -7,7 +7,7 @@ kormund_thrylle_missions =
 				{ npcTemplate = "reen_loruk", planetName = "tatooine", npcName = "Reen Loruk" }
 			},
 			secondarySpawns = {
-				{ npcTemplate = "probot", planetName = "tatooine", npcName = "an Imperial Probot" },
+				{ npcTemplate = "kormund_probot", planetName = "tatooine", npcName = "an Imperial Probot" },
 			},
 			itemSpawns =
 			{

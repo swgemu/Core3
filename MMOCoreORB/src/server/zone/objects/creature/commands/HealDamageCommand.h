@@ -388,9 +388,10 @@ public:
 
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else
+				} else {
 					creature->sendSystemMessage("@healing_response:healing_response_62"); //Target must be a player or a creature pet in order to heal damage. 
 					return GENERALERROR;
+				}
 			}
 		} else
 			object = creature;

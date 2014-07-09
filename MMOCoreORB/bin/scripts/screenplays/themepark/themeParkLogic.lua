@@ -124,6 +124,15 @@ function ThemeParkLogic:setCellPermissions(permissions, pCreature)
 	end
 end
 
+function ThemeParkLogic:hasFullInventory(pPlayer)
+	return ObjectManager.withSceneObject(pPlayer, function(player)
+		local pInventory = player:getSlottedObject("inventory")
+		return ObjectManager.withSceneObject(pInventory, function(inventory)
+			return inventory:hasFullContainerObjects()
+		end)
+	end)
+end
+
 function ThemeParkLogic:hasPermission(conditions, pCreature)
 	local hasPermission = true
 	for i = 1, # conditions, 1 do
