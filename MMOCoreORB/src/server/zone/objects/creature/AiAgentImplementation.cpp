@@ -683,6 +683,9 @@ bool AiAgentImplementation::tryRetreat() {
 void AiAgentImplementation::setDefender(SceneObject* defender) {
 	CreatureObjectImplementation::setDefender(defender);
 
+	if (isRetreating())
+		homeLocation.setReached(true);
+
 	setFollowObject(defender);
 
 	activateRecovery();
@@ -697,8 +700,9 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 	if (defenderList.size() == 0)
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 
-	if(followState <= STALKING){
+	if(followState <= STALKING) {
 		followState = FOLLOWING;
+		setDestination();
 	}
 
 	CreatureObjectImplementation::addDefender(defender);
@@ -985,7 +989,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	//ManagedReference<SceneObject*> strongFollow = followObject.get();
 
 	float newSpeed = runSpeed * 1.5f; // FIXME (dannuic): Why is this *1.5? Is that some magic number?
-	if (walk)
+	if (walk && !(isRetreating() || isFleeing()))
 		newSpeed = walkSpeed;
 
 	if(hasState(CreatureState::IMMOBILIZED))

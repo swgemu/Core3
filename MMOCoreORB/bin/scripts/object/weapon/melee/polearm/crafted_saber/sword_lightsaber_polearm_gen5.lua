@@ -117,6 +117,10 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen5 = object
 
 	minDamage = 225,
 	maxDamage = 305,
+	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
+
+	noTrade = 1,
 
 	attackSpeed = 0
 }

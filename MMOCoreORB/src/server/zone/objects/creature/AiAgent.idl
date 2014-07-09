@@ -466,9 +466,6 @@ class AiAgent extends CreatureObject {
 		
 		if (object == this)
 			return false;
-
-		if (isRetreating())
-			return false;
 		
 		if (isDead())
 			return false;

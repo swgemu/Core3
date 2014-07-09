@@ -114,7 +114,9 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_s1_gen4 =
 	
 	minDamage = 185,
 	maxDamage = 265,
-	
+			
+	noTrade = 1,
+		
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 	
 	childObjects = {
