@@ -562,10 +562,14 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 
 	local secondaryNpcs = mission.secondarySpawns
 	for i = 1 + table.getn(mission.primarySpawns), numberOfSpawns, 1 do
-		local pNpc = self:spawnNpc(secondaryNpcs[i - table.getn(mission.primarySpawns)], spawnPoints[i], pConversingPlayer, i)
+		local secondaryNpc = secondaryNpcs[i - table.getn(mission.primarySpawns)]
+		local pNpc = self:spawnNpc(secondaryNpc, spawnPoints[i], pConversingPlayer, i)
 		ObjectManager.withCreatureObject(pNpc, function(npc)
 			ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
 				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+				if (secondaryNpc.dead ~= nil and secondaryNpc.dead == "true") then
+					npc:setPosture(14)
+				end
 			end)
 		end)
 	end
@@ -765,7 +769,9 @@ function ThemeParkLogic:setNpcDefender(pPlayer)
 					end
 				elseif i > table.getn(mission.primarySpawns) then
 					ObjectManager.withCreatureAiAgent(pNpc, function(mobile)
-						mobile:setDefender(pPlayer)
+						if (mission.secondarySpawns[i - table.getn(mission.primarySpawns)].dead == nil or mission.secondarySpawns[i - table.getn(mission.primarySpawns)].dead ~= "true") then
+							mobile:setDefender(pPlayer)
+						end
 					end)
 				end
 			end
