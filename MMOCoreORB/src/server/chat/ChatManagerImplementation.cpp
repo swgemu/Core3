@@ -269,14 +269,18 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 		return;
 	}
 
+	String text = formatMessage(message.toString());
+
+	UnicodeString formattedMessage(text);
+
 	ManagedReference<ChatRoom*> planetRoom = zone->getChatRoom();
 
 	BaseMessage* msg = NULL;
 
 	if (fullName == "")
-		msg = new ChatRoomMessage(name, message, roomID);
+		msg = new ChatRoomMessage(name, formattedMessage, roomID);
 	else
-		msg = new ChatRoomMessage(fullName, message, roomID);
+		msg = new ChatRoomMessage(fullName, formattedMessage, roomID);
 
 	// Auction Chat and Planet Chat should adhere to player ignore list
 	if( auctionRoom != NULL && auctionRoom->getRoomID() == roomID ){
@@ -709,6 +713,9 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 
 		tokenizer.finalToken(msg);
 
+		String text = formatMessage(msg.toString());
+
+		UnicodeString formattedMessage(text);
 		/*if (msg[0] == '@') {
 			handleGameCommand(player, msg.toString());
 		} else {
@@ -722,10 +729,10 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 				broadcastMessage(player, msg, targetid, moodid, mood2);
 			}
 		}*/
-		broadcastMessage(player, msg, targetid, moodid, mood2);
+		broadcastMessage(player, formattedMessage, targetid, moodid, mood2);
 
 		ManagedReference<ChatMessage*> cm = new ChatMessage();
-		cm->setString(msg.toString());
+		cm->setString(formattedMessage.toString());
 		player->notifyObservers(ObserverEventType::CHAT, cm, 0);
 
 	} catch (Exception& e) {
@@ -799,6 +806,10 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 
 		return;
 	}
+
+	String textString = formatMessage(text.toString());
+
+	text = textString;
 
 	String name = sender->getFirstName();
 	if( sender->getPlayerObject()->isPrivileged() ){
@@ -892,6 +903,10 @@ void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const Un
 		return;
 	}
 
+	String text = formatMessage(message.toString());
+
+	UnicodeString formattedMessage(text);
+
 	sender->unlock();
 
 	try {
@@ -900,7 +915,7 @@ void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const Un
 		ManagedReference<ChatRoom*> room = group->getGroupChannel();
 
 		if (room != NULL) {
-			BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
+			BaseMessage* msg = new ChatRoomMessage(name, formattedMessage, room->getRoomID());
 			group->broadcastMessage(msg);
 		}
 
@@ -951,9 +966,13 @@ void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const Un
 		return;
 	}
 
+	String text = formatMessage(message.toString());
+
+	UnicodeString formattedMessage(text);
+
 	ManagedReference<ChatRoom*> room = guild->getChatRoom();
 	if (room != NULL) {
-		BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
+		BaseMessage* msg = new ChatRoomMessage(name, formattedMessage, room->getRoomID());
 		room->broadcastMessage(msg);
 	}
 
@@ -996,14 +1015,18 @@ void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const U
 		return;
 	}
 
+	String text = formatMessage(message.toString());
+
+	UnicodeString formattedMessage(text);
+
 	ManagedReference<ChatRoom*> room = zone->getChatRoom();
 	BaseMessage* msg = NULL;
 
 	if (room != NULL) {
 		if (fullName == "")
-				msg = new ChatRoomMessage(name, message, room->getRoomID());
+				msg = new ChatRoomMessage(name, formattedMessage, room->getRoomID());
 			else
-				msg = new ChatRoomMessage(fullName, message, room->getRoomID());
+				msg = new ChatRoomMessage(fullName, formattedMessage, room->getRoomID());
 
 		room->broadcastMessageCheckIgnore(msg, name);
 	}
@@ -1042,13 +1065,17 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 		return;
 	}
 
+	String text = formatMessage(message.toString());
+
+	UnicodeString formattedMessage(text);
+
 	BaseMessage* msg = NULL;
 
 	if (auctionRoom != NULL) {
 		if (fullName == "")
-			msg = new ChatRoomMessage(name, message, auctionRoom->getRoomID());
+			msg = new ChatRoomMessage(name, formattedMessage, auctionRoom->getRoomID());
 		else
-			msg = new ChatRoomMessage(fullName, message, auctionRoom->getRoomID());
+			msg = new ChatRoomMessage(fullName, formattedMessage, auctionRoom->getRoomID());
 
 		auctionRoom->broadcastMessageCheckIgnore(msg, name);
 	}
@@ -1321,4 +1348,16 @@ void ChatManagerImplementation::deletePersistentMessage(CreatureObject* player, 
 	_locker.release();
 
 	ObjectManager::instance()->destroyObjectFromDatabase(messageObjectID);
+}
+
+String ChatManagerImplementation::formatMessage(const String& message) {
+	String text = message;
+
+	while (text.contains("\\>")) {
+		int index = text.indexOf("\\>");
+		String sub = "\\" + text.subString(index, index + 2);
+		text = text.replaceFirst(sub,"");
+	}
+
+	return text;
 }
