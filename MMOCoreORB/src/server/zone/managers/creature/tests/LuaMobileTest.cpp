@@ -16,12 +16,18 @@
 #include "server/zone/managers/templates/DataArchiveStore.h"
 
 class LuaMobileTest : public ::testing::Test {
+protected:
+	LootGroupMap* lootGroupMap;
+	TemplateManager* templateManager;
+
 public:
 
 	LuaMobileTest() {
 		// Perform creation setup here.
 		ConfigManager::instance()->loadConfigData();
 		DataArchiveStore::instance()->loadTres(ConfigManager::instance()->getTrePath(), ConfigManager::instance()->getTreFiles());
+		lootGroupMap = LootGroupMap::instance();
+		templateManager = TemplateManager::instance();
 	}
 
 	~LuaMobileTest() {
@@ -29,13 +35,19 @@ public:
 
 	void SetUp() {
 		// Perform setup of common constructs here.
+		lootGroupMap->initialize();
+
+		ASSERT_TRUE( templateManager != NULL );
+		if( templateManager->loadedTemplatesCount == 0 ){
+			templateManager->loadLuaTemplates();
+		}
 	}
 
 	void TearDown() {
 		// Perform clean up of common constructs here.
 	}
 
-	void checkLootGroupEntryRecursive(LootGroupMap* lootGroupMap, String& entryName, Vector<String>* parentGroups) {
+	void checkLootGroupEntryRecursive(String& entryName, Vector<String>* parentGroups) {
 		if (entryName.isEmpty())
 			return;
 
@@ -59,7 +71,7 @@ public:
 
 				parentGroups->add(entryName);
 
-				checkLootGroupEntryRecursive(lootGroupMap, entry, parentGroups);
+				checkLootGroupEntryRecursive(entry, parentGroups);
 			}
 
 		} else {
@@ -75,9 +87,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	// Verify that all mobiles load
 	ASSERT_EQ(CreatureTemplateManager::instance()->loadTemplates(), 0);
 
-	// Verify loot group map loads
-	LootGroupMap* lootGroupMap = LootGroupMap::instance();
-	ASSERT_EQ(lootGroupMap->initialize(), 0);
+	// Verify loot group map loaded
+	ASSERT_EQ(LootGroupMap::ERROR_CODE, 0);
 
 	// Verify factions load
 	FactionManager::instance()->loadData();
@@ -100,7 +111,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		Vector<String> objTemps = creature->getTemplates();
 		EXPECT_FALSE( objTemps.isEmpty() ) << "Mobile " << templateName << " does not have any templates configured";
 		for( int j=0; j< objTemps.size(); j++ ){
-			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(objTemps.get(j).hashCode());
+			SharedObjectTemplate* templateData = templateManager->getTemplate(objTemps.get(j).hashCode());
 			std::string objName = objTemps.get(j).toCharArray();
 			EXPECT_TRUE( templateData != NULL ) << "Mobile " << templateName << " has invalid template configured: " << objName;
 		}
@@ -108,7 +119,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		// Verify that control device template is valid
 		String controlDeviceTemplate = creature->getControlDeviceTemplate();
 		if (!controlDeviceTemplate.isEmpty()) {
-			SharedObjectTemplate* controlDeviceTemplateData = TemplateManager::instance()->getTemplate(controlDeviceTemplate.hashCode());
+			SharedObjectTemplate* controlDeviceTemplateData = templateManager->getTemplate(controlDeviceTemplate.hashCode());
 			EXPECT_TRUE( controlDeviceTemplateData != NULL ) << "Control device template " << controlDeviceTemplate.toCharArray() << " from " << templateName << " does not exist.";
 			EXPECT_TRUE( controlDeviceTemplate.beginsWith("object/intangible/pet/") ) << "Control device template " << controlDeviceTemplate.toCharArray() << " from " << templateName << " is not a pet/droid control device template.";
 		}
@@ -354,7 +365,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			for( int j=0; j < buildings->size(); j++ ){
 				String buildingTemplate = buildings->get(j);
 				std::string buildingStr = buildingTemplate.toCharArray();
-				SharedObjectTemplate* templateObject = TemplateManager::instance()->getTemplate(buildingTemplate.hashCode());
+				SharedObjectTemplate* templateObject = templateManager->getTemplate(buildingTemplate.hashCode());
 				EXPECT_TRUE( templateObject != NULL && templateObject->isSharedTangibleObjectTemplate() ) << "Building template " << buildingStr << " in lair template " << templateName << " does not exist";
 				if( lair->getBuildingType() == LairTemplate::LAIR ){
 					EXPECT_TRUE( buildingTemplate.beginsWith( "object/tangible/lair/") ) << "Building template " << buildingStr << " in lair template " << templateName << " is not a child of object/tangible/lair/";
@@ -452,19 +463,26 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 
 TEST_F(LuaMobileTest, LuaLootGroupsTest) {
 
-	LootGroupMap* lootGroupMap = LootGroupMap::instance();
-	ASSERT_EQ(lootGroupMap->initialize(), 0);
+	// Verify loot group map loaded
+	ASSERT_EQ(LootGroupMap::ERROR_CODE, 0);
 
-	//Make sure that no loot items have the same name as a loot group
+	// Test Loot Items
 	HashTableIterator<String, Reference<LootItemTemplate*> > itemIter = lootGroupMap->itemTemplates.iterator();
 	while (itemIter.hasNext()) {
 
 		LootItemTemplate* lootItemTemplate = itemIter.next();
 		String itemTemplateName( lootItemTemplate->getTemplateName().toCharArray() );
 
+		// Make sure that no loot items have the same name as a loot group
 		EXPECT_FALSE( lootGroupMap->lootGroupExists(itemTemplateName) ) << "Loot item " << std::string(itemTemplateName.toCharArray()) << " has the same name as a loot group.";
+
+		// Verify that directObjectTemplate is valid
+		String directObjectTemplate = lootItemTemplate->getDirectObjectTemplate();
+		SharedObjectTemplate* templateObject = templateManager->getTemplate(directObjectTemplate.hashCode());
+		EXPECT_TRUE( templateObject != NULL && templateObject->isSharedTangibleObjectTemplate() ) << "directObjectTemplate is invalid in loot item " << std::string(itemTemplateName.toCharArray());
 	}
 
+	// Test Loot Groups
 	HashTableIterator<String, Reference<LootGroupTemplate*> > iter = lootGroupMap->groupTemplates.iterator();
 	while (iter.hasNext()) {
 
@@ -486,7 +504,7 @@ TEST_F(LuaMobileTest, LuaLootGroupsTest) {
 
 			String entryName = lootGroupTemplate->getLootGroupEntryAt(i);
 
-			checkLootGroupEntryRecursive(lootGroupMap, entryName, &parentGroups);
+			checkLootGroupEntryRecursive(entryName, &parentGroups);
 		}
 
 	}

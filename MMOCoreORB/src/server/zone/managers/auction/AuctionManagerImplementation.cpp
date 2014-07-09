@@ -595,6 +595,8 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 	WaypointChatParameter waypointParam(waypoint);
 
+	String itemName = removeColorCodes(item->getItemName());
+
 	if (!item->isOnBazaar()) {
 		//Setup the mail to the vendor owner
 
@@ -609,7 +611,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		UnicodeString sellerSubject("@auction:subject_vendor_seller"); // Vendor Sale Complete
 		StringIdChatParameter sellerBodySale("@auction:seller_success_vendor"); // %TU has sold %TO to %TT for %DI credits.
 		sellerBodySale.setTU(vendor->getDisplayedName());
-		sellerBodySale.setTO(item->getItemName());
+		sellerBodySale.setTO(itemName);
 		sellerBodySale.setTT(item->getBidderName());
 		sellerBodySale.setDI(item->getPrice());
 
@@ -632,7 +634,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 		UnicodeString buyerSubject("@auction:subject_vendor_buyer"); // Vendor Item Purchased
 		StringIdChatParameter buyerBodySale("@auction:buyer_success"); // You have won the auction of "%TO" from "%TT" for %DI credits. See the attached waypoint for location.
-		buyerBodySale.setTO(item->getItemName());
+		buyerBodySale.setTO(itemName);
 		buyerBodySale.setTT(sellerName);
 		buyerBodySale.setDI(item->getPrice());
 
@@ -662,7 +664,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		// Setup the mail to the seller
 		UnicodeString sellerSubject("@auction:subject_instant_seller"); // Instant Sale Complete
 		StringIdChatParameter sellerBodySale("@auction:seller_success"); // Your auction of %TO has been sold to %TT for %DI credits
-		sellerBodySale.setTO(item->getItemName());
+		sellerBodySale.setTO(itemName);
 		sellerBodySale.setTT(item->getBidderName());
 		sellerBodySale.setDI(item->getPrice());
 
@@ -681,7 +683,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 		UnicodeString buyerSubject("@auction:subject_instant_buyer"); // Instant Sale Item Purchased
 		StringIdChatParameter buyerBodySale("@auction:buyer_success"); // You have won the auction of "%TO" from "%TT" for %DI credits. See the attached waypoint for location.
-		buyerBodySale.setTO(item->getItemName());
+		buyerBodySale.setTO(itemName);
 		buyerBodySale.setTT(sellerName);
 		buyerBodySale.setDI(item->getPrice());
 
@@ -790,8 +792,10 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 	// send prior bidder their money back
 	if (item->getBidderName().length() > 0) {
 
+		String itemName = removeColorCodes(item->getItemName());
+
 		StringIdChatParameter bidderBody("@auction:bidder_outbid"); // You have been outbid on the "%TO" that you were bidding on.
-		bidderBody.setTO(item->getItemName());
+		bidderBody.setTO(itemName);
 
 		if (priorBidder != NULL) {
 			Locker clocker(priorBidder, player);
@@ -963,10 +967,12 @@ void AuctionManagerImplementation::refundAuction(AuctionItem* item) {
 	ManagedReference<CreatureObject*> bidder = pman->getPlayer(item->getBidderName());
 	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 
+	String itemName = removeColorCodes(item->getItemName());
+
 	// send the player a mail and system message
 	UnicodeString buyerSubject("@auction:subject_auction_cancelled"); // Auction Cancelled
 	StringIdChatParameter buyerBody("auction", "buyer_canceled"); // The auction of "%TO" that you were bidding on has been canceled by %TT.
-	buyerBody.setTO(item->getItemName());
+	buyerBody.setTO(itemName);
 	buyerBody.setTT(item->getOwnerName());
 
 	if (bidder != NULL) {
@@ -1371,9 +1377,11 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 
 			waypoint->setCustomObjectName(vendor->getDisplayedName(), false);
 
+			String itemName = removeColorCodes(item->getItemName());
+
 			UnicodeString sellerSubject("@auction:subject_auction_unsuccessful"); // Auction Unsuccessful
 			StringIdChatParameter sellerBody("@auction:seller_fail"); // Your auction of %TO has been completed and has not been purchased.
-			sellerBody.setTO(item->getItemName());
+			sellerBody.setTO(itemName);
 
 			//Send the Mail
 			cman->sendMail(sender, sellerSubject, sellerBody, item->getOwnerName(), waypoint);
@@ -1407,13 +1415,15 @@ void AuctionManagerImplementation::expireSale(AuctionItem* item) {
 
 	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 
+	String itemName = removeColorCodes(item->getItemName());
+
 	//Send the mail to the vendor owner
 	String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
 
 	UnicodeString sellerSubject("@auction:subject_auction_unsuccessful"); // Auction Unsuccessful
 
 	StringIdChatParameter sellerBody("@auction:seller_fail"); // Your auction of %TO has been completed and has not been purchased.
-	sellerBody.setTO(item->getItemName());
+	sellerBody.setTO(itemName);
 	
 	locker.release();
 
@@ -1446,13 +1456,15 @@ void AuctionManagerImplementation::expireBidAuction(AuctionItem* item) {
 
 	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 
+	String itemName = removeColorCodes(item->getItemName());
+
 	//Send the mail to the vendor owner
 	String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
 
 	UnicodeString sellerSubject("@auction:subject_auction_item_expired"); // Auction Item Expired
 
 	StringIdChatParameter sellerBody("@auction:seller_fail"); // Your auction of %TO has been completed and has not been purchased.
-	sellerBody.setTO(item->getItemName());
+	sellerBody.setTO(itemName);
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
@@ -1536,6 +1548,8 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 		StringIdChatParameter sellerBodySale;
 		UnicodeString sellerSubject;
 
+		String itemName = removeColorCodes(item->getItemName());
+
 		if (!item->isOnBazaar()) {
 			sellerSubject = "@auction:subject_vendor_seller"; // Vendor Sale Complete
 			sellerBodySale.setStringId("@auction:seller_success_vendor"); // %TU has sold %TO to %TT for %DI credits.
@@ -1544,7 +1558,7 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 			sellerSubject = "@auction:subject_auction_seller"; // Auction Complete
 			sellerBodySale.setStringId("@auction:seller_success"); // Your auction of %TO has been sold to %TT for %DI credits
 		}
-		sellerBodySale.setTO(item->getItemName());
+		sellerBodySale.setTO(itemName);
 		sellerBodySale.setTT(item->getBidderName());
 		sellerBodySale.setDI(item->getPrice());
 
@@ -1567,7 +1581,7 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 			buyerSubject = "@auction:subject_auction_buyer"; // Auction Won
 		}
 		StringIdChatParameter buyerBodySale("@auction:buyer_success"); // You have won the auction of "%TO" from "%TT" for %DI credits. See the attached waypoint for location.
-		buyerBodySale.setTO(item->getItemName());
+		buyerBodySale.setTO(itemName);
 		buyerBodySale.setTT(sellerName);
 		buyerBodySale.setDI(item->getPrice());
 
@@ -1608,9 +1622,11 @@ void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item) {
 
 		waypoint->setCustomObjectName(vendor->getDisplayedName(), false);
 
+		String itemName = removeColorCodes(item->getItemName());
+
 		UnicodeString sellerSubject("@auction:subject_auction_unsuccessful"); // Auction Unsuccessful
 		StringIdChatParameter sellerBody("@auction:item_expired"); // Because you failed to pick it up in time, the "%TO" that you were auctioning has expired.
-		sellerBody.setTO(item->getItemName());
+		sellerBody.setTO(itemName);
 
 		//Send the Mail
 		locker.release();
@@ -1689,4 +1705,16 @@ void AuctionManagerImplementation::sendVendorUpdateMail(SceneObject* vendor, boo
 		cman->sendMail(sender, subject, body, owner->getFirstName());
 	}
 
+}
+
+String AuctionManagerImplementation::removeColorCodes(const String& name) {
+	String itemName = name;
+
+	while (itemName.contains("\\#")) {
+		int index = itemName.indexOf("\\#");
+		String sub = "\\" + itemName.subString(index, index + 8);
+		itemName = itemName.replaceFirst(sub,"");
+	}
+
+	return itemName;
 }

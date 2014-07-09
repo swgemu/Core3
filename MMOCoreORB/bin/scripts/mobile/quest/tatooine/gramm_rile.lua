@@ -23,14 +23,14 @@ gramm_rile = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/mos_taike_mayor.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "gramm_rile_mission_giver_convotemplate",
 	outfit = "mos_taike_mayor_outfit",
 	attacks = {
 	}

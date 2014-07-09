@@ -1,17 +1,17 @@
-novatrooper_cadet = Creature:new {
-	objectName = "@mob/creature_names:stormtrooper_novatrooper_cadet",
+novatrooper_captain = Creature:new {
+	objectName = "@mob/creature_names:stormtrooper_novatrooper_captain",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
-	level = 72,
-	chanceHit = 0.7,
-	damageMin = 495,
-	damageMax = 700,
-	baseXp = 6931,
-	baseHAM = 12000,
-	baseHAMmax = 15000,
-	armor = 1,
-	resists = {40,35,80,30,30,20,30,45,-1},
+	level = 142,
+	chanceHit = 70,
+	damageMin = 845,
+	damageMax = 1400,
+	baseXp = 13462,
+	baseHAM = 68000,
+	baseHAMmax = 83000,
+	armor = 2,
+	resists = {60,50,80,30,25,25,30,45,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -21,25 +21,25 @@ novatrooper_cadet = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_black_gold.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_captain_black_gold.iff"},
 	lootGroups = {
 		{
 			groups = {
 				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 6650000},
+				{group = "junk", chance = 6200000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
                 {group = "melee_weapons", chance = 550000},
                 {group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
-				{group = "wearables_common", chance = 500000},
-				{group = "wearables_uncommon", chance = 500000}
+				{group = "imperial_officer_common", chance = 450000},
+				{group = "wearables_rare", chance = 1000000}
 			},
 			lootChance = 2800000
 		}						
@@ -49,4 +49,4 @@ novatrooper_cadet = Creature:new {
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(novatrooper_cadet, "novatrooper_cadet")
+CreatureTemplates:addCreatureTemplate(novatrooper_captain, "novatrooper_captain")

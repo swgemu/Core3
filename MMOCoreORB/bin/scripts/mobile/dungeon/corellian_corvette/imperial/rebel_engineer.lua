@@ -1,17 +1,17 @@
-rebel_first_mate = Creature:new {
-	objectName = "@mob/creature_names:corvette_rebel_mate",
+rebel_engineer = Creature:new {
+	objectName = "@mob/creature_names:corvette_rebel_engineer",
 	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",
-	level = 86,
-	chanceHit = 0.85,
-	damageMin = 570,
-	damageMax = 850,
-	baseXp = 8223,
-	baseHAM = 13000,
-	baseHAMmax = 16000,
+	level = 106,
+	chanceHit = 1.75,
+	damageMin = 670,
+	damageMax = 1050,
+	baseXp = 10081,
+	baseHAM = 29000,
+	baseHAMmax = 36000,
 	armor = 0,
-	resists = {45,35,0,0,30,30,80,65,-1},
+	resists = {45,45,0,0,30,30,80,65,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -21,12 +21,12 @@ rebel_first_mate = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + KILLER + HEALER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_rebel_first_lieutenant_bothan_male_01.iff"},
+	templates = {"object/mobile/dressed_rebel_major_human_male_01.iff"},
 	lootGroups = {
 		{
 	        groups = {
@@ -49,4 +49,4 @@ rebel_first_mate = Creature:new {
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_first_mate, "rebel_first_mate")
+CreatureTemplates:addCreatureTemplate(rebel_engineer, "rebel_engineer")

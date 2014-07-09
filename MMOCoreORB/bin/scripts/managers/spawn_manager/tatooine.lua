@@ -532,7 +532,6 @@ tatooine_static_spawns = {
 	{"giaal_itotr",60,-3102.7,5,2185,118,0, "npc_sitting_chair", "","stationary"},
 	{"giko",60,7.19977,-0.255725,-8.84042,0,1153516, "conversation", "Giko","stationary"},
 	{"gil_burtin",60,20.5073,1.56616,12.9718,218.196,1223850, "neutral", "","stationary"},
-	{"gramm_rile",60,3887.3,33,2348.6,300,0, "calm", "Gramm Rile","stationary"},
 	{"gunham",60,-1125.07,12.1959,-3622.83,83.2544,0, "npc_imperial", "","stationary"},
 	{"hermit",60,54.6956,-0.521137,37.0243,360.011,4005523, "conversation", "","stationary"},
 	{"hunter",300,-2.46731,0.408271,-0.572452,180.01,1187893, "conversation", "","stationary"},

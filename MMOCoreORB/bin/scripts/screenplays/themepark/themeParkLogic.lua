@@ -460,6 +460,32 @@ function ThemeParkLogic:spawnDestroyBuilding(mission, pConversingPlayer)
 	end)
 end
 
+function ThemeParkLogic:spawnMissionStaticObjects(mission, pConversingPlayer, x, y)
+	if pConversingPlayer == nil then
+		return false
+	end
+
+	local player = LuaCreatureObject(pConversingPlayer)
+	local playerID = player:getObjectID()
+	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
+	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+
+	local numberOfSpawns = table.getn(mission.staticObjects)
+
+	ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+		writeData(creature:getObjectID() .. ":missionStaticObjects", numberOfSpawns)
+		for i = 1, numberOfSpawns, 1 do
+			local spawnPoint = getSpawnPoint(pConversingPlayer, x, y, 5, 10)
+			if spawnPoint ~= nil then
+				local pObject = spawnSceneObject(mission.staticObjects[i].planetName, mission.staticObjects[i].objectTemplate, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0, 0, 0, 0)
+				ObjectManager.withSceneObject(pObject, function(object)
+					writeData(creature:getObjectID() .. ":missionStaticObject:no" .. i, object:getObjectID())
+				end)
+			end
+		end
+	end)
+end
+
 function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 	if pConversingPlayer == nil then
 		return false
@@ -512,6 +538,9 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 					end)
 				end
 				self:updateWaypoint(pConversingPlayer, mainNpcs[i].planetName, spawnPoints[i][1], spawnPoints[i][3], "target")
+				if (mission.staticObjects ~= nil and table.getn(mission.staticObjects) > 0) then
+					self:spawnMissionStaticObjects(mission, pConversingPlayer, spawnPoints[i][1], spawnPoints[i][3])
+				end
 			end
 			if mission.missionType == "assassinate" then
 				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTarget", pNpc)
@@ -533,10 +562,14 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 
 	local secondaryNpcs = mission.secondarySpawns
 	for i = 1 + table.getn(mission.primarySpawns), numberOfSpawns, 1 do
-		local pNpc = self:spawnNpc(secondaryNpcs[i - table.getn(mission.primarySpawns)], spawnPoints[i], pConversingPlayer, i)
+		local secondaryNpc = secondaryNpcs[i - table.getn(mission.primarySpawns)]
+		local pNpc = self:spawnNpc(secondaryNpc, spawnPoints[i], pConversingPlayer, i)
 		ObjectManager.withCreatureObject(pNpc, function(npc)
 			ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
 				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+				if (secondaryNpc.dead ~= nil and secondaryNpc.dead == "true") then
+					npc:setPosture(14)
+				end
 			end)
 		end)
 	end
@@ -722,7 +755,7 @@ function ThemeParkLogic:setNpcDefender(pPlayer)
 		local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
 		local mission = self:getMission(npcNumber, missionNumber)
 		local currentMissionType = self:getMissionType(npcNumber, pPlayer)
-	
+
 		local numberOfSpawns = readData(player:getObjectID() .. ":missionSpawns")
 		for i = 1, numberOfSpawns, 1 do
 			local objectID = readData(playerID .. ":missionSpawn:no" .. i)
@@ -736,12 +769,14 @@ function ThemeParkLogic:setNpcDefender(pPlayer)
 					end
 				elseif i > table.getn(mission.primarySpawns) then
 					ObjectManager.withCreatureAiAgent(pNpc, function(mobile)
-						mobile:setDefender(pPlayer)
+						if (mission.secondarySpawns[i - table.getn(mission.primarySpawns)].dead == nil or mission.secondarySpawns[i - table.getn(mission.primarySpawns)].dead ~= "true") then
+							mobile:setDefender(pPlayer)
+						end
 					end)
 				end
 			end
 		end
-	end)			
+	end)
 end
 
 function ThemeParkLogic:notifyDefeatedTarget(pVictim, pAttacker)
@@ -1256,6 +1291,16 @@ function ThemeParkLogic:cleanUpMission(pConversingPlayer)
 			destroyBuilding(buildingID)
 		end
 		writeData(creature:getObjectID() .. ":destroyableBuildingID", 0)
+	end
+
+	local numberOfObjects = readData(creature:getObjectID() .. ":missionStaticObjects")
+	for i = 1, numberOfObjects, 1 do
+		local objectID = readData(creature:getObjectID() .. ":missionStaticObject:no" .. i)
+		local pObj = getSceneObject(objectID)
+
+		ObjectManager.withSceneObject(pObj, function(obj)
+			obj:destroyObjectFromWorld()
+		end)
 	end
 
 	local numberOfSpawns = readData(creature:getObjectID() .. ":missionSpawns")
