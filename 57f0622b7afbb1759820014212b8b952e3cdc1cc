@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_7e2bf5eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-09T09:19:22Z",
+      "side": 1,
+      "message": "This shouldn\u0027t work, why not just use fsEligibleExperiences.removeAll(); ?",
+      "revId": "57f0622b7afbb1759820014212b8b952e3cdc1cc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
