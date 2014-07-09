@@ -126,6 +126,9 @@ class PlayerObject extends IntangibleObject {
 	protected SortedVector<unsigned long> ownedVendors;
 	
 	protected byte maximumLots;
+
+	@dereferenced
+	protected Vector<string> fsEligibleExperiences;
 	
 	protected int jediState;
 	protected unsigned int adminLevel;
@@ -1538,6 +1541,17 @@ class PlayerObject extends IntangibleObject {
 	public void clearVeteranReward( unsigned int milestone ){
 		if( chosenVeteranRewards.contains(milestone) )
 			chosenVeteranRewards.drop( milestone );
+	}
+
+	public native void updateForceSensitiveElegibleExperiences(int type);
+
+	@local
+	public Vector<string> getForceSensitiveElegibleExperiences() {
+		return fsEligibleExperiences;
+	}
+
+	public string getForceSensitiveElegibleExperienceType(int type) {
+		return fsEligibleExperiences.get(type);
 	}
 }
 

@@ -45,6 +45,9 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "hasCompletedQuestsBitSet", &LuaPlayerObject::hasCompletedQuestsBitSet },
 		{ "setCompletedQuestsBit", &LuaPlayerObject::setCompletedQuestsBit },
 		{ "clearCompletedQuestsBit", &LuaPlayerObject::clearCompletedQuestsBit },
+		{ "getExperience", &LuaPlayerObject::getExperience },
+		{ "getExperienceForType", &LuaPlayerObject::getExperienceForType},
+		{ "getExperienceType", &LuaPlayerObject::getExperienceType},
 		{ 0, 0 }
 };
 
@@ -339,4 +342,45 @@ int LuaPlayerObject::clearCompletedQuestsBit(lua_State* L) {
 	realObject->clearCompletedQuestsBit(quest, true);
 
 	return 0;
+}
+
+int LuaPlayerObject::getExperience(lua_State* L) {
+	String type = lua_tostring(L, -1);
+
+	lua_pushinteger(L, realObject->getExperience(type));
+
+	return 1;
+}
+
+int LuaPlayerObject::getExperienceForType(lua_State* L) {
+	int type = lua_tointeger(L, -1);
+
+	realObject->updateForceSensitiveElegibleExperiences(type);
+	Vector<String>* experiences = realObject->getForceSensitiveElegibleExperiences();
+
+	lua_newtable(L);
+
+	for (int i=0; i < experiences->size(); ++i) {
+		String value = experiences->get(i);
+		lua_pushstring(L, value.toCharArray());
+		Logger::console.info("Pushed " + value, true);
+	}
+
+
+	for (int j = experiences->size(); j > 0; --j) {
+		lua_rawseti(L, -j - 1, j);
+	}
+
+
+	return 1;
+}
+
+int LuaPlayerObject::getExperienceType(lua_State* L) {
+	int type = lua_tointeger(L, -1);
+
+	String experience = realObject->getForceSensitiveElegibleExperienceType(type);
+
+	lua_pushstring(L, experience.toCharArray());
+
+	return 1;
 }

@@ -35,7 +35,7 @@ VillagerMobilesPhaseOne = {
 }
 
 VillagerMobiles = {
-	paemos = {name="paemos",respawn=60, x=5173, z=78, y=-4081, header=0, cellid=0}
+	paemos = {name="paemos",respawn=60, x=5289, z=78, y=-4149, header=240, cellid=0}
 }
 
 -- Set the current Village Phase for the first time.
