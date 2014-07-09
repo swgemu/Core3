@@ -92,8 +92,6 @@ BrenKingal = ThemeParkLogic:new {
 	className = "BrenKingal",
 	screenPlayState = "bren_kingal_quest",
 	distance = 800,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 	faction = FACTIONREBEL
 
 }

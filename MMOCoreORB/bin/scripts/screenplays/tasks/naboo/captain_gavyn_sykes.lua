@@ -80,8 +80,6 @@ GavynSykes = ThemeParkLogic:new {
 	className = "GavynSykes",
 	screenPlayState = "gavyn_sykes_task",
 	distance = 800,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
 }
 
 registerScreenPlay("GavynSykes", true)

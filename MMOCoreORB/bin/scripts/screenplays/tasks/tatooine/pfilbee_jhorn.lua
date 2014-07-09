@@ -78,8 +78,6 @@ PfilbeeJhorn = ThemeParkLogic:new {
 	className = "PfilbeeJhorn",
 	screenPlayState = "pfilbee_jhorn_quest",
 	distance = 1000,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "",
 	faction = FACTIONIMPERIAL
 }
 

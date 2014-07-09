@@ -167,7 +167,6 @@ PrefectTalmont = ThemeParkLogic:new {
 	className = "PrefectTalmont",
 	screenPlayState = "prefect_talmont_quest",
 	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 	faction = FACTIONIMPERIAL
 }
 

@@ -46,8 +46,6 @@ NitraVendallan = ThemeParkLogic:new {
 	className = "NitraVendallan",
 	screenPlayState = "nitra_vendallan_quest",
 	distance = 1000,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "",
 	faction = FACTIONREBEL
 }
 

@@ -58,9 +58,7 @@ AjuvaVanasterin = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "AjuvaVanasterin",
 	screenPlayState = "ajuva_vanasterin_quest",
-	distance = 600,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	distance = 600
 }
 
 registerScreenPlay("AjuvaVanasterin", true)

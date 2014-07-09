@@ -64,10 +64,7 @@ KirkinLiawoon = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "KirkinLiawoon",
 	screenPlayState = "kirkin_liawoon_quest",
-	distance = 1000,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "",
-	faction = NONE
+	distance = 1000
 }
 
 registerScreenPlay("KirkinLiawoon", true)

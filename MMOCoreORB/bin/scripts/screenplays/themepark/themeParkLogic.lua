@@ -1154,12 +1154,14 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 
 	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
-
-	if self.missionCompletionMessageStf == "" then
-		local stfFile = self:getStfFile(npcNumber)
+	local stfFile = self:getStfFile(npcNumber)
+	
+	if self.missionCompletionMessageStf ~= "" then
+		creature:sendSystemMessage(self.missionCompletionMessageStf)
+	elseif self:isValidConvoString(stfFile .. ":return_waypoint_description_" .. missionNumber) then
 		creature:sendSystemMessage(stfFile .. ":return_waypoint_description_" .. missionNumber)
 	else
-		creature:sendSystemMessage(self.missionCompletionMessageStf)
+		creature:sendSystemMessage("@theme_park/messages:static_completion_message")
 	end
 
 	local worldPosition = self:getNpcWorldPosition(npcNumber)

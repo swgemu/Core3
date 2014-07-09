@@ -64,8 +64,7 @@ KaelineUngasan = ThemeParkLogic:new {
 	npcMap = npcMapKaelineUngasan,
 	className = "KaelineUngasan",
 	screenPlayState = "kaeline_ungasan_quest",
-	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 }
 
 registerScreenPlay("KaelineUngasan", true)

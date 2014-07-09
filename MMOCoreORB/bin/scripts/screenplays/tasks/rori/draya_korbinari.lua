@@ -100,8 +100,6 @@ DrayaKorbinari = ThemeParkLogic:new {
 	className = "DrayaKorbinari",
 	screenPlayState = "draya_korbinari_quest",
 	distance = 500,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
 }
 
 registerScreenPlay("DrayaKorbinari", true)

@@ -50,9 +50,7 @@ KathikiisRuwahurr = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "KathikiisRuwahurr",
 	screenPlayState = "kathikiis_ruwahurr_quest",
-	distance = 800,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 }
 
 registerScreenPlay("KathikiisRuwahurr", true)

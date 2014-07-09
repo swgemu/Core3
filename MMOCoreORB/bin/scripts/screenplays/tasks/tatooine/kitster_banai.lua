@@ -130,9 +130,7 @@ KitsterBanai = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "KitsterBanai",
 	screenPlayState = "kitster_banai_quest",
-	distance = 600,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	distance = 600
 }
 
 registerScreenPlay("KitsterBanai", true)

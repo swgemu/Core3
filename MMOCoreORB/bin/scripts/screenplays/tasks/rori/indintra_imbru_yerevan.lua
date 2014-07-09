@@ -57,9 +57,7 @@ IndintraImbruYerevan = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "IndintraImbruYerevan",
 	screenPlayState = "indintra_imbru_yerevan_quest",
-	distance = 600,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	distance = 600
 }
 
 registerScreenPlay("IndintraImbruYerevan", true)

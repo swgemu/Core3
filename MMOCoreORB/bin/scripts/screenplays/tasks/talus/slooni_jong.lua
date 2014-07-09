@@ -74,8 +74,7 @@ SlooniJong = ThemeParkLogic:new {
 	npcMap = npcMapSlooniJong,
 	className = "SlooniJong",
 	screenPlayState = "slooni_jong_quest",
-	distance = 200,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 }
 
 registerScreenPlay("SlooniJong", true)

@@ -45,8 +45,6 @@ LareenDantara = ThemeParkLogic:new {
 	className = "LareenDantara",
 	screenPlayState = "lareen_dantara_quest",
 	distance = 800,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 }
 
 registerScreenPlay("LareenDantara", true)

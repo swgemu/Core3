@@ -56,8 +56,7 @@ ChamphraBiahin = ThemeParkLogic:new {
 	npcMap = npcMapChamphraBiahin,
 	className = "ChamphraBiahin",
 	screenPlayState = "champhra_biahin_quest",
-	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 }
 
 registerScreenPlay("ChamphraBiahin", true)
