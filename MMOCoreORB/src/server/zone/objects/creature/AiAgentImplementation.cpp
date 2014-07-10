@@ -2222,12 +2222,13 @@ void AiAgentImplementation::setCurrentBehavior(const String& b) {
 	if (behaviors.get(currentBehaviorID) != NULL) {
 		activateMovementEvent();
 
-		// This is for debugging:
-/*		ZoneServer* zoneServer = ServerCore::getZoneServer();
+/*		// This is for debugging:
+		ZoneServer* zoneServer = ServerCore::getZoneServer();
 		ChatManager* chatManager = zoneServer->getChatManager();
 
 		chatManager->broadcastMessage(_this.get(), currentBehaviorID, 0, 0, 0);*/
-	}
+	} else
+		error("Null Behavior in " + currentBehaviorID);
 }
 
 int AiAgentImplementation::getBehaviorStatus() {

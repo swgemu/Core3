@@ -178,7 +178,7 @@ public:
 		}
 
 		ai->activateRecovery();
-		ai->setWait(0);
+		ai->stopWaiting();
 		ai->activateMovementEvent();
 	}
 };
