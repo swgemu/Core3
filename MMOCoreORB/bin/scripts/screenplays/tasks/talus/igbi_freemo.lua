@@ -51,8 +51,7 @@ IgbiFreemo = ThemeParkLogic:new {
 	npcMap = npcMapIgbiFreemo,
 	className = "IgbiFreemo",
 	screenPlayState = "igbi_freemo_quest",
-	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 }
 
 registerScreenPlay("IgbiFreemo", true)

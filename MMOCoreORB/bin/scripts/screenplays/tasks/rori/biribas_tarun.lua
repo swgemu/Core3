@@ -90,9 +90,7 @@ BiribasTarun = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "BiribasTarun",
 	screenPlayState = "biribas_tarun_task",
-	distance = 800,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	distance = 800
 }
 
 registerScreenPlay("BiribasTarun", true)

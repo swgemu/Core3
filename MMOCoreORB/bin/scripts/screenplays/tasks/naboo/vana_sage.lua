@@ -73,7 +73,6 @@ VanaSage = ThemeParkLogic:new {
 	npcMap = npcMapVanaSage,
 	className = "VanaSage",
 	screenPlayState = "vana_sage_quest",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 	distance = 600
 }
 

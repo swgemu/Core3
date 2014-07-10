@@ -59,9 +59,7 @@ SloanRusper = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "SloanRusper",
 	screenPlayState = "sloan_rusper_quest",
-	distance = 600,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	distance = 600
 }
 
 registerScreenPlay("SloanRusper", true)

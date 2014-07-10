@@ -1,5 +1,12 @@
 THEME_PARK_JABBA_BADGE = 105
 
+buildingBarada =
+	{ 
+		type = "destructible",
+		building = { template = "object/building/military/pirate_warehouse.iff", planet = "tatooine" },
+		terminal = { template = "object/tangible/terminal/terminal_destructible_building.iff", vectorCellID = 3, x = 0, z = 0.3, y = -6.0 },
+		childNpcs = {}
+	}
 
 reelo_missions =
 {
@@ -287,7 +294,8 @@ barada_missions =
 		}
 	},
 		{
-		missionType = "assassinate",
+		missionType = "destroy", 
+		buildingSpawn = buildingBarada,
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" } 

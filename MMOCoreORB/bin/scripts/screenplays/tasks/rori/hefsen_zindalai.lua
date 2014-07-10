@@ -82,9 +82,7 @@ HefsenZindalai = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "HefsenZindalai",
 	screenPlayState = "hefsen_zindalai_quest",
-	distance = 600,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	distance = 600
 }
 
 registerScreenPlay("HefsenZindalai", true)

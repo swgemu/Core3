@@ -67,7 +67,6 @@ BlerxTango = ThemeParkLogic:new {
 	className = "BlerxTango",
 	screenPlayState = "blerx_tango_quest",
 	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 	faction = FACTIONREBEL
 
 }

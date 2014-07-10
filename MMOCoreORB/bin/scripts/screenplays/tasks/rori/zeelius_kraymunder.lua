@@ -47,9 +47,7 @@ ZeeliusKraymunder = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "ZeeliusKraymunder",
 	screenPlayState = "zeelius_kraymunder_task",
-	distance = 800,
-	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	distance = 800
 }
 
 registerScreenPlay("ZeeliusKraymunder", true)

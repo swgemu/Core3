@@ -84,8 +84,7 @@ GrammRile = ThemeParkLogic:new {
 	npcMap = npcMapGrammRile,
 	className = "GrammRile",
 	screenPlayState = "gramm_rile_quest",
-	distance = 600,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 600
 }
 
 registerScreenPlay("GrammRile", true)

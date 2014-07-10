@@ -88,8 +88,7 @@ NurlaSlinthiss = ThemeParkLogic:new {
 	npcMap = npcMapNurlaSlinthiss,
 	className = "NurlaSlinthiss",
 	screenPlayState = "nurla_slinthiss_quest",
-	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 }
 
 registerScreenPlay("NurlaSlinthiss", true)

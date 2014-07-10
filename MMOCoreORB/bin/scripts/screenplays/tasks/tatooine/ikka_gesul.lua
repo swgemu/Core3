@@ -54,8 +54,7 @@ IkkaGesul = ThemeParkLogic:new {
 	npcMap = npcMapIkkaGesul,
 	className = "IkkaGesul",
 	screenPlayState = "ikka_gesul_quest",
-	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 }
 
 registerScreenPlay("IkkaGesul", true)

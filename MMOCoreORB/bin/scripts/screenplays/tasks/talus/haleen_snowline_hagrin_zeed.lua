@@ -140,8 +140,7 @@ HaleenSnowlineHagrinZeed = ThemeParkLogic:new {
 	npcMap = npcMapHaleenSnowlineHagrinZeed,
 	className = "HaleenSnowlineHagrinZeed",
 	screenPlayState = "haleen_snowline_hagrin_zeed_quest",
-	distance = 800,
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	distance = 800
 }
 
 registerScreenPlay("HaleenSnowlineHagrinZeed", true)
