@@ -129,9 +129,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 
 	--Lucky Despot Cantina 3332 -4604
 	--{"junk_sneg",60,-1.63376,7.01,7.35289,203.569,1076943, "calm", "Sneg the Hand",JUNKWEAPONS,JUNKCONVSNEGVALARIAN},
-	--{"kavas_urdano",60,-13.7911,7.01,-3.96167,12.0127,1076943, "calm", "Kavas"},
-	spawnMobile("tatooine", "ind",60,-24.6235,9.01,-8.0138,133.595,1076944)
-	--{"lady_valarian",60,-23.836,9.01,0.605811,147.031,1076945, "calm", "Lady Valarian"},
 	spawnMobile("tatooine", "criminal",300,5.61884,7.01001,14.3502,118.356,1076949)
 	spawnMobile("tatooine", "criminal",300,6.01244,7.01,-14.2554,63.6677,1076948)
 	spawnMobile("tatooine", "informant_npc_lvl_3",0,3.8,7,-12.5,84,1076948)
