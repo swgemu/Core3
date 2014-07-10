@@ -1158,7 +1158,7 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 	
 	if self.missionCompletionMessageStf ~= "" then
 		creature:sendSystemMessage(self.missionCompletionMessageStf)
-	elseif self:isValidConvoString(stfFile .. ":return_waypoint_description_" .. missionNumber) then
+	elseif self:isValidConvoString(stfFile, ":return_waypoint_description_" .. missionNumber) then
 		creature:sendSystemMessage(stfFile .. ":return_waypoint_description_" .. missionNumber)
 	else
 		creature:sendSystemMessage("@theme_park/messages:static_completion_message")
