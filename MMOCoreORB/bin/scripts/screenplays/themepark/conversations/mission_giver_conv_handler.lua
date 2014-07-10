@@ -47,6 +47,8 @@ function mission_giver_conv_handler:runScreenHandlers(pConversationTemplate, pCo
 
 	if screenID == "init" then
 		pConversationScreen = self:handleScreenInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	elseif screenID == "too_weak" then
+		pConversationScreen = self:handleScreenTooWeak(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "inv_full" then
 		pConversationScreen = self:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "accept" then
@@ -106,6 +108,9 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 		elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) ~= true then
 			nextScreenName = "no_faction"
 
+		elseif self.themePark:requiresEliteCombatProfession() == true and self.themePark:hasEliteCombatProfession(pConversingPlayer) == false then
+			nextScreenName = "too_weak"
+
 		elseif missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pConversingPlayer) and self.themePark:isOnLeave(pConversingPlayer) then
 			if self.themePark:isValidConvoString(stfFile, ":notyet") then
 				nextScreenName = "notyet"
@@ -156,6 +161,16 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 		nextScreenName = "cant_work"
 	end
 	return self:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, conversationTemplate:getScreen(nextScreenName))
+end
+
+function mission_giver_conv_handler:handleScreenTooWeak(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	local screen = LuaConversationScreen(pConversationScreen)
+	pConversationScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConversationScreen)
+
+	clonedScreen:setDialogTextStringId("@static_npc/default_dialog:too_weak") -- The task I have seems beyond your capabilities. Come back when you're a bit stronger.
+
+	return pConversationScreen
 end
 
 function mission_giver_conv_handler:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)

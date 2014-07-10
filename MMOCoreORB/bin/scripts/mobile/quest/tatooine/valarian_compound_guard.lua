@@ -21,27 +21,15 @@ valarian_compound_guard = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_valarian_compound_guard.iff"},
-	lootGroups = {
-	    {
-			groups = {
-				{group = "junk", chance = 2000000},
-				{group = "wearables_common", chance = 2000000},				
-				{group = "tailor_components", chance = 1000000},
-				{group = "loot_kit_parts", chance = 2000000},
-				{group = "printer_parts", chance = 1500000},
-				{group = "valarian_common", chance = 1500000}
-			},
-			lootChance = 2300000
-		}		
-	},
+	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_valarian_mission_target_convotemplate",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 
