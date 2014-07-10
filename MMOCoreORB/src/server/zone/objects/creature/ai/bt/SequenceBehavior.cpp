@@ -6,32 +6,24 @@
  */
 
 #include "SequenceBehavior.h"
+#include "server/zone/managers/creature/AiMap.h"
 
-SequenceBehavior::SequenceBehavior(BehaviorTree* sequenceTree) {
-	this->tree = sequenceTree;
+SequenceBehavior::SequenceBehavior(AiAgent* _agent, String className) : CompositeBehavior(_agent, className) {
+
 }
 
-SequenceBehavior::~SequenceBehavior() {
-}
-
-void SequenceBehavior::onInitialize(AiAgent* actor) {
-	Behavior::onInitialize(actor);
-	position = 0;
-	end = children.size();
-	tree->start(children.get(0),actor);
-}
-void SequenceBehavior::observe(AiAgent* actor) {
-	Behavior* child = children.get(position);
-	if (actor->getBehaviorStatus(child) == FAILURE) {
-		tree->stop(this,actor);
-		return;
+void SequenceBehavior::childSucceeded() {
+	if (currentPos == children.size() - 1)
+		endWithSuccess();
+	else {
+		currentPos++;
+		Behavior* currentChild = children.get(currentPos);
+		if (currentChild == NULL || !currentChild->checkConditions())
+			endWithFailure();
 	}
-	if (actor->getBehaviorStatus(child) == SUCCESS) {
-		if (++position > end) {
-			tree->stop(this,actor);
-		} else {
-			tree->start(children.get(position),actor);
-		}
-	}
+}
+
+void SequenceBehavior::childFailed() {
+	endWithFailure();
 }
 

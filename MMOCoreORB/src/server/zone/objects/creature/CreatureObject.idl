@@ -51,7 +51,6 @@ import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.ai.AiActor;
 import server.zone.objects.player.PlayerObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.intangible.ControlDevice;
@@ -689,7 +688,7 @@ class CreatureObject extends TangibleObject {
 		return creatureBuffs.getModifierByName(skillMod);
 	}
 	
-	public int addDotState(unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense, int secondaryStrength = 0) {
+	public abstract int addDotState(unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense, int secondaryStrength = 0) {
 		return damageOverTimeList.addDot(this, objectID, duration, dotType, type, strength, potency, defense, secondaryStrength);
 	}
 
@@ -963,8 +962,6 @@ class CreatureObject extends TangibleObject {
 	 * @post { this locked, player locked }
 	 */
 	public abstract void sendConversationStartTo(SceneObject player) {
-		if (isAiActor())
-			getActorObject().sendConversationStartTo(player);
 	}
 	
 	/**
@@ -1053,8 +1050,6 @@ class CreatureObject extends TangibleObject {
 	
 	@reference
 	public native PlayerObject getPlayerObject();
-	
-	public native AiActor getActorObject();
 	
 	public boolean isListening() {
 		return listenToID != 0;
@@ -1334,6 +1329,10 @@ class CreatureObject extends TangibleObject {
 	@local
 	public CommandQueueActionVector getCommandQueue() {
 		return commandQueue;
+	}
+	
+	public int getCommandQueueSize() {
+		return commandQueue.size();
 	}
 
 	public float getRunSpeed() {
@@ -1663,11 +1662,6 @@ class CreatureObject extends TangibleObject {
 		return getPlayerObject() != null;
 	}
 	
-	@read
-	public boolean isAiActor() {
-		return getActorObject() != null;
-	}
-	
 	public abstract boolean isInformantCreature() {
 		return false;
 	}
@@ -1691,20 +1685,6 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
-	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
-		if (isAiActor()) {
-			getActorObject().fillAttributeList(msg, object);
-		}
-	}
-	
-	public void destroyObjectFromWorld(boolean sendSelfDestroy) {
-		super.destroyObjectFromWorld(sendSelfDestroy);
-		
-		if (isAiActor()) {
-			getActorObject().notifyDespawn(getZone());
-		}
-	}
 	
 	public boolean isInvisible() {
 		return invisible;

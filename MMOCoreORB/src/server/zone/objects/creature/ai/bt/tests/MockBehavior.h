@@ -19,12 +19,13 @@ namespace bt {
 
 class MockBehavior: public Behavior {
 public:
-	MOCK_METHOD1(tick, int(AiAgent* a));
-	MOCK_METHOD1(update,int(AiAgent* a));
-	MOCK_METHOD1(onInitialize,void(AiAgent* a));
-	MOCK_METHOD0(canObserve,bool());
-	MOCK_METHOD2(onTerminate, void(AiAgent* a,int s));
-	MOCK_METHOD1(observe, void(AiAgent* a));
+	MockBehavior(MockAiAgent* _agent, String className) : Behavior(_agent, className) {
+	}
+
+	MOCK_METHOD0(checkConditions, bool());
+	MOCK_METHOD0(start, void());
+	MOCK_METHOD0(end, void());
+	MOCK_METHOD0(doAction, void());
 };
 
 }

@@ -98,6 +98,7 @@ void SpawnAreaMap::loadStaticSpawns() {
 			uint64 parentID = obj.getLongAt(7);
 			String moodString;
 			UnicodeString customName;
+			String aiString;
 			int junkDealerBuyingType =0;
 			int junkDealerConversationType =0;
 			if (obj.getTableSize() > 7)
@@ -107,10 +108,13 @@ void SpawnAreaMap::loadStaticSpawns() {
 				customName = obj.getStringAt(9);
 
 			if (obj.getTableSize() > 9)
-				junkDealerBuyingType = obj.getIntAt(10);
+				aiString = obj.getStringAt(10);
 
 			if (obj.getTableSize() > 10)
-				junkDealerConversationType = obj.getIntAt(11);
+				junkDealerBuyingType = obj.getIntAt(11);
+
+			if (obj.getTableSize() > 11)
+				junkDealerConversationType = obj.getIntAt(12);
 
 			if (parentID == 0)
 				z = zone->getHeight(x, y);
@@ -139,6 +143,10 @@ void SpawnAreaMap::loadStaticSpawns() {
 				if (creatureObject->isAiAgent()) {
 					AiAgent* ai = cast<AiAgent*>( creatureObject.get());
 					ai->setRespawnTimer(respawn);
+					if (!aiString.isEmpty()) {
+						ai->clearBehaviorList();
+						ai->setupBehaviorTree(AiMap::instance()->getTemplate(aiString));
+					}
 				}
 
 				if (name.contains("trainer_")) {

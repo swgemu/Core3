@@ -15,7 +15,6 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/player/LuaPlayerObject.h"
 #include "server/zone/objects/tangible/LuaTangibleObject.h"
-#include "server/zone/managers/structure/tasks/DestroyStructureTask.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
@@ -42,7 +41,6 @@
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/LuaAiAgent.h"
-#include "server/zone/objects/creature/ai/LuaAiActor.h"
 #include "server/zone/objects/creature/ai/bt/Behavior.h"
 #include "server/zone/objects/area/LuaActiveArea.h"
 #include "server/zone/templates/mobile/ConversationScreen.h"
@@ -63,6 +61,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/creature/AiMap.h"
 #include "server/chat/LuaStringIdChatParameter.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
@@ -151,6 +150,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "createServerEvent", createServerEvent);
 	lua_register(luaEngine->getLuaState(), "hasServerEvent", hasServerEvent);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
+	lua_register(luaEngine->getLuaState(), "dropObserver", dropObserver);
 	lua_register(luaEngine->getLuaState(), "removeObservers", removeObservers);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spawnMobileRandom", spawnMobileRandom);
@@ -167,7 +167,6 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "deleteStringSharedMemory", deleteStringSharedMemory);
 	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
 	lua_register(luaEngine->getLuaState(), "spawnBuilding", spawnBuilding);
-	lua_register(luaEngine->getLuaState(), "destroyBuilding", destroyBuilding);
 	lua_register(luaEngine->getLuaState(), "getSceneObject", getSceneObject);
 	lua_register(luaEngine->getLuaState(), "getCreatureObject", getCreatureObject);
 	lua_register(luaEngine->getLuaState(), "addStartingItemsInto", addStartingItemsInto);
@@ -285,17 +284,12 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("DISEASED", CreatureState::DISEASED);
 	luaEngine->setGlobalInt("ONFIRE", CreatureState::ONFIRE);
 	luaEngine->setGlobalInt("BLEEDING", CreatureState::BLEEDING);
+	luaEngine->setGlobalInt("PEACE", CreatureState::PEACE);
 
 	luaEngine->setGlobalInt("OPEN", ContainerPermissions::OPEN);
 	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);
 	luaEngine->setGlobalInt("MOVEOUT", ContainerPermissions::MOVEOUT);
 	luaEngine->setGlobalInt("WALKIN", ContainerPermissions::WALKIN);
-
-	luaEngine->setGlobalInt("BEHAVIOR_SUCCESS",Behavior::SUCCESS);
-	luaEngine->setGlobalInt("BEHAVIOR_FAILURE",Behavior::FAILURE);
-	luaEngine->setGlobalInt("BEHAVIOR_RUNNING",Behavior::RUNNING);
-	luaEngine->setGlobalInt("BEHAVIOR_SUSPENDED",Behavior::SUSPENDED);
-	luaEngine->setGlobalInt("BEHAVIOR_INVALID",Behavior::INVALID);
 
 	// Badges
 	luaEngine->setGlobalInt("COUNT_5", Badge::COUNT_5);
@@ -456,7 +450,6 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaSuiBox>::Register(luaEngine->getLuaState());
 	Luna<LuaObjectMenuResponse>::Register(luaEngine->getLuaState());
 	Luna<LuaDeed>::Register(luaEngine->getLuaState());
-	Luna<LuaAiActor>::Register(luaEngine->getLuaState());
 	Luna<LuaCityRegion>::Register(luaEngine->getLuaState());
 	Luna<LuaStringIdChatParameter>::Register(luaEngine->getLuaState());
 }
@@ -1551,6 +1544,9 @@ int DirectorManager::spawnMobile(lua_State* L) {
 		if (creature->isAiAgent()) {
 			AiAgent* ai = cast<AiAgent*>(creature);
 			ai->setRespawnTimer(respawnTimer);
+			// TODO (dannuic): this is a temporary measure until we add an AI setting method to DirectorManager -- make stationary the default
+			ai->clearBehaviorList();
+			ai->setupBehaviorTree(AiMap::instance()->getTemplate("stationary"));
 		}
 
 		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
@@ -1605,6 +1601,9 @@ int DirectorManager::spawnMobileRandom(lua_State* L) {
 			AiAgent* ai = cast<AiAgent*>(creature);
 			ai->setRespawnTimer(respawnTimer);
 			ai->setRandomRespawn(true);
+			// TODO (dannuic): this is a temporary measure until we add an AI setting method to DirectorManager -- make stationary the default
+			ai->clearBehaviorList();
+			ai->setupBehaviorTree(AiMap::instance()->getTemplate("stationary"));
 		}
 
 		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
@@ -1613,35 +1612,6 @@ int DirectorManager::spawnMobileRandom(lua_State* L) {
 
 	return 1;
 	//public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
-}
-
-int DirectorManager::destroyBuilding(lua_State* L) {
-	int numberOfArguments = lua_gettop(L);
-	if (numberOfArguments != 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::destroyBuilding");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-	uint64 objectID = lua_tointeger(L, -1);
-	ZoneServer* zoneServer = ServerCore::getZoneServer();
-	Reference<SceneObject*> object = zoneServer->getObject(objectID);
-
-	if (object == NULL)
-		return 0;
-
-	ManagedReference<StructureObject*> building = object.castTo<StructureObject*>();
-
-	if (building == NULL || !building->isStructureObject())
-		return 0;
-
-	Reference<Task*> pendingTask = building->getPendingTask("destruction");
-
-	if (pendingTask != NULL)
-		return 0;
-
-	Reference<DestroyStructureTask*> task = new DestroyStructureTask(building);
-	task->execute();
-	return 1;
 }
 
 int DirectorManager::spawnBuilding(lua_State* L) {
@@ -1682,7 +1652,7 @@ int DirectorManager::spawnBuilding(lua_State* L) {
 
 int DirectorManager::spawnSceneObject(lua_State* L) {
 	int numberOfArguments = lua_gettop(L);
-	if (numberOfArguments != 10 && numberOfArguments != 7 && numberOfArguments != 11 && numberOfArguments != 8) {
+	if (numberOfArguments != 10 && numberOfArguments != 7) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::spawnSceneObject");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
@@ -1691,21 +1661,8 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 	float dz, dy, dx, dw, x, y, z;
 	uint64 parentID;
 	String script, zoneID;
-	int persistenceLevel = 0;
 
-	if (numberOfArguments == 11) {
-		persistenceLevel = lua_tointeger(L, -1);
-		dz = lua_tonumber(L, -2);
-		dy = lua_tonumber(L, -3);
-		dx = lua_tonumber(L, -4);
-		dw = lua_tonumber(L, -5);
-		parentID = lua_tointeger(L, -6);
-		y = lua_tonumber(L, -7);
-		z = lua_tonumber(L, -8);
-		x = lua_tonumber(L, -9);
-		script = lua_tostring(L, -10);
-		zoneID = lua_tostring(L, -11);
-	} else if (numberOfArguments == 10) {
+	if (numberOfArguments == 10) {
 		dz = lua_tonumber(L, -1);
 		dy = lua_tonumber(L, -2);
 		dx = lua_tonumber(L, -3);
@@ -1716,20 +1673,6 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		x = lua_tonumber(L, -8);
 		script = lua_tostring(L, -9);
 		zoneID = lua_tostring(L, -10);
-	} else if (numberOfArguments == 8) {
-		persistenceLevel = lua_tointeger(L, -1);
-		Quaternion direction;
-		direction.setHeadingDirection(lua_tonumber(L, -2));
-		dz = direction.getZ();
-		dy = direction.getY();
-		dx = direction.getX();
-		dw = direction.getW();
-		parentID = lua_tointeger(L, -3);
-		y = lua_tonumber(L, -4);
-		z = lua_tonumber(L, -5);
-		x = lua_tonumber(L, -6);
-		script = lua_tostring(L, -7);
-		zoneID = lua_tostring(L, -8);
 	} else {
 		Quaternion direction;
 		direction.setHeadingDirection(lua_tonumber(L, -1));
@@ -1753,7 +1696,7 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		return 1;
 	}
 
-	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), persistenceLevel);
+	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), 0);
 
 	if (object != NULL) {
 		object->initializePosition(x, z, y);
@@ -1805,8 +1748,32 @@ int DirectorManager::createObserver(lua_State* L) {
 	ManagedReference<ScreenPlayObserver*> observer = dynamic_cast<ScreenPlayObserver*>(ObjectManager::instance()->createObject("ScreenPlayObserver", 0, ""));
 	observer->setScreenPlay(play);
 	observer->setScreenKey(key);
+	observer->setObserverType(ObserverType::SCREENPLAY);
 
 	sceneObject->registerObserver(eventType, observer);
+
+	return 0;
+}
+
+int DirectorManager::dropObserver(lua_State* L) {
+	if (checkArgumentCount(L, 2) > 0) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::dropObserver");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	SceneObject* sceneObject = (SceneObject*) lua_touserdata(L, -1);
+	uint32 eventType = lua_tonumber(L, -2);
+
+	if (sceneObject == NULL)
+		return 0;
+
+	SortedVector<ManagedReference<Observer* > > observers = sceneObject->getObservers(eventType);
+	for (int i = 0; i < observers.size(); i++) {
+		Observer* observer = observers.get(i).get();
+		if (observer != NULL && observer->isObserverType(ObserverType::SCREENPLAY))
+			sceneObject->dropObserver(eventType, observer);
+	}
 
 	return 0;
 }
@@ -1841,6 +1808,9 @@ Lua* DirectorManager::getLuaInstance() {
 		initializeLuaEngine(lua);
 		loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
+		AiMap::instance()->initialize(lua);
+		if (!AiMap::instance()->isLoaded())
+			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
 	}
@@ -1857,6 +1827,9 @@ int DirectorManager::runScreenPlays() {
 		initializeLuaEngine(lua);
 		ret = loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
+		AiMap::instance()->initialize(lua);
+		if (!AiMap::instance()->isLoaded())
+			AiMap::instance()->loadTemplates(lua);
 
 		localLua.set(lua);
 	}

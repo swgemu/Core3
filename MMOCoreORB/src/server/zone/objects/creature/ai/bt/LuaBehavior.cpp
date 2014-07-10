@@ -6,42 +6,85 @@
  */
 
 #include "LuaBehavior.h"
-#include "server/zone/objects/creature/ai/LuaAiActor.h"
 #include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/managers/creature/AiMap.h"
 #include "engine/engine.h"
 
 
-LuaBehavior::LuaBehavior(String name) {
+LuaBehavior::LuaBehavior(String name) : Object() {
 	this->className = name;
 }
 
 LuaBehavior::~LuaBehavior() {
 }
 
-int LuaBehavior::update(AiAgent* actor) {
-	// re-use director maager
-	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction update(lua->getLuaState(), this->className, "update", 1);
-	update << actor;
-	// run the function and fetch result
-	lua_State* L = update.callFunction();
-	int rc = lua_tonumber(L, -1);
-	return rc;
+bool LuaBehavior::initialize() {
+	// TODO (dannuic): put validity checks here without trying to access DirectorManager (would cause endless initialization loop)
+
+	return true;
 }
-void LuaBehavior::onInitialize(AiAgent* actor) {
-	// re-use director maager
-	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction initialize(lua->getLuaState(), this->className, "OnInitialize", 0);
-	initialize << actor;
-	// run the function and fetch result
-	initialize.callFunction();
+
+uint16 LuaBehavior::getType() {
+	return AiMap::BEHAVIOR;
 }
-void LuaBehavior::onTerminate(AiAgent* actor, int s) {
-	// re-use director maager
+
+bool LuaBehavior::checkConditions(AiAgent* agent) {
+	// Use DirectorManager in order to have access to AiAgent
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction terminate(lua->getLuaState(), this->className, "OnTerminiate", 0);
-	terminate << actor;
-	terminate << s;
-	// run the function
-	terminate.callFunction();
+	// TODO (dannuic): should I check for valid table here?
+	LuaFunction runMethod(lua->getLuaState(), className, "checkConditions", 1);
+	runMethod << agent;
+
+	runMethod.callFunction();
+	//agent->info(className + " check...", true);
+
+	bool result = lua_toboolean(lua->getLuaState(), -1);
+	lua_pop(lua->getLuaState(), 1);
+	return result;
+}
+
+void LuaBehavior::start(AiAgent* agent) {
+	// Use DirectorManager in order to have access to AiAgent
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	// TODO (dannuic): should I check for valid table here?
+	LuaFunction runMethod(lua->getLuaState(), className, "start", 1);
+	runMethod << agent;
+
+	runMethod.callFunction();
+	//agent->info(className + " start...", true);
+
+	int result = lua_tointeger(lua->getLuaState(), -1);
+	lua_pop(lua->getLuaState(), 1);
+}
+
+float LuaBehavior::end(AiAgent* agent) {
+	// Use DirectorManager in order to have access to AiAgent
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	// TODO (dannuic): should I check for valid table here?
+	LuaFunction runMethod(lua->getLuaState(), className, "terminate", 1);
+	runMethod << agent;
+
+	runMethod.callFunction();
+	//agent->info(className + " end...", true);
+
+	float result = lua_tonumber(lua->getLuaState(), -1);
+	lua_pop(lua->getLuaState(), 1);
+
+	return result;
+}
+
+int LuaBehavior::doAction(AiAgent* agent) {
+	// Use DirectorManager in order to have access to AiAgent
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	// TODO (dannuic): should I check for valid table here?
+	LuaFunction runMethod(lua->getLuaState(), className, "doAction", 1);
+	runMethod << agent;
+
+	runMethod.callFunction();
+	//agent->info(className + " do...", true);
+
+	int result = lua_tointeger(lua->getLuaState(), -1);
+	lua_pop(lua->getLuaState(), 1);
+
+	return result;
 }

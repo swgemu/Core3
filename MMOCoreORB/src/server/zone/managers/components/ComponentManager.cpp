@@ -103,15 +103,6 @@
 #include "server/zone/objects/creature/components/PetMenuComponent.h"
 #include "server/zone/objects/tangible/components/FireHeavyWeaponMenuComponent.h"
 #include "server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.h"
-#include "server/zone/objects/creature/ai/components/AiStateComponent.h"
-#include "server/zone/objects/creature/ai/components/AlertStateComponent.h"
-#include "server/zone/objects/creature/ai/components/AttackStateComponent.h"
-#include "server/zone/objects/creature/ai/components/DeathStateComponent.h"
-#include "server/zone/objects/creature/ai/components/FleeStateComponent.h"
-#include "server/zone/objects/creature/ai/components/RetreatStateComponent.h"
-#include "server/zone/objects/creature/ai/components/SpawnStateComponent.h"
-#include "server/zone/objects/creature/ai/components/StandingStateComponent.h"
-#include "server/zone/objects/creature/ai/components/WanderingStateComponent.h"
 #include "server/zone/objects/tangible/components/GogglesObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/ArmorObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/PlaceableLootContainerComponent.h"
@@ -244,16 +235,6 @@ ComponentManager::ComponentManager() {
 
 	components.put("FireHeavyWeaponMenuComponent", new FireHeavyWeaponMenuComponent());
 	components.put("ThrowGrenadeMenuComponent", new ThrowGrenadeMenuComponent());
-
-	components.put("AiStateComponent", new AiStateComponent());
-	components.put("AlertStateComponent", new AlertStateComponent());
-	components.put("AttackStateComponent", new AttackStateComponent());
-	components.put("DeathStateComponent", new DeathStateComponent());
-	components.put("FleeStateComponent", new FleeStateComponent());
-	components.put("RetreatStateComponent", new RetreatStateComponent());
-	components.put("SpawnStateComponent", new SpawnStateComponent());
-	components.put("StandingStateComponent", new StandingStateComponent());
-	components.put("WanderingStateComponent", new WanderingStateComponent());
 
 	components.put("ElevatorMenuComponent", new ElevatorMenuComponent());
 	components.put("ElevatorUpMenuComponent", new ElevatorUpMenuComponent());

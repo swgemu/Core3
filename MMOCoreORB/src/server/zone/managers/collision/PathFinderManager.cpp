@@ -544,6 +544,14 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 		return NULL;
 	}
 
+	// FIXME (dannuic): Sometimes nodes only have one entry.... why?
+	if (nodes->size() == 1) {
+		error("Only one node");
+
+		delete path;
+		return NULL;
+	}
+
 	// path from our position to path node
 	Vector<Triangle*>* trianglePath = NULL;
 
