@@ -203,6 +203,8 @@ class AiAgent extends CreatureObject {
 		behaviors.setNoDuplicateInsertPlan();
 		
 		fleeing = false;
+		waitTime = 0;
+		waiting = false;
 	}
 	
 	/**
