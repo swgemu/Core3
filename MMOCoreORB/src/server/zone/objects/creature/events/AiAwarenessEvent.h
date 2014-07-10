@@ -11,6 +11,7 @@
 #include "engine/util/u3d/Coordinate.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/creature/AiMap.h"
 
 namespace server {
 namespace zone {
@@ -30,9 +31,11 @@ public:
 		target = t;
 		coord.setPosition(t->getPosition());
 		mtime = 0;
+		AiMap::instance()->activeAwarenessEvents.increment();
 	}
 
 	virtual ~AiAwarenessEvent() {
+		AiMap::instance()->activeAwarenessEvents.decrement();
 	}
 
 	void run() {

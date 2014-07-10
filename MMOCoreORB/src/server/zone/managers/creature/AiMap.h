@@ -47,6 +47,11 @@ public:
 	HashTable<unsigned int, Reference<AiTemplate*> > idles;
 	bool loaded;
 
+	AtomicInteger activeMoveEvents;
+	AtomicInteger activeAwarenessEvents;
+	AtomicInteger activeRecoveryEvents;
+	AtomicInteger activeWaitEvents;
+
 	AiMap() : Logger("AiMap") {
 		aiMap.setNullValue(NULL);
 		behaviors.setNullValue(NULL);

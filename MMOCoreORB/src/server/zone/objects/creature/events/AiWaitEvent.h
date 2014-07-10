@@ -9,6 +9,7 @@
 #define AIWAITEVENT_H_
 
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/managers/creature/AiMap.h"
 #include "../PatrolPoint.h"
 
 namespace server {
@@ -23,9 +24,11 @@ class AiWaitEvent : public Task {
 public:
 	AiWaitEvent(AiAgent* pl) : Task(10000) {
 		creature = pl;
+		AiMap::instance()->activeWaitEvents.increment();
 	}
 
 	virtual ~AiWaitEvent() {
+		AiMap::instance()->activeWaitEvents.decrement();
 	}
 
 	void run() {

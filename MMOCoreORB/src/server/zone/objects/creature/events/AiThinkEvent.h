@@ -10,6 +10,7 @@
 
 
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/managers/creature/AiMap.h"
 
 namespace server {
 namespace zone {
@@ -23,9 +24,11 @@ class AiThinkEvent : public Task {
 public:
 	AiThinkEvent(AiAgent* pl) : Task(1000) {
 		creature = pl;
+		AiMap::instance()->activeRecoveryEvents.increment();
 	}
 
 	~AiThinkEvent() {
+		AiMap::instance()->activeRecoveryEvents.decrement();
 	}
 
 	void run() {

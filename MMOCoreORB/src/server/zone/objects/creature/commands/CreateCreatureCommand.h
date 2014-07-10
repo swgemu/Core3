@@ -87,6 +87,14 @@ public:
 			if (tokenizer.hasMoreTokens())
 				tokenizer.getStringToken(tempName);
 
+			if (!tempName.isEmpty() && tempName == "checkThreads") {
+				creature->sendSystemMessage("Current number of AiMoveEvents: " + String::valueOf(AiMap::instance()->activeMoveEvents.get()));
+				creature->sendSystemMessage("Current number of AiAwarenessEvents: " + String::valueOf(AiMap::instance()->activeAwarenessEvents.get()));
+				creature->sendSystemMessage("Current number of AiRecoveryEvents: " + String::valueOf(AiMap::instance()->activeRecoveryEvents.get()));
+				creature->sendSystemMessage("Current number of AiWaitEvents: " + String::valueOf(AiMap::instance()->activeWaitEvents.get()));
+				return SUCCESS;
+			}
+
 			if (tokenizer.hasMoreTokens())
 				tokenizer.getStringToken(objName);
 

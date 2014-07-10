@@ -9,6 +9,7 @@
 #define AiMoveEvent_H_
 
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/managers/creature/AiMap.h"
 #include "../PatrolPoint.h"
 
 namespace server {
@@ -23,9 +24,11 @@ class AiMoveEvent : public Task {
 public:
 	AiMoveEvent(AiAgent* pl) : Task(1000) {
 		creature = pl;
+		AiMap::instance()->activeMoveEvents.increment();
 	}
 
 	~AiMoveEvent() {
+		AiMap::instance()->activeMoveEvents.decrement();
 	}
 
 	void run() {

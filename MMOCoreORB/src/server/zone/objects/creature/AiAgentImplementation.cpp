@@ -803,6 +803,7 @@ void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	Locker mLocker(&movementEventMutex);
 	if (moveEvent != NULL) {
+		moveEvent->cancel();
 		moveEvent->clearCreatureObject();
 		moveEvent = NULL;
 	}
@@ -901,6 +902,8 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
 			despawnEvent->schedule(30000);
 		}
+
+		activateMovementEvent();
 	}
 }
 
@@ -1376,6 +1379,9 @@ void AiAgentImplementation::doMovement() {
 		return;
 	}
 
+/*	Time startTime;
+	startTime.updateToCurrentTime();*/
+
 	if (isWaiting())
 		stopWaiting();
 
@@ -1384,6 +1390,11 @@ void AiAgentImplementation::doMovement() {
 	Behavior* current = behaviors.get(currentBehaviorID);
 	if (current != NULL)
 		current->doAction();
+
+/*	Time endTime;
+	endTime.updateToCurrentTime();*/
+
+	//info("doMovement took " + String::valueOf(endTime.getMiliTime() - startTime.getMiliTime()) + "ms to complete.", true);
 }
 
 bool AiAgentImplementation::generatePatrol(int num, float dist) {
