@@ -240,7 +240,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithLevel(unsigned i
 }
 
 CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templateCRC, float x, float z, float y, SceneObject* cell, bool persistent) {
-	ManagedReference<SceneObject*> object = zoneServer->createObject(String("object/creature/ai/ai_actor.iff").hashCode(), persistent);
+/*	ManagedReference<SceneObject*> object = zoneServer->createObject(String("object/creature/ai/ai_actor.iff").hashCode(), persistent);
 	if (object == NULL || !object->isActorObject()) {
 		error("could not spawn actor");
 		return NULL;
@@ -258,7 +258,8 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templa
 
 	CreatureObject* host = actor->getHost();
 
-	return host;
+	return host;*/
+	return NULL;
 }
 
 String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {
@@ -376,6 +377,11 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	}
 
 	placeCreature(creature, x, z, y, parentID);
+
+	if (creature != NULL && creature->isAiAgent()) {
+		AiAgent* npc = cast<AiAgent*>(creature);
+		npc->activateMovementEvent();
+	}
 
 	return creature;
 }
@@ -501,17 +507,6 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 void CreatureManagerImplementation::loadSpawnAreas() {
 	info("loading spawn areas...", true);
 	spawnAreaMap.loadMap(zone);
-}
-
-void CreatureManagerImplementation::loadAiTemplates() {
-
-	Locker locker(&loadMutex);
-
-	info("loading ai templates...", true);
-	aiMap = AiMap::instance();
-	aiMap->initialize();
-	String msg = String("loaded ") + String::valueOf(aiMap->getSize()) + String(" ai templates.");
-	info(msg, true);
 }
 
 int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {

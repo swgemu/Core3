@@ -80,8 +80,8 @@ include server.zone.objects.creature.variables.CreatureTemplateReference;
 include system.thread.ReadWriteLock;
 include server.zone.objects.creature.variables.CurrentFoundPath;
 import server.zone.objects.creature.ai.bt.Behavior;
-include server.zone.objects.creature.ai.bt.BehaviorTreeList;
-import server.zone.objects.creature.ai.bt.BehaviorTree;
+import server.zone.objects.creature.ai.bt.CompositeBehavior;
+include server.zone.templates.AiTemplate;
 import server.zone.objects.intangible.ControlDevice;
 
 @mock
@@ -120,7 +120,7 @@ class AiAgent extends CreatureObject {
 	
 	@dereferenced 
 	protected Vector<SceneObject> camouflagedObjects;
-
+	
 	@dereferenced
 	protected CreatureTemplateReference npcTemplate;
 
@@ -139,7 +139,11 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected transient Mutex targetMutex;
 	@dereferenced
-	protected transient Mutex awernessEventMutex;
+	protected transient Mutex awarenessEventMutex;
+	@dereferenced
+	protected transient Mutex movementEventMutex;
+	@dereferenced
+	protected transient Mutex behaviorMutex;
 	
 	protected boolean fleeing;
 	
@@ -154,6 +158,21 @@ class AiAgent extends CreatureObject {
 	protected boolean loadedOutfit;
 	
 	protected transient DespawnCreatureOnPlayerDissappear despawnEvent;
+
+	// AI bit
+	protected string currentBehaviorID;
+	@dereferenced
+	protected VectorMap<string, Behavior> behaviors;
+	
+	@dereferenced
+	protected transient string templateName;
+	protected unsigned int creatureBitmask;
+	
+	protected int waitTime;
+	protected boolean waiting;
+	
+	protected unsigned int nextActionCRC;
+	protected string nextActionArgs;
 	
 	public static final int UPDATEMOVEMENTINTERVAL = 500; // msec
 	
@@ -161,21 +180,13 @@ class AiAgent extends CreatureObject {
 	public static final int WATCHING = 1;
 	public static final int STALKING = 2;
 	public static final int FOLLOWING = 3;
-	public static final int PATROLING = 4;
-
-	// AI bits
-	@dereferenced
-	protected transient HashTable<Behavior, int> statuses;
-	
-	@dereferenced
-	protected transient HashTable<BehaviorTree, BehaviorTreeList> trees;
+	public static final int PATROLLING = 4;
 	
 	
 	public AiAgent() {
 		followState = OBLIVIOUS;
 
 		respawnTimer = 0;
-		respawnCounter = 0;
 		randomRespawn = false;
 
 		showNextMovementPosition = true;
@@ -189,6 +200,8 @@ class AiAgent extends CreatureObject {
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 		
+		behaviors.setNoDuplicateInsertPlan();
+		
 		fleeing = false;
 	}
 	
@@ -201,6 +214,7 @@ class AiAgent extends CreatureObject {
 	
 	public void finalize() {
 		//Logger.info("deleting from ram", true);
+		clearBehaviorList();
 	}
 	
 	public abstract native void activateRecovery();
@@ -214,8 +228,6 @@ class AiAgent extends CreatureObject {
 	public native boolean tryRetreat();
 	
 	public native void doRecovery();
-	
-	public native void doAttack();
 	
 	public native void doMovement();
 	
@@ -233,6 +245,10 @@ class AiAgent extends CreatureObject {
 	public native int calculateAttackMaxDamage(int level);
 	public native float calculateAttackSpeed(int level);
 	
+	public native boolean getTargetFromMap();
+	public native boolean getTargetFromDefenders();
+	public native boolean validateTarget();
+	
 	public abstract native boolean isCamouflaged(CreatureObject target) {
 		return false;
 	}
@@ -241,7 +257,7 @@ class AiAgent extends CreatureObject {
 
 	public native boolean isConcealed(CreatureObject target);
 	
-	protected native boolean findNextPosition(float maxDistance, WorldCoordinates nextPosition);
+	public native boolean findNextPosition(float maxDistance, boolean walk = false);
 	
 	@local
 	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
@@ -302,6 +318,11 @@ class AiAgent extends CreatureObject {
 	 */
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
+	
+	public native int addDotState(unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense, int secondaryStrength = 0) {
+		activateRecovery();
+		return super.addDotState(dotType, objectID, strength, type, duration, potency, defense, secondaryStrength);
+	}
 	
 	/**
 	 * sends the conversation notification 
@@ -441,10 +462,10 @@ class AiAgent extends CreatureObject {
 	 * @return returns true if the creature object can attack this 
 	 */
 	public boolean isAttackableBy(CreatureObject object) {
-		if (object == this)
+		if (object == null)
 			return false;
-
-		if (isRetreating())
+		
+		if (object == this)
 			return false;
 		
 		if (isDead())
@@ -495,7 +516,7 @@ class AiAgent extends CreatureObject {
 	public void setOblivious() {
 		followState = OBLIVIOUS;
 		setTargetObject(null);
-		activateMovementEvent();
+		//activateMovementEvent();
 	}
 	
 	public void setWatchObject(SceneObject obj) {
@@ -506,7 +527,7 @@ class AiAgent extends CreatureObject {
 			followState = WATCHING;
 
 			setTargetObject(obj);
-			activateMovementEvent();
+			//activateMovementEvent();
 		}
 	}
 	
@@ -518,7 +539,7 @@ class AiAgent extends CreatureObject {
 			followState = STALKING;
 
 			setTargetObject(obj);
-			activateMovementEvent();
+			//activateMovementEvent();
 		}
 	}
 	
@@ -530,7 +551,7 @@ class AiAgent extends CreatureObject {
 			followState = FOLLOWING;
 
 			setTargetObject(obj);
-			activateMovementEvent();
+			//activateMovementEvent();
 		}
 	}
 	
@@ -544,12 +565,46 @@ class AiAgent extends CreatureObject {
 		}
 	}
 	
+	public native boolean generatePatrol(int num, float dist);
+	
 	public SceneObject getFollowObject() {
 		return followObject;
 	}
 	
+	public unsigned int getFollowState() {
+		return followState;
+	}
+	
+	public native float getMaxDistance();
+	public native int setDestination();
+	public native boolean completeMove();
+	
+	public void setWait(int wait) {
+		waitTime = wait;
+		if (waitTime != 0)
+			waiting = true;
+	}
+	
+	public int getWait() {
+		return waitTime;
+	}
+	
+	public boolean isWaiting() {
+		return waiting;
+	}
+	
+	public void stopWaiting() {
+		waiting = false;
+	}
+
 	public native void selectWeapon();
+	public native void selectDefaultWeapon();
 	public native boolean validateStateAttack(CreatureObject target, string args);
+	public native void selectSpecialAttack();
+	public native void selectSpecialAttack(int attackNum);
+	public native void selectDefaultAttack();
+	public native boolean validateStateAttack();
+	public native void enqueueAttack();
 	
 	public boolean isRetreating() {
 		return !homeLocation.isReached();
@@ -780,20 +835,52 @@ class AiAgent extends CreatureObject {
 		
 		return npcTemplate.get().getPvpFaction();
 	}
-	@local
-	public native int getBehaviorStatus(Behavior b);
+	
+	/**
+	 * Pull an AI template from AiMap and set up the tree using the rules from the template. Then 
+	 * store the root behavior in the trees Map.
+	 * 
+	 * TODO: Should we store the active (instead of root) node in the trees map? I like that idea -- dannuic
+	 * 
+	 * Maintain an unsorted vector of Behaviors for reference (TODO: needed? -- dannuic)
+	 * 
+	 * TODO: Do we actually need a map, or is one tree just fine? Only implement one AI per AiAgent for now,
+	 * we can implement a multi-AI system later if it's appropriate -- dannuic
+	 * 
+	 * Status is passed to the parent upon execution of doAction, which then sets the next Behavior
+	 * to the tree and runs it.
+	 */
 	
 	@local
-	public native void setBehaviorStatus(Behavior b,int status);
+	public native void setupBehaviorTree(AiTemplate aiTemplate);
 	
 	@local
-	public native void addBehaviorToTree(BehaviorTree tree, Behavior b);
+	public native void setupBehaviorTree(AiTemplate getTarget, AiTemplate selectAttack, AiTemplate combatMove, AiTemplate idle);
+
+	@local
+	public native void setCurrentBehavior(final string b);
+
+	public string getCurrentBehavior() {
+		return currentBehaviorID;
+	}
+
+	@local
+	public native int getBehaviorStatus();
+
+	@local
+	public native void setBehaviorStatus(int status);
+
+	@local
+	private native void addBehaviorToTree(Behavior b, CompositeBehavior parent);
+
+	@local
+	private native void addCurrentBehaviorToTree(CompositeBehavior parent);
+
+	@local
+	public native void resetBehaviorList();
 	
 	@local
-	public native Behavior getNextBehaviorFromTree(BehaviorTree tree);
-	
-	@local
-	public native void resetBehaviorList(BehaviorTree tree);
+	public native void clearBehaviorList();
 
 	public native void setHomeObject(SceneObject home) {
 		homeObject = home;

@@ -12,6 +12,8 @@
 #include "server/zone/managers/loot/LootGroupMap.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollectionEntry.h"
+#include "server/conf/ConfigManager.h"
+#include "server/zone/managers/templates/DataArchiveStore.h"
 
 class LuaMobileTest : public ::testing::Test {
 protected:
@@ -22,6 +24,8 @@ public:
 
 	LuaMobileTest() {
 		// Perform creation setup here.
+		ConfigManager::instance()->loadConfigData();
+		DataArchiveStore::instance()->loadTres(ConfigManager::instance()->getTrePath(), ConfigManager::instance()->getTreFiles());
 		lootGroupMap = LootGroupMap::instance();
 		templateManager = TemplateManager::instance();
 	}
@@ -89,6 +93,13 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	// Verify factions load
 	FactionManager::instance()->loadData();
 	ASSERT_FALSE(FactionManager::instance()->getFactionMap()->isEmpty());
+
+	// Load Templates
+	ASSERT_TRUE( TemplateManager::instance() != NULL );
+	if( TemplateManager::instance()->loadedTemplatesCount == 0 ){
+		TemplateManager::instance()->loadLuaTemplates();
+		ASSERT_EQ(TemplateManager::ERROR_CODE, 0);
+	}
 
 	// Test Creature Templates
 	HashTableIterator<uint32, Reference<CreatureTemplate*> > creatureIterator = CreatureTemplateManager::instance()->iterator();

@@ -10,27 +10,53 @@
 
 #include "engine/engine.h"
 
+class LuaAiTemplate : public Object {
+public:
+	String id;
+	String className;
+	String parent;
+	uint16 classType;
+
+	LuaAiTemplate() : Object() {
+		id = "";
+		className = "";
+		parent = "";
+		classType = 0;
+	}
+
+	LuaAiTemplate(const LuaAiTemplate& ait) : Object() {
+		id = ait.id;
+		className = ait.className;
+		parent = ait.parent;
+		classType = ait.classType;
+	}
+
+	LuaAiTemplate& operator=(const LuaAiTemplate& ait) {
+		if (this == &ait)
+			return *this;
+
+		id = ait.id;
+		className = ait.className;
+		parent = ait.parent;
+		classType = ait.classType;
+
+		return *this;
+	}
+};
+
 class AiTemplate : public Object {
 	String templateName;
 
-	VectorMap<String, String> transitions;
-	String defaultStateName;
+	Vector<Reference<LuaAiTemplate*> > tree;
 
 public:
 	AiTemplate(const String& name) {
 		templateName = name;
-
-		transitions.setNoDuplicateInsertPlan();
-		transitions.setNullValue("");
 	}
 
 	AiTemplate(const AiTemplate& ait) : Object() {
 		templateName = ait.templateName;
-
-		transitions.setNoDuplicateInsertPlan();
-		transitions.setNullValue("");
-
-		transitions = ait.transitions;
+		tree = ait.tree;
 	}
 
 	AiTemplate& operator=(const AiTemplate& ait) {
@@ -38,46 +64,47 @@ public:
 			return *this;
 
 		templateName = ait.templateName;
-		transitions = ait.transitions;
+		tree = ait.tree;
 
 		return *this;
 	}
 
+	/**
+	 * @pre lua is checked for valid table
+	 * @post lua is popped
+	 */
 	void readObject(LuaObject* lua) {
-		defaultStateName = lua->getStringField("defaultState");
-		LuaObject rules = lua->getObjectField("transitions");
-
-		if (!rules.isValidTable())
+		// should be a valid table, but check anyway
+		if (!lua->isValidTable())
 			return;
 
 		lua_State* L = lua->getLuaState();
 
-		for (int i = 1; i <= rules.getTableSize(); ++i) {
+		for (int i = 1; i <= lua->getTableSize(); ++i) {
 			lua_rawgeti(L, -1, i);
-			LuaObject rule(L);
+			LuaObject behavior(L);
 
-			String current = rule.getStringAt(1);
-			uint16 msg = rule.getIntAt(2);
-			String next = rule.getStringAt(3);
+			Reference<LuaAiTemplate*> b = new LuaAiTemplate;
+			b->id = behavior.getStringAt(1);
+			b->className = behavior.getStringAt(2);
+			b->parent = behavior.getStringAt(3);
+			b->classType = behavior.getIntAt(4);
 
-			transitions.put(current + msg, next);
+			tree.add(b);
+			if (b == NULL) {
+				System::out << behavior.getStringAt(1) << " " << behavior.getStringAt(2) << " " << behavior.getStringAt(3) << " " << behavior.getStringAt(4) << " ";
+			}
 
-			rule.pop();
+			behavior.pop();
 		}
-
-		rules.pop();
 	}
 
 	String& getTemplateName() {
 		return templateName;
 	}
 
-	VectorMap<String, String> getTransitions() {
-		return transitions;
-	}
-
-	String& getDefaultName() {
-		return defaultStateName;
+	Vector<Reference<LuaAiTemplate*> >* getTree() {
+		return &tree;
 	}
 };
 

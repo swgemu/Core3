@@ -133,6 +133,7 @@ public:
 			ai->addDefender(target);
 
 		ai->activateRecovery();
+		ai->setWait(0);
 		ai->activateMovementEvent();
 	}
 };
