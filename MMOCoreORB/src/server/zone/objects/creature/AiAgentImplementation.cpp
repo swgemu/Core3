@@ -1567,7 +1567,7 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (isWaiting() && moveEvent != NULL)
 		moveEvent->cancel();
 
-	if ((waitTime < 0 || numberOfPlayersInRange <= 0) && !isRetreating()) {
+	if ((waitTime < 0 || numberOfPlayersInRange <= 0) && followObject == NULL && !isRetreating()) {
 		if (moveEvent != NULL) {
 			moveEvent->clearCreatureObject();
 			moveEvent = NULL;
@@ -2112,6 +2112,9 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 
 	Locker locker(&behaviorMutex);
 
+	stopWaiting();
+	setWait(0);
+
 	behaviors.put("none", NULL);
 
 	VectorMap<String, Vector<String> > parents; // id's keyed by parents
@@ -2222,8 +2225,8 @@ void AiAgentImplementation::setCurrentBehavior(const String& b) {
 	if (behaviors.get(currentBehaviorID) != NULL) {
 		activateMovementEvent();
 
-/*		// This is for debugging:
-		ZoneServer* zoneServer = ServerCore::getZoneServer();
+		// This is for debugging:
+/*		ZoneServer* zoneServer = ServerCore::getZoneServer();
 		ChatManager* chatManager = zoneServer->getChatManager();
 
 		chatManager->broadcastMessage(_this.get(), currentBehaviorID, 0, 0, 0);*/

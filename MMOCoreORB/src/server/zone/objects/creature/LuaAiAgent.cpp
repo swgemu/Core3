@@ -20,6 +20,8 @@
 #include "../../../chat/StringIdChatParameter.h"
 #include "../../../ServerCore.h"
 
+#include "server/zone/managers/creature/AiMap.h"
+
 //#include "server/zone/objects/creature/AiAgent.h"
 
 const char LuaAiAgent::className[] = "LuaAiAgent";
@@ -27,6 +29,7 @@ const char LuaAiAgent::className[] = "LuaAiAgent";
 Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "_setObject", &LuaAiAgent::_setObject },
 		{ "_getObject", &LuaAiAgent::_getObject },
+		{ "setAiTemplate", &LuaAiAgent::setAiTemplate },
 		{ "setFollowObject", &LuaAiAgent::setFollowObject },
 		{ "setOblivious", &LuaAiAgent::setOblivious },
 		{ "setWatchObject", &LuaAiAgent::setWatchObject },
@@ -92,6 +95,15 @@ int LuaAiAgent::_getObject(lua_State* L) {
 	lua_pushlightuserdata(L, realObject.get());
 
 	return 1;
+}
+
+int LuaAiAgent::setAiTemplate(lua_State* L) {
+	String tempName = lua_tostring(L, -1);
+
+	realObject->clearBehaviorList();
+	realObject->setupBehaviorTree(AiMap::instance()->getTemplate(tempName));
+
+	return 0;
 }
 
 int LuaAiAgent::setFollowObject(lua_State* L) {

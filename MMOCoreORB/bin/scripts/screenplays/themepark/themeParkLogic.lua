@@ -1378,6 +1378,7 @@ function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
 	if pConversingNpc ~= nil and pConversingPlayer ~= nil then
 		local npc = LuaAiAgent(pConversingNpc)
 		npc:setFollowObject(pConversingPlayer)
+		npc:setAiTemplate("follow")
 	end
 end
 
