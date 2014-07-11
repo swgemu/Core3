@@ -268,3 +268,6 @@ includeFile("static_spawns/yavin4_static_spawns.lua")
 
 --Race Tracks
 includeFile("racetracks/racetracks.lua")
+
+-- Space
+includeFile("space/space_chassis_dealer_conv_handler.lua")

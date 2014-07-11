@@ -87,3 +87,6 @@ includeFile("conversations/racetracks/mosespaconversation.lua")
 includeFile("conversations/racetracks/narmleconversation.lua")
 includeFile("conversations/racetracks/lokconversation.lua")
 includeFile("conversations/racetracks/nashalconversation.lua")
+
+-- Space
+includeFile("conversations/space/chassis_dealer_conv.lua")
