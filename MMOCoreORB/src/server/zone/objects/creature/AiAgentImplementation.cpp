@@ -459,7 +459,7 @@ void AiAgentImplementation::enqueueAttack() {
 }
 
 bool AiAgentImplementation::validateStateAttack() {
-	if (!followObject->isCreatureObject())
+	if (followObject == NULL || !followObject->isCreatureObject())
 		return false;
 
 	return validateStateAttack(cast<CreatureObject*>(followObject.get()), nextActionArgs);
