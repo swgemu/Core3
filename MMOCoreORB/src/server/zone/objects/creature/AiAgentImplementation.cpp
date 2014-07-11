@@ -1124,10 +1124,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			maxDist = MIN(newSpeed, targetDistance - maxDistance);
 		else { // we are already where we need to be, so we have no new position
 			//activateMovementEvent();
-			/*if (followState == AiAgent::PATROLLING) {
+			if (followState == AiAgent::PATROLLING) {
 				PatrolPoint oldPoint = patrolPoints.remove(0);
-				patrolPoints.add(oldPoint);
-			}*/
+				//patrolPoints.add(oldPoint);
+			}
 
 			if (isRetreating())
 				homeLocation.setReached(true);
@@ -1402,9 +1402,9 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 
 	for (int i = 0; i < num; i++) {
 		PatrolPoint newPoint;
-		newPoint.setPositionX(getPositionX() + (-1 * dist + (float)System::random((unsigned int)dist * 2)));
-		newPoint.setPositionY(getPositionY() + (-1 * dist + (float)System::random((unsigned int)dist * 2)));
-		newPoint.setPositionZ(getPositionZ());
+		newPoint.setPositionX(homeLocation.getPositionX() + (-1 * dist + (float)System::random((unsigned int)dist * 2)));
+		newPoint.setPositionY(homeLocation.getPositionY() + (-1 * dist + (float)System::random((unsigned int)dist * 2)));
+		newPoint.setPositionZ(homeLocation.getPositionZ());
 		if (parent != NULL && getParent().get()->isCellObject()) {
 			newPoint.setCell(getParent().get());
 		}
