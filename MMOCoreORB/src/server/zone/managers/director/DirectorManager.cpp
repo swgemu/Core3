@@ -1745,6 +1745,10 @@ int DirectorManager::createObserver(lua_State* L) {
 	//std::cout << "Got play:" << play.toCharArray() << "\n";
 	uint32 eventType = lua_tonumber(L, -4);
 	//std::cout << "play:" << play.toCharArray() << " Key:" <<  key.toCharArray() << " Event:" << eventType <<"\n";
+
+	if (sceneObject == NULL)
+		return 0;
+
 	ManagedReference<ScreenPlayObserver*> observer = dynamic_cast<ScreenPlayObserver*>(ObjectManager::instance()->createObject("ScreenPlayObserver", 0, ""));
 	observer->setScreenPlay(play);
 	observer->setScreenKey(key);
