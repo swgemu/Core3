@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_12686db9",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/task_reward/ind_republic_blaster.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-11T02:33:23Z",
+      "side": 1,
+      "message": "This is the modified republic blaster. The schematic for it is a reward from the rebel theme park. It shouldn\u0027t be used here.",
+      "revId": "1096c92ef28965d9f110a9d2e0376434b8226c56",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_f264b9e6",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/tatooine/valarian_compound_guard.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-11T02:33:23Z",
+      "side": 1,
+      "message": "According to the prima guide there should be attackable valarian compound guards. Rather than change and move this file, make a copy and alter the copy.",
+      "revId": "1096c92ef28965d9f110a9d2e0376434b8226c56",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_929b3dc9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/valarian/themeParkValarian.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-11T02:33:23Z",
+      "side": 1,
+      "message": "Should be 6000.",
+      "revId": "1096c92ef28965d9f110a9d2e0376434b8226c56",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_b25e4111",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/valarian/themeParkValarian.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-11T02:33:23Z",
+      "side": 1,
+      "message": "Should be 8000.",
+      "revId": "1096c92ef28965d9f110a9d2e0376434b8226c56",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_d261b5d4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/valarian/themeParkValarian.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-11T02:33:23Z",
+      "side": 1,
+      "message": "Should be 8000.",
+      "revId": "1096c92ef28965d9f110a9d2e0376434b8226c56",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
