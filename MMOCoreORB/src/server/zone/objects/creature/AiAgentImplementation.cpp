@@ -1124,10 +1124,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			maxDist = MIN(newSpeed, targetDistance - maxDistance);
 		else { // we are already where we need to be, so we have no new position
 			//activateMovementEvent();
-			/*if (followState == AiAgent::PATROLLING) {
+			if (followState == AiAgent::PATROLLING) {
 				PatrolPoint oldPoint = patrolPoints.remove(0);
-				patrolPoints.add(oldPoint);
-			}*/
+				//patrolPoints.add(oldPoint);
+			}
 
 			if (isRetreating())
 				homeLocation.setReached(true);
