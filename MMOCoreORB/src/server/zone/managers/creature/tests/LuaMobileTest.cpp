@@ -510,3 +510,46 @@ TEST_F(LuaMobileTest, LuaLootGroupsTest) {
 	}
 
 }
+
+TEST_F(LuaMobileTest, LuaStaticSpawnsTest) {
+	Vector<String> zoneNames;
+	zoneNames.add("corellia");
+	zoneNames.add("dantooine");
+	zoneNames.add("dathomir");
+	zoneNames.add("endor");
+	zoneNames.add("lok");
+	zoneNames.add("naboo");
+	zoneNames.add("rori");
+	zoneNames.add("talus");
+	zoneNames.add("tatooine");
+	zoneNames.add("yavin4");
+
+	Lua* lua = new Lua();
+	lua->init();
+
+	for (int i = 0; i < zoneNames.size(); i++) {
+		lua->runFile("scripts/managers/spawn_manager/" + zoneNames.get(i) + ".lua");
+
+		LuaObject obj = lua->getGlobalObject(zoneNames.get(i) + "_static_spawns");
+
+		if (!obj.isValidTable()) {
+			obj.pop();
+			continue;
+		}
+
+		for (int j = 1; j <= obj.getTableSize(); ++j) {
+			lua_rawgeti(obj.getLuaState(), -1, j);
+			LuaObject spawn(obj.getLuaState());
+
+			if (spawn.isValidTable()) {
+				String name = obj.getStringAt(1);
+
+				EXPECT_TRUE( CreatureTemplateManager::instance()->getTemplate(name) != NULL ) << "Static spawn " << std::string(name.toCharArray()) << " on planet " << std::string(zoneNames.get(i).toCharArray()) << " is not valid";
+			}
+
+			spawn.pop();
+		}
+
+		obj.pop();
+	}
+}
