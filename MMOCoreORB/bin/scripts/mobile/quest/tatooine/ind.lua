@@ -1,6 +1,6 @@
-kavas_urdano = Creature:new {
-	objectName = "@npc_name:chiss_patron",
-	customName = "Kavas Urdano",
+ind = Creature:new {
+	objectName = "@npc_name:gran_base_male",
+	customName = "Ind",
 	socialGroup = "valarian",
 	pvpFaction = "valarian",
 	faction = "valarian",
@@ -24,15 +24,15 @@ kavas_urdano = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_kavas_urdano.iff"},
+	templates = {"object/mobile/dressed_ind.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_valarian_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(kavas_urdano, "kavas_urdano")
+CreatureTemplates:addCreatureTemplate(ind, "ind")

@@ -56,6 +56,16 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 
 	mission_giver_convotemplate:addScreen(mission_giver_invfull);
 
+	mission_giver_too_weak = ConvoScreen:new {
+		id = "too_weak",
+		leftDialog = "",
+		stopConversation = "true",
+		options = {
+		}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_too_weak);
+
 	mission_giver_next = ConvoScreen:new {
 		id = "next",
 		leftDialog = ":next",
@@ -231,6 +241,7 @@ createMissionGiverConvoTemplate("theme_park_rebel_mission_giver_convotemplate", 
 createMissionGiverConvoTemplate("theme_park_jabba_mission_giver_convotemplate", "theme_park_jabba_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_marauder_mission_giver_convotemplate", "theme_park_marauder_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_imperial_mission_giver_convotemplate", "theme_park_imperial_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("theme_park_valarian_mission_giver_convotemplate", "theme_park_valarian_mission_giver_conv_handler")
 
 -- Epic Quest Chains
 createMissionGiverConvoTemplate("zicx_bug_bomb_mission_giver_convotemplate", "zicx_bug_bomb_mission_giver_conv_handler")
