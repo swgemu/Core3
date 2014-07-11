@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_b2b52133",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/space/space_chassis_dealer_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-07-11T02:58:40Z",
+      "side": 1,
+      "message": "This logger line is never actually called, so correspondingly this part doesn\u0027t seem to be working right now, but the ship calls in chassis_dealer.lua fire off. \n\nAny ideas?",
+      "revId": "3b5186b2c437919ca739a751ad1d2add2d40b79b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
