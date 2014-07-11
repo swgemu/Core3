@@ -1104,8 +1104,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (path == NULL) {
 			// we weren't able to find a path, so remove this location from patrolPoints and try again with the next one
 			PatrolPoint oldPoint = patrolPoints.remove(0);
-			if (followState == AiAgent::PATROLLING)
-				patrolPoints.add(oldPoint);
+			/*if (followState == AiAgent::PATROLLING)
+				patrolPoints.add(oldPoint);*/
 
 			continue;
 		}
@@ -1124,10 +1124,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			maxDist = MIN(newSpeed, targetDistance - maxDistance);
 		else { // we are already where we need to be, so we have no new position
 			//activateMovementEvent();
-			if (followState == AiAgent::PATROLLING) {
+			/*if (followState == AiAgent::PATROLLING) {
 				PatrolPoint oldPoint = patrolPoints.remove(0);
 				patrolPoints.add(oldPoint);
-			}
+			}*/
 
 			if (isRetreating())
 				homeLocation.setReached(true);
@@ -1183,8 +1183,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 					if (i == path->size() - 1) {
 						// this is the last point in the path to the patrolPoint
 						PatrolPoint oldPoint = patrolPoints.remove(0);
-						if (followState == AiAgent::PATROLLING)
-							patrolPoints.add(oldPoint);
+						/*if (followState == AiAgent::PATROLLING)
+							patrolPoints.add(oldPoint);*/
 						// make sure the patrolPoint doesn't get removed twice (removing a new target position)
 						remove = false;
 					}
@@ -1305,8 +1305,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (!found && remove) {
 			// we were not able to find the next point to head to, and we haven't popped patrolPoints yet
 			PatrolPoint oldPoint = patrolPoints.remove(0);
-			if (followState == AiAgent::PATROLLING)
-				patrolPoints.add(oldPoint);
+			/*if (followState == AiAgent::PATROLLING)
+				patrolPoints.add(oldPoint);*/
 		}
 	}
 
