@@ -1,5 +1,5 @@
 corellia_corsec_outpost_neutral_medium_theater = Lair:new {
-	mobiles = {{"corsec_special_ops_lieutenant",1},{"corsec_special_ops_comissioner",1},{"corsec_special_ops_captain",1},{"corsec_special_ops_chief",1},{"corsec_special_ops_major",1},{"corsec_special_ops_inspector",1}},
+	mobiles = {{"corsec_captain",1},{"corsec_lieutenant",2},{"corsec_master_sergeant",2},{"corsec_major",1},{"corsec_trooper",3}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/building/poi/corellia_hidden_large1.iff"},
 	buildingsEasy = {"object/building/poi/corellia_hidden_large1.iff"},

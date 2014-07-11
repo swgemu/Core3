@@ -1,5 +1,5 @@
 corellia_flail_cut_throat_squad_neutral_none = Lair:new {
-	mobiles = {{"flail_butcher",1},{"flail_cutthroat",1},{"flail_enforcer",1}},
+	mobiles = {{"flail_killer",1},{"flail_slayer",1},{"flail_enforcer",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

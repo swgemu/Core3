@@ -1,5 +1,5 @@
 corellia_afarathu_cult_patrol_neutral_none = Lair:new {
-	mobiles = {{"afarathu_brute",1},{"afarathu_hellion",1},{"afarathu_ruffian",1},{"afarathu_savage",1}},
+	mobiles = {{"afarathu_brute",1},{"afarathu_cult_zealot",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

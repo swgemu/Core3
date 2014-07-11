@@ -1,5 +1,5 @@
 corellia_flail_cut_throat_patrol_neutral_none = Lair:new {
-	mobiles = {{"flail_killer",1},{"flail_executioner",1},{"flail_slayer",1}},
+	mobiles = {{"flail_cutthroat",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

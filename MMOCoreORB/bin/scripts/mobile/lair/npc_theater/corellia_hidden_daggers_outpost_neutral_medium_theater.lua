@@ -1,11 +1,11 @@
 corellia_hidden_daggers_outpost_neutral_medium_theater = Lair:new {
-	mobiles = {{"hidden_daggers_extremist",1}, {"hidden_daggers_dissident",1},{"hidden_daggers_activist",1}},
+	mobiles = {{"hidden_daggers_extremist",1},{"hidden_daggers_dissident",1},{"hidden_daggers_activist",1},{"hidden_daggers_lieutenant",1},{"hidden_daggers_leader",1}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
-	buildingsEasy = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
-	buildingsMedium = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
-	buildingsHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
-	buildingsVeryHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	buildingsVeryEasy = {"object/building/poi/corellia_hidden_large1.iff"},
+	buildingsEasy = {"object/building/poi/corellia_hidden_large1.iff"},
+	buildingsMedium = {"object/building/poi/corellia_hidden_large1.iff"},
+	buildingsHard = {"object/building/poi/corellia_hidden_large1.iff"},
+	buildingsVeryHard = {"object/building/poi/corellia_hidden_large1.iff"},
 	buildingType = "theater"
 }
 
