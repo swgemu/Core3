@@ -109,7 +109,7 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 	--{"corsec_commissioner",300,7.8197,1.00001,-5.9104,180.001,3075366, "conversation", ""},
 	--{"corsec_deserter",300,-5.41306,0.999953,6.26959,134.998,3075366, "conversation", ""},
 	--{"corsec_investigator",300,17.1745,1.28309,-12.0361,179.995,3075367, "conversation", ""},
-	--{"corsec_rogue",300,7.8197,1.00001,-7.0104,0,3075366, "conversation", ""},
+	--{"rogue_corsec_trooper",300,7.8197,1.00001,-7.0104,0,3075366, "conversation", ""},
 	--{"medic",60,-4.31306,0.999965,5.16959,0,3075366, "conversation", ""},
 	--{"willham_burke",60,0.861081,0.999995,2.33215,346.259,3075366, "neutral", ""},
 	--{"zo_ssa",60,-1.1331,0.999991,1.50214,21.773,3075366, "neutral", ""},

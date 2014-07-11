@@ -123,7 +123,7 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	--{"corsec_investigator",300,17.3056,1.28309,-6.37174,180.003,1935527, "conversation", ""},
 	--{"pilot",60,23.1824,1.28309,9.37019,179.994,1935527, "conversation", ""},
 	--{"commoner",60,-16.9721,1,-4.12621,360.011,1935528, "conversation", ""},
-	--{"corsec_rogue",300,-16.9721,1.00014,-3.02621,180.01,1935528, "conversation", ""},
+	--{"rogue_corsec_trooper",300,-16.9721,1.00014,-3.02621,180.01,1935528, "conversation", ""},
 	spawnMobile("corellia", "didina_lippinoss", 60,-8.43192,1.6,-11.42,69.197,1935530)
 	--{"commoner",60,-24,1.6,-4,354.16,1935532, "calm", "Pex (an elite storyteller vendor)"},
 
@@ -204,7 +204,7 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	--{"corsec_investigator",300,-5491.88,30.0036,-2808.63,180.005,0, "conversation", ""},
 	--{"corsec_investigator",300,-5159.41,21,-2569.03,0,0, "conversation", ""},
 	--{"corsec_major",300,-5010.49,28.1,-2496.09,135.004,0, "conversation", ""},
-	--{"corsec_rogue",300,-5059.06,21,-2399.08,180.005,0, "conversation", ""},
+	--{"rogue_corsec_trooper",300,-5059.06,21,-2399.08,180.005,0, "conversation", ""},
 	spawnMobile("corellia", "corsec_sergeant", 300,-5059.87,21,-2606.63,195.299,0)
 	spawnMobile("corellia", "corsec_trooper", 300,-5506.2,21,-2634.5,102,0)
 	spawnMobile("corellia", "corsec_trooper", 300,-5626.49,21,-2812.58,261.279,0)

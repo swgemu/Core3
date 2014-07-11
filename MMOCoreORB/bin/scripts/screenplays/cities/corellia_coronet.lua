@@ -56,7 +56,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	--{"bodyguard",300,2.80432,-0.894991,10.6543,180.012,8105496, "conversation", ""}
 	--{"businessman",60,-7.91375,-0.894992,-4.88587,179.995,8105496, "conversation", ""},
 	--{"corsec_major",300,-7.91375,-0.894992,-5.88587,0,8105496, "conversation", ""},
-	--{"corsec_rogue",300,4.71201,-0.894992,-8.73417,180.01,8105496, "conversation", ""},
+	--{"rogue_corsec_trooper",300,4.71201,-0.894992,-8.73417,180.01,8105496, "conversation", ""},
 	--{"entertainer",60,2.80432,-0.894991,9.55434,360.011,8105496, "conversation", ""},
 	--{"farmer_rancher",60,4.71201,-0.894992,-9.83418,360.011,8105496, "conversation", ""},
 	--{"criminal",60,-5.02826,-0.894991,-21.3375,60.6357,8105501, "calm", ""},
@@ -189,7 +189,7 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "corsec_deserter",300,-671.712,6.15933,-4169.03,37.6923,0)
 	spawnMobile("corellia", "corsec_detective",300,-526.1,28,-4702,-41,0)
 	spawnMobile("corellia", "corsec_master_sergeant",300,-172.8,28,-4167.1,0,0)
-	spawnMobile("corellia", "corsec_renegade",300,-662.805,9.26289,-4182.05,196.426,0)
+	spawnMobile("corellia", "renegade_corsec_trooper",300,-662.805,9.26289,-4182.05,196.426,0)
 	spawnMobile("corellia", "corsec_traitor",300,-672.123,5.60327,-4164.83,340.354,0)
 	spawnMobile("corellia", "corsec_trooper",300,-240.2,28,-4450.9,94,0)
 	spawnMobile("corellia", "corsec_trooper",300,-172.8,28.0929,-4165.5,179,0)
