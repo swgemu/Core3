@@ -20,21 +20,19 @@ void LightsaberObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 		return;
 
 	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject);
+
 	if(weapon == NULL)
 		return;
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
-	// TODO: Add Opening Lightsabers.
-
 	String text = "@jedi_spam:open_saber";
 	menuResponse->addRadialMenuItem(89, 3, text);
-
-	// menuResponse->addRadialMenuItem(71, 3, "Randomize Blade Color"); // Randomize Color (until crystals are implemented.)
 
 }
 
 int LightsaberObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
@@ -45,11 +43,11 @@ int LightsaberObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 		return 0;
 
 	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject);
+
 	if (weapon == NULL)
 		return 1;
 
 	// Handle opening sabers
-
 	if (selectedID == 89) {
 
 		ManagedReference<SceneObject*> parent = weapon->getParent();
@@ -60,17 +58,6 @@ int LightsaberObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 
 		weapon->sendContainerTo(player);
 	}
-
-
-	/*// Handle blade color change:
-
-	if(selectedID == 71) {
-			int color = (System::random(29) + 1); // Randomize color until crystals are implemented.
-			weapon->setBladeColor(color);
-			byte bvalue = (byte)color;
-			weapon->setCustomizationVariable("/private/index_color_blade", bvalue, true);
-	}*/
-
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }
