@@ -215,7 +215,7 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	}
 
 	//check in range objects for no build radi
-	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY(), object, finalSpawn->getSize())) {
+	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY(), object, finalSpawn->getSize() + 64.f)) {
 		return 9;
 	}
 

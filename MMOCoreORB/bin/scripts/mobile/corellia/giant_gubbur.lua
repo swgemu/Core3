@@ -1,4 +1,4 @@
-giant_gubber = Creature:new {
+giant_gubbur = Creature:new {
 	objectName = "@mob/creature_names:giant_gubbur",
 	socialGroup = "gubber",
 	pvpFaction = "",
@@ -35,4 +35,4 @@ giant_gubber = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(giant_gubber, "giant_gubber")
+CreatureTemplates:addCreatureTemplate(giant_gubbur, "giant_gubbur")
