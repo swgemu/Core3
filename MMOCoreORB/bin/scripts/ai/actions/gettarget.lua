@@ -1,6 +1,10 @@
-GetTarget = Ai:new {}
+require("ai.ai")
+require("ai.interrupts")
 
-function GetTarget:checkConditions(pAgent)
+--GetTarget = Ai:new {}
+GetTargetBase = createClass(Ai)
+
+function GetTargetBase:checkConditions(pAgent)
 	if (pAgent ~= nil) then
 		local creature = LuaCreatureObject(pAgent)
 		
@@ -16,7 +20,7 @@ function GetTarget:checkConditions(pAgent)
 	return false
 end
 
-function GetTarget:doAction(pAgent)
+function GetTargetBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		local creature = LuaCreatureObject(pAgent)
@@ -37,3 +41,5 @@ function GetTarget:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
+
+GetTarget = createClass(GetTargetBase, Interrupt)

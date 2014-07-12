@@ -1,5 +1,5 @@
 follow = {
-	{"root", "CombatMove", "none", BEHAVIOR},
+	{"root", "Move", "none", BEHAVIOR},
 }
 
 addAiTemplate("follow", follow)

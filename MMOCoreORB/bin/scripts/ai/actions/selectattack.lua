@@ -1,6 +1,10 @@
-SelectAttack = Ai:new {}
+require("ai.ai")
+require("ai.interrupts")
 
-function SelectAttack:checkConditions(pAgent)
+--SelectAttack = Ai:new {}
+SelectAttackBase = createClass(Ai)
+
+function SelectAttackBase:checkConditions(pAgent)
 	if (pAgent ~= nil) then
 		local creature = LuaCreatureObject(pAgent)
 		
@@ -16,7 +20,7 @@ function SelectAttack:checkConditions(pAgent)
 	return false
 end
 
-function SelectAttack:doAction(pAgent)
+function SelectAttackBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		local creature = LuaCreatureObject(pAgent)
@@ -36,3 +40,5 @@ function SelectAttack:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
+
+SelectAttack = createClass(SelectAttackBase, Interrupt)

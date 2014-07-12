@@ -33,6 +33,7 @@ bool LuaBehavior::checkConditions(AiAgent* agent) {
 	// Use DirectorManager in order to have access to AiAgent
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	// TODO (dannuic): should I check for valid table here?
+	//agent->info(className, true);
 	LuaFunction runMethod(lua->getLuaState(), className, "checkConditions", 1);
 	runMethod << agent;
 

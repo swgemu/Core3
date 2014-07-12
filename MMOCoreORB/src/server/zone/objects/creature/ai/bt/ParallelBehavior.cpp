@@ -25,9 +25,9 @@ void ParallelBehavior::end() {
 	CompositeBehavior::end();
 }
 
-void ParallelBehavior::doAction() {
+void ParallelBehavior::doAction(bool directlyExecuted) {
 	if (finished()) {
-		Behavior::doAction();
+		Behavior::doAction(directlyExecuted);
 		return;
 	}
 
@@ -40,7 +40,7 @@ void ParallelBehavior::doAction() {
 		if (currentChild == NULL) { // this shouldn't happen. Bail.
 			agent->error("NULL child or empty children list in ParallelBehavior");
 			endWithError();
-			Behavior::doAction();
+			Behavior::doAction(directlyExecuted);
 			return;
 		}
 
@@ -65,7 +65,7 @@ void ParallelBehavior::doAction() {
 	if (unfinishedChildren.isEmpty())
 		this->finish();
 
-	Behavior::doAction();
+	Behavior::doAction(directlyExecuted);
 }
 
 void ParallelBehavior::childFailed() {

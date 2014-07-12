@@ -1,18 +1,9 @@
-Composite = Ai:new {}
+require("ai.ai")
 
-function Composite:checkConditions(pAgent)
-	return 1
-end
+--Composite = Ai:new {}
+CompositeBase = createClass(Ai)
 
-function Composite:start(pAgent)
-	return 0
-end
-
-function Composite:terminate(pAgent)
-	return 0
-end
-
-function Composite:doAction(pAgent)
+function CompositeBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		local res = agent:getBehaviorStatus()
@@ -21,3 +12,7 @@ function Composite:doAction(pAgent)
 		return BEHAVIOR_INVALID
 	end
 end
+
+Composite = createClass(CompositeBase, Interrupt)
+CompositeDefault = createClass(CompositeBase, DefaultInterrupt)
+CompositePack = createClass(CompositeBase, PackInterrupt)

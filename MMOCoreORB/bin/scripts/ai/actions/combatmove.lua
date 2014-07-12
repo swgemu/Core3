@@ -1,6 +1,10 @@
-CombatMove = Move:new {}
+require("ai.actions.move")
+require("ai.interrupts")
 
-function CombatMove:doAction(pAgent)
+--CombatMove = Move:new {}
+CombatMoveBase = createClass(Move)
+
+function CombatMoveBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		
@@ -13,3 +17,5 @@ function CombatMove:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
+
+CombatMove = createClass(CombatMoveBase, Interrupt)

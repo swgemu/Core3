@@ -1,8 +1,16 @@
-Wait10 = Wait:new {}
+require("ai.actions.wait")
+require("ai.interrupts")
 
-function Wait10:setWait(pAgent)
+--Wait10 = Wait:new {}
+Wait10Base = createClass(Wait)
+
+function Wait10Base:setWait(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
-		agent:setWait(10)
+		agent:setWait(math.random(10) + 5)
 	end
 end
+
+Wait10 = createClass(Wait10Base, Interrupt)
+Wait10Default = createClass(Wait10Base, DefaultInterrupt)
+Wait10Pack = createClass(Wait10Base, PackInterrupt)

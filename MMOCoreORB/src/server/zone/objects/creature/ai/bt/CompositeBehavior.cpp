@@ -35,7 +35,7 @@ void CompositeBehavior::start() {
 	Behavior::start();
 }
 
-void CompositeBehavior::doAction() {
+void CompositeBehavior::doAction(bool directlyExecuted) {
 	if (agent->isDead() || agent->isIncapacitated() || (agent->getZone() == NULL)) {
 		agent->setFollowObject(NULL);
 		return;
@@ -47,7 +47,7 @@ void CompositeBehavior::doAction() {
 		endWithFailure();
 
 	if (finished()) {
-		Behavior::doAction();
+		Behavior::doAction(directlyExecuted);
 		return;
 	}
 
@@ -59,7 +59,7 @@ void CompositeBehavior::doAction() {
 		if (currentChild == NULL) {
 			agent->error("NULL child or empty children list in CompositeBehavior");
 			endWithError();
-			Behavior::doAction();
+			Behavior::doAction(directlyExecuted);
 			return;
 		}
 
@@ -81,7 +81,8 @@ void CompositeBehavior::doAction() {
 		}
 	} while (currentChild != NULL && currentChild->finished() && !this->finished() && currentPos < children.size());
 
-	Behavior::doAction();
+	if (currentChild->finished())
+		Behavior::doAction(directlyExecuted);
 }
 
 String CompositeBehavior::print() {
