@@ -62,11 +62,13 @@ class CreatureManager extends ZoneManager {
 		loadSpawnAreas();
 	}
 
-	public native TangibleObject spawn(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size);
+	public native SceneObject spawn(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size);
 
-	public native TangibleObject spawnLair(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size = 20);
+	public native SceneObject spawnLair(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size = 20);
 
-	public native TangibleObject spawnTheater(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size = 10);
+	public native SceneObject spawnTheater(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size = 10);
+
+	public native SceneObject spawnDynamicSpawn(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size = 10);
 
 	/**
 	 * Spawns the specified creature into zone
