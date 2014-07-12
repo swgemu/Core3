@@ -39,7 +39,7 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/managers/creature/LairObserver.h"
-#include "server/zone/managers/creature/TheaterSpawnObserver.h"
+#include "server/zone/managers/creature/DynamicSpawnObserver.h"
 #include "server/zone/packets/object/SpatialChat.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 
@@ -70,7 +70,7 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
 }
 
-TangibleObject* CreatureManagerImplementation::spawn(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size) {
+SceneObject* CreatureManagerImplementation::spawn(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == NULL)
@@ -80,11 +80,13 @@ TangibleObject* CreatureManagerImplementation::spawn(unsigned int lairTemplate, 
 		return spawnLair(lairTemplate, difficultyLevel, difficulty, x, z, y, size);
 	else if (lairTmpl->getBuildingType() == LairTemplate::THEATER)
 		return spawnTheater(lairTemplate, difficulty, x, z, y, size);
+	else if (lairTmpl->getBuildingType() == LairTemplate::NONE)
+		return spawnDynamicSpawn(lairTemplate, difficulty, x, z, y, size);
 
 	return NULL;
 }
 
-TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size) {
+SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == NULL || lairTmpl->getBuildingType() != LairTemplate::LAIR)
@@ -138,7 +140,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  	return building;
 }
 
-TangibleObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size) {
+SceneObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == NULL || lairTmpl->getBuildingType() != LairTemplate::THEATER)
@@ -167,7 +169,7 @@ TangibleObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTem
 
  	building->initializePosition(x, z, y);
 
- 	ManagedReference<TheaterSpawnObserver*> theaterObserver = new TheaterSpawnObserver();
+ 	ManagedReference<DynamicSpawnObserver*> theaterObserver = new DynamicSpawnObserver();
  	theaterObserver->deploy();
  	theaterObserver->setLairTemplate(lairTmpl);
  	theaterObserver->setDifficulty(difficulty);
@@ -182,6 +184,48 @@ TangibleObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTem
  	theaterObserver->spawnInitialMobiles(building);
 
  	return building;
+}
+
+SceneObject* CreatureManagerImplementation::spawnDynamicSpawn(unsigned int lairTemplate, int difficulty, float x, float z, float y, float size) {
+	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
+
+	if (lairTmpl == NULL || lairTmpl->getBuildingType() != LairTemplate::NONE)
+		return NULL;
+
+ 	Vector<String>* mobiles = lairTmpl->getWeightedMobiles();
+
+ 	if (mobiles->size() == 0)
+ 		return NULL;
+
+ 	ManagedReference<ActiveArea*> area = zoneServer->createObject(String("object/active_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+
+ 	if (area == NULL) {
+ 		error("error creating active area");
+ 		return NULL;
+ 	}
+
+ 	Locker blocker(area);
+
+ 	area->initializePosition(x, z, y);
+ 	area->setRadius(64);
+ 	area->setNoSpawnArea(true);
+ 	area->setNoBuildArea(true);
+
+ 	ManagedReference<DynamicSpawnObserver*> dynamicObserver = new DynamicSpawnObserver();
+ 	dynamicObserver->deploy();
+ 	dynamicObserver->setLairTemplate(lairTmpl);
+ 	dynamicObserver->setDifficulty(difficulty);
+ 	dynamicObserver->setObserverType(ObserverType::THEATER);
+ 	dynamicObserver->setSize(size);
+
+ 	area->registerObserver(ObserverEventType::CREATUREDESPAWNED, dynamicObserver);
+
+
+ 	zone->transferObject(area, -1, false);
+
+ 	dynamicObserver->spawnInitialMobiles(area);
+
+ 	return area;
 }
 
 void CreatureManagerImplementation::spawnRandomCreature(int number, float x, float z, float y, uint64 parentID) {

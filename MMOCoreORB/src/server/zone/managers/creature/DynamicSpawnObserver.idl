@@ -48,20 +48,25 @@ import engine.util.Observable;
 import server.zone.managers.creature.SpawnObserver;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.creature.AiAgent;
+include server.zone.templates.mobile.LairTemplate;
 
-class TheaterSpawnObserver extends SpawnObserver {
+class DynamicSpawnObserver extends SpawnObserver {
 
-	public TheaterSpawnObserver() {
+	public DynamicSpawnObserver() {
 		super();
 
-		Logger.setLoggingName("TheaterSpawnObserver");
+		Logger.setLoggingName("DynamicSpawnObserver");
 	}
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 
-	public native void spawnInitialMobiles(TangibleObject theater);
+	public native void spawnInitialMobiles(SceneObject building);
 
 	public boolean isTheaterSpawnObserver() {
-		return true;
+		return super.lairTemplate.getBuildingType() == LairTemplate.THEATER;
+	}
+
+	public boolean isDynamicSpawnObserver() {
+		return super.lairTemplate.getBuildingType() == LairTemplate.NONE;
 	}
 }
