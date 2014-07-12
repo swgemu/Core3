@@ -859,7 +859,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		UnicodeString numberOfEntries = StringIdManager::instance()->getStringId(String("@" + stfFile + diffString + ":" + "number_of_entries").hashCode());
 
 		if (!numberOfEntries.isEmpty()) {
-			randTexts = Integer::valueOf(numberOfEntries.toString());
+			randTexts =  System::random(Integer::valueOf(numberOfEntries.toString()) - 1) + 1;
 		} else {
 			randTexts = System::random(randomTexts - 1) + 1;
 		}
@@ -915,7 +915,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 			UnicodeString numberOfEntries = StringIdManager::instance()->getStringId(String("@" + stfFile  + ":" + "number_of_entries").hashCode());
 
 			if (!numberOfEntries.isEmpty()) {
-				randTexts = Integer::valueOf(numberOfEntries.toString());
+				randTexts = System::random(Integer::valueOf(numberOfEntries.toString()) - 1) + 1;
 			} else {
 				randTexts = (target->getTargetId() % randomTexts) + 1;
 			}
