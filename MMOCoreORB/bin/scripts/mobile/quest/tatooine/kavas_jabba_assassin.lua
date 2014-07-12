@@ -30,7 +30,7 @@ kavas_jabba_assassin = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "task_loot_kavas_briefcase", chance = 10000000}
+				{group = "task_loot_quest_briefcase", chance = 10000000}
 			},
 			lootChance = 10000000
 		}

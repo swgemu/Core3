@@ -24,13 +24,13 @@ borvos_guard = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + HERD,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_borvos_soldier.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "",
+	conversationTemplate = "krayt_dragon_skull_mission_giver_convotemplate",
 	attacks = {},
 }
 

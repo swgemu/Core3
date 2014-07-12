@@ -106,7 +106,6 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	--{"noble",60,4.12842,0.3,4.01677,134.998,1855463, "conversation", ""},
 	--{"scientist",60,-1.72746,7.9,-31.075,180.005,1855463, "conversation", ""},
 	--{"slicer",60,-18.6014,1.30292,-10.2146,180.006,1855463, "conversation", ""},
-	spawnMobile("corellia", "thale_dustrunner",60,-0.052739,3.0782,-10.9388,187.319,1855463)
 	--{"corsec_detective",300,-20.2743,3.22324,22.781,180.005,1855468, "conversation", ""},
 	--{"farmer",60,-20.2743,3.22324,21.681,0,1855468, "conversation", ""},
 	--{"info_broker",60,21.8079,3.22324,26.617,180.006,1855469, "conversation", ""},

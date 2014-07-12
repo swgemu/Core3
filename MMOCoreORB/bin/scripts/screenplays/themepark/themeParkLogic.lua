@@ -720,15 +720,16 @@ function ThemeParkLogic:getMissionLootCount(pLooter)
 	end
 end
 
-function ThemeParkLogic:getMissionPreReqItem(pPlayer)
+function ThemeParkLogic:getMissionPreReq(pPlayer)
 	local npcNumber = self:getActiveNpcNumber(pPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
 	local mission = self:getMission(npcNumber, missionNumber)
-
-	if mission.preReqItem == nil or mission.preReqItem == 0 then
+	local preReq = mission.preReq
+	
+	if preReq == nil or preReq == "" then
 		return 0
 	else
-		return mission.preReqItem
+		return preReq
 	end
 end
 
@@ -1073,8 +1074,9 @@ function ThemeParkLogic:hasRequiredItem(pConversingPlayer)
 	return true
 end
 
-function ThemeParkLogic:doPreReqItemCheck(pPlayer, itemIff)
+function ThemeParkLogic:doPreReqItemCheck(pPlayer, preReq)
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
+		local itemIff = preReq.itemTemplate
 		local pInventory = player:getSlottedObject("inventory")
 		if pInventory == nil then
 			return false
@@ -1082,8 +1084,10 @@ function ThemeParkLogic:doPreReqItemCheck(pPlayer, itemIff)
 		local pItem = getContainerObjectByTemplate(pInventory, itemIff, true)
 		if pItem ~= nil then
 			return ObjectManager.withSceneObject(pItem, function(item)
-				item:destroyObjectFromWorld()
-				item:destroyObjectFromDatabase()
+				if preReq.destroy ~= nil and preReq.destroy == true then
+					item:destroyObjectFromWorld()
+					item:destroyObjectFromDatabase()
+				end
 				writeData(player:getObjectID() .. ":hasPreReqItem", 1)
 				return true
 			end)

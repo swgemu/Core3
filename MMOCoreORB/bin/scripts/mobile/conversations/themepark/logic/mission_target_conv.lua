@@ -99,6 +99,7 @@ createMissionTargetConvoTemplate("theme_park_valarian_mission_target_convotempla
 
 -- Epic Quest Chains
 createMissionTargetConvoTemplate("zicx_bug_bomb_mission_target_convotemplate","zicx_bug_bomb_mission_target_conv_handler")
+createMissionTargetConvoTemplate("krayt_dragon_skull_mission_target_convotemplate","krayt_dragon_skull_mission_target_conv_handler")
 
 -- Tatooine
 createMissionTargetConvoTemplate("hedon_istee_mission_target_convotemplate","hedon_istee_mission_target_conv_handler")

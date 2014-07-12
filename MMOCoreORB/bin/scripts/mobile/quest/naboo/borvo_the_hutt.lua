@@ -23,13 +23,13 @@ borvo_the_hutt = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/borvo.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "krayt_dragon_skull_mission_giver_convotemplate",
 	attacks = {
 	}
 }

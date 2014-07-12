@@ -1,4 +1,4 @@
-kavas_briefcase = {
+quest_briefcase = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	customObjectName = "",
@@ -8,4 +8,4 @@ kavas_briefcase = {
 	customizationValues = {}
 }
 
-addLootItemTemplate("kavas_briefcase", kavas_briefcase)
+addLootItemTemplate("quest_briefcase", quest_briefcase)
