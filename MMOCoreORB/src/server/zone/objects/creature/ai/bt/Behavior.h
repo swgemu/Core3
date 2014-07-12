@@ -101,7 +101,7 @@ public:
 	/**
 	 * Virtual to provide logic for each update
 	 */
-	virtual void doAction();
+	virtual void doAction(bool directlyExecuted = false);
 
 	virtual int interrupt(SceneObject* source, int64 msg) {
 		return interface->interrupt(agent.get(), source, msg);

@@ -1,9 +1,9 @@
 idlewander = {
-	{"idroot", "Composite", "none", SELECTORBEHAVIOR},
-	{"move", "Composite", "idroot", SEQUENCEBEHAVIOR},
-	{"patrol", "GeneratePatrol", "idroot", BEHAVIOR},
-	{"move0", "Walk", "move", BEHAVIOR},
-	{"move1", "Wait10", "move", BEHAVIOR},
+	{"idroot", "CompositeDefault", "none", SELECTORBEHAVIOR},
+	{"move", "CompositeDefault", "idroot", SEQUENCEBEHAVIOR},
+	{"patrol", "GeneratePatrolDefault", "idroot", BEHAVIOR},
+	{"move0", "WalkDefault", "move", BEHAVIOR},
+	{"move1", "Wait10Default", "move", BEHAVIOR},
 }
 
 addAiTemplate("idlewander", idlewander)

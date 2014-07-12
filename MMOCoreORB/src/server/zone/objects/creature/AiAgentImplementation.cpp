@@ -1378,7 +1378,7 @@ void AiAgentImplementation::doMovement() {
 	Locker locker(&behaviorMutex);
 	Behavior* current = behaviors.get(currentBehaviorID);
 	if (current != NULL)
-		current->doAction();
+		current->doAction(true);
 
 /*	Time endTime;
 	endTime.updateToCurrentTime();*/
@@ -2224,7 +2224,7 @@ void AiAgentImplementation::setCurrentBehavior(const String& b) {
 	Locker locker(&behaviorMutex);
 	currentBehaviorID = b;
 	if (behaviors.get(currentBehaviorID) != NULL) {
-		activateMovementEvent();
+		//activateMovementEvent();
 
 		// This is for debugging:
 /*		ZoneServer* zoneServer = ServerCore::getZoneServer();

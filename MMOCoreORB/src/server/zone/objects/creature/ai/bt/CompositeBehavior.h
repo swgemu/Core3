@@ -75,7 +75,7 @@ public:
 
 	virtual void start();
 
-	virtual void doAction();
+	virtual void doAction(bool directlyExecuted = false);
 };
 
 }

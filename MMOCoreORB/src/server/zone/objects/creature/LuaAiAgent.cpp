@@ -74,6 +74,9 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "info", &LuaAiAgent::info },
 		{ "spatialChat", &LuaAiAgent::spatialChat },
 		{ "setDefender", &LuaAiAgent::setDefender },
+		{ "addDefender", &LuaAiAgent::addDefender },
+		{ "assist", &LuaAiAgent::assist },
+		{ "checkRange", &LuaAiAgent::checkRange },
 		{ 0, 0 }
 };
 
@@ -459,5 +462,41 @@ int LuaAiAgent::setDefender(lua_State* L) {
 	realObject->setDefender(obj);
 
 	return 0;
+}
+
+int LuaAiAgent::addDefender(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+
+	realObject->addDefender(obj);
+
+	return 0;
+}
+
+int LuaAiAgent::assist(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+	if (obj == NULL || !obj->isAiAgent())
+		return 0;
+
+	AiAgent* agent = cast<AiAgent*>(obj);
+	if (agent == NULL)
+		return 0;
+
+	SceneObject* target = agent->getFollowObject();
+
+	realObject->setDefender(target);
+
+	return 0;
+}
+
+int LuaAiAgent::checkRange(lua_State* L) {
+	float dist = lua_tonumber(L, -1);
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -2);
+
+	bool retVal = false;
+	if (realObject->isInRange(obj, dist))
+		retVal = true;
+
+	lua_pushboolean(L, retVal);
+	return 1;
 }
 

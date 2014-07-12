@@ -1,12 +1,16 @@
-Wait = Ai:new {}
+require("ai.ai")
+require("ai.interrupts")
 
-function Wait:start(pAgent)
+--Wait = Ai:new {}
+WaitBase = createClass(Ai)
+
+function WaitBase:start(pAgent)
 	self:setWait(pAgent)
 	
 	return 0
 end
 
-function Wait:doAction(pAgent)
+function WaitBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		if (agent:isWaiting()) then
@@ -16,7 +20,7 @@ function Wait:doAction(pAgent)
 	return BEHAVIOR_SUCCESS
 end
 
-function Wait:terminate(pAgent)
+function WaitBase:terminate(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		agent:setWait(0)
@@ -26,9 +30,21 @@ function Wait:terminate(pAgent)
 end
 
 -- By default, wait indefinitely
-function Wait:setWait(pAgent)
+function WaitBase:setWait(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		agent:setWait(-1)
 	end
 end
+
+--[[function Wait:interrupt(pAgent, pObject, msg)
+	if msg == STARTCOMBAT and pAgent == pObject then
+		Ai:startCombatInterrupt(pAgent, pObject)
+	end
+	
+	return 0
+end]]
+
+Wait = createClass(WaitBase, Interrupt)
+WaitDefault = createClass(WaitBase, DefaultInterrupt)
+WaitPack = createClass(WaitBase, PackInterrupt)

@@ -37,26 +37,28 @@ void Behavior::end() {
 		interface->end(agent);
 }
 
-void Behavior::doAction() {
+void Behavior::doAction(bool directlyExecuted) {
 	if (agent->isDead() || agent->isIncapacitated() || (agent->getZone() == NULL)) {
 		agent->setFollowObject(NULL);
 		return;
 	}
 
 	//agent->info(id, true);
+	agent->setCurrentBehavior(id);
 
 	if (!started())
 		this->start();
-	else if (!checkConditions())
+	else if (!this->checkConditions())
 		endWithFailure();
-
-	agent->setCurrentBehavior(id);
 
 	if (finished()) {
 		if (parent == NULL) {
 			this->end();
 			result = AiMap::SUSPEND;
 			agent->activateMovementEvent(); // this is an automatic recycle decorator for the root node
+		} else if (directlyExecuted) {
+			agent->setCurrentBehavior(parent->id);
+			parent->doAction(true);
 		}
 
 		return;
@@ -82,6 +84,10 @@ void Behavior::doAction() {
 
 	if (!finished() || parent == NULL)
 		agent->activateMovementEvent();
+	else if (directlyExecuted) {
+		agent->setCurrentBehavior(parent->id);
+		parent->doAction(true);
+	}
 }
 
 void Behavior::endWithFailure() {

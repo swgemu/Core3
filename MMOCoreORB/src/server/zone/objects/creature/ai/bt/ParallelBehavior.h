@@ -27,7 +27,7 @@ public:
 	ParallelBehavior(AiAgent* _agent, String className);
 	void start();
 	void end();
-	void doAction();
+	void doAction(bool directlyExecuted = false);
 	void childSucceeded();
 	void childFailed();
 

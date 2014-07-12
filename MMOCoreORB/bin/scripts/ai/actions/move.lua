@@ -1,6 +1,10 @@
-Move = Ai:new {}
+require("ai.ai")
+require("ai.interrupts")
 
-function Move:checkConditions(pAgent)
+--MoveBase = Ai:new {}
+MoveBase = createClass(Ai)
+
+function MoveBase:checkConditions(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		local creature = LuaCreatureObject(pAgent)
@@ -11,7 +15,7 @@ function Move:checkConditions(pAgent)
 	return false
 end
 
-function Move:doAction(pAgent)
+function MoveBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		
@@ -29,7 +33,7 @@ function Move:doAction(pAgent)
 end
 
 -- default action is to run
-function Move:findNextPosition(pAgent)
+function MoveBase:findNextPosition(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		if (agent:findNextPosition(agent:getMaxDistance(), false)) then
@@ -38,3 +42,15 @@ function Move:findNextPosition(pAgent)
 	end
 	return false
 end
+
+--[[function MoveBase:interrupt(pAgent, pObject, msg)
+	if msg == STARTCOMBAT and pAgent == pObject then
+		Ai:startCombatInterrupt(pAgent, pObject)
+	end
+	
+	return 0
+end]]
+
+Move = createClass(MoveBase, Interrupt)
+MoveDefault = createClass(MoveBase, DefaultInterrupt)
+MovePack = createClass(MoveBase, PackInterrupt)

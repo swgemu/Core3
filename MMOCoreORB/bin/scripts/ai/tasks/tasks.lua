@@ -1,7 +1,1 @@
 includeAiFile("tasks/composite.lua")
-includeAiFile("tasks/sequence.lua")
-includeAiFile("tasks/selector.lua")
-includeAiFile("tasks/parallelsequence.lua")
-includeAiFile("tasks/parallelselector.lua")
-includeAiFile("tasks/nondeterministicsequence.lua")
-includeAiFile("tasks/nondeterministicselector.lua")

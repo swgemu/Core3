@@ -1,6 +1,10 @@
-SelectWeapon = Ai:new {}
+require("ai.ai")
+require("ai.interrupts")
 
-function SelectWeapon:checkConditions(pAgent)
+--SelectWeapon = Ai:new {}
+SelectWeaponBase = createClass(Ai)
+
+function SelectWeaponBase:checkConditions(pAgent)
 	if (pAgent ~= nil) then
 		local creature = LuaCreatureObject(pAgent)
 		
@@ -16,7 +20,7 @@ function SelectWeapon:checkConditions(pAgent)
 	return false
 end
 
-function SelectWeapon:doAction(pAgent)
+function SelectWeaponBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		
@@ -30,3 +34,5 @@ function SelectWeapon:doAction(pAgent)
 	end
 	return BEHAVIOR_FAILURE
 end
+
+SelectWeapon = createClass(SelectWeaponBase, Interrupt)

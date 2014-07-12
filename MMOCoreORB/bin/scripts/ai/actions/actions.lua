@@ -1,5 +1,3 @@
-includeAiFile("actions/succeed.lua")
-includeAiFile("actions/failure.lua")
 includeAiFile("actions/move.lua")
 includeAiFile("actions/combatmove.lua")
 includeAiFile("actions/walk.lua")
