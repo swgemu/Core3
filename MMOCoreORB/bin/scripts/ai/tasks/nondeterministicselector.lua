@@ -1,4 +1,4 @@
-NonDeterministicSelector = {}
+NonDeterministicSelector = Ai:new {}
 
 function NonDeterministicSelector:checkConditions(pAgent)
 	if (pAgent ~= nil) then

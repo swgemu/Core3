@@ -131,7 +131,7 @@ SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate,
 
  	building->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);
  	building->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);
-
+ 	building->registerObserver(ObserverEventType::AIMESSAGE, lairObserver);
 
  	zone->transferObject(building, -1, false);
 

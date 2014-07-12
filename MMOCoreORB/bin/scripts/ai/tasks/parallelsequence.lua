@@ -1,4 +1,4 @@
-ParallelSequence = {}
+ParallelSequence = Ai:new {}
 
 function ParallelSequence:checkConditions(pAgent)
 	if (pAgent ~= nil) then

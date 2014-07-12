@@ -103,6 +103,10 @@ public:
 	 */
 	virtual void doAction();
 
+	virtual int interrupt(SceneObject* source, int64 msg) {
+		return interface->interrupt(agent.get(), source, msg);
+	}
+
 	/**
 	 * End the behavior with success
 	 */

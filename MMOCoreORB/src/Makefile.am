@@ -175,11 +175,6 @@ core3_IDLS =	autogen/server/zone/managers/creature/DynamicSpawnObserver.cpp \
 				autogen/server/zone/objects/creature/Creature.cpp \
 				autogen/server/zone/objects/creature/AiAgent.cpp \
 				autogen/server/zone/objects/creature/buffs/Buff.cpp \
-				autogen/server/zone/objects/creature/aigroup/AiGroup.cpp \
-				autogen/server/zone/objects/creature/aigroup/HerdGroup.cpp \
-				autogen/server/zone/objects/creature/aigroup/LairGroup.cpp \
-				autogen/server/zone/objects/creature/aigroup/PackGroup.cpp \
-				autogen/server/zone/objects/creature/aigroup/AiGroupObserver.cpp \
 				autogen/server/zone/objects/creature/buffs/DelayedBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/SpiceBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/PowerBoostBuff.cpp \
@@ -639,10 +634,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/ai/bt/ParallelSequenceBehavior.cpp \
 		server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.cpp \
 		server/zone/objects/creature/ai/bt/LuaBehavior.cpp \
-		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
-		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
-		server/zone/objects/creature/aigroup/LairGroupImplementation.cpp \
-		server/zone/objects/creature/aigroup/PackGroupImplementation.cpp \
 		server/zone/objects/creature/conversation/ConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/TrainerConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/DeliverMissionConversationObserverImplementation.cpp \

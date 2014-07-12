@@ -60,24 +60,44 @@ which carries forward this exception.
 #include "server/zone/managers/creature/DisseminateExperienceTask.h"
 
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	int ret = 1;
+	int i = 0;
+
+	Reference<LairAggroTask*> task = NULL;
+	SceneObject* sourceObject = cast<SceneObject*>(arg1);
+	AiAgent* agent = NULL;
+
 	switch (eventType) {
 	case ObserverEventType::OBJECTDESTRUCTION:
 		notifyDestruction(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), (int)arg2);
 		return 1;
 		break;
 	case ObserverEventType::DAMAGERECEIVED:
-
-		int livingCreatureCount = getLivingCreatureCount();
-
 		// if there are living creatures, make them aggro
-		if(livingCreatureCount > 0 ){
-			Reference<LairAggroTask*> task = new LairAggroTask(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), _this.get(), false);
+		if(getLivingCreatureCount() > 0 ){
+			task = new LairAggroTask(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), _this.get(), false);
 			task->execute();
 		}
 
 		// if new creatures have spawned or there are live creatures near the lair
-		if( checkForNewSpawns(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1)) || livingCreatureCount > 0 )
+		if( checkForNewSpawns(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1)) || getLivingCreatureCount() > 0 )
 			checkForHeal(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1));
+
+		break;
+	case ObserverEventType::AIMESSAGE:
+		if (sourceObject == NULL) {
+			Logger::console.error("LairObserverImplemenation::notifyObserverEvent does not have a source object");
+			return 1;
+		}
+
+		for (i = 0; i < spawnedCreatures.size(); i++) {
+			agent = cast<AiAgent*>(spawnedCreatures.get(i).get());
+			if (agent == NULL)
+				continue;
+
+			if (agent->interrupt(sourceObject, arg2) != 0)
+				return 1;
+		}
 
 		break;
 	}

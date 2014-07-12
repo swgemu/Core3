@@ -8,6 +8,7 @@
 #include "LuaBehavior.h"
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/creature/AiMap.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "engine/engine.h"
 
 
@@ -86,5 +87,22 @@ int LuaBehavior::doAction(AiAgent* agent) {
 	int result = lua_tointeger(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
 
+	return result;
+}
+
+int LuaBehavior::interrupt(AiAgent* agent, SceneObject* source, int64 msg) {
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+	LuaFunction messageFunc(lua->getLuaState(), className, "interrupt", 1);
+	messageFunc << agent;
+	messageFunc << source; //arg1
+	messageFunc << msg; //arg2
+
+	messageFunc.callFunction();
+
+	int result = lua_tointeger(lua->getLuaState(), -1);
+	lua_pop(lua->getLuaState(), 1);
+
+	//1 remove observer, 0 keep observer
 	return result;
 }

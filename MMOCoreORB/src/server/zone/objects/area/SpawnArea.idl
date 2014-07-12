@@ -48,7 +48,6 @@ import server.zone.objects.area.ActiveArea;
 import system.util.SortedVector;
 import system.util.HashTable;
 import engine.core.ManagedObject;
-import server.zone.objects.creature.aigroup.AiGroup;
 import server.zone.managers.creature.SpawnGroup;
 import server.zone.objects.area.SpawnAreaObserver;
 import engine.util.Observable;

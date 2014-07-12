@@ -1,4 +1,4 @@
-ParallelSelector = {}
+ParallelSelector = Ai:new {}
 
 function ParallelSelector:checkConditions(pAgent)
 	if (pAgent ~= nil) then

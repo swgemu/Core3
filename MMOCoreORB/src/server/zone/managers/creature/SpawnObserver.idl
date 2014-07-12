@@ -74,9 +74,9 @@ class SpawnObserver extends Observer implements Logger {
 		size = 20;
 	}
 
-	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
+	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
 		return 1;
-}
+	}
 
 	@local
 	public void setLairTemplate(LairTemplate tmpl) {

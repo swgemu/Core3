@@ -25,12 +25,14 @@ function Ai:doAction(pAgent)
 	return BEHAVIOR_SUCCESS
 end
 
-function Ai:interrupt(pAgent)
-	self:terminate(pAgent)
-	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
-		agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
-		agent:resetBehaviorList()
-		agent:executeBehavior()
+function Ai:interrupt(pAgent, pObject, msg)
+	if msg == STARTCOMBAT then
+		self:terminate(pAgent)
+		if (pAgent ~= nil) then
+			local agent = LuaAiAgent(pAgent)
+			agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
+			agent:resetBehaviorList()
+			agent:executeBehavior()
+		end
 	end
 end

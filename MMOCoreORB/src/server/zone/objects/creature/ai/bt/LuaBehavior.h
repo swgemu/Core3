@@ -13,6 +13,13 @@
 namespace server {
 namespace zone {
 namespace objects {
+
+namespace scene {
+class SceneObject;
+}
+
+using namespace server::zone::objects::scene;
+
 namespace creature {
 class AiAgent;
 namespace ai {
@@ -43,6 +50,7 @@ public:
 	void start(AiAgent* agent);
 	float end(AiAgent* agent);
 	int doAction(AiAgent* agent);
+	int interrupt(AiAgent* agent, SceneObject* source, int64 msg);
 
 	virtual uint16 getType();
 

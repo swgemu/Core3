@@ -112,9 +112,4 @@
 #include "server/zone/objects/area/MissionReconActiveArea.h"
 #include "server/zone/objects/area/SpawnArea.h"
 
-#include "server/zone/objects/creature/aigroup/AiGroup.h"
-#include "server/zone/objects/creature/aigroup/HerdGroup.h"
-#include "server/zone/objects/creature/aigroup/PackGroup.h"
-#include "server/zone/objects/creature/aigroup/LairGroup.h"
-
 #endif /* OBJECTS_H_ */

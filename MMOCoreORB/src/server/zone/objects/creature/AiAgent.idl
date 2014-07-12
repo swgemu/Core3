@@ -883,8 +883,18 @@ class AiAgent extends CreatureObject {
 	
 	@local
 	public native void clearBehaviorList();
+	
+	@local
+	public native int interrupt(SceneObject source, long msg);
 
 	public native void setHomeObject(SceneObject home) {
 		homeObject = home;
 	}
+	
+	/**
+	 * Sets the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is in a combat state }
+	 */
+	public native void setCombatState();
 }

@@ -1,4 +1,4 @@
-NonDeterministicSequence = {}
+NonDeterministicSequence = Ai:new {}
 
 function NonDeterministicSequence:checkConditions(pAgent)
 	if (pAgent ~= nil) then

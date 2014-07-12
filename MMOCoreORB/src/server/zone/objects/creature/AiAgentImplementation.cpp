@@ -104,7 +104,6 @@
 #include "variables/CreatureAttackMap.h"
 #include "variables/CreatureTemplateReference.h"
 #include "variables/CurrentFoundPath.h"
-#include "server/zone/managers/director/DirectorManager.h"
 
 #include "server/chat/ChatManager.h"
 
@@ -2280,6 +2279,9 @@ void AiAgentImplementation::resetBehaviorList() {
 	Behavior* b = behaviors.get(currentBehaviorID);
 	b->setStatus(AiMap::SUSPEND);
 
+	stopWaiting();
+	setWait(0);
+
 	Locker locker(&movementEventMutex);
 	if (moveEvent != NULL)
 		moveEvent->cancel();
@@ -2298,4 +2300,23 @@ void AiAgentImplementation::clearBehaviorList() {
 
 	currentBehaviorID = "";
 	behaviors.removeAll();
+}
+
+int AiAgentImplementation::interrupt(SceneObject* source, int64 msg) {
+	Locker bLocker(&behaviorMutex);
+	Behavior* b = behaviors.get(currentBehaviorID);
+
+	if (b == NULL)
+		return 1;
+
+	return b->interrupt(source, msg);
+}
+
+void AiAgentImplementation::setCombatState() {
+	CreatureObjectImplementation::setCombatState();
+
+	if (homeObject != NULL)
+		homeObject->notifyObservers(ObserverEventType::AIMESSAGE, _this.get(), ObserverEventType::STARTCOMBAT);
+
+	interrupt(_this.get(), ObserverEventType::STARTCOMBAT);
 }

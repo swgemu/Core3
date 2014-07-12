@@ -1,4 +1,4 @@
-Selector = {}
+Selector = Ai:new {}
 
 function Selector:checkConditions(pAgent)
 	if (pAgent ~= nil) then

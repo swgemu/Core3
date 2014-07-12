@@ -65,6 +65,7 @@ public:
 	const static int LOOTCREATURE				= 53; // ManagedObject arg1 = player who is looting, long arg2 = 0, event occurs before looting starts, i.e. it is possible to change loot with this event.
 	const static int SCREENPLAYSTATECHANGED		= 54; // ManagedObject arg1 = null, long arg2 = 0
 	const static int CREATUREDESPAWNED			= 55; // ManagedObject arg1 = AiAgent that despawned, long arg2 = 0
+	const static int AIMESSAGE					= 56; // ManagedObject arg1 = sender of the message (can be any SCNO), long arg2 = message
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

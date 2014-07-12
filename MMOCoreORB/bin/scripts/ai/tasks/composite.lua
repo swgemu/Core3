@@ -1,4 +1,4 @@
-Composite = {}
+Composite = Ai:new {}
 
 function Composite:checkConditions(pAgent)
 	return 1

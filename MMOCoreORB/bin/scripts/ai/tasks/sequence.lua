@@ -1,4 +1,4 @@
-Sequence = {}
+Sequence = Ai:new {}
 
 function Sequence:checkConditions(pAgent)
 	if (pAgent ~= nil) then

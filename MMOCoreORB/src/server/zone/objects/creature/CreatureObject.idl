@@ -371,7 +371,7 @@ class CreatureObject extends TangibleObject {
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object is in a combat state }
 	 */
-	public native void setCombatState();
+	public abstract native void setCombatState();
 	
 	/**
 	 * Cleares the combat state

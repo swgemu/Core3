@@ -344,11 +344,6 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<FactoryCrate>(SceneObjectType::FACTORYCRATE);
 
-	objectFactory.registerObject<AiGroup>(SceneObjectType::AIGROUP);
-	objectFactory.registerObject<HerdGroup>(SceneObjectType::HERDGROUP);
-	objectFactory.registerObject<PackGroup>(SceneObjectType::PACKGROUP);
-	objectFactory.registerObject<LairGroup>(SceneObjectType::LAIRGROUP);
-
 	objectFactory.registerObject<FighterShipObject>(SceneObjectType::SHIPFIGHTER);
 	objectFactory.registerObject<SpaceStationObject>(SceneObjectType::SHIPSTATION);
 
