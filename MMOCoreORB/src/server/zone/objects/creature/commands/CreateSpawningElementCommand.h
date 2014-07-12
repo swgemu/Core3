@@ -89,15 +89,13 @@ public:
 			return GENERALERROR;
 
 		if (!args.hasMoreTokens()) {
-			creature->sendSystemMessage("Spawn: /createSpawningElement spawn path/to/object.iff");
+			creature->sendSystemMessage("Spawn: /createSpawningElement spawn lairTemplate/IffObjectPath <level>");
 			creature->sendSystemMessage("Delete: /createSpawningElement delete oid");
-			creature->sendSystemMessage("Lair: /createSpawningElement lair lair_template level");
-			creature->sendSystemMessage("Theater: /createSpawningElement theater lair_template level");
 			return INVALIDPARAMETERS;
 		}
 
-		String itemtype;
-		args.getStringToken(itemtype);
+		String action;
+		args.getStringToken(action);
 
 		ZoneServer* zserv = server->getZoneServer();
 
@@ -105,13 +103,67 @@ public:
 			return GENERALERROR;
 
 		try {
-			if (itemtype.toLowerCase() == "spawn") {
+			if (action.toLowerCase() == "spawn") {
 				String objectTemplate;
 				args.getStringToken(objectTemplate);
-
 				float x = creature->getPositionX();
 				float y = creature->getPositionY();
 				float z = creature->getPositionZ();
+
+				LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(objectTemplate.hashCode());
+
+				if (lair != NULL) {
+					if (creature->getParent() != NULL) {
+						creature->sendSystemMessage("You need to be outside and unmounted to spawn that");
+
+						return GENERALERROR;
+					}
+
+					CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
+
+					if (lair->getBuildingType() == LairTemplate::LAIR) {
+						int level = 10;
+						if (args.hasMoreTokens()) {
+							level = args.getIntToken();
+						}
+
+						if (level < 1)
+							level = 1;
+						else if (level > 300)
+							level = 300;
+
+						SceneObject* sceno = creatureManager->spawnLair(objectTemplate.hashCode(), level, 2, x, z, y, 25);
+
+						if (sceno != NULL) {
+							creature->sendSystemMessage("lair spawned");
+							return SUCCESS;
+						} else {
+							creature->sendSystemMessage("error spawning lair");
+							return GENERALERROR;
+						}
+					} else if (lair->getBuildingType() == LairTemplate::THEATER) {
+						SceneObject* sceno = creatureManager->spawnTheater(objectTemplate.hashCode(), 2, x, z, y);
+
+						if (sceno != NULL) {
+							creature->sendSystemMessage("theater spawned");
+							return SUCCESS;
+						} else {
+							creature->sendSystemMessage("error spawning theater");
+							return GENERALERROR;
+						}
+					} else if (lair->getBuildingType() == LairTemplate::NONE) {
+						SceneObject* sceno = creatureManager->spawnDynamicSpawn(objectTemplate.hashCode(), 2, x, z, y);
+
+						if (sceno != NULL) {
+							creature->sendSystemMessage("dynamic spawn spawned");
+							return SUCCESS;
+						} else {
+							creature->sendSystemMessage("error spawning dynamic spawn");
+							return GENERALERROR;
+						}
+					}
+
+				}
 
 				SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(TemplateManager::instance()->getTemplate(objectTemplate.hashCode()));
 				if (serverTemplate != NULL) {
@@ -149,13 +201,10 @@ public:
 
 				object->createChildObjects();
 
-				//object->insertToZone(creature->getZone());
-
-
 				uint64 objectID = object->getObjectID();
 				creature->sendSystemMessage("oid: " + String::valueOf(objectID));
 
-			} else if (itemtype.toLowerCase() == "delete") {
+			} else if (action.toLowerCase() == "delete") {
 
 				String chatObjectID;
 				args.getStringToken(chatObjectID);
@@ -185,68 +234,10 @@ public:
 
 				creature->sendSystemMessage("Object " + chatObjectID + " deleted.");
 
-			} else if (itemtype.toLowerCase() == "lair" || itemtype.toLowerCase() == "theater") {
-				String lairTemplate;
-				args.getStringToken(lairTemplate);
-
-				if (creature->getParent() != NULL) {
-					creature->sendSystemMessage("You need to be outside and unmounted to execute this command");
-
-					return GENERALERROR;
-				}
-
-				unsigned int lairHashCode = lairTemplate.hashCode();
-
-				LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairHashCode);
-
-				if (lair == NULL) {
-					creature->sendSystemMessage("You must specify a valid lair template.");
-					return GENERALERROR;
-				}
-
-				CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
-
-				if (itemtype.toLowerCase() == "lair") {
-					if (lair->getBuildingType() != LairTemplate::LAIR) {
-						creature->sendSystemMessage("Template must be a lair type.");
-						return GENERALERROR;
-					}
-
-					unsigned int faction = lair->getFaction();
-					int level = args.getIntToken();
-
-					if (level < 1)
-						level = 1;
-					else if (level > 300)
-						level = 300;
-
-					TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), level, 2, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), faction);
-
-					if (tano != NULL)
-						creature->sendSystemMessage("lair spawned");
-					else
-						creature->sendSystemMessage("error spawning lair");
-
-				} else if (itemtype.toLowerCase() == "theater") {
-
-					if (lair->getBuildingType() != LairTemplate::THEATER) {
-						creature->sendSystemMessage("Template must be a theater type.");
-						return GENERALERROR;
-					}
-
-					TangibleObject* tano = creatureManager->spawnTheater(lairTemplate.hashCode(), 2, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
-
-					if (tano != NULL)
-						creature->sendSystemMessage("theater spawned");
-					else
-						creature->sendSystemMessage("error spawning theater");
-				}
 			}
 		} catch (Exception& e) {
-			creature->sendSystemMessage("Spawn: /createSpawningElement spawn path/to/object.iff");
+			creature->sendSystemMessage("Spawn: /createSpawningElement spawn lairTemplate/IffObjectPath <level>");
 			creature->sendSystemMessage("Delete: /createSpawningElement delete oid");
-			creature->sendSystemMessage("Lair: /createSpawningElement lair lair_template level");
-			creature->sendSystemMessage("Theater: /createSpawningElement theater lair_template");
 		}
 
 		return SUCCESS;
