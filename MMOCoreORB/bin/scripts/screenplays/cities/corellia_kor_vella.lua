@@ -460,7 +460,6 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "commoner", 1, 20.5, 1.28, 10, 135, 3005671)
 	spawnMobile("corellia", "miner", 60, 21.6, 1.28, 8.94, 0, 3005671)
 	spawnMobile("corellia", "farmer_rancher", 60, 21.6, 1.28, 10.04, 180, 3005671)
-	spawnMobile("corellia", "chertyl_ruluwoor", 60, -8.54, 1.6, -11.59, 98.8, 3005674)
 		--left in corellia.lua because of custom name
 	--spawnMobile("corellia", "commoner", 1,-24,1.6,-4,124.701,3005676, "calm", "An Event Promoter"},
 

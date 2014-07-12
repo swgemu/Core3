@@ -28,6 +28,7 @@ includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 
 -- Task/Quest
+includeFile("tasks/corellia/chertyl_ruluwoor.lua")
 includeFile("tasks/corellia/diktatQuest.lua")
 includeFile("tasks/corellia/kirkin_liawoon.lua")
 includeFile("tasks/dantooine/drakka_judarrl.lua")

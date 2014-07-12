@@ -8,8 +8,10 @@ includeFile("quest/gadget_specialist.lua")
 -- Corellia
 includeFile("quest/corellia/brantlee_spondoon.lua")
 includeFile("quest/corellia/c_3po.lua")
+includeFile("quest/corellia/chertyl_ruluwoor.lua")
 includeFile("quest/corellia/daclif_gallamby.lua")
 includeFile("quest/corellia/dwynn_biuval.lua")
+includeFile("quest/corellia/kafleer_tredahl.lua")
 includeFile("quest/corellia/kiantryl_liawoon.lua")
 includeFile("quest/corellia/kirkin_liawoon.lua")
 includeFile("quest/corellia/kirkin_human_thug.lua")
@@ -41,6 +43,7 @@ includeFile("quest/corellia/theme_park_rebel_selonian_female.lua")
 includeFile("quest/corellia/theme_park_rebel_selonian_male.lua")
 includeFile("quest/corellia/wedge_antilles.lua")
 includeFile("quest/corellia/windle_meeker.lua")
+includeFile("quest/corellia/zayna.lua")
 includeFile("quest/corellia/zoda_burb.lua")
 
 -- Dantooine
