@@ -33,10 +33,25 @@ void LightsaberCrystalComponentImplementation::loadTemplateData(SharedObjectTemp
 
 void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
+	TangibleObjectImplementation::fillAttributeList(alm, object);
+
 	PlayerObject* player = object->getPlayerObject();
 
-	if (player->getJediState() > 1 || player->isPrivileged()){	
-	
+	if (player->getJediState() > 1 || player->isPrivileged())	{
+
+		if (getColor() != 31){
+			StringBuffer str;
+			str << "\\#FF6600" << "UNTUNED" ;
+			if (owner == ""){
+				alm->insertAttribute("crystal_owner", str);
+			} else {
+				alm->insertAttribute("crystal_owner", owner);
+			}
+		}
+	}
+
+	if (player->getJediState() > 1 || player->isPrivileged()){
+
 		if (getColor() == 31){
 			if (owner == ""){
 				StringBuffer str;
@@ -45,39 +60,21 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 			} else {
 				alm->insertAttribute("crystal_owner", owner);
 			}
-		}		
-	
+		}
 	}
-	
-
-	if (player->getJediState() > 1 || player->isPrivileged())	{	
-
-		if (getColor() != 31){
-			StringBuffer str;
-			str << "\\#FF6600" << "UNTUNED" ;		
-			if (owner == ""){			 
-				alm->insertAttribute("crystal_owner", str);
-			} else {
-				alm->insertAttribute("crystal_owner", owner);	
-			}	
-		}	
-	}
-	
 
 	if (getColor() != 31){
 		if (owner == ""){
 			StringBuffer str2;
-			str2 << "@jedi_spam:saber_color_" << getColor();	
-			alm->insertAttribute("color", str2);				
+			str2 << "@jedi_spam:saber_color_" << getColor();
+			alm->insertAttribute("color", str2);
 		} else {
 			StringBuffer str3;
-			str3 << "@jedi_spam:saber_color_" << getColor();			
+			str3 << "@jedi_spam:saber_color_" << getColor();
 			alm->insertAttribute("color", str3);
 		}
-	}	
-	
-	
-	
+	}
+
 	if (player->getJediState() > 1 || player->isPrivileged()){
 
 		if (getColor() == 31){
@@ -98,19 +95,17 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 		}
 	}
 	
-	TangibleObjectImplementation::fillAttributeList(alm, object);	
-
 }
 
 void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-			
+
 	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01")){
 		String text = "@jedi_spam:tune_crystal";
 		menuResponse->addRadialMenuItem(128, 3, text);
 	}
 
-	ComponentImplementation::fillObjectMenuResponse(menuResponse, player);	
-	
+	ComponentImplementation::fillObjectMenuResponse(menuResponse, player);
+
 }
 
 int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -137,7 +132,7 @@ int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObj
 void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* player) {
 
 	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01")){
-			
+
 			String name = player->getDisplayedName();
 			setOwner(name);
 
@@ -147,9 +142,9 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 			player->sendSystemMessage("@jedi_spam:crystal_tune_success");
 		} else {
 			player->sendSystemMessage("This crystal has already been successfully tuned.");
-		
-	}	
-		
+
+	}
+
 }
 
 void LightsaberCrystalComponentImplementation::updateCrystal(int value){
@@ -164,19 +159,21 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 
 	int colorMax = values->getMaxValue("color");
 	int color = values->getCurrentValue("color"); 
-	
+
 	if (colorMax != 31) {
+		setMaxCondition(values->getCurrentValue("hitpoints"));
+
 		int finalColor = MIN(color, 11);
 		setColor(finalColor);
-		updateCrystal(finalColor);
-	} 	
+		updateCrystal(finalColor);	
+	} 
 	else {
 		setColor(31);
 		updateCrystal(31);
 	}
 
-
 	if (color == 31){
+		setMaxCondition(values->getCurrentValue("hitpoints"));
 		setQuality(values->getCurrentValue("quality"));
 		setAttackSpeed(Math::getPrecision(values->getCurrentValue("attackspeed"), 2));
 		setMinimumDamage(MIN(values->getCurrentValue("mindamage"), 50));
@@ -190,7 +187,7 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		setSacMind(MIN(values->getCurrentValue("attackmindcost"), 9) * -1);
 		setForceCost(MIN(values->getCurrentValue("forcecost"), 9) * -1);
 	}
-	
-	ComponentImplementation::updateCraftingValues(values, firstUpdate);	
+
+	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 
 }
