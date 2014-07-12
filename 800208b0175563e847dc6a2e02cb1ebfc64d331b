@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_f278392d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-12T19:51:13Z",
+      "side": 1,
+      "message": "combine these two if blocks. I know it was like that before, but it shouldn\u0027t be. Both of them do exactly the same thing, color or power crystal doesn\u0027t matter at all.",
+      "revId": "800208b0175563e847dc6a2e02cb1ebfc64d331b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_d2753533",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-12T19:51:13Z",
+      "side": 1,
+      "message": "This line should be outside the if block so you don\u0027t have to repeat it in the next if block.",
+      "revId": "800208b0175563e847dc6a2e02cb1ebfc64d331b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
