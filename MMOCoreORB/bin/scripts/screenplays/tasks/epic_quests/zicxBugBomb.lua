@@ -4,7 +4,7 @@ jowir_arlensa_missions =
 	{
 		{
 			missionType = "confiscate",
-			preReqItem = "object/tangible/loot/quest/quest_item_goru_calling_card.iff",
+			preReq = { type = "item", itemTemplate = "object/tangible/loot/quest/quest_item_goru_calling_card.iff", destroy = true },
 			primarySpawns =
 			{
 				{ npcTemplate = "jowir_valarian_assassin", planetName = "tatooine", npcName = "Valarian Assassin" },

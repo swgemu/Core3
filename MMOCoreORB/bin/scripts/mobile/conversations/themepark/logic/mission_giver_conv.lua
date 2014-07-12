@@ -245,6 +245,7 @@ createMissionGiverConvoTemplate("theme_park_valarian_mission_giver_convotemplate
 
 -- Epic Quest Chains
 createMissionGiverConvoTemplate("zicx_bug_bomb_mission_giver_convotemplate", "zicx_bug_bomb_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("krayt_dragon_skull_mission_giver_convotemplate", "krayt_dragon_skull_mission_giver_conv_handler")
 
 -- Tatooine
 createMissionGiverConvoTemplate("hedon_istee_mission_giver_convotemplate", "hedon_istee_mission_giver_conv_handler")

@@ -23,13 +23,13 @@ huff_guard = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/darklight_guard.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	conversationTemplate = "",
+	conversationTemplate = "krayt_dragon_skull_mission_giver_convotemplate",
 	attacks = merge(riflemanmaster,fencermaster)
 }
 

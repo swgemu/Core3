@@ -24,13 +24,13 @@ thale_dustrunner = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_smuggler_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "krayt_dragon_skull_mission_giver_convotemplate",
 	attacks = {
 	}
 }
