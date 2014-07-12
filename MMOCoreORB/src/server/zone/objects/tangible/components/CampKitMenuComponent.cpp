@@ -171,12 +171,20 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 				return 0;
 			}
 
-			if(scno != NULL && scno->getObserverCount(ObserverEventType::OBJECTDESTRUCTION) > 0 &&
+			if(scno != NULL && (scno->getObserverCount(ObserverEventType::OBJECTDESTRUCTION) > 0 || scno->getObserverCount(ObserverEventType::CREATUREDESPAWNED) > 0) &&
 					scno->getDistanceTo(player) <= scno->getObjectTemplate()->getNoBuildRadius() + campStructureData->getRadius()) {
 
 				SortedVector<ManagedReference<Observer* > > observers = scno->getObservers(ObserverEventType::OBJECTDESTRUCTION);
 				for(int j = 0; j < observers.size(); ++j) {
 					if(observers.get(j)->isObserverType(ObserverType::LAIR)) {
+						player->sendSystemMessage("@camp:error_lair_too_close");
+						return 0;
+					}
+				}
+
+				SortedVector<ManagedReference<Observer* > > observers2 = scno->getObservers(ObserverEventType::CREATUREDESPAWNED);
+				for(int j = 0; j < observers2.size(); ++j) {
+					if(observers2.get(j)->isObserverType(ObserverType::LAIR)) {
 						player->sendSystemMessage("@camp:error_lair_too_close");
 						return 0;
 					}

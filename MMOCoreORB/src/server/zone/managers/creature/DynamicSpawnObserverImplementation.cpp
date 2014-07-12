@@ -1,18 +1,18 @@
-#include "server/zone/managers/creature/TheaterSpawnObserver.h"
+#include "server/zone/managers/creature/DynamicSpawnObserver.h"
 #include "server/zone/objects/creature/events/RespawnCreatureTask.h"
-#include "server/zone/objects/creature/events/DespawnTheaterTask.h"
+#include "server/zone/objects/creature/events/DespawnDynamicSpawnTask.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 
-int TheaterSpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType != ObserverEventType::CREATUREDESPAWNED)
 		return 0;
 
 	Reference<AiAgent*> ai = cast<AiAgent*>(arg1);
-	Reference<TangibleObject*> theater = cast<TangibleObject*>(observable);
+	Reference<SceneObject*> spawn = cast<SceneObject*>(observable);
 
-	if (ai == NULL || theater == NULL)
+	if (ai == NULL || spawn == NULL)
 		return 0;
 
 	if (ai->getRespawnCounter() > 1) {
@@ -22,7 +22,7 @@ int TheaterSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 
 		if (spawnedCreatures.isEmpty()) {
 
-			Reference<Task*> task = new DespawnTheaterTask(theater);
+			Reference<Task*> task = new DespawnDynamicSpawnTask(spawn);
 			task->schedule(2 * 60 * 1000);
 
 			return 1;
@@ -31,7 +31,7 @@ int TheaterSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		return 0;
 	}
 
-	Zone* zone = theater->getZone();
+	Zone* zone = spawn->getZone();
 
 	if (zone == NULL)
 		return 0;
@@ -42,8 +42,8 @@ int TheaterSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	return 0;
 }
 
-void TheaterSpawnObserverImplementation::spawnInitialMobiles(TangibleObject* theater) {
-	if (theater->getZone() == NULL)
+void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* building) {
+	if (building->getZone() == NULL)
 		return;
 
 	int spawnLimitAdjustment = difficulty - 2;
@@ -80,13 +80,13 @@ void TheaterSpawnObserverImplementation::spawnInitialMobiles(TangibleObject* the
 
 		float tamingChance = creatureTemplate->getTame();
 
-		CreatureManager* creatureManager = theater->getZone()->getCreatureManager();
+		CreatureManager* creatureManager = building->getZone()->getCreatureManager();
 
 		for (int j = 0; j < numberToSpawn; j++) {
 
-			float x = theater->getPositionX() + (size - System::random(size * 20) / 10.0f);
-			float y = theater->getPositionY() + (size - System::random(size * 20) / 10.0f);
-			float z = theater->getZone()->getHeight(x, y);
+			float x = building->getPositionX() + (size - System::random(size * 20) / 10.0f);
+			float y = building->getPositionY() + (size - System::random(size * 20) / 10.0f);
+			float z = building->getZone()->getHeight(x, y);
 
 			ManagedReference<CreatureObject*> creo = NULL;
 
@@ -110,7 +110,7 @@ void TheaterSpawnObserverImplementation::spawnInitialMobiles(TangibleObject* the
 				ai->setHomeLocation(x, z, y);
 				ai->setRespawnTimer(0);
 				ai->resetRespawnCounter();
-				ai->setHomeObject(theater);
+				ai->setHomeObject(building);
 
 				spawnedCreatures.add(creo);
 
