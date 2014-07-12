@@ -26,12 +26,12 @@ namespace creature {
 
 	public:
 		LairSpawn() : Object() {
-			spawnLimit = 0;
+			spawnLimit = -1;
 			minDifficulty = 1;
 			maxDifficulty = 1;
 			numberToSpawn = 0;
 			weighting = 1;
-			size = 1;
+			size = 25;
 		}
 
 		LairSpawn(const LairSpawn& sp) : Object() {
