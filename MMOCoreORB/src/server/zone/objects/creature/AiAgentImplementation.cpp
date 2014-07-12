@@ -1375,6 +1375,7 @@ void AiAgentImplementation::doMovement() {
 
 	//info("Performing action ID: " + currentBehaviorID, true);
 	// activate AI
+	Locker locker(&behaviorMutex);
 	Behavior* current = behaviors.get(currentBehaviorID);
 	if (current != NULL)
 		current->doAction();
@@ -2312,11 +2313,40 @@ int AiAgentImplementation::interrupt(SceneObject* source, int64 msg) {
 	return b->interrupt(source, msg);
 }
 
+void AiAgentImplementation::broadcastInterrupt(int64 msg) {
+	if (zone == NULL)
+		return;
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeAiAgents;
+
+	try {
+		if (closeobjects == NULL) {
+			zone->getInRangeObjects(getPositionX(), getPositionY(), 192, &closeAiAgents, true);
+		} else {
+			closeAiAgents.removeAll(closeobjects->size(), 10);
+			closeobjects->safeCopyTo(closeAiAgents);
+		}
+	} catch (Exception& e) {
+
+	}
+
+	for (int i = 0; i < closeAiAgents.size(); ++i) {
+		AiAgent* agent = cast<AiAgent*>(closeAiAgents.get(i).get());
+
+		if (_this.get() == agent || agent == NULL)
+			continue;
+
+		agent->interrupt(_this.get(), msg);
+	}
+}
+
 void AiAgentImplementation::setCombatState() {
 	CreatureObjectImplementation::setCombatState();
 
 	if (homeObject != NULL)
 		homeObject->notifyObservers(ObserverEventType::AIMESSAGE, _this.get(), ObserverEventType::STARTCOMBAT);
+
+	broadcastInterrupt(ObserverEventType::STARTCOMBAT);
 
 	interrupt(_this.get(), ObserverEventType::STARTCOMBAT);
 }

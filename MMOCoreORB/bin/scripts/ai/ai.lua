@@ -26,7 +26,7 @@ function Ai:doAction(pAgent)
 end
 
 function Ai:interrupt(pAgent, pObject, msg)
-	if msg == STARTCOMBAT then
+	if msg == STARTCOMBAT and pAgent == pObject then
 		self:terminate(pAgent)
 		if (pAgent ~= nil) then
 			local agent = LuaAiAgent(pAgent)

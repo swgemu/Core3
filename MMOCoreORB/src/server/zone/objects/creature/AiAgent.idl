@@ -886,6 +886,9 @@ class AiAgent extends CreatureObject {
 	
 	@local
 	public native int interrupt(SceneObject source, long msg);
+	
+	@local
+	public native void broadcastInterrupt(long msg);
 
 	public native void setHomeObject(SceneObject home) {
 		homeObject = home;
