@@ -51,19 +51,17 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 
 int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
-	
+
 	ManagedReference<SceneObject*> p = sceneObject->getParent();
-		
+
 	if (p != NULL){
-		
 		int containment = p->getContainmentType();
-		
 		if (containment == 4){
 		errorDescription = "@jedi_spam:saber_not_while_equpped";
 		return TransferErrorCode::INVALIDTYPE;
-		}	
+		}
 	}
-	
+
 	if (!object->isLightsaberCrystalObject()) {
 		errorDescription = "@jedi_spam:saber_not_crystal";
 		return TransferErrorCode::INVALIDTYPE;
@@ -75,8 +73,8 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 		errorDescription = "@jedi_spam:saber_crystal_not_tuned";
 		return TransferErrorCode::INVALIDTYPE;
 	}
-	
-	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(object->getParent().get().get());	
+
+	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(object->getParent().get().get());
 
 	if (creature != NULL && crystal->getOwner() != creature->getDisplayedName()){
 		errorDescription = "@jedi_spam:saber_crystal_not_owner";
@@ -84,7 +82,6 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 	}
 
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
-
 
 	if (containerObjects->size() >= sceneObject->getContainerVolumeLimit()) {
 		errorDescription = "@container_error_message:container03"; //This container is full.

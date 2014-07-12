@@ -6,6 +6,7 @@ force_color_crystal = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/lightsaber/lightsaber_module_force_crystal.iff",
 	craftingValues = {
+		{"hitpoints",650,750,0},
 		{"color",0,11,0},
 	},
 	customizationStringNames = {},
