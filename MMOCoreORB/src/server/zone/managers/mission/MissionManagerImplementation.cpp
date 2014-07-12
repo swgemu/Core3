@@ -801,10 +801,6 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		}
 	}
 
-	int randTexts = System::random(randomTexts - 1) + 1;
-
-	mission->setMissionNumber(randTexts);
-
 	mission->setStartPlanet(playerZone->getZoneName());
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), playerZone->getZoneName());
 
@@ -814,8 +810,6 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	mission->setFaction(faction);
 
 	if (npcTarget) {
-		mission->setCreatorName(nm->makeCreatureName());
-
 		mission->setMissionTargetName(nm->makeCreatureName());
 
 		String planet = playerZone->getZoneName();
@@ -855,9 +849,36 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 		mission->setTargetObjectId(0);
 
+		// Set the Title, Creator, and Description of the mission.
+
+		int randTexts = 0;
+
+		String stfFile = "mission/mission_bounty_neutral_";
+
+		UnicodeString numberOfEntries = StringIdManager::instance()->getStringId(String("@" + stfFile + diffString + ":" + "number_of_entries").hashCode());
+
+		if (!numberOfEntries.isEmpty()) {
+			randTexts = Integer::valueOf(numberOfEntries.toString());
+		} else {
+			randTexts = System::random(randomTexts - 1) + 1;
+		}
+
+		mission->setMissionNumber(randTexts);
 		mission->setMissionDifficulty(3 * creoTemplate->getLevel() + 7);
-		mission->setMissionTitle("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "t");
-		mission->setMissionDescription("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "d");
+
+		UnicodeString possibleCreatorName = StringIdManager::instance()->getStringId(String("@" + stfFile + diffString, "m" + String::valueOf(randTexts) + "o").hashCode());
+		String creatorName = "";
+
+
+		if (!possibleCreatorName.isEmpty()) {
+			creatorName = possibleCreatorName.toString();
+		} else {
+			creatorName = nm->makeCreatureName();
+		}
+
+		mission->setCreatorName(creatorName);
+		mission->setMissionTitle(stfFile + diffString, "m" + String::valueOf(randTexts) + "t");
+		mission->setMissionDescription(stfFile + diffString, "m" + String::valueOf(randTexts) + "d");
 	} else {
 		BountyTargetListElement* target = getRandomPlayerBounty(player);
 
@@ -875,19 +896,44 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 				}
 			}
 
-			randTexts = (target->getTargetId() % randomTexts) + 1;
-
-			mission->setCreatorName("GALACTIC EMPIRE");
-
 			mission->setEndPosition(0, 0, "", true);
 
 			mission->setTargetOptionalTemplate("");
 
-			mission->setMissionDifficulty(100);
+			ManagedReference<CreatureObject*> creature = zoneServer->getObject(target->getTargetId()).castTo<CreatureObject*>();
+
+			mission->setMissionDifficulty(creature->getLevel());
 			mission->setRewardCredits(target->getReward());
 
-			mission->setMissionTitle("mission/mission_bounty_jedi", "m" + String::valueOf(randTexts) + "t");
-			mission->setMissionDescription("mission/mission_bounty_jedi", "m" + String::valueOf(randTexts) + "d");
+			// Set the Title, Creator, and Description of the mission.
+
+			int randTexts = 0;
+
+			String stfFile = "mission/mission_bounty_jedi";
+
+			UnicodeString numberOfEntries = StringIdManager::instance()->getStringId(String("@" + stfFile  + ":" + "number_of_entries").hashCode());
+
+			if (!numberOfEntries.isEmpty()) {
+				randTexts = Integer::valueOf(numberOfEntries.toString());
+			} else {
+				randTexts = (target->getTargetId() % randomTexts) + 1;
+			}
+
+			mission->setMissionNumber(randTexts);
+
+			UnicodeString possibleCreatorName = StringIdManager::instance()->getStringId(String("@" + stfFile + "m" + String::valueOf(randTexts) + "o").hashCode());
+			String creatorName = "";
+
+
+			if (!possibleCreatorName.isEmpty()) {
+				creatorName = possibleCreatorName.toString();
+			} else {
+				creatorName = nm->makeCreatureName();
+			}
+
+			mission->setCreatorName(creatorName);
+			mission->setMissionTitle(stfFile, "m" + String::valueOf(randTexts) + "t");
+			mission->setMissionDescription(stfFile, "m" + String::valueOf(randTexts) + "d");
 		}
 	}
 
