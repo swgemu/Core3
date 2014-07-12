@@ -1375,7 +1375,6 @@ void AiAgentImplementation::doMovement() {
 
 	//info("Performing action ID: " + currentBehaviorID, true);
 	// activate AI
-	Locker locker(&behaviorMutex);
 	Behavior* current = behaviors.get(currentBehaviorID);
 	if (current != NULL)
 		current->doAction(true);
@@ -2195,11 +2194,6 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 
 	clearBehaviorList();
 
-	Locker locker(&behaviorMutex);
-	behaviors.put("root", rootSelector);
-	behaviors.put("attackSequence", attackSequence);
-	locker.release();
-
 	addBehaviorToTree(attackSequence, rootSelector);
 
 	setupBehaviorTree(getTarget);
@@ -2214,6 +2208,11 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 	setupBehaviorTree(idle);
 	addCurrentBehaviorToTree(rootSelector);
 
+	Locker locker(&behaviorMutex);
+
+	behaviors.put("root", rootSelector);
+	behaviors.put("attackSequence", attackSequence);
+
 	resetBehaviorList();
 	setCurrentBehavior(String("root"));
 
@@ -2221,7 +2220,6 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 }
 
 void AiAgentImplementation::setCurrentBehavior(const String& b) {
-	Locker locker(&behaviorMutex);
 	currentBehaviorID = b;
 	if (behaviors.get(currentBehaviorID) != NULL) {
 		//activateMovementEvent();
@@ -2236,7 +2234,6 @@ void AiAgentImplementation::setCurrentBehavior(const String& b) {
 }
 
 int AiAgentImplementation::getBehaviorStatus() {
-	Locker locker(&behaviorMutex);
 	Behavior* b = behaviors.get(currentBehaviorID);
 	if (b == NULL)
 		return AiMap::INVALID;
@@ -2245,7 +2242,6 @@ int AiAgentImplementation::getBehaviorStatus() {
 }
 
 void AiAgentImplementation::setBehaviorStatus(int status) {
-	Locker locker(&behaviorMutex);
 	Behavior* b = behaviors.get(currentBehaviorID);
 	if (b != NULL) {
 		b->setStatus((uint8)status);
@@ -2275,7 +2271,6 @@ void AiAgentImplementation::addCurrentBehaviorToTree(CompositeBehavior* par) {
  * move the tree back to the root node
  */
 void AiAgentImplementation::resetBehaviorList() {
-	Locker bLocker(&behaviorMutex);
 	currentBehaviorID = "root";
 	Behavior* b = behaviors.get(currentBehaviorID);
 	b->setStatus(AiMap::SUSPEND);
@@ -2283,7 +2278,6 @@ void AiAgentImplementation::resetBehaviorList() {
 	stopWaiting();
 	setWait(0);
 
-	Locker locker(&movementEventMutex);
 	if (moveEvent != NULL)
 		moveEvent->cancel();
 	//info(root->print(), true);
