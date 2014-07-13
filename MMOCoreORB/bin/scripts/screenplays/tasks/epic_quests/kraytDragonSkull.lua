@@ -90,7 +90,7 @@ thale_dusturnner_missions =
 			preReq = { type = "item", itemTemplate = "object/tangible/loot/quest/huff_quest_corsec_badge.iff", destroy = false },
 			primarySpawns =
 			{
-				{ npcTemplate = "mercenary", planetName = "corellia", npcName = "Aldalad" }
+				{ npcTemplate = "aldalad", planetName = "corellia", npcName = "Aldalad" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
