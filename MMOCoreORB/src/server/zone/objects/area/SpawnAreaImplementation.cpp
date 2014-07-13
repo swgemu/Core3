@@ -48,14 +48,14 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 	if (eventType != ObserverEventType::OBJECTREMOVEDFROMZONE)
 		return 1;
 
-	TangibleObject* tano = dynamic_cast<TangibleObject*>(observable);
+	SceneObject* sceno = dynamic_cast<SceneObject*>(observable);
 
-	if (tano == NULL)
+	if (sceno == NULL)
 		return 1;
 
 	Locker locker(_this.get());
 
-	uint32 lairTemplate = spawnTypes.remove(tano->getObjectID());
+	uint32 lairTemplate = spawnTypes.remove(sceno->getObjectID());
 
 	if (lairTemplate != 0) {
 		int currentSpawnCount = spawnCountByType.get(lairTemplate) - 1;
@@ -73,7 +73,7 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 
 		area->setRadius(64);
 		area->setNoSpawnArea(true);
-		area->initializePosition(tano->getPositionX(), tano->getPositionZ(), tano->getPositionY());
+		area->initializePosition(sceno->getPositionX(), sceno->getPositionZ(), sceno->getPositionY());
 
 		zone->transferObject(area, -1, true);
 
