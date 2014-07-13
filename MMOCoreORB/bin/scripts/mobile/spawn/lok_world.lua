@@ -1,7 +1,5 @@
 lok_world = {
 
-	maxSpawnLimit = 2048,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "lok_pharple_lair_neutral_medium",

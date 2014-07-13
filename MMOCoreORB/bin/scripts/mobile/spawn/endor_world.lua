@@ -1,7 +1,5 @@
 endor_world = {
 
-	maxSpawnLimit = 2048,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "endor_squall_rabid_neutral_small",

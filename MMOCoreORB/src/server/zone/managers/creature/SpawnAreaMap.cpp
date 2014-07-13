@@ -251,8 +251,10 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 
 	area->setSpawnConstant(constant);
 
-	if (tier & SPAWNAREA)
+	if (tier & SPAWNAREA) {
 		area->setTemplate(areaObj.getStringAt(7).hashCode());
+		area->setMaxSpawnLimit(areaObj.getIntAt(8));
+	}
 
 	if ((radius != -1) && !(tier & WORLDSPAWNAREA)) {
 		zone->transferObject(area, -1, true);

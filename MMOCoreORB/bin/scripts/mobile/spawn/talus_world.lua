@@ -1,7 +1,5 @@
 talus_world = {
 
-	maxSpawnLimit = 2048,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "talus_beserk_kahmurra_lair_neutral_medium",

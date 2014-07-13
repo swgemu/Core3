@@ -22,7 +22,6 @@ includeFile("spawn/rori_medium.lua")
 includeFile("spawn/rori_easy.lua")
 includeFile("spawn/talus_easy.lua")
 includeFile("spawn/tatooine_easy.lua")
-includeFile("spawn/tatooine_easy_small.lua")
 
 --destroy_mission
 includeFile("spawn/destroy_mission/corellia_destroy_missions.lua")

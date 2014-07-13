@@ -1,7 +1,5 @@
 talus_easy = {
 
-	maxSpawnLimit = 512,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "talus_paralope_lair_neutral_medium",

@@ -1,7 +1,5 @@
 rori_easy = {
 
-	maxSpawnLimit = 256,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "rori_squall_warren_neutral_medium",

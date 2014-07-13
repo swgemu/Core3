@@ -1,7 +1,5 @@
 naboo_easy = {
 
-	maxSpawnLimit = 256,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "naboo_gnort_lair_neutral_small",

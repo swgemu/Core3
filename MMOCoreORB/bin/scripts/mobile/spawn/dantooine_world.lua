@@ -1,7 +1,5 @@
 dantooine_world = {
 
-	maxSpawnLimit = 2048,
-
 	lairSpawns = {
 		{
 			--Lesser Plains Bol always has level = 10 (non ch mount creature)

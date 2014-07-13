@@ -1,7 +1,5 @@
 naboo_world = {
 
-	maxSpawnLimit = 2048,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "naboo_gnort_lair_neutral_small",

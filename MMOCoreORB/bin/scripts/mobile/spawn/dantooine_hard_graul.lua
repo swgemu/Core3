@@ -1,7 +1,5 @@
 dantooine_hard_graul = {
 
-	maxSpawnLimit = 32,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "dantooine_graul_ancient_lair_neutral_large",

@@ -1,7 +1,5 @@
 naboo_medium = {
 
-	maxSpawnLimit = 384,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "naboo_flewt_lair_neutral_small_01",

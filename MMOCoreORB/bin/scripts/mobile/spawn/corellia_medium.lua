@@ -1,7 +1,5 @@
 corellia_medium = {
 
-	maxSpawnLimit = 384,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "corellia_selonian_base_neutral_large_theater",

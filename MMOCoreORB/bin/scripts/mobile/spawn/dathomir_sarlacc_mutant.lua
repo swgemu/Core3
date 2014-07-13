@@ -1,7 +1,5 @@
 dathomir_sarlacc_mutant = {
 
-	maxSpawnLimit = 256,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "dathomir_reptilian_mature_flyer_lair_neutral_large",

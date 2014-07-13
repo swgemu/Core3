@@ -392,10 +392,6 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		SpawnGroup* group = spawnIterator.next();
 		std::string templateName( group->getTemplateName().toCharArray() );
 
-		// Verify spawn limit is not negative
-		int limit = group->getMaxSpawnLimit();
-		EXPECT_TRUE( limit >= 0 ) << "Max spawn limit in spawn group " << templateName << " is negative";
-
 		// Verify spawn list
 		Vector<Reference<LairSpawn*> >* spawnList = group->getSpawnList();
 		for (int i = 0; i < spawnList->size(); i++) {

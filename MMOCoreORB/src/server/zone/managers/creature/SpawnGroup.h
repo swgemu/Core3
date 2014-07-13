@@ -21,14 +21,13 @@ protected:
 	String templateName;
 
 	Vector<Reference<LairSpawn*> > spawnList;
-	int maxSpawnLimit;
 
 public:
 	SpawnGroup() {}
 
 	SpawnGroup(const String& tempName, LuaObject& group) {
 		templateName = tempName;
-		maxSpawnLimit = group.getIntField("maxSpawnLimit");
+
 		LuaObject lairSpawns = group.getObjectField("lairSpawns");
 
 		for (int i = 1; i <= lairSpawns.getTableSize(); ++i) {
@@ -52,7 +51,6 @@ public:
 	SpawnGroup(const SpawnGroup& gr) : Object() {
 		templateName = gr.templateName;
 		spawnList = gr.spawnList;
-		maxSpawnLimit = gr.maxSpawnLimit;
 	}
 
 	virtual ~SpawnGroup() {}
@@ -63,7 +61,6 @@ public:
 
 		templateName = gr.templateName;
 		spawnList = gr.spawnList;
-		maxSpawnLimit = gr.maxSpawnLimit;
 
 		return *this;
 	}
@@ -74,10 +71,6 @@ public:
 
 	Vector<Reference<LairSpawn*> >* getSpawnList() {
 		return &spawnList;
-	}
-
-	int getMaxSpawnLimit() {
-		return maxSpawnLimit;
 	}
 
 	void setTemplateName(String templateName) {

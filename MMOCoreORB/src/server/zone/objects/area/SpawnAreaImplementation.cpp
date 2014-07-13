@@ -162,7 +162,7 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 		return 3;
 	}
 
-	if (totalSpawnCount >= spawnGroup->getMaxSpawnLimit())
+	if (totalSpawnCount >= maxSpawnLimit)
 		return 4;
 
 	if (lastSpawn.miliDifference() < MINSPAWNINTERVAL)

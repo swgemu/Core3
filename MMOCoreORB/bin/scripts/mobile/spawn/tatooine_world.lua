@@ -1,7 +1,5 @@
 tatooine_world = {
 
-	maxSpawnLimit = 2048,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "tatooine_kreetle_lair_neutral_small",

@@ -1,7 +1,5 @@
 yavin4_world = {
 
-	maxSpawnLimit = 2048,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "yavin4_tanc_mite_lair_neutral_medium",

@@ -1,7 +1,5 @@
 rori_medium = {
 
-	maxSpawnLimit = 384,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "rori_nudfuh_lair_neutral_medium",

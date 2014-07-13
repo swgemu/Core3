@@ -1,7 +1,5 @@
 corellia_easy = {
 
-	maxSpawnLimit = 256,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "corellia_plumed_rasp_howling_large_neutral_none",

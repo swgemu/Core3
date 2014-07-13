@@ -1,7 +1,5 @@
 dantooine_world_npc = {
 
-	maxSpawnLimit = 256,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "dantooine_janta_leader_camp_neutral_large_theater",

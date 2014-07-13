@@ -1,7 +1,5 @@
 dathomir_world = {
 
-	maxSpawnLimit = 2048,
-
 	lairSpawns = {
 		{
 			lairTemplateName = "dathomir_verne_bull_lair_neutral_large",
