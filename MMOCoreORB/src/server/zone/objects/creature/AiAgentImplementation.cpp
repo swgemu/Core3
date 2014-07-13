@@ -106,6 +106,7 @@
 #include "variables/CurrentFoundPath.h"
 
 #include "server/chat/ChatManager.h"
+#include "server/zone/managers/creature/SpawnObserver.h"
 
 
 //#define SHOW_WALK_PATH
@@ -1830,6 +1831,34 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 				fullName << " " << owner->getLastName();
 
 			alm->insertAttribute("@obj_attr_n:owner", fullName.toString());
+		}
+	}
+
+	if (player->getPlayerObject() && player->getPlayerObject()->isPrivileged()) {
+		if (homeObject != NULL) {
+			int type = 0;
+			if (homeObject->getObserverCount(ObserverEventType::OBJECTDESTRUCTION) > 0)
+				type = ObserverEventType::OBJECTDESTRUCTION;
+			else if (homeObject->getObserverCount(ObserverEventType::CREATUREDESPAWNED) > 0)
+				type = ObserverEventType::CREATUREDESPAWNED;
+
+			if (type != 0) {
+				ManagedReference<SpawnObserver*> spawnObserver = NULL;
+				SortedVector<ManagedReference<Observer*> > observers = homeObject->getObservers(type);
+
+				for (int i = 0; i < observers.size(); i++) {
+					spawnObserver = cast<SpawnObserver*>(observers.get(i).get());
+					if (spawnObserver != NULL)
+						break;
+				}
+
+				if (spawnObserver) {
+					String name = spawnObserver->getLairTemplateName();
+					alm->insertAttribute("blank_entry" , "");
+					alm->insertAttribute("object_type" , name);
+					alm->insertAttribute("blank_entry" , "");
+				}
+			}
 		}
 	}
 }

@@ -72,7 +72,6 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/tool/repair/RepairTool.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
-#include "server/zone/managers/creature/LairObserver.h"
 #include "engine/engine.h"
 
 
@@ -364,21 +363,6 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 		}
 	}
 
-	if (object->getPlayerObject() && object->getPlayerObject()->isPrivileged()) {
-		ManagedReference<LairObserver*> lairObserver = NULL;
-		SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::OBJECTDESTRUCTION);
-
-		for (int i = 0; i < observers.size(); i++) {
-			lairObserver = cast<LairObserver*>(observers.get(i).get());
-			if (lairObserver != NULL)
-				break;
-		}
-
-		if (lairObserver) {
-			String name = lairObserver->getLairTemplateName();
-			alm->insertAttribute("object_type" , name);
-		}
-	}
 }
 
 void TangibleObjectImplementation::setCustomizationVariable(byte type, int16 value, bool notifyClient) {
