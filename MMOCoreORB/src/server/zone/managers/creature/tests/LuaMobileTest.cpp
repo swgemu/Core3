@@ -392,16 +392,20 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		SpawnGroup* group = spawnIterator.next();
 		std::string templateName( group->getTemplateName().toCharArray() );
 
+		Vector<String> lairTemplates;
+
 		// Verify spawn list
 		Vector<Reference<LairSpawn*> >* spawnList = group->getSpawnList();
 		for (int i = 0; i < spawnList->size(); i++) {
 			LairSpawn* spawn = spawnList->get(i);
 			std::string lairName( spawn->getLairTemplateName().toCharArray() );
 
-			// Verify lair template exists
+			// Verify lair template exists and isn't duplicated in the group
 			String lairTemplateName = spawn->getLairTemplateName();
 			Reference<LairTemplate*> lairTemplate = CreatureTemplateManager::instance()->getLairTemplate(lairTemplateName.hashCode());
 			EXPECT_TRUE( lairTemplate != NULL ) << "Lair template " << lairName << " in spawn group " << templateName << " does not exist.";
+			EXPECT_FALSE( lairTemplates.contains(lairTemplateName) ) << "Lair template " << lairName << " is duplicated in spawn group " << templateName;
+			lairTemplates.add(lairTemplateName);
 
 			// Verify spawn limit is at least -1
 			float spawnLimit = spawn->getSpawnLimit();

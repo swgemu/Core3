@@ -2,29 +2,10 @@ dantooine_world = {
 
 	lairSpawns = {
 		{
-			--Lesser Plains Bol always has level = 10 (non ch mount creature)
-			lairTemplateName = "dantooine_bol_lair_neutral_medium",
-			spawnLimit = -1,
-			minDifficulty = 10,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "dantooine_huurton_howler_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 25,
 			maxDifficulty = 25,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "dantooine_huurton_howler_lair_neutral_medium",
-			spawnLimit = -1,
-			minDifficulty = 18,
-			maxDifficulty = 18,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -112,31 +93,11 @@ dantooine_world = {
 			size = 25
 		},
 		{
-			--thune
-			lairTemplateName = "dantooine_thune_lair_neutral_medium",
-			spawnLimit = -1,
-			minDifficulty = 40,
-			maxDifficulty = 40,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			--picket_longhorn level = 37
 			lairTemplateName = "dantooine_piket_longhorn_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 37,
 			maxDifficulty = 37,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			--piket_longhorn, piket_longhorn_female, piket
-			lairTemplateName = "dantooine_piket_longhorn_lair_neutral_medium",
-			spawnLimit = -1,
-			minDifficulty = 45,
-			maxDifficulty = 45,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
