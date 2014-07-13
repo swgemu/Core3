@@ -73,7 +73,6 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 	--{"bothan_diplomat",60,-42.098,0.105009,-23.0786,180.012,3075441, "conversation", ""},
 	--{"bounty_hunter",300,-42.098,0.105009,-24.1786,0,3075441, "conversation", ""},
 	--{"commoner",60,5.6169,-0.894992,20.9629,256.55,3075433, "calm", "Zakarisz Ghent"},
-	spawnMobile("corellia", "coraline_dynes", 60,-24.3937,-0.519991,10.5457,47.741,3075439)
 	--{"corsec_commissioner",300,21.878,-0.894997,-15.7126,0,3075430, "conversation", ""},
 	--{"corsec_investigator",300,40.8822,0.104999,2.22818,0,3075427, "conversation", ""},
 	--{"corsec_sergeant",300,8.35364,-0.894992,6.38149,360.011,3075429, "conversation", ""},
