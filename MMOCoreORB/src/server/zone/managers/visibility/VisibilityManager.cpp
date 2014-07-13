@@ -66,9 +66,8 @@ void VisibilityManager::removePlayerFromBountyList(CreatureObject* creature) {
 }
 
 int VisibilityManager::calculateReward(float visibility) {
-	//Minimum reward = 25k TODO: FRS jedis should have 50 k as minimum reward.
-	//Maximum reward = 98k
-	return 25000 + (visibility - 24) * (100 + System::random(50)) + System::random(1000);
+	//Minimum reward = 25k
+	return 25000;
 }
 
 float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
@@ -146,7 +145,17 @@ void VisibilityManager::login(CreatureObject* creature) {
 		locker.release();
 
 		if (ghost->getVisibility() >= TERMINALVISIBILITYLIMIT) {
-			addPlayerToBountyList(creature, calculateReward(ghost->getVisibility()));
+			// calculateReward now returns the minimum...
+			// TODO: Readjust after FRS implementation.
+			int reward = calculateReward(ghost->getVisibility());
+
+			// Skills... Max amount for a padawan is 250000, Max jedi_difficulty is 2800.
+			int jediDifficulty = creature->getSkillMod("private_jedi_difficulty");
+			if (jediDifficulty > 0) {
+				reward = MAX((jediDifficulty * 100), 250000);
+			}
+
+			addPlayerToBountyList(creature, reward);
 		}
 	}
 }

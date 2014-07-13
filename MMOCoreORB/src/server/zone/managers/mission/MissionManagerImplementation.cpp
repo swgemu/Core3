@@ -859,7 +859,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		UnicodeString numberOfEntries = StringIdManager::instance()->getStringId(String("@" + stfFile + diffString + ":" + "number_of_entries").hashCode());
 
 		if (!numberOfEntries.isEmpty()) {
-			randTexts = Integer::valueOf(numberOfEntries.toString());
+			randTexts =  System::random(Integer::valueOf(numberOfEntries.toString()) - 1) + 1;
 		} else {
 			randTexts = System::random(randomTexts - 1) + 1;
 		}
@@ -902,8 +902,14 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 			mission->setTargetOptionalTemplate("");
 
 			ManagedReference<CreatureObject*> creature = zoneServer->getObject(target->getTargetId()).castTo<CreatureObject*>();
+			int level = 250;
+			int difficulty = creature->getSkillMod("private_jedi_difficulty");
 
-			mission->setMissionDifficulty(creature->getLevel());
+			if (difficulty > 0) {
+				level = MAX(difficulty / 10, 250);
+			}
+
+			mission->setMissionDifficulty(level);
 			mission->setRewardCredits(target->getReward());
 
 			// Set the Title, Creator, and Description of the mission.
@@ -915,7 +921,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 			UnicodeString numberOfEntries = StringIdManager::instance()->getStringId(String("@" + stfFile  + ":" + "number_of_entries").hashCode());
 
 			if (!numberOfEntries.isEmpty()) {
-				randTexts = Integer::valueOf(numberOfEntries.toString());
+				randTexts = System::random(Integer::valueOf(numberOfEntries.toString()) - 1) + 1;
 			} else {
 				randTexts = (target->getTargetId() % randomTexts) + 1;
 			}
