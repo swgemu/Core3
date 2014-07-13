@@ -124,7 +124,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	--{"pilot",60,23.1824,1.28309,9.37019,179.994,1935527, "conversation", ""},
 	--{"commoner",60,-16.9721,1,-4.12621,360.011,1935528, "conversation", ""},
 	--{"rogue_corsec_trooper",300,-16.9721,1.00014,-3.02621,180.01,1935528, "conversation", ""},
-	spawnMobile("corellia", "didina_lippinoss", 60,-8.43192,1.6,-11.42,69.197,1935530)
 	--{"commoner",60,-24,1.6,-4,354.16,1935532, "calm", "Pex (an elite storyteller vendor)"},
 
 	--Theater/Guild Hall
