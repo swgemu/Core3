@@ -24,13 +24,13 @@ didina_lippinoss = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_noble_human_female_03.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "didina_lippinoss_mission_giver_convotemplate",
 	attacks = {
 	}
 }
