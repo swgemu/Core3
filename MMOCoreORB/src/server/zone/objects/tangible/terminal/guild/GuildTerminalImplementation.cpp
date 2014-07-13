@@ -79,9 +79,13 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 	if (guildManager == NULL)
 		return TerminalImplementation::handleObjectMenuSelect(player, selectedID);
 
+	uint64 playerID = player->getObjectID();
+
 	switch (selectedID) {
 	case 69:
-		guildManager->sendGuildTransferTo(player, _this.get());
+		if (guildObject->getGuildLeaderID() == playerID || player->getPlayerObject()->isPrivileged()) {
+			guildManager->sendGuildTransferTo(player, _this.get());
+		}
 		break;
 	case 185:
 		guildManager->sendGuildCreateNameTo(player, _this.get());
@@ -110,7 +114,9 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		guildManager->sendGuildChangeNameTo(player, guildObject, _this.get());
 		break;
 	case 195:
-		guildManager->sendAcceptLotsTo(player, _this.get());
+		if ( guildObject->getGuildLeaderID() == playerID ) {
+			guildManager->sendAcceptLotsTo(player, _this.get());
+		}
 		break;
 	default:
 		TerminalImplementation::handleObjectMenuSelect(player, selectedID);
