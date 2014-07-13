@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_729a0916",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-13T08:14:45Z",
+      "side": 1,
+      "message": "You don\u0027t need this if check here. A simple int level \u003d MAX(difficult/10, 250); will work here. You can even make that the argument for setMissionDifficulty. Also, I\u0027m not sure you mean MAX. Do you want the level to be at least 250? or max out at 250?",
+      "revId": "129f73250ae2d39dab0a6397581a3eca00a598cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_92957de6",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-13T08:14:45Z",
+      "side": 1,
+      "message": "According to 5183, the payout should be 25k -\u003e 250k. This code will give at least 250k payout.",
+      "revId": "129f73250ae2d39dab0a6397581a3eca00a598cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_529f0504",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-13T08:14:45Z",
+      "side": 1,
+      "message": "which player creature? the jedi, I assume, right?",
+      "revId": "129f73250ae2d39dab0a6397581a3eca00a598cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
