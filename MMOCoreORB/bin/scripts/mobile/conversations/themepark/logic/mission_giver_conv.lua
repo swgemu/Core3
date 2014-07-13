@@ -341,5 +341,6 @@ createMissionGiverConvoTemplate("diktatGiverConvo","diktatGiverHandler")
 createMissionGiverConvoTemplate("kirkin_liawoon_mission_giver_convotemplate","kirkin_liawoon_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("chertyl_ruluwoor_mission_giver_convotemplate","chertyl_ruluwoor_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("coraline_dynes_mission_giver_convotemplate","coraline_dynes_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("corran_horn_mission_giver_convotemplate","corran_horn_mission_giver_conv_handler")
 
 

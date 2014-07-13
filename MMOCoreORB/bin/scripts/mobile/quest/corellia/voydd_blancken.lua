@@ -1,0 +1,36 @@
+voydd_blancken = Creature:new {
+	objectName = "",
+	socialGroup = "",
+	pvpFaction = "",
+	faction = "",
+	level = 23,
+	chanceHit = 0.35,
+	damageMin = 210,
+	damageMax = 220,
+	baseXp = 2219,
+	baseHAM = 5900,
+	baseHAMmax = 7200,
+	armor = 0,
+	resists = {0,20,0,-1,-1,50,50,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = KILLER,
+	optionsBitmask = 136,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_criminal_assassin_human_male_01.iff"},
+	lootGroups = {},
+	weapons = {"pirate_weapons_heavy"},
+	conversationTemplate = "corran_horn_mission_target_convotemplate",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(voydd_blancken, "voydd_blancken")

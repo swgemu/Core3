@@ -90,7 +90,6 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 
 		--Guild Hall 3182 5240
 	spawnMobile("corellia", "businessman", 60,3.32,1.13306,-8.49,228.007,3075360)
-	spawnMobile("corellia", "corran_horn", 60,-2.80228,2.5,12.1046,152.839,3075353)
 	spawnMobile("corellia", "hunter", 300,-14.01,1.13306,-8.53,120.004,3075361)
 	--{"junk_dealer",0,-14.5,1.1,2.5,88,3075358, "", "",JUNKWEAPONS,JUNKCONVARMS},
 	spawnMobile("corellia", "trainer_brawler", 0,-11,1.13306,-14,0,3075361)
