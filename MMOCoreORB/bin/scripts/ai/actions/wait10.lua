@@ -1,7 +1,6 @@
 require("ai.actions.wait")
 require("ai.interrupts")
 
---Wait10 = Wait:new {}
 Wait10Base = createClass(Wait)
 
 function Wait10Base:setWait(pAgent)

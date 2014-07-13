@@ -56,6 +56,7 @@ namespace scene {
 		int destroyObjectFromDatabase(lua_State* L);
 		int updateDirection(lua_State* L);
 		int isCreatureObject(lua_State* L);
+		int isAiAgent(lua_State* L);
 		int isPlayerCreature(lua_State* L);
 		int getZoneName(lua_State* L);
 		int sendTo(lua_State* L);

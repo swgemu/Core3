@@ -1,7 +1,6 @@
 require("ai.ai")
 require("ai.interrupts")
 
---SelectAttack = Ai:new {}
 SelectAttackBase = createClass(Ai)
 
 function SelectAttackBase:checkConditions(pAgent)

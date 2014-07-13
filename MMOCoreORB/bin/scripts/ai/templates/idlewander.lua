@@ -7,3 +7,13 @@ idlewander = {
 }
 
 addAiTemplate("idlewander", idlewander)
+
+idlewanderpack = {
+	{"idroot", "CompositePack", "none", SELECTORBEHAVIOR},
+	{"move", "CompositePack", "idroot", SEQUENCEBEHAVIOR},
+	{"patrol", "GeneratePatrolPack", "idroot", BEHAVIOR},
+	{"move0", "WalkPack", "move", BEHAVIOR},
+	{"move1", "Wait10Pack", "move", BEHAVIOR},
+}
+
+addAiTemplate("idlewanderpack", idlewanderpack)

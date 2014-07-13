@@ -1,7 +1,6 @@
 require("ai.ai")
 require("ai.interrupts")
 
---MoveBase = Ai:new {}
 MoveBase = createClass(Ai)
 
 function MoveBase:checkConditions(pAgent)
@@ -42,14 +41,6 @@ function MoveBase:findNextPosition(pAgent)
 	end
 	return false
 end
-
---[[function MoveBase:interrupt(pAgent, pObject, msg)
-	if msg == STARTCOMBAT and pAgent == pObject then
-		Ai:startCombatInterrupt(pAgent, pObject)
-	end
-	
-	return 0
-end]]
 
 Move = createClass(MoveBase, Interrupt)
 MoveDefault = createClass(MoveBase, DefaultInterrupt)

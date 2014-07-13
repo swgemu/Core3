@@ -1,6 +1,5 @@
 require("ai.ai")
 
---Composite = Ai:new {}
 CompositeBase = createClass(Ai)
 
 function CompositeBase:doAction(pAgent)

@@ -683,12 +683,12 @@ bool AiAgentImplementation::tryRetreat() {
 }
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {
+	setFollowObject(defender);
+
 	CreatureObjectImplementation::setDefender(defender);
 
 	if (isRetreating())
 		homeLocation.setReached(true);
-
-	setFollowObject(defender);
 
 	activateRecovery();
 }
@@ -699,12 +699,11 @@ void AiAgentImplementation::queueDizzyFallEvent() {
 }
 
 void AiAgentImplementation::addDefender(SceneObject* defender) {
-	if (defenderList.size() == 0)
+	if (defenderList.size() == 0 && defender != NULL) {
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
-
-	if(followState <= STALKING) {
+		setFollowObject(defender);
+	} else if (followState <= STALKING) {
 		followState = FOLLOWING;
-		setDestination();
 	}
 
 	CreatureObjectImplementation::addDefender(defender);
@@ -726,7 +725,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 
 		if (target == NULL && defenderList.size() > 0) {
 			SceneObject* tarObj = defenderList.get(0);
-			if (tarObj->isCreatureObject())
+			if (tarObj != NULL && tarObj->isCreatureObject())
 				target = cast<CreatureObject*>(tarObj);
 		}
 
@@ -2243,7 +2242,6 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 	behaviors.put("attackSequence", attackSequence);
 
 	resetBehaviorList();
-	setCurrentBehavior(String("root"));
 
 	//info(behaviors.get(currentBehaviorID)->print(), true);
 }
@@ -2300,8 +2298,15 @@ void AiAgentImplementation::addCurrentBehaviorToTree(CompositeBehavior* par) {
  * move the tree back to the root node
  */
 void AiAgentImplementation::resetBehaviorList() {
-	currentBehaviorID = "root";
 	Behavior* b = behaviors.get(currentBehaviorID);
+	if (b != NULL)
+		b->end();
+
+	currentBehaviorID = "root";
+	b = behaviors.get(currentBehaviorID);
+	if (b == NULL)
+		return;
+
 	b->setStatus(AiMap::SUSPEND);
 
 	stopWaiting();

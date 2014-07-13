@@ -1,7 +1,6 @@
 require("ai.ai")
 require("ai.interrupts")
 
---SelectWeapon = Ai:new {}
 SelectWeaponBase = createClass(Ai)
 
 function SelectWeaponBase:checkConditions(pAgent)

@@ -1,7 +1,6 @@
 require("ai.ai")
 require("ai.interrupts")
 
---Wait = Ai:new {}
 WaitBase = createClass(Ai)
 
 function WaitBase:start(pAgent)
@@ -36,14 +35,6 @@ function WaitBase:setWait(pAgent)
 		agent:setWait(-1)
 	end
 end
-
---[[function Wait:interrupt(pAgent, pObject, msg)
-	if msg == STARTCOMBAT and pAgent == pObject then
-		Ai:startCombatInterrupt(pAgent, pObject)
-	end
-	
-	return 0
-end]]
 
 Wait = createClass(WaitBase, Interrupt)
 WaitDefault = createClass(WaitBase, DefaultInterrupt)

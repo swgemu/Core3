@@ -12,7 +12,6 @@ end
 DefaultInterrupt = createClass(Interrupt)
 function DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
 	if (pAgent ~= pObject) then return end
-	self:terminate(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
@@ -23,15 +22,24 @@ end
 
 PackInterrupt = createClass(DefaultInterrupt)
 function PackInterrupt:startCombatInterrupt(pAgent, pObject)
-	if (pAgent ~= pObject) then 
-		self:terminate(pAgent)
-		if (pAgent ~= nil) then
+	if (pAgent ~= pObject) then
+		if (pAgent ~= nil and pObject ~= nil) then
 			local agent = LuaAiAgent(pAgent)
-			-- TODO (dannuic): change the range to calculate based on level difference an ferocity
+			local scno = LuaSceneObject(pObject)
+			if scno:isAiAgent() then
+				local source = LuaAiAgent(pObject)
+				if source:getSocialGroup() ~= agent:getSocialGroup() then
+					return
+				end
+			end
+			
+			-- if the source is not an AiAgent (like a lair) then don't check social group
+			-- TODO (dannuic): change the range to calculate based on level difference and ferocity
 			if agent:checkRange(pObject, 15) then
 				agent:assist(pObject)
 			end
 		end
 	end
+	
 	DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
 end

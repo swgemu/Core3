@@ -20,8 +20,9 @@ combatMove = {
 }
 
 idle = {
-	{NONE, "idlewander"},
 	{STATIC, "idlewait"},
+	{PACK, "idlewanderpack"},
+	{NONE, "idlewander"},
 }
 
 addAiBehavior("Composite")

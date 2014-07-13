@@ -77,6 +77,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "addDefender", &LuaAiAgent::addDefender },
 		{ "assist", &LuaAiAgent::assist },
 		{ "checkRange", &LuaAiAgent::checkRange },
+		{ "broadcastInterrupt", &LuaAiAgent::broadcastInterrupt },
+		{ "getSocialGroup", &LuaAiAgent::getSocialGroup },
 		{ 0, 0 }
 };
 
@@ -501,3 +503,18 @@ int LuaAiAgent::checkRange(lua_State* L) {
 	return 1;
 }
 
+int LuaAiAgent::broadcastInterrupt(lua_State* L) {
+	float msg = lua_tointeger(L, -1);
+
+	realObject->broadcastInterrupt(msg);
+
+	return 0;
+}
+
+int LuaAiAgent::getSocialGroup(lua_State* L) {
+	String socGroup = realObject->getSocialGroup();
+
+	lua_pushstring(L, socGroup.toCharArray());
+
+	return 1;
+}

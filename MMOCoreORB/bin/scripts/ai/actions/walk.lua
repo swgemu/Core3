@@ -1,7 +1,6 @@
 require("ai.actions.move")
 require("ai.interrupts")
 
---Walk = Move:new {}
 WalkBase = createClass(MoveBase)
 
 -- overrides so that we walk instead of run

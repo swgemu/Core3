@@ -1,7 +1,6 @@
 require("ai.actions.move")
 require("ai.interrupts")
 
---CombatMove = Move:new {}
 CombatMoveBase = createClass(Move)
 
 function CombatMoveBase:doAction(pAgent)
@@ -13,6 +12,7 @@ function CombatMoveBase:doAction(pAgent)
 		end
 		
 		self:findNextPosition(pAgent)
+		agent:broadcastInterrupt(STARTCOMBAT)
 		return BEHAVIOR_SUCCESS
 	end
 	return BEHAVIOR_FAILURE

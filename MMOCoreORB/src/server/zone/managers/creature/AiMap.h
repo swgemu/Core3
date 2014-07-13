@@ -202,17 +202,16 @@ private:
 	Reference<AiTemplate*> getTemplate(unsigned int bitMask, HashTable<unsigned int, Reference<AiTemplate*> > table) {
 		HashTableIterator<unsigned int, Reference<AiTemplate*> > iter = table.iterator();
 
-		unsigned int key;
-		Reference<AiTemplate*> val;
+		unsigned int finalKey = CreatureFlag::NONE;
 
 		while (iter.hasNext()) {
-			iter.getNextKeyAndValue(key, val);
+			unsigned int key = iter.getNextKey();
 
-			if ((key & bitMask) == key)
-				return table.get(key);
+			if ((key & bitMask) == key && finalKey < key)
+				finalKey = key;
 		}
 
-		return table.get(CreatureFlag::NONE); // this is the default template, but the flow shouldn't get here because 0 & anything == 0
+		return table.get(finalKey);
 	}
 
 	static int includeFile(lua_State* L) {
