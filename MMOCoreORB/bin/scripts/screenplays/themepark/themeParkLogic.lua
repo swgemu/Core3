@@ -565,6 +565,12 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 						writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
 					end)
 				end)
+			elseif mission.missionType == "escort" then
+				ObjectManager.withCreatureObject(pNpc, function(npc)
+					ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+						writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+					end)
+				end)
 			end
 		end
 	end
@@ -725,7 +731,7 @@ function ThemeParkLogic:getMissionPreReq(pPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
 	local mission = self:getMission(npcNumber, missionNumber)
 	local preReq = mission.preReq
-	
+
 	if preReq == nil or preReq == "" then
 		return 0
 	else
@@ -977,6 +983,54 @@ function ThemeParkLogic:getDefaultWaypointName(pConversingPlayer, direction)
 	end
 end
 
+function ThemeParkLogic:createEscortReturnArea(pNpc, pPlayer)
+	ObjectManager.withCreatureObject(pPlayer, function(player)
+		local playerID = player:getObjectID()
+		local npcNumber = self:getActiveNpcNumber(pPlayer)
+		local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
+		local stfFile = self:getStfFile(npcNumber)
+
+		local npcData = self.npcMap[npcNumber]
+		if (self:isValidConvoString(stfFile, ":npc_dropoff_" .. missionNumber)) then
+			local pEscortArea = spawnSceneObject(npcData.spawnData.planetName, "object/active_area.iff", npcData.spawnData.x, npcData.spawnData.z, npcData.spawnData.y, 0, 0, 0, 0, 0)
+			ObjectManager.withActiveArea(pEscortArea, function(activeArea)
+				activeArea:setRadius(10)
+				createObserver(ENTEREDAREA, self.className, "notifyEnteredEscortArea", pEscortArea)
+				ObjectManager.withCreatureObject(pNpc, function(escortNpc)
+					writeData(activeArea:getObjectID() .. ":escortNpcID", escortNpc:getObjectID())
+				end)
+			end)
+		end
+	end)
+end
+
+function ThemeParkLogic:notifyEnteredEscortArea(pActiveArea, pCreature)
+	ObjectManager.withActiveArea(pActiveArea, function(activeArea)
+		ObjectManager.withCreatureObject(pCreature, function(creature)
+			local objectID = creature:getObjectID()
+			local escortNpcID = readData(activeArea:getObjectID() .. ":escortNpcID")
+			if (objectID == escortNpcID) then
+				local ownerID = readData(escortNpcID .. ":missionOwnerID")
+				local pPlayer = getCreatureObject(ownerID)
+				
+				if (pPlayer == nil) then
+					return 0
+				end
+				
+				local npcNumber = self:getActiveNpcNumber(pPlayer)
+				local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
+				local stfFile = self:getStfFile(npcNumber)
+				spatialChat(pCreature, stfFile .. ":npc_dropoff_" .. missionNumber)
+				deleteData(activeArea:getObjectID() .. ":escortNpcID")
+				ObjectManager.withSceneObject(pActiveArea, function(activeArea)
+					activeArea:destroyObjectFromWorld()
+				end)
+			end
+		end)
+	end)
+	return 0
+end
+
 function ThemeParkLogic:updateWaypoint(pConversingPlayer, planetName, x, y, direction)
 	if pConversingPlayer ~= nil then
 		local creature = LuaCreatureObject(pConversingPlayer)
@@ -1032,9 +1086,9 @@ end
 function ThemeParkLogic:hasEliteCombatProfession(pPlayer)
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		if player:hasSkill("combat_1hsword_novice") or player:hasSkill("combat_2hsword_novice") or player:hasSkill("combat_bountyhunter_novice") or player:hasSkill("combat_carbine_novice")
-			or player:hasSkill("combat_commando_novice") or player:hasSkill("combat_pistol_novice") or player:hasSkill("combat_polearm_novice") or player:hasSkill("combat_rifleman_novice") 
-				or player:hasSkill("combat_smuggler_novice") or player:hasSkill("combat_unarmed_novice") or player:hasSkill("science_combatmedic_novice") then
-					return true
+			or player:hasSkill("combat_commando_novice") or player:hasSkill("combat_pistol_novice") or player:hasSkill("combat_polearm_novice") or player:hasSkill("combat_rifleman_novice")
+			or player:hasSkill("combat_smuggler_novice") or player:hasSkill("combat_unarmed_novice") or player:hasSkill("science_combatmedic_novice") then
+			return true
 		else
 			return false
 		end
@@ -1179,7 +1233,7 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local stfFile = self:getStfFile(npcNumber)
-	
+
 	if self.missionCompletionMessageStf ~= "" then
 		creature:sendSystemMessage(self.missionCompletionMessageStf)
 	elseif self:isValidConvoString(stfFile, ":return_waypoint_description_" .. missionNumber) then

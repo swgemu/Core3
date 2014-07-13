@@ -163,6 +163,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 		end
 	elseif mission.missionType == "escort" then
 		if correctNpc == true then
+			self.themePark:createEscortReturnArea(pConversingNpc, pConversingPlayer)
 			self.themePark:followPlayer(pConversingNpc, pConversingPlayer)
 			self.themePark:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
 			nextScreenID = "npc_takeme_n"
