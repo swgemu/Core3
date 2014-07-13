@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_92c7bd12",
+        "filename": "MMOCoreORB/src/server/zone/managers/visibility/VisibilityManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-13T07:19:00Z",
+      "side": 1,
+      "message": "Change calculateReward() to require a CreatureObject* be passed instead of a float. Then move all of this into calculateReward().",
+      "revId": "242bc150761545fa9dd20005af439b20f96aad1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
