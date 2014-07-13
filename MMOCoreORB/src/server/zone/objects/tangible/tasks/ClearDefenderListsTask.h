@@ -25,7 +25,7 @@ public:
 		for (int i = 0; i < defenderList.size(); ++i) {
 			SceneObject* defender = defenderList.get(i);
 
-			if (!defender->isTangibleObject())
+			if (defender == NULL || !defender->isTangibleObject())
 				continue;
 
 			Locker clocker(defender, tangibleObject);
