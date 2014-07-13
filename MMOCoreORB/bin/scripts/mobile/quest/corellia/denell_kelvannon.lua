@@ -24,13 +24,13 @@ denell_kelvannon = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_denell_kelvannon.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "denell_kel_vannon_mission_giver_convotemplate",
 	attacks = {
 	}
 }

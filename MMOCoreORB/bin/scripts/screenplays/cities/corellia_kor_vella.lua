@@ -441,7 +441,6 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "eryk_chinn", 60, -3145.32, 31, 2803.95, 208.286, 0)
 	spawnMobile("corellia", "gilker_budz", 60, -3336.21, 72.4231, 2926.19, 277.144, 0)
 	spawnMobile("corellia", "logro_elsin", 60, -3144.67, 31, 2806.06, 174, 0)
-	spawnMobile("corellia", "denell_kelvannon", 60, -3414.11, 74, 3336.52, 28, 0)
 
 	--Building Interriors
 		--Starport
