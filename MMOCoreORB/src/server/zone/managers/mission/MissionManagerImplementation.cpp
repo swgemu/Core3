@@ -902,8 +902,14 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 			mission->setTargetOptionalTemplate("");
 
 			ManagedReference<CreatureObject*> creature = zoneServer->getObject(target->getTargetId()).castTo<CreatureObject*>();
+			int level = 250;
+			int difficulty = creature->getSkillMod("private_jedi_difficulty");
 
-			mission->setMissionDifficulty(creature->getLevel());
+			if (difficulty > 0) {
+				level = MAX(difficulty / 10, 250);
+			}
+
+			mission->setMissionDifficulty(level);
 			mission->setRewardCredits(target->getReward());
 
 			// Set the Title, Creator, and Description of the mission.

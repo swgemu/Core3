@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "VisibilityManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
@@ -65,10 +65,17 @@ void VisibilityManager::removePlayerFromBountyList(CreatureObject* creature) {
 	//info("Dropping player " + String::valueOf(creature->getObjectID()) + " from bounty hunter list.", true);
 }
 
-int VisibilityManager::calculateReward(float visibility) {
-	//Minimum reward = 25k TODO: FRS jedis should have 50 k as minimum reward.
-	//Maximum reward = 98k
-	return 25000 + (visibility - 24) * (100 + System::random(50)) + System::random(1000);
+int VisibilityManager::calculateReward(CreatureObject* creature) {
+	//Minimum reward = 25k
+	int reward = 25000;
+
+	// Skills... Max amount for a padawan is 250000, Max jedi_difficulty is 2800.
+	int jediDifficulty = creature->getSkillMod("private_jedi_difficulty");
+	if (jediDifficulty > 0) {
+		reward += MAX((jediDifficulty * 100), 225000);
+	}
+
+	return reward;
 }
 
 float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
@@ -146,7 +153,9 @@ void VisibilityManager::login(CreatureObject* creature) {
 		locker.release();
 
 		if (ghost->getVisibility() >= TERMINALVISIBILITYLIMIT) {
-			addPlayerToBountyList(creature, calculateReward(ghost->getVisibility()));
+			// TODO: Readjust after FRS implementation.
+			int reward = calculateReward(creature);
+			addPlayerToBountyList(creature, reward);
 		}
 	}
 }
@@ -167,7 +176,7 @@ void VisibilityManager::increaseVisibility(CreatureObject* creature) {
 	//info("Increasing visibility for " + creature->getFirstName(), true);
 	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-	 if (ghost != NULL && !ghost->isPrivileged()) {
+	if (ghost != NULL && !ghost->isPrivileged()) {
 		Locker locker(ghost);
 		decreaseVisibility(creature);
 		ghost->setVisibility(ghost->getVisibility() + calculateVisibilityIncrease(creature));

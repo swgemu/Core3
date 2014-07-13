@@ -109,10 +109,10 @@ class VisibilityManager : public Singleton<VisibilityManager>, public Logger, pu
 
 	/**
 	 * Calculate/generate a reward for the player bounty.
-	 * @param visibility the visibility of the player.
+	 * @param creature the player creature.
 	 * @return calculated/generated reward.
 	 */
-	int calculateReward(float visibility);
+	int calculateReward(CreatureObject* creature);
 
 	/**
 	 * Calculates the visibility increase for the player depending on the number
