@@ -72,7 +72,7 @@ int VisibilityManager::calculateReward(CreatureObject* creature) {
 	// Skills... Max amount for a padawan is 250000, Max jedi_difficulty is 2800.
 	int jediDifficulty = creature->getSkillMod("private_jedi_difficulty");
 	if (jediDifficulty > 0) {
-		reward += MAX((jediDifficulty * 100), 225000);
+		reward += MIN((jediDifficulty * 100), 225000);
 	}
 
 	return reward;

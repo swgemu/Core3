@@ -885,30 +885,22 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 		if (target != NULL) {
 			mission->setTargetObjectId(target->getTargetId());
-
-			ZoneServer* zoneServer = player->getZoneServer();
-			if (zoneServer != NULL) {
-				ManagedReference<CreatureObject*> creature = zoneServer->getObject(target->getTargetId()).castTo<CreatureObject*>();
-
-				if (creature != NULL) {
-					String name = creature->getFirstName() + " " + creature->getLastName();
-					name = name.trim();
-					mission->setMissionTargetName(name);
-				}
-			}
-
 			mission->setEndPosition(0, 0, "", true);
-
 			mission->setTargetOptionalTemplate("");
 
-			ManagedReference<CreatureObject*> creature = zoneServer->getObject(target->getTargetId()).castTo<CreatureObject*>();
-			int level = 250;
-			int difficulty = creature->getSkillMod("private_jedi_difficulty");
+			ManagedReference<CreatureObject*> creature = server->getObject(target->getTargetId()).castTo<CreatureObject*>();
+			int level = 0;
+			String name = "";
 
-			if (difficulty > 0) {
-				level = MAX(difficulty / 10, 250);
+			if (creature != NULL) {
+				name = creature->getFirstName() + " " + creature->getLastName();
+				name = name.trim();
+
+				int difficulty = creature->getSkillMod("private_jedi_difficulty");
+				level = MIN(difficulty / 10, 250);
 			}
 
+			mission->setMissionTargetName(name);
 			mission->setMissionDifficulty(level);
 			mission->setRewardCredits(target->getReward());
 
