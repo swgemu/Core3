@@ -1002,6 +1002,7 @@ int DirectorManager::spatialChat(lua_State* L) {
 		String message = lua_tostring(L, -1);
 
 		if (creature != NULL) {
+			Locker locker(creature);
 			chatManager->broadcastMessage(creature, message, 0, 0, 0);
 		}
 	}
