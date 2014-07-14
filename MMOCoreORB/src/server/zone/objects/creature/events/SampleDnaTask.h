@@ -170,6 +170,7 @@ public:
 						creature->setDnaState(CreatureManager::DNASAMPLED);
 					}
 					if (aggro) {
+						crosslocker.release();
 						CombatManager::instance()->startCombat(creature,player,true);
 					}
 					if (death) {
@@ -178,6 +179,7 @@ public:
 				} else {
 					player->sendSystemMessage("@bio_engineer:harvest_dna_failed");
 					if (aggro) {
+						crosslocker.release();
 						CombatManager::instance()->startCombat(creature,player,true);
 					}
 				}

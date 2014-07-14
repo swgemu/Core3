@@ -41,13 +41,10 @@ public:
 		}
 
 		// TODO: allow non-player targets when Ai vs Ai combat is enabled
-		Reference<SceneObject*> targetObject = server->getZoneServer()->getObject(target, true).castTo<SceneObject*>();
-		if (targetObject == NULL || !targetObject->isPlayerCreature() ) {
+		Reference<TangibleObject*> targetObject = server->getZoneServer()->getObject(target, true).castTo<TangibleObject*>();
+		if (targetObject == NULL || !targetObject->isAttackableBy(pet) ) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-			ManagedReference<CreatureObject*> player = pet->getLinkedCreature().get();
-			if (player != NULL)
-				player->sendSystemMessage("Pets may only attack players right now.");
-			return GENERALERROR;
+			return INVALIDTARGET;
 		}
 
 		ManagedReference<TangibleObject*> targetTano = targetObject.castTo<TangibleObject*>();

@@ -77,6 +77,7 @@ public:
 				this->reschedule(10000);
 			} else {
 				updateMilkState(CreatureManager::NOTMILKED);
+				_clocker.release();
 				CombatManager::instance()->startCombat(creature, player, true);
 			}
 			break;
@@ -86,6 +87,7 @@ public:
 				giveMilkToPlayer();
 			} else {
 				updateMilkState(CreatureManager::NOTMILKED);
+				_clocker.release();
 				CombatManager::instance()->startCombat(creature, player, true);
 			}
 			break;

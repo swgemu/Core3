@@ -2541,8 +2541,8 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object){
 	if(object->isCreatureObject())
 		return isAttackableBy(cast<CreatureObject*>(object));
 
-	// if you want to allow minefields to attack NPC
-	if(this->isAiAgent()){
+	// TODO (dannuic): this will prevent TANOs from attacking mobs (turrets, minefields, etc)
+	if(this->isAiAgent()) {
 		return false;
 	}
 
@@ -2590,10 +2590,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 			if (owner == NULL)
 				return false;
 
-			if (isPlayerCreature()) // TODO: remove player check once Ai vs. Ai combat is enabled
-				return isAttackableBy(owner);
-			else
-				return false;
+			return isAttackableBy(owner);
 		}
 
 		if(!object->isRebel() && !object->isImperial())
@@ -2601,7 +2598,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 
 		if(getFaction() == 0 || getFaction() == object->getFaction())
 			return false;
-		else if (isPlayerCreature()){
+		else if (isPlayerCreature()) {
 
 			if(getPlayerObject() == NULL || getPlayerObject()->getFactionStatus() == FactionStatus::ONLEAVE)
 				return false;

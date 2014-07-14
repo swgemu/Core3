@@ -474,9 +474,6 @@ class AiAgent extends CreatureObject {
 		
 		if (isDead())
 			return false;
-		
-		if (object.isAiAgent())
-			return false;
 
 		if (isPet()) {
 			CreatureObject owner = getLinkedCreature();
@@ -484,10 +481,7 @@ class AiAgent extends CreatureObject {
 			if (owner == null)
 				return false;
 
-			if (object.isPlayerCreature()) // TODO: remove player check once Ai vs. Ai combat is enabled
-				return owner.isAttackableBy(object);
-			else
-				return false;
+			return owner.isAttackableBy(object);
 		}
 
 		if (super.pvpStatusBitmask == 0)
@@ -907,7 +901,7 @@ class AiAgent extends CreatureObject {
 	public native void setCombatState();
 	
 	public int getCreatureBitmask() {
-		creatureBitmask;
+		return creatureBitmask;
 	}
 	
 	public void setCreatureBitmask(int mask) {

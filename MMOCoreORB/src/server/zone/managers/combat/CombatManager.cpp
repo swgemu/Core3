@@ -60,8 +60,8 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 
 	if (attacker->isPlayerCreature() && attacker->getPlayerObject()->isAFK())
 		return false;
-	// this is redundant (happens again in set/addDefender)
-	//attacker->clearState(CreatureState::PEACE);
+
+	attacker->clearState(CreatureState::PEACE);
 
 	Locker clocker(defender, attacker);
 

@@ -42,7 +42,6 @@ public:
 			return;
 
 		Locker lock(sceneObject);
-		Locker lockv(target, sceneObject);
 
 		if(turretData->getTarget() == NULL && target != NULL)
 			turretData->setTarget(cast<CreatureObject*>(target.get()));
