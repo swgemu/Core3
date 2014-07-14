@@ -32,7 +32,7 @@ reclusive_cavern_spider = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareaattack",""},
+		{"creatureareattack",""},
 		{"strongpoison",""}
 	}
 }

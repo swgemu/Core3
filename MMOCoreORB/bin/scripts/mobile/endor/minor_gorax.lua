@@ -41,7 +41,7 @@ minor_gorax = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareaattack",""}
+		{"creatureareattack",""}
 	}
 }
 

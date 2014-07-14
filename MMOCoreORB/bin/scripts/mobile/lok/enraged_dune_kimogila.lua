@@ -40,7 +40,7 @@ enraged_dune_kimogila = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"blindattack","blindChance=50"},
-		{"creatureareaattack",""}
+		{"creatureareattack",""}
 	}
 }
 

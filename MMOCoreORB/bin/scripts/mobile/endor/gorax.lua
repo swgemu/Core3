@@ -40,7 +40,7 @@ gorax = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareaattack",""},
+		{"creatureareattack",""},
 		{"creatureareaknockdown","knockdownChance=50"}
 	}
 }

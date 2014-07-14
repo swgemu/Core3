@@ -50,7 +50,7 @@ krayt_dragon_adolescent = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareaattack",""},
+		{"creatureareattack",""},
 		{"posturedownattack","postureDownChance=50"},
 		{"stunattack","stunChance=50"}
 	}

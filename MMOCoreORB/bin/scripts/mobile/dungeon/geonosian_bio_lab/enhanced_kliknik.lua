@@ -39,7 +39,7 @@ enhanced_kliknik = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareaattack",""},
+		{"creatureareattack",""},
 		{"stunattack","stunChance=50"}
 	}
 }
