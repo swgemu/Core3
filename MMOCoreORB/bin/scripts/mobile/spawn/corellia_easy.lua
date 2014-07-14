@@ -26,7 +26,7 @@ corellia_easy = {
 			maxDifficulty = 9,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_selonian_patrol_neutral_none",
@@ -35,7 +35,7 @@ corellia_easy = {
 			maxDifficulty = 9,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_meatlump_camp_neutral_medium_theater",
@@ -44,7 +44,7 @@ corellia_easy = {
 			maxDifficulty = 9,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 25
+			size = 20
 		},
 		{
 			lairTemplateName = "corellia_afarathu_cult_outpost_neutral_medium",
@@ -53,7 +53,7 @@ corellia_easy = {
 			maxDifficulty = 9,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_corellian_butterfly_drone_large_neutral_none",
@@ -71,7 +71,7 @@ corellia_easy = {
 			maxDifficulty = 10,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_greck_base_neutral_large_theater",
@@ -80,7 +80,7 @@ corellia_easy = {
 			maxDifficulty = 10,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 35
+			size = 30
 		},
 		{
 			lairTemplateName = "corellia_vrelt_lair_neutral_small",
@@ -234,7 +234,7 @@ corellia_easy = {
 			maxDifficulty = 12,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_meatlump_outpost_neutral_medium_theater",
@@ -243,7 +243,7 @@ corellia_easy = {
 			maxDifficulty = 12,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_slice_hound_pack_neutral_none",

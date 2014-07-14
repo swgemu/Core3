@@ -26,7 +26,7 @@ corellia_world = {
 			maxDifficulty = 9,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_selonian_patrol_neutral_none",
@@ -35,7 +35,7 @@ corellia_world = {
 			maxDifficulty = 9,
 			numberToSpawn = 0,
 			weighting = 7,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_meatlump_camp_neutral_medium_theater",
@@ -44,7 +44,7 @@ corellia_world = {
 			maxDifficulty = 9,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
+			size = 20
 		},
 		{
 			lairTemplateName = "corellia_afarathu_cult_outpost_neutral_medium",
@@ -53,7 +53,7 @@ corellia_world = {
 			maxDifficulty = 9,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_corellian_butterfly_drone_large_neutral_none",
@@ -71,7 +71,7 @@ corellia_world = {
 			maxDifficulty = 10,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_greck_base_neutral_large_theater",
@@ -80,7 +80,7 @@ corellia_world = {
 			maxDifficulty = 10,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 35
+			size = 30
 		},
 		{
 			lairTemplateName = "corellia_vrelt_lair_neutral_small",
@@ -134,7 +134,7 @@ corellia_world = {
 			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 7,
-			size = 35
+			size = 30
 		},
 		{
 			lairTemplateName = "corellia_vrelt_pack_neutral_none",
@@ -251,7 +251,7 @@ corellia_world = {
 			maxDifficulty = 12,
 			numberToSpawn = 0,
 			weighting = 7,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_meatlump_outpost_neutral_medium_theater",
@@ -260,7 +260,7 @@ corellia_world = {
 			maxDifficulty = 12,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_slice_hound_pack_neutral_none",
@@ -350,7 +350,7 @@ corellia_world = {
 			maxDifficulty = 17,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_drall_camp_neutral_medium_theater",
@@ -359,7 +359,7 @@ corellia_world = {
 			maxDifficulty = 22,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
+			size = 20
 		},
 		{
 			lairTemplateName = "corellia_hidden_daggers_camp_neutral_medium_theater",
@@ -368,7 +368,7 @@ corellia_world = {
 			maxDifficulty = 13,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
+			size = 20
 		},
 		{
 			lairTemplateName = "corellia_vynock_lair_neutral_small",
@@ -440,7 +440,7 @@ corellia_world = {
 			maxDifficulty = 18,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_dalyrake_pack_neutral_none",
@@ -458,7 +458,7 @@ corellia_world = {
 			maxDifficulty = 23,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 35
+			size = 30
 		},
 		{
 			lairTemplateName = "corellia_razor_cat_cub_hunt_neutral_none",
@@ -656,7 +656,7 @@ corellia_world = {
 			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 7,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_monumenter_base_neutral_medium_theater",
@@ -665,7 +665,7 @@ corellia_world = {
 			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_drall_patriot_camp_neutral_medium_theater",
@@ -674,7 +674,7 @@ corellia_world = {
 			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 25
+			size = 20
 		},
 		{
 			lairTemplateName = "corellia_afarathu_cult_patrol_neutral_none",
@@ -683,7 +683,7 @@ corellia_world = {
 			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_tabage_lair_neutral_medium",
@@ -701,7 +701,7 @@ corellia_world = {
 			maxDifficulty = 20,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 35
+			size = 30
 		},
 		{
 			lairTemplateName = "corellia_monumenter_smuggler_patrol_neutral_none",
@@ -710,7 +710,7 @@ corellia_world = {
 			maxDifficulty = 16,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_corsec_patrol_neutral_none",
@@ -719,7 +719,7 @@ corellia_world = {
 			maxDifficulty = 16,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_wrix_pack_neutral_none",
@@ -791,7 +791,7 @@ corellia_world = {
 			maxDifficulty = 21,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 25
+			size = 20
 		},
 		{
 			lairTemplateName = "corellia_violent_krahbu_lair_neutral_medium",
@@ -863,7 +863,7 @@ corellia_world = {
 			maxDifficulty = 22,
 			numberToSpawn = 0,
 			weighting = 7,
-			size = 35
+			size = 30
 		},
 		{
 			lairTemplateName = "corellia_gronda_lair_neutral_large",
@@ -935,7 +935,7 @@ corellia_world = {
 			maxDifficulty = 23,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_corsec_outpost_neutral_medium_theater",
@@ -944,7 +944,7 @@ corellia_world = {
 			maxDifficulty = 28,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_flail_cut_throat_patrol_neutral_none",
@@ -953,7 +953,7 @@ corellia_world = {
 			maxDifficulty = 19,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_corsec_truthfinder_neutral_none",
@@ -962,7 +962,7 @@ corellia_world = {
 			maxDifficulty = 19,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_afarathu_cult_outpost_neutral_medium_theater",
@@ -971,7 +971,7 @@ corellia_world = {
 			maxDifficulty = 19,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_dalyrake_nest_neutral_medium",
@@ -998,7 +998,7 @@ corellia_world = {
 			maxDifficulty = 20,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_beldonna_patrol_neutral_none",
@@ -1007,7 +1007,7 @@ corellia_world = {
 			maxDifficulty = 20,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_forest_slice_hound_pack_neutral_none",
@@ -1034,7 +1034,7 @@ corellia_world = {
 			maxDifficulty = 25,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_beldonna_base_neutral_large_theater",
@@ -1043,7 +1043,7 @@ corellia_world = {
 			maxDifficulty = 30,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 35
+			size = 30
 		},
 		{
 			lairTemplateName = "corellia_tabage_pack_neutral_none",
@@ -1097,7 +1097,7 @@ corellia_world = {
 			maxDifficulty = 22,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_giant_dalyrake_pack_neutral_none",
@@ -1178,7 +1178,7 @@ corellia_world = {
 			maxDifficulty = 32,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 35
+			size = 30
 		},
 		{
 			lairTemplateName = "corellia_swamp_humbaba_lair_neutral_medium",
@@ -1205,7 +1205,7 @@ corellia_world = {
 			maxDifficulty = 29,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_greater_gulginaw_nest_neutral_medium",
@@ -1286,7 +1286,7 @@ corellia_world = {
 			maxDifficulty = 34,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 35
+			size = 30
 		},
 		{
 			lairTemplateName = "corellia_crimson_sand_panther_pride_neutral_medium",

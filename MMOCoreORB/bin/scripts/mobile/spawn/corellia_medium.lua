@@ -8,7 +8,7 @@ corellia_medium = {
 			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 35
+			size = 30
 		},
 		{
 			lairTemplateName = "corellia_vrelt_pack_neutral_none",
@@ -26,7 +26,7 @@ corellia_medium = {
 			maxDifficulty = 17,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 
 		{
@@ -36,7 +36,7 @@ corellia_medium = {
 			maxDifficulty = 13,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 25
+			size = 20
 		},
 		{
 			lairTemplateName = "corellia_vynock_lair_neutral_small",
@@ -108,7 +108,7 @@ corellia_medium = {
 			maxDifficulty = 18,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_dalyrake_pack_neutral_none",
@@ -316,7 +316,7 @@ corellia_medium = {
 			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_monumenter_base_neutral_medium_theater",
@@ -325,7 +325,7 @@ corellia_medium = {
 			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_drall_patriot_camp_neutral_medium_theater",
@@ -334,7 +334,7 @@ corellia_medium = {
 			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 25
+			size = 20
 		},
 		{
 			lairTemplateName = "corellia_afarathu_cult_patrol_neutral_none",
@@ -343,7 +343,7 @@ corellia_medium = {
 			maxDifficulty = 15,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_tabage_lair_neutral_medium",
@@ -362,7 +362,7 @@ corellia_medium = {
 			maxDifficulty = 16,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_corsec_patrol_neutral_none",
@@ -371,7 +371,7 @@ corellia_medium = {
 			maxDifficulty = 16,
 			numberToSpawn = 0,
 			weighting = 10,
-			size = 30
+			size = 25
 		},
 		{
 			lairTemplateName = "corellia_wrix_pack_neutral_none",
