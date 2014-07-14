@@ -462,6 +462,8 @@ int LuaAiAgent::spatialChat(lua_State* L) {
 int LuaAiAgent::setDefender(lua_State* L) {
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setDefender(obj);
 
 	return 0;
@@ -469,6 +471,8 @@ int LuaAiAgent::setDefender(lua_State* L) {
 
 int LuaAiAgent::addDefender(lua_State* L) {
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+
+	Locker locker(realObject);
 
 	realObject->addDefender(obj);
 
