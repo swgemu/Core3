@@ -24,6 +24,7 @@ public:
 
 		pet->setOblivious();
 
+		Locker locker(pet);
 		pet->interrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 
 		return SUCCESS;

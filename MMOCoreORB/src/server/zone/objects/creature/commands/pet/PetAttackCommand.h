@@ -56,6 +56,7 @@ public:
 
 		combatManager->startCombat(pet, targetTano);
 
+		Locker locker(pet);
 		pet->interrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 
 		return SUCCESS;
