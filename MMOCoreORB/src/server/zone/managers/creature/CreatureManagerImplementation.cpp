@@ -912,9 +912,7 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 
 	if (creature->isAiAgent()) {
 		AiAgent* agent = cast<AiAgent*>(creature);
-		agent->clearBehaviorList();
-		agent->setupBehaviorTree(AiMap::instance()->getTemplate("wait"));
-		agent->activateMovementEvent();
+		agent->activateLoad("wait");
 	}
 
 	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force);

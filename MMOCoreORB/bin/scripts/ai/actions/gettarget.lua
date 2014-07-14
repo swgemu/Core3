@@ -33,6 +33,8 @@ function GetTargetBase:doAction(pAgent)
 			else
 				agent:removeDefender()
 			end
+		elseif pTarget ~= nil then
+			return BEHAVIOR_SUCCESS
 		end
 
 		pTarget = agent:getTargetFromDefenders()
@@ -44,6 +46,8 @@ function GetTargetBase:doAction(pAgent)
 			else
 				agent:removeDefender()
 			end
+		elseif pTarget ~= nil then
+			return BEHAVIOR_SUCCESS
 		end
 	end
 	return BEHAVIOR_FAILURE
@@ -66,6 +70,8 @@ function GetTargetPet:doAction(pAgent)
 			else
 				agent:removeDefender()
 			end
+		elseif pTarget ~= nil then
+			return BEHAVIOR_SUCCESS
 		end
 
 
@@ -78,6 +84,8 @@ function GetTargetPet:doAction(pAgent)
 			else
 				agent:removeDefender()
 			end
+		elseif pTarget ~= nil then
+			return BEHAVIOR_SUCCESS
 		end
 	end
 	return BEHAVIOR_FAILURE

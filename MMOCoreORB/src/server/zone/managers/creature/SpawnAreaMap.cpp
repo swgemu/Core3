@@ -144,8 +144,7 @@ void SpawnAreaMap::loadStaticSpawns() {
 					AiAgent* ai = cast<AiAgent*>( creatureObject.get());
 					ai->setRespawnTimer(respawn);
 					if (!aiString.isEmpty()) {
-						ai->clearBehaviorList();
-						ai->setupBehaviorTree(AiMap::instance()->getTemplate(aiString));
+						ai->activateLoad(aiString);
 					}
 				}
 

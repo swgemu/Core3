@@ -1547,8 +1547,7 @@ int DirectorManager::spawnMobile(lua_State* L) {
 			AiAgent* ai = cast<AiAgent*>(creature);
 			ai->setRespawnTimer(respawnTimer);
 			// TODO (dannuic): this is a temporary measure until we add an AI setting method to DirectorManager -- make stationary the default
-			ai->clearBehaviorList();
-			ai->setupBehaviorTree(AiMap::instance()->getTemplate("stationary"));
+			ai->activateLoad("stationary");
 		}
 
 		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
@@ -1604,8 +1603,7 @@ int DirectorManager::spawnMobileRandom(lua_State* L) {
 			ai->setRespawnTimer(respawnTimer);
 			ai->setRandomRespawn(true);
 			// TODO (dannuic): this is a temporary measure until we add an AI setting method to DirectorManager -- make stationary the default
-			ai->clearBehaviorList();
-			ai->setupBehaviorTree(AiMap::instance()->getTemplate("stationary"));
+			ai->activateLoad("stationary");
 		}
 
 		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA

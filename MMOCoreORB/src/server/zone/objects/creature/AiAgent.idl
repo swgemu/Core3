@@ -142,8 +142,6 @@ class AiAgent extends CreatureObject {
 	protected transient Mutex awarenessEventMutex;
 	@dereferenced
 	protected transient Mutex movementEventMutex;
-	@dereferenced
-	protected transient Mutex behaviorMutex;
 	
 	protected boolean fleeing;
 	
@@ -226,6 +224,10 @@ class AiAgent extends CreatureObject {
 	public abstract native void activateWaitEvent();
 	
 	public native void activateAwarenessEvent(CreatureObject target);
+	
+	public native void activateInterrupt(SceneObject source, long msg);
+	
+	public native void activateLoad(final string temp);
 	
 	public native boolean tryRetreat();
 	

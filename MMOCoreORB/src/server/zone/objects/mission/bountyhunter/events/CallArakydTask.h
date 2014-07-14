@@ -108,8 +108,7 @@ public:
 				ManagedReference<AiAgent*> droid = cast<AiAgent*>(playerRef->getZone()->getCreatureManager()->spawnCreature(String("probot").hashCode(), 0, droidPosition.getX(), droidPosition.getZ(), droidPosition.getY(), 0));
 				objectiveRef->setArakydDroid(droid);
 				droid->setFollowObject(playerRef);
-				droid->setupBehaviorTree(AiMap::instance()->getTemplate("follow"));
-				droid->activateMovementEvent();
+				droid->activateLoad("follow");
 		}
 			break;
 		default:

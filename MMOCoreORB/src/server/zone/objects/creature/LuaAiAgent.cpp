@@ -106,9 +106,7 @@ int LuaAiAgent::_getObject(lua_State* L) {
 int LuaAiAgent::setAiTemplate(lua_State* L) {
 	String tempName = lua_tostring(L, -1);
 
-	realObject->clearBehaviorList();
-	realObject->setupBehaviorTree(AiMap::instance()->getTemplate(tempName));
-	realObject->activateMovementEvent();
+	realObject->activateLoad(tempName);
 
 	return 0;
 }

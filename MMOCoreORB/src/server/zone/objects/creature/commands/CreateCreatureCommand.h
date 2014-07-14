@@ -148,11 +148,8 @@ public:
 			creature->sendSystemMessage("could not spawn " + arguments.toString());
 
 		if (!aiTemplate.isEmpty()) {
-			npc->setupBehaviorTree(AiMap::instance()->getTemplate(aiTemplate));
-			npc->activateMovementEvent();
+			npc->activateLoad(aiTemplate);
 		}
-
-		//npc->setupBehaviorTree(AiMap::instance()->getGetTargetTemplate(0), AiMap::instance()->getSelectAttackTemplate(0), AiMap::instance()->getCombatMoveTemplate(0), AiMap::instance()->getIdleTemplate(0));
 
 		if (npc != NULL)
 			npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));

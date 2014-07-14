@@ -56,7 +56,7 @@ public:
 
 		combatManager->startCombat(pet, targetTano);
 
-		pet->interrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
+		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 
 		return SUCCESS;
 	}

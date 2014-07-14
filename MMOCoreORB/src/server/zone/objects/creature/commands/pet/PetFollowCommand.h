@@ -47,7 +47,7 @@ public:
 
 		pet->setFollowObject(targetObject);
 
-		pet->interrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
+		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 
 		return SUCCESS;
 	}

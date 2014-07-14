@@ -46,8 +46,7 @@ public:
 			creature->setPvpStatusBitmask(originalMask, true);
 			if (creature->isAiAgent()) {
 				AiAgent* agent = cast<AiAgent*>(creature.get());
-				agent->setupBehaviorTree();
-				agent->activateMovementEvent();
+				agent->activateLoad("");
 			}
 			return;
 		}
@@ -57,8 +56,7 @@ public:
 			creature->setPvpStatusBitmask(originalMask, true);
 			if (creature->isAiAgent()) {
 				AiAgent* agent = cast<AiAgent*>(creature.get());
-				agent->setupBehaviorTree();
-				agent->activateMovementEvent();
+				agent->activateLoad("");
 			}
 			return;
 		}
@@ -98,8 +96,7 @@ public:
 				creature->setPvpStatusBitmask(originalMask, true);
 				if (creature->isAiAgent()) {
 					AiAgent* agent = cast<AiAgent*>(creature.get());
-					agent->setupBehaviorTree();
-					agent->activateMovementEvent();
+					agent->activateLoad("");
 				}
 
 				int ferocity = creature->getFerocity();
@@ -126,8 +123,7 @@ public:
 			creature->setPvpStatusBitmask(originalMask, true);
 			if (creature->isAiAgent()) {
 				AiAgent* agent = cast<AiAgent*>(creature.get());
-				agent->setupBehaviorTree();
-				agent->activateMovementEvent();
+				agent->activateLoad("");
 			}
 			return;
 		}
@@ -140,8 +136,7 @@ public:
 			creature->setPvpStatusBitmask(originalMask, true);
 			if (creature->isAiAgent()) {
 				AiAgent* agent = cast<AiAgent*>(creature.get());
-				agent->setupBehaviorTree();
-				agent->activateMovementEvent();
+				agent->activateLoad("");
 			}
 			return;
 		}
@@ -178,8 +173,7 @@ public:
 		if (creature->isAiAgent()) {
 			AiAgent* agent = cast<AiAgent*>(creature.get());
 			agent->setCreatureBitmask(CreatureFlag::PET);
-			agent->setupBehaviorTree();
-			agent->activateMovementEvent();
+			agent->activateLoad("");
 		}
 
 		creature->getZone()->broadcastObject(creature, true);

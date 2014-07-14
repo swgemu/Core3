@@ -84,6 +84,8 @@
 #include "events/AiMoveEvent.h"
 #include "events/AiThinkEvent.h"
 #include "events/AiWaitEvent.h"
+#include "events/AiInterruptTask.h"
+#include "events/AiLoadTask.h"
 #include "events/CamoTask.h"
 #include "events/DespawnCreatureOnPlayerDissappear.h"
 #include "events/DespawnCreatureTask.h"
@@ -295,7 +297,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		}
 	}
 
-	setupBehaviorTree();
+	activateLoad("");
 }
 
 void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
@@ -2117,8 +2119,6 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 
 	Vector<Reference<LuaAiTemplate*> >* treeTemplate = aiTemplate->getTree();
 
-	Locker locker(&behaviorMutex);
-
 	stopWaiting();
 	setWait(0);
 
@@ -2208,8 +2208,6 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 	rootSelector->setID(String("root"));
 	attackSequence->setID(String("attackSequence"));
 
-	clearBehaviorList();
-
 	addBehaviorToTree(attackSequence, rootSelector);
 
 	setupBehaviorTree(getTarget);
@@ -2223,8 +2221,6 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 
 	setupBehaviorTree(idle);
 	addCurrentBehaviorToTree(rootSelector);
-
-	Locker locker(&behaviorMutex);
 
 	behaviors.put("root", rootSelector);
 	behaviors.put("attackSequence", attackSequence);
@@ -2277,7 +2273,6 @@ void AiAgentImplementation::addBehaviorToTree(Behavior* b, CompositeBehavior* pa
 }
 
 void AiAgentImplementation::addCurrentBehaviorToTree(CompositeBehavior* par) {
-	Locker locker(&behaviorMutex);
 	Behavior* b = behaviors.get(currentBehaviorID);
 	addBehaviorToTree(b, par);
 }
@@ -2306,7 +2301,6 @@ void AiAgentImplementation::resetBehaviorList() {
 }
 
 void AiAgentImplementation::clearBehaviorList() {
-	Locker locker(&behaviorMutex);
 	for (int i = 0; i < behaviors.size(); i++) {
 		Behavior* b = behaviors.get(i);
 		if (b != NULL) {
@@ -2320,7 +2314,6 @@ void AiAgentImplementation::clearBehaviorList() {
 }
 
 int AiAgentImplementation::interrupt(SceneObject* source, int64 msg) {
-	Locker clocker(&behaviorMutex, _this.get());
 	Behavior* b = behaviors.get(currentBehaviorID);
 
 	if (b == NULL)
@@ -2352,9 +2345,7 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 		if (_this.get() == agent || agent == NULL)
 			continue;
 
-		Locker locker(agent);
-
-		agent->interrupt(_this.get(), msg);
+		agent->activateInterrupt(_this.get(), msg);
 	}
 }
 
@@ -2366,5 +2357,15 @@ void AiAgentImplementation::setCombatState() {
 
 	broadcastInterrupt(ObserverEventType::STARTCOMBAT);
 
-	interrupt(_this.get(), ObserverEventType::STARTCOMBAT);
+	activateInterrupt(_this.get(), ObserverEventType::STARTCOMBAT);
+}
+
+void AiAgentImplementation::activateInterrupt(SceneObject* source, int64 msg) {
+	AiInterruptTask* task = new AiInterruptTask(_this.get(), source, msg);
+	task->execute();
+}
+
+void AiAgentImplementation::activateLoad(const String& temp) {
+	AiLoadTask* task = new AiLoadTask(_this.get(), temp);
+	task->execute();
 }
