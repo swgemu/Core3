@@ -418,6 +418,8 @@ int LuaCreatureObject::doAnimation(lua_State* L) {
 int LuaCreatureObject::engageCombat(lua_State* L) {
 	CreatureObject* enemy = (CreatureObject*)lua_touserdata(L, -1);
 
+	Locker locker(realObject);
+
 	if (enemy != NULL)
 		realObject->addDefender(enemy);
 
