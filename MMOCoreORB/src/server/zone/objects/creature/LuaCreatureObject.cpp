@@ -54,6 +54,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "setState", &LuaCreatureObject::setState},
+		{ "setLootRights", &LuaCreatureObject::setLootRights},
 		{ "getPosture", &LuaCreatureObject::getPosture},
 		{ "setPosture", &LuaCreatureObject::setPosture},
 		{ "hasSkill", &LuaCreatureObject::hasSkill},
@@ -78,6 +79,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "addCashCredits", &LuaCreatureObject::addCashCredits},
 		{ "removeScreenPlayState", &LuaCreatureObject::removeScreenPlayState},
 		{ "isGrouped", &LuaCreatureObject::isGrouped},
+		{ "isGroupedWith", &LuaCreatureObject::isGroupedWith},
 		{ "getGroupSize", &LuaCreatureObject::getGroupSize},
 		{ "getGroupMember", &LuaCreatureObject::getGroupMember},
 		{ "setOptionsBitmask", &LuaCreatureObject::setOptionsBitmask},
@@ -519,6 +521,35 @@ int LuaCreatureObject::isGrouped(lua_State* L) {
 
 	lua_pushboolean(L, val);
 
+	return 1;
+}
+
+int LuaCreatureObject::isGroupedWith(lua_State* L) {
+	CreatureObject* groupMember = (CreatureObject*) lua_touserdata(L, -1);
+
+	if (realObject == NULL || groupMember == NULL || !realObject->isGrouped())
+		return 0;
+
+	GroupObject* group = realObject->getGroup();
+
+	lua_pushboolean(L, group != NULL && group->hasMember(groupMember));
+
+	return 1;
+}
+
+int LuaCreatureObject::setLootRights(lua_State* L) {
+	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -1);
+
+	if (realObject == NULL || player == NULL)
+		return 0;
+
+	uint64 ownerID = player->getObjectID();
+	SceneObject* inventory = realObject->getSlottedObject("inventory");
+
+	if (inventory == NULL)
+		return 0;
+
+	inventory->setContainerOwnerID(ownerID);
 	return 1;
 }
 

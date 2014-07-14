@@ -47,6 +47,10 @@ function mission_giver_conv_handler:runScreenHandlers(pConversationTemplate, pCo
 
 	if screenID == "init" then
 		pConversationScreen = self:handleScreenInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	elseif screenID == "npc_noloc_n" then
+		pConversationScreen = self:handleScreenNoLoc(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	elseif screenID == "failure" then
+		pConversationScreen = self:handleScreenFailure(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "too_weak" then
 		pConversationScreen = self:handleScreenTooWeak(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "inv_full" then
@@ -102,7 +106,10 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 			missionFaction = 0
 		end
 
-		if missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pConversingPlayer) ~= true then
+		if (self.themePark:missionStatus(pConversingPlayer) == -1) then
+			nextScreenName = "failure"
+
+		elseif missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pConversingPlayer) ~= true then
 			nextScreenName = "no_faction"
 
 		elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) ~= true then
@@ -176,6 +183,21 @@ function mission_giver_conv_handler:handleScreenTooWeak(pConversationTemplate, p
 	return pConversationScreen
 end
 
+function mission_giver_conv_handler:handleScreenFailure(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	local screen = LuaConversationScreen(pConversationScreen)
+	pConversationScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConversationScreen)
+
+	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local stfFile = self.themePark:getStfFile(npcNumber)
+
+	clonedScreen:setDialogTextStringId(stfFile .. ":npc_failure_" .. missionNumber)
+	self.themePark:resetCurrentMission(pConversingPlayer)
+
+	return pConversationScreen
+end
+
 function mission_giver_conv_handler:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	local screen = LuaConversationScreen(pConversationScreen)
 	pConversationScreen = screen:cloneScreen()
@@ -197,10 +219,6 @@ function mission_giver_conv_handler:handleScreenAccept(pConversationTemplate, pC
 		nextScreenName = "inv_full"
 	elseif self.themePark:handleMissionAccept(npcNumber, missionNumber, pConversingPlayer) == true then
 		nextScreenName = "npc_2_n"
-	else
-		self.themePark:resetCurrentMission(pConversingPlayer)
-		local creature = LuaCreatureObject(pConversingPlayer)
-		creature:sendSystemMessage("Unable to accept quest. Please try again later.")
 	end
 
 	return self:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, conversationTemplate:getScreen(nextScreenName))
@@ -397,6 +415,7 @@ function mission_giver_conv_handler:handleScreenNoLoc(pConversationTemplate, pCo
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
+	self.themePark:resetCurrentMission(pConversingPlayer)
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_noloc_" .. missionNumber)
 
 	return pConversationScreen
