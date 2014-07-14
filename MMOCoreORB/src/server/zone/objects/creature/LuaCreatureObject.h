@@ -75,7 +75,9 @@ namespace creature {
 		int addCashCredits(lua_State* L);
 		int removeScreenPlayState(lua_State* L);
 		int setPvpStatusBitmask(lua_State* L);
+		int setLootRights(lua_State* L);
 		int isGrouped(lua_State* L);
+		int isGroupedWith(lua_State* L);
 		int getGroupSize(lua_State* L);
 		int getGroupMember(lua_State* L);
 		int setOptionsBitmask(lua_State* L);

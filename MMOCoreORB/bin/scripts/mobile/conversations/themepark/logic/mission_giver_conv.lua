@@ -16,6 +16,16 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 
 	mission_giver_convotemplate:addScreen(mission_giver_init);
 
+	mission_giver_failure = ConvoScreen:new {
+		id = "failure",
+		leftDialog = "",
+		stopConversation = "true",
+		options = {
+		}
+	}
+
+	mission_giver_convotemplate:addScreen(mission_giver_failure);
+
 	mission_giver_no_faction = ConvoScreen:new {
 		id = "no_faction",
 		leftDialog = "",

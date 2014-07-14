@@ -649,9 +649,16 @@ function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
 	local victimID = victim:getObjectID()
 	local attackerID = attacker:getObjectID()
 
-	if self:killedByCorrectPlayer(victimID, attackerID) == false then
+	local ownerID = readData(victimID .. ":missionOwnerID")
+	local pOwner = getCreatureObject(ownerID)
+
+	if self:killedByCorrectPlayer(victimID, attackerID) == false and (self:isGroupedWith(pOwner, pAttacker) == false or self:isInQuestRangeOf(pOwner, pAttacker) == false) then
+		self:clearInventory(pVictim)
+		self:failMission(pOwner)
 		return 0
 	end
+
+	victim:setLootRights(pOwner)
 
 	local pInventory = victim:getSlottedObject("inventory")
 	if pInventory == nil then
@@ -672,7 +679,7 @@ function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
 				local item = LuaSceneObject(pItem)
 				if requiredItems[j].itemTemplate == item:getTemplateObjectPath() and (requiredItems[j].itemName == item:getCustomObjectName() or requiredItems[j].itemName == item:getDisplayedName()) then
 					createObserver(ITEMLOOTED, self.className, "notifyItemLooted", pItem)
-					writeData(item:getObjectID() .. ":missionOwnerID", attacker:getObjectID())
+					writeData(item:getObjectID() .. ":missionOwnerID", ownerID)
 					break
 				end
 			end
@@ -680,6 +687,26 @@ function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
 	end
 
 	return 1
+end
+
+function ThemeParkLogic:clearInventory(pCreature)
+	ObjectManager.withCreatureObject(pCreature, function(creature)
+		local pInventory = creature:getSlottedObject("inventory")
+
+		if pInventory == nil then
+			return 0
+		end
+		ObjectManager.withSceneObject(pInventory, function(inventory)
+			local numberOfItems = inventory:getContainerObjectsSize()
+			for i = 0, numberOfItems - 1, 1 do
+				local pItem = inventory:getContainerObject(i)
+				ObjectManager.withSceneObject(pItem, function(item)
+					item:destroyObjectFromWorld()
+					item:destroyObjectFromDatabase()
+				end)
+			end
+		end)
+	end)
 end
 
 function ThemeParkLogic:notifyItemLooted(pItem, pLooter)
@@ -806,12 +833,18 @@ function ThemeParkLogic:notifyDefeatedTarget(pVictim, pAttacker)
 	local victimID = victim:getObjectID()
 	local attackerID = attacker:getObjectID()
 
-	if self:killedByCorrectPlayer(victimID, attackerID) == true then
-		local currentKillCount = readData(attackerID .. ":killedMissionNpcs") + 1
-		writeData(attackerID .. ":killedMissionNpcs", currentKillCount)
+	local ownerID = readData(victimID .. ":missionOwnerID")
+	local pOwner = getCreatureObject(ownerID)
 
-		if currentKillCount == self:getMissionKillCount(pAttacker) then
-			self:completeMission(pAttacker)
+	if self:killedByCorrectPlayer(victimID, attackerID) == false and (self:isGroupedWith(pOwner, pAttacker) == false or self:isInQuestRangeOf(pOwner, pAttacker) == false) then
+		self:failMission(pOwner)
+		return 0
+	else
+		local currentKillCount = readData(ownerID .. ":killedMissionNpcs") + 1
+		writeData(ownerID .. ":killedMissionNpcs", currentKillCount)
+
+		if currentKillCount == self:getMissionKillCount(pOwner) then
+			self:completeMission(pOwner)
 		end
 	end
 
@@ -849,6 +882,26 @@ function ThemeParkLogic:killedByCorrectPlayer(victimID, attackerID)
 	else
 		return false
 	end
+end
+
+function ThemeParkLogic:isGroupedWith(pPlayer1, pPlayer2)
+	return ObjectManager.withCreatureObject(pPlayer1, function(player1)
+		if player1:isGroupedWith(pPlayer2) == true then
+			return true
+		else
+			return false
+		end
+	end)
+end
+
+function ThemeParkLogic:isInQuestRangeOf(pPlayer1, pPlayer2)
+	return ObjectManager.withCreatureObject(pPlayer1, function(player1)
+		if player1:isInRangeWithObject(pPlayer2, 128) == 1 then
+			return true
+		else
+			return false
+		end
+	end)
 end
 
 function ThemeParkLogic:spawnNpc(npcTemplate, position, pConversingPlayer, spawnNumber)
@@ -1012,11 +1065,11 @@ function ThemeParkLogic:notifyEnteredEscortArea(pActiveArea, pCreature)
 			if (objectID == escortNpcID) then
 				local ownerID = readData(escortNpcID .. ":missionOwnerID")
 				local pPlayer = getCreatureObject(ownerID)
-				
+
 				if (pPlayer == nil) then
 					return 0
 				end
-				
+
 				local npcNumber = self:getActiveNpcNumber(pPlayer)
 				local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
 				local stfFile = self:getStfFile(npcNumber)
@@ -1250,6 +1303,27 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 
 	writeData(creature:getObjectID() .. ":activeMission", 2)
 	writeData(creature:getObjectID() .. ":destroyableBuildingID", 0)
+end
+
+function ThemeParkLogic:failMission(pConversingPlayer)
+	if pConversingPlayer == nil then
+		return
+	end
+
+	local creature = LuaCreatureObject(pConversingPlayer)
+
+	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
+	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local stfFile = self:getStfFile(npcNumber)
+
+	creature:sendSystemMessage("@theme_park/messages:generic_fail_message")
+
+	local worldPosition = self:getNpcWorldPosition(npcNumber)
+	local npcData = self:getNpcData(npcNumber)
+
+	self:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
+
+	writeData(creature:getObjectID() .. ":activeMission", -1)
 end
 
 function ThemeParkLogic:handleMissionReward(pConversingPlayer)
