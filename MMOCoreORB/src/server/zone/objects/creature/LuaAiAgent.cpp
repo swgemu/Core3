@@ -79,6 +79,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "checkRange", &LuaAiAgent::checkRange },
 		{ "broadcastInterrupt", &LuaAiAgent::broadcastInterrupt },
 		{ "getSocialGroup", &LuaAiAgent::getSocialGroup },
+		{ "getOwner", &LuaAiAgent::getOwner },
 		{ 0, 0 }
 };
 
@@ -138,7 +139,12 @@ int LuaAiAgent::setStalkObject(lua_State* L) {
 }
 
 int LuaAiAgent::getFollowObject(lua_State* L) {
-	lua_pushlightuserdata(L, realObject->getFollowObject());
+	SceneObject* followObject = realObject->getFollowObject();
+
+	if (followObject == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, followObject);
 
 	return 1;
 }
@@ -248,17 +254,23 @@ int LuaAiAgent::setCurrentSpeed(lua_State* L) {
 }
 
 int LuaAiAgent::getTargetFromMap(lua_State* L) {
-	bool retVal = realObject->getTargetFromMap();
+	SceneObject* retVal = realObject->getTargetFromMap();
 
-	lua_pushboolean(L, retVal);
+	if (retVal == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, retVal);
 
 	return 1;
 }
 
 int LuaAiAgent::getTargetFromDefenders(lua_State* L) {
-	bool retVal = realObject->getTargetFromDefenders();
+	SceneObject* retVal = realObject->getTargetFromDefenders();
 
-	lua_pushboolean(L, retVal);
+	if (retVal == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, retVal);
 
 	return 1;
 }
@@ -522,5 +534,15 @@ int LuaAiAgent::getSocialGroup(lua_State* L) {
 
 	lua_pushstring(L, socGroup.toCharArray());
 
+	return 1;
+}
+
+int LuaAiAgent::getOwner(lua_State* L) {
+	CreatureObject* retVal = realObject->getLinkedCreature().get();
+
+	if (retVal == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, retVal);
 	return 1;
 }

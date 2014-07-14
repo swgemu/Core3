@@ -45,3 +45,30 @@ end
 Move = createClass(MoveBase, Interrupt)
 MoveDefault = createClass(MoveBase, DefaultInterrupt)
 MovePack = createClass(MoveBase, PackInterrupt)
+MovePet = createClass(MoveBase, PetInterrupt)
+
+function MovePet:checkConditions(pAgent)
+	if (pAgent ~= nil) then
+		local agent = LuaAiAgent(pAgent)
+		local creature = LuaCreatureObject(pAgent)
+		if (creature:getPosture() == UPRIGHT and agent:getFollowState() ~= OBLIVIOUS) then
+			agent:setDestination()
+			return true
+		end
+	end
+	return false
+end
+
+function MovePet:doAction(pAgent)
+	if (pAgent ~= nil) then
+		local agent = LuaAiAgent(pAgent)
+
+		if (agent:getCurrentSpeed() > 0) then 
+			agent:completeMove()
+		end
+
+		self:findNextPosition(pAgent)
+		return BEHAVIOR_RUNNING
+	end
+	return BEHAVIOR_FAILURE
+end

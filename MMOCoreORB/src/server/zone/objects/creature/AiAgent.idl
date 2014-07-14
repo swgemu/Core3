@@ -247,8 +247,8 @@ class AiAgent extends CreatureObject {
 	public native int calculateAttackMaxDamage(int level);
 	public native float calculateAttackSpeed(int level);
 	
-	public native boolean getTargetFromMap();
-	public native boolean getTargetFromDefenders();
+	public native SceneObject getTargetFromMap();
+	public native SceneObject getTargetFromDefenders();
 	public native boolean validateTarget();
 	
 	public abstract native boolean isCamouflaged(CreatureObject target) {
@@ -854,6 +854,9 @@ class AiAgent extends CreatureObject {
 	 */
 	
 	@local
+	public native void setupBehaviorTree();
+	
+	@local
 	public native void setupBehaviorTree(AiTemplate aiTemplate);
 	
 	@local
@@ -900,4 +903,12 @@ class AiAgent extends CreatureObject {
 	 * @post { this object is locked, this object is in a combat state }
 	 */
 	public native void setCombatState();
+	
+	public int getCreatureBitmask() {
+		creatureBitmask;
+	}
+	
+	public void setCreatureBitmask(int mask) {
+		creatureBitmask = mask;
+	}
 }

@@ -36,7 +36,7 @@ public:
 		player->removePendingTask("tame_pet");
 
 		if (force) {
-			success(player, creature);
+			success();
 			return;
 		}
 
@@ -44,12 +44,22 @@ public:
 			player->sendSystemMessage("@hireling/hireling:taming_toofar"); // You are too far away to continue taming.
 			creature->showFlyText("npc_reaction/flytext","toofar", 204, 0, 0);  // You are too far away to tame the creature.
 			creature->setPvpStatusBitmask(originalMask, true);
+			if (creature->isAiAgent()) {
+				AiAgent* agent = cast<AiAgent*>(creature.get());
+				agent->setupBehaviorTree();
+				agent->activateMovementEvent();
+			}
 			return;
 		}
 
 		if (!creature->canTameMe(player)) {
 			player->sendSystemMessage("@pet/pet_menu:sys_cant_tame"); // You can't tame that
 			creature->setPvpStatusBitmask(originalMask, true);
+			if (creature->isAiAgent()) {
+				AiAgent* agent = cast<AiAgent*>(creature.get());
+				agent->setupBehaviorTree();
+				agent->activateMovementEvent();
+			}
 			return;
 		}
 
@@ -81,11 +91,16 @@ public:
 			float tamingChance = creature->getChanceToTame(player);
 
 			if (tamingChance > System::random(100))
-				success(player, creature);
+				success();
 			else {
 				player->sendSystemMessage("@hireling/hireling:taming_fail"); // You fail to tame the creature.
 				creature->showFlyText("npc_reaction/flytext","fail", 204, 0, 0);  // You fail to tame the creature.
 				creature->setPvpStatusBitmask(originalMask, true);
+				if (creature->isAiAgent()) {
+					AiAgent* agent = cast<AiAgent*>(creature.get());
+					agent->setupBehaviorTree();
+					agent->activateMovementEvent();
+				}
 
 				int ferocity = creature->getFerocity();
 				if (System::random(20 - ferocity) == 0)
@@ -98,7 +113,7 @@ public:
 		return;
 	}
 
-	void success(CreatureObject* player, Creature* creature) {
+	void success() {
 		ZoneServer* zoneServer = player->getZoneServer();
 
 		String objectString = creature->getControlDeviceTemplate();
@@ -109,6 +124,11 @@ public:
 
 		if (controlDevice == NULL) {
 			creature->setPvpStatusBitmask(originalMask, true);
+			if (creature->isAiAgent()) {
+				AiAgent* agent = cast<AiAgent*>(creature.get());
+				agent->setupBehaviorTree();
+				agent->activateMovementEvent();
+			}
 			return;
 		}
 
@@ -118,6 +138,11 @@ public:
 
 		if (datapad == NULL || playerManager == NULL || objectManager == NULL) {
 			creature->setPvpStatusBitmask(originalMask, true);
+			if (creature->isAiAgent()) {
+				AiAgent* agent = cast<AiAgent*>(creature.get());
+				agent->setupBehaviorTree();
+				agent->activateMovementEvent();
+			}
 			return;
 		}
 
@@ -149,6 +174,13 @@ public:
 
 		creature->setBaby(false);
 		creature->setFollowObject(player);
+
+		if (creature->isAiAgent()) {
+			AiAgent* agent = cast<AiAgent*>(creature.get());
+			agent->setCreatureBitmask(CreatureFlag::PET);
+			agent->setupBehaviorTree();
+			agent->activateMovementEvent();
+		}
 
 		creature->getZone()->broadcastObject(creature, true);
 		datapad->broadcastObject(controlDevice, true);

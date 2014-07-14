@@ -143,7 +143,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		closeobjects = NULL;
 
 	optionsBitmask = npcTemplate->getOptionsBitmask();
-	creatureBitmask = npcTemplate->getCreatureBitmask(); // TODO: need to add a bitmask for AI (pack, herd, etc)
+	creatureBitmask = npcTemplate->getCreatureBitmask();
 	level = npcTemplate->getLevel();
 
 	float minDmg = calculateAttackMinDamage(level);
@@ -295,12 +295,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		}
 	}
 
-	AiTemplate* getTarget = AiMap::instance()->getGetTargetTemplate(creatureBitmask);
-	AiTemplate* selectAttack = AiMap::instance()->getSelectAttackTemplate(creatureBitmask);
-	AiTemplate* combatMove = AiMap::instance()->getCombatMoveTemplate(creatureBitmask);
-	AiTemplate* idle = AiMap::instance()->getIdleTemplate(creatureBitmask);
-
-	setupBehaviorTree(getTarget, selectAttack, combatMove, idle);
+	setupBehaviorTree();
 }
 
 void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
@@ -465,7 +460,7 @@ bool AiAgentImplementation::validateStateAttack() {
 	return validateStateAttack(cast<CreatureObject*>(followObject.get()), nextActionArgs);
 }
 
-bool AiAgentImplementation::getTargetFromMap() {
+SceneObject* AiAgentImplementation::getTargetFromMap() {
 	CreatureObject* target = getThreatMap()->getHighestThreatCreature();
 
 	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this.get()) < 128.f && target->isAttackableBy(_this.get()) && lastDamageReceived.miliDifference() < 20000)
@@ -475,18 +470,10 @@ bool AiAgentImplementation::getTargetFromMap() {
 		target = NULL;
 	}
 
-	if (target != followObject) {
-		//setDefender(target);
-		setFollowObject(target);
-
-		if (target != NULL)
-			setDefender(target);
-	}
-
-	return followObject != NULL;
+	return target;
 }
 
-bool AiAgentImplementation::getTargetFromDefenders() {
+SceneObject* AiAgentImplementation::getTargetFromDefenders() {
 	CreatureObject* target = NULL;
 
 	if (defenderList.size() > 0) {
@@ -508,15 +495,7 @@ bool AiAgentImplementation::getTargetFromDefenders() {
 		}
 	}
 
-	if (target != followObject) {
-		//setDefender(target);
-		setFollowObject(target);
-
-		if (target != NULL)
-			setDefender(target);
-	}
-
-	return followObject != NULL;
+	return target;
 }
 
 bool AiAgentImplementation::validateTarget() {
@@ -2212,6 +2191,15 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 	}
 
 	setCurrentBehavior(rootString);
+}
+
+void AiAgentImplementation::setupBehaviorTree() {
+	AiTemplate* getTarget = AiMap::instance()->getGetTargetTemplate(creatureBitmask);
+	AiTemplate* selectAttack = AiMap::instance()->getSelectAttackTemplate(creatureBitmask);
+	AiTemplate* combatMove = AiMap::instance()->getCombatMoveTemplate(creatureBitmask);
+	AiTemplate* idle = AiMap::instance()->getIdleTemplate(creatureBitmask);
+
+	setupBehaviorTree(getTarget, selectAttack, combatMove, idle);
 }
 
 void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate* selectAttack, AiTemplate* combatMove, AiTemplate* idle) {

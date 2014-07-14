@@ -72,7 +72,7 @@ public:
 		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
 
 		if (obj == creature)
-			obj == NULL; //In case the player has himself targeted with the command.
+			obj = NULL; //In case the player has himself targeted with the command.
 
 		String targetName = "";
 		String planetName = targetZone->getZoneName();

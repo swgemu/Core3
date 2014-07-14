@@ -35,3 +35,4 @@ function SelectWeaponBase:doAction(pAgent)
 end
 
 SelectWeapon = createClass(SelectWeaponBase, Interrupt)
+SelectWeaponPet = createClass(SelectWeaponBase, PetInterrupt)

@@ -82,6 +82,7 @@ namespace creature {
 		int checkRange(lua_State* L);
 		int broadcastInterrupt(lua_State* L);
 		int getSocialGroup(lua_State* L);
+		int getOwner(lua_State* L);
 	private:
 		ManagedReference<AiAgent*> realObject;
 	};

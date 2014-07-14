@@ -32,7 +32,7 @@ function PackInterrupt:startCombatInterrupt(pAgent, pObject)
 					return
 				end
 			end
-			
+
 			-- if the source is not an AiAgent (like a lair) then don't check social group
 			-- TODO (dannuic): change the range to calculate based on level difference and ferocity
 			if agent:checkRange(pObject, 15) then
@@ -40,6 +40,17 @@ function PackInterrupt:startCombatInterrupt(pAgent, pObject)
 			end
 		end
 	end
-	
+
 	DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
+end
+
+PetInterrupt = createClass(DefaultInterrupt)
+function PetInterrupt:startCombatInterrupt(pAgent, pObject)
+	if pAgent == nil or pObject == nil then return end
+	local agent = LuaAiAgent(pAgent)
+	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go
+	DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
+	agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
+	agent:resetBehaviorList()
+	agent:executeBehavior()
 end

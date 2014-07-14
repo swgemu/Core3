@@ -6,6 +6,7 @@
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 class PetAttackCommand : public QueueCommand {
 public:
@@ -54,6 +55,8 @@ public:
 		CombatManager* combatManager = CombatManager::instance();
 
 		combatManager->startCombat(pet, targetTano);
+
+		pet->interrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 
 		return SUCCESS;
 	}

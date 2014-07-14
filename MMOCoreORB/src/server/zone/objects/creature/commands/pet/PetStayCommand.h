@@ -4,6 +4,7 @@
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/scene/ObserverEventType.h"
 
 class PetStayCommand : public QueueCommand {
 public:
@@ -22,6 +23,8 @@ public:
 			return GENERALERROR;
 
 		pet->setOblivious();
+
+		pet->interrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 
 		return SUCCESS;
 	}

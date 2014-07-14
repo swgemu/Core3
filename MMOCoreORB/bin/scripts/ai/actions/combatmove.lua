@@ -19,3 +19,4 @@ function CombatMoveBase:doAction(pAgent)
 end
 
 CombatMove = createClass(CombatMoveBase, Interrupt)
+CombatMovePet = createClass(CombatMoveBase, PetInterrupt)

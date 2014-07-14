@@ -41,3 +41,4 @@ function SelectAttackBase:doAction(pAgent)
 end
 
 SelectAttack = createClass(SelectAttackBase, Interrupt)
+SelectAttackPet = createClass(SelectAttackBase, PetInterrupt)

@@ -78,6 +78,7 @@ float LuaBehavior::end(AiAgent* agent) {
 int LuaBehavior::doAction(AiAgent* agent) {
 	// Use DirectorManager in order to have access to AiAgent
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	//agent->info(className, true);
 	// TODO (dannuic): should I check for valid table here?
 	LuaFunction runMethod(lua->getLuaState(), className, "doAction", 1);
 	runMethod << agent;

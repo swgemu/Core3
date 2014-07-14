@@ -910,6 +910,13 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 	int mask = creature->getPvpStatusBitmask();
 	creature->setPvpStatusBitmask(0, true);
 
+	if (creature->isAiAgent()) {
+		AiAgent* agent = cast<AiAgent*>(creature);
+		agent->clearBehaviorList();
+		agent->setupBehaviorTree(AiMap::instance()->getTemplate("wait"));
+		agent->activateMovementEvent();
+	}
+
 	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force);
 
 	player->addPendingTask("tame_pet", task, 8000);

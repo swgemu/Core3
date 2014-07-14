@@ -185,6 +185,7 @@ private:
 		lua->setGlobalInt("LAIR",CreatureFlag::LAIR);
 		lua->setGlobalInt("HEALER",CreatureFlag::HEALER);
 		lua->setGlobalInt("STATIC",CreatureFlag::STATIC);
+		lua->setGlobalInt("PET",CreatureFlag::PET);
 	}
 
 	void putTemplate(Lua* lua, String key, HashTable<unsigned int, Reference<AiTemplate*> >* table) {
