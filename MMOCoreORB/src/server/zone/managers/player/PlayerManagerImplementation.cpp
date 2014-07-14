@@ -1020,28 +1020,75 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 
-		CreatureObject* player = threatMap->elementAt(i).getKey();
+		CreatureObject* attacker = threatMap->elementAt(i).getKey();
+		CreatureObject* owner = NULL;
+		int totalPets = 1;
 
-		if (!player->isPlayerCreature())
+		if (attacker->isPet()) {
+			PetControlDevice* pcd = attacker->getControlDevice().get().castTo<PetControlDevice*>();
+
+			if (pcd == NULL || pcd->getPetType() != PetManager::CREATUREPET) {
+				continue;
+			}
+
+			owner = attacker->getLinkedCreature().get();
+
+			if (owner == NULL || !owner->isPlayerCreature() || !owner->hasSkill("outdoors_creaturehandler_novice"))
+				continue;
+
+			PlayerObject* ownerGhost = owner->getPlayerObject();
+
+			if (ownerGhost == NULL)
+				continue;
+
+			for (int i = 0; i < ownerGhost->getActivePetsSize(); i++) {
+				ManagedReference<AiAgent*> object = ownerGhost->getActivePet(i);
+
+				if (object != NULL && object->isCreature()) {
+					if (object == attacker)
+						continue;
+
+					PetControlDevice* petControlDevice = object->getControlDevice().get().castTo<PetControlDevice*>();
+					if (petControlDevice != NULL && petControlDevice->getPetType() == PetManager::CREATUREPET)
+						totalPets++;
+				}
+			}
+
+		}
+
+		if (!attacker->isPlayerCreature() && !attacker->isPet())
 			continue;
 
-		ManagedReference<GroupObject*> group = player->getGroup();
+		ManagedReference<GroupObject*> group = attacker->getGroup();
 
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
-
-		Locker crossLocker(player, destructedObject);
 
 		uint32 combatXp = 0;
 
 		for (int j = 0; j < entry->size(); ++j) {
 			uint32 damage = entry->elementAt(j).getValue();
 			String xpType = entry->elementAt(j).getKey();
-			float xpAmount =  baseXp;
+			float xpAmount = baseXp;
 
-			xpAmount *= (float) damage / totalDamage;
+			if (attacker->isPlayerCreature()) {
+				xpAmount *= (float) damage / totalDamage;
 
-			//Cap xp based on player level
-			xpAmount = MIN(xpAmount, calculatePlayerLevel(player, xpType) * 300.f);
+				//Cap xp based on level
+				xpAmount = MIN(xpAmount, calculatePlayerLevel(attacker, xpType) * 300.f);
+
+			} else if (attacker->isPet()) {
+				// TODO: Find a more correct CH xp formula
+				float levelRatio = destructedObject->getLevel() / attacker->getLevel();
+
+				xpAmount = attacker->getLevel() * 25.f * levelRatio;
+
+				xpAmount = MIN(xpAmount,attacker->getLevel() * 50.f);
+
+				xpAmount /= totalPets;
+
+				if (levelRatio <= 0.5)
+					xpAmount = 1;
+			}
 
 			//Apply group bonus if in group
 			if (group != NULL)
@@ -1051,23 +1098,36 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			if (xpType != "jedi_general")
 				combatXp += xpAmount;
 
-			if( winningFaction == player->getFaction()){
+			if( winningFaction == attacker->getFaction()){
 				xpAmount *= gcwBonus;
 				combatXp *= gcwBonus;
 			}
 			//Award individual weapon exp.
-			awardExperience(player, xpType, xpAmount);
+			if (attacker->isPlayerCreature()) {
+				Locker crossLocker(attacker, destructedObject);
+
+				awardExperience(attacker, xpType, xpAmount);
+			} else if (attacker->isPet()) {
+				Locker crossLocker(owner, destructedObject);
+
+				awardExperience(owner, xpType, xpAmount);
+			}
 		}
+
+		if (attacker->isPet())
+			continue;
 
 		combatXp /= 10.f;
 
-		awardExperience(player, "combat_general", combatXp);
+		Locker crossLocker(attacker, destructedObject);
+
+		awardExperience(attacker, "combat_general", combatXp);
 
 		//Check if the group leader is a squad leader
 		if (group == NULL)
 			continue;
 
-		Vector3 pos(player->getWorldPositionX(), player->getWorldPositionY(), 0);
+		Vector3 pos(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 0);
 
 		crossLocker.release();
 
@@ -1081,7 +1141,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		Locker squadLock(squadLeader, destructedObject);
 
 		//If he is a squad leader, and is in range of this player, then add the combat exp for him to use.
-		if (squadLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(player->getWorldPosition()) <= 192.f) {
+		if (squadLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(attacker->getWorldPosition()) <= 192.f) {
 			int v = slExperience.get(squadLeader) + combatXp;
 			slExperience.put(squadLeader, v);
 		}
