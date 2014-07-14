@@ -223,7 +223,7 @@ tatooine_regions = {
 	{"mos_espa_easy_newbie",-2950,2222,{1,2048},SPAWNAREA,1,"tatooine_easy",256},
 	{"mos_espa_medium_newbie",0,0,{1,0},UNDEFINEDAREA,1},
 	{"mos_taike",0,0,{1,0},UNDEFINEDAREA,1},
-	{"mos_taike_easy_newbie",3835,2350,{1,1024},SPAWNAREA,1,"tatooine_easy".96},
+	{"mos_taike_easy_newbie",3835,2350,{1,1024},SPAWNAREA,1,"tatooine_easy",96},
 	{"mos_taike_medium_newbie",0,0,{1,0},UNDEFINEDAREA,1},
 	{"mos_teike",0,0,{1,0},UNDEFINEDAREA,1},
 	{"mospic_high_range_1",0,0,{1,0},UNDEFINEDAREA,1},
