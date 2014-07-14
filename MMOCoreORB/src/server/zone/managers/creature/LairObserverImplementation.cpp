@@ -95,6 +95,7 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 			if (agent == NULL)
 				continue;
 
+			Locker locker(agent);
 			if (agent->interrupt(sourceObject, arg2) != 0)
 				return 1;
 		}

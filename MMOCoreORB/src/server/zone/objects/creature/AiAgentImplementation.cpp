@@ -2320,7 +2320,7 @@ void AiAgentImplementation::clearBehaviorList() {
 }
 
 int AiAgentImplementation::interrupt(SceneObject* source, int64 msg) {
-	Locker bLocker(&behaviorMutex);
+	Locker clocker(_this.get(), &behaviorMutex);
 	Behavior* b = behaviors.get(currentBehaviorID);
 
 	if (b == NULL)
@@ -2352,7 +2352,7 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 		if (_this.get() == agent || agent == NULL)
 			continue;
 
-		Locker clocker(agent, _this.get());
+		Locker locker(agent);
 
 		agent->interrupt(_this.get(), msg);
 	}
