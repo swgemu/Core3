@@ -2364,6 +2364,8 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 		if (_this.get() == agent || agent == NULL)
 			continue;
 
+		Locker clocker(agent, _this.get());
+
 		agent->interrupt(_this.get(), msg);
 	}
 }
