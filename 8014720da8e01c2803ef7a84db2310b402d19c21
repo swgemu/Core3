@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_f53dc3bc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-14T07:16:36Z",
+      "side": 1,
+      "message": "I think it would be better to check range with the victim rather than with the attacker.",
+      "revId": "8014720da8e01c2803ef7a84db2310b402d19c21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_15417739",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-14T07:16:36Z",
+      "side": 1,
+      "message": "In case there\u0027s more than one item, wouldn\u0027t you need to getContainerObject(0)?",
+      "revId": "8014720da8e01c2803ef7a84db2310b402d19c21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_d54abf54",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-14T07:16:36Z",
+      "side": 1,
+      "message": "I think it would be better to check range with the victim rather than with the attacker.",
+      "revId": "8014720da8e01c2803ef7a84db2310b402d19c21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
