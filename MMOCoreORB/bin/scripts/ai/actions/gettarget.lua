@@ -9,8 +9,8 @@ function GetTargetBase:checkConditions(pAgent)
 
 		if (creature:isDead()) then
 			local agent = LuaAiAgent(pAgent)
-			agent:removeDefenders()
-			agent:setFollowObject(nil)
+			agent:clearCombatState(true)
+			agent:setOblivious()
 			return false
 		end
 
@@ -23,17 +23,24 @@ function GetTargetBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = LuaAiAgent(pAgent)
 		local creature = LuaCreatureObject(pAgent)
+		local ranLevel = math.random(creature:getLevel())
 
 		local pTarget = agent:getTargetFromMap()
 		if (pTarget ~= agent:getFollowObject()) then
 			agent:setFollowObject(pTarget)
 			if (pTarget ~= nil) then agent:setDefender(pTarget) end
-			if (agent:validateTarget() and not (agent:followHasState(PEACE) and math.random(creature:getLevel()) == 1)) then
+			if (agent:validateTarget()) then
 				return BEHAVIOR_SUCCESS
 			else
 				agent:removeDefender()
 			end
-		elseif pTarget ~= nil then
+		elseif pTarget ~= nil and agent:validateTarget() then
+			if agent:followHasState(PEACE) and ranLevel == 1 then
+				agent:clearCombatState(true)
+				agent:setOblivious()
+				return BEHAVIOR_FAILURE
+			end
+			agent:setDefender(pTarget)
 			return BEHAVIOR_SUCCESS
 		end
 
@@ -41,13 +48,25 @@ function GetTargetBase:doAction(pAgent)
 		if (pTarget ~= agent:getFollowObject()) then
 			agent:setFollowObject(pTarget)
 			if (pTarget ~= nil) then agent:setDefender(pTarget) end
-			if (agent:validateTarget() and not (agent:followHasState(PEACE) and math.random(creature:getLevel()) == 1)) then
+			if (agent:validateTarget()) then
 				return BEHAVIOR_SUCCESS
 			else
 				agent:removeDefender()
 			end
-		elseif pTarget ~= nil then
+		elseif pTarget ~= nil and agent:validateTarget() then
+			if agent:followHasState(PEACE) and ranLevel == 1 then
+				agent:clearCombatState(true)
+				agent:setOblivious()
+				return BEHAVIOR_FAILURE
+			end
+			agent:setDefender(pTarget)
 			return BEHAVIOR_SUCCESS
+		end
+		
+		if (agent:isInCombat()) then
+		print("5")
+			agent:clearCombatState(true)
+			agent:setOblivious()
 		end
 	end
 	return BEHAVIOR_FAILURE
@@ -70,7 +89,7 @@ function GetTargetPet:doAction(pAgent)
 			else
 				agent:removeDefender()
 			end
-		elseif pTarget ~= nil then
+		elseif pTarget ~= nil and agent:validateTarget() then
 			return BEHAVIOR_SUCCESS
 		end
 
@@ -84,7 +103,7 @@ function GetTargetPet:doAction(pAgent)
 			else
 				agent:removeDefender()
 			end
-		elseif pTarget ~= nil then
+		elseif pTarget ~= nil and agent:validateTarget() then
 			return BEHAVIOR_SUCCESS
 		end
 	end

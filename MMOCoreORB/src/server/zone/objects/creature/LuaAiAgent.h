@@ -68,7 +68,9 @@ namespace creature {
 		int isAttackableBy(lua_State* L);
 		int isScentMasked(lua_State* L);
 		int isConcealed(lua_State* L);
+		int shouldRetreat(lua_State* L);
 		int clearCombatState(lua_State* L);
+		int isInCombat(lua_State* L);
 		int activateRecovery(lua_State* L);
 		int setBehaviorStatus(lua_State* L);
 		int getBehaviorStatus(lua_State* L);

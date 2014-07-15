@@ -40,7 +40,6 @@ public:
 			}
 		}
 
-		// TODO: allow non-player targets when Ai vs Ai combat is enabled
 		Reference<TangibleObject*> targetObject = server->getZoneServer()->getObject(target, true).castTo<TangibleObject*>();
 		if (targetObject == NULL || !targetObject->isAttackableBy(pet) ) {
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"

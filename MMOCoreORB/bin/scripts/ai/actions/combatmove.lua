@@ -20,3 +20,14 @@ end
 
 CombatMove = createClass(CombatMoveBase, Interrupt)
 CombatMovePet = createClass(CombatMoveBase, PetInterrupt)
+
+function CombatMovePet:checkConditions(pAgent)
+	if (pAgent ~= nil) then
+		local agent = LuaAiAgent(pAgent)
+		local creature = LuaCreatureObject(pAgent)
+		if (creature:getPosture() == UPRIGHT and agent:setDestination() > 0) then
+			return true
+		end
+	end
+	return false
+end

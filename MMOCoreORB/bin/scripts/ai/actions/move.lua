@@ -8,6 +8,11 @@ function MoveBase:checkConditions(pAgent)
 		local agent = LuaAiAgent(pAgent)
 		local creature = LuaCreatureObject(pAgent)
 		if (creature:getPosture() == UPRIGHT and agent:setDestination() > 0) then
+			if agent:shouldRetreat(200) then 
+				agent:clearCombatState(true)
+				agent:setOblivious()
+				return false
+			end
 			return true
 		end
 	end

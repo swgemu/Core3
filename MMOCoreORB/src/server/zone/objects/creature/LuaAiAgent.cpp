@@ -65,7 +65,9 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "isAttackableBy", &LuaAiAgent::isAttackableBy },
 		{ "isScentMasked", &LuaAiAgent::isScentMasked },
 		{ "isConcealed", &LuaAiAgent::isConcealed },
+		{ "shouldRetreat", &LuaAiAgent::shouldRetreat },
 		{ "clearCombatState", &LuaAiAgent::clearCombatState },
+		{ "isInCombat", &LuaAiAgent::isInCombat },
 		{ "activateRecovery", &LuaAiAgent::activateRecovery },
 		{ "setBehaviorStatus", &LuaAiAgent::setBehaviorStatus },
 		{ "getBehaviorStatus", &LuaAiAgent::getBehaviorStatus },
@@ -291,7 +293,7 @@ int LuaAiAgent::followHasState(lua_State* L) {
 
 	int state = lua_tointeger(L, -1);
 
-	int retVal = cast<CreatureObject*>(follow)->hasState(state);
+	bool retVal = cast<CreatureObject*>(follow)->hasState(state);
 
 	lua_pushboolean(L, retVal);
 
@@ -399,12 +401,37 @@ int LuaAiAgent::isConcealed(lua_State* L) {
 	return 1;
 }
 
+int LuaAiAgent::shouldRetreat(lua_State* L) {
+	float range = lua_tonumber(L, -1);
+	PatrolPoint* homeLocation = realObject->getHomeLocation();
+
+	bool retVal;
+	SceneObject* target = realObject->getFollowObject();
+
+	if (target != NULL)
+		retVal = !homeLocation->isInRange(target, range);
+	else
+		retVal = !homeLocation->isInRange(realObject, range);
+
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
 int LuaAiAgent::clearCombatState(lua_State* L) {
 	bool clearDefenders = lua_toboolean(L, -1);
 
 	realObject->clearCombatState(clearDefenders);
 
 	return 0;
+}
+
+int LuaAiAgent::isInCombat(lua_State* L) {
+	bool retVal = realObject->isInCombat();
+
+	lua_pushboolean(L, retVal);
+
+	return 1;
 }
 
 int LuaAiAgent::activateRecovery(lua_State* L) {
