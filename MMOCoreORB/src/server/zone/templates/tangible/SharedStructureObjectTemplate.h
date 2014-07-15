@@ -103,6 +103,10 @@ public:
 	inline virtual bool isPublicStructure() {
 		return false;
 	}
+
+	virtual bool isSharedStructureObjectTemplate() {
+		return true;
+	}
 };
 
 #endif /* SHAREDSTRUCTUREOBJECTTEMPLATE_H_ */

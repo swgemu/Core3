@@ -562,6 +562,10 @@ public:
 		return false;
 	}
 
+	virtual bool isSharedStructureObjectTemplate() {
+		return false;
+	}
+
 	virtual bool isSharedBuildingObjectTemplate() {
 		return false;
 	}

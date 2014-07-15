@@ -670,6 +670,13 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 					return true;
 				}
 			}
+
+			// Check if it's within a structure's footprint
+			if (objectTemplate->isSharedStructureObjectTemplate()) {
+				if (StructureManager::instance()->isInStructureFootprint(cast<StructureObject*>(obj), x, y, extraMargin)) {
+					return true;
+				}
+			}
 		}
 	}
 
