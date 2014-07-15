@@ -2815,7 +2815,7 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
 	String weaponType = weapon->getWeaponType();
 	int skillMod = player->getSkillMod("private_" + weaponType + "_combat_difficulty");
 
-	if (player->getPlayerObject() != NULL && player->getPlayerObject()->isJedi())
+	if (player->getPlayerObject() != NULL && player->getPlayerObject()->isJedi() && weapon->isJediWeapon())
 		skillMod += player->getSkillMod("private_jedi_difficulty");
 
 	int level = MIN(25, skillMod / 100 + 1);
