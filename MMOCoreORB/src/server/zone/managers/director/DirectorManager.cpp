@@ -2071,7 +2071,7 @@ Vector3 DirectorManager::generateSpawnPoint(CreatureObject* creatureObject, floa
 		position = Vector3(newX, newY, newZ);
 
 
-		found = creatureObject->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL, extraNoBuildRadius) &
+		found = creatureObject->getZone()->getPlanetManager()->isSpawningPermittedAt(position.getX(), position.getY(), extraNoBuildRadius) &
 				!CollisionManager::checkSphereCollision(position, sphereCollision, creatureObject->getZone());
 
 		retries--;

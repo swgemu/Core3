@@ -133,6 +133,10 @@ class Zone extends SceneObject {
 	@local
 	public native int getInRangeActiveAreas(float x, float y, SortedVector<ActiveArea> objects, boolean readLockZone);
 
+	/* gets active areas whose center is within the given range */
+	@local
+	public native int getInRangeActiveAreas(float x, float y, float range, SortedVector<ActiveArea> objects, boolean readLockZone);
+
 	@local
 	@dereferenced
 	public native SortedVector<SceneObject> getPlanetaryObjectList(final string mapObjectLocationType);

@@ -261,6 +261,39 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 	bool readlock = readLockZone && !_this.get()->isLockedByCurrentThread();
 
 	//_this.get()->rlock(readlock);
+
+	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
+
+	try {
+		thisZone->rlock(readlock);
+
+		SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
+
+		regionTree->inRange(x, y, entryObjects);
+
+		thisZone->runlock(readlock);
+
+		for (int i = 0; i < entryObjects.size(); ++i) {
+			ActiveArea* obj = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
+			objects->put(obj);
+		}
+	}catch (...) {
+//		_this.get()->runlock(readlock);
+
+		throw;
+	}
+
+//	_this.get()->runlock(readlock);
+
+	return objects->size();
+}
+
+int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea*> >* objects, bool readLockZone) {
+	//Locker locker(_this.get());
+
+	bool readlock = readLockZone && !_this.get()->isLockedByCurrentThread();
+
+	//_this.get()->rlock(readlock);
 	
 	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
 
@@ -269,7 +302,7 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 		
 		SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
 
-		regionTree->inRange(x, y, entryObjects);
+		regionTree->inRange(x, y, range, entryObjects);
 		
 		thisZone->runlock(readlock);
 

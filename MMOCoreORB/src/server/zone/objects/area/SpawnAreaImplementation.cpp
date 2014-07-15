@@ -203,25 +203,9 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	if (CollisionManager::checkSphereCollision(randomPosition, 64.f + finalSpawn->getSize(), zone))
 		return 7;
 
-	//don't spawn in cities
-	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
-	zone->getInRangeActiveAreas(randomPosition.getX(), randomPosition.getY(), &activeAreas, true);
-
-	for (int i = 0; i < activeAreas.size(); ++i) {
-		ActiveArea* area = activeAreas.get(i);
-
-		if (area->isRegion() || area->isMunicipalZone() || area->isNoSpawnArea())
-			return 8;
-	}
-
-	//check in range objects for no build radi
-	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY(), object, finalSpawn->getSize() + 64.f)) {
+	// Check the spot to see if spawning is allowed
+	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 64.f)) {
 		return 9;
-	}
-
-	// Only spawn on relatively flat land
-	if (planetManager->getTerrainManager()->getHighestHeightDifference(randomPosition.getX() - 10, randomPosition.getY() - 10, randomPosition.getX() + 10, randomPosition.getY() + 10) > 10.0) {
-		return 13;
 	}
 
 	int spawnLimit = finalSpawn->getSpawnLimit();

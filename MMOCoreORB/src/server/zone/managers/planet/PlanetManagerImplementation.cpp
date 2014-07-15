@@ -683,6 +683,42 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 	return false;
 }
 
+bool PlanetManagerImplementation::isSpawningPermittedAt(float x, float y, float margin) {
+	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+
+	Vector3 targetPos(x, y, zone->getHeight(x, y));
+
+	if (!zone->isWithinBoundaries(targetPos))
+		return false;
+
+	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
+	zone->getInRangeActiveAreas(x, y, margin + 64.f, &activeAreas, true);
+
+	for (int i = 0; i < activeAreas.size(); ++i) {
+		ActiveArea* area = activeAreas.get(i);
+
+		if (area->isRegion() || area->isMunicipalZone() || area->isNoSpawnArea()) {
+			return false;
+		}
+	}
+
+	if (isInObjectsNoBuildZone(x, y, margin)) {
+		return false;
+	}
+
+	if (isInWater(x, y)) {
+		return false;
+	}
+
+	if (isInRangeWithPoi(x, y, 150))
+		return false;
+
+	if (terrainManager->getHighestHeightDifference(x - 10, y - 10, x + 10, y + 10) > 10.0)
+		return false;
+
+	return true;
+}
+
 bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneObject* object, float margin) {
 	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
 
@@ -705,11 +741,11 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 		return false;
 	}
 
-	if (isInWater(targetPos.getX(), targetPos.getY())) {
+	if (isInWater(x, y)) {
 		return false;
 	}
 
-	if (isInRangeWithPoi(targetPos.getX(), targetPos.getY(), 150))
+	if (isInRangeWithPoi(x, y, 150))
 		return false;
 
 	return true;
@@ -740,11 +776,11 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 		return false;
 	}
 
-	if (isInWater(targetPos.getX(), targetPos.getY())) {
+	if (isInWater(x, y)) {
 		return false;
 	}
 
-	if (isInRangeWithPoi(targetPos.getX(), targetPos.getY(), 150))
+	if (isInRangeWithPoi(x, y, 150))
 		return false;
 
 	return true;

@@ -15,7 +15,6 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -92,7 +91,7 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 	float height = zone->getHeight(newX, newY);
 
 	float waterHeight;
-	TerrainManager* terrain = zone->getPlanetManager()->getTerrainManager();
+	PlanetManager* planetManager = zone->getPlanetManager();
 
 	float distance = 128;
 	int tries = 0;
@@ -100,11 +99,8 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 
 	position.set(newX, height, newY);
 
-	while ((!zone->isWithinBoundaries(position) ||
-			(terrain->getWaterHeight(newX, newY, waterHeight) && waterHeight > height)
-			|| CollisionManager::checkSphereCollision(position, size + 25.f , zone) ||
-			zone->getPlanetManager()->isInObjectsNoBuildZone(newX, newY, size) ||
-			terrain->getHighestHeightDifference(newX - 10, newY - 10, newX + 10, newY + 10) > 10.0) && tries < 256) {
+	while ((!planetManager->isSpawningPermittedAt(newX, newY, size)
+			|| CollisionManager::checkSphereCollision(position, size + 25.f , zone)) && tries < 256) {
 		newX = spawnActiveArea->getPositionX() + (distance - (float) System::random(distance * 2));
 		newY = spawnActiveArea->getPositionY() + (distance - (float) System::random(distance * 2));
 		height = zone->getHeight(newX, newY);
