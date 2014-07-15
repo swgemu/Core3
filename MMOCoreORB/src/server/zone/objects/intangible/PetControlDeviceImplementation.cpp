@@ -288,6 +288,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		pet->setFollowObject(player);
 	}
 
+	pet->setCreatureBitmask(CreatureFlag::PET);
 	pet->activateLoad("");
 
 	// Not training any commands
