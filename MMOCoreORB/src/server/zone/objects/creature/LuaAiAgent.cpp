@@ -35,6 +35,9 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "setWatchObject", &LuaAiAgent::setWatchObject },
 		{ "setStalkObject", &LuaAiAgent::setStalkObject },
 		{ "getFollowObject", &LuaAiAgent::getFollowObject },
+		{ "getTargetOfTargetID", &LuaAiAgent::getTargetOfTargetID },
+		{ "getTargetID", &LuaCreatureObject::getTargetID },
+		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "getFollowState", &LuaAiAgent::getFollowState },
 		{ "findNextPosition", &LuaAiAgent::findNextPosition },
 		{ "getMaxDistance", &LuaAiAgent::getMaxDistance },
@@ -145,6 +148,24 @@ int LuaAiAgent::getFollowObject(lua_State* L) {
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, followObject);
+
+	return 1;
+}
+
+int LuaAiAgent::getTargetOfTargetID(lua_State* L) {
+	SceneObject* target = realObject->getFollowObject();
+	if (target == NULL || !target->isCreatureObject()) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	CreatureObject* targetCreo = cast<CreatureObject*>(target);
+	if (targetCreo == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	lua_pushinteger(L, targetCreo->getTargetID());
 
 	return 1;
 }
