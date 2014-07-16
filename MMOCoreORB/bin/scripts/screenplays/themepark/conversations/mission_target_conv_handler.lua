@@ -49,6 +49,8 @@ function mission_target_conv_handler:runScreenHandlers(pConversationTemplate, pC
 		pConversationScreen = self:handleScreenMissionType(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "inv_full" then
 		pConversationScreen = self:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	elseif screenID == "otherescort_n" then
+		pConversationScreen = self:handleScreenOtherEscort(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "npc_smuggle_n" then
 		pConversationScreen = self:handleScreenSmuggle(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "npc_takeme_n" then
@@ -121,6 +123,25 @@ function mission_target_conv_handler:handleScreenTakeMe(pConversationTemplate, p
 	return pConversationScreen
 end
 
+function mission_target_conv_handler:handleScreenOtherEscort(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	local screen = LuaConversationScreen(pConversationScreen)
+	pConversationScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConversationScreen)
+
+	if (pConversingNpc == nil) then
+		return nil
+	end
+	local npc = LuaCreatureObject(pConversingNpc)
+
+	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local stfFile = self.themePark:getStfFile(npcNumber)
+
+	clonedScreen:setDialogTextStringId(stfFile .. ":otherescort_" .. missionNumber)
+
+	return pConversationScreen
+end
+
 function mission_target_conv_handler:handleScreenMissionType(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	if (pConversingNpc == nil) then
 		return nil
@@ -185,6 +206,6 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 			nextScreenID = "dontknowyou_n"
 		end
 	end
-
+	printf(nextScreenID .. "\n")
 	return self:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, conversationTemplate:getScreen(nextScreenID))
 end
