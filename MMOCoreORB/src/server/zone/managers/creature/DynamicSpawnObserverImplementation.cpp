@@ -46,7 +46,7 @@ void DynamicSpawnObserverImplementation::spawnInitialMobiles(SceneObject* buildi
 	if (building->getZone() == NULL)
 		return;
 
-	int spawnLimitAdjustment = difficulty - 2;
+	int spawnLimitAdjustment = (difficulty - 2) / 2;
 
 	int totalNumberToSpawn = (lairTemplate->getSpawnLimit() / 3) + spawnLimitAdjustment;
 	VectorMap<String, int> objectsToSpawn; // String mobileTemplate, int number to spawn
