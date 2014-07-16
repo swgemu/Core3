@@ -21,6 +21,7 @@
 #include "../../../ServerCore.h"
 
 #include "server/zone/managers/creature/AiMap.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 //#include "server/zone/objects/creature/AiAgent.h"
 
@@ -35,6 +36,9 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "setWatchObject", &LuaAiAgent::setWatchObject },
 		{ "setStalkObject", &LuaAiAgent::setStalkObject },
 		{ "getFollowObject", &LuaAiAgent::getFollowObject },
+		{ "getTargetOfTargetID", &LuaAiAgent::getTargetOfTargetID },
+		{ "getTargetID", &LuaCreatureObject::getTargetID },
+		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "getFollowState", &LuaAiAgent::getFollowState },
 		{ "findNextPosition", &LuaAiAgent::findNextPosition },
 		{ "getMaxDistance", &LuaAiAgent::getMaxDistance },
@@ -68,6 +72,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "shouldRetreat", &LuaAiAgent::shouldRetreat },
 		{ "clearCombatState", &LuaAiAgent::clearCombatState },
 		{ "isInCombat", &LuaAiAgent::isInCombat },
+		{ "checkLineOfSight", &LuaAiAgent::checkLineOfSight },
 		{ "activateRecovery", &LuaAiAgent::activateRecovery },
 		{ "setBehaviorStatus", &LuaAiAgent::setBehaviorStatus },
 		{ "getBehaviorStatus", &LuaAiAgent::getBehaviorStatus },
@@ -145,6 +150,24 @@ int LuaAiAgent::getFollowObject(lua_State* L) {
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, followObject);
+
+	return 1;
+}
+
+int LuaAiAgent::getTargetOfTargetID(lua_State* L) {
+	SceneObject* target = realObject->getFollowObject();
+	if (target == NULL || !target->isCreatureObject()) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	CreatureObject* targetCreo = cast<CreatureObject*>(target);
+	if (targetCreo == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	lua_pushinteger(L, targetCreo->getTargetID());
 
 	return 1;
 }
@@ -428,6 +451,15 @@ int LuaAiAgent::clearCombatState(lua_State* L) {
 
 int LuaAiAgent::isInCombat(lua_State* L) {
 	bool retVal = realObject->isInCombat();
+
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaAiAgent::checkLineOfSight(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+	bool retVal = CollisionManager::checkLineOfSight(realObject.get(), obj);
 
 	lua_pushboolean(L, retVal);
 

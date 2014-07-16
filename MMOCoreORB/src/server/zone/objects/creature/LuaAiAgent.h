@@ -38,6 +38,7 @@ namespace creature {
 		int setWatchObject(lua_State* L);
 		int setStalkObject(lua_State* L);
 		int getFollowObject(lua_State* L);
+		int getTargetOfTargetID(lua_State* L);
 		int getFollowState(lua_State* L);
 		int findNextPosition(lua_State* L);
 		int getMaxDistance(lua_State* L);
@@ -71,6 +72,7 @@ namespace creature {
 		int shouldRetreat(lua_State* L);
 		int clearCombatState(lua_State* L);
 		int isInCombat(lua_State* L);
+		int checkLineOfSight(lua_State* L);
 		int activateRecovery(lua_State* L);
 		int setBehaviorStatus(lua_State* L);
 		int getBehaviorStatus(lua_State* L);
