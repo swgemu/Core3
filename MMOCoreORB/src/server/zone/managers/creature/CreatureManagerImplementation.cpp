@@ -583,22 +583,34 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		if (player != NULL) {
 
-			if(player->isGrouped())
+			if (player->isPet()) {
+				CreatureObject* owner = player->getLinkedCreature().get();
+
+				if (owner != NULL) {
+					ownerID = owner->getObjectID();
+					player = owner;
+				}
+			}
+
+			if(player->isGrouped()) {
 				ownerID = player->getGroupID();
-			else
+			} else {
 				ownerID = player->getObjectID();
+			}
 
-			Locker locker(player, destructedObject);
+			if (player->isPlayerCreature()) {
+				Locker locker(player, destructedObject);
 
-			player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+				player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
 
-			FactionManager* factionManager = FactionManager::instance();
+				FactionManager* factionManager = FactionManager::instance();
 
-			if (!destructedObject->getPvPFaction().isEmpty() && !destructedObject->isEventMob()) {
-				if(!player->isGrouped())
-					factionManager->awardFactionStanding(player, destructedObject->getPvPFaction());
-				else
-					factionManager->awardFactionStanding(copyThreatMap.getHighestDamagePlayer(), destructedObject->getPvPFaction());
+				if (!destructedObject->getPvPFaction().isEmpty() && !destructedObject->isEventMob()) {
+					if(!player->isGrouped())
+						factionManager->awardFactionStanding(player, destructedObject->getPvPFaction());
+					else
+						factionManager->awardFactionStanding(copyThreatMap.getHighestDamagePlayer(), destructedObject->getPvPFaction());
+				}
 			}
 
 		}

@@ -4160,6 +4160,10 @@ bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObje
 	if(player == NULL || ai == NULL)
 		return false;
 
+	if (!player->isPlayerCreature()) {
+		return true;
+	}
+
 	if (ai->isNonPlayerCreatureObject()) {
 		NonPlayerCreatureObject *npc = dynamic_cast<NonPlayerCreatureObject*>(ai);
 
