@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_35b59bcd",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/SampleDnaTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-16T19:52:19Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this initialize to creature-\u003egetFaction()? If a character starts to harvest, but before run is called the creature dies, goes out of range, gets attacked, or doesn\u0027t have DNA, it will set the faction to 0 when it might have some faction, which can be exploited.\n\nSame thing for PvpBitmask. I think this is a bug in the current code and can be exploited.",
+      "revId": "3043dba5adaa4032bc2870e4d46e38b3d8c5cd1f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_15ca974f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/SampleDnaTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-16T19:52:19Z",
+      "side": 1,
+      "message": "Does this work for outside observers? Miztah was having problems setting faction on the fly like this (might be a different problem)",
+      "revId": "3043dba5adaa4032bc2870e4d46e38b3d8c5cd1f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
