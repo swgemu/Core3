@@ -937,11 +937,11 @@ void CreatureObjectImplementation::setHAM(int type, int value,
 }
 
 int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
-	if (attacker->isPlayerCreature()) {
-		CreatureObject* player = cast<CreatureObject*>( attacker);
+	if (attacker->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>( attacker);
 
 		if (damage > 0) {
-			getThreatMap()->addDamage(player, damage, xp);
+			getThreatMap()->addDamage(creature, damage, xp);
 		}
 	}
 

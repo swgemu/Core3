@@ -469,11 +469,11 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	setConditionDamage(newConditionDamage, notifyClient);
 
-	if (attacker->isPlayerCreature()) {
-		CreatureObject* player = cast<CreatureObject*>( attacker);
+	if (attacker->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>( attacker);
 
 		if (damage > 0 && attacker != _this.get())
-			getThreatMap()->addDamage(player, (uint32)damage);
+			getThreatMap()->addDamage(creature, (uint32)damage);
 	}
 
 	if (newConditionDamage >= maxCondition)
@@ -490,11 +490,11 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	setConditionDamage(newConditionDamage, notifyClient);
 
-	if (attacker->isPlayerCreature()) {
-		CreatureObject* player = cast<CreatureObject*>( attacker);
+	if (attacker->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>( attacker);
 
 		if (damage > 0 && attacker != _this.get())
-			getThreatMap()->addDamage(player, (uint32)damage, xp);
+			getThreatMap()->addDamage(creature, (uint32)damage, xp);
 	}
 
 	if (newConditionDamage >= maxCondition)

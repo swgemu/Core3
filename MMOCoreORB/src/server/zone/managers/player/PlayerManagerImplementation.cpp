@@ -1078,9 +1078,9 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 			} else if (attacker->isPet()) {
 				// TODO: Find a more correct CH xp formula
-				float levelRatio = destructedObject->getLevel() / attacker->getLevel();
+				float levelRatio = (float)destructedObject->getLevel() / (float)attacker->getLevel();
 
-				xpAmount = attacker->getLevel() * 25.f * levelRatio;
+				xpAmount = (float)attacker->getLevel() * 25.f * levelRatio;
 
 				xpAmount = MIN(xpAmount,attacker->getLevel() * 50.f);
 

@@ -1640,14 +1640,14 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 	activateRecovery();
 	
-	if (attacker->isPlayerCreature()) {
-		CreatureObject* player = cast<CreatureObject*>( attacker);
+	if (attacker->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>( attacker);
 
 		if (damage > 0) {
-			getThreatMap()->addDamage(player, damage);
+			getThreatMap()->addDamage(creature, damage);
 
 			if (System::random(5) == 1) {
-				setDefender(player);
+				setDefender(creature);
 			}
 		}
 	}
@@ -1660,14 +1660,14 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 	activateRecovery();
 
-	if (attacker->isPlayerCreature()) {
-		CreatureObject* player = cast<CreatureObject*>( attacker);
+	if (attacker->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>( attacker);
 
 		if (damage > 0) {
-			getThreatMap()->addDamage(player, damage, xp);
+			getThreatMap()->addDamage(creature, damage, xp);
 
 			if (System::random(5) == 1) {
-				setDefender(player);
+				setDefender(creature);
 			}
 		}
 	}
