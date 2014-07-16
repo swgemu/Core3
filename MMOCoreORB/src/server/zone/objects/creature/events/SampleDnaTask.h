@@ -28,8 +28,8 @@ public:
 		waitCount = 0;
 		creature = cre;
 		player = playo;
-		originalMask = 0;
-		faction = 0;
+		originalMask = creature->getPvpStatusBitmask();
+		faction = creature->getFaction();
 	}
 	void run() {
 		Locker locker(player);
