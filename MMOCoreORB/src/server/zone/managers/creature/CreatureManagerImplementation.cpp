@@ -421,11 +421,6 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 
 	placeCreature(creature, x, z, y, parentID);
 
-	if (creature != NULL && creature->isAiAgent()) {
-		AiAgent* npc = cast<AiAgent*>(creature);
-		npc->activateMovementEvent();
-	}
-
 	return creature;
 }
 

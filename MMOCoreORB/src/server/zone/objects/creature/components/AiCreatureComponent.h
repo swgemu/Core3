@@ -91,9 +91,11 @@ public:
 			// determine if creature can be a threat
 			if (creoEntry->isAiAgent()) {
 				AiAgent* aio = cast<AiAgent*>(creoEntry);
-				if ((aio->getFerocity() <= 0 || ai->getFerocity() <= 0) && aio->getLevel() >= ai->getLevel())
+				if (((aio->getFerocity() <= 0 || ai->getFerocity() <= 0) && aio->getLevel() >= ai->getLevel()) || (ai->getFaction() == 0 || aio->getFaction() == 0))
 					return;
-			} else if (ai->isInRange(scnoEntry, 15) && ai->isAttackableBy(creoEntry) && !creoEntry->isDead()) { //no aigent<->aigent combat for now
+			}
+
+			if (ai->isInRange(scnoEntry, 15) && ai->isAttackableBy(creoEntry) && !creoEntry->isDead()) {
 				ai->activateAwarenessEvent(creoEntry);
 			}
 		}
@@ -141,7 +143,7 @@ public:
 		Reference<SceneObject*> followObject = ai->getFollowObject();
 
 		if (!ai->isInCombat()) {
-			if (ai->isStalker() && ai->isAggressiveTo(target)) {
+			if (ai->isStalker() && ai->isAggressiveTo(target)) { // TODO (dannuic): Do we need another isAggressiveTo check? does something change since the last one?
 				if (followObject == NULL)
 					ai->setStalkObject(target);
 				else if (avgSpeed <= (target->getWalkSpeed() * target->getWalkSpeed()))
