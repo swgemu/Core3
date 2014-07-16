@@ -12,7 +12,7 @@ function CombatMoveBase:doAction(pAgent)
 		end
 		
 		self:findNextPosition(pAgent)
-		agent:broadcastInterrupt(STARTCOMBAT)
+		if agent:getTargetOfTargetID() == agent:getObjectID() then agent:broadcastInterrupt(STARTCOMBAT) end
 		return BEHAVIOR_SUCCESS
 	end
 	return BEHAVIOR_FAILURE
