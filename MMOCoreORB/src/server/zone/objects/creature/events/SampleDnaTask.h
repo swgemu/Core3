@@ -18,6 +18,7 @@ private:
 	enum Phase { BEGIN, SAMPLING, END} currentPhase;
 	int waitCount;
 	int originalMask;
+	int faction;
 	ManagedReference<Creature*> creature;
 	ManagedReference<CreatureObject*> player;
 public:
@@ -28,6 +29,7 @@ public:
 		creature = cre;
 		player = playo;
 		originalMask = 0;
+		faction = 0;
 	}
 	void run() {
 		Locker locker(player);
@@ -36,21 +38,25 @@ public:
 		if (!creature->isInRange(player, 16.f) ) {
 			player->sendSystemMessage("@bio_engineer:harvest_dna_out_of_range");
 			creature->setPvpStatusBitmask(originalMask,true);
+			creature->setFaction(faction);
 			return;
 		}
 		if (creature->isDead()) {
 			player->sendSystemMessage("@bio_engineer:harvest_dna_target_corpse");
 			creature->setPvpStatusBitmask(originalMask,true);
+			creature->setFaction(faction);
 			return;
 		}
 		if (creature->isInCombat()) {
 			player->sendSystemMessage("@bio_engineer:harvest_dna_creature_in_combat");
 			creature->setPvpStatusBitmask(originalMask,true);
+			creature->setFaction(faction);
 			return;
 		}
 		if (!creature->hasDNA()){
 			player->sendSystemMessage("@bio_engineer:harvest_dna_cant_harvest");
 			creature->setPvpStatusBitmask(originalMask,true);
+			creature->setFaction(faction);
 			return;
 		}
 		int mindCost = player->calculateCostAdjustment(CreatureAttribute::FOCUS, 200);
@@ -69,7 +75,10 @@ public:
 					player->doAnimation("heal_other");
 					originalMask = creature->getPvpStatusBitmask();
 					// Turn off attackable flag while sampling (publish 3)
-					creature->clearState(CreatureFlag::ATTACKABLE,true);
+					creature->clearPvpStatusBit(CreatureFlag::ATTACKABLE,true);
+					creature->clearPvpStatusBit(CreatureFlag::ENEMY,true);
+					faction = creature->getFaction();
+					creature->setFaction(player->getFaction());
 				}
 				break;
 			case SAMPLING:
@@ -83,6 +92,7 @@ public:
 			case END:
 				// Re-Enable Mask
 				creature->setPvpStatusBitmask(originalMask,true);
+				creature->setFaction(faction);
 				bool success = false;
 				bool critical = false;
 				bool aggro = false;
