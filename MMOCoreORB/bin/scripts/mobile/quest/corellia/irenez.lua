@@ -1,6 +1,6 @@
-garm_bel_iblis = Creature:new {
+irenez = Creature:new {
 	objectName = "",
-	customName = "Garm Bel Iblis",
+	customName = "Irenez",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -24,15 +24,15 @@ garm_bel_iblis = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_garm_bel_iblis.iff"},
+	templates = {"object/mobile/dressed_noble_old_human_female_02.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "garm_bel_iblis_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(garm_bel_iblis, "garm_bel_iblis")
+CreatureTemplates:addCreatureTemplate(irenez, "irenez")
