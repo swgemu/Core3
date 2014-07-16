@@ -706,16 +706,26 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 	player->clearBuffs(true);
 
 	if (attacker->getFaction() != 0) {
-		if (attacker->isPlayerCreature()) {
+		if (attacker->isPlayerCreature() || attacker->isPet()) {
 			CreatureObject* attackerCreature = cast<CreatureObject*>(attacker);
-			//FactionManager::instance()->awardPvpFactionPoints()
-			PlayerObject* attackerGhost = attackerCreature->getPlayerObject();
-			PlayerObject* ghost = player->getPlayerObject();
 
-			bool areInDuel = (ghost->requestedDuelTo(attackerCreature) && attackerGhost->requestedDuelTo(player));
+			if (attackerCreature->isPet()) {
+				CreatureObject* owner = attackerCreature->getLinkedCreature().get();
 
-			if (!areInDuel) {
-				FactionManager::instance()->awardPvpFactionPoints(attackerCreature, player);
+				if (owner != NULL && owner->isPlayerCreature()) {
+					attackerCreature = owner;
+				}
+			}
+
+			if (attackerCreature->isPlayerCreature()) {
+				PlayerObject* attackerGhost = attackerCreature->getPlayerObject();
+				PlayerObject* ghost = player->getPlayerObject();
+
+				bool areInDuel = (ghost->requestedDuelTo(attackerCreature) && attackerGhost->requestedDuelTo(player));
+
+				if (!areInDuel) {
+					FactionManager::instance()->awardPvpFactionPoints(attackerCreature, player);
+				}
 			}
 		}
 	}
