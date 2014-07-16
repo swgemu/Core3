@@ -2355,7 +2355,7 @@ void AiAgentImplementation::setCombatState() {
 	if (homeObject != NULL)
 		homeObject->notifyObservers(ObserverEventType::AIMESSAGE, _this.get(), ObserverEventType::STARTCOMBAT);
 
-	broadcastInterrupt(ObserverEventType::STARTCOMBAT);
+	//broadcastInterrupt(ObserverEventType::STARTCOMBAT);
 
 	activateInterrupt(_this.get(), ObserverEventType::STARTCOMBAT);
 }

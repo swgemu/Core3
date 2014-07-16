@@ -28,7 +28,7 @@ function PackInterrupt:startCombatInterrupt(pAgent, pObject)
 			local scno = LuaSceneObject(pObject)
 			if scno:isAiAgent() then
 				local source = LuaAiAgent(pObject)
-				if source:getSocialGroup() ~= agent:getSocialGroup() then
+				if source:getSocialGroup() ~= agent:getSocialGroup() or not agent:checkLineOfSight(pObject) then
 					return
 				end
 			end
