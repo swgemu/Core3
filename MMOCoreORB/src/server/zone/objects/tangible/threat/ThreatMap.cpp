@@ -227,6 +227,7 @@ CreatureObject* ThreatMap::getHighestDamagePlayer() {
 	Locker locker(&lockMutex);
 
 	uint32 maxDamage = 0;
+	VectorMap<uint64,uint32> damageMap;
 	CreatureObject* player = NULL;
 
 	for (int i = 0; i < size(); ++i) {
@@ -242,13 +243,35 @@ CreatureObject* ThreatMap::getHighestDamagePlayer() {
 
 		CreatureObject* creature = elementAt(i).getKey();
 
-		if (totalDamage > maxDamage && creature->isPlayerCreature()) {
-			maxDamage = totalDamage;
-			player = cast<CreatureObject*>(creature);
+		if (creature->isPlayerCreature()) {
+			if(!damageMap.contains(creature->getObjectID())){
+				damageMap.put(creature->getObjectID(),totalDamage);
+			} else {
+				damageMap.get(creature->getObjectID()) += totalDamage;
+			}
+
+			if (damageMap.get(creature->getObjectID()) > maxDamage) {
+				maxDamage = damageMap.get(creature->getObjectID());
+				player = cast<CreatureObject*>(creature);
+			}
+		} else if (creature->isPet()) {
+			CreatureObject* owner = creature->getLinkedCreature().get();
+
+			if (owner != NULL && owner->isPlayerCreature()) {
+				if(!damageMap.contains(owner->getObjectID())){
+					damageMap.put(owner->getObjectID(),totalDamage);
+				} else {
+					damageMap.get(owner->getObjectID()) += totalDamage;
+				}
+
+				if (damageMap.get(owner->getObjectID()) > maxDamage) {
+					maxDamage = damageMap.get(owner->getObjectID());
+					player = cast<CreatureObject*>(owner);
+				}
+			}
 		}
 	}
 
-	//getHighestDamageGroup();
 	return player;
 }
 
@@ -281,7 +304,7 @@ CreatureObject* ThreatMap::getHighestDamageGroupLeader(){
 			CreatureObject* thisleader = cast<CreatureObject*>(creature->getGroup()->getLeader());
 			//tlog.info("leader is " + thisleader->getFirstName(),true);
 
-			if(thisleader == NULL)
+			if(thisleader == NULL || !thisleader->isPlayerCreature())
 				break;
 
 			if(!groupDamageMap.contains(creature->getGroupID())){
@@ -298,7 +321,40 @@ CreatureObject* ThreatMap::getHighestDamageGroupLeader(){
 				highestGroupDmg = groupDamageMap.get(creature->getGroupID());
 				leaderCreature = thisleader;
 			}
-		} else{
+		} else if (creature->isPet()) {
+			CreatureObject* owner = creature->getLinkedCreature().get();
+
+			if (owner != NULL && owner->isPlayerCreature()) {
+				if (owner->isGrouped()) {
+					CreatureObject* thisleader = cast<CreatureObject*>(owner->getGroup()->getLeader());
+
+					if(thisleader == NULL || !thisleader->isPlayerCreature())
+						break;
+
+					if(!groupDamageMap.contains(owner->getGroupID())){
+						groupDamageMap.put(owner->getGroupID(),totalDamage);
+					} else {
+						groupDamageMap.get(owner->getGroupID()) += totalDamage;
+					}
+
+					if(groupDamageMap.get(owner->getGroupID()) > highestGroupDmg){
+						highestGroupDmg = groupDamageMap.get(owner->getGroupID());
+						leaderCreature = thisleader;
+					}
+				} else {
+					if(!groupDamageMap.contains(owner->getObjectID())){
+						groupDamageMap.put(owner->getObjectID(),totalDamage);
+					} else {
+						groupDamageMap.get(owner->getObjectID()) += totalDamage;
+					}
+
+					if(totalDamage > highestGroupDmg) {
+						highestGroupDmg = totalDamage;
+						leaderCreature = owner;
+					}
+				}
+			}
+		} else {
 			//tlog.info("adding single creature damage " + String::valueOf(totalDamage),true);
 			groupDamageMap.put(creature->getObjectID(),totalDamage);
 			if(totalDamage > highestGroupDmg) {

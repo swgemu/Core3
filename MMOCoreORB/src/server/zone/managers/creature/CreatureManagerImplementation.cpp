@@ -583,22 +583,25 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		if (player != NULL) {
 
-			if(player->isGrouped())
+			if(player->isGrouped()) {
 				ownerID = player->getGroupID();
-			else
+			} else {
 				ownerID = player->getObjectID();
+			}
 
-			Locker locker(player, destructedObject);
+			if (player->isPlayerCreature()) {
+				Locker locker(player, destructedObject);
 
-			player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
+				player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
 
-			FactionManager* factionManager = FactionManager::instance();
+				FactionManager* factionManager = FactionManager::instance();
 
-			if (!destructedObject->getPvPFaction().isEmpty() && !destructedObject->isEventMob()) {
-				if(!player->isGrouped())
-					factionManager->awardFactionStanding(player, destructedObject->getPvPFaction());
-				else
-					factionManager->awardFactionStanding(copyThreatMap.getHighestDamagePlayer(), destructedObject->getPvPFaction());
+				if (!destructedObject->getPvPFaction().isEmpty() && !destructedObject->isEventMob()) {
+					if(!player->isGrouped())
+						factionManager->awardFactionStanding(player, destructedObject->getPvPFaction());
+					else
+						factionManager->awardFactionStanding(copyThreatMap.getHighestDamagePlayer(), destructedObject->getPvPFaction());
+				}
 			}
 
 		}
@@ -608,14 +611,13 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		SceneObject* creatureInventory = destructedObject->getSlottedObject("inventory");
 
-		if (creatureInventory != NULL) {
+		if (creatureInventory != NULL && player != NULL && player->isPlayerCreature()) {
 			LootManager* lootManager = zoneServer->getLootManager();
 
 			if (destructedObject->isNonPlayerCreatureObject() && !destructedObject->isEventMob())
 				destructedObject->setCashCredits(lootManager->calculateLootCredits(destructedObject->getLevel()));
 
-			if (player != NULL)
-				creatureInventory->setContainerOwnerID(ownerID);
+			creatureInventory->setContainerOwnerID(ownerID);
 
 			lootManager->createLoot(creatureInventory, destructedObject);
 		}
