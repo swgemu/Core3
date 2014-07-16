@@ -197,12 +197,27 @@ end
 
 function ThemeParkLogic:getMissionFaction(npcNumber, missionNumber)
 	local mission = self:getMission(npcNumber, missionNumber)
+	local npcData = self:getNpcData(npcNumber)
 
-	if mission.faction == nil then
+	if mission.faction == nil and npcData.faction == nil then
 		return 0
 	end
+	
+	if (mission.faction ~= nil) then
+		return mission.faction
+	else
+		return npcData.faction
+	end
+end
 
-	return mission.faction
+function ThemeParkLogic:getNpcFaction(npcNumber)
+	local npcData = self:getNpcData(npcNumber)
+
+	if npcData.faction == nil then
+		return 0
+	end
+	
+	return npcData.faction
 end
 
 function ThemeParkLogic:hasMissionState(mission, missionState, pCreature)
@@ -1527,11 +1542,20 @@ function ThemeParkLogic:goToNextMission(pConversingPlayer)
 end
 
 function ThemeParkLogic:followPlayer(pConversingNpc, pConversingPlayer)
-	if pConversingNpc ~= nil and pConversingPlayer ~= nil then
-		local npc = LuaAiAgent(pConversingNpc)
-		npc:setFollowObject(pConversingPlayer)
-		npc:setAiTemplate("follow")
-	end
+	ObjectManager.withCreatureObject(pConversingNpc, function(npcCreo)
+		ObjectManager.withCreatureAndPlayerObject(pConversingPlayer, function(playerCreo, player)
+			local npc = LuaAiAgent(pConversingNpc)
+			npc:setFollowObject(pConversingPlayer)
+			if playerCreo:getFaction() == FACTIONREBEL or playerCreo:getFaction() == FACTIONIMPERIAL then
+				npcCreo:setPvpStatusBitmask(1)
+				npcCreo:setFaction(playerCreo:getFaction())
+				if (player:isOvert() == true) then
+					npcCreo:setPvpStatusBitmask(5)
+				end
+			end
+			npc:setAiTemplate("follow")
+		end)
+	end)
 end
 
 function ThemeParkLogic:getMissionType(activeNpcNumber, pConversingPlayer)

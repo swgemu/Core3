@@ -100,8 +100,10 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 		local globalFaction = self.themePark:getGlobalFaction()
 		local currentMissionNumber = self.themePark:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
 		local missionFaction
-		if currentMissionNumber > 0 then
+		if currentMissionNumber > 0 and thisNpcNumber == activeNpcNumber then
 			missionFaction = self.themePark:getMissionFaction(activeNpcNumber, currentMissionNumber)
+		elseif thisNpcNumber ~= activeNpcNumber then
+			missionFaction = self.themePark:getNpcFaction(thisNpcNumber)
 		else
 			missionFaction = 0
 		end
