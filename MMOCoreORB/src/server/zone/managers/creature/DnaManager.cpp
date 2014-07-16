@@ -186,7 +186,13 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 		return;
 	}
 	Locker clocker(prototype);
-	prototype->setSource(creature->getObjectName()->getFullPath());
+	// Check Here for unique npcs
+	StringId* nameId = creature->getObjectName();
+	if (nameId->getFile().isEmpty() || nameId->getStringID().isEmpty()) {
+		prototype->setSource(creature->getCreatureName().toString());
+	} else {
+		prototype->setSource(nameId->getFullPath());
+	}
 	prototype->setQuality(quality);
 	String serial = player->getZoneServer()->getCraftingManager()->generateSerial();
 	prototype->setSerialNumber(serial);
