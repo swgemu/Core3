@@ -1540,6 +1540,7 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 		closeObjects.removeAll(vec->size(), 10);
 		vec->safeCopyTo(closeObjects);
 	} else {
+		attacker->info("Null closeobjects vector in CombatManager::broadcastCombatSpam", true);
 		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
 	}
 
@@ -1976,6 +1977,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 			closeObjects.removeAll(vec->size(), 10);
 			vec->safeCopyTo(closeObjects);
 		} else {
+			attacker->info("Null closeobjects vector in CombatManager::doAreaCombatAction", true);
 			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
 		}
 
@@ -2085,6 +2087,7 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 			closeObjects.removeAll(vec->size(), 10);
 			vec->safeCopyTo(closeObjects);
 		} else {
+			attacker->info("Null closeobjects vector in CombatManager::doAreaCombatAction", true);
 			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
 		}
 
@@ -2292,6 +2295,7 @@ void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject
 		closeObjects.removeAll(vec->size(), 10);
 		vec->safeCopyTo(closeObjects);
 	} else {
+		attacker->info("Null closeobjects vector in CombatManager::broadcastCombatSpam", true);
 		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
 	}
 

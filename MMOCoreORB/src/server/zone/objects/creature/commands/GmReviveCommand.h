@@ -136,6 +136,7 @@ public:
 						Zone* zone = creature->getZone();
 
 						if (creature->getCloseObjects() == NULL) {
+							creature->info("Null closeobjects vector in GmReviveCommand::doQueueCommand", true);
 							zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
 						} else {
 							CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();

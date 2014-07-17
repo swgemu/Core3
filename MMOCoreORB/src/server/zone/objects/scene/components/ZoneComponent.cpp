@@ -465,6 +465,8 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 		} else {
 			SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
 
+			sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld", true);
+
 			rootZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), 512, &closeSceneObjects, false);
 
 			for (int i = 0; i < closeSceneObjects.size(); ++i) {

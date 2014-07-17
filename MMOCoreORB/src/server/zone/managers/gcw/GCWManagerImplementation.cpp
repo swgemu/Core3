@@ -2558,6 +2558,7 @@ void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, Strin
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 	if (building->getCloseObjects() == NULL) {
+		building->info("Null closeobjects vector in GCWManagerImplementation::broadcastBuilding", true);
 		zone->getInRangeObjects(building->getPositionX(), building->getPositionY(), range, &closeObjects, true);
 	} else {
 		CloseObjectsVector* closeVector = (CloseObjectsVector*) building->getCloseObjects();

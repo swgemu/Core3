@@ -648,6 +648,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 	try {
 
 		if (closeobjects == NULL) {
+			info("Null closeobjects vector in SceneObjectImplementation::broadcastObjectPrivate", true);
 			zone->getInRangeObjects(getPositionX(), getPositionY(), 192, &closeSceneObjects, true);
 
 			maxInRangeObjectCount = closeSceneObjects.size();
@@ -721,6 +722,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 
 	try {
 		if (closeobjects == NULL) {
+			info("Null closeobjects vector in SceneObjectImplementation::broadcastDestroyPrivate", true);
 			zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects, true);
 
 			maxInRangeObjectCount = closeSceneObjects.size();
@@ -804,6 +806,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 		//		zone->rlock(readlock);
 
 		if (closeobjects == NULL) {
+			info("Null closeobjects vector in SceneObjectImplementation::broadcastMessagePrivate", true);
 			closeSceneObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
 			zone->getInRangeObjects(getPositionX(), getPositionY(), 192, closeSceneObjects, true);
 
@@ -929,6 +932,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 	try {
 
 		if (closeobjects == NULL) {
+			info("Null closeobjects vector in SceneObjectImplementation::broadcastMessagesPrivate", true);
 			zone->getInRangeObjects(getPositionX(), getPositionY(), 192, &closeSceneObjects, true);
 
 			maxInRangeObjectCount = closeSceneObjects.size();
@@ -990,6 +994,7 @@ int SceneObjectImplementation::inRangeObjects(unsigned int gameObjectType, float
 	int maxInRangeObjectCount = 0;
 
 	if (closeobjects == NULL) {
+		info("Null closeobjects vector in SceneObjectImplementation::inRangeObjects", true);
 		zone->getInRangeObjects(getPositionX(), getPositionY(), range, &closeSceneObjects, true);
 
 		maxInRangeObjectCount = closeSceneObjects.size();

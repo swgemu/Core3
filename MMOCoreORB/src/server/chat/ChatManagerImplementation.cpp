@@ -368,6 +368,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	if (vec != NULL) {
 		vec->safeCopyTo(closeEntryObjects);
 	} else {
+		sender->info("Null closeobjects vector in ChatManager::handleSocialInternalMessage", true);
 		zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionX(), 192, &closeEntryObjects, true);
 	}
 
@@ -533,6 +534,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	if (closeObjects != NULL) {
 		closeObjects->safeCopyTo(closeEntryObjects);
 	} else {
+		player->info("Null closeobjects vector in ChatManager::broadcastMessage", true);
 		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 192, &closeEntryObjects, true);
 	}
 
@@ -644,6 +646,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 	if (closeObjects != NULL) {
 		closeObjects->safeCopyTo(closeEntryObjects);
 	} else {
+		player->info("Null closeobjects vector in ChatManager::broadcastMessage(StringId)", true);
 		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 192, &closeEntryObjects, true);
 	}
 
