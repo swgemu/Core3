@@ -16,6 +16,24 @@
       "revId": "261e4fd9bcc8cbbb7fc5e4c9d5960919174812d6",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_35ed9b8c",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2014-07-17T09:51:41Z",
+      "side": 1,
+      "message": "ya",
+      "parentUuid": "da6255ed_75f31374",
+      "revId": "261e4fd9bcc8cbbb7fc5e4c9d5960919174812d6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
