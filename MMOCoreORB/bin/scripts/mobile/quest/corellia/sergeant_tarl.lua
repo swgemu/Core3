@@ -1,9 +1,9 @@
-captain_gilad_pellaeon = Creature:new {
+sergeant_tarl = Creature:new {
 	objectName = "",
-	customName = "Captain Gilad Pellaeon",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+	customName = "Sergeant Tarl",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -24,15 +24,15 @@ captain_gilad_pellaeon = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_captain_gilad_pellaeon.iff"},
+	templates = {"object/mobile/dressed_sargeant_tarl.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "gilad_pellaeon_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(captain_gilad_pellaeon, "captain_gilad_pellaeon")
+CreatureTemplates:addCreatureTemplate(sergeant_tarl, "sergeant_tarl")
