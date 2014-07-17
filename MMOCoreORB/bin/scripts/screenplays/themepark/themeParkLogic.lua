@@ -583,6 +583,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 			elseif mission.missionType == "escort" then
 				ObjectManager.withCreatureObject(pNpc, function(npc)
 					ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+						npc:setPvpStatusBitmask(0)
 						writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
 					end)
 				end)
