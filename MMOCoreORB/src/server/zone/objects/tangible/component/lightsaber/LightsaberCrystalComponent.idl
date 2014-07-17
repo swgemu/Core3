@@ -63,7 +63,7 @@ class LightsaberCrystalComponent extends Component {
 	protected float attackSpeed;
 	protected int minimumDamage;	
 	protected int maximumDamage;
-	protected int forceCost;
+	protected float forceCost;
 	protected int sacHealth;
 	protected int sacAction;
 	protected int sacMind;
@@ -76,7 +76,7 @@ class LightsaberCrystalComponent extends Component {
 		attackSpeed = 0.0;
 		minimumDamage = 0;	
 		maximumDamage = 0;
-		forceCost = 0;
+		forceCost = 0.0;
 		sacHealth = 0;
 		sacAction = 0;
 		sacMind = 0;
@@ -129,7 +129,7 @@ class LightsaberCrystalComponent extends Component {
 		return maximumDamage;
 	}
 
-	public int getForceCost() {
+	public float getForceCost() {
 		return forceCost;
 	}
 
@@ -185,7 +185,7 @@ class LightsaberCrystalComponent extends Component {
 		maximumDamage = value;
 	}
 
-	public void setForceCost(int value) {
+	public void setForceCost(float value) {
 		forceCost = value;
 	}
 

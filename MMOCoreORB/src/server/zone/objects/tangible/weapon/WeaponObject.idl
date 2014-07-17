@@ -92,7 +92,7 @@ class WeaponObject extends TangibleObject {
 	protected int healthAttackCost;
 	protected int actionAttackCost;
 	protected int mindAttackCost;
-	protected int forceCost;
+	protected float forceCost;
 	
 	protected int bladeColor;
 	
@@ -357,11 +357,11 @@ class WeaponObject extends TangibleObject {
 		mindAttackCost = value;
 	}
 	
-	public int getForceCost() {
+	public float getForceCost() {
 		return forceCost;
 	}
 	
-	public void setForceCost(int value) {
+	public void setForceCost(float value) {
 		forceCost = value;
 	}
 	

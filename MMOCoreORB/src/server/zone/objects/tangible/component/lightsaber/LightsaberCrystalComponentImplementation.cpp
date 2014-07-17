@@ -17,7 +17,7 @@
 #include "server/zone/objects/player/sui/callbacks/LightsaberCrystalTuneSuiCallback.h"
 
 void LightsaberCrystalComponentImplementation::initializeTransientMembers() {
-	ComponentImplementation::initializeTransientMembers();
+	TangibleObjectImplementation::initializeTransientMembers();
 
 	setLoggingName("LightsaberCrystalComponent");
 
@@ -80,15 +80,24 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 
 void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
+	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
+
 	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01")){
+	
+		if (!isASubChildOf(player))
+			return;
+
 		String text = "@jedi_spam:tune_crystal";
 		menuResponse->addRadialMenuItem(128, 3, text);
 	}
 
-	ComponentImplementation::fillObjectMenuResponse(menuResponse, player);
+
 }
 
 int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+
+	if (!isASubChildOf(player))
+		return 0;
 
 	if (selectedID == 128) {
 
@@ -154,12 +163,13 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 		setWoundChance(values->getCurrentValue("woundchance"));
 
 		// Following are incoming positive values in script (Due to loot modifier.)
-		// Switch to negative number.
+		// Switch value to negative number.
 		setSacHealth(MIN(values->getCurrentValue("attackhealthcost"), 9) * -1);
 		setSacAction(MIN(values->getCurrentValue("attackactioncost"), 9) * -1);
 		setSacMind(MIN(values->getCurrentValue("attackmindcost"), 9) * -1);
+//		setForceCost(Math::getPrecision(values->getCurrentValue("forcecost"), 9.9) * -1);
 		setForceCost(MIN(values->getCurrentValue("forcecost"), 9) * -1);
 	}
 
-	ComponentImplementation::updateCraftingValues(values, firstUpdate);
+	TangibleObjectImplementation::updateCraftingValues(values, firstUpdate);
 }

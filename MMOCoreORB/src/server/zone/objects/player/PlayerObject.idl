@@ -100,9 +100,9 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected Badges badges;
 	
-	protected int forcePower;
-	protected int forcePowerMax;
-	protected int forcePowerRegen;
+	protected float forcePower;
+	protected float forcePowerMax;
+	protected float forcePowerRegen;
 	
 	protected int foodFilling;
 	protected int foodFillingMax;
@@ -865,17 +865,17 @@ class PlayerObject extends IntangibleObject {
 		savedTerrainName = name;
 	}
 
-	public native void setForcePower(int fp, boolean notifyClient = true);
+	public native void setForcePower(float fp, boolean notifyClient = true);
 
-	public native void setForcePowerMax(int newValue, boolean notifyClient = true);
+	public native void setForcePowerMax(float newValue, boolean notifyClient = true);
 
 	public native void doForceRegen();
 	
-	public void setForcePowerRegen(int val) {
+	public void setForcePowerRegen(float val) {
 		forcePowerRegen = val;
 	}
 	
-	public int getForcePowerRegen() {
+	public float getForcePowerRegen() {
 		return forcePowerRegen;
 	}
 
@@ -1162,11 +1162,11 @@ class PlayerObject extends IntangibleObject {
 		return completedQuests;
 	}
 	
-	public int getForcePower() {
+	public float getForcePower() {
 		return forcePower;
 	}
 	
-	public int getForcePowerMax() {
+	public float getForcePowerMax() {
 		return forcePowerMax;
 	}
 	

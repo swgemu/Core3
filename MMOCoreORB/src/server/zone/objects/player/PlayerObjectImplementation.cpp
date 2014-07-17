@@ -1660,7 +1660,7 @@ void PlayerObjectImplementation::activateMissions() {
 	}
 }
 
-void PlayerObjectImplementation::setForcePowerMax(int newValue, bool notifyClient) {
+void PlayerObjectImplementation::setForcePowerMax(float newValue, bool notifyClient) {
 	if(newValue == getForcePowerMax())
 		return;
 
@@ -1679,14 +1679,14 @@ void PlayerObjectImplementation::setForcePowerMax(int newValue, bool notifyClien
 	}
 }
 
-void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
+void PlayerObjectImplementation::setForcePower(float fp, bool notifyClient) {
 
 	if(fp == getForcePower())
 		return;
 
-	// Set forcepower back to 0 incase player goes below	
+	// Set forcepower back to 0 incase player goes below
 	if (fp < 0)
-		fp = 0;	
+		fp = 0;
 
 	// Set force back to max incase player goes over
 	if (fp > getForcePowerMax())
@@ -1698,7 +1698,7 @@ void PlayerObjectImplementation::setForcePower(int fp, bool notifyClient) {
 		activateForcePowerRegen();
 	}
 
-	forcePower = fp;			
+	forcePower = fp;
 
 	if (notifyClient == true){
 		// Update the force power bar.
