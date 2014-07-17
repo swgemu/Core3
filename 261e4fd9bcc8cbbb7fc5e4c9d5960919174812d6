@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "da6255ed_b5f86b4a",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-07-17T13:00:35Z",
+      "side": 1,
+      "message": "this is wrong, forcePower and forcePower must be integers.\n\nIts a shared variable with the client, and they ints in the client.",
+      "revId": "261e4fd9bcc8cbbb7fc5e4c9d5960919174812d6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6255ed_75f31374",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponentImplementation.cpp",
         "patchSetId": 1
