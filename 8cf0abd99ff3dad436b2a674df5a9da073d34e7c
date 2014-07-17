@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_7530b356",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lair/npc_dynamic/rori_narmle_patrol_neutral_none.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-17T00:21:31Z",
+      "side": 1,
+      "message": "buildingType \u003d \"none\"",
+      "revId": "8cf0abd99ff3dad436b2a674df5a9da073d34e7c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_5535af44",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lair/npc_theater/rori_narmle_guard_camp_neutral_medium_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-17T00:21:31Z",
+      "side": 1,
+      "message": "this should be a theater",
+      "revId": "8cf0abd99ff3dad436b2a674df5a9da073d34e7c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
