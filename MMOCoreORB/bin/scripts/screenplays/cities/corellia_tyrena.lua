@@ -113,7 +113,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	--{"commoner",60,-17.1386,2.25,17.5614,90.0005,1935472, "conversation", ""},
 	--{"corsec_deserter",300,-19.1229,9,14.3195,135.007,1935472, "conversation", ""},
 	--{"corsec_detective",300,-18.0229,9,14.3195,180.008,1935472, "conversation", ""},
-	spawnMobile("corellia", "hal_horn", 60,-15.0532,2.25,11.1395,133.195,1935472)
 	--{"r3",60,-16.1386,2.25,18.5614,173.343,1935472, "calm", "R3-X8"},
 	--{"slicer",60,-18.0229,9,13.2195,360.011,1935472, "conversation", ""},
 

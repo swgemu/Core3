@@ -9,7 +9,7 @@ ging_darjeek_missions =
 			secondarySpawns =	{},
 			itemSpawns =
 			{
-				{ itemTemplate = "object/tangible/mission/quest_item/ging_darjeek_q1_needed.iff", itemName = "Datadisc" }
+				{ itemTemplate = "object/tangible/mission/quest_item/ging_darjeek_q1_needed.iff", itemName = "Minnet's Permit Data" }
 			},
 			rewards =
 			{

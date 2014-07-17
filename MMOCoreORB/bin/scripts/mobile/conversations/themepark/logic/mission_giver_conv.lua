@@ -358,6 +358,6 @@ createMissionGiverConvoTemplate("garm_bel_iblis_mission_giver_convotemplate","ga
 createMissionGiverConvoTemplate("gilad_pellaeon_mission_giver_convotemplate","gilad_pellaeon_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("gilker_budz_mission_giver_convotemplate","gilker_budz_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("ging_darjeek_mission_giver_convotemplate","ging_darjeek_mission_giver_conv_handler")
-
+createMissionGiverConvoTemplate("hal_horn_mission_giver_convotemplate","hal_horn_mission_giver_conv_handler")
 
 
