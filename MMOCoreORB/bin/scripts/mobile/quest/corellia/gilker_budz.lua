@@ -1,6 +1,6 @@
 gilker_budz = Creature:new {
 	objectName = "@npc_name:human_base_male",
-	customName = "Gilken Budz",
+	customName = "Gilker Budz",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -24,13 +24,13 @@ gilker_budz = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_giker_budz.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "gilker_budz_mission_giver_convotemplate",
 	attacks = {
 	}
 }
