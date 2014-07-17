@@ -227,9 +227,9 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	int maxDiff = finalSpawn->getMaxDifficulty();
 	int minDiff = finalSpawn->getMinDifficulty();
 	int difficultyLevel = System::random(maxDiff - minDiff) + minDiff;
-	int difficulty = (difficultyLevel - minDiff) / ((maxDiff > (minDiff + 5) ? maxDiff - minDiff : 5) / 5);
+	int difficulty = (float)(difficultyLevel - minDiff) / ((maxDiff > (minDiff + 5) ? (float)(maxDiff - minDiff) : 5.f) / 5.f);
 
-	if (difficulty == 5)
+	if (difficulty >= 5)
 		difficulty = 4;
 
 	CreatureManager* creatureManager = zone->getCreatureManager();
