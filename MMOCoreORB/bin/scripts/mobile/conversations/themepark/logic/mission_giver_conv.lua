@@ -357,5 +357,7 @@ createMissionGiverConvoTemplate("didina_lippinoss_mission_giver_convotemplate","
 createMissionGiverConvoTemplate("garm_bel_iblis_mission_giver_convotemplate","garm_bel_iblis_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("gilad_pellaeon_mission_giver_convotemplate","gilad_pellaeon_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("gilker_budz_mission_giver_convotemplate","gilker_budz_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("ging_darjeek_mission_giver_convotemplate","ging_darjeek_mission_giver_conv_handler")
+
 
 
