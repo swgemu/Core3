@@ -1,4 +1,4 @@
-aakuari_assassin = Creature:new {
+aakuan_assassin = Creature:new {
 	objectName = "",
 	customName = "an Aa'kuan Assassin",
 	socialGroup = "aakuans",
@@ -49,4 +49,4 @@ aakuari_assassin = Creature:new {
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(aakuari_assassin, "aakuari_assassin")
+CreatureTemplates:addCreatureTemplate(aakuan_assassin, "aakuan_assassin")
