@@ -76,6 +76,6 @@ function TalusAakuanCaveScreenPlay:spawnMobiles()
        spawnMobile("talus", "aakuan_spice_guard", 300, 139.6, -66.7, -86.5, -156, 4255659)
        spawnMobile("talus", "aakuan_anarchist", 300, 153.7, -65.9, -129.6, -47, 4255659)
        spawnMobile("talus", "aakuan_champion", 300, 189.3, -66.1, -105.5, -72, 4255660)
-       spawnMobile("talus", "aakuari_assassin", 300, 190.0, -66.3, -97.9, -93, 4255660)
+       spawnMobile("talus", "aakuan_assassin", 300, 190.0, -66.3, -97.9, -93, 4255660)
        spawnMobile("talus", "aakuan_warder", 300, 165.0, -66.7, -98.0, -96, 4255660)
 end
