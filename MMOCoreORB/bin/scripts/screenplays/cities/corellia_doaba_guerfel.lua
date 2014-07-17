@@ -78,7 +78,6 @@ function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()
 	--{"corsec_sergeant",300,8.35364,-0.894992,6.38149,360.011,3075429, "conversation", ""},
 	--{"entertainer",60,21.878,-0.894997,-14.6126,179.999,3075430, "conversation", ""},
 	--{"farmer_rancher",60,8.35364,-0.894992,7.38149,179.999,3075429, "conversation", ""},
-	spawnMobile("corellia", "jadam_questrel", 60,9.77643,-0.894992,-14.4836,262.46,3075432)
 	--{"slicer",60,40.8822,0.104999,3.32819,180.003,3075427, "conversation", ""},
 	
 		--Guild Hall 3122 5268
