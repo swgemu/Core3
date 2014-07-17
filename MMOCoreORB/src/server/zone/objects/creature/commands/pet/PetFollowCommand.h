@@ -5,6 +5,7 @@
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 
 class PetFollowCommand : public QueueCommand {
@@ -46,6 +47,8 @@ public:
 		}
 
 		pet->setFollowObject(targetObject);
+
+		CombatManager::instance()->attemptPeace(pet);
 
 		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 

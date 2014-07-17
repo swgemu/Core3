@@ -476,7 +476,7 @@ SceneObject* AiAgentImplementation::getTargetFromMap() {
 }
 
 SceneObject* AiAgentImplementation::getTargetFromDefenders() {
-	CreatureObject* target = NULL;
+	SceneObject* target = NULL;
 
 	if (defenderList.size() > 0) {
 		for (int i = 0; i < defenderList.size(); ++i) {
@@ -493,6 +493,15 @@ SceneObject* AiAgentImplementation::getTargetFromDefenders() {
 					// if the object on the defender list is no longer attackable, remove it
 					removeDefender(targetCreature);
 				}
+			} else if (tarObj != NULL && tarObj->isTangibleObject()) {
+				TangibleObject* targetTano = cast<TangibleObject*>(tarObj);
+
+				if (!targetTano->isDestroyed() && targetTano->getDistanceTo(_this.get()) < 128.f && targetTano->isAttackableBy(_this.get())) {
+					target = targetTano;
+					break;
+				} else {
+					removeDefender(targetTano);
+				}
 			}
 		}
 	}
@@ -501,7 +510,19 @@ SceneObject* AiAgentImplementation::getTargetFromDefenders() {
 }
 
 bool AiAgentImplementation::validateTarget() {
-	return followObject != NULL && followObject->isInRange(_this.get(), 128) && followObject->isCreatureObject() && cast<CreatureObject*>(followObject.get())->isAttackableBy(_this.get()) && !cast<CreatureObject*>(followObject.get())->isDead() && !cast<CreatureObject*>(followObject.get())->isIncapacitated();
+	if (followObject == NULL)
+		return false;
+
+	if (!followObject->isInRange(_this.get(), 128))
+		return false;
+
+	if (followObject->isCreatureObject() && (!cast<CreatureObject*>(followObject.get())->isAttackableBy(_this.get()) || cast<CreatureObject*>(followObject.get())->isDead() || cast<CreatureObject*>(followObject.get())->isIncapacitated()))
+		return false;
+
+	if (followObject->isTangibleObject() && (!cast<TangibleObject*>(followObject.get())->isAttackableBy(_this.get()) || cast<TangibleObject*>(followObject.get())->isDestroyed()))
+		return false;
+
+	return true;
 }
 
 int AiAgentImplementation::notifyAttack(Observable* observable) {

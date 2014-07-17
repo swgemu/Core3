@@ -697,11 +697,9 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object){
 					return true;
 		} else if(object->getFaction() != getFaction() && ghost->getFactionStatus() >= FactionStatus::COVERT)
 				return true;
-
-
 	}
 
-	return false;
+	return getPvpStatusBitmask() & CreatureFlag::ATTACKABLE;
 }
 
 void InstallationObjectImplementation::createChildObjects(){
