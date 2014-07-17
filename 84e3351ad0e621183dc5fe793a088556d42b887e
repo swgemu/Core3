@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_757e73e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/garm_bel_iblis.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-17T03:47:14Z",
+      "side": 1,
+      "message": "Don\u0027t use the crackdown version.",
+      "revId": "84e3351ad0e621183dc5fe793a088556d42b887e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_55836fcc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/mission_target_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-17T03:47:14Z",
+      "side": 1,
+      "message": "What\u0027s this for?",
+      "revId": "84e3351ad0e621183dc5fe793a088556d42b887e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_3588fbe6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1553,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-17T03:47:14Z",
+      "side": 1,
+      "message": "Rather than possibly setting pvp bitmask twice:\n\nnpcCreo:setFaction(playerCreo:getFaction())\nif (player:isOvert() \u003d\u003d true) then\n   npcCreo:setPvpStatusBitmask(5)\nelse\n   npcCreo:setPvpStatusBitmask(1)\nend",
+      "revId": "84e3351ad0e621183dc5fe793a088556d42b887e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
