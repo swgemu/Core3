@@ -390,8 +390,6 @@ bool CreatureImplementation::canCollectDna(CreatureObject* player) {
 void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateData) {
 	loadTemplateData(templateData);
 
-	//npcTemplate->getCreatureBitmask() + CreatureFlag::BABY; -- TODO: need to add a bitmask for AI (pack, herd, etc)
-
 	setCustomObjectName(getDisplayedName() + " (baby)", false);
 
 	setHeight(templateData->getScale() * 0.46, false);
@@ -406,6 +404,7 @@ void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateD
 
 	clearPvpStatusBit(CreatureFlag::AGGRESSIVE, false);
 	clearPvpStatusBit(CreatureFlag::ENEMY, false);
+	setCreatureBitmask(getCreatureBitmask() + CreatureFlag::BABY);
 }
 
 void CreatureImplementation::setPetLevel(int newLevel) {

@@ -1537,7 +1537,7 @@ int DirectorManager::spawnMobile(lua_State* L) {
 	CreatureObject* creature = creatureManager->spawnCreature(mobile.hashCode(), 0, x, z, y, parentID);
 
 	if (creature == NULL) {
-		instance()->error("coult not spawn mobile " + mobile);
+		instance()->error("could not spawn mobile " + mobile);
 
 		lua_pushnil(L);
 	} else {
@@ -1592,7 +1592,7 @@ int DirectorManager::spawnMobileRandom(lua_State* L) {
 	CreatureObject* creature = creatureManager->spawnCreature(mobile.hashCode(), 0, x, z, y, parentID);
 
 	if (creature == NULL) {
-		instance()->error("coult not spawn mobile " + mobile);
+		instance()->error("could not spawn mobile " + mobile);
 
 		lua_pushnil(L);
 	} else {

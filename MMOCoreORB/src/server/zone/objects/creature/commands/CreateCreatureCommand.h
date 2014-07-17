@@ -138,9 +138,12 @@ public:
 		if (baby)
 			npc = cast<AiAgent*>(creatureManager->spawnCreatureAsBaby(templ, posX, posZ, posY, parID));
 		else if (tempName.indexOf(".iff") != -1)
-			npc = cast<AiAgent*>(creatureManager->spawnCreature(templ, posX, posZ, posY, parID));
-		else
+			npc = cast<AiAgent*>(creatureManager->spawnCreatureWithAi(templ, posX, posZ, posY, parID));
+		else {
 			npc = cast<AiAgent*>(creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID));
+			if (npc != NULL)
+				npc->activateLoad("");
+		}
 
 		if (baby && npc == NULL)
 			creature->sendSystemMessage("You cannot spawn " + tempName + " as a baby.");

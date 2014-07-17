@@ -282,27 +282,17 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureWithLevel(unsigned i
 	return creature;
 }
 
-CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templateCRC, float x, float z, float y, SceneObject* cell, bool persistent) {
-/*	ManagedReference<SceneObject*> object = zoneServer->createObject(String("object/creature/ai/ai_actor.iff").hashCode(), persistent);
-	if (object == NULL || !object->isActorObject()) {
-		error("could not spawn actor");
-		return NULL;
+CreatureObject* CreatureManagerImplementation::spawnCreatureWithAi(uint32 templateCRC, float x, float z, float y, uint64 parentID, bool persistent) {
+	CreatureObject* creature = spawnCreature(templateCRC, 0, x, z, y, parentID, persistent);
+
+	if (creature != NULL && creature->isAiAgent())
+		cast<AiAgent*>(creature)->activateLoad("");
+	else {
+		error("could not spawn template " + String::valueOf(templateCRC) + " with AI.");
+		creature = NULL;
 	}
 
-	AiActor* actor = cast<AiActor*>(object.get());
-
-	if (actor == NULL) {
-		error("server did not create actor");
-		return NULL;
-	}
-
-	actor->setHomeLocation(x, z, y, cell);
-	actor->loadTemplateData(creatureTemplateManager->getTemplate(templateCRC));
-
-	CreatureObject* host = actor->getHost();
-
-	return host;*/
-	return NULL;
+	return creature;
 }
 
 String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {
@@ -361,6 +351,13 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templa
 	}
 
 	placeCreature(creo, x, z, y, parentID);
+
+	if (creo != NULL && creo->isAiAgent())
+		cast<AiAgent*>(creo)->activateLoad("");
+	else {
+		error("could not spawn template " + templateToSpawn + " as baby with AI.");
+		creo = NULL;
+	}
 
 	return creo;
 }

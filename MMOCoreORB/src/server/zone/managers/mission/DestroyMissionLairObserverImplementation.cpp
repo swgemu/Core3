@@ -144,7 +144,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 			}
 
 			if (creo == NULL)
-				creo = creatureManager->spawnCreature(templateToSpawn.hashCode(), 0, x, z, y);
+				creo = creatureManager->spawnCreatureWithAi(templateToSpawn.hashCode(), x, z, y);
 
 			if (creo == NULL)
 				continue;

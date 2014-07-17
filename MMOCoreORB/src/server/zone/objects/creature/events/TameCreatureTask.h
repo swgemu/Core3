@@ -43,21 +43,13 @@ public:
 		if (!creature->isInRange(player, 8.0f)) {
 			player->sendSystemMessage("@hireling/hireling:taming_toofar"); // You are too far away to continue taming.
 			creature->showFlyText("npc_reaction/flytext","toofar", 204, 0, 0);  // You are too far away to tame the creature.
-			creature->setPvpStatusBitmask(originalMask, true);
-			if (creature->isAiAgent()) {
-				AiAgent* agent = cast<AiAgent*>(creature.get());
-				agent->activateLoad("");
-			}
+			resetStatus();
 			return;
 		}
 
 		if (!creature->canTameMe(player)) {
 			player->sendSystemMessage("@pet/pet_menu:sys_cant_tame"); // You can't tame that
-			creature->setPvpStatusBitmask(originalMask, true);
-			if (creature->isAiAgent()) {
-				AiAgent* agent = cast<AiAgent*>(creature.get());
-				agent->activateLoad("");
-			}
+			resetStatus();
 			return;
 		}
 
@@ -93,11 +85,7 @@ public:
 			else {
 				player->sendSystemMessage("@hireling/hireling:taming_fail"); // You fail to tame the creature.
 				creature->showFlyText("npc_reaction/flytext","fail", 204, 0, 0);  // You fail to tame the creature.
-				creature->setPvpStatusBitmask(originalMask, true);
-				if (creature->isAiAgent()) {
-					AiAgent* agent = cast<AiAgent*>(creature.get());
-					agent->activateLoad("");
-				}
+				resetStatus();
 
 				int ferocity = creature->getFerocity();
 				if (System::random(20 - ferocity) == 0)
@@ -121,11 +109,7 @@ public:
 		ManagedReference<PetControlDevice*> controlDevice = zoneServer->createObject(objectString.hashCode(), 1).castTo<PetControlDevice*>();
 
 		if (controlDevice == NULL) {
-			creature->setPvpStatusBitmask(originalMask, true);
-			if (creature->isAiAgent()) {
-				AiAgent* agent = cast<AiAgent*>(creature.get());
-				agent->activateLoad("");
-			}
+			resetStatus();
 			return;
 		}
 
@@ -134,11 +118,7 @@ public:
 		ObjectManager* objectManager = zoneServer->getObjectManager();
 
 		if (datapad == NULL || playerManager == NULL || objectManager == NULL) {
-			creature->setPvpStatusBitmask(originalMask, true);
-			if (creature->isAiAgent()) {
-				AiAgent* agent = cast<AiAgent*>(creature.get());
-				agent->activateLoad("");
-			}
+			resetStatus();
 			return;
 		}
 
@@ -192,6 +172,14 @@ public:
 
 		player->sendSystemMessage("@hireling/hireling:taming_success"); // You successfully tame the creature.
 		creature->showFlyText("npc_reaction/flytext","success", 0, 204, 0);  // You tame the creature.
+	}
+
+	void resetStatus() {
+		creature->setPvpStatusBitmask(originalMask, true);
+		if (creature->isAiAgent()) {
+			AiAgent* agent = cast<AiAgent*>(creature.get());
+			agent->activateLoad("");
+		}
 	}
 };
 

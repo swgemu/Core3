@@ -296,8 +296,6 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 			}
 		}
 	}
-
-	activateLoad("");
 }
 
 void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
@@ -793,6 +791,8 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 		zone->transferObject(_this.get(), -1, true);
 
 	respawnCounter++;
+
+	activateLoad("");
 }
 
 void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {

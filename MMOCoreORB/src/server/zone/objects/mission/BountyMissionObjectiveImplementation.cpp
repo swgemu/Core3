@@ -134,7 +134,7 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 		Vector3 position = getTargetPosition();
 
 		try {
-			npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(mission->getTargetOptionalTemplate().hashCode(), 0, position.getX(), zone->getHeight(position.getX(), position.getY()), position.getY(), 0));
+			npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreatureWithAi(mission->getTargetOptionalTemplate().hashCode(), position.getX(), zone->getHeight(position.getX(), position.getY()), position.getY(), 0));
 		} catch (Exception& e) {
 			fail();
 			ManagedReference<CreatureObject*> player = getPlayerOwner();
