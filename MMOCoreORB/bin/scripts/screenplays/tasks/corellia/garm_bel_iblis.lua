@@ -1,11 +1,3 @@
-buildingIrenez =
-	{
-		type = "destructible",
-		building = { template = "object/building/military/pirate_warehouse.iff", planet = "corellia" },
-		terminal = { template = "object/tangible/terminal/terminal_destructible_building.iff", vectorCellID = 3, x = 0, z = 0.3, y = -6.0 },
-		childNpcs = {}
-	}
-
 irenez_missions =
 	{
 		{
