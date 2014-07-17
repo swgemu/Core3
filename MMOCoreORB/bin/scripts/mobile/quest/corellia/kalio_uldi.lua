@@ -21,14 +21,14 @@ kalio_uldi = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = { "object/mobile/dressed_criminal_thug_rodian_male_01.iff" },
 	lootGroups = {},
-	weapons = {"pirate_weapons_light"},
+	weapons = {},
 	conversationTemplate = "coraline_dynes_mission_target_convotemplate",
 	attacks = {}
 }

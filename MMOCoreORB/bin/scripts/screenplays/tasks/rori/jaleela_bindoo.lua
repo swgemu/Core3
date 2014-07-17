@@ -22,13 +22,10 @@ jaleela_bindoo_missions =
       {
         { npcTemplate = "jonda_trask", planetName = "rori", npcName = "Jonda Trask" }
       },
-      secondarySpawns = {
-      -- Unknown.
-      },
+      secondarySpawns = {},
       itemSpawns = {},
       rewards =
       {
-        -- Proper reward unknown. Needs researched.
         { rewardType = "credits", amount = 50 },
       }
     },
@@ -38,17 +35,13 @@ jaleela_bindoo_missions =
       {
         { npcTemplate = "jaleela_imperial_courier", planetName = "rori", npcName = "Imperial Courier" }
       },
-      secondarySpawns =
-      {
-      -- Unknown, needs researched.
-      },
+      secondarySpawns = {},
       itemSpawns =
       {
         { itemTemplate = "object/tangible/mission/quest_item/jaleela_bindoo_q3_needed.iff", itemName = "" }
       },
       rewards =
       {
-        -- Proper reward unknown. Needs researched.
         { rewardType = "credits", amount = 100 }
       }
     },
@@ -59,7 +52,6 @@ jaleela_bindoo_missions =
         { npcTemplate = "jaleela_zim_graedler", planetName = "rori", npcName = "Zim Graedler" }
       },
       secondarySpawns = {
-        -- Temporary, needs researched.
         { npcTemplate = "jaleela_protestor_leader", planetName = "rori", npcName = "Protestor Leader" },
         { npcTemplate = "jaleela_protestor", planetName = "rori", npcName = "a Protestor" },
         { npcTemplate = "jaleela_protestor", planetName = "rori", npcName = "a Protestor" }
@@ -67,7 +59,6 @@ jaleela_bindoo_missions =
       itemSpawns = {},
       rewards =
       {
-        -- Proper reward unknown. Needs researched.
         { rewardType = "credits", amount = 200 },
       }
     },
