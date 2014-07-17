@@ -344,11 +344,15 @@ function ThemeParkLogic:getStfFile(npcNumber)
 	return npcData.stfFile
 end
 
-function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversingPlayer)
+function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversingPlayer, pConversingNpc)
 	local mission = self:getMission(npcNumber, missionNumber)
 	local creature = LuaCreatureObject(pConversingPlayer)
 
 	writeStringData(creature:getObjectID() .. ":activeScreenPlay", self.className)
+	
+	ObjectManager.withCreatureObject(pConversingNpc, function(npc)
+		self:writeData(pConversingPlayer, ":activeQuestGiver", npc:getObjectID())
+	end)
 
 	if mission.missionType == "deliver" then
 		return self:handleDeliverMissionAccept(mission, pConversingPlayer, missionNumber)
@@ -586,6 +590,10 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 						npc:setPvpStatusBitmask(0)
 						writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
 					end)
+				end)
+			elseif mission.missionType == "retrieve" or mission.missionType == "deliver" then
+				ObjectManager.withCreatureObject(pNpc, function(npc)
+						npc:setPvpStatusBitmask(0)
 				end)
 			end
 		end
@@ -1061,7 +1069,16 @@ function ThemeParkLogic:createEscortReturnArea(pNpc, pPlayer)
 
 		local npcData = self.npcMap[npcNumber]
 		if (self:isValidConvoString(stfFile, ":npc_dropoff_" .. missionNumber)) then
-			local pEscortArea = spawnSceneObject(npcData.spawnData.planetName, "object/active_area.iff", npcData.spawnData.x, npcData.spawnData.z, npcData.spawnData.y, 0, 0, 0, 0, 0)
+			local pEscortArea
+			if (npcData.spawnData.cellID == 0) then
+				pEscortArea = spawnSceneObject(npcData.spawnData.planetName, "object/active_area.iff", npcData.spawnData.x, npcData.spawnData.z, npcData.spawnData.y, 0, 0, 0, 0, 0)
+			else
+				local questNpcID = readData(playerID .. ":activeQuestGiver")
+				local pQuestNpc = getCreatureObject(questNpcID)
+				ObjectManager.withCreatureObject(pQuestNpc, function(questNpc)
+					pEscortArea = spawnSceneObject(npcData.spawnData.planetName, "object/active_area.iff", questNpc:getWorldPositionX(), questNpc:getWorldPositionZ(), questNpc:getWorldPositionY(), 0, 0, 0, 0, 0)
+				end)
+			end
 			ObjectManager.withActiveArea(pEscortArea, function(activeArea)
 				activeArea:setRadius(10)
 				createObserver(ENTEREDAREA, self.className, "notifyEnteredEscortArea", pEscortArea)
@@ -1599,6 +1616,7 @@ function ThemeParkLogic:resetCurrentMission(pConversingPlayer)
 
 	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":activeMission", 0)
+	writeData(creature:getObjectID() .. ":activeQuestGiver", 0)
 	writeData(creature:getObjectID() .. ":breechNpcID", 0)
 	writeData(creature:getObjectID() .. ":breechAreaID", 0)
 	writeData(creature:getObjectID() .. ":hasPreReqItem", 0)

@@ -219,7 +219,7 @@ function mission_giver_conv_handler:handleScreenAccept(pConversationTemplate, pC
 	local nextScreenName = "npc_noloc_n"
 	if self.themePark:getMissionType(npcNumber, pConversingPlayer) == "deliver" and self.themePark:hasFullInventory(pConversingPlayer) == true then
 		nextScreenName = "inv_full"
-	elseif self.themePark:handleMissionAccept(npcNumber, missionNumber, pConversingPlayer) == true then
+	elseif self.themePark:handleMissionAccept(npcNumber, missionNumber, pConversingPlayer, pConversingNpc) == true then
 		nextScreenName = "npc_2_n"
 	end
 
