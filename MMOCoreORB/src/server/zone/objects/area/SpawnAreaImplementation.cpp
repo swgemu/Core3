@@ -200,8 +200,8 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	randomPosition.setZ(spawnZ);
 
 	//lets check if we intersect with some object (buildings, etc..)
-	if (CollisionManager::checkSphereCollision(randomPosition, 64.f + finalSpawn->getSize(), zone))
-		return 7;
+	//if (CollisionManager::checkSphereCollision(randomPosition, 64.f + finalSpawn->getSize(), zone))
+	//	return 7;
 
 	// Check the spot to see if spawning is allowed
 	if (!planetManager->isSpawningPermittedAt(randomPosition.getX(), randomPosition.getY(), finalSpawn->getSize() + 64.f)) {
