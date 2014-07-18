@@ -1,6 +1,6 @@
-lasha_bindari = Creature:new {
-	objectName = "@npc_name:human_base_male",
-	customName = "Lasha Bindari",
+karena_keer = Creature:new {
+	objectName = "@npc_name:zabrak_base_female",
+	customName = "Karena Keer",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -24,15 +24,15 @@ lasha_bindari = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_lasha_bindari.iff"},
+	templates = {"object/mobile/dressed_noble_zabrak_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "lady_hutt_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(lasha_bindari, "lasha_bindari")
+CreatureTemplates:addCreatureTemplate(karena_keer, "karena_keer")

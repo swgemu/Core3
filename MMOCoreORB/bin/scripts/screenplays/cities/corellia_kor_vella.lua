@@ -463,7 +463,6 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 
 		--Cantina
 	spawnMobile("corellia", "stormtrooper_commando", 400, 48.13, 0.1, 2.47, 292, 3005397)
-	spawnMobile("corellia", "lasha_bindari", 60, 39, 0.1, 0.9, 189, 3005397)
 	spawnMobile("corellia", "artisan", 60, 34.4, 0.1, -8.04, 0, 3005398)
 	spawnMobile("corellia", "mercenary", 60, 34.4, 0.1, -6.9, 180, 3005398)
 	spawnMobile("corellia", "trainer_entertainer", 1, 26.2, -0.9, 10.25, 260, 3005399)

@@ -67,7 +67,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "trainer_entertainer", 0,6.15345,-0.894992,-19.3905,0,2625358)
 	--{"artisan",60,-8.04223,-0.894908,-17.7225,360.011,2625360, "conversation", ""},
 	--{"corsec_agent",300,-8.04223,-0.894941,-16.6225,180.002,2625360, "conversation", ""},
-	--{"karena_keer",60,-7.91182,-0.895002,18.5763,115.51,2625361, "calm", "Karena Keer"},
 	--{"shalera_the_hutt",60,-19.2041,-0.894989,22.0094,239.061,2625364, "calm", "Shalera the Hutt"},
 	--{"vrak",60,-26.3961,-0.894991,23.1611,112,2625364, "nervous", ""},
 	--{"commoner",60,-26.4983,-0.519991,10.8543,179.992,2625365, "conversation", ""},
