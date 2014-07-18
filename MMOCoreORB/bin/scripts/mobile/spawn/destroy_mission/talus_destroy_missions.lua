@@ -121,12 +121,6 @@ talus_destroy_missions = {
 			maxDifficulty = 15,
 			size = 25,
 		},
-		{
-			lairTemplateName = "talus_sleemo_delinquent_camp_neutral_medium_theater",		
-			minDifficulty = 5,
-			maxDifficulty = 8,
-			size = 25,
-		},
 	}
 }
 
