@@ -202,7 +202,7 @@ function ThemeParkLogic:getMissionFaction(npcNumber, missionNumber)
 	if mission.faction == nil and npcData.faction == nil then
 		return 0
 	end
-	
+
 	if (mission.faction ~= nil) then
 		return mission.faction
 	else
@@ -216,7 +216,7 @@ function ThemeParkLogic:getNpcFaction(npcNumber)
 	if npcData.faction == nil then
 		return 0
 	end
-	
+
 	return npcData.faction
 end
 
@@ -589,7 +589,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 				end)
 			elseif mission.missionType == "retrieve" or mission.missionType == "deliver" then
 				ObjectManager.withCreatureObject(pNpc, function(npc)
-						npc:setPvpStatusBitmask(0)
+					npc:setPvpStatusBitmask(0)
 				end)
 			end
 		end
@@ -1062,9 +1062,13 @@ function ThemeParkLogic:createEscortReturnArea(pNpc, pPlayer)
 		local npcNumber = self:getActiveNpcNumber(pPlayer)
 		local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
 		local stfFile = self:getStfFile(npcNumber)
-		
+
 		local npcData = self:getNpcData(npcNumber)
-		if (self:isValidConvoString(stfFile, ":npc_dropoff_" .. missionNumber)) then
+		local escortAreaID
+		ObjectManager.withCreatureObject(pPlayer, function(player)
+			escortAreaID = readData(player:getObjectID() .. ":escortAreaID")
+		end)
+		if (self:isValidConvoString(stfFile, ":npc_dropoff_" .. missionNumber) and (escortAreaID == nil or escortAreaID == 0)) then
 			local pEscortArea
 			if (npcData.spawnData.cellID == 0) then
 				pEscortArea = spawnSceneObject(npcData.spawnData.planetName, "object/active_area.iff", npcData.spawnData.x, npcData.spawnData.z, npcData.spawnData.y, 0, 0, 0, 0, 0)
@@ -1076,6 +1080,9 @@ function ThemeParkLogic:createEscortReturnArea(pNpc, pPlayer)
 				createObserver(ENTEREDAREA, self.className, "notifyEnteredEscortArea", pEscortArea)
 				ObjectManager.withCreatureObject(pNpc, function(escortNpc)
 					writeData(activeArea:getObjectID() .. ":escortNpcID", escortNpc:getObjectID())
+					ObjectManager.withCreatureObject(pPlayer, function(player)
+						writeData(player:getObjectID() .. ":escortAreaID", activeArea:getObjectID())
+					end)
 				end)
 			end)
 		end
@@ -1101,6 +1108,9 @@ function ThemeParkLogic:notifyEnteredEscortArea(pActiveArea, pCreature)
 				local stfFile = self:getStfFile(npcNumber)
 				spatialChat(pCreature, stfFile .. ":npc_dropoff_" .. missionNumber)
 				deleteData(activeArea:getObjectID() .. ":escortNpcID")
+				ObjectManager.withCreatureObject(pPlayer, function(player)
+					writeData(player:getObjectID() .. ":escortAreaID", 0)
+				end)
 				ObjectManager.withSceneObject(pActiveArea, function(activeArea)
 					activeArea:destroyObjectFromWorld()
 				end)
@@ -1611,6 +1621,7 @@ function ThemeParkLogic:resetCurrentMission(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":activeMission", 0)
 	writeData(creature:getObjectID() .. ":breechNpcID", 0)
 	writeData(creature:getObjectID() .. ":breechAreaID", 0)
+	writeData(creature:getObjectID() .. ":escortAreaID", 0)
 	writeData(creature:getObjectID() .. ":hasPreReqItem", 0)
 	writeStringData(creature:getObjectID() .. ":activeScreenPlay", "")
 
