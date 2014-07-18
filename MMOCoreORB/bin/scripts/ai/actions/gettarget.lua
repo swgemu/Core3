@@ -64,7 +64,7 @@ function GetTargetBase:doAction(pAgent)
 		end
 		
 		if (agent:isInCombat()) then
-		print("5")
+		--print("5")
 			agent:clearCombatState(true)
 			agent:setOblivious()
 		end
@@ -77,44 +77,44 @@ GetTargetPet = createClass(GetTargetBase, PetInterrupt)
 
 function GetTargetPet:doAction(pAgent)
 	if (pAgent ~= nil) then
-		print("1")
+		--print("1")
 		local agent = LuaAiAgent(pAgent)
 		local creature = LuaCreatureObject(pAgent)
 
 		local pTarget = agent:getTargetFromMap()
-		print(pTarget)
+		--print(pTarget)
 		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
-			print("2")
+			--print("2")
 			agent:setFollowObject(pTarget)
 			agent:setDefender(pTarget)
 			if (agent:validateTarget()) then
-				print("3")
+				--print("3")
 				return BEHAVIOR_SUCCESS
 			else
-				print("4")
+				--print("4")
 				agent:removeDefender()
 			end
 		elseif pTarget ~= nil and agent:validateTarget() then
-			print("5")
+			--print("5")
 			return BEHAVIOR_SUCCESS
 		end
 
 
 		pTarget = agent:getTargetFromDefenders()
-		print(pTarget)
+		--print(pTarget)
 		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
-			print("6")
+			--print("6")
 			agent:setFollowObject(pTarget)
 			agent:setDefender(pTarget)
 			if (agent:validateTarget()) then
-				print("7")
+				--print("7")
 				return BEHAVIOR_SUCCESS
 			else
-				print("8")
+				--print("8")
 				agent:removeDefender()
 			end
 		elseif pTarget ~= nil and agent:validateTarget() then
-			print("9")
+			--print("9")
 			return BEHAVIOR_SUCCESS
 		end
 	end
