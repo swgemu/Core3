@@ -1046,7 +1046,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 			targetMutex.unlock();
 
-			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), targetPosition->getPositionZ(), this->getSwimHeight()));
+			IntersectionResults intersections;
+			CollisionManager::getWorldFloorCollisions(targetPosition->getPositionX(), targetPosition->getPositionY(), zone, true, &intersections, (CloseObjectsVector*) this->getCloseObjects());
+			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), targetPosition->getPositionZ(), this->getSwimHeight(), &intersections, (CloseObjectsVector*) this->getCloseObjects()));
 
 			targetMutex.lock();
 		}
@@ -1236,7 +1238,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 							if (zone != NULL) {
 								targetMutex.unlock();
 
-								newPositionZ = zone->getPlanetManager()->findClosestWorldFloor(newPositionX, newPositionY, targetPosition->getPositionZ(), this->getSwimHeight());
+								IntersectionResults intersections;
+								CollisionManager::getWorldFloorCollisions(newPositionX, newPositionY, zone, true, &intersections, (CloseObjectsVector*) this->getCloseObjects());
+								newPositionZ = zone->getPlanetManager()->findClosestWorldFloor(newPositionX, newPositionY, targetPosition->getPositionZ(), this->getSwimHeight(), &intersections, (CloseObjectsVector*) this->getCloseObjects());
 
 								targetMutex.lock();
 							}
@@ -1401,7 +1405,9 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 
 		if (newPoint.getCell() == NULL && zone != NULL) {
 			PlanetManager* planetManager = zone->getPlanetManager();
-			newPoint.setPositionZ(planetManager->findClosestWorldFloor(newPoint.getPositionX(), newPoint.getPositionY(), newPoint.getPositionZ(), this->getSwimHeight()));
+			IntersectionResults intersections;
+			CollisionManager::getWorldFloorCollisions(newPoint.getPositionX(), newPoint.getPositionY(), zone, true, &intersections, (CloseObjectsVector*) this->getCloseObjects());
+			newPoint.setPositionZ(planetManager->findClosestWorldFloor(newPoint.getPositionX(), newPoint.getPositionY(), newPoint.getPositionZ(), this->getSwimHeight(), &intersections, (CloseObjectsVector*) this->getCloseObjects()));
 		}
 
 		patrolPoints.add(newPoint);

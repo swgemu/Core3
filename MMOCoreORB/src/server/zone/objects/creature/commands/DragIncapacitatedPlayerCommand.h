@@ -95,8 +95,11 @@ public:
 
 		if (object2Cell == NULL) {
 			Zone* zone = object1->getZone();
-			if (zone != NULL)
-				newPosition->setZ(zone->getPlanetManager()->findClosestWorldFloor(newPosition->getX(), newPosition->getY(), object1->getWorldPositionZ(), 0));
+			if (zone != NULL) {
+				IntersectionResults intersections;
+				CollisionManager::getWorldFloorCollisions(newPosition->getX(), newPosition->getY(), zone, true, &intersections, (CloseObjectsVector*) object1->getCloseObjects());
+				newPosition->setZ(zone->getPlanetManager()->findClosestWorldFloor(newPosition->getX(), newPosition->getY(), object1->getWorldPositionZ(), 0, &intersections, (CloseObjectsVector*) object1->getCloseObjects()));
+			}
 
 		} else {
 			newPosition->setZ(object2Position.getZ());

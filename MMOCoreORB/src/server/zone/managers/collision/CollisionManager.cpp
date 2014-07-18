@@ -371,7 +371,7 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, boo
 	if (closeObjectsVector != NULL) {
 		closeObjectsVector->safeCopyTo(closeObjects);
 	} else {
-		zone->info("Null closeobjects vector in CollisionManager::getWorldFloorCollision", true);
+		zone->info("Null closeobjects vector in CollisionManager::getWorldFloorCollisions", true);
 		zone->getInRangeObjects(x, y, 128, &closeObjects, true);
 	}
 

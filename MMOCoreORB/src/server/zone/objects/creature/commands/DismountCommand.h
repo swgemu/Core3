@@ -111,7 +111,9 @@ public:
 
 		clocker.release();
 
-		float z = planetManager->findClosestWorldFloor(creature->getPositionX(), creature->getPositionY(), creature->getPositionZ(), creature->getSwimHeight());
+		IntersectionResults intersections;
+		CollisionManager::getWorldFloorCollisions(creature->getPositionX(), creature->getPositionY(), zone, true, &intersections, (CloseObjectsVector*) creature->getCloseObjects());
+		float z = planetManager->findClosestWorldFloor(creature->getPositionX(), creature->getPositionY(), creature->getPositionZ(), creature->getSwimHeight(), &intersections, (CloseObjectsVector*) creature->getCloseObjects());
 
 		creature->teleport(creature->getPositionX(), z, creature->getPositionY(), 0);
 
