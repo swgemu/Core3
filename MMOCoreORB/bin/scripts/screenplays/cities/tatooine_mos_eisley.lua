@@ -89,7 +89,6 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	--{"tech_mor",60,4.11,-0.894992,-17.07,45.0013,1082880, "themepark_music_2", "Tech Mo'r"},
 	--{"tedn_dahai",60,1.29,-0.894992,-15.18,70.0021,1082880, "themepark_music_3", "Tedn Dahai"},
 	--{"dravis",60,-21.2103,-0.894989,24.3324,164.437,1082886, "neutral", ""},
-	--{"talon_karrde",60,-25.6775,-0.519991,8.77374,12.497,1082887, "neutral", ""},
 
 	--Tavern 3339 -4894
 	--{"dim_u_abbot",300,-3.56731,0.408271,-0.572452,135.005,1187893, "conversation", ""},
