@@ -1,5 +1,5 @@
 talon_karrde = Creature:new {
-	objectName = "@npc_spawner_n:talon_karrde",
+	objectName = "@mob/creature_names:talon_karrde",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -23,13 +23,13 @@ talon_karrde = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_talon_karrde.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "talon_karrde_mission_giver_convotemplate",
 	attacks = {
 	}
 }

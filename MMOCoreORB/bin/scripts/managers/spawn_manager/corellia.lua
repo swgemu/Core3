@@ -281,7 +281,6 @@ corellia_static_spawns = {
 	{"commoner",60,-5146.7,21,-2547.18,180.005,0, "conversation", "", "stationary"},
 	{"commoner",60,15.2091,0.639422,56.8933,284.328,1935687, "calm", "Amarent Loren", "stationary"},
 	{"commoner",60,-24,1.6,-4,246.374,3075372, "calm", "An Event Promoter", "stationary"},
-	{"commoner",60,5.6169,-0.894992,20.9629,256.55,3075433, "calm", "Zakarisz Ghent", "stationary"},
 	{"commoner",60,25.4426,0.655075,43.6577,180.006,4395401, "conversation", "", "stationary"},
 	{"commoner",60,-42.3991,0.105009,-23.2411,180.016,3375367, "conversation", "", "stationary"},
 	{"corellia_herald_01",60,-5418.26,20.9986,-2792.36,59.9118,0, "calm", "Lock Vlash", "stationary"},
