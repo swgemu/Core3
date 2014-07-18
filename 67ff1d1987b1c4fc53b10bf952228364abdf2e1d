@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_682b3683",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/corellia/jadam_questrel.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-18T05:43:26Z",
+      "side": 1,
+      "message": "too close",
+      "revId": "67ff1d1987b1c4fc53b10bf952228364abdf2e1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_4820729b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-18T05:43:26Z",
+      "side": 1,
+      "message": "Rather than doing all this, why not just use npcData.worldPosition.x and y? You can use 0 for the z.",
+      "revId": "67ff1d1987b1c4fc53b10bf952228364abdf2e1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
