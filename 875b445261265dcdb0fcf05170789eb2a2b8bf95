@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_487cf272",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/corellia_tyrena.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-18T08:32:05Z",
+      "side": 0,
+      "message": "This line was commented. You need to also remove him from the spawn manager.",
+      "revId": "875b445261265dcdb0fcf05170789eb2a2b8bf95",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
