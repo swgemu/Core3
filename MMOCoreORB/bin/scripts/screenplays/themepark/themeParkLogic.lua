@@ -1062,8 +1062,8 @@ function ThemeParkLogic:createEscortReturnArea(pNpc, pPlayer)
 		local npcNumber = self:getActiveNpcNumber(pPlayer)
 		local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
 		local stfFile = self:getStfFile(npcNumber)
-
-		local npcData = self.npcMap[npcNumber]
+		
+		local npcData = self:getNpcData(npcNumber)
 		if (self:isValidConvoString(stfFile, ":npc_dropoff_" .. missionNumber)) then
 			local pEscortArea
 			if (npcData.spawnData.cellID == 0) then
