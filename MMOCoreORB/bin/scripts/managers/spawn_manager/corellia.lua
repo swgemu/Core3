@@ -501,7 +501,6 @@ corellia_static_spawns = {
 	{"noble",60,4.12842,0.3,4.01677,134.998,1855463, "conversation", "", "stationary"},
 	{"noble",60,5.78383,1.1544,-1.95638,180.012,1935476, "conversation", "", "stationary"},
 	{"noble",60,15.2654,2.47978,23.7759,5.24424,4395401, "conversation", "", "stationary"},
-	{"noren_krast",60,-5203.33,21,-2488.13,176.643,0, "calm", "Noren Krast", "stationary"},
 	{"pilot",60,23.1824,1.28309,9.37019,179.994,1935527, "conversation", "", "stationary"},
 	{"pilot",60,3202.28,290,4988.06,0,0, "conversation", "", "stationary"},
 	{"r2",60,-1.84202,0.184067,2.59886,22.229,3375392, "calm", "R2-J0", "stationary"},

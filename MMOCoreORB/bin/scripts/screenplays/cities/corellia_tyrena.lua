@@ -317,7 +317,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	--{"mercenary",60,-5398.52,21,-2675.03,180.005,0, "conversation", ""},
 	--{"mercenary",60,-5059.06,21,-2400.08,0,0, "conversation", ""},
 	spawnMobile("corellia", "noble", 60,-5441.11,21.0895,-2624.13,269.845,0)
-	--{"noren_krast",60,-5203.33,21,-2488.13,176.643,0, "calm", "Noren Krast"},
 	--{"r2",60,-5295.88,21,-2528.24,196.589,0, "calm", "R2-B0"},
 	--{"r2",60,-5297.6,21,-2396.69,271.4,0, "calm", "R2-X2"},
 	--{"r2",60,-4954.63,21,-2376.82,26.4361,0, "calm", "R2-E3"},

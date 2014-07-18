@@ -17,7 +17,6 @@ function CrystalFountainBelaVistalScreenPlay:spawnMobiles()
 	--Cantina
 	spawnMobile("corellia", "noble", 60, 5.80982, -0.894992, -5.41349, 248.205, 3375355)
 	spawnMobile("corellia", "businessman", 60, -10.2935, -0.895782, 7.13264, 339.313, 3375355)
-	spawnMobile("corellia", "palejo_reshad", 60, 1.05969, -0.894992, 21.2156, 111.145, 3375359)
 	
 	--Guild Hall 6857 -5783
 	spawnMobile("corellia", "hunter", 300, -14.01, 1.13306, -8.53, 120.004, 2365770)
