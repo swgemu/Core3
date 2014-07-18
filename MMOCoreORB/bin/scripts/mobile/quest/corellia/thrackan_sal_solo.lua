@@ -1,6 +1,6 @@
-thracken_sal_solo = Creature:new {
+thrackan_sal_solo = Creature:new {
 	objectName = "",
-	customName = "Thracken Sal Solo",
+	customName = "Thrackan Sal Solo",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -24,16 +24,16 @@ thracken_sal_solo = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/mos_taike_mayor.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "thrackan_sal_solo_mission_giver_convotemplate",
 	outfit = "thracken_sal_solo_outfit",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(thracken_sal_solo, "thracken_sal_solo")
+CreatureTemplates:addCreatureTemplate(thrackan_sal_solo, "thrackan_sal_solo")
