@@ -361,5 +361,5 @@ createMissionGiverConvoTemplate("ging_darjeek_mission_giver_convotemplate","ging
 createMissionGiverConvoTemplate("hal_horn_mission_giver_convotemplate","hal_horn_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("jadam_questrel_mission_giver_convotemplate","jadam_questrel_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("luthin_dlunar_mission_giver_convotemplate","luthin_dlunar_mission_giver_conv_handler")
-
+createMissionGiverConvoTemplate("noren_krast_mission_giver_convotemplate","noren_krast_mission_giver_conv_handler")
 
