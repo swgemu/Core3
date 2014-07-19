@@ -104,33 +104,9 @@ tatooine_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "tatooine_tusken_raider_village_neutral_large_theater",
-			minDifficulty = 21,
-			maxDifficulty = 31,
-			size = 25,
-		},
-		{
 			lairTemplateName = "tatooine_dragonet_lair_neutral_medium",
 			minDifficulty = 24,
 			maxDifficulty = 34,
-			size = 25,
-		},
-		{
-			lairTemplateName = "tatooine_evil_settlement_neutral_medium_theater",
-			minDifficulty = 3,
-			maxDifficulty = 6,
-			size = 25,
-		},
-		{
-			lairTemplateName = "tatooine_moisture_settler_neutral_medium_theater",
-			minDifficulty = 3,
-			maxDifficulty = 6,
-			size = 25,
-		},
-		{
-			lairTemplateName = "tatooine_alkhara_bandit_patrol_neutral_none",
-			minDifficulty = 11,
-			maxDifficulty = 15,
 			size = 25,
 		},
 		{
