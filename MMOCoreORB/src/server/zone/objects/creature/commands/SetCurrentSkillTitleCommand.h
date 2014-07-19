@@ -68,7 +68,7 @@ public:
 		if (ghost == NULL)
 			return GENERALERROR;
 
-		String titleSkill = arguments.toString();
+		String titleSkill = arguments.toString().toLowerCase();
 
 		if (!titleSkill.isEmpty() && !creature->hasSkill(titleSkill))
 			return GENERALERROR;
