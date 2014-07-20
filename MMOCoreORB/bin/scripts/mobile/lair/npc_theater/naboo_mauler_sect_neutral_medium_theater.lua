@@ -1,11 +1,17 @@
 naboo_mauler_sect_neutral_medium_theater = Lair:new {
-	mobiles = {},
-	spawnLimit = 15,
-	buildingsVeryEasy = {},
-	buildingsEasy = {},
-	buildingsMedium = {},
-	buildingsHard = {},
-	buildingsVeryHard = {},
+	mobiles = {
+		{"mauler_acolyte",2},
+		{"mauler_master",1},
+		{"mauler",2},
+		{"mauler_apprentice",2}
+	},
+	spawnLimit = 12,
+	buildingsVeryEasy = {"object/building/poi/naboo_mauler_medium.iff"},
+	buildingsEasy = {"object/building/poi/naboo_mauler_medium.iff"},
+	buildingsMedium = {"object/building/poi/naboo_mauler_medium.iff"},
+	buildingsHard = {"object/building/poi/naboo_mauler_medium.iff"},
+	buildingsVeryHard = {"object/building/poi/naboo_mauler_medium.iff"},
+	buildingType = "theater"
 }
 
 addLairTemplate("naboo_mauler_sect_neutral_medium_theater", naboo_mauler_sect_neutral_medium_theater)

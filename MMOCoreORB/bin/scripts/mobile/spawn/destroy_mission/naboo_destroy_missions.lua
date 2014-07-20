@@ -103,18 +103,6 @@ naboo_destroy_missions = {
 			maxDifficulty = 39,
 			size = 30,
 		},
- 		{
- 			lairTemplateName = "naboo_gungan_hermit_neutral_small_theater",
- 			minDifficulty = 10,
- 			maxDifficulty = 15,
-			size = 15,
- 		},
- 		{
- 			lairTemplateName = "naboo_gungan_mercenary_camp_neutral_large_theater",
- 			minDifficulty = 13,
- 			maxDifficulty = 27,
-			size = 15,
- 		},
 		{
 			lairTemplateName = "naboo_nightspider_lair_neutral_small",
 			minDifficulty = 6,
