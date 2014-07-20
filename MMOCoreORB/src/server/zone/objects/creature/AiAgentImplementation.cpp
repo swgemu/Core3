@@ -448,9 +448,11 @@ void AiAgentImplementation::selectDefaultAttack() {
 }
 
 void AiAgentImplementation::enqueueAttack() {
-	enqueueCommand(nextActionCRC, 0, followObject->getObjectID(), nextActionArgs);
-	nextActionCRC = 0;
-	nextActionArgs = "";
+	if (followObject != NULL) {
+		enqueueCommand(nextActionCRC, 0, followObject->getObjectID(), nextActionArgs);
+		nextActionCRC = 0;
+		nextActionArgs = "";
+	}
 }
 
 bool AiAgentImplementation::validateStateAttack() {
