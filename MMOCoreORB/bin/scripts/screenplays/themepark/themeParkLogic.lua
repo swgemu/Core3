@@ -362,6 +362,8 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 		return self:handleConfiscateMissionAccept(mission, pConversingPlayer, missionNumber)
 	elseif mission.missionType == "destroy" then
 		return self:handleDestroyMissionAccept(mission, pConversingPlayer, missionNumber)
+	elseif mission.missionType == "hunt" then
+		return self:handleHuntMissionAccept(mission, pConversingPlayer, missionNumber)
 	end
 end
 
@@ -427,6 +429,15 @@ function ThemeParkLogic:handleAssassinateMissionAccept(mission, pConversingPlaye
 	if self:spawnMissionNpcs(mission, pConversingPlayer) == true then
 		self:writeData(pConversingPlayer, ":activeMission", 1)
 		self:writeData(pConversingPlayer, ":killedMissionNpcs", 0)
+		return true
+	else
+		return false
+	end
+end
+
+function ThemeParkLogic:handleHuntMissionAccept(mission, pConversingPlayer, missionNumber)
+	if self:startHuntMission(mission, pConversingPlayer) == true then
+		self:writeData(pConversingPlayer, ":activeMission", 1)
 		return true
 	else
 		return false
@@ -508,6 +519,38 @@ function ThemeParkLogic:spawnMissionStaticObjects(mission, pConversingPlayer, x,
 			end
 		end
 	end)
+end
+
+function ThemeParkLogic:startHuntMission(mission, pConversingPlayer)
+	if pConversingPlayer == nil then
+		return false
+	end
+	printf("planet: " .. mission.huntTarget.planetName .. " " .. mission.huntTarget.waypointX .. " " .. mission.huntTarget.waypointY .. "\n")
+	self:updateWaypoint(pConversingPlayer, mission.huntTarget.planetName, mission.huntTarget.waypointX, mission.huntTarget.waypointY, "target")
+	createObserver(KILLEDCREATURE, self.className, "notifyKilledHuntTarget", pConversingPlayer)
+
+	return true
+end
+
+function ThemeParkLogic:notifyKilledHuntTarget(pAttacker, pVictim)
+	if pVictim == nil or pAttacker == nil then
+		return 0
+	end
+
+	local victim = LuaCreatureObject(pVictim)
+	local attacker = LuaCreatureObject(pAttacker)
+
+
+	ObjectManager.withSceneObject(pVictim, function(victim)
+		local npcNumber = self:getActiveNpcNumber(pAttacker)
+		local missionNumber = self:getCurrentMissionNumber(npcNumber, pAttacker)
+		local mission = self:getMission(npcNumber, missionNumber)
+		
+		if (victim:getObjectName() == mission.huntTarget.npcTemplate) then
+			self:completeMission(pAttacker)
+		end
+	end)
+	return 1
 end
 
 function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
@@ -1040,6 +1083,8 @@ function ThemeParkLogic:getDefaultWaypointName(pConversingPlayer, direction)
 		if currentMissionType == "deliver" then
 			local missionItemName = missionItem[1].itemName
 			return "Deliver " .. missionItemName
+		elseif currentMissionType == "hunt" then
+			return "Hunt " .. mission.huntTarget.npcName
 		elseif currentMissionType == "escort" then
 			return "Escort " .. mainNpcName
 		elseif currentMissionType == "retrieve" then
@@ -1096,6 +1141,7 @@ function ThemeParkLogic:notifyEnteredEscortArea(pActiveArea, pCreature)
 			local escortNpcID = readData(activeArea:getObjectID() .. ":escortNpcID")
 
 			if (objectID == escortNpcID) then
+				creature:setOptionsBitmask(128)
 				local ownerID = readData(escortNpcID .. ":missionOwnerID")
 				local pPlayer = getCreatureObject(ownerID)
 
