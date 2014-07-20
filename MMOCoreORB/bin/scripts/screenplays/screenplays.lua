@@ -16,6 +16,10 @@ includeFile("themepark/valarian/themeParkValarian.lua")
 includeFile("themepark/marauder/themeParkMarauder.lua")
 includeFile("themepark/tutorial.lua")
 
+-- Events
+includeFile("events/conversations/bestine_artist_conv_handler.lua")
+includeFile("events/bestineMuseum.lua")
+
 -- Recruiters
 includeFile("recruiters/recruiters.lua")
 includeFile("recruiters/imperialrecruiter.lua")
@@ -119,6 +123,7 @@ includeFile("tasks/tatooine/phinea_shantee.lua")
 includeFile("tasks/tatooine/prefect_talmont.lua")
 includeFile("tasks/tatooine/rakir_banai.lua")
 includeFile("tasks/tatooine/tekil_barje.lua")
+includeFile("tasks/tatooine/tolan_nokkar.lua")
 includeFile("tasks/tatooine/vardias_tyne.lua")
 includeFile("tasks/yavin4/gins_darone.lua")
 includeFile("tasks/yavin4/lian_byrne.lua")
