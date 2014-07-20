@@ -11,6 +11,7 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 //#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/structure/tasks/DestroyStructureTask.h"
+#include "server/zone/managers/structure/tasks/DestroyQuestStructureTask.h"
 
 void DestructibleBuildingMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
@@ -47,7 +48,7 @@ int DestructibleBuildingMenuComponent::handleObjectMenuSelect(SceneObject* scene
 	if (pendingTask != NULL)
 		return 0;
 
-	pendingTask = new DestroyStructureTask(building);
+	pendingTask = new DestroyQuestStructureTask(building);
 
 	if (selectedID == 128) {
 		building->addPendingTask("destruction", pendingTask, 15000);
