@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_e8e3a603",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/tasks/DestroyQuestStructureTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-20T19:31:24Z",
+      "side": 1,
+      "message": "Wrong header name",
+      "revId": "cd27d661870b25b62782068a0ff07e3774e9f9a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_c8f0e2cb",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/tasks/DestroyQuestStructureTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-07-20T19:31:24Z",
+      "side": 1,
+      "message": "A few unnecessary includes",
+      "revId": "cd27d661870b25b62782068a0ff07e3774e9f9a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
