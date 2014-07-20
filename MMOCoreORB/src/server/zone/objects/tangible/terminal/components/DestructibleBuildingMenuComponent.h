@@ -28,6 +28,8 @@ public:
 	 */
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
 
+	virtual int sendSelfDestructMessage(BuildingObject* building, String message);
+
 };
 
 #endif /* DESTRUCTIBLEBUILDINGMENUCOMPONENT_H_ */

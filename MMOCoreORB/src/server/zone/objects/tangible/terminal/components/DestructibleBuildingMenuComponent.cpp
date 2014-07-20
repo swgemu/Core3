@@ -47,14 +47,39 @@ int DestructibleBuildingMenuComponent::handleObjectMenuSelect(SceneObject* scene
 	if (pendingTask != NULL)
 		return 0;
 
-	pendingTask = new DestroyStructureTask(building);
+	pendingTask = new DestroyStructureTask(building, true);
 
 	if (selectedID == 128) {
 		building->addPendingTask("destruction", pendingTask, 15000);
-		player->sendSystemMessage("@self_destruct:fifteen_seconds");
+		sendSelfDestructMessage(building, "@self_destruct:fifteen_seconds");
 	} else if (selectedID == 129) {
 		building->addPendingTask("destruction", pendingTask, 30000);
-		player->sendSystemMessage("@self_destruct:thirty_seconds");
+		sendSelfDestructMessage(building, "@self_destruct:thirty_seconds");
+	}
+	return 0;
+}
+
+int DestructibleBuildingMenuComponent::sendSelfDestructMessage(BuildingObject* building, String message) {
+	for (uint32 i = 1; i <= building->getTotalCellNumber(); ++i) {
+		ManagedReference<CellObject*> cellObject = building->getCell(i);
+
+		if (cellObject == NULL)
+			continue;
+
+		int childObjects = cellObject->getContainerObjectsSize();
+
+		if (childObjects <= 0)
+			continue;
+
+		for (int j = 0; j < childObjects; j++) {
+			ManagedReference<SceneObject*> obj = cellObject->getContainerObject(j);
+
+			if (obj->isPlayerCreature()) {
+				CreatureObject* playerCreature = cast<CreatureObject*>(obj.get());
+
+				playerCreature->sendSystemMessage(message);
+			}
+		}
 	}
 	return 0;
 }
