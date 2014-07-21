@@ -40,7 +40,7 @@ end
 function TatooineStaticSpawnsSouthScreenPlay:spawnMobiles()
 
 	--Tusken King Quest
-	spawnMobile("tatooine", "tusken_chief", 300, -5350.2, 40, -4442.5, 139, 0)--entrance, spawns clock wise
+	spawnMobile("tatooine", "tusken_king_quest", 300, -5350.2, 40, -4442.5, 139, 0)--entrance, spawns clock wise
 
 	spawnMobile("tatooine", "tusken_bantha", 300, -5342.5, 40, -4430.6, 151, 0)
 
