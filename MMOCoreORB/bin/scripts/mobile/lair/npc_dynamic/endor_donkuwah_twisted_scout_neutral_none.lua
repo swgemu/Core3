@@ -1,11 +1,14 @@
 endor_donkuwah_twisted_scout_neutral_none = Lair:new {
-	mobiles = {},
-	spawnLimit = 15,
+	mobiles = {
+		{"twisted_donkuwah_scavenger",1}
+	},
+	spawnLimit = 9,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("endor_donkuwah_twisted_scout_neutral_none", endor_donkuwah_twisted_scout_neutral_none)
