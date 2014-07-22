@@ -1,6 +1,6 @@
 dantooine_dark_side_savage_neutral_none = Lair:new {
-	mobiles = {{"dark_side_savage",1},{"dark_initiate",1}},
-	spawnLimit = 7,
+	mobiles = {{"dark_side_savage",1}},
+	spawnLimit = 3,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},
