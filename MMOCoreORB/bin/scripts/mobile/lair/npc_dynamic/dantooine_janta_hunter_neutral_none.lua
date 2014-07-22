@@ -1,5 +1,5 @@
 dantooine_janta_hunter_neutral_none = Lair:new {
-	mobiles = {{"janta_hunter",1},{"janta_harvester",1}},
+	mobiles = {{"janta_hunter",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
