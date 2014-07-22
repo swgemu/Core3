@@ -40,18 +40,20 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef REQUESTCHARACTERMATCHCOMMAND_H_
 #define REQUESTCHARACTERMATCHCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/packets/object/PlayersNearYou.h"
+#include "server/zone/Zone.h"
 
 class RequestCharacterMatchCommand : public QueueCommand {
 public:
 
 	RequestCharacterMatchCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+: QueueCommand(name, server) {
 
 	}
 
@@ -63,7 +65,42 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		//requestcharactermatch 4 characterFlagBitmask 0 0 0 factionCRC raceID skill_box firstname
+		ManagedReference<Zone*> zone = creature->getZone();
+
+		if (zone != NULL) {
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+			CloseObjectsVector* actualCloseObjects = (CloseObjectsVector*) creature->getCloseObjects();
+
+			if (actualCloseObjects != NULL) {
+				actualCloseObjects->safeCopyTo(closeObjects);
+			} else {
+				zone->getInRangeObjects(creature->getWorldPositionX(), creature->getWorldPositionY(), 128, &closeObjects, true);
+			}
+
+			PlayersNearYouMessage* pny = new PlayersNearYouMessage(creature);
+			uint32 counter = 0;
+
+			if (!closeObjects.isEmpty()) {
+				for (int i = 0; i < closeObjects.size(); ++i) {
+					SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
+					if (obj->isPlayerCreature() && obj != creature) {
+						ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(obj);
+						pny->addFoundPlayer(playerCreature);
+						counter++;
+					}
+				}
+			}
+
+			if (counter > 0) {
+				pny->insertPlayerCounter(counter);
+			}
+
+			creature->sendMessage(pny);
+
+			return SUCCESS;
+		} else {
+			return GENERALERROR;
+		}
 
 		return SUCCESS;
 	}
