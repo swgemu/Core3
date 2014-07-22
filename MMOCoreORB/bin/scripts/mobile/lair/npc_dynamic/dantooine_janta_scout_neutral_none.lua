@@ -1,6 +1,6 @@
 dantooine_janta_scout_neutral_none = Lair:new {
-	mobiles = {{"janta_scout", 1},{"janta_primalist",1}},
-	spawnLimit = 8,
+	mobiles = {{"janta_scout",1}},
+	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},

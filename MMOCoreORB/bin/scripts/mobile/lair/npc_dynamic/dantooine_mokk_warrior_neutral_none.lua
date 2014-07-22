@@ -1,5 +1,5 @@
 dantooine_mokk_warrior_neutral_none = Lair:new {
-	mobiles = {{"mokk_warrior",1},{"mokk_tribesman",1}},
+	mobiles = {{"mokk_warrior",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

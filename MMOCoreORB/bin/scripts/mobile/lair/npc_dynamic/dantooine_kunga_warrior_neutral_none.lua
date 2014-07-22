@@ -1,5 +1,5 @@
 dantooine_kunga_warrior_neutral_none = Lair:new {
-	mobiles = {{"kunga_warrior",1},{"kunga_tribe_member",1}},
+	mobiles = {{"kunga_warrior",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
