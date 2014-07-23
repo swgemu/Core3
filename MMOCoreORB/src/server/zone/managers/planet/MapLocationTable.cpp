@@ -58,6 +58,59 @@ void MapLocationTable::dropObject(SceneObject* object) {
 	}
 }
 
+bool MapLocationTable::containsObject(SceneObject* object) {
+	PlanetMapCategory* pmc = object->getPlanetMapSubCategory();
+
+	if (pmc == NULL)
+		pmc = object->getPlanetMapCategory();
+
+	if (pmc == NULL)
+		return false;
+
+	int index = locations.find(pmc->getName());
+
+	if (index != -1) {
+		SortedVector<MapLocationEntry>& vector = locations.elementAt(index).getValue();
+
+		for (int i = 0; i < vector.size(); i++) {
+			MapLocationEntry entry = vector.get(i);
+
+			if (entry.getObjectID() == object->getObjectID()) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+void MapLocationTable::updateObjectsIcon(SceneObject* object, byte icon) {
+	PlanetMapCategory* pmc = object->getPlanetMapSubCategory();
+
+	if (pmc == NULL)
+		pmc = object->getPlanetMapCategory();
+
+	if (pmc == NULL)
+		return;
+
+	int index = locations.find(pmc->getName());
+
+	if (index != -1) {
+		SortedVector<MapLocationEntry>& vector = locations.elementAt(index).getValue();
+
+		for (int i = 0; i < vector.size(); i++) {
+			MapLocationEntry entry = vector.get(i);
+
+			if (entry.getObjectID() == object->getObjectID()) {
+				vector.drop(entry);
+				entry.setIcon(icon);
+				vector.put(entry);
+				return;
+			}
+		}
+	}
+}
+
 SortedVector<MapLocationEntry>& MapLocationTable::getLocation(const String& name) {
 	return locations.get(name);
 }

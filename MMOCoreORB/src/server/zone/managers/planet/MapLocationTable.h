@@ -49,6 +49,10 @@ public:
 
 	void dropObject(SceneObject* object);
 
+	bool containsObject(SceneObject* object);
+
+	void updateObjectsIcon(SceneObject* object, byte icon);
+
 	SortedVector<MapLocationEntry>& getLocation(const String& name);
 
 	SortedVector<MapLocationEntry>& get(int index) {

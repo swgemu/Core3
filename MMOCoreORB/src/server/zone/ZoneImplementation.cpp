@@ -446,6 +446,20 @@ void ZoneImplementation::unregisterObjectWithPlanetaryMap(SceneObject* object) {
 	mapLocations->dropObject(object);
 }
 
+bool ZoneImplementation::isObjectRegisteredWithPlanetaryMap(SceneObject* object) {
+#ifndef WITH_STM
+	Locker locker(mapLocations);
+#endif
+	return mapLocations->containsObject(object);
+}
+
+void ZoneImplementation::updatePlanetaryMapIcon(SceneObject* object, byte icon) {
+#ifndef WITH_STM
+	Locker locker(mapLocations);
+#endif
+	mapLocations->updateObjectsIcon(object, icon);
+}
+
 void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 	objectMap->remove(object->getObjectID());
 	unregisterObjectWithPlanetaryMap(object);

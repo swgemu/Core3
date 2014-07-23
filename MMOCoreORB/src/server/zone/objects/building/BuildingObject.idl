@@ -87,6 +87,9 @@ class BuildingObject extends StructureObject {
 	@dereferenced
 	protected SortedVector<CreatureObject> childCreatureObjects;
 
+	@dereferenced
+	protected transient Vector<unsigned long> registeredPlayerIdList;
+
 	public boolean publicStructure;
 	
 	public static final int MAXPLAYERITEMS = 400;
@@ -374,16 +377,21 @@ class BuildingObject extends StructureObject {
 			updatePaidAccessList();
 		}
 	}
-	
+
 	public native int getAccessFeeDelay();
-	
+
 	private native void promptPayAccessFee(CreatureObject player);
-	
+
 	public native void payAccessFee(CreatureObject player);
 
 	public native void updatePaidAccessList();
 
 	//public native boolean isGCWBase();
+
+	public native void registerProfessional(CreatureObject player);
+	public native void unregisterProfessional(CreatureObject player);
+	public native boolean isInPlayerCity();
+	public native boolean canPlayerRegisterWithin();
 
 	public native void createChildObjects();
 
