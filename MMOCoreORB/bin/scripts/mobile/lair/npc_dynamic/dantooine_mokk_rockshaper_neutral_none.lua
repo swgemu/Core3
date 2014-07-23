@@ -6,7 +6,7 @@ dantooine_mokk_rockshaper_neutral_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
-	building_type = "none"
+	buildingType = "none"
 }
 
 addLairTemplate("dantooine_mokk_rockshaper_neutral_none", dantooine_mokk_rockshaper_neutral_none)
