@@ -806,7 +806,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 		//		zone->rlock(readlock);
 
 		if (closeobjects == NULL) {
-			info("Null closeobjects vector in SceneObjectImplementation::broadcastMessagePrivate", true);
+			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagePrivate", true);
 			closeSceneObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
 			zone->getInRangeObjects(getPositionX(), getPositionY(), 192, closeSceneObjects, true);
 
@@ -932,7 +932,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 	try {
 
 		if (closeobjects == NULL) {
-			info("Null closeobjects vector in SceneObjectImplementation::broadcastMessagesPrivate", true);
+			info(String::valueOf(getObjectID()) + " Null closeobjects vector in SceneObjectImplementation::broadcastMessagesPrivate", true);
 			zone->getInRangeObjects(getPositionX(), getPositionY(), 192, &closeSceneObjects, true);
 
 			maxInRangeObjectCount = closeSceneObjects.size();
