@@ -47,6 +47,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 
+#include "server/zone/managers/planet/MapLocationType.h"
+
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
@@ -54,6 +56,8 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	
 	updatePaidAccessList();
 	
+	registeredPlayerIdList.removeAll();
+
 	if(isGCWBase()) {
 		SharedBuildingObjectTemplate* buildingTemplateData =
 				dynamic_cast<SharedBuildingObjectTemplate*> (getObjectTemplate());
@@ -786,6 +790,8 @@ void BuildingObjectImplementation::onExit(CreatureObject* player, uint64 parenti
 
 	removeTemplateSkillMods(player);
 
+	unregisterProfessional(player);
+
 	notifyObservers(ObserverEventType::EXITEDBUILDING, player, parentid);
 }
 
@@ -950,6 +956,96 @@ void BuildingObjectImplementation::updateSignName(bool notifyClient)  {
 	if (signObject != NULL) {
 		signObject->setCustomObjectName(signNameToSet, notifyClient);
 	}
+}
+
+bool BuildingObjectImplementation::isInPlayerCity() {
+	ManagedReference<CityRegion*> city = this->getCityRegion().get();
+	if (city != NULL) {
+		return (!city->isClientRegion());
+	}
+	return false;
+}
+
+bool BuildingObjectImplementation::canPlayerRegisterWithin() {
+	PlanetMapCategory* pmc = getPlanetMapSubCategory();
+
+	if (pmc == NULL)
+		pmc = getPlanetMapCategory();
+
+	if (pmc == NULL)
+		return false;
+
+	String categoryName = pmc->getName();
+	if (categoryName == "medicalcenter" || categoryName == "hotel" || categoryName == "cantina" || categoryName == "theater" || categoryName == "guild_theater" || categoryName == "tavern")
+		return true;
+
+	return false;
+}
+
+void BuildingObjectImplementation::registerProfessional(CreatureObject* player) {
+
+	if(!player->isPlayerCreature() || getZone() == NULL)
+		return;
+
+	if(!registeredPlayerIdList.contains(player->getObjectID())) {
+
+		// Check for improper faction situations ...
+		if ( player->isNeutral() && (!this->isNeutral())) {
+			// "Neutrals may only register at neutral (non-aligned) locations."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_neutrals");
+			return;
+		}
+
+		if ( (player->isImperial() && this->isRebel()) || (player->isRebel() && this->isImperial())) {
+			// "You may not register at a location that is factionally opposed."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_opposition");
+			return;
+		}
+
+		if (getZone()->isObjectRegisteredWithPlanetaryMap(_this.get())) {
+
+			// Update the planetary map icon if needed
+			if (registeredPlayerIdList.size() == 0) {
+				getZone()->updatePlanetaryMapIcon(_this.get(), 2);
+			}
+
+			registeredPlayerIdList.add(player->getObjectID());
+
+			// "You successfully register with this location."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:success");
+		} else {
+			// "You cannot register at a location that is not registered with the planetary map."
+			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:cannot_register");
+		}
+
+	}
+	else {
+		// "But you are already registered at this location."
+		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:already_registered");
+	}
+
+}
+
+void BuildingObjectImplementation::unregisterProfessional(CreatureObject* player) {
+
+	if(!player->isPlayerCreature() || getZone() == NULL)
+		return;
+
+	if(registeredPlayerIdList.contains(player->getObjectID())) {
+
+		registeredPlayerIdList.removeElement(player->getObjectID());
+
+		if (registeredPlayerIdList.size() == 0) {
+
+			if (getZone()->isObjectRegisteredWithPlanetaryMap(_this.get())) {
+				// Last Entertainer/Doctor out, set icon from star to a moon.
+				getZone()->updatePlanetaryMapIcon(_this.get(), 1);
+			}
+		}
+
+		player->sendSystemMessage("You have been unregistered from your previously registered location.");
+	}
+
 }
 
 void BuildingObjectImplementation::promptPayAccessFee(CreatureObject* player) {
