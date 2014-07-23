@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_882b0aeb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RequestCharacterMatchCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-23T03:48:55Z",
+      "side": 1,
+      "message": "Instead of calling getInRangeObjects every time this command is issued, use the creature\u0027s closeObjectsVector if it\u0027s not NULL.",
+      "revId": "55d5379d476812971482fc2066bdf904ac806774",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
