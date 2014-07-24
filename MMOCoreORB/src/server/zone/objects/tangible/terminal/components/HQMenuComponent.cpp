@@ -13,6 +13,7 @@
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/structure/StructureObject.h"
 

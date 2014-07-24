@@ -58,6 +58,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
@@ -828,3 +829,27 @@ ThreatMap* TangibleObjectImplementation::getThreatMap() {
 	return threatMap;
 }
 
+bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
+	if (isImperial() && !(object->isRebel())) {
+		return false;
+	} else if (isRebel() && !(object->isImperial())) {
+		return false;
+	} else if (object->isPlayerCreature() && object->getPlayerObject()) {
+		if (isImperial() && (object->getPlayerObject())->getFactionStatus() == 0) {
+			return false;
+		}
+
+		if (isRebel() && (object->getPlayerObject())->getFactionStatus() == 0) {
+			return false;
+		}
+
+	} else if (object->isAiAgent()) {
+		AiAgent* ai = cast<AiAgent*>(object);
+
+		if (ai->getHomeObject() == _this.get()) {
+			return false;
+		}
+	}
+
+	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
+}

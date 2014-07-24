@@ -7,6 +7,7 @@
 #include "MinefieldContainerComponent.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/creature/CreatureFlag.h"
 
 bool MinefieldContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission){
 	if(sceneObject == NULL || !sceneObject->isTangibleObject())

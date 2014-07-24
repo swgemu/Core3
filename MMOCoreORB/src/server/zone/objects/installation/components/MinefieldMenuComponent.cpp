@@ -12,6 +12,7 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/creature/CreatureFlag.h"
 
 
 void MinefieldMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {

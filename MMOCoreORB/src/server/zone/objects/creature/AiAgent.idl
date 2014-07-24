@@ -465,43 +465,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this object is locked }
 	 * @return returns true if the creature object can attack this 
 	 */
-	public boolean isAttackableBy(CreatureObject object) {
-		if (object == null)
-			return false;
-		
-		if (object == this)
-			return false;
-		
-		if (isDead())
-			return false;
-
-		if (isPet()) {
-			CreatureObject owner = getLinkedCreature();
-
-			if (owner == null)
-				return false;
-
-			return owner.isAttackableBy(object);
-		}
-
-		if (super.pvpStatusBitmask == 0)
-			return false;
-
-		unsigned int targetFaction = object.getFaction();
-		
-		if (targetFaction != 0 && super.getFaction() != 0) {
-			PlayerObject ghost = object.getPlayerObject();
-			
-			if (targetFaction == getFaction())
-				return false;
-			
-			if (ghost != null && (targetFaction != super.getFaction()) && ghost.getFactionStatus() == FactionStatus.ONLEAVE)
-				return false;
-		} else if (targetFaction == 0 && super.getFaction() != 0)
-			return false;
-		
-		return true;
-	}
+	public native boolean isAttackableBy(CreatureObject object);
 	
 	/**
 	 * Evaluates if this creature is aggresive to the object
@@ -889,10 +853,14 @@ class AiAgent extends CreatureObject {
 	@local
 	public native void broadcastInterrupt(long msg);
 
-	public native void setHomeObject(SceneObject home) {
+	public void setHomeObject(SceneObject home) {
 		homeObject = home;
 	}
-	
+
+	public SceneObject getHomeObject() {
+		return homeObject;
+	}
+
 	/**
 	 * Sets the combat state
 	 * @pre { this object is locked }

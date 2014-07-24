@@ -54,7 +54,6 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 import server.zone.objects.creature.CreatureObject;
-include server.zone.objects.creature.CreatureFlag;
 import server.zone.objects.player.PlayerObject;
 include server.zone.objects.tangible.OptionBitmask;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
@@ -324,21 +323,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked}
 	 * @return returns true if the creature object can attack this 
 	 */
-	public abstract boolean isAttackableBy(CreatureObject object) {
-		if (isImperial() && !(object.isRebel()))
-			return false;
-		else if (isRebel() && !(object.isImperial()))
-			return false;
-		else if (object.isPlayerCreature() && object.getPlayerObject()) {
-			if (isImperial() && (object.getPlayerObject()).getFactionStatus() == 0)
-				return false;
-			if (isRebel() && (object.getPlayerObject()).getFactionStatus() == 0)
-				return false;
-			
-			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
-		} else
-			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
-	}
+	public native abstract boolean isAttackableBy(CreatureObject object);
 	
 	/**
 	 * Evaluates if this creature is aggresive to the object

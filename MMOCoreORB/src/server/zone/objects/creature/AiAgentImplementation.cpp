@@ -2399,3 +2399,64 @@ void AiAgentImplementation::activateLoad(const String& temp) {
 	AiLoadTask* task = new AiLoadTask(_this.get(), temp);
 	task->execute();
 }
+
+bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
+	if (object == NULL || object == _this.get()) {
+		return false;
+	}
+
+	if (isDead() || isIncapacitated()) {
+		return false;
+	}
+
+	if (isPet()) {
+		CreatureObject* owner = getLinkedCreature().get();
+
+		if (owner == NULL) {
+			return false;
+		}
+
+		return owner->isAttackableBy(object);
+	}
+
+	if (object->isPet()) {
+		CreatureObject* owner = object->getLinkedCreature().get();
+
+		if (owner == NULL) {
+			return false;
+		}
+
+		return isAttackableBy(owner);
+	}
+
+	if (pvpStatusBitmask == 0) {
+		return false;
+	}
+
+	unsigned int targetFaction = object->getFaction();
+
+	if (targetFaction != 0 && getFaction() != 0) {
+		if (targetFaction == getFaction()) {
+			return false;
+		}
+
+		PlayerObject* ghost = object->getPlayerObject();
+
+		if (ghost != NULL && ghost->getFactionStatus() == FactionStatus::ONLEAVE) {
+			return false;
+		}
+
+	} else if (targetFaction == 0 && getFaction() != 0) {
+		return false;
+	}
+
+	if (object->isAiAgent()) {
+		AiAgent* ai = cast<AiAgent*>(object);
+		String targetSocialGroup = ai->getSocialGroup();
+		if (!targetSocialGroup.isEmpty() && targetSocialGroup != "self" && targetSocialGroup == getSocialGroup()) {
+			return false;
+		}
+	}
+
+	return true;
+}
