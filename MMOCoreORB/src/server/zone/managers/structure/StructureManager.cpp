@@ -688,17 +688,20 @@ int StructureManager::declareResidence(CreatureObject* player,
 	return 0;
 }
 
-SceneObject* StructureManager::getInRangeParkingGarage(SceneObject* obj,
-		int range) {
+SceneObject* StructureManager::getInRangeParkingGarage(SceneObject* obj, int range) {
 	ManagedReference<Zone*> zone = obj->getZone();
 
 	if (zone == NULL)
 		return NULL;
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) obj->getCloseObjects();
 
-	zone->getInRangeObjects(obj->getPositionX(), obj->getPositionY(), 128,
-			&closeSceneObjects, true);
+	if (closeObjectsVector == NULL) {
+		zone->getInRangeObjects(obj->getPositionX(), obj->getPositionY(), 128, &closeSceneObjects, true);
+	} else {
+		closeObjectsVector->safeCopyTo(closeSceneObjects);
+	}
 
 	for (int i = 0; i < closeSceneObjects.size(); ++i) {
 		SceneObject* scno = cast<SceneObject*>(closeSceneObjects.get(i).get());

@@ -86,12 +86,18 @@ public:
 
 		/// Check if anything is attackable in range
 		SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
-		creature->getZone()->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), 32, &objects, true);
+		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
+
+		if (closeObjectsVector == NULL) {
+			creature->getZone()->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), 32, &objects, true);
+		} else {
+			closeObjectsVector->safeCopyTo(objects);
+		}
 
 		for (int i = 0; i < objects.size(); ++i) {
 			SceneObject* object = cast<SceneObject*>(objects.get(i).get());
 
-			if (object->isCreatureObject()) {
+			if (object->isCreatureObject() && creature->isInRange(object, 32)) {
 				CreatureObject* creo = cast<CreatureObject*>(object);
 
 				if(!creo->isDead() && (creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {

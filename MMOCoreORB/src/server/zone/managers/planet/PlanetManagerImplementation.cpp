@@ -772,10 +772,6 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 		}
 	}
 
-	if (isInObjectsNoBuildZone(x, y, margin)) {
-		return false;
-	}
-
 	if (isInWater(x, y)) {
 		return false;
 	}

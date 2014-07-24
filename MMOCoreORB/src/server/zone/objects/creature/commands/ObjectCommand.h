@@ -188,10 +188,18 @@ public:
 				if (lootManager == NULL)
 					return INVALIDPARAMETERS;
 
+				Zone* zone = creature->getZone();
+				if (zone == NULL)
+					return GENERALERROR;
+
 				// Find all objects in range
 				SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
-				Zone* zone = creature->getZone();
-				zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+				CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) creature->getCloseObjects();
+				if (closeObjectsVector == NULL) {
+					zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+				} else {
+					closeObjectsVector->safeCopyTo(closeObjects);
+				}
 
 				// Award loot group to all players in range
 				for (int i = 0; i < closeObjects.size(); i++) {
