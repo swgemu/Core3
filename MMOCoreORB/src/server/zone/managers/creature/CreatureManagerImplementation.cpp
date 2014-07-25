@@ -42,6 +42,7 @@
 #include "server/zone/managers/creature/DynamicSpawnObserver.h"
 #include "server/zone/packets/object/SpatialChat.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/tangible/LairObject.h"
 
 Mutex CreatureManagerImplementation::loadMutex;
 
@@ -106,7 +107,7 @@ SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate,
  		return NULL;
  	}
 
- 	ManagedReference<TangibleObject*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<TangibleObject*>();
+ 	ManagedReference<LairObject*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<LairObject*>();
 
  	if (building == NULL) {
  		error("error spawning " + buildingToSpawn);
@@ -121,6 +122,7 @@ SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate,
  	building->setMaxCondition(difficultyLevel * (900 + System::random(200)));
  	building->setConditionDamage(0, false);
  	building->initializePosition(x, z, y);
+ 	building->setDespawnOnNoPlayersInRange(true);
 
  	ManagedReference<LairObserver*> lairObserver = new LairObserver();
  	lairObserver->deploy();
@@ -132,6 +134,7 @@ SceneObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate,
  	building->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);
  	building->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);
  	building->registerObserver(ObserverEventType::AIMESSAGE, lairObserver);
+ 	building->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, lairObserver);
 
  	zone->transferObject(building, -1, false);
 

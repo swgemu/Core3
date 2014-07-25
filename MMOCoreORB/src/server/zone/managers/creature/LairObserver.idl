@@ -68,6 +68,7 @@ class LairObserver extends SpawnObserver {
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 
 	public native void notifyDestruction(TangibleObject lair, TangibleObject attacker, int condition);
+	public native void despawnSpawns();
 
 	public abstract native boolean checkForNewSpawns(TangibleObject lair, TangibleObject attacker, boolean forceSpawn = false);
 	public native void healLair(TangibleObject lair, TangibleObject attacker);
