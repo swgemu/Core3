@@ -68,6 +68,10 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 	AiAgent* agent = NULL;
 
 	switch (eventType) {
+	case ObserverEventType::OBJECTREMOVEDFROMZONE:
+		despawnSpawns();
+		return 1;
+		break;
 	case ObserverEventType::OBJECTDESTRUCTION:
 		notifyDestruction(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), (int)arg2);
 		return 1;
@@ -125,15 +129,6 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	lair->broadcastMessage(explodeLoc, false);
 
 	lair->destroyObjectFromWorld(true);
-
-	for (int i = 0; i < spawnedCreatures.size(); ++i) {
-		CreatureObject* obj = spawnedCreatures.get(i);
-
-		if (obj->isAiAgent())
-			(cast<AiAgent*>(obj))->setDespawnOnNoPlayerInRange(true);
-	}
-
-	spawnedCreatures.removeAll();
 }
 
 int LairObserverImplementation::getLivingCreatureCount() {
@@ -176,9 +171,6 @@ void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* a
 
 			}
 	}
-
-
-
 }
 
 void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {

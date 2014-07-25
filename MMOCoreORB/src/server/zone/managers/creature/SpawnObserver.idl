@@ -119,4 +119,17 @@ class SpawnObserver extends Observer implements Logger {
 	public boolean isDynamicSpawnObserver() {
 		return false;
 	}
+	
+	public void despawnSpawns() {
+		for (int i = 0; i < spawnedCreatures.size(); ++i) {
+			CreatureObject obj = spawnedCreatures.get(i);
+
+			if (obj.isAiAgent()) {
+				AiAgent aiObj = (AiAgent)(obj);
+				aiObj.setDespawnOnNoPlayerInRange(true);
+			}
+		}
+
+		spawnedCreatures.removeAll();
+	}
 }

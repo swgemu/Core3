@@ -19,6 +19,7 @@
 #include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/tangible/LairObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/templates/mobile/LairTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
@@ -178,7 +179,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	 		return;
 	 	}
 
-		lairObject = zone->getZoneServer()->createObject(buildingToSpawn.hashCode(), 0).castTo<TangibleObject*>();
+		lairObject = zone->getZoneServer()->createObject(buildingToSpawn.hashCode(), 0).castTo<LairObject*>();
 
 	 	if (lairObject == NULL) {
 	 		error("error spawning " + buildingToSpawn);
@@ -193,6 +194,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	 	lairObject->setMaxCondition(difficultyLevel * (900 + System::random(200)));
 	 	lairObject->setConditionDamage(0, false);
 	 	lairObject->initializePosition(pos.getX(), pos.getZ(), pos.getY());
+	 	lairObject->setDespawnOnNoPlayersInRange(false);
 
 		ManagedReference<MissionObserver*> observer = new MissionObserver(_this.get());
 		addObserver(observer, true);
@@ -208,6 +210,8 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	 	lairObject->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);
 	 	lairObject->registerObserver(ObserverEventType::DAMAGERECEIVED, lairObserver);
+	 	lairObject->registerObserver(ObserverEventType::AIMESSAGE, lairObserver);
+	 	lairObject->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, lairObserver);
 
 		zone->transferObject(lairObject, -1, true);
 
@@ -227,7 +231,7 @@ void DestroyMissionObjectiveImplementation::abort() {
 
 		ManagedReference<CreatureObject*> player = getPlayerOwner();
 
-		ManagedReference<TangibleObject*> lair = lairObject;
+		ManagedReference<LairObject*> lair = lairObject;
 
 		if (lair != NULL) {
 			Locker locker(lair);

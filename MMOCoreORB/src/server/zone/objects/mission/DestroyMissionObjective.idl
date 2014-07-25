@@ -54,7 +54,7 @@ include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
 import server.zone.templates.mobile.LairTemplate;
-import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.LairObject;
 import server.zone.Zone;
 
 class DestroyMissionObjective extends MissionObjective {
@@ -63,7 +63,7 @@ class DestroyMissionObjective extends MissionObjective {
 	
 	protected MissionSpawnActiveArea spawnActiveArea;
 	
-	protected TangibleObject lairObject;
+	protected LairObject lairObject;
 
 	int difficultyLevel;
 	int difficulty;
