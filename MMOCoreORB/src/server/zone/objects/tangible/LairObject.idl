@@ -45,14 +45,67 @@ which carries forward this exception.
 package server.zone.objects.tangible;
 
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.DespawnLairOnPlayerDisappear;
 include engine.util.u3d.CloseObjectsVector;
+include engine.util.u3d.QuadTreeEntry;
 
 class LairObject extends TangibleObject {
+	protected int numberOfPlayersInRange;
+	
+	protected transient DespawnLairOnPlayerDisappear despawnEvent;
 	
 	public LairObject() {
 		Logger.setLoggingName("LairObject");
 	
 		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
+		
+		numberOfPlayersInRange = 0;
+	}
+	
+	public int getNumberOfPlayersInRange() {
+		return numberOfPlayersInRange;
+	}
+	
+	public void notifyInsert(QuadTreeEntry entry) {
+		SceneObject obj = (SceneObject) entry;
+		
+		if (obj == this)
+			return;
+		
+		if (obj.isPlayerCreature()) {
+			numberOfPlayersInRange++;
+			clearDespawnEvent();
+		}
+	}
+	
+	public void notifyDissapear(QuadTreeEntry entry) {
+		SceneObject obj = (SceneObject) entry;
+		
+		if (obj == this)
+			return;
+		
+		if (obj.isPlayerCreature()) {
+			numberOfPlayersInRange = numberOfPlayersInRange - 1;
+			
+			if (numberOfPlayersInRange <= 0)
+				activateDespawnEvent();
+		}
+	}
+	
+	public void activateDespawnEvent() {
+		if (despawnEvent != null)
+			return;
+		
+		despawnEvent = new DespawnLairOnPlayerDisappear(this);
+		despawnEvent.schedule(300000);		
+	}
+	
+	public void clearDespawnEvent() {
+		if (despawnEvent == null)
+			return;
+		
+		despawnEvent.cancel();
+		despawnEvent = null;
 	}
 }
