@@ -64,6 +64,7 @@
 #include "server/zone/managers/creature/AiMap.h"
 #include "server/chat/LuaStringIdChatParameter.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
+#include "server/db/ServerDatabase.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -106,6 +107,36 @@ void DirectorManager::loadPersistentEvents() {
 	}
 
 	info(String::valueOf(i) + " persistent events loaded.", true);
+}
+
+void DirectorManager::setQuestStatus(String keyString, String valString) {
+	LocalDatabase* questDB = ObjectDatabaseManager::instance()->loadLocalDatabase("queststatus", true);
+
+	ObjectOutputStream* value = new ObjectOutputStream();
+	valString.toBinaryStream(value);
+
+	ObjectOutputStream* key = new ObjectOutputStream();
+	keyString.toBinaryStream(key);
+
+	questDB->putData(key, value);
+
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
+}
+
+String DirectorManager::getQuestStatus(String keyString) {
+	LocalDatabase* questDB = ObjectDatabaseManager::instance()->loadLocalDatabase("queststatus", true);
+	ObjectDatabaseManager::instance()->commitLocalTransaction();
+
+	String str = "";
+
+	ObjectOutputStream key;
+	keyString.toBinaryStream(&key);
+	ObjectInputStream value;
+
+	if (questDB->getData(&key, &value) == 0)
+		str.parseFromBinaryStream(&value);
+
+	return str;
 }
 
 void DirectorManager::startGlobalScreenPlays() {
@@ -209,6 +240,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "awardSkill", awardSkill);
 	lua_register(luaEngine->getLuaState(), "getCityRegionAt", getCityRegionAt);
 	lua_register(luaEngine->getLuaState(), "setDungeonTicketAttributes", setDungeonTicketAttributes);
+	lua_register(luaEngine->getLuaState(), "setQuestStatus", setQuestStatus);
+	lua_register(luaEngine->getLuaState(), "getQuestStatus", getQuestStatus);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -2298,4 +2331,35 @@ int DirectorManager::setDungeonTicketAttributes(lua_State* L) {
 	tObj->setArrivalPoint(ticketArrivePoint);
 
 	return 0;
+}
+
+int DirectorManager::setQuestStatus(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::setQuestStatus");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String valueString = lua_tostring(L, -1);
+	String keyString = lua_tostring(L, -2);
+
+	instance()->setQuestStatus(keyString, valueString);
+
+	return 0;
+}
+
+int DirectorManager::getQuestStatus(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getQuestStatus");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String keyString = lua_tostring(L, -1);
+
+	String str = instance()->getQuestStatus(keyString);
+
+	lua_pushstring(L, str.toCharArray());
+
+	return 1;
 }

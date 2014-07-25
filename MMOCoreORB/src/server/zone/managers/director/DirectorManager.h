@@ -71,6 +71,9 @@ namespace server {
 		ConversationScreen* getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC);
 		ConversationScreen* runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
+		void setQuestStatus(String keyString, String valString);
+		String getQuestStatus(String keyString);
+
 		virtual Lua* getLuaInstance();
 		int runScreenPlays();
 
@@ -136,6 +139,8 @@ namespace server {
 		static int awardSkill(lua_State* L);
 		static int getCityRegionAt(lua_State* L);
 		static int setDungeonTicketAttributes(lua_State* L);
+		static int setQuestStatus(lua_State* L);
+		static int getQuestStatus(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);
