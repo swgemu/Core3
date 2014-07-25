@@ -22,7 +22,7 @@ novice_force_mystic = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
+	creatureBitmask = PACK + KILLER + HEALER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
