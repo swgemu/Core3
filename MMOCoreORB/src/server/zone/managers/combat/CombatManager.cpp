@@ -1114,7 +1114,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	int hitChance = 0;
 	int attackType = weapon->getAttackType();
 
-	//info("Calculating hit chance", true);
+	info("Calculating hit chance", true);
 
 	float weaponAccuracy = 0.0f;
 	// Get the weapon mods for range and add the mods for stance
@@ -1122,17 +1122,17 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	// accounts for steadyaim, general aim, and specific weapon aim, these buffs will clear after a completed combat action
 	if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) weaponAccuracy += creature->getSkillMod("private_aim");
 
-	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
+	info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
 
 	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
 
-	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
+	info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
 
 	// need to also add in general attack accuracy (mostly gotten from posture and states)
 	int totalBonus = getAttackerAccuracyBonus(creature, weapon);
 	totalBonus += calculateTargetPostureModifier(weapon, targetCreature);
 
-	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
+	info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 
 	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
 
@@ -1145,7 +1145,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	accTotal -= targetCreature->getSkillMod("dodge_attack");
 
-	//info("Final hit chance is " + String::valueOf(accTotal), true);
+	info("Final hit chance is " + String::valueOf(accTotal), true);
 
 	if (accTotal > 100)
 		accTotal = 100.0;
@@ -1155,9 +1155,13 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	if (System::random(100) > accTotal) // miss, just return MISS
 		return MISS;
 
+	info("Attack hit successfully", true);
+
 	// now we have a successful hit, so calculate secondary defenses if there is a damage component
 	if (damage > 0) {
 		targetDefense = getDefenderSecondaryDefenseModifier(targetCreature);
+
+		info("Secondary defenses are " + String::valueOf(targetDefense), true);
 
 		if (targetDefense <= 0)
 			return HIT; // no secondary defenses
@@ -1174,6 +1178,8 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 		accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy + accuracyBonus, totalBonus, targetDefense);
 
+		info("Final hit chance through secondaries is " + String::valueOf(accTotal), true);
+
 		if (accTotal > 100)
 			accTotal = 100.0;
 		else if (accTotal < 0)
@@ -1181,8 +1187,11 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 		int cobMod = targetCreature->getSkillMod("private_center_of_being");
 
+		info("Center of Being mod is " + String::valueOf(cobMod), true);
+
 		if (System::random(100) > accTotal || (cobMod > 0 && System::random(100) > hitChanceEquation(attackerAccuracy + weaponAccuracy + accuracyBonus, totalBonus, cobMod))) { // successful secondary defense, return type of defense
 
+			info("Secondaries defenses prevailed", true);
 			// this means use defensive acuity, which mean random 1, 2, or 3
 			if (targetWeapon == NULL)
 				return System::random(2) + 1;

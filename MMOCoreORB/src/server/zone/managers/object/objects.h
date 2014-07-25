@@ -22,6 +22,7 @@
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/LairObject.h"
 #include "server/zone/objects/tangible/Instrument.h"
 #include "server/zone/objects/tangible/consumable/Food.h"
 #include "server/zone/objects/tangible/consumable/Drink.h"

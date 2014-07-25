@@ -83,7 +83,7 @@ void ObjectManager::registerObjectTypes() {
 	info("registering object types");
 	//objectFactory.registerObject<SceneObject>(0);
 	objectFactory.registerObject<TangibleObject>(6);
-	objectFactory.registerObject<TangibleObject>(SceneObjectType::LAIR);
+	objectFactory.registerObject<LairObject>(SceneObjectType::LAIR);
 	objectFactory.registerObject<StaticObject>(SceneObjectType::FLORA);
 
 	objectFactory.registerObject<SarlaccArea>(SceneObjectType::SARLACCAREA);
