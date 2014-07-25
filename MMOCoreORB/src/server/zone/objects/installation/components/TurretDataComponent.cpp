@@ -11,10 +11,14 @@
 #include "server/zone/objects/installation/components/TurretFireTask.h"
 
 void TurretDataComponent::initializeTransientMembers() {
-	if(getParent() != NULL){
-		templateData = dynamic_cast<SharedInstallationObjectTemplate*>(getParent()->getObjectTemplate());
+	TangibleObject* turret = cast<TangibleObject*>(getParent());
 
-		SceneObject* sceneObject = getParent()->getSlottedObject("hold_r");
+	if(turret != NULL) {
+		turret->createCloseObjectsVector();
+
+		templateData = dynamic_cast<SharedInstallationObjectTemplate*>(turret->getObjectTemplate());
+
+		SceneObject* sceneObject = turret->getSlottedObject("hold_r");
 
 		if(sceneObject == NULL){
 			return;
@@ -26,6 +30,7 @@ void TurretDataComponent::initializeTransientMembers() {
 			attackSpeed = weapon->getAttackSpeed();
 			maxrange = weapon->getMaxRange();
 		}
+
 	}
 }
 

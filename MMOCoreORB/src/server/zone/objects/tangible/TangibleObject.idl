@@ -67,6 +67,7 @@ include server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.threat.ThreatMap;
 import server.zone.objects.tangible.weapon.WeaponObject;
+include engine.util.u3d.CloseObjectsVector;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -617,11 +618,10 @@ class TangibleObject extends SceneObject {
 	}
 	
 	public native void broadcastPvpStatusBitmask();
+
+	public void createCloseObjectsVector() {
+		super.closeobjects = new CloseObjectsVector();
+		super.closeobjects.setNoDuplicateInsertPlan();
+	}
 }
-
-
-
-
-
-
 
