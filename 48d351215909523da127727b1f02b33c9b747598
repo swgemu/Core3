@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_a87daeb3",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/LairObserver.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-26T02:23:01Z",
+      "side": 1,
+      "message": "I would put this in SpawnObserver (the parent class) so that dynamic spawns can use it as well.",
+      "revId": "48d351215909523da127727b1f02b33c9b747598",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
