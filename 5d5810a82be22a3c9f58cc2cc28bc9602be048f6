@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_8831ca0d",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lair/npc_theater/global_dark_jedi_camp_dark_jedi_theater.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-26T04:11:03Z",
+      "side": 1,
+      "message": "Don\u0027t use these. The sentinels are the guardians of the FRS enclaves and shouldn\u0027t spawn elsewhere.",
+      "revId": "5d5810a82be22a3c9f58cc2cc28bc9602be048f6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
