@@ -2009,6 +2009,11 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 				continue;
 			}
 
+			if (!tano->isAttackableBy(attacker)) {
+				//error("object is not attackable");
+				continue;
+			}
+
 			if (!attacker->isInRange(object, range)) {
 				//error("not in range " + String::valueOf(range));
 				continue;
@@ -2116,6 +2121,11 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 
 			if (object == attacker) {
 				//error("object is attacker");
+				continue;
+			}
+
+			if (!(tano->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
+				//error("object is not attackable");
 				continue;
 			}
 
