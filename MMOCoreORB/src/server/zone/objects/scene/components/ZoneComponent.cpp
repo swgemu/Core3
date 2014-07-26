@@ -442,6 +442,20 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 		SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
 
 		CloseObjectsVector* closeobjects = (CloseObjectsVector*) sceneObject->getCloseObjects();
+		ManagedReference<SceneObject*> vectorOwner = sceneObject;
+
+		if (closeobjects == NULL && par != NULL) {
+			vectorOwner = par;
+			closeobjects = (CloseObjectsVector*) vectorOwner->getCloseObjects();
+		}
+
+		while (closeobjects == NULL && vectorOwner != NULL) {
+			vectorOwner = vectorOwner->getParent().get();
+
+			if (vectorOwner != NULL) {
+				closeobjects = (CloseObjectsVector*) vectorOwner->getCloseObjects();
+			}
+		}
 
 		if (closeobjects != NULL) {
 			try {
@@ -452,8 +466,9 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 
 					if (obj != NULL && obj != sceneObject && obj->getCloseObjects() != NULL)
 						obj->removeInRangeObject(sceneObject);
-					
-					sceneObject->removeInRangeObject((int) 0);
+
+					if (vectorOwner == sceneObject)
+						vectorOwner->removeInRangeObject((int) 0);
 
 					closeSceneObjects.remove((int) 0);
 				}
@@ -463,7 +478,6 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 			} catch (...) {
 			}
 		} else {
-			SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
 
 			sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld", true);
 
