@@ -358,6 +358,8 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 	targetInstrument = false;
 	updateEntertainerMissionStatus(false, MissionObject::MUSICIAN);
 
+	entertainer->notifyObservers(ObserverEventType::STOPENTERTAIN, entertainer);
+
 	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
 
 	ManagedReference<GroupObject*> group = entertainer->getGroup();
@@ -389,6 +391,8 @@ void EntertainingSessionImplementation::startDancing(const String& dance, const 
 	entertainer->sendSystemMessage("@performance:dance_start_self");
 
 	updateEntertainerMissionStatus(true, MissionObject::DANCER);
+
+	entertainer->notifyObservers(ObserverEventType::STARTENTERTAIN, entertainer);
 
 	startEntertaining();
 }
@@ -422,6 +426,8 @@ void EntertainingSessionImplementation::startPlayingMusic(const String& song, co
 		externalInstrument->setBeingUsed(true);
 
 	updateEntertainerMissionStatus(true, MissionObject::MUSICIAN);
+
+	entertainer->notifyObservers(ObserverEventType::STARTENTERTAIN, entertainer);
 
 	startEntertaining();
 }
@@ -485,6 +491,8 @@ void EntertainingSessionImplementation::stopDancing() {
 		tickTask->cancel();
 
 	updateEntertainerMissionStatus(false, MissionObject::DANCER);
+
+	entertainer->notifyObservers(ObserverEventType::STOPENTERTAIN, entertainer);
 
 	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
 
@@ -601,6 +609,7 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
 
 			flourishCount++;
 		}
+		entertainer->notifyObservers(ObserverEventType::FLOURISH, entertainer, fid);
 
 		entertainer->sendSystemMessage("@performance:flourish_perform");
 	}

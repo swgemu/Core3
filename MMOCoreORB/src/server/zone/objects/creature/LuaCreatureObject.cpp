@@ -12,6 +12,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
@@ -91,6 +92,9 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isDead", &LuaCreatureObject::isDead},
 		{ "getLevel", &LuaCreatureObject::getLevel},
 		{ "getQueueSize", &LuaCreatureObject::getQueueSize },
+		{ "isDancing", &LuaCreatureObject::isDancing},
+		{ "isPlayingMusic", &LuaCreatureObject::isPlayingMusic},
+		{ "getPerformanceName", &LuaCreatureObject::getPerformanceName},
 		{ 0, 0 }
 };
 
@@ -648,3 +652,43 @@ int LuaCreatureObject::getQueueSize(lua_State* L) {
 
 	return 1;
 }
+
+int LuaCreatureObject::isDancing(lua_State* L) {
+	bool retVal = realObject->isDancing();
+
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaCreatureObject::isPlayingMusic(lua_State* L) {
+	bool retVal = realObject->isPlayingMusic();
+
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaCreatureObject::getPerformanceName(lua_State* L) {
+	ManagedReference<Facade*> facade = realObject->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+	if (facade == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
+
+	if (session == NULL) {
+		lua_pushnil(L);;
+		return 1;
+	}
+
+	if (!session->isPlayingMusic() && !session->isDancing())
+		lua_pushnil(L);
+	else
+		lua_pushstring(L, session->getPerformanceName().toCharArray());
+
+	return 1;
+}
+

@@ -4,6 +4,7 @@ includeFile("quest/chadra_fan_female.lua")
 includeFile("quest/chadra_fan_male.lua")
 includeFile("quest/chadra_fan_thief.lua")
 includeFile("quest/gadget_specialist.lua")
+includeFile("quest/theater_manager.lua")
 
 -- Corellia
 includeFile("quest/corellia/aldalad.lua")
