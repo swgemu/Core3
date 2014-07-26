@@ -137,6 +137,8 @@ public:
 
 			ghost->addSuiBox(box);
 			creature->sendMessage(box->generateMessage());
+		} else if (container == "ham") {
+			return sendHam(creature, targetObj);
 		} else if (container == "lots") {
 			return sendLots(creature, targetObj);
 		} else if (container == "vendors") {
@@ -323,6 +325,48 @@ public:
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
 		box->setPromptTitle("Player Lots");
+		box->setPromptText(body.toString());
+		box->setUsingObject(target);
+		box->setForceCloseDisabled();
+
+		ghost->addSuiBox(box);
+		creature->sendMessage(box->generateMessage());
+
+		return SUCCESS;
+	}
+
+	int sendHam(CreatureObject* creature, CreatureObject* target) {
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == NULL) {
+			return GENERALERROR;
+		}
+
+		StringBuffer body;
+		body << "Player Name:\t" << target->getFirstName() << endl << endl;
+		body << "Min\tMax \tWounds\tMods\tEnc" << endl;
+
+		for (int i = 0; i < 9; i++) {
+			body << String::valueOf(target->getHAM(i)) + " / ";
+			body << "\t" + String::valueOf(target->getMaxHAM(i) - target->getWounds(i));
+			body << "   \t" + String::valueOf(target->getWounds(i)) << "\t";
+
+			switch (i) {
+			case 0:
+			case 3:
+			case 6:
+				body << "\t" + String::valueOf(target->getMaxHAM(i) - target->getBaseHAM(i));
+				body << "\t0" << endl;
+				break;
+			default:
+				body << "\t" + String::valueOf(target->getMaxHAM(i) - target->getBaseHAM(i) + target->getEncumbrance(i / 3));
+				body << "\t" + String::valueOf(target->getEncumbrance(i / 3)) << endl;
+				break;
+			}
+		}
+
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
+		box->setPromptTitle("Player HAM");
 		box->setPromptText(body.toString());
 		box->setUsingObject(target);
 		box->setForceCloseDisabled();
