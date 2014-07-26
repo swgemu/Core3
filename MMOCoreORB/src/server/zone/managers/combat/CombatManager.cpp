@@ -477,6 +477,11 @@ int CombatManager::calculateTargetPostureModifier(WeaponObject* weapon, Creature
 	return accuracy;
 }
 
+int CombatManager::calculateAccuracyFromHitChance(AiAgent* agent) {
+	//info("AiAgent's hit chance is " + String::valueOf(agent->getChanceHit() * 100), true);
+	return 2 * ((agent->getChanceHit() * 100) - 66);
+}
+
 int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponObject* weapon) {
 	int attackerAccuracy = 0;
 
@@ -509,11 +514,6 @@ int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObje
 		bonus += attacker->getSkillMod("private_ranged_accuracy_bonus");
 
 	bonus += calculatePostureModifier(attacker, weapon);
-
-	if (attacker->isAiAgent()) {
-		ManagedReference<AiAgent*> agent = dynamic_cast<AiAgent*>(attacker);
-		bonus += agent->getChanceHit() * 100;
-	}
 
 	return bonus;
 }
@@ -1124,7 +1124,11 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
 
-	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
+	int attackerAccuracy = 0;
+	if (creature->isAiAgent())
+		attackerAccuracy = calculateAccuracyFromHitChance(cast<AiAgent*>(creature));
+	else
+		attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
 
 	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
 
