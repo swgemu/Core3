@@ -1712,13 +1712,8 @@ String AuctionManagerImplementation::removeColorCodes(const String& name) {
 
 	while (itemName.contains("\\#")) {
 		int index = itemName.indexOf("\\#");
-		if (index + 8 > itemName.length()) {
-			String sub = "\\" + itemName.subString(index, index + 2);
-			itemName = itemName.replaceFirst(sub,"");
-		} else {
-			String sub = "\\" + itemName.subString(index, index + 8);
-			itemName = itemName.replaceFirst(sub,"");
-		}
+		String sub = "\\" + itemName.subString(index, index + 2);
+		itemName = itemName.replaceFirst(sub,"");
 	}
 
 	return itemName;

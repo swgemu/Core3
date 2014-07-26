@@ -1049,13 +1049,8 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 	String newName = name;
 	while (newName.contains("\\#")) {
 		int index = newName.indexOf("\\#");
-		if (index + 8 > newName.length()) {
-			String sub = "\\" + newName.subString(index, index + 2);
-			newName = newName.replaceFirst(sub,"");
-		} else {
-			String sub = "\\" + newName.subString(index, index + 8);
-			newName = newName.replaceFirst(sub,"");
-		}
+		String sub = "\\" + newName.subString(index, index + 2);
+		newName = newName.replaceFirst(sub,"");
 	}
 
 	UnicodeString customName(newName);
