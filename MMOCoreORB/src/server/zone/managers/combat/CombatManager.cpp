@@ -1191,7 +1191,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 		if (System::random(100) > accTotal || (cobMod > 0 && System::random(100) > hitChanceEquation(attackerAccuracy + weaponAccuracy + accuracyBonus, totalBonus, cobMod))) { // successful secondary defense, return type of defense
 
-			info("Secondaries defenses prevailed", true);
+			//info("Secondaries defenses prevailed", true);
 			// this means use defensive acuity, which mean random 1, 2, or 3
 			if (targetWeapon == NULL)
 				return System::random(2) + 1;
