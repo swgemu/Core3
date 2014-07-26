@@ -8,6 +8,7 @@
 #include "LuaPlayerObject.h"
 #include "engine/engine.h"
 #include "FactionStatus.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 
 const char LuaPlayerObject::className[] = "LuaPlayerObject";
@@ -45,6 +46,10 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "hasCompletedQuestsBitSet", &LuaPlayerObject::hasCompletedQuestsBitSet },
 		{ "setCompletedQuestsBit", &LuaPlayerObject::setCompletedQuestsBit },
 		{ "clearCompletedQuestsBit", &LuaPlayerObject::clearCompletedQuestsBit },
+		{ "isDancing", &LuaPlayerObject::isDancing },
+		{ "isPlayingMusic", &LuaPlayerObject::isPlayingMusic },
+		{ "getPerformanceName", &LuaPlayerObject::getPerformanceName },
+		{ "hasAbility", &LuaPlayerObject::hasAbility},
 		{ 0, 0 }
 };
 
@@ -339,4 +344,79 @@ int LuaPlayerObject::clearCompletedQuestsBit(lua_State* L) {
 	realObject->clearCompletedQuestsBit(quest, true);
 
 	return 0;
+}
+
+int LuaPlayerObject::isDancing(lua_State* L) {
+	ManagedReference<Facade*> facade = realObject->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+	if (facade == NULL) {
+		lua_pushboolean(L, false);
+		return 1;
+	}
+
+	ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
+
+	if (session == NULL) {
+		lua_pushboolean(L, false);
+		return 1;
+	}
+
+	lua_pushboolean(L, session->isDancing() == true);
+
+	return 1;
+}
+
+int LuaPlayerObject::isPlayingMusic(lua_State* L) {
+	ManagedReference<Facade*> facade = realObject->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+	if (facade == NULL) {
+		lua_pushboolean(L, false);
+		return 1;
+	}
+
+	ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
+
+	if (session == NULL) {
+		lua_pushboolean(L, false);
+		return 1;
+	}
+
+	lua_pushboolean(L, session->isPlayingMusic() == true);
+
+	return 1;
+}
+
+int LuaPlayerObject::getPerformanceName(lua_State* L) {
+	ManagedReference<Facade*> facade = realObject->getActiveSession(SessionFacadeType::ENTERTAINING);
+
+	if (facade == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
+
+	if (session == NULL) {
+		lua_pushnil(L);;
+		return 1;
+	}
+
+	if (!session->isPlayingMusic() && !session->isDancing())
+		lua_pushnil(L);
+	else
+		lua_pushstring(L, session->getPerformanceName().toCharArray());
+
+	return 1;
+}
+
+int LuaPlayerObject::hasAbility(lua_State* L) {
+	String value = lua_tostring(L, -1);
+
+	Reference<PlayerObject*> ghost = realObject->getSlottedObject("ghost").castTo<PlayerObject*> ();
+
+	bool check = ghost->hasAbility(value);
+
+	lua_pushboolean(L, check);
+
+	return 1;
 }
