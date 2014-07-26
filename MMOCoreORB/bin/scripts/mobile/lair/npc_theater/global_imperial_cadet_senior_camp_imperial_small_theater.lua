@@ -1,13 +1,15 @@
 global_imperial_cadet_senior_camp_imperial_small_theater = Lair:new {
-	mobiles = {{"imperial_senior_cadet", 1}},
-	spawnLimit = 8,
-	buildingsVeryEasy = {"object/tangible/lair/base/objective_banner_imperial.iff"},
-	buildingsEasy = {"object/tangible/lair/base/objective_banner_imperial.iff"},
-	buildingsMedium = {"object/tangible/lair/base/objective_banner_imperial.iff"},
-	buildingsHard = {"object/tangible/lair/base/objective_banner_imperial.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_imperial.iff"},
-	faction = "imperial",
-	mobType = "npc"
+	mobiles = {
+		{"imperial_senior_cadet", 1},
+		{"imperial_cadet",2}
+	},
+	spawnLimit = 9,
+	buildingsVeryEasy = {"object/building/poi/anywhere_imperial_base_small_1.iff","object/building/poi/lok_imperial_small1.iff","object/building/poi/lok_imperial_small2.iff"},
+	buildingsEasy = {"object/building/poi/anywhere_imperial_base_small_1.iff","object/building/poi/lok_imperial_small1.iff","object/building/poi/lok_imperial_small2.iff"},
+	buildingsMedium = {"object/building/poi/anywhere_imperial_base_small_1.iff","object/building/poi/lok_imperial_small1.iff","object/building/poi/lok_imperial_small2.iff"},
+	buildingsHard = {"object/building/poi/anywhere_imperial_base_small_1.iff","object/building/poi/lok_imperial_small1.iff","object/building/poi/lok_imperial_small2.iff"},
+	buildingsVeryHard = {"object/building/poi/anywhere_imperial_base_small_1.iff","object/building/poi/lok_imperial_small1.iff","object/building/poi/lok_imperial_small2.iff"},
+	buildingType = "theater"
 }
 
 addLairTemplate("global_imperial_cadet_senior_camp_imperial_small_theater", global_imperial_cadet_senior_camp_imperial_small_theater)
