@@ -33,7 +33,7 @@ giant_mutant_bark_mite = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareattack",""},
+		{"creatureareaattack",""},
 		{"intimidationattack","intimidationChance=50"}
 	}
 }

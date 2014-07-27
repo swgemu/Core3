@@ -14,11 +14,15 @@
 #include "server/zone/managers/loot/lootgroup/LootGroupCollectionEntry.h"
 #include "server/conf/ConfigManager.h"
 #include "server/zone/managers/templates/DataArchiveStore.h"
+#include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
+#include "server/zone/managers/objectcontroller/command/CommandList.h"
 
 class LuaMobileTest : public ::testing::Test {
 protected:
 	LootGroupMap* lootGroupMap;
 	TemplateManager* templateManager;
+	CommandConfigManager* commandConfigManager;
+	CommandList* list;
 
 public:
 
@@ -28,6 +32,8 @@ public:
 		DataArchiveStore::instance()->loadTres(ConfigManager::instance()->getTrePath(), ConfigManager::instance()->getTreFiles());
 		lootGroupMap = LootGroupMap::instance();
 		templateManager = TemplateManager::instance();
+		commandConfigManager = new CommandConfigManager(NULL);
+		list = new CommandList();
 	}
 
 	~LuaMobileTest() {
@@ -41,6 +47,9 @@ public:
 		if( templateManager->loadedTemplatesCount == 0 ){
 			templateManager->loadLuaTemplates();
 		}
+
+		commandConfigManager->registerSpecialCommands(list);
+		commandConfigManager->loadSlashCommandsFile();
 	}
 
 	void TearDown() {
@@ -323,6 +332,14 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		if (!outfit.isEmpty()) {
 			MobileOutfitGroup* outfitGroup = CreatureTemplateManager::instance()->getMobileOutfitGroup(outfit);
 			EXPECT_TRUE( outfitGroup != NULL ) << "Outfit group " << outfit.toCharArray() << " from " << templateName << " was not found.";
+		}
+
+		// Verify attacks are valid commands
+		CreatureAttackMap* cam = creature->getAttacks();
+		for (int i = 0; i < cam->size(); i++) {
+			String commandName = cam->getCommand(i);
+
+			EXPECT_TRUE( commandConfigManager->contains(commandName) ) << "Attack: " << commandName.toCharArray() << " is not a valid command in mobile template: " << templateName;
 		}
 	}
 
