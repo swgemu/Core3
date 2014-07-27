@@ -1622,6 +1622,14 @@ void AiAgentImplementation::setNextPosition(float x, float z, float y, SceneObje
 	patrolPoints.add(0, point);
 }
 
+void AiAgentImplementation::setNextStepPosition(float x, float z, float y, SceneObject* cell) {
+	Locker locker(&targetMutex);
+
+	PatrolPoint point(x, z, y, cell);
+
+	nextStepPosition = point;
+}
+
 void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 	BasePacket* msg = NULL;
 	++movementCounter;

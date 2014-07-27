@@ -283,6 +283,8 @@ class AiAgent extends CreatureObject {
 	
 	public native void setNextPosition(float x, float z, float y, SceneObject cell = null);
 	
+	public native void setNextStepPosition(float x, float z, float y, SceneObject cell = null);
+	
 	public native void notifyPositionUpdate(QuadTreeEntry entry);
 	
 	@local

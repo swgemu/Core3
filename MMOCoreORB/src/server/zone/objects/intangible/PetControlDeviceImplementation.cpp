@@ -289,6 +289,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	}
 
 	pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
+	pet ->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
 	pet->clearPatrolPoints();
 	pet->setCreatureBitmask(CreatureFlag::PET);
 	pet->activateLoad("");
