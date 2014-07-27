@@ -142,7 +142,7 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 		spawnGroup = CreatureTemplateManager::instance()->getSpawnGroup(spawnGroupTemplateCRC);
 
 	if (spawnGroup == NULL) {
-		error("spawnGroup is NULL in spawn area: " + getDisplayedName());
+		error("spawnGroup is NULL (crc = " + String::valueOf(spawnGroupTemplateCRC) + ") in spawn area " + getObjectName()->getStringID() + " on planet " + (getZone() != NULL ? getZone()->getZoneName() : "NULL"));
 		return 1;
 	}
 

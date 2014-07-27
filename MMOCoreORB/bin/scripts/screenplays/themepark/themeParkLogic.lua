@@ -525,7 +525,7 @@ function ThemeParkLogic:startHuntMission(mission, pConversingPlayer)
 	if pConversingPlayer == nil then
 		return false
 	end
-	printf("planet: " .. mission.huntTarget.planetName .. " " .. mission.huntTarget.waypointX .. " " .. mission.huntTarget.waypointY .. "\n")
+
 	self:updateWaypoint(pConversingPlayer, mission.huntTarget.planetName, mission.huntTarget.waypointX, mission.huntTarget.waypointY, "target")
 	createObserver(KILLEDCREATURE, self.className, "notifyKilledHuntTarget", pConversingPlayer)
 
