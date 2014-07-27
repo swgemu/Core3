@@ -172,8 +172,8 @@ function TheaterManagerScreenPlay:notifyPerformanceObserver(pPlayer, pPlayer2)
 		local expectedPerformance = readData(player:getObjectID() .. ":expectedPerformance")
 		if (self:isExpectedPerformance(pPlayer, expectedPerformance, auditionType) == true) then
 			writeData(player:getObjectID() .. ":performanceCompleted", 1)
-			removeObservers(pPlayer, STARTENTERTAIN)
-			removeObservers(pPlayer, CHANGEENTERTAIN)
+			dropObserver(STARTENTERTAIN, pPlayer)
+			dropObserver(CHANGEENTERTAIN, pPlayer)
 		else
 			self:failAudition(pPlayer, "fail_audition")
 		end
@@ -186,7 +186,7 @@ function TheaterManagerScreenPlay:notifyFlourishObserver(pPlayer, pPlayer2, flou
 		local expectedPerformance = readData(player:getObjectID() .. ":expectedPerformance")
 		if (flourishID == expectedPerformance) then
 			writeData(player:getObjectID() .. ":performanceCompleted", 1)
-			removeObservers(pPlayer, FLOURISH)
+			dropObserver(FLOURISH, pPlayer)
 		else
 			self:failAudition(pPlayer, "fail_audition")
 		end
@@ -296,9 +296,9 @@ end
 
 function TheaterManagerScreenPlay:auditionCleanup(pPlayer)
 	ObjectManager.withCreatureObject(pPlayer, function(player)
-		removeObservers(pPlayer, STARTENTERTAIN)
-		removeObservers(pPlayer, CHANGEENTERTAIN)
-		removeObservers(pPlayer, FLOURISH)
+		dropObserver(STARTENTERTAIN, pPlayer)
+		dropObserver(CHANGEENTERTAIN, pPlayer)
+		dropObserver(FLOURISH, pPlayer)
 
 		local auditionAreaID = readData(player:getObjectID() .. ":auditionAreaID")
 		local pAuditionArea = getSceneObject(auditionAreaID)
