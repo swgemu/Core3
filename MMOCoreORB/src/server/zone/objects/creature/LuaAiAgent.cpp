@@ -22,6 +22,7 @@
 
 #include "server/zone/managers/creature/AiMap.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 //#include "server/zone/objects/creature/AiAgent.h"
 
@@ -36,6 +37,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "setWatchObject", &LuaAiAgent::setWatchObject },
 		{ "setStalkObject", &LuaAiAgent::setStalkObject },
 		{ "getFollowObject", &LuaAiAgent::getFollowObject },
+		{ "storeFollowObject", &LuaAiAgent::storeFollowObject },
+		{ "restoreFollowObject", &LuaAiAgent::restoreFollowObject },
 		{ "getTargetOfTargetID", &LuaAiAgent::getTargetOfTargetID },
 		{ "getTargetID", &LuaCreatureObject::getTargetID },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
@@ -87,6 +90,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "broadcastInterrupt", &LuaAiAgent::broadcastInterrupt },
 		{ "getSocialGroup", &LuaAiAgent::getSocialGroup },
 		{ "getOwner", &LuaAiAgent::getOwner },
+		{ "getLastCommand", &LuaAiAgent::getLastCommand },
 		{ 0, 0 }
 };
 
@@ -152,6 +156,16 @@ int LuaAiAgent::getFollowObject(lua_State* L) {
 		lua_pushlightuserdata(L, followObject);
 
 	return 1;
+}
+
+int LuaAiAgent::storeFollowObject(lua_State* L) {
+	realObject->storeFollowObject();
+	return 0;
+}
+
+int LuaAiAgent::restoreFollowObject(lua_State* L) {
+	realObject->restoreFollowObject();
+	return 0;
 }
 
 int LuaAiAgent::getTargetOfTargetID(lua_State* L) {
@@ -601,5 +615,16 @@ int LuaAiAgent::getOwner(lua_State* L) {
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, retVal);
+	return 1;
+}
+
+int LuaAiAgent::getLastCommand(lua_State* L) {
+	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().castTo<PetControlDevice*>();
+
+	if (controlDevice == NULL)
+		lua_pushinteger(L, 0);
+	else
+		lua_pushinteger(L, controlDevice->getLastCommand());
+
 	return 1;
 }

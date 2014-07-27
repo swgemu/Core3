@@ -38,6 +38,8 @@ namespace creature {
 		int setWatchObject(lua_State* L);
 		int setStalkObject(lua_State* L);
 		int getFollowObject(lua_State* L);
+		int storeFollowObject(lua_State* L);
+		int restoreFollowObject(lua_State* L);
 		int getTargetOfTargetID(lua_State* L);
 		int getFollowState(lua_State* L);
 		int findNextPosition(lua_State* L);
@@ -87,6 +89,7 @@ namespace creature {
 		int broadcastInterrupt(lua_State* L);
 		int getSocialGroup(lua_State* L);
 		int getOwner(lua_State* L);
+		int getLastCommand(lua_State* L);
 	private:
 		ManagedReference<AiAgent*> realObject;
 	};

@@ -36,3 +36,11 @@ end
 
 SelectWeapon = createClass(SelectWeaponBase, Interrupt)
 SelectWeaponPet = createClass(SelectWeaponBase, PetInterrupt)
+
+function SelectWeaponPet:terminate(pAgent)
+	if pAgent ~= nil then
+		local agent = LuaAiAgent(pAgent)
+		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE then agent:restoreFollowObject() end
+	end
+	return 0
+end

@@ -5,6 +5,7 @@
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 class PetStayCommand : public QueueCommand {
 public:
@@ -15,6 +16,10 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
+		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().castTo<PetControlDevice*>();
+		if (controlDevice == NULL)
+			return GENERALERROR;
+
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
 		if( pet == NULL )
 			return GENERALERROR;
@@ -22,7 +27,12 @@ public:
 		if (pet->hasRidingCreature())
 			return GENERALERROR;
 
+		CombatManager::instance()->attemptPeace(pet);
+
 		pet->setOblivious();
+		pet->storeFollowObject();
+
+		controlDevice->setLastCommand(PetManager::STAY);
 
 		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 

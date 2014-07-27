@@ -133,8 +133,9 @@ class AiAgent extends CreatureObject {
 	
 	protected boolean despawnOnNoPlayerInRange;
 	
-	//@weakReference
 	protected SceneObject followObject;
+	@weakReference
+	protected SceneObject followStore;
 	protected unsigned int followState;
 	@dereferenced
 	protected transient Mutex targetMutex;
@@ -531,6 +532,18 @@ class AiAgent extends CreatureObject {
 	
 	public SceneObject getFollowObject() {
 		return followObject;
+	}
+	
+	public void storeFollowObject() {
+		followStore = followObject;
+	}
+	
+	public void restoreFollowObject() {
+		SceneObject obj = followStore;
+		if (obj == null)
+			setOblivious();
+		else
+			setFollowObject(obj);
 	}
 	
 	public unsigned int getFollowState() {

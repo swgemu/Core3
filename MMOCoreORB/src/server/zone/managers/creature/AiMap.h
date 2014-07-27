@@ -21,6 +21,8 @@
 #include "server/zone/objects/creature/ai/bt/ParallelSelectorBehavior.h"
 #include "server/zone/objects/creature/ai/bt/LuaBehavior.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
+#include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 class AiMap : public Singleton<AiMap>, public Logger, public Object {
 public:
@@ -186,6 +188,25 @@ private:
 		lua->setGlobalInt("HEALER",CreatureFlag::HEALER);
 		lua->setGlobalInt("STATIC",CreatureFlag::STATIC);
 		lua->setGlobalInt("PET",CreatureFlag::PET);
+
+		lua->setGlobalInt("PET_FOLLOW", PetManager::FOLLOW);
+		lua->setGlobalInt("PET_STORE", PetManager::STORE);
+		lua->setGlobalInt("PET_ATTACK", PetManager::ATTACK);
+		lua->setGlobalInt("PET_GUARD", PetManager::GUARD);
+		lua->setGlobalInt("PET_FRIEND", PetManager::FRIEND);
+		lua->setGlobalInt("PET_FOLLOWOTHER", PetManager::FOLLOWOTHER);
+		lua->setGlobalInt("PET_TRICK1", PetManager::TRICK1);
+		lua->setGlobalInt("PET_TRICK2", PetManager::TRICK2);
+		lua->setGlobalInt("PET_PATROL", PetManager::PATROL);
+		lua->setGlobalInt("PET_FORMATION1", PetManager::FORMATION1);
+		lua->setGlobalInt("PET_FORMATION2", PetManager::FORMATION2);
+		lua->setGlobalInt("PET_SPECIAL_ATTACK1", PetManager::SPECIAL_ATTACK1);
+		lua->setGlobalInt("PET_SPECIAL_ATTACK2", PetManager::SPECIAL_ATTACK2);
+		lua->setGlobalInt("PET_RANGED_ATTACK", PetManager::RANGED_ATTACK);
+		lua->setGlobalInt("PET_GROUP", PetManager::GROUP);
+		lua->setGlobalInt("PET_STAY", PetManager::STAY);
+		lua->setGlobalInt("PET_RECHARGEOTHER", PetManager::RECHARGEOTHER);
+		lua->setGlobalInt("PET_TRANSFER", PetManager::TRANSFER);
 	}
 
 	void putTemplate(Lua* lua, String key, HashTable<unsigned int, Reference<AiTemplate*> >* table) {

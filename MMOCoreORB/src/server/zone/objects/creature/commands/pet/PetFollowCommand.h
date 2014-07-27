@@ -7,6 +7,7 @@
 #include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 class PetFollowCommand : public QueueCommand {
 public:
@@ -46,9 +47,12 @@ public:
 			}
 		}
 
-		pet->setFollowObject(targetObject);
-
 		CombatManager::instance()->attemptPeace(pet);
+
+		pet->setFollowObject(targetObject);
+		pet->storeFollowObject();
+
+		controlDevice->setLastCommand(PetManager::FOLLOW);
 
 		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 

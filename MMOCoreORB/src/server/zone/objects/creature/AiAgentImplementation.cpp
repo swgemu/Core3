@@ -2264,6 +2264,7 @@ void AiAgentImplementation::setCurrentBehavior(const String& b) {
 	if (behaviors.get(currentBehaviorID) != NULL) {
 		//activateMovementEvent();
 
+		//info(currentBehaviorID, true);
 		// This is for debugging:
 /*		ZoneServer* zoneServer = ServerCore::getZoneServer();
 		ChatManager* chatManager = zoneServer->getChatManager();

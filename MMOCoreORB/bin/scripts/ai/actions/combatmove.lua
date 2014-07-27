@@ -31,3 +31,11 @@ function CombatMovePet:checkConditions(pAgent)
 	end
 	return false
 end
+
+function CombatMovePet:terminate(pAgent)
+	if pAgent ~= nil then
+		local agent = LuaAiAgent(pAgent)
+		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE then agent:restoreFollowObject() end
+	end
+	return 0
+end

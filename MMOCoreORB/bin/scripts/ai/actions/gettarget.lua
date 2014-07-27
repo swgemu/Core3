@@ -79,6 +79,12 @@ function GetTargetPet:doAction(pAgent)
 	if (pAgent ~= nil) then
 		--print("1")
 		local agent = LuaAiAgent(pAgent)
+		
+		local command = agent:getLastCommand()
+		if (command ~= PET_ATTACK and command ~= PET_GUARD) then
+			return BEHAVIOR_FAILURE	
+		end
+	
 		local creature = LuaCreatureObject(pAgent)
 
 		local pTarget = agent:getTargetFromMap()
@@ -119,4 +125,12 @@ function GetTargetPet:doAction(pAgent)
 		end
 	end
 	return BEHAVIOR_FAILURE
+end
+
+function GetTargetPet:terminate(pAgent)
+	if pAgent ~= nil then
+		local agent = LuaAiAgent(pAgent)
+		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE then agent:restoreFollowObject() end
+	end
+	return 0
 end

@@ -29,6 +29,11 @@ public:
 	void run() {
 		Locker locker(pet);
 
+		CommandQueueActionVector* queue = pet->getCommandQueue();
+
+		if (queue != NULL)
+			queue->removeAll();
+
 		pet->enqueueCommand(commandCRC, 0, target, arguments, priority);
 	}
 };
