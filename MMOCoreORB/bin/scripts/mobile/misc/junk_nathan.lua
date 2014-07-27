@@ -24,7 +24,7 @@ junk_nathan = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 264,
+	optionsBitmask = 256,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/junk_nathan.iff"},

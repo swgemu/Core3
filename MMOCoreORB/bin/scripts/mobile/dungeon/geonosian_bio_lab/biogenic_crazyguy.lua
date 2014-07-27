@@ -24,7 +24,7 @@ biogenic_crazyguy = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 392,
+	optionsBitmask = 384,
 	diet = HERBIVORE,
 
 	templates = {

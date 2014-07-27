@@ -25,6 +25,6 @@ trainer_starfighter_engineer = Creature:new {
 	diet = HERBIVORE,
 	templates = {"object/mobile/space_starfighter_engineer_trainer_01.iff","object/mobile/space_starfighter_engineer_trainer_02.iff","object/mobile/space_starfighter_engineer_trainer_03.iff"},
 	conversationTemplate = "",
-	optionsBitmask = 264
+	optionsBitmask = 256
 }
 CreatureTemplates:addCreatureTemplate(trainer_starfighter_engineer,"trainer_starfighter_engineer")

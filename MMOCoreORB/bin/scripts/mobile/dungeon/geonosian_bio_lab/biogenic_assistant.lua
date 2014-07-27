@@ -23,7 +23,7 @@ biogenic_assistant = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 392,
+	optionsBitmask = 384,
 	diet = HERBIVORE,
 	
 	templates = {"object/mobile/dressed_geonosian_scientist_01.iff","object/mobile/dressed_geonosian_scientist_02.iff"},
