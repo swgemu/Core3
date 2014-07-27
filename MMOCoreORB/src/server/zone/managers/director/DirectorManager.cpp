@@ -16,6 +16,7 @@
 #include "server/zone/objects/player/LuaPlayerObject.h"
 #include "server/zone/objects/tangible/LuaTangibleObject.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
+#include "server/zone/managers/structure/tasks/DestroyStructureTask.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
@@ -182,7 +183,6 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "hasServerEvent", hasServerEvent);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "dropObserver", dropObserver);
-	lua_register(luaEngine->getLuaState(), "removeObservers", removeObservers);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
 	lua_register(luaEngine->getLuaState(), "spawnMobileRandom", spawnMobileRandom);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
@@ -198,6 +198,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "deleteStringSharedMemory", deleteStringSharedMemory);
 	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
 	lua_register(luaEngine->getLuaState(), "spawnBuilding", spawnBuilding);
+	lua_register(luaEngine->getLuaState(), "destroyBuilding", destroyBuilding);
 	lua_register(luaEngine->getLuaState(), "getSceneObject", getSceneObject);
 	lua_register(luaEngine->getLuaState(), "getCreatureObject", getCreatureObject);
 	lua_register(luaEngine->getLuaState(), "addStartingItemsInto", addStartingItemsInto);
@@ -1687,6 +1688,35 @@ int DirectorManager::spawnBuilding(lua_State* L) {
 	return 1;
 }
 
+int DirectorManager::destroyBuilding(lua_State* L) {
+       int numberOfArguments = lua_gettop(L);
+       if (numberOfArguments != 1) {
+               instance()->error("incorrect number of arguments passed to DirectorManager::destroyBuilding");
+               ERROR_CODE = INCORRECT_ARGUMENTS;
+               return 0;
+       }
+       uint64 objectID = lua_tointeger(L, -1);
+       ZoneServer* zoneServer = ServerCore::getZoneServer();
+       Reference<SceneObject*> object = zoneServer->getObject(objectID);
+
+       if (object == NULL)
+               return 0;
+
+       ManagedReference<StructureObject*> building = object.castTo<StructureObject*>();
+
+       if (building == NULL || !building->isStructureObject())
+               return 0;
+
+       Reference<Task*> pendingTask = building->getPendingTask("destruction");
+
+       if (pendingTask != NULL)
+               return 0;
+
+       Reference<DestroyStructureTask*> task = new DestroyStructureTask(building);
+       task->execute();
+       return 1;
+}
+
 int DirectorManager::spawnSceneObject(lua_State* L) {
 	int numberOfArguments = lua_gettop(L);
 	if (numberOfArguments != 10 && numberOfArguments != 7) {
@@ -1814,28 +1844,6 @@ int DirectorManager::dropObserver(lua_State* L) {
 		Observer* observer = observers.get(i).get();
 		if (observer != NULL && observer->isObserverType(ObserverType::SCREENPLAY))
 			sceneObject->dropObserver(eventType, observer);
-	}
-
-	return 0;
-}
-
-int DirectorManager::removeObservers(lua_State* L) {
-	int numberOfArguments = lua_gettop(L);
-	if (numberOfArguments != 2) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::removeObservers");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-	}
-
-	int observerType = lua_tonumber(L, -1);
-	SceneObject* sceneObject = (SceneObject*) lua_touserdata(L, -2);
-
-	if (sceneObject == NULL)
-		return 0;
-
-	SortedVector<ManagedReference<Observer*> > observers = sceneObject->getObservers(observerType);
-
-	for (int i = 0; i < observers.size(); i++) {
-		sceneObject->dropObserver(observerType, observers.get(i).get());
 	}
 
 	return 0;
