@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_cbe69c44",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/paemos_conv.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-27T00:02:29Z",
+      "side": 1,
+      "message": "Indentation please.",
+      "revId": "48ee22c76ae377341339a002c53460ee24afa4db",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_abe36832",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-07-27T00:02:29Z",
+      "side": 1,
+      "message": "Indentation is not correct here.",
+      "revId": "48ee22c76ae377341339a002c53460ee24afa4db",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
