@@ -1,11 +1,12 @@
 talus_selonian_patrol_neutral_none = Lair:new {
-	mobiles = {},
+	mobiles = {{"selonian_scout",1},{"selonian_thief",1},{"selonian_healer",1},{"domestic_bageraset",1},{"domestic_humbaba",1},{"domestic_krahbu",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("talus_selonian_patrol_neutral_none", talus_selonian_patrol_neutral_none)
