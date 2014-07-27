@@ -13,12 +13,6 @@ factional_rebel_destroy_missions = {
 			maxDifficulty = 28,
 			size = 25,
 		},
-		{
-			lairTemplateName = "global_stormtrooper",
-			minDifficulty = 22,
-			maxDifficulty = 28,
-			size = 25,
-		},
 	}
 }
 
