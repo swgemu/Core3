@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_cb545ccc",
+        "filename": "MMOCoreORB/bin/scripts/mobile/townsperson/theater_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-27T04:37:29Z",
+      "side": 1,
+      "message": "Why not move this to the quest folder?",
+      "revId": "f7ea15ce0fc52686ee09deee64df76d8a72d3a8a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_8b5e64e8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ChangeMusicCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-27T04:37:29Z",
+      "side": 1,
+      "message": "You should probably add this to ChangeBandMusicCommand as well.",
+      "revId": "f7ea15ce0fc52686ee09deee64df76d8a72d3a8a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_2b465824",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-07-27T04:37:29Z",
+      "side": 1,
+      "message": "PlayerObjects don\u0027t have slotted ghosts. A PlayerObject is what\u0027s slotted in the ghost slot of a PlayerCreature.\n\nrealObject-\u003ehasAbility should do the trick here. I\u0027m surprised that this worked for you.",
+      "revId": "f7ea15ce0fc52686ee09deee64df76d8a72d3a8a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
