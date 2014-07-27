@@ -1,11 +1,12 @@
 global_wilder_warder_squad_neutral_none = Lair:new {
-	mobiles = {},
-	spawnLimit = 15,
+	mobiles = {{"warder",1}},
+	spawnLimit = 6,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	buildingType = "none"
 }
 
 addLairTemplate("global_wilder_warder_squad_neutral_none", global_wilder_warder_squad_neutral_none)

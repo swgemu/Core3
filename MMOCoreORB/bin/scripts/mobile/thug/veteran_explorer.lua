@@ -1,4 +1,4 @@
-vetran_explorer = Creature:new {
+veteran_explorer = Creature:new {
 	objectName = "",
 	customName = "a Veteran Explorer",
 	socialGroup = "Wilder",
@@ -44,4 +44,4 @@ vetran_explorer = Creature:new {
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(vetran_explorer, "vetran_explorer")
+CreatureTemplates:addCreatureTemplate(veteran_explorer, "veteran_explorer")
