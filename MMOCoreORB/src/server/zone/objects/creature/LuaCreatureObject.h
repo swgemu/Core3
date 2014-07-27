@@ -87,6 +87,9 @@ namespace creature {
 		int isDead(lua_State* L);
 		int getLevel(lua_State* L);
 		int getQueueSize(lua_State*L);
+		int isDancing(lua_State* L);
+		int isPlayingMusic(lua_State* L);
+		int getPerformanceName(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

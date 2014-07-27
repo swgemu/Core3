@@ -1,6 +1,5 @@
 theater_manager = Creature:new {
 	objectName = "@mob/creature_names:quest_crowd_pleaser_theater_manager",
-	generateRandomName = true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -24,7 +23,7 @@ theater_manager = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {
@@ -33,7 +32,7 @@ theater_manager = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "theaterManagerConvoTemplate",
 	attacks = {
 	}
 }

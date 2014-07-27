@@ -208,6 +208,8 @@ public:
 
 				bandMemberSession->sendEntertainingUpdate(groupMember, /*0x3C4CCCCD*/0.0125, instrumentAnimation, 0x07339FF8, instrid);
 				bandMemberSession->setPerformanceName(args);
+
+				groupMember->notifyObservers(ObserverEventType::CHANGEENTERTAIN, groupMember);
 			}
 
 			group->setBandSong(args);

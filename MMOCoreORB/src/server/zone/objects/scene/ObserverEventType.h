@@ -66,6 +66,10 @@ public:
 	const static int SCREENPLAYSTATECHANGED		= 54; // ManagedObject arg1 = null, long arg2 = 0
 	const static int CREATUREDESPAWNED			= 55; // ManagedObject arg1 = AiAgent that despawned, long arg2 = 0
 	const static int AIMESSAGE					= 56; // ManagedObject arg1 = sender of the message (can be any SCNO), long arg2 = message
+	const static int STARTENTERTAIN				= 57; // ManagedObject arg1 = player that started entertaining, long arg2 = 0
+	const static int CHANGEENTERTAIN			= 58; // ManagedObject arg1 = player that changed entertaining, long arg2 = 0
+	const static int STOPENTERTAIN				= 59; // ManagedObject arg1 = player that stopped entertaining, long arg2 = 0
+	const static int FLOURISH					= 60; // ManagedObject arg1 = player that stopped entertaining, long arg2 = flourish id
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

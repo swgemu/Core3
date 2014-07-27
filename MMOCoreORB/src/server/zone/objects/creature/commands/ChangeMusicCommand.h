@@ -141,6 +141,8 @@ public:
 		session->sendEntertainingUpdate(creature, /*0x3C4CCCCD*/0.0125, instrumentAnimation, 0x07339FF8, instrid);
 		session->setPerformanceName(args);
 
+		creature->notifyObservers(ObserverEventType::CHANGEENTERTAIN, creature);
+
 		if (group != NULL) {
 			Locker locker(group);
 
