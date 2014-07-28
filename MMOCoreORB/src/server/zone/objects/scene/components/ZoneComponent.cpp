@@ -481,7 +481,7 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 
 			sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld", true);
 
-			rootZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), 512, &closeSceneObjects, false);
+			rootZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), 256, &closeSceneObjects, false);
 
 			for (int i = 0; i < closeSceneObjects.size(); ++i) {
 				QuadTreeEntry* obj = closeSceneObjects.get(i);
