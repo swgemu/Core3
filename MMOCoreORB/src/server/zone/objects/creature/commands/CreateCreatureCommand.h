@@ -104,7 +104,7 @@ public:
 			if (!objName.isEmpty() && objName == "event")
 				event = true;
 
-			if (!objName.isEmpty() && objName.indexOf("object") == -1 && !baby) {
+			if (!objName.isEmpty() && objName.indexOf("object") == -1 && !baby && !event) {
 				if (objName.length() < 6)
 					posX = Float::valueOf(objName);
 				else
@@ -137,6 +137,8 @@ public:
 		AiAgent* npc = NULL;
 		if (baby)
 			npc = cast<AiAgent*>(creatureManager->spawnCreatureAsBaby(templ, posX, posZ, posY, parID));
+		else if (event)
+			npc = cast<AiAgent*>(creatureManager->spawnCreatureAsEventMob(templ, posX, posZ, posY, parID));
 		else if (tempName.indexOf(".iff") != -1)
 			npc = cast<AiAgent*>(creatureManager->spawnCreatureWithAi(templ, posX, posZ, posY, parID));
 		else {
