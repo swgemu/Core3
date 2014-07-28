@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "da6255ed_0bca744f",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/FsExperienceTypes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-07-28T03:15:22Z",
+      "side": 1,
+      "message": "You\u0027re right, I will add more commented documentation on what does what.",
+      "parentUuid": "da6255ed_abc4885f",
+      "revId": "48ee22c76ae377341339a002c53460ee24afa4db",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da6255ed_abe36832",
         "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
         "patchSetId": 9
@@ -82,6 +100,24 @@
       "writtenOn": "2014-07-27T22:41:42Z",
       "side": 1,
       "message": "I know it\u0027s a matter of style, but it\u0027s best to use \u0026\u0026 instead of nested if\u0027s like this.",
+      "revId": "48ee22c76ae377341339a002c53460ee24afa4db",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_ebc60049",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-07-28T03:15:22Z",
+      "side": 1,
+      "message": "Will change.",
+      "parentUuid": "da6255ed_ebca806d",
       "revId": "48ee22c76ae377341339a002c53460ee24afa4db",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
