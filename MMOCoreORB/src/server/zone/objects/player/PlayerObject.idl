@@ -120,6 +120,9 @@ class PlayerObject extends IntangibleObject {
 	protected string mutedReason;
 
 	@dereferenced
+	protected Vector<string> fsEligibleBranches;
+
+	@dereferenced
 	protected SortedVector<unsigned long> ownedStructures;
 	
 	@dereferenced
@@ -1538,6 +1541,15 @@ class PlayerObject extends IntangibleObject {
 	public void clearVeteranReward( unsigned int milestone ){
 		if( chosenVeteranRewards.contains(milestone) )
 			chosenVeteranRewards.drop( milestone );
+	}
+
+	@local
+	public Vector<string> getForceSensitiveElegibleBranches() {
+		return fsEligibleBranches;
+	}
+
+	public void addForceSensitiveElegibleBranch(string branch){
+		fsEligibleBranches.add(branch);
 	}
 }
 
