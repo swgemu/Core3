@@ -242,7 +242,8 @@ createTrainerConversationTemplate("trainer_weaponsmith", "crafting_weaponsmith_m
 --createTrainerConversationTemplate("trainer_imperial_navy", "pilot_imperial_navy_master", "trainer_imperial_navy_convotemplate")
 --createTrainerConversationTemplate("trainer_neutral", "pilot_neutral_master", "trainer_neutral_convotemplate")
 
--- ****** Create force sensitive and jedi trainer conversation templates ******
+-- ****** Create force sensitive conversation templates ******
+createTrainerConversationTemplate("trainer_fs", "force_sensitive", "trainer_fs_convotemplate")
 
 
 
