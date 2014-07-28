@@ -2461,6 +2461,12 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 
 	if (object->isAiAgent()) {
 		AiAgent* ai = cast<AiAgent*>(object);
+
+		CreatureTemplate* targetTemplate = ai->getCreatureTemplate();
+		if ((npcTemplate.get() != NULL && targetTemplate != NULL) && (npcTemplate->getTemplateName() == targetTemplate->getTemplateName())) {
+			return false;
+		}
+
 		String targetSocialGroup = ai->getSocialGroup();
 		if (!targetSocialGroup.isEmpty() && targetSocialGroup != "self" && targetSocialGroup == getSocialGroup()) {
 			return false;
