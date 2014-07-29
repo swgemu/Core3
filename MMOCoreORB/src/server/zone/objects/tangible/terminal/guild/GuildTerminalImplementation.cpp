@@ -83,7 +83,7 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 	switch (selectedID) {
 	case 69:
-		if (guildObject->getGuildLeaderID() == playerID || player->getPlayerObject()->isPrivileged()) {
+		if (guildObject != NULL && (guildObject->getGuildLeaderID() == playerID || player->getPlayerObject()->isPrivileged())) {
 			guildManager->sendGuildTransferTo(player, _this.get());
 		}
 		break;
@@ -114,7 +114,7 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		guildManager->sendGuildChangeNameTo(player, guildObject, _this.get());
 		break;
 	case 195:
-		if ( guildObject->getGuildLeaderID() == playerID ) {
+		if (guildObject != NULL && guildObject->getGuildLeaderID() == playerID) {
 			guildManager->sendAcceptLotsTo(player, _this.get());
 		}
 		break;

@@ -131,6 +131,9 @@ void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, G
 }
 
 void GuildManagerImplementation::sendGuildChangeNameTo(CreatureObject* player, GuildObject* guild, GuildTerminal* terminal) {
+	if (guild == NULL)
+		return;
+
 	if (!guild->hasNamePermission(player->getObjectID()) && !player->getPlayerObject()->isPrivileged()) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 		return;
@@ -1391,6 +1394,9 @@ void GuildManagerImplementation::sendGuildMail(const String& subject, StringIdCh
 }
 
 void GuildManagerImplementation::sendGuildWarStatusTo(CreatureObject* player, GuildObject* guild, GuildTerminal* terminal) {
+	if (guild == NULL)
+		return;
+
 	ManagedReference<SuiListBox*> listbox = new SuiListBox(player, SuiWindowType::GUILD_WAR_LIST);
 	listbox->setPromptTitle("@guild:enemies_title"); //Guild Enemies
 	listbox->setPromptText("@guild:enemies_prompt");
