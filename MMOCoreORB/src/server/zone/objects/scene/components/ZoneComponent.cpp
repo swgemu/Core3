@@ -473,7 +473,8 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 					closeSceneObjects.remove((int) 0);
 				}
 
-				closeobjects->removeAll();
+				if (vectorOwner == sceneObject)
+					closeobjects->removeAll();
 
 			} catch (...) {
 			}
