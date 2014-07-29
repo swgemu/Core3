@@ -499,6 +499,12 @@ class PlayerObject extends IntangibleObject {
 	public native void removeWaypointBySpecialType(int specialTypeID, boolean notifyClient = true);
 
 	/**
+	 * Gets the first waypoint of a special type from this player
+	 * @param specialTypeID id of special type to find
+	 */
+	public native WaypointObject getWaypointBySpecialType(int specialTypeID);
+
+	/**
 	 * Adds new abilities commands to player
 	 * @pre { this is locked }
 	 * @post { this is locked }
