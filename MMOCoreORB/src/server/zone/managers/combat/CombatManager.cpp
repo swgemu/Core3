@@ -24,6 +24,7 @@
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
 const uint32 CombatManager::defaultAttacks[9] = {
 		0x99476628, 0xF5547B91, 0x3CE273EC, 0x734C00C,
@@ -477,12 +478,10 @@ int CombatManager::calculateTargetPostureModifier(WeaponObject* weapon, Creature
 	return accuracy;
 }
 
-int CombatManager::calculateAccuracyFromHitChance(AiAgent* agent) {
-	//info("AiAgent's hit chance is " + String::valueOf(agent->getChanceHit() * 100), true);
-	return 2 * ((agent->getChanceHit() * 100) - 66);
-}
-
 int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponObject* weapon) {
+	if (attacker->isAiAgent())
+		return cast<AiAgent*>(attacker)->getChanceHit() * 100;
+
 	int attackerAccuracy = 0;
 
 	Vector<String>* creatureAccMods = weapon->getCreatureAccuracyModifiers();
@@ -1124,11 +1123,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
 
-	int attackerAccuracy = 0;
-	if (creature->isAiAgent())
-		attackerAccuracy = calculateAccuracyFromHitChance(cast<AiAgent*>(creature));
-	else
-		attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
+	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
 
 	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
 
