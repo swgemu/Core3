@@ -776,6 +776,7 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 		return;
 
 	setLevel(level);
+	resetBehaviorList();
 
 	initializePosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
 
@@ -794,7 +795,7 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 
 	respawnCounter++;
 
-	activateLoad("");
+	activateMovementEvent();
 }
 
 void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
