@@ -83,7 +83,7 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 	switch (selectedID) {
 	case 69:
-		if (guildObject->getGuildLeaderID() == playerID || player->getPlayerObject()->isPrivileged()) {
+		if (guildObject != NULL && (guildObject->getGuildLeaderID() == playerID || player->getPlayerObject()->isPrivileged())) {
 			guildManager->sendGuildTransferTo(player, _this.get());
 		}
 		break;
@@ -91,30 +91,37 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		guildManager->sendGuildCreateNameTo(player, _this.get());
 		break;
 	case 189:
-		guildManager->sendGuildWarStatusTo(player, guildObject, _this.get());
+		if (guildObject != NULL)
+			guildManager->sendGuildWarStatusTo(player, guildObject, _this.get());
 		break;
 	case 193:
 	case 186:
-		guildManager->sendGuildInformationTo(player, guildObject, _this.get());
+		if (guildObject != NULL)
+			guildManager->sendGuildInformationTo(player, guildObject, _this.get());
 		break;
 	case 191:
-		guildManager->sendGuildDisbandConfirmTo(player, guildObject, _this.get());
+		if (guildObject != NULL)
+			guildManager->sendGuildDisbandConfirmTo(player, guildObject, _this.get());
 		break;
 	case 194:
 	case 187:
-		guildManager->sendGuildMemberListTo(player, guildObject, _this.get());
+		if (guildObject != NULL)
+			guildManager->sendGuildMemberListTo(player, guildObject, _this.get());
 		break;
 	case 188:
-		guildManager->sendGuildSponsoredListTo(player, guildObject, _this.get());
+		if (guildObject != NULL)
+			guildManager->sendGuildSponsoredListTo(player, guildObject, _this.get());
 		break;
 	case 190:
-		guildManager->sendGuildSponsorTo(player, guildObject, _this.get());
+		if (guildObject != NULL)
+			guildManager->sendGuildSponsorTo(player, guildObject, _this.get());
 		break;
 	case 192:
-		guildManager->sendGuildChangeNameTo(player, guildObject, _this.get());
+		if (guildObject != NULL)
+			guildManager->sendGuildChangeNameTo(player, guildObject, _this.get());
 		break;
 	case 195:
-		if ( guildObject->getGuildLeaderID() == playerID ) {
+		if (guildObject != NULL && (guildObject->getGuildLeaderID() == playerID) ) {
 			guildManager->sendAcceptLotsTo(player, _this.get());
 		}
 		break;
