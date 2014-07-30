@@ -56,8 +56,10 @@ void DnaComponentImplementation::updateCraftingValues(CraftingValues* values, bo
 }
 String DnaComponentImplementation::convertSpecialAttack(String &attackName) {
 	// default attack and basic area attack for creatures are not valid for samples
-	if (attackName == "defaultattack" || attackName == "creatureareaattack")
+	if (attackName == "defaultattack")
 		return "@combat_effects:none";
+	else if (attackName == "creatureareaattack")
+		return "@combat_effects:unknown_attack";
 	else
 		return "@combat_effects:" + attackName;
 }
