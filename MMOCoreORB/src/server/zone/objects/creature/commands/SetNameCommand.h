@@ -76,6 +76,19 @@ public:
 		String oldName = targetObj->getCustomObjectName().toString();
 
 		if (targetObj->isPlayerCreature()) {
+			PlayerManager* playerManager = zoneServer->getPlayerManager();
+
+			String newFirstName = newName;
+			int idx = newFirstName.indexOf(' ');
+			if (idx != -1) {
+				newFirstName = newFirstName.subString(0, idx);
+			}
+
+			if (playerManager->existsName(newFirstName)) {
+				creature->sendSystemMessage("That name is already in use");
+				return GENERALERROR;
+			}
+
 			CreatureObject* targetCreature = cast<CreatureObject*>(targetObj.get());
 			ManagedReference<PlayerObject*> targetPlayer = targetCreature->getPlayerObject();
 
@@ -88,7 +101,6 @@ public:
 			chatManager->removePlayer(oldFirstName);
 			chatManager->addPlayer(targetCreature);
 
-			PlayerManager* playerManager = zoneServer->getPlayerManager();
 			playerManager->removePlayer(oldFirstName);
 			playerManager->addPlayer(targetCreature);
 
