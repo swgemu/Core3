@@ -176,6 +176,13 @@ public:
 				auctionChat->addPlayer(player);
 			}
 
+			// Join General chat room
+			ManagedReference<ChatRoom*> generalChat = chatManager->getGeneralRoom();
+			if (generalChat != NULL) {
+				generalChat->sendTo(player);
+				generalChat->addPlayer(player);
+			}
+
 			ghost->notifyOnline();
 
 			PlayerManager* playerManager = zoneServer->getPlayerManager();
