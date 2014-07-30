@@ -28,7 +28,9 @@ void LightsaberCrystalComponentImplementation::loadTemplateData(SharedObjectTemp
 
 	lcoTemplate = dynamic_cast<LightsaberCrystalObjectTemplate*>(templateData);
 
-	postTuneName = lcoTemplate->getPostTunedName();
+	if (lcoTemplate != NULL) {
+		postTuneName = lcoTemplate->getPostTunedName();
+	}
 }
 
 void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
