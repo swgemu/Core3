@@ -2028,8 +2028,11 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 		} else {
 			player->sendSystemMessage("@performance:music_listen_stop_self"); //"You stop watching."
 		}
-	}
 
+		ManagedReference<PlayerObject*> entPlayer = entertainer->getPlayerObject();
+		if (entPlayer != NULL && entPlayer->getPerformanceBuffTarget() == player->getObjectID())
+			entPlayer->setPerformanceBuffTarget(0);
+	}
 	//esession->setEntertainerBuffDuration(creature, PerformanceType::MUSIC, 0.0f); // reset
 	//esession->setEntertainerBuffStrength(creature, PerformanceType::MUSIC, 0.0f);
 	creature->info("stopped watching [" + entName + "]");
@@ -2115,6 +2118,10 @@ void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 ent
 		} else {
 			player->sendSystemMessage("@performance:dance_watch_stop_self"); //"You stop watching."
 		}
+
+		ManagedReference<PlayerObject*> entPlayer = entertainer->getPlayerObject();
+		if (entPlayer != NULL && entPlayer->getPerformanceBuffTarget() == player->getObjectID())
+			entPlayer->setPerformanceBuffTarget(0);
 	}
 
 

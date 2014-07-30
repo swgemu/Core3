@@ -375,6 +375,10 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 	}
 
 	if (!dancing && !playingMusic) {
+		ManagedReference<PlayerObject*> entPlayer = entertainer->getPlayerObject();
+		if (entPlayer != NULL && entPlayer->getPerformanceBuffTarget() != 0)
+			entPlayer->setPerformanceBuffTarget(0);
+
 		entertainer->dropActiveSession(SessionFacadeType::ENTERTAINING);
 	}
 }
@@ -497,6 +501,10 @@ void EntertainingSessionImplementation::stopDancing() {
 	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
 
 	if (!dancing && !playingMusic) {
+		ManagedReference<PlayerObject*> entPlayer = entertainer->getPlayerObject();
+		if (entPlayer != NULL && entPlayer->getPerformanceBuffTarget() != 0)
+			entPlayer->setPerformanceBuffTarget(0);
+
 		entertainer->dropActiveSession(SessionFacadeType::ENTERTAINING);
 	}
 }
