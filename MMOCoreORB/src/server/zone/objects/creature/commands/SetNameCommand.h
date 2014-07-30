@@ -73,6 +73,12 @@ public:
 		Locker clocker(targetObj, creature);
 
 		String newName = arguments.toString();
+
+		if (newName.isEmpty()) {
+			creature->sendSystemMessage("You must specify a new name.");
+			return GENERALERROR;
+		}
+
 		String oldName = targetObj->getCustomObjectName().toString();
 
 		if (targetObj->isPlayerCreature()) {
