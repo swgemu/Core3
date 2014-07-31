@@ -13,8 +13,8 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
-#ifndef CITY_DEBUG
-#define CITY_DEBUG
+#ifdef CITY_DEBUG
+#undef CITY_DEBUG
 #endif
 
 void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
