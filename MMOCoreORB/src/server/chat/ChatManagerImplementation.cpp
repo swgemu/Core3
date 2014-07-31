@@ -99,7 +99,7 @@ void ChatManagerImplementation::initiateRooms() {
 	auctionRoom = createRoom("Auction", core3Room);
 	core3Room->addSubRoom(auctionRoom);
 
-	generalRoom = createRoom("general", core3Room);
+	generalRoom = createRoom("General", core3Room);
 	core3Room->addSubRoom(generalRoom);
 
 
