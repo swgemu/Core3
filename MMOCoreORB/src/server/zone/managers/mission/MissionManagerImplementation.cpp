@@ -19,6 +19,7 @@
 #include "server/zone/objects/mission/ReconMissionObjective.h"
 #include "server/zone/objects/mission/BountyMissionObjective.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/managers/resource/ResourceManager.h"
@@ -380,6 +381,8 @@ void MissionManagerImplementation::removeMission(MissionObject* mission, Creatur
 
 	mission->destroyObjectFromDatabase(true);
 	player->updateToDatabaseAllObjects(false);
+
+	updateNearestMissionForGroup(player);
 }
 
 void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, CreatureObject* player) {
@@ -1878,5 +1881,128 @@ void MissionManagerImplementation::deactivateMissions(CreatureObject* player) {
 				}
 			}
 		}
+	}
+}
+
+void MissionManagerImplementation::updateNearestMissionForGroup(CreatureObject* player) {
+	if (player == NULL) {
+		return;
+	}
+
+	if (!player->isGrouped()) {
+		PlayerObject* ghost = player->getPlayerObject();
+		ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP, true);
+	}
+	else {
+		GroupObject* group = player->getGroup();
+		unsigned int planetCRC = player->getPlanetCRC();
+		updateNearestMissionForGroup(group, planetCRC);
+	}
+}
+
+void MissionManagerImplementation::updateNearestMissionForGroup(GroupObject* group, const unsigned int planetCRC) {
+	if (!group->getLeader()->isPlayerCreature()) {
+		return;
+	}
+
+	Vector<CreatureObject*> groupMembersOnPlanet;
+	for(int i = 0; i < group->getGroupSize(); i++) {
+		if (group->getGroupMember(i)->isPlayerCreature()) {
+			CreatureObject* groupMember = cast<CreatureObject*>(group->getGroupMember(i));
+			if (groupMember->getPlanetCRC() == planetCRC) {
+				groupMembersOnPlanet.add(groupMember);
+			}
+		}
+	}
+
+	if (groupMembersOnPlanet.size() == 0) {
+		return;
+	}
+
+	// Find the average location for all members on the planet.
+	float totalX = 0;
+	float totalY = 0;
+	float totalZ = 0;
+	for(int i = 0; i< groupMembersOnPlanet.size(); i++) {
+		CreatureObject* groupMember = groupMembersOnPlanet.get(i);
+		Vector3 groupMemberPostion = groupMember->getWorldPosition();
+		totalX += groupMemberPostion.getX();
+		totalY += groupMemberPostion.getY();
+		totalZ += groupMemberPostion.getZ();
+	}
+	Vector3 averageGroupMemberLocation = Vector3(totalX / groupMembersOnPlanet.size(), totalY / groupMembersOnPlanet.size(), totalZ / groupMembersOnPlanet.size());
+
+	// Find the mission that is closest to the average location.
+	MissionObject* nearestMission = NULL;
+	float shortestDistanceSoFar = std::numeric_limits<float>::max();
+	for(int i = 0; i< groupMembersOnPlanet.size(); i++) {
+		CreatureObject* groupMember = groupMembersOnPlanet.get(i);
+		SceneObject* datapad = groupMember->getSlottedObject("datapad");
+		if (datapad == NULL) {
+			continue;
+		}
+		int numberOfMissionsForMember = 0;
+		for(int k = 0; k < datapad->getContainerObjectsSize(); k++) {
+			if (datapad->getContainerObject(k)->isMissionObject()) {
+				numberOfMissionsForMember++;
+				MissionObject* candidateMission = datapad->getContainerObject(k).castTo<MissionObject*>();
+				if (candidateMission != NULL && candidateMission->getWaypointToMission() != NULL) {
+					// Only consider missions that are on this planet.
+					if (candidateMission->getWaypointToMission()->getPlanetCRC() == planetCRC) {
+						float distanceToMission = calculateRelativeDistanceToMision(averageGroupMemberLocation, candidateMission);
+						if (distanceToMission < shortestDistanceSoFar) {
+							nearestMission = candidateMission;
+							shortestDistanceSoFar = distanceToMission;
+						}
+					}
+				}
+			}
+		}
+		if (numberOfMissionsForMember >= 2) {
+			continue;
+		}
+	}
+
+	// If a mission was found, add the nearest mission waypoint for all members. Otherwise if a mission
+	// was not found then remove the nearest mission waypoint for all members.
+	for(int i = 0; i< groupMembersOnPlanet.size(); i++) {
+		CreatureObject* groupMember = groupMembersOnPlanet.get(i);
+		setPlayersNearestMissionForGroupWaypoint(groupMember, nearestMission);
+	}
+	}
+
+float MissionManagerImplementation::calculateRelativeDistanceToMision(const Vector3& position, MissionObject* mission) {
+	// WARNING This does not return the actual distance to the mission.  It simply (and more cheaply)
+	// calculates a value that can be used to determine the relative distances of missions.
+	if (mission == NULL) {
+		return std::numeric_limits<float>::max();
+	}
+
+	return pow(position.getX() - mission->getWaypointToMission()->getWorldPositionX(), 2)
+			+ pow(position.getY() - mission->getWaypointToMission()->getWorldPositionY(), 2)
+			+ pow(position.getZ() - mission->getWaypointToMission()->getWorldPositionZ(), 2);
+}
+
+void MissionManagerImplementation::setPlayersNearestMissionForGroupWaypoint(CreatureObject* player, MissionObject* nearestMissionForGroup) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (nearestMissionForGroup == NULL) {
+		ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP, true);
+	}
+	else {
+		WaypointObject* waypoint = ghost->getWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
+		if (waypoint == NULL) {
+			ZoneServer* zoneServer = ghost->getZoneServer();
+			waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+		}
+		waypoint->setCustomObjectName(UnicodeString("Nearest mission for group"), false);
+		waypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
+		waypoint->setPlanetCRC(nearestMissionForGroup->getZone()->getZoneCRC());
+		waypoint->setPosition(nearestMissionForGroup->getWaypointToMission()->getPositionX(),
+				nearestMissionForGroup->getWaypointToMission()->getPositionZ(),
+				nearestMissionForGroup->getWaypointToMission()->getPositionY());
+		waypoint->setColor(WaypointObject::COLOR_YELLOW);
+		waypoint->setActive(true);
+		ghost->setWaypoint(waypoint, true);
 	}
 }

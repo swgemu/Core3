@@ -17,6 +17,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/events/SquadLeaderBonusTask.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/objects/group/RemovePetsFromGroupTask.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -84,19 +85,23 @@ void GroupObjectImplementation::broadcastMessage(CreatureObject* player, BaseMes
 void GroupObjectImplementation::addMember(SceneObject* newMember) {
 	Locker locker(_this.get());
 
-	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.get());
-	grp->startUpdate(1);
-	groupMembers.add(newMember, grp);
-	grp->close();
+	GroupObjectDeltaMessage6* groupDeltaMessage = new GroupObjectDeltaMessage6(_this.get());
+	groupDeltaMessage->startUpdate(1);
+	groupMembers.add(newMember, groupDeltaMessage);
+	groupDeltaMessage->close();
 
-	broadcastMessage(grp);
+	broadcastMessage(groupDeltaMessage);
 
-	if (newMember->isPlayerCreature())
+	if (newMember->isPlayerCreature()) {
+		ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(newMember);
 		sendTo(newMember, true);
 
-	if (hasSquadLeader() && newMember->isPlayerCreature()) {
-		ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>( newMember);
-		addGroupModifiers(playerCreature);
+		if (hasSquadLeader()) {
+			addGroupModifiers(playerCreature);
+		}
+
+		GroupObject* group = _this.get();
+		playerCreature->getZoneServer()->getMissionManager()->updateNearestMissionForGroup(group, playerCreature->getPlanetCRC());
 	}
 
 	calcGroupLevel();
@@ -120,14 +125,16 @@ void GroupObjectImplementation::removeMember(SceneObject* member) {
 
 	if (member->isPlayerCreature()) {
 		// Remove member's pets
-		CreatureObject* mem = cast<CreatureObject*>(member);
-		RemovePetsFromGroupTask* task = new RemovePetsFromGroupTask(mem, _this.get());
+		CreatureObject* playerCreature = cast<CreatureObject*>(member);
+		RemovePetsFromGroupTask* task = new RemovePetsFromGroupTask(playerCreature, _this.get());
 		task->execute();
 
 		if (hasSquadLeader()) {
-			ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>( member);
 			removeGroupModifiers(playerCreature);
 		}
+
+		GroupObject* group = _this.get();
+		playerCreature->getZoneServer()->getMissionManager()->updateNearestMissionForGroup(group, playerCreature->getPlanetCRC());
 	}
 
 	calcGroupLevel();
@@ -191,32 +198,31 @@ void GroupObjectImplementation::disband() {
 	ManagedReference<ChatRoom* > chat = chatRoom;
 
 	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* crea = cast<CreatureObject*>(groupMembers.get(i).get());
+		CreatureObject* groupMember = cast<CreatureObject*>(groupMembers.get(i).get());
 		try {
-			Locker clocker(crea, _this.get());
+			Locker clocker(groupMember, _this.get());
 
-			if (crea->isPlayerCreature()) {
-				CreatureObject* play = cast<CreatureObject*>( crea);
-
+			if (groupMember->isPlayerCreature()) {
 				if (chat != NULL) {
-					chat->removePlayer(play, false);
-					chat->sendDestroyTo(play);
+					chat->removePlayer(groupMember, false);
+					chat->sendDestroyTo(groupMember);
 
 					ChatRoom* room = chat->getParent();
-					room->sendDestroyTo(play);
+					room->sendDestroyTo(groupMember);
 				}
-
+				PlayerObject* ghost = groupMember->getPlayerObject();
+				ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
 			}
 
-			crea->updateGroup(NULL);
+			groupMember->updateGroup(NULL);
 			//play->updateGroupId(0);
 
 			//sendClosestWaypointDestroyTo(play);
 
 			//removeSquadLeaderBonuses(play);
 
-			if (crea->isPlayerCreature())
-				sendDestroyTo(crea);
+			if (groupMember->isPlayerCreature())
+				sendDestroyTo(groupMember);
 
 		} catch (Exception& e) {
 			System::out << "Exception in GroupObject::disband(Player* player)\n";
@@ -229,7 +235,6 @@ void GroupObjectImplementation::disband() {
 		removeGroupModifiers();
 
 	groupMembers.removeAll();
-
 	//The mission waypoints should not be destroyed. They belong to the players.
 	//missionWaypoints.removeAll();
 }
