@@ -9,6 +9,7 @@
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/SurveyMissionObjective.h"
 #include "server/zone/objects/mission/DestroyMissionObjective.h"
@@ -380,6 +381,8 @@ void MissionManagerImplementation::removeMission(MissionObject* mission, Creatur
 
 	mission->destroyObjectFromDatabase(true);
 	player->updateToDatabaseAllObjects(false);
+
+	updateNearestMissionForGroup(player);
 }
 
 void MissionManagerImplementation::handleMissionAbort(MissionObject* mission, CreatureObject* player) {
@@ -1879,4 +1882,27 @@ void MissionManagerImplementation::deactivateMissions(CreatureObject* player) {
 			}
 		}
 	}
+}
+
+void MissionManagerImplementation::updateNearestMissionForGroup(CreatureObject* player) {
+	if (player == NULL) {
+		return;
+	}
+
+	if (!player->isGrouped()) {
+		PlayerObject* ghost = player->getPlayerObject();
+		ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP, true);
+	}
+	else {
+		GroupObject* group = player->getGroup();
+		unsigned int planetCRC = player->getPlanetCRC();
+		updateNearestMissionForGroup(group, planetCRC);
+	}
+}
+
+void MissionManagerImplementation::updateNearestMissionForGroup(GroupObject* group, const unsigned int planetCRC) {
+	// TODO actually schedule the task so that each group/planet combination only executes
+	// so often.  Probably have the group hold a vector map of planet crc to task.
+	Reference<UpdateNearestMissionForGroupTask*> task = new UpdateNearestMissionForGroupTask(group, planetCRC);
+	task->run();
 }

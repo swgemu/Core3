@@ -58,6 +58,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/callbacks/TicketSelectionSuiCallback.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
 //#define ENABLE_CITY_TRAVEL_LIMIT
@@ -229,6 +230,15 @@ public:
 		}
 
 		creature->switchZone(arrivalZone->getZoneName(), x, p.getPositionZ(), y, 0);
+
+		// Update the nearest mission for group waypoint for both the arrival and departure planet.
+		if (creature->isGrouped()) {
+			GroupObject* group = creature->getGroup();
+			server->getZoneServer()->getMissionManager()->updateNearestMissionForGroup(group, server->getZoneServer()->getZone(departurePlanet)->getPlanetCRC());
+			if(departurePlanet != arrivalPlanet) {
+				server->getZoneServer()->getMissionManager()->updateNearestMissionForGroup(group, server->getZoneServer()->getZone(arrivalPlanet)->getPlanetCRC());
+			}
+		}
 
 		//remove the ticket from inventory and destory it.
 		ticketObject->destroyObjectFromWorld(true);

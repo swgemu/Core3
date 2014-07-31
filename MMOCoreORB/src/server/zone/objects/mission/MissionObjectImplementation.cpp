@@ -12,6 +12,7 @@
 #include "server/zone/packets/mission/MissionObjectDeltaMessage3.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/mission/MissionManager.h"
 
 void MissionObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
@@ -203,6 +204,11 @@ void MissionObjectImplementation::updateMissionLocation() {
 		dmiso3->close();
 
 		player->sendMessage(dmiso3);
+	}
+
+	if (player->isCreatureObject()) {
+		CreatureObject* playerCreature = cast<CreatureObject*>(player.get());
+		getZoneServer()->getMissionManager()->updateNearestMissionForGroup(playerCreature);
 	}
 }
 

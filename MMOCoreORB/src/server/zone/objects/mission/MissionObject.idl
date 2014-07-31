@@ -48,6 +48,7 @@ import engine.lua.LuaObject;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.waypoint.WaypointObject;
 import server.zone.Zone;
+import server.zone.managers.mission.MissionManager;
 
 include server.zone.objects.scene.variables.StringId;
 import server.zone.templates.SharedObjectTemplate;
