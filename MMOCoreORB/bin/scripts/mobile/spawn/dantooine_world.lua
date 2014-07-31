@@ -645,7 +645,7 @@ dantooine_world = {
 			spawnLimit = 10,
 			minDifficulty = 56,
 			maxDifficulty = 60,
-			numberToSpawn = 1,
+			numberToSpawn = 0,
 			weighting = 3,
 			size = 35
 		},
@@ -654,7 +654,7 @@ dantooine_world = {
 			spawnLimit = 10,
 			minDifficulty = 56,
 			maxDifficulty = 175,
-			numberToSpawn = 1,
+			numberToSpawn = 0,
 			weighting = 3,
 			size = 35
 		},
@@ -690,7 +690,7 @@ dantooine_world = {
 			spawnLimit = 5,
 			minDifficulty = 60,
 			maxDifficulty = 64,
-			numberToSpawn = 1,
+			numberToSpawn = 0,
 			weighting = 3,
 			size = 25
 		},
@@ -699,7 +699,7 @@ dantooine_world = {
 			spawnLimit = 5,
 			minDifficulty = 65,
 			maxDifficulty = 69,
-			numberToSpawn = 1,
+			numberToSpawn = 0,
 			weighting = 3,
 			size = 25
 		},
@@ -744,7 +744,7 @@ dantooine_world = {
 			spawnLimit = 5,
 			minDifficulty = 75,
 			maxDifficulty = 79,
-			numberToSpawn = 1,
+			numberToSpawn = 0,
 			weighting = 3,
 			size = 25
 		},
@@ -753,7 +753,7 @@ dantooine_world = {
 			spawnLimit = 10,
 			minDifficulty = 80,
 			maxDifficulty = 84,
-			numberToSpawn = 2,
+			numberToSpawn = 0,
 			weighting = 6,
 			size = 25
 		},
@@ -762,7 +762,7 @@ dantooine_world = {
 			spawnLimit = 5,
 			minDifficulty = 90,
 			maxDifficulty = 94,
-			numberToSpawn = 1,
+			numberToSpawn = 0,
 			weighting = 3,
 			size = 25
 		},
@@ -771,7 +771,7 @@ dantooine_world = {
 			spawnLimit = 5,
 			minDifficulty = 95,
 			maxDifficulty = 99,
-			numberToSpawn = 1,
+			numberToSpawn = 0,
 			weighting = 3,
 			size = 25
 		},
@@ -780,7 +780,7 @@ dantooine_world = {
 			spawnLimit = 5,
 			minDifficulty = 115,
 			maxDifficulty = 119,
-			numberToSpawn = 1,
+			numberToSpawn = 0,
 			weighting = 3,
 			size = 25
 		},
@@ -789,7 +789,7 @@ dantooine_world = {
 			spawnLimit = 5,
 			minDifficulty = 115,
 			maxDifficulty = 119,
-			numberToSpawn = 1,
+			numberToSpawn = 0,
 			weighting = 3,
 			size = 25
 		},
