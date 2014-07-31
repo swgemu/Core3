@@ -93,18 +93,21 @@ void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenu
 
 int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 
-	if (selectedID == 128) {
+	if (selectedID == 128 && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player)) {
+		if(owner == "") {
+			ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::TUNE_CRYSTAL);
 
-		ManagedReference<SuiMessageBox*> suiMessageBox = new SuiMessageBox(player, SuiWindowType::TUNE_CRYSTAL);
+			suiMessageBox->setPromptTitle("@jedi_spam:confirm_tune_title");
+			suiMessageBox->setPromptText("@jedi_spam:confirm_tune_prompt");
+			suiMessageBox->setCancelButton(true, "Cancel");
+			suiMessageBox->setUsingObject(_this.get());
+			suiMessageBox->setCallback(new LightsaberCrystalTuneSuiCallback(player->getZoneServer()));
 
-		suiMessageBox->setPromptTitle("@jedi_spam:confirm_tune_title");
-		suiMessageBox->setPromptText("@jedi_spam:confirm_tune_prompt");
-		suiMessageBox->setCancelButton(true, "Cancel");
-		suiMessageBox->setUsingObject(_this.get());
-		suiMessageBox->setCallback(new LightsaberCrystalTuneSuiCallback(player->getZoneServer()));
-
-		player->getPlayerObject()->addSuiBox(suiMessageBox);
-		player->sendMessage(suiMessageBox->generateMessage());
+			player->getPlayerObject()->addSuiBox(suiMessageBox);
+			player->sendMessage(suiMessageBox->generateMessage());
+		} else {
+			player->sendSystemMessage("This crystal has already been tuned.");
+		}
 	}
 
 	return 0;
@@ -137,7 +140,11 @@ bool LightsaberCrystalComponentImplementation::hasPlayerAsParent(CreatureObject*
 
 void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* player) {
 
-	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player)){
+	if(!player->hasSkill("force_title_jedi_rank_01") || !hasPlayerAsParent(player)) {
+		return;
+	}
+
+	if ((owner == "")){
 		String name = player->getDisplayedName();
 		setOwner(name);
 
@@ -146,7 +153,7 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 		setCustomObjectName(tuneName, true);
 		player->sendSystemMessage("@jedi_spam:crystal_tune_success");
 	} else {
-		player->sendSystemMessage("This crystal has already been successfully tuned.");
+		player->sendSystemMessage("This crystal has already been tuned.");
 	}
 }
 
