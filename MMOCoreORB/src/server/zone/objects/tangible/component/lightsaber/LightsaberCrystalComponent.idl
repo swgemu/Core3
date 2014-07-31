@@ -116,6 +116,8 @@ class LightsaberCrystalComponent extends Component {
 
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
+	public native boolean hasPlayerAsParent(CreatureObject player);
+
 	public native void tuneCrystal(CreatureObject player);
 
 	public native void updateCrystal(int value);

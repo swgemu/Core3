@@ -12,6 +12,7 @@
 #include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/templates/tangible/LightsaberCrystalObjectTemplate.h"
+#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/callbacks/LightsaberCrystalTuneSuiCallback.h"
@@ -82,7 +83,7 @@ void LightsaberCrystalComponentImplementation::fillAttributeList(AttributeListMe
 
 void LightsaberCrystalComponentImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
-	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01")){
+	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player)) {
 		String text = "@jedi_spam:tune_crystal";
 		menuResponse->addRadialMenuItem(128, 3, text);
 	}
@@ -109,9 +110,34 @@ int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObj
 	return 0;
 }
 
+bool LightsaberCrystalComponentImplementation::hasPlayerAsParent(CreatureObject* player) {
+	ManagedReference<SceneObject*> wearableParent = getParentRecursively(SceneObjectType::WEARABLECONTAINER);
+	SceneObject* inventory = player->getSlottedObject("inventory");
+	SceneObject* bank = player->getSlottedObject("bank");
+
+	// Check if crystal is inside a wearable container in bank or inventory
+	if (wearableParent != NULL) {
+		ManagedReference<WearableContainerObject*> wearable = cast<WearableContainerObject*>(wearableParent.get());
+
+		if (wearable != NULL) {
+			SceneObject* parentOfWearableParent = wearable->getParent().get();
+
+			if (parentOfWearableParent == inventory || parentOfWearableParent == bank)
+				return true;
+		}
+	} else {
+		// Check if crystal is in inventory or bank
+		SceneObject* thisParent = getParent().get();
+
+		if (thisParent == inventory || thisParent == bank)
+			return true;
+	}
+	return false;
+}
+
 void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* player) {
 
-	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01")){
+	if ((owner == "") && player->hasSkill("force_title_jedi_rank_01") && hasPlayerAsParent(player)){
 		String name = player->getDisplayedName();
 		setOwner(name);
 
