@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_06102b4d",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1907,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "Task::run(); will immediately execute the task in the current thread. What you want to do here is Task::schedule(time);",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_e61cf76c",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "You should init Task here as well. If you do :Task(30000), that will make it so that when you schedule(), you don\u0027t need to provide an argument (if you want 30s).",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_a626ffb8",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "check for null group here. (it can be null because it\u0027s a weakRef)",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_862bfb81",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "group needs to be locked at this point so you don\u0027t delete this task while it\u0027s running (see my note on how to store this task)",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_263a0fce",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "need to check for null groupMember",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_06370be5",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "need to check for null groupMember (can result from a race)",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_a64ddf74",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "You might consider Vector\u003cReference\u003cMissionObject*\u003e \u003e instead here so that when you add a mission, it makes sure that the missions won\u0027t get garbage collected.\n\nAlso, you don\u0027t need to initialize the Vector like that, just declaring it is fine.",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_e633d7f4",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "need to check for null groupMember (can result from a race) and then crosslock it to group. The code within this loop is sensitive to accidental deletion",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_8652db11",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "castTo\u003cT\u003e() returns a reference to MissionObject, so that fits in with changing the Vector above.",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_c619f37a",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "actually because this is a right triangle, the lower bound will be the larger of the two distances.",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_6657e703",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "Since you are comparing distances, this is where the beauty of using the triangle inequality enters -- ie, you don\u0027t need the shortest distance between two points. You can simply define a metric where the distance between two points is the sum of orthogonal distances (x and y in our case) -- aka the Manhattan distance. Then you know that if you compare distances *in this metric* it will hold true for the Euclidean metric as well (that you are using to calculate distance). I just proved this to myself by contradiction to make sure it was true. Which means you don\u0027t need to calculate the Euclidean distance at all, and only need to take the smallestDistanceUpperBound waypoint and know that it will be the closest.",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_462503aa",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/events/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-07-31T21:12:12Z",
+      "side": 1,
+      "message": "I would do this a bit differently. I would go ahead and get the ghost here (you need to check if groupMember-\u003eisPlayerCreature() or if ghost \u003d\u003d NULL), crosslock the ghost to the group, then pass the ghost to the set method.\n\nThe reason to do this is so that you can prevent a future race condition on ghost setting this waypoint.",
+      "revId": "dac66659c811a3f43a15aa99c4dff108d34fd777",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
