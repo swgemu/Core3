@@ -1692,6 +1692,11 @@ bool SceneObjectImplementation::isDecoration(){
 					templateObject->getFullTemplateString().contains("object/building/player/city/garden")));
 }
 
+bool SceneObjectImplementation::isCityStreetLamp(){
+	return (templateObject != NULL && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/streetlamp"));
+}
+
+
 Reference<SceneObject*> SceneObjectImplementation::getContainerObjectRecursive(uint64 oid) {
 	ManagedReference<SceneObject*> obj = containerObjects.get(oid);
 
