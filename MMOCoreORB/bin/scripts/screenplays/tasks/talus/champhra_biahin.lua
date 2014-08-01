@@ -23,7 +23,7 @@ champhra_biahin_missions =
 			missionType = "deliver",
 			primarySpawns =
 			{
-				{ npcTemplate = "champhra_farmer", planetName = "talus", npcName = "Agriculturalist" }
+				{ npcTemplate = "champhra_farmer", planetName = "talus", npcName = "a farmer" }
 			},
 			secondarySpawns =
 			{
