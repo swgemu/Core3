@@ -100,10 +100,8 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 		local globalFaction = self.themePark:getGlobalFaction()
 		local currentMissionNumber = self.themePark:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
 		local missionFaction
-		if currentMissionNumber > 0 and thisNpcNumber == activeNpcNumber then
+		if currentMissionNumber > 0 then
 			missionFaction = self.themePark:getMissionFaction(activeNpcNumber, currentMissionNumber)
-		elseif thisNpcNumber ~= activeNpcNumber then
-			missionFaction = self.themePark:getNpcFaction(thisNpcNumber)
 		else
 			missionFaction = 0
 		end
@@ -112,10 +110,18 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 			nextScreenName = "failure"
 
 		elseif missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pConversingPlayer) ~= true then
-			nextScreenName = "no_faction"
+			if self.themePark:isValidConvoString(stfFile, ":notyet") then
+				nextScreenName = "notyet"
+			else
+				nextScreenName = "no_faction"
+			end
 
 		elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) ~= true then
-			nextScreenName = "no_faction"
+			if self.themePark:isValidConvoString(stfFile, ":notyet") then
+				nextScreenName = "notyet"
+			else
+				nextScreenName = "no_faction"
+			end
 
 		elseif self.themePark:requiresEliteCombatProfession() == true and self.themePark:hasEliteCombatProfession(pConversingPlayer) == false then
 			nextScreenName = "too_weak"
