@@ -149,7 +149,12 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 		setOwner(name);
 
 		// Color code is lime green.
-		String tuneName = "\\#00FF00" + postTuneName + " (tuned)";
+		String tuneName;
+		if (getCustomObjectName().toString().contains("(Exceptional)"))
+			tuneName = "\\#00FF00" + postTuneName + " (Exceptional) (tuned)";
+		else
+			tuneName = "\\#00FF00" + postTuneName + " (tuned)";
+
 		setCustomObjectName(tuneName, true);
 		player->sendSystemMessage("@jedi_spam:crystal_tune_success");
 	} else {
