@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_860adbd0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PurchaseTicketCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-01T11:56:21Z",
+      "side": 1,
+      "message": "Now you\u0027re missing braces to encapsulate these two lines within the if block.",
+      "revId": "6b04e2d101905df4383a76e178ed3127248777f9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
