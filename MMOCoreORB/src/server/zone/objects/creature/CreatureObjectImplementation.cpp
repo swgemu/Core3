@@ -498,6 +498,17 @@ void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 
 	weapon = weao;
 
+	if (isPlayerCreature()) {
+		PlayerObject* ghost = getSlottedObject("ghost").castTo<PlayerObject*>();
+		if (ghost != NULL) {
+			if (!ghost->hasAbility("counterAttack") && (weapon->isCarbineWeapon() || (weapon->isTwoHandMeleeWeapon() && !weapon->isJediWeapon()))) {
+				SkillManager::instance()->addAbility(ghost, "counterAttack", false);
+			} else if (ghost->hasAbility("counterAttack") && !(weapon->isCarbineWeapon() || (weapon->isTwoHandMeleeWeapon() && !weapon->isJediWeapon()))) {
+				SkillManager::instance()->removeAbility(ghost, "counterAttack", false);
+			}
+		}
+	}
+
 	if (notifyClient) {
 		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(
 				_this.get());
