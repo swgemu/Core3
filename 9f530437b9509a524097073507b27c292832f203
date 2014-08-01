@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_26720f7d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/PurchaseTicketCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-01T11:39:42Z",
+      "side": 1,
+      "message": "Add a break here. No point in finishing the loop if one is found.",
+      "revId": "9f530437b9509a524097073507b27c292832f203",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
