@@ -161,10 +161,11 @@ public:
 				return GENERALERROR;
 			}
 		}
-		if (creature->isKneeling() && weapon->isMeleeWeapon() && !weapon->isJediWeapon())
+
+		if (creature->isKneeling() && weapon->isMeleeWeapon() && range == -1)
 			return NOKNEELING;
 
-		if (creature->isProne() && !weapon->isRangedWeapon())
+		if (creature->isProne() && (!weapon->isRangedWeapon() || targetObject->isInRange(creature, 5)) && range == -1)
 			return NOPRONE;
 
 		if (!targetObject->isInRange(creature, checkRange))

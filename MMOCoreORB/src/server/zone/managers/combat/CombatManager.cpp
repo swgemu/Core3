@@ -175,11 +175,6 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 
 	//info("past delay", true);
 
-	if (attacker->isBerserked() && data.getCommandCRC() != 0xA8FEF90A) //berserk only works with attack
-		return -3;
-
-	//info("past berserk", true);
-
 	if (!applySpecialAttackCost(attacker, weapon, data))
 		return -2;
 
@@ -273,6 +268,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		break;
 	case COUNTER:
 		doCounterAttack(attacker, weapon, defender, damage, combatSpam + "_counter");
+		defender->enqueueCommand(String("attack").hashCode(), 0, attacker->getObjectID(), "");
 		damageMultiplier = 0.0f;
 		break;
 	case RICOCHET:
@@ -1916,6 +1912,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 		break;
 	case COUNTER:
 		doCounterAttack(attacker, defenderObject, weapon, damage, combatSpam + "_counter");
+		defenderObject->enqueueCommand(String("attack").hashCode(), 0, attacker->getObjectID(), "");
 		damageMultiplier = 0.0f;
 		break;
 	case RICOCHET:
