@@ -73,7 +73,9 @@ public:
 
 		Reference<SceneObject*> objTooClose = zone->getPlanetManager()->findObjectTooCloseToDecoration(mayor->getPositionX(), mayor->getPositionY(), obj->getObjectTemplate()->getNoBuildRadius());
 
-		if(objTooClose != NULL){
+		ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(obj.get());
+
+		if (objTooClose != NULL && (tano == NULL || !tano->isStreetlamp())){
 			StringIdChatParameter msg;
 			msg.setStringId("@city/city:deco_too_close"); //"You can't place a decoration here, it would be too close to structure %TO.");
 

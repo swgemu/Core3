@@ -54,6 +54,7 @@ object_tangible_furniture_city_streetlamp_large_01 = object_tangible_furniture_c
 	experimentalPrecision = {0, 0, 0},
 	experimentalCombineType = {0, 0, 4},
 	objectMenuComponent = "CityDecorationMenuComponent",
+	streetlamp = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_streetlamp_large_01, "object/tangible/furniture/city/streetlamp_large_01.iff")

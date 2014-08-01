@@ -105,6 +105,8 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	optionsBitmask = tanoData->getOptionsBitmask();
 	pvpStatusBitmask = tanoData->getPvpStatusBitmask();
 
+	streetlamp = tanoData->isStreetlamp();
+
 	sliceable = tanoData->getSliceable();
 
 	faction = tanoData->getFaction();

@@ -42,6 +42,8 @@ protected:
 
 	bool sliceable;
 
+	bool streetlamp;
+
 	int faction;
 
 	VectorMap<String, int> skillMods;
@@ -143,6 +145,10 @@ public:
 
 	inline bool getSliceable() const {
 		return sliceable;
+	}
+
+	inline bool isStreetlamp() const {
+		return streetlamp;
 	}
 
     Vector<short >* getNumberExperimentalProperties() {

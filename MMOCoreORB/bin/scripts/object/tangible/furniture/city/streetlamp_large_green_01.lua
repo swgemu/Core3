@@ -43,6 +43,7 @@
 
 object_tangible_furniture_city_streetlamp_large_green_01 = object_tangible_furniture_city_shared_streetlamp_large_green_01:new {
 	objectMenuComponent = "CityDecorationMenuComponent",
+	streetlamp = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_streetlamp_large_green_01, "object/tangible/furniture/city/streetlamp_large_green_01.iff")

@@ -102,6 +102,8 @@ class TangibleObject extends SceneObject {
 	@dereferenced
 	protected DeltaVector<SceneObject> defenderList;
 	
+	protected boolean streetlamp;
+	
 	protected boolean sliceable;
 	protected boolean sliced;	
 	
@@ -131,6 +133,8 @@ class TangibleObject extends SceneObject {
 		useCount = 1;
 
 		conditionDamage = 0;
+		
+		streetlamp = false;
 		
 		sliceable = false;
 		sliced = false;
@@ -499,6 +503,10 @@ class TangibleObject extends SceneObject {
 	
 	public boolean isNeutral() {
 		return faction == 0;
+	}
+	
+	public boolean isStreetlamp() {
+		return streetlamp;
 	}
 	
 	public boolean isSliceable() {
