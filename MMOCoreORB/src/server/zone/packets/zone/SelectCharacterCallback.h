@@ -14,6 +14,9 @@
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/PlayerManager.h"
 
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
+#include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
@@ -189,6 +192,23 @@ public:
 			playerManager->sendLoginMessage(player);
 
 			//player->info("sending login Message:" + zoneServer->getLoginMessage(), true);
+
+			// Disable music notes if player had been playing music
+			player->setPerformanceCounter(0, false);
+			player->setInstrumentID(0, false);
+
+			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(player);
+			dcreo6->updatePerformanceAnimation(player->getPerformanceAnimation());
+			dcreo6->updatePerformanceCounter(0);
+			dcreo6->updateInstrumentID(0);
+			dcreo6->close();
+			player->broadcastMessage(dcreo6, true);
+
+			player->setListenToID(0);
+
+			// Stop playing music/dancing animation
+			if (player->getPosture() == CreaturePosture::SKILLANIMATING)
+					player->setPosture(CreaturePosture::UPRIGHT);
 
 			SkillModManager::instance()->verifyWearableSkillMods(player);
 
