@@ -157,7 +157,7 @@ describe("Village Jedi Manager - Glowing", function()
 					{ PROFESSIONBADGES, 1, false },
 					{ JEDIBADGES, 3, false },
 					{ CONTENTBADGES, 5, false },
-					{ DIFFICULTBADGES, 3, false },
+					{ DIFFICULTBADGES, 2, false },
 					{ EASYBADGES, 5, false }
 				}
 
