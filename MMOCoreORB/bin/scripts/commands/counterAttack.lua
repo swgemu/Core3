@@ -43,6 +43,22 @@
 
 CounterAttackCommand = {
         name = "counterattack",
+	damageMultiplier = 1,
+	speedMultiplier = 1,
+
+	combatSpam = "attack",
+	animationCRC = 0,
+
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
+	forceCostMultiplier = 0,
+
+	range = -1,
+	
+	trails = NOTRAIL,
+
+	poolsToDamage = RANDOM_ATTRIBUTE
 }
 
 AddCommand(CounterAttackCommand)
