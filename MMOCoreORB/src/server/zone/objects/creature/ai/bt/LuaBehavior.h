@@ -51,6 +51,7 @@ public:
 	float end(AiAgent* agent);
 	int doAction(AiAgent* agent);
 	int interrupt(AiAgent* agent, SceneObject* source, int64 msg);
+	bool doAwarenessCheck(AiAgent* agent, SceneObject* target);
 
 	virtual uint16 getType();
 

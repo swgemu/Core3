@@ -144,8 +144,6 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected transient Mutex movementEventMutex;
 	
-	protected boolean fleeing;
-	
 	@dereferenced
 	protected transient Time lastDamageReceived;
 	
@@ -180,6 +178,7 @@ class AiAgent extends CreatureObject {
 	public static final int STALKING = 2;
 	public static final int FOLLOWING = 3;
 	public static final int PATROLLING = 4;
+	public static final int FLEEING = 5;
 	
 	
 	public AiAgent() {
@@ -200,8 +199,6 @@ class AiAgent extends CreatureObject {
 		Logger.setGlobalLogging(true);
 		
 		behaviors.setNoDuplicateInsertPlan();
-		
-		fleeing = false;
 		waitTime = 0;
 		waiting = false;
 	}
@@ -266,6 +263,10 @@ class AiAgent extends CreatureObject {
 	
 	@local
 	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
+	
+	public float getAvgSpeed() {
+		return awarenessEvent.getAvgSpeed();
+	}
 	
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
@@ -530,6 +531,8 @@ class AiAgent extends CreatureObject {
 		}
 	}
 	
+	public native void runAway(CreatureObject target);
+	
 	public native boolean generatePatrol(int num, float dist);
 	
 	public SceneObject getFollowObject() {
@@ -588,7 +591,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	public boolean isFleeing() {
-		return fleeing;
+		return followState == FLEEING;
 	}
 	
 	public native void clearDespawnEvent();

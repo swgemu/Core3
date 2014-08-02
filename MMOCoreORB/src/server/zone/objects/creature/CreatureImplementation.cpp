@@ -35,34 +35,6 @@ void CreatureImplementation::initializeTransientMembers() {
 	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiCreatureComponent*>("AiCreatureComponent"));
 }
 
-void CreatureImplementation::runAway(CreatureObject* target) {
-	return;
-
-
-	if (target == NULL)
-		return;
-
-	setOblivious();
-
-	if (threatMap != NULL)
-		threatMap->removeAll();
-
-	Vector3 runTrajectory(getPositionX() - target->getPositionX(), getPositionY() - target->getPositionY(), 0);
-	runTrajectory = runTrajectory * (100 / runTrajectory.length());
-	runTrajectory += target->getPosition();
-
-	setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get());
-
-	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
-
-
-	fleeing = true;
-
-	CombatManager::instance()->forcePeace(_this.get());
-
-	activateMovementEvent();
-}
-
 void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	AiAgentImplementation::fillObjectMenuResponse(menuResponse, player);
 

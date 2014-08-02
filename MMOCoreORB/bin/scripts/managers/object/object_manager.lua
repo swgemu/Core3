@@ -34,6 +34,18 @@ function ObjectManager.withSceneObject(pSceneObject, performThisFunction)
 	return performThisFunction(sceneObject)
 end
 
+-- Perform the supplied function with a tangible object created from the pointer.
+-- @param pTangibleObject a pointer to a scene object.
+-- @param performThisFunction a function that takes a tangible object as its argument.
+-- @return whatever performThisFunction returns or nil if the pTangibleObject pointer is nil.
+function ObjectManager.withTangibleObject(pTangibleObject, performThisFunction)
+	if pTangibleObject == nil then
+		return nil
+	end
+	local tangibleObject = LuaTangibleObject(pTangibleObject)
+	return performThisFunction(tangibleObject)
+end
+
 -- Perform the supplied function with a creature object created from the pointer.
 -- @param pCreatureObject a pointer to a creature object.
 -- @param performThisFunction a function that takes a creature object as its argument.

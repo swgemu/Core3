@@ -90,11 +90,14 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "checkCooldownRecovery", &LuaCreatureObject::checkCooldownRecovery},
 		{ "addCooldown", &LuaCreatureObject::addCooldown},
 		{ "isDead", &LuaCreatureObject::isDead},
+		{ "isIncapacitated", &LuaCreatureObject::isIncapacitated },
 		{ "getLevel", &LuaCreatureObject::getLevel},
 		{ "getQueueSize", &LuaCreatureObject::getQueueSize },
 		{ "isDancing", &LuaCreatureObject::isDancing},
 		{ "isPlayingMusic", &LuaCreatureObject::isPlayingMusic},
 		{ "getPerformanceName", &LuaCreatureObject::getPerformanceName},
+		{ "getWalkSpeed", &LuaCreatureObject::getWalkSpeed },
+		{ "isAttackableBy", &LuaCreatureObject::isAttackableBy },
 		{ 0, 0 }
 };
 
@@ -637,6 +640,11 @@ int LuaCreatureObject::isDead(lua_State* L) {
 	return 1;
 }
 
+int LuaCreatureObject::isIncapacitated(lua_State* L) {
+	lua_pushboolean(L, realObject->isIncapacitated());
+	return 1;
+}
+
 int LuaCreatureObject::getLevel(lua_State* L) {
 	int level = realObject->getLevel();
 
@@ -688,6 +696,20 @@ int LuaCreatureObject::getPerformanceName(lua_State* L) {
 		lua_pushnil(L);
 	else
 		lua_pushstring(L, session->getPerformanceName().toCharArray());
+
+	return 1;
+}
+
+int LuaCreatureObject::getWalkSpeed(lua_State* L) {
+	lua_pushnumber(L, realObject->getWalkSpeed());
+	return 1;
+}
+
+int LuaCreatureObject::isAttackableBy(lua_State* L) {
+	TangibleObject* obj = (TangibleObject*) lua_touserdata(L, -1);
+
+	bool retVal = realObject->isAttackableBy(obj);
+	lua_pushboolean(L, retVal);
 
 	return 1;
 }

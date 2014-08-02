@@ -24,6 +24,7 @@ class AiAwarenessEvent : public Task {
 	ManagedWeakReference<CreatureObject*> target;
 	Coordinate coord;
 	uint64 mtime;
+	float avgSpeed;
 
 public:
 	AiAwarenessEvent(AiAgent* pl, CreatureObject* t) : Task(1000) {
@@ -31,6 +32,7 @@ public:
 		target = t;
 		coord.setPosition(t->getPosition());
 		mtime = 0;
+		avgSpeed = 0.f;
 		AiMap::instance()->activeAwarenessEvents.increment();
 	}
 
@@ -49,6 +51,8 @@ public:
 
 		Locker clocker(targetRef, strongRef);
 
+		avgSpeed = Vector3(targetRef->getPositionX() - coord.getPositionX(), targetRef->getPositionY() - coord.getPositionY(), 0).squaredLength() / (mtime) * 1000000;
+
 		strongRef->doAwarenessCheck(coord, mtime, targetRef);
 	}
 
@@ -65,6 +69,10 @@ public:
 	void setTarget(CreatureObject *t) {
 		target = t;
 		coord.setPosition(t->getPosition());
+	}
+
+	float getAvgSpeed() {
+		return avgSpeed;
 	}
 };
 

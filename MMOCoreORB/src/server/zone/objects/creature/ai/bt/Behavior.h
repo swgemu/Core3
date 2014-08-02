@@ -15,6 +15,11 @@
 namespace server {
 namespace zone {
 namespace objects {
+
+namespace scene {
+class SceneObject;
+}
+
 namespace creature {
 
 class AiAgent;
@@ -105,6 +110,16 @@ public:
 
 	virtual int interrupt(SceneObject* source, int64 msg) {
 		return interface->interrupt(agent.get(), source, msg);
+	}
+
+	/**
+	 * Virtual to ensure that we should do an awareness check
+	 */
+	virtual bool doAwarenessCheck(SceneObject* target) {
+		if (interface != NULL)
+			return interface->doAwarenessCheck(agent.get(), target);
+
+		return false;
 	}
 
 	/**

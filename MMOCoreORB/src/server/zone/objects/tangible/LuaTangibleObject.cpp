@@ -14,6 +14,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "_setObject", &LuaSceneObject::_setObject },
 		{ "setOptionsBitmask", &LuaTangibleObject::setOptionsBitmask },
 		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask },
+		{ "getPvpStatusBitmask", &LuaTangibleObject::getPvpStatusBitmask },
 		{ "setCustomizationVariable", &LuaTangibleObject::setCustomizationVariable },
 		{ "setConditionDamage", &LuaTangibleObject::setConditionDamage },
 		{ "setFaction", &LuaTangibleObject::setFaction },
@@ -53,6 +54,14 @@ int LuaTangibleObject::setPvpStatusBitmask(lua_State* L) {
 	realObject->setPvpStatusBitmask(bitmask, true);
 
 	return 0;
+}
+
+int LuaTangibleObject::getPvpStatusBitmask(lua_State* L) {
+	uint32 bitmask = realObject->getPvpStatusBitmask();
+
+	lua_pushinteger(L, bitmask);
+
+	return 1;
 }
 
 int LuaTangibleObject::setConditionDamage(lua_State* L) {

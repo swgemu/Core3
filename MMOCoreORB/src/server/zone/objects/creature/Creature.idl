@@ -99,7 +99,6 @@ class Creature extends AiAgent {
 	public boolean isCamouflaged(CreatureObject target) {
 		return isScentMasked(target) || isConcealed(target);
 	}
-	public native void runAway(CreatureObject target);
 	
 	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);

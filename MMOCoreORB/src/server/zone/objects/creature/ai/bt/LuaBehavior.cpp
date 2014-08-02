@@ -108,3 +108,18 @@ int LuaBehavior::interrupt(AiAgent* agent, SceneObject* source, int64 msg) {
 	//1 remove observer, 0 keep observer
 	return result;
 }
+
+bool LuaBehavior::doAwarenessCheck(AiAgent* agent, SceneObject* target) {
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	//agent->info(className, true);
+	LuaFunction messageFunc(lua->getLuaState(), className, "doAwarenessCheck", 1);
+	messageFunc << agent;
+	messageFunc << target; //pObject
+
+	messageFunc.callFunction();
+
+	bool result = lua_toboolean(lua->getLuaState(), -1);
+	lua_pop(lua->getLuaState(), 1);
+
+	return result;
+}

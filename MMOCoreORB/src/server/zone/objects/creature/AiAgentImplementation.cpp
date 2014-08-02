@@ -374,19 +374,24 @@ void AiAgentImplementation::initializeTransientMembers() {
 }
 
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	for (int i = 0; i < aiInterfaceComponents.size(); i++) {
+	/*for (int i = 0; i < aiInterfaceComponents.size(); i++) {
 		AiInterfaceComponent* interface = aiInterfaceComponents.get(i);
 		interface->notifyPositionUpdate(_this.getReferenceUnsafeStaticCast(), entry);
-	}
+	}*/
+	Behavior* current = behaviors.get(currentBehaviorID);
+	CreatureObject* target = cast<CreatureObject*>(entry);
+	if (current != NULL && target != NULL && current->doAwarenessCheck(target))
+		activateAwarenessEvent(target);
 
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
 }
 
 void AiAgentImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
-	for (int i = 0; i < aiInterfaceComponents.size(); i++) {
+	/*for (int i = 0; i < aiInterfaceComponents.size(); i++) {
 		AiInterfaceComponent* interface = aiInterfaceComponents.get(i);
 		interface->doAwarenessCheck(_this.getReferenceUnsafeStaticCast(), start, time, target);
-	}
+	}*/
+	activateInterrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
 }
 
 void AiAgentImplementation::doRecovery() {
@@ -682,6 +687,22 @@ bool AiAgentImplementation::tryRetreat() {
 	}
 
 	return true;
+}
+
+void AiAgentImplementation::runAway(CreatureObject* target) {
+	if (target == NULL) {
+		setOblivious();
+		return;
+	}
+
+	setTargetObject(target);
+
+	if (threatMap != NULL)
+		threatMap->removeAll();
+
+	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
+
+	followState = AiAgent::FLEEING;
 }
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {
@@ -1136,9 +1157,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			if (isRetreating())
 				homeLocation.setReached(true);
 
-			if (isFleeing())
-				fleeing = false;
-
 			if (followObject == NULL)
 				notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
@@ -1347,9 +1365,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (isRetreating())
 			homeLocation.setReached(true);
 
-		if (isFleeing())
-			fleeing = false;
-
 		if (followObject == NULL)
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
@@ -1426,7 +1441,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 }
 
 float AiAgentImplementation::getMaxDistance() {
-	if (isRetreating() || isFleeing()) // TODO (dannuic): this should end up as logic in BT luas
+	if (isRetreating() || isFleeing())
 		return 0.5;
 
 	switch (followState) {
@@ -1451,20 +1466,41 @@ float AiAgentImplementation::getMaxDistance() {
 }
 
 int AiAgentImplementation::setDestination() {
-	switch (followState) { // TODO (dannuic): Move all or most of this to BT luas
+	switch (followState) {
 	case AiAgent::OBLIVIOUS:
-		if (followObject)
+		if (followObject != NULL)
 			setOblivious();
+
+		clearPatrolPoints();
 
 		if (!homeLocation.isInRange(_this.get(), 1.5)) {
 			homeLocation.setReached(false);
-			clearPatrolPoints();
 			addPatrolPoint(homeLocation);
 		} else {
 			homeLocation.setReached(true);
-			clearPatrolPoints();
 		}
 
+		break;
+	case AiAgent::FLEEING:
+		// TODO (dannuic): do we need to check threatmap for other players in range at this point, or just have the mob completely drop aggro?
+		if (followObject == NULL || !isInRange(followObject, 192)) {
+			clearCombatState(true);
+			setOblivious();
+			return setDestination();
+		}
+
+		clearPatrolPoints();
+
+		if (!homeLocation.isInRange(_this.get(), 128)) {
+			homeLocation.setReached(false);
+			setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
+		} else {
+			Vector3 runTrajectory(getPositionX() - followObject->getPositionX(), getPositionY() - followObject->getPositionY(), 0);
+			runTrajectory = runTrajectory * (100 / runTrajectory.length());
+			runTrajectory += followObject->getPosition();
+
+			setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get());
+		}
 		break;
 	case AiAgent::PATROLLING:
 		break;

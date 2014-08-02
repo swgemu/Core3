@@ -27,7 +27,7 @@ function GetTargetBase:doAction(pAgent)
 
 		local pTarget = agent:getTargetFromMap()
 		--print(pTarget)
-		if (pTarget ~= agent:getFollowObject()) then
+		if pTarget ~= nil and pTarget ~= agent:getFollowObject() then
 		--print("1")
 			agent:setFollowObject(pTarget)
 			if (pTarget ~= nil) then agent:setDefender(pTarget) end
@@ -49,7 +49,7 @@ function GetTargetBase:doAction(pAgent)
 
 		pTarget = agent:getTargetFromDefenders()
 		--print(pTarget)
-		if (pTarget ~= agent:getFollowObject()) then
+		if pTarget ~= nil and pTarget ~= agent:getFollowObject() then
 		--print("3")
 			agent:setFollowObject(pTarget)
 			if (pTarget ~= nil) then agent:setDefender(pTarget) end
