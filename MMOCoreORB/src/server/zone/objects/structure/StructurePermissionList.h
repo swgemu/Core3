@@ -54,6 +54,7 @@ public:
 	int grantPermission(const String& listName, const String& playerName, bool caseSensitive = false);
 	int revokePermission(const String& listName, const String& playerName, bool caseSensitive = false);
 	int revokeAllPermissions(const String& playerName, bool caseSensitive = false);
+	void revokeAllPermissions();
 
 	void setOwnerName(const String& name) {
 		ownerName = name;
