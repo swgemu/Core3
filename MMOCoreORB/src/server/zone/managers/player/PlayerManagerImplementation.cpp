@@ -4025,6 +4025,33 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player )
 		return;
 	}
 
+	// Final check to see if milestone has already been claimed on any of the player's characters
+	// (prevent claiming while multi-logged)
+	CharacterList* characters = account->getCharacterList();
+	bool milestoneClaimed = false;
+	for(int i = 0; i < characters->size(); ++i) {
+		CharacterListEntry* entry = &characters->get(i);
+		if(entry->getGalaxyID() == server->getGalaxyID()) {
+
+			ManagedReference<CreatureObject*> altPlayer = getPlayer(entry->getFirstName());
+			if(altPlayer != NULL && altPlayer->getPlayerObject() != NULL) {
+				Locker alocker(altPlayer, player);
+
+				if( !altPlayer->getPlayerObject()->getChosenVeteranReward( rewardSession->getMilestone() ).isEmpty() ){
+					milestoneClaimed = true;
+				}
+
+				alocker.release();
+			}
+		}
+	}
+
+	if( milestoneClaimed ){
+		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession( player );
+		return;
+	}
+
 	// Generate item
 	SceneObject* inventory = player->getSlottedObject("inventory");
 	VeteranReward reward = veteranRewards.get(rewardSession->getSelectedRewardIndex());
@@ -4046,7 +4073,6 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player )
 	player->sendSystemMessage( "@veteran:reward_given");  // Your reward has been placed in your inventory.
 
 	// Record reward in all characters registered to the account
-	CharacterList* characters = account->getCharacterList();
 	for(int i = 0; i < characters->size(); ++i) {
 		CharacterListEntry* entry = &characters->get(i);
 		if(entry->getGalaxyID() == server->getGalaxyID()) {
