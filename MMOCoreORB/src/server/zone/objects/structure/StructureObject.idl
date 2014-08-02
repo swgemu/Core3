@@ -264,6 +264,10 @@ class StructureObject extends TangibleObject {
 		return structurePermissionList.revokeAllPermissions(targetName, caseSensitive);
 	}
 
+	public void revokeAllPermissions() {
+		structurePermissionList.revokeAllPermissions();
+	}
+
 	public void setOwnerName(final string ownerName) {
 		structurePermissionList.setOwnerName(ownerName);
 	}

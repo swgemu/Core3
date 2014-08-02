@@ -408,7 +408,8 @@ class PlayerManager extends Observer implements Logger {
 	public native string unbanFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, final string reason);	
 	public native string banCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, unsigned int seconds, final string reason);
 	public native string unbanCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, final string reason);
-	
+	public native void clearOwnedStructuresPermissions(CreatureObject player);
+
 	public native boolean promptTeachableSkills(CreatureObject teacher, SceneObject target);
 	
 	public native void decreaseOnlineCharCount(ZoneClientSession client);

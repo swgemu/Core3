@@ -205,3 +205,17 @@ int StructurePermissionList::revokeAllPermissions(const String& playerName, bool
 
 	return REVOKED;
 }
+
+void StructurePermissionList::revokeAllPermissions() {
+	Locker locker(&lock);
+
+	for (int i = 0; i < permissionLists.size(); ++i) {
+		SortedVector<String>* list = &permissionLists.get(i);
+
+		list->removeAll();
+
+		if (permissionLists.elementAt(i).getKey() == "ADMIN") {
+			list->put(ownerName);
+		}
+	}
+}

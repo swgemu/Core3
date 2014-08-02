@@ -3015,14 +3015,17 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 			if(entry->getGalaxyID() == server->getGalaxyID()) {
 
 				ManagedReference<CreatureObject*> player = getPlayer(entry->getFirstName());
-				if(player != NULL && player->isOnline()) {
+				if(player != NULL) {
+					clearOwnedStructuresPermissions(player);
 
-					player->sendMessage(new LogoutMessage());
+					if (player->isOnline()) {
+						player->sendMessage(new LogoutMessage());
 
-					Reference<ZoneClientSession*> session = player->getClient();
+						Reference<ZoneClientSession*> session = player->getClient();
 
-					if(session != NULL)
-						session->disconnect(true);
+						if(session != NULL)
+							session->disconnect(true);
+					}
 				}
 			}
 		}
@@ -3078,22 +3081,29 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 
 	try {
 
-		CharacterList* characters = account->getCharacterList();
-		for(int i = 0; i < characters->size(); ++i) {
-			CharacterListEntry* entry = &characters->get(i);
-			if(entry->getGalaxyID() == server->getGalaxyID()) {
+		if (server->getGalaxyID() == galaxy) {
+			CharacterList* characters = account->getCharacterList();
+			for(int i = 0; i < characters->size(); ++i) {
+				CharacterListEntry* entry = &characters->get(i);
+				if(entry->getGalaxyID() == galaxy) {
 
-				ManagedReference<CreatureObject*> player = getPlayer(entry->getFirstName());
-				if(player != NULL && player->isOnline()) {
+					ManagedReference<CreatureObject*> player = getPlayer(entry->getFirstName());
+					if(player != NULL) {
+						clearOwnedStructuresPermissions(player);
 
-					player->sendMessage(new LogoutMessage());
+						if (player->isOnline()) {
+							player->sendMessage(new LogoutMessage());
 
-					ManagedReference<ZoneClientSession*> session = player->getClient();
+							ManagedReference<ZoneClientSession*> session = player->getClient();
 
-					if(session != NULL)
-						session->disconnect(true);
+							if(session != NULL)
+								session->disconnect(true);
+						}
+					}
 				}
 			}
+		} else {
+			return "Successfully Banned from Galaxy, but cannot kick characters because Galaxy is not your current galaxy.";
 		}
 	} catch(Exception& e) {
 		return "Successfully Banned from Galaxy, but error kicking characters. " + e.getMessage();
@@ -3150,15 +3160,22 @@ String PlayerManagerImplementation::banCharacter(PlayerObject* admin, Account* a
 	}
 
 	try {
-		ManagedReference<CreatureObject*> player = getPlayer(name);
-		if(player != NULL && player->isOnline()) {
+		if (server->getGalaxyID() == galaxyID) {
+			ManagedReference<CreatureObject*> player = getPlayer(name);
+			if(player != NULL) {
+				clearOwnedStructuresPermissions(player);
 
-			player->sendMessage(new LogoutMessage());
+				if (player->isOnline()) {
+					player->sendMessage(new LogoutMessage());
 
-			ManagedReference<ZoneClientSession*> session = player->getClient();
+					ManagedReference<ZoneClientSession*> session = player->getClient();
 
-			if(session != NULL)
-				session->disconnect(true);
+					if(session != NULL)
+						session->disconnect(true);
+				}
+			}
+		} else {
+			return "Character Successfully Banned, but cannot kick character because it's on a different galaxy.";
 		}
 	} catch(Exception& e) {
 		return "Character Successfully Banned, but error kicking Character. " + e.getMessage();
@@ -3191,6 +3208,26 @@ String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account*
 	}
 
 	return "Character Successfully Unbanned";
+}
+
+void PlayerManagerImplementation::clearOwnedStructuresPermissions(CreatureObject* player) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == NULL) {
+		return;
+	}
+
+	for (int i = 0; i < ghost->getTotalOwnedStructureCount(); i++) {
+		uint64 structureID = ghost->getOwnedStructure(i);
+
+		ManagedReference<StructureObject*> structure = server->getObject(structureID).castTo<StructureObject*>();
+
+		if (structure == NULL) {
+			continue;
+		}
+
+		structure->revokeAllPermissions();
+	}
 }
 
 void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
