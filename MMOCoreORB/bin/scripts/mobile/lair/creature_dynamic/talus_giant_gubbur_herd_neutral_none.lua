@@ -1,5 +1,5 @@
 talus_giant_gubbur_herd_neutral_none = Lair:new {
-	mobiles = {"giant_gubbur",1},
+	mobiles = {{"giant_gubbur",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},

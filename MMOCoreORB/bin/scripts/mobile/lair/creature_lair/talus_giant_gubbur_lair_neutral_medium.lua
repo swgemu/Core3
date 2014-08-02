@@ -1,5 +1,5 @@
 talus_giant_gubbur_lair_neutral_medium = Lair:new {
-	mobiles = {"giant_gubbur",1},
+	mobiles = {{"giant_gubbur",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_leaf_small_evil_fire_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_leaf_small_evil_fire_small.iff"},
