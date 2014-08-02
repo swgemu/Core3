@@ -157,7 +157,7 @@ describe("Village Jedi Manager - Glowing", function()
 					{ PROFESSIONBADGES, 1, false },
 					{ JEDIBADGES, 3, false },
 					{ CONTENTBADGES, 5, false },
-					{ DIFFICULTBADGES, 3, false },
+					{ DIFFICULTBADGES, 2, false },
 					{ EASYBADGES, 5, false }
 				}
 
@@ -216,7 +216,6 @@ describe("Village Jedi Manager - Glowing", function()
 				assert.is.same(testGlowing:getJediProgressionStatus(pCreatureObject), 2)
 				assert.is.same(testGlowing:getJediProgressionStatus(pCreatureObject), 2)
 				assert.is.same(testGlowing:getJediProgressionStatus(pCreatureObject), 2)
-				assert.is.same(testGlowing:getJediProgressionStatus(pCreatureObject), 2)
 				assert.is.same(testGlowing:getJediProgressionStatus(pCreatureObject), 3)
 				assert.is.same(testGlowing:getJediProgressionStatus(pCreatureObject), 3)
 				assert.is.same(testGlowing:getJediProgressionStatus(pCreatureObject), 3)
@@ -225,7 +224,7 @@ describe("Village Jedi Manager - Glowing", function()
 				assert.is.same(testGlowing:getJediProgressionStatus(pCreatureObject), 4)
 				assert.is.same(testGlowing:getJediProgressionStatus(pCreatureObject), 5)
 
-				assert.spy(testGlowing.countBadges).was.called(18)
+				assert.spy(testGlowing.countBadges).was.called(17)
 
 				testGlowing.countBadges = realCountBadges
 			end)
