@@ -117,7 +117,7 @@ public:
 			tokenizer.getStringToken(arrivalPoint);
 			if(tokenizer.hasMoreTokens()) {
 				tokenizer.getStringToken(type);
-				if (type == "single")
+				if (type == "single" || type == "0")
 					roundTrip = false;
 			}
 
