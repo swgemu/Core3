@@ -92,7 +92,7 @@ SpawnGroup* SpawnAreaImplementation::getSpawnGroup() {
 }
 
 void SpawnAreaImplementation::notifyEnter(SceneObject* object) {
-	if (tier & SpawnAreaMap::NOSPAWNAREA) {
+	if (!(tier & SpawnAreaMap::SPAWNAREA)) {
 		ActiveAreaImplementation::notifyEnter(object);
 		return;
 	}
@@ -112,7 +112,7 @@ void SpawnAreaImplementation::notifyEnter(SceneObject* object) {
 }
 
 void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
-	if (tier & SpawnAreaMap::NOSPAWNAREA)
+	if (!(tier & SpawnAreaMap::SPAWNAREA))
 		return;
 
 	CreatureObject* creature = dynamic_cast<CreatureObject*>(obj);
@@ -133,7 +133,7 @@ void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 }
 
 void SpawnAreaImplementation::notifyExit(SceneObject* object) {
-	if (tier & SpawnAreaMap::NOSPAWNAREA)
+	if (!(tier & SpawnAreaMap::SPAWNAREA))
 		ActiveAreaImplementation::notifyExit(object);
 }
 
