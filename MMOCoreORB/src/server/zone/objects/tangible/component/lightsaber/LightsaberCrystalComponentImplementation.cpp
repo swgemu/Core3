@@ -152,6 +152,8 @@ void LightsaberCrystalComponentImplementation::tuneCrystal(CreatureObject* playe
 		String tuneName;
 		if (getCustomObjectName().toString().contains("(Exceptional)"))
 			tuneName = "\\#00FF00" + postTuneName + " (Exceptional) (tuned)";
+		else if (getCustomObjectName().toString().contains("(Legendary)"))
+			tuneName = "\\#00FF00" + postTuneName + " (Legendary) (tuned)";
 		else
 			tuneName = "\\#00FF00" + postTuneName + " (tuned)";
 
