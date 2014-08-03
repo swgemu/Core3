@@ -448,6 +448,101 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 					player->sendSystemMessage("Not within combat.");
 				}
 
+			} else if (templatePath == "reset_buffs") {
+
+				if (!player->isInCombat()) {
+					player->sendSystemMessage("Your buffs have been reset.");
+
+					player->clearBuffs(true);
+
+					ghost->setFoodFilling(0);
+					ghost->setDrinkFilling(0);
+				} else {
+					player->sendSystemMessage("Not within combat.");
+				}
+
+			} else if (templatePath.beginsWith("crafting_apron_")) {
+
+				//"object/tangible/wearables/apron/apron_chef_s01.iff"
+				//"object/tangible/wearables/ithorian/apron_chef_jacket_s01_ith.iff"
+
+				uint32 itemCrc = ( player->getSpecies() != CreatureObject::ITHORIAN ) ? 0x5DDC4E5D : 0x6C191FBB;
+
+				ManagedReference<WearableObject*> apron = zserv->createObject(itemCrc, 2).castTo<WearableObject*>();
+
+				if (apron == NULL) {
+					player->sendSystemMessage("There was an error creating the requested item. Please contact customer support with this issue.");
+					ghost->addSuiBox(cbSui);
+					player->sendMessage(cbSui->generateMessage());
+
+					error("could not create frog crafting apron");
+					return;
+				}
+
+				apron->createChildObjects();
+
+				if (apron->isWearableObject()) {
+					uint32 bitmask = apron->getOptionsBitmask() | OptionBitmask::YELLOW;
+					apron->setOptionsBitmask(bitmask, false);
+
+					UnicodeString modName = "(General)";
+					apron->addSkillMod(SkillModManager::WEARABLE, "general_assembly", 25);
+					apron->addSkillMod(SkillModManager::WEARABLE, "general_experimentation", 25);
+
+					if(templatePath == "crafting_apron_armorsmith") {
+						modName = "(Armorsmith)";
+						apron->addSkillMod(SkillModManager::WEARABLE, "armor_assembly", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "armor_experimentation", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "armor_repair", 25);
+					} else if(templatePath == "crafting_apron_weaponsmith") {
+						modName = "(Weaponsmith)";
+						apron->addSkillMod(SkillModManager::WEARABLE, "weapon_assembly", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "weapon_experimentation", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "weapon_repair", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "grenade_assembly", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "grenade_experimentation", 25);
+					} else if(templatePath == "crafting_apron_tailor") {
+						modName = "(Tailor)";
+						apron->addSkillMod(SkillModManager::WEARABLE, "clothing_assembly", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "clothing_experimentation", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "clothing_repair", 25);
+					} else if(templatePath == "crafting_apron_chef") {
+						modName = "(Chef)";
+						apron->addSkillMod(SkillModManager::WEARABLE, "food_assembly", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "food_experimentation", 25);
+					} else if(templatePath == "crafting_apron_architect") {
+						modName = "(Architect)";
+						apron->addSkillMod(SkillModManager::WEARABLE, "structure_assembly", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "structure_experimentation", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "structure_complexity", 25);
+					} else if(templatePath == "crafting_apron_droid_engineer") {
+						modName = "(Droid Engineer)";
+						apron->addSkillMod(SkillModManager::WEARABLE, "droid_assembly", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "droid_experimentation", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "droid_complexity", 25);
+					} else if(templatePath == "crafting_apron_doctor") {
+						modName = "(Doctor)";
+						apron->addSkillMod(SkillModManager::WEARABLE, "medicine_assembly", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "medicine_experimentation", 25);
+					} else if(templatePath == "crafting_apron_combat_medic") {
+						modName = "(Combat Medic)";
+						apron->addSkillMod(SkillModManager::WEARABLE, "combat_medicine_assembly", 25);
+						apron->addSkillMod(SkillModManager::WEARABLE, "combat_medicine_experimentation", 25);
+					}
+
+					UnicodeString apronName = "Crafting Apron " + modName;
+					apron->setCustomObjectName(apronName, false);
+				}
+
+				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+				apron->sendTo(player, true);
+				inventory->transferObject(apron, -1, true);
+
+				StringIdChatParameter stringId;
+				stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.
+				stringId.setTO(apron);
+				player->sendSystemMessage(stringId);
+
 			} else if (templatePath == "enhance_character") {
 
 				ManagedReference<SceneObject*> scob = cbSui->getUsingObject();
@@ -520,7 +615,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				ghost->addSuiBox(cbSui);
 				player->sendMessage(cbSui->generateMessage());
 
-				error("could not craete frog item: " + node->getDisplayName());
+				error("could not create frog item: " + node->getDisplayName());
 				return;
 			}
 
