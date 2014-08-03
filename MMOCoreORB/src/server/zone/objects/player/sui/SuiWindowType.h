@@ -251,6 +251,7 @@ public:
 	static const uint16 SELECT_VETERAN_REWARD = 1020;
 	static const uint16 CONFIRM_VETERAN_REWARD = 1021;
 	static const uint16 CONFIRM_DIVORCE = 1022;
+	static const uint16 CONFIRM_FLASH_SPEEDER_PURCHASE = 1023;
 };
 
 #endif /*SuiWindowType_H_*/
