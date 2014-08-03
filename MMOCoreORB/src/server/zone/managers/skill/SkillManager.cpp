@@ -72,7 +72,7 @@ SkillManager::~SkillManager() {
 
 int SkillManager::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
-	Lua::runFile("scripts/staff/" + filename, L);
+	Lua::runFile("scripts/skills/" + filename, L);
 
 	return 0;
 }
@@ -141,7 +141,7 @@ void SkillManager::loadClientData() {
 		}
 	}
 
-	loadAdminCommands();
+	loadFromLua();
 
 	//If the admin ability isn't in the ability map, then we want to add it manually.
 	if (!abilityMap.containsKey("admin"))
@@ -156,13 +156,13 @@ void SkillManager::loadClientData() {
 	info("Successfully loaded " + String::valueOf(skillMap.size()) + " skills and " + String::valueOf(abilityMap.size()) + " abilities.", true);
 }
 
-void SkillManager::loadAdminCommands() {
+void SkillManager::loadFromLua() {
 	Lua* lua = new Lua();
 	lua->init();
 	lua_register(lua->getLuaState(), "includeFile", &includeFile);
 	lua_register(lua->getLuaState(), "addSkill", &addSkill);
 
-	lua->runFile("scripts/staff/skills/serverobjects.lua");
+	lua->runFile("scripts/skills/serverobjects.lua");
 
 	delete lua;
 }

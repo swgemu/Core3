@@ -101,7 +101,7 @@ public:
 
 	void loadLuaConfig();
 	void loadClientData();
-	void loadAdminCommands();
+	void loadFromLua();
 	void loadSkill(LuaObject* skill);
 	void loadXpLimits();
 
