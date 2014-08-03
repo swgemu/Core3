@@ -6,9 +6,38 @@
  */
 
 #include "server/zone/objects/guild/GuildObject.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/guild/GuildMemberInfo.h"
+#include "server/zone/objects/guild/RenameGuildTask.h"
+
+void GuildObjectImplementation::rescheduleRename() {
+	Locker locker(_this.get());
+
+	if (renamePending) {
+		CreatureObject* renamer = server->getZoneServer()->getObject(renamerID).castTo<CreatureObject*>();
+
+		if (renamer == NULL) {
+			setRenamePending(false);
+		} else {
+			RenameGuildTask* renameGuildTask = new RenameGuildTask(renamer, server->getZoneServer(), _this.get());
+
+			if (renameTime.isPast()) {
+				renameGuildTask->execute();
+			} else {
+				renameGuildTask->schedule(renameTime);
+			}
+		}
+	}
+}
+
+void GuildObjectImplementation::updateRenameTime(uint64 miliseconds) {
+	Locker locker(_this.get());
+
+	renameTime.updateToCurrentTime();
+	renameTime.addMiliTime(miliseconds);
+}
 
 void GuildObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }

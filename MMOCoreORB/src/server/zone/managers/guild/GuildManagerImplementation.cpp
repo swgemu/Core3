@@ -101,6 +101,10 @@ void GuildManagerImplementation::loadGuilds() {
 
 			//Recreate the guild chat rooms on load
 			createGuildChannels(guild);
+
+			if (guild->isRenamePending()) {
+				guild->rescheduleRename();
+			}
 		}
 
 	} catch (DatabaseException& e) {
@@ -281,8 +285,9 @@ void GuildManagerImplementation::scheduleGuildRename(CreatureObject* player, Gui
 	params.setTT(guild->getPendingNewAbbrev());
 	player->sendSystemMessage(params); // You have set your guild's name and abbreviation to bechanged to '%TU' and '%TT' respectively. The change will take place in approximately 7 days, if there are no conflicts at that time.
 
-	task->schedule(3600000); // 1 hour for testing
-	//task->schedule(604800000); // 1 week
+	task->schedule(604800000); // 1 week
+	guild->updateRenameTime(604800000);
+	guild->setRenamerID(player->getObjectID());
 }
 
 void GuildManagerImplementation::renameGuild(GuildObject* guild, CreatureObject* player, const String& newName, const String& newAbbrev) {
