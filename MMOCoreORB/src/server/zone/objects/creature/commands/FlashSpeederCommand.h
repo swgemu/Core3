@@ -46,6 +46,10 @@ which carries forward this exception.
 #define FLASHSPEEDERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/intangible/VehicleControlDevice.h"
+#include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sui/callbacks/ReplaceFlashSpeederSuiCallback.h"
 
 class FlashSpeederCommand : public QueueCommand {
 public:
@@ -55,13 +59,70 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* player, const uint64& target, const UnicodeString& arguments) {
 
-		if (!checkStateMask(creature))
+		if (!checkStateMask(player))
 			return INVALIDSTATE;
 
-		if (!checkInvalidLocomotions(creature))
+		if (!checkInvalidLocomotions(player))
 			return INVALIDLOCOMOTION;
+
+		if( !player->isPlayerCreature() )
+			return GENERALERROR;
+
+		if( player->getPlayerObject() == NULL )
+			return GENERALERROR;
+
+		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+		if (datapad == NULL)
+			return GENERALERROR;
+
+		// Find the first disabled flash speeder in player's datapad
+		bool hasFlash = false;
+		VehicleControlDevice* device;
+		ManagedReference<SceneObject*> sceno;
+		ManagedReference<VehicleObject*> vehicle;
+		for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
+			ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+
+			if (object->isVehicleControlDevice()) {
+				device = cast<VehicleControlDevice*>( object.get());
+
+				sceno = device->getControlledObject();
+				if (sceno != NULL && sceno->getObjectTemplate()->getFullTemplateString() == "object/mobile/vehicle/speederbike_flash.iff") {
+
+					vehicle = cast<VehicleObject*>(sceno.get());
+					if( vehicle != NULL && vehicle->isDestroyed() ){
+						hasFlash = true;
+						break;
+					}
+				}
+			}
+		}
+
+		// Player must have a disabled flash speeder in their datapad
+		if( !hasFlash ){
+			player->sendSystemMessage( "@veteran:flash_speeder_not_eligible" ); //	"You are not eligible to receive a Flash Speeder"
+			return GENERALERROR;
+		}
+
+		// Player must have 20k credits
+		if( player->getBankCredits() < 20000 ){
+			player->sendSystemMessage( "@veteran:flash_speeder_no_credits" ); // "You do not have enough credits to receive a replacement."
+			return GENERALERROR;
+		}
+
+		// Build and send confirmation window
+		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, SuiWindowType::CONFIRM_FLASH_SPEEDER_REPAIR);
+		suiBox->setCallback(new ReplaceFlashSpeederSuiCallback(server->getZoneServer()));
+		suiBox->setPromptTitle("Confirm Flash Speeder Replacement");
+		suiBox->setPromptText( "@veteran:flash_speeder_replace_prompt" );  // "A replacement Flash Speeder is available at the cost of 20000 credits. Are you sure you want a new speeder?"
+		suiBox->setCancelButton(true, "@no");
+		suiBox->setOkButton(true, "@yes");
+		suiBox->setUsingObject(device);
+
+		player->getPlayerObject()->addSuiBox(suiBox);
+		player->sendMessage(suiBox->generateMessage());
 
 		return SUCCESS;
 	}
