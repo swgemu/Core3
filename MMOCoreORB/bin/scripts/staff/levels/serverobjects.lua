@@ -41,12 +41,12 @@
 --which carries forward this exception.
 --true = 1, false = 0
 
-includeFile("levels/admin.lua")
-includeFile("levels/dev.lua")
-includeFile("levels/qa.lua")
-includeFile("levels/csr.lua")
-includeFile("levels/ec.lua")
---includeFile("levels/tester.lua")
-includeFile("levels/player.lua")
-includeFile("levels/eci.lua")
-includeFile("levels/csi.lua")
+includeFile("staff/levels/admin.lua")
+includeFile("staff/levels/dev.lua")
+includeFile("staff/levels/qa.lua")
+includeFile("staff/levels/csr.lua")
+includeFile("staff/levels/ec.lua")
+--includeFile("staff/levels/tester.lua")
+includeFile("staff/levels/player.lua")
+includeFile("staff/levels/eci.lua")
+includeFile("staff/levels/csi.lua")
