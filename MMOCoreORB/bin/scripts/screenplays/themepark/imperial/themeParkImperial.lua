@@ -820,8 +820,10 @@ ThemeParkImperial = ThemeParkLogic:new {
 	screenPlayState = "imperial_theme_park",
 	missionDescriptionStf = "@theme_park_imperial/quest_details:imperial_retreat_",
 	missionCompletionMessageStf = "@theme_park/messages:imperial_completion_message",
+	distance = 100,
 	faction = FACTIONIMPERIAL
 	--warningMessageStf = "@theme_park_imperial/warning:"
+
 }
 
 registerScreenPlay("ThemeParkImperial", true)

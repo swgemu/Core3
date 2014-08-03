@@ -237,6 +237,11 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 			playerManager->awardExperience(strongReferenceDesigner, "imagedesigner", xpGranted, true);
 		}
 
+		if (positionObserver != NULL) {
+			strongReferenceDesigner->dropObserver(ObserverEventType::POSITIONCHANGED, positionObserver);
+			strongReferenceTarget->dropObserver(ObserverEventType::POSITIONCHANGED, positionObserver);
+		}
+
 		if (idTimeoutEvent != NULL && idTimeoutEvent->isScheduled())
 			dequeueIdTimeoutEvent();
 	}
