@@ -119,7 +119,7 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 			end
 
 		elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) ~= true then
-			if self.themePark:isValidConvoString(stfFile, ":notyet") then
+			if self.themePark:isValidConvoString(stfFile, ":notyet") and table.getn(self.themePark.npcMap) == 1  then
 				nextScreenName = "notyet"
 			else
 				nextScreenName = "no_faction"
@@ -135,7 +135,7 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 				nextScreenName = "no_faction"
 			end
 		elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) and self.themePark:isOnLeave(pConversingPlayer) then
-			if self.themePark:isValidConvoString(stfFile, ":notyet") then
+			if self.themePark:isValidConvoString(stfFile, ":notyet") and table.getn(self.themePark.npcMap) == 1 then
 				nextScreenName = "notyet"
 			else
 				nextScreenName = "no_faction"
