@@ -44,7 +44,7 @@
 object_tangible_deed_vehicle_deed_speederbike_flash_deed = object_tangible_deed_vehicle_deed_shared_speederbike_flash_deed:new {
 
 	templateType = VEHICLEDEED,	
-
+	noTrade = 1,
 	controlDeviceObjectTemplate = "object/intangible/vehicle/speederbike_flash_pcd.iff",
 	generatedObjectTemplate = "object/mobile/vehicle/speederbike_flash.iff"
 }
