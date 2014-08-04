@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_26256fc2",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/BoardShuttleCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-04T20:22:38Z",
+      "side": 1,
+      "message": "These could potentially cause segfaults. You should grab the zoneServer, zone, and the missionManager beforehand and do NULL checks on them before calling any of their members.",
+      "revId": "d54672638bf61c6d8d3bd400d6be9268fe8d157f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_a6183f85",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-04T20:22:38Z",
+      "side": 1,
+      "message": "Once again, NULL checks",
+      "revId": "d54672638bf61c6d8d3bd400d6be9268fe8d157f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_861d3b76",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-04T20:22:38Z",
+      "side": 1,
+      "message": "NULL checks",
+      "revId": "d54672638bf61c6d8d3bd400d6be9268fe8d157f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_66124764",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-04T20:22:38Z",
+      "side": 1,
+      "message": "NULL checks",
+      "revId": "d54672638bf61c6d8d3bd400d6be9268fe8d157f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_46174352",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-04T20:22:38Z",
+      "side": 1,
+      "message": "I think it would actually be better if you don\u0027t drop this here, but instead save this reference and reschedule it. Only create a new object if one doesn\u0027t already exist.",
+      "revId": "d54672638bf61c6d8d3bd400d6be9268fe8d157f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_260c4f42",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-04T20:22:38Z",
+      "side": 1,
+      "message": "NULL checks",
+      "revId": "d54672638bf61c6d8d3bd400d6be9268fe8d157f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_06094b31",
+        "filename": "MMOCoreORB/src/server/zone/objects/mission/MissionObjectImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-04T20:22:38Z",
+      "side": 1,
+      "message": "NULL checks",
+      "revId": "d54672638bf61c6d8d3bd400d6be9268fe8d157f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_e6051715",
+        "filename": "MMOCoreORB/src/server/zone/objects/mission/MissionObjectImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-04T20:22:38Z",
+      "side": 1,
+      "message": "NULL checks",
+      "revId": "d54672638bf61c6d8d3bd400d6be9268fe8d157f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
