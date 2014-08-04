@@ -105,6 +105,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "isInCombat", &LuaAiAgent::isInCombat },
 		{ "checkLineOfSight", &LuaAiAgent::checkLineOfSight },
 		{ "activateRecovery", &LuaAiAgent::activateRecovery },
+		{ "activateAwareness", &LuaAiAgent::activateAwareness },
 		{ "setBehaviorStatus", &LuaAiAgent::setBehaviorStatus },
 		{ "getBehaviorStatus", &LuaAiAgent::getBehaviorStatus },
 		{ "resetBehaviorList", &LuaAiAgent::resetBehaviorList },
@@ -119,6 +120,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getSocialGroup", &LuaAiAgent::getSocialGroup },
 		{ "getOwner", &LuaAiAgent::getOwner },
 		{ "getLastCommand", &LuaAiAgent::getLastCommand },
+		{ "setAlertDuration", &LuaAiAgent::setAlertDuration },
+		{ "alertedTimeIsPast", &LuaAiAgent::alertedTimeIsPast },
 		{ 0, 0 }
 };
 
@@ -228,7 +231,7 @@ int LuaAiAgent::getFollowState(lua_State* L) {
  */
 int LuaAiAgent::findNextPosition(lua_State* L) {
 	bool walk = lua_toboolean(L, -1);
-	uint16 maxDistance = lua_tonumber(L, -2);
+	float maxDistance = lua_tonumber(L, -2);
 
 	bool found = realObject->findNextPosition(maxDistance, walk);
 
@@ -431,10 +434,11 @@ int LuaAiAgent::isFleeing(lua_State* L) {
 }
 
 int LuaAiAgent::runAway(lua_State* L) {
-	CreatureObject* target = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+	CreatureObject* target = static_cast<CreatureObject*>(lua_touserdata(L, -2));
+	float range = lua_tonumber(L, -1);
 
 	if (target != NULL)
-		realObject->runAway(target);
+		realObject->runAway(target, range);
 
 	return 0;
 }
@@ -662,6 +666,13 @@ int LuaAiAgent::activateRecovery(lua_State* L) {
 	return 0;
 }
 
+int LuaAiAgent::activateAwareness(lua_State* L) {
+	CreatureObject* target = (CreatureObject*) lua_touserdata(L, -1);
+	realObject->activateAwarenessEvent(target);
+
+	return 0;
+}
+
 int LuaAiAgent::setBehaviorStatus(lua_State* L) {
 	uint8 status = (uint8) lua_tointeger(L, -1);
 
@@ -769,7 +780,7 @@ int LuaAiAgent::checkRange(lua_State* L) {
 }
 
 int LuaAiAgent::broadcastInterrupt(lua_State* L) {
-	float msg = lua_tointeger(L, -1);
+	int msg = lua_tointeger(L, -1);
 
 	realObject->broadcastInterrupt(msg);
 
@@ -801,6 +812,29 @@ int LuaAiAgent::getLastCommand(lua_State* L) {
 		lua_pushinteger(L, 0);
 	else
 		lua_pushinteger(L, controlDevice->getLastCommand());
+
+	return 1;
+}
+
+int LuaAiAgent::setAlertDuration(lua_State* L) {
+	int duration = lua_tointeger(L, -1);
+
+	Time* alert = realObject->getAlertedTime();
+	if (alert != NULL) {
+		alert->updateToCurrentTime();
+		alert->addMiliTime(duration);
+	}
+
+	return 0;
+}
+
+int LuaAiAgent::alertedTimeIsPast(lua_State* L) {
+	Time* alert = realObject->getAlertedTime();
+
+	if (alert != NULL)
+		lua_pushboolean(L, alert->isPast());
+	else
+		lua_pushboolean(L, true);
 
 	return 1;
 }

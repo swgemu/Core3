@@ -51,9 +51,10 @@ public:
 
 		Locker clocker(targetRef, strongRef);
 
-		avgSpeed = Vector3(targetRef->getPositionX() - coord.getPositionX(), targetRef->getPositionY() - coord.getPositionY(), 0).squaredLength() / (mtime) * 1000000;
+		if (mtime != 0)
+			avgSpeed = Vector3(targetRef->getPositionX() - coord.getPositionX(), targetRef->getPositionY() - coord.getPositionY(), 0).squaredLength() / (mtime) * 1000000;
 
-		strongRef->doAwarenessCheck(coord, mtime, targetRef);
+		strongRef->doAwarenessCheck(targetRef);
 	}
 
 	void schedule(uint64 delay = 0) {

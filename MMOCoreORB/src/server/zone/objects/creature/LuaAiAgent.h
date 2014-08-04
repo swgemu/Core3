@@ -104,6 +104,7 @@ namespace creature {
 		int isInCombat(lua_State* L);
 		int checkLineOfSight(lua_State* L);
 		int activateRecovery(lua_State* L);
+		int activateAwareness(lua_State* L);
 		int setBehaviorStatus(lua_State* L);
 		int getBehaviorStatus(lua_State* L);
 		int resetBehaviorList(lua_State* L);
@@ -118,6 +119,8 @@ namespace creature {
 		int getSocialGroup(lua_State* L);
 		int getOwner(lua_State* L);
 		int getLastCommand(lua_State* L);
+		int setAlertDuration(lua_State* L);
+		int alertedTimeIsPast(lua_State* L);
 	private:
 		ManagedReference<AiAgent*> realObject;
 	};

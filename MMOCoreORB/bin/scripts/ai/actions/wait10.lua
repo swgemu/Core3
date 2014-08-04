@@ -1,7 +1,7 @@
 require("ai.actions.wait")
 require("ai.interrupts")
 
-Wait10Base = createClass(Wait)
+Wait10Base = createClass(WaitBase)
 
 function Wait10Base:setWait(pAgent)
 	if (pAgent ~= nil) then

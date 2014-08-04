@@ -82,12 +82,7 @@
 #include "server/zone/objects/tangible/components/ElevatorDownMenuComponent.h"
 #include "server/zone/objects/region/components/CityManagementMenuComponent.h"
 #include "server/zone/objects/region/components/CityVotingMenuComponent.h"
-#include "server/zone/objects/scene/components/AiInterfaceComponent.h"
-#include "server/zone/objects/scene/components/AiDummyComponent.h"
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
-#include "server/zone/objects/creature/components/AiDefaultComponent.h"
-#include "server/zone/objects/creature/components/AiCreatureComponent.h"
-#include "server/zone/objects/creature/components/AiNPCComponent.h"
 #include "server/zone/objects/tangible/components/generic/ShellfishHarvesterMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/DiceDataComponent.h"
 #include "server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.h"
@@ -195,11 +190,6 @@ ComponentManager::ComponentManager() {
 
 	components.put("LairMenuComponent", new LairMenuComponent());
 
-	components.put("AiInterfaceComponent", new AiInterfaceComponent());
-	components.put("AiDummyComponent", new AiDummyComponent());
-	components.put("AiDefaultComponent", new AiDefaultComponent());
-	components.put("AiCreatureComponent", new AiCreatureComponent());
-	components.put("AiNPCComponent", new AiNPCComponent());
 	components.put("WeaponObjectMenuComponent", new WeaponObjectMenuComponent());
 
 	components.put("ShellfishHarvesterMenuComponent", new ShellfishHarvesterMenuComponent());
