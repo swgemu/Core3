@@ -1,7 +1,7 @@
 bh_pirate_captain = Creature:new {
 	objectName = "",
 	customName = "a Pirate Captain",
-	socialGroup = "Pirate",
+	socialGroup = "pirate",
 	pvpFaction = "",
 	faction = "",
 	level = 20,

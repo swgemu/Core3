@@ -1,6 +1,6 @@
 brigand_scout = Creature:new {
 	objectName = "@mob/creature_names:brigand",
-	socialGroup = "Brigand",
+	socialGroup = "brigand",
 	pvpFaction = "",
 	faction = "",
 	level = 13,

@@ -1,7 +1,7 @@
 orip_erchi = Creature:new {
 	objectName = "",
 	customName = "Orip Erchi",
-	socialGroup = "Pirate",
+	socialGroup = "pirate",
 	pvpFaction = "",
 	faction = "",
 	level = 100,

@@ -1,7 +1,7 @@
 xalox_smuggler2 = Creature:new {
 	objectName = "@mob/creature_names:smuggler",
-	socialGroup = "Thug",
-	pvpFaction = "Thug",
+	socialGroup = "thug",
+	pvpFaction = "thug",
 	faction = "",
 	level = 14,
 	chanceHit = 0.300000,

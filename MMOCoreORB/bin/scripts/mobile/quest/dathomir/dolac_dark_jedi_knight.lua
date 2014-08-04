@@ -1,6 +1,6 @@
 dolac_dark_jedi_knight = Creature:new {
 	objectName = "@mob/creature_names:dark_jedi_knight",
-	socialGroup = "Dark Jedi",
+	socialGroup = "dark_jedi",
 	pvpFaction = "",
 	faction = "",
 	level = 265,

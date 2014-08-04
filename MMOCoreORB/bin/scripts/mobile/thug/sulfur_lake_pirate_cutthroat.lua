@@ -1,6 +1,6 @@
 sulfur_lake_pirate_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:slp_cutthroat",
-	socialGroup = "Pirate",
+	socialGroup = "pirate",
 	pvpFaction = "",
 	faction = "",
 	level = 12,

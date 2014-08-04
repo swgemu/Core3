@@ -1,6 +1,6 @@
 gadget_specialist = Creature:new {
 	objectName = "@mob/creature_names:quest_gadget_specialist",
-	socialGroup = "Townsperson",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

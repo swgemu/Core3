@@ -1,6 +1,6 @@
 theme_park_rebel_disgruntled_citizen = Creature:new {
 	objectName = "@mob/creature_names:bounty_hunter",
-	socialGroup = "Mercenary",
+	socialGroup = "mercenary",
 	pvpFaction = "",
 	faction = "",
 	level = 24,

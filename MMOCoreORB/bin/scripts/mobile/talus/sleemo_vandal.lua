@@ -1,7 +1,7 @@
 sleemo_vandal = Creature:new {
 	objectName = "",
 	customName = "Sleemo Vandal",
-	socialGroup = "Sleemo Gang",
+	socialGroup = "sleemo_gang",
 	pvpFaction = "",
 	faction = "",
 	level = 9,

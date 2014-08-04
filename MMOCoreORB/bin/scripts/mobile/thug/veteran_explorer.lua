@@ -1,7 +1,7 @@
 veteran_explorer = Creature:new {
 	objectName = "",
 	customName = "a Veteran Explorer",
-	socialGroup = "Wilder",
+	socialGroup = "wilder",
 	pvpFaction = "",
 	faction = "",
 	level = 8,

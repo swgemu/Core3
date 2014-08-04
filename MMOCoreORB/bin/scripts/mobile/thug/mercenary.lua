@@ -1,6 +1,6 @@
 mercenary = Creature:new {
 	objectName = "@mob/creature_names:mercenary",
-	socialGroup = "Mercenary",
+	socialGroup = "mercenary",
 	pvpFaction = "",
 	faction = "",
 	level = 12,

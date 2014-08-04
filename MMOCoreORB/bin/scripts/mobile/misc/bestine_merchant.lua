@@ -1,7 +1,7 @@
 bestine_merchant = Creature:new {
 	objectName = "@mob/creature_names:merchant",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

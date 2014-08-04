@@ -1,7 +1,7 @@
 stormtrooper_filler_tutorial = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper",
-	socialGroup = "Imperial",
-	pvpFaction = "Imperial",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 30,
 	chanceHit = 0.390000,

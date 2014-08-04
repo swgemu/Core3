@@ -1,7 +1,7 @@
 stresstest_shuttleloc_barker = Creature:new {
 	objectName = "",
 	customName = "Official Stress Test Informant",
-	socialGroup = "Townsperson",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 100,

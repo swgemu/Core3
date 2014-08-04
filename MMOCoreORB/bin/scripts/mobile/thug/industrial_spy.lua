@@ -1,6 +1,6 @@
 industrial_spy = Creature:new {
 	objectName = "@mob/creature_names:industrial_spy",
-	socialGroup = "Mercenary",
+	socialGroup = "mercenary",
 	pvpFaction = "",
 	faction = "",
 	level = 8,

@@ -1,6 +1,6 @@
 commando = Creature:new {
 	objectName = "@mob/creature_names:commando",
-	socialGroup = "Mercenary",
+	socialGroup = "mercenary",
 	pvpFaction = "",
 	faction = "",
 	level = 19,

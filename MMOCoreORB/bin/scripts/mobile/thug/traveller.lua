@@ -1,7 +1,7 @@
 traveller = Creature:new {
 	objectName = "",
 	customName = "a Traveller",
-	socialGroup = "Wilder",
+	socialGroup = "wilder",
 	pvpFaction = "",
 	faction = "",
 	level = 4,

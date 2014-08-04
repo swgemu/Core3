@@ -1,6 +1,6 @@
 woff_btar = Creature:new {
 	objectName = "",
-	socialGroup = "Slaver",
+	socialGroup = "slaver",
 	pvpFaction = "",
 	faction = "thug",
 	level = 4,

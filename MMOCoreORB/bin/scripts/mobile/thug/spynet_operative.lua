@@ -1,6 +1,6 @@
 spynet_operative = Creature:new {
 	objectName = "@mob/creature_names:spynet_operative",
-	socialGroup = "Spynet",
+	socialGroup = "spynet",
 	pvpFaction = "",
 	faction = "",
 	level = 17,

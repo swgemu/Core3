@@ -1,6 +1,6 @@
 brigand_leader = Creature:new {
   objectName = "@mob/creature_names:brigand_leader",
-  socialGroup = "Brigand",
+  socialGroup = "brigand",
   pvpFaction = "",
   faction = "",
   level = 20,

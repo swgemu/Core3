@@ -1,7 +1,7 @@
 trailblazer = Creature:new {
         objectName = "",
         customName = "a Trailblazer",
-        socialGroup = "Wilder",
+        socialGroup = "wilder",
         pvpFaction = "",
         faction = "",
         level = 14,

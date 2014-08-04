@@ -1,6 +1,6 @@
 explorer = Creature:new {
 	objectName = "@mob/creature_names:explorer",
-	socialGroup = "Wilder",
+	socialGroup = "wilder",
 	pvpFaction = "",
 	faction = "",
 	level = 7,

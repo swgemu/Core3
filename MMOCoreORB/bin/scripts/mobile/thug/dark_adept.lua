@@ -1,6 +1,6 @@
 dark_adept = Creature:new {
 	objectName = "@mob/creature_names:dark_adept",
-	socialGroup = "Dark Jedi",
+	socialGroup = "dark_jedi",
 	pvpFaction = "",
 	faction = "",
 	level = 140,

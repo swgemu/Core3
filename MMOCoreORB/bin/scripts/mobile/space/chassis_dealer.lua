@@ -1,8 +1,8 @@
 chassis_dealer = Creature:new {
 	objectName = "",
 	customName = "Chassis Dealer",
-	socialGroup = "Townsperson",
-	pvpFaction = "Townsperson",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
 	faction = "",
 	level = 100,
 	chanceHit = 1,
