@@ -45,7 +45,9 @@ which carries forward this exception.
 
 void PlayerCreatureTemplate::parseVariableData(const String& varName, LuaObject* templateData) {
 	lua_State* state = templateData->getLuaState();
-	if (varName == "startingSkills") {
+	if (varName == "defaultLanguage")
+		defaultLanguage = Lua::getIntParameter(state);
+	else if (varName == "startingSkills") {
 		startingItems->removeAll();
 
 		LuaObject skills(state);

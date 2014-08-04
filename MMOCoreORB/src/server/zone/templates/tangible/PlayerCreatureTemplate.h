@@ -16,10 +16,14 @@ class PlayerCreatureTemplate : public SharedCreatureObjectTemplate {
 	Reference<Vector<String>* > startingSkills;
 	Reference<Vector<String>* > startingItems;
 
+protected:
+	uint8 defaultLanguage;
+
 public:
 	PlayerCreatureTemplate() {
 		startingSkills = new Vector<String>();
 		startingItems = new Vector<String>();
+		defaultLanguage = 0;
 	}
 
 	~PlayerCreatureTemplate() {
@@ -39,6 +43,10 @@ public:
 
 	Vector<String>* getStartingItems() {
 		return startingItems;
+	}
+
+	inline uint8 getDefaultLanguage() {
+		return defaultLanguage;
 	}
 
 	void setCustomizationDataMap(const CustomizationDataMap& map) {
