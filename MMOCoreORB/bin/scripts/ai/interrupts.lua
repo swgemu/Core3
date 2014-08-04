@@ -102,7 +102,7 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 		if pFollow == nil and not inRange then
 			agent:setStalkObject(pObject);
 		elseif agent:getAvgSpeed() <= (target:getWalkSpeed() * target:getWalkSpeed()) and not inRange then
-			agent:addDefender(target)
+			agent:addDefender(pObject)
 		elseif inRange then
 			agent:addDefender(pObject) -- TODO (dannuic): do stalkers also agro when the target starts to move towards them?
 		else
