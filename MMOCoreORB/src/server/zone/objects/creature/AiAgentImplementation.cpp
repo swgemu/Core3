@@ -991,6 +991,8 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	if (getZone() == NULL)
 		return;
 
+	Locker clocker(getZone(), _this.get());
+
 	if (cell != NULL && cell->getParent() != NULL)
 		updateZoneWithParent(cell, false, false);
 	else
@@ -1007,6 +1009,11 @@ void AiAgentImplementation::checkNewAngle() {
 	if (!nextStepPosition.isReached()) {
 		broadcastNextPositionUpdate(&nextStepPosition);
 	} else {
+		if (getZone() == NULL)
+			return;
+
+		Locker clocker(getZone(), _this.get());
+
 		++movementCounter;
 
 		if (parent != NULL && getParent().get()->isCellObject())
