@@ -269,7 +269,7 @@ int LuaSceneObject::isInRangeWithObject(lua_State* L) {
 
 	bool res = realObject->isInRange(obj, range);
 
-	lua_pushnumber(L, res);
+	lua_pushboolean(L, res);
 
 	return 1;
 }

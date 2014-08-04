@@ -1004,11 +1004,7 @@ end
 
 function ThemeParkLogic:isInQuestRangeOf(pCreature1, pCreature2)
 	return ObjectManager.withCreatureObject(pCreature1, function(creature)
-		if creature:isInRangeWithObject(pCreature2, 128) == 1 then
-			return true
-		else
-			return false
-		end
+		return creature:isInRangeWithObject(pCreature2, 128)
 	end)
 end
 
