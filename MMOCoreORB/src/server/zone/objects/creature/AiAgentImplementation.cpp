@@ -920,9 +920,6 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	if (scno == _this.get())
 		return;
 
-	if (entry == followObject.get())
-		setFollowObject(NULL);
-
 	if (scno->isPlayerCreature()) {
 		if ((--numberOfPlayersInRange <= 0)  && despawnOnNoPlayerInRange && (despawnEvent == NULL) && !isPet()) {
 			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
@@ -1169,8 +1166,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 			currentSpeed = 0;
 
-			if (followObject != NULL && !(isRetreating() || isFleeing()))
+			if (followObject != NULL && !(isRetreating() || isFleeing())) {
+				targetMutex.unlock();
 				checkNewAngle();
+			}
 
 			return false;
 		}
@@ -1378,8 +1377,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		currentSpeed = 0;
 	}
 
-	if (!(isRetreating() || isFleeing()))
+	if (!(isRetreating() || isFleeing())) {
+		targetMutex.unlock();
 		checkNewAngle();
+		targetMutex.lock();
+	}
 
 	delete nextPosition;
 

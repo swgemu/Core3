@@ -101,25 +101,24 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 		--agent:info("1")
 		if pFollow == nil and not inRange then
 			--agent:info("1a")
-			agent:setStalkObject(pObject);
-		elseif agent:getAvgSpeed() <= (target:getWalkSpeed() * target:getWalkSpeed()) and not inRange then
+			agent:setStalkObject(pObject)
+			-- TODO (dannuic): is there a skill check associated with this message?
+			target:sendSystemMessageWithTO("@skill_use:notify_stalked", ObjectManager.withSceneObject(pAgent, function(agentObj) return agentObj:getDisplayedName() end))
+		elseif agent:getAvgSpeed() <= (target:getWalkSpeed() * target:getWalkSpeed()) or inRange then
 			--agent:info("1b")
-			agent:addDefender(pObject)
-		elseif inRange then
-			--agent:info("1c")
 			agent:addDefender(pObject) -- TODO (dannuic): do stalkers also agro when the target starts to move towards them?
 		else
-			--agent:info("1d")
+			--agent:info("1c")
 			agent:setOblivious()
 		end
 	elseif agent:isAggressiveTo(pObject) and inRange then
 		--agent:info("2")
 		--if scno:isAiAgent() then ObjectManager.withCreatureAiAgent(pObject, function(ai) ai:info("attacking me!") end) end
 		agent:addDefender(pObject)
-	elseif agent:getAvgSpeed() <= (target:getWalkSpeed() * target:getWalkSpeed()) and scno:isPlayerCreature() and inRange then
+	elseif agent:getAvgSpeed() <= (target:getWalkSpeed() * target:getWalkSpeed()) or not inRange then
 		--agent:info("3")
 		agent:setOblivious() -- if we're "standing still" (and they aren't aggressive) forget about us
-	elseif pFollow == nil and scno:isPlayerCreature() and inRange then
+	elseif pFollow == nil and inRange then
 		--agent:info("4")
 		agent:setWatchObject(pObject)
 		ObjectManager.withSceneObject(pAgent, function(scno) scno:showFlyText("npc_reaction/flytext", "alert", 255, 0, 0) end)
