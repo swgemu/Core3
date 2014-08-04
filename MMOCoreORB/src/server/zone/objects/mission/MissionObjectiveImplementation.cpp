@@ -68,6 +68,7 @@ void MissionObjectiveImplementation::complete() {
 
 	Reference<CompleteMissionObjectiveTask*> task = new CompleteMissionObjectiveTask(_this.get());
 	task->execute();
+
 	/*awardReward();
 
 	awardFactionPoints();

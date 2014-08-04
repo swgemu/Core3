@@ -808,7 +808,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	if (maxDensity >= 0.1f) {
 
 		// Get previous survey waypoint
-		waypoint = ghost->getSurveyWaypoint();
+		waypoint = ghost->getWaypointBySpecialType(WaypointObject::SPECIALTYPE_RESOURCE);
 
 		// Create new waypoint
 		if (waypoint == NULL)

@@ -299,7 +299,7 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 	PlayerObject* ghost = surveyer->getPlayerObject();
 
 	// Get previous survey waypoint
-	ManagedReference<WaypointObject*> waypoint = ghost->getSurveyWaypoint();
+	ManagedReference<WaypointObject*> waypoint = ghost->getWaypointBySpecialType(WaypointObject::SPECIALTYPE_RESOURCE);
 
 	// Create new waypoint
 	if (waypoint == NULL)
