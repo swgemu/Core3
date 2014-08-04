@@ -1,6 +1,6 @@
 venom_filled_arachne = Creature:new {
 	objectName = "@mob/creature_names:venom_filled_arachne",
-	socialGroup = "spider",
+	socialGroup = "arachne",
 	pvpFaction = "",
 	faction = "",
 	level = 36,

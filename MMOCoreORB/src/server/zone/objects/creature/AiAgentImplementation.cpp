@@ -2515,7 +2515,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 		}
 
 		String targetSocialGroup = ai->getSocialGroup();
-		if (!targetSocialGroup.isEmpty() && targetSocialGroup != "self" && targetSocialGroup == getSocialGroup()) {
+		if (!targetSocialGroup.isEmpty() && targetSocialGroup.toLowerCase() != "self" && targetSocialGroup.toLowerCase() == getSocialGroup().toLowerCase()) {
 			return false;
 		}
 	}

@@ -1,6 +1,5 @@
 global_pirate_camp_neutral_small_theater = Lair:new {
 	mobiles = {
-		{"pirate",1},
 		{"pirate_squab",1}
 	},
 	spawnLimit = 9,

@@ -1,6 +1,6 @@
 peko_peko = Creature:new {
 	objectName = "@mob/creature_names:peko_peko",
-	socialGroup = "self",
+	socialGroup = "peko",
 	pvpFaction = "",
 	faction = "",
 	level = 14,
