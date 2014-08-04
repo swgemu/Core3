@@ -1,6 +1,6 @@
 minor_worrt = Creature:new {
 	objectName = "@mob/creature_names:minor_worrt",
-	socialGroup = "self",
+	socialGroup = "worrt",
 	pvpFaction = "",
 	faction = "",
 	level = 5,

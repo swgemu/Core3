@@ -1,5 +1,5 @@
 tatooine_outlaw_camp_neutral_medium_theater = Lair:new {
-	mobiles = {{"fugitive",1},{"gunrunner",1},{"swooper",1}},
+	mobiles = {{"fugitive",1},{"outlaw",1}},
 	spawnLimit = 12,
 	buildingsVeryEasy = {"object/building/poi/tatooine_fugitive_camp_large1.iff","object/building/poi/tatooine_fugitive_camp_large2.iff","object/building/poi/tatooine_fugitive_camp_large3.iff"},
 	buildingsEasy = {"object/building/poi/tatooine_fugitive_camp_large1.iff","object/building/poi/tatooine_fugitive_camp_large2.iff","object/building/poi/tatooine_fugitive_camp_large3.iff"},
