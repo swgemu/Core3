@@ -229,6 +229,7 @@ void CreatureImplementation::notifyDespawn(Zone* zone) {
 	dnaState = CreatureManager::HASDNA;
 	dnaSampleCount = 0;
 	milkState = CreatureManager::NOTMILKED;
+	baby = false;
 	AiAgentImplementation::notifyDespawn(zone);
 }
 

@@ -39,6 +39,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -109,6 +110,7 @@
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/creature/SpawnObserver.h"
+#include "server/zone/managers/creature/DynamicSpawnObserver.h"
 
 
 //#define SHOW_WALK_PATH
@@ -796,7 +798,38 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	if (getZone() != NULL)
 		return;
 
-	setLevel(level);
+	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	if (npcTemplate != NULL && creatureManager != NULL && isCreature()) {
+		int chance = 2000;
+		int babiesSpawned = 0;
+
+		if (homeObject != NULL) {
+			SortedVector<ManagedReference<Observer*> > observers = homeObject->getObservers(ObserverEventType::CREATUREDESPAWNED);
+			DynamicSpawnObserver* observer = NULL;
+
+			for (int i = 0; i < observers.size(); i++) {
+				observer = observers.get(i).castTo<DynamicSpawnObserver*>();
+
+				if (observer != NULL) {
+					break;
+				}
+			}
+
+			if (observer != NULL) {
+				chance = 500;
+				babiesSpawned = observer->getBabiesSpawned();
+			}
+		}
+
+		if (creatureManager->checkSpawnAsBaby(npcTemplate->getTame(), babiesSpawned, chance)) {
+			Reference<Creature*> creature = _this.get().castTo<Creature*>();
+			creature->loadTemplateDataForBaby(npcTemplate);
+		}
+	} else {
+		setLevel(level);
+	}
+
 	resetBehaviorList();
 	clearCombatState(true);
 

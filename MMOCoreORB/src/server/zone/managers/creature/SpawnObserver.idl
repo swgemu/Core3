@@ -100,6 +100,10 @@ class SpawnObserver extends Observer implements Logger {
 		return spawnedCreatures;
 	}
 
+	public int getBabiesSpawned() {
+		return babiesSpawned;
+	}
+
 	public boolean isSpawnObserver() {
 		return true;
 	}

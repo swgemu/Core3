@@ -185,6 +185,7 @@ class AiAgent extends CreatureObject {
 		followState = OBLIVIOUS;
 
 		respawnTimer = 0;
+		respawnCounter = 0;
 		randomRespawn = false;
 
 		showNextMovementPosition = true;

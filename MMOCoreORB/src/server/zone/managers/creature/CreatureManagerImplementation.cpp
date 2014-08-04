@@ -392,6 +392,9 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureAsEventMob(uint32 te
 
 	placeCreature(creo, x, z, y, parentID);
 
+	if (creo != NULL && creo->isAiAgent())
+		cast<AiAgent*>(creo)->activateLoad("");
+
 	return creo;
 }
 
