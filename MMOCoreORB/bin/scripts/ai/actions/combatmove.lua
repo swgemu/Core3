@@ -1,7 +1,7 @@
 require("ai.actions.move")
 require("ai.interrupts")
 
-CombatMoveBase = createClass(Move)
+CombatMoveBase = createClass(MoveBase)
 
 function CombatMoveBase:doAction(pAgent)
 	if (pAgent ~= nil) then

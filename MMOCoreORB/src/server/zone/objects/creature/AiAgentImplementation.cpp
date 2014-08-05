@@ -75,7 +75,6 @@
 #include "server/zone/objects/scene/WorldCoordinates.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "ai/bt/CompositeBehavior.h"
-#include "components/AiDefaultComponent.h"
 #include "CreatureAttribute.h"
 #include "CreatureFlag.h"
 #include "CreaturePosture.h"
@@ -371,15 +370,9 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
-	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiDefaultComponent*>("AiDefaultComponent"));
-
 }
 
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	/*for (int i = 0; i < aiInterfaceComponents.size(); i++) {
-		AiInterfaceComponent* interface = aiInterfaceComponents.get(i);
-		interface->notifyPositionUpdate(_this.getReferenceUnsafeStaticCast(), entry);
-	}*/
 	Behavior* current = behaviors.get(currentBehaviorID);
 	CreatureObject* target = cast<CreatureObject*>(entry);
 	if (current != NULL && target != NULL && current->doAwarenessCheck(target))
@@ -388,11 +381,7 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
 }
 
-void AiAgentImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
-	/*for (int i = 0; i < aiInterfaceComponents.size(); i++) {
-		AiInterfaceComponent* interface = aiInterfaceComponents.get(i);
-		interface->doAwarenessCheck(_this.getReferenceUnsafeStaticCast(), start, time, target);
-	}*/
+void AiAgentImplementation::doAwarenessCheck(CreatureObject* target) {
 	activateInterrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
 }
 
@@ -691,7 +680,7 @@ bool AiAgentImplementation::tryRetreat() {
 	return true;
 }
 
-void AiAgentImplementation::runAway(CreatureObject* target) {
+void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	if (target == NULL) {
 		setOblivious();
 		return;
@@ -699,12 +688,27 @@ void AiAgentImplementation::runAway(CreatureObject* target) {
 
 	setTargetObject(target);
 
+	// TODO (dannuic): do we need to check threatmap for other players in range at this point, or just have the mob completely drop aggro?
 	if (threatMap != NULL)
 		threatMap->removeAll();
+
+	clearPatrolPoints();
 
 	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 
 	followState = AiAgent::FLEEING;
+	fleeRange = range;
+
+	if (!homeLocation.isInRange(_this.get(), 128)) {
+		homeLocation.setReached(false);
+		setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
+	} else {
+		Vector3 runTrajectory(getPositionX() - followObject->getPositionX(), getPositionY() - followObject->getPositionY(), 0);
+		runTrajectory = runTrajectory * (fleeRange / runTrajectory.length());
+		runTrajectory += getPosition();
+
+		setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get());
+	}
 }
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {
@@ -1059,8 +1063,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	Vector3 thisWorldPos = getWorldPosition();
 	WorldCoordinates* nextPosition = new WorldCoordinates();
 
-	//ManagedReference<SceneObject*> strongFollow = followObject.get();
-
 	float newSpeed = runSpeed * 1.5f; // FIXME (dannuic): Why is this *1.5? Is that some magic number?
 	if (walk && !(isRetreating() || isFleeing()))
 		newSpeed = walkSpeed;
@@ -1187,9 +1189,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			maxDist = MIN(newSpeed, targetDistance - maxDistance);
 		else { // we are already where we need to be, so we have no new position
 			//activateMovementEvent();
-			if (followState == AiAgent::PATROLLING) {
-				PatrolPoint oldPoint = patrolPoints.remove(0);
-			}
+			PatrolPoint oldPoint = patrolPoints.remove(0);
 
 			if (isRetreating())
 				homeLocation.setReached(true);
@@ -1204,7 +1204,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				checkNewAngle();
 			}
 
-			return false;
+			return followState == AiAgent::WATCHING || followState == AiAgent::FLEEING;
 		}
 
 		for (int i = 1; i < path->size() && !found; ++i) { // i = 0 is our position
@@ -1267,7 +1267,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 						float distanceToTravel = dist - (pathDistance - maxDist);
 
-						if (distanceToTravel <= 0) {
+						if (distanceToTravel <= 0.01) {
 							// Stop here because we can get to this point in one time step
 							newPositionX = nextPosition->getX();
 							newPositionY = nextPosition->getY();
@@ -1491,7 +1491,7 @@ float AiAgentImplementation::getMaxDistance() {
 		return 0.5;
 		break;
 	case AiAgent::STALKING:
-		return 25;
+		return followObject != NULL ? getDistanceTo(followObject) : 25;
 		break;
 	case AiAgent::FOLLOWING:
 		// stop in weapons range
@@ -1524,25 +1524,16 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::FLEEING:
-		// TODO (dannuic): do we need to check threatmap for other players in range at this point, or just have the mob completely drop aggro?
-		if (followObject == NULL || !isInRange(followObject, 192)) {
+		// TODO (dannuic): do we need to check threatmap for other players in range at this point? also, is this too far? alsoalso, is this time too static?
+		if (followObject == NULL || !isInRange(followObject, fleeRange)) {
 			clearCombatState(true);
-			setOblivious();
+			setWatchObject(followObject);
+			alertedTime.updateToCurrentTime();
+			alertedTime.addMiliTime(10000);
+			activateAwarenessEvent(followObject.castTo<CreatureObject*>());
 			return setDestination();
 		}
 
-		clearPatrolPoints();
-
-		if (!homeLocation.isInRange(_this.get(), 128)) {
-			homeLocation.setReached(false);
-			setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
-		} else {
-			Vector3 runTrajectory(getPositionX() - followObject->getPositionX(), getPositionY() - followObject->getPositionY(), 0);
-			runTrajectory = runTrajectory * (100 / runTrajectory.length());
-			runTrajectory += followObject->getPosition();
-
-			setNextPosition(runTrajectory.getX(), getZone()->getHeight(runTrajectory.getX(), runTrajectory.getY()), runTrajectory.getY(), getParent().get());
-		}
 		break;
 	case AiAgent::PATROLLING:
 		break;

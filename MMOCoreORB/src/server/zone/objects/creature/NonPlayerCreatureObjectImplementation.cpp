@@ -11,11 +11,9 @@
 #include "server/zone/templates/mobile/ConversationScreen.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
-#include "server/zone/objects/creature/components/AiNPCComponent.h"
 
 //#define DEBUG
 
 void NonPlayerCreatureObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
-	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiNPCComponent*>("AiNPCComponent"));
 }

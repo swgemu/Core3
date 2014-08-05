@@ -75,7 +75,6 @@ import server.zone.objects.player.PlayerObject;
 include server.zone.objects.player.FactionStatus;
 include system.thread.Mutex;
 include server.zone.managers.loot.lootgroup.LootGroupCollection;
-include server.zone.objects.scene.components.AiInterfaceComponent;
 include server.zone.objects.creature.variables.CreatureTemplateReference;
 include system.thread.ReadWriteLock;
 include server.zone.objects.creature.variables.CurrentFoundPath;
@@ -96,9 +95,6 @@ class AiAgent extends CreatureObject {
 	
 	@dereferenced
 	protected transient ReadWriteLock despawnMutex;
-	
-	@dereferenced
-	protected transient Vector<AiInterfaceComponent> aiInterfaceComponents;
 	
 	@dereferenced
 	protected Vector<string> skillCommands;
@@ -167,6 +163,9 @@ class AiAgent extends CreatureObject {
 	
 	protected int waitTime;
 	protected boolean waiting;
+	protected float fleeRange;
+	@dereferenced
+	protected transient Time alertedTime;
 	
 	protected unsigned int nextActionCRC;
 	protected string nextActionArgs;
@@ -202,6 +201,7 @@ class AiAgent extends CreatureObject {
 		behaviors.setNoDuplicateInsertPlan();
 		waitTime = 0;
 		waiting = false;
+		fleeRange = 192;
 	}
 	
 	/**
@@ -263,7 +263,7 @@ class AiAgent extends CreatureObject {
 	public native boolean findNextPosition(float maxDistance, boolean walk = false);
 	
 	@local
-	public native void doAwarenessCheck(@dereferenced Coordinate start, unsigned long time, CreatureObject target);
+	public native void doAwarenessCheck(CreatureObject target);
 	
 	public float getAvgSpeed() {
 		return awarenessEvent.getAvgSpeed();
@@ -532,7 +532,7 @@ class AiAgent extends CreatureObject {
 		}
 	}
 	
-	public native void runAway(CreatureObject target);
+	public native void runAway(CreatureObject target, float range);
 	
 	public native boolean generatePatrol(int num, float dist);
 	
@@ -893,5 +893,10 @@ class AiAgent extends CreatureObject {
 	
 	public void setCreatureBitmask(int mask) {
 		creatureBitmask = mask;
+	}
+	
+	@local
+	public Time getAlertedTime() {
+		return alertedTime;
 	}
 }

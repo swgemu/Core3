@@ -21,7 +21,6 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
-#include "server/zone/objects/creature/components/AiCreatureComponent.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 
@@ -32,7 +31,6 @@ void CreatureImplementation::initializeTransientMembers() {
 	dnaState = CreatureManager::HASDNA;
 	dnaSampleCount = 0;
 	AiAgentImplementation::initializeTransientMembers();
-	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiCreatureComponent*>("AiCreatureComponent"));
 }
 
 void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {

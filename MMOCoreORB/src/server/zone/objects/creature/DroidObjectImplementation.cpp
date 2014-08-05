@@ -50,12 +50,10 @@ which carries forward this exception.
 #include "server/zone/templates/mobile/ConversationScreen.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
-#include "server/zone/objects/creature/components/AiNPCComponent.h"
 #include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
-	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiNPCComponent*>("AiNPCComponent"));
 }
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){

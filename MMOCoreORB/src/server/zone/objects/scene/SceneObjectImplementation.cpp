@@ -88,7 +88,6 @@ which carries forward this exception.
 #include "server/zone/objects/scene/components/ZoneComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/ContainerComponent.h"
-#include "server/zone/objects/scene/components/AiDummyComponent.h"
 #include "PositionUpdateTask.h"
 
 #include "server/zone/objects/tangible/sign/SignObject.h"
