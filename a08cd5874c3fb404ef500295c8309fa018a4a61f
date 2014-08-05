@@ -33,6 +33,23 @@
       "revId": "a08cd5874c3fb404ef500295c8309fa018a4a61f",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_81d52545",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-08-05T10:32:02Z",
+      "side": 1,
+      "message": "This function contains a lot of code. Create functions like, getGroupMembersOnPlanet, getAverageGroupPosition, getGroupMissionsOnPlanet etc.",
+      "revId": "a08cd5874c3fb404ef500295c8309fa018a4a61f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
