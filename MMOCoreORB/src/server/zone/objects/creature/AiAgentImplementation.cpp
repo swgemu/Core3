@@ -1525,7 +1525,7 @@ int AiAgentImplementation::setDestination() {
 		break;
 	case AiAgent::FLEEING:
 		// TODO (dannuic): do we need to check threatmap for other players in range at this point? also, is this too far? alsoalso, is this time too static?
-		if (followObject == NULL || !isInRange(followObject, fleeRange)) {
+		if (!isRetreating() && (followObject == NULL || !isInRange(followObject, fleeRange))) {
 			clearCombatState(true);
 			setWatchObject(followObject);
 			alertedTime.updateToCurrentTime();
