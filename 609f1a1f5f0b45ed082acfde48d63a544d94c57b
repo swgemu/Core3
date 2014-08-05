@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_e18f4174",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-05T09:07:31Z",
+      "side": 1,
+      "message": "It\u0027s possible that groupMember is NULL (which I know was in the old code, but that doesn\u0027t mean it isn\u0027t wrong \u003d))",
+      "revId": "609f1a1f5f0b45ed082acfde48d63a544d94c57b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_21967995",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-05T09:07:31Z",
+      "side": 1,
+      "message": "It\u0027s quite a bit of overhead to delete and recreate tasks like this. It would be better if you get the task once and then just reschedule it if it\u0027s not NULL. Only instantiate a new task if it\u0027s NULL to begin with.",
+      "revId": "609f1a1f5f0b45ed082acfde48d63a544d94c57b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_c18c3d82",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-05T09:07:31Z",
+      "side": 1,
+      "message": "Interestingly, you know that groupMember won\u0027t be NULL since you just built this vector with a locked group (that hasn\u0027t been unlocked) that stores references to each groupMember. It doesn\u0027t hurt to check though (ie, you can leave this if you like it in).",
+      "revId": "609f1a1f5f0b45ed082acfde48d63a544d94c57b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_a1e9491c",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-05T09:07:31Z",
+      "side": 1,
+      "message": "Is ghost null checked before calling this function? If it is, then no problem, but you need to make sure people know it needs to be non-NULL before calling it.",
+      "revId": "609f1a1f5f0b45ed082acfde48d63a544d94c57b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_81ee4521",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-05T09:07:31Z",
+      "side": 1,
+      "message": "zoneServer can possibly be NULL (it\u0027s happened before)",
+      "revId": "609f1a1f5f0b45ed082acfde48d63a544d94c57b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_019375a4",
+        "filename": "MMOCoreORB/src/server/zone/objects/mission/MissionObjectImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-05T09:07:31Z",
+      "side": 1,
+      "message": "getMissionObjective() can possibly be NULL",
+      "revId": "609f1a1f5f0b45ed082acfde48d63a544d94c57b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
