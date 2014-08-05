@@ -1306,7 +1306,7 @@ void SceneObjectImplementation::setObjectName(StringId& stringID) {
 }
 
 Vector3 SceneObjectImplementation::getWorldPosition() {
-	if (parent == NULL)
+	if (parent.get() == NULL)
 		return getPosition();
 
 	ManagedReference<SceneObject*> root = getRootParent().castTo<SceneObject*>();
