@@ -74,15 +74,50 @@ public:
 			return GENERALERROR;
 		}
 
+		ManagedReference<SceneObject* > targetObject = server->getZoneServer()->getObject(target);
+		ManagedReference<CreatureObject*> kickedCreo = NULL;
+
 		ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		ManagedReference<PlayerManager*> playerManager = server->getZoneServer()->getPlayerManager();
 
-		// TODO: Allow leader to leave guild once guild elections are enabled
-		if(guild->getGuildLeaderID() == player->getObjectID())
-			player->sendSystemMessage("Guild leader cannot leave the guild");
+		if( guild == NULL || guildManager == NULL )
+			return GENERALERROR;
+
+		if(targetObject == NULL || !targetObject->isPlayerCreature()) {
+
+			String namedTarget = arguments.toString().toLowerCase();
+
+			if(playerManager == NULL)
+				return GENERALERROR;
+
+			kickedCreo = playerManager->getPlayer(namedTarget);
+
+		} else {
+			kickedCreo = cast<CreatureObject*>( targetObject.get());
+		}
+
+		if (kickedCreo == NULL ||  kickedCreo->getGuildObject() == NULL || guild->getMember(kickedCreo->getObjectID()) == NULL) {
+			creature->sendSystemMessage("Invalid target.");
+			return GENERALERROR;
+		}
+
+		if(kickedCreo->getObjectID() != creature->getObjectID()) {
+			if(!guild->hasKickPermission(creature->getObjectID())) {
+				player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+				return GENERALERROR;
+			}
+			guildManager->sendGuildKickPromptTo(player, kickedCreo);
+		}
 		else
-			guildManager->leaveGuild(player, guild);
+		{
+			// TODO: Allow leader to leave guild once guild elections are enabled
+			if(guild->getGuildLeaderID() == player->getObjectID())
+				player->sendSystemMessage("Guild leader cannot leave the guild");
+			else
+				guildManager->leaveGuild(player, guild);
+		}
 
 		return SUCCESS;
 	}
