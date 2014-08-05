@@ -18,6 +18,9 @@
 #include "server/zone/objects/player/events/SquadLeaderBonusTask.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/group/RemovePetsFromGroupTask.h"
+#include "server/zone/objects/group/tasks/UpdateNearestMissionForGroupTask.h"
+#include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	ZoneClientSession* client = player->getClient();
@@ -92,11 +95,16 @@ void GroupObjectImplementation::addMember(SceneObject* newMember) {
 	broadcastMessage(grp);
 
 	if (newMember->isPlayerCreature())
-		sendTo(newMember, true);
+	{
+		ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(newMember);
 
-	if (hasSquadLeader() && newMember->isPlayerCreature()) {
-		ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>( newMember);
-		addGroupModifiers(playerCreature);
+		sendTo(playerCreature, true);
+
+		if (hasSquadLeader()) {
+			addGroupModifiers(playerCreature);
+		}
+
+		scheduleUpdateNearestMissionForGroup(playerCreature->getPlanetCRC());
 	}
 
 	calcGroupLevel();
@@ -120,14 +128,19 @@ void GroupObjectImplementation::removeMember(SceneObject* member) {
 
 	if (member->isPlayerCreature()) {
 		// Remove member's pets
-		CreatureObject* mem = cast<CreatureObject*>(member);
-		RemovePetsFromGroupTask* task = new RemovePetsFromGroupTask(mem, _this.get());
+		CreatureObject* playerCreature = cast<CreatureObject*>(member);
+		RemovePetsFromGroupTask* task = new RemovePetsFromGroupTask(playerCreature, _this.get());
 		task->execute();
 
 		if (hasSquadLeader()) {
-			ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>( member);
 			removeGroupModifiers(playerCreature);
 		}
+
+		if (playerCreature->getPlayerObject() != NULL) {
+			PlayerObject* ghost = playerCreature->getPlayerObject();
+			ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
+		}
+		scheduleUpdateNearestMissionForGroup(playerCreature->getPlanetCRC());
 	}
 
 	calcGroupLevel();
@@ -191,33 +204,34 @@ void GroupObjectImplementation::disband() {
 	ManagedReference<ChatRoom* > chat = chatRoom;
 
 	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* crea = cast<CreatureObject*>(groupMembers.get(i).get());
+		if (groupMembers.get(i) == NULL) {
+			continue;
+		}
+		CreatureObject* groupMember = cast<CreatureObject*>(groupMembers.get(i).get());
 		try {
-			Locker clocker(crea, _this.get());
+			Locker clocker(groupMember, _this.get());
 
-			if (crea->isPlayerCreature()) {
-				CreatureObject* play = cast<CreatureObject*>( crea);
-
+			if (groupMember->isPlayerCreature()) {
 				if (chat != NULL) {
-					chat->removePlayer(play, false);
-					chat->sendDestroyTo(play);
+					chat->removePlayer(groupMember, false);
+					chat->sendDestroyTo(groupMember);
 
 					ChatRoom* room = chat->getParent();
-					room->sendDestroyTo(play);
+					room->sendDestroyTo(groupMember);
 				}
 
+				if (groupMember->getPlayerObject() != NULL) {
+					PlayerObject* ghost = groupMember->getPlayerObject();
+					ghost->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
+				}
 			}
 
-			crea->updateGroup(NULL);
+			groupMember->updateGroup(NULL);
 			//play->updateGroupId(0);
 
 			//sendClosestWaypointDestroyTo(play);
 
 			//removeSquadLeaderBonuses(play);
-
-			if (crea->isPlayerCreature())
-				sendDestroyTo(crea);
-
 		} catch (Exception& e) {
 			System::out << "Exception in GroupObject::disband(Player* player)\n";
 		}
@@ -454,3 +468,21 @@ bool GroupObjectImplementation::isOtherMemberPlayingMusic(CreatureObject* player
 
 	return false;
 }
+
+void GroupObjectImplementation::scheduleUpdateNearestMissionForGroup(unsigned int planetCRC) {
+	if (updateNearestMissionForGroupTasks.contains(planetCRC)) {
+		Reference<UpdateNearestMissionForGroupTask*> task = updateNearestMissionForGroupTasks.get(planetCRC);
+		if (task != NULL && task->isScheduled()) {
+			task->reschedule(5000);
+			return;
+		}
+		else {
+			updateNearestMissionForGroupTasks.drop(planetCRC);
+		}
+	}
+
+	Reference<UpdateNearestMissionForGroupTask*> task = new UpdateNearestMissionForGroupTask(_this.get(), planetCRC);
+	updateNearestMissionForGroupTasks.put(planetCRC, task);
+	task->schedule(5000);
+}
+

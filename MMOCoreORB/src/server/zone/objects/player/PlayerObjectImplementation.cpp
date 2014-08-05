@@ -712,6 +712,18 @@ void PlayerObjectImplementation::removeWaypointBySpecialType(int specialTypeID, 
 
 }
 
+WaypointObject* PlayerObjectImplementation::getWaypointBySpecialType(int specialTypeID) {
+	uint64 waypointID = waypointList.getWaypointBySpecialType(specialTypeID);
+	if (waypointID != 0) {
+		return waypointList.get(waypointID);
+	}
+	return NULL;
+}
+
+WaypointObject* PlayerObjectImplementation::getSurveyWaypoint() {
+	return getWaypointBySpecialType(WaypointObject::SPECIALTYPE_RESOURCE);
+}
+
 WaypointObject* PlayerObjectImplementation::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
 	ManagedReference<WaypointObject*> obj = getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 	obj->setPlanetCRC(planet.hashCode());
@@ -1612,20 +1624,6 @@ void PlayerObjectImplementation::clearRecoveryEvent() {
 
 void PlayerObjectImplementation::clearForceRegenerationEvent() {
 	forceRegenerationEvent = NULL;
-}
-
-
-
-WaypointObject* PlayerObjectImplementation::getSurveyWaypoint() {
-	WaypointList* list = getWaypointList();
-
-	uint64 wpid = list->getWaypointBySpecialType(WaypointObject::SPECIALTYPE_RESOURCE);
-
-	if (wpid != 0) {
-		return list->get(wpid);
-	}
-
-	return NULL;
 }
 
 void PlayerObjectImplementation::maximizeExperience() {

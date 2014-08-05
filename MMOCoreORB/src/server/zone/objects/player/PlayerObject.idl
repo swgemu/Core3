@@ -499,6 +499,14 @@ class PlayerObject extends IntangibleObject {
 	public native void removeWaypointBySpecialType(int specialTypeID, boolean notifyClient = true);
 
 	/**
+	 * Gets the first waypoint of a special type from this player
+	 * @param specialTypeID id of special type to find
+	 */
+	public native WaypointObject getWaypointBySpecialType(int specialTypeID);
+
+	public native WaypointObject getSurveyWaypoint();
+
+	/**
 	 * Adds new abilities commands to player
 	 * @pre { this is locked }
 	 * @post { this is locked }
@@ -606,11 +614,6 @@ class PlayerObject extends IntangibleObject {
 	public native void increaseFactionStanding(final string factionName, float amount);
 	public native void decreaseFactionStanding(final string factionName, float amount);
 	public native float getFactionStanding(final string factionName);
-	
-	/**
-	 * Returns the active SurveyWaypoint
-	 */
-	public native WaypointObject getSurveyWaypoint();
 	
 	public void setScreenPlayData(final string screenPlay, final string variable, final string data) {
 		screenPlayData.put(screenPlay + "_" + variable, data);

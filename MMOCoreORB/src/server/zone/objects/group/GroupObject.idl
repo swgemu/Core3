@@ -52,6 +52,9 @@ import server.chat.room.ChatRoom;
 import engine.lua.LuaObject;
 import engine.service.proto.BaseMessage;
 include server.zone.objects.group.GroupList;
+include server.zone.managers.mission.MissionManager;
+import server.zone.objects.group.tasks.UpdateNearestMissionForGroupTask;
+//import server.zone.objects.group.tasks.UpdateNearestMissionForGroupTaskList;
 import server.zone.Zone;
 include server.chat.StringIdChatParameter;
 
@@ -59,6 +62,9 @@ class GroupObject extends SceneObject {
 	@dereferenced
 	GroupList groupMembers;
 	
+	@dereferenced	
+	VectorMap<unsigned int, Reference<UpdateNearestMissionForGroupTask> > updateNearestMissionForGroupTasks;
+
 	ChatRoom chatRoom;
 	
 	int groupLevel;
@@ -163,4 +169,6 @@ class GroupObject extends SceneObject {
 	public void setBandSong(final string song) {
 		bandSong = song;
 	}
+
+	public native void scheduleUpdateNearestMissionForGroup(unsigned int planetCRC);
 }
