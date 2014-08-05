@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_e1e62144",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-05T10:19:52Z",
+      "side": 1,
+      "message": "Don\u0027t drop the task here. Instead, reuse the instance.",
+      "revId": "a08cd5874c3fb404ef500295c8309fa018a4a61f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_c1e31d32",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-05T10:19:52Z",
+      "side": 1,
+      "message": "Only create a new instance if you have to (when your vector does not contain or if task is NULL)",
+      "revId": "a08cd5874c3fb404ef500295c8309fa018a4a61f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
