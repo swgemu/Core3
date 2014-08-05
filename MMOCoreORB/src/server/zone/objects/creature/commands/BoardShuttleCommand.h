@@ -59,6 +59,7 @@ which carries forward this exception.
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
+#include "server/zone/objects/group/GroupObject.h"
 
 //#define ENABLE_CITY_TRAVEL_LIMIT
 
@@ -229,6 +230,15 @@ public:
 		}
 
 		creature->switchZone(arrivalZone->getZoneName(), x, p.getPositionZ(), y, 0);
+
+		// Update the nearest mission for group waypoint for both the arrival and departure planet.
+		if (creature->isGrouped()) {
+			GroupObject* group = creature->getGroup();
+			group->scheduleUpdateNearestMissionForGroup(zone->getPlanetCRC());
+			if(departurePlanet != arrivalPlanet) {
+				group->scheduleUpdateNearestMissionForGroup(arrivalZone->getPlanetCRC());
+			}
+		}
 
 		//remove the ticket from inventory and destory it.
 		ticketObject->destroyObjectFromWorld(true);

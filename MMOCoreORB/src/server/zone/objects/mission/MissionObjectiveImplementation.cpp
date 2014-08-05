@@ -21,6 +21,7 @@
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/objects/mission/events/FailMissionAfterCertainTimeTask.h"
 #include "events/CompleteMissionObjectiveTask.h"
+#include "server/zone/objects/group/GroupObject.h"
 
 void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {
@@ -68,6 +69,12 @@ void MissionObjectiveImplementation::complete() {
 
 	Reference<CompleteMissionObjectiveTask*> task = new CompleteMissionObjectiveTask(_this.get());
 	task->execute();
+
+	if (player->isGrouped() && player->getGroup() != NULL) {
+		GroupObject* group = player->getGroup();
+		group->scheduleUpdateNearestMissionForGroup(player->getPlanetCRC());
+	}
+
 	/*awardReward();
 
 	awardFactionPoints();
