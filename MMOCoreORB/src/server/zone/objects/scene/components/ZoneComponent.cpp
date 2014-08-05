@@ -184,9 +184,9 @@ void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
 }
 
 void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool sendPackets) {
-	ManagedReference<SceneObject*> parent = sceneObject->getParent();
+	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 	Zone* zone = sceneObject->getZone();
-	ManagedReference<SceneObject*> sceneObjectRootParent = sceneObject->getRootParent();
+	ManagedReference<SceneObject*> sceneObjectRootParent = sceneObject->getRootParent().get();
 
 	if (zone == NULL) {
 		if (sceneObjectRootParent == NULL)
@@ -206,7 +206,12 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		//parent->removeObject(sceneObject, true);
 		//removeFromBuilding(sceneObject, dynamic_cast<BuildingObject*>(parent->getParent()));
 
-		zone = parent->getRootParent().get()->getZone();
+		ManagedReference<SceneObject*> rootParent = parent->getRootParent().get();
+
+		if (rootParent == NULL)
+			return;
+
+		zone = rootParent->getZone();
 
 		zone->transferObject(sceneObject, -1, false);
 

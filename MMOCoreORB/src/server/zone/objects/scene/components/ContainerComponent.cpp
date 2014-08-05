@@ -109,7 +109,7 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 	if (permission == ContainerPermissions::OPEN && ghost->isPrivileged())
 		return true;
 
-	ManagedReference<SceneObject*> parent = sceneObject->getParent();
+	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 
 	if (permission != ContainerPermissions::MOVECONTAINER && permissions->hasInheritPermissionsFromParent() && parent != NULL && parent != sceneObject) {
 		return parent->checkContainerPermission(creature, permission);

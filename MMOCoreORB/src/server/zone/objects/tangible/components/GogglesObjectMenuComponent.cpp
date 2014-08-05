@@ -42,7 +42,7 @@ int GogglesObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		
 	if (selectedID == 81 || selectedID == 82) {
 
-		ManagedReference<SceneObject*> parent = sceneObject->getParent();
+		ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 		if (parent != NULL && parent->isPlayerCreature()) {
 			player->sendSystemMessage("@error_message:equipped_goggles");
 			return 0;

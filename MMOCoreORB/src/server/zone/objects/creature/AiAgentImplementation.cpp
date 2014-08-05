@@ -1050,7 +1050,8 @@ void AiAgentImplementation::checkNewAngle() {
 
 		++movementCounter;
 
-		if (parent != NULL && getParent().get()->isCellObject())
+		ManagedReference<SceneObject*> strongParent = getParent().get();
+		if (strongParent != NULL && strongParent->isCellObject())
 			updateZoneWithParent(getParent().get(), true, true);
 		else
 			updateZone(true, true);
@@ -1460,8 +1461,10 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 		newPoint.setPositionX(homeLocation.getPositionX() + (-1 * dist + (float)System::random((unsigned int)dist * 2)));
 		newPoint.setPositionY(homeLocation.getPositionY() + (-1 * dist + (float)System::random((unsigned int)dist * 2)));
 		newPoint.setPositionZ(homeLocation.getPositionZ());
-		if (parent != NULL && getParent().get()->isCellObject()) {
-			newPoint.setCell(getParent().get());
+
+		ManagedReference<SceneObject*> strongParent = getParent().get();
+		if (strongParent != NULL && strongParent->isCellObject()) {
+			newPoint.setCell(strongParent);
 		}
 
 		if (newPoint.getCell() == NULL && zone != NULL) {
@@ -1706,7 +1709,7 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 	++movementCounter;
 
 	if (point == NULL) {
-		if (parent != NULL)
+		if (parent.get() != NULL)
 			msg = new UpdateTransformWithParentMessage(_this.get());
 		else
 			msg = new UpdateTransformMessage(_this.get());

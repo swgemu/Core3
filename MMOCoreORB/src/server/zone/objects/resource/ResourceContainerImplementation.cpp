@@ -84,7 +84,7 @@ void ResourceContainerImplementation::setUseCount(uint32 newQuantity, bool notif
 
 void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify, bool ignoreMax) {
 	Locker _locker(_this.get());
-	ManagedReference<SceneObject*> parent = getParent();
+	ManagedReference<SceneObject*> parent = getParent().get();
 	stackQuantity = quantity;
 
 	if(stackQuantity < 1) {
@@ -140,10 +140,13 @@ void ResourceContainerImplementation::split(int newStackSize) {
 
 	ManagedReference<ResourceContainer*> newResource = spawnObject->createResource(newStackSize);
 
-	if(parent == NULL || newResource == NULL || newResource->getSpawnObject() == NULL)
+	if(newResource == NULL || newResource->getSpawnObject() == NULL)
 		return;
 
 	ManagedReference<SceneObject*> sceneParent = cast<SceneObject*>(parent.get().get());
+
+	if (sceneParent == NULL)
+		return;
 
 	if(sceneParent->transferObject(newResource, -1, true)) {
 		sceneParent->broadcastObject(newResource, true);
@@ -178,7 +181,7 @@ void ResourceContainerImplementation::combine(ResourceContainer* fromContainer) 
 	Locker _locker(_this.get());
 
 	ManagedReference<SceneObject*> parent =
-			fromContainer->getParent();
+			fromContainer->getParent().get();
 
 	setQuantity(getQuantity() + fromContainer->getQuantity());
 	fromContainer->setQuantity(0);

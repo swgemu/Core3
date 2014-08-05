@@ -15,7 +15,7 @@
 #include "server/zone/Zone.h"
 
 bool InstrumentImplementation::canDropInstrument() {
-	ManagedReference<SceneObject*> parent = getParent();
+	ManagedReference<SceneObject*> parent = getParent().get();
 
 	if (isInQuadTree() || (parent != NULL && parent->isCellObject()))
 		return false;

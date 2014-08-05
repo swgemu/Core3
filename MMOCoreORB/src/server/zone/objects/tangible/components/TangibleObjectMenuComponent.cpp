@@ -57,7 +57,7 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 		}
 	}
 
-	ManagedReference<SceneObject*> parent = tano->getParent();
+	ManagedReference<SceneObject*> parent = tano->getParent().get();
 	if (parent != NULL && parent->getGameObjectType() == SceneObjectType::STATICLOOTCONTAINER) {
 		menuResponse->addRadialMenuItem(10, 3, "@ui_radial:item_pickup"); //Pick up
 	}

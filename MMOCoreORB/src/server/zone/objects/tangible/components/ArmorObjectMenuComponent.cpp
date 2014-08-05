@@ -25,10 +25,10 @@ void ArmorObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, 
 	if (!sceneObject->isWearableObject())
 		return;
 
-	ManagedReference<SceneObject*> parent = sceneObject->getParent();
+	ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 
 	if (parent != NULL && parent->isCellObject()) {
-		ManagedReference<SceneObject*> obj = parent->getParent();
+		ManagedReference<SceneObject*> obj = parent->getParent().get();
 
 		if (obj != NULL && obj->isBuildingObject()) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>(obj.get());
@@ -53,7 +53,7 @@ int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 
 	if (selectedID == 81) {
 		
-		ManagedReference<SceneObject*> parent = sceneObject->getParent();
+		ManagedReference<SceneObject*> parent = sceneObject->getParent().get();
 	
 		if (parent == NULL)
 			return 0;
@@ -64,7 +64,7 @@ int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		}	
 
 		if (parent->isCellObject()) {
-			ManagedReference<SceneObject*> obj = parent->getParent();
+			ManagedReference<SceneObject*> obj = parent->getParent().get();
 
 			if (obj != NULL && obj->isBuildingObject()) {
 				ManagedReference<BuildingObject*> buio = cast<BuildingObject*>(obj.get());

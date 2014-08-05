@@ -131,7 +131,7 @@ public:
 		int slotNeeds = requiredQuantity - currentQuantity;
 
 		/// Get parent
-		ManagedReference<SceneObject*> parent = incomingTano->getParent();
+		ManagedReference<SceneObject*> parent = incomingTano->getParent().get();
 		if(parent == NULL) {
 			error("Object inserted didn't have a parent");
 			return false;

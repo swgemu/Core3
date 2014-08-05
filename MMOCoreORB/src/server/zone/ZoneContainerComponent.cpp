@@ -138,7 +138,7 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 		//StackTrace::printStackTrace();
 	}
 
-	ManagedReference<SceneObject*> parent = object->getParent();
+	ManagedReference<SceneObject*> parent = object->getParent().get();
 
 	if (parent != NULL/* && parent->isCellObject()*/) {
 		uint64 parentID = object->getParentID();

@@ -719,7 +719,7 @@ void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
 }
 
 bool WeaponObjectImplementation::isEquipped() {
-	ManagedReference<SceneObject*> parent = getParent();
+	ManagedReference<SceneObject*> parent = getParent().get();
 	if (parent != NULL && parent->isPlayerCreature())
 		return true;
 

@@ -33,12 +33,12 @@ public:
 		if (sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE) != object->getParentRecursively(SceneObjectType::PLAYERCREATURE))
 			return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 
-		ManagedReference<SceneObject*> parent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+		ManagedReference<SceneObject*> parent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
 
 		if (parent == NULL)
 			return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 
-		int containerObjects = parent.get()->getSlottedObject("inventory")->getContainerObjectsSize();
+		int containerObjects = parent->getSlottedObject("inventory")->getContainerObjectsSize();
 
 		if (containerObjects >= parent->getSlottedObject("inventory")->getContainerVolumeLimit()) {
 			errorDescription = "@error_message:inv_full"; // Your inventory is full.

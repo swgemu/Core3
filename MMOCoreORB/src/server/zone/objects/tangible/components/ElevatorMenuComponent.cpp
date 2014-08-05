@@ -18,9 +18,9 @@ void ElevatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Obj
 }
 
 int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
-	ManagedReference<SceneObject*> parent = creature->getParent();
+	ManagedReference<SceneObject*> parent = creature->getParent().get();
 
-	if (parent == NULL || !parent->isCellObject() || parent.get() != sceneObject->getParent().get())
+	if (parent == NULL || !parent->isCellObject() || parent != sceneObject->getParent().get())
 		return 0;
 
 	CellObject* cell = parent.castTo<CellObject*>();

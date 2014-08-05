@@ -418,7 +418,7 @@ void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	BaseMessage* msg = new SceneObjectCreateMessage(_this.get());
 	player->sendMessage(msg);
 
-	if (parent != NULL)
+	if (parent.get() != NULL)
 		link(player, containmentType);
 
 	try {
@@ -444,7 +444,7 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 	BaseMessage* msg = new SceneObjectCreateMessage(_this.get());
 	player->sendMessage(msg);
 
-	if (parent != NULL)
+	if (parent.get() != NULL)
 		link(player, containmentType);
 
 	sendBaselinesTo(player);
@@ -619,7 +619,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 	if (zoneServer != NULL && zoneServer->isServerLoading())
 		return;
 
-	if (parent != NULL) {
+	if (parent.get() != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParent().get().get());
 
 		if (grandParent != NULL) {
@@ -695,7 +695,7 @@ void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, Sce
 	if (zoneServer != NULL && zoneServer->isServerLoading())
 		return;
 
-	if (parent != NULL) {
+	if (parent.get() != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParent().get().get());
 
 		if (grandParent != NULL) {
@@ -770,7 +770,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 	if (zoneServer != NULL && zoneServer->isServerLoading())
 		return;
 
-	if (parent != NULL) {
+	if (parent.get() != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParent().get().get());
 
 		if (grandParent != NULL) {
@@ -893,7 +893,7 @@ void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* me
 	if (zoneServer != NULL && zoneServer->isServerLoading())
 		return;
 
-	if (parent != NULL) {
+	if (parent.get() != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParent().get().get());
 
 		if (grandParent != NULL) {
@@ -1035,7 +1035,7 @@ void SceneObjectImplementation::sendMessage(BasePacket* msg) {
 }
 
 void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
-	ManagedReference<SceneObject*> parent = getParent();
+	ManagedReference<SceneObject*> parent = getParent().get();
 
 	if (parent == NULL || (!parent->isVehicleObject() && !parent->isMount()))
 		return;
@@ -1121,7 +1121,7 @@ void SceneObjectImplementation::updateDirection(float fw, float fx, float fy, fl
 
 	++movementCounter;
 
-	if (parent != NULL) {
+	if (parent.get() != NULL) {
 		DataTransformWithParent* pack = new DataTransformWithParent(_this.get());
 		broadcastMessage(pack, true, true);
 	} else {
@@ -1135,7 +1135,7 @@ void SceneObjectImplementation::updateDirection(float angleHeadingRadians) {
 
 	++movementCounter;
 
-	if (parent != NULL) {
+	if (parent.get() != NULL) {
 		DataTransformWithParent* pack = new DataTransformWithParent(_this.get());
 		broadcastMessage(pack, true, true);
 	} else {
@@ -1306,7 +1306,7 @@ void SceneObjectImplementation::setObjectName(StringId& stringID) {
 }
 
 Vector3 SceneObjectImplementation::getWorldPosition() {
-	if (parent == NULL)
+	if (parent.get() == NULL)
 		return getPosition();
 
 	ManagedReference<SceneObject*> root = getRootParent().castTo<SceneObject*>();
@@ -1349,7 +1349,7 @@ Vector3 SceneObjectImplementation::getWorldCoordinate(float distance, float angl
 }
 
 float SceneObjectImplementation::getWorldPositionX() {
-	if (parent == NULL)
+	if (parent.get() == NULL)
 		return getPositionX();
 
 	ManagedReference<SceneObject*> root = cast<SceneObject*>(getRootParentUnsafe());
@@ -1364,7 +1364,7 @@ float SceneObjectImplementation::getWorldPositionX() {
 }
 
 float SceneObjectImplementation::getWorldPositionY() {
-	if (parent == NULL)
+	if (parent.get() == NULL)
 		return getPositionY();
 
 	ManagedReference<SceneObject*> root = cast<SceneObject*>(getRootParentUnsafe());
@@ -1379,7 +1379,7 @@ float SceneObjectImplementation::getWorldPositionY() {
 }
 
 float SceneObjectImplementation::getWorldPositionZ() {
-	if (parent == NULL)
+	if (parent.get() == NULL)
 		return getPositionZ();
 
 	ManagedReference<SceneObject*> root = cast<SceneObject*>(getRootParentUnsafe());
