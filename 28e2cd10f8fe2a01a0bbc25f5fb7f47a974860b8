@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_011db50f",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-06T19:34:37Z",
+      "side": 1,
+      "message": "Look for \"You cannot /listen to NPCs\" for a stringID.",
+      "revId": "28e2cd10f8fe2a01a0bbc25f5fb7f47a974860b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_2120b948",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2022,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-06T19:34:37Z",
+      "side": 1,
+      "message": "Send a StringID instead. When correcting strings, always look to see if there is an appropriate stringID you should be sending instead. In this case there is, so the original code was wrong by sending a string like this.",
+      "revId": "28e2cd10f8fe2a01a0bbc25f5fb7f47a974860b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_81d88554",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2237,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-06T19:34:37Z",
+      "side": 1,
+      "message": "this one is interesting. I can\u0027t find a StringID appropriate for it, maybe if you tried to watch or listen while skill animating, it stopped you and had you watch or listen?",
+      "revId": "28e2cd10f8fe2a01a0bbc25f5fb7f47a974860b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_c1167df1",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2241,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-06T19:34:37Z",
+      "side": 1,
+      "message": "StringID",
+      "revId": "28e2cd10f8fe2a01a0bbc25f5fb7f47a974860b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_a1d38937",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2245,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-06T19:34:37Z",
+      "side": 1,
+      "message": "The fact that there are messages without a StringID suggests that some other mechanic was used to handle these situations. Like if you are already listening, no message is sent perhaps. This kind of thing needs to be researched through screenshots.",
+      "revId": "28e2cd10f8fe2a01a0bbc25f5fb7f47a974860b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_e1198123",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2272,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-06T19:34:37Z",
+      "side": 1,
+      "message": "StringID",
+      "revId": "28e2cd10f8fe2a01a0bbc25f5fb7f47a974860b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
