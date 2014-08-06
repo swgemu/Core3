@@ -74,15 +74,55 @@ public:
 			return GENERALERROR;
 		}
 
+		if(server == NULL)
+			return GENERALERROR;
+
+		ManagedReference<ZoneServer* > zserv = server->getZoneServer();
+		if( zserv == NULL )
+			return GENERALERROR;
+
+		ManagedReference<CreatureObject*> playerToKick = NULL;
+		ManagedReference<SceneObject* > targetedObject = zserv->getObject(target);
 		ManagedReference<GuildObject*> guild = player->getGuildObject();
+		ManagedReference<GuildManager*> guildManager = zserv->getGuildManager();
+		ManagedReference<PlayerManager*> playerManager = zserv->getPlayerManager();
 
-		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+		if( guild == NULL || guildManager == NULL )
+			return GENERALERROR;
 
-		// TODO: Allow leader to leave guild once guild elections are enabled
-		if(guild->getGuildLeaderID() == player->getObjectID())
-			player->sendSystemMessage("Guild leader cannot leave the guild");
+		if(targetedObject == NULL || !targetedObject->isPlayerCreature()) {
+
+			String lowerNamedTarget = arguments.toString().toLowerCase();
+
+			if(playerManager == NULL)
+				return GENERALERROR;
+
+			playerToKick = playerManager->getPlayer(lowerNamedTarget);
+
+		} else {
+			playerToKick = cast<CreatureObject*>( targetedObject.get());
+		}
+
+		if (playerToKick == NULL ||  !playerToKick->isInGuild() || guild->getMember(playerToKick->getObjectID()) == NULL) {
+			creature->sendSystemMessage("Invalid target.");
+			return GENERALERROR;
+		}
+
+		if(playerToKick->getObjectID() != creature->getObjectID()) {
+			if(!guild->hasKickPermission(creature->getObjectID())) {
+				player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+				return GENERALERROR;
+			}
+			guildManager->sendGuildKickPromptTo(player, playerToKick);
+		}
 		else
-			guildManager->leaveGuild(player, guild);
+		{
+			// TODO: Allow leader to leave guild once guild elections are enabled
+			if(guild->getGuildLeaderID() == player->getObjectID())
+				player->sendSystemMessage("Guild leader cannot leave the guild");
+			else
+				guildManager->leaveGuild(player, guild);
+		}
 
 		return SUCCESS;
 	}
