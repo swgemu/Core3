@@ -1963,7 +1963,7 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 		return;
 
 	if (!object->isPlayerCreature()) {
-		creature->sendSystemMessage("You cannot stop listening an object.");
+		creature->sendSystemMessage("You cannot stop listening to an object.");
 		return;
 	}
 
@@ -2019,7 +2019,7 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 			//player->sendSystemMessage("performance", "dance_stop_other", params); //"%TU stops dancing."
 		} else if (outOfRange) {
 			StringBuffer msg;
-			msg << "You stop watching " << entertainer->getFirstName() << " because they are too far away.";
+			msg << "You stop listening to " << entertainer->getFirstName() << " because they are too far away.";
 			player->sendSystemMessage(msg.toString());
 
 			//TODO: Why does %OT say "him/her" instead of "he/she"?
@@ -2035,9 +2035,9 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 	}
 	//esession->setEntertainerBuffDuration(creature, PerformanceType::MUSIC, 0.0f); // reset
 	//esession->setEntertainerBuffStrength(creature, PerformanceType::MUSIC, 0.0f);
-	creature->info("stopped watching [" + entName + "]");
+	creature->info("stopped listening to [" + entName + "]");
 
-	//creature->setListenToID(0, true);
+	creature->setListenToID(0, true);
 }
 
 
@@ -2234,7 +2234,7 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 	Locker clocker(entertainer, creature);
 
 	if (creature->isDancing() || creature->isPlayingMusic()) {
-		creature->sendSystemMessage("You cannot /watch while skill animating.");
+		creature->sendSystemMessage("You cannot /listen while skill animating.");
 
 		return;
 	} else if (!entertainer->isPlayingMusic()) {
@@ -2242,7 +2242,7 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 
 		return;
 	} else if (entid == listenID) {
-		creature->sendSystemMessage("You are already listening " + entertainer->getCustomObjectName().toString() + ".");
+		creature->sendSystemMessage("You are already listening to " + entertainer->getCustomObjectName().toString() + ".");
 
 		return;
 	}
@@ -2269,12 +2269,12 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 	//creature->addWatcher(_this);
 
 	//if (isPlayer())
-	creature->sendSystemMessage("You begin to listen " + entertainer->getCustomObjectName().toString() + ".");
+	creature->sendSystemMessage("You begin to listen to " + entertainer->getCustomObjectName().toString() + ".");
 
 	//setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f);
 	//setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f);
 
-	creature->info("started watching [" + entertainer->getCustomObjectName().toString() + "]");
+	creature->info("started listening to [" + entertainer->getCustomObjectName().toString() + "]");
 
 	creature->setListenToID(entertainer->getObjectID());
 	//watchID =  entid;

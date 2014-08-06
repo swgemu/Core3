@@ -66,20 +66,21 @@ void PlayerObjectMenuComponent::fillObjectMenuResponse(
 	}
 
 	if (creature->isPlayingMusic()) {
-		if (!player->isListening())
-			menuResponse->addRadialMenuItem(113, 3,
-					"@radial_performance:listen");
-		else
-			menuResponse->addRadialMenuItem(115, 3,
-					"@radial_performance:listen_stop");
+		if (player->isListening() && player->getListenID() == creature->getObjectID()) {
+			menuResponse->addRadialMenuItem(115, 3, "@radial_performance:listen_stop");
+		}
+		else {
+			menuResponse->addRadialMenuItem(113, 3, "@radial_performance:listen");
+		}
 	}
 
 	if (creature->isDancing()) {
-		if (!player->isWatching())
+		if (player->isWatching() && player->getWatchToID() == creature->getObjectID()) {
+			menuResponse->addRadialMenuItem(116, 3, "@radial_performance:watch_stop");
+		}
+		else {
 			menuResponse->addRadialMenuItem(114, 3, "@radial_performance:watch");
-		else
-			menuResponse->addRadialMenuItem(116, 3,
-					"@radial_performance:watch_stop");
+		}
 	}
 
 	// Allow admins to grant divorce to married players
