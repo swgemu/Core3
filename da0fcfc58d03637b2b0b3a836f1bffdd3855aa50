@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_01e4950b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GuildremoveCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-06T19:40:36Z",
+      "side": 1,
+      "message": "This could possibly SEG, you need to check that server and the zoneServer are not NULL before you try to access their members.",
+      "revId": "da0fcfc58d03637b2b0b3a836f1bffdd3855aa50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_e1f061cb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GuildremoveCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-06T19:40:36Z",
+      "side": 1,
+      "message": "NULL checks",
+      "revId": "da0fcfc58d03637b2b0b3a836f1bffdd3855aa50",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
