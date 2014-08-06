@@ -87,24 +87,19 @@ public:
 		ManagedReference<GuildManager*> guildManager = zserv->getGuildManager();
 		ManagedReference<PlayerManager*> playerManager = zserv->getPlayerManager();
 
-		if( guild == NULL || guildManager == NULL )
+		if( guild == NULL || guildManager == NULL || playerManager == NULL)
 			return GENERALERROR;
 
-		if(targetedObject == NULL || !targetedObject->isPlayerCreature()) {
+		String lowerNamedTarget = arguments.toString().toLowerCase();
 
-			String lowerNamedTarget = arguments.toString().toLowerCase();
-
-			if(playerManager == NULL)
-				return GENERALERROR;
-
+		if(!lowerNamedTarget.isEmpty()) {
 			playerToKick = playerManager->getPlayer(lowerNamedTarget);
-
-		} else {
+		} else if(targetedObject != NULL && targetedObject->isPlayerCreature()) {
 			playerToKick = cast<CreatureObject*>( targetedObject.get());
 		}
 
-		if (playerToKick == NULL ||  !playerToKick->isInGuild() || guild->getMember(playerToKick->getObjectID()) == NULL) {
-			creature->sendSystemMessage("Invalid target.");
+		if(playerToKick == NULL || !playerToKick->isInGuild() || guild->getMember(playerToKick->getObjectID()) == NULL) {
+			player->sendSystemMessage("You can only remove members of your guild.");
 			return GENERALERROR;
 		}
 
