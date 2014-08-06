@@ -101,6 +101,23 @@
       "revId": "28e2cd10f8fe2a01a0bbc25f5fb7f47a974860b8",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_e1c74163",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerObjectMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-06T21:11:43Z",
+      "side": 1,
+      "message": "Do you have evidence that this is the correct behavior? My memory tells me that it would show up on more than just the one you /listen \u0027d to (perhaps anyone playing music in their group?). Memory cannot be relied on, of course, but if you don\u0027t have any evidence prompting this change then I think it should be researched before the change is made.",
+      "revId": "28e2cd10f8fe2a01a0bbc25f5fb7f47a974860b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
