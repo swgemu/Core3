@@ -352,6 +352,8 @@ int LuaPlayerObject::hasAbility(lua_State* L) {
 
 	lua_pushboolean(L, check);
 
+	return 1;
+
 }
 
 int LuaPlayerObject::getExperience(lua_State* L) {
