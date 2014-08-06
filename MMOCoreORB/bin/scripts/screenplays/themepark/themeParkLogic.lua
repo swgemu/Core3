@@ -1079,25 +1079,26 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 	local activeNpcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
 	local creature = LuaCreatureObject(pConversingPlayer)
+	local curMission = self:getMission(activeNpcNumber, missionNumber)
 
 	local npcNumber = 1
 	while (npcNumber < activeNpcNumber) do
 		missionNumber = missionNumber + table.getn(self:getNpcData(npcNumber).missions)
 		npcNumber = npcNumber * 2
 	end
-
-	if self.missionDescriptionStf == "" then
-		local currentMissionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
-		local curMission = self:getMission(activeNpcNumber, currentMissionNumber)
+	if curMission.missionDescription ~= "" and curMission.missionDescription ~= nil and direction == "target" then
+			creature:sendSystemMessage(curMission.missionDescription)
+			return curMission.missionDescription	
+	elseif self.missionDescriptionStf == "" then
 		local stfFile = self:getStfFile(activeNpcNumber)
 		if not self:isValidConvoString(stfFile, ":waypoint_description_" .. missionNumber) or not self:isValidConvoString(stfFile, ":waypoint_name_" .. missionNumber) or not self:isValidConvoString(stfFile, ":return_waypoint_name_" .. missionNumber) then
 			return self:getDefaultWaypointName(pConversingPlayer, direction)
 		else
 			if direction == "target" then
-				creature:sendSystemMessage(stfFile .. ":waypoint_description_" .. currentMissionNumber)
-				return stfFile .. ":waypoint_name_" .. currentMissionNumber
+				creature:sendSystemMessage(stfFile .. ":waypoint_description_" .. missionNumber)
+				return stfFile .. ":waypoint_name_" .. missionNumber
 			else
-				return stfFile .. ":return_waypoint_name_" .. currentMissionNumber
+				return stfFile .. ":return_waypoint_name_" .. missionNumber
 			end
 		end
 	else

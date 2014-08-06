@@ -38,7 +38,7 @@ c3po_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_rebel_captain", planetName = "corellia", npcName = "Captain Teargle" } 
+			{ npcTemplate = "theme_park_rebel_captain", planetName = "corellia", npcName = "Captain Taergle" } 
 		}, 
 		secondarySpawns = {}, 
 		itemSpawns = {}, 
@@ -169,7 +169,7 @@ wedge_missions =
 		}
 	},
 	{ 
-		missionType = "escort",
+		missionType = "assassinate",
 	 	primarySpawns = 
 	 	{ 
 	 		{ npcTemplate = "theme_park_imperial_general_graise", planetName = "corellia", npcName = "General Graise" } 
@@ -587,9 +587,10 @@ mon_missions =
 	},
 	{
 		missionType = "escort", 
+		missionDescription = "MON MOTHMA needs you to ESCORT the CAPTAIN of the Corvette back to the REBEL BASE",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_rebel_jeremes_kelton", planetName = "dantooine", npcName = "Altapi T'mman" } 
+			{ npcTemplate = "theme_park_rebel_altapi_tmman", planetName = "dantooine", npcName = "Altapi T'mman" } 
 		}, 
 		secondarySpawns = 
 		{
@@ -723,6 +724,7 @@ jan_missions =
 	},
 	{ 
 		missionType = "deliver", 
+		missionDescription = "GENERAL DODONNA needs you to DELIVER the INFORMATION to REBEL PILOT",
 		primarySpawns = 
 		{
 			{ npcTemplate = "theme_park_rebel_bothan_spy", planetName = "yavin4", npcName = "Pilot" } 
