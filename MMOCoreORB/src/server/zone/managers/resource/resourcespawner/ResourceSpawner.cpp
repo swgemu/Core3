@@ -606,7 +606,7 @@ ResourceSpawn* ResourceSpawner::getRecycledVersion(ResourceSpawn* resource) {
 	ResourceTreeEntry* startingEntry = resourceTree->getEntry(resource->getType());
 	int recycleType = startingEntry->getRecycleToolType();
 
-	ResourceTreeEntry* recycledEntry;
+	ResourceTreeEntry* recycledEntry = NULL;
 	ManagedReference<ResourceSpawn*> recycledVersion;
 
 	switch(recycleType) {
