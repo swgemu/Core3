@@ -41,8 +41,8 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_loot_quest_treasure_map_hedon = object_tangible_loot_quest_shared_treasure_map_hedon:new {
-	objectMenuComponent = {"Lua", "TreasureMapMenuComponent"}
+object_tangible_encoded_disk_encoded_disk_base = object_tangible_encoded_disk_shared_encoded_disk_base:new {
+	objectMenuComponent = {"Lua", "EncodedDiskMenuComponent"}
 }
 
-ObjectTemplates:addTemplate(object_tangible_loot_quest_treasure_map_hedon, "object/tangible/loot/quest/treasure_map_hedon.iff")
+ObjectTemplates:addTemplate(object_tangible_encoded_disk_encoded_disk_base, "object/tangible/treasure_map/treasure_map_encoded_disk.iff")

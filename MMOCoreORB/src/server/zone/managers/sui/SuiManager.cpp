@@ -753,6 +753,7 @@ void SuiManager::sendMessageBox(SceneObject* usingObject, SceneObject* player, c
 		messageBox->setPromptText(text);
 		messageBox->setUsingObject(usingObject);
 		messageBox->setOkButton(true, okButton);
+		messageBox->setCancelButton(true, "@cancel");
 		messageBox->setForceCloseDistance(32.f);
 
 		creature->sendMessage(messageBox->generateMessage());
