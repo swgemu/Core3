@@ -1642,6 +1642,7 @@ function ThemeParkLogic:goToNextMission(pConversingPlayer)
 	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":activeMission", 0)
 	writeData(creature:getObjectID() .. ":hasPreReqItem", 0)
+	writeData(creature:getObjectID() .. ":breechTriggered", 0)
 	writeStringData(creature:getObjectID() .. ":activeScreenPlay", "")
 	creature:setScreenPlayState(math.pow(2, missionNumber - 1), self.screenPlayState .. "_mission_" .. npcName)
 
