@@ -46,6 +46,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "setCompletedQuestsBit", &LuaPlayerObject::setCompletedQuestsBit },
 		{ "clearCompletedQuestsBit", &LuaPlayerObject::clearCompletedQuestsBit },
 		{ "hasAbility", &LuaPlayerObject::hasAbility},
+		{ "getForceSensitiveUnlockedBranches", &LuaPlayerObject::getForceSensitiveUnlockedBranches},
+		{ "setForceSensitiveUnlockedBranches", &LuaPlayerObject::setForceSensitiveUnlockedBranches},
 		{ "getExperience", &LuaPlayerObject::getExperience },
 		{ "getExperienceForType", &LuaPlayerObject::getExperienceForType},
 		{ "getExperienceType", &LuaPlayerObject::getExperienceType},
@@ -397,3 +399,30 @@ int LuaPlayerObject::getExperienceType(lua_State* L) {
 
 	return 1;
 }
+
+int LuaPlayerObject::getForceSensitiveUnlockedBranches(lua_State* L) {
+
+	Vector<String>* branches = realObject->getForceSensitiveElegibleBranches();
+
+	lua_newtable(L);
+
+	for (int i=0; i < branches->size(); ++i) {
+		String value = branches->get(i);
+		lua_pushstring(L, value.toCharArray());
+	}
+
+	for (int j = branches->size(); j > 0; --j) {
+		lua_rawseti(L, -j - 1, j);
+	}
+
+	return 1;
+}
+
+int LuaPlayerObject::setForceSensitiveUnlockedBranches(lua_State* L) {
+	String branchname = lua_tostring(L, -1);
+
+	realObject->addForceSensitiveElegibleBranch(branchname);
+
+	return 0;
+}
+

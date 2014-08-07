@@ -1,6 +1,7 @@
 local ExperienceConverter = require("screenplays.village.experience_converter")
 local Logger = require("utils.logger")
 require("utils.helpers")
+local ObjectManager = require("managers.object.object_manager")
 
 fs_experience_converter_conv_handler = Object:new {}
 
@@ -61,7 +62,7 @@ function fs_experience_converter_conv_handler:runScreenHandlers(pConversationTem
 			clonedConversation:setCustomDialogText("I sense you are unable to learn any new skills at this time.")
 		end
 	elseif screenID == "cs_jsPlumb_1_17" then -- Unlocking new branches.
-	--ExperienceConverter:unlockNewBranchDialog(pConversingPlayer)
+		fs_experience_converter_conv_handler:chooseBranchToUnlock(pConversingPlayer)
 	elseif screenID == "cs_jsPlumb_1_11" then -- Transferring Experience of first type.
 		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 0)
 	elseif screenID == "cs_jsPlumb_1_126" then -- Transferring Experience of second type.
@@ -72,6 +73,40 @@ function fs_experience_converter_conv_handler:runScreenHandlers(pConversationTem
 		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 3)
 	end
 	return pConversationScreen
+end
+
+function fs_experience_converter_conv_handler:chooseBranchToUnlock(pCreature)
+	local suiManager = LuaSuiManager()
+	local options = ExperienceConverter:getNextUnlockableBranches(pCreature)
+	local playerObject = LuaPlayerObject(pCreature)
+
+	if (options == nil) then
+		local player = LuaCreatureObject(pCreature)
+		player:sendSystemMessage("@quest/force_sensitive/utils:no_available_branches")
+		return
+	end
+
+	suiManager:sendListBox(pCreature, pCreature, "@quest/force_sensitive/utils:branch_select_title", "@quest/force_sensitive/utils:select_branch", 2, "@cancel", "", "@ok", "fs_experience_converter_conv_handler", "notifyBranchUnlocked", options)
+end
+
+function fs_experience_converter_conv_handler:notifyBranchUnlocked(pCreature, pSui, cancelPressed, arg0)
+	if (not cancelPressed) then
+		local arguement = arg0 + 1
+		local options = ExperienceConverter:getNextUnlockableBranches(pCreature)
+		local tier4Selection = options[arguement]
+		local branchTier4 = ExperienceConverter:getHighestBoxForTrainer(tier4Selection)
+
+
+		ObjectManager.withCreatureObject(pCreature, function(creatureObject)
+			ObjectManager.withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
+				playerObject:setForceSensitiveUnlockedBranches(branchTier4)
+			end)
+			creatureObject:sendSystemMessageWithTO("@quest/force_sensitive/utils:branch_selected_unlock", tier4Selection)
+		end)
+
+		-- Remove the screenplay state for the tree they just trained...
+		ExperienceConverter:removeScreenPlayState(pCreature, tier4Selection)
+	end
 end
 
 function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pCreature, pExperienceType)
@@ -87,11 +122,13 @@ function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pCrea
 end
 
 function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, cancelPressed, arg0)
-	local amount = ExperienceConverter:getExperienceAmount(pCreature, arg0)
-	--local suiManager = LuaSuiManager()
-	--suiManager:sendTransferBox(pCreature, pCreature, "@sui:swg", message, "@ok", "ExperienceConverter", "transferExperiencePoints")
-	local player = LuaCreatureObject(pCreature)
-	player:sendSystemMessage("You want to transfer " .. amount .. " of experience, but we're still working on that.")
+	if (not cancelPressed) then
+		local amount = ExperienceConverter:getExperienceAmount(pCreature, arg0)
+		--local suiManager = LuaSuiManager()
+		--suiManager:sendTransferBox(pCreature, pCreature, "@sui:swg", message, "@ok", "ExperienceConverter", "transferExperiencePoints")
+		local player = LuaCreatureObject(pCreature)
+		player:sendSystemMessage("You want to transfer " .. amount .. " of experience, but we're still working on that.")
+	end
 end
 
 function fs_experience_converter_conv_handler.handleInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
