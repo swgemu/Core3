@@ -20,13 +20,13 @@ social_language_sullustan_speak = {
 	speciesRequired = {
 		"bothan",
 		"human",
-		"moncalamari",
+		"moncal",
 		"rodian",
 		"trandoshan",
 		"twilek",
 		"zabrak",
 		"ithorian",
-		"sullistan"
+		"sullustan"
 	},
 	jediStateRequired = 0,
 	skillAbility = {},

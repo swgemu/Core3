@@ -20,13 +20,13 @@ social_language_zabrak_speak = {
 	speciesRequired = {
 		"zabrak",
 		"human",
-		"moncalamari",
+		"moncal",
 		"rodian",
 		"trandoshan",
 		"twilek",
 		"zabrak",
 		"ithorian",
-		"sullistan"
+		"sullustan"
 	},
 	jediStateRequired = 0,
 	skillAbility = {},

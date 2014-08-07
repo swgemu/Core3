@@ -20,13 +20,13 @@ social_language_twilek_speak = {
 	speciesRequired = {
 		"twilek",
 		"human",
-		"moncalamari",
+		"moncal",
 		"rodian",
 		"trandoshan",
 		"twilek",
 		"zabrak",
 		"ithorian",
-		"sullistan"
+		"sullustan"
 	},
 	jediStateRequired = 0,
 	skillAbility = {},

@@ -20,7 +20,7 @@ social_language_basic_speak = {
 	speciesRequired = {
 		"bothan",
 		"human",
-		"moncalamari",
+		"moncal",
 		"rodian",
 		"trandoshan",
 		"twilek",

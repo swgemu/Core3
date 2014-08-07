@@ -20,7 +20,7 @@ social_language_moncalamari_speak = {
 	speciesRequired = {
 		"bothan",
 		"human",
-		"moncalamari",
+		"moncal",
 		"rodian",
 		"trandoshan",
 		"twilek",
