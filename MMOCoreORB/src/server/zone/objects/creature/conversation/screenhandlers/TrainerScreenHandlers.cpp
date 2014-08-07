@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "TrainerScreenHandlers.h"
 #include "server/zone/managers/skill/SkillManager.h"
@@ -77,17 +77,18 @@ ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conve
 	if (ghost == NULL)
 		return NULL;
 
-	String jedi1 = "force_discipline_light_saber_master";
-	String jedi2 = "force_discipline_defender_master";
-	String jedi3 = "force_discipline_powers_master";
-	String jedi4 = "force_discipline_enhancements_master";
-	String jedi5 = "force_discipline_healing_master";
-
+	// The following is for Jedi trainers.
 	Vector3 npc(conversingNPC->getWorldPositionX(), conversingNPC->getWorldPositionY(), 0);
 	Vector3 playerCoord = ghost->getTrainerCoordinates();
 	Vector3 player(playerCoord.getX(), playerCoord.getY(), 0);
 
 	if ((npc == player) && (ghost->getTrainerZoneName() == conversingNPC->getZone()->getZoneName())) {
+		String jedi1 = "force_discipline_light_saber_master";
+		String jedi2 = "force_discipline_defender_master";
+		String jedi3 = "force_discipline_powers_master";
+		String jedi4 = "force_discipline_enhancements_master";
+		String jedi5 = "force_discipline_healing_master";
+
 		session->addAdditionalMasterSkill(jedi1);
 		session->addAdditionalMasterSkill(jedi2);
 		session->addAdditionalMasterSkill(jedi3);
@@ -124,8 +125,18 @@ ConversationScreen* TrainerTrainableSkillsScreenHandler::handleScreen(CreatureOb
 		}
 	}
 
+	PlayerObject* ghost = conversingPlayer->getPlayerObject();
+
+	if (ghost != NULL) {
+		Vector<String>* fsBranches = ghost->getForceSensitiveElegibleBranches();
+		for (int i = 0; i < fsBranches->size(); i++) {
+			Skill* skill = SkillManager::instance()->getSkill(fsBranches->get(i));
+			getTrainableSkillsList(conversingPlayer, &trainableSkills, skill);
+		}
+	}
+
 	if (masterSkills.size() <= 0)
-	masterSkills.add(startingMasterSkill);
+		masterSkills.add(startingMasterSkill);
 
 	//Clear options since we will add new below.
 	for (int i = 0; i < 5; ++i) {
@@ -196,7 +207,7 @@ ConversationScreen* TrainerNextSkillsScreenHandler::handleScreen(CreatureObject*
 	}
 
 	if (masterSkills.size() <= 0)
-	masterSkills.add(startingMasterSkill);
+		masterSkills.add(startingMasterSkill);
 
 	//Clear options since we will add new below.
 	for (int i = 0; i < 5; ++i) {
