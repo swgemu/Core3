@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "ResourceShiftTask.h"
 #include "resourcespawner/SampleTask.h"
 #include "resourcespawner/SampleResultsTask.h"
+#include "server/zone/managers/resource/InterplanetarySurvey.h"
+#include "server/zone/managers/resource/InterplanetarySurveyTask.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
@@ -66,12 +68,35 @@ void ResourceManagerImplementation::initialize() {
 	resourceSpawner->init();
 
 	startResourceSpawner();
+	loadSurveyData();
 }
 
 bool ResourceManagerImplementation::loadConfigFile() {
 	return lua->runFile("scripts/managers/resource_manager.lua");
 }
+void ResourceManagerImplementation::loadSurveyData() {
+	info("Loading survey data form surveys.db");
+	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+	ObjectDatabase* surveyDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("surveys", true);
+	if (surveyDatabase == NULL) {
+		error("Could not load the survey database.");
+		return;
+	}
+	int i = 0;
+	try {
+		ObjectDatabaseIterator iterator(surveyDatabase);
 
+		uint64 objectID;
+
+		while (iterator.getNextKey(objectID)) {
+			Core::getObjectBroker()->lookUp(objectID);
+			++i;
+		}
+	} catch (DatabaseException& e) {
+		error("Database exception in DirectorManager::loadSurveyData(): "	+ e.getMessage());
+	}
+	info(String::valueOf(i) + " surveys loaded.", true);
+}
 int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	if (eventType == ObserverEventType::POSTURECHANGED) {
 		CreatureObject* creature = cast<CreatureObject*>( observable);

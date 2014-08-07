@@ -264,6 +264,7 @@ core3_IDLS =	autogen/server/zone/objects/tangible/LairObject.cpp \
 				autogen/server/zone/managers/planet/PlanetManager.cpp \
 				autogen/server/zone/managers/radial/RadialManager.cpp \
 				autogen/server/zone/managers/resource/ResourceManager.cpp \
+				autogen/server/zone/managers/resource/InterplanetarySurvey.cpp \
 				autogen/server/zone/managers/creature/CreatureManager.cpp \
 				autogen/server/zone/managers/auction/AuctionManager.cpp \
 				autogen/server/zone/managers/auction/AuctionsMap.cpp \
@@ -722,6 +723,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/ticket/TicketObjectImplementation.cpp \
 		server/zone/managers/radial/RadialManagerImplementation.cpp \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
+		server/zone/managers/resource/InterplanetarySurveyImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/creature/PetManagerImplementation.cpp \
 		server/zone/managers/creature/SpawnAreaMap.cpp \
