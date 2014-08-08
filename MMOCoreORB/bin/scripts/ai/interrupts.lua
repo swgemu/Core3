@@ -62,7 +62,7 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	-- if not in combat, ignore creatures in different cells
 	local agentParentID = ObjectManager.withSceneObject(pAgent, function(scno) return scno:getParentID() end)
 	local targetParentID = ObjectManager.withSceneObject(pObject, function(scno) return scno:getParentID() end)
-	if not agent:isInCombat() and agentParentID ~= targetParentID then return false end
+	if agentParentID ~= targetParentID then return false end
 	--if not scno:isAiAgent() then agent:info("10") end
 	
 	if agent:isCamouflaged(pObject) or not agent:isAttackableBy(pObject) or not target:isAttackableBy(pAgent) then return false end
