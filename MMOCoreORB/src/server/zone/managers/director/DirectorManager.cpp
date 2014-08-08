@@ -188,6 +188,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
 	lua_register(luaEngine->getLuaState(), "spatialMoodChat", spatialMoodChat);
 
+	lua_register(luaEngine->getLuaState(), "getRandomNumber", getRandomNumber);
+
 	lua_register(luaEngine->getLuaState(), "forcePeace", forcePeace);
 
 	lua_register(luaEngine->getLuaState(), "readSharedMemory", readSharedMemory);
@@ -291,6 +293,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("CHANGEENTERTAIN", ObserverEventType::CHANGEENTERTAIN);
 	luaEngine->setGlobalInt("STOPENTERTAIN", ObserverEventType::STOPENTERTAIN);
 	luaEngine->setGlobalInt("FLOURISH", ObserverEventType::FLOURISH);
+	luaEngine->setGlobalInt("CONTAINERCONTENTSCHANGED", ObserverEventType::CONTAINERCONTENTSCHANGED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
@@ -1100,6 +1103,29 @@ int DirectorManager::getSceneObject(lua_State* L) {
 
 	return 1;
 }
+
+int DirectorManager::getRandomNumber(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 1 && numberOfArguments != 2) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getRandomNumber");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+	int random;
+
+	if (numberOfArguments == 1) {
+		int max = lua_tointeger(L, -1);
+		random = System::random(max);
+	} else {
+		int min = lua_tointeger(L, -2);
+		int max = lua_tointeger(L, -1);
+		random = min + System::random(max - min);
+	}
+	lua_pushinteger(L, random);
+
+	return 1;
+}
+
 
 int DirectorManager::getRegion(lua_State* L) {
 	if (checkArgumentCount(L, 2) == 1) {
