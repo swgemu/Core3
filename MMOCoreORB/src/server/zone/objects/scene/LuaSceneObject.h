@@ -44,6 +44,7 @@ namespace scene {
 		int getServerObjectCRC(lua_State* L);
 		int showFlyText(lua_State* L);
 		int getDistanceTo(lua_State* L);
+		int getDistanceToPosition(lua_State* L);
 		int getContainerObject(lua_State* L);
 		int getContainerObjectsSize(lua_State* L);
 		int getContainerVolumeLimit(lua_State* L);
