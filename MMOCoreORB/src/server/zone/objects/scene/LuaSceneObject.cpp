@@ -28,6 +28,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isInRangeWithObject", &LuaSceneObject::isInRangeWithObject },
 		{ "setCustomObjectName", &LuaSceneObject::setCustomObjectName},
 		{ "getDistanceTo", &LuaSceneObject::getDistanceTo },
+		{ "getDistanceToPosition", &LuaSceneObject::getDistanceToPosition },
 		{ "updateDirection", &LuaSceneObject::updateDirection },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "showFlyText", &LuaSceneObject::showFlyText },
@@ -243,6 +244,21 @@ int LuaSceneObject::getDistanceTo(lua_State* L) {
 	float res = realObject->getDistanceTo(obj);
 
 	lua_pushnumber(L, res);
+
+	return 1;
+}
+
+int LuaSceneObject::getDistanceToPosition(lua_State* L) {
+	float y = lua_tonumber(L, -1);
+	float z = lua_tonumber(L, -2);
+	float x = lua_tonumber(L, -3);
+
+	Coordinate position;
+	position.setPosition(x, z, y);
+
+	float dist = realObject->getDistanceTo(&position);
+
+	lua_pushnumber(L, dist);
 
 	return 1;
 }

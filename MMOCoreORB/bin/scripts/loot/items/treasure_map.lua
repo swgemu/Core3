@@ -4,7 +4,7 @@ treasure_map = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/treasure_map/treasure_map_quest.iff",
+	directObjectTemplate = "object/tangible/treasure_map/treasure_map_encoded_disk.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},

@@ -70,6 +70,7 @@ public:
 	const static int CHANGEENTERTAIN			= 58; // ManagedObject arg1 = player that changed entertaining, long arg2 = 0
 	const static int STOPENTERTAIN				= 59; // ManagedObject arg1 = player that stopped entertaining, long arg2 = 0
 	const static int FLOURISH					= 60; // ManagedObject arg1 = player that stopped entertaining, long arg2 = flourish id
+	const static int CONTAINERCONTENTSCHANGED	= 61; // ManagedObject arg1 = looting player, long arg2 = 0
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

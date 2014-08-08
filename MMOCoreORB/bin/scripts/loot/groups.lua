@@ -1,6 +1,7 @@
 includeFile("groups/armor_attachments.lua")
 includeFile("groups/clothing_attachments.lua")
 includeFile("groups/color_crystals.lua")
+includeFile("groups/crystals_all.lua")
 includeFile("groups/crystals_good.lua")
 includeFile("groups/crystals_okay.lua")
 includeFile("groups/crystals_poor.lua")
@@ -20,6 +21,7 @@ includeFile("groups/sith_shadow_encounter_datapad.lua")
 includeFile("groups/sith_shadow_intro_theater_datapad.lua")
 includeFile("groups/skill_buffs.lua")
 includeFile("groups/tailor_components.lua")
+includeFile("groups/treasure_map_group.lua")
 
 -- armor sub-folder
 includeFile("groups/armor/armor_all.lua")
