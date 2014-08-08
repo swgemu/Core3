@@ -63,7 +63,7 @@ end
 
 function merge(a, ...)
       local r = deepcopy(a)
-        for j,k in ipairs(arg) do
+        for j,k in ipairs({...}) do
 		table.foreach(k, function(i,v)table.insert(r,v) end )
 		end
 		

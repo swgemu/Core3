@@ -40,7 +40,7 @@ end
 -- @param argument the argument to use for the function.
 function Task:callFunctionIfNotNil(theFunction, returnIfNil, ...)
 	if theFunction ~= nil then
-		return theFunction(self, unpack(arg))
+		return theFunction(self, unpack({...}))
 	else
 		Logger:log("The function to call is nil in " .. Task.taskName .. ".", LT_INFO)
 		return returnIfNil

@@ -16,7 +16,7 @@ function createClass (...)
 	-- class will search for each method in the list of its
 	-- parents (`arg' is the list of parents)
 	setmetatable(c, {__index = function (t, k)
-			local v = search(k, arg)  -- will return the FIRST instance of a function, so be sure to populate the classes in the correct order (or better, make sure not to define the same functions in classes you plan to multiply inherit)
+			local v = search(k, {...})  -- will return the FIRST instance of a function, so be sure to populate the classes in the correct order (or better, make sure not to define the same functions in classes you plan to multiply inherit)
 			t[k] = v       -- save for next access -- requires that the entire ai structure be removed and reloaded to propagate changes
 			return v
 		end})
