@@ -485,7 +485,10 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 			}
 		} else {
 
-			sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld", true);
+			String templateName = "none";
+			if (sceneObject->getObjectTemplate() != NULL)
+				templateName = sceneObject->getObjectTemplate()->getTemplateFileName();
+			sceneObject->info("Null closeobjects vector in ZoneComponent::destroyObjectFromWorld with template: " + templateName + " and OID: " + String::valueOf(sceneObject->getObjectID()), true);
 
 			rootZone->getInRangeObjects(sceneObject->getPositionX(), sceneObject->getPositionY(), 256, &closeSceneObjects, false);
 
