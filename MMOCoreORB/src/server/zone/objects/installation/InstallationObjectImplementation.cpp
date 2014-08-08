@@ -419,7 +419,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	float currentQuantity = container->getQuantity();
 
 
-	if(harvestAmount > 0) {
+	if(harvestAmount > 0 || !isOperating()) {
 		currentSpawn->extractResource(getZone()->getZoneName(), harvestAmount);
 
 		updateResourceContainerQuantity(container, (currentQuantity + harvestAmount), true);
