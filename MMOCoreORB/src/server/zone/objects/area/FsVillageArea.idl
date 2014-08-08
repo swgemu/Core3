@@ -52,6 +52,9 @@ class FsVillageArea extends ActiveArea {
 
 	public FsVillageArea() {
 		super();
+
+		super.noBuildArea = true;
+		super.noSpawnArea = true;
 	}
 	
 	public native void notifyEnter(SceneObject player);
