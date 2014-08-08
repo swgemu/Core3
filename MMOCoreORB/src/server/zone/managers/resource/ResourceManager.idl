@@ -127,6 +127,7 @@ class ResourceManager extends Observer implements Logger {
 	private native boolean loadConfigFile();
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();
+	private native void loadSurveyData();
 	
 	private native void startResourceSpawner();
 
