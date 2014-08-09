@@ -29,6 +29,10 @@ namespace objects {
 namespace creature {
 namespace events {
 
+#ifndef AI_DEBUG
+#define AI_DEBUG
+#endif
+
 class AiTrackingTask : public Task {
 	ManagedWeakReference<AiAgent*> creature;
 	HashTable<String, AtomicInteger> luaCalls;
@@ -46,6 +50,7 @@ public:
 	}
 
 	void run() {
+#ifdef AI_DEBUG
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
 		if (strongRef == NULL)
@@ -64,6 +69,13 @@ public:
 		}
 
 		strongRef->rescheduleTrackingTask();
+#endif
+	}
+
+	void schedule(uint64 delay = 0) {
+#ifdef AI_DEBUG
+		Task::schedule(delay);
+#endif
 	}
 
 	void incrementCall(const String& key) {

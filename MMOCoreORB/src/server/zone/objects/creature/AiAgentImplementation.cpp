@@ -2252,14 +2252,14 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 		behavior->setID(temp->id);
 		behaviors.put(temp->id, behavior);
 
-		Vector<uint32> ids = parents.get(temp->parent);
+		Vector<uint32>& ids = parents.get(temp->parent);
 		ids.add(temp->id);
 		parents.put(temp->parent, ids);
 	}
 
 	// now set parents
 	for (int i = 0; i < parents.size(); i++) {
-		VectorMapEntry<uint32, Vector<uint32> > element = parents.elementAt(i);
+		VectorMapEntry<uint32, Vector<uint32> >& element = parents.elementAt(i);
 		if (element.getKey() == String("none").hashCode()) // this is the parent of the root node, just skip it.
 			continue;
 
@@ -2272,7 +2272,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 
 		CompositeBehavior* par = cast<CompositeBehavior*>(b);
 
-		Vector<uint32> ids = element.getValue();
+		Vector<uint32>& ids = element.getValue();
 
 		for (int j = 0; j < ids.size(); j++) {
 			Behavior* child = behaviors.get(ids.get(j));
@@ -2287,7 +2287,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 	}
 
 	// now tree is complete, set the root node as the current node
-	Vector<uint32> roots = parents.get(String("none").hashCode());
+	Vector<uint32>& roots = parents.get(String("none").hashCode());
 	if (roots.size() > 1) {
 		error("Multiple root nodes in tree: " + aiTemplate->getTemplateName());
 		return; // all References will be lost here
