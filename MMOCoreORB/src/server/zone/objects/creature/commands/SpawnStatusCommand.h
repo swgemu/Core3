@@ -46,6 +46,8 @@ which carries forward this exception.
 #define SPAWNSTATUSCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class SpawnStatusCommand : public QueueCommand {
 public:
@@ -62,6 +64,16 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		PlayerObject* ghost = creature->getPlayerObject();
+		if (!ghost->isPrivileged())
+			return INSUFFICIENTPERMISSION;
+
+		ManagedReference<AiAgent*> targetObj = server->getZoneServer()->getObject(creature->getTargetID()).castTo<AiAgent*>();
+		if (targetObj == NULL)
+			return GENERALERROR;
+
+		targetObj->outputLuaTimes(creature);
 
 		return SUCCESS;
 	}

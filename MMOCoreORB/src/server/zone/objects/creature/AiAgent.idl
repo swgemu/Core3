@@ -82,6 +82,7 @@ import server.zone.objects.creature.ai.bt.Behavior;
 import server.zone.objects.creature.ai.bt.CompositeBehavior;
 include server.zone.templates.AiTemplate;
 import server.zone.objects.intangible.ControlDevice;
+import server.zone.objects.creature.events.AiTrackingTask;
 
 @mock
 class AiAgent extends CreatureObject {
@@ -164,8 +165,11 @@ class AiAgent extends CreatureObject {
 	protected int waitTime;
 	protected boolean waiting;
 	protected float fleeRange;
+	
 	@dereferenced
 	protected transient Time alertedTime;
+	
+	protected AiTrackingTask trackingTask;
 	
 	protected unsigned int nextActionCRC;
 	protected string nextActionArgs;
@@ -898,5 +902,28 @@ class AiAgent extends CreatureObject {
 	@local
 	public Time getAlertedTime() {
 		return alertedTime;
+	}
+
+	public void incrementLuaCall(string key) {
+		trackingTask.incrementCall(key);
+	}
+	
+	public void addToLuaTime(string key, unsigned long val) {
+		trackingTask.addTime(key, val);
+	}
+	
+	public void outputLuaTimes(CreatureObject caller) {
+		trackingTask.outputTimes(caller);
+	}
+	
+	public void rescheduleTrackingTask() {
+		if (trackingTask == null) {
+			trackingTask = new AiTrackingTask(this);
+			trackingTask.schedule();
+		}
+		
+		if (!trackingTask.isScheduled()) {
+			trackingTask.schedule();
+		}
 	}
 }
