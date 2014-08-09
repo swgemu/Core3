@@ -134,7 +134,7 @@ int LuaPlayerObject::decreaseFactionStanding(lua_State* L) {
 
 //addWaypoint(planet, name, desc, x, y, color, active, notifyClient, specialTypeID, persistence = 1)
 int LuaPlayerObject::addWaypoint(lua_State* L) {
-	int numberOfArguments = lua_gettop(L);
+	int numberOfArguments = lua_gettop(L) - 1;
 
 	String planet, customName, desc;
 	float x, y;
