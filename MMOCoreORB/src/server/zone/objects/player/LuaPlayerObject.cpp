@@ -132,19 +132,39 @@ int LuaPlayerObject::decreaseFactionStanding(lua_State* L) {
 	return 0;
 }
 
-//addWaypoint(planet, name, desc, x, y, color, active, notifyClient)
+//addWaypoint(planet, name, desc, x, y, color, active, notifyClient, specialTypeID, persistence = 1)
 int LuaPlayerObject::addWaypoint(lua_State* L) {
-	String planet = lua_tostring(L, -9);
-	String customName = lua_tostring(L, -8);
-	String desc = lua_tostring(L, -7);
-	float x = lua_tonumber(L, -6);
-	float y = lua_tonumber(L, -5);
-	int color = lua_tointeger(L, -4);
-	bool active = lua_toboolean(L, -3);
-	bool notifyClient = lua_toboolean(L, -2);
-	int specialTypeID = lua_tointeger(L, -1);
+	int numberOfArguments = lua_gettop(L);
 
-	ManagedReference<WaypointObject*> waypoint = realObject->getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+	String planet, customName, desc;
+	float x, y;
+	int color, persistence = 1, specialTypeID;
+	bool active, notifyClient;
+
+	if (numberOfArguments == 9) {
+		planet = lua_tostring(L, -9);
+		customName = lua_tostring(L, -8);
+		desc = lua_tostring(L, -7);
+		x = lua_tonumber(L, -6);
+		y = lua_tonumber(L, -5);
+		color = lua_tointeger(L, -4);
+		active = lua_toboolean(L, -3);
+		notifyClient = lua_toboolean(L, -2);
+		specialTypeID = lua_tointeger(L, -1);
+	} else {
+		planet = lua_tostring(L, -10);
+		customName = lua_tostring(L, -9);
+		desc = lua_tostring(L, -8);
+		x = lua_tonumber(L, -7);
+		y = lua_tonumber(L, -6);
+		color = lua_tointeger(L, -5);
+		active = lua_toboolean(L, -4);
+		notifyClient = lua_toboolean(L, -3);
+		specialTypeID = lua_tointeger(L, -2);
+		persistence = lua_tonumber(L, -1);
+	}
+
+	ManagedReference<WaypointObject*> waypoint = realObject->getZoneServer()->createObject(0xc456e788, persistence).castTo<WaypointObject*>();
 	waypoint->setPlanetCRC(planet.hashCode());
 	waypoint->setPosition(x, 0, y);
 	waypoint->setSpecialTypeID(specialTypeID);
