@@ -8,6 +8,8 @@
 #ifndef COMPOSITEBEHAVIOR_H_
 #define COMPOSITEBEHAVIOR_H_
 
+#include <cassert>
+
 #include "engine/engine.h"
 #include "Behavior.h"
 
@@ -25,6 +27,8 @@ protected:
 
 public:
 	virtual void addChild(Behavior* child) {
+		assert(child != this);
+
 		children.add(child);
 	}
 
