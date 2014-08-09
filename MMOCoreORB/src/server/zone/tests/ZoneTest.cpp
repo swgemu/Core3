@@ -44,6 +44,14 @@ public:
 		return object;
 	}
 
+	Reference<CreatureObject*> createCreatureObject() {
+		Reference<CreatureObject*> object = new CreatureObject();
+		setDefaultComponents(object);
+		object->_setObjectID(nextObjectId.increment());
+
+		return object;
+	}
+
 	Reference<ActiveArea*> createActiveArea() {
 		Reference<ActiveArea*> activeArea = new ActiveArea();
 		setDefaultComponents(activeArea);
@@ -154,24 +162,24 @@ TEST_F(ZoneTest, ActiveAreaTest) {
 
 	alocker.release();
 
-	Reference<SceneObject*> scene = createSceneObject();
-	scene->initializePosition(0, 0, 0);
+	Reference<CreatureObject*> creature = createCreatureObject();
+	creature->initializePosition(0, 0, 0);
 
-	Locker slocker(scene);
+	Locker slocker(creature);
 
-	ASSERT_EQ(scene->getActiveAreasSize(), 0);
+	ASSERT_EQ(creature->getActiveAreasSize(), 0);
 
-	zone->transferObject(scene, -1);
+	zone->transferObject(creature, -1);
 
-	ASSERT_EQ(scene->getActiveAreasSize(), 1);
+	ASSERT_EQ(creature->getActiveAreasSize(), 1);
 
-	scene->teleport(200, 0, 0);
+	creature->teleport(200, 0, 0);
 
-	ASSERT_EQ(scene->getActiveAreasSize(), 0);
+	ASSERT_EQ(creature->getActiveAreasSize(), 0);
 
-	scene->teleport(120, 0, 0);
+	creature->teleport(120, 0, 0);
 
-	ASSERT_EQ(scene->getActiveAreasSize(), 1);
+	ASSERT_EQ(creature->getActiveAreasSize(), 1);
 
 	slocker.release();
 
@@ -181,11 +189,11 @@ TEST_F(ZoneTest, ActiveAreaTest) {
 
 	blocker.release();
 
-	Locker s2locker(scene);
+	Locker s2locker(creature);
 
-	ASSERT_EQ(scene->getActiveAreasSize(), 0);
+	ASSERT_EQ(creature->getActiveAreasSize(), 0);
 
-	scene->destroyObjectFromWorld(false);
+	creature->destroyObjectFromWorld(false);
 }
 
 

@@ -153,7 +153,7 @@ class Zone extends SceneObject {
 	@local
 	public native void inRange(QuadTreeEntry entry, float range);
 
-	public native void updateActiveAreas(SceneObject object);
+	public native void updateActiveAreas(CreatureObject creature);
 
 	public native void startManagers();
 

@@ -155,10 +155,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@weakReference
 	protected transient CityRegion cityRegion;
-	
-	@dereferenced
-	protected SortedVector<ActiveArea> activeAreas;
-	
+
 	@dereferenced
 	protected SortedVector<SceneObject> childObjects;
 	
@@ -874,64 +871,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract int notifyObjectRemoved(SceneObject object) {
 		return 0;
 	}
-	
-	public native void addActiveArea(ActiveArea area);
-	
-	public void dropActiveArea(ActiveArea area) {
-		synchronized (containerLock) {
-			activeAreas.drop(area);
-		}
-	}
-	
-	@read
-	public boolean hasActiveArea(ActiveArea area) {
-		synchronized (containerLock) {
-			return activeAreas.contains(area);
-		}
-	}
-	
-	@read
-	public boolean hasActiveArea(unsigned long objectid) {
-		synchronized (containerLock) {
-			for (int i = 0; i < activeAreas.size(); ++i) {
-				ActiveArea area = activeAreas.get(i);
 
-				if (area.getObjectID() == objectid) {
-					return true;
-				}
-			}
-		}
-		
-		return false;
-	}
-	
-	@local
-	@read
-	public Vector<ActiveArea> getActiveAreas() {
-		return activeAreas;
-	}
-	
-	@read
-	public int getActiveAreasSize() {
-		return activeAreas.size();
-	}
-	
-	@read
-	@reference
-	public ActiveArea getActiveRegion() {
-		synchronized (containerLock) {
-			for (int i = 0; i < activeAreas.size(); i++) {
-				ActiveArea region = activeAreas.get(i);
-
-				if (region.isRegion()) {
-					return region;
-				}
-			}
-		}
-		
-		return null;
-	}
-	
 	@read
 	@local
 	@weakReference
