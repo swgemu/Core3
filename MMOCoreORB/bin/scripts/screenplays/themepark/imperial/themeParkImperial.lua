@@ -721,7 +721,7 @@ darth_vader_missions =
 npcMapImperial = 
 { 
 	{ 
-		spawnData = { planetName = "naboo", npcTemplate = "kaja_orzee", x = -2, z = 0.5, y = -12.6, direction = 90, cellID = 1418872, position = STAND }, 
+		spawnData = { planetName = "naboo", npcTemplate = "kaja_orzee", x = 1.1, z = 0.2, y = -13.3, direction = 0, cellID = 1418872, position = STAND }, 
 		worldPosition = { x = 2407, y = -3941 }, 
 		npcNumber = 1,   
 		stfFile = "@theme_park_imperial/kaja_orzee",
@@ -745,21 +745,21 @@ npcMapImperial =
 		missions = lord_hethrir_missions
 	},
 	{ 
-		spawnData = { planetName = "naboo", npcTemplate = "thrawn", x = 2372, z = 292, y = -3924, direction = 150, cellID = 0, position = STAND }, 
+		spawnData = { planetName = "naboo", npcTemplate = "thrawn", x = 2371.1, z = 291.9, y = -3923.8, direction = -132, cellID = 0, position = STAND, mood = "conversation" }, 
 		npcNumber = 8,   
 		stfFile = "@theme_park_imperial/thrawn",
 		stfWarning = "lord_hethrir",
 		missions = thrawn_missions
 	},
 	{ 
-		spawnData = { planetName = "naboo", npcTemplate = "veers", x = 2372, z = 292, y = -3917, direction = 90, cellID = 0, position = STAND }, 
+		spawnData = { planetName = "naboo", npcTemplate = "veers", x = 2370.5, z = 291.9, y = -3923.1, direction = -136, cellID = 0, position = STAND, mood = "conversation" }, 
 		npcNumber = 16,   
 		stfFile = "@theme_park_imperial/veers",
 		stfWarning = "lord_hethrir",
 		missions = veers_missions
 	},
 	{ 
-		spawnData = { planetName = "naboo", npcTemplate = "palpatine", x = 13, z = 21, y = -25, direction = 180, cellID = 1418886, position = STAND },
+		spawnData = { planetName = "naboo", npcTemplate = "palpatine", x = 13, z = 21, y = -25.5, direction = 180, cellID = 1418886, position = STAND },
 		worldPosition = { x = 2397, y = -3958 },  
 		npcNumber = 32,   
 		stfFile = "@theme_park_imperial/emperor",
@@ -767,7 +767,7 @@ npcMapImperial =
 		missions = palpatine_missions
 	},
 	{ 
-		spawnData = { planetName = "naboo", npcTemplate = "darth_vader", x = -56, z = 0.2, y = -24, direction = 180, cellID = 1418884, position = STAND },
+		spawnData = { planetName = "naboo", npcTemplate = "darth_vader", x = -57.5, z = 0.2, y = -24.1, direction = 90, cellID = 1418884, position = STAND },
 		worldPosition = { x = 2387, y = -3889 },  
 		npcNumber = 64,   
 		stfFile = "@theme_park_imperial/darth_vader",
@@ -820,7 +820,8 @@ ThemeParkImperial = ThemeParkLogic:new {
 	screenPlayState = "imperial_theme_park",
 	missionDescriptionStf = "@theme_park_imperial/quest_details:imperial_retreat_",
 	missionCompletionMessageStf = "@theme_park/messages:imperial_completion_message",
-	faction = FACTIONIMPERIAL
+	faction = FACTIONIMPERIAL,
+	distance = 100
 	--warningMessageStf = "@theme_park_imperial/warning:"
 }
 

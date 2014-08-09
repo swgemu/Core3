@@ -1,3 +1,5 @@
+local ObjectManager = require("managers.object.object_manager")
+
 EmperorsRetreatScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 	
@@ -52,7 +54,30 @@ function EmperorElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlay
 	creature:teleport(x, z, y, obj:getParentID())
 end
 
+function EmperorsRetreatScreenPlay:setMoodString(pNpc, mood)
+	ObjectManager.withCreatureObject(pNpc, function(npc)
+		npc:setMoodString(mood)
+	end)
+end
+
 function EmperorsRetreatScreenPlay:spawnMobiles()
+
+	-- Inside
+	spawnMobile("naboo", "royal_imperial_guard", 120, 11.2, 0.2, -31.5, 0, 1418874)
+	spawnMobile("naboo", "royal_imperial_guard", 120, 14.8, 0.2, -31.5, 0, 1418874)
+	
+	spawnMobile("naboo", "royal_imperial_guard", 120, 10.8, 20, -27.2, 180, 1418886)
+	spawnMobile("naboo", "royal_imperial_guard", 120, 15.3, 20, -27.2, -13, 1418886)
+	
+	spawnMobile("naboo", "ra7_bug_droid", 120, 4.0, 0.2, -45.7, 4, 1418876)
+	
+	spawnMobile("naboo", "mouse_droid", 120, -8.6, 0.2, -14.2, -15, 1418879)
+	spawnMobile("naboo", "mouse_droid", 120, -39.9, 0.2, -12.4, -25, 1418879)
+	
+	local pNpc = spawnMobile("naboo", "stormtrooper", 120, -0.5, 0.2, -23.6, 76, 1418874)
+	EmperorsRetreatScreenPlay:setMoodString(pNpc, "conversation")
+	local pNpc2 = spawnMobile("naboo", "stormtrooper", 120, 0.7, 0.2, -23.5, -20, 1418874)
+	EmperorsRetreatScreenPlay:setMoodString(pNpc2, "conversation")
 
 	--Guard Towers
 	spawnMobile("naboo", "stormtrooper", 450, 2536.8, 296, -3881.4, -90, 0)
