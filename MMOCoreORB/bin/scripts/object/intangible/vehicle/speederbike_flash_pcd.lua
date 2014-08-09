@@ -42,7 +42,7 @@
 
 
 object_intangible_vehicle_speederbike_flash_pcd = object_intangible_vehicle_shared_speederbike_flash_pcd:new {
-
+	noTrade = 1
 }
 
 ObjectTemplates:addTemplate(object_intangible_vehicle_speederbike_flash_pcd, "object/intangible/vehicle/speederbike_flash_pcd.iff")
