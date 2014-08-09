@@ -374,16 +374,17 @@ void AiAgentImplementation::initializeTransientMembers() {
 }
 
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	Behavior* current = behaviors.get(currentBehaviorID);
 	CreatureObject* target = cast<CreatureObject*>(entry);
-	if (current != NULL && target != NULL && current->doAwarenessCheck(target))
+	if (target != NULL)
 		activateAwarenessEvent(target);
 
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
 }
 
 void AiAgentImplementation::doAwarenessCheck(CreatureObject* target) {
-	activateInterrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
+	Behavior* current = behaviors.get(currentBehaviorID);
+	if (current != NULL && target != NULL && current->doAwarenessCheck(target))
+		activateInterrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
 }
 
 void AiAgentImplementation::doRecovery() {
@@ -2234,9 +2235,9 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 	stopWaiting();
 	setWait(0);
 
-	behaviors.put("none", NULL);
+	behaviors.put(0, NULL);
 
-	VectorMap<String, Vector<String> > parents; // id's keyed by parents
+	VectorMap<uint32, Vector<uint32> > parents; // id's keyed by parents
 	parents.setAllowOverwriteInsertPlan();
 
 	// first build the maps
@@ -2251,33 +2252,33 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 		behavior->setID(temp->id);
 		behaviors.put(temp->id, behavior);
 
-		Vector<String> ids = parents.get(temp->parent);
+		Vector<uint32> ids = parents.get(temp->parent);
 		ids.add(temp->id);
 		parents.put(temp->parent, ids);
 	}
 
 	// now set parents
 	for (int i = 0; i < parents.size(); i++) {
-		VectorMapEntry<String, Vector<String> > element = parents.elementAt(i);
-		if (element.getKey() == "none") // this is the parent of the root node, just skip it.
+		VectorMapEntry<uint32, Vector<uint32> > element = parents.elementAt(i);
+		if (element.getKey() == String("none").hashCode()) // this is the parent of the root node, just skip it.
 			continue;
 
 		Behavior* b = behaviors.get(element.getKey());
 
 		if (b == NULL || !b->isComposite()) { // parent is not composite, this will probably break the tree
-			error("Failed to load " + element.getKey() + " as a parent in tree: " + aiTemplate->getTemplateName());
+			error("Failed to load " + String::valueOf(element.getKey()) + " as a parent in tree: " + aiTemplate->getTemplateName());
 			continue;
 		}
 
 		CompositeBehavior* par = cast<CompositeBehavior*>(b);
 
-		Vector<String> ids = element.getValue();
+		Vector<uint32> ids = element.getValue();
 
 		for (int j = 0; j < ids.size(); j++) {
 			Behavior* child = behaviors.get(ids.get(j));
 
 			if (child == NULL) {
-				error("Failed to load " + ids.get(i) + " as a child in tree: " + aiTemplate->getTemplateName());
+				error("Failed to load " + String::valueOf(ids.get(i)) + " as a child in tree: " + aiTemplate->getTemplateName());
 				continue;
 			}
 
@@ -2286,7 +2287,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 	}
 
 	// now tree is complete, set the root node as the current node
-	Vector<String> roots = parents.get("none");
+	Vector<uint32> roots = parents.get(String("none").hashCode());
 	if (roots.size() > 1) {
 		error("Multiple root nodes in tree: " + aiTemplate->getTemplateName());
 		return; // all References will be lost here
@@ -2295,14 +2296,14 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 		return;
 	}
 
-	String rootString = roots.get(0);
-	Behavior* rootBehavior = behaviors.get(rootString);
+	uint32 rootID = roots.get(0);
+	Behavior* rootBehavior = behaviors.get(rootID);
 	if (rootBehavior == NULL) {
 		error("Failed to get root instance in " + aiTemplate->getTemplateName());
 		return;
 	}
 
-	setCurrentBehavior(rootString);
+	setCurrentBehavior(rootID);
 }
 
 void AiAgentImplementation::setupBehaviorTree() {
@@ -2317,8 +2318,8 @@ void AiAgentImplementation::setupBehaviorTree() {
 void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate* selectAttack, AiTemplate* combatMove, AiTemplate* idle) {
 	CompositeBehavior* rootSelector = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), "Composite", AiMap::SELECTORBEHAVIOR));
 	CompositeBehavior* attackSequence = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), "Composite", AiMap::SEQUENCEBEHAVIOR));
-	rootSelector->setID(String("root"));
-	attackSequence->setID(String("attackSequence"));
+	rootSelector->setID(String("root").hashCode());
+	attackSequence->setID(String("attackSequence").hashCode());
 
 	addBehaviorToTree(attackSequence, rootSelector);
 
@@ -2334,15 +2335,15 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 	setupBehaviorTree(idle);
 	addCurrentBehaviorToTree(rootSelector);
 
-	behaviors.put("root", rootSelector);
-	behaviors.put("attackSequence", attackSequence);
+	behaviors.put(String("root").hashCode(), rootSelector);
+	behaviors.put(String("attackSequence").hashCode(), attackSequence);
 
 	resetBehaviorList();
 
 	//info(behaviors.get(currentBehaviorID)->print(), true);
 }
 
-void AiAgentImplementation::setCurrentBehavior(const String& b) {
+void AiAgentImplementation::setCurrentBehavior(uint32 b) {
 	currentBehaviorID = b;
 	if (behaviors.get(currentBehaviorID) != NULL) {
 		//activateMovementEvent();
@@ -2398,7 +2399,7 @@ void AiAgentImplementation::resetBehaviorList() {
 	if (b != NULL)
 		b->end();
 
-	currentBehaviorID = "root";
+	currentBehaviorID = String("root").hashCode();
 	b = behaviors.get(currentBehaviorID);
 	if (b == NULL)
 		return;
@@ -2422,7 +2423,7 @@ void AiAgentImplementation::clearBehaviorList() {
 		}
 	}
 
-	currentBehaviorID = "";
+	currentBehaviorID = 0;
 	behaviors.removeAll();
 }
 

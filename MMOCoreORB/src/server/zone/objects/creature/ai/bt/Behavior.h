@@ -35,7 +35,7 @@ protected:
 	uint8 result;
 	Behavior* parent; // the parent must be a composite
 	Reference<LuaBehavior*> interface;
-	String id;
+	uint32 id;
 
 public:
 	/**
@@ -49,6 +49,7 @@ public:
 		result = b.result;
 		parent = b.parent;
 		interface = b.interface;
+		id = b.id;
 	}
 
 	Behavior& operator=(const Behavior& b) {
@@ -59,6 +60,7 @@ public:
 		result = b.result;
 		parent = b.parent;
 		interface = b.interface;
+		id = b.id;
 
 		return *this;
 	}
@@ -66,7 +68,7 @@ public:
 	virtual ~Behavior() {
 	}
 
-	inline void setID(String _id) {
+	inline void setID(uint32 _id) {
 		this->id = _id;
 	}
 

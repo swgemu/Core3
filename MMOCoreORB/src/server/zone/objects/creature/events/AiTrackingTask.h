@@ -11,12 +11,14 @@
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
 #include "system/thread/atomic/AtomicInteger.h"
 #include "system/thread/atomic/AtomicLong.h"
 #include "system/util/HashTable.h"
 #include "system/util/Vector.h"
 #include "system/lang/String.h"
+#include "system/lang/StringBuffer.h"
 
 #include "engine/core/ManagedReference.h"
 #include "engine/core/ManagedWeakReference.h"
@@ -100,9 +102,9 @@ public:
 		if (strongRef == NULL)
 			return;
 
-		ManagedReference<SuiListBox*> list = new SuiListBox(caller);
+		ManagedReference<SuiMessageBox*> list = new SuiMessageBox(caller, 0);
 		list->setPromptTitle(strongRef->getDisplayedName()+ "[" + String::valueOf(strongRef->getObjectID()) + "]");
-		list->setPromptText("CPU time in lua calls");
+		StringBuffer msg;
 
 		SortedVector<float> averages;
 		Vector<String> keys;
@@ -131,12 +133,13 @@ public:
 			String key = keys.get(i);
 			float averageTime = averages.get(i);
 
-			list->addMenuItem(key);
-			list->addMenuItem("    Average:" + String::valueOf(averageTime) + "ms");
-			list->addMenuItem("    Calls:" + String::valueOf(luaCalls.get(key).get()));
-			list->addMenuItem("    Total:" + String::valueOf((float)luaTimes.get(key).get()/1000.f) + "ms.");
+			msg << key + "\r\n";
+			msg << "    Average:\\#FF0000 " + String::valueOf(averageTime) + "ms\\#.\r\n";
+			msg << "    Calls:\\#FF0000 " + String::valueOf(luaCalls.get(key).get()) + "\\#.\r\n";
+			msg << "    Total:\\#FF0000 " + String::valueOf((float)luaTimes.get(key).get()/1000.f) + "ms.\\#.\r\n\r\n";
 		}
 
+		list->setPromptText(msg.toString());
 		caller->sendMessage(list->generateMessage());
 	}
 };

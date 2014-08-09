@@ -12,15 +12,15 @@
 
 class LuaAiTemplate : public Object {
 public:
-	String id;
+	uint32 id;
 	String className;
-	String parent;
+	uint32 parent;
 	uint16 classType;
 
 	LuaAiTemplate() : Object() {
-		id = "";
+		id = 0;
 		className = "";
-		parent = "";
+		parent = 0;
 		classType = 0;
 	}
 
@@ -85,9 +85,9 @@ public:
 			LuaObject behavior(L);
 
 			Reference<LuaAiTemplate*> b = new LuaAiTemplate;
-			b->id = behavior.getStringAt(1);
+			b->id = behavior.getStringAt(1).hashCode();
 			b->className = behavior.getStringAt(2);
-			b->parent = behavior.getStringAt(3);
+			b->parent = behavior.getStringAt(3).hashCode();
 			b->classType = behavior.getIntAt(4);
 
 			tree.add(b);

@@ -154,9 +154,9 @@ class AiAgent extends CreatureObject {
 	protected transient DespawnCreatureOnPlayerDissappear despawnEvent;
 
 	// AI bit
-	protected string currentBehaviorID;
+	protected unsigned int currentBehaviorID;
 	@dereferenced
-	protected VectorMap<string, Behavior> behaviors;
+	protected VectorMap<unsigned int, Behavior> behaviors;
 	
 	@dereferenced
 	protected transient string templateName;
@@ -846,9 +846,9 @@ class AiAgent extends CreatureObject {
 	public native void setupBehaviorTree(AiTemplate getTarget, AiTemplate selectAttack, AiTemplate combatMove, AiTemplate idle);
 
 	@local
-	public native void setCurrentBehavior(final string b);
+	public native void setCurrentBehavior(unsigned int b);
 
-	public string getCurrentBehavior() {
+	public unsigned int getCurrentBehavior() {
 		return currentBehaviorID;
 	}
 
