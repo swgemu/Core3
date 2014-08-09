@@ -54,6 +54,7 @@ namespace creature {
 		int playEffect(lua_State* L);
 		int setState(lua_State* L);
 		int setPosture(lua_State* L);
+		int setMoodString(lua_State* L);
 		int getPosture(lua_State* L);
 		int hasSkill(lua_State* L);
 		int removeSkill(lua_State* L);
