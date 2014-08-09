@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba57610f_c8f58fcc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/treasure_map/TreasureMapMenuComponent.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-09T05:44:59Z",
+      "side": 1,
+      "message": "the active area isn\u0027t persisted so you don\u0027t need to destroyObjectFromDatabase.",
+      "revId": "64b2e6602b0dffab01430ab6afd9ec5c620be8e5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_28266b69",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/treasure_map/TreasureMapMenuComponent.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-09T05:44:59Z",
+      "side": 1,
+      "message": "Don\u0027t use chest again here. It\u0027s misleading. At first I wondered why you were destroying the chest right after spawning it. Use a more appropriate name.",
+      "revId": "64b2e6602b0dffab01430ab6afd9ec5c620be8e5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_c81c6f16",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/treasure_map/TreasureMapMenuComponent.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-09T05:44:59Z",
+      "side": 1,
+      "message": "Rather than add all these elseifs, just create a new loot group and give it the appropriate weights (it can contain other groups). Then just call createLoot 5 (or however many) times with the new group. You could even make a different group for each type of map if you wanted.",
+      "revId": "64b2e6602b0dffab01430ab6afd9ec5c620be8e5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_082ba731",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/treasure_map/TreasureMapMenuComponent.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-09T05:44:59Z",
+      "side": 1,
+      "message": "Uneeded. Chest isn\u0027t persistent.",
+      "revId": "64b2e6602b0dffab01430ab6afd9ec5c620be8e5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_a8025bb2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/treasure_map/TreasureMapMenuComponent.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-09T05:44:59Z",
+      "side": 1,
+      "message": "Since waypoints are persistent by default and you aren\u0027t storing the id persistently, I think it would make sense to make a special type for treasure maps. This would ensure that old treasure map waypoints would get removed automatically when a new one is added.",
+      "revId": "64b2e6602b0dffab01430ab6afd9ec5c620be8e5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
