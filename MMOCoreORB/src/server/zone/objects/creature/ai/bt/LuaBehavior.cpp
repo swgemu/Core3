@@ -30,6 +30,7 @@ uint16 LuaBehavior::getType() {
 }
 
 bool LuaBehavior::checkConditions(AiAgent* agent) {
+	Time timer;
 	// Use DirectorManager in order to have access to AiAgent
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	// TODO (dannuic): should I check for valid table here?
@@ -42,10 +43,16 @@ bool LuaBehavior::checkConditions(AiAgent* agent) {
 
 	bool result = lua_toboolean(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
+
+	String key = className + "::checkConditions";
+	agent->incrementLuaCall(key);
+	agent->addToLuaTime(key, Time().getMikroTime() - timer.getMikroTime());
+
 	return result;
 }
 
 void LuaBehavior::start(AiAgent* agent) {
+	Time timer;
 	// Use DirectorManager in order to have access to AiAgent
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	// TODO (dannuic): should I check for valid table here?
@@ -57,9 +64,14 @@ void LuaBehavior::start(AiAgent* agent) {
 
 	int result = lua_tointeger(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
+
+	String key = className + "::start";
+	agent->incrementLuaCall(key);
+	agent->addToLuaTime(key, Time().getMikroTime() - timer.getMikroTime());
 }
 
 float LuaBehavior::end(AiAgent* agent) {
+	Time timer;
 	// Use DirectorManager in order to have access to AiAgent
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	// TODO (dannuic): should I check for valid table here?
@@ -72,10 +84,15 @@ float LuaBehavior::end(AiAgent* agent) {
 	float result = lua_tonumber(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
 
+	String key = className + "::terminate";
+	agent->incrementLuaCall(key);
+	agent->addToLuaTime(key, Time().getMikroTime() - timer.getMikroTime());
+
 	return result;
 }
 
 int LuaBehavior::doAction(AiAgent* agent) {
+	Time timer;
 	// Use DirectorManager in order to have access to AiAgent
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	//agent->info(className, true);
@@ -89,10 +106,16 @@ int LuaBehavior::doAction(AiAgent* agent) {
 	int result = lua_tointeger(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
 
+	String key = className + "::doAction";
+	agent->incrementLuaCall(key);
+	agent->addToLuaTime(key, Time().getMikroTime() - timer.getMikroTime());
+
 	return result;
 }
 
 int LuaBehavior::interrupt(AiAgent* agent, SceneObject* source, int64 msg) {
+	Time timer;
+
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 
 	LuaFunction messageFunc(lua->getLuaState(), className, "interrupt", 1);
@@ -105,11 +128,17 @@ int LuaBehavior::interrupt(AiAgent* agent, SceneObject* source, int64 msg) {
 	int result = lua_tointeger(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
 
+	String key = className + String::valueOf(msg) + "::interrupt";
+	agent->incrementLuaCall(key);
+	agent->addToLuaTime(key, Time().getMikroTime() - timer.getMikroTime());
+
 	//1 remove observer, 0 keep observer
 	return result;
 }
 
 bool LuaBehavior::doAwarenessCheck(AiAgent* agent, SceneObject* target) {
+	Time timer;
+
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	//agent->info(className, true);
 	LuaFunction messageFunc(lua->getLuaState(), className, "doAwarenessCheck", 1);
@@ -120,6 +149,10 @@ bool LuaBehavior::doAwarenessCheck(AiAgent* agent, SceneObject* target) {
 
 	bool result = lua_toboolean(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
+
+	String key = className + "::doAwarenessCheck";
+	agent->incrementLuaCall(key);
+	agent->addToLuaTime(key, Time().getMikroTime() - timer.getMikroTime());
 
 	return result;
 }
