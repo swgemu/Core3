@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba57610f_280f8be3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FlashSpeederCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-09T04:30:00Z",
+      "side": 1,
+      "message": "Why require that the credits be in the bank?",
+      "revId": "b1828ac639d3e246c0f86f65ba0392c74ffe544a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_8868b788",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/SuiWindowType.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-09T04:30:00Z",
+      "side": 1,
+      "message": "This name is a bit misleading. Maybe use replacement/purchase/acquisition/somethingElse instead of repair?",
+      "revId": "b1828ac639d3e246c0f86f65ba0392c74ffe544a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_e8717378",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ReplaceFlashSpeederSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-09T04:30:00Z",
+      "side": 1,
+      "message": "There\u0027s a @veteran:flash_speeder_no_inv_space string so I\u0027d say you should not allow overflow.",
+      "revId": "b1828ac639d3e246c0f86f65ba0392c74ffe544a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_c86eaf96",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ReplaceFlashSpeederSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-09T04:30:00Z",
+      "side": 1,
+      "message": "There\u0027s a @veteran:flash_speeder_grant_failed string. Why not use it each place it fails?",
+      "revId": "b1828ac639d3e246c0f86f65ba0392c74ffe544a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_a86b7b84",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ReplaceFlashSpeederSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-09T04:30:00Z",
+      "side": 1,
+      "message": "Why not use @veteran:flash_speeder_granted here?",
+      "revId": "b1828ac639d3e246c0f86f65ba0392c74ffe544a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
