@@ -15,6 +15,7 @@ Behavior::Behavior(AiAgent* _agent, String className) {
 	result = AiMap::SUSPEND;
 	parent = NULL;
 	interface = AiMap::instance()->getBehavior(className);
+	id = 0;
 
 	if (interface == NULL)
 		agent->error("Null interface in Behavior: " + className);
