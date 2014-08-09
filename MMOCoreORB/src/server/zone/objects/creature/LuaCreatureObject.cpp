@@ -58,6 +58,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setLootRights", &LuaCreatureObject::setLootRights},
 		{ "getPosture", &LuaCreatureObject::getPosture},
 		{ "setPosture", &LuaCreatureObject::setPosture},
+		{ "setMoodString", &LuaCreatureObject::setMoodString},
 		{ "hasSkill", &LuaCreatureObject::hasSkill},
 		{ "removeSkill", &LuaCreatureObject::removeSkill},
 		{ "getConversationSession", &LuaCreatureObject::getConversationSession},
@@ -159,6 +160,14 @@ int LuaCreatureObject::setPosture(lua_State* L) {
 	uint32 posture = (uint32) lua_tonumber(L, -1);
 
 	realObject->setPosture(posture, true);
+
+	return 0;
+}
+
+int LuaCreatureObject::setMoodString(lua_State* L) {
+	String value = lua_tostring(L, -1);
+
+	realObject->setMoodString(value);
 
 	return 0;
 }
