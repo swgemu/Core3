@@ -36,6 +36,11 @@ function ThemeParkLogic:spawnNpcs()
 				local npc = LuaCreatureObject(pNpc)
 				npc:setState(STATESITTINGONCHAIR)
 			end
+			if (npcSpawnData.mood ~= nil and npcSpawnData.mood ~= "") then
+				ObjectManager.withCreatureObject(pNpc, function(npc)
+					npc:setMoodString(npcSpawnData.mood)
+				end)
+			end
 		end
 	end
 end
