@@ -52,10 +52,15 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(objects.get(i).get());
 
+		if (!object->isCreatureObject()) {
+			continue;
+		}
+
+		CreatureObject* creature = cast<CreatureObject*>(object);
 		Vector3 worldPos = object->getWorldPosition();
 
-		if (!object->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
-			object->addActiveArea(activeArea);
+		if (!creature->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+			creature->addActiveArea(activeArea);
 			activeArea->enqueueEnterEvent(object);
 		}
 	}
@@ -106,8 +111,14 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	//	Locker olocker(object);
 
-		if (object->hasActiveArea(activeArea)) {
-			object->dropActiveArea(activeArea);
+		if (!object->isCreatureObject()) {
+			continue;
+		}
+
+		CreatureObject* creature = cast<CreatureObject*>(object);
+
+		if (creature->hasActiveArea(activeArea)) {
+			creature->dropActiveArea(activeArea);
 			activeArea->enqueueExitEvent(object);
 		}
 	}
@@ -187,7 +198,11 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 	zone->inRange(object, 192);
 
-	zone->updateActiveAreas(object);
+	if (object->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>(object);
+
+		zone->updateActiveAreas(creature);
+	}
 
 	SharedBuildingObjectTemplate* objtemplate = dynamic_cast<SharedBuildingObjectTemplate*>(object->getObjectTemplate());
 
@@ -212,7 +227,6 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		return removeActiveArea(zone, dynamic_cast<ActiveArea*>(object));
 
 	ManagedReference<SceneObject*> parent = object->getParent();
-	Vector<ManagedReference<ActiveArea*> >* activeAreas = object->getActiveAreas();
 	//SortedVector<ManagedReference<SceneObject*> >* notifiedSentObjects = sceneObject->getNotifiedSentObjects();
 
 	try {
@@ -281,15 +295,20 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 		zoneLocker.release();
 
-		while (activeAreas->size() > 0) {
-			Locker _alocker(object->getContainerLock());
+		if (object->isCreatureObject()) {
+			CreatureObject* creature = cast<CreatureObject*>(object);
+			Vector<ManagedReference<ActiveArea*> >* activeAreas = creature->getActiveAreas();
 
-			ManagedReference<ActiveArea*> area = activeAreas->get(0);
-			activeAreas->remove(0);
+			while (activeAreas->size() > 0) {
+				Locker _alocker(object->getContainerLock());
 
-			_alocker.release();
+				ManagedReference<ActiveArea*> area = activeAreas->get(0);
+				activeAreas->remove(0);
 
-			area->enqueueExitEvent(object);
+				_alocker.release();
+
+				area->enqueueExitEvent(object);
+			}
 		}
 
 		SortedVector<ManagedReference<SceneObject*> >* childObjects = object->getChildObjects();

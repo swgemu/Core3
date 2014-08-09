@@ -250,8 +250,6 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		zone->transferObject(campArea, -1, false);
 
-		structureObject->addActiveArea(campArea);
-
 		ghost->addOwnedStructure(structureObject);
 
 		player->sendSystemMessage("@camp:camp_complete");

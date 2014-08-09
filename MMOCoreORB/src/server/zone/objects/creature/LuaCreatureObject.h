@@ -94,6 +94,7 @@ namespace creature {
 		int getPerformanceName(lua_State* L);
 		int getWalkSpeed(lua_State* L);
 		int isAttackableBy(lua_State* L);
+		int hasActiveArea(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

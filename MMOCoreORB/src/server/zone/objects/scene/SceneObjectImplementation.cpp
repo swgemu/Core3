@@ -122,8 +122,6 @@ void SceneObjectImplementation::initializeTransientMembers() {
 
 	movementCounter = 0;
 
-	//activeAreas.removeAll();
-
 	setGlobalLogging(true);
 	setLogging(false);
 
@@ -479,12 +477,6 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 		}
 
 	}
-
-	for (int i = 0; i < activeAreas.size(); ++i) {
-		activeAreas.get(i)->notifyExit(_this.get());
-	}
-
-	activeAreas.removeAll();
 
 	if (zone != NULL) {
 		zone->transferObject(_this.get(), -1, true);
@@ -1625,13 +1617,6 @@ String SceneObjectImplementation::getDisplayedName() {
 
 bool SceneObjectImplementation::setTransformForCollisionMatrixIfNull(Matrix4* mat) {
 	return transformForCollisionMatrix.compareAndSet(NULL, mat);
-}
-
-void SceneObjectImplementation::addActiveArea(ActiveArea* area) {
-	if (!area->isDeplyoed())
-		area->deploy();
-
-	activeAreas.put(area);
 }
 
 int SceneObjectImplementation::getCountableObjectsRecursive() {

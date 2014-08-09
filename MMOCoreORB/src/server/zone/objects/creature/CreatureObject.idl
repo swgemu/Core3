@@ -211,7 +211,10 @@ class CreatureObject extends TangibleObject {
 	
 	protected transient byte currentWeather;
 	protected transient byte currentWind;
-	
+
+	@dereferenced
+	protected SortedVector<ActiveArea> activeAreas;
+
 	@dereferenced
 	protected transient Time lastCombatActionTime;
 
@@ -1704,4 +1707,61 @@ class CreatureObject extends TangibleObject {
 	public native void updateSpeedAndAccelerationMods();
 
 	public native void setFaction(unsigned int crc);
+
+	public native void addActiveArea(ActiveArea area);
+
+	public void dropActiveArea(ActiveArea area) {
+		synchronized (super.getContainerLock()) {
+			activeAreas.drop(area);
+		}
+	}
+
+	@read
+	public boolean hasActiveArea(ActiveArea area) {
+		synchronized (super.getContainerLock()) {
+			return activeAreas.contains(area);
+		}
+	}
+
+	@read
+	public boolean hasActiveArea(unsigned long objectid) {
+		synchronized (super.getContainerLock()) {
+			for (int i = 0; i < activeAreas.size(); ++i) {
+				ActiveArea area = activeAreas.get(i);
+
+				if (area.getObjectID() == objectid) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	@local
+	@read
+	public Vector<ActiveArea> getActiveAreas() {
+		return activeAreas;
+	}
+
+	@read
+	public int getActiveAreasSize() {
+		return activeAreas.size();
+	}
+
+	@read
+	@reference
+	public ActiveArea getActiveRegion() {
+		synchronized (super.getContainerLock()) {
+			for (int i = 0; i < activeAreas.size(); i++) {
+				ActiveArea region = activeAreas.get(i);
+
+				if (region.isRegion()) {
+					return region;
+				}
+			}
+		}
+
+		return null;
+	}
 }

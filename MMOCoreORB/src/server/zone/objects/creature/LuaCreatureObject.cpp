@@ -99,6 +99,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getPerformanceName", &LuaCreatureObject::getPerformanceName},
 		{ "getWalkSpeed", &LuaCreatureObject::getWalkSpeed },
 		{ "isAttackableBy", &LuaCreatureObject::isAttackableBy },
+		{ "hasActiveArea", &LuaCreatureObject::hasActiveArea},
 		{ 0, 0 }
 };
 
@@ -723,3 +724,12 @@ int LuaCreatureObject::isAttackableBy(lua_State* L) {
 	return 1;
 }
 
+int LuaCreatureObject::hasActiveArea(lua_State* L) {
+	uint64 objectid = lua_tointeger(L, -1);
+
+	bool res = realObject->hasActiveArea(objectid);
+
+	lua_pushboolean(L, res);
+
+	return 1;
+}

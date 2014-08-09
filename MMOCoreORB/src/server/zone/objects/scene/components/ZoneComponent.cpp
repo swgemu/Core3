@@ -229,17 +229,17 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 			updateInRangeObjectsOnMount(sceneObject);
 		}
 	}
-
-	zone->updateActiveAreas(sceneObject);
 	
 	bool isInvis = false;
 
 	if (sceneObject->isCreatureObject()) {
 		CreatureObject* creo = cast<CreatureObject*>(sceneObject);
-		
+
+		zone->updateActiveAreas(creo);
+
 		if(creo->isInvisible())
 			isInvis = true;
-		}
+	}
 
 
 	if (!isInvis && sendPackets && (parent == NULL || (!parent->isVehicleObject() && !parent->isMount()))) {
@@ -290,7 +290,10 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		} else {
 			zone->unlock();
 
-			zone->updateActiveAreas(sceneObject);
+			if (sceneObject->isCreatureObject()) {
+				CreatureObject* creature = cast<CreatureObject*>(sceneObject);
+				zone->updateActiveAreas(creature);
+			}
 		}
 
 		//notify in range objects that i moved
@@ -504,16 +507,19 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 
 //		locker.release();
 
-		Vector<ManagedReference<ActiveArea*> >* activeAreas =  sceneObject->getActiveAreas();
+		if (sceneObject->isCreatureObject()) {
+			CreatureObject* creature = cast<CreatureObject*>(sceneObject);
+			Vector<ManagedReference<ActiveArea*> >* activeAreas =  creature->getActiveAreas();
 
-		while (activeAreas->size() > 0) {
-			Locker _alocker(sceneObject->getContainerLock());
-			ManagedReference<ActiveArea*> area = activeAreas->get(0);
-			activeAreas->remove(0);
+			while (activeAreas->size() > 0) {
+				Locker _alocker(sceneObject->getContainerLock());
+				ManagedReference<ActiveArea*> area = activeAreas->get(0);
+				activeAreas->remove(0);
 			
-			_alocker.release();
+				_alocker.release();
 			
-			area->enqueueExitEvent(sceneObject);
+				area->enqueueExitEvent(sceneObject);
+			}
 		}
 	}
 }

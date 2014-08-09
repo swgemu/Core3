@@ -243,15 +243,21 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
 	//pre: no 2 different city regions should ever overlap, only 2 Regions of the same city region
-	ManagedReference<Region*> activeRegion = object->getActiveRegion().castTo<Region*>();
+	if (object->isCreatureObject()) {
+		CreatureObject* creature = cast<CreatureObject*>(object);
 
-	if (activeRegion != NULL) {
-		ManagedReference<CityRegion*> city = activeRegion->getCityRegion();
+		ManagedReference<Region*> activeRegion = creature->getActiveRegion().castTo<Region*>();
 
-		object->setCityRegion(city);
+		if (activeRegion != NULL) {
+			ManagedReference<CityRegion*> city = activeRegion->getCityRegion();
 
-		if (city == _this.get()) // if its the same city we wait till the object exits the last region
-			return;
+			object->setCityRegion(city);
+
+			if (city == _this.get()) // if its the same city we wait till the object exits the last region
+				return;
+		} else {
+			object->setCityRegion(NULL);
+		}
 	} else {
 		object->setCityRegion(NULL);
 	}
