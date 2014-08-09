@@ -2252,7 +2252,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 		behavior->setID(temp->id);
 		behaviors.put(temp->id, behavior);
 
-		Vector<uint32>& ids = parents.get(temp->parent);
+		Vector<uint32> ids = parents.get(temp->parent);
 		ids.add(temp->id);
 		parents.put(temp->parent, ids);
 	}
