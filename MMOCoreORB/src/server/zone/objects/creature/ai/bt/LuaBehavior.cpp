@@ -128,7 +128,12 @@ int LuaBehavior::interrupt(AiAgent* agent, SceneObject* source, int64 msg) {
 	int result = lua_tointeger(lua->getLuaState(), -1);
 	lua_pop(lua->getLuaState(), 1);
 
-	String key = className + String::valueOf(msg) + "::interrupt";
+	String key = className;
+	if (msg == 17)
+		key += "::startAwarenessInterrupt";
+	else if (msg == 31)
+		key += "::startCombatInterrupt";
+
 	agent->incrementLuaCall(key);
 	agent->addToLuaTime(key, Time().getMikroTime() - timer.getMikroTime());
 

@@ -15,6 +15,7 @@
 #include "system/thread/atomic/AtomicInteger.h"
 #include "system/thread/atomic/AtomicLong.h"
 #include "system/util/HashTable.h"
+#include "system/util/Vector.h"
 #include "system/lang/String.h"
 
 #include "engine/core/ManagedReference.h"
@@ -30,6 +31,7 @@ class AiTrackingTask : public Task {
 	ManagedWeakReference<AiAgent*> creature;
 	HashTable<String, AtomicInteger> luaCalls;
 	HashTable<String, AtomicLong> luaTimes;
+	Vector<String> callsToList;
 
 public:
 	AiTrackingTask(AiAgent* pl) : Task(300000) {
@@ -47,22 +49,15 @@ public:
 		if (strongRef == NULL)
 			return;
 
-		HashTableIterator<String, AtomicInteger> iter(&luaCalls);
-		iter.resetIterator();
-
-		while (iter.hasNext()) {
-			String key = "";
-			AtomicInteger call;
-
-			iter.getNextKeyAndValue(key, call);
-
+		for (int i = 0; i < callsToList.size(); i++) {
+			String key = callsToList.get(i);
+			AtomicInteger call = luaCalls.get(key);
 			if (call.get() <= 0)
 				continue;
 
 			AtomicLong nextTime = luaTimes.get(key);
 
 			float averageTime = (float)nextTime.get()/1000.f / (float)call.get();
-
 			strongRef->info("Average time spent in " + key + ": " + String::valueOf(averageTime) + "ms with " + String::valueOf(call.get()) + " calls totaling " + String::valueOf((float)nextTime.get()/1000.f) + "ms.");
 		}
 
@@ -80,7 +75,19 @@ public:
 
 	void addTime(const String& key, uint32 time) {
 		if (luaTimes.containsKey(key)) {
-			luaCalls.get(key).add(time);
+			luaTimes.get(key).add(time);
+
+			if (luaCalls.get(key).get() <= 0)
+				return;
+
+			float averageTime = (float)luaTimes.get(key).get()/1000.f / (float)luaCalls.get(key).get();
+
+			if (averageTime > 10 && !callsToList.contains(key))
+				callsToList.add(key);
+
+			if (averageTime < 10)
+				callsToList.removeElement(key);
+
 			return;
 		}
 
@@ -113,7 +120,8 @@ public:
 
 			float averageTime = (float)nextTime.get()/1000.f / (float)call.get();
 
-			list->addMenuItem("Average time spent in " + key + ": " + String::valueOf(averageTime) + "ms");
+			list->addMenuItem(key);
+			list->addMenuItem("    Average:" + String::valueOf(averageTime) + "ms");
 			list->addMenuItem("    Calls:" + String::valueOf(call.get()));
 			list->addMenuItem("    Total:" + String::valueOf((float)nextTime.get()/1000.f) + "ms.");
 		}
