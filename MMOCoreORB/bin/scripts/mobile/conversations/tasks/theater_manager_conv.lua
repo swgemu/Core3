@@ -169,4 +169,85 @@ audition_successful = ConvoScreen:new {
 }
 theaterManagerConvoTemplate:addScreen(audition_successful);
 
+first_promotion_init = ConvoScreen:new {
+	id = "first_promotion_init",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_937f2001", -- Back already, huh? I don't blame you for wanting to get started.
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_crowd_pleaser_manager:s_1377703a", "need_to_advertise"}, -- Yes, I'm ready. Let's get this show on the road.
+		{"@conversation/quest_crowd_pleaser_manager:s_fb55e1c0", "come_when_ready"}, -- Actually I'm not quite ready yet.
+	}
+}
+theaterManagerConvoTemplate:addScreen(first_promotion_init);
+
+come_when_ready = ConvoScreen:new {
+	id = "come_when_ready",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_ab1c9c5f", -- That's fine. Take your time. Just come back when you're ready.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(come_when_ready);
+
+need_to_advertise = ConvoScreen:new {
+	id = "need_to_advertise",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_353af024", -- Well, before you put on your first show, we need to do some advertising. You know, what good is a show if nobody comes to see it?
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_crowd_pleaser_manager:s_34bf7b50", "promotion_10"}, -- I see. Just tell me what I need to do.
+		{"@conversation/quest_crowd_pleaser_manager:s_a820a6d1", "come_when_time"}, -- I don't have time for that now. I'll come back later.
+	}
+}
+theaterManagerConvoTemplate:addScreen(need_to_advertise);
+
+come_when_time = ConvoScreen:new {
+	id = "come_when_time",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_b1522710", -- I see. Well, come back when you have more time and we'll get started.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(come_when_time);
+
+promotion_10 = ConvoScreen:new {
+	id = "promotion_10",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_2224e2b8", -- It should be quite simple. Just go out there and do a little performance routine for some people. I think that if you were to entertain ten people, that would be enough. Are you ready to do this now?
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_crowd_pleaser_manager:s_b6dac7cf", "entertain_10_then_return"}, -- OK, I'll get started on that now.
+		{"@conversation/quest_crowd_pleaser_manager:s_a820a6d1", "come_when_time"}, -- I don't have time for that now. I'll come back later.
+	}
+}
+theaterManagerConvoTemplate:addScreen(promotion_10);
+
+entertain_10_then_return = ConvoScreen:new {
+	id = "entertain_10_then_return",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_8b00fbc4", -- OK, I'll get the promotions started, you just go out and entertain ten people. Then come back here and we'll talk about getting the concert started.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(entertain_10_then_return);
+
+completed_first_promotion = ConvoScreen:new {
+	id = "completed_first_promotion",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_2b8d253d", -- Excellent work. I'm starting to hear the buzz about your performance! We should be able to put on the show whenever you're ready. Go make your preparations, then come speak with me again when you want to begin.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(completed_first_promotion);
+
+finish_first_promotion = ConvoScreen:new {
+	id = "finish_first_promotion",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_664ead2a", -- I'm hearing people talk about your upcoming show, but it's not enough. Go finish your promotional job, and then we'll discuss your performance.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(finish_first_promotion);
+
+too_busy = ConvoScreen:new {
+	id = "too_busy",
+	leftDialog = "@conversation/quest_crowd_pleaser_manager:s_d66dc712", -- Too busy to talk right now. I'm very busy, sorry.
+	stopConversation = "true",
+	options = {}
+}
+theaterManagerConvoTemplate:addScreen(too_busy);
+
 addConversationTemplate("theaterManagerConvoTemplate", theaterManagerConvoTemplate);
