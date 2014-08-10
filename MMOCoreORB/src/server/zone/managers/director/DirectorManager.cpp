@@ -28,7 +28,6 @@
 #include "ScreenPlayTask.h"
 #include "server/zone/managers/director/ScreenPlayObserver.h"
 #include "server/zone/managers/director/PersistentEvent.h"
-#include "server/zone/managers/director/QuestStatus.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -125,8 +124,6 @@ void DirectorManager::loadPersistentStatus() {
 		return;
 	}
 
-	int i = 0;
-
 	try {
 		ObjectDatabaseIterator iterator(statusDatabase);
 
@@ -136,14 +133,12 @@ void DirectorManager::loadPersistentStatus() {
 			Reference<QuestStatus*> status = Core::getObjectBroker()->lookUp(objectID).castTo<QuestStatus*>();
 			if (status != NULL)
 				questStatuses.put(status->getKey(), status);
-
-			++i;
 		}
 	} catch (DatabaseException& e) {
 		error("Database exception in DirectorManager::loadPersistentStatus(): "	+ e.getMessage());
 	}
 
-	info(String::valueOf(i) + " persistent statuses loaded.", true);
+	info(String::valueOf(questStatuses.size()) + " persistent statuses loaded.", true);
 }
 
 void DirectorManager::setQuestStatus(String keyString, String valString) {

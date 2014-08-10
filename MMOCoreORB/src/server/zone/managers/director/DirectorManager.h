@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "DirectorSharedMemory.h"
+#include "server/zone/managers/director/QuestStatus.h"
 
 class ScreenPlayTask;
 
@@ -44,12 +45,11 @@ namespace server {
   namespace managers {
    namespace director {
    class PersistentEvent;
-   class QuestStatus;
 
 	class DirectorManager : public Singleton<DirectorManager>, public Object, public Logger, public ReadWriteLock {
 		ThreadLocal<Lua*> localLua;
 		VectorMap<String, bool> screenPlays;
-		VectorMap<String, QuestStatus*> questStatuses;
+		VectorMap<String, Reference<QuestStatus*> > questStatuses;
 
 #ifdef WITH_STM
 		TransactionalReference<DirectorSharedMemory* > sharedMemory;
