@@ -146,6 +146,7 @@ namespace server {
 		static int setDungeonTicketAttributes(lua_State* L);
 		static int setQuestStatus(lua_State* L);
 		static int getQuestStatus(lua_State* L);
+		static int removeQuestStatus(lua_State* L);
 
 	private:
 		void setupLuaPackagePath(Lua* luaEngine);

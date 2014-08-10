@@ -115,13 +115,13 @@ void DirectorManager::loadPersistentEvents() {
 }
 
 void DirectorManager::loadPersistentStatus() {
-	info("Loading persistent quest status from events.db");
+	info("Loading persistent quest status from questdata.db");
 
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
-	ObjectDatabase* statusDatabase = dbManager->loadObjectDatabase("queststatus", true);
+	ObjectDatabase* statusDatabase = dbManager->loadObjectDatabase("questdata", true);
 
 	if (statusDatabase == NULL) {
-		error("Could not load the queststatus database.");
+		error("Could not load the questdata database.");
 		return;
 	}
 
@@ -154,7 +154,7 @@ void DirectorManager::setQuestStatus(String keyString, String valString) {
 		status->setKey(keyString);
 		questStatuses.put(keyString, status);
 
-		ObjectManager::instance()->persistObject(status, 1, "queststatus");
+		ObjectManager::instance()->persistObject(status, 1, "questdata");
 	}
 
 	status->setStatus(valString);
@@ -284,6 +284,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "setDungeonTicketAttributes", setDungeonTicketAttributes);
 	lua_register(luaEngine->getLuaState(), "setQuestStatus", setQuestStatus);
 	lua_register(luaEngine->getLuaState(), "getQuestStatus", getQuestStatus);
+	lua_register(luaEngine->getLuaState(), "removeQuestStatus", removeQuestStatus);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -2440,4 +2441,18 @@ int DirectorManager::getQuestStatus(lua_State* L) {
 	lua_pushstring(L, str.toCharArray());
 
 	return 1;
+}
+
+int DirectorManager::removeQuestStatus(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::removeQuestStatus");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String keyString = lua_tostring(L, -1);
+
+	instance()->removeQuestStatus(keyString);
+
+	return 0;
 }
