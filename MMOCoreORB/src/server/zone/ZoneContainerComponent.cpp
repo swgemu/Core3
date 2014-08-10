@@ -68,8 +68,6 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 
 	newZone->addSceneObject(activeArea);
 
-	activeArea->notifyInsertToZone(zone);
-
 	return true;
 }
 
@@ -84,19 +82,6 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	QuadTree* regionTree = zone->getRegionTree();
 
 	regionTree->remove(activeArea);
-
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = activeArea->getCloseObjects();
-
-	if (closeObjects != NULL) {
-		while (closeObjects->size() > 0) {
-			QuadTreeEntry* obj = closeObjects->get(0);
-
-			if (obj != activeArea && obj->getCloseObjects() != NULL)
-				obj->removeInRangeObject(activeArea);
-
-			activeArea->removeInRangeObject((int)0);
-		}
-	}
 
 	// lets remove the in range active areas of players
 	SortedVector<ManagedReference<QuadTreeEntry*> > objects;
@@ -128,8 +113,6 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	activeArea->notifyObservers(ObserverEventType::OBJECTREMOVEDFROMZONE, NULL, 0);
 
 	activeArea->setZone(NULL);
-
-	activeArea->notifyRemoveFromZone();
 
 	return true;
 }

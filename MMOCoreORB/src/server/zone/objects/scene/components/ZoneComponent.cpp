@@ -401,7 +401,9 @@ void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
 void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) {
 	ManagedReference<SceneObject*> par = sceneObject->getParent();
 
-	sceneObject->broadcastDestroy(sceneObject, sendSelfDestroy);
+	if (!sceneObject->isActiveArea()) {
+		sceneObject->broadcastDestroy(sceneObject, sendSelfDestroy);
+	}
 
 	ManagedReference<Zone*> rootZone = sceneObject->getZone();
 	ManagedReference<Zone*> zone = sceneObject->getLocalZone();
@@ -429,10 +431,13 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 	if (rootZone != NULL) {
 		Locker locker(rootZone);
 
-		if (!sceneObject->isActiveArea())
-			rootZone->remove(sceneObject);
-			
 		rootZone->dropSceneObject(sceneObject);
+
+		if (sceneObject->isActiveArea()) {
+			return;
+		}
+
+		rootZone->remove(sceneObject);
 
 		SharedBuildingObjectTemplate* objtemplate = dynamic_cast<SharedBuildingObjectTemplate*>(sceneObject->getObjectTemplate());
 
