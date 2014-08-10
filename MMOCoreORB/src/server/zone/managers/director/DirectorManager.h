@@ -44,10 +44,12 @@ namespace server {
   namespace managers {
    namespace director {
    class PersistentEvent;
+   class QuestStatus;
 
 	class DirectorManager : public Singleton<DirectorManager>, public Object, public Logger, public ReadWriteLock {
 		ThreadLocal<Lua*> localLua;
 		VectorMap<String, bool> screenPlays;
+		VectorMap<String, QuestStatus*> questStatuses;
 
 #ifdef WITH_STM
 		TransactionalReference<DirectorSharedMemory* > sharedMemory;
@@ -64,6 +66,7 @@ namespace server {
 		DirectorManager();
 
 		void loadPersistentEvents();
+		void loadPersistentStatus();
 
 		void startGlobalScreenPlays();
 		void startScreenPlay(CreatureObject* creatureObject, const String& screenPlayName);
@@ -73,6 +76,7 @@ namespace server {
 
 		void setQuestStatus(String keyString, String valString);
 		String getQuestStatus(String keyString);
+		void removeQuestStatus(String key);
 
 		virtual Lua* getLuaInstance();
 		int runScreenPlays();

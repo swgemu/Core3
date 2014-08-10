@@ -28,6 +28,7 @@
 #include "ScreenPlayTask.h"
 #include "server/zone/managers/director/ScreenPlayObserver.h"
 #include "server/zone/managers/director/PersistentEvent.h"
+#include "server/zone/managers/director/QuestStatus.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -79,6 +80,9 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 
 	screenPlays.setNullValue(false);
 	screenPlays.setNoDuplicateInsertPlan();
+
+	questStatuses.setNullValue(NULL);
+	questStatuses.setNoDuplicateInsertPlan();
 }
 
 void DirectorManager::loadPersistentEvents() {
@@ -110,34 +114,69 @@ void DirectorManager::loadPersistentEvents() {
 	info(String::valueOf(i) + " persistent events loaded.", true);
 }
 
+void DirectorManager::loadPersistentStatus() {
+	info("Loading persistent quest status from events.db");
+
+	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+	ObjectDatabase* statusDatabase = dbManager->loadObjectDatabase("queststatus", true);
+
+	if (statusDatabase == NULL) {
+		error("Could not load the queststatus database.");
+		return;
+	}
+
+	int i = 0;
+
+	try {
+		ObjectDatabaseIterator iterator(statusDatabase);
+
+		uint64 objectID;
+
+		while (iterator.getNextKey(objectID)) {
+			Reference<QuestStatus*> status = Core::getObjectBroker()->lookUp(objectID).castTo<QuestStatus*>();
+			if (status != NULL)
+				questStatuses.put(status->getKey(), status);
+
+			++i;
+		}
+	} catch (DatabaseException& e) {
+		error("Database exception in DirectorManager::loadPersistentStatus(): "	+ e.getMessage());
+	}
+
+	info(String::valueOf(i) + " persistent statuses loaded.", true);
+}
+
 void DirectorManager::setQuestStatus(String keyString, String valString) {
-	LocalDatabase* questDB = ObjectDatabaseManager::instance()->loadLocalDatabase("queststatus", true);
+	ManagedReference<QuestStatus*> status = questStatuses.get(keyString);
 
-	ObjectOutputStream* value = new ObjectOutputStream();
-	valString.toBinaryStream(value);
+	if (status == NULL) {
+		status = new QuestStatus();
+		status->setKey(keyString);
+		questStatuses.put(keyString, status);
 
-	ObjectOutputStream* key = new ObjectOutputStream();
-	keyString.toBinaryStream(key);
+		ObjectManager::instance()->persistObject(status, 1, "queststatus");
+	}
 
-	questDB->putData(key, value);
-
-	ObjectDatabaseManager::instance()->commitLocalTransaction();
+	status->setStatus(valString);
 }
 
 String DirectorManager::getQuestStatus(String keyString) {
-	LocalDatabase* questDB = ObjectDatabaseManager::instance()->loadLocalDatabase("queststatus", true);
-	ObjectDatabaseManager::instance()->commitLocalTransaction();
-
 	String str = "";
 
-	ObjectOutputStream key;
-	keyString.toBinaryStream(&key);
-	ObjectInputStream value;
-
-	if (questDB->getData(&key, &value) == 0)
-		str.parseFromBinaryStream(&value);
+	QuestStatus* status = questStatuses.get(keyString);
+	if (status != NULL)
+		str = status->getStatus();
 
 	return str;
+}
+
+void DirectorManager::removeQuestStatus(String key) {
+	ManagedReference<QuestStatus*> status = NULL;
+
+	status = questStatuses.get(key);
+
+	if (status != NULL)
+		ObjectManager::instance()->destroyObjectFromDatabase(status->_getObjectID());
 }
 
 void DirectorManager::startGlobalScreenPlays() {
