@@ -2193,6 +2193,8 @@ void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 en
 	entertainingSession->sendEntertainmentUpdate(creature, entid, "entertained");
 	entertainingSession->addWatcher(creature);
 
+	entertainer->notifyObservers(ObserverEventType::WASWATCHED, creature);
+
 	//creature->addWatcher(_this);
 
 	//if (isPlayer())
@@ -2265,6 +2267,8 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 
 	entertainingSession->sendEntertainmentUpdate(creature, entid, "entertained");
 	entertainingSession->addListener(creature);
+
+	entertainer->notifyObservers(ObserverEventType::WASLISTENEDTO, creature);
 
 	//creature->addWatcher(_this);
 
