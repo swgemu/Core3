@@ -65,7 +65,7 @@ noren_krast_missions =
 npcMapNorenKrast =
 	{
 		{
-			spawnData = { planetName = "corellia", npcTemplate = "noren_krast", x = -5203.33, z = 213, y = -2488.13, direction = 176.643, cellID = 0, position = STAND },
+			spawnData = { planetName = "corellia", npcTemplate = "noren_krast", x = -5203.33, z = 21.0, y = -2488.13, direction = 176.643, cellID = 0, position = STAND },
 			worldPosition = { x = -5203, y = -2488 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/noren_krast",
