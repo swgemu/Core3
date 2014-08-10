@@ -1909,6 +1909,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	public abstract boolean isMount() {
 		return false;
+	}
+
+	public abstract boolean isLairObject() {
+		return false;
 	}	
 }
 

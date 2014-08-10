@@ -118,4 +118,8 @@ class LairObject extends TangibleObject {
 		despawnEvent.cancel();
 		despawnEvent = null;
 	}
+
+	public boolean isLairObject() {
+		return true;
+	}
 }

@@ -69,16 +69,18 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 
 		locker.release();
 
-		ManagedReference<ActiveArea*> area = (ServerCore::getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0)).castTo<ActiveArea*>();
+		if (sceno->isLairObject()) {
+			ManagedReference<ActiveArea*> area = (ServerCore::getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0)).castTo<ActiveArea*>();
 
-		area->setRadius(64);
-		area->setNoSpawnArea(true);
-		area->initializePosition(sceno->getPositionX(), sceno->getPositionZ(), sceno->getPositionY());
+			area->setRadius(64);
+			area->setNoSpawnArea(true);
+			area->initializePosition(sceno->getPositionX(), sceno->getPositionZ(), sceno->getPositionY());
 
-		zone->transferObject(area, -1, true);
+			zone->transferObject(area, -1, true);
 
-		Reference<Task*> task = new RemoveNoSpawnAreaTask(area);
-		task->schedule(300000);
+			Reference<Task*> task = new RemoveNoSpawnAreaTask(area);
+			task->schedule(300000);
+		}
 	}
 
 	return 1;

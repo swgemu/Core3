@@ -24,7 +24,7 @@ int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		if (spawnedCreatures.isEmpty()) {
 
 			Reference<Task*> task = new DespawnDynamicSpawnTask(spawn);
-			task->schedule(2 * 60 * 1000);
+			task->schedule(300000);
 
 			return 1;
 		}
