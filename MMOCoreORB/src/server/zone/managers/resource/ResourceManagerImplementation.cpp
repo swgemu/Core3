@@ -443,6 +443,12 @@ void ResourceManagerImplementation::addNodeToListBox(SuiListBox* sui, const Stri
 	resourceSpawner->addNodeToListBox(sui, nodeName);
 }
 
+void ResourceManagerImplementation::addPlanetsToListBox(SuiListBox* sui) {
+	resourceSpawner->addPlanetsToListBox(sui);
+}
+String ResourceManagerImplementation::getPlanetByIndex(int idx) {
+	return resourceSpawner->getPlanetByIndex(idx);
+}
 String ResourceManagerImplementation::addParentNodeToListBox(SuiListBox* sui, const String& currentNode) {
 	return resourceSpawner->addParentNodeToListBox(sui, currentNode);
 }

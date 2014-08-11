@@ -32,6 +32,7 @@ public:
 	const static int VENDORADBARKING = 20;
 	const static int PROPOSEUNITY = 21;
 	const static int VETERANREWARD = 22;
+	const static int INTERPLANETARYSURVEYDROID = 23;
 
 };
 
