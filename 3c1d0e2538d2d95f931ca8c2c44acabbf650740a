@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba57610f_888f97cc",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1922,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-11T23:43:11Z",
+      "side": 1,
+      "message": "This Won\u0027t work. Observer doesn\u0027t inherit from SceneObject so casting to SceneObject will always result in a NULL object.\n\nSince Observer doesn\u0027t seem to have a method for database destruction already and it\u0027s in the engine, you\u0027ll need to talk to TA about what needs to be done. You may be able to just call ZoneServer::destroyObjectFromDatabase(oid), but double check with TA. He would know better than I.",
+      "revId": "3c1d0e2538d2d95f931ca8c2c44acabbf650740a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
