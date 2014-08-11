@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba57610f_88f8b74a",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1881,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-08-11T02:41:45Z",
+      "side": 1,
+      "message": "its lua_tointeger for ints\nlua_tonumber converts to double that can get you in trouble for some high uint values",
+      "revId": "df333c55c1fcfa3c5b3540b5c6c2ff875988ba72",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
