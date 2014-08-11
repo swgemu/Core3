@@ -146,6 +146,9 @@ class ResourceManager extends Observer implements Logger {
 	public native string dumpResources();
 	
 	public native string despawnResource(string resourceName);
+	
+	public native void addPlanetsToListBox(SuiListBox sui);
+	public native string getPlanetByIndex(int idx);
 
 }
 

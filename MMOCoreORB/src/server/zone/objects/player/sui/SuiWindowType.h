@@ -178,6 +178,8 @@ public:
 	static const uint16 SURVEY_TOOL_RANGE = 231;
 	static const uint16 SURVEY_TOOL_CONCENTRATED_MINIGAME = 232;
 	static const uint16 SURVEY_TOOL_CONCENTRATED_MINIGAME2 = 233;
+	// survey droid tool
+	static const uint16 SURVERY_DROID_MENU = 232;
 
 	//Sample 241 - 250
 	static const uint16 SAMPLE_RADIOACTIVE_CONFIRM = 241;

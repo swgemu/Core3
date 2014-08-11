@@ -5,15 +5,15 @@
  *      Author: polonel
  */
 
-#ifndef SLICINGSESSIONCALLBACK_H_
-#define SLICINGSESSIONCALLBACK_H_
+#ifndef SURVEYDRIODCALLBACK_H_
+#define SURVEYDRIODCALLBACK_H_
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
-class SlicingSessionSuiCallback : public SuiCallback {
+class SurveyDroidSessionSuiCallback : public SuiCallback {
 public:
-	SlicingSessionSuiCallback(ZoneServer* server)
+	SurveyDroidSessionSuiCallback(ZoneServer* server)
 		: SuiCallback(server) {
 	}
 
@@ -24,14 +24,14 @@ public:
 		if (args->size() < 1)
 			return;
 
-		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
-		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
+		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::INTERPLANETARYSURVEYDROID);
+		ManagedReference<InterplanetarySurveyDroidSession*> session = dynamic_cast<InterplanetarySurveyDroidSession*>(facade.get());
 
 		if (session == NULL) {
 			ManagedReference<TangibleObject*> obj = cast<TangibleObject*>( suiBox->getUsingObject().get().get());
 			if (obj != NULL)
 				Locker crosslock(obj, player);
-				obj->dropActiveSession(SessionFacadeType::SLICING);
+				obj->dropActiveSession(SessionFacadeType::INTERPLANETARYSURVEYDROID);
 
 			return;
 		}
@@ -41,15 +41,11 @@ public:
 			return;
 		}
 
-		int idx = Integer::valueOf(args->get(0).toString());
-
+		uint64 idx = Long::unsignedvalueOf(args->get(0).toString());
 		SuiListBox* box = cast<SuiListBox*>( suiBox);
-
-		byte menuID = box->getMenuObjectID(idx);
-
-		session->handleMenuSelect(player, menuID, box);
+		session->handleMenuSelect(player, idx, box);
 
 	}
 };
 
-#endif /* SLICINGSESSIONCALLBACK_H_ */
+#endif /* SURVEYDRIODCALLBACK_H_ */
