@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba57610f_48687ff5",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/sui/SurveyDroidSessionSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-08-12T02:37:02Z",
+      "side": 1,
+      "message": "Lock crosslock(obj, player);",
+      "revId": "fa9fc8732e9ba429f0f8d56705b13d08d08f0884",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba57610f_6863431b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/SurveyDroidMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-08-12T02:37:02Z",
+      "side": 1,
+      "message": "droid is already locked here, at least should be so no need to lock again",
+      "revId": "fa9fc8732e9ba429f0f8d56705b13d08d08f0884",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
