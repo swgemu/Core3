@@ -102,8 +102,8 @@ karena_keer_missions =
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "mercenary", planetName = "corellia", npcName = "a mercenary" },
-				{ npcTemplate = "mercenary", planetName = "corellia", npcName = "a mercenary" }
+				{ npcTemplate = "mercenary_aggro", planetName = "corellia", npcName = "a mercenary" },
+				{ npcTemplate = "mercenary_aggro", planetName = "corellia", npcName = "a mercenary" }
 			},
 			itemSpawns = {},
 			rewards =
