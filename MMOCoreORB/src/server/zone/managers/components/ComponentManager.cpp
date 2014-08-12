@@ -105,6 +105,7 @@
 #include "server/zone/objects/structure/components/DecorationDataComponent.h"
 #include "server/zone/objects/tangible/components/CityDecorationMenuComponent.h"
 #include "server/zone/objects/tangible/components/DungeonTicketObjectAttributeListComponent.h"
+#include "server/zone/objects/tangible/components/SurveyDroidMenuComponent.h"
 
 
 ComponentManager::ComponentManager() {
@@ -247,5 +248,7 @@ ComponentManager::ComponentManager() {
 	dataObjectFactory.registerObject<DecorationDataComponent>("DecorationDataComponent");
 
 	components.put("DungeonTicketObjectAttributeListComponent", new DungeonTicketObjectAttributeListComponent());
+	// survey droid
+	components.put("SurveyDroidMenuComponent", new SurveyDroidMenuComponent());
 
 }

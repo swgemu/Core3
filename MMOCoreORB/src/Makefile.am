@@ -203,6 +203,7 @@ core3_IDLS =	autogen/server/zone/managers/director/QuestStatus.cpp \
 				autogen/server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.cpp \
 				autogen/server/zone/objects/player/sessions/EntertainingSession.cpp \
 				autogen/server/zone/objects/player/sessions/MigrateStatsSession.cpp \
+				autogen/server/zone/objects/player/sessions/InterplanetarySurveyDroidSession.cpp \
 				autogen/server/zone/objects/player/sessions/ImageDesignSession.cpp \
 				autogen/server/zone/objects/player/sessions/SlicingSession.cpp \
 				autogen/server/zone/objects/player/sessions/FindSession.cpp \
@@ -356,6 +357,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/components/DestructibleBuildingDataComponent.cpp \
 		server/zone/objects/structure/components/StructureZoneComponent.cpp \
 		server/zone/objects/tangible/components/FireHeavyWeaponMenuComponent.cpp \
+		server/zone/objects/tangible/components/SurveyDroidMenuComponent.cpp \
 		server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
 		server/zone/objects/tangible/firework/components/FireworkMenuComponent.cpp \
@@ -672,6 +674,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/EntertainingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/ImageDesignSessionImplementation.cpp \
 		server/zone/objects/player/sessions/SlicingSessionImplementation.cpp \
+		server/zone/objects/player/sessions/InterplanetarySurveyDroidSessionImplementation.cpp \
 		server/zone/objects/player/sessions/FindSessionImplementation.cpp \
 		server/zone/objects/player/sessions/vendor/CreateVendorSessionImplementation.cpp \
 		server/zone/objects/player/sessions/vendor/VendorAdBarkingSessionImplementation.cpp \
