@@ -37,8 +37,8 @@
 #include "server/zone/objects/player/sui/callbacks/RenameCitySuiCallback.h"
 
 
-#ifdef CITY_DEBUG
-#undef CITY_DEBUG
+#ifndef CITY_DEBUG
+#define CITY_DEBUG
 #endif
 
 CitiesAllowed CityManagerImplementation::citiesAllowedPerRank;
