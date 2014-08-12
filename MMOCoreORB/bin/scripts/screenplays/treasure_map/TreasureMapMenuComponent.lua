@@ -74,9 +74,6 @@ function TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
 			area:destroyObjectFromWorld()
 		end)
 
-		deleteData(creature:getObjectID() .. ":treasureMapSearchAreaWaypointID")
-		deleteData(creature:getObjectID() .. ":treasureMapSearchAreaActiveAreaID")
-
 		local spawnPoint
 		ObjectManager.withSceneObject(pWaypoint, function(waypoint)
 			if (mapType == 4) then
@@ -90,8 +87,10 @@ function TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
 		local y = spawnPoint[3]
 
 		creature:sendSystemMessage("@treasure_map/treasure_map:sys_pinpoint") -- You have successfully pinpointed the exact location of the treasure!
-		player:addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", x, y, WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
-
+		local waypointID = player:addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", x, y, WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
+		writeData(creature:getObjectID() .. ":treasureMapExactWaypointID", waypointID)
+		deleteData(creature:getObjectID() .. ":treasureMapSearchAreaWaypointID")
+		deleteData(creature:getObjectID() .. ":treasureMapSearchAreaActiveAreaID")
 	end)
 end
 
@@ -259,9 +258,11 @@ function TreasureMapMenuComponent:handleTreasureMapSuiCallback(pCreature, pSui, 
 			return 0
 		end
 		local currentWaypointID = readData(creature:getObjectID() .. ":treasureMapSearchAreaWaypointID")
+		local exactWaypointID = readData(creature:getObjectID() .. ":treasureMapExactWaypointID")
+		local pExactWaypoint = getSceneObject(currentWaypointID)
 		local pWaypoint = getSceneObject(currentWaypointID)
 
-		if (pWaypoint ~= nil) then
+		if (pWaypoint ~= nil or pExactWaypoint ~= nil) then
 			creature:sendSystemMessage("@treasure_map/treasure_map:sys_waypoint_exists") -- A waypoint to this location already exists in your datapad.
 			return 0
 		end
