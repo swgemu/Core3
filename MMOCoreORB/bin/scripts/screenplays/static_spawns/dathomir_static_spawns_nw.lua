@@ -106,7 +106,7 @@ function DathomirStaticSpawnsNwScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "singing_mountain_clan_sentry", 360, -5289.7, 125.8, 1297.1, -140, 0)
 
 	--burial site (-7122,1175)
-	spawnMobile("dathomir", "nightsister_elder", 1220, -7120.29, 460.67, 1179.38, 35, 0)
+	spawnMobile("dathomir", "nightsister_elder", 4200, -7120.29, 460.67, 1179.38, 35, 0)
 
 	--spiderclan floating rocks (-7121,2933)
 	spawnMobile("dathomir", "spiderclan_protector", 1220, -7121.9, 368.1, 2919.5, 0, 0)
