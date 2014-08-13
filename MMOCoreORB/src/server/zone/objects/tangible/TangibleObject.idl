@@ -53,7 +53,7 @@ import engine.log.Logger;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
-import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.area.ActiveArea;
 import server.zone.objects.player.PlayerObject;
 include server.zone.objects.tangible.OptionBitmask;
 import server.zone.objects.manufactureschematic.ManufactureSchematic;
@@ -104,7 +104,10 @@ class TangibleObject extends SceneObject {
 	
 	protected boolean sliceable;
 	protected boolean sliced;	
-	
+
+	@dereferenced
+	protected SortedVector<ActiveArea> activeAreas;
+
 	/**
 	 * TangibleObject constructor, used to initialized the object
 	 * @pre { templateData is a valid SharedTangibleObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
@@ -185,14 +188,21 @@ class TangibleObject extends SceneObject {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre {transient members are not initialized }
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
-	
+
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+
 	/**
 	 * Updates the custom name of the object
 	 * @pre { this locked }
@@ -617,11 +627,62 @@ class TangibleObject extends SceneObject {
 	}
 	
 	public native void broadcastPvpStatusBitmask();
+
+	public native void addActiveArea(ActiveArea area);
+
+	public void dropActiveArea(ActiveArea area) {
+		synchronized (super.getContainerLock()) {
+			activeAreas.drop(area);
+		}
+	}
+
+	@read
+	public boolean hasActiveArea(ActiveArea area) {
+		synchronized (super.getContainerLock()) {
+			return activeAreas.contains(area);
+		}
+	}
+
+	@read
+	public boolean hasActiveArea(unsigned long objectid) {
+		synchronized (super.getContainerLock()) {
+			for (int i = 0; i < activeAreas.size(); ++i) {
+				ActiveArea area = activeAreas.get(i);
+
+				if (area.getObjectID() == objectid) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	@local
+	@read
+	public Vector<ActiveArea> getActiveAreas() {
+		return activeAreas;
+	}
+
+	@read
+	public int getActiveAreasSize() {
+		return activeAreas.size();
+	}
+
+	@read
+	@reference
+	public ActiveArea getActiveRegion() {
+		synchronized (super.getContainerLock()) {
+			for (int i = 0; i < activeAreas.size(); i++) {
+				ActiveArea region = activeAreas.get(i);
+
+				if (region.isRegion()) {
+					return region;
+				}
+			}
+		}
+
+		return null;
+	}
 }
-
-
-
-
-
-
 

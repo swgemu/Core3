@@ -229,13 +229,17 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 			updateInRangeObjectsOnMount(sceneObject);
 		}
 	}
-	
+
+	if (sceneObject->isTangibleObject()) {
+		TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+
+		zone->updateActiveAreas(tano);
+	}
+
 	bool isInvis = false;
 
 	if (sceneObject->isCreatureObject()) {
 		CreatureObject* creo = cast<CreatureObject*>(sceneObject);
-
-		zone->updateActiveAreas(creo);
 
 		if(creo->isInvisible())
 			isInvis = true;
@@ -290,9 +294,9 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		} else {
 			zone->unlock();
 
-			if (sceneObject->isCreatureObject()) {
-				CreatureObject* creature = cast<CreatureObject*>(sceneObject);
-				zone->updateActiveAreas(creature);
+			if (sceneObject->isTangibleObject()) {
+				TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+				zone->updateActiveAreas(tano);
 			}
 		}
 
@@ -512,9 +516,9 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 
 //		locker.release();
 
-		if (sceneObject->isCreatureObject()) {
-			CreatureObject* creature = cast<CreatureObject*>(sceneObject);
-			Vector<ManagedReference<ActiveArea*> >* activeAreas =  creature->getActiveAreas();
+		if (sceneObject->isTangibleObject()) {
+			TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+			Vector<ManagedReference<ActiveArea*> >* activeAreas =  tano->getActiveAreas();
 
 			while (activeAreas->size() > 0) {
 				Locker _alocker(sceneObject->getContainerLock());

@@ -21,6 +21,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "getFaction", &LuaTangibleObject::getFaction },
 		{ "isImperial", &LuaTangibleObject::isImperial },
 		{ "isRebel", &LuaTangibleObject::isRebel },
+		{ "hasActiveArea", &LuaTangibleObject::hasActiveArea},
 		{ 0, 0 }
 };
 
@@ -97,6 +98,16 @@ int LuaTangibleObject::isImperial(lua_State* L){
 
 int LuaTangibleObject::isRebel(lua_State* L){
 	lua_pushboolean(L, realObject->isRebel());
+
+	return 1;
+}
+
+int LuaTangibleObject::hasActiveArea(lua_State* L) {
+	uint64 objectid = lua_tointeger(L, -1);
+
+	bool res = realObject->hasActiveArea(objectid);
+
+	lua_pushboolean(L, res);
 
 	return 1;
 }

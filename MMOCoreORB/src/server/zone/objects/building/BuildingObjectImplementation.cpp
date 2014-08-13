@@ -113,9 +113,9 @@ void BuildingObjectImplementation::notifyLoadFromDatabase() {
 
 				rlocker.release();
 
-				if (child->isCreatureObject()) {
-					CreatureObject* creature = cast<CreatureObject*>(child);
-					zone->updateActiveAreas(creature);
+				if (child->isTangibleObject()) {
+					TangibleObject* tano = cast<TangibleObject*>(child);
+					zone->updateActiveAreas(tano);
 				}
 			}
 		}
@@ -443,9 +443,9 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 	addInRangeObject(object, false);
 
 	if (getZone() != NULL) {
-		if (object->isCreatureObject()) {
-			CreatureObject* creature = cast<CreatureObject*>(object);
-			getZone()->updateActiveAreas(creature);
+		if (object->isTangibleObject()) {
+			TangibleObject* tano = cast<TangibleObject*>(object);
+			getZone()->updateActiveAreas(tano);
 		}
 
 		object->notifyInsertToZone(getZone());
@@ -912,9 +912,9 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 	if (zone != NULL)
 		delete _locker;
 
-	if (getZone() != NULL && object->isCreatureObject()) {
-		CreatureObject* creature = cast<CreatureObject*>(object);
-		getZone()->updateActiveAreas(creature);
+	if (getZone() != NULL && object->isTangibleObject()) {
+		TangibleObject* tano = cast<TangibleObject*>(object);
+		getZone()->updateActiveAreas(tano);
 	}
 
 	return 0;

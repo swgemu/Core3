@@ -36,6 +36,7 @@ namespace tangible {
 		int getFaction(lua_State *L);
 		int isImperial(lua_State *L);
 		int isRebel(lua_State *L);
+		int hasActiveArea(lua_State* L);
 
 	private:
 		Reference<TangibleObject*> realObject;

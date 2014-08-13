@@ -64,7 +64,7 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		}
 	}
 
-	Vector < ManagedReference<ActiveArea*> > *areas = player->getActiveAreas();
+	Vector < ManagedReference<ActiveArea*> > *areas = camp->getActiveAreas();
 	ManagedReference<ActiveArea*> area = NULL;
 	for (int i = 0; i < areas->size(); ++i) {
 		area = areas->get(i);
@@ -144,7 +144,7 @@ void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
 	}
 
 	// Find Camp Area
-	Vector<ManagedReference<ActiveArea* > >* areas = player->getActiveAreas();
+	Vector<ManagedReference<ActiveArea* > >* areas = camp->getActiveAreas();
 	ManagedReference<ActiveArea*> area = NULL;
 	for(int i = 0; i < areas->size(); ++i) {
 		area = areas->get(i);
@@ -186,7 +186,7 @@ void CampTerminalMenuComponent::assumeCampOwnership(SceneObject* sceneObject,
 	}
 
 	// Find Camp Area
-	Vector<ManagedReference<ActiveArea* > >* areas = player->getActiveAreas();
+	Vector<ManagedReference<ActiveArea* > >* areas = camp->getActiveAreas();
 	ManagedReference<ActiveArea*> area = NULL;
 	for(int i = 0; i < areas->size(); ++i) {
 		area = areas->get(i);
@@ -228,7 +228,7 @@ void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
 	}
 
 	// Get Camp Area
-	Vector<ManagedReference<ActiveArea* > >* areas = player->getActiveAreas();
+	Vector<ManagedReference<ActiveArea* > >* areas = camp->getActiveAreas();
 	ManagedReference<ActiveArea*> area = NULL;
 	for(int i = 0; i < areas->size(); ++i) {
 		area = areas->get(i);

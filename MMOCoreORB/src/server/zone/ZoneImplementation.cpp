@@ -321,16 +321,16 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, Sor
 	return objects->size();
 }
 
-void ZoneImplementation::updateActiveAreas(CreatureObject* creature) {
+void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
 	//Locker locker(_this.get());
 
-	Locker _alocker(creature->getContainerLock());
+	Locker _alocker(tano->getContainerLock());
 
-	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(creature->getActiveAreas());
+	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(tano->getActiveAreas());
 
 	_alocker.release();
 
-	Vector3 worldPos = creature->getWorldPosition();
+	Vector3 worldPos = tano->getWorldPosition();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > entryObjects;
 
@@ -363,11 +363,11 @@ void ZoneImplementation::updateActiveAreas(CreatureObject* creature) {
 //			Locker locker(area, object);
 
 			if (!area->containsPoint(worldPos.getX(), worldPos.getY())) {
-				creature->dropActiveArea(area);
-				area->enqueueExitEvent(creature);
+				tano->dropActiveArea(area);
+				area->enqueueExitEvent(tano);
 //				area->notifyExit(object);
 			} else {
-				area->notifyPositionUpdate(creature);
+				area->notifyPositionUpdate(tano);
 			}
 		}
 
@@ -376,13 +376,13 @@ void ZoneImplementation::updateActiveAreas(CreatureObject* creature) {
 			//update in new ones
 			ActiveArea* activeArea = dynamic_cast<ActiveArea*>(entryObjects.get(i).get());
 
-			if (!creature->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+			if (!tano->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
 				//Locker lockerO(object);
 
 				//Locker locker(activeArea, object);
 
-				creature->addActiveArea(activeArea);
-				activeArea->enqueueEnterEvent(creature);
+				tano->addActiveArea(activeArea);
+				activeArea->enqueueEnterEvent(tano);
 				//activeArea->notifyEnter(object);
 			}
 		}
@@ -394,16 +394,16 @@ void ZoneImplementation::updateActiveAreas(CreatureObject* creature) {
 			if (worldAreas != NULL) {
 				for (int i = 0; i < worldAreas->size(); ++i) {
 					ActiveArea* activeArea = worldAreas->get(i);
-					Locker lockerO(creature);
+					Locker lockerO(tano);
 
 					//			Locker locker(activeArea, object);
 
-					if (!creature->hasActiveArea(activeArea)) {
-						creature->addActiveArea(activeArea);
+					if (!tano->hasActiveArea(activeArea)) {
+						tano->addActiveArea(activeArea);
 						//activeArea->enqueueEnterEvent(object);
-						activeArea->notifyEnter(creature);
+						activeArea->notifyEnter(tano);
 					} else {
-						activeArea->notifyPositionUpdate(creature);
+						activeArea->notifyPositionUpdate(tano);
 					}
 				}
 			}

@@ -53,15 +53,15 @@ bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeA
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(objects.get(i).get());
 
-		if (!object->isCreatureObject()) {
+		if (!object->isTangibleObject()) {
 			continue;
 		}
 
-		CreatureObject* creature = cast<CreatureObject*>(object);
+		TangibleObject* tano = cast<TangibleObject*>(object);
 		Vector3 worldPos = object->getWorldPosition();
 
-		if (!creature->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
-			creature->addActiveArea(activeArea);
+		if (!tano->hasActiveArea(activeArea) && activeArea->containsPoint(worldPos.getX(), worldPos.getY())) {
+			tano->addActiveArea(activeArea);
 			activeArea->enqueueEnterEvent(object);
 		}
 	}
@@ -98,14 +98,14 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	//	Locker olocker(object);
 
-		if (!object->isCreatureObject()) {
+		if (!object->isTangibleObject()) {
 			continue;
 		}
 
-		CreatureObject* creature = cast<CreatureObject*>(object);
+		TangibleObject* tano = cast<TangibleObject*>(object);
 
-		if (creature->hasActiveArea(activeArea)) {
-			creature->dropActiveArea(activeArea);
+		if (tano->hasActiveArea(activeArea)) {
+			tano->dropActiveArea(activeArea);
 			activeArea->enqueueExitEvent(object);
 		}
 	}
@@ -185,10 +185,10 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 	zone->inRange(object, 192);
 
-	if (object->isCreatureObject()) {
-		CreatureObject* creature = cast<CreatureObject*>(object);
+	if (object->isTangibleObject()) {
+		TangibleObject* tano = cast<TangibleObject*>(object);
 
-		zone->updateActiveAreas(creature);
+		zone->updateActiveAreas(tano);
 	}
 
 	SharedBuildingObjectTemplate* objtemplate = dynamic_cast<SharedBuildingObjectTemplate*>(object->getObjectTemplate());
@@ -282,9 +282,9 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 		zoneLocker.release();
 
-		if (object->isCreatureObject()) {
-			CreatureObject* creature = cast<CreatureObject*>(object);
-			Vector<ManagedReference<ActiveArea*> >* activeAreas = creature->getActiveAreas();
+		if (object->isTangibleObject()) {
+			TangibleObject* tano = cast<TangibleObject*>(object);
+			Vector<ManagedReference<ActiveArea*> >* activeAreas = tano->getActiveAreas();
 
 			while (activeAreas->size() > 0) {
 				Locker _alocker(object->getContainerLock());

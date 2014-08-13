@@ -44,8 +44,8 @@ public:
 		return object;
 	}
 
-	Reference<CreatureObject*> createCreatureObject() {
-		Reference<CreatureObject*> object = new CreatureObject();
+	Reference<TangibleObject*> createTangibleObject() {
+		Reference<TangibleObject*> object = new TangibleObject();
 		setDefaultComponents(object);
 		object->_setObjectID(nextObjectId.increment());
 
@@ -162,24 +162,24 @@ TEST_F(ZoneTest, ActiveAreaTest) {
 
 	alocker.release();
 
-	Reference<CreatureObject*> creature = createCreatureObject();
-	creature->initializePosition(0, 0, 0);
+	Reference<TangibleObject*> tano = createTangibleObject();
+	tano->initializePosition(0, 0, 0);
 
-	Locker slocker(creature);
+	Locker slocker(tano);
 
-	ASSERT_EQ(creature->getActiveAreasSize(), 0);
+	ASSERT_EQ(tano->getActiveAreasSize(), 0);
 
-	zone->transferObject(creature, -1);
+	zone->transferObject(tano, -1);
 
-	ASSERT_EQ(creature->getActiveAreasSize(), 1);
+	ASSERT_EQ(tano->getActiveAreasSize(), 1);
 
-	creature->teleport(200, 0, 0);
+	tano->teleport(200, 0, 0);
 
-	ASSERT_EQ(creature->getActiveAreasSize(), 0);
+	ASSERT_EQ(tano->getActiveAreasSize(), 0);
 
-	creature->teleport(120, 0, 0);
+	tano->teleport(120, 0, 0);
 
-	ASSERT_EQ(creature->getActiveAreasSize(), 1);
+	ASSERT_EQ(tano->getActiveAreasSize(), 1);
 
 	slocker.release();
 
@@ -189,11 +189,11 @@ TEST_F(ZoneTest, ActiveAreaTest) {
 
 	blocker.release();
 
-	Locker s2locker(creature);
+	Locker s2locker(tano);
 
-	ASSERT_EQ(creature->getActiveAreasSize(), 0);
+	ASSERT_EQ(tano->getActiveAreasSize(), 0);
 
-	creature->destroyObjectFromWorld(false);
+	tano->destroyObjectFromWorld(false);
 }
 
 

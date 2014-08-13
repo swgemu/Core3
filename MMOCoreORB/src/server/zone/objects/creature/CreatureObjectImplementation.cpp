@@ -1928,12 +1928,6 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 		setPosture(CreaturePosture::UPRIGHT);
 	}
 
-	for (int i = 0; i < activeAreas.size(); ++i) {
-		activeAreas.get(i)->notifyExit(_this.get());
-	}
-
-	activeAreas.removeAll();
-
 	if (ghost == NULL)
 		return;
 
@@ -2899,11 +2893,4 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(player, petsToStore);
 		task->execute();
 	}
-}
-
-void CreatureObjectImplementation::addActiveArea(ActiveArea* area) {
-	if (!area->isDeplyoed())
-		area->deploy();
-
-	activeAreas.put(area);
 }

@@ -137,9 +137,9 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 	try {
 		ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient, allowOverflow);
 
-		if (zone != NULL && object->isCreatureObject()) {
-			CreatureObject* creature = cast<CreatureObject*>(object);
-			zone->updateActiveAreas(creature);
+		if (zone != NULL && object->isTangibleObject()) {
+			TangibleObject* tano = cast<TangibleObject*>(object);
+			zone->updateActiveAreas(tano);
 		}
 	} catch (...) {
 

@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "server/zone/templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
@@ -110,6 +111,16 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 	faction = tanoData->getFaction();
 
 	threatMap = NULL;
+}
+
+void TangibleObjectImplementation::notifyLoadFromDatabase() {
+	SceneObjectImplementation::notifyLoadFromDatabase();
+
+	for (int i = 0; i < activeAreas.size(); ++i) {
+		activeAreas.get(i)->notifyExit(_this.get());
+	}
+
+	activeAreas.removeAll();
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -852,4 +863,11 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	}
 
 	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
+}
+
+void TangibleObjectImplementation::addActiveArea(ActiveArea* area) {
+	if (!area->isDeplyoed())
+		area->deploy();
+
+	activeAreas.put(area);
 }

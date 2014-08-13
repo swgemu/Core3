@@ -72,6 +72,7 @@ include server.zone.QuadTreeReference;
 
 import system.lang.System;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.region.CityRegion;
 
@@ -153,7 +154,7 @@ class Zone extends SceneObject {
 	@local
 	public native void inRange(QuadTreeEntry entry, float range);
 
-	public native void updateActiveAreas(CreatureObject creature);
+	public native void updateActiveAreas(TangibleObject tano);
 
 	public native void startManagers();
 

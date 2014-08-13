@@ -243,10 +243,10 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
 	//pre: no 2 different city regions should ever overlap, only 2 Regions of the same city region
-	if (object->isCreatureObject()) {
-		CreatureObject* creature = cast<CreatureObject*>(object);
+	if (object->isTangibleObject()) {
+		TangibleObject* tano = cast<TangibleObject*>(object);
 
-		ManagedReference<Region*> activeRegion = creature->getActiveRegion().castTo<Region*>();
+		ManagedReference<Region*> activeRegion = tano->getActiveRegion().castTo<Region*>();
 
 		if (activeRegion != NULL) {
 			ManagedReference<CityRegion*> city = activeRegion->getCityRegion();

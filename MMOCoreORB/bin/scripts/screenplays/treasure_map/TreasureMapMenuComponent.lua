@@ -52,45 +52,47 @@ end
 
 function TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
 	local mapType = TreasureMapMenuComponent:getMapType(pObject)
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creature, player)
-		local mapData = treasureMapData[mapType]
-		local waypointID = readData(creature:getObjectID() .. ":treasureMapSearchAreaWaypointID")
-		local searchAreaID = readData(creature:getObjectID() .. ":treasureMapSearchAreaActiveAreaID")
+	ObjectManager.withTangibleObject(pPlayer, function(tano)
+		ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creature, player)
+			local mapData = treasureMapData[mapType]
+			local waypointID = readData(creature:getObjectID() .. ":treasureMapSearchAreaWaypointID")
+			local searchAreaID = readData(creature:getObjectID() .. ":treasureMapSearchAreaActiveAreaID")
 
-		if (waypointID == 0 or searchAreaID == 0) then
-			creature:sendSystemMessage("@treasure_map/treasure_map:sys_no_waypoint") -- You must store the treasure's waypoint in your datapad before you can search for it!
-			return 0
-		end
-
-		if (creature:hasActiveArea(searchAreaID) == false) then
-			creature:sendSystemMessage("@treasure_map/treasure_map:sys_cant_pinpoint") -- You are not close enough to pinpoint the treasure's location.
-			return 0
-		end
-
-		local pWaypoint = getSceneObject(waypointID)
-
-		local pActiveArea = getSceneObject(searchAreaID)
-		ObjectManager.withSceneObject(pActiveArea, function(area)
-			area:destroyObjectFromWorld()
-		end)
-
-		local spawnPoint
-		ObjectManager.withSceneObject(pWaypoint, function(waypoint)
-			if (mapType == 4) then
-				spawnPoint = getSpawnPoint(pPlayer, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 15, 30)
-			else
-				spawnPoint = getSpawnPoint(pPlayer, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 30, 60)
+			if (waypointID == 0 or searchAreaID == 0) then
+				creature:sendSystemMessage("@treasure_map/treasure_map:sys_no_waypoint") -- You must store the treasure's waypoint in your datapad before you can search for it!
+				return 0
 			end
+
+			if (tano:hasActiveArea(searchAreaID) == false) then
+				creature:sendSystemMessage("@treasure_map/treasure_map:sys_cant_pinpoint") -- You are not close enough to pinpoint the treasure's location.
+				return 0
+			end
+
+			local pWaypoint = getSceneObject(waypointID)
+
+			local pActiveArea = getSceneObject(searchAreaID)
+			ObjectManager.withSceneObject(pActiveArea, function(area)
+				area:destroyObjectFromWorld()
+			end)
+
+			local spawnPoint
+			ObjectManager.withSceneObject(pWaypoint, function(waypoint)
+				if (mapType == 4) then
+					spawnPoint = getSpawnPoint(pPlayer, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 15, 30)
+				else
+					spawnPoint = getSpawnPoint(pPlayer, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 30, 60)
+				end
+			end)
+
+			local x = spawnPoint[1]
+			local y = spawnPoint[3]
+
+			creature:sendSystemMessage("@treasure_map/treasure_map:sys_pinpoint") -- You have successfully pinpointed the exact location of the treasure!
+			local waypointID = player:addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", x, y, WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
+			writeData(creature:getObjectID() .. ":treasureMapExactWaypointID", waypointID)
+			deleteData(creature:getObjectID() .. ":treasureMapSearchAreaWaypointID")
+			deleteData(creature:getObjectID() .. ":treasureMapSearchAreaActiveAreaID")
 		end)
-
-		local x = spawnPoint[1]
-		local y = spawnPoint[3]
-
-		creature:sendSystemMessage("@treasure_map/treasure_map:sys_pinpoint") -- You have successfully pinpointed the exact location of the treasure!
-		local waypointID = player:addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", x, y, WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
-		writeData(creature:getObjectID() .. ":treasureMapExactWaypointID", waypointID)
-		deleteData(creature:getObjectID() .. ":treasureMapSearchAreaWaypointID")
-		deleteData(creature:getObjectID() .. ":treasureMapSearchAreaActiveAreaID")
 	end)
 end
 
