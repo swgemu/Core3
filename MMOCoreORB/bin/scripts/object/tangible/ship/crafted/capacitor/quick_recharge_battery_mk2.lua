@@ -48,10 +48,10 @@ object_tangible_ship_crafted_capacitor_quick_recharge_battery_mk2 = object_tangi
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 3, 1, 3, 1},
 	experimentalGroupTitles = {"null", "null", "exp_cap_max_energy", "exp_recharge"},
-	experimentalSubGroupTitles = {"null", "null", "cap_max_energy", "cap_recharge_rate"},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_capacitor_energy", "ship_component_capacitor_energy_recharge_rate"},
 	experimentalMin = {0, 0, -127, 4},
 	experimentalMax = {0, 0, -94, 5},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

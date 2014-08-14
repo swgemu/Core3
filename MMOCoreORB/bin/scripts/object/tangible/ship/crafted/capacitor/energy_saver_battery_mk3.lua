@@ -48,10 +48,10 @@ object_tangible_ship_crafted_capacitor_energy_saver_battery_mk3 = object_tangibl
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 3, 1, 3, 1},
 	experimentalGroupTitles = {"null", "null", "exp_cap_max_energy", "exp_energy_maintenance"},
-	experimentalSubGroupTitles = {"null", "null", "cap_max_energy", "energy_maintenance"},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_capacitor_energy", "ship_component_energy_required"},
 	experimentalMin = {0, 0, -139, -170},
 	experimentalMax = {0, 0, -103, -230},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

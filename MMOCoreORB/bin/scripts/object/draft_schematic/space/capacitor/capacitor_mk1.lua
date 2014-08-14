@@ -56,7 +56,8 @@ object_draft_schematic_space_capacitor_capacitor_mk1 = object_draft_schematic_sp
 
    assemblySkill = "advanced_assembly", 
    experimentingSkill = "advanced_ship_experimentation", 
-   customizationSkill = "medicine_customization", 
+   customizationSkill = "medicine_customization",
+   disableFactoryRun = true,
 
    customizationOptions = {},
    customizationStringNames = {},
