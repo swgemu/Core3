@@ -117,10 +117,12 @@ function TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
 			end
 
 			local treasureChestID = readData(creature:getObjectID() .. ":treasureChestID")
-
-			if (treasureChestID ~= 0) then
-				creature:sendSystemMessage("@treasure_map/treasure_map:sys_success") -- You've found the treasure!
-				return 0
+			
+			if (treasureChestID ~= nil) then
+				local pExistingChest = getSceneObject(treasureChestID)
+				if (pExistingChest ~= nil) then
+					self:removeTreasureChest(pExistingChest)
+				end
 			end
 
 			creature:sendSystemMessage("@treasure_map/treasure_map:sys_found") -- You successfully extract the treasure!
