@@ -48,10 +48,10 @@ object_tangible_ship_crafted_booster_booster_mk1 = object_tangible_ship_crafted_
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX", "OQ", "UT", "OQ", "UT", "XX", "OQ", "UT", "CD", "OQ", "PE", "CD", "OQ", "PE", "CD", "OQ", "PE", "CD", "OQ", "PE", "CD", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_maintenance", "exp_booster_energy", "exp_booster_recharge", "booster_consumption", "exp_booster_speed", "exp_booster_acceleration"},
-	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "booster_energy", "booster_recharge", "booster_consumption", "booster_speed", "booster_acceleration"},
-	experimentalMin = {0, 0, 105, 1, 910, 53, 1, 650, 700, 18, 70, 11, 14},
-	experimentalMax = {0, 0, 195, 1, 490, 98, 1, 350, 1300, 33, 130, 20, 26},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_hitpoints", "efficiency", "ship_component_mass", "ship_component_armor", "energy_efficiency", "ship_component_energy_required", "ship_component_booster_energy", "ship_component_booster_energy_recharge_rate", "ship_component_booster_energy_consumption_rate", "ship_component_booster_speed_maximum", "ship_component_booster_acceleration"},
+	experimentalMin = {0, 0, 105, 1, 910, 53, 1, 650, 700, 18, 130, 11, 14},
+	experimentalMax = {0, 0, 195, 1, 490, 98, 1, 350, 1300, 33, 70, 20, 26},
+	experimentalPrecision = {0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
