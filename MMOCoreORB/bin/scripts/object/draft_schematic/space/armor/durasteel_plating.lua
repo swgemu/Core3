@@ -57,6 +57,7 @@ object_draft_schematic_space_armor_durasteel_plating = object_draft_schematic_sp
    assemblySkill = "chassis_assembly", 
    experimentingSkill = "chassis_experimentation", 
    customizationSkill = "medicine_customization", 
+   disableFactoryRun = true,
 
    customizationOptions = {},
    customizationStringNames = {},

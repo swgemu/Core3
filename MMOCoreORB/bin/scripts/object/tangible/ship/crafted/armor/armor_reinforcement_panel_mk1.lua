@@ -48,10 +48,10 @@ object_tangible_ship_crafted_armor_armor_reinforcement_panel_mk1 = object_tangib
 	experimentalProperties = {"XX", "XX", "HR", "UT", "HR", "UT", "OQ", "UT"},
 	experimentalWeights = {1, 1, 1, 3, 1, 3, 1, 3},
 	experimentalGroupTitles = {"null", "null", "exp_hitpointsmax", "exp_armorhpmax", "exp_mass"},
-	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "armorhpmax", "mass"},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_hitpoints", "ship_component_armor", "ship_component_mass"},
 	experimentalMin = {0, 0, 43, 43, 138},
 	experimentalMax = {0, 0, 58, 58, 102},
-	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
