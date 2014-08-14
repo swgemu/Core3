@@ -170,6 +170,8 @@ void DirectorManager::removeQuestStatus(String key) {
 
 	status = questStatuses.get(key);
 
+	questStatuses.drop(key);
+
 	if (status != NULL)
 		ObjectManager::instance()->destroyObjectFromDatabase(status->_getObjectID());
 }
@@ -329,6 +331,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("STOPENTERTAIN", ObserverEventType::STOPENTERTAIN);
 	luaEngine->setGlobalInt("FLOURISH", ObserverEventType::FLOURISH);
 	luaEngine->setGlobalInt("CONTAINERCONTENTSCHANGED", ObserverEventType::CONTAINERCONTENTSCHANGED);
+	luaEngine->setGlobalInt("WASLISTENEDTO", ObserverEventType::WASLISTENEDTO);
+	luaEngine->setGlobalInt("WASWATCHED", ObserverEventType::WASWATCHED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
@@ -1860,25 +1864,35 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 }
 
 int DirectorManager::createObserver(lua_State* L) {
-	if (checkArgumentCount(L, 4) == 1) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 4 && numberOfArguments != 5) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::createObserver");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
-	//std::cout << "Starting\n";
-	SceneObject* sceneObject = (SceneObject*) lua_touserdata(L, -1);
-	//std::cout << "Got SceneObject\n";
-	String key = lua_tostring(L, -2);
-	//std::cout << "Got Key:" <<  key.toCharArray() << "\n";
-	String play = lua_tostring(L, -3);
-	//std::cout << "Got play:" << play.toCharArray() << "\n";
-	uint32 eventType = lua_tonumber(L, -4);
-	//std::cout << "play:" << play.toCharArray() << " Key:" <<  key.toCharArray() << " Event:" << eventType <<"\n";
+
+	SceneObject* sceneObject;
+	String key, play;
+	uint32 eventType;
+	int persistence = 0;
+
+	if (numberOfArguments == 4) {
+		sceneObject = (SceneObject*) lua_touserdata(L, -1);
+		key = lua_tostring(L, -2);
+		play = lua_tostring(L, -3);
+		eventType = lua_tointeger(L, -4);
+	} else {
+		persistence = lua_tointeger(L, -1);
+		sceneObject = (SceneObject*) lua_touserdata(L, -2);
+		key = lua_tostring(L, -3);
+		play = lua_tostring(L, -4);
+		eventType = lua_tointeger(L, -5);
+	}
 
 	if (sceneObject == NULL)
 		return 0;
 
-	ManagedReference<ScreenPlayObserver*> observer = dynamic_cast<ScreenPlayObserver*>(ObjectManager::instance()->createObject("ScreenPlayObserver", 0, ""));
+	ManagedReference<ScreenPlayObserver*> observer = dynamic_cast<ScreenPlayObserver*>(ObjectManager::instance()->createObject("ScreenPlayObserver", persistence, ""));
 	observer->setScreenPlay(play);
 	observer->setScreenKey(key);
 	observer->setObserverType(ObserverType::SCREENPLAY);
@@ -1904,8 +1918,12 @@ int DirectorManager::dropObserver(lua_State* L) {
 	SortedVector<ManagedReference<Observer* > > observers = sceneObject->getObservers(eventType);
 	for (int i = 0; i < observers.size(); i++) {
 		Observer* observer = observers.get(i).get();
-		if (observer != NULL && observer->isObserverType(ObserverType::SCREENPLAY))
+		if (observer != NULL && observer->isObserverType(ObserverType::SCREENPLAY)) {
 			sceneObject->dropObserver(eventType, observer);
+
+			if (observer->isPersistent())
+				ObjectManager::instance()->destroyObjectFromDatabase(observer->_getObjectID());
+		}
 	}
 
 	return 0;
@@ -2433,7 +2451,10 @@ int DirectorManager::getQuestStatus(lua_State* L) {
 
 	String str = instance()->getQuestStatus(keyString);
 
-	lua_pushstring(L, str.toCharArray());
+	if (str == "")
+		lua_pushnil(L);
+	else
+		lua_pushstring(L, str.toCharArray());
 
 	return 1;
 }
