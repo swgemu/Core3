@@ -48,10 +48,10 @@ object_tangible_ship_crafted_booster_extended_life_fuel_cell_mk1 = object_tangib
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 2, 1, 2},
 	experimentalGroupTitles = {"null", "null", "exp_booster_energy", "exp_booster_recharge"},
-	experimentalSubGroupTitles = {"null", "null", "booster_energy", "booster_recharge"},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_booster_energy", "ship_component_booster_energy_recharge_rate"},
 	experimentalMin = {0, 0, 280, -13},
 	experimentalMax = {0, 0, 520, -7},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

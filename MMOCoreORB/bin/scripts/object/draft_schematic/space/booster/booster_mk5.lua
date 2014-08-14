@@ -57,6 +57,7 @@ object_draft_schematic_space_booster_booster_mk5 = object_draft_schematic_space_
    assemblySkill = "booster_assembly", 
    experimentingSkill = "booster_experimentation", 
    customizationSkill = "medicine_customization", 
+   disableFactoryRun = true,
 
    customizationOptions = {},
    customizationStringNames = {},

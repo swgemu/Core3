@@ -48,10 +48,10 @@ object_tangible_ship_crafted_booster_heavy_fuel_cell_mk5 = object_tangible_ship_
 	experimentalProperties = {"XX", "XX", "DR", "OQ", "DR", "OQ"},
 	experimentalWeights = {1, 1, 2, 1, 2, 1},
 	experimentalGroupTitles = {"null", "null", "exp_booster_energy", "exp_booster_consumption"},
-	experimentalSubGroupTitles = {"null", "null", "booster_energy", "booster_consumption"},
-	experimentalMin = {0, 0, 473, 25},
-	experimentalMax = {0, 0, 640, 34},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_booster_energy", "ship_component_booster_energy_consumption_rate"},
+	experimentalMin = {0, 0, 473, 34},
+	experimentalMax = {0, 0, 640, 25},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 

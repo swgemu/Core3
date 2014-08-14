@@ -56,7 +56,8 @@ object_draft_schematic_space_booster_booster_mk2 = object_draft_schematic_space_
 
    assemblySkill = "booster_assembly", 
    experimentingSkill = "booster_experimentation", 
-   customizationSkill = "medicine_customization", 
+   customizationSkill = "medicine_customization",
+   disableFactoryRun = true, 
 
    customizationOptions = {},
    customizationStringNames = {},
@@ -64,7 +65,7 @@ object_draft_schematic_space_booster_booster_mk2 = object_draft_schematic_space_
 
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"casing", "booster_nozzle", "fuel_mixing_chamber", "booster_upgrade", "liquid_fuel"},
-   ingredientSlotType = {2, 2, 2, 3, 0},
+   ingredientSlotType = {0, 0, 0, 3, 0},
    resourceTypes = {"steel", "aluminum", "ore", "object/tangible/ship/crafted/booster/shared_base_booster_subcomponent_mk2.iff", "fuel_petrochem_liquid"},
    resourceQuantities = {125, 125, 125, 1, 125},
    contribution = {100, 100, 100, 100, 100},
