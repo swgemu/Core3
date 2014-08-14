@@ -48,10 +48,10 @@ object_tangible_ship_crafted_armor_durasteel_plating = object_tangible_ship_craf
 	experimentalProperties = {"XX", "XX", "HR", "OQ", "UT", "XX", "HR", "OQ", "UT", "HR", "OQ", "UT", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "null"},
-	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance"},
-	experimentalMin = {0, 0, 391, 1, 1700, 391, 0, 0},
-	experimentalMax = {0, 0, 529, 1, 2300, 529, 0, 0},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_hitpoints", "efficiency", "ship_component_mass", "ship_component_armor", "energy_efficiency", "energy_maintenance"},
+	experimentalMin = {0, 0, 391, 1, 2300, 391, 0, 0},
+	experimentalMax = {0, 0, 529, 1, 1700, 529, 0, 0},
+	experimentalPrecision = {0, 0, 1, 0, 1, 1, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }
 
