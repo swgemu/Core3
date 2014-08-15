@@ -48,10 +48,10 @@ object_tangible_ship_crafted_droid_interface_ddi_mk4 = object_tangible_ship_craf
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX", "OQ", "UT", "OQ", "UT", "XX", "CD", "OQ", "CD", "OQ", "SR"},
 	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_droid_speed"},
-	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "droid_command_speed"},
-	experimentalMin = {0, 0, 794, 1, 7176, 397, 1, 661, 16},
-	experimentalMax = {0, 0, 1075, 1, 5304, 537, 1, 489, 22},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 2},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_hitpoints", "efficiency", "ship_component_mass", "ship_component_armor", "energy_efficiency", "ship_component_energy_required", "ship_component_droidinterface_speed"},
+	experimentalMin = {0, 0, 794, 1, 7176, 397, 1, 661, 22},
+	experimentalMax = {0, 0, 1075, 1, 5304, 537, 1, 489, 16},
+	experimentalPrecision = {0, 0, 1, 0, 1, 1, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1},
 }
 
