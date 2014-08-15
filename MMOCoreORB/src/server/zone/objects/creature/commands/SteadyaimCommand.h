@@ -89,9 +89,10 @@ public:
 		if (!doSteadyAim(player, group, amount))
 			return GENERALERROR;
 			
-		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("steadyaim").hashCode()).isEmpty()==false) {
+		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("steadyaim").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
 			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("steadyaim").hashCode()));
  	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
+ 	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
 		}					
 
 		return SUCCESS;

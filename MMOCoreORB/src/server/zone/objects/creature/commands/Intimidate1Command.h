@@ -80,9 +80,10 @@ public:
 		
 		if (res == GENERALERROR)
 			creature->sendSystemMessage("@combat_effects:intimidated_miss");
-		if (res == SUCCESS && creature->isPlayerCreature() && creature->getPlayerObject()->getCommandMessageString(String("intimidate1").hashCode()).isEmpty()==false) {
+		if (res == SUCCESS && creature->isPlayerCreature() && creature->getPlayerObject()->getCommandMessageString(String("intimidate1").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
 			UnicodeString shout(creature->getPlayerObject()->getCommandMessageString(String("intimidate1").hashCode()));
  	 	 	server->getChatManager()->broadcastMessage(creature, shout, 0, 0, 80);
+ 	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
 		}
 		return res;
 	}

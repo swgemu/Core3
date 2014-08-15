@@ -129,9 +129,10 @@ public:
 			doRetreat(memberPlayer);
 		}
 		
-		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("retreat").hashCode()).isEmpty()==false) {
+		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("retreat").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
 			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("retreat").hashCode()));
  	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
+ 	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
 		}		
 
 		return SUCCESS;
