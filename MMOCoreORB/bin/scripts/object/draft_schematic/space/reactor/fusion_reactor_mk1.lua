@@ -56,7 +56,8 @@ object_draft_schematic_space_reactor_fusion_reactor_mk1 = object_draft_schematic
 
    assemblySkill = "power_systems", 
    experimentingSkill = "power_systems_experimentation", 
-   customizationSkill = "medicine_customization", 
+   customizationSkill = "medicine_customization",
+   disableFactoryRun = true, 
 
    customizationOptions = {},
    customizationStringNames = {},
