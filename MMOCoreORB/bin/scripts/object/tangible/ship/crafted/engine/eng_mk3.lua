@@ -48,10 +48,10 @@ object_tangible_ship_crafted_engine_eng_mk3 = object_tangible_ship_crafted_engin
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX", "OQ", "UT", "OQ", "UT", "XX", "CD", "OQ", "CD", "OQ", "PE", "CD", "OQ", "PE", "CD", "OQ", "PE", "OQ", "PE"},
 	experimentalWeights = {1, 1, 1, 3, 1, 1, 3, 1, 3, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_pitch", "exp_yaw", "exp_roll", "exp_speed"},
-	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "engine_pitch", "engine_yaw", "engine_roll", "engine_speed"},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_hitpoints", "efficiency", "ship_component_mass", "ship_component_armor", "energy_efficiency", "ship_component_energy_required", "ship_component_engine_pitch_rate_maximum", "ship_component_engine_yaw_rate_maximum", "ship_component_engine_roll_rate_maximum", "ship_component_engine_speed_maximum"},
 	experimentalMin = {0, 0, 540, 1, 5750, 270, 1, 1898, 43, 43, 43, 49},
 	experimentalMax = {0, 0, 730, 1, 4250, 365, 1, 1403, 58, 58, 58, 67},
-	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 

@@ -48,10 +48,10 @@ object_tangible_ship_crafted_engine_engine_overdriver_mk1 = object_tangible_ship
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_energy_maintenance", "exp_engine_speed"},
-	experimentalSubGroupTitles = {"null", "null", "energy_maintenance", "engine_speed"},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_energy_required", "ship_component_engine_speed_maximum"},
 	experimentalMin = {0, 0, 259, 7},
 	experimentalMax = {0, 0, 191, 10},
-	experimentalPrecision = {0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1},
 }
 
