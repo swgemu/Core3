@@ -228,6 +228,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "createEventActualTime", createEventActualTime);
 	lua_register(luaEngine->getLuaState(), "createServerEvent", createServerEvent);
 	lua_register(luaEngine->getLuaState(), "hasServerEvent", hasServerEvent);
+	lua_register(luaEngine->getLuaState(), "getServerEventTimeLeft", getServerEventTimeLeft);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "dropObserver", dropObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
@@ -1015,11 +1016,15 @@ int DirectorManager::createServerEvent(lua_State* L) {
 		instance()->error("Persistent event with " + eventName + " already exists!");
 	}
 
+	task->setPersistentEvent(pevent);
+
 	ObjectManager::instance()->persistObject(pevent, 1, "events");
 
 	task->schedule(mili);
 
-	return 0;
+	lua_pushinteger(L, pevent->_getObjectID());
+
+	return 1;
 }
 
 int DirectorManager::hasServerEvent(lua_State* L) {
@@ -1037,6 +1042,32 @@ int DirectorManager::hasServerEvent(lua_State* L) {
 		lua_pushboolean(L, true);
 	else
 		lua_pushboolean(L, false);
+
+	return 1;
+}
+
+int DirectorManager::getServerEventTimeLeft(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getServerEventTimeLeft");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	uint64 objectID = lua_tointeger(L, -1);
+
+	Reference<PersistentEvent*> pEvent = Core::getObjectBroker()->lookUp(objectID).castTo<PersistentEvent*>();
+
+	if (pEvent == NULL)
+		lua_pushnil(L);
+	else {
+		Time curTime;
+		uint64 currentTime = curTime.getMiliTime();
+		int origTime = pEvent->getCurTime();
+		int timeStamp = pEvent->getTimeStamp();
+		int timeLeft = origTime + timeStamp - currentTime;
+
+		lua_pushinteger(L, timeLeft);
+	}
 
 	return 1;
 }
@@ -2024,21 +2055,6 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 	String play = task->getScreenPlay();
 	String key = task->getTaskKey();
 
-	Lua* lua = getLuaInstance();
-
-	try {
-		LuaFunction startScreenPlay(lua->getLuaState(), play, key, 0);
-		startScreenPlay << obj;
-
-		startScreenPlay.callFunction();
-	} catch (Exception& e) {
-		StringBuffer msg;
-		msg << "exception while running lua task " << play << ":" << key;
-		error(msg.toString());
-
-		e.printStackTrace();
-	}
-
 	Reference<PersistentEvent*> persistentEvent = task->getPersistentEvent();
 
 	if (persistentEvent != NULL) {
@@ -2052,6 +2068,21 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 		msg << "no PersistentEvent object in the task " << play << ":" << task;
 
 		error(msg.toString());
+	}
+
+	Lua* lua = getLuaInstance();
+
+	try {
+		LuaFunction startScreenPlay(lua->getLuaState(), play, key, 0);
+		startScreenPlay << obj;
+
+		startScreenPlay.callFunction();
+	} catch (Exception& e) {
+		StringBuffer msg;
+		msg << "exception while running lua task " << play << ":" << key;
+		error(msg.toString());
+
+		e.printStackTrace();
 	}
 }
 

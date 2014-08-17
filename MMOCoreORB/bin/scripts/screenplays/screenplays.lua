@@ -31,6 +31,13 @@ includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 -- Village
 includeFile("village/fs_experience_converter_conv_handler.lua")
 
+-- Events
+includeFile("events/conversations/bestine_artist_conv_handler.lua")
+includeFile("events/conversations/museum_curator_conv_handler.lua")
+includeFile("events/bestineMuseum.lua")
+
+
+
 -- Task/Quest
 includeFile("tasks/corellia/chertyl_ruluwoor.lua")
 includeFile("tasks/corellia/coraline_dynes.lua")

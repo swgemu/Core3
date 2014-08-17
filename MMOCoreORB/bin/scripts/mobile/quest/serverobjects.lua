@@ -426,6 +426,13 @@ includeFile("quest/talus/xalox_smuggler.lua")
 includeFile("quest/talus/xalox_smuggler2.lua")
 
 -- Tatooine
+includeFile("quest/tatooine/museum/boulo_siesi.lua")
+includeFile("quest/tatooine/museum/giaal_itotr.lua")
+includeFile("quest/tatooine/museum/kahfr_oladi.lua")
+includeFile("quest/tatooine/museum/klepa_laeel.lua")
+includeFile("quest/tatooine/museum/kolka_zteht.lua")
+includeFile("quest/tatooine/museum/lilas_dinhint.lua")
+includeFile("quest/tatooine/museum/vanvi_hotne.lua")
 includeFile("quest/tatooine/aaph_koden.lua")
 includeFile("quest/tatooine/akkar_plint.lua")
 includeFile("quest/tatooine/ammow_dowwop.lua")
