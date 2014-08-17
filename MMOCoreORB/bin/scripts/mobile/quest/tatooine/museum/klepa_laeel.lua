@@ -1,5 +1,5 @@
-boulo_siesi = Creature:new {
-	objectName = "@mob/creature_names:bestine_artist06",
+klepa_laeel = Creature:new {
+	objectName = "@mob/creature_names:bestine_artist05",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -23,15 +23,15 @@ boulo_siesi = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bestine_artist06.iff"},
+	templates = {"object/mobile/dressed_bestine_artist05.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "bestineArtist05ConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(boulo_siesi, "boulo_siesi")
+CreatureTemplates:addCreatureTemplate(klepa_laeel, "klepa_laeel")

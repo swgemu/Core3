@@ -1,5 +1,5 @@
-klepa_laeel = Creature:new {
-	objectName = "@mob/creature_names:bestine_artist05",
+giaal_itotr = Creature:new {
+	objectName = "@mob/creature_names:bestine_artist03",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -23,15 +23,15 @@ klepa_laeel = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bestine_artist05.iff"},
+	templates = {"object/mobile/dressed_bestine_artist03.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "bestineArtist03ConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(klepa_laeel, "klepa_laeel")
+CreatureTemplates:addCreatureTemplate(giaal_itotr, "giaal_itotr")
