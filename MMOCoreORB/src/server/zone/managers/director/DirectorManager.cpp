@@ -103,8 +103,16 @@ void DirectorManager::loadPersistentEvents() {
 		uint64 objectID;
 
 		while (iterator.getNextKey(objectID)) {
-			Core::getObjectBroker()->lookUp(objectID);
+			Reference<PersistentEvent*> event = Core::getObjectBroker()->lookUp(objectID).castTo<PersistentEvent*>();
 			++i;
+
+			if (event != NULL && persistentEvents.put(event->getEventName().hashCode(), event) != NULL) {
+				error("duplicate persistent event " + event->getEventName() + " loading from database!");
+			} else if (event != NULL) {
+				event->loadTransientTask();
+			} else {
+				error("could not load PersistentEvent!");
+			}
 		}
 	} catch (DatabaseException& e) {
 		error("Database exception in DirectorManager::loadPersistentEvents(): "	+ e.getMessage());
@@ -131,6 +139,7 @@ void DirectorManager::loadPersistentStatus() {
 
 		while (iterator.getNextKey(objectID)) {
 			Reference<QuestStatus*> status = Core::getObjectBroker()->lookUp(objectID).castTo<QuestStatus*>();
+
 			if (status != NULL)
 				questStatuses.put(status->getKey(), status);
 		}
@@ -905,7 +914,6 @@ int DirectorManager::createEvent(lua_State* L) {
 	//System::out << "scheduling task with mili:" << mili << endl;
 
 	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play);
-	task->schedule(mili);
 
 	if (parameterCount > 4) {
 		bool save = lua_toboolean(L, -5);
@@ -914,17 +922,29 @@ int DirectorManager::createEvent(lua_State* L) {
 			Time expireTime;
 			uint64 currentTime = expireTime.getMiliTime();
 
-			ManagedReference<PersistentEvent*> pevent = new PersistentEvent();
+			Reference<PersistentEvent*> pevent = new PersistentEvent();
 			pevent->setObject(obj);
 			pevent->setKey(key);
 			pevent->setScreenplay(play);
 			pevent->setTimeStamp(mili);
 			pevent->setCurTime(currentTime);
 
+			String eventName = key + ":" + play + String::valueOf(obj->getObjectID());
+
+			pevent->setEventName(eventName);
+
 			ObjectManager::instance()->persistObject(pevent, 1, "events");
 
 			task->setPersistentEvent(pevent.get());
+
+			if (persistentEvents.put(eventName.hashCode(), pevent) != NULL) {
+				instance()->error("Duplicate persistent event for " + eventName);
+			}
 		}
+
+		task->schedule(mili);
+	} else {
+		task->schedule(mili);
 	}
 
 	return 0;
@@ -966,8 +986,7 @@ int DirectorManager::createServerEvent(lua_State* L) {
 	String play = lua_tostring(L, -3);
 	uint32 mili = lua_tonumber(L, -4);
 
-
-	PersistentEvent* pEvent = getServerEvent(eventName);
+	Reference<PersistentEvent*> pEvent = getServerEvent(eventName);
 
 	if (pEvent != NULL) {
 		instance()->error("The server event already exists, exiting...");
@@ -979,30 +998,35 @@ int DirectorManager::createServerEvent(lua_State* L) {
 	uint64 currentTime = expireTime.getMiliTime();
 
 	Reference<ScreenPlayTask*> task = new ScreenPlayTask(NULL, key, play);
-	task->schedule(mili);
 
-	ManagedReference<PersistentEvent*> pevent = new PersistentEvent();
+	Reference<PersistentEvent*> pevent = new PersistentEvent();
 	pevent->setTimeStamp(mili);
 	pevent->setCurTime(currentTime);
 	pevent->setEventName(eventName);
 	pevent->setKey(key);
 	pevent->setScreenplay(play);
 
+	if (persistentEvents.put(eventName.hashCode(), pevent) != NULL) {
+		instance()->error("Persistent event with " + eventName + " already exists!");
+	}
+
 	ObjectManager::instance()->persistObject(pevent, 1, "events");
+
+	task->schedule(mili);
 
 	return 0;
 }
 
 int DirectorManager::hasServerEvent(lua_State* L) {
 	if (checkArgumentCount(L, 1) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::getServerEvent");
+		instance()->error("incorrect number of arguments passed to DirectorManager::hasServerEvent");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
 
 	String eventName = lua_tostring(L, -1);
 
-	PersistentEvent* pEvent = getServerEvent(eventName);
+	Reference<PersistentEvent*> pEvent = getServerEvent(eventName);
 
 	if (pEvent != NULL)
 		lua_pushboolean(L, true);
@@ -1012,34 +1036,12 @@ int DirectorManager::hasServerEvent(lua_State* L) {
 	return 1;
 }
 
-PersistentEvent* DirectorManager::getServerEvent(String eventName) {
+void DirectorManager::dropServerEventReference(const String& eventName) {
+	persistentEvents.remove(eventName.hashCode());
+}
 
-	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
-	ObjectDatabase* eventDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("events", true);
-
-	if (eventDatabase == NULL) {
-		instance()->error("Could not load the event database.");
-		ERROR_CODE = GENERAL_ERROR;
-		return 0;
-	}
-
-	try {
-		ObjectDatabaseIterator iterator(eventDatabase);
-
-		uint64 objectID;
-
-		while (iterator.getNextKey(objectID)) {
-			Reference<PersistentEvent*> pEventCheck = Core::getObjectBroker()->lookUp(objectID).castTo<PersistentEvent*>();
-			if (eventName == pEventCheck->getEventName()){
-				return pEventCheck;
-			}
-		}
-	} catch (DatabaseException& e) {
-		instance()->error("Error in checking event database in DirectorManager::getServerEvent");
-		ERROR_CODE = GENERAL_ERROR;
-	}
-
-	return NULL;
+Reference<PersistentEvent*> DirectorManager::getServerEvent(const String& eventName) {
+	return persistentEvents.get(eventName.hashCode());
 }
 
 int DirectorManager::getChatMessage(lua_State* L) {
@@ -2013,7 +2015,7 @@ ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, C
 }
 
 void DirectorManager::activateEvent(ScreenPlayTask* task) {
-	SceneObject* obj = task->getSceneObject();
+	Reference<SceneObject*> obj = task->getSceneObject();
 	String play = task->getScreenPlay();
 	String key = task->getTaskKey();
 
@@ -2029,13 +2031,16 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 		e.printStackTrace();
 	}
 
-	if (task->getPersistentEvent() != NULL) {
-		Reference<PersistentEvent*> persistentEvent = task->getPersistentEvent();
+	Reference<PersistentEvent*> persistentEvent = task->getPersistentEvent();
 
-		if (persistentEvent != NULL)
-			persistentEvent->setEventExecuted(true);
+	if (persistentEvent != NULL) {
+		persistentEvent->setEventExecuted(true);
 
 		ObjectManager::instance()->destroyObjectFromDatabase(persistentEvent->_getObjectID());
+
+		dropServerEventReference(persistentEvent->getEventName());
+	} else {
+		error("no PersistentEvent object in the task " + play + ":" + task);
 	}
 }
 
