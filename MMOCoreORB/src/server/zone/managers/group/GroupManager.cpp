@@ -76,7 +76,11 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	if (leader->isGrouped()) {
 		ManagedReference<GroupObject*> group = leader->getGroup();
 
-		if (group->getLeader() != leader) {
+		bool invitingOwnPet = target->isPet() && target->getCreatureLinkID() == leader->getObjectID();
+		if (invitingOwnPet && !target->isInRange(leader, 120)) {
+			return;
+		}
+		else if (group->getLeader() != leader) {
 			leader->sendSystemMessage("@group:must_be_leader");
 			return;
 		}
@@ -180,7 +184,8 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	}
 
 	// if inviter IS in the group but is not the leader
-	if ( group->getLeader() != inviter ){
+	bool invitingOwnPet = player->isPet() && player->getCreatureLinkID() == inviter->getObjectID();
+	if (group->getLeader() != inviter && !invitingOwnPet) {
 		player->updateGroupInviterID(0);
 		StringIdChatParameter param("group", "prose_leader_changed"); // "%TU has abdicated group leadership to %TT."
 		param.setTU( inviter->getDisplayedName() );
