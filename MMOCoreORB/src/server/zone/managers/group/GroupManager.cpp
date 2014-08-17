@@ -62,6 +62,14 @@ which carries forward this exception.
 GroupManager::GroupManager() {
 }
 
+bool GroupManager::playerIsInvitingOwnPet(CreatureObject* inviter, CreatureObject* target) {
+	return inviter != NULL
+			&& target != NULL
+			&& target->isPet()
+			&& target->getCreatureLinkID() != 0
+			&& target->getCreatureLinkID() == inviter->getObjectID();
+}
+
 void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target) {
 	// Pre: leader locked
 	// Post: player invited to leader's group, leader locked
@@ -76,7 +84,12 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* target)
 	if (leader->isGrouped()) {
 		ManagedReference<GroupObject*> group = leader->getGroup();
 
-		if (group->getLeader() != leader) {
+		if (playerIsInvitingOwnPet(leader, target)) {
+			if (!target->isInRange(leader, 120)) {
+				return;
+			}
+		}
+		else if (group->getLeader() != leader) {
 			leader->sendSystemMessage("@group:must_be_leader");
 			return;
 		}
@@ -180,7 +193,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	}
 
 	// if inviter IS in the group but is not the leader
-	if ( group->getLeader() != inviter ){
+	if (group->getLeader() != inviter && !playerIsInvitingOwnPet(inviter, player)) {
 		player->updateGroupInviterID(0);
 		StringIdChatParameter param("group", "prose_leader_changed"); // "%TU has abdicated group leadership to %TT."
 		param.setTU( inviter->getDisplayedName() );
