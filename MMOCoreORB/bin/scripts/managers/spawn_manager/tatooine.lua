@@ -114,7 +114,7 @@ tatooine_regions = {
 	{"easy_villiages_sw",0,0,{1,0},UNDEFINEDAREA,1},
 	{"elegent_tent",0,0,{1,0},UNDEFINEDAREA,1},
 	{"escape_pod",-3926,-4428,{1,200},NOSPAWNAREA + NOBUILDZONEAREA,1},
-	{"field_of_pillars",-266,3724,{1,500},NOSPAWNAREA + NOBUILDZONEAREA,1},
+	{"field_of_pillars",-266,3724,{1,500},NOSPAWNAREA,1},
 	{"fort_tusken",-3980,6260,{1,200},NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"fort_tusken_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"four_stone_blocks",3488,4124,{1,50},NOSPAWNAREA + NOBUILDZONEAREA,1},
