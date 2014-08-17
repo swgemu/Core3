@@ -1,5 +1,5 @@
-vanvi_hotne = Creature:new {
-	objectName = "@mob/creature_names:bestine_artist01",
+kahfr_oladi = Creature:new {
+	objectName = "@mob/creature_names:bestine_artist04",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -23,15 +23,15 @@ vanvi_hotne = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bestine_artist01.iff"},
+	templates = {"object/mobile/dressed_bestine_artist04.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "bestineArtist04ConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(vanvi_hotne, "vanvi_hotne")
+CreatureTemplates:addCreatureTemplate(kahfr_oladi, "kahfr_oladi")
