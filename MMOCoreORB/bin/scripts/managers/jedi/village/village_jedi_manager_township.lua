@@ -1,6 +1,3 @@
--- Additional Includes.
--- includeFile("village/fs_experience_converter_conv_handler.lua")
-
 local ObjectManager = require("managers.object.object_manager")
 local ScreenPlay = require("screenplays.screenplay")
 
@@ -11,11 +8,6 @@ require("utils.helpers")
 VillageJediManagerTownship = ScreenPlay:new {
 	screenplayName = "VillageJediManagerTownship"
 }
-
-local currentPhase = Object:new {phase = nil}
-
-VILLAGE_CONFIGURATION_FILE_STRING = "./conf/villagephase.txt"
-
 
 VILLAGE_PHASE_ONE = 1
 VILLAGE_PHASE_TWO = 2
@@ -50,22 +42,11 @@ end
 
 -- Set the current Village Phase.
 function VillageJediManagerTownship.setCurrentPhase(nextPhase)
-	currentPhase.phase = nextPhase
-
-	local file = io.open(VILLAGE_CONFIGURATION_FILE_STRING, "w+")
-	file:write(nextPhase)
-	file:flush()
-	file:close()
+	setQuestStatus("Village:CurrentPhase", nextPhase)
 end
 
 function VillageJediManagerTownship.getCurrentPhase()
-	if (currentPhase.phase == nil) then
-		local file = io.open(VILLAGE_CONFIGURATION_FILE_STRING)
-		local thePhase = file:read()
-		VillageJediManagerTownship.setCurrentPhase(thePhase)
-		file:close()
-	end
-	return currentPhase.phase
+	return getQuestStatus("Village:CurrentPhase")
 end
 
 function VillageJediManagerTownship:switchToNextPhase()
@@ -75,6 +56,11 @@ function VillageJediManagerTownship:switchToNextPhase()
 	currentPhase = currentPhase + 1 % VILLAGE_TOTAL_NUMBER_OF_PHASES
 	VillageJediManagerTownship.setCurrentPhase(currentPhase)
 	VillageJediManagerTownship:spawnMobiles(currentPhase)
+
+	-- Schedule another persistent event.
+	if (not hasServerEvent("VillagePhaseChange")) then
+		createServerEvent(VILLAGE_PHASE_CHANGE_TIME, "VillageJediManagerTownship", "switchToNextPhase", "VillagePhaseChange")
+	end
 end
 
 function VillageJediManagerTownship:start()
@@ -89,12 +75,12 @@ end
 
 function VillageJediManagerTownship:spawnMobiles(pCurrentPhase)
 	foreach(VillagerMobiles, function(mobile)
-			local theSpawnedMobile = spawnMobile("dathomir", mobile.name, mobile.respawn, mobile.x, mobile.z, mobile.y, mobile.header, mobile.cellid)
-			Logger:log("Spawning a Village NPC at " .. mobile.x .. " - " .. mobile.y, LT_INFO)
-			ObjectManager.withSceneObject(theSpawnedMobile, function(villageMobile)
-				writeData("village:npc:oid:" .. mobile.name, villageMobile:getObjectID())
-				Logger:log("Saving a Village NPC with a objectID of " .. villageMobile:getObjectID(), LT_INFO)
-			end)
+		local theSpawnedMobile = spawnMobile("dathomir", mobile.name, mobile.respawn, mobile.x, mobile.z, mobile.y, mobile.header, mobile.cellid)
+		Logger:log("Spawning a Village NPC at " .. mobile.x .. " - " .. mobile.y, LT_INFO)
+		ObjectManager.withSceneObject(theSpawnedMobile, function(villageMobile)
+			writeData("village:npc:oid:" .. mobile.name, villageMobile:getObjectID())
+			Logger:log("Saving a Village NPC with a objectID of " .. villageMobile:getObjectID(), LT_INFO)
+		end)
 	end)
 	if (pCurrentPhase == VILLAGE_PHASE_ONE) then
 		foreach(VillagerMobilesPhaseOne, function(mobile)
