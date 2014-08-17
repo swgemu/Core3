@@ -172,7 +172,7 @@ bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const
 
 	NameManager* nameManager = processor->getNameManager();
 
-	if (!nameManager->validateName(guildName)) {
+	if (nameManager->validateName(guildName) != NameManagerResult::ACCEPTED) {
 		player->sendSystemMessage("@guild:create_fail_name_not_allowed"); //That guild name is not allowed.
 		return false;
 	}
@@ -254,7 +254,7 @@ bool GuildManagerImplementation::validateGuildAbbrev(CreatureObject* player, con
 	}
 	NameManager* nameManager = processor->getNameManager();
 
-	if (!nameManager->validateName(guildAbbrev)) {
+	if (nameManager->validateName(guildAbbrev) != NameManagerResult::ACCEPTED) {
 		player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); //That guild abbreviation is not allowed.
 		return false;
 	}
@@ -1172,7 +1172,7 @@ void GuildManagerImplementation::setMemberTitle(CreatureObject* player, Creature
 
 	NameManager* nameManager = processor->getNameManager();
 
-	if (!nameManager->validateName(title)) {
+	if (nameManager->validateName(title) != NameManagerResult::ACCEPTED) {
 		player->sendSystemMessage("@guild:title_fail_not_allowed"); //That title is not allowed.
 		return;
 	}
