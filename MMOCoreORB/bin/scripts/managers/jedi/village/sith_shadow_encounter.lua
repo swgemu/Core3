@@ -68,6 +68,9 @@ function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
 			self:addWaypointDatapadAsLoot(pLootedCreature)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.TwO_MILITARY)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_1)
+			ObjectManager.withCreatureObject(pLooter, function(creature)
+				creature:sendSystemMessage("@quest/quests:quest_journal_updated")
+			end)
 			return 1
 		end
 	end
@@ -89,6 +92,10 @@ function SithShadowEncounter:onPlayerKilled(pCreatureObject, pKiller, nothing)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.TwO_MILITARY)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_1)
+		ObjectManager.withCreatureObject(pCreatureObject, function(creature)
+			creature:sendSystemMessage("@quest/quests:task_failure")
+			creature:sendSystemMessage("@quest/quests:quest_journal_updated")
+		end)
 		return 1
 	end
 
