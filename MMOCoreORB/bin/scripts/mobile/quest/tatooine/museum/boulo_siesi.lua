@@ -1,5 +1,5 @@
-kahfr_oladi = Creature:new {
-	objectName = "@mob/creature_names:bestine_artist04",
+boulo_siesi = Creature:new {
+	objectName = "@mob/creature_names:bestine_artist06",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -23,15 +23,15 @@ kahfr_oladi = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bestine_artist04.iff"},
+	templates = {"object/mobile/dressed_bestine_artist06.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "bestineArtist06ConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(kahfr_oladi, "kahfr_oladi")
+CreatureTemplates:addCreatureTemplate(boulo_siesi, "boulo_siesi")

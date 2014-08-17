@@ -1,5 +1,5 @@
-giaal_itotr = Creature:new {
-	objectName = "@mob/creature_names:bestine_artist03",
+vanvi_hotne = Creature:new {
+	objectName = "@mob/creature_names:bestine_artist01",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -23,15 +23,15 @@ giaal_itotr = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bestine_artist03.iff"},
+	templates = {"object/mobile/dressed_bestine_artist01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "bestineArtist01ConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(giaal_itotr, "giaal_itotr")
+CreatureTemplates:addCreatureTemplate(vanvi_hotne, "vanvi_hotne")
