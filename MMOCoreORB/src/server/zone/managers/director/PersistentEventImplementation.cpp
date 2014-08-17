@@ -41,30 +41,28 @@ which carries forward this exception.
 
 */
 
+#include "server/ServerCore.h"
+#include "server/zone/ZoneServer.h"
+
 #include "server/zone/managers/director/PersistentEvent.h"
 #include "DirectorManager.h"
 #include "ScreenPlayTask.h"
 #include "engine/engine.h"
 
-void PersistentEventImplementation::notifyLoadFromDatabase() {
+void PersistentEventImplementation::loadTransientTask() {
 	if (eventExecuted)
 		return;
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime();
-	uint64 downTime = expireTime.getMiliTime();
-
-	currentTime -= curTime + timeStamp;
-	int64 remTime = timeStamp - downTime - currentTime;
+	int64 remTime = (timeStamp + curTime) - currentTime;
 
 	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play);
 	task->setPersistentEvent(_this.get());
 
-	if (currentTime > (curTime + timeStamp)) {  // Reschedule the event if it's not past, if so reschedule for the time server was down minus the event time.
-		task->schedule(timeStamp);
-	} else if (remTime > 0) { // If the time is greater than zero.
+	if (remTime > 0) { // If there is still time left before it should be triggered, schedule for that amount of time
 		task->schedule(remTime);
-	} else { // If not, schedule in 10 minutes.
-		task->schedule(600000);
+	} else { // If not, schedule in 1s
+		task->schedule(1000);
 	}
 }
