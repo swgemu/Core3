@@ -100,5 +100,6 @@ class PersistentEvent extends ManagedObject {
 	public void setEventExecuted(boolean val) {
 		eventExecuted = val;
 	}
-	public native void notifyLoadFromDatabase();
+	
+	public native void loadTransientTask();
 }

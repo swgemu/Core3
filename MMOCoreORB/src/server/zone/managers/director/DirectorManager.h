@@ -12,6 +12,8 @@
 #include "DirectorSharedMemory.h"
 #include "server/zone/managers/director/QuestStatus.h"
 
+#include "system/util/SynchronizedHashTable.h"
+
 class ScreenPlayTask;
 
 namespace server {
@@ -56,6 +58,7 @@ namespace server {
 #else
 		Reference<DirectorSharedMemory* > sharedMemory;
 #endif
+		static SynchronizedHashTable<uint32, Reference<PersistentEvent*> > persistentEvents;
 	public:
 		static int DEBUG_MODE;
 
@@ -154,7 +157,9 @@ namespace server {
 		int loadScreenPlays(Lua* luaEngine);
 		void loadJediManager(Lua* luaEngine);
 		static Vector3 generateSpawnPoint(CreatureObject* creatureObject, float x, float y, float minimumDistance, float maximumDistance, float extraNoBuildRadius, float sphereCollision);
-		static PersistentEvent* getServerEvent(String eventName);
+
+		static Reference<PersistentEvent*> getServerEvent(const String& eventName);
+		static void dropServerEventReference(const String& eventName);
 	};
 
    }
