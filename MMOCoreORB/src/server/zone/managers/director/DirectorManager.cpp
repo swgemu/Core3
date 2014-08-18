@@ -2063,12 +2063,12 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 		dropServerEventReference(persistentEvent->getEventName());
 
 		ObjectManager::instance()->destroyObjectFromDatabase(persistentEvent->_getObjectID());
-	} else {
+	} /*else {
 		StringBuffer msg;
 		msg << "no PersistentEvent object in the task " << play << ":" << task;
 
 		error(msg.toString());
-	}
+	}*/
 
 	Lua* lua = getLuaInstance();
 
