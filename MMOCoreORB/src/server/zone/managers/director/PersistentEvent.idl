@@ -51,7 +51,7 @@ include server.zone.objects.scene.SceneObject;
 
 class PersistentEvent extends ManagedObject {
 	protected int timeStamp;
-	protected int curTime;
+	protected unsigned long curTime;
 	protected string key;
 	protected string play;
 	protected SceneObject obj;
@@ -83,7 +83,7 @@ class PersistentEvent extends ManagedObject {
 	}
 	
 	@read
-	public int getCurTime() {
+	public unsigned long getCurTime() {
 		return curTime;
 	}
 	
@@ -96,7 +96,7 @@ class PersistentEvent extends ManagedObject {
 		eventName = en;
 	}
 	
-	public void setCurTime(int time) {
+	public void setCurTime(unsigned long time) {
 		curTime = time;
 	}
 	

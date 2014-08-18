@@ -23,6 +23,15 @@ includeFile("conversations/themepark/nym/nym_conv.lua")
 includeFile("conversations/themepark/nym/sergeant_moore_conv.lua")
 includeFile("conversations/themepark/nym/kole_conv.lua")
 
+-- Bestine Museum
+includeFile("conversations/events/bestine_museum/bestine_artist01_conv.lua")
+includeFile("conversations/events/bestine_museum/bestine_artist02_conv.lua")
+includeFile("conversations/events/bestine_museum/bestine_artist03_conv.lua")
+includeFile("conversations/events/bestine_museum/bestine_artist04_conv.lua")
+includeFile("conversations/events/bestine_museum/bestine_artist05_conv.lua")
+includeFile("conversations/events/bestine_museum/bestine_artist06_conv.lua")
+includeFile("conversations/events/bestine_museum/museum_curator_conv.lua")
+
 -- Epic Quests
 includeFile("conversations/themepark/epic_quests/goru_conv.lua")
 

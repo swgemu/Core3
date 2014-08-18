@@ -42,7 +42,37 @@
 
 
 object_draft_schematic_furniture_bestine_painting_bestine_ronka = object_draft_schematic_furniture_bestine_shared_painting_bestine_ronka:new {
+	templateType = DRAFTSCHEMATIC,
 
+	customObjectName = "Painting of a Ronka Plant",
+
+	craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+	complexity = 15,
+	size = 2,
+
+	xpType = "crafting_structure_general",
+	xp = 80,
+
+	assemblySkill = "structure_assembly",
+	experimentingSkill = "structure_experimentation",
+	customizationSkill = "structure_customization",
+
+	customizationOptions = {},
+	customizationStringNames = {},
+	customizationDefaults = {},
+
+	ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+	ingredientTitleNames = {"frame", "canvas", "paints"},
+	ingredientSlotType = {0, 0, 0},
+	resourceTypes = {"metal", "hide", "petrochem_inert_polymer"},
+	resourceQuantities = {50, 50, 40},
+	contribution = {100, 100, 100},
+
+
+	targetTemplate = "object/tangible/painting/painting_bestine_ronka.iff",
+
+	additionalTemplates = {
+	}
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_bestine_painting_bestine_ronka, "object/draft_schematic/furniture/bestine/painting_bestine_ronka.iff")
