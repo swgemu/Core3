@@ -117,8 +117,9 @@ object_weapon_melee_polearm_lance_nightsister_npc_version = object_weapon_melee_
 	minDamage = 11,
 	maxDamage = 214,
 
-	attackSpeed = 3.0
+	attackSpeed = 3.0,
 
+	woundsRatio = 18,
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_lance_nightsister_npc_version, "object/weapon/melee/polearm/lance_nightsister_npc_version.iff")
