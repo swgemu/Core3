@@ -960,7 +960,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 		return;
 
 	if (scno->isPlayerCreature()) {
-		uint32 newValue = numberOfPlayersInRange.decrement();
+		int32 newValue = (int32) numberOfPlayersInRange.decrement();
 
 		if ((newValue == 0)
 				&& despawnOnNoPlayerInRange
