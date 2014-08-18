@@ -125,7 +125,7 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 			--agent:info("1a")
 			agent:setStalkObject(pObject)
 			-- TODO (dannuic): is there a skill check associated with this message?
-			target:sendSystemMessageWithTO("@skill_use:notify_stalked", ObjectManager.withSceneObject(pAgent, function(agentObj) return agentObj:getDisplayedName() end))
+			target:sendSystemMessageWithTO("@skl_use:notify_stalked", ObjectManager.withSceneObject(pAgent, function(agentObj) return agentObj:getDisplayedName() end))
 			agent:activateAwareness(pObject)
 		elseif agent:getAvgSpeed() <= (target:getWalkSpeed() * target:getWalkSpeed()) or inRange then
 			--agent:info("1b")

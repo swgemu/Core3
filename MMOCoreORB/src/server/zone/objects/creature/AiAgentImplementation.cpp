@@ -791,7 +791,7 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 		return;
 
 	if (scno->isPlayerCreature()) {
-		++numberOfPlayersInRange;
+		numberOfPlayersInRange.increment();
 		activateMovementEvent();
 	}
 }
@@ -960,7 +960,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 		return;
 
 	if (scno->isPlayerCreature()) {
-		if ((--numberOfPlayersInRange <= 0)  && despawnOnNoPlayerInRange && (despawnEvent == NULL) && !isPet()) {
+		if ((numberOfPlayersInRange.decrement() <= 0)  && despawnOnNoPlayerInRange && (despawnEvent == NULL) && !isPet()) {
 			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
 			despawnEvent->schedule(30000);
 		}

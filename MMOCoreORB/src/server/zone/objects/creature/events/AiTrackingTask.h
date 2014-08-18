@@ -29,8 +29,8 @@ namespace objects {
 namespace creature {
 namespace events {
 
-#ifndef AI_DEBUG
-#define AI_DEBUG
+#ifdef AI_DEBUG
+#undef AI_DEBUG
 #endif
 
 class AiTrackingTask : public Task {

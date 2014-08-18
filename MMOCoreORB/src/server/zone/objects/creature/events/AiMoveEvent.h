@@ -19,7 +19,7 @@ namespace creature {
 namespace events {
 
 class AiMoveEvent : public Task {
-	ManagedReference<AiAgent*> creature;
+	ManagedWeakReference<AiAgent*> creature;
 
 public:
 	AiMoveEvent(AiAgent* pl) : Task(1000) {

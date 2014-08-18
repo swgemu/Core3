@@ -83,6 +83,7 @@ import server.zone.objects.creature.ai.bt.CompositeBehavior;
 include server.zone.templates.AiTemplate;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.creature.events.AiTrackingTask;
+import system.thread.atomic.AtomicInteger;
 
 @mock
 class AiAgent extends CreatureObject {
@@ -147,7 +148,9 @@ class AiAgent extends CreatureObject {
 	protected float respawnTimer;
 	protected int respawnCounter;
 	protected boolean randomRespawn;
-	protected int numberOfPlayersInRange;
+	
+	@dereferenced
+	protected AtomicInteger numberOfPlayersInRange;
 	
 	protected boolean loadedOutfit;
 	
@@ -194,7 +197,7 @@ class AiAgent extends CreatureObject {
 		showNextMovementPosition = true;
 		
 		despawnOnNoPlayerInRange = false;
-		numberOfPlayersInRange = 0;
+		numberOfPlayersInRange.set(0);
 		
 		loadedOutfit = false;
 		
@@ -697,7 +700,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	public int getNumberOfPlayersInRange() {
-		return numberOfPlayersInRange;
+		return numberOfPlayersInRange.get();
 	}
 	
 	public string getFactionString() {
