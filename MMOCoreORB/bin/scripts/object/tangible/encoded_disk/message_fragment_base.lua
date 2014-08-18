@@ -42,7 +42,7 @@
 
 
 object_tangible_encoded_disk_message_fragment_base = object_tangible_encoded_disk_shared_message_fragment_base:new {
-
+	objectMenuComponent = {"cpp", "CoaMessageFragmentMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_encoded_disk_message_fragment_base, "object/tangible/encoded_disk/message_fragment_base.iff")
