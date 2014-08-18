@@ -1411,7 +1411,7 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate(){
 
 						ManagedReference<CellObject*> cellObject = getCell(child->getCellId());
 						if (cellObject != NULL) {
-							creature = creatureManager->spawnCreature(child->getMobile().hashCode(),0,child->getPosition().getX(),child->getPosition().getZ(),child->getPosition().getY(),cellObject->getObjectID(),false);
+							creature = creatureManager->spawnCreatureWithAi(child->getMobile().hashCode(),child->getPosition().getX(),child->getPosition().getZ(),child->getPosition().getY(),cellObject->getObjectID(),false);
 						} else
 							error("NULL CELL OBJECT");
 					}
@@ -1437,7 +1437,7 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate(){
 					float z = getPosition().getZ() + childPosition.getZ();
 					float degrees = getDirection()->getDegrees();
 
-					creature = creatureManager->spawnCreature(mobilename.hashCode(),0,x,z,y,0,false);
+					creature = creatureManager->spawnCreatureWithAi(mobilename.hashCode(),x,z,y,0,false);
 
 			}
 
@@ -1462,7 +1462,7 @@ void BuildingObjectImplementation::spawnChildCreature(String& mobile, int respaw
 	if(creatureManager == NULL)
 		return;
 
-	CreatureObject* creature = creatureManager->spawnCreature(mobile.hashCode(),0,x,z,y,cellID,false);
+	CreatureObject* creature = creatureManager->spawnCreatureWithAi(mobile.hashCode(),x,z,y,cellID,false);
 
 	if(creature == NULL)
 		return;
