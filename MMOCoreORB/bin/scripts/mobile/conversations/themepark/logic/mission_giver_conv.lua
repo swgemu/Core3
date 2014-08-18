@@ -280,6 +280,7 @@ createMissionGiverConvoTemplate("phinea_shantee_mission_giver_convotemplate", "p
 createMissionGiverConvoTemplate("prefect_talmont_mission_giver_convotemplate", "prefect_talmont_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("gramm_rile_mission_giver_convotemplate", "gramm_rile_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("tolan_nokkar_mission_giver_convotemplate", "tolan_nokkar_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("fixer_mission_giver_convotemplate", "fixer_mission_giver_conv_handler")
 
 
 -- Naboo
