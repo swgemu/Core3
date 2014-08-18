@@ -135,7 +135,8 @@ public:
 			return false;
 		}
 
-		if (enhancer->getSkillMod("private_medical_rating") <= 0) {
+		int medicalRatingNotIncludingCityBonus = enhancer->getSkillMod("private_medical_rating") - enhancer->getSkillModOfType("private_medical_rating", SkillModManager::CITY);
+		if (medicalRatingNotIncludingCityBonus <= 0) {
 			enhancer->sendSystemMessage("@healing_response:must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return false;
 		}

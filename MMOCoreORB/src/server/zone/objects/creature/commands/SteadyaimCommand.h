@@ -123,6 +123,7 @@ public:
 
 			ManagedReference<Buff*> buff = new Buff(memberPlayer, actionCRC, duration, BuffType::SKILL);
 			buff->setSkillModifier("private_aim", amount);
+			buff->setStartFlyText("combat_effects", "go_steady", 0, 0xFF, 0); // there is no corresponding no_steady fly text
 
 			memberPlayer->addBuff(buff);
 		}

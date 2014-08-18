@@ -1356,6 +1356,12 @@ int CreatureObjectImplementation::getSkillMod(const String& skillmod) {
 	return skillModList.getSkillMod(skillmod);
 }
 
+int CreatureObjectImplementation::getSkillModOfType(const String& skillmod, const unsigned int modType) {
+	Locker locker(&skillModMutex);
+
+	return skillModList.getSkillModOfType(skillmod, modType);
+}
+
 void CreatureObjectImplementation::addSkill(const String& skill,
 		bool notifyClient) {
 	SkillManager* skillManager = server->getZoneServer()->getSkillManager();

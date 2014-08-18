@@ -189,6 +189,16 @@ public:
 		return skill;
 	}
 
+	int getSkillModOfType(const String& skillMod, const uint32 modType) {
+		SkillModGroup* group = getSkillModGroup(modType);
+
+		if (group->contains(skillMod)) {
+			return group->get(skillMod);
+		}
+
+		return 0;
+	}
+
 	String getPrintableSkillModList() {
 
 
