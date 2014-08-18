@@ -150,7 +150,7 @@ class AiAgent extends CreatureObject {
 	protected boolean randomRespawn;
 	
 	@dereferenced
-	protected AtomicInteger numberOfPlayersInRange;
+	protected transient AtomicInteger numberOfPlayersInRange;
 	
 	protected boolean loadedOutfit;
 	
