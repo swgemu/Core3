@@ -106,7 +106,8 @@ public:
 			return false;
 		}
 
-		if (creature->getSkillMod("private_medical_rating") <= 0) {
+		int medicalRatingNotIncludingCityBonus = creature->getSkillMod("private_medical_rating") - creature->getSkillModOfType("private_medical_rating", SkillModManager::CITY);
+		if (medicalRatingNotIncludingCityBonus <= 0) {
 			creature->sendSystemMessage("@healing_response:must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return false;
 		}
