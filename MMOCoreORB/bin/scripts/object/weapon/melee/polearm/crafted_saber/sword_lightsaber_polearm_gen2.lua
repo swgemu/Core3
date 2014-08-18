@@ -85,7 +85,7 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen2 = object
 	creatureAccuracyModifiers = { "polearmlightsaber_accuracy" },
 
 	-- See http://www.ocdsoft.com/files/defense.xls
-	defenderDefenseModifiers = { "melee_defense" },
+	defenderDefenseModifiers = { "melee_defense" , "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "saber_block" },

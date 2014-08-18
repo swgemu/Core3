@@ -542,7 +542,6 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 }
 
 int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender) {
-	if (defender->isIntimidated()) return 0;
 
 	int targetDefense = 0;
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
@@ -557,6 +556,13 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 
 	if (targetDefense > 125)
 		targetDefense = 125;
+
+	// Lightsaber block is not negated by intimidate, but will lower it a small random amount inbetween 5-10%.
+	if (defenseAccMods->contains("saber_block") && defender->isIntimidated()) {
+		targetDefense -= (System::random(5) + 5);
+	} else if (defender->isIntimidated()) {
+		return 0;
+	}
 
 	return targetDefense;
 }

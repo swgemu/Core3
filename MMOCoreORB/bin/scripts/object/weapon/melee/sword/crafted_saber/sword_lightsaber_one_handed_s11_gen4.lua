@@ -85,7 +85,7 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s11_gen4 = o
 	creatureAccuracyModifiers = { "onehandlightsaber_accuracy" },
 
 	-- See http://www.ocdsoft.com/files/defense.xls
-	defenderDefenseModifiers = { "melee_defense" },
+	defenderDefenseModifiers = { "melee_defense" , "ranged_defense" },
 
 	-- Leave as "dodge" for now, may have additions later
 	defenderSecondaryDefenseModifiers = { "saber_block" },
