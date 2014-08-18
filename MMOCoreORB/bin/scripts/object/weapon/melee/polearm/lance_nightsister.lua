@@ -119,6 +119,7 @@ object_weapon_melee_polearm_lance_nightsister = object_weapon_melee_polearm_shar
 
 	attackSpeed = 3.0,
 
+	woundsRatio = 18,
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "SR", "SR", "SR", "SR", "SR", "SR", "XX", "SR", "XX", "SR", "SR", "SR"},
