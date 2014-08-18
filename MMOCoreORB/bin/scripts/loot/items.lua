@@ -155,6 +155,16 @@ includeFile("items/armor/ubese_armor_jacket.lua")
 includeFile("items/armor/ubese_armor_pants.lua")
 includeFile("items/armor/ubese_armor_shirt.lua")
 
+--coa sub-folder
+includeFile("items/coa/coa_imp_1.lua")
+includeFile("items/coa/coa_imp_2.lua")
+includeFile("items/coa/coa_imp_3.lua")
+includeFile("items/coa/coa_imp_4.lua")
+includeFile("items/coa/coa_reb_1.lua")
+includeFile("items/coa/coa_reb_2.lua")
+includeFile("items/coa/coa_reb_3.lua")
+includeFile("items/coa/coa_reb_4.lua")
+
 -- creature sub-folder
 includeFile("items/creature/brackaset_plates.lua")
 includeFile("items/creature/brackaset_plating_segment.lua")

@@ -1,5 +1,6 @@
 includeFile("groups/armor_attachments.lua")
 includeFile("groups/clothing_attachments.lua")
+includeFile("groups/coa_encoded_disk_fragments.lua")
 includeFile("groups/color_crystals.lua")
 includeFile("groups/crystals_all.lua")
 includeFile("groups/crystals_good.lua")
