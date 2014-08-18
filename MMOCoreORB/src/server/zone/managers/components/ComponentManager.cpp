@@ -106,6 +106,9 @@
 #include "server/zone/objects/tangible/components/CityDecorationMenuComponent.h"
 #include "server/zone/objects/tangible/components/DungeonTicketObjectAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/SurveyDroidMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/CoaMessageFragmentMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/CoaMessageMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/CoaMessageDataComponent.h"
 
 
 ComponentManager::ComponentManager() {
@@ -250,5 +253,10 @@ ComponentManager::ComponentManager() {
 	components.put("DungeonTicketObjectAttributeListComponent", new DungeonTicketObjectAttributeListComponent());
 	// survey droid
 	components.put("SurveyDroidMenuComponent", new SurveyDroidMenuComponent());
+
+	components.put("CoaMessageFragmentMenuComponent", new CoaMessageFragmentMenuComponent());
+	components.put("CoaMessageMenuComponent", new CoaMessageMenuComponent());
+	components.put("CoaMessageDataComponent", new CoaMessageDataComponent() );
+	dataObjectFactory.registerObject<CoaMessageDataComponent>("CoaMessageDataComponent");
 
 }

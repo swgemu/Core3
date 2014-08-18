@@ -179,7 +179,7 @@ public:
 	static const uint16 SURVEY_TOOL_CONCENTRATED_MINIGAME = 232;
 	static const uint16 SURVEY_TOOL_CONCENTRATED_MINIGAME2 = 233;
 	// survey droid tool
-	static const uint16 SURVERY_DROID_MENU = 232;
+	static const uint16 SURVERY_DROID_MENU = 234;
 
 	//Sample 241 - 250
 	static const uint16 SAMPLE_RADIOACTIVE_CONFIRM = 241;
@@ -254,6 +254,8 @@ public:
 	static const uint16 CONFIRM_VETERAN_REWARD = 1021;
 	static const uint16 CONFIRM_DIVORCE = 1022;
 	static const uint16 CONFIRM_FLASH_SPEEDER_PURCHASE = 1023;
+	static const uint16 COA_MESSAGE_FRAGMENT = 1024;
+	static const uint16 COA_MESSAGE = 1025;
 };
 
 #endif /*SuiWindowType_H_*/
