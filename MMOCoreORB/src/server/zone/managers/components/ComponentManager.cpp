@@ -109,6 +109,7 @@
 #include "server/zone/objects/tangible/components/generic/CoaMessageFragmentMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/CoaMessageMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/CoaMessageDataComponent.h"
+#include "server/zone/objects/creature/components/FactionRecruiterContainerComponent.h"
 
 
 ComponentManager::ComponentManager() {
@@ -254,6 +255,7 @@ ComponentManager::ComponentManager() {
 	// survey droid
 	components.put("SurveyDroidMenuComponent", new SurveyDroidMenuComponent());
 
+	components.put("FactionRecruiterContainerComponent", new FactionRecruiterContainerComponent());
 	components.put("CoaMessageFragmentMenuComponent", new CoaMessageFragmentMenuComponent());
 	components.put("CoaMessageMenuComponent", new CoaMessageMenuComponent());
 	components.put("CoaMessageDataComponent", new CoaMessageDataComponent() );

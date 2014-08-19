@@ -62,6 +62,7 @@ CreatureTemplate::CreatureTemplate() {
 	defaultWeapon = "";
 	defaultAttack = "defaultattack";
 	controlDeviceTemplate = "object/intangible/pet/pet_control.iff";
+	containerComponentTemplate = "";
 }
 
 CreatureTemplate::~CreatureTemplate() {
@@ -191,6 +192,8 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 
 	if(!templateData->getStringField("controlDeviceTemplate").isEmpty())
 		controlDeviceTemplate = templateData->getStringField("controlDeviceTemplate");
+
+	containerComponentTemplate = templateData->getStringField("containerComponentTemplate");
 
 	/*if ((pvpBitmask & CreatureFlag::ATTACKABLE) && attacks->size() == 0) {
 		System::out << "ERROR " << templateName << " is attackable but has no skills\n";

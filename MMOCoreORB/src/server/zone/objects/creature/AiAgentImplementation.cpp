@@ -297,6 +297,11 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 			}
 		}
 	}
+
+	String conTemp = npcTemplate->getContainerComponentTemplate();
+	if (!conTemp.isEmpty()) {
+		containerComponent = cast<ContainerComponent*>(ComponentManager::instance()->getComponent<SceneObjectComponent*>(conTemp));
+	}
 }
 
 void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
@@ -371,6 +376,7 @@ void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
 	rescheduleTrackingTask();
+
 }
 
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
