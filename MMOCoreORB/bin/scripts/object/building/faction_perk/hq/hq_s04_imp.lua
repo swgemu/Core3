@@ -190,7 +190,7 @@ object_building_faction_perk_hq_hq_s04_imp = object_building_faction_perk_hq_sha
 			{ mobile="dark_trooper", x=3.5, z=-6.75, y=-5, cellid=5, respawn=300, containmentType=-1, heading=0},
 			{ mobile="dark_trooper", x=5, z=-6.75, y=-5, cellid=5, respawn=300, containmentType=-1, heading=0},
 
-			{ mobile="imperial_commander", x=-0.35, z=-13.75, y=-3.65, cellid=7, respawn=300, containmentType=-1, heading=4.71},
+			{ mobile="imperial_major", x=-0.35, z=-13.75, y=-3.65, cellid=7, respawn=300, containmentType=-1, heading=4.71},
 			{ mobile="dark_trooper", x=-6.5, z=-13.75, y=5.5,cellid=7, respawn=300, containmentType=-1, heading=3.14},
 			{ mobile="dark_trooper", x=-3.4, z=-13.75, y=3,cellid=7, respawn=300, containmentType=-1, heading=3.14},
 
@@ -199,7 +199,7 @@ object_building_faction_perk_hq_hq_s04_imp = object_building_faction_perk_hq_sha
 
 			{ mobile="stormtrooper", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
 			{ mobile="dark_trooper", x=15, z=-13.75, y=-4,cellid=10, respawn=300, containmentType=-1, heading=0},
-			{ mobile="imperial_commander", x=15.9, z=-13.75, y=-17.25,cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="imperial_general", x=15.9, z=-13.75, y=-17.25,cellid=10, respawn=300, containmentType=-1, heading=0},
 
 			{ mobile="imperial_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, 
 			  	respawn=60, heading=1.59},

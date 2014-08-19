@@ -24,7 +24,7 @@ function RebelHideoutScreenPlay:spawnMobiles()
 	
 	--South Barricade
 	spawnMobile("corellia", "rebel_first_lieutenant", 300, -6548.290, 405.000, 5926.740, -103.284, 0)
-	spawnMobile("corellia", "rebel_commander", 300, -6548.200, 405.000, 5928.340, -129.786, 0)
+	spawnMobile("corellia", "rebel_army_captain", 300, -6548.200, 405.000, 5928.340, -129.786, 0)
 	spawnMobile("corellia", "rebel_commando", 300, -6502.670, 405.000, 5909.410, 175.100, 0)
 	spawnMobile("corellia", "rebel_corporal", 300, -6503.990, 405.000, 5911.760, 27.118, 0)
 	spawnMobile("corellia", "rebel_medic", 300, -6503.130, 405.000, 5912.200, 68.721, 0)
@@ -113,7 +113,7 @@ function RebelHideoutScreenPlay:spawnMobiles()
 	--East Shuttle Pad
 	spawnMobile("corellia", "rebel_pilot", 300, -6463.900, 398.000, 5959.650, -171.915, 0)
 	spawnMobile("corellia", "rebel_pilot", 300, -6460.170, 398.000, 5948.910, 43.707, 0)
-	spawnMobile("corellia", "rebel_commander", 300, -6444.160, 398.000, 5970.670, -147.901, 0)
+	spawnMobile("corellia", "rebel_army_captain", 300, -6444.160, 398.000, 5970.670, -147.901, 0)
 	spawnMobile("corellia", "rebel_medic", 300, -6447.130, 398.000, 5973.380, 46.885, 0)
 	
 	--North Stairs
@@ -150,7 +150,7 @@ function RebelHideoutScreenPlay:spawnMobiles()
 	
 	--Power Generator
 	spawnMobile("corellia", "rebel_scout", 300, -6533.410, 398.000, 6002.590, 98.259, 0)
-	spawnMobile("corellia", "rebel_commander", 300, -6537.930, 398.000, 5997.470, -177.213, 0)
+	spawnMobile("corellia", "rebel_army_captain", 300, -6537.930, 398.000, 5997.470, -177.213, 0)
 	
 	--Stairs to Roof
 	spawnMobile("corellia", "rebel_trooper", 300, -6495.300, 398.000, 6023.640, 60.714, 0)

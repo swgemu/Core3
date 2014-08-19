@@ -187,7 +187,7 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 			{ mobile="senior_specforce_marine", x=17.9, z=-13.75, y=-0.8, cellid=9, respawn=300, containmentType=-1, heading=0},
 			{ mobile="senior_specforce_marine", x=12.7, z=-13.75, y=-0.8, cellid=9, respawn=300, containmentType=-1, heading=0},
 
-			{ mobile="rebel_commander", x=16.1, z=-13.75, y=-16.8, cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_general", x=16.1, z=-13.75, y=-16.8, cellid=10, respawn=300, containmentType=-1, heading=0},
 			{ mobile="senior_specforce_heavy_weapons_specialist", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
 			{ mobile="senior_specforce_marine", x=15, z=-13.75, y=-4, cellid=10, respawn=300, containmentType=-1, heading=0},
 

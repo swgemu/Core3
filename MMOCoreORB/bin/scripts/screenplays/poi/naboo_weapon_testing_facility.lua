@@ -314,7 +314,7 @@ function WeaponFacilityScreenPlay:spawnRebels(pBuilding)
         	building:spawnChildCreature("senior_specforce_infiltrator", 300, -73.0, -20.0, 36.9, -41, 6335645)
 
     	--Cell [6335646]
-        	building:spawnChildCreature("rebel_commander", 600, -48.7, -20.0, 14.5, -68, 6335646)
+        	building:spawnChildCreature("rebel_army_captain", 300, -48.7, -20.0, 14.5, -68, 6335646)
         	building:spawnChildCreature("rebel_second_lieutenant", 300, -70.0, -20.0, 16.4, 93, 6335646)
         	building:spawnChildCreature("specforce_marine", 300, -70.0, -20.0, 9.8, 86, 6335646)
         	building:spawnChildCreature("senior_specforce_infiltrator", 300, -76.2, -20.0, 8.8, -119, 6335646)

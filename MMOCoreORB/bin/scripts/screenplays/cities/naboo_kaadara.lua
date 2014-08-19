@@ -29,7 +29,7 @@ function NabooKadaaraScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "stormtrooper_squad_leader", 300, 14.7, -13.8, 5.2, 0, 1260045)
 	spawnMobile("naboo", "stormtrooper", 300, 14.7, -13.8, 8.0, 0, 1260045)
 	spawnMobile("naboo", "stormtrooper", 300, 14.7, -13.8, 9.8, 0, 1260045)
-	spawnMobile("naboo", "imperial_commander", 600, 15.1, -11.5, -20.4, 0, 1260046)
+	spawnMobile("naboo", "imperial_army_captain", 600, 15.1, -11.5, -20.4, 0, 1260046)
 
 	spawnMobile("naboo", "stormtrooper", 300, 3.7, 0.1, 2.1, -90, 1260051)
 	spawnMobile("naboo", "stormtrooper", 300, 0, 0.1, -1.9, 0, 1260050)

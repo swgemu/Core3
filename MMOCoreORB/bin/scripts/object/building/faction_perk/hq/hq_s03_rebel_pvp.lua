@@ -162,7 +162,7 @@ object_building_faction_perk_hq_hq_s03_rebel_pvp = object_building_faction_perk_
 			{ mobile="specops_agent", x=2.6, z=-20.75, y=29.9, cellid=10, containmentType=-1, respawn=300, heading=3.14},
 			{ mobile="rebel_coordinator", x=0.6, z=-20.75, y=29.9, cellid=10, containmentType=-1, respawn=300, heading=3.14},
 			{ mobile="specforce_major", x=5.8, z=-20.75, y=29.9, cellid=10, containmentType=-1, respawn=300, heading=4.71},
-			{ mobile="rebel_commander", x=5.5, z=-20.75, y=35, cellid=10, containmentType=-1, respawn=600, heading=3.14},
+			{ mobile="rebel_colonel", x=5.5, z=-20.75, y=35, cellid=10, containmentType=-1, respawn=600, heading=3.14},
 			
 			{ mobile="rebel_recruiter", x=-2, z=-20.75, y=34, cellid=10, containmentType=-1, respawn=60, heading=3.14},
 		},

@@ -1,7 +1,6 @@
 naboo_mountain_outpost_rebel_large_theater = Lair:new {
 	mobiles = {
-		{"rebel_commander",1},
-		{"rebel_commander",1},
+		{"rebel_colonel",1},
 		{"rebel_first_lieutenant",1},
 		{"rebel_major",1},
 		{"rebel_medic",1},

@@ -185,7 +185,7 @@ function TalusStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "imperial_trooper", 360, -6.0, 0.7, -1.7, 0, 9505497)
 	spawnMobile("talus", "imperial_pilot", 360, -1.0, 0.7, -6.9, -90, 9505498)
 	spawnMobile("talus", "imperial_medic", 360, -2.2, 0.7, -2.0, 90, 9505499)
-	spawnMobile("talus", "imperial_commander", 720, -2.2, 0.7, 4.3, 90, 9505500)
+	spawnMobile("talus", "imperial_army_captain", 360, -2.2, 0.7, 4.3, 90, 9505500)
 
 	--Debris (1711,783)
 

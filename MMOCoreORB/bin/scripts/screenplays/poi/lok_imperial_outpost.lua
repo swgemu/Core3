@@ -345,7 +345,7 @@ function LokImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("lok", "imperial_trooper", 300, 0.0, 1.0, -4.2, -90, 8615420)
 	spawnMobile("lok", "imperial_trooper", 300, 0.0, 1.0, -7.3, -90, 8615420)
 
-	--General_Otto & imperial_commander
+	--General_Otto & imperial_brigadier_general
 
 	local pOtto = spawnMobile("lok", "general_otto", 900, 18.7, 1.0, 21.1, -90, 8615421)
         createObserver(OBJECTDESTRUCTION, "LokImperialOutpostScreenPlay", "notifyOttoDead", pOtto)
@@ -353,8 +353,8 @@ function LokImperialOutpostScreenPlay:spawnMobiles()
 end
 
 function LokImperialOutpostScreenPlay:notifyOttoDead(pOtto, pKiller)
-     if (readData("lokimperialoutpost:imperial_commander") == 0) then
-          local pCommander = spawnMobile("lok", "imperial_commander", 0, 0.0, 2.0, 3.8, 0, 8615420)
+     if (readData("lokimperialoutpost:imperial_brigadier_general") == 0) then
+          local pBrigadier = spawnMobile("lok", "imperial_brigadier_general", 0, 0.0, 2.0, 3.8, 0, 8615420)
 			spawnMobile("lok", "dark_trooper", 0, -3.1, 1.0, 0.3, 0, 8615420)
 			spawnMobile("lok", "dark_trooper", 0, -1.0, 1.0, 0.3, 0, 8615420)
 			spawnMobile("lok", "dark_trooper", 0, 1.0, 1.0, 0.3, 0, 8615420)
@@ -368,15 +368,15 @@ function LokImperialOutpostScreenPlay:notifyOttoDead(pOtto, pKiller)
 			spawnMobile("lok", "dark_trooper", 0, 19.1, 1.0, 13.2, 0, 8615421)
 			spawnMobile("lok", "dark_trooper", 0, 19.1, 1.0, 16.4, 35, 8615421)
 			spawnMobile("lok", "dark_trooper", 0, 17.4, 1.0, 14.7, -35, 8615421)
-          createObserver(OBJECTDESTRUCTION, "LokImperialOutpostScreenPlay", "notifyCommanderDead", pCommander)
-          writeData("lokimperialoutpost:imperial_commander",1)
+          createObserver(OBJECTDESTRUCTION, "LokImperialOutpostScreenPlay", "notifyBrigadierDead", pBrigadier)
+          writeData("lokimperialoutpost:imperial_brigadier_general",1)
      end
      
      return 0
 end
 
-function LokImperialOutpostScreenPlay:notifyCommanderDead(pCommander, pKiller)
-     writeData("lokimperialoutpost:imperial_commander", 0)
+function LokImperialOutpostScreenPlay:notifyBrigadierDead(pBrigadier, pKiller)
+     writeData("lokimperialoutpost:imperial_brigadier_general", 0)
      
      return 1
 end
