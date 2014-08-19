@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_27dd7a43",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-08-19T04:01:27Z",
+      "side": 1,
+      "message": "I honestly don\u0027t believe this is the way it should be. I think it\u0027s closer to half the defense, and it\u0027s not a special check for lightsabers. All state/secondary defenses are probably like this. Even if it were smaller, there is very very little chance that it should be randomized.",
+      "revId": "49db33592342d896582bf73ddc9ee9ae5df8cfb9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
