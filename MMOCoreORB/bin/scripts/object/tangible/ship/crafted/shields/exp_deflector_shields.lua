@@ -48,10 +48,10 @@ object_tangible_ship_crafted_shields_exp_deflector_shields = object_tangible_shi
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "XX", "OQ", "UT", "OQ", "UT", "XX", "CD", "OQ", "CD", "OQ", "SR", "CD", "OQ", "SR", "CD", "OQ", "SR"},
 	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_shield_max_front_hp", "exp_shield_max_back_hp", "exp_shield_recharge"},
-	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "shield_max_front_hp", "shield_max_back_hp", "shield_recharge"},
-	experimentalMin = {0, 0, 935, 1, 44850, 468, 1, 3450, 1559, 1559, 12470},
-	experimentalMax = {0, 0, 1265, 1, 33150, 633, 1, 2550, 2109, 2109, 16871},
-	experimentalPrecision = {0, 0, 10, 0, 10, 10, 0, 10, 10, 10, 0},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_hitpoints", "efficiency", "ship_component_mass", "ship_component_armor", "energy_efficiency", "ship_component_energy_required", "ship_component_shield_hitpoints_front", "ship_component_shield_hitpoints_back", "ship_component_shield_recharge_rate"},
+	experimentalMin = {0, 0, 935, 1, 44850, 468, 1, 3450, 1559, 1559, 12.470},
+	experimentalMax = {0, 0, 1265, 1, 33150, 633, 1, 2550, 2109, 2109, 16.871},
+	experimentalPrecision = {0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 2},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 

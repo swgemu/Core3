@@ -48,10 +48,10 @@ object_tangible_ship_crafted_shields_shield_overcharger_mk3 = object_tangible_sh
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_shield_max_front_hp", "exp_shield_max_back_hp", "exp_shield_recharge"},
-	experimentalSubGroupTitles = {"null", "null", "shield_max_front_hp", "shield_max_back_hp", "shield_recharge"},
-	experimentalMin = {0, 0, 189, 189, -1459},
-	experimentalMax = {0, 0, 256, 256, -1079},
-	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_shield_hitpoints_front", "ship_component_shield_hitpoints_back", "ship_component_shield_recharge_rate"},
+	experimentalMin = {0, 0, 189, 189, -1.459},
+	experimentalMax = {0, 0, 256, 256, -1.079},
+	experimentalPrecision = {0, 0, 1, 1, 2},
 	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 

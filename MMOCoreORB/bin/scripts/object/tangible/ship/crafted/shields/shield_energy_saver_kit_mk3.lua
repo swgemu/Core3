@@ -48,10 +48,10 @@ object_tangible_ship_crafted_shields_shield_energy_saver_kit_mk3 = object_tangib
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_shield_max_front_hp", "exp_shield_max_back_hp", "exp_energy_maintenance"},
-	experimentalSubGroupTitles = {"null", "null", "shield_max_front_hp", "shield_max_back_hp", "energy_maintenance"},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_shield_hitpoints_front", "ship_component_shield_hitpoints_back", "ship_component_energy_required"},
 	experimentalMin = {0, 0, -243, -243, -340},
 	experimentalMax = {0, 0, -180, -180, -460},
-	experimentalPrecision = {0, 0, 0, 0, 0},
+	experimentalPrecision = {0, 0, 1, 1, 1},
 	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 

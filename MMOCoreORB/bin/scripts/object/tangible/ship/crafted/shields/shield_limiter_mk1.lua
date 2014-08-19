@@ -48,10 +48,10 @@ object_tangible_ship_crafted_shields_shield_limiter_mk1 = object_tangible_ship_c
 	experimentalProperties = {"XX", "XX", "OQ", "UT", "OQ", "UT", "OQ", "UT"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_shield_max_front_hp", "exp_shield_max_back_hp", "exp_shield_recharge"},
-	experimentalSubGroupTitles = {"null", "null", "shield_max_front_hp", "shield_max_back_hp", "shield_recharge"},
-	experimentalMin = {0, 0, -58, -58, 357},
-	experimentalMax = {0, 0, -43, -43, 483},
-	experimentalPrecision = {0, 0, 10, 10, 10},
+	experimentalSubGroupTitles = {"null", "null", "ship_component_shield_hitpoints_front", "ship_component_shield_hitpoints_back", "ship_component_shield_recharge_rate"},
+	experimentalMin = {0, 0, -58, -58, .357},
+	experimentalMax = {0, 0, -43, -43, .483},
+	experimentalPrecision = {0, 0, 1, 1, 2},
 	experimentalCombineType = {0, 0, 1, 1, 1},
 }
 
