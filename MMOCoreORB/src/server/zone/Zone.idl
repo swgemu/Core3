@@ -117,6 +117,7 @@ class Zone extends SceneObject {
 	public native void initializeTransientMembers();
 	public native void finalize();
 
+	@reference
 	public native SceneObject getNearestPlanetaryObject(SceneObject object, final string mapObjectLocationType);
 
 	public native void initializePrivateData();

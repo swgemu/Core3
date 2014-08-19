@@ -470,8 +470,8 @@ void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
 	player->sendMessage(gmlr);
 }
 
-SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
-	ManagedReference<SceneObject*> planetaryObject = NULL;
+Reference<SceneObject*> ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, const String& mapObjectLocationType) {
+	Reference<SceneObject*> planetaryObject = NULL;
 
 #ifndef WITH_STM
 	mapLocations->rlock();
@@ -496,7 +496,7 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 		}
 	}
 
-	return planetaryObject.get();
+	return planetaryObject;
 }
 
 SortedVector<ManagedReference<SceneObject*> > ZoneImplementation::getPlanetaryObjectList(const String& mapObjectLocationType) {
