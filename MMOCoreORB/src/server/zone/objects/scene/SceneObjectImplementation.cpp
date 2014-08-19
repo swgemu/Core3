@@ -1106,7 +1106,7 @@ void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ,
 
 void SceneObjectImplementation::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
 	zoneComponent->switchZone(_this.get(), newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
-}
+} 
 
 void SceneObjectImplementation::updateDirection(float fw, float fx, float fy, float fz) {
 	setDirection(fw, fx, fy, fz);
@@ -1282,6 +1282,16 @@ void SceneObjectImplementation::setDirection(const Quaternion& dir) {
 
 void SceneObjectImplementation::rotate(int degrees) {
 	Vector3 unity(0, 1, 0);
+	direction.rotate(unity, degrees);
+}
+
+void SceneObjectImplementation::rotateXaxis(int degrees) {
+	Vector3 unity(1, 0, 0);
+	direction.rotate(unity, degrees);
+}
+
+void SceneObjectImplementation::rotateYaxis(int degrees) {
+	Vector3 unity(0, 0, 1);
 	direction.rotate(unity, degrees);
 }
 
