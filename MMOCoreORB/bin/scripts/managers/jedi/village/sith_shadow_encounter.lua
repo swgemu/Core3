@@ -4,11 +4,13 @@ local ObjectManager = require("managers.object.object_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
 local Logger = require("utils.logger")
 local SithShadowIntroTheater = require("managers.jedi.village.sith_shadow_intro_theater")
+local DathomirGoTo = require("managers.jedi.village.dathomir_go_to")
 
 SITH_SHADOW_THREATEN_STRING = "@quest/force_sensitive/intro:military_threaten"
 SITH_SHADOW_MILITARY_TAKE_CRYSTAL = "@quest/force_sensitive/intro:military_take_crystal"
 local READ_DISK_1_STRING = "@quest/force_sensitive/intro:read_disk1"
 local READ_DISK_ERROR_STRING = "@quest/force_sensitive/intro:read_disk_error"
+local READ_DISK_2_STRING = "@quest/force_sensitive/intro:read_disk2"
 
 SithShadowEncounter = Encounter:new {
 	-- Task properties
@@ -148,6 +150,16 @@ function SithShadowEncounter:useDatapad(pSceneObject, pCreatureObject)
 			sceneObject:destroyObjectFromWorld()
 		end)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
+	elseif QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_2) then
+		DathomirGoTo:start(pCreatureObject)
+		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+			creatureObject:sendSystemMessage(READ_DISK_2_STRING)
+		end)
+		ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
+			sceneObject:destroyObjectFromWorld()
+		end)
+		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_2)
+		QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
 	else
 		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 			creatureObject:sendSystemMessage(READ_DISK_ERROR_STRING)
