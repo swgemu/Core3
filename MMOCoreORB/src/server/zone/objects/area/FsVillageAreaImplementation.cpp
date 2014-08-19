@@ -29,7 +29,8 @@ void FsVillageAreaImplementation::notifyEnter(SceneObject* player) {
 	float newPosX = getPositionX() + (cos(angle) * 530);
 	float newPosY = getPositionY() + (sin(angle) * 530);
 
-	if (ghost == NULL || !ghost->isPrivileged()) {
+	// Those who aren't a valid player, are not admin, do not currently have or have had the Village elder quest cannot enter.
+	if (ghost == NULL || !ghost->isPrivileged() || !ghost->hasActiveQuestBitSet(78) || !ghost->hasCompletedQuestsBitSet(78)) {
 		playerCreature->teleport(newPosX, getZone()->getHeight(newPosX, newPosY), newPosY, 0);
 		playerCreature->sendSystemMessage("@fs_quest_village:expel_shield");
 	}
