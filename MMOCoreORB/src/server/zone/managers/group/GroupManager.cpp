@@ -285,7 +285,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 			group->setBandSong(session->getPerformanceName());
 
 			for (int i = 0; i < group->getGroupSize(); ++i) {
-				ManagedReference<CreatureObject*> groupMember = cast<CreatureObject*>(group->getGroupMember(i));
+				Reference<CreatureObject*> groupMember = (group->getGroupMember(i)).castTo<CreatureObject*>();
 				if (groupMember == leader) {
 					continue;
 				} else {
@@ -305,7 +305,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 		}
 	} else {
 		for (int i = 0; i < group->getGroupSize(); ++i) {
-			ManagedReference<CreatureObject*> groupMember = cast<CreatureObject*>(group->getGroupMember(i));
+			Reference<CreatureObject*> groupMember = (group->getGroupMember(i)).castTo<CreatureObject*>();
 			if (groupMember->isPlayingMusic()) {
 				ManagedReference<Facade*> facade = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING);
 				ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
@@ -403,7 +403,7 @@ void GroupManager::disbandGroup(ManagedReference<GroupObject*> group, CreatureOb
 		}
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
-			CreatureObject* play = cast<CreatureObject*>( group->getGroupMember(i));
+			Reference<CreatureObject*> play = ( group->getGroupMember(i)).castTo<CreatureObject*>();
 
 			if (play->isPlayerCreature())
 				play->sendSystemMessage("@group:disbanded");
@@ -440,7 +440,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 			return;
 		}
 
-		CreatureObject* leader = cast<CreatureObject*>( group->getLeader());
+		Reference<CreatureObject*> leader = ( group->getLeader()).castTo<CreatureObject*>();
 
 		if (player != leader) {
 			player->sendSystemMessage("@group:must_be_leader");
@@ -453,7 +453,7 @@ void GroupManager::kickFromGroup(ManagedReference<GroupObject*> group, CreatureO
 
 		if (group->getGroupSize() - 1 < 2) {
 			for (int i = 0; i < group->getGroupSize(); i++) {
-				CreatureObject* play = cast<CreatureObject*>( group->getGroupMember(i));
+				Reference<CreatureObject*> play = ( group->getGroupMember(i)).castTo<CreatureObject*>();
 
 				play->sendSystemMessage("@group:disbanded");
 			}
@@ -547,7 +547,7 @@ void GroupManager::makeLeader(GroupObject* group, CreatureObject* player, Creatu
 		message << firstNameLeader << " is now the group leader.\n";
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
-			CreatureObject* play = cast<CreatureObject*>( group->getGroupMember(i));
+			Reference<CreatureObject*> play = ( group->getGroupMember(i)).castTo<CreatureObject*>();
 
 			if (play->isPlayerCreature())
 				play->sendSystemMessage(message.toString());
