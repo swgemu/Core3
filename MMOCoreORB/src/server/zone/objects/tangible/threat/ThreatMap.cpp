@@ -301,7 +301,7 @@ CreatureObject* ThreatMap::getHighestDamageGroupLeader(){
 		//tlog.info("Group id is " + String::valueOf(creature->getGroupID()),true);
 		if(creature->isGrouped()){
 
-			CreatureObject* thisleader = cast<CreatureObject*>(creature->getGroup()->getLeader());
+			Reference<CreatureObject*> thisleader = (creature->getGroup()->getLeader()).castTo<CreatureObject*>();
 			//tlog.info("leader is " + thisleader->getFirstName(),true);
 
 			if(thisleader == NULL || !thisleader->isPlayerCreature())
@@ -326,7 +326,7 @@ CreatureObject* ThreatMap::getHighestDamageGroupLeader(){
 
 			if (owner != NULL && owner->isPlayerCreature()) {
 				if (owner->isGrouped()) {
-					CreatureObject* thisleader = cast<CreatureObject*>(owner->getGroup()->getLeader());
+					Reference<CreatureObject*> thisleader = (owner->getGroup()->getLeader()).castTo<CreatureObject*>();
 
 					if(thisleader == NULL || !thisleader->isPlayerCreature())
 						break;
