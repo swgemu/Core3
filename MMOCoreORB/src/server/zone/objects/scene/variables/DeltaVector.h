@@ -114,10 +114,12 @@ public:
 		return vector.get(index);
 	}
 
-	E& getSafe(int index) {
+	E getSafe(int index) {
 		ReadLocker locker(getLock());
 
-		return vector.get(index);
+		E obj = vector.get(index);
+
+		return obj;
 	}
 
 	E remove(int index, DeltaMessage* message = NULL, int updates = 1) {

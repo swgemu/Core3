@@ -27,20 +27,24 @@ public:
 		creature = obj;
 	}
 
+	bool operator==(const GroupMember& member) {
+		return creature.get() == member.creature.get();
+	}
+
 	void operator=(SceneObject* obj) {
 		creature = obj;
 	}
 
-	SceneObject* operator->() const {
-		return creature;
+	Reference<SceneObject*> operator->() const {
+		return creature.get();
 	}
 
-	SceneObject* get() {
-		return creature;
+	Reference<SceneObject*> get() {
+		return creature.get();
 	}
 
-	operator SceneObject*() const {
-		return creature;
+	operator Reference<SceneObject*>() const {
+		return creature.get();
 	}
 
 	bool toString(String& str) {
