@@ -13,6 +13,7 @@
 #include "server/zone/managers/director/QuestStatus.h"
 
 #include "system/util/SynchronizedHashTable.h"
+#include "system/util/SynchronizedVectorMap.h"
 
 class ScreenPlayTask;
 
@@ -51,7 +52,7 @@ namespace server {
 	class DirectorManager : public Singleton<DirectorManager>, public Object, public Logger, public ReadWriteLock {
 		ThreadLocal<Lua*> localLua;
 		VectorMap<String, bool> screenPlays;
-		VectorMap<String, Reference<QuestStatus*> > questStatuses;
+		SynchronizedVectorMap<String, Reference<QuestStatus*> > questStatuses;
 
 #ifdef WITH_STM
 		TransactionalReference<DirectorSharedMemory* > sharedMemory;

@@ -169,7 +169,7 @@ void DirectorManager::setQuestStatus(String keyString, String valString) {
 String DirectorManager::getQuestStatus(String keyString) {
 	String str = "";
 
-	QuestStatus* status = questStatuses.get(keyString);
+	Reference<QuestStatus*> status = questStatuses.get(keyString);
 	if (status != NULL)
 		str = status->getStatus();
 
