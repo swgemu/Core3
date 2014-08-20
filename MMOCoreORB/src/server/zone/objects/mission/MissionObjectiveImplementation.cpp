@@ -171,7 +171,7 @@ void MissionObjectiveImplementation::awardReward() {
 		Locker lockerGroup(group, _this.get());
 
 		for(int i = 0; i < group->getGroupSize(); i++) {
-			ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
+			Reference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? (group->getGroupMember(i)).castTo<CreatureObject*>() : NULL;
 
 			if (groupMember != NULL) {
 				//Play mission complete sound.

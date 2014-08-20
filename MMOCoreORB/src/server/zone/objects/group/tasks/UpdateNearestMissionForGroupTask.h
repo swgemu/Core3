@@ -82,7 +82,7 @@ public:
 		Vector<CreatureObject*> groupMembersOnPlanet;
 		for(int i = 0; i < group->getGroupSize(); i++) {
 			if (group->getGroupMember(i) != NULL && group->getGroupMember(i)->isPlayerCreature()) {
-				CreatureObject* groupMember = cast<CreatureObject*>(group->getGroupMember(i));
+				Reference<CreatureObject*> groupMember = (group->getGroupMember(i)).castTo<CreatureObject*>();
 				if (groupMember->getPlanetCRC() == planetCRC) {
 					groupMembersOnPlanet.add(groupMember);
 				}
