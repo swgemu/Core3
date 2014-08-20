@@ -125,6 +125,7 @@ class GroupObject extends SceneObject {
 		return groupMembers.size();
 	}
 
+	@reference
 	public SceneObject getGroupMember(int index) {
 		return groupMembers.getSafe(index);
 	}
@@ -133,6 +134,7 @@ class GroupObject extends SceneObject {
 		groupMembers.add(player);
 	}
 
+	@reference
 	public SceneObject getLeader() {
 		if (groupMembers.size() == 0) {
 			return null;

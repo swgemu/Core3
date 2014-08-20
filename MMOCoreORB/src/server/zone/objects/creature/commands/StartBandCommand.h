@@ -70,7 +70,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<CreatureObject*> leader = cast<CreatureObject*>(group->getLeader());
+		Reference<CreatureObject*> leader = (group->getLeader()).castTo<CreatureObject*>();
 
 		if (leader == NULL || creature != leader) {
 			creature->sendSystemMessage("You must be the band leader to start the band playing.");
@@ -141,7 +141,7 @@ public:
 			Locker locker(group);
 
 			for (int i = 0; i < group->getGroupSize(); ++i) {
-				ManagedReference<CreatureObject*> groupMember = cast<CreatureObject*>(group->getGroupMember(i));
+				Reference<CreatureObject*> groupMember = (group->getGroupMember(i)).castTo<CreatureObject*>();
 
 				Locker clocker(groupMember, group);
 
