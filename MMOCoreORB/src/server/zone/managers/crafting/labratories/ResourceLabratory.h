@@ -23,6 +23,7 @@ public:
 	void experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult);
 	void initialize(ZoneServer* server);
 	bool allowFactoryRun(ManufactureSchematic* manufactureSchematic);
+	int getCreationCount(ManufactureSchematic* manufactureSchematic);
 protected:
 	SortedVector<String> bioMods;
 	bool applyComponentStats(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic);

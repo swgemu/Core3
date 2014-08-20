@@ -48,6 +48,7 @@
 #include "server/zone/managers/crafting/labratories/SharedLabratory.h"
 #include "server/zone/managers/crafting/labratories/ResourceLabratory.h"
 #include "server/zone/managers/crafting/labratories/GeneticLabratory.h"
+#include "server/zone/managers/crafting/labratories/DroidLabratory.h"
 
 void CraftingManagerImplementation::initialize() {
 	schematicMap = SchematicMap::instance();
@@ -157,6 +158,11 @@ int CraftingManagerImplementation::calculateExperimentationFailureRate(CreatureO
 bool CraftingManagerImplementation::allowManufactureSchematic(ManufactureSchematic* manufactureSchematic) {
 	SharedLabratory* lab = labs.get(manufactureSchematic->getLabratory());
 	return lab->allowFactoryRun(manufactureSchematic);
+}
+
+int CraftingManagerImplementation::getCreationCount(ManufactureSchematic* manufactureSchematic) {
+	SharedLabratory* lab = labs.get(manufactureSchematic->getLabratory());
+	return lab->getCreationCount(manufactureSchematic);
 }
 
 int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObject* player,
@@ -306,6 +312,11 @@ void CraftingManagerImplementation::configureLabratories() {
 	GeneticLabratory* genLab = new GeneticLabratory();
 	genLab->initialize(zoneServer.get());
 	labs.put(static_cast<int>(GENETIC_LAB), genLab); //GENETIC_LAB
+
+	DroidLabratory* droidLab = new DroidLabratory();
+	droidLab->initialize(zoneServer.get());
+	labs.put(static_cast<int>(DROID_LAB), droidLab); //DROID_LAB
+
 }
 void CraftingManagerImplementation::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
 	if(manufactureSchematic == NULL || manufactureSchematic->getDraftSchematic() == NULL)

@@ -337,6 +337,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/crafting/labratories/SharedLabratory.cpp \
 		server/zone/managers/crafting/labratories/ResourceLabratory.cpp \
 		server/zone/managers/crafting/labratories/GeneticLabratory.cpp \
+		server/zone/managers/crafting/labratories/DroidLabratory.cpp \
 		server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
 		server/zone/objects/manufactureschematic/factoryblueprint/FactoryBlueprint.cpp \
 		server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.cpp \

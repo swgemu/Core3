@@ -122,6 +122,10 @@ void ResourceLabratory::experimentRow(CraftingValues* craftingValues,int rowEffe
 		}
 	}
 }
+int ResourceLabratory::getCreationCount(ManufactureSchematic* manufactureSchematic) {
+	return 1;
+}
+
 bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic) {
 
 	if(manufactureSchematic == NULL || manufactureSchematic->getDraftSchematic() == NULL)

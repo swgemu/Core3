@@ -36,12 +36,12 @@ public:
 	virtual void initialize(ZoneServer* server);
 	virtual float getWeightedValue(ManufactureSchematic* manufactureSchematic, int type);
 	virtual bool allowFactoryRun(ManufactureSchematic* manufactureSchematic);
+	virtual int getCreationCount(ManufactureSchematic* manufactureSchematic) = 0;
 protected:
 	ManagedReference<ZoneServer*> zoneServer;
 	float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
 	float calculateAssemblyValueModifier(int assemblyResult);
 	float getAssemblyPercentage(float value);
-
 };
 
 }

@@ -293,6 +293,9 @@ void GeneticLabratory::initialize(ZoneServer* server) {
 	SharedLabratory::initialize(server);
 
 }
+int GeneticLabratory::getCreationCount(ManufactureSchematic* manufactureSchematic) {
+	return 1;
+}
 
 bool GeneticLabratory::allowFactoryRun(ManufactureSchematic* manufactureSchematic) {
 	return false;

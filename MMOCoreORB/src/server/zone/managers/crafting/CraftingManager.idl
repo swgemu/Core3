@@ -92,6 +92,7 @@ class CraftingManager extends ZoneManager {
 	
 	public static final int RESOURCE_LAB = 0x00;
 	public static final int GENETIC_LAB = 0x01;
+	public static final int DROID_LAB = 0x02;
 	
 	
 	@dereferenced
@@ -141,4 +142,5 @@ class CraftingManager extends ZoneManager {
 	
 	public native void setInitialCraftingValues(TangibleObject prototype, ManufactureSchematic manufactureSchematic, int assemblySuccess);
 	public native boolean allowManufactureSchematic(ManufactureSchematic manufactureSchematic);
+	public native int getCreationCount(ManufactureSchematic manufactureSchematic);
 }
