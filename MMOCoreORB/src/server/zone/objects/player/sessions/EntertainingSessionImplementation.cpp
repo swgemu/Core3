@@ -191,7 +191,7 @@ void EntertainingSessionImplementation::addHealingXpGroup(int xp) {
 	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
 
 	for(int i = 0; i < groupSize; ++i) {
-		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
+		ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? group->getGroupMember(i).castTo<CreatureObject*>() : NULL;
 
 		if (groupMember != NULL) {
 			Locker clocker(groupMember, entertainer);
@@ -1002,7 +1002,7 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 				int groupSize = group->getGroupSize();
 
 				for(int i = 0; i < groupSize; ++i) {
-					ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
+					ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? group->getGroupMember(i).castTo<CreatureObject*>() : NULL;
 
 					if (groupMember != NULL) {
 						Locker clocker(groupMember, entertainer);

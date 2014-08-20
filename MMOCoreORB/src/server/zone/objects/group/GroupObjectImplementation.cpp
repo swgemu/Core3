@@ -38,7 +38,7 @@ void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 
 void GroupObjectImplementation::startChatRoom() {
-	CreatureObject* leader = cast<CreatureObject*>(groupMembers.get(0).get());
+	Reference<CreatureObject*> leader = groupMembers.get(0).get().castTo<CreatureObject*>();
 	ChatManager* chatManager = server->getZoneServer()->getChatManager();
 
 	chatRoom = chatManager->createGroupRoom(getObjectID(), leader);
@@ -61,7 +61,7 @@ void GroupObjectImplementation::destroyChatRoom() {
 
 void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		SceneObject* member = groupMembers.get(i);
+		SceneObject* member = groupMembers.get(i).get().get();
 
 		if (member->isPlayerCreature())
 			member->sendMessage(msg->clone());
@@ -72,7 +72,7 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 
 void GroupObjectImplementation::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		SceneObject* member = groupMembers.get(i);
+		SceneObject* member = groupMembers.get(i).get().get();
 
 		if(!sendSelf && member == player)
 			continue;
@@ -114,7 +114,7 @@ void GroupObjectImplementation::removeMember(SceneObject* member) {
 	ManagedReference<SceneObject*> obj = member;
 
 	for (int i = 0; i < groupMembers.size(); i++) {
-		SceneObject* scno = groupMembers.get(i);
+		SceneObject* scno = groupMembers.get(i).get().get();
 
 		if (scno == member) {
 			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.get());
@@ -148,7 +148,7 @@ void GroupObjectImplementation::removeMember(SceneObject* member) {
 
 bool GroupObjectImplementation::hasMember(SceneObject* member) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		SceneObject* play = groupMembers.get(i);
+		SceneObject* play = groupMembers.get(i).get().get();
 
 		if (play == member)
 			return true;
@@ -159,7 +159,7 @@ bool GroupObjectImplementation::hasMember(SceneObject* member) {
 
 bool GroupObjectImplementation::hasMember(uint64 member) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		SceneObject* play = groupMembers.get(i);
+		SceneObject* play = groupMembers.get(i).get().get();
 
 		if (play->getObjectID() == member)
 			return true;
@@ -174,7 +174,7 @@ void GroupObjectImplementation::makeLeader(SceneObject* player) {
 
 	//SceneObject* obj = groupMembers.get();
 
-	ManagedReference<SceneObject*> temp = cast<SceneObject*>( groupMembers.get(0).get());
+	Reference<SceneObject*> temp = groupMembers.get(0).get();
 
 	for (int i = 0; i < groupMembers.size(); ++i) {
 		if (groupMembers.get(i) == player) {
@@ -207,7 +207,9 @@ void GroupObjectImplementation::disband() {
 		if (groupMembers.get(i) == NULL) {
 			continue;
 		}
-		CreatureObject* groupMember = cast<CreatureObject*>(groupMembers.get(i).get());
+
+		Reference<CreatureObject*> groupMember = getGroupMember(i).castTo<CreatureObject*>();
+
 		try {
 			Locker clocker(groupMember, _this.get());
 
@@ -254,7 +256,7 @@ bool GroupObjectImplementation::hasSquadLeader() {
 
 	if (getLeader()->isPlayerCreature()) {
 
-		ManagedReference<CreatureObject*> leader = cast<CreatureObject*>( getLeader());
+		Reference<CreatureObject*> leader = getLeader().castTo<CreatureObject*>();
 
 		if (leader->hasSkill("outdoors_squadleader_novice"))
 			return true;
@@ -269,7 +271,7 @@ void GroupObjectImplementation::addGroupModifiers() {
 	Locker glocker(thisGroup);
 
 	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* crea = cast<CreatureObject*>(groupMembers.get(i).get());
+		CreatureObject* crea = getGroupMember(i).castTo<CreatureObject*>().get();
 
 		if (crea == NULL)
 			continue;
@@ -284,9 +286,9 @@ void GroupObjectImplementation::addGroupModifiers() {
 		addGroupModifiers(player);
 	}
 
-	if (getLeader() != NULL) {
+	if (getLeader().get() != NULL) {
 		if (getLeader()->isPlayerCreature()) {
-			CreatureObject* leader = cast<CreatureObject*>( getLeader());
+			CreatureObject* leader = getLeader().castTo<CreatureObject*>();
 
 			Reference<SquadLeaderBonusTask*> bonusTask = new SquadLeaderBonusTask(leader);
 
@@ -297,7 +299,7 @@ void GroupObjectImplementation::addGroupModifiers() {
 
 void GroupObjectImplementation::removeGroupModifiers() {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		CreatureObject* crea = cast<CreatureObject*> (groupMembers.get(i).get() );
+		CreatureObject* crea = getGroupMember(i).castTo<CreatureObject*>().get();
 
 		if (crea == NULL)
 			continue;
@@ -320,7 +322,7 @@ void GroupObjectImplementation::addGroupModifiers(CreatureObject* player) {
 	if (!getLeader()->isPlayerCreature())
 		return;
 
-	ManagedReference<CreatureObject*> leader = cast<CreatureObject*>( getLeader());
+	Reference<CreatureObject*> leader = getLeader().castTo<CreatureObject*>();
 
 	if (leader == player)
 		return;
@@ -353,7 +355,7 @@ void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player) {
 	if (!getLeader()->isPlayerCreature())
 		return;
 
-	ManagedReference<CreatureObject*> leader = cast<CreatureObject*>( getLeader());
+	Reference<CreatureObject*> leader = ( getLeader()).castTo<CreatureObject*>();
 
 	if (leader == player)
 		return;
@@ -456,7 +458,7 @@ void GroupObjectImplementation::sendSystemMessage(const String& fullPath) {
 
 bool GroupObjectImplementation::isOtherMemberPlayingMusic(CreatureObject* player) {
 	for (int i = 0; i < getGroupSize(); ++i) {
-		ManagedReference<CreatureObject*> groupMember = cast<CreatureObject*>(getGroupMember(i));
+		Reference<CreatureObject*> groupMember = (getGroupMember(i)).castTo<CreatureObject*>();
 
 		if (groupMember == NULL || groupMember == player || !groupMember->isPlayerCreature())
 			continue;
