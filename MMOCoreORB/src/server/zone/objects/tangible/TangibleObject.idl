@@ -467,19 +467,23 @@ class TangibleObject extends SceneObject {
 		return pvpStatusBitmask;
 	}
 	
+	@dirty
 	public boolean isTangibleObject() {
 		return true;
 	}
 	
+	@dirty
 	public void getCustomizationString(string variables) {
 		customizationVariables.getData(variables);
 	}
 	
 	@local
+	@dirty
 	public DeltaVector<SceneObject> getDefenderList() {
 		return defenderList;
 	}
 	
+	@dirty
 	public SceneObject getMainDefender() {
 		if(defenderList.size() > 0)
 			return defenderList.get(0);
@@ -487,6 +491,7 @@ class TangibleObject extends SceneObject {
 		return null;
 	}
 	
+	@read
 	public boolean isDestroyed() {
 		return conditionDamage >= maxCondition;
 	}
@@ -495,22 +500,27 @@ class TangibleObject extends SceneObject {
 		faction = crc;
 	}
 	
+	@read
 	public unsigned int getFaction() {
 		return faction;
 	}
 	
+	@read
 	public boolean isRebel() {
 		return faction == 0x16148850;
 	}
 	
+	@read
 	public boolean isImperial() {
 		return faction == 0xDB4ACC54;
 	}
 	
+	@read
 	public boolean isNeutral() {
 		return faction == 0;
 	}
 	
+	@dirty
 	public boolean isSliceable() {
 		if (sliced)
 			return false;
@@ -530,6 +540,7 @@ class TangibleObject extends SceneObject {
 		return false;
 	}
 
+	@read
 	public boolean isSliced() {
 		return sliced;
 	}
@@ -542,6 +553,7 @@ class TangibleObject extends SceneObject {
 		sliced = slice;
 	}
 	
+	@dirty
 	public abstract boolean isPharmaceuticalObject() {
 		return false;
 	}
@@ -559,6 +571,7 @@ class TangibleObject extends SceneObject {
 		craftersName = name;
 	}
 	
+	@dirty
 	public abstract string getCraftersName() {
 		return craftersName;
 	}
@@ -567,22 +580,27 @@ class TangibleObject extends SceneObject {
 		junkDealerNeeded = jdNeeded;
 	}
 	
+	@dirty
 	public abstract int getJunkDealerNeeded() {
 		return junkDealerNeeded;
 	}
+	
 	public void setJunkValue(int jValue) {
 		junkValue = jValue;
 	}
 	
+	@dirty
 	public abstract int getJunkValue() {
 		return junkValue;
 	}
+	
 	public native void setSerialNumber(final string serial);
 	
 	public abstract void setLevel(int lev, boolean randomHam = true) {
 		level = lev;
 	}
 	
+	@dirty
 	public abstract string getSerialNumber() {
 		return objectSerial;
 	}
@@ -636,14 +654,14 @@ class TangibleObject extends SceneObject {
 		}
 	}
 
-	@read
+	@dirty
 	public boolean hasActiveArea(ActiveArea area) {
 		synchronized (super.getContainerLock()) {
 			return activeAreas.contains(area);
 		}
 	}
 
-	@read
+	@dirty
 	public boolean hasActiveArea(unsigned long objectid) {
 		synchronized (super.getContainerLock()) {
 			for (int i = 0; i < activeAreas.size(); ++i) {
@@ -659,7 +677,7 @@ class TangibleObject extends SceneObject {
 	}
 
 	@local
-	@read
+	@dirty
 	public Vector<ActiveArea> getActiveAreas() {
 		return activeAreas;
 	}
@@ -669,7 +687,7 @@ class TangibleObject extends SceneObject {
 		return activeAreas.size();
 	}
 
-	@read
+	@dirty
 	@reference
 	public ActiveArea getActiveRegion() {
 		synchronized (super.getContainerLock()) {

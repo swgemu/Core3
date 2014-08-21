@@ -80,25 +80,25 @@ class PersistentMessage extends ManagedObject {
 		receiverObjectID = 0;
 	}
 	
-	@read
+	@dirty
 	public abstract native void sendTo(CreatureObject player, boolean sendBody = true);
 	
-	@read
+	@dirty
 	@local
 	public StringIdChatParameterVector getStringIdParameters() {
 		return stringIdParameters;
 	}
 	
-	@read
+	@dirty
 	@local
 	public WaypointChatParameterVector getWaypointParameters() {
 		return waypointParameters;
 	}
 	
-	@read
+	@dirty
 	public native int getMailID();
 	
-	@read
+	@dirty
 	public native unsigned long getObjectID();
 	
 	@read

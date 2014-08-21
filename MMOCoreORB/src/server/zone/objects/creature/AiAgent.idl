@@ -811,7 +811,7 @@ class AiAgent extends CreatureObject {
 
 	public native boolean isEventMob();
 
-	@read
+	@dirty
 	public boolean isPet() {
 		return (getControlDevice() != null);
 	}

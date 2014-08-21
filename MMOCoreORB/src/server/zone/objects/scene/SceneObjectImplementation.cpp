@@ -384,7 +384,7 @@ void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedO
 	}
 }
 
-uint64 SceneObjectImplementation::getObjectID() {
+uint64 SceneObjectImplementation::getObjectID() const {
 	return _this.get()->_getObjectID();
 }
 

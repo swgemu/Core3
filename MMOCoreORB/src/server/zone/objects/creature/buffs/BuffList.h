@@ -71,7 +71,7 @@ public:
 	String getDurationString(bool showhours = true, bool showminutes = true) const;
 
 	//Getters
-	inline int getBuffListSize() {
+	inline int getBuffListSize() const {
 		return buffList.size();
 	}
 

@@ -286,6 +286,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the baselines 
 	 */
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 	
 	/**
@@ -294,6 +295,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked, owner received its own scene object }
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
+	@dirty
 	public native void sendToOwner(boolean doClose = true);
 	
 	/**
@@ -303,7 +305,7 @@ class CreatureObject extends TangibleObject {
 	 * @param player SceneObject that will receive the messages
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
-	@read
+	@dirty
 	public native void sendTo(SceneObject player, boolean doClose);
 
 	/**
@@ -312,23 +314,28 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object received the message }
 	 * @param message string message to send
 	 */
+	@dirty
 	public native void sendSystemMessage(final string message);
 	
 	/**
 	 * Sends a PlayMusicMessage
 	 */
+	@dirty
 	public native void playMusicMessage(final string file);
 	
 	/**
 	 * Sends a tutorial request
 	 */
+	@dirty
 	public native void sendNewbieTutorialRequest(final string request);
 	
 	/**
 	 * Sends NewbieTutorialEnableHud
 	 */
+	@dirty
 	public native void sendNewbieTutorialEnableHudElement(final string ui, boolean enable = true);
 	
+	@dirty
 	public native void sendOpenHolocronToPageMessage();
 	
 	/**
@@ -337,6 +344,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object received the message }
 	 * @param message unicode message to send
 	 */
+	@dirty
 	public native void sendSystemMessage(unicode message);
 	
 	/**
@@ -355,6 +363,7 @@ class CreatureObject extends TangibleObject {
 	 * @param message StringIdChatParameter message to send
 	 */
 	@local
+	@dirty
 	public native void sendSystemMessage(@dereferenced StringIdChatParameter stringid);
 	
 	/**
@@ -363,6 +372,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked, player received the slotted objects }
 	 * @param player SceneObject that will receive the objects 
 	 */
+	@dirty
 	public native void sendSlottedObjectsTo(SceneObject player);
 	
 	/**
@@ -398,6 +408,7 @@ class CreatureObject extends TangibleObject {
 	 * @pre { this object is locked }
 	 * @post {this object is locked, this object has the new locomotion set, if appropriate }
 	 */
+	@dirty
 	public native float calculateSpeed();
 	 
 	public native abstract void updateLocomotion();
@@ -480,6 +491,7 @@ class CreatureObject extends TangibleObject {
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
 
+	@dirty
 	public boolean hasDamage(int attribute) {
 		return hamList.get(attribute) + wounds.get(attribute) < maxHamList.get(attribute);
 	}
@@ -663,19 +675,23 @@ class CreatureObject extends TangibleObject {
 	public native void removeWearableObject(TangibleObject object, boolean notifyClient = true);
 	
 	@local
+	@dirty
 	public WearablesDeltaVector getWearablesDeltaVector() {
 		return wearablesVector;
 	}
 	
+	@dirty
 	public void sendBuffsTo(CreatureObject creature) {
 		creatureBuffs.sendTo(creature);
 	}
 
 	@local
+	@dirty
 	public BuffList getBuffList() {
 		return creatureBuffs;
 	}
 	
+	@dirty
 	public Buff getBuff(unsigned int buffcrc) {
 		if (creatureBuffs.hasBuff(buffcrc))
 			return creatureBuffs.getBuffByCRC(buffcrc);
@@ -703,7 +719,8 @@ class CreatureObject extends TangibleObject {
 	public DamageOverTimeList getDamageOverTimeList() { 
 		return damageOverTimeList;
 	}
-		
+
+	@dirty
 	public boolean hasBuff(unsigned int buffcrc) {
 		return creatureBuffs.hasBuff(buffcrc);
 	}
@@ -715,6 +732,7 @@ class CreatureObject extends TangibleObject {
 	
 	public native void updateToDatabaseAllObjects(boolean startTask);
 
+	@dirty
 	public native boolean isResuscitable();
 	
 	public void addBankCredits(int credits, boolean notifyClient = true) {
@@ -731,6 +749,7 @@ class CreatureObject extends TangibleObject {
 	
 	public native void subtractCashCredits(int credits);
 	
+	@dirty
 	public boolean verifyCashCredits(int credits) {
 		if (credits < 0)
 			return false;
@@ -741,6 +760,7 @@ class CreatureObject extends TangibleObject {
 		return true;
 	}
 	
+	@dirty
 	public boolean verifyBankCredits(int credits) {
 		if (credits < 0)
 			return false;
@@ -751,11 +771,15 @@ class CreatureObject extends TangibleObject {
 		return true;
 	}
 	
+	@dirty
 	public native boolean isDancing();
+	
+	@dirty
 	public native boolean isPlayingMusic();
 	
 	public native void stopEntertaining();
 	
+	@dirty
 	public native boolean isEntertaining() {
 		return isDancing() || isPlayingMusic();
 	}
@@ -941,10 +965,13 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * @return returns true if the creature object can attack this 
 	 */
+	@dirty
 	public native boolean isAttackableBy(CreatureObject object);
 	
+	@dirty
 	public native boolean isAttackableBy(TangibleObject attacker);
 	
+	@dirty
 	public native boolean isHealableBy(CreatureObject object);
 	
 	/**
@@ -953,6 +980,7 @@ class CreatureObject extends TangibleObject {
 	 * @param target the target.
 	 * @return true if bounty hunter has a mission with the target.
 	 */
+	@dirty
 	public native boolean isInBountyMission(CreatureObject bountyHunter, CreatureObject target);
 	
 	/**
@@ -960,6 +988,7 @@ class CreatureObject extends TangibleObject {
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
 	 */
+	@dirty
 	public abstract void sendConversationStartTo(SceneObject player) {
 	}
 	
@@ -985,6 +1014,7 @@ class CreatureObject extends TangibleObject {
 	 * Sends a ExecuteConsoleCommand to the client
 	 * @param command example "/attack"
 	 */
+	@dirty
 	public native void sendExecuteConsoleCommand(final string command);
 	
 	/**
@@ -993,6 +1023,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { }
 	 * @return returns true if its aggressive
 	 */
+	@dirty
 	public native boolean isAggressiveTo(CreatureObject object);
 	
 	/**
@@ -1019,9 +1050,13 @@ class CreatureObject extends TangibleObject {
 	
 	public native void setFactionRank(int rank, boolean notifyClient = true);
 	
+	@dirty
 	public native string getFirstName();
+	
+	@dirty
 	public native string getLastName();
 	
+	@dirty
 	public boolean isOnline() {
 		PlayerObject ghost = getPlayerObject();
 		
@@ -1031,29 +1066,36 @@ class CreatureObject extends TangibleObject {
 		return ghost.isOnline();
 	}
 
+	@dirty
 	public boolean canTreatInjuries() {
 		return super.getPendingTask("injuryTreatment") == null;
 	}
 	
+	@dirty
 	public boolean canTreatStates() {
 		return super.getPendingTask("stateTreatment") == null;
 	}
 	
+	@dirty
 	public boolean canTreatWounds() {
 		return super.getPendingTask("woundTreatment") == null;
 	}
 	
+	@dirty
 	public boolean canTreatConditions() {
 		return super.getPendingTask("conditionTreatment") == null;
 	}
 	
 	@reference
+	@dirty
 	public native PlayerObject getPlayerObject();
 	
+	@read
 	public boolean isListening() {
 		return listenToID != 0;
 	}
 	
+	@read
 	public boolean isWatching() {
 		return watchToID != 0;
 	}
@@ -1097,6 +1139,7 @@ class CreatureObject extends TangibleObject {
 		timeOfDeath.updateToCurrentTime();
 	}
 	
+	@dirty
 	public boolean hasAttackDelay() {
 		return !cooldownTimerMap.isPast("nextAttackDelay");
 	}
@@ -1110,6 +1153,7 @@ class CreatureObject extends TangibleObject {
 		return cooldownTimerMap;
 	}
 	
+	@dirty
 	public boolean hasSpice() {
 		return creatureBuffs.hasSpice();
 	}
@@ -1157,6 +1201,7 @@ class CreatureObject extends TangibleObject {
 		screenPlayStates.put(screenPlay, state);
 	}
 
+	@dirty
 	public boolean checkPostureUpRecovery() {
 		return cooldownTimerMap.isPast("postureUpRecovery");
 	}
@@ -1169,6 +1214,7 @@ class CreatureObject extends TangibleObject {
 		}
 	}
 	
+	@dirty
 	public boolean checkCooldownRecovery(final string cooldown) {
 		return cooldownTimerMap.isPast(cooldown);
 	}
@@ -1185,8 +1231,10 @@ class CreatureObject extends TangibleObject {
 	public native void doAnimation(final string animation);
 	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit, byte trails);
 	
+	@dirty
 	public native void playEffect(final string file, final string aux);
 	
+	@dirty
 	public void playEffect(final string file) {
 		playEffect(file, "");
 	}
@@ -1195,24 +1243,30 @@ class CreatureObject extends TangibleObject {
 	
 	public native void activateImmediateAction();
 	
+	@dirty
 	public native unicode getCreatureName();
 	
+	@read
 	public boolean isGrouped() {
 		return group != null;
 	}
 	
+	@read
 	public int getBankCredits() {
 		return bankCredits;
 	}
 	
+	@read
 	public int getCashCredits() {
 		return cashCredits;
 	}
 	
+	@dirty
 	public int getBaseHAM(int idx) {
 		return baseHAM.get(idx);
 	}
 	
+	@dirty
 	public int getWounds(int idx) {
 		return wounds.get(idx);
 	}
@@ -1222,50 +1276,61 @@ class CreatureObject extends TangibleObject {
 		return wounds;
 	}
 	
+	@dirty
 	public int getHAM(int idx) {
 		return hamList.get(idx);
 	}
 	
+	@dirty
 	@local
 	public DeltaVector<int> getHAM() {
 		return hamList;
 	}
 	
+	@dirty
 	public int getMaxHAM(int idx) {
 		return maxHamList.get(idx);
 	}
 	
 	@local
+	@dirty
 	public DeltaVector<int> getMaxHAM() {
 		return maxHamList;
 	}
 	
+	@dirty
 	public int getEncumbrance(int idx) {
 		return encumbrances.get(idx);
 	}
 	
 	@local
+	@dirty
 	public DeltaVector<int> getEncumbrances() {
 		return encumbrances;
 	}
 	
+	@read
 	public byte getPosture() {
 		return posture;
 	}
 	
+	@read
 	public byte getLocomotion() {
 		return locomotion;
 	}
 	
+	@read
 	public byte getFactionRank() {
 		return factionRank;
 	}
 	
 	@weakReference
+	@read
 	public CreatureObject getLinkedCreature() {
 		return linkedCreature;
 	}
 	
+	@read
 	public unsigned long getCreatureLinkID() {
 		CreatureObject strongRef = linkedCreature;
 		
@@ -1275,95 +1340,117 @@ class CreatureObject extends TangibleObject {
 			return 0;
 	}
 	
+	@read
 	public float getShockWounds() {
 		return shockWounds;
 	}
 	
+	@read
 	public unsigned long getWatchToID() {
 		return watchToID;
 	}
 	
+	@read
 	public unsigned long getStateBitmask() {
 		return stateBitmask;
 	}
 	
+	@read
 	public boolean hasState(unsigned long state) {
 		return stateBitmask & state;
 	}
 	
+	@read
 	public boolean hasStates() {
 		return stateBitmask != 0;
 	}
 	
+	@read
 	public unsigned long getListenID() {
 		return listenToID;
 	}
-	
 
+	@read
 	public float getAccelerationMultiplierBase() {
 		return accelerationMultiplierBase;
 	}
 
+	@read
 	public float getAccelerationMultiplierMod() {
 		return accelerationMultiplierMod;
 	}
 
+	@read
 	public float getSpeedMultiplierBase() {
 		return speedMultiplierBase;
 	}
 
+	@read
 	public float getSpeedMultiplierMod() {
 		return speedMultiplierMod;
 	}
 	
+	@read
 	public float getCurrentSpeed() {
 		return currentSpeed;
 	}
 	
 	@local
+	@dirty
 	public SpeedMultiplierModChanges getSpeedMultiplierModChanges() {
 		return speedMultiplierModChanges;
 	}
 	
 	@local
+	@dirty
 	public CommandQueueActionVector getCommandQueue() {
 		return commandQueue;
 	}
 	
+	@read
 	public int getCommandQueueSize() {
 		return commandQueue.size();
 	}
 
+	@read
 	public float getRunSpeed() {
 		return runSpeed;
 	}
 	
+	@read
 	public float getWalkSpeed() {
 		return walkSpeed;
 	}
 	
+	@read
 	public float getTurnScale() {
 		return turnScale;
 	}
 	
+	@dirty
 	public native float getTerrainNegotiation();
 	
+	@read
 	public float getRunAcceleration() {
 		return runAcceleration;
 	}
 	
+	@read
 	public float getWalkAcceleration() {
 		return walkAcceleration;
 	}
 	
+	@read
 	public string getPerformanceAnimation() {
 		return performanceAnimation;
 	}
 	
+	@read
 	public string getMoodString() {
 		return moodString;
 	}
 	
+	@read
 	public unsigned long getWeaponID() {
 		if (weapon == null)
 			return 0;
@@ -1372,13 +1459,16 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	@reference
+	@dirty
 	public native WeaponObject getWeapon();
 	
 	@reference
+	@read
 	public GuildObject getGuildObject() {
 		return guild;
 	}
 	
+	@read
 	public int getGuildID() {
 		if (guild == null)
 			return 0;
@@ -1386,6 +1476,7 @@ class CreatureObject extends TangibleObject {
 		return guild.getGuildID();
 	}
 	
+	@read
 	public boolean isInGuild() {
 		return guild != null;
 	}
@@ -1394,6 +1485,7 @@ class CreatureObject extends TangibleObject {
 		guild = guildobj;
 	}
 	
+	@read
 	public unsigned long getGroupID() {
 		if (group != null)
 			return group.getObjectID();
@@ -1401,50 +1493,62 @@ class CreatureObject extends TangibleObject {
 			return 0;
 	}
 	
+	@read
 	public unsigned long getGroupInviterID() {
 		return groupInviterID;
 	}
 	
+	@read
 	public GroupObject getGroup() {
 		return group;
 	}
 	
+	@read
 	public unsigned long getGroupInviteCounter() {
 		return groupInviteCounter;
 	}
 
+	@read
 	public unsigned long getTargetID() {
 		return targetID;
 	}
 	
+	@read
 	public byte getMoodID() {
 		return moodID;
 	}
 	
+	@read
 	public float getSlopeModPercent() {
 		return slopeModPercent;
 	}
 	
+	@read
 	public int getPerformanceCounter() {
 		return performanceCounter;
 	}
 	
+	@read
 	public int getInstrumentID() {
 		return instrumentID;
 	}
 	
+	@read
 	public byte getFrozen() {
 		return frozen;
 	}
 	
+	@read
 	public float getHeight() {
 		return height;
 	}
 	
+	@read
 	public int getSpecies() {
 		return species;
 	}
 
+	@read
 	public string getSpeciesName() {
 		if(species == 0)
 			return "human";
@@ -1470,29 +1574,36 @@ class CreatureObject extends TangibleObject {
 			return "";
 	}
 
+	@read
 	public int getGender() {
 		return gender;
 	}
 	
 	@local
+	@dirty
 	public DeltaVector<int> getBaseHAM() {
 		return baseHAM;
 	}
 	
 	@local
+	@dirty
 	public SkillList getSkillList() {
 		return skillList;
 	}
 	
+	@dirty
 	public native int getSkillMod(final string skillmod);
 
+	@dirty
 	public native int getSkillModOfType(final string skillmod, final unsigned int modType);
 	
+	@dirty
 	public boolean hasSkill(final string skill) {
 		return skillList.containsSkill(skill);
 	}
 	
 	@local
+	@dirty
 	public SkillModList getSkillModList() {
 		return skillModList;
 	}
@@ -1501,174 +1612,216 @@ class CreatureObject extends TangibleObject {
 		watchToID = id;
 	}
 	
+	@dirty
 	public boolean isCreatureObject() {
 		return true;
 	}
 	
+	@dirty
 	public boolean isNextActionPast() {
 		return nextAction.isPast();
 	}
 	
+	@dirty
 	public abstract boolean isTrainerCreature() {
 		return false;
 	}
 	
+	@read
 	public boolean isSwimming() {
 		return stateBitmask & CreatureState.SWIMMING;
 	}
 	
+	@read
 	public ZoneClientSession getClient() {
 		return owner;
 	}
 
 	@weakReference
+	@read
 	public ControlDevice getControlDevice() {
 		return controlDevice;
 	}
 	
+	@read
 	public float getSwimHeight() {
 		return swimHeight;
 	}
 	
+	@read
 	public boolean isIncapacitated() {
 		return posture == CreaturePosture.INCAPACITATED;
 	}
 
+	@read
 	public boolean isDead() {
 		return posture == CreaturePosture.DEAD;
 	}
 
+	@read
 	public boolean isKnockedDown() {
 		return posture == CreaturePosture.KNOCKEDDOWN;
 	}
 
+	@read
 	public boolean isKneeling() {
 		return posture == CreaturePosture.CROUCHED;
 	}
 
+	@read
 	public boolean isProne() {
 		return posture == CreaturePosture.PRONE;
 	}
 
+	@read
 	public boolean isStanding() {
 		return posture == CreaturePosture.UPRIGHT;
 	}
 
+	@read
 	public boolean isSitting() {
 		return posture == CreaturePosture.SITTING;
 	}
 
+	@read
 	public boolean isSkillAnimating() {
 		return posture == CreaturePosture.SKILLANIMATING;
 	}
 
+	@read
 	public boolean isRallied() {
 		return stateBitmask & CreatureState.RALLIED;
 	}
 	
+	@read
 	public boolean isInCombat() {
 		return stateBitmask & CreatureState.COMBAT;
 	}
 
+	@read
 	public boolean isDizzied() {
 		return stateBitmask & CreatureState.DIZZY;
 	}
 
+	@read
 	public boolean isBerserked() {
 		return stateBitmask & CreatureState.BERSERK;
 	}
 
+	@read
 	public boolean isStunned() {
 		return stateBitmask & CreatureState.STUNNED;
 	}
 
+	@read
 	public boolean isBlinded() {
 		return stateBitmask & CreatureState.BLINDED;
 	}
 
+	@read
 	public boolean isIntimidated() {
 		return stateBitmask & CreatureState.INTIMIDATED;
 	}
 
+	@read
 	public boolean isSnared() {
 		return stateBitmask & CreatureState.IMMOBILIZED;
 	}
 
+	@read
 	public boolean isImmobilized() {
 		return stateBitmask & CreatureState.IMMOBILIZED;
 	}
 
+	@read
 	public boolean isRooted() {
 		return stateBitmask & CreatureState.FROZEN;
 	}
 
+	@read
 	public boolean isFrozen() {
 		return stateBitmask & CreatureState.FROZEN;
 	}
 
+	@read
 	public boolean isDiseased() {
 		return stateBitmask & CreatureState.DISEASED;
 	}
 
+	@read
 	public boolean isPoisoned() {
 		return stateBitmask & CreatureState.POISONED;
 	}
 
+	@read
 	public boolean isBleeding() {
 		return stateBitmask & CreatureState.BLEEDING;
 	}
 
+	@read
 	public boolean isOnFire() {
 		return stateBitmask & CreatureState.ONFIRE;
 	}
 
+	@read
 	public boolean isRidingMount() {
 		return stateBitmask & CreatureState.RIDINGMOUNT;
 	}
 
+	@read
 	public boolean hasRidingCreature() {
 		return stateBitmask & CreatureState.MOUNTEDCREATURE;
 	}
 
+	@read
 	public boolean isPeaced() {
 		return stateBitmask & CreatureState.PEACE;
 	}
 
+	@read
 	public boolean isMeditating() {
 		return stateBitmask & CreatureState.ALERT;
 	}
 
+	@read
 	public boolean isAiming() {
 		return stateBitmask & CreatureState.AIMING;
 	}
 
+	@read
 	public boolean isInCover() {
 		return stateBitmask & CreatureState.COVER;
 	}
 	
+	@read
 	public boolean isRunning() {
 		return currentSpeed >= runSpeed;
 	}
 	
+	@dirty
 	public abstract boolean isNonPlayerCreatureObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isDroidObject() {
 		return false;
 	}	
 
-	@read
+	@dirty
 	public boolean isPlayerCreature() {
 		return getPlayerObject() != null;
 	}
 	
+	@dirty
 	public abstract boolean isInformantCreature() {
 		return false;
 	}
 
+	@dirty
 	public native CampSiteActiveArea getCurrentCamp();
 	
+	@read
 	public byte getCurrentWeather() {
 		return currentWeather;
 	}
@@ -1677,6 +1830,7 @@ class CreatureObject extends TangibleObject {
 		currentWeather = value;
 	}
 	
+	@read
 	public byte getCurrentWind() {
 		return currentWind;
 	}
@@ -1687,6 +1841,7 @@ class CreatureObject extends TangibleObject {
 	
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
+	@read
 	public boolean isInvisible() {
 		return invisible;
 	}
@@ -1696,10 +1851,12 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@local
+	@dirty
 	public Mutex getSkillModMutex() {
 		return skillModMutex;
 	}
 	
+	@dirty
 	public native float calculateCostAdjustment(byte stat, float baseCost);
 
 	public native void updateSpeedAndAccelerationMods();

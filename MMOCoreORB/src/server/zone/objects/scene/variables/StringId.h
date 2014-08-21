@@ -103,11 +103,11 @@ public:
 		return "@" + file + ":" + stringID;
 	}
 
-	inline String& getFile() {
+	inline String getFile() const {
 		return file;
 	}
 
-	inline String& getStringID() {
+	inline String getStringID() const {
 		return stringID;
 	}
 

@@ -149,6 +149,7 @@ class GuildObject extends SceneObject {
 		return sponsoredPlayers.get(idx);
 	}
 	
+	@read
 	public int getSponsoredPlayerCount() {
 		return sponsoredPlayers.size();
 	}
@@ -157,23 +158,28 @@ class GuildObject extends SceneObject {
 		chatRoom = room;
 	}
 
+	@read
 	public ChatRoom getChatRoom() {
 		return chatRoom;
 	}
 
+	@read
 	public int getTotalMembers() {
 		return guildMembers.size();
 	}
 
+	@read
 	public unsigned long getGuildLeaderID() {
 		return guildLeaderID;
 	}
 	
 	@local
+	@dirty
 	public GuildMemberList getGuildMemberList() {
 		return guildMembers;
 	}
 
+	@read
 	public string getGuildAbbrev() {
 		return guildAbbrev;
 	}
@@ -190,6 +196,7 @@ class GuildObject extends SceneObject {
 		guildID = id;
 	}
 	
+	@read
 	public unsigned int getGuildID() {
 		return guildID;
 	}
@@ -215,6 +222,7 @@ class GuildObject extends SceneObject {
 		pendingNewAbbrev = newAbbrev;
 	}
 
+	@read
 	public string getPendingNewAbbrev() {
 		return pendingNewAbbrev;
 	}
@@ -235,19 +243,23 @@ class GuildObject extends SceneObject {
 
 	public native void rescheduleRename();
 
+	@read
 	public string getGuildKey() {
 		string guildKey = String.valueOf(guildID) + ":" + guildAbbrev;
 		return guildKey;
 	}
 	
+	@dirty
 	public boolean isGuildObject() {
 		return true;
 	}
 	
+	@read
 	public boolean isGuildLeader(CreatureObject player) {
 		return (guildLeaderID == player.getObjectID());
 	}
 	
+	@dirty
 	public byte getWarStatus(unsigned long guildoid) {
 		synchronized (waringGuildsMutex) {
 			return waringGuilds.get(guildoid);
