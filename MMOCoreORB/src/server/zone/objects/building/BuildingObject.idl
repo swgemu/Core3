@@ -49,6 +49,7 @@ import engine.lua.LuaObject;
 import engine.util.u3d.QuadTree;
 import engine.util.u3d.QuadTreeEntry;
 import system.util.SortedVector;
+import system.util.SynchronizedSortedVector;
 import system.util.Vector;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
@@ -88,7 +89,7 @@ class BuildingObject extends StructureObject {
 	protected SortedVector<CreatureObject> childCreatureObjects;
 
 	@dereferenced
-	protected transient Vector<unsigned long> registeredPlayerIdList;
+	protected transient SynchronizedSortedVector<unsigned long> registeredPlayerIdList;
 
 	public boolean publicStructure;
 	
@@ -309,6 +310,7 @@ class BuildingObject extends StructureObject {
 	 * @post { player is locked, zone is locked }
 	 * @param player CreatureObject that entered the building
 	 */
+	@dirty
 	public native abstract void onEnter(CreatureObject player);
 	
 	/**
@@ -319,6 +321,7 @@ class BuildingObject extends StructureObject {
 	 * @post { player is locked, zone is locked }
 	 * @param player CreatureObject that exited the building
 	 */
+	@dirty
 	public native abstract void onExit(CreatureObject player, unsigned long parentid);
 	
 	@dirty
