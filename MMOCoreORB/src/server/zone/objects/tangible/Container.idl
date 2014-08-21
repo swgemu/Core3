@@ -77,6 +77,7 @@ class Container extends TangibleObject {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
@@ -100,14 +101,17 @@ class Container extends TangibleObject {
 	 * @param error error string that the player will receive on error
 	 * @return returns 0 on success, or error code
 	 */
+	@dirty
 	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 	
 	//public native void sendContainerObjectsTo(SceneObject player);
 	
+	@dirty
 	public boolean isContainerObject() {
 		return true;
 	}
 
+	@read
 	public boolean isContainerLocked() {
 		return locked;
 	}
@@ -116,14 +120,17 @@ class Container extends TangibleObject {
 		locked = lock;
 	}
 	
+	@dirty
 	public int getLockChance() {
 		return 15;	
 	}
 
+	@dirty
 	public long getLockTime() {
 		return 60*30*1000;	
 	}
 	
+	@read
 	public boolean isRelocking() {
 		return relocking;	
 	}

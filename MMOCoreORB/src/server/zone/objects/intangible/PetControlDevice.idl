@@ -129,6 +129,7 @@ class PetControlDevice extends ControlDevice {
 
 	public native void trainAsMount(CreatureObject player);
 
+	@read
 	public boolean isTrainedAsMount() {
 		return trainedAsMount;
 	}
@@ -182,8 +183,9 @@ class PetControlDevice extends ControlDevice {
 	 * @post { this is locked }
 	 * @returns 0 on succes, != 0 on error
 	 */
+	@dirty
 	public native int canBeDestroyed(CreatureObject player);
-
+	@dirty
 	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
 
 	/**
@@ -194,6 +196,7 @@ class PetControlDevice extends ControlDevice {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	/**
@@ -212,14 +215,17 @@ class PetControlDevice extends ControlDevice {
 	@local
 	public native void setTrainingCommand( unsigned int commandID );
 
+	@read
 	public unsigned int getTrainingCommand() {
 		return trainingCommand;
 	}
 
+	@dirty
 	public boolean hasTrainedCommand(unsigned int command) {
 		return trainedCommands.contains(command);
 	}
 
+	@dirty
 	public boolean hasTrainedCommandString(final string message) {
 		for (int i = 0; i < trainedCommands.size(); i++) {
 			if (trainedCommands.get(i) == message)
@@ -229,6 +235,7 @@ class PetControlDevice extends ControlDevice {
 		return false;
 	}
 
+	@dirty
 	public boolean hasUsedNamingCommand(unsigned int command) {
 		if (namingCommands.contains(command))
 			return true;
@@ -236,6 +243,7 @@ class PetControlDevice extends ControlDevice {
 		return false;
 	}
 
+	@dirty
 	public string getTrainedCommand(unsigned int command) {
 		return trainedCommands.get(command);
 	}
@@ -248,10 +256,12 @@ class PetControlDevice extends ControlDevice {
 		lastCommand = c;
 	}
 	
+	@read
 	public unsigned int getLastCommand() {
 		return lastCommand;
 	}
 
+	@read
 	public string getFutureName() {
 		return futureName;
 	}
@@ -260,6 +270,7 @@ class PetControlDevice extends ControlDevice {
 		futureName = name;
 	}
 
+	@read
 	public unsigned int getNamingProgress() {
 		return namingProgress;
 	}
@@ -276,14 +287,17 @@ class PetControlDevice extends ControlDevice {
 
 	native public void resetNamingCommands();
 
+	@dirty
 	public boolean isPetControlDevice() {
 		return true;
 	}
 
+	@read
 	public int getVitality() {
 		return vitality;
 	}
 
+	@read
 	public int getMaxVitality() {
 		return maxVitality;
 	}
@@ -296,6 +310,7 @@ class PetControlDevice extends ControlDevice {
 		maxVitality = vit;
 	}
 
+	@read
 	public int getPetType() {
 		return petType;
 	}
@@ -307,5 +322,4 @@ class PetControlDevice extends ControlDevice {
 	public void setGrowthStage(int stage) {
 		growthStage = stage;
 	}
-	
 }

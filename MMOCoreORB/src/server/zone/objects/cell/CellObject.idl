@@ -88,8 +88,10 @@ class CellObject extends SceneObject {
 	 * @post { this object is locked, player received the container objects }
 	 * @param player SceneObject that will receive the objects 
 	 */
+	@dirty
 	public native void sendContainerObjectsTo(SceneObject player);
 	
+	@dirty
 	public native void sendPermissionsTo(CreatureObject object, boolean allowEntry);
 	
 	/**
@@ -100,6 +102,7 @@ class CellObject extends SceneObject {
 	 * @param error error string that the player will receive on error
 	 * @return returns 0 on success, or error code
 	 */
+	@dirty
 	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 	
 	/**
@@ -124,12 +127,14 @@ class CellObject extends SceneObject {
 	
 	public native void initializeTransientMembers();
 	
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 	
 	/*public void resetCurrentNumerOfPlayerItems() {
 		currentNumberOfItems = 0;
 	}*/
 	
+	@dirty
 	public native int getCurrentNumberOfPlayerItems();
 	
 	/**
@@ -137,6 +142,7 @@ class CellObject extends SceneObject {
 	 */
 	public native void destroyAllPlayerItems();
 	
+	@read
 	public int getCellNumber() {
 		return cellNumber;
 	}
@@ -145,6 +151,7 @@ class CellObject extends SceneObject {
 		cellNumber = number;
 	}
 	
+	@dirty
 	public boolean isCellObject() {
 		return true;
 	}

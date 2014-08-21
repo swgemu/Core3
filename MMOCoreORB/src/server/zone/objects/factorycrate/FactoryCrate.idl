@@ -77,6 +77,7 @@ class FactoryCrate extends TangibleObject {
 	
 	public native void initializeTransientMembers();
 	
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 	
 	/**
@@ -87,6 +88,7 @@ class FactoryCrate extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	/**
@@ -96,6 +98,7 @@ class FactoryCrate extends TangibleObject {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
@@ -108,10 +111,12 @@ class FactoryCrate extends TangibleObject {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
+	@dirty
 	public abstract boolean isFactoryCrate() {
 		return true;
 	}
 	
+	@read
 	public int getMaxCapacity() {
 		return maxCapacity;
 	}
@@ -123,10 +128,13 @@ class FactoryCrate extends TangibleObject {
 	public native void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
 
 	@reference
+	@dirty
 	public native TangibleObject getPrototype();
 	
+	@dirty
 	public native string getCraftersName();
 	
+	@dirty
 	public native string getSerialNumber();
 	
 	public native boolean extractObjectToParent();
@@ -135,10 +143,12 @@ class FactoryCrate extends TangibleObject {
 	
 	public native void split(int newStackSize);
 	
+	@dirty
 	public abstract native int getCountableObjectsRecursive() {
 		return 0;
 	}
 
+	@dirty
 	public abstract native int getSizeOnVendorRecursive() {
 		return 1;
 	}

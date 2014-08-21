@@ -216,6 +216,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the baselines 
 	 */
+	@dirty
 	public native abstract void sendBaselinesTo(SceneObject player);
 	
 	/**
@@ -299,6 +300,7 @@ class TangibleObject extends SceneObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	/**
@@ -318,6 +320,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked }
 	 * @return returns true if SceneObject defender exists in the defender vector
 	 */
+	@dirty
 	public boolean hasDefender(SceneObject defender) {
 		for (int i = 0; i < defenderList.size(); ++i) {
 			if (defenderList.get(i) == defender)
@@ -333,6 +336,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked}
 	 * @return returns true if the creature object can attack this 
 	 */
+	@dirty
 	public native abstract boolean isAttackableBy(CreatureObject object);
 	
 	/**
@@ -341,10 +345,12 @@ class TangibleObject extends SceneObject {
 	 * @post { }
 	 * @return returns true if its aggressive
 	 */
+	@dirty
 	public abstract boolean isAggressiveTo(CreatureObject object) {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isHealableBy(CreatureObject object) {
 		return false;
 	}
@@ -354,6 +360,7 @@ class TangibleObject extends SceneObject {
 	 * @pre { this object is locked}
 	 * @post { this object is locked }
 	 */
+	@dirty
 	public abstract native void sendPvpStatusTo(CreatureObject player);
 	
 	/**
@@ -401,31 +408,38 @@ class TangibleObject extends SceneObject {
 	
 	public native void dropFromDefenderLists(TangibleObject destructor);
 	
+	@dirty
 	public byte getUnknownByte() {
 		return unknownByte;
 	}
 	
+	@dirty
 	public abstract boolean isKiller() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isTicketCollector() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isTicketObject() {
 		return false;
 	}
 	
 	@local
+	@dirty
 	public CustomizationVariables getCustomizationVariables() {
 		return customizationVariables;
 	}
 		
+	@dirty
 	public abstract int getUseCount() {
 		return useCount;
 	}
 	
+	@dirty
 	public abstract int getDisplayedUseCount() {
 		if(useCount == 1 && super.gameObjectType != SceneObjectType.TRAP)
 			return 0;
@@ -433,16 +447,19 @@ class TangibleObject extends SceneObject {
 		return useCount;
 	}
 	
+	@dirty
 	public int getMaxCondition() {
 		return maxCondition;
 	}
 	
 	public native void setMaxCondition(int maxCond, boolean notifyClient = true);
 	
+	@dirty
 	public int getConditionDamage() {
 		return (int)conditionDamage;
 	}
 	
+	@dirty
 	public int getVolume() {
 		return volume;
 	}
@@ -451,18 +468,22 @@ class TangibleObject extends SceneObject {
 		complexity = value;
 	}
 	
+	@dirty
 	public float getComplexity() {
 		return complexity;
 	}
 	
+	@dirty
 	public unsigned int getOptionsBitmask() {
 		return optionsBitmask;
 	}
 	
+	@dirty
 	public int getLevel() {
 		return level;
 	}
 	
+	@dirty
 	public unsigned int getPvpStatusBitmask() {
 		return pvpStatusBitmask;
 	}
@@ -622,10 +643,12 @@ class TangibleObject extends SceneObject {
 		return "Repairing is not implemented for this item";
 	}
 	
+	@dirty
 	public boolean isBroken() {
 		return maxCondition < 2 || getConditionDamage() >= getMaxCondition();
 	}
 	
+	@dirty
 	protected float getConditionReduction(float value) {
 		if(isBroken())
 			return 0.5 * value;
@@ -644,6 +667,7 @@ class TangibleObject extends SceneObject {
 		return 0;
 	}
 	
+	@dirty
 	public native void broadcastPvpStatusBitmask();
 
 	public native void addActiveArea(ActiveArea area);

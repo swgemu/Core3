@@ -248,22 +248,31 @@ class AiAgent extends CreatureObject {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the baselines 
 	 */
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 	
+	@dirty
 	public native int calculateAttackMinDamage(int level);
+	
+	@dirty
 	public native int calculateAttackMaxDamage(int level);
+	
+	@dirty
 	public native float calculateAttackSpeed(int level);
 	
 	public native SceneObject getTargetFromMap();
 	public native SceneObject getTargetFromDefenders();
 	public native boolean validateTarget();
 	
+	@dirty
 	public abstract native boolean isCamouflaged(CreatureObject target) {
 		return false;
 	}
 	
+	@dirty
 	public native boolean isScentMasked(CreatureObject target);
 
+	@dirty
 	public native boolean isConcealed(CreatureObject target);
 	
 	public native boolean findNextPosition(float maxDistance, boolean walk = false);
@@ -271,6 +280,7 @@ class AiAgent extends CreatureObject {
 	@local
 	public native void doAwarenessCheck(CreatureObject target);
 	
+	@dirty
 	public float getAvgSpeed() {
 		return awarenessEvent.getAvgSpeed();
 	}
@@ -287,18 +297,21 @@ class AiAgent extends CreatureObject {
 		
 	public native void checkNewAngle();
 	
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public native void setNextPosition(float x, float z, float y, SceneObject cell = null);
 	
 	public native void setNextStepPosition(float x, float z, float y, SceneObject cell = null);
 	
+	@dirty
 	public native void notifyPositionUpdate(QuadTreeEntry entry);
 	
 	@local
 	public native void updateCurrentPosition(PatrolPoint point);
 	
 	@local
+	@dirty
 	public native void broadcastNextPositionUpdate(PatrolPoint point);
 	
 	public void clearPatrolPoints() {
@@ -344,6 +357,7 @@ class AiAgent extends CreatureObject {
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
 	 */
+	@dirty
 	public native void sendConversationStartTo(SceneObject player);
 	
 	/**
@@ -351,6 +365,7 @@ class AiAgent extends CreatureObject {
 	 * @pre {this locked, player locked }
 	 * @post {this locked, player locked }
 	 */
+	@dirty
 	public native void sendDefaultConversationTo(SceneObject player);
 	
 	/**
@@ -476,6 +491,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this object is locked }
 	 * @return returns true if the creature object can attack this 
 	 */
+	@dirty
 	public native boolean isAttackableBy(CreatureObject object);
 	
 	/**
@@ -484,6 +500,7 @@ class AiAgent extends CreatureObject {
 	 * @post { }
 	 * @return returns true if its aggressive
 	 */
+	@dirty
 	public native boolean isAggressiveTo(CreatureObject object);
 	
 	public void setOblivious() {
@@ -558,10 +575,12 @@ class AiAgent extends CreatureObject {
 			setFollowObject(obj);
 	}
 	
+	@read
 	public unsigned int getFollowState() {
 		return followState;
 	}
 	
+	@dirty
 	public native float getMaxDistance();
 	public native int setDestination();
 	public native boolean completeMove();
@@ -572,10 +591,12 @@ class AiAgent extends CreatureObject {
 			waiting = true;
 	}
 	
+	@read
 	public int getWait() {
 		return waitTime;
 	}
 	
+	@read
 	public boolean isWaiting() {
 		return waiting;
 	}
@@ -593,16 +614,19 @@ class AiAgent extends CreatureObject {
 	public native boolean validateStateAttack();
 	public native void enqueueAttack();
 	
+	@dirty
 	public boolean isRetreating() {
 		return !homeLocation.isReached();
 	}
 	
+	@read
 	public boolean isFleeing() {
 		return followState == FLEEING;
 	}
 	
 	public native void clearDespawnEvent();
 	
+	@dirty
 	public float getKinetic() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -610,6 +634,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getKinetic();
 	}
 	
+	@dirty
 	public float getEnergy() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -617,6 +642,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getEnergy();
 	}
 	
+	@dirty
 	public float getElectricity() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -624,6 +650,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getElectricity();
 	}
 	
+	@dirty
 	public float getStun() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -631,6 +658,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getStun();
 	}
 	
+	@dirty
 	public float getBlast() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -638,6 +666,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getBlast();
 	}
 	
+	@dirty
 	public float getHeat() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -645,6 +674,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getHeat();
 	}
 	
+	@dirty
 	public float getCold() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -652,6 +682,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getCold();
 	}
 	
+	@dirty
 	public float getAcid() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -659,6 +690,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getAcid();
 	}
 	
+	@dirty
 	public float getLightSaber() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -666,6 +698,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getLightSaber();
 	}
 	
+	@dirty
 	public boolean isStalker() {
 		if (npcTemplate.get() == null)
 			return false;
@@ -673,6 +706,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().isStalker();
 	}
 	
+	@dirty
 	public boolean isKiller() {
 		if (npcTemplate.get() == null)
 			return false;
@@ -680,6 +714,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().isKiller();
 	}
 	
+	@dirty
 	public unsigned int getFerocity() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -687,6 +722,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getFerocity();
 	}
 	
+	@dirty
 	public unsigned int getArmor() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -694,14 +730,17 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getArmor();
 	}
 	
+	@read
 	public boolean getDespawnOnNoPlayerInRange() {
 		return despawnOnNoPlayerInRange;
 	}
 	
+	@dirty
 	public int getNumberOfPlayersInRange() {
 		return numberOfPlayersInRange.get();
 	}
 	
+	@dirty
 	public string getFactionString() {
 		if (npcTemplate.get() == null)
 			return "";
@@ -709,6 +748,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getFaction();
 	}
 	
+	@dirty
 	public string getSocialGroup() {
 		if (npcTemplate.get() == null)
 			return "";
@@ -716,6 +756,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getSocialGroup();
 	}
 	
+	@dirty
 	public float getChanceHit() {
 		if (npcTemplate.get() == null)
 			return false;
@@ -723,6 +764,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getChanceHit();
 	}
 	
+	@dirty
 	public int getDamageMin() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -736,6 +778,7 @@ class AiAgent extends CreatureObject {
 		//return calculateAttackMinDamage(super.getLevel());
 	}
 	
+	@dirty
 	public int getDamageMax() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -747,6 +790,7 @@ class AiAgent extends CreatureObject {
 		return getWeapon().getMaxDamage();
 	}
 	
+	@dirty
 	public abstract int getBaseXp() {
 		if (npcTemplate.get() == null || isEventMob())
 			return 0;
@@ -754,6 +798,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getBaseXp();
 	}
 	
+	@dirty
 	public unsigned int getDiet() {
 		if (npcTemplate.get() == null)
 			return 0;
@@ -770,6 +815,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@local
+	@dirty
 	public LootGroupCollection getLootGroups() {
 		if (npcTemplate.get() == null || isEventMob())
 			return null;
@@ -777,38 +823,46 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getLootGroups();
 	}
 	
+	@read
 	public float getRespawnTimer() {
 		return respawnTimer;
 	}
 
+	@read
 	public boolean getRandomRespawn() {
 		return randomRespawn;
 	}
 
+	@read
 	public int getRespawnCounter() {
 		return respawnCounter;
 	}
 
 	@local
+	@dirty
 	public PatrolPoint getHomeLocation() {
 		return homeLocation;
 	}
 	
+	@dirty
 	public boolean isAiAgent() {
 		return true;
 	}
 	
 	@local
+	@dirty
 	public CreatureTemplate getCreatureTemplate() {
 		return npcTemplate.get();
 	}
 	
+	@dirty
 	public native boolean hasLoot();
 	
 	public void setShowNextPosition(boolean val) {
 		showNextMovementPosition = val;
 	}
 
+	@dirty
 	public native boolean isEventMob();
 
 	@dirty
@@ -816,6 +870,7 @@ class AiAgent extends CreatureObject {
 		return (getControlDevice() != null);
 	}
 
+	@dirty
 	public string getPvPFaction(){
 		if (npcTemplate.get() == null)
 			return "";
@@ -850,11 +905,13 @@ class AiAgent extends CreatureObject {
 	@local
 	public native void setCurrentBehavior(unsigned int b);
 
+	@read
 	public unsigned int getCurrentBehavior() {
 		return currentBehaviorID;
 	}
 
 	@local
+	@dirty
 	public native int getBehaviorStatus();
 
 	@local
@@ -882,6 +939,7 @@ class AiAgent extends CreatureObject {
 		homeObject = home;
 	}
 
+	@dirty
 	public SceneObject getHomeObject() {
 		return homeObject;
 	}
@@ -893,6 +951,7 @@ class AiAgent extends CreatureObject {
 	 */
 	public native void setCombatState();
 	
+	@dirty
 	public int getCreatureBitmask() {
 		return creatureBitmask;
 	}
@@ -902,6 +961,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@local
+	@dirty
 	public Time getAlertedTime() {
 		return alertedTime;
 	}

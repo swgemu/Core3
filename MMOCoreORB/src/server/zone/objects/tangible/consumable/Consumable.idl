@@ -154,38 +154,47 @@ class Consumable extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public native void setModifiers(Buff buff, boolean skillModifiers = false);
 	
+	@read
 	public boolean isSpiceEffect() {
 		return (effectType == EFFECT_SPICE);
 	}
 	
+	@read
 	public boolean isAttributeEffect() {
 		return (effectType == EFFECT_ATTRIBUTE);
 	}
 	
+	@dirty
 	public boolean isDrink() {
 		return (consumableType == DRINK);
 	}
 
+	@dirty
 	public boolean isFood() {
 		return (consumableType == FOOD);
 	}
 
+	@dirty
 	public boolean isForagedFood() {
 		return (foragedFood == 1);
 	}
 
+	@dirty
 	public boolean isSpice() {
 		return (isSpiceEffect() && isFood());
 	}
 	
+	@dirty
 	public int getDuration(){
 		return duration;
 	}
 	
+	@dirty
 	public string getSpeciesRestriction(){
 		return speciesRestriction;
 	}

@@ -69,6 +69,7 @@ class WearableContainerObject extends Container {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
@@ -84,8 +85,10 @@ class WearableContainerObject extends Container {
 		return wearableSkillMods;
 	}
 
+	@dirty
 	public native boolean isEquipped();
 
+	@dirty
 	public boolean isWearableContainerObject() {
 		return true;
 	}

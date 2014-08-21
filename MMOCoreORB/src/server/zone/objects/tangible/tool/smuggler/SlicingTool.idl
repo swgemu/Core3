@@ -93,13 +93,16 @@ class SlicingTool extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 
+	@dirty
 	public native boolean calculateSuccessRate();
 	
+	@dirty
 	public float getEffectiveness() {
 		return effectiveness;
 	}

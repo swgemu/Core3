@@ -64,10 +64,12 @@ class VitalityPack extends PharmaceuticalObject {
 		setUseCount(1);
 	}
 	
+	@dirty
 	public int getEffectiveness() {
 		return effectiveness;
 	}
 	
+	@dirty
 	public boolean isVitalityPack() {
 		return true;
 	}
@@ -91,6 +93,7 @@ class VitalityPack extends PharmaceuticalObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 }

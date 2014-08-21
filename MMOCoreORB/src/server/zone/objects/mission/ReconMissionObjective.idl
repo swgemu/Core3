@@ -81,5 +81,6 @@ class ReconMissionObjective extends MissionObjective {
 	
 	@dereferenced
 	@local
+	@dirty
 	public native Vector3 getEndPosition();
 }

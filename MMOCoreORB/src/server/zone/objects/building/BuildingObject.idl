@@ -149,6 +149,7 @@ class BuildingObject extends StructureObject {
 	 * @post { this object is locked, player received the container objects }
 	 * @param player SceneObject that will receive the objects 
 	 */
+	@dirty
 	public native void sendContainerObjectsTo(SceneObject player);
 	
 	/**
@@ -162,11 +163,13 @@ class BuildingObject extends StructureObject {
 	 * @pre Zone unlocked
 	 * @post Zone unlocked
 	 */
+	@dirty
 	public native void broadcastCellPermissions();
 	
 	/**
 	 * Updates a specific cell's permissions to the players in the area
 	 */
+	@dirty
 	public native void broadcastCellPermissions(unsigned long objectid);
 	
 	/**
@@ -174,6 +177,7 @@ class BuildingObject extends StructureObject {
 	 * @param firstName The name of the player.
 	 * @return Returns true if allowed to enter.
 	 */
+	@dirty
 	public native boolean isAllowedEntry(CreatureObject player);
 	
 	/**
@@ -182,6 +186,7 @@ class BuildingObject extends StructureObject {
 	 * returns true if the player is cityBanned
 	 * returns false if the player is not CityBanned
 	 */
+	@dirty
 	public native boolean isCityBanned(CreatureObject player);
 	
 	/**
@@ -194,6 +199,7 @@ class BuildingObject extends StructureObject {
 	/**
 	* Checks if the template has an ejection point
 	*/
+	@dirty
 	public native boolean hasTemplateEjectionPoint();
 
 	/**
@@ -201,10 +207,12 @@ class BuildingObject extends StructureObject {
 	*/
 	@local
 	@dereferenced
+	@dirty
 	public native Vector3 getTemplateEjectionPoint();
 
 	@local
 	@dereferenced
+	@dirty
 	public native Vector3 getEjectionPoint();
 	
 	/**
@@ -244,12 +252,16 @@ class BuildingObject extends StructureObject {
 	@local
 	public native void inRange(QuadTreeEntry obj, float range);
 	
+	@dirty
 	public native void sendTo(SceneObject player, boolean doClose);
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
+	@dirty
 	public native void sendDestroyTo(SceneObject player);
 	
 	public native void addCell(CellObject cell, unsigned int cellNumber);
 	
+	@dirty
 	public boolean isStaticBuilding() {
 		return super.staticObject;
 	}
@@ -258,6 +270,7 @@ class BuildingObject extends StructureObject {
 	 * Returns cell based on the index.
 	 * Cells start index 1
 	 */
+	@dirty
 	public CellObject getCell(unsigned int idx) {
 		if (idx == 0) {
 			super.error("trying to get Cell with id = 0");
@@ -268,6 +281,7 @@ class BuildingObject extends StructureObject {
 		return cells.get(idx);
 	}
 	
+	@read
 	public int getTotalCellNumber() {
 		return totalCellNumber;
 	}
@@ -277,6 +291,7 @@ class BuildingObject extends StructureObject {
 	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
 	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
 	
+	@dirty
 	public native int getCurrentNumberOfPlayerItems();
 	
 	/**
@@ -304,6 +319,7 @@ class BuildingObject extends StructureObject {
 	 */
 	public native abstract void onExit(CreatureObject player, unsigned long parentid);
 	
+	@dirty
 	public boolean isBuildingObject() {
 		return true;
 	}
@@ -316,10 +332,12 @@ class BuildingObject extends StructureObject {
 		return signObject;
 	}
 
+	@dirty
 	public boolean isPublicStructure() {
 		return publicStructure;
 	}
 	
+	@dirty
 	public boolean isPrivateStructure() {
 		return !publicStructure;
 	}
@@ -328,10 +346,12 @@ class BuildingObject extends StructureObject {
 		publicStructure = privacy;
 	}
 
+	@dirty
 	public boolean isCondemned() {
 		return super.isDecayed();
 	}
 	
+	@read
 	public int getMapCellSize() {
 		return cells.size();
 	}
@@ -348,8 +368,10 @@ class BuildingObject extends StructureObject {
 	 * Calculates the maximum number of items that can be stored by a player in this building.
 	 * @return Returns a uint32 number representing the max items that can be stored in this building.
 	 */
+	@dirty
 	public abstract native unsigned int getMaximumNumberOfPlayerItems();
 	
+	@dirty
 	public string getRedeedMessage() {
 		if(getCurrentNumberOfPlayerItems() > 0)
 			return "clear_building_for_delete";
@@ -357,14 +379,17 @@ class BuildingObject extends StructureObject {
 		return "";
 	}
 	
+	@read
 	public boolean hasAccessFee() {
 		return accessFee > 0;
 	}
 	
+	@read
 	public int getAccessFee() {
 		return accessFee;
 	}
 	
+	@dirty
 	public native boolean canChangeAccessFee();
 	
 	public native void setAccessFee(int fee, int duration);
@@ -378,8 +403,10 @@ class BuildingObject extends StructureObject {
 		}
 	}
 
+	@dirty
 	public native int getAccessFeeDelay();
 
+	@dirty
 	private native void promptPayAccessFee(CreatureObject player);
 
 	public native void payAccessFee(CreatureObject player);
@@ -390,7 +417,9 @@ class BuildingObject extends StructureObject {
 
 	public native void registerProfessional(CreatureObject player);
 	public native void unregisterProfessional(CreatureObject player);
+	@dirty
 	public native boolean isInPlayerCity();
+	@dirty
 	public native boolean canPlayerRegisterWithin();
 
 	public native void createChildObjects();
@@ -407,6 +436,7 @@ class BuildingObject extends StructureObject {
 
 	public native void destroyChildObjects();
 
+	@dirty
 	public boolean isResidence(){
 		return isOwnerResidence;
 	}
@@ -415,6 +445,7 @@ class BuildingObject extends StructureObject {
 		isOwnerResidence = isResidence;
 	}
 
+	@read
 	public int getFactionBaseType() {
 		return factionBaseType;
 	}

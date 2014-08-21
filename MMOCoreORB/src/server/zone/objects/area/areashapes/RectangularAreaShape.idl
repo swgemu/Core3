@@ -76,6 +76,7 @@ class RectangularAreaShape extends AreaShape {
 	 * Get the height of the rectangle.
 	 * @return height of the rectangle.
 	 */
+	@dirty
 	public abstract float getHeight() {
 		return height;
 	}
@@ -84,6 +85,7 @@ class RectangularAreaShape extends AreaShape {
 	 * Get the width of the rectangle.
 	 * @return width of the rectangle.
 	 */
+	@dirty
 	public abstract float getWidth() {
 		return width;
 	}
@@ -94,6 +96,7 @@ class RectangularAreaShape extends AreaShape {
 	 * @param y the y coordinate.
 	 * @return true if the coordinate is within the area shape.
 	 */
+	@dirty
 	public native abstract boolean containsPoint(float x, float y);
 	
 	/**
@@ -103,6 +106,7 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
+	@dirty
 	public native abstract boolean containsPoint(@dereferenced final Vector3 point);
 
 	/**
@@ -111,6 +115,7 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
+	@dirty
 	public native abstract Vector3 getRandomPosition();
 
 	/**
@@ -122,12 +127,14 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
+	@dirty
 	public native abstract Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
 
 	/**
 	 * Check if this is a circular area shape.
 	 * @return true if it is a circular area shape.
 	 */
+	@dirty
 	public abstract boolean isCircularAreaShape() {
 		return false;
 	}
@@ -136,6 +143,7 @@ class RectangularAreaShape extends AreaShape {
 	 * Check if this is a rectangular area shape.
 	 * @return true if it is a rectangular area shape.
 	 */
+	@dirty
 	public abstract boolean isRectangularAreaShape() {
 		return true;
 	}
@@ -144,6 +152,7 @@ class RectangularAreaShape extends AreaShape {
 	 * Check if this is a ring area shape.
 	 * @return true if it is a ring area shape.
 	 */
+	@dirty
 	public abstract boolean isRingAreaShape() {
 		return false;
 	}
@@ -153,6 +162,7 @@ class RectangularAreaShape extends AreaShape {
 	 * @param areaShape the area shape to check for intersections with.s
 	 * @return true if the area shapes intersects each other.
 	 */
+	@dirty
 	public native abstract boolean intersectsWith(AreaShape areaShape);
 	
 	/**
@@ -163,6 +173,7 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
+	@dirty
 	private native Vector3 getClosestPoint(@dereferenced final Vector3 position);
 
 	/**
@@ -173,12 +184,14 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dereferenced
 	@local
+	@dirty
 	private native Vector3 getFarthestPoint(@dereferenced final Vector3 position);
 
 	/**
 	 * Get the area of the areaShape.
 	 * @return the area of the area shape.
 	 */
+	@dirty
 	public abstract float getArea() {
 		return height * width;
 	}

@@ -67,18 +67,22 @@ class PowerupObject extends TangibleObject {
 		Logger.setLoggingName("PowerupObject");
 	}
 	
+	@dirty
 	public boolean isRanged() {
 		return type == "ranged";
 	}
 	
+	@dirty
 	public boolean isMelee() {
 		return type == "melee";
 	}
 	
+	@dirty
 	public boolean isThrown() {
 		return type == "thrown";
 	}
 	
+	@dirty
 	public boolean isMine() {
 		return type == "mine";
 	}
@@ -87,10 +91,12 @@ class PowerupObject extends TangibleObject {
 		uses = uses - 1;
 	}
 	
+	@dirty
 	public int getUses() {
 		return uses;
 	}
 	
+	@dirty
 	public native float getPowerupStat(final string stat);
 
 	/**
@@ -101,6 +107,7 @@ class PowerupObject extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	
@@ -108,8 +115,10 @@ class PowerupObject extends TangibleObject {
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
 	@local
+	@dirty
 	public native void fillWeaponAttributeList(AttributeListMessage alm, WeaponObject weapon);
 
+	@dirty
 	private native float getWeaponStat(final string attrib, WeaponObject weapon, boolean withPup);
 
 	

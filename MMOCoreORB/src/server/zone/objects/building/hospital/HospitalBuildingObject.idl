@@ -58,6 +58,7 @@ class HospitalBuildingObject extends BuildingObject {
 		Logger.setLoggingName("HospitalBuildingObject");
 	}
 	
+	@dirty
 	public boolean isHospitalBuildingObject() {
 		return true;
 	}

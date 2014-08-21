@@ -145,6 +145,7 @@ class CurePack extends PharmaceuticalObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
 		
@@ -161,27 +162,33 @@ class CurePack extends PharmaceuticalObject {
 		}
 	}
 	
+	@dirty
 	public int calculatePower(CreatureObject creature) {
 		float modSkill = (float) creature.getSkillMod("healing_wound_treatment");
 		return ((100 + modSkill) / 100 * effectiveness);
 	}
 	
+	@dirty
 	public boolean isArea() {
 		return area != 0;
 	}
 	
+	@dirty
 	public float getArea() {
 		return area;
 	}
 	
+	@dirty
 	public unsigned long getState() {
 		return state;
 	}
 	
+	@dirty
 	public float getEffectiveness() {
 		return effectiveness;
 	}
 	
+	@dirty
 	public boolean isCurePack() {
 		return true;
 	}

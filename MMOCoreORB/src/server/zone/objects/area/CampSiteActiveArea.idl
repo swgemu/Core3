@@ -126,43 +126,53 @@ class CampSiteActiveArea extends ActiveArea {
 		camp = c;
 	}
 	
+	@read
 	public StructureObject getCamp() {
 		return camp;
 	}
 
+	@dirty
 	public int getMedicalRating() {
 		return campStructureData.get().getMedicalRating();
 	}
 	
+	@dirty
 	public int getHealthWoundRegenRate() {
 		return campStructureData.get().getHealthWoundRegenRate();
 	}
 	
+	@dirty
 	public int getActionWoundRegenRate() {
 		return campStructureData.get().getActionWoundRegenRate();
 	}
 	
+	@dirty
 	public int getMindWoundRegenRate() {
 		return campStructureData.get().getMindWoundRegenRate();
 	}
 
+	@dirty
 	public float getAggroMod() {
 		return campStructureData.get().getAggroMod();
 	}
 	
+	@dirty
 	public abstract boolean isCampArea() {
 		return true;
 	}
 	
+	@read
 	public int getVisitorCount() {
 		return visitors.size();
 	}
 	
 	@dereferenced
+	@dirty
 	public unsigned int getUptime() {
 		return System.getTime() - timeCreated;
 	}
 	
+	@read
 	public boolean isAbandoned() {
 		return abandoned;
 	}
@@ -177,6 +187,7 @@ class CampSiteActiveArea extends ActiveArea {
 	
 	public native void assumeOwnership(CreatureObject player);
 	
+	@read
 	public CreatureObject getOwner() {
 		return campOwner;
 	}

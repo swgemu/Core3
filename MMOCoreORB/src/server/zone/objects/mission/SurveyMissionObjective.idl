@@ -94,6 +94,7 @@ class SurveyMissionObjective extends MissionObjective {
 	
 	@dereferenced
 	@local
+	@dirty
 	public native Vector3 getEndPosition() {
 		CreatureObject owner = getPlayerOwner();
 		

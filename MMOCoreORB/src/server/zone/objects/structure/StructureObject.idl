@@ -134,10 +134,12 @@ class StructureObject extends TangibleObject {
 		return 0;
 	}
 	
+	@dirty
 	public abstract boolean checkRequisitesForPlacement(CreatureObject player) {
 		return true;
 	}
 
+	@dirty
 	public native string getTimeString(unsigned int timestamp);
 
 	/**
@@ -163,6 +165,7 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for admin permission.
 	 * @return Returns true if the player name has admin permissions.
 	 */
+	@dirty
 	public native boolean isOnAdminList(CreatureObject player);
 	
 	/**
@@ -171,6 +174,7 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for admin permission.
 	 * @return Returns true if the player name has admin permissions.
 	 */
+	@dirty
 	public boolean isOnAdminList(final string firstName, boolean caseSensitive = false) {
 		return structurePermissionList.isOnPermissionList("ADMIN", firstName, caseSensitive);
 	}
@@ -180,6 +184,7 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for entry permission.
 	 * @return Returns true if the player name has entry permissions.
 	 */
+	@dirty
 	public native boolean isOnEntryList(CreatureObject player);
 	
 	/**
@@ -187,6 +192,7 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for ban permission.
 	 * @return Returns true if the player name has ban permissions.
 	 */
+	@dirty
 	public native boolean isOnBanList(CreatureObject player);
 	
 	/**
@@ -195,6 +201,7 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for ban permission.
 	 * @return Returns true if the player name has ban permissions.
 	 */
+	@dirty
 	public boolean isOnBanList(final string firstName, boolean caseSensitive = false) {
 		return structurePermissionList.isOnPermissionList("BAN", firstName, caseSensitive);
 	}
@@ -204,6 +211,7 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for hopper permission.
 	 * @return Returns true if the player name has hopper permissions.
 	 */
+	@dirty
 	public native boolean isOnHopperList(CreatureObject player);
 	
 	/**
@@ -212,6 +220,7 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check.
 	 * @return Returns true if the player name was found on the list.
 	 */
+	@dirty
 	public native boolean isOnPermissionList(final string listName, CreatureObject player);
 	
 	/**
@@ -221,29 +230,37 @@ class StructureObject extends TangibleObject {
 	 * @param firstName The name of the player to check.
 	 * @return Returns true if the player name was found on the list.
 	 */
+	@dirty
 	public boolean isOnPermissionList(final string listName, final string firstName, boolean caseSensitive = false) {
 		return structurePermissionList.isOnPermissionList(listName, firstName, caseSensitive);
 	}
 
+	@dirty
 	public native boolean isOwnerOf(SceneObject obj);
+	@dirty
 	public native boolean isOwnerOf(unsigned long oid);
 	
+	@dirty
 	public boolean isOnAccessList(SceneObject obj) {
 		return false;
 	}
 	
+	@dirty
 	public boolean isOnAccessList(unsigned long oid) {
 		return false;
 	}
 
+	@dirty
 	public void sendPermissionListTo(CreatureObject creature, final string listName) {
 		structurePermissionList.sendTo(creature, listName);
 	}
 	
+	@dirty
 	public boolean hasPermissionList(final string listName) {
 		return structurePermissionList.containsList(listName);
 	}
 	
+	@dirty
 	public boolean isPermissionListFull(final string listName) {
 		return structurePermissionList.isListFull(listName);
 	}
@@ -276,46 +293,59 @@ class StructureObject extends TangibleObject {
 	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
 	 * @return int The cost to redeed this building.
 	 */
+	@dirty
 	public int getRedeedCost() {
 		return (getBaseMaintenanceRate() * 50);
 	}
 
+	@dirty
 	public native CreatureObject getOwnerCreatureObject(); 
 	
+	@read
 	public unsigned long getOwnerObjectID() {
 		return ownerObjectID;
 	}
 	
+	@read
 	public unsigned long getDeedObjectID() {
 		return deedObjectID;
 	}
 	
+	@dirty
 	public native int getLotSize();
 
 	public void setMaintenanceReduced(boolean value) {
 		maintenanceReduced = value;
 	}
 
+	@dirty
 	public native float getMaintenanceRate();
 
+	@dirty
 	public native string getMaintenanceMods();
 
+	@dirty
 	public native int getBaseMaintenanceRate();
 	
+	@dirty
 	public native int getBasePowerRate();
 	
+	@read
 	public int getSurplusMaintenance() {
 		return surplusMaintenance;
 	}
 	
+	@read
 	public int getSurplusPower() {
 		return surplusPower;
 	}
 	
+	@dirty
 	public abstract boolean isPublicStructure() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isPrivateStructure() {
 		return false;
 	}
@@ -365,14 +395,18 @@ class StructureObject extends TangibleObject {
 		surplusPower += add;
 	}
 
+	@dirty
 	public boolean isDecaying() {
 		return (surplusMaintenance < 0);
 	}
 
+	@dirty
 	public native boolean isDecayed();
 
+	@dirty
 	public native int getDecayPercentage();
 
+	@dirty
 	public abstract boolean isCondemned() {
 		return false;
 	}
@@ -381,12 +415,15 @@ class StructureObject extends TangibleObject {
 		
 	}
 
+	@dirty
 	public boolean isStructureObject() {
 		return true;
 	}
 	
+	@dirty
 	public native boolean isCampStructure();
 	
+	@dirty
 	public boolean isRedeedable() {
 		if (isCivicStructure()) {
 			return (super.conditionDamage == 0 && !isCityHall());
@@ -396,6 +433,7 @@ class StructureObject extends TangibleObject {
 	}
 	
 	@local
+	@dirty
 	public native AABBTree getAABBTree();
 	
 	/**
@@ -412,13 +450,17 @@ class StructureObject extends TangibleObject {
 	@local
 	public native void removeTemplateSkillMods(TangibleObject tangibleObject);
 	
+	@dirty
 	public abstract string getRedeedMessage() {
 		return "";
 	}
 	
+	@dirty
 	public native boolean isCivicStructure();
 
+	@dirty
 	public native boolean isCityHall();
 
+	@dirty
 	public native boolean isCommercialStructure();
 }

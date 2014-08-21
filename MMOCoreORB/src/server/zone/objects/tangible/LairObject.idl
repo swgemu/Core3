@@ -65,10 +65,12 @@ class LairObject extends TangibleObject {
 		despawnOnNoPlayersInRange = false;
 	}
 	
+	@read
 	public int getNumberOfPlayersInRange() {
 		return numberOfPlayersInRange;
 	}
 	
+	@read
 	public boolean getDespawnOnNoPlayersInRange() {
 		return despawnOnNoPlayersInRange;
 	}
@@ -119,6 +121,7 @@ class LairObject extends TangibleObject {
 		despawnEvent = null;
 	}
 
+	@dirty
 	public boolean isLairObject() {
 		return true;
 	}

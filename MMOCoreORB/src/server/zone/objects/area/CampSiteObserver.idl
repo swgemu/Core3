@@ -59,6 +59,7 @@ class CampSiteObserver extends Observer implements Logger {
 		Logger.setLoggingName("CampSiteObserver");
 	}
 	
+	@dirty
 	public int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
 		CampSiteActiveArea strongRef = campArea;
 

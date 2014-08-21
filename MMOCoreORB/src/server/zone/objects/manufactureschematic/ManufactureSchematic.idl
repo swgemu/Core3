@@ -166,6 +166,7 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	/**
@@ -175,6 +176,7 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @param player SceneObject that will receive the messages
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
+	@dirty
 	public native abstract void sendTo(SceneObject player, boolean doClose);
 	
 	/**
@@ -183,6 +185,7 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the baselines 
 	 */
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 
 	/**
@@ -191,6 +194,7 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the baselines 
 	 */
+	@dirty
 	private native void sendMsco7(SceneObject player);
 
 	
@@ -212,6 +216,7 @@ class ManufactureSchematic extends IntangibleObject {
 	 */
 	public native abstract void synchronizedUIStopListen(SceneObject player, int value);
 
+	@dirty
 	public boolean isManufactureSchematic() {
 		return true;
 	}
@@ -224,10 +229,12 @@ class ManufactureSchematic extends IntangibleObject {
 	
 	public native int removeIngredientFromSlot(CreatureObject player, TangibleObject tano, int slot);
 	
+	@dirty
 	private native void sendDelta7(IngredientSlot ingredientSlot, int slot, CreatureObject player);
 	
 	public native void cleanupIngredientSlots(CreatureObject player);
 	
+	@dirty
 	public DraftSchematic getDraftSchematic() {
 		return draftSchematic;
 	}
@@ -241,14 +248,17 @@ class ManufactureSchematic extends IntangibleObject {
 			complexity = complexity - 1;
 	}
 	
+	@dirty
 	public float getComplexity() {
 		return complexity;
 	}
 
+	@dirty
 	public native boolean isReadyForAssembly();
 	
 	public native void setAssembled();
 	
+	@read
 	public boolean isAssembled() {
 		return assembled;
 	}
@@ -257,15 +267,18 @@ class ManufactureSchematic extends IntangibleObject {
 		completed = true;
 	}
 	
+	@read
 	public boolean isCompleted() {
 		return completed;
 	}
 	
+	@read
 	public int getSlotCount() {
 		return ingredientSlots.size();
 	}
 	
 	@local
+	@dirty
 	public IngredientSlot getSlot(int i) {
 		return ingredientSlots.get(i);
 	}
@@ -274,11 +287,13 @@ class ManufactureSchematic extends IntangibleObject {
 		crafter = player;
 	}
 	
+	@read
 	public CreatureObject getCrafter() {
 		return crafter;
 	}
 	
 	@local
+	@dirty
 	public CraftingValues getCraftingValues() {
 		return craftingValues;
 	}
@@ -288,10 +303,12 @@ class ManufactureSchematic extends IntangibleObject {
 		experimentingCounter = value;
 	}
 	
+	@read
 	public int getExperimentingCounter() {
 		return experimentingCounter;
 	}
 
+	@read
 	public int getExperimentingCounterPrevious() {
 		return experimentingCounterPrevious;
 	}
@@ -300,6 +317,7 @@ class ManufactureSchematic extends IntangibleObject {
 		ingredientCounter += 4;
 	}
 	
+	@read
 	public int getIngredientCounter() {
 		return ingredientCounter;
 	}
@@ -308,16 +326,19 @@ class ManufactureSchematic extends IntangibleObject {
 		manufactureLimit = limit;
 	}
 	
+	@read
 	public int getManufactureLimit() {
 		return manufactureLimit;
 	}
 	
 	public native void setPrototype(TangibleObject tano);
 	
+	@dirty
 	public native TangibleObject getPrototype() {
 		return prototype;
 	}
 	
+	@dirty
 	public void canManufactureItem(string type, string displayedName) {
 		factoryBlueprint.canManufactureItem(type, displayedName);
 	}
@@ -329,16 +350,19 @@ class ManufactureSchematic extends IntangibleObject {
 	
 	public native void createFactoryBlueprint();
 	
+	@dirty
 	public int getBlueprintSize() {
 		return factoryBlueprint.getConsolidatedSize();
 	}
 	
 	@local
+	@dirty
 	public BlueprintEntry getBlueprintEntry(int i) {
 		return factoryBlueprint.getConsolidatedEntry(i);
 	}
 	
 	public native boolean allowFactoryRun();
 	
+	@dirty
 	public native int getLabratory();
 }

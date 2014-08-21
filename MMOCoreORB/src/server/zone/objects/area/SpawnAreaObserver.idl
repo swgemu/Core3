@@ -59,6 +59,7 @@ class SpawnAreaObserver extends Observer implements Logger {
 		Logger.setLoggingName("SpawnAreaObserver");
 	}
 	
+	@dirty
 	public abstract int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
 		if (spawnArea == null)
 			return 1;

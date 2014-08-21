@@ -98,53 +98,65 @@ class MissionTerminal extends Terminal {
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
-	
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
+	@dirty
 	public native string getTerminalName();
 		
+	@dirty
 	public boolean isMissionTerminal() {
 		return true;
 	}
 	
+	@dirty
 	public boolean isArtisanTerminal() {
 		return terminalType == "artisan";
 	}
 	
+	@dirty
 	public boolean isGeneralTerminal() {
 		return terminalType == "general";
 	}
 	
+	@dirty
 	public boolean isBountyTerminal(){
 		return terminalType == "bounty";
 	}
 	
+	@dirty
 	public boolean isEntertainerTerminal() {
 		return terminalType == "entertainer";
 	}
 	
+	@dirty
 	public boolean isImperialTerminal() {
 		return terminalType == "imperial";
 	}
 	
+	@dirty
 	public boolean isNewbieTerminal() {
 		return terminalType == "newbie";
 	}
 	
+	@dirty
 	public boolean isRebelTerminal() {
 		return terminalType == "rebel";
 	}
 	
+	@dirty
 	public boolean isScoutTerminal() {
 		return terminalType == "scout";
 	}
 	
+	@dirty
 	public boolean isStatueTerminal() {
 		return terminalType == "statue";
 	}
 
+	@dirty
 	public boolean isSlicer(CreatureObject slicer) {
 		if (slicer == null)
 			return 0;

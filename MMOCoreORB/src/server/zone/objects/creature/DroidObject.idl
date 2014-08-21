@@ -98,6 +98,7 @@ class DroidObject extends AiAgent {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	/**
@@ -109,14 +110,17 @@ class DroidObject extends AiAgent {
 	@local
 	public native void notifyInsertToZone(Zone zone);	
 		
+	@dirty
 	public boolean isDroidObject() {
 		return true;
 	}
 	
+	@dirty
 	public boolean isCamouflaged(CreatureObject target) {
 		return isConcealed(target);
 	}
 	
+	@dirty
 	public boolean hasPower(){
 		return power > 0;
 	}
@@ -179,6 +183,7 @@ class DroidObject extends AiAgent {
 	/**
 	 * Whether or not droid is a power droid
 	 */
+	@dirty
 	public native boolean isPowerDroid();	
 	
 }

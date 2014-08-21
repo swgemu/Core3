@@ -131,11 +131,12 @@ class ResourceSpawn extends SceneObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public native void decreaseContainerReferenceCount();
         
-	
+	@dirty
 	public boolean isResourceSpawn() {
 		return true;
 	}
@@ -182,6 +183,7 @@ class ResourceSpawn extends SceneObject {
 
 	public native void addAttribute(final string attribute, int value);
 	
+	@dirty
 	public boolean isType(final string type) {
 		for(int i = 0; i < stfSpawnClasses.size(); ++i) {
 			if(stfSpawnClasses.get(i) == type)
@@ -203,14 +205,17 @@ class ResourceSpawn extends SceneObject {
 	}
 
     // getters
+	@dirty
 	public string getName() {
 		return spawnName;
 	}
 
+	@dirty
     public string getType() {
     	return spawnType;
     }
 
+	@dirty
     public string getClass(int index) {
     	if(index < spawnClasses.size()) {
     		return spawnClasses.get(index);
@@ -219,6 +224,7 @@ class ResourceSpawn extends SceneObject {
     	}
     }
     
+	@dirty
     public string getStfClass(int index) {
     	if(index < stfSpawnClasses.size()) {
     		return stfSpawnClasses.get(index);
@@ -227,6 +233,7 @@ class ResourceSpawn extends SceneObject {
     	}
     }
     
+	@dirty
     public string getFinalClass() {
     	if(spawnClasses.size() > 1)
     		return spawnClasses.get(spawnClasses.size() - 1);
@@ -234,8 +241,10 @@ class ResourceSpawn extends SceneObject {
     		return "";
     }
     
+	@dirty
     public native string getFamilyName();
     
+	@dirty
     public native string getSurveyMissionSpawnFamilyName();
     
     public void setSpawned(unsigned long t) {
@@ -246,6 +255,7 @@ class ResourceSpawn extends SceneObject {
     	despawned = t;
     }
     
+    @dirty
     public unsigned long getDespawned() {
     	return despawned;
     }
@@ -254,30 +264,37 @@ class ResourceSpawn extends SceneObject {
     	containerCRC = crc;
     }
     
+    @read
     public unsigned int getContainerCRC() {
     	return containerCRC;
     }
     
+    @read
     public int getSpawnPool() {
     	return spawnPool;
     }
     
+    @read
     public string getPoolSlot() {
     	return poolSlot;
     }
     
+    @dirty
     public boolean isEnergy() {
     	return energy;
     }
     
+    @read
     public string getZoneRestriction() {
     	return zoneRestriction;
     }
     
+    @read
     public int getSurveyToolType() {
     	return surveyToolType;
     }
     
+    @dirty
     public int getSpawnMapSize() {
     	return spawnMaps.size();
     }
@@ -288,40 +305,51 @@ class ResourceSpawn extends SceneObject {
     public native ResourceContainer createResource(int units);
 
     @local
+    @dirty
     public native string getSpawnMapZone(int i);
     
-    @local 	
+    @local
+    @dirty
 	public native boolean isUnknownType();
     
     @local
     public native void createSpawnMaps(boolean jtl, int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
     
     @local 	
+    @dirty
 	private native int getConcentration(boolean jtl);
     
+    @dirty
     public native unsigned int getPlanetCRC();
 	
 	@local 	
 	@dereferenced
+	@dirty
 	private native Vector<string> getSpawnZones(int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
     
     @local
+    @dirty
     public native float getDensityAt(final string zoneName, float x, float y);
     
     @local
+    @dirty
     public native boolean inShift();
     
     @local
+    @dirty
     public native int getAttributeAndValue(string attribute, int index);
     
+    @dirty
     public int getAttributeValue(int index) {
     	return spawnAttributes.get(index);
     }
     
+    @dirty
     public native int getValueOf(int index);
     
     public native void addStatsToDeedListBox(SuiListBox suil);
 
 	@local
+	@dirty
     public native void print();
 }

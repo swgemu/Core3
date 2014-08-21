@@ -95,6 +95,7 @@ class SurveyTool extends ToolTangibleObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
@@ -120,34 +121,43 @@ class SurveyTool extends ToolTangibleObject {
 	
 	public native void sendRangeSui(CreatureObject player);
 	
+	@dirty
 	public native int getRange(CreatureObject player);
 	
+	@dirty
 	public int getPoints() {
 		return points;
 	}
 	
+	@dirty
 	public int getToolType() {
 		return type;
 	}
 	
+	@dirty
 	public string getSurveyType() {
 		return surveyType;
 	}
 	
+	@dirty
 	public string getSurveyAnimation() {
 		return surveyAnimation;
 	}
 	
+	@dirty
 	public string getSampleAnimation() {
 		return sampleAnimation;
 	}
 
+	@dirty
 	private native int getSkillBasedRange(int skillLevel);
 	
+	@dirty
 	public boolean canSampleRadioactive() {
 		return radioactiveOk;
 	}
 	
+	@dirty
 	public native void sendRadioactiveWarning(CreatureObject player);
 
 	public native void consentRadioactiveSample(CreatureObject player);

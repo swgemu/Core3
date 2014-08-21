@@ -102,6 +102,7 @@ class DestroyMissionObjective extends MissionObjective {
 	
 	@local
 	@dereferenced
+	@dirty
 	public native Vector3 findValidSpawnPosition(Zone zone);
 	
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
@@ -119,5 +120,6 @@ class DestroyMissionObjective extends MissionObjective {
 
 	@dereferenced
 	@local
+	@dirty
 	public native Vector3 getEndPosition();
 }

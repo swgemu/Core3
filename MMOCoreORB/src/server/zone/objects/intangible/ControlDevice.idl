@@ -113,11 +113,13 @@ class ControlDevice extends IntangibleObject {
 		controlledObject = object;
 	}
 	
+	@dirty
 	public TangibleObject getControlledObject() {
 		TangibleObject obj = controlledObject;
 		return obj;
 	}
 	
+	@dirty
 	public boolean isControlDevice() {
 		return true;
 	}

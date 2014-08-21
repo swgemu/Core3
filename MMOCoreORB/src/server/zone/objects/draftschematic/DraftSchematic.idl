@@ -89,6 +89,7 @@ class DraftSchematic extends IntangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	
@@ -98,6 +99,7 @@ class DraftSchematic extends IntangibleObject {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the baselines 
 	 */
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 	
 	/**
@@ -106,8 +108,10 @@ class DraftSchematic extends IntangibleObject {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the ingredients 
 	 */
+	@dirty
 	public native void sendDraftSlotsTo(CreatureObject player);
 	
+	@dirty
 	@local
 	private native void insertIngredients(ObjectControllerMessage msg);
 	
@@ -117,6 +121,7 @@ class DraftSchematic extends IntangibleObject {
 	 * @post { this object is locked, player received the baseline messages }
 	 * @param player SceneObject that will receive the ingredients 
 	 */
+	@dirty
 	public native void sendResourceWeightsTo(CreatureObject player);
 
 	@reference
@@ -131,8 +136,10 @@ class DraftSchematic extends IntangibleObject {
 		return groupName;
 	}
 	
+	@dirty
 	public native int getDraftSlotCount();
 	
+	@dirty
 	public boolean isValidDraftSchematic() {
 		return schematicTemplate != null;
 	}
@@ -140,72 +147,90 @@ class DraftSchematic extends IntangibleObject {
 	@local
 	public native DraftSlot getDraftSlot(int i);
 	
+	@dirty
 	public native int getResourceWeightCount();
 	
 	@local
+	@dirty
 	public native ResourceWeight getResourceWeight(int i);
 	
 	/**
 	 * Getter for complexity
 	 * \return complexity
 	 */
+	@dirty
 	public native float getComplexity();
 
 	/**
 	 * Setter for the crafting tool tab mask
 	 * \return toolTab
 	 */
+	@dirty
 	public native unsigned int getToolTab();
 
 	/**
 	 * getter for the schematic size
 	 * \return size
 	 */
+	@dirty
 	public native float getSize();
 
 	/**
 	 * getter for xpType
 	 * \return size
 	 */
+	@dirty
 	public native string getXpType();
 
 	/**
 	 * getter for the xpAmount
 	 * \return xpAmount
 	 */
+	@dirty
 	public native int getXpAmount();
 
 	/**
 	 * getter for assemblyMod
 	 * \return assemblyMod
 	 */
+	@dirty
 	public native string getAssemblySkill();
 
 	/**
 	 * getter for experiementationMod
 	 * \return experiementationMod
 	 */
+	@dirty
 	public native string getExperimentationSkill();
 	
+	@dirty
 	public native string getCustomizationSkill();
 	
+	@dirty
 	public native string getCustomName();
 	
+	@dirty
 	public native unsigned int getTanoCRC();
 	
+	@dirty
 	public int getTemplateListSize() {
 		return schematicTemplate.getTemplateListSize();
 	}
 	
+	@dirty
 	public string getTemplate(int i) {
 		return schematicTemplate.getTemplate(i);
 	}
 	
 	@local
+	@dirty
 	public DraftSchematicObjectTemplate getDraftSchematicTemplate() {
 		return schematicTemplate;
 	}
+	
+	@dirty
 	public native int getLabratory();
 	
+	@dirty
 	public native boolean allowFactoryRun();
 }

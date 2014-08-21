@@ -224,10 +224,13 @@ class GeneticComponent extends Component {
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
+	@dirty
 	public native string convertSpecialAttack(string attackName);
 
+	@dirty
 	public native string resistValue(float input);
 	
 	@local

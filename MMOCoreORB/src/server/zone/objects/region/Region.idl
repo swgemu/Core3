@@ -69,6 +69,7 @@ class Region extends ActiveArea {
 	}
 	
 	@weakReference
+	@dirty
 	public CityRegion getCityRegion() {
 		return cityRegion;
 	}
@@ -109,6 +110,7 @@ class Region extends ActiveArea {
 		}
 	}
 	
+	@dirty
 	public boolean isRegion() {
 		return true;
 	}

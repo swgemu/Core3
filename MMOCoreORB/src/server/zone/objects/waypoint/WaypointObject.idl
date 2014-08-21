@@ -57,6 +57,7 @@ class WaypointObject extends IntangibleObject {
 		planetCRC = crc;
 	}
 	
+	@dirty
 	public unsigned int getPlanetCRC() {
 		return planetCRC;
 	}
@@ -77,6 +78,7 @@ class WaypointObject extends IntangibleObject {
 		specialTypeID = id;
 	}
 
+	@dirty
 	public int getSpecialTypeID() {
 		return specialTypeID;
 	}
@@ -85,14 +87,17 @@ class WaypointObject extends IntangibleObject {
 		active = !active;
 	}
 	
+	@dirty
 	public boolean isActive() {
 		return active;
 	}
 	
+	@dirty
 	public byte getColor() {
 		return color;
 	}
 	
+	@dirty
 	public native string getDetailedDescription();
 	
 	public void setDetailedDescription(final string desc) {

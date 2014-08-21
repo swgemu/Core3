@@ -52,8 +52,10 @@ class FactoryObject extends InstallationObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
+	@dirty
 	public boolean isFactory() {
 		return true;
 	}
@@ -67,16 +69,22 @@ class FactoryObject extends InstallationObject {
 	 * Handles sending the SUI full of manufacturing schematics
 	 * that will work in this station
 	 */
+	@dirty
 	public native void sendInsertManuSui(CreatureObject player);
 	
+	@dirty
 	public native void sendIngredientsNeededSui(CreatureObject player);
 	
+	@dirty
 	public native void sendIngredientHopper(CreatureObject player);
 	
+	@dirty
 	public native void sendOutputHopper(CreatureObject player);
 	
+	@dirty
 	public native void openHopper(Observable observable, ManagedObject arg1);
 
+	@dirty
 	public native void closeHopper(Observable observable, ManagedObject arg1);
 	/**
 	 * Handles inputting the schematic to the 
@@ -108,5 +116,6 @@ class FactoryObject extends InstallationObject {
 
 	private native void collectMatchesInInputHopper(BlueprintEntry entry, SceneObject inputHopper);
 	
+	@dirty
 	public native string getRedeedMessage();
 }

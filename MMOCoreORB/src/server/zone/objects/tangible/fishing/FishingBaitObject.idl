@@ -65,6 +65,7 @@ class FishingBaitObject extends TangibleObject {
 		Logger.setLoggingName("FishingBaitObject");
 	}
 	
+	@read
 	public int getFreshness() {
 		return freshness;
 	}
@@ -78,7 +79,9 @@ class FishingBaitObject extends TangibleObject {
 		freshness += 1;
 	}
 	
+	@dirty
 	public native int getUseCount();
 	
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 }

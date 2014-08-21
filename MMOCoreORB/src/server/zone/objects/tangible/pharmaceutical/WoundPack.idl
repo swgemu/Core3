@@ -109,6 +109,7 @@ class WoundPack extends PharmaceuticalObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
 
@@ -158,6 +159,7 @@ class WoundPack extends PharmaceuticalObject {
 
 	}
 	
+	@dirty
 	public unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true) {
 		float power = getEffectiveness();
 
@@ -175,17 +177,21 @@ class WoundPack extends PharmaceuticalObject {
 		}
 	}
 	
+	@dirty
 	public float getEffectiveness() {
 		return effectiveness;
 	}
 	
+	@dirty
 	public boolean isWoundPack() {
 		return true;
 	}
 	
+	@dirty
 	public byte getAttribute() {
 		return attribute;
 	}
 
+	@dirty
 	public native boolean isDroidReconstructionKit();
 }

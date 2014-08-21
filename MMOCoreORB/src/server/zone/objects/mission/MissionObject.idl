@@ -183,6 +183,7 @@ class MissionObject extends IntangibleObject {
 	public native void setTypeCRC(unsigned int crc, boolean notifyClient = true);
 	
 	public native void initializeTransientMembers();
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 	
 	public native void setMissionDescription(final string file, final string id, boolean notifyClient = true);
@@ -198,6 +199,7 @@ class MissionObject extends IntangibleObject {
 	public native void setEndPosition(float posX, float posY, final string planet, boolean notifyClient = true);
 	public native void setCreatorName(final string name, boolean notifyClient = true);
 	
+	@dirty
 	public native unsigned int getStartPlanetCRC();
 	
 	public native void updateMissionLocation();
@@ -252,127 +254,158 @@ class MissionObject extends IntangibleObject {
 		templateString2 = temp2;
 	}
 	
+	@dirty
 	public MissionObjective getMissionObjective() {
 		return missionObjective;
 	}
 	
+	@read
 	public int getFaction() {
 		return faction;
 	}
 	
+	@read
 	public int getRewardFactionPointsRebel() {
 		return rewardFactionPointsRebel;
 	}
 	
+	@read
 	public int getRewardFactionPointsImperial() {
 		return rewardFactionPointsImperial;
 	}
 	
+	@read
 	public float getStartPositionX() {
 		return startPositionX;
 	}
 	
+	@read
 	public float getStartPositionY() {
 		return startPositionY;
 	}
 	
+	@read
 	public string getTargetOptionalTemplate() {
 		return targetOptionalTemplate;
 	}
 	
+	@read
 	public string getStartPlanet() {
 		return startPlanet;
 	}
 	
+	@read
 	public float getEndPositionX() {
 		return endPositionX;
 	}
 	
+	@read
 	public float getEndPositionY() {
 		return endPositionY;
 	}
 	
+	@read
 	public string getEndPlanet() {
 		return endPlanet;
 	}
 	
+	@dirty
 	public WaypointObject getWaypointToMission() {
 		return waypointToMission;
 	}
 	
+	@dirty
 	public NpcSpawnPoint getMissionTarget() {
 		return missionTarget;
 	}
 	
+	@dirty
 	public NpcSpawnPoint getMissionTargetDest() {
 		return missionTargetDest;
 	}
 	
+	@read
 	public unsigned int getTypeCRC() {
 		return typeCRC;
 	}
 	
+	@read
 	public int getRewardCredits() {
 		return rewardCredits;
 	}
 	
+	@read
 	public unicode getCreatorName() {
 		return creatorName;
 	}
 	
+	@read
 	public int getDifficultyLevel() {
 		return difficultyLevel;
 	}
 	
+	@read
 	public int getDifficultyDisplay() {
 		return difficultyDisplay;
 	}
 
+	@read
 	public int getDifficulty() {
 		return difficulty;
 	}
 
 	@local
+	@dirty
 	public StringId getMissionDescription() {
 		return missionDescription;
 	}
 	
 	@local
+	@dirty
 	public StringId getMissionTitle() {
 		return missionTitle;
 	}
 	
+	@read
 	public string getTargetName() {
 		return targetName;
 	}
 	
+	@read
 	public int getRefreshCounter() {
 		return refreshCounter;
 	}
 
+	@read
 	public int getMissionNumber() {
 		return missionNumber;
 	}
 	
 	@local
+	@dirty
 	public native SharedObjectTemplate getTargetTemplate();
 	
+	@dirty
 	public boolean isSurveyMission() {
 		return typeCRC == SURVEY;
 	}
 	
+	@dirty
 	public boolean isMissionObject() {
 		return true;
 	}
 	
+	@read
 	public string getTemplateString1() {
 		return templateString1;
 	}
 	
+	@read
 	public string getTemplateString2() {
 		return templateString2;
 	}
 	
+	@read
 	public unsigned long getTargetObjectId() {
 		return targetObjectId;
 	}
@@ -393,6 +426,7 @@ class MissionObject extends IntangibleObject {
 		size = siz;
 	}
 
+	@read
 	public float getSize() {
 		return size;
 	}

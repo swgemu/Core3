@@ -142,6 +142,7 @@ class InstallationObject extends StructureObject {
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 	
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 	
 	/**
@@ -159,6 +160,7 @@ class InstallationObject extends StructureObject {
 	 * @post {this object is locked, in range objects received a copy of the message, message is deleted }
 	 * @param sendSelf if true the owner if this object receives the message too
 	 */
+	@dirty
 	public native void broadcastMessage(BasePacket message, boolean sendSelf);
 
 	
@@ -168,6 +170,7 @@ class InstallationObject extends StructureObject {
 	
 	public native void activateUiSync();
 	
+	@dirty
 	public abstract void updateOperators() {
 		
 	}
@@ -183,6 +186,7 @@ class InstallationObject extends StructureObject {
 	public native void addResourceToHopper(ResourceContainer container);
 	public native void clearResourceHopper();
 	
+	@dirty
 	public native float getHopperSize();
 	
 	
@@ -199,13 +203,18 @@ class InstallationObject extends StructureObject {
 	@local
 	public native void updateHopper(@dereferenced Time workingTime, boolean shutdownAfterUpdate);
 	
+	@dirty
 	public native int getHopperItemQuantity(ResourceSpawn spawn);
+	@dirty
 	public native ResourceContainer getContainerFromHopper(ResourceSpawn spawn);
 		
+	@dirty
 	public native unsigned long getActiveResourceSpawnID();
 	
+	@dirty
 	public native float getActualRate();
 	
+	@dirty
 	public native void broadcastToOperators(BasePacket packet);
 	
 	public void addOperator(CreatureObject player) {
@@ -216,26 +225,30 @@ class InstallationObject extends StructureObject {
 		operatorList.drop(player);
 	}
 	
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 	
-	
-	
+	@dirty
 	public boolean isInstallationObject() {
 		return true;
 	}
 	
+	@read
 	public boolean isOperating() {
 		return operating;
 	}
 	
+	@read
 	public int getInstallationType() {
 		return installationType;
 	}
 	
+	@read
 	public float getExtractionRate() {
 		return extractionRate;
 	}
 	
+	@read
 	public float getHopperSizeMax() {
 		return hopperSizeMax;
 	}
@@ -243,19 +256,23 @@ class InstallationObject extends StructureObject {
 	public native void updateStructureStatus();
 	
 	@local
+	@dirty
 	public HopperList getHopperList() {
 		return resourceHopper;
 	}
 	
+	@dirty
 	public abstract boolean isHarvesterObject() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isGeneratorObject() {
 		return false;
 	}
 	
-	public abstract boolean isShuttleInstallation(){
+	@dirty
+	public abstract boolean isShuttleInstallation() {
 		return false;
 	}
 	
@@ -271,10 +288,12 @@ class InstallationObject extends StructureObject {
 	* pre{ object is locked}
 	* post{this object is locked}
 	*/ 
+	@dirty
 	public native boolean isAttackableBy(CreatureObject object);
 
 	public native void createChildObjects();
 
+	@dirty
 	public native float getHitChance();
 }	
 

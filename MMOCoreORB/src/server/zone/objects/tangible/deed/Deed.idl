@@ -74,6 +74,7 @@ class Deed extends TangibleObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 	
 	@local
@@ -92,10 +93,12 @@ class Deed extends TangibleObject {
 	/**
 	 * Gets the object template path for the object which is generated from this deed being used.
 	 */
+	@dirty
 	public string getGeneratedObjectTemplate() {
 		return generatedObjectTemplate;
 	}
 	
+	@dirty
 	public boolean isDeedObject() {
 		return true;
 	}

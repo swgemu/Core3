@@ -135,6 +135,7 @@ class ArmorObject extends WearableObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	/**
@@ -150,33 +151,40 @@ class ArmorObject extends WearableObject {
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
+	@dirty
 	private native void calculateSpecialProtection(CraftingValues values);
 	
+	@dirty
 	native string getStringType(int type);
 
 	private native void setProtectionValue(int type, float value);
 	
+	@dirty
 	public boolean isSpecial(int type) {
 		return specialResists & type;
 	}
 	
+	@dirty
 	public native boolean isVulnerable(int type);
 	
+	@dirty
 	public boolean isArmorObject() {
 		return true;
 	}
-	
 	
 	public void setRating(int rate) {
 		rating = rate;
 	}
 	
+	@dirty
 	public int getRating() {
 		return rating;
 	}
 
+	@dirty
 	private native float getTypeValue(int type, float value);
 	
+	@dirty
 	public float getKinetic() {
 		float value = getTypeValue(WeaponObject.KINETIC, kinetic);
 		return value - getConditionReduction(value);
@@ -186,6 +194,7 @@ class ArmorObject extends WearableObject {
 		kinetic = value;
 	}
 
+	@dirty
 	public float getEnergy() {
 		float value = getTypeValue(WeaponObject.ENERGY, energy);
 		return value - getConditionReduction(value);
@@ -195,6 +204,7 @@ class ArmorObject extends WearableObject {
 		energy = value;
 	}
 
+	@dirty
 	public float getElectricity() {
 		float value = getTypeValue(WeaponObject.ELECTRICITY, electricity);
 		return value - getConditionReduction(value);
@@ -204,6 +214,7 @@ class ArmorObject extends WearableObject {
 		electricity = value;
 	}
 
+	@dirty
 	public float getStun() {
 		float value = getTypeValue(WeaponObject.STUN, stun);
 		return value - getConditionReduction(value);
@@ -213,6 +224,7 @@ class ArmorObject extends WearableObject {
 		stun = value;
 	}
 
+	@dirty
 	public float getBlast() {
 		float value = getTypeValue(WeaponObject.BLAST, blast);
 		return value - getConditionReduction(value);
@@ -222,6 +234,7 @@ class ArmorObject extends WearableObject {
 		blast = value;
 	}
 
+	@dirty
 	public float getHeat() {
 		float value = getTypeValue(WeaponObject.HEAT, heat);
 		return value - getConditionReduction(value);
@@ -231,6 +244,7 @@ class ArmorObject extends WearableObject {
 		heat = value;
 	}
 
+	@dirty
 	public float getCold() {
 		float value = getTypeValue(WeaponObject.COLD, cold);
 		return value - getConditionReduction(value);
@@ -240,6 +254,7 @@ class ArmorObject extends WearableObject {
 		cold = value;
 	}
 
+	@dirty
 	public float getAcid() {
 		float value = getTypeValue(WeaponObject.ACID, acid);
 		return value - getConditionReduction(value);
@@ -249,6 +264,7 @@ class ArmorObject extends WearableObject {
 		acid = value;
 	}
 
+	@dirty
 	public float getLightSaber() {
 		float value = getTypeValue(WeaponObject.LIGHTSABER, lightSaber);
 		return value - getConditionReduction(value);
@@ -258,6 +274,7 @@ class ArmorObject extends WearableObject {
 		lightSaber = value;
 	}
 	
+	@dirty
 	public int getHealthEncumbrance() {
 		return healthEncumbrance * encumbranceSlice;
 	}
@@ -266,6 +283,7 @@ class ArmorObject extends WearableObject {
 		healthEncumbrance = encumber;
 	}
 	
+	@dirty
 	public int getActionEncumbrance() {
 		return actionEncumbrance * encumbranceSlice;
 	}
@@ -274,6 +292,7 @@ class ArmorObject extends WearableObject {
 		actionEncumbrance = encumber;
 	}
 	
+	@dirty
 	public int getMindEncumbrance() {
 		return mindEncumbrance * encumbranceSlice;
 	}
@@ -294,6 +313,7 @@ class ArmorObject extends WearableObject {
 		encumbranceSlice = 1 - value;
 	}
 	
+	@dirty
 	public unsigned byte getHitLocation() {
 		return hitLocation;
 	}

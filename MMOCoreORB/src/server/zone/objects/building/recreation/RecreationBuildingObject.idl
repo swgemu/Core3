@@ -58,6 +58,7 @@ class RecreationBuildingObject extends BuildingObject {
 		Logger.setLoggingName("RecreationBuildingObject");
 	}
 	
+	@read	
 	public boolean isRecreationalBuildingObject() {
 		return true;
 	}

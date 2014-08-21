@@ -82,25 +82,32 @@ class Creature extends AiAgent {
 	 */
 	public native void initializeTransientMembers();
 
+	@dirty
 	public boolean isCreature() {
 		return true;
 	}
 	
+	@read
 	public short getDnaState() {
 		return dnaState;
 	}
 
+	@read
 	public short getDnaSampleCount(){
 		return dnaSampleCount;	
 	}
+	
 	public void incDnaSampleCount() {
 		dnaSampleCount++;	
 	}
+	
+	@dirty
 	public boolean isCamouflaged(CreatureObject target) {
 		return isScentMasked(target) || isConcealed(target);
 	}
 	
 	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 
 	/**
@@ -113,6 +120,7 @@ class Creature extends AiAgent {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	@local

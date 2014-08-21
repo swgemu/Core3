@@ -85,6 +85,7 @@ class PrecisionLaserKnife extends SlicingTool {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	@local
@@ -106,6 +107,7 @@ class PrecisionLaserKnife extends SlicingTool {
 			player.sendSystemMessage("@slicing/slicing:used_knife");
 	}
 
+	@dirty
 	public int getCharges() {
 		return charges;
 	}

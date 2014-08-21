@@ -67,6 +67,7 @@ class FishingPoleObject extends TangibleObject {
 		Logger.setLoggingName("FishingPoleObject");
 	}
 	
+	@read
 	public int getQuality() {
 		return quality;
 	}
@@ -82,6 +83,7 @@ class FishingPoleObject extends TangibleObject {
 	 * @post { this object is locked, menuResponse is complete}
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
@@ -95,12 +97,15 @@ class FishingPoleObject extends TangibleObject {
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
+	@dirty
 	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 	
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	public native void doFishing(CreatureObject player);
 	
+	@dirty
 	public native string getText(CreatureObject player); 
 	
 	public native abstract boolean removeObject(SceneObject object, SceneObject destination, boolean notifyClient = false);

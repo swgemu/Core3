@@ -135,6 +135,7 @@ class StatePack extends PharmaceuticalObject {
 	 * @param msg attribute list message with the attributes
 	 * @param object player creature to which the message is sent
 	 */
+	@dirty
 	@local
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
@@ -147,10 +148,12 @@ class StatePack extends PharmaceuticalObject {
 		msg.insertAttribute("healing_ability", super.medicineUseRequired);
 	}
 	
+	@dirty
 	public unsigned long getState() {
 		return state;
 	}
 	
+	@dirty
 	public boolean isStatePack() {
 		return true;
 	}

@@ -65,10 +65,12 @@ class NonPlayerCreatureObject extends AiAgent {
 	 */
 	public native void initializeTransientMembers();
 	
+	@dirty
 	public boolean isNonPlayerCreatureObject() {
 		return true;
 	}
 	
+	@dirty
 	public boolean isCamouflaged(CreatureObject target) {
 		return isConcealed(target);
 	}

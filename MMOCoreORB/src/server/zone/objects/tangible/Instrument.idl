@@ -135,6 +135,7 @@ class Instrument extends TangibleObject {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
+	@dirty
 	public void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player) {
 		super.fillObjectMenuResponse(menuResponse, player);
 		
@@ -163,13 +164,16 @@ class Instrument extends TangibleObject {
 	public native void spawnInAdminCell(CreatureObject spawner);
 	public native void spawnOutside(CreatureObject spawner);
 	
+	@dirty
 	public native boolean canDropInstrument();
 	
+	@dirty
 	public int getInstrumentType() {
 		return instrumentType;
 	}
 	
 	@weakReference
+	@dirty
 	public CreatureObject getSpawnerPlayer() {
 		return spawnerPlayer;
 	}
@@ -178,6 +182,7 @@ class Instrument extends TangibleObject {
 		spawnerPlayer = pla;
 	}
 	
+	@read
 	public boolean isBeingUsed() {
 		return beingUsed;
 	}

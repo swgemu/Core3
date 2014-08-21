@@ -68,8 +68,8 @@ class ResourceDeed extends Deed {
 	 * @param menuResponse ObjectMenuResponse that will be sent to the client
 	 */
 	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
 	
 	/**
 	 * Handles the radial selection sent by the client

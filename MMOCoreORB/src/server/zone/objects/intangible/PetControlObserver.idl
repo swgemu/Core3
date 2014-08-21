@@ -66,6 +66,7 @@ class PetControlObserver extends Observer {
 		petControlDevice = device;
 	}
 
+	@dirty
 	public int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
 		if (eventType != ObserverEventType.STARTCOMBAT) {
 			return 1;

@@ -74,6 +74,7 @@ class BadgeActiveArea extends ActiveArea {
 		areaBadge = a;
 	}
 	
+	@read
 	public unsigned int getBadge() {
 		return areaBadge;
 	}

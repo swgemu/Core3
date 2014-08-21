@@ -86,11 +86,14 @@ class Component extends TangibleObject {
 	public native void initializeTransientMembers();
 	
 	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
+	@dirty
 	public boolean isComponent() {
 		return true; 
 	}
@@ -99,6 +102,7 @@ class Component extends TangibleObject {
 
 	public native boolean compare(Component inCmpo);
 	
+	@dirty
 	public boolean hasKey(final string key) {
 		for (int i = 0; i < keyList.size(); ++i)
 			if (keyList.get(i) == key)
@@ -112,20 +116,26 @@ class Component extends TangibleObject {
 	public native void addProperty(final string attributeName, final float value,
 		final int precision, final string craftingTitle, final boolean hidden);
 
+	@dirty
 	public native float getAttributeValue(final string attributeName);
 	
+	@dirty
 	public native int getAttributePrecision(final string attributeName);
 	
+	@dirty
 	public native string getAttributeTitle(final string attributeName);
 	
+	@dirty
 	public native boolean getAttributeHidden(final string attributeName);
 
 	public native void setPropertyToHidden(final string property);
 	
 	public native void addProperty(final string attribute, final float value, final int precision, final string title);
     
+	@dirty
     public native int getPropertyCount();
 	
+	@dirty
     public native string getProperty(final int j);
 	
 	public native boolean changeAttributeValue(string property, float value);                                                                             

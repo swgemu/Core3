@@ -108,11 +108,13 @@ class JunkdealerCreature extends CreatureObject {
 	 * Sends the initial trainer NPC blurb.
 	 * \param player The player to send the conversation to.
 	 */
+	@dirty
 	public native void sendInitialMessage(CreatureObject player);
 	/**
 	 * Sends the initial trainer NPC options.
 	 * \param player The player to send the conversation to.
 	 */
+	@dirty
 	public native void sendInitialChoices(CreatureObject player);
 	/**
 	 * Sends the intial message to start the
@@ -120,6 +122,7 @@ class JunkdealerCreature extends CreatureObject {
 	 * qualificactions.
 	 * \param player The player to send the conversation to (in SceneObject form).
 	 */
+	@dirty
 	public native void sendConversationStartTo(SceneObject obj);
 	
 
@@ -132,8 +135,10 @@ class JunkdealerCreature extends CreatureObject {
 	 */
 	public native void selectConversationOption(int option, SceneObject obj);
 
+	@dirty
 	public native string getConversationString(int dealerType);
 
+	@dirty
 	public string getLocation() {
 		return location;
 	}
@@ -141,32 +146,42 @@ class JunkdealerCreature extends CreatureObject {
 	public void setLocation(final string loc) {
 		location = loc;
 	}
-	
+
+	@dirty
 	public boolean isAttackableBy(CreatureObject object) {
 		return false;
 	}
 	
+	@dirty
 	public native void createSellJunkLootSelection(CreatureObject player);
 
+	@dirty
 	public native boolean canInventoryItemBeSoldAsJunk(TangibleObject lootItem,int dealerType);
 
 	public void setJunkDealerBuyerType(int jdBuyerType) {
 		junkDealerBuyerType = jdBuyerType;
 	}
 	
+	@dirty
 	public abstract int getJunkDealerBuyerType() {
 		return junkDealerBuyerType;
 	}
+	
 	public void setJunkDealerConversationType(int jdConvoType) {
 		junkDealerConversationType = jdConvoType;
 	}
 	
+	@dirty
 	public abstract int getJunkDealerConversationType() {
 		return junkDealerConversationType;
 	}
+	
+	@dirty
 	public boolean isJunkDealer() {
 		return true; 
 	}
+	
+	@dirty
 	public native void sendConversationTerminate(CreatureObject player,final string stfFile,final string convTerminateMsg);
 
 	public native void sendConversationContinue(CreatureObject player,final string stfFile,final string convMsg,final string convOption1,final string convOption2);

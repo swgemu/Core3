@@ -63,66 +63,82 @@ class PharmaceuticalObject extends TangibleObject {
 		medicineUseRequired = 0;
 	}
 	
+	@dirty
 	public int getMedicineUseRequired() {
 		return medicineUseRequired;
 	}
 	
+	@dirty
 	public abstract float getRange(CreatureObject creature = null) {
 		return 5;
 	}
 	
+	@dirty
 	public abstract boolean isArea() {
 		return false;
 	}
 	
+	@dirty
 	public abstract float getArea() {
 		return 0;
 	}
 	
+	@dirty
 	public boolean isPharmaceuticalObject() {
 		return true;
 	}
 	
+	@dirty
 	public abstract boolean isStimPack() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isPetStimPack() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isDroidRepairKit() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isRangedStimPack() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isEnhancePack() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isWoundPack() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isDroidReconstructionKit() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isCurePack() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isStatePack() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isRevivePack() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isVitalityPack() {
 		return false;
 	}	

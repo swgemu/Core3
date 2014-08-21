@@ -92,6 +92,7 @@ class SpawnArea extends ActiveArea {
 
 	@local
 	@dereferenced
+	@dirty
 	public native Vector3 getRandomPosition(SceneObject player);
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
@@ -122,6 +123,7 @@ class SpawnArea extends ActiveArea {
 	}
 
 	@local
+	@dirty
 	public native SpawnGroup getSpawnGroup();
 
 	public native void notifyEnter(SceneObject object);

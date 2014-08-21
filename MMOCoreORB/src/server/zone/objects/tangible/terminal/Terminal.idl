@@ -61,10 +61,12 @@ class Terminal extends TangibleObject {
 	
 	public native void initializeTransientMembers();
 
+	@dirty
 	public boolean isTerminal() {
 		return true;
 	}
 	
+	@dirty
 	public abstract boolean isGuildTerminal() {
 		return false;
 	}
@@ -73,18 +75,22 @@ class Terminal extends TangibleObject {
 		controlledObject = obj;
 	}
 	
+	@dirty
 	public SceneObject getControlledObject() {
 		return controlledObject;
 	}
 	
+	@dirty
 	public abstract boolean isElevatorTerminal() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isVendorTerminal() {
 		return false;
 	}
 
+	@dirty
 	public abstract boolean isBazaarTerminal() {
 		return false;
 	}

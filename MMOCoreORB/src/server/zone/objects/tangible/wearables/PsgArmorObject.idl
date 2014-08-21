@@ -68,6 +68,7 @@ class PsgArmorObject extends ArmorObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	@local

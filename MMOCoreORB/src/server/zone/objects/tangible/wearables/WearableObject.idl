@@ -88,6 +88,7 @@ class WearableObject extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	@local
@@ -99,18 +100,23 @@ class WearableObject extends TangibleObject {
 	
 	public abstract native void removeSkillModsFrom(CreatureObject creature);
 	
+	@dirty
 	public boolean isWearableObject() {
 		return true;
 	}
 	
+	@dirty
 	public native boolean isEquipped();
 	
+	@dirty
 	public int getMaxSockets() {
 		return socketCount;
 	}
 	
+	@dirty
 	public native int socketsUsed();
 	
+	@dirty
 	public int socketsLeft() {
 		return getMaxSockets() - socketsUsed();
 	}

@@ -76,9 +76,11 @@ class PetDeed extends Deed {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 	
 	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
@@ -92,6 +94,7 @@ class PetDeed extends Deed {
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
+	@dirty
 	public boolean isPetDeedObject() {
 		return true;
 	}

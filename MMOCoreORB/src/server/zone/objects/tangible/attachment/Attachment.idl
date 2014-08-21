@@ -102,16 +102,20 @@ class Attachment extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
+	@dirty
 	public boolean isAttachment() {
 		return true; 
 	}        
 
+	@dirty
 	public boolean isArmorAttachment() {
 		return super.gameObjectType == SceneObjectType.ARMORATTACHMENT;
 	}          
 
+	@dirty
 	public boolean isClothingAttachment() {
 		return super.gameObjectType == SceneObjectType.CLOTHINGATTACHMENT;
 	} 

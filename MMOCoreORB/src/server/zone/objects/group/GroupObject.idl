@@ -81,8 +81,13 @@ class GroupObject extends SceneObject {
 		bandSong = "";
 	}
 	
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
+	
+	@dirty
 	public native void broadcastMessage(BaseMessage msg);
+	
+	@dirty
 	public native void broadcastMessage(CreatureObject player, BaseMessage msg, boolean sendSelf = false);
 
 
@@ -91,7 +96,9 @@ class GroupObject extends SceneObject {
 	public native void sendSystemMessage(SceneObject player, final string file, final string str, StfParameter param, boolean sendToSelf = false);
 */
 	@local
+	@dirty
 	public native void sendSystemMessage(@dereferenced StringIdChatParameter param);
+	@dirty
 	public native void sendSystemMessage(final string fullPath);
 	
 	public native void addMember(SceneObject newMember);
@@ -100,32 +107,40 @@ class GroupObject extends SceneObject {
 	public native void disband();
 	public native void makeLeader(SceneObject player);
 
+	@dirty
 	public native boolean hasMember(SceneObject member);
+	@dirty
 	public native boolean hasMember(unsigned long member);
 
 	public native void startChatRoom();
 	public native void destroyChatRoom();
 
+	@dirty
 	public native float getGroupHarvestModifier(CreatureObject player);
 
 	/*public native void addSquadLeaderBonuses(CreatureObject groupMember);
 	public native void removeSquadLeaderBonuses(CreatureObject groupMember);*/
 
+	@dirty
 	public native void calcGroupLevel();
 
+	@read
 	public int getGroupLevel() {
 		return groupLevel;
 	}
 
+	@read
 	public ChatRoom getGroupChannel() {
 		return chatRoom;
 	}
 
+	@dirty
 	public int getGroupSize() {
 		return groupMembers.size();
 	}
 
 	@reference
+	@dirty
 	public SceneObject getGroupMember(int index) {
 		return groupMembers.getSafe(index);
 	}
@@ -135,6 +150,7 @@ class GroupObject extends SceneObject {
 	}
 
 	@reference
+	@dirty
 	public SceneObject getLeader() {
 		if (groupMembers.size() == 0) {
 			return null;
@@ -144,14 +160,17 @@ class GroupObject extends SceneObject {
 	}
 	
 	@local
+	@dirty
 	public GroupList getGroupList() {
 		return groupMembers;
 	}
 	
+	@dirty
 	public boolean isGroupObject() {
 		return true;
 	}
 	
+	@dirty
 	public native boolean hasSquadLeader();
 	
 	public native void addGroupModifiers();
@@ -162,8 +181,10 @@ class GroupObject extends SceneObject {
 	
 	public native void removeGroupModifiers(CreatureObject player);
 
+	@dirty
 	public native boolean isOtherMemberPlayingMusic(CreatureObject player);
 
+	@read
 	public string getBandSong() {
 		return bandSong;
 	}

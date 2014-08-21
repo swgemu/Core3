@@ -76,6 +76,7 @@ class TicketObject extends TangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	/**
@@ -102,22 +103,27 @@ class TicketObject extends TangibleObject {
 		arrivalPoint = arrival;
 	}
 	
+	@dirty
 	public string getDeparturePlanet() {
 		return departurePlanet;
 	}
 	
+	@dirty
 	public string getDeparturePoint() {
 		return departurePoint;
 	}
 	
+	@dirty
 	public string getArrivalPlanet() {
 		return arrivalPlanet;
 	}
 	
+	@dirty
 	public string getArrivalPoint() {
 		return arrivalPoint;
 	}
 	
+	@dirty
 	public boolean isTicketObject() {
 		return true;
 	}

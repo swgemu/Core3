@@ -91,6 +91,7 @@ class TravelTerminal extends Terminal {
 	 * NOTE: Resolution of the planetTravelPoint is delayed so the PlanetTravelPoints can get properly updated as objects load
 	 */
 	@local
+	@dirty
 	public PlanetTravelPoint getPlanetTravelPoint() {
 		if(planetTravelPoint != null)
 		    return planetTravelPoint;

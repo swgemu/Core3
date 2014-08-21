@@ -85,6 +85,7 @@ class VehicleObject extends CreatureObject {
 	}
 	
 	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
@@ -95,8 +96,10 @@ class VehicleObject extends CreatureObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);	
 	
+	@dirty
 	public native boolean checkInRangeGarage();
 	
 	/**
@@ -114,6 +117,7 @@ class VehicleObject extends CreatureObject {
 	 * @param newPosture posture to set
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@dirty
 	public void setPosture(int newPosture, boolean notifyClient = true) {
 		//vehicles should not change posture
 		return;
@@ -150,6 +154,7 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked, defender is in the defender vector }
 	 * @param defender SceneObject to add to the defender vector
 	 */
+	@dirty
 	public void addDefender(SceneObject defender) {
 		
 	}
@@ -160,6 +165,7 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked, defender is not in the defender vector }
 	 * @param defender SceneObject to remove from the defender vector
 	 */
+	@dirty
 	public void removeDefender(SceneObject defender) {
 		
 	}
@@ -170,6 +176,7 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked, defender is active }
 	 * @param defender SceneObject to set as the active defender
 	 */
+	@dirty
 	public void setDefender(SceneObject defender) {
 		
 	}
@@ -180,6 +187,7 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked}
 	 * @return returns true if the creature object can attack this 
 	 */
+	@dirty
 	public boolean isAttackableBy(CreatureObject object) {
 		CreatureObject creature = super.linkedCreature;
 		
@@ -218,58 +226,72 @@ class VehicleObject extends CreatureObject {
 	 */
 	public native void repairVehicle(CreatureObject player);
 	
+	@dirty
 	public native int calculateRepairCost(CreatureObject player);
 	
+	@dirty
 	public native void sendRepairConfirmTo(CreatureObject player);
 
 	public void refreshPaint() {
 		paintCount = PAINTCHARGES;
 	}	
 	
+	@read
 	public int getPaintCount(){
 		return paintCount;
 	}
 
+	@dirty
 	public boolean isVehicleObject() {
 		return true;
 	}
 
+	@dirty
 	public unsigned int getArmor() {
 		return 0;
 	}
 
+	@dirty
 	public float getKinetic() {
 		return 30 - getConditionReduction(30);
 	}
 	
+	@dirty
 	public float getEnergy() {
 		return 25 - getConditionReduction(25);
 	}
 	
+	@dirty
 	public float getElectricity() {
 		return 25 - getConditionReduction(25);
 	}
 	
+	@dirty
 	public float getStun() {
 		return 25 - getConditionReduction(25);
 	}
 	
+	@dirty
 	public float getBlast() {
 		return 25 - getConditionReduction(25);
 	}
 	
+	@dirty
 	public float getHeat() {
 		return 25 - getConditionReduction(25);
 	}
 	
+	@dirty
 	public float getCold() {
 		return 25 - getConditionReduction(25);
 	}
 	
+	@dirty
 	public float getAcid() {
 		return 25 - getConditionReduction(25);
 	}
 	
+	@dirty
 	public float getLightSaber() {
 		return 25 - getConditionReduction(25);
 	}

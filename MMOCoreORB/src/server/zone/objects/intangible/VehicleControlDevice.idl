@@ -120,8 +120,10 @@ class VehicleControlDevice extends ControlDevice {
 	 * @post { this is locked }
 	 * @returns 0 on succes, != 0 on error
 	 */
+	@dirty
 	public native int canBeDestroyed(CreatureObject player);
 
+	@dirty
 	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
 
 	/**
@@ -132,8 +134,10 @@ class VehicleControlDevice extends ControlDevice {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);	
 
+	@dirty
 	public boolean isVehicleControlDevice() {
 		return true;
 	}

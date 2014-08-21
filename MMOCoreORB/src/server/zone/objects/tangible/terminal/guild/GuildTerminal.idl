@@ -66,10 +66,12 @@ class GuildTerminal extends Terminal {
 		Logger.setLoggingName("GuildTerminal");
 	}
 	
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
+	@dirty
 	public boolean isGuildTerminal() {
 		return true;
 	}
@@ -78,6 +80,7 @@ class GuildTerminal extends Terminal {
 		guildObject = guild;
 	}
 	
+	@dirty
 	public GuildObject getGuildObject() {
 		return guildObject;
 	}

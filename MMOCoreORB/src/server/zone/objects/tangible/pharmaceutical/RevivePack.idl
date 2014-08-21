@@ -111,6 +111,7 @@ class RevivePack extends PharmaceuticalObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
 	
@@ -156,30 +157,37 @@ class RevivePack extends PharmaceuticalObject {
 
 	}
 	
+	@dirty
 	public float getHealthWoundHealed() {
 		return healthWoundHealed;
 	}
 	
+	@dirty
 	public float getHealthHealed() {
 		return healthHealed;
 	}
 	
+	@dirty
 	public float getActionWoundHealed() {
 		return actionWoundHealed;
 	}
 	
+	@dirty
 	public float getActionHealed() {
 		return actionHealed;
 	}
 	
+	@dirty
 	public float getMindWoundHealed() {
 		return mindWoundHealed;
 	}
 	
+	@dirty
 	public float getMindHealed() {
 		return mindHealed;
 	}
 	
+	@dirty
 	public boolean isRevivePack() {
 		return true;
 	}

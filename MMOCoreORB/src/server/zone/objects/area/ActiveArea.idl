@@ -88,6 +88,7 @@ class ActiveArea extends SceneObject {
 	 * @param player SceneObject that will receive the messages
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
+	@dirty
 	public native void sendTo(SceneObject player, boolean doClose) {
 		
 	}
@@ -98,28 +99,35 @@ class ActiveArea extends SceneObject {
 	public native abstract void notifyEnter(SceneObject object);
 	public native abstract void notifyExit(SceneObject object);
 	
+	@dirty
 	public boolean isActiveArea() {
 		return true;
 	}
 	
+	@dirty
 	public abstract boolean isRegion() {
 		return false;
 	}
 	
+	@dirty
 	public abstract boolean isCityRegion() {
 		return false;
 	}
 
+	@read
 	public boolean isNoBuildArea() {
 		return noBuildArea;
 	}
 
+	@read
 	public boolean isCampingPermitted() {
 		return campingPermitted;
 	}
 	
+	@dirty
 	public native boolean containsPoint(float x, float y);
 		
+	@dirty
 	public float getRadius2() {
 		if (areaShape != null) {
 			return areaShape.getRadius() * areaShape.getRadius();
@@ -148,6 +156,7 @@ class ActiveArea extends SceneObject {
 		super.setRadius(r);
 	}
 	
+	@dirty
 	public abstract boolean isCampArea() {
 		return false;
 	}
@@ -156,14 +165,17 @@ class ActiveArea extends SceneObject {
 		noSpawnArea = val;
 	}
 	
+	@read
 	public boolean isNoSpawnArea() {
 		return noSpawnArea;
 	}
 	
+	@read
 	public boolean isMunicipalZone() {
 		return municipalZone;
 	}
 	
+	@read
 	public unsigned long getCellObjectID() {
 		return cellObjectID;
 	}
@@ -180,9 +192,11 @@ class ActiveArea extends SceneObject {
 		}
 	}
 	
+	@read
 	public AreaShape getAreaShape() {
 		return areaShape;
 	}
 	
+	@dirty
 	public native boolean intersectsWith(ActiveArea area);
 }

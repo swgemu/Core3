@@ -134,6 +134,7 @@ class DotPack extends PharmaceuticalObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
 		
@@ -195,52 +196,63 @@ class DotPack extends PharmaceuticalObject {
 		}
 
 	}
-	
+	@dirty
 	public int calculatePower(CreatureObject creature) {
 		float modSkill = (float) creature.getSkillMod("combat_medic_effectiveness");
 		return ((100 + modSkill) / 100 * effectiveness);
 	}
 
+	@dirty
 	public boolean isPoisonDeliveryUnit() {
 		return dotType == CreatureState.POISONED;
 	}
 	
+	@dirty
 	public boolean isDiseaseDeliveryUnit() {
 		return dotType == CreatureState.DISEASED;
 	}
 	
+	@dirty
 	public float getEffectiveness() {
 		return effectiveness;
 	}
 	
+	@dirty
 	public float getRange() {
 		return range;
 	}
 	
+	@dirty
 	public float getArea() {
 		return area;
 	}
 	
+	@dirty
 	public float getRangeMod() {
 		return rangeMod;
 	}
 	
+	@dirty
 	public float getPotency() {
 		return potency;
 	}
 	
+	@dirty
 	public unsigned int getDuration() {
 		return duration;
 	}
 	
+	@dirty
 	public boolean isArea() {
 		return hasArea;
 	}
 	
+	@dirty
 	public unsigned int getPool() {
 		return pool;
 	}
 	
+	@dirty
 	public unsigned int getDotType() {
 		return dotType;
 	}

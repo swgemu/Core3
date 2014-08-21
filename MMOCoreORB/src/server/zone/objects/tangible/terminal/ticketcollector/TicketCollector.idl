@@ -71,8 +71,10 @@ class TicketCollector extends Terminal {
 	 */
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
+	@dirty
 	public native void useTicket(CreatureObject player, TicketObject ticket);
 	
+	@dirty
 	public boolean isTicketCollector() {
 		return true;
 	}

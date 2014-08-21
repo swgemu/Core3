@@ -91,6 +91,7 @@ class FireworkObject extends TangibleObject {
 	@local
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
+	@dirty
 	public native void fillAttributeList(AttributeListMessage alm, CreatureObject object);
 
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects);
@@ -101,27 +102,34 @@ class FireworkObject extends TangibleObject {
 
 	public native void beginShowLaunch(CreatureObject player);
 	
+	@dirty
 	public native int getDisplayedUseCount();
 	
 	public void setDelay(int d) {
 		delay = d;
 	}
 	
+	@read
 	public int getDelay() {
 		return delay;
 	}
 
+	@read
 	public int getCapacity() {
 		return capacity;
 	}
 	
+	@read
 	public string getFireworkObjectPath() {
 		return fireworkObject;
 	}
+	
+	@dirty
 	public boolean isFireworkObject() {
 		return true;
 	}
 
+	@dirty
 	public boolean isFireworkShow() {
 		return isShow;
 	}

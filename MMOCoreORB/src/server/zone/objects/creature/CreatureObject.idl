@@ -699,6 +699,7 @@ class CreatureObject extends TangibleObject {
 		return null;
 	}
 	
+	@dirty
 	public long getSkillModFromBuffs(final string skillMod) {
 		return creatureBuffs.getModifierByName(skillMod);
 	}
@@ -1105,6 +1106,8 @@ class CreatureObject extends TangibleObject {
 	}
 
 	public native void dismount();
+	
+	@dirty
 	public native float calculateBFRatio();
 
 	public native void setDizziedState(int durationSeconds = 5);
@@ -1228,7 +1231,10 @@ class CreatureObject extends TangibleObject {
 		cooldownTimerMap.updateToCurrentAndAddMili(name, miliseconds);
 	}
 	
+	@dirty
 	public native void doAnimation(final string animation);
+	
+	@dirty
 	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit, byte trails);
 	
 	@dirty
@@ -1272,6 +1278,7 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	@local
+	@dirty
 	public DeltaVector<int> getWounds() {
 		return wounds;
 	}

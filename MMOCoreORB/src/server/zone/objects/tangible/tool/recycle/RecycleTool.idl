@@ -74,6 +74,7 @@ class RecycleTool extends Container {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
@@ -90,10 +91,12 @@ class RecycleTool extends Container {
 		
 	}
 
+	@dirty
 	public int getToolType() {
 		return toolType;
 	}
 	
+	@dirty
 	public int getSelectedResource() {
 		return selectedResource;
 	}

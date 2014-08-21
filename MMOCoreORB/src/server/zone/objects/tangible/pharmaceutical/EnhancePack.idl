@@ -91,6 +91,7 @@ class EnhancePack extends PharmaceuticalObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
 		
@@ -158,6 +159,7 @@ class EnhancePack extends PharmaceuticalObject {
 
 	}
 	
+	@dirty
 	public unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true) {
 		float power = getEffectiveness();
 
@@ -170,18 +172,22 @@ class EnhancePack extends PharmaceuticalObject {
 		return power * modEnvironment * (100 + modSkill) / 100;
 	}
 	
+	@dirty
 	public float getEffectiveness() {
 		return effectiveness;
 	}
 	
+	@dirty
 	public byte getAttribute() {
 		return attribute;
 	}
 	
+	@dirty
 	public float getDuration() {
 		return duration;
 	}
 	
+	@dirty
 	public boolean isEnhancePack() {
 		return true;
 	}

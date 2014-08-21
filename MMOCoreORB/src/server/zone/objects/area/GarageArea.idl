@@ -54,6 +54,7 @@ class GarageArea extends ActiveArea {
 		Logger.setLoggingName("GarageArea");
 	}
 
+	@dirty
 	public void notifyEnter(SceneObject player) {
 		if (player.isPlayerCreature()) {
 			CreatureObject playerCreature = (CreatureObject) player;

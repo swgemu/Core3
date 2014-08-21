@@ -87,6 +87,7 @@ class ArmorComponent extends Component {
 
 	private native void calculateSpecialProtection(CraftingValues values);
 	
+	@dirty
 	private native string getStringType(int type);
 
 	private native void setProtectionValue(int type, float value);

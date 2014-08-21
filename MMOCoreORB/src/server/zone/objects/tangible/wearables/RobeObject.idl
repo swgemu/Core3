@@ -81,10 +81,12 @@ class RobeObject extends WearableObject {
 
 	}
 	
+	@dirty
 	public string getSkillRequired(){
 		return skillRequired;
 	}
 	
+	@dirty
 	public boolean isRobeObject() {
 		return true;
 	}

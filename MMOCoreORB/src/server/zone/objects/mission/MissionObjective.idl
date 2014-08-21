@@ -119,10 +119,12 @@ class MissionObjective extends ManagedObject implements Logger {
 		observers.removeAll();
 	}
 	
+	@dirty
 	public MissionObserver getObserver(int index) {
 		return observers.get(index);
 	}
 	
+	@dirty
 	public boolean hasObservers() {
 		return observers.size() != 0;
 	}
@@ -138,15 +140,18 @@ class MissionObjective extends ManagedObject implements Logger {
 	public native abstract void fail();
 	
 	@weakReference
+	@dirty
 	public MissionObject getMissionObject() {
 		return mission;
 	}
 	
+	@read
 	public unsigned int getObjectiveType() {
 		return objectiveType;
 	}
 	
 	@weakReference
+	@dirty
 	public native CreatureObject getPlayerOwner();
 	
 	public native void awardFactionPoints();
@@ -157,5 +162,6 @@ class MissionObjective extends ManagedObject implements Logger {
 	
 	@dereferenced
 	@local
+	@dirty
 	public abstract native Vector3 getEndPosition();
 }

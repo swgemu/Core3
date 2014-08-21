@@ -60,6 +60,7 @@ class MissionSpawnActiveArea extends ActiveArea {
 		Logger.setLoggingName("MissionSpawnActiveArea");
 	}
 
+	@dirty
 	public void notifyEnter(SceneObject player) {
 		//Logger.info("notifyEnter mission spawn", true);
 		

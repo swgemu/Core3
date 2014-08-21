@@ -76,6 +76,7 @@ class CraftingStation extends ToolTangibleObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	@local
+	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
 	
 	/**
@@ -94,22 +95,27 @@ class CraftingStation extends ToolTangibleObject {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
+	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
+	@dirty
 	public native void sendInputHopper(CreatureObject player);
 
 	
 	@local
 	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
+	@dirty
 	public boolean isCraftingStation() {
 		return true;
 	}
 	
+	@dirty
 	public int getComplexityLevel() {
 		return complexityLevel;
 	}
 	
+	@dirty
 	public int getStationType() {
 		return type;
 	}
@@ -118,6 +124,7 @@ class CraftingStation extends ToolTangibleObject {
 		complexityLevel = level;
 	}
 	
+	@dirty
 	public native SceneObject findCraftingTool(CreatureObject player);
 	
 	public native void createChildObjects();

@@ -115,8 +115,11 @@ class GuildObject extends SceneObject {
 		guildMembers.setNoDuplicateInsertPlan();
 	}
 
+	@dirty
 	public native void sendBaselinesTo(SceneObject player);
+	@dirty
 	public native void broadcastMessage(BaseMessage msg);
+	@dirty
 	public native void broadcastMessage(CreatureObject player, BaseMessage msg, boolean sendSelf = false);
 
 	/**
@@ -126,11 +129,15 @@ class GuildObject extends SceneObject {
 	 */
 	public native void addMember(unsigned long playerID);
 	public native void removeMember(unsigned long playerID);
+	
+	@dirty
 	public native boolean hasMember(unsigned long playerID);
 	
 	@local
+	@dirty
 	public native GuildMemberInfo getMember(unsigned long playerID);
 	
+	@dirty
 	public native unsigned long getMember(int index);
 	
 	public synchronized void addSponsoredPlayer(unsigned long playerID) {
@@ -141,10 +148,12 @@ class GuildObject extends SceneObject {
 		sponsoredPlayers.drop(playerID);
 	}
 	
+	@dirty
 	public synchronized boolean hasSponsoredPlayer(unsigned long playerID) {
 		return sponsoredPlayers.contains(playerID);
 	}
 	
+	@dirty
 	public synchronized unsigned long getSponsoredPlayer(int idx) {
 		return sponsoredPlayers.get(idx);
 	}
@@ -205,6 +214,7 @@ class GuildObject extends SceneObject {
 		guildName = gname;
 	}
 	
+	@read
 	public string getGuildName() {
 		return guildName;
 	}
@@ -214,6 +224,7 @@ class GuildObject extends SceneObject {
 		setRenamePending(true);
 	}
 
+	@read
 	public string getPendingNewName() {
 		return pendingNewName;
 	}
@@ -231,6 +242,7 @@ class GuildObject extends SceneObject {
 		renamePending = pending;
 	}
 
+	@read
 	public boolean isRenamePending() {
 		return renamePending;
 	}
@@ -275,16 +287,20 @@ class GuildObject extends SceneObject {
 		}
 	}
 	
+	@dirty
 	public native boolean isInWaringGuild(CreatureObject creature);
 	
+	@dirty
 	public native boolean isAtWarWith(unsigned long guildoid);
 	
+	@dirty
 	public boolean hasDeclaredWarOn(unsigned long guildoid) {
 		synchronized (waringGuildsMutex) {
 			return waringGuilds.get(guildoid) == WAR_OUT;
 		}
 	}
 	
+	@dirty
 	public boolean hasDeclaredWarBy(unsigned long guildoid) {
 		synchronized (waringGuildsMutex) {
 			return waringGuilds.get(guildoid) == WAR_IN;
@@ -295,13 +311,20 @@ class GuildObject extends SceneObject {
 	public VectorMap<unsigned long, byte> getWaringGuilds() {
 		return waringGuilds;
 	}
-	
+	@dirty
 	public native boolean hasMailPermission(unsigned long playerID);
+	@dirty
 	public native boolean hasSponsorPermission(unsigned long playerID);
+	@dirty
 	public native boolean hasAcceptPermission(unsigned long playerID);
+	@dirty
 	public native boolean hasDisbandPermission(unsigned long playerID);
+	@dirty
 	public native boolean hasKickPermission(unsigned long playerID);
+	@dirty
 	public native boolean hasNamePermission(unsigned long playerID);
+	@dirty
 	public native boolean hasTitlePermission(unsigned long playerID);
+	@dirty
 	public native boolean hasWarPermission(unsigned long playerID);
 }
