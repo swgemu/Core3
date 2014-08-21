@@ -1632,7 +1632,7 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask & CreatureState.SWIMMING;
 	}
 	
-	@read
+	@dirty
 	public ZoneClientSession getClient() {
 		return owner;
 	}
