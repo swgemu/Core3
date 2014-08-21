@@ -441,6 +441,7 @@ class StructureObject extends TangibleObject {
 	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
 	 */
 	@local
+	@dirty
 	public native void addTemplateSkillMods(TangibleObject targetObject);
 
 	/*
@@ -448,6 +449,7 @@ class StructureObject extends TangibleObject {
 	 * @param targetObject the targeted object containing the SkillModMap which will be affected.
 	 */
 	@local
+	@dirty
 	public native void removeTemplateSkillMods(TangibleObject tangibleObject);
 	
 	@dirty

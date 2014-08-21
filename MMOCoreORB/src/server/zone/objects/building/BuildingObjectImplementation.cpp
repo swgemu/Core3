@@ -778,13 +778,10 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	}
 
 	if (isCivicStructure() && isCityBanned(player)) {
-
 		ejectObject(player);
+
 		player->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures
 	}
-
-
-
 }
 
 void BuildingObjectImplementation::onExit(CreatureObject* player, uint64 parentid) {
@@ -1017,7 +1014,7 @@ void BuildingObjectImplementation::registerProfessional(CreatureObject* player) 
 				getZone()->updatePlanetaryMapIcon(_this.get(), 2);
 			}
 
-			registeredPlayerIdList.add(player->getObjectID());
+			registeredPlayerIdList.put(player->getObjectID());
 
 			// "You successfully register with this location."
 			player->sendSystemMessage("@faction/faction_hq/faction_hq_response:success");
@@ -1035,16 +1032,11 @@ void BuildingObjectImplementation::registerProfessional(CreatureObject* player) 
 }
 
 void BuildingObjectImplementation::unregisterProfessional(CreatureObject* player) {
-
 	if(!player->isPlayerCreature() || getZone() == NULL)
 		return;
 
-	if(registeredPlayerIdList.contains(player->getObjectID())) {
-
-		registeredPlayerIdList.removeElement(player->getObjectID());
-
+	if (registeredPlayerIdList.drop(player->getObjectID())) {
 		if (registeredPlayerIdList.size() == 0) {
-
 			if (getZone()->isObjectRegisteredWithPlanetaryMap(_this.get())) {
 				// Last Entertainer/Doctor out, set icon from star to a moon.
 				getZone()->updatePlanetaryMapIcon(_this.get(), 1);
