@@ -197,7 +197,7 @@ in_less_than_a_day = ConvoScreen:new {
 }
 museumCuratorConvoTemplate:addScreen(in_less_than_a_day);
 
-in_less_than_a_week = ConvoScreen:new {
+in_more_than_a_day = ConvoScreen:new {
 	id = "in_more_than_a_day",
 	leftDialog = "@conversation/lilas_dinhint:s_519f72a3", -- There's still more than a day before the search for our next featured work of art begins.
 	stopConversation = "true",
@@ -211,7 +211,7 @@ in_less_than_a_week = ConvoScreen:new {
 	stopConversation = "true",
 	options = {}
 }
-museumCuratorConvoTemplate:addScreen(in_more_than_a_day);
+museumCuratorConvoTemplate:addScreen(in_less_than_a_week);
 
 in_more_than_a_week = ConvoScreen:new {
 	id = "in_more_than_a_week",
