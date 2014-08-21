@@ -134,7 +134,7 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 		task->schedule(duration);		// remove the tools form the world
 		ObjectManager::instance()->persistObject(data, 1, "surveys");
 		tool->destroyObjectFromWorld(true);
-		tangibleObject->destroyObjectFromWorld(true);
+		tangibleObject->decreaseUseCount();
 		cancelSession();
 	}
 
