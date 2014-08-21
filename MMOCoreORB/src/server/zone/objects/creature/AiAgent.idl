@@ -321,9 +321,11 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@local
+	@dirty
 	public native void notifyInsert(QuadTreeEntry entry);
 	
 	@local
+	@dirty
 	public native void notifyDissapear(QuadTreeEntry entry);
 	
 	/**
