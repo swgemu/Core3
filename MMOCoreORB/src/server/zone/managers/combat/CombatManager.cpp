@@ -542,12 +542,12 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 }
 
 int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender) {
-	if (defender->isIntimidated()) return 0;
-
 	int targetDefense = 0;
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
 
 	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
+
+	if (defender->isIntimidated() && !defenseAccMods->contains("saber_block")) return 0;
 
 	for (int i = 0; i < defenseAccMods->size(); ++i) {
 		String mod = defenseAccMods->get(i);
