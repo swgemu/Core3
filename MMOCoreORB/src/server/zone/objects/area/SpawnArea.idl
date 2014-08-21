@@ -129,6 +129,7 @@ class SpawnArea extends ActiveArea {
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);
 
+	@dirty
 	public native void notifyPositionUpdate(QuadTreeEntry obj);
 
 	public native int tryToSpawn(SceneObject object);
