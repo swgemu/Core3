@@ -50,7 +50,11 @@ public:
 	bool loaded;
 
 	AtomicInteger activeMoveEvents;
+	AtomicInteger scheduledMoveEvents;
+
 	AtomicInteger activeAwarenessEvents;
+	AtomicInteger scheduledAwarenessEvents;
+
 	AtomicInteger activeRecoveryEvents;
 	AtomicInteger activeWaitEvents;
 
