@@ -30,7 +30,7 @@ const char LuaAiAgent::className[] = "LuaAiAgent";
 
 Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "_setObject", &LuaAiAgent::_setObject },
-		{ "_getObject", &LuaAiAgent::_getObject },
+		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "setAiTemplate", &LuaAiAgent::setAiTemplate },
 		{ "setFollowObject", &LuaAiAgent::setFollowObject },
 		{ "setOblivious", &LuaAiAgent::setOblivious },
@@ -139,12 +139,6 @@ int LuaAiAgent::_setObject(lua_State* L) {
 	LuaCreatureObject::_setObject(L);
 
 	return 0;
-}
-
-int LuaAiAgent::_getObject(lua_State* L) {
-	lua_pushlightuserdata(L, realObject);
-
-	return 1;
 }
 
 int LuaAiAgent::setAiTemplate(lua_State* L) {

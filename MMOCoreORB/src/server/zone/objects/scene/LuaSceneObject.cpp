@@ -16,6 +16,7 @@ const char LuaSceneObject::className[] = "LuaSceneObject";
 
 Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "_setObject", &LuaSceneObject::_setObject },
+		{ "_setObject", &LuaSceneObject::_getObject },
 		{ "getParent", &LuaSceneObject::getParent },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "getPositionX", &LuaSceneObject::getPositionX },
@@ -77,6 +78,15 @@ LuaSceneObject::LuaSceneObject(lua_State *L) {
 }
 
 LuaSceneObject::~LuaSceneObject(){
+}
+
+int LuaSceneObject::_getObject(lua_State* L) {
+	if (realObject == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, realObject.get());
+
+	return 1;
 }
 
 int LuaSceneObject::_setObject(lua_State* L) {

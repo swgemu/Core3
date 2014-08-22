@@ -12,6 +12,7 @@ const char LuaTangibleObject::className[] = "LuaTangibleObject";
 
 Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "_setObject", &LuaTangibleObject::_setObject },
+		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "setOptionsBitmask", &LuaTangibleObject::setOptionsBitmask },
 		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask },
 		{ "getPvpStatusBitmask", &LuaTangibleObject::getPvpStatusBitmask },

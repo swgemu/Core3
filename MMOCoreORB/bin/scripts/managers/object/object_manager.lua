@@ -17,6 +17,86 @@ _localLuaBuildingObject = LuaBuildingObject(nil)
 _localLuaCityRegion = LuaCityRegion(nil)
 _localLuaActiveArea = LuaActiveArea(nil)
 
+AiAgent = function(pAiAgent)
+  if (pAiAgent == nil) then
+    return nil
+  end
+  
+  _localLuaAiAgent:_setObject(pAiAgent)
+  
+  return _localLuaAiAgent
+end
+
+SceneObject = function(pSceneObject)
+  if (pSceneObject == nil) then
+    return nil
+  end
+  
+  _localLuaSceneObject:_setObject(pSceneObject)
+  
+  return _localLuaSceneObject
+end
+
+TangibleObject = function(pTangibleObject)
+  if (pTangibleObject == nil) then
+    return nil
+  end
+  
+  _localLuaTangibleObject:_setObject(pTangibleObject)
+  
+  return _localLuaTangibleObject
+end
+
+CreatureObject = function(pCreatureObject)
+  if (pCreatureObject == nil) then
+    return nil
+  end
+  
+  _localLuaCreatureObject:_setObject(pCreatureObject)
+  
+  return _localLuaCreatureObject
+end
+
+PlayerObject = function(pPlayerObject)
+  if (pPlayerObject == nil) then
+    return nil
+  end
+  
+  _localLuaPlayerObject:_setObject(pPlayerObject)
+  
+  return _localLuaPlayerObject
+end
+
+BuildingObject = function(pBuildingObject)
+  if (pBuildingObject == nil) then
+    return nil
+  end
+  
+  _localLuaBuildingObject:_setObject(pBuildingObject)
+  
+  return _localLuaBuildingObject
+end
+
+CityRegion = function(pCityRegion)
+  if (pCityRegion == nil) then
+    return nil
+  end
+  
+  _localLuaCityRegion:_setObject(pCityRegion)
+  
+  return _localLuaCityRegion
+end
+
+ActiveArea = function(pActiveArea)
+  if (pActiveArea == nil) then
+    return nil
+  end
+  
+  _localLuaActiveArea:_setObject(pActiveArea)
+  
+  return _localLuaActiveArea
+end
+
 local ObjectManager = Object:new {}
 
 -- Perform the supplied function with an ai agent created from the pointer.
@@ -28,11 +108,13 @@ function ObjectManager.withCreatureAiAgent(pCreatureObject, performThisFunction)
 		return nil
 	end
 	--local aiAgent = LuaAiAgent(pCreatureObject)
+	local previousPointer = _localLuaAiAgent:_getObject()
+	 
 	_localLuaAiAgent:_setObject(pCreatureObject)
 	
 	local ret = performThisFunction(_localLuaAiAgent)
 	
-	_localLuaAiAgent:_setObject(nil)
+	_localLuaAiAgent:_setObject(previousPointer)
 	
 	return ret
 end
@@ -45,12 +127,15 @@ function ObjectManager.withSceneObject(pSceneObject, performThisFunction)
 	if pSceneObject == nil then
 		return nil
 	end
+	
+	local previousPointer = _localLuaSceneObject:_getObject()
+	
 	--local sceneObject = LuaSceneObject(pSceneObject)
 	_localLuaSceneObject:_setObject(pSceneObject)
 	
 	local ret = performThisFunction(_localLuaSceneObject)
 	
-	_localLuaSceneObject:_setObject(nil)
+	_localLuaSceneObject:_setObject(previousPointer)
 	
 	return ret
 end
@@ -63,12 +148,15 @@ function ObjectManager.withTangibleObject(pTangibleObject, performThisFunction)
 	if pTangibleObject == nil then
 		return nil
 	end
+	
+	 local previousPointer = _localLuaTangibleObject:_getObject()
+	
 	--local tangibleObject = LuaTangibleObject(pTangibleObject)
 	_localLuaTangibleObject:_setObject(pTangibleObject)
 	
 	local ret = performThisFunction(_localLuaTangibleObject)
 	
-	_localLuaTangibleObject:_setObject(nil)
+	_localLuaTangibleObject:_setObject(previousPointer)
 	
 	return ret
 end
@@ -81,12 +169,15 @@ function ObjectManager.withCreatureObject(pCreatureObject, performThisFunction)
 	if pCreatureObject == nil then
 		return nil
 	end
+	
+	 local previousPointer = _localLuaCreatureObject:_getObject()
+	
 	--local creatureObject = LuaCreatureObject(pCreatureObject)
 	_localLuaCreatureObject:_setObject(pCreatureObject)
 	
 	local ret = performThisFunction(_localLuaCreatureObject)
 	
-	_localLuaCreatureObject:_setObject(nil)
+	_localLuaCreatureObject:_setObject(previousPointer)
 	
 	return ret
 end
@@ -100,12 +191,14 @@ function ObjectManager.withPlayerObject(pPlayerObject, performThisFunction)
 		return nil
 	end
 	
+  local previousPointer = _localLuaPlayerObject:_getObject()
+	
 	--local playerObject = LuaPlayerObject(pPlayerObject)
 	_localLuaPlayerObject:_setObject(pPlayerObject)
 	
 	local ret = performThisFunction(_localLuaPlayerObject)
 	
-	_localLuaPlayerObject:_setObject(nil)
+	_localLuaPlayerObject:_setObject(previousPointer)
 	
 	return ret
 end
@@ -119,12 +212,14 @@ function ObjectManager.withBuildingObject(pBuildingObject, performThisFunction)
 		return nil
 	end
 	
+  local previousPointer = _localLuaBuildingObject:_getObject()
+	
 	--local buildingObject = LuaBuildingObject(pBuildingObject)
 	_localLuaBuildingObject:_setObject(pBuildingObject)
 	
   local ret = performThisFunction(_localLuaBuildingObject)
   
-  _localLuaBuildingObject:_setObject(nil)
+  _localLuaBuildingObject:_setObject(previousPointer)
   
   return ret
 end
@@ -138,12 +233,14 @@ function ObjectManager.withCityRegion(pCityRegion, performThisFunction)
 		return nil
 	end
 	
+  local previousPointer = _localLuaCityRegion:_getObject()
+	
 	--local cityRegion = LuaCityRegion(pCityRegion)
 	_localLuaCityRegion:_setObject(pCityRegion)
 	
 	local ret = performThisFunction(_localLuaCityRegion)
 	
-	_localLuaCityRegion:_setObject(nil)
+	_localLuaCityRegion:_setObject(previousPointer)
 	
 	return ret
 end
@@ -202,12 +299,15 @@ function ObjectManager.withActiveArea(pActiveArea, performThisFunction)
 	if pActiveArea == nil then
 		return nil
 	end
+	
+  local previousPointer = _localLuaActiveArea:_getObject()
+	
 	--local activeArea = LuaActiveArea(pActiveArea)
 	_localLuaActiveArea:_setObject(pActiveArea)
 	
 	local ret = performThisFunction(_localLuaActiveArea)
 	
-	_localLuaActiveArea:_setObject(nil)
+	_localLuaActiveArea:_setObject(previousPointer)
 	
 	return ret
 end

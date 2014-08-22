@@ -29,7 +29,6 @@ namespace creature {
 		~LuaCreatureObject();
 
 		int _setObject(lua_State* L);
-		int _getObject(lua_State* L);
 		// Methods we will need to use
 		int getBankCredits(lua_State *L);
 		int setBankCredits(lua_State* L);

@@ -120,19 +120,16 @@ function BestineArtistConvoHandler:runScreenHandlers(conversationTemplate, conve
 		end
 	end
 
-	if (screenID == "painting_response_curvote" or screenID == "painting_response_curvote_prev" or screenID == "painting_response_wonvote") then
-		ObjectManager.withCreatureObject(conversingPlayer, function(player)
+	if (screenID == "painting_response_curvote" or screenID == "painting_response_curvote_prev" or screenID == "painting_response_wonvote") then		
 			if (screenID == "painting_response_curvote" or screenID == "painting_response_curvote_prev") then
-				local artistId
-				ObjectManager.withSceneObject(conversingNPC, function(npc)
-					artistId = string.sub(npc:getObjectName(), 16)
-				end)
+				local artistId = string.sub(SceneObject(conversingNPC):getObjectName(), 16)
+				
 				if (BestineMuseumScreenPlay:hasTalkedToArtist(conversingPlayer, artistId) == false) then
 					BestineMuseumScreenPlay:writeToTalkedList(conversingPlayer, artistId)
 				end
 			end
-			writeData(player:getObjectID() .. ":bestine_election_" .. npcName, 1)
-		end)
+			
+			writeData(SceneObject(conversingPlayer):getObjectID() .. ":bestine_election_" .. npcName, 1)
 	end
 	return conversationScreen
 end

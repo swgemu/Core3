@@ -12,7 +12,7 @@ const char LuaActiveArea::className[] = "LuaActiveArea";
 
 Luna<LuaActiveArea>::RegType LuaActiveArea::Register[] = {
 		{ "_setObject", &LuaActiveArea::_setObject },
-		{ "_getObject", &LuaActiveArea::_getObject },
+		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "setRadius", &LuaActiveArea::setRadius },
 		{ "getRadius", &LuaActiveArea::getRadius },
 		{ "setNoBuildArea", &LuaActiveArea::setNoBuildArea },
@@ -36,12 +36,6 @@ int LuaActiveArea::_setObject(lua_State* L) {
 	LuaSceneObject::_setObject(L);
 
 	return 0;
-}
-
-int LuaActiveArea::_getObject(lua_State* L) {
-	lua_pushlightuserdata(L, realObject);
-
-	return 1;
 }
 
 int LuaActiveArea::getRadius(lua_State* L) {

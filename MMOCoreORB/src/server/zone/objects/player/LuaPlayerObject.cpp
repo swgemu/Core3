@@ -14,6 +14,7 @@ const char LuaPlayerObject::className[] = "LuaPlayerObject";
 
 Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "_setObject", &LuaPlayerObject::_setObject },
+		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "getFactionStanding", &LuaPlayerObject::getFactionStanding },
 		{ "setFactionStatus", &LuaPlayerObject::setFactionStatus },
 		{ "isOnLeave", &LuaPlayerObject::isOnLeave },

@@ -27,6 +27,7 @@ namespace scene {
 		~LuaSceneObject();
 
 		int _setObject(lua_State* L);
+		int _getObject(lua_State* L);
 		// Methods we will need to use
 		int getParent(lua_State* L);
 		int getPositionX(lua_State* L);

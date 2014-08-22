@@ -19,7 +19,7 @@ const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
 Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "_setObject", &LuaCreatureObject::_setObject },
-		{ "_getObject", &LuaCreatureObject::_getObject },
+		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "getBankCredits", &LuaCreatureObject::getBankCredits },
 		{ "setBankCredits", &LuaCreatureObject::setBankCredits },
 		{ "sendSystemMessage", &LuaCreatureObject::sendSystemMessage },
@@ -120,12 +120,6 @@ int LuaCreatureObject::_setObject(lua_State* L) {
 int LuaCreatureObject::getFirstName(lua_State* L) {
 	String text = realObject->getFirstName();
 	lua_pushstring(L, text.toCharArray());
-	return 1;
-}
-
-int LuaCreatureObject::_getObject(lua_State* L) {
-	lua_pushlightuserdata(L, realObject);
-
 	return 1;
 }
 

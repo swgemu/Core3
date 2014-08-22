@@ -11,7 +11,7 @@ const char LuaIntangibleObject::className[] = "LuaIntangibleObject";
 
 Luna<LuaIntangibleObject>::RegType LuaIntangibleObject::Register[] = {
 		{ "_setObject", &LuaIntangibleObject::_setObject },
-
+		{ "_getObject", &LuaSceneObject::_getObject },
 		{ 0, 0 }
 };
 
