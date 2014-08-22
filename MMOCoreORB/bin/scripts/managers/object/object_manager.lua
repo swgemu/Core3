@@ -17,6 +17,86 @@ _localLuaBuildingObject = LuaBuildingObject(nil)
 _localLuaCityRegion = LuaCityRegion(nil)
 _localLuaActiveArea = LuaActiveArea(nil)
 
+AiAgent = function(pAiAgent)
+  if (pAiAgent == nil) then
+    return nil
+  end
+  
+  _localLuaAiAgent:_setObject(pAiAgent)
+  
+  return _localLuaAiAgent
+end
+
+SceneObject = function(pSceneObject)
+  if (pSceneObject == nil) then
+    return nil
+  end
+  
+  _localLuaSceneObject:_setObject(pSceneObject)
+  
+  return _localLuaSceneObject
+end
+
+TangibleObject = function(pTangibleObject)
+  if (pTangibleObject == nil) then
+    return nil
+  end
+  
+  _localLuaTangibleObject:_setObject(pTangibleObject)
+  
+  return _localLuaTangibleObject
+end
+
+CreatureObject = function(pCreatureObject)
+  if (pCreatureObject == nil) then
+    return nil
+  end
+  
+  _localLuaCreatureObject:_setObject(pCreatureObject)
+  
+  return _localLuaCreatureObject
+end
+
+PlayerObject = function(pPlayerObject)
+  if (pPlayerObject == nil) then
+    return nil
+  end
+  
+  _localLuaPlayerObject:_setObject(pPlayerObject)
+  
+  return _localLuaPlayerObject
+end
+
+BuildingObject = function(pBuildingObject)
+  if (pBuildingObject == nil) then
+    return nil
+  end
+  
+  _localLuaBuildingObject:_setObject(pBuildingObject)
+  
+  return _localLuaBuildingObject
+end
+
+CityRegion = function(pCityRegion)
+  if (pCityRegion == nil) then
+    return nil
+  end
+  
+  _localLuaCityRegion:_setObject(pCityRegion)
+  
+  return _localLuaCityRegion
+end
+
+ActiveArea = function(pActiveArea)
+  if (pActiveArea == nil) then
+    return nil
+  end
+  
+  _localLuaActiveArea:_setObject(pActiveArea)
+  
+  return _localLuaActiveArea
+end
+
 local ObjectManager = Object:new {}
 
 -- Perform the supplied function with an ai agent created from the pointer.
