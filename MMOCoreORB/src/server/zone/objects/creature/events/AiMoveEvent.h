@@ -20,19 +20,34 @@ namespace events {
 
 class AiMoveEvent : public Task {
 	ManagedWeakReference<AiAgent*> creature;
+	bool hasFollowObject;
 
 public:
 	AiMoveEvent(AiAgent* pl) : Task(1000) {
 		creature = pl;
+		hasFollowObject = false;
+
 		AiMap::instance()->activeMoveEvents.increment();
 	}
 
 	~AiMoveEvent() {
 		AiMap::instance()->activeMoveEvents.decrement();
+
+		if (hasFollowObject) {
+			AiMap::instance()->moveEventsWithFollowObject.decrement();
+
+			hasFollowObject = false;
+		}
 	}
 
 	void run() {
 		AiMap::instance()->scheduledMoveEvents.decrement();
+
+		if (hasFollowObject) {
+			AiMap::instance()->moveEventsWithFollowObject.decrement();
+
+			hasFollowObject = false;
+		}
 
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
@@ -47,8 +62,22 @@ public:
 	void schedule(uint64 delay = 0) {
 		AiMap::instance()->scheduledMoveEvents.increment();
 
+		ManagedReference<AiAgent*> strongRef = creature.get();
+
 		try {
 			Task::schedule(delay);
+
+			if (strongRef != NULL) {
+				if (strongRef->getFollowObject() != NULL && !hasFollowObject) {
+					AiMap::instance()->moveEventsWithFollowObject.increment();
+
+					hasFollowObject = true;
+				} else if (strongRef->getFollowObject() == NULL && hasFollowObject) {
+					AiMap::instance()->moveEventsWithFollowObject.decrement();
+
+					hasFollowObject = false;
+				}
+			}
 		} catch (...) {
 			AiMap::instance()->scheduledMoveEvents.decrement();
 		}
@@ -59,6 +88,12 @@ public:
 
 		if ((ret = Task::cancel())) {
 			AiMap::instance()->scheduledMoveEvents.decrement();
+
+			if (hasFollowObject) {
+				AiMap::instance()->moveEventsWithFollowObject.decrement();
+
+				hasFollowObject = false;
+			}
 		}
 
 		return ret;
