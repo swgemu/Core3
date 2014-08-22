@@ -391,8 +391,10 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 
 void AiAgentImplementation::doAwarenessCheck(CreatureObject* target) {
 	Behavior* current = behaviors.get(currentBehaviorID);
-	if (current != NULL && target != NULL && current->doAwarenessCheck(target))
+	if (current != NULL && target != NULL && numberOfPlayersInRange > 0 && current->doAwarenessCheck(target)) {
 		activateInterrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
+		activateAwarenessEvent(target);
+	}
 }
 
 void AiAgentImplementation::doRecovery() {
