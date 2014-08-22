@@ -65,6 +65,8 @@ LuaPlayerObject::~LuaPlayerObject() {
 int LuaPlayerObject::_setObject(lua_State* L) {
 	realObject = (PlayerObject*)lua_touserdata(L, -1);
 
+	LuaIntangibleObject::_setObject(L);
+
 	return 0;
 }
 

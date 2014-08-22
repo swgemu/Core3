@@ -136,6 +136,8 @@ LuaAiAgent::~LuaAiAgent(){
 int LuaAiAgent::_setObject(lua_State* L) {
 	realObject = static_cast<AiAgent*>(lua_touserdata(L, -1));
 
+	LuaCreatureObject::_setObject(L);
+
 	return 0;
 }
 

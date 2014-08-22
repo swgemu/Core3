@@ -112,6 +112,8 @@ LuaCreatureObject::~LuaCreatureObject(){
 int LuaCreatureObject::_setObject(lua_State* L) {
 	realObject = static_cast<CreatureObject*>(lua_touserdata(L, -1));
 
+	LuaSceneObject::_setObject(L);
+
 	return 0;
 }
 
