@@ -112,6 +112,8 @@ LuaCreatureObject::~LuaCreatureObject(){
 int LuaCreatureObject::_setObject(lua_State* L) {
 	realObject = static_cast<CreatureObject*>(lua_touserdata(L, -1));
 
+	LuaSceneObject::_setObject(L);
+
 	return 0;
 }
 
@@ -122,7 +124,7 @@ int LuaCreatureObject::getFirstName(lua_State* L) {
 }
 
 int LuaCreatureObject::_getObject(lua_State* L) {
-	lua_pushlightuserdata(L, realObject.get());
+	lua_pushlightuserdata(L, realObject);
 
 	return 1;
 }

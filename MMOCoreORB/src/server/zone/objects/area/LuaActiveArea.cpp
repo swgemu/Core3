@@ -33,11 +33,13 @@ LuaActiveArea::~LuaActiveArea(){
 int LuaActiveArea::_setObject(lua_State* L) {
 	realObject = static_cast<ActiveArea*>(lua_touserdata(L, -1));
 
+	LuaSceneObject::_setObject(L);
+
 	return 0;
 }
 
 int LuaActiveArea::_getObject(lua_State* L) {
-	lua_pushlightuserdata(L, realObject.get());
+	lua_pushlightuserdata(L, realObject);
 
 	return 1;
 }

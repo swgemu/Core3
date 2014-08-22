@@ -97,7 +97,7 @@ namespace creature {
 
 	private:
 		// The pointer to the 'real object' defined in object.cc
-		Reference<CreatureObject*> realObject;
+		CreatureObject* realObject;
 	};
 
 }

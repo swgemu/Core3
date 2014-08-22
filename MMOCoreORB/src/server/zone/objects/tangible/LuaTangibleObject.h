@@ -38,8 +38,8 @@ namespace tangible {
 		int isRebel(lua_State *L);
 		int hasActiveArea(lua_State* L);
 
-	private:
-		Reference<TangibleObject*> realObject;
+	protected:
+		TangibleObject* realObject;
 	};
 
 }

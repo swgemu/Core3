@@ -26,5 +26,7 @@ LuaIntangibleObject::~LuaIntangibleObject() {
 int LuaIntangibleObject::_setObject(lua_State* L) {
 	realObject = (IntangibleObject*)lua_touserdata(L, -1);
 
+	LuaSceneObject::_setObject(L);
+
 	return 0;
 }

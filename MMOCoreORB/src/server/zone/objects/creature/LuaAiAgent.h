@@ -122,7 +122,7 @@ namespace creature {
 		int setAlertDuration(lua_State* L);
 		int alertedTimeIsPast(lua_State* L);
 	private:
-		ManagedReference<AiAgent*> realObject;
+		AiAgent* realObject;
 	};
 }
 }

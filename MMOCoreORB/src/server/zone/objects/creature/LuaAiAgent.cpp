@@ -136,11 +136,13 @@ LuaAiAgent::~LuaAiAgent(){
 int LuaAiAgent::_setObject(lua_State* L) {
 	realObject = static_cast<AiAgent*>(lua_touserdata(L, -1));
 
+	LuaCreatureObject::_setObject(L);
+
 	return 0;
 }
 
 int LuaAiAgent::_getObject(lua_State* L) {
-	lua_pushlightuserdata(L, realObject.get());
+	lua_pushlightuserdata(L, realObject);
 
 	return 1;
 }
@@ -653,7 +655,7 @@ int LuaAiAgent::isInCombat(lua_State* L) {
 
 int LuaAiAgent::checkLineOfSight(lua_State* L) {
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
-	bool retVal = CollisionManager::checkLineOfSight(realObject.get(), obj);
+	bool retVal = CollisionManager::checkLineOfSight(realObject, obj);
 
 	lua_pushboolean(L, retVal);
 
