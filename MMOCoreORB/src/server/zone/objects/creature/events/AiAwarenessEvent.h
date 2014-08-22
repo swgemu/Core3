@@ -41,6 +41,8 @@ public:
 	}
 
 	void run() {
+		AiMap::instance()->scheduledAwarenessEvents.decrement();
+
 		ManagedReference<AiAgent*> strongRef = creature.get();
 		ManagedReference<CreatureObject*> targetRef = target.get();
 
@@ -58,13 +60,25 @@ public:
 	}
 
 	void schedule(uint64 delay = 0) {
+		AiMap::instance()->scheduledAwarenessEvents.increment();
+
 		mtime = delay;
 
 		try {
 			Task::schedule(delay);
 		} catch (...) {
-
+			AiMap::instance()->scheduledAwarenessEvents.decrement();
 		}
+	}
+
+	bool cancel() {
+		bool ret = false;
+
+		if ((ret = Task::cancel())) {
+			AiMap::instance()->scheduledAwarenessEvents.decrement();
+		}
+
+		return ret;
 	}
 
 	void setTarget(CreatureObject *t) {
