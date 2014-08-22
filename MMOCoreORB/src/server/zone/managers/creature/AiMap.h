@@ -51,6 +51,7 @@ public:
 
 	AtomicInteger activeMoveEvents;
 	AtomicInteger scheduledMoveEvents;
+	AtomicInteger moveEventsWithFollowObject;
 
 	AtomicInteger activeAwarenessEvents;
 	AtomicInteger scheduledAwarenessEvents;
