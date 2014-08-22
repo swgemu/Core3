@@ -1,7 +1,6 @@
 rori_mauler_conclave_neutral_large_theater = Lair:new {
 	mobiles = {
 		{"mauler_lord",1},
-		{"mauler_master",1},
 		{"mauler",2},
 		{"mauler_acolyte",2},
 		{"mauler_apprentice",2},
