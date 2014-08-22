@@ -16,7 +16,7 @@ const char LuaSceneObject::className[] = "LuaSceneObject";
 
 Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "_setObject", &LuaSceneObject::_setObject },
-		{ "_setObject", &LuaSceneObject::_getObject },
+		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "getParent", &LuaSceneObject::getParent },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "getPositionX", &LuaSceneObject::getPositionX },
