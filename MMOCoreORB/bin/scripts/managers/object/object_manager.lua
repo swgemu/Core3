@@ -8,14 +8,14 @@ function Object:new (o)
     return o
 end
 
-local _localLuaAiAgent = LuaAiAgent(nil)
-local _localLuaSceneObject = LuaSceneObject(nil)
-local _localLuaTangibleObject = LuaTangibleObject(nil)
-local _localLuaCreatureObject = LuaCreatureObject(nil)
-local _localLuaPlayerObject = LuaPlayerObject(nil)
-local _localLuaBuildingObject = LuaBuildingObject(nil)
-local _localLuaCityRegion = LuaCityRegion(nil)
-local _localLuaActiveArea = LuaActiveArea(nil)
+_localLuaAiAgent = LuaAiAgent(nil)
+_localLuaSceneObject = LuaSceneObject(nil)
+_localLuaTangibleObject = LuaTangibleObject(nil)
+_localLuaCreatureObject = LuaCreatureObject(nil)
+_localLuaPlayerObject = LuaPlayerObject(nil)
+_localLuaBuildingObject = LuaBuildingObject(nil)
+_localLuaCityRegion = LuaCityRegion(nil)
+_localLuaActiveArea = LuaActiveArea(nil)
 
 local ObjectManager = Object:new {}
 
