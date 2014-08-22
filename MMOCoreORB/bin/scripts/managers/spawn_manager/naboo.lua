@@ -101,7 +101,7 @@ naboo_regions = {
 	{"hard_capper_spineflap_sw",0,0,{1,0},UNDEFINEDAREA,1},
 	{"hard_gungan_se",0,0,{1,0},UNDEFINEDAREA,1},
 	{"hard_mauler_nw",0,0,{1,0},UNDEFINEDAREA,1},
-	{"hard_peko_peko_nw",-1856,6112,{1,2500},SPAWNAREA,1,"peko_albatross",5},
+	--{"hard_peko_peko_nw",-1856,6112,{1,2500},SPAWNAREA,1,"peko_albatross",5},
 	{"hard_veermok_ne",0,0,{1,0},UNDEFINEDAREA,1},
 	{"imperial_vs_gungan_poi",4760,3875,{1,125},NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"jungle_1",0,0,{1,0},UNDEFINEDAREA,1},
