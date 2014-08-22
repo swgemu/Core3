@@ -205,8 +205,10 @@ end
 -- Handling of the checkForceStatus command.
 -- @param pCreatureObject pointer to the creature object of the player who performed the command
 function Glowing:checkForceStatusCommand(pCreatureObject)
+  local progress = "@jedi_spam:fs_progress_" .. self:getJediProgressionStatus(pCreatureObject)
+  
 	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		creatureObject:sendSystemMessage("@jedi_spam:fs_progress_" .. self:getJediProgressionStatus(pCreatureObject))
+		creatureObject:sendSystemMessage(progress)
 	end)
 end
 
