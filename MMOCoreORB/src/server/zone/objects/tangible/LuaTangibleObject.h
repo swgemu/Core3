@@ -26,7 +26,7 @@ namespace tangible {
 		LuaTangibleObject(lua_State *L);
 		~LuaTangibleObject();
 
-
+		int _setObject(lua_State* L);
 		int setOptionsBitmask(lua_State *L);
 		int setPvpStatusBitmask(lua_State *L);
 		int getPvpStatusBitmask(lua_State *L);
