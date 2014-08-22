@@ -376,10 +376,12 @@ void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
 
 	rescheduleTrackingTask();
-
 }
 
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
+	if (numberOfPlayersInRange.get() <= 0)
+		return;
+
 	CreatureObject* target = cast<CreatureObject*>(entry);
 	if (target != NULL)
 		activateAwarenessEvent(target);
@@ -2508,7 +2510,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	}
 
 	if (isPet()) {
-		CreatureObject* owner = getLinkedCreature().get();
+		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
 
 		if (owner == NULL) {
 			return false;
@@ -2518,7 +2520,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	}
 
 	if (object->isPet()) {
-		CreatureObject* owner = object->getLinkedCreature().get();
+		ManagedReference<CreatureObject*> owner = object->getLinkedCreature().get();
 
 		if (owner == NULL) {
 			return false;
