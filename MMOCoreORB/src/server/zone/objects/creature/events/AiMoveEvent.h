@@ -32,6 +32,8 @@ public:
 	}
 
 	void run() {
+		AiMap::instance()->scheduledMoveEvents.decrement();
+
 		ManagedReference<AiAgent*> strongRef = creature.get();
 
 		if (strongRef == NULL)
@@ -40,6 +42,26 @@ public:
 		Locker locker(strongRef);
 
 		strongRef->doMovement();
+	}
+
+	void schedule(uint64 delay = 0) {
+		AiMap::instance()->scheduledMoveEvents.increment();
+
+		try {
+			Task::schedule(delay);
+		} catch (...) {
+			AiMap::instance()->scheduledMoveEvents.decrement();
+		}
+	}
+
+	bool cancel() {
+		bool ret = false;
+
+		if ((ret = Task::cancel())) {
+			AiMap::instance()->scheduledMoveEvents.decrement();
+		}
+
+		return ret;
 	}
 
 	void clearCreatureObject() {
