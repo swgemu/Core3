@@ -1,6 +1,8 @@
 /*
 Copyright (C) 2007 <SWGEmu>
+
 This File is part of Core3.
+
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -38,27 +40,24 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-
 */
 
-#include "server/zone/managers/resource/InterplanetarySurvey.h"
-#include "server/zone/managers/resource/InterplanetarySurveyTask.h"
-#include "engine/engine.h"
+#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
-void InterplanetarySurveyImplementation::notifyLoadFromDatabase() {
-	if (executed)
-		return;
+void DroidComponentImplementation::initializeTransientMembers() {
+	ComponentImplementation::initializeTransientMembers();
+}
 
-	Time expireTime;
-	uint64 currentTime = expireTime.getMiliTime();
-	int64 remTime = (timeStamp + curTime) - currentTime;
+void DroidComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
+	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 
-
-	Reference<InterplanetarySurveyTask*> task = new InterplanetarySurveyTask(_this.get());
-
-	if (remTime > 0) { // If there is still time left before it should be triggered, schedule for that amount of time
-		task->schedule(remTime);
-	} else { // If not, schedule in 1s
-		task->schedule(1000);
-	}
+	quality = values->getCurrentValue("mechanism_quality");
+	durability = values->getCurrentValue("decayrate");
+	setUseCount(values->getCurrentValue("droid_count"));
+}
+void DroidComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
+	TangibleObjectImplementation::fillAttributeList(alm, object);
+	alm->insertAttribute("decayrate",(int)durability);
+	alm->insertAttribute("mechanism_quality",(int)quality);
 }

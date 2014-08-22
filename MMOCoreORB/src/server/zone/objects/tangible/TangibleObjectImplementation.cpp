@@ -374,8 +374,6 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 			alm->insertAttribute( "lock_mechanism", "@obj_attr_n:broken" );
 		}
 	}
-	// droid device hook for those generic components
-
 }
 
 void TangibleObjectImplementation::setCustomizationVariable(byte type, int16 value, bool notifyClient) {
@@ -608,10 +606,6 @@ void TangibleObjectImplementation::updateCraftingValues(CraftingValues* values,
 
 	if (values->hasProperty("charge")) {
 		setUseCount(values->getCurrentValue("charge"));
-	}
-
-	if (values->hasProperty("droid_count")) {
-		setUseCount(values->getCurrentValue("droid_count"));
 	}
 }
 

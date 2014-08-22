@@ -310,7 +310,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Component>(SceneObjectType::CHEMISTRYCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::CLOTHINGCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::COMMUNITYCRAFTINGCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObjectType::DROIDCOMPONENT);
+	objectFactory.registerObject<DroidComponent>(SceneObjectType::DROIDCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::ELECTRONICSCOMPONENT);
 	objectFactory.registerObject<GeneticComponent>(SceneObjectType::GENETICCOMPONENT);
 	objectFactory.registerObject<DnaComponent>(SceneObjectType::DNACOMPONENT);

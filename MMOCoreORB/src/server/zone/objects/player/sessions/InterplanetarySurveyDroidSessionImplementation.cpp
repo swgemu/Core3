@@ -114,11 +114,17 @@ void InterplanetarySurveyDroidSessionImplementation::handleMenuSelect(CreatureOb
 		Locker toolObject(this->toolObject.get());
 		Locker droidLocker(this->droidObject.get());
 		Component* component = dynamic_cast<Component*>(tangibleObject.get());
+		float quality = component->getAttributeValue("mechanism_quality");
 		ManagedReference<SurveyTool*> tool = this->toolObject.get();
 		unsigned long chosen = droidSuiBox->getMenuObjectID(menuID);
 		this->targetPlanet = pl->getZoneServer()->getResourceManager()->getPlanetByIndex(chosen);
-		// TODO Assume a quaility of lets say 1 since we dont create droid obejcts yet
-		int duration = 1000 * (3600 - (27));
+		int duration = 1000 * (3600 - (27 * quality));
+		int minutes = duration/60000;
+		StringBuffer buffer;
+		buffer << "Droid sent, ETA for the report is ";
+		buffer << minutes;
+		buffer << " minutes.";
+		pl->sendSystemMessage(buffer.toString());
 		// Create a bogus task to run to show the output to the console
 		ManagedReference<InterplanetarySurvey*> data = new InterplanetarySurvey();
 		Time expireTime;

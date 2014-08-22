@@ -177,7 +177,6 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 	gameObjectType = templateData->getGameObjectType();
 	clientObjectCRC = templateData->getClientObjectCRC();
-
 	containerType = templateData->getContainerType();
 	containerVolumeLimit = templateData->getContainerVolumeLimit();
 

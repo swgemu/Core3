@@ -275,6 +275,7 @@ core3_IDLS =	autogen/server/zone/managers/director/QuestStatus.cpp \
 				autogen/server/zone/objects/tangible/component/Component.cpp \
 				autogen/server/zone/objects/tangible/component/armor/ArmorComponent.cpp \
 				autogen/server/zone/objects/tangible/component/genetic/GeneticComponent.cpp \
+				autogen/server/zone/objects/tangible/component/droid/DroidComponent.cpp \
 				autogen/server/zone/objects/tangible/component/dna/DnaComponent.cpp \
 				autogen/server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.cpp \
 				autogen/server/zone/objects/tangible/tool/CraftingTool.cpp \
@@ -591,6 +592,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
 		server/zone/objects/tangible/component/ComponentImplementation.cpp \
 		server/zone/objects/tangible/component/genetic/GeneticComponentImplementation.cpp \
+		server/zone/objects/tangible/component/droid/DroidComponentImplementation.cpp \
 		server/zone/objects/tangible/component/dna/DnaComponentImplementation.cpp \
 		server/zone/objects/tangible/component/armor/ArmorComponentImplementation.cpp \
 		server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponentImplementation.cpp \
