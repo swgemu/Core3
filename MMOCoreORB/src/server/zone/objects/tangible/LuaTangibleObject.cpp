@@ -11,7 +11,7 @@
 const char LuaTangibleObject::className[] = "LuaTangibleObject";
 
 Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
-		{ "_setObject", &LuaSceneObject::_setObject },
+		{ "_setObject", &LuaTangibleObject::_setObject },
 		{ "setOptionsBitmask", &LuaTangibleObject::setOptionsBitmask },
 		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask },
 		{ "getPvpStatusBitmask", &LuaTangibleObject::getPvpStatusBitmask },
@@ -30,6 +30,12 @@ LuaTangibleObject::LuaTangibleObject(lua_State *L) : LuaSceneObject(L) {
 }
 
 LuaTangibleObject::~LuaTangibleObject(){
+}
+
+int LuaTangibleObject::_setObject(lua_State* L) {
+	realObject = static_cast<TangibleObject*>(lua_touserdata(L, -1));
+
+	return 0;
 }
 
 int LuaTangibleObject::setCustomizationVariable(lua_State* L) {
