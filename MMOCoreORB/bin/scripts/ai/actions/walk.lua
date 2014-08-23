@@ -6,7 +6,7 @@ WalkBase = createClass(MoveBase)
 -- overrides so that we walk instead of run
 function WalkBase:findNextPosition(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
+		local agent = AiAgent(pAgent)
 		if (agent:findNextPosition(agent:getMaxDistance(), true)) then
 			return true
 		end

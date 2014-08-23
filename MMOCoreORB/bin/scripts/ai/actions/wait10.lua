@@ -5,8 +5,8 @@ Wait10Base = createClass(WaitBase)
 
 function Wait10Base:setWait(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
-		agent:setWait(math.random(10) + 5)
+		local agent = AiAgent(pAgent)
+		agent:setWait(getRandomNumber(10) + 5)
 	end
 end
 

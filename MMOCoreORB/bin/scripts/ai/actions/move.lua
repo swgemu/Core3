@@ -5,8 +5,8 @@ MoveBase = createClass(Ai)
 
 function MoveBase:checkConditions(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
-		local creature = LuaCreatureObject(pAgent)
+		local agent = AiAgent(pAgent)
+		local creature = CreatureObject(pAgent)
 		if (creature:getPosture() == UPRIGHT and agent:setDestination() > 0) then
 			if agent:shouldRetreat(200) then 
 				agent:clearCombatState(true)
@@ -21,7 +21,7 @@ end
 
 function MoveBase:doAction(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
+		local agent = AiAgent(pAgent)
 		
 		if (agent:getCurrentSpeed() > 0) then 
 			agent:completeMove()
@@ -39,7 +39,7 @@ end
 -- default action is to run
 function MoveBase:findNextPosition(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
+		local agent = AiAgent(pAgent)
 		if (agent:findNextPosition(agent:getMaxDistance(), false)) then
 			return true
 		end
@@ -54,8 +54,8 @@ MovePet = createClass(MoveBase, PetInterrupt)
 
 function MovePet:checkConditions(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
-		local creature = LuaCreatureObject(pAgent)
+		local agent = AiAgent(pAgent)
+		local creature = CreatureObject(pAgent)
 		if (creature:getPosture() == UPRIGHT and agent:getFollowState() ~= OBLIVIOUS) then
 			agent:setDestination()
 			return true
@@ -66,7 +66,7 @@ end
 
 function MovePet:doAction(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
+		local agent = AiAgent(pAgent)
 
 		if (agent:getCurrentSpeed() > 0) then 
 			agent:completeMove()

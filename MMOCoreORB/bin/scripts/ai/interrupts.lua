@@ -25,7 +25,7 @@ DefaultInterrupt = createClass(Interrupt)
 function DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
 	if (pAgent ~= pObject) then return end
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
+		local agent = AiAgent(pAgent)
 		agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
 		agent:resetBehaviorList()
 		agent:executeBehavior()
@@ -36,8 +36,8 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	if (pAgent == pObject) then return false end
 	if (pAgent == nil or pObject == nil) then return false end
 	
-	local agent = LuaAiAgent(pAgent)
-	local scno = LuaSceneObject(pObject)
+	local agent = AiAgent(pAgent)
+	local scno = SceneObject(pObject)
 	if ObjectManager.withTangibleObject(pAgent, function(tano) return tano:getPvpStatusBitmask() == NONE end) or ObjectManager.withCreatureObject(pAgent, function(creo) return creo:isDead() or creo:isIncapacitated() end) then return false end
 	--if not scno:isAiAgent() then agent:info("4") end
 	if agent:getNumberOfPlayersInRange() <= 0  or agent:isRetreating() or agent:isFleeing() or agent:isInCombat() then return false end
@@ -55,7 +55,7 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	--local scno = LuaSceneObject(pObject)
 	if not scno:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
 	--if not scno:isAiAgent() then agent:info("8") end
-	local target = LuaCreatureObject(pObject)
+	local target = CreatureObject(pObject)
 	if ObjectManager.withTangibleObject(pObject, function(tano) return tano:getPvpStatusBitmask() == NONE end) or target:isDead() or target:isIncapacitated() then return false end
 	--if not scno:isAiAgent() then agent:info("9") end
 	
@@ -71,12 +71,28 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	--TODO (dannuic): this seems wrong
 	if scno:isAiAgent() then
 		--ObjectManager.withCreatureAiAgent(pObject, function(ai) ai:info("attacking me!") end)
-		local agentTarget = LuaAiAgent(pObject)
-		local creature = LuaCreatureObject(pAgent)
-		local creatureTarget = LuaCreatureObject(pObject)
-		if not agentTarget:isAttackableBy(pAgent) then return false end
+		
+		local agentFerocity = agent:getFerocity();
+		
+		--local agentTarget = LuaAiAgent(pObject)
+		local agentTargetFerocity = AiAgent(pObject):getFerocity()
+		
+		
+		--local creature = LuaCreatureObject(pAgent)
+		local creatureFaction = CreatureObject(pAgent):getFaction()
+		
+		--local creatureTarget = LuaCreatureObject(pObject)
+		local creatureTargetFaction = CreatureObject(pObject):getFaction()
+		
+		
+		if not AiAgent(pObject):isAttackableBy(pAgent) then return false end
 		--agent:info("12")
-		if ((agentTarget:getFerocity() <= 0 or agent:getFerocity() <= 0) and creatureTarget:getLevel() >= creature:getLevel()) or (creature:getFaction() ~= 0 and creatureTarget:getFaction() == 0) or (creature:getFaction() == 0 and creatureTarget:getFaction() ~= 0) then return false end
+		if ((agentTargetFerocity <= 0 or agentFerocity <= 0) 
+		    and CreatureObject(pObject):getLevel() >= CreatureObject(pAgent):getLevel()) 
+		    or (creatureFaction ~= 0 and creatureTargetFaction == 0) 
+		    or (creatureFaction == 0 and creatureTargetFaction ~= 0) 
+		    then return false 
+		end
 		--agent:info("13")
 	end
 	
@@ -89,11 +105,11 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	if (pAgent == pObject) then return end
 	if (pAgent == nil or pObject == nil) then return end
 	
-	local agent = LuaAiAgent(pAgent)
-	local scno = LuaSceneObject(pObject)
+	local agent = AiAgent(pAgent)
+	local scno = SceneObject(pObject)
 	if not scno:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
 	--if not scno:isAiAgent() then agent:info("1a") end
-	local target = LuaCreatureObject(pObject)
+	local target = CreatureObject(pObject)
 	
 	if ObjectManager.withCreatureObject(pAgent, function(creo) return creo:isDead() or creo:isIncapacitated() end) then return end
 	--if not scno:isAiAgent() then agent:info("1b") end
@@ -152,14 +168,14 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	elseif pObject == pFollow and inRange then
 		--if not scno:isAiAgent() then agent:info("5") end
 		-- TODO (dannuic): Not sure about this stuff, needs testing
-		if ObjectManager.withSceneObject(pFollow, function(followObj) return followObj:isCreatureObject() end) then 
-			ObjectManager.withCreatureObject(pFollow, function(creo)
-				if effectiveLevel < creo:getLevel() then 
-					agent:runAway(pFollow, 64 - radius)
-				else
-					agent:activateAwareness(pFollow) 
-				end
-			end)
+		if ObjectManager.withSceneObject(pFollow, function(followObj) return followObj:isCreatureObject() end) then		
+		  local creoLevel = ObjectManager.withCreatureObject(pFollow, function(creo) return creo:getLevel() end)
+		 
+			if effectiveLevel < creoLevel then 
+				agent:runAway(pFollow, 64 - radius)
+			else
+				agent:activateAwareness(pFollow) 
+			end
 		else agent:setOblivious() end
 	end
 
@@ -173,17 +189,19 @@ PackInterrupt = createClass(DefaultInterrupt)
 function PackInterrupt:startCombatInterrupt(pAgent, pObject)
 	if (pAgent ~= pObject) then
 		if (pAgent ~= nil and pObject ~= nil) then
-			local agent = LuaAiAgent(pAgent)
-			local scno = LuaSceneObject(pObject)
+			local agent = AiAgent(pAgent)
+			local scno = SceneObject(pObject)
 			if scno:isAiAgent() then
-				local source = LuaAiAgent(pObject)
-				if source:getSocialGroup() ~= agent:getSocialGroup() or not agent:checkLineOfSight(pObject) then
+				--scno = AiAgent(pObject)
+				if AiAgent(pObject):getSocialGroup() ~= AiAgent(pAgent):getSocialGroup() or not AiAgent(pAgent):checkLineOfSight(pObject) then
 					return
 				end
 			end
 
 			-- if the source is not an AiAgent (like a lair) then don't check social group
 			-- TODO (dannuic): change the range to calculate based on level difference and ferocity
+			agent = AiAgent(pAgent)
+			
 			if agent:checkRange(pObject, 15) then
 				agent:assist(pObject)
 			end
@@ -197,9 +215,13 @@ end
 PetInterrupt = createClass(DefaultInterrupt)
 function PetInterrupt:startCombatInterrupt(pAgent, pObject)
 	if pAgent == nil or pObject == nil then return end
-	local agent = LuaAiAgent(pAgent)
+	local agent = AiAgent(pAgent)
 	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go
+	
 	DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
+
+  --recover our pointer to agent
+	agent = AiAgent(pAgent)
 	agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
 	agent:resetBehaviorList()
 	agent:executeBehavior()
