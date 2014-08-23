@@ -11,7 +11,7 @@ end
 
 function WaitBase:doAction(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
+		local agent = AiAgent(pAgent)
 		if (agent:isWaiting()) then
 			return BEHAVIOR_RUNNING
 		end
@@ -21,7 +21,7 @@ end
 
 function WaitBase:terminate(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
+		local agent = AiAgent(pAgent)
 		agent:setWait(0)
 	end
 	
@@ -31,7 +31,7 @@ end
 -- By default, wait indefinitely
 function WaitBase:setWait(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
+		local agent = AiAgent(pAgent)
 		agent:setWait(-1)
 	end
 end

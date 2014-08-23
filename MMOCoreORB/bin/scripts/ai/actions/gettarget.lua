@@ -5,10 +5,10 @@ GetTargetBase = createClass(Ai)
 
 function GetTargetBase:checkConditions(pAgent)
 	if (pAgent ~= nil) then
-		local creature = LuaCreatureObject(pAgent)
+		local creature = CreatureObject(pAgent)
 
 		if (creature:isDead()) then
-			local agent = LuaAiAgent(pAgent)
+			local agent = AiAgent(pAgent)
 			agent:clearCombatState(true)
 			agent:setOblivious()
 			return false
@@ -21,9 +21,9 @@ end
 
 function GetTargetBase:doAction(pAgent)
 	if (pAgent ~= nil) then
-		local agent = LuaAiAgent(pAgent)
-		local creature = LuaCreatureObject(pAgent)
-		local ranLevel = math.random(creature:getLevel())
+		local agent = AiAgent(pAgent)
+		local creature = CreatureObject(pAgent)
+		local ranLevel = getRandomNumber(creature:getLevel())
 
 		local pTarget = agent:getTargetFromMap()
 		--print(pTarget)
@@ -84,14 +84,14 @@ GetTargetPet = createClass(GetTargetBase, PetInterrupt)
 function GetTargetPet:doAction(pAgent)
 	if (pAgent ~= nil) then
 		--print("1")
-		local agent = LuaAiAgent(pAgent)
+		local agent = AiAgent(pAgent)
 		
 		local command = agent:getLastCommand()
 		if (command ~= PET_ATTACK and command ~= PET_GUARD) then
 			return BEHAVIOR_FAILURE	
 		end
 	
-		local creature = LuaCreatureObject(pAgent)
+		local creature = CreatureObject(pAgent)
 
 		local pTarget = agent:getTargetFromMap()
 		--print(pTarget)
@@ -135,7 +135,7 @@ end
 
 function GetTargetPet:terminate(pAgent)
 	if pAgent ~= nil then
-		local agent = LuaAiAgent(pAgent)
+		local agent = AiAgent(pAgent)
 		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE then agent:restoreFollowObject() end
 	end
 	return 0
