@@ -546,16 +546,17 @@ function ThemeParkLogic:notifyKilledHuntTarget(pAttacker, pVictim)
 	local attacker = LuaCreatureObject(pAttacker)
 
 
-	ObjectManager.withSceneObject(pVictim, function(victim)
+	return ObjectManager.withSceneObject(pVictim, function(victim)
 		local npcNumber = self:getActiveNpcNumber(pAttacker)
 		local missionNumber = self:getCurrentMissionNumber(npcNumber, pAttacker)
 		local mission = self:getMission(npcNumber, missionNumber)
 
 		if (victim:getObjectName() == mission.huntTarget.npcTemplate) then
 			self:completeMission(pAttacker)
+			return 1
 		end
+		return 0
 	end)
-	return 1
 end
 
 function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
