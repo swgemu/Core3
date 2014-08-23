@@ -1,100 +1,77 @@
---If this convo has errors - Loc-nar -- this is the NPC on the catwalk near the acklay door that gives the 78660 key code
-biogenic_scientist_geonosian_ConversationTemplate = ConvoTemplate:new {
-	initialScreen = "biogen_geo_start",
-	templateType = "Lua",    
-	luaClassHandler = "biogenic_scientist_geonosian_ConversationHandler",
+biogenicScientistGeonosianConvoTemplate = ConvoTemplate:new {
+	initialScreen = "",
+	templateType = "Lua",
+	luaClassHandler = "BiogenicScientistGeonosianConvoHandler",
 	screens = {}
 }
 
-biogen_geo_start = ConvoScreen:new {
-	id = "biogen_geo_start",
-	leftDialog = "@conversation/biogenic_scientist_geonosian:s_a59fc522", -- Thank... thank you for rescuing me
+thanks_for_rescuing = ConvoScreen:new {
+	id = "thanks_for_rescuing",
+	leftDialog = "@conversation/biogenic_scientist_geonosian:s_a59fc522", -- Thank... thank you for rescuing me, but... I've been hurt... I don't know... if I can make it out...
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_scientist_geonosian:s_f612da3","biogen_geo_alright"}, -- Hang in there, you'll be alright
-	} 
-}
-
-biogenic_scientist_geonosian_ConversationTemplate:addScreen(biogen_geo_start);
-
-biogen_geo_alright = ConvoScreen:new {
-	id = "biogen_geo_alright",
-	leftDialog = "@conversation/biogenic_scientist_geonosian:s_5d99d708", --It's...terrible...it's locked in 78660...
-	stopConversation = "false",
-	options = {    
-		{"@conversation/biogenic_scientist_geonosian:s_720b306c","biogen_geo_random"}, -- Stop blathering. You'll live    
-		{"@conversation/biogenic_scientist_geonosian:s_ab9b9023","biogen_geo_wait"} -- I hope you make it, good-bye
+		{"@conversation/biogenic_scientist_geonosian:s_f612da3", "no_i_doubt_that"}, -- Hang in there, you'll be alright.
+		{"@conversation/biogenic_scientist_geonosian:s_720b306c", "no_but_thats_ok"}, -- Stop blathering. You'll live.
+		{"@conversation/biogenic_scientist_geonosian:s_ab9b9023", "wait_take_this"} -- I hope you make it. Good-bye.
 	}
 }
 
-biogenic_scientist_geonosian_ConversationTemplate:addScreen(biogen_geo_alright);
+biogenicScientistGeonosianConvoTemplate:addScreen(thanks_for_rescuing);
 
-biogen_geo_random = ConvoScreen:new {
-	id = "biogen_geo_random",
-	leftDialog = "", 
+no_i_doubt_that = ConvoScreen:new {
+	id = "no_i_doubt_that",
+	leftDialog = "@conversation/biogenic_scientist_geonosian:s_7ddd5bf5", -- No, I doubt that. But it's OK... I was trying to salvage data from... what's left of the computers. This was... all I could get... before the monsters attacked. You take it... put it to good use...
 	stopConversation = "false",
 	options = {
+		{"@conversation/biogenic_scientist_geonosian:s_4c6bb27a", "be_careful"}, -- OK, I'll take it.
+		{"@conversation/biogenic_scientist_geonosian:s_52a88e99", "its_terrible"} -- Thank you, I will.
 	}
 }
 
-biogenic_scientist_geonosian_ConversationTemplate:addScreen(biogen_geo_random);
+biogenicScientistGeonosianConvoTemplate:addScreen(no_i_doubt_that);
 
-biogen_geo_nono = ConvoScreen:new {
-	id = "biogen_geo_nono",
-	leftDialog = "@conversation/biogenic_scientist_geonosian:s_3b597458", -- No, no But that's ok
+wait_take_this = ConvoScreen:new {
+	id = "wait_take_this",
+	leftDialog = "@conversation/biogenic_scientist_geonosian:s_71f20c60", -- Wait, wait... Take this... I was trying to salvage data from... what's left of the computers. This was... all I could get... before the monsters attacked... Put it to good use...
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_scientist_geonosian:s_4c6bb27a","biogen_geo_good_bye"} -- OK, I'll take it
-	}    
-}
-
-biogenic_scientist_geonosian_ConversationTemplate:addScreen(biogen_geo_nono);
-
-biogen_geo_doubt = ConvoScreen:new {
-	id = "biogen_geo_doubt",
-	leftDialog = "@conversation/biogenic_scientist_geonosian:s_7ddd5bf5", -- No, I doubt that
-	stopConversation = "false",
-	options = {
-		{"@conversation/biogenic_scientist_geonosian:s_4c6bb27a","biogen_geo_good_bye"} -- OK, I'll take it
+		{"@conversation/biogenic_scientist_geonosian:s_4c6bb27a", "be_careful"}, -- OK, I'll take it.
+		{"@conversation/biogenic_scientist_geonosian:s_52a88e99", "its_terrible"} -- Thank you, I will.
 	}
 }
 
-biogenic_scientist_geonosian_ConversationTemplate:addScreen(biogen_geo_doubt);
+biogenicScientistGeonosianConvoTemplate:addScreen(wait_take_this);
 
-biogen_geo_wait = ConvoScreen:new {
-	id = "biogen_geo_wait",
-	leftDialog = "@conversation/biogenic_scientist_geonosian:s_71f20c60", -- Wait, wait... Take this...
+no_but_thats_ok = ConvoScreen:new {
+	id = "no_but_thats_ok",
+	leftDialog = "@conversation/biogenic_scientist_geonosian:s_3b597458", -- No, no. But that's OK... I was trying to salvage data from... what's left of the computers. This was... all I could get... before the monsters attacked. You take it... put it to good use...
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_scientist_geonosian:s_4c6bb27a","biogen_geo_good_bye"} -- OK, I'll take it
+		{"@conversation/biogenic_scientist_geonosian:s_4c6bb27a", "be_careful"}, -- OK, I'll take it.
+		{"@conversation/biogenic_scientist_geonosian:s_52a88e99", "its_terrible"} -- Thank you, I will.
 	}
 }
 
-biogenic_scientist_geonosian_ConversationTemplate:addScreen(biogen_geo_wait);
+biogenicScientistGeonosianConvoTemplate:addScreen(no_but_thats_ok);
 
-biogen_geo_good_bye = ConvoScreen:new {
-	id = "biogen_geo_good_bye",
-	leftDialog = "@conversation/biogenic_scientist_geonosian:s_30d18e8f", -- Becareful.. terrible creature.. locked in... 78660
-	stopConversation = "false",
-	options = {
-		{"@conversation/biogenic_scientist_geonosian:s_52a88e99",""} -- Thank you I will
-	}
-}
-
-biogenic_scientist_geonosian_ConversationTemplate:addScreen(biogen_geo_good_bye);
-
-biogen_geo_done = ConvoScreen:new {
-	id = "biogen_geo_done",
-	leftDialog = "@conversation/biogenic_scientist_geonosian:s_30d18e8f", -- Becareful.. terrible creature.. locked in... 78660
+be_careful = ConvoScreen:new {
+	id = "be_careful",
+	leftDialog = "@conversation/biogenic_scientist_geonosian:s_30d18e8f", -- Be careful... terrible creature... locked in... 78660...
 	stopConversation = "true",
 	options = {
 	}
 }
 
-biogenic_scientist_geonosian_ConversationTemplate:addScreen(biogen_geo_done);
+biogenicScientistGeonosianConvoTemplate:addScreen(be_careful);
 
+its_terrible = ConvoScreen:new {
+	id = "its_terrible",
+	leftDialog = "@conversation/biogenic_scientist_geonosian:s_5d99d708", -- It's... terrible... it's locked in... 78660...
+	stopConversation = "true",
+	options = {
+	}
+}
 
+biogenicScientistGeonosianConvoTemplate:addScreen(its_terrible);
 
-addConversationTemplate("biogenic_scientist_geonosian_ConversationTemplate", biogenic_scientist_geonosian_ConversationTemplate);
-
-
+addConversationTemplate("biogenicScientistGeonosianConvoTemplate", biogenicScientistGeonosianConvoTemplate);
