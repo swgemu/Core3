@@ -98,7 +98,16 @@ String HarvesterObjectImplementation::getRedeedMessage() {
 	if(operating)
 		return "destroy_deactivate_first";
 
-	if(resourceHopper.size() > 0)
+	// Prevent the "hopper must be empty before being destroyed message, even though the quantity shown in the hopper
+	// UI is 0" issue by checking the number of resource units harvested, rather than number of resource types in the hopper.
+	float totalHarvested = 0;
+	for (int i = 0; i < resourceHopper.size(); ++i) {
+		ResourceContainer* container = resourceHopper.get(i);
+		totalHarvested += container->getQuantity();
+	}
+	Logger::console.info("Pevent Issue: " + String::valueOf(totalHarvested), true);
+
+	if(totalHarvested >= 1)
 		return "destroy_empty_hopper";
 
 
