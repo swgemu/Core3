@@ -1357,7 +1357,7 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 		if (playerZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
 			Reference<PlanetTravelPoint*> travelPoint = playerZone->getPlanetManager()->getNearestPlanetTravelPoint(position);
 
-			if (travelPoint->getArrivalPosition().distanceTo(position) > 1000.0f) {
+			if (travelPoint != NULL && travelPoint->getArrivalPosition().distanceTo(position) > 1000.0f) {
 				foundPosition = true;
 			}
 		}
