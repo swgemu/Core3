@@ -1065,6 +1065,8 @@ void AiAgentImplementation::checkNewAngle() {
 		if (getZone() == NULL)
 			return;
 
+		broadcastNextPositionUpdate(NULL);
+		/*
 		Locker clocker(getZone(), _this.get());
 
 		++movementCounter;
@@ -1074,6 +1076,8 @@ void AiAgentImplementation::checkNewAngle() {
 			updateZoneWithParent(getParent().get(), true, true);
 		else
 			updateZone(true, true);
+
+			*/
 	}
 }
 
