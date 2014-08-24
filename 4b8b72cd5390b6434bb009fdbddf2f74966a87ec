@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_6a88d722",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-24T14:54:39Z",
+      "side": 1,
+      "message": "Remove your debug code.",
+      "revId": "4b8b72cd5390b6434bb009fdbddf2f74966a87ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_4a8d1331",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-24T14:54:39Z",
+      "side": 1,
+      "message": "Remove debug code.",
+      "revId": "4b8b72cd5390b6434bb009fdbddf2f74966a87ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_2a82df00",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-24T14:54:39Z",
+      "side": 1,
+      "message": "And here.",
+      "revId": "4b8b72cd5390b6434bb009fdbddf2f74966a87ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_0a871b11",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-24T14:54:39Z",
+      "side": 1,
+      "message": "And here.",
+      "revId": "4b8b72cd5390b6434bb009fdbddf2f74966a87ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
