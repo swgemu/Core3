@@ -1,5 +1,5 @@
-local Glowing = require("managers.jedi.village.glowing")
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
+local Glowing = require("managers.jedi.village.glowing")
 local OldManEncounterMocks = require("managers.jedi.village.mocks.old_man_encounter_mocks")
 local VillageJediManagerCommonMocks = require("managers.jedi.village.mocks.village_jedi_manager_common_mocks")
 

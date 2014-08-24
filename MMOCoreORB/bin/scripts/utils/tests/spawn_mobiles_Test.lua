@@ -1,5 +1,5 @@
-local SpawnMobiles = require("utils.spawn_mobiles")
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
+local SpawnMobiles = require("utils.spawn_mobiles")
 
 local SPAWN_MOBILES_STRING = "_spawn_mobiles"
 local IN_USE_STRING = "_in_use"

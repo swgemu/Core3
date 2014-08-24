@@ -1,6 +1,6 @@
+local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local OldManEncounter = require("managers.jedi.village.old_man_encounter")
 local QuestManagerMocks = require("managers.quest.mocks.quest_manager_mocks")
-local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local SpawnMobilesMocks = require("utils.mocks.spawn_mobiles_mocks")
 local VillageJediManagerCommonMocks = require("managers.jedi.village.mocks.village_jedi_manager_common_mocks")
 
