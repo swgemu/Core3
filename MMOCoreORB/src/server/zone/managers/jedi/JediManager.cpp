@@ -48,6 +48,10 @@ which carries forward this exception.
 JediManager::JediManager() : Logger("JediManager") {
 	jediProgressionType = NOJEDIPROGRESSION;
 	setJediManagerName("JediManager");
+
+	int* a = NULL;
+
+	int b = *a;
 }
 
 JediManager::~JediManager() {
