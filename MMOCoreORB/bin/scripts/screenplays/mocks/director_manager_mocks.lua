@@ -35,53 +35,87 @@ function DirectorManagerMocks.mocks.before_each()
 	spawnMobile = spy.new(function() return nil end)
 	writeData = spy.new(function() end)
 
-	LuaAiAgent = spy.new(function(pAiAgent)
+	AiAgent = spy.new(function(pAiAgent)
 		if pAiAgent == nil then
 			assert.not_nil(pAiAgent)
 			return nil
 		end
 		return DirectorManagerMocks.aiAgents[pAiAgent]
 	end)
+	LuaAiAgent = spy.new(function() return nil end)
+	_localLuaAiAgent = {}
+	_localLuaAiAgent._getObject = spy.new(function() return nil end)
+	_localLuaAiAgent._setObject = spy.new(function() end)
 
-	LuaCityRegion = spy.new(function(pCityRegion)
+	CityRegion = spy.new(function(pCityRegion)
 		if pCityRegion == nil then
 			assert.not_nil(pCityRegion)
 			return nil
 		end
 		return DirectorManagerMocks.cityRegions[pCityRegion]
 	end)
+	LuaCityRegion = spy.new(function() return nil end)
+	_localLuaCityRegion = {}
+	_localLuaCityRegion._getObject = spy.new(function() return nil end)
+	_localLuaCityRegion._setObject = spy.new(function() end)
 
-	LuaCreatureObject = spy.new(function(pCreatureObject)
+	CreatureObject = spy.new(function(pCreatureObject)
 		if pCreatureObject == nil then
 			assert.not_nil(pCreatureObject)
 			return nil
 		end
 		return DirectorManagerMocks.creatureObjects[pCreatureObject]
 	end)
+	LuaCreatureObject = spy.new(function() return nil end)
+	_localLuaCreatureObject = {}
+	_localLuaCreatureObject._getObject = spy.new(function() return nil end)
+	_localLuaCreatureObject._setObject = spy.new(function() end)
 
-	LuaPlayerObject = spy.new(function(pPlayerObject)
+	PlayerObject = spy.new(function(pPlayerObject)
 		if pPlayerObject == nil then
 			assert.not_nil(pPlayerObject)
 			return nil
 		end
 		return DirectorManagerMocks.playerObjects[pPlayerObject]
 	end)
+	LuaPlayerObject = spy.new(function() return nil end)
+	_localLuaPlayerObject = {}
+	_localLuaPlayerObject._getObject = spy.new(function() return nil end)
+	_localLuaPlayerObject._setObject = spy.new(function() end)
 
-	LuaSceneObject = spy.new(function(pSceneObject)
+	SceneObject = spy.new(function(pSceneObject)
 		if pSceneObject == nil then
 			assert.not_nil(pSceneObject)
 			return nil
 		end
 		return DirectorManagerMocks.sceneObjects[pSceneObject]
 	end)
+	LuaSceneObject = spy.new(function() return nil end)
+	_localLuaSceneObject = {}
+	_localLuaSceneObject._getObject = spy.new(function() return nil end)
+	_localLuaSceneObject._setObject = spy.new(function() end)
 
-	LuaActiveArea = spy.new(function(pActiveArea)
+	ActiveArea = spy.new(function(pActiveArea)
 		if pActiveArea == nil then
 			assert.not_nil(pActiveArea)
 			return nil
 		end
 		return DirectorManagerMocks.activeAreas[pActiveArea]
 	end)
+	LuaActiveArea = spy.new(function() return nil end)
+	_localLuaActiveArea = {}
+	_localLuaActiveArea._getObject = spy.new(function() return nil end)
+	_localLuaActiveArea._setObject = spy.new(function() end)
+
+	LuaTangibleObject = spy.new(function() return nil end)
+	_localLuaTangibleObject = {}
+	_localLuaTangibleObject._getObject = spy.new(function() return nil end)
+	_localLuaTangibleObject._setObject = spy.new(function() end)
+
+	LuaBuildingObject = spy.new(function() return nil end)
+	_localLuaBuildingObject = {}
+	_localLuaBuildingObject._getObject = spy.new(function() return nil end)
+	_localLuaBuildingObject._setObject = spy.new(function() end)
 
 	LuaStringIdChatParameter = spy.new(function(stringId)
 		return DirectorManagerMocks.stringIds[stringId]
