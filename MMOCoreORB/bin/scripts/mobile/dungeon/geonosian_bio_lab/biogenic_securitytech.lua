@@ -23,7 +23,7 @@ biogenic_securitytech = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 384,
+	optionsBitmask = 392,
 	diet = HERBIVORE,
 	
 	templates = {
@@ -31,7 +31,7 @@ biogenic_securitytech = Creature:new {
 		"object/mobile/dressed_geonosian_scientist_02.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "biogenicSecurityTechConvoTemplate",
 	attacks = {}
 }
 
