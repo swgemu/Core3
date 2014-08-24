@@ -1122,21 +1122,36 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	}
 #endif
 
+	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = NULL;
+
 	// setNextPosition will add a point to patrolPoints (at the beginning)
 	while (!found && patrolPoints.size() != 0) {
 		// the first position in patrolPoints is where we want to move to
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
 		Reference<SceneObject*> targetCoordinateCell = targetPosition->getCell();
 
-		if (targetPosition->getCell() == NULL && zone != NULL) {
+		if (targetPosition->getCell() == NULL && zone != NULL && targetPosition->getPositionZ() == 0) {
 			// We are not in a cell, so we need to calculate which Z we want to move to
 			PlanetManager* planetManager = zone->getPlanetManager();
 
 			targetMutex.unlock();
 
+			if (closeObjects == NULL) {
+				closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+
+				if (closeobjects != NULL) {
+					closeobjects->safeCopyTo(*closeObjects);
+				} else {
+					zone->info("Null closeobjects vector in AiAgentImplementation::findNextPosition", true);
+
+					Vector3 worldPosition = getWorldPosition();
+					zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, closeObjects, true);
+				}
+			}
+
 			IntersectionResults intersections;
-			CollisionManager::getWorldFloorCollisions(targetPosition->getPositionX(), targetPosition->getPositionY(), zone, true, &intersections, (CloseObjectsVector*) this->getCloseObjects());
-			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), targetPosition->getPositionZ(), this->getSwimHeight(), &intersections, (CloseObjectsVector*) this->getCloseObjects()));
+			CollisionManager::getWorldFloorCollisions(targetPosition->getPositionX(), targetPosition->getPositionY(), zone, true, &intersections, *closeObjects);
+			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), targetPosition->getPositionZ(), this->getSwimHeight(), &intersections, NULL));
 
 			targetMutex.lock();
 		}
@@ -1323,9 +1338,22 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 							if (zone != NULL) {
 								targetMutex.unlock();
 
+								if (closeObjects == NULL) {
+									closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+
+									if (closeobjects != NULL) {
+										closeobjects->safeCopyTo(*closeObjects);
+									} else {
+										zone->info("Null closeobjects vector in Ai::findNextPosition", true);
+
+										Vector3 worldPosition = getWorldPosition();
+										zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, closeObjects, true);
+									}
+								}
+
 								IntersectionResults intersections;
-								CollisionManager::getWorldFloorCollisions(newPositionX, newPositionY, zone, true, &intersections, (CloseObjectsVector*) this->getCloseObjects());
-								newPositionZ = zone->getPlanetManager()->findClosestWorldFloor(newPositionX, newPositionY, targetPosition->getPositionZ(), this->getSwimHeight(), &intersections, (CloseObjectsVector*) this->getCloseObjects());
+								CollisionManager::getWorldFloorCollisions(newPositionX, newPositionY, zone, true, &intersections, *closeObjects);
+								newPositionZ = zone->getPlanetManager()->findClosestWorldFloor(newPositionX, newPositionY, targetPosition->getPositionZ(), this->getSwimHeight(), &intersections, NULL);
 
 								targetMutex.lock();
 							}
@@ -1479,6 +1507,22 @@ void AiAgentImplementation::doMovement() {
 bool AiAgentImplementation::generatePatrol(int num, float dist) {
 	patrolPoints.removeAll();
 
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+	Zone* zone = getZone();
+
+	if (zone == NULL)
+		return false;
+
+	if (closeobjects != NULL) {
+		closeobjects->safeCopyTo(closeObjects);
+	} else {
+		zone->info("Null closeobjects vector in AiAgentImplementation::generatePatrol", true);
+
+		Vector3 worldPosition = getWorldPosition();
+		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, &closeObjects, true);
+	}
+
 	for (int i = 0; i < num; i++) {
 		PatrolPoint newPoint;
 		newPoint.setPositionX(homeLocation.getPositionX() + (-1 * dist + (float)System::random((unsigned int)dist * 2)));
@@ -1493,7 +1537,9 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 		if (newPoint.getCell() == NULL && zone != NULL) {
 			PlanetManager* planetManager = zone->getPlanetManager();
 			IntersectionResults intersections;
-			CollisionManager::getWorldFloorCollisions(newPoint.getPositionX(), newPoint.getPositionY(), zone, true, &intersections, (CloseObjectsVector*) this->getCloseObjects());
+
+			CollisionManager::getWorldFloorCollisions(newPoint.getPositionX(), newPoint.getPositionY(), zone, true, &intersections, closeObjects);
+
 			newPoint.setPositionZ(planetManager->findClosestWorldFloor(newPoint.getPositionX(), newPoint.getPositionY(), newPoint.getPositionZ(), this->getSwimHeight(), &intersections, (CloseObjectsVector*) this->getCloseObjects()));
 		}
 
