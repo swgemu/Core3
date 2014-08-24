@@ -106,6 +106,11 @@ public:
 	static const int ITEMWAYPOINTDATAPAD = 1;
 
 	/**
+	 * Item type camp datapad.
+	 */
+	static const int ITEMTHEATERDATAPAD = 2;
+
+	/**
 	 * Constructor for the Jedi Manager.
 	 */
 	JediManager();

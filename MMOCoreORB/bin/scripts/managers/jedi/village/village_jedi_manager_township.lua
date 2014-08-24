@@ -28,7 +28,8 @@ VillagerMobilesPhaseOne = {
 
 VillagerMobiles = {
 	paemos = {name="paemos",respawn=60, x=5289, z=78, y=-4149, header=240, cellid=0},
-	noldan = {name="noldan",respawn=60, x=5243, z=78, y=-4224, header=0, cellid=0}
+	noldan = {name="noldan",respawn=60, x=5243, z=78, y=-4224, header=0, cellid=0},
+	rohak = {name="rohak_village_elder",respawn=60, x=5306, z=78, y=-4145, header=0, cellid=0}
 }
 
 -- Set the current Village Phase for the first time.
