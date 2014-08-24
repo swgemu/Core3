@@ -60,17 +60,24 @@ void WaypointDatapadMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
+
+	if (sceneObject->getObjectTemplate()->getFullTemplateString() == "object/tangible/loot/quest/force_sensitive/waypoint_datapad.iff")
 	menuResponse->addRadialMenuItem(6, 3, "@ui_radial:item_activate"); //Activate
+
+	if (sceneObject->getObjectTemplate()->getFullTemplateString() == "object/tangible/loot/quest/force_sensitive/theater_datapad.iff")
+	menuResponse->addRadialMenuItem(7, 3, "@ui_radial:item_activate"); //Activate
 }
 
 int WaypointDatapadMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
-	if (selectedID != 6)
-		return 0;
 
 	if (!sceneObject->isASubChildOf(player))
 		return 0;
 
+	if (selectedID == 6)
 	JediManager::instance()->useItem(sceneObject, JediManager::ITEMWAYPOINTDATAPAD, player);
+
+	if (selectedID == 7)
+	JediManager::instance()->useItem(sceneObject, JediManager::ITEMTHEATERDATAPAD, player);
 
 	return 0;
 }

@@ -27,7 +27,10 @@ function VillageJediManager:useItem(pSceneObject, itemType, pCreatureObject)
 		VillageJediManagerHolocron.useHolocron(pSceneObject, pCreatureObject)
 	end
 	if itemType == ITEMWAYPOINTDATAPAD then
-		SithShadowEncounter:useDatapad(pSceneObject, pCreatureObject)
+		SithShadowEncounter:useWaypointDatapad(pSceneObject, pCreatureObject)
+	end
+	if itemType == ITEMTHEATERDATAPAD then
+		SithShadowEncounter:useTheaterDatapad(pSceneObject, pCreatureObject)
 	end
 end
 
