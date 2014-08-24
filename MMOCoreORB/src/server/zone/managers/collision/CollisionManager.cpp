@@ -364,8 +364,7 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 	return height;
 }
 
-void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector)
-{
+void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector) {
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
 	if (closeObjectsVector != NULL) {
@@ -375,6 +374,10 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, boo
 		zone->getInRangeObjects(x, y, 128, &closeObjects, true);
 	}
 
+	getWorldFloorCollisions(x, y, zone, testWater, result, closeObjects);
+}
+
+void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result, const SortedVector<ManagedReference<QuadTreeEntry*> >& inRangeObjects) {
 	PlanetManager* planetManager = zone->getPlanetManager();
 
 	if (planetManager == NULL)
@@ -402,8 +405,8 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, boo
 
 	float intersectionDistance;
 
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* sceno = dynamic_cast<SceneObject*>(closeObjects.get(i).get());
+	for (int i = 0; i < inRangeObjects.size(); ++i) {
+		SceneObject* sceno = dynamic_cast<SceneObject*>(inRangeObjects.get(i).get());
 
 		if (sceno == NULL)
 			continue;
