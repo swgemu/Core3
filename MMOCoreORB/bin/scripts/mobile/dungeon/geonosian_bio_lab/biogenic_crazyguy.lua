@@ -24,7 +24,7 @@ biogenic_crazyguy = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 384,
+	optionsBitmask = 392,
 	diet = HERBIVORE,
 
 	templates = {
@@ -32,7 +32,7 @@ biogenic_crazyguy = Creature:new {
 		"object/mobile/dressed_combatmedic_trainer_human_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "biogenicCrazyGuyConvoTemplate",
 	attacks = {}
 }
 
