@@ -144,7 +144,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 			chatManager->sendMail("@player_structure:construction_complete_sender", subject, emailBody, creatureObject->getFirstName(), waypointObject);
 		}
 
-		if (structureObject->isBuildingObject()) {
+		if (structureObject->isBuildingObject() && !structureObject->isGCWBase()) {
 			BuildingObject* building = cast<BuildingObject*>(structureObject.get());
 			building->setCustomObjectName(creatureObject->getFirstName() + "'s House", true); //Set the house sign.
 		}
