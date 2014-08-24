@@ -1,5 +1,5 @@
-local ObjectManager = require("managers.object.object_manager")
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
+local ObjectManager = require("managers.object.object_manager")
 
 -- TODO: several of the functions in this module needs more testing to test the return value and that functions are called correctly.
 

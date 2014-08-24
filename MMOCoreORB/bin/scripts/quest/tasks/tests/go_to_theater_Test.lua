@@ -1,5 +1,5 @@
-local GoToTheater = require("quest.tasks.go_to_theater")
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
+local GoToTheater = require("quest.tasks.go_to_theater")
 local SpawnMobilesMocks = require("utils.mocks.spawn_mobiles_mocks")
 
 local READ_DISK_ERROR_STRING = "@quest/force_sensitive/intro:read_disk_error"

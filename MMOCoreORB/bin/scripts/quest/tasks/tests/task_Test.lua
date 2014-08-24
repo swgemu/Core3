@@ -1,5 +1,5 @@
-local Task = require("quest.tasks.task")
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
+local Task = require("quest.tasks.task")
 
 local testTaskName = "testTask"
 local TASK_SCREEN_PLAY_STARTED = 0xABCD

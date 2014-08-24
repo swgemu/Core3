@@ -1,5 +1,5 @@
-local QuestManager = require("managers.quest.quest_manager")
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
+local QuestManager = require("managers.quest.quest_manager")
 
 local TEST_QUEST = 33
 local QUEST_ACTIVE = 1
