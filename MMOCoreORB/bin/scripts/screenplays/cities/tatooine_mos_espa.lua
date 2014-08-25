@@ -120,30 +120,30 @@ function TatooineMosEspaScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "commoner_tatooine",60,-2731.39,5,2226.03,196.441,0)
 
 	--Imperial Npc's Outside
-	--{"crackdown_comm_operator",400,-2960.4,5,1973.9,74,0, "npc_imperial", ""},
-	spawnMobile("tatooine", "crackdown_dark_trooper",400,-3028.58,5.11515,2618.21,39.6237,0)
-	spawnMobile("tatooine", "crackdown_elite_dark_trooper",400,-2636.4,5,2254.3,81,0)
-	--{"crackdown_elite_dark_trooper",400,-2953.88,5,1933.16,344.533,0, "npc_imperial", ""},
-	--{"crackdown_imperial_master_sergeant",400,-2954.65,5,1935.93,344.531,0, "npc_imperial", ""},
-	--{"crackdown_imperial_master_sergeant",400,-3115,5,2199.8,-75,0, "npc_imperial", ""},
-	spawnMobile("tatooine", "crackdown_imperial_master_sergeant",400,-3204.52,5,2091.93,204.135,0)
-	spawnMobile("tatooine", "crackdown_imperial_master_sergeant",400,-3029.53,5.07697,2617.06,39.7527,0)
-	--{"crackdown_imperial_noncom",400,-2648.9,5,2290.2,67,0, "npc_imperial", ""},
-	--{"crackdown_imperial_noncom",400,-3027.01,5.06395,2617.66,289.047,0, "npc_imperial", ""},
-	spawnMobile("tatooine", "crackdown_imperial_warrant_officer_ii",400,-3207,5,2097.52,347.895,0)
-	--{"crackdown_sand_trooper",400,-2985.75,5,1978.7,74.49,0, "npc_imperial", ""},
-	--{"crackdown_sand_trooper",400,-2963.4,5,1978.6,75,0, "npc_imperial", ""},
-	--{"crackdown_sand_trooper",400,-2988.1,5,1978.04,74.4903,0, "npc_imperial", ""},
-	--{"crackdown_sand_trooper",400,-2960.1,5,1968.6,67,0, "npc_imperial", ""},
-	spawnMobile("tatooine", "crackdown_sand_trooper",400,-2695.6,5,1982.9,122,0)
-	spawnMobile("tatooine", "crackdown_sand_trooper",400,-3170.7,5,2137.7,-30,0)
-	spawnMobile("tatooine", "crackdown_sand_trooper",400,-3028.33,5.01162,2616.08,294.927,0)
-	spawnMobile("tatooine", "crackdown_scout_trooper",400,-2982.5,5,1956.8,73,0)
-	spawnMobile("tatooine", "crackdown_scout_trooper",400,-3029.2,5,2614.8,-52,0)
-	spawnMobile("tatooine", "crackdown_stormtrooper",400,-3207.39,5,2099.33,347.898,0)
-	spawnMobile("tatooine", "crackdown_stormtrooper",400,-3203.5,5,2091.5,-159,0)
-	--{"crackdown_stormtrooper_captain",400,-3026.34,5.10198,2618.73,289.047,0, "npc_imperial", ""},
-	--{"crackdown_stormtrooper_squad_leader",400,-2979.8,5,1957.6,67,0, "npc_imperial", ""},
+	--{"comm_operator",400,-2960.4,5,1973.9,74,0, "npc_imperial", ""},
+	spawnMobile("tatooine", "dark_trooper",400,-3028.58,5.11515,2618.21,39.6237,0)
+	spawnMobile("tatooine", "dark_trooper",400,-2636.4,5,2254.3,81,0)
+	--{"dark_trooper",400,-2953.88,5,1933.16,344.533,0, "npc_imperial", ""},
+	--{"imperial_master_sergeant",400,-2954.65,5,1935.93,344.531,0, "npc_imperial", ""},
+	--{"imperial_master_sergeant",400,-3115,5,2199.8,-75,0, "npc_imperial", ""},
+	spawnMobile("tatooine", "imperial_master_sergeant",400,-3204.52,5,2091.93,204.135,0)
+	spawnMobile("tatooine", "imperial_master_sergeant",400,-3029.53,5.07697,2617.06,39.7527,0)
+	--{"imperial_noncom",400,-2648.9,5,2290.2,67,0, "npc_imperial", ""},
+	--{"imperial_noncom",400,-3027.01,5.06395,2617.66,289.047,0, "npc_imperial", ""},
+	spawnMobile("tatooine", "imperial_warrant_officer_ii",400,-3207,5,2097.52,347.895,0)
+	--{"sand_trooper",400,-2985.75,5,1978.7,74.49,0, "npc_imperial", ""},
+	--{"sand_trooper",400,-2963.4,5,1978.6,75,0, "npc_imperial", ""},
+	--{"sand_trooper",400,-2988.1,5,1978.04,74.4903,0, "npc_imperial", ""},
+	--{"sand_trooper",400,-2960.1,5,1968.6,67,0, "npc_imperial", ""},
+	spawnMobile("tatooine", "sand_trooper",400,-2695.6,5,1982.9,122,0)
+	spawnMobile("tatooine", "sand_trooper",400,-3170.7,5,2137.7,-30,0)
+	spawnMobile("tatooine", "sand_trooper",400,-3028.33,5.01162,2616.08,294.927,0)
+	spawnMobile("tatooine", "scout_trooper",400,-2982.5,5,1956.8,73,0)
+	spawnMobile("tatooine", "scout_trooper",400,-3029.2,5,2614.8,-52,0)
+	spawnMobile("tatooine", "stormtrooper",400,-3207.39,5,2099.33,347.898,0)
+	spawnMobile("tatooine", "stormtrooper",400,-3203.5,5,2091.5,-159,0)
+	--{"stormtrooper_captain",400,-3026.34,5.10198,2618.73,289.047,0, "npc_imperial", ""},
+	--{"stormtrooper_squad_leader",400,-2979.8,5,1957.6,67,0, "npc_imperial", ""},
 	spawnMobile("tatooine", "mos_espa_police_officer",300,-3022.29,5.02759,2618.41,268.2,0)
 	spawnMobile("tatooine", "mos_espa_police_officer",300,-2976.17,5,2009.31,171.013,0)
 	spawnMobile("tatooine", "mos_espa_police_officer",300,-3023.4,5,2618.4,86,0)

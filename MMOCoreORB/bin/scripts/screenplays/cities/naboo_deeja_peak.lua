@@ -1,20 +1,20 @@
-NabooDeejaPeakWaterfallScreenPlay = ScreenPlay:new {
+NabooDeejaPeakScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 	
-	screenplayName = "NabooDeejaPeakWaterfallScreenPlay",
+	screenplayName = "NabooDeejaPeakScreenPlay",
 
 }
 
-registerScreenPlay("NabooDeejaPeakWaterfallScreenPlay", true)
+registerScreenPlay("NabooDeejaPeakScreenPlay", true)
 
-function NabooDeejaPeakWaterfallScreenPlay:start()
+function NabooDeejaPeakScreenPlay:start()
 	if (isZoneEnabled("naboo")) then
 		self:spawnMobiles()
 
 	end
 end
 
-function NabooDeejaPeakWaterfallScreenPlay:spawnMobiles()
+function NabooDeejaPeakScreenPlay:spawnMobiles()
 
 	--Screenplay needs more added.
 

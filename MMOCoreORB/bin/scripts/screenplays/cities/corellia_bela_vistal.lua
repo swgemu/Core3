@@ -1,18 +1,18 @@
-CrystalFountainBelaVistalScreenPlay = ScreenPlay:new {
+BelaVistalScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
-	screenplayName = "CrystalFountainBelaVistalScreenPlay"
+	screenplayName = "BelaVistalScreenPlay"
 }
 
-registerScreenPlay("CrystalFountainBelaVistalScreenPlay", true)
+registerScreenPlay("BelaVistalScreenPlay", true)
 
-function CrystalFountainBelaVistalScreenPlay:start()
+function BelaVistalScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
 	end
 end
 
-function CrystalFountainBelaVistalScreenPlay:spawnMobiles()
+function BelaVistalScreenPlay:spawnMobiles()
 
 	--Cantina
 	spawnMobile("corellia", "noble", 60, 5.80982, -0.894992, -5.41349, 248.205, 3375355)
@@ -46,20 +46,20 @@ function CrystalFountainBelaVistalScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "corsec_trooper", 360, 6852.5, 315, -5838.8, -24, 0) 
 	spawnMobile("corellia", "corsec_trooper", 360, 6855.7, 315, -5837.1, -34, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, 6860.3, 315, -5833.9, -57, 0)
-	spawnMobile("corellia", "crackdown_dark_trooper", 400, 6749.3, 315, -5684, 231.007, 0)
-	spawnMobile("corellia", "crackdown_dark_trooper", 400, 6718.1, 328.537, -5869.6, 186.005, 0)
-	spawnMobile("corellia", "crackdown_imperial_noncom", 400, 6663.8, 330, -5913.3, 134.004, 0)
-	spawnMobile("corellia", "crackdown_scout_trooper", 400, 6832.36, 314.758, -5811.93, 312.353, 0)
-	spawnMobile("corellia", "crackdown_storm_commando", 400, 6752.1, 315, -5823.5, 273.008, 0)
-	spawnMobile("corellia", "crackdown_storm_commando", 400, 6648.54, 330, -5939.32, 280.874, 0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400, 6852.9, 315, -5826.9, 140.004, 0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400, 6837.4, 315, -5774, 260.008, 0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400, 6819.9, 315, -5720.1, 220.006, 0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400, 6748.9, 315, -5665.2, 279.008, 0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400, 6855, 315, -5609.3, 280.008, 0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400, 6685.7, 330, -5943.3, 222.007, 0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400, 6708, 328.7, -5869.7, 166.005, 0)
-	spawnMobile("corellia", "crackdown_stormtrooper_rifleman", 400, 6845.3, 315, -5826.8, 130.004, 0)
+	spawnMobile("corellia", "dark_trooper", 400, 6749.3, 315, -5684, 231.007, 0)
+	spawnMobile("corellia", "dark_trooper", 400, 6718.1, 328.537, -5869.6, 186.005, 0)
+	spawnMobile("corellia", "imperial_noncom", 400, 6663.8, 330, -5913.3, 134.004, 0)
+	spawnMobile("corellia", "scout_trooper", 400, 6832.36, 314.758, -5811.93, 312.353, 0)
+	spawnMobile("corellia", "storm_commando", 400, 6752.1, 315, -5823.5, 273.008, 0)
+	spawnMobile("corellia", "storm_commando", 400, 6648.54, 330, -5939.32, 280.874, 0)
+	spawnMobile("corellia", "stormtrooper", 400, 6852.9, 315, -5826.9, 140.004, 0)
+	spawnMobile("corellia", "stormtrooper", 400, 6837.4, 315, -5774, 260.008, 0)
+	spawnMobile("corellia", "stormtrooper", 400, 6819.9, 315, -5720.1, 220.006, 0)
+	spawnMobile("corellia", "stormtrooper", 400, 6748.9, 315, -5665.2, 279.008, 0)
+	spawnMobile("corellia", "stormtrooper", 400, 6855, 315, -5609.3, 280.008, 0)
+	spawnMobile("corellia", "stormtrooper", 400, 6685.7, 330, -5943.3, 222.007, 0)
+	spawnMobile("corellia", "stormtrooper", 400, 6708, 328.7, -5869.7, 166.005, 0)
+	spawnMobile("corellia", "stormtrooper_rifleman", 400, 6845.3, 315, -5826.8, 130.004, 0)
 	spawnMobile("corellia", "grondom_muse", 60, 6838.16, 315, -5767.67, 266.732, 0)
 	spawnMobile("corellia", "noble",60, 6724.41, 330, -5909.35, 213.723, 0)
 	spawnMobile("corellia", "pashna", 60, 6772.57, 315, -5697.8, 245.284, 0)
@@ -98,11 +98,11 @@ function CrystalFountainBelaVistalScreenPlay:spawnMobiles()
 	--{"businessman",60,-6.56842,-0.894996,21.9012,135.001,3375361, "conversation", ""},
 	--{"bothan_information_broker",60,-5.46842,-0.894996,21.9012,180.003,3375361, "conversation", ""},
 	--{"bounty_hunter",60,21.6023,-0.894996,-18.5913,360.011,3375356, "conversation", ""},
-	--{"crackdown_stormtrooper_captain",400,6854.5,315,-5696.6,87,0, "npc_imperial", ""},
-	--{"crackdown_stormtrooper_squad_leader",400,6650.38,330,-5938.43,280.869,0, "npc_imperial", ""},
-	--{"crackdown_specialist_noncom",400,6830.18,314.823,-5816.91,187.167,0, "npc_imperial", ""},
-	--{"crackdown_imperial_army_captain",400,6820.49,315,-5743.53,353.468,0, "npc_imperial", ""},
-	--{"crackdown_imperial_army_captain",400,6832.21,315,-5811.19,189.637,0, "npc_imperial", ""},
+	--{"stormtrooper_captain",400,6854.5,315,-5696.6,87,0, "npc_imperial", ""},
+	--{"stormtrooper_squad_leader",400,6650.38,330,-5938.43,280.869,0, "npc_imperial", ""},
+	--{"specialist_noncom",400,6830.18,314.823,-5816.91,187.167,0, "npc_imperial", ""},
+	--{"imperial_army_captain",400,6820.49,315,-5743.53,353.468,0, "npc_imperial", ""},
+	--{"imperial_army_captain",400,6832.21,315,-5811.19,189.637,0, "npc_imperial", ""},
 	--{"comm_operator",60,-42.3991,0.105009,-24.3411,360.011,3375367, "conversation", ""},
 	--{"commoner",60,-42.3991,0.105009,-23.2411,180.016,3375367, "conversation", ""},
 	--{"imperial_sergeant",60,6712.78,315,-5810.38,112.467,0, "npc_imperial", ""},

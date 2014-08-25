@@ -1,3 +1,5 @@
+local ObjectManager = require("managers.object.object_manager")
+
 HyperdriveResearchFacilityScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
@@ -23,8 +25,7 @@ end
 
 function HyperdriveResearchFacilityScreenPlay:flipBase(pBuilding)
 
-	if pBuilding ~= nil then
-		local building = LuaBuildingObject(pBuilding)
+	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:destroyChildObjects()
 
 		if building:getFaction() == FACTIONIMPERIAL then
@@ -32,15 +33,14 @@ function HyperdriveResearchFacilityScreenPlay:flipBase(pBuilding)
 		elseif building:getFaction() == FACTIONREBEL then
 			self:spawnImperials(pBuilding)
 		end
-	end
+	end)
 
 	return 0
 end
 
 function HyperdriveResearchFacilityScreenPlay:spawnImperials(pBuilding)
 
-	if pBuilding ~= nil then
-		local building = LuaBuildingObject(pBuilding)
+	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONIMPERIAL)
 
 		--imperial decorations
@@ -225,13 +225,12 @@ function HyperdriveResearchFacilityScreenPlay:spawnImperials(pBuilding)
 		building:spawnChildCreature("stormtrooper_medic", 300, math.random(12) + -9.5, -20.0, math.random(12) + 65.3, math.random(360), 479836)
 		building:spawnChildCreature("stormtrooper_medic", 300, math.random(12) + -9.5, -20.0, math.random(12) + 65.3, math.random(360), 479836)
 		building:spawnChildCreature("stormtrooper_medic", 300, math.random(12) + -9.5, -20.0, math.random(12) + 65.3, math.random(360), 479836)
-	end
+	end)
 end
 
 function HyperdriveResearchFacilityScreenPlay:spawnRebels(pBuilding)
 
-	if pBuilding ~= nil then
-		local building = LuaBuildingObject(pBuilding)
+	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONREBEL)
 
 		--rebel decorations
@@ -416,5 +415,5 @@ function HyperdriveResearchFacilityScreenPlay:spawnRebels(pBuilding)
 		building:spawnChildCreature("specforce_procurement_specialist", 300, math.random(12) + -9.5, -20.0, math.random(12) + 65.3, math.random(360), 479836)
 		building:spawnChildCreature("specforce_procurement_specialist", 300, math.random(12) + -9.5, -20.0, math.random(12) + 65.3, math.random(360), 479836)
 		building:spawnChildCreature("specforce_procurement_specialist", 300, math.random(12) + -9.5, -20.0, math.random(12) + 65.3, math.random(360), 479836)
-	end
+	end)
 end
