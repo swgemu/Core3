@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_ea5de749",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/dathomir_go_to_Test.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-08-25T23:25:15Z",
+      "side": 1,
+      "message": "You need to add spies for the getScreenPlayState and other methods that Jenkins complains on. Check how I did in the encounter_Test.lua.\n\nYou also need to create a playerObject pointer and object and set that up with the director manager and the creature object function getPlayerObject. encounter_Test.lua does this as well so take a look at it.",
+      "revId": "e9e53d5ac0c35011a7d0345558ac4657e0842451",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_ca5a2350",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/sith_shadow_encounter_Test.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-08-25T23:25:15Z",
+      "side": 1,
+      "message": "Move this to the sith_shadow_intro_theater_Test.lua instead, and  the related code.",
+      "revId": "e9e53d5ac0c35011a7d0345558ac4657e0842451",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_aa57ef25",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/FsVillageAreaImplementation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-08-25T23:25:15Z",
+      "side": 1,
+      "message": "We should create an enum with all the Quests like we have in the quest_manager.lua file so that you can use that enum value instead of this magic number 78.",
+      "revId": "e9e53d5ac0c35011a7d0345558ac4657e0842451",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
