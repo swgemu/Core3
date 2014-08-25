@@ -88,7 +88,7 @@ public:
 					for (int i = 0; i < closeObjects->size(); ++i) {
 						SceneObject* scno = cast<SceneObject*>( closeObjects->get(i).get());
 
-						if (scno != player && scno->isPlayerCreature())
+						if (scno != player)
 								scno->notifyDissapear(player);
 
 					}
@@ -106,7 +106,7 @@ public:
 					for (int i = 0; i < closeObjects->size(); ++i) {
 						SceneObject* scno = cast<SceneObject*>( closeObjects->get(i).get());
 
-						if (scno != player && scno->isPlayerCreature())
+						if (scno != player)
 								scno->notifyInsert(player);
 
 					}
