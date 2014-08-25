@@ -58,7 +58,7 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	--{"commoner",60,-24,1.6,-4,337.557,1935828, "calm", "Pex (an elite storyteller vendor)"},
 
 	--Cantina
-	--{"crackdown_stormtrooper",400,48.13,0.105,2.47,248.001,2625353, "neutral", ""},
+	--{"stormtrooper",400,48.13,0.105,2.47,248.001,2625353, "neutral", ""},
 	--{"crev_bombaasa",60,45.2285,0.104999,0.017077,135.448,2625353, "calm", "Crev Bombaasa"},
 	--{"bartender",60,8.6,-0.9,0.6,90,2625355, "neutral", ""},
 	spawnMobile("corellia", "trainer_dancer", 0,16.7961,-0.894993,-10.1031,3,2625355)
@@ -216,67 +216,67 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "corsec_trooper", 300,-5058.83,21,-2579.08,135.145,0)
 
 	--Imperials Npcs outside
-	spawnMobile("corellia", "crackdown_command_security_guard", 300,-5281.9,21,-2574.6,80,0)
-	spawnMobile("corellia", "crackdown_command_security_guard", 300,-5112.1,21,-2279.3,79.0023,0)
-	spawnMobile("corellia", "crackdown_command_security_guard", 300,-5048.7,21,-2299.5,256.201,0)
-	spawnMobile("corellia", "crackdown_dark_trooper", 400,-4941.2,20.8719,-2522,214.459,0)
-	spawnMobile("corellia", "crackdown_dark_trooper", 400,-5381.8,20.7451,-2741.1,130.004,0)
-	spawnMobile("corellia", "crackdown_dark_trooper", 400,-5565.3,20.6891,-2852.06,298.056,0)
-	spawnMobile("corellia", "crackdown_dark_trooper", 400,-4975.9,20.9989,-2323.7,76.0022,0)
-	--{"crackdown_dark_trooper",400,-5347.92,21.0054,-2440.31,351.468,0, "npc_imperial", ""},
-	spawnMobile("corellia", "crackdown_elite_dark_trooper", 400,-5654.8,21.1047,-2805.7,191.006,0)
-	--{"crackdown_elite_sand_trooper",400,-5613.95,21,-2585.97,41.9991,0, "npc_imperial", ""},
-	spawnMobile("corellia", "crackdown_elite_sand_trooper", 400,-5606,21.6,-2777.2,82,0)
-	spawnMobile("corellia", "crackdown_imperial_army_captain", 400,-5298.7,21,-2545.6,32,0)
-	--{"crackdown_imperial_corporal",400,-5590.48,20.3776,-2854.51,311.192,0, "npc_imperial", ""},
-	--{"crackdown_imperial_noncom",400,-5207.41,21.425,-2247.49,237.999,0, "npc_imperial", ""},
-	spawnMobile("corellia", "crackdown_scout_trooper", 400,-5128.84,21,-2652.86,83.2245,0)
-	spawnMobile("corellia", "crackdown_scout_trooper", 400,-5208.06,21.6077,-2246.46,296.757,0)
-	spawnMobile("corellia", "crackdown_scout_trooper", 400,-5194.27,20.9887,-2653.85,274.172,0)
-	spawnMobile("corellia", "crackdown_scout_trooper", 400,-5468.4,21.1828,-2841.6,175.005,0)
-	--{"crackdown_specialist_noncom",400,-5342.53,21,-2468.78,360.011,0, "npc_imperial", ""},
-	spawnMobile("corellia", "crackdown_storm_commando", 400,-5055.1,21,-2616,137.004,0)
-	spawnMobile("corellia", "crackdown_storm_commando", 400,-5250.6,21,-2327.7,42.0012,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-4944.3,21,-2387.8,257.008,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-4945.7,21,-2383.1,249.007,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-4936.1,21,-2486.2,197.971,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5031.2,21,-2614.9,278.725,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5092.3,21,-2648.2,175.005,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5135.07,20.9878,-2659.19,86.9316,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5174.6,20.9876,-2656.7,185.005,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5212.9,20.9913,-2650.9,194.006,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5343.5,21,-2471.7,271.008,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5338.7,21,-2427.9,309.009,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5195.9,21,-2253.9,336.01,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5270.9,21,-2360.7,133.004,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5281.8,21,-2349.8,314.009,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5398.3,21,-2761.7,146.004,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5565.5,20.9967,-2842.9,340.795,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5633.8,20.9535,-2824.4,197.006,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5485.9,21,-2585.8,89.0026,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-4942.5,21,-2438.9,106.003,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5556.4,21.6,-2611.8,99.0029,0)
-	--{"crackdown_stormtrooper",400,-5112.07,21,-2248.89,97.4325,0, "npc_imperial", ""},
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5044.7,21,-2303,200.405,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5131.1,21,-2417.7,6.00023,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5301.8,21,-2572,244.007,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5306.8,21,-2561.2,247.007,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5399.6,21,-2608.8,241.007,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5396.8,21,-2614.9,251.007,0)
-	spawnMobile("corellia", "crackdown_stormtrooper", 400,-5459.6,21.2742,-2841.6,185.005,0)
-	--{"crackdown_stormtrooper_bombardier",400,-5086.49,21,-2255.77,216.35,0, "npc_imperial", ""},
-	spawnMobile("corellia", "crackdown_stormtrooper_medic", 400,-5302.1,21,-2379.2,225.007,0)
-	spawnMobile("corellia", "crackdown_stormtrooper_rifleman", 400,-5418.2,20.9379,-2799.6,243.757,0)
-	spawnMobile("corellia", "crackdown_stormtrooper_rifleman", 400,-5556.4,21.6,-2643.5,79.0023,0)
-	--{"crackdown_stormtrooper_rifleman",400,-5097.16,21,-2271.05,130.264,0, "npc_imperial", ""},
-	spawnMobile("corellia", "crackdown_stormtrooper_rifleman", 400,-5123,21,-2425.3,67.002,0)
-	spawnMobile("corellia", "crackdown_stormtrooper_rifleman", 400,-5245.9,20.9324,-2636.5,228.007,0)
-	spawnMobile("corellia", "crackdown_stormtrooper_sniper", 400,-5227.3,21,-2272.3,331.01,0)
-	spawnMobile("corellia", "crackdown_stormtrooper_sniper", 400,-5574.1,20.98,-2843.3,314.848,0)
-	spawnMobile("corellia", "crackdown_stormtrooper_sniper", 400,-4932.5,20.978,-2427.7,123.004,0)
-	--{"crackdown_stormtrooper_sniper",400,-5094.14,21,-2270.16,45.8873,0, "npc_imperial", ""},
-	--{"crackdown_stormtrooper_squad_leader",400,-5613.85,21,-2584,33.2059,0, "npc_imperial", ""},
-	--{"crackdown_stormtrooper_squad_leader",400,-5103.81,21,-2266.4,126.218,0, "npc_imperial", ""},
+	spawnMobile("corellia", "command_security_guard", 300,-5281.9,21,-2574.6,80,0)
+	spawnMobile("corellia", "command_security_guard", 300,-5112.1,21,-2279.3,79.0023,0)
+	spawnMobile("corellia", "command_security_guard", 300,-5048.7,21,-2299.5,256.201,0)
+	spawnMobile("corellia", "dark_trooper", 400,-4941.2,20.8719,-2522,214.459,0)
+	spawnMobile("corellia", "dark_trooper", 400,-5381.8,20.7451,-2741.1,130.004,0)
+	spawnMobile("corellia", "dark_trooper", 400,-5565.3,20.6891,-2852.06,298.056,0)
+	spawnMobile("corellia", "dark_trooper", 400,-4975.9,20.9989,-2323.7,76.0022,0)
+	--{"dark_trooper",400,-5347.92,21.0054,-2440.31,351.468,0, "npc_imperial", ""},
+	spawnMobile("corellia", "dark_trooper", 400,-5654.8,21.1047,-2805.7,191.006,0)
+	--{"elite_sand_trooper",400,-5613.95,21,-2585.97,41.9991,0, "npc_imperial", ""},
+	spawnMobile("corellia", "elite_sand_trooper", 400,-5606,21.6,-2777.2,82,0)
+	spawnMobile("corellia", "imperial_army_captain", 400,-5298.7,21,-2545.6,32,0)
+	--{"imperial_corporal",400,-5590.48,20.3776,-2854.51,311.192,0, "npc_imperial", ""},
+	--{"imperial_noncom",400,-5207.41,21.425,-2247.49,237.999,0, "npc_imperial", ""},
+	spawnMobile("corellia", "scout_trooper", 400,-5128.84,21,-2652.86,83.2245,0)
+	spawnMobile("corellia", "scout_trooper", 400,-5208.06,21.6077,-2246.46,296.757,0)
+	spawnMobile("corellia", "scout_trooper", 400,-5194.27,20.9887,-2653.85,274.172,0)
+	spawnMobile("corellia", "scout_trooper", 400,-5468.4,21.1828,-2841.6,175.005,0)
+	--{"specialist_noncom",400,-5342.53,21,-2468.78,360.011,0, "npc_imperial", ""},
+	spawnMobile("corellia", "storm_commando", 400,-5055.1,21,-2616,137.004,0)
+	spawnMobile("corellia", "storm_commando", 400,-5250.6,21,-2327.7,42.0012,0)
+	spawnMobile("corellia", "stormtrooper", 400,-4944.3,21,-2387.8,257.008,0)
+	spawnMobile("corellia", "stormtrooper", 400,-4945.7,21,-2383.1,249.007,0)
+	spawnMobile("corellia", "stormtrooper", 400,-4936.1,21,-2486.2,197.971,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5031.2,21,-2614.9,278.725,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5092.3,21,-2648.2,175.005,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5135.07,20.9878,-2659.19,86.9316,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5174.6,20.9876,-2656.7,185.005,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5212.9,20.9913,-2650.9,194.006,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5343.5,21,-2471.7,271.008,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5338.7,21,-2427.9,309.009,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5195.9,21,-2253.9,336.01,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5270.9,21,-2360.7,133.004,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5281.8,21,-2349.8,314.009,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5398.3,21,-2761.7,146.004,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5565.5,20.9967,-2842.9,340.795,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5633.8,20.9535,-2824.4,197.006,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5485.9,21,-2585.8,89.0026,0)
+	spawnMobile("corellia", "stormtrooper", 400,-4942.5,21,-2438.9,106.003,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5556.4,21.6,-2611.8,99.0029,0)
+	--{"stormtrooper",400,-5112.07,21,-2248.89,97.4325,0, "npc_imperial", ""},
+	spawnMobile("corellia", "stormtrooper", 400,-5044.7,21,-2303,200.405,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5131.1,21,-2417.7,6.00023,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5301.8,21,-2572,244.007,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5306.8,21,-2561.2,247.007,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5399.6,21,-2608.8,241.007,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5396.8,21,-2614.9,251.007,0)
+	spawnMobile("corellia", "stormtrooper", 400,-5459.6,21.2742,-2841.6,185.005,0)
+	--{"stormtrooper_bombardier",400,-5086.49,21,-2255.77,216.35,0, "npc_imperial", ""},
+	spawnMobile("corellia", "stormtrooper_medic", 400,-5302.1,21,-2379.2,225.007,0)
+	spawnMobile("corellia", "stormtrooper_rifleman", 400,-5418.2,20.9379,-2799.6,243.757,0)
+	spawnMobile("corellia", "stormtrooper_rifleman", 400,-5556.4,21.6,-2643.5,79.0023,0)
+	--{"stormtrooper_rifleman",400,-5097.16,21,-2271.05,130.264,0, "npc_imperial", ""},
+	spawnMobile("corellia", "stormtrooper_rifleman", 400,-5123,21,-2425.3,67.002,0)
+	spawnMobile("corellia", "stormtrooper_rifleman", 400,-5245.9,20.9324,-2636.5,228.007,0)
+	spawnMobile("corellia", "stormtrooper_sniper", 400,-5227.3,21,-2272.3,331.01,0)
+	spawnMobile("corellia", "stormtrooper_sniper", 400,-5574.1,20.98,-2843.3,314.848,0)
+	spawnMobile("corellia", "stormtrooper_sniper", 400,-4932.5,20.978,-2427.7,123.004,0)
+	--{"stormtrooper_sniper",400,-5094.14,21,-2270.16,45.8873,0, "npc_imperial", ""},
+	--{"stormtrooper_squad_leader",400,-5613.85,21,-2584,33.2059,0, "npc_imperial", ""},
+	--{"stormtrooper_squad_leader",400,-5103.81,21,-2266.4,126.218,0, "npc_imperial", ""},
 
 	--Misc Outside
 	spawnMobile("corellia", "eg6_power_droid", 60,-5605.25,21,-2721.9,155.92,0)
