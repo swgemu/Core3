@@ -969,6 +969,11 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	if (scno == _this.get())
 		return;
 
+	if (scno == followObject) {
+		setOblivious();
+		storeFollowObject();
+	}
+
 	if (scno->isPlayerCreature()) {
 		int32 newValue = (int32) numberOfPlayersInRange.decrement();
 
