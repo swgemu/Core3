@@ -42,7 +42,28 @@
 
 
 object_installation_turret_turret_tower_med = object_installation_turret_shared_turret_tower_med:new {
+	pvpStatusBitmask = ATTACKABLE,
+	optionsBitmask = 0,
+	maxCondition = 200000,
+	zoneComponent = "TurretZoneComponent",
+	dataObjectComponent = "TurretDataComponent",
+		-- Damagetypes in WeaponObject
+	vulnerability = BLAST,
 
+	-- LIGHT, MEDIUM, HEAVY
+	rating = HEAVY,
+
+	kinetic = 90,
+	energy = 95,
+	electricity = 90,
+	stun = 100,
+	blast = -1,
+	heat = 90,
+	cold = 90,
+	acid = 90,
+	lightSaber =100,
+	chanceHit = 4,
+	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
 }
 
 ObjectTemplates:addTemplate(object_installation_turret_turret_tower_med, "object/installation/turret/turret_tower_med.iff")

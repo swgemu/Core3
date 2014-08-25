@@ -2572,6 +2572,9 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object){
 	if (isDead() || isIncapacitated() || isInvisible())
 		return false;
 
+	if (getPvpStatusBitmask() == CreatureFlag::NONE)
+		return false;
+
 	if(object->getFaction() == 0 )
 		return true;
 

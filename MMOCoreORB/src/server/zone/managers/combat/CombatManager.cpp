@@ -474,9 +474,18 @@ int CombatManager::calculateTargetPostureModifier(WeaponObject* weapon, Creature
 	return accuracy;
 }
 
-int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponObject* weapon) {
-	if (attacker->isAiAgent())
+int CombatManager::getAttackerAccuracyModifier(TangibleObject* attacker, WeaponObject* weapon) {
+	if (attacker->isAiAgent()) {
 		return cast<AiAgent*>(attacker)->getChanceHit() * 100;
+	} else if (attacker->isInstallationObject()) {
+		return cast<InstallationObject*>(attacker)->getHitChance() * 100;
+	}
+
+	if (!attacker->isCreatureObject()) {
+		return 0;
+	}
+
+	CreatureObject* creoAttacker = cast<CreatureObject*>(attacker);
 
 	int attackerAccuracy = 0;
 
@@ -484,15 +493,15 @@ int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponO
 
 	for (int i = 0; i < creatureAccMods->size(); ++i) {
 		String mod = creatureAccMods->get(i);
-		attackerAccuracy += attacker->getSkillMod(mod);
-		attackerAccuracy += attacker->getSkillMod("private_" + mod);
+		attackerAccuracy += creoAttacker->getSkillMod(mod);
+		attackerAccuracy += creoAttacker->getSkillMod("private_" + mod);
 
-		if (attacker->isStanding()) {
-			attackerAccuracy += attacker->getSkillMod(mod + "_while_standing");
+		if (creoAttacker->isStanding()) {
+			attackerAccuracy += creoAttacker->getSkillMod(mod + "_while_standing");
 		}
 	}
 
-	attackerAccuracy += attacker->getSkillMod("attack_accuracy");
+	attackerAccuracy += creoAttacker->getSkillMod("attack_accuracy");
 
 	return attackerAccuracy;
 }
@@ -1105,26 +1114,37 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	return damage;
 }
 
-int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* targetCreature, WeaponObject* weapon, int damage, int accuracyBonus) {
+int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* targetCreature, WeaponObject* weapon, int damage, int accuracyBonus) {
 	int hitChance = 0;
 	int attackType = weapon->getAttackType();
+	CreatureObject* creoAttacker = NULL;
+
+	if (attacker->isCreatureObject()) {
+		creoAttacker = cast<CreatureObject*>(attacker);
+	}
 
 	//info("Calculating hit chance", true);
 
 	float weaponAccuracy = 0.0f;
 	// Get the weapon mods for range and add the mods for stance
-	weaponAccuracy = getWeaponRangeModifier(creature->getDistanceTo(targetCreature), weapon);
+	weaponAccuracy = getWeaponRangeModifier(attacker->getDistanceTo(targetCreature), weapon);
 	// accounts for steadyaim, general aim, and specific weapon aim, these buffs will clear after a completed combat action
-	if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) weaponAccuracy += creature->getSkillMod("private_aim");
-
+	if (creoAttacker != NULL) {
+		if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) weaponAccuracy += creoAttacker->getSkillMod("private_aim");
+	}
 	//info("Attacker weapon accuracy is " + String::valueOf(weaponAccuracy), true);
 
-	int attackerAccuracy = getAttackerAccuracyModifier(creature, weapon);
+	int attackerAccuracy = getAttackerAccuracyModifier(attacker, weapon);
 
 	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
 
 	// need to also add in general attack accuracy (mostly gotten from posture and states)
-	int totalBonus = getAttackerAccuracyBonus(creature, weapon);
+	int totalBonus = 0;
+
+	if (creoAttacker != NULL) {
+		totalBonus = getAttackerAccuracyBonus(creoAttacker, weapon);
+	}
+
 	totalBonus += calculateTargetPostureModifier(weapon, targetCreature);
 
 	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
@@ -1135,8 +1155,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	float accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy + accuracyBonus, totalBonus, targetDefense);
 
 	// this is the scout/ranger creature hit bonus that only works against creatures (not NPCS)
-	if (targetCreature->isCreature())
-		accTotal += creature->getSkillMod("creature_hit_bonus");
+	if (targetCreature->isCreature() && creoAttacker != NULL) {
+		accTotal += creoAttacker->getSkillMod("creature_hit_bonus");
+	}
 
 	accTotal -= targetCreature->getSkillMod("dodge_attack");
 
@@ -1206,8 +1227,6 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	return HIT;
 }
-
-
 
 float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio) {
 	int speedMod = getSpeedModifier(attacker, weapon);
@@ -2215,83 +2234,6 @@ int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObj
 	}
 
 	return resist;
-}
-
-int CombatManager::getHitChance(TangibleObject* tano, CreatureObject* targetCreature, WeaponObject* weapon, int damage, int accuracyBonus) {
-	int hitChance = 0;
-	int attackType = weapon->getAttackType();
-
-	//info("Calculating hit chance", true);
-
-	float weaponAccuracy = 0.0f;
-	// Get the weapon mods for range and add the mods for stance
-	weaponAccuracy = getWeaponRangeModifier(tano->getDistanceTo(targetCreature), weapon);
-
-	int totalBonus = 0;
-	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
-
-	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
-
-	if(tano->isTurret()){
-		totalBonus += tano->getHitChance() * 100;
-	}
-	// first (and third) argument is divided by 2, second isn't
-	float accTotal = hitChanceEquation(weaponAccuracy, totalBonus, targetDefense);
-
-	if (accTotal > 100)
-		accTotal = 100.0;
-	else if (accTotal < 0)
-		accTotal = 0;
-
-	if (System::random(100) > accTotal) // miss, just return MISS
-		return MISS;
-
-	// now we have a successful hit, so calculate secondary defenses if there is a damage component
-	if (damage > 0) {
-		targetDefense = getDefenderSecondaryDefenseModifier(targetCreature);
-
-		if (targetDefense <= 0)
-			return HIT; // no secondary defenses
-
-		ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
-		Vector<String>* defenseAccMods = targetWeapon->getDefenderSecondaryDefenseModifiers();
-		String def = defenseAccMods->get(0);
-
-		if (def == "saber_block") {
-			if ((weapon->getAttackType() == WeaponObject::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
-				return RICOCHET;
-			else return HIT;
-		}
-
-		accTotal = hitChanceEquation(weaponAccuracy , totalBonus, targetDefense);
-
-		if (accTotal > 100)
-			accTotal = 100.0;
-		else if (accTotal < 0)
-			accTotal = 0;
-
-		int cobMod = targetCreature->getSkillMod("private_center_of_being");
-
-		if (System::random(100) > accTotal || (cobMod > 0 && System::random(100) > hitChanceEquation(weaponAccuracy, totalBonus, cobMod))) { // successful secondary defense, return type of defense
-
-			// this means use defensive acuity, which mean random 1, 2, or 3
-			if (targetWeapon == NULL)
-				return System::random(2) + 1;
-
-			if (def == "block")
-				return BLOCK;
-			else if (def == "dodge")
-				return DODGE;
-			else if (def == "counterattack")
-				return COUNTER;
-			else if (def == "unarmed_passive_defense")
-				return System::random(2) + 1;
-			else // shouldn't get here
-				return HIT; // no secondary defenses available on this weapon
-		}
-	}
-
-	return HIT;
 }
 
 void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {

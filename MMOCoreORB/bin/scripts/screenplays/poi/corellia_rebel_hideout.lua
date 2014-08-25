@@ -1,8 +1,18 @@
+local ObjectManager = require("managers.object.object_manager")
+
 RebelHideoutScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
 	screenplayName = "RebelHideoutScreenPlay",
 
+	turrets = {
+		{ template = "object/installation/turret/turret_tower_large.iff", x = -6559.3, z = 404, y = 5965.1 },
+		{ template = "object/installation/turret/turret_tower_large.iff", x = -6536.3, z = 404, y = 5942.1 },
+		{ template = "object/installation/turret/turret_tower_large.iff", x = -6510.0, z = 404, y = 5931.7 },
+		{ template = "object/installation/turret/turret_tower_large.iff", x = -6474.8, z = 404, y = 5938.6 },
+		{ template = "object/installation/turret/turret_tower_large.iff", x = -6443.1, z = 404, y = 5999.0 },
+		{ template = "object/installation/turret/turret_tower_large.iff", x = -6457.1, z = 404, y = 6031.5 },
+	},
 
 }
 
@@ -13,6 +23,40 @@ function RebelHideoutScreenPlay:start()
 		self:spawnMobiles()
 		self:spawnSceneObjects()
 	end
+end
+
+function RebelHideoutScreenPlay:spawnSceneObjects()
+	for i = 1, 6, 1 do
+		local turretData = self.turrets[i]
+		local pTurret = spawnSceneObject("corellia", turretData.template, turretData.x, turretData.z, turretData.y, 0, 0.707107, 0, 0.707107, 0)
+
+		if pTurret ~= nil then
+			local turret = TangibleObject(pTurret)
+			turret:setFaction(FACTIONREBEL)
+			turret:setPvpStatusBitmask(1)
+		end
+
+		writeData(SceneObject(pTurret):getObjectID() .. ":rebel_hideout:turret_index", i)
+		createObserver(OBJECTDESTRUCTION, "RebelHideoutScreenPlay", "notifyTurretDestroyed", pTurret)
+	end
+	
+end
+
+function RebelHideoutScreenPlay:notifyTurretDestroyed(pTurret, pPlayer)
+	ObjectManager.withSceneObject(pTurret, function(turret)
+		local turretData = self.turrets[readData(turret:getObjectID() .. ":rebel_hideout:turret_index")]
+		turret:destroyObjectFromWorld()
+		createEvent(1800000, "RebelHideoutScreenPlay", "respawnTurret", pTurret)
+	end)
+	CreatureObject(pPlayer):clearCombatState(1)
+	return 0
+end
+
+function RebelHideoutScreenPlay:respawnTurret(pTurret)
+	TangibleObject(pTurret):setConditionDamage(0, false)
+	local turretData = self.turrets[readData(SceneObject(pTurret):getObjectID() .. ":rebel_hideout:turret_index")]
+	local pZone = getZoneByName("corellia")
+	SceneObject(pZone):transferObject(pTurret, -1, true)
 end
 
 function RebelHideoutScreenPlay:spawnMobiles()
@@ -259,33 +303,3 @@ function RebelHideoutScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "rebel_trooper", 300, 17.39, 1.01, -11.38, 0, 8555472)
 end
 
-function RebelHideoutScreenPlay:spawnSceneObjects()
-	
-	-- Turrets
-	local pTurret1 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6559.3, 404, 5965.1, 0, -0.707107, 0, 0.707107, 0)
-	setTurretFaction(pTurret1)
-
-	local pTurret2 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6536.3, 404, 5942.1, 0, -0.707107, 0, 0.707107, 0)
-	setTurretFaction(pTurret2)
-
-	local pTurret3 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6510.0, 404, 5931.7, 0, -0.707107, 0, 0.707107, 0)
-	setTurretFaction(pTurret3)
-
-	local pTurret4 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6474.8, 404, 5938.6, 0, 0.707107, 0, 0.707107, 0)
-	setTurretFaction(pTurret4)
-
-	local pTurret5 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6443.1, 404, 5999.0, 0, 0.707107, 0, 0.707107, 0)
-	setTurretFaction(pTurret5)
-
-	local pTurret6 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6457.1, 404, 6031.5, 0, 0.707107, 0, 0.707107, 0)
-	setTurretFaction(pTurret6)
-		
-end
-
-function setTurretFaction(pTurret)
-	if pTurret ~= nil then
-		local turret = LuaTangibleObject(pTurret)
-		turret:setFaction(FACTIONREBEL)
-		turret:setPvpStatusBitmask(1)
-	end
-end

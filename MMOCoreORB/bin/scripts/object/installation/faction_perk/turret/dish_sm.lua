@@ -64,7 +64,7 @@ object_installation_faction_perk_turret_dish_sm = object_installation_faction_pe
 	cold = 75,
 	acid = 75,
 	lightSaber =100,
-	chanceHit = 400,
+	chanceHit = 4,
 	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
 }
 

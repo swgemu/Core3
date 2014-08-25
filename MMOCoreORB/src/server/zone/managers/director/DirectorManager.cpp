@@ -266,6 +266,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "isHighestRank", isHighestRank);
 	lua_register(luaEngine->getLuaState(), "getFactionPointsCap", getFactionPointsCap);
 	lua_register(luaEngine->getLuaState(), "registerScreenPlay", registerScreenPlay);
+	lua_register(luaEngine->getLuaState(), "getZoneByName", getZoneByName);
 	lua_register(luaEngine->getLuaState(), "isZoneEnabled", isZoneEnabled);
 	lua_register(luaEngine->getLuaState(), "getContainerObjectByTemplate", getContainerObjectByTemplate);
 	lua_register(luaEngine->getLuaState(), "updateCellPermission", updateCellPermission);
@@ -2172,6 +2173,26 @@ int DirectorManager::getObjectTemplatePathByCRC(lua_State* L) {
 	uint32 crc = lua_tointeger(L, -1);
 
 	lua_pushstring(L, TemplateManager::instance()->getTemplateFile(crc).toCharArray());
+
+	return 1;
+}
+
+int DirectorManager::getZoneByName(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getZoneByName");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String zoneid = lua_tostring(L, -1);
+
+	Zone* zone = ServerCore::getZoneServer()->getZone(zoneid);
+
+	if (zone == NULL) {
+		lua_pushnil(L);
+	} else {
+		lua_pushlightuserdata(L, zone);
+	}
 
 	return 1;
 }

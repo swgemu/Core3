@@ -63,7 +63,7 @@ object_installation_faction_perk_turret_block_med = object_installation_faction_
 	cold = 80,
 	acid = 80,
 	lightSaber =100,
-	chanceHit = 400,
+	chanceHit = 4,
 	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
 }
 

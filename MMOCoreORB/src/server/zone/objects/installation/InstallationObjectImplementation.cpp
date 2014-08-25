@@ -680,26 +680,33 @@ void InstallationObjectImplementation::updateStructureStatus() {
 	}
 }
 
-bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object){
-	if( !(getPvpStatusBitmask() & CreatureFlag::ATTACKABLE) )
+bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
+	if( !(getPvpStatusBitmask() & CreatureFlag::ATTACKABLE) ) {
 		return false;
-
-	if(object->isPlayerCreature()){
-		ManagedReference<PlayerObject*> ghost = object->getPlayerObject();
-		if(ghost == NULL)
-			return false;
-
-		if(getFaction() == 0)
-			return true;
-
-		if(getPvpStatusBitmask() & CreatureFlag::OVERT){
-			if ( object->getFaction() != getFaction() && ghost->getFactionStatus() == FactionStatus::OVERT)
-					return true;
-		} else if(object->getFaction() != getFaction() && ghost->getFactionStatus() >= FactionStatus::COVERT)
-				return true;
 	}
 
-	return getPvpStatusBitmask() & CreatureFlag::ATTACKABLE;
+	if(object->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> ghost = object->getPlayerObject();
+		if(ghost == NULL) {
+			return false;
+		}
+
+		if(getFaction() == 0) {
+			return true;
+		}
+
+		if(getFaction() == object->getFaction()) {
+			return false;
+		}
+
+		if((getPvpStatusBitmask() & CreatureFlag::OVERT) && ghost->getFactionStatus() != FactionStatus::OVERT) {
+			return false;
+		} else if(!(ghost->getFactionStatus() >= FactionStatus::COVERT)) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 void InstallationObjectImplementation::createChildObjects(){
