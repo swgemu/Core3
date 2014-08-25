@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_6a79f7fb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geo_lab.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-25T00:35:12Z",
+      "side": 1,
+      "message": "These two used spawnMobileRandom() before",
+      "revId": "c1ef65590f796eaa3f9c0949ce2abdcd1f43782d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_4a7e33e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geo_lab.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-25T00:35:12Z",
+      "side": 1,
+      "message": "Don\u0027t include debug code in your commit.",
+      "revId": "c1ef65590f796eaa3f9c0949ce2abdcd1f43782d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_2a83ffcd",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geo_lab.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-25T00:35:12Z",
+      "side": 1,
+      "message": "Should we allow pets to be poisoned by it? Same question for the electro shock below.",
+      "revId": "c1ef65590f796eaa3f9c0949ce2abdcd1f43782d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_ea6cc738",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geo_lab.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-25T00:35:12Z",
+      "side": 1,
+      "message": "Why get the backpack and then not use it?",
+      "revId": "c1ef65590f796eaa3f9c0949ce2abdcd1f43782d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_ca690327",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geo_lab.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-25T00:35:12Z",
+      "side": 1,
+      "message": "Why get the backpack and then not use it?",
+      "revId": "c1ef65590f796eaa3f9c0949ce2abdcd1f43782d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
