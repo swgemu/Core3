@@ -20,8 +20,7 @@ function EmperorsRetreatScreenPlay:spawnSceneObjects()
 	spawnSceneObject("naboo", "object/tangible/terminal/terminal_elevator_down.iff", 13, 20.5, -36, 1418877, 1, 0, 0, 0)
 
 	if (elevatorUp ~= nil) then
-		local terminal = LuaSceneObject(elevatorUp)
-		terminal:setObjectMenuComponent("EmperorElevatorMenuComponent")
+		SceneObject(elevatorUp):setObjectMenuComponent("EmperorElevatorMenuComponent")
 	end
 end
 
@@ -33,25 +32,25 @@ function EmperorElevatorMenuComponent:fillObjectMenuResponse(pSceneObject, pMenu
 end
 
 function EmperorElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	local creature = LuaCreatureObject(pPlayer)
+	ObjectManager.withCreatureObject(pPlayer, function(creature)
+		if (selectedID ~= 198) or (not creature:hasScreenPlayState("imperial_theme_park", 32)) then
+			creature:sendSystemMessage("@theme_park_imperial/warning:emperor")
+			return
+		end
 
-	if (selectedID ~= 198) or (not creature:hasScreenPlayState("imperial_theme_park", 32)) then
-		creature:sendSystemMessage("@theme_park_imperial/warning:emperor")
-		return
-	end
+		local obj = SceneObject(pSceneObject)
 
-	local obj = LuaSceneObject(pSceneObject)
+		if (creature:getParent() ~= obj:getParent()) then
+			return
+		end
 
-	if (creature:getParent() ~= obj:getParent()) then
-		return
-	end
+		local z = obj:getPositionZ() + 20
+		local x = creature:getPositionX()
+		local y = creature:getPositionY()
 
-	local z = obj:getPositionZ() + 20
-	local x = creature:getPositionX()
-	local y = creature:getPositionY()
-
-	creature:playEffect("clienteffect", "elevator_ascend.cef")
-	creature:teleport(x, z, y, obj:getParentID())
+		creature:playEffect("clienteffect", "elevator_ascend.cef")
+		creature:teleport(x, z, y, obj:getParentID())
+	end)
 end
 
 function EmperorsRetreatScreenPlay:setMoodString(pNpc, mood)
