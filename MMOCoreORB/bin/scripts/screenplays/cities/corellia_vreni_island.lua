@@ -1,19 +1,19 @@
-GrandTheaterVreniScreenPlay = ScreenPlay:new {
+VreniIslandScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 	
-	screenplayName = "GrandTheaterVreniScreenPlay",
+	screenplayName = "VreniIslandScreenPlay",
 	
 }
 
-registerScreenPlay("GrandTheaterVreniScreenPlay", true)
+registerScreenPlay("VreniIslandScreenPlay", true)
 
-function GrandTheaterVreniScreenPlay:start()
+function VreniIslandScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
 	end
 end
 
-function GrandTheaterVreniScreenPlay:spawnMobiles()
+function VreniIslandScreenPlay:spawnMobiles()
 
 	spawnMobile("corellia", "businessman",60,-5428.59,24.1812,-6228.31,140.458,0)
 	spawnMobile("corellia", "cll8_binary_load_lifter",60,-5696,14.6,-6154.2,75,0)
@@ -34,20 +34,20 @@ function GrandTheaterVreniScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "corsec_investigator",300,8.4,1.0,10.8,-172,2775413)
 	spawnMobile("corellia", "corsec_detective",300,8.2,1.0,8.7,7,2775413)
 	spawnMobile("corellia", "corsec_master_sergeant",300,24.9055,1.28309,6.41569,180.019,2775414)
-	spawnMobile("corellia", "crackdown_rebel_guardsman",300,-5538.4,16.4902,-6054.7,182.005,0)
-	spawnMobile("corellia", "crackdown_rebel_cadet",300,-5533.2,23.4,-6202.2,46,0)
-	spawnMobile("corellia", "crackdown_rebel_command_security_guard",300,-5405,25,-6220,37,0)
-	spawnMobile("corellia", "crackdown_rebel_guardsman",300,-5534.1,23.4,-6217.9,138.004,0)
-	spawnMobile("corellia", "crackdown_rebel_liberator",300,-5549.5,23.4,-6202.1,310.009,0)
-	spawnMobile("corellia", "crackdown_rebel_comm_operator",300,-5549,23.4,-6217.8,-139,0)
-	spawnMobile("corellia", "crackdown_rebel_guardsman",300,-5429.8,24,-6218.9,0,0)
-	spawnMobile("corellia", "crackdown_rebel_guard_captain",300,-5411.4,24.9599,-6219.3,5.00012,0)
-	spawnMobile("corellia", "crackdown_rebel_soldier",300,-5398,24.2,-6242.9,81,0)
-	spawnMobile("corellia", "crackdown_rebel_soldier",300,-5443.6,24,-6243,282.008,0)
-	spawnMobile("corellia", "crackdown_rebel_soldier",300,-5716.1,14.6,-6153.1,269.008,0)
-	spawnMobile("corellia", "crackdown_rebel_liberator",300,-5716.1,14.6,-6147.5,271.008,0)
-	spawnMobile("corellia", "crackdown_rebel_soldier",300,-5664,14.6,-6179.3,94.0028,0)
-	spawnMobile("corellia", "crackdown_rebel_guardsman",300,-5664,14.7566,-6185.3,94.0028,0)
+	spawnMobile("corellia", "rebel_specforce_pathfinder",300,-5538.4,16.4902,-6054.7,182.005,0)
+	spawnMobile("corellia", "specforce_master_sergeant",300,-5533.2,23.4,-6202.2,46,0)
+	spawnMobile("corellia", "specforce_technician",300,-5405,25,-6220,37,0)
+	spawnMobile("corellia", "rebel_specforce_pathfinder",300,-5534.1,23.4,-6217.9,138.004,0)
+	spawnMobile("corellia", "specforce_infiltrator",300,-5549.5,23.4,-6202.1,310.009,0)
+	spawnMobile("corellia", "specforce_procurement_specialist",300,-5549,23.4,-6217.8,-139,0)
+	spawnMobile("corellia", "rebel_specforce_pathfinder",300,-5429.8,24,-6218.9,0,0)
+	spawnMobile("corellia", "rebel_specforce_captain",300,-5411.4,24.9599,-6219.3,5.00012,0)
+	spawnMobile("corellia", "specforce_marine",300,-5398,24.2,-6242.9,81,0)
+	spawnMobile("corellia", "specforce_marine",300,-5443.6,24,-6243,282.008,0)
+	spawnMobile("corellia", "specforce_marine",300,-5716.1,14.6,-6153.1,269.008,0)
+	spawnMobile("corellia", "specforce_infiltrator",300,-5716.1,14.6,-6147.5,271.008,0)
+	spawnMobile("corellia", "specforce_marine",300,-5664,14.6,-6179.3,94.0028,0)
+	spawnMobile("corellia", "rebel_specforce_pathfinder",300,-5664,14.7566,-6185.3,94.0028,0)
 	spawnMobile("corellia", "eg6_power_droid",60,-5690.7,14.6,-6154.2,-87,0)
 	spawnMobile("corellia", "eg6_power_droid",60,-5692.65,14.6,-6151.28,179.632,0)
 	spawnMobile("corellia", "farmer",60,-22.5021,1.6,4.63468,179.972,2775415)

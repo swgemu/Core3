@@ -1,3 +1,5 @@
+local ObjectManager = require("managers.object.object_manager")
+
 TalusWeaponsDepotScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
@@ -39,8 +41,7 @@ end
 
 function TalusWeaponsDepotScreenPlay:flipBase(pBuilding)
 
-	if pBuilding ~= nil then
-		local building = LuaBuildingObject(pBuilding)
+	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:destroyChildObjects()
 
 		if building:getFaction() == FACTIONIMPERIAL then
@@ -48,15 +49,14 @@ function TalusWeaponsDepotScreenPlay:flipBase(pBuilding)
 		elseif building:getFaction() == FACTIONREBEL then
 			self:spawnImperials(pBuilding)
 		end
-	end
+	end)
 
 	return 0
 end
 
 function TalusWeaponsDepotScreenPlay:spawnImperials(pBuilding)
 
-	if pBuilding ~= nil then
-		local building = LuaBuildingObject(pBuilding)
+	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONIMPERIAL)
 
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_imperial.iff", 25.3, -12.0, 29.0, 9686140, .7, 0, .7, 0)
@@ -82,13 +82,12 @@ function TalusWeaponsDepotScreenPlay:spawnImperials(pBuilding)
 		building:spawnChildCreature("talus", "imperial_medic", 300, 9.6, -12.0, 62.9, 85, 9686144)
 		building:spawnChildCreature("talus", "imperial_corporal", 300, -2.4, -12.0, 62.0, -90, 9686144)
 		building:spawnChildCreature("talus", "imperial_warrant_officer_i", 300, -3.5, -12.0, 73.6, 90, 9686144)
-	end
+	end)
 end
 
 function TalusWeaponsDepotScreenPlay:spawnRebels(pBuilding)
 
-	if pBuilding ~= nil then
-		local building = LuaBuildingObject(pBuilding)
+	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONREBEL)
 
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_rebel.iff", 25.3, -12.0, 29.0, 9686140, .7, 0, .7, 0)
@@ -114,5 +113,5 @@ function TalusWeaponsDepotScreenPlay:spawnRebels(pBuilding)
 		building:spawnChildCreature("talus", "rebel_medic", 300, 10.1, -12.0, 53.6, -29, 9686144)
 		building:spawnChildCreature("talus", "rebel_corporal", 300, 9.7, -12.0, 71.0, 90, 9686144)
 		building:spawnChildCreature("talus", "rebel_warrant_officer_i", 300, -3.3, -12.0, 72.1, 73, 9686144)
-	end
+	end)
 end

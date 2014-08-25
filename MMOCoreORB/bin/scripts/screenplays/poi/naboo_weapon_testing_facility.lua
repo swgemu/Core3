@@ -1,3 +1,5 @@
+local ObjectManager = require("managers.object.object_manager")
+
 WeaponFacilityScreenPlay = ScreenPlay:new {
         numberOfActs = 1,
 
@@ -21,8 +23,7 @@ end
 
 function WeaponFacilityScreenPlay:flipBase(pBuilding)
 
-	if pBuilding ~= nil then
-		local building = LuaBuildingObject(pBuilding)
+	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:destroyChildObjects()
 
 		if building:getFaction() == FACTIONIMPERIAL then
@@ -30,15 +31,14 @@ function WeaponFacilityScreenPlay:flipBase(pBuilding)
 		elseif building:getFaction() == FACTIONREBEL then
 			self:spawnImperials(pBuilding)
 		end
-	end
+	end)
 
 	return 0
 end
 
 function WeaponFacilityScreenPlay:spawnImperials(pBuilding)
 
-	if pBuilding ~= nil then
-		local building = LuaBuildingObject(pBuilding)
+	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONIMPERIAL)
 
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_imperial.iff", 6.7, -12.0, 41.4, 6335643, 1, 0, 0, 0)
@@ -223,13 +223,12 @@ function WeaponFacilityScreenPlay:spawnImperials(pBuilding)
         	building:spawnChildCreature("dark_trooper", 300, 20.8, -20.0, 131.3, 88, 6335651)
         	building:spawnChildCreature("dark_trooper", 300, 17.6, -20.0, 125.0, 90, 6335651)
         	building:spawnChildCreature("stormtrooper", 300, 23.5, -20.0, 125.1, -89, 6335651)
-	end
+	end)
 end
 
 function WeaponFacilityScreenPlay:spawnRebels(pBuilding)
 
-	if pBuilding ~= nil then
-		local building = LuaBuildingObject(pBuilding)
+	ObjectManager.withBuildingObject(pBuilding, function(building)
 		building:initializeStaticGCWBase(FACTIONREBEL)
 
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_rebel.iff", 6.7, -12.0, 41.4, 6335643, 1, 0, 0, 0)
@@ -414,5 +413,5 @@ function WeaponFacilityScreenPlay:spawnRebels(pBuilding)
         	building:spawnChildCreature("senior_specforce_infiltrator", 300, 32.8, -20.0, 125.4, 38, 6335651)
         	building:spawnChildCreature("senior_specforce_infiltrator", 300, 26.7, -20.0, 131.9, -40, 6335651)
         	building:spawnChildCreature("specforce_marine", 300, 19.6, -20.0, 136.9, 156, 6335651)
-	end
+	end)
 end
