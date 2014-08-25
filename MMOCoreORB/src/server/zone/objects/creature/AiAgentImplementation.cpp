@@ -969,6 +969,24 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	if (scno == _this.get())
 		return;
 
+	if (scno == followObject) {
+		class SetObliviousTask : public Task {
+			ManagedReference<AiAgent*> ai;
+
+		public:
+			SetObliviousTask(AiAgent* mob) : ai(mob) {}
+
+			void run() {
+				Locker locker(ai);
+				ai->setOblivious();
+				ai->storeFollowObject();
+			}
+		};
+
+		SetObliviousTask* task = new SetObliviousTask(_this.get().get());
+		task->execute();
+	}
+
 	if (scno->isPlayerCreature()) {
 		int32 newValue = (int32) numberOfPlayersInRange.decrement();
 
