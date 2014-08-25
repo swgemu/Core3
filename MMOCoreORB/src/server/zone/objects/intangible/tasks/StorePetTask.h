@@ -32,8 +32,8 @@ public:
 
 		pet->setPosture(CreaturePosture::UPRIGHT, true);
 		pet->clearCombatState(true);
-		pet->setTargetObject(NULL);
-		pet->setFollowObject(NULL);
+		pet->setOblivious();
+		pet->storeFollowObject();
 		pet->destroyObjectFromWorld(true);
 
 		pet->setCreatureLink(NULL);

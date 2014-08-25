@@ -506,9 +506,11 @@ class AiAgent extends CreatureObject {
 	public native boolean isAggressiveTo(CreatureObject object);
 	
 	public void setOblivious() {
-		followState = OBLIVIOUS;
-		setTargetObject(null);
-		//activateMovementEvent();
+		synchronized (targetMutex) {
+			followState = OBLIVIOUS;
+			setTargetObject(null);
+			//activateMovementEvent();
+		}
 	}
 	
 	public void setWatchObject(SceneObject obj) {
