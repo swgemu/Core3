@@ -270,8 +270,8 @@ function NymContainerComponent:transferObject(pContainer, pObj, slot)
 					questStateValue = 4
 				end
 			end
-			local containerSceo = SceneObject(pContainer)
-			if (containerSceo:getObjectName() ~= "nym") and (containerSceo:getTemplateObjectPath() ~= questObjectPath) then
+			local objectSceo = SceneObject(pObj)
+			if (containerSceo:getObjectName() ~= "nym") and (objectSceo:getTemplateObjectPath() ~= questObjectPath) then
 				spatialChat(pContainer, wrongItemMsg)
 			else
 				local objectSceo = SceneObject(pObj)
