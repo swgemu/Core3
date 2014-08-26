@@ -27,26 +27,24 @@ function TreasureMapMenuComponent:handleObjectMenuSelect(pObject, pPlayer, selec
 	end
 
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creature, player)
-		return ObjectManager.withSceneObject(pObject, function(object)
-			if (object:isASubChildOf(pPlayer) == false) then
-				creature:sendSystemMessage("@treasure_map/treasure_map:sys_not_in_inv") -- The treasure map must be in your inventory for you to use it!
-				return 0
-			end
-
-			if (TreasureMapMenuComponent:getMapType(pObject) == 0) then
-				creature:sendSystemMessage("@treasure_map/treasure_map:map_fail") -- This map is obviously a fake.
-				return 0
-			end
-
-			if (selectedID == 120) then
-				TreasureMapMenuComponent:doReadMap(pObject, pPlayer)
-			elseif (selectedID == 121) then
-				TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
-			elseif (selectedID == 122) then
-				TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
-			end
+		if (SceneObject(pObject):isASubChildOf(pPlayer) == false) then
+			creature:sendSystemMessage("@treasure_map/treasure_map:sys_not_in_inv") -- The treasure map must be in your inventory for you to use it!
 			return 0
-		end)
+		end
+
+		if (TreasureMapMenuComponent:getMapType(pObject) == 0) then
+			creature:sendSystemMessage("@treasure_map/treasure_map:map_fail") -- This map is obviously a fake.
+			return 0
+		end
+
+		if (selectedID == 120) then
+			TreasureMapMenuComponent:doReadMap(pObject, pPlayer)
+		elseif (selectedID == 121) then
+			TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
+		elseif (selectedID == 122) then
+			TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
+		end
+		return 0
 	end)
 end
 
@@ -71,9 +69,7 @@ function TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
 			local pWaypoint = getSceneObject(waypointID)
 
 			local pActiveArea = getSceneObject(searchAreaID)
-			ObjectManager.withSceneObject(pActiveArea, function(area)
-				area:destroyObjectFromWorld()
-			end)
+			SceneObject(pActiveArea):destroyObjectFromWorld()
 
 			local spawnPoint
 			ObjectManager.withSceneObject(pWaypoint, function(waypoint)
@@ -98,87 +94,76 @@ end
 
 function TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
 	local mapType = TreasureMapMenuComponent:getMapType(pObject)
-	ObjectManager.withSceneObject(pPlayer, function(playerSceo)
-		ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creature, player)
-			local mapData = treasureMapData[mapType]
-			local waypointID = readData(creature:getObjectID() .. ":treasureMapExactWaypointID")
-			local x, z, y
+	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creature, player)
+		local mapData = treasureMapData[mapType]
+		local waypointID = readData(creature:getObjectID() .. ":treasureMapExactWaypointID")
+		local x, z, y
 
-			local pWaypoint = getSceneObject(waypointID)
-			ObjectManager.withSceneObject(pWaypoint, function(waypoint)
-				x = waypoint:getWorldPositionX()
-				y = waypoint:getWorldPositionY()
-				z = getTerrainHeight(pPlayer, x, y)
-			end)
-
-			if (playerSceo:getDistanceToPosition(x, z, y) > 5) then
-				creature:sendSystemMessage("@treasure_map/treasure_map:sys_dist_far") -- You aren't close enough to extract the treasure.
-				return 0
-			end
-
-			local treasureChestID = readData(creature:getObjectID() .. ":treasureChestID")
-			
-			if (treasureChestID ~= nil) then
-				local pExistingChest = getSceneObject(treasureChestID)
-				if (pExistingChest ~= nil) then
-					self:removeTreasureChest(pExistingChest)
-				end
-			end
-
-			creature:sendSystemMessage("@treasure_map/treasure_map:sys_found") -- You successfully extract the treasure!
-
-			local pChest = spawnSceneObject(mapData.planet, "object/tangible/container/drum/treasure_drum.iff", x, z, y, 0, 0, 0, 0, 0)
-			ObjectManager.withSceneObject(pChest, function(chest)
-				writeData(creature:getObjectID() .. ":treasureChestID", chest:getObjectID())
-				writeData(chest:getObjectID() .. ":ownerID", creature:getObjectID())
-				chest:setContainerOwnerID(creature:getObjectID())
-				createObserver(OPENCONTAINER, "TreasureMapMenuComponent", "openChestEvent", pChest)
-				createObserver(CONTAINERCONTENTSCHANGED, "TreasureMapMenuComponent", "chestLootedEvent", pChest)
-				TreasureMapMenuComponent:spawnTreasureLoot(pChest, pPlayer, mapType)
-				createEvent(TREASURE_CHEST_LIFESPAN, "TreasureMapMenuComponent", "removeTreasureChest", pChest)
-			end)
-			TreasureMapMenuComponent:spawnTreasureDefenders(pObject, pPlayer, x, z, y)
-			ObjectManager.withSceneObject(pObject, function(map)
-				map:destroyObjectFromWorld()
-				map:destroyObjectFromDatabase(true)
-			end)
+		local pWaypoint = getSceneObject(waypointID)
+		ObjectManager.withSceneObject(pWaypoint, function(waypoint)
+			x = waypoint:getWorldPositionX()
+			y = waypoint:getWorldPositionY()
+			z = getTerrainHeight(pPlayer, x, y)
 		end)
+
+		if (SceneObject(pPlayer):getDistanceToPosition(x, z, y) > 5) then
+			creature:sendSystemMessage("@treasure_map/treasure_map:sys_dist_far") -- You aren't close enough to extract the treasure.
+			return 0
+		end
+
+		local treasureChestID = readData(creature:getObjectID() .. ":treasureChestID")
+
+		if (treasureChestID ~= nil) then
+			local pExistingChest = getSceneObject(treasureChestID)
+			if (pExistingChest ~= nil) then
+				self:removeTreasureChest(pExistingChest)
+			end
+		end
+
+		creature:sendSystemMessage("@treasure_map/treasure_map:sys_found") -- You successfully extract the treasure!
+
+		local pChest = spawnSceneObject(mapData.planet, "object/tangible/container/drum/treasure_drum.iff", x, z, y, 0, 0, 0, 0, 0)
+		ObjectManager.withSceneObject(pChest, function(chest)
+			writeData(creature:getObjectID() .. ":treasureChestID", chest:getObjectID())
+			writeData(chest:getObjectID() .. ":ownerID", creature:getObjectID())
+			chest:setContainerOwnerID(creature:getObjectID())
+			createObserver(OPENCONTAINER, "TreasureMapMenuComponent", "openChestEvent", pChest)
+			createObserver(CONTAINERCONTENTSCHANGED, "TreasureMapMenuComponent", "chestLootedEvent", pChest)
+			TreasureMapMenuComponent:spawnTreasureLoot(pChest, pPlayer, mapType)
+			createEvent(TREASURE_CHEST_LIFESPAN, "TreasureMapMenuComponent", "removeTreasureChest", pChest)
+		end)
+		TreasureMapMenuComponent:spawnTreasureDefenders(pObject, pPlayer, x, z, y)
+		SceneObject(pObject):destroyObjectFromWorld()
+		SceneObject(pObject):destroyObjectFromDatabase(true)
 	end)
 end
 
 function TreasureMapMenuComponent:chestLootedEvent(pChest, pCreature)
-	ObjectManager.withSceneObject(pChest, function(chest)
-		if (chest:getContainerObjectsSize() == 0) then
-			TreasureMapMenuComponent:removeTreasureChest(pChest)
-		end
-	end)
+	if (SceneObject(pChest):getContainerObjectsSize() == 0) then
+		TreasureMapMenuComponent:removeTreasureChest(pChest)
+	end
 end
 
 function TreasureMapMenuComponent:openChestEvent(pChest, pCreature)
-	ObjectManager.withSceneObject(pChest, function(chest)
-		ObjectManager.withCreatureObject(pCreature, function(creature)
-			local chestOwnerID = readData(chest:getObjectID() .. ":ownerID")
-			if (chestOwnerID ~= creature:getObjectID()) then
-				creature:sendSystemMessage("@treasure_map/treasure_map:sys_not_yours") -- That treasure chest doesn't belong to you.
-				return 0
-			end
-			local hasOpenedChest = readData(creature:getObjectID() .. ":hasOpenedChest")
-			if (hasOpenedChest ~= 1) then
-				local credits = getRandomNumber(500, 5000)
-				creature:addCashCredits(credits, true)
-				creature:sendSystemMessage("You find " .. credits .. " credits in the chest.")
-				writeData(creature:getObjectID() .. ":hasOpenedChest", 1)
-			end
-		end)
+	ObjectManager.withCreatureObject(pCreature, function(creature)
+		local chestOwnerID = readData(SceneObject(pChest):getObjectID() .. ":ownerID")
+		if (chestOwnerID ~= creature:getObjectID()) then
+			creature:sendSystemMessage("@treasure_map/treasure_map:sys_not_yours") -- That treasure chest doesn't belong to you.
+			return 0
+		end
+		local hasOpenedChest = readData(creature:getObjectID() .. ":hasOpenedChest")
+		if (hasOpenedChest ~= 1) then
+			local credits = getRandomNumber(500, 5000)
+			creature:addCashCredits(credits, true)
+			creature:sendSystemMessage("You find " .. credits .. " credits in the chest.")
+			writeData(creature:getObjectID() .. ":hasOpenedChest", 1)
+		end
 	end)
 end
 
 function TreasureMapMenuComponent:spawnTreasureLoot(pChest, pPlayer, mapType)
 	if (mapType == 1 or mapType == 2 or mapType == 3) then
-		local playerLevelRange = 10
-		ObjectManager.withCreatureObject(pPlayer, function(creature)
-			playerLevelRange = getRandomNumber(creature:getLevel() - 5, creature:getLevel() + 5)
-		end)
+		local playerLevelRange = getRandomNumber(CreatureObject(pPlayer):getLevel() - 5, CreatureObject(pPlayer):getLevel() + 5)
 
 		for i = 1, 5 do
 			createLoot(pChest, "treasure_map_group", playerLevelRange, false)
@@ -290,12 +275,8 @@ function TreasureMapMenuComponent:spawnSearchArea(mapType, pCreature, x, y)
 	local z = getTerrainHeight(pCreature, x, y)
 	local pActiveArea = spawnSceneObject(mapData.planet, "object/active_area.iff", x, z, y, 0, 0, 0, 0, 0)
 
-	ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-		activeArea:setRadius(64)
-	end)
-	return ObjectManager.withSceneObject(pActiveArea, function(activeSceo)
-		return activeSceo:getObjectID()
-	end)
+	ActiveArea(pActiveArea):setRadius(64)
+	return SceneObject(pActiveArea):getObjectID()
 end
 
 function TreasureMapMenuComponent:getMapType(pObject)

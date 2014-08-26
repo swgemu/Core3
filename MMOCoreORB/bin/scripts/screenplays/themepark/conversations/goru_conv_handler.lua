@@ -26,9 +26,7 @@ function GoruConvoHandler:runScreenHandlers(conversationTemplate, conversingPlay
 			local pItemCheck = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/quest_item_goru_calling_card.iff", true)
 			if pItemCheck == nil then
 				local pItem = giveItem(pInventory, "object/tangible/loot/quest/quest_item_goru_calling_card.iff", -1)
-				ObjectManager.withSceneObject(pItem, function(item)
-					item:sendTo(conversingPlayer)
-				end)
+				SceneObject(pItem):sendTo(conversingPlayer)
 			end
 		elseif screenID == "fine_quit_then" or screenID == "go_away_then" then
 			self.themePark:removeState(player, 1, "zicx_bug_bomb_goruNpc")
@@ -37,20 +35,16 @@ function GoruConvoHandler:runScreenHandlers(conversationTemplate, conversingPlay
 			local pInventory = player:getSlottedObject("inventory")
 			local pItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/quest_item_goru_calling_card.iff", true)
 			if pItem ~= nil then
-				ObjectManager.withSceneObject(pItem, function(item)
-					item:destroyObjectFromWorld()
-					item:destroyObjectFromDatabase()
-				end)
+				SceneObject(pItem):destroyObjectFromWorld()
+				SceneObject(pItem):destroyObjectFromDatabase()
 			end
 		elseif screenID == "heres_your_bomb" then
-				local pInventory = player:getSlottedObject("inventory")
-				local pItem = giveItem(pInventory, "object/weapon/ranged/grenade/grenade_bug_bomb.iff", -1)
-				if (pItem ~= nil) then
-					ObjectManager.withSceneObject(pItem, function(item)
-						item:sendTo(conversingPlayer)
-					end)
-				end
-				self.themePark:setState(player, 8, "zicx_bug_bomb_goruNpc")
+			local pInventory = player:getSlottedObject("inventory")
+			local pItem = giveItem(pInventory, "object/weapon/ranged/grenade/grenade_bug_bomb.iff", -1)
+			if (pItem ~= nil) then
+				SceneObject(pItem):sendTo(conversingPlayer)
+			end
+			self.themePark:setState(player, 8, "zicx_bug_bomb_goruNpc")
 		end
 		return conversationScreen
 	end)
