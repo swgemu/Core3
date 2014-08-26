@@ -260,13 +260,9 @@ end
 function NymConvoHandler:cellPlayerPermissionsObserver(pCreature, pCreature2)
 	return ObjectManager.withSceneObject(pCreature, function(creatureSceneObject)
 		if creatureSceneObject:isCreatureObject() then
-			return ObjectManager.withSceneObject(pRegion, function(region)
-				for i = 1, # self.themePark.permissionMap, 1 do
-					if self.themePark.permissionMap[i].regionName == region:getObjectName() then
-						self.themePark:setCellPermissions(self.themePark.permissionMap[i], pCreature)
-					end
-				end
-			end)
+			for i = 1, # self.themePark.permissionMap, 1 do
+				self.themePark:setCellPermissions(self.themePark.permissionMap[i], pCreature)
+			end
 		end
 		return 0
 	end)
