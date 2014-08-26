@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_dalyrake_deed = object_tangible_deed_pet_deed_shar
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/dalyrake_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/dalyrake_hue.iff",
+	mobileTemplate = "dalyrake_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_dalyrake_deed, "object/tangible/deed/pet_deed/dalyrake_deed.iff")

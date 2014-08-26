@@ -723,13 +723,10 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 					} else
 						alm->insertAttribute("spec_atk_2", " ---");
 				}
-				CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
-				if (creatureTemplate != NULL) {
-					if (creatureTemplate->getWeapons().size() > 0)
-						alm->insertAttribute("dna_comp_ranged_attack", "Yes");
-					else
-						alm->insertAttribute("dna_comp_ranged_attack", "No");
-				} else
+				// TODO set this up to check for the actual ranged weapon
+				if (pet->hasRangedWeapon())
+					alm->insertAttribute("dna_comp_ranged_attack", "Yes");
+				else
 					alm->insertAttribute("dna_comp_ranged_attack", "No");
 			}
 		}

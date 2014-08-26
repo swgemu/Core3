@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_graul_deed = object_tangible_deed_pet_deed_shared_
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/graul_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/graul_hue.iff",
+	mobileTemplate = "graul_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_graul_deed, "object/tangible/deed/pet_deed/graul_deed.iff")

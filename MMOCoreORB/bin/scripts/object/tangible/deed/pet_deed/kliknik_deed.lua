@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_kliknik_deed = object_tangible_deed_pet_deed_share
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/kliknik_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/kliknik_hue.iff",
+	mobileTemplate = "kliknik_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_kliknik_deed, "object/tangible/deed/pet_deed/kliknik_deed.iff")

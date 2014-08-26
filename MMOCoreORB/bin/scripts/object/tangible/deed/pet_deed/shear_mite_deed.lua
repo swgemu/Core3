@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_shear_mite_deed = object_tangible_deed_pet_deed_sh
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/shear_mite_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/shear_mite_hue.iff",
+	mobileTemplate = "shear_mite_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_shear_mite_deed, "object/tangible/deed/pet_deed/shear_mite_deed.iff")

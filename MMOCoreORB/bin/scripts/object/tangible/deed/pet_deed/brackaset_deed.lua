@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_brackaset_deed = object_tangible_deed_pet_deed_sha
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/brackaset_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/brackaset_hue.iff",
+	mobileTemplate = "brackaset_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_brackaset_deed, "object/tangible/deed/pet_deed/brackaset_deed.iff")

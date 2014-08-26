@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_boar_wolf_deed = object_tangible_deed_pet_deed_sha
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/boar_wolf_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/boar_wolf_hue.iff",
+	mobileTemplate = "boar_wolf_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_boar_wolf_deed, "object/tangible/deed/pet_deed/boar_wolf_deed.iff")

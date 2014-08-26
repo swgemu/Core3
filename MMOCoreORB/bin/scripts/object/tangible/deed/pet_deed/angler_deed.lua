@@ -53,6 +53,11 @@ object_tangible_deed_pet_deed_angler_deed = object_tangible_deed_pet_deed_shared
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/angler_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/angler_hue.iff",
+	mobileTemplate = "angler_be",	
+	
+	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_angler_deed, "object/tangible/deed/pet_deed/angler_deed.iff")

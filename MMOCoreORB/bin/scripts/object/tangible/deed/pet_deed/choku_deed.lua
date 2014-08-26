@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_choku_deed = object_tangible_deed_pet_deed_shared_
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/choku_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/choku_hue.iff",
+	mobileTemplate = "choku_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_choku_deed, "object/tangible/deed/pet_deed/choku_deed.iff")

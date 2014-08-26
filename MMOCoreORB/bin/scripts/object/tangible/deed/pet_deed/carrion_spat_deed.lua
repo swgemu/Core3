@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_carrion_spat_deed = object_tangible_deed_pet_deed_
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/carrion_spat_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/carrion_spat_hue.iff",
+	mobileTemplate = "carrion_spat_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_carrion_spat_deed, "object/tangible/deed/pet_deed/carrion_spat_deed.iff")

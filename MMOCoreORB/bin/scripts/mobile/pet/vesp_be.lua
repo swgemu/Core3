@@ -3,7 +3,7 @@ vesp_be = Creature:new {
 	socialGroup = "vesp",
 	pvpFaction = "",
 	faction = "",
-	level = 1,
+	level = 15,
 	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
@@ -28,7 +28,7 @@ vesp_be = Creature:new {
 
 	templates = {"object/mobile/vesp.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
 	}

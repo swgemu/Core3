@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_cu_pa = object_draft_schematic_bio_engineer_creature_shared_creature_cu_pa:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Cu Pa",
 

@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_guf_drolg = object_draft_schematic_bio_engineer_creature_shared_creature_guf_drolg:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Guf Drolg",
 

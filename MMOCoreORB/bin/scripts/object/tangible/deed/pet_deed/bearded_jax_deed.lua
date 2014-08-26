@@ -53,6 +53,9 @@ object_tangible_deed_pet_deed_bearded_jax_deed = object_tangible_deed_pet_deed_s
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/bearded_jax_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/bearded_jax_hue.iff",
+	mobileTemplate = "bearded_jax_be",
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_bearded_jax_deed, "object/tangible/deed/pet_deed/bearded_jax_deed.iff")

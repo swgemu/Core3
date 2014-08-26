@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_fambaa_deed = object_tangible_deed_pet_deed_shared
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/fambaa_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/fambaa_hue.iff",
+	mobileTemplate = "fambaa_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_fambaa_deed, "object/tangible/deed/pet_deed/fambaa_deed.iff")

@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_dewback_deed = object_tangible_deed_pet_deed_share
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/dewback_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/dewback_hue.iff",
+	mobileTemplate = "dewback_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_dewback_deed, "object/tangible/deed/pet_deed/dewback_deed.iff")

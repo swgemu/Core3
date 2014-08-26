@@ -3,7 +3,7 @@ squall_be = Creature:new {
 	socialGroup = "squall",
 	pvpFaction = "",
 	faction = "",
-	level = 1,
+	level = 2,
 	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
@@ -28,7 +28,7 @@ squall_be = Creature:new {
 
 	templates = {"object/mobile/squall_hue.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
 	}

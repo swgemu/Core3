@@ -3,7 +3,7 @@ kimogila_be = Creature:new {
 	socialGroup = "kimogila",
 	pvpFaction = "",
 	faction = "",
-	level = 1,
+	level = 40,
 	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
@@ -28,7 +28,7 @@ kimogila_be = Creature:new {
 
 	templates = {"object/mobile/kimogila_hue.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
 	}

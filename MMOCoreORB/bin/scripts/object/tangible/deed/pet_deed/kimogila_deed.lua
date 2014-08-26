@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_kimogila_deed = object_tangible_deed_pet_deed_shar
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/kimogila_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/kimogila_hue.iff",
+	mobileTemplate = "kimogila_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_kimogila_deed, "object/tangible/deed/pet_deed/kimogila_deed.iff")

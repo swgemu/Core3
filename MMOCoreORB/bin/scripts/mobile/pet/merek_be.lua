@@ -3,7 +3,7 @@ merek_be = Creature:new {
 	socialGroup = "merek",
 	pvpFaction = "",
 	faction = "",
-	level = 1,
+	level = 25,
 	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
@@ -28,7 +28,7 @@ merek_be = Creature:new {
 
 	templates = {"object/mobile/merek_hue.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
 	}

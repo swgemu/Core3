@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_slice_hound_deed = object_tangible_deed_pet_deed_s
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/slice_hound_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/slice_hound_hue.iff",
+	mobileTemplate = "slice_hound_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_slice_hound_deed, "object/tangible/deed/pet_deed/slice_hound_deed.iff")

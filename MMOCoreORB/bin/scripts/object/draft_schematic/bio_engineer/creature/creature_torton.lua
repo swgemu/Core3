@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_torton = object_draft_schematic_bio_engineer_creature_shared_creature_torton:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Torton",
 

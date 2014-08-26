@@ -78,7 +78,8 @@ class DnaComponent extends Component {
 	protected float acidResist;
 	protected float stunResist;
 	protected float saberResist;
-
+	protected int sourceLevel;
+	
 	public DnaComponent() {
 		Logger.setLoggingName("DnaComponent");
 		cleverness = 0;
@@ -106,6 +107,7 @@ class DnaComponent extends Component {
 		acidResist = 0;
 		stunResist = 0;	
 		saberResist = -1;
+		sourceLevel = 1;
 	}
 	public void setStats(unsigned int cle, unsigned int end, unsigned int fie, unsigned int pow, 
 						    unsigned int ite, unsigned int cou, unsigned int dep, unsigned int dex, 
@@ -130,6 +132,16 @@ class DnaComponent extends Component {
 	public unsigned int getCleverness() { 
 		return cleverness;
 	}
+
+	public void setLevel(unsigned int value) {
+		sourceLevel = value;
+	}
+	
+	@dirty
+	public unsigned int getLevel() { 
+		return sourceLevel;
+	}
+
 	
 	public void setEndurance(unsigned int value) {
 		endurance = value;
