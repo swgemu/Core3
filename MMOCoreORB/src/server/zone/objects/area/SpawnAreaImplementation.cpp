@@ -102,6 +102,11 @@ void SpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())
 		return;
 
+	CreatureObject* creo = cast<CreatureObject*>(object);
+	if (creo->isInvisible()) {
+		return;
+	}
+
 	ManagedReference<SceneObject*> parent = object->getParent();
 
 	if (parent != NULL && parent->isCellObject())
@@ -122,7 +127,7 @@ void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 	if (creature == NULL)
 		return;
 
-	if (!creature->isPlayerCreature())
+	if (!creature->isPlayerCreature() || creature->isInvisible())
 		return;
 
 	ManagedReference<SceneObject*> parent = creature->getParent();

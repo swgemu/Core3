@@ -46,6 +46,7 @@ package server.zone.objects.tangible;
 
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.DespawnLairOnPlayerDisappear;
+import server.zone.objects.creature.CreatureObject;
 include engine.util.u3d.CloseObjectsVector;
 include engine.util.u3d.QuadTreeEntry;
 
@@ -86,8 +87,11 @@ class LairObject extends TangibleObject {
 			return;
 		
 		if (obj.isPlayerCreature()) {
-			numberOfPlayersInRange++;
-			clearDespawnEvent();
+			CreatureObject creo = (CreatureObject) obj;
+			if (!creo.isInvisible()) {
+				numberOfPlayersInRange++;
+				clearDespawnEvent();
+			}
 		}
 	}
 	
@@ -98,10 +102,13 @@ class LairObject extends TangibleObject {
 			return;
 		
 		if (obj.isPlayerCreature()) {
-			numberOfPlayersInRange = numberOfPlayersInRange - 1;
-			
-			if (numberOfPlayersInRange <= 0 && despawnOnNoPlayersInRange)
-				activateDespawnEvent();
+			CreatureObject creo = (CreatureObject) obj;
+			if (!creo.isInvisible()) {
+				numberOfPlayersInRange = numberOfPlayersInRange - 1;
+
+				if (numberOfPlayersInRange <= 0 && despawnOnNoPlayersInRange)
+					activateDespawnEvent();
+			}
 		}
 	}
 	

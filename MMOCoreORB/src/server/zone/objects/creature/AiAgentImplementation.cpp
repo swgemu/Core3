@@ -801,8 +801,11 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 		return;
 
 	if (scno->isPlayerCreature()) {
-		numberOfPlayersInRange.increment();
-		activateMovementEvent();
+		CreatureObject* creo = cast<CreatureObject*>(scno);
+		if (!creo->isInvisible()) {
+			numberOfPlayersInRange.increment();
+			activateMovementEvent();
+		}
 	}
 }
 
@@ -972,35 +975,39 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	if (scno == followObject) {
 		class SetObliviousTask : public Task {
 			ManagedReference<AiAgent*> ai;
+			ManagedReference<SceneObject*> sceno;
 
 		public:
-			SetObliviousTask(AiAgent* mob) : ai(mob) {}
+			SetObliviousTask(AiAgent* mob, SceneObject* scno) : ai(mob), sceno(scno) {}
 
 			void run() {
 				Locker locker(ai);
-				ai->setOblivious();
-				ai->storeFollowObject();
+				if (sceno == ai->getFollowObject()) {
+					ai->setOblivious();
+					ai->storeFollowObject();
+				}
 			}
 		};
 
-		SetObliviousTask* task = new SetObliviousTask(_this.get().get());
+		SetObliviousTask* task = new SetObliviousTask(_this.get().get(), scno);
 		task->execute();
 	}
 
 	if (scno->isPlayerCreature()) {
-		int32 newValue = (int32) numberOfPlayersInRange.decrement();
+		CreatureObject* creo = cast<CreatureObject*>(scno);
+		if (!creo->isInvisible()) {
+			int32 newValue = (int32) numberOfPlayersInRange.decrement();
 
-		if ((newValue == 0)
-				&& despawnOnNoPlayerInRange
-				&& (despawnEvent == NULL)
-				&& !isPet()) {
-			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
-			despawnEvent->schedule(30000);
-		} else if (newValue < 0) {
-			error("numberOfPlayersInRange below 0");
+			if ((newValue == 0) && despawnOnNoPlayerInRange
+					&& (despawnEvent == NULL) && !isPet()) {
+				despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
+				despawnEvent->schedule(30000);
+			} else if (newValue < 0) {
+				error("numberOfPlayersInRange below 0");
+			}
+
+			activateMovementEvent();
 		}
-
-		activateMovementEvent();
 	}
 }
 
