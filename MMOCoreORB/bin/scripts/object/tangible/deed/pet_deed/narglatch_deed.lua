@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_narglatch_deed = object_tangible_deed_pet_deed_sha
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/narglatch_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/narglatch_hue.iff",
+	mobileTemplate = "narglatch_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_narglatch_deed, "object/tangible/deed/pet_deed/narglatch_deed.iff")

@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_roba_deed = object_tangible_deed_pet_deed_shared_r
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/roba_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/roba_hue.iff",
+	mobileTemplate = "roba_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_roba_deed, "object/tangible/deed/pet_deed/roba_deed.iff")

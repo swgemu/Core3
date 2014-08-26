@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_vesp_deed = object_tangible_deed_pet_deed_shared_v
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/vesp_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/vesp_hue.iff",
+	mobileTemplate = "vesp_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_vesp_deed, "object/tangible/deed/pet_deed/vesp_deed.iff")

@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_hermit_spider_deed = object_tangible_deed_pet_deed
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/hermit_spider_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/hermit_spider_hue.iff",
+	mobileTemplate = "hermit_spider_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_hermit_spider_deed, "object/tangible/deed/pet_deed/hermit_spider_deed.iff")

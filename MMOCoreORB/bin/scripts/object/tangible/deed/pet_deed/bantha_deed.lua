@@ -53,6 +53,9 @@ object_tangible_deed_pet_deed_bantha_deed = object_tangible_deed_pet_deed_shared
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/bantha_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/bantha_hue.iff",
+	mobileTemplate = "bantha_be",
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_bantha_deed, "object/tangible/deed/pet_deed/bantha_deed.iff")

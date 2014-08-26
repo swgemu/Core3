@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_pugoriss_deed = object_tangible_deed_pet_deed_shar
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/pugoriss_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/pugoriss_hue.iff",
+	mobileTemplate = "pugoriss_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_pugoriss_deed, "object/tangible/deed/pet_deed/pugoriss_deed.iff")

@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_piket = object_draft_schematic_bio_engineer_creature_shared_creature_piket:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Piket",
 

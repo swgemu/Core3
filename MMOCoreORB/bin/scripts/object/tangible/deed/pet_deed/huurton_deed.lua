@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_huurton_deed = object_tangible_deed_pet_deed_share
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/huurton_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/huurton_hue.iff",
+	mobileTemplate = "huurton_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_huurton_deed, "object/tangible/deed/pet_deed/huurton_deed.iff")

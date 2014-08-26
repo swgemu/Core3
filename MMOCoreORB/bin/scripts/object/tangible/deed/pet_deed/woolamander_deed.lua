@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_woolamander_deed = object_tangible_deed_pet_deed_s
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/woolamander_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/woolamander_hue.iff",
+	mobileTemplate = "woolamander_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_woolamander_deed, "object/tangible/deed/pet_deed/woolamander_deed.iff")

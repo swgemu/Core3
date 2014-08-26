@@ -53,6 +53,9 @@ object_tangible_deed_pet_deed_bocatt_deed = object_tangible_deed_pet_deed_shared
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/bocatt_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/bocatt_hue.iff",
+	mobileTemplate = "bocatt_be",
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_bocatt_deed, "object/tangible/deed/pet_deed/bocatt_deed.iff")

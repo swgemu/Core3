@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_sharnaff_deed = object_tangible_deed_pet_deed_shar
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/sharnaff_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/sharnaff_hue.iff",
+	mobileTemplate = "sharnaff_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_sharnaff_deed, "object/tangible/deed/pet_deed/sharnaff_deed.iff")

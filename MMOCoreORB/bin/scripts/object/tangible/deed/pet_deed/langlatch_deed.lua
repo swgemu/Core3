@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_langlatch_deed = object_tangible_deed_pet_deed_sha
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/langlatch_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/langlatch_hue.iff",
+	mobileTemplate = "langlatch_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_langlatch_deed, "object/tangible/deed/pet_deed/langlatch_deed.iff")

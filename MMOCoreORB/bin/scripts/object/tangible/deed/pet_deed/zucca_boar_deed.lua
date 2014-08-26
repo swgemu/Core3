@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_zucca_boar_deed = object_tangible_deed_pet_deed_sh
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/zucca_boar_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/zucca_boar_hue.iff",
+	mobileTemplate = "zucca_boar_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_zucca_boar_deed, "object/tangible/deed/pet_deed/zucca_boar_deed.iff")

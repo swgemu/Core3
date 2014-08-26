@@ -3,7 +3,7 @@ dalyrake_be = Creature:new {
 	socialGroup = "dalyrake",
 	pvpFaction = "",
 	faction = "",
-	level = 1,
+	level = 5,
 	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
@@ -28,7 +28,7 @@ dalyrake_be = Creature:new {
 
 	templates = {"object/mobile/dalyrake_hue.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {
 	}

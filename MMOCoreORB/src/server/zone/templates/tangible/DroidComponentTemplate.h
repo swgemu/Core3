@@ -23,7 +23,6 @@ public:
 
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
-		System::out << "Reading template data for droid component\n";
     }
 
 	bool isDroidComponentTemplate() {

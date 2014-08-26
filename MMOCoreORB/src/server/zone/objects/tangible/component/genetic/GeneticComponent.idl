@@ -77,7 +77,17 @@ class GeneticComponent extends Component {
 	protected float acidResist;
 	protected float stunResist;
 	protected float saberResist;
-
+	// Extra non visible stats
+	protected int level;
+	protected int health;
+	protected int action;
+	protected int mind;
+	protected float hit;
+	protected float speed;
+	protected int minDam;
+	protected int maxDam;
+	protected int levelMod;
+	
 	public GeneticComponent() {
 		Logger.setLoggingName("GeneticComponent");
 		cleverness = 0;
@@ -104,6 +114,15 @@ class GeneticComponent extends Component {
 		acidResist = 0;
 		stunResist = 0;	
 		saberResist = -1;
+		level = 1;
+		health = 10;
+		action = 10;
+		mind = 10;
+		hit = 0;
+		speed = 0;
+		minDam = 1;
+		maxDam = 1;
+		levelMod = 0;
 	}
 	public void setStats(unsigned int cle, unsigned int end, unsigned int fie, unsigned int pow, 
 						    unsigned int ite, unsigned int cou, unsigned int dep, unsigned int dex, 
@@ -118,6 +137,116 @@ class GeneticComponent extends Component {
 		fortitude = frt;
 		hardiness = har;
 	}
+	public void setLevel(int value) {
+		level = value;
+	}
+	
+	@dirty
+	public float getKinetic() { 
+		return kinResist; 
+	}
+	
+	@dirty
+	public float getEnergy() { 
+		return energyResist; 
+	}
+	
+	@dirty
+	public float getBlast() { 
+		return blastResist; 
+	}
+	
+	@dirty
+	public float getCold() { 
+		return coldResist; 
+	}
+	
+	@dirty
+	public float getHeat() { 
+		return heatResist; 
+	}
+	
+	@dirty
+	public float getElectrical() { 
+		return elecResist; 
+	}
+	
+	@dirty
+	public float getAcid() { 
+		return acidResist; 
+	}
+	
+	@dirty
+	public float getStun() { 
+		return stunResist; 
+	}
+	
+	@dirty
+	public float getSaber() { 
+		return saberResist; 
+	}
+	
+	@dirty
+	public string getSpecial1() { 
+		return special1; 
+	}
+	
+	@dirty
+	public string getSpecial2() { 
+		return special2; 
+	}
+	
+	@dirty
+	public int getArmor() {
+		return armorRating;
+	}
+	
+	@dirty
+	public float getHit() {
+		return hit;
+	}
+	
+	@dirty
+	public float getSpeed() {
+		return speed;
+	}
+	
+	@dirty 
+	public int getMinDamage() {
+		return minDam;
+	}
+	
+	@dirty 
+	public int getMaxDamage() {
+		return maxDam;
+	}
+	
+	@dirty
+	public int getHealth(){
+		return health;
+	}
+	
+	@dirty
+	public int getMind() {
+		return mind;
+	}
+	
+	@dirty
+	public int getAction() {
+		return action;
+	}
+	
+	@dirty
+	public int getLevel() { 
+		return level + levelMod;
+	}
+
+	@dirty
+	public boolean getRanged() { 
+		return ranged;
+	}
+
+	
 	public void setCleverness(unsigned int value) {
 		cleverness = value;
 	}
@@ -234,5 +363,5 @@ class GeneticComponent extends Component {
 	public native string resistValue(float input);
 	
 	@local
-	public native void resetResists(CraftingValues values);
+	public native void resetResists(CraftingValues values);	
 }

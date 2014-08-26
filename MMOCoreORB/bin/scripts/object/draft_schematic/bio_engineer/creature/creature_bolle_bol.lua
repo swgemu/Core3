@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_bolle_bol = object_draft_schematic_bio_engineer_creature_shared_creature_bolle_bol:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Bolle Bol",
 

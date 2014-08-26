@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_vir_vur_deed = object_tangible_deed_pet_deed_share
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/vir_vur_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/vir_vur_hue.iff",
+	mobileTemplate = "vir_vur_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_vir_vur_deed, "object/tangible/deed/pet_deed/vir_vur_deed.iff")

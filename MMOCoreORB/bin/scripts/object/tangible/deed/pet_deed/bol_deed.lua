@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_bol_deed = object_tangible_deed_pet_deed_shared_bo
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/bol_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/bol_hue.iff",	
+	mobileTemplate = "bol_be",
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_bol_deed, "object/tangible/deed/pet_deed/bol_deed.iff")

@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_bearded_jax = object_draft_schematic_bio_engineer_creature_shared_creature_bearded_jax:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Bearded Jax",
 
