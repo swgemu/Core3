@@ -2,7 +2,10 @@ local GoToTheater = require("quest.tasks.go_to_theater")
 local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
+local DathomirGoTo = require("managers.jedi.village.dathomir_go_to")
 require("utils.helpers")
+local READ_DISK_2_STRING = "@quest/force_sensitive/intro:read_disk2"
+local READ_DISK_ERROR_STRING = "@quest/force_sensitive/intro:read_disk_error"
 
 SithShadowIntroTheater = GoToTheater:new {
 	-- Task properties
@@ -108,6 +111,28 @@ function SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pKiller, nothing
 	end
 
 	return 0
+end
+
+-- Handling of the activation of the theater waypoint datapad.
+-- @param pSceneObject pointer to the datapad object.
+-- @param pCreatureObject pointer to the creature object who activated the datapad.
+function SithShadowIntroTheater:useTheaterDatapad(pSceneObject, pCreatureObject)
+	Logger:log("Player used the looted theater datapad.", LT_INFO)
+	if QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_2) then
+		DathomirGoTo:start(pCreatureObject)
+		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+			creatureObject:sendSystemMessage(READ_DISK_2_STRING)
+		end)
+		ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
+			sceneObject:destroyObjectFromWorld()
+		end)
+		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_2)
+		QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
+	else
+		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+			creatureObject:sendSystemMessage(READ_DISK_ERROR_STRING)
+		end)
+	end
 end
 
 return SithShadowIntroTheater
