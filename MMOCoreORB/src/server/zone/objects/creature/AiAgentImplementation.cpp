@@ -801,8 +801,11 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 		return;
 
 	if (scno->isPlayerCreature()) {
-		numberOfPlayersInRange.increment();
-		activateMovementEvent();
+		CreatureObject* creo = cast<CreatureObject*>(scno);
+		if (!creo->isInvisible()) {
+			numberOfPlayersInRange.increment();
+			activateMovementEvent();
+		}
 	}
 }
 
@@ -988,19 +991,20 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	}
 
 	if (scno->isPlayerCreature()) {
-		int32 newValue = (int32) numberOfPlayersInRange.decrement();
+		CreatureObject* creo = cast<CreatureObject*>(scno);
+		if (!creo->isInvisible()) {
+			int32 newValue = (int32) numberOfPlayersInRange.decrement();
 
-		if ((newValue == 0)
-				&& despawnOnNoPlayerInRange
-				&& (despawnEvent == NULL)
-				&& !isPet()) {
-			despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
-			despawnEvent->schedule(30000);
-		} else if (newValue < 0) {
-			error("numberOfPlayersInRange below 0");
+			if ((newValue == 0) && despawnOnNoPlayerInRange
+					&& (despawnEvent == NULL) && !isPet()) {
+				despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
+				despawnEvent->schedule(30000);
+			} else if (newValue < 0) {
+				error("numberOfPlayersInRange below 0");
+			}
+
+			activateMovementEvent();
 		}
-
-		activateMovementEvent();
 	}
 }
 
