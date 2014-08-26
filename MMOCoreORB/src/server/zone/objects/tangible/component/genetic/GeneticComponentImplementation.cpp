@@ -193,6 +193,16 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 		stunResist = 100;
 	if (saberResist > 100)
 		saberResist = 100;
+	// Determine other factors
+	// HAM, attack speed, min/max damage toHit
+	health = hardiness * 18;
+	action = dexterity * 18;
+	mind = intelligence * 18;
+	hit = 0.19+(cleverness/1500);
+	minDam = ceil((power*0.8)/10)*10;
+	maxDam = minDam + 10;
+	speed = 2.5-((ceil(courage/10)*10)/1000);
+	// we need to calc a level. creature type determines min CL, aggressivenes value and locomotion speed
 
 }
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {

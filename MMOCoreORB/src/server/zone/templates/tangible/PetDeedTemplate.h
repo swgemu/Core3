@@ -11,6 +11,8 @@
 #include "DeedTemplate.h"
 
 class PetDeedTemplate : public DeedTemplate {
+private:
+	String controlDeviceObjectTemplate;
 
 public:
 	PetDeedTemplate() {
@@ -23,7 +25,13 @@ public:
 
 	void readObject(LuaObject* templateData) {
 		DeedTemplate::readObject(templateData);
+		controlDeviceObjectTemplate = templateData->getStringField("controlDeviceObjectTemplate");
     }
+
+	String getControlDeviceObjectTemplate()
+	{
+		return controlDeviceObjectTemplate;
+	}
 };
 
 

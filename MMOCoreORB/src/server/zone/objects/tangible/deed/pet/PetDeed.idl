@@ -56,12 +56,39 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.templates.SharedObjectTemplate;
 
 class PetDeed extends Deed {
-	protected int hitPoints;
+	// Pet Level
+	protected int level;
+	// Crafted pets have their own attack speed and chance to hit
+	protected float chanceHit;
+	protected float attackSpeed;
+	// Damage min/mac for the pet
+	protected int damageMin;	
+	protected int damageMax;
+	// Armor value of the pet
+	protected int armor;
+	// resists of the pet
+	protected float kinResist;
+	protected float energyResist;
+	protected float blastResist;
+	protected float coldResist;
+	protected float heatResist;
+	protected float elecResist;
+	protected float acidResist;
+	protected float stunResist;
+	protected float saberResist;
+	// ham of the pet
+	protected int health;
+	protected int action;
+	protected int mind;
+	// specials
+	protected string special1;
+	protected string special2;
+	protected boolean ranged;
+		
 	protected string controlDeviceObjectTemplate;
 	
 	public PetDeed() {
 		Logger.setLoggingName("PetDeed");
-		hitPoints = 1500;
 	}
 	
 	public native void initializeTransientMembers();
