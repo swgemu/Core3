@@ -43,7 +43,6 @@
 
 
 --Children folder includes
-includeFile("aigroup/serverobjects.lua")
 includeFile("battlefield_marker/serverobjects.lua")
 includeFile("building/serverobjects.lua")
 includeFile("cell/serverobjects.lua")
