@@ -115,7 +115,9 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen5 = objec
 	maxRange = 5,
 	maxRangeAccuracy = 5,
 
-	attackSpeed = 4.5
+	attackSpeed = 4.5,
+
+	woundsRatio = 45,
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen5, "object/weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen5.iff")

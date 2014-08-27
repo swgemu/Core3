@@ -114,13 +114,12 @@ object_weapon_melee_polearm_lance_staff_janta = object_weapon_melee_polearm_shar
 	maxRange = 6,
 	maxRangeAccuracy = 5,
 
-	
 	minDamage = 25,
-	
 	maxDamage = 56,
 
-	
-	attackSpeed = 5.8
+	attackSpeed = 5.8,
+
+	woundsRatio = 7,
 
 }
 

@@ -117,7 +117,9 @@ object_weapon_melee_sword_bestine_quest_sword = object_weapon_melee_sword_shared
 	minDamage = 20,
 	maxDamage = 90,
 
-	attackSpeed = 3.5
+	attackSpeed = 3.5,
+
+	woundsRatio = 14,
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_bestine_quest_sword, "object/weapon/melee/sword/bestine_quest_sword.iff")

@@ -117,7 +117,9 @@ object_weapon_ranged_carbine_carbine_cdef_corsec = object_weapon_ranged_carbine_
 	minDamage = 17,
 	maxDamage = 35,
 
-	attackSpeed = 4.6
+	attackSpeed = 4.6,
+
+	woundsRatio = 4,
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_carbine_cdef_corsec, "object/weapon/ranged/carbine/carbine_cdef_corsec.iff")

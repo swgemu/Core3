@@ -118,7 +118,9 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_s4_training = object_we
 	maxDamage = 130,
 
 	attackSpeed = 4.8,
-	
+
+	woundsRatio = 6,
+
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 	
 	noTrade = 1,

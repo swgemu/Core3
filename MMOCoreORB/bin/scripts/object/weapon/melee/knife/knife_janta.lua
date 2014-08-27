@@ -117,8 +117,9 @@ object_weapon_melee_knife_knife_janta = object_weapon_melee_knife_shared_knife_j
 	minDamage = 11,
 	maxDamage = 22,
 	
-	attackSpeed = 3.0
+	attackSpeed = 3.0,
 
+	woundsRatio = 6,
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_knife_janta, "object/weapon/melee/knife/knife_janta.iff")

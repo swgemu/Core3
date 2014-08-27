@@ -119,8 +119,9 @@ object_weapon_melee_baton_victor_baton_gaderiffi = object_weapon_melee_baton_sha
 	minDamage = 48,
 	maxDamage = 148,
 	
-	attackSpeed = 3.8
+	attackSpeed = 3.8,
 
+	woundsRatio = 16,
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_baton_victor_baton_gaderiffi, "object/weapon/melee/baton/victor_baton_gaderiffi.iff")

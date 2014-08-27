@@ -117,7 +117,9 @@ object_weapon_ranged_carbine_carbine_e11_victor_quest = object_weapon_ranged_car
 	minDamage = 42,
 	maxDamage = 84,
 
-	attackSpeed = 6.8
+	attackSpeed = 6.8,
+
+	woundsRatio = 10,
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_carbine_carbine_e11_victor_quest, "object/weapon/ranged/carbine/carbine_e11_victor_quest.iff")

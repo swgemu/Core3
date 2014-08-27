@@ -117,7 +117,9 @@ object_weapon_ranged_rifle_rifle_victor_tusken = object_weapon_ranged_rifle_shar
 	minDamage = 70,
 	maxDamage = 105,
 
-	attackSpeed = 9.1
+	attackSpeed = 9.1,
+
+	woundsRatio = 9,
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_victor_tusken, "object/weapon/ranged/rifle/rifle_victor_tusken.iff")

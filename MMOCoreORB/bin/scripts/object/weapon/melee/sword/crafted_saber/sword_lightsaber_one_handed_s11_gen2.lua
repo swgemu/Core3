@@ -111,13 +111,14 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s11_gen2 = o
 
 	maxRange = 5,
 	maxRangeAccuracy = 5,
-	
 
 	minDamage = 80,
 	maxDamage = 170,
 
 	attackSpeed = 4.5,
-	
+
+	woundsRatio = 19,
+
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 	
 	noTrade = 1,

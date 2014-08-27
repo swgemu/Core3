@@ -113,7 +113,9 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s3_gen4 = ob
 	maxRangeAccuracy = 5,
 
 	attackSpeed = 4.5,	
-	
+
+	woundsRatio = 37,
+
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 	
 	noTrade = 1,

@@ -117,7 +117,9 @@ object_weapon_melee_polearm_lance_lightsaber_01 = object_weapon_melee_polearm_sh
 	minDamage = 105,
 	maxDamage = 195,
 
-	attackSpeed = 5.1
+	attackSpeed = 5.1,
+
+	woundsRatio = 15,
 
 }
 

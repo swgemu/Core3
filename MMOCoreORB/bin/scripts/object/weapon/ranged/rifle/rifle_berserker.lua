@@ -119,6 +119,8 @@ object_weapon_ranged_rifle_rifle_berserker = object_weapon_ranged_rifle_shared_r
 		
 	attackSpeed = 8,
 
+	woundsRatio = 16,
+
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1, 2, 1, 1, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "CD", "OQ", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

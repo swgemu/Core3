@@ -117,8 +117,9 @@ object_weapon_melee_knife_knife_donkuwah = object_weapon_melee_knife_shared_knif
 	minDamage = 24,
 	maxDamage = 36,
 	
-	attackSpeed = 4.5
+	attackSpeed = 4.5,
 
+	woundsRatio = 6,
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_knife_knife_donkuwah, "object/weapon/melee/knife/knife_donkuwah.iff")

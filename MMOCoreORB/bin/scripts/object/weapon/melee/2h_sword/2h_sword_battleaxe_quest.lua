@@ -117,8 +117,9 @@ object_weapon_melee_2h_sword_2h_sword_battleaxe_quest = object_weapon_melee_2h_s
 	minDamage = 86,
         maxDamage = 144,
 	
-	attackSpeed = 4.5
+	attackSpeed = 4.5,
 
+	woundsRatio = 17,
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_2h_sword_battleaxe_quest, "object/weapon/melee/2h_sword/2h_sword_battleaxe_quest.iff")

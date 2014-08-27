@@ -117,7 +117,9 @@ object_weapon_ranged_pistol_pistol_cdef_corsec = object_weapon_ranged_pistol_sha
 	minDamage = 17,
 	maxDamage = 35,
 
-	attackSpeed = 4.6
+	attackSpeed = 4.6,
+
+	woundsRatio = 4,
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_cdef_corsec, "object/weapon/ranged/pistol/pistol_cdef_corsec.iff")

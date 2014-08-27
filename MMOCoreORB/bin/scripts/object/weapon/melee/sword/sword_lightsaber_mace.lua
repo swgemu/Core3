@@ -117,7 +117,9 @@ object_weapon_melee_sword_sword_lightsaber_mace = object_weapon_melee_sword_shar
 	minDamage = 50,
 	maxDamage = 130,
 
-	attackSpeed = 4.8
+	attackSpeed = 4.8,
+
+	woundsRatio = 15,
 
 }
 

@@ -117,12 +117,15 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen5 = object
 
 	minDamage = 225,
 	maxDamage = 305,
-	
+
+	attackSpeed = 0,
+
+	woundsRatio = 45,
+
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 
 	noTrade = 1,
 
-	attackSpeed = 0
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen5, "object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_gen5.iff")

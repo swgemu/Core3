@@ -111,12 +111,13 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s2_gen4 = obj
 
 	maxRange = 5,
 	maxRangeAccuracy = 5,
-	
 
 	minDamage = 225,
 	maxDamage = 305,
 
 	attackSpeed = 5.1,
+
+	woundsRatio = 37,
 
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 

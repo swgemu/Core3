@@ -111,13 +111,14 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen3 = objec
 
 	maxRange = 5,
 	maxRangeAccuracy = 5,
-	
 
 	minDamage = 130,
 	maxDamage = 220,
 
 	attackSpeed = 4.5,
-	
+
+	woundsRatio = 25,
+
 	defenderToughnessModifiers = { "lightsaber_toughness" },
 	
 	noTrade = 1,
