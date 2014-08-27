@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_cdab5dd5",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/deed/pet_deed/angler_deed.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-27T03:59:03Z",
+      "side": 1,
+      "message": "There are specific control devices for a variety of pet skins. We should use those whenever appropriate. For example, this one should use \"object/intangible/pet/angler_hue.iff\".",
+      "revId": "e51f70f0b3176401fcd971a1fa54e54b0f0f219a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_adb8292b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-27T03:59:03Z",
+      "side": 1,
+      "message": "The generatedObjectTemplate won\u0027t be a valid SharedCreatureObjectTemplate. Rather, it\u0027ll be a CreatureTemplate. Use CreatureTemplateManager to get it (not TemplateManager).\n\nLet\u0027s use the CreatureTemplates to store the min CL and viciousness of each particular skin. We\u0027ll need to update the level on each to be the min CL. Then we can get it here and bump the level up to the min CL if needed.",
+      "revId": "e51f70f0b3176401fcd971a1fa54e54b0f0f219a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_8db56533",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-27T03:59:03Z",
+      "side": 1,
+      "message": "Just use \u003e here. It\u0027s okay to be at your max level of pets, just not over it.",
+      "revId": "e51f70f0b3176401fcd971a1fa54e54b0f0f219a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_6d823154",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-27T03:59:03Z",
+      "side": 1,
+      "message": "As I said above, generatedObjectTemplate is a CreatureTemplate. What you\u0027re doing in the comments below is wrong. You should get the CreatureTemplate here, before the skill checks below, and instantiate your isViscious bool.",
+      "revId": "e51f70f0b3176401fcd971a1fa54e54b0f0f219a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_4d876d62",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-27T03:59:03Z",
+      "side": 1,
+      "message": "I would rewrite the above block as follows:\n\nif (level \u003e 10 || isVicious) {\n   if (!player-\u003ehasSkill(\"outdoors_creaturehandler_novice\") || (level \u003e maxLevelofPets)) {\n      player-\u003esendSystemMessage(\"@pet/pet_menu:sys_lack_skill\"); // You lack the skill to be able to tame that creature.\n      return 1;\n   }\n\n   if (isVicious \u0026\u0026  player-\u003egetSkillMod(\"tame_aggro\") \u003c 1) {\n      player-\u003esendSystemMessage(\"@pet/pet_menu:sys_lack_skill\"); // You lack the skill to be able to tame that creature.\n      return 1;\n   }\n}\n\nThe way you had it would allow a non-ch with BE clothes to tame a vicious BE pet as long as it was level 10 or below. We don\u0027t want to allow that.",
+      "revId": "e51f70f0b3176401fcd971a1fa54e54b0f0f219a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
