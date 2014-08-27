@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_huf_dun_deed = object_tangible_deed_pet_deed_share
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/huf_dun_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/huf_dun_hue.iff",
+	mobileTemplate = "huf_dun_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_huf_dun_deed, "object/tangible/deed/pet_deed/huf_dun_deed.iff")

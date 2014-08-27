@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_langlatch = object_draft_schematic_bio_engineer_creature_shared_creature_langlatch:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Langlatch",
 

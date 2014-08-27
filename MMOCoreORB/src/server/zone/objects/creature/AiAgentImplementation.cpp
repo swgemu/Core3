@@ -2577,6 +2577,16 @@ void AiAgentImplementation::activateLoad(const String& temp) {
 	task->execute();
 }
 
+bool AiAgentImplementation::hasRangedWeapon() {
+	for(int i=0;i<weapons.size();i++) {
+		ManagedReference<WeaponObject* > weapon = weapons.get(i);
+		if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) {
+			return true;
+		}
+	}
+	return false;
+}
+
 bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	if (object == NULL || object == _this.get()) {
 		return false;

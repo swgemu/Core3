@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_narglatch = object_draft_schematic_bio_engineer_creature_shared_creature_narglatch:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Narglatch",
 

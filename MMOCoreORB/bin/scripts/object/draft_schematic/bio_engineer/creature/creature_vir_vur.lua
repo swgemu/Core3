@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_vir_vur = object_draft_schematic_bio_engineer_creature_shared_creature_vir_vur:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Vir Vur",
 

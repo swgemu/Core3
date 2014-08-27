@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_shear_mite = object_draft_schematic_bio_engineer_creature_shared_creature_shear_mite:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Shear Mite",
 

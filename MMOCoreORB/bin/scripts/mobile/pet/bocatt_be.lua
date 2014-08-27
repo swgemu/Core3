@@ -3,7 +3,7 @@ bocatt_be = Creature:new {
 	socialGroup = "bocatt",
 	pvpFaction = "",
 	faction = "",
-	level = 1,
+	level = 2,
 	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
@@ -28,7 +28,7 @@ bocatt_be = Creature:new {
 
 	templates = {"object/mobile/bocatt_hue.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
 	}

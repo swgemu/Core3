@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_kaadu_deed = object_tangible_deed_pet_deed_shared_
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/kaadu_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/kaadu_hue.iff",
+	mobileTemplate = "kaadu_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_kaadu_deed, "object/tangible/deed/pet_deed/kaadu_deed.iff")

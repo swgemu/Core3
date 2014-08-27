@@ -53,6 +53,9 @@ object_tangible_deed_pet_deed_blurrg_deed = object_tangible_deed_pet_deed_shared
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/blurrg_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/blurrg_hue.iff",
+	mobileTemplate = "blurrg_be",
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_blurrg_deed, "object/tangible/deed/pet_deed/blurrg_deed.iff")

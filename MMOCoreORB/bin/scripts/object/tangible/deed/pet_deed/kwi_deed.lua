@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_kwi_deed = object_tangible_deed_pet_deed_shared_kw
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/kwi_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/kwi_hue.iff",
+	mobileTemplate = "kwi_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_kwi_deed, "object/tangible/deed/pet_deed/kwi_deed.iff")

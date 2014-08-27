@@ -3,7 +3,7 @@ kliknik_be = Creature:new {
 	socialGroup = "kliknik",
 	pvpFaction = "",
 	faction = "",
-	level = 1,
+	level = 15,
 	chanceHit = 0.2,
 	damageMin = 30,
 	damageMax = 40,
@@ -28,7 +28,7 @@ kliknik_be = Creature:new {
 
 	templates = {"object/mobile/kliknik_hue.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
 	}

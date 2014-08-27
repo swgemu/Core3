@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_piket_deed = object_tangible_deed_pet_deed_shared_
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/piket_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/piket_hue.iff",
+	mobileTemplate = "picket_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_piket_deed, "object/tangible/deed/pet_deed/piket_deed.iff")

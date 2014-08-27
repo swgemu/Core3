@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_gurnaset_deed = object_tangible_deed_pet_deed_shar
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/gurnaset_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/gurnaset_hue.iff",
+	mobileTemplate = "gurnaset_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_gurnaset_deed, "object/tangible/deed/pet_deed/gurnaset_deed.iff")

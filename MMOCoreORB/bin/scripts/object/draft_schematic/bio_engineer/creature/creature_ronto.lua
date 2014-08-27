@@ -44,6 +44,7 @@
 object_draft_schematic_bio_engineer_creature_creature_ronto = object_draft_schematic_bio_engineer_creature_shared_creature_ronto:new {
 
    templateType = DRAFTSCHEMATIC,
+   disableFactoryRun = true,	
 
    customObjectName = "Ronto",
 

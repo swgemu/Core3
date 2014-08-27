@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_gurrcat_deed = object_tangible_deed_pet_deed_share
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/gurrcat_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/gurrcat_hue.iff",
+	mobileTemplate = "gurrcat_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_gurrcat_deed, "object/tangible/deed/pet_deed/gurrcat_deed.iff")

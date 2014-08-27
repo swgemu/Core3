@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_gnort_deed = object_tangible_deed_pet_deed_shared_
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/gnort_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/gnort_hue.iff",
+	mobileTemplate = "gnort_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_gnort_deed, "object/tangible/deed/pet_deed/gnort_deed.iff")

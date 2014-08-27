@@ -194,6 +194,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 		prototype->setSource(nameId->getFullPath());
 	}
 	prototype->setQuality(quality);
+	prototype->setLevel(cl);
 	String serial = player->getZoneServer()->getCraftingManager()->generateSerial();
 	prototype->setSerialNumber(serial);
 	prototype->setStats(cle,end,fie,pow,ite,cou,dep,dex,frt,har);

@@ -43,7 +43,7 @@
 
 object_tangible_component_dna_dna_template_generic = object_tangible_component_dna_shared_dna_template_generic:new {
 
-
+	disableFactoryRun = true,
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "UT", "CR", "CD", "DR", "HR", "FL", "MA", "PE", "OQ", "SR"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

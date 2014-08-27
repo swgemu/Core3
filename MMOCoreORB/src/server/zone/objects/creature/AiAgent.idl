@@ -992,4 +992,7 @@ class AiAgent extends CreatureObject {
 			trackingTask.schedule(300000);
 		}
 	}
+	
+	@dirty
+	public native boolean hasRangedWeapon();
 }

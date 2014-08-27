@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_merek_deed = object_tangible_deed_pet_deed_shared_
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/merek_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/merek_hue.iff",
+	mobileTemplate = "merek_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_merek_deed, "object/tangible/deed/pet_deed/merek_deed.iff")

@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_gualama_deed = object_tangible_deed_pet_deed_share
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/gualama_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/gualama_hue.iff",
+	mobileTemplate = "gualama_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_gualama_deed, "object/tangible/deed/pet_deed/gualama_deed.iff")
