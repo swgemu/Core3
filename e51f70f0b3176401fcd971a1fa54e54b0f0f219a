@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "9a5c5d37_0d81754a",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/genetic/GeneticComponentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-27T04:35:59Z",
+      "side": 1,
+      "message": "I\u0027d like to see some kind of formula here for level before we merge this.",
+      "revId": "e51f70f0b3176401fcd971a1fa54e54b0f0f219a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a5c5d37_adb8292b",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
         "patchSetId": 1
