@@ -52,7 +52,7 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
-
+include server.zone.objects.creature.variables.CreatureAttackMap;
 import server.zone.templates.SharedObjectTemplate;
 
 class PetDeed extends Deed {
@@ -88,11 +88,132 @@ class PetDeed extends Deed {
 	protected string controlDeviceObjectTemplate;
 	protected string mobileTemplate;
 	
+	@dereferenced
+	protected CreatureAttackMap attacks;
+	
 	public PetDeed() {
 		Logger.setLoggingName("PetDeed");
+		damageMin = 20;
+		damageMax = 20;
+		armor = 0;
+		kinResist = 0;
+		blastResist = 0;
+		coldResist = 0;
+		heatResist = 0;
+		elecResist = 0;
+		acidResist = 0;
+		stunResist = 0;
+		saberResist = -1;
+		health = 10;
+		action = 10;
+		mind = 10;
+		special1 = "none";
+		special2 = "none";
+		ranged = false;
+		chanceHit = 0;
+		attackSpeed = 0;
+		level = 1;
 	}
 	
 	public native void initializeTransientMembers();
+	
+	@local
+	public native CreatureAttackMap getAttacks();
+	
+	@dirty
+	public int getLevel() { 
+		return level; 
+	}
+	
+	@dirty
+	public float getAttackSpeed() { 
+		return attackSpeed; 
+	}
+
+	@dirty
+	public float getHitChance() { 
+		return chanceHit; 
+	}
+
+	@dirty
+	public int getHealth() { 
+		return health; 
+	}
+
+	@dirty
+	public int getAction() { 
+		return action; 
+	}
+
+	@dirty
+	public int getMind() { 
+		return mind; 
+	}
+
+	@dirty
+	public int getMinDamage() { 
+		return damageMin; 
+	}
+
+	@dirty
+	public int getMaxDamage() { 
+		return damageMax; 
+	}
+
+	@dirty
+	public float getKinetic() { 
+		return kinResist; 
+	}
+
+	@dirty
+	public float getEnergy() { 
+		return energyResist; 
+	}
+
+	@dirty
+	public float getBlast() { 
+		return blastResist; 
+	}
+
+	@dirty
+	public float getCold() { 
+		return coldResist; 
+	}
+
+	@dirty
+	public float getHeat() { 
+		return heatResist; 
+	}
+
+	@dirty
+	public float getElectric() { 
+		return elecResist; 
+	}
+
+	@dirty
+	public float getAcid() { 
+		return acidResist; 
+	}
+
+	@dirty
+	public float getStun() { 
+		return stunResist; 
+	}
+
+	@dirty
+	public float getSaber() { 
+		return saberResist; 
+	}
+
+	@dirty
+	public boolean getRanged() { 
+		return ranged; 
+	}
+
+	@dirty
+	public int getArmor() { 
+		return armor; 
+	}
 	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
@@ -125,5 +246,5 @@ class PetDeed extends Deed {
 	@dirty
 	public boolean isPetDeedObject() {
 		return true;
-	}
+	}	
 }

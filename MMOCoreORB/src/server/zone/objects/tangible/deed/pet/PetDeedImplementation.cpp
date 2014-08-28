@@ -134,6 +134,9 @@ void PetDeedImplementation::initializeTransientMembers() {
 
 	setLoggingName("PetDeed");
 }
+CreatureAttackMap* PetDeedImplementation::getAttacks() {
+	return &attacks;
+}
 
 void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ManagedReference<ManufactureSchematic*> manufact = values->getManufactureSchematic();
@@ -175,6 +178,46 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 		int minCl = petTemplate->getLevel();
 		if (level < minCl) {
 			level = minCl;
+		}
+	}
+	if (special1 != "none" && special1 != "defaultattack") {
+		String args = "";
+		if (special1.contains("creature") || special1.contains("poison")){
+			attacks.addAttack(special1,args);
+		} else if(special1.contains("blind")) {
+			attacks.addAttack(special1,"blindChance=50");
+		}else if(special1.contains("dizzy")) {
+			attacks.addAttack(special1,"dizzyChance=50");
+		}else if(special1.contains("intimidation")) {
+			attacks.addAttack(special1,"intimidationChance=50");
+		}else if(special1.contains("stun")) {
+			attacks.addAttack(special1,"stunChance=50");
+		}else if(special1.contains("knockdown")) {
+			attacks.addAttack(special1,"knockdownChance=50");
+		}else if(special1.contains("posturedown")) {
+			attacks.addAttack(special1,"postureDownChance=50");
+		}else if(special1.contains("postureup")) {
+			attacks.addAttack(special1,"postureUpChance=50");
+		}
+	}
+	if (special2 != "none" && special2 != "defaultattack") {
+		String args = "";
+		if (special2.contains("creature") || special2.contains("poison")){
+			attacks.addAttack(special2,args);
+		} else if(special2.contains("blind")) {
+			attacks.addAttack(special2,"blindChance=50");
+		}else if(special2.contains("dizzy")) {
+			attacks.addAttack(special2,"dizzyChance=50");
+		}else if(special2.contains("intimidation")) {
+			attacks.addAttack(special2,"intimidationChance=50");
+		}else if(special2.contains("stun")) {
+			attacks.addAttack(special2,"stunChance=50");
+		}else if(special2.contains("knockdown")) {
+			attacks.addAttack(special2,"knockdownChance=50");
+		}else if(special2.contains("posturedown")) {
+			attacks.addAttack(special2,"postureDownChance=50");
+		}else if(special2.contains("postureup")) {
+			attacks.addAttack(special2,"postureUpChance=50");
 		}
 	}
 }
@@ -293,8 +336,13 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		ManagedReference<Creature*> pet = creatureObject.castTo<Creature*>();
 		if( pet == NULL )
 			return 1;
-
+		ObjectManager* objectManager = server->getZoneServer()->getObjectManager();
+		pet->setPetDeed(_this.get());
 		pet->loadTemplateData( petTemplate );
+		pet->createChildObjects();
+		// update base stats on the pet now
+		// We will store the deed pointer to the aiagent before serialization
+
 		// Copy color customization from deed to pet
 		CustomizationVariables* customVars = getCustomizationVariables();
 		if( customVars != NULL ){
@@ -308,9 +356,6 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 				}
 			}
 		}
-
-		// setup stats
-		// TODO copy stats in
 		// then this is complete
 		StringId s;
 		s.setStringId(pet->getObjectName()->getFullPath());
@@ -318,10 +363,14 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		controlDevice->setPetType(PetManager::CREATUREPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
+		controlDevice->setGrowthStage(10);
+		controlDevice->updateStatus(1);
+
 		controlDevice->setDefaultCommands();
-		pet->createChildObjects();
 		controlDevice->setControlledObject(pet);
 		datapad->transferObject(controlDevice, -1);
+
+		objectManager->persistSceneObjectsRecursively(pet, 1);
 
 		datapad->broadcastObject(controlDevice, true);
 		controlDevice->callObject(player);

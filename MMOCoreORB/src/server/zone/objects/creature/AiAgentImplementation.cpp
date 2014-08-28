@@ -152,33 +152,40 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	float minDmg = calculateAttackMinDamage(level);
 	float maxDmg = calculateAttackMaxDamage(level);
 	float speed = calculateAttackSpeed(level);
-
+	bool allowedWeapon = true;
+	if (petDeed != NULL) {
+		minDmg = petDeed->getMinDamage();
+		maxDmg = petDeed->getMaxDamage();
+		speed = petDeed->getAttackSpeed();
+		level = petDeed->getLevel();
+		allowedWeapon = petDeed->getRanged();
+	}
 	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
-
 	if (weapons.size() == 0) {
 		Vector<String> wepgroups = npcTemplate->getWeapons();
-		for (int i = 0; i < wepgroups.size(); ++i) {
-			Vector<String> weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
+		if (allowedWeapon) {
+			for (int i = 0; i < wepgroups.size(); ++i) {
+				Vector<String> weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
 
-			for (int i = 0; i < weptemps.size(); ++i) {
-				uint32 crc = weptemps.get(i).hashCode();
+				for (int i = 0; i < weptemps.size(); ++i) {
+					uint32 crc = weptemps.get(i).hashCode();
 
-				ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, 0)).castTo<WeaponObject*>();
+					ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, 0)).castTo<WeaponObject*>();
 
-				if (weao != NULL) {
-					weao->setMinDamage(minDmg * 0.5);
-					weao->setMaxDamage(maxDmg * 0.5);
-					weao->setAttackSpeed(speed);
-					weapons.add(weao);
+					if (weao != NULL) {
+						weao->setMinDamage(minDmg * 0.5);
+						weao->setMaxDamage(maxDmg * 0.5);
+						weao->setAttackSpeed(speed);
+						weapons.add(weao);
 
-					if (i == 0)
-						transferObject(weao, 4, false);
-				} else {
-					error("could not create weapon " + weptemps.get(i));
+						if (i == 0)
+							transferObject(weao, 4, false);
+					} else {
+						error("could not create weapon " + weptemps.get(i));
+					}
 				}
 			}
 		}
-
 		// add the default weapon for creatures
 		if (isCreature()) {
 			weapons.add(defaultWeapon);
@@ -194,15 +201,28 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	int ham;
 	baseHAM.removeAll();
-
-	for (int i = 0; i < 9; ++i) {
-		if (i % 3 == 0) {
-			ham = System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM();
-			baseHAM.add(ham);
-		} else
-			baseHAM.add(ham/100);
+	if (petDeed == NULL) {
+		for (int i = 0; i < 9; ++i) {
+			if (i % 3 == 0) {
+				ham = System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM();
+				baseHAM.add(ham);
+			} else
+				baseHAM.add(ham/100);
+		}
+	} else {
+		int health = petDeed->getHealth();
+		baseHAM.add(health);
+		baseHAM.add(health/100);
+		baseHAM.add(health/100);
+		int action = petDeed->getAction();
+		baseHAM.add(action);
+		baseHAM.add(action/100);
+		baseHAM.add(action/100);
+		int mind = petDeed->getMind();
+		baseHAM.add(mind);
+		baseHAM.add(mind/100);
+		baseHAM.add(mind/100);
 	}
-
 	hamList.removeAll();
 	for (int i = 0; i < 9; ++i) {
 		hamList.add(baseHAM.get(i));
@@ -421,22 +441,22 @@ void AiAgentImplementation::doRecovery() {
 }
 
 void AiAgentImplementation::selectSpecialAttack() {
-	if (npcTemplate == NULL || npcTemplate->getAttacks() == NULL) {
+	CreatureAttackMap* attackMap = getAttackMap();
+
+	if (attackMap == NULL) {
 		selectDefaultAttack();
 		return;
 	}
 
-	CreatureAttackMap* attackMap = npcTemplate->getAttacks();
 	selectSpecialAttack(attackMap->getRandomAttackNumber());
 }
 
 void AiAgentImplementation::selectSpecialAttack(int attackNum) {
-	if (npcTemplate == NULL || npcTemplate->getAttacks() == NULL) {
+	CreatureAttackMap* attackMap = getAttackMap();
+	if (attackMap == NULL) {
 		selectDefaultAttack();
 		return;
 	}
-
-	CreatureAttackMap* attackMap = npcTemplate->getAttacks();
 
 	if (attackNum >= 0 && attackNum < attackMap->size()) {
 		String args = attackMap->getArguments(attackNum);
