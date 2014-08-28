@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-class CreatureAttack : public Serializable {
+class CreatureAttack : public Variable {
 protected:
 	String command;
 	String arguments;
@@ -18,6 +18,20 @@ protected:
 public:
 	CreatureAttack() {}
 	virtual ~CreatureAttack() {}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		bool val = command.toBinaryStream(stream);
+		bool val2 = arguments.toBinaryStream(stream);
+
+		return val && val2;
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		bool val = command.parseFromBinaryStream(stream);
+		bool val2 = arguments.parseFromBinaryStream(stream);
+
+		return val && val2;
+	}
 
 	String getCommand() {
 		return command;
