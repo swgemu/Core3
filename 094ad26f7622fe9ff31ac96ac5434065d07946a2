@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_4dd52d42",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-28T00:32:16Z",
+      "side": 1,
+      "message": "This isn\u0027t correct. Every creo has a weapon (which is their currently equipped weapon, and the one you have here) and every ai has a vector of weapons they can choose from. You\u0027ll need to look through that vector and see if any of the weapons are a ranged weapon (weapon-\u003egetAttackType() \u003d\u003d WeaponObject::RANGEDATTACK). I\u0027d probably add the functionality as a hasRangedWeapon() method to AiAgent and call it here.",
+      "revId": "094ad26f7622fe9ff31ac96ac5434065d07946a2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_2dcaf9a1",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/genetic/GeneticComponentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-28T00:32:16Z",
+      "side": 1,
+      "message": "levelMod seems extraneous. Why not just set this value directly to level instead? I don\u0027t see the value of level being set anywhere besides the constructor as it is. Am I missing something?",
+      "revId": "094ad26f7622fe9ff31ac96ac5434065d07946a2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a5c5d37_0dcf35b2",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-08-28T00:32:16Z",
+      "side": 1,
+      "message": "minor note, but we\u0027re not working with droids here.",
+      "revId": "094ad26f7622fe9ff31ac96ac5434065d07946a2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
