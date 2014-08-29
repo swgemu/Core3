@@ -244,7 +244,7 @@ dantooine_static_spawns = {
 	{"r4",60,-666.582,3,2494.33,121.479,0, "calm", "R4-A2", "stationary"},
 	{"r4",60,-4227.33,3,-2366.11,269.389,0, "calm", "R4-S7", "stationary"},
 	{"r5",60,-4228.33,3,-2367.11,48.8478,0, "calm", "R5-L5", "stationary"},
-	{"stranded_imperial_soldier",60,-604.016,3,2538.15,200.426,0, "npc_imperial", "Lt Nilsson (a Planet record keeper)", "stationary"},
+	--{"stranded_imperial_soldier",60,-604.016,3,2538.15,200.426,0, "npc_imperial", "Lt Nilsson (a Planet record keeper)", "stationary"},
 	{"ussox",60,1635.07,4,-6402.37,321.844,0, "calm", "Ussox", "stationary"},
 	{"yras_shen_jen",60,1572.26,4,-6417.06,75.0582,0, "neutral", "", "stationary"},	
 	{"ytzosh",60,1636.98,4,-6402.56,321.838,0, "calm", "Ytzosh", "stationary"},
