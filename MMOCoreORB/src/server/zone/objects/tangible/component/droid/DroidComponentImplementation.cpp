@@ -54,10 +54,19 @@ void DroidComponentImplementation::updateCraftingValues(CraftingValues* values, 
 
 	quality = values->getCurrentValue("mechanism_quality");
 	durability = values->getCurrentValue("decayrate");
-	setUseCount(values->getCurrentValue("droid_count"));
+	if (values->hasProperty("droid_count")) {
+		setUseCount(values->getCurrentValue("droid_count"));
+		surveyDroid = true;
+	}
 }
 void DroidComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
-	TangibleObjectImplementation::fillAttributeList(alm, object);
-	alm->insertAttribute("decayrate",(int)durability);
-	alm->insertAttribute("mechanism_quality",(int)quality);
+
+	// need to update this for non survey droids
+	if (surveyDroid) {
+		TangibleObjectImplementation::fillAttributeList(alm, object);
+		alm->insertAttribute("decayrate",(int)durability);
+		alm->insertAttribute("mechanism_quality",(int)quality);
+	} else {
+		ComponentImplementation::fillAttributeList(alm,object);
+	}
 }
