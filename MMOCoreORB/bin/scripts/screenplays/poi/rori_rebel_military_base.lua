@@ -9,7 +9,7 @@ registerScreenPlay("RoriRebelMilitaryBaseScreenPlay", true)
 function RoriRebelMilitaryBaseScreenPlay:start()
 	if isZoneEnabled("rori") then
 
-		if math.random(100) >= 50 then
+		if getRandomNumber(100) >= 50 then
 			self:spawnRebels()
 		else
 			self:spawnImperials()
@@ -38,15 +38,15 @@ function RoriRebelMilitaryBaseScreenPlay:spawnRebels()
 	spawnMobile("rori", "specforce_marine", 360, -5368.140, 76.000, 5061.860, 135.653, 0)
 	spawnMobile("rori", "specforce_marine", 360, -5362.830, 76.000, 5061.750, 34.561, 0)
 
-	spawnMobile("rori", "specforce_marine", 300, math.random(12) + -5334, 76, math.random(12) + 5035, math.random(360), 0)
-	spawnMobile("rori", "specforce_marine", 300, math.random(12) + -5334, 76, math.random(12) + 5035, math.random(360), 0)
-	spawnMobile("rori", "specforce_technician", 300, math.random(12) + -5334, 76, math.random(12) + 5035, math.random(360), 0)
-	spawnMobile("rori", "specforce_marine", 300, math.random(12) + -5334, 76, math.random(12) + 5035, math.random(360), 0)
+	spawnMobile("rori", "specforce_marine", 300, getRandomNumber(12) + -5334, 76, getRandomNumber(12) + 5035, getRandomNumber(360), 0)
+	spawnMobile("rori", "specforce_marine", 300, getRandomNumber(12) + -5334, 76, getRandomNumber(12) + 5035, getRandomNumber(360), 0)
+	spawnMobile("rori", "specforce_technician", 300, getRandomNumber(12) + -5334, 76, getRandomNumber(12) + 5035, getRandomNumber(360), 0)
+	spawnMobile("rori", "specforce_marine", 300, getRandomNumber(12) + -5334, 76, getRandomNumber(12) + 5035, getRandomNumber(360), 0)
 
-	spawnMobile("rori", "specforce_marine", 300, math.random(12) + -5357, 76, math.random(12) + 5008, math.random(360), 0)
-	spawnMobile("rori", "specforce_technician", 300, math.random(12) + -5357, 76, math.random(12) + 5008, math.random(360), 0)
-	spawnMobile("rori", "specforce_lieutenant", 300, math.random(12) + -5357, 76, math.random(12) + 5008, math.random(360), 0)
-	spawnMobile("rori", "specforce_marine", 300, math.random(12) + -5357, 76, math.random(12) + 5008, math.random(360), 0)
+	spawnMobile("rori", "specforce_marine", 300, getRandomNumber(12) + -5357, 76, getRandomNumber(12) + 5008, getRandomNumber(360), 0)
+	spawnMobile("rori", "specforce_technician", 300, getRandomNumber(12) + -5357, 76, getRandomNumber(12) + 5008, getRandomNumber(360), 0)
+	spawnMobile("rori", "specforce_lieutenant", 300, getRandomNumber(12) + -5357, 76, getRandomNumber(12) + 5008, getRandomNumber(360), 0)
+	spawnMobile("rori", "specforce_marine", 300, getRandomNumber(12) + -5357, 76, getRandomNumber(12) + 5008, getRandomNumber(360), 0)
 
 	-- Left supplies
 	spawnMobile("rori", "specforce_procurement_specialist", 360, -5393.190, 76.000, 5062.330, 50.886, 0)
@@ -98,21 +98,21 @@ function RoriRebelMilitaryBaseScreenPlay:spawnImperials()
 	spawnMobile("rori", "stormtrooper", 360, -5334.020, 80.010, 5067.550, 135.727, 0)
 	spawnMobile("rori", "stormtrooper", 360, -5334.660, 80.010, 5068.880, 34.843, 0)
 	-- Central lawn
-	spawnMobile("rori", "stormtrooper_commando", 300, math.random(12) + -5370, 76, math.random(16) + 5049, math.random(180) + -90, 0)
+	spawnMobile("rori", "stormtrooper_commando", 300, getRandomNumber(12) + -5370, 76, getRandomNumber(16) + 5049, getRandomNumber(180) + -90, 0)
 	spawnMobile("rori", "stormtrooper", 360, -5362.500, 76.000, 5067.360, -161.201, 0)
 	spawnMobile("rori", "stormtrooper", 360, -5367.130, 76.000, 5066.420, 114.595, 0)
 	spawnMobile("rori", "stormtrooper", 360, -5368.140, 76.000, 5061.860, 135.653, 0)
 	spawnMobile("rori", "stormtrooper", 360, -5362.830, 76.000, 5061.750, 34.561, 0)
 
-	spawnMobile("rori", "stormtrooper", 300, math.random(12) + -5334, 76, math.random(12) + 5035, math.random(360), 0)
-	spawnMobile("rori", "stormtrooper_sniper", 300, math.random(12) + -5334, 76, math.random(12) + 5035, math.random(360), 0)
-	spawnMobile("rori", "stormtrooper_squad_leader", 300, math.random(12) + -5334, 76, math.random(12) + 5035, math.random(360), 0)
-	spawnMobile("rori", "stormtrooper", 300, math.random(12) + -5334, 76, math.random(12) + 5035, math.random(360), 0)
+	spawnMobile("rori", "stormtrooper", 300, getRandomNumber(12) + -5334, 76, getRandomNumber(12) + 5035, getRandomNumber(360), 0)
+	spawnMobile("rori", "stormtrooper_sniper", 300, getRandomNumber(12) + -5334, 76, getRandomNumber(12) + 5035, getRandomNumber(360), 0)
+	spawnMobile("rori", "stormtrooper_squad_leader", 300, getRandomNumber(12) + -5334, 76, getRandomNumber(12) + 5035, getRandomNumber(360), 0)
+	spawnMobile("rori", "stormtrooper", 300, getRandomNumber(12) + -5334, 76, getRandomNumber(12) + 5035, getRandomNumber(360), 0)
 
-	spawnMobile("rori", "stormtrooper", 300, math.random(12) + -5357, 76, math.random(12) + 5008, math.random(360), 0)
-	spawnMobile("rori", "stormtrooper_medic", 300, math.random(12) + -5357, 76, math.random(12) + 5008, math.random(360), 0)
-	spawnMobile("rori", "stormtrooper_rifleman", 300, math.random(12) + -5357, 76, math.random(12) + 5008, math.random(360), 0)
-	spawnMobile("rori", "stormtrooper", 300, math.random(12) + -5357, 76, math.random(12) + 5008, math.random(360), 0)
+	spawnMobile("rori", "stormtrooper", 300, getRandomNumber(12) + -5357, 76, getRandomNumber(12) + 5008, getRandomNumber(360), 0)
+	spawnMobile("rori", "stormtrooper_medic", 300, getRandomNumber(12) + -5357, 76, getRandomNumber(12) + 5008, getRandomNumber(360), 0)
+	spawnMobile("rori", "stormtrooper_rifleman", 300, getRandomNumber(12) + -5357, 76, getRandomNumber(12) + 5008, getRandomNumber(360), 0)
+	spawnMobile("rori", "stormtrooper", 300, getRandomNumber(12) + -5357, 76, getRandomNumber(12) + 5008, getRandomNumber(360), 0)
 
 	-- Left supplies
 	spawnMobile("rori", "stormtrooper_medic", 360, -5393.190, 76.000, 5062.330, 50.886, 0)

@@ -24,7 +24,7 @@ function EncodedDiskMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, 
 
 		ObjectManager.withCreatureObject(pPlayer, function(creature)
 			local pInventory = creature:getSlottedObject("inventory")
-			local randType = math.random(1,3)
+			local randType = getRandomNumber(1,3)
 			local pItem
 			if (randType == 1) then
 				pItem = giveItem(pInventory, "object/tangible/treasure_map/treasure_map_pirate1.iff", -1)

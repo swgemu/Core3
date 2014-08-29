@@ -71,14 +71,14 @@ function librarian_handler:runScreenHandlers(conversationTemplate, conversingPla
 
 		if (string.find(screenID, "question") ~= nil) then
 			local questionNum = string.match(screenID, '%d+')
-			local possibleAnswers = { { "wrong_one_" .. questionNum, wrongResponses[math.random(#wrongResponses)] }, 
-					  	{ "wrong_two_" .. questionNum, wrongResponses[math.random(#wrongResponses)] }, 
-					  	{ "wrong_three_" .. questionNum, wrongResponses[math.random(#wrongResponses)] } }
+			local possibleAnswers = { { "wrong_one_" .. questionNum, wrongResponses[getRandomNumber(#wrongResponses)] }, 
+					  	{ "wrong_two_" .. questionNum, wrongResponses[getRandomNumber(#wrongResponses)] }, 
+					  	{ "wrong_three_" .. questionNum, wrongResponses[getRandomNumber(#wrongResponses)] } }
 
 			if questionNum == "20" then
 				possibleAnswers[#possibleAnswers+1] = { "right_" .. questionNum, "done" }
 			else
-				possibleAnswers[#possibleAnswers+1] = { "right_" .. questionNum, rightResponses[math.random(#rightResponses)] }
+				possibleAnswers[#possibleAnswers+1] = { "right_" .. questionNum, rightResponses[getRandomNumber(#rightResponses)] }
 			end
 			possibleAnswers = self:shuffleAnswers(possibleAnswers)
 
@@ -114,7 +114,7 @@ end
 function librarian_handler:shuffleAnswers(array)
 	local arrayCount = #array
 	for i = arrayCount, 2, -1 do
-		local j = math.random(1, i)
+		local j = getRandomNumber(1, i)
 		array[i], array[j] = array[j], array[i]
 	end
 	return array

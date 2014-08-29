@@ -534,7 +534,7 @@ function WarrenScreenPlay:generatePasscode(length)
 	local code = ''
 	
 	for i = 1, length, 1 do
-		code = code .. ALPHABET[math.random(1,26)]
+		code = code .. ALPHABET[getRandomNumber(1,26)]
 	end
 	
 	return code

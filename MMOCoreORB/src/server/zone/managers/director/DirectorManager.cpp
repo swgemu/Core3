@@ -1193,7 +1193,7 @@ int DirectorManager::getRandomNumber(lua_State* L) {
 
 	if (numberOfArguments == 1) {
 		int max = lua_tointeger(L, -1);
-		random = System::random(max);
+		random = System::random(max - 1) + 1;
 	} else {
 		int min = lua_tointeger(L, -2);
 		int max = lua_tointeger(L, -1);
