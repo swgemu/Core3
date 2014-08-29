@@ -324,8 +324,14 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 				return 1;
 			}
 		}
+
 		// All checks complete, lets setup the control device and do it.
 		ManagedReference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
+
+		if (controlDevice == NULL) {
+			return 1;
+		}
+
 		String templateToSpawn = creatureManager->getTemplateToSpawn(mobileTemplate.hashCode());
 		ManagedReference<CreatureObject*> creatureObject = creatureManager->createCreature(templateToSpawn.hashCode(), true, 0 );
 		if( creatureObject == NULL ){
