@@ -541,7 +541,7 @@ function DWB:start(creatureObject)
 	if TEST == 1 then
 		printf("[Death Watch Bunker] Initiating spawns and observers\n")
 	end
-	math.randomseed( os.time() )
+
 	local bunker = getSceneObject(5996314)
 	
 	if bunker == nil then
@@ -774,7 +774,7 @@ function DWB:spawnObjects(creatureObject)
 	--writeData(5996314 .. ":dwb:pumps_busy", 0)
 	
 	-- Spawn Haldo
-	halnum = math.random(1,3)
+	halnum = getRandomNumber(1,3)
 	spawn = specialSpawnMapDWB["haldo" .. halnum]
 	if spawn ~= nil then
 		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
@@ -940,7 +940,7 @@ end
 
 function DWB:haldo_killed(creatureObject, playerObject)
 	createEvent(1000 * 240, "DWB", "respawn_haldo", playerObject)
-	num = math.random(1, 100)
+	num = getRandomNumber(1, 100)
 	if num < 30 then
 		creoid = readData(5996314 .. ":dwb:haldo_player")
 		local creo = getSceneObject(creoid)
@@ -1029,7 +1029,7 @@ function DWB:enableAccess(sceneObject)
 end
 
 function DWB:respawn_haldo(creatureObject)
-	halnum = math.random(1,3)
+	halnum = getRandomNumber(1,3)
 	spawn = specialSpawnMapDWB["haldo" .. halnum]
 	if spawn ~= nil then
 		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
@@ -1113,7 +1113,7 @@ function DWB:refill(sceneObject)
 		end
 		
 		-- add items
-		chance = math.random(100)
+		chance = getRandomNumber(100)
 		createLoot(sceneObject, "death_watch_bunker_lootbox", 1, false) 
 	
 		-- second item
@@ -1164,7 +1164,7 @@ function DWB:poison(sceneObject)
 			end
 		end		
 	end
-	createEvent(1000 * (50 + math.random(0,20)) , "DWB", "poison", sceneObject)
+	createEvent(1000 * (50 + getRandomNumber(0,20)) , "DWB", "poison", sceneObject)
 end
 
 function DWB:timeWarning(creatureObject)
@@ -1273,14 +1273,14 @@ function DWB:spawnNextA(creatureObject)
 	elseif nextSpawn == 1 then
 		writeData(5996314 .. ":dwb:terminalAnextSpawn", 2)
 		local spawn = specialSpawnMapDWB["rageon_vart_assist1"] 
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextA", creatureObject)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DWB", "spawnNextA", creatureObject)
 		
 		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 102)
 	elseif nextSpawn == 2 then
 		writeData(5996314 .. ":dwb:terminalAnextSpawn", 3)
 		local spawn = specialSpawnMapDWB["rageon_vart_assist2"]
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextA", creatureObject)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DWB", "spawnNextA", creatureObject)
 		
 		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 40)
@@ -1301,14 +1301,14 @@ function DWB:spawnNextB(creatureObject)
 	elseif nextSpawn == 1 then
 		writeData(5996314 .. ":dwb:terminalBnextSpawn", 2)
 		local spawn = specialSpawnMapDWB["klin_nif_assist1"] 
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextB", creatureObject)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DWB", "spawnNextB", creatureObject)
 		
 		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 31)
 	elseif nextSpawn == 2 then
 		writeData(5996314 .. ":dwb:terminalBnextSpawn", 3)
 		local spawn = specialSpawnMapDWB["klin_nif_assist2"]
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextB", creatureObject)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DWB", "spawnNextB", creatureObject)
 		
 		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 67)
@@ -1329,14 +1329,14 @@ function DWB:spawnNextC(creatureObject)
 	elseif nextSpawn == 1 then
 		writeData(5996314 .. ":dwb:terminalCnextSpawn", 2)
 		local spawn = specialSpawnMapDWB["fenri_dalso_assist1"] 
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextC", creatureObject)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DWB", "spawnNextC", creatureObject)
 		
 		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 37)
 	elseif nextSpawn == 2 then
 		writeData(5996314 .. ":dwb:terminalCnextSpawn", 3)
 		local spawn = specialSpawnMapDWB["fenri_dalso_assist2"]
-		createEvent((math.random(0, 10) + 30) * 1000, "DWB", "spawnNextC", creatureObject)
+		createEvent((getRandomNumber(0, 10) + 30) * 1000, "DWB", "spawnNextC", creatureObject)
 		
 		spawnPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		spatialMoodChat(spawnPointer, "@dungeon/death_watch:call_back_up", 21)

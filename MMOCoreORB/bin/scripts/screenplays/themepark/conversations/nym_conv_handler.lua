@@ -278,7 +278,7 @@ function NymConvoHandler:runBeremaScreenHandlers(conversationTemplate, conversin
 		local playerCredits = player:getCashCredits()
 		local curBet = self:readObjectData(objectID, "curBet", "nym_gambler")
 		if screenID == "begin_game_5" or screenID == "begin_game_10" or screenID == "begin_game_50" then
-			local pickedCard = math.random(1,3)
+			local pickedCard = getRandomNumber(1,3)
 			if pickedCard == 1 then
 				clonedConversation:addOption("@celebrity/lok_gambler:thermal_detonator", "tie")
 				clonedConversation:addOption("@celebrity/lok_gambler:sarlacc", "you_lose_s")

@@ -93,7 +93,7 @@ function TheaterManagerScreenPlay:startAudition(pPlayer)
 		else
 			player:sendSystemMessage("@quest/crowd_pleaser/system_messages:audition_begin")
 			writeData(player:getObjectID() .. ":auditionPhase", 1)
-			createEvent(math.random(8,12) * 1000, "TheaterManagerScreenPlay", "runAuditionPhase", pPlayer)
+			createEvent(getRandomNumber(8,12) * 1000, "TheaterManagerScreenPlay", "runAuditionPhase", pPlayer)
 		end
 	end)
 end
@@ -101,7 +101,7 @@ end
 function TheaterManagerScreenPlay:runAuditionPhase(pPlayer)
 	ObjectManager.withCreatureObject(pPlayer, function(player)
 		local phase = readData(player:getObjectID() .. ":auditionPhase")
-		local judgeID = readData(player:getObjectID() .. ":judge" .. math.random(3) .. "ID")
+		local judgeID = readData(player:getObjectID() .. ":judge" .. getRandomNumber(3) .. "ID")
 		local pJudge = getSceneObject(judgeID)
 		local auditionType = readData(player:getObjectID() .. ":auditionType")
 		local expectedPerformance, performanceName
@@ -124,7 +124,7 @@ function TheaterManagerScreenPlay:runAuditionPhase(pPlayer)
 			performanceName = performanceName:gsub("^%l", string.upper)
 			createObserver(STARTENTERTAIN, "TheaterManagerScreenPlay", "notifyPerformanceObserver", pPlayer)
 			createObserver(CHANGEENTERTAIN, "TheaterManagerScreenPlay", "notifyPerformanceObserver", pPlayer)
-			createEvent(math.random(8,15) * 1000, "TheaterManagerScreenPlay", "checkPerformanceStatus", pPlayer)
+			createEvent(getRandomNumber(8,15) * 1000, "TheaterManagerScreenPlay", "checkPerformanceStatus", pPlayer)
 			if (phase == 1) then
 				spatialChat(pJudge, "Hello and welcome. Begin by performing " .. performanceName .. " for us, please.")
 			else
@@ -137,7 +137,7 @@ function TheaterManagerScreenPlay:runAuditionPhase(pPlayer)
 			writeData(player:getObjectID() .. ":performanceCompleted", 0)
 
 			createObserver(FLOURISH, "TheaterManagerScreenPlay", "notifyFlourishObserver", pPlayer)
-			createEvent(math.random(8,15) * 1000, "TheaterManagerScreenPlay", "checkPerformanceStatus", pPlayer)
+			createEvent(getRandomNumber(8,15) * 1000, "TheaterManagerScreenPlay", "checkPerformanceStatus", pPlayer)
 			if (phase == 2) then
 				spatialChat(pJudge, "Very good. Now perform flourish " .. expectedPerformance .. " for us, please.")
 			elseif (phase == 3) then
@@ -232,7 +232,7 @@ function TheaterManagerScreenPlay:getExpectedPerformance(pPlayer, type)
 		end
 		if (type == 1) then
 			while performance == nil do
-				local performanceName = AUDITION_DANCES[math.random(table.getn(AUDITION_DANCES))]
+				local performanceName = AUDITION_DANCES[getRandomNumber(table.getn(AUDITION_DANCES))]
 				if (playerObject:hasAbility("startDance+" .. performanceName) == true and (currentPerformance == nil or performanceName ~= currentPerformance)) then
 					performance = self:getPerformanceKey(1, performanceName)
 				end
@@ -240,14 +240,14 @@ function TheaterManagerScreenPlay:getExpectedPerformance(pPlayer, type)
 			return performance
 		elseif (type == 2) then
 			while performance == nil do
-				local performanceName = AUDITION_SONGS[math.random(table.getn(AUDITION_SONGS))]
+				local performanceName = AUDITION_SONGS[getRandomNumber(table.getn(AUDITION_SONGS))]
 				if (playerObject:hasAbility("startMusic+" .. performanceName) == true and (currentPerformance == nil or performanceName ~= currentPerformance)) then
 					performance = self:getPerformanceKey(2, performanceName)
 				end
 			end
 			return performance
 		elseif (type == "flourish") then
-			return math.random(AUDITION_FLOURISHES)
+			return getRandomNumber(AUDITION_FLOURISHES)
 		else
 			printf("Invalid audition type in TheaterManagerScreenPlay:getExpectedPerformance() \n")
 			return 0
