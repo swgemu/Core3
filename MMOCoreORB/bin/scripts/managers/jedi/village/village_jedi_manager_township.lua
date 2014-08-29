@@ -15,7 +15,7 @@ VILLAGE_PHASE_THREE = 3
 VILLAGE_PHASE_FOUR = 4
 VILLAGE_TOTAL_NUMBER_OF_PHASES = 4
 
-local VILLAGE_PHASE_CHANGE_TIME = 120 * 1000 -- Testing value.
+local VILLAGE_PHASE_CHANGE_TIME = 24 * 60 * 60 * 1000 -- Testing value.
 --local VILLAGE_PHASE_CHANGE_TIME = 3 * 7 * 24 * 60 * 60 * 1000 -- Three Weeks.
 
 -- Key is the mobile name, value is the spawn parameters.
