@@ -60,6 +60,7 @@ HedonIstee = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "HedonIstee",
 	screenPlayState = "hedon_istee_task",
+	requiresEliteCombat = true,
 	distance = 800,
 }
 

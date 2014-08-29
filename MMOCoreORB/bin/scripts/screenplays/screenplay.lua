@@ -44,7 +44,7 @@ function ScreenPlay:initializeLootContainers()
 			createObserver(OPENCONTAINER, self.screenplayName, "spawnContainerLoot", pContainer)
 			self:spawnContainerLoot(pContainer)
 
-			local container = LuaSceneObject(pContainer)
+			local container = SceneObject(pContainer)
 			container:setContainerDefaultAllowPermission(MOVEOUT + OPEN)
 			container:setContainerComponent("PlaceableLootContainerComponent")
 		end
@@ -52,7 +52,7 @@ function ScreenPlay:initializeLootContainers()
 end
 
 function ScreenPlay:spawnContainerLoot(pContainer)
-	local container = LuaSceneObject(pContainer)
+	local container = SceneObject(pContainer)
 	local time = getTimestamp()
 
 	if (readData(container:getObjectID()) > time) then
