@@ -1,3 +1,5 @@
+local ObjectManager = require("managers.object.object_manager")
+
 npcMapLibrarian = 
 { 
 	{ 
@@ -22,8 +24,7 @@ librarian_handler = Object:new {
 }
 
 function librarian_handler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local player = LuaCreatureObject(pPlayer)
-	local pConversationSession = player:getConversationSession()
+	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
 	
 	local pLastConversationScreen = nil
 	
@@ -46,19 +47,9 @@ end
 
 function librarian_handler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-        local conversingPlayer = LuaCreatureObject(pPlayer)
-        local pPlayerObject = conversingPlayer:getPlayerObject()
-        local conversingObject = LuaSceneObject(pPlayer)
-
-        if (pPlayerObject == nil) then
-        	return nil
-        end
-
-	local objectID = conversingPlayer:getObjectID()
+	local objectID = CreatureObject(pPlayer):getObjectID()
 	writeData(objectID .. ":librarian", 1)
-      
-        local playerObject = LuaPlayerObject(pPlayerObject)
-      
+
         return convoTemplate:getScreen("want_trivia")
 end
 
@@ -71,66 +62,62 @@ function librarian_handler:runScreenHandlers(conversationTemplate, conversingPla
 	wrongResponses = { "too_bad_so_sad", "worst_ever_guesser", "thats_not_it", "no_sir", "you_are_wrong", "incorrect", 
 			  "buzz_wrong_answer", "couldnt_be_wronger", "most_wrong", "bad_answer", "most_unfortunate",
 			  "most_incorrect", "worst_answer_ever", "wrongest", "wrong_squared", "you_are_weakest_link", "not_even_trying" }
-	
-	local player = LuaCreatureObject(conversingPlayer)
-	local objectID = player:getObjectID()
 
-	local playerObjectPointer = player:getPlayerObject()
+	ObjectManager.withCreatureAndPlayerObject(conversingPlayer, function(creature, player)
+		local objectID = creature:getObjectID()
 
-	conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)	
+		conversationScreen = screen:cloneScreen()
+		local clonedConversation = LuaConversationScreen(conversationScreen)	
 
-	if (string.find(screenID, "question") ~= nil) then
-		local questionNum = string.match(screenID, '%d+')
-		local possibleAnswers = { { "wrong_one_" .. questionNum, wrongResponses[math.random(#wrongResponses)] }, 
-					  { "wrong_two_" .. questionNum, wrongResponses[math.random(#wrongResponses)] }, 
-					  { "wrong_three_" .. questionNum, wrongResponses[math.random(#wrongResponses)] } }
+		if (string.find(screenID, "question") ~= nil) then
+			local questionNum = string.match(screenID, '%d+')
+			local possibleAnswers = { { "wrong_one_" .. questionNum, wrongResponses[math.random(#wrongResponses)] }, 
+					  	{ "wrong_two_" .. questionNum, wrongResponses[math.random(#wrongResponses)] }, 
+					  	{ "wrong_three_" .. questionNum, wrongResponses[math.random(#wrongResponses)] } }
 
-		if questionNum == "20" then
-			possibleAnswers[#possibleAnswers+1] = { "right_" .. questionNum, "done" }
-		else
-			possibleAnswers[#possibleAnswers+1] = { "right_" .. questionNum, rightResponses[math.random(#rightResponses)] }
+			if questionNum == "20" then
+				possibleAnswers[#possibleAnswers+1] = { "right_" .. questionNum, "done" }
+			else
+				possibleAnswers[#possibleAnswers+1] = { "right_" .. questionNum, rightResponses[math.random(#rightResponses)] }
+			end
+			possibleAnswers = self:shuffleAnswers(possibleAnswers)
+
+			writeData(objectID .. ":librarian", questionNum)
+
+			clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[1][1], possibleAnswers[1][2])
+			clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[2][1], possibleAnswers[2][2])
+			clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[3][1], possibleAnswers[3][2])
+			clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[4][1], possibleAnswers[4][2])
 		end
-		possibleAnswers = self:shuffleAnswers(possibleAnswers)
 
-		writeData(objectID .. ":librarian", questionNum)
-
-		clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[1][1], possibleAnswers[1][2])
-		clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[2][1], possibleAnswers[2][2])
-		clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[3][1], possibleAnswers[3][2])
-		clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[4][1], possibleAnswers[4][2])
-	end
-
-	if (self:existsInTable(rightResponses, screenID)) then
-		nextQuestion = readData(objectID .. ":librarian") + 1
-		clonedConversation:addOption("@celebrity/librarian:yes", "question_" .. nextQuestion)
-		clonedConversation:addOption("@celebrity/librarian:no", "good_bye")
-	end
-
-	if (self:existsInTable(wrongResponses, screenID)) then
-		currentQuestion = readData(objectID .. ":librarian")
-		writeData(objectID .. ":librarian", 1)
-		clonedConversation:addOption("@celebrity/librarian:yes", "question_" .. currentQuestion)
-		clonedConversation:addOption("@celebrity/librarian:no", "good_bye")
-	end
-
-	if (screenID == "done") then
-		if playerObjectPointer ~= nil then
-			local ghost = LuaPlayerObject(playerObjectPointer)
-			ghost:awardBadge(111)
+		if (self:existsInTable(rightResponses, screenID)) then
+			nextQuestion = readData(objectID .. ":librarian") + 1
+			clonedConversation:addOption("@celebrity/librarian:yes", "question_" .. nextQuestion)
+			clonedConversation:addOption("@celebrity/librarian:no", "good_bye")
 		end
-	end
-	
+
+		if (self:existsInTable(wrongResponses, screenID)) then
+			currentQuestion = readData(objectID .. ":librarian")
+			writeData(objectID .. ":librarian", 1)
+			clonedConversation:addOption("@celebrity/librarian:yes", "question_" .. currentQuestion)
+			clonedConversation:addOption("@celebrity/librarian:no", "good_bye")
+		end
+
+		if (screenID == "done") then
+			player:awardBadge(111)
+		end
+	end)
+
 	return conversationScreen
 end
 
 function librarian_handler:shuffleAnswers(array)
-    local arrayCount = #array
-    for i = arrayCount, 2, -1 do
-        local j = math.random(1, i)
-        array[i], array[j] = array[j], array[i]
-    end
-    return array
+	local arrayCount = #array
+	for i = arrayCount, 2, -1 do
+		local j = math.random(1, i)
+		array[i], array[j] = array[j], array[i]
+	end
+	return array
 end
 
 function librarian_handler:existsInTable(table, item)
