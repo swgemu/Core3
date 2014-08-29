@@ -30,7 +30,7 @@ end
 function PersistentEvent:getTime()
 	local range = self.maximumTimeUntilEvent - self.minimumTimeUntilEvent
 	if range > 0 then
-		return self.minimumTimeUntilEvent + math.random(range)
+		return self.minimumTimeUntilEvent + getRandomNumber(0, range)
 	else
 		return self.minimumTimeUntilEvent
 	end

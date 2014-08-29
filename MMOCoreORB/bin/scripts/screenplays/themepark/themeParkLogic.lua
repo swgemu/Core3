@@ -624,7 +624,7 @@ function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
 
 	for i = 1, numberOfChildNpcs, 1 do
 		local targetCellObject = SceneObject(BuildingObject(pBuilding):getCell(childNpcs[i].vectorCellID))
-		local pNpc = spawnMobile(buildingData.building.planet, childNpcs[i].npcTemplate, 0, childNpcs[i].x, childNpcs[i].z, childNpcs[i].y, math.random(-180, 180), targetCellObject:getObjectID())
+		local pNpc = spawnMobile(buildingData.building.planet, childNpcs[i].npcTemplate, 0, childNpcs[i].x, childNpcs[i].z, childNpcs[i].y, getRandomNumber(360) - 180, targetCellObject:getObjectID())
 
 		local npcName = self:getNpcName(childNpcs[i].npcName)
 		CreatureObject(pNpc):setCustomObjectName(npcName)
@@ -916,7 +916,7 @@ function ThemeParkLogic:spawnNpc(npcTemplate, position, pConversingPlayer, spawn
 		return nil
 	end
 
-	local pNpc = spawnMobile(npcTemplate.planetName, npcTemplate.npcTemplate, 0, position[1], position[2], position[3], math.random(-180, 180), position[4])
+	local pNpc = spawnMobile(npcTemplate.planetName, npcTemplate.npcTemplate, 0, position[1], position[2], position[3], getRandomNumber(360) - 180, position[4])
 
 	if pNpc ~= nil then
 		local npcName = self:getNpcName(npcTemplate.npcName)
@@ -1371,7 +1371,7 @@ function ThemeParkLogic:giveItem(pConversingPlayer, itemList)
 		for currentItem = 1, # itemList, 1 do
 			local thisItem = itemList[currentItem]
 			local itemTemplate = thisItem.itemTemplate
-			local numberOfItemsOfThisType = math.random(thisItem.minimum, thisItem.maximum)
+			local numberOfItemsOfThisType = getRandomNumber(thisItem.minimum, thisItem.maximum)
 
 			for i = 1, numberOfItemsOfThisType, 1 do
 				local pItem = giveItem(pInventory, itemTemplate, -1)
