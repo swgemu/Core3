@@ -96,7 +96,7 @@ function GoToTheater:taskStart(pCreatureObject)
 
 		if spawnPoint ~= nil then
 			Logger:log("Spawn point for theater " .. self.taskName .. ": " .. spawnPoint[1] .. ", " .. spawnPoint[2] .. ", " .. spawnPoint[3] .. ".", LT_INFO)
-			local pTheater = spawnSceneObject(creatureObject:getZoneName(), self.theater, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, math.random(0, 359))
+			local pTheater = spawnSceneObject(creatureObject:getZoneName(), self.theater, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, getRandomNumber(0, 359))
 
 			if ObjectManager.withSceneObject(pTheater, function(theater)
 				writeData(creatureObject:getObjectID() .. self.taskName .. THEATER_ID_STRING, theater:getObjectID())

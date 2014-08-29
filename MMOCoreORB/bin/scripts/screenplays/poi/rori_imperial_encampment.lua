@@ -9,7 +9,7 @@ function RoriImperialEncampmentScreenPlay:start()
 	if isZoneEnabled("rori") then
 		self:spawnMobiles()
 
-		if math.random(100) >= 50 then
+		if getRandomNumber(100) >= 50 then
 			self:spawnRebels()
 		else
 			self:spawnImperials()

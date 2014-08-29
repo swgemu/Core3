@@ -72,7 +72,7 @@ function HologrindJediManager:onPlayerCreated(pCreatureObject)
 	HologrindJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		for i = 1, NUMBEROFPROFESSIONSTOMASTER, 1 do
 			local numberOfSkillsInList = table.getn(skillList)
-			local skillNumber = math.random(1, numberOfSkillsInList)
+			local skillNumber = getRandomNumber(1, numberOfSkillsInList)
 			playerObject:addHologrindProfession(skillList[skillNumber][2])
 			table.remove(skillList, skillNumber)
 		end
