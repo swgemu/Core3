@@ -394,35 +394,35 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Creature Handler",
 				{
 					"Novice", "outdoors_creaturehandler_novice",
-					--"Taming",
-					--{
-						--"Creature Taming I", "outdoors_creaturehandler_taming_01",
-						--"Creature Taming II", "outdoors_creaturehandler_taming_02",
-						--"Creature Taming III", "outdoors_creaturehandler_taming_03",
-						--"Creature Taming IV", "outdoors_creaturehandler_taming_04"
-					--},
-					--"Training",
-					--{
-						--"Creature Training I", "outdoors_creaturehandler_training_01",
-						--"Creature Training II", "outdoors_creaturehandler_training_02",
-						--"Creature Training III", "outdoors_creaturehandler_training_03",
-						--"Creature Training IV", "outdoors_creaturehandler_training_04"
-					--},
-					--"Empathy",
-					--{
-						--"Creature Empathy I", "outdoors_creaturehandler_healing_01",
-						--"Creature Empathy II", "outdoors_creaturehandler_healing_02",
-						--"Creature Empathy III", "outdoors_creaturehandler_healing_03",
-						--"Creature Empathy IV", "outdoors_creaturehandler_healing_04"
-					--},
-					--"Management",
-					--{
-						--"Creature Management I", "outdoors_creaturehandler_support_01",
-						--"Creature Management II", "outdoors_creaturehandler_support_02",
-						--"Creature Management III", "outdoors_creaturehandler_support_03",
-						--"Creature Management IV", "outdoors_creaturehandler_support_04"
-					--},
-					--"Master", "outdoors_creaturehandler_master"
+					"Taming",
+					{
+						"Creature Taming I", "outdoors_creaturehandler_taming_01",
+						"Creature Taming II", "outdoors_creaturehandler_taming_02",
+						"Creature Taming III", "outdoors_creaturehandler_taming_03",
+						"Creature Taming IV", "outdoors_creaturehandler_taming_04"
+					},
+					"Training",
+					{
+						"Creature Training I", "outdoors_creaturehandler_training_01",
+						"Creature Training II", "outdoors_creaturehandler_training_02",
+						"Creature Training III", "outdoors_creaturehandler_training_03",
+						"Creature Training IV", "outdoors_creaturehandler_training_04"
+					},
+					"Empathy",
+					{
+						"Creature Empathy I", "outdoors_creaturehandler_healing_01",
+						"Creature Empathy II", "outdoors_creaturehandler_healing_02",
+						"Creature Empathy III", "outdoors_creaturehandler_healing_03",
+						"Creature Empathy IV", "outdoors_creaturehandler_healing_04"
+					},
+					"Management",
+					{
+						"Creature Management I", "outdoors_creaturehandler_support_01",
+						"Creature Management II", "outdoors_creaturehandler_support_02",
+						"Creature Management III", "outdoors_creaturehandler_support_03",
+						"Creature Management IV", "outdoors_creaturehandler_support_04"
+					},
+					"Master", "outdoors_creaturehandler_master"
 				},
 				"Dancer",
 				{
