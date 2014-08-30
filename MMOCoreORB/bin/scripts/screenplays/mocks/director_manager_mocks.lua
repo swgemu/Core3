@@ -35,6 +35,7 @@ function DirectorManagerMocks.mocks.before_each()
 	spawnMobile = spy.new(function() return nil end)
 	writeData = spy.new(function() end)
 	getRandomNumber = spy.new(function() return 1 end)
+	awardSkill = spy.new(function() end)
 
 	AiAgent = spy.new(function(pAiAgent)
 		if pAiAgent == nil then
