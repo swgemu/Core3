@@ -1,6 +1,7 @@
 registerScreenPlay = spy.new(function() end)
 
 require("managers.jedi.hologrind.hologrind_jedi_manager")
+local ObjectManager = require("managers.object.object_manager")
 
 EXPECTEDNUMBEROFPROFESSIONSTOGRIND = 6
 EXPECTEDMAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON = 4
@@ -13,17 +14,17 @@ describe("Hologrind Jedi Manager", function()
 				local playerPointer = {}
 				addHologrindProfessionSpy = spy.new(function() end)
 				local getPlayerObjectSpy = spy.new(function() return playerPointer end)
-				local realWithCreaturePlayerObject = HologrindJediManager.withCreaturePlayerObject
-				HologrindJediManager.withCreaturePlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+				local realWithCreaturePlayerObject = ObjectManager.withCreaturePlayerObject
+				ObjectManager.withCreaturePlayerObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction({ addHologrindProfession = addHologrindProfessionSpy })
 				end)
 
 				HologrindJediManager.onPlayerCreated(creaturePointer)
 
-				assert.spy(HologrindJediManager.withCreaturePlayerObject).was.called(1)
+				assert.spy(ObjectManager.withCreaturePlayerObject).was.called(1)
 				assert.spy(addHologrindProfessionSpy).was.called(EXPECTEDNUMBEROFPROFESSIONSTOGRIND)
 
-				HologrindJediManager.withCreaturePlayerObject = realWithCreaturePlayerObject
+				ObjectManager.withCreaturePlayerObject = realWithCreaturePlayerObject
 			end)
 		end)
 
@@ -212,12 +213,12 @@ describe("Hologrind Jedi Manager", function()
 				local getHologrindProfessionsSpy = spy.new(function() return { 1, 2, 3, 4 } end)
 				local hasBadgeSpy = spy.new(function(self, badgeNumber) return badgeNumber < 3 end)
 				local playerObject = { getHologrindProfessions = getHologrindProfessionsSpy, hasBadge = hasBadgeSpy }
-				local realWithCreaturePlayerObject = HologrindJediManager.withCreaturePlayerObject
-				HologrindJediManager.withCreaturePlayerObject = spy.new(function(pCreatureObject, performThisFunction) return performThisFunction(playerObject) end)
+				local realWithCreaturePlayerObject = ObjectManager.withCreaturePlayerObject
+				ObjectManager.withCreaturePlayerObject = spy.new(function(pCreatureObject, performThisFunction) return performThisFunction(playerObject) end)
 
 				assert.same(2, HologrindJediManager.getNumberOfMasteredProfessions())
 
-				assert.spy(HologrindJediManager.withCreaturePlayerObject).was.called(1)
+				assert.spy(ObjectManager.withCreaturePlayerObject).was.called(1)
 				assert.spy(getHologrindProfessionsSpy).was.called(1)
 				assert.spy(hasBadgeSpy).was.called(4)
 			end)
@@ -263,27 +264,27 @@ describe("Hologrind Jedi Manager", function()
 				local playerObject = { getHologrindProfessions = getHologrindProfessionsSpy, hasBadge = hasBadgeSpy }
 
 				local realGetNumberOfMasteredProfessions = HologrindJediManager.getNumberOfMasteredProfessions
-				local realWithCreatureObject = HologrindJediManager.withCreatureObject
-				local realWithCreatureAndPlayerObject = HologrindJediManager.withCreatureAndPlayerObject
+				local realWithCreatureObject = ObjectManager.withCreatureObject
+				local realWithCreatureAndPlayerObject = ObjectManager.withCreatureAndPlayerObject
 				HologrindJediManager.getNumberOfMasteredProfessions = spy.new(function() return 2 end)
-				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
+				ObjectManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction(creatureObject)
 				end)
-				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+				ObjectManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction(creatureObject, playerObject)
 				end)
 
 				HologrindJediManager.sendHolocronMessage(creaturePointer)
 
 				assert.spy(HologrindJediManager.getNumberOfMasteredProfessions).was.called(1)
-				assert.spy(HologrindJediManager.withCreatureAndPlayerObject).was.called(1)
+				assert.spy(ObjectManager.withCreatureAndPlayerObject).was.called(1)
 				assert.spy(getHologrindProfessionsSpy).was.called(1)
 				assert.spy(hasBadgeSpy).was.called(4)
 				assert.spy(sendSystemMessageWithTOSpy).was.called(2)
 
 				HologrindJediManager.getNumberOfMasteredProfessions = realGetNumberOfMasteredProfessions
-				HologrindJediManager.withCreatureObject = realWithCreatureObject
-				HologrindJediManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
+				ObjectManager.withCreatureObject = realWithCreatureObject
+				ObjectManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
 			end)
 
 			it("Should send find out on your own message to the player if the number of mastered professions is above the threshold", function()
@@ -296,27 +297,27 @@ describe("Hologrind Jedi Manager", function()
 				local playerObject = { getHologrindProfessions = getHologrindProfessionsSpy, hasBadge = hasBadgeSpy }
 
 				local realGetNumberOfMasteredProfessions = HologrindJediManager.getNumberOfMasteredProfessions
-				local realWithCreatureObject = HologrindJediManager.withCreatureObject
-				local realWithCreatureAndPlayerObject = HologrindJediManager.withCreatureAndPlayerObject
+				local realWithCreatureObject = ObjectManager.withCreatureObject
+				local realWithCreatureAndPlayerObject = ObjectManager.withCreatureAndPlayerObject
 				HologrindJediManager.getNumberOfMasteredProfessions = spy.new(function() return 4 end)
-				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
+				ObjectManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction(creatureObject)
 				end)
-				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+				ObjectManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction(creatureObject, playerObject)
 				end)
 
 				HologrindJediManager.sendHolocronMessage(creaturePointer)
 
 				assert.spy(HologrindJediManager.getNumberOfMasteredProfessions).was.called(1)
-				assert.spy(HologrindJediManager.withCreatureObject).was.called(1)
+				assert.spy(ObjectManager.withCreatureObject).was.called(1)
 				assert.spy(getHologrindProfessionsSpy).was.called(0)
 				assert.spy(hasBadgeSpy).was.called(0)
 				assert.spy(sendSystemMessageSpy).was.called(1)
 
 				HologrindJediManager.getNumberOfMasteredProfessions = realGetNumberOfMasteredProfessions
-				HologrindJediManager.withCreatureObject = realWithCreatureObject
-				HologrindJediManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
+				ObjectManager.withCreatureObject = realWithCreatureObject
+				ObjectManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
 			end)
 
 			it("Should return false if the number of mastered professions is below the threshold", function()
@@ -329,21 +330,21 @@ describe("Hologrind Jedi Manager", function()
 				local playerObject = { getHologrindProfessions = getHologrindProfessionsSpy, hasBadge = hasBadgeSpy }
 
 				local realGetNumberOfMasteredProfessions = HologrindJediManager.getNumberOfMasteredProfessions
-				local realWithCreatureObject = HologrindJediManager.withCreatureObject
-				local realWithCreatureAndPlayerObject = HologrindJediManager.withCreatureAndPlayerObject
+				local realWithCreatureObject = ObjectManager.withCreatureObject
+				local realWithCreatureAndPlayerObject = ObjectManager.withCreatureAndPlayerObject
 				HologrindJediManager.getNumberOfMasteredProfessions = spy.new(function() return 2 end)
-				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
+				ObjectManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction(creatureObject)
 				end)
-				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+				ObjectManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction(creatureObject, playerObject)
 				end)
 
 				assert.is_not_true(HologrindJediManager.sendHolocronMessage(creaturePointer))
 
 				HologrindJediManager.getNumberOfMasteredProfessions = realGetNumberOfMasteredProfessions
-				HologrindJediManager.withCreatureObject = realWithCreatureObject
-				HologrindJediManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
+				ObjectManager.withCreatureObject = realWithCreatureObject
+				ObjectManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
 			end)
 
 			it("Should return true if the number of mastered professions is above the threshold", function()
@@ -356,21 +357,21 @@ describe("Hologrind Jedi Manager", function()
 				local playerObject = { getHologrindProfessions = getHologrindProfessionsSpy, hasBadge = hasBadgeSpy }
 
 				local realGetNumberOfMasteredProfessions = HologrindJediManager.getNumberOfMasteredProfessions
-				local realWithCreatureObject = HologrindJediManager.withCreatureObject
-				local realWithCreatureAndPlayerObject = HologrindJediManager.withCreatureAndPlayerObject
+				local realWithCreatureObject = ObjectManager.withCreatureObject
+				local realWithCreatureAndPlayerObject = ObjectManager.withCreatureAndPlayerObject
 				HologrindJediManager.getNumberOfMasteredProfessions = spy.new(function() return 4 end)
-				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
+				ObjectManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction(creatureObject)
 				end)
-				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+				ObjectManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction(creatureObject, playerObject)
 				end)
 
 				assert.is_true(HologrindJediManager.sendHolocronMessage(creaturePointer))
 
 				HologrindJediManager.getNumberOfMasteredProfessions = realGetNumberOfMasteredProfessions
-				HologrindJediManager.withCreatureObject = realWithCreatureObject
-				HologrindJediManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
+				ObjectManager.withCreatureObject = realWithCreatureObject
+				ObjectManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
 			end)
 		end)
 
@@ -379,17 +380,17 @@ describe("Hologrind Jedi Manager", function()
 				local creaturePointer = { "creatureObjectPointer" }
 				local isJediSpy = spy.new(function() return true end)
 				local playerObject = { isJedi = isJediSpy }
-				local realWithCreaturePlayerObject = HologrindJediManager.withCreaturePlayerObject
-				HologrindJediManager.withCreaturePlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+				local realWithCreaturePlayerObject = ObjectManager.withCreaturePlayerObject
+				ObjectManager.withCreaturePlayerObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction(playerObject)
 				end)
 
 				assert.is_true(HologrindJediManager.isJedi(creaturePointer))
 
 				assert.spy(isJediSpy).was.called(1)
-				assert.spy(HologrindJediManager.withCreaturePlayerObject).was.called(1)
+				assert.spy(ObjectManager.withCreaturePlayerObject).was.called(1)
 
-				HologrindJediManager.withCreaturePlayerObject = realWithCreaturePlayerObject
+				ObjectManager.withCreaturePlayerObject = realWithCreaturePlayerObject
 			end)
 		end)
 
@@ -419,8 +420,8 @@ describe("Hologrind Jedi Manager", function()
 				awardSkill = spy.new(function() end)
 				setJediStateSpy = spy.new(function() end)
 				local playerObject = { setJediState = setJediStateSpy }
-				local realWithCreaturePlayerObject = HologrindJediManager.withCreaturePlayerObject
-				HologrindJediManager.withCreaturePlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+				local realWithCreaturePlayerObject = ObjectManager.withCreaturePlayerObject
+				ObjectManager.withCreaturePlayerObject = spy.new(function(pCreatureObject, performThisFunction)
 					return performThisFunction(playerObject)
 				end)
 
@@ -428,9 +429,9 @@ describe("Hologrind Jedi Manager", function()
 
 				assert.spy(awardSkill).was.called_with(creaturePointer, "force_title_jedi_novice")
 				assert.spy(setJediStateSpy).was.called_with(playerObject, 1)
-				assert.spy(HologrindJediManager.withCreaturePlayerObject).was.called(1)
+				assert.spy(ObjectManager.withCreaturePlayerObject).was.called(1)
 
-				HologrindJediManager.withCreaturePlayerObject = realWithCreaturePlayerObject
+				ObjectManager.withCreaturePlayerObject = realWithCreaturePlayerObject
 			end)
 		end)
 	end)

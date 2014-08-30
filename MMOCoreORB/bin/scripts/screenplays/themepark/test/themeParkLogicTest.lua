@@ -1,3 +1,4 @@
+local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 includeFile = spy.new(function() end)
 
 require("screenplays.themepark.themeParkLogic")
