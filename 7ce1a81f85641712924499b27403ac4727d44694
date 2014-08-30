@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a5c5d37_4de2cdd6",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/tests/hologrind_jedi_manager_Test.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-08-30T11:24:24Z",
+      "side": 1,
+      "message": "Use the director_manager_mocks instead and set it up by using the player and creature object maps instead.",
+      "revId": "7ce1a81f85641712924499b27403ac4727d44694",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
