@@ -344,7 +344,12 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 				return true;
 
 			PlayerManager* playerManager = zoneServer->getPlayerManager();
-			playerManager->awardExperience(speaker, "creaturehandler", 10 * creatureTemplate->getLevel());
+
+			if (pet->hasPetDeed()) {
+				playerManager->awardExperience(speaker, "creaturehandler", 100);
+			} else {
+				playerManager->awardExperience(speaker, "creaturehandler", 10 * creatureTemplate->getLevel());
+			}
 		}
 	}
 	else{

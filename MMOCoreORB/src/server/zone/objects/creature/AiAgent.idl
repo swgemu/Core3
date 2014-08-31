@@ -1060,4 +1060,8 @@ class AiAgent extends CreatureObject {
 	public void setPetDeed(PetDeed deed) {
 		petDeed = deed;
 	}
+
+	public boolean hasPetDeed() {
+		return petDeed != null;
+	}
 }
