@@ -91,98 +91,96 @@ end
 function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
 	local nextScreenName
-	ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
-		local activeScreenPlay = readStringData(creature:getObjectID() .. ":activeScreenPlay")
-		if activeScreenPlay == self.themePark.className or activeScreenPlay == "" then
-			local activeNpcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
-			local thisNpcNumber = self.themePark:getNpcNumber(pConversingNpc)
-			local stfFile = self.themePark:getStfFile(thisNpcNumber)
-			local npcCompare = thisNpcNumber - activeNpcNumber
-			local globalFaction = self.themePark:getGlobalFaction()
-			local currentMissionNumber = self.themePark:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
-			local missionFaction
-			if currentMissionNumber > 0 and thisNpcNumber == activeNpcNumber then
-				missionFaction = self.themePark:getMissionFaction(activeNpcNumber, currentMissionNumber)
-			elseif thisNpcNumber ~= activeNpcNumber then
-				missionFaction = self.themePark:getNpcFaction(thisNpcNumber)
-			else
-				missionFaction = 0
-			end
-
-			if (self.themePark:missionStatus(pConversingPlayer) == -1) then
-				nextScreenName = "failure"
-
-			elseif missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pConversingPlayer) ~= true then
-				if self.themePark:isValidConvoString(stfFile, ":notyet") then
-					nextScreenName = "notyet"
-				else
-					nextScreenName = "no_faction"
-				end
-
-			elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) ~= true then
-				if self.themePark:isValidConvoString(stfFile, ":notyet") and table.getn(self.themePark.npcMap) == 1  then
-					nextScreenName = "notyet"
-				else
-					nextScreenName = "no_faction"
-				end
-
-			elseif self.themePark:requiresEliteCombatProfession() == true and self.themePark:hasEliteCombatProfession(pConversingPlayer) == false then
-				nextScreenName = "too_weak"
-
-			elseif missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pConversingPlayer) and self.themePark:isOnLeave(pConversingPlayer) then
-				if self.themePark:isValidConvoString(stfFile, ":notyet") then
-					nextScreenName = "notyet"
-				else
-					nextScreenName = "no_faction"
-				end
-			elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) and self.themePark:isOnLeave(pConversingPlayer) then
-				if self.themePark:isValidConvoString(stfFile, ":notyet") and table.getn(self.themePark.npcMap) == 1 then
-					nextScreenName = "notyet"
-				else
-					nextScreenName = "no_faction"
-				end
-			elseif npcCompare == 0 then
-				if self.themePark:missionStatus(pConversingPlayer) == 1 then
-					if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "escort" and self.themePark:escortedNpcCloseEnough(pConversingPlayer) == true then
-						nextScreenName = "npc_reward_n"
-					else
-						nextScreenName = "npc_work_n"
-					end
-				elseif self.themePark:missionStatus(pConversingPlayer) == 2 then
-					if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "confiscate" and not self.themePark:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer) == true then
-						nextScreenName = "npc_work_n"
-					elseif self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "retrieve" and self.themePark:hasRequiredItem(pConversingPlayer) == true then
-						self.themePark:removeDeliverItem(pConversingPlayer)
-						nextScreenName = "npc_reward_n"
-					elseif self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "retrieve" and self.themePark:hasRequiredItem(pConversingPlayer) == false then
-						nextScreenName = "npc_work_n"
-					else
-						nextScreenName = "npc_reward_n"
-					end
-				else
-					if self.themePark:getMissionPreReq(pConversingPlayer) ~= 0 then
-						local missionPreReq = self.themePark:getMissionPreReq(pConversingPlayer)
-						if missionPreReq.type == "item" and (readData(creature:getObjectID() .. ":hasPreReqItem") == 1 or self.themePark:doPreReqItemCheck(pConversingPlayer, missionPreReq) == true) then
-							nextScreenName = "npc_1_n"
-						elseif missionPreReq.type == "state" and creature:hasScreenPlayState(missionPreReq.state, missionPreReq.screenPlayState) == 1 then
-							nextScreenName = "npc_1_n"
-						else
-							nextScreenName = "notyet"
-						end
-					else
-						nextScreenName = "npc_1_n"
-					end
-				end
-			elseif npcCompare < 0 then
-				nextScreenName = "next"
-			else
-				nextScreenName = "notyet"
-			end
+	local activeScreenPlay = readStringData(CreatureObject(pConversingPlayer):getObjectID() .. ":activeScreenPlay")
+	if activeScreenPlay == self.themePark.className or activeScreenPlay == "" then
+		local activeNpcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
+		local thisNpcNumber = self.themePark:getNpcNumber(pConversingNpc)
+		local stfFile = self.themePark:getStfFile(thisNpcNumber)
+		local npcCompare = thisNpcNumber - activeNpcNumber
+		local globalFaction = self.themePark:getGlobalFaction()
+		local currentMissionNumber = self.themePark:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
+		local missionFaction
+		if currentMissionNumber > 0 and thisNpcNumber == activeNpcNumber then
+			missionFaction = self.themePark:getMissionFaction(activeNpcNumber, currentMissionNumber)
+		elseif thisNpcNumber ~= activeNpcNumber then
+			missionFaction = self.themePark:getNpcFaction(thisNpcNumber)
 		else
-			nextScreenName = "cant_work"
+			missionFaction = 0
 		end
-		return self:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, conversationTemplate:getScreen(nextScreenName))
-	end)
+
+		if (self.themePark:missionStatus(pConversingPlayer) == -1) then
+			nextScreenName = "failure"
+
+		elseif missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pConversingPlayer) ~= true then
+			if self.themePark:isValidConvoString(stfFile, ":notyet") then
+				nextScreenName = "notyet"
+			else
+				nextScreenName = "no_faction"
+			end
+
+		elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) ~= true then
+			if self.themePark:isValidConvoString(stfFile, ":notyet") and table.getn(self.themePark.npcMap) == 1  then
+				nextScreenName = "notyet"
+			else
+				nextScreenName = "no_faction"
+			end
+
+		elseif self.themePark:requiresEliteCombatProfession() == true and self.themePark:hasEliteCombatProfession(pConversingPlayer) == false then
+			nextScreenName = "too_weak"
+
+		elseif missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pConversingPlayer) and self.themePark:isOnLeave(pConversingPlayer) then
+			if self.themePark:isValidConvoString(stfFile, ":notyet") then
+				nextScreenName = "notyet"
+			else
+				nextScreenName = "no_faction"
+			end
+		elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) and self.themePark:isOnLeave(pConversingPlayer) then
+			if self.themePark:isValidConvoString(stfFile, ":notyet") and table.getn(self.themePark.npcMap) == 1 then
+				nextScreenName = "notyet"
+			else
+				nextScreenName = "no_faction"
+			end
+		elseif npcCompare == 0 then
+			if self.themePark:missionStatus(pConversingPlayer) == 1 then
+				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "escort" and self.themePark:escortedNpcCloseEnough(pConversingPlayer) == true then
+					nextScreenName = "npc_reward_n"
+				else
+					nextScreenName = "npc_work_n"
+				end
+			elseif self.themePark:missionStatus(pConversingPlayer) == 2 then
+				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "confiscate" and not self.themePark:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer) == true then
+					nextScreenName = "npc_work_n"
+				elseif self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "retrieve" and self.themePark:hasRequiredItem(pConversingPlayer) == true then
+					self.themePark:removeDeliverItem(pConversingPlayer)
+					nextScreenName = "npc_reward_n"
+				elseif self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "retrieve" and self.themePark:hasRequiredItem(pConversingPlayer) == false then
+					nextScreenName = "npc_work_n"
+				else
+					nextScreenName = "npc_reward_n"
+				end
+			else
+				if self.themePark:getMissionPreReq(pConversingPlayer) ~= 0 then
+					local missionPreReq = self.themePark:getMissionPreReq(pConversingPlayer)
+					if missionPreReq.type == "item" and (readData(CreatureObject(pConversingPlayer):getObjectID() .. ":hasPreReqItem") == 1 or self.themePark:doPreReqItemCheck(pConversingPlayer, missionPreReq) == true) then
+						nextScreenName = "npc_1_n"
+					elseif missionPreReq.type == "state" and CreatureObject(pConversingPlayer):hasScreenPlayState(missionPreReq.state, missionPreReq.screenPlayState) == 1 then
+						nextScreenName = "npc_1_n"
+					else
+						nextScreenName = "notyet"
+					end
+				else
+					nextScreenName = "npc_1_n"
+				end
+			end
+		elseif npcCompare < 0 then
+			nextScreenName = "next"
+		else
+			nextScreenName = "notyet"
+		end
+	else
+		nextScreenName = "cant_work"
+	end
+	return self:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, conversationTemplate:getScreen(nextScreenName))
 end
 
 function mission_giver_conv_handler:handleScreenTooWeak(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
