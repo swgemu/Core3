@@ -372,7 +372,6 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		controlDevice->setGrowthStage(10);
 		controlDevice->updateStatus(1);
 
-		controlDevice->setDefaultCommands();
 		controlDevice->setControlledObject(pet);
 		datapad->transferObject(controlDevice, -1);
 
@@ -380,7 +379,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 		datapad->broadcastObject(controlDevice, true);
 		controlDevice->callObject(player);
-		//Remove the deed from it's container. (TEMP disable the removal for testing)
+		//Remove the deed from it's container.
 		ManagedReference<SceneObject*> deedContainer = getParent();
 
 		if (deedContainer != NULL) {
