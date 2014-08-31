@@ -54,6 +54,9 @@ object_tangible_deed_pet_deed_sand_panther_deed = object_tangible_deed_pet_deed_
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
+	generatedObjectTemplate = "mobile/pet/razor_cat_be.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/corellian_sand_panther_hue.iff",
+	mobileTemplate = "razor_cat_be",
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_sand_panther_deed, "object/tangible/deed/pet_deed/sand_panther_deed.iff")
