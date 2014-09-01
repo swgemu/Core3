@@ -42,6 +42,11 @@
 
 
 object_tangible_deed_event_perk_military_outpost_deed = object_tangible_deed_event_perk_shared_military_outpost_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
+	generatedObjectTemplate = "object/tangible/event_perk/military_outpost_guard_tower_1.iff",
+	perkType = STATIC,
 
 }
 

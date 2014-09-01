@@ -185,6 +185,7 @@ public:
 	const static int DROIDDEED = 0x4000043;
 	const static int DROIDCUSTOMKIT = 0x4000044;
 	const static int DROIDCOMPONENT = 0x4000045;
+	const static int EVENTPERKDEED = 0x4000046;
 
 public:
 	SharedObjectTemplate();

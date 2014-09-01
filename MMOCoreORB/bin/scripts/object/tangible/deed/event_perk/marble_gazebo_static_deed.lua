@@ -42,6 +42,11 @@
 
 
 object_tangible_deed_event_perk_marble_gazebo_static_deed = object_tangible_deed_event_perk_shared_marble_gazebo_static_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
+	generatedObjectTemplate = "object/tangible/event_perk/garden_gazebo_lg_s01.iff",
+	perkType = STATIC,
 
 }
 

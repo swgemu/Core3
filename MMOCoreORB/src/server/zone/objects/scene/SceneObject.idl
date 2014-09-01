@@ -1927,6 +1927,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public abstract boolean isLairObject() {
 		return false;
+	}
+
+	@dirty
+	public abstract boolean isEventPerkDeed() {
+		return false;
 	}	
 }
 

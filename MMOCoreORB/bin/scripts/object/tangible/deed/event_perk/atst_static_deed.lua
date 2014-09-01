@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_event_perk_atst_static_deed = object_tangible_deed_event_perk_shared_atst_static_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
 
 }
 
