@@ -85,10 +85,13 @@ public:
 		insertInt(race); // Race ID
 
 		String regionName = "";
+		String zoneName = "";
 
 		Zone* zone = player->getZone();
 
 		if (zone != NULL) {
+			zoneName = zone->getZoneName();
+
 			PlanetManager* planetManager = zone->getPlanetManager();
 			CityRegion* cityRegion = planetManager->getRegionAt(player->getWorldPositionX(), player->getWorldPositionY());
 
@@ -98,7 +101,7 @@ public:
 		}
 
 		insertAscii(regionName); //Region Name
-		insertAscii(player->getZone()->getZoneName()); //Planet
+		insertAscii(zoneName); //Planet
 
 		if (player->isInGuild()) {
 			insertAscii(player->getGuildObject()->getGuildName()); //Guild
