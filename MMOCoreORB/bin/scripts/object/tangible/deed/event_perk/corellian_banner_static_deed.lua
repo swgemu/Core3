@@ -42,6 +42,10 @@
 
 
 object_tangible_deed_event_perk_corellian_banner_static_deed = object_tangible_deed_event_perk_shared_corellian_banner_static_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	generatedObjectTemplate = "object/tangible/event_perk/corl_banner_govt_tall_s01.iff",
+	perkType = STATIC,
 
 }
 

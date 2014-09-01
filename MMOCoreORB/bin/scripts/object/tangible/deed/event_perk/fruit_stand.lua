@@ -42,6 +42,8 @@
 
 
 object_tangible_deed_event_perk_fruit_stand = object_tangible_deed_event_perk_shared_fruit_stand:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615
 
 }
 

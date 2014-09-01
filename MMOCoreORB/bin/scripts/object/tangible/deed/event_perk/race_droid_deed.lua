@@ -42,6 +42,8 @@
 
 
 object_tangible_deed_event_perk_race_droid_deed = object_tangible_deed_event_perk_shared_race_droid_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615
 
 }
 

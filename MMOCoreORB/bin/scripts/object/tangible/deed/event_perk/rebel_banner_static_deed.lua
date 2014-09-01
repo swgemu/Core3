@@ -42,6 +42,10 @@
 
 
 object_tangible_deed_event_perk_rebel_banner_static_deed = object_tangible_deed_event_perk_shared_rebel_banner_static_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	generatedObjectTemplate = "object/tangible/event_perk/banner_rebel_style_01.iff",
+	perkType = STATIC,
 
 }
 

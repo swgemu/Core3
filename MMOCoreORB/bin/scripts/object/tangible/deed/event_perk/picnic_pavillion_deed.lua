@@ -42,6 +42,8 @@
 
 
 object_tangible_deed_event_perk_picnic_pavillion_deed = object_tangible_deed_event_perk_shared_picnic_pavillion_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615
 
 }
 

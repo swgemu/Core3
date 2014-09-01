@@ -42,6 +42,10 @@
 
 
 object_tangible_deed_event_perk_pavillion_1_static_deed = object_tangible_deed_event_perk_shared_pavillion_1_static_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	generatedObjectTemplate = "object/tangible/event_perk/camp_pavilion_s1.iff",
+	perkType = STATIC,
 
 }
 

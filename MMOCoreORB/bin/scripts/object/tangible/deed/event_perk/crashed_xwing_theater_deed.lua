@@ -42,6 +42,8 @@
 
 
 object_tangible_deed_event_perk_crashed_xwing_theater_deed = object_tangible_deed_event_perk_shared_crashed_xwing_theater_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615
 
 }
 

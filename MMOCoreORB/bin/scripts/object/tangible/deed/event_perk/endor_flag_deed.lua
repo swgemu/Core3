@@ -42,6 +42,10 @@
 
 
 object_tangible_deed_event_perk_endor_flag_deed = object_tangible_deed_event_perk_shared_endor_flag_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	generatedObjectTemplate = "object/tangible/event_perk/endr_imprv_flagpole_s01.iff",
+	perkType = STATIC,
 
 }
 

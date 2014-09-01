@@ -42,6 +42,10 @@
 
 
 object_tangible_deed_event_perk_shuttle_static_deed = object_tangible_deed_event_perk_shared_shuttle_static_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	generatedObjectTemplate = "object/tangible/event_perk/player_shuttle.iff",
+	perkType = STATIC,
 
 }
 

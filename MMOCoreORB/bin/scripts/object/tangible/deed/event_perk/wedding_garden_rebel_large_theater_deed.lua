@@ -42,6 +42,8 @@
 
 
 object_tangible_deed_event_perk_wedding_garden_rebel_large_theater_deed = object_tangible_deed_event_perk_shared_wedding_garden_rebel_large_theater_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615
 
 }
 

@@ -42,6 +42,8 @@
 
 
 object_tangible_deed_event_perk_npc_actor_deed = object_tangible_deed_event_perk_shared_npc_actor_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615
 
 }
 

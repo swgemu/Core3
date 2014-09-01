@@ -42,6 +42,8 @@
 
 
 object_tangible_deed_event_perk_meat_rack = object_tangible_deed_event_perk_shared_meat_rack:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615
 
 }
 

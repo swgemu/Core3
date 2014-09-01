@@ -42,6 +42,10 @@
 
 
 object_tangible_deed_event_perk_web_tree = object_tangible_deed_event_perk_shared_web_tree:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	generatedObjectTemplate = "object/tangible/event_perk/web_tree.iff",
+	perkType = STATIC,
 
 }
 

@@ -233,6 +233,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<StructureDeed>(SceneObjectType::BUILDINGDEED);
 	objectFactory.registerObject<StructureDeed>(SceneObjectType::INSTALLATIONDEED);
 	objectFactory.registerObject<ResourceDeed>(SceneObjectType::RESOURCEDEED);
+	objectFactory.registerObject<EventPerkDeed>(SceneObjectType::EVENTPERKDEED);
 
 	objectFactory.registerObject<GroupObject>(SceneObjectType::GROUPOBJECT);
 	objectFactory.registerObject<GuildObject>(SceneObjectType::GUILDOBJECT);

@@ -42,6 +42,8 @@
 
 
 object_tangible_deed_event_perk_universe_flags_theater = object_tangible_deed_event_perk_shared_universe_flags_theater:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615
 
 }
 

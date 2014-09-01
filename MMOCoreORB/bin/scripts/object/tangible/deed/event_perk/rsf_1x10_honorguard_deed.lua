@@ -42,6 +42,8 @@
 
 
 object_tangible_deed_event_perk_rsf_1x10_honorguard_deed = object_tangible_deed_event_perk_shared_rsf_1x10_honorguard_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615
 
 }
 

@@ -42,6 +42,8 @@
 
 
 object_tangible_deed_event_perk_skeleton_chest_deed = object_tangible_deed_event_perk_shared_skeleton_chest_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615
 
 }
 

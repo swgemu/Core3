@@ -42,6 +42,10 @@
 
 
 object_tangible_deed_event_perk_tatooine_banner_static_deed = object_tangible_deed_event_perk_shared_tatooine_banner_static_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	generatedObjectTemplate = "object/tangible/event_perk/banner_tatooine_style_01.iff",
+	perkType = STATIC,
 
 }
 
