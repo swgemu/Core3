@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_event_perk_shuttle_beacon = object_tangible_deed_event_perk_shared_shuttle_beacon:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
 
 }
 

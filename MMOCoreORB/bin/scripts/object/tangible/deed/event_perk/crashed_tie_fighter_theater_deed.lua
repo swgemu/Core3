@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_event_perk_crashed_tie_fighter_theater_deed = object_tangible_deed_event_perk_shared_crashed_tie_fighter_theater_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
 
 }
 

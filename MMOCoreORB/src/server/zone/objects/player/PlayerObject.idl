@@ -281,7 +281,9 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected VectorMap<unsigned int, string> chosenVeteranRewards; // milestone, templateFile
-	
+
+	protected int eventPerkCount;
+
 	/**
 	 * the key is the quest.hashCode()
 	 */
@@ -369,6 +371,7 @@ class PlayerObject extends IntangibleObject {
 		installedHoloEmote = "";
 		
 		holoEmoteUseCount = 0;
+		eventPerkCount = 0;
 		
 		spouseName = "";
 		
@@ -1689,6 +1692,18 @@ class PlayerObject extends IntangibleObject {
 	@dirty
 	public string getForceSensitiveElegibleExperienceType(int type) {
 		return fsEligibleExperiences.get(type);
+	}
+
+	public void addEventPerk() {
+		eventPerkCount = eventPerkCount + 1;
+	}
+
+	public void removeEventPerk() {
+		eventPerkCount = eventPerkCount - 1;
+	}
+
+	public int getEventPerkCount() {
+		return eventPerkCount;
 	}
 }
 

@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_event_perk_rebel_recruiting_station_theater_deed = object_tangible_deed_event_perk_shared_rebel_recruiting_station_theater_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
 
 }
 
