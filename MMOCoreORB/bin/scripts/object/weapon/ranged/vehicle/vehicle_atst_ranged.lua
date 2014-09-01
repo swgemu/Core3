@@ -55,13 +55,13 @@ object_weapon_ranged_vehicle_vehicle_atst_ranged = object_weapon_ranged_vehicle_
 	armorPiercing = HEAVY,
 
 	pointBlankRange = 0,
-	pointBlankAccuracy = 10000,
+	pointBlankAccuracy = 0,
 
-	idealRange = 20,
-	idealAccuracy = 1000,
+	idealRange = 25,
+	idealAccuracy = 50,
 
-	maxRange = 55,
-	maxRangeAccuracy = 500,
+	maxRange = 65,
+	maxRangeAccuracy = 0,
 
 	minDamage = 100,
 	maxDamage = 200,
