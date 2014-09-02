@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_event_perk_treasure_box_chest_deed = object_tangible_deed_event_perk_shared_treasure_box_chest_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
 
 }
 

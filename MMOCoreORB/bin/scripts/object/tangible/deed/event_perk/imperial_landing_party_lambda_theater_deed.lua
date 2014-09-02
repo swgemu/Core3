@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_event_perk_imperial_landing_party_lambda_theater_deed = object_tangible_deed_event_perk_shared_imperial_landing_party_lambda_theater_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
 
 }
 

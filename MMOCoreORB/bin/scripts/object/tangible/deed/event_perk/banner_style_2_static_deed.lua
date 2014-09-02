@@ -42,6 +42,11 @@
 
 
 object_tangible_deed_event_perk_banner_style_2_static_deed = object_tangible_deed_event_perk_shared_banner_style_2_static_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
+	generatedObjectTemplate = "object/tangible/event_perk/banner_generic_s02.iff",
+	perkType = STATIC,
 
 }
 

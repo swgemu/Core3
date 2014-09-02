@@ -42,7 +42,7 @@
 
 
 object_tangible_event_perk_camp_pavilion_s2 = object_tangible_event_perk_shared_camp_pavilion_s2:new {
-
+	dataObjectComponent = "EventPerkDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_camp_pavilion_s2, "object/tangible/event_perk/camp_pavilion_s2.iff")

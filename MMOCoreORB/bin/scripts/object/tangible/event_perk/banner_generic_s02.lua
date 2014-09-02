@@ -42,7 +42,7 @@
 
 
 object_tangible_event_perk_banner_generic_s02 = object_tangible_event_perk_shared_banner_generic_s02:new {
-
+	dataObjectComponent = "EventPerkDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_banner_generic_s02, "object/tangible/event_perk/banner_generic_s02.iff")

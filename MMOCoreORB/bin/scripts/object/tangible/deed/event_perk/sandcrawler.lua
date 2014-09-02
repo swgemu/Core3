@@ -42,6 +42,11 @@
 
 
 object_tangible_deed_event_perk_sandcrawler = object_tangible_deed_event_perk_shared_sandcrawler:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
+	generatedObjectTemplate = "object/tangible/event_perk/sandcrawler.iff",
+	perkType = STATIC,
 
 }
 

@@ -42,6 +42,11 @@
 
 
 object_tangible_deed_event_perk_imperial_banner_static_deed = object_tangible_deed_event_perk_shared_imperial_banner_static_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
+	generatedObjectTemplate = "object/tangible/event_perk/banner_imperial_style_01.iff",
+	perkType = STATIC,
 
 }
 

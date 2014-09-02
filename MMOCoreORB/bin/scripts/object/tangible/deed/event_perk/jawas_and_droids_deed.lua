@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_event_perk_jawas_and_droids_deed = object_tangible_deed_event_perk_shared_jawas_and_droids_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
 
 }
 

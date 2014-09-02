@@ -42,6 +42,9 @@
 
 
 object_tangible_deed_event_perk_corsec_2x10_honorguard_deed = object_tangible_deed_event_perk_shared_corsec_2x10_honorguard_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
 
 }
 

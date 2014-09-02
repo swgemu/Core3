@@ -42,7 +42,7 @@
 
 
 object_tangible_event_perk_banner_rebel_style_01 = object_tangible_event_perk_shared_banner_rebel_style_01:new {
-
+	dataObjectComponent = "EventPerkDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_banner_rebel_style_01, "object/tangible/event_perk/banner_rebel_style_01.iff")

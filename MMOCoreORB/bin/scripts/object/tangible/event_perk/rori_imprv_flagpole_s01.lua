@@ -42,7 +42,7 @@
 
 
 object_tangible_event_perk_rori_imprv_flagpole_s01 = object_tangible_event_perk_shared_rori_imprv_flagpole_s01:new {
-
+	dataObjectComponent = "EventPerkDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_rori_imprv_flagpole_s01, "object/tangible/event_perk/rori_imprv_flagpole_s01.iff")

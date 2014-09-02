@@ -69,6 +69,7 @@
 #include "server/zone/objects/tangible/deed/droid/DroidDeed.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
+#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/objects/tangible/wearables/PsgArmorObject.h"
 #include "server/zone/objects/tangible/wearables/ClothingObject.h"

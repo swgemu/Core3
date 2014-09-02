@@ -42,6 +42,11 @@
 
 
 object_tangible_deed_event_perk_dathomir_flag_deed = object_tangible_deed_event_perk_shared_dathomir_flag_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
+	generatedObjectTemplate = "object/tangible/event_perk/dath_imprv_flagpole_s01.iff",
+	perkType = STATIC,
 
 }
 
