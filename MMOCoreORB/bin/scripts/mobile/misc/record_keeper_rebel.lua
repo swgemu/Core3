@@ -30,7 +30,7 @@ record_keeper_rebel = Creature:new {
 	templates = {"object/mobile/theme_park_record_keeper_rebel.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "planet_record_keeper_tatooine_convConversationTemplate",
 	attacks = {
 	}
 }

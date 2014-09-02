@@ -108,3 +108,10 @@ includeFile("conversations/racetracks/nashalconversation.lua")
 
 -- Space
 includeFile("conversations/space/chassis_dealer_conv.lua")
+
+-- Record Keepers
+includeFile("conversations/record_keepers/planet_record_keeper_dantoonie_conv.lua")
+includeFile("conversations/record_keepers/planet_record_keeper_tatoonie_conv.lua")
+includeFile("conversations/record_keepers/record_keeper_imperial_conv.lua")
+includeFile("conversations/record_keepers/record_keeper_jabba_conv.lua")
+includeFile("conversations/record_keepers/record_keeper_rebel_conv.lua")
