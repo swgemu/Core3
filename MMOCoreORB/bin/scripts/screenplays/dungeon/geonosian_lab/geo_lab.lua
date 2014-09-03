@@ -38,6 +38,17 @@ GeonosianLabScreenPlay = ScreenPlay:new {
 		{ x = 38, z = -34, y = -333, cell = 1627822, dw = 0.707107, dx = 0, dy = -0.707107, dz = 0 }
 	},
 
+	doorActiveAreas = {
+		{ worldX = -6404.5, worldZ = 64.3, worldY = -412.4, cell = 1627784 },
+		{ worldX = -6376.5, worldZ = 64.3, worldY = -413.6, cell = 1627785 },
+		{ worldX = -6338.8, worldZ = 64.3, worldY = -457.9, cell = 1627789 },
+		{ worldX = -6284.8, worldZ = 60.3, worldY = -392.6, cell = 1627804 },
+		{ worldX = -6193.3, worldZ = 48.3, worldY = -324.1, cell = 1627811 },
+		{ worldX = -6204.7, worldZ = 48.3, worldY = -410.2, cell = 1627814 },
+		{ worldX = -6089.5, worldZ = 48.3, worldY = -191.4, cell = 1627821 },
+		{ worldX = -6181.5, worldZ = 48.3, worldY = -196.5, cell = 1627822 },
+	},
+
 	poisonShutoffDuration = 30000, --30 seconds
 
 	geoDatapad = "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff",
@@ -65,18 +76,18 @@ function GeonosianLabScreenPlay:spawnActiveAreas()
 		createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyEnteredPoisonGas", pActiveArea)
 	end)
 
-	pActiveArea = spawnSceneObject("yavin4", "object/active_area.iff", -6181.9, 48.3, -197.2, 0, 0, 0, 0, 0)
-	ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-		activeArea:setCellObjectID(1627822)
-		activeArea:setRadius(4)
-		createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyEnteredPoisonGas", pActiveArea)
+	local pGasArea = spawnSceneObject("yavin4", "object/active_area.iff", -6181.9, 48.3, -197.2, 0, 0, 0, 0, 0)
+	ObjectManager.withActiveArea(pGasArea, function(gasArea)
+		gasArea:setCellObjectID(1627822)
+		gasArea:setRadius(4)
+		createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyEnteredPoisonGas", pGasArea)
 	end)
 
-	pActiveArea = spawnSceneObject("yavin4", "object/active_area.iff", -6168.7, 48.3, -380.9, 0, 0, 0, 0, 0)
-	ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-		activeArea:setCellObjectID(1627813)
-		activeArea:setRadius(4)
-		createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyElectroShock", activeArea)
+	local pShockArea = spawnSceneObject("yavin4", "object/active_area.iff", -6169.0, 48.3, -382.3, 0, 0, 0, 0, 0)
+	ObjectManager.withActiveArea(pShockArea, function(shockArea)
+		shockArea:setCellObjectID(1627813)
+		shockArea:setRadius(4)
+		createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyElectroShock", pShockArea)
 	end)
 end
 
@@ -102,6 +113,15 @@ function GeonosianLabScreenPlay:spawnSceneObjects()
 		pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s3.iff", kp.x, kp.z, kp.y, kp.cell, kp.dw, kp.dx, kp.dy, kp.dz)
 		writeData(SceneObject(pSceneObject):getObjectID() .. ":geonosian_lab:keypad_index", i)
 		createObserver(OBJECTRADIALUSED, "GeonosianLabScreenPlay", "notifyKeypadUsed", pSceneObject)
+
+		local aa = self.doorActiveAreas[i]
+		local pActiveArea = spawnSceneObject("yavin4", "object/active_area.iff", aa.worldX, aa.worldZ, aa.worldY, 0, 0, 0, 0, 0)
+		ObjectManager.withActiveArea(pActiveArea, function(activeArea)
+			writeData(activeArea:getObjectID() .. ":GeoLabKeypad", i)
+			activeArea:setCellObjectID(aa.cell)
+			activeArea:setRadius(4)
+			createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyLockedDoorArea", pActiveArea)
+		end)
 	end
 
 	for i = 1, 15, 1 do
@@ -247,7 +267,7 @@ function GeonosianLabScreenPlay:restartGasLeak()
 	writeData("geonosian_lab:gasleak", 1)
 end
 
-function GeonosianLabScreenPlay:keypadSuiCallback(pCreature, pSui, cancelPressed, enteredCode)
+function GeonosianLabScreenPlay:keypadSuiCallback(pCreature, pSui, cancelPressed, enteredCode, pressedButton)
 	local suiBox = LuaSuiBox(pSui)
 	local pUsingObject = suiBox:getUsingObject()
 
@@ -256,11 +276,23 @@ function GeonosianLabScreenPlay:keypadSuiCallback(pCreature, pSui, cancelPressed
 		local keypadIndex = readData(objectID .. ":geonosian_lab:keypad_index")
 		local keypadCode = self.keypadCodes[keypadIndex]
 
-		if (tonumber(enteredCode) == keypadCode) then
-			player:sendSystemMessage("@dungeon/geonosian_madbio:right_code") --You have successfully entered the code for this door.
+		if (pressedButton == "enter") then
+			if (tonumber(enteredCode) == keypadCode) then
+				player:sendSystemMessage("@dungeon/geonosian_madbio:right_code") --You have successfully entered the code for this door.
+				self:givePermission(pCreature, "GeoLabKeypad" .. keypadIndex)
+			else
+				player:sendSystemMessage("@dungeon/geonosian_madbio:bad_code") --The number that you entered is not a valid code for this door.
+			end
+		elseif (pressedButton == "slice") then
+			if (player:hasSkill("combat_smuggler_slicing_01")) then
+				player:sendSystemMessage("@dungeon/geonosian_madbio:hack_success") --You have successfully hacked this terminal.
+				self:givePermission(pCreature, "GeoLabKeypad" .. keypadIndex)
+			else
+				player:sendSystemMessage("@dungeon/geonosian_madbio:hack_fail") --Unable to successfully slice the keypad, you realize that the only way to reset it is to carefully repair what damage you have done.
+			end
+		elseif (pressedButton == "keycard" and self:hasGeoItem(pCreature, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_key.iff")) then
+			player:sendSystemMessage("@dungeon/geonosian_madbio:keycard_success") --You have successfully used a keycard on this door.
 			self:givePermission(pCreature, "GeoLabKeypad" .. keypadIndex)
-		else
-			player:sendSystemMessage("@dungeon/geonosian_madbio:bad_code") --The number that you entered is not a valid code for this door.
 		end
 	end)
 end
@@ -281,6 +313,19 @@ function GeonosianLabScreenPlay:notifyEnteredLab(pBuilding, pPlayer)
 		player:removeScreenPlayState(1, "geonosian_lab_datapad_delivered")
 
 		player:sendSystemMessage("@dungeon/geonosian_madbio:relock") --Security systems at this facility have been cycled and reset.
+	end)
+end
+
+function GeonosianLabScreenPlay:notifyLockedDoorArea(pArea, pPlayer)
+	ObjectManager.withCreatureObject(pPlayer, function(player)
+		if (player:isAiAgent()) then
+			return 0
+		end
+
+		local areaDoor = readData(SceneObject(pArea):getObjectID() .. ":GeoLabKeypad")
+		if not self:hasPermission(pPlayer, "GeoLabKeypad" .. areaDoor) then
+			player:sendSystemMessage("@dungeon/geonosian_madbio:door_locked") -- This door is locked.
+		end
 	end)
 end
 
@@ -310,6 +355,12 @@ function GeonosianLabScreenPlay:removePermission(pPlayer, permissionGroup)
 		if (ghost:hasPermissionGroup(permissionGroup)) then
 			ghost:removePermissionGroup(permissionGroup, true)
 		end
+	end)
+end
+
+function GeonosianLabScreenPlay:hasPermission(pPlayer, permissionGroup)
+	return ObjectManager.withCreaturePlayerObject(pPlayer, function(ghost)
+		return ghost:hasPermissionGroup(permissionGroup)
 	end)
 end
 
@@ -359,6 +410,10 @@ end
 function GeonosianLabScreenPlay:hasRebreather(scno)
 	--TODO: Change this to be a skill mod check for private_poison_rebreather
 	local pRebreather = scno:getSlottedObject("eyes")
+
+	if pRebreather == nil then
+		return false
+	end
 
 	local headSlot = SceneObject(pRebreather):getTemplateObjectPath()
 	return (headSlot == "object/tangible/wearables/goggles/rebreather.iff" or headSlot == "object/tangible/wearables/armor/mandalorian/armor_mandalorian_helmet.iff")
