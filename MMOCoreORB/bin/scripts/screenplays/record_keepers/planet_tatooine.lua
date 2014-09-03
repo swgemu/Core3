@@ -30,6 +30,6 @@ tatooine_static = RecordKeeper:new {
 	},
 	faction = 0	
 }
- atooine_static_record_keeper_convo_handler = record_keeper_conv_handler:new {
+ tatooine_static_record_keeper_convo_handler = record_keeper_conv_handler:new {
 	keeper = tatooine_static
 }

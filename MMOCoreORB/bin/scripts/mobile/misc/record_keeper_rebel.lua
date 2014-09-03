@@ -1,6 +1,6 @@
 record_keeper_rebel = Creature:new {
 	objectName = "",
-	customName = "Lt. Ogo (Planetary Record Keeper)",
+	customName = "Rebel Record Keeper",
 	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",
@@ -30,7 +30,7 @@ record_keeper_rebel = Creature:new {
 	templates = {"object/mobile/theme_park_record_keeper_rebel.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "planet_record_keeper_tatooine_convConversationTemplate",
+	conversationTemplate = "rk_record_keeper_rebelConversationTemplate",
 	attacks = {
 	}
 }

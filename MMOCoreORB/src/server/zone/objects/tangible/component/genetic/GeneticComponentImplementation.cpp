@@ -198,10 +198,10 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	health = hardiness * 18;
 	action = dexterity * 18;
 	mind = intelligence * 18;
-	hit = 0.19+(cleverness/1500);
+	hit = 0.19+(((float)cleverness)/((float)1500));
 	minDam = ceil((power*0.8)/10)*10;
 	maxDam = minDam + 10;
-	speed = 2.5-((ceil(courage/10)*10)/1000);
+	speed = 2.5-((ceil(((float)courage)/10)*10)/1000);
 	// We will use the following formula based levle modification  (total_resists/60) + (minDam / 45). this will modify the level when getLevel is called
 	float resistMod = (kinResist + energyResist + blastResist + heatResist + coldResist + elecResist + acidResist + stunResist + saberResist)/60;
 	int damMod = minDam/45;

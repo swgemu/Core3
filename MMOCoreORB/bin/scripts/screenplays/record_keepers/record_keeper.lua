@@ -10,12 +10,12 @@ function RecordKeeper:start()
 	-- no op
 end
 function RecordKeeper:wipeQuests(pObject)
-	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject, playerObject)
+	ObjectManager.withCreatureObject(pObject, function(player)
 		for k,v in pairs(self.quests) do
 			-- we wipe out all screen play data for this theme park/quest
-			clearScreenPlayData(pObject,k)
+			clearScreenPlayData(player,k)
 		end
-		writeScreenPlayData(pObject, self.keeperName, "completed", 1)
+		writeScreenPlayData(player, self.keeperName, "completed", 1)
 	end)
 end
 
@@ -24,12 +24,33 @@ function RecordKeeper:resetQuests(pObject)
 		park = _G[v]
 		park:resetCurrentMission(pObject)
 	end
-	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject, playerObject)
-		writeScreenPlayData(pObject, self.keeperName, "completed", 1)
+	ObjectManager.withCreatureObject(pObject, function(player)
+		writeScreenPlayData(player, self.keeperName, "completed", 1)
 	end)
 end
+function RecordKeeper:available(pObject)
+	return ObjectManager.withCreatureObject(pObject, function(player)
+		-- read the variable
+		local val = readScreenPlayData(player, self.keeperName, "completed")
+		if val == 1 then
+			return false
+		else
+			return true
+		end
+	end)
+end
+
+function RecordKeeper:hasStartedPark(pObject)
+	local count = 0
+	for k,v in pairs(self.quests) do
+		park = _G[v]
+		count = park:getCurrentMissionNumber(1,pObject)
+	end	
+	return count > 0
+end
+
 function RecordKeeper:needsFaction()
-	if faction == 0 then
+	if self.faction == 0 then
 		return false
 	else
 		return true
@@ -50,80 +71,3 @@ function RecordKeeper:hasFaction(faction, pCreature)
 	end
 end
 
-record_keeper_conv_handler = Object:new {
-	keeper = nil
-}
-
-function record_keeper_conv_handler:setThemePark(keeperNew)
-	self.keeper = keeperNew
-end
-
-function record_keeper_conv_handler:getNextConversationScreen(pConversationTemplate, pConversingPlayer, selectedOption)
-	local convosession = CreatureObject(pConversingPlayer):getConversationSession()
-
-	local lastConversationScreen = nil
-
-	if (convosession ~= nil) then
-		local session = LuaConversationSession(convosession)
-		lastConversationScreen = session:getLastConversationScreen()
-	end
-
-	local conversation = LuaConversationTemplate(pConversationTemplate)
-
-	local nextConversationScreen
-
-	if (lastConversationScreen ~= nil) then
-		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-
-		--Get the linked screen for the selected option.
-		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-
-		nextConversationScreen = conversation:getScreen(optionLink)
-
-		if nextConversationScreen ~= nil then
-			nextConversationScreen = LuaConversationScreen(nextConversationScreen)
-		else
-			nextConversationScreen = conversation:getScreen("start")
-		end
-	else
-		nextConversationScreen = conversation:getScreen("start")
-	end
-	return nextConversationScreen
-end
-function record_keeper_conv_handler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-
-	local screenID = screen:getScreenID()
-
-	if screenID == "start" then
-		--pConversationScreen = self:handleScreenInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "not_faction" then
-		--pConversationScreen = self:handleScreenNoFaction(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "completed" then
-		--pConversationScreen = self:handleScreenCompleted(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "not_started" then
-		--pConversationScreen = self:handleScreenNotStarted(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	end
-	return pConversationScreen
-end
--- TODO add case handlers for states of the record keeper
-function record_keeper_conv_handler:handleScreenInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	local nextScreenName
-	local activeScreenPlay = readStringData(CreatureObject(pConversingPlayer):getObjectID() .. ":activeScreenPlay")
-end
-function record_keeper_conv_handler:handleScreenNoFaction(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	local nextScreenName
-	local activeScreenPlay = readStringData(CreatureObject(pConversingPlayer):getObjectID() .. ":activeScreenPlay")
-end
-function record_keeper_conv_handler:handleScreenCompleted(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	local nextScreenName
-	local activeScreenPlay = readStringData(CreatureObject(pConversingPlayer):getObjectID() .. ":activeScreenPlay")
-end
-function record_keeper_conv_handler:handleScreenNotStarted(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	local nextScreenName
-	local activeScreenPlay = readStringData(CreatureObject(pConversingPlayer):getObjectID() .. ":activeScreenPlay")
-end

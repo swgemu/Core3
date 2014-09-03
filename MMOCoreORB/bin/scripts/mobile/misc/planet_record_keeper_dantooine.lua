@@ -1,6 +1,6 @@
-record_keeper_imperial = Creature:new {
+record_keeper_planet_dantooine = Creature:new {
 	objectName = "",
-	customName = "Imperial Record Keeper",
+	customName = "Lt. Nilsson (Planetary Record Keeper)",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
@@ -26,13 +26,12 @@ record_keeper_imperial = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 264,
 	diet = HERBIVORE,
-
-	templates = {"object/mobile/theme_park_record_keeper_imperial.iff"},
+	templates = {"object/mobile/dressed_imperial_lieutenant_m.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "rk_record_keeper_imperialConversationTemplate",
+	conversationTemplate = "planet_record_keeper_dantooine_convConversationTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(record_keeper_imperial, "record_keeper_imperial")
+CreatureTemplates:addCreatureTemplate(record_keeper_planet_dantooine, "record_keeper_planet_dantooine")

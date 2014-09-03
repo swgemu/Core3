@@ -357,9 +357,9 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 				int16 val = customVars->elementAt(i).getValue();
 
 				String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
-				if( name.contains( "color" ) ){
-					pet->setCustomizationVariable( name, val, true );
-				}
+				//if( name.contains( "color" ) ){
+				pet->setCustomizationVariable( name, val, true );
+				//}
 			}
 		}
 		// then this is complete

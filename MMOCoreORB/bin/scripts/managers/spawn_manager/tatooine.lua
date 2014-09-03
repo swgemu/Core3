@@ -605,7 +605,7 @@ tatooine_static_spawns = {
 	{"moisture_farmer",300,3.97127,2.6,7.75958,135.005,1105851, "conversation", "","stationary"},
 	{"moisture_farmer",300,1191.8,7,2957,180.005,0, "conversation", "","stationary"},
 	{"moisture_farmer",300,-36.1846,1.63942,64.2406,180.002,4005525, "conversation", "","stationary"},
-	{"mos_eisley_police_officer",300,3385.18,4.68287,-4792.87,298.466,0, "calm", "Lt Ogo (a Planet record keeper)","stationary"},
+	{"record_keeper_planet_tatooine",300,3385.18,4.68287,-4792.87,298.466,0, "calm", "Lt Ogo (a Planet record keeper)","stationary"},
 	{"mos_eisley_police_officer",300,3407,0,-4505,255,0, "npc_accusing", "","stationary"},
 	{"mos_eisley_police_officer",300,3405.2,0,-4505.5,75,0, "npc_angry", "","stationary"},
 	{"mos_entha_police_officer",300,41.2,-0.5,29.7,63,4005523, "npc_sitting_chair", "","stationary"},
