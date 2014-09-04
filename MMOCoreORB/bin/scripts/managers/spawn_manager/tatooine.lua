@@ -493,7 +493,8 @@ tatooine_static_spawns = {
 	{"ecik",60,1.1,0.639421,66.3,101.522,1106372, "explain", "Ecik","stationary"},
 	{"ecoospoo",60,1.1,0.639421,66.3,33.001,1261655, "conversation", "Ecoospoo","stationary"},
 	{"egach_iromn",60,2.2628,7.90008,-37.3821,304.411,926476, "neutral", "Egach Iromn","stationary"},
-	{"eight_lom",60,6.56792,0.299999,128.257,353.004,1177466, "calm", "8-LOM","stationary"},
+	-- moved to theme play for jabba themepark
+	--{"eight_lom",60,6.56792,0.299999,128.257,353.004,1177466, "calm", "8-LOM","stationary"},
 	{"ekoarili_eichreemo",60,-2.83709,3.18179,19.5635,187.088,926474, "neutral", "Ek'oarili Eichreemo","stationary"},
 	{"entertainer",60,9.4,0,3.9,310,1082877, "conversation", "","stationary"},
 	{"entertainer",60,29.3646,-0.255725,-0.43765,45.001,1153522, "conversation", "","stationary"},

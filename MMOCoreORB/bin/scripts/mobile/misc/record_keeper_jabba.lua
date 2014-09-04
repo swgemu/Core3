@@ -1,5 +1,5 @@
 record_keeper_jabba = Creature:new {
-	objectName = "",
+	objectName = "@theme_park_name:lom",
 	customName = "8-LOM",
 	socialGroup = "jabba",
 	pvpFaction = "jabba",
