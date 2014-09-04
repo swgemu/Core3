@@ -55,7 +55,7 @@ object_tangible_deed_pet_deed_bageraset_deed = object_tangible_deed_pet_deed_sha
 	experimentalCombineType = {0, 0},
 	generatedObjectTemplate = "mobile/pet/bageraset_be.iff",
 	controlDeviceObjectTemplate = "object/intangible/pet/bageraset_hue.iff",
-	mobileTemplate = "bagerast_be",	
+	mobileTemplate = "bageraset_be",	
 	
 }
 
