@@ -55,7 +55,7 @@ object_tangible_deed_pet_deed_kahmurra_deed = object_tangible_deed_pet_deed_shar
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
 	generatedObjectTemplate = "mobile/pet/kahmurra_be.iff",
-	controlDeviceObjectTemplate = "object/intangible/pet/kahmurra_hue.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/murra_hue.iff",
 	mobileTemplate = "kahmurra_be",	
 }
 
