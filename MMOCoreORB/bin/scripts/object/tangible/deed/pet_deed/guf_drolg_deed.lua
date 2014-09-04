@@ -54,9 +54,9 @@ object_tangible_deed_pet_deed_guf_drolg_deed = object_tangible_deed_pet_deed_sha
 	experimentalMax = {0, 0},
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
-	generatedObjectTemplate = "mobile/pet/guf_drold_be.iff",
+	generatedObjectTemplate = "mobile/pet/guf_drolg_be.iff",
 	controlDeviceObjectTemplate = "object/intangible/pet/guf_drolg_hue.iff",
-	mobileTemplate = "guf_drold_be",	
+	mobileTemplate = "guf_drolg_be",	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_pet_deed_guf_drolg_deed, "object/tangible/deed/pet_deed/guf_drolg_deed.iff")
