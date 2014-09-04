@@ -143,8 +143,8 @@ function GeonosianLabScreenPlay:spawnMobiles()
 	spawnMobile("yavin4", "biogenic_scientist_generic_02", 1, -127.2, -34, -189.0, -93, 1627815)--biogen_gen02
 	spawnMobile("yavin4", "biogenic_scientist_geonosian", 1, 7.4, -22, -333, 180, 1627822) -- biogen_geo
 
-	spawnMobile("yavin4", "acklay",7200,101.1,-34.3,-321.6,-136,1627823, true)
-	spawnMobile("yavin4", "enhanced_gaping_spider",3600,-130,-22.1,-85,-180,1627794, true)
+	spawnMobile("yavin4", "acklay",7200,101.1,-34.3,-321.6,-136,1627823, true) --Randomized respawn
+	spawnMobile("yavin4", "enhanced_gaping_spider",3600,-130,-22.1,-85,-180,1627794, true) -- Randomized respawn
 
 	spawnMobile("yavin4", "imperial_observer",300,-23,-22,-116,-90,1627802)
 	spawnMobile("yavin4", "imperial_observer",300,-16.4,-22,-114.5,-150,1627802)
@@ -290,9 +290,16 @@ function GeonosianLabScreenPlay:keypadSuiCallback(pCreature, pSui, cancelPressed
 			else
 				player:sendSystemMessage("@dungeon/geonosian_madbio:hack_fail") --Unable to successfully slice the keypad, you realize that the only way to reset it is to carefully repair what damage you have done.
 			end
-		elseif (pressedButton == "keycard" and self:hasGeoItem(pCreature, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_key.iff")) then
-			player:sendSystemMessage("@dungeon/geonosian_madbio:keycard_success") --You have successfully used a keycard on this door.
-			self:givePermission(pCreature, "GeoLabKeypad" .. keypadIndex)
+		elseif (pressedButton == "keycard") then
+			if (keypadIndex ~= 4 and self:hasGeoItem(pCreature, "object/tangible/loot/dungeon/geonosian_mad_bunker/passkey.iff")) then
+				self:removeGeoItem(pCreature, "object/tangible/loot/dungeon/geonosian_mad_bunker/passkey.iff")
+				player:sendSystemMessage("@dungeon/geonosian_madbio:keycard_success") --You have successfully used a keycard on this door.
+				self:givePermission(pCreature, "GeoLabKeypad" .. keypadIndex)
+			elseif (keypadIndex == 4 and self:hasGeoItem(pCreature, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_key.iff")) then
+				self:removeGeoItem(pCreature, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_key.iff")
+				player:sendSystemMessage("@dungeon/geonosian_madbio:keycard_success") --You have successfully used a keycard on this door.
+				self:givePermission(pCreature, "GeoLabKeypad" .. keypadIndex)
+			end
 		end
 	end)
 end

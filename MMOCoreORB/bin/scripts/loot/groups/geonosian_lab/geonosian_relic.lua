@@ -10,7 +10,8 @@ geonosian_relic = {
 		{itemTemplate = "geo_relic_honey_carafe", weight = 2000000},
 		{itemTemplate = "geo_relic_ration_kit", weight = 2000000},
 		{itemTemplate = "geo_relic_small_ball", weight = 1000000},
-		{itemTemplate = "geo_relic_spice_container", weight = 2000000},
+		{itemTemplate = "geo_passkey", weight = 1000000},
+		{itemTemplate = "geo_relic_spice_container", weight = 1000000},
 		{itemTemplate = "geo_relic_tech_kit", weight = 1000000}
 	}
 }
