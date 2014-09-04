@@ -587,7 +587,14 @@ npcMapJabba =
 		npcNumber = 64,
 		stfFile = "@theme_park_jabba/g5po",
 		missions = g5po_missions
-	}
+	},
+	{ 
+		spawnData = { planetName = "tatooine", npcTemplate = "record_keeper_jabba", x =6.56792, z =0.299999, y = 128.257, direction = 353.004, cellID = 1, position = STAND }, 
+		npcNumber = -1,  
+		stfFile = "",               
+		missions = {} 
+	},
+	
 }
 
 permissionMapJabba = {
