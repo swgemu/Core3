@@ -1,6 +1,6 @@
 record_keeper_jabba = Creature:new {
 	objectName = "",
-	customName = "Jabba Record Keeper",
+	customName = "8-LOM",
 	socialGroup = "jabba",
 	pvpFaction = "jabba",
 	faction = "jabba",

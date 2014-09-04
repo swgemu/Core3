@@ -1,6 +1,6 @@
 record_keeper_rebel = Creature:new {
 	objectName = "",
-	customName = "Rebel Record Keeper",
+	customName = "Falton Molard",
 	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",
