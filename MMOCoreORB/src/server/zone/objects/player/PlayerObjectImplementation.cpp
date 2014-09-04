@@ -1162,10 +1162,12 @@ void PlayerObjectImplementation::setTitle(const String& characterTitle, bool not
 	if (title == characterTitle)
 		return;
 
-	Skill* targetSkill = SkillManager::instance()->getSkill(characterTitle);
+	if(!characterTitle.isEmpty()){
+		Skill* targetSkill = SkillManager::instance()->getSkill(characterTitle);
 
-	if(targetSkill == NULL || !targetSkill->isTitle()) {
-		return;
+		if(targetSkill == NULL || !targetSkill->isTitle()) {
+			return;
+		}
 	}
 
 	title = characterTitle;
