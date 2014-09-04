@@ -840,6 +840,12 @@ npcMapRebel =
 		missions = {} 
 	},
 	{ 
+		spawnData = { planetName = "corellia", npcTemplate = "record_keeper_rebel", x = 6.0, z = 7.00, y = -5.18, direction = 0, cellID = 8555480, position = STAND }, 
+		npcNumber = -2,  
+		stfFile = "",               
+		missions = {} 
+	},
+	{ 
 		spawnData = { planetName = "corellia", npcTemplate = "qualdo_herm", x = 14.91, z = 1.01, y = -6.68, direction = 0, cellID = 8555475, position = STAND }, 
 		worldPosition = { x = -6512.3, y = 6005.2 }, 
 		npcNumber = 2,   

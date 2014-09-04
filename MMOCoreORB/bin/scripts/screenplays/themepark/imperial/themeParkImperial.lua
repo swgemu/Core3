@@ -773,7 +773,13 @@ npcMapImperial =
 			stfFile = "@theme_park_imperial/darth_vader",
 			stfWarning = "vader",
 			missions = darth_vader_missions
-		}
+		},
+		{ 
+			spawnData = { planetName = "naboo", npcTemplate = "record_keeper_imperial", x = 32.70, z = 0.2, y = -36.70, direction = 0, cellID = 1418873, position = STAND }, 
+			npcNumber = -1,  
+			stfFile = "",               
+			missions = {} 
+		},		
 	}
 
 permissionMapImperial = {
