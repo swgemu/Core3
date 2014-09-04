@@ -101,6 +101,10 @@ public:
 	virtual bool isCoaMessageData(){
 		return false;
 	}
+
+	bool isEventPerkData() {
+		return false;
+	}
 };
 
 

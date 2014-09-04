@@ -42,6 +42,11 @@
 
 
 object_tangible_deed_event_perk_xwing_static_deed = object_tangible_deed_event_perk_shared_xwing_static_deed:new {
+	templateType = EVENTPERKDEED,
+	gameObjectType = 8388615,
+	noTrade = 1,
+	generatedObjectTemplate = "object/tangible/event_perk/xwing.iff",
+	perkType = STATIC,
 
 }
 

@@ -42,7 +42,7 @@
 
 
 object_tangible_event_perk_web_tree = object_tangible_event_perk_shared_web_tree:new {
-
+	dataObjectComponent = "EventPerkDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_web_tree, "object/tangible/event_perk/web_tree.iff")

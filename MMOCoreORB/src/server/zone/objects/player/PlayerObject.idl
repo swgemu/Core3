@@ -281,7 +281,10 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected VectorMap<unsigned int, string> chosenVeteranRewards; // milestone, templateFile
-	
+
+	@dereferenced
+	protected SortedVector<unsigned long> currentEventPerks;
+
 	/**
 	 * the key is the quest.hashCode()
 	 */
@@ -1689,6 +1692,18 @@ class PlayerObject extends IntangibleObject {
 	@dirty
 	public string getForceSensitiveElegibleExperienceType(int type) {
 		return fsEligibleExperiences.get(type);
+	}
+
+	public void addEventPerk(SceneObject deed) {
+		currentEventPerks.put(deed.getObjectID());
+	}
+
+	public void removeEventPerk(SceneObject deed) {
+		currentEventPerks.drop(deed.getObjectID());
+	}
+
+	public int getEventPerkCount() {
+		return currentEventPerks.size();
 	}
 }
 
