@@ -28,6 +28,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/customization/CustomizationIdManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 
 void PetDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -105,14 +106,16 @@ void PetDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 	alm->insertAttribute("creature_tohit", chanceHit);
 	alm->insertAttribute("creature_damage", String::valueOf(damageMin) + " - " + String::valueOf(damageMax));
 
-	if (special1 != "none" && special1 != "defaultattack")
-		alm->insertAttribute("spec_atk_1", special1);
-	else
+	if (special1 != "none" && special1 != "defaultattack"){
+		String str = StringIdManager::instance()->getStringId(("@combat_effects:" + special1).hashCode()).toString();
+		alm->insertAttribute("spec_atk_1", str);
+	} else
 		alm->insertAttribute("spec_atk_1", "---");
 
-	if (special2 != "none" && special2 != "defaultattack")
-		alm->insertAttribute("spec_atk_2", special2);
-	else
+	if (special2 != "none" && special2 != "defaultattack"){
+		String str = StringIdManager::instance()->getStringId(("@combat_effects:" + special2).hashCode()).toString();
+		alm->insertAttribute("spec_atk_2", str);
+	} else
 		alm->insertAttribute("spec_atk_2", "---");
 
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
