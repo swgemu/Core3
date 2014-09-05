@@ -31,15 +31,12 @@ public:
 		if (genOb != NULL) {
 			genOb->destroyObjectFromWorld(true);
 			genOb->destroyObjectFromDatabase();
-			deed->destroyObjectFromDatabase();
-		} else {
-			if (player != NULL) {
-				player->sendSystemMessage("@event_perk:deed_expired"); // Your unused Rental Deed expired and has been removed from your inventory.
-			}
-
-			deed->destroyObjectFromWorld(true);
-			deed->destroyObjectFromDatabase();
+		} else if (player != NULL) {
+			player->sendSystemMessage("@event_perk:deed_expired"); // Your unused Rental Deed expired and has been removed from your inventory.
 		}
+
+		deed->destroyObjectFromWorld(true);
+		deed->destroyObjectFromDatabase();
 
 	}
 };

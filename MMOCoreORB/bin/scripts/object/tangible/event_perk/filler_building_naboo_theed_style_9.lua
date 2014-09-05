@@ -42,6 +42,7 @@
 
 
 object_tangible_event_perk_filler_building_naboo_theed_style_9 = object_tangible_event_perk_shared_filler_building_naboo_theed_style_9:new {
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
 }
 

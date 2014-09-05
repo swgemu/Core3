@@ -42,6 +42,7 @@
 
 
 object_tangible_event_perk_sandcrawler = object_tangible_event_perk_shared_sandcrawler:new {
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
 }
 

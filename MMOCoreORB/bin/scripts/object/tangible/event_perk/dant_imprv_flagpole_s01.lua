@@ -42,6 +42,7 @@
 
 
 object_tangible_event_perk_dant_imprv_flagpole_s01 = object_tangible_event_perk_shared_dant_imprv_flagpole_s01:new {
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
 }
 

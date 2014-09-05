@@ -65,9 +65,6 @@ class EventPerkDeed extends Deed {
 	@dereferenced
 	protected transient Reference<RemoveEventPerkTask> removeEventPerkTask;
 
-	public static final unsigned long TIME_TO_LIVE = 900000; // 15 minute for testing
-	//public static final unsigned long TIME_TO_LIVE = 28800000; // 8 hours
-
 	public EventPerkDeed() {
 		Logger.setLoggingName("EventPerkDeed");
 
@@ -116,7 +113,7 @@ class EventPerkDeed extends Deed {
 
 	public native void activateRemoveEvent();
 
-	public native string getDurationString(unsigned int timestamp);
+	public native string getDurationString();
 
 	public void setOwner(CreatureObject player) {
 		owner = player;
@@ -132,6 +129,16 @@ class EventPerkDeed extends Deed {
 	@read
 	public TangibleObject getGeneratedObject() {
 		return generatedObject;
+	}
+
+	@read
+	public int getPerkType() {
+		return perkType;
+	}
+
+	@local
+	public Time getPurchaseTime() {
+		return purchaseTime;
 	}
 
 	@dirty

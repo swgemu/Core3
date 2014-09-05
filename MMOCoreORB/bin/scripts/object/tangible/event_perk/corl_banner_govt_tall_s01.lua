@@ -42,6 +42,7 @@
 
 
 object_tangible_event_perk_corl_banner_govt_tall_s01 = object_tangible_event_perk_shared_corl_banner_govt_tall_s01:new {
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
 }
 

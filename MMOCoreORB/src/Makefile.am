@@ -363,6 +363,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/FireHeavyWeaponMenuComponent.cpp \
 		server/zone/objects/tangible/components/SurveyDroidMenuComponent.cpp \
 		server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.cpp \
+		server/zone/objects/tangible/components/EventPerkMenuComponent.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
 		server/zone/objects/tangible/firework/components/FireworkMenuComponent.cpp \
 		server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp \

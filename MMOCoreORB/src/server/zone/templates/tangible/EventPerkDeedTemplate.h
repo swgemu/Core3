@@ -15,6 +15,9 @@ public:
 	const static int PERSONNEL = 3;
 	const static int GAME = 4;
 
+	const static uint64 TIME_TO_LIVE = 900000; // 15 minute for testing
+	//const static uint64 TIME_TO_LIVE = 28800000; // 8 hours
+
 	EventPerkDeedTemplate() {
 		perkType = UNKNOWN;
 	}

@@ -42,6 +42,7 @@
 
 
 object_tangible_event_perk_banner_generic_s02 = object_tangible_event_perk_shared_banner_generic_s02:new {
+	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
 }
 

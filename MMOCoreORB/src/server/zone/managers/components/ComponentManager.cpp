@@ -111,6 +111,7 @@
 #include "server/zone/objects/tangible/components/generic/CoaMessageDataComponent.h"
 #include "server/zone/objects/creature/components/FactionRecruiterContainerComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
+#include "server/zone/objects/tangible/components/EventPerkMenuComponent.h"
 
 
 ComponentManager::ComponentManager() {
@@ -262,6 +263,7 @@ ComponentManager::ComponentManager() {
 	components.put("CoaMessageDataComponent", new CoaMessageDataComponent() );
 	dataObjectFactory.registerObject<CoaMessageDataComponent>("CoaMessageDataComponent");
 
+	components.put("EventPerkMenuComponent", new EventPerkMenuComponent() );
 	components.put("EventPerkDataComponent", new EventPerkDataComponent() );
 	dataObjectFactory.registerObject<EventPerkDataComponent>("EventPerkDataComponent");
 }

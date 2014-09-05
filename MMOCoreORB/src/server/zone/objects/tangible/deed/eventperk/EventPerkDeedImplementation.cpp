@@ -27,10 +27,7 @@ void EventPerkDeedImplementation::loadTemplateData(SharedObjectTemplate* templat
 void EventPerkDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	DeedImplementation::fillAttributeList(alm, object);
 
-	Time currentTime;
-	uint32 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
-	String timeLeft = getDurationString((TIME_TO_LIVE - timeDelta) / 1000);
-	alm->insertAttribute("duration", timeLeft); // Duration
+	alm->insertAttribute("duration", getDurationString()); // Duration
 }
 
 void EventPerkDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -98,11 +95,17 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		ManagedReference<TangibleObject*> object = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), "playerstructures", 1)).castTo<TangibleObject*>();
+		ManagedReference<TangibleObject*> object = generatedObject.get();
 
 		if (object == NULL) {
-			player->sendSystemMessage("Error generating object. Wrong generatedObjectTemplate or is not a tangible object.");
-			return 1;
+			object = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), "playerstructures", 1)).castTo<TangibleObject*>();
+
+			if (object == NULL) {
+				player->sendSystemMessage("Error generating object. Wrong generatedObjectTemplate or is not a tangible object.");
+				return 1;
+			}
+
+			generatedObject = object;
 		}
 
 		EventPerkDataComponent* data = cast<EventPerkDataComponent*>(object->getDataObjectComponent()->get());
@@ -114,7 +117,6 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		}
 
 		data->setDeed(_this.get());
-		generatedObject = object;
 
 		object->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		object->setDirection(Math::deg2rad(player->getDirectionAngle()));
@@ -148,19 +150,23 @@ void EventPerkDeedImplementation::activateRemoveEvent() {
 		removeEventPerkTask = new RemoveEventPerkTask(_this.get());
 
 		Time currentTime;
-		uint32 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
+		uint64 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
 
-		if (timeDelta >= TIME_TO_LIVE) {
+		if (timeDelta >= EventPerkDeedTemplate::TIME_TO_LIVE) {
 			removeEventPerkTask->execute();
 		} else {
-			removeEventPerkTask->schedule(TIME_TO_LIVE - timeDelta);
+			removeEventPerkTask->schedule(EventPerkDeedTemplate::TIME_TO_LIVE - timeDelta);
 		}
 	}
 }
 
-String EventPerkDeedImplementation::getDurationString(uint32 timestamp) {
+String EventPerkDeedImplementation::getDurationString() {
 
-	if( timestamp == 0 ){
+	Time currentTime;
+	uint32 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
+	uint32 timestamp = (EventPerkDeedTemplate::TIME_TO_LIVE - timeDelta) / 1000;
+
+	if( timestamp == 0 ) {
 		return "";
 	}
 
