@@ -42,7 +42,7 @@
 
 
 object_intangible_pet_zucca_boar_hue = object_intangible_pet_shared_zucca_boar_hue:new {
-
+	gameObjectType = 2055,
 }
 
 ObjectTemplates:addTemplate(object_intangible_pet_zucca_boar_hue, "object/intangible/pet/zucca_boar_hue.iff")
