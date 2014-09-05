@@ -176,7 +176,9 @@ class PetControlDevice extends ControlDevice {
 	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
 	 */
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-	
+
+	public native void destroyObjectFromWorld(boolean sendSelfDestroy);
+
 	/**
 	 * Checks if the object can be destroyed
 	 * @pre { this is locked }

@@ -515,6 +515,18 @@ void PetControlDeviceImplementation::destroyObjectFromDatabase(bool destroyConta
 	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
 
+void PetControlDeviceImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
+	if (petType == PetManager::CREATUREPET) {
+		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(getParentRecursively(SceneObjectType::PLAYERCREATURE).get().get());
+
+		if (player != NULL) {
+			player->sendSystemMessage("@pet/pet_menu:pet_released"); // You release your pet back into the wild
+		}
+	}
+
+	IntangibleObjectImplementation::destroyObjectFromWorld(sendSelfDestroy);
+}
+
 int PetControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 	ManagedReference<AiAgent*> controlledObject = cast<AiAgent*>(this->controlledObject.get().get());
 
