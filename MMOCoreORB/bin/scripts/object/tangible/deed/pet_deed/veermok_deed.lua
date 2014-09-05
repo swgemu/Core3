@@ -55,7 +55,7 @@ object_tangible_deed_pet_deed_veermok_deed = object_tangible_deed_pet_deed_share
 	experimentalPrecision = {0, 0},
 	experimentalCombineType = {0, 0},
 	generatedObjectTemplate = "mobile/pet/veermok_be.iff",
-	controlDeviceObjectTemplate = "object/intangible/pet/veermock_hue.iff",
+	controlDeviceObjectTemplate = "object/intangible/pet/veermok_hue.iff",
 	mobileTemplate = "veermok_be",	
 }
 
