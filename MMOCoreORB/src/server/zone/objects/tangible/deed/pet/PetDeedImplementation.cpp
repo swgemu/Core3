@@ -303,14 +303,16 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		}
 
 		Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();
-		if( creatureManager == NULL )
+		if( creatureManager == NULL ){
+			player->sendSystemMessage("Internal Pet Deed Error #307");
 			return 1;
+		}
 
 		CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
 		ManagedReference<CreatureTemplate*> petTemplate = creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
 
 		if (petTemplate == NULL) {
-			error("Failed to load template crc");
+			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]" );
 			return 1;
 		}
 
@@ -332,19 +334,22 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		ManagedReference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
 
 		if (controlDevice == NULL) {
+			player->sendSystemMessage("wrong pet control device;controlDevice=[" + controlDeviceObjectTemplate + "]" );
 			return 1;
 		}
 
 		String templateToSpawn = creatureManager->getTemplateToSpawn(mobileTemplate.hashCode());
 		ManagedReference<CreatureObject*> creatureObject = creatureManager->createCreature(templateToSpawn.hashCode(), true, 0 );
 		if( creatureObject == NULL ){
-			player->sendSystemMessage("wrong pet templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]" );
+			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]" );
 			return 1;
 		}
 
 		ManagedReference<Creature*> pet = creatureObject.castTo<Creature*>();
-		if( pet == NULL )
+		if( pet == NULL ){
+			player->sendSystemMessage("Internal Pet Deed Error #348" );
 			return 1;
+		}
 		ObjectManager* objectManager = server->getZoneServer()->getObjectManager();
 		pet->setPetDeed(_this.get());
 		pet->loadTemplateData( petTemplate );
@@ -360,9 +365,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 				int16 val = customVars->elementAt(i).getValue();
 
 				String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
-				//if( name.contains( "color" ) ){
 				pet->setCustomizationVariable( name, val, true );
-				//}
 			}
 		}
 		// then this is complete
