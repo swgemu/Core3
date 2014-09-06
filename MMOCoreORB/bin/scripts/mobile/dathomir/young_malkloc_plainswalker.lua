@@ -1,5 +1,5 @@
 young_malkloc_plainswalker = Creature:new {
-	objectName = "@mob/creature_names:young_malkloc_plainswalker",
+	objectName = "@mob/creature_names:malkloc_plainswalker_youth",
 	socialGroup = "malkloc",
 	pvpFaction = "",
 	faction = "",
