@@ -19,9 +19,8 @@ includeFile("themepark/marauder/themeParkMarauder.lua")
 includeFile("themepark/tutorial.lua")
 
 -- Recruiters
-includeFile("recruiters/recruiters.lua")
-includeFile("recruiters/imperialrecruiter.lua")
-includeFile("recruiters/rebelrecruiter.lua")
+includeFile("recruiters/recruiterConvoHandler.lua")
+includeFile("recruiters/recruiterScreenplay.lua")
 
 -- Dungeons
 includeFile("dungeon/death_watch_bunker.lua")

@@ -48,7 +48,7 @@ crackdown_rebel_guard_captain = Creature:new {
 		}	
 	},
 	weapons = {"rebel_weapons_heavy"},
-	conversationTemplate = "rebel_recruiter_convotemplate",
+	conversationTemplate = "rebelRecruiterConvoTemplate",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 

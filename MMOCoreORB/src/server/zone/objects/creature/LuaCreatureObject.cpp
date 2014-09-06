@@ -182,9 +182,13 @@ int LuaCreatureObject::sendOpenHolocronToPageMessage(lua_State* L) {
 }
 
 int LuaCreatureObject::sendSystemMessage(lua_State* L) {
-	String value = lua_tostring(L, -1);
-	realObject->sendSystemMessage(value);
-
+	if (lua_islightuserdata(L, -1)) {
+		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -1);
+		realObject->sendSystemMessage(*message);
+	} else {
+		String value = lua_tostring(L, -1);
+		realObject->sendSystemMessage(value);
+	}
 	return 0;
 }
 
