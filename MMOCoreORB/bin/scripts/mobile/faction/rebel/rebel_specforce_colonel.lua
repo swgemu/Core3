@@ -51,7 +51,7 @@ rebel_specforce_colonel = Creature:new {
 		}	
 	},
 	weapons = {"rebel_weapons_medium"},
-	conversationTemplate = "rebel_recruiter_convotemplate",
+	conversationTemplate = "rebelRecruiterConvoTemplate",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
