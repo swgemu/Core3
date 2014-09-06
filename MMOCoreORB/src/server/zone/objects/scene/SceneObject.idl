@@ -1308,7 +1308,15 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isTurretControlTerminalData();
 	}
-	
+
+	@local
+	@read
+	public boolean isEventPerk() {
+		return dataObjectComponent != null && 
+		dataObjectComponent.get() != null &&
+		dataObjectComponent.get().isEventPerkData();
+	}
+
 	@local
 	@dirty
 	public ZoneComponent getZoneComponent() {

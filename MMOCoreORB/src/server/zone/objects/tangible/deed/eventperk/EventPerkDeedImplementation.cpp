@@ -5,8 +5,12 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/templates/tangible/EventPerkDeedTemplate.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
 
 void EventPerkDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
@@ -51,8 +55,23 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
+		PlanetManager* planetManager = zone->getPlanetManager();
+		if (planetManager == NULL) {
+			return 1;
+		}
+
+		EventPerkDeedTemplate* deedTemplate = cast<EventPerkDeedTemplate*>(getObjectTemplate());
+		if (deedTemplate == NULL) {
+			return 1;
+		}
+
 		if (zone->getZoneName().contains("space_")) {
 			player->sendSystemMessage("@event_perk:not_in_space"); // You may not deploy a Rental in space. Return to the ground first.
+			return 1;
+		}
+
+		if (!deedTemplate->isAllowedZone(zone->getZoneName())) {
+			player->sendSystemMessage("@event_perk:not_on_this_planet"); // You cannot deploy this rental on this planet. Examine the deed to determine the intended planet for this rental.
 			return 1;
 		}
 
@@ -88,6 +107,82 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 				player->sendSystemMessage("@event_perk:no_zoning_rights"); // You must have zoning rights to place a Rental in this city.
 				return 1;
 			}
+		}
+
+		int x = player->getWorldPositionX();
+		int y = player->getWorldPositionY();
+		int nearbyPerks = 0;
+
+		TerrainManager* terrainManager = planetManager->getTerrainManager();
+		if ( terrainManager == NULL || terrainManager->getHighestHeightDifference(x - 10, y - 10, x + 10, y + 10) > 15.0) {
+			player->sendSystemMessage("@event_perk:bad_area"); // This rental could not be deployed due to the surrounding terrain. Please move to another area and try again.
+			return 1;
+		}
+
+		SortedVector<ManagedReference<QuadTreeEntry* > >* closeObjects = player->getCloseObjects();
+
+		if (closeObjects == NULL) {
+			error("Player has NULL closeObjectsVector in EventPerkDeedImplementation::handleObjectMenuSelect");
+			return 1;
+		}
+
+		for (int i = 0; i < closeObjects->size(); ++i) {
+			SceneObject* obj = cast<SceneObject*>(closeObjects->get(i).get());
+
+			if (obj == NULL) {
+				continue;
+			}
+
+			SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
+			if (objectTemplate == NULL) {
+				continue;
+			}
+
+			float radius = objectTemplate->getNoBuildRadius();
+
+			if (obj->isLairObject() && player->isInRange(obj, radius)) {
+				player->sendSystemMessage("@event_perk:too_close_lair"); // You cannot place a Rental this close to a lair.
+				return 1;
+			}
+
+			if (obj->isCampStructure() && player->isInRange(obj, radius)) {
+				player->sendSystemMessage("@event_perk:too_close_camp"); // You cannot place a Rental this close to a camp.
+				return 1;
+			}
+
+			if (radius > 0 && player->isInRange(obj, radius)) {
+				player->sendSystemMessage("@event_perk:too_close_something"); // You are too close to an object to deploy your Rental here. Move away from it.
+				return 1;
+			}
+
+			if (objectTemplate->isSharedStructureObjectTemplate()) {
+				if (StructureManager::instance()->isInStructureFootprint(cast<StructureObject*>(obj), x, y, 0)) {
+					player->sendSystemMessage("@event_perk:too_close_building"); // You may not place a Rental this close to a building.
+					return 1;
+				}
+			}
+
+			if (obj->isEventPerk() && player->isInRange(obj, 32) && ++nearbyPerks > 2) {
+				player->sendSystemMessage("@event_perk:too_many_perks"); // There are too many Rentals already deployed in this area. Please move to another location.
+				return 1;
+			}
+		}
+
+		SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+		zone->getInRangeActiveAreas(x, y, &activeAreas, true);
+
+		for (int i = 0; i < activeAreas.size(); ++i) {
+			ActiveArea* area = activeAreas.get(i);
+
+			if (area->isNoBuildArea()) {
+				player->sendSystemMessage("@event_perk:too_close_something"); // You are too close to an object to deploy your Rental here. Move away from it.
+				return 1;
+			}
+		}
+
+		if (planetManager->isInRangeWithPoi(x, y, 150)) {
+			player->sendSystemMessage("@event_perk:too_close_something"); // You are too close to an object to deploy your Rental here. Move away from it.
+			return 1;
 		}
 
 		if (perkType != EventPerkDeedTemplate::STATIC) {

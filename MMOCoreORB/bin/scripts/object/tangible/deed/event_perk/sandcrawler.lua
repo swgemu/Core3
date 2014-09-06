@@ -47,6 +47,7 @@ object_tangible_deed_event_perk_sandcrawler = object_tangible_deed_event_perk_sh
 	noTrade = 1,
 	generatedObjectTemplate = "object/tangible/event_perk/sandcrawler.iff",
 	perkType = STATIC,
+	allowedZones = {"tatooine"},
 
 }
 

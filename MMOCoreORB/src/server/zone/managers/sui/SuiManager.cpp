@@ -612,6 +612,8 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			if (templatePath.contains("event_perk")) {
 				if (ghost->getEventPerkCount() >= 5) {
 					player->sendSystemMessage("@event_perk:pro_too_many_perks"); // You cannot rent any more items right now.
+					ghost->addSuiBox(cbSui);
+					player->sendMessage(cbSui->generateMessage());
 					return;
 				}
 			}

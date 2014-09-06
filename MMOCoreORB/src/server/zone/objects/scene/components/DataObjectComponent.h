@@ -102,7 +102,7 @@ public:
 		return false;
 	}
 
-	bool isEventPerkData() {
+	virtual bool isEventPerkData() {
 		return false;
 	}
 };
