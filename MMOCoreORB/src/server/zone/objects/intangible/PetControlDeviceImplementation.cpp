@@ -147,8 +147,14 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 					player->sendSystemMessage("@pet/pet_menu:control_exceeded"); // Calling this pet would exceed your Control Level ability.
 					return;
 				}
-			} else if (object->isNonPlayerCreatureObject() && petType == PetManager::FACTIONPET) {
-				if (++currentlySpawned >= maxPets) {
+			} else if ((object->isCreature() || object->isNonPlayerCreatureObject()) && petType == PetManager::FACTIONPET) {
+				ManagedReference<CreatureTemplate*> activePetTemplate = object->getCreatureTemplate();
+				ManagedReference<CreatureTemplate*> callingPetTemplate = pet->getCreatureTemplate();
+
+				if (activePetTemplate == NULL || callingPetTemplate == NULL)
+					continue;
+
+				if (++currentlySpawned >= maxPets || (activePetTemplate->getTemplateName() == "at_st" && callingPetTemplate->getTemplateName() == "at_st")) {
 					player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
 					return;
 				}

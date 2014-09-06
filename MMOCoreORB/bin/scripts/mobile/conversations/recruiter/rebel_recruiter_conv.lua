@@ -1,103 +1,91 @@
-rebel_recruiter_convotemplate = ConvoTemplate:new {
+rebelRecruiterConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "rebel_recruiter_handler",
+	luaClassHandler = "RecruiterConvoHandler",
 	screens = {}
 }
 
---greet_hated
-rebel_recruiter_greet_hated = ConvoScreen:new {
+greet_hated = ConvoScreen:new {
 	id = "greet_hated",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_462",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_462", -- I'm sorry, but I do not know you and do not wish to.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_greet_hated);
+rebelRecruiterConvoTemplate:addScreen(greet_hated);
 
-
---greet_changing_status
-rebel_recruiter_greet_changing_status = ConvoScreen:new {
+greet_changing_status = ConvoScreen:new {
 	id = "greet_changing_status",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_596",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_596", -- Greetings. I see that your status is currently being processed. I won't be able to help you until that is complete. It should not take much longer.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_greet_changing_status);
+rebelRecruiterConvoTemplate:addScreen(greet_changing_status);
 
-
---greet_enemy
-rebel_recruiter_greet_enemy = ConvoScreen:new {
+greet_enemy = ConvoScreen:new {
 	id = "greet_enemy",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_464",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_464", -- What are you doing talking to me? People like you are destroying the galaxy.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_greet_enemy);
+rebelRecruiterConvoTemplate:addScreen(greet_enemy);
 
-
---member start
-rebel_recruiter_member_covert_start = ConvoScreen:new {
+member_covert_start = ConvoScreen:new {
 	id = "greet_member_start_covert",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_466",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_466", -- Hello friend. Is there something that I may do to help you?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_overt"},
-		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"},
-		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"},
+		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_overt"}, -- I need to address my role in the Civil War.
+		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
+		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_member_covert_start);
+rebelRecruiterConvoTemplate:addScreen(member_covert_start);
 
 
-rebel_recruiter_member_overt_start = ConvoScreen:new {
-id = "greet_member_start_overt",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_466",
+member_overt_start = ConvoScreen:new {
+	id = "greet_member_start_overt",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_466", -- Hello friend. Is there something that I may do to help you?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"},
-		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_overt"},
-		{"@conversation/faction_recruiter_rebel:s_538", "resign_overt"},
+		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
+		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_overt"}, -- I need to go on leave for a time.
+		{"@conversation/faction_recruiter_rebel:s_538", "resign_overt"}, -- This is all too much for me. I would like to resign completely.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_member_overt_start);
+rebelRecruiterConvoTemplate:addScreen(member_overt_start);
 
-
-rebel_recruiter_neutral_start = ConvoScreen:new {
+neutral_start = ConvoScreen:new {
 	id = "greet_neutral_start",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_566",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_566", -- Hello friend. Is there something that I can do for you? Are you interested in helping free the peoples of the galaxy?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_580", "join_military"},
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_neutral_start);
+rebelRecruiterConvoTemplate:addScreen(neutral_start);
 
-
-rebel_recruiter_onleave_start = ConvoScreen:new {
+onleave_start = ConvoScreen:new {
 	id = "greet_onleave_start",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_448",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_448", -- Hello friend. Ready to get back to some real work?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_450", "resume_duties"},
+		{"@conversation/faction_recruiter_rebel:s_450", "resume_duties"}, -- I am ready to get back to my duties.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_onleave_start);
+rebelRecruiterConvoTemplate:addScreen(onleave_start);
 
-
---join military
-rebel_recruiter_join_military = ConvoScreen:new {
+join_military = ConvoScreen:new {
 	id = "join_military",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_584",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_584", -- This is not a decision to be taken lightly. Rebels are hunted across the galaxy. If you join us, while you are an active combatant, Imperials will attack you on sight but Imperial Special Forces will leave you alone. Are you ready for that?
 	stopConversation = "false",
 	options = {
 		{"@conversation/faction_recruiter_rebel:s_586", "accept_join"},
@@ -105,426 +93,374 @@ rebel_recruiter_join_military = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_join_military);
+rebelRecruiterConvoTemplate:addScreen(join_military);
 
+neutral_need_more_points = ConvoScreen:new {
+	id = "neutral_need_more_points",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_582", -- Your enthusiasm warms my heart. I'm afraid that right now, your loyalty is somewhat in question. Go out and prove to us that you want to help us overthrow the Empire and we can talk later.
+	stopConversation = "true",
+	options = {
+	}
+}
 
---accept_join
-rebel_recruiter_accept_join = ConvoScreen:new {
+rebelRecruiterConvoTemplate:addScreen(neutral_need_more_points);
+
+accept_join = ConvoScreen:new {
 	id = "accept_join",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_588",
-	stopConversation = "false",
-	options = {
-		{"@conversation/faction_recruiter_rebel:s_590", "accepted_join"},
-	}
-}
-
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accept_join);
-
-
---accepted_join
-rebel_recruiter_accepted_join = ConvoScreen:new {
-	id = "accepted_join",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_588",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_588", -- Superb! Welcome to the Rebellion!
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_join);
+rebelRecruiterConvoTemplate:addScreen(accept_join);
 
-
---think_more
-rebel_recruiter_think_more = ConvoScreen:new {
+think_more = ConvoScreen:new {
 	id = "think_more",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_594",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_594", -- We only want serious, committed candidates. If you change your mind, talk to me then.
 	stopConversation = "true",
-	options = {		
+	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_think_more);
+rebelRecruiterConvoTemplate:addScreen(think_more);
 
-
---confirm_go_overt
-rebel_recruiter_confirm_go_overt = ConvoScreen:new {
+confirm_go_overt = ConvoScreen:new {
 	id = "confirm_go_overt",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_516",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_516", -- We can use good people in Special Forces. As a member of the Special Forces, you will be able to attack and be attacked by Imperial Special Forces members. Does this interest you?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_518", "accepted_go_overt"},
-		{"@conversation/faction_recruiter_rebel:s_522", "greet_member_start_overt"}
+		{"@conversation/faction_recruiter_rebel:s_518", "accepted_go_overt"}, -- Yes. I want to hunt Imperial Special Forces. Sign me up!
+		{"@conversation/faction_recruiter_rebel:s_522", "greet_member_start_overt"} -- Actually, maybe it isn't for me after all. Never mind.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_confirm_go_overt);
+rebelRecruiterConvoTemplate:addScreen(confirm_go_overt);
 
-
---confirm_go_covert
-rebel_recruiter_confirm_go_covert = ConvoScreen:new {
+confirm_go_covert = ConvoScreen:new {
 	id = "confirm_go_covert",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_506",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_506", -- You are currently in Special Forces. Do you need to step back from it for now?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_508", "accepted_go_covert"},
-		{"@conversation/faction_recruiter_rebel:s_512", "greet_member_start_covert"}
+		{"@conversation/faction_recruiter_rebel:s_508", "accepted_go_covert"}, -- Yes please. I would like to return to combatant status and not fight the Imperial Special Forces.
+		{"@conversation/faction_recruiter_rebel:s_512", "stay_special_forces"} -- Actually, I want to stay in Special Forces.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_confirm_go_covert);
+rebelRecruiterConvoTemplate:addScreen(confirm_go_covert);
 
+stay_special_forces = ConvoScreen:new {
+	id = "stay_special_forces",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_514", -- Good show! Show those Imperials what for. May I help you with something else instead?
+	stopConversation = "false",
+	options = {
+		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
+		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_overt"}, -- I need to go on leave for a time.
+		{"@conversation/faction_recruiter_rebel:s_538", "resign_overt"}, -- This is all too much for me. I would like to resign completely.
+	}
+}
 
---accepted_go_overt
-rebel_recruiter_accepted_go_overt = ConvoScreen:new {
+rebelRecruiterConvoTemplate:addScreen(stay_special_forces);
+
+accepted_go_overt = ConvoScreen:new {
 	id = "accepted_go_overt",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_520",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_520", -- Good for you! I'll update your status and you will be a member of the Special Forces in 30 seconds.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_go_overt);
+rebelRecruiterConvoTemplate:addScreen(accepted_go_overt);
 
-
---accepted_go_covert
-rebel_recruiter_accepted_go_covert = ConvoScreen:new {
+accepted_go_covert = ConvoScreen:new {
 	id = "accepted_go_covert",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_514",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_510", -- That's a shame. It will take some time to push the paperwork through for approval. Your status will change in about 5 minutes.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_go_covert);
+rebelRecruiterConvoTemplate:addScreen(accepted_go_covert);
 
-
---leave_time
-rebel_recruiter_leave_time_covert = ConvoScreen:new {
+leave_time_covert = ConvoScreen:new {
 	id = "leave_time_covert",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_528",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_528", -- We really need your skills. Are you sure that you want to go on leave now? You will be overlooked by most Imperials, unless you get stopped by a tenacious agent that finds something linking you to us.
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_530", "accepted_go_on_leave"},
-		{"@conversation/faction_recruiter_rebel:s_534", "greet_member_start_covert"}
+		{"@conversation/faction_recruiter_rebel:s_530", "accepted_go_on_leave"}, -- Yes. I really need to take some leave time.
+		{"@conversation/faction_recruiter_rebel:s_534", "stay_covert"} -- Maybe not. I will stay active.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_leave_time_covert);
+rebelRecruiterConvoTemplate:addScreen(leave_time_covert);
 
+stay_covert = ConvoScreen:new {
+	id = "stay_covert",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_536", -- I wish all of our soldiers had your dedication. I salute you!
+	stopConversation = "false",
+	options = {
+		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_overt"}, -- I need to address my role in the Civil War.
+		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
+		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+	}
+}
 
-rebel_recruiter_leave_time_overt = ConvoScreen:new {
+rebelRecruiterConvoTemplate:addScreen(stay_covert);
+
+leave_time_overt = ConvoScreen:new {
 	id = "leave_time_overt",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_528",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_528", -- We really need your skills. Are you sure that you want to go on leave now? You will be overlooked by most Imperials, unless you get stopped by a tenacious agent that finds something linking you to us.
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_530", "accepted_go_on_leave"},
-		{"@conversation/faction_recruiter_rebel:s_534", "greet_member_start_overt"}
+		{"@conversation/faction_recruiter_rebel:s_530", "accepted_go_on_leave"}, -- Yes. I really need to take some leave time.
+		{"@conversation/faction_recruiter_rebel:s_534", "stay_overt"} -- Maybe not. I will stay active.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_leave_time_overt);
+rebelRecruiterConvoTemplate:addScreen(leave_time_overt);
 
+stay_overt = ConvoScreen:new {
+	id = "stay_overt",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_536", -- I wish all of our soldiers had your dedication. I salute you!
+	stopConversation = "false",
+	options = {
+		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
+		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
+		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+	}
+}
 
---accepted_go_on_leave
-rebel_recruiter_accepted_go_on_leave = ConvoScreen:new {
+rebelRecruiterConvoTemplate:addScreen(stay_overt);
+
+accepted_go_on_leave = ConvoScreen:new {
 	id = "accepted_go_on_leave",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_532",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_532", -- It will take me some time to process, but you will be on leave beginning in 5 minutes.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_go_on_leave);
+rebelRecruiterConvoTemplate:addScreen(accepted_go_on_leave);
 
-
---resign
-rebel_recruiter_leave_resign_covert = ConvoScreen:new {
+leave_resign_covert = ConvoScreen:new {
 	id = "resign_covert",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_540",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_540", -- How could you turn your back on people trying to win freedom from tyranny? We need everyone we can get! Won't you reconsider?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_542", "accepted_resign"},
-		{"@conversation/faction_recruiter_rebel:s_546", "greet_member_start_covert"}
+		{"@conversation/faction_recruiter_rebel:s_542", "accepted_resign"}, -- I'm sure. I have had enough war. I want out.
+		{"@conversation/faction_recruiter_rebel:s_546", "dont_resign_covert"} -- You are right. It was a momentary lapse. I will stay with the Rebellion.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_leave_resign_covert);
+rebelRecruiterConvoTemplate:addScreen(leave_resign_covert);
 
+dont_resign_covert = ConvoScreen:new {
+	id = "dont_resign_covert",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_548", -- Doubt is understandable, but have faith. We are on the right side. No one wants to cater to a tyrant. Down with the Empire!
+	stopConversation = "false",
+	options = {
+		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_overt"}, -- I need to address my role in the Civil War.
+		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
+		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+	}
+}
 
-rebel_recruiter_leave_resign_overt = ConvoScreen:new {
+rebelRecruiterConvoTemplate:addScreen(dont_resign_covert);
+
+leave_resign_overt = ConvoScreen:new {
 	id = "resign_overt",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_540",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_540", -- How could you turn your back on people trying to win freedom from tyranny? We need everyone we can get! Won't you reconsider?
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_542", "accepted_resign"},
-		{"@conversation/faction_recruiter_rebel:s_546", "greet_member_start_overt"}
+		{"@conversation/faction_recruiter_rebel:s_542", "accepted_resign"}, -- I'm sure. I have had enough war. I want out.
+		{"@conversation/faction_recruiter_rebel:s_546", "dont_resign_overt"} -- You are right. It was a momentary lapse. I will stay with the Rebellion.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_leave_resign_overt);
+rebelRecruiterConvoTemplate:addScreen(leave_resign_overt);
 
+dont_resign_overt = ConvoScreen:new {
+	id = "dont_resign_overt",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_548", -- Doubt is understandable, but have faith. We are on the right side. No one wants to cater to a tyrant. Down with the Empire!
+	stopConversation = "false",
+	options = {
+		{"@conversation/faction_recruiter_rebel:s_504", "confirm_go_covert"}, -- I need to address my role in the Civil War.
+		{"@conversation/faction_recruiter_rebel:s_526", "leave_time_covert"}, -- I need to go on leave for a time.
+		{"@conversation/faction_recruiter_rebel:s_538", "resign_covert"}, -- This is all too much for me. I would like to resign completely.
+	}
+}
 
---accepted_resign
-rebel_recruiter_accepted_resign = ConvoScreen:new {
+rebelRecruiterConvoTemplate:addScreen(dont_resign_overt);
+
+accepted_resign = ConvoScreen:new {
 	id = "accepted_resign",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_544",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_544", -- So be it. If you decide that you want to come back, let me know. But for now, you are no longer a member of the Rebellion.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_resign);
+rebelRecruiterConvoTemplate:addScreen(accepted_resign);
 
-
--------------------------------------------
---resume_duties
-rebel_recruiter_resume_duties = ConvoScreen:new {
+resume_duties = ConvoScreen:new {
 	id = "resume_duties",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_452",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_452", -- Good to hear! I just want to make sure that you are serious about returning. You really want to come off leave? Remember that most of the Imperials will attack you on sight.
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_454", "accepted_resume_duties"},
-		{"@conversation/faction_recruiter_rebel:s_458", "greet_onleave_start"}
+		{"@conversation/faction_recruiter_rebel:s_454", "accepted_resume_duties"}, -- Absolutely.
+		{"@conversation/faction_recruiter_rebel:s_458", "stay_on_leave"} -- Actually, I think I like being on leave.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_resume_duties);
+rebelRecruiterConvoTemplate:addScreen(resume_duties);
 
+stay_on_leave = ConvoScreen:new {
+	id = "stay_on_leave",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_460", -- All right. We need you, but I think I can give you a few more days of leave.
+	stopConversation = "true",
+	options = {
+	}
+}
 
---accept_resume_duties
-rebel_recruiter_accepted_resume_duties = ConvoScreen:new {
+rebelRecruiterConvoTemplate:addScreen(stay_on_leave);
+
+accepted_resume_duties = ConvoScreen:new {
 	id = "accepted_resume_duties",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_456",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_456", -- Let me send your paperwork through. It should only take me about 30 seconds to get it done.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_resume_duties);
+rebelRecruiterConvoTemplate:addScreen(accepted_resume_duties);
 
-
---confirm_promotion
-rebel_recruiter_confirm_promotion = ConvoScreen:new {
+confirm_promotion = ConvoScreen:new {
 	id = "confirm_promotion",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_470",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_470", -- I see that you qualify for a promotion to %TO.
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_rebel:s_472", "accepted_promotion"}
---		{"@conversation/faction_recruiter_rebel:s_476", "declined_promotion"}
+		{"@conversation/faction_recruiter_rebel:s_472", "accepted_promotion"}, -- Excellent. I would like that promotion.
+		{"@conversation/faction_recruiter_rebel:s_476", "declined_promotion"}
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_confirm_promotion);
+rebelRecruiterConvoTemplate:addScreen(confirm_promotion);
 
-
---accepted_promotion
-rebel_recruiter_accepted_promotion = ConvoScreen:new {
+accepted_promotion = ConvoScreen:new {
 	id = "accepted_promotion",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_474",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_474", -- Outstanding! You certainly deserve this promotion. Congratulations.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_promotion);
+rebelRecruiterConvoTemplate:addScreen(accepted_promotion);
 
-
---declined_promotion
-rebel_recruiter_declined_promotion = ConvoScreen:new {
+declined_promotion = ConvoScreen:new {
 	id = "declined_promotion",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_478",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_478", -- While I applaud you for not seeking glory, we need good leaders. I hope you change your mind.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_declined_promotion);
+rebelRecruiterConvoTemplate:addScreen(declined_promotion);
 
-
---not enough points
-rebel_recruiter_not_enough_points = ConvoScreen:new {
+not_enough_points = ConvoScreen:new {
 	id = "not_enough_points",
-	leftDialog = "@faction_recruiter:not_enough_for_promotion",
+	leftDialog = "@faction_recruiter:not_enough_for_promotion", -- You do not have enough faction standing to spend. You must maintain at least %DI to remain part of the %TO faction.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_not_enough_points);
+rebelRecruiterConvoTemplate:addScreen(not_enough_points);
 
-
---confirm_bribe
-rebel_recruiter_confirm_bribe = ConvoScreen:new {
+confirm_bribe = ConvoScreen:new {
 	id = "confirm_bribe",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_570",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_570", -- I would be happy to accept a donation.
 	stopConversation = "false",
 	options = {
-	{"@conversation/faction_recruiter_rebel:s_572", "accepted_bribe_20k"}
+		{"@conversation/faction_recruiter_rebel:s_572", "accepted_bribe_20k"} -- I just happen to have a spare 20000 credits for you.
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_confirm_bribe);
+rebelRecruiterConvoTemplate:addScreen(confirm_bribe);
 
-
---accepted_bribe_20k
-rebel_recruiter_accepted_bribe_20k = ConvoScreen:new {
+accepted_bribe_20k = ConvoScreen:new {
 	id = "accepted_bribe_20k",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_574",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_574", -- Your donation is certainly appreciated. Let me just quickly verify the bank funds.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_bribe_20k);
+rebelRecruiterConvoTemplate:addScreen(accepted_bribe_20k);
 
-
---accepted_bribe_100k
-rebel_recruiter_accepted_bribe_100k = ConvoScreen:new {
+accepted_bribe_100k = ConvoScreen:new {
 	id = "accepted_bribe_100k",
-	leftDialog = "@conversation/faction_recruiter_rebel:s_574",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_578", -- Wow! That's quite a donation. Thank you very much. Your donation will be processed after I verify the funds.
 	stopConversation = "true",
 	options = {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_bribe_100k);
+rebelRecruiterConvoTemplate:addScreen(accepted_bribe_100k);
 
-
--- selected option to purchase faction items
-rebel_recruiter_faction_purchase = ConvoScreen:new {
+faction_purchase = ConvoScreen:new {
 	id = "faction_purchase",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_482",  -- we have some things.  what do you need?
 	stopConversation = "false",
 	options = {
-			{ "@faction_recruiter:option_purchase_weapons_armor", "fp_weapons_armor" }, --I'm interested in weapons and armor
-			{ "@faction_recruiter:option_purchase_furniture", "fp_furniture"}, -- I'm interested in furniture.
-			{ "@faction_recruiter:option_purchase_installation", "fp_installations" }, -- I'm interested in installations.
-			{ "@faction_recruiter:option_hirelings", "fp_hirelings" }, -- I would like some personnel support.
+		{ "@conversation/faction_recruiter_rebel:s_484", "fp_installations" }, -- We have some things. What do you need?
+		{ "@conversation/faction_recruiter_rebel:s_488", "fp_weapons_armor" }, -- I need better weaponry and armor.
+		--{ "@conversation/faction_recruiter_rebel:s_492", "fp_schematics" }, -- I like to build. What schematics are available?
+		{ "@conversation/faction_recruiter_rebel:s_496", "fp_furniture"}, -- I would like to do some decorating. I need furniture.
+		{ "@conversation/faction_recruiter_rebel:s_500", "fp_hirelings" }, -- I need some back-up troops.
 	},
 }
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_faction_purchase);
+rebelRecruiterConvoTemplate:addScreen(faction_purchase);
 
-
-
--- selected option to view furniture
-rebel_recruiter_fp_furniture = ConvoScreen:new {
+fp_furniture = ConvoScreen:new {
 	id = "fp_furniture",
-	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
-	stopConversation = "false",
-	options = {
-
-		},
-	
+	leftDialog = "@conversation/faction_recruiter_rebel:s_498", -- What suits your style? This is what I have available.
+	stopConversation = "true",
+	options = {	},
 }
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_fp_furniture);
+rebelRecruiterConvoTemplate:addScreen(fp_furniture);
 
--- selected option to view weapons and armor
-rebel_recruiter_fp_weapons_armor = ConvoScreen:new {
+fp_weapons_armor = ConvoScreen:new {
 	id = "fp_weapons_armor",
-	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
-	stopConversation = "false",
-	options = {
-
-		},
-	
+	leftDialog = "@conversation/faction_recruiter_rebel:s_490", -- Don't we all? With all the Imperial thugs crawling around, I don't blame you. Let me show you my selection.
+	stopConversation = "true",
+	options = {},
 }
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_fp_weapons_armor);
+rebelRecruiterConvoTemplate:addScreen(fp_weapons_armor);
 
--- selected option to view installations
-rebel_recruiter_fp_installations = ConvoScreen:new {
+fp_installations = ConvoScreen:new {
 	id = "fp_installations",
-	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
-	stopConversation = "false",
-	options = {
-
-		},
-	
+	leftDialog = "@conversation/faction_recruiter_rebel:s_486", -- All right. Let me show you the plans that are available.
+	stopConversation = "true",
+	options = {},
 }
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_fp_installations);
+rebelRecruiterConvoTemplate:addScreen(fp_installations);
 
--- selected option to view hirelings
-rebel_recruiter_fp_hirelings = ConvoScreen:new {
+fp_schematics = ConvoScreen:new {
+	id = "fp_schematics",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_494", -- Good. We always need people making useful goods. I'll show you what I have.
+	stopConversation = "true",
+	options = {},
+}
+rebelRecruiterConvoTemplate:addScreen(fp_schematics);
+
+fp_hirelings = ConvoScreen:new {
 	id = "fp_hirelings",
-	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
-	stopConversation = "false",
-	options = {
-
-		},
-	
-}
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_fp_hirelings);
-
--- purchase failed
-rebel_recruiter_purchased_not_enough= ConvoScreen:new {
-	id = "purchased_not_enough",
-	leftDialog = "@faction_recruiter:not_enough_standing_spend", -- YOu do not have enough faction standing to spend.
+	leftDialog = "@conversation/faction_recruiter_rebel:s_502", -- I'll see what I can do, but as you know, every soldier is valuable.
 	stopConversation = "true",
-	options = {
-	
-	}
+	options = {},
+
 }
+rebelRecruiterConvoTemplate:addScreen(fp_hirelings);
 
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_purchased_not_enough);
-
--- inventory is full screen
-rebel_recruiter_inventory_full= ConvoScreen:new {
-	id = "inventory_full",
-	leftDialog = "@dispenser:inventory_full", -- Your inventory is full.  You must make some room before you can purchase.  
-	stopConversation = "true",
-	options = {
-	
-	}
-}
-
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_inventory_full);
-
--- datapad is full screen
-rebel_recruiter_datapad_full= ConvoScreen:new {
-	id = "datapad_full",
-	leftDialog = "@faction_recruiter:datapad_full", -- Your datapad is full. You must first free some space.
-	stopConversation = "true",
-	options = {
-	
-	}
-}
-
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_datapad_full);
-
--- item purchase screen
-rebel_recruiter_purchased_item = ConvoScreen:new {
-	id = "purchased_item",
-	leftDialog = "@faction_recruiter:item_purchase_complete", -- Your requisition of %TT is complete.
-	stopConversation = "true",
-	options = {
-	
-	}
-}
-
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_purchased_item);
-
--- hireling purchase screen
-rebel_recruiter_purchased_hireling = ConvoScreen:new {
-	id = "purchased_hireling",
-	leftDialog = "@faction_recruiter:hireling_purchase_complete", -- The %TT is now under your command.
-	stopConversation = "true",
-	options = {
-	
-	}
-}
-
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_purchased_hireling);
-
--- too many hirelings screen
-rebel_recruiter_too_many_hirelings = ConvoScreen:new {
-	id = "too_many_hirelings",
-	leftDialog = "@faction_recruiter:too_many_hirelings", -- You already have too much under your command.
-	stopConversation = "true",
-	options = {
-	
-	}
-}
-
-rebel_recruiter_convotemplate:addScreen(rebel_recruiter_too_many_hirelings);
-
-
-addConversationTemplate("rebel_recruiter_convotemplate", rebel_recruiter_convotemplate);
+addConversationTemplate("rebelRecruiterConvoTemplate", rebelRecruiterConvoTemplate);
