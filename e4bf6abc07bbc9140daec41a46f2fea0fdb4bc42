@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_e61f5e08",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/recruiters/recruiterScreenplay.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-07T03:35:50Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be simpler to just do TangibleObject(pNpc):isRebel()/isImperial()?\n\nThe recruiterTemplates table seems silly to me.",
+      "revId": "e4bf6abc07bbc9140daec41a46f2fea0fdb4bc42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_463192a1",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-07T03:35:50Z",
+      "side": 1,
+      "message": "This won\u0027t work correctly. It\u0027ll count any called creature pet as a faction pet when checking against the max. I would leave this else if block alone and add a fourth one below to handle checking for AT-STs.",
+      "revId": "e4bf6abc07bbc9140daec41a46f2fea0fdb4bc42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
