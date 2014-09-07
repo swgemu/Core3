@@ -38,11 +38,7 @@ function SithShadowEncounter:isTheFirstSithShadowOfThePlayer(pSithShadow, pCreat
 	local spawnedSithShadows = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
 
 	if spawnedSithShadows ~= nil then
-		return ObjectManager.withCreatureObject(spawnedSithShadows[1], function(sithShadowInList)
-			return ObjectManager.withCreatureObject(pSithShadow, function(sithShadow)
-				return sithShadowInList:getObjectID() == sithShadow:getObjectID()
-			end) == true
-		end) == true
+		return CreatureObject(spawnedSithShadows[1]):getObjectID() == CreatureObject(pSithShadow):getObjectID()
 	else
 		return false
 	end

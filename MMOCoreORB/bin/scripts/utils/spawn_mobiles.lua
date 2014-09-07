@@ -154,19 +154,19 @@ end
 -- @param prefix the prefix to use for storing information about the spawned mobiles.
 -- @param spawnedObjects list with pointers to the spawned objects.
 function SpawnMobiles.saveSpawnedMobileObjects(pSceneObject, prefix, spawnedObjects)
-	ObjectManager.withSceneObject(pSceneObject, function(playerSceneObject)
-		writeData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING, PREFIX_IN_USE)
-		Logger:log(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING .. " set to " .. PREFIX_IN_USE)
-		writeData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING, table.getn(spawnedObjects))
-		Logger:log(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING .. " set to " .. table.getn(spawnedObjects))
+	local objectID = SceneObject(pSceneObject):getObjectID()
 
-		for i = 1, table.getn(spawnedObjects), 1 do
-			ObjectManager.withSceneObject(spawnedObjects[i], function(sceneObject)
-				writeData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. i, sceneObject:getObjectID())
-				Logger:log(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. i .. " set to " .. sceneObject:getObjectID())
-			end)
-		end
-	end)
+	writeData(objectID .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING, PREFIX_IN_USE)
+	Logger:log(objectID .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING .. " set to " .. PREFIX_IN_USE)
+	writeData(objectID .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING, table.getn(spawnedObjects))
+	Logger:log(objectID .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING .. " set to " .. table.getn(spawnedObjects))
+
+	for i = 1, table.getn(spawnedObjects), 1 do
+		ObjectManager.withSceneObject(spawnedObjects[i], function(sceneObject)
+			writeData(objectID .. prefix .. SPAWN_MOBILES_STRING .. i, sceneObject:getObjectID())
+			Logger:log(objectID .. prefix .. SPAWN_MOBILES_STRING .. i .. " set to " .. sceneObject:getObjectID())
+		end)
+	end
 end
 
 -- Generate the mobile objects.
