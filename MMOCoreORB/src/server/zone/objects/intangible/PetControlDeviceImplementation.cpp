@@ -279,6 +279,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	ghost->addToActivePets(pet);
 
+
 	if (pet->isDroidObject()) {
 		DroidObject* droid = cast<DroidObject*>(pet);
 
@@ -291,7 +292,6 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		// Submit new power task
 		Reference<Task*> droidPowerTask = new DroidPowerTask( droid );
 		droid->addPendingTask("droid_power", droidPowerTask, 120000); // 2 min
-
 		if( droid->hasPower() ){
 			// TODO Temporarily set to autofollow player
 			droid->setFollowObject(player);
@@ -303,17 +303,13 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	} else {
 		pet->setFollowObject(player);
 	}
-
 	pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
 	pet ->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
 	pet->clearPatrolPoints();
 	pet->setCreatureBitmask(CreatureFlag::PET);
 	pet->activateLoad("");
-
 	// Not training any commands
 	trainingCommand = 0;
-
-
 }
 
 void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
@@ -398,14 +394,14 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 	uint32 timeDelta = currentTime.getTime() - lastGrowth.getTime();
 	int stagesToGrow = timeDelta / 43200; // 12 hour
 
-	if (stagesToGrow == 0)
+	if (stagesToGrow == 0 && !force)
 		return true;
 
 	int newStage = growthStage + stagesToGrow;
 	if (newStage > 10)
 		newStage = 10;
 
-	float newLevel = ((float)creatureTemplate->getLevel() / 10.0) * (float)newStage;
+	float newLevel = ((float)pet->getAdultLevel() / 10.0) * (float)newStage;
 	if (newLevel < 1)
 		newLevel = 1;
 
@@ -422,8 +418,9 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 
 		PlayerObject* ghost = player->getPlayerObject();
 
-		if (ghost == NULL)
+		if (ghost == NULL){
 			return true;
+		}
 
 		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::MOUNT_GROWTH_ARREST);
 		box->setPromptTitle("@pet/pet_menu:mount_growth_title"); // Pet Growth Arrest
@@ -436,10 +433,8 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 
 		ghost->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
-
 		return false;
 	}
-
 	pet->setHeight(newHeight, false);
 	pet->setPetLevel(newLevel);
 
@@ -486,7 +481,7 @@ void PetControlDeviceImplementation::arrestGrowth() {
 	}
 
 	if (newStage > growthStage) {
-		float newLevel = ((float)creatureTemplate->getLevel() / 10.0) * (float)newStage;
+		float newLevel = ((float)pet->getAdultLevel() / 10.0) * (float)newStage;
 		if (newLevel < 1)
 			newLevel = 1;
 

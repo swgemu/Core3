@@ -390,7 +390,7 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 		return;
 	}
 
-	int baseLevel = npcTemplate->getLevel();
+	int baseLevel = getTemplateLevel();
 
 	float minDmg = calculateAttackMinDamage(baseLevel);
 	float maxDmg = calculateAttackMaxDamage(baseLevel);

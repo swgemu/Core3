@@ -122,19 +122,28 @@ void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData)
 
 int AiAgentImplementation::calculateAttackMinDamage(int level) {
 	int minDmg = MAX(npcTemplate->getDamageMin(), 20 + (level * 5));
-
+	if (petDeed != NULL) {
+		// pet deeds this is already calculated
+		return petDeed->getMinDamage();
+	}
 	return minDmg;
 }
 
 int AiAgentImplementation::calculateAttackMaxDamage(int level) {
 	int dmg = MAX(npcTemplate->getDamageMax(), calculateAttackMinDamage(level) * 2);
-
+	if (petDeed != NULL) {
+		// pet deeds this is already calculated
+		return petDeed->getMaxDamage();
+	}
 	return dmg;
 }
 
 float AiAgentImplementation::calculateAttackSpeed(int level) {
 	float speed = 3.5f - ((float)level / 100.f);
-
+	if (petDeed != NULL) {
+		// pet deeds this is already calculated
+		return petDeed->getAttackSpeed();
+	}
 	return speed;
 }
 
@@ -147,17 +156,13 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	optionsBitmask = npcTemplate->getOptionsBitmask();
 	creatureBitmask = npcTemplate->getCreatureBitmask();
-	level = npcTemplate->getLevel();
+	level = getTemplateLevel();
 
 	float minDmg = calculateAttackMinDamage(level);
 	float maxDmg = calculateAttackMaxDamage(level);
 	float speed = calculateAttackSpeed(level);
 	bool allowedWeapon = true;
 	if (petDeed != NULL) {
-		minDmg = petDeed->getMinDamage();
-		maxDmg = petDeed->getMaxDamage();
-		speed = petDeed->getAttackSpeed();
-		level = petDeed->getLevel();
 		allowedWeapon = petDeed->getRanged();
 	}
 	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
@@ -336,7 +341,7 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 		return;
 	}
 
-	int baseLevel = npcTemplate->getLevel();
+	int baseLevel = getTemplateLevel();
 
 	if (baseLevel == lvl)
 		return;

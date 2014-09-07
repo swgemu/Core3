@@ -866,6 +866,19 @@ class AiAgent extends CreatureObject {
 		
 		return npcTemplate.get().getDiet();
 	}
+
+	@dirty
+	public unsigned int getTemplateLevel() {
+		if (petDeed != null) {
+			return petDeed.getLevel();
+		}
+	
+		if (npcTemplate.get() == null)
+			return 1;
+		
+		return npcTemplate.get().getLevel();
+	}
+
 	
 	@local
 	public CreatureAttackMap getAttackMap() {
@@ -1060,7 +1073,7 @@ class AiAgent extends CreatureObject {
 	public void setPetDeed(PetDeed deed) {
 		petDeed = deed;
 	}
-
+	
 	public boolean hasPetDeed() {
 		return petDeed != null;
 	}

@@ -371,20 +371,22 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		// then this is complete
 		StringId s;
 		s.setStringId(pet->getObjectName()->getFullPath());
+		controlDevice->setControlledObject(pet);
 		controlDevice->setObjectName(s);
 		controlDevice->setPetType(PetManager::CREATUREPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
-		controlDevice->setGrowthStage(10);
+		controlDevice->setGrowthStage(1);
 		controlDevice->updateStatus(1);
 
-		controlDevice->setControlledObject(pet);
 		datapad->transferObject(controlDevice, -1);
 
 		objectManager->persistSceneObjectsRecursively(pet, 1);
 
 		datapad->broadcastObject(controlDevice, true);
+		controlDevice->growPet(player,true);
 		controlDevice->callObject(player);
+
 		//Remove the deed from it's container.
 		ManagedReference<SceneObject*> deedContainer = getParent();
 
