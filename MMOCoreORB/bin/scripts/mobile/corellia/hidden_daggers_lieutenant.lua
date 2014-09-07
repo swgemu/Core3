@@ -32,7 +32,7 @@ hidden_daggers_lieutenant = Creature:new {
 		"object/mobile/dressed_criminal_thug_human_male_01.iff",
 		"object/mobile/dressed_criminal_thug_human_male_02.iff",
 		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
-		"object/mobile/dressed_ruffian_zabrak_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
 		"object/mobile/dressed_villain_trandoshan_female_01.iff",
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {

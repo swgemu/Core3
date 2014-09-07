@@ -32,7 +32,7 @@ mummer_ruffian = Creature:new {
 		"object/mobile/dressed_gran_thug_male_01.iff",
 		"object/mobile/dressed_gran_thug_male_02.iff",
 		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
-		"object/mobile/dressed_ruffian_zabrak_male_01.iff"},
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {
