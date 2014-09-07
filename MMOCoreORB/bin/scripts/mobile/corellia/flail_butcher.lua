@@ -35,7 +35,7 @@ flail_butcher = Creature:new {
 		"object/mobile/dressed_raider_trandoshan_female_01.iff",
 		"object/mobile/dressed_raider_trandoshan_male_01.iff",
 		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
-		"object/mobile/dressed_ruffian_zabrak_male_01.iff",
+		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
 		"object/mobile/dressed_villain_trandoshan_female_01.iff",
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
