@@ -1,5 +1,6 @@
 mol_nimai = Creature:new {
 	objectName = "",
+	customName = "Mol Ni'mai",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -29,7 +30,7 @@ mol_nimai = Creature:new {
 	templates = {"object/mobile/dressed_ris_inventor_bothan_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "ris_armor_quest_convotemplate",
+	conversationTemplate = "risArmorQuestConvoTemplate",
 	attacks = {
 	}
 }

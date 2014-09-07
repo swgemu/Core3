@@ -1,383 +1,191 @@
-ris_armor_quest_screenplay = ScreenPlay:new {
+local ObjectManager = require("managers.object.object_manager")
+
+risArmorQuest = ScreenPlay:new {
 	numberOfActs = 1,
-	
-	states = {
-		quest1 = {started = 1, paid = 2},
-		quest2 = {complete = 4},
-		quest3 = {started = 8},
-		quest4 = {complete = 16},
-		quest5 = {started = 32},
-		quest6 = {complete = 64}
+
+	questSchematics = {
+		quest1 = { template = "object/draft_schematic/armor/armor_segment_ris.iff", displayName = "@craft_clothing_ingredients_n:armor_segment_ris" },
+		quest3 = { template = "object/draft_schematic/armor/component/armor_layer_ris.iff", displayName = "@craft_clothing_ingredients_n:armor_layer_ris" },
+		quest5 = { template = "object/draft_schematic/clothing/clothing_armor_ris_boots.iff", displayName = "@wearables_name:armor_ris_boots" }
+	},
+
+
+	questItems = {
+		quest2 = { template = "object/tangible/component/armor/armor_segment_ris.iff", displayName = "@craft_clothing_ingredients_n:armor_segment_ris" },
+		quest4 = { template = "object/tangible/component/armor/armor_layer_ris.iff", displayName = "@craft_clothing_ingredients_n:armor_layer_ris" },
+		quest6 = { template = "object/tangible/wearables/armor/ris/armor_ris_boots.iff", displayName = "@wearables_name:armor_ris_boots" }
+	},
+
+
+	finalRewardSchematics = {
+		{ template = "object/draft_schematic/clothing/clothing_armor_ris_bicep_l.iff", displayName = "@wearables_name:armor_ris_bicep_l" },
+		{ template = "object/draft_schematic/clothing/clothing_armor_ris_bicep_r.iff", displayName = "@wearables_name:armor_ris_bicep_r" },
+		{ template = "object/draft_schematic/clothing/clothing_armor_ris_bracer_l.iff", displayName = "@wearables_name:armor_ris_bracer_l" },
+		{ template = "object/draft_schematic/clothing/clothing_armor_ris_bracer_r.iff", displayName = "@wearables_name:armor_ris_bracer_r" },
+		{ template = "object/draft_schematic/clothing/clothing_armor_ris_chest_plate.iff", displayName = "@wearables_name:armor_ris_chest_plate" },
+		{ template = "object/draft_schematic/clothing/clothing_armor_ris_gloves.iff", displayName = "@wearables_name:armor_ris_gloves" },
+		{ template = "object/draft_schematic/clothing/clothing_armor_ris_helmet.iff", displayName = "@wearables_name:armor_ris_helmet" },
+		{ template = "object/draft_schematic/clothing/clothing_armor_ris_leggings.iff", displayName = "@wearables_name:armor_ris_leggings" }
 	}
-	
-	
+
 }
 
-registerScreenPlay("ris_armor_quest_screenplay", true)
+registerScreenPlay("risArmorQuest", true)
 
 --------------------------------------
 --   Initialize screenplay           -
 --------------------------------------
-function ris_armor_quest_screenplay:start()
-
-	if (not isZoneEnabled("dantooine")) then	
-		return
+function risArmorQuest:start()
+	if (isZoneEnabled("dantooine")) then
+		self:spawnMobiles()
 	end
-
-	self:spawnMobiles()
 end
 
-function ris_armor_quest_screenplay:spawnMobiles()
-	if (not isZoneEnabled("dantooine")) then
-		return 0
-	end
-	
-	local pMolNimai = spawnMobile("dantooine", "mol_nimai", 1, -6805, 126, 6022, 179, 0)
-	local molNimai = LuaSceneObject(pMolNimai)
-	molNimai:setCustomObjectName("Mol Ni'mai")
-end
-
---------------------------------------
---   Common functions                -
---------------------------------------
-function ris_armor_quest_screenplay:hasState(player, state)
-	if (player == nil) then
-		return false
-	end
-	
-	local val = player:hasScreenPlayState(state, "ris_armor_quest")
-	
-	if (val == 1) then
-		return true
-	end
-	
-	return false
-end
-
-function ris_armor_quest_screenplay:hasSpawned(objectID, key)
-	local val = readData(objectID .. ":ris_armor_quest:spawned:" .. key)
-	
-	if (val == 1) then
-		return true
-	end
-	
-	return false
-end
-
-function ris_armor_quest_screenplay:setSpawned(objectID, key)
-	writeData(objectID .. ":ris_armor_quest:spawned:" .. key, 1)
-end
-
-function ris_armor_quest_screenplay:deleteSpawnedSetting(objectID, key)
-	deleteData(objectID .. ":ris_armor_quest:spawned:" .. key)
-end
-
-function ris_armor_quest_screenplay:writeObjectData(objectID, key, value)
-	if (objectID == nil) then
-		return 0
-	end
-	
-	writeData(objectID .. ":ris_armor_quest:" .. key, value)
-end
-
-function ris_armor_quest_screenplay:readObjectData(objectID, key)
-	if (objectID == nil) then
-		return 0
-	end
-	
-	return readData(objectID .. ":ris_armor_quest:" .. key)
-end
-
-function ris_armor_quest_screenplay:deleteObjectData(objectID, key)
-	if (objectID == nil) then
-		return 0
-	end
-	
-	deleteData(objectID .. ":ris_armor_quest:" .. key)
-end
-
-function ris_armor_quest_screenplay:setState(creatureObject, state)
-	creatureObject:setScreenPlayState(state, "ris_armor_quest")
-end
-
-function ris_armor_quest_screenplay:removeState(creatureObject, state)
-	creatureObject:removeScreenPlayState(state, "ris_armor_quest")
+function risArmorQuest:spawnMobiles()
+	spawnMobile("dantooine", "mol_nimai", 1, -6805, 126, 6022, 179, 0)
 end
 
 
---------------------------------------
--- ris_armor_quest Conversation Handler -
---------------------------------------
-ris_armor_quest_handler = Object:new {
-}
+risArmorQuestConvoHandler = Object:new {}
 
-function ris_armor_quest_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	local screen = LuaConversationScreen(conversationScreen)
-	
-	local screenID = screen:getScreenID()
-	
-	local playerCreo = LuaCreatureObject(conversingPlayer)
-	
-	if (screenID == "quest_1_start_yes") then
-		local credits = playerCreo:getCashCredits()
-		
-		if (credits >= 50000) then
-			self:payNPC(playerCreo)
+function risArmorQuestConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
+	-- 1 = quest 1, 2 = quest 2, 4 = quest 3, 8 = quest 4, 16 = quest 5, 32 = quest 6, 64 = completed
+	return ObjectManager.withCreatureObject(pPlayer, function(player)
+		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+
+		if (not player:hasSkill("crafting_armorsmith_master")) then
+			return convoTemplate:getScreen("not_master_armorsmith")
+		elseif (player:hasScreenPlayState(64, "ris_armor_quest") == 1) then -- All quests completed
+			return convoTemplate:getScreen("completed_all_quests")
+		elseif (player:hasScreenPlayState(32, "ris_armor_quest") == 1) then -- On quest 6
+			return convoTemplate:getScreen("quest_6_query")
+		elseif (player:hasScreenPlayState(16, "ris_armor_quest") == 1) then
+			return convoTemplate:getScreen("quest_5_start")
+		elseif (player:hasScreenPlayState(8, "ris_armor_quest") == 1) then
+			return convoTemplate:getScreen("quest_4_query")
+		elseif (player:hasScreenPlayState(4, "ris_armor_quest") == 1) then
+			return convoTemplate:getScreen("quest_3_start")
+		elseif (player:hasScreenPlayState(2, "ris_armor_quest") == 1) then
+			return convoTemplate:getScreen("quest_2_query")
+		elseif (player:hasScreenPlayState(1, "ris_armor_quest") == 1) then
+			return convoTemplate:getScreen("quest_1_description")
 		else
-			playerCreo:sendSystemMessage("You have insufficient funds")
+			return convoTemplate:getScreen("quest_1_start")
 		end
-	elseif (screenID == "quest_1_start") then
-		conversationScreen = screen:cloneScreen()
-		screen = LuaConversationScreen(conversationScreen)
-		screen:setDialogTextDI("50000")
-	
-	elseif (screenID == "quest_1_description") then
-		self:startQuest1(playerCreo)
-	
-	elseif (screenID == "quest_2_query") then
-		conversationScreen = screen:cloneScreen()
-		screen = LuaConversationScreen(conversationScreen)
-		screen:setDialogTextTO("R.I.S. armor segment")
-		
-	elseif (screenID == "quest_3_start") then
-		self:startQuest3(playerCreo)
-	
-	elseif (screenID == "quest_4_query") then
-		conversationScreen = screen:cloneScreen()
-		screen = LuaConversationScreen(conversationScreen)
-		screen:setDialogTextTO("R.I.S. armor layer")
-		
-	elseif (screenID == "quest_5_start") then
-		self:startQuest5(playerCreo)
-	
-	elseif (screenID == "quest_6_query") then
-		conversationScreen = screen:cloneScreen()
-		screen = LuaConversationScreen(conversationScreen)
-		screen:setDialogTextTO("R.I.S. armor boots")
-		
-	elseif (screenID == "quest_6_complete") then
-		self:completeQuest6(playerCreo, conversingPlayer)
-		
-	end
-	
-	return conversationScreen
+	end)
 end
 
-function ris_armor_quest_handler:payNPC(playerCreo)
-	
-	playerCreo:subtractCashCredits(50000)	
-	ris_armor_quest_screenplay:setState(playerCreo, ris_armor_quest_screenplay.states.quest1.paid)
+function risArmorQuestConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	return ObjectManager.withCreatureObject(conversingPlayer, function(player)
+		local screen = LuaConversationScreen(conversationScreen)
+		local screenID = screen:getScreenID()
+		local conversationScreen = screen:cloneScreen()
+		local clonedConversation = LuaConversationScreen(conversationScreen)
 
+		if (screenID == "quest_1_start") then
+			if (player:getCashCredits() < 50000) then
+				clonedConversation:addOption("@quest_armorsmith:yes_to_quest_1_start", "not_enough_money")
+			else
+				clonedConversation:addOption("@quest_armorsmith:yes_to_quest_1_start", "quest_1_start_yes")
+			end
+			clonedConversation:addOption("@quest_armorsmith:no_to_quest_1_start", "quest_1_start_no")
+		elseif (screenID == "quest_1_start_yes") then
+			player:setScreenPlayState(1, "ris_armor_quest")
+		elseif (screenID == "quest_1_description") then
+			self:teachSchematic(conversingPlayer, risArmorQuest.questSchematics.quest1)
+			player:setScreenPlayState(2, "ris_armor_quest")
+		elseif (screenID == "quest_2_query") then
+			clonedConversation:setDialogTextTO(risArmorQuest.questItems.quest2.displayName)
+			if (self:hasQuestItem(conversingPlayer, risArmorQuest.questItems.quest2.template)) then
+				clonedConversation:addOption("@quest_armorsmith:yes_to_quest_2_query", "quest_2_complete")
+			else
+				clonedConversation:addOption("@quest_armorsmith:yes_to_quest_2_query", "illegal_response")
+			end
+			clonedConversation:addOption("@quest_armorsmith:no_to_quest_2_query", "quest_2_incomplete")
+		elseif (screenID == "quest_2_complete") then
+			player:setScreenPlayState(4, "ris_armor_quest")
+			self:removeQuestItem(conversingPlayer, risArmorQuest.questItems.quest2.template)
+		elseif (screenID == "quest_3_start") then
+			self:teachSchematic(conversingPlayer, risArmorQuest.questSchematics.quest3)
+			player:setScreenPlayState(8, "ris_armor_quest")
+		elseif (screenID == "quest_4_query") then
+			clonedConversation:setDialogTextTO(risArmorQuest.questItems.quest4.displayName)
+			if (self:hasQuestItem(conversingPlayer, risArmorQuest.questItems.quest4.template)) then
+				clonedConversation:addOption("@quest_armorsmith:yes_to_quest_4_query", "quest_4_complete")
+			else
+				clonedConversation:addOption("@quest_armorsmith:yes_to_quest_4_query", "illegal_response")
+			end
+			clonedConversation:addOption("@quest_armorsmith:no_to_quest_4_query", "quest_4_incomplete")
+		elseif (screenID == "quest_4_complete") then
+			player:setScreenPlayState(16, "ris_armor_quest")
+			self:removeQuestItem(conversingPlayer, risArmorQuest.questItems.quest4.template)
+		elseif (screenID == "quest_5_start") then
+			self:teachSchematic(conversingPlayer, risArmorQuest.questSchematics.quest5)
+			player:setScreenPlayState(32, "ris_armor_quest")
+		elseif (screenID == "quest_6_query") then
+			clonedConversation:setDialogTextTO(risArmorQuest.questItems.quest6.displayName)
+			if (self:hasQuestItem(conversingPlayer, risArmorQuest.questItems.quest6.template)) then
+				clonedConversation:addOption("@quest_armorsmith:yes_to_quest_6_query", "quest_6_complete")
+			else
+				clonedConversation:addOption("@quest_armorsmith:yes_to_quest_6_query", "illegal_response")
+			end
+			clonedConversation:addOption("@quest_armorsmith:no_to_quest_6_query", "quest_6_incomplete")
+		elseif (screenID == "quest_6_complete") then
+			player:setScreenPlayState(64, "ris_armor_quest")
+			self:removeQuestItem(conversingPlayer, risArmorQuest.questItems.quest6.template)
+			self:rewardSchematics(conversingPlayer)
+		end
+		return conversationScreen
+	end)
 end
 
-function ris_armor_quest_handler:startQuest1(playerCreo)
-	local pPlayerObject = playerCreo:getPlayerObject()
-	local playerObject = LuaPlayerObject(pPlayerObject)
-	
-	playerObject:addRewardedSchematic("object/draft_schematic/armor/armor_segment_ris.iff", 2, -1, true)
-	ris_armor_quest_screenplay:setState(playerCreo, ris_armor_quest_screenplay.states.quest1.started)
-
+function risArmorQuestConvoHandler:teachSchematic(pPlayer, templateTable)
+	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
+		playerObject:addRewardedSchematic(templateTable.template, 2, -1, true)
+		local messageString = LuaStringIdChatParameter("@loot_schematic:skill_granted")
+		messageString:setTO(getStringId(templateTable.displayName))
+		player:sendSystemMessage(messageString:_getObject())
+	end)
 end
 
-function ris_armor_quest_handler:startQuest3(playerCreo)
-	local pPlayerObject = playerCreo:getPlayerObject()
-	local playerObject = LuaPlayerObject(pPlayerObject)
-	
-	playerObject:addRewardedSchematic("object/draft_schematic/armor/component/armor_layer_ris.iff", 2, -1, true)
-	ris_armor_quest_screenplay:setState(playerCreo, ris_armor_quest_screenplay.states.quest3.started)
-
+function risArmorQuestConvoHandler:rewardSchematics(pPlayer)
+	for i = 1, table.getn(risArmorQuest.finalRewardSchematics), 1 do
+		self:teachSchematic(pPlayer, risArmorQuest.finalRewardSchematics[i])
+	end
 end
 
-function ris_armor_quest_handler:startQuest5(playerCreo)
-	local pPlayerObject = playerCreo:getPlayerObject()
-	local playerObject = LuaPlayerObject(pPlayerObject)
-	
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_boots.iff", 2, -1, true)
-	ris_armor_quest_screenplay:setState(playerCreo, ris_armor_quest_screenplay.states.quest5.started)
-
+function risArmorQuestConvoHandler:hasQuestItem(pPlayer, template)
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+	return pInventory ~= nil and getContainerObjectByTemplate(pInventory, template, true) ~= nil
 end
 
-function ris_armor_quest_handler:completeQuest6(playerCreo)
-	local pPlayerObject = playerCreo:getPlayerObject()
-	local playerObject = LuaPlayerObject(pPlayerObject)
-	
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bicep_l.iff", 2, -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bicep_r.iff", 2, -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bracer_l.iff", 2, -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bracer_r.iff", 2, -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_chest_plate.iff", 2, -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_gloves.iff", 2, -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_helmet.iff", 2, -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_leggings.iff", 2, -1, true)
-	ris_armor_quest_screenplay:setState(playerCreo, ris_armor_quest_screenplay.states.quest6.complete)
-
+function risArmorQuestConvoHandler:removeQuestItem(pPlayer, template)
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+	local pItem = getContainerObjectByTemplate(pInventory, template, true)
+	ObjectManager.withSceneObject(pItem, function(item)
+		item:destroyObjectFromWorld()
+		item:destroyObjectFromDatabase()
+	end)
 end
 
-	
-function ris_armor_quest_handler:getInitialScreen(pPlayer, npc, pConversationTemplate)
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-	local conversingPlayer = LuaCreatureObject(pPlayer)
-	local pPlayerObject = conversingPlayer:getPlayerObject()
-	local conversingObject = LuaSceneObject(pPlayer)
-	local pInventory = conversingObject:getSlottedObject("inventory")
-	local inventory = LuaSceneObject(pInventory)
-	
-	if (pPlayerObject == nil) then
-		return nil
-	end
-	
-	local playerObject = LuaPlayerObject(pPlayerObject)
-	
-	if (conversingPlayer:hasScreenPlayState(ris_armor_quest_screenplay.states.quest6.complete, "ris_armor_quest") == 1) then
-		return convoTemplate:getScreen("armorsmith_quest")
-		--spatialChat(npc,"@quest_armorsmith:armorsmith_quest")
-		--return nil
-	end
-	
-	if (conversingPlayer:hasScreenPlayState(ris_armor_quest_screenplay.states.quest5.started, "ris_armor_quest") == 1) then
-		return convoTemplate:getScreen("quest_6_query")
-	end
-	
-	if (conversingPlayer:hasScreenPlayState(ris_armor_quest_screenplay.states.quest4.complete, "ris_armor_quest") == 1) then
-		return convoTemplate:getScreen("quest_5_start")
-	end
-	
-	if (conversingPlayer:hasScreenPlayState(ris_armor_quest_screenplay.states.quest3.started, "ris_armor_quest") == 1) then
-		return convoTemplate:getScreen("quest_4_query")
-	end
-	
-	if (conversingPlayer:hasScreenPlayState(ris_armor_quest_screenplay.states.quest2.complete, "ris_armor_quest") == 1) then
-		return convoTemplate:getScreen("quest_3_start")
-	end
-	
-	if (conversingPlayer:hasScreenPlayState(ris_armor_quest_screenplay.states.quest1.started, "ris_armor_quest") == 1) then
-		return convoTemplate:getScreen("quest_2_query")
-	end
-	
-	if (conversingPlayer:hasScreenPlayState(ris_armor_quest_screenplay.states.quest1.paid, "ris_armor_quest") == 1) then
-		local credits = conversingPlayer:getCashCredits()
-			
-		if (credits < 50000) then
-			return convoTemplate:getScreen("illegal_response")
-		else
-			return convoTemplate:getScreen("quest_1_start_yes")
-		end		
-	end
-	
-	if (conversingPlayer:hasSkill("crafting_armorsmith_master")) then
-		return convoTemplate:getScreen("quest_1_start")
-	end
-	
-	return convoTemplate:getScreen("greeting")
-	--spatialChat(npc, "@quest_armorsmith:greeting")
-	--return nil
-		
-end
+function risArmorQuestConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
+	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
 
-function ris_armor_quest_handler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local player = LuaCreatureObject(pPlayer)
-	local pConversationSession = player:getConversationSession()
-	
 	local pLastConversationScreen = nil
-	
+
 	if (pConversationSession ~= nil) then
 		local conversationSession = LuaConversationSession(pConversationSession)
 		pLastConversationScreen = conversationSession:getLastConversationScreen()
 	end
-	
+
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	
-	if (pLastConversationScreen ~= nil) then	
+
+	if (pLastConversationScreen ~= nil) then
 		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
 		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-		
-		if (optionLink == "quest_1_start_yes") then
-			local credits = player:getCashCredits()
-			
-			if (credits < 50000) then
-				return conversationTemplate:getScreen("illegal_response")
-			end
-		end
-		
-		if (optionLink == "quest_2_complete") then
-			
-			local playerSceo = LuaSceneObject(pPlayer)
-			local pInventory = playerSceo:getSlottedObject("inventory")
-			local armorSegmentPointer = getContainerObjectByTemplate(pInventory, "object/tangible/component/armor/armor_segment_ris.iff", true)
-			
-			if (armorSegmentPointer == nil) then
-				return conversationTemplate:getScreen("illegal_response")	
-			end
-			
-		end	
-		
-		if (optionLink == "quest_3_start") then
-			
-			local playerSceo = LuaSceneObject(pPlayer)
-			local pInventory = playerSceo:getSlottedObject("inventory")
-			local armorSegmentPointer = getContainerObjectByTemplate(pInventory, "object/tangible/component/armor/armor_segment_ris.iff", true)
-			
-			if (armorSegmentPointer == nil) then
-				return conversationTemplate:getScreen("illegal_response")	
-			else
-				armorSegmentObject = LuaSceneObject(armorSegmentPointer)				
-				armorSegmentObject:destroyObjectFromWorld()
-				armorSegmentObject:destroyObjectFromDatabase()
-				ris_armor_quest_screenplay:setState(player, ris_armor_quest_screenplay.states.quest2.complete)
-			end
-	
-		end
-		
-		if (optionLink == "quest_4_complete") then
-			
-			local playerSceo = LuaSceneObject(pPlayer)
-			local pInventory = playerSceo:getSlottedObject("inventory")
-			local armorLayerPointer = getContainerObjectByTemplate(pInventory, "object/tangible/component/armor/armor_layer_ris.iff", true)
-			
-			if (armorLayerPointer == nil) then
-				return conversationTemplate:getScreen("illegal_response")	
-			end
-			
-		end
-		
-		if (optionLink == "quest_5_start") then
-			
-			local playerSceo = LuaSceneObject(pPlayer)
-			local pInventory = playerSceo:getSlottedObject("inventory")
-			local armorLayerPointer = getContainerObjectByTemplate(pInventory, "object/tangible/component/armor/armor_layer_ris.iff", true)
-			
-			if (armorLayerPointer == nil) then
-				return conversationTemplate:getScreen("illegal_response")	
-			else
-				armorLayerObject = LuaSceneObject(armorLayerPointer)				
-				armorLayerObject:destroyObjectFromWorld()
-				armorLayerObject:destroyObjectFromDatabase()
-				ris_armor_quest_screenplay:setState(player, ris_armor_quest_screenplay.states.quest4.complete)
-			end
-			
-		end		
-		
-		if (optionLink == "quest_6_complete") then
-			
-			local playerSceo = LuaSceneObject(pPlayer)
-			local pInventory = playerSceo:getSlottedObject("inventory")
-			local armorBootsPointer = getContainerObjectByTemplate(pInventory, "object/tangible/wearables/armor/ris/armor_ris_boots.iff", true)
-			
-			if (armorBootsPointer == nil) then
-				return conversationTemplate:getScreen("illegal_response")	
-			else
-				armorBootsObject = LuaSceneObject(armorBootsPointer)				
-				armorBootsObject:destroyObjectFromWorld()
-				armorBootsObject:destroyObjectFromDatabase()
-				ris_armor_quest_screenplay:setState(player, ris_armor_quest_screenplay.states.quest6.complete)
-			end
-			
-		end
-			
+
 		return conversationTemplate:getScreen(optionLink)
-		
 	end
-	
+
 	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end
-
