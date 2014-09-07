@@ -4,7 +4,6 @@ tatooine_tusken_raider_village_neutral_large_theater = Lair:new {
 		{"tusken_woman",1},
 		{"tusken_commoner",1},
 		{"tusken_child",1},
-		{"tusken_warrior",2},
 		{"tusken_raider",2},
 		{"tusken_guard",2},
 	},
