@@ -243,20 +243,20 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,3447,5,-4850,135,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,3253,5,-4923,180,0)
 	spawnMobile("tatooine", "informant_npc_lvl_1",0,3488,5,-4782,135,0)
-	--{"jawa",60,3472.22,5,-4918.59,270.008,0, "conversation", ""},
-	--{"jawa",60,3470.22,5,-4918.59,90.0027,0, "conversation", ""},
-	--{"jawa",60,3471.22,5,-4919.59,0,0, "conversation", ""},
-	--{"jawa",60,3488.01,5,-4884.73,270.008,0, "conversation", ""},
-	--{"jawa",60,3486.01,5,-4884.73,90.0027,0, "conversation", ""},
-	--{"jawa",60,3487.01,5,-4885.73,0,0, "conversation", ""},
-	--{"jawa",60,3739.55,4.3966,-4837.28,269.541,0, "conversation", ""},
-	--{"jawa",60,3737.55,4.03113,-4837.28,90.4693,0, "conversation", ""},
-	--{"jawa",60,3738.55,4.29151,-4838.28,35.3182,0, "conversation", ""},
-	spawnMobile("tatooine", "jawa",60,3475.25,4.93605,-4852.73,96.6921,0)
-	spawnMobile("tatooine", "jawa",60,3451.49,4.87154,-4524.17,186.748,0)
-	spawnMobile("tatooine", "jawa",60,3654.1,5,-4784.9,150,0)
-	spawnMobile("tatooine", "jawa",60,3655.6,5,-4785,-116,0)
-	spawnMobile("tatooine", "jawa",60,3654.8,5,-4786.2,-25,0)
+	--{"jawa",300,3472.22,5,-4918.59,270.008,0, "conversation", ""},
+	--{"jawa",300,3470.22,5,-4918.59,90.0027,0, "conversation", ""},
+	--{"jawa",300,3471.22,5,-4919.59,0,0, "conversation", ""},
+	--{"jawa",300,3488.01,5,-4884.73,270.008,0, "conversation", ""},
+	--{"jawa",300,3486.01,5,-4884.73,90.0027,0, "conversation", ""},
+	--{"jawa",300,3487.01,5,-4885.73,0,0, "conversation", ""},
+	--{"jawa",300,3739.55,4.3966,-4837.28,269.541,0, "conversation", ""},
+	--{"jawa",300,3737.55,4.03113,-4837.28,90.4693,0, "conversation", ""},
+	--{"jawa",300,3738.55,4.29151,-4838.28,35.3182,0, "conversation", ""},
+	spawnMobile("tatooine", "jawa",300,3475.25,4.93605,-4852.73,96.6921,0)
+	spawnMobile("tatooine", "jawa",300,3451.49,4.87154,-4524.17,186.748,0)
+	spawnMobile("tatooine", "jawa",300,3654.1,5,-4784.9,150,0)
+	spawnMobile("tatooine", "jawa",300,3655.6,5,-4785,-116,0)
+	spawnMobile("tatooine", "jawa",300,3654.8,5,-4786.2,-25,0)
 	--{"jawa_engineer",300,3661.1,5,-4748.9,230,0, "npc_use_terminal_high", ""},
 	spawnMobile("tatooine", "jawa_henchman",300,3663,5,-4858.6,348,0)
 	spawnMobile("tatooine", "jawa_henchman",300,3658,5,-4748.7,135,0)

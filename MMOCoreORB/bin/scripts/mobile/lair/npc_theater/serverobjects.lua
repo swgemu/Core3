@@ -227,8 +227,6 @@ includeFile("lair/npc_theater/talus_sleemo_delinquent_camp_neutral_medium_theate
 includeFile("lair/npc_theater/talus_sleemo_vandal_camp_neutral_medium_theater.lua")
 
 includeFile("lair/npc_theater/tatooine_alkhara_bandit_outpost_neutral_large_theater.lua")
-includeFile("lair/npc_theater/tatooine_bomar_monk_chapel_neutral_medium_theater.lua")
-includeFile("lair/npc_theater/tatooine_bomar_monk_church_neutral_large_theater.lua")
 includeFile("lair/npc_theater/tatooine_desert_demon_outpost_neutral_large_theater.lua")
 includeFile("lair/npc_theater/tatooine_dim_u_chapel_neutral_small_theater.lua")
 includeFile("lair/npc_theater/tatooine_dim_u_church_neutral_large_theater.lua")

@@ -220,21 +220,21 @@ function TatooineMosEnthaScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "valarian_thug",300,1620.8,11,3282,-99,0)
 
 	--Jawa's
-	--{"jawa",60,1461.87,7,3223.41,270.008,0, "conversation", ""},
-	--{"jawa",60,1459.87,7,3223.41,90.0027,0, "conversation", ""},
-	--{"jawa",60,1460.87,7,3222.41,0,0, "conversation", ""},
-	spawnMobile("tatooine", "jawa",60,1189.08,7,2993.49,125.726,0)
-	spawnMobile("tatooine", "jawa",60,1566.49,7,3337.08,73.205,0)
-	spawnMobile("tatooine", "jawa",60,1590.1,7,3339.5,-105,0)
-	spawnMobile("tatooine", "jawa",60,1606.37,7,3348.55,244.837,0)
-	spawnMobile("tatooine", "jawa",60,1609.44,7,3350.05,72.4758,0)
-	spawnMobile("tatooine", "jawa",60,1605.5,7,3347.9,50,0)
-	spawnMobile("tatooine", "jawa",60,1610.4,7,3350.3,-102,0)
-	spawnMobile("tatooine", "jawa",60,1610.92,7,3318.88,238.788,0)
-	spawnMobile("tatooine", "jawa",60,1567.9,7,3337.4,-105,0)
-	spawnMobile("tatooine", "jawa",60,1610.2,7,3318.2,49,0)
-	spawnMobile("tatooine", "jawa",60,1555.27,7,3333.7,282.519,0)
-	spawnMobile("tatooine", "jawa",60,1588.78,7,3339.21,83.5812,0)
+	--{"jawa",300,1461.87,7,3223.41,270.008,0, "conversation", ""},
+	--{"jawa",300,1459.87,7,3223.41,90.0027,0, "conversation", ""},
+	--{"jawa",300,1460.87,7,3222.41,0,0, "conversation", ""},
+	spawnMobile("tatooine", "jawa",300,1189.08,7,2993.49,125.726,0)
+	spawnMobile("tatooine", "jawa",300,1566.49,7,3337.08,73.205,0)
+	spawnMobile("tatooine", "jawa",300,1590.1,7,3339.5,-105,0)
+	spawnMobile("tatooine", "jawa",300,1606.37,7,3348.55,244.837,0)
+	spawnMobile("tatooine", "jawa",300,1609.44,7,3350.05,72.4758,0)
+	spawnMobile("tatooine", "jawa",300,1605.5,7,3347.9,50,0)
+	spawnMobile("tatooine", "jawa",300,1610.4,7,3350.3,-102,0)
+	spawnMobile("tatooine", "jawa",300,1610.92,7,3318.88,238.788,0)
+	spawnMobile("tatooine", "jawa",300,1567.9,7,3337.4,-105,0)
+	spawnMobile("tatooine", "jawa",300,1610.2,7,3318.2,49,0)
+	spawnMobile("tatooine", "jawa",300,1555.27,7,3333.7,282.519,0)
+	spawnMobile("tatooine", "jawa",300,1588.78,7,3339.21,83.5812,0)
 	spawnMobile("tatooine", "jawa_engineer",300,1604.2,7,3344.5,-57,0)
 	spawnMobile("tatooine", "jawa_engineer",300,1602.4,7,3344.2,44,0)
 	spawnMobile("tatooine", "jawa_engineer",300,1608.3,7,3328.9,183.417,0)

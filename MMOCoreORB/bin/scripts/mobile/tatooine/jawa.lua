@@ -21,7 +21,7 @@ jawa = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = 0,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -37,12 +37,12 @@ jawa = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "color_crystals", chance = 200000}
 			},
-			lootChance = 2900000
-		}						
+			lootChance = 2000000
+		}
 	},
-	weapons = {"novice_weapons"},
+	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(marksmannovice)
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(jawa, "jawa")
