@@ -52,6 +52,8 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getExperience", &LuaPlayerObject::getExperience },
 		{ "getExperienceForType", &LuaPlayerObject::getExperienceForType},
 		{ "getExperienceType", &LuaPlayerObject::getExperienceType},
+		{ "addEventPerk", &LuaPlayerObject::addEventPerk},
+		{ "getEventPerkCount", &LuaPlayerObject::getEventPerkCount},
 		{ 0, 0 }
 };
 
@@ -449,3 +451,16 @@ int LuaPlayerObject::setForceSensitiveUnlockedBranches(lua_State* L) {
 	return 0;
 }
 
+int LuaPlayerObject::getEventPerkCount(lua_State* L) {
+	lua_pushinteger(L, realObject->getEventPerkCount());
+
+	return 1;
+}
+
+int LuaPlayerObject::addEventPerk(lua_State* L) {
+	SceneObject* perk = (SceneObject*) lua_touserdata(L, -1);
+
+	realObject->addEventPerk(perk);
+
+	return 0;
+}
