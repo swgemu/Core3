@@ -198,9 +198,12 @@ bool CreatureImplementation::hasOrganics() {
 }
 
 bool CreatureImplementation::hasDNA() {
-	if (isBaby() || isPet())
+	if (isBaby()) {
 		return false;
-
+	}
+	if (isPet() && !hasPetDeed()) {
+		return false;
+	}
 	return (dnaState == CreatureManager::HASDNA);
 }
 

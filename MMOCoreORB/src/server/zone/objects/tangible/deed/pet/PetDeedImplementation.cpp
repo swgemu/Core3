@@ -172,6 +172,16 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 			special1 = component->getSpecial1();
 			special2 = component->getSpecial2();
 			ranged = component->getRanged();
+			cleverness = component->getCleverness();
+			endurance = component->getEndurance();
+			fierceness = component->getFierceness();
+			power = component->getPower();
+			intelligence = component->getIntelligence();
+			courage = component->getCourage();
+			dependency = component->getDependency();
+			dexterity = component->getDexterity();
+			fortitude = component->getFortitude();
+			hardiness = component->getHardiness();
 		}
 	}
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
@@ -354,6 +364,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		pet->setPetDeed(_this.get());
 		pet->loadTemplateData( petTemplate );
 		pet->createChildObjects();
+		pet->setBaby(false);
 		// update base stats on the pet now
 		// We will store the deed pointer to the aiagent before serialization
 

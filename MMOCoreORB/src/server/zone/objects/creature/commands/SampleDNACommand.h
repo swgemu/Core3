@@ -123,8 +123,16 @@ public:
 		}
 
 		if (cr->isPet()) {
-			player->sendSystemMessage("@bio_engineer:harvest_dna_target_pet");
-			return INVALIDTARGET;
+			// allow them to sample their own be pets
+			//if (cr->hasPetDeed()){
+			//	if (cr->getLinkedCreature() != player) {
+			//		player->sendSystemMessage("@bio_engineer:harvest_dna_target_pet");
+			//		return INVALIDTARGET;
+			//	}
+			//} else {
+				player->sendSystemMessage("@bio_engineer:harvest_dna_target_pet");
+				return INVALIDTARGET;
+			//}
 		}
 
 		if (cr->isInCombat()) {

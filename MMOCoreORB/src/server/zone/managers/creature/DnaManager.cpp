@@ -16,6 +16,7 @@
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/tangible/DnaSampleTemplate.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
+#include "server/zone/objects/tangible/deed/pet/PetDeed.h"
 
 AtomicInteger DnaManager::loadedDnaData;
 
@@ -160,12 +161,84 @@ int DnaManager::addRange(lua_State* L) {
 
 	return 0;
 }
+void DnaManager::generationalSample(Creature* creature, CreatureObject* player,int quality) {
+	// We are making a generational sample rules are a little different.
+	// Reduce each stat by lets say 10% as the max to be on par with old docs
+	int cl = creature->getAdultLevel();
+	int ferocity = 0;
+	int factor = (int)System::random(quality) - 7;
+	int reductionAmount = (factor + 20 + quality) ;
+	int cle = reduceByPercent(creature->getPetDeed()->getCleverness(),reductionAmount);
+	int cou = reduceByPercent(creature->getPetDeed()->getCourage(),reductionAmount);
+	int dep = reduceByPercent(creature->getPetDeed()->getDependency(),reductionAmount);
+	int dex = reduceByPercent(creature->getPetDeed()->getDexterity(),reductionAmount);
+	int end = reduceByPercent(creature->getPetDeed()->getEndurance(),reductionAmount);
+	int fie = reduceByPercent(creature->getPetDeed()->getFierceness(),reductionAmount);
+	int frt = reduceByPercent(creature->getPetDeed()->getFortitude(),reductionAmount);
+	int har = reduceByPercent(creature->getPetDeed()->getHardiness(),reductionAmount);
+	int ite = reduceByPercent(creature->getPetDeed()->getIntelligence(),reductionAmount);
+	int pow = reduceByPercent(creature->getPetDeed()->getPower(),reductionAmount);
 
+	// calculate rest of stats here
+	ManagedReference<DnaComponent*> prototype = player->getZoneServer()->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
+	if (prototype == NULL) {
+		return;
+	}
+	Locker clocker(prototype);
+	// Check Here for unique npcs
+	StringId* nameId = creature->getObjectName();
+	if (nameId->getFile().isEmpty() || nameId->getStringID().isEmpty()) {
+		prototype->setSource(creature->getCreatureName().toString());
+	} else {
+		prototype->setSource(nameId->getFullPath());
+	}
+	prototype->setQuality(quality);
+	prototype->setLevel(cl);
+	String serial = player->getZoneServer()->getCraftingManager()->generateSerial();
+	prototype->setSerialNumber(serial);
+	prototype->setStats(cle,end,fie,pow,ite,cou,dep,dex,frt,har);
+	prototype->setStun(creature->getStun());
+	prototype->setKinetic(creature->getKinetic());
+	prototype->setEnergy(creature->getEnergy());
+	prototype->setBlast(creature->getBlast());
+	prototype->setHeat(creature->getHeat());
+	prototype->setCold(creature->getCold());
+	prototype->setElectric(creature->getElectricity());
+	prototype->setAcid(creature->getAcid());
+	prototype->setSaber(creature->getLightSaber());
+	prototype->setRanged(creature->getPetDeed()->getRanged());
+	prototype->setArmorRating(creature->getArmor());
+	CreatureAttackMap* attackMap = creature->getAttackMap();
+	if (attackMap->size() > 0) {
+		prototype->setSpecialAttackOne(String(attackMap->getCommand(0)));
+		if(attackMap->size() > 1) {
+			prototype->setSpecialAttackTwo(String(attackMap->getCommand(1)));
+		}
+	}
+
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (inventory->hasFullContainerObjects()) {
+		StringIdChatParameter err("survey", "no_inv_space");
+		player->sendSystemMessage(err);
+		player->setPosture(CreaturePosture::UPRIGHT, true);
+		return;
+	}
+
+	Locker locker(inventory);
+	inventory->transferObject(prototype, -1, true,false);
+	inventory->broadcastObject(prototype, true);
+
+}
 void DnaManager::generateSample(Creature* creature, CreatureObject* player,int quality){
 	if (quality < 0 || quality > 7) {
 		return;
 	}
 	Locker lock(creature,player);
+	if (creature->hasPetDeed() && creature->isCreature()) {
+		generationalSample(creature,player,quality);
+		return;
+	}
 	CreatureTemplate* creatureTemplate = dynamic_cast<CreatureTemplate*>(creature->getCreatureTemplate());
 
 	int ferocity = creatureTemplate->getFerocity();
