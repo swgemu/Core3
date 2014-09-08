@@ -1,1 +1,1 @@
-includeFile("event/stresstest_shuttleloc_barker.lua")
+includeFile("event/event_promoter.lua")
