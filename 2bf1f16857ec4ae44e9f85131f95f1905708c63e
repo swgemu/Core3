@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_e6f75e8b",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "Feel free to disagree with me, but I think the conversation flow is a bit off. You have this first screen correct (which is evident from the screenshot in the guide). I\u0027ll add more comments with how I\u0027m thinking it should go.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_c6f46289",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "Rather than s_48 here, I would think that s_10 should be the left dialog here. Then, rather than the options you list here, I think it should have the s_11, s_26, s_42, and s_80 options from the first screen again.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_a6f16697",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "At this point, rather than sending the SUI and stopping conversation, I think the left dialog should be s_12 with s_14 and s_9 as options. s_9 would take you back to s_10 as I outlined above. s_14 would send the SUI box, stop conversing, and say s_16.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_86ee6ab3",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "Just like for decorations above, use s_28 here with s_30 and s_9 as options. s_30 would send the SUI and say s_32.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_662b6eec",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "Use s_44 as left with s_76, s_46, and s_9 as options. When s_76 is chosen, the SUI is sent and s_78 is spoken.\n\nWhen s_46 is chosen, s_48 is the left dialog with s_50, s_58, s_64, s_66, s_70, and s_109 as options. When any of them are chosen, the explain_ screen you already have written would be sent. Rather than have them stop conversing, give s_76 and s_9 as options.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_46307256",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "Use s_82 as left here with s_100, s_84, s_88, and s_9 as options. I guess s_92/s_96 could be used here as well, though I think it\u0027s fine to leave them off.\n\nChoosing s_84 or s_88 would send you to the appropriate explain_ screen as I mentioned in the above comment. s_100 would send the SUI and say s_102.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_26357646",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "I think you\u0027re using the wrong strings for the displayNames. The ones you are using are the names of the deeds. There are other strings for the list box. For example, instead of atat_static_deed_name here, use pro_atat_static. Each perks should have a string with the pro_ suffix.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_063a7a36",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "Some of the deco deeds are not functional yet. I\u0027d prefer it if you commented out the ones that are not. You can look at the blue frog to know which ones are functional.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_46099294",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPromoter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "I think that @event_perk:pro_show_list_title and @event_perk:pro_show_list_desc were probably used for all of the SUIs here.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_66048e7e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPromoter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "Make it \u003c\u003d 0 just in case they are at 81/80 or whatever.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_26fe966c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPromoter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-08T11:48:01Z",
+      "side": 1,
+      "message": "You also need to check how many perks the player has rented and not allow them to rent more than 5 at a time. @event_perk:pro_too_many_perks is the message sent in that case. There\u0027s a getEventPerkCount() method in PlayerObject. I put the same check in SuiManager when the frog hands them out if you want to take a look.\n\nAdditionally, once the item is given, you\u0027ll need to call PlayerObject::addEventPerk() to ensure that the number of rentals the player has is tracked properly. You\u0027ll want to expose these methods to Lua.",
+      "revId": "2bf1f16857ec4ae44e9f85131f95f1905708c63e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
