@@ -1077,4 +1077,9 @@ class AiAgent extends CreatureObject {
 	public boolean hasPetDeed() {
 		return petDeed != null;
 	}
+	
+	@dirty
+	public PetDeed getPetDeed() {
+		return petDeed;
+	}
 }

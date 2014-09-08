@@ -136,7 +136,59 @@ class GeneticComponent extends Component {
 		dependency = dep;
 		fortitude = frt;
 		hardiness = har;
+		dexterity = dex;
 	}
+	
+	@dirty
+	public unsigned int getCleverness() { 
+		return cleverness; 
+	}
+	
+	@dirty
+	public unsigned int getEndurance() { 
+		return endurance; 
+	}
+	
+	@dirty
+	public unsigned int getFierceness() { 
+		return fierceness; 
+	}
+	
+	@dirty
+	public unsigned int getPower() { 
+		return power; 
+	}
+	
+	@dirty
+	public unsigned int getIntelligence() { 
+		return intelligence; 
+	}
+	
+	@dirty
+	public unsigned int getCourage() { 
+		return courage; 
+	}
+	
+	@dirty
+	public unsigned int getDependency() { 
+		return dependency; 
+	}
+	
+	@dirty
+	public unsigned int getDexterity() { 
+		return dexterity; 
+	}
+	
+	@dirty
+	public unsigned int getFortitude() { 
+		return fortitude; 
+	}
+	
+	@dirty
+	public unsigned int getHardiness() { 
+		return hardiness; 
+	}
+	
 	public void setLevel(int value) {
 		level = value;
 	}

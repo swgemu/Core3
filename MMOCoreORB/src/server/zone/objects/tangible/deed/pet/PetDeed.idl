@@ -87,6 +87,17 @@ class PetDeed extends Deed {
 		
 	protected string controlDeviceObjectTemplate;
 	protected string mobileTemplate;
+
+	protected unsigned int cleverness;
+	protected unsigned int endurance;
+	protected unsigned int fierceness;
+	protected unsigned int power;
+	protected unsigned int intelligence;
+	protected unsigned int courage;
+	protected unsigned int dependency;
+	protected unsigned int dexterity;
+	protected unsigned int fortitude;
+	protected unsigned int hardiness;
 	
 	@dereferenced
 	protected CreatureAttackMap attacks;
@@ -113,6 +124,17 @@ class PetDeed extends Deed {
 		chanceHit = 0;
 		attackSpeed = 0;
 		level = 1;
+		// Source DNA of a pet deed
+		cleverness = 0;
+		endurance = 0;
+		fierceness = 0;
+		power = 0;
+		intelligence = 0;
+		courage = 0;
+		dependency = 0;
+		dexterity = 0;
+		fortitude = 0;
+		hardiness = 0;		
 	}
 	
 	public native void initializeTransientMembers();
@@ -247,4 +269,55 @@ class PetDeed extends Deed {
 	public boolean isPetDeedObject() {
 		return true;
 	}	
+	
+	@dirty
+	public unsigned int getCleverness() { 
+		return cleverness; 
+	}
+	
+	@dirty
+	public unsigned int getEndurance() { 
+		return endurance; 
+	}
+	
+	@dirty
+	public unsigned int getFierceness() { 
+		return fierceness; 
+	}
+	
+	@dirty
+	public unsigned int getPower() { 
+		return power; 
+	}
+	
+	@dirty
+	public unsigned int getIntelligence() { 
+		return intelligence; 
+	}
+	
+	@dirty
+	public unsigned int getCourage() { 
+		return courage; 
+	}
+	
+	@dirty
+	public unsigned int getDependency() { 
+		return dependency; 
+	}
+	
+	@dirty
+	public unsigned int getDexterity() { 
+		return dexterity; 
+	}
+	
+	@dirty
+	public unsigned int getFortitude() { 
+		return fortitude; 
+	}
+	
+	@dirty
+	public unsigned int getHardiness() { 
+		return hardiness; 
+	}
+	
 }
