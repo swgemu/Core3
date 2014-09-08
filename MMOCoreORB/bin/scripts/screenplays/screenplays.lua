@@ -35,7 +35,7 @@ includeFile("village/fs_experience_converter_conv_handler.lua")
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
 includeFile("events/conversations/museum_curator_conv_handler.lua")
 includeFile("events/bestineMuseum.lua")
-
+includeFile("events/eventPromoter.lua")
 
 
 -- Task/Quest
