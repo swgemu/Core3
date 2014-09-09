@@ -255,6 +255,8 @@ void PetDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRespo
 
 int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	if (selectedID == 21) {
+		if(generated || !player->hasSkill("outdoors_bio_engineer_novice") || !isASubChildOf(player))
+			return 1;
 		// handle dna sample
 		int skillMod = player->getSkillMod("dna_harvesting");
 		float rollMod = (((skillMod-level)/level))  + (skillMod-level);
