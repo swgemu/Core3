@@ -1,0 +1,327 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_c650e260",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "It\u0027s a nitpick (since they are the same), but I think this should be s_20.",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_a64de6c6",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "s_24",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_864aeaaa",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "s_36",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_66c7ee13",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "s_40",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_46ccf235",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "s_106",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_26d1f6cd",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/events/event_promoter_conv.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "s_112",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_a6fba646",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_military_outpost",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_06d6fac5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "Even though this one didn\u0027t have a pro_ string, I\u0027d still recommend using something other than the deed name string. It would look out of place for it to be the only thing in the SUI to have the \"Rental:\" at the beginning.\n\nThe string for the bomber simply states \"TIE Bomber\". I\u0027d use a string that is simply \"TIE Fighter\". There are several to choose from. Maybe use @space_ship:player_tiefighter?\n\nI guess it\u0027s not a big deal either way. I\u0027m just thinking a bit of consistency might be nice.",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_c6fea238",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_crashed_xwing_theater",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_e6019e3a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_imp_landing_party_theater",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_06edda8b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_imp_landing_lambda_theater",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_26e8d67b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_imp_recruiting_theater",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_46f3d273",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_imp_stage_theater",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_66eece8d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_crashed_tie_bomber_theater",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_86e1ca9c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_crashed_tie_fighter_theater",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_a6e4c6ac",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_destroyed_atat_theater",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_c6d7c2be",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_rebel_recruiting_theater",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_e6dabee8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPerkData.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "pro_rebel_stage_theater",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_86f8aa4a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/eventPromoter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-09T02:32:01Z",
+      "side": 1,
+      "message": "I\u0027d use \u003e\u003d 5 just in case something unexpected happens.",
+      "revId": "e5514ef7baf98a31c5eece612d99b50d22344249",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
