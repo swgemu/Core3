@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_467e32e6",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/sith_shadow_encounter_Test.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-09-09T01:01:09Z",
+      "side": 1,
+      "message": "I\u0027m not sure that you can do this. It will interfere with the underlying task.lua functionality.",
+      "revId": "7b51d2866914dad48b0954accb9eeea285e7f0fe",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_268336ce",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/sith_shadow_intro_theater_Test.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-09-09T01:01:09Z",
+      "side": 1,
+      "message": "You should not include the mocks for the unit you are testing.",
+      "revId": "7b51d2866914dad48b0954accb9eeea285e7f0fe",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_06883ae6",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/sith_shadow_intro_theater_Test.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-09-09T01:01:09Z",
+      "side": 1,
+      "message": "Here you should check that it starts the dathomir_go_to quest instead.",
+      "revId": "7b51d2866914dad48b0954accb9eeea285e7f0fe",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_e66cfe38",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/sith_shadow_intro_theater_Test.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-09-09T01:01:09Z",
+      "side": 1,
+      "message": "Check that dathomir_go_to isn\u0027t started.",
+      "revId": "7b51d2866914dad48b0954accb9eeea285e7f0fe",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_a6760605",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-09-09T01:01:09Z",
+      "side": 1,
+      "message": "We need a test file for this as well.",
+      "revId": "7b51d2866914dad48b0954accb9eeea285e7f0fe",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_c6690227",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/variables/PlayerQuestData.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-09-09T01:01:09Z",
+      "side": 1,
+      "message": "Can you format this file a bit better?",
+      "revId": "7b51d2866914dad48b0954accb9eeea285e7f0fe",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
