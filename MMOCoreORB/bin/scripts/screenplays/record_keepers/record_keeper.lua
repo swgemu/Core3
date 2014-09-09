@@ -13,7 +13,8 @@ function RecordKeeper:wipeQuests(pObject)
 	ObjectManager.withCreatureObject(pObject, function(player)
 		for k,v in pairs(self.quests) do
 			-- we wipe out all screen play data for this theme park/quest
-			clearScreenPlayData(player,k)
+			park = _G[v]
+			park:resetThemePark(pObject)
 		end
 		writeScreenPlayData(player, self.keeperName, "completed", 1)
 	end)

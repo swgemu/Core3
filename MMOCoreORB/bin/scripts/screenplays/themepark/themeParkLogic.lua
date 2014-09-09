@@ -1491,6 +1491,21 @@ function ThemeParkLogic:escortedNpcCloseEnough(pConversingPlayer)
 	return pNpc ~= nil and SceneObject(pConversingPlayer):getDistanceTo(pNpc) < 64
 end
 
+function ThemeParkLogic:resetThemePark(pConversingPlayer)
+	-- reset currnt missions
+	self:resetCurrentMission(pConversingPlayer)
+	-- wipe all missions out
+	ObjectManager.withCreatureAndPlayerObject(pConversingPlayer, function(creature, player)
+		-- clear the root state
+		clearScreenPlayData(player,self.screenPlayState)
+		-- clear all missions	
+		for i = 1, #self.npcMap do
+			local name = self.npcMap[i].spawnData.npcTemplate
+			clearScreenPlayData(player,self.screenPlayState .. "_mission_" .. npcName)
+		end
+	end)
+end
+
 function ThemeParkLogic:resetCurrentMission(pConversingPlayer)
 	ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
 		writeData(creature:getObjectID() .. ":activeMission", 0)
