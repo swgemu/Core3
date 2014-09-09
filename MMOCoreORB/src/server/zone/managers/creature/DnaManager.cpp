@@ -161,23 +161,23 @@ int DnaManager::addRange(lua_State* L) {
 
 	return 0;
 }
-void DnaManager::generationalSample(Creature* creature, CreatureObject* player,int quality) {
+void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int quality) {
 	// We are making a generational sample rules are a little different.
 	// Reduce each stat by lets say 10% as the max to be on par with old docs
-	int cl = creature->getAdultLevel();
+	int cl = deed->getLevel();
 	int ferocity = 0;
 	int factor = (int)System::random(quality) - 7;
 	int reductionAmount = (factor + 20 + quality) ;
-	int cle = reduceByPercent(creature->getPetDeed()->getCleverness(),reductionAmount);
-	int cou = reduceByPercent(creature->getPetDeed()->getCourage(),reductionAmount);
-	int dep = reduceByPercent(creature->getPetDeed()->getDependency(),reductionAmount);
-	int dex = reduceByPercent(creature->getPetDeed()->getDexterity(),reductionAmount);
-	int end = reduceByPercent(creature->getPetDeed()->getEndurance(),reductionAmount);
-	int fie = reduceByPercent(creature->getPetDeed()->getFierceness(),reductionAmount);
-	int frt = reduceByPercent(creature->getPetDeed()->getFortitude(),reductionAmount);
-	int har = reduceByPercent(creature->getPetDeed()->getHardiness(),reductionAmount);
-	int ite = reduceByPercent(creature->getPetDeed()->getIntelligence(),reductionAmount);
-	int pow = reduceByPercent(creature->getPetDeed()->getPower(),reductionAmount);
+	int cle = reduceByPercent(deed->getCleverness(),reductionAmount);
+	int cou = reduceByPercent(deed->getCourage(),reductionAmount);
+	int dep = reduceByPercent(deed->getDependency(),reductionAmount);
+	int dex = reduceByPercent(deed->getDexterity(),reductionAmount);
+	int end = reduceByPercent(deed->getEndurance(),reductionAmount);
+	int fie = reduceByPercent(deed->getFierceness(),reductionAmount);
+	int frt = reduceByPercent(deed->getFortitude(),reductionAmount);
+	int har = reduceByPercent(deed->getHardiness(),reductionAmount);
+	int ite = reduceByPercent(deed->getIntelligence(),reductionAmount);
+	int pow = reduceByPercent(deed->getPower(),reductionAmount);
 
 	// calculate rest of stats here
 	ManagedReference<DnaComponent*> prototype = player->getZoneServer()->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
@@ -186,29 +186,24 @@ void DnaManager::generationalSample(Creature* creature, CreatureObject* player,i
 	}
 	Locker clocker(prototype);
 	// Check Here for unique npcs
-	StringId* nameId = creature->getObjectName();
-	if (nameId->getFile().isEmpty() || nameId->getStringID().isEmpty()) {
-		prototype->setSource(creature->getCreatureName().toString());
-	} else {
-		prototype->setSource(nameId->getFullPath());
-	}
+	prototype->setSource(deed->getTemplateName());
 	prototype->setQuality(quality);
 	prototype->setLevel(cl);
 	String serial = player->getZoneServer()->getCraftingManager()->generateSerial();
 	prototype->setSerialNumber(serial);
 	prototype->setStats(cle,end,fie,pow,ite,cou,dep,dex,frt,har);
-	prototype->setStun(creature->getStun());
-	prototype->setKinetic(creature->getKinetic());
-	prototype->setEnergy(creature->getEnergy());
-	prototype->setBlast(creature->getBlast());
-	prototype->setHeat(creature->getHeat());
-	prototype->setCold(creature->getCold());
-	prototype->setElectric(creature->getElectricity());
-	prototype->setAcid(creature->getAcid());
-	prototype->setSaber(creature->getLightSaber());
-	prototype->setRanged(creature->getPetDeed()->getRanged());
-	prototype->setArmorRating(creature->getArmor());
-	CreatureAttackMap* attackMap = creature->getAttackMap();
+	prototype->setStun(deed->getStun());
+	prototype->setKinetic(deed->getKinetic());
+	prototype->setEnergy(deed->getEnergy());
+	prototype->setBlast(deed->getBlast());
+	prototype->setHeat(deed->getHeat());
+	prototype->setCold(deed->getCold());
+	prototype->setElectric(deed->getElectric());
+	prototype->setAcid(deed->getAcid());
+	prototype->setSaber(deed->getSaber());
+	prototype->setRanged(deed->getRanged());
+	prototype->setArmorRating(deed->getArmor());
+	CreatureAttackMap* attackMap = deed->getAttacks();
 	if (attackMap->size() > 0) {
 		prototype->setSpecialAttackOne(String(attackMap->getCommand(0)));
 		if(attackMap->size() > 1) {
@@ -235,10 +230,6 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 		return;
 	}
 	Locker lock(creature,player);
-	if (creature->hasPetDeed() && creature->isCreature()) {
-		generationalSample(creature,player,quality);
-		return;
-	}
 	CreatureTemplate* creatureTemplate = dynamic_cast<CreatureTemplate*>(creature->getCreatureTemplate());
 
 	int ferocity = creatureTemplate->getFerocity();

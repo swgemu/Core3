@@ -13,6 +13,7 @@
 #include "DnaSampleRange.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/Creature.h"
+#include "server/zone/objects/tangible/deed/pet/PetDeed.h"
 namespace server {
 namespace zone {
 namespace managers {
@@ -52,7 +53,7 @@ public:
 	static const int FIERCENESS    = 10;
 	int generateScoreFor(int stat, int cl,int quality);
 	void generateSample(Creature* creature, CreatureObject* player, int quality);
-	void generationalSample(Creature* creature, CreatureObject* player, int quality);
+	void generationalSample(PetDeed* deed, CreatureObject* player, int quality);
 protected:
 	int reduceByPercent(int source, int percent) {
 		float reduceBy = (100.0 - (float)percent) / 100.0;

@@ -29,6 +29,7 @@
 #include "server/zone/managers/customization/CustomizationIdManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/managers/creature/DnaManager.h"
 
 
 void PetDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -141,6 +142,13 @@ CreatureAttackMap* PetDeedImplementation::getAttacks() {
 	return &attacks;
 }
 
+String PetDeedImplementation::getTemplateName() {
+	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
+	ManagedReference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+	String name = petTemplate->getObjectName();
+	return name;
+}
+
 void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ManagedReference<ManufactureSchematic*> manufact = values->getManufactureSchematic();
 	for (int i = 0; i < manufact->getSlotCount(); ++i) {
@@ -240,10 +248,53 @@ void PetDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRespo
 
 	if(isASubChildOf(player))
 		menuResponse->addRadialMenuItem(20, 3, "@pet/pet_menu:menu_tame");
+	// Bio engineers can sample a deed
+	if(player->hasSkill("outdoors_bio_engineer_novice") && isASubChildOf(player))
+		menuResponse->addRadialMenuItem(21, 3, "@sui:harvest_dna");
 }
 
 int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-
+	if (selectedID == 21) {
+		// handle dna sample
+		int skillMod = player->getSkillMod("dna_harvesting");
+		float rollMod = (((skillMod-level)/level))  + (skillMod-level);
+		// generate a sample, do a quality roll to see how much was copied
+		int quality = 0;
+		// generate quality based on skill
+		int luckRoll = System::random(100);
+		luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
+		int qualityRoll = luckRoll + rollMod;
+		// quality is related to your skill vs the creature level better odds for a deed
+		if (qualityRoll > 90)
+			quality = 1;
+		else if (qualityRoll > 80)
+			quality = 2;
+		else if (qualityRoll > 70)
+			quality = 3;
+		else if (qualityRoll > 60)
+			quality = 4;
+		else if (qualityRoll > 50)
+			quality = 5;
+		else if (qualityRoll > 40)
+			quality = 6;
+		else
+			quality = 7;
+		// 1/2 xp form deeds
+		int xp = DnaManager::instance()->generateXp(level/2);
+		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+		if(playerManager != NULL)
+			playerManager->awardExperience(player, "bio_engineer_dna_harvesting", xp, true);
+		// Generate a sample
+		DnaManager::instance()->generationalSample(_this.get(),player,quality);
+		// Destroy the deed
+		//Remove the deed from it's container.
+		player->sendSystemMessage("@bio_engineer:harvest_dna_succeed");
+		ManagedReference<SceneObject*> deedContainer = getParent();
+		if (deedContainer != NULL) {
+			destroyObjectFromWorld(true);
+		}
+		return 0;
+	}
 	if (selectedID == 20) {
 
 		if (generated || !isASubChildOf(player))

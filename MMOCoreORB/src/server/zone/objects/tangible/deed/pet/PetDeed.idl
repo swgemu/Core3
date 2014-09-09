@@ -56,6 +56,8 @@ include server.zone.objects.creature.variables.CreatureAttackMap;
 import server.zone.templates.SharedObjectTemplate;
 
 class PetDeed extends Deed {
+	// Sample Count
+	protected int sampleCount;
 	// Pet Level
 	protected int level;
 	// Crafted pets have their own attack speed and chance to hit
@@ -134,7 +136,8 @@ class PetDeed extends Deed {
 		dependency = 0;
 		dexterity = 0;
 		fortitude = 0;
-		hardiness = 0;		
+		hardiness = 0;	
+		sampleCount = 0;	
 	}
 	
 	public native void initializeTransientMembers();
@@ -319,5 +322,9 @@ class PetDeed extends Deed {
 	public unsigned int getHardiness() { 
 		return hardiness; 
 	}
+	
+	@dirty
+	@local
+	public native string getTemplateName();
 	
 }
