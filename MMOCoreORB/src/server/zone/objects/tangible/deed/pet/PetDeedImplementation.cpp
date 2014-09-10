@@ -145,6 +145,10 @@ CreatureAttackMap* PetDeedImplementation::getAttacks() {
 String PetDeedImplementation::getTemplateName() {
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
 	ManagedReference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+	if (petTemplate == NULL) {
+		return "";
+	}
+
 	String name = petTemplate->getObjectName();
 	return name;
 }
