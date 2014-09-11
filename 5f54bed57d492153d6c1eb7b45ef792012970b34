@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_86542a22",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-11T08:19:07Z",
+      "side": 1,
+      "message": "This is redundant since you put it in the task.",
+      "revId": "5f54bed57d492153d6c1eb7b45ef792012970b34",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
