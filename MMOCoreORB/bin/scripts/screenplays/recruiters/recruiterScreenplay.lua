@@ -44,6 +44,10 @@ function recruiterScreenplay:getRecruiterFactionHashCode(pNpc)
 end
 
 function recruiterScreenplay:getRecruiterFaction(pNpc)
+	if pNpc == nil then
+		return nil
+	end
+
 	return self:getFactionFromHashCode(TangibleObject(pNpc):getFaction())
 end
 
