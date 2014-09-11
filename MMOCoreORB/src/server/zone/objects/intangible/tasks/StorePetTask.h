@@ -23,6 +23,9 @@ public:
 		if (pet->containsPendingTask("droid_power"))
 			pet->removePendingTask( "droid_power" );
 
+		if (pet->containsPendingTask("store_pet"))
+			pet->removePendingTask( "store_pet" );
+
 		if (pet->getHAM(CreatureAttribute::HEALTH) < 1)
 			pet->setHAM(CreatureAttribute::HEALTH, 1);
 		if (pet->getHAM(CreatureAttribute::ACTION) < 1)
@@ -37,6 +40,10 @@ public:
 		pet->destroyObjectFromWorld(true);
 
 		pet->setCreatureLink(NULL);
+
+		ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
+		if( controlDevice != NULL )
+			controlDevice->updateStatus(0);
 
 		CreatureTemplate* creoTemp = pet->getCreatureTemplate();
 
@@ -57,6 +64,7 @@ public:
 
 		if (group != NULL)
 			GroupManager::instance()->leaveGroup(group, pet);
+
 	}
 };
 
