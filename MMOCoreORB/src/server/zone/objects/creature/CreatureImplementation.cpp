@@ -155,6 +155,8 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 		String skillname = "none";
 		if (skillNum >= 1)
 			skillname = attackMap->getCommand(0);
+		if (skillname == "creatureareaattack")
+			skillname = "unknown_attack";
 
 		StringBuffer skillMsg;
 		skillMsg << "@combat_effects:" << skillname;
@@ -168,6 +170,8 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 			skillname = attackMap->getCommand(1);
 
 		StringBuffer skillMsg;
+		if (skillname == "creatureareaattack")
+			skillname = "unknown_attack";
 		skillMsg << "@combat_effects:" << skillname;
 
 		alm->insertAttribute("pet_command_19", skillMsg.toString());
@@ -389,7 +393,7 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 
 	CreatureObjectImplementation::setLevel(newLevel);
 
-	if (npcTemplate == NULL) {
+	if (getCreatureTemplate() == NULL) {
 		return;
 	}
 
@@ -402,7 +406,6 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	float ratio = ((float)newLevel) / (float)baseLevel;
-
 	minDmg *= ratio;
 	maxDmg *= ratio;
 

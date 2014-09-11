@@ -394,6 +394,11 @@ class GeneticComponent extends Component {
 	public void setQuality(int qual) {
 		quality = qual;		
 	}
+	
+	@dirty
+	public int getQuality() {
+		return quality;
+	}
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre {transient members are not initialized }

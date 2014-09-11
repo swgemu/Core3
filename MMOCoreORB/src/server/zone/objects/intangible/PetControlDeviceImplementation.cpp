@@ -378,7 +378,6 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 
 	if (controlledObject == NULL || !controlledObject->isCreature())
 		return true;
-
 	ManagedReference<Creature*> pet = cast<Creature*>(controlledObject.get());
 
 	ManagedReference<CreatureTemplate*> creatureTemplate = pet->getCreatureTemplate();
@@ -725,10 +724,15 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 				alm->insertAttribute("dna_comp_armor_saber", pet->getLightSaber());
 
 			ManagedReference<WeaponObject*> weapon = pet->getWeapon();
-			if (weapon != NULL)
-				alm->insertAttribute("creature_attack", weapon->getAttackSpeed());
+			if (weapon != NULL){
+				StringBuffer displayValue;
+				displayValue << Math::getPrecision(weapon->getAttackSpeed(), 2);
+				alm->insertAttribute("creature_attack", displayValue);
+			}
+			StringBuffer displayValue;
+			displayValue << Math::getPrecision(pet->getChanceHit(), 2);
+			alm->insertAttribute("creature_tohit", displayValue);
 
-			alm->insertAttribute("creature_tohit", pet->getChanceHit());
 			alm->insertAttribute("creature_damage", String::valueOf(pet->getDamageMin()) + " - " + String::valueOf(pet->getDamageMax()));
 
 			if (petType == PetManager::CREATUREPET) {

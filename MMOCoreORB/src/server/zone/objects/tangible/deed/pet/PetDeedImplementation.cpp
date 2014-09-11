@@ -103,8 +103,12 @@ void PetDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 	else
 		alm->insertAttribute("dna_comp_armor_saber", saberResist);
 
-	alm->insertAttribute("creature_attack", attackSpeed);
-	alm->insertAttribute("creature_tohit", chanceHit);
+	StringBuffer attdisplayValue;
+	attdisplayValue << Math::getPrecision(attackSpeed, 2);
+	StringBuffer hitdisplayValue;
+	hitdisplayValue << Math::getPrecision(chanceHit, 2);
+	alm->insertAttribute("creature_attack", attdisplayValue);
+	alm->insertAttribute("creature_tohit", hitdisplayValue);
 	alm->insertAttribute("creature_damage", String::valueOf(damageMin) + " - " + String::valueOf(damageMax));
 
 	if (special1 != "none" && special1 != "defaultattack"){
@@ -164,6 +168,7 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 			ManagedReference<GeneticComponent*> component = cast<GeneticComponent*>( tano.get());
 			// Now we can suck in the values
 			level = component->getLevel();
+			quality = component->getQuality();
 			chanceHit = component->getHit();
 			attackSpeed = component->getSpeed();
 			damageMin = component->getMinDamage();
@@ -265,33 +270,36 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		int skillMod = player->getSkillMod("dna_harvesting");
 		float rollMod = (((skillMod-level)/level))  + (skillMod-level);
 		// generate a sample, do a quality roll to see how much was copied
-		int quality = 0;
-		// generate quality based on skill
+		int newQuality = quality;
+		// generate quality based on skill up to max of existing quality
 		int luckRoll = System::random(100);
 		luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
 		int qualityRoll = luckRoll + rollMod;
 		// quality is related to your skill vs the creature level better odds for a deed
-		if (qualityRoll > 90)
-			quality = 1;
-		else if (qualityRoll > 80)
-			quality = 2;
-		else if (qualityRoll > 70)
-			quality = 3;
-		else if (qualityRoll > 60)
-			quality = 4;
+		if (qualityRoll > 60)
+			newQuality += 0;
 		else if (qualityRoll > 50)
-			quality = 5;
+			newQuality += 1;
 		else if (qualityRoll > 40)
-			quality = 6;
+			newQuality += 2;
+		else if (qualityRoll > 30)
+			newQuality += 3;
+		else if (qualityRoll > 20)
+			newQuality += 4;
+		else if (qualityRoll > 10)
+			newQuality += 5;
 		else
-			quality = 7;
-		// 1/2 xp form deeds
-		int xp = DnaManager::instance()->generateXp(level/2);
+			newQuality += 6;
+		if(newQuality > 7)
+			newQuality = 7;
+		// increasing xp for sampling a deed some posts suggested it was worth more. im going with double xp as its a 1 off task if we
+		// chnage this to allow for multiple will lower it back down. Once sampling has occured we need to treat it like it was generated and make this untradable and un tamable
+		int xp = DnaManager::instance()->generateXp(level*2);
 		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 		if(playerManager != NULL)
 			playerManager->awardExperience(player, "bio_engineer_dna_harvesting", xp, true);
 		// Generate a sample
-		DnaManager::instance()->generationalSample(_this.get(),player,quality);
+		DnaManager::instance()->generationalSample(_this.get(),player,newQuality);
 		// Destroy the deed
 		//Remove the deed from it's container.
 		player->sendSystemMessage("@bio_engineer:harvest_dna_succeed");

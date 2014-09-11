@@ -123,8 +123,12 @@ void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData)
 int AiAgentImplementation::calculateAttackMinDamage(int level) {
 	int minDmg = MAX(npcTemplate->getDamageMin(), 20 + (level * 5));
 	if (petDeed != NULL) {
-		// pet deeds this is already calculated
-		return petDeed->getMinDamage();
+		minDmg = petDeed->getMinDamage();
+		if (level < petDeed->getLevel()) {
+			// reduce by level range
+			float percent = (float)level/(float)petDeed->getLevel();
+			minDmg *= percent;
+		}
 	}
 	return minDmg;
 }
@@ -132,8 +136,11 @@ int AiAgentImplementation::calculateAttackMinDamage(int level) {
 int AiAgentImplementation::calculateAttackMaxDamage(int level) {
 	int dmg = MAX(npcTemplate->getDamageMax(), calculateAttackMinDamage(level) * 2);
 	if (petDeed != NULL) {
-		// pet deeds this is already calculated
-		return petDeed->getMaxDamage();
+		dmg = petDeed->getMaxDamage();
+		if (level < petDeed->getLevel()) {
+			float percent = (float)level/(float)petDeed->getLevel();
+			dmg *= percent;
+		}
 	}
 	return dmg;
 }
@@ -142,7 +149,11 @@ float AiAgentImplementation::calculateAttackSpeed(int level) {
 	float speed = 3.5f - ((float)level / 100.f);
 	if (petDeed != NULL) {
 		// pet deeds this is already calculated
-		return petDeed->getAttackSpeed();
+		speed = petDeed->getAttackSpeed();
+		if (level < petDeed->getLevel()) {
+			float percent = (float)level/(float)petDeed->getLevel();
+			speed *= percent;
+		}
 	}
 	return speed;
 }

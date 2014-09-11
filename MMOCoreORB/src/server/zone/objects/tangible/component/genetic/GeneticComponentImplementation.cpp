@@ -211,6 +211,8 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {
 	if (attackName == "defaultattack" || attackName == "")
 		return "@combat_effects:none";
+	else if (attackName == "creatureareaattack")
+		return "@combat_effects:unknown_attack";
 	else
 		return "@combat_effects:" + attackName;
 }
