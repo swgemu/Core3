@@ -1495,13 +1495,15 @@ function ThemeParkLogic:resetThemePark(pConversingPlayer)
 	-- reset currnt missions
 	self:resetCurrentMission(pConversingPlayer)
 	-- wipe all missions out
-	ObjectManager.withCreatureAndPlayerObject(pConversingPlayer, function(creature, player)
+	ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
 		-- clear the root state
-		clearScreenPlayData(player,self.screenPlayState)
+		local state = creature:getScreenPlayState(self.screenPlayState)
+		creature:removeScreenPlayState(state, self.screenPlayState)
 		-- clear all missions	
 		for i = 1, #self.npcMap do
 			local name = self.npcMap[i].spawnData.npcTemplate
-			clearScreenPlayData(player,self.screenPlayState .. "_mission_" .. npcName)
+			local npcState = creature:getScreenPlayState(self.screenPlayState)
+			creature:removeScreenPlayState(npcState, self.screenPlayState .. "_mission_" .. name)
 		end
 	end)
 end

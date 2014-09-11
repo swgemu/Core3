@@ -6,18 +6,18 @@ RecordKeeper =ScreenPlay:new {
 	keeperName = "dummy",
 	faction = 0
 }
+
 function RecordKeeper:start()
 	-- no op
 end
+
 function RecordKeeper:wipeQuests(pObject)
-	ObjectManager.withCreatureObject(pObject, function(player)
-		for k,v in pairs(self.quests) do
-			-- we wipe out all screen play data for this theme park/quest
-			park = _G[v]
-			park:resetThemePark(pObject)
-		end
-		writeScreenPlayData(player, self.keeperName, "completed", 1)
-	end)
+	for k,v in pairs(self.quests) do
+		-- we wipe out all screen play data for this theme park/quest
+		park = _G[v]
+		park:resetThemePark(pObject)
+	end
+	writeScreenPlayData(pObject, self.keeperName, "completed", 1)
 end
 
 function RecordKeeper:resetQuests(pObject)
@@ -25,20 +25,17 @@ function RecordKeeper:resetQuests(pObject)
 		park = _G[v]
 		park:resetCurrentMission(pObject)
 	end
-	ObjectManager.withCreatureObject(pObject, function(player)
-		writeScreenPlayData(player, self.keeperName, "completed", 1)
-	end)
+	writeScreenPlayData(pObject, self.keeperName, "completed", 1)
 end
+
 function RecordKeeper:available(pObject)
-	return ObjectManager.withCreatureObject(pObject, function(player)
-		-- read the variable
-		local val = readScreenPlayData(player, self.keeperName, "completed")
-		if val == 1 then
-			return false
-		else
-			return true
-		end
-	end)
+	-- read the variable
+	local val = readScreenPlayData(pObject, self.keeperName, "completed")
+	if val == 1 then
+		return false
+	else
+		return true
+	end
 end
 
 function RecordKeeper:hasStartedPark(pObject)
