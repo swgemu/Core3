@@ -99,6 +99,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getPerformanceName", &LuaCreatureObject::getPerformanceName},
 		{ "getWalkSpeed", &LuaCreatureObject::getWalkSpeed },
 		{ "isAttackableBy", &LuaCreatureObject::isAttackableBy },
+		{ "getSpecies", &LuaCreatureObject::getSpecies },
 		{ 0, 0 }
 };
 
@@ -719,6 +720,12 @@ int LuaCreatureObject::isAttackableBy(lua_State* L) {
 
 	bool retVal = realObject->isAttackableBy(obj);
 	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaCreatureObject::getSpecies(lua_State* L) {
+	lua_pushinteger(L, realObject->getSpecies());
 
 	return 1;
 }

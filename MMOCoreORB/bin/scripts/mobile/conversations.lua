@@ -32,6 +32,13 @@ includeFile("conversations/events/bestine_museum/bestine_artist05_conv.lua")
 includeFile("conversations/events/bestine_museum/bestine_artist06_conv.lua")
 includeFile("conversations/events/bestine_museum/museum_curator_conv.lua")
 
+--Life Day
+includeFile("conversations/events/life_day/life_day_elder_conv.lua")
+includeFile("conversations/events/life_day/life_day_greeter_conv.lua")
+includeFile("conversations/events/life_day/life_day_wookiee_1_conv.lua")
+includeFile("conversations/events/life_day/life_day_wookiee_2_conv.lua")
+includeFile("conversations/events/life_day/life_day_wookiee_3_conv.lua")
+
 -- Events
 includeFile("conversations/events/event_promoter_conv.lua")
 

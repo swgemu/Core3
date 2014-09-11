@@ -54,6 +54,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getExperienceType", &LuaPlayerObject::getExperienceType},
 		{ "addEventPerk", &LuaPlayerObject::addEventPerk},
 		{ "getEventPerkCount", &LuaPlayerObject::getEventPerkCount},
+		{ "getCharacterAgeInDays", &LuaPlayerObject::getCharacterAgeInDays},
 		{ 0, 0 }
 };
 
@@ -463,4 +464,10 @@ int LuaPlayerObject::addEventPerk(lua_State* L) {
 	realObject->addEventPerk(perk);
 
 	return 0;
+}
+
+int LuaPlayerObject::getCharacterAgeInDays(lua_State* L) {
+	lua_pushinteger(L, realObject->getCharacterAgeInDays());
+
+	return 1;
 }

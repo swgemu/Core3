@@ -33,9 +33,15 @@ includeFile("village/fs_experience_converter_conv_handler.lua")
 
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
+includeFile("events/conversations/life_day_elder_conv_handler.lua")
+includeFile("events/conversations/life_day_greeter_conv_handler.lua")
+includeFile("events/conversations/life_day_wookiee_1_conv_handler.lua")
+includeFile("events/conversations/life_day_wookiee_2_conv_handler.lua")
+includeFile("events/conversations/life_day_wookiee_3_conv_handler.lua")
 includeFile("events/conversations/museum_curator_conv_handler.lua")
 includeFile("events/bestineMuseum.lua")
 includeFile("events/eventPromoter.lua")
+includeFile("events/lifeDay.lua")
 
 
 -- Task/Quest
