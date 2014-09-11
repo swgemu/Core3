@@ -358,10 +358,26 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 	// Not training any commands
 	trainingCommand = 0;
 
-	updateStatus(0);
-
 	StorePetTask* task = new StorePetTask(player, pet);
-	task->execute();
+
+	// Store non-faction pets immediately.  Store faction pets after 60sec delay.
+	if( petType != PetManager::FACTIONPET || force){
+		task->execute();
+	}
+	else{
+		if(pet->getPendingTask("store_pet") == NULL) {
+			player->sendSystemMessage( "Storing pet in 60 seconds");
+			pet->addPendingTask("store_pet", task, 60 * 1000);
+		}
+		else{
+			Time nextExecution;
+			Core::getTaskManager()->getNextExecutionTime(pet->getPendingTask("store_pet"), nextExecution);
+			int timeLeft = (nextExecution.getMiliTime() / 1000) - System::getTime();
+			player->sendSystemMessage( "Pet will store in " + String::valueOf(timeLeft) + " seconds." );
+			return;
+		}
+
+	}
 
 	// Set cooldown
 	player->getCooldownTimerMap()->updateToCurrentAndAddMili("petCallOrStoreCooldown", 1000); // 1 sec
