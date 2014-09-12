@@ -333,6 +333,11 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, cancelPressed, a
 		CreatureObject(pCreature):sendSystemMessage("@faction_recruiter:datapad_full") -- Your datapad is full. You must first free some space.
 	elseif (awardResult == self.errorCodes.TOOMANYHIRELINGS) then
 		CreatureObject(pCreature):sendSystemMessage("@faction_recruiter:too_many_hirelings") -- You already have too much under your command.
+	elseif (awardResult == self.errorCodes.NOTENOUGHFACTION) then
+		local messageString = LuaStringIdChatParameter("@faction_recruiter:not_enough_standing_spend")
+		messageString:setDI(self.minimumFactionStanding)
+		messageString:setTO(self:toTitleCase(faction))
+		CreatureObject(pCreature):sendSystemMessage(messageString:_getObject()) -- You do not have enough faction standing to spend. You must maintain at least %DI to remain part of the %TO faction.
 	elseif ( awardResult == self.errorCodes.ITEMCOST ) then
 		CreatureObject(pCreature):sendSystemMessage("Error determining cost of item. Please post a bug report regarding the item you attempted to purchase.")
 	elseif ( awardResult == self.errorCodes.INVENTORYERROR or awardResult == self.DATAPADERROR) then
@@ -349,7 +354,7 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 		local factionStanding = playerObject:getFactionStanding(faction)
 
 		local itemCost = self:getItemCost(faction, itemString)
-
+		
 		if itemCost == nil then
 			return self.errorCodes.ITEMCOST
 		elseif ( pInventory == nil  ) then
@@ -358,7 +363,7 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 		
 		itemCost  = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
 
-		if (factionStanding  < (itemCost + 200)) then
+		if (factionStanding  < (itemCost + self.minimumFactionStanding)) then
 			return self.errorCodes.NOTENOUGHFACTION
 		end
 
@@ -394,6 +399,15 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 	end)
 end
 
+function recruiterScreenplay:toTitleCase(str)
+	local buf = {}
+	for word in string.gfind(str, "%S+") do
+		local first, rest = string.sub(word, 1, 1), string.sub(word, 2)
+		table.insert(buf, string.upper(first) .. string.lower(rest))
+	end
+	return table.concat(buf, " ")
+end
+
 function recruiterScreenplay:awardData(pPlayer, faction, itemString)
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local pDatapad = SceneObject(pPlayer):getSlottedObject("datapad")
@@ -405,7 +419,7 @@ function recruiterScreenplay:awardData(pPlayer, faction, itemString)
 			return self.errorCodes.DATAPADERROR
 		elseif itemCost == nil then
 			return self.errorCodes.ITEMCOST
-		elseif factionStanding  < (itemCost + 200) then
+		elseif factionStanding  < (itemCost + self.minimumFactionStanding) then
 			return self.errorCodes.NOTENOUGHFACTION
 		end
 
