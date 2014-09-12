@@ -140,7 +140,7 @@ function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, conversationTempl
 
 		if (faction == recruiterScreenplay:getRecruiterEnemyFactionHashCode(pNpc)) then
 			return convoTemplate:getScreen("greet_enemy")
-		elseif playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc)) < -200 and playerObject:getFactionStanding(recruiterScreenplay:getRecruiterEnemyFaction(pNpc)) > 0 then
+		elseif factionStanding < -200 and playerObject:getFactionStanding(recruiterScreenplay:getRecruiterEnemyFaction(pNpc)) > 0 then
 			return convoTemplate:getScreen("greet_hated")
 		elseif (playerObject:isChangingFactionStatus()) then
 			return convoTemplate:getScreen("greet_changing_status")
@@ -215,7 +215,7 @@ function RecruiterConvoHandler:updateScreenWithBribe(pPlayer, pNpc, conversation
 
 		if (player:hasSkill("combat_smuggler_underworld_04") and (player:getCashCredits() >= 20000)
 			and (getFactionPointsCap(player:getFactionRank()) >= playerObject:getFactionStanding(faction) + 250)) then
-			self:addBribeOption(screenObject)
+			self:addBribeOption(pNpc)
 		end
 	end)
 end
