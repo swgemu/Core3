@@ -1708,19 +1708,13 @@ bool AiAgentImplementation::completeMove() {
 }
 
 bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
-	return false;
-
 	Locker locker(&targetMutex);
 
 	// Check masked scent
 	if (!target->hasState(CreatureState::MASKSCENT)) {
-		if(camouflagedObjects.contains(target)) camouflagedObjects.removeElement(target);
 		return false;
 	}
 
-	// Don't do anything if object is ignored (Camo / Masked Scent)
-	if (camouflagedObjects.contains(target))
-		return true;
 
 	int camoSkill = target->getSkillMod("mask_scent");
 	int creatureLevel = getLevel();
@@ -1728,7 +1722,6 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	bool success = false;
 
 	if (System::random(100) <= (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100) {
-		camouflagedObjects.add(target);
 		success = true;
 	}
 
@@ -1739,18 +1732,11 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 }
 
 bool AiAgentImplementation::isConcealed(CreatureObject* target) {
-	return false;
-
 	Locker locker(&targetMutex);
 
 	if (!target->hasState(CreatureState::MASKSCENT)) {
-		if(camouflagedObjects.contains(target)) camouflagedObjects.removeElement(target);
 		return false;
 	}
-
-	// Don't do anything if object is ignored (Camo / Masked Scent)
-	if (camouflagedObjects.contains(target))
-		return true;
 
 	// Check if camo breaks
 	int camoSkill = target->getSkillMod("private_conceal");
@@ -1762,7 +1748,6 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 	bool success = false;
 
 	if (System::random(100) < (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100) {
-		camouflagedObjects.add(target);
 		success = true;
 	}
 

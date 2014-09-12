@@ -70,8 +70,8 @@ public:
 
 			creature->sendSystemMessage(success);
 		}
-
-		player->addExperience("scout", (target->getLevel() * 2), true);
+		Reference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+		playerManager->awardExperience(creature, "scout", (target->getLevel() * 2), true);
 	}
 };
 
