@@ -318,6 +318,7 @@ function GeonosianLabScreenPlay:notifyEnteredLab(pBuilding, pPlayer)
 		deleteData(player:getObjectID() .. ":geo_assistant_talked")
 		deleteData(player:getObjectID() .. ":geo_security_tech_talked")
 		player:removeScreenPlayState(1, "geonosian_lab_datapad_delivered")
+		player:removeScreenPlayState(1, "geonosian_lab_tenloss")
 
 		player:sendSystemMessage("@dungeon/geonosian_madbio:relock") --Security systems at this facility have been cycled and reset.
 	end)
