@@ -5,23 +5,23 @@ eventPromoterScreenplay = ScreenPlay:new {
 	numberOfActs = 1,
 
 	promoterLocs = {
-		{ planet = "naboo", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1393862 }, -- Keren
-		{ planet = "naboo", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1717467 }, -- Moenia
-		{ planet = "naboo", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1677392 }, -- Theed 1
-		{ planet = "naboo", x = -5.4, z = 1.0, y = 23.4, angle = 123, cell = 1697375 }, -- Theed 2
-		{ planet = "naboo", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1419011 }, -- Deeja Peak
-		{ planet = "naboo", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1741475 }, -- Kaadarra
-		{ planet = "naboo", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1865361 }, -- Lake Retreat
-		{ planet = "tatooine", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1233973 }, -- Mos Entha
-		{ planet = "tatooine", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1261015 }, -- Mos Espa
-		{ planet = "tatooine", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1223847 }, -- Bestine
-		{ planet = "corellia", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1855546 }, -- Coronet
-		{ planet = "corellia", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1935524 }, -- Tyrena 1
-		{ planet = "corellia", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 1935820 }, -- Tyrena 2
-		{ planet = "corellia", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 2365805 }, -- Bela Vistal
-		{ planet = "corellia", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 2775411 }, -- Vreni Island
-		{ planet = "corellia", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 3005668 }, -- Kor Vella
-		{ planet = "corellia", x = -0.1, z = 1.0, y = 20.8, angle = 0, cell = 3075364 } -- Doaba Guerful
+		{ planet = "naboo", x = -6.5, z = 1.6, y = -16.2, angle = 0, cell = 1393868 }, -- Keren
+		{ planet = "naboo", x = -6.5, z = 1.6, y = -16.1, angle = 0, cell = 1717473 }, -- Moenia
+		{ planet = "naboo", x = -23.6, z = 1.6, y = -16.8, angle = 0, cell = 1677400 }, -- Theed 1
+		{ planet = "naboo", x = -23.6, z = 1.6, y = -16.8, angle = 0, cell = 1697383 }, -- Theed 2
+		{ planet = "naboo", x = -6.5, z = 1.6, y = -16.2, angle = 0, cell = 1419017 }, -- Deeja Peak
+		{ planet = "naboo", x = -23.6, z = 1.6, y = -16.8, angle = 0, cell = 1741483 }, -- Kaadarra
+		{ planet = "naboo", x = -23.6, z = 1.6, y = -16.8, angle = 0, cell = 1865369 }, -- Lake Retreat
+		{ planet = "tatooine", x = -5.5, z = 1.6, y = -7.2, angle = -146, cell = 1233979 }, -- Mos Entha
+		{ planet = "tatooine", x = -24, z = 1.6, y = -4, angle = 175, cell = 1261023 }, -- Mos Espa
+		{ planet = "tatooine", x = -24, z = 1.6, y = -4, angle = 175, cell = 1223855 }, -- Bestine
+		{ planet = "corellia", x = -24, z = 1.6, y = -4, angle = 175, cell = 1855554 }, -- Coronet
+		{ planet = "corellia", x = -24, z = 1.6, y = -4, angle = 175, cell = 1935532 }, -- Tyrena 1
+		{ planet = "corellia", x = -24, z = 1.6, y = -4, angle = 175, cell = 1935828 }, -- Tyrena 2
+		{ planet = "corellia", x = -24, z = 1.6, y = -4, angle = 175, cell = 2365813 }, -- Bela Vistal
+		{ planet = "corellia", x = -24, z = 1.6, y = -4, angle = 175, cell = 2775419 }, -- Vreni Island
+		{ planet = "corellia", x = -24, z = 1.6, y = -4, angle = 175, cell = 3005676 }, -- Kor Vella
+		{ planet = "corellia", x = -24, z = 1.6, y = -4, angle = 175, cell = 3075372 } -- Doaba Guerful
 	}
 }
 
