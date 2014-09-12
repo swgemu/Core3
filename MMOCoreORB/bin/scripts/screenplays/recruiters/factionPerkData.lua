@@ -62,7 +62,7 @@ rebelRewardData = {
 	},
 
 	furnitureList = {
-		"tech_armoire", "tech_bookcase", "frn_cabinet", "chair_s01", "tech_chest", "frn_coffee_table", "frn_couch", "frn_end_table", "table_s1", "data_terminal_s1", "data_terminal_s2",
+		"data_terminal_s1", "data_terminal_s2", "tech_armoire", "tech_bookcase", "frn_cabinet", "tech_chair", "tech_chest", "frn_coffee_table", "frn_couch", "frn_end_table"
 	},
 
 	furniture = {
@@ -175,8 +175,8 @@ imperialRewardData = {
 	},
 
 	furnitureList = {
-		"frn_table", "tech_armoire", "tech_bookcase", "frn_cabinet", "chair_s01", "tech_chest", "frn_coffee_table", "frn_couch","frn_end_table", "table_s1",
-		"data_terminal_s1", "data_terminal_s2", "data_terminal_s3", "data_terminal_s4",
+		"data_terminal_s1", "data_terminal_s2", "data_terminal_s3", "data_terminal_s4", "frn_table", "tech_armoire", "tech_bookcase", "frn_cabinet", "tech_chair",
+		"tech_chest", "frn_coffee_table", "frn_couch", "frn_end_table"
 	},
 
 	furniture = {
@@ -188,7 +188,7 @@ imperialRewardData = {
 		tech_armoire = { type=factionRewardType.container, display="@container_name:tech_armoire", item="object/tangible/furniture/technical/armoire_s01.iff", cost=980},
 		tech_bookcase = { type=factionRewardType.container, display="@container_name:tech_bookcase", item="object/tangible/furniture/technical/bookcase_s01.iff", cost=980},
 		frn_cabinet = { type=factionRewardType.furniture, display="@frn_d:frn_cabinet", item="object/tangible/furniture/technical/cabinet_s01.iff", cost=200},
-		tech_chair = { type=factionRewardType.furniture, display="@frn_d:frn_chair", item="object/tangible/furniture/technical/chair_s01.iff", 700},
+		tech_chair = { type=factionRewardType.furniture, display="@frn_d:frn_chair", item="object/tangible/furniture/technical/chair_s01.iff", cost=700},
 		tech_chest =  { type=factionRewardType.container, display="@container_name:tech_chest", item="object/tangible/furniture/technical/chest_s01.iff", cost=700},
 		frn_coffee_table = { type=factionRewardType.furniture, display="@frn_d:frn_coffee_table", item="object/tangible/furniture/technical/coffee_table_s01.iff", cost=700},
 		frn_couch = { type=factionRewardType.furniture, display="@frn_d:frn_couch", item="object/tangible/furniture/technical/couch_s01.iff", cost=1050},
