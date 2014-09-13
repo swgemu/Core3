@@ -1708,8 +1708,6 @@ bool AiAgentImplementation::completeMove() {
 }
 
 bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
-	return false;
-
 	Locker locker(&targetMutex);
 
 	// Check masked scent
@@ -1717,19 +1715,31 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 		if(camouflagedObjects.contains(target)) camouflagedObjects.removeElement(target);
 		return false;
 	}
-
-	// Don't do anything if object is ignored (Camo / Masked Scent)
-	if (camouflagedObjects.contains(target))
-		return true;
-
+	if (isNonPlayerCreatureObject() || isDroidObject())
+		return false;
+	// Step 1. Check for break
+	bool success = false;
 	int camoSkill = target->getSkillMod("mask_scent");
 	int creatureLevel = getLevel();
 
-	bool success = false;
+	int mod = 100;
+	if (target->isKneeling() || target->isSitting())
+		mod -= 10;
+	if (target->isStanding())
+		mod -= 15;
+	if (target->isRunning() || target->isRidingMount() )
+		mod -= 35;
 
-	if (System::random(100) <= (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100) {
-		camouflagedObjects.add(target);
+	if (System::random(100) <= (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + mod) {
 		success = true;
+	}
+	// first time through we award, second time on same mob if successful we dont
+	if (success && camouflagedObjects.contains(target))
+		return true;
+	else if (success){
+		camouflagedObjects.add(target); // add to award
+	} else {
+		if(camouflagedObjects.contains(target)) camouflagedObjects.removeElement(target);
 	}
 
 	Reference<Task*> ct = new CamoTask(target, _this.get(), true, success);
@@ -1739,31 +1749,41 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 }
 
 bool AiAgentImplementation::isConcealed(CreatureObject* target) {
-	return false;
-
 	Locker locker(&targetMutex);
 
 	if (!target->hasState(CreatureState::MASKSCENT)) {
 		if(camouflagedObjects.contains(target)) camouflagedObjects.removeElement(target);
 		return false;
 	}
+	if (isDroidObject())
+		return false;
 
-	// Don't do anything if object is ignored (Camo / Masked Scent)
-	if (camouflagedObjects.contains(target))
-		return true;
-
-	// Check if camo breaks
+	bool success = false;
 	int camoSkill = target->getSkillMod("private_conceal");
 	int creatureLevel = getLevel();
 
+	int mod = 100;
+	if (target->isKneeling() || target->isSitting())
+		mod -= 10;
+	if (target->isStanding())
+		mod -= 15;
+	if (target->isRunning() || target->isRidingMount() )
+		mod -= 35;
+
+	// Check if camo breaks
 	if (!isCreature())
 		creatureLevel *= 2;
 
-	bool success = false;
-
-	if (System::random(100) < (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + 100) {
-		camouflagedObjects.add(target);
+	if (System::random(100) <= (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + mod) {
 		success = true;
+	}
+
+	if (success && camouflagedObjects.contains(target))
+		return true;
+	else if (success){
+		camouflagedObjects.add(target); // add to award
+	} else {
+		if(camouflagedObjects.contains(target)) camouflagedObjects.removeElement(target);
 	}
 
 	Reference<Task*> ct = new CamoTask(target, _this.get(), false, success);
