@@ -574,7 +574,7 @@ int DirectorManager::writeScreenPlayData(lua_State* L) {
 	SceneObject* player = (SceneObject*) lua_touserdata(L, -4);
 
 	if (player == NULL || !player->isPlayerCreature()) {
-		DirectorManager::instance()->error("Attempted to write screen play data to a non-player Scene Object.");
+		DirectorManager::instance()->error("Attempted to write screen play data to a non-player Scene Object in screen play: " + screenPlay + ".");
 		return 0;
 	}
 
@@ -659,7 +659,7 @@ int DirectorManager::readScreenPlayData(lua_State* L) {
 	SceneObject* player = (SceneObject*) lua_touserdata(L, -3);
 
 	if (player == NULL || !player->isPlayerCreature()) {
-		DirectorManager::instance()->error("Attempted to read screen play data from a non-player Scene Object.");
+		DirectorManager::instance()->error("Attempted to read screen play data from a non-player Scene Object in screen play: " + screenPlay + ".");
 		return 0;
 	}
 
@@ -683,7 +683,7 @@ int DirectorManager::clearScreenPlayData(lua_State* L) {
 	SceneObject* player = (SceneObject*) lua_touserdata(L, -2);
 
 	if (player == NULL || !player->isPlayerCreature()) {
-		DirectorManager::instance()->error("Attempted to clear screen play data from a non-player Scene Object.");
+		DirectorManager::instance()->error("Attempted to clear screen play data from a non-player Scene Object in screen play: " + screenPlay + ".");
 		return 0;
 	}
 
@@ -2213,10 +2213,16 @@ int DirectorManager::isZoneEnabled(lua_State* L) {
 	return 1;
 }
 
-Vector3 DirectorManager::generateSpawnPoint(CreatureObject* creatureObject, float x, float y, float minimumDistance, float maximumDistance, float extraNoBuildRadius, float sphereCollision) {
+Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, float minimumDistance, float maximumDistance, float extraNoBuildRadius, float sphereCollision) {
 	bool found = false;
 	Vector3 position(0, 0, 0);
 	int retries = 40;
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+	Zone* zone = zoneServer->getZone(zoneName);
+
+	if (zone == NULL) {
+		return position;
+	}
 
 	while (!found && retries > 0) {
 		float distance = minimumDistance + System::random(maximumDistance - minimumDistance);
@@ -2225,15 +2231,19 @@ Vector3 DirectorManager::generateSpawnPoint(CreatureObject* creatureObject, floa
 
 		float newX = x + (cos(newAngle) * distance); // client has x/y inverted
 		float newY = y + (sin(newAngle) * distance);
-		float newZ = creatureObject->getZone()->getHeight(newX, newY);
+		float newZ = zone->getHeight(newX, newY);
 
 		position = Vector3(newX, newY, newZ);
 
 
-		found = creatureObject->getZone()->getPlanetManager()->isSpawningPermittedAt(position.getX(), position.getY(), extraNoBuildRadius) &
-				!CollisionManager::checkSphereCollision(position, sphereCollision, creatureObject->getZone());
+		found = zone->getPlanetManager()->isSpawningPermittedAt(position.getX(), position.getY(), extraNoBuildRadius) &
+				!CollisionManager::checkSphereCollision(position, sphereCollision, zone);
 
 		retries--;
+	}
+
+	if (!found) {
+		position = Vector3(0, 0, 0);
 	}
 
 	return position;
@@ -2252,11 +2262,11 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 	float x = lua_tonumber(L, -4);
 	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -5);
 
-	if (creatureObject == NULL) {
+	if (creatureObject == NULL || creatureObject->getZone() == NULL) {
 		return 0;
 	}
 
-	Vector3 position = generateSpawnPoint(creatureObject, x, y, minimumDistance, maximumDistance, 5.0, 20);
+	Vector3 position = generateSpawnPoint(creatureObject->getZone()->getZoneName(), x, y, minimumDistance, maximumDistance, 5.0, 20);
 
 	if (position != Vector3(0, 0, 0)) {
 		lua_newtable(L);
@@ -2274,21 +2284,45 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 }
 
 int DirectorManager::getSpawnArea(lua_State* L) {
-	if (checkArgumentCount(L, 7) == 1) {
+    int numberOfArguments = lua_gettop(L);
+    if (numberOfArguments != 7 && numberOfArguments != 8) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::getSpawnArea");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
 
-	float maximumHeightDifference = lua_tonumber(L, -1);
-	float areaSize = lua_tonumber(L, -2);
-	float maximumDistance = lua_tonumber(L, -3);
-	float minimumDistance = lua_tonumber(L, -4);
-	float y = lua_tonumber(L, -5);
-	float x = lua_tonumber(L, -6);
-	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -7);
+    float maximumHeightDifference, areaSize, maximumDistance, minimumDistance, y, x;
+    Zone* zone = NULL;
 
-	if (creatureObject == NULL) {
+    if (numberOfArguments == 8) {
+    	String zoneName = lua_tostring(L, -1);
+    	maximumHeightDifference = lua_tonumber(L, -2);
+    	areaSize = lua_tonumber(L, -3);
+    	maximumDistance = lua_tonumber(L, -4);
+    	minimumDistance = lua_tonumber(L, -5);
+    	y = lua_tonumber(L, -6);
+    	x = lua_tonumber(L, -7);
+    	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -8);
+
+    	ZoneServer* zoneServer = ServerCore::getZoneServer();
+    	zone = zoneServer->getZone(zoneName);
+    } else {
+    	maximumHeightDifference = lua_tonumber(L, -1);
+    	areaSize = lua_tonumber(L, -2);
+    	maximumDistance = lua_tonumber(L, -3);
+    	minimumDistance = lua_tonumber(L, -4);
+    	y = lua_tonumber(L, -5);
+    	x = lua_tonumber(L, -6);
+    	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -7);
+
+    	if (creatureObject == NULL) {
+    		return 0;
+    	}
+
+    	zone = creatureObject->getZone();
+    }
+
+	if (zone == NULL) {
 		return 0;
 	}
 
@@ -2297,14 +2331,14 @@ int DirectorManager::getSpawnArea(lua_State* L) {
 	int retries = 40;
 
 	while (!found && retries > 0) {
-		position = generateSpawnPoint(creatureObject, x, y, minimumDistance, maximumDistance, areaSize + 5.0, areaSize + 20);
+		position = generateSpawnPoint(zone->getZoneName(), x, y, minimumDistance, maximumDistance, areaSize + 5.0, areaSize + 20);
 
 		int x0 = position.getX() - areaSize;
 		int x1 = position.getX() + areaSize;
 		int y0 = position.getY() - areaSize;
 		int y1 = position.getY() + areaSize;
 
-		found = creatureObject->getZone()->getPlanetManager()->getTerrainManager()->getHighestHeightDifference(x0, y0, x1, y1) <= maximumHeightDifference;
+		found = zone->getPlanetManager()->getTerrainManager()->getHighestHeightDifference(x0, y0, x1, y1) <= maximumHeightDifference;
 		retries--;
 	}
 

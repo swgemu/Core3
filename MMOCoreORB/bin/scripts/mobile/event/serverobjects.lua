@@ -1,1 +1,6 @@
 includeFile("event/event_promoter.lua")
+includeFile("event/life_day_elder.lua")
+includeFile("event/life_day_greeter.lua")
+includeFile("event/life_day_wookiee_1.lua")
+includeFile("event/life_day_wookiee_2.lua")
+includeFile("event/life_day_wookiee_3.lua")

@@ -158,7 +158,7 @@ namespace server {
 		void initializeLuaEngine(Lua* luaEngine);
 		int loadScreenPlays(Lua* luaEngine);
 		void loadJediManager(Lua* luaEngine);
-		static Vector3 generateSpawnPoint(CreatureObject* creatureObject, float x, float y, float minimumDistance, float maximumDistance, float extraNoBuildRadius, float sphereCollision);
+		static Vector3 generateSpawnPoint(String zoneName, float x, float y, float minimumDistance, float maximumDistance, float extraNoBuildRadius, float sphereCollision);
 
 		static Reference<PersistentEvent*> getServerEvent(const String& eventName);
 		static void dropServerEventReference(const String& eventName);

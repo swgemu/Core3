@@ -77,8 +77,6 @@ which carries forward this exception.
 #include "server/zone/objects/player/variables/PlayerList.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "server/chat/room/ChatRoom.h"
-#include "server/chat/ChatManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
@@ -92,8 +90,6 @@ which carries forward this exception.
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
-#include "server/zone/managers/player/PlayerManager.h"
-#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "badges/Badge.h"
@@ -101,8 +97,6 @@ which carries forward this exception.
 #include "server/zone/packets/player/BadgesResponseMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/weather/WeatherManager.h"
-#include "events/PlayerDisconnectEvent.h"
-#include "events/PlayerRecoveryEvent.h"
 #include "server/zone/objects/player/variables/Ability.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/mission/DeliverMissionObjective.h"
@@ -118,6 +112,7 @@ which carries forward this exception.
 #include "server/zone/managers/jedi/JediManager.h"
 #include "events/ForceRegenerationEvent.h"
 #include "FsExperienceTypes.h"
+#include "server/login/account/Account.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -2068,4 +2063,37 @@ void PlayerObjectImplementation::updateForceSensitiveElegibleExperiences(int typ
 			fsEligibleExperiences.add(xpList->getKeyAt(i));
 		}
 	}
+}
+
+int PlayerObjectImplementation::getCharacterAgeInDays() {
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
+
+	ManagedReference<Account*> account = playerManager->getAccount(getAccountID());
+	if(account == NULL) {
+		return 0;
+	}
+
+	CharacterList* list = account->getCharacterList();
+	if (list == NULL) {
+		return 0;
+	}
+
+	Time currentTime;
+	Time age;
+
+	for (int i = 0; i < list->size(); i++) {
+		CharacterListEntry entry = list->get(i);
+		if (entry.getObjectID() == creature->getObjectID() && entry.getGalaxyID() == creature->getZoneServer()->getGalaxyID()) {
+			age = entry.getCreationDate();
+			break;
+		}
+	}
+
+	uint32 timeDelta = currentTime.getTime() - age.getTime();
+
+	int days = timeDelta / 60 / 60 / 24;
+
+	return days;
 }

@@ -36,6 +36,8 @@ namespace area {
 
 		int setCellObjectID(lua_State* L);
 		int getCellObjectID(lua_State* L);
+
+		int setNoSpawnArea(lua_State* L);
 	private:
 		ActiveArea* realObject;
 	};

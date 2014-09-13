@@ -1705,5 +1705,7 @@ class PlayerObject extends IntangibleObject {
 	public int getEventPerkCount() {
 		return currentEventPerks.size();
 	}
+
+	public native int getCharacterAgeInDays();
 }
 
