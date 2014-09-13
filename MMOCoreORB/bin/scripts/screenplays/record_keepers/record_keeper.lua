@@ -31,7 +31,7 @@ end
 function RecordKeeper:available(pObject)
 	-- read the variable
 	local val = readScreenPlayData(pObject, self.keeperName, "completed")
-	if val == 1 then
+	if val == "1" then
 		return false
 	else
 		return true
@@ -42,8 +42,8 @@ function RecordKeeper:hasStartedPark(pObject)
 	local count = 0
 	for k,v in pairs(self.quests) do
 		park = _G[v]
-		count = park:getCurrentMissionNumber(1,pObject)
-	end	
+		count = count + (park:getCurrentMissionNumber(1,pObject) - 1)
+	end
 	return count > 0
 end
 

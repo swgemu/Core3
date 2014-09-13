@@ -33,20 +33,20 @@ function record_keeper_conv_handler:getInitialScreen(pConversingPlayer, pConvers
 		if self.keeper == nil then
 			return convoTemplate:getScreen("init")
 		end
-		if self.keeper:needsFaction() then
-			if self.keeper:hasFaction(self.keeper.faction,pConversingPlayer) then
-				return convoTemplate:getScreen("start")
-			else
-				return convoTemplate:getScreen("not_faction")
-			end
-		end
+
 		-- has this player used this keeper before?
 		if self.keeper:available(pConversingPlayer) then
-			if self.keeper:hasStartedPark(pConversingPlayer) then
-				return convoTemplate:getScreen("start")
-			else
+			if self.keeper:needsFaction() then
+				if not self.keeper:hasFaction(self.keeper.faction,pConversingPlayer) then
+					return convoTemplate:getScreen("not_faction")
+				end
+			end
+
+			if not self.keeper:hasStartedPark(pConversingPlayer) then
 				return convoTemplate:getScreen("not_started")
 			end
+
+			return convoTemplate:getScreen("start")
 		else
 			-- keeper used up
 			return convoTemplate:getScreen("completed")
