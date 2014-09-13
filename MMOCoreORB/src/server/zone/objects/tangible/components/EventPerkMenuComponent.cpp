@@ -34,6 +34,8 @@ void EventPerkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 		menuResponse->addRadialMenuItem(51, 1, "@event_perk:mnu_rotate"); // Rotate
 		menuResponse->addRadialMenuItemToRadialID(51, 52, 3, "@event_perk:mnu_rot_left"); // Rotate Left
 		menuResponse->addRadialMenuItemToRadialID(51, 53, 3, "@event_perk:mnu_rot_right"); // Rotate Right
+	} else if (player->getPlayerObject() != NULL && player->getPlayerObject()->isPrivileged()) {
+		menuResponse->addRadialMenuItem(132, 3, "@event_perk:mnu_show_exp_time"); // Show Expiration Time
 	}
 }
 
@@ -52,9 +54,15 @@ int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 		return 1;
 	}
 
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == NULL) {
+		return 1;
+	}
+
 	ManagedReference<CreatureObject*> owner = deed->getOwner().get();
 
-	if (owner != player) {
+	if (owner != player && !ghost->isPrivileged()) {
 		return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 	}
 
@@ -67,7 +75,13 @@ int EventPerkMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 		params.setDI(minutes);
 		player->sendSystemMessage(params);
 		return 0;
-	} else if (selectedID == 128) {
+	}
+
+	if (owner != player) {
+		return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
+	}
+
+	if (selectedID == 128) {
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		PlayerObject* ghost = player->getPlayerObject();
 
