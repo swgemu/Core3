@@ -9,6 +9,7 @@
 #include "engine/engine.h"
 #include "FactionStatus.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
+#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 
 const char LuaPlayerObject::className[] = "LuaPlayerObject";
 
@@ -459,7 +460,16 @@ int LuaPlayerObject::getEventPerkCount(lua_State* L) {
 }
 
 int LuaPlayerObject::addEventPerk(lua_State* L) {
-	SceneObject* perk = (SceneObject*) lua_touserdata(L, -1);
+	EventPerkDeed* perk = (EventPerkDeed*) lua_touserdata(L, -1);
+
+	if (perk == NULL) {
+		return 0;
+	}
+
+	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(realObject->getParent().get().get());
+	if (creature != NULL) {
+		perk->setOwner(creature);
+	}
 
 	realObject->addEventPerk(perk);
 
