@@ -226,6 +226,22 @@ function recruiterScreenplay:getTemplatePath(faction, itemString)
 	return nil
 end
 
+function recruiterScreenplay:getDisplayName(faction, itemString)
+	local factionRewardData = self:getFactionDataTable(faction)
+	if self:isWeapon(faction, itemString) or self:isArmor(faction, itemString) then
+		return factionRewardData.weaponsArmor[itemString].display
+	elseif self:isUniform(faction, itemString) then
+		return factionRewardData.uniforms[itemString].display
+	elseif self:isFurniture(faction, itemString) then
+		return factionRewardData.furniture[itemString].display
+	elseif self:isInstallation(faction, itemString) then
+		return factionRewardData.installations[itemString].display
+	elseif self:isHireling(faction, itemString) then
+		return factionRewardData.hirelings[itemString].display
+	end
+	return nil
+end
+
 
 function recruiterScreenplay:getGeneratedObjectTemplate(faction, itemString)
 	local factionRewardData = self:getFactionDataTable(faction)
@@ -310,22 +326,7 @@ function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, cancelPressed, a
 			messageString = LuaStringIdChatParameter("@faction_recruiter:item_purchase_complete")
 		end
 
-		if self:isArmor(faction, itemString) or self:isUniform(faction, itemString) then
-			messageString:setTT("@wearables_name:" .. itemString)
-		elseif self:isWeapon(faction, itemString) then
-			messageString:setTT("@weapon_name:" .. itemString)
-		elseif self:isFurniture(faction, itemString) and self:isContainer(faction, itemString) then
-			messageString:setTT("container_name",itemString)
-		elseif self:isFurniture(faction, itemString) and not self:isContainer(faction, itemString) then
-			if self:isTerminal(faction, itemString) then
-				itemString = "frn_data_terminal"
-			end
-			messageString:setTT("@frn_n:"  .. itemString)
-		elseif self:isInstallation(faction, itemString) then
-			messageString:setTT("@deed:" .. itemString)
-		elseif self:isHireling(faction, itemString) then
-			messageString:setTT("@mob/creature_names:" .. itemString)
-		end
+		messageString:setTT(self:getDisplayName(faction, itemString))
 		CreatureObject(pCreature):sendSystemMessage(messageString:_getObject())
 	elseif (awardResult == self.errorCodes.INVENTORYFULL) then
 		CreatureObject(pCreature):sendSystemMessage("@dispenser:inventory_full") -- Your inventory is full. You must make some room before you can purchase.
@@ -354,13 +355,13 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 		local factionStanding = playerObject:getFactionStanding(faction)
 
 		local itemCost = self:getItemCost(faction, itemString)
-		
+
 		if itemCost == nil then
 			return self.errorCodes.ITEMCOST
 		elseif ( pInventory == nil  ) then
 			return self.errorCodes.INVENTORYERROR
 		end
-		
+
 		itemCost  = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
 
 		if (factionStanding  < (itemCost + self.minimumFactionStanding)) then
