@@ -35,12 +35,12 @@ eventPerkDecorationDeeds = {
 }
 
 eventPerkImperialDecorationDeeds = {
-	{ template = "atat_static_deed", cost = 9000, displayName = "@event_perk:pro_atat_static" },
-	{ template = "atst_static_deed", cost = 7000, displayName = "@event_perk:pro_atst_static" },
+	--{ template = "atat_static_deed", cost = 9000, displayName = "@event_perk:pro_atat_static" },
+	--{ template = "atst_static_deed", cost = 7000, displayName = "@event_perk:pro_atst_static" },
 	{ template = "imperial_banner_static_deed", cost = 315, displayName = "@event_perk:pro_imperial_banner_static" },
 	{ template = "lambda_shuttle_static_deed", cost = 2000, displayName = "@event_perk:pro_lambda_shuttle_static" },
 	{ template = "tie_bomber_static_deed", cost = 2000, displayName = "@event_perk:pro_tie_bomber_static_deed" },
-	{ template = "tie_fighter_static_deed", cost = 2000, displayName = "@space_ship:player_tiefighter" },
+	--{ template = "tie_fighter_static_deed", cost = 2000, displayName = "@space_ship:player_tiefighter" },
 }
 
 eventPerkRebelDecorationDeeds = {
