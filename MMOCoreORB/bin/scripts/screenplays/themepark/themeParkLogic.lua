@@ -362,6 +362,7 @@ function ThemeParkLogic:getMission(npcNumber, missionNumber)
 
 	if (npcData == nil) then
 		printf("null npcData in ThemeParkLogic:getMission for %s", self.className);
+		return nil
 	end
 
 	local missions = npcData.missions
@@ -1474,9 +1475,13 @@ function ThemeParkLogic:getMissionType(activeNpcNumber, pConversingPlayer)
 		return
 	end
 
-	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
-	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
-	local mission = self:getMission(npcNumber, missionNumber)
+	local missionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
+
+	if missionNumber == 0 then
+		return ""
+	end
+
+	local mission = self:getMission(activeNpcNumber, missionNumber)
 
 	return mission.missionType
 end
