@@ -109,17 +109,14 @@ veteranRewards = {
 	-- 450 Day Rewards
 	{templateFile = "object/tangible/camp/camp_spit_s2.iff", milestone=450, oneTime=false, description="Camp Center (Small)"},
 	{templateFile = "object/tangible/camp/camp_spit_s3.iff", milestone=450, oneTime=false, description="Camp Center (Large)"},
-	{templateFile = "object/tangible/furniture/tatooine/frn_tato_meat_rack.iff", milestone=450, oneTime=false, description="@frn_n:frn_tato_meat_rack"},
 	{templateFile = "object/tangible/furniture/tatooine/frn_tato_vase_style_01.iff", milestone=450, oneTime=false, description="Gold Ornamental Vase (Style 1)"},
 	{templateFile = "object/tangible/furniture/tatooine/frn_tato_vase_style_02.iff", milestone=450, oneTime=false, description="Gold Ornamental Vase (Style 2)"},
-	{templateFile = "object/tangible/furniture/decorative/foodcart.iff", milestone=450, oneTime=false, description="Foodcart"},
-	{templateFile = "object/tangible/furniture/all/frn_bench_generic.iff", milestone=450, oneTime=false, description="Park Bench"},
-	
+
 	-- 540 Day Rewards
-	{templateFile = "object/tangible/painting/painting_wookiee_m.iff", milestone=540, oneTime=false, description="@frn_n:painting_wookiee_m"},
-	{templateFile = "object/tangible/painting/painting_wookiee_f.iff", milestone=540, oneTime=false, description="@frn_n:painting_wookiee_f"},
-	{templateFile = "object/tangible/painting/painting_trees_s01.iff", milestone=540, oneTime=false, description="@frn_n:painting_trees_s01"},
-	{templateFile = "object/tangible/loot/quest/lifeday_orb.iff", milestone=540, oneTime=false, description="Lifeday Orb"},
+	{templateFile = "object/tangible/furniture/all/frn_all_desk_map_table.iff", milestone=540, oneTime=false, description="Round Data Terminal"},
+	{templateFile = "object/tangible/furniture/decorative/professor_desk.iff", milestone=540, oneTime=false, description="Professor Desk"},
+	{templateFile = "object/tangible/furniture/decorative/foodcart.iff", milestone=540, oneTime=false, description="Foodcart"},
+	{templateFile = "object/tangible/furniture/all/frn_bench_generic.iff", milestone=540, oneTime=false, description="Park Bench"},
 		
 	-- 630 Day Rewards
 	{templateFile = "object/tangible/furniture/modern/bar_counter_s1.iff", milestone=630, oneTime=false, description="Bar Countertop"},
@@ -137,8 +134,6 @@ veteranRewards = {
 	{templateFile = "object/tangible/furniture/decorative/diagnostic_screen.iff", milestone=720, oneTime=false, description="@frn_n:diagnostic_screen"},
 		
 	-- 810 Day Rewards
-	{templateFile = "object/tangible/furniture/all/frn_all_desk_map_table.iff", milestone=810, oneTime=false, description="Round Data Terminal"},
-	{templateFile = "object/tangible/furniture/decorative/professor_desk.iff", milestone=810, oneTime=false, description="Professor Desk"},
 	{templateFile = "object/tangible/furniture/modern/rug_oval_m_s02.iff", milestone=810, oneTime=false, description="Medium Oval Rug"},
 	{templateFile = "object/tangible/furniture/modern/rug_oval_sml_s01.iff", milestone=810, oneTime=false, description="Small Oval Rug"},
 	{templateFile = "object/tangible/furniture/modern/rug_rect_m_s01.iff", milestone=810, oneTime=false, description="Medium Rectangular Rug"},
@@ -152,9 +147,6 @@ veteranRewards = {
 	{templateFile = "object/tangible/loot/misc/loot_skull_ithorian.iff", milestone=900, oneTime=false, description="A Ithorian Skull"},
 	{templateFile = "object/tangible/loot/misc/loot_skull_thune.iff", milestone=900, oneTime=false, description="A Thune Skull"},
 	{templateFile = "object/tangible/loot/misc/loot_skull_voritor.iff", milestone=900, oneTime=false, description="A Voritor Lizard Skull"},
-	{templateFile = "object/tangible/furniture/all/event_flag_game_imp_banner.iff", milestone=900, oneTime=false, description="Imperial Banner"},
-	{templateFile = "object/tangible/furniture/all/event_flag_game_neut_banner.iff", milestone=900, oneTime=false, description="Neutral Banner"},
-	{templateFile = "object/tangible/furniture/all/event_flag_game_reb_banner.iff", milestone=900, oneTime=false, description="Rebel Banner"},
 		
 	-- 990 Day Rewards
 	{templateFile = "object/tangible/furniture/modern/rug_oval_lg_s01.iff", milestone=990, oneTime=false, description="Large Rectangular Rug (Style 1)"},
