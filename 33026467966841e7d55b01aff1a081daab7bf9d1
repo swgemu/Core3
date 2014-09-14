@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a51691d_89167df0",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/CamoTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-09-14T21:52:43Z",
+      "side": 1,
+      "message": "Should still check if it\u0027s a player before we try to award experience though.",
+      "parentUuid": "7a51691d_a9bdb904",
+      "revId": "33026467966841e7d55b01aff1a081daab7bf9d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a51691d_89bafd08",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/events/CamoTask.h",
         "patchSetId": 1
