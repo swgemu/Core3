@@ -738,7 +738,6 @@ tatooine_static_spawns = {
 	{"squatter",300,12.1732,-0.894992,2.93609,360.011,1256058, "conversation", "","stationary"},
 	{"squatter",300,-3.85346,-0.894991,7.83775,180.003,1134560, "conversation", "","stationary"},
 	{"stanic_wavingstar",60,17.9368,-0.894992,22.6329,180,1134562, "calm", "Stanic Wavingstar","stationary"},
-	{"stella",60,-0.2,4,-5.4,0,1154122, "calm", "D'Mayna Stallaphalat (Stella)","stationary"},
 	{"stormtrooper",400,2.84,-0.894992,-6.3,16.0005,1082877, "npc_imperial", "","stationary"},
 	{"stormtrooper_squad_leader",400,3.62,-0.894992,-6.78,360.011,1082877, "npc_accusing", "","stationary"},
 	{"sy_snootles",60,-9,2,37,350.547,1177487, "neutral", "","stationary"},

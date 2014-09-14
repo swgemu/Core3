@@ -24,6 +24,7 @@ tatooine_static = RecordKeeper:new {
 		phinea_shantee_quest="PhineaShantee",
 		prefect_talmont_quest="PrefectTalmont",
 		rakir_banai_task="RakirBanai",
+		stella_task="Stella",
 		tekil_barje_task="TekilBarje",
 		tolan_nokkar_quest="TolanNokkar",
 		vardias_tyne_quest="VardiasTyne"
