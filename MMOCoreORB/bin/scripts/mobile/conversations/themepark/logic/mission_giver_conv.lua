@@ -281,6 +281,7 @@ createMissionGiverConvoTemplate("prefect_talmont_mission_giver_convotemplate", "
 createMissionGiverConvoTemplate("gramm_rile_mission_giver_convotemplate", "gramm_rile_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("tolan_nokkar_mission_giver_convotemplate", "tolan_nokkar_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("fixer_mission_giver_convotemplate", "fixer_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("stella_mission_giver_convotemplate", "stella_mission_giver_conv_handler")
 
 
 -- Naboo
