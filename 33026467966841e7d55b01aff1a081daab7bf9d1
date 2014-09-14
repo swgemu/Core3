@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_a9bdb904",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/CamoTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-14T02:03:10Z",
+      "side": 1,
+      "message": "There\u0027s no longer a need to get the PlayerObject here. You can remove this.",
+      "revId": "33026467966841e7d55b01aff1a081daab7bf9d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_89bafd08",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/CamoTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-09-14T02:03:10Z",
+      "side": 1,
+      "message": "Use creature rather than player.",
+      "revId": "33026467966841e7d55b01aff1a081daab7bf9d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
