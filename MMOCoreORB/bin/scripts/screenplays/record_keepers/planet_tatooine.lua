@@ -20,6 +20,7 @@ tatooine_static = RecordKeeper:new {
 		lt_harburik_quest="LtHarburik",
 		mat_rags_quest="MatRags",
 		nitra_vendallan_quest="NitraVendallan",
+		om_aynat_task="OmAynat",
 		pfilbee_jhorn_quest="PfilbeeJhorn",
 		phinea_shantee_quest="PhineaShantee",
 		prefect_talmont_quest="PrefectTalmont",
