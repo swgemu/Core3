@@ -52,13 +52,15 @@ public:
 			creature->removeBuff(crc);
 		}
 
-		if(!success)
+		if(!success){
+			// on failure 50% chance to aggro animal
+			if (System::random(100) > 50){
+				CombatManager::instance()->startCombat(target,creature,true);
+			}
 			return;
+		}
 
-		//Locker clocker(creature, target);
-
-		ManagedReference<PlayerObject*> player = creature->getPlayerObject();
-		if (player == NULL)
+		if (creature->getPlayerObject() == NULL)
 			return;
 
 		if (!maskScent && !creature->hasSkill("outdoors_ranger_novice"))
@@ -70,8 +72,8 @@ public:
 
 			creature->sendSystemMessage(success);
 		}
-
-		player->addExperience("scout", (target->getLevel() * 2), true);
+		ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+		playerManager->awardExperience(creature, "scout", (target->getLevel() * 2), true);
 	}
 };
 
