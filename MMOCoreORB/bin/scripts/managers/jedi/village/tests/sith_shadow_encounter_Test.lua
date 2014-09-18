@@ -325,10 +325,10 @@ describe("Sith Shadow Encounter", function()
 		end)
 	end)
 
-	describe("useDatapad", function()
+	describe("useWaypointDatapad", function()
 		describe("When called with a scene object and a player object", function()
 			it("Should check if the player object has looted a datapad.", function()
-				SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+				SithShadowEncounter:useWaypointDatapad(pDatapad, pCreatureObject)
 
 				assert.spy(QuestManagerMocks.hasCompletedQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_1)
 			end)
@@ -339,25 +339,25 @@ describe("Sith Shadow Encounter", function()
 				end)
 
 				it("Should activate the sith shadow intro theater for the player.", function()
-					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+					SithShadowEncounter:useWaypointDatapad(pDatapad, pCreatureObject)
 
 					assert.spy(SithShadowIntroTheaterMocks.start).was.called_with(SithShadowIntroTheaterMocks, pCreatureObject)
 				end)
 
 				it("Should send a system message to the player with information about the data on the disk.", function()
-					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+					SithShadowEncounter:useWaypointDatapad(pDatapad, pCreatureObject)
 
 					assert.spy(creatureObject.sendSystemMessage).was.called_with(creatureObject, READ_DISK_1_STRING)
 				end)
 
 				it("Should destroy the datapad.", function()
-					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+					SithShadowEncounter:useWaypointDatapad(pDatapad, pCreatureObject)
 
 					assert.spy(datapad.destroyObjectFromWorld).was.called_with(datapad)
 				end)
 
 				it("Should complete the loot datapad 1 quests.", function()
-					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+					SithShadowEncounter:useWaypointDatapad(pDatapad, pCreatureObject)
 
 					assert.spy(QuestManagerMocks.completeQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.LOOT_DATAPAD_1)
 				end)
@@ -365,13 +365,13 @@ describe("Sith Shadow Encounter", function()
 
 			describe("and the player has not looted a datapad", function()
 				it("Should not activate the sith shadow intro theater for the player.", function()
-					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+					SithShadowEncounter:useWaypointDatapad(pDatapad, pCreatureObject)
 
 					assert.spy(SithShadowIntroTheaterMocks.start).was.not_called()
 				end)
 
 				it("Should send an error string to the player.", function()
-					SithShadowEncounter:useDatapad(pDatapad, pCreatureObject)
+					SithShadowEncounter:useWaypointDatapad(pDatapad, pCreatureObject)
 
 					assert.spy(creatureObject.sendSystemMessage).was.called_with(creatureObject, READ_DISK_ERROR_STRING)
 				end)
