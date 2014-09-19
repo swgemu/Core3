@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_c9ca356e",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/variables/PlayerQuestData.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-09-19T04:04:12Z",
+      "side": 1,
+      "message": "It may not look formatted here, but in my Eclipse (at least), they all end on the same line column for human readability.",
+      "revId": "78284b435568332334acba2397bf90081abfa9ec",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
