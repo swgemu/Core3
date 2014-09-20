@@ -105,6 +105,9 @@ public:
 	 */
 	static const int ITEMWAYPOINTDATAPAD = 1;
 
+	// Item type theater datapad.
+	static const int ITEMTHEATERDATAPAD = 2;
+
 	/**
 	 * Constructor for the Jedi Manager.
 	 */
