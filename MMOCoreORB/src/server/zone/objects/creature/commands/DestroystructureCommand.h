@@ -90,6 +90,10 @@ public:
 			return INVALIDTARGET;
 		}
 
+		if (structure->isGCWBase()) {
+			return INVALIDTARGET;
+		}
+
 		if (structure->isCampStructure())
 			return disbandCamp(creature, structure);
 

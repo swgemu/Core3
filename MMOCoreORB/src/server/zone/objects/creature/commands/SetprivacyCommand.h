@@ -78,6 +78,11 @@ public:
 			return INSUFFICIENTPERMISSION;
 		}
 
+		if (building->isGCWBase()) {
+			creature->sendSystemMessage("@player_structure:no_privacy_faction_hq"); // You may not alter privacy of a factional headquarters.
+			return GENERALERROR;
+		}
+
 		Reference<SharedBuildingObjectTemplate*> ssot = dynamic_cast<SharedBuildingObjectTemplate*>(building->getObjectTemplate());
 
 		if (ssot == NULL || ssot->isAlwaysPublic()) {
@@ -108,10 +113,6 @@ public:
 		}
 
 		building->broadcastCellPermissions();
-
-		//TODO: Implement Messages
-		//("@player_structure:vendor_no_private"); //A structure hosting a vendor cannot be declared private.
-		//("@player_structure:no_privacy_faction_hq"); //You may not alter privacy of a factional headquarters.
 
 		return SUCCESS;
 	}

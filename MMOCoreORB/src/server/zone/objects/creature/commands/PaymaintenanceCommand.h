@@ -92,6 +92,10 @@ public:
 			return INVALIDTARGET;
 		}
 
+		if (structure->isGCWBase()) {
+			return INVALIDTARGET;
+		}
+
 		StructureManager* structureManager = StructureManager::instance();
 
 		try {

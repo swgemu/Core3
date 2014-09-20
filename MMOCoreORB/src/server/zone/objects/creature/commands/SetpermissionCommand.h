@@ -79,6 +79,10 @@ public:
 			return INVALIDTARGET;
 		}
 
+		if (structure->isGCWBase()) {
+			return INVALIDTARGET;
+		}
+
 		String listName, targetName;
 
 		try {

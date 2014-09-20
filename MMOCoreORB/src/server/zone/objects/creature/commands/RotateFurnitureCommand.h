@@ -137,6 +137,11 @@ public:
 				creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
 				return GENERALERROR;
 			}
+
+			if (buildingObject->isGCWBase()) {
+				creature->sendSystemMessage("@player_structure:no_move_hq"); // You may not move or rotate objects inside a factional headquarters.
+				return GENERALERROR;
+			}
 		}
 
 		if (dir == "right")

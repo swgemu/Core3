@@ -86,7 +86,10 @@ public:
 			return GENERALERROR;
 		}
 
-		//("@player_structure:no_rename_hq"); //You may not rename a factional headquarters.
+		if (structure->isGCWBase()) {
+			creature->sendSystemMessage("@player_structure:no_rename_hq"); //You may not rename a factional headquarters.
+			return INVALIDTARGET;
+		}
 
 		//Validate the name.
 		NameManager* nameManager = server->getNameManager();
