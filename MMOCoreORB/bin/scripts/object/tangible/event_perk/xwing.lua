@@ -44,6 +44,7 @@
 object_tangible_event_perk_xwing = object_tangible_event_perk_shared_xwing:new {
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_xwing, "object/tangible/event_perk/xwing.iff")

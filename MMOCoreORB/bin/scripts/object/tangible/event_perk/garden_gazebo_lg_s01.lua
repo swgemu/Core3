@@ -44,6 +44,7 @@
 object_tangible_event_perk_garden_gazebo_lg_s01 = object_tangible_event_perk_shared_garden_gazebo_lg_s01:new {
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_garden_gazebo_lg_s01, "object/tangible/event_perk/garden_gazebo_lg_s01.iff")

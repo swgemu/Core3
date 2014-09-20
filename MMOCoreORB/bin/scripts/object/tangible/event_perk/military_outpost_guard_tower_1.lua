@@ -44,6 +44,7 @@
 object_tangible_event_perk_military_outpost_guard_tower_1 = object_tangible_event_perk_shared_military_outpost_guard_tower_1:new {
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_military_outpost_guard_tower_1, "object/tangible/event_perk/military_outpost_guard_tower_1.iff")

@@ -44,6 +44,7 @@
 object_tangible_event_perk_guild_banner_free_style_01 = object_tangible_event_perk_shared_guild_banner_free_style_01:new {
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_guild_banner_free_style_01, "object/tangible/event_perk/guild_banner_free_style_01.iff")

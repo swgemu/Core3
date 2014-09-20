@@ -44,6 +44,7 @@
 object_tangible_event_perk_tie_bomber = object_tangible_event_perk_shared_tie_bomber:new {
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_tie_bomber, "object/tangible/event_perk/tie_bomber.iff")

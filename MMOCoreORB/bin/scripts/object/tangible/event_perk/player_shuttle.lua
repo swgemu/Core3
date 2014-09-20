@@ -44,6 +44,7 @@
 object_tangible_event_perk_player_shuttle = object_tangible_event_perk_shared_player_shuttle:new {
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_player_shuttle, "object/tangible/event_perk/player_shuttle.iff")
