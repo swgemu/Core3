@@ -195,16 +195,17 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 		saberResist = 100;
 	// Determine other factors
 	// HAM, attack speed, min/max damage toHit
-	health = hardiness * 18;
-	action = dexterity * 18;
-	mind = intelligence * 18;
+	health = (hardiness * 15) + (dexterity * 3);
+	action = (dexterity * 15) + (intelligence * 3);
+	mind = (intelligence * 15) + (hardiness * 3);
 	hit = 0.19+(((float)cleverness)/((float)1500));
-	minDam = ceil((power*0.8)/10)*10;
+	minDam = ceil(((float)power*0.8)/10)*10;
 	maxDam = minDam + 10;
 	speed = 2.5-((ceil(((float)courage)/10)*10)/1000);
-	// We will use the following formula based levle modification  (total_resists/60) + (minDam / 45). this will modify the level when getLevel is called
-	float resistMod = (kinResist + energyResist + blastResist + heatResist + coldResist + elecResist + acidResist + stunResist + saberResist)/60;
-	int damMod = minDam/45;
+	// Redo this forumla section we made it up anyways so lets figure a better range
+	float resistMod = (kinResist + energyResist + blastResist + heatResist + coldResist + elecResist + acidResist + stunResist + saberResist)/100;
+	// levle of pet is avg input sample level + (resists adjustments) + damage adjustments
+	int damMod = minDam/50;
 	levelMod = (resistMod + damMod);
 
 }

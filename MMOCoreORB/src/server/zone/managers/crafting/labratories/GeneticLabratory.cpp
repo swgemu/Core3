@@ -49,6 +49,7 @@ float GeneticLabratory::applyFormula(float aVal, float bVal, float cVal, float d
 			rc = (a * 0.17) + (b *0.16) + (c * 0.085) + (d * 0.165) + (e * 0.42);
 			break;
 	}
+	rc = ceil(rc);
 	if (rc > 1000)
 		rc = 1000;
 	return rc;
@@ -265,7 +266,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 
 	// Figure out the min percentage of the stats
 
-	int quality = (phy->getQuality() + pro->getQuality() + men->getQuality() + psy->getQuality() + agr->getQuality()) / 5;
+	int quality = ( ((float)phy->getQuality() * 0.2)+ ((float)pro->getQuality()*0.2) + ((float)men->getQuality()*0.2) + ((float)psy->getQuality()*0.2) + ((float)agr->getQuality()*0.2));
 	bool ranged = false;
 	int odds = 0;
 	float menQual = 7 - men->getQuality();
