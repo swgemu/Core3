@@ -1,5 +1,5 @@
-life_day_wookiee_1 = Creature:new {
-	customName = "Chacraww", --"Susan",
+anarra = Creature:new {
+	customName = "Anarra",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -26,11 +26,11 @@ life_day_wookiee_1 = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/wookiee_lifeday_female1.iff"},
+	templates = {"object/mobile/wookiee_lifeday_female2.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "lifeDayWookieeOneConvoTemplate",
+	conversationTemplate = "lifeDayAnarraConvoTemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(life_day_wookiee_1, "life_day_wookiee_1")
+CreatureTemplates:addCreatureTemplate(anarra, "anarra")

@@ -1,5 +1,5 @@
-life_day_wookiee_3 = Creature:new {
-	customName = "Shrawwwo", --"Jane",
+oraalarri = Creature:new {
+	customName = "Oraalarri the Elder",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -26,11 +26,11 @@ life_day_wookiee_3 = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/wookiee_lifeday_female2.iff"},
+	templates = {"object/mobile/wookiee_lifeday_elder.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "lifeDayWookieeThreeConvoTemplate",
+	conversationTemplate = "lifeDayOraalarriConvoTemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(life_day_wookiee_3, "life_day_wookiee_3")
+CreatureTemplates:addCreatureTemplate(oraalarri, "oraalarri")

@@ -1,5 +1,5 @@
-life_day_elder = Creature:new {
-	customName = "Roorwors (Wookiee Elder)", --"Robert",
+kkatamk = Creature:new {
+	customName = "Kkatamk",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -26,11 +26,11 @@ life_day_elder = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/wookiee_lifeday_elder.iff"},
+	templates = {"object/mobile/wookiee_lifeday_male1.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "lifeDayElderConvoTemplate",
+	conversationTemplate = "lifeDayKkatamkConvoTemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(life_day_elder, "life_day_elder")
+CreatureTemplates:addCreatureTemplate(kkatamk, "kkatamk")

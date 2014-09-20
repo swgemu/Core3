@@ -1,31 +1,31 @@
 local ObjectManager = require("managers.object.object_manager")
 
-lifeDayWookieeThreeConvoHandler = Object:new {}
+lifeDayRadrrlConvoHandler = Object:new {}
 
-function lifeDayWookieeThreeConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
+function lifeDayRadrrlConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, ghost)
-		if readScreenPlayData(pPlayer, "lifeDay", "complete") == "1" or readData(player:getObjectID() .. ":lifeDayWookieeThree") == 1 then
-			return convoTemplate:getScreen("hear_again")
+		if readScreenPlayData(pPlayer, "lifeDay", "complete") == "1" or readData(player:getObjectID() .. ":lifeDayRadrrl") == 1 then
+			return convoTemplate:getScreen("hello_again")
 		elseif readData(player:getObjectID() .. ":lifeDayState") == 2 then
-			return convoTemplate:getScreen("life_day_began")
+			return convoTemplate:getScreen("rememberance")
 		else
 			return convoTemplate:getScreen("elder_first")
 		end
 	end)
 end
 
-function lifeDayWookieeThreeConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+function lifeDayRadrrlConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	return ObjectManager.withCreatureObject(conversingPlayer, function(player)
 		local screen = LuaConversationScreen(conversationScreen)
 		local screenID = screen:getScreenID()
 		local conversationScreen = screen:cloneScreen()
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 
-		if screenID == "let_others" then
-			writeData(player:getObjectID() .. ":lifeDayWookieeThree", 1)
-			if readData(player:getObjectID() .. ":lifeDayWookieeOne") == 1 and readData(player:getObjectID() .. ":lifeDayWookieeTwo") == 1 then
+		if screenID == "always_remember" or screenID == "participate" then
+			writeData(player:getObjectID() .. ":lifeDayRadrrl", 1)
+			if readData(player:getObjectID() .. ":lifeDayAnarra") == 1 and readData(player:getObjectID() .. ":lifeDayTebeurra") == 1 then
 				writeData(player:getObjectID() .. ":lifeDayState", 3)
 			end
 		end
@@ -33,7 +33,7 @@ function lifeDayWookieeThreeConvoHandler:runScreenHandlers(conversationTemplate,
 	end)
 end
 
-function lifeDayWookieeThreeConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
+function lifeDayRadrrlConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
 	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
 
 	local pLastConversationScreen = nil

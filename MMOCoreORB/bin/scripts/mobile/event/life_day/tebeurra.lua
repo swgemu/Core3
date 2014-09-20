@@ -1,5 +1,5 @@
-life_day_greeter = Creature:new {
-	customName = "Kkatamk",
+tebeurra = Creature:new {
+	customName = "Tebeurra",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -26,11 +26,11 @@ life_day_greeter = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/wookiee_lifeday_male1.iff"},
+	templates = {"object/mobile/wookiee_lifeday_female1.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "lifeDayGreeterConvoTemplate",
+	conversationTemplate = "lifeDayTebeurraConvoTemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(life_day_greeter, "life_day_greeter")
+CreatureTemplates:addCreatureTemplate(tebeurra, "tebeurra")

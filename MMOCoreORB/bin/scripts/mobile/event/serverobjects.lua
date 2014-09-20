@@ -1,6 +1,7 @@
 includeFile("event/event_promoter.lua")
-includeFile("event/life_day_elder.lua")
-includeFile("event/life_day_greeter.lua")
-includeFile("event/life_day_wookiee_1.lua")
-includeFile("event/life_day_wookiee_2.lua")
-includeFile("event/life_day_wookiee_3.lua")
+includeFile("event/life_day/anarra.lua")
+includeFile("event/life_day/kkatamk.lua")
+includeFile("event/life_day/oraalarri.lua")
+includeFile("event/life_day/radrrl.lua")
+includeFile("event/life_day/tebeurra.lua")
+

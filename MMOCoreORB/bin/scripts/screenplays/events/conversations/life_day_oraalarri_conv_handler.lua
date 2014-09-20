@@ -1,8 +1,8 @@
 local ObjectManager = require("managers.object.object_manager")
 
-lifeDayElderConvoHandler = Object:new {}
+lifeDayOraalarriConvoHandler = Object:new {}
 
-function lifeDayElderConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
+function lifeDayOraalarriConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, ghost)
@@ -22,7 +22,7 @@ function lifeDayElderConvoHandler:getInitialScreen(pPlayer, npc, pConversationTe
 	end)
 end
 
-function lifeDayElderConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+function lifeDayOraalarriConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	return ObjectManager.withCreatureObject(conversingPlayer, function(player)
 		local screen = LuaConversationScreen(conversationScreen)
 		local screenID = screen:getScreenID()
@@ -46,7 +46,7 @@ function lifeDayElderConvoHandler:runScreenHandlers(conversationTemplate, conver
 	end)
 end
 
-function lifeDayElderConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
+function lifeDayOraalarriConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
 	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
 
 	local pLastConversationScreen = nil

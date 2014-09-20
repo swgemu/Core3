@@ -1,7 +1,7 @@
-lifeDayWookieeTwoConvoTemplate = ConvoTemplate:new {
+lifeDayRadrrlConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "lifeDayWookieeTwoConvoHandler",
+	luaClassHandler = "lifeDayRadrrlConvoHandler",
 	screens = {}
 }
 
@@ -12,7 +12,7 @@ elder_first = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeTwoConvoTemplate:addScreen(elder_first);
+lifeDayRadrrlConvoTemplate:addScreen(elder_first);
 
 rememberance = ConvoScreen:new {
 	id = "rememberance",
@@ -23,7 +23,7 @@ rememberance = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeTwoConvoTemplate:addScreen(rememberance);
+lifeDayRadrrlConvoTemplate:addScreen(rememberance);
 
 sacrifices = ConvoScreen:new {
 	id = "sacrifices",
@@ -35,7 +35,7 @@ sacrifices = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeTwoConvoTemplate:addScreen(sacrifices);
+lifeDayRadrrlConvoTemplate:addScreen(sacrifices);
 
 participate = ConvoScreen:new {
 	id = "participate",
@@ -44,7 +44,7 @@ participate = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeTwoConvoTemplate:addScreen(participate);
+lifeDayRadrrlConvoTemplate:addScreen(participate);
 
 life_day_orb = ConvoScreen:new {
 	id = "life_day_orb",
@@ -55,7 +55,7 @@ life_day_orb = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeTwoConvoTemplate:addScreen(life_day_orb);
+lifeDayRadrrlConvoTemplate:addScreen(life_day_orb);
 
 always_remember = ConvoScreen:new {
 	id = "always_remember",
@@ -64,7 +64,7 @@ always_remember = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeTwoConvoTemplate:addScreen(always_remember);
+lifeDayRadrrlConvoTemplate:addScreen(always_remember);
 
 hello_again = ConvoScreen:new {
 	id = "hello_again",
@@ -76,7 +76,7 @@ hello_again = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeTwoConvoTemplate:addScreen(hello_again);
+lifeDayRadrrlConvoTemplate:addScreen(hello_again);
 
 thank_you = ConvoScreen:new {
 	id = "thank_you",
@@ -85,6 +85,6 @@ thank_you = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeTwoConvoTemplate:addScreen(thank_you);
+lifeDayRadrrlConvoTemplate:addScreen(thank_you);
 
-addConversationTemplate("lifeDayWookieeTwoConvoTemplate", lifeDayWookieeTwoConvoTemplate);
+addConversationTemplate("lifeDayRadrrlConvoTemplate", lifeDayRadrrlConvoTemplate);

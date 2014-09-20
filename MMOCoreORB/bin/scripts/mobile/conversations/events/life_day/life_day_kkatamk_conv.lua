@@ -1,7 +1,7 @@
-lifeDayGreeterConvoTemplate = ConvoTemplate:new {
+lifeDayKkatamkConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "lifeDayGreeterConvoHandler",
+	luaClassHandler = "lifeDayKkatamkConvoHandler",
 	screens = {}
 }
 
@@ -16,7 +16,7 @@ greetings = ConvoScreen:new {
 	}
 }
 
-lifeDayGreeterConvoTemplate:addScreen(greetings);
+lifeDayKkatamkConvoTemplate:addScreen(greetings);
 
 explain_life_day = ConvoScreen:new {
 	id = "explain_life_day",
@@ -28,7 +28,7 @@ explain_life_day = ConvoScreen:new {
 	}
 }
 
-lifeDayGreeterConvoTemplate:addScreen(explain_life_day);
+lifeDayKkatamkConvoTemplate:addScreen(explain_life_day);
 
 too_bad = ConvoScreen:new {
 	id = "too_bad",
@@ -37,7 +37,7 @@ too_bad = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayGreeterConvoTemplate:addScreen(too_bad);
+lifeDayKkatamkConvoTemplate:addScreen(too_bad);
 
 waypoint = ConvoScreen:new {
 	id = "waypoint",
@@ -46,7 +46,7 @@ waypoint = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayGreeterConvoTemplate:addScreen(waypoint);
+lifeDayKkatamkConvoTemplate:addScreen(waypoint);
 
 greetings_wookiee = ConvoScreen:new {
 	id = "greetings_wookiee",
@@ -58,7 +58,7 @@ greetings_wookiee = ConvoScreen:new {
 	}
 }
 
-lifeDayGreeterConvoTemplate:addScreen(greetings_wookiee);
+lifeDayKkatamkConvoTemplate:addScreen(greetings_wookiee);
 
 waypoint_wookiee = ConvoScreen:new {
 	id = "waypoint_wookiee",
@@ -67,7 +67,7 @@ waypoint_wookiee = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayGreeterConvoTemplate:addScreen(waypoint_wookiee);
+lifeDayKkatamkConvoTemplate:addScreen(waypoint_wookiee);
 
 return_incomplete = ConvoScreen:new {
 	id = "return_incomplete",
@@ -78,7 +78,7 @@ return_incomplete = ConvoScreen:new {
 	}
 }
 
-lifeDayGreeterConvoTemplate:addScreen(return_incomplete);
+lifeDayKkatamkConvoTemplate:addScreen(return_incomplete);
 
 new_waypoint = ConvoScreen:new {
 	id = "new_waypoint",
@@ -87,7 +87,7 @@ new_waypoint = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayGreeterConvoTemplate:addScreen(new_waypoint);
+lifeDayKkatamkConvoTemplate:addScreen(new_waypoint);
 
 return_complete = ConvoScreen:new {
 	id = "return_complete",
@@ -96,6 +96,6 @@ return_complete = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayGreeterConvoTemplate:addScreen(return_complete);
+lifeDayKkatamkConvoTemplate:addScreen(return_complete);
 
-addConversationTemplate("lifeDayGreeterConvoTemplate", lifeDayGreeterConvoTemplate);
+addConversationTemplate("lifeDayKkatamkConvoTemplate", lifeDayKkatamkConvoTemplate);

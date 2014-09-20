@@ -1,7 +1,7 @@
-lifeDayElderConvoTemplate = ConvoTemplate:new {
+lifeDayOraalarriConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "lifeDayElderConvoHandler",
+	luaClassHandler = "lifeDayOraalarriConvoHandler",
 	screens = {}
 }
 
@@ -12,7 +12,7 @@ im_sorry = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayElderConvoTemplate:addScreen(im_sorry);
+lifeDayOraalarriConvoTemplate:addScreen(im_sorry);
 
 greetings = ConvoScreen:new {
 	id = "greetings",
@@ -24,7 +24,7 @@ greetings = ConvoScreen:new {
 	}
 }
 
-lifeDayElderConvoTemplate:addScreen(greetings);
+lifeDayOraalarriConvoTemplate:addScreen(greetings);
 
 speak_to_others = ConvoScreen:new {
 	id = "speak_to_others",
@@ -33,7 +33,7 @@ speak_to_others = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayElderConvoTemplate:addScreen(speak_to_others);
+lifeDayOraalarriConvoTemplate:addScreen(speak_to_others);
 
 i_understand = ConvoScreen:new {
 	id = "i_understand",
@@ -42,7 +42,7 @@ i_understand = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayElderConvoTemplate:addScreen(i_understand);
+lifeDayOraalarriConvoTemplate:addScreen(i_understand);
 
 no_gift = ConvoScreen:new {
 	id = "no_gift",
@@ -51,7 +51,7 @@ no_gift = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayElderConvoTemplate:addScreen(no_gift);
+lifeDayOraalarriConvoTemplate:addScreen(no_gift);
 
 have_spoken = ConvoScreen:new {
 	id = "have_spoken",
@@ -62,7 +62,7 @@ have_spoken = ConvoScreen:new {
 	}
 }
 
-lifeDayElderConvoTemplate:addScreen(have_spoken);
+lifeDayOraalarriConvoTemplate:addScreen(have_spoken);
 
 have_gifts = ConvoScreen:new {
 	id = "have_gifts",
@@ -71,7 +71,7 @@ have_gifts = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayElderConvoTemplate:addScreen(have_gifts);
+lifeDayOraalarriConvoTemplate:addScreen(have_gifts);
 
 gift_non_wookiee = ConvoScreen:new {
 	id = "gift_non_wookiee",
@@ -80,7 +80,7 @@ gift_non_wookiee = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayElderConvoTemplate:addScreen(gift_non_wookiee);
+lifeDayOraalarriConvoTemplate:addScreen(gift_non_wookiee);
 
 gift_wookiee = ConvoScreen:new {
 	id = "gift_wookiee",
@@ -92,7 +92,7 @@ gift_wookiee = ConvoScreen:new {
 	}
 }
 
-lifeDayElderConvoTemplate:addScreen(gift_wookiee);
+lifeDayOraalarriConvoTemplate:addScreen(gift_wookiee);
 
 enjoy_robe = ConvoScreen:new {
 	id = "enjoy_robe",
@@ -101,7 +101,7 @@ enjoy_robe = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayElderConvoTemplate:addScreen(enjoy_robe);
+lifeDayOraalarriConvoTemplate:addScreen(enjoy_robe);
 
 enjoy_other_gift = ConvoScreen:new {
 	id = "enjoy_other_gift",
@@ -110,7 +110,7 @@ enjoy_other_gift = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayElderConvoTemplate:addScreen(enjoy_other_gift);
+lifeDayOraalarriConvoTemplate:addScreen(enjoy_other_gift);
 
 return_complete = ConvoScreen:new {
 	id = "return_complete",
@@ -119,6 +119,6 @@ return_complete = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayElderConvoTemplate:addScreen(return_complete);
+lifeDayOraalarriConvoTemplate:addScreen(return_complete);
 
-addConversationTemplate("lifeDayElderConvoTemplate", lifeDayElderConvoTemplate);
+addConversationTemplate("lifeDayOraalarriConvoTemplate", lifeDayOraalarriConvoTemplate);

@@ -1,8 +1,8 @@
 local ObjectManager = require("managers.object.object_manager")
 
-lifeDayGreeterConvoHandler = Object:new {}
+lifeDayKkatamkConvoHandler = Object:new {}
 
-function lifeDayGreeterConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
+function lifeDayKkatamkConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
@@ -18,7 +18,7 @@ function lifeDayGreeterConvoHandler:getInitialScreen(pPlayer, npc, pConversation
 	end)
 end
 
-function lifeDayGreeterConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+function lifeDayKkatamkConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
 
@@ -28,7 +28,7 @@ function lifeDayGreeterConvoHandler:runScreenHandlers(conversationTemplate, conv
 	return conversationScreen
 end
 
-function lifeDayGreeterConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
+function lifeDayKkatamkConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
 	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
 
 	local pLastConversationScreen = nil

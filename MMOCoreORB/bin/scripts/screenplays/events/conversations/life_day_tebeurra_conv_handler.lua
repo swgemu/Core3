@@ -1,37 +1,31 @@
 local ObjectManager = require("managers.object.object_manager")
 
-lifeDayWookieeOneConvoHandler = Object:new {}
+lifeDayTebeurraConvoHandler = Object:new {}
 
-function lifeDayWookieeOneConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
+function lifeDayTebeurraConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, ghost)
-		if readScreenPlayData(pPlayer, "lifeDay", "complete") == "1" or readData(player:getObjectID() .. ":lifeDayWookieeOne") == 1 then
-			return convoTemplate:getScreen("tell_again")
+		if readScreenPlayData(pPlayer, "lifeDay", "complete") == "1" or readData(player:getObjectID() .. ":lifeDayTebeurra") == 1 then
+			return convoTemplate:getScreen("hear_again")
 		elseif readData(player:getObjectID() .. ":lifeDayState") == 2 then
-			return convoTemplate:getScreen("renewel")
+			return convoTemplate:getScreen("life_day_began")
 		else
 			return convoTemplate:getScreen("elder_first")
 		end
 	end)
 end
 
-function lifeDayWookieeOneConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+function lifeDayTebeurraConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	return ObjectManager.withCreatureObject(conversingPlayer, function(player)
 		local screen = LuaConversationScreen(conversationScreen)
 		local screenID = screen:getScreenID()
 		local conversationScreen = screen:cloneScreen()
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 
-		if screenID == "appreciate_freedom" then
-			if TangibleObject(conversingPlayer):isImperial() == true then
-				clonedConversation:addOption("@conversation/lifeday04c:s_b8b7ef2b", "work_for_empire") -- Yes. Go on.
-			else
-				clonedConversation:addOption("@conversation/lifeday04c:s_b8b7ef2b", "share_our_tale") -- Yes. Go on.
-			end
-		elseif screenID == "hope_you_will" or screenID == "thank_you" then
-			writeData(player:getObjectID() .. ":lifeDayWookieeOne", 1)
-			if readData(player:getObjectID() .. ":lifeDayWookieeTwo") == 1 and readData(player:getObjectID() .. ":lifeDayWookieeThree") == 1 then
+		if screenID == "let_others" then
+			writeData(player:getObjectID() .. ":lifeDayTebeurra", 1)
+			if readData(player:getObjectID() .. ":lifeDayAnarra") == 1 and readData(player:getObjectID() .. ":lifeDayRadrrl") == 1 then
 				writeData(player:getObjectID() .. ":lifeDayState", 3)
 			end
 		end
@@ -39,7 +33,7 @@ function lifeDayWookieeOneConvoHandler:runScreenHandlers(conversationTemplate, c
 	end)
 end
 
-function lifeDayWookieeOneConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
+function lifeDayTebeurraConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
 	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
 
 	local pLastConversationScreen = nil

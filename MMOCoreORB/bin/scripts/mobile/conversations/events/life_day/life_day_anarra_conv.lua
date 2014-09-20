@@ -1,7 +1,7 @@
-lifeDayWookieeOneConvoTemplate = ConvoTemplate:new {
+lifeDayAnarraConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "lifeDayWookieeOneConvoHandler",
+	luaClassHandler = "lifeDayAnarraConvoHandler",
 	screens = {}
 }
 
@@ -12,7 +12,7 @@ elder_first = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeOneConvoTemplate:addScreen(elder_first);
+lifeDayAnarraConvoTemplate:addScreen(elder_first);
 
 renewel = ConvoScreen:new {
 	id = "renewel",
@@ -23,7 +23,7 @@ renewel = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeOneConvoTemplate:addScreen(renewel);
+lifeDayAnarraConvoTemplate:addScreen(renewel);
 
 life_was_simple = ConvoScreen:new {
 	id = "life_was_simple",
@@ -34,7 +34,7 @@ life_was_simple = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeOneConvoTemplate:addScreen(life_was_simple);
+lifeDayAnarraConvoTemplate:addScreen(life_was_simple);
 
 appreciate_freedom = ConvoScreen:new {
 	id = "appreciate_freedom",
@@ -43,7 +43,7 @@ appreciate_freedom = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeOneConvoTemplate:addScreen(appreciate_freedom);
+lifeDayAnarraConvoTemplate:addScreen(appreciate_freedom);
 
 work_for_empire = ConvoScreen:new {
 	id = "work_for_empire",
@@ -54,7 +54,7 @@ work_for_empire = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeOneConvoTemplate:addScreen(work_for_empire);
+lifeDayAnarraConvoTemplate:addScreen(work_for_empire);
 
 hope_you_will = ConvoScreen:new {
 	id = "hope_you_will",
@@ -63,7 +63,7 @@ hope_you_will = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeOneConvoTemplate:addScreen(hope_you_will);
+lifeDayAnarraConvoTemplate:addScreen(hope_you_will);
 
 share_our_tale = ConvoScreen:new {
 	id = "share_our_tale",
@@ -74,7 +74,7 @@ share_our_tale = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeOneConvoTemplate:addScreen(share_our_tale);
+lifeDayAnarraConvoTemplate:addScreen(share_our_tale);
 
 thank_you = ConvoScreen:new {
 	id = "thank_you",
@@ -83,7 +83,7 @@ thank_you = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeOneConvoTemplate:addScreen(thank_you);
+lifeDayAnarraConvoTemplate:addScreen(thank_you);
 
 tell_again = ConvoScreen:new {
 	id = "tell_again",
@@ -95,7 +95,7 @@ tell_again = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeOneConvoTemplate:addScreen(tell_again);
+lifeDayAnarraConvoTemplate:addScreen(tell_again);
 
 pleasure = ConvoScreen:new {
 	id = "pleasure",
@@ -104,6 +104,6 @@ pleasure = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeOneConvoTemplate:addScreen(pleasure);
+lifeDayAnarraConvoTemplate:addScreen(pleasure);
 
-addConversationTemplate("lifeDayWookieeOneConvoTemplate", lifeDayWookieeOneConvoTemplate);
+addConversationTemplate("lifeDayAnarraConvoTemplate", lifeDayAnarraConvoTemplate);

@@ -1,5 +1,5 @@
-life_day_wookiee_2 = Creature:new {
-	customName = "Oaacrarancawo", --"Charlie",
+radrrl = Creature:new {
+	customName = "Radrrl",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -29,8 +29,8 @@ life_day_wookiee_2 = Creature:new {
 	templates = {"object/mobile/wookiee_lifeday_male2.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "lifeDayWookieeTwoConvoTemplate",
+	conversationTemplate = "lifeDayRadrrlConvoTemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(life_day_wookiee_2, "life_day_wookiee_2")
+CreatureTemplates:addCreatureTemplate(radrrl, "radrrl")

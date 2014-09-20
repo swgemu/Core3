@@ -14,10 +14,10 @@ lifeDayScreenplay = ScreenPlay:new {
 	camp = "object/building/poi/custom/life_day_hut.iff",
 
 	campMobs = {
-		{ mobile = "life_day_elder", x = -2.8, y = -1.5, heading = 12},
-		{ mobile = "life_day_wookiee_1", x = 3.4, y = -1.7, heading = -36},
-		{ mobile = "life_day_wookiee_2", x = -1.7, y = 9.3, heading = 67},
-		{ mobile = "life_day_wookiee_3", x = 3.3, y = 8.7, heading = 0},
+		{ mobile = "oraalarri", x = -2.8, y = -1.5, heading = 12},
+		{ mobile = "anarra", x = 3.4, y = -1.7, heading = -36},
+		{ mobile = "radrrl", x = -1.7, y = 9.3, heading = 67},
+		{ mobile = "tebeurra", x = 3.3, y = 8.7, heading = 0},
 	},
 
 	randomGifts = {"object/tangible/loot/quest/lifeday_orb.iff",
@@ -38,7 +38,7 @@ function lifeDayScreenplay:spawnMobiles()
 	local mobiles = self.greeterLocs
 	for i = 1, table.getn(mobiles), 1 do
 		if isZoneEnabled(mobiles[i].planet) then
-			spawnMobile(mobiles[i].planet, "life_day_greeter", 1, mobiles[i].x, mobiles[i].z, mobiles[i].y, mobiles[i].angle, mobiles[i].cell)
+			spawnMobile(mobiles[i].planet, "kkatamk", 1, mobiles[i].x, mobiles[i].z, mobiles[i].y, mobiles[i].angle, mobiles[i].cell)
 		end
 	end
 end

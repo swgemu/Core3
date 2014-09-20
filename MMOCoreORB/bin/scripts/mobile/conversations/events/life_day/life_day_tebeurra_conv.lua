@@ -1,7 +1,7 @@
-lifeDayWookieeThreeConvoTemplate = ConvoTemplate:new {
+lifeDayTebeurraConvoTemplate = ConvoTemplate:new {
 	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "lifeDayWookieeThreeConvoHandler",
+	luaClassHandler = "lifeDayTebeurraConvoHandler",
 	screens = {}
 }
 
@@ -12,7 +12,7 @@ elder_first = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeThreeConvoTemplate:addScreen(elder_first);
+lifeDayTebeurraConvoTemplate:addScreen(elder_first);
 
 life_day_began = ConvoScreen:new {
 	id = "life_day_began",
@@ -23,7 +23,7 @@ life_day_began = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeThreeConvoTemplate:addScreen(life_day_began);
+lifeDayTebeurraConvoTemplate:addScreen(life_day_began);
 
 concepts = ConvoScreen:new {
 	id = "concepts",
@@ -34,7 +34,7 @@ concepts = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeThreeConvoTemplate:addScreen(concepts);
+lifeDayTebeurraConvoTemplate:addScreen(concepts);
 
 important = ConvoScreen:new {
 	id = "important",
@@ -45,7 +45,7 @@ important = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeThreeConvoTemplate:addScreen(important);
+lifeDayTebeurraConvoTemplate:addScreen(important);
 
 the_empire = ConvoScreen:new {
 	id = "the_empire",
@@ -56,7 +56,7 @@ the_empire = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeThreeConvoTemplate:addScreen(the_empire);
+lifeDayTebeurraConvoTemplate:addScreen(the_empire);
 
 let_others = ConvoScreen:new {
 	id = "let_others",
@@ -65,7 +65,7 @@ let_others = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeThreeConvoTemplate:addScreen(let_others);
+lifeDayTebeurraConvoTemplate:addScreen(let_others);
 
 hear_again = ConvoScreen:new {
 	id = "hear_again",
@@ -77,7 +77,7 @@ hear_again = ConvoScreen:new {
 	}
 }
 
-lifeDayWookieeThreeConvoTemplate:addScreen(hear_again);
+lifeDayTebeurraConvoTemplate:addScreen(hear_again);
 
 pleasure = ConvoScreen:new {
 	id = "pleasure",
@@ -86,6 +86,6 @@ pleasure = ConvoScreen:new {
 	options = {}
 }
 
-lifeDayWookieeThreeConvoTemplate:addScreen(pleasure);
+lifeDayTebeurraConvoTemplate:addScreen(pleasure);
 
-addConversationTemplate("lifeDayWookieeThreeConvoTemplate", lifeDayWookieeThreeConvoTemplate);
+addConversationTemplate("lifeDayTebeurraConvoTemplate", lifeDayTebeurraConvoTemplate);
