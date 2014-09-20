@@ -44,6 +44,7 @@
 object_tangible_event_perk_camp_pavilion_s1 = object_tangible_event_perk_shared_camp_pavilion_s1:new {
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_camp_pavilion_s1, "object/tangible/event_perk/camp_pavilion_s1.iff")

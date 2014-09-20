@@ -112,6 +112,7 @@
 #include "server/zone/objects/creature/components/FactionRecruiterContainerComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkMenuComponent.h"
+#include "server/zone/objects/tangible/components/EventPerkAttributeListComponent.h"
 
 
 ComponentManager::ComponentManager() {
@@ -265,5 +266,6 @@ ComponentManager::ComponentManager() {
 
 	components.put("EventPerkMenuComponent", new EventPerkMenuComponent() );
 	components.put("EventPerkDataComponent", new EventPerkDataComponent() );
+	components.put("EventPerkAttributeListComponent", new EventPerkAttributeListComponent() );
 	dataObjectFactory.registerObject<EventPerkDataComponent>("EventPerkDataComponent");
 }

@@ -44,6 +44,7 @@
 object_tangible_event_perk_web_tree = object_tangible_event_perk_shared_web_tree:new {
 	objectMenuComponent = {"cpp", "EventPerkMenuComponent"},
 	dataObjectComponent = "EventPerkDataComponent",
+	attributeListComponent = "EventPerkAttributeListComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_event_perk_web_tree, "object/tangible/event_perk/web_tree.iff")
