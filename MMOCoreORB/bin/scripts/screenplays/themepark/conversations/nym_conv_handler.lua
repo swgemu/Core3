@@ -45,20 +45,20 @@ function NymConvoHandler:runNymScreenHandlers(conversationTemplate, conversingPl
 			end
 		elseif (screenID == "go_lab") then
 			local oldWaypointID = readData(player:getObjectID() .. ":nymFacilityWaypointID")
-			if (oldWaypointID ~= nil) then
+			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
 				deleteData(player:getObjectID() .. ":nymFacilityWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Imperial Research Facility", "Imperial Research Facility", ThemeParkNym.waypointMap.researchfacility.x, ThemeParkNym.waypointMap.researchfacility.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			local waypointID = playerObject:addWaypoint("lok", "Imperial Research Facility", "Imperial Research Facility", ThemeParkNym.waypointMap.researchfacility.x, ThemeParkNym.waypointMap.researchfacility.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
 			writeData(player:getObjectID() .. ":nymFacilityWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_nymNpc")
 		elseif (screenID == "go_to_officer") then
 			local oldWaypointID = readData(player:getObjectID() .. ":nymGamblerWaypointID")
-			if (oldWaypointID ~= nil) then
+			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
 				deleteData(player:getObjectID() .. ":nymGamblerWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Nym's Informant", "Nym's Informant", ThemeParkNym.waypointMap.gambler.x, ThemeParkNym.waypointMap.gambler.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			local waypointID = playerObject:addWaypoint("lok", "Nym's Informant", "Nym's Informant", ThemeParkNym.waypointMap.gambler.x, ThemeParkNym.waypointMap.gambler.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
 			writeData(player:getObjectID() .. ":nymGamblerWaypointID", waypointID)
 			self.themePark:setState(player, 2, "nym_theme_park_nymNpc")
 		end
@@ -91,20 +91,20 @@ function NymConvoHandler:runJinkinsScreenHandlers(conversationTemplate, conversi
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		if (screenID == "heres_droid_memory") then
 			local oldWaypointID = readData(player:getObjectID() .. ":nymPirateCaveWaypointID")
-			if (oldWaypointID ~= nil) then
+			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
 				deleteData(player:getObjectID() .. ":nymPirateCaveWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Sulfur Lake Pirate Hideout", "", ThemeParkNym.waypointMap.piratecave.x, ThemeParkNym.waypointMap.piratecave.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			local waypointID = playerObject:addWaypoint("lok", "Sulfur Lake Pirate Hideout", "", ThemeParkNym.waypointMap.piratecave.x, ThemeParkNym.waypointMap.piratecave.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
 			writeData(player:getObjectID() .. ":nymPirateCaveWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_jinkinsNpc")
 		elseif (screenID == "heres_the_guy") then
 			local oldWaypointID = readData(player:getObjectID() .. ":nymHermitWaypointID")
-			if (oldWaypointID ~= nil) then
+			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
 				deleteData(player:getObjectID() .. ":nymHermitWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Hermit", "", ThemeParkNym.waypointMap.choster.x, ThemeParkNym.waypointMap.choster.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			local waypointID = playerObject:addWaypoint("lok", "Hermit", "", ThemeParkNym.waypointMap.choster.x, ThemeParkNym.waypointMap.choster.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
 			writeData(player:getObjectID() .. ":nymHermitWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_chosterNpc")
 		elseif (screenID == "good_work" and clonedConversation:getOptionCount() == 0) then
@@ -133,20 +133,20 @@ function NymConvoHandler:runKoleScreenHandlers(conversationTemplate, conversingP
 			end
 		elseif (screenID == "here_is_gas") then
 			local oldWaypointID = readData(player:getObjectID() .. ":nymGasMineWaypointID")
-			if (oldWaypointID ~= nil) then
+			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
 				deleteData(player:getObjectID() .. ":nymGasMineWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Imperial Gas Mine", "", ThemeParkNym.waypointMap.gasmine.x, ThemeParkNym.waypointMap.gasmine.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			local waypointID = playerObject:addWaypoint("lok", "Imperial Gas Mine", "", ThemeParkNym.waypointMap.gasmine.x, ThemeParkNym.waypointMap.gasmine.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
 			writeData(player:getObjectID() .. ":nymGasMineWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_koleNpc")
 		elseif (screenID == "here_is_imperial") then
 			local oldWaypointID = readData(player:getObjectID() .. ":nymBribeWaypointID")
-			if (oldWaypointID ~= nil) then
+			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
 				deleteData(player:getObjectID() .. ":nymBribeWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Sergeant Moore", "", ThemeParkNym.waypointMap.imperialbribe.x, ThemeParkNym.waypointMap.imperialbribe.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			local waypointID = playerObject:addWaypoint("lok", "Sergeant Moore", "", ThemeParkNym.waypointMap.imperialbribe.x, ThemeParkNym.waypointMap.imperialbribe.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
 			writeData(player:getObjectID() .. ":nymBribeWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_mooreNpc")
 		end

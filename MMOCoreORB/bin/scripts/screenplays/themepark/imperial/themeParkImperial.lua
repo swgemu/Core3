@@ -722,7 +722,7 @@ npcMapImperial =
 	{
 		{
 			spawnData = { planetName = "naboo", npcTemplate = "kaja_orzee", x = 1.1, z = 0.2, y = -13.3, direction = 0, cellID = 1418872, position = STAND },
-			worldPosition = { x = 2407, y = -3941 },
+			worldPosition = { x = 2407.8, y = -3944.5 },
 			npcNumber = 1,
 			stfFile = "@theme_park_imperial/kaja_orzee",
 			stfWarning = "not_imperial",
