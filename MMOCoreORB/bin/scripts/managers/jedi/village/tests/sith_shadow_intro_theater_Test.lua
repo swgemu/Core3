@@ -3,8 +3,12 @@ local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local QuestManagerMocks = require("managers.quest.mocks.quest_manager_mocks")
 local SpawnMobilesMocks = require("utils.mocks.spawn_mobiles_mocks")
 local OldManEncounterMocks = require("managers.jedi.village.mocks.old_man_encounter_mocks")
+local DathomirGoTo = require("managers.jedi.village.dathomir_go_to")
 
 local THEATER_ID_STRING = "theaterId"
+
+local READ_DISK_2_STRING = "@quest/force_sensitive/intro:read_disk2"
+local READ_DISK_ERROR_STRING = "@quest/force_sensitive/intro:read_disk_error"
 
 describe("SithShadowIntroTheater", function()
 	local pCreatureObject = { "creatureObjectPointer" }
@@ -45,6 +49,7 @@ describe("SithShadowIntroTheater", function()
 
 		creatureObject = {}
 		creatureObject.getObjectID = spy.new(function() return playerObjectId end)
+		creatureObject.sendSystemMessage = spy.new(function() end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObject
 
 		firstSithShadowObject = {}
@@ -59,6 +64,10 @@ describe("SithShadowIntroTheater", function()
 		secondSithShadowObject.getObjectID = spy.new(function() return secondSithShadowId end)
 		DirectorManagerMocks.creatureObjects[pSecondSithShadow] = secondSithShadowObject
 		DirectorManagerMocks.aiAgents[pSecondSithShadow] = secondSithShadowObject
+		
+		datapad = {}
+		datapad.destroyObjectFromWorld = spy.new(function() end)
+		DirectorManagerMocks.sceneObjects[pDatapad] = datapad
 
 		readData = spy.new(function(key)
 			if key == playerObjectId .. SithShadowIntroTheater.taskName .. THEATER_ID_STRING then
@@ -284,6 +293,36 @@ describe("SithShadowIntroTheater", function()
 
 			it("Should return 0 to keep the observer.", function()
 				assert.same(0, SithShadowIntroTheater:onPlayerKilled(pCreatureObject, pFirstSithShadow, 0))
+			end)
+		end)
+	end)
+	
+	describe("useTheaterDatapad", function()
+		describe("When called with a scene object and a player object", function()
+			it("Should check if the player object has looted a datapad.", function()
+				SithShadowIntroTheater:useTheaterDatapad(pDatapad, pCreatureObject)
+
+				assert.spy(QuestManagerMocks.hasCompletedQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.GOT_DATAPAD_2)
+			end)
+
+			describe("and the player has looted a datapad", function()
+				before_each(function()
+					QuestManagerMocks.hasCompletedQuest = spy.new(function() return true end)
+				end)
+
+				it("Should destroy the datapad.", function()
+					SithShadowIntroTheater:useTheaterDatapad(pDatapad, pCreatureObject)
+
+					assert.spy(datapad.destroyObjectFromWorld).was.called_with(datapad)
+				end)
+			end)
+
+			describe("and the player has not looted a datapad", function()
+				it("Should send an error string to the player.", function()
+					SithShadowIntroTheater:useTheaterDatapad(pDatapad, pCreatureObject)
+
+					assert.spy(creatureObject.sendSystemMessage).was.called_with(creatureObject, READ_DISK_ERROR_STRING)
+				end)
 			end)
 		end)
 	end)
