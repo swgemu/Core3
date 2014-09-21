@@ -64,6 +64,7 @@ dathomir_regions = {
 	{"lhon_kinad_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"lhon_kinad_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"lhon_kinad_3",0,0,{1,0},UNDEFINEDAREA,1},
+        {"life_day_home",-2578,-5519,{1,100},NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"lookout",-4564,-6548,{1,50},NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"medium_baz_nitch_nw",0,0,{1,0},UNDEFINEDAREA,1},
 	{"medium_baz_nitch_se",0,0,{1,0},UNDEFINEDAREA,1},

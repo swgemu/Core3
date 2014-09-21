@@ -57,6 +57,7 @@ endor_regions = {
 	{"jiberah_plains_5",0,0,{1,0},UNDEFINEDAREA,1},
         {"jinda_ritualists_cave",-1727,121,{1,150},NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"korga_cave",2163,3617,{1,150},NOSPAWNAREA + NOBUILDZONEAREA,1},
+        {"life_day_home",-1088,-996,{1,100},NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"marauder_mountain_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"marauder_mountain_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"marauder_mountain_3",0,0,{1,0},UNDEFINEDAREA,1},

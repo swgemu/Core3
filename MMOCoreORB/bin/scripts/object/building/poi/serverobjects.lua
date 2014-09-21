@@ -44,7 +44,6 @@
 
 --Children folder includes
 includeFile("building/poi/base/serverobjects.lua")
-includeFile("building/poi/custom/serverobjects.lua")
 includeFile("building/poi/farm/serverobjects.lua")
 includeFile("building/poi/hq/serverobjects.lua")
 
