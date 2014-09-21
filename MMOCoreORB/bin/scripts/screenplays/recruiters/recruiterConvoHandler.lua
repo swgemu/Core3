@@ -115,11 +115,11 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 
 		elseif (screenID == "accepted_bribe_20k") and player:hasSkill("combat_smuggler_underworld_04") and (player:getCashCredits() >= 20000)
 			and (getFactionPointsCap(player:getFactionRank()) >= playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(conversingNPC)) + 250) then
-			self:grantBribe(conversingPlayer, 20000, 250)
+			recruiterScreenplay:grantBribe(conversingPlayer, 20000, 250)
 
 		elseif (screenID == "accepted_bribe_100k") and player:hasSkill("combat_smuggler_underworld_04") and (player:getCashCredits() >= 100000)
 			and (getFactionPointsCap(player:getFactionRank()) >= playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(conversingNPC)) + 1250) then
-			self:grantBribe(conversingPlayer, 100000, 1250)
+			recruiterScreenplay:grantBribe(conversingPlayer, 100000, 1250)
 			
 		elseif (screenID == "fp_furniture" or screenID == "fp_weapons_armor" or screenID == "fp_installations" or screenID == "fp_uniforms" or screenID == "fp_hirelings") then
 			recruiterScreenplay:sendPurchaseSui(conversingNPC, conversingPlayer, screenID)

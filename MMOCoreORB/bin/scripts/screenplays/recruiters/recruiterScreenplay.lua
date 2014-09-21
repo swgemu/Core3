@@ -185,7 +185,7 @@ function recruiterScreenplay:getUniformsOptions(faction, gcwDiscount, smugglerDi
 	local factionRewardData = self:getFactionDataTable(faction)
 	for k,v in pairs(factionRewardData.uniformList) do
 		if ( factionRewardData.uniforms[v] ~= nil and factionRewardData.uniforms[v].display ~= nil and factionRewardData.uniforms[v].cost ~= nil ) then
-			table.insert(optionsTable, self:generateSuiString(factionRewardData.imperialUniforms[v].display, math.ceil(factionRewardData.imperialUniforms[v].cost * gcwDiscount * smugglerDiscount)))
+			table.insert(optionsTable, self:generateSuiString(factionRewardData.uniforms[v].display, math.ceil(factionRewardData.uniforms[v].cost * gcwDiscount * smugglerDiscount)))
 		end
 	end
 end
