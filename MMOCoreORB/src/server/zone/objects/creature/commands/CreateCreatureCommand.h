@@ -151,17 +151,19 @@ public:
 				npc->activateLoad("");
 		}
 
-		if (baby && npc == NULL)
+		if (baby && npc == NULL) {
 			creature->sendSystemMessage("You cannot spawn " + tempName + " as a baby.");
-		else if (npc == NULL)
+			return GENERALERROR;
+		} else if (npc == NULL) {
 			creature->sendSystemMessage("could not spawn " + arguments.toString());
+			return GENERALERROR;
+		}
 
 		if (!aiTemplate.isEmpty()) {
 			npc->activateLoad(aiTemplate);
 		}
 
-		if (npc != NULL)
-			npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
+		npc->updateDirection(Math::deg2rad(creature->getDirectionAngle()));
 
 		return SUCCESS;
 	}
