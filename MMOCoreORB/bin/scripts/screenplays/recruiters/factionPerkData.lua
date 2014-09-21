@@ -137,10 +137,10 @@ imperialRewardData = {
 	},
 
 	uniforms = {
-		boots_s14 = { type=factionRewardType.uniform, display="Boots", item="object/tangible/wearables/boots/boots_s14.iff", cost=140 },
+		boots_s14 = { type=factionRewardType.uniform, display="@wearables_name:boots_s14", item="object/tangible/wearables/boots/boots_s14.iff", cost=140 },
 		hat_imp_s01 = { type=factionRewardType.uniform, display="@wearables_name:hat_imp_s01", item="object/tangible/wearables/hat/hat_imp_s01.iff", cost=140 },
-		jacket_s03 = { type=factionRewardType.uniform, display="Jacket", item="object/tangible/wearables/jacket/jacket_s03.iff", cost=140 },
-		pants_s15  = { type=factionRewardType.uniform, display="Pants", item="object/tangible/wearables/pants/pants_s15.iff", cost=140 },
+		jacket_s03 = { type=factionRewardType.uniform, display="@wearables_name:jacket_s03", item="object/tangible/wearables/jacket/jacket_s03.iff", cost=140 },
+		pants_s15  = { type=factionRewardType.uniform, display="@wearables_name:pants_s15", item="object/tangible/wearables/pants/pants_s15.iff", cost=140 },
 	},
 
 	installationsList = {

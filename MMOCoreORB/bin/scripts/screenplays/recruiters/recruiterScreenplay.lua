@@ -188,6 +188,7 @@ function recruiterScreenplay:getUniformsOptions(faction, gcwDiscount, smugglerDi
 			table.insert(optionsTable, self:generateSuiString(factionRewardData.uniforms[v].display, math.ceil(factionRewardData.uniforms[v].cost * gcwDiscount * smugglerDiscount)))
 		end
 	end
+	return optionsTable
 end
 
 function recruiterScreenplay:generateSuiString(item, cost)
@@ -538,7 +539,7 @@ function recruiterScreenplay:getItemListTable(faction, screenID)
 	elseif screenID == "fp_installations" then
 		return dataTable.installationsList
 	elseif screenID == "fp_uniforms" then
-		return dataTable.uniformsList
+		return dataTable.uniformList
 	elseif screenID == "fp_hirelings" then
 		return dataTable.hirelingList
 	end
