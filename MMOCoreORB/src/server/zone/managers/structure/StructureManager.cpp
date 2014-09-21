@@ -1233,16 +1233,14 @@ bool StructureManager::isInStructureFootprint(StructureObject* structure, float 
 
 	float placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1;
 
-	StructureManager::instance()->getStructureFootprint(serverTemplate, structure->getDirectionAngle(), placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1);
-	//info("object: " + obj->getObjectNameStringIdName() + " obj x = " + String::valueOf(obj->getPositionX()) + " y= " + String::valueOf(obj->getPositionY()),true);
+	getStructureFootprint(serverTemplate, structure->getDirectionAngle(), placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1);
 
-	float x0 = structure->getPositionX() + placingFootprintWidth0 + extraFootprintMargin;
-	float y0 = structure->getPositionY() + placingFootprintLength0 + extraFootprintMargin;
-	float x1 = structure->getPositionX() + placingFootprintWidth1 + extraFootprintMargin;
-	float y1 = structure->getPositionY() + placingFootprintLength1 + extraFootprintMargin;
+	float x0 = structure->getPositionX() + placingFootprintWidth0 + (placingFootprintWidth0 >= 0 ? extraFootprintMargin : (extraFootprintMargin * -1));
+	float y0 = structure->getPositionY() + placingFootprintLength0 + (placingFootprintLength0 >= 0 ? extraFootprintMargin : (extraFootprintMargin * -1));
+	float x1 = structure->getPositionX() + placingFootprintWidth1 + (placingFootprintWidth1 >= 0 ? extraFootprintMargin : (extraFootprintMargin * -1));
+	float y1 = structure->getPositionY() + placingFootprintLength1 + (placingFootprintLength1 >= 0 ? extraFootprintMargin : (extraFootprintMargin * -1));
 
 	BoundaryRectangle structureFootprint(x0, y0, x1, y1);
-
 
 	return structureFootprint.containsPoint(positionX, positionY);
 
