@@ -3,21 +3,31 @@ local ObjectManager = require("managers.object.object_manager")
 lifeDayScreenplay = ScreenPlay:new {
 	numberOfActs = 1,
 
-	greeterLocs = {
-		{ planet = "naboo", x = -5586.6, z = -150, y = -33.5, angle = 87, cell = 0 }, -- Lake Retreat
-		{ planet = "tatooine", x = 119.4, z = 52.0, y = -5353.7, angle = -99, cell = 0 }, -- Anchorhead
-		{ planet = "corellia", x = -5544.5, z = 23.4, y = -6176.6, angle = -96, cell = 0 }, -- Vreni Island
+	mobiles = {
+		{ mobile = "kkatamk", planet = "naboo", x = -5586.6, z = -150, y = -33.5, angle = 87 }, -- Lake Retreat
+		{ mobile = "kkatamk", planet = "tatooine", x = 130.3, z = 52.0, y = -5383.7, angle = -88 }, -- Anchorhead
+		{ mobile = "kkatamk", planet = "corellia", x = -5544.5, z = 23.4, y = -6176.6, angle = -96 }, -- Vreni Island
+
+		{ mobile = "oraalarri", planet = "dathomir", x = -2580.2, z = 77.0, y = -5521.4, angle = 7 },
+		{ mobile = "anarra", planet = "dathomir", x = -2574.9, z = 77.0, y = -5510.8, angle = -24 },
+		{ mobile = "radrrl", planet = "dathomir", x = -2581.5, z = 77.0, y = -5510.3, angle = 28 },
+		{ mobile = "tebeurra", planet = "dathomir", x = -2574.5, z = 77.0, y = -5518.8, angle = -50 },
+
+		{ mobile = "oraalarri", planet = "endor", x = -1087.8, z = 6.2, y = -998.1, angle = -83 },
+		{ mobile = "anarra", planet = "endor", x = -1098.9, z = 6.0, y = -993.8, angle = -160 },
+		{ mobile = "radrrl", planet = "endor", x = -1098.6, z = 5.9, y = -999.3, angle = -35 },
+		{ mobile = "tebeurra", planet = "endor", x = -1090.0, z = 6.2, y = -992.4, angle = -155 },
+
+		{ mobile = "oraalarri", planet = "yavin4", x = -14.5, z = 163.5, y = -3917.0, angle = 123 },
+		{ mobile = "anarra", planet = "yavin4", x = -5.9, z = 163.5, y = -3924.9, angle = 73 },
+		{ mobile = "radrrl", planet = "yavin4", x = -3.6, z = 163.4, y = -3919.0, angle = 163 },
+		{ mobile = "tebeurra", planet = "yavin4", x = -14.8, z = 163.5, y = -3922.5, angle = 65 },
 	},
 
-	waypointPlanets = {"endor","dathomir","lok","yavin4"},
-
-	camp = "object/building/poi/custom/life_day_hut.iff",
-
-	campMobs = {
-		{ mobile = "oraalarri", x = -2.8, y = -1.5, heading = 12},
-		{ mobile = "anarra", x = 3.4, y = -1.7, heading = -36},
-		{ mobile = "radrrl", x = -1.7, y = 9.3, heading = 67},
-		{ mobile = "tebeurra", x = 3.3, y = 8.7, heading = 0},
+	waypoints = {
+		{ planet = "dathomir", x = -2578.3, y = -5519.6, },
+		{ planet = "endor", x = -1088.4, y = -996.0, },
+		{ planet = "yavin4", x = -14.4, y = -3919.7, },
 	},
 
 	randomGifts = {"object/tangible/loot/quest/lifeday_orb.iff",
@@ -35,19 +45,19 @@ function lifeDayScreenplay:start()
 end
 
 function lifeDayScreenplay:spawnMobiles()
-	local mobiles = self.greeterLocs
-	for i = 1, table.getn(mobiles), 1 do
-		if isZoneEnabled(mobiles[i].planet) then
-			spawnMobile(mobiles[i].planet, "kkatamk", 1, mobiles[i].x, mobiles[i].z, mobiles[i].y, mobiles[i].angle, mobiles[i].cell)
+	local mobs = self.mobiles
+	for i = 1, table.getn(mobs), 1 do
+		if isZoneEnabled(mobs[i].planet) then
+			spawnMobile(mobs[i].planet, mobs[i].mobile, 1, mobs[i].x, mobs[i].z, mobs[i].y, mobs[i].angle, 0)
 		end
 	end
 end
 
 function lifeDayScreenplay:getRandomEnabledPlanet()
 	local enabledPlanets = {}
-	for i = 1, table.getn(self.waypointPlanets), 1 do
-		if isZoneEnabled(self.waypointPlanets[i]) then
-			enabledPlanets[table.getn(enabledPlanets) + 1] = self.waypointPlanets[i]
+	for i = 1, table.getn(self.waypoints), 1 do
+		if isZoneEnabled(self.waypoints[i].planet) then
+			enabledPlanets[table.getn(enabledPlanets) + 1] = i
 		end
 	end
 
@@ -66,119 +76,25 @@ function lifeDayScreenplay:removeWaypoint(pPlayer)
 	end)
 end
 
-function lifeDayScreenplay:removeArea(pPlayer)
-	ObjectManager.withCreatureObject(pPlayer, function(player)
-		local areaID = readData(player:getObjectID() .. ":lifeDayAreaID")
-
-		if areaID ~= "" and areaID ~= nil and areaID ~= 0 then
-			local pArea = getSceneObject(areaID)
-			if pArea ~= nil then
-				SceneObject(pArea):destroyObjectFromWorld(true)
-			end
-			writeData(player:getObjectID() .. "lifeDayAreaID", 0)
-		end
-	end)
-end
-
 function lifeDayScreenplay:giveWaypoint(pPlayer)
 	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, ghost)
-		self:cleanupCamp(pPlayer)
+		self:removeWaypoint(pPlayer)
 
-		local planet = self:getRandomEnabledPlanet()
+		local num = self:getRandomEnabledPlanet()
 
-		if planet == "" then
+		if num == "" or num == 0 or num == nil then
 			player:sendSystemMessage("Error finding a planet.")
 			return
 		end
 
-		local spawnPoint = getSpawnArea(pPlayer, 0, 0, 0, 8000, 20, 5, planet)
-		if spawnPoint ~= nil then
-			local pArea = spawnSceneObject(planet, "object/active_area.iff", spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, 0, 0, 0, 0)
-			if (pArea ~= nil) then
-				local activeArea = ActiveArea(pArea)
-				activeArea:setRadius(128)
-				activeArea:setNoSpawnArea(true)
-				createObserver(ENTEREDAREA, "lifeDayScreenplay", "notifyEnteredLifeDayArea", pArea)
+		local newWaypointID = ghost:addWaypoint(self.waypoints[num].planet, "@quest/lifeday/lifeday:waypoint_name", "", self.waypoints[num].x, self.waypoints[num].y, 2, true, true, 0, 0) -- Life Day Celebration
+		writeData(player:getObjectID() .. "lifeDayWaypointID", newWaypointID)
+		writeData(player:getObjectID() .. ":lifeDayState", 1)
 
-				local newWaypointID = ghost:addWaypoint(planet, "@quest/lifeday/lifeday:waypoint_name", "", spawnPoint[1], spawnPoint[3], 2, true, true, 0, 0) -- Life Day Celebration
-				writeData(player:getObjectID() .. "lifeDayWaypointID", newWaypointID)
-				writeData(player:getObjectID() .. ":lifeDayState", 1)
-				writeData(player:getObjectID() .. ":lifeDayAreaID", SceneObject(pArea):getObjectID())
+		player:sendSystemMessage("@quest/lifeday/lifeday:waypoint_updated") -- A waypoint to a planet holding a Life Day celebration was added to your datapad.
 
-				player:sendSystemMessage("@quest/lifeday/lifeday:waypoint_updated") -- A waypoint to a planet holding a Life Day celebration was added to your datapad.
-
-				createEvent(3600000, "lifeDayScreenplay", "cleanupCamp", pPlayer)
-			end
-		end
+		createEvent(3600000, "lifeDayScreenplay", "removeWaypoint", pPlayer)
 	end)
-end
-
-function lifeDayScreenplay:notifyEnteredLifeDayArea(pActiveArea, pPlayer)
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local areaID = readData(playerID .. ":lifeDayAreaID")
-
-	if (readData(playerID .. ":lifeDayAreaTriggered") == 1) then
-		return 0
-	end
-
-	if (SceneObject(pActiveArea):getObjectID() == areaID) then
-		writeData(playerID .. ":lifeDayAreaTriggered", 1)
-		self:spawnCamp(pActiveArea, pPlayer)
-		return 1
-	end
-	return 0
-end
-
-function lifeDayScreenplay:spawnCamp(pActiveArea, pPlayer)
-	ObjectManager.withSceneObject(pActiveArea, function(area)
-		local playerID = CreatureObject(pPlayer):getObjectID()
-		local x = area:getPositionX()
-		local y = area:getPositionY()
-		local z = getTerrainHeight(pPlayer, x, y)
-		local zoneName = area:getZoneName()
-		local pCamp = spawnSceneObject(zoneName, self.camp, x, z, y, 0, 0, 0, 0, 0)
-
-		if pCamp ~= nil then
-			writeData(playerID .. ":lifeDayCampID", SceneObject(pCamp):getObjectID())
-		end
-
-		for i = 1, table.getn(self.campMobs), 1 do
-			local pMob = spawnMobile(zoneName, self.campMobs[i].mobile, 0, x + self.campMobs[i].x, z, y + self.campMobs[i].y, self.campMobs[i].heading, 0)
-			if pMob ~= nil then
-				writeData(playerID .. ":lifeDayMobID" .. i, SceneObject(pMob):getObjectID())
-			end
-		end
-	end)
-end
-
-function lifeDayScreenplay:cleanupCamp(pPlayer)
-	self:removeWaypoint(pPlayer)
-	self:removeArea(pPlayer)
-
-	local playerID = CreatureObject(pPlayer):getObjectID()
-	local campID = readData(playerID .. ":lifeDayCampID")
-
-	if campID ~= "" and campID ~= nil and campID ~= 0 then
-		local pCamp = getSceneObject(campID)
-
-		if pCamp ~= nil then
-			SceneObject(pCamp):destroyObjectFromWorld(true)
-		end
-		writeData(playerID .. ":lifeDayCampID", 0)
-	end
-
-	for i = 1, table.getn(self.campMobs), 1 do
-		local mobID = readData(playerID .. ":lifeDayMobID" .. i)
-
-		if mobID ~= "" and mobID ~= nil and mobID ~= 0 then
-			local pMob = getSceneObject(mobID)
-
-			if pMob ~= nil then
-				SceneObject(pMob):destroyObjectFromWorld(true)
-			end
-			writeData(playerID .. ":lifeDayMobID" .. i, 0)
-		end
-	end
 end
 
 function lifeDayScreenplay:giveRandomGift(pPlayer)
@@ -199,6 +115,8 @@ function lifeDayScreenplay:giveRandomGift(pPlayer)
 			writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
 		end)
 	end)
+
+	self:removeWaypoint(pPlayer)
 end
 
 function lifeDayScreenplay:giveRobe(pPlayer)
@@ -217,5 +135,14 @@ function lifeDayScreenplay:giveRobe(pPlayer)
 			writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
 		end)
 	end)
+
+	self:removeWaypoint(pPlayer)
 end
 
+function lifeDayScreenplay:noGift(pPlayer)
+	ObjectManager.withCreatureObject(pPlayer, function(player)
+		writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
+	end)
+
+	self:removeWaypoint(pPlayer)
+end

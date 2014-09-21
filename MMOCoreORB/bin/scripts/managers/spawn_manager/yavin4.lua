@@ -65,6 +65,7 @@ yavin4_regions = {
 	{"jungle_two",0,0,{1,0},UNDEFINEDAREA,1},
         {"large_ruins",-5575,4902,{1,50},NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"large_ruins_2",5076,289,{1,50},NOSPAWNAREA + NOBUILDZONEAREA,1},
+        {"life_day_home",-14,-3920,{1,100},NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"marker",-3255,3839,{1,20},NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"medium_gackle_bat_nw",0,0,{1,0},UNDEFINEDAREA,1},
 	{"medium_gackle_bat_se",0,0,{1,0},UNDEFINEDAREA,1},

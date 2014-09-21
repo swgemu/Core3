@@ -41,6 +41,8 @@ function lifeDayOraalarriConvoHandler:runScreenHandlers(conversationTemplate, co
 			lifeDayScreenplay:giveRandomGift(conversingPlayer)
 		elseif screenID == "enjoy_robe" then
 			lifeDayScreenplay:giveRobe(conversingPlayer)
+		elseif screenID == "no_gift" then
+			lifeDayScreenplay:noGift(conversingPlayer)
 		end
 		return conversationScreen
 	end)
