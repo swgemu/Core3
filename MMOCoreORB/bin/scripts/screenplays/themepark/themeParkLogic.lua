@@ -110,7 +110,7 @@ end
 function ThemeParkLogic:setCellPermissions(permissions, pCreature)
 	ObjectManager.withCreaturePlayerObject(pCreature, function(ghost)
 		for i = 1, # permissions.permissions, 1 do
-			if self:hasPermission(permissions.permissions[i].conditions, pCreature) == true then
+			if self:hasPermission(permissions.permissions[i].conditions, pCreature) == true or ghost:isPrivileged() then
 				ghost:addPermissionGroup(permissions.regionName .. i, true)
 			else
 				ghost:removePermissionGroup(permissions.regionName .. i, true)
@@ -128,6 +128,7 @@ end
 
 function ThemeParkLogic:hasPermission(conditions, pCreature)
 	local hasPermission = true
+
 	for i = 1, # conditions, 1 do
 		if conditions[i].permissionType == "faction" then
 			if conditions[i].faction ~= nil then

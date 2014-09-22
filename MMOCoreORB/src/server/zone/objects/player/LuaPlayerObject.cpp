@@ -56,6 +56,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "addEventPerk", &LuaPlayerObject::addEventPerk},
 		{ "getEventPerkCount", &LuaPlayerObject::getEventPerkCount},
 		{ "getCharacterAgeInDays", &LuaPlayerObject::getCharacterAgeInDays},
+		{ "isPrivileged", &LuaPlayerObject::isPrivileged},
 		{ 0, 0 }
 };
 
@@ -478,6 +479,12 @@ int LuaPlayerObject::addEventPerk(lua_State* L) {
 
 int LuaPlayerObject::getCharacterAgeInDays(lua_State* L) {
 	lua_pushinteger(L, realObject->getCharacterAgeInDays());
+
+	return 1;
+}
+
+int LuaPlayerObject::isPrivileged(lua_State* L) {
+	lua_pushboolean(L, realObject->isPrivileged());
 
 	return 1;
 }

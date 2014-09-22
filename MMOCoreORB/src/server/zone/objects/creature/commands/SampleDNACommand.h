@@ -76,17 +76,17 @@ public:
 		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		if (player && !player->hasSkill("outdoors_bio_engineer_novice")) {
-			player->sendSystemMessage("@bio_engineer:harvest_dna_skill_too_low");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_skill_too_low"); // You are not sufficiently skilled to take DNA samples.
 			return GENERALERROR;
 		}
 
 		if (object == NULL) {
-			player->sendSystemMessage("@bio_engineer:harvest_dna_need_target");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_need_target"); // You need to target the creature you wish to take a DNA sample from.
 			return INVALIDTARGET;
 		}
 
 		if (!object->isCreatureObject() || object == player){
-			player->sendSystemMessage("@bio_engineer:harvest_dna_invalid_target");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_invalid_target"); // You cannot sample DNA from that target.
 			return INVALIDTARGET;
 		}
 
@@ -95,41 +95,41 @@ public:
 		Locker crosslocker(creo,creature);
 
 		if (!CollisionManager::checkLineOfSight(creature, creo)) {
-			player->sendSystemMessage("@container_error_message:container18");
+			player->sendSystemMessage("@container_error_message:container18"); // You can't see that object. You may have to move closer to it.
 			return GENERALERROR;
 		}
 
-		if (cr == NULL){
-			player->sendSystemMessage("@bio_engineer:harvest_dna_invalid_target");
+		if (cr == NULL || !cr->isAttackableBy(player)){
+			player->sendSystemMessage("@bio_engineer:harvest_dna_invalid_target"); // You cannot sample DNA from that target.
 			return INVALIDTARGET;
 		}
 
 		// Sample DNa is a 16M max range
 		if (!object->isInRange(creature, 16.0f)){
-			player->sendSystemMessage("@bio_engineer:harvest_dna_out_of_range");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_out_of_range"); // Your target is too far away to be able to sample from.
 			return TOOFAR;
 		}
 
 		//if (creature->)
 		// At this point we know its a living creature we are targetting
 		if (cr->isDead()){
-			player->sendSystemMessage("@bio_engineer:harvest_dna_target_corpse");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_target_corpse"); // You cannot sample DNA from a corpse.
 			return INVALIDTARGET;
 		}
 
 		if (cr->isBaby()) {
-			player->sendSystemMessage("@bio_engineer:harvest_dna_target_baby");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_target_baby"); // That creature is too young to get a viable DNA sample.
 			return INVALIDTARGET;
 		}
 		// SOE Pathc notes Sept 4, 2003 all pet sampling disabled, added as radial to pet deed
 		if (cr->isPet()) {
 			// allow them to sample their own be pets
-			player->sendSystemMessage("@bio_engineer:harvest_dna_target_pet");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_target_pet"); // You cannot sample DNA from that pet.
 			return INVALIDTARGET;
 		}
 
 		if (cr->isInCombat()) {
-			player->sendSystemMessage("@bio_engineer:harvest_dna_creature_in_combat");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_creature_in_combat"); // It is too dangerous to sample DNA from a creature while it's in combat.
 			return INVALIDTARGET;
 		}
 
@@ -142,7 +142,7 @@ public:
 			ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
 			manager->sample(cr, player);
 		} else {
-			player->sendSystemMessage("@bio_engineer:harvest_dna_cant_harvest");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_cant_harvest"); // You cannot sample DNA from that target.
 		}
 
 		return SUCCESS;
