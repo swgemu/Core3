@@ -139,8 +139,51 @@ void PetDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 
 void PetDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
-
+	setupAttacks();
 	setLoggingName("PetDeed");
+}
+void PetDeedImplementation::setupAttacks() {
+	attacks.removeAll();
+	if (special1 != "none" && special1 != "defaultattack") {
+		String args = "";
+		if (special1.contains("creature") || special1.contains("poison")){
+			attacks.addAttack(special1,args);
+		} else if(special1.contains("blind")) {
+			attacks.addAttack(special1,"blindChance=50");
+		}else if(special1.contains("dizzy")) {
+			attacks.addAttack(special1,"dizzyChance=50");
+		}else if(special1.contains("intimidation")) {
+			attacks.addAttack(special1,"intimidationChance=50");
+		}else if(special1.contains("stun")) {
+			attacks.addAttack(special1,"stunChance=50");
+		}else if(special1.contains("knockdown")) {
+			attacks.addAttack(special1,"knockdownChance=50");
+		}else if(special1.contains("posturedown")) {
+			attacks.addAttack(special1,"postureDownChance=50");
+		}else if(special1.contains("postureup")) {
+			attacks.addAttack(special1,"postureUpChance=50");
+		}
+	}
+	if (special2 != "none" && special2 != "defaultattack") {
+		String args = "";
+		if (special2.contains("creature") || special2.contains("poison")){
+			attacks.addAttack(special2,args);
+		} else if(special2.contains("blind")) {
+			attacks.addAttack(special2,"blindChance=50");
+		}else if(special2.contains("dizzy")) {
+			attacks.addAttack(special2,"dizzyChance=50");
+		}else if(special2.contains("intimidation")) {
+			attacks.addAttack(special2,"intimidationChance=50");
+		}else if(special2.contains("stun")) {
+			attacks.addAttack(special2,"stunChance=50");
+		}else if(special2.contains("knockdown")) {
+			attacks.addAttack(special2,"knockdownChance=50");
+		}else if(special2.contains("posturedown")) {
+			attacks.addAttack(special2,"postureDownChance=50");
+		}else if(special2.contains("postureup")) {
+			attacks.addAttack(special2,"postureUpChance=50");
+		}
+	}
 }
 CreatureAttackMap* PetDeedImplementation::getAttacks() {
 	return &attacks;
@@ -210,46 +253,8 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 			level = minCl;
 		}
 	}
-	if (special1 != "none" && special1 != "defaultattack") {
-		String args = "";
-		if (special1.contains("creature") || special1.contains("poison")){
-			attacks.addAttack(special1,args);
-		} else if(special1.contains("blind")) {
-			attacks.addAttack(special1,"blindChance=50");
-		}else if(special1.contains("dizzy")) {
-			attacks.addAttack(special1,"dizzyChance=50");
-		}else if(special1.contains("intimidation")) {
-			attacks.addAttack(special1,"intimidationChance=50");
-		}else if(special1.contains("stun")) {
-			attacks.addAttack(special1,"stunChance=50");
-		}else if(special1.contains("knockdown")) {
-			attacks.addAttack(special1,"knockdownChance=50");
-		}else if(special1.contains("posturedown")) {
-			attacks.addAttack(special1,"postureDownChance=50");
-		}else if(special1.contains("postureup")) {
-			attacks.addAttack(special1,"postureUpChance=50");
-		}
-	}
-	if (special2 != "none" && special2 != "defaultattack") {
-		String args = "";
-		if (special2.contains("creature") || special2.contains("poison")){
-			attacks.addAttack(special2,args);
-		} else if(special2.contains("blind")) {
-			attacks.addAttack(special2,"blindChance=50");
-		}else if(special2.contains("dizzy")) {
-			attacks.addAttack(special2,"dizzyChance=50");
-		}else if(special2.contains("intimidation")) {
-			attacks.addAttack(special2,"intimidationChance=50");
-		}else if(special2.contains("stun")) {
-			attacks.addAttack(special2,"stunChance=50");
-		}else if(special2.contains("knockdown")) {
-			attacks.addAttack(special2,"knockdownChance=50");
-		}else if(special2.contains("posturedown")) {
-			attacks.addAttack(special2,"postureDownChance=50");
-		}else if(special2.contains("postureup")) {
-			attacks.addAttack(special2,"postureUpChance=50");
-		}
-	}
+	// setup attack map
+	setupAttacks();
 }
 
 void PetDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {

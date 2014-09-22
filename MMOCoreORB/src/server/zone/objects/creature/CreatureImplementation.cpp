@@ -89,7 +89,8 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 	int creaKnowledge = player->getSkillMod("creature_knowledge");
 
 	if (getHideType().isEmpty() && getBoneType().isEmpty() && getMeatType().isEmpty()) {
-		return;
+		if(!isPet()) // we do want to show this for pets
+			return;
 	}
 
 	if (creaKnowledge >= 5) {
@@ -110,7 +111,7 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 			alm->insertAttribute("tamable", "no");
 	}
 
-	if (creaKnowledge >= 20) {
+	if (creaKnowledge >= 20 && !isPet()) {
 		if (!getHideType().isEmpty()) {
 			StringBuffer hideName;
 			hideName << "@obj_attr_n:" << getHideType();
@@ -150,7 +151,6 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 	int skillNum = 0;
 	if (attackMap != NULL)
 		skillNum = attackMap->size();
-
 	if (creaKnowledge >= 70) {
 		String skillname = "none";
 		if (skillNum >= 1)
