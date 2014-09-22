@@ -89,10 +89,11 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 	int creaKnowledge = player->getSkillMod("creature_knowledge");
 
 	if (getHideType().isEmpty() && getBoneType().isEmpty() && getMeatType().isEmpty()) {
-		return;
+		if(!isPet()) // we do want to show this for pets
+			return;
 	}
 
-	if (creaKnowledge >= 5) {
+	if (creaKnowledge >= 5 && !isPet()) {
 		if (isAggressiveTo(player))
 			alm->insertAttribute("aggro", "yes");
 		else
@@ -103,14 +104,14 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 			alm->insertAttribute("stalking", "no");
 	}
 
-	if (creaKnowledge >= 10) {
+	if (creaKnowledge >= 10 && !isPet()) {
 		if (getTame() > 0.0f)
 			alm->insertAttribute("tamable", "yes");
 		else
 			alm->insertAttribute("tamable", "no");
 	}
 
-	if (creaKnowledge >= 20) {
+	if (creaKnowledge >= 20 && !isPet()) {
 		if (!getHideType().isEmpty()) {
 			StringBuffer hideName;
 			hideName << "@obj_attr_n:" << getHideType();
@@ -131,18 +132,18 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 			alm->insertAttribute("res_meat", "---");
 	}
 
-	if (creaKnowledge >= 30) {
+	if (creaKnowledge >= 30 && !isPet()) {
 		if (isKiller())
 			alm->insertAttribute("killer", "yes");
 		else
 			alm->insertAttribute("killer", "no");
 	}
 
-	if (creaKnowledge >= 40) {
+	if (creaKnowledge >= 40 && !isPet()) {
 		alm->insertAttribute("ferocity", (int) getFerocity());
 	}
 
-	if (creaKnowledge >= 50)
+	if (creaKnowledge >= 50 && !isPet())
 		alm->insertAttribute("challenge_level", getAdultLevel());
 
 	//int skillNum = skillCommands.size();
@@ -150,7 +151,6 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 	int skillNum = 0;
 	if (attackMap != NULL)
 		skillNum = attackMap->size();
-
 	if (creaKnowledge >= 70) {
 		String skillname = "none";
 		if (skillNum >= 1)

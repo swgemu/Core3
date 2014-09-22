@@ -327,4 +327,9 @@ class PetDeed extends Deed {
 	@local
 	public native string getTemplateName();
 	
+	/**
+	 * Setup attack map during initialize
+	 */
+	@local	
+	public native void setupAttacks();
 }
