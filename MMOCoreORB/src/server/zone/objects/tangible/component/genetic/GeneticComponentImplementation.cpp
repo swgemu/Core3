@@ -125,8 +125,10 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 		if (fortitude > 500) {
 			armorRating = 1;
 		}
-		if (fortitude == 1000) {
+		else if (fortitude == 1000) {
 			armorRating = 2;
+		} else {
+			armorRating = 0;
 		}
 	} else {
 		// We experimented for up and gained armor, when this happens reset resists

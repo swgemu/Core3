@@ -41,7 +41,7 @@ protected:
 	float calcResistMin(float input,float mod) {
 		if (input < 0)
 			input = -99;
-		return (input * ((input/1000) + 0.15)) * mod;
+		return (input * ((input/100) + 0.15)) * mod;
 	}
 	float calcMaxPercentage(uint32 value) {
 		float percent = ((float)value/(float)1000);

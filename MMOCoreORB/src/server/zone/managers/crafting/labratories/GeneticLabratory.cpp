@@ -175,15 +175,15 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->addExperimentalProperty("expAggressionProfile","fierceness",fieMin,fieMax,0,false,CraftingManager::LINEARCOMBINE);
 	craftingValues->addExperimentalProperty("expAggressionProfile","power",powMin,powMax,0,false,CraftingManager::LINEARCOMBINE);
 
-	craftingValues->addExperimentalProperty("","dna_comp_armor_kinetic",calcResistMin(kinetic,modifier),kinetic,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_blast",calcResistMin(blast,modifier),blast,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_energy",calcResistMin(energy,modifier),energy,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_heat",calcResistMin(heat,modifier),heat,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("","dna_comp_armor_kinetic",calcResistMin(kinetic,modifier),kinetic,0,false,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("","dna_comp_armor_blast",calcResistMin(blast,modifier),blast,0,false,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("","dna_comp_armor_energy",calcResistMin(energy,modifier),energy,0,false,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("","dna_comp_armor_heat",calcResistMin(heat,modifier),heat,0,false,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("","dna_comp_armor_cold",calcResistMin(cold,modifier),cold,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_electric",calcResistMin(electric,modifier),electric,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_acid",calcResistMin(acid,modifier),acid,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_stun",calcResistMin(stun,modifier),stun,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_saber",calcResistMin(saber,modifier),saber,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("","dna_comp_armor_electric",calcResistMin(electric,modifier),electric,0,false,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("","dna_comp_armor_acid",calcResistMin(acid,modifier),acid,0,false,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("","dna_comp_armor_stun",calcResistMin(stun,modifier),stun,0,false,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("","dna_comp_armor_saber",calcResistMin(saber,modifier),saber,0,false,CraftingManager::OVERRIDECOMBINE);
 
 	craftingValues->setMaxPercentage("dna_comp_armor_kinetic",kinetic/100);
 	craftingValues->setMaxPercentage("dna_comp_armor_blast",blast/100);
