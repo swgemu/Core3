@@ -52,9 +52,9 @@ public:
 			creature->removeBuff(crc);
 		}
 
-		if(!success){
+		if(!success) {
 			// on failure 50% chance to aggro animal
-			if (System::random(100) > 50){
+			if (System::random(100) > 50 && target->isAggressiveTo(creature)) {
 				CombatManager::instance()->startCombat(target,creature,true);
 			}
 			return;
