@@ -117,7 +117,7 @@ class DroidObject extends AiAgent {
 	
 	@dirty
 	public boolean isCamouflaged(CreatureObject target) {
-		return isConcealed(target);
+		return isAggressiveTo(target) && isConcealed(target);
 	}
 	
 	@dirty

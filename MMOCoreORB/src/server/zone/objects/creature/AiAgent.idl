@@ -269,7 +269,7 @@ class AiAgent extends CreatureObject {
 	
 	@dirty
 	public abstract native boolean isCamouflaged(CreatureObject target) {
-		return isScentMasked(target) || isConcealed(target);
+		return isAggressiveTo(target) && (isScentMasked(target) || isConcealed(target));
 	}
 	
 	@dirty
