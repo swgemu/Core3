@@ -30,6 +30,7 @@
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/creature/DnaManager.h"
+#include "server/zone/objects/creature/events/SampleDeedTask.h"
 
 
 void PetDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -271,47 +272,25 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 	if (selectedID == 21) {
 		if(generated || !player->hasSkill("outdoors_bio_engineer_novice") || !isASubChildOf(player))
 			return 1;
-		// handle dna sample
-		int skillMod = player->getSkillMod("dna_harvesting");
-		float rollMod = (((skillMod-level)/level))  + (skillMod-level);
-		// generate a sample, do a quality roll to see how much was copied
-		int newQuality = quality;
-		// generate quality based on skill up to max of existing quality
-		int luckRoll = System::random(100);
-		luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
-		int qualityRoll = luckRoll + rollMod;
-		// quality is related to your skill vs the creature level better odds for a deed
-		if (qualityRoll > 60)
-			newQuality += 0;
-		else if (qualityRoll > 50)
-			newQuality += 1;
-		else if (qualityRoll > 40)
-			newQuality += 2;
-		else if (qualityRoll > 30)
-			newQuality += 3;
-		else if (qualityRoll > 20)
-			newQuality += 4;
-		else if (qualityRoll > 10)
-			newQuality += 5;
-		else
-			newQuality += 6;
-		if(newQuality > 7)
-			newQuality = 7;
-		// increasing xp for sampling a deed some posts suggested it was worth more. im going with double xp as its a 1 off task if we
-		// chnage this to allow for multiple will lower it back down. Once sampling has occured we need to treat it like it was generated and make this untradable and un tamable
-		int xp = DnaManager::instance()->generateXp(level*2);
-		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
-		if(playerManager != NULL)
-			playerManager->awardExperience(player, "bio_engineer_dna_harvesting", xp, true);
-		// Generate a sample
-		DnaManager::instance()->generationalSample(_this.get(),player,newQuality);
-		// Destroy the deed
-		//Remove the deed from it's container.
-		player->sendSystemMessage("@bio_engineer:harvest_dna_succeed");
-		ManagedReference<SceneObject*> deedContainer = getParent();
-		if (deedContainer != NULL) {
-			destroyObjectFromWorld(true);
+		if (player->isRidingMount()) {
+			player->sendSystemMessage("You cannot sample DNA while mounted");
+			return 1;
 		}
+
+		if(player->getPendingTask("sampledeed") != NULL) {
+			player->sendSystemMessage("@bio_engineer:harvest_dna_already_harvesting");
+			return 1;
+		}
+		int skillMod = player->getSkillMod("dna_harvesting");
+		if (skillMod < 1 || level > skillMod + 15) {
+			player->sendSystemMessage("@bio_engineer:harvest_dna_skill_too_low");
+			return 1;
+		}
+
+		Locker clocker(_this.get());
+
+		ManagedReference<SampleDeedTask*> task = new SampleDeedTask(_this.get(), player);
+		player->addPendingTask("sampledeed",task,0);
 		return 0;
 	}
 	if (selectedID == 20) {

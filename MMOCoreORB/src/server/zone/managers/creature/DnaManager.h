@@ -58,7 +58,7 @@ protected:
 	int reduceByPercent(int source, int percent) {
 		float reduceBy = (100.0 - (float)percent) / 100.0;
 		uint32 newValue = (int)( ((float)source) * reduceBy );
-		if (newValue < 0)
+		if (newValue < 1)
 			newValue = 1;
 		return newValue;
 	}

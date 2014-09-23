@@ -106,4 +106,9 @@ class Deed extends TangibleObject {
 	public boolean isDeedObject() {
 		return true;
 	}
+	
+	@dirty
+	public boolean isGenerated() {
+		return generated;
+	}
 }
