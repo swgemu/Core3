@@ -938,8 +938,10 @@ bool FishingManagerImplementation::loseBait(CreatureObject* player) {
 
 				ManagedReference<FishingBaitObject*> fishBait = cast<FishingBaitObject*>( bait.get());
 
-				if (fishBait->getUseCount() > 1)
+				if (fishBait->getUseCount() > 1){
 					fishBait->setUseCount(fishBait->getUseCount() - 1, true);
+					fishBait->setFreshness(FRESH);
+				}
 				else {
 					bait->destroyObjectFromWorld(true);
 
