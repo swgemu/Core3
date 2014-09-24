@@ -34,7 +34,6 @@ gaping_spider_recluse = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareapoison",""},
-		{"mediumpoison",""},
 		{"strongpoison",""}
 	}
 }
