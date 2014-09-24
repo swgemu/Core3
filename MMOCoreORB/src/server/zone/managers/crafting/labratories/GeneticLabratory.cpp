@@ -91,6 +91,44 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 	}
 	return effectiveSpecial;
 }
+void GeneticLabratory::recalculateResist(CraftingValues* craftingValues) {
+	String experimentalPropTitle, attributeName;
+	float percentage = 0.f, min = 0.f, max = 0.f, newValue = 0.f, oldValue = 0.f;
+	bool hidden = false;
+	for (int i = 0; i < craftingValues->getSubtitleCount(); ++i) {
+
+		attributeName = craftingValues->getExperimentalPropertySubtitle(i);
+
+		experimentalPropTitle = craftingValues->getExperimentalPropertyTitle(attributeName);
+
+		min = craftingValues->getMinValue(attributeName);
+		max = craftingValues->getMaxValue(attributeName);
+
+		hidden = craftingValues->isHidden(attributeName);
+
+		percentage = craftingValues->getCurrentPercentage(attributeName);//experimentalPropTitle);
+
+		oldValue = craftingValues->getCurrentValue(attributeName);
+
+		if (experimentalPropTitle == "") {
+			if (max > min)
+				newValue = max;
+			else
+				newValue = min;
+		} else if(max != min) {
+			if (max > min)
+				newValue = (percentage * (max - min)) + min;
+			else
+				newValue = (float(1.0f - percentage) * (min - max)) + max;
+		} else if(max == min) {
+			newValue = max;
+		}
+		if (hidden && experimentalPropTitle == "resists") {
+			craftingValues->setCurrentValue(attributeName, newValue);
+		}
+	}
+
+}
 void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
 
 	if(manufactureSchematic == NULL || manufactureSchematic->getDraftSchematic() == NULL)
@@ -175,62 +213,35 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->addExperimentalProperty("expAggressionProfile","fierceness",fieMin,fieMax,0,false,CraftingManager::LINEARCOMBINE);
 	craftingValues->addExperimentalProperty("expAggressionProfile","power",powMin,powMax,0,false,CraftingManager::LINEARCOMBINE);
 
-	craftingValues->addExperimentalProperty("","dna_comp_armor_kinetic",calcResistMin(kinetic,modifier),kinetic,0,false,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_blast",calcResistMin(blast,modifier),blast,0,false,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_energy",calcResistMin(energy,modifier),energy,0,false,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_heat",calcResistMin(heat,modifier),heat,0,false,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_cold",calcResistMin(cold,modifier),cold,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_electric",calcResistMin(electric,modifier),electric,0,false,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_acid",calcResistMin(acid,modifier),acid,0,false,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_stun",calcResistMin(stun,modifier),stun,0,false,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("","dna_comp_armor_saber",calcResistMin(saber,modifier),saber,0,false,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_kinetic",calcResistMin(kinetic,modifier),kinetic,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_blast",calcResistMin(blast,modifier),blast,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_energy",calcResistMin(energy,modifier),energy,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_heat",calcResistMin(heat,modifier),heat,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_cold",calcResistMin(cold,modifier),cold,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_electric",calcResistMin(electric,modifier),electric,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_acid",calcResistMin(acid,modifier),acid,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_stun",calcResistMin(stun,modifier),stun,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_saber",calcResistMin(saber,modifier),saber,0,true,CraftingManager::OVERRIDECOMBINE);
 
-	craftingValues->setMaxPercentage("dna_comp_armor_kinetic",kinetic/100);
-	craftingValues->setMaxPercentage("dna_comp_armor_blast",blast/100);
-	craftingValues->setMaxPercentage("dna_comp_armor_energy",energy/100);
-	craftingValues->setMaxPercentage("dna_comp_armor_heat",heat/100);
-	craftingValues->setMaxPercentage("dna_comp_armor_cold",cold/100);
-	craftingValues->setMaxPercentage("dna_comp_armor_electric",electric/100);
-	craftingValues->setMaxPercentage("dna_comp_armor_acid",acid/100);
-	craftingValues->setMaxPercentage("dna_comp_armor_stun",stun/100);
-	craftingValues->setMaxPercentage("dna_comp_armor_saber",saber/100);
+	craftingValues->setMaxPercentage("dna_comp_armor_kinetic",kinetic < 0 ? 100: 0);
+	craftingValues->setMaxPercentage("dna_comp_armor_blast",blast <0 ? 100: 0);
+	craftingValues->setMaxPercentage("dna_comp_armor_energy",energy <0 ? 100: 0);
+	craftingValues->setMaxPercentage("dna_comp_armor_heat",heat <0 ? 100: 0);
+	craftingValues->setMaxPercentage("dna_comp_armor_cold",cold <0 ? 100: 0);
+	craftingValues->setMaxPercentage("dna_comp_armor_electric",electric <0 ? 100: 0);
+	craftingValues->setMaxPercentage("dna_comp_armor_acid",acid <0 ? 100: 0);
+	craftingValues->setMaxPercentage("dna_comp_armor_stun",stun <0 ? 100: 0);
+	craftingValues->setMaxPercentage("dna_comp_armor_saber",saber <0 ? 100: 0);
 
-	if (kinetic > 0)
-		craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",calcResistMin(kinetic,modifier)/kinetic);
-	else
-		craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",kinetic/100);
-	if (blast > 0)
-		craftingValues->setCurrentPercentage("dna_comp_armor_blast",calcResistMin(blast,modifier)/blast);
-	else
-		craftingValues->setCurrentPercentage("dna_comp_armor_blast",blast/100);
-	if (energy > 0)
-		craftingValues->setCurrentPercentage("dna_comp_armor_energy",calcResistMin(energy,modifier)/energy);
-	else
-		craftingValues->setCurrentPercentage("dna_comp_armor_energy",energy/100);
-	if (heat > 0)
-		craftingValues->setCurrentPercentage("dna_comp_armor_heat",calcResistMin(heat,modifier)/heat);
-	else
-		craftingValues->setCurrentPercentage("dna_comp_armor_heat",heat/100);
-	if (cold > 0)
-		craftingValues->setCurrentPercentage("dna_comp_armor_cold",calcResistMin(cold,modifier)/cold);
-	else
-		craftingValues->setCurrentPercentage("dna_comp_armor_cold",cold/100);
-	if (electric > 0)
-		craftingValues->setCurrentPercentage("dna_comp_armor_electric",calcResistMin(electric,modifier)/electric);
-	else
-		craftingValues->setCurrentPercentage("dna_comp_armor_electric",electric/100);
-	if (acid > 0)
-		craftingValues->setCurrentPercentage("dna_comp_armor_acid",calcResistMin(acid,modifier)/acid);
-	else
-		craftingValues->setCurrentPercentage("dna_comp_armor_acid",acid/100);
-	if (stun > 0)
-		craftingValues->setCurrentPercentage("dna_comp_armor_stun",calcResistMin(stun,modifier)/stun);
-	else
-		craftingValues->setCurrentPercentage("dna_comp_armor_stun",stun/100);
-	if (saber > 0)
-		craftingValues->setCurrentPercentage("dna_comp_armor_saber",calcResistMin(saber,modifier)/saber);
-	else
-		craftingValues->setCurrentPercentage("dna_comp_armor_saber",saber/100);
+	craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",kinetic > 0 ? calcResistMin(kinetic,modifier)/kinetic: kinetic /60);
+	craftingValues->setCurrentPercentage("dna_comp_armor_blast",blast > 0  ? calcResistMin(blast,modifier)/blast: blast/100);
+	craftingValues->setCurrentPercentage("dna_comp_armor_energy",energy > 0 ? calcResistMin(energy,modifier)/energy: energy/60);
+	craftingValues->setCurrentPercentage("dna_comp_armor_heat",heat > 0 ? calcResistMin(heat,modifier)/heat:heat/100);
+	craftingValues->setCurrentPercentage("dna_comp_armor_cold",cold > 0 ? calcResistMin(cold,modifier)/cold: cold/100);
+	craftingValues->setCurrentPercentage("dna_comp_armor_electric",electric > 0 ? calcResistMin(electric,modifier)/electric: electric/100);
+	craftingValues->setCurrentPercentage("dna_comp_armor_acid",acid > 0 ? calcResistMin(acid,modifier)/acid: acid/100);
+	craftingValues->setCurrentPercentage("dna_comp_armor_stun",stun > 0 ? calcResistMin(stun,modifier)/stun : stun /100);
+	craftingValues->setCurrentPercentage("dna_comp_armor_saber",saber > 0 ? calcResistMin(saber,modifier)/saber : saber/100);
 
 
 	// Calc the max Percentage, vs Min Percentage
@@ -290,6 +301,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	int level = (phy->getLevel() + pro->getLevel() + men->getLevel() + psy->getLevel() + agr->getLevel()) / 5;
 	genetic->setLevel(level);
 	craftingValues->recalculateValues(true);
+	recalculateResist(craftingValues);
 }
 
 void GeneticLabratory::initialize(ZoneServer* server) {
@@ -346,4 +358,5 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		craftingValues->setCurrentPercentage("dna_comp_armor_stun",craftingValues->getCurrentPercentage("dna_comp_armor_stun") + modifier);
 	if (craftingValues->getMaxValue("dna_comp_armor_saber") > 0)
 		craftingValues->setCurrentPercentage("dna_comp_armor_saber",craftingValues->getCurrentPercentage("dna_comp_armor_saber") + modifier);
+	recalculateResist(craftingValues);
 }
