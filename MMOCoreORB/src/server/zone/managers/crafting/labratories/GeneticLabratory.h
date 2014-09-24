@@ -40,7 +40,7 @@ protected:
 	}
 	float calcResistMin(float input,float mod) {
 		if (input < 0)
-			input = -99;
+			input = -1;
 		return (input * ((input/100) + 0.15)) * mod;
 	}
 	float calcMaxPercentage(uint32 value) {
@@ -49,6 +49,7 @@ protected:
 			percent = 1;
 		return percent;
 	}
+	void recalculateResist(CraftingValues* craftingValues);
 
 };
 

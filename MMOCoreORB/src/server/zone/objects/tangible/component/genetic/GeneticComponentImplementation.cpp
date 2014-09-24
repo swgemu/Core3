@@ -224,7 +224,7 @@ String GeneticComponentImplementation::resistValue(float input){
 		return "Vulnerable";
 	} else {
 		StringBuffer displayvalue;
-		displayvalue << Math::getPrecision(input, 10);
+		displayvalue << Math::getPrecision(input, 0);
 		return displayvalue.toString();
 	}
 }
