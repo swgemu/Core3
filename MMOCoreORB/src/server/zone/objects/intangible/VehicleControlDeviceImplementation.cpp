@@ -135,7 +135,6 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		vehicle = cast<CreatureObject*>(controlledObject.get());
 		vehicle->setCreatureLink(player);
 		vehicle->setControlDevice(_this.get());
-		
 		if (vehicle->isDestroyed())
 		{
 			String vehicleName = vehicle->getDisplayedName();
