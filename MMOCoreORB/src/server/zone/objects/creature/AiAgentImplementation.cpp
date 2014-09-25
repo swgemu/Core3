@@ -1711,9 +1711,11 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	Locker locker(&targetMutex);
 	CreatureObject* effectiveTarget = target;
 	// Check masked scent
-	if (target->isVehicleObject()) {
-		VehicleObject* vech = cast<VehicleObject*>( target);
-		effectiveTarget = vech->getLinkedCreature().get();
+	if (target->isVehicleObject() || target->isMount()) {
+		effectiveTarget = target->getLinkedCreature().get();
+	}
+	if (effectiveTarget == NULL) {
+		return false;
 	}
 	if (!effectiveTarget->hasState(CreatureState::MASKSCENT)) {
 		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
@@ -1756,9 +1758,11 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 	Locker locker(&targetMutex);
 	CreatureObject* effectiveTarget = target;
 	// Check masked scent
-	if (target->isVehicleObject()) {
-		VehicleObject* vech = cast<VehicleObject*>( target);
-		effectiveTarget = vech->getLinkedCreature().get();
+	if (target->isVehicleObject() || target->isMount()) {
+		effectiveTarget = target->getLinkedCreature().get();
+	}
+	if (effectiveTarget == NULL) {
+		return false;
 	}
 
 	if (!effectiveTarget->hasState(CreatureState::MASKSCENT)) {
