@@ -32,7 +32,7 @@ arachne_drone = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"defaultattack",""},
+		{"strongpoison",""},
 		{"dizzyattack","dizzyChance=50"}
 	}
 }
