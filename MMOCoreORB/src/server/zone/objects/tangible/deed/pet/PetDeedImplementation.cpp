@@ -147,7 +147,7 @@ void PetDeedImplementation::setupAttacks() {
 	attacks.removeAll();
 	if (special1 != "none" && special1 != "defaultattack") {
 		String args = "";
-		if (special1.contains("creature") || special1.contains("poison")){
+		if (special1.contains("creature") || special1.contains("poison") || special1.contains("disease")){
 			attacks.addAttack(special1,args);
 		} else if(special1.contains("blind")) {
 			attacks.addAttack(special1,"blindChance=50");
@@ -167,7 +167,7 @@ void PetDeedImplementation::setupAttacks() {
 	}
 	if (special2 != "none" && special2 != "defaultattack") {
 		String args = "";
-		if (special2.contains("creature") || special2.contains("poison")){
+		if (special2.contains("creature") || special2.contains("poison") || special2.contains("disease")){
 			attacks.addAttack(special2,args);
 		} else if(special2.contains("blind")) {
 			attacks.addAttack(special2,"blindChance=50");
