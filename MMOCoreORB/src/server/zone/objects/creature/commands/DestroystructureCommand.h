@@ -90,7 +90,7 @@ public:
 			return INVALIDTARGET;
 		}
 
-		if (structure->isGCWBase()) {
+		if (structure->isGCWBase() || structure->isTurret() || structure->isMinefield()) {
 			return INVALIDTARGET;
 		}
 

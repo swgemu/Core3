@@ -91,6 +91,10 @@ public:
 			return INVALIDTARGET;
 		}
 
+		if (structure->isTurret() || structure->isMinefield()) {
+			return INVALIDTARGET;
+		}
+
 		//Validate the name.
 		NameManager* nameManager = server->getNameManager();
 
