@@ -40,7 +40,7 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	local scno = SceneObject(pObject)
 	if ObjectManager.withTangibleObject(pAgent, function(tano) return tano:getPvpStatusBitmask() == NONE end) or ObjectManager.withCreatureObject(pAgent, function(creo) return creo:isDead() or creo:isIncapacitated() end) then return false end
 	--if not scno:isAiAgent() then agent:info("4") end
-	if agent:getNumberOfPlayersInRange() <= 0  or agent:isRetreating() or agent:isFleeing() or agent:isInCombat() then return false end
+	if agent:getNumberOfPlayersInRange() <= 0  or agent:isRetreating() or agent:isFleeing() or agent:isInCombat() then return false	end
 	--if not scno:isAiAgent() then agent:info("5") end
 	if agent:getFollowObject() ~= nil and agent:getFollowObject() ~= pObject then return false end
 	--if not scno:isAiAgent() then agent:info("6") end
@@ -53,16 +53,16 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	--if not scno:isAiAgent() then agent:info("7") end
 	
 	--local scno = LuaSceneObject(pObject)
-	if not scno:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
+	if not scno:isCreatureObject() then	return false end -- don't aggro TANOs (lairs, turrets, etc)
 	--if not scno:isAiAgent() then agent:info("8") end
 	local target = CreatureObject(pObject)
-	if ObjectManager.withTangibleObject(pObject, function(tano) return tano:getPvpStatusBitmask() == NONE end) or target:isDead() or target:isIncapacitated() then return false end
+	if ObjectManager.withTangibleObject(pAgent, function(tano) return tano:getPvpStatusBitmask() == NONE end) or target:isDead() or target:isIncapacitated() then return false end
 	--if not scno:isAiAgent() then agent:info("9") end
 	
 	-- if not in combat, ignore creatures in different cells
 	local agentParentID = ObjectManager.withSceneObject(pAgent, function(scno) return scno:getParentID() end)
 	local targetParentID = ObjectManager.withSceneObject(pObject, function(scno) return scno:getParentID() end)
-	if agentParentID ~= targetParentID then return false end
+	if agentParentID ~= targetParentID then	return false end
 	--if not scno:isAiAgent() then agent:info("10") end
 	
 	if agent:isCamouflaged(pObject) or not agent:isAttackableBy(pObject) or not target:isAttackableBy(pAgent) then return false end
