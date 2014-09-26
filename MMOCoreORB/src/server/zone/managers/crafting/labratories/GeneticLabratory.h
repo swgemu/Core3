@@ -50,7 +50,6 @@ protected:
 		return percent;
 	}
 	void recalculateResist(CraftingValues* craftingValues);
-
 };
 
 }
