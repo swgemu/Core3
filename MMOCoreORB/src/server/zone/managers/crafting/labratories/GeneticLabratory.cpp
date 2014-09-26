@@ -56,6 +56,7 @@ float GeneticLabratory::applyFormula(float aVal, float bVal, float cVal, float d
 }
 String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e, int odds) {
 	String effectiveSpecial = "defaultattack";
+	// if no special was found in the first passed in slot pick one at random
 	if (a.isEmpty()) {
 		int rand = System::random(3);
 		switch(rand) {
@@ -78,15 +79,13 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 	} else {
 		effectiveSpecial = a;
 	}
-	if (effectiveSpecial == "defaultattack" ||
-		effectiveSpecial == "creatureareacombo" ||
-		effectiveSpecial == "creatureareableeding" ||
-		effectiveSpecial == "creatureareaknockdown" ||
-		effectiveSpecial == "creatureareadisease" ||
-		effectiveSpecial == "creatureareapoison")
+	if (effectiveSpecial.contains("creature"))
 		effectiveSpecial = "defaultattack";
-	int roll = System::random(1000);
-	if (roll > odds ) {
+	int roll = System::random(750);
+	// roll now determined by template quality
+	// we roll 0-800 if that number is < quality * 100 i.e. VHQ 100 VLQ 700 if we get less than the odds we dont stick the special
+	// VLQ has a 7% chance to stick a special VHQ has 87% chance to stick it
+	if (roll < odds ) {
 		effectiveSpecial = "defaultattack";
 	}
 	return effectiveSpecial;
@@ -283,12 +282,12 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	float menQual = 7 - men->getQuality();
 	float psyQual = 7 - psy->getQuality();
 	if (men->isRanged() || psy->isRanged()) {
-		int chance = System::random(100 - (assemblySuccess * 10)); // so amazing success 100, critical falure is 20
+		int chance = System::random((assemblySuccess * 10)-100); // so amazing success 100, critical falure is 20
 		// did you roll exceed (7 - Quality) * 10 (VHQ is 0) so always works
 		if (chance > (menQual * 10) || chance > (psyQual * 10))
 			ranged = true;
 	}
-	odds = men->getQuality() * 100;
+	odds = quality * 100;
 	// check for specials here, then we have base assemble work completed.
 	// update crafting values, and/or experimentRow should handle resist calc changes. update crafting values should determine armor setup
 	String sp1 = pickSpecialAttack(agr->getSpecialAttackOne(),psy->getSpecialAttackOne(),phy->getSpecialAttackOne(),men->getSpecialAttackOne(),pro->getSpecialAttackOne(),odds);
