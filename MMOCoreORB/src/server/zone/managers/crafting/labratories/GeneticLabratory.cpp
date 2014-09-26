@@ -242,8 +242,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->setCurrentPercentage("dna_comp_armor_stun",stun > 0 ? calcResistMin(stun,modifier)/stun : stun /100);
 	craftingValues->setCurrentPercentage("dna_comp_armor_saber",saber > 0 ? calcResistMin(saber,modifier)/saber : saber/100);
 
-
-	// Calc the max Percentage, vs Min Percentage
+	// Calc the max Percentage, vs Min Percentage genetic can always got up to 100% for a given title
 	craftingValues->setMaxPercentage("fortitude",calcMaxPercentage(fortMax));
 	craftingValues->setCurrentPercentage("fortitude", getAssemblyPercentage(fortMin) * modifier);
 
@@ -320,21 +319,112 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 	String title, subtitle, subtitlesTitle;
 	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
 	modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
+	// We need to change this to increase in a more linear fashion and determine percentages inverse
+	String prop1 = "";
+	String prop2 = "";
+	Vector<String> others;
+	int a = 0;
+	int b = 0;
+	int maxA = 0;
+	int maxB = 0;
+	others.add("dexterity");
+	others.add("endurance");
+	others.add("intellect");
+	others.add("cleverness");
+	others.add("dependability");
+	others.add("courage");
+	others.add("fierceness");
+	others.add("power");
+	others.add("hardiness");
+	others.add("fortitude");
 
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
-		if (subtitlesTitle == title) {
-			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
-			modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
-			newValue = craftingValues->getCurrentPercentage(subtitle) + modifier;
+	if (title == "expPhysiqueProfile") {
+		prop1 = "hardiness";
+		prop2 = "fortitude";
+	}
+	if (title == "expProwessProfile") {
+		prop1 = "dexterity";
+		prop2 = "endurance";
+	}
+	if (title == "expMentalProfile") {
+		prop1 = "intellect";
+		prop2 = "cleverness";
+	}
+	if (title == "expPsychologicalProfile") {
+		prop1 = "dependability";
+		prop2 = "courage";
+	}
+	if (title == "expAggressionProfile") {
+		prop1 = "fierceness";
+		prop2 = "power";
+	}
+	others.removeElement(prop1);
+	others.removeElement(prop2);
+	float adjustment = 0;
+	bool reduceA = false;
+	bool reduceB = false;
+	// get a random 2nd title
 
-			if (newValue >= craftingValues->getMaxPercentage(subtitle))
-				newValue = craftingValues->getMaxPercentage(subtitle);
-
-			if (newValue <= 0)
-				newValue = 0;
-
-			craftingValues->setCurrentPercentage(subtitle, newValue);
+	switch(experimentationResult) {
+		case CraftingManager::AMAZINGSUCCESS:
+			adjustment = 1;
+			break;
+		case CraftingManager::GREATSUCCESS:
+			adjustment = 0.9;
+			break;
+		case CraftingManager::GOODSUCCESS:
+			adjustment = 0.8;
+			break;
+		case CraftingManager::MODERATESUCCESS:
+			adjustment = 0.7;
+			break;
+		case CraftingManager::SUCCESS:
+			adjustment = 0.6;
+			break;
+		case CraftingManager::MARGINALSUCCESS:
+			adjustment =0.5;
+			break;
+		case CraftingManager::OK:
+			adjustment = 0.4;
+			break;
+		case CraftingManager::BARELYSUCCESSFUL:
+			adjustment = 0.3;
+			break;
+		case CraftingManager::CRITICALFAILURE:
+			adjustment = -0.4;
+			int which = System::random(1);
+			if (which == 0) {
+				reduceA = true;
+			} else {
+				reduceB = true;
+			}
+			break;
+	}
+	for(int i=0;i<pointsAttempted;i++) {
+		a = craftingValues->getCurrentValue(prop1);
+		b = craftingValues->getCurrentValue(prop2);
+		maxA = craftingValues->getMaxValue(prop1);
+		maxB = craftingValues->getMaxValue(prop2);
+		// this is per point add this for each point spent we use slightly diff calcs than resources since we need to work on 2 at once in a relation ship
+		int maxIncreaseA = (a + round(b/(b+a)*140)) > maxA ? maxA : (a + round(b/(b+a)*140));
+		int maxIncreaseB = (b + round(a/(a+b)*140)) > maxB ? maxB : (b + round(a/(a+b)*140));
+		if (CraftingManager::CRITICALFAILURE == experimentationResult) {
+			if (reduceA)
+				craftingValues->setCurrentValue(prop1,a * adjustment);
+			else
+				craftingValues->setCurrentValue(prop1,a + (maxIncreaseA * 0.3));
+			if (reduceB)
+				craftingValues->setCurrentValue(prop2,b * adjustment);
+			else
+				craftingValues->setCurrentValue(prop2,b + (maxIncreaseB * 0.3));
+			if (System::random(100) < 20) {
+				int index = System::random(others.size());
+				String p = others.get(index);
+				craftingValues->setCurrentValue(p,craftingValues->getCurrentValue(p) * 0.3);
+			}
+		} else {
+			craftingValues->setCurrentValue(prop1,a + (maxIncreaseA * adjustment));
+			craftingValues->setCurrentValue(prop2,b + (maxIncreaseB * adjustment));
 		}
 	}
 
