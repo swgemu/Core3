@@ -52,6 +52,8 @@ function mission_target_conv_handler:runScreenHandlers(pConversationTemplate, pC
 		pConversationScreen = self:handleScreenInvFull(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "otherescort_n" then
 		pConversationScreen = self:handleScreenOtherEscort(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	elseif screenID == "dontknowyou_n" then
+		pConversationScreen = self:handleScreenDontKnowYou(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "npc_smuggle_n" then
 		pConversationScreen = self:handleScreenSmuggle(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "npc_takeme_n" then
@@ -136,6 +138,24 @@ function mission_target_conv_handler:handleScreenOtherEscort(pConversationTempla
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":otherescort_" .. missionNumber)
+
+	return pConversationScreen
+end
+
+function mission_target_conv_handler:handleScreenDontKnowYou(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	local screen = LuaConversationScreen(pConversationScreen)
+	pConversationScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConversationScreen)
+
+	if (pConversingNpc == nil) then
+		return nil
+	end
+
+	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local stfFile = self.themePark:getStfFile(npcNumber)
+
+	clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou_" .. missionNumber)
 
 	return pConversationScreen
 end
