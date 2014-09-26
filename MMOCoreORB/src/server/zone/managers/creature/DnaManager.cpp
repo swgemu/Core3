@@ -203,13 +203,8 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	prototype->setSaber(deed->getSaber());
 	prototype->setRanged(deed->getRanged());
 	prototype->setArmorRating(deed->getArmor());
-	CreatureAttackMap* attackMap = deed->getAttacks();
-	if (attackMap->size() > 0) {
-		prototype->setSpecialAttackOne(String(attackMap->getCommand(0)));
-		if(attackMap->size() > 1) {
-			prototype->setSpecialAttackTwo(String(attackMap->getCommand(1)));
-		}
-	}
+	prototype->setSpecialAttackOne(deed->getSpecial1());
+	prototype->setSpecialAttackTwo(deed->getSpecial2());
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
