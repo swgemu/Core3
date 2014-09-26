@@ -290,6 +290,15 @@ class PetDeed extends Deed {
 	}	
 	
 	@dirty
+	public string getSpecial1() {
+		return special1;
+	}
+	@dirty
+	public string getSpecial2() {
+		return special2;
+	}
+	
+	@dirty
 	public unsigned int getCleverness() { 
 		return cleverness; 
 	}
