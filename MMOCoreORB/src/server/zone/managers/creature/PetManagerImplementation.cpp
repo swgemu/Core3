@@ -161,6 +161,9 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	if( message.isEmpty() )
 		return;
 
+	if (pet->isDead() || pet->isIncapacitated())
+		return;
+
 	ManagedReference<PetControlDevice*> pcd = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
 	if( pcd == NULL )
