@@ -16,7 +16,7 @@ npcMapNym =
 			stfFile = "@celebrity/nym",
 		},
 		{
-			spawnData = { planetName = "lok", npcTemplate = "kole", x = -3, z = 3.4, y = -19.6, direction = 0, cellID = 6595511, position = STAND },
+			spawnData = { planetName = "lok", npcTemplate = "kole", x = -3, z = 3.4, y = -21.31, direction = 0, cellID = 6595511, position = STAND },
 			worldPosition = { x = 473, y = 4770 },
 			npcNumber = 2,
 			stfFile = "@celebrity/kole",
@@ -55,23 +55,6 @@ sceneObjectMapNym = {
 	}
 }
 
-permissionMapNym = {
-	{
-		planetName = "lok",
-		regionName = "nym_pirate_cave",
-		permissions =
-		{
-			{
-				cells = { 5126336 },
-				conditions =
-				{
-					{ permissionType = "npcState", npcState = "nym_theme_park_hackerNpc", state = 8 }
-				}
-			}
-		}
-	}
-}
-
 waypointMapNym = {
 	nym = { x = 475, y = 4766 },
 	jinkins = { x = 478, y = 4768 },
@@ -89,7 +72,6 @@ ThemeParkNym = ThemeParkLogic:new {
 	npcMap = npcMapNym,
 	waypointMap = waypointMapNym,
 	sceneObjectMap = sceneObjectMapNym,
-	permissionMap = permissionMapNym,
 	className = "ThemeParkNym",
 	screenPlayState = "nym_theme_park",
 	missionDescriptionStf = "",
@@ -153,8 +135,8 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer, radialSelected)
 			questItem = "object/tangible/loot/quest/nym_droid_memory_chip.iff"
 			questMsg = "@theme_park_nym/messages:acquired_memory"
 			ThemeParkNym:removeNpcWaypoints(player, playerObject)
-			local jinkinsWaypoint = playerObject:addWaypoint("lok", "Return the chip to Jinkins", "Return the chip to Jinkins", ThemeParkNym.waypointMap.jinkins.x, ThemeParkNym.waypointMap.jinkins.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-			writeData(player:getObjectID() .. ":jinkinsWaypointID", jinkinsWaypoint)
+			local jinkinsWaypoint = playerObject:addWaypoint("lok", "Return the chip to Jinkins", "Return the chip to Jinkins", ThemeParkNym.waypointMap.jinkins.x, ThemeParkNym.waypointMap.jinkins.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			setQuestStatus(player:getObjectID() .. ":jinkinsWaypointID", jinkinsWaypoint)
 		elseif (SceneObject(pDroid):getTemplateObjectPath() == "object/tangible/container/loot/gas_filter_container.iff") then
 			if (player:hasScreenPlayState(1, "nym_theme_park_koleNpc") ~= 1) then
 				return 1
@@ -162,8 +144,8 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer, radialSelected)
 			questItem = "object/tangible/loot/quest/nym_filtered_gas.iff"
 			questMsg = "@theme_park_nym/messages:acquired_gas"
 			ThemeParkNym:removeNpcWaypoints(player, playerObject)
-			local koleWaypoint = playerObject:addWaypoint("lok", "Return the filter to Kole", "Return the filter to Kole", ThemeParkNym.waypointMap.kole.x, ThemeParkNym.waypointMap.kole.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-			writeData(player:getObjectID() .. ":koleWaypointID", koleWaypoint)
+			local koleWaypoint = playerObject:addWaypoint("lok", "Return the filter to Kole", "Return the filter to Kole", ThemeParkNym.waypointMap.kole.x, ThemeParkNym.waypointMap.kole.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			setQuestStatus(player:getObjectID() .. ":koleWaypointID", koleWaypoint)
 		elseif (SceneObject(pDroid):getTemplateObjectPath() == "object/tangible/container/loot/computer_container.iff") then
 			if ((player:hasScreenPlayState(1, "nym_theme_park_nymNpc") ~= 1) and (player:hasScreenPlayState(2, "nym_theme_park_nymNpc") ~= 1) and (player:hasScreenPlayState(4, "nym_theme_park_nymNpc") ~= 1) and (player:hasScreenPlayState(8, "nym_theme_park_nymNpc") ~= 1)) then
 				return 1
@@ -172,8 +154,8 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer, radialSelected)
 			if (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/nym_imggc.iff", true) ~= nil) then
 				questMsg = "@theme_park_nym/messages:all_nym_needed"
 				ThemeParkNym:removeNpcWaypoints(player, playerObject)
-				local nymWaypoint = playerObject:addWaypoint("lok", "Return the items to Nym", "Return the items to Nym", ThemeParkNym.waypointMap.nym.x, ThemeParkNym.waypointMap.nym.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-				writeData(player:getObjectID() .. ":nymWaypointID", nymWaypoint)
+				local nymWaypoint = playerObject:addWaypoint("lok", "Return the items to Nym", "Return the items to Nym", ThemeParkNym.waypointMap.nym.x, ThemeParkNym.waypointMap.nym.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+				setQuestStatus(player:getObjectID() .. ":nymWaypointID", nymWaypoint)
 			else
 				questMsg = "@theme_park_nym/messages:acquired_hard_drive"
 			end
@@ -186,8 +168,8 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer, radialSelected)
 			if (getContainerObjectByTemplate(pInventory, "object/tangible/loot/quest/nym_hard_drive.iff", true) ~= nil) then
 				questMsg = "@theme_park_nym/messages:all_nym_needed"
 				ThemeParkNym:removeNpcWaypoints(player, playerObject)
-				local nymWaypoint = playerObject:addWaypoint("lok", "Return the items to Nym", "Return the items to Nym", ThemeParkNym.waypointMap.nym.x, ThemeParkNym.waypointMap.nym.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-				writeData(player:getObjectID() .. ":nymWaypointID", nymWaypoint)
+				local nymWaypoint = playerObject:addWaypoint("lok", "Return the items to Nym", "Return the items to Nym", ThemeParkNym.waypointMap.nym.x, ThemeParkNym.waypointMap.nym.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+				setQuestStatus(player:getObjectID() .. ":nymWaypointID", nymWaypoint)
 			else
 				questMsg = "@theme_park_nym/messages:acquired_imggcu"
 			end
@@ -279,51 +261,51 @@ function NymContainerComponent:transferObject(pContainer, pObj, slot)
 end
 
 function ThemeParkNym:removeNpcWaypoints(player, playerObject)
-	local caveID = readData(player:getObjectID() .. ":nymPirateCaveWaypointID")
-	local hermitID = readData(player:getObjectID() .. ":nymHermitWaypointID")
+	local caveID = tonumber(getQuestStatus(player:getObjectID() .. ":nymPirateCaveWaypointID"))
+	local hermitID = tonumber(getQuestStatus(player:getObjectID() .. ":nymHermitWaypointID"))
 	if (caveID ~= 0) then
 		playerObject:removeWaypoint(caveID, true)
-		deleteData(player:getObjectID() .. ":nymPirateCaveWaypointID")
+		removeQuestStatus(player:getObjectID() .. ":nymPirateCaveWaypointID")
 	end
 	if (hermitID ~= 0) then
 		playerObject:removeWaypoint(hermitID, true)
-		deleteData(player:getObjectID() .. ":nymHermitWaypointID")
+		removeQuestStatus(player:getObjectID() .. ":nymHermitWaypointID")
 	end
-	local mineID = readData(player:getObjectID() .. ":nymGasMineWaypointID")
-	local bribeID = readData(player:getObjectID() .. ":nymBribeWaypointID")
+	local mineID = tonumber(getQuestStatus(player:getObjectID() .. ":nymGasMineWaypointID"))
+	local bribeID = tonumber(getQuestStatus(player:getObjectID() .. ":nymBribeWaypointID"))
 	if (mineID ~= 0) then
 		playerObject:removeWaypoint(mineID, true)
-		deleteData(player:getObjectID() .. ":nymGasMineWaypointID")
+		removeQuestStatus(player:getObjectID() .. ":nymGasMineWaypointID")
 	end
 	if (bribeID ~= 0) then
 		playerObject:removeWaypoint(bribeID, true)
-		deleteData(player:getObjectID() .. ":nymBribeWaypointID")
+		removeQuestStatus(player:getObjectID() .. ":nymBribeWaypointID")
 	end
-	local facilityID = readData(player:getObjectID() .. ":nymFacilityWaypointID")
-	local gamblerID = readData(player:getObjectID() .. ":nymGamblerWaypointID")
+	local facilityID = tonumber(getQuestStatus(player:getObjectID() .. ":nymFacilityWaypointID"))
+	local gamblerID = tonumber(getQuestStatus(player:getObjectID() .. ":nymGamblerWaypointID"))
 	if (facilityID ~= 0) then
 		playerObject:removeWaypoint(facilityID, true)
-		deleteData(player:getObjectID() .. ":nymFacilityWaypointID")
+		removeQuestStatus(player:getObjectID() .. ":nymFacilityWaypointID")
 	end
 	if (gamblerID ~= 0) then
 		playerObject:removeWaypoint(gamblerID, true)
-		deleteData(player:getObjectID() .. ":nymGamblerWaypointID")
+		removeQuestStatus(player:getObjectID() .. ":nymGamblerWaypointID")
 	end
-	local nymReturnID = readData(player:getObjectID() .. ":nymWaypointID")
-	local jinkinsReturnID = readData(player:getObjectID() .. ":jinkinsWaypointID")
-	local koleReturnID = readData(player:getObjectID() .. ":koleWaypointID")
+	local nymReturnID = tonumber(getQuestStatus(player:getObjectID() .. ":nymWaypointID"))
+	local jinkinsReturnID = tonumber(getQuestStatus(player:getObjectID() .. ":jinkinsWaypointID"))
+	local koleReturnID = tonumber(getQuestStatus(player:getObjectID() .. ":koleWaypointID"))
 
 	if (nymReturnID ~= 0) then
 		playerObject:removeWaypoint(nymReturnID, true)
-		deleteData(player:getObjectID() .. ":nymWaypointID")
+		removeQuestStatus(player:getObjectID() .. ":nymWaypointID")
 	end
 	if (jinkinsReturnID ~= 0) then
 		playerObject:removeWaypoint(jinkinsReturnID, true)
-		deleteData(player:getObjectID() .. ":jinkinsWaypointID")
+		removeQuestStatus(player:getObjectID() .. ":jinkinsWaypointID")
 	end
 	if (koleReturnID ~= 0) then
 		playerObject:removeWaypoint(koleReturnID, true)
-		deleteData(player:getObjectID() .. ":koleWaypointID")
+		removeQuestStatus(player:getObjectID() .. ":koleWaypointID")
 	end
 end
 
@@ -379,5 +361,16 @@ function ThemeParkNym:start()
 		ThemeParkNym:spawnNpcs()
 		self:spawnSceneObjects()
 		self:permissionObservers()
+
+		local pCell = getSceneObject(5126336)
+		if pCell ~= nil then
+			ObjectManager.withSceneObject(pCell, function(cell)
+				cell:setContainerInheritPermissionsFromParent(false)
+				cell:clearContainerDefaultDenyPermission(WALKIN)
+				cell:clearContainerDefaultAllowPermission(WALKIN)
+				cell:setContainerAllowPermission("NymPirateCave", WALKIN)
+				cell:setContainerDenyPermission("NymPirateCave", MOVEIN)
+			end)
+		end
 	end
 end

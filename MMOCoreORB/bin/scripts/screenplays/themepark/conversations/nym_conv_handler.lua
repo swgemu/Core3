@@ -44,22 +44,22 @@ function NymConvoHandler:runNymScreenHandlers(conversationTemplate, conversingPl
 				clonedConversation:addOption("@celebrity/nym:tell_me_quest", "quest_info")
 			end
 		elseif (screenID == "go_lab") then
-			local oldWaypointID = readData(player:getObjectID() .. ":nymFacilityWaypointID")
+			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymFacilityWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				deleteData(player:getObjectID() .. ":nymFacilityWaypointID")
+				removeQuestStatus(player:getObjectID() .. ":nymFacilityWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Imperial Research Facility", "Imperial Research Facility", ThemeParkNym.waypointMap.researchfacility.x, ThemeParkNym.waypointMap.researchfacility.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-			writeData(player:getObjectID() .. ":nymFacilityWaypointID", waypointID)
+			local waypointID = playerObject:addWaypoint("lok", "Imperial Research Facility", "Imperial Research Facility", ThemeParkNym.waypointMap.researchfacility.x, ThemeParkNym.waypointMap.researchfacility.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			setQuestStatus(player:getObjectID() .. ":nymFacilityWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_nymNpc")
 		elseif (screenID == "go_to_officer") then
-			local oldWaypointID = readData(player:getObjectID() .. ":nymGamblerWaypointID")
+			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymGamblerWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				deleteData(player:getObjectID() .. ":nymGamblerWaypointID")
+				removeQuestStatus(player:getObjectID() .. ":nymGamblerWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Nym's Informant", "Nym's Informant", ThemeParkNym.waypointMap.gambler.x, ThemeParkNym.waypointMap.gambler.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-			writeData(player:getObjectID() .. ":nymGamblerWaypointID", waypointID)
+			local waypointID = playerObject:addWaypoint("lok", "Nym's Informant", "Nym's Informant", ThemeParkNym.waypointMap.gambler.x, ThemeParkNym.waypointMap.gambler.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			setQuestStatus(player:getObjectID() .. ":nymGamblerWaypointID", waypointID)
 			self.themePark:setState(player, 2, "nym_theme_park_nymNpc")
 		end
 		return conversationScreen
@@ -90,22 +90,22 @@ function NymConvoHandler:runJinkinsScreenHandlers(conversationTemplate, conversi
 		local conversationScreen = screen:cloneScreen()
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		if (screenID == "heres_droid_memory") then
-			local oldWaypointID = readData(player:getObjectID() .. ":nymPirateCaveWaypointID")
+			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymPirateCaveWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				deleteData(player:getObjectID() .. ":nymPirateCaveWaypointID")
+				removeQuestStatus(player:getObjectID() .. ":nymPirateCaveWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Sulfur Lake Pirate Hideout", "", ThemeParkNym.waypointMap.piratecave.x, ThemeParkNym.waypointMap.piratecave.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-			writeData(player:getObjectID() .. ":nymPirateCaveWaypointID", waypointID)
+			local waypointID = playerObject:addWaypoint("lok", "Sulfur Lake Pirate Hideout", "", ThemeParkNym.waypointMap.piratecave.x, ThemeParkNym.waypointMap.piratecave.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			setQuestStatus(player:getObjectID() .. ":nymPirateCaveWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_jinkinsNpc")
 		elseif (screenID == "heres_the_guy") then
-			local oldWaypointID = readData(player:getObjectID() .. ":nymHermitWaypointID")
+			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymHermitWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				deleteData(player:getObjectID() .. ":nymHermitWaypointID")
+				removeQuestStatus(player:getObjectID() .. ":nymHermitWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Hermit", "", ThemeParkNym.waypointMap.choster.x, ThemeParkNym.waypointMap.choster.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-			writeData(player:getObjectID() .. ":nymHermitWaypointID", waypointID)
+			local waypointID = playerObject:addWaypoint("lok", "Hermit", "", ThemeParkNym.waypointMap.choster.x, ThemeParkNym.waypointMap.choster.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			setQuestStatus(player:getObjectID() .. ":nymHermitWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_chosterNpc")
 		elseif (screenID == "good_work" and clonedConversation:getOptionCount() == 0) then
 			if (player:hasScreenPlayState(2, "nym_theme_park_koleNpc") == 1) then
@@ -132,22 +132,22 @@ function NymConvoHandler:runKoleScreenHandlers(conversationTemplate, conversingP
 				clonedConversation:addOption("@celebrity/kole:tell_me_quest", "quest_info")
 			end
 		elseif (screenID == "here_is_gas") then
-			local oldWaypointID = readData(player:getObjectID() .. ":nymGasMineWaypointID")
+			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymGasMineWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				deleteData(player:getObjectID() .. ":nymGasMineWaypointID")
+				removeQuestStatus(player:getObjectID() .. ":nymGasMineWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Imperial Gas Mine", "", ThemeParkNym.waypointMap.gasmine.x, ThemeParkNym.waypointMap.gasmine.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-			writeData(player:getObjectID() .. ":nymGasMineWaypointID", waypointID)
+			local waypointID = playerObject:addWaypoint("lok", "Imperial Gas Mine", "", ThemeParkNym.waypointMap.gasmine.x, ThemeParkNym.waypointMap.gasmine.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			setQuestStatus(player:getObjectID() .. ":nymGasMineWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_koleNpc")
 		elseif (screenID == "here_is_imperial") then
-			local oldWaypointID = readData(player:getObjectID() .. ":nymBribeWaypointID")
+			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymBribeWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				deleteData(player:getObjectID() .. ":nymBribeWaypointID")
+				removeQuestStatus(player:getObjectID() .. ":nymBribeWaypointID")
 			end
-			local waypointID = playerObject:addWaypoint("lok", "Sergeant Moore", "", ThemeParkNym.waypointMap.imperialbribe.x, ThemeParkNym.waypointMap.imperialbribe.y, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-			writeData(player:getObjectID() .. ":nymBribeWaypointID", waypointID)
+			local waypointID = playerObject:addWaypoint("lok", "Sergeant Moore", "", ThemeParkNym.waypointMap.imperialbribe.x, ThemeParkNym.waypointMap.imperialbribe.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
+			setQuestStatus(player:getObjectID() .. ":nymBribeWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_mooreNpc")
 		end
 		return conversationScreen
@@ -224,6 +224,7 @@ function NymConvoHandler:runHackerScreenHandlers(conversationTemplate, conversin
 		local doorStatus = player:hasScreenPlayState(8, "nym_theme_park_hackerNpc")
 		if (((guessedColor == 1) and (guessedMath == 1) and (guessedJoke == 1)) and (doorStatus ~= 1)) then
 			self.themePark:setState(player, 8, "nym_theme_park_hackerNpc")
+			playerObject:addPermissionGroup("NymPirateCave", true)
 		end
 		doorStatus = player:hasScreenPlayState(8, "nym_theme_park_hackerNpc")
 		if ((screenID == "right_color") or (screenID == "right_answer") or (screenID == "right_joke")) then
@@ -373,7 +374,7 @@ function NymConvoHandler:getInitialHackerScreen(pPlayer, pNpc, pConversationTemp
 	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 		-- Hacker states: 1= guessed color, 2 = guessed math, 4 = guessed joke, 8 = door opened
-		if conversingPlayer:hasScreenPlayState(1, "nym_theme_park_hackerNpc") == 8 then
+		if conversingPlayer:hasScreenPlayState(8, "nym_theme_park_hackerNpc") == 1 then
 			return convoTemplate:getScreen("doors_open")
 		end
 		return convoTemplate:getScreen("help_me_hack")
