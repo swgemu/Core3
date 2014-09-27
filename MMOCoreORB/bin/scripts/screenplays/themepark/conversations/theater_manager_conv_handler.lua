@@ -81,6 +81,10 @@ function TheaterManagerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversatio
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
+		if (THEATER_MANAGER_ENABLED == 0) then
+			return convoTemplate:getScreen("too_busy")
+		end
+	
 		local showRunning = readData("theater_manager:show_running")
 		local showPerformer = readData("theater_manager:show_performer")
 		local phase = readData(player:getObjectID() .. ":auditionPhase")

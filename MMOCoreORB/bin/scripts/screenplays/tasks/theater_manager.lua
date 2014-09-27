@@ -5,6 +5,8 @@ TheaterManagerScreenPlay = ScreenPlay:new {
 	screenplayName = "TheaterManagerScreenPlay"
 }
 
+THEATER_MANAGER_ENABLED = 0
+
 local AUDITION_COUNTDOWN_TIME = 30 * 1000 -- 30 seconds
 local PROMOTION_ONE_REQUIRED = 2
 local PROMOTION_TWO_REQUIRED = 2
