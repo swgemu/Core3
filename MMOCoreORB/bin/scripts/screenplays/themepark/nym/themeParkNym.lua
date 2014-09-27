@@ -17,7 +17,7 @@ npcMapNym =
 		},
 		{
 			spawnData = { planetName = "lok", npcTemplate = "kole", x = -3, z = 3.4, y = -21.31, direction = 0, cellID = 6595511, position = STAND },
-			worldPosition = { x = 473, y = 4770 },
+			worldPosition = { x = 472, y = 4768 },
 			npcNumber = 2,
 			stfFile = "@celebrity/kole",
 		},
@@ -58,7 +58,7 @@ sceneObjectMapNym = {
 waypointMapNym = {
 	nym = { x = 475, y = 4766 },
 	jinkins = { x = 478, y = 4768 },
-	kole = { x = 473, y = 4770 },
+	kole = { x = 472, y = 4768 },
 	choster = { x = 519, y = 5058 },
 	piratecave = { x = -3027, y = -681 },
 	imperialbribe = { x = 479, y = 5031 },
@@ -129,7 +129,7 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer, radialSelected)
 		local questItem, questMsg, questNpc
 		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 		if (SceneObject(pDroid):getTemplateObjectPath() == "object/tangible/container/loot/astromech_container.iff") then
-			if (player:hasScreenPlayState(1, "nym_theme_park_jinkinsNpc") ~= 1) then
+			if (player:hasScreenPlayState(1, "nym_theme_park_jinkinsNpc") ~= 1 or player:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc") == 1) then
 				return 1
 			end
 			questItem = "object/tangible/loot/quest/nym_droid_memory_chip.iff"
@@ -138,7 +138,7 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer, radialSelected)
 			local jinkinsWaypoint = playerObject:addWaypoint("lok", "Return the chip to Jinkins", "Return the chip to Jinkins", ThemeParkNym.waypointMap.jinkins.x, ThemeParkNym.waypointMap.jinkins.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
 			setQuestStatus(player:getObjectID() .. ":jinkinsWaypointID", jinkinsWaypoint)
 		elseif (SceneObject(pDroid):getTemplateObjectPath() == "object/tangible/container/loot/gas_filter_container.iff") then
-			if (player:hasScreenPlayState(1, "nym_theme_park_koleNpc") ~= 1) then
+			if (player:hasScreenPlayState(1, "nym_theme_park_koleNpc") ~= 1 or player:hasScreenPlayState(2, "nym_theme_park_koleNpc") == 1) then
 				return 1
 			end
 			questItem = "object/tangible/loot/quest/nym_filtered_gas.iff"
@@ -147,7 +147,7 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer, radialSelected)
 			local koleWaypoint = playerObject:addWaypoint("lok", "Return the filter to Kole", "Return the filter to Kole", ThemeParkNym.waypointMap.kole.x, ThemeParkNym.waypointMap.kole.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
 			setQuestStatus(player:getObjectID() .. ":koleWaypointID", koleWaypoint)
 		elseif (SceneObject(pDroid):getTemplateObjectPath() == "object/tangible/container/loot/computer_container.iff") then
-			if ((player:hasScreenPlayState(1, "nym_theme_park_nymNpc") ~= 1) and (player:hasScreenPlayState(2, "nym_theme_park_nymNpc") ~= 1) and (player:hasScreenPlayState(4, "nym_theme_park_nymNpc") ~= 1) and (player:hasScreenPlayState(8, "nym_theme_park_nymNpc") ~= 1)) then
+			if (player:hasScreenPlayState(1, "nym_theme_park_nymNpc") ~= 1 or player:hasScreenPlayState(8, "nym_theme_park_nymNpc") == 1 or player:hasScreenPlayState(16, "nym_theme_park_nymNpc") == 1) then
 				return 1
 			end
 			questItem = "object/tangible/loot/quest/nym_hard_drive.iff"
@@ -161,7 +161,7 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer, radialSelected)
 			end
 			questNpc = "nym"
 		elseif (SceneObject(pDroid):getTemplateObjectPath() == "object/tangible/container/loot/placable_loot_crate.iff") then
-			if ((player:hasScreenPlayState(1, "nym_theme_park_nymNpc") ~= 1) and (player:hasScreenPlayState(2, "nym_theme_park_nymNpc") ~= 1) and (player:hasScreenPlayState(4, "nym_theme_park_nymNpc") ~= 1) and (player:hasScreenPlayState(8, "nym_theme_park_nymNpc") ~= 1)) then
+			if (player:hasScreenPlayState(1, "nym_theme_park_nymNpc") ~= 1 or player:hasScreenPlayState(4, "nym_theme_park_nymNpc") == 1 or player:hasScreenPlayState(16, "nym_theme_park_nymNpc") == 1) then
 				return 1
 			end
 			questItem = "object/tangible/loot/quest/nym_imggc.iff"
