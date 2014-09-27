@@ -16,6 +16,7 @@
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
 
@@ -154,6 +155,22 @@ String StructureObjectImplementation::getTimeString(uint32 timestamp) {
 void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 	if (getMaintenanceRate() <= 0) {
 		//No maintenance cost, structure maintenance cannot expire.
+		return;
+	}
+
+	ManagedReference<CreatureObject*> owner = getOwnerCreatureObject();
+
+	if (owner == NULL || !owner->isPlayerCreature()) {
+		info("Player structure has NULL owner, destroying.", true);
+		StructureManager::instance()->destroyStructure(_this.get());
+		return;
+	}
+
+	ManagedReference<PlayerObject*> ghost = owner->getPlayerObject();
+
+	if (!ghost->isOwnedStructure(_this.get())) {
+		info("Removing orphaned structure.", true);
+		StructureManager::instance()->destroyStructure(_this.get());
 		return;
 	}
 
