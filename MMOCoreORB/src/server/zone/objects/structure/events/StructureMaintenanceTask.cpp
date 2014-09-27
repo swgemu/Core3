@@ -12,6 +12,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/objects/region/CityRegion.h"
 
@@ -114,10 +115,15 @@ void StructureMaintenanceTask::sendMailMaintenanceWithdrawnFromBank(CreatureObje
 	if (chatManager != NULL) {
 		UnicodeString subject = "@player_structure:structure_maintenance_empty_subject";
 
+		String zoneName = "the void";
+		if (structure->getZone() != NULL) {
+			zoneName = structure->getZone()->getZoneName();
+		}
+
 		//Your %TT %TO has an empty maintenance pool. It will start deducting from your bank account automatically.
 		StringIdChatParameter emailBody("@player_structure:structure_maintenance_empty_body");
 		emailBody.setTT(structure->getObjectName());
-		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + ")");
+		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + " on " + zoneName + ")");
 
 		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
 	}
@@ -136,9 +142,14 @@ void StructureMaintenanceTask::sendMailDecay(CreatureObject* owner, StructureObj
 			bodyName = "mail_structure_damage_condemn";
 		}
 
+		String zoneName = "the void";
+		if (structure->getZone() != NULL) {
+			zoneName = structure->getZone()->getZoneName();
+		}
+
 		StringIdChatParameter emailBody("@player_structure:" + bodyName);
 		emailBody.setTT(structure->getObjectName());
-		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + ")");
+		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + " on " + zoneName + ")");
 		emailBody.setDI(structure->getDecayPercentage());
 
 		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
@@ -152,10 +163,15 @@ void StructureMaintenanceTask::sendMailCondemned(CreatureObject* owner, Structur
 	if (chatManager != NULL) {
 		UnicodeString subject = "@player_structure:structure_condemned_subject";
 
+		String zoneName = "the void";
+		if (structure->getZone() != NULL) {
+			zoneName = structure->getZone()->getZoneName();
+		}
+
 		//Your %TT %TO has been condemned by the order of the Empire due to lack of maintenance. You must pay %DI credits to uncondemn this structure.
 		StringIdChatParameter emailBody("@player_structure:structure_condemned_body");
 		emailBody.setTT(structure->getObjectName());
-		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + ")");
+		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + " on " + zoneName + ")");
 		emailBody.setDI(-structure->getSurplusMaintenance());
 		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
 	}

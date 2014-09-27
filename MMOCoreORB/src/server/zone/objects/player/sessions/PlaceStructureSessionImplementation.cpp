@@ -120,7 +120,6 @@ int PlaceStructureSessionImplementation::completeSession() {
 	ManagedReference<PlayerObject*> ghost = creatureObject->getPlayerObject();
 
 	if (ghost != NULL) {
-		ghost->addOwnedStructure(structureObject);
 
 		//Create Waypoint
 		ManagedReference<WaypointObject*> waypointObject = ( zone->getZoneServer()->createObject(String("object/waypoint/world_waypoint_blue.iff").hashCode(), 1)).castTo<WaypointObject*>();

@@ -481,6 +481,11 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	structureObject->grantPermission("ADMIN", creature->getFirstName());
 	structureObject->setOwnerName(creature->getFirstName());
 
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+	if (ghost != NULL) {
+		ghost->addOwnedStructure(structureObject);
+	}
+
 	if(structureObject->isTurret() || structureObject->isMinefield()){
 		structureObject->setFaction(creature->getFaction());
 	}

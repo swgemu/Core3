@@ -252,8 +252,6 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		structureObject->addActiveArea(campArea);
 
-		ghost->addOwnedStructure(structureObject);
-
 		player->sendSystemMessage("@camp:camp_complete");
 
 		/// Remove Camp
