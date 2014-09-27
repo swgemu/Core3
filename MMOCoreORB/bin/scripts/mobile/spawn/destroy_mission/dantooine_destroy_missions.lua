@@ -2,9 +2,9 @@ dantooine_destroy_missions = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "dantooine_bol_lair_neutral_medium_boss_01",
-			minDifficulty = 24,
-			maxDifficulty = 32,
+			lairTemplateName = "dantooine_bol_pigmy_neutral_small",
+			minDifficulty = 8,
+			maxDifficulty = 12,
 			size = 25,
 		},
 		{
@@ -39,8 +39,8 @@ dantooine_destroy_missions = {
 		},
 		{
 			lairTemplateName = "dantooine_piket_longhorn_lair_neutral_medium",
-			minDifficulty = 28,
-			maxDifficulty = 36,
+			minDifficulty = 29,
+			maxDifficulty = 38,
 			size = 25,
 		},
 		{

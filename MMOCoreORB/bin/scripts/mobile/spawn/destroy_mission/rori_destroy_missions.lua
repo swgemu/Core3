@@ -33,8 +33,8 @@ rori_destroy_missions = {
 		},
 		{
 			lairTemplateName = "rori_nudfuh_lair_neutral_medium",
-			minDifficulty = 8,
-			maxDifficulty = 10,
+			minDifficulty = 11,
+			maxDifficulty = 15,
 			size = 25,
 		},
 		{

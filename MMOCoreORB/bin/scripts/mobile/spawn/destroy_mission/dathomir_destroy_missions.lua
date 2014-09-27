@@ -15,14 +15,8 @@ dathomir_destroy_missions = {
 		},
 		{
 			lairTemplateName = "dathomir_reptilian_mature_flyer_lair_neutral_large",
-			minDifficulty = 14,
-			maxDifficulty = 18,
-			size = 25,
-		},
-		{
-			lairTemplateName = "dathomir_shear_mite_queen_lair_neutral_large",
-			minDifficulty = 14,
-			maxDifficulty = 18,
+			minDifficulty = 18,
+			maxDifficulty = 22,
 			size = 25,
 		},
 		{

@@ -50,9 +50,9 @@ naboo_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "naboo_sharupat_family_neutral_medium",
-			minDifficulty = 6,
-			maxDifficulty = 8,
+			lairTemplateName = "naboo_sharupat_family_diseased_neutral_medium",
+			minDifficulty = 7,
+			maxDifficulty = 11,
 			size = 25,
 		},
 		{
@@ -80,6 +80,18 @@ naboo_destroy_missions = {
 			size = 25,
 		},
 		{
+			lairTemplateName = "naboo_peko_peko_eyrie_neutral_large",
+			minDifficulty = 12,
+			maxDifficulty = 16,
+			size = 25,
+		},
+		{
+			lairTemplateName = "naboo_gualama_small_lair_neutral_medium",
+			minDifficulty = 11,
+			maxDifficulty = 15,
+			size = 25,
+		},
+		{
 			lairTemplateName = "tusk_cat_grassland",
 			minDifficulty = 14,
 			maxDifficulty = 20,
@@ -89,6 +101,18 @@ naboo_destroy_missions = {
 			lairTemplateName = "naboo_falumpaset_lair_neutral_large",
 			minDifficulty = 17,
 			maxDifficulty = 22,
+			size = 25,
+		},
+		{
+			lairTemplateName = "naboo_narglatch_pride_neutral_medium",
+			minDifficulty = 20,
+			maxDifficulty = 24,
+			size = 25,
+		},
+		{
+			lairTemplateName = "naboo_sharupat_family_neutral_medium",
+			minDifficulty = 20,
+			maxDifficulty = 24,
 			size = 25,
 		},
 		{
@@ -110,9 +134,9 @@ naboo_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "naboo_gualama_small_lair_neutral_medium",
-			minDifficulty = 11,
-			maxDifficulty = 15,
+			lairTemplateName = "naboo_gualama_large_lair_neutral_medium",
+			minDifficulty = 12,
+			maxDifficulty = 16,
 			size = 25,
 		},
 		{
