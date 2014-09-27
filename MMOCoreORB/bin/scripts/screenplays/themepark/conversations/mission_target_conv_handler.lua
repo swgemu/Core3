@@ -132,9 +132,11 @@ function mission_target_conv_handler:handleScreenOtherEscort(pConversationTempla
 	if (pConversingNpc == nil) then
 		return nil
 	end
-
-	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	
+	local ownerID = readData(CreatureObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
+	local pOwner = getCreatureObject(ownerID)
+	local npcNumber = self.themePark:getActiveNpcNumber(pOwner)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pOwner)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":otherescort_" .. missionNumber)
@@ -151,8 +153,10 @@ function mission_target_conv_handler:handleScreenDontKnowYou(pConversationTempla
 		return nil
 	end
 
-	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local ownerID = readData(CreatureObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
+	local pOwner = getCreatureObject(ownerID)
+	local npcNumber = self.themePark:getActiveNpcNumber(pOwner)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pOwner)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou_" .. missionNumber)
