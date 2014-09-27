@@ -118,6 +118,8 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/creature/PetManager.h"
 
+#include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"
+
 #include <iostream>
 
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
@@ -4451,6 +4453,92 @@ bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID, int 
 		return false;
 	}
 
+}
+
+bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamModifier, float cooldownModifier) {
+	if (player == NULL)
+		return false;
+
+	if (player->isRidingMount()) {
+		player->sendSystemMessage("@cbt_spam:no_burst"); // You cannot burst-run while mounted on a creature or vehicle.
+		return false;
+	}
+
+	if (player->hasBuff(String("gallop").hashCode()) || player->hasBuff(String("burstrun").hashCode()) || player->hasBuff(String("retreat").hashCode())) {
+		player->sendSystemMessage("@combat_effects:burst_run_no"); // You cannot burst run right now.
+		return false;
+	}
+
+	Zone* zone = player->getZone();
+
+	if (zone == NULL) {
+		return false;
+	}
+
+	if (zone->getZoneName() == "dungeon1") {
+		player->sendSystemMessage("@cbt_spam:burst_run_space_dungeon"); // The artificial gravity makes burst running impossible here.
+		return false;
+	}
+
+	if (!player->checkCooldownRecovery("burstrun")) {
+		player->sendSystemMessage("@combat_effects:burst_run_wait"); //You are too tired to Burst Run.
+		return false;
+	}
+
+	uint32 crc = String("burstrun").hashCode();
+	float hamCost = 100.0f;
+	float duration = 30;
+	float cooldown = 300;
+
+	float burstRunMod = (float) player->getSkillMod("burst_run");
+	hamModifier += (burstRunMod / 100.f);
+
+	if (hamModifier > 1.0f) {
+		hamModifier = 1.0f;
+	}
+
+	float hamReduction = 1.f - hamModifier;
+	hamCost *= hamReduction;
+	int newHamCost = (int) hamCost;
+
+	if (cooldownModifier > 1.0f) {
+		cooldownModifier = 1.0f;
+	}
+
+	float coodownReduction = 1.f - cooldownModifier;
+	cooldown *= coodownReduction;
+	int newCooldown = (int) cooldown;
+
+	if (player->getHAM(CreatureAttribute::HEALTH) <= newHamCost || player->getHAM(CreatureAttribute::ACTION) <= newHamCost || player->getHAM(CreatureAttribute::MIND) <= newHamCost) {
+		player->sendSystemMessage("@combat_effects:burst_run_wait"); // You are too tired to Burst Run.
+		return false;
+	}
+
+	player->inflictDamage(player, CreatureAttribute::HEALTH, newHamCost, true);
+	player->inflictDamage(player, CreatureAttribute::ACTION, newHamCost, true);
+	player->inflictDamage(player, CreatureAttribute::MIND, newHamCost, true);
+
+	StringIdChatParameter startStringId("cbt_spam", "burstrun_start_single");
+	StringIdChatParameter modifiedStartStringId("combat_effects", "instant_burst_run");
+	StringIdChatParameter endStringId("cbt_spam", "burstrun_stop_single");
+
+	ManagedReference<Buff*> buff = new Buff(player, crc, duration, BuffType::SKILL);
+	buff->setSpeedMultiplierMod(1.822f);
+	buff->setAccelerationMultiplierMod(1.822f);
+	if (cooldownModifier == 0.f)
+		buff->setStartMessage(startStringId);
+	else
+		buff->setStartMessage(modifiedStartStringId);
+	buff->setEndMessage(endStringId);
+
+	player->addBuff(buff);
+
+	player->updateCooldownTimer("burstrun", (newCooldown + duration) * 1000);
+
+	Reference<BurstRunNotifyAvailableEvent*> task = new BurstRunNotifyAvailableEvent(player);
+	player->addPendingTask("burst_run_notify", task, (newCooldown + duration) * 1000);
+
+	return true;
 }
 
 bool PlayerManagerImplementation::doEnhanceCharacter(uint32 crc, CreatureObject* player, int amount, int duration, int buffType, uint8 attribute) {
