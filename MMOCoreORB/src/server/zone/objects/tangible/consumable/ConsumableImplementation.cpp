@@ -16,7 +16,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/templates/tangible/ConsumableTemplate.h"
 #include "server/zone/objects/tangible/consumable/DelayedBuffObserver.h"
-#include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 
 void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -237,27 +237,14 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		String effect = modifiers.elementAt(0).getKey();
 
 		if (effect == "burst_run") {
-			//We need to reduce the cooldown and efficiency.
-			player->executeObjectControllerAction(String("burstrun").hashCode());
+			float cooldownModifier = (float) duration / 100.f;
+			float hamModifier = (float) nutrition / 100.f;
 
-			if (player->hasBuff(String("burstrun").hashCode())) {
-				float reduction = 1.f - ((float)nutrition / 100.f);
-				player->updateCooldownTimer("burstrun", ((300 * reduction) + duration) * 1000);
-				player->sendSystemMessage("@combat_effects:instant_burst_run"); //You instantly burst run at increased efficiency!
+			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
-				Reference<Task*> task = player->getPendingTask("burst_run_notify");
-
-				if (task != NULL)
-					task->reschedule(((300 * reduction) + duration) * 1000);
-				else {
-					task = new BurstRunNotifyAvailableEvent(player);
-					player->addPendingTask("burst_run_notify", task, ((300 * reduction) + duration) * 1000);
-				}
-
-			} else {
-				//Couldnt burst run yet.
+			if (!playerManager->doBurstRun(player, hamModifier, cooldownModifier))
 				return 0;
-			}
+
 		} else if (effect == "food_reduce") {
 			//Tilla till reduces food stomach filling by a percentage
 			int currentfilling = ghost->getFoodFilling();
