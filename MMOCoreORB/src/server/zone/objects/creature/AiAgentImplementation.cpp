@@ -841,6 +841,20 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 		if (!creo->isInvisible()) {
 			numberOfPlayersInRange.increment();
 			activateMovementEvent();
+
+			if (numberOfPlayersInRange == 1) { // we had no players in range before, and now we do. Need to "activate" AI
+				CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
+
+				SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+				vec->safeCopyTo(closeObjects);
+
+				for (int i = 0; i < closeObjects.size(); ++i) {
+					CreatureObject* creo = closeObjects.get(i).castTo<CreatureObject*>();
+
+					if (creo != NULL)
+						activateAwarenessEvent(creo);
+				}
+			}
 		}
 	}
 }
