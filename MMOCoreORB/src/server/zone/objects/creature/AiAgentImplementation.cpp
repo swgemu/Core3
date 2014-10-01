@@ -835,7 +835,8 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 
 	if (scno == _this.get())
 		return;
-
+	if (scno == NULL)
+		return;
 	if (scno->isPlayerCreature()) {
 		CreatureObject* creo = cast<CreatureObject*>(scno);
 		if (!creo->isInvisible()) {
@@ -844,7 +845,8 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 
 			if (numberOfPlayersInRange == 1) { // we had no players in range before, and now we do. Need to "activate" AI
 				CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
-
+				if (vec == NULL)
+					return;
 				SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
 				vec->safeCopyTo(closeObjects);
 
