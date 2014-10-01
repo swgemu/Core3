@@ -43,7 +43,7 @@ security_door_lock = ConvoScreen:new {
 	leftDialog = "@conversation/biogenic_engineertech:s_f8f36834", -- All of the security doors have different locking algorithms. I've had to work on that first door before, so I'm pretty familiar with how it works. However, once you're though there, you're on your own.
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_engineertech:s_b3d8b98a", "thanks_again_for_help"}, -- Alright, I'll come back when I've found your assistant.
+		{"@conversation/biogenic_engineertech:s_b3d8b98a", "come_back_with_codes"}, -- Alright, I'll come back when I've found your assistant.
 		{"@conversation/biogenic_engineertech:s_bf0dd8c0", "thanks_anyway"} -- I'm sorry. I've got to go.
 	}
 }
@@ -176,7 +176,7 @@ assistant_codes = ConvoScreen:new {
 	leftDialog = "@conversation/biogenic_engineertech:s_75c607ac", -- My assistant has some computer codes that we need to restart the reactor. If you bring me his datapad with those codes, I will gladly make you a security key.
 	stopConversation = "false",
 	options = {
-		{"@conversation/biogenic_engineertech:s_b3d8b98a", "thanks_again_for_help"}, -- Alright, I'll come back when I've found your assistant.
+		{"@conversation/biogenic_engineertech:s_b3d8b98a", "come_back_with_codes"}, -- Alright, I'll come back when I've found your assistant.
 		{"@conversation/biogenic_engineertech:s_bf0dd8c0", "thanks_anyway"} -- I'm sorry. I've got to go.
 	}
 }
@@ -192,6 +192,16 @@ come_back_when_find = ConvoScreen:new {
 }
 
 biogenicEngineerTechConvoTemplate:addScreen(come_back_when_find);
+
+come_back_with_codes = ConvoScreen:new {
+	id = "come_back_with_codes",
+	leftDialog = "@conversation/biogenic_engineertech:s_e61f6f04", -- Thank you very much. Come back with the codes and I'll make you a security key.
+	stopConversation = "true",
+	options = {
+	}
+}
+
+biogenicEngineerTechConvoTemplate:addScreen(come_back_with_codes);
 
 thanks_anyway = ConvoScreen:new {
 	id = "thanks_anyway",

@@ -12,7 +12,6 @@ function BiogenicEngineerTechConvoHandler:runScreenHandlers(pConversationTemplat
 		local screenID = screen:getScreenID()
 
 		if screenID == "init_talk" then
-			writeData(player:getObjectID() .. ":geo_engineertech_talked", 1)
 			if (GeonosianLabScreenPlay:hasGeoItem(pConversingPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
 				clonedConversation:addOption("@conversation/biogenic_engineertech:s_a7b6a9c7", "oh_yes_codes")
 			end
@@ -20,6 +19,8 @@ function BiogenicEngineerTechConvoHandler:runScreenHandlers(pConversationTemplat
 			clonedConversation:addOption("@conversation/biogenic_engineertech:s_428087e9", "knocked_out_power")
 			clonedConversation:addOption("@conversation/biogenic_engineertech:s_99c2fa91", "wandered_bad_spot")
 			clonedConversation:addOption("@conversation/biogenic_engineertech:s_9d6ccb86", "thanks_for_stopping")
+		elseif screenID == "come_back_with_codes" or screenID == "come_back_when_find" then
+			writeData(player:getObjectID() .. ":geo_engineertech_talked", 1)
 		elseif screenID == "return_init" then
 			if (GeonosianLabScreenPlay:hasGeoItem(pConversingPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
 				clonedConversation:addOption("@conversation/biogenic_engineertech:s_da5959ed", "yes_here_are_codes")
