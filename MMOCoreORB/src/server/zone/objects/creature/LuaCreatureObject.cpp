@@ -37,6 +37,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "sendOpenHolocronToPageMessage", &LuaCreatureObject::sendOpenHolocronToPageMessage },
 		{ "inflictDamage", &LuaCreatureObject::inflictDamage },
 		{ "setHAM", &LuaCreatureObject::setHAM },
+		{ "setBaseHAM", &LuaCreatureObject::setBaseHAM },
+		{ "setMaxHAM", &LuaCreatureObject::setMaxHAM },
 		{ "getHAM", &LuaCreatureObject::getHAM },
 		{ "getMaxHAM", &LuaCreatureObject::getMaxHAM },
 		{ "getTargetID", &LuaCreatureObject::getTargetID },
@@ -239,6 +241,24 @@ int LuaCreatureObject::setHAM(lua_State* L) {
 	uint32 value = (uint32) lua_tonumber(L, -1);
 
 	realObject->setHAM(type, value);
+
+	return 0;
+}
+
+int LuaCreatureObject::setBaseHAM(lua_State* L) {
+	uint32 type = (uint32) lua_tonumber(L, -2);
+	uint32 value = (uint32) lua_tonumber(L, -1);
+
+	realObject->setBaseHAM(type, value);
+
+	return 0;
+}
+
+int LuaCreatureObject::setMaxHAM(lua_State* L) {
+	uint32 type = (uint32) lua_tonumber(L, -2);
+	uint32 value = (uint32) lua_tonumber(L, -1);
+
+	realObject->setMaxHAM(type, value);
 
 	return 0;
 }

@@ -33,6 +33,8 @@ namespace creature {
 		int getBankCredits(lua_State *L);
 		int setBankCredits(lua_State* L);
 		int setHAM(lua_State* L);
+		int setBaseHAM(lua_State* L);
+		int setMaxHAM(lua_State* L);
 		int sendSystemMessage(lua_State* L);
 		int sendSystemMessageWithDI(lua_State* L);
 		int sendSystemMessageWithTO(lua_State* L);
