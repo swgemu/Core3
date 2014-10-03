@@ -19,12 +19,6 @@ namespace labratories {
 
 class GeneticLabratory: public SharedLabratory {
 private:
-	const static short PHYSIQUE = 0;
-	const static short PROWESS = 1;
-	const static short MENTAL = 2;
-	const static short AGRESSION = 3;
-	const static short PHYSCHOLOGICAL = 4;
-	float applyFormula(float a, float b, float c, float d, float e,int formula);
 	String pickSpecialAttack(String a, String b, String c, String d, String e, int odds);
 public:
 	GeneticLabratory();
@@ -35,19 +29,21 @@ public:
 	bool allowFactoryRun(ManufactureSchematic* manufactureSchematic);
 	int getCreationCount(ManufactureSchematic* manufactureSchematic);
 protected:
-	uint32 calcMin(float input) {
-		return Math::getPrecision( (input * ((input/1000) + 0.15)),0);
-	}
 	float calcResistMin(float input,float mod) {
 		if (input < 0)
 			input = -1;
 		return (input * ((input/100) + 0.15)) * mod;
 	}
-	float calcMaxPercentage(uint32 value) {
-		float percent = ((float)value/(float)1000);
+	// 12/22 == 12/22 = 0.5
+	float calcMaxPercentage(uint32 value,uint32 diff) {
+		float percent = ((float)diff/(float)value);
 		if (percent > 1)
 			percent = 1;
 		return percent;
+	}
+	float getPercentagOfValue(int number, float percentage) {
+		float intermediate = ((float)number) * percentage;
+		return (float) ceil(intermediate);
 	}
 	void recalculateResist(CraftingValues* craftingValues);
 };

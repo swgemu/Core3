@@ -575,7 +575,7 @@ float CraftingValues::getCurrentVisiblePercentage(const String title) {
 		return -1;
 
 	float value = 0;
-
+	// shouldnt this show the avg so with 1 item who cares, btu more than 1 we wana should avg of all not the LAST one
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
 

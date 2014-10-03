@@ -135,14 +135,15 @@ public:
 	}
 
 	inline void lockValue() {
-		minValue = getValue();
-		maxValue = getValue();
+		//minValue = getValue();
+		//maxValue = getValue();
 		locked = true;
 	}
 
 	inline void unlockValue() {
-		minValue = getValue();
-		maxValue = getValue();
+		// why did this reset the values? that doesnt make sense locking it should freeze it not change it.
+		//minValue = getValue();
+		//maxValue = getValue();
 		locked = false;
 	}
 
