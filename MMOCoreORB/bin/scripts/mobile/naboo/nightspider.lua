@@ -32,8 +32,8 @@ nightspider = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"mildpoison",""},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"mildpoison",""}
 	}
 }
 
