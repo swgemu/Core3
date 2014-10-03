@@ -55,13 +55,13 @@ object_weapon_ranged_droid_droid_droideka_ranged = object_weapon_ranged_droid_sh
 	armorPiercing = LIGHT,
 
 	pointBlankRange = 0,
-	pointBlankAccuracy = 10000,
+	pointBlankAccuracy = 10,
 
 	idealRange = 20,
-	idealAccuracy = 1000,
+	idealAccuracy = 50,
 
-	maxRange = 55,
-	maxRangeAccuracy = 500,
+	maxRange = 65,
+	maxRangeAccuracy = 0,
 
 	minDamage = 100,
 	maxDamage = 200,

@@ -53,11 +53,11 @@ object_weapon_ranged_droid_droid_astromech_ranged = object_weapon_ranged_droid_s
 	armorPiercing = LIGHT,
 	
 	pointBlankRange = 0,
-	pointBlankAccuracy = -70,
+	pointBlankAccuracy = 10,
 	idealRange = 15,
-	idealAccuracy = 100,
-	maxRange = 50,
-	maxRangeAccuracy = -50,
+	idealAccuracy = 50,
+	maxRange = 65,
+	maxRangeAccuracy = 0,
 	attackSpeed = 2,
 	woundsRatio = 10,
 }
