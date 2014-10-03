@@ -114,10 +114,13 @@ public:
 				// Higher skill, lower chance of aggro
 				int sampleRoll = System::random(100);
 				sampleRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
+				// need to revist master against CL70 i.e. ((100-70)/70) + (100-70) = 0 + (30) = 30/2 = ( roll mod is 15)
+				// need to revist master against CL2 i.e. ((100-2)/2) + (100-2) = 49 + (98) = 147/2 = ( roll mod is 73)
+				// so with no luck you need 95 or better roll for amazing
 				float rollMod = (((skillMod-cl)/cl))  + (skillMod-cl);
 				rollMod /= 2;
 				// We have the players roll. NOW to determine if success of failure;
-				if (sampleRoll > 95) { // we had an amazing roll, either kill it via sample or it ignores us
+				if (sampleRoll > 75) { // adjust great success ot 75% and above
 					int maxSamples = ceil(skillMod/25);
 					if (creature->getDnaSampleCount() > maxSamples ){
 						creature->setDnaState(CreatureManager::DNASAMPLED);
@@ -132,7 +135,7 @@ public:
 				else if (sampleRoll < 5) {
 					// Critical failure, this can always occur
 					result = 1;
-				} else if ( (30 + rollMod) < sampleRoll) { // failure your roll < 50%
+				} else if ( (35 + rollMod) < sampleRoll) { // failure your roll < 50%
 					result = 2;
 				} else { // success
 					int maxSamples = ceil(skillMod/25);
@@ -221,17 +224,17 @@ public:
 		luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
 		int qualityRoll = luckRoll + rollMod;
 		// quality is related to your skill vs the creature level
-		if (qualityRoll > 90)
+		if (qualityRoll > 80)
 			quality = 1;
-		else if (qualityRoll > 80)
-			quality = 2;
 		else if (qualityRoll > 70)
-			quality = 3;
+			quality = 2;
 		else if (qualityRoll > 60)
-			quality = 4;
+			quality = 3;
 		else if (qualityRoll > 50)
-			quality = 5;
+			quality = 4;
 		else if (qualityRoll > 40)
+			quality = 5;
+		else if (qualityRoll > 30)
 			quality = 6;
 		else
 			quality = 7;
