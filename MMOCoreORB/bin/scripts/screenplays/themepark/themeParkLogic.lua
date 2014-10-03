@@ -585,6 +585,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 				writeData(CreatureObject(pNpc):getObjectID() .. ":missionOwnerID", CreatureObject(pConversingPlayer):getObjectID())
 			elseif mission.missionType == "escort" then
 				CreatureObject(pNpc):setPvpStatusBitmask(0)
+				self:normalizeNpc(pNpc, 16, 3000)
 				writeData(CreatureObject(pNpc):getObjectID() .. ":missionOwnerID", CreatureObject(pConversingPlayer):getObjectID())
 			elseif mission.missionType == "retrieve" or mission.missionType == "deliver" then
 				CreatureObject(pNpc):setPvpStatusBitmask(0)
@@ -603,6 +604,23 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 		end
 	end
 	return true
+end
+
+function ThemeParkLogic:normalizeNpc(pNpc, level, ham)
+	AiAgent(pNpc):setLevel(level)
+	ObjectManager.withCreatureObject(pNpc, function(npc)
+		for i = 0, 8, 1 do
+			if (i % 3 == 0) then
+				npc:setHAM(i, ham)
+				npc:setBaseHAM(i, ham)
+				npc:setMaxHAM(i, ham)
+			else
+				npc:setHAM(i, ham / 100)
+				npc:setBaseHAM(i, ham / 100)
+				npc:setMaxHAM(i, ham / 100)
+			end
+		end
+	end)
 end
 
 function ThemeParkLogic:spawnDestroyMissionNpcs(mission, pConversingPlayer)
@@ -1505,7 +1523,7 @@ function ThemeParkLogic:resetThemePark(pConversingPlayer)
 		-- clear the root state
 		local state = creature:getScreenPlayState(self.screenPlayState)
 		creature:removeScreenPlayState(state, self.screenPlayState)
-		-- clear all missions	
+		-- clear all missions
 		for i = 1, #self.npcMap do
 			local name = self.npcMap[i].spawnData.npcTemplate
 			local npcState = creature:getScreenPlayState(self.screenPlayState .. "_mission_" .. name)

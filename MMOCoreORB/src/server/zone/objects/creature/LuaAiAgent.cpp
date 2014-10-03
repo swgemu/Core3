@@ -122,6 +122,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getLastCommand", &LuaAiAgent::getLastCommand },
 		{ "setAlertDuration", &LuaAiAgent::setAlertDuration },
 		{ "alertedTimeIsPast", &LuaAiAgent::alertedTimeIsPast },
+		{ "setLevel", &LuaAiAgent::setLevel },
 		{ 0, 0 }
 };
 
@@ -269,6 +270,14 @@ int LuaAiAgent::completeMove(lua_State* L) {
 	lua_pushboolean(L, retVal);
 
 	return 1;
+}
+
+int LuaAiAgent::setLevel(lua_State* L) {
+	int level = (int) lua_tonumber(L, -1);
+
+	realObject->setLevel(level);
+
+	return 0;
 }
 
 int LuaAiAgent::setWait(lua_State* L) {

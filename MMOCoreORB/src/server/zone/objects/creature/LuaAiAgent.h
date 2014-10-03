@@ -120,6 +120,7 @@ namespace creature {
 		int getLastCommand(lua_State* L);
 		int setAlertDuration(lua_State* L);
 		int alertedTimeIsPast(lua_State* L);
+		int setLevel(lua_State* L);
 	private:
 		AiAgent* realObject;
 	};
