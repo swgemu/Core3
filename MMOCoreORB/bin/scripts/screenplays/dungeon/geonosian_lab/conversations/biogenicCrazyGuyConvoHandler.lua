@@ -9,7 +9,7 @@ end
 
 function BiogenicCrazyGuyConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-	return convoTemplate:getScreen("cs_jsPlumb_1_114")
+	return convoTemplate:getScreen("are_you_here")
 end
 
 function BiogenicCrazyGuyConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
