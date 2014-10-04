@@ -8,15 +8,21 @@ dantooine_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "dantooine_huurton_howler_lair_neutral_medium",
-			minDifficulty = 14,
-			maxDifficulty = 18,
+			lairTemplateName = "dantooine_voritor_lair_neutral_medium",
+			minDifficulty = 19,
+			maxDifficulty = 25,
 			size = 25,
 		},
 		{
 			lairTemplateName = "dantooine_quenker_lair_neutral_medium",
 			minDifficulty = 20,
 			maxDifficulty = 26,
+			size = 20,
+		},
+		{
+			lairTemplateName = "dantooine_huurton_howler_lair_neutral_medium_boss_01",
+			minDifficulty = 22,
+			maxDifficulty = 28,
 			size = 25,
 		},
 		{
@@ -26,22 +32,22 @@ dantooine_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "dantooine_bol_lair_neutral_medium",
+			lairTemplateName = "dantooine_bol_lair_neutral_medium_boss_01",
 			minDifficulty = 24,
-			maxDifficulty = 32,
+			maxDifficulty = 31,
 			size = 25,
 		},
 		{
 			lairTemplateName = "dantooine_graul_lair_neutral_medium",
-			minDifficulty = 27,
+			minDifficulty = 26,
 			maxDifficulty = 34,
-			size = 25,
+			size = 35,
 		},
 		{
 			lairTemplateName = "dantooine_piket_longhorn_lair_neutral_medium",
 			minDifficulty = 29,
 			maxDifficulty = 38,
-			size = 25,
+			size = 30,
 		},
 		{
 			lairTemplateName = "dantooine_quenker_bile_drenched_lair_neutral_medium",
@@ -50,10 +56,10 @@ dantooine_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "dantooine_graul_mauler_lair_neutral_large",
+			lairTemplateName = "dantooine_graul_mauler_lair_neutral_large_boss_01",
 			minDifficulty = 31,
 			maxDifficulty = 39,
-			size = 25,
+			size = 35,
 		},
 		{
 			lairTemplateName = "dantooine_voritor_tracker_lair_neutral_medium",
