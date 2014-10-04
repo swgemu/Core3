@@ -178,10 +178,13 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	end
 
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
+	
+	local ownerID = readData(CreatureObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
+	local pOwner = getCreatureObject(ownerID)
 
-	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
-	local mission = self.themePark:getMission(npcNumber, missionNumber)
+	local npcNumber = self.themePark:getActiveNpcNumber(pOwner)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pOwner)
+	local mission = self.themePark:getMission(missionNumber, pOwner)
 
 	local worldPosition = self.themePark:getNpcWorldPosition(npcNumber)
 
