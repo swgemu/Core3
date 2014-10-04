@@ -71,6 +71,9 @@ public:
 
 		if (!checkGroupLeader(player, group))
 			return GENERALERROR;
+
+		if (!creature->checkCooldownRecovery("formup"))
+			return GENERALERROR;
 			
 		int hamCost = (int) (50.0f * calculateGroupModifier(group));
 
@@ -119,7 +122,7 @@ public:
 			if (memberPlayer->isStunned())
 					memberPlayer->removeStateBuff(CreatureState::STUNNED);
 		}
-
+		leader->updateCooldownTimer("formup", 2 * 1000);
 		return true;
 	}
 
