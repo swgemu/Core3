@@ -280,6 +280,7 @@ function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
 	local faction = self:getRecruiterFaction(pNpc)
 	local gcwDiscount = getGCWDiscount(pPlayer)
 	local smugglerDiscount = self:getSmugglerDiscount(pPlayer)
+
 	writeStringData(CreatureObject(pPlayer):getObjectID() .. ":faction_purchase", screenID)
 	local suiManager = LuaSuiManager()
 	local options = { }
@@ -354,18 +355,14 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
 		local factionStanding = playerObject:getFactionStanding(faction)
-
 		local itemCost = self:getItemCost(faction, itemString)
+		itemCost  = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
 
 		if itemCost == nil then
 			return self.errorCodes.ITEMCOST
 		elseif ( pInventory == nil  ) then
 			return self.errorCodes.INVENTORYERROR
-		end
-
-		itemCost  = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
-
-		if (factionStanding  < (itemCost + self.minimumFactionStanding)) then
+		elseif (factionStanding < (itemCost + self.minimumFactionStanding)) then
 			return self.errorCodes.NOTENOUGHFACTION
 		end
 
@@ -416,16 +413,16 @@ function recruiterScreenplay:awardData(pPlayer, faction, itemString)
 
 		local factionStanding = playerObject:getFactionStanding(faction)
 		local itemCost = self:getItemCost(faction, itemString)
+		itemCost  = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
 
 		if pDatapad == nil then
 			return self.errorCodes.DATAPADERROR
 		elseif itemCost == nil then
 			return self.errorCodes.ITEMCOST
-		elseif factionStanding  < (itemCost + self.minimumFactionStanding) then
+		elseif factionStanding < (itemCost + self.minimumFactionStanding) then
 			return self.errorCodes.NOTENOUGHFACTION
 		end
 
-		itemCost  = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
 		local slotsRemaining = SceneObject(pDatapad):getContainerVolumeLimit() - SceneObject(pDatapad):getContainerObjectsSize()
 		local bonusItemCount = self:getBonusItemCount(faction, itemString)
 
