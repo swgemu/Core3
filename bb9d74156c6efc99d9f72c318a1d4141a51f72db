@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_4cbf73d1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/recruiters/recruiterScreenplay.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-05T03:00:40Z",
+      "side": 1,
+      "message": "Don\u0027t move this to before the nil check. I think this function was fine as it was. Changing awardData to match how this was should fix the reported issue, correct?",
+      "revId": "bb9d74156c6efc99d9f72c318a1d4141a51f72db",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
