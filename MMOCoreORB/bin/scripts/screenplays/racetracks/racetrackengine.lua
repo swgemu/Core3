@@ -29,6 +29,10 @@ function RaceTrack:startRacing(pObject)
 end
 
 function RaceTrack:processWaypoint(pActiveArea, pObject)
+	if not SceneObject(pObject):isPlayerCreature() then
+		return
+	end
+
 	local lastIndex =  readScreenPlayData(pObject, self.trackConfig.trackName, "waypoint")
 	if lastIndex ~= "" then
 		local index = self:getWaypointIndex(pActiveArea)

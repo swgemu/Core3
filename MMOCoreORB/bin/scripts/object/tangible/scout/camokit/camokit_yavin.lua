@@ -45,7 +45,7 @@ object_tangible_scout_camokit_camokit_yavin = object_tangible_scout_camokit_shar
 
 	templateType = CAMOKIT,
 
-	effectiveZone = "yavin",
+	effectiveZone = "yavin4",
 
 	numberExperimentalProperties = {1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "XX", "OQ"},
