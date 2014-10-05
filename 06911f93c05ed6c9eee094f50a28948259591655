@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_0cb97be9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-05T03:13:26Z",
+      "side": 1,
+      "message": "I can\u0027t see how this would do anything. A negative dot chance will always be lower than the random number generated in the next line and will therefore always return at that point. A zero will nearly always be lower than the random so setting this to zero will only change the outcome about 1% of the time.\n\nCan you elaborate on what you are trying to fix here?",
+      "revId": "06911f93c05ed6c9eee094f50a28948259591655",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
