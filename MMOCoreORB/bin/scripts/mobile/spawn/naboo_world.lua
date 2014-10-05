@@ -56,7 +56,7 @@ naboo_world = {
 			size = 15
 		},
 		{
-			lairTemplateName = "naboo_mott_lair_neutral_medium",
+			lairTemplateName = "naboo_mott_herd_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 4,
 			maxDifficulty = 13,
@@ -434,7 +434,7 @@ naboo_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_mott_herd_neutral_none",
+			lairTemplateName = "naboo_mott_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 8,
 			maxDifficulty = 12,
