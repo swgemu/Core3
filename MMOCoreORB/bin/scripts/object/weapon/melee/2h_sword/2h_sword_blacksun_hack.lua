@@ -80,7 +80,7 @@ object_weapon_melee_2h_sword_2h_sword_blacksun_hack = object_weapon_melee_2h_swo
 	xpType = "combat_meleespecialize_twohand",
 	       
 	-- See http://www.ocdsoft.com/files/certifications.xls
-	certificationsRequired = { "cert_sword_2h_scythe" },
+	certificationsRequired = { "combat_2hsword_speed_02" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "twohandmelee_accuracy" },
 	
