@@ -104,7 +104,12 @@ void FireworkShowMenuComponent::addEvent(CreatureObject* player, FireworkObject*
 	int curFireworks = fireworkShowData->getTotalFireworkCount();
 	int showCapacity = fireworkShow->getCapacity();
 
-	if (curFireworks == showCapacity) {
+	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
+
+	if (playerObject == NULL)
+		return;
+
+	if (curFireworks == showCapacity && !playerObject->isPrivileged()) {
 		player->sendSystemMessage("This firework show is at full capacity.");
 		return;
 	}

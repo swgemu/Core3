@@ -655,7 +655,7 @@ bool WeaponObjectImplementation::isCertifiedFor(CreatureObject* object) {
 	for (int i = 0; i < certificationsRequired->size(); ++i) {
 		String cert = certificationsRequired->get(i);
 
-		if (!ghost->hasAbility(cert)) {
+		if (!ghost->hasAbility(cert) && !object->hasSkill(cert)) {
 			return false;
 		}
 	}
