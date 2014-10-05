@@ -2213,7 +2213,7 @@ int DirectorManager::isZoneEnabled(lua_State* L) {
 	return 1;
 }
 
-Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, float minimumDistance, float maximumDistance, float extraNoBuildRadius, float sphereCollision) {
+Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, float minimumDistance, float maximumDistance, float extraNoBuildRadius, float sphereCollision, bool forceSpawn) {
 	bool found = false;
 	Vector3 position(0, 0, 0);
 	int retries = 40;
@@ -2236,7 +2236,7 @@ Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, f
 		position = Vector3(newX, newY, newZ);
 
 
-		found = zone->getPlanetManager()->isSpawningPermittedAt(position.getX(), position.getY(), extraNoBuildRadius) &
+		found = (forceSpawn == true || zone->getPlanetManager()->isSpawningPermittedAt(position.getX(), position.getY(), extraNoBuildRadius)) &
 				!CollisionManager::checkSphereCollision(position, sphereCollision, zone);
 
 		retries--;
@@ -2250,23 +2250,37 @@ Vector3 DirectorManager::generateSpawnPoint(String zoneName, float x, float y, f
 }
 
 int DirectorManager::getSpawnPoint(lua_State* L) {
-	if (checkArgumentCount(L, 5) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::getSpawnPoint");
+    int numberOfArguments = lua_gettop(L);
+    if (numberOfArguments != 5 && numberOfArguments != 6) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getSpawnArea");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
 
-	float maximumDistance = lua_tonumber(L, -1);
-	float minimumDistance = lua_tonumber(L, -2);
-	float y = lua_tonumber(L, -3);
-	float x = lua_tonumber(L, -4);
-	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -5);
+    float maximumDistance, minimumDistance, y, x;
+    CreatureObject* creatureObject;
+    bool forceSpawn = false;
+
+    if (numberOfArguments == 5) {
+    	maximumDistance = lua_tonumber(L, -1);
+		minimumDistance = lua_tonumber(L, -2);
+		y = lua_tonumber(L, -3);
+		x = lua_tonumber(L, -4);
+		creatureObject = (CreatureObject*) lua_touserdata(L, -5);
+    } else {
+    	forceSpawn = lua_toboolean(L, -1);
+    	maximumDistance = lua_tonumber(L, -2);
+		minimumDistance = lua_tonumber(L, -3);
+		y = lua_tonumber(L, -4);
+		x = lua_tonumber(L, -5);
+		creatureObject = (CreatureObject*) lua_touserdata(L, -6);
+    }
 
 	if (creatureObject == NULL || creatureObject->getZone() == NULL) {
 		return 0;
 	}
 
-	Vector3 position = generateSpawnPoint(creatureObject->getZone()->getZoneName(), x, y, minimumDistance, maximumDistance, 5.0, 20);
+	Vector3 position = generateSpawnPoint(creatureObject->getZone()->getZoneName(), x, y, minimumDistance, maximumDistance, 5.0, 20, forceSpawn);
 
 	if (position != Vector3(0, 0, 0)) {
 		lua_newtable(L);
@@ -2279,6 +2293,7 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 
 		return 1;
 	} else {
+		instance()->error("Unable to generate spawn point in DirectorManager::getSpawnPoint");
 		return 0;
 	}
 }

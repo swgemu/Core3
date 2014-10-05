@@ -74,17 +74,14 @@ function TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
 			local spawnPoint
 			ObjectManager.withSceneObject(pWaypoint, function(waypoint)
 				if (mapType == 4) then
-					spawnPoint = getSpawnPoint(pPlayer, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 15, 30)
+					spawnPoint = getSpawnPoint(pPlayer, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 15, 30, true)
 				else
 					spawnPoint = getSpawnPoint(pPlayer, waypoint:getWorldPositionX(), waypoint:getWorldPositionY(), 30, 60)
 				end
 			end)
 
-			local x = spawnPoint[1]
-			local y = spawnPoint[3]
-
 			creature:sendSystemMessage("@treasure_map/treasure_map:sys_pinpoint") -- You have successfully pinpointed the exact location of the treasure!
-			local waypointID = player:addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", x, y, WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
+			local waypointID = player:addWaypoint(mapData.planet, "@treasure_map/treasure_map:waypoint_name", "", spawnPoint[1], spawnPoint[3], WAYPOINTGREEN, true, true, WAYPOINTTREASUREMAP, 0)
 			writeData(creature:getObjectID() .. ":treasureMapExactWaypointID", waypointID)
 			deleteData(creature:getObjectID() .. ":treasureMapSearchAreaWaypointID")
 			deleteData(creature:getObjectID() .. ":treasureMapSearchAreaActiveAreaID")
@@ -132,7 +129,7 @@ function TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
 			TreasureMapMenuComponent:spawnTreasureLoot(pChest, pPlayer, mapType)
 			createEvent(TREASURE_CHEST_LIFESPAN, "TreasureMapMenuComponent", "removeTreasureChest", pChest)
 		end)
-		TreasureMapMenuComponent:spawnTreasureDefenders(pObject, pPlayer, x, z, y)
+		TreasureMapMenuComponent:spawnTreasureDefenders(pObject, pPlayer, x, z, y, mapType)
 		SceneObject(pObject):destroyObjectFromWorld()
 		SceneObject(pObject):destroyObjectFromDatabase(true)
 	end)
@@ -173,14 +170,17 @@ function TreasureMapMenuComponent:spawnTreasureLoot(pChest, pPlayer, mapType)
 	end
 end
 
-function TreasureMapMenuComponent:spawnTreasureDefenders(pObject, pPlayer, x, z, y)
+function TreasureMapMenuComponent:spawnTreasureDefenders(pObject, pPlayer, x, z, y, mapType)
 	local mapType = TreasureMapMenuComponent:getMapType(pObject)
 	local mapData = treasureMapData[mapType]
-	local firstSpawnPoint = getSpawnPoint(pPlayer, x, y, 10, 20)
-	local secondSpawnPoint = getSpawnPoint(pPlayer, x, y, 10, 20)
-	local thirdSpawnPoint = getSpawnPoint(pPlayer, x, y, 10, 20)
+	local firstSpawnPoint, secondSpawnPoint, thirdSpawnPoint
+	if (mapType ~= 4) then
+		firstSpawnPoint = getSpawnPoint(pPlayer, x, y, 10, 20)
+	end
 
 	if (mapType == 1 or mapType == 2) then
+		secondSpawnPoint = getSpawnPoint(pPlayer, x, y, 10, 20)
+		thirdSpawnPoint = getSpawnPoint(pPlayer, x, y, 10, 20)
 		local pMobile = spawnMobile(mapData.planet, "pirate_leader", 0, firstSpawnPoint[1], firstSpawnPoint[2], firstSpawnPoint[3], 0, 0)
 		TreasureMapMenuComponent:setDefenderAggro(pMobile, pPlayer)
 		spatialChat(pMobile, "@treasure_map/treasure_map:bark_" .. mapStringName[mapType])
@@ -258,7 +258,7 @@ function TreasureMapMenuComponent:handleTreasureMapSuiCallback(pCreature, pSui, 
 
 		local spawnPoint
 		if (mapType == 4) then
-			spawnPoint = getSpawnPoint(pCreature, mapData.x, mapData.y, 1, 50)
+			spawnPoint = getSpawnPoint(pCreature, mapData.x, mapData.y, 1, 50, true)
 		else
 			spawnPoint = getSpawnPoint(pCreature, mapData.x, mapData.y, 1, 2000)
 		end
