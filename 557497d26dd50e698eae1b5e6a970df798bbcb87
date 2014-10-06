@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_0cb5fbcc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/treasure_map/TreasureMapMenuComponent.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-06T02:40:40Z",
+      "side": 1,
+      "message": "You\u0027re not using firstSpawnPoint here, so I don\u0027t think you need to make any changes to this function.",
+      "revId": "557497d26dd50e698eae1b5e6a970df798bbcb87",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
