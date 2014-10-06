@@ -326,8 +326,6 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 
 	if (payAmount > surplusMaintenance) {
-		//payAmount = surplusMaintenance;
-		//setOperating(false);
 
 		workTimePermitted = surplusMaintenance / getMaintenanceRate() * 3600;
 
@@ -337,17 +335,17 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 		shutdownWork = true;
 	}
 
-	if (workTimePermitted != 0) {
+	if (workTimePermitted > 0) {
 		elapsedTime = workTimePermitted;
 	}
 
 	addMaintenance(-1.0f * payAmount);
 
 	if (isOperating()) {
-		float enegeryAmount = (elapsedTime / 3600.0) * basePowerRate;
+		float energyAmount = (elapsedTime / 3600.0) * basePowerRate;
 
-		if (enegeryAmount > surplusPower) {
-			enegeryAmount = surplusPower;
+		if (energyAmount > surplusPower) {
+			energyAmount = surplusPower;
 
 			float workPowerPermitted = (surplusPower / basePowerRate) * 3600;
 
@@ -357,11 +355,10 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 			}
 
 			shutdownWork = true;
-
-			//setOperating(false);
 		}
 
-		addPower(-1.0f * enegeryAmount);
+		addPower(-1.0f * energyAmount);
+
 	}
 
 	lastMaintenanceTime.updateToCurrentTime();
