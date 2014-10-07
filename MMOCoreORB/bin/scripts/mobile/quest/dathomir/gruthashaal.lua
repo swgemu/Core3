@@ -1,5 +1,5 @@
 gruthashaal = Creature:new {
-	objectName = "@mob/creature_names:gruthashaal",
+	objectName = "",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

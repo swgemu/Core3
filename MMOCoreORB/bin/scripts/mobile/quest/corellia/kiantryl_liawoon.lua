@@ -1,5 +1,5 @@
 kiantryl_liawoon = Creature:new {
-	objectName = "@mob/creature_names:selonian",
+	objectName = "",
 	customName = "Kiantryl Lianwoon",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",

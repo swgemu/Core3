@@ -1,5 +1,5 @@
-govenor = Creature:new {
-	objectName = "@mob/creature_names:govenor",
+governor = Creature:new {
+	objectName = "@mob/creature_names:governor",
 	socialGroup = "naboo",
 	pvpFaction = "naboo",
 	faction = "naboo",
@@ -34,4 +34,4 @@ govenor = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(govenor, "govenor")
+CreatureTemplates:addCreatureTemplate(governor, "governor")

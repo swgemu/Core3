@@ -1,5 +1,5 @@
-tusken_lighter = Creature:new {
-	objectName = "@mob/creature_names:Tusken_lighter",
+tusken_fighter = Creature:new {
+	objectName = "@mob/creature_names:tusken_soldier",
 	socialGroup = "tusken_raider",
 	pvpFaction = "tusken_raider",
 	faction = "tusken_raider",
@@ -48,4 +48,4 @@ tusken_lighter = Creature:new {
 	attacks = merge(marksmanmaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(tusken_lighter, "tusken_lighter")
+CreatureTemplates:addCreatureTemplate(tusken_fighter, "tusken_fighter")

@@ -1,5 +1,5 @@
 razorback_felspur = Creature:new {
-	objectName = "@mob/creature_names:razorback_felspur",
+	objectName = "@mob/creature_names:desert_razorback_felspur",
 	socialGroup = "boar",
 	pvpFaction = "",
 	faction = "",

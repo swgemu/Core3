@@ -1,5 +1,5 @@
 vehement_warrior = Creature:new {
-	objectName = "@mob/creature_names:vehement_warrior",
+	objectName = "@mob/creature_names:durni_vehement_warrior",
 	socialGroup = "durni",
 	pvpFaction = "",
 	faction = "",

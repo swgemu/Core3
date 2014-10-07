@@ -1,5 +1,5 @@
 plague_rat = Creature:new {
-	objectName = "@mob/creature_names:plague_rat",
+	objectName = "@mob/creature_names:womprat_plague",
 	socialGroup = "rat",
 	pvpFaction = "",
 	faction = "",

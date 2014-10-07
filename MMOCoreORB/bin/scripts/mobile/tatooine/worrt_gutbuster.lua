@@ -1,5 +1,5 @@
 worrt_gutbuster = Creature:new {
-	objectName = "@mob/creature_names:worrt_gutbster",
+	objectName = "@mob/creature_names:worrt_gutbuster",
 	socialGroup = "worrt",
 	pvpFaction = "",
 	faction = "",

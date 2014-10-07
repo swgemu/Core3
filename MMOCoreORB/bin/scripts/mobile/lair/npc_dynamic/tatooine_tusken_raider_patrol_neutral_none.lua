@@ -2,7 +2,7 @@ tatooine_tusken_raider_patrol_neutral_none = Lair:new {
 	mobiles = {
 		{"tusken_bantha",1},
 		{"tusken_flesh_hunter",1},
-		{"tusken_lighter",1},
+		{"tusken_fighter",1},
 		{"tusken_raider",1},
 		{"tusken_savage",1},
 		{"tusken_sniper",1},

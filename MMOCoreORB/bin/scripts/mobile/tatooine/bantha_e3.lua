@@ -1,5 +1,5 @@
 bantha_e3 = Creature:new {
-	objectName = "@mob/creature_names:Bantha_E3",
+	objectName = "@mob/creature_names:bantha",
 	socialGroup = "bantha",
 	pvpFaction = "",
 	faction = "",

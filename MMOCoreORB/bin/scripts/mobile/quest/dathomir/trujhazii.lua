@@ -1,5 +1,5 @@
 trujhazii = Creature:new {
-	objectName = "@mob/creature_names:trujhazii",
+	objectName = "",
 	socialGroup = "nightsister",
 	pvpFaction = "nightsister",
 	faction = "nightsister",

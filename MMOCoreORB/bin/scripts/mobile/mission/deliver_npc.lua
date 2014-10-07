@@ -1,5 +1,5 @@
 deliver_npc = Creature:new {
-	objectName = "@mob/creature_names:Deliver_NPC",
+	objectName = "",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

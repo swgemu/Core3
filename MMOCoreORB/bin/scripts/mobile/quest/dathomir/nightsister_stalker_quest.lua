@@ -1,5 +1,5 @@
 nightsister_stalker_quest = Creature:new {
-	objectName = "@mob/creature_names:nightsister_stalker_quest",
+	objectName = "@mob/creature_names:nightsister_stalker",
 	socialGroup = "nightsister",
 	pvpFaction = "nightsister",
 	faction = "nightsister",

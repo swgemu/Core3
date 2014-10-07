@@ -1,6 +1,5 @@
 acklay = Creature:new {
-	objectName = "@mob/creature_names:",
-	customName = "Acklay",
+	objectName = "@mob/creature_names:geonosian_acklay_bunker_boss",
 	socialGroup = "geonosian_creature",
 	pvpFaction = "",
 	faction = "",

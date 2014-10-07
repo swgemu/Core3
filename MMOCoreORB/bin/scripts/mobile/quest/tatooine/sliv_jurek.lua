@@ -1,5 +1,6 @@
 sliv_jurek = Creature:new {
-	objectName = "Sliv Jurek",
+	objectName = "",
+	customName = "Sliv Jurek",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

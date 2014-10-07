@@ -1,5 +1,5 @@
 shaggy_pubam_youth = Creature:new {
-	objectName = "@mob/creature_names:shaggy_pubam_youth",
+	objectName = "@mob/creature_names:shaggy_ubam_youth",
 	socialGroup = "pubam",
 	pvpFaction = "pubam",
 	faction = "pubam",
