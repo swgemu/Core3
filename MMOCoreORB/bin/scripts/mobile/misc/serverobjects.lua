@@ -1,4 +1,3 @@
-includeFile("misc/bestine_merchant.lua")
 includeFile("misc/bossk.lua")
 includeFile("misc/cll_8.lua")
 includeFile("misc/chiss_female.lua")

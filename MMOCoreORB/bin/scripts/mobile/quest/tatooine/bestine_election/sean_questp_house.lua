@@ -1,5 +1,5 @@
 sean_questp_house = Creature:new {
-	objectName = "@mob/creature_names:Sean Questp House",
+	objectName = "@npc_name:twilek_base_female",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

@@ -1,5 +1,5 @@
 sean_contact_quest = Creature:new {
-	objectName = "@mob/creature_names:Sean Contact Quest",
+	objectName = "@npc_name:bith_base_male",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

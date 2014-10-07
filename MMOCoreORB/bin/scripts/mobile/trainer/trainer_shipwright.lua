@@ -1,5 +1,5 @@
 trainer_shipwright = Creature:new {
-	objectName = "@mob/creature_names:trainer_shipwright",
+	objectName = "@npc_spawner_n:shipwright_trainer",
 	pvpFaction = "",
 	faction = "",
 	level = 100,

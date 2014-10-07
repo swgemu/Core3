@@ -1,5 +1,5 @@
 bestine_merchant = Creature:new {
-	objectName = "@mob/creature_names:merchant",
+	objectName = "@bestine:merchant_title",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "",

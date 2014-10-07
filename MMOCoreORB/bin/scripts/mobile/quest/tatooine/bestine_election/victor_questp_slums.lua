@@ -1,5 +1,5 @@
-sean_questn_university = Creature:new {
-	objectName = "@mob/creature_names:Sean Questn University",
+victor_questp_slums = Creature:new {
+	objectName = "@npc_name:human_base_female",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -26,7 +26,7 @@ sean_questn_university = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_sean_questn_university.iff"},
+	templates = {"object/mobile/dressed_victor_questp_slums.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -34,4 +34,4 @@ sean_questn_university = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(sean_questn_university, "sean_questn_university")
+CreatureTemplates:addCreatureTemplate(victor_questp_slums, "victor_questp_slums")

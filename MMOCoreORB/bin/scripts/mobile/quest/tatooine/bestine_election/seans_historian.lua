@@ -1,5 +1,5 @@
 seans_historian = Creature:new {
-	objectName = "@mob/creature_names:Seans Historian",
+	objectName = "@npc_name:human_base_female",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
