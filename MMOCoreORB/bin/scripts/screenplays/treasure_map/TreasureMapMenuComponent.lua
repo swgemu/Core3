@@ -208,7 +208,7 @@ function TreasureMapMenuComponent:removeTreasureChest(pChest)
 		local chestOwnerID = readData(chest:getObjectID() .. ":ownerID")
 		local pOwner = getSceneObject(chestOwnerID)
 		ObjectManager.withCreaturePlayerObject(pOwner, function(owner)
-			owner:removeWaypointBySpecialType(WAYPOINTTREASURECHEST)
+			owner:removeWaypointBySpecialType(WAYPOINTTREASUREMAP)
 		end)
 
 		deleteData(chestOwnerID .. ":treasureChestID")
