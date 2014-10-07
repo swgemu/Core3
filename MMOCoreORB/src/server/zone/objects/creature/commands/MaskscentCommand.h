@@ -70,12 +70,12 @@ public:
 		uint32 crc = String("skill_buff_mask_scent_self").hashCode();
 
 		if (creature->hasBuff(crc)) {
-			creature->sendSystemMessage("@skl_use:sys_scentmask_fail");
+			creature->sendSystemMessage("@skl_use:sys_scentmask_already"); // You are already masking your scent.
 			return GENERALERROR;
 		}
 
-		StringIdChatParameter startStringId("skl_use", "sys_scentmask_start");
-		StringIdChatParameter endStringId("skl_use", "sys_scentmask_stop");
+		StringIdChatParameter startStringId("skl_use", "sys_scentmask_start"); // Your natural scent has been masked from creatures.
+		StringIdChatParameter endStringId("skl_use", "sys_scentmask_stop"); // Your masked scent has worn off.
 
 
 		int maskScentMod = creature->getSkillMod("mask_scent");
@@ -97,22 +97,22 @@ public:
 	bool checkMaskScent(CreatureObject* creature) {
 
 		if(creature->getSkillMod("mask_scent") <= 0) {
-			creature->sendSystemMessage("@skl_use:sys_scentmask_noskill");
+			creature->sendSystemMessage("@skl_use:sys_scentmask_noskill"); // You might be a very clean person, but you lack the skill to mask your scent from creatures.
 			return false;
 		}
 
-		/*if(creature->getOptionsBitmask() & CreatureState::CONCEALED) {
-			creature->sendSystemMessage("@skl_use:sys_scentmask_concealed");
+		if(creature->hasBuff(String("skill_buff_mask_scent").hashCode()) || creature->getSkillModFromBuffs("private_conceal") > 0) {
+			creature->sendSystemMessage("@skl_use:sys_scentmask_concealed"); // You can't mask your scent while you are concealed.
 			return false;
-		}*/
+		}
 
 		if(creature->getOptionsBitmask() & CreatureState::MASKSCENT) {
-			creature->sendSystemMessage("@skl_use:sys_scentmask_already");
+			creature->sendSystemMessage("@skl_use:sys_scentmask_already"); // You are already masking your scent.
 			return false;
 		}
 
 		if (!creature->checkCooldownRecovery("skill_buff_mask_scent_self")) {
-			StringIdChatParameter waitTime("@skl_use:sys_scentmask_delay");
+			StringIdChatParameter waitTime("@skl_use:sys_scentmask_delay"); // You must wait %DI seconds to mask your scent again.
 			int timeLeft = (creature->getCooldownTime("skill_buff_mask_scent_self")->getMiliTime() / 1000) - System::getTime();
 			waitTime.setDI(timeLeft);
 
@@ -123,7 +123,7 @@ public:
 
 		Zone* zone = creature->getZone();
 		if (creature->getZone() == NULL || creature->isInCombat()) {
-			creature->sendSystemMessage("@skl_use:sys_scentmask_fail");
+			creature->sendSystemMessage("@skl_use:sys_scentmask_fail"); // You cannot mask your scent now.
 			return false;
 		}
 

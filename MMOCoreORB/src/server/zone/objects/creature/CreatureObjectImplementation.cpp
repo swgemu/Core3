@@ -717,14 +717,6 @@ void CreatureObjectImplementation::setCombatState() {
 
 		addMountedCombatSlow();
 
-		// Clear Conceal
-		uint32 crc = String("skill_buff_mask_scent").hashCode();
-		removeBuff(crc);
-
-		// Clear Mask Scent
-		crc = String("skill_buff_mask_scent_self").hashCode();
-		removeBuff(crc);
-
 		notifyObservers(ObserverEventType::STARTCOMBAT);
 	}
 }

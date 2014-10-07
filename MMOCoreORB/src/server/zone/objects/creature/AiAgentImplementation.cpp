@@ -1733,15 +1733,13 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	if (effectiveTarget == NULL) {
 		return false;
 	}
-	if (!effectiveTarget->hasState(CreatureState::MASKSCENT)) {
+	if (!effectiveTarget->hasBuff(String("skill_buff_mask_scent_self").hashCode())) {
 		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
 		return false;
 	}
 	if (isNonPlayerCreatureObject() || isDroidObject())
 		return false;
-	// yellow mobs cant trigger this
-	if (!isAggressiveTo(effectiveTarget))
-		return false;
+
 	// Step 1. Check for break
 	bool success = false;
 	int camoSkill = effectiveTarget->getSkillMod("mask_scent");
@@ -1784,14 +1782,11 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 		return false;
 	}
 
-	if (!effectiveTarget->hasState(CreatureState::MASKSCENT)) {
+	if (!effectiveTarget->hasBuff(String("skill_buff_mask_scent").hashCode())) {
 		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
 		return false;
 	}
 	if (isDroidObject())
-		return false;
-	// yellow mobs cant trigger this
-	if (!isAggressiveTo(effectiveTarget))
 		return false;
 
 	bool success = false;

@@ -66,21 +66,22 @@ public:
 
 		ManagedReference<CreatureObject*> targetPlayer = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 
-		if(targetPlayer == NULL || creature->getZone() == NULL) {
+		if(targetPlayer == NULL || creature->getZone() == NULL || !targetPlayer->isPlayerCreature()) {
+			creature->sendSystemMessage("@skl_use:sys_conceal_notplayer"); // You can only conceal yourself or another player.
 			return INVALIDTARGET;
-		}
-
-		if(!targetPlayer->isPlayerCreature()) {
-			creature->sendSystemMessage("@skl_use:sys_conceal_notplayer");
-			return GENERALERROR;
 		}
 
 		if(targetPlayer->getDistanceTo(creature) > 10.0) {
 			return GENERALERROR;
 		}
 
-		if(targetPlayer->getOptionsBitmask() & CreatureState::MASKSCENT) {
-			creature->sendSystemMessage("@skl_use:sys_target_concealed");
+		if(targetPlayer->hasBuff(String("skill_buff_mask_scent").hashCode()) || targetPlayer->getSkillModFromBuffs("private_conceal") > 0) {
+			creature->sendSystemMessage("@skl_use:sys_target_concealed"); // Your target is already concealed.
+			return false;
+		}
+
+		if(targetPlayer->hasBuff(String("skill_buff_mask_scent_self").hashCode()) || (targetPlayer->getOptionsBitmask() & CreatureState::MASKSCENT)) {
+			creature->sendSystemMessage("@skl_use:sys_conceal_scentmasked"); // You can't Conceal while Scent Masked.
 			return GENERALERROR;
 		}
 
@@ -101,7 +102,7 @@ public:
 				CreatureObject* creo = cast<CreatureObject*>(object);
 
 				if(!creo->isDead() && (creo->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
-					creature->sendSystemMessage("@skl_use:sys_conceal_othersclose");
+					creature->sendSystemMessage("@skl_use:sys_conceal_othersclose"); // You can't conceal yourself because you are too close to a potentially hostile creature or NPC.
 					return GENERALERROR;
 				}
 			}
@@ -144,12 +145,12 @@ public:
 		}
 
 		if(usableKit == NULL) {
-			creature->sendSystemMessage("@skl_use:sys_conceal_nokit");
+			creature->sendSystemMessage("@skl_use:sys_conceal_nokit"); // You need to have a Camouflage Kit in your inventory to Conceal.
 			return GENERALERROR;
 		}
 
-		StringIdChatParameter startStringId("skl_use", "sys_conceal_start");
-		StringIdChatParameter endStringId("skl_use", "sys_conceal_stop");
+		StringIdChatParameter startStringId("skl_use", "sys_conceal_start"); // You are now concealed from view by complex camouflage.
+		StringIdChatParameter endStringId("skl_use", "sys_conceal_stop"); // You are no longer concealed from view.
 
 		uint32 crc = String("skill_buff_mask_scent").hashCode();
 		int camoMod = creature->getSkillMod("camouflage");
@@ -164,7 +165,7 @@ public:
 		buff->setEndMessage(endStringId);
 
 		if(targetPlayer != creature) {
-			StringIdChatParameter param("skl_use","sys_conceal_apply");
+			StringIdChatParameter param("skl_use","sys_conceal_apply"); // You carefully apply the camouflage to %TT.
 			param.setTT(targetPlayer->getFirstName());
 			creature->sendSystemMessage(param);
 		}

@@ -65,7 +65,7 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	if agentParentID ~= targetParentID then	return false end
 	--if not scno:isAiAgent() then agent:info("10") end
 	
-	if (agent:isAggressiveTo(pObject) and agent:isCamouflaged(pObject)) or not agent:isAttackableBy(pObject) or not target:isAttackableBy(pAgent) then return false end
+	if agent:isCamouflaged(pObject) or not agent:isAttackableBy(pObject) or not target:isAttackableBy(pAgent) then return false end
 	--if not scno:isAiAgent() then agent:info("11") end
 	
 	--TODO (dannuic): this seems wrong
@@ -118,7 +118,7 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	if not agent:checkLineOfSight(pObject) then return end
 	--if not scno:isAiAgent() then agent:info("1d") end
 	
-	if (agent:isAggressiveTo(pObject) and agent:isCamouflaged(pObject)) then return end
+	if agent:isCamouflaged(pObject) then return end
 	--if not scno:isAiAgent() then agent:info("1e") end
 	
 	-- TODO (dannuic): tweak these formulae based on feedback
