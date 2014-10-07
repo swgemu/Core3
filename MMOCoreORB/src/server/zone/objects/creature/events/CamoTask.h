@@ -53,8 +53,8 @@ public:
 		}
 
 		if(!success) {
-			// on failure 50% chance to aggro animal
-			if (System::random(100) > 50 && target->isAggressiveTo(creature)) {
+			// on failure 50% chance to aggro animal if aggressive and within 40 meters
+			if (System::random(100) > 50 && target->isAggressiveTo(creature) && target->isInRange(creature,40.0f)) {
 				CombatManager::instance()->startCombat(target,creature,true);
 			}
 			return;
