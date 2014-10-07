@@ -19,7 +19,7 @@ namespace labratories {
 
 class GeneticLabratory: public SharedLabratory {
 private:
-	String pickSpecialAttack(String a, String b, String c, String d, String e, int odds);
+	String pickSpecialAttack(String a, String b, String c, String d, String e, int odds, String other);
 public:
 	GeneticLabratory();
 	virtual ~GeneticLabratory();

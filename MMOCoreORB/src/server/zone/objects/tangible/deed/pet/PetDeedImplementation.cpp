@@ -253,6 +253,10 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 		if (level < minCl) {
 			level = minCl;
 		}
+		// max pet deed lvel is 75 mantis #5610
+		if (getLevel() > 75) {
+			level = 75;
+		}
 	}
 	// setup attack map
 	setupAttacks();

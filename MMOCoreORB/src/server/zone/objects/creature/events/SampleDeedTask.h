@@ -44,6 +44,11 @@ public:
 		int mindCost = player->calculateCostAdjustment(CreatureAttribute::FOCUS, 200);
 		int skillMod = player->getSkillMod("dna_harvesting");
 		int cl = deed->getLevel();
+		if (skillMod < 1 || cl > skillMod + 15){
+			player->sendSystemMessage("@bio_engineer:harvest_dna_skill_too_low");
+			return;
+		}
+
 		switch(currentPhase){
 			case BEGIN:
 				// We should be good to go now and try the sample
@@ -74,7 +79,7 @@ public:
 				// max samples 1/2 of real creatures
 				int maxSamples = ceil(skillMod/25)/2;
 				deed->incrementSampleCount();
-				if ((30 + rollMod) < sampleRoll) {
+				if ((30 + rollMod) < sampleRoll || cl > 75) {
 					// failure but we increment the count
 					player->sendSystemMessage("@bio_engineer:harvest_dna_failed");
 				} else {

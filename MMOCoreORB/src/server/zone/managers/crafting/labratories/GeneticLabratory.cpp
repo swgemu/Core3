@@ -16,10 +16,10 @@ GeneticLabratory::GeneticLabratory() {
 GeneticLabratory::~GeneticLabratory() {
 }
 
-String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e, int odds) {
+String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e, int odds, String otherSpecial) {
 	String effectiveSpecial = "defaultattack";
 	// if no special was found in the first passed in slot pick one at random
-	if (a.isEmpty()) {
+	if (a.isEmpty() || a == otherSpecial) {
 		int rand = System::random(3);
 		switch(rand) {
 			case 0:
@@ -50,6 +50,8 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 	if (roll < odds ) {
 		effectiveSpecial = "defaultattack";
 	}
+	if (effectiveSpecial == otherSpecial && effectiveSpecial != "defaultattack")
+		effectiveSpecial = pickSpecialAttack(effectiveSpecial,b,c,d,e,odds+100,otherSpecial);// pick another default mantis #5598 max loop count is 8 (i.e. odds starting at 100, at 8 calls it picks defaultattack
 	return effectiveSpecial;
 }
 void GeneticLabratory::recalculateResist(CraftingValues* craftingValues) {
@@ -254,8 +256,8 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	odds = quality * 100;
 	// check for specials here, then we have base assemble work completed.
 	// update crafting values, and/or experimentRow should handle resist calc changes. update crafting values should determine armor setup
-	String sp1 = pickSpecialAttack(agr->getSpecialAttackOne(),psy->getSpecialAttackOne(),phy->getSpecialAttackOne(),men->getSpecialAttackOne(),pro->getSpecialAttackOne(),odds);
-	String sp2 = pickSpecialAttack(psy->getSpecialAttackTwo(),pro->getSpecialAttackTwo(),agr->getSpecialAttackTwo(),men->getSpecialAttackTwo(),phy->getSpecialAttackTwo(),odds);
+	String sp1 = pickSpecialAttack(agr->getSpecialAttackOne(),psy->getSpecialAttackOne(),phy->getSpecialAttackOne(),men->getSpecialAttackOne(),pro->getSpecialAttackOne(),odds,"defaultattack");
+	String sp2 = pickSpecialAttack(psy->getSpecialAttackTwo(),pro->getSpecialAttackTwo(),agr->getSpecialAttackTwo(),men->getSpecialAttackTwo(),phy->getSpecialAttackTwo(),odds,sp1);
 	genetic->setSpecialAttackOne(sp1);
 	genetic->setSpecialAttackTwo(sp2);
 	genetic->setRanged(ranged);
