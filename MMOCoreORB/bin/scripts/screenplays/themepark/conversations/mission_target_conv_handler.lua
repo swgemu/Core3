@@ -184,7 +184,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 
 	local npcNumber = self.themePark:getActiveNpcNumber(pOwner)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pOwner)
-	local mission = self.themePark:getMission(missionNumber, pOwner)
+	local mission = self.themePark:getMission(npcNumber, missionNumber)
 
 	local worldPosition = self.themePark:getNpcWorldPosition(npcNumber)
 
