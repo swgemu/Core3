@@ -137,7 +137,7 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint3
 			else
 				dotChance -= (int)((defense - potency)*.5); // For every point of difference, decrease chance by .5%
 
-			if (dotChance < System::random(100))
+			if (dotChance < (int)System::random(100))
 				return 0;
 
 		}

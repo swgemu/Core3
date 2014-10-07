@@ -176,8 +176,8 @@ private:
 			while (retries > 0) {
 				//Generate a random direction and move the target position in that direction within the radius.
 				Vector3 direction;
-				direction.setX(System::random(2 * radius) - radius);
-				direction.setY(System::random(2 * radius) - radius);
+				direction.setX((float)System::random(2 * radius) - radius);
+				direction.setY((float)System::random(2 * radius) - radius);
 				direction.normalize();
 				direction = direction * System::random(radius);
 
