@@ -1,5 +1,5 @@
 bartender = Creature:new {
-	objectName = "@aprilfools:bartender_name",
+	objectName = "@npc_name:bartender",
 	generateRandomName = true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",

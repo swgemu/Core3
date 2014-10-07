@@ -1,5 +1,5 @@
 default = Creature:new {
-	objectName = "@mob/creature_names:default",
+	objectName = "@npc_name:human_base_male",
 	generateRandomName = true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",

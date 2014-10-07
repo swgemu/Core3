@@ -17,6 +17,7 @@
 #include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
 #include "server/zone/managers/objectcontroller/command/CommandList.h"
 #include "server/zone/managers/creature/SpawnAreaMap.h"
+#include "server/zone/templates/string/StringFile.h"
 
 class LuaMobileTest : public ::testing::Test {
 protected:
@@ -24,6 +25,7 @@ protected:
 	TemplateManager* templateManager;
 	CommandConfigManager* commandConfigManager;
 	CommandList* list;
+	Vector<String> mobNames;
 
 public:
 
@@ -45,12 +47,68 @@ public:
 		lootGroupMap->initialize();
 
 		ASSERT_TRUE( templateManager != NULL );
-		if( templateManager->loadedTemplatesCount == 0 ){
+		if( templateManager->loadedTemplatesCount == 0 ) {
 			templateManager->loadLuaTemplates();
 		}
 
 		commandConfigManager->registerSpecialCommands(list);
 		commandConfigManager->loadSlashCommandsFile();
+
+		Vector<String> files;
+		files.add("string/en/mob/creature_names.stf");
+		files.add("string/en/npc_name.stf");
+		files.add("string/en/monster_name.stf");
+		files.add("string/en/droid_name.stf");
+		files.add("string/en/npc_spawner_n.stf");
+		files.add("string/en/theme_park_name.stf");
+		files.add("string/en/event_perk.stf");
+		files.add("string/en/bestine.stf");
+		files.add("string/en/theme_park/warren/warren_system_messages.stf");
+		files.add("string/en/newbie_tutorial/system_messages.stf");
+
+		int count;
+
+		for (int i = 0; i < files.size(); i++) {
+			String file = files.get(i);
+			ObjectInputStream* stream = templateManager->openTreFile(file);
+
+			if (stream != NULL) {
+
+				if (stream->size() > 4) {
+					StringFile stringFile;
+					if (!stringFile.load(stream)) {
+						delete stream;
+
+					} else {
+						file = file.replaceFirst("string/en/","");
+						file = file.replaceFirst(".stf","");
+
+						HashTable<String, UnicodeString>* hashTable = stringFile.getStringMap();
+
+						HashTableIterator<String, UnicodeString> iterator = hashTable->iterator();
+
+						while (iterator.hasNext()) {
+							String name;
+							UnicodeString value;
+
+							iterator.getNextKeyAndValue(name, value);
+
+							String full = "@" + file + ":" + name;
+
+							mobNames.add(full);
+							count++;
+						}
+					}
+
+				}
+
+				delete stream;
+
+			}
+
+		}
+
+		ASSERT_TRUE( count > 0 ) << "Could not load creature names.";
 	}
 
 	void TearDown() {
@@ -116,6 +174,13 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	while (creatureIterator.hasNext()) {
 		CreatureTemplate* creature = creatureIterator.next();
 		std::string templateName( creature->getTemplateName().toCharArray() );
+
+		//Verify non-empty objectName is a valid string
+		String objName = creature->getObjectName();
+		if (!objName.isEmpty()) {
+			std::string name = objName.toCharArray();
+			EXPECT_TRUE( mobNames.contains(objName) ) << "Mobile " << templateName << " has invalid objectName: "  << name;
+		}
 
 		// Check configured templates
 		Vector<String> objTemps = creature->getTemplates();
