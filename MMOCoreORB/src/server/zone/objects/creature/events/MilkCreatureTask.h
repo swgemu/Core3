@@ -43,7 +43,11 @@ public:
 		float skill = 100;
 		bool success = true;
 
-		skill += (player->getSkillMod("mask_scent") + player->getSkillMod("camouflage"));
+		if (player->hasBuff(String("skill_buff_mask_scent_self").hashCode())) {
+			skill += player->getSkillMod("mask_scent");
+		} else if (player->hasBuff(String("skill_buff_mask_scent").hashCode())) {
+			skill +=  player->getSkillMod("private_conceal");
+		}
 
 		failureChance /= (skill / 100);
 
