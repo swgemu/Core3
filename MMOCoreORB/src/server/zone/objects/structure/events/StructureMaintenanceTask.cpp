@@ -22,20 +22,27 @@ void StructureMaintenanceTask::run() {
 	if (strongRef == NULL)
 		return;
 
-	/*SharedStructureObjectTemplate* templ = dynamic_cast<SharedStructureObjectTemplate*>(strongRef->getObjectTemplate());
-
-	if (templ != NULL) {
-		String ability = templ->getAbilityRequired();
-
-		if (ability == "place_cantina" || ability == "place_hospital" || ability == "place_theater")
-			return;
-	}*/
-
 	ZoneServer* zoneServer = strongRef->getZoneServer();
 
 	if (zoneServer != NULL && zoneServer->isServerLoading()) {
 		schedule(1000);
 
+		return;
+	}
+
+	ManagedReference<CreatureObject*> owner = strongRef->getOwnerCreatureObject();
+
+	if (owner == NULL || !owner->isPlayerCreature()) {
+		info("Player structure has NULL owner, destroying.", true);
+		StructureManager::instance()->destroyStructure(strongRef);
+		return;
+	}
+
+	ManagedReference<PlayerObject*> ghost = owner->getPlayerObject();
+
+	if (!ghost->isOwnedStructure(strongRef)) {
+		info("Removing orphaned structure.", true);
+		StructureManager::instance()->destroyStructure(strongRef);
 		return;
 	}
 
@@ -49,13 +56,6 @@ void StructureMaintenanceTask::run() {
 
 	//Structure is out of maintenance. Start the decaying process...
 	strongRef->updateStructureStatus();
-
-	ManagedReference<CreatureObject*> owner = strongRef->getOwnerCreatureObject();
-
-	if (owner == NULL || !owner->isPlayerCreature())
-		return;
-
-	ManagedReference<PlayerObject*> ghost = owner->getPlayerObject();
 
 	//Calculate one week of maintenance +- any existing maintenance/decay.
 	int oneWeekMaintenance = 7 * 24 * strongRef->getMaintenanceRate() - strongRef->getSurplusMaintenance();
