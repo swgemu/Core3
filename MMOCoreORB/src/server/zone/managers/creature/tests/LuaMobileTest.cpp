@@ -66,7 +66,7 @@ public:
 		files.add("string/en/theme_park/warren/warren_system_messages.stf");
 		files.add("string/en/newbie_tutorial/system_messages.stf");
 
-		int count;
+		int count = 0;
 
 		for (int i = 0; i < files.size(); i++) {
 			String file = files.get(i);
