@@ -386,6 +386,10 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 			float cbp = craftingValues->getCurrentPercentage(prop2);
 			cap += boost;
 			cbp += boost;
+			if (cbp > 1)
+				cbp = 1;
+			if (cap > 1)
+				cap = 1;
 			craftingValues->setCurrentValue(prop1,a);
 			craftingValues->setCurrentValue(prop2,b);
 			craftingValues->setCurrentPercentage(prop1,cap);
@@ -455,6 +459,10 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 			float cbp = craftingValues->getCurrentPercentage(prop2);
 			cap += boost;
 			cbp += boost;
+			if (cbp > 1)
+				cbp = 1;
+			if (cap > 1)
+				cap = 1;
 			craftingValues->setCurrentValue(prop1,a);
 			craftingValues->setCurrentValue(prop2,b);
 			craftingValues->setCurrentPercentage(prop1,cap);

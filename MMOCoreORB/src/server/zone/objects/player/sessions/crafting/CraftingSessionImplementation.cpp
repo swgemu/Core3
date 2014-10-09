@@ -883,13 +883,20 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	Reference<CraftingValues*> craftingValues = manufactureSchematic->getCraftingValues();
 	craftingValues->clear();
-
+	if (rowsAttempted > 10 || rowsAttempted < 1) {
+		sendSlotMessage(0, IngredientSlot::PROTOTYPENOTFOUND);
+		return;
+	}
 	// Loop through all the lines of experimentation
 	for (int i = 0; i < rowsAttempted; ++i) {
 
 		rowEffected = tokenizer.getIntToken();
 		pointsAttempted = tokenizer.getIntToken();
-
+		// check for hack attemtps
+		if (pointsAttempted > 10 || pointsAttempted < 1 || rowEffected < 1 || rowEffected > 10){
+			sendSlotMessage(0, IngredientSlot::PROTOTYPENOTFOUND);
+			return;
+		}
 		experimentationPointsUsed += pointsAttempted;
 
 		// Each line gets it's own rolls
