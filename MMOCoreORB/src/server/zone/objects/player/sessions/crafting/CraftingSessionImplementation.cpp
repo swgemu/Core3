@@ -883,7 +883,8 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	Reference<CraftingValues*> craftingValues = manufactureSchematic->getCraftingValues();
 	craftingValues->clear();
-	if (rowsAttempted > 10 || rowsAttempted < 1) {
+	int numberOfRows = craftingValues->getVisibleExperimentalPropertyTitleSize();
+	if (rowsAttempted > numberOfRows || rowsAttempted < 1) {
 		cancelSession();
 		return;
 	}
@@ -893,7 +894,7 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 		rowEffected = tokenizer.getIntToken();
 		pointsAttempted = tokenizer.getIntToken();
 		// check for hack attempts
-		if (pointsAttempted > 10 || pointsAttempted < 1 || rowEffected < 1 || rowEffected > 10){
+		if (pointsAttempted > (experimentationPointsTotal - experimentationPointsUsed) || pointsAttempted < 1 || rowEffected < 1 || rowEffected > numberOfRows){
 			cancelSession();
 			return;
 		}
