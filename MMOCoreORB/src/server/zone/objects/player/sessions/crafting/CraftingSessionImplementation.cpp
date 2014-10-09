@@ -889,7 +889,11 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 		rowEffected = tokenizer.getIntToken();
 		pointsAttempted = tokenizer.getIntToken();
-
+		// check for hack attemtps
+		if (pointsAttempted > 10 || pointsAttempted < 1){
+			sendSlotMessage(0, IngredientSlot::PROTOTYPENOTFOUND);
+			return;
+		}
 		experimentationPointsUsed += pointsAttempted;
 
 		// Each line gets it's own rolls
