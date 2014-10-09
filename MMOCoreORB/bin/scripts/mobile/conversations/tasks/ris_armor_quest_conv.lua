@@ -34,7 +34,7 @@ quest_1_start_yes = ConvoScreen:new {
 risArmorQuestConvoTemplate:addScreen(quest_1_start_yes);
 
 quest_1_start_no = ConvoScreen:new {
-	id = "quest_1_start_yes",
+	id = "quest_1_start_no",
 	leftDialog = "@quest_armorsmith:quest_1_start_no", -- Bah! Then be off with the likes of you! I have no time for armorsmith lackies!
 	stopConversation = "true",
 	options = {}
