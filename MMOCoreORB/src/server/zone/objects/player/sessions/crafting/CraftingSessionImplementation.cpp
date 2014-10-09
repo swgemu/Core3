@@ -894,7 +894,7 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 		rowEffected = tokenizer.getIntToken();
 		pointsAttempted = tokenizer.getIntToken();
 		// check for hack attempts
-		if (pointsAttempted > (experimentationPointsTotal - experimentationPointsUsed) || pointsAttempted < 1 || rowEffected < 1 || rowEffected > numberOfRows){
+		if (pointsAttempted > (experimentationPointsTotal - experimentationPointsUsed) || pointsAttempted < 1 || rowEffected < 0 || rowEffected > (numberOfRows - 1)){
 			cancelSession();
 			return;
 		}
