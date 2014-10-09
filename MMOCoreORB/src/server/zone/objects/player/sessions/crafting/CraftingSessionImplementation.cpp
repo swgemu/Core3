@@ -883,15 +883,21 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	Reference<CraftingValues*> craftingValues = manufactureSchematic->getCraftingValues();
 	craftingValues->clear();
-
+	if (rowsAttempted > 10 || rowsAttempted < 1) {
+		cancelSession();
+		return;
+	}
 	// Loop through all the lines of experimentation
 	for (int i = 0; i < rowsAttempted; ++i) {
 
 		rowEffected = tokenizer.getIntToken();
 		pointsAttempted = tokenizer.getIntToken();
-
+		// check for hack attempts
+		if (pointsAttempted > 10 || pointsAttempted < 1 || rowEffected < 1 || rowEffected > 10){
+			cancelSession();
+			return;
+		}
 		experimentationPointsUsed += pointsAttempted;
-
 		// Each line gets it's own rolls
 		// Calcualte a new failure rate for each line of experimentation
 		failure = craftingManager->calculateExperimentationFailureRate(crafter,
@@ -905,6 +911,9 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 			// If this code is reached, they have likely tried to hack to
 			// get more experimenting points, so lets just give them a failure
 			experimentationResult = CraftingManager::CRITICALFAILURE;
+			// we jsut cancel it so they cant overflow it
+			cancelSession();
+			return;
 		}
 
 		// Make sure to store the lowest roll to display (Effect the multiline rolls
