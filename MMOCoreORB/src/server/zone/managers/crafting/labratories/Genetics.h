@@ -77,8 +77,8 @@ public:
 		return round(maxValue * ((maxValue/(float)1000)+0.15));
 	}
 	static float determineMinResistance(float input) {
-		if (input < 0)
-			input = -99;
+		if (input < 0) // if max is vulnerable the min is always vulnerable
+			return -1;
 		return round(input * ((input/100.0f) + 0.15f));
 	}
 };
