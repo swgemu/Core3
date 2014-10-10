@@ -91,6 +91,7 @@ function risArmorQuestConvoHandler:runScreenHandlers(conversationTemplate, conve
 			end
 			clonedConversation:addOption("@quest_armorsmith:no_to_quest_1_start", "quest_1_start_no")
 		elseif (screenID == "quest_1_start_yes") then
+			player:subtractCashCredits(50000)
 			player:setScreenPlayState(1, "ris_armor_quest")
 		elseif (screenID == "quest_1_description") then
 			self:teachSchematic(conversingPlayer, risArmorQuest.questSchematics.quest1)
