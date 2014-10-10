@@ -317,28 +317,38 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 				subtitle != "uses" &&
 				subtitle != "charge") {
 
-			float minMod = (max >= min) ? 2000.f : -2000.f;
-			float maxMod = (max >= min) ? 500.f : -500.f;
+			float minMod = (max > min) ? 2000.f : -2000.f;
+			float maxMod = (max > min) ? 500.f : -500.f;
 
-			if (max >= min && max > 0) {
+			if (max > min && min >= 0) { // Both max and min non-negative, max is higher
 				min = ((min * level / minMod) + min) * excMod;
 				max = ((max * level / maxMod) + max) * excMod;
 
-			} else if (max <= min && max > 0) {
+			} else if (max > min && max <= 0) { // Both max and min are non-positive, max is higher
+				minMod *= -1;
+				maxMod *= -1;
 				min = ((min * level / minMod) + min) / excMod;
 				max = ((max * level / maxMod) + max) / excMod;
 
-			} else if (max <= min && max <= 0) {
+			} else if (max > min) { // max is positive, min is negative
+				minMod *= -1;
+				min = ((min * level / minMod) + min) / excMod;
+				max = ((max * level / maxMod) + max) * excMod;
+
+			} else if (max < min && max >= 0) { // Both max and min are non-negative, min is higher
+				min = ((min * level / minMod) + min) / excMod;
+				max = ((max * level / maxMod) + max) / excMod;
+
+			} else if (max < min && min <= 0) { // Both max and min are non-positive, min is higher
 				minMod *= -1;
 				maxMod *= -1;
 				min = ((min * level / minMod) + min) * excMod;
 				max = ((max * level / maxMod) + max) * excMod;
 
-			} else {
-				minMod *= -1;
+			} else { // max is negative, min is positive
 				maxMod *= -1;
 				min = ((min * level / minMod) + min) / excMod;
-				max = ((max * level / maxMod) + max) / excMod;
+				max = ((max * level / maxMod) + max) * excMod;
 			}
 		} else {
 			if (excMod != 1.0) {
@@ -348,19 +358,25 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		}
 
 		if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
-			if (max >= min && max > 0) {
-					min *= yellowModifier;
-					max *= yellowModifier;
-				} else if (max <= min && max > 0) {
-					min /= yellowModifier;
-					max /= yellowModifier;
-				} else if (max <= min && max <= 0) {
-					min *= yellowModifier;
-					max *= yellowModifier;
-				} else {
-					min /= yellowModifier;
-					max /= yellowModifier;
-				}
+			if (max > min && min >= 0) {
+				min *= yellowModifier;
+				max *= yellowModifier;
+			} else if (max > min && max <= 0) {
+				min /= yellowModifier;
+				max /= yellowModifier;
+			} else if (max > min) {
+				min /= yellowModifier;
+				max *= yellowModifier;
+			} else if (max < min && max >= 0) {
+				min /= yellowModifier;
+				max /= yellowModifier;
+			} else if (max < min && min <= 0) {
+				min *= yellowModifier;
+				max *= yellowModifier;
+			} else {
+				min /= yellowModifier;
+				max *= yellowModifier;
+			}
 
 			yellow = true;
 		}
