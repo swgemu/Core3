@@ -140,6 +140,7 @@ namespace server {
 		static int updateCellPermissionGroup(lua_State* L);
 		static int getTimestamp(lua_State* L);
 		static int getTimestampMilli(lua_State* L);
+		static int getFormattedTime(lua_State* L);
 		static int getSpawnPoint(lua_State* L);
 		static int getSpawnArea(lua_State* L);
 		static int makeCreatureName(lua_State* L);

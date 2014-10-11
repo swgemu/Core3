@@ -283,6 +283,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getObjectTemplatePathByCRC", getObjectTemplatePathByCRC);
 	lua_register(luaEngine->getLuaState(), "getTimestamp", getTimestamp);
 	lua_register(luaEngine->getLuaState(), "getTimestampMilli", getTimestampMilli);
+	lua_register(luaEngine->getLuaState(), "getFormattedTime", getFormattedTime);
 	lua_register(luaEngine->getLuaState(), "getSpawnPoint", getSpawnPoint);
 	lua_register(luaEngine->getLuaState(), "getSpawnArea", getSpawnArea);
 	lua_register(luaEngine->getLuaState(), "makeCreatureName", makeCreatureName);
@@ -643,6 +644,13 @@ int DirectorManager::getTimestamp(lua_State* L) {
 int DirectorManager::getTimestampMilli(lua_State* L) {
 	Time now;
 	lua_pushinteger(L, now.getMiliTime());
+
+	return 1;
+}
+
+int DirectorManager::getFormattedTime(lua_State* L) {
+	Time now;
+	lua_pushstring(L, now.getFormattedTime().toCharArray());
 
 	return 1;
 }
