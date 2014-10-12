@@ -194,8 +194,9 @@ public:
 			tokenizer.getStringToken(attributeName);
 			attribute = BuffAttribute::getAttribute(attributeName);
 
-			if (tokenizer.hasMoreTokens())
+			if (tokenizer.hasMoreTokens()) {
 				objectId = tokenizer.getLongToken();
+			}
 		} else {
 			attribute = BuffAttribute::UNKNOWN;
 			objectId = 0;
@@ -292,12 +293,14 @@ public:
  
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else
+				} else {
 					creature->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
 					return GENERALERROR;
+				}
 			}
-		} else
-			object = creature;		
+		} else {
+			object = creature;
+		}
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
@@ -321,6 +324,22 @@ public:
 
 			if (inventory != NULL) {
 				enhancePack = inventory->getContainerObject(objectId).castTo<EnhancePack*>();
+			}
+
+			if (enhancePack == NULL) {
+				enhancer->sendSystemMessage("@healing_response:healing_response_76"); // That item does not provide attribute enhancement.
+				return false;
+			}
+
+			int medicineUse = enhancer->getSkillMod("healing_ability");
+
+			if (enhancePack->getMedicineUseRequired() > medicineUse) {
+				enhancer->sendSystemMessage("@error_message:insufficient_skill"); // You lack the skill to use this item.
+				return false;
+			}
+
+			if (enhancePack->getAttribute() != attribute) {
+				attribute = enhancePack->getAttribute();
 			}
 		} else {
 			enhancePack = findEnhancePack(creature, attribute);

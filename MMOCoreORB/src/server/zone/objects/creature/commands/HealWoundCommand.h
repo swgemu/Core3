@@ -274,12 +274,14 @@ public:
 
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else 
+				} else {
 					creature->sendSystemMessage("Target must be a player or a creature pet in order to heal wound."); 
 					return GENERALERROR;
+				}
 			}
-		} else
+		} else {
 			object = creature;
+		}
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
@@ -303,6 +305,22 @@ public:
 
 			if (inventory != NULL) {
 				woundPack = inventory->getContainerObject(objectId).castTo<WoundPack*>();
+			}
+
+			if (woundPack == NULL) {
+				creature->sendSystemMessage("@healing_response:healing_response_66"); // That item does not heal wounds.
+				return false;
+			}
+
+			int medicineUse = creature->getSkillMod("healing_ability");
+
+			if (woundPack->getMedicineUseRequired() > medicineUse) {
+				creature->sendSystemMessage("@error_message:insufficient_skill"); // You lack the skill to use this item.
+				return false;
+			}
+
+			if (woundPack->getAttribute() != attribute) {
+				attribute = woundPack->getAttribute();
 			}
 		} else {
 			int searchAttribute = -1;
