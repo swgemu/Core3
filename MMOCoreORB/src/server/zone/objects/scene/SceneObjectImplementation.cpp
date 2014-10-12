@@ -1238,6 +1238,10 @@ bool SceneObjectImplementation::isASubChildOf(SceneObject* object) {
 }
 
 bool SceneObjectImplementation::isInRange(SceneObject* object, float range) {
+	if (getZone() != object->getZone()) {
+		return false;
+	}
+
 	Vector3 worldPos = object->getWorldPosition();
 	worldPos.setZ(0);
 	Vector3 thisPos = getWorldPosition();
