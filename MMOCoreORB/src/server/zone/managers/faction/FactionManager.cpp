@@ -80,7 +80,7 @@ FactionMap* FactionManager::getFactionMap() {
 	return &factionMap;
 }
 
-void FactionManager::awardFactionStanding(CreatureObject* player, const String& factionName) {
+void FactionManager::awardFactionStanding(CreatureObject* player, const String& factionName, int level) {
 	if (player == NULL)
 		return;
 
@@ -89,8 +89,8 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 	if (!factionMap.contains(factionName))
 		return;
 
-	float lose = floor((float)75); //TODO: Find the equation for this.
-	float gain = floor((float)lose / 2); //you gain half of what you lose
+	float gain = level;
+	float lose = gain * 2;
 
 	Faction faction = factionMap.get(factionName);
 	SortedVector<String>* enemies = faction.getEnemies();
@@ -101,12 +101,27 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 	//Lose faction standing to allies of the creature.
 	for (int i = 0; i < allies->size(); ++i) {
 		String ally = allies->get(i);
+
+		if ((ally == "rebel" || ally == "imperial")) {
+			continue;
+		}
+
 		ghost->decreaseFactionStanding(ally, lose);
+	}
+
+	bool gcw = false;
+	if (factionName == "rebel" || factionName == "imperial") {
+		gcw = true;
 	}
 
 	//Gain faction standing to enemies of the creature.
 	for (int i = 0; i < enemies->size(); ++i) {
 		String enemy = enemies->get(i);
+
+		if ((enemy == "rebel" || enemy == "imperial") && !gcw) {
+			continue;
+		}
+
 		ghost->increaseFactionStanding(enemy, gain);
 	}
 }

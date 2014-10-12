@@ -41,8 +41,9 @@ public:
 	 * @post: player locked
 	 * @param player The player receiving the faction points for the kill.
 	 * @param faction The string key of the faction that was killed.
+	 * @param level The level of the mob that was killed
 	 */
-	void awardFactionStanding(CreatureObject* player, const String& factionName);
+	void awardFactionStanding(CreatureObject* player, const String& factionName, int level);
 
 	void awardPvpFactionPoints(TangibleObject* killer, CreatureObject* destructedObject);
 
