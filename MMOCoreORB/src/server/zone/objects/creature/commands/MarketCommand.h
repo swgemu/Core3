@@ -17,6 +17,12 @@ public:
 		if (!creature->isPlayerCreature())
 			return 1;
 
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == NULL || ghost->getAdminLevel() < 15) {
+			return 1;
+		}
+
 		ManagedReference<AuctionManager*> auctionManager = creature->getZoneServer()->getAuctionManager();
 		//Parse the weather command.
 

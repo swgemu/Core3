@@ -21,7 +21,7 @@ public:
 
 		PlayerObject* ghost = creature->getPlayerObject();
 
-		if(ghost == NULL || !ghost->isPrivileged()){
+		if(ghost == NULL || !ghost->isPrivileged() || ghost->getAdminLevel() < 15) {
 			return 1;
 		}
 

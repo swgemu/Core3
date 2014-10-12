@@ -18,6 +18,12 @@ public:
 			return 1;
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost == NULL || ghost->getAdminLevel() < 15) {
+			return 1;
+		}
+
 		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 
 		if(playerManager == NULL) {

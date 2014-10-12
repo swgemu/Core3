@@ -21,7 +21,6 @@ admin_debug_03 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"server",
 		"lag"
 	},
 	skillModifiers = {},

@@ -26,7 +26,8 @@ admin_debug_02 = {
 		"dumpTargetInformation",
 		"dumpZoneInformation",
 		"initializeComponent",
-		"script"
+		"script",
+		"server",
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
