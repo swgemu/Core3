@@ -107,8 +107,7 @@ public:
 				playerRef->sendSystemMessage("@mission/mission_generic:probe_droid_arrival");
 				ManagedReference<AiAgent*> droid = cast<AiAgent*>(playerRef->getZone()->getCreatureManager()->spawnCreature(String("probot").hashCode(), 0, droidPosition.getX(), droidPosition.getZ(), droidPosition.getY(), 0));
 				objectiveRef->setArakydDroid(droid);
-				droid->setFollowObject(playerRef);
-				droid->activateLoad("follow");
+				droid->activateLoad("stationary");
 		}
 			break;
 		default:
