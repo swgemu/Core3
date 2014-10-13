@@ -21,7 +21,7 @@ OldManEncounter = Encounter:new {
 	--encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	spawnObjectList = {
-		{ template = "old_man", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true }
+		{ template = "old_man", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true, setNotAttackable = true }
 	},
 	onEncounterSpawned = nil,
 	isEncounterFinished = nil,

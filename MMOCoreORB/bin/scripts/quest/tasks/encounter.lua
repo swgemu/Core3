@@ -158,6 +158,11 @@ end
 function Encounter:setSpawnedObjectsToFollow(spawnedObjects, objectToFollow)
 	if spawnedObjects ~= nil then
 		for i = 1, table.getn(spawnedObjects), 1 do
+			if self.spawnObjectList[i]["setNotAttackable"] then
+				ObjectManager.withCreatureObject(spawnedObjects[i], function(creo)
+					creo:setPvpStatusBitmask(0)
+				end)
+			end
 			if self.spawnObjectList[i]["followPlayer"] then
 				ObjectManager.withCreatureAiAgent(spawnedObjects[i], function(aiAgent)
 					aiAgent:setFollowObject(objectToFollow)

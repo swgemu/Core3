@@ -40,6 +40,9 @@ describe("Encounter", function()
 	local aiAgentObject1
 	local aiAgentObject2
 	local aiAgentObject3
+	local creatureObject1
+	local creatureObject2
+	local creatureObject3
 	local spawnedObjects = {
 		pSpawnedObject1,
 		pSpawnedObject2,
@@ -87,6 +90,18 @@ describe("Encounter", function()
 		aiAgentObject3.setFollowObject = spy.new(function() end)
 		DirectorManagerMocks.aiAgents[pSpawnedObject3] = aiAgentObject3
 
+		creatureObject1 = {}
+		creatureObject1.setPvpStatusBitmask = spy.new(function() end)
+		DirectorManagerMocks.creatureObjects[pSpawnedObject1] = creatureObject1
+
+		creatureObject2 = {}
+		creatureObject2.setPvpStatusBitmask = spy.new(function() end)
+		DirectorManagerMocks.creatureObjects[pSpawnedObject2] = creatureObject2
+
+		creatureObject3 = {}
+		creatureObject3.setPvpStatusBitmask = spy.new(function() end)
+		DirectorManagerMocks.creatureObjects[pSpawnedObject3] = creatureObject3
+
 		playerObject = {}
 		playerObject.isOnline = spy.new(function() return true end)
 		DirectorManagerMocks.playerObjects[pPlayerObject] = playerObject
@@ -96,9 +111,9 @@ describe("Encounter", function()
 		DirectorManagerMocks.cityRegions[pCityRegion] = cityRegion
 
 		testEncounter.spawnObjectList = {
-			{ template = encounterTemplateName, referencePoint = 0, minimumDistance = 32, maximumDistance = 64, followPlayer = true },
-			{ template = encounterTemplateName, referencePoint = 0, minimumDistance = 3, maximumDistance = 6, followPlayer = false },
-			{ template = encounterTemplateName, referencePoint = 1, minimumDistance = 16, maximumDistance = 32, followPlayer = true }
+			{ template = encounterTemplateName, referencePoint = 0, minimumDistance = 32, maximumDistance = 64, followPlayer = true, setNotAttackable = true },
+			{ template = encounterTemplateName, referencePoint = 0, minimumDistance = 3, maximumDistance = 6, followPlayer = false, setNotAttackable = false },
+			{ template = encounterTemplateName, referencePoint = 1, minimumDistance = 16, maximumDistance = 32, followPlayer = true, setNotAttackable = false }
 		}
 		testEncounter.onEncounterSpawned = spy.new(function() end)
 		testEncounter.isEncounterFinished = spy.new(function() return false end)
@@ -641,9 +656,17 @@ describe("Encounter", function()
 
 		describe("setSpawnedObjectsToFollow", function()
 			describe("When called with a player and a list of spawned objects", function()
-				it("Should set each object to follow the player if the spawn object list indicates that the object should follow the player.", function()
+				before_each(function()
 					testEncounter:setSpawnedObjectsToFollow(spawnedObjects, pCreatureObject)
+				end)
 
+				it("Should set each object to be not attackable if the spawn object list indicates that the object should be set to not attackable.", function()
+					assert.spy(creatureObject1.setPvpStatusBitmask).was.called_with(creatureObject1, 0)
+					assert.spy(creatureObject2.setPvpStatusBitmask).was.not_called()
+					assert.spy(creatureObject3.setPvpStatusBitmask).was.not_called()
+				end)
+
+				it("Should set each object to follow the player if the spawn object list indicates that the object should follow the player.", function()
 					assert.spy(aiAgentObject1.setFollowObject).was.called_with(aiAgentObject1, pCreatureObject)
 					assert.spy(aiAgentObject2.setFollowObject).was.not_called()
 					assert.spy(aiAgentObject3.setFollowObject).was.called_with(aiAgentObject3, pCreatureObject)
