@@ -18,6 +18,10 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 	if(creature.get() != NULL) {
 		Locker locker(creature.get());
 		Locker lockerX(_this.get(),creature.get());
+		if (creature.get()->isIncapacitated() || creature.get()->isDead()) {
+			// if the target is dead/incapped but the tick is happening before we de-active, then ignore the event
+			return;
+		}
 		if(counter == 0) {
 			mindBuffAmount=0;
 			haBuffAmount=0;
