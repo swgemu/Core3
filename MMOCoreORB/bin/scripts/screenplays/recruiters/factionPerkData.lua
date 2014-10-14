@@ -34,7 +34,7 @@ rebelRewardData = {
 
 	installationsList = {
 		"hq_s01_pvp_rebel", "hq_s01_rebel", "hq_s02_pvp_rebel", "hq_s02_rebel", "hq_s03_pvp_rebel", "hq_s03_rebel", "hq_s04_pvp_rebel", "hq_s04_rebel", --"hq_s05_pvp_rebel",
-		"turret_block_lg", "turret_block_med", "turret_block_sm", "turret_dish_sm", "turret_dish_med", "turret_dish_lg", "turret_tower_sm", "turret_tower_med", "turret_tower_lg",
+		"turret_block_lg", "turret_block_med", "turret_block_sm", "turret_dish_sm", "turret_dish_lg", "turret_tower_sm", "turret_tower_med", "turret_tower_lg",
 		"minefield_1x1",
 	},
 
@@ -52,7 +52,6 @@ rebelRewardData = {
 		turret_block_med = { type=factionRewardType.installation, display="@deed:turret_block_med", item="object/tangible/deed/faction_perk/turret/block_med_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/block_med.iff", cost=4200 },
 		turret_block_sm = { type=factionRewardType.installation, display="@deed:turret_block_sm", item="object/tangible/deed/faction_perk/turret/block_sm_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/block_sm.iff", cost=1400 },
 		turret_dish_sm = { type=factionRewardType.installation, display="@deed:turret_dish_sm", item="object/tangible/deed/faction_perk/turret/dish_sm_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/dish_sm.iff", cost=1400 },
-		--turret_dish_med = { type=factionRewardType.installation, display="@deed:turret_dish_med", item="object/tangible/deed/faction_perk/turret/dish_med_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/dish_med.iff", cost=4200 },
 		turret_dish_lg = { type=factionRewardType.installation, display="@deed:turret_dish_lg", item="object/tangible/deed/faction_perk/turret/dish_lg_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/dish_lg.iff", cost=6300 },
 		turret_tower_sm = { type=factionRewardType.installation, display="@deed:turret_tower_sm", item="object/tangible/deed/faction_perk/turret/tower_sm_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/tower_sm.iff", cost=1400 },
 		turret_tower_med = { type=factionRewardType.installation, display="@deed:turret_tower_med", item="object/tangible/deed/faction_perk/turret/tower_med_deed.iff", generatedObjectTemplate="object/installation/faction_perk/turret/tower_med.iff", cost=4200 },
@@ -62,17 +61,14 @@ rebelRewardData = {
 	},
 
 	furnitureList = {
-		"data_terminal_s1", "data_terminal_s2", "tech_armoire", "tech_bookcase", "frn_cabinet", "tech_chair", "tech_chest", "frn_coffee_table", "frn_couch", "frn_end_table"
+		"tech_armoire", "tech_bookcase", "frn_cabinet", "tech_chair", "tech_chest", "frn_coffee_table", "frn_couch", "frn_end_table"
 	},
 
 	furniture = {
-		data_terminal_s1 = { type=factionRewardType.terminal, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s1.iff",cost=850},
-		data_terminal_s2 = { type=factionRewardType.terminal, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s2.iff",cost=1000},
-		--frn_table = { type=factionRewardType.furniture, display="@frn_n:frn_table", item="object/tangible/furniture/imperial/table_s1.iff",cost=1400},
 		tech_armoire = { type=factionRewardType.container, display="@container_name:tech_armoire", item="object/tangible/furniture/technical/armoire_s01.iff", cost=1400},
 		tech_bookcase = { type=factionRewardType.container, display="@container_name:tech_bookcase", item="object/tangible/furniture/technical/bookcase_s01.iff", cost=1400},
 		frn_cabinet = { type=factionRewardType.furniture, display="@frn_d:frn_cabinet", item="object/tangible/furniture/technical/cabinet_s01.iff", cost=200},
-		tech_chair = { type=factionRewardType.furniture, display="@frn_d:frn_chair", item="object/tangible/furniture/technical/chair_s01.iff", 1000},
+		tech_chair = { type=factionRewardType.furniture, display="@frn_d:frn_chair", item="object/tangible/furniture/technical/chair_s01.iff", cost=1000},
 		tech_chest =  { type=factionRewardType.container, display="@container_name:tech_chest", item="object/tangible/furniture/technical/chest_s01.iff", cost=1000},
 		frn_coffee_table = { type=factionRewardType.furniture, display="@frn_d:frn_coffee_table", item="object/tangible/furniture/technical/coffee_table_s01.iff", cost=1200},
 		frn_couch = { type=factionRewardType.furniture, display="@frn_d:frn_couch", item="object/tangible/furniture/technical/couch_s01.iff", cost=1200},
