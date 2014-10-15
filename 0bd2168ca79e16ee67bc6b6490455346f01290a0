@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_4f876562",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-15T04:15:25Z",
+      "side": 1,
+      "message": "|| and not \u0026\u0026, right? A player won\u0027t be both incapped and dead.",
+      "revId": "0bd2168ca79e16ee67bc6b6490455346f01290a0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
