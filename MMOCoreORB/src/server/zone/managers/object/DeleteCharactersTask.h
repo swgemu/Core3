@@ -39,7 +39,7 @@ public:
 
 				deletedCharacters.put(oid);
 
-				ManagedReference<SceneObject*> obj = server->getObject(oid);
+				ManagedReference<CreatureObject*> obj = server->getObject(oid).castTo<CreatureObject*>();
 
 				if (obj == NULL || !obj->isPlayerCreature())
 					continue;

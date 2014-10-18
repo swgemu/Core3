@@ -1870,4 +1870,11 @@ class CreatureObject extends TangibleObject {
 
 	public native void setFaction(unsigned int crc);
 
+	/**
+	 * Destroys a PlayerCreature from the database. If this object is not a PlayerCreature then the method will return without doing anything.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
+	public abstract native void destroyPlayerCreatureFromDatabase(boolean destroyContainedObjects = false);
 }
