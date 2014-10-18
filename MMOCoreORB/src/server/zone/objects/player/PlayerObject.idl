@@ -599,7 +599,10 @@ class PlayerObject extends IntangibleObject {
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
 	public native void removeFriend(final string name, boolean notifyClient = true);
-	
+
+	// Used when character is deleted
+	public native void removeAllFriends();
+
 	/**
 	 * Adds a player to the ignore list
 	 * @pre { this is locked}

@@ -111,7 +111,7 @@ class EventPerkDeed extends Deed {
 	 */
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 
-	public native void activateRemoveEvent();
+	public native void activateRemoveEvent(boolean immediate = false);
 
 	public native string getDurationString();
 

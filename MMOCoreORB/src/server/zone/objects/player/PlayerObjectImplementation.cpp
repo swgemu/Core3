@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/managers/vendor/VendorManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"
 #include "server/zone/Zone.h"
@@ -113,6 +114,7 @@ which carries forward this exception.
 #include "events/ForceRegenerationEvent.h"
 #include "FsExperienceTypes.h"
 #include "server/login/account/Account.h"
+#include "server/zone/objects/tangible/deed/eventperk/EventPerkDeed.h"
 
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
@@ -1088,6 +1090,55 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 	}
 }
 
+void PlayerObjectImplementation::removeAllFriends() {
+	ManagedReference<CreatureObject*> strongParent = getParent().get().castTo<CreatureObject*>();
+
+	if (strongParent == NULL) {
+		return;
+	}
+
+	String playerName = strongParent->getFirstName();
+	PlayerManager* playerManager = server->getPlayerManager();
+	ZoneServer* zoneServer = server->getZoneServer();
+
+	while (friendList.size() > 0) {
+		String name = friendList.get(0).toLowerCase();
+		uint64 objID = playerManager->getObjectID(name);
+
+		ManagedReference<CreatureObject*> playerToRemove = zoneServer->getObject(objID).castTo<CreatureObject*>();
+
+		if (playerToRemove != NULL) {
+			PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
+
+			if (playerToRemoveGhost != NULL) {
+				playerToRemoveGhost->removeReverseFriend(playerName);
+				playerToRemoveGhost->updateToDatabase();
+			}
+		}
+
+		friendList.removePlayer(name);
+	}
+
+	Vector<String>* reverse = friendList.getReverseTable();
+	while (reverse->size() > 0) {
+		String name = reverse->get(0).toLowerCase();
+		uint64 objID = playerManager->getObjectID(name);
+
+		ManagedReference<CreatureObject*> playerToRemove = zoneServer->getObject(objID).castTo<CreatureObject*>();
+
+		if (playerToRemove != NULL) {
+			PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
+
+			if (playerToRemoveGhost != NULL) {
+				playerToRemoveGhost->removeFriend(playerName);
+			} else {
+				removeReverseFriend(name);
+			}
+		} else {
+			removeReverseFriend(name);
+		}
+	}
+}
 
 void PlayerObjectImplementation::addIgnore(const String& name, bool notifyClient) {
 	String nameLower = name.toLowerCase();
@@ -1924,9 +1975,29 @@ bool PlayerObjectImplementation::hasPermissionGroup(const String& group) {
 void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 
-	for (int i = 0; i < ownedStructures.size(); ++i) {
-		//ManagedReference<StructureObject*> structure = ownedStructures.get(i);
+	removeAllFriends();
 
+	for (int i = 0; i < currentEventPerks.size(); ++i) {
+		uint64 oid = currentEventPerks.get(i);
+
+		ManagedReference<EventPerkDeed*> perk = getZoneServer()->getObject(oid).castTo<EventPerkDeed*>();
+
+		if (perk != NULL) {
+			perk->activateRemoveEvent(true);
+		}
+	}
+
+	for (int i = 0; i < ownedVendors.size(); ++i) {
+		uint64 oid = ownedVendors.get(i);
+
+		ManagedReference<TangibleObject*> vendor = getZoneServer()->getObject(oid).castTo<TangibleObject*>();
+
+		if (vendor != NULL) {
+			VendorManager::instance()->destroyVendor(vendor);
+		}
+	}
+
+	for (int i = 0; i < ownedStructures.size(); ++i) {
 		uint64 oid = ownedStructures.get(i);
 
 		ManagedReference<StructureObject*> structure = getZoneServer()->getObject(oid).castTo<StructureObject*>();
@@ -1938,6 +2009,19 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 				StructureManager::instance()->destroyStructure(structure);
 			else
 				structure->destroyObjectFromDatabase(true);
+		}
+	}
+
+	if (isMarried()) {
+		PlayerManager* playerManager = server->getPlayerManager();
+		ManagedReference<CreatureObject*> spouse = playerManager->getPlayer(spouseName);
+
+		if (spouse != NULL) {
+			PlayerObject* spouseGhost = spouse->getPlayerObject();
+
+			if (spouseGhost != NULL) {
+				spouseGhost->removeSpouse();
+			}
 		}
 	}
 }

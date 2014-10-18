@@ -240,17 +240,23 @@ void EventPerkDeedImplementation::destroyObjectFromDatabase(bool destroyContaine
 	DeedImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 }
 
-void EventPerkDeedImplementation::activateRemoveEvent() {
+void EventPerkDeedImplementation::activateRemoveEvent(bool immediate) {
 	if (removeEventPerkTask == NULL) {
 		removeEventPerkTask = new RemoveEventPerkTask(_this.get());
 
 		Time currentTime;
 		uint64 timeDelta = currentTime.getMiliTime() - purchaseTime.getMiliTime();
 
-		if (timeDelta >= EventPerkDeedTemplate::TIME_TO_LIVE) {
+		if (timeDelta >= EventPerkDeedTemplate::TIME_TO_LIVE || immediate) {
 			removeEventPerkTask->execute();
 		} else {
 			removeEventPerkTask->schedule(EventPerkDeedTemplate::TIME_TO_LIVE - timeDelta);
+		}
+	} else if (immediate) {
+		if (removeEventPerkTask->isScheduled()) {
+			removeEventPerkTask->reschedule(1);
+		} else {
+			removeEventPerkTask->execute();
 		}
 	}
 }
