@@ -249,7 +249,6 @@ function TalusStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "rot_mite", 300, -531.4, 51.8, 3793.4, -31, 0)
 
 	--Creature Skull (1117,3753)
-	spawnMobile("talus", "trainer_ranger", 1, -1117.2, 15.3, 3754.3, 1, 0)
 
 	--Ruins (-1394,2117)
 
