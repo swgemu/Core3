@@ -43,10 +43,10 @@
 
 object_building_tatooine_housing_tatt_style01_small = object_building_tatooine_shared_housing_tatt_style01_small:new {
 
-
-
-
-
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = -1.0, z = -4.86, y = 1.38, ow = 0.7071067811865476, ox = 0, oy = 0.7071067811865476, oz = 0, cellid = 9, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = -1.0, z = 0.26, y = 1.38, ow = 0.7071067811865476, ox = 0, oy = 0.7071067811865476, oz = 0, cellid = 9, containmentType = -1},
+	},
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_housing_tatt_style01_small, "object/building/tatooine/housing_tatt_style01_small.iff")

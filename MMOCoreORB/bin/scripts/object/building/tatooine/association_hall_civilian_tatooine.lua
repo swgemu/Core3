@@ -43,9 +43,10 @@
 
 object_building_tatooine_association_hall_civilian_tatooine = object_building_tatooine_shared_association_hall_civilian_tatooine:new {
 
-
-
-
+	childObjects = {
+			{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0, z = -8.5, y = 13.5, ow = 0, ox = 0, oy = 1, oz = 0, cellid = 9, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 0, z = 2.75, y = 13.5, ow = 0, ox = 0, oy = 1, oz = 0, cellid = 9, containmentType = -1},
+	},
 
 }
 
