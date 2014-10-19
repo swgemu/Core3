@@ -77,10 +77,31 @@ public:
 			if(!player->isPlayerCreature())
 				return;
 
+			if (player->getDistanceTo(&initialPosition) > 1) {
+				player->sendSystemMessage("@skl_use:sys_scan_moved"); // Your attempt to gather information has been disrupted by moving around too much.
+				return;
+			}
+
+			if (player->isInCombat()) {
+				player->sendSystemMessage("@skl_use:sys_scan_combat"); // Your attempt to gather information has been disrupted by combat!
+				return;
+			}
+
+			int maxType = 0;
+			if (player->hasSkill("outdoors_ranger_harvest_04")) {
+				maxType = 2;
+			} else if (player->hasSkill("outdoors_ranger_harvest_02")) {
+				maxType = 1;
+			}
+
+			if (type > maxType) {
+				return;
+			}
+
 			ManagedReference<SuiListBox*> rangerTrackResults = new SuiListBox(player, SuiWindowType::RANGER_TRACK_RESULTS);
 
-			rangerTrackResults->setPromptTitle("@skl_use:scan_results_t");
-			rangerTrackResults->setPromptText("@skl_use:scan_results_d");
+			rangerTrackResults->setPromptTitle("@skl_use:scan_results_t"); // Area Track Results
+			rangerTrackResults->setPromptText("@skl_use:scan_results_d"); // You have examined the tracks and clues in the area for information about what kinds of creatures might be nearby. This is what you have determined.
 			StringBuffer results;
 
 			bool canGetDirection = player->hasSkill("outdoors_ranger_harvest_01");
@@ -93,70 +114,56 @@ public:
 			SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
 			zone->getInRangeObjects(player->getPositionX(), player->getPositionY(), 512, &objects, true);
 
-			if(player->getDistanceTo(&initialPosition) < 2 && !player->isInCombat()) {
+			for (int i = 0; i < objects.size(); ++i) {
+				SceneObject* object = cast<SceneObject*>(objects.get(i).get());
+				results.deleteAll();
 
-				for (int i = 0; i < objects.size(); ++i) {
-					SceneObject* object = cast<SceneObject*>(objects.get(i).get());
-					results.deleteAll();
-
-					if(object == player)
-						continue;
-
-					if (object->isCreatureObject()) {
-						CreatureObject* creature = cast<CreatureObject*>(object);
-						if(creature == NULL)
-							continue;
-
-						if(creature->isInvisible()) {
-							continue;
-						}
-
-						if(type == 0) {
-							if(!creature->isCreature())
-								continue;
-						} else if(type == 1) {
-							if(!creature->isNonPlayerCreatureObject())
-								continue;
-							if(creature->isVendor()||creature->isJunkDealer())
-								continue;
-							if(!creature->isAttackableBy(player)) // only track people we can attack i.e. ignore white mobs
-								continue;
-						} else if(type == 2) {
-							if(!creature->isPlayerCreature())
-								continue;
-						} else {
-							continue;
-						}
-
-
-						results << creature->getDisplayedName();
-
-						String direction = "", distance = "";
-
-						if(canGetDirection)
-							direction = getDirection(player, creature);
-						if(canGetDistance)
-							distance = getDistance(player, creature);
-
-						if(!distance.isEmpty() || !direction.isEmpty()) {
-							results << " (" << direction << distance << ")";
-						}
-
-						rangerTrackResults->addMenuItem(results.toString());
-					}
+				if(object == player || !object->isCreatureObject()) {
+					continue;
 				}
+
+				CreatureObject* creature = cast<CreatureObject*>(object);
+				if(creature == NULL || creature->isInvisible())
+					continue;
+
+				if(type == 0) {
+					if(!creature->isCreature())
+						continue;
+				} else if(type == 1) {
+					if(!creature->isNonPlayerCreatureObject())
+						continue;
+					if(creature->isVendor()||creature->isJunkDealer())
+						continue;
+					if(!creature->isAttackableBy(player)) // only track people we can attack i.e. ignore white mobs
+						continue;
+				} else if(type == 2) {
+					if(!creature->isPlayerCreature())
+						continue;
+				} else {
+					continue;
+				}
+
+				results << creature->getDisplayedName();
+
+				String direction = "", distance = "";
+
+				if(canGetDirection)
+					direction = getDirection(player, creature);
+				if(canGetDistance)
+					distance = getDistance(player, creature);
+
+				if(!distance.isEmpty() || !direction.isEmpty()) {
+					results << " (" << direction << distance << ")";
+				}
+
+				rangerTrackResults->addMenuItem(results.toString());
+			}
+
+			if(rangerTrackResults->getMenuSize() == 0) {
+				player->sendSystemMessage("@skl_use:sys_scan_nothing"); // You aren't able to determine anything from the tracks in the area.
 			} else {
-				rangerTrackResults->addMenuItem("@skl_use:sys_scan_moved");
+				player->sendMessage(rangerTrackResults->generateMessage());
 			}
-
-			if(player->isInCombat()) {
-				rangerTrackResults->addMenuItem("@skl_use:sys_scan_combat");
-			}
-
-			if(rangerTrackResults->getMenuSize() == 0)
-				rangerTrackResults->addMenuItem("@skl_use:sys_scan_nothing");
-
-			player->sendMessage(rangerTrackResults->generateMessage());
 
 		} catch (Exception& e) {
 			player->error("unreported exception caught in AreaTrackTask::run()");

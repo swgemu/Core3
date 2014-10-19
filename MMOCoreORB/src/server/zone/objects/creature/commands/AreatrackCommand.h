@@ -71,16 +71,19 @@ public:
 			return GENERALERROR;
 
 		if(creature->getParent() != NULL && creature->getParent().get()->isCellObject()) {
-			creature->sendSystemMessage("@skl_use:sys_scan_inside");
+			creature->sendSystemMessage("@skl_use:sys_scan_inside"); // Your tracking skills only apply to outdoor environments.
 			return GENERALERROR;
 		}
 
 		CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
-		if(cooldownTimerMap == NULL || !cooldownTimerMap->isPast("areatrack"))
+		if(cooldownTimerMap == NULL || !cooldownTimerMap->isPast("areatrack")) {
+			creature->sendSystemMessage("@skl_use:sys_scan_already"); // You are already searching for information.
 			return GENERALERROR;
+		}
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		if (ghost == NULL || ghost->hasSuiBoxWindowType(SuiWindowType::RANGER_TRACK_OPTIONS)) {
+			creature->sendSystemMessage("@skl_use:sys_scan_already"); // You are already searching for information.
 			return 0;
 		}
 
@@ -88,8 +91,8 @@ public:
 		chooseTrackTarget->setUsingObject(creature);
 		chooseTrackTarget->setCallback(new AreaTrackSuiCallback(server->getZoneServer(), "AreaTrack"));
 
-		chooseTrackTarget->setPromptTitle("@skl_use:scan_type_t");
-		chooseTrackTarget->setPromptText("What do you want to track?");
+		chooseTrackTarget->setPromptTitle("@skl_use:scan_type_t"); // Area Track Type
+		chooseTrackTarget->setPromptText("@skl_use:scan_type_d"); // Select the type of entity you want to search the area for.
 
 		chooseTrackTarget->addMenuItem("@cmd_n:areatrack_animal");
 

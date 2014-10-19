@@ -41,6 +41,7 @@ public:
 
 				Emote* emsg = new Emote(creature, creature, 0, 72, false);
 				creature->broadcastMessage(emsg, true);
+				creature->sendSystemMessage("@skl_use:sys_scan_begin"); // You begin to examine the environment for information.
 
 				Reference<AreaTrackTask*> att = new AreaTrackTask(creature, index);
 				creature->addPendingTask("areatrack", att, 6000);
