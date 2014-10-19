@@ -105,6 +105,14 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 		return;
 	}
 
+	if (!player->isInRange(missionTerminal, 6)) {
+		StringIdChatParameter stringId("ui", "radial_out_of_range_prose"); // %TT is too far away to '%TO'.
+		stringId.setTT(missionTerminal);
+		stringId.setTO("ui_radial", "terminal_mission_list"); // List Missions
+		player->sendSystemMessage(stringId);
+		return;
+	}
+
 	if (missionTerminal->isBountyTerminal()) {
 		if (!player->hasSkill("combat_bountyhunter_novice")) {
 			player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
