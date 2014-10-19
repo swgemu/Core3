@@ -740,7 +740,7 @@ tatooine_static_spawns = {
 	{"stanic_wavingstar",60,17.9368,-0.894992,22.6329,180,1134562, "calm", "Stanic Wavingstar","stationary"},
 	{"stormtrooper",400,2.84,-0.894992,-6.3,16.0005,1082877, "npc_imperial", "","stationary"},
 	{"stormtrooper_squad_leader",400,3.62,-0.894992,-6.78,360.011,1082877, "npc_accusing", "","stationary"},
-	{"sy_snootles",60,-9,2,37,350.547,1177487, "neutral", "","stationary"},
+	{"sy_snootles",60,-9,2,37,350.547,1177487, "themepark_music_3", "","stationary"},
 	{"tatooine_militiaman",300,30.4646,-0.255725,0.66235,180,1153522, "conversation", "","stationary"},
 	{"tatooine_militiaman",300,-11.7551,0.0100002,-2.33478,360.011,1153512, "conversation", "","stationary"},
 	{"tatooine_militiaman",300,7.41432,1.00001,-5.80893,180.003,1261017, "conversation", "","stationary"},

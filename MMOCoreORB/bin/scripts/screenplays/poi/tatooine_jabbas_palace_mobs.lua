@@ -8,6 +8,8 @@ registerScreenPlay("TatooineJabbasPalaceMobsScreenPlay", true)
 function TatooineJabbasPalaceMobsScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then
 		self:spawnMobiles()
+		
+		spawnSceneObject("tatooine", "object/tangible/instrument/instrument_organ_max_rebo.iff", -11.1, 2, 36.2, 1177487, 0.9974847113288691, 0, -0.07088194879630508, 0)
 	end
 end
 
