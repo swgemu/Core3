@@ -67,12 +67,12 @@ rebelRewardData = {
 	furniture = {
 		tech_armoire = { type=factionRewardType.container, display="@container_name:tech_armoire", item="object/tangible/furniture/technical/armoire_s01.iff", cost=1400},
 		tech_bookcase = { type=factionRewardType.container, display="@container_name:tech_bookcase", item="object/tangible/furniture/technical/bookcase_s01.iff", cost=1400},
-		frn_cabinet = { type=factionRewardType.furniture, display="@frn_d:frn_cabinet", item="object/tangible/furniture/technical/cabinet_s01.iff", cost=200},
-		tech_chair = { type=factionRewardType.furniture, display="@frn_d:frn_chair", item="object/tangible/furniture/technical/chair_s01.iff", cost=1000},
+		frn_cabinet = { type=factionRewardType.furniture, display="@frn_n:frn_cabinet", item="object/tangible/furniture/technical/cabinet_s01.iff", cost=200},
+		tech_chair = { type=factionRewardType.furniture, display="@frn_n:frn_chair", item="object/tangible/furniture/technical/chair_s01.iff", cost=1000},
 		tech_chest =  { type=factionRewardType.container, display="@container_name:tech_chest", item="object/tangible/furniture/technical/chest_s01.iff", cost=1000},
-		frn_coffee_table = { type=factionRewardType.furniture, display="@frn_d:frn_coffee_table", item="object/tangible/furniture/technical/coffee_table_s01.iff", cost=1200},
-		frn_couch = { type=factionRewardType.furniture, display="@frn_d:frn_couch", item="object/tangible/furniture/technical/couch_s01.iff", cost=1200},
-		frn_end_table = { type=factionRewardType.furniture, display="@frn_d:frn_end_table", item="object/tangible/furniture/technical/end_table_s01.iff", cost=1000},
+		frn_coffee_table = { type=factionRewardType.furniture, display="@frn_n:frn_coffee_table", item="object/tangible/furniture/technical/coffee_table_s01.iff", cost=1200},
+		frn_couch = { type=factionRewardType.furniture, display="@frn_n:frn_couch", item="object/tangible/furniture/technical/couch_s01.iff", cost=1200},
+		frn_end_table = { type=factionRewardType.furniture, display="@frn_n:frn_end_table", item="object/tangible/furniture/technical/end_table_s01.iff", cost=1000},
 	},
 
 	hirelingList = {
@@ -183,12 +183,12 @@ imperialRewardData = {
 		frn_table = { type=factionRewardType.furniture, display="@frn_n:frn_table", item="object/tangible/furniture/imperial/table_s1.iff",cost=700},
 		tech_armoire = { type=factionRewardType.container, display="@container_name:tech_armoire", item="object/tangible/furniture/technical/armoire_s01.iff", cost=980},
 		tech_bookcase = { type=factionRewardType.container, display="@container_name:tech_bookcase", item="object/tangible/furniture/technical/bookcase_s01.iff", cost=980},
-		frn_cabinet = { type=factionRewardType.furniture, display="@frn_d:frn_cabinet", item="object/tangible/furniture/technical/cabinet_s01.iff", cost=200},
-		tech_chair = { type=factionRewardType.furniture, display="@frn_d:frn_chair", item="object/tangible/furniture/technical/chair_s01.iff", cost=700},
+		frn_cabinet = { type=factionRewardType.furniture, display="@frn_n:frn_cabinet", item="object/tangible/furniture/technical/cabinet_s01.iff", cost=200},
+		tech_chair = { type=factionRewardType.furniture, display="@frn_n:frn_chair", item="object/tangible/furniture/technical/chair_s01.iff", cost=700},
 		tech_chest =  { type=factionRewardType.container, display="@container_name:tech_chest", item="object/tangible/furniture/technical/chest_s01.iff", cost=700},
-		frn_coffee_table = { type=factionRewardType.furniture, display="@frn_d:frn_coffee_table", item="object/tangible/furniture/technical/coffee_table_s01.iff", cost=700},
-		frn_couch = { type=factionRewardType.furniture, display="@frn_d:frn_couch", item="object/tangible/furniture/technical/couch_s01.iff", cost=1050},
-		frn_end_table = { type=factionRewardType.furniture, display="@frn_d:frn_end_table", item="object/tangible/furniture/technical/end_table_s01.iff", cost=700},
+		frn_coffee_table = { type=factionRewardType.furniture, display="@frn_n:frn_coffee_table", item="object/tangible/furniture/technical/coffee_table_s01.iff", cost=700},
+		frn_couch = { type=factionRewardType.furniture, display="@frn_n:frn_couch", item="object/tangible/furniture/technical/couch_s01.iff", cost=1050},
+		frn_end_table = { type=factionRewardType.furniture, display="@frn_n:frn_end_table", item="object/tangible/furniture/technical/end_table_s01.iff", cost=700},
 	},
 
 	hirelingList = {
