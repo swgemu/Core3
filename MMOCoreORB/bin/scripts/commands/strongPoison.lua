@@ -51,9 +51,10 @@ StrongPoisonCommand = {
 		HEALTH,
 		true,
 		125, 
-		80,  
+		60,  
 		80, 
-		60  
+		60,
+		80
 	  )
 	}
 }
