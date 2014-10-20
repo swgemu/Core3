@@ -144,7 +144,7 @@ public:
 		return true;
 	}
 
-	void sendHealMessage(CreatureObject* creature, CreatureObject* pet, uint32 healthDamage, uint32 actionDamage, uint32 mindDamage) {
+	void sendHealMessage(CreatureObject* creature, CreatureObject* pet, int healthDamage, int actionDamage, int mindDamage) {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -228,9 +228,9 @@ public:
 		uint32 stimPower = 0;
 		stimPower = stimPack->calculatePower(creature, pet);
 
-		uint32 healthHealed = pet->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
-		uint32 actionHealed = pet->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
-		uint32 mindHealed = pet->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
+		int healthHealed = pet->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
+		int actionHealed = pet->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
+		int mindHealed = pet->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
 
 		if (creature->isPlayerCreature()) {
 			PlayerManager* playerManager = server->getPlayerManager();

@@ -150,7 +150,7 @@ public:
 		return true;
 	}
 
-	void sendHealMessage(CreatureObject* creature, DroidObject* droid, uint32 healthDamage, uint32 actionDamage, uint32 mindDamage) {
+	void sendHealMessage(CreatureObject* creature, DroidObject* droid, int healthDamage, int actionDamage, int mindDamage) {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -223,9 +223,9 @@ public:
 		uint32 stimPower = 0;
 		stimPower = stimPack->calculatePower(creature, droid, false);
 
-		uint32 healthHealed = droid->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
-		uint32 actionHealed = droid->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
-		uint32 mindHealed = droid->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
+		int healthHealed = droid->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
+		int actionHealed = droid->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
+		int mindHealed = droid->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
 
 		sendHealMessage(creature, droid, healthHealed, actionHealed, mindHealed);
 
