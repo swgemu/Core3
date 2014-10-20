@@ -61,17 +61,28 @@ int PlayerContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject
 		}
 	}
 
-	if (object->isRobeObject() && containmentType == 4) {
-		ManagedReference<RobeObject*> robe = cast<RobeObject*>( object);
-		String skillRequired = robe->getSkillRequired();
+	if (object->isWearableObject() && containmentType == 4) {
+		ManagedReference<WearableObject*> wearable = cast<WearableObject*>( object);
+		SharedTangibleObjectTemplate* wearableData = dynamic_cast<SharedTangibleObjectTemplate*>(wearable->getObjectTemplate());
 
-		if (!creo->hasSkill(skillRequired) && skillRequired != ""){
-			errorDescription = "You are not eligible to wear this robe.";
+		Vector<String> skillsRequired = wearableData->getCertificationsRequired();
 
-			return TransferErrorCode::PLAYERUSEMASKERROR;
+		if (skillsRequired.size() > 0) {
+			bool hasSkill = false;
+			for (int i = 0; i < skillsRequired.size(); i++) {
+				String skill = skillsRequired.get(i);
+				if (!skill.isEmpty() && creo->hasSkill(skill)) {
+					hasSkill = true;
+					break;
+				}
+			}
+
+			if (!hasSkill) {
+				errorDescription = "@error_message:insufficient_skill"; // You lack the skill to use this item.
+
+				return TransferErrorCode::PLAYERUSEMASKERROR;
+			}
 		}
-
-
 	}
 
 	if (object->isWeaponObject() && containmentType == 4) {
@@ -113,8 +124,9 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 	PlayerObject* ghost = creo->getPlayerObject();
 
 	if (ghost && ghost->isJedi()) {
-		if ((object->isRobeObject() && cast<RobeObject*>( object)->getSkillRequired() != "") || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon()))
+		if ((object->isRobeObject() && cast<RobeObject*>( object)->getSkillRequired() != "") || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon())) {
 			VisibilityManager::instance()->increaseVisibility(creo);
+		}
 	}
 
 	if (object->isInstrument() && creo->isEntertaining())
@@ -164,8 +176,9 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 	}
 
 	if (creo->getPlayerObject().get() != NULL && creo->getPlayerObject()->isJedi()) {
-		if ((object->isRobeObject() && cast<RobeObject*>( object)->getSkillRequired() != "") || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon()))
+		if ((object->isRobeObject() && cast<RobeObject*>( object)->getSkillRequired() != "") || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon())) {
 			VisibilityManager::instance()->increaseVisibility(creo);
+		}
 	}
 
 	//this it to update the equipment list

@@ -8,7 +8,7 @@
 #ifndef SHAREDWEAPONOBJECTTEMPLATE_H_
 #define SHAREDWEAPONOBJECTTEMPLATE_H_
 
-#include "../SharedTangibleObjectTemplate.h"
+#include "server/zone/templates/SharedTangibleObjectTemplate.h"
 
 class SharedWeaponObjectTemplate: public SharedTangibleObjectTemplate {
 protected:
