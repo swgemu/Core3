@@ -721,14 +721,14 @@ end
 function WarrenScreenPlay:notifyOkPressed()
 end
 
-WarrenTurrentMenuComponent = {}
+WarrenTurretMenuComponent = {}
 
-function WarrenTurrentMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+function WarrenTurretMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
 	local suiManager = LuaSuiManager()
 	suiManager:sendMessageBox(pSceneObject, pPlayer, "@sui:swg", readStringData("warren:turret:code"), "@ok", "WarrenScreenPlay", "notifyOkPressed")
 end
 
-function WarrenTurrentMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
+function WarrenTurretMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
 end
 
 MCRElevatorMenuComponent = {}

@@ -7,6 +7,7 @@
 
 #include "server/zone/objects/scene/LuaSceneObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/Zone.h"
@@ -112,7 +113,17 @@ int LuaSceneObject::setContainerComponent(lua_State* L) {
 }
 
 int LuaSceneObject::setCustomObjectName(lua_State* L) {
-	String value = lua_tostring(L, -1);
+	int numberOfArguments = lua_gettop(L) - 1;
+
+	String value;
+
+	if (numberOfArguments == 2) {
+		String file = lua_tostring(L, -2);
+		String key = lua_tostring(L, -1);
+		String fullPath = "@" + file + ":" + key;
+		value = StringIdManager::instance()->getStringId(fullPath.hashCode()).toString();
+	} else
+		value = lua_tostring(L, -1);
 
 	realObject->setCustomObjectName(value, true);
 
