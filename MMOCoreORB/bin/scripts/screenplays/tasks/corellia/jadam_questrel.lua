@@ -54,7 +54,7 @@ jadam_questrel_missions =
 			itemSpawns = {},
 			rewards =
 			{
-				{ rewardType = "credits", amount = 1000 }
+				{ rewardType = "credits", amount = 2000 }
 			}
 		}
 	}
