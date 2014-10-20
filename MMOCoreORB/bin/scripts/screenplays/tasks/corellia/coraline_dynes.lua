@@ -53,7 +53,7 @@ npcMapCoralineDynes =
 	{
 		{
 			spawnData = { planetName = "corellia", npcTemplate = "coraline_dynes", x = -24.39, z = -0.52, y = 10.55, direction = -8, cellID = 3075439, position = STAND },
-			worldPosition = { x = 3272, y = 5335 },
+			worldPosition = { x = 3269, y = 5337 },
 			npcNumber = 1,
 			stfFile = "@static_npc/corellia/coraline_dynes",
 			missions = coraline_dynes_missions

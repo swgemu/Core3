@@ -53,7 +53,7 @@ talon_karrde_missions =
 			}
 		},
 		{
-			missionType = "retrieve",
+			missionType = "deliver",
 			primarySpawns =
 			{
 				{ npcTemplate = "talon_bcb_courier", planetName = "corellia", npcName = "a BCB courier" }
