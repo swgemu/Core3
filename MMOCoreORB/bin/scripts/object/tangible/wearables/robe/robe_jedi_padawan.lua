@@ -68,13 +68,11 @@ object_tangible_wearables_robe_robe_jedi_padawan = object_tangible_wearables_rob
 				    {"jedi_force_power_regen", 10}
 				},
 
-
 				noTrade = 1,
 
-				templateType = ROBEOBJECT,
 				objectMenuComponent = {"cpp", "RobeObjectMenuComponent"},
-				skillRequired = "force_title_jedi_rank_02",
-				attributeListComponent = "RobeObjectAttributeListComponent",
+				certificationsRequired = {"force_title_jedi_rank_02"},
+				attributeListComponent = "JediRobeAttributeListComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_robe_robe_jedi_padawan, "object/tangible/wearables/robe/robe_jedi_padawan.iff")
