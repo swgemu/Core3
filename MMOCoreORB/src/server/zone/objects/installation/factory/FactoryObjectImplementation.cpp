@@ -508,15 +508,6 @@ void FactoryObjectImplementation::createNewObject() {
 		return;
 	}
 
-	if (schematic->getManufactureLimit() < 1) {
-
-		//removeObject(schematic);
-		schematic->destroyObjectFromWorld(true);
-		schematic->destroyObjectFromDatabase(true);
-		stopFactory("manf_done", getDisplayedName(), "", currentRunCount);
-		return;
-	}
-
 	ManagedReference<TangibleObject*> prototype =
 			cast<TangibleObject*>(schematic->getPrototype());
 
@@ -579,6 +570,13 @@ void FactoryObjectImplementation::createNewObject() {
 
 	schematic->manufactureItem(_this.get());
 	currentRunCount++;
+
+	if (schematic->getManufactureLimit() < 1) {
+		schematic->destroyObjectFromWorld(true);
+		schematic->destroyObjectFromDatabase(true);
+		stopFactory("manf_done", getDisplayedName(), "", currentRunCount);
+		return;
+	}
 
 	Reference<Task*> pending = getPendingTask("createFactoryObject");
 
