@@ -306,6 +306,10 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage) {
 	VectorMap<uint64, DotEffect>* dotEffects = data.getDotEffects();
 
+	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
+		return;
+	}
+
 	for (int i = 0; i < dotEffects->size(); i++) {
 		DotEffect effect = dotEffects->get(i);
 
@@ -329,6 +333,10 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 	// Get attacker's weapon they have.
 	ManagedReference<WeaponObject*> attackerWeapon = cast<WeaponObject*>(weapon);
+
+	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
+		return;
+	}
 
 	if (!attackerWeapon->isCertifiedFor(attacker))
 		return;
@@ -1334,6 +1342,10 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObjec
 
 void CombatManager::applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data) {
 	VectorMap<uint64, StateEffect>* stateEffects = data.getStateEffects();
+
+	if (targetCreature->isPlayerCreature() && targetCreature->getPvpStatusBitmask() == CreatureFlag::NONE) {
+		return;
+	}
 
 	// loop through all the states in the command
 	for (int i = 0; i < stateEffects->size(); i++) {
