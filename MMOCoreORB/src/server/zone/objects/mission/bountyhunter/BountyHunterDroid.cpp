@@ -159,6 +159,8 @@ Reference<FindTargetTask*> BountyHunterDroid::transmitBiologicalSignature(SceneO
 		return NULL;
 	}
 
+	objective->cancelCallArakydTask();
+
 	Reference<FindTargetTask*> findTargetTask = new FindTargetTask(cast<CreatureObject*>(droidObject), player, objective, false, true);
 	findTargetTask->schedule(1000);
 

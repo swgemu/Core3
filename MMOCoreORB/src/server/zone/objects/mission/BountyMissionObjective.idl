@@ -148,7 +148,9 @@ class BountyMissionObjective extends MissionObjective {
 	public native Vector3 getTargetPosition();
 	
 	public native void cancelAllTasks();
-	
+
+	public native void cancelCallArakydTask();
+
 	@dirty
 	public native string getTargetZoneName();
 	

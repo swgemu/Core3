@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/Zone.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 namespace server {
 namespace zone {
@@ -63,6 +64,7 @@ class CallArakydTask : public Task, public Logger {
 	ManagedWeakReference<BountyMissionObjective*> objective;
 	int time;
 	Vector3 droidPosition;
+	ManagedReference<AiAgent*> droid;
 
 public:
 	CallArakydTask(CreatureObject* player, BountyMissionObjective* objective) :
@@ -70,6 +72,7 @@ public:
 		this->player = player;
 		this->objective = objective;
 		time = 20;
+		droid = NULL;
 	}
 
 	~CallArakydTask() {
@@ -105,10 +108,16 @@ public:
 			break;
 		case 0: {
 				playerRef->sendSystemMessage("@mission/mission_generic:probe_droid_arrival");
-				ManagedReference<AiAgent*> droid = cast<AiAgent*>(playerRef->getZone()->getCreatureManager()->spawnCreature(String("probot").hashCode(), 0, droidPosition.getX(), droidPosition.getZ(), droidPosition.getY(), 0));
+				droid = cast<AiAgent*>(playerRef->getZone()->getCreatureManager()->spawnCreature(String("probot").hashCode(), 0, droidPosition.getX(), droidPosition.getZ(), droidPosition.getY(), 0));
 				objectiveRef->setArakydDroid(droid);
 				droid->activateLoad("stationary");
+				time -= 1;
+				reschedule(300 * 1000);
 		}
+			break;
+		case -1:
+			objectiveRef->setArakydDroid(NULL);
+			droid->destroyObjectFromWorld(true);
 			break;
 		default:
 			error("Unknowns state.");
@@ -139,7 +148,7 @@ public:
 
 			distance += 10;
 			angle += 5;
-		} while (distance <= 60);
+		} while (distance <= 120);
 
 		return player->getPosition();
 	}
@@ -160,6 +169,12 @@ public:
 					Vector3 objWorldPos = obj->getWorldPosition();
 
 					if (objWorldPos.squaredDistanceTo(position) < radius * radius) {
+						return false;
+					}
+				}
+
+				if (objectTemplate->isSharedStructureObjectTemplate()) {
+					if (StructureManager::instance()->isInStructureFootprint(cast<StructureObject*>(obj), position.getX(), position.getY(), 2)) {
 						return false;
 					}
 				}

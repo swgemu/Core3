@@ -331,6 +331,22 @@ void BountyMissionObjectiveImplementation::cancelAllTasks() {
 	droidTasks.removeAll();
 }
 
+void BountyMissionObjectiveImplementation::cancelCallArakydTask() {
+	Locker locker(&syncMutex);
+
+	for (int i = 0; i < droidTasks.size(); i++) {
+		Reference<Task*> task = droidTasks.get(i);
+
+		if (task != NULL) {
+			Reference<CallArakydTask*> callTask = task.castTo<CallArakydTask*>();
+
+			if (callTask != NULL && callTask->isScheduled()) {
+				callTask->cancel();
+			}
+		}
+	}
+}
+
 String BountyMissionObjectiveImplementation::getTargetZoneName() {
 	Locker locker(&syncMutex);
 
