@@ -27,24 +27,21 @@ zeelius_partner = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/dressed_commoner_fat_human_female_01.iff",
-					"object/mobile/dressed_commoner_fat_human_female_02.iff",
-					"object/mobile/dressed_commoner_fat_human_male_01.iff",
-					"object/mobile/dressed_commoner_fat_human_male_02.iff",
-					"object/mobile/dressed_commoner_fat_twilek_female_01.iff",
-					"object/mobile/dressed_commoner_fat_twilek_female_02.iff",
-					"object/mobile/dressed_commoner_fat_twilek_male_01.iff",
-					"object/mobile/dressed_commoner_fat_twilek_male_02.iff",
-					"object/mobile/dressed_commoner_fat_zabrak_female_01.iff",
-					"object/mobile/dressed_commoner_fat_zabrak_female_02.iff",
-					"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
-					"object/mobile/dressed_commoner_fat_zabrak_male_02.iff"
-					},
-				
+			"object/mobile/dressed_commoner_fat_human_female_02.iff",
+			"object/mobile/dressed_commoner_fat_human_male_01.iff",
+			"object/mobile/dressed_commoner_fat_human_male_02.iff",
+			"object/mobile/dressed_commoner_fat_twilek_female_01.iff",
+			"object/mobile/dressed_commoner_fat_twilek_female_02.iff",
+			"object/mobile/dressed_commoner_fat_twilek_male_01.iff",
+			"object/mobile/dressed_commoner_fat_twilek_male_02.iff",
+			"object/mobile/dressed_commoner_fat_zabrak_female_01.iff",
+			"object/mobile/dressed_commoner_fat_zabrak_female_02.iff",
+			"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
+			"object/mobile/dressed_commoner_fat_zabrak_male_02.iff" },
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "zeelius_kraymunder_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(zeelius_partner, "zeelius_partner")

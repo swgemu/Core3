@@ -29,7 +29,7 @@ theme_park_rebel_bounty_hunter = Creature:new {
 	templates = {"object/mobile/dressed_bountyhunter_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_rebel_bounty_hunter, "theme_park_rebel_bounty_hunter")

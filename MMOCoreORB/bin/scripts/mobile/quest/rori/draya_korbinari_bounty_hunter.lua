@@ -39,7 +39,7 @@ draya_korbinari_bounty_hunter = Creature:new {
 		},
 	},
 	outfit = "",
-	attacks = merge(marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(draya_korbinari_bounty_hunter, "draya_korbinari_bounty_hunter")

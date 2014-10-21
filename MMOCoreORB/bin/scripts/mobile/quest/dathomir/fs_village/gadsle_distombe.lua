@@ -30,8 +30,7 @@ gadsle_distombe = Creature:new {
 	lootGroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gadsle_distombe, "gadsle_distombe")

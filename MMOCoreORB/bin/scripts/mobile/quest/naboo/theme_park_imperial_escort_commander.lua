@@ -30,7 +30,7 @@ theme_park_imperial_escort_commander = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",
-	attacks = {},
+	attacks = brawlermaster,
 	
 }
 

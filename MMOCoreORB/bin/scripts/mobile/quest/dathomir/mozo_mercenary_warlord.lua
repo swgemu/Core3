@@ -41,7 +41,7 @@ mozo_mercenary_warlord = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,commandomaster,carbineermaster,brawlermaster)
+	attacks = merge(riflemanmaster,commandomaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mozo_mercenary_warlord, "mozo_mercenary_warlord")

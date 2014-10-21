@@ -41,7 +41,7 @@ big_blismo = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "lergo_brazee_mission_target_convotemplate",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(big_blismo, "big_blismo")

@@ -29,14 +29,16 @@ theme_park_marauder_pirate_leader = Creature:new {
 	templates = {"object/mobile/dressed_scarab_pirate_general_twilek_male_01.iff"},
 	lootGroups =
 	{
-		{ groups =
-			{ {group = "theme_park_loot_marauder_pirate_rifle", chance = 10000000} },
+		{
+			groups = {
+				{group = "theme_park_loot_marauder_pirate_rifle", chance = 10000000}
+			},
 			lootChance = 10000000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_marauder_pirate_leader, "theme_park_marauder_pirate_leader")

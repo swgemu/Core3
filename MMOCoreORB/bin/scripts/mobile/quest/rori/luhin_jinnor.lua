@@ -44,7 +44,7 @@ luhin_jinnor = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(luhin_jinnor, "luhin_jinnor")

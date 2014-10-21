@@ -35,7 +35,7 @@ theme_park_imperial_mellag_davin_lars = Creature:new {
 		}			
 	},
 	weapons = {"rebel_weapons_light"},
-	attacks = merge(marksmannovice,brawlernovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_mellag_davin_lars, "theme_park_imperial_mellag_davin_lars")

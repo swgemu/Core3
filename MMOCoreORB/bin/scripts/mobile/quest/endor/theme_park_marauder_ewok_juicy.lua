@@ -34,6 +34,6 @@ theme_park_marauder_ewok_juicy = Creature:new {
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "theme_park_marauder_mission_target_convotemplate",
-	attacks = merge(riflemanmaster,brawlernovice)
+	attacks = merge(riflemanmaster,brawlermaster)
 }
 CreatureTemplates:addCreatureTemplate(theme_park_marauder_ewok_juicy, "theme_park_marauder_ewok_juicy")

@@ -31,14 +31,13 @@ xarot_nightsister_witch = Creature:new {
 		{
 			groups = {
 				{group = "task_loot_nightsister_force_crystal", chance = 10000000},
-
 			},
 			lootChance = 10000000
 		},
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster)
+	attacks = merge(brawlermaster,pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(xarot_nightsister_witch, "xarot_nightsister_witch")

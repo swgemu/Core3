@@ -30,7 +30,7 @@ nightsister_stalker_quest = Creature:new {
 	lootGroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = brawlermaster
+	attacks = merge(brawlermaster,pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nightsister_stalker_quest, "nightsister_stalker_quest")

@@ -31,8 +31,7 @@ theme_park_imperial_escort_handmaiden = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_escort_handmaiden, "theme_park_imperial_escort_handmaiden")

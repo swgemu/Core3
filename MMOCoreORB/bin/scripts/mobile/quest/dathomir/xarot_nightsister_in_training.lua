@@ -30,7 +30,7 @@ xarot_nightsister_in_training = Creature:new {
 	lootGroups = {},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "xarot_korlin_mission_target_convotemplate",
-	attacks = merge(brawlermaster)
+	attacks = merge(brawlermaster,pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(xarot_nightsister_in_training, "xarot_nightsister_in_training")

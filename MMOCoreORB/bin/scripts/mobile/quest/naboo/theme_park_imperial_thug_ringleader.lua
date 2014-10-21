@@ -53,7 +53,7 @@ theme_park_imperial_thug_ringleader = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_thug_ringleader, "theme_park_imperial_thug_ringleader")

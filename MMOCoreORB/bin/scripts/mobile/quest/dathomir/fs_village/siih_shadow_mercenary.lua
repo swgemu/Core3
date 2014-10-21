@@ -56,7 +56,7 @@ siih_shadow_mercenary = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(siih_shadow_mercenary, "siih_shadow_mercenary")

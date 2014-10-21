@@ -41,7 +41,7 @@ zim_zam_blattis = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(zim_zam_blattis, "zim_zam_blattis")

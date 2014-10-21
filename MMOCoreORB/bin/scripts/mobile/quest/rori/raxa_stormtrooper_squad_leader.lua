@@ -34,8 +34,8 @@ raxa_stormtrooper_squad_leader = Creature:new {
 				{group = "junk", chance = 5500000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 250000},
 				{group = "armor_attachments", chance = 250000},
 				{group = "stormtrooper_common", chance = 700000},
@@ -45,7 +45,7 @@ raxa_stormtrooper_squad_leader = Creature:new {
 		}						
 	},
 	weapons = {"stormtrooper_weapons"},
-  conversationTemplate = "",
+	conversationTemplate = "",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 

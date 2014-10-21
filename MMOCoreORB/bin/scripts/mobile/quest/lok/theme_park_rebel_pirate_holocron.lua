@@ -21,7 +21,7 @@ theme_park_rebel_pirate_holocron = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -46,7 +46,7 @@ theme_park_rebel_pirate_holocron = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_rebel_pirate_holocron, "theme_park_rebel_pirate_holocron")

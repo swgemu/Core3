@@ -43,7 +43,7 @@ theme_park_imperial_rebel_sympathizer = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(pistoleermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_rebel_sympathizer, "theme_park_imperial_rebel_sympathizer")

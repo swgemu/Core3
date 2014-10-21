@@ -21,7 +21,7 @@ theme_park_rebel_pirate = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -38,7 +38,7 @@ theme_park_rebel_pirate = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_rebel_pirate, "theme_park_rebel_pirate")

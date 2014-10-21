@@ -58,7 +58,7 @@ sith_shadow_pirate = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(sith_shadow_pirate, "sith_shadow_pirate")

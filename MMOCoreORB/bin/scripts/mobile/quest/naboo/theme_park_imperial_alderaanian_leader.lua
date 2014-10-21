@@ -37,7 +37,7 @@ theme_park_imperial_alderaanian_leader = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(pistoleermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_alderaanian_leader, "theme_park_imperial_alderaanian_leader")

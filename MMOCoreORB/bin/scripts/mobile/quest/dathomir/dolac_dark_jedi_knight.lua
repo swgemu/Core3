@@ -39,7 +39,7 @@ dolac_dark_jedi_knight = Creature:new {
 	},
 	weapons = {"dark_jedi_weapons_gen3"},
 	conversationTemplate = "",
-	attacks = merge(lightsabermaster)
+	attacks = merge(lightsabermaster,forcepowermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(dolac_dark_jedi_knight, "dolac_dark_jedi_knight")

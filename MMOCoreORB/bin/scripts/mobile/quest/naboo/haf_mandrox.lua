@@ -31,8 +31,7 @@ haf_mandrox = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "gavyn_sykes_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(haf_mandrox, "haf_mandrox")
