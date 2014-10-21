@@ -35,8 +35,7 @@ death_watch_miner = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlernovice
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_miner, "death_watch_miner")

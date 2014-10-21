@@ -1,6 +1,5 @@
 hagrin_aide = Creature:new {
 	objectName = "@mob/creature_names:businessman",
-	generateRandomName =true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -61,8 +60,7 @@ hagrin_aide = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(hagrin_aide, "hagrin_aide")

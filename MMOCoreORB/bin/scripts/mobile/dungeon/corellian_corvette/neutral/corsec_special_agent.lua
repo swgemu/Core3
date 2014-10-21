@@ -26,14 +26,13 @@ corsec_special_agent = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_corsec_pilot_human_female_01.iff",
-		"object/mobile/dressed_corsec_pilot_human_male_01.iff"},
+	templates = { "object/mobile/dressed_corsec_pilot_human_female_01.iff",
+			"object/mobile/dressed_corsec_pilot_human_male_01.iff"},
 	lootGroups = {
 	  {
 			groups = {
 				{group = "junk", chance = 6500000},
-                                                                {group = "clothing_attachments", chance = 250000},
+				{group = "clothing_attachments", chance = 250000},
 				{group = "armor_attachments", chance = 250000},
 				{group = "corsec_weapons", chance = 2500000},
 				{group = "crystals_select", chance = 250000},
@@ -44,7 +43,7 @@ corsec_special_agent = Creature:new {
 	},
 	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_special_agent, "corsec_special_agent")

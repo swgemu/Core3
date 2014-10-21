@@ -30,7 +30,7 @@ xalox_informant = Creature:new {
 	lootGroups = { },
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "xalox_guul_mission_target_convotemplate",
-	attacks = merge(marksmanmaster,brawlernovice)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(xalox_informant, "xalox_informant")

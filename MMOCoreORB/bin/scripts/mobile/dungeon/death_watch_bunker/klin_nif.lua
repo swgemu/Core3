@@ -38,7 +38,7 @@ klin_nif = Creature:new {
 	},
 	weapons = {"death_watch_commander_weapons"},
 	conversationTemplate = "",
-	attacks = merge(carbineermaster)
+	attacks = merge(carbineermaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(klin_nif, "klin_nif")

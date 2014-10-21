@@ -45,7 +45,7 @@ hagrin_fed_dub_patrolman = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(hagrin_fed_dub_patrolman, "hagrin_fed_dub_patrolman")

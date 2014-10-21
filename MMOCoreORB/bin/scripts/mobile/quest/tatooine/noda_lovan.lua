@@ -30,7 +30,7 @@ noda_lovan = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "lt_harburik_mission_target_convotemplate",
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(noda_lovan, "noda_lovan")

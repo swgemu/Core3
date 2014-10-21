@@ -38,8 +38,7 @@ chadra_fan_assassin = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(chadra_fan_assassin, "chadra_fan_assassin")

@@ -60,8 +60,7 @@ gramm_businessman = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "gramm_rile_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(gramm_businessman, "gramm_businessman")

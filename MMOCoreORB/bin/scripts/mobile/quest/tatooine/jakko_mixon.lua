@@ -31,7 +31,6 @@ jakko_mixon = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "blerx_tango_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 CreatureTemplates:addCreatureTemplate(jakko_mixon, "jakko_mixon")

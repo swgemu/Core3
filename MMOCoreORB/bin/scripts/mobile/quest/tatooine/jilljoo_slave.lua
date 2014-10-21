@@ -30,7 +30,7 @@ jilljoo_slave = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "jilljoo_jab_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(jilljoo_slave, "jilljoo_slave")

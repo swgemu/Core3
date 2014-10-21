@@ -31,7 +31,7 @@ thermal_det = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "kitster_banai_mission_target_convotemplate",
-	attacks = merge(brawlernovice)
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(thermal_det, "thermal_det")

@@ -34,8 +34,8 @@ elite_novatrooper = Creature:new {
 				{group = "junk", chance = 6650000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "wearables_rare", chance = 1000000}
@@ -45,7 +45,7 @@ elite_novatrooper = Creature:new {
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(riflemanmaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(elite_novatrooper, "elite_novatrooper")

@@ -31,14 +31,13 @@ theme_park_jawa = Creature:new {
 	    {
 			groups = {
 				{group = "theme_park_loot_transponder", chance = 10000000},
-				
 			},
 			lootChance = 10000000
-		}							
+		}
 	},
 	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmannovice)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_jawa, "theme_park_jawa")

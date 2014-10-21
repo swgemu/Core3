@@ -47,7 +47,7 @@ ammow_dowwop = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "lt_harburik_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(ammow_dowwop, "ammow_dowwop")

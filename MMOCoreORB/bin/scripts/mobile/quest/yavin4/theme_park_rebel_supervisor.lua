@@ -36,7 +36,7 @@ theme_park_rebel_supervisor = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_rebel_supervisor, "theme_park_rebel_supervisor")

@@ -27,14 +27,14 @@ haleen_activist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_talus_sif_mercenary_rodian_01.iff"},
-  lootGroups = {
-    {
-      groups = {
-        {group = "task_loot_haleen_snowline_evidence", chance = 10000000}
-      },
-      lootChance = 10000000
-    }           
-  },
+	lootGroups = {
+		{
+			groups = {
+				{group = "task_loot_haleen_snowline_evidence", chance = 10000000}
+			},
+			lootChance = 10000000
+		}
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster)

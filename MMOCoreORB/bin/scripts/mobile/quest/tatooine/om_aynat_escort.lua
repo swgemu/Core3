@@ -83,7 +83,7 @@ om_aynat_escort = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "om_aynat_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(om_aynat_escort, "om_aynat_escort")

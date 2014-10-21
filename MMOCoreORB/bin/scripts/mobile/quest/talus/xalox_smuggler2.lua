@@ -26,16 +26,16 @@ xalox_smuggler2 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_slicer_human_male_01.iff"},
-  lootGroups = {
-    {
-      groups = {
-        {group = "task_loot_xalox_guul_datadisc", chance = 10000000}
-      },
-      lootChance = 10000000
-    }           
-  },
+	lootGroups = {
+		{
+			groups = {
+				{group = "task_loot_xalox_guul_datadisc", chance = 10000000}
+			},
+			lootChance = 10000000
+		}
+	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(xalox_smuggler2, "xalox_smuggler2")

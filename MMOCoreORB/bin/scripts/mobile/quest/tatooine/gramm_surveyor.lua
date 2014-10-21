@@ -40,8 +40,7 @@ gramm_surveyor = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "gramm_rile_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(gramm_surveyor, "gramm_surveyor")

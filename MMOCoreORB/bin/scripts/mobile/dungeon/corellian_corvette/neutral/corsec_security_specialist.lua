@@ -33,7 +33,7 @@ corsec_security_specialist = Creature:new {
 	  {
 			groups = {
 				{group = "junk", chance = 6500000},
-                                                                {group = "clothing_attachments", chance = 250000},
+				{group = "clothing_attachments", chance = 250000},
 				{group = "armor_attachments", chance = 250000},
 				{group = "corsec_weapons", chance = 2500000},
 				{group = "crystals_select", chance = 250000},
@@ -44,7 +44,7 @@ corsec_security_specialist = Creature:new {
 	},
 	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_security_specialist, "corsec_security_specialist")

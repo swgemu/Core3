@@ -50,7 +50,7 @@ radlee_criminal = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlernovice)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(radlee_criminal, "radlee_criminal")

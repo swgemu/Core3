@@ -32,17 +32,17 @@ wend_dinard = Creature:new {
 			groups = {
 				{group = "junk", chance = 1500000},
 				{group = "wearables_common", chance = 2000000},
-				{group = "melee_weapons", chance = 2000000},				
+				{group = "melee_weapons", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "jabba_common", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "lt_harburik_mission_target_convotemplate",
-	attacks = {	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(wend_dinard, "wend_dinard")

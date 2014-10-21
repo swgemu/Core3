@@ -36,12 +36,11 @@ rhalia_jinsari = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rhalia_jinsari, "rhalia_jinsari")

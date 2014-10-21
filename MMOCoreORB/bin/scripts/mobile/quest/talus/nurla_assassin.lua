@@ -30,7 +30,7 @@ nurla_assassin = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "nurla_slinthiss_mission_target_convotemplate",
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nurla_assassin, "nurla_assassin")

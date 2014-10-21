@@ -33,17 +33,17 @@ gins_stranded_rebel_officer = Creature:new {
 		"object/mobile/dressed_rebel_first_lieutenant_moncal_female_01.iff",
 		"object/mobile/dressed_rebel_first_lieutenant_moncal_female_02.iff",
 		"object/mobile/dressed_rebel_first_lieutenant_sullustan_male_01.iff"},
-  lootGroups = {
-    {
-      groups = {
-        {group = "task_loot_gins_darone_stranded_rebels_weapon", chance = 10000000}
-      },
-      lootChance = 10000000
-    }           
-  },
+	lootGroups = {
+		{
+			groups = {
+				{group = "task_loot_gins_darone_stranded_rebels_weapon", chance = 10000000}
+			},
+			lootChance = 10000000
+		 }
+	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gins_stranded_rebel_officer, "gins_stranded_rebel_officer")

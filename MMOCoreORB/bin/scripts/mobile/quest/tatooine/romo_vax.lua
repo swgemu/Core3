@@ -31,8 +31,7 @@ romo_vax = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "theme_park_jabba_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(romo_vax, "romo_vax")

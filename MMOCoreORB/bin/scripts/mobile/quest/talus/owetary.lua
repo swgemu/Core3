@@ -61,8 +61,7 @@ owetary = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "haleen_snowline_hagrin_zeed_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(owetary, "owetary")

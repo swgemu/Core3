@@ -34,8 +34,7 @@ deela_quellor = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "rakir_banai_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(deela_quellor, "deela_quellor")

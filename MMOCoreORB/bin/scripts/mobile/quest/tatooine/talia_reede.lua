@@ -31,7 +31,7 @@ talia_reede = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "aaph_koden_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(talia_reede, "talia_reede")

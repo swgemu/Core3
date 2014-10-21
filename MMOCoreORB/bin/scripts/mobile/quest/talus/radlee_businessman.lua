@@ -61,8 +61,7 @@ radlee_businessman = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "radlee_mathiss_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(radlee_businessman, "radlee_businessman")
