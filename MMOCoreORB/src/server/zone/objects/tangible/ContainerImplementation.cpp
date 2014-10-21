@@ -199,7 +199,9 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 		// Find out how much room we need
 		int objectSize;
 
-		if (object->isContainerObject())
+		if (object->isVendor())
+			objectSize = 0;
+		else if (object->isContainerObject())
 			objectSize = object->getContainerObjectsSize() + 1;
 		else
 			objectSize = 1;
