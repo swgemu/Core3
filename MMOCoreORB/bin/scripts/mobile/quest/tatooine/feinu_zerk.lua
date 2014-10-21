@@ -31,8 +31,7 @@ feinu_zerk = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "zicx_bug_bomb_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(feinu_zerk, "feinu_zerk")

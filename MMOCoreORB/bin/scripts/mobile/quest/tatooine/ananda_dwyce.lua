@@ -35,8 +35,7 @@ ananda_dwyce = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "prefect_talmont_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(ananda_dwyce, "ananda_dwyce")

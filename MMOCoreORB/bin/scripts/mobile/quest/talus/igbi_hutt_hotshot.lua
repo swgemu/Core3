@@ -37,8 +37,7 @@ igbi_hutt_hotshot = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(igbi_hutt_hotshot, "igbi_hutt_hotshot")

@@ -41,7 +41,7 @@ dak_linser = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_light"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(dak_linser, "dak_linser")

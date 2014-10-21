@@ -42,8 +42,7 @@ igbi_hutt_operative = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(igbi_hutt_operative, "igbi_hutt_operative")

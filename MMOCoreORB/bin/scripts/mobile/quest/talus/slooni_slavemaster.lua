@@ -30,7 +30,7 @@ slooni_slavemaster = Creature:new {
 	lootGroups = { },
 	weapons = {},
 	conversationTemplate = "slooni_jong_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(slooni_slavemaster, "slooni_slavemaster")

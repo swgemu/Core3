@@ -30,7 +30,7 @@ valarian_compound_guard_quest = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "theme_park_valarian_mission_target_convotemplate",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(valarian_compound_guard_quest, "valarian_compound_guard_quest")

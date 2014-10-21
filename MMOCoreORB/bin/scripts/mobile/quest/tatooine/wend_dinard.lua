@@ -42,7 +42,7 @@ wend_dinard = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "lt_harburik_mission_target_convotemplate",
-	attacks = {	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(wend_dinard, "wend_dinard")

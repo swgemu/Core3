@@ -30,7 +30,7 @@ kathikiis_assist = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "kathikiis_ruwahurr_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(kathikiis_assist, "kathikiis_assist")

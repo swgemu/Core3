@@ -33,7 +33,7 @@ warren_imperial_officer = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermaster,marksmanmaster,carbineermaster,riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(warren_imperial_officer, "warren_imperial_officer")

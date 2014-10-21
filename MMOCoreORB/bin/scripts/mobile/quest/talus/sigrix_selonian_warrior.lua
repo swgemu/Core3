@@ -65,7 +65,7 @@ sigrix_selonian_warrior = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(sigrix_selonian_warrior, "sigrix_selonian_warrior")

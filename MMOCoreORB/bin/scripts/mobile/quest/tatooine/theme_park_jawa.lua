@@ -38,7 +38,7 @@ theme_park_jawa = Creature:new {
 	},
 	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmannovice)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_jawa, "theme_park_jawa")

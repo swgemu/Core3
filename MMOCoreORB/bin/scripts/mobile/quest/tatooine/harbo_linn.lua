@@ -40,7 +40,7 @@ harbo_linn = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(marksmannovice,brawlernovice)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(harbo_linn, "harbo_linn")

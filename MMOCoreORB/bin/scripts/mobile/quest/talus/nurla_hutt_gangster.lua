@@ -42,8 +42,7 @@ nurla_hutt_gangster = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nurla_hutt_gangster, "nurla_hutt_gangster")

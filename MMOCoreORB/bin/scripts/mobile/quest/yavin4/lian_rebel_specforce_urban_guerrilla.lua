@@ -40,8 +40,8 @@ lian_rebel_specforce_urban_guerrilla = Creature:new {
 				{group = "junk", chance = 4700000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-                {group = "melee_weapons", chance = 1000000},
-                {group = "carbines", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000},
 				{group = "wearables_common", chance = 1000000}
@@ -51,7 +51,7 @@ lian_rebel_specforce_urban_guerrilla = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "lian_byrne_mission_target_convotemplate",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(lian_rebel_specforce_urban_guerrilla, "lian_rebel_specforce_urban_guerrilla")

@@ -31,8 +31,7 @@ digger_dimms = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "tekil_barje_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(digger_dimms, "digger_dimms")

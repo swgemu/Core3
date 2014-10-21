@@ -33,8 +33,7 @@ crazed_scientist = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(crazed_scientist, "crazed_scientist")

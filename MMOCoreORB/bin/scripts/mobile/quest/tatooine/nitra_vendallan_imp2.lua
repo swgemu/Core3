@@ -32,7 +32,7 @@ nitra_vendallan_imp2 = Creature:new {
 		"object/mobile/dressed_weaponsmith_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {},
-	attacks = {},
+	attacks = brawlermaster,
 	conversationTemplate = "nitra_vendallan_mission_target_convotemplate",	
 }
 

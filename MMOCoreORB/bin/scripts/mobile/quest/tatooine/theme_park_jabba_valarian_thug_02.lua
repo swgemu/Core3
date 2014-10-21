@@ -41,8 +41,7 @@ theme_park_jabba_valarian_thug_02 = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_jabba_valarian_thug_02, "theme_park_jabba_valarian_thug_02")

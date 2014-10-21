@@ -42,8 +42,7 @@ nurla_jabba_enforcer = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nurla_jabba_enforcer, "nurla_jabba_enforcer")

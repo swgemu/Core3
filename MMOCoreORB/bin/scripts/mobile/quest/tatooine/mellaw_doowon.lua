@@ -31,7 +31,6 @@ mellaw_doowon = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "blerx_tango_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 CreatureTemplates:addCreatureTemplate(mellaw_doowon, "mellaw_doowon")
