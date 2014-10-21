@@ -106,7 +106,9 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 
 		int count = 1;
 
-		if (object->isContainerObject())
+		if (object->isVendor())
+			count = 0;
+		else if (object->isContainerObject())
 			count += object->getCountableObjectsRecursive();
 
 		if (building->getCurrentNumberOfPlayerItems() + count > building->getMaximumNumberOfPlayerItems()) {
