@@ -39,8 +39,7 @@ haggard_pubam_battlelord = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(haggard_pubam_battlelord, "haggard_pubam_battlelord")

@@ -40,7 +40,7 @@ twisted_donkuwah_scavenger = Creature:new {
 	},
 	weapons = {"donkuwah_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster)
+	attacks = merge(fencermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(twisted_donkuwah_scavenger, "twisted_donkuwah_scavenger")

@@ -27,8 +27,8 @@ bandit_tutorial_1 = Creature:new {
 
 	templates = {"object/mobile/dressed_cobral_bandit_bith_male_01.iff"},
 	lootGroups = {},
-	weapons = {"tutorial_bandit_weapons"},--dont change this
-	attacks = {"defaultattack", ""},
+	weapons = {"tutorial_bandit"},--dont change this
+	attacks = {{"defaultattack", ""}},
 	conversationTemplate = "",
 	optionsBitmask = 0
 }

@@ -32,8 +32,7 @@ dulok_outcast_raider = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(dulok_outcast_raider, "dulok_outcast_raider")

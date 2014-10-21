@@ -38,7 +38,7 @@ masterful_panshee_warrior = Creature:new {
 		}
 	},
 	weapons = {"ewok_weapons"},
-	attacks = merge(riflemanmaster,brawlernovice)
+	attacks = merge(riflemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(masterful_panshee_warrior, "masterful_panshee_warrior")

@@ -35,7 +35,7 @@ dolac_escaped_prisoner = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "dolac_legasi_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(dolac_escaped_prisoner, "dolac_escaped_prisoner")

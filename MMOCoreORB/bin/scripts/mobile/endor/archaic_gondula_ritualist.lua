@@ -41,7 +41,7 @@ archaic_gondula_ritualist = Creature:new {
 	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster)
+	attacks = merge(riflemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(archaic_gondula_ritualist, "archaic_gondula_ritualist")

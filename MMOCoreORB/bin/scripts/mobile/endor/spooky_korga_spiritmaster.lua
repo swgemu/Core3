@@ -40,8 +40,7 @@ spooky_korga_spiritmaster = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(spooky_korga_spiritmaster, "spooky_korga_spiritmaster")

@@ -37,10 +37,9 @@ donkuwah_tribesman = Creature:new {
 			lootChance = 2300000
 		}
 	},
-	weapons = {},
+	weapons = {"donkuwah_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(donkuwah_tribesman, "donkuwah_tribesman")

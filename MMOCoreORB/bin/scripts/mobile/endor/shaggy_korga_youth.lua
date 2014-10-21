@@ -39,8 +39,7 @@ shaggy_korga_youth = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(shaggy_korga_youth, "shaggy_korga_youth")

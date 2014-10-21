@@ -40,7 +40,7 @@ vile_donkuwah_battlelord = Creature:new {
 	},
 	weapons = {"donkuwah_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster)
+	attacks = merge(fencermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(vile_donkuwah_battlelord, "vile_donkuwah_battlelord")

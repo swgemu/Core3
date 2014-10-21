@@ -47,7 +47,7 @@ skilled_gondula_worker = Creature:new {
 	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster)
+	attacks = merge(riflemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(skilled_gondula_worker, "skilled_gondula_worker")

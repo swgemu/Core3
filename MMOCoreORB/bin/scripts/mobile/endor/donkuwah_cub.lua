@@ -39,8 +39,7 @@ donkuwah_cub = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlernovice
 }
 
 CreatureTemplates:addCreatureTemplate(donkuwah_cub, "donkuwah_cub")

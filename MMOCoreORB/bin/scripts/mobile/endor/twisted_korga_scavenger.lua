@@ -40,8 +40,7 @@ twisted_korga_scavenger = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(twisted_korga_scavenger, "twisted_korga_scavenger")
