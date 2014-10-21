@@ -1,11 +1,11 @@
 imperial_banner = Lair:new {
-	mobiles = {{"imperial_sharpshooter", 1}},
+	mobiles = {{"imperial_cadet",1}},
 	spawnLimit = 8,
-	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
-	buildingsEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
-	buildingsMedium = {"object/tangible/lair/base/objective_power_generator.iff"},
-	buildingsHard = {"object/tangible/lair/base/objective_power_generator.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/objective_power_generator.iff"},
+	buildingsVeryEasy = {"object/tangible/lair/base/objective_banner_imperial.iff"},
+	buildingsEasy = {"object/tangible/lair/base/objective_banner_imperial.iff"},
+	buildingsMedium = {"object/tangible/lair/base/objective_banner_imperial.iff"},
+	buildingsHard = {"object/tangible/lair/base/objective_banner_imperial.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/objective_banner_imperial.iff"},
 	faction = "imperial",
 	mobType = "npc"
 }

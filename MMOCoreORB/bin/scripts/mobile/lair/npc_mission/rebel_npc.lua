@@ -1,11 +1,11 @@
 rebel_npc = Lair:new {
-	mobiles = {{"rebel_corporal", 1}},
+	mobiles = {{"rebel_trooper",1}},
 	spawnLimit = 8,
-	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
-	buildingsEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
-	buildingsMedium = {"object/tangible/lair/base/objective_power_generator.iff"},
-	buildingsHard = {"object/tangible/lair/base/objective_power_generator.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/objective_power_generator.iff"},
+	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_transformer.iff"},
+	buildingsEasy = {"object/tangible/lair/base/objective_power_transformer.iff"},
+	buildingsMedium = {"object/tangible/lair/base/objective_power_transformer.iff"},
+	buildingsHard = {"object/tangible/lair/base/objective_power_transformer.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/objective_power_transformer.iff"},
 	faction = "rebel",
 	mobType = "npc"
 }
