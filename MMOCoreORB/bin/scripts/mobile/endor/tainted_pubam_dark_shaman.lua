@@ -40,8 +40,7 @@ tainted_pubam_dark_shaman = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(tainted_pubam_dark_shaman, "tainted_pubam_dark_shaman")

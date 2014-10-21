@@ -46,7 +46,7 @@ gondula_elder = Creature:new {
 	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster)
+	attacks = merge(riflemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gondula_elder, "gondula_elder")

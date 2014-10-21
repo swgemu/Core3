@@ -108,7 +108,7 @@ object_weapon_melee_unarmed_unarmed_default_player = object_weapon_melee_unarmed
 	forceCost = 0,
 	
 	pointBlankAccuracy = 0,
-	pointBlankRange = 15,
+	pointBlankRange = 0,
 	
 	idealRange = 5,
 	idealAccuracy = 3,

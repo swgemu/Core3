@@ -38,8 +38,7 @@ tainted_korga_dark_shaman = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(tainted_korga_dark_shaman, "tainted_korga_dark_shaman")

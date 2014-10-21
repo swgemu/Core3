@@ -40,8 +40,7 @@ twisted_pubam_scavenger = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(twisted_pubam_scavenger, "twisted_pubam_scavenger")

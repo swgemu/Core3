@@ -37,7 +37,7 @@ ewok_outcast_raider = Creature:new {
 	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster)
+	attacks = merge(riflemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(ewok_outcast_raider, "ewok_outcast_raider")

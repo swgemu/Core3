@@ -40,7 +40,7 @@ tainted_donkuwah_dark_shaman = Creature:new {
 	},
 	weapons = {"donkuwah_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster)
+	attacks = merge(fencermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tainted_donkuwah_dark_shaman, "tainted_donkuwah_dark_shaman")

@@ -37,7 +37,7 @@ masterful_ewok_warrior = Creature:new {
 		}
 	},
 	weapons = {"ewok_weapons"},
-	attacks = merge(riflemanmaster)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(masterful_ewok_warrior, "masterful_ewok_warrior")

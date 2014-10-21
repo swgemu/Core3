@@ -32,8 +32,7 @@ bewitching_korga_dark_shaman = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(bewitching_korga_dark_shaman, "bewitching_korga_dark_shaman")

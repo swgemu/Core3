@@ -40,7 +40,7 @@ tricky_donkuwah_scout = Creature:new {
 	},
 	weapons = {"donkuwah_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster)
+	attacks = merge(fencermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tricky_donkuwah_scout, "tricky_donkuwah_scout")

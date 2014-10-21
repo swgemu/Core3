@@ -33,7 +33,7 @@ warren_irradiated_worker = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(warren_irradiated_worker, "warren_irradiated_worker")

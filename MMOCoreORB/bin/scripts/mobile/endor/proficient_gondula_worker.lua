@@ -39,7 +39,7 @@ proficient_gondula_worker = Creature:new {
 	lootGroups = {},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster)
+	attacks = merge(riflemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(proficient_gondula_worker, "proficient_gondula_worker")
