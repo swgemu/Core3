@@ -31,8 +31,7 @@ lacnor_liawoon = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "kirkin_liawoon_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(lacnor_liawoon, "lacnor_liawoon")

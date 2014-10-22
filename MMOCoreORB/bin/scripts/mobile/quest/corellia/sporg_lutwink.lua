@@ -30,7 +30,7 @@ sporg_lutwink = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "hal_horn_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(sporg_lutwink, "sporg_lutwink")

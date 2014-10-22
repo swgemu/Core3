@@ -42,7 +42,7 @@ theme_park_imperial_officer_emil = Creature:new {
 		}						
 	},
 	weapons = {"imperial_weapons_medium"},
-	attacks = {},
+	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,carbineermaster),
 	conversationTemplate = "",
 	optionsBitmask = 128
 }

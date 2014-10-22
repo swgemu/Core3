@@ -31,7 +31,7 @@ chino = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "jatrian_lytus_mission_target_convotemplate",	
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(chino, "chino")

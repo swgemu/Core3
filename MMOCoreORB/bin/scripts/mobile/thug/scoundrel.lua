@@ -26,24 +26,24 @@ scoundrel = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
-					"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
-					"object/mobile/dressed_robber_twk_female_01.iff"},
+			"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+			"object/mobile/dressed_robber_twk_female_01.iff"},
 	lootGroups = {
 		{
-	        groups = {
-			{group = "junk", chance = 3500000},
-			{group = "wearables_common", chance = 2000000},			
-			{group = "armor_all", chance = 500000},
-			{group = "rifles", chance = 1000000},
-			{group = "pistols", chance = 1000000},
-			{group = "melee_weapons", chance = 1000000},
-			{group = "carbines", chance = 1000000},
-		},
+	        	groups = {
+				{group = "junk", chance = 3500000},
+				{group = "wearables_common", chance = 2000000},			
+				{group = "armor_all", chance = 500000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+			},
 			lootChance = 2600000
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(scoundrel, "scoundrel")

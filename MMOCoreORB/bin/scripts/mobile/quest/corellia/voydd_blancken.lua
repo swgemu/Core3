@@ -30,7 +30,7 @@ voydd_blancken = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "corran_horn_mission_target_convotemplate",
-	attacks = {}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(voydd_blancken, "voydd_blancken")

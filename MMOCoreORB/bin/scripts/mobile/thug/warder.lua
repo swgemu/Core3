@@ -29,7 +29,7 @@ warder = Creature:new {
 
 	templates = {"object/mobile/dressed_aakuan_warder_zabrak_male_01.iff"},
 	lootGroups = {
-      	{
+      		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
@@ -41,7 +41,7 @@ warder = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(warder, "warder")

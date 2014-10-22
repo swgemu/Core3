@@ -34,7 +34,7 @@ naz_tulos = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "lady_hutt_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(naz_tulos, "naz_tulos")

@@ -4,7 +4,7 @@ wastrel = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 6,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 50,
 	damageMax = 55,
 	baseXp = 113,
@@ -19,17 +19,15 @@ wastrel = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_commoner_old_zabrak_female_02.iff"
-	},
+	templates = {"object/mobile/dressed_commoner_old_zabrak_female_02.iff"},
 	lootGroups = {
-      	{
+      		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
@@ -40,7 +38,7 @@ wastrel = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(wastrel, "wastrel")

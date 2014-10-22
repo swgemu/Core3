@@ -31,8 +31,7 @@ sg_619 = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "sg_567_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(sg_619, "sg_619")

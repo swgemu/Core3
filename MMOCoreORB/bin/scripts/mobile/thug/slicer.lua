@@ -4,7 +4,7 @@ slicer = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 6,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 50,
 	damageMax = 55,
 	baseXp = 113,
@@ -19,16 +19,15 @@ slicer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = 0,
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_assassin_human_female_01.iff",
-				"object/mobile/dressed_criminal_pirate_human_male_01.iff",
-				"object/mobile/dressed_criminal_slicer_human_female_01.iff"
-				},
+			"object/mobile/dressed_criminal_pirate_human_male_01.iff",
+			"object/mobile/dressed_criminal_slicer_human_female_01.iff" },
 	lootGroups = {
       	{
 			groups = {
@@ -41,7 +40,7 @@ slicer = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(slicer, "slicer")

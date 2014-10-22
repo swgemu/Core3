@@ -35,9 +35,9 @@ talon_courier = Creature:new {
 			lootChance = 10000000
 		}
 	},
-	weapons = {},
+	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = {}
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(talon_courier, "talon_courier")

@@ -47,8 +47,7 @@ chandra_conrad = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "corran_horn_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(chandra_conrad, "chandra_conrad")

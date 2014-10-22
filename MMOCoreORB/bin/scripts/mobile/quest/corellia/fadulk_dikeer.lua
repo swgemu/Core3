@@ -30,8 +30,7 @@ fadulk_dikeer = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "garm_bel_iblis_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(fadulk_dikeer, "fadulk_dikeer")

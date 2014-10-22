@@ -41,8 +41,7 @@ theme_park_rebel_selonian_female = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_rebel_selonian_female, "theme_park_rebel_selonian_female")

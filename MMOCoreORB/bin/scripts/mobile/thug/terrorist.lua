@@ -4,7 +4,7 @@ terrorist = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 17,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1102,
@@ -19,7 +19,7 @@ terrorist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -37,10 +37,9 @@ terrorist = Creature:new {
 		"object/mobile/dressed_criminal_thug_trandoshan_male_01.iff",
 		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
 		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
-		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff"
-	},
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff" },
 	lootGroups = {
-      	{
+      		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
@@ -51,7 +50,7 @@ terrorist = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(terrorist, "terrorist")

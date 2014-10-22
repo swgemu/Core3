@@ -44,7 +44,7 @@ rogue = Creature:new {
 		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff"
 	},
 	lootGroups = {
-      	{
+      		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
@@ -55,7 +55,7 @@ rogue = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(rogue, "rogue")

@@ -27,12 +27,11 @@ mercenary = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mercenary_weak_hum_m.iff",
-				"object/mobile/dressed_mercenary_messanger_sullustan_m.iff"
-	},
+			"object/mobile/dressed_mercenary_messanger_sullustan_m.iff" },
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mercenary, "mercenary")

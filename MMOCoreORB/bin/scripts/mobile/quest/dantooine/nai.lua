@@ -41,8 +41,8 @@ nai = Creature:new {
 				{group = "junk", chance = 5700000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-                {group = "melee_weapons", chance = 1000000},
-                {group = "carbines", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000}
 			},
@@ -51,8 +51,7 @@ nai = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "jatrian_lytus_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nai, "nai")

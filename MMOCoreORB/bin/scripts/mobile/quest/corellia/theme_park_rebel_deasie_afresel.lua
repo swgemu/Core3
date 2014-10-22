@@ -30,8 +30,7 @@ theme_park_rebel_deasie_afresel = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_rebel_deasie_afresel, "theme_park_rebel_deasie_afresel")

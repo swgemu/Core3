@@ -31,7 +31,7 @@ relay_captain_coa2 = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(riflemanmaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(relay_captain_coa2, "relay_captain_coa2")

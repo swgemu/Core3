@@ -28,7 +28,7 @@ tough_wookiee_brawler = Creature:new {
 
 	templates = {"object/mobile/wookiee_male.iff"},
 	lootGroups = {
-      	{
+      		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
@@ -40,7 +40,7 @@ tough_wookiee_brawler = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tough_wookiee_brawler, "tough_wookiee_brawler")

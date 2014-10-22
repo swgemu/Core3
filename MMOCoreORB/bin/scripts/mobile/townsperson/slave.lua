@@ -40,7 +40,7 @@ slave = Creature:new {
 				 "object/mobile/bothan_female.iff",},
 	lootGroups = {},
 	weapons = {},
-	attacks = {}
+	attacks = brawlernovice
 }
 
 CreatureTemplates:addCreatureTemplate(slave, "slave")

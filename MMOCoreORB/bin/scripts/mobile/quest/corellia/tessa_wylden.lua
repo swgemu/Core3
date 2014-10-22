@@ -47,8 +47,7 @@ tessa_wylden = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "garm_bel_iblis_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(tessa_wylden, "tessa_wylden")

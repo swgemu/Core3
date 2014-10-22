@@ -28,7 +28,7 @@ tough_thug_bothan_female = Creature:new {
 
 	templates = {"object/mobile/dressed_criminal_thug_bothan_female_01.iff"},
 	lootGroups = {
-      	{
+      		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
@@ -40,7 +40,7 @@ tough_thug_bothan_female = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tough_thug_bothan_female, "tough_thug_bothan_female")

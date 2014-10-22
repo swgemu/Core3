@@ -30,8 +30,7 @@ zayna = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "chertyl_ruluwoor_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(zayna, "zayna")

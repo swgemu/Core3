@@ -27,8 +27,7 @@ information_broker = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_slicer_human_male_01.iff",
-				 "object/mobile/dressed_criminal_slicer_human_female_01.iff",
-	},
+			"object/mobile/dressed_criminal_slicer_human_female_01.iff", },
 	lootGroups = {
       	{
 			groups = {
@@ -42,7 +41,7 @@ information_broker = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(information_broker, "information_broker")

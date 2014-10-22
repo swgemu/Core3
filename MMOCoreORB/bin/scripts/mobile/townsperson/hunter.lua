@@ -43,7 +43,7 @@ hunter = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_light"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(hunter, "hunter")

@@ -42,7 +42,7 @@ frontiersman = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(frontiersman, "frontiersman")

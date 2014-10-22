@@ -32,7 +32,7 @@ tough_thug_aqualish_male = Creature:new {
 		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
 		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff"},
 	lootGroups = {
-      	{
+      		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
@@ -44,7 +44,7 @@ tough_thug_aqualish_male = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tough_thug_aqualish_male, "tough_thug_aqualish_male")

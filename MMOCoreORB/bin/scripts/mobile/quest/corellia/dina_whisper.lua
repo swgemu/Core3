@@ -73,8 +73,7 @@ dina_whisper = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "gilad_pellaeon_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(dina_whisper, "dina_whisper")

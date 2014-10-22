@@ -34,7 +34,7 @@ kirkin_human_thug = Creature:new {
 	lootGroups = { },
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(kirkin_human_thug, "kirkin_human_thug")

@@ -30,7 +30,7 @@ kalio_uldi = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "coraline_dynes_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(kalio_uldi, "kalio_uldi")

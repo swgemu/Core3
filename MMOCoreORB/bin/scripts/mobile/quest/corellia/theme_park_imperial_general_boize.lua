@@ -37,7 +37,7 @@ theme_park_imperial_general_boize = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(riflemanmaster,carbineermaster,brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_general_boize, "theme_park_imperial_general_boize")

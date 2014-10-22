@@ -30,8 +30,7 @@ lunce_targettal = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "jadam_questrel_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(lunce_targettal, "lunce_targettal")

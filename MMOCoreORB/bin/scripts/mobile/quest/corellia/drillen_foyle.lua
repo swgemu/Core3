@@ -43,7 +43,7 @@ drillen_foyle = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(drillen_foyle, "drillen_foyle")

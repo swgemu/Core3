@@ -39,7 +39,7 @@ gnurr_fenkel = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "luthin_dlunar_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(gnurr_fenkel, "gnurr_fenkel")

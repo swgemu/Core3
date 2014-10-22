@@ -30,8 +30,7 @@ nola_indrivin = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "jadam_questrel_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(nola_indrivin, "nola_indrivin")

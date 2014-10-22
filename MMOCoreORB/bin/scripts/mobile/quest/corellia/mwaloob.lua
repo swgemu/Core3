@@ -33,7 +33,7 @@ mwaloob = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "hal_horn_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(mwaloob, "mwaloob")

@@ -43,7 +43,7 @@ kalia_kulmina = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(kalia_kulmina, "kalia_kulmina")

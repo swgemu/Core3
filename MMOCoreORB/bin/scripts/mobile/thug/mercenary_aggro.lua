@@ -52,7 +52,7 @@ mercenary_aggro = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mercenary_aggro, "mercenary_aggro")

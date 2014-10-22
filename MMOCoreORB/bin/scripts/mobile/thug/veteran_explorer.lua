@@ -29,7 +29,7 @@ veteran_explorer = Creature:new {
 
 	templates = {"object/mobile/dressed_hutt_expedition_force_member.iff"},
 	lootGroups = {
-      	{
+      		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
@@ -41,7 +41,7 @@ veteran_explorer = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(veteran_explorer, "veteran_explorer")

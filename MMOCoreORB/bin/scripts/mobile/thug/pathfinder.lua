@@ -28,12 +28,11 @@ pathfinder = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
-				 "object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
-				"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
-				"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
-				"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
-				"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
-	},
+			"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
+			"object/mobile/dressed_criminal_thug_aqualish_female_01.iff",
+			"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
+			"object/mobile/dressed_criminal_thug_rodian_male_01.iff",
+			"object/mobile/dressed_criminal_thug_rodian_female_01.iff", },
 	lootGroups = {
       	{
 			groups = {
@@ -47,7 +46,7 @@ pathfinder = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(pathfinder, "pathfinder")

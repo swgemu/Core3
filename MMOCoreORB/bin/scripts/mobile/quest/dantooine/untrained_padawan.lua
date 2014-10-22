@@ -39,7 +39,7 @@ untrained_padawan = Creature:new {
 	},	
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster)
+	attacks = merge(pikemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(untrained_padawan, "untrained_padawan")

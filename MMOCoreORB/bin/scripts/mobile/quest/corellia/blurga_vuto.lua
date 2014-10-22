@@ -41,7 +41,7 @@ blurga_vuto = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(blurga_vuto, "blurga_vuto")

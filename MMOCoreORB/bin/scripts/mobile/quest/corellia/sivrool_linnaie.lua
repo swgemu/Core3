@@ -30,7 +30,7 @@ sivrool_linnaie = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "ging_darjeek_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(sivrool_linnaie, "sivrool_linnaie")

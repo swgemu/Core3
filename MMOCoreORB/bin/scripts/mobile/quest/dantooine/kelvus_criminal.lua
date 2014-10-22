@@ -21,21 +21,20 @@ kelvus_criminal = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + ENEMY,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_criminal_thug_human_male_01.iff",
-					"object/mobile/dressed_criminal_thug_bothan_female_01.iff",
-					"object/mobile/dressed_goon_twk_male_01.iff",
-					"object/mobile/dressed_robber_twk_female_01.iff",
-					"object/mobile/dressed_goon_twk_female_01.iff",
-					"object/mobile/dressed_robber_human_female_01.iff",
-					"object/mobile/dressed_villain_trandoshan_male_01.iff",
-					"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
-					"object/mobile/dressed_villain_trandoshan_female_01.iff"
-					},
+	templates = { "object/mobile/dressed_criminal_thug_human_male_01.iff",
+			"object/mobile/dressed_criminal_thug_bothan_female_01.iff",
+			"object/mobile/dressed_goon_twk_male_01.iff",
+			"object/mobile/dressed_robber_twk_female_01.iff",
+			"object/mobile/dressed_goon_twk_female_01.iff",
+			"object/mobile/dressed_robber_human_female_01.iff",
+			"object/mobile/dressed_villain_trandoshan_male_01.iff",
+			"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
+			"object/mobile/dressed_villain_trandoshan_female_01.iff" },
 	lootGroups = {
 		{
 			groups = {
@@ -49,7 +48,7 @@ kelvus_criminal = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(kelvus_criminal, "kelvus_criminal")

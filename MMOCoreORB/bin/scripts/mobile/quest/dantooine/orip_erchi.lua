@@ -28,16 +28,14 @@ orip_erchi = Creature:new {
 	diet = HERBIVORE,
 
 
-    templates = {
-           "object/mobile/dressed_criminal_pirate_human_male_01.iff",
-		   "object/mobile/dressed_criminal_pirate_human_female_01.iff",
-		   "object/mobile/dressed_criminal_slicer_human_male_01.iff",
-           "object/mobile/dressed_criminal_slicer_human_female_01.iff"},	
+    templates = { "object/mobile/dressed_criminal_pirate_human_male_01.iff",
+		"object/mobile/dressed_criminal_pirate_human_female_01.iff",
+		"object/mobile/dressed_criminal_slicer_human_male_01.iff",
+		"object/mobile/dressed_criminal_slicer_human_female_01.iff"},	
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "xaan_talmaron_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(orip_erchi, "orip_erchi")

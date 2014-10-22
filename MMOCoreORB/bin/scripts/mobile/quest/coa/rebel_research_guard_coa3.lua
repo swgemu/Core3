@@ -38,7 +38,7 @@ rebel_research_guard_coa3 = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_research_guard_coa3, "rebel_research_guard_coa3")

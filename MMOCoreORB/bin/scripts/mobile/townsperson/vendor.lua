@@ -1,8 +1,6 @@
 vendor = Creature:new {
 	objectName = "@mob/creature_names:vendor",
 	generateRandomName = true,
-
-
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -37,8 +35,7 @@ vendor = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(vendor, "vendor")

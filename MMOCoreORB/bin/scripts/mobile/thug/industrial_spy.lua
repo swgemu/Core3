@@ -26,8 +26,7 @@ industrial_spy = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_smuggler_human_female_01.iff",
-				 "object/mobile/dressed_criminal_smuggler_human_male_01.iff"
-	},
+			"object/mobile/dressed_criminal_smuggler_human_male_01.iff" },
 	lootGroups = {
       	{
 			groups = {
@@ -40,7 +39,7 @@ industrial_spy = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_light"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(industrial_spy, "industrial_spy")

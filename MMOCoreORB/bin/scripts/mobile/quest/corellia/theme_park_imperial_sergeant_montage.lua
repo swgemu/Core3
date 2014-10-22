@@ -44,7 +44,7 @@ theme_park_imperial_sergeant_montage = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_sergeant_montage, "theme_park_imperial_sergeant_montage")

@@ -4,7 +4,7 @@ thief = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 430,
@@ -19,7 +19,7 @@ thief = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
@@ -31,7 +31,7 @@ thief = Creature:new {
 		"object/mobile/dressed_binayre_thief_twk_male_01.iff",
 		"object/mobile/dressed_binayre_thief_twk_female_01.iff"},
 	lootGroups = {
-      	{
+      		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
@@ -42,7 +42,7 @@ thief = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(thief, "thief")

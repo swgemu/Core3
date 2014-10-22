@@ -27,13 +27,13 @@ outrider = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_tatooine_nikto_male_01.iff",
-				 "object/mobile/dressed_commoner_tatooine_nikto_male_02.iff",
-				 "object/mobile/dressed_commoner_tatooine_nikto_male_03.iff",
-				 "object/mobile/dressed_commoner_tatooine_nikto_male_04.iff",
-				 "object/mobile/dressed_commoner_tatooine_nikto_male_05.iff",
-				 "object/mobile/dressed_commoner_tatooine_nikto_male_06.iff",
-				 "object/mobile/dressed_commoner_tatooine_nikto_male_07.iff",
-				 "object/mobile/dressed_commoner_tatooine_nikto_male_08.iff"},
+			"object/mobile/dressed_commoner_tatooine_nikto_male_02.iff",
+			"object/mobile/dressed_commoner_tatooine_nikto_male_03.iff",
+			"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff",
+			"object/mobile/dressed_commoner_tatooine_nikto_male_05.iff",
+			"object/mobile/dressed_commoner_tatooine_nikto_male_06.iff",
+			"object/mobile/dressed_commoner_tatooine_nikto_male_07.iff",
+			"object/mobile/dressed_commoner_tatooine_nikto_male_08.iff"},
 	lootGroups = {
       	{
 			groups = {
@@ -47,7 +47,7 @@ outrider = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(outrider, "outrider")

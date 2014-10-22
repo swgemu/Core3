@@ -4,7 +4,7 @@ smuggler = Creature:new {
 	pvpFaction = "thug",
 	faction = "",
 	level = 14,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 150,
 	damageMax = 160,
 	baseXp = 714,
@@ -19,7 +19,7 @@ smuggler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = KILLER,
@@ -28,19 +28,19 @@ smuggler = Creature:new {
 	templates = {"object/mobile/dressed_criminal_slicer_human_male_01.iff"},
 	lootGroups = {
 		{
-	        groups = {
-			{group = "junk", chance = 4000000},
-			{group = "wearables_common", chance = 2000000},			
-			{group = "rifles", chance = 1000000},
-			{group = "pistols", chance = 1000000},
-			{group = "melee_weapons", chance = 1000000},
-			{group = "carbines", chance = 1000000},
-		},
+	        	groups = {
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 2000000},			
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+			},
 			lootChance = 2100000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(smuggler, "smuggler")

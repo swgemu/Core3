@@ -30,7 +30,7 @@ lith_kalis = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "coraline_dynes_mission_target_convotemplate",
-	attacks = {}
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(lith_kalis, "lith_kalis")

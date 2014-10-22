@@ -21,14 +21,14 @@ theme_park_rebel_disgruntled_citizen = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_bountyhunter_trainer_01.iff",
-				 "object/mobile/dressed_bountyhunter_trainer_02.iff",
-				 "object/mobile/dressed_bountyhunter_trainer_03.iff"},
+			"object/mobile/dressed_bountyhunter_trainer_02.iff",
+			"object/mobile/dressed_bountyhunter_trainer_03.iff"},
 	lootGroups = 
 	{
 		{
@@ -39,7 +39,7 @@ theme_park_rebel_disgruntled_citizen = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_rebel_disgruntled_citizen, "theme_park_rebel_disgruntled_citizen")

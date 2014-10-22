@@ -39,7 +39,7 @@ sharpshooter = Creature:new {
 		}
 	},
 	weapons = {"ranged_weapons"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(sharpshooter, "sharpshooter")

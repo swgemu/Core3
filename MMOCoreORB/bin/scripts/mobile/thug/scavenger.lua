@@ -36,15 +36,15 @@ scavenger = Creature:new {
 			"object/mobile/dressed_robber_human_female_01.iff",
 			"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
-	    {
-	        groups = {
+		{
+			groups = {
 				{group = "junk", chance = 6500000},
 				{group = "rifles", chance = 700000},
 				{group = "melee_knife", chance = 700000},
 				{group = "pistols", chance = 700000},
 				{group = "carbines", chance = 700000},
 				{group = "stormtrooper_common", chance = 700000},
-	    	},
+			},
 			lootChance = 3500000
 		}
 	},

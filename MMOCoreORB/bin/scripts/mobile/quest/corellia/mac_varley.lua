@@ -30,7 +30,7 @@ mac_varley = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "denell_kel_vannon_mission_target_convotemplate",
-	attacks = {}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(mac_varley, "mac_varley")
