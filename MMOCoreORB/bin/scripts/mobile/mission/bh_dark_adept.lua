@@ -4,7 +4,7 @@ bh_dark_adept = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 120,
-	chanceHit = 47.5,
+	chanceHit = 4.75,
 	damageMin = 945,
 	damageMax = 1600,
 	baseXp = 13178,
@@ -71,7 +71,7 @@ bh_dark_adept = Creature:new {
 	},
 	weapons = {"dark_jedi_weapons_gen2"},
 	conversationTemplate = "",
-	attacks = merge(lightsabermaster)
+	attacks = merge(lightsabermaster,forcewielder)
 }
 
 CreatureTemplates:addCreatureTemplate(bh_dark_adept, "bh_dark_adept")

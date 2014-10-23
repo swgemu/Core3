@@ -33,7 +33,7 @@ marooned_pirate_captain = Creature:new {
 		"object/mobile/dressed_marooned_pirate_captain_wee_m.iff"
 		},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},
@@ -46,7 +46,7 @@ marooned_pirate_captain = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(marooned_pirate_captain, "marooned_pirate_captain")

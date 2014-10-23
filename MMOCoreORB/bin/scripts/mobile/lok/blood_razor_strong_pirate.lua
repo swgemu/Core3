@@ -55,7 +55,7 @@ blood_razor_strong_pirate = Creature:new {
 	},
 	weapons = {"blood_razer_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pistoleermaster,pikemanmaster,brawlermaster)
+	attacks = merge(pistoleermaster,pikemanmaster,tkamaster,brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(blood_razor_strong_pirate, "blood_razor_strong_pirate")

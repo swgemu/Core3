@@ -53,7 +53,7 @@ bh_bodyguard_zabrak_female = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(bh_bodyguard_zabrak_female, "bh_bodyguard_zabrak_female")

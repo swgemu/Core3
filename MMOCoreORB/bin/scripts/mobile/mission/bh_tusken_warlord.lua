@@ -70,7 +70,7 @@ bh_tusken_warlord = Creature:new {
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice,fencermaster,riflemanmaster)
+	attacks = merge(brawlermaster,marksmanmaster,fencermaster,riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(bh_tusken_warlord, "bh_tusken_warlord")

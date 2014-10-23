@@ -27,11 +27,11 @@ nym_guard_strong = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_guard_strong_hum_f.iff", 
-				"object/mobile/dressed_nym_guard_strong_rod_m.iff",
-				"object/mobile/dressed_nym_guard_strong_nikto_m.iff",
-				"object/mobile/dressed_nym_guard_strong_hum_m.iff"},
+			"object/mobile/dressed_nym_guard_strong_rod_m.iff",
+			"object/mobile/dressed_nym_guard_strong_nikto_m.iff",
+			"object/mobile/dressed_nym_guard_strong_hum_m.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 6500000},
 				{group = "nyms_common", chance = 1000000},
@@ -44,7 +44,7 @@ nym_guard_strong = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(nym_guard_strong, "nym_guard_strong")

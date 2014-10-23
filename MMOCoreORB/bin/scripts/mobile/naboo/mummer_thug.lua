@@ -53,7 +53,7 @@ mummer_thug = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(mummer_thug, "mummer_thug")

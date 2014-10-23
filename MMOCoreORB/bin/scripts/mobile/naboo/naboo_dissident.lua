@@ -4,7 +4,7 @@ naboo_dissident = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 147,
@@ -19,7 +19,7 @@ naboo_dissident = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
@@ -27,7 +27,7 @@ naboo_dissident = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_dissident.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 2000000},				
@@ -35,10 +35,10 @@ naboo_dissident = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}			
+		}
 	},
 	weapons = {"rebel_weapons_medium"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_dissident, "naboo_dissident")

@@ -4,7 +4,7 @@ swamp_rat = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 10,
-	chanceHit = 0.270000,
+	chanceHit = 0.27,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 430,
@@ -19,7 +19,7 @@ swamp_rat = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
@@ -27,7 +27,7 @@ swamp_rat = Creature:new {
 
 	templates = {"object/mobile/dressed_swamp_rat.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5500000},
 				{group = "rifles", chance = 1000000},
@@ -37,10 +37,10 @@ swamp_rat = Creature:new {
 				{group = "loot_kit_parts", chance = 500000}
 			},
 			lootChance = 1900000
-		}					
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(swamp_rat, "swamp_rat")

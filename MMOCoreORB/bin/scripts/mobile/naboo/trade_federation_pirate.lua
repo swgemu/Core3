@@ -28,7 +28,7 @@ trade_federation_pirate = Creature:new {
 
 	templates = {"object/mobile/dressed_trade_federation_zealot.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
@@ -37,11 +37,11 @@ trade_federation_pirate = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 4800000
-		}			
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(trade_federation_pirate, "trade_federation_pirate")

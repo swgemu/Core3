@@ -53,7 +53,7 @@ canyon_corsair_captain = Creature:new {
 	},
 	weapons = {"canyon_corsair_weapons"},
 	conversationTemplate = "",
-	attacks = merge(swordsmanmaster,carbineermaster,brawlermaster)
+	attacks = merge(swordsmanmaster,carbineermaster,tkamaster,brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(canyon_corsair_captain, "canyon_corsair_captain")

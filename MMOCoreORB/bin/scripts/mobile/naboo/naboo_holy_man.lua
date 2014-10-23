@@ -26,9 +26,9 @@ naboo_holy_man = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_naboo_holy_man.iff",
-				"object/mobile/dressed_commoner_naboo_human_female_08.iff"},
+			"object/mobile/dressed_commoner_naboo_human_female_08.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 2000000},
@@ -36,10 +36,11 @@ naboo_holy_man = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}				
+		}
 	},
-	weapons = {},
-	attacks = merge(brawlermaster)
+	weapons = {"rebel_weapons_light"},
+	conversationTemplate = "",
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_holy_man, "naboo_holy_man")

@@ -37,7 +37,7 @@ naboo_pirate_crewman = Creature:new {
 		"object/mobile/dressed_robber_twk_female_01.iff"
 	},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 2000000},
@@ -45,11 +45,11 @@ naboo_pirate_crewman = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_pirate_crewman, "naboo_pirate_crewman")

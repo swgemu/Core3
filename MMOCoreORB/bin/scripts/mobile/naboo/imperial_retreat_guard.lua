@@ -4,7 +4,7 @@ imperial_retreat_guard = Creature:new {
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 72,
-	chanceHit = 0.750000,
+	chanceHit = 0.75,
 	damageMin = 520,
 	damageMax = 750,
 	baseXp = 6931,
@@ -19,7 +19,7 @@ imperial_retreat_guard = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
@@ -27,7 +27,7 @@ imperial_retreat_guard = Creature:new {
 
 	templates = {"object/mobile/emperor_royal_guard.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
@@ -38,10 +38,10 @@ imperial_retreat_guard = Creature:new {
 				{group = "armor_attachments", chance = 250000}
 			},
 			lootChance = 3200000
-		}					
+		}
 	},
 	weapons = {"imperial_weapons_medium"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,carbineermaster,tkamaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_retreat_guard, "imperial_retreat_guard")

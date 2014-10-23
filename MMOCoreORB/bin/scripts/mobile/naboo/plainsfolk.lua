@@ -27,8 +27,8 @@ plainsfolk = Creature:new {
 
 	templates = {"object/mobile/dressed_plainsfolk.iff"},
 	lootGroups = {},
-	weapons = {},
-	attacks = {}
+	weapons = {"pirate_weapons_light"},
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(plainsfolk, "plainsfolk")

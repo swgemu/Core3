@@ -29,7 +29,7 @@ naboo_police = Creature:new {
 	templates = {"object/mobile/dressed_naboo_police.iff",
 				"object/mobile/dressed_royal_officer_human_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 2000000},
@@ -37,11 +37,11 @@ naboo_police = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}					
+		}
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_police, "naboo_police")

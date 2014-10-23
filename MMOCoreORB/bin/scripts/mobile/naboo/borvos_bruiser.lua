@@ -29,7 +29,7 @@ borvos_bruiser = Creature:new {
 
 	templates = {"object/mobile/dressed_borvos_bruiser.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "color_crystals", chance = 200000},
@@ -40,11 +40,11 @@ borvos_bruiser = Creature:new {
 				{group = "borvos_common", chance = 2800000}
 			},
 			lootChance = 2400000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmanmaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(borvos_bruiser, "borvos_bruiser")

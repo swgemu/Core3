@@ -4,7 +4,7 @@ skaak_tipper_swindler = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 430,
@@ -19,7 +19,7 @@ skaak_tipper_swindler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER + HERD,
@@ -29,7 +29,7 @@ skaak_tipper_swindler = Creature:new {
 		"object/mobile/dressed_desperado_bith_female_01.iff",
 		"object/mobile/dressed_desperado_bith_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4500000},
 				{group = "tailor_components", chance = 1500000},
@@ -38,10 +38,10 @@ skaak_tipper_swindler = Creature:new {
 				{group = "skaak_tipper_common", chance = 1000000},
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(skaak_tipper_swindler, "skaak_tipper_swindler")

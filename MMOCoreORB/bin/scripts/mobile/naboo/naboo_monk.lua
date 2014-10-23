@@ -28,9 +28,9 @@ naboo_monk = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_monk.iff",
 				 "object/mobile/dressed_commoner_fat_human_female_02.iff", --in Theed?
-				},
+	},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 2000000},
@@ -38,11 +38,11 @@ naboo_monk = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}				
+		}
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster)
+	attacks = brawlernovice
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_monk, "naboo_monk")

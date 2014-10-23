@@ -4,7 +4,7 @@ plasma_thief = Creature:new {
 	pvpFaction = "plasma_thief",
 	faction = "plasma_thief",
 	level = 3,
-	chanceHit = 0.230000,
+	chanceHit = 0.23,
 	damageMin = 35,
 	damageMax = 45,
 	baseXp = 62,
@@ -19,7 +19,7 @@ plasma_thief = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -27,7 +27,7 @@ plasma_thief = Creature:new {
 
 	templates = {"object/mobile/dressed_plasma_thief.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5000000},
 				{group = "tailor_components", chance = 2000000},
@@ -35,10 +35,10 @@ plasma_thief = Creature:new {
 				{group = "plasma_thief_common", chance = 1000000},
 			},
 			lootChance = 3200000
-		}					
+		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(plasma_thief, "plasma_thief")

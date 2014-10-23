@@ -28,7 +28,7 @@ gungan_hunter = Creature:new {
 
 	templates = {"object/mobile/gungan_s04_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "gungan_common", chance = 2000000},
@@ -36,11 +36,11 @@ gungan_hunter = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}			
+		}
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gungan_hunter, "gungan_hunter")

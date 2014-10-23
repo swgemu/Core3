@@ -44,7 +44,7 @@ cas_vankoo = Creature:new {
 	},
 	weapons = {"cas_vankoo_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pistoleermaster,pikemanmaster)
+	attacks = merge(pistoleermaster,pikemanmaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(cas_vankoo, "cas_vankoo")

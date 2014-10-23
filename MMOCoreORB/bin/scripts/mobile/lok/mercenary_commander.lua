@@ -33,7 +33,7 @@ mercenary_commander = Creature:new {
 		"object/mobile/dressed_mercenary_commander_zab_m.iff"
 		},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 1500000},
@@ -47,7 +47,7 @@ mercenary_commander = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mercenary_commander, "mercenary_commander")

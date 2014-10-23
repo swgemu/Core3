@@ -4,7 +4,7 @@ philosopher = Creature:new {
 	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
-	chanceHit = 0.240000,
+	chanceHit = 0.24,
 	damageMin = 40,
 	damageMax = 45,
 	baseXp = 62,
@@ -19,7 +19,7 @@ philosopher = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
@@ -27,7 +27,7 @@ philosopher = Creature:new {
 
 	templates = {"object/mobile/dressed_philosopher.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},				
@@ -35,10 +35,10 @@ philosopher = Creature:new {
 				{group = "loot_kit_parts", chance = 4000000}
 			},
 			lootChance = 4800000
-		}				
+		}
 	},
-	weapons = {},
-	attacks = {}
+	weapons = {"pirate_weapons_light"},
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(philosopher, "philosopher")

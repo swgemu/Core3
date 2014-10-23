@@ -31,7 +31,7 @@ nym_pirate_elite = Creature:new {
 				"object/mobile/dressed_nym_pirate_elite_hum_m.iff",
 				"object/mobile/dressed_nym_pirate_elite_wee_m.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4500000},
 				{group = "wearables_uncommon", chance = 2000000},
@@ -45,7 +45,7 @@ nym_pirate_elite = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(bountyhuntermaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nym_pirate_elite, "nym_pirate_elite")

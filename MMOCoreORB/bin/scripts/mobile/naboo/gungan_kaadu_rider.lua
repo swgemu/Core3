@@ -28,7 +28,7 @@ gungan_kaadu_rider = Creature:new {
 
 	templates = {"object/mobile/gungan_s02_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "gungan_common", chance = 2000000},
@@ -36,11 +36,11 @@ gungan_kaadu_rider = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gungan_kaadu_rider, "gungan_kaadu_rider")

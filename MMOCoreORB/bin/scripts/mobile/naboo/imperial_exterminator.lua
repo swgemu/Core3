@@ -43,7 +43,7 @@ imperial_exterminator = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_exterminator, "imperial_exterminator")

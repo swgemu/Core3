@@ -58,7 +58,7 @@ bh_untrained_wielder_of_the_dark_side = Creature:new {
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster)
+	attacks = merge(pikemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(bh_untrained_wielder_of_the_dark_side, "bh_untrained_wielder_of_the_dark_side")

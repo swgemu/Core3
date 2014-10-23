@@ -29,7 +29,7 @@ plasma_bandit = Creature:new {
 
 	templates = {"object/mobile/dressed_plasma_bandit.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5000000},
 				{group = "tailor_components", chance = 2000000},
@@ -37,11 +37,11 @@ plasma_bandit = Creature:new {
 				{group = "plasma_thief_common", chance = 1000000}
 			},
 			lootChance = 3200000
-		}					
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(plasma_bandit, "plasma_bandit")

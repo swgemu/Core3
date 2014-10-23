@@ -30,7 +30,7 @@ nym_bodyguard = Creature:new {
 				"object/mobile/dressed_nym_bodyguard_hum_m.iff",
 				"object/mobile/dressed_nym_bodyguard_hum_f.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 6500000},
 				{group = "nyms_common", chance = 1000000},
@@ -43,7 +43,7 @@ nym_bodyguard = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(nym_bodyguard, "nym_bodyguard")

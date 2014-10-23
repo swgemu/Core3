@@ -28,7 +28,7 @@ outcast_gungan = Creature:new {
 
 	templates = {"object/mobile/gungan_outcast.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
@@ -37,7 +37,7 @@ outcast_gungan = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

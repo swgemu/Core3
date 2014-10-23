@@ -27,7 +27,7 @@ official = Creature:new {
 
 	templates = {"object/mobile/dressed_official.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},				
@@ -35,10 +35,10 @@ official = Creature:new {
 				{group = "loot_kit_parts", chance = 4000000}
 			},
 			lootChance = 4800000
-		}				
+		}
 	},
-	weapons = {},
-	attacks = merge(brawlermaster)
+	weapons = {"pirate_weapons_medium"},
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(official, "official")
