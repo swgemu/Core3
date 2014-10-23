@@ -4,7 +4,7 @@ rorgungan_boss = Creature:new {
 	pvpFaction = "rorgungan",
 	faction = "rorgungan",
 	level = 22,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 2006,
@@ -19,7 +19,7 @@ rorgungan_boss = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -27,7 +27,7 @@ rorgungan_boss = Creature:new {
 
 	templates = {"object/mobile/gungan_s03_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5500000},
 				{group = "gungan_common", chance = 2000000},
@@ -37,10 +37,10 @@ rorgungan_boss = Creature:new {
 				{group = "crystals_poor", chance = 250000}
 			},
 			lootChance = 3200000
-		}					
+		}
 	},
-	weapons = {},
-	attacks = merge(brawlernovice,marksmannovice)
+	weapons = {"pirate_weapons_medium"},
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rorgungan_boss, "rorgungan_boss")

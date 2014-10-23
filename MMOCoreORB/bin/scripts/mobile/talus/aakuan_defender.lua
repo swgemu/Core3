@@ -44,7 +44,7 @@ aakuan_defender = Creature:new {
 	},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(aakuan_defender, "aakuan_defender")

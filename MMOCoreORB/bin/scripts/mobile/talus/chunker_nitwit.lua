@@ -4,7 +4,7 @@ chunker_nitwit = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 5,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 45,
 	damageMax = 50,
 	baseXp = 85,
@@ -19,7 +19,7 @@ chunker_nitwit = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
@@ -39,20 +39,20 @@ chunker_nitwit = Creature:new {
 					"object/mobile/dressed_desperado_bith_male_01.iff",
 					"object/mobile/dressed_mugger.iff"},
 	lootGroups = {
-	    {
-	        groups = {
+		{
+			groups = {
 				{group = "junk", chance = 1200000},
 				{group = "rifles", chance = 700000},
 				{group = "melee_knife", chance = 700000},
 				{group = "pistols", chance = 700000},
 				{group = "carbines", chance = 700000},
 				{group = "chunker_common", chance = 6000000},
-	    	},
+			},
 			lootChance = 3500000
-		}	
+		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(chunker_nitwit, "chunker_nitwit")

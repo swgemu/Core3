@@ -40,7 +40,7 @@ lieutenant_ori = Creature:new {
 	},
 	weapons = {"lt_ori_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermaster,marksmanmaster,fencermaster,riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(lieutenant_ori, "lieutenant_ori")

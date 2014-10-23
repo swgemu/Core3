@@ -43,7 +43,7 @@ lost_aqualish_lookout = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(lost_aqualish_lookout, "lost_aqualish_lookout")

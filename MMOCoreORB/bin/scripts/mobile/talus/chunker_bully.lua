@@ -52,7 +52,7 @@ chunker_bully = Creature:new {
 		}
 	},
 	weapons = {"ranged_weapons"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(chunker_bully, "chunker_bully")

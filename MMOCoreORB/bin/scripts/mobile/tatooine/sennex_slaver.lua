@@ -52,7 +52,7 @@ sennex_slaver = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlermaster,bountyhuntermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(sennex_slaver, "sennex_slaver")

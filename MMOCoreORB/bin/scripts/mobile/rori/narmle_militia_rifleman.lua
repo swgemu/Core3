@@ -43,7 +43,7 @@ narmle_militia_rifleman = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(narmle_militia_rifleman, "narmle_militia_rifleman")

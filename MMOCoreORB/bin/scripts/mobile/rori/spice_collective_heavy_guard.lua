@@ -30,7 +30,7 @@ spice_collective_heavy_guard = Creature:new {
 		"object/mobile/dressed_spice_collective_heavyguard_zabrak_female_01.iff",
 		"object/mobile/dressed_spice_collective_heavyguard_zabrak_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
@@ -39,11 +39,11 @@ spice_collective_heavy_guard = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(spice_collective_heavy_guard, "spice_collective_heavy_guard")

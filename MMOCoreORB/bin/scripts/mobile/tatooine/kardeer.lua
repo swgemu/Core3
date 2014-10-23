@@ -4,7 +4,7 @@ kardeer = Creature:new {
 	pvpFaction = "valarian",
 	faction = "valarian",
 	level = 21,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 1609,
@@ -19,7 +19,7 @@ kardeer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
@@ -28,7 +28,7 @@ kardeer = Creature:new {
 	templates = {"object/mobile/kardeer.iff"},
 	lootGroups = {},
 	weapons = {},
-	attacks = merge(brawlermaster)
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(kardeer, "kardeer")
