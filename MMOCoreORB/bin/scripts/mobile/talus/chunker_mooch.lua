@@ -4,7 +4,7 @@ chunker_mooch = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 187,
@@ -19,7 +19,7 @@ chunker_mooch = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -29,20 +29,20 @@ chunker_mooch = Creature:new {
 				"object/mobile/dressed_goon_twk_male_01.iff",
 				"object/mobile/dressed_criminal_thug_human_male_01.iff"},
 	lootGroups = {
-	    {
-	        groups = {
+		{
+			groups = {
 				{group = "junk", chance = 1200000},
 				{group = "rifles", chance = 700000},
 				{group = "melee_knife", chance = 700000},
 				{group = "pistols", chance = 700000},
 				{group = "carbines", chance = 700000},
 				{group = "chunker_common", chance = 6000000},
-	    	},
+			},
 			lootChance = 3500000
-		}	
+		}
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(chunker_mooch, "chunker_mooch")

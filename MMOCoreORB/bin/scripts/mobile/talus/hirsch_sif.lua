@@ -28,7 +28,7 @@ hirsch_sif = Creature:new {
 	templates = {"object/mobile/dressed_hirsch_sif.iff"},
 	lootGroups = {},
 	weapons = {"sif_weapons"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermaster,fencermaster,swordsmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(hirsch_sif, "hirsch_sif")

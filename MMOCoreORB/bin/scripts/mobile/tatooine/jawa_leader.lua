@@ -42,7 +42,7 @@ jawa_leader = Creature:new {
 	},
 	weapons = {"jawa_warlord_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,riflemannovice)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(jawa_leader, "jawa_leader")

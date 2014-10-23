@@ -42,7 +42,7 @@ kobola_assassin = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(kobola_assassin, "kobola_assassin")

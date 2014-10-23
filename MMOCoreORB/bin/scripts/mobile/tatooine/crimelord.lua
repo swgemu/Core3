@@ -44,7 +44,7 @@ crimelord = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmanmaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crimelord, "crimelord")

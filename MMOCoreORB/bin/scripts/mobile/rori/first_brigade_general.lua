@@ -44,7 +44,7 @@ first_brigade_general = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(first_brigade_general, "first_brigade_general")

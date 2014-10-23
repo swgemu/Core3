@@ -587,7 +587,7 @@ tatooine_static_spawns = {
 	{"keanna_likyna",60,-18.8886,3.22324,20.608,214.006,926480, "neutral", "Keanna Li`kyna","stationary"},
 	{"kiosait_eetwaka",60,-3.78237,2.27819,-25.8455,324.158,926475, "neutral", "Kiosait Eetwaka","stationary"},
 	{"le_repair_droid",60,23.67,0.2,76.43,130.65,1177479, "calm", "","stationary"},
-	{"lt_sabol",60,-1291.67,12,-3539,118,0, "npc_imperial", "Lt. Sabol","stationary"},
+	{"sabol",60,-1291.67,12,-3539,118,0, "npc_imperial", "Lt. Sabol","stationary"},
 	{"malakili",60,19,-11,42,23.355,1177502, "neutral", "Malakili","stationary"},
 	{"marco_vahn",60,-9.34,-0.894992,5.66,59.306,1082877, "calm", "Marco Vahn (a booking agent)","stationary"},
 	{"max_rebo",60,-11,2,36,8.12929,1177487, "themepark_music_3", "","stationary"},

@@ -41,7 +41,7 @@ rodian_clan_captain = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(marksmannovice,brawlernovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rodian_clan_captain, "rodian_clan_captain")

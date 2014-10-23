@@ -30,7 +30,7 @@ gerrik_lond = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster)
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(gerrik_lond, "gerrik_lond")

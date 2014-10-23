@@ -38,11 +38,11 @@ binayre_hooligan = Creature:new {
 				{group = "binayre_common", chance = 4550000}
 			},
 			lootChance = 2200000
-		}					
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(binayre_hooligan, "binayre_hooligan")

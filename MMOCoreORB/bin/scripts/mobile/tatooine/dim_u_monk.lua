@@ -41,7 +41,7 @@ dim_u_monk = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster)
+	attacks = brawlernovice
 }
 
 CreatureTemplates:addCreatureTemplate(dim_u_monk, "dim_u_monk")

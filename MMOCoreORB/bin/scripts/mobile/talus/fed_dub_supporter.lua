@@ -30,7 +30,7 @@ fed_dub_supporter = Creature:new {
 		"object/mobile/dressed_fed_dub_supporter_human_female_01.iff",
 		"object/mobile/dressed_fed_dub_supporter_human_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},
@@ -39,11 +39,11 @@ fed_dub_supporter = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(fed_dub_supporter, "fed_dub_supporter")

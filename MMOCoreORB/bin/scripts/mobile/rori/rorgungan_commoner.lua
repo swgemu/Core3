@@ -42,7 +42,7 @@ rorgungan_commoner = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rorgungan_commoner, "rorgungan_commoner")

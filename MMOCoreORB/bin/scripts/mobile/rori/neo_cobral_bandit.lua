@@ -43,7 +43,7 @@ neo_cobral_bandit = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(neo_cobral_bandit, "neo_cobral_bandit")

@@ -30,8 +30,7 @@ wandering_kitonak = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(wandering_kitonak, "wandering_kitonak")

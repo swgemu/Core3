@@ -41,7 +41,7 @@ lieutenant_heb_nee = Creature:new {
 	},
 	weapons = {"lt_heb_nee_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermaster,marksmanmaster,fencermaster,riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(lieutenant_heb_nee, "lieutenant_heb_nee")

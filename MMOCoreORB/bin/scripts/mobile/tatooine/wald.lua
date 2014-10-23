@@ -30,8 +30,7 @@ wald = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(wald, "wald")

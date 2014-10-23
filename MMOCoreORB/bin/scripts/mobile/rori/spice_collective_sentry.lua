@@ -4,7 +4,7 @@ spice_collective_sentry = Creature:new {
 	pvpFaction = "spice_collective",
 	faction = "spice_collective",
 	level = 14,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 150,
 	damageMax = 160,
 	baseXp = 714,
@@ -19,7 +19,7 @@ spice_collective_sentry = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HERD,
@@ -29,7 +29,7 @@ spice_collective_sentry = Creature:new {
 		"object/mobile/dressed_spice_collective_sentry_twk_female_01.iff",
 		"object/mobile/dressed_spice_collective_sentry_twk_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
@@ -38,10 +38,10 @@ spice_collective_sentry = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(spice_collective_sentry, "spice_collective_sentry")

@@ -4,7 +4,7 @@ plague_victim = Creature:new {
 	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 6,
-	chanceHit = 0.250000,
+	chanceHit = 0.25,
 	damageMin = 50,
 	damageMax = 55,
 	baseXp = 113,
@@ -19,7 +19,7 @@ plague_victim = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
@@ -37,7 +37,7 @@ plague_victim = Creature:new {
 			lootChance = 3000000
 		}
 	},
-	weapons = {},
+	weapons = {"rebel_weapons_light"},
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

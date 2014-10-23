@@ -52,7 +52,7 @@ chunker_goon = Creature:new {
 		}	
 	},
 	weapons = {"pirate_weapons_light"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(chunker_goon, "chunker_goon")

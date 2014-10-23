@@ -41,8 +41,7 @@ evil_settler = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(evil_settler, "evil_settler")
