@@ -42,11 +42,11 @@ untrained_wielder_of_the_dark_side = Creature:new {
 				{group = "wearables_common", chance = 750000}
 			},
 			lootChance = 3000000
-		}			
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster)
+	attacks = merge(pikemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(untrained_wielder_of_the_dark_side, "untrained_wielder_of_the_dark_side")

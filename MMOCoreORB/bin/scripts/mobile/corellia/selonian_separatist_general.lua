@@ -40,7 +40,7 @@ selonian_separatist_general = Creature:new {
 		"object/mobile/dressed_selonian_m_11.iff",
 		"object/mobile/dressed_selonian_m_12.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},
@@ -49,11 +49,11 @@ selonian_separatist_general = Creature:new {
 				{group = "tailor_components", chance = 1500000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(selonian_separatist_general, "selonian_separatist_general")

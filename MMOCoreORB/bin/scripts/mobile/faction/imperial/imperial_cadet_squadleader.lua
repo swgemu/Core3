@@ -41,11 +41,11 @@ imperial_cadet_squadleader = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2200000
-		}						
+		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlernovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_cadet_squadleader, "imperial_cadet_squadleader")

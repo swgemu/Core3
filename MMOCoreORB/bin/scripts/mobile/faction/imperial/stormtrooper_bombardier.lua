@@ -42,11 +42,11 @@ stormtrooper_bombardier = Creature:new {
 				{group = "wearables_common", chance = 500000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 	weapons = {"st_bombardier_weapons"},
 	conversationTemplate = "",
-	attacks = merge(commandomaster,brawlermaster)
+	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_bombardier, "stormtrooper_bombardier")

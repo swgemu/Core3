@@ -35,19 +35,19 @@ stormtrooper_black_hole = Creature:new {
 				{group = "junk", chance = 6550000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "stormtrooper_common", chance = 100000},
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_black_hole, "stormtrooper_black_hole")

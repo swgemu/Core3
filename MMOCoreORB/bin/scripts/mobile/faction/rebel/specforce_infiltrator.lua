@@ -35,7 +35,7 @@ specforce_infiltrator = Creature:new {
 	},
 	lootGroups = {
 		{
-	        groups = {
+			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 4700000},
 				{group = "rifles", chance = 1000000},
@@ -47,11 +47,11 @@ specforce_infiltrator = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(specforce_infiltrator, "specforce_infiltrator")

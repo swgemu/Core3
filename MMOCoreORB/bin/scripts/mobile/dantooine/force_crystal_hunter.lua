@@ -41,11 +41,11 @@ force_crystal_hunter = Creature:new {
 				{group = "wearables_all", chance = 1500000}
 			},
 			lootChance = 4500000
-		}	
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster)
+	attacks = merge(pikemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(force_crystal_hunter, "force_crystal_hunter")

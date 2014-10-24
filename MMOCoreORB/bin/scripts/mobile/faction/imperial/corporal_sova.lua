@@ -40,11 +40,11 @@ corporal_sova = Creature:new {
 				{group = "armor_attachments", chance = 150000}
 			},
 			lootChance = 2300000
-		}		
+		}
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(corporal_sova, "corporal_sova")

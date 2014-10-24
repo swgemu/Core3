@@ -4,7 +4,7 @@ rebel_resistance_agitator = Creature:new {
 	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 7,
-	chanceHit = 0.260000,
+	chanceHit = 0.26,
 	damageMin = 55,
 	damageMax = 65,
 	baseXp = 187,
@@ -19,7 +19,7 @@ rebel_resistance_agitator = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -35,7 +35,7 @@ rebel_resistance_agitator = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_resistance_agitator, "rebel_resistance_agitator")

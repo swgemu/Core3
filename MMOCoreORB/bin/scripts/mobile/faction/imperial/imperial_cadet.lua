@@ -38,11 +38,11 @@ imperial_cadet = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2200000
-		}						
+		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlernovice)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_cadet, "imperial_cadet")

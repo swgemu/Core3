@@ -4,7 +4,7 @@ flail_butcher = Creature:new {
 	pvpFaction = "flail",
 	faction = "flail",
 	level = 22,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 220,
 	damageMax = 230,
 	baseXp = 2219,
@@ -19,7 +19,7 @@ flail_butcher = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
@@ -39,7 +39,7 @@ flail_butcher = Creature:new {
 		"object/mobile/dressed_villain_trandoshan_female_01.iff",
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
-			{
+		{
 			groups = {
 				{group = "junk", chance = 3500000},
 				{group = "wearables_common", chance = 3000000},
@@ -51,7 +51,7 @@ flail_butcher = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(flail_butcher, "flail_butcher")

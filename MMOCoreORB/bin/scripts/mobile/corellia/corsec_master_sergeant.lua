@@ -32,7 +32,7 @@ corsec_master_sergeant = Creature:new {
 		"object/mobile/dressed_corsec_pilot_human_male_01.iff"
 		},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "corsec_weapons", chance = 2500000},
@@ -42,10 +42,9 @@ corsec_master_sergeant = Creature:new {
 			lootChance = 3000000
 		}
 	},
-	weapons = {},
+	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_master_sergeant, "corsec_master_sergeant")

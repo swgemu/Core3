@@ -42,11 +42,11 @@ assault_trooper = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2500000
-		}	
+		}
 	},
 	weapons = {"st_assault_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(marksmanmaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(assault_trooper, "assault_trooper")

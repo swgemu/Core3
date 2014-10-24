@@ -30,7 +30,7 @@ mokk_hunter = Creature:new {
 		"object/mobile/dantari_male.iff",
 		"object/mobile/dantari_female.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "loot_kit_parts", chance = 3000000},
@@ -40,11 +40,11 @@ mokk_hunter = Creature:new {
 				{group = "wearables_uncommon", chance = 1000000}
 			},
 			lootChance = 3000000
-		}		
+		}
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(pikemanmaster,fencermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mokk_hunter, "mokk_hunter")

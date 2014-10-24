@@ -4,7 +4,7 @@ monumenter_smuggler = Creature:new {
 	pvpFaction = "monumenter",
 	faction = "monumenter",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 514,
@@ -19,7 +19,7 @@ monumenter_smuggler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -41,7 +41,7 @@ monumenter_smuggler = Creature:new {
 		"object/mobile/dressed_desperado_bith_male_01.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(monumenter_smuggler, "monumenter_smuggler")

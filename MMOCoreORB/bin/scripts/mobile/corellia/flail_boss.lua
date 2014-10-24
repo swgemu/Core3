@@ -4,7 +4,7 @@ flail_boss = Creature:new {
 	pvpFaction = "flail",
 	faction = "flail",
 	level = 26,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2730,
@@ -19,7 +19,7 @@ flail_boss = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
@@ -32,7 +32,7 @@ flail_boss = Creature:new {
 		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
 		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {
-			{
+		{
 			groups = {
 				{group = "junk", chance = 3500000},
 				{group = "wearables_all", chance = 3000000},
@@ -44,7 +44,7 @@ flail_boss = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(flail_boss, "flail_boss")

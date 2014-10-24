@@ -28,7 +28,7 @@ swooper_leader = Creature:new {
 
 	templates = {"object/mobile/dressed_criminal_swooper_zabrak_male_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3500000},
 				{group = "loot_kit_parts", chance = 2000000},
@@ -38,11 +38,11 @@ swooper_leader = Creature:new {
 				
 			},
 			lootChance = 2200000
-		}		
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(swooper_leader, "swooper_leader")

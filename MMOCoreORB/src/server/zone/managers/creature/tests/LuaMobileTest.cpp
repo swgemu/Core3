@@ -185,10 +185,15 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		// Check configured templates
 		Vector<String> objTemps = creature->getTemplates();
 		EXPECT_FALSE( objTemps.isEmpty() ) << "Mobile " << templateName << " does not have any templates configured";
+		int objectType = 0;
 		for( int j=0; j< objTemps.size(); j++ ){
 			SharedObjectTemplate* templateData = templateManager->getTemplate(objTemps.get(j).hashCode());
 			std::string objName = objTemps.get(j).toCharArray();
 			EXPECT_TRUE( templateData != NULL ) << "Mobile " << templateName << " has invalid template configured: " << objName;
+
+			if (objectType == 0) {
+				objectType = templateData->getGameObjectType();
+			}
 		}
 
 		// Verify that control device template is valid
@@ -406,6 +411,13 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			String commandName = cam->getCommand(i);
 
 			EXPECT_TRUE( commandConfigManager->contains(commandName) ) << "Attack: " << commandName.toCharArray() << " is not a valid command in mobile template: " << templateName;
+		}
+
+		// Very attackable npcs
+		uint32 pvpBitmask = creature->getPvpBitmask();
+		if ((pvpBitmask & CreatureFlag::ATTACKABLE) && objectType == 1025) {
+			// Verify attackable npcs have attacks
+			EXPECT_TRUE( cam->size() > 0 ) << "Attackable npc " << templateName << " does not have attacks.";
 		}
 	}
 

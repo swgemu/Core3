@@ -43,11 +43,11 @@ spiderclan_stalker = Creature:new {
 				{group = "wearables_uncommon", chance = 500000}
 			},
 			lootChance = 3000000
-		}			
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,pikemanmaster,forcepowermaster)
+	attacks = merge(brawlermaster,pikemanmaster,forcewielder)
 }
 
 CreatureTemplates:addCreatureTemplate(spiderclan_stalker, "spiderclan_stalker")

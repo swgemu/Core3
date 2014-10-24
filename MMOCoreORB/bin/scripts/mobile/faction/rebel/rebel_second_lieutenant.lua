@@ -35,7 +35,7 @@ rebel_second_lieutenant = Creature:new {
 		"object/mobile/dressed_rebel_second_lieutenant_zabrak_female_01.iff"},
 	lootGroups = {
 		{
-	        groups = {
+			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 4150000},
 				{group = "rifles", chance = 1000000},
@@ -48,11 +48,11 @@ rebel_second_lieutenant = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2600000
-		}	
+		}
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_second_lieutenant, "rebel_second_lieutenant")

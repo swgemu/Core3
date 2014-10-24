@@ -4,7 +4,7 @@ flail_slayer = Creature:new {
 	pvpFaction = "flail",
 	faction = "flail",
 	level = 20,
-	chanceHit = 0.330000,
+	chanceHit = 0.33,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 1803,
@@ -19,7 +19,7 @@ flail_slayer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
@@ -32,7 +32,7 @@ flail_slayer = Creature:new {
 		"object/mobile/dressed_villain_trandoshan_female_01.iff",
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
-	 {
+	 	{
 			groups = {
 				{group = "junk", chance = 3500000},
 				{group = "wearables_common", chance = 3000000},
@@ -44,7 +44,7 @@ flail_slayer = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(flail_slayer, "flail_slayer")

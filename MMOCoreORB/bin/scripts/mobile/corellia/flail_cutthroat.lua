@@ -4,7 +4,7 @@ flail_cutthroat = Creature:new {
 	pvpFaction = "flail",
 	faction = "flail",
 	level = 15,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 831,
@@ -19,7 +19,7 @@ flail_cutthroat = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK,
@@ -37,7 +37,7 @@ flail_cutthroat = Creature:new {
 		"object/mobile/dressed_villain_trandoshan_female_01.iff",
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
-			{
+		{
 			groups = {
 				{group = "junk", chance = 3500000},
 				{group = "wearables_common", chance = 3000000},
@@ -49,7 +49,7 @@ flail_cutthroat = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_medium"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(flail_cutthroat, "flail_cutthroat")

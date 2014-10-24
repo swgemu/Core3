@@ -4,7 +4,7 @@ monumenter_marauder = Creature:new {
 	pvpFaction = "monumenter",
 	faction = "monumenter",
 	level = 13,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 609,
@@ -19,7 +19,7 @@ monumenter_marauder = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -40,7 +40,7 @@ monumenter_marauder = Creature:new {
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(monumenter_marauder, "monumenter_marauder")

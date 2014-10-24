@@ -4,7 +4,7 @@ specops_trooper = Creature:new {
 	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 17,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 1102,
@@ -19,7 +19,7 @@ specops_trooper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
@@ -34,7 +34,7 @@ specops_trooper = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(specops_trooper, "specops_trooper")

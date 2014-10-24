@@ -35,7 +35,7 @@ rebel_corporal = Creature:new {
 		"object/mobile/dressed_rebel_corporal_sullustan_male_01.iff"},
 	lootGroups = {
 		{
-	        groups = {
+			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 4700000},
 				{group = "rifles", chance = 1000000},
@@ -47,11 +47,11 @@ rebel_corporal = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2400000
-		}	
+		}
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(pistoleermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_corporal, "rebel_corporal")

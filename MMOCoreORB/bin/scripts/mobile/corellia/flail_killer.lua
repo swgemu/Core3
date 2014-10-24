@@ -4,7 +4,7 @@ flail_killer = Creature:new {
 	pvpFaction = "flail",
 	faction = "flail",
 	level = 18,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 180,
 	damageMax = 190,
 	baseXp = 1257,
@@ -19,7 +19,7 @@ flail_killer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK,
@@ -42,7 +42,7 @@ flail_killer = Creature:new {
 		"object/mobile/dressed_desperado_bith_female_01.iff",
 		"object/mobile/dressed_desperado_bith_male_01.iff"},
 	lootGroups = {
-			{
+		{
 			groups = {
 				{group = "junk", chance = 3500000},
 				{group = "wearables_common", chance = 3000000},
@@ -54,7 +54,7 @@ flail_killer = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(flail_killer, "flail_killer")

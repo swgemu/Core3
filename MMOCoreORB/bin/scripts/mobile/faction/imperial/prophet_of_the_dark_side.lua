@@ -4,7 +4,7 @@ prophet_of_the_dark_side = Creature:new {
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 126,
-	chanceHit = 4.000000,
+	chanceHit = 4,
 	damageMin = 745,
 	damageMax = 1200,
 	baseXp = 11953,
@@ -19,7 +19,7 @@ prophet_of_the_dark_side = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
@@ -44,8 +44,8 @@ prophet_of_the_dark_side = Creature:new {
 			lootChance = 6000000
 		}
 	},
-	weapons = {},
-	attacks = {}
+	weapons = {"dark_jedi_weapons_gen2"},
+	attacks = merge(lightsabermaster,forcewielder)
 }
 
 CreatureTemplates:addCreatureTemplate(prophet_of_the_dark_side, "prophet_of_the_dark_side")

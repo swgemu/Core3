@@ -30,18 +30,18 @@ janta_warrior = Creature:new {
 		"object/mobile/dantari_male.iff",
 		"object/mobile/dantari_female.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5500000},
 				{group = "janta_common", chance = 1500000},
 				{group = "loot_kit_parts", chance = 3000000}
 			},
 			lootChance = 2000000
-		}	
+		}
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(pikemanmaster,fencermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(janta_warrior, "janta_warrior")

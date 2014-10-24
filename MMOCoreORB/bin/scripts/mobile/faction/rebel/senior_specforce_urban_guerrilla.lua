@@ -34,7 +34,7 @@ senior_specforce_urban_guerrilla = Creature:new {
 	             "object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",},
 	lootGroups = {
 		{
-	        groups = {
+			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 4700000},
 				{group = "rifles", chance = 1000000},
@@ -46,11 +46,11 @@ senior_specforce_urban_guerrilla = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(senior_specforce_urban_guerrilla, "senior_specforce_urban_guerrilla")

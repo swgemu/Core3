@@ -38,7 +38,7 @@ flail_enforcer = Creature:new {
 		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
 		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {
-			{
+		{
 			groups = {
 				{group = "junk", chance = 3500000},
 				{group = "wearables_common", chance = 3000000},
@@ -51,7 +51,7 @@ flail_enforcer = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(flail_enforcer, "flail_enforcer")

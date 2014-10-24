@@ -41,11 +41,11 @@ imperial_sharpshooter = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2500000
-		}						
+		}
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_sharpshooter, "imperial_sharpshooter")

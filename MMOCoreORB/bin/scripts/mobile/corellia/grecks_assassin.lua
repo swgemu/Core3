@@ -40,7 +40,7 @@ grecks_assassin = Creature:new {
 		"object/mobile/dressed_desperado_bith_female_01.iff",
 		"object/mobile/dressed_desperado_bith_male_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 7000000},
 				{group = "loot_kit_parts", chance = 2000000},
@@ -51,7 +51,7 @@ grecks_assassin = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(grecks_assassin, "grecks_assassin")

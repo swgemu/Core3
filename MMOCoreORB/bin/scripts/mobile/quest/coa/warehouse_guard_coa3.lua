@@ -31,7 +31,7 @@ warehouse_guard_coa3 = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(pistoleermaster,marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(warehouse_guard_coa3, "warehouse_guard_coa3")

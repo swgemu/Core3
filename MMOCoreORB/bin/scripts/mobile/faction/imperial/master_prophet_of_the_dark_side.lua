@@ -45,10 +45,9 @@ master_prophet_of_the_dark_side = Creature:new {
 			lootChance = 6500000
 		}
 	},
-	weapons = {},
+	weapons = {"dark_jedi_weapons_gen4"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(lightsabermaster,forcepowermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(master_prophet_of_the_dark_side, "master_prophet_of_the_dark_side")

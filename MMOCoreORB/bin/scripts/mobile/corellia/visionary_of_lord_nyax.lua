@@ -38,11 +38,11 @@ visionary_of_lord_nyax = Creature:new {
                			{group = "carbines", chance = 1000000}
 			},
 			lootChance = 3200000
-		}	
+		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(visionary_of_lord_nyax, "visionary_of_lord_nyax")

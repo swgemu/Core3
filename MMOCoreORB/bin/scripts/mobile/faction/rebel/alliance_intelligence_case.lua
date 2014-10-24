@@ -34,17 +34,17 @@ alliance_intelligence_case = Creature:new {
 				{group = "junk", chance = 3600000},
 				{group = "rifles", chance = 1600000},
 				{group = "pistols", chance = 1600000},
-                {group = "melee_weapons", chance = 1500000},
+				{group = "melee_weapons", chance = 1500000},
 				{group = "clothing_attachments", chance = 250000},
 				{group = "armor_attachments", chance = 250000},
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 3000000
-		}			
+		}
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(alliance_intelligence_case, "alliance_intelligence_case")

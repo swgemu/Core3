@@ -39,11 +39,11 @@ comm_operator = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2200000
-		}		
+		}
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(comm_operator, "comm_operator")

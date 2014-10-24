@@ -31,8 +31,7 @@ coa2_drall_scientist = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(coa2_drall_scientist, "coa2_drall_scientist")

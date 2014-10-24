@@ -43,7 +43,7 @@ beldonnas_league_marshal = Creature:new {
 		"object/mobile/dressed_raider_trandoshan_female_01.iff",
 		"object/mobile/dressed_raider_trandoshan_male_01.iff"},
 	lootGroups = {
-       	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_all", chance = 2000000},				
@@ -56,7 +56,7 @@ beldonnas_league_marshal = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(beldonnas_league_marshal, "beldonnas_league_marshal")

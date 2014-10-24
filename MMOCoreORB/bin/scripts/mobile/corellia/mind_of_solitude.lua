@@ -4,7 +4,7 @@ mind_of_solitude = Creature:new {
 	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 21,
-	chanceHit = 0.340000,
+	chanceHit = 0.34,
 	damageMin = 190,
 	damageMax = 200,
 	baseXp = 1803,
@@ -19,7 +19,7 @@ mind_of_solitude = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -28,7 +28,7 @@ mind_of_solitude = Creature:new {
 	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mind_of_solitude, "mind_of_solitude")

@@ -32,7 +32,7 @@ corsec_commissioner = Creature:new {
 		"object/mobile/dressed_corsec_captain_human_female_01.iff"
 		},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4500000},
 				{group = "corsec_weapons", chance = 2500000},
@@ -42,10 +42,9 @@ corsec_commissioner = Creature:new {
 			lootChance = 3000000
 		}
 	},
-	weapons = {},
+	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_commissioner, "corsec_commissioner")

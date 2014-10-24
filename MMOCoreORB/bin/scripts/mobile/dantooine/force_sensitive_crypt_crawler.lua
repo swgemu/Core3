@@ -42,11 +42,11 @@ force_sensitive_crypt_crawler = Creature:new {
 				{group = "wearables_uncommon", chance = 750000}
 			},
 			lootChance = 4500000
-		}	
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster)
+	attacks = merge(pikemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(force_sensitive_crypt_crawler, "force_sensitive_crypt_crawler")

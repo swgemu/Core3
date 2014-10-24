@@ -4,7 +4,7 @@ specops_agent = Creature:new {
 	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 24,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 230,
 	damageMax = 240,
 	baseXp = 2543,
@@ -19,7 +19,7 @@ specops_agent = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
@@ -32,25 +32,25 @@ specops_agent = Creature:new {
 	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
 	             "object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",
 	},
-lootGroups = {
+	lootGroups = {
 		{
-	        groups = {
+			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 4700000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-                {group = "melee_weapons", chance = 1000000},
-                {group = "carbines", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000},
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(pistoleermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(specops_agent, "specops_agent")

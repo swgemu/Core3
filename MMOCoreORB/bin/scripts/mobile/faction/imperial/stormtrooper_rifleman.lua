@@ -42,11 +42,11 @@ stormtrooper_rifleman = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 	weapons = {"st_rifleman_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_rifleman, "stormtrooper_rifleman")

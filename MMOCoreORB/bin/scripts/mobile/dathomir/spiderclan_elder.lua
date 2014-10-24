@@ -42,11 +42,11 @@ spiderclan_elder = Creature:new {
 				{group = "wearables_scarce", chance = 500000}
 			},
 			lootChance = 6500000
-		}			
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,pikemanmaster,forcewielder)
+	attacks = merge(brawlermaster,pikemanmaster,forcepowermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(spiderclan_elder, "spiderclan_elder")

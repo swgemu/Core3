@@ -52,7 +52,7 @@ selonian_warlord = Creature:new {
 		"object/mobile/dressed_selonian_m_11.iff",
 		"object/mobile/dressed_selonian_m_12.iff"},
 	lootGroups = {
-       	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_all", chance = 2000000},
@@ -61,11 +61,11 @@ selonian_warlord = Creature:new {
 				{group = "tailor_components", chance = 1500000}
 			},
 			lootChance = 3000000
-		}		
+		}
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(selonian_warlord, "selonian_warlord")

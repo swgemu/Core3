@@ -28,7 +28,7 @@ janta_clan_leader = Creature:new {
 
 	templates = {"object/mobile/dantari_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5000000},
 				{group = "janta_common", chance = 1500000},
@@ -36,11 +36,11 @@ janta_clan_leader = Creature:new {
 				{group = "wearables_all", chance = 500000}
 			},
 			lootChance = 2000000
-		}	
+		}
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(pikemanmaster,fencermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(janta_clan_leader, "janta_clan_leader")

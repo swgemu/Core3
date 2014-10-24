@@ -43,11 +43,11 @@ spiderclan_web_dancer = Creature:new {
 				{group = "wearables_uncommon", chance = 500000}
 			},
 			lootChance = 2700000
-		}			
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,pikemanmaster,forcepowermaster)
+	attacks = merge(brawlermaster,pikemanmaster,forcewielder)
 }
 
 CreatureTemplates:addCreatureTemplate(spiderclan_web_dancer, "spiderclan_web_dancer")

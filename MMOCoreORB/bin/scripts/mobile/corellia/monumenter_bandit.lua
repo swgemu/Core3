@@ -4,7 +4,7 @@ monumenter_bandit = Creature:new {
 	pvpFaction = "monumenter",
 	faction = "monumenter",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 430,
@@ -19,7 +19,7 @@ monumenter_bandit = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -37,7 +37,7 @@ monumenter_bandit = Creature:new {
 		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(monumenter_bandit, "monumenter_bandit")

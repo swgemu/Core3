@@ -4,7 +4,7 @@ stormtrooper_sniper = Creature:new {
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 25,
-	chanceHit = 0.360000,
+	chanceHit = 0.36,
 	damageMin = 250,
 	damageMax = 260,
 	baseXp = 2637,
@@ -19,7 +19,7 @@ stormtrooper_sniper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
@@ -41,10 +41,10 @@ stormtrooper_sniper = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 	weapons = {"st_sniper_weapons"},
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(riflemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(stormtrooper_sniper, "stormtrooper_sniper")

@@ -27,13 +27,12 @@ novice_creature_handler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_creaturehandler_trainer_human_male_01.iff",
-				 "object/mobile/dressed_creaturehandler_trainer_rodian_female_01.iff",
-				 "object/mobile/dressed_creaturehandler_trainer_zabrak_male_01.iff"
-	},
+			"object/mobile/dressed_creaturehandler_trainer_rodian_female_01.iff",
+			"object/mobile/dressed_creaturehandler_trainer_zabrak_male_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(novice_creature_handler, "novice_creature_handler")

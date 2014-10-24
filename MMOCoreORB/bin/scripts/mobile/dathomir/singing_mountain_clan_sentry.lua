@@ -42,11 +42,11 @@ singing_mountain_clan_sentry = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 1400000
-		}			
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster)
+	attacks = brawlermaster
 }
 
 CreatureTemplates:addCreatureTemplate(singing_mountain_clan_sentry, "singing_mountain_clan_sentry")

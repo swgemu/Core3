@@ -39,7 +39,7 @@ afarathu_cult_leader = Creature:new {
 		"object/mobile/dressed_selonian_m_11.iff",
 		"object/mobile/dressed_selonian_m_12.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 7000000},
 				{group = "loot_kit_parts", chance = 2000000},
@@ -50,7 +50,7 @@ afarathu_cult_leader = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(afarathu_cult_leader, "afarathu_cult_leader")

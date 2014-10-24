@@ -37,18 +37,18 @@ imperial_medic = Creature:new {
 				{group = "junk", chance = 6300000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 200000},
 				{group = "armor_attachments", chance = 200000},
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2400000
-		}						
+		}
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "imperialRecruiterConvoTemplate",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_medic, "imperial_medic")

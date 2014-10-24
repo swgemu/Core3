@@ -27,13 +27,12 @@ slicer_jabba = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_assassin_human_female_01.iff",
-				"object/mobile/dressed_criminal_pirate_human_male_01.iff",
-				"object/mobile/dressed_criminal_slicer_human_female_01.iff"
-	},
+			"object/mobile/dressed_criminal_pirate_human_male_01.iff",
+			"object/mobile/dressed_criminal_slicer_human_female_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(slicer_jabba, "slicer_jabba")

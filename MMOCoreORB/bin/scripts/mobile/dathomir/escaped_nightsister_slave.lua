@@ -41,7 +41,7 @@ escaped_nightsister_slave = Creature:new {
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,pikemanmaster)
+	attacks = merge(pikemanmaster,fencermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(escaped_nightsister_slave, "escaped_nightsister_slave")

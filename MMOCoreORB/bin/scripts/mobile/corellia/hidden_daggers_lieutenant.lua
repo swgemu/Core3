@@ -36,7 +36,7 @@ hidden_daggers_lieutenant = Creature:new {
 		"object/mobile/dressed_villain_trandoshan_female_01.iff",
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4300000},
 				{group = "loot_kit_parts", chance = 2000000},
@@ -44,11 +44,11 @@ hidden_daggers_lieutenant = Creature:new {
 				{group = "hidden_dagger_common", chance = 2700000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(hidden_daggers_lieutenant, "hidden_daggers_lieutenant")

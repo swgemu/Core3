@@ -4,7 +4,7 @@ veteran_compforce_trooper = Creature:new {
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 25,
-	chanceHit = 0.350000,
+	chanceHit = 0.35,
 	damageMin = 230,
 	damageMax = 240,
 	baseXp = 2637,
@@ -19,7 +19,7 @@ veteran_compforce_trooper = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
@@ -28,7 +28,7 @@ veteran_compforce_trooper = Creature:new {
 	templates = {"object/mobile/dressed_stormtrooper_groupleader_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(veteran_compforce_trooper, "veteran_compforce_trooper")

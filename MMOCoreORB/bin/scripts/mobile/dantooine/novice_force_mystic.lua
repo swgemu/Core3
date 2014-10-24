@@ -40,11 +40,11 @@ novice_force_mystic = Creature:new {
 				{group = "wearables_uncommon", chance = 1000000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster)
+	attacks = merge(pikemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(novice_force_mystic, "novice_force_mystic")

@@ -34,19 +34,18 @@ crackdown_stormtrooper_bombardier = Creature:new {
 				{group = "junk", chance = 7550000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "stormtrooper_common", chance = 100000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 	weapons = {"st_bombardier_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crackdown_stormtrooper_bombardier, "crackdown_stormtrooper_bombardier")

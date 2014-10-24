@@ -28,7 +28,7 @@ dantari_chief = Creature:new {
 
 	templates = {"object/mobile/dantari_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "loot_kit_parts", chance = 3000000},
@@ -37,11 +37,11 @@ dantari_chief = Creature:new {
 				{group = "wearables_all", chance = 2000000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(pikemanmaster,fencermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(dantari_chief, "dantari_chief")

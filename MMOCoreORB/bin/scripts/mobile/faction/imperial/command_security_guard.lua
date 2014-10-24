@@ -39,11 +39,11 @@ command_security_guard = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2300000
-		}		
+		}
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(command_security_guard, "command_security_guard")

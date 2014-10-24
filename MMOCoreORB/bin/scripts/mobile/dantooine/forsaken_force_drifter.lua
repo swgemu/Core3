@@ -42,11 +42,11 @@ forsaken_force_drifter = Creature:new {
 				{group = "wearables_uncommon", chance = 750000}
 			},
 			lootChance = 4500000
-		}	
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = merge(pikemanmaster)
+	attacks = merge(pikemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(forsaken_force_drifter, "forsaken_force_drifter")

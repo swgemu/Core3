@@ -33,7 +33,7 @@ hidden_daggers_leader = Creature:new {
 		"object/mobile/dressed_criminal_thug_human_male_01.iff",
 		"object/mobile/dressed_criminal_thug_human_male_02.iff"},
 	lootGroups = {
-       	{
+		{
 			groups = {
 				{group = "junk", chance = 3300000},
 				{group = "loot_kit_parts", chance = 2000000},
@@ -43,11 +43,11 @@ hidden_daggers_leader = Creature:new {
 				
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(hidden_daggers_leader, "hidden_daggers_leader")

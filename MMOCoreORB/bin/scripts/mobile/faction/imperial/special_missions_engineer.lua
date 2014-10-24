@@ -4,7 +4,7 @@ special_missions_engineer = Creature:new {
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 16,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 170,
 	damageMax = 180,
 	baseXp = 960,
@@ -19,7 +19,7 @@ special_missions_engineer = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
@@ -28,7 +28,7 @@ special_missions_engineer = Creature:new {
 	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(brawlermaster,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(special_missions_engineer, "special_missions_engineer")
