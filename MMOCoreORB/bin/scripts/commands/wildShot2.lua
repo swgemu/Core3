@@ -54,6 +54,9 @@ WildShot2Command = {
 	animationCRC = hashCode("fire_7_single_medium"),
 
 	combatSpam = "widewildshot",
+	
+	coneAngle = 30,
+	coneAction = true,
 
 	stateEffects = {
 	  StateEffect( 
