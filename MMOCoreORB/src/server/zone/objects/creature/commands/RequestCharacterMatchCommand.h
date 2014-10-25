@@ -83,10 +83,17 @@ public:
 			if (!closeObjects.isEmpty()) {
 				for (int i = 0; i < closeObjects.size(); ++i) {
 					SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
-					if (obj->isPlayerCreature() && obj != creature) {
+					if (obj->isPlayerCreature()) {
 						ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(obj);
 						pny->addFoundPlayer(playerCreature);
 						counter++;
+					} else if (obj->isMount() || obj->isVehicleObject()) {
+						SceneObject* rider = obj->getSlottedObject("rider");
+						if (rider != NULL) {
+							ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(rider);
+							pny->addFoundPlayer(playerCreature);
+							counter++;
+						}
 					}
 				}
 			}

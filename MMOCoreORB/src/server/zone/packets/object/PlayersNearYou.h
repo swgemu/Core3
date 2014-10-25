@@ -77,10 +77,7 @@ public:
 
 		insertUnicode(player->getDisplayedName()); // Player name.
 
-		int race = 0;
-		if (ghost != NULL) {
-			race = ghost->getRaceID();
-		}
+		uint32 race = player->getSpecies();
 
 		insertInt(race); // Race ID
 
@@ -103,11 +100,13 @@ public:
 		insertAscii(regionName); //Region Name
 		insertAscii(zoneName); //Planet
 
+		String guildName = "";
+
 		if (player->isInGuild()) {
-			insertAscii(player->getGuildObject()->getGuildName()); //Guild
-		} else {
-			insertAscii("");
+			guildName = player->getGuildObject()->getGuildName();
 		}
+
+		insertAscii(guildName);
 
 		String title = "";
 
