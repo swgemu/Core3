@@ -1213,7 +1213,11 @@ class PlayerObject extends IntangibleObject {
 	 * is the player AFK
 	 */
 	@dirty
+	public native boolean isLFG();
 	public native boolean isAFK();
+	public native boolean isAnonymous();
+	public native boolean isRoleplayer();
+	public native boolean isNewbieHelper();
 	@local
 	@dirty
 	public VectorMap<string, int> getXpTypeCapList() {

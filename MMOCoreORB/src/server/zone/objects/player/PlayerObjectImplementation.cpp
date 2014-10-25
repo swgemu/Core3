@@ -425,9 +425,27 @@ bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool notifyClient) 
 	} else
 		return false;
 }
+
+bool PlayerObjectImplementation::isAnonymous()  {
+	return (characterBitmask & ((uint32)ANONYMOUS)) != 0;
+}
+
 bool PlayerObjectImplementation::isAFK()  {
 	return (characterBitmask & ((uint32)AFK)) != 0;
 }
+
+bool PlayerObjectImplementation::isRoleplayer()  {
+	return (characterBitmask & ((uint32)ROLEPLAYER)) != 0;
+}
+
+bool PlayerObjectImplementation::isNewbieHelper()  {
+	return (characterBitmask & ((uint32)NEWBIEHELPER)) != 0;
+}
+
+bool PlayerObjectImplementation::isLFG()  {
+	return (characterBitmask & ((uint32)LFG)) != 0;
+}
+
 bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient) {
 	if (characterBitmask & bit) {
 		characterBitmask &= ~bit;
