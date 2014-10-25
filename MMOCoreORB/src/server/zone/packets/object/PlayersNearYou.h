@@ -69,10 +69,10 @@ public:
 
 		uint32 playerBitmask = 0;
 
-		if (ghost != NULL) {
-			playerBitmask = ghost->getCharacterBitmask();
-		}
+		if (ghost != NULL)
+			playerBitmask = getFlagsBitmask(ghost);
 
+		insertInt(1);
 		insertInt(playerBitmask); // Flags bitmask.
 
 		insertUnicode(player->getDisplayedName()); // Player name.
@@ -92,9 +92,8 @@ public:
 			PlanetManager* planetManager = zone->getPlanetManager();
 			CityRegion* cityRegion = planetManager->getRegionAt(player->getWorldPositionX(), player->getWorldPositionY());
 
-			if (cityRegion != NULL) {
+			if (cityRegion != NULL)
 				regionName = cityRegion->getRegionName();
-			}
 		}
 
 		insertAscii(regionName); //Region Name
@@ -102,24 +101,37 @@ public:
 
 		String guildName = "";
 
-		if (player->isInGuild()) {
+		if (player->isInGuild())
 			guildName = player->getGuildObject()->getGuildName();
-		}
 
 		insertAscii(guildName);
 
 		String title = "";
 
-		if (ghost != NULL) {
+		if (ghost != NULL)
 			title = ghost->getTitle();
-		}
 
 		insertAscii(title); // Profession Title
 	}
 
+	uint32 getFlagsBitmask(PlayerObject* player) {
+		uint32 bitmask = 0;
+
+		if (player->isLFG())
+			bitmask |= 0x01;
+		if (player->isNewbieHelper())
+			bitmask |= 0x02;
+		if (player->isRoleplayer())
+			bitmask |= 0x04;
+		if (player->isAFK())
+			bitmask |= 0x80;
+
+		return bitmask;
+	}
+
+
 	void insertPlayerCounter(uint32 foundCount) {
 		insertInt(30, foundCount);
-		insertInt(34, 0);
 	}
 
 };

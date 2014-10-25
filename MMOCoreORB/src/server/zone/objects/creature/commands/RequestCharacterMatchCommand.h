@@ -65,6 +65,19 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		String profession, unkString;
+		UnicodeTokenizer tokenizer(arguments);
+
+		int unk1 = tokenizer.getIntToken();
+		int playerFlags = tokenizer.getIntToken();
+		int unk2 = tokenizer.getIntToken();
+		int unk3 = tokenizer.getIntToken();
+		int unk4 = tokenizer.getIntToken();
+		int faction = tokenizer.getIntToken();
+		int species = tokenizer.getIntToken();
+		tokenizer.getStringToken(profession);
+		tokenizer.getStringToken(unkString);
+
 		ManagedReference<Zone*> zone = creature->getZone();
 
 		if (zone != NULL) {
@@ -83,17 +96,45 @@ public:
 			if (!closeObjects.isEmpty()) {
 				for (int i = 0; i < closeObjects.size(); ++i) {
 					SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
-					if (obj->isPlayerCreature()) {
-						ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(obj);
+					if (obj != NULL && (obj->isPlayerCreature() || (obj->isMount() || obj->isVehicleObject()))) {
+						ManagedReference<CreatureObject*> playerCreature;
+						if (obj->isMount() || obj->isVehicleObject()) {
+							SceneObject* rider = obj->getSlottedObject("rider");
+							if (rider == NULL)
+								continue;
+
+							playerCreature = cast<CreatureObject*>(rider);
+						} else
+							playerCreature = cast<CreatureObject*>(obj);
+
+						PlayerObject* ghost = playerCreature->getPlayerObject();
+
+						if (ghost == NULL)
+							continue;
+
+						if ((playerFlags & 0x04) && !(getFlagsBitmask(ghost) & 0x04)) // Command looking for roleplayer flag
+							continue;
+
+						if ((playerFlags & 0x02) && !(getFlagsBitmask(ghost) & 0x02)) // Command looking for helper flag
+							continue;
+
+						if ((playerFlags & 0x01) && !(getFlagsBitmask(ghost) & 0x01)) // Command looking for lfg flag
+							continue;
+
+						// Search window sends a 0 for both "Any" and "Neutral", no way to differentiate
+						if (faction != 0 && faction != 1 && playerCreature->getFaction() != faction) // Command looking for faction, /who sends a 1 but search window sends 0
+							continue;
+
+						if (species != -1 && playerCreature->getSpecies() != species) // Command looking for species
+							continue;
+
+						// Handles both title and profession search (arguments give no way to differentiate between profession and title search)
+						// _novice check handles if player is searching for profession but no title
+						if (profession != "\"\"" && !playerCreature->hasSkill(profession) && ghost->getTitle() != profession && !playerCreature->hasSkill(profession + "_novice") )
+							continue;
+
 						pny->addFoundPlayer(playerCreature);
 						counter++;
-					} else if (obj->isMount() || obj->isVehicleObject()) {
-						SceneObject* rider = obj->getSlottedObject("rider");
-						if (rider != NULL) {
-							ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(rider);
-							pny->addFoundPlayer(playerCreature);
-							counter++;
-						}
 					}
 				}
 			}
@@ -112,6 +153,18 @@ public:
 		return SUCCESS;
 	}
 
+	uint32 getFlagsBitmask(PlayerObject* player) {
+		uint32 bitmask = 0;
+
+		if (player->isLFG())
+			bitmask |= 0x01;
+		if (player->isNewbieHelper())
+			bitmask |= 0x02;
+		if (player->isRoleplayer())
+			bitmask |= 0x04;
+
+		return bitmask;
+	}
 };
 
 #endif //REQUESTCHARACTERMATCHCOMMAND_H_
