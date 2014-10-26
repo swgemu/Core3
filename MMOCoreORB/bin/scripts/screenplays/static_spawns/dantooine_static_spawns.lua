@@ -17,5 +17,11 @@ end
 function DantooineStaticSpawnsScreenPlay:spawnMobiles()
 
 	--Need to add the rest of static spawns (Incomplete).
+	
+	-- Vexed Voritor Lizard Spawn (-5500 -1800)
+	spawnMobile("dantooine", "vexed_voritor_lizard", 300, -5500, 15, -1780, getRandomNumber(360), 0)
+	spawnMobile("dantooine", "vexed_voritor_lizard", 300, -5502, 15, -1790, getRandomNumber(360), 0)
+	spawnMobile("dantooine", "vexed_voritor_lizard", 300, -5483, 15, -1777, getRandomNumber(360), 0)
+	
 
 end
