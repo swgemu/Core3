@@ -28,7 +28,7 @@ hand_of_solitude = Creature:new {
 	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(hand_of_solitude, "hand_of_solitude")

@@ -37,7 +37,7 @@ wizzel = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlermaster)
+	attacks = merge(marksmanmid,brawlermid)
 }
 
 CreatureTemplates:addCreatureTemplate(wizzel, "wizzel")

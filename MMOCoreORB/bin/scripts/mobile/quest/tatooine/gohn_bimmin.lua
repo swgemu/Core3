@@ -45,7 +45,7 @@ gohn_bimmin = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(gohn_bimmin, "gohn_bimmin")

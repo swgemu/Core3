@@ -45,7 +45,7 @@ corsec_trooper = Creature:new {
 	},
 	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_trooper, "corsec_trooper")

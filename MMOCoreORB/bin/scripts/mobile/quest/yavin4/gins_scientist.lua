@@ -48,7 +48,7 @@ gins_scientist = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlermaster)
+	attacks = merge(marksmanmid,brawlermid)
 }
 
 CreatureTemplates:addCreatureTemplate(gins_scientist, "gins_scientist")

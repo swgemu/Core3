@@ -47,7 +47,7 @@ hutt_expeditionary_force_surveyor = Creature:new {
 },
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(hutt_expeditionary_force_surveyor, "hutt_expeditionary_force_surveyor")

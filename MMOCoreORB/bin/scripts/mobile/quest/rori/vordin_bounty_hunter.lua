@@ -40,7 +40,7 @@ vordin_bounty_hunter = Creature:new {
 			lootChance = 2200000
 		},
 	},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(vordin_bounty_hunter, "vordin_bounty_hunter")

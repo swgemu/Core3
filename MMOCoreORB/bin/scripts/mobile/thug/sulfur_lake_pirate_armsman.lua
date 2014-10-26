@@ -40,7 +40,7 @@ sulfur_lake_pirate_armsman = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(sulfur_lake_pirate_armsman, "sulfur_lake_pirate_armsman")

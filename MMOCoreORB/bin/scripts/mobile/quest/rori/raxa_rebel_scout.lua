@@ -4,7 +4,7 @@ raxa_rebel_scout = Creature:new {
 	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 15,
-	chanceHit = 0.310000,
+	chanceHit = 0.31,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 831,
@@ -19,7 +19,7 @@ raxa_rebel_scout = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
@@ -36,7 +36,7 @@ raxa_rebel_scout = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "raxa_binn_mission_target_convotemplate",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(raxa_rebel_scout, "raxa_rebel_scout")

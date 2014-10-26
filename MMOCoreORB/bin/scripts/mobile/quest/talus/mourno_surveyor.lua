@@ -47,7 +47,7 @@ mourno_surveyor = Creature:new {
 },
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(mourno_surveyor, "mourno_surveyor")

@@ -40,7 +40,7 @@ lyda_thug_coa2 = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(lyda_thug_coa2, "lyda_thug_coa2")

@@ -40,7 +40,7 @@ klaua_jik = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlermaster)
+	attacks = merge(marksmanmid,brawlermid)
 }
 
 CreatureTemplates:addCreatureTemplate(klaua_jik, "klaua_jik")

@@ -43,7 +43,7 @@ comm_operator = Creature:new {
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(comm_operator, "comm_operator")

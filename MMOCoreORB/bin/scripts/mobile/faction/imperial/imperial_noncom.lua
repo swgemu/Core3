@@ -45,7 +45,7 @@ imperial_noncom = Creature:new {
 		}
 	},
 	weapons = {"imperial_weapons_light"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_noncom, "imperial_noncom")

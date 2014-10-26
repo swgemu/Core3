@@ -46,7 +46,7 @@ hidden_daggers_extremist = Creature:new {
 		}	
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(hidden_daggers_extremist, "hidden_daggers_extremist")

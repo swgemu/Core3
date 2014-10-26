@@ -49,7 +49,7 @@ specforce_procurement_specialist = Creature:new {
 		}
 	},
 	weapons = {"imperial_weapons_light"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(specforce_procurement_specialist, "specforce_procurement_specialist")

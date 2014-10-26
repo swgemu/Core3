@@ -36,7 +36,7 @@ warren_imperial_worker = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(warren_imperial_worker, "warren_imperial_worker")

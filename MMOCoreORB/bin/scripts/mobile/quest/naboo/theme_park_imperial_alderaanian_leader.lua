@@ -4,7 +4,7 @@ theme_park_imperial_alderaanian_leader = Creature:new {
 	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 10,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 356,
@@ -19,7 +19,7 @@ theme_park_imperial_alderaanian_leader = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + STALKER,
@@ -37,7 +37,7 @@ theme_park_imperial_alderaanian_leader = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_alderaanian_leader, "theme_park_imperial_alderaanian_leader")

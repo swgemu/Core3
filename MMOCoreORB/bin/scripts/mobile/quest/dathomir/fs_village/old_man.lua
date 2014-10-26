@@ -30,7 +30,7 @@ old_man = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "old_man_convotemplate",
-	attacks = brawlermaster
+	attacks = brawlermid
 }
 
 CreatureTemplates:addCreatureTemplate(old_man, "old_man")

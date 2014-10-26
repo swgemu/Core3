@@ -45,7 +45,7 @@ imperial_trooper = Creature:new {
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_trooper, "imperial_trooper")

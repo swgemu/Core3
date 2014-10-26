@@ -40,7 +40,7 @@ gungan_kaadu_rider = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(gungan_kaadu_rider, "gungan_kaadu_rider")

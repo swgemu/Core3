@@ -44,7 +44,7 @@ aakuan_steward = Creature:new {
 	},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
-	attacks = brawlermaster
+	attacks = brawlermid
 }
 
 CreatureTemplates:addCreatureTemplate(aakuan_steward, "aakuan_steward")

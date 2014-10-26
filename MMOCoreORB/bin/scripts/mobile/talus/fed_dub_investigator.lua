@@ -43,7 +43,7 @@ fed_dub_investigator = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(fed_dub_investigator, "fed_dub_investigator")

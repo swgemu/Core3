@@ -45,7 +45,7 @@ theme_park_imperial_rebel_trooper = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_rebel_trooper, "theme_park_imperial_rebel_trooper")

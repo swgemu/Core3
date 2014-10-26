@@ -19,7 +19,7 @@ theme_park_imperial_mellag_davin_lars = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
@@ -35,7 +35,7 @@ theme_park_imperial_mellag_davin_lars = Creature:new {
 		}			
 	},
 	weapons = {"rebel_weapons_light"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_mellag_davin_lars, "theme_park_imperial_mellag_davin_lars")

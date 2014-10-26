@@ -39,7 +39,7 @@ theme_park_marauder_dengo = Creature:new {
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_marauder_dengo, "theme_park_marauder_dengo")

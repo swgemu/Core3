@@ -36,7 +36,7 @@ theme_park_marauder_lizardman = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "theme_park_marauder_mission_target_convotemplate",
-	attacks = brawlermaster
+	attacks = brawlernovice
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_marauder_lizardman, "theme_park_marauder_lizardman")

@@ -52,7 +52,7 @@ hidden_daggers_dissident = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(hidden_daggers_dissident, "hidden_daggers_dissident")

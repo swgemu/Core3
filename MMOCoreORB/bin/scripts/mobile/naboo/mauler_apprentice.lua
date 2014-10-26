@@ -4,7 +4,7 @@ mauler_apprentice = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 140,
 	damageMax = 150,
 	baseXp = 609,
@@ -19,7 +19,7 @@ mauler_apprentice = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
@@ -39,7 +39,7 @@ mauler_apprentice = Creature:new {
 		}					
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(mauler_apprentice, "mauler_apprentice")

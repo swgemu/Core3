@@ -32,7 +32,7 @@ imperial_slicer_gang_coa2 = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_slicer_gang_coa2, "imperial_slicer_gang_coa2")

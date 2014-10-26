@@ -40,7 +40,7 @@ tough_wookiee_brawler = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(tough_wookiee_brawler, "tough_wookiee_brawler")

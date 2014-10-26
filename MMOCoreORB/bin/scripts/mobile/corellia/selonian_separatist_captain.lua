@@ -65,7 +65,7 @@ selonian_separatist_captain = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(selonian_separatist_captain, "selonian_separatist_captain")

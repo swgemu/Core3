@@ -4,7 +4,7 @@ vordin_pirate = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 15,
-	chanceHit = 0.320000,
+	chanceHit = 0.32,
 	damageMin = 160,
 	damageMax = 170,
 	baseXp = 1102,
@@ -19,7 +19,7 @@ vordin_pirate = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK,
@@ -43,7 +43,7 @@ vordin_pirate = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(vordin_pirate, "vordin_pirate")

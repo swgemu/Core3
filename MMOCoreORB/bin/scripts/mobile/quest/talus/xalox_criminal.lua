@@ -4,7 +4,7 @@ xalox_criminal = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 14,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 150,
 	damageMax = 160,
 	baseXp = 714,
@@ -50,7 +50,7 @@ xalox_criminal = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlermaster)
+	attacks = merge(marksmanmid,brawlermid)
 }
 
 CreatureTemplates:addCreatureTemplate(xalox_criminal, "xalox_criminal")

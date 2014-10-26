@@ -45,7 +45,7 @@ imprisoned_rebel_soldier = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(imprisoned_rebel_soldier, "imprisoned_rebel_soldier")

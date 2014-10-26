@@ -35,7 +35,7 @@ dathomir_prisoner = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = brawlermaster
+	attacks = brawlermid
 }
 
 CreatureTemplates:addCreatureTemplate(dathomir_prisoner, "dathomir_prisoner")

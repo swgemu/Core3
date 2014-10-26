@@ -30,7 +30,7 @@ doctor_knag = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = brawlermaster
+	attacks = brawlermid
 }
 
 CreatureTemplates:addCreatureTemplate(doctor_knag, "doctor_knag")

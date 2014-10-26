@@ -48,7 +48,7 @@ hidden_daggers_lieutenant = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(hidden_daggers_lieutenant, "hidden_daggers_lieutenant")

@@ -4,7 +4,7 @@ naboo_pirate = Creature:new {
 	pvpFaction = "naboo_pirate",
 	faction = "naboo_pirate",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 514,
@@ -19,7 +19,7 @@ naboo_pirate = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK,
@@ -46,7 +46,7 @@ naboo_pirate = Creature:new {
 		}					
 	},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_pirate, "naboo_pirate")

@@ -30,7 +30,7 @@ eye_of_solitude = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(eye_of_solitude, "eye_of_solitude")

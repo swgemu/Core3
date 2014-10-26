@@ -35,7 +35,7 @@ network_leader = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(network_leader, "network_leader")

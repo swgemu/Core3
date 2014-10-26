@@ -38,7 +38,7 @@ theme_park_imperial_kayderr = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_kayderr, "theme_park_imperial_kayderr")

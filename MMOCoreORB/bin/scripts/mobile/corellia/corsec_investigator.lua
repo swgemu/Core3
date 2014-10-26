@@ -42,7 +42,7 @@ corsec_investigator = Creature:new {
 	},
 	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_investigator, "corsec_investigator")

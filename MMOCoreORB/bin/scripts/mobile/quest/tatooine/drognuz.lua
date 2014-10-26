@@ -42,7 +42,7 @@ drognuz = Creature:new {
 	},
 	weapons = {"gamorrean_weapons"},
 	conversationTemplate = "",
-	attacks = merge(marksmanmaster,brawlermaster)
+	attacks = merge(marksmanmid,brawlermid)
 }
 
 CreatureTemplates:addCreatureTemplate(drognuz, "drognuz")

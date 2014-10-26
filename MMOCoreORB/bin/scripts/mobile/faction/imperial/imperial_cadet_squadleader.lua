@@ -45,7 +45,7 @@ imperial_cadet_squadleader = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_cadet_squadleader, "imperial_cadet_squadleader")

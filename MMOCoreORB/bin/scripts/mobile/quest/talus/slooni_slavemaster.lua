@@ -4,7 +4,7 @@ slooni_slavemaster = Creature:new {
 	pvpFaction = "",
 	faction = "thug",
 	level = 14,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 150,
 	damageMax = 160,
 	baseXp = 714,
@@ -19,7 +19,7 @@ slooni_slavemaster = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
@@ -30,7 +30,7 @@ slooni_slavemaster = Creature:new {
 	lootGroups = { },
 	weapons = {},
 	conversationTemplate = "slooni_jong_mission_target_convotemplate",
-	attacks = brawlermaster
+	attacks = brawlermid
 }
 
 CreatureTemplates:addCreatureTemplate(slooni_slavemaster, "slooni_slavemaster")

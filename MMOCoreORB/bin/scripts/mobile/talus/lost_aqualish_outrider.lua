@@ -43,7 +43,7 @@ lost_aqualish_outrider = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(lost_aqualish_outrider, "lost_aqualish_outrider")

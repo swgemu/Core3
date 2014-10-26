@@ -30,7 +30,7 @@ bombardier = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(bombardier, "bombardier")

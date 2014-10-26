@@ -19,7 +19,7 @@ theme_park_imperial_haro_whitesun = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
@@ -35,7 +35,7 @@ theme_park_imperial_haro_whitesun = Creature:new {
 		}			
 	},
 	weapons = {"rebel_weapons_light"},
-	attacks = merge(marksmannovice,brawlernovice)
+	attacks = merge(marksmanmid,brawlermid)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_haro_whitesun, "theme_park_imperial_haro_whitesun")

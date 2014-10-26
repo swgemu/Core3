@@ -4,7 +4,7 @@ noda_lovan = Creature:new {
 	pvpFaction = "thug",
 	faction = "",
 	level = 14,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 150,
 	damageMax = 160,
 	baseXp = 714,
@@ -19,7 +19,7 @@ noda_lovan = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
@@ -30,7 +30,7 @@ noda_lovan = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "lt_harburik_mission_target_convotemplate",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(noda_lovan, "noda_lovan")

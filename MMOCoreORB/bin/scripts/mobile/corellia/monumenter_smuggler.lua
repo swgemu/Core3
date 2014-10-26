@@ -41,7 +41,7 @@ monumenter_smuggler = Creature:new {
 		"object/mobile/dressed_desperado_bith_male_01.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(monumenter_smuggler, "monumenter_smuggler")

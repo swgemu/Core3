@@ -50,7 +50,7 @@ imperial_senior_cadet = Creature:new {
 		}
 	},
 	weapons = {"ranged_weapons"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_senior_cadet, "imperial_senior_cadet")

@@ -41,7 +41,7 @@ rorgungan_scout = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(rorgungan_scout, "rorgungan_scout")

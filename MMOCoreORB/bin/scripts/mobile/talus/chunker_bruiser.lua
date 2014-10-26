@@ -4,7 +4,7 @@ chunker_bruiser = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 11,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 120,
 	damageMax = 130,
 	baseXp = 514,
@@ -19,7 +19,7 @@ chunker_bruiser = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
@@ -52,7 +52,7 @@ chunker_bruiser = Creature:new {
 		}
 	},
 	weapons = {"ranged_weapons"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(chunker_bruiser, "chunker_bruiser")

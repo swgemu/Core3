@@ -42,7 +42,7 @@ kobola_guard = Creature:new {
 	},
 	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(kobola_guard, "kobola_guard")

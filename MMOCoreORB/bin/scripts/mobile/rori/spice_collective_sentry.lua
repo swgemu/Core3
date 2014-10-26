@@ -41,7 +41,7 @@ spice_collective_sentry = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(spice_collective_sentry, "spice_collective_sentry")

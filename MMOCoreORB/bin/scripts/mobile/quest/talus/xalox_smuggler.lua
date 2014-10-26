@@ -4,7 +4,7 @@ xalox_smuggler = Creature:new {
 	pvpFaction = "thug",
 	faction = "",
 	level = 14,
-	chanceHit = 0.300000,
+	chanceHit = 0.3,
 	damageMin = 150,
 	damageMax = 160,
 	baseXp = 714,
@@ -19,7 +19,7 @@ xalox_smuggler = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = KILLER,
@@ -40,7 +40,7 @@ xalox_smuggler = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(xalox_smuggler, "xalox_smuggler")

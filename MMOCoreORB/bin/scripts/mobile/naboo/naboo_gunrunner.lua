@@ -38,7 +38,7 @@ naboo_gunrunner = Creature:new {
 		}				
 	},
 	weapons = {"ranged_weapons"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(naboo_gunrunner, "naboo_gunrunner")

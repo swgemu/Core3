@@ -4,7 +4,7 @@ masterful_ewok_warrior = Creature:new {
 	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 11,
-	chanceHit = 0.280000,
+	chanceHit = 0.28,
 	damageMin = 90,
 	damageMax = 110,
 	baseXp = 514,
@@ -19,7 +19,7 @@ masterful_ewok_warrior = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
@@ -37,7 +37,7 @@ masterful_ewok_warrior = Creature:new {
 		}
 	},
 	weapons = {"ewok_weapons"},
-	attacks = merge(marksmanmaster,brawlermaster)
+	attacks = merge(marksmanmid,brawlermid)
 }
 
 CreatureTemplates:addCreatureTemplate(masterful_ewok_warrior, "masterful_ewok_warrior")

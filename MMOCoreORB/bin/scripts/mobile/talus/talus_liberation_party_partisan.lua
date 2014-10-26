@@ -41,7 +41,7 @@ talus_liberation_party_partisan = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(talus_liberation_party_partisan, "talus_liberation_party_partisan")

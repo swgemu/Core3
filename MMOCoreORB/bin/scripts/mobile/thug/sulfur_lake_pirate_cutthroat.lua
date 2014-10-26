@@ -40,7 +40,7 @@ sulfur_lake_pirate_cutthroat = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermid,marksmanmid)
 }
 
 CreatureTemplates:addCreatureTemplate(sulfur_lake_pirate_cutthroat, "sulfur_lake_pirate_cutthroat")

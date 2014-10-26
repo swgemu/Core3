@@ -4,7 +4,7 @@ lian_thief = Creature:new {
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 12,
-	chanceHit = 0.290000,
+	chanceHit = 0.29,
 	damageMin = 130,
 	damageMax = 140,
 	baseXp = 430,
@@ -19,7 +19,7 @@ lian_thief = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE + ENEMY + AGGRESSIVE,
 	creatureBitmask = PACK,
@@ -42,7 +42,7 @@ lian_thief = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
-	attacks = merge(marksmanmaster,brawlermaster)
+	attacks = merge(marksmanmid,brawlermid)
 }
 
 CreatureTemplates:addCreatureTemplate(lian_thief, "lian_thief")
