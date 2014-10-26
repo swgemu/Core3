@@ -71,7 +71,7 @@ public:
 
 		if (!checkGroupLeader(player, group))
 			return GENERALERROR;
-			
+
 		int hamCost = (int) (50.0f * calculateGroupModifier(group));
 
 		int healthCost = creature->calculateCostAdjustment(CreatureAttribute::STRENGTH, hamCost);
@@ -85,7 +85,7 @@ public:
 
 		if (!doFormUp(player, group))
 			return GENERALERROR;
-			
+
 		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("formup").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
 			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("formup").hashCode()));
  	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);

@@ -149,6 +149,10 @@ public:
         return true;
     }
 
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
+		return defaultTime;
+	}
+
     String getAction() const {
         return action;
     }
