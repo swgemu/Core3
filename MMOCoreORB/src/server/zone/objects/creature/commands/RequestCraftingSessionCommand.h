@@ -99,11 +99,6 @@ public:
 			return INVALIDSTATE;
 		}
 
-		/// Check if tool is in initiating creatures inventory
-		if(craftingTool != NULL && !craftingTool->isASubChildOf(creature)) {
-			return GENERALERROR;
-		}
-
 		if (!checkInvalidLocomotions(creature)) {
 			if(craftingTool != NULL && creature->isPlayerCreature()) {
 
@@ -125,6 +120,20 @@ public:
 		 * The target is either the crafting tool,
 		 * or station clicked on
 		 */
+
+		/// Check if tool is in initiating creatures inventory
+		if(craftingTool != NULL && !craftingTool->isASubChildOf(creature)) {
+			return GENERALERROR;
+		}
+
+		// Make sure station is in a building or outdoors and within range
+		if(craftingStation != NULL) {
+			ManagedReference<SceneObject*> parent = craftingStation->getParent().get();
+
+			if ((parent != NULL && !parent->isCellObject()) || !creature->isInRange(craftingStation, 7.0)) {
+				return GENERALERROR;
+			}
+		}
 
 		/// Its a station, find the tool
 		if(craftingStation != NULL) {

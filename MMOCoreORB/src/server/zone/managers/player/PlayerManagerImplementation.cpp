@@ -2909,6 +2909,11 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 			if (station == NULL)
 				continue;
 
+			ManagedReference<SceneObject*> parent = station->getParent().get();
+
+			if (parent != NULL && !parent->isCellObject())
+				continue;
+
 			if (type == station->getStationType() || (type
 					== CraftingTool::JEDI && station->getStationType()
 					== CraftingTool::WEAPON)) {
