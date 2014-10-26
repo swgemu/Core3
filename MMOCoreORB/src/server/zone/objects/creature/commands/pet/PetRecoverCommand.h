@@ -54,6 +54,14 @@ public:
 		// Player animation
 		player->doAnimation("heal_other");
 
+		ManagedReference<SceneObject*> parent = player->getParent().get();
+
+		pet->setFollowObject(player);
+		pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
+		pet ->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
+		pet->clearPatrolPoints();
+		pet->activateLoad("");
+
 		return SUCCESS;
 	}
 
