@@ -1014,8 +1014,18 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer,
 		if (newValue <= 0)
 			newValue = 1;
 
-		if (damageType % 3 == 0)
+		if (damageType % 3 == 0) {
 			setPosture(CreaturePosture::UPRIGHT);
+			if (isPet()) {
+				ManagedReference<AiAgent*> pet = cast<AiAgent*>(_this.get().get());
+				ManagedReference<CreatureObject*> player = getLinkedCreature().get();
+
+				if (pet != NULL && player != NULL) {
+					pet->setFollowObject(player);
+					pet->activateMovementEvent();
+				}
+			}
+		}
 	}
 
 	if (damageType % 3 != 0 && newValue < 0)

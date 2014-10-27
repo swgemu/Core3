@@ -52,9 +52,15 @@ public:
 
 			pet->setPosture(CreaturePosture::UPRIGHT);
 
+			CreatureObject* owner = pet->getLinkedCreature().get();
+
+			if (owner != NULL) {
+				pet->setFollowObject(owner);
+				pet->activateMovementEvent();
+			}
+
 			if (autostore) {
 				PetControlDevice* device = pet->getControlDevice().get().castTo<PetControlDevice*>();
-				CreatureObject* owner = pet->getLinkedCreature().get();
 
 				if (device != NULL && owner != NULL) {
 					Locker clocker(owner, pet);
