@@ -121,7 +121,8 @@ class LightsaberCrystalComponent extends Component {
 	public native void tuneCrystal(CreatureObject player);
 
 	public native void updateCrystal(int value);
-	
+
+	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
 
 	public int getMinimumDamage() {
 		return minimumDamage;
