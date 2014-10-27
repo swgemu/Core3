@@ -123,9 +123,10 @@ public:
 
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else 
+				} else {
 					creature->sendSystemMessage("@healing:heal_mind_invalid_target"); //Target must be a player or a creature pet in order to heal mind.
 					return GENERALERROR;
+				}
 			}
 		} else
 			object = creature;

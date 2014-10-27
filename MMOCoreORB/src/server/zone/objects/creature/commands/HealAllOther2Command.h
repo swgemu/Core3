@@ -156,10 +156,10 @@ public:
 
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else
+				} else {
 					creature->sendSystemMessage("@jedi_spam:not_this_target"); //This command cannot be used on this target.
-					
 					return GENERALERROR;
+				}
 			}
 		} else
 			object = creature;
