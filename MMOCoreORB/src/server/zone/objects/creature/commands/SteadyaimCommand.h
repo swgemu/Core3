@@ -110,6 +110,10 @@ public:
 				continue;
 
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
+
+			if (!isValidGroupAbilityTarget(leader, memberPlayer))
+				continue;
+
 			Locker clocker(memberPlayer, leader);
 
 			sendCombatSpam(memberPlayer);
@@ -126,6 +130,7 @@ public:
 			buff->setStartFlyText("combat_effects", "go_steady", 0, 0xFF, 0); // there is no corresponding no_steady fly text
 
 			memberPlayer->addBuff(buff);
+			//			memberPlayer->showFlyText("combat_effects", "go_steadied", 0, 0xFF, 0); // there is no corresponding no_steady fly text
 		}
 
 		return true;

@@ -107,6 +107,10 @@ public:
 				continue;
 
 			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
+
+			if (!isValidGroupAbilityTarget(leader, memberPlayer))
+				continue;
+
 			Locker clocker(memberPlayer, leader);
 
 			sendCombatSpam(memberPlayer);

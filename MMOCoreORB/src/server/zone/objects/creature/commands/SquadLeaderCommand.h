@@ -61,6 +61,39 @@ public:
 		return true;
 	}
 
+	bool isValidGroupAbilityTarget(CreatureObject* leader, CreatureObject* target) {
+		if (!target->isPlayerCreature())
+			return false;
+
+		if (target == leader)
+			return true;
+
+		PlayerObject* leaderGhost = leader->getPlayerObject();
+		PlayerObject* targetGhost = target->getPlayerObject();
+
+		if (leaderGhost == NULL || targetGhost == NULL)
+			return false;
+
+		if (targetGhost->getFactionStatus() == FactionStatus::CHANGINGSTATUS || leaderGhost->getFactionStatus() == FactionStatus::CHANGINGSTATUS)
+			return false;
+
+		if (leader->getFaction() != 0 && target->getFaction() != 0) {
+			if (leader->getFaction() != target->getFaction() && targetGhost->getFactionStatus() != FactionStatus::ONLEAVE)
+				return false;
+
+			if (leader->getFaction() == target->getFaction() && leaderGhost->getFactionStatus() == FactionStatus::COVERT && targetGhost->getFactionStatus() == FactionStatus::OVERT)
+				return false;
+
+			if (leaderGhost->getFactionStatus() == FactionStatus::ONLEAVE && targetGhost->getFactionStatus() != FactionStatus::ONLEAVE)
+				return false;
+		}
+
+		if (leader->getFaction() == 0 && target->getFaction() != 0 && targetGhost->getFactionStatus() != FactionStatus::ONLEAVE)
+			return false;
+
+		return true;
+	}
+
 /*	bool shoutCommand(CreatureObject* player, GroupObject* group) {
 		if (player == NULL || group == NULL)
 			return false;

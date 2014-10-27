@@ -123,6 +123,9 @@ public:
 			
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
 
+			if (!isValidGroupAbilityTarget(creature, memberPlayer))
+				continue;
+
 			Locker clocker(memberPlayer, player);
 
 			sendCombatSpam(memberPlayer);
