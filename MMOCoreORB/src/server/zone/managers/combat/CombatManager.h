@@ -193,10 +193,11 @@ protected:
 	int getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon);
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender);
 	float getDefenderToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage);
-	int calculateDamageRange(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
+	int calculateDamageRange(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data);
+	float calculateDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data);
 	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender);
 	bool checkConeAngle(SceneObject* targetCreature, float angle, float creatureVectorX, float creatureVectorY, float directionVectorX, float directionVectorY);
 
@@ -206,9 +207,8 @@ protected:
 	void doDodge(CreatureObject* creature, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam);
 	void doLightsaberBlock(CreatureObject* creature, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam);
 
-	int applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
 	int applyDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, int poolsToDamage, const CreatureAttackData& data);
-	int applyDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
+	int applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
 	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data);
 
 	int doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data);

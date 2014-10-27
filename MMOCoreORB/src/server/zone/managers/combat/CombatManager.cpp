@@ -194,7 +194,18 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	return damage;
 }
 
+int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, CombatQueueCommand* command){
 
+	if(weapon != NULL){
+		if(!command->isAreaAction()){
+			return doTargetCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
+		} else {
+			return doAreaCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
+		}
+	}
+
+	return 0;
+}
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) {
 	int damage = 0;
@@ -298,6 +309,99 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		applyWeaponDots(attacker, defender, weapon);
 
 		damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, data);
+	}
+
+	return damage;
+}
+
+int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) {
+
+	int damage = 0;
+
+	Locker clocker(tano, attacker);
+
+	if (tano->isCreatureObject()) {
+		CreatureObject* defenderObject = cast<CreatureObject*>( tano);
+
+		if (defenderObject->getWeapon() != NULL)
+			damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
+	} else {
+		// TODO: implement, tano->tano damage
+	}
+
+	return damage;
+}
+
+int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data) {
+	if(defenderObject == NULL || !defenderObject->isAttackableBy(attacker))
+		return 0;
+
+	if (defenderObject->isEntertaining())
+		defenderObject->stopEntertaining();
+
+	attacker->addDefender(defenderObject);
+	defenderObject->addDefender(attacker);
+
+	float damageMultiplier = data.getDamageMultiplier();
+
+	// need to calculate damage here to get proper client spam
+	int damage = 0;
+
+	if (damageMultiplier != 0)
+		damage = calculateDamage(attacker, weapon, defenderObject, data) * damageMultiplier;
+
+	damageMultiplier = 1.0f;
+	int hitVal = getHitChance(attacker, defenderObject, weapon, damage, data.getAccuracyBonus());
+
+	String combatSpam = data.getCommand()->getCombatSpam();
+
+	// FIXME: probably need to add getCombatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
+
+	CombatAction* combatAction = NULL;
+
+	uint32 animationCRC = data.getAnimationCRC();
+	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
+	attacker->broadcastMessage(combatAction,true);
+
+	switch (hitVal) {
+	case MISS:
+		doMiss(attacker, defenderObject, weapon, damage, combatSpam + "_miss");
+		return 0;
+		break;
+	case HIT:
+		broadcastCombatSpam(attacker, defenderObject, weapon, damage, combatSpam + "_hit");
+		break;
+	case BLOCK:
+		doBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
+		damageMultiplier = 0.5f;
+		break;
+	case DODGE:
+		doDodge(attacker, defenderObject, weapon, damage, combatSpam + "_evade");
+		damageMultiplier = 0.0f;
+		break;
+	case COUNTER:
+		doCounterAttack(attacker, defenderObject, weapon, damage, combatSpam + "_counter");
+		defenderObject->enqueueCommand(String("counterattack").hashCode(), 0, attacker->getObjectID(), "");
+		damageMultiplier = 0.0f;
+		break;
+	case RICOCHET:
+		doLightsaberBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
+		damageMultiplier = 0.0f;
+		break;
+	default:
+		break;
+	}
+
+	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
+
+	if (poolsToDamage == 0)
+		return 0;
+
+	if (defenderObject->hasAttackDelay())
+		defenderObject->removeAttackDelay();
+
+	if (damageMultiplier != 0 && damage != 0) {
+		damage = applyDamage(attacker, weapon, defenderObject, damage, damageMultiplier, poolsToDamage, data);
 	}
 
 	return damage;
@@ -615,7 +719,7 @@ float CombatManager::hitChanceEquation(float attackerAccuracy, float accuracyBon
 	return accTotal;
 }
 
-int CombatManager::calculateDamageRange(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
+int CombatManager::calculateDamageRange(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
 	int attackType = weapon->getAttackType();
 	int damageMitigation = 0;
 	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
@@ -649,8 +753,14 @@ int CombatManager::calculateDamageRange(CreatureObject* attacker, CreatureObject
 			maxDamage = minDamage + (maxDamage - minDamage) * (1 - (0.2 * damageMitigation));
 	}
 
-	int maxDamageMultiplier = attacker->getSkillMod("private_max_damage_multiplier");
-	int maxDamageDivisor = attacker->getSkillMod("private_max_damage_divisor");
+	int maxDamageMultiplier = 0;
+	int maxDamageDivisor = 0;
+
+	if (attacker->isCreatureObject()) {
+		CreatureObject* attackerCreo = cast<CreatureObject*>(attacker);
+		maxDamageMultiplier = attackerCreo->getSkillMod("private_max_damage_multiplier");
+		maxDamageDivisor = attackerCreo->getSkillMod("private_max_damage_divisor");
+	}
 
 	if (maxDamageMultiplier != 0)
 		maxDamage *= maxDamageMultiplier;
@@ -1122,6 +1232,26 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	return damage;
 }
 
+float CombatManager::calculateDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data) {
+	float damage = 0;
+
+	int diff = calculateDamageRange(attacker, defender, weapon);
+	float minDamage = weapon->getMinDamage();
+
+	if (diff >= 0)
+		damage = System::random(diff) + (int)minDamage;
+
+	damage += defender->getSkillMod("private_damage_susceptibility");
+
+	if (defender->isKnockedDown() || defender->isProne())
+		damage *= 1.33f;
+
+	// Toughness reduction
+	damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage);
+
+	return damage;
+}
+
 int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* targetCreature, WeaponObject* weapon, int damage, int accuracyBonus) {
 	int hitChance = 0;
 	int attackType = weapon->getAttackType();
@@ -1461,7 +1591,7 @@ int CombatManager::calculatePoolsToDamage(int poolsToDamage) {
 	return poolsToDamage;
 }
 
-int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
+int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
 	if (poolsToDamage == 0 || damageMultiplier == 0)
 		return 0;
 
@@ -1512,8 +1642,9 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, C
 		defender->addShockWounds(1, true);
 
 	// This method can be called multiple times for area attacks.  Let the calling method decrease the powerup once
-	if (!data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction())
-		weapon->decreasePowerupUses(attacker);
+	if (!data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction() && attacker->isCreatureObject()) {
+		weapon->decreasePowerupUses(cast<CreatureObject*>(attacker));
+	}
 
 	return (int) (healthDamage + actionDamage + mindDamage);
 }
@@ -1860,117 +1991,6 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 		return 0x506E9D4C;
 	else
 		return defaultAttacks[System::random(8)];
-}
-
-int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, CombatQueueCommand* command){
-
-	if(weapon != NULL){
-		if(!command->isAreaAction()){
-			return doTargetCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
-		} else {
-			return doAreaCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
-		}
-	}
-
-	return 0;
-}
-
-int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) {
-
-	int damage = 0;
-
-	Locker clocker(tano, attacker);
-
-	if (tano->isCreatureObject()) {
-		CreatureObject* defenderObject = cast<CreatureObject*>( tano);
-
-		if (defenderObject->getWeapon() != NULL)
-			damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
-	} else {
-		// TODO: implement, tano->tano damage
-	}
-
-	return damage;
-}
-
-// called for single target attackers
-int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data) {
-	if(defenderObject == NULL || !defenderObject->isAttackableBy(attacker))
-		return 0;
-
-	attacker->addDefender(defenderObject);
-	defenderObject->addDefender(attacker);
-
-	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
-	float diff = maxDamage - minDamage;
-	float damage = 0;
-	float damageMultiplier = data.getDamageMultiplier();
-	if (diff >= 0)
-		damage = System::random(diff) + (int)minDamage;
-
-	damage *= damageMultiplier;
-
-	damage = getArmorReduction(attacker, weapon, defenderObject, damage, CombatManager::HEALTH, data);
-
-
-	int hitVal = getHitChance(attacker, defenderObject, weapon, damage, data.getAccuracyBonus());
-
-	String combatSpam = data.getCommand()->getCombatSpam();
-
-	// FIXME: probably need to add getCombatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
-
-	CombatAction* combatAction = NULL;
-
-	uint32 animationCRC = data.getAnimationCRC();
-	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
-	attacker->broadcastMessage(combatAction,true);
-
-	switch (hitVal) {
-	case MISS:
-		doMiss(attacker, defenderObject, weapon, damage, combatSpam + "_miss");
-		return 0;
-		break;
-	case HIT:
-		broadcastCombatSpam(attacker, defenderObject, weapon, damage, combatSpam + "_hit");
-		break;
-	case BLOCK:
-		doBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
-		damageMultiplier = 0.5f;
-		break;
-	case DODGE:
-		doDodge(attacker, defenderObject, weapon, damage, combatSpam + "_evade");
-		damageMultiplier = 0.0f;
-		break;
-	case COUNTER:
-		doCounterAttack(attacker, defenderObject, weapon, damage, combatSpam + "_counter");
-		defenderObject->enqueueCommand(String("counterattack").hashCode(), 0, attacker->getObjectID(), "");
-		damageMultiplier = 0.0f;
-		break;
-	case RICOCHET:
-		doLightsaberBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
-		damageMultiplier = 0.0f;
-		break;
-	default:
-		break;
-	}
-
-
-	// TODO:  create an apply damage(tano, creature)
-	defenderObject->inflictDamage(attacker,CreatureAttribute::HEALTH, damage * damageMultiplier,true);
-
-
-
-	return damage;
-}
-
-
-
-
-
-int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data){
-
-
-	return 0;
 }
 
 int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) {
