@@ -15,6 +15,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
+#include "server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/WeaponRanges.h"
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
@@ -705,10 +706,26 @@ String WeaponObjectImplementation::repairAttempt(int repairChance) {
 }
 
 void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
-	if (_this.get() != user->getSlottedObject("default_weapon") && !user->isAiAgent()) {
-		damage = damage / 10000.f;
-		if (isSliced()) damage *= 1.1;
-		if (hasPowerup()) damage *= 1.1;
+	if (_this.get() == user->getSlottedObject("default_weapon") || user->isAiAgent()) {
+		return;
+	}
+
+	damage = damage / 10000.f;
+	if (isSliced()) damage *= 1.1;
+	if (hasPowerup()) damage *= 1.1;
+
+	if (isJediWeapon()) {
+		ManagedReference<SceneObject*> saberInv = getSlottedObject("saber_inv");
+		damage = damage / saberInv->getContainerObjectsSize();
+
+		for (int i = 0; i < saberInv->getContainerObjectsSize(); i++) {
+			ManagedReference<LightsaberCrystalComponent*> crystal = saberInv->getContainerObject(i).castTo<LightsaberCrystalComponent*>();
+
+			if (crystal != NULL) {
+				crystal->inflictDamage(crystal, 0, damage, true, true);
+			}
+		}
+	} else {
 		inflictDamage(_this.get(), 0, damage, true, true);
 
 		if ((conditionDamage - damage / maxCondition < 0.75) && (conditionDamage / maxCondition > 0.75))

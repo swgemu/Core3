@@ -81,6 +81,11 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
+	if (crystal->isDestroyed()) {
+		errorDescription = "You cannot add a broken crystal to your lightsaber.";
+		return TransferErrorCode::INVALIDTYPE;
+	}
+
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
 	if (containerObjects->size() >= sceneObject->getContainerVolumeLimit()) {
@@ -138,6 +143,11 @@ int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObje
 
 		if (weao->isJediWeapon()) {
 			ManagedReference<LightsaberCrystalComponent*> crystal = cast<LightsaberCrystalComponent*>( object);
+
+			if (crystal->isDestroyed()) {
+				return sceneObject->notifyObjectRemoved(object);
+			}
+
 			if (crystal->getColor() == 31){
 				weao->setAttackSpeed(weao->getAttackSpeed() - crystal->getAttackSpeed());
 				weao->setMinDamage(weao->getMinDamage() - crystal->getMinimumDamage());
@@ -148,9 +158,10 @@ int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObje
 				weao->setWoundsRatio(weao->getWoundsRatio() - crystal->getWoundChance());
 				weao->setForceCost(weao->getForceCost() - crystal->getForceCost());
 			}
-			if (crystal->getColor() != 31)
+			if (crystal->getColor() != 31) {
 				weao->setBladeColor(31);
 				weao->setCustomizationVariable("/private/index_color_blade", 31, true);
+			}
 		}
 
 	return sceneObject->notifyObjectRemoved(object);

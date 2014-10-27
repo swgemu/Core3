@@ -16,6 +16,7 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/callbacks/LightsaberCrystalTuneSuiCallback.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void LightsaberCrystalComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();
@@ -204,4 +205,43 @@ void LightsaberCrystalComponentImplementation::updateCraftingValues(CraftingValu
 	}
 
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
+}
+
+int LightsaberCrystalComponentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
+	if (isDestroyed()) {
+		return 0;
+	}
+
+	TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
+
+	if (isDestroyed()) {
+		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(_this.get()->getParent().get()->getParent().get().get());
+
+		if (weapon != NULL) {
+			if (getColor() == 31) {
+				weapon->setAttackSpeed(weapon->getAttackSpeed() - getAttackSpeed());
+				weapon->setMinDamage(weapon->getMinDamage() - getMinimumDamage());
+				weapon->setMaxDamage(weapon->getMaxDamage() - getMaximumDamage());
+				weapon->setHealthAttackCost(weapon->getHealthAttackCost() - getSacHealth());
+				weapon->setActionAttackCost(weapon->getActionAttackCost() - getSacAction());
+				weapon->setMindAttackCost(weapon->getMindAttackCost() - getSacMind());
+				weapon->setWoundsRatio(weapon->getWoundsRatio() - getWoundChance());
+				weapon->setForceCost(weapon->getForceCost() - getForceCost());
+			}
+
+			if (getColor() != 31) {
+				weapon->setBladeColor(31);
+				weapon->setCustomizationVariable("/private/index_color_blade", 31, true);
+
+				if (weapon->isEquipped()) {
+					ManagedReference<CreatureObject*> parent = cast<CreatureObject*>(weapon->getParent().get().get());
+					ManagedReference<SceneObject*> inventory = parent->getSlottedObject("inventory");
+					inventory->transferObject(weapon, -1, true, true);
+					parent->sendSystemMessage("@jedi_spam:lightsaber_no_color"); //That lightsaber can not be used until it has a color-modifying Force crystal installed.
+				}
+			}
+		}
+	}
+
+	return 0;
 }
