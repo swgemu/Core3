@@ -2834,7 +2834,7 @@ int CreatureObjectImplementation::handleObjectMenuSelect(CreatureObject* player,
 }
 
 float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float baseCost) {
-	float cost = baseCost - ((this->getHAM(stat) - 300) * .0005 * baseCost);
+	float cost = baseCost - (((this->getHAM(stat) - 300) / 1200) * baseCost);
 
 	if(cost < 0)
 		cost = 0;
