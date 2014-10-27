@@ -65,7 +65,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		String profession, unkString;
+		String profession, wildcard;
 		UnicodeTokenizer tokenizer(arguments);
 
 		int unk1 = tokenizer.getIntToken();
@@ -76,7 +76,7 @@ public:
 		int faction = tokenizer.getIntToken();
 		int species = tokenizer.getIntToken();
 		tokenizer.getStringToken(profession);
-		tokenizer.getStringToken(unkString);
+		tokenizer.getStringToken(wildcard);
 
 		ManagedReference<Zone*> zone = creature->getZone();
 
@@ -94,6 +94,7 @@ public:
 			uint32 counter = 0;
 
 			if (!closeObjects.isEmpty()) {
+				String guildName, charName;
 				for (int i = 0; i < closeObjects.size(); ++i) {
 					SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
 					if (obj != NULL && (obj->isPlayerCreature() || (obj->isMount() || obj->isVehicleObject()))) {
@@ -110,6 +111,23 @@ public:
 						PlayerObject* ghost = playerCreature->getPlayerObject();
 
 						if (ghost == NULL || ghost->isAnonymous())
+							continue;
+
+						guildName = "";
+						if (playerCreature->isInGuild())
+							guildName = playerCreature->getGuildObject()->getGuildName().toLowerCase();
+
+						charName = playerCreature->getDisplayedName().toLowerCase();
+
+						if (wildcard != "\"\"" && !guildName.contains(wildcard) && !charName.contains(wildcard))
+							continue;
+
+						// Don't allow non privileged characters to search for admin skills
+						if (profession.contains("admin") && !ghost->isPrivileged())
+							continue;
+
+						// Dont show invisible admins
+						if (playerCreature->isInvisible())
 							continue;
 
 						if ((playerFlags & 0x04) && !ghost->isRoleplayer()) // Command looking for roleplayer flag
@@ -135,6 +153,9 @@ public:
 
 						pny->addFoundPlayer(playerCreature);
 						counter++;
+
+						if (counter == 32) // Limit of 32 results
+							break;
 					}
 				}
 			}
