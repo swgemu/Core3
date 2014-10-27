@@ -81,10 +81,13 @@ public:
 		float z = creature->getPositionZ();
 		uint64 parentID = creature->getParentID();
 
-		try {
-			UnicodeTokenizer tokenizer(arguments);
+		UnicodeTokenizer tokenizer(arguments);
 
-			tokenizer.getStringToken(targetName); //If the target wasn't passed in as the target parameter.
+		try {
+			tokenizer.getStringToken(targetName);
+		} catch (Exception& e) {}
+
+		try {
 
 			if (tokenizer.hasMoreTokens()) {
 
@@ -111,7 +114,7 @@ public:
 				parentID = tokenizer.getLongToken();
 
 		} catch (Exception& e) {
-			creature->sendSystemMessage("SYNTAX: /teleportTarget <name> -- Bring target to you");
+			creature->sendSystemMessage("SYNTAX: /teleportTarget [<name>] -- Bring target to you");
 			creature->sendSystemMessage("SYNTAX: /teleportTarget [<name>] <x> <y> [<planet>] [<z> <parentID>]");
 			return INVALIDPARAMETERS;
 		}

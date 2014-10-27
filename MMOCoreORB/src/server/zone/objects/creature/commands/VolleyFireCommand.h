@@ -127,6 +127,9 @@ public:
 
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
 
+			if (!isValidGroupAbilityTarget(leader, memberPlayer))
+				continue;
+
 			if (!memberPlayer->isInCombat())
 				continue;
 

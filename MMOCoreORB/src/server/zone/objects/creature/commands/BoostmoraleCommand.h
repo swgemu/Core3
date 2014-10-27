@@ -116,6 +116,10 @@ public:
 				continue;
 
 			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
+
+			if (!isValidGroupAbilityTarget(leader, memberPlayer))
+				continue;
+
 			Locker clocker(memberPlayer, leader);
 
 			for (int j = 0; j < 9; j++) {
@@ -141,6 +145,9 @@ public:
 				continue;
 
 			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
+
+			if (!isValidGroupAbilityTarget(leader, memberPlayer))
+				continue;
 
 			Locker clocker(memberPlayer, leader);
 
