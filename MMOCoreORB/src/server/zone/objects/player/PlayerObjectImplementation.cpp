@@ -132,7 +132,7 @@ void PlayerObjectImplementation::loadTemplateData(SharedObjectTemplate* template
 
 	SharedPlayerObjectTemplate* sply = dynamic_cast<SharedPlayerObjectTemplate*>(templateData);
 
-	characterBitmask = ANONYMOUS;
+	characterBitmask = NORMALPLAYER;
 
 	adminLevel = 0;
 
