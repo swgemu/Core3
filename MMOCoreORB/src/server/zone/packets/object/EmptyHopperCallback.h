@@ -120,7 +120,7 @@ public:
 
 				inso->updateResourceContainerQuantity(container, newQuantity, true);
 			} else if (byte1 == 0) {
-				if (!inventory->hasFullContainerObjects()) {
+				if (inventory->getCountableObjectsRecursive() < inventory->getContainerVolumeLimit()) {
 					ManagedReference<ResourceContainer*> newContainer = container->getSpawnObject()->createResource(quantity);
 					inventory->transferObject(newContainer, -1, false);
 					inventory->broadcastObject(newContainer, true);
