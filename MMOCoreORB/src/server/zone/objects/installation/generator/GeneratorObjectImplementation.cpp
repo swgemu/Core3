@@ -65,3 +65,15 @@ int GeneratorObjectImplementation::handleObjectMenuSelect(CreatureObject* player
 
 	return 0;
 }
+
+String GeneratorObjectImplementation::getRedeedMessage() {
+
+	if(operating)
+		return "destroy_deactivate_first";
+
+	if(resourceHopper.size() > 0)
+		return "destroy_empty_hopper";
+
+
+	return "";
+}

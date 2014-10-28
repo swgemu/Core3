@@ -50,4 +50,7 @@ class GeneratorObject extends InstallationObject {
 	public boolean isGeneratorObject() {
 		return true;
 	}
+
+	@dirty
+	public native string getRedeedMessage();
 }
