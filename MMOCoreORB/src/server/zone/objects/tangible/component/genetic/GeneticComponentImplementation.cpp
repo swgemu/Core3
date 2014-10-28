@@ -207,7 +207,7 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	// Redo this forumla section we made it up anyways so lets figure a better range
 	float resistMod = (kinResist + energyResist + blastResist + heatResist + coldResist + elecResist + acidResist + stunResist + saberResist)/100;
 	// levle of pet is avg input sample level + (resists adjustments) + damage adjustments
-	int damMod = minDam/50;
+	int damMod = minDam/100; // adjusted to every hundred poitns intead of 50
 	levelMod = (resistMod + damMod);
 
 }

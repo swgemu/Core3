@@ -267,7 +267,6 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	genetic->setLevel(level);
 	craftingValues->recalculateValues(true);
 	recalculateResist(craftingValues);
-	// demo calc output
 }
 
 void GeneticLabratory::initialize(ZoneServer* server) {
