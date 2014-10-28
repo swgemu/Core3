@@ -365,27 +365,27 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	switch (hitVal) {
 	case MISS:
-		doMiss(attacker, defenderObject, weapon, damage, combatSpam + "_miss");
+		doMiss(attacker, weapon, defenderObject, damage, combatSpam + "_miss");
 		return 0;
 		break;
 	case HIT:
 		broadcastCombatSpam(attacker, defenderObject, weapon, damage, combatSpam + "_hit");
 		break;
 	case BLOCK:
-		doBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
+		doBlock(attacker, weapon, defenderObject, damage, combatSpam + "_block");
 		damageMultiplier = 0.5f;
 		break;
 	case DODGE:
-		doDodge(attacker, defenderObject, weapon, damage, combatSpam + "_evade");
+		doDodge(attacker, weapon, defenderObject, damage, combatSpam + "_evade");
 		damageMultiplier = 0.0f;
 		break;
 	case COUNTER:
-		doCounterAttack(attacker, defenderObject, weapon, damage, combatSpam + "_counter");
+		doCounterAttack(attacker, weapon, defenderObject, damage, combatSpam + "_counter");
 		defenderObject->enqueueCommand(String("counterattack").hashCode(), 0, attacker->getObjectID(), "");
 		damageMultiplier = 0.0f;
 		break;
 	case RICOCHET:
-		doLightsaberBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
+		doLightsaberBlock(attacker, weapon, defenderObject, damage, combatSpam + "_block");
 		damageMultiplier = 0.0f;
 		break;
 	default:
@@ -1378,41 +1378,41 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, Weapon
 	return MAX(attackSpeed, 1.0f);
 }
 
-void CombatManager::doMiss(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
+void CombatManager::doMiss(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
 
 	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
 }
 
-void CombatManager::doCounterAttack(CreatureObject* creature, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
+void CombatManager::doCounterAttack(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
 	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
-	broadcastCombatSpam(creature, defender, weapon, damage, cbtSpam);
+	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
 }
 
-void CombatManager::doBlock(CreatureObject* creature, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
+void CombatManager::doBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "block", 0, 0xFF, 0);
 
 	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
-	broadcastCombatSpam(creature, defender, weapon, damage, cbtSpam);
+	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
 }
 
-void CombatManager::doLightsaberBlock(CreatureObject* creature, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
+void CombatManager::doLightsaberBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
 	// No Fly Text.
 
 	//creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
 
-	broadcastCombatSpam(creature, defender, weapon, damage, cbtSpam);
+	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
 }
 
-void CombatManager::doDodge(CreatureObject* creature, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
+void CombatManager::doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
 
 	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
-	broadcastCombatSpam(creature, defender, weapon, damage, cbtSpam);
+	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
 }
 
 bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, const CreatureAttackData& data) {
@@ -1682,7 +1682,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	return damage;
 }
 
-void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
+void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
 	Zone* zone = attacker->getZone();
 
 	if (zone == NULL)
@@ -2258,74 +2258,4 @@ int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObj
 	}
 
 	return resist;
-}
-
-void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
-	Zone* zone = attacker->getZone();
-
-	if (zone == NULL)
-		return;
-
-	//Locker _locker(zone);
-
-	CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
-
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
-
-	if (vec != NULL) {
-		closeObjects.removeAll(vec->size(), 10);
-		vec->safeCopyTo(closeObjects);
-	} else {
-		attacker->info("Null closeobjects vector in CombatManager::broadcastCombatSpam", true);
-		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
-	}
-
-
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
-
-		if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
-			CreatureObject* player = cast<CreatureObject*>( object);
-
-			CombatSpam* msg = new CombatSpam(attacker, defender, weapon, damage, "cbt_spam", stringid, player);
-			player->sendMessage(msg);
-		}
-	}
-}
-
-void CombatManager::doMiss(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon, int damage, const String& cbtSpam) {
-	defender->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
-
-	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
-}
-
-void CombatManager::doCounterAttack(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon, int damage, const String& cbtSpam) {
-	defender->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
-	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
-
-	broadcastCombatSpam(attacker, defender,weapon, damage, cbtSpam);
-}
-
-void CombatManager::doBlock(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon, int damage, const String& cbtSpam) {
-	defender->showFlyText("combat_effects", "block", 0, 0xFF, 0);
-
-	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
-
-	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
-}
-
-void CombatManager::doLightsaberBlock(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon, int damage, const String& cbtSpam) {
-	// No Fly Text.
-
-	//creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
-
-	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
-}
-
-void CombatManager::doDodge(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon, int damage, const String& cbtSpam) {
-	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
-
-	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
-
-	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
 }
