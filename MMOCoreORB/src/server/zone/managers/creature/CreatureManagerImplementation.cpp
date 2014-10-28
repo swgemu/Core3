@@ -884,7 +884,13 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 	for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
 		ManagedReference<AiAgent*> object = ghost->getActivePet(i);
 
-		if (object != NULL && object->isCreature()) {
+		if (object != NULL) {
+			ManagedReference<PetControlDevice*> pcd = object->getControlDevice().get().castTo<PetControlDevice*>();
+
+			if (pcd == NULL || pcd->getPetType() != PetManager::CREATUREPET) {
+				continue;
+			}
+
 			if (++currentlySpawned >= maxPets) {
 				player->sendSystemMessage("@pet/pet_menu:too_many"); // You can't control any more pets. Store one first
 				return;
