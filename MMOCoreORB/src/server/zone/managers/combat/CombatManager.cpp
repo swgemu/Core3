@@ -775,33 +775,31 @@ int CombatManager::calculateDamageRange(TangibleObject* attacker, CreatureObject
 	return range < 0 ? 0 : (int)range;
 }
 
-int CombatManager::getDamageModifier(CreatureObject* attacker, WeaponObject* weapon) {
-	int damageMods = 0;
-
+float CombatManager::applyDamageModifiers(CreatureObject* attacker, WeaponObject* weapon, float damage) {
 	Vector<String>* weaponDamageMods = weapon->getDamageModifiers();
 
 	for (int i = 0; i < weaponDamageMods->size(); ++i) {
-		damageMods += attacker->getSkillMod(weaponDamageMods->get(i));
+		damage += attacker->getSkillMod(weaponDamageMods->get(i));
 	}
 
-	damageMods += attacker->getSkillMod("private_damage_bonus");
+	damage += attacker->getSkillMod("private_damage_bonus");
 
 	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
-		damageMods += attacker->getSkillMod("private_melee_damage_bonus");
+		damage += attacker->getSkillMod("private_melee_damage_bonus");
 	if (weapon->getAttackType() == WeaponObject::RANGEDATTACK)
-		damageMods += attacker->getSkillMod("private_ranged_damage_bonus");
+		damage += attacker->getSkillMod("private_ranged_damage_bonus");
 
 	int damageMultiplier = attacker->getSkillMod("private_damage_multiplier");
 
 	if (damageMultiplier != 0)
-		damageMods *= damageMultiplier;
+		damage *= damageMultiplier;
 
 	int damageDivisor = attacker->getSkillMod("private_damage_divisor");
 
 	if (damageDivisor != 0)
-		damageMods /= damageDivisor;
+		damage /= damageDivisor;
 
-	return damageMods;
+	return damage;
 }
 
 int CombatManager::getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon) {
@@ -1151,18 +1149,18 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	if (diff >= 0)
 		damage = System::random(diff) + (int)minDamage;
 
+	if (attacker->isPlayerCreature()) {
+		if (!weapon->isCertifiedFor(attacker))
+			damage /= 5;
+	}
+
+	damage = applyDamageModifiers(attacker, weapon, damage);
+
 	if (attacker->isPlayerCreature())
 		damage *= 1.5;
 
 	if (weapon->getAttackType() == WeaponObject::MELEEATTACK && attacker->isPlayerCreature())
 		damage *= 1.25;
-
-	damage += getDamageModifier(attacker, weapon);
-
-	if (attacker->isPlayerCreature()) {
-		if (!weapon->isCertifiedFor(attacker))
-			damage /= 5;
-	}
 
 	//info("damage to be dealt is " + String::valueOf(damage), true);
 
@@ -1202,14 +1200,15 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		}
 	}
 
+	damage = applyDamageModifiers(attacker, weapon, damage);
+
+	damage += defender->getSkillMod("private_damage_susceptibility");
+
 	if (attacker->isPlayerCreature())
 		damage *= 1.5;
 
 	if (weapon->getAttackType() == WeaponObject::MELEEATTACK && attacker->isPlayerCreature())
 		damage *= 1.25;
-
-	damage += getDamageModifier(attacker, weapon);
-	damage += defender->getSkillMod("private_damage_susceptibility");
 
 	/*if (defender->isKneeling())
 		damage *= 1.5f;*/
