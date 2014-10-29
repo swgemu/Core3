@@ -295,6 +295,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		if( droid->hasPower() ){
 			// TODO Temporarily set to autofollow player
 			droid->setFollowObject(player);
+			droid->storeFollowObject();
 		}
 		else{
 			droid->handleLowPower();
@@ -302,6 +303,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	} else {
 		pet->setFollowObject(player);
+		pet->storeFollowObject();
 	}
 	pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
 	pet->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);

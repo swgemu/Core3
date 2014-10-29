@@ -574,13 +574,7 @@ class AiAgent extends CreatureObject {
 		followStore = followObject;
 	}
 	
-	public void restoreFollowObject() {
-		SceneObject obj = followStore;
-		if (obj == null)
-			setOblivious();
-		else
-			setFollowObject(obj);
-	}
+	public native void restoreFollowObject();
 	
 	@read
 	public unsigned int getFollowState() {

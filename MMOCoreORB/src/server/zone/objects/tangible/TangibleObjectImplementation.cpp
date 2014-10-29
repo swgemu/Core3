@@ -532,7 +532,7 @@ void TangibleObjectImplementation::dropFromDefenderLists(TangibleObject* destruc
 	Reference<ClearDefenderListsTask*> task = new ClearDefenderListsTask(defenderList, _this.get());
 	Core::getTaskManager()->executeTask(task);
 
-	clearCombatState(true);
+	clearCombatState(false);
 }
 
 int TangibleObjectImplementation::healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient) {

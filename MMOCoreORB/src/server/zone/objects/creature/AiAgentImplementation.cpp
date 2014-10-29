@@ -809,7 +809,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 		if (target != NULL)
 			setDefender(target);
 		else
-			setOblivious();
+			restoreFollowObject();
 	}
 
 	activateRecovery();
@@ -1035,8 +1035,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 			void run() {
 				Locker locker(ai);
 				if (sceno == ai->getFollowObject()) {
-					ai->setOblivious();
-					ai->storeFollowObject();
+					ai->restoreFollowObject();
 				}
 			}
 		};
@@ -2739,4 +2738,15 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	}
 
 	return true;
+}
+
+void AiAgentImplementation::restoreFollowObject() {
+	ManagedReference<SceneObject*> obj = followStore.get();
+
+	if (obj == NULL)
+		setOblivious();
+	else if (getCloseObjects() != NULL && !getCloseObjects()->contains(obj.get()))
+		setOblivious();
+	else
+		setFollowObject(obj);
 }

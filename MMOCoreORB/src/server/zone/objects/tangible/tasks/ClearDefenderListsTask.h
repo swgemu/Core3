@@ -33,6 +33,7 @@ public:
 			(cast<TangibleObject*>(defender))->removeDefender(tangibleObject);
 		}
 
+		tangibleObject->removeDefenders();
 	}
 };
 
