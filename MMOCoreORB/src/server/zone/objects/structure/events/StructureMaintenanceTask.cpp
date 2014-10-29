@@ -71,7 +71,7 @@ void StructureMaintenanceTask::run() {
 	Locker _lock(strongRef, owner);
 
 	//Check if owner got money in the bank and structure not decaying.
-	if (owner->getBankCredits() >= oneWeekMaintenance && !strongRef->isDecaying()) {
+	if (owner->getBankCredits() >= oneWeekMaintenance) {
 		//Withdraw 1 week maintenance from owner bank account and add to the structure
 		//maintenance pool.
 		strongRef->payMaintenance(oneWeekMaintenance, owner, false);
