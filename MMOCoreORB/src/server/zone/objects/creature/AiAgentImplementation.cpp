@@ -2747,6 +2747,8 @@ void AiAgentImplementation::restoreFollowObject() {
 		setOblivious();
 	else if (getCloseObjects() != NULL && !getCloseObjects()->contains(obj.get()))
 		setOblivious();
+	else if (obj->isCreatureObject() && cast<CreatureObject*>(obj.get())->isInvisible())
+		setOblivious();
 	else
 		setFollowObject(obj);
 }
