@@ -102,6 +102,7 @@
 #include "server/zone/objects/tangible/components/ArmorObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/PlaceableLootContainerComponent.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleToolContainerComponent.h"
+#include "server/zone/objects/tangible/tool/antidecay/AntiDecayKitContainerComponent.h"
 #include "server/zone/objects/structure/components/DecorationDataComponent.h"
 #include "server/zone/objects/tangible/components/CityDecorationMenuComponent.h"
 #include "server/zone/objects/tangible/components/DungeonTicketObjectAttributeListComponent.h"
@@ -120,6 +121,7 @@ ComponentManager::ComponentManager() {
 	components.put("PlayerContainerComponent", new PlayerContainerComponent());
 	components.put("LootContainerComponent", new LootContainerComponent());
 	components.put("RecycleToolContainerComponent", new RecycleToolContainerComponent());
+	components.put("AntiDecayKitContainerComponent", new AntiDecayKitContainerComponent());
 
 	components.put("ZoneComponent", new ZoneComponent());
 	components.put("PlayerZoneComponent", new PlayerZoneComponent());

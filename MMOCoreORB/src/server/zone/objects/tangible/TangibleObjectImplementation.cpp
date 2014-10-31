@@ -471,6 +471,10 @@ void TangibleObjectImplementation::setConditionDamage(float condDamage, bool not
 }
 
 int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
+	//Anti Decay Kit
+	if(hasAntiDecayKit() && (isWeaponObject() || isWearableObject()))
+		return 0;
+
 	float newConditionDamage = conditionDamage + damage;
 
 	if (!destroy && newConditionDamage >= maxCondition)
@@ -494,6 +498,10 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 }
 
 int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+	//Anti Decay Kit
+	if(hasAntiDecayKit() && (isWeaponObject() || isWearableObject()))
+		return 0;
+
 	float newConditionDamage = conditionDamage + damage;
 
 	if (!destroy && newConditionDamage >= maxCondition)
