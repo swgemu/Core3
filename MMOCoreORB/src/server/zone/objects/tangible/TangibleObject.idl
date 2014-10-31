@@ -108,6 +108,8 @@ class TangibleObject extends SceneObject {
 	@dereferenced
 	protected SortedVector<ActiveArea> activeAreas;
 
+	protected SceneObject antiDecayKitObject;
+
 	/**
 	 * TangibleObject constructor, used to initialized the object
 	 * @pre { templateData is a valid SharedTangibleObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
@@ -118,6 +120,8 @@ class TangibleObject extends SceneObject {
 		Logger.setLoggingName("TangibleObject");
 		
 		initializeMembers();
+
+		antiDecayKitObject = null;
 	}
 	
 	public void initializeMembers() {
@@ -724,6 +728,30 @@ class TangibleObject extends SceneObject {
 			}
 		}
 
+		return null;
+	}
+
+	public boolean hasAntiDecayKit() {
+		return antiDecayKitObject != null;
+	}
+	
+	public void applyAntiDecayKit(CreatureObject player, SceneObject adk) {
+		if(!hasAntiDecayKit()) {
+			antiDecayKitObject = adk;
+			
+			if(adk.getParent() != null)
+				adk.destroyObjectFromWorld(true);
+		
+			sendAttributeListTo(player);
+		}
+	}
+	
+	public SceneObject removeAntiDecayKit() {
+		if(hasAntiDecayKit()) {
+			SceneObject adk = antiDecayKitObject;
+			antiDecayKitObject = null;
+			return adk;
+		}
 		return null;
 	}
 }
