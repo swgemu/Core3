@@ -81,10 +81,16 @@ public:
 		float z = creature->getPositionZ();
 		uint64 parentID = creature->getParentID();
 
-		try {
-			UnicodeTokenizer tokenizer(arguments);
+		ManagedReference<CreatureObject*> targetCreature = NULL;
+		UnicodeTokenizer tokenizer(arguments);
 
-			tokenizer.getStringToken(targetName); //If the target wasn't passed in as the target parameter.
+		try {
+			tokenizer.getStringToken(targetName);
+		} catch (Exception& e) {
+			targetCreature = cast<CreatureObject*>(obj.get());
+		}
+
+		try {
 
 			if (tokenizer.hasMoreTokens()) {
 
@@ -111,21 +117,14 @@ public:
 				parentID = tokenizer.getLongToken();
 
 		} catch (Exception& e) {
-			creature->sendSystemMessage("SYNTAX: /teleportTarget <name> -- Bring target to you");
+			creature->sendSystemMessage("SYNTAX: /teleportTarget [<name>] -- Bring target to you");
 			creature->sendSystemMessage("SYNTAX: /teleportTarget [<name>] <x> <y> [<planet>] [<z> <parentID>]");
 			return INVALIDPARAMETERS;
 		}
 
-		ManagedReference<CreatureObject*> targetCreature = NULL;
-
 		if (!targetName.isEmpty()) {
 			ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 			targetCreature = playerManager->getPlayer(targetName);
-		} else {
-			if(obj == NULL)
-				return GENERALERROR;
-			if (obj->isCreatureObject())
-				targetCreature = cast<CreatureObject*>(obj.get());
 		}
 
 		if (targetCreature == NULL) {
