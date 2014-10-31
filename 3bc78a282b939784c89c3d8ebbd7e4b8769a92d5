@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_ba197924",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ServerDestroyObjectCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-31T21:18:59Z",
+      "side": 1,
+      "message": "This check isn\u0027t recursive. Use getCountableObjectsRecursive() to get the actual number of contained items and compare it to the container volume limit.",
+      "revId": "3bc78a282b939784c89c3d8ebbd7e4b8769a92d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_9a16bdf0",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/ContainerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-31T21:18:59Z",
+      "side": 1,
+      "message": "Do we need to put this same exemption into handleObjectMenuSelect below?",
+      "revId": "3bc78a282b939784c89c3d8ebbd7e4b8769a92d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_7ad30139",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-31T21:18:59Z",
+      "side": 1,
+      "message": "You should initialize this in the constructor.",
+      "revId": "3bc78a282b939784c89c3d8ebbd7e4b8769a92d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_5ad84553",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-31T21:18:59Z",
+      "side": 1,
+      "message": "Are the weapon and wearable check necessary? They seem redundant since only those types of object will ever have an anti-decay kit. Same thing below.",
+      "revId": "3bc78a282b939784c89c3d8ebbd7e4b8769a92d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_3add8943",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/antidecay/AntiDecayKitContainerComponent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-31T21:18:59Z",
+      "side": 1,
+      "message": "This is because when canAddObject() is called, it evaluates Container::canAddObject() which calls SceneObject::canAddObject() which calls canAddObject() from the container component. It\u0027s failing in Container before ever getting to the component.\n\nFor this kit, I don\u0027t see a need to have a container component at all. The only method you\u0027re doing anything in is canAddObject(). Just override it in your AntiDecayKit class and handle these checks there.",
+      "revId": "3bc78a282b939784c89c3d8ebbd7e4b8769a92d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_1ae2cd03",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/antidecay/AntiDecayKitContainerComponent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-31T21:18:59Z",
+      "side": 1,
+      "message": "The isTangibleObject check is redundant. All weapons and wearables are tangibleObjects",
+      "revId": "3bc78a282b939784c89c3d8ebbd7e4b8769a92d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_fae6d115",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/antidecay/AntiDecayKitContainerComponent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-31T21:18:59Z",
+      "side": 1,
+      "message": "Use getCountableObjectsRecursive() to ensure you\u0027re counting objects within containers.",
+      "revId": "3bc78a282b939784c89c3d8ebbd7e4b8769a92d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_dae31504",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/antidecay/AntiDecayKitImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-31T21:18:59Z",
+      "side": 1,
+      "message": "As I\u0027ve said elsewhere, you need to use a recursive check to get the correct number of inventory items.",
+      "revId": "3bc78a282b939784c89c3d8ebbd7e4b8769a92d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_baf059ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-10-31T21:18:59Z",
+      "side": 1,
+      "message": "Don\u0027t you need to have this attribute show on all wearables and not just armor? I imagine this is here to get it to show in the correct order. Leave it, but also add it to WearableObject with an !isArmorObject() check.",
+      "revId": "3bc78a282b939784c89c3d8ebbd7e4b8769a92d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
