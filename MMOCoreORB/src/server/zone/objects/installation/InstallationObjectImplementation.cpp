@@ -682,7 +682,14 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object) {
 		return false;
 	}
 
-	if(object->isPlayerCreature()) {
+	if (object->isPet()) {
+		ManagedReference<CreatureObject*> owner = object->getLinkedCreature().get();
+
+		if (owner == NULL)
+			return false;
+
+		return isAttackableBy(owner);
+	} else if(object->isPlayerCreature()) {
 		ManagedReference<PlayerObject*> ghost = object->getPlayerObject();
 		if(ghost == NULL) {
 			return false;
