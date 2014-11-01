@@ -33,6 +33,12 @@ void WearableObjectImplementation::fillAttributeList(AttributeListMessage* alm,
 		if (value > 0)
 			alm->insertAttribute(statname, value);
 	}
+
+	//Anti Decay Kit
+	if(hasAntiDecayKit() && !isArmorObject()){
+		alm->insertAttribute("@veteran_new:antidecay_examine_title", "@veteran_new:antidecay_examine_text");
+	}
+
 }
 
 void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, bool initialUpdate) {

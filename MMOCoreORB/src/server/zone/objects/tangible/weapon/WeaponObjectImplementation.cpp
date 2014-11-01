@@ -336,6 +336,11 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 	alm->insertAttribute("cat_wpn_attack_cost.mind", getMindAttackCost());
 
+	//Anti Decay Kit
+	if(hasAntiDecayKit()){
+		alm->insertAttribute("@veteran_new:antidecay_examine_title", "@veteran_new:antidecay_examine_text");
+	}
+
 	// Force Cost
 	if (getForceCost() > 0)
 		alm->insertAttribute("forcecost", getForceCost());
@@ -706,7 +711,7 @@ String WeaponObjectImplementation::repairAttempt(int repairChance) {
 }
 
 void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
-	if (_this.get() == user->getSlottedObject("default_weapon") || user->isAiAgent()) {
+	if (_this.get() == user->getSlottedObject("default_weapon") || user->isAiAgent() || hasAntiDecayKit()) {
 		return;
 	}
 

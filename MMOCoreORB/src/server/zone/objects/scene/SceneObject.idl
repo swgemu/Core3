@@ -1652,6 +1652,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return gameObjectType == SceneObjectType.RECYCLETOOL;
 	}
 	
+	@dirty
+	public abstract boolean isAntiDecayKitObject() {
+		return gameObjectType == SceneObjectType.ANTIDECAYKIT;
+	}
+	
 	@local
 	public ContainerPermissions getContainerPermissions() {
 		return containerPermissions;

@@ -783,6 +783,10 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 
 	SortedVector<ManagedReference<SceneObject*> > locations = zone->getPlanetaryObjectList("cloningfacility");
 	ManagedReference<SceneObject*> closestCloning = zone->getNearestPlanetaryObject(player, "cloningfacility");
+	if(closestCloning == NULL){
+		warning("nearest cloning facility for player is NULL");
+		return;
+	}
 	String closestName = "None";
 	ManagedReference<CityRegion*> cr = closestCloning->getCityRegion();
 	unsigned long long playerID = player->getObjectID();
@@ -2781,7 +2785,10 @@ void PlayerManagerImplementation::addInsurableItemsRecursive(SceneObject* obj, S
 
 		TangibleObject* item = cast<TangibleObject*>( object);
 
-		if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
+		if(item == NULL || item->hasAntiDecayKit())
+			continue;
+
+		if (!(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
 			items->put(item);
 		} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
 			items->put(item);
@@ -2812,7 +2819,10 @@ SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getIn
 		if (container->isTangibleObject()) {
 			TangibleObject* item = cast<TangibleObject*>( container);
 
-			if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
+			if(item == NULL || item->hasAntiDecayKit())
+				continue;
+
+			if (!(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
 				insurableItems.put(item);
 			} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
 				insurableItems.put(item);
