@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_ba75f933",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/antidecay/AntiDecayKitImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-01T16:12:36Z",
+      "side": 1,
+      "message": "Are there no client strings for these items? Also, I don\u0027t think those are appropriate radial ids to use.",
+      "revId": "68572202fcba289a365edfeb19a82ba9fd744bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_9a723d48",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/antidecay/AntiDecayKitImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-01T16:12:36Z",
+      "side": 1,
+      "message": "Can you include the text of this string in a comment like you\u0027ve done with the others?",
+      "revId": "68572202fcba289a365edfeb19a82ba9fd744bde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
