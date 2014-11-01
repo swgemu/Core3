@@ -77,6 +77,8 @@ class PetControlDevice extends ControlDevice {
 	
 	// Last command issued
 	protected unsigned int lastCommand;
+	@weakReference
+	protected SceneObject lastCommandTarget;
 
 	// The most recent name used in command training
 	protected string futureName;
@@ -104,6 +106,7 @@ class PetControlDevice extends ControlDevice {
 		petType = 0;
 		trainingCommand = 0;
 		lastCommand = 0;
+		lastCommandTarget = null;
 		namingProgress = 0;
 		futureName = "";
 		growthStage = 0;
@@ -261,6 +264,18 @@ class PetControlDevice extends ControlDevice {
 	@read
 	public unsigned int getLastCommand() {
 		return lastCommand;
+	}
+
+	@local
+	public void setLastCommandTarget(SceneObject target) {
+		lastCommandTarget = target;
+	}
+	
+	@dirty
+	@local
+	@weakReference
+	public SceneObject getLastCommandTarget() {
+		return lastCommandTarget;
 	}
 
 	@read

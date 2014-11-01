@@ -2494,8 +2494,14 @@ void AiAgentImplementation::setupBehaviorTree() {
 }
 
 void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate* selectAttack, AiTemplate* combatMove, AiTemplate* idle) {
-	CompositeBehavior* rootSelector = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), "Composite", AiMap::SELECTORBEHAVIOR));
-	CompositeBehavior* attackSequence = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), "Composite", AiMap::SEQUENCEBEHAVIOR));
+	String name = "CompositeDefault";
+	if (creatureBitmask & CreatureFlag::PET)
+		name = "CompositePet";
+	else if (creatureBitmask & CreatureFlag::PACK)
+		name = "CompositePack";
+
+	CompositeBehavior* rootSelector = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), name, AiMap::SELECTORBEHAVIOR));
+	CompositeBehavior* attackSequence = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), name, AiMap::SEQUENCEBEHAVIOR));
 	rootSelector->setID(String("root").hashCode());
 	attackSequence->setID(String("attackSequence").hashCode());
 

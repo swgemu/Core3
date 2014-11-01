@@ -118,6 +118,7 @@ namespace creature {
 		int getSocialGroup(lua_State* L);
 		int getOwner(lua_State* L);
 		int getLastCommand(lua_State* L);
+		int getLastCommandTarget(lua_State* L);
 		int setAlertDuration(lua_State* L);
 		int alertedTimeIsPast(lua_State* L);
 		int setLevel(lua_State* L);

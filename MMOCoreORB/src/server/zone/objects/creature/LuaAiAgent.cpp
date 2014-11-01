@@ -120,6 +120,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getSocialGroup", &LuaAiAgent::getSocialGroup },
 		{ "getOwner", &LuaAiAgent::getOwner },
 		{ "getLastCommand", &LuaAiAgent::getLastCommand },
+		{ "getLastCommandTarget", &LuaAiAgent::getLastCommandTarget },
 		{ "setAlertDuration", &LuaAiAgent::setAlertDuration },
 		{ "alertedTimeIsPast", &LuaAiAgent::alertedTimeIsPast },
 		{ "setLevel", &LuaAiAgent::setLevel },
@@ -817,6 +818,21 @@ int LuaAiAgent::getLastCommand(lua_State* L) {
 		lua_pushinteger(L, 0);
 	else
 		lua_pushinteger(L, controlDevice->getLastCommand());
+
+	return 1;
+}
+
+int LuaAiAgent::getLastCommandTarget(lua_State* L) {
+	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().castTo<PetControlDevice*>();
+	if (controlDevice == NULL)
+		lua_pushnil(L);
+
+	SceneObject* target = controlDevice->getLastCommandTarget().get();
+
+	if (target == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, target);
 
 	return 1;
 }

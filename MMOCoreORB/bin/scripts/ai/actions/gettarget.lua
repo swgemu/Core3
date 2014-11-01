@@ -90,7 +90,20 @@ function GetTargetPet:doAction(pAgent)
 		if (command ~= PET_ATTACK and command ~= PET_GUARD) then
 			return BEHAVIOR_FAILURE	
 		end
-	
+
+		if (command == PET_ATTACK) then
+			local pTarget = agent:getLastCommandTarget()
+			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+				agent:setFollowObject(pTarget)
+				agent:setDefender(pTarget)
+				if (agent:validateTarget()) then
+					return BEHAVIOR_SUCCESS
+				end
+			elseif pTarget ~= nil and agent:validateTarget() then
+				return BEHAVIOR_SUCCESS
+			end
+		end
+
 		local creature = CreatureObject(pAgent)
 
 		local pTarget = agent:getTargetFromMap()

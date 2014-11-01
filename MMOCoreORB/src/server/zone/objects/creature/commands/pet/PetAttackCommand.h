@@ -54,6 +54,7 @@ public:
 		combatManager->startCombat(pet, targetTano);
 
 		controlDevice->setLastCommand(PetManager::ATTACK);
+		controlDevice->setLastCommandTarget(targetTano);
 
 		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
 
