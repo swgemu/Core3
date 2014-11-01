@@ -112,8 +112,39 @@ public:
 			}
 		}
 
-		if (object->isASubChildOf(creature))
+		if (object->isASubChildOf(creature)){
+
+			if(object->isTangibleObject()){
+				ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object.get());
+
+				if(tano->hasAntiDecayKit()){
+					ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+					if(inventory == NULL){
+						creature->sendSystemMessage("@veteran_new:failed_kit_create"); // "This item has Anti Decay applied to it but there was a failure to recreate the Anti Decay Kit."
+						return GENERALERROR;
+					}
+
+					if(inventory->getContainerVolumeLimit() < (inventory->getCountableObjectsRecursive() + 1)){
+						creature->sendSystemMessage("@veteran_new:inventory_full"); // The item can not be deleted because it has Anti Decay applied to it but you do not have room in your inventory to retrieve the Anti Decay Kit that will be created after destroying this item.
+						return GENERALERROR;
+					}
+
+					ManagedReference<SceneObject*> adk = tano->removeAntiDecayKit();
+
+					if(adk == NULL){
+						creature->sendSystemMessage("@veteran_new:failed_kit_create"); // "This item has Anti Decay applied to it but there was a failure to recreate the Anti Decay Kit."
+						return GENERALERROR;
+					}
+
+					inventory->transferObject(adk, -1, false);
+					adk->sendTo(creature, true);
+					creature->sendSystemMessage("@veteran_new:kit_created"); // "This item had Anti Decay applied to it. A new Anti Decay Kit has been placed in your inventory."
+				}
+			}
+
 			destroyObject(object, creature);
+		}
 
 		return SUCCESS;
 	}
