@@ -1724,12 +1724,12 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 
 	// TODO: this needs to be fixed.
 	if (attacker->isCreature() && animationCRC == 0) {
-		if (attacker->getGameObjectType() == SceneObjectType::DROIDCREATURE || attacker->getGameObjectType() == SceneObjectType::PROBOTCREATURE) {
+		if (attacker->getGameObjectType() == SceneObjectType::DROIDCREATURE || attacker->getGameObjectType() == SceneObjectType::PROBOTCREATURE)
 			animationCRC = String("droid_attack_light").hashCode();
-		} else {
+		else if (weapon->isRangedWeapon())
+			animationCRC = String("creature_attack_ranged_light").hashCode();
+		else
 			animationCRC = String("creature_attack_light").hashCode();
-		}
-
 	}
 
 	if (defenderObject->isCreatureObject())
