@@ -1,0 +1,35 @@
+
+package server.zone.objects.tangible.tool.antidecay;
+
+import engine.log.Logger;
+import engine.core.ManagedReference;
+import system.lang.ref.Reference;
+import server.zone.objects.tangible.tool.ToolTangibleObject;
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.Container;
+import server.zone.objects.creature.CreatureObject;
+import engine.lua.LuaObject;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.Zone;
+
+
+class AntiDecayKit extends Container {
+
+	public AntiDecayKit() {
+		Logger.setLoggingName("AntiDecayKit");
+	}
+	
+	public native void initializeTransientMembers();
+	
+	@local
+	@dirty
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+	
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
+
+	public native void doApplyAntiDecay(CreatureObject player);
+
+	public native void doRetrieveItem(CreatureObject player);
+}
