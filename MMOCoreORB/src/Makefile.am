@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/tangible/deed/eventperk/EventPerkDeed.cpp \
+core3_IDLS =	autogen/server/zone/objects/tangible/tool/antidecay/AntiDecayKit.cpp \
+				autogen/server/zone/objects/tangible/deed/eventperk/EventPerkDeed.cpp \
 				autogen/server/zone/managers/director/QuestStatus.cpp \
 				autogen/server/zone/objects/tangible/LairObject.cpp \
 				autogen/server/zone/managers/creature/DynamicSpawnObserver.cpp \
@@ -606,6 +607,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnifeImplementation.cpp \
 		server/zone/objects/tangible/tool/recycle/RecycleToolImplementation.cpp \
 		server/zone/objects/tangible/tool/repair/RepairToolImplementation.cpp \
+		server/zone/objects/tangible/tool/antidecay/AntiDecayKitImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/guild/GuildObjectImplementation.cpp \
 		server/zone/objects/creature/CreatureObjectImplementation.cpp \

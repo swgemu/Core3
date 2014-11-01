@@ -42,7 +42,7 @@
 
 
 object_tangible_veteran_reward_antidecay = object_tangible_veteran_reward_shared_antidecay:new {
-
+	gameObjectType = 32781
 }
 
 ObjectTemplates:addTemplate(object_tangible_veteran_reward_antidecay, "object/tangible/veteran_reward/antidecay.iff")
