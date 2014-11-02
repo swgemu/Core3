@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_1aec0dc7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/antidecay/AntiDecayKitImplementation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-02T02:08:54Z",
+      "side": 1,
+      "message": "Remove this. You don\u0027t use it..",
+      "revId": "d618ca3ae7ca148df3554a1412066a62191f0b65",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
