@@ -1109,8 +1109,6 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 }
 
 void PlayerObjectImplementation::removeAllFriends() {
-	Locker locker(_this.get());
-
 	ManagedReference<CreatureObject*> strongParent = getParent().get().castTo<CreatureObject*>();
 
 	if (strongParent == NULL) {
@@ -1146,19 +1144,28 @@ void PlayerObjectImplementation::removeAllFriends() {
 
 		ManagedReference<CreatureObject*> playerToRemove = zoneServer->getObject(objID).castTo<CreatureObject*>();
 
-		if (playerToRemove != NULL) {
-			PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
+		if (playerToRemove != NULL && playerToRemove->isPlayerCreature()) {
+			class RemoveFriendTask : public Task {
+				ManagedReference<CreatureObject*> player;
+				String name;
 
-			if (playerToRemoveGhost != NULL) {
-				Locker clocker(playerToRemoveGhost, _this.get());
+			public:
+				RemoveFriendTask(CreatureObject* play, String nam) : player(play), name(nam) {}
 
-				playerToRemoveGhost->removeFriend(playerName, false);
-			} else {
-				removeReverseFriend(name);
-			}
-		} else {
-			removeReverseFriend(name);
+				void run() {
+					Locker locker(player);
+					PlayerObject* ghost = player->getPlayerObject();
+					if (ghost != NULL) {
+						ghost->removeFriend(name, false);
+					}
+				}
+			};
+
+			RemoveFriendTask* task = new RemoveFriendTask(playerToRemove.get(), playerName);
+			task->execute();
 		}
+
+		removeReverseFriend(name);
 	}
 }
 
