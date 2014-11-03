@@ -1152,7 +1152,7 @@ void PlayerObjectImplementation::removeAllFriends() {
 			if (playerToRemoveGhost != NULL) {
 				Locker clocker(playerToRemoveGhost, _this.get());
 
-				playerToRemoveGhost->removeFriend(playerName);
+				playerToRemoveGhost->removeFriend(playerName, false);
 			} else {
 				removeReverseFriend(name);
 			}
