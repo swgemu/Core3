@@ -1109,13 +1109,13 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 }
 
 void PlayerObjectImplementation::removeAllFriends() {
+	Locker locker(_this.get());
+
 	ManagedReference<CreatureObject*> strongParent = getParent().get().castTo<CreatureObject*>();
 
 	if (strongParent == NULL) {
 		return;
 	}
-
-	Locker locker(strongParent);
 
 	String playerName = strongParent->getFirstName();
 	PlayerManager* playerManager = server->getPlayerManager();
@@ -1131,8 +1131,6 @@ void PlayerObjectImplementation::removeAllFriends() {
 			PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
 
 			if (playerToRemoveGhost != NULL) {
-				Locker clocker(playerToRemove, strongParent);
-
 				playerToRemoveGhost->removeReverseFriend(playerName);
 				playerToRemoveGhost->updateToDatabase();
 			}
@@ -1152,7 +1150,7 @@ void PlayerObjectImplementation::removeAllFriends() {
 			PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
 
 			if (playerToRemoveGhost != NULL) {
-				Locker clocker(playerToRemove, strongParent);
+				Locker clocker(playerToRemoveGhost, _this.get());
 
 				playerToRemoveGhost->removeFriend(playerName);
 			} else {
@@ -2039,14 +2037,13 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 	if (isMarried()) {
 		PlayerManager* playerManager = server->getPlayerManager();
 		ManagedReference<CreatureObject*> spouse = playerManager->getPlayer(spouseName);
-		ManagedReference<CreatureObject*> strongParent = getParent().get().castTo<CreatureObject*>();
 
-		if (spouse != NULL && strongParent != NULL) {
+		if (spouse != NULL) {
 			PlayerObject* spouseGhost = spouse->getPlayerObject();
 
 			if (spouseGhost != NULL) {
-				Locker locker(strongParent);
-				Locker clocker(spouse, strongParent);
+				Locker locker(_this.get());
+				Locker clocker(spouseGhost, _this.get());
 
 				spouseGhost->removeSpouse();
 			}
