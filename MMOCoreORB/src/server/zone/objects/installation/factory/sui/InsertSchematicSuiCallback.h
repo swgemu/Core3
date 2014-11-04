@@ -50,7 +50,9 @@ public:
 		Locker clocker(factory, player);
 
 		ManagedReference<ManufactureSchematic*> schematic = server->getObject(listBox->getMenuObjectID(index)).castTo<ManufactureSchematic*>();
-		factory->handleInsertFactorySchem(player, schematic);
+
+		if(schematic->isASubChildOf(player))
+			factory->handleInsertFactorySchem(player, schematic);
 	}
 
 	void handleInsertFactorySchem3(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
