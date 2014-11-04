@@ -291,7 +291,7 @@ void FactoryObjectImplementation::closeHopper(Observable* observable, ManagedObj
 void FactoryObjectImplementation::handleInsertFactorySchem(
 		CreatureObject* player, ManufactureSchematic* schematic) {
 
-	if (schematic == NULL)
+	if (schematic == NULL || !schematic->isASubChildOf(player))
 		return;
 
 	/// pre: player and _this.get() are locked
