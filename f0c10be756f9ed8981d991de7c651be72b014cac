@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_fa53716a",
+        "filename": "MMOCoreORB/src/server/zone/objects/installation/factory/sui/InsertSchematicSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-04T20:00:20Z",
+      "side": 1,
+      "message": "I would move the isASubChildOf check into handleInsertFactorySchem.",
+      "revId": "f0c10be756f9ed8981d991de7c651be72b014cac",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
