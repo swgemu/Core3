@@ -115,23 +115,34 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	--if not scno:isAiAgent() then agent:info("1b") end
 	if ObjectManager.withCreatureObject(pObject, function(creo) return creo:isDead() or creo:isIncapacitated() end) then return end
 	--if not scno:isAiAgent() then agent:info("1c") end
-	if not agent:checkLineOfSight(pObject) then return end
+
+	if agent:isInCombat() then return end
 	--if not scno:isAiAgent() then agent:info("1d") end
+
+	if not agent:checkLineOfSight(pObject) then return end
+	--if not scno:isAiAgent() then agent:info("1e") end
 	
 	if agent:isCamouflaged(pObject) then return end
-	--if not scno:isAiAgent() then agent:info("1e") end
+	--if not scno:isAiAgent() then agent:info("1f") end
 	
 	-- TODO (dannuic): tweak these formulae based on feedback
 	local effectiveLevel = ObjectManager.withCreatureObject(pAgent, function(creo) return creo:getLevel() end)
-	if scno:isPlayerCreature() then effectiveLevel = effectiveLevel * (1 + agent:getFerocity() / 4) end
+	if scno:isPlayerCreature() then
+		effectiveLevel = effectiveLevel * (1 + agent:getFerocity() / 4)
+		local faction = agent:getPvPFaction()
+		if faction == "rebel" or faction == "imperial" then
+			effectiveLevel = effectiveLevel * 2.5
+		elseif faction ~= "" and faction ~= nil then
+			local standing = ObjectManager.withCreaturePlayerObject(pObject, function(ghost) return ghost:getFactionStanding(faction) end)
+			effectiveLevel = effectiveLevel * (1 + (standing / -5000))
+		end
+	end
+
 	local radius = 32 - target:getLevel() + effectiveLevel
 	if not scno:isPlayerCreature() then radius = radius * agent:getFerocity() end
-	if radius < 0 then radius = 0 end
+	if radius < 10 then radius = 10 end
 	if radius > 64 then radius = 64 end
 	local inRange = scno:isInRangeWithObject(pAgent, radius)
-
-	if agent:isInCombat() then return end
-	--if not scno:isAiAgent() then agent:info("1") end
 	
 	local pFollow = agent:getFollowObject();
 	
