@@ -1,6 +1,6 @@
 stationary = {
-	{"root", "Composite", "none", SELECTORBEHAVIOR},
-	{"attack", "Composite", "root", SEQUENCEBEHAVIOR},
+	{"root", "CompositeDefault", "none", SELECTORBEHAVIOR},
+	{"attack", "CompositeDefault", "root", SEQUENCEBEHAVIOR},
 	{"idle", "CompositeDefault", "root", SEQUENCEBEHAVIOR},
 	{"idle0", "MoveDefault", "root", BEHAVIOR},
 	{"idle1", "WaitDefault", "root", BEHAVIOR},
