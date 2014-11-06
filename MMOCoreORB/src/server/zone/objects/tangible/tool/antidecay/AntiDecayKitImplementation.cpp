@@ -62,9 +62,12 @@ void AntiDecayKitImplementation::doApplyAntiDecay(CreatureObject* player)
 		return;
 	}
 
+	if(!tano->isBroken())
+		tano->setConditionDamage(0);
+
 	tano->applyAntiDecayKit(player, _this.get());
 
-	inventory->transferObject(tano, -1, false);
+	inventory->transferObject(tano, -1, false, true);
 	tano->sendTo(player, true);
 
 	player->sendSystemMessage("@veteran_new:successfully_used_anti_decay_kit"); // You have successfully used the Anti Decay Kit. The item you used this Anti Decay Kit on will no longer require insurance nor will decay from use.

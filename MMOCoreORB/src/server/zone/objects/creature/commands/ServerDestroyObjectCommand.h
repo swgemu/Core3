@@ -137,7 +137,7 @@ public:
 						return GENERALERROR;
 					}
 
-					inventory->transferObject(adk, -1, false);
+					inventory->transferObject(adk, -1, false, true);
 					adk->sendTo(creature, true);
 					creature->sendSystemMessage("@veteran_new:kit_created"); // "This item had Anti Decay applied to it. A new Anti Decay Kit has been placed in your inventory."
 				}
