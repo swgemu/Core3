@@ -378,32 +378,8 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, boo
 }
 
 void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result, const SortedVector<ManagedReference<QuadTreeEntry*> >& inRangeObjects) {
-	PlanetManager* planetManager = zone->getPlanetManager();
-
-	if (planetManager == NULL)
-		return;
-
-	float height = 0;
-
-	TerrainManager* terrainManager = planetManager->getTerrainManager();
-
-	//need to include exclude affectors in the terrain calcs
-	height = terrainManager->getHeight(x, y);
-
 	Vector3 rayStart(x, 16384.f, y);
 	Vector3 rayEnd(x, -16384.f, y);
-
-	Triangle* triangle = NULL;
-
-	if (testWater) {
-		float waterHeight;
-
-		if (terrainManager->getWaterHeight(x, y, waterHeight))
-			if (waterHeight > height)
-				height = waterHeight;
-	}
-
-	float intersectionDistance;
 
 	for (int i = 0; i < inRangeObjects.size(); ++i) {
 		SceneObject* sceno = dynamic_cast<SceneObject*>(inRangeObjects.get(i).get());
