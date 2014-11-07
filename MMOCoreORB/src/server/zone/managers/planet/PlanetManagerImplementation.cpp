@@ -893,7 +893,7 @@ float PlanetManagerImplementation::findClosestWorldFloor(float x, float y, float
 
     if (intersections == NULL) {
     	ref = intersections = new IntersectionResults();
-    	CollisionManager::getWorldFloorCollisions(x, y, zone, true, intersections, closeObjects);
+    	CollisionManager::getWorldFloorCollisions(x, y, zone, intersections, closeObjects);
     }
 
 	float terrainHeight = zone->getHeight(x, y);

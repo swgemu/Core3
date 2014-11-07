@@ -97,7 +97,7 @@ public:
 			Zone* zone = object1->getZone();
 			if (zone != NULL) {
 				IntersectionResults intersections;
-				CollisionManager::getWorldFloorCollisions(newPosition->getX(), newPosition->getY(), zone, true, &intersections, (CloseObjectsVector*) object1->getCloseObjects());
+				CollisionManager::getWorldFloorCollisions(newPosition->getX(), newPosition->getY(), zone, &intersections, (CloseObjectsVector*) object1->getCloseObjects());
 				newPosition->setZ(zone->getPlanetManager()->findClosestWorldFloor(newPosition->getX(), newPosition->getY(), object1->getWorldPositionZ(), 0, &intersections, (CloseObjectsVector*) object1->getCloseObjects()));
 			}
 

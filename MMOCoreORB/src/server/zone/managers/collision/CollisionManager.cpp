@@ -364,7 +364,7 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 	return height;
 }
 
-void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector) {
+void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector) {
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
 	if (closeObjectsVector != NULL) {
@@ -374,10 +374,10 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, boo
 		zone->getInRangeObjects(x, y, 128, &closeObjects, true);
 	}
 
-	getWorldFloorCollisions(x, y, zone, testWater, result, closeObjects);
+	getWorldFloorCollisions(x, y, zone, result, closeObjects);
 }
 
-void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result, const SortedVector<ManagedReference<QuadTreeEntry*> >& inRangeObjects) {
+void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, const SortedVector<ManagedReference<QuadTreeEntry*> >& inRangeObjects) {
 	Vector3 rayStart(x, 16384.f, y);
 	Vector3 rayEnd(x, -16384.f, y);
 
