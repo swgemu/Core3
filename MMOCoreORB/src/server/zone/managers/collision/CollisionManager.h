@@ -64,9 +64,9 @@ public:
 	static float getRayOriginPoint(CreatureObject* creature);
 
 	static float getWorldFloorCollision(float x, float y, Zone* zone, bool testWater);
-	static void getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector = NULL);
+	static void getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector = NULL);
 
-	static void getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result, const SortedVector<ManagedReference<QuadTreeEntry*> >& inRangeObjects);
+	static void getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, const SortedVector<ManagedReference<QuadTreeEntry*> >& inRangeObjects);
 	static Vector<float>* getCellFloorCollision(float x, float y, CellObject* cellObject);
 
 	//static bool

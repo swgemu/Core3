@@ -218,7 +218,7 @@ public:
 
 		IntersectionResults intersections;
 
-		CollisionManager::getWorldFloorCollisions(positionX, positionY, object->getZone(), true, &intersections, (CloseObjectsVector*) object->getCloseObjects());
+		CollisionManager::getWorldFloorCollisions(positionX, positionY, object->getZone(), &intersections, (CloseObjectsVector*) object->getCloseObjects());
 
 		float z = planetManager->findClosestWorldFloor(positionX, positionY, positionZ, object->getSwimHeight(), &intersections, (CloseObjectsVector*) object->getCloseObjects());
 

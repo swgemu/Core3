@@ -1226,7 +1226,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			}
 
 			IntersectionResults intersections;
-			CollisionManager::getWorldFloorCollisions(targetPosition->getPositionX(), targetPosition->getPositionY(), zone, true, &intersections, *closeObjects);
+			CollisionManager::getWorldFloorCollisions(targetPosition->getPositionX(), targetPosition->getPositionY(), zone, &intersections, *closeObjects);
 			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), targetPosition->getPositionZ(), this->getSwimHeight(), &intersections, NULL));
 
 			targetMutex.lock();
@@ -1428,7 +1428,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 								}
 
 								IntersectionResults intersections;
-								CollisionManager::getWorldFloorCollisions(newPositionX, newPositionY, zone, true, &intersections, *closeObjects);
+								CollisionManager::getWorldFloorCollisions(newPositionX, newPositionY, zone, &intersections, *closeObjects);
 								newPositionZ = zone->getPlanetManager()->findClosestWorldFloor(newPositionX, newPositionY, targetPosition->getPositionZ(), this->getSwimHeight(), &intersections, NULL);
 
 								targetMutex.lock();
@@ -1614,7 +1614,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 			PlanetManager* planetManager = zone->getPlanetManager();
 			IntersectionResults intersections;
 
-			CollisionManager::getWorldFloorCollisions(newPoint.getPositionX(), newPoint.getPositionY(), zone, true, &intersections, closeObjects);
+			CollisionManager::getWorldFloorCollisions(newPoint.getPositionX(), newPoint.getPositionY(), zone, &intersections, closeObjects);
 
 			newPoint.setPositionZ(planetManager->findClosestWorldFloor(newPoint.getPositionX(), newPoint.getPositionY(), newPoint.getPositionZ(), this->getSwimHeight(), &intersections, (CloseObjectsVector*) this->getCloseObjects()));
 		}

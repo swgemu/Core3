@@ -2489,7 +2489,7 @@ void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, fl
 		if (intersections == NULL) {
 			ref = intersections = new IntersectionResults();
 
-			CollisionManager::getWorldFloorCollisions(player->getPositionX(), player->getPositionY(), zone, true, intersections, closeObjectsVector);
+			CollisionManager::getWorldFloorCollisions(player->getPositionX(), player->getPositionY(), zone, intersections, closeObjectsVector);
 		}
 
 		for (int i = 0; i < intersections->size(); i++) {
