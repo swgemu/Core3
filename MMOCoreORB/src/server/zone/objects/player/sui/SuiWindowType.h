@@ -256,6 +256,7 @@ public:
 	static const uint16 CONFIRM_FLASH_SPEEDER_PURCHASE = 1023;
 	static const uint16 COA_MESSAGE_FRAGMENT = 1024;
 	static const uint16 COA_MESSAGE = 1025;
+	static const uint16 DATA_STORAGE_UNIT_MESSAGE = 1026;
 };
 
 #endif /*SuiWindowType_H_*/
