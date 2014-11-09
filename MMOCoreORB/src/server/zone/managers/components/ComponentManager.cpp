@@ -37,6 +37,8 @@
 #include "server/zone/objects/tangible/components/TrapMenuComponent.h"
 #include "server/zone/objects/tangible/components/LairMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/DiceMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/DataStorageUnitMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/DataStorageUnitAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/TangibleObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/LootSchematicMenuComponent.h"
 #include "server/zone/objects/tangible/components/BountyHunterDroidMenuComponent.h"
@@ -84,6 +86,7 @@
 #include "server/zone/objects/region/components/CityVotingMenuComponent.h"
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/objects/tangible/components/generic/ShellfishHarvesterMenuComponent.h"
+#include "server/zone/objects/tangible/components/generic/DataStorageUnitDataComponent.h"
 #include "server/zone/objects/tangible/components/generic/DiceDataComponent.h"
 #include "server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.h"
 #include "server/zone/objects/tangible/components/WearableObjectMenuComponent.h"
@@ -204,6 +207,10 @@ ComponentManager::ComponentManager() {
 
 	components.put("DiceMenuComponent", new DiceMenuComponent());
 	dataObjectFactory.registerObject<DiceDataComponent>("DiceDataComponent");
+
+	components.put("DataStorageUnitMenuComponent", new DataStorageUnitMenuComponent());
+	components.put("DataStorageUnitAttributeListComponent", new DataStorageUnitAttributeListComponent());
+	dataObjectFactory.registerObject<DataStorageUnitDataComponent>("DataStorageUnitDataComponent");
 
 	dataObjectFactory.registerObject<TurretDataComponent>("TurretDataComponent");
 	dataObjectFactory.registerObject<MinefieldDataComponent>("MinefieldDataComponent");
