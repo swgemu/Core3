@@ -41,8 +41,9 @@
  */
 
 #ifndef BASEDROIDMODULECOMPONENT_H_
-#define BASEDROIDMODULEDCOMPONENT_H_
+#define BASEDROIDMODULECOMPONENT_H_
 
+#include "engine/engine.h"
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -57,8 +58,6 @@ namespace components {
 namespace droid {
 
 class BaseDroidModuleComponent : public DataObjectComponent, public Logger {
-protected:
-	int moduleType;
 public:
 	BaseDroidModuleComponent();
 	~BaseDroidModuleComponent();
@@ -88,6 +87,8 @@ public:
 	virtual bool actsAsCraftingStation();
 	// string rep of the module
 	virtual String toString();
+	virtual void onCall();
+	virtual void onStore();
 };
 
 } //droid
