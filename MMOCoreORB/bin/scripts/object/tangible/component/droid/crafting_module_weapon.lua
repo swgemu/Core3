@@ -44,6 +44,12 @@
 object_tangible_component_droid_crafting_module_weapon = object_tangible_component_droid_shared_crafting_module_weapon:new {
 
 
+	dataObjectComponent = "DroidCraftingModuleDataComponent",
+	templateType = DROIDCRAFTINGMODULE,
+	-- CraftingTool::WEAPON
+	craftingType = 7,
+	craftingStationTemplate = "object/tangible/crafting/station/weapon_station.iff",
+	attributeListString = "@obj_attr_n:crafting_station_weapon",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},

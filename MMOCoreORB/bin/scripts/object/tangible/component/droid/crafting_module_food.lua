@@ -43,7 +43,12 @@
 
 object_tangible_component_droid_crafting_module_food = object_tangible_component_droid_shared_crafting_module_food:new {
 
-
+	dataObjectComponent = "DroidCraftingModuleDataComponent",
+	templateType = DROIDCRAFTINGMODULE,
+	-- CraftingTool::FOOD
+	craftingType = 2,
+	craftingStationTemplate = "object/tangible/crafting/station/food_station.iff",
+	attributeListString = "@obj_attr_n:crafting_station_food",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},

@@ -64,9 +64,9 @@ public:
 	virtual String getModuleName();
 	void initializeTransientMembers();
 	// initialize the model based on the over all droid
-	virtual void initialize(DroidObject* droid);
+	virtual void initialize(CreatureObject* droid);
 	// attribultes to be added by module
-	virtual void fillAttrributeList(AttributeListMessage* msg, CreatureObject* droid);
+	virtual void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
 	// add some object response menus
 	virtual void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
 	// handle menu selections

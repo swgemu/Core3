@@ -44,6 +44,12 @@
 object_tangible_component_droid_crafting_module_structure = object_tangible_component_droid_shared_crafting_module_structure:new {
 
 
+	dataObjectComponent = "DroidCraftingModuleDataComponent",
+	templateType = DROIDCRAFTINGMODULE,
+	-- CraftingTool::STRUCTURE
+	craftingType = 6,
+	craftingStationTemplate = "object/tangible/crafting/station/structure_station.iff",
+	attributeListString = "@obj_attr_n:crafting_station_structure",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},

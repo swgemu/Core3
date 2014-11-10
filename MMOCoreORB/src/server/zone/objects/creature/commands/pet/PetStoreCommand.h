@@ -26,7 +26,6 @@ public:
 		if (player == NULL || !player->isPlayerCreature() ) {
 			return GENERALERROR;
 		}
-
 		Locker clocker(player, pet);
 
 		controlDevice->storeObject(player);

@@ -288,7 +288,9 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 		// Sanity check that there isn't another power task outstanding
 		droid->removePendingTask( "droid_power" );
-
+		droid->initDroidModules();
+		droid->loadSkillMods(player);
+		droid->onCall();
 		// Submit new power task
 		Reference<Task*> droidPowerTask = new DroidPowerTask( droid );
 		droid->addPendingTask("droid_power", droidPowerTask, 120000); // 2 min

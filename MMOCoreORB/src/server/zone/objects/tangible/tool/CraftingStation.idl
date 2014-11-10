@@ -128,4 +128,8 @@ class CraftingStation extends ToolTangibleObject {
 	public native SceneObject findCraftingTool(CreatureObject player);
 	
 	public native void createChildObjects();
+	
+	public void setEffectiveness(float newValue) {
+		effectiveness = newValue;
+	}
 }

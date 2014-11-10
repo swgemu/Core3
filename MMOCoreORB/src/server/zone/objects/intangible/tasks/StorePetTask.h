@@ -37,13 +37,21 @@ public:
 		pet->clearCombatState(true);
 		pet->setOblivious();
 		pet->storeFollowObject();
-		pet->destroyObjectFromWorld(true);
+		if (pet->isDroidObject()) {
+			DroidObject* droid = cast<DroidObject*>(pet.get());
+			if( droid != NULL ) {
+				droid->onStore();
+				droid->unloadSkillMods(player);
+			}
+		}
 
+		pet->destroyObjectFromWorld(true);
 		pet->setCreatureLink(NULL);
 
 		ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 		if( controlDevice != NULL )
 			controlDevice->updateStatus(0);
+
 
 		CreatureTemplate* creoTemp = pet->getCreatureTemplate();
 
