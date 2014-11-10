@@ -105,6 +105,9 @@ public:
 	virtual bool isEventPerkData() {
 		return false;
 	}
+	virtual bool isDroidModuleData() {
+		return false;
+	}
 };
 
 
