@@ -67,8 +67,8 @@ public:
 	~DroidCraftingModuleDataComponent();
 	String getModuleName();
 	void initializeTransientMembers();
-	void initialize(DroidObject* droid);
-	void fillAttrributeList(AttributeListMessage* msg, CreatureObject* droid);
+	void initialize(CreatureObject* droid);
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
 	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
 	void loadSkillMods(CreatureObject* player);
@@ -86,6 +86,7 @@ public:
 	bool isClothingArmor();
 	bool isStructureFurniture();
 	bool isShip();
+	bool validCraftingType(int type);
 	void onCall();
 	void onStore();
 };
