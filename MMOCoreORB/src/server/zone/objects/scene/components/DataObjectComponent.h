@@ -107,6 +107,9 @@ public:
 	}
 
 	virtual bool isDataStorageUnitData() {
+		return false
+	}
+	virtual bool isDroidModuleData() {
 		return false;
 	}
 };

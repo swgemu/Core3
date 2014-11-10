@@ -116,7 +116,7 @@
 #include "server/zone/objects/tangible/components/EventPerkDataComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkMenuComponent.h"
 #include "server/zone/objects/tangible/components/EventPerkAttributeListComponent.h"
-
+#include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -275,4 +275,6 @@ ComponentManager::ComponentManager() {
 	components.put("EventPerkDataComponent", new EventPerkDataComponent() );
 	components.put("EventPerkAttributeListComponent", new EventPerkAttributeListComponent() );
 	dataObjectFactory.registerObject<EventPerkDataComponent>("EventPerkDataComponent");
+	// Droid components
+	dataObjectFactory.registerObject<DroidCraftingModuleDataComponent>("DroidCraftingModuleDataComponent");
 }

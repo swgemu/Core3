@@ -185,7 +185,23 @@ public:
 	const static int DROIDCUSTOMKIT = 0x4000044;
 	const static int DROIDCOMPONENT = 0x4000045;
 	const static int EVENTPERKDEED = 0x4000046;
-
+	const static int DROIDMODULETRAP = 0x4000047;
+	const static int DROIDMODULEBARKER = 0x4000048;
+	const static int DROIDMODULEREPAIR = 0x4000049;
+	const static int DROIDMODULEHARVEST = 0x400004A;
+	const static int DROIDMODULEARMOR = 0x400004B;
+	const static int DROIDMODULESTORAGE = 0x400004C;
+	const static int DROIDMODULEDETONATION = 0x400004D;
+	const static int DROIDMODULECOMBAT = 0x400004E;
+	const static int DROIDMODULEAUTOREPAIR = 0x400004F;
+	const static int DROIDMODULEEFFECTS = 0x4000050;
+	const static int DROIDMODULEPLAYBACK = 0x4000051;
+	const static int DROIDMODULECRAFTING = 0x4000052;
+	const static int DROIDMODULEDATA = 0x4000053;
+	const static int DROIDMODULEMEDICAL = 0x4000054;
+	const static int DROIDMODULESTIMPACK = 0x4000055;
+	const static int DROIDMODULESTRUCTURE = 0x4000056;
+	const static int DROIDMODULEPERSONALITY = 0x4000057;
 public:
 	SharedObjectTemplate();
 
