@@ -46,28 +46,22 @@ BaseDroidModuleComponent::BaseDroidModuleComponent() {
 	setLogging(false);
 }
 BaseDroidModuleComponent::~BaseDroidModuleComponent() {
-
 }
 String BaseDroidModuleComponent::getModuleName() {
-	return "base";
+	return String("base");
 }
 void BaseDroidModuleComponent::initializeTransientMembers() {
-
 }
 void BaseDroidModuleComponent::initialize(DroidObject* droid) {
-
 }
 void BaseDroidModuleComponent::fillAttrributeList(AttributeListMessage* msg, CreatureObject* droid) {
-
 }
 void BaseDroidModuleComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-
 }
 int BaseDroidModuleComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
 	return 0;
 }
 void BaseDroidModuleComponent::loadSkillMods(CreatureObject* player) {
-
 }
 void BaseDroidModuleComponent::unloadSkillMods(CreatureObject* player) {
 
@@ -92,3 +86,8 @@ String BaseDroidModuleComponent::toString() {
 	str << getModuleName() << "\n";
 	return str.toString();
 }
+void BaseDroidModuleComponent::onCall() {
+}
+void BaseDroidModuleComponent::onStore() {
+}
+
