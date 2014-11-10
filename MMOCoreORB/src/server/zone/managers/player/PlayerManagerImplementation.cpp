@@ -119,6 +119,7 @@
 #include "server/zone/managers/creature/PetManager.h"
 
 #include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"
+#include "server/zone/objects/creature/DroidObject.h"
 
 #include <iostream>
 
@@ -2929,6 +2930,21 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 					== CraftingTool::WEAPON)) {
 
 				return station;
+			} else if( scno->isDroidObject() && (abs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)){
+				// check the droids around
+				DroidObject* droid = cast<DroidObject*>(scno);
+				if (droid == NULL) {
+					continue;
+				}
+				// only the player can benefit form thier droid
+				if( droid->getLinkedCreature() != player ) {
+					continue;
+				}
+				// check the droid
+				station = droid->getCraftingStation(type);
+				if (station != NULL) {
+					return station;
+				}
 			}
 		}
 	}

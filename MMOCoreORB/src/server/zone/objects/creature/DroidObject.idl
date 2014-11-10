@@ -52,6 +52,8 @@ import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.AiAgent;
 import server.zone.objects.area.ActiveArea;
 import engine.util.u3d.Coordinate;
+import server.zone.objects.tangible.components.droid.BaseDroidModuleComponent;
+include server.zone.objects.tangible.tool.CraftingStation;
 
 class DroidObject extends AiAgent {
 	
@@ -74,6 +76,12 @@ class DroidObject extends AiAgent {
 	 * Maximum paint charges
 	 */
 	public static final int PAINTCHARGES = 999;
+
+	/**
+	 * List of installed droid modules
+	 */	
+	@dereferenced
+	protected Vector<BaseDroidModuleComponent> modules;       
 	
 	public DroidObject() {
 		Logger.setLoggingName("DroidObject");
@@ -185,5 +193,25 @@ class DroidObject extends AiAgent {
 	 */
 	@dirty
 	public native boolean isPowerDroid();	
+
+	/**
+	 * Initializes droid modules from crafted_components scenos
+	 */
+	@local
+	public native void initDroidModules();
 	
+	/**
+	 * Returns a crafting station of the given type if droid has the appropriate module. Returns NULL otherwise.
+	 */
+	@local
+	public native CraftingStation getCraftingStation(int type);	
+	
+	@local
+	public native void onStore();
+	@local
+	public native void onCall();
+	@local
+	public native void loadSkillMods(CreatureObject player);
+	@local
+	public native void unloadSkillMods(CreatureObject player);
 }
