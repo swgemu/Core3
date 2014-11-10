@@ -40,15 +40,12 @@
  * which carries forward this exception.
  */
 
-#ifndef BASEDROIDMODULECOMPONENT_H_
-#define BASEDROIDMODULECOMPONENT_H_
+#ifndef DROIDCRAFTINGMODULEDATACOMPONENT_H_
+#define DROIDCRAFTINGMODULEDATACOMPONENT_H_
 
-#include "engine/engine.h"
-#include "server/zone/objects/scene/components/DataObjectComponent.h"
-#include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/DroidObject.h"
-#include "server/zone/objects/intangible/PetControlDevice.h"
+#include "BaseDroidModuleComponent.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
+#include "engine/core/ManagedReference.h"
 
 namespace server {
 namespace zone {
@@ -57,46 +54,48 @@ namespace tangible {
 namespace components {
 namespace droid {
 
-class BaseDroidModuleComponent : public DataObjectComponent, public Logger {
+
+class DroidCraftingModuleDataComponent : public BaseDroidModuleComponent {
+
+protected:
+	int craftingType;
+	String attributeListString;
+	ManagedReference<CraftingStation*> craftingStation;
+
 public:
-	BaseDroidModuleComponent();
-	~BaseDroidModuleComponent();
-	virtual String getModuleName();
+	DroidCraftingModuleDataComponent();
+	~DroidCraftingModuleDataComponent();
+	String getModuleName();
 	void initializeTransientMembers();
-	// initialize the model based on the over all droid
-	virtual void initialize(DroidObject* droid);
-	// attribultes to be added by module
-	virtual void fillAttrributeList(AttributeListMessage* msg, CreatureObject* droid);
-	// add some object response menus
-	virtual void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
-	// handle menu selections
-	virtual int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
-	// add some skills to the player when active
-	virtual void loadSkillMods(CreatureObject* player);
-	// remove some skills mod when not active
-	virtual void unloadSkillMods(CreatureObject* player);
-	// check if skil mods of the module are based on range to the pet
-	virtual bool skillsByRange();
-	// Interface for Pet Manager to pass spacial commands to the droid for component processing
-	virtual void handlePetCommand(String cmd, CreatureObject* owner) ;
-	// get drain amount when this module is active
-	virtual int getBatteryDrain();
-	// toggle this module form active to inactive i.e. auto harvest modules, barkers etc..
-	virtual void toggleActive();
-	// does this module provide some kind of station effect
-	virtual bool actsAsCraftingStation();
-	// string rep of the module
-	virtual String toString();
-	virtual void onCall();
-	virtual void onStore();
-	virtual bool isDroidModuleData() { return true; }
+	void initialize(DroidObject* droid);
+	void fillAttrributeList(AttributeListMessage* msg, CreatureObject* droid);
+	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
+	void loadSkillMods(CreatureObject* player);
+	void unloadSkillMods(CreatureObject* player);
+	bool skillsByRange();
+	void handlePetCommand(String cmd, CreatureObject* owner) ;
+	int getBatteryDrain();
+	void toggleActive();
+	bool actsAsCraftingStation();
+	String toString();
+	// crafting droid module specific
+	CraftingStation* getCraftingStation();
+	bool isWeaponDroidGeneric();
+	bool isFoodChemical();
+	bool isClothingArmor();
+	bool isStructureFurniture();
+	bool isShip();
+	void onCall();
+	void onStore();
 };
 
-} //droid
-} //components
-} //tangible
-} //objects
-} //zone
-} //server
+
+} // droid
+} // components
+} // tangible
+} // objects
+} // zone
+} // server
 using namespace server::zone::objects::tangible::components::droid;
-#endif /*BASEDROIDMODULECOMPONENT_H_*/
+#endif /* DROIDCRAFTINGMODULEDATACOMPONENT_H_ */
