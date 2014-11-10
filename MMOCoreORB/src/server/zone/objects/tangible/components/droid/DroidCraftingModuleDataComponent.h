@@ -39,55 +39,63 @@
  * this exception also makes it possible to release a modified version
  * which carries forward this exception.
  */
+
+#ifndef DROIDCRAFTINGMODULEDATACOMPONENT_H_
+#define DROIDCRAFTINGMODULEDATACOMPONENT_H_
+
 #include "BaseDroidModuleComponent.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
+#include "engine/core/ManagedReference.h"
 
-BaseDroidModuleComponent::BaseDroidModuleComponent() {
-	setLoggingName("DroidModuleDataComponent");
-	setLogging(false);
-}
-BaseDroidModuleComponent::~BaseDroidModuleComponent() {
-}
-String BaseDroidModuleComponent::getModuleName() {
-	return String("base");
-}
-void BaseDroidModuleComponent::initializeTransientMembers() {
-}
-void BaseDroidModuleComponent::initialize(DroidObject* droid) {
-}
-void BaseDroidModuleComponent::fillAttrributeList(AttributeListMessage* msg, CreatureObject* droid) {
-}
-void BaseDroidModuleComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-}
-int BaseDroidModuleComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
-	return 0;
-}
-void BaseDroidModuleComponent::loadSkillMods(CreatureObject* player) {
-}
-void BaseDroidModuleComponent::unloadSkillMods(CreatureObject* player) {
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace components {
+namespace droid {
 
-}
-bool BaseDroidModuleComponent::skillsByRange() {
-	return false;
-}
-void BaseDroidModuleComponent::handlePetCommand(String cmd, CreatureObject* owner){
 
-}
-int BaseDroidModuleComponent::getBatteryDrain() {
-	return 0;
-}
-void BaseDroidModuleComponent::toggleActive() {
+class DroidCraftingModuleDataComponent : public BaseDroidModuleComponent {
 
-}
-bool BaseDroidModuleComponent::actsAsCraftingStation() {
-	return false;
-}
-String BaseDroidModuleComponent::toString() {
-	StringBuffer str;
-	str << getModuleName() << "\n";
-	return str.toString();
-}
-void BaseDroidModuleComponent::onCall() {
-}
-void BaseDroidModuleComponent::onStore() {
-}
+protected:
+	int craftingType;
+	String attributeListString;
+	ManagedReference<CraftingStation*> craftingStation;
 
+public:
+	DroidCraftingModuleDataComponent();
+	~DroidCraftingModuleDataComponent();
+	String getModuleName();
+	void initializeTransientMembers();
+	void initialize(DroidObject* droid);
+	void fillAttrributeList(AttributeListMessage* msg, CreatureObject* droid);
+	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
+	void loadSkillMods(CreatureObject* player);
+	void unloadSkillMods(CreatureObject* player);
+	bool skillsByRange();
+	void handlePetCommand(String cmd, CreatureObject* owner) ;
+	int getBatteryDrain();
+	void toggleActive();
+	bool actsAsCraftingStation();
+	String toString();
+	// crafting droid module specific
+	CraftingStation* getCraftingStation();
+	bool isWeaponDroidGeneric();
+	bool isFoodChemical();
+	bool isClothingArmor();
+	bool isStructureFurniture();
+	bool isShip();
+	void onCall();
+	void onStore();
+};
+
+
+} // droid
+} // components
+} // tangible
+} // objects
+} // zone
+} // server
+using namespace server::zone::objects::tangible::components::droid;
+#endif /* DROIDCRAFTINGMODULEDATACOMPONENT_H_ */
