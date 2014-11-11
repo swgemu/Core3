@@ -83,7 +83,11 @@ function mission_target_conv_handler:handleScreenNotIt(pConversationTemplate, pC
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
-	clonedScreen:setDialogTextStringId(stfFile .. ":notit_" .. missionNumber)
+	if self.themePark:isValidConvoString(stfFile, ":notit_" .. missionNumber) then
+		clonedScreen:setDialogTextStringId(stfFile .. ":notit_" .. missionNumber)
+	else
+		clonedScreen:setDialogTextStringId(stfFile .. ":notit")
+	end
 
 	return pConversationScreen
 end
@@ -132,14 +136,18 @@ function mission_target_conv_handler:handleScreenOtherEscort(pConversationTempla
 	if (pConversingNpc == nil) then
 		return nil
 	end
-	
+
 	local ownerID = readData(CreatureObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
 	local npcNumber = self.themePark:getActiveNpcNumber(pOwner)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pOwner)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
-	clonedScreen:setDialogTextStringId(stfFile .. ":otherescort_" .. missionNumber)
+	if self.themePark:isValidConvoString(stfFile, ":otherescort_" .. missionNumber) then
+		clonedScreen:setDialogTextStringId(stfFile .. ":otherescort_" .. missionNumber)
+	else
+		clonedScreen:setDialogTextStringId(stfFile .. ":otherescort")
+	end
 
 	return pConversationScreen
 end
@@ -159,7 +167,11 @@ function mission_target_conv_handler:handleScreenDontKnowYou(pConversationTempla
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pOwner)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
-	clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou_" .. missionNumber)
+	if self.themePark:isValidConvoString(stfFile, ":dontknowyou_" .. missionNumber) then
+		clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou_" .. missionNumber)
+	else
+		clonedScreen:setDialogTextStringId(stfFile .. ":dontknowyou")
+	end
 
 	return pConversationScreen
 end
@@ -178,7 +190,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	end
 
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-	
+
 	local ownerID = readData(CreatureObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
 
