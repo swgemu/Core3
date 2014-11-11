@@ -12,7 +12,6 @@ junk = {
 		{itemTemplate = "broken_viewscreen_tan", weight = 300000},
 		{itemTemplate = "camera", weight = 300000},
 		{itemTemplate = "cargo_pocket", weight = 300000},
-		{itemTemplate = "corrupt_datadisk", weight = 300000},
 		{itemTemplate = "corsec_id_badge", weight = 300000},
 		{itemTemplate = "damaged_datapad", weight = 300000},
 		{itemTemplate = "decorative_bowl", weight = 300000},
@@ -37,7 +36,7 @@ junk = {
 		{itemTemplate = "used_ticket", weight = 300000},
 		{itemTemplate = "worklight", weight = 300000},
 		{groupTemplate = "coa_encoded_disk_fragments", weight = 80000},
-		{groupTemplate = "data_storage_unit_parts", weight = 620000},
+		{groupTemplate = "data_storage_unit_parts", weight = 920000},
 	}
 }
 
