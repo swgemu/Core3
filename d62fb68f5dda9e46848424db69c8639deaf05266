@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_ba05f915",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-11T10:27:15Z",
+      "side": 1,
+      "message": "Don\u0027t you want the persistence level to be 0?",
+      "revId": "d62fb68f5dda9e46848424db69c8639deaf05266",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
