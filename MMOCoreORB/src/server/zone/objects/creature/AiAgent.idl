@@ -628,7 +628,7 @@ class AiAgent extends CreatureObject {
 	public native void clearDespawnEvent();
 	
 	@dirty
-	public float getKinetic() {
+	public abstract float getKinetic() {
 		if (petDeed != null) {
 			return petDeed.getKinetic();
 		}
@@ -639,7 +639,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@dirty
-	public float getEnergy() {
+	public abstract float getEnergy() {
 		if (petDeed != null) {
 			return petDeed.getEnergy();
 		}
@@ -650,7 +650,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@dirty
-	public float getElectricity() {
+	public abstract float getElectricity() {
 		if (petDeed != null) {
 			return petDeed.getElectric();
 		}
@@ -662,7 +662,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@dirty
-	public float getStun() {
+	public abstract float getStun() {
 		if (petDeed != null) {
 			return petDeed.getStun();
 		}
@@ -674,7 +674,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@dirty
-	public float getBlast() {
+	public abstract float getBlast() {
 		if (petDeed != null) {
 			return petDeed.getBlast();
 		}
@@ -686,7 +686,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@dirty
-	public float getHeat() {
+	public abstract float getHeat() {
 		if (petDeed != null) {
 			return petDeed.getHeat();
 		}
@@ -698,7 +698,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@dirty
-	public float getCold() {
+	public abstract float getCold() {
 		if (petDeed != null) {
 			return petDeed.getCold();
 		}
@@ -710,7 +710,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@dirty
-	public float getAcid() {
+	public abstract float getAcid() {
 		if (petDeed != null) {
 			return petDeed.getAcid();
 		}
@@ -722,7 +722,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@dirty
-	public float getLightSaber() {
+	public abstract float getLightSaber() {
 		if (petDeed != null) {
 			return petDeed.getSaber();
 		}
@@ -758,7 +758,7 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@dirty
-	public unsigned int getArmor() {
+	public abstract unsigned int getArmor() {
 		if (petDeed != null) {
 			return petDeed.getArmor();
 		}

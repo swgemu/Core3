@@ -214,4 +214,58 @@ class DroidObject extends AiAgent {
 	public native void loadSkillMods(CreatureObject player);
 	@local
 	public native void unloadSkillMods(CreatureObject player);
+	
+	@local
+	protected native int getTotalArmorModuleLevel();
+	
+	@local
+	public native unsigned int getArmor();
+	
+	@local
+	public native float getResist();
+
+	@dirty
+	public float getKinetic(){
+		return getResist();
+	}
+	
+	@dirty
+	public float getEnergy(){
+		return getResist();
+	}
+	
+	@dirty
+	public float getElectricity() {
+		return getResist();
+	}
+	
+	@dirty
+	public float getStun() {
+		return getResist();
+	}
+	
+	@dirty
+	public float getBlast() {
+		return getResist();
+	}
+	
+	@dirty
+	public float getHeat() {
+		return getResist();
+	}
+	
+	@dirty
+	public float getCold() {
+		return getResist();
+	}
+	
+	@dirty
+	public float getAcid() {
+		return getResist();
+	}
+	
+	@dirty
+	public float getLightSaber() {
+		return -1; // Droids never have lightsaber resistance
+	}	
 }
