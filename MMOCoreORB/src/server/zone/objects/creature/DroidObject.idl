@@ -214,4 +214,109 @@ class DroidObject extends AiAgent {
 	public native void loadSkillMods(CreatureObject player);
 	@local
 	public native void unloadSkillMods(CreatureObject player);
+	
+	/**
+	 * Returns combined level of all installed armor modules
+	 */	
+	@local
+	protected native int getTotalArmorModuleLevel();
+		
+	/**
+	 * Determines damage resistance granted by installed armor modules.
+	 */		
+	@local
+	protected native float getResist();
+	
+	@local
+	public native unsigned int getArmor();
+
+	@dirty
+	public float getKinetic(){
+		if( isPet() ){
+			return getResist();
+		}
+		else{
+			super.getKinetic();
+		}
+	}
+	
+	@dirty
+	public float getEnergy(){
+		if( isPet() ){
+			return getResist();
+		}
+		else{
+			super.getEnergy();
+		}
+	}
+	
+	@dirty
+	public float getElectricity() {
+		if( isPet() ){
+			return getResist();
+		}
+		else{
+			super.getElectricity();
+		}
+	}
+	
+	@dirty
+	public float getStun() {
+		if( isPet() ){
+			return getResist();
+		}
+		else{
+			super.getStun();
+		}
+	}
+	
+	@dirty
+	public float getBlast() {
+		if( isPet() ){
+			return getResist();
+		}
+		else{
+			super.getBlast();
+		}
+	}
+	
+	@dirty
+	public float getHeat() {
+		if( isPet() ){
+			return getResist();
+		}
+		else{
+			super.getHeat();
+		}
+	}
+	
+	@dirty
+	public float getCold() {
+		if( isPet() ){
+			return getResist();
+		}
+		else{
+			super.getCold();
+		}
+	}
+	
+	@dirty
+	public float getAcid() {
+		if( isPet() ){
+			return getResist();
+		}
+		else{
+			super.getAcid();
+		}
+	}
+	
+	@dirty
+	public float getLightSaber() {
+		if( isPet() ){
+			return -1; // Pet droids never have lightsaber resistance
+		}
+		else{
+			super.getLightSaber();
+		}				
+	}	
 }

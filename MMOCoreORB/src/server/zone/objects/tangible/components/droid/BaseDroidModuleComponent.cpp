@@ -81,6 +81,9 @@ void BaseDroidModuleComponent::toggleActive() {
 bool BaseDroidModuleComponent::actsAsCraftingStation() {
 	return false;
 }
+bool BaseDroidModuleComponent::isArmorModule() {
+	return false;
+}
 String BaseDroidModuleComponent::toString() {
 	StringBuffer str;
 	str << getModuleName() << "\n";
