@@ -570,7 +570,9 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 						end)
 					end)
 				end
-				self:updateWaypoint(pConversingPlayer, mainNpcs[i].planetName, spawnPoints[i][1], spawnPoints[i][3], "target")
+				if (currentMissionType ~= "destroy") then
+					self:updateWaypoint(pConversingPlayer, mainNpcs[i].planetName, spawnPoints[i][1], spawnPoints[i][3], "target")
+				end
 				if (mission.staticObjects ~= nil and table.getn(mission.staticObjects) > 0) then
 					self:spawnMissionStaticObjects(mission, pConversingPlayer, spawnPoints[i][1], spawnPoints[i][3])
 				end
