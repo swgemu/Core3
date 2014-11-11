@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_f53942d9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/antidecay/AntiDecayKitImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-11T23:07:30Z",
+      "side": 1,
+      "message": "Would it not be better to prevent broken items from being placed into an anti-decay kit in the first place?",
+      "revId": "0a3a5cb0c08a69fe8702972d0703d7c7685693c3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
