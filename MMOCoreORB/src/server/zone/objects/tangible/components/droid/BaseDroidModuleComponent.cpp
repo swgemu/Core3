@@ -52,9 +52,9 @@ String BaseDroidModuleComponent::getModuleName() {
 }
 void BaseDroidModuleComponent::initializeTransientMembers() {
 }
-void BaseDroidModuleComponent::initialize(DroidObject* droid) {
+void BaseDroidModuleComponent::initialize(CreatureObject* droid) {
 }
-void BaseDroidModuleComponent::fillAttrributeList(AttributeListMessage* msg, CreatureObject* droid) {
+void BaseDroidModuleComponent::fillAttributeList(AttributeListMessage* msg, CreatureObject* droid) {
 }
 void BaseDroidModuleComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 }

@@ -119,6 +119,7 @@
 #include "server/zone/managers/creature/PetManager.h"
 
 #include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"
+#include "server/zone/objects/creature/DroidObject.h"
 
 #include <iostream>
 
@@ -2911,7 +2912,6 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
 		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i));
-
 		if (scno->isCraftingStation() && (abs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)) {
 
 			station = server->getObject(scno->getObjectID()).castTo<CraftingStation*>();
@@ -2928,6 +2928,24 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 					== CraftingTool::JEDI && station->getStationType()
 					== CraftingTool::WEAPON)) {
 
+				return station;
+			}
+		}
+		// dont check Z axis here just check in range call. z axis check for some reason returns a huge number when checking a mob standing on you.
+		// in range should be sufficient
+		if( scno->isDroidObject() && player->isInRange(scno, 7.0f)){
+			// check the droids around
+			DroidObject* droid = cast<DroidObject*>(scno);
+			if (droid == NULL) {
+				continue;
+			}
+			// only the player can benefit form thier droid
+			if( droid->getLinkedCreature() != player ) {
+				continue;
+			}
+			// check the droid
+			station = droid->getCraftingStation(type);
+			if (station != NULL) {
 				return station;
 			}
 		}

@@ -51,9 +51,14 @@ which carries forward this exception.
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"
+#include <iostream>
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
+	initDroidModules();
 }
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
@@ -63,6 +68,12 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 
 	if (paintCount > 0){
 		msg->insertAttribute("customization_cnt", paintCount);
+	}
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if( module != NULL ){
+			module->fillAttributeList(msg, object);
+		}
 	}
 
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
@@ -75,7 +86,7 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 		fullName << " " << linkedCreature->getLastName();
 
 	msg->insertAttribute("@obj_attr_n:owner", fullName.toString());
-
+	initDroidModules();
 }
 
 void DroidObjectImplementation::notifyInsertToZone(Zone* zone) {
@@ -193,4 +204,69 @@ bool DroidObjectImplementation::isPowerDroid(){
 
 	return getObjectTemplate()->getFullTemplateString().contains( "eg_6_power_droid" );
 
+}
+void DroidObjectImplementation::initDroidModules(){
+	modules.removeAll();
+	ManagedReference<SceneObject*> container = getSlottedObject("crafted_components");
+	if(container != NULL && container->getContainerObjectsSize() > 0) {
+		SceneObject* satchel = container->getContainerObject(0);
+		if(satchel != NULL && satchel->getContainerObjectsSize() > 0) {
+			for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
+				ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
+				if( sceno == NULL )
+					continue;
+				DataObjectComponentReference* data = sceno->getDataObjectComponent();
+				if(data == NULL || data->get() == NULL || !data->get()->isDroidModuleData() ){
+					continue;
+				}
+				BaseDroidModuleComponent* module = cast<BaseDroidModuleComponent*>(data->get());
+				if( module != NULL ){
+					modules.add(module);
+				}
+			}
+		}
+	}
+}
+CraftingStation* DroidObjectImplementation::getCraftingStation(int type){
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if( module != NULL && module->actsAsCraftingStation()){
+			DroidCraftingModuleDataComponent* craftingModule = dynamic_cast<DroidCraftingModuleDataComponent*>(module);
+			if( craftingModule != NULL ){
+				CraftingStation* craftingStation = craftingModule->getCraftingStation();
+				if (craftingStation != NULL) {
+					// case here to check each type
+					if (craftingModule->validCraftingType(type) || (type == CraftingTool::JEDI && craftingModule->isWeaponDroidGeneric()) || type == CraftingTool::GENERIC && craftingModule->isWeaponDroidGeneric())
+					{
+						return craftingStation;
+					}
+				}
+			}
+		}
+	}
+	return NULL;
+}
+void DroidObjectImplementation::onStore() {
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		module->onStore();
+	}
+}
+void DroidObjectImplementation::onCall() {
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		module->onCall();
+	}
+}
+void DroidObjectImplementation::loadSkillMods(CreatureObject* player) {
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		module->loadSkillMods(player);
+	}
+}
+void DroidObjectImplementation::unloadSkillMods(CreatureObject* player) {
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		module->unloadSkillMods(player);
+	}
 }

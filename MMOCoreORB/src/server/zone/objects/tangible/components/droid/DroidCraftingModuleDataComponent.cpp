@@ -43,6 +43,7 @@
 #include "DroidCraftingModuleDataComponent.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/templates/tangible/DroidCraftingModuleTemplate.h"
 
 DroidCraftingModuleDataComponent::DroidCraftingModuleDataComponent() {
 	setLoggingName("DroidCraftingModule");
@@ -55,11 +56,23 @@ String DroidCraftingModuleDataComponent::getModuleName() {
 }
 void DroidCraftingModuleDataComponent::initializeTransientMembers() {
 	// load template data here
+	SceneObject* craftedModule = getParent();
+	if (craftedModule == NULL) {
+		return;
+	}
+	craftingStation = NULL;
+	ManagedReference<DroidCraftingModuleTemplate*> moduleTemplate = cast<DroidCraftingModuleTemplate*>(craftedModule->getObjectTemplate());
+	if (moduleTemplate == NULL){
+		info("Module was null");
+		return;
+	}
+	craftingType = moduleTemplate->getCraftingType();
+	attributeListString = moduleTemplate->getAttributeListString();
 }
-void DroidCraftingModuleDataComponent::initialize(DroidObject* droid) {
+void DroidCraftingModuleDataComponent::initialize(CreatureObject* droid) {
 	// do we need to change any droid stats: no
 }
-void DroidCraftingModuleDataComponent::fillAttrributeList(AttributeListMessage* alm, CreatureObject* droid) {
+void DroidCraftingModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
 	alm->insertAttribute(attributeListString, "Installed");
 }
 void DroidCraftingModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -113,16 +126,19 @@ bool DroidCraftingModuleDataComponent::isStructureFurniture(){
 bool DroidCraftingModuleDataComponent::isShip(){
 	return craftingType == CraftingTool::SPACE;
 }
+bool DroidCraftingModuleDataComponent::validCraftingType(int type) {
+	return craftingType == type;
+}
 void DroidCraftingModuleDataComponent::onCall() {
-	// we need to generate the crafting station now
-	// TODO use the template to create the module.
+	SceneObject* craftedModule = getParent();
+	ManagedReference<DroidCraftingModuleTemplate*> moduleTemplate = cast<DroidCraftingModuleTemplate*>(craftedModule->getObjectTemplate());
+	if( craftingStation == NULL ){
+		String stationTemplate = moduleTemplate->getCraftingStationTemplate();
+		craftingStation = (craftedModule->getZoneServer()->createObject(stationTemplate.hashCode(), 0)).castTo<CraftingStation*>();
+		craftingStation->setEffectiveness(25);
+	}
 }
 void DroidCraftingModuleDataComponent::onStore() {
-	// we need to destroy the crting station now
-	SceneObject* craftedModule = getParent();
-	if (craftedModule == NULL) {
-		return;
-	}
 	craftingStation = NULL;
 }
 
