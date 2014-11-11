@@ -43,6 +43,9 @@
 
 object_tangible_component_droid_armor_module_4 = object_tangible_component_droid_shared_armor_module_4:new {
 
+	dataObjectComponent = "DroidArmorModuleDataComponent",
+	templateType = DROIDARMORMODULE,
+	moduleLevel = 4,
 
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ"},

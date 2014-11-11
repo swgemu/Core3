@@ -54,7 +54,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"
-#include <iostream>
+#include "server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
@@ -62,6 +62,8 @@ void DroidObjectImplementation::initializeTransientMembers() {
 }
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
+
+	AiAgentImplementation::fillAttributeList( msg, object );
 
 	float percentPower = ((float)power/(float)MAX_POWER)*100.0;
 	msg->insertAttribute("@obj_attr_n:battery_power", String::valueOf((int)percentPower) + "%");
@@ -86,7 +88,6 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 		fullName << " " << linkedCreature->getLastName();
 
 	msg->insertAttribute("@obj_attr_n:owner", fullName.toString());
-	initDroidModules();
 }
 
 void DroidObjectImplementation::notifyInsertToZone(Zone* zone) {
@@ -268,5 +269,67 @@ void DroidObjectImplementation::unloadSkillMods(CreatureObject* player) {
 	for( int i=0; i<modules.size(); i++){
 		BaseDroidModuleComponent* module = modules.get(i);
 		module->unloadSkillMods(player);
+	}
+}
+
+ int DroidObjectImplementation::getTotalArmorModuleLevel(){
+
+	unsigned int level = 0;
+
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if( module != NULL && module->isArmorModule()){
+			DroidArmorModuleDataComponent* armorModule = dynamic_cast<DroidArmorModuleDataComponent*>(module);
+			if( armorModule != NULL ){
+				level += armorModule->getModuleLevel();
+			}
+		}
+	}
+
+	// Capped at 6
+	if( level > 6 )
+		level = 6;
+
+	return level;
+
+}
+
+unsigned int DroidObjectImplementation::getArmor(){
+
+	if( !isPet() ){
+		return AiAgentImplementation::getArmor();
+	}
+
+	int level = getTotalArmorModuleLevel();
+
+	if( level == 0 ){
+		return 0; // NO ARMOR
+	}
+	else if( level <= 3 ){
+		return 1; // LIGHT ARMOR
+	}
+	else if( level <= 6 ){
+		return 2; // MEDIUM ARMOR
+	}
+
+	return 0;
+
+}
+
+float DroidObjectImplementation::getResist(){
+
+	int level = getTotalArmorModuleLevel();
+
+	if( level == 1 || level == 4 ){
+		return 15;
+	}
+	else if( level == 2 || level == 5 ){
+		return 25;
+	}
+	else if( level == 3 || level == 6 ){
+		return 40;
+	}
+	else{
+		return -1;
 	}
 }
