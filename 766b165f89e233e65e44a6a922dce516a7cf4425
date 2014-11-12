@@ -34,6 +34,23 @@
       "revId": "766b165f89e233e65e44a6a922dce516a7cf4425",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_f5402237",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/DroidObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2014-11-12T02:43:53Z",
+      "side": 1,
+      "message": "this shouldbe removed, was here by mistake",
+      "revId": "766b165f89e233e65e44a6a922dce516a7cf4425",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
