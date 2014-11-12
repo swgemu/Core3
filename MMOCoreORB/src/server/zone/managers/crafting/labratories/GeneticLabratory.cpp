@@ -263,8 +263,8 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	genetic->setRanged(ranged);
 	genetic->setQuality(quality);
 	// determine avg sample levels to choose a level of this template for output generation
-	int level = (phy->getLevel() + pro->getLevel() + men->getLevel() + psy->getLevel() + agr->getLevel()) / 5;
-	genetic->setLevel(level);
+	//int level = (phy->getLevel() + pro->getLevel() + men->getLevel() + psy->getLevel() + agr->getLevel()) / 5;
+	//genetic->setLevel(level);
 	craftingValues->recalculateValues(true);
 	recalculateResist(craftingValues);
 }
