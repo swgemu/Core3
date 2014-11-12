@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_754d5272",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/DroidObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-12T02:33:27Z",
+      "side": 1,
+      "message": "Won\u0027t this mess up droids that aren\u0027t pets? You should probably do\n\nif (isPet())\n   return getResist();\nelse\n   return super.getKinetic();",
+      "revId": "766b165f89e233e65e44a6a922dce516a7cf4425",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
