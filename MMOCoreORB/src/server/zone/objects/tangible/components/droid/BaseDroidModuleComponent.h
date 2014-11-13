@@ -92,6 +92,10 @@ public:
 	virtual void onCall();
 	virtual void onStore();
 	virtual bool isDroidModuleData() { return true; }
+	virtual bool isStackable() { return false; }
+	virtual bool isCombatModule() { return false; }
+	virtual void addToStack(BaseDroidModuleComponent* other) {}
+	ManagedReference<DroidObject*> getDroidObject();
 };
 
 } //droid
