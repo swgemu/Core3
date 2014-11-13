@@ -76,6 +76,16 @@ class DroidObject extends AiAgent {
 	 * Maximum paint charges
 	 */
 	public static final int PAINTCHARGES = 999;
+	
+	/**
+	 * Armor type
+	 */
+	protected unsigned int armor = 0;
+	
+	/**
+	 * Damage resistance (same for all types except lightsaber)
+	 */
+	protected float resist = 0;	
 
 	/**
 	 * List of installed droid modules
@@ -214,4 +224,110 @@ class DroidObject extends AiAgent {
 	public native void loadSkillMods(CreatureObject player);
 	@local
 	public native void unloadSkillMods(CreatureObject player);
+	
+	/**
+	 * Calculate armor type and damage resistance granted by installed armor modules
+	 */	
+	@local
+	protected native void calcArmorAndResist();
+		
+	@local
+	public unsigned int getArmor(){
+		if( isPet() ){
+			return armor;
+		}
+		else{
+			return super.getArmor();
+		}
+	}
+
+	@dirty
+	public float getKinetic(){
+		if( isPet() ){
+			return resist;
+		}
+		else{
+			super.getKinetic();
+		}
+	}
+	
+	@dirty
+	public float getEnergy(){
+		if( isPet() ){
+			return resist;
+		}
+		else{
+			super.getEnergy();
+		}
+	}
+	
+	@dirty
+	public float getElectricity() {
+		if( isPet() ){
+			return resist;
+		}
+		else{
+			super.getElectricity();
+		}
+	}
+	
+	@dirty
+	public float getStun() {
+		if( isPet() ){
+			return resist;
+		}
+		else{
+			super.getStun();
+		}
+	}
+	
+	@dirty
+	public float getBlast() {
+		if( isPet() ){
+			return resist;
+		}
+		else{
+			super.getBlast();
+		}
+	}
+	
+	@dirty
+	public float getHeat() {
+		if( isPet() ){
+			return resist;
+		}
+		else{
+			super.getHeat();
+		}
+	}
+	
+	@dirty
+	public float getCold() {
+		if( isPet() ){
+			return resist;
+		}
+		else{
+			super.getCold();
+		}
+	}
+	
+	@dirty
+	public float getAcid() {
+		if( isPet() ){
+			return resist;
+		}
+		else{
+			super.getAcid();
+		}
+	}
+	
+	@dirty
+	public float getLightSaber() {
+		if( isPet() ){
+			return -1; // Pet droids never have lightsaber resistance
+		}
+		else{
+			super.getLightSaber();
+		}				
+	}	
 }
