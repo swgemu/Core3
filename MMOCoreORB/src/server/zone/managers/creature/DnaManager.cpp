@@ -62,6 +62,54 @@ int DnaManager::generateXp(int creatureLevel) {
 	float x5 = 46.75746899;
 	return (int)ceil(x1-x2+x3+x4+x5);
 }
+int DnaManager::getLevelForStat(int stat, int value) {
+	HashTable<uint32, DnaSampleRange* > ranges;
+	switch(stat) {
+		case DnaManager::CLEVERNESS:
+			ranges = instance()->cleverness;
+			break;
+		case DnaManager::COURAGE:
+			ranges = instance()->courage;
+			break;
+		case DnaManager::DEPENDABILITY:
+			ranges = instance()->dependency;
+			break;
+		case DnaManager::ENDURANCE:
+			ranges = instance()->endurance;
+			break;
+		case DnaManager::DEXTERITY:
+			ranges = instance()->dexerity;
+			break;
+		case DnaManager::FIERCENESS:
+			ranges = instance()->fierceness;
+			break;
+		case DnaManager::FORTITUDE:
+			ranges = instance()->fortitude;
+			break;
+		case DnaManager::HARDINESS:
+			ranges = instance()->hardiness;
+			break;
+		case DnaManager::INTELLIGENCE:
+			ranges = instance()->intelligence;
+			break;
+		case DnaManager::POWER:
+			ranges = instance()->power;
+			break;
+		default:
+			return 1;
+	}
+	int level = 1;
+	// walk the walk ranges and see what level this should be
+	for(int i=1;i<80;i++) {
+		DnaSampleRange* range = ranges.get(i);
+		if (range == NULL)
+			return level;
+		if (range->inRange(value)) {
+			level = i;
+		}
+	}
+	return level;
+}
 int DnaManager::generateScoreFor(int stat, int cl, int quality) {
 	int actualCl;
 	actualCl = cl;

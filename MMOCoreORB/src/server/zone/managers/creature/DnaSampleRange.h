@@ -45,6 +45,7 @@ public:
 	static const int VLQ = 7;
 	int generateValue(int quality);
 	String toString();
+	bool inRange(int amount);
 };
 
 }

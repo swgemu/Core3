@@ -38,6 +38,9 @@ String DnaSampleRange::toString() {
 	buffer.append("VLQ ").append("[").append(vlqMax).append("-").append(vlqMin).append("]\n");
 	return buffer.toString();
 }
+bool DnaSampleRange::inRange(int amount) {
+	return amount >= vlqMin && amount <= vhqMax;
+}
 int DnaSampleRange::generateValue(int quality){
 	uint32 max,min;
 	switch(quality) {

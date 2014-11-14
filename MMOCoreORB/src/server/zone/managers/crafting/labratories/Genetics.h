@@ -3,6 +3,7 @@
 
 #include "SharedLabratory.h"
 #include "engine/engine.h"
+#include "server/zone/managers/creature/DnaManager.h"
 
 namespace server {
 namespace zone {
@@ -98,6 +99,17 @@ public:
 		if (input < 0) // if max is vulnerable the min is always vulnerable
 			return -1;
 		return round(input * ((input/100.0f) + 0.15f));
+	}
+	static int generateCL(int ha, int fort, int dex, int intelligence, int cle, int fie, int pow) {
+		DnaManager* instance = DnaManager::instance();
+		int a = instance->getLevelForStat(DnaManager::FORTITUDE,fort);
+		int b = instance->getLevelForStat(DnaManager::HARDINESS,ha);
+		int c = instance->getLevelForStat(DnaManager::DEXTERITY,dex);
+		int d = instance->getLevelForStat(DnaManager::INTELLIGENCE,intelligence);
+		int e = instance->getLevelForStat(DnaManager::CLEVERNESS,cle);
+		int f = instance->getLevelForStat(DnaManager::FIERCENESS,fie);
+		int g = instance->getLevelForStat(DnaManager::POWER,pow);
+		return ceil( ((float)a + (float)b + (float)c + (float)d + (float)e + (float)f + (float)g) / (float)7);
 	}
 };
 

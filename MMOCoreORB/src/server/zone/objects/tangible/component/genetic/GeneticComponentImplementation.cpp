@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/managers/crafting/labratories/Genetics.h"
 
 void GeneticComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();
@@ -205,13 +206,8 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	maxDam = minDam + 10;
 	speed = 2.5-((ceil(((float)courage)/10)*10)/1000);
 	// Redo this forumla section we made it up anyways so lets figure a better range
-	float resistMod = (kinResist + energyResist + blastResist + heatResist + coldResist + elecResist + acidResist + stunResist + saberResist)/175;
-	// levle of pet is avg input sample level + (resists adjustments) + damage adjustments
-	int damMod = minDam/175; // adjusted to every hundred poitns intead of 50
-	levelMod = (resistMod + damMod);
-	// re-calculate level based on input data
-	int newHamValue = ((float)health+(float)action+(float)mind)/3;
-	level = ceil(newHamValue/175);
+	// New Level formula
+	level = Genetics::generateCL(hardiness,fortitude,dexterity,intelligence,cleverness,fierceness,power);
 }
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {
 	if (attackName == "defaultattack" || attackName == "")

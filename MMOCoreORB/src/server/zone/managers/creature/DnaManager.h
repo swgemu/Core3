@@ -54,6 +54,7 @@ public:
 	int generateScoreFor(int stat, int cl,int quality);
 	void generateSample(Creature* creature, CreatureObject* player, int quality);
 	void generationalSample(PetDeed* deed, CreatureObject* player, int quality);
+	int getLevelForStat(int stat, int value);
 protected:
 	int reduceByPercent(int source, int percent) {
 		float reduceBy = (100.0 - (float)percent) / 100.0;
