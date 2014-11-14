@@ -49,6 +49,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 namespace server {
 namespace zone {
@@ -82,7 +83,7 @@ public:
 	// get drain amount when this module is active
 	virtual int getBatteryDrain();
 	// toggle this module form active to inactive i.e. auto harvest modules, barkers etc..
-	virtual void toggleActive();
+	virtual void deactivate();
 	// does this module provide some kind of station effect
 	virtual bool actsAsCraftingStation();
 	// does this module provide some armor effect
@@ -96,6 +97,7 @@ public:
 	virtual bool isCombatModule() { return false; }
 	virtual void addToStack(BaseDroidModuleComponent* other) {}
 	ManagedReference<DroidObject*> getDroidObject();
+	virtual void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 };
 
 } //droid
