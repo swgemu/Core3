@@ -247,7 +247,7 @@ class DroidObject extends AiAgent {
 			return resist;
 		}
 		else{
-			super.getKinetic();
+			return super.getKinetic();
 		}
 	}
 	
@@ -257,7 +257,7 @@ class DroidObject extends AiAgent {
 			return resist;
 		}
 		else{
-			super.getEnergy();
+			return super.getEnergy();
 		}
 	}
 	
@@ -267,7 +267,7 @@ class DroidObject extends AiAgent {
 			return resist;
 		}
 		else{
-			super.getElectricity();
+			return super.getElectricity();
 		}
 	}
 	
@@ -277,7 +277,7 @@ class DroidObject extends AiAgent {
 			return resist;
 		}
 		else{
-			super.getStun();
+			return super.getStun();
 		}
 	}
 	
@@ -287,7 +287,7 @@ class DroidObject extends AiAgent {
 			return resist;
 		}
 		else{
-			super.getBlast();
+			return super.getBlast();
 		}
 	}
 	
@@ -297,7 +297,7 @@ class DroidObject extends AiAgent {
 			return resist;
 		}
 		else{
-			super.getHeat();
+			return super.getHeat();
 		}
 	}
 	
@@ -307,7 +307,7 @@ class DroidObject extends AiAgent {
 			return resist;
 		}
 		else{
-			super.getCold();
+			return super.getCold();
 		}
 	}
 	
@@ -317,7 +317,7 @@ class DroidObject extends AiAgent {
 			return resist;
 		}
 		else{
-			super.getAcid();
+			return super.getAcid();
 		}
 	}
 	
@@ -327,7 +327,7 @@ class DroidObject extends AiAgent {
 			return -1; // Pet droids never have lightsaber resistance
 		}
 		else{
-			super.getLightSaber();
+			return super.getLightSaber();
 		}				
 	}	
 }
