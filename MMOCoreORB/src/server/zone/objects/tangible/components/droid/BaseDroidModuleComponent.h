@@ -82,7 +82,7 @@ public:
 	// get drain amount when this module is active
 	virtual int getBatteryDrain();
 	// toggle this module form active to inactive i.e. auto harvest modules, barkers etc..
-	virtual void toggleActive();
+	virtual void deactivate();
 	// does this module provide some kind of station effect
 	virtual bool actsAsCraftingStation();
 	// does this module provide some armor effect

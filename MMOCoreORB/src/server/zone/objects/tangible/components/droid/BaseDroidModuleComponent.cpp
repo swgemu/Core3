@@ -75,7 +75,7 @@ void BaseDroidModuleComponent::handlePetCommand(String cmd, CreatureObject* owne
 int BaseDroidModuleComponent::getBatteryDrain() {
 	return 0;
 }
-void BaseDroidModuleComponent::toggleActive() {
+void BaseDroidModuleComponent::deactivate() {
 
 }
 bool BaseDroidModuleComponent::actsAsCraftingStation() {

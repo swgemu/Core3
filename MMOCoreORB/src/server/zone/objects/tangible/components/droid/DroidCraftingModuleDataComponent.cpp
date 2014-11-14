@@ -98,7 +98,7 @@ void DroidCraftingModuleDataComponent::handlePetCommand(String cmd, CreatureObje
 int DroidCraftingModuleDataComponent::getBatteryDrain() {
 	return 0;
 }
-void DroidCraftingModuleDataComponent::toggleActive() {
+void DroidCraftingModuleDataComponent::deactivate() {
 	// no op
 }
 bool DroidCraftingModuleDataComponent::actsAsCraftingStation(){
