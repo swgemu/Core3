@@ -47,6 +47,10 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 
 	//if (zone !=)
 
+	if (cityTreasuryFixed == -1) {
+		cityTreasuryFixed = cityTreasury;
+	}
+
 	Zone* zone = getZone();
 
 	if (zone == NULL)
@@ -95,6 +99,8 @@ void CityRegionImplementation::initialize() {
 	shuttleID = 0;
 
 	hasShuttle = false;
+
+	cityTreasuryFixed = -1;
 
 	zone = NULL;
 
