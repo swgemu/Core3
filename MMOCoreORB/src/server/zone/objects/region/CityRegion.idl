@@ -66,7 +66,8 @@ class CityRegion extends ManagedObject implements Logger {
 	@dereferenced
 	protected transient Mutex structureListMutex;
 
-	protected double cityTreasury;
+	private float cityTreasury;
+	protected double cityTreasuryFixed;
 
 	protected unsigned long mayorID;
 
@@ -364,7 +365,7 @@ class CityRegion extends ManagedObject implements Logger {
 	@local
 	@read
 	public double getCityTreasury() {
-		return cityTreasury;
+		return cityTreasuryFixed;
 	}
 
 	@dirty
@@ -404,33 +405,33 @@ class CityRegion extends ManagedObject implements Logger {
 
 	@local
 	public void setCityTreasury(double val) {
-		cityTreasury = val;
+		cityTreasuryFixed = val;
 	}
 
 	@local
 	public float addToCityTreasury(double val) {
-		cityTreasury = cityTreasury + val;
+		cityTreasuryFixed = cityTreasuryFixed + val;
 
-		if (cityTreasury < 0) {
-			cityTreasury = 0;
+		if (cityTreasuryFixed < 0) {
+			cityTreasuryFixed = 0;
 		}
 
-		if (cityTreasury > 100000000) {
-			cityTreasury = 100000000;
+		if (cityTreasuryFixed > 100000000) {
+			cityTreasuryFixed = 100000000;
 		}
 
-		return cityTreasury;
+		return cityTreasuryFixed;
 	}
 
 	@local
 	public double subtractFromCityTreasury(double val) {
-		cityTreasury = cityTreasury - val;
+		cityTreasuryFixed = cityTreasuryFixed - val;
 
-		if (cityTreasury < 0) {
-			cityTreasury = 0;
+		if (cityTreasuryFixed < 0) {
+			cityTreasuryFixed = 0;
 		}
 
-		return cityTreasury;
+		return cityTreasuryFixed;
 	}
 
 	@read
