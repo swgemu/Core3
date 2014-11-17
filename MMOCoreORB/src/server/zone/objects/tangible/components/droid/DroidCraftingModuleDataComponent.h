@@ -76,7 +76,7 @@ public:
 	bool skillsByRange();
 	void handlePetCommand(String cmd, CreatureObject* owner) ;
 	int getBatteryDrain();
-	void toggleActive();
+	void deactivate();
 	bool actsAsCraftingStation();
 	String toString();
 	// crafting droid module specific

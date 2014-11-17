@@ -99,7 +99,7 @@ void DroidArmorModuleDataComponent::handlePetCommand(String cmd, CreatureObject*
 int DroidArmorModuleDataComponent::getBatteryDrain() {
 	return 0;
 }
-void DroidArmorModuleDataComponent::toggleActive() {
+void DroidArmorModuleDataComponent::deactivate() {
 	// no op
 }
 bool DroidArmorModuleDataComponent::isArmorModule() {

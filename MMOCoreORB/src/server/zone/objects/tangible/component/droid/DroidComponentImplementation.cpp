@@ -44,6 +44,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 
 void DroidComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();
@@ -58,6 +59,15 @@ void DroidComponentImplementation::updateCraftingValues(CraftingValues* values, 
 		setUseCount(values->getCurrentValue("droid_count"));
 		surveyDroid = true;
 	}
+
+	DataObjectComponentReference* data = getDataObjectComponent();
+	if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData() ){
+		BaseDroidModuleComponent* module = cast<BaseDroidModuleComponent*>(data->get());
+		if( module != NULL ){
+			module->updateCraftingValues( values, firstUpdate );
+		}
+	}
+
 }
 void DroidComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 
