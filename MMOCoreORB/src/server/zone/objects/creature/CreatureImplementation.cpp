@@ -208,6 +208,10 @@ bool CreatureImplementation::hasDNA() {
 	if (isPet() && !hasPetDeed()) {
 		return false;
 	}
+	// skip droids and anything that doesnt have organic bits or it doesnt eat
+	if (isDroidObject() || !hasOrganics() || getDiet() == CreatureFlag::NONE) {
+		return false;
+	}
 	return (dnaState == CreatureManager::HASDNA);
 }
 
