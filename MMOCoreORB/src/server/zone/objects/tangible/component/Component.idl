@@ -138,5 +138,5 @@ class Component extends TangibleObject {
 	@dirty
     public native string getProperty(final int j);
 	
-	public native boolean changeAttributeValue(string property, float value);                                                                             
+	public native boolean changeAttributeValue(final string property, float value);                                                                             
 }
