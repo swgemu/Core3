@@ -90,6 +90,32 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 	msg->insertAttribute("@obj_attr_n:owner", fullName.toString());
 }
 
+int DroidObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID){
+
+	// Allow modules to handle radials if desired
+	PetControlDevice* pcd = getControlDevice().get().castTo<PetControlDevice*>();
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		module->handleObjectMenuSelect(player, selectedID, pcd);
+	}
+
+	return SceneObjectImplementation::handleObjectMenuSelect(player, selectedID); // PetMenuComponent
+
+}
+
+void DroidObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player){
+
+	SceneObjectImplementation::fillObjectMenuResponse( menuResponse, player ); // PetMenuComponent
+
+	// Allow modules to add radials
+	PetControlDevice* pcd = getControlDevice().get().castTo<PetControlDevice*>();
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		module->fillObjectMenuResponse( _this.get(), menuResponse, player );
+	}
+
+}
+
 void DroidObjectImplementation::notifyInsertToZone(Zone* zone) {
 	SceneObjectImplementation::notifyInsertToZone(zone);
 
