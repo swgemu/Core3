@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_9568ce88",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/dathomir_go_to_Test.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2014-11-17T03:56:31Z",
+      "side": 1,
+      "message": "Remove trailing white spaces.",
+      "revId": "2ceff44d00d4a881e87158b773d69910f433fac9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_750552c1",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/sith_shadow_intro_theater_Test.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2014-11-17T03:56:31Z",
+      "side": 1,
+      "message": "Remove trailing white spaces.",
+      "revId": "2ceff44d00d4a881e87158b773d69910f433fac9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_550a56d3",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/sith_shadow_intro_theater_Test.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2014-11-17T03:56:31Z",
+      "side": 1,
+      "message": "Remove trailing white spaces.",
+      "revId": "2ceff44d00d4a881e87158b773d69910f433fac9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_350fdae3",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/sith_shadow_intro_theater_Test.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2014-11-17T03:56:31Z",
+      "side": 1,
+      "message": "Add a test when the player has looted the datapad as well.",
+      "revId": "2ceff44d00d4a881e87158b773d69910f433fac9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_b56bca84",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/go_to_location_Test.lua",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1041
+      },
+      "writtenOn": "2014-11-17T03:56:31Z",
+      "side": 1,
+      "message": "The naming here and on the describe on row 96 is conflicting. Are you missing an end) or indentation?",
+      "revId": "2ceff44d00d4a881e87158b773d69910f433fac9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
