@@ -120,3 +120,7 @@ void DroidArmorModuleDataComponent::onStore(){
 int DroidArmorModuleDataComponent::getModuleLevel(){
 	return moduleLevel;
 }
+void DroidArmorModuleDataComponent::copy(BaseDroidModuleComponent* other) {
+	// no op for now needs updated once stacking is setup for armor modules.
+}
+

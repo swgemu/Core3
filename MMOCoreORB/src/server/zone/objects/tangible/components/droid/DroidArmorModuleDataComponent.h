@@ -80,6 +80,7 @@ public:
 	void onStore();
 	// armor droid module specific
 	int getModuleLevel();
+	void copy(BaseDroidModuleComponent* other);
 };
 
 

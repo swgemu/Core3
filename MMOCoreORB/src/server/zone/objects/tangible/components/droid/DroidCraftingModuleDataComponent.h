@@ -89,6 +89,7 @@ public:
 	bool validCraftingType(int type);
 	void onCall();
 	void onStore();
+	void copy(BaseDroidModuleComponent* other);
 };
 
 
