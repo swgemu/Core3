@@ -467,12 +467,13 @@ describe("Spawn Mobile", function()
 							expectedNo = expectedNo + 1
 							return spawnPointParameterList[no]
 						end)
-						getSpawnPoint = spy.new(function(pCO, x, y, min, max)
+						getSpawnPoint = spy.new(function(pCO, x, y, min, max, force)
 							assert.same(pCreatureObject, pCO)
 							assert.same(spawnPointParameterList[expectedNo - 1]["x"], x)
 							assert.same(spawnPointParameterList[expectedNo - 1]["y"], y)
 							assert.same(spawnPointParameterList[expectedNo - 1]["min"], min)
 							assert.same(spawnPointParameterList[expectedNo - 1]["max"], max)
+							assert.same(false, force)
 							return spawnPointList[expectedNo - 1]
 						end)
 					end)

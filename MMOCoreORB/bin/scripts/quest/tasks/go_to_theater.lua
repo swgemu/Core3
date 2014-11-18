@@ -56,6 +56,7 @@ end
 -- @param spawnPoint the coordinates to spawn the active area at.
 -- @return true if setup was successful, false otherwise.
 function GoToTheater:setupActiveArea(pCreatureObject, spawnPoint)
+	Logger:log("Setting up active area for " .. self.taskName .. " theater.", LT_INFO)
 	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 		local pActiveArea = spawnSceneObject(creatureObject:getZoneName(), ACTIVE_AREA_IFF, spawnPoint[1], 0, spawnPoint[3], 0, 0)
 
@@ -102,10 +103,12 @@ function GoToTheater:taskStart(pCreatureObject)
 				writeData(creatureObject:getObjectID() .. self.taskName .. THEATER_ID_STRING, theater:getObjectID())
 				return pTheater
 			end) ~= nil then
-				local spawnedMobilesList = SpawnMobiles.spawnMobiles(pTheater, self.taskName, self.mobileList)
+				Logger:log("Spawning mobiles for " .. self.taskName .. " theater.", LT_INFO)
+				local spawnedMobilesList = SpawnMobiles.spawnMobiles(pTheater, self.taskName, self.mobileList, true)
 
 				if spawnedMobilesList ~= nil then
 					if self:setupActiveArea(pCreatureObject, spawnPoint) then
+						Logger:log("Creating waypoint for " .. self.taskName .. " theater.", LT_INFO)
 						local waypointId = ObjectManager.withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
 							return playerObject:addWaypoint(creatureObject:getZoneName(), self.waypointDescription, "", spawnPoint[1], spawnPoint[3], WAYPOINTWHITE, true, true, 0)
 						end)

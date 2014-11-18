@@ -88,14 +88,15 @@ end
 -- Return nil if not all spawn points were generated.
 -- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param mobileList a list with information about what mobiles to spawn.
+-- @param forceSpawn force the spawn of the mobiles. Optional argument to force spawn in no spawn areas etc.
 -- @return a list with spawn points to use for the mobiles, or nil if generation of spawn points failed.
-function SpawnMobiles.generateSpawnPoints(pSceneObject, mobileList)
+function SpawnMobiles.generateSpawnPoints(pSceneObject, mobileList, forceSpawn)
 	local spawnPoints = {}
 
 	for spawnObjectNumber = 1, table.getn(mobileList), 1 do
 		local spawnPointParams = SpawnMobiles.getSpawnPointParameters(pSceneObject, mobileList, spawnPoints, spawnObjectNumber)
 		if spawnPointParams ~= nil then
-			local spawnPoint = getSpawnPoint(pSceneObject, spawnPointParams["x"], spawnPointParams["y"], spawnPointParams["min"], spawnPointParams["max"])
+			local spawnPoint = getSpawnPoint(pSceneObject, spawnPointParams["x"], spawnPointParams["y"], spawnPointParams["min"], spawnPointParams["max"], forceSpawn)
 			if spawnPoint ~= nil then
 				table.insert(spawnPoints, spawnPoint)
 			else
@@ -188,9 +189,10 @@ end
 -- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to use for storing information about the spawned mobiles.
 -- @param mobileList a list with information about what mobiles to spawn.
+-- @param forceSpawn force the spawn of the mobiles. Optional argument to force spawn in no spawn areas etc.
 -- @return a list with pointers to all spawned mobiles. If anything fails in this function it will clean up and return nil.
-function SpawnMobiles.spawnMobilesWithPrefix(pSceneObject, prefix, mobileList)
-	local spawnPoints = SpawnMobiles.generateSpawnPoints(pSceneObject, mobileList)
+function SpawnMobiles.spawnMobilesWithPrefix(pSceneObject, prefix, mobileList, forceSpawn)
+	local spawnPoints = SpawnMobiles.generateSpawnPoints(pSceneObject, mobileList, forceSpawn)
 
 	if spawnPoints ~= nil then
 		return SpawnMobiles.generateMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
@@ -253,10 +255,12 @@ end
 -- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to use for storing information about the spawned mobiles.
 -- @param mobileList a list with information about what mobiles to spawn.
+-- @param forceSpawn force the spawn of the mobiles. Optional argument to force spawn in no spawn areas etc.
 -- @return a list with pointers to all spawned mobiles. If anything fails in this function it will clean up and return nil.
-function SpawnMobiles.spawnMobiles(pSceneObject, prefix, mobileList)
+function SpawnMobiles.spawnMobiles(pSceneObject, prefix, mobileList, forceSpawn)
+	forceSpawn = forceSpawn or false
 	if SpawnMobiles.isPrefixFree(pSceneObject, prefix) then
-		return SpawnMobiles.spawnMobilesWithPrefix(pSceneObject, prefix, mobileList)
+		return SpawnMobiles.spawnMobilesWithPrefix(pSceneObject, prefix, mobileList, forceSpawn)
 	else
 		return nil
 	end

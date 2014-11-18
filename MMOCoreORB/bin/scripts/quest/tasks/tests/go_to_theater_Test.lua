@@ -151,7 +151,7 @@ describe("GoToTheater", function()
 					it("Should spawn the mobiles at the theater.", function()
 						testGoToTheater:start(pCreatureObject)
 
-						assert.spy(SpawnMobilesMocks.spawnMobiles).was.called_with(pTheater, testGoToTheater.taskName, testGoToTheater.mobileList)
+						assert.spy(SpawnMobilesMocks.spawnMobiles).was.called_with(pTheater, testGoToTheater.taskName, testGoToTheater.mobileList, true)
 					end)
 
 					describe("and the mobiles was spawned", function()
