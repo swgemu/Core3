@@ -96,6 +96,7 @@ public:
 	virtual bool isStackable() { return false; }
 	virtual bool isCombatModule() { return false; }
 	virtual void addToStack(BaseDroidModuleComponent* other) {}
+	virtual void copy(BaseDroidModuleComponent* other){}
 	ManagedReference<DroidObject*> getDroidObject();
 	virtual void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 };

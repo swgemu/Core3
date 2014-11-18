@@ -142,4 +142,7 @@ void DroidCraftingModuleDataComponent::onStore() {
 	craftingStation = NULL;
 }
 
+void DroidCraftingModuleDataComponent::copy(BaseDroidModuleComponent* other) {
+	// no Op when the new object is made, init transient is called so all info is set.
+}
 

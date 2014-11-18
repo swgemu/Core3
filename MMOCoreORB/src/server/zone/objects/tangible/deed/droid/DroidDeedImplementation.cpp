@@ -19,6 +19,10 @@
 #include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/managers/customization/CustomizationIdManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/IngredientSlot.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
+#include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
+#include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 
 void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	DeedImplementation::loadTemplateData(templateData);
@@ -50,8 +54,61 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 	 * Values available:	Range:
 	 *
 	 */
+	String key;
+	ManagedReference<DroidComponent*> comp = NULL;
+	HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
+	for(int i = 0; i < modules.size(); ++i) {
+		iterator.getNextKeyAndValue(key, comp);
+		if (comp) {
+			comp->destroyObjectFromWorld(true);
+		}
+	}
+	modules.removeAll();
+	// @TODO Add crafting values, this should adjust toHit and Speed based on droid ham, also
 
-	// @TODO Add crafting values
+	// we need to stack modules if they are stackable.
+	// walk all components and ensure we have all modules that are stackable there.
+
+	ManagedReference<ManufactureSchematic*> manufact = values->getManufactureSchematic();
+	for (int i = 0; i < manufact->getSlotCount(); ++i) {
+		// Droid Component Slots
+		Reference<IngredientSlot* > iSlot = manufact->getSlot(i);
+		if (iSlot->isComponentSlot()) {
+			ComponentSlot* cSlot = cast<ComponentSlot*>(iSlot.get());
+			ManagedReference<TangibleObject*> tano = cSlot->getPrototype();
+			ManagedReference<DroidComponent*> component = cast<DroidComponent*>( tano.get());
+			// only check modules
+			if (component) {
+				DataObjectComponentReference* data = component->getDataObjectComponent();
+				BaseDroidModuleComponent* module = NULL;
+				if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData() ){
+					module = cast<BaseDroidModuleComponent*>(data->get());
+				}
+				if (module == NULL) {
+					continue;
+				}
+				if (module->isStackable()) {
+					if (modules.containsKey(module->getModuleName())) {
+						// add to the stack if stackable.
+						DroidComponent* comp = modules.get(module->getModuleName());
+						BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(comp->getDataObjectComponent()->get());
+						bmodule->addToStack(module);
+					} else {
+						ManagedReference<DroidComponent*> dcomp = (this->getZoneServer()->createObject(tano->getServerObjectCRC(),1)).castTo<DroidComponent*>();
+						BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(dcomp->getDataObjectComponent()->get());
+						bmodule->copy(module);
+						modules.put(module->getModuleName(),dcomp);
+					}
+				} else {
+					ManagedReference<DroidComponent*> dcomp = (this->getZoneServer()->createObject(tano->getServerObjectCRC(),1)).castTo<DroidComponent*>();
+					BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(dcomp->getDataObjectComponent()->get());
+					bmodule->copy(module);
+					modules.put(module->getModuleName(),dcomp);
+				}
+			}
+		}
+	}
+	// module stacking is completed! .. todo calc other stats
 }
 
 void DroidDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -134,6 +191,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		// Transfer crafting components from deed to droid
 		ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");
 		if(craftingComponents != NULL) {
+			// this will change to use stacked modules. we wont care about non droid modules as they arent needed.
 			droid->transferObject(craftingComponents, 4, false);
 			craftingComponents->setSendToClient(false);
 		}
@@ -173,7 +231,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		if (deedContainer != NULL) {
 			destroyObjectFromWorld(true);
 		}
-
+		// Replace Stacked Components
 		generated = true;
 		player->sendSystemMessage("@pet/pet_menu:device_added"); // "A control device has been added to your datapad."
 		return 0;

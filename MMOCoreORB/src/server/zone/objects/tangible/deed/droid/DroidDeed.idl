@@ -52,13 +52,16 @@ import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
-
+import system.util.HashTable;
+import server.zone.objects.tangible.component.droid.DroidComponent;
 import server.zone.templates.SharedObjectTemplate;
 
 class DroidDeed extends Deed {
 
 	protected string controlDeviceObjectTemplate;
 	protected string mobileTemplate;
+	@dereferenced
+	protected HashTable<string,DroidComponent> modules;
 	
 	public DroidDeed() {
 		Logger.setLoggingName("DroidDeed");
