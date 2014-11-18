@@ -60,7 +60,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.environment</key>
-					<value></value>
+					<value>CLASSPATH=/home/valkyra/git/CUCore/MMOEngine/bin/idlc.jar|CPPFLAGS=-I/usr/include/lua5.1|</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.stopOnError</key>
