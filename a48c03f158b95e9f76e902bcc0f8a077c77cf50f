@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_7588b222",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-18T06:42:34Z",
+      "side": 1,
+      "message": "Does this make a copy of the component?  First module in the stack will need all the stats of the crafted component.",
+      "revId": "a48c03f158b95e9f76e902bcc0f8a077c77cf50f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
