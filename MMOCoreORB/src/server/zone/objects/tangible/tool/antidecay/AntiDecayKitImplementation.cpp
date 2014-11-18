@@ -62,6 +62,7 @@ void AntiDecayKitImplementation::doApplyAntiDecay(CreatureObject* player)
 		return;
 	}
 
+	tano->setConditionDamage(0);
 	tano->applyAntiDecayKit(player, _this.get());
 
 	inventory->transferObject(tano, -1, false);
@@ -109,12 +110,13 @@ int AntiDecayKitImplementation::canAddObject(SceneObject* object, int containmen
 		return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 	}
 
-	if(!(object->isWeaponObject() || object->isWearableObject())){
+	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
+
+	if(!(object->isWeaponObject() || object->isWearableObject()) || tano->isBroken()){
 		errorDescription = "@veteran_new:error_item_not_valid_for_anti_decay"; // This item is not valid to be used by the Anti Decay Kit. Valid items are items that can be insured and weapons.
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
-	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
 	if(tano->hasAntiDecayKit()){
 		errorDescription = "@veteran_new:error_item_is_already_anti_decay"; // The item you attempted to place in the Anti Decay Kit already has Anti Decay applied to it. Please use another item.
 		return TransferErrorCode::INVALIDTYPE;
