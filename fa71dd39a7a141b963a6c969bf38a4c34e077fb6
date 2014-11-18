@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a51691d_15117eac",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/sith_shadow_intro_theater.lua",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125
+      },
+      "writtenOn": "2014-11-18T22:01:36Z",
+      "side": 1,
+      "message": "Never mind, after looking at it further I understand how it works.",
+      "parentUuid": "7a51691d_7512f2b5",
+      "revId": "fa71dd39a7a141b963a6c969bf38a4c34e077fb6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a51691d_35b0fadc",
         "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/sith_shadow_intro_theater_Test.lua",
         "patchSetId": 16
