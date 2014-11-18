@@ -40,7 +40,24 @@ void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 	DeedImplementation::fillAttributeList(alm, object);
 
 	// @TODO Add attributes
-
+	String key;
+	ManagedReference<DroidComponent*> comp = NULL;
+	HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
+	for(int i = 0; i < modules.size(); ++i) {
+		iterator.getNextKeyAndValue(key, comp);
+		if (comp) {
+			DataObjectComponentReference* data = comp->getDataObjectComponent();
+			BaseDroidModuleComponent* module = NULL;
+			if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData() ){
+				module = cast<BaseDroidModuleComponent*>(data->get());
+			}
+			if (module == NULL) {
+				continue;
+			}
+			if (!module->isCombatModule())
+				module->fillAttributeList(alm,object);
+		}
+	}
 }
 
 void DroidDeedImplementation::initializeTransientMembers() {
@@ -95,12 +112,14 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 						bmodule->addToStack(module);
 					} else {
 						ManagedReference<DroidComponent*> dcomp = (this->getZoneServer()->createObject(tano->getServerObjectCRC(),1)).castTo<DroidComponent*>();
+						dcomp->setParent(NULL);
 						BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(dcomp->getDataObjectComponent()->get());
 						bmodule->copy(module);
 						modules.put(module->getModuleName(),dcomp);
 					}
 				} else {
 					ManagedReference<DroidComponent*> dcomp = (this->getZoneServer()->createObject(tano->getServerObjectCRC(),1)).castTo<DroidComponent*>();
+					dcomp->setParent(NULL);
 					BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(dcomp->getDataObjectComponent()->get());
 					bmodule->copy(module);
 					modules.put(module->getModuleName(),dcomp);
@@ -191,7 +210,29 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		// Transfer crafting components from deed to droid
 		ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");
 		if(craftingComponents != NULL) {
+			SceneObject* satchel = craftingComponents->getContainerObject(0);
+			// remove all items form satchel and add int he new items
+			Vector<ManagedReference<SceneObject*> > toRemove;
+			for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
+				ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
+				if (sceno != NULL) {
+					toRemove.add(sceno);
+				}
+			}
+			satchel->removeAllContainerObjects();
+			for(int i=0;i<toRemove.size();i++) {
+				toRemove.get(i)->destroyObjectFromWorld(true);
+			}
 			// this will change to use stacked modules. we wont care about non droid modules as they arent needed.
+			String key;
+			ManagedReference<DroidComponent*> comp = NULL;
+			HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
+			for(int i = 0; i < modules.size(); ++i) {
+				iterator.getNextKeyAndValue(key, comp);
+				if (comp) {
+					satchel->transferObject(comp, -1, false);
+				}
+			}
 			droid->transferObject(craftingComponents, 4, false);
 			craftingComponents->setSendToClient(false);
 		}
@@ -231,7 +272,6 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		if (deedContainer != NULL) {
 			destroyObjectFromWorld(true);
 		}
-		// Replace Stacked Components
 		generated = true;
 		player->sendSystemMessage("@pet/pet_menu:device_added"); // "A control device has been added to your datapad."
 		return 0;

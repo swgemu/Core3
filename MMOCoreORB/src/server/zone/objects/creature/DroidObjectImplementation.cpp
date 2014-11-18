@@ -214,8 +214,9 @@ void DroidObjectImplementation::initDroidModules(){
 		if(satchel != NULL && satchel->getContainerObjectsSize() > 0) {
 			for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
 				ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
-				if( sceno == NULL )
+				if( sceno == NULL ){
 					continue;
+				}
 				DataObjectComponentReference* data = sceno->getDataObjectComponent();
 				if(data == NULL || data->get() == NULL || !data->get()->isDroidModuleData() ){
 					continue;
