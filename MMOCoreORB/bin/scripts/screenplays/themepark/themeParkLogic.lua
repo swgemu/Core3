@@ -926,7 +926,7 @@ function ThemeParkLogic:killedByCorrectPlayer(victimID, attackerID)
 end
 
 function ThemeParkLogic:isGroupedWith(pPlayer1, pPlayer2)
-	return CreatureObject(player1):isGroupedWith(pPlayer2)
+	return CreatureObject(pPlayer1):isGroupedWith(pPlayer2)
 end
 
 function ThemeParkLogic:isInQuestRangeOf(pCreature1, pCreature2)
