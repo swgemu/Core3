@@ -105,7 +105,7 @@ int DnaManager::getLevelForStat(int stat, int value) {
 		if (range == NULL)
 			return level;
 		if (range->inRange(value)) {
-			level = i;
+			return level;
 		}
 	}
 	return level;
