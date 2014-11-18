@@ -153,7 +153,7 @@ describe("Spawn Mobile", function()
 					it("Should call spawnMobilesWithPrefix function.", function()
 						SpawnMobiles.spawnMobiles(pCreatureObject, prefix, spawnList)
 
-						assert.spy(SpawnMobiles.spawnMobilesWithPrefix).was.called_with(pCreatureObject, prefix, spawnList)
+						assert.spy(SpawnMobiles.spawnMobilesWithPrefix).was.called_with(pCreatureObject, prefix, spawnList, false)
 					end)
 
 					it("Should return a list of the spawned mobiles.", function()
@@ -370,9 +370,9 @@ describe("Spawn Mobile", function()
 				end)
 
 				it("Should get spawn points for all objects in the encounter.", function()
-					SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, spawnList)
+					SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, spawnList, false)
 
-					assert.spy(SpawnMobiles.generateSpawnPoints).was.called_with(pCreatureObject, spawnList)
+					assert.spy(SpawnMobiles.generateSpawnPoints).was.called_with(pCreatureObject, spawnList, false)
 				end)
 
 				describe("and a list of spawn points are returned from the generateSpawnPoints function", function()
@@ -381,25 +381,25 @@ describe("Spawn Mobile", function()
 					end)
 
 					it("Should spawn the encounter objects.", function()
-						SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, spawnList)
+						SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, spawnList, false)
 
 						assert.spy(SpawnMobiles.generateMobileObjects).was.called_with(pCreatureObject, prefix, spawnList, spawnPoints)
 					end)
 
 					it("Should return the list of spawned mobiles from the generateMobileObjects function.", function()
-						assert.same(spawnedMobilesList, SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, spawnList))
+						assert.same(spawnedMobilesList, SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, spawnList, false))
 					end)
 				end)
 
 				describe("and nil is returned from the generateSpawnPoints function", function()
 					it("Should not spawn the encounter objects.", function()
-						SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, spawnList)
+						SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, spawnList, false)
 
 						assert.spy(SpawnMobiles.generateMobileObjects).was.not_called()
 					end)
 
 					it("Should return nil.", function()
-						assert.is_nil(SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, spawnList))
+						assert.is_nil(SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, spawnList, false))
 					end)
 				end)
 			end)
@@ -429,14 +429,14 @@ describe("Spawn Mobile", function()
 				end)
 
 				it("Should get the spawn point parameters.", function()
-					SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList)
+					SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList, false)
 
 					assert.spy(SpawnMobiles.getSpawnPointParameters).was.called()
 				end)
 
 				describe("and nil is returned from the getSpawnPointParameters function", function()
 					it("Should return nil.", function()
-						assert.same(nil, SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList))
+						assert.same(nil, SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList, false))
 					end)
 				end)
 
@@ -467,24 +467,25 @@ describe("Spawn Mobile", function()
 							expectedNo = expectedNo + 1
 							return spawnPointParameterList[no]
 						end)
-						getSpawnPoint = spy.new(function(pCO, x, y, min, max)
+						getSpawnPoint = spy.new(function(pCO, x, y, min, max, force)
 							assert.same(pCreatureObject, pCO)
 							assert.same(spawnPointParameterList[expectedNo - 1]["x"], x)
 							assert.same(spawnPointParameterList[expectedNo - 1]["y"], y)
 							assert.same(spawnPointParameterList[expectedNo - 1]["min"], min)
 							assert.same(spawnPointParameterList[expectedNo - 1]["max"], max)
+							assert.same(false, force)
 							return spawnPointList[expectedNo - 1]
 						end)
 					end)
 
 					it("Should call getSpawnPointParameters one time per object to spawn.", function()
-						SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList)
+						SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList, false)
 
 						assert.spy(SpawnMobiles.getSpawnPointParameters).was.called(5)
 					end)
 
 					it("Should call getSpawnPoint one time per object to spawn.", function()
-						SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList)
+						SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList, false)
 
 						assert.spy(getSpawnPoint).was.called(5)
 					end)
@@ -495,13 +496,13 @@ describe("Spawn Mobile", function()
 						end)
 
 						it("Should return nil.", function()
-							assert.same(nil, SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList))
+							assert.same(nil, SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList, false))
 						end)
 					end)
 
 					describe("and a spawn point is returned from getSpawnPoint", function()
 						it("Should return a list of spawn points.", function()
-							assert.same(spawnPointList, SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList))
+							assert.same(spawnPointList, SpawnMobiles.generateSpawnPoints(pCreatureObject, spawnList, false))
 						end)
 					end)
 				end)
