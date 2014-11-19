@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_f58822c8",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidAutoRepairModuleDataComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2014-11-19T19:54:34Z",
+      "side": 1,
+      "message": "Shouldnt this also do a changeAttributeValue call? so when de-serialized the value is saved?",
+      "revId": "82b6ec0c16edff653f304f72bbd7ce56e80bb916",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_d58526ae",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidAutoRepairModuleDataComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2014-11-19T19:54:34Z",
+      "side": 1,
+      "message": "also changeAttributeValue should be called?",
+      "revId": "82b6ec0c16edff653f304f72bbd7ce56e80bb916",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
