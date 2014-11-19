@@ -633,6 +633,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.cpp \
+		server/zone/objects/tangible/components/droid/DroidMedicalModuleDataComponent.cpp \
 		server/zone/objects/installation/components/TurretDataComponent.cpp \
 		server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
