@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a51691d_958faecc",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidAutoRepairModuleDataComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-19T20:20:45Z",
+      "side": 1,
+      "message": "Yes.  Forgot about needing to serialized.",
+      "parentUuid": "7a51691d_f58822c8",
+      "revId": "82b6ec0c16edff653f304f72bbd7ce56e80bb916",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a51691d_d58526ae",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidAutoRepairModuleDataComponent.cpp",
         "patchSetId": 2
