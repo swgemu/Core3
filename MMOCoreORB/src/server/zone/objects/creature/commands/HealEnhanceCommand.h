@@ -140,7 +140,7 @@ public:
 			enhancer->sendSystemMessage("@healing_response:must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return false;
 		}
-
+		// TODO add check that your not in a cantinna with droid bonus
 		if (enhancer->isProne() || enhancer->isMeditating()) {
 			enhancer->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return false;

@@ -164,7 +164,7 @@ public:
 			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return false;
 		}
-
+		// TODO add check that your not in a cantinna with droid bonus
 		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
 			return false;
