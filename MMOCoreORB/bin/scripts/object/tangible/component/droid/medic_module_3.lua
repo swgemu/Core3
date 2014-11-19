@@ -43,7 +43,7 @@
 
 object_tangible_component_droid_medic_module_3 = object_tangible_component_droid_shared_medic_module_3:new {
 
-
+	dataObjectComponent = "DroidMedicalModuleDataComponent",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},

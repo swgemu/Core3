@@ -139,6 +139,19 @@ public:
 		if (medicalRatingNotIncludingCityBonus <= 0) {
 			enhancer->sendSystemMessage("@healing_response:must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
 			return false;
+		}else {
+			// are we in a cantina? we have a private medical rating so either thats form a droid or camp or hospital
+			ManagedReference<SceneObject*> root = enhancer->getRootParent();
+			if (root != NULL && root->isStaticObject()) {
+				uint32 gameObjectType = root->getGameObjectType();
+				switch (gameObjectType) {
+						case SceneObjectType::RECREATIONBUILDING:
+						case SceneObjectType::HOTELBUILDING:
+						case SceneObjectType::THEATERBUILDING:
+							enhancer->sendSystemMessage("@healing_response:must_be_in_hospital"); // You must be in a hospital or at a campsite to do that.
+							return false;
+				}
+			}
 		}
 
 		if (enhancer->isProne() || enhancer->isMeditating()) {

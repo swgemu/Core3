@@ -189,7 +189,7 @@ void ComponentImplementation::addProperty(const String& attribute, const float v
 	}
 }
 
-bool ComponentImplementation::changeAttributeValue(String& property, float value) {
+bool ComponentImplementation::changeAttributeValue(const String& property, float value) {
 
 	if (!hasKey(property))
 		return false;
