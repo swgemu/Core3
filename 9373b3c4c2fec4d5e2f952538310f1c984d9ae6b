@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_754af284",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/ComponentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-20T10:23:34Z",
+      "side": 1,
+      "message": "lol.. I just made the same change in my patch",
+      "revId": "9373b3c4c2fec4d5e2f952538310f1c984d9ae6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_957d6eb4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidMedicalModuleDataComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-20T10:23:34Z",
+      "side": 1,
+      "message": "This needs to be addProperty().\n\nchangeAttributeValue() will fail if the property doesn\u0027t already exists which is the case during a copy.",
+      "revId": "9373b3c4c2fec4d5e2f952538310f1c984d9ae6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
