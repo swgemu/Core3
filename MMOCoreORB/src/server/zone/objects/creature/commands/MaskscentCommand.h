@@ -89,7 +89,10 @@ public:
 
 		creature->addBuff(buff);
 
-		creature->updateCooldownTimer("skill_buff_mask_scent_self", (60 - cdReduction) * 1000);
+		int timer = (60 - cdReduction) * 1000;
+		if (timer > 0) {
+			creature->updateCooldownTimer("skill_buff_mask_scent_self", timer);
+		}
 
 		return SUCCESS;
 	}
