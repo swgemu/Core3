@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_f576e2d7",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/component/Component.idl",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-20T10:09:36Z",
+      "side": 1,
+      "message": "Apparently this was the first code to ever call changeAttributeValue.   Property needed to be final instead of a reference.",
+      "revId": "4da0f3176e4183e60e74d89a1e77c8f9b8199d14",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
