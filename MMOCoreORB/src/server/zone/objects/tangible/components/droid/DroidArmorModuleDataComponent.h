@@ -57,7 +57,7 @@ namespace droid {
 class DroidArmorModuleDataComponent : public BaseDroidModuleComponent {
 
 protected:
-	int moduleLevel;
+	int armorModule;
 
 public:
 	DroidArmorModuleDataComponent();
@@ -66,20 +66,11 @@ public:
 	void initializeTransientMembers();
 	void initialize(CreatureObject* droid);
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
-	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
-	void loadSkillMods(CreatureObject* player);
-	void unloadSkillMods(CreatureObject* player);
-	bool skillsByRange();
-	void handlePetCommand(String cmd, CreatureObject* owner) ;
 	int getBatteryDrain();
-	void deactivate();
-	bool isArmorModule();
 	String toString();
-	void onCall();
-	void onStore();
-	// armor droid module specific
-	int getModuleLevel();
+    bool isStackable() { return true; }
+	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+	void addToStack(BaseDroidModuleComponent* other);
 	void copy(BaseDroidModuleComponent* other);
 };
 
