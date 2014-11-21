@@ -66,6 +66,32 @@ void DroidDeedImplementation::initializeTransientMembers() {
 	setLoggingName("DroidDeed");
 }
 
+void DroidDeedImplementation::processModule(BaseDroidModuleComponent* module, uint32 crc) {
+	if (module == NULL)
+		return;
+
+	if (module->isStackable()) {
+		if (modules.containsKey(module->getModuleName())) {
+			// add to the stack if stackable.
+			DroidComponent* comp = modules.get(module->getModuleName());
+			BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(comp->getDataObjectComponent()->get());
+			bmodule->addToStack(module);
+		} else {
+			ManagedReference<DroidComponent*> dcomp = (this->getZoneServer()->createObject(crc,1)).castTo<DroidComponent*>();
+			dcomp->setParent(NULL);
+			BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(dcomp->getDataObjectComponent()->get());
+			bmodule->copy(module);
+			modules.put(module->getModuleName(),dcomp);
+		}
+	} else {
+		ManagedReference<DroidComponent*> dcomp = (this->getZoneServer()->createObject(crc,1)).castTo<DroidComponent*>();
+		dcomp->setParent(NULL);
+		BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(dcomp->getDataObjectComponent()->get());
+		bmodule->copy(module);
+		modules.put(module->getModuleName(),dcomp);
+	}
+
+}
 void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	/*
 	 * Values available:	Range:
@@ -95,34 +121,41 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 			ManagedReference<TangibleObject*> tano = cSlot->getPrototype();
 			ManagedReference<DroidComponent*> component = cast<DroidComponent*>( tano.get());
 			// only check modules
-			if (component) {
-				DataObjectComponentReference* data = component->getDataObjectComponent();
-				BaseDroidModuleComponent* module = NULL;
-				if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData() ){
-					module = cast<BaseDroidModuleComponent*>(data->get());
-				}
-				if (module == NULL) {
-					continue;
-				}
-				if (module->isStackable()) {
-					if (modules.containsKey(module->getModuleName())) {
-						// add to the stack if stackable.
-						DroidComponent* comp = modules.get(module->getModuleName());
-						BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(comp->getDataObjectComponent()->get());
-						bmodule->addToStack(module);
-					} else {
-						ManagedReference<DroidComponent*> dcomp = (this->getZoneServer()->createObject(tano->getServerObjectCRC(),1)).castTo<DroidComponent*>();
-						dcomp->setParent(NULL);
-						BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(dcomp->getDataObjectComponent()->get());
-						bmodule->copy(module);
-						modules.put(module->getModuleName(),dcomp);
+			if (component != NULL) {
+				if (component->isSocketCluster()) {
+					// pull out the objects
+					ManagedReference<SceneObject*> craftingComponents = component->getSlottedObject("crafted_components");
+					if(craftingComponents != NULL) {
+						SceneObject* satchel = craftingComponents->getContainerObject(0);
+						for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
+							ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
+							if (sceno != NULL) {
+								// now we have the componet used in this socket item
+								ManagedReference<DroidComponent*> sub = cast<DroidComponent*>( sceno.get());
+								if (sub != NULL) {
+									DataObjectComponentReference* data = sub->getDataObjectComponent();
+									BaseDroidModuleComponent* module = NULL;
+									if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData() ){
+										module = cast<BaseDroidModuleComponent*>(data->get());
+									}
+									if (module == NULL) {
+										continue;
+									}
+									processModule(module,sceno->getServerObjectCRC());
+								}
+							}
+						}
 					}
 				} else {
-					ManagedReference<DroidComponent*> dcomp = (this->getZoneServer()->createObject(tano->getServerObjectCRC(),1)).castTo<DroidComponent*>();
-					dcomp->setParent(NULL);
-					BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(dcomp->getDataObjectComponent()->get());
-					bmodule->copy(module);
-					modules.put(module->getModuleName(),dcomp);
+					DataObjectComponentReference* data = component->getDataObjectComponent();
+					BaseDroidModuleComponent* module = NULL;
+					if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData() ){
+						module = cast<BaseDroidModuleComponent*>(data->get());
+					}
+					if (module == NULL) {
+						continue;
+					}
+					processModule(module,tano->getServerObjectCRC());
 				}
 			}
 		}
@@ -231,6 +264,12 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 				iterator.getNextKeyAndValue(key, comp);
 				if (comp) {
 					satchel->transferObject(comp, -1, false);
+					DataObjectComponentReference* data = comp->getDataObjectComponent();
+					BaseDroidModuleComponent* module = NULL;
+					if(data != NULL && data->get() != NULL && data->get()->isDroidModuleData()) {
+						module = cast<BaseDroidModuleComponent*>(data->get());
+						module->initialize(droid);
+					}
 				}
 			}
 			droid->transferObject(craftingComponents, 4, false);
@@ -265,7 +304,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		datapad->broadcastObject(controlDevice, true);
 		controlDevice->callObject(player);
-
+		droid->initDroidModules();
 		//Remove the deed from its container.
 		ManagedReference<SceneObject*> deedContainer = getParent();
 

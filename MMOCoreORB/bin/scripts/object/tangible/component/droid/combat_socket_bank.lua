@@ -43,7 +43,8 @@
 
 object_tangible_component_droid_combat_socket_bank = object_tangible_component_droid_shared_combat_socket_bank:new {
 
-
+	templateType = DROIDCOMPONENT,
+	gameObjectType = 262148,	
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

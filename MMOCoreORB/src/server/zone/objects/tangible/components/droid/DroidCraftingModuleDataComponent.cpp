@@ -52,7 +52,16 @@ DroidCraftingModuleDataComponent::~DroidCraftingModuleDataComponent() {
 
 }
 String DroidCraftingModuleDataComponent::getModuleName() {
-	return String("crafting_module");
+	if (isClothingArmor())
+		return "crafting_clothing";
+	if(isWeaponDroidGeneric())
+		return "crafting_weapon";
+	if(isFoodChemical())
+		return "crafting_food";
+	if(isStructureFurniture())
+		return "crafting_structure";
+	if(isShip())
+		return "crafting_ship";
 }
 void DroidCraftingModuleDataComponent::initializeTransientMembers() {
 	// load template data here

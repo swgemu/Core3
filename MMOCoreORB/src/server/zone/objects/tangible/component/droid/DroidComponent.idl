@@ -75,5 +75,9 @@ class DroidComponent extends Component {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+	
+	@local
+	public native boolean isSocketCluster();
+	
 		
 }
