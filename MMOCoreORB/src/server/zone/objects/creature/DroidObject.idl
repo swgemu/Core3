@@ -248,10 +248,20 @@ class DroidObject extends AiAgent {
 	public native void unloadSkillMods(CreatureObject player);
 	
 	/**
-	 * Calculate armor type and damage resistance granted by installed armor modules
+	 * Set armor type (from armor module)
 	 */	
 	@local
-	protected native void calcArmorAndResist();
+	public void setArmor(unsigned int level){
+		armor = level;
+	}
+	
+	/**
+	 * Set resists (from armor module)
+	 */	
+	@local
+	public void setResists(float res){
+		resist = res;
+	}
 		
 	@local
 	public unsigned int getArmor(){

@@ -86,8 +86,6 @@ public:
 	virtual void deactivate();
 	// does this module provide some kind of station effect
 	virtual bool actsAsCraftingStation();
-	// does this module provide some armor effect
-	virtual bool isArmorModule();
 	// string rep of the module
 	virtual String toString();
 	virtual void onCall();
