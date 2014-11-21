@@ -53,7 +53,6 @@
 #include "server/zone/templates/tangible/DiceTemplate.h"
 #include "server/zone/templates/tangible/DnaSampleTemplate.h"
 #include "server/zone/templates/tangible/DroidComponentTemplate.h"
-#include "server/zone/templates/tangible/DroidArmorModuleTemplate.h"
 #include "server/zone/templates/tangible/DroidCraftingModuleTemplate.h"
 #include "server/zone/templates/tangible/CamoKitTemplate.h"
 #include "server/zone/templates/universe/SharedGroupObjectTemplate.h"
@@ -574,7 +573,6 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<DnaSampleTemplate>(SharedObjectTemplate::DNASAMPLE);
 	templateFactory.registerObject<DroidComponentTemplate>(SharedObjectTemplate::DROIDCOMPONENT);
 	templateFactory.registerObject<DroidCraftingModuleTemplate>(SharedObjectTemplate::DROIDMODULECRAFTING);
-	templateFactory.registerObject<DroidArmorModuleTemplate>(SharedObjectTemplate::DROIDMODULEARMOR);
 }
 
 void TemplateManager::registerFunctions() {
@@ -731,7 +729,6 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("DNASAMPLE", SharedObjectTemplate::DNASAMPLE);
 	luaTemplatesInstance->setGlobalInt("DROIDCOMPONENT", SharedObjectTemplate::DROIDCOMPONENT);
 	luaTemplatesInstance->setGlobalInt("DROIDCRAFTINGMODULE", SharedObjectTemplate::DROIDMODULECRAFTING);
-	luaTemplatesInstance->setGlobalInt("DROIDARMORMODULE", SharedObjectTemplate::DROIDMODULEARMOR);
 
 	luaTemplatesInstance->setGlobalInt("NO_HITLOCATION", CombatManager::NOLOCATION);
 	luaTemplatesInstance->setGlobalInt("CHEST_HITLOCATION", CombatManager::CHEST);
