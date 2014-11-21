@@ -541,29 +541,32 @@ int CombatManager::calculatePostureModifier(CreatureObject* creature, WeaponObje
 	else if (creature->isProne())
 		accuracy += 50;
 
-	if (weapon->getAttackType() != WeaponObject::RANGEDATTACK)
+	if (weapon->getAttackType() != WeaponObject::MELEEATTACK) {
+
+		if (creature->isPlayerCreature()) {
+			creature->calculateSpeed(); // moving the setter to DataTransform, leaving calculateSpeed to set the last combat pos
+
+			int movePenalty = 0;
+
+			switch (CreaturePosture::instance()->getSpeed(creature->getPosture(), creature->getLocomotion())) {
+			case CreatureLocomotion::FAST:
+				movePenalty -= 50;
+				break;
+			case CreatureLocomotion::SLOW:
+				movePenalty -= 10;
+				break;
+			}
+
+			movePenalty += creature->getSkillMod(weapon->getWeaponType() + "_hit_while_moving");
+
+			if (movePenalty > 0)
+				movePenalty = 0;
+
+			accuracy += movePenalty;
+		}
+	} else {
 		accuracy *= -1;
-
-	if (creature->isPlayerCreature()) // moving the setter to DataTransform, leaving calculateSpeed to set the last combat pos
-		creature->calculateSpeed();
-
-	int movePenalty = 0;
-
-	switch (CreaturePosture::instance()->getSpeed(creature->getPosture(), creature->getLocomotion())) {
-	case CreatureLocomotion::FAST:
-		movePenalty -= 50;
-		break;
-	case CreatureLocomotion::SLOW:
-		movePenalty -= 10;
-		break;
 	}
-
-	movePenalty += creature->getSkillMod(weapon->getWeaponType() + "_hit_while_moving");
-
-	if (movePenalty > 0)
-		movePenalty = 0;
-
-	accuracy += movePenalty;
 
 	return accuracy;
 }
@@ -1260,8 +1263,8 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 		creoAttacker = cast<CreatureObject*>(attacker);
 	}
 
-	//info("Calculating hit chance", true);
-
+	//info("Calculating hit chance for " + attacker->getDisplayedName(), true);
+	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 	float weaponAccuracy = 0.0f;
 	// Get the weapon mods for range and add the mods for stance
 	weaponAccuracy = getWeaponRangeModifier(attacker->getDistanceTo(targetCreature), weapon);
@@ -1283,10 +1286,10 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	}
 
 	totalBonus += calculateTargetPostureModifier(weapon, targetCreature);
-
-	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
+	//info("Attacker total bonus is " + String::valueOf(totalBonus), true);
 
 	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
+	//info("Defender defense is " + String::valueOf(targetDefense), true);
 
 	// first (and third) argument is divided by 2, second isn't
 	float accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy + accuracyBonus, totalBonus, targetDefense);
