@@ -62,6 +62,8 @@ String DroidCraftingModuleDataComponent::getModuleName() {
 		return "crafting_structure";
 	if(isShip())
 		return "crafting_ship";
+
+	return "crafting_unknown";
 }
 void DroidCraftingModuleDataComponent::initializeTransientMembers() {
 	// load template data here
