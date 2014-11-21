@@ -285,8 +285,6 @@ void DroidObjectImplementation::onCall() {
 		BaseDroidModuleComponent* module = modules.get(i);
 		module->onCall();
 	}
-
-	calcArmorAndResist();
 }
 void DroidObjectImplementation::loadSkillMods(CreatureObject* player) {
 	for( int i=0; i<modules.size(); i++){
@@ -299,49 +297,4 @@ void DroidObjectImplementation::unloadSkillMods(CreatureObject* player) {
 		BaseDroidModuleComponent* module = modules.get(i);
 		module->unloadSkillMods(player);
 	}
-}
-
- void DroidObjectImplementation::calcArmorAndResist(){
-
-	int level = 0;
-
-	for( int i=0; i<modules.size(); i++){
-		BaseDroidModuleComponent* module = modules.get(i);
-		if( module != NULL && module->isArmorModule()){
-			DroidArmorModuleDataComponent* armorModule = dynamic_cast<DroidArmorModuleDataComponent*>(module);
-			if( armorModule != NULL ){
-				level += armorModule->getModuleLevel();
-			}
-		}
-	}
-
-	// Capped at 6
-	if( level > 6 )
-		level = 6;
-
-	// Set armor type
-	if( level == 0 ){
-		armor = 0; // NO ARMOR
-	}
-	else if( level <= 3 ){
-		armor = 1; // LIGHT ARMOR
-	}
-	else if( level <= 6 ){
-		armor = 2; // MEDIUM ARMOR
-	}
-
-	// Set damage resistance
-	if( level == 1 || level == 4 ){
-		resist = 15;
-	}
-	else if( level == 2 || level == 5 ){
-		resist = 25;
-	}
-	else if( level == 3 || level == 6 ){
-		resist = 40;
-	}
-	else{
-		resist = -1;
-	}
-
 }
