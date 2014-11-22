@@ -69,7 +69,7 @@ void BaseDroidModuleComponent::unloadSkillMods(CreatureObject* player) {
 bool BaseDroidModuleComponent::skillsByRange() {
 	return false;
 }
-void BaseDroidModuleComponent::handlePetCommand(String cmd, CreatureObject* owner){
+void BaseDroidModuleComponent::handlePetCommand(String cmd, CreatureObject* speaker){
 
 }
 int BaseDroidModuleComponent::getBatteryDrain() {

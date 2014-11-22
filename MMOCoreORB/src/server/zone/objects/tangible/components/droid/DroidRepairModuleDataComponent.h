@@ -40,11 +40,10 @@
  * which carries forward this exception.
  */
 
-#ifndef DROIDCRAFTINGMODULEDATACOMPONENT_H_
-#define DROIDCRAFTINGMODULEDATACOMPONENT_H_
+#ifndef DROIDREPAIRMODULEDATACOMPONENT_H_
+#define DROIDREPAIRMODULEDATACOMPONENT_H_
 
 #include "BaseDroidModuleComponent.h"
-#include "server/zone/objects/tangible/tool/CraftingStation.h"
 #include "engine/core/ManagedReference.h"
 
 namespace server {
@@ -55,41 +54,29 @@ namespace components {
 namespace droid {
 
 
-class DroidCraftingModuleDataComponent : public BaseDroidModuleComponent {
+class DroidRepairModuleDataComponent : public BaseDroidModuleComponent {
 
 protected:
-	int craftingType;
-	String attributeListString;
-	ManagedReference<CraftingStation*> craftingStation;
 
 public:
-	DroidCraftingModuleDataComponent();
-	~DroidCraftingModuleDataComponent();
+	DroidRepairModuleDataComponent();
+	~DroidRepairModuleDataComponent();
 	String getModuleName();
 	void initializeTransientMembers();
-	void initialize(CreatureObject* droid);
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* droid);
 	void fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller);
-	void loadSkillMods(CreatureObject* player);
-	void unloadSkillMods(CreatureObject* player);
-	bool skillsByRange();
 	void handlePetCommand(String cmd, CreatureObject* speaker) ;
 	int getBatteryDrain();
-	void deactivate();
-	bool actsAsCraftingStation();
 	String toString();
-	// crafting droid module specific
-	CraftingStation* getCraftingStation();
-	bool isWeaponDroidGeneric();
-	bool isFoodChemical();
-	bool isClothingArmor();
-	bool isStructureFurniture();
-	bool isShip();
-	bool validCraftingType(int type);
-	void onCall();
-	void onStore();
-	void copy(BaseDroidModuleComponent* other);
+
+	/**
+	 * There is no added benefit to having multiple repair modules installed.
+	 * We want to collapse all repair modules down to one to avoid multiple modules
+	 * adding radial selections, handling commands, etc
+	 * copy() and addToStack() NO OPS from the base class (no stats to copy/add)
+	 */
+	bool isStackable() { return true; }
 };
 
 
@@ -100,4 +87,4 @@ public:
 } // zone
 } // server
 using namespace server::zone::objects::tangible::components::droid;
-#endif /* DROIDCRAFTINGMODULEDATACOMPONENT_H_ */
+#endif /* DROIDREPAIRMODULEDATACOMPONENT_H_ */

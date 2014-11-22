@@ -298,3 +298,10 @@ void DroidObjectImplementation::unloadSkillMods(CreatureObject* player) {
 		module->unloadSkillMods(player);
 	}
 }
+
+void DroidObjectImplementation::handleChat(CreatureObject* speaker, const String& message){
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		module->handlePetCommand( message, speaker );
+	}
+}

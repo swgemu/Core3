@@ -103,7 +103,7 @@ bool DroidCraftingModuleDataComponent::skillsByRange() {
 	// no op
 	return false;
 }
-void DroidCraftingModuleDataComponent::handlePetCommand(String cmd, CreatureObject* owner) {
+void DroidCraftingModuleDataComponent::handlePetCommand(String cmd, CreatureObject* speaker) {
 	// no op
 }
 int DroidCraftingModuleDataComponent::getBatteryDrain() {

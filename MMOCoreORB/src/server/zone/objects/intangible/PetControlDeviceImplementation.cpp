@@ -856,6 +856,10 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 	if( trainedCommands.contains(PetManager::TRANSFER) ){
 		alm->insertAttribute("pet_command_10", trainedCommands.get(PetManager::TRANSFER) );
 	}
+
+	if( trainedCommands.contains(PetManager::REPAIR) ){
+		alm->insertAttribute("pet_command_13", trainedCommands.get(PetManager::REPAIR) ); // Droid Repair really was listed as Trick 2
+	}
 }
 
 void PetControlDeviceImplementation::setDefaultCommands(){
