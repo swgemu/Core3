@@ -68,6 +68,11 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if(ghost == NULL)
+			return GENERALERROR;
+
 		StringTokenizer ids(arguments.toString());
 
 		Zone* zone = creature->getZone();
@@ -96,7 +101,7 @@ public:
 				ManagedReference<SceneObject*> parent = object->getParent();
 
 				if (parent != NULL && parent->isCreatureObject() &&
-					!object->isASubChildOf(creature)) {
+					!ghost->isPrivileged() && !object->isASubChildOf(creature)) {
 
 					sendEmptyAttributes(creature, objid);
 				} else {
