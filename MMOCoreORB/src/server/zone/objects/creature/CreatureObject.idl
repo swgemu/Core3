@@ -926,6 +926,11 @@ class CreatureObject extends TangibleObject {
 	 * @param actionCount the action count to remove
 	 */
 	public native void deleteQueueAction(unsigned int actionCount);
+
+	/**
+	 * Clears all actions from the queue
+	 */
+	public native void clearQueueActions();
 	
 	/**
 	 * Sets a new state to the statebitmask

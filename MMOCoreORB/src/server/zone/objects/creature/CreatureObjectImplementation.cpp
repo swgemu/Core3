@@ -722,12 +722,14 @@ void CreatureObjectImplementation::setCombatState() {
 }
 
 void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
-	//info("trying to clear CombatState");
+	info("trying to clear CombatState");
 	if (stateBitmask & CreatureState::COMBAT) {
+		info("clearing the CombatState");
 		if (stateBitmask & CreatureState::PEACE)
 			stateBitmask &= ~CreatureState::PEACE;
 
 		stateBitmask &= ~CreatureState::COMBAT;
+		clearQueueActions();
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
 				_this.get());
@@ -742,7 +744,7 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 
 	removeMountedCombatSlow();
 
-	//info("finished clearCombatState");
+	info("finished clearCombatState");
 }
 
 bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
@@ -1865,6 +1867,17 @@ void CreatureObjectImplementation::activateQueueAction() {
 
 		e->schedule(nextAction);
 	}
+}
+
+void CreatureObjectImplementation::clearQueueActions() {
+	for (int i = 0; i < commandQueue->size(); ++i) {
+		CommandQueueAction* action = commandQueue->get(i);
+
+		BaseMessage* queuemsg = new CommandQueueRemove(_this.get(), action->getActionCounter(),
+				0, 0, 0);
+		sendMessage(queuemsg);
+	}
+	commandQueue->removeAll(0);
 }
 
 void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
