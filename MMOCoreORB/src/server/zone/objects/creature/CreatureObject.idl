@@ -795,13 +795,20 @@ class CreatureObject extends TangibleObject {
 	public native void setCashCredits(int credits, boolean notifyClient = true);
 	
 	/**
-	 * Updates the terrain negotiation variable?
+	 * Sets the terrain negotiation variable, and updates it.
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the specified terrain negotiation }
 	 * @param terrain new terrain negotiation
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
 	public native void setTerrainNegotiation(float value, boolean notifyClient = true);
+	
+	/**
+	 * Updates the client with the players current terrain negotiation.
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified terrain negotiation }
+	 */
+	public native void updateTerrainNegotiation();
 	
 	/**
 	 * Adds the specified skillbox to this object

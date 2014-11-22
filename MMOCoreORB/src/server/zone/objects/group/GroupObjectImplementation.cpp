@@ -255,7 +255,6 @@ bool GroupObjectImplementation::hasSquadLeader() {
 		return false;
 
 	if (getLeader()->isPlayerCreature()) {
-
 		Reference<CreatureObject*> leader = getLeader().castTo<CreatureObject*>();
 
 		if (leader->hasSkill("outdoors_squadleader_novice"))
@@ -285,16 +284,7 @@ void GroupObjectImplementation::addGroupModifiers() {
 
 		addGroupModifiers(player);
 	}
-
-	if (getLeader().get() != NULL) {
-		if (getLeader()->isPlayerCreature()) {
-			CreatureObject* leader = getLeader().castTo<CreatureObject*>();
-
-			Reference<SquadLeaderBonusTask*> bonusTask = new SquadLeaderBonusTask(leader);
-
-			bonusTask->schedule(300 * 1000);
-		}
-	}
+	scheduleSquadLeaderBonusTask();
 }
 
 void GroupObjectImplementation::removeGroupModifiers() {
@@ -341,8 +331,9 @@ void GroupObjectImplementation::addGroupModifiers(CreatureObject* player) {
 	buff->setSkillModifier("ranged_defense", leader->getSkillMod("group_ranged_defense"));
 	buff->setSkillModifier("melee_defense", leader->getSkillMod("group_melee_defense"));
 	buff->setSkillModifier("burst_run", leader->getSkillMod("group_burst_run"));
-
 	player->addBuff(buff);
+
+	player->updateTerrainNegotiation();
 }
 
 void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player) {
@@ -365,6 +356,8 @@ void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player) {
 
 	if (player->hasBuff(action.hashCode()))
 		player->removeBuff(action.hashCode());
+
+	player->updateTerrainNegotiation();
 }
 
 float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player) {
@@ -492,5 +485,21 @@ void GroupObjectImplementation::scheduleUpdateNearestMissionForGroup(unsigned in
 	else {
 		task->schedule(30000);
 	}
+}
+
+void GroupObjectImplementation::scheduleSquadLeaderBonusTask() {
+	Reference<CreatureObject*> leader = (getLeader()).castTo<CreatureObject*>();
+
+	if (leader == NULL)
+		return;
+
+	if (!leader->isPlayerCreature())
+		return;
+
+	if (squadLeaderBonusTask == NULL)
+		squadLeaderBonusTask = new SquadLeaderBonusTask(leader);
+
+	if (!squadLeaderBonusTask->isScheduled())
+		squadLeaderBonusTask->schedule(300000);
 }
 
