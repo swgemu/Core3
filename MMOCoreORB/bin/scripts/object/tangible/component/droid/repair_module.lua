@@ -43,7 +43,8 @@
 
 object_tangible_component_droid_repair_module = object_tangible_component_droid_shared_repair_module:new {
 
-
+	dataObjectComponent = "DroidRepairModuleDataComponent",
+	
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},

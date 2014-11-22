@@ -248,6 +248,16 @@ class DroidObject extends AiAgent {
 	public native void unloadSkillMods(CreatureObject player);
 	
 	/**
+	 * Handles chat messages to the droid and hands it off to the modules
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature speaking
+	 * @param string chat message
+	 */
+	@local
+	public native void handleChat(CreatureObject speaker, final string message);
+	
+	/**
 	 * Set armor type (from armor module)
 	 */	
 	@local

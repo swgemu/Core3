@@ -66,6 +66,8 @@ protected:
 	static const uint8 AUTO_REPAIR_MODULE_TOGGLE = 180;
 	static const uint8 ITEM_STORAGE_MODULE_OPEN  = 181;
 	static const uint8 DATA_STORAGE_MODULE_OPEN  = 182;
+	static const uint8 REPAIR_MODULE_ACTIVATE  = 183;
+	static const uint8 REPAIR_MODULE_TRAIN  = 184;
 
 public:
 	BaseDroidModuleComponent();
@@ -87,7 +89,7 @@ public:
 	// check if skil mods of the module are based on range to the pet
 	virtual bool skillsByRange();
 	// Interface for Pet Manager to pass spacial commands to the droid for component processing
-	virtual void handlePetCommand(String cmd, CreatureObject* owner) ;
+	virtual void handlePetCommand(String cmd, CreatureObject* speaker) ;
 	// get drain amount when this module is active
 	virtual int getBatteryDrain();
 	// toggle this module form active to inactive i.e. auto harvest modules, barkers etc..

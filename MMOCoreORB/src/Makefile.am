@@ -631,6 +631,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/GogglesObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/ArmorObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.cpp \
+		server/zone/objects/tangible/components/droid/DroidRepairModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidAutoRepairModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.cpp \

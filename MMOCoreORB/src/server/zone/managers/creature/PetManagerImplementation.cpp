@@ -7,6 +7,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/creature/events/PetIncapacitationRecoverTask.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/intangible/tasks/EnqueuePetCommand.h"
@@ -251,6 +252,16 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	}
 	else if( isTrainedCommand( pcd, TRANSFER, message ) ){
 		enqueueOwnerOnlyPetCommand(speaker, pet, String("petTransfer").toLowerCase().hashCode(), "");
+	}
+
+	// Hand off to droid modules for handling
+	if( pcd->getPetType() == PetManager::DROIDPET ){
+
+		DroidObject* droidObject = cast<DroidObject*>(pet);
+		if( droidObject != NULL ){
+			droidObject->handleChat(speaker, message);
+		}
+
 	}
 
 }
