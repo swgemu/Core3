@@ -20,7 +20,7 @@ huff_darklighter_missions =
 			missionType = "assassinate",
 			primarySpawns =
 			{
-				{ npcTemplate = "thug", planetName = "tatooine", npcName = "a Thug" }
+				{ npcTemplate = "thug", planetName = "tatooine", npcName = "Slaver" }
 			},
 			secondarySpawns =	{},
 			itemSpawns = {},
@@ -203,33 +203,33 @@ KraytSkullContainerComponent = {}
 
 function KraytSkullContainerComponent:transferObject(pContainer, pObj, slot)
 	local pPlayer = KraytDragonSkull:getObjOwner(pObj)
-	return ObjectManager.withSceneObject(pObj, function(object)
-		if (SceneObject(pContainer):getObjectName() == "borvo_the_hutt") then
-			if (object:getTemplateObjectPath() == "object/tangible/loot/quest/huff_quest_borvos_money.iff") then
-				spatialChat(pContainer, "Good")
-				KraytDragonSkull:setState(CreatureObject(pPlayer), 1, "krayt_skull_epic_quest")
-				object:destroyObjectFromWorld()
-				object:destroyObjectFromDatabase()
-				return 1
-			else
-				spatialChat(pContainer, "@static_npc/naboo/borvo:notit_1")
-				return 0
-			end
-		elseif (SceneObject(pContainer):getCustomObjectName() == "Huff Darklighter") then
-			if (KraytDragonSkull:getActiveNpcNumber(pPlayer) ~= 16) then
-				spatialChat(pContainer, "@epic_quest/krayt_skull/huff_darklighter:notyet")
-			elseif (object:getTemplateObjectPath() == "object/tangible/loot/quest/rifle_quest_tusken.iff") then
-				spatialChat(pContainer, "@epic_quest/krayt_skull/huff_darklighter:good")
-				KraytDragonSkull:setState(CreatureObject(pPlayer), 2, "krayt_skull_epic_quest")
-				object:destroyObjectFromWorld()
-				object:destroyObjectFromDatabase()
-				return 1
-			else
-				spatialChat(pContainer, "@epic_quest/krayt_skull/huff_darklighter:notit")
-				return 0
-			end
+	if (SceneObject(pContainer):getObjectName() == "borvo_the_hutt") then
+		local object = SceneObject(pObj)
+		if (object:getTemplateObjectPath() == "object/tangible/loot/quest/huff_quest_borvos_money.iff") then
+			spatialChat(pContainer, "Good")
+			KraytDragonSkull:setState(CreatureObject(pPlayer), 1, "krayt_skull_epic_quest")
+			object:destroyObjectFromWorld()
+			object:destroyObjectFromDatabase()
+			return 1
+		else
+			spatialChat(pContainer, "@static_npc/naboo/borvo:notit_1")
+			return 0
 		end
-	end)
+	elseif (SceneObject(pContainer):getCustomObjectName() == "Huff Darklighter") then
+		local object = SceneObject(pObj)
+		if (KraytDragonSkull:getActiveNpcNumber(pPlayer) ~= 16) then
+			spatialChat(pContainer, "@epic_quest/krayt_skull/huff_darklighter:notyet")
+		elseif (object:getTemplateObjectPath() == "object/tangible/loot/quest/rifle_quest_tusken.iff") then
+			spatialChat(pContainer, "@epic_quest/krayt_skull/huff_darklighter:good")
+			KraytDragonSkull:setState(CreatureObject(pPlayer), 2, "krayt_skull_epic_quest")
+			object:destroyObjectFromWorld()
+			object:destroyObjectFromDatabase()
+			return 1
+		else
+			spatialChat(pContainer, "@epic_quest/krayt_skull/huff_darklighter:notit")
+			return 0
+		end
+	end
 end
 
 function KraytSkullContainerComponent:canAddObject(pContainer, pObj, slot)
