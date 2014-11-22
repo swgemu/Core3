@@ -1710,14 +1710,14 @@ void CreatureObjectImplementation::setPerformanceAnimation(
 
 void CreatureObjectImplementation::setTerrainNegotiation(float value,
 		bool notifyClient) {
-	if (terrainNegotiation == value)
-		return;
-
 	terrainNegotiation = value;
 
-	if (!notifyClient)
-		return;
+	if (notifyClient)
+		updateTerrainNegotiation();
+}
 
+void CreatureObjectImplementation::updateTerrainNegotiation()
+{
 	CreatureObjectDeltaMessage4* codm4 = new CreatureObjectDeltaMessage4(_this.get());
 	codm4->updateTerrainNegotiation();
 	codm4->close();
@@ -1725,7 +1725,7 @@ void CreatureObjectImplementation::setTerrainNegotiation(float value,
 }
 
 float CreatureObjectImplementation::getTerrainNegotiation() {
-	float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + terrainNegotiation;
+    float slopeMod = ((float)getSkillMod("slope_move") / 50.0f) + terrainNegotiation;
 	if(slopeMod > 1)
 		slopeMod = 1;
 	return slopeMod;
