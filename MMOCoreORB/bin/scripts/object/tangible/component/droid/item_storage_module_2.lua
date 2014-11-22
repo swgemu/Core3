@@ -43,7 +43,7 @@
 
 object_tangible_component_droid_item_storage_module_2 = object_tangible_component_droid_shared_item_storage_module_2:new {
 
-
+	dataObjectComponent = "DroidItemStorageModuleDataComponent",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},
