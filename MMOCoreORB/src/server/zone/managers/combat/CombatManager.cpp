@@ -73,6 +73,7 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 }
 
 bool CombatManager::attemptPeace(CreatureObject* attacker) {
+	attacker->clearQueueActions();
 	DeltaVector<ManagedReference<SceneObject*> >* defenderList = attacker->getDefenderList();
 
 	for (int i = defenderList->size() - 1; i >= 0; --i) {
@@ -92,16 +93,17 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 					CreatureObject* creature = cast<CreatureObject*>(defender);
 
 					if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead() || !creature->isInRange(attacker, 128.f)) {
-						attacker->removeDefender(defender);
+						// Stop the defender from continuing to attack
 						defender->removeDefender(attacker);
 					}
 				} else {
-					attacker->removeDefender(defender);
+					// Stop the defender from continuing to attack
 					defender->removeDefender(attacker);
 				}
-			} else {
-				attacker->removeDefender(defender);
 			}
+
+			// Always remove the defender from the attacker so the attacker can achieve peace
+			attacker->removeDefender(defender);
 
 			clocker.release();
 
@@ -111,19 +113,17 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 		}
 	}
 
-	if (defenderList->size() != 0) {
-		//info("defenderList not empty, trying to set Peace State");
-
-		attacker->setState(CreatureState::PEACE);
-
-		return false;
-	} else {
+	// If there are no defenders then combat should be stopped and then set peace
+	if (defenderList->size() == 0) {
 		attacker->clearCombatState(false);
 
 		// clearCombatState() (rightfully) does not automatically set peace, so set it
 		attacker->setState(CreatureState::PEACE);
 
 		return true;
+	} else {
+		// Don't set peace here because the attacker is still in combat.
+		return false;
 	}
 }
 
