@@ -42,7 +42,7 @@
 
 
 object_tangible_inventory_creature_inventory_2 = object_tangible_inventory_shared_creature_inventory_2:new {
-
+	containerComponent = {"cpp", "DroidContainerComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_inventory_creature_inventory_2, "object/tangible/inventory/creature_inventory_2.iff")

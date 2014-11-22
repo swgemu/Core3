@@ -137,8 +137,9 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 }
 
 bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
-	if (sceneObject == object)
+	if (sceneObject == object) {
 		return false;
+	}
 
 	ManagedReference<SceneObject*> objParent = object->getParent();
 	ManagedReference<Zone*> objZone = object->getLocalZone();
@@ -186,7 +187,6 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 			for (int i = 0; i < descriptors.size(); ++i){
 				String childArrangement = descriptors.get(i);
-
 				if (slottedObjects->contains(childArrangement)) {
 					return false;
 				}
@@ -195,16 +195,18 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 			for (int i = 0; i < descriptors.size(); ++i)	{
 				 slottedObjects->put(descriptors.get(i), object);
 			}
-		} else
+		} else {
 			return false;
+		}
 
 		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
 	} else if (containmentType == -1) { /* else if (containerType == 2 || containerType == 3) {*/
 		Locker contLocker(sceneObject->getContainerLock());
 
-		if (!allowOverflow && containerObjects->size() >= sceneObject->getContainerVolumeLimit())
+		if (!allowOverflow && containerObjects->size() >= sceneObject->getContainerVolumeLimit()){
 			return false;
+		}
 
 		/*if (containerObjects.contains(object->getObjectID()))
 			return false*/
