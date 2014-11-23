@@ -121,7 +121,7 @@ void DroidItemStorageModuleDataComponent::onStore() {
 }
 void DroidItemStorageModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	// Add to Droid Options subradial from PetMenuComponent
-	menuResponse->addRadialMenuItemToRadialID(132, 181, 3, "@pet/pet_menu:menu_command_open" );
+	menuResponse->addRadialMenuItemToRadialID(132, ITEM_STORAGE_MODULE_OPEN, 3, "@pet/pet_menu:menu_command_open" );
 }
 void DroidItemStorageModuleDataComponent::initialize(CreatureObject* droid) {
 	StringBuffer path;
@@ -137,7 +137,7 @@ void DroidItemStorageModuleDataComponent::initialize(CreatureObject* droid) {
 int DroidItemStorageModuleDataComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
 
 	// Handle open droid storage
-	if( selectedID == 181 ){
+	if( selectedID == ITEM_STORAGE_MODULE_OPEN ){
 
 		ManagedReference<DroidObject*> droid = getDroidObject();
 		if( droid == NULL ){

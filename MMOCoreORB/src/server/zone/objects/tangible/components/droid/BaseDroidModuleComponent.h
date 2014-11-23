@@ -59,6 +59,14 @@ namespace components {
 namespace droid {
 
 class BaseDroidModuleComponent : public DataObjectComponent, public Logger {
+
+protected:
+
+	// Radial IDs
+	static const uint8 AUTO_REPAIR_MODULE_TOGGLE = 180;
+	static const uint8 ITEM_STORAGE_MODULE_OPEN  = 181;
+	static const uint8 DATA_STORAGE_MODULE_OPEN  = 182;
+
 public:
 	BaseDroidModuleComponent();
 	~BaseDroidModuleComponent();

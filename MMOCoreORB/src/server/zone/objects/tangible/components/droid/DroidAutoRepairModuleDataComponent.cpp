@@ -84,13 +84,13 @@ void DroidAutoRepairModuleDataComponent::fillAttributeList(AttributeListMessage*
 
 void DroidAutoRepairModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	// Add to Droid Options subradial from PetMenuComponent
-	menuResponse->addRadialMenuItemToRadialID(132, 180, 3, "@pet/droid_modules:toggle_autorepair" );
+	menuResponse->addRadialMenuItemToRadialID(132, AUTO_REPAIR_MODULE_TOGGLE, 3, "@pet/droid_modules:toggle_autorepair" );
 }
 
 int DroidAutoRepairModuleDataComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
 
 	// Handle toggle on/off
-	if( selectedID == 180 ){
+	if( selectedID == AUTO_REPAIR_MODULE_TOGGLE ){
 
 		ManagedReference<DroidObject*> droid = getDroidObject();
 		if( droid == NULL ){
