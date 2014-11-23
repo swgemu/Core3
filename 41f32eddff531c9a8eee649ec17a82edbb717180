@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_a0b5c632",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-23T04:50:33Z",
+      "side": 1,
+      "message": "Don\u0027t leave your debug statements in. There are several in this file.",
+      "revId": "41f32eddff531c9a8eee649ec17a82edbb717180",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_c0b8c22c",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-23T04:50:33Z",
+      "side": 1,
+      "message": "This else is unnecessary since resist is initialized with a value of -1.",
+      "revId": "41f32eddff531c9a8eee649ec17a82edbb717180",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
