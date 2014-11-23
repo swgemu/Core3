@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_60790e93",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/component/droid/armor_module_1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2014-11-23T04:17:08Z",
+      "side": 1,
+      "message": "this should have been 3, you can exp at 93% to get an effective level boost, this is for all droid modules",
+      "revId": "16f660e269714225ba635419b0084b4f9b176ae8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
