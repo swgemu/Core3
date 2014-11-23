@@ -1938,5 +1938,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isEventPerkDeed() {
 		return false;
 	}	
+	
+	@dirty
+	public native boolean isDataPad();
 }
 

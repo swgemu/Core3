@@ -70,9 +70,10 @@ public:
 
 		creature->info("transfer item misc");
 
-		/*StringBuffer infoMsg;
+		/*
+		StringBuffer infoMsg;
 		infoMsg << "target: 0x" << hex << target << " arguments" << arguments.toString();
-		creature->info(infoMsg.toString(), true);*/
+		creature->info(infoMsg.toString(), true); */
 
 		StringTokenizer tokenizer(arguments.toString());
 
@@ -89,30 +90,35 @@ public:
 		}
 
 		ManagedReference<SceneObject*> objectToTransfer = server->getZoneServer()->getObject(target);
+		ManagedReference<SceneObject*> objectsParent = objectToTransfer->getParent();
 
 		if (objectToTransfer == NULL) {
 			creature->error("objectToTransfer NULL in transfermisc command");
 			return GENERALERROR;
 		}
-
-		if (objectToTransfer->isStaticObject() || !objectToTransfer->isTangibleObject())
-			return GENERALERROR;
+		if (objectToTransfer->isStaticObject() || (!objectToTransfer->isTangibleObject())){
+			if (!objectToTransfer->isManufactureSchematic()){
+				return GENERALERROR;
+			}
+		}
 
 		if (!objectToTransfer->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER)) {
 			creature->sendSystemMessage("@error_message:perm_no_move");
 			return GENERALERROR;
 		}
 
-		ManagedReference<SceneObject*> objectsParent = objectToTransfer->getParent();
 
-		if (objectsParent == NULL)
+		if (objectsParent == NULL) {
 			return GENERALERROR;
+		}
 
-		if(objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR))
+		if(objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR)){
 			return GENERALERROR;
+		}
 
-		if (!objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
+		if (!objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT)){
 			return GENERALERROR;
+		}
 
 		for (int i = 0; i < objectToTransfer->getArrangementDescriptorSize(); ++i) {
 			Vector<String> descriptors = objectToTransfer->getArrangementDescriptor(i);
@@ -120,8 +126,9 @@ public:
 				String descriptor = descriptors.get(j);
 
 				if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
-						|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
+						|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair"){
 					return GENERALERROR;
+				}
 			}
 		}
 
@@ -133,19 +140,22 @@ public:
 			float maxDistance = 12.5;
 
 			if (!rootParent->isBuildingObject()) {
-				if (rootParent->getDistanceTo(creature) > maxDistance)
+				if (rootParent->getDistanceTo(creature) > maxDistance) {
 					return TOOFAR;
+				}
 			} else {
 				ManagedReference<SceneObject*> par = NULL;
 				ManagedReference<SceneObject*> obj = objectToTransfer;
 
-				if (rootParent->containsChildObject(objectToTransfer))
+				if (rootParent->containsChildObject(objectToTransfer)){
 					return INVALIDTARGET;
+				}
 
 				while ((par = obj->getParent()) != NULL) {
 					if (par->isCellObject()) {
-						if (obj->getDistanceTo(creature) > maxDistance)
+						if (obj->getDistanceTo(creature) > maxDistance) {
 							return TOOFAR;
+						}
 						else
 							break;
 					} else {
@@ -162,8 +172,9 @@ public:
 			return GENERALERROR;
 		}
 
-		if (destinationObject->isIntangibleObject())
+		if (destinationObject->isIntangibleObject()) {
 			return GENERALERROR;
+		}
 
 		String errorDescription;
 		int errorNumber = 0;
@@ -173,7 +184,6 @@ public:
 				creature->sendSystemMessage(errorDescription);
 			else
 				creature->error("cannot add objectToTransfer to destinationObject " + String::valueOf(errorNumber));
-
 			return GENERALERROR;
 		}
 
@@ -185,12 +195,17 @@ public:
 				return GENERALERROR;
 			}
 		}
-
-		if (objectToTransfer->isVendor() && !destinationObject->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR))
+		if(objectToTransfer->isManufactureSchematic() && !destinationObject->isDataPad()) {
 			return GENERALERROR;
+		}
 
-		if (!objectToTransfer->isVendor() && !destinationObject->checkContainerPermission(creature, ContainerPermissions::MOVEIN))
+		if (objectToTransfer->isVendor() && !destinationObject->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR)) {
 			return GENERALERROR;
+		}
+
+		if (!objectToTransfer->isVendor() && !destinationObject->checkContainerPermission(creature, ContainerPermissions::MOVEIN)) {
+			return GENERALERROR;
+		}
 
 		ZoneServer* zoneServer = server->getZoneServer();
 		ObjectController* objectController = zoneServer->getObjectController();
@@ -205,8 +220,9 @@ public:
 
 		Locker clocker(objectsParent, creature);
 
-		if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
+		if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true)){
 			return GENERALERROR;
+		}
 
 		if (clearWeapon) {
 			creature->setWeapon(NULL, true);

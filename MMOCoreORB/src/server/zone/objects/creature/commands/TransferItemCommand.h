@@ -64,7 +64,6 @@ public:
 			return INVALIDLOCOMOTION;
 
 		creature->info("transfer item command");
-
 		return SUCCESS;
 	}
 
