@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_c061e2d4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-23T04:27:53Z",
+      "side": 1,
+      "message": "Don\u0027t leave this debug statements enabled. Remove or comment please.",
+      "revId": "444d9eee36b8a3210841c404043b714659618023",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
