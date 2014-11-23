@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_c04a0255",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-11-23T04:13:37Z",
+      "side": 1,
+      "message": "Is this necessary? I don\u0027t see any case where the task wouldn\u0027t already be scheduled or about to be scheduled ( when this is called from inside addGroupModifiers() ). It just seems like a bunch of extra calls to this method for no gain.",
+      "revId": "cf684a1a22e07f16f292dad5a72282a71851cb8b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
