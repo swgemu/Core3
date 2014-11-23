@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_805e4ae8",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/sith_shadow_intro_theater.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-11-23T14:23:29Z",
+      "side": 1,
+      "message": "Move activation of this quest to Dathomir_go_to instead. That way we won\u0027t spread out the quests all over the code.",
+      "revId": "4c464cb0efd0cb4cd40f9ee14848f4c9055754fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_00725a7c",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/dathomir_go_to_Test.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-11-23T14:23:29Z",
+      "side": 1,
+      "message": "Add test for starting this quest to see that it activates the quest moved from the sith_shadow_intro_theater.lua file.",
+      "revId": "4c464cb0efd0cb4cd40f9ee14848f4c9055754fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_205d56ea",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/tests/sith_shadow_intro_theater_Test.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-11-23T14:23:29Z",
+      "side": 1,
+      "message": "Move this describe section and the one below into the describe section above. They are a continuation from the check above.",
+      "revId": "4c464cb0efd0cb4cd40f9ee14848f4c9055754fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_e06e1e96",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/tests/go_to_location_Test.lua",
+        "patchSetId": 21
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-11-23T14:23:29Z",
+      "side": 1,
+      "message": "Fix indentation here.\n\nAdd tests to see that the creation of the waypoint and active area are successful.",
+      "revId": "4c464cb0efd0cb4cd40f9ee14848f4c9055754fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
