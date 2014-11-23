@@ -244,23 +244,23 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 
 		// Verify resists
 		float kinetic = creature->getKinetic();
-		EXPECT_TRUE( kinetic >= -1 && kinetic <= 100 ) << "Kinetic resist is not a valid value on mobile: " << templateName;
+		EXPECT_TRUE( kinetic >= -1 && kinetic <= 200 ) << "Kinetic resist is not a valid value on mobile: " << templateName;
 		float energy = creature->getEnergy();
-		EXPECT_TRUE( energy >= -1 && energy <= 100 ) << "Energy resist is not a valid value on mobile: " << templateName;
+		EXPECT_TRUE( energy >= -1 && energy <= 200 ) << "Energy resist is not a valid value on mobile: " << templateName;
 		float electricity = creature->getElectricity();
-		EXPECT_TRUE( electricity >= -1 && electricity <= 100 ) << "Electricity resist is not a valid value on mobile: " << templateName;
+		EXPECT_TRUE( electricity >= -1 && electricity <= 200 ) << "Electricity resist is not a valid value on mobile: " << templateName;
 		float stun = creature->getStun();
-		EXPECT_TRUE( stun >= -1 && stun <= 100 ) << "Stun resist is not a valid value on mobile: " << templateName;
+		EXPECT_TRUE( stun >= -1 && stun <= 200 ) << "Stun resist is not a valid value on mobile: " << templateName;
 		float blast = creature->getBlast();
-		EXPECT_TRUE( blast >= -1 && blast <= 100 ) << "Blast resist is not a valid value on mobile: " << templateName;
+		EXPECT_TRUE( blast >= -1 && blast <= 200 ) << "Blast resist is not a valid value on mobile: " << templateName;
 		float heat = creature->getHeat();
-		EXPECT_TRUE( heat >= -1 && heat <= 100 ) << "Heat resist is not a valid value on mobile: " << templateName;
+		EXPECT_TRUE( heat >= -1 && heat <= 200 ) << "Heat resist is not a valid value on mobile: " << templateName;
 		float cold = creature->getCold();
-		EXPECT_TRUE( cold >= -1 && cold <= 100 ) << "Cold resist is not a valid value on mobile: " << templateName;
+		EXPECT_TRUE( cold >= -1 && cold <= 200 ) << "Cold resist is not a valid value on mobile: " << templateName;
 		float acid = creature->getAcid();
-		EXPECT_TRUE( acid >= -1 && acid <= 100 ) << "Acid resist is not a valid value on mobile: " << templateName;
+		EXPECT_TRUE( acid >= -1 && acid <= 200 ) << "Acid resist is not a valid value on mobile: " << templateName;
 		float lightSaber = creature->getLightSaber();
-		EXPECT_TRUE( lightSaber >= -1 && lightSaber <= 100 ) << "LightSaber resist is not a valid value on mobile: " << templateName;
+		EXPECT_TRUE( lightSaber >= -1 && lightSaber <= 200 ) << "LightSaber resist is not a valid value on mobile: " << templateName;
 
 		// Verify creature resources
 		String meat = creature->getMeatType();

@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/creature/variables/CreatureAttackMap.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
 #include "MobileOutfit.h"
 
@@ -105,39 +106,66 @@ public:
 	void readObject(LuaObject* templateData);
 
 	inline float getKinetic() {
-		return kinetic;
+		if (isSpecialProtection(WeaponObject::KINETIC))
+			return kinetic - 100;
+		else
+			return kinetic;
 	}
 
 	inline float getEnergy() {
-		return energy;
+		if (isSpecialProtection(WeaponObject::ENERGY))
+			return energy - 100;
+		else
+			return energy;
 	}
 
 	inline float getElectricity() {
-		return electricity;
+		if (isSpecialProtection(WeaponObject::ELECTRICITY))
+			return electricity - 100;
+		else
+			return electricity;
 	}
 
 	inline float getStun() {
-		return stun;
+		if (isSpecialProtection(WeaponObject::STUN))
+			return stun - 100;
+		else
+			return stun;
 	}
 
 	inline float getBlast() {
-		return blast;
+		if (isSpecialProtection(WeaponObject::BLAST))
+			return blast - 100;
+		else
+			return blast;
 	}
 
 	inline float getHeat() {
-		return heat;
+		if (isSpecialProtection(WeaponObject::HEAT))
+			return heat - 100;
+		else
+			return heat;
 	}
 
 	inline float getCold() {
-		return cold;
+		if (isSpecialProtection(WeaponObject::COLD))
+			return cold - 100;
+		else
+			return cold;
 	}
 
 	inline float getAcid() {
-		return acid;
+		if (isSpecialProtection(WeaponObject::ACID))
+			return acid - 100;
+		else
+			return acid;
 	}
 
 	inline float getLightSaber() {
-		return lightSaber;
+		if (isSpecialProtection(WeaponObject::LIGHTSABER))
+			return lightSaber - 100;
+		else
+			return lightSaber;
 	}
 
 	inline bool isStalker() {
@@ -346,6 +374,40 @@ public:
 
 	inline String getContainerComponentTemplate() {
 		return containerComponentTemplate;
+	}
+
+	inline bool isSpecialProtection(int resistType) {
+		switch (resistType) {
+		case WeaponObject::KINETIC:
+			return kinetic > 100;
+			break;
+		case WeaponObject::ENERGY:
+			return energy > 100;
+			break;
+		case WeaponObject::ELECTRICITY:
+			return electricity > 100;
+			break;
+		case WeaponObject::STUN:
+			return stun > 100;
+			break;
+		case WeaponObject::BLAST:
+			return blast > 100;
+			break;
+		case WeaponObject::HEAT:
+			return heat > 100;
+			break;
+		case WeaponObject::COLD:
+			return cold > 100;
+			break;
+		case WeaponObject::ACID:
+			return acid > 100;
+			break;
+		case WeaponObject::LIGHTSABER:
+			return lightSaber > 100;
+			break;
+		}
+
+		return false;
 	}
 };
 

@@ -732,7 +732,19 @@ class AiAgent extends CreatureObject {
 		
 		return npcTemplate.get().getLightSaber();
 	}
-	
+
+	@dirty
+	public abstract boolean isSpecialProtection(int resistType) {
+		if (petDeed != null) {
+			return false;
+		}
+
+		if (npcTemplate.get() == null)
+			return false;
+
+		return npcTemplate.get().isSpecialProtection(resistType);
+	}
+
 	@dirty
 	public boolean isStalker() {
 		if (npcTemplate.get() == null)
