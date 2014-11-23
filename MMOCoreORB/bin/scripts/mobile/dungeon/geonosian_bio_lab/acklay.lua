@@ -1,5 +1,6 @@
 acklay = Creature:new {
 	objectName = "@mob/creature_names:geonosian_acklay_bunker_boss",
+	customName = "Acklay",
 	socialGroup = "geonosian_creature",
 	pvpFaction = "",
 	faction = "",
@@ -11,7 +12,7 @@ acklay = Creature:new {
 	baseHAM = 96000,
 	baseHAMmax = 118000,
 	armor = 2,
-	resists = {40,45,55,55,45,45,40,40,-1},
+	resists = {130,145,155,155,145,30,30,30,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
