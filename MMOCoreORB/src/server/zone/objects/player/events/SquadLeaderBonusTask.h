@@ -8,6 +8,12 @@
 #ifndef SQUADLEADERBONUSTASK_H_
 #define SQUADLEADERBONUSTASK_H_
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace player {
+namespace events {
+
 class SquadLeaderBonusTask : public Task {
 	ManagedReference<CreatureObject*> player;
 
@@ -34,5 +40,11 @@ public:
 		}
 	}
 };
+
+} // namespace tasks
+} // namespace group
+} // namespace objects
+} // namespace player
+} // namespace events
 
 #endif /* SQUADLEADERBONUSTASK_H_ */
