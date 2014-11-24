@@ -1689,3 +1689,6 @@ bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object)
 int SceneObjectImplementation::getArrangementDescriptorSize() {
 	return templateObject->getArrangementDescriptors().size();
 }
+bool SceneObjectImplementation::isDataPad() {
+	return templateObject->getFullTemplateString().contains("datapad");
+}

@@ -133,7 +133,6 @@ void DroidDataStorageModuleDataComponent::initialize(CreatureObject* droid) {
 	if (droidInvorty)
 		droid->removeObject(droidInvorty,NULL,true);
 	droid->transferObject(inventory,4,true);
-
 }
 int DroidDataStorageModuleDataComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
 
