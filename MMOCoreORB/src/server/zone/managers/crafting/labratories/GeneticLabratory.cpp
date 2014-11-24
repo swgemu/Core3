@@ -148,17 +148,28 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	couMin = Genetics::initialValue(couMax);
 	fieMin = Genetics::initialValue(fieMax);
 	powMin = Genetics::initialValue(powMax);
+	bool spBlast = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::BLAST);
+	bool spKinetic = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::KINETIC);
+	bool spEnergy = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::ENERGY);
+	bool spHeat = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::HEAT);
+	bool spCold = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::COLD);
+	bool spElectric = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::ELECTRICITY);
+	bool spAcid = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::ACID);
+	bool spStun = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::STUN);
+	bool spSaber = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::LIGHTSABER);
 
+	// Need to revist now for special protections
 	float blastMax, energyMax, kineticMax,heatMax,coldMax,electricMax,acidMax,stunMax,saberMax;
-	blastMax = Genetics::resistanceFormula(phy->getBlast(),pro->getBlast(),men->getBlast(),psy->getBlast(),agr->getBlast(),100.0f);
-	kineticMax = Genetics::resistanceFormula(phy->getKinetic(),pro->getKinetic(),men->getKinetic(),psy->getKinetic(),agr->getKinetic(),60.0f);
-	energyMax = Genetics::resistanceFormula(phy->getEnergy(),pro->getEnergy(),men->getEnergy(),psy->getEnergy(),agr->getEnergy(),60.0f);
-	heatMax = Genetics::resistanceFormula(phy->getHeat(),pro->getHeat(),men->getHeat(),psy->getHeat(),agr->getHeat(),100.0f);
-	coldMax = Genetics::resistanceFormula(phy->getCold(),pro->getCold(),men->getCold(),psy->getCold(),agr->getCold(),100.0f);
-	electricMax = Genetics::resistanceFormula(phy->getElectric(),pro->getElectric(),men->getElectric(),psy->getElectric(),agr->getElectric(),100.0f);
-	acidMax = Genetics::resistanceFormula(phy->getAcid(),pro->getAcid(),men->getAcid(),psy->getAcid(),agr->getAcid(),100.0f);
-	stunMax = Genetics::resistanceFormula(phy->getStun(),pro->getStun(),men->getStun(),psy->getStun(),agr->getStun(),100.0f);
-	saberMax = Genetics::resistanceFormula(phy->getSaber(),pro->getSaber(),men->getSaber(),psy->getSaber(),agr->getSaber(),100.0f);
+	blastMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::BLAST,100.0f);
+	kineticMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::KINETIC,60.0f);
+	energyMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::ENERGY,60.0f);
+	heatMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::HEAT,100.0f);
+	coldMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::COLD,100.0f);
+	electricMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::ELECTRICITY,100.0f);
+	acidMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::ACID,100.0f);
+	stunMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::STUN,100.0f);
+	saberMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::LIGHTSABER,100.0f);
+
 	float blastMin, energyMin, kineticMin, heatMin, coldMin, electricMin, acidMin, stunMin, saberMin;
 	blastMin = Genetics::determineMinResistance(blastMax);
 	kineticMin = Genetics::determineMinResistance(kineticMax);
@@ -169,6 +180,25 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	acidMin = Genetics::determineMinResistance(acidMax);
 	stunMin = Genetics::determineMinResistance(stunMax);
 	saberMin = Genetics::determineMinResistance(saberMax);
+
+	if(saberMax < 0)
+		spSaber = false;
+	if (blastMax < 0)
+		spBlast = false;
+	if (kineticMax < 0)
+		spKinetic = false;
+	if (energyMax < 0)
+		spEnergy = false;
+	if (heatMax < 0)
+		spHeat = false;
+	if (coldMax < 0)
+		spCold = false;
+	if (electricMax < 0)
+		spElectric = false;
+	if(acidMax < 0)
+		spAcid = false;
+	if(stunMax < 0)
+		spStun = false;
 
 	craftingValues->addExperimentalProperty("expPhysiqueProfile","fortitude",fortMin,fortMax,0,false,CraftingManager::LINEARCOMBINE);
 	craftingValues->addExperimentalProperty("expPhysiqueProfile","hardiness",harMin,harMax,0,false,CraftingManager::LINEARCOMBINE);
@@ -191,25 +221,36 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->addExperimentalProperty("resists","dna_comp_armor_stun",stunMin,stunMax,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("resists","dna_comp_armor_saber",saberMin,saberMax,0,true,CraftingManager::OVERRIDECOMBINE);
 
-	craftingValues->setMaxPercentage("dna_comp_armor_kinetic",kineticMax < 0 ? 1: 0);
-	craftingValues->setMaxPercentage("dna_comp_armor_blast",blastMax < 0 ? 1: 0);
-	craftingValues->setMaxPercentage("dna_comp_armor_energy",energyMax < 0 ? 1: 0);
-	craftingValues->setMaxPercentage("dna_comp_armor_heat",heatMax < 0 ? 1: 0);
-	craftingValues->setMaxPercentage("dna_comp_armor_cold",coldMax < 0 ? 1: 0);
-	craftingValues->setMaxPercentage("dna_comp_armor_electric",electricMax < 0 ? 1: 0);
-	craftingValues->setMaxPercentage("dna_comp_armor_acid",acidMax < 0 ? 1: 0);
-	craftingValues->setMaxPercentage("dna_comp_armor_stun",stunMax < 0 ? 1: 0);
-	craftingValues->setMaxPercentage("dna_comp_armor_saber",saberMax < 0 ? 1: 0);
+	craftingValues->addExperimentalProperty("specials","kineticeffectiveness",spKinetic ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials","blasteffectiveness",spBlast ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials","energyeffectiveness",spEnergy ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials","heateffectiveness",spHeat ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials","coldeffectiveness",spCold ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials","electricityeffectiveness",spElectric ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("special","acideffectiveness",spAcid ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("special","stuneffectiveness",spStun ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("special","lightsabereffectiveness",spSaber ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
 
-	craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",kineticMax > 0 ? (kineticMin/kineticMax) * modifier: kineticMax /60);
-	craftingValues->setCurrentPercentage("dna_comp_armor_blast",blastMax > 0  ? (blastMin/blastMax) * modifier: blastMax/100);
-	craftingValues->setCurrentPercentage("dna_comp_armor_energy",energyMax > 0 ? (energyMin/energyMax) * modifier: energyMax/60);
-	craftingValues->setCurrentPercentage("dna_comp_armor_heat",heatMax > 0 ? (heatMin/heatMax) * modifier :heatMax/100);
-	craftingValues->setCurrentPercentage("dna_comp_armor_cold",coldMax > 0 ? (coldMin/coldMax) * modifier : coldMax/100);
-	craftingValues->setCurrentPercentage("dna_comp_armor_electric",electricMax > 0 ? (electricMin/electricMax) * modifier: electricMax/100);
-	craftingValues->setCurrentPercentage("dna_comp_armor_acid",acidMax > 0 ? (acidMin/acidMax) * modifier: acidMax/100);
-	craftingValues->setCurrentPercentage("dna_comp_armor_stun",stunMax > 0 ? (stunMin/stunMax) * modifier : stunMax /100);
-	craftingValues->setCurrentPercentage("dna_comp_armor_saber",saberMax > 0 ? (saberMin/saberMax) * modifier : saberMax/100);
+	craftingValues->setMaxPercentage("dna_comp_armor_kinetic",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_blast",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_energy",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_heat",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_cold",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_electric",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_acid",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_stun",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_saber",1);
+
+	craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",spKinetic ? 1 : (kineticMin/kineticMax) * modifier);
+	craftingValues->setCurrentPercentage("dna_comp_armor_blast",spBlast ? 1 : (blastMin/blastMax) * modifier);
+	craftingValues->setCurrentPercentage("dna_comp_armor_energy",spEnergy ? 1 : (energyMin/energyMax) * modifier);
+	craftingValues->setCurrentPercentage("dna_comp_armor_heat",spHeat ? 1: (heatMin/heatMax) * modifier );
+	craftingValues->setCurrentPercentage("dna_comp_armor_cold",spCold ? 1: (coldMin/coldMax) * modifier );
+	craftingValues->setCurrentPercentage("dna_comp_armor_electric",spElectric ? 1 : (electricMin/electricMax) * modifier);
+	craftingValues->setCurrentPercentage("dna_comp_armor_acid",spAcid ? 1 : (acidMin/acidMax) * modifier);
+	craftingValues->setCurrentPercentage("dna_comp_armor_stun",spStun ? 1: (stunMin/stunMax) * modifier);
+	craftingValues->setCurrentPercentage("dna_comp_armor_saber",spSaber ? 1: (saberMin/saberMax) * modifier);
+	// update special to be their calculated max
 
 	// Calc the max Percentage, vs Min Percentage genetic can always got up to 100% for a given title
 	craftingValues->setMaxPercentage("fortitude", Genetics::maxExperimentationPercentage(fortMin,harMin,fortMax,harMax));
@@ -471,23 +512,32 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		}
 	}
 	// we have an initial value: and a max value inrease by same percentage as the experimented row. so 10 points of great success would be 100% on the resist values
-	if (craftingValues->getMaxValue("dna_comp_armor_kinetic") > 0)
+	if (craftingValues->getCurrentPercentage("dna_comp_armor_kinetic") < 1)
 		craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",craftingValues->getCurrentPercentage("dna_comp_armor_kinetic") + boost);
-	if (craftingValues->getMaxValue("dna_comp_armor_blast") > 0)
+
+	if (craftingValues->getCurrentPercentage("dna_comp_armor_blast") < 1)
 		craftingValues->setCurrentPercentage("dna_comp_armor_blast",craftingValues->getCurrentPercentage("dna_comp_armor_blast") + boost);
-	if (craftingValues->getMaxValue("dna_comp_armor_energy") > 0)
+
+	if (craftingValues->getCurrentPercentage("dna_comp_armor_energy") < 1)
 		craftingValues->setCurrentPercentage("dna_comp_armor_energy",craftingValues->getCurrentPercentage("dna_comp_armor_energy") + boost);
-	if (craftingValues->getMaxValue("dna_comp_armor_heat") > 0)
+
+	if (craftingValues->getCurrentPercentage("dna_comp_armor_heat") < 1)
 		craftingValues->setCurrentPercentage("dna_comp_armor_heat",craftingValues->getCurrentPercentage("dna_comp_armor_heat") + boost);
-	if (craftingValues->getMaxValue("dna_comp_armor_cold") > 0)
+
+	if (craftingValues->getCurrentPercentage("dna_comp_armor_cold") < 1)
 		craftingValues->setCurrentPercentage("dna_comp_armor_cold",craftingValues->getCurrentPercentage("dna_comp_armor_cold") + boost);
-	if (craftingValues->getMaxValue("dna_comp_armor_electric") > 0)
+
+	if (craftingValues->getCurrentPercentage("dna_comp_armor_electric") < 1)
 		craftingValues->setCurrentPercentage("dna_comp_armor_electric",craftingValues->getCurrentPercentage("dna_comp_armor_electric") + boost);
-	if (craftingValues->getMaxValue("dna_comp_armor_acid") > 0)
+
+	if (craftingValues->getCurrentPercentage("dna_comp_armor_acid") < 1)
 		craftingValues->setCurrentPercentage("dna_comp_armor_acid",craftingValues->getCurrentPercentage("dna_comp_armor_acid") + boost);
-	if (craftingValues->getMaxValue("dna_comp_armor_stun") > 0)
+
+	if (craftingValues->getCurrentPercentage("dna_comp_armor_stun") < 1)
 		craftingValues->setCurrentPercentage("dna_comp_armor_stun",craftingValues->getCurrentPercentage("dna_comp_armor_stun") + boost);
-	if (craftingValues->getMaxValue("dna_comp_armor_saber") > 0)
+
+	if (craftingValues->getCurrentPercentage("dna_comp_armor_saber") < 1)
 		craftingValues->setCurrentPercentage("dna_comp_armor_saber",craftingValues->getCurrentPercentage("dna_comp_armor_saber") + boost);
+
 	recalculateResist(craftingValues);
 }

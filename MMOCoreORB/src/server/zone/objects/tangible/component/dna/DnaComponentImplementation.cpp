@@ -130,3 +130,9 @@ void DnaComponentImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	alm->insertAttribute("spec_atk_2",convertSpecialAttack(special2));
 	alm->insertAttribute("dna_comp_ranged_attack",ranged ? "Yes" : "No");
 }
+bool DnaComponentImplementation::isSpecialResist(int type) {
+	return specialResists & type;
+}
+void DnaComponentImplementation::setSpecialResist(int type) {
+	specialResists |= type;
+}

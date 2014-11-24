@@ -243,6 +243,24 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 			dexterity = component->getDexterity();
 			fortitude = component->getFortitude();
 			hardiness = component->getHardiness();
+			if (component->isSpecialResist(WeaponObject::KINETIC))
+				setSpecialResist(WeaponObject::KINETIC);
+			if (component->isSpecialResist(WeaponObject::ELECTRICITY))
+				setSpecialResist(WeaponObject::ELECTRICITY);
+			if (component->isSpecialResist(WeaponObject::ENERGY))
+				setSpecialResist(WeaponObject::ENERGY);
+			if (component->isSpecialResist(WeaponObject::ACID))
+				setSpecialResist(WeaponObject::ACID);
+			if (component->isSpecialResist(WeaponObject::BLAST))
+				setSpecialResist(WeaponObject::BLAST);
+			if (component->isSpecialResist(WeaponObject::COLD))
+				setSpecialResist(WeaponObject::COLD);
+			if (component->isSpecialResist(WeaponObject::HEAT))
+				setSpecialResist(WeaponObject::HEAT);
+			if (component->isSpecialResist(WeaponObject::LIGHTSABER))
+				setSpecialResist(WeaponObject::LIGHTSABER);
+			if (component->isSpecialResist(WeaponObject::STUN))
+				setSpecialResist(WeaponObject::STUN);
 		}
 	}
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
@@ -466,3 +484,9 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 	return DeedImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
+bool PetDeedImplementation::isSpecialResist(int type) {
+	return specialResists & type;
+}
+void PetDeedImplementation::setSpecialResist(int type) {
+	specialResists |= type;
+}

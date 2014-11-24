@@ -102,6 +102,7 @@ class PetDeed extends Deed {
 	protected unsigned int hardiness;
 	// sampling
 	protected int sampleCount;
+	protected int specialResists;
 	
 	@dereferenced
 	protected CreatureAttackMap attacks;
@@ -141,7 +142,13 @@ class PetDeed extends Deed {
 		hardiness = 0;	
 		quality = 7;
 		sampleCount = 0;	
+		specialResists = 0;
 	}
+	@dirty
+	public native void setSpecialResist(int type);
+	
+	@dirty
+	public native boolean isSpecialResist(int type);
 	
 	@dirty
 	public int getSampleCount() {

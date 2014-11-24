@@ -86,6 +86,7 @@ class GeneticComponent extends Component {
 	protected float speed;
 	protected int minDam;
 	protected int maxDam;
+	protected int specialResists;
 	
 	public GeneticComponent() {
 		Logger.setLoggingName("GeneticComponent");
@@ -121,7 +122,14 @@ class GeneticComponent extends Component {
 		speed = 0;
 		minDam = 1;
 		maxDam = 1;
+		specialResists = 0;
 	}
+	@dirty
+	public native void setSpecialResist(int type);
+	
+	@dirty
+	public native boolean isSpecialResist(int type);
+	
 	public void setStats(unsigned int cle, unsigned int end, unsigned int fie, unsigned int pow, 
 						    unsigned int ite, unsigned int cou, unsigned int dep, unsigned int dex, 
 						    unsigned int frt, unsigned int har){

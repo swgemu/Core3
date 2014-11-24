@@ -4,6 +4,7 @@
 #include "SharedLabratory.h"
 #include "engine/engine.h"
 #include "server/zone/managers/creature/DnaManager.h"
+#include "server/zone/objects/tangible/component/dna/DnaComponent.h"
 
 namespace server {
 namespace zone {
@@ -85,12 +86,90 @@ public:
 		float maxCount = maxACount > maxBCount ? maxACount : maxBCount;
 		return maxCount > 1 ? 1 : maxCount;
 	}
-	static float normalize(float a) {
-		return a < 0 ? -99 : a;
+	static bool hasASpecial(DnaComponent* a, DnaComponent* b, DnaComponent* c, DnaComponent* d, DnaComponent* e,int type) {
+		return a->isSpecialResist(type) || b->isSpecialResist(type) || c->isSpecialResist(type) || d->isSpecialResist(type) || e->isSpecialResist(type);
 	}
-	static float resistanceFormula(float a, float b, float c, float d, float e, float cap) {
-		float value = round((normalize(a) * 0.4) + (normalize(b) *0.25) + (normalize(c) * 0.05) + (normalize(d) * 0.05) + (normalize(e) * 0.25));
-		return value > cap ? cap : value;
+	static float normalize(float a,bool special, bool override) {
+		if(a < 0)
+			return -99;
+		if (special) {
+			return a;
+		}
+		if (override) {
+			return 0;
+		}
+	}
+	static float resistanceFormula(DnaComponent* a, DnaComponent* b, DnaComponent* c, DnaComponent* d, DnaComponent* e, int type, int max) {
+		float av,bv,cv,dv,ev;
+		bool any = false;
+		switch(type) {
+			case WeaponObject::ACID:
+				any = hasASpecial(a,b,c,d,e,type);
+				av = normalize(a->getAcid(),a->isSpecialResist(type),any);
+				bv = normalize(b->getAcid(),b->isSpecialResist(type),any);
+				cv = normalize(c->getAcid(),c->isSpecialResist(type),any);
+				dv = normalize(d->getAcid(),d->isSpecialResist(type),any);
+				ev = normalize(e->getAcid(),e->isSpecialResist(type),any);
+				break;
+			case WeaponObject::BLAST:
+				any = hasASpecial(a,b,c,d,e,type);
+				av = normalize(a->getBlast(),a->isSpecialResist(type),any);
+				bv = normalize(b->getBlast(),b->isSpecialResist(type),any);
+				cv = normalize(c->getBlast(),c->isSpecialResist(type),any);
+				dv = normalize(d->getBlast(),d->isSpecialResist(type),any);
+				ev = normalize(e->getBlast(),e->isSpecialResist(type),any);
+				break;
+			case WeaponObject::COLD:
+				any = hasASpecial(a,b,c,d,e,type);
+				av = normalize(a->getCold(),a->isSpecialResist(type),any);
+				bv = normalize(b->getCold(),b->isSpecialResist(type),any);
+				cv = normalize(c->getCold(),c->isSpecialResist(type),any);
+				dv = normalize(d->getCold(),d->isSpecialResist(type),any);
+				ev = normalize(e->getCold(),e->isSpecialResist(type),any);
+				break;
+			case WeaponObject::ELECTRICITY:
+				any = hasASpecial(a,b,c,d,e,type);
+				av = normalize(a->getElectric(),a->isSpecialResist(type),any);
+				bv = normalize(b->getElectric(),b->isSpecialResist(type),any);
+				cv = normalize(c->getElectric(),c->isSpecialResist(type),any);
+				dv = normalize(d->getElectric(),d->isSpecialResist(type),any);
+				ev = normalize(e->getElectric(),e->isSpecialResist(type),any);
+				break;
+			case WeaponObject::ENERGY:
+				any = hasASpecial(a,b,c,d,e,type);
+				av = normalize(a->getEnergy(),a->isSpecialResist(type),any);
+				bv = normalize(b->getEnergy(),b->isSpecialResist(type),any);
+				cv = normalize(c->getEnergy(),c->isSpecialResist(type),any);
+				dv = normalize(d->getEnergy(),d->isSpecialResist(type),any);
+				ev = normalize(e->getEnergy(),e->isSpecialResist(type),any);
+				break;
+			case WeaponObject::HEAT:
+				any = hasASpecial(a,b,c,d,e,type);
+				av = normalize(a->getHeat(),a->isSpecialResist(type),any);
+				bv = normalize(b->getHeat(),b->isSpecialResist(type),any);
+				cv = normalize(c->getHeat(),c->isSpecialResist(type),any);
+				dv = normalize(d->getHeat(),d->isSpecialResist(type),any);
+				ev = normalize(e->getHeat(),e->isSpecialResist(type),any);
+				break;
+			case WeaponObject::KINETIC:
+				any = hasASpecial(a,b,c,d,e,type);
+				av = normalize(a->getKinetic(),a->isSpecialResist(type),any);
+				bv = normalize(b->getKinetic(),b->isSpecialResist(type),any);
+				cv = normalize(c->getKinetic(),c->isSpecialResist(type),any);
+				dv = normalize(d->getKinetic(),d->isSpecialResist(type),any);
+				ev = normalize(e->getKinetic(),e->isSpecialResist(type),any);
+				break;
+			case WeaponObject::LIGHTSABER:
+				any = hasASpecial(a,b,c,d,e,type);
+				av = normalize(a->getSaber(),a->isSpecialResist(type),any);
+				bv = normalize(b->getSaber(),b->isSpecialResist(type),any);
+				cv = normalize(c->getSaber(),c->isSpecialResist(type),any);
+				dv = normalize(d->getSaber(),d->isSpecialResist(type),any);
+				ev = normalize(e->getSaber(),e->isSpecialResist(type),any);
+				break;
+		}
+		float value = round(physiqueFormula(av,bv,cv,dv,ev));
+		return value > max ? max : value;
 	}
 	static uint32 initialValue(float maxValue) {
 		return round(maxValue * ((maxValue/(float)1000)+0.15));
