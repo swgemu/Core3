@@ -1,4 +1,4 @@
-frenzied_young_flewt = Creature:new {
+frightened_young_flewt = Creature:new {
 	objectName = "@mob/creature_names:frightened_young_flewt",
 	socialGroup = "flewt",
 	pvpFaction = "",
@@ -35,4 +35,4 @@ frenzied_young_flewt = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(frenzied_young_flewt, "frenzied_young_flewt")
+CreatureTemplates:addCreatureTemplate(frightened_young_flewt, "frightened_young_flewt")
