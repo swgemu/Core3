@@ -98,6 +98,7 @@ public:
 		if (override) {
 			return 0;
 		}
+		return a;
 	}
 	static float resistanceFormula(DnaComponent* a, DnaComponent* b, DnaComponent* c, DnaComponent* d, DnaComponent* e, int type, int max) {
 		float av,bv,cv,dv,ev;
