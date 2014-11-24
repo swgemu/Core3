@@ -69,6 +69,9 @@ void Behavior::doAction(bool directlyExecuted) {
 	if (interface != NULL)
 		res = interface->doAction(agent);
 
+	if (agent == NULL)
+		return;
+
 	switch(res) {
 	case AiMap::SUCCESS:
 		endWithSuccess();
@@ -87,6 +90,7 @@ void Behavior::doAction(bool directlyExecuted) {
 		agent->activateMovementEvent();
 	else if (directlyExecuted) {
 		agent->setCurrentBehavior(parent->id);
+
 		parent->doAction(true);
 	}
 }
