@@ -79,7 +79,9 @@ class DnaComponent extends Component {
 	protected float stunResist;
 	protected float saberResist;
 	protected int sourceLevel;
-	
+	// we need to account for special protections in samples
+	protected int specialResists;
+		
 	public DnaComponent() {
 		Logger.setLoggingName("DnaComponent");
 		cleverness = 0;
@@ -108,6 +110,7 @@ class DnaComponent extends Component {
 		stunResist = 0;	
 		saberResist = -1;
 		sourceLevel = 1;
+		specialResists = 0;
 	}
 	public void setStats(unsigned int cle, unsigned int end, unsigned int fie, unsigned int pow, 
 						    unsigned int ite, unsigned int cou, unsigned int dep, unsigned int dex, 
@@ -123,6 +126,12 @@ class DnaComponent extends Component {
 		hardiness = har;
 		dexterity = dex;
 	}
+	
+	@dirty
+	public native void setSpecialResist(int type);
+	
+	@dirty
+	public native boolean isSpecialResist(int type);
 	
 	public void setCleverness(unsigned int value) {
 		cleverness = value;

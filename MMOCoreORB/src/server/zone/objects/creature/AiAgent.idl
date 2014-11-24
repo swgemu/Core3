@@ -736,7 +736,7 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public abstract boolean isSpecialProtection(int resistType) {
 		if (petDeed != null) {
-			return false;
+			return petDeed.isSpecialResist(resistType);
 		}
 
 		if (npcTemplate.get() == null)

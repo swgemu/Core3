@@ -53,47 +53,47 @@ void GeneticComponentImplementation::initializeTransientMembers() {
 }
 
 void GeneticComponentImplementation::resetResists(CraftingValues* values) {
-	if (stunResist > 0) {
+	if (stunResist > 0 && !isSpecialResist(WeaponObject::STUN)) {
 		stunResist = 0;
 		values->setCurrentValue("dna_comp_armor_stun", 0);
 		values->setCurrentPercentage("dna_comp_armor_stun",0);
 	}
-	if (kinResist > 0) {
+	if (kinResist > 0  && !isSpecialResist(WeaponObject::KINETIC)) {
 		kinResist = 0;
 		values->setCurrentValue("dna_comp_armor_kinetic", 0);
 		values->setCurrentPercentage("dna_comp_armor_kinetic",0);
 	}
-	if (saberResist > 0) {
+	if (saberResist > 0 && !isSpecialResist(WeaponObject::LIGHTSABER)) {
 		saberResist = 0;
 		values->setCurrentValue("dna_comp_armor_saber", 0);
 		values->setCurrentPercentage("dna_comp_armor_saber",0);
 	}
-	if (elecResist > 0){
+	if (elecResist > 0 && !isSpecialResist(WeaponObject::ELECTRICITY)){
 		elecResist = 0;
 		values->setCurrentValue("dna_comp_armor_electric", 0);
 		values->setCurrentPercentage("dna_comp_armor_electric",0);
 	}
-	if (acidResist > 0) {
+	if (acidResist > 0 && !isSpecialResist(WeaponObject::ACID)) {
 		acidResist = 0;
 		values->setCurrentValue("dna_comp_armor_acid", 0);
 		values->setCurrentPercentage("dna_comp_armor_acid",0);
 	}
-	if (coldResist > 0) {
+	if (coldResist > 0 && !isSpecialResist(WeaponObject::COLD)) {
 		coldResist = 0;
 		values->setCurrentValue("dna_comp_armor_cold", 0);
 		values->setCurrentPercentage("dna_comp_armor_cold",0);
 	}
-	if (heatResist > 0) {
+	if (heatResist > 0 && !isSpecialResist(WeaponObject::HEAT)) {
 		heatResist = 0;
 		values->setCurrentValue("dna_comp_armor_heat", 0);
 		values->setCurrentPercentage("dna_comp_armor_heat",0);
 	}
-	if (blastResist > 0) {
+	if (blastResist > 0 && !isSpecialResist(WeaponObject::BLAST)) {
 		blastResist = 0;
 		values->setCurrentValue("dna_comp_armor_blast", 0);
 		values->setCurrentPercentage("dna_comp_armor_blast",0);
 	}
-	if (energyResist > 0) {
+	if (energyResist > 0 && !isSpecialResist(WeaponObject::ENERGY)) {
 		energyResist = 0;
 		values->setCurrentValue("dna_comp_armor_energy", 0);
 		values->setCurrentPercentage("dna_comp_armor_energy",0);
@@ -122,6 +122,25 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	acidResist = values->getCurrentValue("dna_comp_armor_acid");
 	stunResist = values->getCurrentValue("dna_comp_armor_stun");
 	saberResist = values->getCurrentValue("dna_comp_armor_saber");
+	if (values->getCurrentValue("kineticeffectiveness") > 0)
+		setSpecialResist(WeaponObject::KINETIC);
+	if (values->getCurrentValue("blasteffectiveness") > 0)
+		setSpecialResist(WeaponObject::BLAST);
+	if (values->getCurrentValue("energyeffectiveness") > 0)
+		setSpecialResist(WeaponObject::ENERGY);
+	if (values->getCurrentValue("heateffectiveness") > 0)
+		setSpecialResist(WeaponObject::HEAT);
+	if (values->getCurrentValue("coldeffectiveness") > 0)
+		setSpecialResist(WeaponObject::COLD);
+	if (values->getCurrentValue("electricityeffectiveness") > 0)
+		setSpecialResist(WeaponObject::ELECTRICITY);
+	if (values->getCurrentValue("acideffectiveness") > 0)
+		setSpecialResist(WeaponObject::ACID);
+	if (values->getCurrentValue("stuneffectiveness") > 0)
+		setSpecialResist(WeaponObject::STUN);
+	if (values->getCurrentValue("lightsabereffectiveness") > 0)
+		setSpecialResist(WeaponObject::LIGHTSABER);
+
 	if (firstUpdate) {
 		if (fortitude > 500) {
 			armorRating = 1;
@@ -286,4 +305,10 @@ void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm
 	alm->insertAttribute("spec_atk_1",convertSpecialAttack(special1));
 	alm->insertAttribute("spec_atk_2",convertSpecialAttack(special2));
 	alm->insertAttribute("dna_comp_ranged_attack",ranged ? "Yes" : "No");
+}
+bool GeneticComponentImplementation::isSpecialResist(int type) {
+	return specialResists & type;
+}
+void GeneticComponentImplementation::setSpecialResist(int type) {
+	specialResists |= type;
 }

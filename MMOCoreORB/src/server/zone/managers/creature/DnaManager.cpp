@@ -253,6 +253,24 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	prototype->setArmorRating(deed->getArmor());
 	prototype->setSpecialAttackOne(deed->getSpecial1());
 	prototype->setSpecialAttackTwo(deed->getSpecial2());
+	if (deed->isSpecialResist(WeaponObject::STUN))
+		prototype->setSpecialResist(WeaponObject::STUN);
+	if (deed->isSpecialResist(WeaponObject::KINETIC))
+		prototype->setSpecialResist(WeaponObject::KINETIC);
+	if (deed->isSpecialResist(WeaponObject::ENERGY))
+		prototype->setSpecialResist(WeaponObject::ENERGY);
+	if (deed->isSpecialResist(WeaponObject::BLAST))
+		prototype->setSpecialResist(WeaponObject::BLAST);
+	if (deed->isSpecialResist(WeaponObject::HEAT))
+		prototype->setSpecialResist(WeaponObject::HEAT);
+	if (deed->isSpecialResist(WeaponObject::COLD))
+		prototype->setSpecialResist(WeaponObject::COLD);
+	if (deed->isSpecialResist(WeaponObject::ELECTRICITY))
+		prototype->setSpecialResist(WeaponObject::ELECTRICITY);
+	if (deed->isSpecialResist(WeaponObject::ACID))
+		prototype->setSpecialResist(WeaponObject::ACID);
+	if (deed->isSpecialResist(WeaponObject::LIGHTSABER))
+		prototype->setSpecialResist(WeaponObject::LIGHTSABER);
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
@@ -316,6 +334,26 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	prototype->setSaber(creatureTemplate->getLightSaber());
 	prototype->setRanged(creatureTemplate->getWeapons().size() > 0);
 	prototype->setArmorRating(creatureTemplate->getArmor());
+
+	if (creatureTemplate->isSpecialProtection(WeaponObject::STUN))
+		prototype->setSpecialResist(WeaponObject::STUN);
+	if (creatureTemplate->isSpecialProtection(WeaponObject::KINETIC))
+		prototype->setSpecialResist(WeaponObject::KINETIC);
+	if (creatureTemplate->isSpecialProtection(WeaponObject::ENERGY))
+		prototype->setSpecialResist(WeaponObject::ENERGY);
+	if (creatureTemplate->isSpecialProtection(WeaponObject::BLAST))
+		prototype->setSpecialResist(WeaponObject::BLAST);
+	if (creatureTemplate->isSpecialProtection(WeaponObject::HEAT))
+		prototype->setSpecialResist(WeaponObject::HEAT);
+	if (creatureTemplate->isSpecialProtection(WeaponObject::COLD))
+		prototype->setSpecialResist(WeaponObject::COLD);
+	if (creatureTemplate->isSpecialProtection(WeaponObject::ELECTRICITY))
+		prototype->setSpecialResist(WeaponObject::ELECTRICITY);
+	if (creatureTemplate->isSpecialProtection(WeaponObject::ACID))
+		prototype->setSpecialResist(WeaponObject::ACID);
+	if (creatureTemplate->isSpecialProtection(WeaponObject::LIGHTSABER))
+		prototype->setSpecialResist(WeaponObject::LIGHTSABER);
+
 	CreatureAttackMap* attackMap = creatureTemplate->getAttacks();
 	if (attackMap->size() > 0) {
 		prototype->setSpecialAttackOne(String(attackMap->getCommand(0)));
