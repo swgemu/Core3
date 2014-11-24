@@ -160,17 +160,7 @@ class EnhancePack extends PharmaceuticalObject {
 	}
 	
 	@dirty
-	public unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true) {
-		float power = getEffectiveness();
-
-		if (applyBattleFatigue)
-			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
-		
-		float modEnvironment = ((float) healer.getSkillMod("private_medical_rating") / 100);
-		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
-
-		return power * modEnvironment * (100 + modSkill) / 100;
-	}
+	public native unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true);
 	
 	@dirty
 	public float getEffectiveness() {

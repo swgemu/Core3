@@ -160,22 +160,7 @@ class WoundPack extends PharmaceuticalObject {
 	}
 	
 	@dirty
-	public unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true) {
-		float power = getEffectiveness();
-
-		if (applyBattleFatigue) {
-			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
-		}
-
-		if (isDroidReconstructionKit()) {
-			return power;
-		} else {
-			float modEnvironment = 1 + ((float) healer.getSkillMod("private_medical_rating") / 100.0f);	
-			float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
-
-			return (power * modEnvironment * (100.0f + modSkill) / 100.0f);
-		}
-	}
+	public native unsigned int calculatePower(CreatureObject healer, CreatureObject patient, boolean applyBattleFatigue = true);
 	
 	@dirty
 	public float getEffectiveness() {
