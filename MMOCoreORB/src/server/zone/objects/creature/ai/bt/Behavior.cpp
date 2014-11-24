@@ -77,16 +77,23 @@ void Behavior::doAction(bool directlyExecuted) {
 		endWithFailure();
 		break;
 	case AiMap::INVALID:
-		agent->resetBehaviorList();
+		if (agent != NULL) {
+			agent->resetBehaviorList();
+		}
 		break;
 	default:
 		break;
 	}
 
 	if (!finished() || parent == NULL)
-		agent->activateMovementEvent();
+		if (agent != NULL) {
+			agent->activateMovementEvent();
+		}
 	else if (directlyExecuted) {
-		agent->setCurrentBehavior(parent->id);
+		if (agent != NULL) {
+			agent->setCurrentBehavior(parent->id);
+		}
+
 		parent->doAction(true);
 	}
 }
