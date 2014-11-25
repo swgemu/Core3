@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_a0eee6b2",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-25T23:07:56Z",
+      "side": 1,
+      "message": "\"capacity\" typo in 2 lines above",
+      "revId": "d41a9d1798576d4bac0aedc2c85b741821850d41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6030ee56",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-25T23:07:56Z",
+      "side": 1,
+      "message": "Was the old stim moved back to player inventory?  Was it deleted?",
+      "revId": "d41a9d1798576d4bac0aedc2c85b741821850d41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_802beaea",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-25T23:07:56Z",
+      "side": 1,
+      "message": "Recommend moving this to a task (See DroidRepairModule).  TA had us move most of the pet commands to tasks on a different queue especially ones that would be triggered by chat commands.",
+      "revId": "d41a9d1798576d4bac0aedc2c85b741821850d41",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
