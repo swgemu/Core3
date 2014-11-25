@@ -64,6 +64,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		return SUCCESS;
+		// TODO find the pet by name in question and ask for a stimpack by pet name
 	}
 
 };
