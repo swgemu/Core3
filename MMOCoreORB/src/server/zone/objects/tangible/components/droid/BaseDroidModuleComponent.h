@@ -68,7 +68,8 @@ protected:
 	static const uint8 DATA_STORAGE_MODULE_OPEN  = 182;
 	static const uint8 REPAIR_MODULE_ACTIVATE  = 183;
 	static const uint8 REPAIR_MODULE_TRAIN  = 184;
-
+	static const uint8 LOAD_STIMPACK = 185;
+	static const uint8 REQUEST_STIMPACK = 186;
 public:
 	BaseDroidModuleComponent();
 	~BaseDroidModuleComponent();
