@@ -198,4 +198,7 @@ class StimPack extends PharmaceuticalObject {
 
 	@dirty
 	public native boolean isDroidRepairKit();
+	
+	@dirty
+	public native boolean isClassA();
 }
