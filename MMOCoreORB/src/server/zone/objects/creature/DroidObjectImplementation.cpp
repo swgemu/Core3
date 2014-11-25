@@ -305,3 +305,12 @@ void DroidObjectImplementation::handleChat(CreatureObject* speaker, const String
 		module->handlePetCommand( message, speaker );
 	}
 }
+BaseDroidModuleComponent* DroidObjectImplementation::getModule(const String& name) {
+	for(int i=0;i<modules.size();i++) {
+		BaseDroidModuleComponent* module = modules.get(i);
+		if(module->getModuleName() == name) {
+			return module;
+		}
+	}
+	return NULL;
+}
