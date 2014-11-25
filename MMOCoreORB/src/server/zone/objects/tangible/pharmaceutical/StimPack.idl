@@ -61,11 +61,13 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
 class StimPack extends PharmaceuticalObject {
 	protected float effectiveness;
+	protected int medicineClass;
 	
 	public StimPack() {
 		setLoggingName("StimPack");
 		
 		effectiveness = 0;
+		medicineClass = 0;
 	}
 	
 	@local
@@ -99,6 +101,7 @@ class StimPack extends PharmaceuticalObject {
 		
 		effectiveness = stimPackTemplate.getEffectiveness();
 		super.medicineUseRequired = stimPackTemplate.getMedicineUse();
+		medicineClass = stimPackTemplate.getMedicineClass();
 	}
 	
 	@dirty
@@ -198,4 +201,20 @@ class StimPack extends PharmaceuticalObject {
 
 	@dirty
 	public native boolean isDroidRepairKit();
+	
+	@dirty
+	public int getMedicineClass() {
+		return medicineClass;
+	}
+	
+	@dirty
+	public native boolean isClassA();
+	@dirty
+	public native boolean isClassB();
+	@dirty
+	public native boolean isClassC();
+	@dirty
+	public native boolean isClassD();
+	@dirty
+	public native boolean isClassE();
 }
