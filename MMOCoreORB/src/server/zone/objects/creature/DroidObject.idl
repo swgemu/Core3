@@ -239,6 +239,10 @@ class DroidObject extends AiAgent {
 	public native CraftingStation getCraftingStation(int type);	
 	
 	@local
+	@dirty
+	public native BaseDroidModuleComponent getModule(final string name);
+	
+	@local
 	public native void onStore();
 	@local
 	public native void onCall();

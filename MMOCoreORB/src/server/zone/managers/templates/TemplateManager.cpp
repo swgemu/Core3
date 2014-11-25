@@ -743,6 +743,13 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("THEATER", EventPerkDeedTemplate::THEATER);
 	luaTemplatesInstance->setGlobalInt("PERSONNEL", EventPerkDeedTemplate::PERSONNEL);
 	luaTemplatesInstance->setGlobalInt("GAME", EventPerkDeedTemplate::GAME);
+
+	luaTemplatesInstance->setGlobalInt("STIM_A", StimPackTemplate::STIM_A);
+	luaTemplatesInstance->setGlobalInt("STIM_B", StimPackTemplate::STIM_B);
+	luaTemplatesInstance->setGlobalInt("STIM_C", StimPackTemplate::STIM_C);
+	luaTemplatesInstance->setGlobalInt("STIM_D", StimPackTemplate::STIM_D);
+	luaTemplatesInstance->setGlobalInt("STIM_E", StimPackTemplate::STIM_E);
+
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {
