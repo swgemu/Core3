@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_607eaee6",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-26T01:20:35Z",
+      "side": 1,
+      "message": "still got a typo here",
+      "revId": "4f8d4ac716731d416d5eef2e8c281ea9cbcdc50e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
