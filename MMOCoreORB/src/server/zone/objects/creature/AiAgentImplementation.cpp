@@ -441,10 +441,6 @@ void AiAgentImplementation::doRecovery() {
 	activateStateRecovery();
 	activatePostureRecovery();
 
-	if (damageOverTimeList.hasDot() && damageOverTimeList.isNextTickPast()) {
-		damageOverTimeList.activateDots(_this.get());
-	}
-
 	// we only want to activate recovery if we need to -- it will restart when we need it
 	if (defenderList.size() > 0 || damageOverTimeList.hasDot()
 			|| getHAM(CreatureAttribute::HEALTH) < getMaxHAM(CreatureAttribute::HEALTH)

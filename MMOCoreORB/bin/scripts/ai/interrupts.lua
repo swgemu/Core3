@@ -188,9 +188,10 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 				agent:activateAwareness(pFollow) 
 			end
 		else agent:setOblivious() end
+	else
+		agent:setOblivious()
 	end
 
-	agent:activateRecovery();
 	agent:stopWaiting();
 	agent:executeBehavior();
 end
