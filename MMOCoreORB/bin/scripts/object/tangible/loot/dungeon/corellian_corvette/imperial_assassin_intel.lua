@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_dungeon_corellian_corvette_imperial_assassin_intel = object_tangible_loot_dungeon_corellian_corvette_shared_imperial_assassin_intel:new {
-
+	noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_imperial_assassin_intel, "object/tangible/loot/dungeon/corellian_corvette/imperial_assassin_intel.iff")

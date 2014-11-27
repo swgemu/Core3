@@ -51,6 +51,9 @@ includeFile("conversations/themepark/logic/mission_target_conv.lua")
 
 -- ** DUNGEONS **
 
+-- Corellian Corvette
+includeFile("conversations/dungeon/corellian_corvette/bronell_conv.lua")
+
 -- Death Watch Bunker
 includeFile("conversations/dungeon/death_watch_bunker/boba_fett_conv.lua")
 includeFile("conversations/dungeon/death_watch_bunker/lutin_nightstalker_conv.lua")
