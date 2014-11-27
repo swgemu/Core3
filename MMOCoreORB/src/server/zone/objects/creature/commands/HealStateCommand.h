@@ -286,6 +286,8 @@ public:
 			return GENERALERROR;
 		}
 
+		if (statePack->getState() != state)
+			state = statePack->getState();
 
 		if (!creatureTarget->removeStateBuff(state)) {
 			if (creature == creatureTarget)
