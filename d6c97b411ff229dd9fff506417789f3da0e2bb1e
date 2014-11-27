@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_40d172cc",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidStimpackTask.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-11-27T15:43:48Z",
+      "side": 1,
+      "message": "this is backwards, first argument is the object you want to be locked, second argument is the object that is already locked",
+      "revId": "d6c97b411ff229dd9fff506417789f3da0e2bb1e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_20d676c6",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-11-27T15:43:48Z",
+      "side": 1,
+      "message": "?",
+      "revId": "d6c97b411ff229dd9fff506417789f3da0e2bb1e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_00db7aee",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/pharmaceutical/StimPackImplementation.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-11-27T15:43:48Z",
+      "side": 1,
+      "message": "i would\u0027ve avoided checking for types like that.\n\nthat means if you add another object you would have to recompile, instead i would\u0027ve added some var to the template",
+      "revId": "d6c97b411ff229dd9fff506417789f3da0e2bb1e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
