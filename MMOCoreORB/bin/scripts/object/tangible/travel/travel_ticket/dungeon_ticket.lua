@@ -43,7 +43,8 @@
 
 object_tangible_travel_travel_ticket_dungeon_ticket = object_tangible_travel_travel_ticket_shared_dungeon_ticket:new {
 	attributeListComponent = "DungeonTicketObjectAttributeListComponent",
-	gameObjectType = 8210
+	gameObjectType = 8210,
+	noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_travel_travel_ticket_dungeon_ticket, "object/tangible/travel/travel_ticket/dungeon_ticket.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_dungeon_corellian_corvette_rebel_destroy_intel = object_tangible_loot_dungeon_corellian_corvette_shared_rebel_destroy_intel:new {
-
+	noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_rebel_destroy_intel, "object/tangible/loot/dungeon/corellian_corvette/rebel_destroy_intel.iff")

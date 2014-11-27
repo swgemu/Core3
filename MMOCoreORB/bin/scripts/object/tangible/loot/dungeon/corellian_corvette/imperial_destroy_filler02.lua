@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_dungeon_corellian_corvette_imperial_destroy_filler02 = object_tangible_loot_dungeon_corellian_corvette_shared_imperial_destroy_filler02:new {
-
+	noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_imperial_destroy_filler02, "object/tangible/loot/dungeon/corellian_corvette/imperial_destroy_filler02.iff")

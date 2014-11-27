@@ -24,15 +24,14 @@ bronell = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_corvette_neutral_bronell.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	conversationTemplate = "corvetteBronellConvoTemplate",
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(bronell, "bronell")

@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_dungeon_corellian_corvette_neutral_rescue_intel = object_tangible_loot_dungeon_corellian_corvette_shared_neutral_rescue_intel:new {
-
+	noTrade = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_dungeon_corellian_corvette_neutral_rescue_intel, "object/tangible/loot/dungeon/corellian_corvette/neutral_rescue_intel.iff")

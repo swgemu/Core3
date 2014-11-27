@@ -1486,16 +1486,19 @@ int DirectorManager::giveItem(lua_State* L) {
 	ManagedReference<SceneObject*> item = zoneServer->createObject(objectString.hashCode(), 1);
 
 	if (item != NULL && obj != NULL) {
-		obj->transferObject(item, slot, true);
+		if (obj->transferObject(item, slot, true)) {
+			item->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 
-		item->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
+			ManagedReference<SceneObject*> parent = item->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+			if (parent != NULL && parent->isPlayerCreature()) {
+				item->sendTo(parent, true);
+			}
 
-		ManagedReference<SceneObject*> parent = item->getParentRecursively(SceneObjectType::PLAYERCREATURE);
-		if (parent != NULL && parent->isPlayerCreature()) {
-			item->sendTo(parent, true);
+			lua_pushlightuserdata(L, item.get());
+		} else {
+			item->destroyObjectFromDatabase(true);
+			lua_pushnil(L);
 		}
-
-		lua_pushlightuserdata(L, item.get());
 	} else {
 		lua_pushnil(L);
 	}
