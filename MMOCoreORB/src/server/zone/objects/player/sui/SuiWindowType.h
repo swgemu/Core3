@@ -257,6 +257,7 @@ public:
 	static const uint16 COA_MESSAGE_FRAGMENT = 1024;
 	static const uint16 COA_MESSAGE = 1025;
 	static const uint16 DATA_STORAGE_UNIT_MESSAGE = 1026;
+	static const uint16 DROID_LOAD_STIMPACK = 1027;
 };
 
 #endif /*SuiWindowType_H_*/

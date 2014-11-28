@@ -104,6 +104,7 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 		iterator.getNextKeyAndValue(key, comp);
 		if (comp) {
 			comp->destroyObjectFromWorld(true);
+			comp->destroyObjectFromDatabase(true);
 		}
 	}
 	modules.removeAll();
