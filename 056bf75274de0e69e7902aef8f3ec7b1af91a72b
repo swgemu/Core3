@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_20ed568c",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-28T00:39:15Z",
+      "side": 1,
+      "message": "I think triggered modules like this shouldn\u0027t have a constant battery drain.  I think they should use power when triggered:  droid-\u003eusePower();   That\u0027s how I did the repair module.    Others like auto repair, harvest, effects, etc should use have constant increased drain when on.",
+      "revId": "056bf75274de0e69e7902aef8f3ec7b1af91a72b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
