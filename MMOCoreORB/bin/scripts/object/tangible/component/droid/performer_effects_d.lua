@@ -43,6 +43,10 @@
 
 object_tangible_component_droid_performer_effects_d = object_tangible_component_droid_shared_performer_effects_d:new {
 
+	templateType = DROIDEFFECTSMODULE,
+	dataObjectComponent = "DroidEffectsModuleDataComponent",
+	effectName = "@pet/droid_modules:droid_effect_mind_bloom",
+	animation = "clienteffect/droid_effect_mind_bloom.cef",
 
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
