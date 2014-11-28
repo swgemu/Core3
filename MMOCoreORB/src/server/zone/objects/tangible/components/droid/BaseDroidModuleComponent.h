@@ -70,6 +70,19 @@ protected:
 	static const uint8 REPAIR_MODULE_TRAIN  = 184;
 	static const uint8 LOAD_STIMPACK = 185;
 	static const uint8 REQUEST_STIMPACK = 186;
+	static const uint8 EFFECTS_MODULE_TOGGLE = 190;
+	static const uint8 EFFECTS_MODULE_SLOT1 = 191;
+	static const uint8 EFFECTS_MODULE_SLOT2 = 192;
+	static const uint8 EFFECTS_MODULE_SLOT3 = 193;
+	static const uint8 EFFECTS_MODULE_SLOT4 = 194;
+	static const uint8 EFFECTS_MODULE_SLOT5 = 195;
+	static const uint8 EFFECTS_MODULE_SLOT6 = 196;
+	static const uint8 EFFECTS_MODULE_SLOT7 = 197;
+	static const uint8 EFFECTS_MODULE_SLOT8 = 198;
+	static const uint8 EFFECTS_MODULE_SLOT9 = 199;
+	static const uint8 EFFECTS_MODULE_SLOT10 = 200;
+	static const uint8 EFFECTS_MODULE_CONFIGURE = 201;
+
 public:
 	BaseDroidModuleComponent();
 	~BaseDroidModuleComponent();

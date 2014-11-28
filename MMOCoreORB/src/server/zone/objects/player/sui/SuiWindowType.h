@@ -258,6 +258,8 @@ public:
 	static const uint16 COA_MESSAGE = 1025;
 	static const uint16 DATA_STORAGE_UNIT_MESSAGE = 1026;
 	static const uint16 DROID_LOAD_STIMPACK = 1027;
+	static const uint16 SELECT_DROID_EFFECT = 1028;
+	static const uint16 SELECT_DROID_EFFECT_DELAY = 1029;
 };
 
 #endif /*SuiWindowType_H_*/

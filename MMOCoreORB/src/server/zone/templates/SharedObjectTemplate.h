@@ -721,6 +721,12 @@ public:
 	virtual bool isDroidComponentTemplate() {
 	    	return false;
 	}
+	virtual bool isDroidCraftingModuleTemplate() {
+	    	return false;
+	}
+	virtual bool isDroidEffectsModuleTemplate() {
+	    	return false;
+	}
 };
 
 
