@@ -43,6 +43,10 @@
 
 object_tangible_component_droid_performer_effects_a = object_tangible_component_droid_shared_performer_effects_a:new {
 
+	templateType = DROIDEFFECTSMODULE,
+	dataObjectComponent = "DroidEffectsModuleDataComponent",
+	effectName = "@pet/droid_modules:droid_effect_foam",
+	animation = "clienteffect/droid_effect_foam.cef",
 
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
