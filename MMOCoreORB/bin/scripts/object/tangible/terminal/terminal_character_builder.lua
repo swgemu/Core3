@@ -2443,8 +2443,8 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Technical Console (Style 2)", "object/tangible/furniture/all/frn_all_technical_console_s02.iff",
 					"Large Toolchest", "object/tangible/furniture/all/frn_all_toolchest_lg_s01.iff",
 					"Small Toolchest", "object/tangible/furniture/all/frn_all_toolchest_med_s01.iff",
-					"Throwpillow (Red)", "object/tangible/furniture/all/frn_all_throwpillow_med_s01.iff",
-					"Throwpillow (Brown)", "object/tangible/furniture/all/frn_all_throwpillow_med_s02.iff",
+					"Throwpillow (Brown)", "object/tangible/furniture/all/frn_all_throwpillow_med_s01.iff",
+					"Throwpillow (Red)", "object/tangible/furniture/all/frn_all_throwpillow_med_s02.iff",
 					"Throwpillow (Blue)", "object/tangible/furniture/all/frn_all_throwpillow_med_s03.iff"
 				},			
 				"Elegant Furniture (COMPLETE)",
