@@ -93,6 +93,33 @@ class DroidObject extends AiAgent {
 	@dereferenced
 	protected Vector<BaseDroidModuleComponent> modules;       
 	
+	/**
+	 * Droid species for Identification
+	 */
+	public static final int ASSASSIN_DROID = 0xCB;
+	public static final int R_SERIES = 0xCC;
+	public static final int ROBO_BARTENDER = 0xCD;
+	public static final int BUG_DROID = 0xCE;
+	public static final int DARK_TROOPER_II = 0xCF;
+	public static final int DEMOLITION_MECH = 0xD0;
+	public static final int TT_8L_Y7 = 0xD1;
+	public static final int DROIDECA = 0xD2;
+	public static final int INTERROGATOR = 0xD3;
+	public static final int JEDI_TRAINING = 0xD4;
+	public static final int BLL = 0xD5;
+	public static final int MSE = 0xD6;
+	public static final int POWER_DROID = 0xD7;
+	public static final int PROBOT = 0xD8;
+	public static final int PROTOCOL = 0xD9;
+	public static final int LE_REPAIR = 0xDA;
+	public static final int MONK_SPIDER = 0xDB;
+	public static final int SURGICAL = 0xDC;
+	public static final int TT_8L = 0xDD;	
+	public static final int DZ70 = 0xDE;
+	public static final int TREADWELL = 0xDF;
+	public static final int PROBE_DROID = 0xE1;
+		
+	
 	public DroidObject() {
 		Logger.setLoggingName("DroidObject");
 		Logger.setLogging(false);
@@ -375,5 +402,7 @@ class DroidObject extends AiAgent {
 		else{
 			return super.getLightSaber();
 		}				
-	}	
+	}
+	@dirty
+	public native boolean isAdvancedModel();	
 }
