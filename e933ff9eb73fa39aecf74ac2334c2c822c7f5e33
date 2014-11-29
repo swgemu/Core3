@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_a02b8693",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidEffectsTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2014-11-29T20:23:13Z",
+      "side": 1,
+      "message": "you should put the drain in here for power when it fires the effect off",
+      "revId": "e933ff9eb73fa39aecf74ac2334c2c822c7f5e33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_0025bac1",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2014-11-29T20:23:13Z",
+      "side": 1,
+      "message": "you should really try to find the string for this",
+      "revId": "e933ff9eb73fa39aecf74ac2334c2c822c7f5e33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_e0217eb5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2014-11-29T20:23:13Z",
+      "side": 1,
+      "message": "we do really need to wire in this call to the base droid to trigger drain checks, unless i missed that some where",
+      "revId": "e933ff9eb73fa39aecf74ac2334c2c822c7f5e33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_c02e82a5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2014-11-29T20:23:13Z",
+      "side": 1,
+      "message": "you forgot the copy method",
+      "revId": "e933ff9eb73fa39aecf74ac2334c2c822c7f5e33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
