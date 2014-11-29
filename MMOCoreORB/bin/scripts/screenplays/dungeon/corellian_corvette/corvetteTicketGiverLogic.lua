@@ -229,6 +229,11 @@ function CorvetteTicketGiverLogic:giveTicket(pPlayer)
 
 	local pItem = giveItem(pInventory, ticketTemplate, -1)
 	if pItem ~= nil then
+		local ticket = LuaTicketObject(pItem)
+		ticket:setDeparturePlanet(self.ticketInfo.depPlanet)
+		ticket:setDeparturePoint(self.ticketInfo.faction)
+		ticket:setArrivalPlanet(self.ticketInfo.missionType)
+		ticket:setArrivalPoint(self.ticketInfo.faction)
 		SceneObject(pItem):sendTo(pPlayer)
 	end
 end
