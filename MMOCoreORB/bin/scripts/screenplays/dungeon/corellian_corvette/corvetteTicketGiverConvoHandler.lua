@@ -53,7 +53,7 @@ function CorvetteTicketGiverConvoHandler:getInitialScreen(pPlayer, pNpc, pConver
 	local activeQuest = getQuestStatus(player:getObjectID() .. ":activeCorvetteQuest")
 	local activeStep = tonumber(getQuestStatus(player:getObjectID() .. ":activeCorvetteStep"))
 
-	if (self.ticketGiver:hasEliteCombatProfession(pPlayer) == false) then
+	if (ThemeParkLogic:hasEliteCombatProfession(pPlayer) == false) then
 		return convoTemplate:getScreen("no_business")
 	elseif (activeQuest ~= nil and activeQuest ~= self.ticketGiver.giverName) then
 		return convoTemplate:getScreen("already_busy")

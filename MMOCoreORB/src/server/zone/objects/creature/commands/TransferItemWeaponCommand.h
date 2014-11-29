@@ -90,7 +90,7 @@ public:
 		ManagedReference<SceneObject*> objectToTransfer = server->getZoneServer()->getObject(target);
 
 		if (objectToTransfer == NULL) {
-			creature->error("objectToTransfer NULL in transfermiscweapon command");
+			creature->error("objectToTransfer NULL in transferItemWeapon command");
 			return GENERALERROR;
 		}
 
@@ -106,7 +106,7 @@ public:
 			return GENERALERROR;
 
 		if (!objectToTransfer->isWeaponObject() && !objectToTransfer->isInstrument() && !objectToTransfer->isFishingPoleObject()) {
-			creature->error("objectToTransfer is neither a weapon object nor an instrument/fishing pole in transferitemweapon");
+			creature->error("objectToTransfer is neither a weapon object nor an instrument/fishing pole in transferItemWeapon");
 			return GENERALERROR;
 		}
 
@@ -116,12 +116,12 @@ public:
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {
-			creature->error("destinationObject NULL in tansfermiscweapon command");
+			creature->error("destinationObject NULL in tansferItemWeapon command");
 			return GENERALERROR;
 		}
 
 		if (destinationObject != creature) {
-			creature->error("destinationObject is not creature in transfermiscweapon command");
+			creature->error("destinationObject is not creature in transferItemWeapon command");
 			return GENERALERROR;
 		}
 
@@ -129,7 +129,7 @@ public:
 			ManagedReference<SceneObject*> parent = objectToTransfer->getParent();
 
 			if (parent == NULL) {
-				creature->error("objectToTransfer parent is NULL in transfermiscweapon command");
+				creature->error("objectToTransfer parent is NULL in transferItemWeapon command");
 				return GENERALERROR;
 			}
 
@@ -197,7 +197,7 @@ public:
 			}
 
 		} else {
-			creature->error("unknown transferType in transfermiscweapon command");
+			creature->error("unknown transferType in transferItemWeapon command");
 		}
 
 		return SUCCESS;

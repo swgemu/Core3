@@ -93,7 +93,7 @@ public:
 		ManagedReference<SceneObject*> objectsParent = objectToTransfer->getParent();
 
 		if (objectToTransfer == NULL) {
-			creature->error("objectToTransfer NULL in transfermisc command");
+			creature->error("objectToTransfer NULL in transferItemMisc command");
 			return GENERALERROR;
 		}
 		if (objectToTransfer->isStaticObject() || (!objectToTransfer->isTangibleObject())){
@@ -168,7 +168,7 @@ public:
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
 
 		if (destinationObject == NULL) {
-			creature->error("destinationObject NULL in tansfermisc command");
+			creature->error("destinationObject NULL in tansferItemMisc command");
 			return GENERALERROR;
 		}
 
@@ -229,6 +229,11 @@ public:
 
 			if (creature->hasBuff(String("centerofbeing").hashCode()))
 				creature->removeBuff(String("centerofbeing").hashCode());
+
+			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+			if (playerManager != NULL) {
+				creature->setLevel(playerManager->calculatePlayerLevel(creature));
+			}
 		}
 
 		if (notifyLooted) {

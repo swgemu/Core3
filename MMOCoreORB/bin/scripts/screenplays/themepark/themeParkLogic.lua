@@ -1165,9 +1165,7 @@ end
 
 function ThemeParkLogic:hasEliteCombatProfession(pPlayer)
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		return player:hasSkill("combat_1hsword_novice") or player:hasSkill("combat_2hsword_novice") or player:hasSkill("combat_bountyhunter_novice") or player:hasSkill("combat_carbine_novice")
-			or player:hasSkill("combat_commando_novice") or player:hasSkill("combat_pistol_novice") or player:hasSkill("combat_polearm_novice") or player:hasSkill("combat_rifleman_novice")
-			or player:hasSkill("combat_smuggler_novice") or player:hasSkill("combat_unarmed_novice") or player:hasSkill("science_combatmedic_novice")
+		return player:getLevel() > 6
 	end)
 end
 
