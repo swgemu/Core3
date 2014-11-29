@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a51691d_20179653",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidEffectsTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-29T21:49:25Z",
+      "side": 1,
+      "message": "I thought this was more like the auto-repair task where it had a higher drain whenever it was on.  I think putting a drain here could make the battery life far too low if an effect was going off every 3s.",
+      "parentUuid": "7a51691d_a02b8693",
+      "revId": "e933ff9eb73fa39aecf74ac2334c2c822c7f5e33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a51691d_0025bac1",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-11-29T20:23:13Z",
       "side": 1,
       "message": "you should really try to find the string for this",
+      "revId": "e933ff9eb73fa39aecf74ac2334c2c822c7f5e33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_000c9a41",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-29T21:49:25Z",
+      "side": 1,
+      "message": "I didn\u0027t see one at a glance, but I\u0027ll look again.  I also didn\u0027t see one asking them to select a delay.",
+      "parentUuid": "7a51691d_0025bac1",
       "revId": "e933ff9eb73fa39aecf74ac2334c2c822c7f5e33",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "7a51691d_e0085e2f",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-29T21:49:25Z",
+      "side": 1,
+      "message": "No, it still needs to be done.  And calling deactivate() on all modules when power hits zero.",
+      "parentUuid": "7a51691d_e0217eb5",
+      "revId": "e933ff9eb73fa39aecf74ac2334c2c822c7f5e33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a51691d_c02e82a5",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.h",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2014-11-29T20:23:13Z",
       "side": 1,
       "message": "you forgot the copy method",
+      "revId": "e933ff9eb73fa39aecf74ac2334c2c822c7f5e33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_40129263",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-11-29T21:49:25Z",
+      "side": 1,
+      "message": "Nothing to copy.  Everything comes from the template.",
+      "parentUuid": "7a51691d_c02e82a5",
       "revId": "e933ff9eb73fa39aecf74ac2334c2c822c7f5e33",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
