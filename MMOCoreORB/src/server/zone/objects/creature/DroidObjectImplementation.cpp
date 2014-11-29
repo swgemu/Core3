@@ -229,8 +229,8 @@ void DroidObjectImplementation::handleLowPower(){
 
 bool DroidObjectImplementation::isPowerDroid(){
 
-	return getObjectTemplate()->getFullTemplateString().contains( "eg_6_power_droid" );
-
+	return POWER_DROID == species;
+	//getObjectTemplate()->getFullTemplateString().contains( "eg_6_power_droid" );
 }
 void DroidObjectImplementation::initDroidModules(){
 	modules.removeAll();
@@ -313,4 +313,7 @@ BaseDroidModuleComponent* DroidObjectImplementation::getModule(const String& nam
 		}
 	}
 	return NULL;
+}
+bool DroidObjectImplementation::isAdvancedModel() {
+	return getCreatureTemplate()->getObjectName().contains("advanced");
 }
