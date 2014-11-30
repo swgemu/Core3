@@ -143,6 +143,8 @@ private:
 
 		if( droidHealed ){
 			droid->showFlyText("npc_reaction/flytext","repaired", 0, 153, 0); // "*Repaired*"
+			droid->playEffect("clienteffect/healing_healdamage.cef", "");
+			healer->doAnimation("heal_other");
 		}
 
 	}
