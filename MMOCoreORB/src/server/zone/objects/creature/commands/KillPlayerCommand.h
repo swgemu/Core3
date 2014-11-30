@@ -72,7 +72,7 @@ public:
 
 		//Explain syntax
 		if (arguments.isEmpty() && target == 0) {
-			creature->sendSystemMessage("Syntax: /killPlayer [player name] [-area [range]] [<health> [action] [mind]]");
+			creature->sendSystemMessage("Syntax: /killPlayer [player name] [-area [range]] -wounds [<health> [action] [mind]]");
 			return GENERALERROR;
 		}
 
@@ -99,6 +99,7 @@ public:
 
 		//Initialize components used to kill nearby creatures
 		bool area = false;
+		bool wounds = false;
 		bool damage = false;
 		float range = 64;
 
@@ -120,7 +121,7 @@ public:
 				//Help Syntax
 				if (arg.toLowerCase() == "-help" || arg == "-H") {
 					validOption = true;
-					creature->sendSystemMessage("Syntax: /kill [-area [range]] [<health> [action] [mind]]");
+					creature->sendSystemMessage("Syntax: /kill [-area [range]] [-wounds] [<health> [action] [mind]]");
 					return GENERALERROR;
 				}
 
@@ -136,6 +137,12 @@ public:
 							return INVALIDPARAMETERS;
 						}
 					}
+				}
+
+				//Make command apply wounds as well as damage
+				if (arg.toLowerCase() == "-wounds" || arg == "-w") {
+					validOption = true;
+					wounds = true;
 				}
 
 				if (!validOption) {
@@ -222,6 +229,18 @@ public:
 							targetPlayer->inflictDamage(creature, 3, actionDamage, true, true);
 							targetPlayer->inflictDamage(creature, 6, mindDamage, true, true);
 
+							if( wounds ){
+								targetPlayer->addWounds( 0, healthDamage, true );
+								targetPlayer->addWounds( 1, healthDamage, true );
+								targetPlayer->addWounds( 2, healthDamage, true );
+								targetPlayer->addWounds( 3, actionDamage, true );
+								targetPlayer->addWounds( 4, actionDamage, true );
+								targetPlayer->addWounds( 5, actionDamage, true );
+								targetPlayer->addWounds( 6, mindDamage, true );
+								targetPlayer->addWounds( 7, mindDamage, true );
+								targetPlayer->addWounds( 8, mindDamage, true );
+							}
+
 							if (targetPlayer->isPlayerCreature())
 								targetPlayer->sendSystemMessage("You have been damaged!");
 
@@ -274,6 +293,18 @@ public:
 					targetPlayer->inflictDamage(creature, 0, healthDamage, true, true);
 					targetPlayer->inflictDamage(creature, 3, actionDamage, true, true);
 					targetPlayer->inflictDamage(creature, 6, mindDamage, true, true);
+
+					if( wounds ){
+						targetPlayer->addWounds( 0, healthDamage, true );
+						targetPlayer->addWounds( 1, healthDamage, true );
+						targetPlayer->addWounds( 2, healthDamage, true );
+						targetPlayer->addWounds( 3, actionDamage, true );
+						targetPlayer->addWounds( 4, actionDamage, true );
+						targetPlayer->addWounds( 5, actionDamage, true );
+						targetPlayer->addWounds( 6, mindDamage, true );
+						targetPlayer->addWounds( 7, mindDamage, true );
+						targetPlayer->addWounds( 8, mindDamage, true );
+					}
 
 					if (targetPlayer->isPlayerCreature())
 						creature->sendSystemMessage(targetPlayer->getFirstName() + " damaged.");
