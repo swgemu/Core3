@@ -1345,7 +1345,8 @@ void CreatureObjectImplementation::removeAllSkillModsOfType(const int modType, b
 			VectorMapEntry<String, int>* entry = &modGroup->elementAt(i);
 			String key = entry->getKey();
 			int val = entry->getValue();
-			removeSkillMod(SkillModManager::CITY, key, val, true);
+			// use the type instead of hardcoding CITY here
+			removeSkillMod(modType, key, val, true);
 		}
 	} else {
 		modGroup->removeAll();
