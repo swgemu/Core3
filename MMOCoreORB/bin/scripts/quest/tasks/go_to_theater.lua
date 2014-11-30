@@ -161,7 +161,7 @@ end
 
 -- Handle the despawn event.
 -- @param pCreatureObject pointer to the creature object of the player that the event was triggered for.
-function GoToTheater:handleDespawnEvent(pCreatureObject)
+function GoToTheater:handleDespawnTheater(pCreatureObject)
 	self:finish(pCreatureObject)
 end
 
