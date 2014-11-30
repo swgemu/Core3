@@ -100,6 +100,7 @@ public:
 	const static int WEARABLE = 0x1001; /// From Wearable items
 	const static int STRUCTURE = 0x1002; /// From Structures creature is in
 	const static int CITY = 0x1003; // From Cities
+	const static int DROID = 0x1004; // From medical droid modules
 
 	// Temp Mod
 	const static int TEMPORARYMOD = 0x10000;

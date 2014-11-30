@@ -16,7 +16,7 @@ uint32 WoundPackImplementation::calculatePower(CreatureObject* healer, CreatureO
 	if (isDroidReconstructionKit()) {
 		return power;
 	} else {
-		int droidBuff = healer->getSkillModOfType("private_medical_rating",SkillModManager::TEMPORARYMOD);
+		int droidBuff = healer->getSkillModOfType("private_medical_rating",SkillModManager::DROID);
 		int bldBuff = healer->getSkillModOfType("private_medical_rating", SkillModManager::STRUCTURE);
 		int mod = healer->getSkillModOfType("private_medical_rating", SkillModManager::CITY);
 		mod +=  droidBuff > bldBuff ? droidBuff : bldBuff;

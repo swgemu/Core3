@@ -127,6 +127,10 @@ void SkillModManager::setDefaults() {
 
 	skillModMin.put(BUFF, -125);
 	skillModMax.put(BUFF, 125);
+
+	skillModMin.put(DROID, -110);
+	skillModMax.put(DROID, 110);
+
 }
 
 void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {

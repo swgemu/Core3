@@ -7,7 +7,7 @@ uint32 EnhancePackImplementation::calculatePower(CreatureObject* healer, Creatur
 
 		if (applyBattleFatigue)
 			power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
-		int droidBuff = healer->getSkillModOfType("private_medical_rating",SkillModManager::TEMPORARYMOD);
+		int droidBuff = healer->getSkillModOfType("private_medical_rating",SkillModManager::DROID);
 		int bldBuff = healer->getSkillModOfType("private_medical_rating", SkillModManager::STRUCTURE);
 		int mod = healer->getSkillModOfType("private_medical_rating", SkillModManager::CITY);
 		mod +=  droidBuff > bldBuff ? droidBuff : bldBuff;
