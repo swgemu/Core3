@@ -203,11 +203,11 @@ KraytSkullContainerComponent = {}
 
 function KraytSkullContainerComponent:transferObject(pContainer, pObj, slot)
 	local pPlayer = KraytDragonSkull:getObjOwner(pObj)
-	
+
 	if (pPlayer == nil) then
 		return 0
 	end
-	
+
 	if (SceneObject(pContainer):getObjectName() == "borvo_the_hutt") then
 		local object = SceneObject(pObj)
 		if (object:getTemplateObjectPath() == "object/tangible/loot/quest/huff_quest_borvos_money.iff") then
@@ -235,22 +235,22 @@ function KraytSkullContainerComponent:transferObject(pContainer, pObj, slot)
 			return 0
 		end
 	end
-	
+
 	return 0
 end
 
 function KraytSkullContainerComponent:canAddObject(pContainer, pObj, slot)
 	local pPlayer = KraytDragonSkull:getObjOwner(pObj)
-	
+
 	if (pPlayer == nil) then
 		return -1
 	end
-	
+
 	if (SceneObject(pContainer):getObjectName() == "borvo_the_hutt" and CreatureObject(pPlayer):hasScreenPlayState(1, "krayt_skull_epic_quest") == 1) or
 		(SceneObject(pContainer):getCustomObjectName() == "Huff Darklighter" and CreatureObject(pPlayer):hasScreenPlayState(2, "krayt_skull_epic_quest") == 1) then
 		return -1
 	else
-		return 1
+		return true
 	end
 end
 
@@ -268,21 +268,21 @@ end
 
 function KraytDragonSkull:getObjOwner(pObj)
 	local pPlayerInv = SceneObject(pObj):getParent()
-	
+
 	if (pPlayerInv == nil) then
 		return nil
 	end
-	
+
 	local parent = SceneObject(pPlayerInv):getParent()
-	
+
 	if (parent == nil) then
 		return nil
 	end
-	
+
 	if (SceneObject(parent):isCreatureObject()) then
 		return parent
 	end
-	
+
 	return nil
 end
 
