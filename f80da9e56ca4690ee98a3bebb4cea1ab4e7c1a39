@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_3b57cb04",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1879,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2014-11-30T06:42:20Z",
+      "side": 1,
+      "message": "We don\u0027t want to drop all commands here, just CombatQueueCommands",
+      "revId": "f80da9e56ca4690ee98a3bebb4cea1ab4e7c1a39",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
