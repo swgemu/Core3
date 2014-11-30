@@ -58,7 +58,9 @@ public:
 
 		if( targetHealed ){
 			droidPet->usePower( 10 );
+			droidPet->doAnimation("heal_other");
 			targetDroid->showFlyText("npc_reaction/flytext","repaired", 0, 153, 0); // "*Repaired*"
+			targetDroid->playEffect("clienteffect/healing_healdamage.cef", "");
 		}
 
 		return SUCCESS;
