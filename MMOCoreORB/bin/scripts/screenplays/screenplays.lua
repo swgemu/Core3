@@ -2,6 +2,7 @@ package.path = package.path .. ";scripts/screenplays/themepark/?.lua;scripts/scr
 require("screenplay")
 require("themeParkLogic")
 require("corvetteTicketGiverLogic")
+require("corvetteTicketTakerLogic")
 
 -- Theme parks
 includeFile("themepark/conversations/goru_conv_handler.lua")
@@ -29,7 +30,9 @@ includeFile("dungeon/geonosian_lab/geo_lab.lua")
 includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 includeFile("dungeon/corellian_corvette/corvetteTicketGiverConvoHandler.lua")
+includeFile("dungeon/corellian_corvette/corvetteTicketTakerConvoHandler.lua")
 includeFile("dungeon/corellian_corvette/bronell.lua")
+includeFile("dungeon/corellian_corvette/klaatu.lua")
 
 -- Village
 includeFile("village/fs_experience_converter_conv_handler.lua")

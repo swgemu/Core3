@@ -241,7 +241,7 @@ good_intel = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		{"@conversation/corvette_bronell_neutral_assassin:s_3c2e92a","go_to_corvette"}, -- Alright, but how do I get to the corvette?
-		{"@conversation/corvette_bronell_neutral_assassin:s_3e2e8616","disappointed"} -- Sorry, I have other things to do. Erase all knowledge of my progress.
+		{"@conversation/corvette_bronell_neutral_assassin:s_3e2e8616","too_disappointed"} -- Sorry, I have other things to do. Erase all knowledge of my progress.
 	}
 }
 
@@ -256,8 +256,8 @@ go_to_corvette = ConvoScreen:new {
 
 corvetteBronellConvoTemplate:addScreen(go_to_corvette);
 
-disappointed = ConvoScreen:new {
-	id = "disappointed",
+too_disappointed = ConvoScreen:new {
+	id = "too_disappointed",
 	leftDialog = "@conversation/corvette_bronell_neutral_assassin:s_f8c79456", -- Our bountiful Lord will be most disappointed by your attitude, maybe a bit too disappointed, yes? I'll be forced to take all documents from you that relate to this endeavor, yes?
 	stopConversation = "false",
 	options = {
@@ -266,7 +266,7 @@ disappointed = ConvoScreen:new {
 	}
 }
 
-corvetteBronellConvoTemplate:addScreen(disappointed);
+corvetteBronellConvoTemplate:addScreen(too_disappointed);
 
 reset3 = ConvoScreen:new {
 	id = "reset3",

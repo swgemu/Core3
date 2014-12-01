@@ -10,21 +10,22 @@ end
 
 function CorvetteTicketGiverConvoHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
 	local player = CreatureObject(pConversingPlayer)
+	local playerID = player:getObjectID()
 	local screen = LuaConversationScreen(pConversationScreen)
 	local screenID = screen:getScreenID()
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 	if screenID == "go_get_intel" then
-		setQuestStatus(player:getObjectID() .. ":activeCorvetteQuest", self.ticketGiver.giverName)
-		setQuestStatus(player:getObjectID() .. ":activeCorvetteStep", "1")
+		setQuestStatus(playerID .. ":activeCorvetteQuest", self.ticketGiver.giverName)
+		setQuestStatus(playerID .. ":activeCorvetteStep", "1")
 		self.ticketGiver:randomizeIntelLocs(pConversingPlayer)
 	elseif screenID == "has_intel" or screenID == "other_documents" then
 		pConversationScreen = self:handleScreenHasIntel(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "reset" then
-		removeQuestStatus(player:getObjectID() .. ":activeCorvetteQuest")
-		removeQuestStatus(player:getObjectID() .. ":activeCorvetteStep")
-	elseif screenID == "reset2" or screenID == "reset3" then
-		removeQuestStatus(player:getObjectID() .. ":activeCorvetteQuest")
-		removeQuestStatus(player:getObjectID() .. ":activeCorvetteStep")
+	elseif screenID == "reset" or screenID == "reset2" or screenID == "reset3" then
+		removeQuestStatus(playerID .. ":activeCorvetteQuest")
+		removeQuestStatus(playerID .. ":activeCorvetteStep")
+		removeQuestStatus(playerID .. ":corvetteIntelAcquired")
+		removeQuestStatus(playerID .. ":corvetteIntelLocs")
+		removeQuestStatus(playerID .. ":activeCorvetteQuestType")
 		self.ticketGiver:removeDocuments(pConversingPlayer)
 	elseif  screenID == "bad_intel_1" then
 		self.ticketGiver:removeIntel(pConversingPlayer, 1)
@@ -33,14 +34,17 @@ function CorvetteTicketGiverConvoHandler:runScreenHandlers(pConversationTemplate
 		self.ticketGiver:removeIntel(pConversingPlayer, 2)
 		self.ticketGiver:giveCompensation(pConversingPlayer)
 	elseif  screenID == "good_intel" then
-		setQuestStatus(player:getObjectID() .. ":activeCorvetteStep", "2")
+		removeQuestStatus(playerID .. ":corvetteIntelAcquired")
+		removeQuestStatus(playerID .. ":corvetteIntelLocs")
+		setQuestStatus(playerID .. ":activeCorvetteStep", "2")
 		self.ticketGiver:removeIntel(pConversingPlayer, 3)
 		self.ticketGiver:giveTicket(pConversingPlayer)
 	elseif  screenID == "reward" then
 		pConversationScreen = self:handleScreenReward(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "give_reward" then
-		removeQuestStatus(player:getObjectID() .. ":activeCorvetteQuest")
-		removeQuestStatus(player:getObjectID() .. ":activeCorvetteStep")
+		removeQuestStatus(playerID .. ":activeCorvetteQuest")
+		removeQuestStatus(playerID .. ":activeCorvetteStep")
+		removeQuestStatus(playerID .. ":activeCorvetteQuestType")
 		self.ticketGiver:removeDocuments(pConversingPlayer)
 		self.ticketGiver:giveReward(PConversingPlayer)
 	end

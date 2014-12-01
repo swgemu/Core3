@@ -593,13 +593,14 @@ int LuaCreatureObject::setLootRights(lua_State* L) {
 int LuaCreatureObject::getGroupSize(lua_State* L) {
 	GroupObject* group = realObject->getGroup();
 
+	if (group == NULL) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
 	Locker lock(group, realObject);
 
-	if (group != NULL) {
-		lua_pushnumber(L, group->getGroupSize());
-	} else {
-		lua_pushnumber(L, 0);
-	}
+	lua_pushnumber(L, group->getGroupSize());
 
 	return 1;
 }

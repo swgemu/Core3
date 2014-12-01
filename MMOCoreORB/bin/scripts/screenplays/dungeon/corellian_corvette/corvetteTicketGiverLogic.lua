@@ -9,12 +9,12 @@ local ticketTemplate = "object/tangible/travel/travel_ticket/dungeon_ticket.iff"
 local rewardSchematic = "object/tangible/loot/loot_schematic/corellian_corvette_landspeeder_av21_schematic.iff"
 
 local intelLocationsMap = {
-	{ 1, 2, 3 },
-	{ 1, 3, 2 },
-	{ 2, 1, 3 },
-	{ 2, 3, 1 },
-	{ 3, 2, 1 },
-	{ 3, 1, 2 },
+	{ 1, 2, 4 },
+	{ 1, 4, 2 },
+	{ 2, 1, 4 },
+	{ 2, 4, 1 },
+	{ 4, 2, 1 },
+	{ 4, 1, 2 },
 }
 
 CorvetteTicketGiverLogic = ScreenPlay:new {
@@ -79,7 +79,7 @@ function IntelSearchMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, se
 			intelAcquired = 0
 		end
 
-		if intelAcquired == 6 or (intelAcquired == 5 and intelNumber ~= 1) or (intelAcquired == 4 and intelNumber ~= 2) or (intelAcquired == 3 and intelNumber == 3) or (intelAcquired == 2 and intelNumber == 2) or (intelAcquired == 1 and intelNumber == 1) then
+		if intelAcquired == 7 or (intelAcquired == 6 and intelNumber ~= 1) or (intelAcquired == 5 and intelNumber ~= 2) or (intelAcquired == 3 and intelNumber ~= 4) or (intelAcquired == 4 and intelNumber == 4) or (intelAcquired == 2 and intelNumber == 2) or (intelAcquired == 1 and intelNumber == 1) then
 			player:sendSystemMessage("@bestine:already_searched") -- You've already searched here.
 			return
 		end
@@ -89,7 +89,12 @@ function IntelSearchMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, se
 			return
 		end
 
-		local pItem = giveItem(pInventory, self.ticketGiver.intelMap.itemTemplates[intelNumber], -1)
+		local intelItem = intelNumber
+		if intelItem == 4 then
+			intelItem = 3
+		end
+
+		local pItem = giveItem(pInventory, self.ticketGiver.intelMap.itemTemplates[intelItem], -1)
 		if pItem ~= nil then
 			SceneObject(pItem):sendTo(pPlayer)
 			player:sendSystemMessage("@bestine:default_receive_msg") -- You search and find something then place it into your inventory.
@@ -214,7 +219,8 @@ function CorvetteTicketGiverLogic:giveCompensation(pPlayer)
 end
 
 function CorvetteTicketGiverLogic:giveTicket(pPlayer)
-	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
+	local player = CreatureObject(pPlayer)
+	local pInventory = player:getSlottedObject("inventory")
 	if pInventory == nil then
 		return
 	end
@@ -227,6 +233,7 @@ function CorvetteTicketGiverLogic:giveTicket(pPlayer)
 		ticket:setArrivalPlanet(self.ticketInfo.missionType)
 		ticket:setArrivalPoint(self.ticketInfo.faction)
 		SceneObject(pItem):sendTo(pPlayer)
+		setQuestStatus(player:getObjectID() .. ":activeCorvetteQuestType", self.ticketInfo.missionType)
 	end
 end
 

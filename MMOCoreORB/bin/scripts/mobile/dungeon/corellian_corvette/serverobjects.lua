@@ -28,6 +28,7 @@ includeFile("dungeon/corellian_corvette/neutral/corsec_special_ops_major.lua")
 includeFile("dungeon/corellian_corvette/neutral/corsec_special_ops_master_sergeant.lua")
 includeFile("dungeon/corellian_corvette/neutral/corsec_special_ops_sergeant.lua")
 includeFile("dungeon/corellian_corvette/neutral/corsec_special_ops_trainee.lua")
+includeFile("dungeon/corellian_corvette/neutral/klaatu.lua")
 includeFile("dungeon/corellian_corvette/neutral/yondalla.lua")
 
 --Rebel
