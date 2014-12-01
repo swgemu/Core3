@@ -43,7 +43,11 @@
 
 object_tangible_component_droid_performer_effects_aa = object_tangible_component_droid_shared_performer_effects_aa:new {
 
-
+	templateType = DROIDEFFECTSMODULE,
+	dataObjectComponent = "DroidEffectsModuleDataComponent",
+	effectName = "@pet/droid_modules:droid_effect_doves", -- aka Avians
+	animation = "clienteffect/droid_effect_doves.cef",
+	
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},

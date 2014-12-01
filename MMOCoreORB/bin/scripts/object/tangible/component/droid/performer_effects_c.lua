@@ -43,6 +43,10 @@
 
 object_tangible_component_droid_performer_effects_c = object_tangible_component_droid_shared_performer_effects_c:new {
 
+	templateType = DROIDEFFECTSMODULE,
+	dataObjectComponent = "DroidEffectsModuleDataComponent",
+	effectName = "@pet/droid_modules:droid_effect_confetti",
+	animation = "clienteffect/droid_effect_confetti.cef",
 
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
