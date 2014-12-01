@@ -83,6 +83,7 @@ public:
 		// Consume power if available
 		if ( droid->hasPower() ) {
 			droid->usePower(4);
+			droid->runModulePowerDrain();
 		}
 
 		reschedule( 120000 ); // 2 min

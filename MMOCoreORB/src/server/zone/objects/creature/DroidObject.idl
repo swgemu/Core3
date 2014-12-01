@@ -200,13 +200,14 @@ class DroidObject extends AiAgent {
 	 */
 	public void usePower( int amount ){
 		power = power - amount;
-		
 		if( power <= 0 ){
 			power = 0;
 			handleLowPower();			
 		}
 		
 	}
+	@dirty
+	public native void runModulePowerDrain();
 	
 	/**
 	 * Reset paint back to full

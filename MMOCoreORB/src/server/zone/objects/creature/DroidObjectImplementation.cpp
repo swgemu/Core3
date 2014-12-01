@@ -317,3 +317,12 @@ BaseDroidModuleComponent* DroidObjectImplementation::getModule(const String& nam
 bool DroidObjectImplementation::isAdvancedModel() {
 	return getCreatureTemplate()->getObjectName().contains("advanced");
 }
+void DroidObjectImplementation::runModulePowerDrain() {
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		int drain = module->getBatteryDrain();
+		if(drain > 0)
+			usePower(drain);
+	}
+
+}
