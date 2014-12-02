@@ -26,6 +26,8 @@ public:
 	}
 
 	void addReversePlayer(const String& name) {
+		Locker locker(getLock());
+
 		String low = name.toLowerCase();
 
 		int idx = -1;
@@ -42,6 +44,8 @@ public:
 	}
 
 	void removeReversePlayer(const String& name) {
+		Locker locker(getLock());
+
 		String low = name.toLowerCase();
 
 		int idx = -1;
@@ -57,8 +61,14 @@ public:
 			reverseTable.remove(idx);
 	}
 
-	Vector<String>* getReverseTable() {
-		return &reverseTable;
+	String getReversePlayer(int idx) {
+		Locker locker(getLock());
+
+		return reverseTable.get(idx);
+	}
+
+	int reversePlayerCount() {
+		return reverseTable.size();
 	}
 
 };
