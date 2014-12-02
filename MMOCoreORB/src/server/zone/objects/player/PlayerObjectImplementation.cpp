@@ -1137,9 +1137,8 @@ void PlayerObjectImplementation::removeAllFriends() {
 		friendList.removePlayer(name);
 	}
 
-	Vector<String>* reverse = friendList.getReverseTable();
-	while (reverse->size() > 0) {
-		String name = reverse->get(0).toLowerCase();
+	while (friendList.reversePlayerCount() > 0) {
+		String name = friendList.getReversePlayer(0).toLowerCase();
 		uint64 objID = playerManager->getObjectID(name);
 
 		ManagedReference<CreatureObject*> playerToRemove = zoneServer->getObject(objID).castTo<CreatureObject*>();
@@ -1262,13 +1261,12 @@ void PlayerObjectImplementation::notifyOnline() {
 		return;
 
 	ChatManager* chatManager = server->getChatManager();
-	Vector<String>* reverseTable = friendList.getReverseTable();
 
 	String firstName = playerCreature->getFirstName();
 	firstName = firstName.toLowerCase();
 
-	for (int i = 0; i < reverseTable->size(); ++i) {
-		ManagedReference<CreatureObject*> player = chatManager->getPlayer(reverseTable->get(i));
+	for (int i = 0; i < friendList.reversePlayerCount(); ++i) {
+		ManagedReference<CreatureObject*> player = chatManager->getPlayer(friendList.getReversePlayer(i));
 
 		if (player != NULL) {
 			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, "Core3", true);
@@ -1309,8 +1307,6 @@ void PlayerObjectImplementation::notifyOffline() {
 	if (chatManager == NULL)
 		return;
 
-	Vector<String>* reverseTable = friendList.getReverseTable();
-
 	ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(parent.get().get());
 	if (playerCreature == NULL)
 		return;
@@ -1318,8 +1314,8 @@ void PlayerObjectImplementation::notifyOffline() {
 	String firstName = playerCreature->getFirstName();
 	firstName = firstName.toLowerCase();
 
-	for (int i = 0; i < reverseTable->size(); ++i) {
-		ManagedReference<CreatureObject*> player = chatManager->getPlayer(reverseTable->get(i));
+	for (int i = 0; i < friendList.reversePlayerCount(); ++i) {
+		ManagedReference<CreatureObject*> player = chatManager->getPlayer(friendList.getReversePlayer(i));
 
 		if (player != NULL) {
 			FriendStatusChangeMessage* notifyStatus = new FriendStatusChangeMessage(firstName, "Core3", false);
