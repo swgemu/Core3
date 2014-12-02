@@ -224,6 +224,13 @@ void DroidObjectImplementation::handleLowPower(){
 
 	// Stop following
 	setOblivious();
+
+	// Deactivate all modules
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		module->deactivate();
+	}
+
 	return;
 }
 
