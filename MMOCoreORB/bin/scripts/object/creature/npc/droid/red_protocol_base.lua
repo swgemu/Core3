@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_red_protocol_base = object_creature_npc_droid_shared_red_protocol_base:new {
-
+	species = 217
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_red_protocol_base, "object/creature/npc/droid/red_protocol_base.iff")

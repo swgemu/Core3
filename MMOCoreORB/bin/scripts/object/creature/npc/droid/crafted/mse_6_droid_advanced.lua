@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_crafted_mse_6_droid_advanced = object_creature_npc_droid_crafted_shared_mse_6_droid_advanced:new {
-
+	species = 214
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_mse_6_droid_advanced, "object/creature/npc/droid/crafted/mse_6_droid_advanced.iff")

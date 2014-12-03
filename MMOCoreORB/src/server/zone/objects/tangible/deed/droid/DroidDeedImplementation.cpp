@@ -34,6 +34,7 @@ void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 
 	controlDeviceObjectTemplate = deedData->getControlDeviceObjectTemplate();
 	mobileTemplate = deedData->getMobileTemplate();
+	species = deedData->getSpecies();
 }
 
 void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
@@ -69,7 +70,6 @@ void DroidDeedImplementation::initializeTransientMembers() {
 void DroidDeedImplementation::processModule(BaseDroidModuleComponent* module, uint32 crc) {
 	if (module == NULL)
 		return;
-
 	if (module->isStackable()) {
 		if (modules.containsKey(module->getModuleName())) {
 			// add to the stack if stackable.
@@ -81,6 +81,7 @@ void DroidDeedImplementation::processModule(BaseDroidModuleComponent* module, ui
 			dcomp->setParent(NULL);
 			BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(dcomp->getDataObjectComponent()->get());
 			bmodule->copy(module);
+			bmodule->setSpecies(species);
 			modules.put(module->getModuleName(),dcomp);
 		}
 	} else {
@@ -88,6 +89,7 @@ void DroidDeedImplementation::processModule(BaseDroidModuleComponent* module, ui
 		dcomp->setParent(NULL);
 		BaseDroidModuleComponent* bmodule = cast<BaseDroidModuleComponent*>(dcomp->getDataObjectComponent()->get());
 		bmodule->copy(module);
+		bmodule->setSpecies(species);
 		modules.put(module->getModuleName(),dcomp);
 	}
 
@@ -231,7 +233,6 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		Reference<DroidObject*> droid = creatureObject.castTo<DroidObject*>();
 		if( droid == NULL )
 			return 1;
-
 		CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
 		Reference<CreatureTemplate*> creatureTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
 		if( creatureTemplate == NULL ){
@@ -240,6 +241,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		}
 
 		droid->loadTemplateData( creatureTemplate );
+		droid->setSpecies(species);
 
 		// Transfer crafting components from deed to droid
 		ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");

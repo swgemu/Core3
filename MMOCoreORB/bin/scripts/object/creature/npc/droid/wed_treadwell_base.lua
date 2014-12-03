@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_wed_treadwell_base = object_creature_npc_droid_shared_wed_treadwell_base:new {
-
+	species = 223
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_wed_treadwell_base, "object/creature/npc/droid/wed_treadwell_base.iff")

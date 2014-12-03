@@ -48,6 +48,7 @@ object_tangible_deed_pet_deed_deed_3p0_basic = object_tangible_deed_pet_deed_sha
 	controlDeviceObjectTemplate = "object/intangible/pet/3po_protocol_droid_crafted.iff",
 	generatedObjectTemplate = "object/creature/npc/droid/crafted/3po_droid.iff",
 	mobileTemplate = "c3p0_crafted",
+	species = 217,
 	
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},

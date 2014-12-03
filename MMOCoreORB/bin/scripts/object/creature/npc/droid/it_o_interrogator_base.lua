@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_it_o_interrogator_base = object_creature_npc_droid_shared_it_o_interrogator_base:new {
-
+	species = 211
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_it_o_interrogator_base, "object/creature/npc/droid/it_o_interrogator_base.iff")

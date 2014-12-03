@@ -48,7 +48,7 @@ object_tangible_deed_pet_deed_deed_le_repair_basic = object_tangible_deed_pet_de
 	controlDeviceObjectTemplate = "object/intangible/pet/le_repair_droid.iff",
 	generatedObjectTemplate = "object/creature/npc/droid/crafted/le_repair_droid.iff",
 	mobileTemplate = "le_repair_crafted",
-	
+	species = 218,
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

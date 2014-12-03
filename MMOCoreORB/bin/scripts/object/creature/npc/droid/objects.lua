@@ -42,7 +42,8 @@
 
 
 object_creature_npc_droid_shared_2_1b_surgical_droid_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_2_1b_surgical_droid_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_2_1b_surgical_droid_base.iff",
+	species = 220
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -125,7 +126,8 @@ object_creature_npc_droid_shared_2_1b_surgical_droid_base = SharedCreatureObject
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_2_1b_surgical_droid_base, "object/creature/npc/droid/shared_2_1b_surgical_droid_base.iff")
 
 object_creature_npc_droid_shared_3po_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_3po_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_3po_base.iff",
+	species = 217
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -208,7 +210,8 @@ object_creature_npc_droid_shared_3po_base = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_3po_base, "object/creature/npc/droid/shared_3po_base.iff")
 
 object_creature_npc_droid_shared_bomarr_monk_spider_droid = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_bomarr_monk_spider_droid.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_bomarr_monk_spider_droid.iff",
+	species = 219
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -291,7 +294,8 @@ object_creature_npc_droid_shared_bomarr_monk_spider_droid = SharedCreatureObject
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_bomarr_monk_spider_droid, "object/creature/npc/droid/shared_bomarr_monk_spider_droid.iff")
 
 object_creature_npc_droid_shared_cll_8_binary_load_lifter_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_cll_8_binary_load_lifter_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_cll_8_binary_load_lifter_base.iff",
+	species = 213
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -374,7 +378,8 @@ object_creature_npc_droid_shared_cll_8_binary_load_lifter_base = SharedCreatureO
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_cll_8_binary_load_lifter_base, "object/creature/npc/droid/shared_cll_8_binary_load_lifter_base.iff")
 
 object_creature_npc_droid_shared_dark_trooper_phase_ii_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_dark_trooper_phase_ii_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_dark_trooper_phase_ii_base.iff",
+	species = 207
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -457,7 +462,8 @@ object_creature_npc_droid_shared_dark_trooper_phase_ii_base = SharedCreatureObje
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_dark_trooper_phase_ii_base, "object/creature/npc/droid/shared_dark_trooper_phase_ii_base.iff")
 
 object_creature_npc_droid_shared_droideka_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_droideka_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_droideka_base.iff",
+	species = 210
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -540,7 +546,8 @@ object_creature_npc_droid_shared_droideka_base = SharedCreatureObjectTemplate:ne
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_droideka_base, "object/creature/npc/droid/shared_droideka_base.iff")
 
 object_creature_npc_droid_shared_dz_70_fugitive_tracker_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_dz_70_fugitive_tracker_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_dz_70_fugitive_tracker_base.iff",
+	species = 222
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -623,7 +630,8 @@ object_creature_npc_droid_shared_dz_70_fugitive_tracker_base = SharedCreatureObj
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_dz_70_fugitive_tracker_base, "object/creature/npc/droid/shared_dz_70_fugitive_tracker_base.iff")
 
 object_creature_npc_droid_shared_eg_6_power_droid_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_eg_6_power_droid_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_eg_6_power_droid_base.iff",
+	species = 215
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -706,7 +714,8 @@ object_creature_npc_droid_shared_eg_6_power_droid_base = SharedCreatureObjectTem
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_eg_6_power_droid_base, "object/creature/npc/droid/shared_eg_6_power_droid_base.iff")
 
 object_creature_npc_droid_shared_ig_assassin_droid_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_ig_assassin_droid_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_ig_assassin_droid_base.iff",
+	species = 203
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -789,7 +798,8 @@ object_creature_npc_droid_shared_ig_assassin_droid_base = SharedCreatureObjectTe
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_ig_assassin_droid_base, "object/creature/npc/droid/shared_ig_assassin_droid_base.iff")
 
 object_creature_npc_droid_shared_imperial_probot_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_imperial_probot_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_imperial_probot_base.iff",
+	species = 216
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -872,7 +882,8 @@ object_creature_npc_droid_shared_imperial_probot_base = SharedCreatureObjectTemp
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_imperial_probot_base, "object/creature/npc/droid/shared_imperial_probot_base.iff")
 
 object_creature_npc_droid_shared_it_o_interrogator_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_it_o_interrogator_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_it_o_interrogator_base.iff",
+	species = 211
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -955,7 +966,8 @@ object_creature_npc_droid_shared_it_o_interrogator_base = SharedCreatureObjectTe
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_it_o_interrogator_base, "object/creature/npc/droid/shared_it_o_interrogator_base.iff")
 
 object_creature_npc_droid_shared_jedi_training_droid_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_jedi_training_droid_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_jedi_training_droid_base.iff",
+	species = 212
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1038,7 +1050,8 @@ object_creature_npc_droid_shared_jedi_training_droid_base = SharedCreatureObject
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_jedi_training_droid_base, "object/creature/npc/droid/shared_jedi_training_droid_base.iff")
 
 object_creature_npc_droid_shared_le_repair_droid = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_le_repair_droid.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_le_repair_droid.iff",
+	species = 218
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1121,7 +1134,8 @@ object_creature_npc_droid_shared_le_repair_droid = SharedCreatureObjectTemplate:
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_le_repair_droid, "object/creature/npc/droid/shared_le_repair_droid.iff")
 
 object_creature_npc_droid_shared_lin_demolitionmech_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_lin_demolitionmech_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_lin_demolitionmech_base.iff",
+	species = 208
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1204,7 +1218,8 @@ object_creature_npc_droid_shared_lin_demolitionmech_base = SharedCreatureObjectT
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_lin_demolitionmech_base, "object/creature/npc/droid/shared_lin_demolitionmech_base.iff")
 
 object_creature_npc_droid_shared_maul_probe_droid_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_maul_probe_droid_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_maul_probe_droid_base.iff",
+	species = 225
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1287,7 +1302,8 @@ object_creature_npc_droid_shared_maul_probe_droid_base = SharedCreatureObjectTem
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_maul_probe_droid_base, "object/creature/npc/droid/shared_maul_probe_droid_base.iff")
 
 object_creature_npc_droid_shared_mse_6_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_mse_6_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_mse_6_base.iff",
+	species = 214,
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1370,7 +1386,8 @@ object_creature_npc_droid_shared_mse_6_base = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_mse_6_base, "object/creature/npc/droid/shared_mse_6_base.iff")
 
 object_creature_npc_droid_shared_r2_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_r2_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_r2_base.iff",
+	species = 204
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1453,7 +1470,8 @@ object_creature_npc_droid_shared_r2_base = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r2_base, "object/creature/npc/droid/shared_r2_base.iff")
 
 object_creature_npc_droid_shared_r3_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_r3_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_r3_base.iff",
+	species = 204
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1536,7 +1554,8 @@ object_creature_npc_droid_shared_r3_base = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r3_base, "object/creature/npc/droid/shared_r3_base.iff")
 
 object_creature_npc_droid_shared_r4_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_r4_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_r4_base.iff",
+	species = 204
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1619,7 +1638,8 @@ object_creature_npc_droid_shared_r4_base = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r4_base, "object/creature/npc/droid/shared_r4_base.iff")
 
 object_creature_npc_droid_shared_r5_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_r5_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_r5_base.iff",
+	species = 204
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1702,7 +1722,8 @@ object_creature_npc_droid_shared_r5_base = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_r5_base, "object/creature/npc/droid/shared_r5_base.iff")
 
 object_creature_npc_droid_shared_ra7_bug_droid_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_ra7_bug_droid_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_ra7_bug_droid_base.iff",
+	species = 206
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1785,7 +1806,8 @@ object_creature_npc_droid_shared_ra7_bug_droid_base = SharedCreatureObjectTempla
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_ra7_bug_droid_base, "object/creature/npc/droid/shared_ra7_bug_droid_base.iff")
 
 object_creature_npc_droid_shared_red_protocol_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_red_protocol_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_red_protocol_base.iff",
+	species = 217
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1868,7 +1890,8 @@ object_creature_npc_droid_shared_red_protocol_base = SharedCreatureObjectTemplat
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_red_protocol_base, "object/creature/npc/droid/shared_red_protocol_base.iff")
 
 object_creature_npc_droid_shared_robo_bartender_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_robo_bartender_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_robo_bartender_base.iff",
+	species = 205
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -1951,7 +1974,8 @@ object_creature_npc_droid_shared_robo_bartender_base = SharedCreatureObjectTempl
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_robo_bartender_base, "object/creature/npc/droid/shared_robo_bartender_base.iff")
 
 object_creature_npc_droid_shared_silver_protocol_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_silver_protocol_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_silver_protocol_base.iff",
+	species = 217
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -2034,7 +2058,8 @@ object_creature_npc_droid_shared_silver_protocol_base = SharedCreatureObjectTemp
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_silver_protocol_base, "object/creature/npc/droid/shared_silver_protocol_base.iff")
 
 object_creature_npc_droid_shared_tt_8l_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_tt_8l_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_tt_8l_base.iff",
+	species = 221
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -2117,7 +2142,8 @@ object_creature_npc_droid_shared_tt_8l_base = SharedCreatureObjectTemplate:new {
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_tt_8l_base, "object/creature/npc/droid/shared_tt_8l_base.iff")
 
 object_creature_npc_droid_shared_tt_8l_y7_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_tt_8l_y7_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_tt_8l_y7_base.iff",
+	species = 209
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},
@@ -2200,7 +2226,8 @@ object_creature_npc_droid_shared_tt_8l_y7_base = SharedCreatureObjectTemplate:ne
 ObjectTemplates:addClientTemplate(object_creature_npc_droid_shared_tt_8l_y7_base, "object/creature/npc/droid/shared_tt_8l_y7_base.iff")
 
 object_creature_npc_droid_shared_wed_treadwell_base = SharedCreatureObjectTemplate:new {
-	clientTemplateFileName = "object/creature/npc/droid/shared_wed_treadwell_base.iff"
+	clientTemplateFileName = "object/creature/npc/droid/shared_wed_treadwell_base.iff",
+	species = 223
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
 --[[
 	acceleration = {4,2},

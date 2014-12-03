@@ -11,7 +11,6 @@ uint32 EnhancePackImplementation::calculatePower(CreatureObject* healer, Creatur
 		int bldBuff = healer->getSkillModOfType("private_medical_rating", SkillModManager::STRUCTURE);
 		int mod = healer->getSkillModOfType("private_medical_rating", SkillModManager::CITY);
 		mod +=  droidBuff > bldBuff ? droidBuff : bldBuff;
-
 		float modEnvironment = ((float) mod / 100);
 		float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
 

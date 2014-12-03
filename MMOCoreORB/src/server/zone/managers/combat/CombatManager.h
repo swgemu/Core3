@@ -160,7 +160,7 @@ public:
 	void broadcastCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, WeaponObject* weapon, const CreatureAttackData& data, uint8 hit);
 
 	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
-
+	float doDroidDetonation(CreatureObject* droid, CreatureObject* defender, float damage);
 	//all the combat math will go here
 protected:
 

@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_imperial_probot_base = object_creature_npc_droid_shared_imperial_probot_base:new {
-
+	species = 216
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_imperial_probot_base, "object/creature/npc/droid/imperial_probot_base.iff")

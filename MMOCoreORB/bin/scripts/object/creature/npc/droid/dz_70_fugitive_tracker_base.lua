@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_dz_70_fugitive_tracker_base = object_creature_npc_droid_shared_dz_70_fugitive_tracker_base:new {
-
+	species = 222
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_dz_70_fugitive_tracker_base, "object/creature/npc/droid/dz_70_fugitive_tracker_base.iff")

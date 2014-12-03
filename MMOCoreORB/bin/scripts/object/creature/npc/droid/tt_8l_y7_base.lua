@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_tt_8l_y7_base = object_creature_npc_droid_shared_tt_8l_y7_base:new {
-
+	species = 209
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_tt_8l_y7_base, "object/creature/npc/droid/tt_8l_y7_base.iff")

@@ -14,6 +14,7 @@ class DroidDeedTemplate : public DeedTemplate {
 
 	String controlDeviceObjectTemplate;
 	String mobileTemplate;
+	int species;
 
 public:
 	DroidDeedTemplate() {
@@ -28,6 +29,7 @@ public:
 		DeedTemplate::readObject(templateData);
 		controlDeviceObjectTemplate = templateData->getStringField("controlDeviceObjectTemplate");
 		mobileTemplate = templateData->getStringField("mobileTemplate");
+		species = templateData->getIntField("species");
     }
 
 	String getControlDeviceObjectTemplate()
@@ -38,6 +40,9 @@ public:
 	String getMobileTemplate()
 	{
 		return mobileTemplate;
+	}
+	int getSpecies() {
+		return species;
 	}
 };
 

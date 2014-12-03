@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_dark_trooper_phase_ii_base = object_creature_npc_droid_shared_dark_trooper_phase_ii_base:new {
-
+	species = 207
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_dark_trooper_phase_ii_base, "object/creature/npc/droid/dark_trooper_phase_ii_base.iff")
