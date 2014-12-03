@@ -82,6 +82,7 @@ protected:
 	static const uint8 EFFECTS_MODULE_SLOT9 = 199;
 	static const uint8 EFFECTS_MODULE_SLOT10 = 200;
 	static const uint8 EFFECTS_MODULE_CONFIGURE = 201;
+	static const uint8 DETONATE_DROID = 202;
 
 public:
 	BaseDroidModuleComponent();
@@ -121,6 +122,7 @@ public:
 	virtual void copy(BaseDroidModuleComponent* other){}
 	ManagedReference<DroidObject*> getDroidObject();
 	virtual void updateCraftingValues(CraftingValues* values, bool firstUpdate);
+	virtual void setSpecies(int s) {}
 };
 
 } //droid

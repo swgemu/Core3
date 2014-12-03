@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_droideka_base = object_creature_npc_droid_shared_droideka_base:new {
-
+	species = 210
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_droideka_base, "object/creature/npc/droid/droideka_base.iff")

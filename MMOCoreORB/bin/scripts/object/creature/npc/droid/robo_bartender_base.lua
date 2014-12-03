@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_robo_bartender_base = object_creature_npc_droid_shared_robo_bartender_base:new {
-
+	species = 205
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_robo_bartender_base, "object/creature/npc/droid/robo_bartender_base.iff")

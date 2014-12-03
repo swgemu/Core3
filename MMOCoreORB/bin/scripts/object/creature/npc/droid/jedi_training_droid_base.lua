@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_jedi_training_droid_base = object_creature_npc_droid_shared_jedi_training_droid_base:new {
-
+	species = 212
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_jedi_training_droid_base, "object/creature/npc/droid/jedi_training_droid_base.iff")

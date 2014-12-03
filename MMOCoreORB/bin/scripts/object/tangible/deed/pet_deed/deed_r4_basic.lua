@@ -48,7 +48,7 @@ object_tangible_deed_pet_deed_deed_r4_basic = object_tangible_deed_pet_deed_shar
 	controlDeviceObjectTemplate = "object/intangible/pet/r4_crafted.iff",
 	generatedObjectTemplate = "object/creature/npc/droid/crafted/r4_droid.iff",
 	mobileTemplate = "r4_crafted",
-
+	species = 204,
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

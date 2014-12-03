@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_maul_probe_droid_base = object_creature_npc_droid_shared_maul_probe_droid_base:new {
-
+	species = 225
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_maul_probe_droid_base, "object/creature/npc/droid/maul_probe_droid_base.iff")

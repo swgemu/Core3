@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_3po_base = object_creature_npc_droid_shared_3po_base:new {
-
+	species = 217
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_3po_base, "object/creature/npc/droid/3po_base.iff")

@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_eg_6_power_droid_base = object_creature_npc_droid_shared_eg_6_power_droid_base:new {
-
+	species = 215
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_eg_6_power_droid_base, "object/creature/npc/droid/eg_6_power_droid_base.iff")

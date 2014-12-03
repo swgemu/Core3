@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_cll_8_binary_load_lifter_base = object_creature_npc_droid_shared_cll_8_binary_load_lifter_base:new {
-
+	species = 213
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_cll_8_binary_load_lifter_base, "object/creature/npc/droid/cll_8_binary_load_lifter_base.iff")
