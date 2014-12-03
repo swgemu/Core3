@@ -77,17 +77,6 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 			module->fillAttributeList(msg, object);
 		}
 	}
-
-	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
-	if( linkedCreature == NULL )
-		return;
-
-	StringBuffer fullName;
-	fullName << linkedCreature->getFirstName();
-	if(!linkedCreature->getLastName().isEmpty())
-		fullName << " " << linkedCreature->getLastName();
-
-	msg->insertAttribute("@obj_attr_n:owner", fullName.toString());
 }
 
 int DroidObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID){
@@ -233,11 +222,14 @@ void DroidObjectImplementation::handleLowPower(){
 
 	return;
 }
-
+void DroidObjectImplementation::setSpecies(int i) {
+	species = i;
+}
 bool DroidObjectImplementation::isPowerDroid(){
-
-	return POWER_DROID == species;
-	//getObjectTemplate()->getFullTemplateString().contains( "eg_6_power_droid" );
+	if(species == 0)
+		return getObjectTemplate()->getFullTemplateString().contains( "eg_6_power_droid" );
+	else
+		return POWER_DROID == species;
 }
 void DroidObjectImplementation::initDroidModules(){
 	modules.removeAll();

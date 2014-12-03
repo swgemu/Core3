@@ -48,7 +48,7 @@ object_tangible_deed_pet_deed_deed_probot_basic = object_tangible_deed_pet_deed_
 	controlDeviceObjectTemplate = "object/intangible/pet/probot.iff",
 	generatedObjectTemplate = "object/creature/npc/droid/crafted/imperial_probot.iff",
 	mobileTemplate = "probot_crafted",
-
+	species = 216,
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

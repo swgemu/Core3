@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_lin_demolitionmech_base = object_creature_npc_droid_shared_lin_demolitionmech_base:new {
-
+	species = 208
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_lin_demolitionmech_base, "object/creature/npc/droid/lin_demolitionmech_base.iff")

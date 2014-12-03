@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_2_1b_surgical_droid_base = object_creature_npc_droid_shared_2_1b_surgical_droid_base:new {
-
+	species = 220
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_2_1b_surgical_droid_base, "object/creature/npc/droid/2_1b_surgical_droid_base.iff")

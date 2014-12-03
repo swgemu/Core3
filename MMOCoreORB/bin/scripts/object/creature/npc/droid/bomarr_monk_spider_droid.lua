@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_bomarr_monk_spider_droid = object_creature_npc_droid_shared_bomarr_monk_spider_droid:new {
-
+	species = 219
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_bomarr_monk_spider_droid, "object/creature/npc/droid/bomarr_monk_spider_droid.iff")

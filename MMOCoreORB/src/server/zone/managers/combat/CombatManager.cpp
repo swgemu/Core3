@@ -721,7 +721,6 @@ float CombatManager::hitChanceEquation(float attackerAccuracy, float accuracyBon
 
 	return accTotal;
 }
-
 int CombatManager::calculateDamageRange(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
 	int attackType = weapon->getAttackType();
 	int damageMitigation = 0;
@@ -1180,6 +1179,74 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		damage *= 3.5;
 
 	return damage;
+}
+float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* defender, float damage) {
+	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
+		return 0;
+	}
+	if (defender->isCreatureObject()) {
+		if (defender->isPlayerCreature())
+			damage *= 0.25;
+		// we now have damage to use lets apply it
+		float healthDamage = 0.f, actionDamage = 0.f, mindDamage = 0.f;
+		// need to check armor reduction with just defender, blast and their AR + resists
+		if(defender->isVehicleObject()) {
+			int ar = cast<VehicleObject*>(defender)->getBlast();
+			if ( ar > 0)
+				damage *= (1.f - (ar / 100.f));
+			healthDamage = damage;
+			actionDamage = damage;
+			mindDamage = damage;
+		} else if (defender->isAiAgent()) {
+			int ar = cast<AiAgent*>(defender)->getBlast();
+			if ( ar > 0)
+				damage *= (1.f - (ar / 100.f));
+			healthDamage = damage;
+			actionDamage = damage;
+			mindDamage = damage;
+
+		} else {
+			// player
+			ArmorObject* healthArmor = getHealthArmor(defender);
+			ArmorObject* mindArmor = getMindArmor(defender);
+			ArmorObject* actionArmor = getActionArmor(defender);
+			ArmorObject* psgArmor = getPSGArmor(defender);
+			if (psgArmor != NULL && !psgArmor->isVulnerable(WeaponObject::BLAST)) {
+				float armorReduction =  psgArmor->getBlast();
+				if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
+					psgArmor->inflictDamage(psgArmor, 0, damage * 0.1, true, true);
+			}
+			// reduced by psg not check each spot for damage
+			healthDamage = damage;
+			actionDamage = damage;
+			mindDamage = damage;
+			if (healthArmor != NULL && !healthArmor->isVulnerable(WeaponObject::BLAST)) {
+				float armorReduction = healthArmor->getBlast();
+				if (armorReduction > 0)
+					damage *= (1.f - (armorReduction / 100.f));
+				healthArmor->inflictDamage(healthArmor, 0, healthDamage * 0.1, true, true);
+			}
+			if (mindArmor != NULL && !mindArmor->isVulnerable(WeaponObject::BLAST)) {
+				float armorReduction = mindArmor->getBlast();
+				if (armorReduction > 0)
+					mindDamage *= (1.f - (armorReduction / 100.f));
+				mindArmor->inflictDamage(mindArmor, 0, mindDamage * 0.1, true, true);
+			}
+			if (actionArmor != NULL && !actionArmor->isVulnerable(WeaponObject::BLAST)) {
+				float armorReduction = actionArmor->getBlast();
+				if (armorReduction > 0)
+					actionDamage *= (1.f - (armorReduction / 100.f));
+				actionArmor->inflictDamage(actionArmor, 0, actionDamage * 0.1, true, true);
+			}
+		}
+
+		defender->inflictDamage(droid, CreatureAttribute::ACTION, (int)actionDamage, true, true);
+		defender->inflictDamage(droid, CreatureAttribute::HEALTH, (int)healthDamage, true, true);
+		defender->inflictDamage(droid, CreatureAttribute::MIND, (int)mindDamage, true, true);
+		return (int) (healthDamage + actionDamage + mindDamage);
+	} else {
+		return 0;
+	}
 }
 
 float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data) {

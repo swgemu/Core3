@@ -48,7 +48,7 @@ object_tangible_deed_pet_deed_deed_power_basic = object_tangible_deed_pet_deed_s
 	controlDeviceObjectTemplate = "object/intangible/pet/eg6_power_droid_crafted.iff",
 	generatedObjectTemplate = "object/creature/npc/droid/crafted/eg_6_power_droid.iff",
 	mobileTemplate = "eg6_crafted",
-
+	species = 215,
 	numberExperimentalProperties = {1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "UT", "XX", "XX", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

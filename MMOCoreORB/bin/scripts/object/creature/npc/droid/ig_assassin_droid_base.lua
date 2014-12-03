@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_ig_assassin_droid_base = object_creature_npc_droid_shared_ig_assassin_droid_base:new {
-
+	species = 203
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_ig_assassin_droid_base, "object/creature/npc/droid/ig_assassin_droid_base.iff")

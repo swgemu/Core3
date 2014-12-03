@@ -42,7 +42,7 @@
 
 
 object_creature_npc_droid_le_repair_droid = object_creature_npc_droid_shared_le_repair_droid:new {
-
+	species = 218
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_le_repair_droid, "object/creature/npc/droid/le_repair_droid.iff")

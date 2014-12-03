@@ -54,6 +54,7 @@ import server.zone.objects.area.ActiveArea;
 import engine.util.u3d.Coordinate;
 import server.zone.objects.tangible.components.droid.BaseDroidModuleComponent;
 include server.zone.objects.tangible.tool.CraftingStation;
+import server.zone.templates.SharedObjectTemplate;
 
 class DroidObject extends AiAgent {
 	
@@ -127,7 +128,8 @@ class DroidObject extends AiAgent {
 		power = MAX_POWER;
 		paintCount = 0;
 	}
-	
+	@dirty
+	public native void setSpecies(int s); 
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre {transient members are not initialized }
