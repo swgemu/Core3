@@ -182,6 +182,8 @@ public:
 				PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/e3_explode_lair_small.cef", droid->getZone()->getZoneName(), droid->getPositionX(), droid->getPositionZ(), droid->getPositionY());
 				droid->broadcastMessage(explodeLoc, false);
 
+				crossLocker.release();
+
 				for (int i = 0; i < closeObjects.size(); ++i) {
 					ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i).get());
 					if(!object->isCreatureObject()) {
@@ -198,6 +200,7 @@ public:
 						continue;
 					}
 					try {
+						Locker defenderLocker(tano, droid);
 						// apply the damage to the target and send themessage
 						if(CollisionManager::checkLineOfSight(object,droid)) {
 							// apply the damage
@@ -218,8 +221,11 @@ public:
 				ManagedReference<PetControlDevice*> petControlDevice = droid->getControlDevice().get().castTo<PetControlDevice*>();
 				if (petControlDevice != NULL) {
 					ManagedReference<CreatureObject*> owner = droid->getZoneServer()->getObject(droid->getCreatureLinkID()).castTo<CreatureObject*>();
-					if (owner != NULL)
+					if (owner != NULL) {
+						Locker ownerLocker(owner, droid);
+
 						petControlDevice->storeObject(owner, true);
+					}
 
 					petControlDevice->destroyObjectFromWorld(true);
 					petControlDevice->destroyObjectFromDatabase(true);
