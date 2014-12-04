@@ -174,6 +174,8 @@ public:
 					droid->info("Null closeobjects vector in CombatManager::doAreaCombatAction", true);
 					droid->getZone()->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionY(), 40, &closeObjects, true);
 				}
+				crossLocker.release();
+
 				for (int i = 0; i < closeObjects.size(); ++i) {
 					ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i).get());
 					SceneObject* s;
@@ -190,10 +192,14 @@ public:
 					if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
 						continue;
 					}
+
+					Locker defenderLocker(tano, droid);
+
 					try {
 						// apply the damage to the target and send themessage
 						if(CollisionManager::checkLineOfSight(object,droid)) {
 							// apply the damage
+
 							float amount = CombatManager::instance()->doDroidDetonation(droid, cast<CreatureObject*>(tano),areaDamage);
 							StringIdChatParameter stringId;
 							stringId.setStringId("@pet/droid_modules:hit_by_detonation");
