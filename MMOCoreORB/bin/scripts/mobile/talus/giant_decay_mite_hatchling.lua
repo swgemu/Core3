@@ -1,4 +1,4 @@
-giant_decay_mite_hatchliing = Creature:new {
+giant_decay_mite_hatchling = Creature:new {
         objectName = "@mob/creature_names:giant_decay_mite_hatchling",
         socialGroup = "mite",
         pvpFaction = "",
@@ -35,4 +35,4 @@ giant_decay_mite_hatchliing = Creature:new {
         }
 }
  
-CreatureTemplates:addCreatureTemplate(giant_decay_mite_hatchliing, "giant_decay_mite_hatchliing")
+CreatureTemplates:addCreatureTemplate(giant_decay_mite_hatchling, "giant_decay_mite_hatchling")

@@ -1,4 +1,4 @@
-sulfer_pool_mynock = Creature:new {
+sulfur_pool_mynock = Creature:new {
 	objectName = "@mob/creature_names:sulfur_pool_mynock",
 	socialGroup = "mynock",
 	pvpFaction = "",
@@ -11,7 +11,7 @@ sulfer_pool_mynock = Creature:new {
 	baseHAM = 8400,
 	baseHAMmax = 10200,
 	armor = 0,
-	resists = {-1,50,20,100,-1,20,100,-1,-1},
+	resists = {-1,150,20,200,-1,20,200,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 57,
 	hideType = "hide_leathery",
@@ -38,4 +38,4 @@ sulfer_pool_mynock = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(sulfer_pool_mynock, "sulfer_pool_mynock")
+CreatureTemplates:addCreatureTemplate(sulfur_pool_mynock, "sulfur_pool_mynock")

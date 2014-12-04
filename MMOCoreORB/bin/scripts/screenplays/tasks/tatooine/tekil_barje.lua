@@ -7,9 +7,9 @@ tekil_barje_missions =
 			{ npcTemplate = "digger_dimms", planetName = "tatooine", npcName = "Dagonel \"Digger\" Dimms" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "womprat", planetName = "tatooine", npcName = "Womprat" },
-			{ npcTemplate = "womprat", planetName = "tatooine", npcName = "Womprat" },
-			{ npcTemplate = "womprat", planetName = "tatooine", npcName = "Womprat" }
+			{ npcTemplate = "womp_rat", planetName = "tatooine", npcName = "Womprat" },
+			{ npcTemplate = "womp_rat", planetName = "tatooine", npcName = "Womprat" },
+			{ npcTemplate = "womp_rat", planetName = "tatooine", npcName = "Womprat" }
 		},
 		itemSpawns =
 		{

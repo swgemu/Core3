@@ -1,4 +1,4 @@
-lesser_desert_womprat = Creature:new {
+lesser_desert_womp_rat = Creature:new {
 	objectName = "@mob/creature_names:lesser_desert_womprat",
 	socialGroup = "rat",
 	pvpFaction = "",
@@ -36,4 +36,4 @@ lesser_desert_womprat = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(lesser_desert_womprat, "lesser_desert_womprat")
+CreatureTemplates:addCreatureTemplate(lesser_desert_womp_rat, "lesser_desert_womp_rat")

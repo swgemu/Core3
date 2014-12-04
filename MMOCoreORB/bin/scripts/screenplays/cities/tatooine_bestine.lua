@@ -238,10 +238,10 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--{"tk_471",400,-1048.04,12,-3699.53,275.497,0, "npc_imperial", "TK-471"},
 
 	--Creatures
-	spawnMobile("tatooine", "lesser_desert_womprat",300,-1062.1,23.7,-3451.8,-110,0)
-	spawnMobile("tatooine", "lesser_desert_womprat",300,-1068.2,23.2,-3452.5,98,0)
-	spawnMobile("tatooine", "lesser_desert_womprat",300,-1064.3,22.7,-3455.2,27,0)
-	spawnMobile("tatooine", "lesser_desert_womprat",300,-1057.7,23.8,-3452.7,-92,0)
+	spawnMobile("tatooine", "lesser_desert_womp_rat",300,-1062.1,23.7,-3451.8,-110,0)
+	spawnMobile("tatooine", "lesser_desert_womp_rat",300,-1068.2,23.2,-3452.5,98,0)
+	spawnMobile("tatooine", "lesser_desert_womp_rat",300,-1064.3,22.7,-3455.2,27,0)
+	spawnMobile("tatooine", "lesser_desert_womp_rat",300,-1057.7,23.8,-3452.7,-92,0)
 
 	spawnMobile("tatooine", "minor_worrt",300,-927.86,27.7005,-3784.58,229.599,0)
 	spawnMobile("tatooine", "minor_worrt",300,-922.653,26.6572,-3778.35,225.778,0)

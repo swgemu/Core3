@@ -1,5 +1,5 @@
 lok_mynock_pack2_neutral_none = Lair:new {
-	mobiles = {{"sulfer_pool_mynock",1},{"riverside_sulfur_mynock",1}},
+	mobiles = {{"sulfur_pool_mynock",1},{"riverside_sulfur_mynock",1}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
 	buildingsEasy = {},
