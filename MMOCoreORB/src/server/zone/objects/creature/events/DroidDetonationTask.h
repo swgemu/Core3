@@ -51,6 +51,8 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 
 namespace server {
 namespace zone {
@@ -142,7 +144,7 @@ public:
 			}
 			case 1:{
 				// 3
-				droid->showFlyText("pet/droid_modules","countdown_1",204,0,0);
+				droid->showFlyText("pet/droid_modules","countdown_3",204,0,0);
 				detonationStep = 2;
 				droid->addPendingTask("droid_detonation",this,1000);
 				break;
@@ -156,7 +158,7 @@ public:
 			}
 			case 3:{
 				// 1
-				droid->showFlyText("pet/droid_modules","countdown_3",204,0,0);
+				droid->showFlyText("pet/droid_modules","countdown_1",204,0,0);
 				detonationStep = 4;
 				droid->addPendingTask("droid_detonation",this,1000);
 				break;
@@ -174,9 +176,14 @@ public:
 					droid->info("Null closeobjects vector in CombatManager::doAreaCombatAction", true);
 					droid->getZone()->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionY(), 40, &closeObjects, true);
 				}
+				PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(droid, "clienteffect/e3_explode_lair_small.cef", "");
+				droid->broadcastMessage(explode, false);
+
+				PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/e3_explode_lair_small.cef", droid->getZone()->getZoneName(), droid->getPositionX(), droid->getPositionZ(), droid->getPositionY());
+				droid->broadcastMessage(explodeLoc, false);
+
 				for (int i = 0; i < closeObjects.size(); ++i) {
 					ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i).get());
-					SceneObject* s;
 					if(!object->isCreatureObject()) {
 						continue;
 					}
