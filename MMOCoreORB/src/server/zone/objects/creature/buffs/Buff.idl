@@ -123,12 +123,7 @@ class Buff extends ManagedObject implements Logger {
 	
 	public native void loadBuffDurationEvent(CreatureObject creo);
 	
-	public void init() {
-		attributeModifiers.setNoDuplicateInsertPlan();
-		attributeModifiers.setNullValue(0);
-		skillModifiers.setNoDuplicateInsertPlan();
-		skillModifiers.setNullValue(0);
-	}
+	public native void init();
 	
 	public native abstract void sendTo(CreatureObject player);
 	public native abstract void sendDestroyTo(CreatureObject player);

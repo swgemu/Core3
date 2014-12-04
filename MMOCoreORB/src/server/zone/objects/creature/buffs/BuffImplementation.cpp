@@ -55,6 +55,15 @@ which carries forward this exception.
 #include "server/zone/packets/object/ShowFlyText.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 
+void BuffImplementation::init() {
+	attributeModifiers.setNoDuplicateInsertPlan();
+	attributeModifiers.setNullValue(0);
+	skillModifiers.setNoDuplicateInsertPlan();
+	skillModifiers.setNullValue(0);
+
+	assert(buffDuration >= 0);
+}
+
 void BuffImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
