@@ -72,15 +72,18 @@ public:
 	}
 
 	void run() {
-
-		if( module == NULL || module->getDroidObject() == NULL ){
+		if( module == NULL) {
 			return;
 		}
 
-		DroidObject* droid = module->getDroidObject();
+		ManagedReference<DroidObject*> droid = module->getDroidObject();
+
+		if (droid == NULL) {
+			return;
+		}
 
 		Locker locker(droid);
-		Locker crossLocker(droid,player);
+		Locker crossLocker(player, droid);
 		// Check if droid is spawned
 		if( droid->getLocalZone() == NULL ){  // Not outdoors
 
