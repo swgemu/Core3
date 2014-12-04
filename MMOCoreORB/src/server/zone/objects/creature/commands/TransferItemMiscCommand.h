@@ -163,6 +163,9 @@ public:
 					}
 				}
 			}
+		} else {
+			creature->error("trying to transfer an object with null zone");
+			return GENERALERROR;
 		}
 
 		ManagedReference<SceneObject*> destinationObject = server->getZoneServer()->getObject(destinationID);
