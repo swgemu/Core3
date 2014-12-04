@@ -1,20 +1,20 @@
 local SithShadowEncounter = require("managers.jedi.village.sith_shadow_encounter")
 
-local realUseDatapad
+local realUseWaypointDatapad
 
 local SithShadowEncounterMocks = SithShadowEncounter
 SithShadowEncounterMocks.mocks = {}
 
 function SithShadowEncounterMocks.mocks.setup()
-	realUseDatapad = SithShadowEncounter.useDatapad
+	realUseWaypointDatapad = SithShadowEncounter.useWaypointDatapad
 end
 
 function SithShadowEncounterMocks.mocks.teardown()
-	SithShadowEncounter.useDatapad = realUseDatapad
+	SithShadowEncounter.useWaypointDatapad = realUseWaypointDatapad
 end
 
 function SithShadowEncounterMocks.mocks.before_each()
-	SithShadowEncounter.useDatapad = spy.new(function() end)
+	SithShadowEncounter.useWaypointDatapad = spy.new(function() end)
 end
 
 function SithShadowEncounterMocks.mocks.after_each()
