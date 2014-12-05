@@ -69,9 +69,6 @@ void WaypointDatapadMenuComponent::fillObjectMenuResponse(SceneObject* sceneObje
 }
 
 int WaypointDatapadMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
-	if (selectedID != 6)
-		return 0;
-
 	if (!sceneObject->isASubChildOf(player))
 		return 0;
 
