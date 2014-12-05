@@ -226,7 +226,7 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	speed = 2.5-((ceil(((float)courage)/10)*10)/1000);
 	// Redo this forumla section we made it up anyways so lets figure a better range
 	// New Level formula
-	level = Genetics::generateCL(hardiness,fortitude,dexterity,intelligence,cleverness,fierceness,power);
+	level = Genetics::generateCL(health+action+mind,hit,speed,minDam,kinResist,blastResist,heatResist,coldResist,energyResist,elecResist,acidResist,stunResist,armorRating);
 }
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {
 	if (attackName == "defaultattack" || attackName == "")

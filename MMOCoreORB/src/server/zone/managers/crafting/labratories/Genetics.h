@@ -180,16 +180,20 @@ public:
 			return -1;
 		return round(input * ((input/100.0f) + 0.15f));
 	}
-	static int generateCL(int ha, int fort, int dex, int intelligence, int cle, int fie, int pow) {
-		DnaManager* instance = DnaManager::instance();
-		int a = instance->getLevelForStat(DnaManager::FORTITUDE,fort);
-		int b = instance->getLevelForStat(DnaManager::HARDINESS,ha);
-		int c = instance->getLevelForStat(DnaManager::DEXTERITY,dex);
-		int d = instance->getLevelForStat(DnaManager::INTELLIGENCE,intelligence);
-		int e = instance->getLevelForStat(DnaManager::CLEVERNESS,cle);
-		int f = instance->getLevelForStat(DnaManager::FIERCENESS,fie);
-		int g = instance->getLevelForStat(DnaManager::POWER,pow);
-		return ceil( ((float)a + (float)b + (float)c + (float)d + (float)e + (float)f + (float)g) / (float)7);
+	static int generateCL(float hamTotal, float toHit, float speed, float damage, float kinetic, float blast, float heat, float cold, float energy, float electricy, float acid, float stun, float armorRating) {
+		// calculate resists
+		float base = ((float)(hamTotal-100.0)) * toHit * (((float)(damage+80.0))/speed);
+		float armor = armorRating == 0 ? 1.125 : 0.75;
+		float rKinetic = kinetic >= 0 ? kinetic : armorRating == 0 ? 0 : -50;
+		float rBlast = blast >= 0 ? blast : armorRating == 0 ? 0 : -50;
+		float rHeat = heat >= 0 ? heat : armorRating == 0 ? 0 : -50;
+		float rCold = cold >= 0 ? cold : armorRating == 0 ? 0 : -50;
+		float rEnergy = energy >= 0 ? energy : armorRating == 0 ? 0 : -50;
+		float rElectricity = electricy >= 0 ? electricy : armorRating == 0 ? 0 : -50;
+		float rAcid = acid >= 0 ? acid : armorRating == 0 ? 0 : -50;
+		float rStun = stun >= 0 ? stun : armorRating == 0 ? 0 : -50;
+		float resist = 1 - (0.35*rKinetic/100) - (0.35*rEnergy/100) - (0.05*rBlast/100) - (0.05*rHeat/100) - (0.05*rCold/100) - (0.05*rElectricity/100) - (0.05*rAcid/100) - (0.05*rStun/100);
+		return floor( (1.5/(float)100) * (Math::sqrt(base/(armor * resist))+7));
 	}
 };
 
