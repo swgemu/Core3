@@ -1223,7 +1223,7 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 			if (healthArmor != NULL && !healthArmor->isVulnerable(WeaponObject::BLAST)) {
 				float armorReduction = healthArmor->getBlast();
 				if (armorReduction > 0)
-					damage *= (1.f - (armorReduction / 100.f));
+					healthDamage *= (1.f - (armorReduction / 100.f));
 				healthArmor->inflictDamage(healthArmor, 0, healthDamage * 0.1, true, true);
 			}
 			if (mindArmor != NULL && !mindArmor->isVulnerable(WeaponObject::BLAST)) {
