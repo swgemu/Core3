@@ -69,6 +69,19 @@ void DroidDetonationModuleDataComponent::initialize(CreatureObject* droid) {
 	if (droid->getSpecies() == DroidObject::MSE) {
 		mseDroid = true;
 	}
+	// ensure state on init
+	started = false;
+	initialized = false;
+	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
+	if (droidComponent == NULL) {
+		info("droidComponent was null");
+		return;
+	}
+	if(droidComponent->hasKey("module_init")) {
+		droidComponent->changeAttributeValue("module_init",(float)0);
+	} else {
+		droidComponent->addProperty("module_init",0,0,"hidden",true);
+	}
 }
 
 void DroidDetonationModuleDataComponent::initializeTransientMembers() {
