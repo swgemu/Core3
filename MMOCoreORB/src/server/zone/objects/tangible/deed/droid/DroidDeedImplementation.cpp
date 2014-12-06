@@ -306,6 +306,9 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		datapad->transferObject(controlDevice, -1);
 
 		datapad->broadcastObject(controlDevice, true);
+
+		Locker crossLocker (droid, player);
+
 		controlDevice->callObject(player);
 		droid->initDroidModules();
 		//Remove the deed from its container.
