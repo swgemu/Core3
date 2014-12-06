@@ -1,9 +1,9 @@
-lt_lance = Creature:new {
+ds_297 = Creature:new {
 	objectName = "",
-	customName = "Lt. Lance",
-	socialGroup = "rebel",
-	pvpFaction = "rebel",
-	faction = "rebel",
+	customName = "DS-297",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 20,
 	chanceHit = 0.33,
 	damageMin = 190,
@@ -22,16 +22,16 @@ lt_lance = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_lieutenant_lance.iff"},
+	templates = {"object/mobile/dressed_tie_fighter_m.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_medium"},
-	conversationTemplate = "",
+	weapons = {"imperial_weapons_medium"},
+	conversationTemplate = "corvetteDS297ConvoTemplate",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(lt_lance, "lt_lance")
+CreatureTemplates:addCreatureTemplate(ds_297, "ds_297")

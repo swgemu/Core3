@@ -12,7 +12,7 @@ CorvetteTicketTakerLogic = ScreenPlay:new {
 	npc = {},
 	takerName = "corvetteTicketGiverLogic",
 	faction = 0,
-	sorryString = "",
+	goodbyeString = "",
 	helpMeString = "",
 	nevermindString = "",
 	aboutMissionString = "",
@@ -33,6 +33,14 @@ function CorvetteTicketTakerLogic:spawnNpc()
 			CreatureObject(pNpc):setMoodString(npcSpawnData.mood)
 		end
 	end
+end
+
+function CorvetteTicketTakerLogic:checkFaction(pPlayer)
+	if self.faction == 0 then
+		return true
+	end
+	--TODO: add group faction checks
+	return false
 end
 
 function CorvetteTicketTakerLogic:validateTicket(pPlayer)

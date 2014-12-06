@@ -32,7 +32,9 @@ includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 includeFile("dungeon/corellian_corvette/corvetteTicketGiverConvoHandler.lua")
 includeFile("dungeon/corellian_corvette/corvetteTicketTakerConvoHandler.lua")
 includeFile("dungeon/corellian_corvette/bronell.lua")
+includeFile("dungeon/corellian_corvette/ds_297.lua")
 includeFile("dungeon/corellian_corvette/klaatu.lua")
+includeFile("dungeon/corellian_corvette/lt_lance.lua")
 
 -- Village
 includeFile("village/fs_experience_converter_conv_handler.lua")

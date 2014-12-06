@@ -53,7 +53,9 @@ includeFile("conversations/themepark/logic/mission_target_conv.lua")
 
 -- Corellian Corvette
 includeFile("conversations/dungeon/corellian_corvette/bronell_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/ds_297_conv.lua")
 includeFile("conversations/dungeon/corellian_corvette/klaatu_conv.lua")
+includeFile("conversations/dungeon/corellian_corvette/lt_lance_conv.lua")
 
 -- Death Watch Bunker
 includeFile("conversations/dungeon/death_watch_bunker/boba_fett_conv.lua")

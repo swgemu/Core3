@@ -1,6 +1,7 @@
 
 --Imperial
 includeFile("dungeon/corellian_corvette/imperial/darkstone.lua")
+includeFile("dungeon/corellian_corvette/imperial/ds_297.lua")
 includeFile("dungeon/corellian_corvette/imperial/lt_velso.lua")
 includeFile("dungeon/corellian_corvette/imperial/rebel_admiral.lua")
 includeFile("dungeon/corellian_corvette/imperial/rebel_commandant.lua")
@@ -36,6 +37,7 @@ includeFile("dungeon/corellian_corvette/rebel/adar.lua")
 includeFile("dungeon/corellian_corvette/rebel/crowley.lua")
 includeFile("dungeon/corellian_corvette/rebel/elite_novatrooper_commander.lua")
 includeFile("dungeon/corellian_corvette/rebel/elite_novatrooper.lua")
+includeFile("dungeon/corellian_corvette/rebel/lt_lance.lua")
 includeFile("dungeon/corellian_corvette/rebel/novatrooper_cadet.lua")
 includeFile("dungeon/corellian_corvette/rebel/novatrooper_captain.lua")
 includeFile("dungeon/corellian_corvette/rebel/novatrooper_commander.lua")

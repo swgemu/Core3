@@ -17,7 +17,7 @@ function CorvetteTicketTakerConvoHandler:runScreenHandlers(pConversationTemplate
 		pConversationScreen = self:handleScreenStart(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "continue" then
 		pConversationScreen = self:handleScreenContinue(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "not_so_fast" then
+	elseif screenID == "authorization" then
 		self.ticketTaker:validateTicket(pConversingPlayer)
 	end
 	return pConversationScreen
@@ -59,17 +59,23 @@ function CorvetteTicketTakerConvoHandler:handleScreenStart(pConversationTemplate
 
 	local player = CreatureObject(pConversingPlayer)
 	local activeStep = tonumber(getQuestStatus(player:getObjectID() .. ":activeCorvetteStep"))
+	local rightFaction = self.ticketTaker:checkFaction(pConversingPlayer)
 
 	clonedScreen:removeAllOptions()
-	clonedScreen:addOption(self.ticketTaker.sorryString, "sorry")
 
 	if activeStep == 2 then
-		if player:getGroupSize() > 10 then
-			clonedScreen:addOption(self.ticketTaker.helpMeString, "too_many_to_help")
+		if player:getGroupSize() > 10 and rightFaction == false then
+			clonedScreen:addOption(self.ticketTaker.helpMeString, "wrong_faction_too_many")
+		elseif player:getGroupSize() > 10 then
+			clonedScreen:addOption(self.ticketTaker.helpMeString, "too_many")
+		elseif rightFaction == false then
+			clonedScreen:addOption(self.ticketTaker.helpMeString, "wrong_faction")
 		else
 			clonedScreen:addOption(self.ticketTaker.helpMeString, "continue")
 		end
 	end
+
+	clonedScreen:addOption(self.ticketTaker.goodbyeString, "goodbye")
 
 	return pConversationScreen
 end
@@ -81,17 +87,23 @@ function CorvetteTicketTakerConvoHandler:handleScreenContinue(pConversationTempl
 
 	local player = CreatureObject(pConversingPlayer)
 	local activeStep = tonumber(getQuestStatus(player:getObjectID() .. ":activeCorvetteStep"))
+	local rightFaction = self.ticketTaker:checkFaction(pConversingPlayer)
 
 	clonedScreen:removeAllOptions()
-	clonedScreen:addOption(self.ticketTaker.nevermindString, "in_my_way")
 
 	if activeStep == 2 then
-		if player:getGroupSize() > 10 then
+		if player:getGroupSize() > 10 and rightFaction == false then
+			clonedScreen:addOption(self.ticketTaker.aboutMissionString, "mission_wrong_faction_too_many")
+		elseif player:getGroupSize() > 10 then
 			clonedScreen:addOption(self.ticketTaker.aboutMissionString, "mission_too_many")
+		elseif rightFaction == false then
+			clonedScreen:addOption(self.ticketTaker.aboutMissionString, "mission_wrong_faction")
 		else
 			clonedScreen:addOption(self.ticketTaker.aboutMissionString, "mission")
 		end
 	end
+
+	clonedScreen:addOption(self.ticketTaker.nevermindString, "goodbye2")
 
 	return pConversationScreen
 end
