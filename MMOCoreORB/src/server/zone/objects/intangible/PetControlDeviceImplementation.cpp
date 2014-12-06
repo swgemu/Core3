@@ -225,6 +225,47 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 
 }
 
+int PetControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	//Logger::info("selected call");
+
+	Reference<TangibleObject*> strongRef = controlledObject.get();
+
+	if (strongRef == NULL)
+		return 1;
+
+	AiAgent* pet = cast<AiAgent*>(strongRef.get());
+
+	Reference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (selectedID == 44) {
+		if (pet == NULL) {
+			error("null controlled object in pet control device");
+			return 1;
+		} else {
+			Locker crossLocker(pet, player);
+
+			callObject(player);
+		}
+	} else if (selectedID == 59) {
+		if (pet == NULL) {
+			error("null controlled object in pet control device");
+			return 1;
+		} else {
+			if (status == 1 && !ghost->hasActivePet(pet)) {
+				Locker crossLocker(pet, player);
+
+				callObject(player);
+			} else {
+				Locker crossLocker(pet, player);
+
+				storeObject(player);
+			}
+		}
+	}
+
+	return 0;
+}
+
 void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	ZoneServer* zoneServer = getZoneServer();
 
