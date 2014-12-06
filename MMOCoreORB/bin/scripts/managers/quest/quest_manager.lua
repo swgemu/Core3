@@ -10,6 +10,7 @@ local QUEST_COMPLETED = 1
 -- @param quest the index number for the quest to activate.
 function QuestManager.activateQuest(pCreatureObject, quest)
 	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+	  playerObject:sendSystemMessage("@quest/quests:quest_journal_updated")
 		playerObject:setActiveQuestsBit(quest, QUEST_ACTIVE)
 	end)
 end
@@ -28,6 +29,7 @@ end
 -- @param quest the index number for the quest to complete.
 function QuestManager.completeQuest(pCreatureObject, quest)
 	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+	  playerObject:sendSystemMessage("@quest/quests:task_complete")
 		playerObject:clearActiveQuestsBit(quest)
 		playerObject:setCompletedQuestsBit(quest, QUEST_ACTIVE)
 	end)
@@ -47,6 +49,7 @@ end
 -- @param quest the index number for the quest to reset.
 function QuestManager.resetQuest(pCreatureObject, quest)
 	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+    playerObject:sendSystemMessage("@quest/quests:task_failure")
 		playerObject:clearActiveQuestsBit(quest)
 		playerObject:clearCompletedQuestsBit(quest)
 	end)
