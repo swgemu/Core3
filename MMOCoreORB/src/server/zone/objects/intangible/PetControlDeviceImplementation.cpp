@@ -24,6 +24,8 @@
 #include "tasks/StorePetTask.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
+	assert(player->isLockedByCurrentThread());
+
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {
 		player->sendSystemMessage("@pet/pet_menu:cant_call"); // You cannot call this pet right now.
 		return;
@@ -65,6 +67,8 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		player->sendSystemMessage("@pet/pet_menu:dead_pet"); // This pet is dead. Select DESTROY from the radial menu to delete this pet control device.
 		return;
 	}
+
+	assert(pet->isLockedByCurrentThread());
 
 	unsigned int petFaction = pet->getFaction();
 
@@ -229,6 +233,10 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (controlledObject == NULL)
 		return;
 
+	assert(player->isLockedByCurrentThread());
+
+	assert(controlledObject->isLockedByCurrentThread());
+
 	if (!isASubChildOf(player))
 		return;
 
@@ -318,9 +326,11 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 }
 
 void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
+	assert(player->isLockedByCurrentThread());
 
 	Reference<Task*> petTask = player->getPendingTask("call_pet");
-	if(petTask) {
+
+	if(petTask != NULL) {
 		petTask->cancel();
 		player->removePendingTask("call_pet");
 	}
@@ -335,7 +345,11 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 	if (controlledObject == NULL || !controlledObject->isAiAgent())
 		return;
 
+	assert(player->isLockedByCurrentThread());
+
 	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+
+	assert(pet->isLockedByCurrentThread());
 
 	if (!force && pet->isInCombat())
 		return;
@@ -410,6 +424,8 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 	if (petManager == NULL)
 		return true;
 
+	assert(player->isLockedByCurrentThread());
+
 	Time currentTime;
 	uint32 timeDelta = currentTime.getTime() - lastGrowth.getTime();
 	int stagesToGrow = timeDelta / 43200; // 12 hour
@@ -429,6 +445,8 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 
 	short preEligibility = petManager->checkMountEligibility(_this.get());
 	short postEligibility = petManager->checkMountEligibility(_this.get(), newHeight);
+
+	assert(pet->isLockedByCurrentThread());
 
 	if (preEligibility == PetManager::CANBEMOUNTTRAINED && postEligibility == PetManager::TOOLARGE && !force) {
 		if (isTrainedAsMount()) {
