@@ -137,40 +137,7 @@ class PetControlDevice extends ControlDevice {
 		return trainedAsMount;
 	}
 
-	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
-		Logger.info("selected call");
-
-		TangibleObject strongRef = super.controlledObject;
-
-		if (strongRef == null)
-			return 1;
-
-		AiAgent pet = (AiAgent) strongRef;
-		PlayerObject ghost = player.getPlayerObject();
-		
-		if (selectedID == 44) {
-			
-			if (pet == null) {
-				Logger.error("null controlled object in pet control device");
-				return 1;
-			} else {
-				this.callObject(player);
-			}
-		} else if (selectedID == 59) {
-			if (pet == null) {
-				Logger.error("null controlled object in pet control device");
-				return 1;
-			} else {
-				if (super.status == 1 && !ghost.hasActivePet(pet)) {
-					this.callObject(player);
-				} else {
-					this.storeObject(player);
-				}
-			}
-		}
-		
-		return 0;
-	}
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	/**
 	 * Destroys this object from database
