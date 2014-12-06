@@ -83,6 +83,9 @@ protected:
 	static const uint8 EFFECTS_MODULE_SLOT10 = 200;
 	static const uint8 EFFECTS_MODULE_CONFIGURE = 201;
 	static const uint8 DETONATE_DROID = 202;
+	static const uint8 BARKER_STORE_WAYPOINT = 203;
+	static const uint8 BARKER_RECORD_MESSAGE = 204;
+	static const uint8 BARKER_TOGGLE = 205;
 
 public:
 	BaseDroidModuleComponent();

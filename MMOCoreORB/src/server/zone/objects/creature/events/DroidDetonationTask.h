@@ -118,6 +118,10 @@ public:
 			droid->removePendingTask("droid_detonation");
 			return;
 		}
+		if(droid->isIncapacitated() && detonationStep == 0) {
+			player->sendSystemMessage("@pet/droid_modules:droid_disabled_detonate");
+			return;
+		}
 		// if droid gets incapped while started it will disable but be able to be restarted
 		switch(detonationStep) {
 			case 0: {
@@ -209,6 +213,11 @@ public:
 							stringId.setStringId("@pet/droid_modules:hit_by_detonation");
 							stringId.setDI((int)amount);
 							(cast<CreatureObject*>(tano))->sendSystemMessage(stringId);
+							StringIdChatParameter tomaster;
+							tomaster.setStringId("@pet/droid_modules:hit_by_detonation_master");
+							tomaster.setTT(object);
+							tomaster.setDI((int)amount);
+							player->sendSystemMessage(tomaster);
 						}
 					} catch (Exception& e) {
 						error(e.getMessage());
