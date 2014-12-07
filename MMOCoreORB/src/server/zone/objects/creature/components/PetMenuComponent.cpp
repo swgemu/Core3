@@ -8,10 +8,9 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/objects/intangible/tasks/PetControlDeviceStoreObjectTask.h"
 
 void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
-
 	if (!sceneObject->isPet())
 		return;
 
@@ -34,10 +33,14 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 	if (pet->isIncapacitated() && pet->isAttackableBy(player))
 		menuResponse->addRadialMenuItem(6, 3, "@ui_radial:combat_death_blow"); // Death Blow
 
-	if (!player->getPlayerObject()->isPrivileged() && pet->getLinkedCreature() != player)
+	if (!player->getPlayerObject()->isPrivileged() && pet->getLinkedCreature() != player) {
 		return;
+	}
 
 	menuResponse->addRadialMenuItem(59, 3, "@pet/pet_menu:menu_store"); // Store
+
+	if (pet->getLinkedCreature() != player)
+		return;
 
 	ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 	if( controlDevice == NULL )
@@ -191,7 +194,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 }
 
 int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
-	if (!sceneObject->isPet())
+	if (!sceneObject->isPet() || player == NULL)
 		return 0;
 
 	AiAgent* pet = cast<AiAgent*>(sceneObject);
@@ -201,15 +204,9 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 
 	Locker crossLocker(pet, player);
 
-	/* This fucks up a lot of stuff, locks, etc.. never do this
-	if (pet->getLinkedCreature() != player) {
-		player = pet->getLinkedCreature().get();
-	}
-	*/
-
 	ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
-	if (petControlDevice == NULL || player == NULL)
+	if (petControlDevice == NULL)
 		return 0;
 
 	PetManager* petManager = pet->getZoneServer()->getPetManager();
@@ -218,130 +215,100 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 
 	// Store
 	if (selectedID == 59) {
-		petControlDevice->storeObject(player);
+		if (pet->getLinkedCreature() != player) {
+			ManagedReference<CreatureObject*> owner = pet->getLinkedCreature().get();
+			if (owner != NULL) {
+				Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(petControlDevice, owner, true);
+				task->execute();
+			}
+		} else {
+			petControlDevice->storeObject(player);
+		}
 		return 0;
 	}
 
-	// Recharge
-	if (selectedID == 234 && petControlDevice->getPetType() == PetManager::DROIDPET ){
-		petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petRecharge").toLowerCase().hashCode(), "");
-	}
+	if (pet->getLinkedCreature() != player)
+		return 0;
 
-	// Feed
-	if (selectedID == 234 && petControlDevice->getPetType() == PetManager::CREATUREPET ){
-		petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petFeed").toLowerCase().hashCode(), "");
-	}
-
-	// Trained Command: Recharge Other
-	if (selectedID == 235 ){
-		petControlDevice->setTrainingCommand( PetManager::RECHARGEOTHER );
-	}
-
-	// Train Command: Follow
-	if (selectedID == 142 ){ // PET_FOLLOW
+	switch(selectedID) {
+	case 142: // Train Command: Follow
 		petControlDevice->setTrainingCommand( PetManager::FOLLOW );
-	}
-
-	// Train Command: Stay
-	if (selectedID == 143 ){ // PET_STAY
+		break;
+	case 143: // Train Command: Stay
 		petControlDevice->setTrainingCommand( PetManager::STAY );
-	}
-
-	// Train Command: Guard
-	if (selectedID == 144 ){ // PET_GUARD
+		break;
+	case 144: // Train Command: Guard
 		petControlDevice->setTrainingCommand( PetManager::GUARD );
-	}
-
-	// Train Command: Friend
-	if (selectedID == 145 ){ // PET_FRIEND
+		break;
+	case 145: // Train Command: Friend
 		petControlDevice->setTrainingCommand( PetManager::FRIEND );
-	}
-
-	// Train Command: Attack
-	if (selectedID == 146 ){ // PET_ATTACK
+		break;
+	case 146: // Train Command: Attack
 		petControlDevice->setTrainingCommand( PetManager::ATTACK );
-	}
-
-	// Train Command: Patrol
-	if (selectedID == 147 ){ // PET_PATROL
+		break;
+	case 147: // Train Command: Patrol
 		petControlDevice->setTrainingCommand( PetManager::PATROL );
-	}
-
-	// Get Patrol Point
-	if (selectedID == 148 ){ // PET_GET_PATROL_POINT
+		break;
+	case 148: // Train Command: Get Patrol Point
 		// TODO Handle setting patrol point
 		player->sendSystemMessage("PET_GET_PATROL_POINT pet command is not yet implemented.");
-	}
-
-	// Clear Patrol Points
-	if (selectedID == 149 ){ // PET_CLEAR_PATROL_POINTS
+		break;
+	case 149: // Train Command: Clear Patrol Points
 		// TODO Handle clearing patrol points
 		player->sendSystemMessage("PET_CLEAR_PATROL_POINTS pet command is not yet implemented.");
-	}
-
-	// Train Command: Wedge Formation
-	if (selectedID == 150 ){ // PET_ASSUME_FORMATION_1
+		break;
+	case 150: // Train Command: Wedge Formation
 		petControlDevice->setTrainingCommand( PetManager::FORMATION1 );
-	}
-
-	// Train Command: Column Formation
-	if (selectedID == 151 ){ // PET_ASSUME_FORMATION_2
+		break;
+	case 151: // Train Command: Column Formation
 		petControlDevice->setTrainingCommand( PetManager::FORMATION2 );
-	}
-
-	// Train Command: Transfer
-	if (selectedID == 152 ){ // PET_TRANSFER
+		break;
+	case 152: // Train Command: Transfer
 		petControlDevice->setTrainingCommand( PetManager::TRANSFER );
-	}
-
-	// Train Command: Trick 1
-	if (selectedID == 154 ){ // PET_TRICK_1
+		break;
+	case 154: // Train Command: Trick 1
 		petControlDevice->setTrainingCommand( PetManager::TRICK1 );
-	}
-
-	// Train Command: Trick 2
-	if (selectedID == 155 ){ // PET_TRICK_2
+		break;
+	case 155: // Train Command: Trick 2
 		petControlDevice->setTrainingCommand( PetManager::TRICK2 );
-	}
-
-	// Train Command: Group
-	if (selectedID == 158 ){ // PET_GROUP
+		break;
+	case 158: // Train Command: Group
 		petControlDevice->setTrainingCommand( PetManager::GROUP );
-	}
-
-	// Train Command: Special Attack 1
-	if (selectedID == 161 ){ // PET_SPECIAL_ATTACK_ONE
+		break;
+	case 161: // Train Command: Special Attack 1
 		petControlDevice->setTrainingCommand( PetManager::SPECIAL_ATTACK1 );
-	}
-
-	// Train Command: Special Attack 2
-	if (selectedID == 162 ){ // PET_SPECIAL_ATTACK_TWO
+		break;
+	case 162: // Train Command: Special Attack 2
 		petControlDevice->setTrainingCommand( PetManager::SPECIAL_ATTACK2 );
-	}
-
-	// Train Command: Ranged Attack
-	if (selectedID == 163 ){
+		break;
+	case 163: // Train Command: Ranged Attack
 		petControlDevice->setTrainingCommand( PetManager::RANGED_ATTACK );
-	}
-
-	// Train Command: Store
-	if (selectedID == 164 ){
+		break;
+	case 164: // Train Command: Store
 		petControlDevice->setTrainingCommand( PetManager::STORE );
-	}
-
-	// Train Command: Follow Other
-	if (selectedID == 165 ){
+		break;
+	case 165: // Train Command: Follow Other
 		petControlDevice->setTrainingCommand( PetManager::FOLLOWOTHER );
-	}
-
-	if (selectedID == 166 ){
+		break;
+	case 166: // Incapacitation Recovery
 		petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petRecover").toLowerCase().hashCode(), "");
-	}
-
-	// Train Pet As A Mount
-	if (selectedID == 207 ){
+		break;
+	case 207: // Train Pet As A Mount
 		petControlDevice->trainAsMount(player);
+		break;
+	case 234: // Recharge/Feed
+		if (petControlDevice->getPetType() == PetManager::DROIDPET) {
+			petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petRecharge").toLowerCase().hashCode(), "");
+		} else if (petControlDevice->getPetType() == PetManager::CREATUREPET) {
+			petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petFeed").toLowerCase().hashCode(), "");
+		}
+		break;
+	case 235: // Train Command: Recharge Other
+		petControlDevice->setTrainingCommand( PetManager::RECHARGEOTHER );
+		break;
+	default:
+		break;
 	}
 
-	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
+	return 0;
 }
