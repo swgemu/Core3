@@ -26,9 +26,12 @@ includeFile("recruiters/recruiterScreenplay.lua")
 
 -- Dungeons
 includeFile("dungeon/death_watch_bunker.lua")
+includeFile("dungeon/death_watch_bunker/deathWatchContainerComponents.lua")
+includeFile("dungeon/death_watch_bunker/deathWatchMenuComponents.lua")
+includeFile("dungeon/death_watch_bunker/deathWatchSpawnMap.lua")
+includeFile("dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua")
 includeFile("dungeon/geonosian_lab/geo_lab.lua")
 includeFile("dungeon/warren/warren.lua")
-includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 includeFile("dungeon/corellian_corvette/corvetteTicketGiverConvoHandler.lua")
 includeFile("dungeon/corellian_corvette/corvetteTicketTakerConvoHandler.lua")
 includeFile("dungeon/corellian_corvette/bronell.lua")
