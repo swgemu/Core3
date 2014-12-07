@@ -1,53 +1,53 @@
 -- Foreman Quest
 death_watch_foreman_handler = {  }
- 
+
 function death_watch_foreman_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
-	
+
 	local lastConversationScreen = nil
-	
+
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
 		lastConversationScreen = session:getLastConversationScreen()
 	end
-	
+
 	local conversation = LuaConversationTemplate(conversationTemplate)
-		
+
 	local nextConversationScreen
-	
+
 	if (lastConversationScreen ~= nil) then
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-		
+
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		
+
 		nextConversationScreen = conversation:getScreen(optionLink)
-		
+
 		if nextConversationScreen ~= nil then
 			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-			
+
 			screenID = nextLuaConversationScreen:getScreenID()
-			
+
 			if (screenID == "convoscreen7_1" or screenID == "convoscreen6_1" or screenID == "convoscreen8") then
 				creature:setScreenPlayState(1, "death_watch_foreman_stage")
 			end
-			
+
 			if (screenID == "convoscreen7_1" or screenID == "convoscreen6_1" or screenID == "convoscreen9_1") then
 				creature:setScreenPlayState(2, "death_watch_foreman_stage")
-				DWB:startForemanQuestStage(1, conversingPlayer)				
+				DWB:startForemanQuestStage(1, conversingPlayer)
 			end
-			
+
 			if (screenID == "convoscreen16") then
 				creature:setScreenPlayState(8, "death_watch_foreman_stage")
 			end
-			
+
 			if (screenID == "convoscreen24" or screenID == "convoscreen26_1") then
 				creature:setScreenPlayState(32, "death_watch_foreman_stage")
 				creature:removeScreenPlayState(3, "death_watch_foreman_stage_failed")
 			end
-			
+
 			if (screenID == "convoscreen30") then
 				local creo = LuaSceneObject(conversingPlayer)
 				pinventory = creo:getSlottedObject("inventory")
@@ -56,9 +56,9 @@ function death_watch_foreman_handler:getNextConversationScreen(conversationTempl
 					nextConversationScreen = conversation:getScreen("convoscreen31")
 				else
 					creature:setScreenPlayState(128, "death_watch_foreman_stage")
-					DWB:storeTime(conversingPlayer)					
+					DWB:storeTime(conversingPlayer)
 					local pmineral = giveItem(pinventory, "object/tangible/loot/dungeon/death_watch_bunker/mining_drill_reward.iff", -1)
-					
+
 					if (pmineral == nil) then
 						return 0
 					end
@@ -70,7 +70,7 @@ function death_watch_foreman_handler:getNextConversationScreen(conversationTempl
 		haldo_failed = creature:hasScreenPlayState(1, "death_watch_foreman_stage_failed")
 		haldo_killed = creature:hasScreenPlayState(2, "death_watch_foreman_stage_failed")
 		pumps_failed = creature:hasScreenPlayState(3, "death_watch_foreman_stage_failed")
-			
+
 		spoken_to_foreman = creature:hasScreenPlayState(1, "death_watch_foreman_stage")
 		started_haldo = creature:hasScreenPlayState(2, "death_watch_foreman_stage")
 		finished_haldo = creature:hasScreenPlayState(4, "death_watch_foreman_stage")
@@ -80,7 +80,7 @@ function death_watch_foreman_handler:getNextConversationScreen(conversationTempl
 		finished_pumps = creature:hasScreenPlayState(64, "death_watch_foreman_stage")
 		received_mineral = creature:hasScreenPlayState(128, "death_watch_foreman_stage")
 		received_mineral_time_passed = DWB:checkTime(conversingPlayer)
-		
+
 		if haldo_failed == 1 then
 			nextConversationScreen = conversation:getScreen("convoscreen12")
 		elseif spoken_to_foreman == 0 then
@@ -125,14 +125,14 @@ function death_watch_foreman_handler:getNextConversationScreen(conversationTempl
 				battery:destroyObjectFromWorld()
 				nextConversationScreen = conversation:getScreen("convoscreen19")
 			end
-		elseif started_pumps == 0 then	
+		elseif started_pumps == 0 then
 			nextConversationScreen = conversation:getScreen("convoscreen26")
 		elseif finished_pumps == 0 then
 			if pumps_failed == 1 then
 				nextConversationScreen = conversation:getScreen("convoscreen26")
 			else
 				nextConversationScreen = conversation:getScreen("convoscreen25")
-			end			
+			end
 		elseif received_mineral == 0 then
 			nextConversationScreen = conversation:getScreen("convoscreen27")
 		elseif received_mineral_time_passed == false then
@@ -146,9 +146,9 @@ function death_watch_foreman_handler:getNextConversationScreen(conversationTempl
 			else
 				DWB:storeTime(conversingPlayer)
 				nextConversationScreen = conversation:getScreen("convoscreen33")
-				
+
 				local pmineral = giveItem(pinventory, "object/tangible/loot/dungeon/death_watch_bunker/mining_drill_reward.iff", -1)
-				
+
 				if (pmineral == nil) then
 					return 0
 				end
@@ -167,36 +167,36 @@ end
 
 -- Haldo Sub-Quest
 death_watch_insane_miner_handler = {  }
- 
+
 function death_watch_insane_miner_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
-	
+
 	local lastConversationScreen = nil
-	
+
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
 		lastConversationScreen = session:getLastConversationScreen()
 	end
-	
+
 	local conversation = LuaConversationTemplate(conversationTemplate)
-		
+
 	local nextConversationScreen
-	
+
 	if (lastConversationScreen ~= nil) then
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-		
+
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		
+
 		nextConversationScreen = conversation:getScreen(optionLink)
-		
+
 		if nextConversationScreen ~= nil then
 			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-			
+
 			screenID = nextLuaConversationScreen:getScreenID()
-			
+
 			if (screenID == "convoscreen7") then
 				creature:setScreenPlayState(4, "death_watch_insane_miner_stage")
 				local creo = LuaSceneObject(conversingPlayer)
@@ -205,22 +205,22 @@ function death_watch_insane_miner_handler:getNextConversationScreen(conversation
 				if pCure ~= nil then
 					local cure = LuaSceneObject(pCure)
 					cure:destroyObjectFromWorld()
-					
+
 					local pbattery = giveItem(inventory,"object/tangible/dungeon/death_watch_bunker/drill_battery.iff", -1)
-					
+
 					if (pbattery == nil) then
 						return 0
 					end
 				end
 			end
-			
+
 			if (screenID == "convoscreen2_2") then
 				minerid = readData(5996314 .. ":dwb:haldo")
 				local minero = getSceneObject(minerid)
 				local miner = LuaCreatureObject(minero)
 				miner:setOptionsBitmask(128)
 				miner:setPvpStatusBitmask(21)
-				miner:engageCombat(conversingPlayer)			
+				miner:engageCombat(conversingPlayer)
 			end
 		end
 	else
@@ -228,7 +228,7 @@ function death_watch_insane_miner_handler:getNextConversationScreen(conversation
 		started_haldo = creature:hasScreenPlayState(2, "death_watch_foreman_stage")
 		spoken_to_haldo = creature:hasScreenPlayState(1, "death_watch_miner_spoken")
 		finished_haldo = creature:hasScreenPlayState(4, "death_watch_foreman_stage")
-		
+
 		if haldo_failed == 1 or started_haldo == 0 then
 			nextConversationScreen = conversation:getScreen("convoscreen8")
 		elseif finished_haldo == 1 then
@@ -264,42 +264,42 @@ end
 
 --G12-4J Medical Droid
 death_watch_g12_4j_handler = {  }
- 
+
 function death_watch_g12_4j_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
-	
+
 	local lastConversationScreen = nil
-	
+
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
 		lastConversationScreen = session:getLastConversationScreen()
 	end
-	
+
 	local conversation = LuaConversationTemplate(conversationTemplate)
-		
+
 	local nextConversationScreen
-	
+
 	if (lastConversationScreen ~= nil) then
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-		
+
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		
+
 		nextConversationScreen = conversation:getScreen(optionLink)
-		
+
 		if nextConversationScreen ~= nil then
 			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-			
+
 			screenID = nextLuaConversationScreen:getScreenID()
-			
+
 			if (screenID == "convoscreen4") then
 				local creo = LuaSceneObject(conversingPlayer)
 				inventory = creo:getSlottedObject("inventory")
-				
+
 				local pcure = giveItem(inventory, "object/tangible/dungeon/death_watch_bunker/crazed_miner_medicine.iff", -1)
-				
+
 				if (pcure == nil) then
 					return 0
 				end
@@ -309,7 +309,7 @@ function death_watch_g12_4j_handler:getNextConversationScreen(conversationTempla
 		haldo_failed = creature:hasScreenPlayState(1, "death_watch_foreman_stage_failed")
 		started_haldo = creature:hasScreenPlayState(2, "death_watch_foreman_stage")
 		finished_haldo = creature:hasScreenPlayState(4, "death_watch_foreman_stage")
-		
+
 		if haldo_failed == 1 or finished_haldo == 1 or started_haldo == 0 then
 			nextConversationScreen = conversation:getInitialScreen()
 		else
@@ -333,36 +333,36 @@ end
 
 -- Treadwell Workshop Droid
 death_watch_workshop_droid_handler = {  }
- 
+
 function death_watch_workshop_droid_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
-	
+
 	local lastConversationScreen = nil
-	
+
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
 		lastConversationScreen = session:getLastConversationScreen()
 	end
-	
+
 	local conversation = LuaConversationTemplate(conversationTemplate)
-		
+
 	local nextConversationScreen
-	
+
 	if (lastConversationScreen ~= nil) then
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-		
+
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		
+
 		nextConversationScreen = conversation:getScreen(optionLink)
-		
+
 		if nextConversationScreen ~= nil then
 			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-			
+
 			screenID = nextLuaConversationScreen:getScreenID()
-			
+
 			if (screenID == "convoscreen4") then
 				local creo = LuaSceneObject(conversingPlayer)
 				inventory = creo:getSlottedObject("inventory")
@@ -371,13 +371,13 @@ function death_watch_workshop_droid_handler:getNextConversationScreen(conversati
 				if pOld ~= nil then
 					local old = LuaSceneObject(pOld)
 					old:destroyObjectFromWorld()
-					
+
 					local pbattery = giveItem(inventory, "object/tangible/dungeon/death_watch_bunker/drill_battery_clean.iff", -1)
-					
+
 					if (pbattery == nil) then
 						return 0
 					end
-					
+
 					creature:sendSystemMessage("@dungeon/death_watch:battery_cleaned")
 				end
 			end
@@ -385,7 +385,7 @@ function death_watch_workshop_droid_handler:getNextConversationScreen(conversati
 	else
 		started_battery = creature:hasScreenPlayState(8, "death_watch_foreman_stage")
 		finished_battery = creature:hasScreenPlayState(16, "death_watch_foreman_stage")
-		
+
 		if finished_battery == 1 then
 			nextConversationScreen = conversation:getInitialScreen()
 		elseif started_battery == 0 then
@@ -394,14 +394,14 @@ function death_watch_workshop_droid_handler:getNextConversationScreen(conversati
 		else
 			local creo = LuaSceneObject(conversingPlayer)
 			pinventory = creo:getSlottedObject("inventory")
-			
+
 			pCure = getContainerObjectByTemplate(pinventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", true)
-			
+
 			if pCure == nil then
 				nextConversationScreen = conversation:getInitialScreen()
 				creature:sendSystemMessage("@dungeon/death_watch:need_battery")
 			else
-				nextConversationScreen = conversation:getScreen("convoscreen3")	
+				nextConversationScreen = conversation:getScreen("convoscreen3")
 			end
 		end
 	end
@@ -415,41 +415,41 @@ end
 
 -- Rescue Scientist: Rebel Sidequest
 death_watch_rescue_scientist_handler = {  }
- 
+
 function death_watch_rescue_scientist_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
-	
+
 	local lastConversationScreen = nil
-	
+
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
 		lastConversationScreen = session:getLastConversationScreen()
 	end
-	
+
 	local conversation = LuaConversationTemplate(conversationTemplate)
-		
+
 	local nextConversationScreen
-	
+
 	if (lastConversationScreen ~= nil) then
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-		
+
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		
+
 		nextConversationScreen = conversation:getScreen(optionLink)
-		
+
 		if nextConversationScreen ~= nil then
 			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-			
+
 		end
-		
+
 	else
-		
+
 		finished_quest = creature:hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
 		spoken_to_lutin = creature:hasScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
-				
+
 		if (finished_quest == 1) then
 			nextConversationScreen = conversation:getScreen("convoscreen2")
 		elseif (spoken_to_lutin == 1) then
@@ -470,42 +470,42 @@ end
 
 -- Lutin Nightstalker: Rebel Sidequest
 lutin_nightstalker_handler = {  }
- 
+
 function lutin_nightstalker_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
-	
+
 	local lastConversationScreen = nil
-	
+
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
 		lastConversationScreen = session:getLastConversationScreen()
 	end
-	
+
 	local conversation = LuaConversationTemplate(conversationTemplate)
-		
+
 	local nextConversationScreen
-	
+
 	if (lastConversationScreen ~= nil) then
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-		
+
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		
+
 		nextConversationScreen = conversation:getScreen(optionLink)
-		
+
 		if nextConversationScreen ~= nil then
 			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-			
+
 			if (nextLuaConversationScreen:getScreenID() == "excellent" or nextLuaConversationScreen:getScreenID() == "location" or (nextLuaConversationScreen:getScreenID() == "maytheforce" and luaLastConversationScreen:getScreenID() == "convoscreen4")) then
 				creature:setScreenPlayState(1, "death_watch_bunker_rebel_sidequest")--gain entry permission
 			elseif (nextLuaConversationScreen:getScreenID() == "quit") then
 				creature:removeScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
 			end
-		end		
+		end
 	else
-		
+
 		finished_quest = creature:hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
 		spoken_to_lutin = creature:hasScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
 
@@ -515,25 +515,25 @@ function lutin_nightstalker_handler:getNextConversationScreen(conversationTempla
 		--	busy = 1
 		--else
 		--	busy = 0
-		--end 
+		--end
 
 		factionmatch = 0
 
 		local playerObjectPointer = creature:getPlayerObject()
-		
+
 		if (playerObjectPointer ~= nil) then
 			local playerObject = LuaPlayerObject(playerObjectPointer)
 			if (not playerObject:isOnLeave() and creature:isRebel()) then
 				factionmatch = 1
 			end
-		end  
-				
+		end
+
 		if (finished_quest == 1) then
 			nextConversationScreen = conversation:getScreen("return_successful")
 		elseif (spoken_to_lutin == 1) then
 			nextConversationScreen = conversation:getScreen("return_unsuccessful")
-		--elseif (busy == 1) then
-		--	nextConversationScreen = conversation:getScreen("busy")
+			--elseif (busy == 1) then
+			--	nextConversationScreen = conversation:getScreen("busy")
 		elseif (factionmatch == 0) then
 			nextConversationScreen = conversation:getScreen("notaligned")
 		else
@@ -550,61 +550,61 @@ end
 
 -- Commander D'krn: Imperial Sidequest
 commander_dkrn_handler = {  }
- 
+
 function commander_dkrn_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
-	
+
 	local lastConversationScreen = nil
-	
+
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
 		lastConversationScreen = session:getLastConversationScreen()
 	end
-	
+
 	local conversation = LuaConversationTemplate(conversationTemplate)
-		
+
 	local nextConversationScreen
-	
+
 	if (lastConversationScreen ~= nil) then
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-		
+
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		
+
 		nextConversationScreen = conversation:getScreen(optionLink)
-		
+
 		if nextConversationScreen ~= nil then
 			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-		
+
 			if (nextLuaConversationScreen:getScreenID() == "rightaway" or nextLuaConversationScreen:getScreenID() == "location") then
 				creature:setScreenPlayState(1, "death_watch_bunker_imperial_sidequest")--gain entry permission
 			elseif (nextLuaConversationScreen:getScreenID() == "finish") then
 				local creo = LuaSceneObject(conversingPlayer)
 				inventory = creo:getSlottedObject("inventory")
 				pSample = getContainerObjectByTemplate(inventory, "object/tangible/loot/dungeon/death_watch_bunker/blood_vial.iff", true)
-		
-				if pSample ~= nil then	
+
+				if pSample ~= nil then
 					local sample = LuaSceneObject(pSample)
 					sample:destroyObjectFromWorld()
-				
+
 					local playerObjectPointer = creature:getPlayerObject()
-				
+
 					if (playerObjectPointer ~= nil) then
 						local playerObject = LuaPlayerObject(playerObjectPointer)
 						playerObject:increaseFactionStanding("imperial", 500)
 					end
-			
+
 					creature:setScreenPlayState(2, "death_watch_bunker_imperial_sidequest")
 				end
 			elseif (nextLuaConversationScreen:getScreenID() == "quit") then
 				creature:removeScreenPlayState(1, "death_watch_bunker_imperial_sidequest")
 			end
 		end
-		
+
 	else
-		
+
 		finished_quest_before = creature:hasScreenPlayState(2, "death_watch_bunker_imperial_sidequest")
 		spoken_to_dkrn = creature:hasScreenPlayState(1, "death_watch_bunker_imperial_sidequest")
 		local creo = LuaSceneObject(conversingPlayer)
@@ -623,28 +623,28 @@ function commander_dkrn_handler:getNextConversationScreen(conversationTemplate, 
 		--	busy = 1
 		--else
 		--	busy = 0
-		--end 
+		--end
 
 		factionmatch = 0
 
 		local playerObjectPointer = creature:getPlayerObject()
-		
+
 		if (playerObjectPointer ~= nil) then
 			local playerObject = LuaPlayerObject(playerObjectPointer)
 			if (not playerObject:isOnLeave() and creature:isImperial()) then
 				factionmatch = 1
 			end
-		end  
-		
-				
+		end
+
+
 		if (finished_quest == true and finished_quest_before == 0) then
 			nextConversationScreen = conversation:getScreen("return_successful")
 		elseif (finished_quest == true and finished_quest_before == 1) then
 			nextConversationScreen = conversation:getScreen("more_samples")
 		elseif (spoken_to_dkrn == 1) then
 			nextConversationScreen = conversation:getScreen("return_unsuccessful")
-		--elseif (busy == 1) then
-		--	nextConversationScreen = conversation:getScreen("busy")
+			--elseif (busy == 1) then
+			--	nextConversationScreen = conversation:getScreen("busy")
 		elseif (factionmatch == 0) then
 			nextConversationScreen = conversation:getScreen("notaligned")
 		else
@@ -661,46 +661,46 @@ end
 
 -- Boba Fett
 boba_fett_handler = {  }
- 
+
 function boba_fett_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
-	
+
 	local lastConversationScreen = nil
-	
+
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
 		lastConversationScreen = session:getLastConversationScreen()
 	end
-	
+
 	local conversation = LuaConversationTemplate(conversationTemplate)
-		
+
 	local nextConversationScreen
-	
+
 	if (lastConversationScreen ~= nil) then
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-		
+
 		--Get the linked screen for the selected option.
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		
+
 		nextConversationScreen = conversation:getScreen(optionLink)
-		
+
 		if nextConversationScreen ~= nil then
 			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-			
+
 			if (nextLuaConversationScreen:getScreenID() == "convoscreen4" or nextLuaConversationScreen:getScreenID() == "convoscreen5") then
 				creature:setScreenPlayState(1, "death_watch_bunker")--gain entry permission
 			end
 		end
 	else
-		
+
 		jabba_themepark_completed = creature:hasScreenPlayState(1024, "themepark_jabba")
 		spoken_to_boba = creature:hasScreenPlayState(1, "death_watch_bunker")
-		
+
 		--TESTING!! REMOVE THIS ONCE JABBA'S THEMEPARK IS IN!
 		jabba_themepark_completed = 1
-				
+
 		if (jabba_themepark_completed == 0) then
 			nextConversationScreen = conversation:getScreen("convoscreen8")
 		elseif (spoken_to_boba == 1) then
