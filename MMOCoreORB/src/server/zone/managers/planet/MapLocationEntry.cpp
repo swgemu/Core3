@@ -37,6 +37,7 @@ MapLocationEntry& MapLocationEntry::operator=(const MapLocationEntry& entry) {
 
 	object = entry.object;
 	icon = entry.icon;
+	displayName = entry.displayName;
 
 	return *this;
 }

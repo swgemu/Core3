@@ -93,6 +93,8 @@ public:
 
 		reached = p.reached;
 
+		estimatedTimeOfArrival = p.estimatedTimeOfArrival;
+
 		return *this;
 	}
 

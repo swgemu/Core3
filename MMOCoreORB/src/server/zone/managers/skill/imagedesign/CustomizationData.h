@@ -48,6 +48,7 @@ public:
 	}
 
 	CustomizationData(const CustomizationData& c) :	Object() {
+		speciesGender = c.speciesGender;
 		customizationGroup = c.customizationGroup;
 		type = c.type;
 		customizationName = c.customizationName;
@@ -73,6 +74,7 @@ public:
 		if (this == &c)
 			return *this;
 
+		speciesGender = c.speciesGender;
 		customizationGroup = c.customizationGroup;
 		type = c.type;
 		customizationName = c.customizationName;

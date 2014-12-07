@@ -33,6 +33,7 @@ public:
 		if (this == &hsi)
 			return *this;
 
+		playerTemplate = hsi.playerTemplate;
 		styles = hsi.styles;
 
 		return *this;
