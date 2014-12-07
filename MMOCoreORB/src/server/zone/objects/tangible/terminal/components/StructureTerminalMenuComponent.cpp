@@ -16,10 +16,18 @@
 #include "server/zone/objects/player/sessions/StructureSetAccessFeeSession.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/chat/StringIdChatParameter.h"
+#include "server/zone/objects/creature/DroidObject.h"
 
 void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) {
 
 	if(!sceneObject->isTerminal())
+		return;
+
+	if(!creature->isPlayerCreature())
+		return;
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+	if( ghost == NULL )
 		return;
 
 	ManagedReference<Terminal*> terminal = cast<Terminal*>(sceneObject);
@@ -58,6 +66,24 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 		menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
 		menuResponse->addRadialMenuItemToRadialID(118, 129, 3, "@player_structure:management_pay"); //Pay Maintenance
 		menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@player_structure:management_name_structure"); //Name Structure
+
+		// Check if player has a droid called with a maintenance module installed
+		for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
+
+			ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
+			if(pet == NULL)
+				continue;
+
+			DroidObject* droidObject = cast<DroidObject*>(pet.get());
+			if(droidObject == NULL )
+				continue;
+
+			if( droidObject->isMaintenanceDroid() ){
+				menuResponse->addRadialMenuItemToRadialID(118, 131, 3, "@player_structure:assign_droid"); //Assign Droid
+				break;
+			}
+
+		}
 
 		if (structureObject->isBuildingObject()) {
 			menuResponse->addRadialMenuItemToRadialID(118, 127, 3, "@player_structure:management_residence"); //Declare Residence
@@ -101,6 +127,13 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
 	ManagedReference<Terminal*> terminal = cast<Terminal*>(sceneObject);
 	if(terminal == NULL)
+		return 1;
+
+	if(!creature->isPlayerCreature())
+		return 1;
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+	if( ghost == NULL )
 		return 1;
 
 	ManagedReference<StructureObject*> structureObject = cast<StructureObject*>(terminal->getControlledObject());
@@ -214,7 +247,30 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 		case 69:
 			structureManager->promptSelectSign(structureObject, creature);
 			break;
+		case 131: // Assign Droid
+
+			// Check if player has a droid called with a maintenance module installed
+			for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
+
+				ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
+				if(pet == NULL)
+					continue;
+
+				DroidObject* droidObject = cast<DroidObject*>(pet.get());
+				if(droidObject == NULL )
+					continue;
+
+				if( droidObject->isMaintenanceDroid() ){
+					Locker droidLocker(droidObject, creature);
+					droidObject->assignStructure( structureObject );
+					break;
+				}
+
+			}
+
+			break;
 		}
+
 	}
 
 	if(selectedID == 130 && (structureObject->isOnAdminList(creature) || structureObject->isOnPermissionList("VENDOR", creature))) {

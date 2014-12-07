@@ -55,7 +55,9 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.h"
+#include "server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.h"
 #include "server/zone/managers/crafting/labratories/DroidMechanics.h"
+#include "server/zone/objects/structure/StructureObject.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
@@ -372,4 +374,27 @@ bool DroidObjectImplementation::hasStorage() {
 		}
 	}
 	return false;
+}
+
+bool DroidObjectImplementation::isMaintenanceDroid() {
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if(module->getModuleName() == "maintenance_module") {
+			return true;
+		}
+	}
+	return false;
+}
+
+void DroidObjectImplementation::assignStructure( StructureObject* structure ){
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if(module->getModuleName() == "maintenance_module") {
+			DroidMaintenanceModuleDataComponent* maintModule = dynamic_cast<DroidMaintenanceModuleDataComponent*>(module);
+			if( maintModule != NULL ){
+				maintModule->assignStructure( structure->getObjectID() );
+				return;
+			}
+		}
+	}
 }
