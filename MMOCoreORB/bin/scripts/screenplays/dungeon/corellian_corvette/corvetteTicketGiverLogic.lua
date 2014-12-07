@@ -71,7 +71,7 @@ function IntelSearchMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, se
 	if activeQuest == self.ticketGiver.giverName and activeStep == "1" and selectedID == 20 then
 		local intelNumber = self.ticketGiver:getContainersIntelNumber(pPlayer, pContainer)
 		if intelNumber == 0 then
-			return
+			return 0
 		end
 
 		local intelAcquired = tonumber(getQuestStatus(player:getObjectID() .. ":corvetteIntelAcquired"))
@@ -81,12 +81,12 @@ function IntelSearchMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, se
 
 		if intelAcquired == 7 or (intelAcquired == 6 and intelNumber ~= 1) or (intelAcquired == 5 and intelNumber ~= 2) or (intelAcquired == 3 and intelNumber ~= 4) or (intelAcquired == 4 and intelNumber == 4) or (intelAcquired == 2 and intelNumber == 2) or (intelAcquired == 1 and intelNumber == 1) then
 			player:sendSystemMessage("@bestine:already_searched") -- You've already searched here.
-			return
+			return 0
 		end
 
 		local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 		if pInventory == nil then
-			return
+			return 0
 		end
 
 		local intelItem = intelNumber
@@ -103,6 +103,8 @@ function IntelSearchMenuComponent:handleObjectMenuSelect(pContainer, pPlayer, se
 			player:sendSystemMessage("@bestine:inventory_full") -- You find something but have no room in your inventory for it. Try again when you are carrying fewer things.
 		end
 	end
+
+	return 0
 end
 
 function CorvetteTicketGiverLogic:setupComponents()

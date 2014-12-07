@@ -729,6 +729,7 @@ function WarrenTurretMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuRes
 end
 
 function WarrenTurretMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
+	return 0
 end
 
 MCRElevatorMenuComponent = {}
@@ -742,11 +743,11 @@ function MCRElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, 
 	return ObjectManager.withCreatureObject(pPlayer, function(creature)
 		if (selectedID ~= 199) or (not WarrenScreenPlay:isMCRElevatorActive()) then
 			SceneObject(pTerminal):showFlyText("theme_park/warren/warren_system_messages", "elev_one_secure", 0, 255, 0)
-			return
+			return 0
 		end
 
 		if (creature:getParent() ~= SceneObject(pSceneObject):getParent()) then
-			return
+			return 0
 		end
 
 		local z = SceneObject(pSceneObject):getPositionZ() - 20
@@ -755,6 +756,7 @@ function MCRElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, 
 
 		creature:playEffect("clienteffect", "elevator_descend.cef")
 		creature:teleport(x, z, y, SceneObject(pSceneObject):getParentID())
+		return 0
 	end)
 end
 
@@ -862,7 +864,7 @@ end
 
 function DownloadEvidenceMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
 	if (selectedID ~= 20) then
-		return
+		return 0
 	end
 
 	local pDatapad = CreatureObject(pPlayer):getSlottedObject("datapad")
@@ -878,4 +880,5 @@ function DownloadEvidenceMenuComponent:handleObjectMenuSelect(pSceneObject, pPla
 	else
 		CreatureObject(pPlayer):sendSystemMessage("@theme_park/warren/warren_system_messages:got_evidence") --You have already downloaded evidence from this terminal
 	end
+	return 0
 end
