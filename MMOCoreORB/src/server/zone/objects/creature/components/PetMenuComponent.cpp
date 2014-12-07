@@ -199,6 +199,8 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 	if (!player->getPlayerObject()->isPrivileged() && pet->getLinkedCreature() != player)
 		return 0;
 
+	Locker crossLocker(pet, player);
+
 	if (pet->getLinkedCreature() != player) {
 		player = pet->getLinkedCreature().get();
 	}
