@@ -43,7 +43,7 @@
 
 object_tangible_component_droid_merchant_barker = object_tangible_component_droid_shared_merchant_barker:new {
 
-
+	dataObjectComponent = "DroidMerchantModuleDataComponent",
 	numberExperimentalProperties = {1, 1, 2, 1, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1},

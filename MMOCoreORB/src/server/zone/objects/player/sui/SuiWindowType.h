@@ -260,6 +260,7 @@ public:
 	static const uint16 DROID_LOAD_STIMPACK = 1027;
 	static const uint16 SELECT_DROID_EFFECT = 1028;
 	static const uint16 SELECT_DROID_EFFECT_DELAY = 1029;
+	static const uint16 SELECT_MERCHANT_WAYPOINT = 1030;
 };
 
 #endif /*SuiWindowType_H_*/
