@@ -465,6 +465,8 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 		objectManager->persistSceneObjectsRecursively(pet, 1);
 
+		Locker crossLocker(pet, player);
+
 		datapad->broadcastObject(controlDevice, true);
 		controlDevice->growPet(player,true);
 		controlDevice->callObject(player);
