@@ -1187,6 +1187,8 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 	if (defender->isCreatureObject()) {
 		if (defender->isPlayerCreature())
 			damage *= 0.25;
+		// pikc a pool to target
+		int pool = calculatePoolsToDamage(RANDOM);
 		// we now have damage to use lets apply it
 		float healthDamage = 0.f, actionDamage = 0.f, mindDamage = 0.f;
 		// need to check armor reduction with just defender, blast and their AR + resists
@@ -1220,30 +1222,41 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 			healthDamage = damage;
 			actionDamage = damage;
 			mindDamage = damage;
-			if (healthArmor != NULL && !healthArmor->isVulnerable(WeaponObject::BLAST)) {
+			if (healthArmor != NULL && !healthArmor->isVulnerable(WeaponObject::BLAST) && (pool & HEALTH)) {
 				float armorReduction = healthArmor->getBlast();
 				if (armorReduction > 0)
 					healthDamage *= (1.f - (armorReduction / 100.f));
 				healthArmor->inflictDamage(healthArmor, 0, healthDamage * 0.1, true, true);
+				return (int)healthDamage * 0.1;
 			}
-			if (mindArmor != NULL && !mindArmor->isVulnerable(WeaponObject::BLAST)) {
+			if (mindArmor != NULL && !mindArmor->isVulnerable(WeaponObject::BLAST) && (pool & MIND)) {
 				float armorReduction = mindArmor->getBlast();
 				if (armorReduction > 0)
 					mindDamage *= (1.f - (armorReduction / 100.f));
 				mindArmor->inflictDamage(mindArmor, 0, mindDamage * 0.1, true, true);
+				return (int)mindDamage * 0.1;
 			}
-			if (actionArmor != NULL && !actionArmor->isVulnerable(WeaponObject::BLAST)) {
+			if (actionArmor != NULL && !actionArmor->isVulnerable(WeaponObject::BLAST) && (pool & ACTION)) {
 				float armorReduction = actionArmor->getBlast();
 				if (armorReduction > 0)
 					actionDamage *= (1.f - (armorReduction / 100.f));
 				actionArmor->inflictDamage(actionArmor, 0, actionDamage * 0.1, true, true);
+				return (int)actionDamage * 0.1;
 			}
 		}
-
-		defender->inflictDamage(droid, CreatureAttribute::ACTION, (int)actionDamage, true, true);
-		defender->inflictDamage(droid, CreatureAttribute::HEALTH, (int)healthDamage, true, true);
-		defender->inflictDamage(droid, CreatureAttribute::MIND, (int)mindDamage, true, true);
-		return (int) (healthDamage + actionDamage + mindDamage);
+		if((pool & ACTION)){
+			defender->inflictDamage(droid, CreatureAttribute::ACTION, (int)actionDamage, true, true);
+			return (int)actionDamage;
+		}
+		if((pool & HEALTH)) {
+			defender->inflictDamage(droid, CreatureAttribute::HEALTH, (int)healthDamage, true, true);
+			return (int)healthDamage;
+		}
+		if((pool & MIND)) {
+			defender->inflictDamage(droid, CreatureAttribute::MIND, (int)mindDamage, true, true);
+			return (int)mindDamage;
+		}
+		return 0;
 	} else {
 		return 0;
 	}
