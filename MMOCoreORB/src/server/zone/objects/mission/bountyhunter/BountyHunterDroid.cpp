@@ -74,6 +74,7 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 		tano->setUseCount(tano->getUseCount() - 1, true);
 	} else {
 		droidObject->destroyObjectFromWorld(true);
+		droidObject->destroyObjectFromDatabase(true);
 	}
 
 	return findTargetTask;
@@ -131,6 +132,7 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 		tano->setUseCount(tano->getUseCount() - 1, true);
 	} else {
 		droidObject->destroyObjectFromWorld(true);
+		droidObject->destroyObjectFromDatabase(true);
 	}
 
 	return task;

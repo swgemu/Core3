@@ -151,6 +151,7 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 		usedSocketCount++;
 
 		attachment->destroyObjectFromWorld(true);
+		attachment->destroyObjectFromDatabase(true);
 
 		if (isEquipped()) {
 			applySkillModsTo(player);

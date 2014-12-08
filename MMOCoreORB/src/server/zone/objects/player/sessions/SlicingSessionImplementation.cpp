@@ -307,6 +307,7 @@ bool SlicingSessionImplementation::hasWeaponUpgradeKit() {
 		if (objType == SceneObjectType::WEAPONUPGRADEKIT) {
 			//inventory->removeObject(sceno, true);
 			sceno->destroyObjectFromWorld(true);
+			sceno->destroyObjectFromDatabase(true);
 			return true;
 		}
 	}
@@ -335,6 +336,7 @@ bool SlicingSessionImplementation::hasArmorUpgradeKit() {
 
 		if (objType == SceneObjectType::ARMORUPGRADEKIT) {
 			sceno->destroyObjectFromWorld(true);
+			sceno->destroyObjectFromDatabase(true);
 			//inventory->removeObject(sceno, true);
 			return true;
 		}
@@ -358,6 +360,7 @@ void SlicingSessionImplementation::useClampFromInventory(SlicingTool* clamp) {
 
 	//inventory->removeObject(clamp, true);
 	clamp->destroyObjectFromWorld(true);
+	clamp->destroyObjectFromDatabase(true);
 	player->sendSystemMessage("@slicing/slicing:used_clamp");
 	usedClamp = true;
 
@@ -386,6 +389,7 @@ void SlicingSessionImplementation::handleUseClamp() {
 		if (objType == SceneObjectType::MOLECULARCLAMP) {
 			//inventory->removeObject(sceno, true);
 			sceno->destroyObjectFromWorld(true);
+			sceno->destroyObjectFromDatabase(true);
 
 			player->sendSystemMessage("@slicing/slicing:used_clamp");
 			usedClamp = true;
@@ -426,6 +430,7 @@ void SlicingSessionImplementation::handleUseFlowAnalyzer() {
 
 			//inventory->removeObject(sceno, true);
 			sceno->destroyObjectFromWorld(true);
+			sceno->destroyObjectFromDatabase(true);
 
 			player->sendSystemMessage("@slicing/slicing:used_node");
 			usedNode = true;
@@ -700,6 +705,8 @@ void SlicingSessionImplementation::handleContainerSlice() {
 			//inventory->removeObject(tangibleObject, true);
 			tangibleObject->destroyObjectFromWorld(true);
 		}
+
+		tangibleObject->destroyObjectFromDatabase(true);
 
 	} else if (tangibleObject->isContainerObject()) {
        

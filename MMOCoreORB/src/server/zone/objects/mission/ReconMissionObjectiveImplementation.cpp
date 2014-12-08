@@ -65,12 +65,15 @@ void ReconMissionObjectiveImplementation::activate() {
 void ReconMissionObjectiveImplementation::abort() {
 	MissionObjectiveImplementation::abort();
 
-	if (locationActiveArea != NULL)
+	if (locationActiveArea != NULL) {
 		locationActiveArea->destroyObjectFromWorld(true);
+		locationActiveArea->destroyObjectFromDatabase(true);
+	}
 }
 
 void ReconMissionObjectiveImplementation::complete() {
 	locationActiveArea->destroyObjectFromWorld(true);
+	locationActiveArea->destroyObjectFromDatabase(true);
 
 	MissionObjectiveImplementation::complete();
 }

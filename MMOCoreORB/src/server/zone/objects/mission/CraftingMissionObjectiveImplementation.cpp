@@ -51,9 +51,12 @@ void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject*
 	case 1:
 		//Check if player has the item.
 		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-			if (inventory->getContainerObject(i)->getObjectTemplate()->getFullTemplateString() == mission->getTemplateString2()) {
+			Reference<SceneObject*> item = inventory->getContainerObject(i);
+
+			if (item != NULL && item->getObjectTemplate()->getFullTemplateString() == mission->getTemplateString2()) {
 				//Delete the item.
-				inventory->getContainerObject(i)->destroyObjectFromWorld(true);
+				item->destroyObjectFromWorld(true);
+				item->destroyObjectFromDatabase(true);
 
 				complete();
 

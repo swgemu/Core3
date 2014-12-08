@@ -118,6 +118,7 @@ public:
 		manager->harvestResourceToPlayer(player, recycledVersion, resCon->getQuantity());
 
 		insertedItem->destroyObjectFromWorld(false);
+		insertedItem->destroyObjectFromDatabase(true);
 
 	}
 

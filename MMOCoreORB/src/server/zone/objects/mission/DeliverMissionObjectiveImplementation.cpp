@@ -211,6 +211,7 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 		}
 
 		item->destroyObjectFromWorld(true);
+		item->destroyObjectFromDatabase(true);
 
 		complete();
 

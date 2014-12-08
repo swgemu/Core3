@@ -42,6 +42,7 @@ int ArtCrateMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 		lootManager->createLoot(inventory, "death_watch_bunker_art", 1);
 
 		sceneObject->destroyObjectFromWorld(true);
+		sceneObject->destroyObjectFromDatabase(true);
 
 		return 0;
 	}

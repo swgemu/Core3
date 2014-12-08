@@ -106,6 +106,7 @@ void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObserv
 		locationLocker.release();
 
 		locationActiveArea->destroyObjectFromWorld(true);
+		locationActiveArea->destroyObjectFromDatabase(true);
 	}
 }
 

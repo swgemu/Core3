@@ -109,16 +109,10 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		datapad->broadcastObject(vehicleControlDevice, true);
 		vehicleControlDevice->generateObject(player);
 
-		//Remove the deed from it's container.
-		ManagedReference<SceneObject*> deedContainer = getParent();
-
-		if (deedContainer != NULL) {
-			/*deedContainer->removeObject(_this, true);
-			broadcastDestroy(_this, false);*/
-			destroyObjectFromWorld(true);
-		}
-
 		generated = true;
+
+		destroyObjectFromWorld(true);
+		destroyObjectFromDatabase(true);
 
 		return 0;
 	}

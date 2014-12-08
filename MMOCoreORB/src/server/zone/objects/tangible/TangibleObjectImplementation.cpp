@@ -831,6 +831,7 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 
 	String result = repairAttempt(repairChance);
 	repairTool->destroyObjectFromWorld(true);
+	repairTool->destroyObjectFromDatabase(true);
 
 	player->sendSystemMessage(result);
 }

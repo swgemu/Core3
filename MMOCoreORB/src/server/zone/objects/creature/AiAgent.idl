@@ -405,7 +405,15 @@ class AiAgent extends CreatureObject {
 			moveEvent = null;
 		}
 	}
-	
+
+	public void destroyObjectFromDatabase(boolean destroyContainedObjects = false) {
+		if (petDeed != null) {
+			petDeed.destroyObjectFromDatabase(true);
+		}
+
+		super.destroyObjectFromDatabase(destroyContainedObjects);
+	}
+
 	public native void activatePostureRecovery();
 	
 	public native void queueDizzyFallEvent();
