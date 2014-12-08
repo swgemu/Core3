@@ -75,6 +75,7 @@ describe("Sith Shadow Encounter", function()
 
 		datapad = {}
 		datapad.destroyObjectFromWorld = spy.new(function() end)
+		datapad.destroyObjectFromDatabase = spy.new(function() end)
 		DirectorManagerMocks.sceneObjects[pDatapad] = datapad
 	end)
 
@@ -354,6 +355,7 @@ describe("Sith Shadow Encounter", function()
 					SithShadowEncounter:useWaypointDatapad(pDatapad, pCreatureObject)
 
 					assert.spy(datapad.destroyObjectFromWorld).was.called_with(datapad)
+					assert.spy(datapad.destroyObjectFromDatabase).was.called_with(datapad)
 				end)
 
 				it("Should complete the loot datapad 1 quests.", function()

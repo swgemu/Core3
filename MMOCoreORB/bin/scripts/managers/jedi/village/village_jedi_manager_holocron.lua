@@ -35,6 +35,7 @@ function VillageJediManagerHolocron.useTheHolocron(pSceneObject, pCreatureObject
 		creatureObject:addCooldown(USEDHOLOCRON, HOLOCRONCOOLDOWNTIME)
 	end)
 	SceneObject(pSceneObject):destroyObjectFromWorld()
+	SceneObject(pSceneObject):destroyObjectFromDatabase()
 end
 
 -- Send message to the player that he cannot replenish the force.

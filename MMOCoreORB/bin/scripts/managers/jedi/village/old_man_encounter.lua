@@ -109,6 +109,7 @@ function OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
 	if pForceCrystal ~= nil then
 		ObjectManager.withSceneObject(pForceCrystal, function(forceCrystal)
 			forceCrystal:destroyObjectFromWorld()
+			forceCrystal:destroyObjectFromDatabase()
 		end)
 	end
 

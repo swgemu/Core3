@@ -70,6 +70,7 @@ describe("SithShadowIntroTheater", function()
 
         datapad = {}
         datapad.destroyObjectFromWorld = spy.new(function() end)
+        datapad.destroyObjectFromDatabase = spy.new(function() end)
         DirectorManagerMocks.sceneObjects[pDatapad] = datapad
 
         readData = spy.new(function(key)
@@ -312,6 +313,19 @@ describe("SithShadowIntroTheater", function()
         describe("and the player has looted a datapad", function()
             before_each(function()
                 QuestManagerMocks.hasCompletedQuest = spy.new(function() return true end)
+            end)
+
+            it("Should send the disk string to the player.", function()
+                SithShadowIntroTheater:useTheaterDatapad(pDatapad, pCreatureObject)
+
+                assert.spy(creatureObject.sendSystemMessage).was.called_with(creatureObject, READ_DISK_2_STRING)
+            end)
+
+            it("Should destroy the datapad.", function()
+                SithShadowIntroTheater:useTheaterDatapad(pDatapad, pCreatureObject)
+
+                assert.spy(datapad.destroyObjectFromWorld).was.called_with(datapad)
+                assert.spy(datapad.destroyObjectFromDatabase).was.called_with(datapad)
             end)
 
             it("Should start the DathomirGoTo quest.", function()

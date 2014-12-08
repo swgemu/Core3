@@ -37,6 +37,7 @@ describe("Village Jedi Manager Holocron", function()
 
 		sceneObject = {}
 		sceneObject.destroyObjectFromWorld = spy.new(function() end)
+		sceneObject.destroyObjectFromDatabase = spy.new(function() end)
 		DirectorManagerMocks.sceneObjects[pSceneObject] = sceneObject
 
 	end)
@@ -153,6 +154,7 @@ describe("Village Jedi Manager Holocron", function()
 				VillageJediManagerHolocron.useTheHolocron(pSceneObject, pCreatureObject)
 
 				assert.spy(sceneObject.destroyObjectFromWorld).was.called(1)
+				assert.spy(sceneObject.destroyObjectFromDatabase).was.called(1)
 				assert.spy(playerObject.setForcePower).was.called(1)
 				assert.spy(creatureObject.sendSystemMessage).was.called(1)
 				assert.spy(creatureObject.addCooldown).was.called(1)
