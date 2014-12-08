@@ -129,6 +129,7 @@
 #include "server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidDetonationModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidMerchantModuleDataComponent.h"
+#include "server/zone/objects/tangible/components/droid/DroidCombatModuleDataComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -301,4 +302,5 @@ ComponentManager::ComponentManager() {
 	dataObjectFactory.registerObject<DroidStimpackModuleDataComponent>("DroidStimpackModuleDataComponent");
 	dataObjectFactory.registerObject<DroidDetonationModuleDataComponent>("DroidDetonationModuleDataComponent");
 	dataObjectFactory.registerObject<DroidMerchantModuleDataComponent>("DroidMerchantModuleDataComponent");
+	dataObjectFactory.registerObject<DroidCombatModuleDataComponent>("DroidCombatModuleDataComponent");
 }

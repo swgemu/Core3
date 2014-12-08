@@ -23,6 +23,7 @@
 #include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
+#include "server/zone/managers/crafting/labratories/DroidMechanics.h"
 
 void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	DeedImplementation::loadTemplateData(templateData);
@@ -35,6 +36,7 @@ void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 	controlDeviceObjectTemplate = deedData->getControlDeviceObjectTemplate();
 	mobileTemplate = deedData->getMobileTemplate();
 	species = deedData->getSpecies();
+	overallQuality = 0;
 }
 
 void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
@@ -55,15 +57,13 @@ void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 			if (module == NULL) {
 				continue;
 			}
-			if (!module->isCombatModule())
-				module->fillAttributeList(alm,object);
 		}
 	}
 }
 
 void DroidDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
-
+	overallQuality = 0;
 	setLoggingName("DroidDeed");
 }
 
@@ -110,6 +110,7 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 		}
 	}
 	modules.removeAll();
+	overallQuality = values->getCurrentValue("exp_effectiveness");
 	// @TODO Add crafting values, this should adjust toHit and Speed based on droid ham, also
 
 	// we need to stack modules if they are stackable.
@@ -278,7 +279,19 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			droid->transferObject(craftingComponents, 4, false);
 			craftingComponents->setSendToClient(false);
 		}
-
+		if(droid->isCombatDroid()) {
+			// change ham to match overall setup
+			int maxHam = DroidMechanics::determineHam(overallQuality,species);
+			for (int i = 0; i < 9; ++i) {
+				if (i % 3 == 0) {
+					droid->setMaxHAM(i,maxHam,true);
+					droid->setHAM(i,maxHam,true);
+				} else {
+					droid->setMaxHAM(i,maxHam/100,true);
+					droid->setHAM(i,maxHam/100,true);
+				}
+			}
+		}
 		// Copy color customization from deed to droid
 		CustomizationVariables* customVars = getCustomizationVariables();
 		if( customVars != NULL ){

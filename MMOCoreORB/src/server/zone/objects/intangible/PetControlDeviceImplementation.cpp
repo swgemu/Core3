@@ -926,14 +926,22 @@ void PetControlDeviceImplementation::setDefaultCommands(){
 	trainedCommands.put(PetManager::STAY, "stay");
 	trainedCommands.put(PetManager::FOLLOW, "follow");
 	trainedCommands.put(PetManager::STORE, "store");
-	trainedCommands.put(PetManager::ATTACK, "attack");
-	trainedCommands.put(PetManager::GUARD, "guard");
+	ManagedReference<DroidObject*> droid = this->controlledObject.get().castTo<DroidObject*>();
+	if (droid != NULL) {
+		if(droid->isCombatDroid()) {
+			trainedCommands.put(PetManager::ATTACK, "attack");
+			trainedCommands.put(PetManager::GUARD, "guard");
+		}
+	}
 	trainedCommands.put(PetManager::FRIEND, "friend");
 	trainedCommands.put(PetManager::FOLLOWOTHER, "followother");
 	trainedCommands.put(PetManager::PATROL, "patrol");
 	trainedCommands.put(PetManager::FORMATION1, "formation1");
 	trainedCommands.put(PetManager::FORMATION2, "formation2");
-	trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
+	if(droid != NULL) {
+		if(droid->isCombatDroid() && (droid->getSpecies() == DroidObject::R_SERIES || droid->getSpecies() == DroidObject::PROBOT))
+			trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
+	}
 	trainedCommands.put(PetManager::GROUP, "group");
 
 }

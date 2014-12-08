@@ -43,6 +43,7 @@
 
 object_tangible_component_droid_combat_module = object_tangible_component_droid_shared_combat_module:new {
 
+	dataObjectComponent = "DroidCombatModuleDataComponent",
 
 	numberExperimentalProperties = {1, 1, 1, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "CD", "OQ", "CD", "OQ"},

@@ -62,6 +62,7 @@ class DroidDeed extends Deed {
 	protected string controlDeviceObjectTemplate;
 	protected string mobileTemplate;
 	protected int species;
+	protected float overallQuality;
 	@dereferenced
 	protected HashTable<string,DroidComponent> modules;
 	

@@ -323,5 +323,13 @@ void DroidObjectImplementation::runModulePowerDrain() {
 		if(drain > 0)
 			usePower(drain);
 	}
-
+}
+bool DroidObjectImplementation::isCombatDroid() {
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if(module->isCombatModule()) {
+			return true;
+		}
+	}
+	return false;
 }

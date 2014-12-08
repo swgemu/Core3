@@ -95,6 +95,11 @@ class DroidObject extends AiAgent {
 	protected Vector<BaseDroidModuleComponent> modules;       
 	
 	/**
+	 * Droid hit chance
+	 */
+	protected float hitChance = 0;
+	
+	/**
 	 * Droid species for Identification
 	 */
 	public static final int ASSASSIN_DROID = 0xCB;
@@ -300,6 +305,13 @@ class DroidObject extends AiAgent {
 	}
 	
 	/**
+	 * Set droid hit chance (form combat module)
+	 */
+	@local
+	public void setHitChance(float v) {
+		hitChance = v;
+	}
+	/**
 	 * Set resists (from armor module)
 	 */	
 	@local
@@ -406,6 +418,19 @@ class DroidObject extends AiAgent {
 			return super.getLightSaber();
 		}				
 	}
+	
+	@dirty
+	public float getChanceHit() {
+		if (isPet()) {
+			return hitChance;
+		} else {
+			return super.getChanceHit();
+		}
+	}
+	
 	@dirty
 	public native boolean isAdvancedModel();	
+	
+	@dirty
+	public native boolean isCombatDroid();
 }
