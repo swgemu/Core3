@@ -142,6 +142,7 @@ function SithShadowEncounter:useWaypointDatapad(pSceneObject, pCreatureObject)
 		end)
 		ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
 			sceneObject:destroyObjectFromWorld()
+			sceneObject:destroyObjectFromDatabase()
 		end)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 	else

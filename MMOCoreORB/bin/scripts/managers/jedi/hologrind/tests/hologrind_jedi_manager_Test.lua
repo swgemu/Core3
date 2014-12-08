@@ -56,6 +56,7 @@ describe("Hologrind Jedi Manager", function()
 
 		sceneObject = {}
 		sceneObject.destroyObjectFromWorld = spy.new(function() end)
+		sceneObject.destroyObjectFromDatabase = spy.new(function() end)
 		DirectorManagerMocks.sceneObjects[pSceneObject] = sceneObject
 
 	end)
@@ -146,6 +147,7 @@ describe("Hologrind Jedi Manager", function()
 					testHologrind:useItem(pSceneObject, itemType, pCreatureObject)
 
 					assert.spy(sceneObject.destroyObjectFromWorld).was.called(1)
+					assert.spy(sceneObject.destroyObjectFromDatabase).was.called(1)
 				end)
 			end)
 
@@ -156,6 +158,7 @@ describe("Hologrind Jedi Manager", function()
 					testHologrind:useItem(pSceneObject, itemType, pCreatureObject)
 
 					assert.spy(sceneObject.destroyObjectFromWorld).was_not.called()
+					assert.spy(sceneObject.destroyObjectFromDatabase).was_not.called()
 				end)
 			end)
 		end)

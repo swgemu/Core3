@@ -131,7 +131,7 @@ function TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
 		end)
 		TreasureMapMenuComponent:spawnTreasureDefenders(pObject, pPlayer, x, z, y, mapType)
 		SceneObject(pObject):destroyObjectFromWorld()
-		SceneObject(pObject):destroyObjectFromDatabase(true)
+		SceneObject(pObject):destroyObjectFromDatabase()
 	end)
 end
 
@@ -204,20 +204,29 @@ function TreasureMapMenuComponent:setDefenderAggro(pCreature, pPlayer)
 end
 
 function TreasureMapMenuComponent:removeTreasureChest(pChest)
-	ObjectManager.withSceneObject(pChest, function(chest)
-		local chestOwnerID = readData(chest:getObjectID() .. ":ownerID")
-		local pOwner = getSceneObject(chestOwnerID)
-		ObjectManager.withCreaturePlayerObject(pOwner, function(owner)
-			owner:removeWaypointBySpecialType(WAYPOINTTREASUREMAP)
-		end)
-
-		deleteData(chestOwnerID .. ":treasureChestID")
-		deleteData(chest:getObjectID() .. ":ownerID")
-		chest:destroyObjectFromWorld()
-
-		deleteData(chestOwnerID .. ":hasOpenedChest")
-		deleteData(chestOwnerID .. ":treasureMapExactWaypointID")
+	local chestOwnerID = readData(SceneObject(pChest):getObjectID() .. ":ownerID")
+	local pOwner = getSceneObject(chestOwnerID)
+	ObjectManager.withCreaturePlayerObject(pOwner, function(owner)
+		owner:removeWaypointBySpecialType(WAYPOINTTREASUREMAP)
 	end)
+
+	local numberOfContents = SceneObject(pChest):getContainerObjectsSize()
+	if (numberOfContents ~= 0) then
+		for i = 0, numberOfContents - 1 do
+			local pContainerObject = SceneObject(pChest):getContainerObject(i)
+
+			if pContainerObject ~= nil then
+				SceneObject(pContainerObject):destroyObjectFromDatabase()
+			end
+		end
+	end
+
+	deleteData(chestOwnerID .. ":treasureChestID")
+	deleteData(chest:getObjectID() .. ":ownerID")
+	SceneObject(pChest):destroyObjectFromWorld()
+
+	deleteData(chestOwnerID .. ":hasOpenedChest")
+	deleteData(chestOwnerID .. ":treasureMapExactWaypointID")
 end
 
 function TreasureMapMenuComponent:doReadMap(pObject, pPlayer)
