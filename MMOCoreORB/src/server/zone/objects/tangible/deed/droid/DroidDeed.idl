@@ -56,6 +56,8 @@ import system.util.HashTable;
 import server.zone.objects.tangible.component.droid.DroidComponent;
 include server.zone.objects.tangible.components.droid.BaseDroidModuleComponent;
 import server.zone.templates.SharedObjectTemplate;
+import system.io.ObjectInputStream;
+import system.io.ObjectOutputStream;
 
 class DroidDeed extends Deed {
 
@@ -108,4 +110,5 @@ class DroidDeed extends Deed {
 	@local
 	@dirty
 	protected native void processModule(BaseDroidModuleComponent module, unsigned int crc);
+	
 }
