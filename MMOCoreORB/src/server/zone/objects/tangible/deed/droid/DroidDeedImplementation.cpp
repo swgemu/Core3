@@ -57,6 +57,7 @@ void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 			if (module == NULL) {
 				continue;
 			}
+			module->fillAttributeList(alm,object);
 		}
 	}
 }
@@ -337,4 +338,3 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 	return DeedImplementation::handleObjectMenuSelect(player, selectedID);
 }
-
