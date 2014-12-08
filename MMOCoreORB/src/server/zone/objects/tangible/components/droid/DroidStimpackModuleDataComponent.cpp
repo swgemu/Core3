@@ -181,7 +181,7 @@ int DroidStimpackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 	}
 	if( selectedID == LOAD_STIMPACK ){
 		Locker dLock(droid);
-		Locker locker(player);
+		Locker crossLoker(player,droid);
 		ManagedReference<SceneObject*> craftingComponents = droidComponent->getSlottedObject("crafted_components");
 
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
@@ -287,10 +287,13 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 		SceneObject* satchel = craftingComponents->getContainerObject(0);
 		if (satchel != NULL){
 			if(droid->getContainerObjectsSize() +1 <= capacity) {
-				// transfer to the droid first, then to the component satchel
-				droid->transferObject(pack,-1,true);
-				pack->sendTo(player,false);
+				// remove it form the borld
+				pack->destroyObjectFromWorld(true);
+				// transfer to the droid and broadcast, then send the satchel to the player
 				satchel->transferObject(pack,-1,true);
+				satchel->broadcastObject(pack, true);
+				pack->sendTo(player,true);
+				droid->sendTo(player,true);
 				player->sendSystemMessage("@pet/droid_modules:stimpack_loaded");
 			} else {
 				player->sendSystemMessage("@pet/droid_modules:stimpack_capacity_full");

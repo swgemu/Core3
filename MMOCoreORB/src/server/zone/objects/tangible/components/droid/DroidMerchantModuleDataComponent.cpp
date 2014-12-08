@@ -242,11 +242,13 @@ void DroidMerchantModuleDataComponent::onStore(){
 	deactivate();
 }
 void DroidMerchantModuleDataComponent::handlePetCommand(String cmd, CreatureObject* speaker){
-	if(cmd.length() > 128) {
-		speaker->sendSystemMessage("@pet/droid_modules:message_too_long");
-	} else {
-		message = cmd;
-		waitingOnMessage = false;
-		speaker->sendSystemMessage("@pet/droid_modules:message_saved");
+	if(waitingOnMessage) { // only check if we are recording.
+		if(cmd.length() > 128) {
+			speaker->sendSystemMessage("@pet/droid_modules:message_too_long");
+		} else {
+			message = cmd;
+			waitingOnMessage = false;
+			speaker->sendSystemMessage("@pet/droid_modules:message_saved");
+		}
 	}
 }
