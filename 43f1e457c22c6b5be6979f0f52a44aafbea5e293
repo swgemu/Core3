@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_ed0f362d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchMenuComponents.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-08T04:36:26Z",
+      "side": 1,
+      "message": "Why are you removing the returns from each handleObjectMenuSelect? They should always return an integer.",
+      "revId": "43f1e457c22c6b5be6979f0f52a44aafbea5e293",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_cd1c7a6d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchMenuComponents.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-08T04:36:26Z",
+      "side": 1,
+      "message": "You probably want to check to make sure that the item was actually given and send a different message if it wasn\u0027t.",
+      "revId": "43f1e457c22c6b5be6979f0f52a44aafbea5e293",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ad193e7b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchMenuComponents.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-08T04:36:26Z",
+      "side": 1,
+      "message": "You should destroy these from the database as well.",
+      "revId": "43f1e457c22c6b5be6979f0f52a44aafbea5e293",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_8d2682b9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchMenuComponents.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-08T04:36:26Z",
+      "side": 1,
+      "message": "Check that the item was successfully given before sending this message. Send a different one if it wasn\u0027t.",
+      "revId": "43f1e457c22c6b5be6979f0f52a44aafbea5e293",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_4d208a9b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchMenuComponents.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-08T04:36:26Z",
+      "side": 1,
+      "message": "Destroy these from the database as well.",
+      "revId": "43f1e457c22c6b5be6979f0f52a44aafbea5e293",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_2d254eab",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchMenuComponents.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-08T04:36:26Z",
+      "side": 1,
+      "message": "You may want to check to make sure the item was successfully given and handle cases where it wasn\u0027t.",
+      "revId": "43f1e457c22c6b5be6979f0f52a44aafbea5e293",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
