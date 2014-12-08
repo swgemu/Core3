@@ -269,9 +269,7 @@ void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, co
 		return;
 	}
 
-	String text = formatMessage(message.toString());
-
-	UnicodeString formattedMessage(text);
+	UnicodeString formattedMessage(formatMessage(message));
 
 	ManagedReference<ChatRoom*> planetRoom = zone->getChatRoom();
 
@@ -716,9 +714,7 @@ void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject*
 
 		tokenizer.finalToken(msg);
 
-		String text = formatMessage(msg.toString());
-
-		UnicodeString formattedMessage(text);
+		UnicodeString formattedMessage(formatMessage(msg));
 		/*if (msg[0] == '@') {
 			handleGameCommand(player, msg.toString());
 		} else {
@@ -810,9 +806,7 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 		return;
 	}
 
-	String textString = formatMessage(text.toString());
-
-	text = textString;
+	text = formatMessage(text);
 
 	String name = sender->getFirstName();
 	if( sender->getPlayerObject()->isPrivileged() ){
@@ -906,9 +900,7 @@ void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const Un
 		return;
 	}
 
-	String text = formatMessage(message.toString());
-
-	UnicodeString formattedMessage(text);
+	UnicodeString formattedMessage(formatMessage(message));
 
 	sender->unlock();
 
@@ -969,9 +961,7 @@ void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const Un
 		return;
 	}
 
-	String text = formatMessage(message.toString());
-
-	UnicodeString formattedMessage(text);
+	UnicodeString formattedMessage(formatMessage(message));
 
 	ManagedReference<ChatRoom*> room = guild->getChatRoom();
 	if (room != NULL) {
@@ -1018,9 +1008,7 @@ void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const U
 		return;
 	}
 
-	String text = formatMessage(message.toString());
-
-	UnicodeString formattedMessage(text);
+	UnicodeString formattedMessage(formatMessage(message));
 
 	ManagedReference<ChatRoom*> room = zone->getChatRoom();
 	BaseMessage* msg = NULL;
@@ -1068,9 +1056,7 @@ void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const 
 		return;
 	}
 
-	String text = formatMessage(message.toString());
-
-	UnicodeString formattedMessage(text);
+	UnicodeString formattedMessage(formatMessage(message));
 
 	BaseMessage* msg = NULL;
 
@@ -1353,12 +1339,12 @@ void ChatManagerImplementation::deletePersistentMessage(CreatureObject* player, 
 	ObjectManager::instance()->destroyObjectFromDatabase(messageObjectID);
 }
 
-String ChatManagerImplementation::formatMessage(const String& message) {
-	String text = message;
+UnicodeString ChatManagerImplementation::formatMessage(const UnicodeString& message) {
+	UnicodeString text = message;
 
-	while (text.contains("\\>")) {
+	while (text.indexOf("\\>") >= 0) {
 		int index = text.indexOf("\\>");
-		String sub = "\\" + text.subString(index, index + 2);
+		UnicodeString sub = "\\" + text.subString(index, index + 2);
 		text = text.replaceFirst(sub,"");
 	}
 
