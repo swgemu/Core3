@@ -57,6 +57,7 @@ void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 			if (module == NULL) {
 				continue;
 			}
+			module->fillAttributeList(alm,object);
 		}
 	}
 }
@@ -336,5 +337,22 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	}
 
 	return DeedImplementation::handleObjectMenuSelect(player, selectedID);
+}
+bool DroidDeedImplementation::toBinaryStream(ObjectOutputStream* stream) {
+	TypeInfo<String>::toBinaryStream(&controlDeviceObjectTemplate, stream);
+	TypeInfo<String>::toBinaryStream(&mobileTemplate, stream);
+	TypeInfo<int>::toBinaryStream(&species, stream);
+	TypeInfo<float>::toBinaryStream(&overallQuality, stream);
+	TypeInfo<HashTable<String, ManagedReference<DroidComponent*> > >::toBinaryStream(&modules, stream);
+	return true;
+}
+
+bool DroidDeedImplementation::parseFromBinaryStream(ObjectInputStream* stream) {
+	TypeInfo<String>::parseFromBinaryStream(&controlDeviceObjectTemplate, stream);
+	TypeInfo<String>::parseFromBinaryStream(&mobileTemplate, stream);
+	TypeInfo<int>::parseFromBinaryStream(&species, stream);
+	TypeInfo<float>::parseFromBinaryStream(&overallQuality, stream);
+	TypeInfo<HashTable<String, ManagedReference<DroidComponent*> > >::parseFromBinaryStream(&modules, stream);
+	return true;
 }
 
