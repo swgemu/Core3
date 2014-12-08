@@ -77,6 +77,7 @@ describe("OldManEncounter", function()
 		forceCrystal = {}
 		forceCrystal.getObjectID = spy.new(function() return forceCrystalId end)
 		forceCrystal.destroyObjectFromWorld = spy.new(function() end)
+		forceCrystal.destroyObjectFromDatabase = spy.new(function() end)
 		DirectorManagerMocks.sceneObjects[pForceCrystal] = forceCrystal
 	end)
 
@@ -254,10 +255,11 @@ describe("OldManEncounter", function()
 						getSceneObject = spy.new(function() return pForceCrystal end)
 					end)
 
-					it("Should delete the force crystal from the world.", function()
+					it("Should delete the force crystal.", function()
 						OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
 
 						assert.spy(forceCrystal.destroyObjectFromWorld).was.called(1)
+						assert.spy(forceCrystal.destroyObjectFromDatabase).was.called(1)
 					end)
 				end)
 

@@ -208,6 +208,7 @@ function HologrindJediManager:useItem(pSceneObject, itemType, pCreatureObject)
 			return
 		else
 			SceneObject(pSceneObject):destroyObjectFromWorld()
+			SceneObject(pSceneObject):destroyObjectFromDatabase()
 		end
 	end
 end
