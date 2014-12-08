@@ -108,4 +108,5 @@ class DroidDeed extends Deed {
 	@local
 	@dirty
 	protected native void processModule(BaseDroidModuleComponent module, unsigned int crc);
+	
 }

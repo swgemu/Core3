@@ -261,13 +261,15 @@ void DroidStimpackModuleDataComponent::sendLoadUI(CreatureObject* player) {
 			PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( tano);
 			if (pharma->isStimPack()) {
 				StimPack* stim = cast<StimPack*>(pharma);
-				String name;
-				if(stim->getCustomObjectName().isEmpty()) {
-					name = "@"+stim->getObjectNameStringIdFile()+":"+stim->getObjectNameStringIdName();
-				} else {
-					name = stim->getCustomObjectName().toString();
+				if (stim->isClassA()) {
+					String name;
+					if(stim->getCustomObjectName().isEmpty()) {
+						name = "@"+stim->getObjectNameStringIdFile()+":"+stim->getObjectNameStringIdName();
+					} else {
+						name = stim->getCustomObjectName().toString();
+					}
+					loader->addMenuItem(name,stim->getObjectID());
 				}
-				loader->addMenuItem(name,stim->getObjectID());
 			}
 		}
 	}
@@ -279,8 +281,25 @@ void DroidStimpackModuleDataComponent::sendLoadUI(CreatureObject* player) {
 }
 void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* player, StimPack* pack) {
 	// we need to send the invlid stimpack message just wher eis a good question
+	if (player != NULL && !player->hasSkill("science_medic_ability_04")) {
+		return;
+	}
+	ManagedReference<DroidObject*> droid = getDroidObject();
+	if (droid == NULL) {
+		return;
+	}
+	if (pack == NULL) {
+		player->sendSystemMessage("@pet/droid_modules:invalid_stimpack");
+		return;
+	}
+	if(!pack->isClassA()) {
+		player->sendSystemMessage("@pet/droid_modules:invalid_stimpack");
+		return;
+	}
+	if(droid->getLinkedCreature().get() != player) {
+		return;
+	}
 	// we have the player and the stim to add to ourselves.
-	DroidObject* droid = getDroidObject();
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 	ManagedReference<SceneObject*> craftingComponents = droidComponent->getSlottedObject("crafted_components");
 	if (craftingComponents != NULL) {
