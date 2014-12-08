@@ -24,7 +24,7 @@ voritor_dasher = Creature:new {
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 0,
-	diet = NONE,
+	diet = CARNIVORE,
 
 	templates = {"object/mobile/voritor_dasher.iff"},
 	scale = 1.05,
