@@ -16,6 +16,24 @@
       "revId": "37ff8922e1ba77957f742cdc0340c0f25a35c4c4",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ad9b7e71",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-12-09T15:16:02Z",
+      "side": 1,
+      "message": "and fucking up the entire serialization of this managed object",
+      "parentUuid": "7a51691d_ed917653",
+      "revId": "37ff8922e1ba77957f742cdc0340c0f25a35c4c4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
