@@ -314,9 +314,9 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		controlDevice->setPetType(PetManager::DROIDPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
-		controlDevice->setDefaultCommands();
 		droid->createChildObjects();
 		controlDevice->setControlledObject(droid);
+		controlDevice->setDefaultCommands();
 		datapad->transferObject(controlDevice, -1);
 
 		datapad->broadcastObject(controlDevice, true);

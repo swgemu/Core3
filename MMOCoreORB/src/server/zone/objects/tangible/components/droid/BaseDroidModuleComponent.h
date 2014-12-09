@@ -86,7 +86,8 @@ protected:
 	static const uint8 BARKER_STORE_WAYPOINT = 203;
 	static const uint8 BARKER_RECORD_MESSAGE = 204;
 	static const uint8 BARKER_TOGGLE = 205;
-
+	static const uint8 PLAYBACK_ACCESS_MENU = 206;
+	static const uint8 PLAYBACK_STOP_MENU = 207;
 public:
 	BaseDroidModuleComponent();
 	~BaseDroidModuleComponent();
