@@ -932,6 +932,9 @@ void PetControlDeviceImplementation::setDefaultCommands(){
 			trainedCommands.put(PetManager::ATTACK, "attack");
 			trainedCommands.put(PetManager::GUARD, "guard");
 		}
+	} else {
+		trainedCommands.put(PetManager::ATTACK, "attack");
+		trainedCommands.put(PetManager::GUARD, "guard");
 	}
 	trainedCommands.put(PetManager::FRIEND, "friend");
 	trainedCommands.put(PetManager::FOLLOWOTHER, "followother");
@@ -941,6 +944,8 @@ void PetControlDeviceImplementation::setDefaultCommands(){
 	if(droid != NULL) {
 		if(droid->isCombatDroid() && (droid->getSpecies() == DroidObject::R_SERIES || droid->getSpecies() == DroidObject::PROBOT))
 			trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
+	} else {
+		trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
 	}
 	trainedCommands.put(PetManager::GROUP, "group");
 
