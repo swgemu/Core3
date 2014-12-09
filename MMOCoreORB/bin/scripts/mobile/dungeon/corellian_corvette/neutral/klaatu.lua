@@ -30,6 +30,7 @@ klaatu = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "corvetteKlaatuConvoTemplate",
+	outfit = "klaatu_outfit",
 	attacks = {}
 }
 
