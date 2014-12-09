@@ -44,6 +44,7 @@
 object_tangible_component_droid_playback_module = object_tangible_component_droid_shared_playback_module:new {
 
 
+	dataObjectComponent = "DroidPlaybackModuleDataComponent",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
