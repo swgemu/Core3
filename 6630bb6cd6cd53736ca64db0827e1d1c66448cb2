@@ -1,0 +1,803 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_8dd0c254",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "You should use the object manager.",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6dd58642",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "Use object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_4dcacaa2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "And here.",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_2dcf8eb2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "You should probably do more to handle the item not being given. Maybe there\u0027s an appropriate message that can be sent to the player? Or even a convo screen that\u0027s appropriate to return?",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_0dc4d290",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_edc0567e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_cdbd9a04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_adba5e08",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "should this be destroyed from db too?",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_8d37a2b0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6d3c6694",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_4d41aa0a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "As above, you may want to do more to handle this.",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_2d466e24",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_0d4bb22c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ed47361c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_cd547acc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "destroy from db too?",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ad513eda",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "handle this better",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_8d5e82e8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6d6346b2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_4d588afa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_2d5d4eea",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_0d72927c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "handle this better",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ed6e1696",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_cd6b5a84",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ad681e88",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_8d0562c4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_4d0f6ae2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6d0a26d4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "destroy from db too?",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_0df972c8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "handle this better",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_edf5f6cb",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "should there be an else here in case pOld is nil?",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_cd023ab4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_4ddd2a42",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "If this is a rebel quest, should it have a faction check like the ones below?",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_adfffea9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_8d2c424c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6d3106a2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_4d264a6a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_2d2b0e32",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ed1cd615",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_cd191a24",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "destroy from db too?",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ad16deef",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_0d205248",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "Should there be an else for if pSample is nil?",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_8dd32238",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6dd8e653",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_2de2ee03",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/death_watch_bunker_conv_handles.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_0dddf270",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "Rather than so many calls to getObjectID why not just call it once and store the id in a local variable?",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_edd97684",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_cde6ba44",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ade37e32",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-09T08:05:27Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "6630bb6cd6cd53736ca64db0827e1d1c66448cb2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
