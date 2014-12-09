@@ -2398,6 +2398,7 @@ uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* bu
 		if(turret != NULL) {
 			turret->setOwnerObjectID(building->getObjectID());
 			turret->createChildObjects();
+			turret->setDeedObjectID(deed->getObjectID());
 		}
 	}
 
