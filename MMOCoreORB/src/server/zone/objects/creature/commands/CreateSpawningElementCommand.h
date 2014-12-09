@@ -133,7 +133,7 @@ public:
 
 					SceneObject* sceno = creatureManager->spawn(objectTemplate.hashCode(), level, 2, x, z, y, 25);
 
-						if (sceno != NULL) {
+					if (sceno != NULL) {
 						creature->sendSystemMessage("lair spawned");
 						return SUCCESS;
 					} else {
@@ -209,6 +209,10 @@ public:
 				}
 
 				object->destroyObjectFromWorld(true);
+
+				if (object->isPersistent()) {
+					object->destroyObjectFromDatabase(true);
+				}
 
 				creature->sendSystemMessage("Object " + chatObjectID + " deleted.");
 

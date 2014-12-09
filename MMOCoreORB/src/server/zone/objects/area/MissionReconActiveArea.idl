@@ -87,6 +87,10 @@ class MissionReconActiveArea extends ActiveArea {
 				}
 			} else {
 				super.destroyObjectFromWorld(false);
+
+				if (super.isPersistent()) {
+					super.destroyObjectFromDatabase(true);
+				}
 				//getZone().removeObject(this, true);
 				//super.removeFromZone();
 			}
@@ -112,6 +116,10 @@ class MissionReconActiveArea extends ActiveArea {
 				}
 			} else {
 				super.destroyObjectFromWorld(false);
+
+				if (super.isPersistent()) {
+					super.destroyObjectFromDatabase(true);
+				}
 				//getZone().removeObject(this, true);
 				//super.removeFromZone();
 			}

@@ -91,6 +91,7 @@ public:
 						if (deedContainer != NULL) {
 							deed->destroyObjectFromWorld(true);
 						}
+						deed->destroyObjectFromDatabase(true);
 					}
 				}
 				break;

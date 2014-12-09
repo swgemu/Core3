@@ -431,6 +431,7 @@ TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, Tangi
 
 	if (hair != NULL) {
 		hair->destroyObjectFromWorld(true);
+		hair->destroyObjectFromDatabase(true);
 	}
 
 	if (hairObject == NULL)
