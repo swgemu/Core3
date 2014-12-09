@@ -49,10 +49,12 @@ which carries forward this exception.
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/objects/tangible/pharmaceutical/StimPack.h"
 
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.h"
 #include "server/zone/objects/creature/AiAgent.h"
 
 class GiveItemCommand : public QueueCommand {
@@ -116,6 +118,7 @@ public:
 				Locker clocker(sceno, creature);
 
 				if (sceno->isVendor() && sceno->isCreatureObject()) {
+
 					if (object->isWearableObject() || object->isWeaponObject()) {
 
 						CreatureObject* vendor = cast<CreatureObject*>(sceno.get());
@@ -157,7 +160,6 @@ public:
 					}
 				}
 				else if( sceno->isPet() && object->getGameObjectType() == SceneObjectType::FOOD){
-
 					Reference<AiAgent*> aiAgent = sceno.castTo<AiAgent*>();
 					if( aiAgent != NULL ){
 
@@ -171,6 +173,23 @@ public:
 
 					}
 
+				}
+				else if (sceno->isPet() && sceno->isDroidObject() && object->getGameObjectType() == SceneObjectType::STIMPACK) {
+					Reference<DroidObject*> droid = sceno.castTo<DroidObject*>();
+					if (droid != NULL) {
+						Locker cross(sceno,creature);
+						StimPack* medicine = cast<StimPack*>(object.get());
+						if(medicine != NULL) {
+							DroidStimpackModuleDataComponent* module = cast<DroidStimpackModuleDataComponent*>(droid->getModule("stimpack_module"));
+							CreatureObject* player = cast<CreatureObject*>(creature);
+							if(module != NULL)
+								module->handleInsertStimpack(player,medicine);
+							else
+								creature->sendSystemMessage("@pet/droid_modules:not_stimpack_droid");
+						} else {
+							return GENERALERROR;
+						}
+					}
 				}
 				else if (sceno->isCreatureObject()) {
 					String err;
