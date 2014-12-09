@@ -772,14 +772,17 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	ManagedReference<SceneObject*> preDesignatedFacility = server->getObject(preDesignatedFacilityOid);
 	String predesignatedName = "None";
 
-	//Get the name of the predesignated facility
+	//Get the name of the pre-designated facility
 	if (preDesignatedFacility != NULL) {
 		ManagedReference<CityRegion*> cr = preDesignatedFacility->getCityRegion();
 
-		if (cr != NULL)
-			predesignatedName = cr->getRegionName();
-		else
+		if (preDesignatedFacility->getZone() != zone) {
+			predesignatedName = "off-planet (unavailable)";
+		} else if (cr != NULL) {
+			predesignatedName = cr->getRegionDisplayedName();
+		} else {
 			predesignatedName = preDesignatedFacility->getDisplayedName();
+		}
 	}
 
 	SortedVector<ManagedReference<SceneObject*> > locations = zone->getPlanetaryObjectList("cloningfacility");
@@ -814,7 +817,7 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 				if (cr->isBanned(playerID))
 					continue;
 
-				name = cr->getRegionName();
+				name = cr->getRegionDisplayedName();
 			} else {
 				name = location->getDisplayedName();
 			}
@@ -828,15 +831,15 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 
 	} else {
 		if (cr != NULL)
-			closestName = cr->getRegionName();
+			closestName = cr->getRegionDisplayedName();
 		else
 			closestName = closestCloning->getDisplayedName();
 	}
 
 	StringBuffer promptText;
-	promptText << "@base_player:revive_closest : " << closestName << "\n"
-			<< "@base_player:revive_bind : " << predesignatedName << "\n" //Space before tab character is needed for proper formatting in this case.
-			<< "Cash Balance : " << player->getCashCredits() << "\n\n"
+	promptText << "Closest:\t\t " << closestName << "\n"
+			<< "Pre-Designated: " << predesignatedName << "\n"
+			<< "Cash Balance:\t " << player->getCashCredits() << "\n\n"
 			<< "Select the desired option and click OK.";
 
 	cloneMenu->setPromptText(promptText.toString());

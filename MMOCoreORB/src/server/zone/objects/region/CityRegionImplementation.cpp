@@ -428,6 +428,13 @@ String CityRegionImplementation::getRegionName() {
 	return regionName.getFullPath();
 }
 
+String CityRegionImplementation::getRegionDisplayedName() {
+	if(!customRegionName.isEmpty())
+		return customRegionName;
+
+	return StringIdManager::instance()->getStringId(regionName.getFullPath().hashCode()).toString();
+}
+
 bool CityRegionImplementation::hasUniqueStructure(uint32 crc){
 	Locker locker(_this.get());
 
