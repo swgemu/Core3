@@ -251,9 +251,19 @@ class GuildObject extends SceneObject {
 		renamerID = id;
 	}
 
+	@read
+	public unsigned long getRenamerID() {
+		return renamerID;
+	}
+
 	public native void updateRenameTime(unsigned long miliseconds);
 
 	public native void rescheduleRename();
+
+	@local
+	public Time getRenameTime() {
+		return renameTime;
+	}
 
 	@read
 	public string getGuildKey() {
