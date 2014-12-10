@@ -47,8 +47,10 @@ package server.zone.objects.guild;
 import engine.service.proto.BaseMessage;
 import server.chat.room.ChatRoom;
 import server.zone.objects.tangible.terminal.guild.GuildTerminal;
+include system.lang.Time;
 include server.zone.objects.guild.GuildMemberList;
 include server.zone.objects.guild.GuildMemberInfo;
+import server.zone.objects.guild.GuildUpdateEvent;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import system.lang.String;
@@ -78,6 +80,11 @@ class GuildObject extends SceneObject {
 
 	@dereferenced
 	protected Time renameTime;
+
+	@dereferenced
+	protected Time nextUpdateTime;
+
+	protected transient GuildUpdateEvent guildUpdateEvent;
 
 	@dereferenced
 	protected transient ReadWriteLock waringGuildsMutex; 
@@ -113,6 +120,15 @@ class GuildObject extends SceneObject {
 		waringGuilds.setAllowOverwriteInsertPlan();
 		sponsoredPlayers.setNoDuplicateInsertPlan();
 		guildMembers.setNoDuplicateInsertPlan();
+		nextUpdateTime.addMiliTime((3600 + System.random(601200)) * 1000); // 1 hour to 1 week
+	}
+
+	public native void rescheduleUpdateEvent(unsigned int seconds);
+
+	@local
+	@dirty
+	public Time getNextUpdateTime() {
+		return nextUpdateTime;
 	}
 
 	@dirty

@@ -7,10 +7,26 @@
 
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/ZoneServer.h"
+#include "server/ServerCore.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/guild/GuildMemberInfo.h"
 #include "server/zone/objects/guild/RenameGuildTask.h"
+#include "server/zone/objects/guild/GuildUpdateEvent.h"
+
+void GuildObjectImplementation::rescheduleUpdateEvent(uint32 seconds) {
+	Locker locker(_this.get());
+
+	if (guildUpdateEvent == NULL) {
+		guildUpdateEvent = new GuildUpdateEvent(_this.get(), ServerCore::getZoneServer());
+	} else if (guildUpdateEvent->isScheduled()) {
+		guildUpdateEvent->cancel();
+	}
+
+	guildUpdateEvent->schedule(seconds * 1000);
+
+	Core::getTaskManager()->getNextExecutionTime(guildUpdateEvent, nextUpdateTime);
+}
 
 void GuildObjectImplementation::rescheduleRename() {
 	Locker locker(_this.get());
