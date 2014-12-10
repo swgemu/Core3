@@ -261,6 +261,8 @@ public:
 	static const uint16 SELECT_DROID_EFFECT = 1028;
 	static const uint16 SELECT_DROID_EFFECT_DELAY = 1029;
 	static const uint16 SELECT_MERCHANT_WAYPOINT = 1030;
+	static const uint16 DROID_PLAYBACK_MENU = 1031;
+	static const uint16 DROID_DELETE_TRACK = 1031;
 };
 
 #endif /*SuiWindowType_H_*/
