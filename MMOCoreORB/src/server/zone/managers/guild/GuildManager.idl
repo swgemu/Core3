@@ -92,13 +92,17 @@ class GuildManager extends ManagedService implements Logger {
 		
 		requiredMembers = 5;
 		maximumMembers = 500;
-		guildUpdateInterval = 1440;
+		guildUpdateInterval = 10080; // In minutes
 	}
 	
 	public void setChatManager(ChatManager chatmanager) {
 		chatManager = chatmanager;
 	}
-	
+
+	private native void scheduleGuildUpdates();
+	public native void processGuildUpdate(GuildObject guild);
+	private native void destroyGuild(GuildObject guild);
+
 	public native void sendGuildListTo(CreatureObject player, final string guildFilter);
 	public native void sendAdminGuildInfoTo(CreatureObject player, GuildObject guild);
 	private native void addPermsToAdminGuildInfo(byte perms, @dereferenced StringBuffer text);
@@ -135,8 +139,6 @@ class GuildManager extends ManagedService implements Logger {
 		return sponsoredPlayers.get(playerID);
 	}
 
-	
-	
 	public native void sendBaselinesTo(CreatureObject player);
 	
 	public native void loadGuilds();

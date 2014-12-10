@@ -115,6 +115,150 @@ void GuildManagerImplementation::loadGuilds() {
 	}
 
 	info(String::valueOf(guildList.size()) + " guilds loaded.", true);
+
+	scheduleGuildUpdates();
+}
+
+void GuildManagerImplementation::scheduleGuildUpdates() {
+	info("Scheduling guild updates.", true);
+
+	for (int i = 0; i < guildList.size(); ++i) {
+		GuildObject* guild = guildList.getValueAt(i);
+
+		if (guild == NULL) {
+			continue;
+		}
+
+		Time* nextUpdateTime = guild->getNextUpdateTime();
+		int seconds = -1 * round(nextUpdateTime->miliDifference() / 1000.f);
+
+		if (seconds < 0)
+			seconds = 0;
+
+		guild->rescheduleUpdateEvent(seconds);
+	}
+}
+
+void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
+	info("Processing guild update for: " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + ">");
+
+	// Check that members still exist
+	for (int i = 0; i < guild->getTotalMembers(); i++) {
+		uint64 memberID = guild->getMember(i);
+		CreatureObject* member = server->getObject(memberID).castTo<CreatureObject*>();
+
+		if (member == NULL) {
+			guild->removeMember(memberID);
+
+			if (memberID == guild->getGuildLeaderID()) {
+				guild->setGuildLeaderID(0);
+			}
+		}
+	}
+
+	// Destroy guild if there are no members remaining
+	if (guild->getTotalMembers() == 0) {
+		guild->unlock();
+
+		destroyGuild(guild);
+
+		Locker locker(guild);
+
+		info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> was destroyed for having no members.", true);
+		return;
+	}
+
+	//TODO: kick off elections for guilds without a leader
+
+	guild->rescheduleUpdateEvent(guildUpdateInterval * 60);
+}
+
+void GuildManagerImplementation::destroyGuild(GuildObject* guild) {
+	Locker _lock(_this.get());
+
+	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+
+	if (guildChat != NULL) {
+		ManagedReference<ChatRoom*> guildLobby = guildChat->getParent();
+
+		chatManager->destroyRoom(guildChat);
+
+		if (guildLobby != NULL)
+			chatManager->destroyRoom(guildLobby);
+	}
+
+	//Remove all sponsored members from the sponsoredPlayers vectormap
+	for (int i = 0; i < guild->getSponsoredPlayerCount(); ++i) {
+		uint64 playerID = guild->getSponsoredPlayer(i);
+		sponsoredPlayers.drop(playerID);
+	}
+
+	// Remove war references
+	for (int i = 0; i < guildList.size(); ++i) {
+		ManagedReference<GuildObject*> oguild = guildList.get(guildList.getKeyAt(i));
+
+		if (oguild == NULL)
+			continue;
+
+		byte status = oguild->getWarStatus(guild->getObjectID());
+
+		if (status != 0) {
+			//setWarStatus uses its own mutex, no need to lock the guild
+			oguild->setWarStatus(guild->getObjectID(), GuildObject::WAR_NONE);
+		}
+	}
+
+	_lock.release();
+
+	//We have to remove the guild tag from everyone currently online in this guild!
+	GuildMemberList* memberList = guild->getGuildMemberList();
+
+	if (memberList != NULL) {
+
+		//TODO: This could probably be moved to the GuildObject destructor!
+		for (int i = 0; i < memberList->size(); ++i) {
+			Locker locker(guild);
+			GuildMemberInfo* gmi = &memberList->get(i);
+
+			if (gmi == NULL)
+				continue;
+
+			ManagedReference<SceneObject*> obj = server->getObject(gmi->getPlayerID());
+
+			if (obj == NULL || !obj->isPlayerCreature())
+				continue;
+
+			CreatureObject* member = cast<CreatureObject*>( obj.get());
+
+			member->setGuildObject(NULL);
+
+			locker.release();
+
+			if (!member->isOnline())
+				continue;
+
+			CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(member);
+			creod6->updateGuildID();
+			creod6->close();
+
+			member->broadcastMessage(creod6, true);
+		}
+	}
+
+	Locker _locker(_this.get());
+
+	if (guildList.contains(guild->getGuildKey())) {
+		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
+		gildd3->startUpdate(0x04);
+		guildList.drop(guild->getGuildKey(), gildd3);
+		gildd3->close();
+
+		guild->destroyObjectFromDatabase(true);
+
+		_locker.release();
+		//Send the delta to everyone currently online!
+		chatManager->broadcastMessage(gildd3);
+	}
 }
 
 void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, GuildTerminal* terminal) {
@@ -774,6 +918,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 	guild->setGuildName(tmp);
 	guild->setGuildAbbrev(tabbrev);
 	guild->addMember(playerID);
+	guild->rescheduleUpdateEvent(guildUpdateInterval * 60);
 
 	ManagedReference<ChatRoom*> guildChat = createGuildChannels(guild);
 
@@ -809,7 +954,6 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 }
 
 bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildTerminal* guildTerminal, GuildObject* guild) {
-	Locker _lock(_this.get());
 
 	if (guild == NULL)
 		return false;
@@ -819,47 +963,6 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildTermi
 		return false;
 	}
 
-
-
-	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
-
-	if (guildChat != NULL) {
-		ManagedReference<ChatRoom*> guildLobby = guildChat->getParent();
-
-		chatManager->destroyRoom(guildChat);
-
-		if (guildLobby != NULL)
-			chatManager->destroyRoom(guildLobby);
-	}
-
-	//Remove all sponsored members from the sponsoredPlayers vectormap
-	for (int i = 0; i < guild->getSponsoredPlayerCount(); ++i) {
-		uint64 playerID = guild->getSponsoredPlayer(i);
-		sponsoredPlayers.drop(playerID);
-	}
-
-	//We have to remove the guild tag from everyone currently online in this guild!
-	GuildMemberList* memberList = guild->getGuildMemberList();
-
-	if (memberList == NULL)
-		return false;
-
-	// Remove at war references
-	for (int i = 0; i < guildList.size(); ++i) {
-		ManagedReference<GuildObject*> oguild = guildList.get(guildList.getKeyAt(i));
-
-		if (oguild == NULL)
-			continue;
-
-		byte status = oguild->getWarStatus(guild->getObjectID());
-
-		if (status != 0) {
-			//setWarStatus uses its own mutex, no need to lock the guild
-			oguild->setWarStatus(guild->getObjectID(), GuildObject::WAR_NONE);
-		}
-	}
-	_lock.release();
-
 	// Send emails to guild
 	StringIdChatParameter params;
 	params.setStringId("@guildmail:disband_text"); //The guild has been disbanded by %TU
@@ -867,49 +970,7 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildTermi
 
 	sendGuildMail("@guildmail:disband_subject", params, guild);
 
-	//TODO: This could probably be moved to the GuildObject destructor!
-	for (int i = 0; i < memberList->size(); ++i) {
-		Locker _locker(_this.get());
-		GuildMemberInfo* gmi = &memberList->get(i);
-
-		if (gmi == NULL)
-			continue;
-
-		ManagedReference<SceneObject*> obj = server->getObject(gmi->getPlayerID());
-
-		if (obj == NULL || !obj->isPlayerCreature())
-			continue;
-
-		CreatureObject* member = cast<CreatureObject*>( obj.get());
-
-		member->setGuildObject(NULL);
-
-		_locker.release();
-
-		if (!member->isOnline())
-			continue;
-
-		CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(member);
-		creod6->updateGuildID();
-		creod6->close();
-
-		member->broadcastMessage(creod6, true);
-	}
-
-	Locker _locker(_this.get());
-
-	if (guildList.contains(guild->getGuildKey())) {
-		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
-		gildd3->startUpdate(0x04);
-		guildList.drop(guild->getGuildKey(), gildd3);
-		gildd3->close();
-
-		guild->destroyObjectFromDatabase(true);
-
-		_locker.release();
-		//Send the delta to everyone currently online!
-		chatManager->broadcastMessage(gildd3);
-	}
+	destroyGuild(guild);
 
 	guildTerminal->setGuildObject(NULL);
 
