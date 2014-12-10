@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.managers.guild;
 
 import engine.core.ManagedService;
+import system.lang.StringBuffer;
 import server.zone.ZoneProcessServer;
 import server.zone.ZoneServer;
 import server.chat.ChatManager;
@@ -99,6 +100,8 @@ class GuildManager extends ManagedService implements Logger {
 	}
 	
 	public native void sendGuildListTo(CreatureObject player, final string guildFilter);
+	public native void sendAdminGuildInfoTo(CreatureObject player, GuildObject guild);
+	private native void addPermsToAdminGuildInfo(byte perms, @dereferenced StringBuffer text);
 	
 	public synchronized void addPendingGuild(unsigned long playerID, final string guildName) {
 		pendingGuilds.put(playerID, guildName);

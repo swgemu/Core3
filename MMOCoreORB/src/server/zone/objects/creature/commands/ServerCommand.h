@@ -53,7 +53,6 @@ which carries forward this exception.
 #include "ServerInfoCommand.h"
 #include "PlayerManagerCommand.h"
 #include "PlayerInfoCommand.h"
-#include "GuildInfoCommand.h"
 #include "ServerCommandFactory.h"
 #include "DebugCommand.h"
 #include "MarketCommand.h"
@@ -74,7 +73,6 @@ public:
 		methodFactory.registerMethod<ServerInfoCommand>("info");
 		methodFactory.registerMethod<PlayerManagerCommand>("PlayerManagerCommand");
 		methodFactory.registerMethod<PlayerInfoCommand>("playerinfo");
-		methodFactory.registerMethod<GuildInfoCommand>("guildinfo");
 		methodFactory.registerMethod<DebugCommand>("debug");
 		methodFactory.registerMethod<MarketCommand>("market");
 		methodFactory.registerMethod<ServerStatisticsCommand>("statistics");

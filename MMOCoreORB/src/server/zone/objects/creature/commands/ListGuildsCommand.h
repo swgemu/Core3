@@ -67,6 +67,9 @@ public:
 		if (!creature->isPlayerCreature())
 			return INVALIDPARAMETERS;
 
+		if (!creature->getPlayerObject()->isPrivileged())
+			return GENERALERROR;
+
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();

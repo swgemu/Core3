@@ -1313,7 +1313,7 @@ void GuildManagerImplementation::sendGuildListTo(CreatureObject* player, const S
 		String guildAbbrev = guild->getGuildAbbrev();
 		uint64 guildObjectID = guild->getObjectID();
 
-		if (guildName.indexOf(guildFilter) || guildAbbrev.indexOf(guildFilter))
+		if (guildName.toLowerCase().contains(guildFilter.toLowerCase()) || guildAbbrev.toLowerCase().contains(guildFilter.toLowerCase()))
 			listBox->addMenuItem(guildName + " <" + guildAbbrev + ">", guildObjectID);
 
 		if (listBox->getMenuSize() == 100)
@@ -1322,11 +1322,6 @@ void GuildManagerImplementation::sendGuildListTo(CreatureObject* player, const S
 
 	if (listBox->getMenuSize() < 1) {
 		player->sendSystemMessage("No guilds were found that matched the guild filter: " + guildFilter + ".");
-		return;
-	}
-
-	if (listBox->getMenuSize() == 1 && guild != NULL) {
-		sendGuildInformationTo(player, guild, NULL);
 		return;
 	}
 
@@ -1340,6 +1335,150 @@ void GuildManagerImplementation::sendGuildListTo(CreatureObject* player, const S
 
 	player->getPlayerObject()->addSuiBox(listBox);
 	player->sendMessage(listBox->generateMessage());
+}
+
+void GuildManagerImplementation::sendAdminGuildInfoTo(CreatureObject* player, GuildObject* guild) {
+	if (!player->getPlayerObject()->isPrivileged())
+		return;
+
+	Locker _lock(_this.get());
+
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, 0);
+
+	box->setPromptTitle("Guild Info");
+
+	StringBuffer promptText;
+	promptText << "Guild Name: " << guild->getGuildName() << " <" << guild->getGuildAbbrev() << ">" << endl;
+	promptText << "Guild ID: " << guild->getGuildID() << endl;
+
+	uint64 leaderID = guild->getGuildLeaderID();
+	CreatureObject* leader = player->getZoneServer()->getObject(leaderID).castTo<CreatureObject*>();
+
+	promptText << "Guild Leader: " << (leader == NULL ? "None" : leader->getFirstName()) << endl;
+
+	bool renamePending = guild->isRenamePending();
+	promptText << "Rename Pending?: " << (renamePending ? "yes" : "no") << endl;
+
+	if (renamePending) {
+		promptText << "Pending Name: " << guild->getPendingNewName() << " <" << guild->getPendingNewAbbrev() << ">" << endl;
+
+		Time* renameTime = guild->getRenameTime();
+		promptText << "Time until rename: " << renameTime->getFormattedTime() << endl;
+
+		uint64 renamerID = guild->getRenamerID();
+		CreatureObject* renamer;
+		if (renamerID == leaderID) {
+			promptText << "Renamer: " << (leader == NULL ? "None" : leader->getFirstName()) << endl;
+		} else {
+			renamer = player->getZoneServer()->getObject(renamerID).castTo<CreatureObject*>();
+			promptText << "Renamer: " << (renamer == NULL ? "None" : renamer->getFirstName()) << endl;
+		}
+	}
+
+	promptText << endl << "Guild Members (" << guild->getTotalMembers() << "):" << endl;
+
+	GuildMemberInfo* leaderInfo = guild->getMember(leaderID);
+	if (leader != NULL && leaderInfo != NULL) {
+		promptText << "\t" << leader->getFirstName() << " (" << leaderInfo->getGuildTitle() << ")" << endl;
+
+		uint8 perms = leaderInfo->getPermissions();
+		addPermsToAdminGuildInfo(perms, promptText);
+	}
+
+	for (int i = 0; i < guild->getTotalMembers(); i++) {
+		uint64 memberID = guild->getMember(i);
+
+		if (memberID == leaderID) {
+			continue;
+		}
+
+		CreatureObject* member = player->getZoneServer()->getObject(memberID).castTo<CreatureObject*>();
+		GuildMemberInfo* memberInfo = guild->getMember(memberID);
+
+		if (member != NULL && memberInfo != NULL) {
+			promptText << "\t" << member->getFirstName();
+
+			String title = memberInfo->getGuildTitle();
+			if (title.isEmpty()) {
+				promptText << endl;
+			} else {
+				promptText << " (" << title << ")" << endl;
+			}
+
+			uint8 perms = memberInfo->getPermissions();
+			addPermsToAdminGuildInfo(perms, promptText);
+		}
+	}
+
+	promptText << endl << "Sponsored Players (" << guild->getSponsoredPlayerCount() << "):" << endl;
+
+	for (int i = 0; i < guild->getSponsoredPlayerCount(); i++) {
+		uint64 sponsoredID = guild->getSponsoredPlayer(i);
+
+		CreatureObject* sponsored = player->getZoneServer()->getObject(sponsoredID).castTo<CreatureObject*>();
+
+		if (sponsored != NULL) {
+
+			promptText << "\t" << sponsored->getFirstName() << endl;
+		}
+	}
+
+	VectorMap<uint64, byte>* waringGuilds = guild->getWaringGuilds();
+	promptText << endl << "Waring Guilds (" << waringGuilds->size() << "):" << endl;
+
+	for (int i = 0; i < waringGuilds->size(); i++) {
+		uint64 warGuildID = waringGuilds->elementAt(i).getKey();
+
+		GuildObject* warGuild = player->getZoneServer()->getObject(warGuildID).castTo<GuildObject*>();
+		byte status = guild->getWarStatus(warGuildID);
+		String statusString;
+
+		if (warGuild != NULL) {
+			promptText << "\t" << (char) status << "" << warGuild->getGuildName() << " <" << warGuild->getGuildAbbrev() << ">" << endl;
+		}
+	}
+
+	box->setPromptText(promptText.toString());
+
+	player->sendMessage(box->generateMessage());
+
+	return;
+}
+
+void GuildManagerImplementation::addPermsToAdminGuildInfo(uint8 perms, StringBuffer& text) {
+	text << "\t\tPerms: ";
+
+	if (perms == 0x00) {
+		text << "None" << endl;
+	} else if (perms == 0xFF) {
+		text << "All" << endl;
+	} else {
+		if (perms & 0x01) {
+			text << "Mail, ";
+		}
+		if (perms & 0x02) {
+			text << "Sponsor, ";
+		}
+		if (perms & 0x04) {
+			text << "Title, ";
+		}
+		if (perms & 0x08) {
+			text << "Accept, ";
+		}
+		if (perms & 0x10) {
+			text << "Kick, ";
+		}
+		if (perms & 0x20) {
+			text << "War, ";
+		}
+		if (perms & 0x40) {
+			text << "Name, ";
+		}
+		if (perms & 0x80) {
+			text << "Disband, ";
+		}
+		text << endl;
+	}
 }
 
 void GuildManagerImplementation::leaveGuild(CreatureObject* player, GuildObject* guild) {

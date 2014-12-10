@@ -21,6 +21,9 @@ public:
 		if (!suiBox->isListBox() || cancelPressed)
 			return;
 
+		if (!player->getPlayerObject()->isPrivileged())
+			return;
+
 		if (args->size() < 1)
 			return;
 
@@ -42,7 +45,7 @@ public:
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
-		guildManager->sendGuildInformationTo(player, guild, NULL);
+		guildManager->sendAdminGuildInfoTo(player, guild);
 	}
 };
 
