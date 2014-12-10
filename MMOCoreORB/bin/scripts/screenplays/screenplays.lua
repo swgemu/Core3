@@ -25,7 +25,7 @@ includeFile("recruiters/recruiterConvoHandler.lua")
 includeFile("recruiters/recruiterScreenplay.lua")
 
 -- Dungeons
-includeFile("dungeon/death_watch_bunker.lua")
+includeFile("dungeon/death_watch_bunker/deathWatchBunker.lua")
 includeFile("dungeon/death_watch_bunker/deathWatchContainerComponents.lua")
 includeFile("dungeon/death_watch_bunker/deathWatchMenuComponents.lua")
 includeFile("dungeon/death_watch_bunker/deathWatchSpawnMap.lua")
