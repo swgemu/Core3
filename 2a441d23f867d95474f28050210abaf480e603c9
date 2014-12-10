@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_0df8527b",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/RecordTrackTimeoutEvent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-12-10T23:52:55Z",
+      "side": 1,
+      "message": "lock the player and if you use the droid, too",
+      "revId": "2a441d23f867d95474f28050210abaf480e603c9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
