@@ -1,5 +1,4 @@
 imperial_weapons_medium = {
-	"object/weapon/melee/unarmed/unarmed_default.iff",
 	"object/weapon/ranged/rifle/rifle_sg82.iff",
 	"object/weapon/ranged/carbine/carbine_elite.iff"
 

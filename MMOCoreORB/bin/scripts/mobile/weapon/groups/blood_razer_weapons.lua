@@ -1,7 +1,6 @@
 blood_razer_weapons = {
 	"object/weapon/melee/polearm/lance_staff_wood_s1.iff",
 	"object/weapon/melee/polearm/lance_staff_metal.iff",
-	"object/weapon/melee/unarmed/unarmed_default.iff",
 	"object/weapon/ranged/pistol/pistol_fwg5.iff",
 	"object/weapon/melee/polearm/polearm_vibro_axe.iff"
 }

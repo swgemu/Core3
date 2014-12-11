@@ -502,7 +502,12 @@ SpawnArea* CreatureManagerImplementation::getSpawnArea(const String& areaname) {
 bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature, uint32 templateCRC, bool persistent, uint32 mobileTemplateCRC) {
 	if (creature->hasSlotDescriptor("default_weapon")) {
 
-		uint32 defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();
+		uint32 defaultWeaponCRC = 0;
+		if (creature->isNonPlayerCreatureObject()) {
+			defaultWeaponCRC = String("object/weapon/melee/unarmed/unarmed_default.iff").hashCode();
+		} else {
+			defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();
+		}
 		ManagedReference<SceneObject*> defaultWeapon = zoneServer->createObject(defaultWeaponCRC, persistent);
 		ManagedReference<SceneObject*> otherWeapon;
 
@@ -515,8 +520,13 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 			}
 		}
 
-		if(otherWeapon != NULL)
+		if(otherWeapon != NULL) {
+			if (defaultWeapon != NULL && defaultWeapon->isPersistent()) {
+				defaultWeapon->destroyObjectFromDatabase(true);
+			}
+
 			defaultWeapon = otherWeapon;
+		}
 
 		if (defaultWeapon == NULL) {
 			error("could not create creature default weapon");

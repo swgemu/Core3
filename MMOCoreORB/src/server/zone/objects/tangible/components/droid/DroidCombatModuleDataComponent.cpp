@@ -108,12 +108,20 @@ void DroidCombatModuleDataComponent::initialize(CreatureObject* droid) {
 	if(droid->getSpecies() == DroidObject::R_SERIES) { // r-series are the ranged one users.
 		weaponTemplate = "object/weapon/ranged/droid/droid_astromech_ranged.iff";
 	}
-	ManagedReference<WeaponObject*> weao = (droid->getZoneServer()->createObject(weaponTemplate.hashCode(), 0)).castTo<WeaponObject*>();
+	ManagedReference<WeaponObject*> weao = (droid->getZoneServer()->createObject(weaponTemplate.hashCode(), 1)).castTo<WeaponObject*>();
 	if (weao != NULL) {
 		weao->setMinDamage(minDmg);
 		weao->setMaxDamage(maxDmg);
 		weao->setAttackSpeed(speed);
+
+		WeaponObject* oldWeapon = droid->getSlottedObject("default_weapon").castTo<WeaponObject*>();
+
+		if (oldWeapon != NULL && oldWeapon->isPersistent()) {
+			oldWeapon->destroyObjectFromDatabase(true);
+		}
+
 		droid->dropSlottedObject("default_weapon");
+
 		droid->transferObject(weao, 4, false);
 	}
 

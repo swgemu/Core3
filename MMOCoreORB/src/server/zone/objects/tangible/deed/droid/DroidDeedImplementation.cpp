@@ -330,6 +330,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		if (deedContainer != NULL) {
 			destroyObjectFromWorld(true);
+			destroyObjectFromDatabase(true);
 		}
 		generated = true;
 		player->sendSystemMessage("@pet/pet_menu:device_added"); // "A control device has been added to your datapad."

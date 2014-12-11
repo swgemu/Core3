@@ -43,7 +43,9 @@
 
 object_weapon_ranged_droid_droid_droideka_ranged = object_weapon_ranged_droid_shared_droid_droideka_ranged:new {
 	objectName = "@droideka:droideka",
-	
+
+	playerRaces = {},
+
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = RANGEDATTACK,
