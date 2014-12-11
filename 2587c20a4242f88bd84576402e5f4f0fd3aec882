@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_cdf11a97",
+        "filename": "MMOCoreORB/src/server/zone/managers/guild/GuildManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-12-11T00:06:30Z",
+      "side": 1,
+      "message": "you unlock the guild but dont lock it again before returning.\n\nafter returning to the task the locker will unlock it again causing a shitstorm",
+      "revId": "2587c20a4242f88bd84576402e5f4f0fd3aec882",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_adeedeb2",
+        "filename": "MMOCoreORB/src/server/zone/managers/guild/GuildManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-12-11T00:06:30Z",
+      "side": 1,
+      "message": "you should be locking the guild object here right? because you are iterating its member list instead of the guild manager",
+      "revId": "2587c20a4242f88bd84576402e5f4f0fd3aec882",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
