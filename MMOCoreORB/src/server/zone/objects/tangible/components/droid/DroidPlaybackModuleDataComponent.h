@@ -94,6 +94,7 @@ public:
 	void setTrack( CreatureObject* player, String song, int instrument);
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
+	bool isPlayingMusic() { return active;}
 	String getCurrentTrack();
 	int getCurrentInstrument();
 	void sessionTimeout(CreatureObject* player, int state);
@@ -103,6 +104,7 @@ public:
 	void playSong(CreatureObject* player, int index);
 	bool trackEmpty(int index);
 	void stopTimer();
+	void doFlourish(int number);
 private:
 	void stopRecording(CreatureObject* player, bool success);
 	int writeObjectMembers(ObjectOutputStream* stream);
