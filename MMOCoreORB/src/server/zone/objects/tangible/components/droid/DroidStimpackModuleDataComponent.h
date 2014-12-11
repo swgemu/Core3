@@ -60,6 +60,7 @@ class DroidStimpackModuleDataComponent : public BaseDroidModuleComponent {
 protected:
 	int capacity;
 	int speed;
+	int loaded;
 public:
 	int rate;
 	DroidStimpackModuleDataComponent();
@@ -81,6 +82,9 @@ public:
 	void initialize(CreatureObject* droid);
 	void sendLoadUI(CreatureObject* player);
 	void handleInsertStimpack(CreatureObject* player, StimPack* pack);
+	void countUses();
+	StimPack* compatibleStimpack(float power);
+	StimPack* findStimPack();
 };
 
 

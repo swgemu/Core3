@@ -124,7 +124,7 @@ public:
 			target->sendSystemMessage("@pet/droid_modules:stimpack_too_far_away");
 			return;
 		}
-		StimPack* stimpack = findStimPack(droidComponent);
+		StimPack* stimpack = module->findStimPack();
 		// droid has to have a stimpack to give
 		if (stimpack == NULL) {
 			target->sendSystemMessage("@pet/droid_modules:stimpack_supply_empty");
@@ -181,29 +181,6 @@ public:
 			target->sendSystemMessage("@pet/droid_modules:stimpack_not_ready");
 			return;
 		}
-	}
-private:
-	/** could stimpack be a single item, and we just adjust charges?*/
-	StimPack* findStimPack(DroidComponent* container) {
-		ManagedReference<SceneObject*> craftingComponents = container->getSlottedObject("crafted_components");
-		if(craftingComponents != NULL) {
-			SceneObject* satchel = craftingComponents->getContainerObject(0);
-			for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
-				ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
-				ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceno.get());
-
-				if (tano != NULL ) {
-					// is a stimpack
-					if (tano->isPharmaceuticalObject()) {
-						PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( tano.get());
-						if (pharma->isStimPack() && !pharma->isPetStimPack() && !pharma->isDroidRepairKit()) {
-							return cast<StimPack*>(pharma);
-						}
-					}
-				}
-			}
-		}
-		return NULL;
 	}
 };
 
