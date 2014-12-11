@@ -44,6 +44,7 @@
 BaseDroidModuleComponent::BaseDroidModuleComponent() {
 	setLoggingName("DroidModuleDataComponent");
 	setLogging(false);
+	species = 0;
 }
 BaseDroidModuleComponent::~BaseDroidModuleComponent() {
 }

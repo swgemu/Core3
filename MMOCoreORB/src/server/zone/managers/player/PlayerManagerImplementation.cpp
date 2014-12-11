@@ -120,6 +120,8 @@
 
 #include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"
 #include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/player/Races.h"
+#include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 
 #include <iostream>
 
@@ -1979,6 +1981,37 @@ void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 en
 	if (object == NULL)
 		return;
 
+	if(object->isDroidObject()) {
+		creature->setMood(creature->getMoodID());
+		if (entid != listenID ) {
+			creature->sendSystemMessage("You are not currently listening to " + object->getDisplayedName() + ".");
+			return;
+		}
+		if(doSendPackets) {
+			creature->setListenToID(0, true);
+			creature->setMoodString(creature->getMoodString(), true);
+		}
+		if (creature->isPlayerCreature()) {
+			CreatureObject* player = cast<CreatureObject*>( creature);
+			StringIdChatParameter stringID;
+			if (forced) {
+				stringID.setTU(entid);
+				stringID.setStringId("performance", "music_stop_other");
+				player->sendSystemMessage(stringID);
+				return;
+			} else if (outOfRange) {
+				StringBuffer msg;
+				msg << "You stop listening to " << object->getDisplayedName() << " because they are too far away.";
+				player->sendSystemMessage(msg.toString());
+				return;
+			} else {
+				player->sendSystemMessage("@performance:music_listen_stop_self"); //"You stop watching."
+				return;
+			}
+		}
+		return;
+	}
+
 	if (!object->isPlayerCreature()) {
 		creature->sendSystemMessage("You cannot stop listening an object.");
 		return;
@@ -2239,6 +2272,51 @@ void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 e
 		creature->sendSystemMessage("@performance:dance_watch_npc");
 		return;
 	}*/
+
+	// Droid playback handling
+	if(object->isDroidObject()) {
+		DroidObject* droid = cast<DroidObject*>( object.get());
+		if (droid == NULL) {
+			creature->sendSystemMessage("You cannot start listening an object.");
+			return;
+		}
+		BaseDroidModuleComponent* bmodule = droid->getModule("playback_module");
+		if(bmodule != NULL) {
+			DroidPlaybackModuleDataComponent* module = cast<DroidPlaybackModuleDataComponent*>(bmodule);
+			if(module != NULL) {
+				if (creature->isDancing() || creature->isPlayingMusic()) {
+					creature->sendSystemMessage("You cannot /watch while skill animating.");
+					return;
+				}
+
+				if(module->isActive()) {
+					// the droid is playing so we can do something
+					if (entid == listenID) {
+						creature->sendSystemMessage("You are already listening " + droid->getDisplayedName() + ".");
+						return;
+					}
+					if (creature->isListening()) {
+						stopListen(creature, listenID, false);
+					}
+					creature->sendSystemMessage("You begin to listen " + droid->getDisplayedName() + ".");
+					creature->setListenToID(entid, true);
+					String str = Races::getMoodStr("entertained");
+					creature->setMoodString(str, true);
+					creature->setListenToID(droid->getObjectID());
+					module->addListener(creature->getObjectID());
+					return;
+				} else {
+					creature->sendSystemMessage(droid->getDisplayedName() + " is not currently playing music.");
+					return;
+				}
+			} else {
+				creature->sendSystemMessage("You cannot start listening an object.");
+			}
+		} else {
+			creature->sendSystemMessage("You cannot start listening an object.");
+		}
+		return;
+	}
 
 	if (!object->isPlayerCreature()) {
 		creature->sendSystemMessage("You cannot start listening an object.");

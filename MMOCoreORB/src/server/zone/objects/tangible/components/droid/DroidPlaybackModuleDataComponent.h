@@ -73,6 +73,8 @@ protected:
 	// states of recording
 	static const uint8 STATE_WAITING_TO_RECORD = 1;
 	static const uint8 STATE_RECORDING_TRACK = 2;
+	Vector<uint64> listeners;
+
 public:
 	DroidPlaybackModuleDataComponent();
 	~DroidPlaybackModuleDataComponent();
@@ -86,7 +88,8 @@ public:
 	String toString();
 	void onCall();
 	void onStore();
-	bool isActive(){ return active; }
+	bool isActive();
+	void addListener(uint64 id);
 	virtual bool isStackable() { return true; }
 	virtual void addToStack(BaseDroidModuleComponent* other);
 	virtual void copy(BaseDroidModuleComponent* other);
@@ -94,6 +97,7 @@ public:
 	void setTrack( CreatureObject* player, String song, int instrument);
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
+	bool isPlayingMusic();
 	String getCurrentTrack();
 	int getCurrentInstrument();
 	void sessionTimeout(CreatureObject* player, int state);
@@ -103,6 +107,7 @@ public:
 	void playSong(CreatureObject* player, int index);
 	bool trackEmpty(int index);
 	void stopTimer();
+	void doFlourish(int number);
 private:
 	void stopRecording(CreatureObject* player, bool success);
 	int writeObjectMembers(ObjectOutputStream* stream);

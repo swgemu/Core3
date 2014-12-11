@@ -50,6 +50,12 @@
 #include "server/zone/objects/player/sui/callbacks/SelectTrackSuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
+#include "server/zone/managers/skill/Performance.h"
+#include "server/zone/managers/skill/PerformanceManager.h"
+#include "server/zone/packets/object/Flourish.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+
 
 DroidPlaybackModuleDataComponent::DroidPlaybackModuleDataComponent() {
 	active = false;
@@ -88,6 +94,45 @@ String DroidPlaybackModuleDataComponent::getCurrentTrack() {
 		return tracks.get(selectedIndex);
 	}
 	return "";
+}
+void DroidPlaybackModuleDataComponent::doFlourish(int number) {
+	ManagedReference<DroidObject*> droid = getDroidObject();
+	if( droid == NULL ){
+		info( "Droid is null");
+		return;
+	}
+	if (!active) {
+		return;
+	}
+	Locker dlock(droid);
+
+	if( !droid->hasPower() ){
+		droid->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+		return;
+	}
+
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+	Performance* performance = NULL;
+	performance = performanceManager->getSong(getCurrentTrack(), getCurrentInstrument());
+	if(performance == NULL) {
+		return;
+	}
+
+	float baseActionDrain =  performance->getActionPointsPerLoop();
+	float flourishActionDrain = baseActionDrain / 2.0;
+	int actionDrain = (int)round((flourishActionDrain * 10 + 0.5) / 10.0); // Round to nearest dec for actual int cost
+	actionDrain = droid->calculateCostAdjustment(CreatureAttribute::QUICKNESS, actionDrain);
+
+	if (droid->getHAM(CreatureAttribute::ACTION) > actionDrain) {
+		droid->inflictDamage(droid, CreatureAttribute::ACTION, actionDrain, false, true);
+		Flourish* flourish = new Flourish(droid, number);
+		droid->broadcastMessage(flourish, true);
+	}
+}
+void DroidPlaybackModuleDataComponent::addListener(uint64 id) {
+	if (listeners.contains(id))
+		listeners.removeElement(id);
+	listeners.add(id);
 }
 int DroidPlaybackModuleDataComponent::getCurrentInstrument() {
 	if (selectedIndex == -1) {
@@ -172,6 +217,12 @@ void DroidPlaybackModuleDataComponent::stopRecording(CreatureObject* player, boo
 }
 bool DroidPlaybackModuleDataComponent::trackEmpty(int index) {
 	return tracks.get(index) == "@pet/droid_modules:playback_blank_track";
+}
+bool DroidPlaybackModuleDataComponent::isActive() {
+	return active;
+}
+bool DroidPlaybackModuleDataComponent::isPlayingMusic() {
+	return active;
 }
 void DroidPlaybackModuleDataComponent::playSong(CreatureObject* player, int index) {
 	if (active) {
@@ -326,6 +377,16 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 
 	droid->broadcastMessage(dcreo6, true);
 	selectedIndex = -1;
+	ManagedReference<PlayerManager*> playerManager = droid->getZoneServer()->getPlayerManager();
+	if (playerManager != NULL) {
+		for(int i=0;i<listeners.size();i++) {
+			ManagedReference<SceneObject*> object = droid->getZoneServer()->getObject(listeners.get(i));
+			CreatureObject* c = cast<CreatureObject*>(object.get());
+			Locker lock(c);
+			if(c->getListenID() == droid->getObjectID())
+				playerManager->stopListen(c,droid->getObjectID());
+		}
+	}
 
 }
 
@@ -409,7 +470,7 @@ int DroidPlaybackModuleDataComponent::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	return 2;
+	return 3;
 }
 
 bool DroidPlaybackModuleDataComponent::readObjectMember(ObjectInputStream* stream, const String& name) {
