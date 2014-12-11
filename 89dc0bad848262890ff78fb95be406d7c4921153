@@ -1,0 +1,242 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_ed9f364f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "I would lose all those tabs. A space is sufficient.",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_0d261217",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "Why not remove the local declaration and let it reuse the previous variable spawn just like you are doing with spawnedPointer below? You can do the same for the tailor and jetpack below.",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ed229600",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "Why not just reuse droidId from above? You can do the same below.",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_cd1fdab6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "I don\u0027t see you using spawnPointer at all. Why bother assigning the pointer at all? And if you did use it, make it local. Same goes for the other spawnPointers in the rest of this function.",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ad1c9ec2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "I know you didn\u0027t add this, but it seems strange. Why send a message to the whole group if you don\u0027t even know if the whole group is even inside the dungeon? Looks like it\u0027s used other places in this screenplay as well. I\u0027d suggest writing your own function in this screenplay to handle sending group messages so you can restrict who to send them to.",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_8d79e2fe",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "use object manager",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6d7ea6e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "Should they also be destroyed from db? Are they persistent objects that won\u0027t be used again?",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_4d83eacc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "Why not reuse spawn here instead of overriding it? Same for the next 3.",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_0d6df232",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "use object manager",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ed697626",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "Reuse spawn rather than redeclaring it.",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ad737e14",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "Should you destroy from db too?",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_8d60c236",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "use object manager",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6d658644",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "Should you send some kind of message here?",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_adedbef1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-11T05:05:39Z",
+      "side": 1,
+      "message": "object manager",
+      "revId": "89dc0bad848262890ff78fb95be406d7c4921153",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
