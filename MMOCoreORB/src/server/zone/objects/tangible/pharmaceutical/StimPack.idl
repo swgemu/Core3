@@ -191,6 +191,12 @@ class StimPack extends PharmaceuticalObject {
 		return effectiveness;
 	}
 	
+	/**
+	 * Added so we can split a stimpack for the stimpack droid dispenser module.
+	 */
+	@dirty
+	public native StimPack split(int charges);
+	
 	@dirty
 	public boolean isStimPack() {
 		return true;

@@ -86,6 +86,13 @@ void DroidStimpackModuleDataComponent::fillAttributeList(AttributeListMessage* a
 	// convert module rating to actual rating
 	alm->insertAttribute( "stimpack_capacity", capacity);
 	alm->insertAttribute( "stimpack_speed", speed);
+	float power = 0;
+	if (loaded > 0) {
+		StimPack* sp = findStimPack();
+		if (sp != NULL)
+			power = sp->getEffectiveness();
+	}
+	alm->insertAttribute("stimpack_power", power);
 }
 String DroidStimpackModuleDataComponent::toString(){
 	return BaseDroidModuleComponent::toString();
@@ -115,21 +122,91 @@ void DroidStimpackModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 	}
 }
 void DroidStimpackModuleDataComponent::onCall() {
-	// no op
+	// recalculate the rate
 	if (speed == 0) {
 		rate = 60000;
 	} else {
 		rate = round((float)60 * ((float)1 / (float)speed)) * 1000;
 	}
+	countUses();
 }
+StimPack* DroidStimpackModuleDataComponent::compatibleStimpack(float power) {
+	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
+	if (droidComponent == NULL) {
+		info("droidComponent was null");
+		return NULL;
+	}
+	DroidObject* droid = getDroidObject();
+	if (droid == NULL) {
+		return NULL;
+	}
+	Locker dlock(droid);
+	ManagedReference<SceneObject*> craftingComponents = droidComponent->getSlottedObject("crafted_components");
+	if(craftingComponents != NULL) {
+		SceneObject* satchel = craftingComponents->getContainerObject(0);
+		if(satchel == NULL) {
+			System::out << "satch null for compa call\n";
+			return NULL;
+		}
+		for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
+			SceneObject* item = satchel->getContainerObject(i);
+			if (!item->isTangibleObject())
+				continue;
+
+			TangibleObject* tano = cast<TangibleObject*>( item);
+			if (tano->isPharmaceuticalObject()) {
+				StimPack* stim = cast<StimPack*>(tano);
+				if(stim->getEffectiveness() == power) {
+					return stim;
+				}
+			}
+		}
+	}
+	return NULL;
+}
+void DroidStimpackModuleDataComponent::countUses() {
+	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
+	if (droidComponent == NULL) {
+		info("droidComponent was null");
+		return;
+	}
+	DroidObject* droid = getDroidObject();
+	if (droid == NULL) {
+		return ;
+	}
+	Locker dlock(droid);
+	ManagedReference<SceneObject*> craftingComponents = droidComponent->getSlottedObject("crafted_components");
+	if(craftingComponents != NULL) {
+		SceneObject* satchel = craftingComponents->getContainerObject(0);
+		if (satchel == NULL) {
+			return;
+		}
+		loaded = 0;
+		for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
+			SceneObject* item = satchel->getContainerObject(i);
+			if (!item->isTangibleObject())
+				continue;
+
+			TangibleObject* tano = cast<TangibleObject*>( item);
+			if (tano->isPharmaceuticalObject()) {
+				StimPack* stim = cast<StimPack*>(tano);
+				loaded += stim->getUseCount();
+			}
+		}
+	}
+}
+
 void DroidStimpackModuleDataComponent::onStore() {
-	// no op on store
+	// no-op
+	countUses();
 }
+/**
+ * Add Droid sub-radial options, need to be a top level radial not submenu
+ */
 void DroidStimpackModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	// Add to Droid Options subradial from PetMenuComponent
-	menuResponse->addRadialMenuItemToRadialID(132, REQUEST_STIMPACK, 3, "@pet/droid_modules:request_stimpack" );
+	menuResponse->addRadialMenuItem(REQUEST_STIMPACK, 3, "@pet/droid_modules:request_stimpack" );
 	if (player != NULL && player->hasSkill("science_medic_ability_04"))
-		menuResponse->addRadialMenuItemToRadialID(132, LOAD_STIMPACK, 3, "@pet/droid_modules:load_stimpack" );
+		menuResponse->addRadialMenuItemToRadialID(REQUEST_STIMPACK, LOAD_STIMPACK, 3, "@pet/droid_modules:load_stimpack" );
 }
 void DroidStimpackModuleDataComponent::initialize(CreatureObject* droid) {
 	// grab the crafted components in this module and remove then
@@ -182,8 +259,6 @@ int DroidStimpackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 	if( selectedID == LOAD_STIMPACK ){
 		Locker dLock(droid);
 		Locker crossLoker(player,droid);
-		ManagedReference<SceneObject*> craftingComponents = droidComponent->getSlottedObject("crafted_components");
-
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		if (inventory == NULL) {
 			player->sendSystemMessage("@pet/droid_modules:no_stimpacks");
@@ -279,8 +354,41 @@ void DroidStimpackModuleDataComponent::sendLoadUI(CreatureObject* player) {
 	player->getPlayerObject()->addSuiBox(loader);
 	player->sendMessage(loader->generateMessage());
 }
+
+StimPack* DroidStimpackModuleDataComponent::findStimPack() {
+	StimPack* pack = NULL;
+	float biggest = 0;
+	DroidComponent* container = cast<DroidComponent*>(getParent());
+	ManagedReference<SceneObject*> craftingComponents = container->getSlottedObject("crafted_components");
+	if(craftingComponents != NULL) {
+		SceneObject* satchel = craftingComponents->getContainerObject(0);
+		for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
+			ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
+			ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceno.get());
+
+			if (tano != NULL ) {
+				// is a stimpack
+				if (tano->isPharmaceuticalObject()) {
+					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( tano.get());
+					if (pharma->isStimPack() && !pharma->isPetStimPack() && !pharma->isDroidRepairKit()) {
+						StimPack* stim = cast<StimPack*>(pharma);
+						if (stim->getEffectiveness() > biggest) {
+							biggest = stim->getEffectiveness();
+							pack = stim;
+						}
+					}
+				}
+			}
+		}
+	}
+	return pack;
+}
+
+
+
 void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* player, StimPack* pack) {
 	// we need to send the invlid stimpack message just wher eis a good question
+	countUses();
 	if (player != NULL && !player->hasSkill("science_medic_ability_04")) {
 		return;
 	}
@@ -300,22 +408,44 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 		return;
 	}
 	// we have the player and the stim to add to ourselves.
+	// code should goes as follow, count total use of all stims, then deduct amount form capacity
 	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
 	ManagedReference<SceneObject*> craftingComponents = droidComponent->getSlottedObject("crafted_components");
 	if (craftingComponents != NULL) {
 		SceneObject* satchel = craftingComponents->getContainerObject(0);
 		if (satchel != NULL){
-			if(droid->getContainerObjectsSize() +1 <= capacity) {
-				// remove it form the borld
-				pack->destroyObjectFromWorld(true);
-				// transfer to the droid and broadcast, then send the satchel to the player
-				satchel->transferObject(pack,-1,true);
-				satchel->broadcastObject(pack, true);
-				pack->sendTo(player,true);
-				droid->sendTo(player,true);
-				player->sendSystemMessage("@pet/droid_modules:stimpack_loaded");
-			} else {
+			int allowedAmount = capacity - loaded;
+			if (allowedAmount <= 0) {
 				player->sendSystemMessage("@pet/droid_modules:stimpack_capacity_full");
+				return;
+			}
+			int amountOnStim = pack->getUseCount();
+			StimPack* targetStim = compatibleStimpack(pack->getEffectiveness());
+			if (targetStim != NULL) {
+				if (allowedAmount > amountOnStim) {
+					targetStim->setUseCount(targetStim->getUseCount() + amountOnStim,true);
+					pack->setUseCount(0,true);
+				} else {
+					targetStim->setUseCount(targetStim->getUseCount() + allowedAmount,true);
+					pack->setUseCount(pack->getUseCount() - allowedAmount,true);
+				}
+			} else {
+				// can we take it all?
+				if(allowedAmount > amountOnStim) {
+					pack->destroyObjectFromWorld(true);
+					// transfer to the droid and broadcast, then send the satchel to the player
+					satchel->transferObject(pack,-1,true);
+					satchel->broadcastObject(pack, true);
+					pack->sendTo(player,true);
+					droid->sendTo(player,true);
+					player->sendSystemMessage("@pet/droid_modules:stimpack_loaded");
+				} else {
+					// we cant load it all so split the diff
+					StimPack* newStim = pack->split(allowedAmount);
+					satchel->transferObject(newStim,-1,true);
+					satchel->broadcastObject(newStim, true);
+					player->sendSystemMessage("@pet/droid_modules:stimpack_loaded");
+				}
 			}
 		}
 	}

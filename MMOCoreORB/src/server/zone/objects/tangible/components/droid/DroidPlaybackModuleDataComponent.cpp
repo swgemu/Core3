@@ -87,6 +87,7 @@ String DroidPlaybackModuleDataComponent::getCurrentTrack() {
 	if (selectedIndex >=0 && selectedIndex < tracks.size()) {
 		return tracks.get(selectedIndex);
 	}
+	return "";
 }
 int DroidPlaybackModuleDataComponent::getCurrentInstrument() {
 	if (selectedIndex == -1) {
@@ -95,6 +96,7 @@ int DroidPlaybackModuleDataComponent::getCurrentInstrument() {
 	if (selectedIndex >=0 && selectedIndex < instruments.size()) {
 		return instruments.get(selectedIndex);
 	}
+	return -1;
 }
 
 
