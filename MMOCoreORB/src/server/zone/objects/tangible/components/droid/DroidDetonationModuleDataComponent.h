@@ -65,7 +65,7 @@ protected:
 	int moduleCount;
 	bool started;
 	bool mseDroid;
-
+	bool advanced;
 public:
 	DroidDetonationModuleDataComponent();
 	~DroidDetonationModuleDataComponent();
@@ -90,7 +90,7 @@ public:
 	bool countdownInProgress() { return started; }
 	void startCountDown() { started = true;}
 	void stopCountDown() { started = false;}
-	void setSpecies(int i) { mseDroid = (i == DroidObject::MSE); }
+	void setSpecies(int i);
 	void initialize(CreatureObject* droid);
 
 

@@ -55,6 +55,7 @@ DroidDetonationModuleDataComponent::DroidDetonationModuleDataComponent() {
 	initialized = false;
 	started = false;
 	mseDroid = false;
+	advanced = false;
 }
 DroidDetonationModuleDataComponent::~DroidDetonationModuleDataComponent() {
 
@@ -69,6 +70,7 @@ void DroidDetonationModuleDataComponent::initialize(CreatureObject* droid) {
 	if (droid->getSpecies() == DroidObject::MSE) {
 		mseDroid = true;
 	}
+
 	// ensure state on init
 	started = false;
 	initialized = false;
@@ -104,6 +106,9 @@ void DroidDetonationModuleDataComponent::initializeTransientMembers() {
 	if(droidComponent->hasKey("module_init")) {
 		initialized = droidComponent->getAttributeHidden("module_init") == 1;
 	}
+	if(species == DroidObject::MSE) {
+		mseDroid = true;
+	}
 }
 
 void DroidDetonationModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
@@ -131,6 +136,10 @@ int DroidDetonationModuleDataComponent::calculateDamage(DroidObject* droid) {
 		bonus = moduleCount * 10;
 	// generate a damage value 150 - 200 per module 175 is mid so we calc 150 + 1..50 as damage output
 	return (System::random(50) + 150) * (bonus + rating);
+}
+void DroidDetonationModuleDataComponent::setSpecies(int i) {
+	species = i;
+	mseDroid = i == DroidObject::MSE;
 }
 int DroidDetonationModuleDataComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
 
