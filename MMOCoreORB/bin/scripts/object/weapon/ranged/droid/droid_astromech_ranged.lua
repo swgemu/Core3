@@ -42,6 +42,9 @@
 
 
 object_weapon_ranged_droid_droid_astromech_ranged = object_weapon_ranged_droid_shared_droid_astromech_ranged:new {
+
+	playerRaces = {},
+
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = RANGEDATTACK,

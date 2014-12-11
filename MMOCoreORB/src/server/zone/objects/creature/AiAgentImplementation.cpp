@@ -147,14 +147,7 @@ int AiAgentImplementation::calculateAttackMaxDamage(int level) {
 
 float AiAgentImplementation::calculateAttackSpeed(int level) {
 	float speed = 3.5f - ((float)level / 100.f);
-	if (petDeed != NULL) {
-		// pet deeds this is already calculated
-		speed = petDeed->getAttackSpeed();
-		if (level < petDeed->getLevel()) {
-			float percent = (float)level/(float)petDeed->getLevel();
-			speed *= percent;
-		}
-	}
+
 	return speed;
 }
 
@@ -191,7 +184,14 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 					if (weao != NULL) {
 						weao->setMinDamage(minDmg * 0.5);
 						weao->setMaxDamage(maxDmg * 0.5);
-						weao->setAttackSpeed(speed);
+
+						SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(weao->getObjectTemplate());
+						if (weaoTemp != NULL && weaoTemp->getPlayerRaces()->size() > 0) {
+							weao->setAttackSpeed(speed);
+						} else if (petDeed != NULL) {
+							weao->setAttackSpeed(petDeed->getAttackSpeed());
+						}
+
 						weapons.add(weao);
 
 						if (i == 0)
@@ -202,17 +202,21 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				}
 			}
 		}
-		// add the default weapon for creatures
-		if (isCreature()) {
+
+		if (defaultWeapon != NULL) {
 			weapons.add(defaultWeapon);
 		}
+
 	}
 
 	if (defaultWeapon != NULL) {
 		// set the damage of the default weapon
 		defaultWeapon->setMinDamage(minDmg);
 		defaultWeapon->setMaxDamage(maxDmg);
-		defaultWeapon->setAttackSpeed(speed);
+
+		if (petDeed != NULL) {
+			defaultWeapon->setAttackSpeed(petDeed->getAttackSpeed());
+		}
 	}
 
 	int ham;
@@ -373,13 +377,16 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 
 		weao->setMinDamage(minDmg * 0.5);
 		weao->setMaxDamage(maxDmg * 0.5);
-		weao->setAttackSpeed(speed);
+
+		SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(weao->getObjectTemplate());
+		if (weaoTemp != NULL && weaoTemp->getPlayerRaces()->size() > 0) {
+			weao->setAttackSpeed(speed);
+		}
 	}
 
 	if (defaultWeapon != NULL) {
 		defaultWeapon->setMinDamage(minDmg);
 		defaultWeapon->setMaxDamage(maxDmg);
-		defaultWeapon->setAttackSpeed(speed);
 	}
 
 	int baseHamMax = ((float)npcTemplate->getBaseHAMmax()) * ratio;

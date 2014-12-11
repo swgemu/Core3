@@ -405,7 +405,6 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 
 	float minDmg = calculateAttackMinDamage(baseLevel);
 	float maxDmg = calculateAttackMaxDamage(baseLevel);
-	float speed = calculateAttackSpeed(newLevel);
 
 	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
@@ -418,13 +417,11 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 
 		weao->setMinDamage(minDmg * 0.5);
 		weao->setMaxDamage(maxDmg * 0.5);
-		weao->setAttackSpeed(speed);
 	}
 
 	if (defaultWeapon != NULL) {
 		defaultWeapon->setMinDamage(minDmg);
 		defaultWeapon->setMaxDamage(maxDmg);
-		defaultWeapon->setAttackSpeed(speed);
 	}
 
 	int ham;

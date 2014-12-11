@@ -43,26 +43,7 @@
 
 object_weapon_melee_unarmed_unarmed_default = object_weapon_melee_unarmed_shared_unarmed_default:new {
 
-	playerRaces = { "object/creature/player/bothan_male.iff",
-				"object/creature/player/bothan_female.iff",
-				"object/creature/player/human_male.iff",
-				"object/creature/player/human_female.iff",
-				"object/creature/player/ithorian_male.iff",
-				"object/creature/player/ithorian_female.iff",
-				"object/creature/player/moncal_male.iff",
-				"object/creature/player/moncal_female.iff",
-				"object/creature/player/rodian_male.iff",
-				"object/creature/player/rodian_female.iff",
-				"object/creature/player/sullustan_male.iff",
-				"object/creature/player/sullustan_female.iff",
-				"object/creature/player/trandoshan_male.iff",
-				"object/creature/player/trandoshan_female.iff",
-				"object/creature/player/twilek_male.iff",
-				"object/creature/player/twilek_female.iff",
-				"object/creature/player/wookiee_male.iff",
-				"object/creature/player/wookiee_female.iff",
-				"object/creature/player/zabrak_male.iff",
-				"object/creature/player/zabrak_female.iff" },
+	playerRaces = {},
 	
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
@@ -102,9 +83,9 @@ object_weapon_melee_unarmed_unarmed_default = object_weapon_melee_unarmed_shared
 	       
 	
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 10,
-	actionAttackCost = 10,
-        mindAttackCost = 10,
+	healthAttackCost = 0,
+	actionAttackCost = 0,
+	mindAttackCost = 0,
 	forceCost = 0,
 	
 	pointBlankAccuracy = 7,

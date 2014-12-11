@@ -1,5 +1,4 @@
 ewok_weapons = {
-	"object/weapon/melee/unarmed/unarmed_default.iff",
 	"object/weapon/ranged/rifle/rifle_ewok_crossbow.iff",
 	"object/weapon/melee/knife/knife_stone.iff"
 }

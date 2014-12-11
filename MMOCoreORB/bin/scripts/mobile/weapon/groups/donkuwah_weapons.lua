@@ -1,5 +1,4 @@
 donkuwah_weapons = {
-	"object/weapon/melee/unarmed/unarmed_default.iff",
 	"object/weapon/melee/knife/knife_donkuwah.iff"
 }
 

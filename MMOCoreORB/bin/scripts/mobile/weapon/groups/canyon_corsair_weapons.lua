@@ -1,7 +1,6 @@
 canyon_corsair_weapons = {
 	"object/weapon/melee/2h_sword/2h_sword_maul.iff",
-	"object/weapon/ranged/carbine/carbine_nym_slugthrower.iff",	
-	"object/weapon/melee/unarmed/unarmed_default.iff",
+	"object/weapon/ranged/carbine/carbine_nym_slugthrower.iff",
 	"object/weapon/ranged/carbine/carbine_dxr6.iff"
 }
 
