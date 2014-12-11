@@ -50,6 +50,11 @@
 #include "server/zone/objects/player/sui/callbacks/SelectTrackSuiCallback.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
+#include "server/zone/managers/skill/Performance.h"
+#include "server/zone/managers/skill/PerformanceManager.h"
+#include "server/zone/packets/object/Flourish.h"
+#include "server/zone/managers/skill/SkillManager.h"
+
 
 DroidPlaybackModuleDataComponent::DroidPlaybackModuleDataComponent() {
 	active = false;
@@ -88,6 +93,41 @@ String DroidPlaybackModuleDataComponent::getCurrentTrack() {
 		return tracks.get(selectedIndex);
 	}
 	return "";
+}
+void DroidPlaybackModuleDataComponent::doFlourish(int number) {
+
+	ManagedReference<DroidObject*> droid = getDroidObject();
+	if( droid == NULL ){
+		info( "Droid is null");
+		return;
+	}
+	if (!active) {
+		return;
+	}
+	Locker dlock(droid);
+
+	if( !droid->hasPower() ){
+		droid->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+		return;
+	}
+
+	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
+	Performance* performance = NULL;
+	performance = performanceManager->getSong(getCurrentTrack(), getCurrentInstrument());
+	if(performance == NULL) {
+		return;
+	}
+
+	float baseActionDrain =  performance->getActionPointsPerLoop();
+	float flourishActionDrain = baseActionDrain / 2.0;
+	int actionDrain = (int)round((flourishActionDrain * 10 + 0.5) / 10.0); // Round to nearest dec for actual int cost
+	actionDrain = droid->calculateCostAdjustment(CreatureAttribute::QUICKNESS, actionDrain);
+
+	if (droid->getHAM(CreatureAttribute::ACTION) > actionDrain) {
+		droid->inflictDamage(droid, CreatureAttribute::ACTION, actionDrain, false, true);
+		Flourish* flourish = new Flourish(droid, number);
+			droid->broadcastMessage(flourish, true);
+	}
 }
 int DroidPlaybackModuleDataComponent::getCurrentInstrument() {
 	if (selectedIndex == -1) {
