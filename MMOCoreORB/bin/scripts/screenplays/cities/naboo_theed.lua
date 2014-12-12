@@ -170,8 +170,6 @@ function NabooTheedScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "naboo_police",300,-5138.49,6,4228.36,0,0)
 	spawnMobile("naboo", "naboo_police",300,-4911.53,6,4089.7,127.784,0)
 	--{"official",300,-5886.59,6,4368.23,0,0, "conversation", ""},
-	spawnMobile("naboo", "patron",60,-5538,6,4365.1,103.215,0)
-	spawnMobile("naboo", "rsf_security_guard",300,-5032.08,6,4091.71,67.385,0)
 	spawnMobile("naboo", "stormtrooper",400,-5206.32,6,4182.8,329.254,0)
 	spawnMobile("naboo", "stormtrooper",400,-4800,6,4113,121.097,0)
 	spawnMobile("naboo", "stormtrooper",400,-5126.48,6.52214,4130.79,184.164,0)
