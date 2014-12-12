@@ -1738,8 +1738,8 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 	QueueCommand* queueCommand = objectController->getQueueCommand(actionCRC);
 
 	if (queueCommand == NULL) {
-		StringBuffer msg;
-		msg << "trying to enqueue NULL QUEUE COMMAND 0x" << hex << actionCRC;
+		//StringBuffer msg;
+		//msg << "trying to enqueue NULL QUEUE COMMAND 0x" << hex << actionCRC;
 		//error(msg.toString());
 
 		//StackTrace::printStackTrace();
