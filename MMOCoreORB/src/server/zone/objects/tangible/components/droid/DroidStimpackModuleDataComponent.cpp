@@ -84,7 +84,11 @@ void DroidStimpackModuleDataComponent::updateCraftingValues(CraftingValues* valu
 }
 void DroidStimpackModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
 	// convert module rating to actual rating
-	alm->insertAttribute( "stimpack_capacity", capacity);
+	StringBuffer sb;
+	sb << loaded;
+	sb << "/";
+	sb << capacity;
+	alm->insertAttribute( "stimpack_capacity", sb.toString());
 	alm->insertAttribute( "stimpack_speed", speed);
 	float power = 0;
 	if (loaded > 0) {

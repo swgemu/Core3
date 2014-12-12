@@ -435,7 +435,6 @@ void PetManagerImplementation::enqueuePetCommand(CreatureObject* player, AiAgent
 		targetID = player->getObjectID();
 	else
 		targetID = player->getTargetID();
-
 	//CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
 	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, targetID, 1);
 	enqueueCommand->execute();
