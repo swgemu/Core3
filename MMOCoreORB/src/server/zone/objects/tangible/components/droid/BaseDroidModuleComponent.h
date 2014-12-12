@@ -61,7 +61,7 @@ namespace droid {
 class BaseDroidModuleComponent : public DataObjectComponent, public Logger {
 
 protected:
-
+	int species;
 	// Radial IDs
 	static const uint8 AUTO_REPAIR_MODULE_TOGGLE = 180;
 	static const uint8 ITEM_STORAGE_MODULE_OPEN  = 181;
@@ -126,7 +126,7 @@ public:
 	virtual void copy(BaseDroidModuleComponent* other){}
 	ManagedReference<DroidObject*> getDroidObject();
 	virtual void updateCraftingValues(CraftingValues* values, bool firstUpdate);
-	virtual void setSpecies(int s) {}
+	virtual void setSpecies(int s) { species = s;}
 };
 
 } //droid
