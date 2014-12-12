@@ -433,4 +433,7 @@ class DroidObject extends AiAgent {
 	
 	@dirty
 	public native boolean isCombatDroid();
+	
+	@dirty
+	public native boolean isTrapDroid();
 }
