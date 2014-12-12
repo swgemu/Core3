@@ -101,11 +101,15 @@ void DroidDetonationModuleDataComponent::initializeTransientMembers() {
 		rating = droidComponent->getAttributeValue("bomb_level");
 	}
 	if(droidComponent->hasKey("module_count")) {
-		moduleCount = droidComponent->getAttributeHidden("module_count");
+		moduleCount = droidComponent->getAttributeValue("module_count");
 	}
 	if(droidComponent->hasKey("module_init")) {
-		initialized = droidComponent->getAttributeHidden("module_init") == 1;
+		initialized = droidComponent->getAttributeValue("module_init") == 1;
 	}
+	if(droidComponent->hasKey("species")) {
+		species = droidComponent->getAttributeValue("species");
+	}
+
 	if(species == DroidObject::MSE) {
 		mseDroid = true;
 	}
@@ -140,6 +144,11 @@ int DroidDetonationModuleDataComponent::calculateDamage(DroidObject* droid) {
 void DroidDetonationModuleDataComponent::setSpecies(int i) {
 	species = i;
 	mseDroid = i == DroidObject::MSE;
+	DroidComponent* droidComponent = cast<DroidComponent*>(getParent());
+	if (droidComponent != NULL) {
+		droidComponent->addProperty("species",(float)species,0,"hidden",true);
+	}
+
 }
 int DroidDetonationModuleDataComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
 
