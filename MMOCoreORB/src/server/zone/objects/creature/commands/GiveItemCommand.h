@@ -55,6 +55,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidStimpackModuleDataComponent.h"
+#include "server/zone/objects/tangible/components/droid/DroidTrapModuleDataComponent.h"
 #include "server/zone/objects/creature/AiAgent.h"
 
 class GiveItemCommand : public QueueCommand {
@@ -186,6 +187,21 @@ public:
 								module->handleInsertStimpack(player,medicine);
 							else
 								creature->sendSystemMessage("@pet/droid_modules:not_stimpack_droid");
+						} else {
+							return GENERALERROR;
+						}
+					}
+				}
+				else if(sceno->isPet() && sceno->isDroidObject() && object->isTrapObject()) {
+					Reference<DroidObject*> droid = sceno.castTo<DroidObject*>();
+					if (droid != NULL) {
+						Locker cross(sceno,creature);
+						TangibleObject* trap = cast<TangibleObject*>(object.get());
+						if(trap != NULL) {
+							DroidTrapModuleDataComponent* module = cast<DroidTrapModuleDataComponent*>(droid->getModule("trap_module"));
+							CreatureObject* player = cast<CreatureObject*>(creature);
+							if(module != NULL)
+								module->handleInsertTrap(player,trap);
 						} else {
 							return GENERALERROR;
 						}

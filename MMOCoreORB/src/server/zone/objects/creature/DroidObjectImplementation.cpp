@@ -333,3 +333,12 @@ bool DroidObjectImplementation::isCombatDroid() {
 	}
 	return false;
 }
+bool DroidObjectImplementation::isTrapDroid() {
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if(module->getModuleName() == "trap_module") {
+			return true;
+		}
+	}
+	return false;
+}
