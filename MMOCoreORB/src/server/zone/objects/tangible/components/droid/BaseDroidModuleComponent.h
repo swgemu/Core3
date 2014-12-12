@@ -88,6 +88,9 @@ protected:
 	static const uint8 BARKER_TOGGLE = 205;
 	static const uint8 PLAYBACK_ACCESS_MENU = 206;
 	static const uint8 PLAYBACK_STOP_MENU = 207;
+	static const uint8 TRAP_MODULE_CONTROLS = 208;
+	static const uint8 TRAP_MODULE_CLEAR = 209;
+	static const uint8 TRAP_MODULE_TRAIN = 210;
 public:
 	BaseDroidModuleComponent();
 	~BaseDroidModuleComponent();
