@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_4d6d2a04",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2008,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-12T10:28:46Z",
+      "side": 1,
+      "message": "Don\u0027t you want to return here?",
+      "revId": "04a9b877a5a1b19a477f311e8435344ab401b30c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_2d72eee5",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2297,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-12T10:28:46Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you return here as well?",
+      "revId": "04a9b877a5a1b19a477f311e8435344ab401b30c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
