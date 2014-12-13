@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_2d40ae55",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/heralds.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-13T04:54:21Z",
+      "side": 1,
+      "message": "What\u0027s the point of this object manager call? I don\u0027t see you using player at all.",
+      "revId": "e95ecc4ae29cd0781b6356571aa59f1908d54d7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
