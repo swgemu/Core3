@@ -85,6 +85,11 @@ ZicxContainerComponent = {}
 
 function ZicxContainerComponent:transferObject(pContainer, pObj, slot)
 	local pPlayer = ZicxBugBomb:getObjOwner(pObj)
+	
+	if (pPlayer == nil) then
+		return 0
+	end
+	
 	return ObjectManager.withSceneObject(pObj, function(object)
 		return ObjectManager.withCreatureObject(pPlayer, function(player)
 			if player:hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") ~= 1 or player:hasScreenPlayState(8, "zicx_bug_bomb_goruNpc") == 1 then
@@ -116,6 +121,11 @@ end
 
 function ZicxContainerComponent:canAddObject(pContainer, pObj, slot)
 	local pPlayer = ZicxBugBomb:getObjOwner(pObj)
+	
+	if (pPlayer == nil) then
+		return -1
+	end
+	
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		if player:hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") == 1 and player:hasScreenPlayState(8, "zicx_bug_bomb_goruNpc") ~= 1 then
 			return true
@@ -127,7 +137,22 @@ end
 
 function ZicxBugBomb:getObjOwner(pObj)
 	local pPlayerInv = SceneObject(pObj):getParent()
-	return SceneObject(pPlayerInv):getParent()
+	
+	if (pPlayerInv == nil) then
+		return nil
+	end
+
+	local parent = SceneObject(pPlayerInv):getParent()
+
+	if (parent == nil) then
+		return nil
+	end
+
+	if (SceneObject(parent):isCreatureObject()) then
+		return parent
+	end
+
+	return nil
 end
 
 
