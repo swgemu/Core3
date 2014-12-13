@@ -122,18 +122,24 @@ public:
 				}
 			}
 
+			String creatureFirstName = targetCreature->getFirstName();
+			Database::escapeString(creatureFirstName);
+
+			String creatureLastName = targetCreature->getLastName();
+			Database::escapeString(creatureLastName);
+
 			StringBuffer charDirtyQuery;
 			charDirtyQuery
-					<< "UPDATE `characters_dirty` SET `firstname` = '"  << targetCreature->getFirstName()
-					<< "', `surname` = '" << targetCreature->getLastName()
+					<< "UPDATE `characters_dirty` SET `firstname` = '"  << creatureFirstName
+					<< "', `surname` = '" << creatureLastName
 					<< "' WHERE `character_oid` = '" << targetCreature->getObjectID() << "'";
 
 			ServerDatabase::instance()->executeStatement(charDirtyQuery);
 
 			StringBuffer charQuery;
 			charQuery
-					<< "UPDATE `characters` SET `firstname` = '"  << targetCreature->getFirstName()
-					<< "', `surname` = '" << targetCreature->getLastName()
+					<< "UPDATE `characters` SET `firstname` = '"  << creatureFirstName
+					<< "', `surname` = '" << creatureLastName
 					<< "' WHERE `character_oid` = '" << targetCreature->getObjectID() << "'";
 
 			ServerDatabase::instance()->executeStatement(charQuery);
