@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_0d0cd241",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetThrowCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-12-13T05:39:38Z",
+      "side": 1,
+      "message": "Wrong class name",
+      "revId": "b0d596019b3cb8c6696c0fdffb63c45bb1175806",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ed08562f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetThrowCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-12-13T05:39:38Z",
+      "side": 1,
+      "message": "Target must be a creature for scout traps, right?",
+      "revId": "b0d596019b3cb8c6696c0fdffb63c45bb1175806",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_cd059a15",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidTrapTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-12-13T05:39:38Z",
+      "side": 1,
+      "message": "Wrong class name",
+      "revId": "b0d596019b3cb8c6696c0fdffb63c45bb1175806",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_ad025e09",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidTrapModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-12-13T05:39:38Z",
+      "side": 1,
+      "message": "Should capacity change based on module experimentation?\n\nAlso, I see some notes here and there saying \"Like the Creature Harvest Module, the Trapping rating is not a direct bonus and instead is based upon a comparison of the user\u0027s skill and the droid rating. A higher attribute is believed to stack with the player\u0027s own trapping modifier similar to the way creature harvesting modifiers work with harvest bonus attributes on Creature Harvest Modules\"",
+      "revId": "b0d596019b3cb8c6696c0fdffb63c45bb1175806",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
