@@ -71,7 +71,7 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L$(ENGINE3_PATH)/lib/unix \
 	-L/usr/local/lib \
 	-L$(GTEST_PATH)/lib \
-	-lmysqlclient -lz -lengine3 -llua -ldb-5.0 -lssl -lcrypto -lgtest
+	-lmysqlclient -lz -lengine3 -llua5.1 -ldb-5.0 -lssl -lcrypto -lgtest
 	
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup

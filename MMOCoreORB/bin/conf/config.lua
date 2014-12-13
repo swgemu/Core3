@@ -53,7 +53,7 @@ ORB = ""
 DBHost = "127.0.0.1"
 DBPort = 3306
 DBName = "swgemu"
-DBUser = "swgemu"
+DBUser = "root"
 DBPass = "123456"
 DBSecret = "swgemus3cr37!" -- Change this! This value should be unique and of reasonable length.
 
@@ -93,7 +93,7 @@ ZonesEnabled = {
 	--"corellia",
 	--"creature_test",
 	--"dantooine",
-	--"dathomir",
+	"dathomir",
 	--"dungeon1",
 	--"endor",
 	--"endor_asommers",
@@ -134,7 +134,7 @@ ZonesEnabled = {
 
 
 -- directory of tres with live.cfg
-TrePath = "/home/swgemu/Desktop/SWGEmu"
+TrePath = "/home/valkyra/tre/precu"
 
 TreFiles = {
 	"default_patch.tre",
