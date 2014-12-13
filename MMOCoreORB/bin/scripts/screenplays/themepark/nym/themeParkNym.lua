@@ -204,6 +204,11 @@ NymContainerComponent = {}
 
 function NymContainerComponent:transferObject(pContainer, pObj, slot)
 	local pPlayer = ThemeParkNym:getObjOwner(pObj)
+	
+	if (pPlayer == nil) then
+		return 0
+	end
+	
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(playerCreo, playerObject)
 		local questObjectPath, correctItemMsg, wrongItemMsg, questState, questStateValue
 		if (SceneObject(pContainer):getObjectName() == "jinkins") then
@@ -311,11 +316,31 @@ end
 
 function ThemeParkNym:getObjOwner(pObj)
 	local pPlayerInv = SceneObject(pObj):getParent()
-	return SceneObject(pPlayerInv):getParent()
+	
+	if (pPlayerInv == nil) then
+		return nil
+	end
+	
+	local parent = SceneObject(pPlayerInv):getParent()
+	
+	if (parent == nil) then
+		return nil
+	end
+	
+	if (SceneObject(parent):isCreatureObject()) then
+		return parent
+	end
+    
+	return nil
 end
 
 function NymContainerComponent:canAddObject(pContainer, pObj, slot)
 	local pPlayer = ThemeParkNym:getObjOwner(pObj)
+	
+	if (pPlayer == nil) then
+		return -1
+	end
+	
 	local containerSceo = SceneObject(pContainer)
 	local creature = CreatureObject(pPlayer)
 	if ((containerSceo:getObjectName() == "jinkins") and (creature:hasScreenPlayState(1, "nym_theme_park_jinkinsNpc") == 1) and (creature:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc") ~= 1)) then
