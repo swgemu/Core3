@@ -14,7 +14,9 @@
 
 class StructurePermissionList : public Object {
 	VectorMap<String, SortedVector<String> > permissionLists;
+	VectorMap<String, SortedVector<uint64> > idPermissionLists;
 	String ownerName;
+	uint64 ownerID;
 	ReadWriteLock lock;
 
 private:
@@ -46,18 +48,18 @@ public:
 	/**
 	 * Toggles permission on the list for the player.
 	 * @param listName The list the player is being added/removed to/from.
-	 * @param playerName The name of the player.
+	 * @param objectID The oid of the player/guild.
 	 * @return Returns either GRANTED or REVOKED depending on the operation that is performed.
 	 */
-	int togglePermission(const String& listName, const String& playerName, bool caseSensitive = false);
+	int togglePermission(const String& listName, const uint64 objectID);
 
-	int grantPermission(const String& listName, const String& playerName, bool caseSensitive = false);
-	int revokePermission(const String& listName, const String& playerName, bool caseSensitive = false);
-	int revokeAllPermissions(const String& playerName, bool caseSensitive = false);
+	int grantPermission(const String& listName, const uint64 objectID);
+	int revokePermission(const String& listName, const uint64 objectID);
+	int revokeAllPermissions(const uint64 objectID);
 	void revokeAllPermissions();
 
-	void setOwnerName(const String& name) {
-		ownerName = name;
+	void setOwner(const uint64 objectID) {
+		ownerID = objectID;
 	}
 
 	/**
@@ -66,21 +68,18 @@ public:
 	 * @param playerName The player name to check.
 	 * @return Returns false if the permission list does not exist, or the player name is not found in the list.
 	 */
-	inline bool isOnPermissionList(const String& listName, const String& playerName, bool caseSensitive = false) {
+	inline bool isOnPermissionList(const String& listName, const uint64 objectID) {
 		ReadLocker locker(&lock);
 
-		if (listName != "BAN" && playerName.toLowerCase() == ownerName.toLowerCase())
+		if (listName != "BAN" && objectID == ownerID)
 			return true;
 
-		if (!permissionLists.contains(listName))
+		if (!idPermissionLists.contains(listName))
 			return false;
 
-		SortedVector<String>* list = &permissionLists.get(listName);
+		SortedVector<uint64>* list = &idPermissionLists.get(listName);
 
-		if (caseSensitive)
-			return list->contains(playerName);
-		else
-			return list->contains(playerName.toLowerCase());
+		return list->contains(objectID);
 	}
 
 	/**
@@ -91,10 +90,10 @@ public:
 	inline bool isListFull(const String& listName) {
 		ReadLocker locker(&lock);
 
-		if (!permissionLists.contains(listName))
+		if (!idPermissionLists.contains(listName))
 			return true;
 
-		SortedVector<String>* list = &permissionLists.get(listName);
+		SortedVector<uint64>* list = &idPermissionLists.get(listName);
 
 		return list->size() >= MAX_ENTRIES;
 	}
@@ -106,12 +105,12 @@ public:
 	inline void addList(const String& listName) {
 		Locker locker(&lock);
 
-		if (permissionLists.contains(listName))
+		if (idPermissionLists.contains(listName))
 			return;
 
-		SortedVector<String> list;
+		SortedVector<uint64> list;
 		list.setNoDuplicateInsertPlan();
-		permissionLists.put(listName, list);
+		idPermissionLists.put(listName, list);
 	}
 
 	/**
@@ -121,7 +120,7 @@ public:
 	inline void dropList(const String& listName) {
 		Locker locker(&lock);
 
-		permissionLists.drop(listName);
+		idPermissionLists.drop(listName);
 	}
 
 	/**
@@ -132,8 +131,10 @@ public:
 	inline bool containsList(const String& listName) {
 		ReadLocker locker(&lock);
 
-		return permissionLists.contains(listName);
+		return idPermissionLists.contains(listName);
 	}
+
+	void migrateLists(ZoneServer* zoneServer, uint64 ownerObjectID);
 };
 
 #endif /* STRUCTUREPERMISSIONLIST_H_ */

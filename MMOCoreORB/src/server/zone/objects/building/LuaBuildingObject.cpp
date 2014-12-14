@@ -66,12 +66,12 @@ int LuaBuildingObject::getOwnerID(lua_State* L) {
 
 int LuaBuildingObject::grantPermission(lua_State* L) {
 	String list = lua_tostring(L, -2);
-	String name = lua_tostring(L, -1);
+	uint64 playerid = lua_tointeger(L, -1);
 
 	int i = 0;
 
 	if (list == "ADMIN" || list == "BAN" || list == "ENTRY") {
-		realObject->grantPermission(list, name);
+		realObject->grantPermission(list, playerid);
 		i = 1;
 	}
 

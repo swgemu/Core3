@@ -119,7 +119,7 @@ class CampSiteActiveArea extends ActiveArea {
 	
 	public void setOwner(CreatureObject player) {
 		campOwner = player;
-		camp.setOwnerObjectID(player.getObjectID());
+		camp.setOwner(player.getObjectID());
 	}
 	
 	public void setCamp(StructureObject c) {
