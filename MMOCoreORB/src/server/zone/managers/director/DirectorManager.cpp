@@ -295,6 +295,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "setQuestStatus", setQuestStatus);
 	lua_register(luaEngine->getLuaState(), "getQuestStatus", getQuestStatus);
 	lua_register(luaEngine->getLuaState(), "removeQuestStatus", removeQuestStatus);
+	lua_register(luaEngine->getLuaState(), "getControllingFaction", getControllingFaction);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -2566,4 +2567,29 @@ int DirectorManager::removeQuestStatus(lua_State* L) {
 	instance()->removeQuestStatus(keyString);
 
 	return 0;
+}
+
+int DirectorManager::getControllingFaction(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getControllingFaction");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String zoneName = lua_tostring(L, -1);
+
+	Zone* zone = ServerCore::getZoneServer()->getZone(zoneName);
+
+	if (zone == NULL) {
+		lua_pushnil(L);
+	} else {
+		GCWManager* gcwMan = zone->getGCWManager();
+
+		if (gcwMan == NULL) {
+			lua_pushnil(L);
+		} else {
+			lua_pushinteger(L, gcwMan->getWinningFaction());
+		}
+	}
+	return 1;
 }
