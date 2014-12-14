@@ -84,7 +84,9 @@ class StructureObject extends TangibleObject {
 	protected float surplusPower;
 
 	protected boolean maintenanceReduced;
-	
+
+	protected boolean permissionsFixed;
+
 	public StructureObject() {
 		Logger.setLoggingName("StructureObject");
 		
@@ -105,6 +107,8 @@ class StructureObject extends TangibleObject {
 		structureMaintenanceTask = null;
 
 		maintenanceReduced = false;
+
+		permissionsFixed = false;
 	}
 	
 	public native void initializeTransientMembers();
@@ -119,10 +123,16 @@ class StructureObject extends TangibleObject {
 	 */
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
-	
+
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+
 	public native void notifyInsertToZone(Zone zone);
-	
+
 	public void createChildObjects() {
 		super.createChildObjects();
 	}
@@ -161,78 +171,78 @@ class StructureObject extends TangibleObject {
 	public native abstract void updateStructureStatus();
 
 	/**
-	 * Checks if the playerName is on the admin list.
-	 * @param playerName The name of the player to check for admin permission.
-	 * @return Returns true if the player name has admin permissions.
+	 * Checks if the player is on the admin list.
+	 * @param player The creo of the player to check for admin permission.
+	 * @return Returns true if the player has admin permissions.
 	 */
 	@dirty
 	public native boolean isOnAdminList(CreatureObject player);
 	
 	/**
-	 * Checks if the playerName is on the admin list.
+	 * Checks if the player/guild is on the admin list.
 	 * For PermissionsListModify command
-	 * @param playerName The name of the player to check for admin permission.
-	 * @return Returns true if the player name has admin permissions.
+	 * @param objectID The oid of the player/guild to check for admin permission.
+	 * @return Returns true if the player/guild has admin permissions.
 	 */
 	@dirty
-	public boolean isOnAdminList(final string firstName, boolean caseSensitive = false) {
-		return structurePermissionList.isOnPermissionList("ADMIN", firstName, caseSensitive);
+	public boolean isOnAdminList(final unsigned long objectID) {
+		return structurePermissionList.isOnPermissionList("ADMIN", objectID);
 	}
 	
 	/**
-	 * Checks if the playerName is on the entry list.
-	 * @param playerName The name of the player to check for entry permission.
-	 * @return Returns true if the player name has entry permissions.
+	 * Checks if the player is on the entry list.
+	 * @param player The creo of the player to check for entry permission.
+	 * @return Returns true if the player has entry permissions.
 	 */
 	@dirty
 	public native boolean isOnEntryList(CreatureObject player);
 	
 	/**
-	 * Checks if the playerName is on the ban list.
-	 * @param playerName The name of the player to check for ban permission.
-	 * @return Returns true if the player name has ban permissions.
+	 * Checks if the player is on the ban list.
+	 * @param player The creo of the player to check for ban permission.
+	 * @return Returns true if the player has ban permissions.
 	 */
 	@dirty
 	public native boolean isOnBanList(CreatureObject player);
 	
 	/**
-	 * Checks if the playerName is on the ban list.
+	 * Checks if the player/guild is on the ban list.
 	 * For PermissionsListModify command
-	 * @param playerName The name of the player to check for ban permission.
-	 * @return Returns true if the player name has ban permissions.
+	 * @param objectID The oid of the player/guild to check for ban permission.
+	 * @return Returns true if the player/guild has ban permissions.
 	 */
 	@dirty
-	public boolean isOnBanList(final string firstName, boolean caseSensitive = false) {
-		return structurePermissionList.isOnPermissionList("BAN", firstName, caseSensitive);
+	public boolean isOnBanList(final unsigned long objectID) {
+		return structurePermissionList.isOnPermissionList("BAN", objectID);
 	}
 	
 	/**
-	 * Checks if the playerName is on the hopper list.
-	 * @param playerName The name of the player to check for hopper permission.
-	 * @return Returns true if the player name has hopper permissions.
+	 * Checks if the player is on the hopper list.
+	 * @param player The creo of the player to check for hopper permission.
+	 * @return Returns true if the player has hopper permissions.
 	 */
 	@dirty
 	public native boolean isOnHopperList(CreatureObject player);
 	
 	/**
-	 * Checks if the player name is the on the specified permission list.
+	 * Checks if the player is the on the specified permission list.
 	 * @param listName The name of the list to check.
-	 * @param playerName The name of the player to check.
-	 * @return Returns true if the player name was found on the list.
+	 * @param player The creo of the player to check.
+	 * @return Returns true if the player was found on the list.
 	 */
 	@dirty
 	public native boolean isOnPermissionList(final string listName, CreatureObject player);
 	
 	/**
-	 * Checks if the player name is the on the specified permission list.
+	 * Checks if the player/guild is the on the specified permission list.
 	 * For PermissionsListModify command
 	 * @param listName The name of the list to check.
-	 * @param firstName The name of the player to check.
-	 * @return Returns true if the player name was found on the list.
+	 * @param objectID The oid of the player/guild to check.
+	 * @return Returns true if the player/guild was found on the list.
 	 */
 	@dirty
-	public boolean isOnPermissionList(final string listName, final string firstName, boolean caseSensitive = false) {
-		return structurePermissionList.isOnPermissionList(listName, firstName, caseSensitive);
+	public boolean isOnPermissionList(final string listName, final unsigned long objectID) {
+		return structurePermissionList.isOnPermissionList(listName, objectID);
 	}
 
 	@dirty
@@ -265,28 +275,24 @@ class StructureObject extends TangibleObject {
 		return structurePermissionList.isListFull(listName);
 	}
 	
-	public int togglePermission(final string listName, final string targetName, boolean caseSensitive = false) {
-		return structurePermissionList.togglePermission(listName, targetName, caseSensitive);
+	public int togglePermission(final string listName, final unsigned long objectID) {
+		return structurePermissionList.togglePermission(listName, objectID);
 	}
 	
-	public int grantPermission(final string listName, final string targetName, boolean caseSensitive = false) {
-		return structurePermissionList.grantPermission(listName, targetName, caseSensitive);
+	public int grantPermission(final string listName, final unsigned long objectID) {
+		return structurePermissionList.grantPermission(listName, objectID);
 	}
 	
-	public int revokePermission(final string listName, final string targetName, boolean caseSensitive = false) {
-		return structurePermissionList.revokePermission(listName, targetName, caseSensitive);
+	public int revokePermission(final string listName, final unsigned long objectID) {
+		return structurePermissionList.revokePermission(listName, objectID);
 	}
 	
-	public int revokeAllPermissions(final string targetName, boolean caseSensitive = false) {
-		return structurePermissionList.revokeAllPermissions(targetName, caseSensitive);
+	public int revokeAllPermissions(final unsigned long objectID) {
+		return structurePermissionList.revokeAllPermissions(objectID);
 	}
 
 	public void revokeAllPermissions() {
 		structurePermissionList.revokeAllPermissions();
-	}
-
-	public void setOwnerName(final string ownerName) {
-		structurePermissionList.setOwnerName(ownerName);
 	}
 
 	/**
@@ -350,8 +356,9 @@ class StructureObject extends TangibleObject {
 		return false;
 	}
 	
-	public void setOwnerObjectID(unsigned long objectID) {
+	public void setOwner(unsigned long objectID) {
 		ownerObjectID = objectID;
+		structurePermissionList.setOwner(objectID);
 	}
 	
 	public void setDeedObjectID(unsigned long deedID) {
@@ -465,4 +472,9 @@ class StructureObject extends TangibleObject {
 
 	@dirty
 	public native boolean isCommercialStructure();
+
+	public void migratePermissions() {
+		structurePermissionList.migrateLists(super.getZoneServer(), getOwnerObjectID());
+		permissionsFixed = true;
+	}
 }

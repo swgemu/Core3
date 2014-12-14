@@ -299,12 +299,11 @@ void ObjectVersionUpdateManager::updateStructurePermissionLists() {
 				printf("\r\tUpdating structure owners [%d] / [?]\t", count);
 
 				if( Serializable::getVariable<uint64>(String("StructureObject.ownerObjectID").hashCode(), &ownerID, &objectData)) {
-					String owner = getOwnerName(ownerID);
 					StructurePermissionList permissionList;
 
 					if ( Serializable::getVariable<StructurePermissionList>(String("StructureObject.structurePermissionList").hashCode(), &permissionList, &objectData)){
 						ObjectOutputStream newOutputStream;
-						permissionList.setOwnerName(owner);
+						permissionList.setOwner(ownerID);
 						permissionList.toBinaryStream(&newOutputStream);
 
 						ObjectOutputStream* test = changeVariableData(String("StructureObject.structurePermissionList").hashCode(), &objectData, &newOutputStream);
@@ -326,37 +325,6 @@ void ObjectVersionUpdateManager::updateStructurePermissionLists() {
 	}
 	info("Done updating owner on structure permission lists\n",true);
 
-}
-
-String ObjectVersionUpdateManager::getOwnerName(uint64 ownerID) {
-	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("sceneobjects", true);
-	ObjectInputStream objectData(2000);
-
-	String className;
-	UnicodeString fullName;
-
-	if(!database->getData(ownerID,&objectData)){
-		if ( Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)){
-
-			if(className == "CreatureObject"){
-				if ( Serializable::getVariable<UnicodeString>(String("SceneObject.customName").hashCode(), &fullName, &objectData)){
-					int idx = fullName.indexOf(' ');
-
-					if (idx != -1) {
-						return fullName.subString(0, idx).toString();
-					} else {
-						return fullName.toString();
-					}
-				}
-			}
-		} else {
-
-			info("ERROR couldn't get object " + String::valueOf(ownerID),true);
-
-		}
-	}
-
-	return "";
 }
 
 void ObjectVersionUpdateManager::updateResidences(){

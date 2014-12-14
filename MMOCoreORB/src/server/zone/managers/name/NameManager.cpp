@@ -251,15 +251,39 @@ bool NameManager::isProfane(String name) {
 }
 
 inline bool NameManager::isDeveloper(String name) {
-	return developerNames->contains(name.toLowerCase());
+	name = name.toLowerCase();
+
+	HashSetIterator<String> iter = developerNames->iterator();
+	while (iter.hasNext()) {
+		if (name.indexOf(iter.next()) != -1)
+			return true;
+	}
+
+	return false;
 }
 
 inline bool NameManager::isFiction(String name) {
-	return fictionNames->contains(name.toLowerCase());
+	name = name.toLowerCase();
+
+	HashSetIterator<String> iter = fictionNames->iterator();
+	while (iter.hasNext()) {
+		if (name.indexOf(iter.next()) != -1)
+			return true;
+	}
+
+	return false;
 }
 
 inline bool NameManager::isReserved(String name) {
-	return reservedNames->contains(name.toLowerCase());
+	name = name.toLowerCase();
+
+	HashSetIterator<String> iter = reservedNames->iterator();
+	while (iter.hasNext()) {
+		if (name.indexOf(iter.next()) != -1)
+			return true;
+	}
+
+	return false;
 }
 
 int NameManager::validateName(CreatureObject* obj) {
@@ -302,7 +326,8 @@ int NameManager::validateName(const String& name, int species) {
 		return NameManagerResult::DECLINED_RESERVED;
 
 	//Make sure that only valid characters are allowed in the name.
-	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
+	if (strspn(fname.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-") != fname.length() ||
+			strspn(lname.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-") != lname.length())
 		return NameManagerResult::DECLINED_SYNTAX;
 
 	if (species == -1)
@@ -311,13 +336,13 @@ int NameManager::validateName(const String& name, int species) {
 	if (fname.length() < 3 || fname.length() > 15 || lname.length() > 20)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
-	//Wookies are not allowed to have last names.
+	//Wookiees are not allowed to have last names.
 	if (!lname.isEmpty() && species == CreatureObject::WOOKIE)
 		return NameManagerResult::DECLINED_RACE_INAPP;
 
 	//If the name has a hyphen or apostrophe, make sure they are the proper species.
 	if (name.indexOf("'") != -1 || name.indexOf("-") != -1) {
-		//Must be a human, twilek, or moncal to have a hyphen or apostrophe.
+		//Must be a human, twilek, moncal, or zabrak to have a hyphen or apostrophe.
 		if (species != CreatureObjectImplementation::HUMAN && species != CreatureObjectImplementation::TWILEK && species != CreatureObjectImplementation::MONCAL && species != CreatureObjectImplementation::ZABRAK)
 			return NameManagerResult::DECLINED_RACE_INAPP;
 
@@ -331,6 +356,92 @@ int NameManager::validateName(const String& name, int species) {
 
 		//Make sure they only have one hyphen and apostrophe in lastname.
 		if (lname.indexOf('\'') != lname.lastIndexOf('\'') || lname.indexOf('-') != lname.lastIndexOf('-'))
+			return NameManagerResult::DECLINED_RACE_INAPP;
+	}
+
+	return NameManagerResult::ACCEPTED;
+}
+
+int NameManager::validateFirstName(const String& name, int species) {
+	if (name.isEmpty())
+		return NameManagerResult::DECLINED_EMPTY;
+
+	if (name.length() < 3 || name.length() > 15)
+		return NameManagerResult::DECLINED_RACE_INAPP;
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+
+	if (isDeveloper(name))
+		return NameManagerResult::DECLINED_DEVELOPER;
+
+	if (isFiction(name))
+		return NameManagerResult::DECLINED_FICT_RESERVED;
+
+	if (isReserved(name))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	//Make sure that only valid characters are allowed in the name.
+	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-") != name.length())
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	//If the name has a hyphen or apostrophe, make sure they are the proper species.
+	if (name.indexOf("'") != -1 || name.indexOf("-") != -1) {
+		//Must be a human, twilek, moncal, or zabrak to have a hyphen or apostrophe.
+		if (species != CreatureObjectImplementation::HUMAN && species != CreatureObjectImplementation::TWILEK && species != CreatureObjectImplementation::MONCAL && species != CreatureObjectImplementation::ZABRAK)
+			return NameManagerResult::DECLINED_RACE_INAPP;
+
+		//Moncal's aren't allowed to have apostrophes.
+		if (species == CreatureObjectImplementation::MONCAL && name.indexOf("'") != -1)
+			return NameManagerResult::DECLINED_RACE_INAPP;
+
+		//Make sure they only have one hyphen and apostrophe in firstname.
+		if (name.indexOf('\'') != name.lastIndexOf('\'') || name.indexOf('-') != name.lastIndexOf('-'))
+			return NameManagerResult::DECLINED_RACE_INAPP;
+	}
+
+	return NameManagerResult::ACCEPTED;
+}
+
+int NameManager::validateLastName(const String& name, int species) {
+	if (name.isEmpty())
+		return NameManagerResult::ACCEPTED;
+
+	//Wookiees are not allowed to have last names.
+	if (species == CreatureObject::WOOKIE)
+		return NameManagerResult::DECLINED_RACE_INAPP;
+
+	if (name.length() > 20)
+		return NameManagerResult::DECLINED_RACE_INAPP;
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+
+	if (isDeveloper(name))
+		return NameManagerResult::DECLINED_DEVELOPER;
+
+	if (isFiction(name))
+		return NameManagerResult::DECLINED_FICT_RESERVED;
+
+	if (isReserved(name))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	//Make sure that only valid characters are allowed in the name.
+	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-") != name.length())
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	//If the name has a hyphen or apostrophe, make sure they are the proper species.
+	if (name.indexOf("'") != -1 || name.indexOf("-") != -1) {
+		//Must be a human, twilek, moncal, or zabrak to have a hyphen or apostrophe.
+		if (species != CreatureObjectImplementation::HUMAN && species != CreatureObjectImplementation::TWILEK && species != CreatureObjectImplementation::MONCAL && species != CreatureObjectImplementation::ZABRAK)
+			return NameManagerResult::DECLINED_RACE_INAPP;
+
+		//Moncal's aren't allowed to have apostrophes.
+		if (species == CreatureObjectImplementation::MONCAL && name.indexOf("'") != -1)
+			return NameManagerResult::DECLINED_RACE_INAPP;
+
+		//Make sure they only have one hyphen and apostrophe in lastname.
+		if (name.indexOf('\'') != name.lastIndexOf('\'') || name.indexOf('-') != name.lastIndexOf('-'))
 			return NameManagerResult::DECLINED_RACE_INAPP;
 	}
 
