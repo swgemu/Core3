@@ -147,10 +147,6 @@ void SkillManager::loadClientData() {
 	if (!abilityMap.containsKey("admin"))
 		abilityMap.put("admin", new Ability("admin"));
 
-	// Need this to be able to counterattack
-	if (!abilityMap.containsKey("counterAttack"))
-		abilityMap.put("counterAttack", new Ability("counterAttack"));
-
 	loadXpLimits();
 
 	info("Successfully loaded " + String::valueOf(skillMap.size()) + " skills and " + String::valueOf(abilityMap.size()) + " abilities.", true);
