@@ -1,5 +1,5 @@
 local ObjectManager = require("managers.object.object_manager")
-includeFile("recruiters/factionPerkData.lua")
+includeFile("gcw/recruiters/factionPerkData.lua")
 
 recruiterScreenplay = Object:new {
 	minimumFactionStanding = 200,
