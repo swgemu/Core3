@@ -99,13 +99,23 @@ function ExperienceConverter:getExperienceAmount(pPlayer, pSelection)
 	local experienceType = nil
 	local amount = nil
 	-- Unformat string for retrieval.
-	local selection = string.sub(pSelection, 7, string.len(pSelection))
 	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creatureObject, playerObject)
-		experienceType = playerObject:getExperienceType(selection)
+		experienceType = playerObject:getExperienceType(pSelection)
 		amount = playerObject:getExperience(experienceType)
 	end)
 
 	return amount
+end
+
+function ExperienceConverter:getExperienceRatio(pPlayer, pSelection)
+  local experienceType = nil
+  local ratio = nil
+  ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creatureObject, playerObject)
+    experienceType = playerObject:getExperienceType(pSelection)
+    ratio = playerObject:getExperienceRatio(experienceType)
+  end)
+
+  return ratio
 end
 
 -- Get the highest box from the tables above for the trainer.

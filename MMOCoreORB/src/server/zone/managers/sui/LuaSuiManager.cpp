@@ -18,6 +18,7 @@ Luna<LuaSuiManager>::RegType LuaSuiManager::Register[] = {
 		{ "sendMessageBox", &LuaSuiManager::sendMessageBox },
 		{ "sendInputBox", &LuaSuiManager::sendInputBox },
 		{ "sendListBox", &LuaSuiManager::sendListBox },
+		{ "sendTransferBox", &LuaSuiManager::sendTransferBox },
 		{ 0, 0 }
 };
 
@@ -118,6 +119,27 @@ int LuaSuiManager::sendListBox(lua_State* L) {
 	LuaObject options(L);
 
 	realObject->sendListBox(usingObject, targetPlayer, title, text, numOfButtons, cancelButton, otherButton, okButton, options, screenplay, callback);
+
+	return 0;
+}
+
+int LuaSuiManager::sendTransferBox(lua_State* L) {
+	if (lua_gettop(L) - 1 < 9) {
+		Logger::console.error("incorrect number of arguments for LuaSuiManager::sendTransferBox");
+		return 0;
+	}
+
+	SceneObject* usingObject = (SceneObject*) lua_touserdata(L, -9);
+	SceneObject* targetPlayer = (SceneObject*) lua_touserdata(L, -8);
+	String title = lua_tostring(L, -7);
+	String text = lua_tostring(L, -6);
+	String okButton = lua_tostring(L, -5);
+	String screenplay = lua_tostring(L, -4);
+	String callback = lua_tostring(L, -3);
+	LuaObject optionsFrom(L);
+	LuaObject optionsTo(L);
+
+	realObject->sendTransferBox(usingObject, targetPlayer, title, text, optionsFrom, optionsTo, screenplay, callback);
 
 	return 0;
 }
