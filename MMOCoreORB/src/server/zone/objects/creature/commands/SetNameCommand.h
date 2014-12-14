@@ -110,18 +110,6 @@ public:
 			playerManager->removePlayer(oldFirstName);
 			playerManager->addPlayer(targetCreature);
 
-
-			for(int i = 0; i < targetPlayer->getTotalOwnedStructureCount(); ++i) {
-				uint64 oid = targetPlayer->getOwnedStructure(i);
-
-				ManagedReference<StructureObject*> structure = (targetPlayer->getZoneServer()->getObject(oid)).castTo<StructureObject*>();
-
-				if (structure != NULL) {
-					structure->revokePermission("ADMIN", oldName);
-					structure->grantPermission("ADMIN", newName);
-				}
-			}
-
 			String creatureFirstName = targetCreature->getFirstName();
 			Database::escapeString(creatureFirstName);
 

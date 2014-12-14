@@ -1312,8 +1312,7 @@ void BuildingObjectImplementation::createChildObjects(){
 
 				InstallationObject* installation = cast<InstallationObject*>(obj.get());
 				if(installation != NULL){
-					installation->setOwnerObjectID(getObjectID());
-					installation->setOwnerName(this->getObjectNameStringIdName());
+					installation->setOwner(getObjectID());
 				}
 
 				if(gcwMan != NULL){
