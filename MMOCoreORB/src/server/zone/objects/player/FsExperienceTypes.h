@@ -14,6 +14,11 @@ public:
 	static const int CRAFTING = 7;
 	static const int SPACE = 8;
 	static const int HEALING = 9;
+	static const int WEAPON = 10;
+
+	// Ratios.
+	static const int WEAPON_RATIO = 10;
+	static const int COMBAT_RATIO = 1;
 
 	static String getFsExperienceTypeName(uint8 type) {
 		String name = "";
@@ -47,12 +52,26 @@ public:
 		case HEALING:
 			name = "heal";
 			break;
+		case WEAPON:
+			name = "weapon_";
+			break;
 		default:
 			break;
 		}
 
 		return name;
 
+	}
+
+	// Getting ratios for conversion.
+
+	static String getFsRatio(String type) {
+		if (type.contains(getFsExperienceTypeName(FsExperienceTypes::WEAPON))) {
+			return String::valueOf(FsExperienceTypes::WEAPON_RATIO);
+		} else	if (type.contains(getFsExperienceTypeName(FsExperienceTypes::COMBAT))) {
+			return String::valueOf(FsExperienceTypes::COMBAT_RATIO);
+		}
+		return "";
 	}
 
 	/* This boolean checks to see whether or not the experience types are valid from the LUA call for the Experience Converter.
