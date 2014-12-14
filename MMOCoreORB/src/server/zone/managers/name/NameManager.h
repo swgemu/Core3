@@ -163,6 +163,8 @@ public:
 
 	int validateName(CreatureObject * obj);
 	int validateName(const String& name, int species = -1);
+	int validateFirstName(const String& name, int species = -1);
+	int validateLastName(const String& name, int species = -1);
 
 	const String makeCreatureName(bool surname = true);
 
