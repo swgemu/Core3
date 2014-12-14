@@ -787,14 +787,19 @@ void PlayerObjectImplementation::addAbilities(Vector<Ability*>& abilities, bool 
 }
 
 void PlayerObjectImplementation::removeAbility(Ability* ability, bool notifyClient) {
+	int index = abilityList.find(ability);
+
+	if (index == -1)
+		return;
+
 	if (notifyClient) {
 		PlayerObjectDeltaMessage9* msg = new PlayerObjectDeltaMessage9(_this.get());
 		msg->startUpdate(0);
-		abilityList.remove(abilityList.find(ability), msg, 1);
+		abilityList.remove(index, msg, 1);
 		msg->close();
 		sendMessage(msg);
 	} else {
-		abilityList.remove(abilityList.find(ability));
+		abilityList.remove(index);
 	}
 }
 
