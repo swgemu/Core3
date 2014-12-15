@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_10962995",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/newsnet.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-15T11:36:56Z",
+      "side": 1,
+      "message": "Put this before the check above so you only have to make the call once.",
+      "revId": "43603ee3059d180449a78934aa47e9c364011d8b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
