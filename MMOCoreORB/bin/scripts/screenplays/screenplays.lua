@@ -20,9 +20,10 @@ includeFile("themepark/valarian/themeParkValarian.lua")
 includeFile("themepark/marauder/themeParkMarauder.lua")
 includeFile("themepark/tutorial.lua")
 
--- Recruiters
-includeFile("recruiters/recruiterConvoHandler.lua")
-includeFile("recruiters/recruiterScreenplay.lua")
+-- GCW
+includeFile("gcw/newsnet.lua")
+includeFile("gcw/recruiters/recruiterConvoHandler.lua")
+includeFile("gcw/recruiters/recruiterScreenplay.lua")
 
 -- Dungeons
 includeFile("dungeon/death_watch_bunker/deathWatchBunker.lua")
