@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_90d0d954",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/DroidTrapTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-12-15T21:03:00Z",
+      "side": 1,
+      "message": "you neeed to lock the player, but first release the target",
+      "revId": "a1d3ff4c7d4aef6077ae496baab036ce00ccf362",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
