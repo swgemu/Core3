@@ -535,7 +535,7 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 			alm->insertAttribute("instant_effect", "@obj_attr_n:" + key + "_d");
 			alm->insertAttribute(key + "_v1", nutrition);
 
-			if (duration > 1)
+			if (key == "burst_run")
 				alm->insertAttribute(key + "_v2", duration);
 		}
 		break;
