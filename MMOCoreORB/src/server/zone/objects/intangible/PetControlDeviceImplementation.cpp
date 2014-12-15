@@ -979,7 +979,7 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 }
 
 void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {
-	if (isTrainedAsMount())
+	if (isTrainedAsMount() || !player->hasSkill("outdoors_creaturehandler_support_04"))
 		return;
 
 	PetManager* petManager = player->getZoneServer()->getPetManager();

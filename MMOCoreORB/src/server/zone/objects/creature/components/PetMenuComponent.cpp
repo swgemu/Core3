@@ -234,63 +234,82 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 
 	switch(selectedID) {
 	case 142: // Train Command: Follow
-		petControlDevice->setTrainingCommand( PetManager::FOLLOW );
+		if( player->hasSkill( "outdoors_creaturehandler_novice" ) )
+			petControlDevice->setTrainingCommand( PetManager::FOLLOW );
 		break;
 	case 143: // Train Command: Stay
-		petControlDevice->setTrainingCommand( PetManager::STAY );
+		if( player->hasSkill( "outdoors_creaturehandler_training_01" ) )
+			petControlDevice->setTrainingCommand( PetManager::STAY );
 		break;
 	case 144: // Train Command: Guard
-		petControlDevice->setTrainingCommand( PetManager::GUARD );
+		if( player->hasSkill( "outdoors_creaturehandler_training_02" ) )
+			petControlDevice->setTrainingCommand( PetManager::GUARD );
 		break;
 	case 145: // Train Command: Friend
-		petControlDevice->setTrainingCommand( PetManager::FRIEND );
+		if( player->hasSkill( "outdoors_creaturehandler_support_03" ) )
+			petControlDevice->setTrainingCommand( PetManager::FRIEND );
 		break;
 	case 146: // Train Command: Attack
-		petControlDevice->setTrainingCommand( PetManager::ATTACK );
+		if( player->hasSkill( "outdoors_creaturehandler_novice" ) )
+			petControlDevice->setTrainingCommand( PetManager::ATTACK );
 		break;
 	case 147: // Train Command: Patrol
-		petControlDevice->setTrainingCommand( PetManager::PATROL );
+		if( player->hasSkill( "outdoors_creaturehandler_training_03" ) )
+			petControlDevice->setTrainingCommand( PetManager::PATROL );
 		break;
 	case 148: // Train Command: Get Patrol Point
 		// TODO Handle setting patrol point
-		player->sendSystemMessage("PET_GET_PATROL_POINT pet command is not yet implemented.");
+		if( player->hasSkill( "outdoors_creaturehandler_training_03" ) )
+			player->sendSystemMessage("PET_GET_PATROL_POINT pet command is not yet implemented.");
 		break;
 	case 149: // Train Command: Clear Patrol Points
 		// TODO Handle clearing patrol points
-		player->sendSystemMessage("PET_CLEAR_PATROL_POINTS pet command is not yet implemented.");
+		if( player->hasSkill( "outdoors_creaturehandler_training_03" ) )
+			player->sendSystemMessage("PET_CLEAR_PATROL_POINTS pet command is not yet implemented.");
 		break;
 	case 150: // Train Command: Wedge Formation
-		petControlDevice->setTrainingCommand( PetManager::FORMATION1 );
+		if( player->hasSkill( "outdoors_creaturehandler_training_04" ) )
+			petControlDevice->setTrainingCommand( PetManager::FORMATION1 );
 		break;
 	case 151: // Train Command: Column Formation
-		petControlDevice->setTrainingCommand( PetManager::FORMATION2 );
+		if( player->hasSkill( "outdoors_creaturehandler_training_04" ) )
+			petControlDevice->setTrainingCommand( PetManager::FORMATION2 );
 		break;
 	case 152: // Train Command: Transfer
-		petControlDevice->setTrainingCommand( PetManager::TRANSFER );
+		if( player->hasSkill( "outdoors_creaturehandler_master" ) )
+			petControlDevice->setTrainingCommand( PetManager::TRANSFER );
 		break;
 	case 154: // Train Command: Trick 1
-		petControlDevice->setTrainingCommand( PetManager::TRICK1 );
+		if( player->hasSkill( "outdoors_creaturehandler_healing_01" ) )
+			petControlDevice->setTrainingCommand( PetManager::TRICK1 );
 		break;
 	case 155: // Train Command: Trick 2
-		petControlDevice->setTrainingCommand( PetManager::TRICK2 );
+		if( player->hasSkill( "outdoors_creaturehandler_healing_03" ) )
+			petControlDevice->setTrainingCommand( PetManager::TRICK2 );
 		break;
 	case 158: // Train Command: Group
-		petControlDevice->setTrainingCommand( PetManager::GROUP );
+		if( player->hasSkill( "outdoors_creaturehandler_support_01" ) )
+			petControlDevice->setTrainingCommand( PetManager::GROUP );
 		break;
 	case 161: // Train Command: Special Attack 1
-		petControlDevice->setTrainingCommand( PetManager::SPECIAL_ATTACK1 );
+		if( player->hasSkill( "outdoors_creaturehandler_taming_03" ) )
+			petControlDevice->setTrainingCommand( PetManager::SPECIAL_ATTACK1 );
 		break;
 	case 162: // Train Command: Special Attack 2
-		petControlDevice->setTrainingCommand( PetManager::SPECIAL_ATTACK2 );
+		if( player->hasSkill( "outdoors_creaturehandler_taming_04" ) )
+			petControlDevice->setTrainingCommand( PetManager::SPECIAL_ATTACK2 );
 		break;
 	case 163: // Train Command: Ranged Attack
-		petControlDevice->setTrainingCommand( PetManager::RANGED_ATTACK );
+		if( player->hasSkill( "outdoors_creaturehandler_master" ) )
+			petControlDevice->setTrainingCommand( PetManager::RANGED_ATTACK );
 		break;
 	case 164: // Train Command: Store
-		petControlDevice->setTrainingCommand( PetManager::STORE );
+		if( player->hasSkill( "outdoors_creaturehandler_novice" ) )
+			petControlDevice->setTrainingCommand( PetManager::STORE );
 		break;
 	case 165: // Train Command: Follow Other
-		petControlDevice->setTrainingCommand( PetManager::FOLLOWOTHER );
+		if( player->hasSkill( "outdoors_creaturehandler_support_02" ) )
+			petControlDevice->setTrainingCommand( PetManager::FOLLOWOTHER );
 		break;
 	case 166: // Incapacitation Recovery
 		petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petRecover").toLowerCase().hashCode(), "");
