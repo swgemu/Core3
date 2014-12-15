@@ -7,6 +7,7 @@
 
 #include "LuaCreatureObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/player/sessions/ConversationSession.h"
 #include "server/zone/ZoneServer.h"
@@ -102,6 +103,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getWalkSpeed", &LuaCreatureObject::getWalkSpeed },
 		{ "isAttackableBy", &LuaCreatureObject::isAttackableBy },
 		{ "getSpecies", &LuaCreatureObject::getSpecies },
+		{ "isDroidPet", &LuaCreatureObject::isDroidPet },
+		{ "isCombatDroidPet", &LuaCreatureObject::isCombatDroidPet },
 		{ 0, 0 }
 };
 
@@ -748,5 +751,22 @@ int LuaCreatureObject::isAttackableBy(lua_State* L) {
 int LuaCreatureObject::getSpecies(lua_State* L) {
 	lua_pushinteger(L, realObject->getSpecies());
 
+	return 1;
+}
+
+int LuaCreatureObject::isDroidPet(lua_State* L) {
+	bool retVal = realObject->isDroidObject() && realObject->isPet();
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaCreatureObject::isCombatDroidPet(lua_State* L) {
+	bool retVal = realObject->isDroidObject() && realObject->isPet();
+	if (retVal) {
+		DroidObject* d = cast<DroidObject*>(realObject);
+		retVal = d->isCombatDroid();
+	}
+	lua_pushboolean(L, retVal);
 	return 1;
 }
