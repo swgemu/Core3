@@ -793,6 +793,15 @@ yavin4_world = {
 			weighting = 15,
 			size = 25
 		},
+		{
+			lairTemplateName = "global_black_sun_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 76,
+			maxDifficulty = 107,
+			numberToSpawn = 0,
+			weighting = 3,
+			size = 25
+		},
 	}
 }
 
