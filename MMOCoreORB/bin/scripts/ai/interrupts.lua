@@ -228,8 +228,17 @@ PetInterrupt = createClass(DefaultInterrupt)
 function PetInterrupt:startCombatInterrupt(pAgent, pObject)
 	if pAgent == nil or pObject == nil then return end
 	local agent = AiAgent(pAgent)
-	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go
-	
+	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go	
+
+	if ObjectManager.withCreatureObject(pAgent, function(creo) return creo:isDroidPet() end) then 
+		-- droid pet but no combat action
+		if ObjectManager.withCreatureObject(pAgent, function(creo) return not creo:isCombatDroidPet() end) then
+			local agent = AiAgent(pAgent)
+			agent:runAway(pObject, 32)
+			agent:stopWaiting();
+			agent:executeBehavior();			
+		end 
+	end
 	DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
 
   --recover our pointer to agent
