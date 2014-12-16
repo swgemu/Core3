@@ -146,6 +146,13 @@ public:
 
 		creature->sendSystemMessage("Last name changed from '" + oldLastName + "' to '" + newName + "'");
 
+		PlayerObject* targetGhost = targetCreature->getPlayerObject();
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		if (targetGhost != NULL && targetGhost->isPrivileged() && playerManager != NULL) {
+			playerManager->updatePermissionName(targetCreature, targetGhost->getAdminLevel());
+		}
+
 		return SUCCESS;
 	}
 

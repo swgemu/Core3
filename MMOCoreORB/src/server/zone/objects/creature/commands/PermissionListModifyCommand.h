@@ -118,7 +118,7 @@ public:
 				return INVALIDPARAMETERS;
 			}
 
-			targetObject = guildManager->getGuildFromAbbrev(targetName);
+			targetObject = guildManager->getGuildFromAbbrev(abbrev);
 
 		} else {
 			if (!playerManager->existsName(targetName)) {
