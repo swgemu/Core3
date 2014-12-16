@@ -331,6 +331,10 @@ bool DroidObjectImplementation::isCombatDroid() {
 			return true;
 		}
 	}
+	// inante comabt ability, regardless of module installed
+	if (species == PROBOT || species == DZ70)
+		return true;
+
 	return false;
 }
 bool DroidObjectImplementation::isTrapDroid() {

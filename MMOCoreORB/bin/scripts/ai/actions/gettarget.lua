@@ -79,9 +79,159 @@ function GetTargetBase:doAction(pAgent)
 end
 
 GetTarget = createClass(GetTargetBase, Interrupt)
-GetTargetPet = createClass(GetTargetBase, PetInterrupt)
+GetTargetCreaturePet = createClass(GetTargetBase, CreaturePetInterrupt)
+GetTargetDroidPet = createClass(GetTargetBase, DroidPetInterrupt)
+GetTargetFactionPet = createClass(GetTargetBase, FactionPetInterrupt)
 
-function GetTargetPet:doAction(pAgent)
+function GetTargetCreaturePet:doAction(pAgent)
+	if (pAgent ~= nil) then
+		--print("1")
+		local agent = AiAgent(pAgent)
+		
+		local command = agent:getLastCommand()
+		if (command ~= PET_ATTACK and command ~= PET_GUARD ) then
+			return BEHAVIOR_FAILURE	
+		end
+
+		if (command == PET_ATTACK ) then
+			local pTarget = agent:getLastCommandTarget()
+			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+				agent:setFollowObject(pTarget)
+				agent:setDefender(pTarget)
+				if (agent:validateTarget()) then
+					return BEHAVIOR_SUCCESS
+				end
+			elseif pTarget ~= nil and agent:validateTarget() then
+				return BEHAVIOR_SUCCESS
+			end
+		end
+
+		local creature = CreatureObject(pAgent)
+
+		local pTarget = agent:getTargetFromMap()
+		--print(pTarget)
+		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+			--print("2")
+			agent:setFollowObject(pTarget)
+			agent:setDefender(pTarget)
+			if (agent:validateTarget()) then
+				--print("3")
+				return BEHAVIOR_SUCCESS
+			else
+				--print("4")
+				agent:removeDefender()
+			end
+		elseif pTarget ~= nil and agent:validateTarget() then
+			--print("5")
+			return BEHAVIOR_SUCCESS
+		end
+
+
+		pTarget = agent:getTargetFromDefenders()
+		--print(pTarget)
+		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+			--print("6")
+			agent:setFollowObject(pTarget)
+			agent:setDefender(pTarget)
+			if (agent:validateTarget()) then
+				--print("7")
+				return BEHAVIOR_SUCCESS
+			else
+				--print("8")
+				agent:removeDefender()
+			end
+		elseif pTarget ~= nil and agent:validateTarget() then
+			--print("9")
+			return BEHAVIOR_SUCCESS
+		end
+	end
+	return BEHAVIOR_FAILURE
+end
+
+function GetTargetCreaturePet:terminate(pAgent)
+	if pAgent ~= nil then
+		local agent = AiAgent(pAgent)
+		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE then agent:restoreFollowObject() end
+	end
+	return 0
+end
+
+
+function GetTargetDroidPet:doAction(pAgent)
+	if (pAgent ~= nil) then
+		--print("1")
+		local agent = AiAgent(pAgent)
+		
+		local command = agent:getLastCommand()
+		if (command ~= PET_ATTACK and command ~= PET_GUARD and command ~= PET_THROW) then
+			return BEHAVIOR_FAILURE	
+		end
+
+		if (command == PET_ATTACK or command == PET_THROW) then
+			local pTarget = agent:getLastCommandTarget()
+			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+				agent:setFollowObject(pTarget)
+				agent:setDefender(pTarget)
+				if (agent:validateTarget()) then
+					return BEHAVIOR_SUCCESS
+				end
+			elseif pTarget ~= nil and agent:validateTarget() then
+				return BEHAVIOR_SUCCESS
+			end
+		end
+
+		local creature = CreatureObject(pAgent)
+
+		local pTarget = agent:getTargetFromMap()
+		--print(pTarget)
+		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+			--print("2")
+			agent:setFollowObject(pTarget)
+			agent:setDefender(pTarget)
+			if (agent:validateTarget()) then
+				--print("3")
+				return BEHAVIOR_SUCCESS
+			else
+				--print("4")
+				agent:removeDefender()
+			end
+		elseif pTarget ~= nil and agent:validateTarget() then
+			--print("5")
+			return BEHAVIOR_SUCCESS
+		end
+
+
+		pTarget = agent:getTargetFromDefenders()
+		--print(pTarget)
+		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+			--print("6")
+			agent:setFollowObject(pTarget)
+			agent:setDefender(pTarget)
+			if (agent:validateTarget()) then
+				--print("7")
+				return BEHAVIOR_SUCCESS
+			else
+				--print("8")
+				agent:removeDefender()
+			end
+		elseif pTarget ~= nil and agent:validateTarget() then
+			--print("9")
+			return BEHAVIOR_SUCCESS
+		end
+	end
+	return BEHAVIOR_FAILURE
+end
+
+function GetTargetDroidPet:terminate(pAgent)
+	if pAgent ~= nil then
+		local agent = AiAgent(pAgent)
+		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE then agent:restoreFollowObject() end
+	end
+	return 0
+end
+
+
+function GetTargetFactionPet:doAction(pAgent)
 	if (pAgent ~= nil) then
 		--print("1")
 		local agent = AiAgent(pAgent)
@@ -146,7 +296,7 @@ function GetTargetPet:doAction(pAgent)
 	return BEHAVIOR_FAILURE
 end
 
-function GetTargetPet:terminate(pAgent)
+function GetTargetFactionPet:terminate(pAgent)
 	if pAgent ~= nil then
 		local agent = AiAgent(pAgent)
 		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE then agent:restoreFollowObject() end

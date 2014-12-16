@@ -39,4 +39,6 @@ end
 Wait = createClass(WaitBase, Interrupt)
 WaitDefault = createClass(WaitBase, DefaultInterrupt)
 WaitPack = createClass(WaitBase, PackInterrupt)
-WaitPet = createClass(WaitBase, PetInterrupt)
+WaitCreaturePet = createClass(WaitBase, CreaturePetInterrupt)
+WaitDroidPet = createClass(WaitBase, DroidPetInterrupt)
+WaitFactionPet = createClass(WaitBase, FactionPetInterrupt)

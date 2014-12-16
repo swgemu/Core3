@@ -15,4 +15,6 @@ end
 Composite = createClass(CompositeBase, Interrupt)
 CompositeDefault = createClass(CompositeBase, DefaultInterrupt)
 CompositePack = createClass(CompositeBase, PackInterrupt)
-CompositePet = createClass(CompositeBase, PetInterrupt)
+CompositeCreaturePet = createClass(CompositeBase, CreaturePetInterrupt)
+CompositeDroidPet = createClass(CompositeBase, DroidPetInterrupt)
+CompositeFactionPet = createClass(CompositeBase, FactionPetInterrupt)

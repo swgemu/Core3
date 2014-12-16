@@ -224,21 +224,49 @@ function PackInterrupt:startCombatInterrupt(pAgent, pObject)
 end
 
 
-PetInterrupt = createClass(DefaultInterrupt)
-function PetInterrupt:startCombatInterrupt(pAgent, pObject)
+CreaturePetInterrupt = createClass(DefaultInterrupt)
+function CreaturePetInterrupt:startCombatInterrupt(pAgent, pObject)
+	if pAgent == nil or pObject == nil then return end
+	local agent = AiAgent(pAgent)
+	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go	
+	DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
+
+  --recover our pointer to agent
+	agent = AiAgent(pAgent)
+	agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
+	agent:resetBehaviorList()
+	agent:executeBehavior()
+end
+DroidPetInterrupt = createClass(DefaultInterrupt)
+function DroidPetInterrupt:startCombatInterrupt(pAgent, pObject)
+	if pAgent == nil or pObject == nil then return end
+	local agent = AiAgent(pAgent)
+	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go
+		
+	-- starting combat droids shoudl flee if they arent combat capable.
+	if ObjectManager.withCreatureObject(pAgent, function(creo) return not creo:isCombatDroidPet() end) then
+		agent:runAway(pObject, 32)
+		agent:stopWaiting();
+		agent:executeBehavior();
+		return			
+	else 
+		DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
+	end
+
+  --recover our pointer to agent
+	agent = AiAgent(pAgent)
+	agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
+	agent:resetBehaviorList()
+	agent:executeBehavior()
+end
+
+
+FactionPetInterrupt = createClass(DefaultInterrupt)
+function FactionPetInterrupt:startCombatInterrupt(pAgent, pObject)
 	if pAgent == nil or pObject == nil then return end
 	local agent = AiAgent(pAgent)
 	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go	
 
-	if ObjectManager.withCreatureObject(pAgent, function(creo) return creo:isDroidPet() end) then 
-		-- droid pet but no combat action
-		if ObjectManager.withCreatureObject(pAgent, function(creo) return not creo:isCombatDroidPet() end) then
-			local agent = AiAgent(pAgent)
-			agent:runAway(pObject, 32)
-			agent:stopWaiting();
-			agent:executeBehavior();			
-		end 
-	end
 	DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
 
   --recover our pointer to agent

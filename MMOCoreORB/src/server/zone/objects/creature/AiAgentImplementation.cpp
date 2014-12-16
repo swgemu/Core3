@@ -2525,8 +2525,12 @@ void AiAgentImplementation::setupBehaviorTree() {
 
 void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate* selectAttack, AiTemplate* combatMove, AiTemplate* idle) {
 	String name = "CompositeDefault";
-	if (creatureBitmask & CreatureFlag::PET)
-		name = "CompositePet";
+	if (creatureBitmask & CreatureFlag::DROID_PET)
+		name = "CompositeDroidPet";
+	else if (creatureBitmask & CreatureFlag::FACTION_PET)
+		name = "CompositeFactionPet";
+	else if (creatureBitmask & CreatureFlag::PET)
+		name = "CompositeCreaturePet";
 	else if (creatureBitmask & CreatureFlag::PACK)
 		name = "CompositePack";
 

@@ -193,7 +193,9 @@ private:
 		lua->setGlobalInt("LAIR",CreatureFlag::LAIR);
 		lua->setGlobalInt("HEALER",CreatureFlag::HEALER);
 		lua->setGlobalInt("STATIC",CreatureFlag::STATIC);
-		lua->setGlobalInt("PET",CreatureFlag::PET);
+		lua->setGlobalInt("CREATURE_PET",CreatureFlag::PET);
+		lua->setGlobalInt("DROID_PET",CreatureFlag::DROID_PET);
+		lua->setGlobalInt("FACTION_PET",CreatureFlag::FACTION_PET);
 
 		lua->setGlobalInt("PET_FOLLOW", PetManager::FOLLOW);
 		lua->setGlobalInt("PET_STORE", PetManager::STORE);
@@ -213,6 +215,7 @@ private:
 		lua->setGlobalInt("PET_STAY", PetManager::STAY);
 		lua->setGlobalInt("PET_RECHARGEOTHER", PetManager::RECHARGEOTHER);
 		lua->setGlobalInt("PET_TRANSFER", PetManager::TRANSFER);
+		lua->setGlobalInt("PET_THROW",PetManager::THROWTRAP);
 	}
 
 	void putTemplate(Lua* lua, String key, HashTable<unsigned int, Reference<AiTemplate*> >* table) {

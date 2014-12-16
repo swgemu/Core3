@@ -68,6 +68,8 @@ public:
 	static const int HEALER = 0x40;
 	static const int STATIC = 0x80;
 	static const int PET = 0x100;
+	static const int DROID_PET = 0x200;
+	static const int FACTION_PET = 0x400;
 
 	static const int CARNIVORE = 0x01;
 	static const int HERBIVORE = 0x02;

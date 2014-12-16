@@ -105,7 +105,7 @@ public:
 		}
 		// we nee the owner
 		ManagedReference<CreatureObject*> owner = droid->getLinkedCreature();
-
+		Locker olock(owner);
 		try {
 			int effectType = 0;
 
@@ -144,8 +144,8 @@ public:
 				owner->sendSystemMessage(msg);
 				return GENERALERROR;
 			}
-
-			if(!CombatManager::instance()->startCombat(droid, target))
+			// place droid and owner in combat
+			if(!CombatManager::instance()->startCombat(droid, target) || !CombatManager::instance()->startCombat(owner,target))
 				return GENERALERROR;
 
 			float hitChance = CombatManager::instance()->hitChanceEquation(trappingSkill, 0, targetDefense);

@@ -328,10 +328,10 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	ghost->addToActivePets(pet);
 
-
+	bool isDroid = false;
 	if (pet->isDroidObject()) {
 		DroidObject* droid = cast<DroidObject*>(pet);
-
+		isDroid = true;
 		if( droid == NULL )
 			return;
 
@@ -351,7 +351,6 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		else{
 			droid->handleLowPower();
 		}
-
 	} else {
 		pet->setFollowObject(player);
 		pet->storeFollowObject();
@@ -359,7 +358,15 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	pet->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
 	pet->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
 	pet->clearPatrolPoints();
-	pet->setCreatureBitmask(CreatureFlag::PET);
+	if (petType == PetManager::CREATUREPET) {
+		pet->setCreatureBitmask(CreatureFlag::PET);
+	}
+	if (petType == PetManager::DROIDPET) {
+		pet->setCreatureBitmask(CreatureFlag::DROID_PET);
+	}
+	if (petType == PetManager::FACTIONPET) {
+		pet->setCreatureBitmask(CreatureFlag::FACTION_PET);
+	}
 	pet->activateLoad("");
 	pet->activateRecovery();
 	// Not training any commands

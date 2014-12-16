@@ -50,9 +50,11 @@ end
 Move = createClass(MoveBase, Interrupt)
 MoveDefault = createClass(MoveBase, DefaultInterrupt)
 MovePack = createClass(MoveBase, PackInterrupt)
-MovePet = createClass(MoveBase, PetInterrupt)
+MoveCreaturePet = createClass(MoveBase, CreaturePetInterrupt)
+MoveDroidPet = createClass(MoveBase, DroidPetInterrupt)
+MoveFactionPet = createClass(MoveBase, FactionPetInterrupt)
 
-function MovePet:checkConditions(pAgent)
+function MoveCreaturePet:checkConditions(pAgent)
 	if (pAgent ~= nil) then
 		local agent = AiAgent(pAgent)
 		local creature = CreatureObject(pAgent)
@@ -64,7 +66,60 @@ function MovePet:checkConditions(pAgent)
 	return false
 end
 
-function MovePet:doAction(pAgent)
+function MoveCreaturePet:doAction(pAgent)
+	if (pAgent ~= nil) then
+		local agent = AiAgent(pAgent)
+
+		if (agent:getCurrentSpeed() > 0) then 
+			agent:completeMove()
+		end
+
+		self:findNextPosition(pAgent)
+		return BEHAVIOR_RUNNING
+	end
+	return BEHAVIOR_FAILURE
+end
+
+function MoveDroidPet:checkConditions(pAgent)
+	if (pAgent ~= nil) then
+		local agent = AiAgent(pAgent)
+		local creature = CreatureObject(pAgent)
+		if (creature:getPosture() == UPRIGHT and agent:getFollowState() ~= OBLIVIOUS) then
+			agent:setDestination()
+			return true
+		end
+	end
+	return false
+end
+
+function MoveDroidPet:doAction(pAgent)
+	if (pAgent ~= nil) then
+		local agent = AiAgent(pAgent)
+
+		if (agent:getCurrentSpeed() > 0) then 
+			agent:completeMove()
+		end
+
+		self:findNextPosition(pAgent)
+		return BEHAVIOR_RUNNING
+	end
+	return BEHAVIOR_FAILURE
+end
+
+
+function MoveFactionPet:checkConditions(pAgent)
+	if (pAgent ~= nil) then
+		local agent = AiAgent(pAgent)
+		local creature = CreatureObject(pAgent)
+		if (creature:getPosture() == UPRIGHT and agent:getFollowState() ~= OBLIVIOUS) then
+			agent:setDestination()
+			return true
+		end
+	end
+	return false
+end
+
+function MoveFactionPet:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = AiAgent(pAgent)
 
