@@ -477,9 +477,8 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	}
 
 	StructureObject* structureObject = cast<StructureObject*>(obj.get());
-	structureObject->setOwnerObjectID(creature->getObjectID());
-	structureObject->grantPermission("ADMIN", creature->getFirstName());
-	structureObject->setOwnerName(creature->getFirstName());
+	structureObject->grantPermission("ADMIN", creature->getObjectID());
+	structureObject->setOwner(creature->getObjectID());
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 	if (ghost != NULL) {

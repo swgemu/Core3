@@ -33,7 +33,6 @@ public:
 	void verifyResidenceVariables();
 	void updateWeaponsDots();
 	void updateStructurePermissionLists();
-	String getOwnerName(uint64 ownerID);
 
 	void updateCityTreasury();
 	void updateCityTreasuryToDouble();

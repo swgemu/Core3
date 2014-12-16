@@ -67,8 +67,15 @@ public:
 
 		Reference<SceneObject*> targetObj = zoneServer->getObject(target);
 
-		if(targetObj == NULL)
-			return GENERALERROR;
+		if(targetObj == NULL) {
+			creature->sendSystemMessage("Invalid Target.");
+			return INVALIDTARGET;
+		}
+
+		if (targetObj->isPlayerCreature()) {
+			creature->sendSystemMessage("Player Names cannot be changed with this command. Use setFirstName and/or setLastName");
+			return INVALIDTARGET;
+		}
 
 		Locker clocker(targetObj, creature);
 
@@ -79,76 +86,18 @@ public:
 			return GENERALERROR;
 		}
 
-		String oldName = targetObj->getCustomObjectName().toString();
+		NameManager* nameManager = server->getNameManager();
 
-		if (targetObj->isPlayerCreature()) {
-			PlayerManager* playerManager = zoneServer->getPlayerManager();
-
-			String newFirstName = newName;
-			int idx = newFirstName.indexOf(' ');
-			if (idx != -1) {
-				newFirstName = newFirstName.subString(0, idx);
-			}
-
-			if (playerManager->existsName(newFirstName)) {
-				creature->sendSystemMessage("That name is already in use");
-				return GENERALERROR;
-			}
-
-			CreatureObject* targetCreature = cast<CreatureObject*>(targetObj.get());
-			ManagedReference<PlayerObject*> targetPlayer = targetCreature->getPlayerObject();
-
-			String oldFirstName = targetCreature->getFirstName();
-			String oldLastName = targetCreature->getLastName();
-
-			targetCreature->setCustomObjectName(newName, true);
-
-			ChatManager* chatManager = zoneServer->getChatManager();
-			chatManager->removePlayer(oldFirstName);
-			chatManager->addPlayer(targetCreature);
-
-			playerManager->removePlayer(oldFirstName);
-			playerManager->addPlayer(targetCreature);
-
-
-			for(int i = 0; i < targetPlayer->getTotalOwnedStructureCount(); ++i) {
-				uint64 oid = targetPlayer->getOwnedStructure(i);
-
-				ManagedReference<StructureObject*> structure = (targetPlayer->getZoneServer()->getObject(oid)).castTo<StructureObject*>();
-
-				if (structure != NULL) {
-					structure->revokePermission("ADMIN", oldName);
-					structure->grantPermission("ADMIN", newName);
-				}
-			}
-
-			String creatureFirstName = targetCreature->getFirstName();
-			Database::escapeString(creatureFirstName);
-
-			String creatureLastName = targetCreature->getLastName();
-			Database::escapeString(creatureLastName);
-
-			StringBuffer charDirtyQuery;
-			charDirtyQuery
-					<< "UPDATE `characters_dirty` SET `firstname` = '"  << creatureFirstName
-					<< "', `surname` = '" << creatureLastName
-					<< "' WHERE `character_oid` = '" << targetCreature->getObjectID() << "'";
-
-			ServerDatabase::instance()->executeStatement(charDirtyQuery);
-
-			StringBuffer charQuery;
-			charQuery
-					<< "UPDATE `characters` SET `firstname` = '"  << creatureFirstName
-					<< "', `surname` = '" << creatureLastName
-					<< "' WHERE `character_oid` = '" << targetCreature->getObjectID() << "'";
-
-			ServerDatabase::instance()->executeStatement(charQuery);
-
-		} else {
-			targetObj->setCustomObjectName(newName, true);
+		if (nameManager->validateName(newName, -1) != NameManagerResult::ACCEPTED) {
+			creature->sendSystemMessage("That name was rejected by the name filter.");
+			return GENERALERROR;
 		}
 
+		String oldName = targetObj->getDisplayedName();
 
+		targetObj->setCustomObjectName(newName, true);
+
+		creature->sendSystemMessage("Name changed from '" + oldName + "' to '" + newName + "'");
 
 		return SUCCESS;
 	}
