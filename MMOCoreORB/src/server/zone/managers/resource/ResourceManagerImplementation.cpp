@@ -240,8 +240,8 @@ void ResourceManagerImplementation::sendResourceListForSurvey(CreatureObject* pl
 ResourceContainer* ResourceManagerImplementation::harvestResource(CreatureObject* player, const String& type, const int quantity) {
 	return resourceSpawner->harvestResource(player, type, quantity);
 }
-void ResourceManagerImplementation::harvestResourceToPlayer(CreatureObject* player, ResourceSpawn* resourceSpawn, const int quantity) {
-	resourceSpawner->harvestResource(player, resourceSpawn, quantity);
+bool ResourceManagerImplementation::harvestResourceToPlayer(CreatureObject* player, ResourceSpawn* resourceSpawn, const int quantity) {
+	return resourceSpawner->harvestResource(player, resourceSpawn, quantity);
 }
 
 void ResourceManagerImplementation::sendSurvey(CreatureObject* playerCreature, const String& resname) {

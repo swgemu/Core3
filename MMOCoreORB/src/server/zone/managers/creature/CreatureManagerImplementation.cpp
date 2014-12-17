@@ -22,6 +22,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/crafting/labratories/DroidMechanics.h"
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/events/MilkCreatureTask.h"
@@ -664,6 +665,182 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		destructor->wlock(destructedObject);
 
 	return 1;
+}
+
+void CreatureManagerImplementation::droidHarvest(Creature* creature, CreatureObject* droid, int selectedID, int harvestBonus) {
+	// droid and creature are locked coming in.
+	ManagedReference<CreatureObject*> owner = droid->getLinkedCreature();
+	if (owner == NULL) {
+		return;
+	}
+	Locker pLock(owner);
+	Zone* zone = creature->getZone();
+
+	if (zone == NULL || !creature->isCreature()) {
+		return;
+	}
+
+	if (!creature->canHarvestMe(owner)) {
+		owner->sendSystemMessage("@pet/droid_modules:cannot_access_corpse");
+		return;
+	}
+	if (!droid->isInRange(creature, 7)) {
+		return;
+	}
+	ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();
+	String restype = "";
+	float quantity = 0;
+
+	if (selectedID == 112) {
+		int type = System::random(2);
+
+		if (quantity == 0 || type == 0) {
+			if(creature->getHideMax() > 0) {
+				restype = creature->getHideType();
+				quantity = creature->getHideMax();
+			}
+		}
+
+		if (quantity == 0 || type == 1) {
+			if(creature->getMeatMax() > 0) {
+				restype = creature->getMeatType();
+				quantity = creature->getMeatMax();
+			}
+		}
+
+		if (quantity == 0 || type == 2) {
+			if(creature->getBoneMax() > 0) {
+				restype = creature->getBoneType();
+				quantity = creature->getBoneMax();
+			}
+		}
+	}
+
+	if (selectedID == 234) {
+		restype = creature->getMeatType();
+		quantity = creature->getMeatMax();
+	} else if (selectedID == 235) {
+		restype = creature->getHideType();
+		quantity = creature->getHideMax();
+	} else if (selectedID == 236) {
+		restype = creature->getBoneType();
+		quantity = creature->getBoneMax();
+	}
+	if(quantity == 0 || restype.isEmpty()) {
+		owner->sendSystemMessage("Tried to harvest something this creature didn't have, please report this error");
+		return;
+	}
+	int ownerSkill = owner->getSkillMod("creature_harvesting");
+	int droidBonus = DroidMechanics::determineDroidSkillBonus(ownerSkill,harvestBonus);
+	int quantityExtracted = int(quantity * float(ownerSkill / 100.0f));
+	// add in droid bonus
+	quantityExtracted = MAX(quantityExtracted, 3);
+
+	ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, droid->getZone()->getZoneName());
+
+	if (resourceSpawn == NULL) {
+		owner->sendSystemMessage("Error: Server cannot locate a current spawn of " + restype);
+		return;
+	}
+
+	float density = resourceSpawn->getDensityAt(droid->getZone()->getZoneName(), droid->getPositionX(), droid->getPositionY());
+
+	String creatureHealth = "";
+
+	if (density > 0.80f) {
+		quantityExtracted = int(quantityExtracted * 1.25f);
+		creatureHealth = "creature_quality_fat";
+	} else if (density > 0.60f) {
+		quantityExtracted = int(quantityExtracted * 1.00f);
+		creatureHealth = "creature_quality_medium";
+	} else if (density > 0.40f) {
+		quantityExtracted = int(quantityExtracted * 0.75f);
+		creatureHealth = "creature_quality_scrawny";
+	} else {
+		quantityExtracted = int(quantityExtracted * 0.50f);
+		creatureHealth = "creature_quality_skinny";
+	}
+
+	float modifier = 1;
+	int baseAmount = quantityExtracted;
+	if (owner->isGrouped()) {
+		modifier = owner->getGroup()->getGroupHarvestModifier(owner);
+
+		quantityExtracted = (int)(quantityExtracted * modifier);
+		if (owner->getGroup()->getGroupSize() > 2 ) {
+			quantityExtracted -= quantityExtracted * 0.3; // 30% reduction
+		}
+	}
+
+	if (creature->getParent().get() != NULL)
+		quantityExtracted = 1;
+
+	quantityExtracted += droidBonus;
+	// add to droid inventory if there is space available, otherwise to player
+	DroidObject* pet = cast<DroidObject*>(droid);
+	if (pet == NULL) {
+		error("Incoming droid harvest call didnt include a droid!");
+		return;
+	}
+
+	if (pet->hasStorage()) {
+		bool didit = resourceManager->harvestResourceToPlayer(droid, resourceSpawn, quantityExtracted);
+		if (!didit) {
+			resourceManager->harvestResourceToPlayer(owner, resourceSpawn, quantityExtracted);
+		}
+	} else {
+		resourceManager->harvestResourceToPlayer(owner, resourceSpawn, quantityExtracted);
+	}
+
+	/// Send System Messages
+	StringIdChatParameter harvestMessage("skl_use", creatureHealth);
+
+	harvestMessage.setDI(quantityExtracted);
+	harvestMessage.setTU(resourceSpawn->getFinalClass());
+
+	owner->sendSystemMessage(harvestMessage);
+
+	/// Send bonus message
+	if (modifier == 1.2f)
+		owner->sendSystemMessage("@skl_use:group_harvest_bonus");
+	else if (modifier == 1.3f)
+		owner->sendSystemMessage("@skl_use:group_harvest_bonus_ranger");
+	else if (modifier == 1.4f)
+		owner->sendSystemMessage("@skl_use:group_harvest_bonus_masterranger");
+
+	/// Send group spam
+	if (owner->isGrouped()) {
+		StringIdChatParameter bonusMessage("group", "notify_harvest_corpse");
+
+		bonusMessage.setTU(droid->getDisplayedName());
+		bonusMessage.setDI(quantityExtracted);
+		bonusMessage.setTO(resourceSpawn->getFinalClass());
+		bonusMessage.setTT(creature->getObjectNameStringIdFile(), creature->getObjectNameStringIdName());
+
+		ChatSystemMessage* sysMessage = new ChatSystemMessage(bonusMessage);
+		owner->getGroup()->broadcastMessage(owner, sysMessage, false);
+	}
+
+	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
+
+	int xp = creature->getLevel() * 5 + 19;
+
+	if(playerManager != NULL)
+		playerManager->awardExperience(owner, "scout", xp, true);
+
+	creature->addAlreadyHarvested(owner);
+
+	if (!creature->hasLoot() && creature->getBankCredits() < 1 && creature->getCashCredits() < 1 && !playerManager->canGroupMemberHarvestCorpse(owner, creature)) {
+		Reference<DespawnCreatureTask*> despawn = creature->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
+
+		if (despawn != NULL) {
+			despawn->cancel();
+
+			despawn->reschedule(1000);
+		}
+	}
+
+
 }
 
 void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* player, int selectedID) {

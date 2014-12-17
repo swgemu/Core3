@@ -91,6 +91,15 @@ protected:
 	static const uint8 TRAP_MODULE_CONTROLS = 208;
 	static const uint8 TRAP_MODULE_CLEAR = 209;
 	static const uint8 TRAP_MODULE_TRAIN = 210;
+	static const uint8 HARVEST_MENU = 211;
+	static const uint8 HARVEST_TOGGLE = 212;
+	static const uint8 HARVEST_INTREST_RANDOM = 213;
+	static const uint8 HARVEST_INTREST_MEAT = 214;
+	static const uint8 HARVEST_INTREST_HIDE = 215;
+	static const uint8 HARVEST_INTREST_BONE = 216;
+	static const uint8 HARVEST_PROGRAM_COMMAND = 217;
+	static const uint8 HARVEST_SET_INTEREST = 218;
+
 public:
 	BaseDroidModuleComponent();
 	~BaseDroidModuleComponent();

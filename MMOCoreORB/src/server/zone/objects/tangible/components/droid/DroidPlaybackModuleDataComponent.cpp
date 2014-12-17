@@ -184,7 +184,6 @@ int DroidPlaybackModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 		box->setCallback(new SelectTrackSuiCallback(player->getZoneServer()));
 		box->setPromptText("@pet/droid_modules:playback_list_prompt");
 		box->setPromptTitle("@pet/droid_modules:playback_list_title"); // Configure Effects
-		SuiListBox* b;
 		box->setOkButton(true,"@pet/droid_modules:playback_btn_play_record");
 		box->setOtherButton(true, "@pet/droid_modules:playback_btn_delete");
 		box->setCancelButton(true, "@cancel");

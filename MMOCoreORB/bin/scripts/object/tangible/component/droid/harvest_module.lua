@@ -43,7 +43,7 @@
 
 object_tangible_component_droid_harvest_module = object_tangible_component_droid_shared_harvest_module:new {
 
-
+	dataObjectComponent = "DroidHarvestModuleDataComponent",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1},

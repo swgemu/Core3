@@ -177,7 +177,7 @@ public:
 	}
 	static float determineMinResistance(float input) {
 		if (input < 0) // if max is vulnerable the min is always vulnerable
-			return -1;
+			return -99;
 		return round(input * ((input/100.0f) + 0.15f));
 	}
 	static int generateCL(float hamTotal, float toHit, float speed, float damage, float kinetic, float blast, float heat, float cold, float energy, float electricy, float acid, float stun, float armorRating) {

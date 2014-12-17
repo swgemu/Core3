@@ -1010,13 +1010,9 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player, const float dens
 	}
 }
 
-void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, ResourceSpawn* resourceSpawn, int unitsExtracted) {
+bool ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, ResourceSpawn* resourceSpawn, int unitsExtracted) {
 	// Add resource to inventory
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
-			"inventory");
-
-
-
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 	Locker locker(inventory);
 	// Check inventory for resource and add if existing
 	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
@@ -1032,7 +1028,7 @@ void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 				if  ((resource->getQuantity() + unitsExtracted) <= ResourceContainer::MAXSIZE ){
 					int newStackSize = resource->getQuantity() + unitsExtracted;
 					resource->setQuantity(newStackSize);
-					return;
+					return true;
 				}else{
 					unitsExtracted = unitsExtracted - (ResourceContainer::MAXSIZE - resource->getQuantity());
 					resource->setQuantity(ResourceContainer::MAXSIZE);
@@ -1046,13 +1042,14 @@ void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 		if (!player->isIncapacitated() && !player->isDead()){
 			player->setPosture(CreaturePosture::UPRIGHT, true);
 		}
-		return;
+		return false;
 	}
 	// Create New resource container if one isn't found in inventory
 	ResourceContainer* harvestedResource = resourceSpawn->createResource(unitsExtracted);
 
 	inventory->transferObject(harvestedResource, -1, false);
 	inventory->broadcastObject(harvestedResource, true);
+	return true;
 }
 
 ResourceContainer* ResourceSpawner::harvestResource(CreatureObject* player,
@@ -1081,11 +1078,11 @@ ResourceContainer* ResourceSpawner::harvestResource(CreatureObject* player,
 	return NULL;
 }
 
-void ResourceSpawner::harvestResource(CreatureObject* player, ResourceSpawn* resourceSpawn, int quantity) {
+bool ResourceSpawner::harvestResource(CreatureObject* player, ResourceSpawn* resourceSpawn, int quantity) {
 
 	resourceSpawn->extractResource(player->getZone()->getZoneName(), quantity);
 
-	addResourceToPlayerInventory(player, resourceSpawn, quantity);
+	return addResourceToPlayerInventory(player, resourceSpawn, quantity);
 }
 
 ResourceSpawn* ResourceSpawner::getCurrentSpawn(const String& restype, const String& zoneName) {

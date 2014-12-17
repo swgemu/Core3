@@ -110,7 +110,7 @@ class ResourceManager extends Observer implements Logger {
 	public native void sendSample(CreatureObject playerCreature, final string resname, final string sampleAnimation);
 	
 	public native ResourceContainer harvestResource(CreatureObject player, final string type, final int quantity);
-	public native void harvestResourceToPlayer(CreatureObject player, ResourceSpawn resourceSpawn, final int quantity);
+	public native boolean harvestResourceToPlayer(CreatureObject player, ResourceSpawn resourceSpawn, final int quantity);
 	
 	public native unsigned int getAvailablePowerFromPlayer(CreatureObject player);
 	public native void removePowerFromPlayer(CreatureObject player, unsigned int power);

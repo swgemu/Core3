@@ -346,3 +346,12 @@ bool DroidObjectImplementation::isTrapDroid() {
 	}
 	return false;
 }
+bool DroidObjectImplementation::hasStorage() {
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if(module->getModuleName() == "storage_module") {
+			return true;
+		}
+	}
+	return false;
+}

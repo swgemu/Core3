@@ -162,8 +162,8 @@ public:
 	void sendSampleResults(CreatureObject* player, const float density, const String& resname);
 
 	ResourceContainer* harvestResource(CreatureObject* player, const String& type, const int quantity);
-	void harvestResource(CreatureObject* player, ResourceSpawn* resourceSpawn, int quantity);
-	void addResourceToPlayerInventory(CreatureObject* player, ResourceSpawn* resourceSpawn, int unitsExtracted);
+	bool harvestResource(CreatureObject* player, ResourceSpawn* resourceSpawn, int quantity);
+	bool addResourceToPlayerInventory(CreatureObject* player, ResourceSpawn* resourceSpawn, int unitsExtracted);
 
 	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 

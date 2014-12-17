@@ -42,26 +42,26 @@ public:
 		// trap must be a trap
 		TangibleObject* trap = module->getTrap();
 		if (!trap->isTrapObject()) {
-			creature->sendSystemMessage("@pet/droid_modules:no_trap_loaded");
+			droid->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}
 
 		// trap must have charges
 		if(trap->getUseCount() <= 0) {
-			creature->sendSystemMessage("@pet/droid_modules:no_trap_loaded");
+			droid->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}
 
 		// target must be a creature
 		Reference<CreatureObject*> target = server->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();
 		if (target == NULL || !target->isCreature()) {
-			creature->sendSystemMessage("@pet/droid_modules:invalid_trap_target");
+			droid->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}
 
 		// target must be attackable
 		if (!(target->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
-			creature->sendSystemMessage("@pet/droid_modules:invalid_trap_target");
+			droid->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
 		}
 
@@ -118,7 +118,7 @@ public:
 
 			/// Skill too low check the player must be able to use the trap
 			if(trappingSkill < trapData->getSkillRequired()) {
-				creature->sendSystemMessage("@pet/droid_modules:insufficient_skill");
+				owner->sendSystemMessage("@pet/droid_modules:insufficient_skill");
 				return GENERALERROR;
 			}
 
@@ -164,7 +164,8 @@ public:
 			CombatAction* action = new CombatAction(droid, target, crc, hit, 0L);
 			creature->broadcastMessage(action, true);
 			creature->addCooldown("throwtrap", 5000); // 5s cooldown on droid throwing traps
-
+			// power usage for throw
+			droid->usePower(1);
 			// let module handle decrment so it can clear the trap when its out of charges
 			module->decrementTrap();
 

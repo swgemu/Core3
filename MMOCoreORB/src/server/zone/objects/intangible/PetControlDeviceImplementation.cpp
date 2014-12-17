@@ -929,6 +929,9 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 	if( trainedCommands.contains(PetManager::THROWTRAP) ){
 		alm->insertAttribute("pet_command_22", trainedCommands.get(PetManager::THROWTRAP) ); // Droid Repair really was listed as Trick 2
 	}
+	if( trainedCommands.contains(PetManager::HARVEST) ){
+		alm->insertAttribute("pet_command_21", trainedCommands.get(PetManager::HARVEST) ); // Droid Repair really was listed as Trick 2
+	}
 }
 
 void PetControlDeviceImplementation::setDefaultCommands(){

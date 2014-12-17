@@ -62,6 +62,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/pet/PetTransferCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetRepairCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetThrowCommand.h"
+#include "server/zone/objects/creature/commands/pet/PetHarvestCommand.h"
 
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
@@ -366,6 +367,7 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("petTrick").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petRepair").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petThrow").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("petHarvest").toLowerCase())->setCommandGroup(0xe1c9a54a);
 }
 
 void CommandConfigManager::registerFunctions() {
@@ -1545,4 +1547,5 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<PetTrickCommand>(String("petTrick").toLowerCase());
 	commandFactory.registerCommand<PetRepairCommand>(String("petRepair").toLowerCase());
 	commandFactory.registerCommand<PetThrowCommand>(String("petThrow").toLowerCase());
+	commandFactory.registerCommand<PetHarvestCommand>(String("petHarvest").toLowerCase());
 }
