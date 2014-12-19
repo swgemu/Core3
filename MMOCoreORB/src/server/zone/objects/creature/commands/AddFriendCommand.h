@@ -89,6 +89,12 @@ public:
 			return GENERALERROR;
 		}
 
+		if (ghost->getFriendListSize() >= 1000) {
+			creature->sendSystemMessage("You have too many friends!");
+
+			return GENERALERROR;
+		}
+
 		PlayerManager* playerManager = server->getPlayerManager();
 
 		bool validName = playerManager->existsName(nameLower);

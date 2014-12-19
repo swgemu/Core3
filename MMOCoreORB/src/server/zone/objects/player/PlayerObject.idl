@@ -1130,6 +1130,11 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	@dirty
+	public int getFriendListSize() {
+		return friendList.size();
+	}
+	
+	@dirty
 	public boolean isIgnoring(final string name) {
 		return ignoreList.contains(name);
 	}
