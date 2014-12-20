@@ -680,13 +680,12 @@ void CreatureManagerImplementation::droidHarvest(Creature* creature, CreatureObj
 		return;
 	}
 
-	if (!creature->canHarvestMe(owner)) {
+	// this will perform a range check on the corpse to the droid
+	if (!creature->canDroidHarvestMe(owner,droid)) {
 		owner->sendSystemMessage("@pet/droid_modules:cannot_access_corpse");
 		return;
 	}
-	if (!droid->isInRange(creature, 7)) {
-		return;
-	}
+
 	ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();
 	String restype = "";
 	float quantity = 0;

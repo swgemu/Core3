@@ -64,6 +64,8 @@ function SelectAttackDroidPet:doAction(pAgent)
 			local pTarget = agent:getTargetFromDefenders()
 			if not ObjectManager.withSceneObject(pAgent, function(scno) return scno:isInRangeWithObject(pTarget, 10) end) then 
 				agent:setOblivious()
+				agent:restoreFollowObject()
+				agent:clearCombatState(true)			
 				return BEHAVIOUR_SUSPEND
 			end
 			agent:runAway(pTarget, 32)

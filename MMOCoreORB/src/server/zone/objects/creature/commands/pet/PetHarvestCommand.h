@@ -47,10 +47,6 @@ public:
 			return GENERALERROR;
 		}
 		Creature* cr = cast<Creature*>(target.get());
-		if (!cr->canHarvestMe(owner)) {
-			owner->sendSystemMessage("@pet/droid_modules:invalid_harvest_target");
-			return GENERALERROR;
-		}
 		if (cr->getZone() == NULL)
 			return GENERALERROR;
 		// Schedule the harvest task
