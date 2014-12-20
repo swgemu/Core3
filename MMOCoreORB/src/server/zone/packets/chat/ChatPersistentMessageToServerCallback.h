@@ -235,10 +235,17 @@ public:
 		if (tokenizer.hasMoreTokens()) {
 			String receiver;
 
+			int incr = 0;
+
 			while (tokenizer.hasMoreTokens()) {
 				tokenizer.getStringToken(receiver);
 
 				sendMail(receiver);
+
+				if ((incr++) > 80) {
+					player->error("recipient count exceeded!");
+					return;
+				}
 			}
 		} else {
 			result = sendMailToPlayer(recipientName);
