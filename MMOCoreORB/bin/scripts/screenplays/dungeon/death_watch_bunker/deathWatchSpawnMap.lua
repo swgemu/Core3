@@ -1,9 +1,9 @@
 deathWatchQuestNpcs = {
 	{"mand_bunker_foreman", 1, 27.6, -61.5, -297.6, -112, 5996355},
-	{"workshop_droid", 1, -113.3, -20, -101.3, 35, 5996328},
+	{"death_watch_workshop_droid", 1, -113.3, -20, -101.3, 35, 5996328},
 	{"mand_bunker_technician", 1, -23.9, -52, -163.8, 45, 5996378},
 	--{"ventilation_quest_droid", 1, -6.2, -52.0, -119.6, 62, 5996379},
-	{"g12-4j", 1, -80.3, -20, -121, -34, 5996329},
+	{"death_watch_medical_droid", 1, -80.3, -20, -121, -34, 5996329},
 	{"death_watch_rescue_scientist", 1, 113.9,-68,-187,1,5996351},
 }
 
