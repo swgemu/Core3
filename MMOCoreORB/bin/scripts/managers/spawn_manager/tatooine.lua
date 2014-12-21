@@ -378,7 +378,7 @@ tatooine_static_spawns = {
 	{"coa3_information_imperial",60,14.0299,1.13306,-8.82756,97.6176,1028561, "npc_imperial", "","stationary"},
 	{"coa3_tactical_imperial",60,9.74537,1.13306,0.300803,93.0077,1028549, "npc_imperial", "","stationary"},
 	{"comm_operator",300,-3.43834,2.6,11.8623,357,1105851, "conversation", "","stationary"},
-	{"commander_dkrn",60,-1157.74,12,-3525.5,200.331,0, "npc_imperial", "Commander D`krn","stationary"},
+	{"death_watch_herald_imperial",60,-1157.74,12,-3525.5,200.331,0, "npc_imperial", "Commander D`krn","stationary"},
 	{"commoner",60,10.17,-0.894992,2.74,125.098,1082877, "conversation", "","stationary"},
 	{"commoner",60,3415.9,5,-4630.2,60,0, "npc_use_terminal_high", "","stationary"},
 	{"commoner",60,3371.5,0,-4858.4,210,0, "npc_use_terminal_high", "","stationary"},

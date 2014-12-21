@@ -1,51 +1,47 @@
-workshop_droid_convotemplate = ConvoTemplate:new {
-	initialScreen = "convoscreen1",
+deathWatchWorkshopDroidConvoTemplate = ConvoTemplate:new {
+	initialScreen = "",
 	templateType = "Lua",
-	luaClassHandler = "death_watch_workshop_droid_handler",
+	luaClassHandler = "deathWatchWorkshopDroidConvoHandler",
 	screens = {}
 }
 
-
-workshop_droid_convoscreen1 = ConvoScreen:new {
-	id = "convoscreen1",
-	leftDialog = "@conversation/death_watch_treadwell:s_9208410d",
+intro = ConvoScreen:new {
+	id = "intro",
+	leftDialog = "@conversation/death_watch_treadwell:s_9208410d", -- ...
 	stopConversation = "false",
 	options = {
-		{"@conversation/death_watch_treadwell:s_8e9e4ef9", "convoscreen2"},
+		{"@conversation/death_watch_treadwell:s_4fcd015f", "clean_battery"}, -- Yes you can help me. I was sent to get this battery cleaned.
+		{"@conversation/death_watch_treadwell:s_8e9e4ef9", "end_convo"}, -- No thank you. I am not need of any assistance.
 	}
 }
 
-workshop_droid_convotemplate:addScreen(workshop_droid_convoscreen1);
+deathWatchWorkshopDroidConvoTemplate:addScreen(intro);
 
-workshop_droid_convoscreen2 = ConvoScreen:new {
-	id = "convoscreen2",
+clean_battery = ConvoScreen:new {
+	id = "clean_battery",
+	leftDialog = "@conversation/death_watch_treadwell:s_9208410d", -- ...
+	stopConversation = "true",
+	options = {
+	}
+}
+deathWatchWorkshopDroidConvoTemplate:addScreen(clean_battery);
+
+end_convo = ConvoScreen:new {
+	id = "end_convo",
+	leftDialog = "@conversation/death_watch_treadwell:s_9208410d", -- ...
+	stopConversation = "true",
+	options = {
+	}
+}
+deathWatchWorkshopDroidConvoTemplate:addScreen(end_convo);
+
+no_battery_intro = ConvoScreen:new {
+	id = "no_battery_intro",
 	leftDialog = "@conversation/death_watch_treadwell:s_9208410d",
 	stopConversation = "true",
 	options = {
 	}
 }
+deathWatchWorkshopDroidConvoTemplate:addScreen(no_battery_intro);
 
-workshop_droid_convotemplate:addScreen(workshop_droid_convoscreen2);
-
-workshop_droid_convoscreen3 = ConvoScreen:new {
-	id = "convoscreen3",
-	leftDialog = "@conversation/death_watch_treadwell:s_9208410d",
-	stopConversation = "false",
-	options = {
-		{"@conversation/death_watch_treadwell:s_4fcd015f", "convoscreen4"},
-	}
-}
-
-workshop_droid_convotemplate:addScreen(workshop_droid_convoscreen3);
-
-workshop_droid_convoscreen4 = ConvoScreen:new {
-	id = "convoscreen4",
-	leftDialog = "@conversation/death_watch_treadwell:s_9208410d",
-	stopConversation = "true",
-	options = {
-	}
-}
-
-workshop_droid_convotemplate:addScreen(workshop_droid_convoscreen4);
-
-addConversationTemplate("workshop_droid_convotemplate", workshop_droid_convotemplate);
+addConversationTemplate("deathWatchWorkshopDroidConvoTemplate", deathWatchWorkshopDroidConvoTemplate);
