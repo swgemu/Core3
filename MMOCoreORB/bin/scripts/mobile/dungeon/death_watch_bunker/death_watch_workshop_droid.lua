@@ -1,6 +1,6 @@
-g12_4j = Creature:new {
-	objectName = "",
-	customName = "G12-4J (a medical droid)",
+death_watch_workshop_droid = Creature:new {
+	objectName = "@droid_name:wed_treadwell_base",
+	customName = "WED15-I643 (a workshop droid)",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",
@@ -26,12 +26,12 @@ g12_4j = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/21b_surgical_droid.iff"},
+	templates = {"object/mobile/wed_treadwell.iff"},
 	lootGroups = {},
 	weapons = {},
 	attacks = {},
-	conversationTemplate = "g12_4j_convotemplate",
+	conversationTemplate = "deathWatchWorkshopDroidConvoTemplate",
 	optionsBitmask = 264
 }
 
-CreatureTemplates:addCreatureTemplate(g12_4j, "g12-4j")
+CreatureTemplates:addCreatureTemplate(death_watch_workshop_droid, "death_watch_workshop_droid")

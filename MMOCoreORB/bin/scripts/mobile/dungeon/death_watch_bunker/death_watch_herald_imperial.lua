@@ -30,7 +30,7 @@ death_watch_herald_imperial = Creature:new {
 	templates = {"object/mobile/dressed_imperial_colonel_m.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "commander_dkrn_convotemplate",
+	conversationTemplate = "commanderDkrnConvoTemplate",
 	attacks = {
 	}
 }

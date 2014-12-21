@@ -30,7 +30,7 @@ death_watch_herald_rebel = Creature:new {
 	templates = {"object/mobile/dressed_rebel_general_moncal_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "lutin_nightstalker_convotemplate",
+	conversationTemplate = "lutinNightstalkerConvoTemplate",
 	attacks = {
 	}
 }
