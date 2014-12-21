@@ -636,7 +636,7 @@ function DeathWatchBunkerScreenPlay:pumpTimer(pCreature)
 	ObjectManager.withCreatureObject(pCreature, function(creature)
 		if creature:hasScreenPlayState(64, "death_watch_foreman_stage") == 0 then
 			creature:removeScreenPlayState(32, "death_watch_foreman_stage")
-			creature:setScreenPlayState(3, "death_watch_foreman_stage_failed")
+			creature:setScreenPlayState(2, "death_watch_foreman_stage_failed")
 			creature:sendSystemMessage("@dungeon/death_watch:water_pressure_failed")
 		end
 	end)

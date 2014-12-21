@@ -30,7 +30,7 @@ mand_bunker_technician = Creature:new {
 	templates = {"object/mobile/dressed_mand_bunker_technician.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "mand_bunker_technician_convotemplate",
+	conversationTemplate = "deathWatchTechnicianConvoTemplate",
 	attacks = {
 	}
 }

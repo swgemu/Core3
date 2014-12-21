@@ -30,7 +30,7 @@ mand_bunker_foreman = Creature:new {
 	templates = {"object/mobile/dressed_mand_bunker_foreman.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "foreman_convotemplate",
+	conversationTemplate = "deathWatchForemanConvoTemplate",
 	attacks = {
 	}
 }
