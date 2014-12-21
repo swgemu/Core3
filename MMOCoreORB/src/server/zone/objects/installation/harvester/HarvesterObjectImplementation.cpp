@@ -98,7 +98,7 @@ String HarvesterObjectImplementation::getRedeedMessage() {
 	if(operating)
 		return "destroy_deactivate_first";
 
-	if(resourceHopper.size() > 0)
+	if(getHopperSize() > 0)
 		return "destroy_empty_hopper";
 
 
