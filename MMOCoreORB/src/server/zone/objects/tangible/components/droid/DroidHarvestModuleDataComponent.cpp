@@ -220,9 +220,12 @@ void DroidHarvestModuleDataComponent::deactivate() {
 	Locker dlock( droid );
 
 	// remove observer
-	ManagedReference<CreatureObject*> player = droid->getLinkedCreature();
-	Locker plock(player);
-	player->dropObserver(ObserverEventType::KILLEDCREATURE, observer);
+	ManagedReference<CreatureObject*> player = droid->getLinkedCreature().get();
+
+	if (player != NULL) {
+		Locker clock(player, droid);
+		player->dropObserver(ObserverEventType::KILLEDCREATURE, observer);
+	}
 }
 
 String DroidHarvestModuleDataComponent::toString(){
