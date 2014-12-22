@@ -690,31 +690,6 @@ void CreatureManagerImplementation::droidHarvest(Creature* creature, CreatureObj
 	String restype = "";
 	float quantity = 0;
 
-	if (selectedID == 112) {
-		int type = System::random(2);
-
-		if (quantity == 0 || type == 0) {
-			if(creature->getHideMax() > 0) {
-				restype = creature->getHideType();
-				quantity = creature->getHideMax();
-			}
-		}
-
-		if (quantity == 0 || type == 1) {
-			if(creature->getMeatMax() > 0) {
-				restype = creature->getMeatType();
-				quantity = creature->getMeatMax();
-			}
-		}
-
-		if (quantity == 0 || type == 2) {
-			if(creature->getBoneMax() > 0) {
-				restype = creature->getBoneType();
-				quantity = creature->getBoneMax();
-			}
-		}
-	}
-
 	if (selectedID == 234) {
 		restype = creature->getMeatType();
 		quantity = creature->getMeatMax();
@@ -734,7 +709,6 @@ void CreatureManagerImplementation::droidHarvest(Creature* creature, CreatureObj
 	int quantityExtracted = int(quantity * float(ownerSkill / 100.0f));
 	// add in droid bonus
 	quantityExtracted = MAX(quantityExtracted, 3);
-
 	ManagedReference<ResourceSpawn*> resourceSpawn = resourceManager->getCurrentSpawn(restype, droid->getZone()->getZoneName());
 
 	if (resourceSpawn == NULL) {

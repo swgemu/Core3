@@ -5,7 +5,11 @@ Interrupt = { }
 function Interrupt:interrupt(pAgent, pObject, msg)
 	if     msg == STARTCOMBAT        then self:startCombatInterrupt(pAgent, pObject)    -- pObject = sender of interrupt message
 	elseif msg == OBJECTINRANGEMOVED then self:startAwarenessInterrupt(pAgent, pObject) -- pObject = object that moved
+	elseif msg == DAMAGERECEIVED	 then self:startDamageInterrupt(pAgent, pObject)    -- pObject = source of damage
 	end
+end
+
+function Interrupt:startDamageInterrupt(pAgent,pObject)
 end
 
 function Interrupt:startCombatInterrupt(pAgent, pObject)
@@ -237,24 +241,39 @@ function CreaturePetInterrupt:startCombatInterrupt(pAgent, pObject)
 	agent:resetBehaviorList()
 	agent:executeBehavior()
 end
+
 DroidPetInterrupt = createClass(DefaultInterrupt)
+function DroidPetInterrupt:startDamageInterrupt(pAgent,pObject)
+	if pAgent == nil or pObject == nil then return end
+	local agent = AiAgent(pAgent)
+	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go
+		
+	-- starting combat droids shoudl flee if they arent combat capable and they get hit by damage
+	if ObjectManager.withCreatureObject(pAgent, function(creo) return not creo:isCombatDroidPet() end) then
+		-- if in combat run away if not a combat pet
+		agent:runAway(pObject, 32)
+		agent:stopWaiting()
+		agent:executeBehavior()
+		return
+	end
+
+  	--recover our pointer to agent
+	agent = AiAgent(pAgent)
+	agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
+	agent:resetBehaviorList()
+	agent:executeBehavior()
+end
+
 function DroidPetInterrupt:startCombatInterrupt(pAgent, pObject)
 	if pAgent == nil or pObject == nil then return end
 	local agent = AiAgent(pAgent)
 	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go
 		
-	-- starting combat droids shoudl flee if they arent combat capable.
-	if ObjectManager.withCreatureObject(pAgent, function(creo) return not creo:isCombatDroidPet() end) then
-		agent:runAway(pObject, 32)
-		agent:stopWaiting();
-		agent:executeBehavior();
-		return			
-	else 
-		DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
-	end
+	DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
 
-  --recover our pointer to agent
+  	--recover our pointer to agent
 	agent = AiAgent(pAgent)
+	printf("starting suspend behaviour\n")
 	agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
 	agent:resetBehaviorList()
 	agent:executeBehavior()

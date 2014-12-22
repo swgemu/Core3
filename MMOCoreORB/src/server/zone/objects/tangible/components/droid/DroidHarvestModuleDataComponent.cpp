@@ -85,6 +85,14 @@ void DroidHarvestModuleDataComponent::updateCraftingValues(CraftingValues* value
 
 void DroidHarvestModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
 	alm->insertAttribute( "harvest_power", harvestBonus );
+	if (interest == INTREST_BONE)
+		alm->insertAttribute("pet_command_21","@pet/droid_modules:interest_set_bone");
+	if (interest == INTREST_MEAT)
+		alm->insertAttribute("pet_command_21","@pet/droid_modules:interest_set_meat");
+	if (interest == INTREST_HIDE)
+		alm->insertAttribute("pet_command_21","@pet/droid_modules:interest_set_hide");
+	if (interest == INTREST_RANDOM)
+		alm->insertAttribute("pet_command_21","@pet/droid_modules:interest_set_random");
 }
 
 void DroidHarvestModuleDataComponent::fillObjectMenuResponse(SceneObject* droidObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -309,6 +317,7 @@ void DroidHarvestModuleDataComponent::creatureHarvestCheck(CreatureObject* targe
 	// tell droid togo target
 	droid->setTargetObject(target);
 	droid->activateMovementEvent();
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(droid, String("petHarvest").toLowerCase().hashCode(), "", target->getObjectID(), 2);
-	enqueueCommand->execute();
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(droid, String("petHarvest").toLowerCase().hashCode(), "", target->getObjectID(), 1);
+	// give a second delay for the command so that all updates can occur for inv and such
+	droid->addPendingTask("droid_harvest_command_reschedule",enqueueCommand,1000);
 }

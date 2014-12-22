@@ -56,26 +56,6 @@ function SelectAttackCreaturePet:terminate(pAgent)
 end
 
 
-function SelectAttackDroidPet:doAction(pAgent)
-	if (pAgent ~= nil) then
-		local agent = AiAgent(pAgent)
-		if ObjectManager.withCreatureObject(pAgent, function(creo) return not creo:isCombatDroidPet() end) then
-			-- get the attack against us
-			local pTarget = agent:getTargetFromDefenders()
-			if not ObjectManager.withSceneObject(pAgent, function(scno) return scno:isInRangeWithObject(pTarget, 10) end) then 
-				agent:setOblivious()
-				agent:restoreFollowObject()
-				agent:clearCombatState(true)			
-				return BEHAVIOUR_SUSPEND
-			end
-			agent:runAway(pTarget, 32)
-			return BEHAVIOR_SUCCESS
-		else
-			return SelectAttackBase:doAction(pAgent)			
-		end		
-	end
-end
-
 function SelectAttackDroidPet:terminate(pAgent)
 	if pAgent ~= nil then
 		local agent = AiAgent(pAgent)

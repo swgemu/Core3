@@ -742,7 +742,8 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	// TODO (dannuic): do we need to check threatmap for other players in range at this point, or just have the mob completely drop aggro?
 	if (threatMap != NULL)
 		threatMap->removeAll();
-
+	// try to peace out while running away since we removed all threat targets see above note
+	CombatManager::instance()->attemptPeace(_this.get());
 	clearPatrolPoints();
 
 	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
@@ -1945,7 +1946,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 			}
 		}
 	}
-
+	activateInterrupt(attacker, ObserverEventType::DAMAGERECEIVED);
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 
@@ -1965,7 +1966,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 			}
 		}
 	}
-
+	activateInterrupt(attacker, ObserverEventType::DAMAGERECEIVED);
 	return CreatureObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 }
 

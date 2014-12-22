@@ -163,11 +163,11 @@ function GetTargetDroidPet:doAction(pAgent)
 		local agent = AiAgent(pAgent)
 		
 		local command = agent:getLastCommand()
-		if (command ~= PET_ATTACK and command ~= PET_GUARD and command ~= PET_THROW) then
+		if (command ~= PET_ATTACK and command ~= PET_GUARD) then
 			return BEHAVIOR_FAILURE	
 		end
 
-		if (command == PET_ATTACK or command == PET_THROW) then
+		if (command == PET_ATTACK) then
 			local pTarget = agent:getLastCommandTarget()
 			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
 				agent:setFollowObject(pTarget)

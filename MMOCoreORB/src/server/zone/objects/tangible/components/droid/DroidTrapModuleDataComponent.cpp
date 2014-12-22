@@ -222,11 +222,11 @@ void DroidTrapModuleDataComponent::handlePetCommand(String cmd, CreatureObject* 
 	if( droid->getLinkedCreature().get() != speaker ) {
 		return;
 	}
-	if (trap == NULL) {
-		speaker->sendSystemMessage("@pet/droid_modules:no_trap_loaded");
-		return;
-	}
 	if( petManager->isTrainedCommand( pcd, PetManager::THROWTRAP, cmd ) ){
+		if (trap == NULL) {
+			speaker->sendSystemMessage("@pet/droid_modules:no_trap_loaded");
+			return;
+		}
 		petManager->enqueuePetCommand(speaker, droid, String("petThrow").toLowerCase().hashCode(), "");
 	}
 }

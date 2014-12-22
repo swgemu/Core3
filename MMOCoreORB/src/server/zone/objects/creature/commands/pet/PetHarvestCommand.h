@@ -7,6 +7,7 @@
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"
+#include "server/zone/objects/intangible/tasks/EnqueuePetCommand.h"
 
 class PetHarvestCommand : public QueueCommand {
 public:
@@ -32,6 +33,7 @@ public:
 		Locker olock(owner);
 		Reference<CreatureObject*> target = server->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();
 
+
 		if (target == NULL || !target->isCreature()) {
 			owner->sendSystemMessage("@pet/droid_modules:invalid_harvest_target");
 			return GENERALERROR;
@@ -53,6 +55,10 @@ public:
 		ManagedReference<DroidObject*> droid = cast<DroidObject*>(creature);
 		if( droid == NULL )
 			return GENERALERROR;
+
+		if(droid->getPendingTask("droid_harvest_command_reschedule") != NULL) {
+			droid->removePendingTask("droid_harvest_command_reschedule");
+		}
 
 		DroidHarvestModuleDataComponent* module = cast<DroidHarvestModuleDataComponent*>(droid->getModule("harvest_module"));
 		if(module == NULL) {
@@ -79,9 +85,14 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!target->isInRange(droid,7)) { // this should run the droid to the target for harvesting
+		if (!target->isInRange(droid,7.0f)) { // this should run the droid to the target for harvesting
 			droid->setTargetObject(target);
 			droid->activateMovementEvent();
+			// Droid is now set to go to target, re-enque the command, wuth a 1 second delay
+			EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(droid, String("petHarvest").toLowerCase().hashCode(), "", target->getObjectID(), 1);
+			// delay the execution
+			droid->addPendingTask("droid_harvest_command_reschedule",enqueueCommand,1000);
+			return GENERALERROR;
 		}
 		int harvestInterest = module->getHarvestInterest();
 		int bonus = module->getHarvestPower();
@@ -135,11 +146,9 @@ public:
 			return GENERALERROR;
 		}
 		tpLock.release();
-
 		Locker clock(target,droid);
 		ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
 		manager->droidHarvest(cr, droid, type,bonus);
-		droid->restoreFollowObject();
 		return SUCCESS;
 	}
 
