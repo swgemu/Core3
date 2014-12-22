@@ -5,7 +5,8 @@ imperial_officer_common = {
 	lootItems = {
 		{itemTemplate = "technical_console_schematic_1", weight = 3333333},
 		{itemTemplate = "technical_console_schematic_2", weight = 3333333},
-		{itemTemplate = "couch_blue_schematic", weight = 3333334}
+		{itemTemplate = "couch_blue_schematic", weight = 3333334},
+		{itemTemplate = "painting_vader_victory", weight = 1000000}
 	}
 }
 
