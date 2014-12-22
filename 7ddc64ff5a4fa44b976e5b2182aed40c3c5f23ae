@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_d0f1b196",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/npc/imperial_officer_common.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2014-12-22T11:45:30Z",
+      "side": 1,
+      "message": "These weights need to add up to 10000000. If you\u0027re adding a new line with a weight of 1000000, you need to remove 1000000 elsewhere (preferrably spread across the other items if they are even weights).",
+      "revId": "7ddc64ff5a4fa44b976e5b2182aed40c3c5f23ae",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
