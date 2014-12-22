@@ -7,6 +7,7 @@
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/tangible/components/droid/DroidHarvestModuleDataComponent.h"
+#include "server/zone/objects/intangible/tasks/EnqueuePetCommand.h"
 
 class PetHarvestCommand : public QueueCommand {
 public:
@@ -82,6 +83,10 @@ public:
 		if (!target->isInRange(droid,7)) { // this should run the droid to the target for harvesting
 			droid->setTargetObject(target);
 			droid->activateMovementEvent();
+			// Droid is now set to go to target, re-enque the command
+			EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(droid, String("petHarvest").toLowerCase().hashCode(), "", target->getObjectID(), 2);
+			enqueueCommand->execute();
+			return SUCCESS;
 		}
 		int harvestInterest = module->getHarvestInterest();
 		int bonus = module->getHarvestPower();
