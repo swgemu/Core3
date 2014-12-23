@@ -162,7 +162,7 @@ public:
 			}
 		}
 
-		if (creature->isKneeling() && weapon->isMeleeWeapon() && range == -1)
+		if (creature->isKneeling() && weapon->isMeleeWeapon() && range == -1 && !weapon->isJediWeapon())
 			return NOKNEELING;
 
 		if (creature->isProne() && (!weapon->isRangedWeapon() || targetObject->isInRange(creature, 5)) && range == -1)

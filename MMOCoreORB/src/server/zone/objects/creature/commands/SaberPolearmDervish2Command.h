@@ -46,37 +46,18 @@ which carries forward this exception.
 #define SABERPOLEARMDERVISH2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/combat/CombatManager.h"
-#include "CombatQueueCommand.h"
+#include "JediCombatQueueCommand.h"
 
-class SaberPolearmDervish2Command : public  CombatQueueCommand {
+class SaberPolearmDervish2Command : public JediCombatQueueCommand {
 public:
 
 	SaberPolearmDervish2Command(const String& name, ZoneProcessServer* server)
-		:  CombatQueueCommand(name, server) {
+		:  JediCombatQueueCommand(name, server) {
 
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		if (isWearingArmor(creature)) {
-			return NOJEDIARMOR;
-		}
-
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-
-		if (!weapon->isJediPolearmWeapon()) {
-			return INVALIDWEAPON;
-		}
-
-		return doCombatAction(creature, target);
+		return doJediCombatAction(creature, target, arguments);
 	}
 
 };
