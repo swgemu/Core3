@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_modern_searchable_squill_lair_01 = object_tangible_furniture_modern_shared_searchable_squill_lair_01:new {
-
+	objectMenuComponent = {"Lua", "squillLairMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_modern_searchable_squill_lair_01, "object/tangible/furniture/modern/searchable_squill_lair_01.iff")
