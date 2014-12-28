@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_90c7b912",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-28T22:57:16Z",
+      "side": 1,
+      "message": "You aren\u0027t using creatureObject so why get it? You can call withCreaturePlayerObject instead to only get the playerObject.",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_50d141cc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-28T22:57:16Z",
+      "side": 1,
+      "message": "Please use tabs for indentation to match the rest of the file.",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_70cc3d36",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-28T22:57:16Z",
+      "side": 1,
+      "message": "Same as above first comment above.",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_50e8217c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-28T22:57:16Z",
+      "side": 1,
+      "message": "Why are you changing the formatting of this entire file? It makes it harder to review your changes. Please leave the formatting as it was.",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_70f31d74",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-28T22:57:16Z",
+      "side": 1,
+      "message": "Why are you getting the strings from optionsAddFrom again and not from optionsAddTo?",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_f0d70dbe",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/FsExperienceTypes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-28T22:57:16Z",
+      "side": 1,
+      "message": "Use a space and not a tab between else and if.",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_10dbc9ee",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/LuaPlayerObject.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-28T22:57:16Z",
+      "side": 1,
+      "message": "Remove the tab before realObject.",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_30d6c5c6",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2220,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-28T22:57:16Z",
+      "side": 1,
+      "message": "Fix indentation.",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
