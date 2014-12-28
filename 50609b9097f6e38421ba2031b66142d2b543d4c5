@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_505a6184",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooineMenuComponents.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-28T22:25:57Z",
+      "side": 1,
+      "message": "You should check that pSkull isn\u0027t nil before sending the message and writing the data. Maybe send a different message if it is nil.",
+      "revId": "50609b9097f6e38421ba2031b66142d2b543d4c5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
