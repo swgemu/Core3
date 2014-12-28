@@ -42,7 +42,7 @@
 
 
 object_tangible_loot_quest_hero_of_tatooine_squill_skull = object_tangible_loot_quest_hero_of_tatooine_shared_squill_skull:new {
-
+	noTrade = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_hero_of_tatooine_squill_skull, "object/tangible/loot/quest/hero_of_tatooine/squill_skull.iff")

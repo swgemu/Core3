@@ -55,6 +55,10 @@ includeFile("events/bestineMuseum.lua")
 includeFile("events/eventPromoter.lua")
 includeFile("events/lifeDay.lua")
 
+-- Hero of Tatooine
+includeFile("tasks/hero_of_tatooine/conversations/hermitConvoHandler.lua")
+includeFile("tasks/hero_of_tatooine/heroOfTatooine.lua")
+includeFile("tasks/hero_of_tatooine/heroOfTatooineMenuComponents.lua")
 
 -- Task/Quest
 includeFile("tasks/corellia/chertyl_ruluwoor.lua")

@@ -101,6 +101,7 @@ includeFile("conversations/recruiter/rebel_recruiter_conv.lua")
 includeFile("conversations/recruiter/imperial_recruiter_conv.lua")
 
 -- Tasks
+includeFile("conversations/tasks/hero_of_tatooine/hermit_conv.lua")
 includeFile("conversations/tasks/mozo_bondog_conv.lua")
 includeFile("conversations/tasks/dolac_legasi_conv.lua")
 includeFile("conversations/tasks/dolac_legasi_escaped_prisoner_conv.lua")
