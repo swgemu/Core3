@@ -115,3 +115,7 @@ UnicodeString StringIdManager::getStringId(uint32 crc) {
 
 	return str;
 }
+
+UnicodeString StringIdManager::getStringId(const StringId& id) {
+	return getStringId(id.getFullPath().hashCode());
+}

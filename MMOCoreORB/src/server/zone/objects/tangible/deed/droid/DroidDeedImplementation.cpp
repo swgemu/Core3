@@ -12,6 +12,7 @@
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/tangible/DroidDeedTemplate.h"
@@ -244,6 +245,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		droid->loadTemplateData( creatureTemplate );
 		droid->setSpecies(species);
+		droid->setCustomObjectName(StringIdManager::instance()->getStringId(*droid->getObjectName()), true);
 
 		// Transfer crafting components from deed to droid
 		ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");

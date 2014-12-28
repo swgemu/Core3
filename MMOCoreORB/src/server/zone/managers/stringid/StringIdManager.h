@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 #include "server/db/ServerDatabase.h"
 #include "server/ServerCore.h"
+#include "server/zone/objects/scene/variables/StringId.h"
 
 namespace server {
 namespace zone {
@@ -31,6 +32,8 @@ public:
 	~StringIdManager();
 
 	UnicodeString getStringId(uint32 crc);
+
+	UnicodeString getStringId(const StringId& id);
 };
 
 }

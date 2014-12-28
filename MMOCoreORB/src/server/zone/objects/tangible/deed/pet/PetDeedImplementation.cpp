@@ -434,6 +434,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		ObjectManager* objectManager = server->getZoneServer()->getObjectManager();
 		pet->setPetDeed(_this.get());
 		pet->loadTemplateData( petTemplate );
+		pet->setCustomObjectName(StringIdManager::instance()->getStringId(*pet->getObjectName()), true);
 		pet->createChildObjects();
 		pet->setBaby(false);
 		// update base stats on the pet now
