@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a51691d_d0fbf145",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-12-28T23:20:44Z",
+      "side": 1,
+      "message": "Yeah, I will change this.",
+      "parentUuid": "7a51691d_90c7b912",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a51691d_50d141cc",
         "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-12-28T22:57:16Z",
       "side": 1,
       "message": "Please use tabs for indentation to match the rest of the file.",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_b0f8754a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-12-28T23:20:44Z",
+      "side": 1,
+      "message": "I am just using CTRL + I in Eclipse, which tabbing is correct in general for us, if you happen to know?",
+      "parentUuid": "7a51691d_50d141cc",
       "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "7a51691d_909579e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-12-28T23:20:44Z",
+      "side": 1,
+      "message": "Again, the formatting was wrong mostly, I just highlighted all and did CTRL + I in Eclipse\u0027s LUA editor (which will auto-allign the code.)\n\nAs I commented in experience_converter.lua, I was under the impression that this was the correct thing to do?",
+      "parentUuid": "7a51691d_50e8217c",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a51691d_70f31d74",
         "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
         "patchSetId": 3
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "7a51691d_709afd15",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-12-28T23:20:44Z",
+      "side": 1,
+      "message": "Nice catch, didn\u0027t notice it... Would explain some things.",
+      "parentUuid": "7a51691d_70f31d74",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a51691d_f0d70dbe",
         "filename": "MMOCoreORB/src/server/zone/objects/player/FsExperienceTypes.h",
         "patchSetId": 3
@@ -98,6 +170,24 @@
       "writtenOn": "2014-12-28T22:57:16Z",
       "side": 1,
       "message": "Use a space and not a tab between else and if.",
+      "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_509f0104",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/FsExperienceTypes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-12-28T23:20:44Z",
+      "side": 1,
+      "message": "Doesn\u0027t dannuic do that for his coding style?",
+      "parentUuid": "7a51691d_f0d70dbe",
       "revId": "b9f438a9f821fda54767e4dd68ee23f5cd50f071",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
