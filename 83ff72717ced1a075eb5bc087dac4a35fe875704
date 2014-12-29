@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_70c1dde3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-29T13:19:26Z",
+      "side": 1,
+      "message": "You aren\u0027t using creatureObject, change to withCreaturePlayerObject",
+      "revId": "83ff72717ced1a075eb5bc087dac4a35fe875704",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_50b6e18b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-29T13:19:26Z",
+      "side": 1,
+      "message": "Are there no client strings for the title and text?",
+      "revId": "83ff72717ced1a075eb5bc087dac4a35fe875704",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_30bb6574",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-29T13:19:26Z",
+      "side": 1,
+      "message": "Again, are there no client strings for this?",
+      "revId": "83ff72717ced1a075eb5bc087dac4a35fe875704",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_10b0698a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-29T13:19:26Z",
+      "side": 1,
+      "message": "Rather than nesting these object manager calls, just use withCreatureAndPlayerObject",
+      "revId": "83ff72717ced1a075eb5bc087dac4a35fe875704",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_f0acad37",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/SuiManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-12-29T13:19:26Z",
+      "side": 1,
+      "message": "To not From",
+      "revId": "83ff72717ced1a075eb5bc087dac4a35fe875704",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
