@@ -47,7 +47,7 @@ public:
 		strongRef->clearBehaviorList();
 
 		if (aiTemp.isEmpty()) {
-			if (strongRef->getParentID() != 0)
+			if (strongRef->getParentID() != 0 || ((CloseObjectsVector*) strongRef->getCloseObjects()) == NULL)
 				strongRef->setCreatureBitmask(strongRef->getCreatureBitmask() | CreatureFlag::STATIC);
 			strongRef->setupBehaviorTree();
 		} else
