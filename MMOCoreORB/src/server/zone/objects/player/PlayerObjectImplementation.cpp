@@ -2214,3 +2214,9 @@ int PlayerObjectImplementation::getCharacterAgeInDays() {
 
 	return days;
 }
+
+String PlayerObjectImplementation::getForceSensitiveExperienceRatio(const String& type) {
+	if (!FsExperienceTypes::getFsRatio(type).isEmpty())
+		return FsExperienceTypes::getFsRatio(type);
+	else return "";
+}
