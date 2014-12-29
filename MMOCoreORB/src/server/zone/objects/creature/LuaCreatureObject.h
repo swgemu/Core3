@@ -98,6 +98,7 @@ namespace creature {
 		int getSpecies(lua_State* L);
 		int isDroidPet(lua_State* L);
 		int isCombatDroidPet(lua_State* L);
+		int awardExperience(lua_State* L);
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;
