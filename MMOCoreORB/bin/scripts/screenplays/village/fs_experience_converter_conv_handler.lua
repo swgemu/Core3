@@ -3,6 +3,8 @@ local Logger = require("utils.logger")
 require("utils.helpers")
 local ObjectManager = require("managers.object.object_manager")
 
+local EXPERIECE_TYPE_FOR_RATIO = 0 -- Defaults to combat, is changed.
+
 fs_experience_converter_conv_handler = Object:new {}
 
 function fs_experience_converter_conv_handler:getNextConversationScreen(pConversationTemplate, pConversingPlayer, selectedOption)
@@ -65,12 +67,16 @@ function fs_experience_converter_conv_handler:runScreenHandlers(pConversationTem
 		fs_experience_converter_conv_handler:chooseBranchToUnlock(pConversingPlayer)
 	elseif screenID == "cs_jsPlumb_1_11" then -- Transferring Experience of first type.
 		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 0)
+		EXPERIECE_TYPE_FOR_RATIO = 0
 	elseif screenID == "cs_jsPlumb_1_126" then -- Transferring Experience of second type.
 		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 1)
+		EXPERIECE_TYPE_FOR_RATIO = 1
 	elseif screenID == "cs_jsPlumb_1_139" then -- Transferring Experience of third type.
 		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 2)
+		EXPERIECE_TYPE_FOR_RATIO = 2
 	elseif screenID == "cs_jsPlumb_1_152" then -- Transferring Experience of fourth type.
 		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 3)
+		EXPERIECE_TYPE_FOR_RATIO = 3
 	end
 	return pConversationScreen
 end
@@ -118,16 +124,82 @@ function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pCrea
 		player:sendSystemMessage("@quest/force_sensitive/utils:convert_not_enough_for_conversion")
 		return
 	end
-	suiManager:sendListBox(pCreature, pCreature, "@sui:swg", "@ui:experience_name", 2, "@ok", "", "@cancel", "fs_experience_converter_conv_handler", "notifyTransfer", options)
+
+	local experienceTypeFS = nil
+	if (EXPERIECE_TYPE_FOR_RATIO == 0) then
+		experienceTypeFS = "@exp_n:fs_combat"
+	elseif (EXPERIECE_TYPE_FOR_RATIO == 1) then
+		experienceTypeFS = "@exp_n:fs_senses"
+	elseif (EXPERIECE_TYPE_FOR_RATIO == 2) then
+		experienceTypeFS = "@exp_n:fs_reflex"
+	elseif (EXPERIECE_TYPE_FOR_RATIO == 3) then
+		experienceTypeFS = "@exp_n:fs_crafting"
+	end
+
+	suiManager:sendListBox(pCreature, pCreature, "@quest/force_sensitive/utils:xp_transfer_prompt", "Select the Experience you wish to convert to: " .. experienceTypeFS, 2, "@canel", "", "@ok", "fs_experience_converter_conv_handler", "notifyTransfer", options)
 end
 
 function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, cancelPressed, arg0)
 	if (not cancelPressed) then
+		local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, EXPERIECE_TYPE_FOR_RATIO)
+		local optionsNameFrom = optionsName[arg0 + 1]
+		local optionsNameTo = nil
+		if (EXPERIECE_TYPE_FOR_RATIO == 0) then
+			optionsNameTo = "fs_combat"
+		elseif (EXPERIECE_TYPE_FOR_RATIO == 1) then
+			optionsNameTo = "fs_senses"
+		elseif (EXPERIECE_TYPE_FOR_RATIO == 2) then
+			optionsNameTo = "fs_reflex"
+		elseif (EXPERIECE_TYPE_FOR_RATIO == 3) then
+			optionsNameTo = "fs_crafting"
+		end
+
 		local amount = ExperienceConverter:getExperienceAmount(pCreature, arg0)
-		--local suiManager = LuaSuiManager()
-		--suiManager:sendTransferBox(pCreature, pCreature, "@sui:swg", message, "@ok", "ExperienceConverter", "transferExperiencePoints")
-		local player = LuaCreatureObject(pCreature)
-		player:sendSystemMessage("You want to transfer " .. amount .. " of experience, but we're still working on that.")
+		local ratio = ExperienceConverter:getExperienceRatio(pCreature, arg0)
+
+		-- Add From Options: 1 = string name, 2 = amount, 3 = ratio
+		local optionsFrom = {optionsNameFrom, amount, ratio}
+		local optionsTo = {"@exp_n:" .. optionsNameTo, 0, 1}
+		local suiManager = LuaSuiManager()
+		suiManager:sendTransferBox(pCreature, pCreature, "@quest/force_sensitive/utils:xp_transfer_prompt", "How much of " .. optionsNameFrom .. " do you wish to convert to: " .. optionsTo[1] , "@ok", "fs_experience_converter_conv_handler", "transferExperiencePoints", optionsFrom, optionsTo)
+	end
+end
+
+function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature, pSui, cancelPressed, arg0, arg1)
+	if (not cancelPressed) then
+		local experienceTypeFS = nil
+		if (EXPERIECE_TYPE_FOR_RATIO == 0) then
+			experienceTypeFS = "fs_combat"
+		elseif (EXPERIECE_TYPE_FOR_RATIO == 1) then
+			experienceTypeFS = "fs_senses"
+		elseif (EXPERIECE_TYPE_FOR_RATIO == 2) then
+			experienceTypeFS = "fs_reflex"
+		elseif (EXPERIECE_TYPE_FOR_RATIO == 3) then
+			experienceTypeFS = "fs_crafting"
+		end
+
+		if (arg1 <= 0) then
+			ObjectManager.withCreatureObject(pCreature, function(creatureObject)
+				creatureObject:sendSystemMessage("@quest/force_sensitive/utils:convert_allocate_more_xp")
+				return
+			end)
+		end
+
+		local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, EXPERIECE_TYPE_FOR_RATIO)
+		local experienceTypeNormal = optionsName[1]
+		ObjectManager.withCreatureAndPlayerObject(pCreature, function(creatureObject, playerObject)
+			playerObject:setExperience(experienceTypeNormal, playerObject:getExperience(experienceTypeNormal) - arg0)
+			local messageString = LuaStringIdChatParameter("@quest/force_sensitive/utils:xp_convert_lose")
+			messageString:setTO(experienceTypeNormal)
+			messageString:setDI(arg0)
+			creatureObject:sendSystemMessage(messageString:_getObject())
+
+			playerObject:setExperience(experienceTypeFS, playerObject:getExperience(experienceTypeFS) + arg1)
+			local messageString = LuaStringIdChatParameter("@quest/force_sensitive/utils:xp_convert_gain")
+			messageString:setTO(experienceTypeFS)
+			messageString:setDI(arg1)
+			creatureObject:sendSystemMessage(messageString:_getObject())
+		end)
 	end
 end
 

@@ -56,7 +56,7 @@ function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
 
 	if (table.getn(trees) > 0) then
 		return trees
-	else 
+	else
 		return nil
 	end
 
@@ -99,13 +99,23 @@ function ExperienceConverter:getExperienceAmount(pPlayer, pSelection)
 	local experienceType = nil
 	local amount = nil
 	-- Unformat string for retrieval.
-	local selection = string.sub(pSelection, 7, string.len(pSelection))
-	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(creatureObject, playerObject)
-		experienceType = playerObject:getExperienceType(selection)
+	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
+		experienceType = playerObject:getExperienceType(pSelection)
 		amount = playerObject:getExperience(experienceType)
 	end)
 
 	return amount
+end
+
+function ExperienceConverter:getExperienceRatio(pPlayer, pSelection)
+	local experienceType = nil
+	local ratio = nil
+	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
+		experienceType = playerObject:getExperienceType(pSelection)
+		ratio = playerObject:getExperienceRatio(experienceType)
+	end)
+
+	return ratio
 end
 
 -- Get the highest box from the tables above for the trainer.
@@ -126,9 +136,9 @@ end
 function ExperienceConverter:removeScreenPlayState(pCreature, pNameForState)
 
 	foreach(unlockableFSBranches, function(theTable)
-		if (theTable.unlockString == pNameForState) then 
+		if (theTable.unlockString == pNameForState) then
 			ObjectManager.withCreatureObject(pCreature, function(creatureObject)
-			creatureObject:setScreenPlayState(0, theTable.state)
+				creatureObject:setScreenPlayState(0, theTable.state)
 			end)
 		end
 	end)

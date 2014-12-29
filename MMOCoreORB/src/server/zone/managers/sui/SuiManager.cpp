@@ -834,3 +834,51 @@ void SuiManager::sendListBox(SceneObject* usingObject, SceneObject* player, cons
 		playerObject->addSuiBox(box);
 	}
 }
+
+void SuiManager::sendTransferBox(SceneObject* usingObject, SceneObject* player, const String& title, const String& text, LuaObject& optionsAddFrom, LuaObject& optionsAddTo, const String& screenplay, const String& callback) {
+	if (usingObject == NULL)
+		return;
+
+	if (player == NULL || !player->isCreatureObject())
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(player);
+
+	PlayerObject* playerObject = creature->getPlayerObject();
+
+	if (playerObject != NULL) {
+
+		ManagedReference<SuiTransferBox*> box = NULL;
+
+		box = new SuiTransferBox(creature, 0x00);
+
+		if(optionsAddFrom.isValidTable()){
+			String optionAddFromTextString = optionsAddFrom.getStringAt(1);
+			String optionAddFromStartingString = optionsAddFrom.getStringAt(2);
+			String optionAddFromRatioString = optionsAddFrom.getStringAt(3);
+			box->addFrom(optionAddFromTextString,
+					optionAddFromStartingString,
+					optionAddFromStartingString, optionAddFromRatioString);
+			optionsAddFrom.pop();
+		}
+
+		if(optionsAddTo.isValidTable()){
+			String optionAddToTextString = optionsAddTo.getStringAt(1);
+			String optionAddToStartingString = optionsAddTo.getStringAt(2);
+			String optionAddToRatioString = optionsAddTo.getStringAt(3);
+			box->addTo(optionAddToTextString,
+					optionAddToStartingString,
+					optionAddToStartingString, optionAddToRatioString);
+			optionsAddTo.pop();
+		}
+
+		box->setCallback(new LuaSuiCallback(creature->getZoneServer(), screenplay, callback));
+		box->setPromptTitle(title);
+		box->setPromptText(text);
+		box->setUsingObject(usingObject);
+		box->setForceCloseDistance(32.f);
+
+		creature->sendMessage(box->generateMessage());
+		playerObject->addSuiBox(box);
+	}
+}
