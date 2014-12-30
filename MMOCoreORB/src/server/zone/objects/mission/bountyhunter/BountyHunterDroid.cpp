@@ -81,7 +81,7 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 }
 
 Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
-	if (mission->getMissionLevel() < 3) {
+	if (mission->getMissionLevel() < 2) { // If it is lower than 2 (1), they don't have the ability.
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
 		return NULL;
 	}
@@ -139,7 +139,7 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 }
 
 Reference<FindTargetTask*> BountyHunterDroid::transmitBiologicalSignature(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
-	if (mission->getMissionLevel() < 3) {
+	if (mission->getMissionLevel() < 2) { // If it is lower than 2 (1), they don't have the ability.
 		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
 		return NULL;
 	}
