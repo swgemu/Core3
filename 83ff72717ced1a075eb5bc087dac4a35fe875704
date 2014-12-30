@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7a51691d_b0a63552",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2014-12-30T01:04:04Z",
+      "side": 1,
+      "message": "For the title, there apparently is one that I missed somehow in the utils stf file. However, the text one does not appear to have any STF file with the appropriate strings (I got the text from the Village video Nee showed me.)",
+      "parentUuid": "7a51691d_50b6e18b",
+      "revId": "83ff72717ced1a075eb5bc087dac4a35fe875704",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a51691d_30bb6574",
         "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
         "patchSetId": 4
