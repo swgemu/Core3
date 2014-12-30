@@ -8,7 +8,7 @@ followf = {
 	{"root", "MoveFactionPet", "none", BEHAVIOR},
 }
 follow = {
-	{"root", "MoveDefault", "none", BEHAVIOR},
+	{"root", "MoveCreaturePet", "none", BEHAVIOR},
 }
 
 addAiTemplate("follow", follow)
