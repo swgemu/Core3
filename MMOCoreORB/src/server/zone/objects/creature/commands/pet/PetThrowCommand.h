@@ -145,7 +145,7 @@ public:
 				return GENERALERROR;
 			}
 			// place droid and owner in combat
-			if(!CombatManager::instance()->startCombat(droid, target) || !CombatManager::instance()->startCombat(owner,target))
+			if(!CombatManager::instance()->startCombat(droid, target))
 				return GENERALERROR;
 
 			float hitChance = CombatManager::instance()->hitChanceEquation(trappingSkill, 0, targetDefense);

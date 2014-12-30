@@ -101,23 +101,31 @@ public:
 
 		Vector<int> types;
 		int type = 0;
+		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_BONE) {
+			type = 236;
+		}
+
+		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_HIDE) {
+			type = 235;
+		}
+
+		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_MEAT) {
+			type = 234;
+		}
+
 		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_BONE && cr->getBoneType().isEmpty()) {
 			owner->sendSystemMessage("@pet/droid_modules:target_type_not_found");
 			return GENERALERROR;
-		} else {
-			type = 236;
 		}
+
 		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_HIDE && cr->getHideType().isEmpty()) {
 			owner->sendSystemMessage("@pet/droid_modules:target_type_not_found");
 			return GENERALERROR;
-		} else {
-			type = 235;
 		}
+
 		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_MEAT && cr->getMeatType().isEmpty()) {
 			owner->sendSystemMessage("@pet/droid_modules:target_type_not_found");
 			return GENERALERROR;
-		} else {
-			type = 234;
 		}
 
 		if (harvestInterest == DroidHarvestModuleDataComponent::INTREST_RANDOM) {

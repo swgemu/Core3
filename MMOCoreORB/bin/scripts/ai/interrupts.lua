@@ -246,8 +246,7 @@ DroidPetInterrupt = createClass(DefaultInterrupt)
 function DroidPetInterrupt:startDamageInterrupt(pAgent,pObject)
 	if pAgent == nil or pObject == nil then return end
 	local agent = AiAgent(pAgent)
-	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go
-		
+	--print("droid got damage\n")
 	-- starting combat droids shoudl flee if they arent combat capable and they get hit by damage
 	if ObjectManager.withCreatureObject(pAgent, function(creo) return not creo:isCombatDroidPet() end) then
 		-- if in combat run away if not a combat pet
@@ -268,12 +267,10 @@ function DroidPetInterrupt:startCombatInterrupt(pAgent, pObject)
 	if pAgent == nil or pObject == nil then return end
 	local agent = AiAgent(pAgent)
 	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go
-		
 	DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
 
   	--recover our pointer to agent
 	agent = AiAgent(pAgent)
-	printf("starting suspend behaviour\n")
 	agent:setBehaviorStatus(BEHAVIOR_SUSPEND)
 	agent:resetBehaviorList()
 	agent:executeBehavior()
