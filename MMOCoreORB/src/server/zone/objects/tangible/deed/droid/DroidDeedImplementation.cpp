@@ -113,6 +113,9 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 	}
 	modules.removeAll();
 	overallQuality = values->getCurrentValue("exp_effectiveness");
+	if (overallQuality < 0) {
+		overallQuality = 1;
+	}
 	// @TODO Add crafting values, this should adjust toHit and Speed based on droid ham, also
 
 	// we need to stack modules if they are stackable.
@@ -284,7 +287,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		}
 		if(droid->isCombatDroid()) {
 			// change ham to match overall setup
-			int maxHam = DroidMechanics::determineHam(overallQuality,species);
+			float maxHam = DroidMechanics::determineHam(overallQuality,species);
 			for (int i = 0; i < 9; ++i) {
 				if (i % 3 == 0) {
 					droid->setMaxHAM(i,maxHam,true);

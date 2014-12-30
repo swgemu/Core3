@@ -46,8 +46,9 @@ public:
 				return GENERALERROR;
 			}
 		}
-
-		CombatManager::instance()->attemptPeace(pet);
+		// attempt peace if the pet is in combat
+		if (pet->isInCombat())
+			CombatManager::instance()->attemptPeace(pet);
 
 		pet->setFollowObject(targetObject);
 		pet->storeFollowObject();

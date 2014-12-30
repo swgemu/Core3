@@ -55,10 +55,28 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.h"
+#include "server/zone/managers/crafting/labratories/DroidMechanics.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
 	initDroidModules();
+	if(isCombatDroid()) {
+		// Fix messed up ham, that could occur when overall quality was negative during experimentation.
+		if (this->getMaxHAM(0) < 0) {
+			int overallQuality = 1;
+			float maxHam = DroidMechanics::determineHam(overallQuality,species);
+			for (int i = 0; i < 9; ++i) {
+				if (i % 3 == 0) {
+					setMaxHAM(i,maxHam,true);
+					setHAM(i,maxHam,true);
+				} else {
+					setMaxHAM(i,maxHam/100,true);
+					setHAM(i,maxHam/100,true);
+				}
+			}
+		}
+	}
+
 }
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
@@ -349,7 +367,7 @@ bool DroidObjectImplementation::isTrapDroid() {
 bool DroidObjectImplementation::hasStorage() {
 	for( int i=0; i<modules.size(); i++){
 		BaseDroidModuleComponent* module = modules.get(i);
-		if(module->getModuleName() == "storage_module") {
+		if(module->getModuleName() == "item_storage_module") {
 			return true;
 		}
 	}
