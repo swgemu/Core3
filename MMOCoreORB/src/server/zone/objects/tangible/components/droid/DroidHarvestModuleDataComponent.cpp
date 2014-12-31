@@ -309,10 +309,15 @@ void DroidHarvestModuleDataComponent::handlePetCommand(String cmd, CreatureObjec
 void DroidHarvestModuleDataComponent::creatureHarvestCheck(CreatureObject* target) {
 	// check to see if we have loot rights
 	ManagedReference<DroidObject*> droid = getDroidObject();
-	if( droid == NULL || droid->getPendingTask("droid_harvest_command_reschedule") != NULL){
+	if( droid == NULL){
 		return;
 	}
 	Locker dlock(droid);
+
+	if (droid->getPendingTask("droid_harvest_command_reschedule") != NULL) {
+		return;
+	}
+
 	// harvest task check values
 	// tell droid togo target
 	droid->setTargetObject(target);
