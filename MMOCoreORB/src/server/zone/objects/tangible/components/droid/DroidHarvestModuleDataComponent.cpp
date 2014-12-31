@@ -175,7 +175,7 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 		// Toggle off
 		if (active){
 			deactivate();
-			player->sendSystemMessage("@pet/droid_modules:auto_harvest_on");  // You turn off auto-repair
+			player->sendSystemMessage("@pet/droid_modules:auto_harvest_off");  // You turn off auto-repair
 		}
 		else{ // Toggle on
 
@@ -191,7 +191,7 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 
 			// Ensure we don't accidentally have another task outstanding
 			deactivate();
-			player->sendSystemMessage("@pet/droid_modules:auto_harvest_off");  // You turn on auto-repair
+			player->sendSystemMessage("@pet/droid_modules:auto_harvest_on");  // You turn on auto-repair
 			if (observer == NULL) {
 				observer = new DroidHarvestObserver(this);
 				observer->deploy();
