@@ -29,7 +29,7 @@ public:
 
 		player->removePendingTask("call_mount");
 
-		if(player->isInCombat())
+		if(player->isInCombat() || device->getControlledObject() == NULL)
 			return;
 
 		Locker clocker(device->getControlledObject(), player);
