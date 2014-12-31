@@ -885,6 +885,17 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get().getLevel();
 	}
 
+	@dirty
+	public float getTame() {
+		if (petDeed != null) {
+			return 1;
+		}
+	
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getTame();
+	}
 	
 	@local
 	public CreatureAttackMap getAttackMap() {
