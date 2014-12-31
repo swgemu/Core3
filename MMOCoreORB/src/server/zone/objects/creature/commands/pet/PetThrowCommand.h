@@ -124,7 +124,7 @@ public:
 
 			int trapBonus = module->getTrapBonus();
 			// trapping skill gets modified by the droids trap bonus
-			int bonus = DroidMechanics::determineDroidSkillBonus(trappingSkill,trapBonus);
+			int bonus = DroidMechanics::determineDroidSkillBonus(trappingSkill,trapBonus,trappingSkill);
 			if (trapBonus > trappingSkill)
 				trappingSkill += bonus;
 			else
