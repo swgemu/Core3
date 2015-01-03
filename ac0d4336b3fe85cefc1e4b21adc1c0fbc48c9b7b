@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_a35eed10",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/dungeon/death_watch_bunker/boba_fett_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "Should this be false since you have options listed?",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_839bf1c8",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/dungeon/death_watch_bunker/commander_dkrn_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "There doesn\u0027t appear to be a convoscreen1 anymore.",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_437cd972",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/dungeon/death_watch_bunker/foreman_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "I don\u0027t see an \"old_technology\" screen.",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_0396e194",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/dungeon/death_watch_bunker/foreman_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "Should this point to \"remember_tricky_pumps\" instead?",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_23aafdd4",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/dungeon/death_watch_bunker/medical_droid_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "There is no convoscreen1",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_43a5f902",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/dungeon/death_watch_bunker/workshop_droid_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "There\u0027s no longer a convoscreen1",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_6387d562",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchForemanConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "There doesn\u0027t appear to be a check at this point that the player actually has the battery. You check when screen is \"found_him_yet\", but if that screen is displayed they shouldn\u0027t have it yet.\n\nPerhaps it would be better to return \"found_him_yet\" here as well and only check for the battery and add the thank you options if they have the screenPlayState of 4.",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_e392a59e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchForemanConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "I don\u0027t see where the pump timer is actually activated yet, but DeathWatchBunkerScreenPlay:pumpTimer() sets the screenplay state of 3 and not 2. I expect that may be a bug there and not here, though.",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_a3b5cd32",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchForemanConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "This seems an odd choice of screen for setting the initial spoken state. It\u0027s possible to bypass this screen in the conversation entirely. Perhaps \"one_of_my_men\" would be a better place to set this state.",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_c3b8c92c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchForemanConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "Would it not be better to set this screen play state when screenID is \"great_remember_medicine\" rather than \"cure_is_upstairs\"? \"cure_is_upstairs\" can be bypassed completely, and even when displayed, a player can still decline afterwards.",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_2381dd4a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchForemanConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "Probably doesn\u0027t matter at this point, but the template has a tricky_pumps_no_haldo_kill screen and no tricky_pumps_haldo_nokill screen.\n\nAlso, shouldn\u0027t it be the no_haldo_kill that is used right now since you\u0027ve not added support for killing haldo yet?",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_c38fa974",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchForemanConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "Should this point to \"used_in_armor\" instead? That\u0027s how your comments on the template have it.",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_03af01e5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchHaldoConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "Why do you have two runScreenHandlers functions?",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_e3abc5d4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchHaldoConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you handle the items before setting the screen play states? I would think you\u0027d only want to set them if the battery was given.",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_63a0f5f4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchRescueScientistConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-03T10:18:30Z",
+      "side": 1,
+      "message": "Looks like you copy and pasted commander dkrn\u0027s runScreenHandlers function and forgot to modify it....",
+      "revId": "ac0d4336b3fe85cefc1e4b21adc1c0fbc48c9b7b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
