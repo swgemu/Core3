@@ -197,10 +197,24 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	local npcNumber = self.themePark:getActiveNpcNumber(pOwner)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pOwner)
 	local mission = self.themePark:getMission(npcNumber, missionNumber)
-
-	local worldPosition = self.themePark:getNpcWorldPosition(npcNumber)
-
 	local npcData = self.themePark:getNpcData(npcNumber)
+
+	local planetName
+	local worldPosition
+
+	if (self.themePark.genericGiver) then
+		local giverId = readData(CreatureObject(pConversingPlayer):getObjectID() ..":genericGiverID")
+		local pGiver = getSceneObject(giverId)
+		if (pGiver == nil) then
+			printf("Error in mission_target_conv_handler:handleScreenMissionType(), unable to find generic quest giver.")
+			return
+		end
+		worldPosition = { x = SceneObject(pGiver):getWorldPositionX(), y = SceneObject(pGiver):getWorldPositionY() }
+		planetName = SceneObject(pGiver):getZoneName()
+	else
+		worldPosition = self.themePark:getNpcWorldPosition(npcNumber)
+		planetName = npcData.spawnData.planetName
+	end
 
 	local nextScreenID
 	if mission.missionType == "deliver" then
@@ -223,7 +237,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 		if correctNpc == true then
 			self.themePark:createEscortReturnArea(pConversingNpc, pConversingPlayer)
 			self.themePark:followPlayer(pConversingNpc, pConversingPlayer)
-			self.themePark:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
+			self.themePark:updateWaypoint(pConversingPlayer, planetName, worldPosition.x, worldPosition.y, "return")
 			nextScreenID = "npc_takeme_n"
 		else
 			nextScreenID = "otherescort_n"
@@ -232,7 +246,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 		if correctNpc == true then
 			if activeMission ~= 2 and self.themePark:hasFullInventory(pConversingPlayer) == false then
 				self.themePark:giveMissionItems(mission, pConversingPlayer)
-				self.themePark:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
+				self.themePark:updateWaypoint(pConversingPlayer, planetName, worldPosition.x, worldPosition.y, "return")
 				nextScreenID = "npc_smuggle_n"
 			elseif activeMission ~= 2 and self.themePark:hasFullInventory(pConversingPlayer) == true then
 				nextScreenID = "inv_full"
