@@ -145,6 +145,8 @@ public:
 			return sendVendorInfo(creature, targetObj);
 		}else if( container == "veteranrewards" ){
 			return sendVeteranRewardInfo( creature, targetObj );
+		}else if( container == "faction" ){
+			return sendFactionInfo( creature, targetObj );
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
@@ -196,6 +198,57 @@ public:
 		return SUCCESS;
 
 	}
+
+	int sendFactionInfo(CreatureObject* creature, CreatureObject* target) {
+		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+
+		if (targetGhost == NULL || ghost == NULL || playerManager == NULL)
+			return GENERALERROR;
+
+		StringBuffer body;
+		body << "Player Name:\t" << target->getFirstName() << endl;
+		body << "Affiliation:\t";
+
+		if (target->isImperial())
+			body << "Imperial";
+		else if (target->isRebel())
+			body << "Rebel";
+		else
+			body << "Neutral" << endl;
+
+		int rank = 0;
+
+		if (target->isImperial() || target->isRebel()) {
+			if (targetGhost->getFactionStatus() == FactionStatus::ONLEAVE)
+				body << " (On Leave)" << endl;
+			else if (targetGhost->getFactionStatus() == FactionStatus::OVERT)
+				body << " (Overt)" << endl;
+			else if (targetGhost->getFactionStatus() == FactionStatus::COVERT)
+				body << " (Covert)" << endl;
+			else if (targetGhost->getFactionStatus() == FactionStatus::CHANGINGSTATUS)
+				body << " (Changing Status)" << endl;
+
+			rank = target->getFactionRank();
+			body << "Rank:\t" << FactionManager::instance()->getRankName(rank) << " (Rank " << rank + 1 << ")" << endl;
+		}
+		body << "Imperial Points:\t" << targetGhost->getFactionStanding("imperial") << " (Max: " << FactionManager::instance()->getFactionPointsCap(rank) << ")" << endl;
+		body << "Rebel Points:\t" << targetGhost->getFactionStanding("rebel") << " (Max: " << FactionManager::instance()->getFactionPointsCap(rank) << ")" << endl;
+
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
+		box->setPromptTitle("Faction Information");
+		box->setPromptText(body.toString());
+		box->setUsingObject(target);
+		box->setForceCloseDisabled();
+
+		ghost->addSuiBox(box);
+		creature->sendMessage(box->generateMessage());
+
+		return SUCCESS;
+
+	}
+
 
 	int sendVendorInfo(CreatureObject* creature, CreatureObject* target) {
 		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
