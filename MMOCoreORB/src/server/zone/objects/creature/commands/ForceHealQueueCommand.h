@@ -17,6 +17,7 @@
 class ForceHealQueueCommand : public QueueCommand {
 protected:
 	float forceCost;
+	uint32 buffCRC;
 
 public:
 	ForceHealQueueCommand(const String& name, ZoneProcessServer* server)
