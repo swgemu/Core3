@@ -577,8 +577,11 @@ end
 
 function recruiterScreenplay:handleResign(pPlayer)
 	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
+		oldFaction = player:getFaction()
+		oldFactionName = self:getFactionFromHashCode(oldFaction)
 		player:setFactionRank(0)
 		player:setFaction(0)
 		playerObject:setFactionStatus(0)
+		playerObject:decreaseFactionStanding(oldFactionName, 0)
 	end)
 end

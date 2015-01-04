@@ -1401,23 +1401,27 @@ void PlayerObjectImplementation::increaseFactionStanding(const String& factionNa
 
 	if (!factionStandingList.isPvpFaction(factionName))
 		newAmount = MIN(5000, newAmount);
-	else
+	else if (player->getFaction() == factionName.hashCode())
 		newAmount = MIN(FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
+	else
+		newAmount = MIN(1000, newAmount);;
 
 	factionStandingList.put(factionName, newAmount);
 
-	int change = floor(newAmount - currentAmount);
+	if (amount != 0) {
+		int change = floor(newAmount - currentAmount);
 
-	//Send the proper system message.
-	StringIdChatParameter msg("@base_player:prose_award_faction");
-	msg.setTO("@faction/faction_names:" + factionName);
-	msg.setDI(change);
+		//Send the proper system message.
+		StringIdChatParameter msg("@base_player:prose_award_faction");
+		msg.setTO("@faction/faction_names:" + factionName);
+		msg.setDI(change);
 
-	if (change == 0)
-		msg.setStringId("@base_player:prose_max_faction");
+		if (change == 0)
+			msg.setStringId("@base_player:prose_max_faction");
 
 
-	player->sendSystemMessage(msg);
+		player->sendSystemMessage(msg);
+	}
 }
 
 uint32 PlayerObjectImplementation::getNewSuiBoxID(uint32 type) {
@@ -1458,19 +1462,28 @@ void PlayerObjectImplementation::decreaseFactionStanding(const String& factionNa
 	//Ensure that the new amount is not less than -5000.
 	float newAmount = MAX(-5000, currentAmount - amount);
 
+	if (factionStandingList.isPvpFaction(factionName)) {
+		if (player->getFaction() == factionName.hashCode())
+			newAmount = MIN(FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
+		else
+			newAmount = MIN(1000, newAmount);
+	}
+
 	factionStandingList.put(factionName, newAmount);
 
-	int change = floor(currentAmount - newAmount);
+	if (amount != 0) {
+		int change = floor(currentAmount - newAmount);
 
-	//Send the proper system message.
-	StringIdChatParameter msg("@base_player:prose_lose_faction");
-	msg.setTO("@faction/faction_names:" + factionName);
-	msg.setDI(change);
+		//Send the proper system message.
+		StringIdChatParameter msg("@base_player:prose_lose_faction");
+		msg.setTO("@faction/faction_names:" + factionName);
+		msg.setDI(change);
 
-	if (change == 0)
-		msg.setStringId("@base_player:prose_min_faction");
+		if (change == 0)
+			msg.setStringId("@base_player:prose_min_faction");
 
-	player->sendSystemMessage(msg);
+		player->sendSystemMessage(msg);
+	}
 }
 
 float PlayerObjectImplementation::getFactionStanding(const String& factionName) {
