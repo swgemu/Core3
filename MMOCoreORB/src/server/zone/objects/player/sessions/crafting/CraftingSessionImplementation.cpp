@@ -478,6 +478,13 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		return;
 	}
 
+	ManagedReference<SceneObject*> objectsParent = tano->getParent();
+
+	if (objectsParent == NULL || !objectsParent->checkContainerPermission(crafter, ContainerPermissions::MOVEOUT)){
+		sendSlotMessage(clientCounter, IngredientSlot::INVALIDINGREDIENT);
+		return;
+	}
+
 	ManagedReference<SceneObject*> craftingComponents = craftingTool->getSlottedObject("crafted_components");
 	ManagedReference<SceneObject*> craftingComponentsSatchel = NULL;
 
