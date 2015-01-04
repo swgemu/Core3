@@ -135,15 +135,15 @@ void FactionManager::awardPvpFactionPoints(TangibleObject* killer, CreatureObjec
 		ManagedReference<PlayerObject*> killedGhost = destructedObject->getPlayerObject();
 
 		if (killer->isRebel() && destructedObject->isImperial()) {
-			ghost->increaseFactionStanding("rebel", 75);
-			ghost->decreaseFactionStanding("imperial", 75);
+			ghost->increaseFactionStanding("rebel", 30);
+			ghost->decreaseFactionStanding("imperial", 30);
 
-			killedGhost->decreaseFactionStanding("imperial", 75); //TODO: find formulas
+			killedGhost->decreaseFactionStanding("imperial", 45);
 		} else if (killer->isImperial() && destructedObject->isRebel()) {
-			ghost->increaseFactionStanding("imperial", 75);
-			ghost->decreaseFactionStanding("rebel", 75);
+			ghost->increaseFactionStanding("imperial", 30);
+			ghost->decreaseFactionStanding("rebel", 30);
 
-			killedGhost->decreaseFactionStanding("rebel", 75);
+			killedGhost->decreaseFactionStanding("rebel", 45);
 		}
 	}
 }

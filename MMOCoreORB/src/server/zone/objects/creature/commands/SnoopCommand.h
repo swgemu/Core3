@@ -233,8 +233,8 @@ public:
 			rank = target->getFactionRank();
 			body << "Rank:\t" << FactionManager::instance()->getRankName(rank) << " (Rank " << rank + 1 << ")" << endl;
 		}
-		body << "Imperial Points:\t" << targetGhost->getFactionStanding("imperial") << " (Max: " << FactionManager::instance()->getFactionPointsCap(rank) << ")" << endl;
-		body << "Rebel Points:\t" << targetGhost->getFactionStanding("rebel") << " (Max: " << FactionManager::instance()->getFactionPointsCap(rank) << ")" << endl;
+		body << "Imperial Points:\t" << targetGhost->getFactionStanding("imperial") << " (Max: " << (target->isImperial() ? FactionManager::instance()->getFactionPointsCap(rank) : 1000) << ")" << endl;
+		body << "Rebel Points:\t" << targetGhost->getFactionStanding("rebel") << " (Max: " << (target->isRebel() ? FactionManager::instance()->getFactionPointsCap(rank) : 1000) << ")" << endl;
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
 		box->setPromptTitle("Faction Information");
