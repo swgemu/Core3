@@ -527,10 +527,17 @@ void BountyMissionObjectiveImplementation::handleNpcTargetKilled(ManagedObject* 
 	if (owner == NULL)
 		return;
 
-	if (attacker != NULL && attacker->getFirstName() == owner->getFirstName() &&
-			attacker->isPlayerCreature()) {
+	if (attacker != NULL && attacker->getObjectID() == owner->getObjectID() && attacker->isPlayerCreature()) {
 		//Target killed by player, complete mission.
 		complete();
+	} else if (attacker != NULL && attacker->isPet()) {
+		// Target killed by pet
+		ManagedReference<CreatureObject*> petOwner = attacker->getLinkedCreature().get();
+
+		if (petOwner != NULL && petOwner->getObjectID() == owner->getObjectID()) {
+			// Pet is owned by mission owner, complete mission.
+			complete();
+		}
 	} else {
 		//Target killed by other player, fail mission.
 		owner->sendSystemMessage("@mission/mission_generic:failed"); // Mission failed
