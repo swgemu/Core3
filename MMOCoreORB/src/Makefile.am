@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/tangible/components/droid/DroidHarvestObserver.cpp \
+core3_IDLS =	autogen/server/zone/objects/tangible/components/droid/DroidPersonalityObserver.cpp \
+				autogen/server/zone/objects/tangible/components/droid/DroidHarvestObserver.cpp \
 				autogen/server/zone/objects/tangible/components/droid/DroidPlaybackObserver.cpp \
 				autogen/server/zone/objects/tangible/tool/antidecay/AntiDecayKit.cpp \
 				autogen/server/zone/objects/tangible/deed/eventperk/EventPerkDeed.cpp \
@@ -572,6 +573,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/InstrumentImplementation.cpp \
 		server/zone/objects/tangible/components/droid/DroidPlaybackObserverImplementation.cpp \
 		server/zone/objects/tangible/components/droid/DroidHarvestObserverImplementation.cpp \
+		server/zone/objects/tangible/components/droid/DroidPersonalityObserverImplementation.cpp \
 		server/zone/objects/tangible/InstrumentObserverImplementation.cpp \
 		server/zone/objects/tangible/ContainerImplementation.cpp \
 		server/zone/objects/tangible/fishing/FishingPoleObjectImplementation.cpp \
@@ -636,6 +638,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/GogglesObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/ArmorObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.cpp \
+		server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidRepairModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidAutoRepairModuleDataComponent.cpp \

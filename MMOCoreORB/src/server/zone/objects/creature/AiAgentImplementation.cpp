@@ -747,6 +747,7 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	clearPatrolPoints();
 
 	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
+	notifyObservers(ObserverEventType::FLEEING, target);
 
 	followState = AiAgent::FLEEING;
 	fleeRange = range;
@@ -830,7 +831,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 
 	if (threatMap != NULL)
 		threatMap->removeAll();
-
+	notifyObservers(ObserverEventType::PEACE);
 	//setOblivious();
 }
 
