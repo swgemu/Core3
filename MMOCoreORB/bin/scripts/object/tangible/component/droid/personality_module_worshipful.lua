@@ -43,6 +43,9 @@
 
 object_tangible_component_droid_personality_module_worshipful = object_tangible_component_droid_shared_personality_module_worshipful:new {
 
+	templateType = DROIDPERSONALITYCHIP,
+	dataObjectComponent = "DroidPersonalityModuleDataComponent",
+	reactionName = "@npc_reaction/droid_worshipful",
 
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
