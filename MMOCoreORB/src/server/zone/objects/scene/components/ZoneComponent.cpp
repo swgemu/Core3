@@ -216,15 +216,18 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		zone->transferObject(sceneObject, -1, false);
 
 		zone->unlock();
+		zoneUnlocked = true;
 	} else {
 		if (sceneObject->getLocalZone() != NULL) {
 			zone->update(sceneObject);
 
 			zone->unlock();
+			zoneUnlocked = true;
 
 			zone->inRange(sceneObject, 192);
 		} else if (parent != NULL) {
 			zone->unlock();
+			zoneUnlocked = true;
 
 			updateInRangeObjectsOnMount(sceneObject);
 		}
@@ -263,7 +266,8 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		sceneObject->error(e.getMessage());
 	}
 
-	zone->wlock();
+	if (zoneUnlocked)
+		zone->wlock();
 }
 
 void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets) {
