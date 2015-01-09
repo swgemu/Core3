@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a51691d_e3caa56d",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/generic/criminal_target_noble.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2015-01-09T19:56:36Z",
+      "side": 1,
+      "message": "Yup, the only difference is meant to be the loot. Same npc type, different quest.",
+      "parentUuid": "7a51691d_83bad1df",
+      "revId": "99481d64faae97e384d20c6988458333544f8c57",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a51691d_23b9dde9",
         "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
         "patchSetId": 2
