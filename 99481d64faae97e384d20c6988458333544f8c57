@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_83bad1df",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/generic/criminal_target_noble.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2015-01-09T19:00:45Z",
+      "side": 1,
+      "message": "Did you mean for noble and merchant to be the same?",
+      "revId": "99481d64faae97e384d20c6988458333544f8c57",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_23b9dde9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2015-01-09T19:00:45Z",
+      "side": 1,
+      "message": "add a default for genericGiver",
+      "revId": "99481d64faae97e384d20c6988458333544f8c57",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_43b4d9f1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2015-01-09T19:00:45Z",
+      "side": 1,
+      "message": "set this back to just follow instead of followc, as we might make other changes to creature follow rules that shouldnt be applied to event mobs.",
+      "revId": "99481d64faae97e384d20c6988458333544f8c57",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
