@@ -6,6 +6,13 @@ includeFile("quest/chadra_fan_thief.lua")
 includeFile("quest/gadget_specialist.lua")
 includeFile("quest/theater_manager.lua")
 
+--Generic
+includeFile("quest/generic/criminal_target_merchant.lua")
+includeFile("quest/generic/criminal_target_noble.lua")
+includeFile("quest/generic/criminal_target_rival.lua")
+includeFile("quest/generic/criminal_target_thug.lua")
+includeFile("quest/generic/criminal_target.lua")
+
 --CoA
 includeFile("quest/coa/caravan_leader_coa3.lua")
 includeFile("quest/coa/caravan_thug_coa3.lua")

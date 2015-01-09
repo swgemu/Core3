@@ -13,6 +13,7 @@ ThemeParkLogic = ScreenPlay:new {
 	waypointMap = {},
 	permissionMap = {},
 	sceneObjectMap = {},
+	genericGiver = false,
 	className = "ThemeParkLogic",
 	screenPlayState = "theme_park_general",
 	distance = 1000,
@@ -28,6 +29,10 @@ function ThemeParkLogic:start()
 end
 
 function ThemeParkLogic:spawnNpcs()
+	if (self.genericGiver) then
+		return
+	end
+
 	for i = 1, # self.npcMap do
 		local npcSpawnData = self.npcMap[i].spawnData
 		if isZoneEnabled(npcSpawnData.planetName) then
@@ -43,6 +48,10 @@ function ThemeParkLogic:spawnNpcs()
 end
 
 function ThemeParkLogic:spawnSceneObjects()
+	if (self.genericGiver) then
+		return
+	end
+
 	if self.sceneObjectMap ~= nil then
 		for i = 1, # self.sceneObjectMap do
 			local objectSpawnData = self.sceneObjectMap[i].spawnData
@@ -122,6 +131,11 @@ end
 function ThemeParkLogic:hasFullInventory(pPlayer)
 	return ObjectManager.withSceneObject(pPlayer, function(player)
 		local pInventory = player:getSlottedObject("inventory")
+
+		if (pInventory == nil) then
+			return true
+		end
+
 		return SceneObject(pInventory):hasFullContainerObjects()
 	end)
 end
@@ -238,6 +252,10 @@ end
 
 function ThemeParkLogic:getNpcNumber(pNpc)
 	return ObjectManager.withCreatureObject(pNpc, function(npc)
+		if (self.genericGiver) then
+			return 1
+		end
+
 		local x = npc:getPositionX()
 		local y = npc:getPositionY()
 		local z = npc:getPositionZ()
@@ -266,6 +284,11 @@ end
 function ThemeParkLogic:getActiveNpcNumber(pConversingPlayer)
 	local npcNumber = 1
 	local activeNpcNumber = 1
+
+	if (self.genericGiver) then
+		return 1
+	end
+
 	for i = 1, 10, 1 do
 		if CreatureObject(pConversingPlayer):hasScreenPlayState(npcNumber, self.screenPlayState) == 1 then
 			activeNpcNumber = npcNumber * 2
@@ -294,6 +317,11 @@ function ThemeParkLogic:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 
 	local npcData = self:getNpcData(npcNumber)
 	if npcData ~= nil then
+
+		if (self.genericGiver) then
+			return readData(creature:getObjectID() .. ":generic_mission_number")
+		end
+
 		local npcName = npcData.spawnData.npcTemplate
 		local numberOfMissionsTotal = table.getn(npcData.missions)
 
@@ -555,10 +583,18 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 	local mainNpcs = mission.primarySpawns
 	for i = 1, table.getn(mission.primarySpawns), 1 do
 		local pNpc = self:spawnNpc(mainNpcs[i], spawnPoints[i], pConversingPlayer, i)
+
+		local planetName
+		if (mainNpcs[i].planetName == "generic") then
+			planetName = CreatureObject(pConversingPlayer):getZoneName()
+		else
+			planetName = mainNpcs[i].planetName
+		end
+
 		if pNpc ~= nil then
 			if i == 1 then
 				if (self:isValidConvoString(stfFile, ":npc_breech_" .. missionNumber)) then
-					local pBreechArea = spawnSceneObject(mainNpcs[i].planetName, "object/active_area.iff", spawnPoints[i][1], spawnPoints[i][2], spawnPoints[i][3], 0, 0, 0, 0, 0)
+					local pBreechArea = spawnSceneObject(planetName, "object/active_area.iff", spawnPoints[i][1], spawnPoints[i][2], spawnPoints[i][3], 0, 0, 0, 0, 0)
 					ObjectManager.withActiveArea(pBreechArea, function(activeArea)
 						activeArea:setRadius(32)
 						createObserver(ENTEREDAREA, self.className, "notifyEnteredBreechArea", pBreechArea)
@@ -571,7 +607,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 					end)
 				end
 				if (currentMissionType ~= "destroy") then
-					self:updateWaypoint(pConversingPlayer, mainNpcs[i].planetName, spawnPoints[i][1], spawnPoints[i][3], "target")
+					self:updateWaypoint(pConversingPlayer, planetName, spawnPoints[i][1], spawnPoints[i][3], "target")
 				end
 				if (mission.staticObjects ~= nil and table.getn(mission.staticObjects) > 0) then
 					self:spawnMissionStaticObjects(mission, pConversingPlayer, spawnPoints[i][1], spawnPoints[i][3])
@@ -772,6 +808,10 @@ function ThemeParkLogic:getMissionLootCount(pLooter)
 end
 
 function ThemeParkLogic:getMissionPreReq(pPlayer)
+	if (self.genericGiver) then
+		return 0
+	end
+	
 	local npcNumber = self:getActiveNpcNumber(pPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
 	local mission = self:getMission(npcNumber, missionNumber)
@@ -938,7 +978,14 @@ function ThemeParkLogic:spawnNpc(npcTemplate, position, pConversingPlayer, spawn
 		return nil
 	end
 
-	local pNpc = spawnMobile(npcTemplate.planetName, npcTemplate.npcTemplate, 0, position[1], position[2], position[3], getRandomNumber(360) - 180, position[4])
+	local planetName
+	if (npcTemplate.planetName == "generic") then
+		planetName = CreatureObject(pConversingPlayer):getZoneName()
+	else
+		planetName = npcTemplate.planetName
+	end
+
+	local pNpc = spawnMobile(planetName, npcTemplate.npcTemplate, 0, position[1], position[2], position[3], getRandomNumber(360) - 180, position[4])
 
 	if pNpc ~= nil then
 		local npcName = self:getNpcName(npcTemplate.npcName)
@@ -1069,6 +1116,7 @@ function ThemeParkLogic:createEscortReturnArea(pNpc, pPlayer)
 		local stfFile = self:getStfFile(npcNumber)
 
 		local npcData = self:getNpcData(npcNumber)
+
 		local escortAreaID = readData(CreatureObject(pPlayer):getObjectID() .. ":escortAreaID")
 
 		if (self:isValidConvoString(stfFile, ":npc_dropoff_" .. missionNumber) and (escortAreaID == nil or escortAreaID == 0)) then
@@ -1076,7 +1124,17 @@ function ThemeParkLogic:createEscortReturnArea(pNpc, pPlayer)
 			if (npcData.spawnData.cellID == 0) then
 				pEscortArea = spawnSceneObject(npcData.spawnData.planetName, "object/active_area.iff", npcData.spawnData.x, npcData.spawnData.z, npcData.spawnData.y, 0, 0, 0, 0, 0)
 			else
-				pEscortArea = spawnSceneObject(npcData.spawnData.planetName, "object/active_area.iff", npcData.worldPosition.x, 0, npcData.worldPosition.y, 0, 0, 0, 0, 0)
+				if (self.genericGiver) then
+					local giverId = readData(CreatureObject(pPlayer):getObjectID() ..":genericGiverID")
+					local pGiver = getSceneObject(giverId)
+					if (pGiver == nil) then
+						printf("Error in ThemeParkLogic:createEscortReturnArea(), unable to find generic quest giver.")
+						return
+					end
+					pEscortArea = spawnSceneObject(CreatureObject(pGiver):getZoneName(), "object/active_area.iff", SceneObject(pGiver):getWorldPositionX(), 0, SceneObject(pGiver):getWorldPositionY(), 0, 0, 0, 0, 0)
+				else
+					pEscortArea = spawnSceneObject(npcData.spawnData.planetName, "object/active_area.iff", npcData.worldPosition.x, 0, npcData.worldPosition.y, 0, 0, 0, 0, 0)
+				end
 			end
 			ObjectManager.withActiveArea(pEscortArea, function(activeArea)
 				activeArea:setRadius(10)
@@ -1295,11 +1353,20 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 			creature:sendSystemMessage("@theme_park/messages:static_completion_message")
 		end
 
-		local worldPosition = self:getNpcWorldPosition(npcNumber)
-
 		local npcData = self:getNpcData(npcNumber)
 
-		self:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
+		if (self.genericGiver) then
+			local giverId = readData(CreatureObject(pConversingPlayer):getObjectID() ..":genericGiverID")
+			local pGiver = getSceneObject(giverId)
+			if (pGiver == nil) then
+				printf("Error in ThemeParkLogic:completeMission(), unable to find generic quest giver.")
+				return
+			end
+			self:updateWaypoint(pConversingPlayer, SceneObject(pGiver):getZoneName(), SceneObject(pGiver):getWorldPositionX(), SceneObject(pGiver):getWorldPositionY(), "return")
+		else
+			local worldPosition = self:getNpcWorldPosition(npcNumber)
+			self:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
+		end
 
 		writeData(creature:getObjectID() .. ":activeMission", 2)
 		writeData(creature:getObjectID() .. ":destroyableBuildingID", 0)
@@ -1314,10 +1381,20 @@ function ThemeParkLogic:failMission(pConversingPlayer)
 
 		creature:sendSystemMessage("@theme_park/messages:generic_fail_message")
 
-		local worldPosition = self:getNpcWorldPosition(npcNumber)
 		local npcData = self:getNpcData(npcNumber)
 
-		self:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
+		if (self.genericGiver) then
+			local giverId = readData(CreatureObject(pConversingPlayer):getObjectID() ..":genericGiverID")
+			local pGiver = getSceneObject(giverId)
+			if (pGiver == nil) then
+				printf("Error in ThemeParkLogic:completeMission(), unable to find generic quest giver.")
+				return
+			end
+			self:updateWaypoint(pConversingPlayer, SceneObject(pGiver):getZoneName(), SceneObject(pGiver):getWorldPositionX(), SceneObject(pGiver):getWorldPositionY(), "return")
+		else
+			local worldPosition = self:getNpcWorldPosition(npcNumber)
+			self:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
+		end
 
 		writeData(creature:getObjectID() .. ":activeMission", -1)
 	end)
@@ -1341,6 +1418,8 @@ function ThemeParkLogic:handleMissionReward(pConversingPlayer)
 			self:giveBadge(pConversingPlayer, reward.badge)
 		elseif reward.rewardType == "permission" then
 			self:givePermission(pConversingPlayer, reward.permissionGroup)
+		elseif reward.rewardType == "item" then
+			self:giveItemReward(pConversingPlayer, reward.itemTemplate)
 		end
 	end
 end
@@ -1378,6 +1457,24 @@ end
 function ThemeParkLogic:giveFaction(pConversingPlayer, faction, points)
 	ObjectManager.withCreaturePlayerObject(pConversingPlayer, function(playerObject)
 		playerObject:increaseFactionStanding(faction, points)
+	end)
+end
+
+function ThemeParkLogic:giveItemReward(pConversingPlayer, itemTemplate)
+	ObjectManager.withCreatureObject(pConversingPlayer, function(creature)
+		local pInventory = creature:getSlottedObject("inventory")
+
+		if pInventory == nil then
+			return
+		end
+
+		local pItem = giveItem(pInventory, itemTemplate, -1)
+
+		if (pItem == nil) then
+			creature:sendSystemMessage("Error: Unable to generate quest reward.")
+		else
+			creature:sendSystemMessage("@theme_park/messages:theme_park_reward")
+		end
 	end)
 end
 
@@ -1540,6 +1637,7 @@ function ThemeParkLogic:resetCurrentMission(pConversingPlayer)
 		writeData(creature:getObjectID() .. ":breechAreaID", 0)
 		writeData(creature:getObjectID() .. ":escortAreaID", 0)
 		writeData(creature:getObjectID() .. ":hasPreReqItem", 0)
+		writeData(creature:getObjectID() .. ":genericGiverID", 0)
 		writeStringData(creature:getObjectID() .. ":activeScreenPlay", "")
 
 		self:cleanUpMission(pConversingPlayer)

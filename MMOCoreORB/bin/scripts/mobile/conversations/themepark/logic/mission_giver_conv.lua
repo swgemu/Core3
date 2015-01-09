@@ -253,6 +253,9 @@ createMissionGiverConvoTemplate("theme_park_marauder_mission_giver_convotemplate
 createMissionGiverConvoTemplate("theme_park_rebel_mission_giver_convotemplate", "theme_park_rebel_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_valarian_mission_giver_convotemplate", "theme_park_valarian_mission_giver_conv_handler")
 
+-- Generic
+createMissionGiverConvoTemplate("generic_criminal_mission_giver_convotemplate", "generic_criminal_mission_giver_conv_handler")
+
 -- Epic Quest Chains
 createMissionGiverConvoTemplate("krayt_dragon_skull_mission_giver_convotemplate", "krayt_dragon_skull_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("zicx_bug_bomb_mission_giver_convotemplate", "zicx_bug_bomb_mission_giver_conv_handler")
