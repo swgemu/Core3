@@ -1593,6 +1593,15 @@ void PlayerObjectImplementation::doRecovery() {
 		damageOverTimeList->activateDots(creature);
 	}
 
+	if (creature->isBleeding() && !damageOverTimeList->hasDot(CreatureState::BLEEDING))
+		creature->clearState(CreatureState::BLEEDING);
+	if (creature->isPoisoned() && !damageOverTimeList->hasDot(CreatureState::POISONED))
+		creature->clearState(CreatureState::POISONED);
+	if (creature->isDiseased() && !damageOverTimeList->hasDot(CreatureState::DISEASED))
+		creature->clearState(CreatureState::DISEASED);
+	if (creature->isOnFire() && !damageOverTimeList->hasDot(CreatureState::ONFIRE))
+		creature->clearState(CreatureState::ONFIRE);
+
 	CommandQueueActionVector* commandQueue = creature->getCommandQueue();
 
 	if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced()
