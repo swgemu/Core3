@@ -191,6 +191,9 @@ function DeathWatchBunkerScreenPlay:spawnMobiles()
 	for i,v in ipairs(deathWatchStaticSpawns) do
 		spawnMobile("endor", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
 	end
+	for i,v in ipairs(deathWatchQuestNpcs) do
+		spawnMobile("endor", v[1], v[2], v[3], v[4], v[5], v[6], v[7])
+	end
 end
 
 function DeathWatchBunkerScreenPlay:spawnObjects()

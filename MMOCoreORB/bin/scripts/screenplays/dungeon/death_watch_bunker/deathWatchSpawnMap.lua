@@ -5,6 +5,12 @@ deathWatchQuestNpcs = {
 	--{"ventilation_quest_droid", 1, -6.2, -52.0, -119.6, 62, 5996379},
 	{"death_watch_medical_droid", 1, -80.3, -20, -121, -34, 5996329},
 	{"death_watch_rescue_scientist", 1, 113.9,-68,-187,1,5996351},
+	
+	-- ***** TEMPORARY FOR TESTING *****
+	{"boba_fett", 0, -4677,13,4325,-90,0},
+	{"death_watch_herald_imperial", 0, -4677,13,4323,-90,0},
+	{"death_watch_herald_rebel", 0, -4677,13,4321,-90,0},
+	
 }
 
 deathWatchSpecialSpawns = {
