@@ -33,7 +33,6 @@ bile_drenched_quenker = Creature:new {
 	weapons = {"creature_spit_small_green"},
 	conversationTemplate = "",
 	attacks = {
-		{"defaultattack",""},
 		{"dizzyattack","dizzyChance=50"}
 	}
 }
