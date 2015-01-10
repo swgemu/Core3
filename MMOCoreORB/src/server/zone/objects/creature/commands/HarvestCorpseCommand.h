@@ -85,6 +85,8 @@ public:
 
 		Creature* cr = cast<Creature*>( creo);
 
+		Locker clocker(cr, player);
+
 		String harvesttype = "";
 
 		if (args.hasMoreTokens())
@@ -126,8 +128,6 @@ public:
 		}
 
 		if (cr->canHarvestMe(player)) {
-			Locker clocker(cr, player);
-
 			if (!cr->isDead())
 				return GENERALERROR;
 
