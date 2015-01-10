@@ -2855,6 +2855,11 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--	"Dark Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_dark.iff",
 			--	"Light Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_light.iff"
 			--}
+			"DWB Testing (Temporary)",
+			{
+				"Mandolorian Helmet", "object/tangible/wearables/armor/mandalorian/armor_mandalorian_helmet.iff",
+				"Jet Pack Base", "object/tangible/loot/dungeon/death_watch_bunker/jetpack_base.iff"
+			}
 		}
 	}
 }
