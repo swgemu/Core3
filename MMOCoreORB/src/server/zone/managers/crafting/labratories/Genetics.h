@@ -79,6 +79,10 @@ public:
 			}
 			count++;
 		}
+		// We know the min and max of each one, cal the % diff, and pick highest
+		//float maxApercent = 100.00/(aMax/a);
+		//float maxBpercent = 100.0/(bMax/b);
+		// However each exp point will move it up by a chunk. soooooo good = 1 point in the given formula
 		// we should now have the run to the max for both a and b, so determine the highest
 		// if we say 14 rounds needed the max percentage would be: 14/10 = 1.4 or 140% or 100% normalized
 		float maxACount = aCount/10.0f;

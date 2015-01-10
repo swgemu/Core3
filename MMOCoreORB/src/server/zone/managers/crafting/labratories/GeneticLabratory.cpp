@@ -397,7 +397,6 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		// this is the amount we increase
 		float increaseA = Genetics::experimentFormula(b,a);
 		float increaseB = Genetics::experimentFormula(a,b);
-
 		if (CraftingManager::CRITICALFAILURE == experimentationResult) {
 			boost = -0.08f;
 			if (reduceA){
@@ -430,6 +429,14 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 				cbp = 1;
 			if (cap > 1)
 				cap = 1;
+			if (cap < 0)
+				cap = 0;
+			if (cbp < 0)
+				cbp = 0;
+			if (a < 0)
+				a = 1;
+			if (b < 0)
+				b = 1;
 			craftingValues->setCurrentValue(prop1,a);
 			craftingValues->setCurrentValue(prop2,b);
 			craftingValues->setCurrentPercentage(prop1,cap);
@@ -454,8 +461,8 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		} else {
 			if (experimentationResult == CraftingManager::AMAZINGSUCCESS) {
 				boost = 0.15;
-				increaseA *= 0.05;
-				increaseB *= 0.05;
+				increaseA += increaseA * 0.05;
+				increaseB += increaseB * 0.05;
 			}
 			if (experimentationResult == CraftingManager::GREATSUCCESS)
 				boost = 0.1;
@@ -503,6 +510,7 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 				cbp = 1;
 			if (cap > 1)
 				cap = 1;
+			// Re calc percentage from the new value?
 			craftingValues->setCurrentValue(prop1,a);
 			craftingValues->setCurrentValue(prop2,b);
 			craftingValues->setCurrentPercentage(prop1,cap);
