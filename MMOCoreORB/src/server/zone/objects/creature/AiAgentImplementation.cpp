@@ -732,7 +732,7 @@ bool AiAgentImplementation::tryRetreat() {
 }
 
 void AiAgentImplementation::runAway(CreatureObject* target, float range) {
-	if (target == NULL) {
+	if (target == NULL || getZone() == NULL) {
 		setOblivious();
 		return;
 	}
