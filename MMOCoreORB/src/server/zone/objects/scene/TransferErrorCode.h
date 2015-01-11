@@ -23,6 +23,7 @@ public:
 	const static int CONTAINERFULL = 10;
 	const static int NOLOOTPERMISSION = 11;
 	const static int MUSTBEINPLAYERINVENTORY = 12;
+	const static int CANTREMOVE = 13;
 };
 
 
