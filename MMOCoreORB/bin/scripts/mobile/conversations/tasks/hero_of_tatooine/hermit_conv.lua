@@ -120,9 +120,9 @@ return_intro = ConvoScreen:new {
 	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_2a82993c", -- I see that you have returned, my child. What do you seek?
 	stopConversation = "false",
 	options = {
-		-- Handled by convo handler
-		--{"@conversation/quest_hero_of_tatooine_hermit:s_af540d0", "proven_worthy"} -- I have the skull you are looking for.
-		--{"@conversation/quest_hero_of_tatooine_hermit:s_da196589", "as_you_wish"} -- Nevermind.
+	-- Handled by convo handler
+	--{"@conversation/quest_hero_of_tatooine_hermit:s_af540d0", "proven_worthy"} -- I have the skull you are looking for.
+	--{"@conversation/quest_hero_of_tatooine_hermit:s_da196589", "as_you_wish"} -- Nevermind.
 	}
 }
 heroOfTatHermitConvoTemplate:addScreen(return_intro);
@@ -130,11 +130,131 @@ heroOfTatHermitConvoTemplate:addScreen(return_intro);
 proven_worthy = ConvoScreen:new {
 	id = "proven_worthy",
 	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_bbb8e096", -- Excellent. You have proven yourself as worthy of my challenges. In order to deserve the Mark of the Hero, you must undergo four different tasks and gain the Marks of Courage, Honor, Intellect, and Altruism. Which task and mark would you like to learn about?
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cbb8634f", "explain_mark_of_hero"}, -- The Mark of the Hero.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_50c6e23d", "explain_mark_of_honor"}, -- The Mark of Honor.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_669b88aa", "explain_mark_of_courage"}, -- The Mark of Courage.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_920f731c", "explain_mark_of_intellect"}, -- The Mark of Intellect.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cb535214", "explain_mark_of_altruism"}, -- The Mark of Altruism.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cf3b7067", "seek_the_tasks"}, -- I will do these things.
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(proven_worthy);
+
+explain_mark_of_hero = ConvoScreen:new {
+	id = "explain_mark_of_hero",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_6cd88f7f", -- I wasn't always an old man. Many years ago, I won many a campaign against the forces of darkness. I wore the symbol about my neck as a reminder of my cause. I would pass this thing to the one I believe capable of continuing my work.
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_hero_of_tatooine_hermit:s_50c6e23d", "explain_mark_of_honor"}, -- The Mark of Honor.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_669b88aa", "explain_mark_of_courage"}, -- The Mark of Courage.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_920f731c", "explain_mark_of_intellect"}, -- The Mark of Intellect.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cb535214", "explain_mark_of_altruism"}, -- The Mark of Altruism.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cf3b7067", "seek_the_tasks"}, -- I will do these things.
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(explain_mark_of_hero);
+
+explain_mark_of_honor = ConvoScreen:new {
+	id = "explain_mark_of_honor",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_856de06c", -- Somewhere on this desert planet, strife between ranchers and pirates rages on. Seek them out, choose the correct path, and the Mark of Honor shall be bestowed upon you.
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cbb8634f", "explain_mark_of_hero"}, -- The Mark of the Hero.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_669b88aa", "explain_mark_of_courage"}, -- The Mark of Courage.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_920f731c", "explain_mark_of_intellect"}, -- The Mark of Intellect.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cb535214", "explain_mark_of_altruism"}, -- The Mark of Altruism.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cf3b7067", "seek_the_tasks"}, -- I will do these things.
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(explain_mark_of_honor);
+
+explain_mark_of_courage = ConvoScreen:new {
+	id = "explain_mark_of_courage",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_8cb1f35d", -- You will gain the Mark of Courage by defeating a ferocious beast bent of terrorizing the world. Speak with the people of the cities of Tatooine. Perhaps they know of such a beast.
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cbb8634f", "explain_mark_of_hero"}, -- The Mark of the Hero.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_50c6e23d", "explain_mark_of_honor"}, -- The Mark of Honor.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_920f731c", "explain_mark_of_intellect"}, -- The Mark of Intellect.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cb535214", "explain_mark_of_altruism"}, -- The Mark of Altruism.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cf3b7067", "seek_the_tasks"}, -- I will do these things.
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(explain_mark_of_courage);
+
+explain_mark_of_intellect = ConvoScreen:new {
+	id = "explain_mark_of_intellect",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_f9a4e3e3", -- In order to attain the Mark of Intellect, you must find one in need of your wisdom. Perhaps a bounty hunter needs assistance...or a puzzle needs to be solved somewhere in the galaxy. I beseech you to keep an eye out while traveling to the cities of Tatooine. You'll find what you're looking for there.
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cbb8634f", "explain_mark_of_hero"}, -- The Mark of the Hero.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_50c6e23d", "explain_mark_of_honor"}, -- The Mark of Honor.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_669b88aa", "explain_mark_of_courage"}, -- The Mark of Courage.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cb535214", "explain_mark_of_altruism"}, -- The Mark of Altruism.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cf3b7067", "seek_the_tasks"}, -- I will do these things.
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(explain_mark_of_intellect);
+
+explain_mark_of_altruism = ConvoScreen:new {
+	id = "explain_mark_of_altruism",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_96fd32c3", -- To attain the Mark of Altruism, you must selflessly help a soul in need. Somewhere, in the harsh desert heat, a farmer desperately cries out...in need of a hero.
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cbb8634f", "explain_mark_of_hero"}, -- The Mark of the Hero.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_50c6e23d", "explain_mark_of_honor"}, -- The Mark of Honor.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_669b88aa", "explain_mark_of_courage"}, -- The Mark of Courage.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_920f731c", "explain_mark_of_intellect"}, -- The Mark of Intellect.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cf3b7067", "seek_the_tasks"}, -- I will do these things.
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(explain_mark_of_altruism);
+
+seek_the_tasks = ConvoScreen:new {
+	id = "seek_the_tasks",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_a5bd2f51", -- Go then. Seek the tasks which I have described for you. Return to me when you have completed them. Only then will you become the Hero of Tatooine.
 	stopConversation = "true",
 	options = {
 	}
 }
-heroOfTatHermitConvoTemplate:addScreen(proven_worthy);
+heroOfTatHermitConvoTemplate:addScreen(seek_the_tasks);
+
+you_have_returned = ConvoScreen:new {
+	id = "you_have_returned",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_2a82993c", -- I see that you have returned, my child. What do you seek?
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_hero_of_tatooine_hermit:s_503d468c", "which_mark"}, -- I would like more information about...
+		{"@conversation/quest_hero_of_tatooine_hermit:s_da196589", "as_you_wish"} -- Nevermind.
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(you_have_returned);
+
+which_mark = ConvoScreen:new {
+	id = "which_mark",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_194db552", -- The Marks? Which one?
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cbb8634f", "explain_mark_of_hero"}, -- The Mark of the Hero.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_50c6e23d", "explain_mark_of_honor"}, -- The Mark of Honor.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_669b88aa", "explain_mark_of_courage"}, -- The Mark of Courage.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_920f731c", "explain_mark_of_intellect"}, -- The Mark of Intellect.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cb535214", "explain_mark_of_altruism"}, -- The Mark of Altruism.
+		{"@conversation/quest_hero_of_tatooine_hermit:s_d86dc24", "return_to_me"}, -- I'm done. Thank you for the information.
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(which_mark);
+
+return_to_me = ConvoScreen:new {
+	id = "return_to_me",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_1f8abb5f", -- Return to me when you have proven the measure of your character. An act of honor. An act of intellect. An act of courage. An act of altruism. Demonstrate to me these characteristics and I will bestow upon you the Mark of the Hero.
+	stopConversation = "true",
+	options = {
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(return_to_me);
 
 as_you_wish = ConvoScreen:new {
 	id = "as_you_wish",

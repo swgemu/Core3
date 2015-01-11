@@ -289,6 +289,9 @@ includeFile("items/geonosian_lab/geo_tenloss_dxr6_schematic.lua")
 includeFile("items/geonosian_lab/kliknik_reinforced_chitin_armor_segment.lua")
 includeFile("items/geonosian_lab/rifle_tenloss_dxr6_disruptor.lua")
 
+-- hero_of_tatooine sub-folder
+includeFile("items/hero_of_tatooine/mark_of_courage.lua")
+
 --junk sub-folder
 includeFile("items/junk/broken_binoculars_s1.lua")
 includeFile("items/junk/broken_binoculars_s2.lua")
