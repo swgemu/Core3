@@ -43,6 +43,7 @@ which carries forward this exception.
 
 #include "ContainerComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -53,6 +54,21 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		errorDescription = "@container_error_message:container02"; //You cannot add something to itself.
 
 		return TransferErrorCode::CANTADDTOITSELF;
+	}
+
+	if (object->isNoTrade() || object->containsNoTradeObjectRecursive()) {
+		ManagedReference<SceneObject*> objOwner = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+		ManagedReference<SceneObject*> objPlayerParent = object->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+		ManagedReference<SceneObject*> objBuildingParent = object->getParentRecursively(SceneObjectType::BUILDING);
+
+		if (objPlayerParent == NULL && objBuildingParent != NULL && objOwner != NULL) {
+			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( objBuildingParent.get());
+
+			if (buio->getOwnerObjectID() != objOwner->getObjectID())
+				errorDescription = "@container_error_message:container27";
+
+				return TransferErrorCode::CANTREMOVE;
+		}
 	}
 
 	Locker contLocker(sceneObject->getContainerLock());
