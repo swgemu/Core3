@@ -43,6 +43,7 @@ which carries forward this exception.
 
 #include "ContainerComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -53,6 +54,35 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		errorDescription = "@container_error_message:container02"; //You cannot add something to itself.
 
 		return TransferErrorCode::CANTADDTOITSELF;
+	}
+
+	if (object->isNoTrade() || object->containsNoTradeObjectRecursive()) {
+		ManagedReference<SceneObject*> containerPlayerParent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+		ManagedReference<SceneObject*> containerBuildingParent = sceneObject->getParentRecursively(SceneObjectType::BUILDING);
+		ManagedReference<SceneObject*> containerFactoryParent = sceneObject->getParentRecursively(SceneObjectType::FACTORY);
+		ManagedReference<SceneObject*> objPlayerParent = object->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+		ManagedReference<SceneObject*> objBuildingParent = object->getParentRecursively(SceneObjectType::BUILDING);
+
+
+		if (containerFactoryParent != NULL) {
+			errorDescription = "@container_error_message:container28";
+			return TransferErrorCode::CANTADD;
+		} else if (objPlayerParent == NULL && objBuildingParent != NULL && containerPlayerParent != NULL) {
+			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( objBuildingParent.get());
+
+			if (buio != NULL && buio->getOwnerObjectID() != containerPlayerParent->getObjectID()) {
+				errorDescription = "@container_error_message:container27";
+				return TransferErrorCode::CANTREMOVE;
+			}
+		} else if (objPlayerParent != NULL && containerPlayerParent == NULL && containerBuildingParent != NULL) {
+			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( containerBuildingParent.get());
+
+			if (buio != NULL && buio->getOwnerObjectID() != objPlayerParent->getObjectID()) {
+				errorDescription = "@container_error_message:container28";
+				return TransferErrorCode::CANTADD;
+			}
+		}
+
 	}
 
 	Locker contLocker(sceneObject->getContainerLock());

@@ -104,7 +104,7 @@ public:
 					if(obj == NULL)
 						continue;
 
-					if(obj->isNoTrade()) {
+					if(obj->isNoTrade() || obj->containsNoTradeObjectRecursive()) {
 						StringIdChatParameter param("@player_structure:building_has_notrade");
 						param.setTT(obj->getDisplayedName());
 						creature->sendSystemMessage(param);
