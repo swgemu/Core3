@@ -102,7 +102,7 @@ public:
 	}
 
 	bool getWounds(CreatureObject* leader, GroupObject* group, int* wounds) {
-		if (group == NULL || leader == NULL || sizeof(wounds)/sizeof(wounds[0]) != 9)
+		if (group == NULL || leader == NULL)
 			return false;
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
@@ -132,7 +132,7 @@ public:
 	}
 
 	bool distributeWounds(CreatureObject* leader, GroupObject* group, int* wounds) {
-		if (group == NULL || leader == NULL || sizeof(wounds)/sizeof(wounds[0]) != 9)
+		if (group == NULL || leader == NULL)
 			return false;
 
 		int groupSize = group->getGroupSize();
