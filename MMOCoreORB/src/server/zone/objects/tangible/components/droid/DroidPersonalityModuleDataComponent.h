@@ -59,6 +59,7 @@ class DroidPersonalityModuleDataComponent : public BaseDroidModuleComponent {
 
 protected:
 	String personalityBase;
+	String chipName;
 	ManagedReference<DroidPersonalityObserver*> observer;
 
 public:

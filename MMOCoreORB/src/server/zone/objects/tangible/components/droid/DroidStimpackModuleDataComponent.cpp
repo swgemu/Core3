@@ -92,7 +92,6 @@ void DroidStimpackModuleDataComponent::fillAttributeList(AttributeListMessage* a
 	alm->insertAttribute( "stimpack_speed", speed);
 	float power = 0;
 	if (loaded > 0) {
-		StimPack* sp = findStimPack();
 		if (sp != NULL)
 			power = sp->getEffectiveness();
 	}
@@ -453,6 +452,7 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 			}
 		}
 	}
+	countUses(); // update count after loading
 }
 int DroidStimpackModuleDataComponent::getBatteryDrain() {
 	return 0;

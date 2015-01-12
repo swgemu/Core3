@@ -46,7 +46,7 @@ object_tangible_component_droid_personality_module_prissy = object_tangible_comp
 	templateType = DROIDPERSONALITYCHIP,
 	dataObjectComponent = "DroidPersonalityModuleDataComponent",
 	reactionName = "@npc_reaction/droid_prissy",
-
+	attrName = "@craft_droid_ingredients_n:personality_module_prissy",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},

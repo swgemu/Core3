@@ -121,11 +121,11 @@ void DroidMedicalModuleDataComponent::onStore() {
 void DroidMedicalModuleDataComponent::loadSkillMods(CreatureObject* player) {
 	// add the rating to the player as a private medical center for right now we ignore the part about not usable in a static cantina we will handle that in the injury treatment task
 	// only add this is the payer didnt have it already.
-	if(player->getSkillModOfType("private_medical_rating",SkillModManager::DROID)  == 0) {
-		player->addSkillMod(SkillModManager::DROID,"private_medical_rating",getMedicalRating(),true);
-	}
+	player->removeAllSkillModsOfType(SkillModManager::DROID,true);
+	player->addSkillMod(SkillModManager::DROID,"private_medical_rating",getMedicalRating(),true);
 }
 void DroidMedicalModuleDataComponent::unloadSkillMods(CreatureObject* player) {
-	player->removeSkillMod(SkillModManager::DROID,"private_medical_rating",true);
+	player->removeAllSkillModsOfType(SkillModManager::DROID,true);
+	//player->removeSkillMod(SkillModManager::DROID,"private_medical_rating",true);
 }
 
