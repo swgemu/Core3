@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_637eb5e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-12T11:01:33Z",
+      "side": 1,
+      "message": "You need to change these methods to work for more than one person at a time. They won\u0027t work properly if more than one person is trying to convert xp at the same time.",
+      "revId": "784ff0ea8e0e7037ec17b879f1fa5347e6359da3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
