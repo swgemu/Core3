@@ -46,7 +46,7 @@ object_tangible_component_droid_personality_module_sarcastic = object_tangible_c
 	templateType = DROIDPERSONALITYCHIP,
 	dataObjectComponent = "DroidPersonalityModuleDataComponent",
 	reactionName = "@npc_reaction/droid_sarcastic",
-
+	attrName = "@craft_droid_ingredients_n:personality_module_sarcastic",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},

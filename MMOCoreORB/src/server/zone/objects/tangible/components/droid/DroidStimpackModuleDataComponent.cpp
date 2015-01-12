@@ -453,6 +453,7 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 			}
 		}
 	}
+	countUses();
 }
 int DroidStimpackModuleDataComponent::getBatteryDrain() {
 	return 0;

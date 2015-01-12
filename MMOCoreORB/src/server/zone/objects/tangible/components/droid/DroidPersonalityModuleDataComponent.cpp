@@ -69,12 +69,13 @@ void DroidPersonalityModuleDataComponent::initializeTransientMembers() {
 		return;
 	}
 	personalityBase = moduleTemplate->getReactionName();
+	chipName = moduleTemplate->getChipName();
 }
 void DroidPersonalityModuleDataComponent::initialize(CreatureObject* droid) {
 	// do we need to change any droid stats: no
 }
 void DroidPersonalityModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
-	alm->insertAttribute("personality_module", "@craft_droid_ingredients_n:personality_module_geek");
+	alm->insertAttribute("personality_module", chipName);
 }
 void DroidPersonalityModuleDataComponent::handlePetCommand(String cmd, CreatureObject* speaker) {
 	// no op

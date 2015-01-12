@@ -9,16 +9,21 @@ class DroidPersonalityModuleTemplate : public SharedTangibleObjectTemplate {
 
 protected:
 	String reactionName;
+	String attrName;
 public:
 	DroidPersonalityModuleTemplate()  {}
 	~DroidPersonalityModuleTemplate() {}
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
 		reactionName = templateData->getStringField("reactionName");
+		attrName = templateData->getStringField("attrName");
 	}
 
 	String& getReactionName() {
 		return reactionName;
+	}
+	String& getChipName() {
+		return attrName;
 	}
 
 	 bool isDroidPersonalityModuleTemplate() {

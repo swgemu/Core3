@@ -46,7 +46,7 @@ object_tangible_component_droid_personality_module_slang = object_tangible_compo
 	templateType = DROIDPERSONALITYCHIP,
 	dataObjectComponent = "DroidPersonalityModuleDataComponent",
 	reactionName = "@npc_reaction/droid_slang",
-
+	attrName = "@craft_droid_ingredients_n:personality_module_slang",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
