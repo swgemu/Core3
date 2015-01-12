@@ -146,7 +146,7 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 			armorRating = 1;
 		}
 		else if (fortitude == 1000) {
-			armorRating = 2;
+			armorRating = 1; // never allow for anythign greater than light armor
 		} else {
 			armorRating = 0;
 		}
@@ -161,7 +161,7 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 			armorRating = 0;
 		}
 		else if (fortitude > 999 && armorRating == 1) {
-			armorRating = 2;
+			armorRating = 1;
 			resetResists(values);
 		}
 	}
@@ -169,33 +169,60 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	if (fortitude > 1000) {
 		fortitude = 1000;
 	}
+	if (fortitude < 0)
+		fortitude = 1;
+
 	if (endurance > 1000){
 		endurance = 1000;
 	}
+	if (endurance < 0)
+		endurance = 1;
+
 	if (cleverness > 1000){
 		cleverness = 1000;
 	}
+	if (cleverness < 0)
+		cleverness = 1;
+
 	if (courage > 1000){
 		courage = 1000;
 	}
+	if (courage < 0)
+		courage = 1;
+
 	if (dependency > 1000){
 		dependency = 1000;
 	}
+	if (dependency < 0)
+		dependency = 1;
+
 	if (dexterity > 1000) {
 		dexterity = 1000;
 	}
+	if (dexterity < 0)
+		dexterity = 1;
+
 	if (fierceness > 1000){
 		fierceness = 1000;
 	}
+	if (fierceness < 0)
+		fierceness = 1;
 	if (hardiness > 1000) {
 		hardiness = 1000;
 	}
+	if (hardiness < 0)
+		hardiness = 1;
 	if (intelligence > 1000){
 		intelligence = 1000;
 	}
+	if (intelligence < 0)
+		intelligence = 1;
+
 	if (power > 1000) {
 		power = 1000;
 	}
+	if (power < 0)
+		power = 1;
 	// max on resists
 	if (kinResist > 60)
 		kinResist = 60;
