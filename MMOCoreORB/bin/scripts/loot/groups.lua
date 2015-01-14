@@ -93,6 +93,9 @@ includeFile("groups/geonosian_lab/geonosian_cubes.lua")
 includeFile("groups/geonosian_lab/geonosian_hard.lua")
 includeFile("groups/geonosian_lab/geonosian_relic.lua")
 
+-- hero_of_tatooine sub-folder
+includeFile("groups/hero_of_tatooine/hero_of_tat_mark_of_courage.lua")
+
 -- npc sub-folder
 includeFile("groups/npc/aakuan_common.lua")
 includeFile("groups/npc/alkhara_common.lua")

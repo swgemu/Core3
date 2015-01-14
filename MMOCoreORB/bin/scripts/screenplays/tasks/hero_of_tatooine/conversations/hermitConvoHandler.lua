@@ -2,6 +2,16 @@ local ObjectManager = require("managers.object.object_manager")
 
 heroOfTatHermitConvoHandler = {  }
 
+--[[
+1 - Started squill quest
+2 - Completed squill quest
+4 - Completed Altruism
+8 - Completed Intellect
+16 - Completed Courage
+32 - Completed Honor
+64 - Completed Mark of Hero
+]]
+
 function heroOfTatHermitConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		local pConversationSession = player:getConversationSession()
@@ -24,7 +34,7 @@ function heroOfTatHermitConvoHandler:getInitialScreen(pPlayer, pNpc, pConversati
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 		if (player:hasScreenPlayState(2, "hero_of_tatooine") == 1) then
-			return convoTemplate:getScreen("proven_worthy") -- Temporary
+			return convoTemplate:getScreen("you_have_returned")
 		elseif (player:hasScreenPlayState(1, "hero_of_tatooine") == 1) then
 			return convoTemplate:getScreen("return_intro")
 		else

@@ -27,8 +27,15 @@ wild_bladeback_boar = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/zucca_boar_hue.iff"},
-	scale = 1.25,
-	lootGroups = {},
+	scale = 1.5,
+	lootGroups = {
+		{
+			groups = {
+				{group = "hero_of_tat_mark_of_courage", chance = 10000000}
+			},
+			lootChance = 10000000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
