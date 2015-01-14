@@ -114,7 +114,7 @@ function ThemeParkNym:spawnLootObjects()
 		csuContainer:setCustomObjectName("A Computer Storage Unit")
 		createObserver(OBJECTRADIALUSED, "ThemeParkNym", "notifyNymContainerUsed", csuPointer)
 	end)
-	local cratePointer = spawnSceneObject("lok", "object/tangible/container/loot/placable_loot_crate.iff", -7.9, -20.0, 78.4, 5126291, 0, 0, -1, 0)
+	local cratePointer = spawnSceneObject("lok", "object/tangible/container/loot/loot_crate.iff", -7.9, -20.0, 78.4, 5126291, 0, 0, -1, 0)
 	ObjectManager.withSceneObject(cratePointer, function(crateContainer)
 		crateContainer:setCustomObjectName("Supply Crate")
 		createObserver(OBJECTRADIALUSED, "ThemeParkNym", "notifyNymContainerUsed", cratePointer)
@@ -169,7 +169,7 @@ function ThemeParkNym:notifyNymContainerUsed(pDroid, pPlayer, radialSelected)
 				questMsg = "@theme_park_nym/messages:acquired_hard_drive"
 			end
 			questNpc = "nym"
-		elseif (SceneObject(pDroid):getTemplateObjectPath() == "object/tangible/container/loot/placable_loot_crate.iff") then
+		elseif (SceneObject(pDroid):getTemplateObjectPath() == "object/tangible/container/loot/loot_crate.iff") then
 			if (player:hasScreenPlayState(1, "nym_theme_park_nymNpc") ~= 1 or player:hasScreenPlayState(4, "nym_theme_park_nymNpc") == 1 or player:hasScreenPlayState(16, "nym_theme_park_nymNpc") == 1) then
 				return 1
 			elseif (SceneObject(pInventory):hasFullContainerObjects()) then
