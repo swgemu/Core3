@@ -90,12 +90,12 @@ public:
 		}
 
 		ManagedReference<SceneObject*> objectToTransfer = server->getZoneServer()->getObject(target);
-		ManagedReference<SceneObject*> objectsParent = objectToTransfer->getParent();
 
 		if (objectToTransfer == NULL) {
 			creature->error("objectToTransfer NULL in transferItemMisc command");
 			return GENERALERROR;
 		}
+
 		if (objectToTransfer->isStaticObject() || (!objectToTransfer->isTangibleObject())){
 			if (!objectToTransfer->isManufactureSchematic()){
 				return GENERALERROR;
@@ -107,6 +107,7 @@ public:
 			return GENERALERROR;
 		}
 
+		ManagedReference<SceneObject*> objectsParent = objectToTransfer->getParent();
 
 		if (objectsParent == NULL) {
 			return GENERALERROR;
