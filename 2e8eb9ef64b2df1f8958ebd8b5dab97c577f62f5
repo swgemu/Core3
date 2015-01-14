@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_c39209f6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-14T14:53:32Z",
+      "side": 1,
+      "message": "Move this to be encapsulated within the if statement on line 165 below. We only want to set this if we\u0027re actually going to be sending the transfer box.",
+      "revId": "2e8eb9ef64b2df1f8958ebd8b5dab97c577f62f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_a38f0dcc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-14T14:53:32Z",
+      "side": 1,
+      "message": "You can\u0027t call getSuiTransferExperienceSelection() without an argument.",
+      "revId": "2e8eb9ef64b2df1f8958ebd8b5dab97c577f62f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_83bc116e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-14T14:53:32Z",
+      "side": 1,
+      "message": "Rather than calling withCreatureObject here and then withCreatureAndPlayerObject on line 212, just make the latter call here and encapsulate everything below this within.",
+      "revId": "2e8eb9ef64b2df1f8958ebd8b5dab97c577f62f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51691d_63c115e4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-14T14:53:32Z",
+      "side": 1,
+      "message": "Why add a function for setting and reading to ExperienceConverter and then do the deleting directly here? For consistency, you should add a function for deleting to ExperienceConverter as well.",
+      "revId": "2e8eb9ef64b2df1f8958ebd8b5dab97c577f62f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
