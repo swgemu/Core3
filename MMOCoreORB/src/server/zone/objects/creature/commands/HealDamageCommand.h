@@ -191,7 +191,7 @@ public:
 			return false;
 		}
 
-		if (creature->isProne() || creature->isMeditating()) {
+		if (creature->isProne() || creature->isMeditating() || creature->isSwimming()) {
 			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return false;
 		}
