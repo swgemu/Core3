@@ -196,6 +196,7 @@ public:
 		float rElectricity = electricy >= 0 ? electricy : armorRating == 0 ? 0 : -50;
 		float rAcid = acid >= 0 ? acid : armorRating == 0 ? 0 : -50;
 		float rStun = stun >= 0 ? stun : armorRating == 0 ? 0 : -50;
+		// We need to maybe handle special resists differently for the calc, we also need to adust for newer informaiton
 		float resist = 1 - (0.35*rKinetic/100) - (0.35*rEnergy/100) - (0.05*rBlast/100) - (0.05*rHeat/100) - (0.05*rCold/100) - (0.05*rElectricity/100) - (0.05*rAcid/100) - (0.05*rStun/100);
 		return floor( (1.5/(float)100) * (Math::sqrt(base/(armor * resist))+7));
 	}
