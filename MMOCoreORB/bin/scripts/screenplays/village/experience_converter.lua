@@ -1,10 +1,10 @@
 local ObjectManager = require("managers.object.object_manager")
 local Logger = require("utils.logger")
 require("utils.helpers")
+require("screenplays.screenplay")
 
 
 -- Pulled from "quest/force_sensitive/utils.stf"
-
 local unlockableFSBranches = {
 	FSCombatProwess1 = {state = "FSCombatProwess1", unlockString = "Combat Prowess -- Ranged Accuracy", topBox = "force_sensitive_combat_prowess_ranged_accuracy_04"},
 	FSCombatProwess2 = {state = "FSCombatProwess2", unlockString = "Combat Prowess -- Ranged Speed", topBox = "force_sensitive_combat_prowess_ranged_speed_04"},
@@ -25,6 +25,24 @@ local unlockableFSBranches = {
 }
 
 ExperienceConverter = Object:new {}
+
+-- Since the logic flow of the conversation calls set always before get, it should work, but just in case...
+function ExperienceConverter:setSuiTransferExperienceSelection(var, oid)
+	if (readStringData("suiTransferExperienceSelection:" .. oid) ~= nil) then
+		deleteStringData("suiTransferExperienceSelection:"  .. oid)
+	end
+	if (var ~= nil) then
+		writeStringData("suiTransferExperienceSelection:"  .. oid, var)
+	end
+end
+
+function ExperienceConverter:getSuiTransferExperienceSelection(oid)
+	return readStringData("suiTransferExperienceSelection:"  .. oid)
+end
+
+function ExperienceConverter:deleteSuiTransferExperienceSelection(oid)
+	return deleteStringData("suiTransferExperienceSelection:"  .. oid)
+end
 
 -- See if the player qualifies for the conversion.
 -- @param pPlayerObject pointer to the player object of the player.
@@ -96,11 +114,10 @@ end
 
 -- Get the experience amount for the selected experience type.
 function ExperienceConverter:getExperienceAmount(pPlayer, pSelection)
-	local experienceType = nil
 	local amount = nil
 	-- Unformat string for retrieval.
 	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-		experienceType = playerObject:getExperienceType(pSelection)
+		local experienceType = playerObject:getExperienceType(pSelection)
 		amount = playerObject:getExperience(experienceType)
 	end)
 
