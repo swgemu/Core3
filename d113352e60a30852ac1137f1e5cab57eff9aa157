@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_037701d6",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2015-01-15T01:14:57Z",
+      "side": 1,
+      "message": "You hsould in onCall validate every structure in your list is still valid.",
+      "revId": "d113352e60a30852ac1137f1e5cab57eff9aa157",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
