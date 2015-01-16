@@ -2,7 +2,9 @@ local ObjectManager = require("managers.object.object_manager")
 
 BestineMuseumScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
-	screenplayName = "BestineMuseumScreenPlay"
+	screenplayName = "BestineMuseumScreenPlay",
+	
+	restrictSinglePurchase = false -- False during live
 }
 
 MUSEUM_VOTING_ENABLED = 1

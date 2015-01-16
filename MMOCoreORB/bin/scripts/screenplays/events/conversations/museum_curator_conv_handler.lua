@@ -32,7 +32,7 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 				if (BestineMuseumScreenPlay:hasTalkedToAnyArtist(conversingPlayer)) then
 					clonedConversation:addOption("@conversation/lilas_dinhint:s_911a27f8", "pick_artist")
 				end
-				if (BestineMuseumScreenPlay:getWinningPainting() ~= "" and not BestineMuseumScreenPlay:hasAlreadyPurchased(conversingPlayer)) then
+				if (BestineMuseumScreenPlay:getWinningPainting() ~= "" and (not BestineMuseumScreenPlay:hasAlreadyPurchased(conversingPlayer) or BestineMuseumScreenPlay.restrictSinglePurchase == false)) then
 					clonedConversation:addOption("@conversation/lilas_dinhint:s_e649bf0a", "schematic_cost")
 				end
 				clonedConversation:addOption("@conversation/lilas_dinhint:s_6b5b28b2", "enjoy_visit_votephase")
@@ -74,7 +74,7 @@ function MuseumCuratorConvoHandler:runScreenHandlers(conversationTemplate, conve
 		elseif (currentPhase == 2) then
 			local timeLeftInSecs = BestineMuseumScreenPlay:getPhaseTimeLeft() / 1000
 			if (screenID == "init_buyphase" or screenID == "hello_already_purchased") then
-				if (screenID == "init_buyphase") then
+				if (screenID == "init_buyphase" or BestineMuseumScreenPlay.restrictSinglePurchase == false) then
 					clonedConversation:addOption("@conversation/lilas_dinhint:s_47df8332", "schematic_cost")
 				end
 
