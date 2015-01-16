@@ -19,11 +19,7 @@ function deathWatchBobaFettConvoHandler:getInitialScreen(pPlayer, pNpc, pConvers
 		if (player:hasScreenPlayState(1, "death_watch_bunker") == 1) then
 			return convoTemplate:getScreen("back_again")
 		else
-			if (not playerObject:hasBadge(105)) then
-				return convoTemplate:getScreen("not_completed_jabbas")
-			else
-				return convoTemplate:getScreen("intro")
-			end
+			return convoTemplate:getScreen("intro")
 		end
 	end)
 end

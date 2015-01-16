@@ -380,6 +380,7 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	-- Loot Boxes
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/container/general/tech_chest.iff", -3.10801,-12,36.7064,5996318,0,0,-1,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
+	self:setLootBoxPermissions(spawnedPointer)
 	spawnedSceneObject:setCustomObjectName("Chest")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 1)
 	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer)
@@ -387,15 +388,25 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/coal_bin_container.iff",6.01353,-32,-102.05,5996337,0.707107,0,0.707107,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
+	self:setLootBoxPermissions(spawnedPointer)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 2)
 	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer)
 	createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
 
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/container/loot/placable_loot_crate_tech_armoire.iff", -2.78947,-32,-27.1899,5996335,0,0,1,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
+	self:setLootBoxPermissions(spawnedPointer)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:lootbox", 3)
 	createEvent(1000, "DeathWatchBunkerScreenPlay", "refillContainer", spawnedPointer)
 	createObserver(OBJECTRADIALUSED, "DeathWatchBunkerScreenPlay", "boxLooted", spawnedPointer)
+end
+
+function DeathWatchBunkerScreenPlay:setLootBoxPermissions(pContainer)
+	ObjectManager.withSceneObject(pContainer, function(container)
+		container:setContainerInheritPermissionsFromParent(false)
+		container:setContainerDefaultDenyPermission(MOVEIN)
+		container:setContainerDefaultAllowPermission(OPEN + MOVEOUT)
+	end)
 end
 
 function DeathWatchBunkerScreenPlay:onEnterDWB(sceneObject, creatureObject)
