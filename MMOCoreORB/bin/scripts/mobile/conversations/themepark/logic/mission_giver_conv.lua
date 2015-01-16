@@ -256,6 +256,7 @@ createMissionGiverConvoTemplate("theme_park_valarian_mission_giver_convotemplate
 -- Generic
 createMissionGiverConvoTemplate("generic_businessman_mission_giver_convotemplate", "generic_businessman_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("generic_criminal_mission_giver_convotemplate", "generic_criminal_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("generic_noble_mission_giver_convotemplate", "generic_noble_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("generic_scientist_mission_giver_convotemplate", "generic_scientist_mission_giver_conv_handler")
 
 -- Epic Quest Chains

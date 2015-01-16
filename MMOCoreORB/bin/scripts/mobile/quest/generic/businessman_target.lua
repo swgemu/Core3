@@ -22,7 +22,7 @@ businessman_target = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	optionsBitmask = 136,
 	diet = HERBIVORE,
@@ -61,8 +61,7 @@ businessman_target = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "generic_businessman_mission_target_convotemplate",
-	attacks = {
-	}
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(businessman_target, "businessman_target")

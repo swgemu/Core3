@@ -1,4 +1,4 @@
-noble = Creature:new {
+noble_target = Creature:new {
 	objectName = "@mob/creature_names:noble",
 	generateRandomName = true,
 	socialGroup = "townsperson",
@@ -22,7 +22,7 @@ noble = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
 	optionsBitmask = 136,
 	diet = HERBIVORE,
@@ -77,8 +77,8 @@ noble = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "generic_noble_mission_giver_convotemplate",
-	attacks = {}
+	conversationTemplate = "generic_noble_mission_target_convotemplate",
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(noble, "noble")
+CreatureTemplates:addCreatureTemplate(noble_target, "noble_target")
