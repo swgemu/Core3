@@ -28,7 +28,7 @@ greater_sludge_panther = Creature:new {
 
 	templates = {"object/mobile/greater_sludge_panther.iff"},
 	controlDeviceTemplate = "object/intangible/pet/corellian_sand_panther_hue.iff",
-	scale = 1.2,
+	scale = 2.0,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
