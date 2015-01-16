@@ -24,7 +24,7 @@ businessman = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
@@ -60,7 +60,7 @@ businessman = Creature:new {
 					},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "generic_businessman_mission_giver_convotemplate",
 	attacks = {
 	}
 }
