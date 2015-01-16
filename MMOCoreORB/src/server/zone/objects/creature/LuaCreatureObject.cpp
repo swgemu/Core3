@@ -15,6 +15,7 @@
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
@@ -105,6 +106,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getSpecies", &LuaCreatureObject::getSpecies },
 		{ "isDroidPet", &LuaCreatureObject::isDroidPet },
 		{ "isCombatDroidPet", &LuaCreatureObject::isCombatDroidPet },
+		{ "awardExperience", &LuaCreatureObject::awardExperience },
 		{ 0, 0 }
 };
 
@@ -769,4 +771,14 @@ int LuaCreatureObject::isCombatDroidPet(lua_State* L) {
 	}
 	lua_pushboolean(L, retVal);
 	return 1;
+}
+
+int LuaCreatureObject::awardExperience(lua_State* L) {
+	String experienceType = lua_tostring(L, -2);
+	int experienceAmount = lua_tointeger(L, -1);
+
+	PlayerManager* playerManager = realObject->getZoneServer()->getPlayerManager();
+	playerManager->awardExperience(realObject, experienceType, experienceAmount, false);
+
+	return 0;
 }

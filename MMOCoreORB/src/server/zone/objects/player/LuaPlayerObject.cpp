@@ -58,7 +58,6 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getCharacterAgeInDays", &LuaPlayerObject::getCharacterAgeInDays},
 		{ "isPrivileged", &LuaPlayerObject::isPrivileged},
 		{ "getExperienceRatio", &LuaPlayerObject::getExperienceRatio},
-		{ "setExperience", &LuaPlayerObject::setExperience},
 		{ 0, 0 }
 };
 
@@ -498,13 +497,4 @@ int LuaPlayerObject::getExperienceRatio(lua_State* L) {
 	lua_pushstring(L, ratio.toCharArray());
 
 	return 1;
-}
-
-int LuaPlayerObject::setExperience(lua_State* L) {
-	String experienceType = lua_tostring(L, -2);
-	int experienceAmount = lua_tointeger(L, -1);
-
-	realObject->addExperience(experienceType, experienceAmount, true);
-
-	return 0;
 }
