@@ -2857,7 +2857,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--}
 			"DWB Testing (Temporary)",
 			{
-				"Mandolorian Helmet", "object/tangible/wearables/armor/mandalorian/armor_mandalorian_helmet.iff",
+				"Bounty Hunter Helmet", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff",
 				"Jet Pack Base", "object/tangible/loot/dungeon/death_watch_bunker/jetpack_base.iff"
 			}
 		}
