@@ -1,4 +1,4 @@
-noble = Creature:new {
+noble_target = Creature:new {
 	objectName = "@mob/creature_names:noble",
 	generateRandomName = true,
 	socialGroup = "townsperson",
@@ -77,8 +77,8 @@ noble = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "generic_noble_mission_giver_convotemplate",
+	conversationTemplate = "generic_noble_mission_target_convotemplate",
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(noble, "noble")
+CreatureTemplates:addCreatureTemplate(noble_target, "noble_target")

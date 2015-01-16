@@ -100,6 +100,7 @@ createMissionTargetConvoTemplate("theme_park_valarian_mission_target_convotempla
 -- Generic
 createMissionTargetConvoTemplate("generic_businessman_mission_target_convotemplate", "generic_businessman_mission_target_conv_handler")
 createMissionTargetConvoTemplate("generic_criminal_mission_target_convotemplate", "generic_criminal_mission_target_conv_handler")
+createMissionTargetConvoTemplate("generic_noble_mission_target_convotemplate", "generic_noble_mission_target_conv_handler")
 createMissionTargetConvoTemplate("generic_scientist_mission_target_convotemplate", "generic_scientist_mission_target_conv_handler")
 
 -- Epic Quest Chains
