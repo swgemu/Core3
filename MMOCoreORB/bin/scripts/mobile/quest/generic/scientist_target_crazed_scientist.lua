@@ -1,16 +1,16 @@
-scientist = Creature:new {
+scientist_target_crazed_scientist = Creature:new {
 	objectName = "@mob/creature_names:scientist",
+	socialGroup = "thug",
 	generateRandomName = true,
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
-	level = 34,
-	chanceHit = 0.410000,
-	damageMin = 320,
-	damageMax = 350,
-	baseXp = 3279,
-	baseHAM = 8800,
-	baseHAMmax = 10800,
+	pvpFaction = "thug",
+	faction = "thug",
+	level = 7,
+	chanceHit = 0.26,
+	damageMin = 55,
+	damageMax = 65,
+	baseXp = 187,
+	baseHAM = 270,
+	baseHAMmax = 330,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -20,11 +20,11 @@ scientist = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
-	creatureBitmask = NONE,
-	optionsBitmask = 136,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {
@@ -37,9 +37,9 @@ scientist = Creature:new {
 		"object/mobile/dressed_mercenary_medic_rodian_female_01.iff"
 	},
 	lootGroups = {},
-	weapons = {},
-	conversationTemplate = "generic_scientist_mission_giver_convotemplate",
-	attacks = {}
+	weapons = {"pirate_weapons_light"},
+	conversationTemplate = "",
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
-CreatureTemplates:addCreatureTemplate(scientist, "scientist")
+CreatureTemplates:addCreatureTemplate(scientist_target_crazed_scientist, "scientist_target_crazed_scientist")

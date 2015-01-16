@@ -255,6 +255,7 @@ createMissionGiverConvoTemplate("theme_park_valarian_mission_giver_convotemplate
 
 -- Generic
 createMissionGiverConvoTemplate("generic_criminal_mission_giver_convotemplate", "generic_criminal_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("generic_scientist_mission_giver_convotemplate", "generic_scientist_mission_giver_conv_handler")
 
 -- Epic Quest Chains
 createMissionGiverConvoTemplate("krayt_dragon_skull_mission_giver_convotemplate", "krayt_dragon_skull_mission_giver_conv_handler")
