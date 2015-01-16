@@ -99,6 +99,7 @@ createMissionTargetConvoTemplate("theme_park_valarian_mission_target_convotempla
 
 -- Generic
 createMissionTargetConvoTemplate("generic_criminal_mission_target_convotemplate", "generic_criminal_mission_target_conv_handler")
+createMissionTargetConvoTemplate("generic_scientist_mission_target_convotemplate", "generic_scientist_mission_target_conv_handler")
 
 -- Epic Quest Chains
 createMissionTargetConvoTemplate("krayt_dragon_skull_mission_target_convotemplate","krayt_dragon_skull_mission_target_conv_handler")

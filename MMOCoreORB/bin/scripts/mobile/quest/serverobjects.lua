@@ -12,6 +12,10 @@ includeFile("quest/generic/criminal_target_noble.lua")
 includeFile("quest/generic/criminal_target_rival.lua")
 includeFile("quest/generic/criminal_target_thug.lua")
 includeFile("quest/generic/criminal_target.lua")
+includeFile("quest/generic/scientist_target_crazed_scientist.lua")
+includeFile("quest/generic/scientist_target_robber.lua")
+includeFile("quest/generic/scientist_target_scientist.lua")
+includeFile("quest/generic/scientist_target_spy.lua")
 
 --CoA
 includeFile("quest/coa/caravan_leader_coa3.lua")
