@@ -122,7 +122,7 @@ void WeatherManagerImplementation::createNewWeatherPattern() {
 		}
 	}
 
-	int duration = System::random(averageWeatherDuration) + (averageWeatherDuration / 2);
+	int duration = (System::random(averageWeatherDuration) + (averageWeatherDuration / 2)) / (baseWeather + 1);
 	currentMap = new WeatherMap(weatherStability, zone->getMinX(), zone->getMaxX(), zone->getMinY(), zone->getMaxY(), duration);
 
 	if(weatherChangeEvent != NULL) {
@@ -132,7 +132,7 @@ void WeatherManagerImplementation::createNewWeatherPattern() {
 		weatherChangeEvent = new WeatherChangeEvent(_this.get());
 	}
 
-	weatherChangeEvent->reschedule((duration * 1.5) * 1000);
+	weatherChangeEvent->reschedule(duration * 1000);
 }
 
 void WeatherManagerImplementation::sendWeatherTo(CreatureObject* player) {
