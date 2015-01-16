@@ -154,7 +154,8 @@ public:
 		if (creature->isAiAgent()) {
 			AiAgent* agent = cast<AiAgent*>(creature.get());
 			agent->setCreatureBitmask(CreatureFlag::PET);
-			agent->activateLoad("");
+			agent->setFollowObject(player);
+			agent->activateLoad("follow");
 		}
 
 		creature->getZone()->broadcastObject(creature, true);
