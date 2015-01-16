@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a51691d_a65efb10",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2015-01-16T23:03:21Z",
+      "side": 1,
+      "message": "This should be a logical negation (!) instead of a bitwise (~)",
+      "revId": "5680632872648816a8e4c21d21b4ec9295bd02b1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
