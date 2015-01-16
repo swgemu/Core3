@@ -49,9 +49,9 @@ kirkin_liawoon_missions =
 npcMapKirkinLiawoon = 
 { 
 	{ 
-		spawnData = { planetName = "corellia", npcTemplate = "kirkin_liawoon", x = -177.0, z = 28.0, y = -4498.0,
+		spawnData = { planetName = "corellia", npcTemplate = "kirkin_liawoon", x = -178.2, z = 28.0, y = -4498.0,
 			direction = -91, cellID = 0, position = STAND }, 
-		worldPosition = { x = -177.0, y = -4498.0 },
+		worldPosition = { x = -178.2, y = -4498.0 },
 		npcNumber = 1,   
 		stfFile = "@static_npc/corellia/kirkin_liawoon", 
 		missions = kirkin_liawoon_missions
