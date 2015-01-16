@@ -7,6 +7,9 @@ includeFile("quest/gadget_specialist.lua")
 includeFile("quest/theater_manager.lua")
 
 --Generic
+includeFile("quest/generic/businessman_target_thief_award.lua")
+includeFile("quest/generic/businessman_target_thief_briefcase.lua")
+includeFile("quest/generic/businessman_target.lua")
 includeFile("quest/generic/criminal_target_merchant.lua")
 includeFile("quest/generic/criminal_target_noble.lua")
 includeFile("quest/generic/criminal_target_rival.lua")
