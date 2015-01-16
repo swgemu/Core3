@@ -129,7 +129,9 @@ DeathWatchBunkerScreenPlay = ScreenPlay:new {
 
 	spawnGroups = { "", "terminalAnextSpawn", "terminalBnextSpawn", "terminalCnextSpawn" },
 
-	spawnEvents = { "", "spawnNextA", "spawnNextB", "spawnNextC" }
+	spawnEvents = { "", "spawnNextA", "spawnNextB", "spawnNextC" },
+	
+	containerRespawnTime = 20 * 60 * 1000 -- 20 minutes
 }
 
 registerScreenPlay("DeathWatchBunkerScreenPlay", true)
@@ -541,7 +543,7 @@ function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature, selectedI
 			spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		end
 
-		createEvent(240 * 1000, "DeathWatchBunkerScreenPlay", "refillContainer", pSceneObject)
+		createEvent(self.containerRespawnTime, "DeathWatchBunkerScreenPlay", "refillContainer", pSceneObject)
 	end
 end
 
