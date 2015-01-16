@@ -194,23 +194,26 @@ public:
 			//player->info("sending login Message:" + zoneServer->getLoginMessage(), true);
 
 			// Disable music notes if player had been playing music
-			player->setPerformanceCounter(0, false);
-			player->setInstrumentID(0, false);
+			if (!player->isPlayingMusic() && !player->isDancing()) {
+				player->setPerformanceCounter(0, false);
+				player->setInstrumentID(0, false);
 
-			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(player);
-			dcreo6->updatePerformanceAnimation(player->getPerformanceAnimation());
-			dcreo6->updatePerformanceCounter(0);
-			dcreo6->updateInstrumentID(0);
-			dcreo6->close();
-			player->broadcastMessage(dcreo6, true);
+				CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(player);
+				dcreo6->updatePerformanceAnimation(player->getPerformanceAnimation());
+				dcreo6->updatePerformanceCounter(0);
+				dcreo6->updateInstrumentID(0);
+				dcreo6->close();
+				player->broadcastMessage(dcreo6, true);
 
-			player->setListenToID(0);
+				player->setListenToID(0);
 
-			// Stop playing music/dancing animation
-			if (player->getPosture() == CreaturePosture::SKILLANIMATING)
+				// Stop playing music/dancing animation
+				if (player->getPosture() == CreaturePosture::SKILLANIMATING)
 					player->setPosture(CreaturePosture::UPRIGHT);
 
-			SkillModManager::instance()->verifyWearableSkillMods(player);
+			}
+
+				SkillModManager::instance()->verifyWearableSkillMods(player);
 
 		} else {
 			if (obj != NULL)
