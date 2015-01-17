@@ -283,7 +283,7 @@ public:
 				ManagedReference<Account*> otherAccount = playerManager->getAccount(loggedInAccounts.get(i));
 
 				if (otherAccount != NULL) {
-					header << "\t" << otherAccount->getUsername() << endl;
+					header << "\t" << otherAccount->getUsername() << "|" << loggedInAccounts.get(i) << endl;
 				}
 			}
 		}
