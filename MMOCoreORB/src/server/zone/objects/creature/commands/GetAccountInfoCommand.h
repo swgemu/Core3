@@ -276,11 +276,15 @@ public:
 		
 		if (!loggedInIp.isEmpty()) {
 			header << endl;
-			header << "Logged in accounts from this ip:" << loggedInIp << endl;
+			header << "Accounts logged in from this ip: " << loggedInIp << endl;
 			SortedVector<uint32> loggedInAccounts = server->getZoneServer()->getPlayerManager()->getOnlineZoneClientMap()->getAccountsLoggedIn(loggedInIp);
 			
 			for (int i = 0; i < loggedInAccounts.size(); ++i){
-				header << "\t" << loggedInAccounts.get(i) << endl;
+				ManagedReference<Account*> otherAccount = playerManager->getAccount(loggedInAccounts.get(i));
+
+				if (otherAccount != NULL) {
+					header << "\t" << otherAccount->getUsername() << endl;
+				}
 			}
 		}
 		
