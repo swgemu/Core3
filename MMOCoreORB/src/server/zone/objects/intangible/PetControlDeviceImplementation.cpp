@@ -399,7 +399,7 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 
 	assert(pet->isLockedByCurrentThread());
 
-	if (!force && pet->isInCombat())
+	if (!force && (pet->isInCombat() || player->isInCombat()))
 		return;
 
 	if (player->isRidingMount() && player->getParent() == pet) {
