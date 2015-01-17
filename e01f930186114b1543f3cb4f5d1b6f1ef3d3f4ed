@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a4e6583_a51cbe6b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/TameCreatureTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-17T17:39:46Z",
+      "side": 1,
+      "message": "This is already being set on line 152 above.",
+      "revId": "e01f930186114b1543f3cb4f5d1b6f1ef3d3f4ed",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
