@@ -16,6 +16,23 @@
       "revId": "e01f930186114b1543f3cb4f5d1b6f1ef3d3f4ed",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a4e6583_0525d2aa",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/TameCreatureTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-17T17:53:21Z",
+      "side": 1,
+      "message": "This isn\u0027t the correct ai template to load for pets. I would recommend looking at PetControlDeviceImplementation::spawnObject() to see how a newly called pet is set up. It looks like it\u0027s doing a few things that aren\u0027t happening here (storing the follow object, setting home position and next step position, and clearing patrol points). It\u0027s likely that we need to do the same things here.",
+      "revId": "e01f930186114b1543f3cb4f5d1b6f1ef3d3f4ed",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
