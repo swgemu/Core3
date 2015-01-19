@@ -33,8 +33,14 @@ public:
 		if (bankObject == NULL)
 			return;
 
-		if (!player->isInRange(bankObject, 5))
+		if (!player->isInRange(bankObject, 8)){
+			StringIdChatParameter params;
+			params.setStringId("@ui:radial_out_of_range_prose");
+			params.setTT("@terminal_name:terminal_bank");
+			params.setTO("@sui:bank_credits");
+			player->sendSystemMessage(params);
 			return;
+		}
 
 		uint32 currentCash = player->getCashCredits();
 		uint32 currentBank = player->getBankCredits();
