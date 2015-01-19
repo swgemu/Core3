@@ -309,6 +309,10 @@ Vector3 PathFinderManager::transformToModelSpace(const Vector3& point, SceneObje
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
 	Vector<WorldCoordinates>* path = new Vector<WorldCoordinates>(5, 1);
+
+	if (path == NULL)
+		return NULL;
+
 	path->add(pointA);
 
 	CellObject* ourCell = cast<CellObject*>( pointA.getCell());
@@ -329,10 +333,32 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	}
 
 	FloorMesh* sourceFloorMesh = portalLayout->getFloorMesh(ourCellID);
+
+	if (sourceFloorMesh == NULL) {
+		delete path;
+		return NULL;
+	}
+
 	PathGraph* sourcePathGraph = sourceFloorMesh->getPathGraph();
 
+	if (sourcePathGraph == NULL) {
+		delete path;
+		return NULL;
+	}
+
 	FloorMesh* exteriorFloorMesh = portalLayout->getFloorMesh(0);
+
+	if (exteriorFloorMesh == NULL) {
+		delete path;
+		return NULL;
+	}
+
 	PathGraph* exteriorPathGraph = exteriorFloorMesh->getPathGraph();
+
+	if (exteriorPathGraph == NULL) {
+		delete path;
+		return NULL;
+	}
 
 	// we need to move world position into model space
 	Vector3 transformedPosition = transformToModelSpace(pointB.getPoint(), building);
