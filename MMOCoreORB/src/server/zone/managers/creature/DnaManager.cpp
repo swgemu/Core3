@@ -305,6 +305,9 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	int har = instance()->generateScoreFor(DnaManager::HARDINESS,cl,quality);
 	int ite = instance()->generateScoreFor(DnaManager::INTELLIGENCE,cl,quality);
 	int pow = instance()->generateScoreFor(DnaManager::POWER,cl,quality);
+	if (creatureTemplate->getArmor() > 0 && frt < 500) {
+		frt = instance()->generateScoreFor(DnaManager::FORTITUDE,50,quality);
+	}
 	// We should now have enough to generate a sample
 	ManagedReference<DnaComponent*> prototype = player->getZoneServer()->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
 	if (prototype == NULL) {
