@@ -82,17 +82,25 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 			ManagedReference<PowerupObject*> pup = weapon->removePowerup();
 			if(pup == NULL)
 				return 1;
+			
+			//Do we destroy the pup, or send it back to the player?
+			bool destroyPowerupOnRemoval = true;
+ 
+			if( destroyPowerupOnRemoval ) {
+				pup->destroyObjectFromWorld( true );
+				pup->destroyObjectFromDatabase( true );
+			} else {
+			        ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+				if(inventory == NULL)
+					return 1;
 
-			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-			if(inventory == NULL)
-				return 1;
-
-			inventory->transferObject(pup, -1, false);
-			pup->sendTo(player, true);
+				// TODO: No protection for full inventory.
+				inventory->transferObject(pup, -1, false);
+				pup->sendTo(player, true);
+			}
 
 			StringIdChatParameter message("powerup", "prose_remove_powerup"); //You detach your powerup from %TT.
-			message.setTT(weapon->getDisplayedName());
-
+			message.setTT(weapon->getDisplayedName()); 
 			player->sendSystemMessage(message);
 
 			return 1;
