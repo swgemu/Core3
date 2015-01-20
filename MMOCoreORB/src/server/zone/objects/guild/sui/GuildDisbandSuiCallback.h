@@ -35,7 +35,7 @@ public:
 		if (!terminal->isGuildTerminal())
 			return;
 
-		Locker _lock(terminal);
+		//Locker _lock(terminal);
 
 		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
@@ -43,6 +43,8 @@ public:
 
 		if (guild == NULL)
 			return;
+
+		Locker guildLocker(guild, player);
 
 		guildManager->disbandGuild(player, guildTerminal,  guild);
 	}

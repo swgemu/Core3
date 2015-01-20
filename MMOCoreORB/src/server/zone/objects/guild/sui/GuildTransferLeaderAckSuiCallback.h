@@ -28,7 +28,7 @@ public:
 
 		ManagedReference<SceneObject*> sceo = server->getObject(leaderID);
 
-		CreatureObject* currentLeader = NULL;
+		ManagedReference<CreatureObject*> currentLeader = NULL;
 
 		if (sceo != NULL && sceo->isCreatureObject()) {
 			currentLeader = cast<CreatureObject*>(sceo.get());

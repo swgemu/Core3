@@ -40,7 +40,7 @@ public:
 		if (!terminal->isGuildTerminal())
 			return;
 
-		Locker _lock(terminal);
+		//Locker _lock(terminal);
 
 		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 

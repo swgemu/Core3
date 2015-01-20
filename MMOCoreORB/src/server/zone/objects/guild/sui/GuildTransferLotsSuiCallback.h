@@ -25,8 +25,10 @@ public:
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
-		if ( suiBox->getUsingObject() != NULL)
-			guildManager->transferGuildHall(player, suiBox->getUsingObject().get());
+		ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
+
+		if ( usingObject != NULL)
+			guildManager->transferGuildHall(player, usingObject);
 
 	}
 
