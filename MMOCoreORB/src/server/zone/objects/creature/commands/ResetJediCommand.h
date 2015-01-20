@@ -98,6 +98,9 @@ public:
 
 		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
 
+		if (targetGhost == NULL)
+			return GENERALERROR;
+
 		targetGhost->setJediState(0);
 
 		return SUCCESS;
