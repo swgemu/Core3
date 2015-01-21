@@ -558,27 +558,31 @@ function recruiterScreenplay:getSmugglerDiscount(pPlayer)
 end
 
 function recruiterScreenplay:handleGoOnLeave(pPlayer)
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
+	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
+		deleteData(player:getObjectID() .. ":changingFactionStatus")
 		playerObject:setFactionStatus(0)
 	end)
 end
 
 function recruiterScreenplay:handleGoCovert(pPlayer)
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
+	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
+		deleteData(player:getObjectID() .. ":changingFactionStatus")
 		playerObject:setFactionStatus(1)
 	end)
 end
 
 function recruiterScreenplay:handleGoOvert(pPlayer)
-	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
+	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
+		deleteData(player:getObjectID() .. ":changingFactionStatus")
 		playerObject:setFactionStatus(2)
 	end)
 end
 
 function recruiterScreenplay:handleResign(pPlayer)
 	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		oldFaction = player:getFaction()
-		oldFactionName = self:getFactionFromHashCode(oldFaction)
+		deleteData(player:getObjectID() .. ":changingFactionStatus")
+		local oldFaction = player:getFaction()
+		local oldFactionName = self:getFactionFromHashCode(oldFaction)
 		player:setFactionRank(0)
 		player:setFaction(0)
 		playerObject:setFactionStatus(0)

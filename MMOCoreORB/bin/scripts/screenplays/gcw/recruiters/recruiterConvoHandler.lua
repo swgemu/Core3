@@ -53,6 +53,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 
 		elseif (screenID == "accepted_go_overt") then
 			playerObject:setFactionStatus(3)
+			writeData(player:getObjectID() .. ":changingFactionStatus", 1)
 			createEvent(30000, "recruiterScreenplay", "handleGoOvert", conversingPlayer)
 
 		elseif (screenID == "accepted_go_covert") then
@@ -60,6 +61,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 				return
 			end
 			playerObject:setFactionStatus(3)
+			writeData(player:getObjectID() .. ":changingFactionStatus", 1)
 			createEvent(300000, "recruiterScreenplay", "handleGoCovert", conversingPlayer)
 
 		elseif (screenID == "accepted_go_on_leave") then
@@ -68,6 +70,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 				return
 			end
 			playerObject:setFactionStatus(3)
+			writeData(player:getObjectID() .. ":changingFactionStatus", 1)
 			createEvent(300000, "recruiterScreenplay", "handleGoOnLeave", conversingPlayer)
 
 		elseif (screenID == "accepted_resign") then
@@ -77,6 +80,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 
 			if (playerObject:isOvert()) then
 				playerObject:setFactionStatus(3)
+				writeData(player:getObjectID() .. ":changingFactionStatus", 1)
 				createEvent(300000, "recruiterScreenplay", "handleResign", conversingPlayer)
 				return conversationScreen
 			end
@@ -137,6 +141,10 @@ function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, conversationTempl
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local faction = player:getFaction()
 		local factionStanding = playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc))
+		
+		if (playerObject:isChangingFactionStatus() and readData(player:getObjectID() .. ":changingFactionStatus") ~= 1) then
+			recruiterScreenplay:handleGoCovert(pPlayer)
+		end
 
 		if (faction == recruiterScreenplay:getRecruiterEnemyFactionHashCode(pNpc)) then
 			return convoTemplate:getScreen("greet_enemy")
