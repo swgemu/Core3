@@ -44,7 +44,9 @@ int VehicleCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sce
 	if(!sceneObject->isTangibleObject())
 		return 0;
 
-	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
+	ManagedReference<TangibleObject*> kitTano = cast<TangibleObject*>(sceneObject);
+	if(kitTano == NULL)
+		return 0;
 
 	uint64 targetID = player->getTargetID();
 	ZoneServer* server = player->getZoneServer();
@@ -100,7 +102,6 @@ int VehicleCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sce
 		return 0;
 	}
 
-	tano->decreaseUseCount();
 	VehicleObject* painted = cast<VehicleObject*>(vehicle);
 	if (painted != NULL){
 		painted->refreshPaint();
@@ -108,7 +109,7 @@ int VehicleCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* sce
 
 	ManagedReference<SuiListBox*> frameTrimSelector = new SuiListBox(player, SuiWindowType::CUSTOMIZE_KIT);
 	frameTrimSelector->setUsingObject(player);
-	frameTrimSelector->setCallback(new CustomVehicleSuiCallback(server, numPalette));
+	frameTrimSelector->setCallback(new CustomVehicleSuiCallback(server, numPalette, kitTano ));
 	frameTrimSelector->setUsingObject(target);
 	frameTrimSelector->setPromptTitle("Customize");
 	frameTrimSelector->setPromptText("Please select the customization action you would like to take");

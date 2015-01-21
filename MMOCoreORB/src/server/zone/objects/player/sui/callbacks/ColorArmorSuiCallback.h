@@ -13,8 +13,6 @@
 
 
 class ColorArmorSuiCallback : public SuiCallback {
-	String nodeName;
-
 public:
 	ColorArmorSuiCallback(ZoneServer* serv) : SuiCallback(serv) {
 	}
@@ -37,8 +35,7 @@ public:
 			ManagedReference<TangibleObject*> armorRehueTano = cast<TangibleObject*>(armorRehue.get());
 
 			if (armorRehueTano != NULL)
-			armorRehueTano->setCustomizationVariable(palette, index, true);
-
+				armorRehueTano->setCustomizationVariable(palette, index, true);
 
 		}
 	}
