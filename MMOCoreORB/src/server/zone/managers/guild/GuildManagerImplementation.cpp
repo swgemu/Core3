@@ -62,6 +62,8 @@
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/commands/TransferstructureCommand.h"
 
+#include "GuildMailTask.h"
+
 void GuildManagerImplementation::loadGuilds() {
 	Locker _lock(_this.get());
 
@@ -1576,26 +1578,8 @@ void GuildManagerImplementation::sendGuildMail(const String& subject, StringIdCh
 	if (guild == NULL)
 		return;
 
-	GuildMemberList* memberList = guild->getGuildMemberList();
-
-	if (memberList == NULL)
-		return;
-
-	for (int i = 0; i < memberList->size(); ++i) {
-		GuildMemberInfo* gmi = &memberList->get(i);
-
-		if (gmi == NULL)
-			continue;
-
-		ManagedReference<SceneObject*> obj = server->getObject(gmi->getPlayerID());
-
-		if (obj == NULL || !obj->isPlayerCreature())
-			continue;
-
-		CreatureObject* recipient = cast<CreatureObject*>( obj.get());
-
-		chatManager->sendMail(guild->getGuildName(), subject, body, recipient->getFirstName());
-	}
+	Reference<GuildMailTask*> task = new GuildMailTask(subject, body, guild);
+	task->execute();
 }
 
 void GuildManagerImplementation::sendGuildWarStatusTo(CreatureObject* player, GuildObject* guild, GuildTerminal* terminal) {
