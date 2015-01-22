@@ -4,7 +4,8 @@ csi = {
 	tag = "SWGEmu-CSI",
 	skills = {
 		"admin_base",
-		"admin_internship"
+		"admin_debug_01",
+		"admin_intern_support"
 	}
 }
 

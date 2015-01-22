@@ -1,5 +1,5 @@
-admin_ecinternship = {
-	skillName = "admin_ecinternship",
+admin_intern_support = {
+	skillName = "admin_intern_support",
 	parentName = "",
 	graphType = 4,
 	godOnly = 1,
@@ -38,4 +38,4 @@ admin_ecinternship = {
 	searchable = 0
 }
 
-addSkill(admin_ecinternship)
+addSkill(admin_intern_support)

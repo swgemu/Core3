@@ -21,14 +21,19 @@ admin_player_management_01 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
+		"getRank",
 		"findPlayer",
 		"getGameTime",
-		"getPlayerId",
-		"getStationName",
 		"grantBadge",
 		"grantTitle",
 		"gmRevive",
 		"revokeBadge"
+		"setFaction",
+		"setTEF",
+		"setFactionStanding",
+		"setPlayerAppearance",
+		"setRank",
+		"showFactionInformation"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},

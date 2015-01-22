@@ -31,7 +31,6 @@ admin_player_management_03 = {
 		"money",
 		"setFirstName",
 		"setLastName",
-		"setName",
 		"setPlayerState",
 		"unCityBan"
 	},
