@@ -21,18 +21,23 @@ admin_player_management_02 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"getRank",
-		"setFaction",
-		"setTEF",
-		"setFactionStanding",
-		"setPlayerAppearance",
-		"setRank"
+		"adjustLotCount",
+		"credits",
+		"editAppearance",
+		"editStats",
+		"kick",
+		"maxCombatAbility",
+		"maxStats",
+		"money",
+		"setFirstName",
+		"setLastName",
+		"setPlayerState",
+		"unCityBan"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
 	schematicsRevoked = {},
 	searchable = 0
 }
-
 
 addSkill(admin_player_management_02)

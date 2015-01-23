@@ -25,7 +25,6 @@ admin_server_admin_03 = {
 		"setLoginMessage",
 		"setLoginTitle",
 		"setPlanetLimit",
-		"resource",
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
