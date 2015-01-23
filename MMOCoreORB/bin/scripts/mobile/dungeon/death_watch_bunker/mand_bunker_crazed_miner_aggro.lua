@@ -1,4 +1,4 @@
-mand_bunker_crazed_miner = Creature:new {
+mand_bunker_crazed_miner_aggro = Creature:new {
 	objectName = "",
 	customName = "Haldo",
 	socialGroup = "death_watch",
@@ -22,7 +22,7 @@ mand_bunker_crazed_miner = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -34,4 +34,4 @@ mand_bunker_crazed_miner = Creature:new {
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(mand_bunker_crazed_miner, "mand_bunker_crazed_miner")
+CreatureTemplates:addCreatureTemplate(mand_bunker_crazed_miner_aggro, "mand_bunker_crazed_miner_aggro")
