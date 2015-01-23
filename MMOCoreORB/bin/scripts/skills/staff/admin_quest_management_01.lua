@@ -24,9 +24,7 @@ admin_quest_management_01 = {
 		"activateQuest",
 		"clearCompletedQuest",
 		"completeQuest",
-		"deactivateQuest",
-		"listActiveQuests",
-		"listCompletedQuests"
+		"deactivateQuest"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},

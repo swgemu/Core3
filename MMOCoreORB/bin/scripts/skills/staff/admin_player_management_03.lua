@@ -21,24 +21,19 @@ admin_player_management_03 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"adjustLotCount",
-		"credits",
-		"editAppearance",
-		"editStats",
-		"kick",
-		"maxCombatAbility",
-		"maxStats",
-		"money",
-		"setFirstName",
-		"setLastName",
-		"setName",
-		"setPlayerState",
-		"unCityBan"
+		"addAllowedPlayer",
+		"addBannedPlayer",
+		"getAccountInfo",
+		"getPlayerId",
+		"getStationName",
+		"removeAllowedPlayer",
+		"removeBannedPlayer",		
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
 	schematicsRevoked = {},
 	searchable = 0
 }
+
 
 addSkill(admin_player_management_03)

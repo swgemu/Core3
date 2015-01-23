@@ -1,5 +1,5 @@
-admin_general_admin_02 = {
-	skillName = "admin_general_admin_02",
+admin_quest_management_02 = {
+	skillName = "admin_quest_management_02",
 	parentName = "",
 	graphType = 4,
 	godOnly = 1,
@@ -21,14 +21,8 @@ admin_general_admin_02 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"setName",
-		"harmful",
-		"harmless",
-		"killPlayer",
-		"teleportTarget",
-		"planetWarpTarget",
-		"freezePlayer",
-		"unfreezePlayer"
+		"listActiveQuests",
+		"listCompletedQuests"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
@@ -36,4 +30,4 @@ admin_general_admin_02 = {
 	searchable = 0
 }
 
-addSkill(admin_general_admin_02)
+addSkill(admin_quest_management_02)
