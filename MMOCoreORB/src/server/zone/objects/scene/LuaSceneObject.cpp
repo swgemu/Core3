@@ -23,6 +23,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getPositionX", &LuaSceneObject::getPositionX },
 		{ "getPositionY", &LuaSceneObject::getPositionY },
 		{ "getPositionZ", &LuaSceneObject::getPositionZ },
+		{ "getDirectionAngle", &LuaSceneObject::getDirectionAngle },
 		{ "getWorldPositionX", &LuaSceneObject::getWorldPositionX },
 		{ "getWorldPositionY", &LuaSceneObject::getWorldPositionY },
 		{ "getWorldPositionZ", &LuaSceneObject::getWorldPositionZ },
@@ -187,6 +188,12 @@ int LuaSceneObject::getPositionX(lua_State* L) {
 
 int LuaSceneObject::getPositionZ(lua_State* L) {
 	lua_pushnumber(L, realObject->getPositionZ());
+
+	return 1;
+}
+
+int LuaSceneObject::getDirectionAngle(lua_State* L) {
+	lua_pushnumber(L, realObject->getDirectionAngle());
 
 	return 1;
 }

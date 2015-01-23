@@ -1,4 +1,4 @@
-mand_bunker_crazed_miner = Creature:new {
+mand_bunker_crazed_miner_converse = Creature:new {
 	objectName = "",
 	customName = "Haldo",
 	socialGroup = "death_watch",
@@ -24,14 +24,14 @@ mand_bunker_crazed_miner = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_mand_bunker_crazed_miner.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "deathWatchInsaneMinerConvoTemplate",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(mand_bunker_crazed_miner, "mand_bunker_crazed_miner")
+CreatureTemplates:addCreatureTemplate(mand_bunker_crazed_miner_converse, "mand_bunker_crazed_miner_converse")

@@ -54,11 +54,11 @@ function deathWatchHaldoConvoHandler:runScreenHandlers(conversationTemplate, con
 				end
 			end
 			clonedConversation:addOption("@conversation/death_watch_insane_miner:s_3fb7180e", "medical_droid")
-			--TODO: Add ability to kill haldo
-			--clonedConversation:addOption("@conversation/death_watch_insane_miner:s_4fe1bc67", "wont_help")
+			clonedConversation:addOption("@conversation/death_watch_insane_miner:s_4fe1bc67", "wont_help")
 		elseif (screenID == "please_hurry") then
 			player:setScreenPlayState(1, "death_watch_haldo")
-			DeathWatchBunkerScreenPlay:startForemanQuestStage(1, conversingPlayer)
+		elseif (screenID == "wont_help") then
+			DeathWatchBunkerScreenPlay:spawnAggroHaldo(conversingNPC, conversingPlayer)
 		elseif (screenID == "thank_you") then
 			if (player:hasScreenPlayState(2, "death_watch_haldo") == 0) then
 				local pInventory = player:getSlottedObject("inventory")
