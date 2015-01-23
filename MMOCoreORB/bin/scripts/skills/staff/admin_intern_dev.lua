@@ -1,5 +1,5 @@
-admin_internship = {
-	skillName = "admin_internship",
+admin_intern_dev = {
+	skillName = "admin_intern_dev",
 	parentName = "",
 	graphType = 4,
 	godOnly = 1,
@@ -21,16 +21,7 @@ admin_internship = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"teleport",
-		"teleportto",
-		"teleportTarget",
-		"invulnerable",
-		"kill",
-		"killPlayer",
-		"gmRevive",
-		"setSpeed",
-		"setFaction",
-		"setFactionStanding"
+		"generateCraftedItem"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
@@ -38,4 +29,4 @@ admin_internship = {
 	searchable = 0
 }
 
-addSkill(admin_internship)
+addSkill(admin_intern_dev)
