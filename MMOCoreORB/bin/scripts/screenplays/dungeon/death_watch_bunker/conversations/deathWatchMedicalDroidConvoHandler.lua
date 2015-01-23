@@ -34,7 +34,7 @@ function deathWatchMedicalDroidConvoHandler:runScreenHandlers(conversationTempla
 		local conversationScreen = screen:cloneScreen()
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		if (screenID == "intro") then
-			if (player:hasScreenPlayState(2, "death_watch_foreman_stage") == 1 and player:hasScreenPlayState(1, "death_watch_foreman_stage_failed") == 0 and player:hasScreenPlayState(4, "death_watch_foreman_stage") == 0) then
+			if (player:hasScreenPlayState(2, "death_watch_foreman_stage") == 1 and player:hasScreenPlayState(4, "death_watch_foreman_stage") == 0) then
 				local pInventory = player:getSlottedObject("inventory")
 				if (pInventory ~= nil) then
 					if (SceneObject(pInventory):hasFullContainerObjects()) then
