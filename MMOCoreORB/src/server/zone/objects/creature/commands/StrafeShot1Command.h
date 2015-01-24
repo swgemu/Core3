@@ -69,6 +69,16 @@ public:
 			return INVALIDWEAPON;
 		}
 
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isCreatureObject())
+			return INVALIDTARGET;
+
+		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
+
+		if (creatureTarget->isPlayerCreature() && creatureTarget->isAttackableBy(creature) && creatureTarget->hasState(CreatureState::COVER))
+				creatureTarget->removeStateBuff(CreatureState::COVER);
+
 		return doCombatAction(creature, target);
 	}
 
