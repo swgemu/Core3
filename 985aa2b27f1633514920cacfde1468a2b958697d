@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_433186a1",
+        "filename": "MMOCoreORB/bin/scripts/object/draft_schematic/food/additive/additive_light.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-24T18:42:48Z",
+      "side": 1,
+      "message": "Why change the experimentation skill and not the assembly skill? Actually, it\u0027s a schematic granted in artisan. general is probably the correct skill anyway. Besides, changing the customization skill should be all that\u0027s needed to fix the issue, right?",
+      "revId": "985aa2b27f1633514920cacfde1468a2b958697d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
