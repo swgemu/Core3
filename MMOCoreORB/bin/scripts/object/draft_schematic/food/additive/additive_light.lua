@@ -55,8 +55,8 @@ object_draft_schematic_food_additive_additive_light = object_draft_schematic_foo
    xp = 20, 
 
    assemblySkill = "general_assembly", 
-   experimentingSkill = "general_experimentation", 
-   customizationSkill = "clothing_customization", 
+   experimentingSkill = "food_experimentation", 
+   customizationSkill = "food_customization", 
 
    customizationOptions = {},
    customizationStringNames = {},
