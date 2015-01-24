@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_a3195a24",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ColorWithKitSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-24T19:11:50Z",
+      "side": 1,
+      "message": "Use different names for each customizationKit to avoid ambiguity. Do the same in the droid and vehicle callbacks.",
+      "revId": "47de006409addc81252be3ab4d97f1cadbdab84f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
