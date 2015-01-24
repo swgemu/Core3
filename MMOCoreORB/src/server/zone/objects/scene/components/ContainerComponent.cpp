@@ -67,14 +67,14 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		if (containerFactoryParent != NULL) {
 			errorDescription = "@container_error_message:container28";
 			return TransferErrorCode::CANTADD;
-		} else if (objPlayerParent == NULL && objBuildingParent != NULL && containerPlayerParent != NULL) {
+		} else if (objPlayerParent == NULL && objBuildingParent != NULL && (containerPlayerParent != NULL || sceneObject->isPlayerCreature())) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( objBuildingParent.get());
 
 			if (buio != NULL && buio->getOwnerObjectID() != containerPlayerParent->getObjectID()) {
 				errorDescription = "@container_error_message:container27";
 				return TransferErrorCode::CANTREMOVE;
 			}
-		} else if (objPlayerParent != NULL && containerPlayerParent == NULL && containerBuildingParent != NULL) {
+		} else if (objPlayerParent != NULL && containerPlayerParent == NULL && containerBuildingParent != NULL && !sceneObject->isPlayerCreature()) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( containerBuildingParent.get());
 
 			if (buio != NULL && buio->getOwnerObjectID() != objPlayerParent->getObjectID()) {
