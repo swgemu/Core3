@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_63d36239",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/components/ContainerComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-24T19:21:47Z",
+      "side": 1,
+      "message": "I think you also need to change containerPlayerParent !\u003d NULL to (containerPlayerParent !\u003d NULL || sceneObject-\u003eisPlayerCreature()) or people will be able to remove no-trade items from a house they don\u0027t own by equipping them directly from the house.",
+      "revId": "92777951cb699c5f30c1b3515a99132ea37893a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
