@@ -44,7 +44,9 @@ int DroidCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* scene
 	if(!sceneObject->isTangibleObject())
 		return 0;
 
-	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
+	ManagedReference<TangibleObject*> kitTano = cast<TangibleObject*>(sceneObject);
+	if(kitTano == NULL)
+		return 0;
 
 	uint64 targetID = player->getTargetID();
 	ZoneServer* server = player->getZoneServer();
@@ -101,7 +103,6 @@ int DroidCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* scene
 		return 0;
 	}
 
-	tano->decreaseUseCount();
 	DroidObject* painted = cast<DroidObject*>(droid);
 	if (painted != NULL){
 		painted->refreshPaint();
@@ -109,7 +110,7 @@ int DroidCustomKitObjectMenuComponent::handleObjectMenuSelect(SceneObject* scene
 
 	ManagedReference<SuiListBox*> frameTrimSelector = new SuiListBox(player, SuiWindowType::CUSTOMIZE_KIT);
 	frameTrimSelector->setUsingObject(player);
-	frameTrimSelector->setCallback(new CustomDroidSuiCallback(server, numPalette));
+	frameTrimSelector->setCallback(new CustomDroidSuiCallback(server, numPalette, kitTano));
 	frameTrimSelector->setUsingObject(target);
 	frameTrimSelector->setPromptTitle("Customize");
 	frameTrimSelector->setPromptText("Please select the customization action you would like to take");
