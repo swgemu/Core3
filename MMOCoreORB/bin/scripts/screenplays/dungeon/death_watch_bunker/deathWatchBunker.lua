@@ -3,6 +3,10 @@ local ObjectManager = require("managers.object.object_manager")
 DeathWatchBunkerScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
+	-- Technician vent repair quest
+	ventsRepaired = false,
+	ventDroidAvailable = true,
+
 	passkey = {
 		hall = "object/tangible/dungeon/death_watch_bunker/passkey_hall.iff",
 		storage = "object/tangible/dungeon/death_watch_bunker/passkey_storage.iff",
@@ -123,9 +127,8 @@ DeathWatchBunkerScreenPlay = ScreenPlay:new {
 
 	missingSkillMessage = { "", "", "", "", "@dungeon/death_watch:not_enough_armorsmith_skill", "@dungeon/death_watch:not_enough_droidengineer_skill", "@dungeon/death_watch:not_enough_tailor_skill" },
 
-	mineCells = { 	5996352, 5996353, 5996354, 5996356, 5996357, 5996358, 5996359, 5996360, 5996361, 5996362,
-		5996363, 5996364, 5996365, 5996366, 5996369, 5996372, 5996375, 5996376, 5996377,
-	},
+	mineCells = { 5996352, 5996353, 5996354, 5996355, 5996356, 5996357, 5996358, 5996359, 5996360, 5996361, 5996362, 5996363, 5996364,
+		5996365, 5996366, 5996367, 5996369, 5996372, 5996373, 5996375, 5996376, 5996377 },
 
 	spawnGroups = { "", "terminalAnextSpawn", "terminalBnextSpawn", "terminalCnextSpawn" },
 
@@ -148,7 +151,7 @@ function DeathWatchBunkerScreenPlay:start()
 		self:spawnMobiles()
 		self:setupPermissionGroups()
 
-		createEvent(1000 * 30, "DeathWatchBunkerScreenPlay", "poisonEvent", pBunker)
+		createEvent(1000 * 45, "DeathWatchBunkerScreenPlay", "poisonEvent", pBunker)
 		createObserver(ENTEREDBUILDING, "DeathWatchBunkerScreenPlay", "onEnterDWB", pBunker)
 		createObserver(EXITEDBUILDING, "DeathWatchBunkerScreenPlay", "onExitDWB", pBunker)
 	end
@@ -427,7 +430,6 @@ function DeathWatchBunkerScreenPlay:onExitDWB(sceneObject, creatureObject, long)
 		end
 
 		if long == self.buildingIds.outside or long == 0 then
-			creature:sendSystemMessage("@dungeon/death_watch:relock")
 
 			creature:removeScreenPlayState(2, "death_watch_bunker")
 			creature:removeScreenPlayState(4, "death_watch_bunker")
@@ -508,6 +510,7 @@ function DeathWatchBunkerScreenPlay:lockCellsOnly(pCreature)
 		if creature:hasScreenPlayState(128, "death_watch_bunker") == 0 then
 			self:removePermission(pCreature, "DeathWatchBunkerDoor7")
 		end
+		creature:sendSystemMessage("@dungeon/death_watch:relock")
 	end)
 end
 
@@ -556,17 +559,17 @@ function DeathWatchBunkerScreenPlay:refillContainer(pSceneObject)
 end
 
 function DeathWatchBunkerScreenPlay:poisonEvent(pSceneObject)
-	for i,v in ipairs(self.mineCells) do
-		local pCell = getSceneObject(v)
-		if pCell ~= nil then
-			local cellSize = SceneObject(pCell):getContainerObjectsSize()
+	if (not self.ventsRepaired) then
+		for i,v in ipairs(self.mineCells) do
+			local pCell = getSceneObject(v)
+			if pCell ~= nil then
+				local cellSize = SceneObject(pCell):getContainerObjectsSize()
 
-			for j = 0, cellSize - 1, 1 do
-				local pObject = SceneObject(pCell):getContainerObject(j)
+				for j = 0, cellSize - 1, 1 do
+					local pObject = SceneObject(pCell):getContainerObject(j)
 
-				if pObject ~= nil then
-					if (SceneObject(pObject):isCreatureObject()) then
-						if (not CreatureObject(pObject):isAiAgent() and not self:hasRebreather(pObject) == 1) then
+					if pObject ~= nil then
+						if (SceneObject(pObject):isCreatureObject() and not CreatureObject(pObject):isAiAgent() and not self:hasRebreather(pObject)) then
 							self:doPoison(pObject)
 						end
 					end
@@ -574,7 +577,7 @@ function DeathWatchBunkerScreenPlay:poisonEvent(pSceneObject)
 			end
 		end
 	end
-	createEvent(1000 * (50 + getRandomNumber(0,20)) , "DeathWatchBunkerScreenPlay", "poisonEvent", pSceneObject)
+	createEvent(1000 * 45, "DeathWatchBunkerScreenPlay", "poisonEvent", pSceneObject)
 end
 
 function DeathWatchBunkerScreenPlay:timeWarning(pCreature)
@@ -915,7 +918,7 @@ function DeathWatchBunkerScreenPlay:hasRebreather(pSceneObject)
 	local pRebreather = SceneObject(pSceneObject):getSlottedObject("eyes")
 
 	if (pRebreather == nil) then
-		return 0
+		return false
 	end
 
 	local headSlot = SceneObject(pRebreather):getTemplateObjectPath()
@@ -923,9 +926,9 @@ function DeathWatchBunkerScreenPlay:hasRebreather(pSceneObject)
 	if (headSlot == self.bunkerItems.mandoRebreather) then
 		return SceneObject(pRebreather):getCustomObjectName() == "Advanced Rebreather"
 	elseif (headSlot == self.bunkerItems.mandoHelmet) then
-		return 1
+		return true
 	end
-	return 0
+	return false
 end
 
 --   Inflict poison damage on a creature
@@ -947,6 +950,7 @@ function DeathWatchBunkerScreenPlay:lockAll(pCreature)
 	for i = 1, #self.doorData, 1 do
 		self:removePermission(pCreature, "DeathWatchBunkerDoor" .. i)
 	end
+	CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:relock")
 end
 
 function DeathWatchBunkerScreenPlay:spawnDefenders(number, pCreature)
@@ -1074,7 +1078,7 @@ function DeathWatchBunkerScreenPlay:checkDoor(pSceneObject, pCreature)
 			else
 				writeData(creature:getObjectID() .. ":teleportedFromBunker", 0)
 			end
-			
+
 			createEvent(1000 * 60 * 5, "DeathWatchBunkerScreenPlay", "removeFromBunker", pCreature)
 			createEvent(1000 * 60 * 4.5, "DeathWatchBunkerScreenPlay", "timeWarning", pCreature)
 			createEvent(1000 * 60 * 5.5, "DeathWatchBunkerScreenPlay", "despawnCell", pCell)
