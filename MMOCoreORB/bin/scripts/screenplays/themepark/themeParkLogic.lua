@@ -204,6 +204,10 @@ function ThemeParkLogic:getGlobalFaction()
 end
 
 function ThemeParkLogic:getMissionFaction(npcNumber, missionNumber)
+	if (self.genericGiver) then
+		return 0
+	end
+
 	local mission = self:getMission(npcNumber, missionNumber)
 	local npcData = self:getNpcData(npcNumber)
 
@@ -811,7 +815,7 @@ function ThemeParkLogic:getMissionPreReq(pPlayer)
 	if (self.genericGiver) then
 		return 0
 	end
-	
+
 	local npcNumber = self:getActiveNpcNumber(pPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pPlayer)
 	local mission = self:getMission(npcNumber, missionNumber)
