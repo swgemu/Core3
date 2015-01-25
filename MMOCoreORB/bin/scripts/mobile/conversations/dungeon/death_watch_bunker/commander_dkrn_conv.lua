@@ -169,7 +169,7 @@ commanderDkrnConvoTemplate:addScreen(very_well_be_quick);
 
 sorry_to_hear = ConvoScreen:new {
 	id = "sorry_to_hear",
-	leftDialog = "@conversation/death_watch_imperial_herald:sorry_to_hear", -- I am sorry to hear this. We were so close to our goal. Very well, then. You are dismissed.
+	leftDialog = "@conversation/death_watch_imperial_herald:s_79b531ae", -- I am sorry to hear this. We were so close to our goal. Very well, then. You are dismissed.
 	stopConversation = "true",
 	options = {
 	}
