@@ -206,6 +206,10 @@ end
 function ThemeParkLogic:getMissionFaction(npcNumber, missionNumber)
 	local mission = self:getMission(npcNumber, missionNumber)
 	local npcData = self:getNpcData(npcNumber)
+	
+	if (self.genericGiver) then
+		return 0
+	end
 
 	if mission.faction == nil and npcData.faction == nil then
 		return 0
