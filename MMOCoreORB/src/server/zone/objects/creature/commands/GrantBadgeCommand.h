@@ -139,6 +139,7 @@ public:
 					ManagedReference<CreatureObject*> player = cast<CreatureObject*>(targetObject);
 
 					if (player != NULL && player != creature) {
+						Locker crossLocker(player, creature);
 						server->getPlayerManager()->awardBadge(player->getPlayerObject(), badgeId);
 						numGranted++;
 					}
@@ -155,6 +156,7 @@ public:
 				ManagedReference<CreatureObject*> player = cast<CreatureObject*>(targetObject.get());
 
 				if (player != NULL) {
+					Locker crossLocker(player, creature);
 					server->getPlayerManager()->awardBadge(player->getPlayerObject(), badgeId);
 					creature->sendSystemMessage("Granted badge " + String::valueOf(badgeId) + " to " + player->getDisplayedName() + ".");
 					return SUCCESS;
