@@ -56,7 +56,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		return TransferErrorCode::CANTADDTOITSELF;
 	}
 
-	if (object->isNoTrade() || object->containsNoTradeObjectRecursive()) {
+	if ((object->isNoTrade() || object->containsNoTradeObjectRecursive()) && !object->isVendor()) {
 		ManagedReference<SceneObject*> containerPlayerParent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 		ManagedReference<SceneObject*> containerBuildingParent = sceneObject->getParentRecursively(SceneObjectType::BUILDING);
 		ManagedReference<SceneObject*> containerFactoryParent = sceneObject->getParentRecursively(SceneObjectType::FACTORY);
@@ -71,6 +71,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( objBuildingParent.get());
 
 			if (buio != NULL && buio->getOwnerObjectID() != containerPlayerParent->getObjectID()) {
+
 				errorDescription = "@container_error_message:container27";
 				return TransferErrorCode::CANTREMOVE;
 			}
@@ -78,6 +79,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( containerBuildingParent.get());
 
 			if (buio != NULL && buio->getOwnerObjectID() != objPlayerParent->getObjectID()) {
+
 				errorDescription = "@container_error_message:container28";
 				return TransferErrorCode::CANTADD;
 			}
@@ -115,9 +117,9 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		}
 
 	} else {
-		sceneObject->error("unkown containmentType in canAddObject type " + String::valueOf(containmentType));
+		sceneObject->error("unknown containmentType in canAddObject type " + String::valueOf(containmentType));
 
-		errorDescription = "DEBUG: cant move item unkown containmentType type";
+		errorDescription = "DEBUG: cant move item unknown containmentType type";
 		return TransferErrorCode::UNKNOWNCONTAIMENTTYPE;
 	}
 
@@ -187,7 +189,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 			objParent->removeObject(object, sceneObject, notifyClient);
 
 		if (object->getParent() != NULL) {
-			object->error("error removing from from parent");
+			object->error("error removing from parent");
 
 			return false;
 		}
