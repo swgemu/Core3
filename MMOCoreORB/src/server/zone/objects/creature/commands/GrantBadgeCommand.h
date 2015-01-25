@@ -63,40 +63,105 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-	try {
-
-		ManagedReference<SceneObject* > object =
-				server->getZoneServer()->getObject(target);
-
-		ManagedReference<CreatureObject*> player = NULL;
-
-		StringTokenizer args(arguments.toString());
-
-		if(object == NULL || !object->isPlayerCreature()) {
-
-			String firstName;
-			if(args.hasMoreTokens()) {
-				args.getStringToken(firstName);
-				player = server->getZoneServer()->getPlayerManager()->getPlayer(firstName);
-			}
-
-		} else {
-			player = cast<CreatureObject*>( object.get());
-		}
-
-		if (player == NULL) {
-			creature->sendSystemMessage("invalid arguments for grantBadge command:  /grantBadge <firstname> <badgeId>");
+		if (arguments.isEmpty() && target == 0) {
+			creature->sendSystemMessage("Syntax: /grantBadge [-area [range]] [badge id]");
 			return GENERALERROR;
 		}
 
-		int badgeId;
-		badgeId = args.getIntToken();
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+		StringTokenizer args(arguments.toString());
 
-		server->getPlayerManager()->awardBadge(player->getPlayerObject(), badgeId);
+		bool area = false;
+		float range = 64;
+		float badgeId;
 
-	} catch (Exception& e) {
-		creature->sendSystemMessage("invalid arguments for grantBadge command:  /grantBadge <firstname> <badgeId>");
-	}
+		if (args.hasMoreTokens()) {
+
+			String arg;
+			args.getStringToken(arg);
+			bool validOption = false;
+
+			if (arg.charAt(0) == '-') {
+				if (arg.toLowerCase() == "-help" || arg.toLowerCase() == "-h") {
+					creature->sendSystemMessage("Syntax: /grantBadge [-area [range]] [badge id]");
+					return GENERALERROR;
+				}
+
+				if (arg.toLowerCase() == "-area" || arg.toLowerCase() == "-a") {
+					validOption = true;
+					area = true;
+
+					if (!args.hasMoreTokens()) {
+						creature->sendSystemMessage("Syntax: /grantBadge [-area [range]] [badge id]");
+						return GENERALERROR;
+					}
+
+					badgeId = args.getFloatToken();
+
+					if (args.hasMoreTokens()) {
+						range = badgeId;
+						badgeId = args.getFloatToken();
+
+						if (range <= 0 || range > 192) {
+							creature->sendSystemMessage("Invalid range, must be between 1 and 192.");
+							return INVALIDPARAMETERS;
+						}
+					}
+				}
+
+				if (!validOption) {
+					creature->sendSystemMessage("Invalid option " + arg);
+					return INVALIDPARAMETERS;
+				}
+			} else {
+				badgeId = Integer::valueOf(arg);
+			}
+		}
+
+		if (area) {
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+			Zone* zone = creature->getZone();
+
+			if (creature->getCloseObjects() == NULL) {
+				creature->info("Null closeobjects vector in GrantBadgeCommand::doQueueCommand", true);
+				zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+			}
+			else {
+				CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
+				closeVector->safeCopyTo(closeObjects);
+			}
+
+			int numGranted = 0;
+
+			for (int i = 0; i < closeObjects.size(); i++) {
+				SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+				if (targetObject != NULL && targetObject->isPlayerCreature()) {
+					ManagedReference<CreatureObject*> player = cast<CreatureObject*>(targetObject);
+
+					if (player != NULL && player != creature) {
+						server->getPlayerManager()->awardBadge(player->getPlayerObject(), badgeId);
+						numGranted++;
+					}
+				}
+			}
+			creature->sendSystemMessage("Granted badge " + String::valueOf(badgeId) + " to " + String::valueOf(numGranted) + " players found within " + String::valueOf(range) + "m.");
+			return SUCCESS;
+
+		} else {
+			if (targetObject == NULL || !targetObject->isPlayerCreature()) {
+					creature->sendSystemMessage("Invalid target.");
+					return INVALIDTARGET;
+			} else {
+				ManagedReference<CreatureObject*> player = cast<CreatureObject*>(targetObject.get());
+
+				if (player != NULL) {
+					server->getPlayerManager()->awardBadge(player->getPlayerObject(), badgeId);
+					creature->sendSystemMessage("Granted badge " + String::valueOf(badgeId) + " to " + player->getDisplayedName() + ".");
+					return SUCCESS;
+				}
+			}
+		}
+
 		return SUCCESS;
 	}
 
