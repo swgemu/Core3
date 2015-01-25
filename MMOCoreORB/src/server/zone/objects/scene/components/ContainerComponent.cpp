@@ -70,14 +70,18 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		} else if (objPlayerParent == NULL && objBuildingParent != NULL && containerPlayerParent != NULL) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( objBuildingParent.get());
 
-			if (buio != NULL && buio->getOwnerObjectID() != containerPlayerParent->getObjectID()) {
+			if (buio != NULL && (buio->getOwnerObjectID() != containerPlayerParent->getObjectID() && !buio->isOnAdminList(cast<CreatureObject*>(containerPlayerParent.get())) &&
+					!buio->isOnPermissionList("VENDOR",cast<CreatureObject*>(containerPlayerParent.get())))) {
+
 				errorDescription = "@container_error_message:container27";
 				return TransferErrorCode::CANTREMOVE;
 			}
 		} else if (objPlayerParent != NULL && containerPlayerParent == NULL && containerBuildingParent != NULL) {
 			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>( containerBuildingParent.get());
 
-			if (buio != NULL && buio->getOwnerObjectID() != objPlayerParent->getObjectID()) {
+			if (buio != NULL && (buio->getOwnerObjectID() != objPlayerParent->getObjectID() &&!buio->isOnAdminList(cast<CreatureObject*>(objPlayerParent.get()))) &&
+					!buio->isOnPermissionList("VENDOR",cast<CreatureObject*>(objPlayerParent.get()))) {
+
 				errorDescription = "@container_error_message:container28";
 				return TransferErrorCode::CANTADD;
 			}
@@ -115,9 +119,9 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		}
 
 	} else {
-		sceneObject->error("unkown containmentType in canAddObject type " + String::valueOf(containmentType));
+		sceneObject->error("unknown containmentType in canAddObject type " + String::valueOf(containmentType));
 
-		errorDescription = "DEBUG: cant move item unkown containmentType type";
+		errorDescription = "DEBUG: cant move item unknown containmentType type";
 		return TransferErrorCode::UNKNOWNCONTAIMENTTYPE;
 	}
 
@@ -187,7 +191,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 			objParent->removeObject(object, sceneObject, notifyClient);
 
 		if (object->getParent() != NULL) {
-			object->error("error removing from from parent");
+			object->error("error removing from parent");
 
 			return false;
 		}
