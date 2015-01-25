@@ -40,6 +40,7 @@ includeFile("dungeon/death_watch_bunker/conversations/deathWatchRescueScientistC
 includeFile("dungeon/death_watch_bunker/conversations/deathWatchWorkshopDroidConvoHandler.lua")
 includeFile("dungeon/geonosian_lab/geo_lab.lua")
 includeFile("dungeon/warren/warren.lua")
+includeFile("dungeon/corellian_corvette/corellianCorvette.lua")
 includeFile("dungeon/corellian_corvette/corvetteTicketGiverConvoHandler.lua")
 includeFile("dungeon/corellian_corvette/corvetteTicketTakerConvoHandler.lua")
 includeFile("dungeon/corellian_corvette/bronell.lua")

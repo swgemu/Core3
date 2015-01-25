@@ -10,7 +10,7 @@ local ticketTemplate = "object/tangible/travel/travel_ticket/dungeon_ticket.iff"
 CorvetteTicketTakerLogic = ScreenPlay:new {
 	numberOfActs = 1,
 	npc = {},
-	takerName = "corvetteTicketGiverLogic",
+	takerName = "corvetteTicketTakerLogic",
 	faction = 0,
 	goodbyeString = "",
 	helpMeString = "",
@@ -48,6 +48,16 @@ function CorvetteTicketTakerLogic:validateTicket(pPlayer)
 
 	player:sendSystemMessage("@dungeon/space_dungeon:validating_ticket") -- Validating travel authorization. Please stand by...
 
+	createEvent(5 * 1000, self.takerName, "finishValidateTicket", pPlayer)
+end
+
+function CorvetteTicketTakerLogic:finishValidateTicket(pPlayer)
+	if pPlayer == nil then
+		return
+	end
+
+	local player = CreatureObject(pPlayer)
+
 	local pInventory = player:getSlottedObject("inventory")
 	if pInventory == nil then
 		player:sendSystemMessageWithTO("@dungeon/space_dungeon:no_ticket", "@dungeon/space_dungeon:corvette_" .. self:getFactionString()) -- You do not have the proper authorization to access the %TO.
@@ -69,7 +79,14 @@ function CorvetteTicketTakerLogic:validateTicket(pPlayer)
 		return
 	end
 
-	player:sendSystemMessage("@dungeon/space_dungeon:unable_to_find_dungeon") -- That area is currently unavailable. Please try again later.
+	--TODO add validation of group
+
+	local ret = CorellianCorvetteScreenPlay:activate(pPlayer, self:getFactionString(), activeQuestType)
+
+	--if ret == 1 then --TODO destroy ticket
+		--ticket:destroyObjectFromWorld()
+		--ticket:destroyObjectFromDatabase()
+	--end
 end
 
 function CorvetteTicketTakerLogic:getFactionString()

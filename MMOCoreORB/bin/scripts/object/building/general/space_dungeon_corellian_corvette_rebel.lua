@@ -42,9 +42,15 @@
 
 
 object_building_general_space_dungeon_corellian_corvette_rebel = object_building_general_shared_space_dungeon_corellian_corvette_rebel:new {
+	customName = "Unknown",
+	spawningPoints = {
+			{ x = -42.9, z = 0.0, y = 0.1, ow = 0.71186, ox = 0, oz = 0, oy = 0.702321, cellid = 1 }
+			},
+	templateType = CLONINGBUILDING,
+	planetMapCategory = "cloningfacility",
 
-    childObjects = {
-      	{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0, z = -12, y = 37.6, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 19, containmentType = -1},
+	childObjects = {
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0, z = -12, y = 37.6, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 19, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 0, z = 0, y = 37.6, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 19, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 5, z = 0, y = -13.4, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 18, containmentType = -1},
 		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 5, z = 12, y = -13.4, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 18, containmentType = -1},
