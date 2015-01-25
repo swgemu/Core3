@@ -199,6 +199,8 @@ bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float
 
 	bool expired = true;
 
+	float reductionLeft = reduction;
+
 	for (int i = 0; i < size(); ++i) {
 		uint64 type = elementAt(i).getKey();
 
@@ -208,14 +210,21 @@ bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float
 			DamageOverTime* dot = &vector->elementAt(j);
 
 			if (dot->getType() == dotType && !dot->isPast()) {
-				float tempReduction = dot->reduceTick(reduction);
-
-				if (tempReduction >= 0.0f)
+				if (reductionLeft >= dot->getStrength()) {
+					reductionLeft -= dot->getStrength();
+					dot->reduceTick(dot->getStrength());
 					expired = expired && true;
-				else
+				} else {
+					dot->reduceTick(reductionLeft);
+					reductionLeft = 0;
 					expired = false;
+					break;
+				}
 			}
 		}
+
+		if (reductionLeft == 0)
+			break;
 	}
 
 	if (expired) {
