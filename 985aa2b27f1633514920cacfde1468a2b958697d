@@ -16,6 +16,24 @@
       "revId": "985aa2b27f1633514920cacfde1468a2b958697d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_43650644",
+        "filename": "MMOCoreORB/bin/scripts/object/draft_schematic/food/additive/additive_light.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2015-01-26T12:31:26Z",
+      "side": 1,
+      "message": "Correct, Customizationskill is the only thing that needs to be changed to fix this. i can change assem/exp but they have no affect on the end product as there is no stats to be modified.",
+      "parentUuid": "1a486d77_433186a1",
+      "revId": "985aa2b27f1633514920cacfde1468a2b958697d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
