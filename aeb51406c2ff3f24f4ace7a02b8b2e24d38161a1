@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_230c4a94",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-26T06:20:39Z",
+      "side": 1,
+      "message": "Rather than setting to zero and continuing through the loop, why not just break after setting expired to false?",
+      "revId": "aeb51406c2ff3f24f4ace7a02b8b2e24d38161a1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
