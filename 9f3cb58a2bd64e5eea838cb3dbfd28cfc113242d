@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_83d77eed",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GrantBadgeCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-26T03:37:05Z",
+      "side": 1,
+      "message": "Check target rather than creature-\u003egetTargetID() since that\u0027s what you\u0027re actually using. creature\u0027s targetID could change between when the command is queued and when it\u0027s executed.",
+      "revId": "9f3cb58a2bd64e5eea838cb3dbfd28cfc113242d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_a3da7a15",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GrantBadgeCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-26T03:37:05Z",
+      "side": 1,
+      "message": "Wouldn\u0027t if be more appropriate than while here? Things might get screwy if a player passed more arguments than expected.",
+      "revId": "9f3cb58a2bd64e5eea838cb3dbfd28cfc113242d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_6304827e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GrantBadgeCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-26T03:37:05Z",
+      "side": 1,
+      "message": "Seems odd to not allow \"-h\". Why not do arg.toLowerCase() \u003d\u003d \"-h\" instead?",
+      "revId": "9f3cb58a2bd64e5eea838cb3dbfd28cfc113242d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_43098694",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GrantBadgeCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-26T03:37:05Z",
+      "side": 1,
+      "message": "Why set this if you\u0027re just going to return?",
+      "revId": "9f3cb58a2bd64e5eea838cb3dbfd28cfc113242d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_23fe8a6c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GrantBadgeCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-26T03:37:05Z",
+      "side": 1,
+      "message": "I would put an upper limit on this as well.",
+      "revId": "9f3cb58a2bd64e5eea838cb3dbfd28cfc113242d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
