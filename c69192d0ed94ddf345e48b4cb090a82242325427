@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_43306656",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GrantBadgeCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2015-01-26T04:13:19Z",
+      "side": 1,
+      "message": "Locker crossLocker(player, creature);",
+      "revId": "c69192d0ed94ddf345e48b4cb090a82242325427",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_23356a46",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GrantBadgeCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2015-01-26T04:13:19Z",
+      "side": 1,
+      "message": "Locker crossLocker(player, creature);",
+      "revId": "c69192d0ed94ddf345e48b4cb090a82242325427",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
