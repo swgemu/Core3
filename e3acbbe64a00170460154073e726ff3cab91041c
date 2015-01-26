@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_035f0e74",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/StrafeShot1Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2015-01-26T12:33:25Z",
+      "side": 1,
+      "message": "forgot about those.....will fix",
+      "parentUuid": "1a486d77_032b8e31",
+      "revId": "e3acbbe64a00170460154073e726ff3cab91041c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_e31f5208",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/StrafeShot2Command.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-24T18:49:38Z",
       "side": 1,
       "message": "This would only remove cover from the target of the command. It\u0027s a cone attack and should remove it from any target it strikes. I think a better solution would be to add the removal somewhere in the combat manager so that it can be processed for all targets.",
+      "revId": "e3acbbe64a00170460154073e726ff3cab91041c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_e353d26a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/StrafeShot2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2015-01-26T12:33:25Z",
+      "side": 1,
+      "message": "indeed",
+      "parentUuid": "1a486d77_e31f5208",
       "revId": "e3acbbe64a00170460154073e726ff3cab91041c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
