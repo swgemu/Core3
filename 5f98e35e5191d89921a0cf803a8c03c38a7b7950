@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_e3dab2e8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-01-26T18:44:19Z",
+      "side": 1,
+      "message": "I\u0027m not sure these are the appropriate places to send that spam from. By sending it here, there will be spam anytime someone is wounded, regardless of whether it was from combat or not.\n\nI\u0027ve not researched it, but some situations that I think may not be appropriate to send the spam (but would with this patch) include a medic wounding them self by using /tendwound or /tenddamage, group members getting re-wounded as a squad leader redistributes them with /boostmorale, the wounds incurred by a tk using /forceofwill, the wounds incurred when an artisan samples radioactive, and the wounds incurred from cloning.",
+      "revId": "5f98e35e5191d89921a0cf803a8c03c38a7b7950",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
