@@ -24,6 +24,7 @@ admin_inventory_management_01 = {
 		"editBank",
 		"editBankAccount",
 		"snoop"
+		"wipeItems"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},

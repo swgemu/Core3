@@ -22,14 +22,9 @@ admin_debug_01 = {
 	skillAbility = {},
 	commands = {
 		"aiIgnore",
-		"combat",
-		"craft",
-		"forceCommand",
-		"generateCraftedItem",
+		"dumpTargetInformation",
+		"dumpZoneInformation",
 		"getObjVars",
-		"gmCreateClassResource",
-		"gmCreateSpecificResource",
-		"manufacture",
 		"showFactionInformation"
 	},
 	skillModifiers = {},

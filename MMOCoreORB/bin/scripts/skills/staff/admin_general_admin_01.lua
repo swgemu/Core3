@@ -21,14 +21,12 @@ admin_general_admin_01 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"goto",
 		"findObject",
 		"teleport",
 		"teleportto",
 		"invulnerable",
 		"kill",
 		"setSpeed",
-		"planetWarp"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},

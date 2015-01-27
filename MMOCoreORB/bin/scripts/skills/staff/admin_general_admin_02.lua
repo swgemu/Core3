@@ -21,10 +21,12 @@ admin_general_admin_02 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
+		"goto",
 		"harmful",
 		"harmless",
 		"killPlayer",
 		"teleportTarget",
+		"planetWarp"
 		"planetWarpTarget",
 		"freezePlayer",
 		"unfreezePlayer"
