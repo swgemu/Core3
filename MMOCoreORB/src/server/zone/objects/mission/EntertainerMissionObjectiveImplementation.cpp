@@ -51,6 +51,7 @@ void EntertainerMissionObjectiveImplementation::activate() {
 			zone->transferObject(locationActiveArea, -1, true);
 		} else {
 			error("Failed to insert entertainer location to zone.");
+			abort();
 			return;
 		}
 	}

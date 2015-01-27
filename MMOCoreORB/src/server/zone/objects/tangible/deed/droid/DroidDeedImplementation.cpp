@@ -220,29 +220,34 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			return 1;
 		}
 
+		Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();
+		if( creatureManager == NULL )
+			return 1;
+
+		CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
+		Reference<CreatureTemplate*> creatureTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+		if( creatureTemplate == NULL ){
+			player->sendSystemMessage("wrong droid template;mobileTemplate=[" + mobileTemplate + "]" );
+			return 1;
+		}
+
 		Reference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
 		if( controlDevice == NULL ){
 			player->sendSystemMessage("wrong droid control device template " + controlDeviceObjectTemplate);
 			return 1;
 		}
 
-		Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();
-		if( creatureManager == NULL )
-			return 1;
-
 		Reference<CreatureObject*> creatureObject = creatureManager->createCreature(generatedObjectTemplate.hashCode(), true, mobileTemplate.hashCode() );
 		if( creatureObject == NULL ){
+			controlDevice->destroyObjectFromDatabase(true);
 			player->sendSystemMessage("wrong droid templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]" );
 			return 1;
 		}
 
 		Reference<DroidObject*> droid = creatureObject.castTo<DroidObject*>();
-		if( droid == NULL )
-			return 1;
-		CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-		Reference<CreatureTemplate*> creatureTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
-		if( creatureTemplate == NULL ){
-			player->sendSystemMessage("wrong droid template;mobileTemplate=[" + mobileTemplate + "]" );
+		if( droid == NULL ) {
+			controlDevice->destroyObjectFromDatabase(true);
+			creatureObject->destroyObjectFromDatabase(true);
 			return 1;
 		}
 
@@ -322,7 +327,11 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		droid->createChildObjects();
 		controlDevice->setControlledObject(droid);
 		controlDevice->setDefaultCommands();
-		datapad->transferObject(controlDevice, -1);
+
+		if (!datapad->transferObject(controlDevice, -1)) {
+			controlDevice->destroyObjectFromDatabase(true);
+			return 1;
+		}
 
 		datapad->broadcastObject(controlDevice, true);
 

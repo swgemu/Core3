@@ -1379,10 +1379,16 @@ void SceneObjectImplementation::createChildObjects() {
 					ManagedReference<CellObject*> cellObject = buildingObject->getCell(child->getCellId());
 
 					if (cellObject != NULL) {
-						cellObject->transferObject(obj, child->getContainmentType(), true);
+						if (!cellObject->transferObject(obj, child->getContainmentType(), true)) {
+							obj->destroyObjectFromDatabase(true);
+							continue;
+						}
 						//cellObject->broadcastObject(obj, false);
-					} else
+					} else {
 						error("NULL CELL OBJECT");
+						obj->destroyObjectFromDatabase(true);
+						continue;
+					}
 				}
 			} catch (Exception& e) {
 				error("unreported exception caught in void SceneObjectImplementation::createChildObjects()!");
@@ -1409,7 +1415,10 @@ void SceneObjectImplementation::createChildObjects() {
 			obj->initializePosition(x, z, y);
 			obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
 
-			getZone()->transferObject(obj, -1, false);
+			if (!getZone()->transferObject(obj, -1, false)) {
+				obj->destroyObjectFromDatabase(true);
+				continue;
+			}
 		}
 
 		//childObjects.put(obj);

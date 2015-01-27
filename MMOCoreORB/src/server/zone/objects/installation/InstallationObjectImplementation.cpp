@@ -728,7 +728,10 @@ void InstallationObjectImplementation::createChildObjects(){
 							return;
 					} else {
 
-						transferObject(defaultWeapon, 4);
+						if (!transferObject(defaultWeapon, 4)) {
+							defaultWeapon->destroyObjectFromDatabase(true);
+							return;
+						}
 
 						if(dataObjectComponent != NULL){
 							TurretDataComponent* turretData = cast<TurretDataComponent*>(dataObjectComponent.get());

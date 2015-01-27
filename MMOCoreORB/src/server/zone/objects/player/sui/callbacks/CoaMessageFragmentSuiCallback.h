@@ -111,6 +111,7 @@ public:
 		CoaMessageDataComponent* data = assembledMessage->getDataObjectComponent()->castTo<CoaMessageDataComponent*>();
 
 		if (data == NULL) {
+			assembledMessage->destroyObjectFromDatabase(true);
 			return;
 		}
 

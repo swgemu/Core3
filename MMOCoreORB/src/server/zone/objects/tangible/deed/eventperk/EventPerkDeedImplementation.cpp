@@ -207,7 +207,7 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 		if (data == NULL) {
 			player->sendSystemMessage("Error: no dataObjectComponent.");
-			object->destroyObjectFromDatabase();
+			object->destroyObjectFromDatabase(true);
 			return 1;
 		}
 

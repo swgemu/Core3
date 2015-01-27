@@ -92,8 +92,11 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 
 		String PadawanRobe = "object/tangible/wearables/robe/robe_jedi_padawan.iff";
 		ManagedReference<SceneObject*> padawanRobe = zserv->createObject(PadawanRobe.hashCode(), 1);
-		inventory->transferObject(padawanRobe, -1);
-		inventory->broadcastObject(padawanRobe, true);
+		if (inventory->transferObject(padawanRobe, -1)) {
+			inventory->broadcastObject(padawanRobe, true);
+		} else {
+			padawanRobe->destroyObjectFromDatabase(true);
+		}
 	}
 
 	else if (!creature->hasSkill("force_title_jedi_novice")){
@@ -122,8 +125,11 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 
 		String PadawanRobe = "object/tangible/wearables/robe/robe_jedi_padawan.iff";
 		ManagedReference<SceneObject*> padawanRobe = zserv->createObject(PadawanRobe.hashCode(), 1);
-		inventory->transferObject(padawanRobe, -1);
-		inventory->broadcastObject(padawanRobe, true);
+		if (inventory->transferObject(padawanRobe, -1)) {
+			inventory->broadcastObject(padawanRobe, true);
+		} else {
+			padawanRobe->destroyObjectFromDatabase(true);
+		}
 
 	}
 

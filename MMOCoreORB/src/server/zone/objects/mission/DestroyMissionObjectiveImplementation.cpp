@@ -62,8 +62,10 @@ void DestroyMissionObjectiveImplementation::activate() {
 
 		Zone* zone = Core::lookupObject<ZoneServer>("ZoneServer")->getZone(planetName);
 
-		if (zone == NULL)
+		if (zone == NULL) {
+			abort();
 			return;
+		}
 
 		spawnActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 		spawnActiveArea->setRadius(128.f);
@@ -168,6 +170,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	if (lair == NULL) {
 		error("incorrect lair template in destroy mission objective " + lairTemplate);
+		abort();
 		return;
 	}
 
@@ -176,6 +179,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	 	if (buildingToSpawn.isEmpty()) {
 	 		error("error spawning " + buildingToSpawn);
+	 		abort();
 	 		return;
 	 	}
 
@@ -183,6 +187,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	 	if (lairObject == NULL) {
 	 		error("error spawning " + buildingToSpawn);
+	 		abort();
 	 		return;
 	 	}
 
