@@ -128,7 +128,7 @@ void DroidDataStorageModuleDataComponent::initialize(CreatureObject* droid) {
 	path.append("object/tangible/datapad/droid_datapad_");
 	path.append(getStorageRating());
 	path.append(".iff");
-	ManagedReference<SceneObject*> inventory = droid->getZoneServer()->createObject(path.toString().hashCode(),4);
+	ManagedReference<SceneObject*> inventory = droid->getZoneServer()->createObject(path.toString().hashCode(),1);
 	ManagedReference<SceneObject*> droidInvorty = droid->getSlottedObject("datapad");
 	if (droidInvorty)
 		droid->removeObject(droidInvorty,NULL,true);
