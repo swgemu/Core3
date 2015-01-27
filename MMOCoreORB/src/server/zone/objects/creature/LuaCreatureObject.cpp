@@ -141,8 +141,9 @@ int LuaCreatureObject::addDotState(lua_State* L) {
 	byte type = lua_tointeger(L, -5);
 	uint32 strength = lua_tointeger(L, -6);
 	uint64 dotType = lua_tointeger(L, -7);
+	CreatureObject* attacker = (CreatureObject*)lua_touserdata(L, -8);
 
-	realObject->addDotState(dotType, objectID, strength, type, duration, potency, defense);
+	realObject->addDotState(attacker, dotType, objectID, strength, type, duration, potency, defense);
 
 	return 0;
 }

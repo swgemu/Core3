@@ -352,9 +352,9 @@ class AiAgent extends CreatureObject {
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
 	
-	public native int addDotState(unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense, int secondaryStrength = 0) {
+	public native int addDotState(CreatureObject attacker, unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense, int secondaryStrength = 0) {
 		activateRecovery();
-		return super.addDotState(dotType, objectID, strength, type, duration, potency, defense, secondaryStrength);
+		return super.addDotState(attacker, dotType, objectID, strength, type, duration, potency, defense, secondaryStrength);
 	}
 	
 	/**

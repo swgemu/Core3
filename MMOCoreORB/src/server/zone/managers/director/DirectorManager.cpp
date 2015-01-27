@@ -21,6 +21,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/name/NameManager.h"
@@ -1425,6 +1426,12 @@ int DirectorManager::forcePeace(lua_State* L) {
 
 	if (creatureObject != NULL) {
 		Locker locker(creatureObject);
+
+		ThreatMap* threatMap = creatureObject->getThreatMap();
+
+		if (threatMap != NULL)
+			threatMap->removeAll();
+
 		CombatManager::instance()->forcePeace(creatureObject);
 	}
 
