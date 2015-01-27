@@ -24,6 +24,7 @@ using namespace server::zone::objects::creature;
 
 class DamageOverTime : public Serializable {
 protected:
+	uint64 attackerID;
 	uint64 type;
 	uint8 attribute;
 	uint32 strength;
@@ -36,7 +37,7 @@ protected:
 
 public:
 	DamageOverTime();
-	DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency, int secondaryStr = 0);
+	DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency, int secondaryStr = 0);
 
 	DamageOverTime(const DamageOverTime& dot);
 	DamageOverTime& operator=(const DamageOverTime& dot);
@@ -54,12 +55,16 @@ public:
 	float reduceTick(float reduction);
 
 	// damage methods
-	inline uint32 doBleedingTick(CreatureObject* victim);
-	inline uint32 doFireTick(CreatureObject* victim);
-	inline uint32 doPoisonTick(CreatureObject* victim);
+	inline uint32 doBleedingTick(CreatureObject* victim, CreatureObject* attacker);
+	inline uint32 doFireTick(CreatureObject* victim, CreatureObject* attacker);
+	inline uint32 doPoisonTick(CreatureObject* victim, CreatureObject* attacker);
 	inline uint32 doDiseaseTick(CreatureObject* victim);
 
 	// Setters
+	inline void setAttackerID(uint64 value) {
+		attackerID = value;
+	}
+
 	inline void setType(uint64 value) {
 		type = value;
 	}
@@ -88,6 +93,10 @@ public:
 		secondaryStrength = str;
 	}
 	//Getters
+	inline uint64 getAttackerID() {
+		return attackerID;
+	}
+
 	inline uint64 getType() {
 		return type;
 	}
