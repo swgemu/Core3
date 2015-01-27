@@ -46,11 +46,6 @@ public:
 
 		Locker targetCrosslocker(targetPlayer, creature);
 
-		if (!targetPlayer->hasSkill("outdoors_creaturehandler_novice")) {
-			player->sendSystemMessage("@pet/pet_menu:pet_nothandler"); // You cannot transfer a creature to someone who is not a trained Creature Handler.
-			return GENERALERROR;
-		}
-
 		if (!player->isInRange(targetPlayer, 15)) {
 			player->sendSystemMessage("@error_message:target_out_of_range"); // Your target is out of range for this action.
 			return GENERALERROR;
@@ -88,13 +83,16 @@ public:
 			}
 		}
 
-		if (activePets >= targetPlayer->getSkillMod("keep_creature")) {
+		//none ch doesn't seem to have keep_creature, effectively returns 0/
+		if (activePets != 0 && activePets >= targetPlayer->getSkillMod("keep_creature")) {
 			player->sendSystemMessage("@pet/pet_menu:targ_too_many"); // That person has too many pets. Transfer failed.
 			targetPlayer->sendSystemMessage("@pet/pet_menu:too_many"); // You can't control any more pets. Store one first.
 			return GENERALERROR;
 		}
 
-		if ((petLevel + pet->getLevel()) > targetPlayer->getSkillMod("tame_level")) {
+		//None CH can only have 1 active pet.
+		if(targetPlayer->hasSkill("outdoors_creaturehandler_novice") && ((petLevel + pet->getLevel()) > targetPlayer->getSkillMod("tame_level")))
+		{
 			player->sendSystemMessage("@pet/pet_menu:no_chance"); // That person has no chance of controlling this creature. Transfer failed.
 			return GENERALERROR;
 		}
