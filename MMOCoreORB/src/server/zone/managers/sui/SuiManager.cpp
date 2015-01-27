@@ -581,10 +581,10 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 
 			} else if (templatePath == "apply_dots") {
 				ManagedReference<SceneObject*> scob = cbSui->getUsingObject();
-				player->addDotState(CreatureState::POISONED, scob->getObjectID(), 100, CreatureAttribute::HEALTH, 60, 80, 0);
-				player->addDotState(CreatureState::BLEEDING, scob->getObjectID(), 100, CreatureAttribute::ACTION, 60, 80, 0);
-				player->addDotState(CreatureState::DISEASED, scob->getObjectID(), 100, CreatureAttribute::ACTION, 60, 80, 0);
-				player->addDotState(CreatureState::ONFIRE, scob->getObjectID(), 100, CreatureAttribute::HEALTH, 60, 80, 0);
+				player->addDotState(player, CreatureState::POISONED, scob->getObjectID(), 100, CreatureAttribute::HEALTH, 60, 80, 0);
+				player->addDotState(player, CreatureState::BLEEDING, scob->getObjectID(), 100, CreatureAttribute::ACTION, 60, 80, 0);
+				player->addDotState(player, CreatureState::DISEASED, scob->getObjectID(), 100, CreatureAttribute::ACTION, 60, 80, 0);
+				player->addDotState(player, CreatureState::ONFIRE, scob->getObjectID(), 100, CreatureAttribute::HEALTH, 60, 80, 0);
 			} else if (templatePath == "clear_dots") {
 				player->clearDots();
 			} else if (templatePath == "max_xp") {

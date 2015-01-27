@@ -47,9 +47,12 @@ which carries forward this exception.
 #include "../CreatureState.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "DamageOverTime.h"
+#include "server/zone/Zone.h"
+#include "server/zone/ZoneServer.h"
 #include "../../../packets/object/CombatSpam.h"
 
 DamageOverTime::DamageOverTime() {
+	setAttackerID(0);
 	setType(CreatureState::BLEEDING);
 	setAttribute(CreatureAttribute::HEALTH);
 	strength = 0;
@@ -60,7 +63,11 @@ DamageOverTime::DamageOverTime() {
 	addSerializableVariables();
 }
 
-DamageOverTime::DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency, int secondaryStrength) {
+DamageOverTime::DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency, int secondaryStrength) {
+
+	if (attacker != NULL)
+		setAttackerID(attacker->getObjectID());
+
 	setType(tp);
 	setAttribute(attrib);
 	strength = str;
@@ -75,6 +82,7 @@ DamageOverTime::DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, 
 DamageOverTime::DamageOverTime(const DamageOverTime& dot) : Object(), Serializable() {
 	addSerializableVariables();
 
+	attackerID = dot.attackerID;
 	type = dot.type;
 	attribute = dot.attribute;
 	strength = dot.strength;
@@ -90,6 +98,7 @@ DamageOverTime& DamageOverTime::operator=(const DamageOverTime& dot) {
 	if (this == &dot)
 		return *this;
 
+	attackerID = dot.attackerID;
 	type = dot.type;
 	attribute = dot.attribute;
 	strength = dot.strength;
@@ -104,6 +113,7 @@ DamageOverTime& DamageOverTime::operator=(const DamageOverTime& dot) {
 }
 
 void DamageOverTime::addSerializableVariables() {
+	addSerializableVariable("attackerID", &attackerID);
 	addSerializableVariable("type", &type);
 	addSerializableVariable("attribute", &attribute);
 	addSerializableVariable("strength", &strength);
@@ -131,6 +141,10 @@ void DamageOverTime::activate() {
 
 uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 	uint32 power = 0;
+	ManagedReference<CreatureObject*> attacker = victim->getZoneServer()->getObject(attackerID).castTo<CreatureObject*>();;
+
+	if (attacker == NULL)
+		attacker = victim;
 
 	switch(type) {
 	case CreatureState::BLEEDING:
@@ -138,7 +152,7 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 			return 0;
 		}
 		else if (nextTick.isPast()){
-			power = doBleedingTick(victim);
+			power = doBleedingTick(victim, attacker);
 
 			nextTick.updateToCurrentTime();
 			nextTick.addMiliTime(10000);
@@ -149,7 +163,7 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 			return 0;
 		}
 		else if (nextTick.isPast()) {
-			power = doPoisonTick(victim);
+			power = doPoisonTick(victim, attacker);
 
 			nextTick.updateToCurrentTime();
 			nextTick.addMiliTime(10000);
@@ -171,7 +185,7 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 			return 0;
 		}
 		else if (nextTick.isPast()) {
-			power = doFireTick(victim);
+			power = doFireTick(victim, attacker);
 
 			nextTick.updateToCurrentTime();
 			nextTick.addMiliTime(10000);
@@ -207,7 +221,7 @@ uint32 DamageOverTime::initDot(CreatureObject* victim) {
 	return power;
 }
 
-uint32 DamageOverTime::doBleedingTick(CreatureObject* victim) {
+uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* attacker) {
 	uint32 strengthToApply = strength;
 	uint32 attr = victim->getHAM(attribute);
 
@@ -216,7 +230,9 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim) {
 		strengthToApply = attr - 1;
 	}
 
-	victim->inflictDamage(victim, attribute, strengthToApply, false);
+	Locker crossLocker(attacker, victim);
+
+	victim->inflictDamage(attacker, attribute, strengthToApply, false);
 	if (victim->hasAttackDelay())
 		victim->removeAttackDelay();
 
@@ -225,7 +241,7 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim) {
 	return strengthToApply;
 }
 
-uint32 DamageOverTime::doFireTick(CreatureObject* victim) {
+uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attacker) {
 	uint32 attr = victim->getHAM(attribute);
 	uint32 strengthToApply = strength;
 	int woundsToApply = (int)(secondaryStrength * (100 + victim->getShockWounds() ) / 100.0f);
@@ -235,11 +251,9 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim) {
 		victim->addShockWounds((int)(woundsToApply * 0.075f));
 	}
 
-/*
-	if (attr < strengthToApply)
-		strengthToApply = attr - 1; */
+	Locker crossLocker(attacker, victim);
 
-	victim->inflictDamage(victim, attribute, strengthToApply, true);
+	victim->inflictDamage(attacker, attribute, strengthToApply, true);
 	if (victim->hasAttackDelay())
 		victim->removeAttackDelay();
 
@@ -248,14 +262,16 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim) {
 	return strengthToApply;
 }
 
-uint32 DamageOverTime::doPoisonTick(CreatureObject* victim) {
+uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* attacker) {
 	uint32 attr = victim->getHAM(attribute);
 	uint32 strengthToApply = strength;
 
 	if (attr < strengthToApply)
 		strengthToApply = attr - 1;
 
-	victim->inflictDamage(victim, attribute, strengthToApply, false);
+	Locker crossLocker(attacker, victim);
+
+	victim->inflictDamage(attacker, attribute, strengthToApply, false);
 	if (victim->hasAttackDelay())
 		victim->removeAttackDelay();
 

@@ -426,7 +426,7 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 			resist += defender->getSkillMod(defenseMods.get(j));
 
 		//info("entering addDotState", true);
-		defender->addDotState(effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? appliedDamage * effect.getPrimaryPercent() / 100.0f : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), effect.getDotPotency(), resist,
+		defender->addDotState(attacker, effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? appliedDamage * effect.getPrimaryPercent() / 100.0f : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), effect.getDotPotency(), resist,
 				effect.isDotDamageofHit() ? appliedDamage * effect.getSecondaryPercent() / 100.0f : effect.getDotStrength());
 	}
 }
@@ -453,7 +453,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 		if (attackerWeapon->getDotType(i) == 1) { // Poison.
 			resist = defender->getSkillMod("resistance_poison") + defender->getSkillMod("poison_disease_resist");
-			int power = defender->addDotState(CreatureState::POISONED, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
+			int power = defender->addDotState(attacker, CreatureState::POISONED, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
 
 			if (power > 0) { // Unresisted, reduce use count.
 				if (attackerWeapon->getDotUses(i) > 0) {
@@ -464,7 +464,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 		if (attackerWeapon->getDotType(i) == 2) { // Disease.
 			resist = defender->getSkillMod("resistance_disease") + defender->getSkillMod("poison_disease_resist");
-			int power = defender->addDotState(CreatureState::DISEASED, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
+			int power = defender->addDotState(attacker, CreatureState::DISEASED, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
 
 			if (power > 0) { // Unresisted, reduce use count.
 				if (attackerWeapon->getDotUses(i) > 0) {
@@ -475,7 +475,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 		if (attackerWeapon->getDotType(i) == 3) { // Fire.
 			resist = defender->getSkillMod("resistance_fire") + defender->getSkillMod("fire_resist");
-			int power = defender->addDotState(CreatureState::ONFIRE, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist,  attackerWeapon->getDotStrength(i) * .5f);
+			int power = defender->addDotState(attacker, CreatureState::ONFIRE, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist,  attackerWeapon->getDotStrength(i) * .5f);
 
 			if (power > 0) { // Unresisted, reduce use count.
 				if (attackerWeapon->getDotUses(i) > 0) {
@@ -486,7 +486,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 		if (attackerWeapon->getDotType(i) == 4) { // Bleeding.
 			resist = defender->getSkillMod("resistance_bleeding") + defender->getSkillMod("combat_bleeding_defense") + defender->getSkillMod("bleed_resist");
-			int power = defender->addDotState(CreatureState::BLEEDING, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
+			int power = defender->addDotState(attacker, CreatureState::BLEEDING, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
 
 			if (power > 0) { // Unresisted, reduce use count.
 				if (attackerWeapon->getDotUses(i) > 0) {
