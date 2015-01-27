@@ -52,6 +52,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/creature/CreatureObjectMessage1.h"
@@ -609,6 +610,9 @@ void CreatureObjectImplementation::addShockWounds(int shockToAdd,
 	}
 
 	setShockWounds(newShockWounds, notifyClient);
+
+	if (shockToAdd > 0)
+		CombatManager::instance()->broadcastCombatSpam(_this.get(), _this.get(), NULL, shockToAdd, "shock_wound");
 }
 
 void CreatureObjectImplementation::addMountedCombatSlow() {
@@ -1136,6 +1140,9 @@ int CreatureObjectImplementation::addWounds(int type, int value,
 		returnValue = value - newValue;
 
 	setWounds(type, newValue, notifyClient);
+
+	if (value > 0)
+		CombatManager::instance()->broadcastCombatSpam(_this.get(), _this.get(), NULL, value, "wounded");
 
 	return returnValue;
 }
