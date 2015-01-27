@@ -78,6 +78,12 @@ public:
 			return GENERALERROR;
 		}
 
+		uint32 burstCRC = String("burstrun").hashCode();
+		uint32 retreatCRC = String("retreat").hashCode();
+
+		if (creature->hasBuff(burstCRC) || creature->hasBuff(retreatCRC)) {
+			return GENERALERROR;
+		}
 
 		// Force cost of skill.
 		int forceCost = 200;

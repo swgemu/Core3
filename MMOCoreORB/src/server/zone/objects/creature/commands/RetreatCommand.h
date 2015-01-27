@@ -77,7 +77,15 @@ public:
 		if (creature->hasBuff(burstCRC)) {
 			creature->sendSystemMessage("@combat_effects:burst_run_no"); //You cannot burst run right now.
 			return false;
-		}				
+		}
+		
+		uint32 forcerun1CRC = BuffCRC::JEDI_FORCE_RUN_1;
+		uint32 forcerun2CRC = BuffCRC::JEDI_FORCE_RUN_2;
+		uint32 forcerun3CRC = BuffCRC::JEDI_FORCE_RUN_3;
+
+		if(creature->hasBuff(forcerun1CRC) || creature->hasBuff(forcerun2CRC) || creature->hasBuff(forcerun3CRC)) {
+			return false;
+		}			
 		
 		if (!creature->checkCooldownRecovery("retreat")) {
 			creature->sendSystemMessage("@combat_effects:burst_run_no"); //You cannot burst run right now.

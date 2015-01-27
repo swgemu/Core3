@@ -4590,6 +4590,14 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 		return false;
 	}
 
+	uint32 forcerun1CRC = BuffCRC::JEDI_FORCE_RUN_1;
+	uint32 forcerun2CRC = BuffCRC::JEDI_FORCE_RUN_2;
+	uint32 forcerun3CRC = BuffCRC::JEDI_FORCE_RUN_3;
+
+	if(player->hasBuff(forcerun1CRC) || player->hasBuff(forcerun2CRC) || player->hasBuff(forcerun3CRC)) {
+		return false;
+	}
+
 	Zone* zone = player->getZone();
 
 	if (zone == NULL) {
