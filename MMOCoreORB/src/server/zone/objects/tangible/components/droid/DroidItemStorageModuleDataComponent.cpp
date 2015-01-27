@@ -128,7 +128,7 @@ void DroidItemStorageModuleDataComponent::initialize(CreatureObject* droid) {
 	path.append("object/tangible/inventory/creature_inventory_");
 	path.append(getStorageRating());
 	path.append(".iff");
-	ManagedReference<SceneObject*> inventory = droid->getZoneServer()->createObject(path.toString().hashCode(),4);
+	ManagedReference<SceneObject*> inventory = droid->getZoneServer()->createObject(path.toString().hashCode(),1);
 	ManagedReference<SceneObject*> droidInvorty = droid->getSlottedObject("inventory");
 	droid->removeObject(droidInvorty,NULL,true);
 	droid->transferObject(inventory,4,true);
