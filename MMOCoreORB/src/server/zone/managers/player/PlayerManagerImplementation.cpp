@@ -859,8 +859,6 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uint64 clonerID, int typeofdeath) {
 	ManagedReference<SceneObject*> cloner = server->getObject(clonerID);
 
-	info("entering sendPlayerToCloner");
-
 	if (cloner == NULL) {
 		error("Cloning structure is null");
 		return;
@@ -921,7 +919,6 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		player->sendSystemMessage("@base_player:bind_removed");
 		ghost->setCloningFacility(NULL);
 	} else {
-		// TODO: add wounds
 		player->addWounds(CreatureAttribute::HEALTH, 100, true);
 		player->addWounds(CreatureAttribute::ACTION, 100, true);
 		player->addWounds(CreatureAttribute::MIND, 100, true);
@@ -4597,7 +4594,7 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 	}
 
 	if (zone->getZoneName() == "dungeon1") {
-		player->sendSystemMessage("@cbt_spam:burst_run_space_dungeon"); // The artificial gravity makes burst running impossible here.
+		player->sendSystemMessage("@combat_effects:burst_run_space_dungeon"); // The artificial gravity makes burst running impossible here.
 		return false;
 	}
 
