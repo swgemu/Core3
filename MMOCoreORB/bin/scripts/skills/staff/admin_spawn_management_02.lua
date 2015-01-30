@@ -21,7 +21,7 @@ admin_spawn_management_02 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"createMissionElement",
+		"generateCraftedItem",
 		"getSpawnDelays",
 		"setMaximumSpawnTime",
 		"setMinimumSpawnTime",

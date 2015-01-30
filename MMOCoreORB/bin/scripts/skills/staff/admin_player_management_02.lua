@@ -21,12 +21,16 @@ admin_player_management_02 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"getRank",
-		"setFaction",
-		"setTEF",
-		"setFactionStanding",
+		"editAppearance",
+		"editStats",
+		"grantBadge",
+		"kick",
+		"revokeBadge",
+		"setFirstName",
+		"setLastName",
 		"setPlayerAppearance",
-		"setRank"
+		"setPlayerState",
+		"unCityBan"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},

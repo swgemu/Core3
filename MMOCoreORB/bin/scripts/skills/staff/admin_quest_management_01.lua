@@ -21,10 +21,6 @@ admin_quest_management_01 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"activateQuest",
-		"clearCompletedQuest",
-		"completeQuest",
-		"deactivateQuest",
 		"listActiveQuests",
 		"listCompletedQuests"
 	},

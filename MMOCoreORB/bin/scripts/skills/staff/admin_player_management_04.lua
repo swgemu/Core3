@@ -1,5 +1,5 @@
-admin_skill_management_01 = {
-	skillName = "admin_skill_management_01",
+admin_player_management_04 = {
+	skillName = "admin_player_management_04",
 	parentName = "",
 	graphType = 4,
 	godOnly = 1,
@@ -21,9 +21,13 @@ admin_skill_management_01 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"grantSkill",
-		"revokeSkill",
-		"setExperience"
+		"addAllowedPlayer",
+		"addBannedPlayer",
+		"getAccountInfo",
+		"getPlayerId",
+		"getStationName",
+		"removeAllowedPlayer",
+		"removeBannedPlayer"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
@@ -31,4 +35,4 @@ admin_skill_management_01 = {
 	searchable = 0
 }
 
-addSkill(admin_skill_management_01)
+addSkill(admin_player_management_04)
