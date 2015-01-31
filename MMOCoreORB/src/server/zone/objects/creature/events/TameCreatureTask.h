@@ -149,12 +149,20 @@ public:
 			creature->setPvpStatusBitmask(player->getPvpStatusBitmask(), false);
 
 		creature->setBaby(false);
-		creature->setFollowObject(player);
 
 		if (creature->isAiAgent()) {
 			AiAgent* agent = cast<AiAgent*>(creature.get());
 			agent->setCreatureBitmask(CreatureFlag::PET);
+			agent->setFollowObject(player);
+			agent->storeFollowObject();
+
+			ManagedReference<SceneObject*> parent = player->getParent().get();
+			agent->setHomeLocation(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
+			agent->setNextStepPosition(player->getPositionX(), player->getPositionZ(), player->getPositionY(), (parent != NULL && parent->isCellObject()) ? parent : NULL);
+			agent->clearPatrolPoints();
+
 			agent->activateLoad("");
+			agent->activateRecovery();
 		}
 
 		creature->getZone()->broadcastObject(creature, true);

@@ -214,7 +214,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 
 			rlocker.release();
 
-			if (containerObject != NULL && ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
+			if (containerObject != NULL && ((containerObject->isCreatureObject() && publicStructure) || player->getParent().get() == cell
 							|| (closeObjects != NULL && closeObjects->contains(containerObject.get()))))
 						containerObject->sendTo(player, true);
 

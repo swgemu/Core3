@@ -67,6 +67,10 @@ public:
 		return doCombatAction(creature, target);
 	}
 
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
+		return defaultTime;
+	}
+
 };
 
 #endif //COUNTERATTACKCOMMAND_H_

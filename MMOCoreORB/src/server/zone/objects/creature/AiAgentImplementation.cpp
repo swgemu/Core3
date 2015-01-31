@@ -2210,18 +2210,21 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 }
 
 bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
-	if (!isAttackableBy(target))
+	if (!isAttackableBy(target)) {
+		printf("isAggressiveTo: Target not attackable\n");
 		return false;
+	}
 
 	uint32 targetFaction = target->getFaction();
 
 	PlayerObject* ghost = target->getPlayerObject();
 
 	if (getFaction() != 0 && targetFaction != 0) {
-
-		if (ghost == NULL && (targetFaction != getFaction()))
+		printf("isAggressiveTo: both factioned\n");
+		if (ghost == NULL && (targetFaction != getFaction())) {
+			printf("isAggressiveTo: opposite factions, npcs\n");
 			return true;
-		else if (ghost != NULL && (targetFaction != getFaction()) && ghost->getFactionStatus() != FactionStatus::ONLEAVE)
+		} else if (ghost != NULL && (targetFaction != getFaction()) && ghost->getFactionStatus() != FactionStatus::ONLEAVE)
 			return true;
 	}
 

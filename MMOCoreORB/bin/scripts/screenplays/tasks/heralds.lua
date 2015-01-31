@@ -73,7 +73,12 @@ function heraldScreenPlay:spawnMobiles()
 	for i = 1, table.getn(mobiles), 1 do
 		if isZoneEnabled(mobiles[i].planet) then
 			local pSpawn = spawnMobile(mobiles[i].planet, mobiles[i].template, 1, mobiles[i].x, mobiles[i].z, mobiles[i].y, mobiles[i].angle, mobiles[i].cell)
-			writeData(SceneObject(pSpawn):getObjectID() .. ":heraldID", i)
+			if (pSpawn ~= nil) then
+				if (mobiles[i].customName ~= nil) then
+					CreatureObject(pSpawn):setCustomObjectName(mobiles[i].customName)
+				end
+				writeData(SceneObject(pSpawn):getObjectID() .. ":heraldID", i)
+			end
 		end
 	end
 end

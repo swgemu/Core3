@@ -196,6 +196,7 @@ class FindTargetTask : public Task, public Logger {
 		}
 
 		int checkValue = checkedSkillMods - ((getTargetLevel(player, objective)) / 2);
+
 		if (checkValue < 5) {
 			checkValue = 5;
 		} else if (checkValue > 95) {
@@ -203,7 +204,6 @@ class FindTargetTask : public Task, public Logger {
 		}
 
 		int randomValue = System::random(100);
-
 		return randomValue < checkValue;
 	}
 

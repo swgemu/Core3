@@ -319,6 +319,7 @@ bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const
 	NameManager* nameManager = processor->getNameManager();
 
 	if (nameManager->validateName(guildName) != NameManagerResult::ACCEPTED) {
+		printf("invalid: %i \n", nameManager->validateName(guildName));
 		player->sendSystemMessage("@guild:create_fail_name_not_allowed"); //That guild name is not allowed.
 		return false;
 	}
