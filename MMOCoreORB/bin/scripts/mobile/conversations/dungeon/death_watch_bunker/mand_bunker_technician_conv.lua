@@ -155,8 +155,8 @@ escort_failed = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		-- Adjust depending if new droid not built yet
-		{"@conversation/death_watch_technician:s_7d875e15", "release_the_droid"}, -- Give me another chance. I know I can keep that droid alive.
-		{"@conversation/death_watch_technician:s_3bc0260c", "not_first_person"}, -- Those Mandalorians are to much for me.
+		--{"@conversation/death_watch_technician:s_7d875e15", "release_the_droid"}, -- Give me another chance. I know I can keep that droid alive.
+		--{"@conversation/death_watch_technician:s_3bc0260c", "not_first_person"}, -- Those Mandalorians are to much for me.
 	}
 }
 deathWatchTechnicianConvoTemplate:addScreen(escort_failed);
@@ -185,8 +185,8 @@ intro_prev_completed_new_escort = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 		-- Adjust depending if new droid not built yet
-		{"@conversation/death_watch_technician:s_373533eb", "knew_could_count"}, -- You know it. I will protect that droid.
-		{"@conversation/death_watch_technician:s_cbf95857", "thanks_anyways"}, -- I am sorry, but I can't right now.
+		--{"@conversation/death_watch_technician:s_373533eb", "knew_could_count"}, -- You know it. I will protect that droid.
+		--{"@conversation/death_watch_technician:s_cbf95857", "thanks_anyways"}, -- I am sorry, but I can't right now.
 	}
 }
 deathWatchTechnicianConvoTemplate:addScreen(intro_prev_completed_new_escort);

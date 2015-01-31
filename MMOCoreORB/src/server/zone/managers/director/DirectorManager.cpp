@@ -388,6 +388,13 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("MOVEOUT", ContainerPermissions::MOVEOUT);
 	luaEngine->setGlobalInt("WALKIN", ContainerPermissions::WALKIN);
 
+	// Transfer Error Codes
+	luaEngine->setGlobalInt("TRANSFERCANADD", TransferErrorCode::SUCCESS);
+	luaEngine->setGlobalInt("TRANSFERCANTADD", TransferErrorCode::CANTADD);
+	luaEngine->setGlobalInt("TRANSFERCANTREMOVE", TransferErrorCode::CANTREMOVE);
+	luaEngine->setGlobalInt("TRANSFERSUCCESS", 1);
+	luaEngine->setGlobalInt("TRANSFERFAIL", 0);
+
 	// Badges
 	luaEngine->setGlobalInt("COUNT_5", Badge::COUNT_5);
 	luaEngine->setGlobalInt("COUNT_10", Badge::COUNT_10);

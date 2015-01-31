@@ -415,11 +415,7 @@ function DeathWatchBunkerScreenPlay:onEnterDWB(sceneObject, creatureObject)
 			return 0
 		end
 
-		if creature:hasScreenPlayState(2, "death_watch_bunker") == 0 then
-			self:lockAll(creatureObject)
-		else
-			createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "lockCellsOnly", creatureObject)
-		end
+		self:lockAll(creatureObject)
 	end)
 end
 
@@ -477,43 +473,6 @@ function DeathWatchBunkerScreenPlay:respawnHaldo(creatureObject)
 	createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "haldoDamage", spawnPointer)
 end
 
-function DeathWatchBunkerScreenPlay:lockCellsOnly(pCreature)
-	if pCreature == nil then
-		return 0
-	end
-
-	ObjectManager.withCreatureObject(pCreature, function(creature)
-		if creature:hasScreenPlayState(2, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor1")
-		end
-
-		if creature:hasScreenPlayState(4, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor2")
-		end
-
-		if creature:hasScreenPlayState(8, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor3")
-		end
-
-		if creature:hasScreenPlayState(16, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor4")
-		end
-
-		if creature:hasScreenPlayState(32, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor5")
-		end
-
-		if creature:hasScreenPlayState(64, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor6")
-		end
-
-		if creature:hasScreenPlayState(128, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor7")
-		end
-		creature:sendSystemMessage("@dungeon/death_watch:relock")
-	end)
-end
-
 function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature, selectedID)
 	if selectedID ~= 16 then
 		return 0
@@ -569,7 +528,8 @@ function DeathWatchBunkerScreenPlay:poisonEvent(pSceneObject)
 					local pObject = SceneObject(pCell):getContainerObject(j)
 
 					if pObject ~= nil then
-						if (SceneObject(pObject):isCreatureObject() and not CreatureObject(pObject):isAiAgent() and not self:hasRebreather(pObject)) then
+						if (SceneObject(pObject):isCreatureObject() and not CreatureObject(pObject):isAiAgent() and not self:hasRebreather(pObject)
+							and not CreatureObject(pObject):isDead() and not CreatureObject(pObject):isIncapacitated()) then
 							self:doPoison(pObject)
 						end
 					end
@@ -656,57 +616,23 @@ end
 function DeathWatchBunkerScreenPlay:haldoKilled(pHaldo, pPlayer)
 	createEvent(1000 * 240, "DeathWatchBunkerScreenPlay", "respawnHaldo", pPlayer)
 	ObjectManager.withCreatureObject(pPlayer, function(creature)
-		if (creature:isGrouped()) then
-			local groupSize = creature:getGroupSize()
-
-			for i = 0, groupSize - 1, 1 do
-				local pMember = creature:getGroupMember(i)
-				if pMember ~= nil then
-					local groupMember = LuaCreatureObject(pMember)
-
-					if (groupMember:hasScreenPlayState(2, "death_watch_foreman_stage") == 1 and groupMember:hasScreenPlayState(4, "death_watch_haldo") == 0 and groupMember:hasScreenPlayState(2, "death_watch_haldo") == 0) then
-						local pInventory = groupMember:getSlottedObject("inventory")
-						if (pInventory == nil) then
-							groupMember:sendSystemMessage("Error: Unable to find player inventory.")
-						else
-							if (SceneObject(pInventory):hasFullContainerObjects() == true) then
-								groupMember:sendSystemMessage("@error_message:inv_full")
-								return 0
-							else
-								local pBattery = getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", true)
-								if (pBattery == nil) then
-									pBattery = giveItem(pInventory,"object/tangible/dungeon/death_watch_bunker/drill_battery.iff", -1)
-									if (pBattery == nil) then
-										groupMember:sendSystemMessage("Error: Unable to generate item.")
-									else
-										creature:sendSystemMessage("@dungeon/death_watch:recovered_battery")
-										groupMember:setScreenPlayState(4, "death_watch_haldo")
-									end
-								end
-							end
-						end
-					end
-				end
-			end
-		else
-			if (creature:hasScreenPlayState(2, "death_watch_foreman_stage") == 1 and creature:hasScreenPlayState(4, "death_watch_haldo") == 0 and creature:hasScreenPlayState(2, "death_watch_haldo") == 0) then
-				local pInventory = creature:getSlottedObject("inventory")
-				if (pInventory == nil) then
-					creature:sendSystemMessage("Error: Unable to find player inventory.")
+		if (creature:hasScreenPlayState(2, "death_watch_foreman_stage") == 1 and creature:hasScreenPlayState(4, "death_watch_haldo") == 0 and creature:hasScreenPlayState(2, "death_watch_haldo") == 0) then
+			local pInventory = creature:getSlottedObject("inventory")
+			if (pInventory == nil) then
+				creature:sendSystemMessage("Error: Unable to find player inventory.")
+			else
+				if (SceneObject(pInventory):hasFullContainerObjects() == true) then
+					creature:sendSystemMessage("@error_message:inv_full")
+					return 0
 				else
-					if (SceneObject(pInventory):hasFullContainerObjects() == true) then
-						creature:sendSystemMessage("@error_message:inv_full")
-						return 0
-					else
-						local pBattery = getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", true)
+					local pBattery = getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", true)
+					if (pBattery == nil) then
+						pBattery = giveItem(pInventory,"object/tangible/dungeon/death_watch_bunker/drill_battery.iff", -1)
 						if (pBattery == nil) then
-							pBattery = giveItem(pInventory,"object/tangible/dungeon/death_watch_bunker/drill_battery.iff", -1)
-							if (pBattery == nil) then
-								creature:sendSystemMessage("Error: Unable to generate item.")
-							else
-								creature:sendSystemMessage("@dungeon/death_watch:recovered_battery")
-								creature:setScreenPlayState(4, "death_watch_haldo")
-							end
+							creature:sendSystemMessage("Error: Unable to generate item.")
+						else
+							creature:sendSystemMessage("@dungeon/death_watch:recovered_battery")
+							creature:setScreenPlayState(4, "death_watch_haldo")
 						end
 					end
 				end
@@ -747,7 +673,7 @@ function DeathWatchBunkerScreenPlay:spawnAggroHaldo(pOldHaldo, pPlayer)
 		local spawnHam = { h = haldo:getHAM(0), a = haldo:getHAM(3), m = haldo:getHAM(6) }
 		SceneObject(pOldHaldo):destroyObjectFromWorld()
 
-		local pNewHaldo = spawnMobile("endor", "mand_bunker_crazed_miner_aggro", 0, spawnLoc.x, spawnLoc.z, spawnLoc.y, spawnLoc.angle, spawnLoc.cell)
+		local pNewHaldo = spawnMobile("endor", "mand_bunker_crazed_miner", 0, spawnLoc.x, spawnLoc.z, spawnLoc.y, spawnLoc.angle, spawnLoc.cell)
 
 		if (pNewHaldo == nil) then
 			return
