@@ -12,8 +12,6 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 	uint64 states = 0;
 	uint64 statesBefore = 0;
 
-	Locker locker(&guard);
-
 	for (int i = 0; i < size(); ++i) {
 		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
 
@@ -103,7 +101,7 @@ int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
 	return strength;
 }
 
-uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense, int secondaryStrength) {
+uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attacker, uint64 objectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense, int secondaryStrength) {
 	Locker locker(&guard);
 
 	if (strength == 0) return 0;
@@ -151,7 +149,7 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint3
 		objectID = Long::hashCode(CreatureState::DISEASED);
 
 	}
-	DamageOverTime newDot(dotType, pool, redStrength, duration, redPotency, secondaryStrength);
+	DamageOverTime newDot(attacker, dotType, pool, redStrength, duration, redPotency, secondaryStrength);
 	int dotPower = newDot.initDot(victim);
 
 	Time nTime = newDot.getNextTick();

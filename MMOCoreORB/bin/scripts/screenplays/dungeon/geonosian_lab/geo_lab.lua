@@ -393,9 +393,9 @@ function GeonosianLabScreenPlay:notifyEnteredPoisonGas(pActiveArea, pMovingObjec
 		else
 			ObjectManager.withActiveArea(pActiveArea, function(activeArea)
 				if (activeArea:getCellObjectID() == 1627783) then
-					player:addDotState(POISONED, getRandomNumber(20) + 80, HEALTH, 1000, 2000, activeArea:getObjectID(), 0)
+					player:addDotState(pMovingObject, POISONED, getRandomNumber(20) + 80, HEALTH, 1000, 2000, activeArea:getObjectID(), 0)
 				else
-					player:addDotState(POISONED, getRandomNumber(100) + 200, HEALTH, 1000, 2000, activeArea:getObjectID(), 0)
+					player:addDotState(pMovingObject, POISONED, getRandomNumber(100) + 200, HEALTH, 1000, 2000, activeArea:getObjectID(), 0)
 				end
 				player:sendSystemMessage("@dungeon/geonosian_madbio:toxic_fumes") --You breathe in toxic fumes!
 			end)
