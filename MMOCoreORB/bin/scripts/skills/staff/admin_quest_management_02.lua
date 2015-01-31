@@ -1,5 +1,5 @@
-admin_server_admin_03 = {
-	skillName = "admin_server_admin_03",
+admin_quest_management_02 = {
+	skillName = "admin_quest_management_02",
 	parentName = "",
 	graphType = 4,
 	godOnly = 1,
@@ -21,11 +21,10 @@ admin_server_admin_03 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"resendLoginMessageToAll",
-		"setLoginMessage",
-		"setLoginTitle",
-		"setPlanetLimit",
-		"resource",
+		"activateQuest",
+		"clearCompletedQuest",
+		"completeQuest",
+		"deactivateQuest"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
@@ -33,4 +32,4 @@ admin_server_admin_03 = {
 	searchable = 0
 }
 
-addSkill(admin_server_admin_03)
+addSkill(admin_quest_management_02)

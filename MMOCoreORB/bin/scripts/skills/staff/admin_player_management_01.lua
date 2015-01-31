@@ -23,12 +23,13 @@ admin_player_management_01 = {
 	commands = {
 		"findPlayer",
 		"getGameTime",
-		"getPlayerId",
-		"getStationName",
-		"grantBadge",
-		"grantTitle",
+		"getRank",
 		"gmRevive",
-		"revokeBadge"
+		"setFaction",
+		"setFactionStanding",
+		"setRank",
+		"setTEF",
+		"showFactionInformation"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
