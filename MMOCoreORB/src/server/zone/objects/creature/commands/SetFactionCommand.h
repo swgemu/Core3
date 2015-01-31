@@ -123,11 +123,14 @@ public:
 
 		if (faction == "neutral") {
 			tano->setFaction(0);
-			pobj->setFactionRank(0);
+
+			if (pobj != NULL) {
+				pobj->setFactionRank(0);
+			}
 		}
 
 		if (faction == "imperial" || faction == "rebel" || faction == "hutt") {
-			if (faction.hashCode() != tano->getFaction()) {
+			if (pobj != NULL && faction.hashCode() != tano->getFaction()) {
 				pobj->setFactionRank(0);
 			}
 
