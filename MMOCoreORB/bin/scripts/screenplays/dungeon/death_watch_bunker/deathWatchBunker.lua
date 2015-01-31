@@ -415,11 +415,7 @@ function DeathWatchBunkerScreenPlay:onEnterDWB(sceneObject, creatureObject)
 			return 0
 		end
 
-		if creature:hasScreenPlayState(2, "death_watch_bunker") == 0 then
-			self:lockAll(creatureObject)
-		else
-			createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "lockCellsOnly", creatureObject)
-		end
+		self:lockAll(creatureObject)
 	end)
 end
 
@@ -477,43 +473,6 @@ function DeathWatchBunkerScreenPlay:respawnHaldo(creatureObject)
 	createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "haldoDamage", spawnPointer)
 end
 
-function DeathWatchBunkerScreenPlay:lockCellsOnly(pCreature)
-	if pCreature == nil then
-		return 0
-	end
-
-	ObjectManager.withCreatureObject(pCreature, function(creature)
-		if creature:hasScreenPlayState(2, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor1")
-		end
-
-		if creature:hasScreenPlayState(4, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor2")
-		end
-
-		if creature:hasScreenPlayState(8, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor3")
-		end
-
-		if creature:hasScreenPlayState(16, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor4")
-		end
-
-		if creature:hasScreenPlayState(32, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor5")
-		end
-
-		if creature:hasScreenPlayState(64, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor6")
-		end
-
-		if creature:hasScreenPlayState(128, "death_watch_bunker") == 0 then
-			self:removePermission(pCreature, "DeathWatchBunkerDoor7")
-		end
-		creature:sendSystemMessage("@dungeon/death_watch:relock")
-	end)
-end
-
 function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature, selectedID)
 	if selectedID ~= 16 then
 		return 0
@@ -569,7 +528,8 @@ function DeathWatchBunkerScreenPlay:poisonEvent(pSceneObject)
 					local pObject = SceneObject(pCell):getContainerObject(j)
 
 					if pObject ~= nil then
-						if (SceneObject(pObject):isCreatureObject() and not CreatureObject(pObject):isAiAgent() and not self:hasRebreather(pObject)) then
+						if (SceneObject(pObject):isCreatureObject() and not CreatureObject(pObject):isAiAgent() and not self:hasRebreather(pObject)
+							and not CreatureObject(pObject):isDead() and not CreatureObject(pObject):isIncapacitated()) then
 							self:doPoison(pObject)
 						end
 					end
