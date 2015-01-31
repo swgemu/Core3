@@ -21,17 +21,11 @@ admin_server_admin_02 = {
 	jediStateRequired = 0,
 	skillAbility = {},
 	commands = {
-		"addAllowedPlayer",
-		"addBannedPlayer",
-		"emptyMailTarget",
-		"getAccountInfo",
-		"removeAllowedPlayer",
-		"removeBannedPlayer",
+		"cityInfo",
 		"resendLoginMessageToAll",
 		"setLoginMessage",
 		"setLoginTitle",
-		"setPlanetLimit",
-		"wipeItems"
+		"setPlanetLimit"
 	},
 	skillModifiers = {},
 	schematicsGranted = {},
