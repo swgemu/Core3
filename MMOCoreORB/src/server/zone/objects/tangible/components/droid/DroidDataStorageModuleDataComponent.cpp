@@ -128,11 +128,21 @@ void DroidDataStorageModuleDataComponent::initialize(CreatureObject* droid) {
 	path.append("object/tangible/datapad/droid_datapad_");
 	path.append(getStorageRating());
 	path.append(".iff");
+
 	ManagedReference<SceneObject*> inventory = droid->getZoneServer()->createObject(path.toString().hashCode(),1);
+	if (inventory == NULL) {
+		return;
+	}
+
 	ManagedReference<SceneObject*> droidInvorty = droid->getSlottedObject("datapad");
-	if (droidInvorty)
+	if (droidInvorty) {
 		droid->removeObject(droidInvorty,NULL,true);
-	droid->transferObject(inventory,4,true);
+		droidInvorty->destroyObjectFromDatabase(true);
+	}
+
+	if (!droid->transferObject(inventory,4,true)) {
+		inventory->destroyObjectFromDatabase(true);
+	}
 }
 int DroidDataStorageModuleDataComponent::handleObjectMenuSelect(CreatureObject* player, byte selectedID, PetControlDevice* controller) {
 

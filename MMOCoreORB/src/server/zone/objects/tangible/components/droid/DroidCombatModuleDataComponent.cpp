@@ -122,7 +122,9 @@ void DroidCombatModuleDataComponent::initialize(CreatureObject* droid) {
 
 		droid->dropSlottedObject("default_weapon");
 
-		droid->transferObject(weao, 4, false);
+		if (!droid->transferObject(weao, 4, false)) {
+			weao->destroyObjectFromDatabase(true);
+		}
 	}
 
 }

@@ -154,6 +154,12 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		return;
 	}
 
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+	if (inventory == NULL) {
+		cancelSession();
+		return;
+	}
+
 	ManagedReference<TangibleObject*> vendor;
 
 	try {
@@ -162,10 +168,15 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		error(e.getMessage());
 	}
 
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-	if (vendor == NULL || inventory == NULL || !vendor->isVendor()) {
+	if (vendor == NULL) {
 		error("could not create vendor " + templatePath);
+		cancelSession();
+		return;
+	}
+
+	if (!vendor->isVendor()) {
+		error("could not create vendor " + templatePath);
+		vendor->destroyObjectFromDatabase(true);
 		cancelSession();
 		return;
 	}
@@ -176,6 +187,7 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 
 	if (inventory->hasFullContainerObjects()) {
 		player->sendSystemMessage("@player_structure:create_failed");
+		vendor->destroyObjectFromDatabase(true);
 		cancelSession();
 		return;
 	}
@@ -184,6 +196,7 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
 		error("Invalid vendor, no data component: " + templatePath);
 		player->sendSystemMessage("@player_structure:create_failed");
+		vendor->destroyObjectFromDatabase(true);
 		cancelSession();
 		return;
 	}
@@ -192,6 +205,7 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 	if(vendorData == NULL) {
 		error("Invalid vendor, no data component: " + templatePath);
 		player->sendSystemMessage("@player_structure:create_failed");
+		vendor->destroyObjectFromDatabase(true);
 		cancelSession();
 		return ;
 	}
@@ -210,6 +224,7 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 
 	if(!inventory->transferObject(vendor, -1, false)) {
 		player->sendSystemMessage("@player_structure:create_failed");
+		vendor->destroyObjectFromDatabase(true);
 		cancelSession();
 		return;
 	}
@@ -264,7 +279,9 @@ void CreateVendorSessionImplementation::randomizeVendorClothing(CreatureObject* 
 			}
 		}
 
-		vendor->transferObject(obj, 4);
+		if (!vendor->transferObject(obj, 4)) {
+			obj->destroyObjectFromDatabase(true);
+		}
 	}
 
 }

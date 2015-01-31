@@ -232,19 +232,31 @@ void FactoryCrateImplementation::split(int newStackSize) {
 		return;
 	}
 
+	if(parent.get() == NULL)
+		return;
+
 	ObjectManager* objectManager = ObjectManager::instance();
 
 	ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype));
 
+	if(protoclone == NULL)
+		return;
+
 	ManagedReference<FactoryCrate*> newCrate =
 			(server->getZoneServer()->createObject(getServerObjectCRC(), 2)).castTo<FactoryCrate*>();
 
-	if(parent.get() == NULL || newCrate == NULL || protoclone == NULL)
+	if(newCrate == NULL) {
+		protoclone->destroyObjectFromDatabase(true);
 		return;
+	}
 
 	protoclone->setParent(NULL);
 
-	newCrate->transferObject(protoclone, -1, false);
+	if (!newCrate->transferObject(protoclone, -1, false)) {
+		protoclone->destroyObjectFromDatabase(true);
+		newCrate->destroyObjectFromDatabase(true);
+		return;
+	}
 
 	newCrate->setUseCount(newStackSize, false);
 	newCrate->setCustomObjectName(getCustomObjectName(), false);
@@ -254,6 +266,8 @@ void FactoryCrateImplementation::split(int newStackSize) {
 		if(	strongParent->transferObject(newCrate, -1, false)) {
 			strongParent->broadcastObject(newCrate, true);
 			setUseCount(getUseCount() - newStackSize, true);
+		} else {
+			newCrate->destroyObjectFromDatabase(true);
 		}
 	}
 }

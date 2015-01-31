@@ -690,8 +690,10 @@ void SlicingSessionImplementation::handleContainerSlice() {
 
 		Container* container = dynamic_cast<Container*>(containerSceno.get());
 
-		if (container == NULL)
+		if (container == NULL) {
+			containerSceno->destroyObjectFromDatabase(true);
 			return;
+		}
 
 		Locker clocker(container, player);
 

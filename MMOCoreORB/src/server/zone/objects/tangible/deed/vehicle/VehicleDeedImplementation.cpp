@@ -93,9 +93,16 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		}
 
 		Reference<VehicleControlDevice*> vehicleControlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<VehicleControlDevice*>();
+
+		if (vehicleControlDevice == NULL) {
+			player->sendSystemMessage("wrong vehicle control device object template " + controlDeviceObjectTemplate);
+			return 1;
+		}
+
 		Reference<VehicleObject*> vehicle = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1)).castTo<VehicleObject*>();
 
 		if (vehicle == NULL) {
+			vehicleControlDevice->destroyObjectFromDatabase(true);
 			player->sendSystemMessage("wrong vehicle object template " + generatedObjectTemplate);
 			return 1;
 		}
@@ -104,17 +111,21 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		vehicle->setMaxCondition(hitPoints);
 		vehicle->setConditionDamage(0);
 		vehicleControlDevice->setControlledObject(vehicle);
-		datapad->transferObject(vehicleControlDevice, -1);
 
-		datapad->broadcastObject(vehicleControlDevice, true);
-		vehicleControlDevice->generateObject(player);
+		if (datapad->transferObject(vehicleControlDevice, -1)) {
+			datapad->broadcastObject(vehicleControlDevice, true);
+			vehicleControlDevice->generateObject(player);
 
-		generated = true;
+			generated = true;
 
-		destroyObjectFromWorld(true);
-		destroyObjectFromDatabase(true);
+			destroyObjectFromWorld(true);
+			destroyObjectFromDatabase(true);
 
-		return 0;
+			return 0;
+		} else {
+			vehicleControlDevice->destroyObjectFromDatabase(true);
+			return 1;
+		}
 	}
 
 	return DeedImplementation::handleObjectMenuSelect(player, selectedID);

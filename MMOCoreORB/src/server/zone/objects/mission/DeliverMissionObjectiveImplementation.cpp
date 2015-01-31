@@ -190,15 +190,21 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 		//TODO: create correct item.
 		item = (player->getZoneServer()->createObject(String("object/tangible/mission/mission_datadisk.iff").hashCode(), 2)).castTo<TangibleObject*>();
 		if (item == NULL) {
+			abort();
 			return;
 		}
 
 		itemName.setStringId("mission/mission_deliver_neutral_easy", itemEntry.toString());
 		item->setObjectName(itemName);
-		item->sendTo(player, true);
 
 		//Give player the item to deliver
-		inventory->transferObject(item, -1, true);
+		if (inventory->transferObject(item, -1, true)) {
+			item->sendTo(player, true);
+		} else {
+			abort();
+			item->destroyObjectFromDatabase(true);
+			return;
+		}
 
 		updateMissionTarget(player);
 

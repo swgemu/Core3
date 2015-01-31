@@ -211,7 +211,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		if (structureObject == NULL) {
 			error("Unable to create camp: " + campKitData->getSpawnObjectTemplate());
-			return 0;
+			return 1;
 		}
 
 		/// Identify terminal for Active area
@@ -227,8 +227,9 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		}
 
 		if (campTerminal == NULL) {
+			structureObject->destroyObjectFromDatabase(true);
 			error("Camp does not have terminal: " + campStructureData->getTemplateFileName());
-			return 0;
+			return 1;
 		}
 
 		String campName = player->getFirstName();
@@ -241,6 +242,12 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		String areaPath = "object/camp_area.iff";
 		ManagedReference<CampSiteActiveArea*> campArea =
 			(zoneServer->createObject( areaPath.hashCode(), 1)).castTo< CampSiteActiveArea*>();
+
+		if (campArea == NULL) {
+			structureObject->destroyObjectFromDatabase(true);
+			return 1;
+		}
+
 		campArea->init(campStructureData);
 		campArea->setTerminal(campTerminal);
 		campArea->setCamp(structureObject);
@@ -248,7 +255,11 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		campArea->setNoBuildArea(true);
 		campArea->initializePosition(player->getPositionX(), 0, player->getPositionY());
 
-		zone->transferObject(campArea, -1, false);
+		if (!zone->transferObject(campArea, -1, false)) {
+			structureObject->destroyObjectFromDatabase(true);
+			campArea->destroyObjectFromDatabase(true);
+			return 1;
+		}
 
 		structureObject->addActiveArea(campArea);
 

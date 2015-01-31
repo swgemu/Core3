@@ -421,16 +421,20 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 		String templateToSpawn = creatureManager->getTemplateToSpawn(mobileTemplate.hashCode());
 		ManagedReference<CreatureObject*> creatureObject = creatureManager->createCreature(templateToSpawn.hashCode(), true, 0 );
-		if( creatureObject == NULL ){
+		if( creatureObject == NULL ) {
+			controlDevice->destroyObjectFromDatabase(true);
 			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]" );
 			return 1;
 		}
 
 		ManagedReference<Creature*> pet = creatureObject.castTo<Creature*>();
-		if( pet == NULL ){
+		if( pet == NULL ) {
+			controlDevice->destroyObjectFromDatabase(true);
+			creatureObject->destroyObjectFromDatabase(true);
 			player->sendSystemMessage("Internal Pet Deed Error #348" );
 			return 1;
 		}
+
 		ObjectManager* objectManager = server->getZoneServer()->getObjectManager();
 		pet->setPetDeed(_this.get());
 		pet->loadTemplateData( petTemplate );
@@ -462,9 +466,10 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		controlDevice->setGrowthStage(1);
 		controlDevice->updateStatus(1);
 
-		datapad->transferObject(controlDevice, -1);
-
-		objectManager->persistSceneObjectsRecursively(pet, 1);
+		if (!datapad->transferObject(controlDevice, -1)) {
+			controlDevice->destroyObjectFromDatabase(true);
+			return 1;
+		}
 
 		Locker crossLocker(pet, player);
 

@@ -638,6 +638,11 @@ Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(bool i
 	else
 		file = "object/factory/factory_crate_generic_items.iff";
 
+	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
+
+	if (tanoData == NULL)
+		return NULL;
+
 	ObjectManager* objectManager = ObjectManager::instance();
 
 	Reference<FactoryCrate*> crate = (getZoneServer()->createObject(file.hashCode(), 2)).castTo<FactoryCrate*>();
@@ -645,24 +650,28 @@ Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(bool i
 	if (crate == NULL)
 		return NULL;
 
-	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(templateObject.get());
-
-	if (tanoData == NULL)
-		return NULL;
-
 	crate->setMaxCapacity(tanoData->getFactoryCrateSize());
 
 	if (insertSelf) {
-		crate->transferObject(_this.get(), -1, false);
+		if (!crate->transferObject(_this.get(), -1, false)) {
+			crate->destroyObjectFromDatabase(true);
+			return NULL;
+		}
 	} else {
 
 		ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(_this.get()));
 
-		if (protoclone == NULL)
+		if (protoclone == NULL) {
+			crate->destroyObjectFromDatabase(true);
 			return NULL;
+		}
 
 		protoclone->setParent(NULL);
-		crate->transferObject(protoclone, -1, false);
+		if (!crate->transferObject(protoclone, -1, false)) {
+			protoclone->destroyObjectFromDatabase(true);
+			crate->destroyObjectFromDatabase(true);
+			return NULL;
+		}
 	}
 
 	crate->setCustomObjectName(getCustomObjectName(), false);
