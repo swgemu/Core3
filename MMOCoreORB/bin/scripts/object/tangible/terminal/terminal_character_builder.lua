@@ -2858,7 +2858,9 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			"DWB Testing (Temporary)",
 			{
 				"Bounty Hunter Helmet", "object/tangible/wearables/armor/bounty_hunter/armor_bounty_hunter_helmet.iff",
-				"Jet Pack Base", "object/tangible/loot/dungeon/death_watch_bunker/jetpack_base.iff"
+				"Jet Pack Base", "object/tangible/loot/dungeon/death_watch_bunker/jetpack_base.iff",
+				"Protective Liquid Coating", "object/tangible/loot/dungeon/death_watch_bunker/emulsion_protection.iff",
+				"Binary Liquid", "object/tangible/loot/dungeon/death_watch_bunker/binary_liquid.iff"
 			}
 		}
 	}
