@@ -6,6 +6,7 @@ dev = {
 		"admin_base",
 		"admin_debug_01",
 		"admin_debug_02",
+		"admin_debug_03",
 		"admin_general_admin_01",
 		"admin_general_admin_02",
 		"admin_general_admin_03",
