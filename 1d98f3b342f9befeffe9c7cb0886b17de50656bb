@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_0625dcaa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-01T23:05:07Z",
+      "side": 1,
+      "message": "Global ints for returns are always a good idea.",
+      "parentUuid": "1a486d77_c60fc42d",
+      "revId": "1d98f3b342f9befeffe9c7cb0886b17de50656bb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_8619cc7b",
         "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
         "patchSetId": 3
