@@ -32,7 +32,7 @@ death_watch_overlord_mines = Creature:new {
 			groups = {
 				{group = "death_watch_bunker_overlord_shared", chance =  10000000}
 			},
-			lootChance = 5000000
+			lootChance = 10000000
 		}
 	},
 	weapons = {"dark_trooper_weapons"},
