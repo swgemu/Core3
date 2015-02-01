@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_e612c057",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-01T22:46:14Z",
+      "side": 1,
+      "message": "Your returns still aren\u0027t correct. A return of -1 tells LuaContainerComponent::canAddObject() to call ContainerComponent::canAddObject() and return it\u0027s result. You may be getting the result you want, but you\u0027re not going about it the right way. You should be returning something greater than 0 (see TransferErrorCode.h).",
+      "revId": "1d98f3b342f9befeffe9c7cb0886b17de50656bb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_c60fc42d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-01T22:46:14Z",
+      "side": 1,
+      "message": "These returns of true are likewise not correct but giving you the expected result. The problem is that the lua_tointeger function that LuaContainerComponent::canAddObject() uses will convert any Lua boolean value (whether true or false) to a zero, which just happens to be the result for success in this method. You should just return zero to avoid confusion.\n\nAnother option we may want to consider is to make global ints in DirectorManager for each value from TransferErrorCode.h and use them.",
+      "revId": "1d98f3b342f9befeffe9c7cb0886b17de50656bb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_8619cc7b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-01T22:46:14Z",
+      "side": 1,
+      "message": "transferObject should always return a 0 (failure), a 1 (success), or a -1 (call c++ function instead). It should never reach the end of the function without returning.",
+      "revId": "1d98f3b342f9befeffe9c7cb0886b17de50656bb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_a61cc86b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-01T22:46:14Z",
+      "side": 1,
+      "message": "Same as above, you need to fix the returns in this function.",
+      "revId": "1d98f3b342f9befeffe9c7cb0886b17de50656bb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_6626d0bc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchContainerComponents.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-01T22:46:14Z",
+      "side": 1,
+      "message": "Return a 1 here since the transfer succeeded.",
+      "revId": "1d98f3b342f9befeffe9c7cb0886b17de50656bb",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
