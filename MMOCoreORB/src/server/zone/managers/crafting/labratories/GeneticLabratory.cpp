@@ -286,8 +286,8 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	int quality = ( ((float)phy->getQuality() * 0.2)+ ((float)pro->getQuality()*0.2) + ((float)men->getQuality()*0.2) + ((float)psy->getQuality()*0.2) + ((float)agr->getQuality()*0.2));
 	bool ranged = false;
 	int odds = 0;
-	float menQual = 7 - men->getQuality();
-	float psyQual = 7 - psy->getQuality();
+	float menQual = men->getQuality() - 1;
+	float psyQual = psy->getQuality() - 1;
 	if (men->isRanged() || psy->isRanged()) {
 		int chance = System::random(100-(assemblySuccess * 10)); // so amazing success 100, critical falure is 20
 		// did you roll exceed (7 - Quality) * 10 (VHQ is 0) so always works
