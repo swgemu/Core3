@@ -289,9 +289,9 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	float menQual = 7 - men->getQuality();
 	float psyQual = 7 - psy->getQuality();
 	if (men->isRanged() || psy->isRanged()) {
-		int chance = System::random((assemblySuccess * 10)-100); // so amazing success 100, critical falure is 20
+		int chance = System::random(100-(assemblySuccess * 10)); // so amazing success 100, critical falure is 20
 		// did you roll exceed (7 - Quality) * 10 (VHQ is 0) so always works
-		if (chance > (menQual * 10) || chance > (psyQual * 10))
+		if (chance >= (menQual * 10) || chance >= (psyQual * 10))
 			ranged = true;
 	}
 	odds = quality * 100;
