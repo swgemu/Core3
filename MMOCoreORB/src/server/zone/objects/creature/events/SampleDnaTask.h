@@ -180,7 +180,7 @@ public:
 				if (success && cl <= 75) {
 					player->sendSystemMessage("@bio_engineer:harvest_dna_succeed");
 					creature->incDnaSampleCount();
-					award(cl,rollMod);
+					award(cl,rollMod,skillMod);
 					if (creature->getDnaSampleCount() > 5) {
 						creature->setDnaState(CreatureManager::DNASAMPLED);
 					}
@@ -213,7 +213,7 @@ public:
 		creature->setDnaState(CreatureManager::DNADEATH);
 		player->sendSystemMessage(str);
 	}
-	void award(int cl, float rollMod) {
+	void award(int cl, float rollMod, int skillMod) {
 		int xp = DnaManager::instance()->generateXp(cl);
 		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 		if(playerManager != NULL)
@@ -223,21 +223,40 @@ public:
 		int luckRoll = System::random(100);
 		luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
 		int qualityRoll = luckRoll + rollMod;
-		// quality is related to your skill vs the creature level
-		if (qualityRoll > 80)
-			quality = 1;
-		else if (qualityRoll > 70)
-			quality = 2;
-		else if (qualityRoll > 60)
-			quality = 3;
-		else if (qualityRoll > 50)
-			quality = 4;
-		else if (qualityRoll > 40)
-			quality = 5;
-		else if (qualityRoll > 30)
-			quality = 6;
+
+		int low = 7;
+		int mid = 6;
+		int high = 5;
+		if (skillMod <= 15) {
+			low = 7;mid=6;high=5;
+		}
+		else if (skillMod <= 30 ) {
+			low = 7; mid = 6; high = 5;
+		}
+		else if (skillMod <= 45) {
+			low = 6; mid = 5; high = 4;
+		}
+		else if (skillMod <= 60) {
+			low = 5; mid = 4; high = 3;
+		}
+		else if (skillMod <= 75) {
+			low = 4; mid = 3; high = 2;
+		}
+		else {
+			low = 3; mid = 2; high = 1;
+		}
+		//15 	VLQ, LQ, BAQ
+		//30 	VLQ, LQ, BAQ
+		//45 	LQ, BAQ, AQ
+		//60 	BAQ, AQ,AAQ
+		//75 	AQ,AAQ,HQ
+		//100 	AAQ,HQ, VHQ
+		if (qualityRoll < 33)
+			quality = low;
+		else if (qualityRoll < 66)
+			quality = mid;
 		else
-			quality = 7;
+			quality = high;
 		DnaManager::instance()->generateSample(creature,player,quality);
 	}
 };
