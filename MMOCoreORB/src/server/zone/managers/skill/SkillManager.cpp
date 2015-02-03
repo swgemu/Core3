@@ -39,7 +39,7 @@ gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
 
-*/
+ */
 
 #include "SkillManager.h"
 #include "SkillModManager.h"
@@ -58,7 +58,7 @@ which carries forward this exception.
 #include "../../packets/creature/CreatureObjectDeltaMessage6.h"
 
 SkillManager::SkillManager()
-		: Logger("SkillManager") {
+: Logger("SkillManager") {
 
 	rootNode = new Skill();
 
@@ -572,6 +572,10 @@ void SkillManager::updateXpLimits(PlayerObject* ghost) {
 
 	for(int i = 0; i < playerSkillBoxList->size(); ++i) {
 		Skill* skillBox = playerSkillBoxList->get(i);
+
+		if (skillBox == NULL)
+			continue;
+
 		if (xpTypeCapList->contains(skillBox->getXpType()) && (xpTypeCapList->get(skillBox->getXpType()) < skillBox->getXpCap())) {
 			xpTypeCapList->get(skillBox->getXpType()) = skillBox->getXpCap();
 		}
