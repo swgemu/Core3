@@ -1955,6 +1955,10 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 
 	for (int i = 0; i < playerSkillList->size(); ++i) {
 		Skill* skill = playerSkillList->get(i);
+
+		if (skill == NULL)
+			continue;
+
 		skillManager->awardDraftSchematics(skill, ghost, false);
 
 		totalSkillPointsWasted -= skill->getSkillPointsRequired();
