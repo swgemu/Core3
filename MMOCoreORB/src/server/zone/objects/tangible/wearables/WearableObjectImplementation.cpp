@@ -13,6 +13,8 @@
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 
+typedef VectorMapEntry<String,int> Mod;
+
 void WearableObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 	setLoggingName("WearableObject");
@@ -54,6 +56,7 @@ void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, 
 }
 
 void WearableObjectImplementation::generateSockets(CraftingValues* craftingValues) {
+
 	if (socketsGenerated) {
 		return;
 	}
@@ -122,30 +125,47 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 		if (wearableSkillMods.size() < 6) {
 			HashTable<String, int>* mods = attachment->getSkillMods();
 			HashTableIterator<String, int> iterator = mods->iterator();
+			
+			String statName;
+			int newValue;
 
-			VectorMap<int, String> sortedMods;
-			sortedMods.setAllowDuplicateInsertPlan();
-
-			for (int i = 0; i < mods->size(); ++i) {
-				String statName;
-				int newValue;
+			// Mirror the HashTable to a simple Vector so we can sort it
+			Vector< Mod > allMods;
+			for( int i = 0; i < mods->size(); i++){
 				iterator.getNextKeyAndValue(statName, newValue);
-				sortedMods.put(newValue, statName);
+				allMods.add( Mod( statName, newValue ) );
 			}
 
-			for (int i = sortedMods.size() - 1; i >= 0; --i) {
+			// We want to pick the highest mod first and, in the event of a tie, favor
+			// mods listed first on the SEA. We need a descending sort, that maintains the relative
+			// order of tied mods. Basic bubble sort implementation:
+			for( int i = 0; i < allMods.size(); i++ ){
+				for ( int j = 0; j < allMods.size() - 1; j++ ){
+					if ( allMods.elementAt(j+1).getValue() > allMods.elementAt(j).getValue()) {
+						Mod temp = allMods.elementAt(j);
+						allMods.set(j, allMods.elementAt(j+1) );
+						allMods.set(j+1, temp);
+					}
+				}
+			}
+
+			// Select the next mod in the SEA, sorted high-to-low. If that skill mod is already on the
+			// wearable, with higher or equal value, don't apply and continue. Break once one mod
+			// is applied.
+			for( int i = 0; i < allMods.size(); i++ ) {
+				String modName = allMods.elementAt(i).getKey();
+				int modValue = allMods.elementAt(i).getValue();
+
 				int existingValue = -26;
-				int newValue = sortedMods.elementAt(i).getKey();
-				String statName = sortedMods.elementAt(i).getValue();
+				if(wearableSkillMods.contains(modName))
+					existingValue = wearableSkillMods.get(modName);
 
-				if(wearableSkillMods.contains(statName))
-					existingValue = wearableSkillMods.get(statName);
-
-				if(newValue > existingValue) {
-					wearableSkillMods.put(statName, newValue);
+				if( modValue > existingValue) {
+					wearableSkillMods.put( modName, modValue );
 					break;
 				}
 			}
+
 		}
 
 		usedSocketCount++;
@@ -156,9 +176,7 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 		if (isEquipped()) {
 			applySkillModsTo(player);
 		}
-
 	}
-
 }
 
 void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) {
