@@ -179,7 +179,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				for (int i = 0; i < weptemps.size(); ++i) {
 					uint32 crc = weptemps.get(i).hashCode();
 
-					ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, 0)).castTo<WeaponObject*>();
+					ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, getPersistenceLevel())).castTo<WeaponObject*>();
 
 					if (weao != NULL) {
 						weao->setMinDamage(minDmg * 0.5);
@@ -318,7 +318,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 						String templ = obj->getObjectTemplate();
 
-						ManagedReference<TangibleObject*> tano = (server->getZoneServer()->createObject(templ.hashCode(), 0)).castTo<TangibleObject*>();
+						ManagedReference<TangibleObject*> tano = (server->getZoneServer()->createObject(templ.hashCode(), getPersistenceLevel())).castTo<TangibleObject*>();
 
 						if (tano != NULL) {
 							VectorMap<String, uint8>* cust = obj->getCustomizationVariables();
@@ -327,7 +327,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 								tano->setCustomizationVariable(cust->elementAt(j).getKey(), cust->elementAt(j).getValue());
 							}
 
-							transferObject(tano, 4, false);
+							if (!transferObject(tano, 4, false) && tano->isPersistent()) {
+								tano->destroyObjectFromDatabase(true);
+							}
 						}
 
 					}

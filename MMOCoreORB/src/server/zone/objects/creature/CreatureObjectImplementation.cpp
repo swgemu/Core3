@@ -2766,11 +2766,14 @@ void CreatureObjectImplementation::createChildObjects() {
 		permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 		permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 
+		if (!transferObject(obj, child->getContainmentType())) {
+			obj->destroyObjectFromDatabase(true);
+			continue;
+		}
+
 		childObjects.put(obj);
 
 		obj->initializeChildObject(_this.get());
-
-		transferObject(obj, child->getContainmentType());
 	}
 }
 

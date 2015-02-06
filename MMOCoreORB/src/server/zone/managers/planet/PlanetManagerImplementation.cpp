@@ -817,13 +817,20 @@ Reference<SceneObject*> PlanetManagerImplementation::findObjectTooCloseToDecorat
 Reference<SceneObject*> PlanetManagerImplementation::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
 	ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
 
-	if (obj == NULL || !obj->isTangibleObject())
+	if (obj == NULL)
 		return NULL;
+
+	if (!obj->isTangibleObject()) {
+		obj->destroyObjectFromDatabase(true);
+		return NULL;
+	}
 
 	TangibleObject* tano = cast<TangibleObject*>( obj.get());
 
-	if (!tano->isTicketObject())
-		return tano;
+	if (!tano->isTicketObject()) {
+		tano->destroyObjectFromDatabase(true);
+		return NULL;
+	}
 
 	TicketObject* ticket = cast<TicketObject*>( tano);
 	ticket->setDeparturePlanet(zone->getZoneName());

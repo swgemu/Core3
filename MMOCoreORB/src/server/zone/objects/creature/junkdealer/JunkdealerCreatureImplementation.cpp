@@ -707,9 +707,12 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 
 			ManagedReference<LootkitObject*> lootkit = (server->getZoneServer()->createObject(CRC, 2)).castTo<LootkitObject*>();
 
-			lootkit->sendTo(player, true);
-			if (!inventory->transferObject(lootkit, -1, true))
+			if (inventory->transferObject(lootkit, -1, true)) {
+				lootkit->sendTo(player, true);
+			} else {
 				info("Could not add object.", true);
+				lootkit->destroyObjectFromDatabase(true);
+			}
 		}
 	} else
 		player->sendMessage(new StopNpcConversation(player, getObjectID()));

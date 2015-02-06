@@ -146,8 +146,8 @@ void ImageDesignManager::updateCustomization(CreatureObject* imageDesigner, cons
 					// ex: received value 0.5 is for i == 0 -> 0.0, i == 1 -> 0.0
 					// ex: received value 1 is for i == 0 -> 0.0, i == 1 -> 1.0
 
-					// pre: i Û [0, 1] && value Û [0, 1]
-					// post f Û [0, 1]
+					// pre: i ï¿½ [0, 1] && value ï¿½ [0, 1]
+					// post f ï¿½ [0, 1]
 					currentValue = MAX(0, ((value - 0.5) * 2) * (-1 + (i * 2)));
 				}
 
@@ -404,8 +404,13 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 	ManagedReference<SceneObject*> hair = imageDesigner->getZoneServer()->createObject(hairTemplate.hashCode(), 1);
 
 	//TODO: Validate hairCustomization
-	if (hair == NULL || !hair->isTangibleObject())
+	if (hair == NULL || !hair->isTangibleObject()) {
+		if (hair != NULL) {
+			hair->destroyObjectFromDatabase(true);
+		}
+
 		return oldHair;
+	}
 
 	TangibleObject* tanoHair = cast<TangibleObject*>( hair.get());
 	tanoHair->setContainerDenyPermission("owner", ContainerPermissions::MOVECONTAINER);

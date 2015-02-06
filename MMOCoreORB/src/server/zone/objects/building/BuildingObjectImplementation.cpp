@@ -821,8 +821,6 @@ bool BuildingObjectImplementation::transferObject(SceneObject* object, int conta
 }
 
 int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent) {
-	//if ()
-
 	ManagedReference<Zone*> zone = getZone();
 
 	Locker* _locker = NULL;
@@ -1216,8 +1214,10 @@ void BuildingObjectImplementation::createChildObjects(){
 			if (obj == NULL )
 				continue;
 
-			if(obj->isCreatureObject())
+			if(obj->isCreatureObject()) {
+				obj->destroyObjectFromDatabase(true);
 				continue;
+			}
 
 			Vector3 childPosition = child->getPosition();
 			childObjects.put(obj);
@@ -1233,12 +1233,16 @@ void BuildingObjectImplementation::createChildObjects(){
 						ManagedReference<CellObject*> cellObject = getCell(child->getCellId());
 
 						if (cellObject != NULL) {
-							cellObject->transferObject(obj, child->getContainmentType(), true);
-						} else
+							if (!cellObject->transferObject(obj, child->getContainmentType(), true)) {
+								obj->destroyObjectFromDatabase(true);
+							}
+						} else {
+							obj->destroyObjectFromDatabase(true);
 							error("NULL CELL OBJECT");
+						}
 					}
 				} catch (Exception& e) {
-					error("unreported exception caught in void SceneObjectImplementation::createChildObjects()!");
+					error("unreported exception caught in void BuildingObjectImplementation::createChildObjects()!");
 					e.printStackTrace();
 				}
 
@@ -1253,13 +1257,16 @@ void BuildingObjectImplementation::createChildObjects(){
 					else if (obj->isDetector())
 						gcwMan->addScanner(_this.get(), NULL);
 
+					obj->destroyObjectFromDatabase(true);
 					continue;
 				}
 
 				SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
 
-				if(thisTemplate == NULL || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE)
+				if(thisTemplate == NULL || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE){
+					obj->destroyObjectFromDatabase(true);
 					continue;
+				}
 
 				Vector3 childPosition = child->getPosition();
 				float angle = getDirection()->getRadians();
@@ -1521,12 +1528,19 @@ void BuildingObjectImplementation::changeSign( SignTemplate* signConfig ){
 	ZoneServer* zoneServer = getZone()->getZoneServer();
 
 	ManagedReference<SceneObject*> signSceno = zoneServer->createObject(signConfig->getTemplateFile().hashCode(), 1);
-	if (signSceno == NULL || !signSceno->isSignObject() )
+	if (signSceno == NULL)
 		return;
 
-	ManagedReference<SignObject*> signObject = signSceno.castTo<SignObject*>();
-	if( signObject == NULL )
+	if ( !signSceno->isSignObject() ) {
+		signSceno->destroyObjectFromDatabase(true);
 		return;
+	}
+
+	ManagedReference<SignObject*> signObject = signSceno.castTo<SignObject*>();
+	if( signObject == NULL ) {
+		signSceno->destroyObjectFromDatabase(true);
+		return;
+	}
 
 	Vector3 signPosition = signConfig->getPosition();
 	childObjects.put(signSceno);

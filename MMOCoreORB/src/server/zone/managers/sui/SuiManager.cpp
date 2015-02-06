@@ -467,12 +467,17 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				//"object/tangible/wearables/apron/apron_chef_s01.iff"
 				//"object/tangible/wearables/ithorian/apron_chef_jacket_s01_ith.iff"
 
+				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+				if (inventory == NULL) {
+					return;
+				}
+
 				uint32 itemCrc = ( player->getSpecies() != CreatureObject::ITHORIAN ) ? 0x5DDC4E5D : 0x6C191FBB;
 
 				ManagedReference<WearableObject*> apron = zserv->createObject(itemCrc, 2).castTo<WearableObject*>();
 
 				if (apron == NULL) {
-					player->sendSystemMessage("There was an error creating the requested item. Please contact customer support with this issue.");
+					player->sendSystemMessage("There was an error creating the requested item. Please report this issue.");
 					ghost->addSuiBox(cbSui);
 					player->sendMessage(cbSui->generateMessage());
 
@@ -535,9 +540,12 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 					apron->setCustomObjectName(apronName, false);
 				}
 
-				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-				apron->sendTo(player, true);
-				inventory->transferObject(apron, -1, true);
+				if (inventory->transferObject(apron, -1, true)) {
+					apron->sendTo(player, true);
+				} else {
+					apron->destroyObjectFromDatabase(true);
+					return;
+				}
 
 				StringIdChatParameter stringId;
 				stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.
@@ -609,6 +617,11 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			player->sendMessage(cbSui->generateMessage());
 		} else { // Items
 
+			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+			if (inventory == NULL) {
+				return;
+			}
+
 			if (templatePath.contains("event_perk")) {
 				if (ghost->getEventPerkCount() >= 5) {
 					player->sendSystemMessage("@event_perk:pro_too_many_perks"); // You cannot rent any more items right now.
@@ -621,7 +634,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 			ManagedReference<SceneObject*> item = zserv->createObject(node->getTemplateCRC(), 1);
 
 			if (item == NULL) {
-				player->sendSystemMessage("There was an error creating the requested item. Please contact customer support with this issue.");
+				player->sendSystemMessage("There was an error creating the requested item. Please report this issue.");
 				ghost->addSuiBox(cbSui);
 				player->sendMessage(cbSui->generateMessage());
 
@@ -637,14 +650,19 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				ghost->addEventPerk(deed);
 			}
 
-			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-			item->sendTo(player, true);
-			inventory->transferObject(item, -1, true);
+			if (inventory->transferObject(item, -1, true)) {
+				item->sendTo(player, true);
 
-			StringIdChatParameter stringId;
-			stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.
-			stringId.setTO(item);
-			player->sendSystemMessage(stringId);
+				StringIdChatParameter stringId;
+				stringId.setStringId("@faction_perk:bonus_base_name"); //You received a: %TO.
+				stringId.setTO(item);
+				player->sendSystemMessage(stringId);
+
+			} else {
+				item->destroyObjectFromDatabase(true);
+				player->sendSystemMessage("Error putting item in inventory.");
+				return;
+			}
 
 			ghost->addSuiBox(cbSui);
 			player->sendMessage(cbSui->generateMessage());

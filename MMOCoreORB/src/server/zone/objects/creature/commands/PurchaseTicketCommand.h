@@ -229,15 +229,30 @@ public:
 
 		creature->sendSystemMessage(params);
 
-		//ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
 		ManagedReference<SceneObject*> ticket1 = pmDeparture->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
-		ticket1->sendTo(creature, true);
-		inventory->transferObject(ticket1, -1, true);
+		if (ticket1 == NULL) {
+			creature->sendSystemMessage("Error creating travel ticket.");
+			return GENERALERROR;
+		}
+
+		if (inventory->transferObject(ticket1, -1, true)) {
+			ticket1->sendTo(creature, true);
+		} else {
+			ticket1->destroyObjectFromDatabase(true);
+			creature->sendSystemMessage("Error transferring travel ticket to inventory.");
+			return GENERALERROR;
+		}
 
 		if (roundTrip) {
 			ManagedReference<SceneObject*> ticket2 = pmArrival->createTicket(arrivalPoint, departurePlanet, departurePoint);
-			ticket2->sendTo(creature, true);
-			inventory->transferObject(ticket2, -1, true);
+
+			if (inventory->transferObject(ticket2, -1, true)) {
+				ticket2->sendTo(creature, true);
+			} else {
+				ticket2->destroyObjectFromDatabase(true);
+				creature->sendSystemMessage("Error transferring round-trip travel ticket to inventory.");
+				return GENERALERROR;
+			}
 		}
 		_lock.release();
 
