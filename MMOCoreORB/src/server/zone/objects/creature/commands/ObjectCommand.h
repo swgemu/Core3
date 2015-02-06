@@ -131,8 +131,12 @@ public:
 				if(quantity > 1 && quantity <= 100)
 					object->setUseCount(quantity);
 
-				inventory->broadcastObject(object, true);
-				inventory->transferObject(object, -1, true);
+				if (inventory->transferObject(object, -1, true)) {
+					inventory->broadcastObject(object, true);
+				} else {
+					object->destroyObjectFromDatabase(true);
+					creature->sendSystemMessage("Error transferring object to inventory.");
+				}
 			} else if (commandType.beginsWith("createloot")) {
 				String lootGroup;
 				args.getStringToken(lootGroup);

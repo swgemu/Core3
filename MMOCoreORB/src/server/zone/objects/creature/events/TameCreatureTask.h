@@ -106,18 +106,18 @@ public:
 		if (objectString == "")
 			objectString = "object/intangible/pet/pet_control.iff";
 
-		ManagedReference<PetControlDevice*> controlDevice = zoneServer->createObject(objectString.hashCode(), 1).castTo<PetControlDevice*>();
-
-		if (controlDevice == NULL) {
-			resetStatus();
-			return;
-		}
-
 		SceneObject* datapad = player->getSlottedObject("datapad");
 		PlayerManager* playerManager = zoneServer->getPlayerManager();
 		ObjectManager* objectManager = zoneServer->getObjectManager();
 
 		if (datapad == NULL || playerManager == NULL || objectManager == NULL) {
+			resetStatus();
+			return;
+		}
+
+		ManagedReference<PetControlDevice*> controlDevice = zoneServer->createObject(objectString.hashCode(), 1).castTo<PetControlDevice*>();
+
+		if (controlDevice == NULL) {
 			resetStatus();
 			return;
 		}
@@ -135,7 +135,12 @@ public:
 		controlDevice->updateStatus(1);
 		controlDevice->setCustomObjectName(creature->getCustomObjectName(), true);
 
-		datapad->transferObject(controlDevice, -1);
+		if (!datapad->transferObject(controlDevice, -1)) {
+			resetStatus();
+			controlDevice->destroyObjectFromDatabase(true);
+			return;
+		}
+
 		objectManager->persistSceneObjectsRecursively(creature, 1);
 
 		creature->setControlDevice(controlDevice);

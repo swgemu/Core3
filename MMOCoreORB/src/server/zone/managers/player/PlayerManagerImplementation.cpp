@@ -521,7 +521,7 @@ Reference<TangibleObject*> PlayerManagerImplementation::createHairObject(const S
 	}
 
 	if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0).get(0) != "hair") {
-		ManagedReference<SceneObject*> clearRef = hair;
+		hair->destroyObjectFromDatabase(true);
 
 		return NULL;
 	} else {
@@ -4217,9 +4217,15 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player )
 
 	// Generate item
 	SceneObject* inventory = player->getSlottedObject("inventory");
+	if( inventory == NULL ){
+		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		cancelVeteranRewardSession( player );
+		return;
+	}
+
 	VeteranReward reward = veteranRewards.get(rewardSession->getSelectedRewardIndex());
 	Reference<SceneObject*> rewardSceno = server->createObject(reward.getTemplateFile().hashCode(), 1);
-	if( rewardSceno == NULL || inventory == NULL ){
+	if( rewardSceno == NULL ){
 		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
 		cancelVeteranRewardSession( player );
 		return;
@@ -4228,6 +4234,7 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player )
 	// Transfer to player
 	if( !inventory->transferObject(rewardSceno, -1, false, true) ){ // Allow overflow
 		player->sendSystemMessage( "@veteran:reward_error"); //	The reward could not be granted.
+		rewardSceno->destroyObjectFromDatabase(true);
 		cancelVeteranRewardSession( player );
 		return;
 	}

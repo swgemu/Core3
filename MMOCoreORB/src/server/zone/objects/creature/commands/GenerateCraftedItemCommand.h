@@ -78,6 +78,13 @@ public:
 			return GENERALERROR;
 		}
 
+		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+		if(inventory == NULL) {
+			creature->sendSystemMessage("Error locating target inventory");
+			return GENERALERROR;
+		}
+
 		try {
 
 			StringTokenizer tokenizer(arguments.toString());
@@ -156,29 +163,32 @@ public:
 			customName << prototype->getDisplayedName() <<  " (System Generated)";
 			prototype->setCustomObjectName(customName.toString(), false);
 
-
 			String serial = craftingManager->generateSerial();
 			prototype->setSerialNumber(serial);
-
-			ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
-
-			if(inventory == NULL) {
-				creature->sendSystemMessage("Error locating target inventory");
-				return GENERALERROR;
-			}
 
 			prototype->updateToDatabase();
 
 			if(quantity > 1) {
 
 				ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(true);
+				if (crate == NULL) {
+					prototype->destroyObjectFromDatabase(true);
+					return GENERALERROR;
+				}
+
 				crate->setUseCount(quantity);
 
-				inventory->transferObject(crate, -1, true);
+				if (!inventory->transferObject(crate, -1, true)) {
+					crate->destroyObjectFromDatabase(true);
+					return GENERALERROR;
+				}
 				crate->sendTo(creature, true);
 
 			} else {
-				inventory->transferObject(prototype, -1, true);
+				if (!inventory->transferObject(prototype, -1, true)) {
+					prototype->destroyObjectFromDatabase(true);
+					return GENERALERROR;
+				}
 				prototype->sendTo(creature, true);
 			}
 

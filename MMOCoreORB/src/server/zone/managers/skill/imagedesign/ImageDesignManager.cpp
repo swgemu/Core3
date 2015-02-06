@@ -404,8 +404,13 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 	ManagedReference<SceneObject*> hair = imageDesigner->getZoneServer()->createObject(hairTemplate.hashCode(), 1);
 
 	//TODO: Validate hairCustomization
-	if (hair == NULL || !hair->isTangibleObject())
+	if (hair == NULL || !hair->isTangibleObject()) {
+		if (hair != NULL) {
+			hair->destroyObjectFromDatabase(true);
+		}
+
 		return oldHair;
+	}
 
 	TangibleObject* tanoHair = cast<TangibleObject*>( hair.get());
 	tanoHair->setContainerDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
