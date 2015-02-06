@@ -86,6 +86,8 @@ public:
 
 	/**
 	 * Virtual to check to see if the behavior can be updated
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
 	 * @return true if we can update, false if not
 	 */
 	virtual bool checkConditions() {
@@ -97,16 +99,23 @@ public:
 
 	/**
 	 * Virtual to provide startup logic
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
 	 */
 	virtual void start();
 
 	/**
 	 * Virtual to provide termination logic
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
 	 */
 	virtual void end();
 
 	/**
 	 * Virtual to provide logic for each update
+	 * @pre { agent is locked }
+	 * @post { agent is locked, action is exectued }
+	 * @param directlyExecuted boolean that is true if the parent is to be executed immediately after this finishes
 	 */
 	virtual void doAction(bool directlyExecuted = false);
 
@@ -126,16 +135,22 @@ public:
 
 	/**
 	 * End the behavior with success
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
 	 */
 	void endWithSuccess();
 
 	/**
 	 * End the behavior with failure
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
 	 */
 	void endWithFailure();
 
 	/**
 	 * End the behavior with an error
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
 	 */
 	void endWithError();
 

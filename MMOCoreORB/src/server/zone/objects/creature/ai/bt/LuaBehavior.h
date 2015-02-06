@@ -46,11 +46,46 @@ public:
 
 	bool initialize();
 
+	/**
+	 * Script call to interface
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
+	 */
 	bool checkConditions(AiAgent* agent);
+
+	/**
+	 * Script call to interface
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
+	 */
 	void start(AiAgent* agent);
+
+	/**
+	 * Script call to interface
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
+	 */
 	float end(AiAgent* agent);
+
+	/**
+	 * Script call to interface
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
+	 */
 	int doAction(AiAgent* agent);
+
+	/**
+	 * Script call to interface
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
+	 */
 	int interrupt(AiAgent* agent, SceneObject* source, int64 msg);
+
+	/**
+	 * Script call to interface
+	 * @pre { agent is locked }
+	 * @post { agent is locked }
+	 */
 	bool doAwarenessCheck(AiAgent* agent, SceneObject* target);
 
 	virtual uint16 getType();

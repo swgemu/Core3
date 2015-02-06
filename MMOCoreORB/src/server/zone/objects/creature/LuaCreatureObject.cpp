@@ -143,6 +143,8 @@ int LuaCreatureObject::addDotState(lua_State* L) {
 	uint64 dotType = lua_tointeger(L, -7);
 	CreatureObject* attacker = (CreatureObject*)lua_touserdata(L, -8);
 
+	Locker locker(realObject);
+
 	realObject->addDotState(attacker, dotType, objectID, strength, type, duration, potency, defense);
 
 	return 0;
@@ -385,6 +387,8 @@ int LuaCreatureObject::getTargetID(lua_State* L) {
 
 int LuaCreatureObject::clearCombatState(lua_State* L) {
 	bool clearDef = lua_tonumber(L, -1);
+
+	Locker locker(realObject);
 
 	realObject->clearCombatState(clearDef);
 
