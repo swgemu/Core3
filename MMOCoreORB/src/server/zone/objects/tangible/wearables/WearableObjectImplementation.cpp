@@ -13,6 +13,49 @@
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 
+/**
+ * Rename for clarity/convenience
+ */
+typedef VectorMapEntry<String,int> Mod;
+
+/**
+ * @inf
+ * The ModSortingHelper class inherits from VectorMap<String, int> and is used
+ * to provide the correct sorting for a SEA stat mod in a SortedVector.
+ * Specifically, it keeps the relative order of same-value mods so that when a
+ * mod is applied to a wearable, ties are broke in the order they appear on the
+ * SEA.
+ * @imp
+ * Overwrites the VectorMapEntry<k,v>::compareTo method to get custom sort
+ * behavior in sorted containers.
+ */
+class ModSortingHelper : public Mod {
+public:
+	ModSortingHelper(): Mod( "", 0) {}
+	ModSortingHelper( String name, int value ) : Mod( name, value ) {}
+
+	/**
+	 * @inf
+	 * Overwrite the compareTo method of VectorMapEntry in order to provide
+	 * custom sorting logic.
+	 * @imp
+	 * Using the default compare method where equality values return 0 will
+	 * not maintain the relative order of same-value objects being 'put()'
+	 * into a SortedVector. This pastebin (http://pastebin.com/AazeG0Lq)
+	 * shows how inserting 4 equal elements, A,B,C,D, into a SortedVector
+	 * will result in a vector of {A, C, D, B}. This overload results in a
+	 * vector of {A, B, C, D }.
+	 */
+	int compareTo(const Mod& e) const  {
+		// Make copies of this and e to get around getValue not being const
+		if(  Mod(*this).getValue() >= Mod(e).getValue() ) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+};
+
 void WearableObjectImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();
 	setLoggingName("WearableObject");
@@ -54,6 +97,7 @@ void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, 
 }
 
 void WearableObjectImplementation::generateSockets(CraftingValues* craftingValues) {
+
 	if (socketsGenerated) {
 		return;
 	}
@@ -122,27 +166,29 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 		if (wearableSkillMods.size() < 6) {
 			HashTable<String, int>* mods = attachment->getSkillMods();
 			HashTableIterator<String, int> iterator = mods->iterator();
+			
+			String statName;
+			int newValue;
 
-			VectorMap<int, String> sortedMods;
-			sortedMods.setAllowDuplicateInsertPlan();
-
-			for (int i = 0; i < mods->size(); ++i) {
-				String statName;
-				int newValue;
+			SortedVector< ModSortingHelper > sortedMods;
+			for( int i = 0; i < mods->size(); i++){
 				iterator.getNextKeyAndValue(statName, newValue);
-				sortedMods.put(newValue, statName);
+				sortedMods.put( ModSortingHelper( statName, newValue));
 			}
 
-			for (int i = sortedMods.size() - 1; i >= 0; --i) {
+			// Select the next mod in the SEA, sorted high-to-low. If that skill mod is already on the
+			// wearable, with higher or equal value, don't apply and continue. Break once one mod
+			// is applied.
+			for( int i = 0; i < sortedMods.size(); i++ ) {
+				String modName = sortedMods.elementAt(i).getKey();
+				int modValue = sortedMods.elementAt(i).getValue();
+
 				int existingValue = -26;
-				int newValue = sortedMods.elementAt(i).getKey();
-				String statName = sortedMods.elementAt(i).getValue();
+				if(wearableSkillMods.contains(modName))
+					existingValue = wearableSkillMods.get(modName);
 
-				if(wearableSkillMods.contains(statName))
-					existingValue = wearableSkillMods.get(statName);
-
-				if(newValue > existingValue) {
-					wearableSkillMods.put(statName, newValue);
+				if( modValue > existingValue) {
+					wearableSkillMods.put( modName, modValue );
 					break;
 				}
 			}
@@ -156,9 +202,7 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 		if (isEquipped()) {
 			applySkillModsTo(player);
 		}
-
 	}
-
 }
 
 void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) {
