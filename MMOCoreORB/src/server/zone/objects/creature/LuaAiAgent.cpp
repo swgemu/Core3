@@ -328,6 +328,8 @@ int LuaAiAgent::setCurrentSpeed(lua_State* L) {
 }
 
 int LuaAiAgent::getTargetFromMap(lua_State* L) {
+	Locker locker(realObject);
+
 	SceneObject* retVal = realObject->getTargetFromMap();
 
 	if (retVal == NULL)
@@ -339,6 +341,8 @@ int LuaAiAgent::getTargetFromMap(lua_State* L) {
 }
 
 int LuaAiAgent::getTargetFromDefenders(lua_State* L) {
+	Locker locker(realObject);
+
 	SceneObject* retVal = realObject->getTargetFromDefenders();
 
 	if (retVal == NULL)
@@ -410,12 +414,16 @@ int LuaAiAgent::validateStateAttack(lua_State* L) {
 }
 
 int LuaAiAgent::removeDefender(lua_State* L) {
+	Locker locker(realObject);
+
 	realObject->removeDefender(realObject->getFollowObject());
 
 	return 0;
 }
 
 int LuaAiAgent::removeDefenders(lua_State* L) {
+	Locker locker(realObject);
+
 	realObject->removeDefenders();
 
 	return 0;
@@ -644,6 +652,8 @@ int LuaAiAgent::shouldRetreat(lua_State* L) {
 int LuaAiAgent::clearCombatState(lua_State* L) {
 	bool clearDefenders = lua_toboolean(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->clearCombatState(clearDefenders);
 
 	return 0;
@@ -667,6 +677,8 @@ int LuaAiAgent::checkLineOfSight(lua_State* L) {
 }
 
 int LuaAiAgent::activateRecovery(lua_State* L) {
+	Locker locker(realObject);
+
 	realObject->activateRecovery();
 
 	return 0;

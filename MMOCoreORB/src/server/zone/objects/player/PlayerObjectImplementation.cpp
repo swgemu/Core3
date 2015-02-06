@@ -1557,6 +1557,8 @@ void PlayerObjectImplementation::doRecovery() {
 		if (logoutTimeStamp.isPast()) {
 			info("unloading dead link player");
 
+			Locker clocker(creature, _this.get());
+
 			unload();
 
 			setOffline();

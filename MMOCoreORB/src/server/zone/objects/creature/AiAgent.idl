@@ -225,22 +225,61 @@ class AiAgent extends CreatureObject {
 		clearBehaviorList();
 	}
 	
+	/**
+	 * Schedules the next recovery event
+	 * @pre { at least this is locked }
+	 * @post { at least this is locked }
+	 */
 	public abstract native void activateRecovery();
 	
+	/**
+	 * Schedules the next movement event
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	public abstract native void activateMovementEvent();
 	
+	/**
+	 * Schedules the next wait event
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	public abstract native void activateWaitEvent();
 	
+	/**
+	 * Schedules an event to check awareness
+	 * @pre { this is locked, target is locked }
+	 * @post { this is locked, target is locked }
+	 * @param target The CREO to check awareness against
+	 */
 	public native void activateAwarenessEvent(CreatureObject target);
 	
+	/**
+	 * Executes an AI interrupt in a separate thread (to shed locks)
+	 * @pre { this is locked, source is locked }
+	 * @post { this is locked, source is locked }
+	 */
 	public native void activateInterrupt(SceneObject source, long msg);
 	
+	/**
+	 * Schedules the loading
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	public native void activateLoad(final string temp);
 	
-	public native boolean tryRetreat();
-	
+	/**
+	 * Does a recovery tick
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	public native void doRecovery();
 	
+	/**
+	 * Does the main AI update tick
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this AI will have performed one update tick }
+	 */
 	public native void doMovement();
 	
 	public native void setLevel(int lvl, boolean randomHam = true);
@@ -280,6 +319,12 @@ class AiAgent extends CreatureObject {
 	
 	public native boolean findNextPosition(float maxDistance, boolean walk = false);
 	
+	/**
+	 * Does the AI awareness update tick
+	 * @pre { this is locked, target is locked }
+	 * @post { this is locked, target is locked, this AI will have scheduled one awareness check }
+	 * @param target the CREO that will be checked against
+	 */
 	@local
 	public native void doAwarenessCheck(CreatureObject target);
 	
@@ -610,6 +655,11 @@ class AiAgent extends CreatureObject {
 		return waiting;
 	}
 	
+	/**
+	 * Sets the waiting variable to false, which determines if an action can be performed
+	 * @pre { the AI is locked }
+	 * @post { the AI is locked, and ready to perform an action }
+	 */
 	public void stopWaiting() {
 		waiting = false;
 	}
@@ -988,15 +1038,41 @@ class AiAgent extends CreatureObject {
 	 * to the tree and runs it.
 	 */
 	
+	/**
+	 * Sets up the behavior based on the creature bitmask
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	@local
 	public native void setupBehaviorTree();
 	
+	/**
+	 * Sets up the behavior tree by forcing a template into it
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param aiTemplate the template to load
+	 */
 	@local
 	public native void setupBehaviorTree(AiTemplate aiTemplate);
 	
+	/**
+	 * Helper function for setting up the behavior tree from bitmask
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param getTarget Template for target selection
+	 * @param selectAttack Template for attack selection
+	 * @param combatMove Template for movement when in combat
+	 * @param idle Template for idle behavior
+	 */
 	@local
 	public native void setupBehaviorTree(AiTemplate getTarget, AiTemplate selectAttack, AiTemplate combatMove, AiTemplate idle);
 
+	/**
+	 * Sets the behavior in the tree
+	 * @pre { this is locked }
+	 * @post { this is locked, behavior is set }
+	 * @param b the id of the behavior in the tree
+	 */
 	@local
 	public native void setCurrentBehavior(unsigned int b);
 
@@ -1018,12 +1094,24 @@ class AiAgent extends CreatureObject {
 	@local
 	private native void addCurrentBehaviorToTree(CompositeBehavior parent);
 
+	/**
+	 * Resets the behavior list to the default position
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	@local
 	public native void resetBehaviorList();
 	
 	@local
 	public native void clearBehaviorList();
 	
+	/**
+	 * Executes an interrupt called from a new thread
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param source The originator of the interrupt call
+	 * @param msg The long id of the message (argument) of the interrupt
+	 */
 	@local
 	public native int interrupt(SceneObject source, long msg);
 	
