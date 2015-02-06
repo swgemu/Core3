@@ -1311,6 +1311,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			//activateMovementEvent();
 			PatrolPoint oldPoint = patrolPoints.remove(0);
 
+			currentFoundPath = NULL;
+
 			if (isRetreating())
 				homeLocation.setReached(true);
 
@@ -1539,6 +1541,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		if (followObject == NULL)
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
+
+		currentFoundPath = NULL;
 
 		currentSpeed = 0;
 	}
