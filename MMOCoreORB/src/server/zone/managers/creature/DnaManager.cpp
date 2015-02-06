@@ -227,6 +227,15 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	int ite = reduceByPercent(deed->getIntelligence(),reductionAmount);
 	int pow = reduceByPercent(deed->getPower(),reductionAmount);
 
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (inventory->hasFullContainerObjects()) {
+		StringIdChatParameter err("survey", "no_inv_space");
+		player->sendSystemMessage(err);
+		player->setPosture(CreaturePosture::UPRIGHT, true);
+		return;
+	}
+
 	// calculate rest of stats here
 	ManagedReference<DnaComponent*> prototype = player->getZoneServer()->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
 	if (prototype == NULL) {
@@ -272,18 +281,12 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	if (deed->isSpecialResist(WeaponObject::LIGHTSABER))
 		prototype->setSpecialResist(WeaponObject::LIGHTSABER);
 
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-	if (inventory->hasFullContainerObjects()) {
-		StringIdChatParameter err("survey", "no_inv_space");
-		player->sendSystemMessage(err);
-		player->setPosture(CreaturePosture::UPRIGHT, true);
-		return;
-	}
-
 	Locker locker(inventory);
-	inventory->transferObject(prototype, -1, true,false);
-	inventory->broadcastObject(prototype, true);
+	if (inventory->transferObject(prototype, -1, true, false)) {
+		inventory->broadcastObject(prototype, true);
+	} else {
+		prototype->destroyObjectFromDatabase(true);
+	}
 
 }
 void DnaManager::generateSample(Creature* creature, CreatureObject* player,int quality){
@@ -308,6 +311,16 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 	if (creatureTemplate->getArmor() > 0 && frt < 500) {
 		frt = instance()->generateScoreFor(DnaManager::FORTITUDE,50,quality);
 	}
+
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+
+	if (inventory->hasFullContainerObjects()) {
+		StringIdChatParameter err("survey", "no_inv_space");
+		player->sendSystemMessage(err);
+		player->setPosture(CreaturePosture::UPRIGHT, true);
+		return;
+	}
+
 	// We should now have enough to generate a sample
 	ManagedReference<DnaComponent*> prototype = player->getZoneServer()->createObject(qualityTemplates.get(quality), 1).castTo<DnaComponent*>();
 	if (prototype == NULL) {
@@ -365,16 +378,10 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 		}
 	}
 
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-
-	if (inventory->hasFullContainerObjects()) {
-		StringIdChatParameter err("survey", "no_inv_space");
-		player->sendSystemMessage(err);
-		player->setPosture(CreaturePosture::UPRIGHT, true);
-		return;
-	}
-
 	Locker locker(inventory);
-	inventory->transferObject(prototype, -1, true,false);
-	inventory->broadcastObject(prototype, true);
+	if (inventory->transferObject(prototype, -1, true, false)) {
+		inventory->broadcastObject(prototype, true);
+	} else {
+		prototype->destroyObjectFromDatabase(true);
+	}
 }

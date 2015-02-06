@@ -446,6 +446,10 @@ CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC
 
 		error(errMsg.toString());
 
+		if (object->isPersistent()) {
+			object->destroyObjectFromDatabase(true);
+		}
+
 		return NULL;
 	}
 
@@ -455,6 +459,10 @@ CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC
 		StringBuffer errMsg;
 		errMsg << "could not create children objects for creature... 0x" << templateCRC;
 		error(errMsg.toString());
+
+		if (object->isPersistent()) {
+			object->destroyObjectFromDatabase(true);
+		}
 
 		return NULL;
 	}

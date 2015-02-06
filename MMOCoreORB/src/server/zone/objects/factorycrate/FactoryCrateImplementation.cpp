@@ -140,8 +140,9 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 	}
 
 	Reference<TangibleObject*> prototype = getPrototype();
+	ManagedReference<SceneObject*> strongParent = getParent().get();
 
-	if (prototype == NULL || !prototype->isTangibleObject() || parent.get() == NULL) {
+	if (prototype == NULL || !prototype->isTangibleObject() || strongParent == NULL) {
 		error("FactoryCrateImplementation::extractObject has a NULL or non-tangible item");
 		return false;
 	}
@@ -156,23 +157,22 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 		String errorDescription;
 		int errorNumber = 0;
 
-		if ((errorNumber = getParent().get()->canAddObject(protoclone, -1, errorDescription)) != 0) {
+		if ((errorNumber = strongParent->canAddObject(protoclone, -1, errorDescription)) != 0) {
 			if (errorDescription.length() > 1) {
-				ManagedReference<SceneObject*> player = getParent().get()->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+				ManagedReference<SceneObject*> player = strongParent->getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
 				if (player != NULL)
 					player->sendMessage(new ChatSystemMessage(errorDescription));
 			} else
-				getParent().get()->error("cannot extratObjectToParent " + String::valueOf(errorNumber));
+				strongParent->error("cannot extratObjectToParent " + String::valueOf(errorNumber));
+
+			protoclone->destroyObjectFromDatabase(true);
 
 			return false;
 		}
 
-		ManagedReference<SceneObject*> strongParent = getParent().get();
-		if (strongParent != NULL) {
-			strongParent->transferObject(protoclone, -1, true);
-			strongParent->broadcastObject(protoclone, true);
-		}
+		strongParent->transferObject(protoclone, -1, true);
+		strongParent->broadcastObject(protoclone, true);
 
 		setUseCount(getUseCount() - 1);
 

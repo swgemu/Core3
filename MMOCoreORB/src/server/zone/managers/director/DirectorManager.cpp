@@ -1563,6 +1563,7 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 		CreatureTemplate* creoTempl = CreatureTemplateManager::instance()->getTemplate(controlledObjectPath.hashCode());
 
 		if (creoTempl == NULL) {
+			controlDevice->destroyObjectFromDatabase(true);
 			lua_pushnil(L);
 			return 1;
 		}
@@ -1570,7 +1571,15 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 		String templateToSpawn = creatureManager->getTemplateToSpawn(controlledObjectPath.hashCode());
 		controlledObject = creatureManager->createCreature(templateToSpawn.hashCode(), true, controlledObjectPath.hashCode());
 
-		if (controlledObject == NULL || !controlledObject->isAiAgent()) {
+		if (controlledObject == NULL) {
+			controlDevice->destroyObjectFromDatabase(true);
+			lua_pushnil(L);
+			return 1;
+		}
+
+		if (!controlledObject->isAiAgent()) {
+			controlDevice->destroyObjectFromDatabase(true);
+			controlledObject->destroyObjectFromDatabase(true);
 			lua_pushnil(L);
 			return 1;
 		}
@@ -1582,6 +1591,7 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 		controlledObject = zoneServer->createObject(controlledObjectPath.hashCode(), 1).castTo<TangibleObject*>();
 
 		if (controlledObject == NULL) {
+			controlDevice->destroyObjectFromDatabase(true);
 			lua_pushnil(L);
 			return 1;
 		}
@@ -1600,10 +1610,13 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 		petControlDevice->setDefaultCommands();
 	}
 
-	datapad->transferObject(controlDevice, slot, true);
-
-	controlDevice->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
-	lua_pushlightuserdata(L, controlDevice.get());
+	if (datapad->transferObject(controlDevice, slot, true)) {
+		controlDevice->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
+		lua_pushlightuserdata(L, controlDevice.get());
+	} else {
+		controlDevice->destroyObjectFromDatabase(true);
+		lua_pushnil(L);
+	}
 
 	return 1;
 }

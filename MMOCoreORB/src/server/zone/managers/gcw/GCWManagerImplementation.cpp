@@ -2380,8 +2380,10 @@ uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* bu
 	obj->initializePosition(x, z, y);
 	obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
 
-	if(!obj->isTangibleObject())
+	if(!obj->isTangibleObject()) {
+		obj->destroyObjectFromDatabase(true);
 		return 0;
+	}
 
 	TangibleObject* tano = cast<TangibleObject*>(obj.get());
 

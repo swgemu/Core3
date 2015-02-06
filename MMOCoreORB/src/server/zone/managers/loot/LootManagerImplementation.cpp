@@ -665,8 +665,12 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 	if (obj == NULL)
 		return false;
 
-	if (container->transferObject(obj, -1, false, true))
+	if (container->transferObject(obj, -1, false, true)) {
 		container->broadcastObject(obj, true);
+	} else {
+		obj->destroyObjectFromDatabase(true);
+		return false;
+	}
 
 
 	return true;

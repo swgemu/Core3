@@ -471,8 +471,11 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 
 
 				if (baitObject != NULL) {
-					baitObject->sendTo(player, true);
-					lootFishObject->transferObject(baitObject, -1, true);
+					if (lootFishObject->transferObject(baitObject, -1, true)) {
+						baitObject->sendTo(player, true);
+					} else {
+						baitObject->destroyObjectFromDatabase(true);
+					}
 				}
 
 				String resourceString = zone->getZoneName();
@@ -482,8 +485,11 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 				ManagedReference<SceneObject*> resource = cast<SceneObject*>(resourceManager->harvestResource(player, resourceString, amount));
 
 				if (resource != NULL) {
-					resource->sendTo(player, true);
-					lootFishObject->transferObject(resource, -1, true);
+					if (lootFishObject->transferObject(resource, -1, true)) {
+						resource->sendTo(player, true);
+					} else {
+						resource->destroyObjectFromDatabase(true);
+					}
 				}
 
 				sendReward(player, marker, cast<SceneObject*>(lootFishObject.get()));
@@ -512,7 +518,11 @@ void FishingManagerImplementation::sendReward(CreatureObject* player, SceneObjec
 			loot->getObjectName()->getFullPath(itemName);
 			body.setTT(itemName);
 			player->sendSystemMessage(body);
+		} else {
+			loot->destroyObjectFromDatabase(true);
 		}
+	} else if (loot != NULL) {
+		loot->destroyObjectFromDatabase(true);
 	}
 }
 

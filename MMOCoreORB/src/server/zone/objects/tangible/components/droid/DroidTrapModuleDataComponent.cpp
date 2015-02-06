@@ -263,12 +263,11 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 		// add the trap into the unit
 		ObjectManager* objectManager = ObjectManager::instance();
 		if (allowed > input->getUseCount()) {
-			// just clone it and set old one to 0 ues to destroy it so it transfer correctly as we dont store this directly in the droid
+			// just clone it and set old one to 0 uses to destroy it so it transfer correctly as we dont store this directly in the droid
 			ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(input));
 			if (protoclone != NULL) {
 				protoclone->setParent(NULL);
 				protoclone->setUseCount(input->getUseCount());
-				input->setUseCount(input->getUseCount() - allowed);
 				trap = protoclone;
 				input->setUseCount(0);
 				StringIdChatParameter msg;
