@@ -695,42 +695,6 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 	}
 }
 
-bool AiAgentImplementation::tryRetreat() {
-	return false;
-	//TODO: fix this
-
-	try {
-
-		if(homeLocation.isInRange(_this.get(), 1.5))
-			return false;
-
-		if (homeLocation.getPositionX() == 0 && homeLocation.getPositionY() == 0 && homeLocation.getPositionZ() == 0)
-			return false;
-
-		CombatManager::instance()->forcePeace(_this.get());
-
-		Locker locker(&targetMutex);
-
-		setOblivious();
-
-		//showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
-
-		homeLocation.setReached(false);
-
-		if (threatMap != NULL)
-			threatMap->removeAll();
-
-		patrolPoints.add(0, homeLocation);
-
-		activateMovementEvent();
-	} catch (Exception& e) {
-		error(e.getMessage());
-		e.printStackTrace();
-	}
-
-	return true;
-}
-
 void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	if (target == NULL || getZone() == NULL) {
 		setOblivious();
@@ -2458,7 +2422,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 	for (int i=0; i < treeTemplate->size(); i++) {
 		LuaAiTemplate* temp = treeTemplate->get(i).get();
 		if (temp == NULL) {
-			error("Null AI template"); // FIXME (dannuic): Is this still happening?
+			error("Null AI template, contact dannuic if this occurs"); // FIXME (dannuic): Is this still happening?
 			continue;
 		}
 
