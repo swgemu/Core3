@@ -86,7 +86,11 @@ function mission_target_conv_handler:handleScreenNotIt(pConversationTemplate, pC
 	if self.themePark:isValidConvoString(stfFile, ":notit_" .. missionNumber) then
 		clonedScreen:setDialogTextStringId(stfFile .. ":notit_" .. missionNumber)
 	else
-		clonedScreen:setDialogTextStringId(stfFile .. ":notit")
+		if self.themePark:isValidConvoString(stfFile, ":notit") then
+			clonedScreen:setDialogTextStringId(stfFile .. ":notit")
+		else
+			clonedScreen:setDialogTextStringId(stfFile .. ":not_it")
+		end
 	end
 
 	return pConversationScreen
