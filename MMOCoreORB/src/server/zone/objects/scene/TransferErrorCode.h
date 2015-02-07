@@ -24,7 +24,7 @@ public:
 	const static int NOLOOTPERMISSION = 11;
 	const static int MUSTBEINPLAYERINVENTORY = 12;
 	const static int CANTREMOVE = 13;
-	const static int CANTADD = 13;
+	const static int CANTADD = 14;
 };
 
 

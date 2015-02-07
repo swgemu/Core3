@@ -1941,5 +1941,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dirty
 	public native boolean isDataPad();
+
+	@dirty
+	public native void playEffect(final string file, final string aux);
+	
+	@dirty
+	public void playEffect(final string file) {
+		playEffect(file, "");
+	}
 }
 
