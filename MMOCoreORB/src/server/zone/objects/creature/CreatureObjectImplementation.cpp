@@ -63,6 +63,7 @@
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
+#include "server/zone/packets/object/CombatSpam.h"
 #include "server/zone/packets/object/PostureMessage.h"
 #include "server/zone/packets/object/SitOnObject.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
@@ -608,6 +609,11 @@ void CreatureObjectImplementation::addShockWounds(int shockToAdd,
 		newShockWounds = 1000;
 	}
 
+	if (shockToAdd > 0 && _this.get()->isPlayerCreature()) {
+		CombatSpam* msg = new CombatSpam(_this.get(), _this.get(), NULL, shockToAdd, "cbt_spam", "shock_wound", _this.get());
+		sendMessage(msg);
+	}
+
 	setShockWounds(newShockWounds, notifyClient);
 }
 
@@ -1134,6 +1140,11 @@ int CreatureObjectImplementation::addWounds(int type, int value,
 
 	if (newValue < 0)
 		returnValue = value - newValue;
+
+	if (value > 0 && _this.get()->isPlayerCreature()) {
+		CombatSpam* msg = new CombatSpam(_this.get(), _this.get(), NULL, value, "cbt_spam", "wounded", _this.get());
+		sendMessage(msg);
+	}
 
 	setWounds(type, newValue, notifyClient);
 
