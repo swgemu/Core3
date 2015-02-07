@@ -114,8 +114,11 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 
 			ResourceContainer* harvestedResource = spawnObject->createResource(newStackSize);
 
-			parent->transferObject(harvestedResource, -1, true);
-			parent->broadcastObject(harvestedResource, true);
+			if (parent->transferObject(harvestedResource, -1, true)) {
+				parent->broadcastObject(harvestedResource, true);
+			} else {
+				harvestedResource->destroyObjectFromDatabase(true);
+			}
 		}
 	}
 
@@ -138,15 +141,20 @@ void ResourceContainerImplementation::split(int newStackSize) {
 	if(newStackSize > getQuantity())
 		newStackSize = getQuantity();
 
-	ManagedReference<ResourceContainer*> newResource = spawnObject->createResource(newStackSize);
-
-	if(newResource == NULL || newResource->getSpawnObject() == NULL)
-		return;
-
 	ManagedReference<SceneObject*> sceneParent = cast<SceneObject*>(parent.get().get());
 
 	if (sceneParent == NULL)
 		return;
+
+	ManagedReference<ResourceContainer*> newResource = spawnObject->createResource(newStackSize);
+
+	if(newResource == NULL)
+		return;
+
+	if (newResource->getSpawnObject() == NULL) {
+		newResource->destroyObjectFromDatabase(true);
+		return;
+	}
 
 	if(sceneParent->transferObject(newResource, -1, true)) {
 		sceneParent->broadcastObject(newResource, true);
@@ -156,6 +164,8 @@ void ResourceContainerImplementation::split(int newStackSize) {
 		StringBuffer errorMessage;
 		errorMessage << "Unable to split resource in container type: " << sceneParent->getGameObjectType() << " " << sceneParent->getDisplayedName();
 		error(errorMessage.toString());
+
+		newResource->destroyObjectFromDatabase(true);
 	}
 }
 
@@ -163,10 +173,18 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
+	if (inventory == NULL)
+		return;
+
 	ManagedReference<ResourceContainer*> newResource = spawnObject->createResource(newStackSize);
 
-	if (newResource == NULL || newResource->getSpawnObject() == NULL)
+	if (newResource == NULL)
 		return;
+
+	if (newResource->getSpawnObject() == NULL) {
+		newResource->destroyObjectFromDatabase(true);
+		return;
+	}
 
 	if(inventory->transferObject(newResource, -1, true)) {
 		newResource->sendTo(player, true);
@@ -174,6 +192,7 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 		setQuantity(getQuantity() - newStackSize);
 	} else {
 		error("Unable to split resource to player: " + player->getFirstName());
+		newResource->destroyObjectFromDatabase(true);
 	}
 }
 

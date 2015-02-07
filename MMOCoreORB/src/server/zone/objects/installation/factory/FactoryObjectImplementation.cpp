@@ -617,13 +617,6 @@ FactoryCrate* FactoryObjectImplementation::locateCrateInOutputHopper(TangibleObj
 
 FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject* prototype) {
 
-	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(false);
-
-	if (crate == NULL) {
-		stopFactory("manf_error_7", "", "", -1);
-		return NULL;
-	}
-
 	ManagedReference<SceneObject*> outputHopper = getSlottedObject("output_hopper");
 
 	if(outputHopper == NULL) {
@@ -633,6 +626,13 @@ FactoryCrate* FactoryObjectImplementation::createNewFactoryCrate(TangibleObject*
 
 	if(outputHopper->isContainerFull()) {
 		stopFactory("manf_output_hopper_full", getDisplayedName(), "", -1);
+		return NULL;
+	}
+
+	ManagedReference<FactoryCrate* > crate = prototype->createFactoryCrate(false);
+
+	if (crate == NULL) {
+		stopFactory("manf_error_7", "", "", -1);
 		return NULL;
 	}
 

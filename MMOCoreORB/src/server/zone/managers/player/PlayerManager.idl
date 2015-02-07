@@ -363,10 +363,7 @@ class PlayerManager extends Observer implements Logger {
 	public native void ejectPlayerFromBuilding(CreatureObject player);
 	
 	public native boolean checkExistentNameInDatabase(final string firstName);
-	
-	@reference
-	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
-	
+
 	public native void createTutorialBuilding(CreatureObject player);
 	public native void createSkippedTutorialBuilding(CreatureObject player);
 	

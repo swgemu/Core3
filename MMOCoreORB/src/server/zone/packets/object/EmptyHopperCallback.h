@@ -122,10 +122,13 @@ public:
 			} else if (byte1 == 0) {
 				if (inventory->getCountableObjectsRecursive() < inventory->getContainerVolumeLimit()) {
 					ManagedReference<ResourceContainer*> newContainer = container->getSpawnObject()->createResource(quantity);
-					inventory->transferObject(newContainer, -1, false);
-					inventory->broadcastObject(newContainer, true);
+					if (inventory->transferObject(newContainer, -1, false)) {
+						inventory->broadcastObject(newContainer, true);
 
-					inso->updateResourceContainerQuantity(container, container->getQuantity() - quantity, true);
+						inso->updateResourceContainerQuantity(container, container->getQuantity() - quantity, true);
+					} else {
+						newContainer->destroyObjectFromDatabase(true);
+					}
 				} else {
 					StringIdChatParameter stringId("error_message", "inv_full");
 					player->sendSystemMessage(stringId);
