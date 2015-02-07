@@ -41,6 +41,8 @@ namespace creature {
 		int restoreFollowObject(lua_State* L);
 		int getTargetOfTargetID(lua_State* L);
 		int getFollowState(lua_State* L);
+		int setFollowState(lua_State* L);
+		int setNextPosition(lua_State* L);
 		int findNextPosition(lua_State* L);
 		int getMaxDistance(lua_State* L);
 		int generatePatrol(lua_State* L);

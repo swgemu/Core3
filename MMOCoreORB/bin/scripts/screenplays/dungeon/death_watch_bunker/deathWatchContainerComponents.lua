@@ -12,6 +12,10 @@ function deathWatchJetpackCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 	end
 
 	local pParent = DeathWatchBunkerScreenPlay:getObjOwner(pIngredient)
+	
+	if (pParent == nil or not SceneObject(pParent):isPlayerCreature()) then
+		return TRANSFERCANTADD
+	end
 
 	return ObjectManager.withCreatureObject(pParent, function(creature)
 		local template = SceneObject(pIngredient):getTemplateObjectPath()
@@ -190,9 +194,18 @@ function deathWatchCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 	end
 
 	local pParent = DeathWatchBunkerScreenPlay:getObjOwner(pIngredient)
+	
+	if (pParent == nil or not SceneObject(pParent):isPlayerCreature()) then
+		return TRANSFERCANTADD
+	end
 
 	local terminalId = SceneObject(pDroid):getObjectID()
 	local number = readData(terminalId .. ":dwb:craftingterminal")
+	
+	if (number == 0) then
+		CreatureObject(pParent):sendSystemMessage("Error determining crafting terminal ID. Please file a bug report.")
+	end
+	
 	local template = SceneObject(pIngredient):getTemplateObjectPath()
 
 	local userid = readData(terminalId .. ":dwb:user")
