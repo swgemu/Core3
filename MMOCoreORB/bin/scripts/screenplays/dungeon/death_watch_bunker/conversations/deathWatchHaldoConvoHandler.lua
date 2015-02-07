@@ -25,7 +25,7 @@ end
 function deathWatchHaldoConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (player:hasScreenPlayState(2, "death_watch_foreman_stage") == 0 or player:hasScreenPlayState(4, "death_watch_haldo") == 1) then
+		if (player:hasScreenPlayState(2, "death_watch_foreman_stage") == 0) then
 			return convoTemplate:getScreen("intro_noquest")
 		elseif (player:hasScreenPlayState(2, "death_watch_haldo") == 1) then
 			return convoTemplate:getScreen("thank_you")
