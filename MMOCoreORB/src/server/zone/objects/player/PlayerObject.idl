@@ -525,6 +525,25 @@ class PlayerObject extends IntangibleObject {
 	@dirty
 	public native WaypointObject getSurveyWaypoint();
 
+	public boolean hasWaypoint(unsigned long objectID) {
+		return waypointList.contains(objectID);
+	}
+
+	@dirty
+	public void insertWaypointListToMessage(BaseMessage msg) {
+		waypointList.insertToMessage(msg);
+	}
+
+	@dirty
+	public int getWaypointListSize() {
+		return waypointList.size();
+	}
+
+	@dirty
+	public WaypointObject getWaypoint(int index) {
+		return waypointList.getValueAt(index);
+	}
+
 	/**
 	 * Adds new abilities commands to player
 	 * @pre { this is locked }
@@ -1148,11 +1167,7 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native void sendFriendLists();
-	
-	public boolean hasWaypoint(unsigned long objectID) {
-		return waypointList.contains(objectID);
-	}
-	
+
 	/**
 	 * Checks to see if this player object has the specified ability.
 	 * @param ability The ability to search for.
@@ -1263,13 +1278,7 @@ class PlayerObject extends IntangibleObject {
 	public int getForcePowerMax() {
 		return forcePowerMax;
 	}
-	
-	@local
-	@dirty
-	public WaypointList getWaypointList() {
-		return waypointList;
-	}
-	
+
 	@local
 	@dirty
 	public AbilityList getAbilityList() {

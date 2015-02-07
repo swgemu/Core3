@@ -60,8 +60,7 @@ public:
 		xpList->insertToMessage(this);
 
 		// waypoints
-		WaypointList* wayList = play->getWaypointList();
-		wayList->insertToMessage(this);
+		play->insertWaypointListToMessage(this);
 
 		// force bar stats
 		insertInt(play->getForcePower());

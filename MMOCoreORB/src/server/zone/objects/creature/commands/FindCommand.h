@@ -93,12 +93,7 @@ public:
 				if (location == "clear") {
 					PlayerObject* po = player->getPlayerObject();
 
-					WaypointList* waypointlist = po->getWaypointList();
-					uint64 wpid = waypointlist->getWaypointBySpecialType(WaypointObject::SPECIALTYPE_FIND);
-
-					if (wpid != 0) {
-						po->removeWaypoint(wpid, true);
-					}
+					po->removeWaypointBySpecialType(WaypointObject::SPECIALTYPE_FIND, true);
 
 					return SUCCESS;
 				}
