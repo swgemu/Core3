@@ -665,32 +665,38 @@ void PlayerObjectImplementation::addWaypoint(WaypointObject* waypoint, bool chec
 	uint64 waypointID = waypoint->getObjectID();
 	int specialTypeID = waypoint->getSpecialTypeID();
 	bool doRemove = false;
+	bool destroy = false;
 
-	if (waypointList.contains(waypointID))
+	if (waypointList.contains(waypointID)) {
 		doRemove = true;
+	}
 
 	if (!doRemove && checkName) {
 		String name = waypoint->getCustomObjectName().toString();
 		waypointID = waypointList.find(name);
 
-		if(waypointID != 0)
+		if(waypointID != 0) {
 			doRemove = true;
+			destroy = true;
+		}
 	}
 
 	if (!doRemove && specialTypeID != 0) {
 		waypointID = waypointList.getWaypointBySpecialType(specialTypeID);
 
-		if(waypointID != 0)
+		if(waypointID != 0) {
 			doRemove = true;
+			destroy = true;
+		}
 	}
 
 	if(doRemove)
-		removeWaypoint(waypointID, notifyClient);
+		removeWaypoint(waypointID, notifyClient, destroy);
 
 	setWaypoint(waypoint, notifyClient);
 }
 
-void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyClient) {
+void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyClient, bool destroy) {
 	ManagedReference<WaypointObject*> waypoint = waypointList.get(waypointID);
 
 	if (waypoint == NULL)
@@ -707,22 +713,16 @@ void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyCl
 		waypointList.drop(waypointID);
 	}
 
+	if (destroy && waypoint->isPersistent()) {
+		waypoint->destroyObjectFromDatabase(true);
+	}
 }
 
 void PlayerObjectImplementation::removeWaypointBySpecialType(int specialTypeID, bool notifyClient) {
 	uint64 waypointID = waypointList.getWaypointBySpecialType(specialTypeID);
 
 	while (waypointID != 0) {
-		if (notifyClient) {
-			PlayerObjectDeltaMessage8* msg = new PlayerObjectDeltaMessage8(this);
-			msg->startUpdate(1);
-			waypointList.drop(waypointID, msg, 1);
-			msg->close();
-
-			sendMessage(msg);
-		} else {
-			waypointList.drop(waypointID);
-		}
+		removeWaypoint(waypointID, notifyClient);
 
 		waypointID = waypointList.getWaypointBySpecialType(specialTypeID);
 	}

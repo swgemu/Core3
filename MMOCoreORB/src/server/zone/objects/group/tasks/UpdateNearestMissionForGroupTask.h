@@ -197,7 +197,7 @@ private:
 					nearestMissionForGroup->getWaypointToMission()->getPositionY());
 			waypoint->setColor(WaypointObject::COLOR_YELLOW);
 			waypoint->setActive(true);
-			ghost->setWaypoint(waypoint, true);
+			ghost->addWaypoint(waypoint, false);
 		}
 	}
 };
