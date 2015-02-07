@@ -504,7 +504,7 @@ class PlayerObject extends IntangibleObject {
 	 * @param waypointID waypoint object id to remove
 	 * @param notifyClient determines whether to update the client with the changes
 	 */
-	public native void removeWaypoint(unsigned long waypointID, boolean notifyClient = true);
+	public native void removeWaypoint(unsigned long waypointID, boolean notifyClient = true, boolean destroy = true);
 
 	/**
 	 * Removes a waypoint of a special type from this player

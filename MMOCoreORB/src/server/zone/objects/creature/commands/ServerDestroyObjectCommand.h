@@ -87,9 +87,6 @@ public:
 			if (playerObject != NULL)
 				playerObject->removeWaypoint(target);
 
-			// delete from database
-			object->destroyObjectFromDatabase(true);
-
 			return SUCCESS;
 		}
 
