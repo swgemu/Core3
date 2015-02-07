@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "server/login/packets/ErrorMessage.h"
 #include "server/chat/ChatManager.h"
 #include "server/login/account/Account.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/MessageCallback.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacterCallback.h"
@@ -670,6 +671,13 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	client->addCharacter(playerCreature->getObjectID(), zoneServer.get()->getGalaxyID());
 
 	JediManager::instance()->onPlayerCreated(playerCreature);
+
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(playerCreature, SuiWindowType::NONE);
+	box->setPromptTitle("Character Creation Timer");
+	box->setPromptText("There is a 24 hour timer after creating a character before you can create another. Attempting to create another character or deleting your character before the timer expires will reset it back to 24 hours.");
+
+	ghost->addSuiBox(box);
+	playerCreature->sendMessage(box->generateMessage());
 
 	return true;
 }
