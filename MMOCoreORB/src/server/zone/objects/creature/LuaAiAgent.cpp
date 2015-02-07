@@ -43,6 +43,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getTargetID", &LuaCreatureObject::getTargetID },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
 		{ "getFollowState", &LuaAiAgent::getFollowState },
+		{ "setFollowState", &LuaAiAgent::setFollowState },
+		{ "setNextPosition", &LuaAiAgent::setNextPosition },
 		{ "findNextPosition", &LuaAiAgent::findNextPosition },
 		{ "getMaxDistance", &LuaAiAgent::getMaxDistance },
 		{ "generatePatrol", &LuaAiAgent::generatePatrol },
@@ -221,6 +223,25 @@ int LuaAiAgent::getFollowState(lua_State* L) {
 	lua_pushinteger(L, state);
 
 	return 1;
+}
+
+int LuaAiAgent::setNextPosition(lua_State* L) {
+	SceneObject* cell = static_cast<SceneObject*>(lua_touserdata(L, -1));
+	float y = lua_tonumber(L, -2);
+	float z = lua_tonumber(L, -3);
+	float x = lua_tonumber(L, -4);
+
+	realObject->setNextPosition(x, z, y, cell);
+
+	return 0;
+}
+
+int LuaAiAgent::setFollowState(lua_State* L) {
+	int state = lua_tonumber(L, -1);
+
+	realObject->setFollowState(state);
+
+	return 0;
 }
 
 /**

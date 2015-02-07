@@ -633,6 +633,10 @@ class AiAgent extends CreatureObject {
 	public unsigned int getFollowState() {
 		return followState;
 	}
+
+	public void setFollowState(int state) {
+		followState = state;
+	}
 	
 	@dirty
 	public native float getMaxDistance();

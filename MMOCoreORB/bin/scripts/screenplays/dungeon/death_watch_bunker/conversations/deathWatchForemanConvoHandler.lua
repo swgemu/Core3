@@ -130,12 +130,15 @@ function deathWatchForemanConvoHandler:runScreenHandlers(conversationTemplate, c
 		end
 		if (screenID == "what_i_expected") then
 			player:removeScreenPlayState(2, "death_watch_foreman_stage")
+			player:removeScreenPlayState(1, "death_watch_haldo")
+			player:removeScreenPlayState(2, "death_watch_haldo")
+			player:removeScreenPlayState(4, "death_watch_haldo")
 		end
 		if (screenID == "great_remember_medicine" or screenID == "return_great_remember_medicine") then
 			DeathWatchBunkerScreenPlay:startForemanQuestStage(1, conversingPlayer)
 			player:setScreenPlayState(2, "death_watch_foreman_stage")
 		end
-		if (screenID == "return_battery_cleaned_no_haldo_kill") then
+		if (screenID == "return_battery_cleaned_no_haldo_kill" or screenID == "return_battery_cleaned_killed_haldo") then
 			local pInventory = player:getSlottedObject("inventory")
 
 			if (pInventory ~= nil) then

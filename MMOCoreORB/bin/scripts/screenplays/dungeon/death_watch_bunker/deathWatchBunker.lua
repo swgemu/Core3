@@ -134,7 +134,8 @@ DeathWatchBunkerScreenPlay = ScreenPlay:new {
 
 	spawnEvents = { "", "spawnNextA", "spawnNextB", "spawnNextC" },
 
-	containerRespawnTime = 20 * 60 * 1000 -- 20 minutes
+	containerRespawnTime = 20 * 60 * 1000, -- 20 minutes
+	debrisRespawnTime = 10 * 60 * 1000, -- 10 minutes
 }
 
 registerScreenPlay("DeathWatchBunkerScreenPlay", true)
@@ -205,12 +206,20 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	local spawnedSceneObject = LuaSceneObject(nil)
 	local spawnedPointer
 
-	-- Door Acces Terminal Outside
+	-- Door Access Terminal Outside
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -18.016,-12,-8.55806, 5996315, 1, 0, 0, 0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	writeData(5996314 .. ":dwb:access1", spawnedSceneObject:getObjectID())
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:accessEnabled", 1)
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
+
+	-- Outside locked door message
+	local pActiveArea = spawnSceneObject("endor", "object/active_area.iff", -4680.6,0.4,4324.5,0,0,0,0,0)
+	ObjectManager.withActiveArea(pActiveArea, function(activeArea)
+		activeArea:setRadius(5)
+		activeArea:setCellObjectID(5996315)
+		createObserver(ENTEREDAREA, "DeathWatchBunkerScreenPlay", "notifyEnteredOutsideLockedDoorArea", pActiveArea)
+	end)
 
 	-- Door Access Terminal A
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -84.4526,-20,-50.504,5996323,-0.707107,0,0.707107,0)
@@ -236,7 +245,30 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	-- Voice Recognition Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",74.7941,-54,-143.444,5996348,-0.707107,0,0.707107,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
+	createObserver(SPATIALCHATRECEIVED, "DeathWatchBunkerScreenPlay", "voiceTerminalSpatialReceived", spawnedPointer)
 	spawnedSceneObject:setCustomObjectName("Voice Control Terminal")
+
+	-- Voice Terminal Instruction message
+	local pActiveArea = spawnSceneObject("endor", "object/active_area.iff",-4588,-41.6,4182.3,0,0,0,0,0)
+	ObjectManager.withActiveArea(pActiveArea, function(activeArea)
+		activeArea:setRadius(10)
+		activeArea:setCellObjectID(5996348)
+		createObserver(ENTEREDAREA, "DeathWatchBunkerScreenPlay", "notifyEnteredVoiceTerminalArea", pActiveArea)
+	end)
+
+	--Blastromech
+	local spawn = deathWatchSpecialSpawns["bombdroid"]
+	local spawnedPointer = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+	CreatureObject(spawnedPointer):setPvpStatusBitmask(0)
+	CreatureObject(spawnedPointer):setCustomObjectName("R2-M2")
+	AiAgent(spawnedPointer):setAiTemplate("idlewait") -- Don't move unless patrol point is added to list
+	AiAgent(spawnedPointer):setFollowState(4) -- Patrolling
+	writeData("dwb:bombDroid", SceneObject(spawnedPointer):getObjectID())
+	createObserver(OBJECTDESTRUCTION, "DeathWatchBunkerScreenPlay", "bombDroidDetonated", spawnedPointer)
+
+	-- Bomb Droid Debris
+	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 112.552,-64,-116.21,5996348,0.925444,0,0.378885,0)
+	writeData("dwb:bombDebris", SceneObject(spawnedPointer):getObjectID())
 
 	-- Armorsmith Access Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -232.11,-60,-219.996,5996373,0.707107,0,0.707107,0)
@@ -426,15 +458,6 @@ function DeathWatchBunkerScreenPlay:onExitDWB(sceneObject, creatureObject, long)
 		end
 
 		if long == self.buildingIds.outside or long == 0 then
-
-			creature:removeScreenPlayState(2, "death_watch_bunker")
-			creature:removeScreenPlayState(4, "death_watch_bunker")
-			creature:removeScreenPlayState(8, "death_watch_bunker")
-			creature:removeScreenPlayState(16, "death_watch_bunker")
-			creature:removeScreenPlayState(32, "death_watch_bunker")
-			creature:removeScreenPlayState(64, "death_watch_bunker")
-			creature:removeScreenPlayState(128, "death_watch_bunker")
-
 			self:lockAll(creatureObject)
 		end
 	end)
@@ -599,6 +622,183 @@ function DeathWatchBunkerScreenPlay:teleportPlayer(pCreature)
 	self:lockAll(pCreature)
 end
 
+function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pChatMessage, playerID)
+	local pPlayer = getSceneObject(playerID)
+
+	if (pPlayer == nil or CreatureObject(pPlayer):isAiAgent()) then
+		return 0
+	end
+
+	if (not SceneObject(pTerminal):isInRangeWithObject(pPlayer, 10)) then
+		return 0
+	elseif (not SceneObject(pTerminal):isInRangeWithObject(pPlayer, 3)) then
+		CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:too_far_from_terminal")
+		return 0
+	end
+
+	local bombDroidHandlerID = readData("dwb:bombDroidHandler")
+	local terminalUserID = CreatureObject(pPlayer):getObjectID()
+
+	if (bombDroidHandlerID == 0) then
+		writeData("dwb:bombDroidHandler", terminalUserID)
+		writeData("dwb:bombDroidHandlerLastUse", os.time())
+	elseif (bombDroidHandlerID ~= terminalUserID) then
+		local lastTerminalUse = readData("dwb:bombDroidHandlerLastUse")
+		if (os.difftime(os.time(), lastTerminalUse) < 120) then
+			CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:terminal_in_use")
+			return 0
+		else
+			writeData("dwb:bombDroidHandler", bombDroidHandlerID)
+			writeData("dwb:bombDroidHandlerLastUse", os.time())
+		end
+	end
+
+	local spatialMsg = getChatMessage(pChatMessage)
+
+	local tokenizer = {}
+	for word in spatialMsg:gmatch("%w+") do table.insert(tokenizer, word) end
+
+	local spatialCommand = tokenizer[1]
+	local moveDistance = 0
+
+	if (spatialCommand == "reset") then
+		local lastDetonate = readData("dwb:lastDroidDetonate")
+		if (lastDetonate ~= 0 and os.difftime(os.time(), lastDetonate) < 180) then
+			CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:reload_voice_pattern")
+			return 0
+		end
+		self:respawnBombDroid()
+		return 0
+	end
+
+	local bombDroidID = readData("dwb:bombDroid")
+	local pBombDroid = getSceneObject(bombDroidID)
+
+	if (pBombDroid == nil or not SceneObject(pBombDroid):isAiAgent()) then
+		return 0
+	end
+
+	if (spatialCommand == "detonate") then
+		CreatureObject(pBombDroid):playEffect("clienteffect/combat_grenade_proton.cef", "")
+		CreatureObject(pBombDroid):inflictDamage(pBombDroid, 0, 1000000, 1)
+		writeData("dwb:lastDroidDetonate", os.time())
+		return 0
+	end
+
+	if (tokenizer[2] ~= nil) then
+		moveDistance = tonumber(tokenizer[2])
+
+		if (moveDistance == nil) then
+			return 0
+		end
+
+		if (moveDistance > 10) then
+			moveDistance = 10
+		elseif (moveDistance <= 0) then
+			moveDistance = 1
+		end
+	end
+
+	local droidLoc = { x = SceneObject(pBombDroid):getPositionX(), z = SceneObject(pBombDroid):getPositionZ(), y = SceneObject(pBombDroid):getPositionY(), cell = SceneObject(pBombDroid):getParentID() }
+
+	if (spatialCommand == "forward") then
+		droidLoc.x = droidLoc.x + moveDistance
+		if (droidLoc.x > 115) then
+			droidLoc.x = 115
+		end
+	elseif (spatialCommand == "backward") then
+		droidLoc.x = droidLoc.x - moveDistance
+		if (droidLoc.x < 76) then
+			droidLoc.x = 76
+		end
+	elseif (spatialCommand == "left") then
+		droidLoc.y = droidLoc.y + moveDistance
+		if (droidLoc.y > -114) then
+			droidLoc.y = -114
+		end
+	elseif (spatialCommand == "right") then
+		droidLoc.y = droidLoc.y - moveDistance
+		if (droidLoc.y < -152) then
+			droidLoc.y = -152
+		end
+	end
+
+	local pCell = getSceneObject(droidLoc.cell)
+
+	if (pCell == nil) then
+		return 0
+	end
+
+	AiAgent(pBombDroid):stopWaiting()
+	AiAgent(pBombDroid):setWait(0)
+	AiAgent(pBombDroid):setNextPosition(droidLoc.x, droidLoc.z, droidLoc.y, pCell)
+	AiAgent(pBombDroid):executeBehavior()
+end
+
+function DeathWatchBunkerScreenPlay:notifyEnteredVoiceTerminalArea(pArea, pPlayer)
+	ObjectManager.withCreatureObject(pPlayer, function(player)
+		if (player:isAiAgent()) then
+			return 0
+		end
+
+		player:sendSystemMessage("@dungeon/death_watch:rc_mouse_instructions")
+	end)
+end
+
+function DeathWatchBunkerScreenPlay:notifyEnteredOutsideLockedDoorArea(pArea, pPlayer)
+	ObjectManager.withCreatureObject(pPlayer, function(player)
+		if (player:isAiAgent()) then
+			return 0
+		end
+
+		if (player:hasScreenPlayState(1, "death_watch_bunker") == 0) then
+			player:sendSystemMessage("@dungeon/death_watch:entrance_denied")
+		end
+	end)
+end
+
+function DeathWatchBunkerScreenPlay:bombDroidDetonated(pBombDroid, pBombDroid2)
+	if (pBombDroid == nil) then
+		return
+	end
+
+	local debrisID = readData("dwb:bombDebris")
+
+	local pDebris = getSceneObject(debrisID)
+
+	if (pDebris == nil) then
+		return
+	end
+
+	if (SceneObject(pBombDroid):isInRangeWithObject(pDebris, 5)) then
+		SceneObject(pDebris):playEffect("clienteffect/combat_grenade_proton.cef", "")
+		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris)
+	end
+end
+
+function DeathWatchBunkerScreenPlay:respawnDebris(pOldDebris)
+	local pDebris = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 112.552,-64,-116.21,5996348,0.925444,0,0.378885,0)
+	writeData("dwb:bombDebris", SceneObject(pDebris):getObjectID())
+end
+
+function DeathWatchBunkerScreenPlay:destroyDebris(pDebris)
+	if (pDebris ~= nil) then
+		createEvent(self.debrisRespawnTime, "DeathWatchBunkerScreenPlay", "respawnDebris", pDebris)
+		SceneObject(pDebris):destroyObjectFromWorld()
+	end
+end
+
+function DeathWatchBunkerScreenPlay:respawnBombDroid(pDroid)
+	local spawn = deathWatchSpecialSpawns["bombdroid"]
+	local pBombDroid = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
+	CreatureObject(pBombDroid):setPvpStatusBitmask(0)
+	CreatureObject(spawnedPointer):setCustomObjectName("R2-M2")
+	AiAgent(pBombDroid):setAiTemplate("idlewait") -- Don't move unless patrol point is added to list
+	AiAgent(pBombDroid):setFollowState(4) -- Patrolling
+	writeData("dwb:bombDroid", SceneObject(pBombDroid):getObjectID())
+	createObserver(OBJECTDESTRUCTION, "DeathWatchBunkerScreenPlay", "bombDroidDetonated", pBombDroid)
+end
+
 function DeathWatchBunkerScreenPlay:haldoTimer(pCreature)
 	ObjectManager.withCreatureObject(pCreature, function(creature)
 		if creature:hasScreenPlayState(4, "death_watch_foreman_stage") == 0 then
@@ -616,7 +816,7 @@ end
 function DeathWatchBunkerScreenPlay:haldoKilled(pHaldo, pPlayer)
 	createEvent(1000 * 240, "DeathWatchBunkerScreenPlay", "respawnHaldo", pPlayer)
 	ObjectManager.withCreatureObject(pPlayer, function(creature)
-		if (creature:hasScreenPlayState(2, "death_watch_foreman_stage") == 1 and creature:hasScreenPlayState(4, "death_watch_haldo") == 0 and creature:hasScreenPlayState(2, "death_watch_haldo") == 0) then
+		if (creature:hasScreenPlayState(2, "death_watch_foreman_stage") == 1 and creature:hasScreenPlayState(4, "death_watch_foreman_stage") == 0) then
 			local pInventory = creature:getSlottedObject("inventory")
 			if (pInventory == nil) then
 				creature:sendSystemMessage("Error: Unable to find player inventory.")
@@ -869,14 +1069,21 @@ end
 
 --   Lock all restricted cells to a creature  -
 function DeathWatchBunkerScreenPlay:lockAll(pCreature)
-	if pCreature == nil then
-		return 0
-	end
+	ObjectManager.withCreatureObject(pCreature, function(creature)
+		creature:removeScreenPlayState(2, "death_watch_bunker")
+		creature:removeScreenPlayState(4, "death_watch_bunker")
+		creature:removeScreenPlayState(8, "death_watch_bunker")
+		creature:removeScreenPlayState(16, "death_watch_bunker")
+		creature:removeScreenPlayState(32, "death_watch_bunker")
+		creature:removeScreenPlayState(64, "death_watch_bunker")
+		creature:removeScreenPlayState(128, "death_watch_bunker")
 
-	for i = 1, #self.doorData, 1 do
-		self:removePermission(pCreature, "DeathWatchBunkerDoor" .. i)
-	end
-	CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:relock")
+		for i = 1, #self.doorData, 1 do
+			self:removePermission(pCreature, "DeathWatchBunkerDoor" .. i)
+		end
+
+		creature:sendSystemMessage("@dungeon/death_watch:relock")
+	end)
 end
 
 function DeathWatchBunkerScreenPlay:spawnDefenders(number, pCreature)
@@ -1025,7 +1232,7 @@ function DeathWatchBunkerScreenPlay:despawnCell(pCell)
 		local pObject = SceneObject(pCell):getContainerObject(i)
 		if pObject ~= nil then
 			if SceneObject(pObject):isCreatureObject() then
-				local template = object:getTemplateObjectPath()
+				local template = SceneObject(pObject):getTemplateObjectPath()
 
 				if string.find(template, "death_watch") ~= nil or string.find(template, "battle_droid") ~= nil then
 					createEvent(1000, "DeathWatchBunkerScreenPlay", "despawnCreature", pObject)
