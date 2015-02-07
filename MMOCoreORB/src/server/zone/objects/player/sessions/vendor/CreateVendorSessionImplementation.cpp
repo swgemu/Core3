@@ -9,7 +9,6 @@
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/managers/auction/AuctionManager.h"
-#include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/zone/managers/vendor/VendorManager.h"
 #include "server/zone/managers/vendor/VendorSelectionNode.h"
@@ -292,12 +291,21 @@ void CreateVendorSessionImplementation::randomizeVendorHair(CreatureObject* vend
 	ManagedReference<SceneObject*> hairSlot = vendor->getSlottedObject("hair");
 
 	if (hairSlot == NULL && !hairFile.isEmpty()) {
-		String hairCustomization;
-		ManagedReference<PlayerManager*> pman = player->getZoneServer()->getPlayerManager();
-		TangibleObject* hair = pman->createHairObject(hairFile, hairCustomization);
 
-		if (hair != NULL)
-			vendor->transferObject(hair, 4);
+		Reference<TangibleObject*> hair = player->getZoneServer()->createObject(hairFile.hashCode(), 1).castTo<TangibleObject*>();
+
+		if (hair != NULL) {
+			if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0).get(0) != "hair") {
+				hair->destroyObjectFromDatabase(true);
+				return;
+			}
+
+			//TODO: randomize hair customization
+
+			if (!vendor->transferObject(hair, 4)) {
+				hair->destroyObjectFromDatabase(true);
+			}
+		}
 	}
 
 }

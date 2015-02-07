@@ -64,8 +64,6 @@ public:
 
 	void handleRenameVendor(CreatureObject* player, TangibleObject* vendor, String& name);
 
-	void randomizeCustomization(TangibleObject* vendor);
-
 	inline VendorSelectionNode* getRootNode() {
 		return rootNode;
 	}

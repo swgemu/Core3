@@ -418,7 +418,3 @@ void VendorManager::handleRenameVendor(CreatureObject* player, TangibleObject* v
 		player->sendSystemMessage("@player_structure:vendor_rename");
 
 }
-
-void VendorManager::randomizeCustomization(TangibleObject* vendor) {
-
-}

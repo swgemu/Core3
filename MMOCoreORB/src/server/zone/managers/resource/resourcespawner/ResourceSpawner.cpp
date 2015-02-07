@@ -1036,7 +1036,7 @@ bool ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 			}
 		}
 	}
-	if (unitsExtracted  >0 && inventory->hasFullContainerObjects()) {
+	if (unitsExtracted > 0 && inventory->hasFullContainerObjects()) {
 		StringIdChatParameter err("survey", "no_inv_space");
 		player->sendSystemMessage(err);
 		if (!player->isIncapacitated() && !player->isDead()){
@@ -1047,9 +1047,13 @@ bool ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 	// Create New resource container if one isn't found in inventory
 	ResourceContainer* harvestedResource = resourceSpawn->createResource(unitsExtracted);
 
-	inventory->transferObject(harvestedResource, -1, false);
-	inventory->broadcastObject(harvestedResource, true);
-	return true;
+	if (inventory->transferObject(harvestedResource, -1, false)) {
+		inventory->broadcastObject(harvestedResource, true);
+		return true;
+	} else {
+		harvestedResource->destroyObjectFromDatabase(true);
+		return false;
+	}
 }
 
 ResourceContainer* ResourceSpawner::harvestResource(CreatureObject* player,

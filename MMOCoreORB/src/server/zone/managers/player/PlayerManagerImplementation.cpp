@@ -503,38 +503,6 @@ bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallba
 	return true;
 }
 
-
-Reference<TangibleObject*> PlayerManagerImplementation::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
-	Reference<TangibleObject*> hairObject = NULL;
-
-	if (hairObjectFile.isEmpty()) {
-		info("hairObjectFile empty");
-		return NULL;
-	}
-
-	info("trying to create hair object " + hairObjectFile);
-	Reference<SceneObject*> hair = server->createObject(hairObjectFile.hashCode(), 1);
-
-	if (hair == NULL) {
-		info("objectManager returned NULL hair object");
-		return NULL;
-	}
-
-	if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0).get(0) != "hair") {
-		hair->destroyObjectFromDatabase(true);
-
-		return NULL;
-	} else {
-		hairObject = hair.castTo<TangibleObject*>();
-
-		hairObject->setCustomizationString(hairCustomization);
-
-		info("hair object created successfully");
-	}
-
-	return hairObject;
-}
-
 void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player) {
 	Zone* zone = server->getZone("tutorial");
 

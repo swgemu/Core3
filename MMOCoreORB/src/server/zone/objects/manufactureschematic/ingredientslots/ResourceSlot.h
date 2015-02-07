@@ -168,9 +168,14 @@ public:
 						parent->broadcastObject(newContainer, true);
 					} else {
 						error("Unable to return resource to parent, transfer failed");
+						newContainer->destroyObjectFromDatabase(true);
 					}
 				} else {
 					error("Unable to return resource to parent, NULL container");
+
+					if (newContainer != NULL) {
+						newContainer->destroyObjectFromDatabase(true);
+					}
 				}
 
 			}

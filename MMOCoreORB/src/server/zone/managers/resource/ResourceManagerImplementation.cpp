@@ -424,8 +424,11 @@ void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCre
 
 		if(newResource != NULL) {
 			spawn->extractResource("", quantity);
-			inventory->broadcastObject(newResource, true);
-			inventory->transferObject(newResource, -1, true);
+			if (inventory->transferObject(newResource, -1, true)) {
+				inventory->broadcastObject(newResource, true);
+			} else {
+				newResource->destroyObjectFromDatabase(true);
+			}
 		}
 	}
 }
