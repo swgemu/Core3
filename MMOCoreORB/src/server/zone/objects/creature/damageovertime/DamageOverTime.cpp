@@ -125,15 +125,6 @@ void DamageOverTime::addSerializableVariables() {
 
 }
 
-/*bool DamageOverTime::toBinaryStream(ObjectOutputStream* stream) {
-	stream->writeLong(type);
-	stream->writeByte(attribute);
-}
-
-bool DamageOverTime::parseFromBinaryStream(ObjectInputStream* stream) {
-
-}*/
-
 void DamageOverTime::activate() {
 	expires.updateToCurrentTime();
 	expires.addMiliTime(duration * 1000);

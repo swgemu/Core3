@@ -89,6 +89,10 @@ public:
 		expires = time;
 	}
 
+	inline void setNextTick(Time tick) {
+		nextTick = tick;
+	}
+
 	inline void setSecondaryStrength(int str){
 		secondaryStrength = str;
 	}
@@ -139,6 +143,10 @@ public:
 
 	inline Time getNextTick() {
 		return nextTick;
+	}
+
+	inline Time getExpires() {
+		return expires;
 	}
 
 	inline int getSecondaryStrength() {
