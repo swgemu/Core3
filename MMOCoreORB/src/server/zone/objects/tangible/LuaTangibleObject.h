@@ -31,6 +31,7 @@ namespace tangible {
 		int setPvpStatusBitmask(lua_State *L);
 		int getPvpStatusBitmask(lua_State *L);
 		int setCustomizationVariable(lua_State *L);
+		int getPaletteColorCount(lua_State *L);
 		int setConditionDamage(lua_State *L);
 		int setFaction(lua_State *L);
 		int getFaction(lua_State *L);

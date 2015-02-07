@@ -7,6 +7,9 @@
 
 #include "LuaTangibleObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/templates/params/PaletteColorCustomizationVariable.h"
+#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "server/zone/templates/appearance/PaletteTemplate.h"
 
 const char LuaTangibleObject::className[] = "LuaTangibleObject";
 
@@ -17,6 +20,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask },
 		{ "getPvpStatusBitmask", &LuaTangibleObject::getPvpStatusBitmask },
 		{ "setCustomizationVariable", &LuaTangibleObject::setCustomizationVariable },
+		{ "getPaletteColorCount", &LuaTangibleObject::getPaletteColorCount },
 		{ "setConditionDamage", &LuaTangibleObject::setConditionDamage },
 		{ "setFaction", &LuaTangibleObject::setFaction },
 		{ "getFaction", &LuaTangibleObject::getFaction },
@@ -43,11 +47,49 @@ int LuaTangibleObject::_setObject(lua_State* L) {
 
 int LuaTangibleObject::setCustomizationVariable(lua_State* L) {
 	String type = lua_tostring(L, -2);
-	byte value = lua_tointeger(L, -1);
+	int value = lua_tonumber(L, -1);
 
 	realObject->setCustomizationVariable(type, value, true);
 
 	return 0;
+}
+
+int LuaTangibleObject::getPaletteColorCount(lua_State* L) {
+	String variableName = lua_tostring(L, -1);
+
+	String appearanceFilename = realObject->getObjectTemplate()->getAppearanceFilename();
+	VectorMap<String, Reference<CustomizationVariable*> > variables;
+	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+
+	int colors = 0;
+
+	for (int i = 0; i< variables.size(); ++i) {
+		String varkey = variables.elementAt(i).getKey();
+
+		if (varkey.contains(variableName)) {
+			CustomizationVariable* customizationVariable = variables.get(varkey).get();
+
+			if (customizationVariable == NULL)
+				continue;
+
+			PaletteColorCustomizationVariable* palette = dynamic_cast<PaletteColorCustomizationVariable*>(customizationVariable);
+
+			if (palette != NULL) {
+				String paletteFileName = palette->getPaletteFileName();
+				PaletteTemplate* paletteTemplate = TemplateManager::instance()->getPaletteTemplate(paletteFileName);
+
+				if (paletteTemplate == NULL)
+					continue;
+
+				colors = paletteTemplate->getColorCount();
+				break;
+			}
+		}
+	}
+
+	lua_pushinteger(L, colors);
+
+	return 1;
 }
 
 int LuaTangibleObject::setOptionsBitmask(lua_State* L) {

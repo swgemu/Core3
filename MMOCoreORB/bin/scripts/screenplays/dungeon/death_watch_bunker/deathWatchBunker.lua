@@ -593,10 +593,6 @@ function DeathWatchBunkerScreenPlay:removeFromBunker(pCreature)
 		return 0
 	end
 
-	if (readData(CreatureObject(pCreature):getObjectID() .. ":teleportedFromBunker") == 1) then
-		return
-	end
-
 	if (CreatureObject(pCreature):isGrouped()) then
 		local groupSize = CreatureObject(pCreature):getGroupSize()
 
@@ -617,6 +613,11 @@ function DeathWatchBunkerScreenPlay:teleportPlayer(pCreature)
 	if (pCreature == nil) then
 		return 0
 	end
+
+	if (readData(CreatureObject(pCreature):getObjectID() .. ":teleportedFromBunker") == 1 or CreatureObject(pCreature):getParentID() == self.buildingIds.outside or CreatureObject(pCreature):getParentID() == 0) then
+		return 0
+	end
+
 	writeData(CreatureObject(pCreature):getObjectID() .. ":teleportedFromBunker", 1)
 	CreatureObject(pCreature):teleport(-4657, 14.4, 4322.3, 0)
 	self:lockAll(pCreature)
@@ -1328,14 +1329,29 @@ function DeathWatchBunkerScreenPlay:stopCraftingProcess(pCreature, pTerm, succes
 			end
 
 			local targetItems = self.targetItems[number]
-			local reward = giveItem(pInventory, targetItems[target], -1)
+			local pReward = giveItem(pInventory, targetItems[target], -1)
+
+
 			CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:crafting_finished")
 
-			if (reward == nil) then
+			if (pReward == nil) then
 				CreatureObject(pCreature):sendSystemMessage("Error: Unable to generate item.")
 				return 0
 			end
+
+			if (number ~= 4) then
+				local armorColorCount = TangibleObject(pReward):getPaletteColorCount("index_color_1")
+				if (armorColorCount ~= 0) then
+					TangibleObject(pReward):setCustomizationVariable("/private/index_color_1", getRandomNumber(armorColorCount))
+				end
+
+				armorColorCount = TangibleObject(pReward):getPaletteColorCount("index_color_2")
+				if (armorColorCount ~= 0) then
+					TangibleObject(pReward):setCustomizationVariable("/private/index_color_2", getRandomNumber(armorColorCount))
+				end
+			end
 		end
+
 
 		writeData(CreatureObject(pCreature):getObjectID() .. ":dwb:terminal", 0)
 		writeData(terminal:getObjectID() .. ":dwb:user", 0)
@@ -1357,7 +1373,11 @@ function DeathWatchBunkerScreenPlay:stopCraftingProcess(pCreature, pTerm, succes
 		end
 
 		if teleport == true then
-			createEvent(5000, "DeathWatchBunkerScreenPlay", "removeFromBunker", pCreature)
+			if (number == 4) then
+				createEvent(5000, "DeathWatchBunkerScreenPlay", "removeFromBunker", pCreature)
+			else
+				createEvent(500, "DeathWatchBunkerScreenPlay", "teleportPlayer", pCreature)
+			end
 		end
 	end)
 end
@@ -1403,7 +1423,6 @@ function DeathWatchBunkerScreenPlay:finishCraftingStep(pTerm)
 	if creoId ~= 0 then
 		local pCreature = getSceneObject(creoId)
 		if pCreature ~= nil then
-			CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:crafting_finished")
 			self:stopCraftingProcess(pCreature, pTerm, true, true)
 		end
 	end
