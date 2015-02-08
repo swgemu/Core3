@@ -52,21 +52,17 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 	int statesRemoved = states ^ statesBefore;
 
 	if( statesRemoved & CreatureState::BLEEDING )
-	{
 		victim->clearState(CreatureState::BLEEDING);
-	}
+
 	if( statesRemoved & CreatureState::POISONED )
-	{
 		victim->clearState(CreatureState::POISONED);
-	}
+
 	if( statesRemoved & CreatureState::DISEASED )
-	{
 		victim->clearState(CreatureState::DISEASED);
-	}
+
 	if( statesRemoved & CreatureState::ONFIRE )
-	{
 		victim->clearState(CreatureState::ONFIRE);
-	}
+
 
 	if (nextTick.isPast()) {
 		dot = false;
@@ -145,41 +141,41 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attack
 
 	//only 1 disease per bar allowed
 	if(dotType == CreatureState::DISEASED)
-	{
 		objectID = Long::hashCode(CreatureState::DISEASED);
 
-	}
 	DamageOverTime newDot(attacker, dotType, pool, redStrength, duration, redPotency, secondaryStrength);
 	int dotPower = newDot.initDot(victim);
 
 	Time nTime = newDot.getNextTick();
 
-	if (isEmpty() || nextTick.isPast())
-		nextTick = nTime;
-	else if (nTime.compareTo(nextTick) > 0)
+	if (isEmpty() || nextTick.isPast() || nTime.compareTo(nextTick) > 0)
 		nextTick = nTime;
 
 	uint64 key = generateKey(dotType, pool, objectID);
 
 	if (contains(key)) {
 		Vector<DamageOverTime>* vector = &get(key);
-		vector->removeAll();
-		vector->add(newDot);
-		//System::out << "Replacing Dot" << endl;
+
+		for (int i = 0; i < vector->size(); ++i) {
+			DamageOverTime dot = vector->get(i);
+
+			if (newDot.getSecondaryStrength() >= dot.getSecondaryStrength()) {
+				dot.setStrength(newDot.getStrength());
+				dot.setSecondaryStrength(newDot.getSecondaryStrength());
+				dot.setDuration(newDot.getDuration());
+				dot.setExpires(newDot.getExpires());
+			}
+		}
 	} else {
 		Vector<DamageOverTime> newVector;
 		newVector.add(newDot);
 		put(key, newVector);
-		//System::out << "New Dot" << endl;
 	}
+
 	if(oldStrength == 0)
-	{
 		sendStartMessage(victim, dotType);
-	}
 	else
-	{
 		sendIncreaseMessage(victim, dotType);
-	}
 
 	dot = true;
 
