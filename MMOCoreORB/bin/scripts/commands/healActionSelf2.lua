@@ -42,8 +42,7 @@
 --true = 1, false = 0
 
 HealActionSelf2Command = {
-        name = "healactionself2",
-	forceCost = 100,
+        name = "healactionself2"
 }
 
 AddCommand(HealActionSelf2Command)
