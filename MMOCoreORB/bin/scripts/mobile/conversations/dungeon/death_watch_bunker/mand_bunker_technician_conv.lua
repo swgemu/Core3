@@ -47,7 +47,7 @@ mines_fill_gas = ConvoScreen:new {
 	leftDialog = "@conversation/death_watch_technician:s_45ae332c", -- The mines fill up with allum gas. That stuff can really mess up the men working inside the mines. So all the miners have to wear the rebreather gear in order to work down there, but those things are not always reliable.
 	stopConversation = "false",
 	options = {
-		{"@conversation/death_watch_technician:s_a0c1a32f", "only_way_to_help"}, -- Maybe I can help you out?
+		{"@conversation/death_watch_technician:s_bd5476c4", "only_way_to_help"}, -- Maybe I can help you out?
 		{"@conversation/death_watch_technician:s_72f8ec3a", "yeah_yeah"}, -- Okay, well, good luck with that.
 	}
 }
@@ -58,7 +58,7 @@ aint_that_truth = ConvoScreen:new {
 	leftDialog = "@conversation/death_watch_technician:s_bb18b90f", -- Ain't that the truth. Now, if there isn't anything else, I really need to get back to trying to figure out a way to get those dumb Mandalorians not to trash another one of my droids.
 	stopConversation = "false",
 	options = {
-		{"@conversation/death_watch_technician:s_a0c1a32f", "only_way_to_help"}, -- Maybe I can help you out?
+		{"@conversation/death_watch_technician:s_bd5476c4", "only_way_to_help"}, -- Maybe I can help you out?
 		{"@conversation/death_watch_technician:s_72f8ec3a", "yeah_yeah"}, -- Okay, well, good luck with that.
 	}
 }
@@ -69,7 +69,7 @@ exhaust_ports_offline = ConvoScreen:new {
 	leftDialog = "@conversation/death_watch_technician:s_a8fb8b64", -- The main exhaust ports are offline and I need to send in a droid to fix it. But everytime I send in one of my droids, these dumb Mandalorians shoot it to pieces. Then, they laugh about it all the while yelling at me for not having the ports back online.
 	stopConversation = "false",
 	options = {
-		{"@conversation/death_watch_technician:s_a0c1a32f", "only_way_to_help"}, -- Maybe I can help you out?
+		{"@conversation/death_watch_technician:s_bd5476c4", "only_way_to_help"}, -- Maybe I can help you out?
 		{"@conversation/death_watch_technician:s_72f8ec3a", "yeah_yeah"}, -- Okay, well, good luck with that.
 	}
 }
