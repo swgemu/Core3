@@ -54,7 +54,7 @@ public:
 	RetreatCommand(const String& name, ZoneProcessServer* server)
 		: SquadLeaderCommand(name, server) {
 	}
-	
+
 	bool checkRetreat(CreatureObject* creature) {
 		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("@cbt_spam:no_burst"); // You cannot burst-run while mounted on a creature or vehicle.
@@ -68,24 +68,27 @@ public:
 		}
 
 		if (zone->getZoneName() == "dungeon1") {
-			creature->sendSystemMessage("@combat_effects:burst_run_space_dungeon"); //The artificial gravity makes burst running impossible here.
+			creature->sendSystemMessage("@cbt_spam:burst_run_space_dungeon"); //The artificial gravity makes burst running impossible here.
 			return false;
 		}
-		
-		uint32 burstCRC = String("burstrun").hashCode();
 
-		if (creature->hasBuff(burstCRC)) {
+		uint32 burstCRC = String("burstrun").hashCode();
+		uint32 forceRun1CRC = BuffCRC::JEDI_FORCE_RUN_1;
+		uint32 forceRun2CRC = BuffCRC::JEDI_FORCE_RUN_2;
+		uint32 forceRun3CRC = BuffCRC::JEDI_FORCE_RUN_3;
+
+		if (creature->hasBuff(burstCRC) || creature->hasBuff(forceRun1CRC) || creature->hasBuff(forceRun2CRC) || creature->hasBuff(forceRun3CRC)) {
 			creature->sendSystemMessage("@combat_effects:burst_run_no"); //You cannot burst run right now.
 			return false;
-		}				
-		
+		}
+
 		if (!creature->checkCooldownRecovery("retreat")) {
 			creature->sendSystemMessage("@combat_effects:burst_run_no"); //You cannot burst run right now.
 			return false;
-		}			
+		}
 
 		return true;
-	}	
+	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
@@ -96,14 +99,14 @@ public:
 			return INVALIDLOCOMOTION;
 
 		if (!creature->isPlayerCreature())
-			return GENERALERROR;			
+			return GENERALERROR;
 
 		ManagedReference<CreatureObject*> player = creature;
 		ManagedReference<GroupObject*> group = player->getGroup();
 
 		if (!checkGroupLeader(player, group))
-			return GENERALERROR;			
-			
+			return GENERALERROR;
+
 		float groupBurstRunMod = (float) player->getSkillMod("group_burst_run");
 		int hamCost = (int) (100.0f * (1.0f - (groupBurstRunMod / 100.0f))) * calculateGroupModifier(group);
 
@@ -113,13 +116,11 @@ public:
 		if (!inflictHAM(player, 0, actionCost, mindCost))
 			return GENERALERROR;
 
-//		shoutCommand(player, group);
-
 		for (int i = 1; i < group->getGroupSize(); ++i) {
 			ManagedReference<SceneObject*> member = group->getGroupMember(i);
 
 			if (member == NULL || !member->isPlayerCreature() || member->getZone() != creature->getZone())
-				continue;				
+				continue;
 			
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
 
@@ -131,12 +132,12 @@ public:
 			sendCombatSpam(memberPlayer);
 			doRetreat(memberPlayer);
 		}
-		
+
 		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("retreat").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
 			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("retreat").hashCode()));
  	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
  	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
-		}		
+		}
 
 		return SUCCESS;
 	}
@@ -148,13 +149,13 @@ public:
 
 		if (!checkRetreat(player))
 			return;
-			
+
 		uint32 actionCRC = String("retreat").hashCode();
 
 		if (player->hasBuff(actionCRC)) {
 			return;
-		}	
-		
+		}
+
 		float groupRunMod = (float) player->getSkillMod("group_burst_run");
 
 		if (groupRunMod > 100.0f)
