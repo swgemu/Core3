@@ -105,7 +105,7 @@ int DroidMerchantModuleDataComponent::handleObjectMenuSelect(CreatureObject* pla
 		tway->setPosition(waypoint->getPositionX(), waypoint->getPositionZ(), waypoint->getPositionY());
 		tway->setActive(true);
 		tway->setCustomObjectName(waypoint->getDisplayedName(),true);
-		tway->setColor(WaypointObject::SPECIALTYPE_FIND);
+		tway->setColor(WaypointObject::COLOR_BLUE);
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 		ghost->addWaypoint(tway,true,true);
 		player->sendSystemMessage("@pet/droid_modules:waypoint_sent");

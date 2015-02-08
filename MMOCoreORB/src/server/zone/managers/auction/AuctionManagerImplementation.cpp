@@ -593,13 +593,8 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	float waypointX = vendor->getWorldPositionX();
 	float waypointY = vendor->getWorldPositionY();
 
-	ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
-	waypoint->setPlanetCRC(vendor->getPlanetCRC());
-	waypoint->setPosition(waypointX, 0, waypointY);
-
-	waypoint->setCustomObjectName(vendor->getDisplayedName(), false);
-
-	WaypointChatParameter waypointParam(waypoint);
+	WaypointChatParameter waypointParam;
+	waypointParam.set(vendor->getDisplayedName(), waypointX, 0, waypointY, vendor->getPlanetCRC());
 
 	String itemName = removeColorCodes(item->getItemName());
 
@@ -1377,7 +1372,7 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 			float waypointX = vendor->getWorldPositionX();
 			float waypointY = vendor->getWorldPositionY();
 
-			ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+			ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 0).castTo<WaypointObject*>();
 			waypoint->setPlanetCRC(vendor->getPlanetCRC());
 			waypoint->setPosition(waypointX, 0, waypointY);
 
@@ -1538,13 +1533,8 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 		float waypointX = vendor->getWorldPositionX();
 		float waypointY = vendor->getWorldPositionY();
 
-		ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
-		waypoint->setPlanetCRC(vendor->getPlanetCRC());
-		waypoint->setPosition(waypointX, 0, waypointY);
-
-		waypoint->setCustomObjectName(vendor->getDisplayedName(), false);
-
-		WaypointChatParameter waypointParam(waypoint);
+		WaypointChatParameter waypointParam;
+		waypointParam.set(vendor->getDisplayedName(), waypointX, 0, waypointY, vendor->getPlanetCRC());
 
 		String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
 
@@ -1622,7 +1612,7 @@ void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item) {
 		float waypointX = vendor->getWorldPositionX();
 		float waypointY = vendor->getWorldPositionY();
 
-		ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+		ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 0).castTo<WaypointObject*>();
 		waypoint->setPlanetCRC(vendor->getPlanetCRC());
 		waypoint->setPosition(waypointX, 0, waypointY);
 

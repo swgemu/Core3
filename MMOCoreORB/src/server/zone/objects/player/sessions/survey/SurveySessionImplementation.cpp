@@ -305,7 +305,7 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 	if (waypoint == NULL)
 		newwaypoint = ( surveyer->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
 	else {
-		ghost->removeWaypoint(waypoint->getObjectID(), true);
+		ghost->removeWaypoint(waypoint->getObjectID(), true, false);
 		newwaypoint = waypoint.get();
 	}
 
