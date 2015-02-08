@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_a6760805",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/conversations/deathWatchTechnicianConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-08T22:55:51Z",
+      "side": 1,
+      "message": "I don\u0027t see you using playerObject at all.",
+      "revId": "ff286562b2c8ca1d895fe9adf70a2d4777155d20",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
