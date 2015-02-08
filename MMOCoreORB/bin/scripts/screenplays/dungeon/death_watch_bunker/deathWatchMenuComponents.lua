@@ -158,68 +158,8 @@ function deathWatchWaterValve:handleObjectMenuSelect(pSceneObject, pPlayer, sele
 
 		local terminalNumber = readData(SceneObject(pSceneObject):getObjectID() .. ":dwb:terminal")
 
-		if terminalNumber == 1 then
-			local state = readData(5996314 .. ":dwb:valve1")
-			if state % 2 == 0 then
-				creature:sendSystemMessage("@dungeon/death_watch:valve_on")
-			else
-				creature:sendSystemMessage("@dungeon/death_watch:valve_off")
-			end
-
-			writeData(5996314 .. ":dwb:valve1", state + 1)
-
-			state = readData(5996314 .. ":dwb:valve3")
-			writeData(5996314 .. ":dwb:valve3", state + 1)
-
-		elseif terminalNumber == 2 then
-			local state = readData(5996314 .. ":dwb:valve2")
-			if state % 2 == 0 then
-				creature:sendSystemMessage("@dungeon/death_watch:valve_on")
-			else
-				creature:sendSystemMessage("@dungeon/death_watch:valve_off")
-			end
-
-			writeData(5996314 .. ":dwb:valve2", state + 1)
-
-			state = readData(5996314 .. ":dwb:valve1")
-			writeData(5996314 .. ":dwb:valve1", state + 1)
-		elseif terminalNumber == 3 then
-			local state = readData(5996314 .. ":dwb:valve3")
-			if state % 2 == 0 then
-				creature:sendSystemMessage("@dungeon/death_watch:valve_on")
-			else
-				creature:sendSystemMessage("@dungeon/death_watch:valve_off")
-			end
-
-			writeData(5996314 .. ":dwb:valve3", state + 1)
-
-			state = readData(5996314 .. ":dwb:valve4")
-			writeData(5996314 .. ":dwb:valve4", state + 1)
-
-		elseif terminalNumber == 4 then
-			local state = readData(5996314 .. ":dwb:valve4")
-			if state % 2 == 0 then
-				creature:sendSystemMessage("@dungeon/death_watch:valve_on")
-			else
-				creature:sendSystemMessage("@dungeon/death_watch:valve_off")
-			end
-
-			writeData(5996314 .. ":dwb:valve4", state + 1)
-		end
-
-		local state1 = readData(5996314 .. ":dwb:valve1")
-		local state2 = readData(5996314 .. ":dwb:valve2")
-		local state3 = readData(5996314 .. ":dwb:valve3")
-		local state4 = readData(5996314 .. ":dwb:valve4")
-
-		if (state1 % 2 == 1 and state2 % 2 == 1 and state3 % 2 == 1 and state4 % 2 == 1) then
-			creature:setScreenPlayState(64, "death_watch_foreman_stage")
-			creature:sendSystemMessage("@dungeon/death_watch:restored_pressure")
-			writeData(5996314 .. ":dwb:valve1", 0)
-			writeData(5996314 .. ":dwb:valve2", 0)
-			writeData(5996314 .. ":dwb:valve3", 0)
-			writeData(5996314 .. ":dwb:valve4", 0)
-		end
+		DeathWatchBunkerScreenPlay:doValveSwitch(pPlayer, terminalNumber)
+		
 		return 0
 	end)
 end

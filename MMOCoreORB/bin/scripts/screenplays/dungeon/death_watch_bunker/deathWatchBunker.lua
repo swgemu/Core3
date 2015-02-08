@@ -374,32 +374,36 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	createObserver(DAMAGERECEIVED, "DeathWatchBunkerScreenPlay", "haldoDamage", spawnedPointer)
 
 	-- Water Pressure Valve Control A
-	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",55.5855,-32,-92.8,5996340,1,0,0,0)
-	spawnedSceneObject:_setObject(spawnedPointer)
-	spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
-	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
-	writeData(5996314 .. ":dwb:valve1", 0)
-
-	-- Water Pressure Valve Control B
 	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",42.2316,-32,-72.5555,5996340,-0.707107,0,-0.707107,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
+	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
+	writeData("dwb:valve1", 1)
+	self:spawnValveEffect(1, 1)
+
+	-- Water Pressure Valve Control B
+	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",56.0941,-32,-61.251,5996340,0,0,-1,0)
+	spawnedSceneObject:_setObject(spawnedPointer)
+	spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 2)
-	writeData(5996314 .. ":dwb:valve2", 0)
+	writeData("dwb:valve2", 1)
+	self:spawnValveEffect(2, 1)
 
 	-- Water Pressure Valve Control C
 	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",73.7982,-32,-76.4291,5996340,0.707107,0,-0.707107,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 3)
-	writeData(5996314 .. ":dwb:valve3", 0)
-
+	writeData("dwb:valve3", 0)
+	self:spawnValveEffect(3, 0)
+	
 	-- Water Pressure Valve Control D
-	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",56.0941,-32,-61.251,5996340,0,0,-1,0)
+	spawnedPointer = spawnSceneObject("endor","object/tangible/terminal/terminal_water_pressure.iff",55.5855,-32,-92.8,5996340,1,0,0,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
 	spawnedSceneObject:setObjectMenuComponent("deathWatchWaterValve")
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 4)
-	writeData(5996314 .. ":dwb:valve4", 0)
+	writeData("dwb:valve4", 1)
+	self:spawnValveEffect(4, 1)
 
 	-- Rebreather Filter Dispenser
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/filter_dispenser.iff",-12.8382,-52,-147.565,5996378,0,0,1,0)
@@ -1385,6 +1389,77 @@ end
 function DeathWatchBunkerScreenPlay:sendUseTerminalMessage(pCreature)
 	if pCreature ~= nil then
 		CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:use_terminal")
+	end
+end
+
+function DeathWatchBunkerScreenPlay:swapValveState(pCreature, valveNumber, notifyPlayer)
+	local curState = readData("dwb:valve" .. valveNumber)
+	local newState
+
+	if (curState == 1) then
+		if (notifyPlayer) then
+			CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:valve_off")
+		end
+		curState = 0
+	else
+		if (notifyPlayer) then
+			CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:valve_on")
+		end
+		curState = 1
+	end
+	writeData("dwb:valve" .. valveNumber, curState)
+
+	self:spawnValveEffect(valveNumber, curState)
+end
+
+function DeathWatchBunkerScreenPlay:spawnValveEffect(valveNumber, valveState)
+	local effectID = readData("dwb:valve_effect" .. valveNumber)
+	local pEffect = getSceneObject(effectID)
+
+	if (pEffect ~= nil) then
+		SceneObject(pEffect):destroyObjectFromWorld()
+	end
+
+	local pValveEffect
+	local valveData = deathWatchValveEffects[valveNumber]
+	if (valveState == 1) then
+		pValveEffect = spawnSceneObject("endor","object/static/particle/pt_light_streetlamp_green.iff",valveData[1],valveData[2],valveData[3],5996340,0,0,0,0)
+	else
+		pValveEffect = spawnSceneObject("endor","object/static/particle/pt_light_streetlamp_red.iff",valveData[1],valveData[2],valveData[3],5996340,0,0,0,0)
+	end
+
+	if (pValveEffect ~= nil) then
+		writeData("dwb:valve_effect" .. valveNumber, SceneObject(pValveEffect):getObjectID())
+	end
+end
+
+function DeathWatchBunkerScreenPlay:doValveSwitch(pCreature, valveNumber)
+	if valveNumber == 1 then
+		self:swapValveState(pCreature, 1, true)
+		self:swapValveState(pCreature, 4, false)
+	elseif valveNumber == 2 then
+		self:swapValveState(pCreature, 2, true)
+		self:swapValveState(pCreature, 3, false)
+	elseif valveNumber == 3 then
+		self:swapValveState(pCreature, 2, false)
+		self:swapValveState(pCreature, 3, true)
+		self:swapValveState(pCreature, 4, false)
+	elseif valveNumber == 4 then
+		self:swapValveState(pCreature, 1, false)
+		self:swapValveState(pCreature, 3, false)
+		self:swapValveState(pCreature, 4, true)
+	end
+
+	local state1 = readData("dwb:valve1")
+	local state2 = readData("dwb:valve2")
+	local state3 = readData("dwb:valve3")
+	local state4 = readData("dwb:valve4")
+
+	if (state1 == 1 and state2 == 1 and state3 == 1 and state4 == 1) then
+		CreatureObject(pCreature):setScreenPlayState(64, "death_watch_foreman_stage")
+		CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:restored_pressure")
+		-- Reset valves to starting state with A, B and D active
+		self:swapValveState(pCreature, 3, false)
 	end
 end
 
