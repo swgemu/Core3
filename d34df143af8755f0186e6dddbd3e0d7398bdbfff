@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_66601036",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-08T23:07:08Z",
+      "side": 1,
+      "message": "The problem with using secondary strength here is that for any dot other than fire, the value will always be zero.",
+      "revId": "d34df143af8755f0186e6dddbd3e0d7398bdbfff",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
