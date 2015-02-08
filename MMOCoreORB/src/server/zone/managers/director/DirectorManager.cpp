@@ -67,6 +67,7 @@
 #include "server/chat/LuaStringIdChatParameter.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/db/ServerDatabase.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -536,6 +537,9 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("PILOT_CORELLIA", Badge::PILOT_CORELLIA);
 	luaEngine->setGlobalInt("PILOT_TATOOINE", Badge::PILOT_TATOOINE);
 	luaEngine->setGlobalInt("BDG_ACCOLATE_HOME_SHOW", Badge::BDG_ACCOLATE_HOME_SHOW);
+
+	// SUI Window Types (WIP)
+	luaEngine->setGlobalInt("NEWSNET_INFO", SuiWindowType::NEWSNET_INFO);
 
 	Luna<LuaCellObject>::Register(luaEngine->getLuaState());
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());

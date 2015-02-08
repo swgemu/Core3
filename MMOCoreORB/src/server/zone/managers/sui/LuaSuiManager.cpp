@@ -9,6 +9,7 @@
 #include "SuiManager.h"
 #include "LuaSuiManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/sui/SuiWindowType.h"
 
 const char LuaSuiManager::className[] = "LuaSuiManager";
 
@@ -19,6 +20,7 @@ Luna<LuaSuiManager>::RegType LuaSuiManager::Register[] = {
 		{ "sendInputBox", &LuaSuiManager::sendInputBox },
 		{ "sendListBox", &LuaSuiManager::sendListBox },
 		{ "sendTransferBox", &LuaSuiManager::sendTransferBox },
+		{ "sendNewsnetBox", &LuaSuiManager::sendNewsnetBox },
 		{ 0, 0 }
 };
 
@@ -140,6 +142,25 @@ int LuaSuiManager::sendTransferBox(lua_State* L) {
 	LuaObject optionsTo(L);
 
 	realObject->sendTransferBox(usingObject, targetPlayer, title, text, optionsFrom, optionsTo, screenplay, callback);
+
+	return 0;
+}
+
+int LuaSuiManager::sendNewsnetBox(lua_State* L) {
+	if (lua_gettop(L) - 1 < 7) {
+		Logger::console.error("incorrect number of arguments for LuaSuiManager::sendNewsnetBox");
+		return 0;
+	}
+
+	SceneObject* usingObject = (SceneObject*) lua_touserdata(L, -7);
+	SceneObject* targetPlayer = (SceneObject*) lua_touserdata(L, -6);
+	String title = lua_tostring(L, -5);
+	String text = lua_tostring(L, -4);
+	String okButton = lua_tostring(L, -3);
+	String screenplay = lua_tostring(L, -2);
+	String callback = lua_tostring(L, -1);
+
+	realObject->sendMessageBox(usingObject, targetPlayer, title, text, okButton, screenplay, callback, SuiWindowType::NEWSNET_INFO);
 
 	return 0;
 }

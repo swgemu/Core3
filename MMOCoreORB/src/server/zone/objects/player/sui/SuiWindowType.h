@@ -264,6 +264,7 @@ public:
 	static const uint16 DROID_PLAYBACK_MENU = 1031;
 	static const uint16 DROID_DELETE_TRACK = 1031;
 	static const uint16 DROID_SET_INTEREST = 1032;
+	static const uint16 NEWSNET_INFO = 1033;
 };
 
 #endif /*SuiWindowType_H_*/
