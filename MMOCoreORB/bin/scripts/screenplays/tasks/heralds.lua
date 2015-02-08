@@ -3,13 +3,13 @@ local ObjectManager = require("managers.object.object_manager")
 heraldScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
-	heraldList = { --[[
-		{ planet = "corellia", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-		{ planet = "corellia", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-		{ planet = "corellia", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-		{ planet = "corellia", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-		{ planet = "corellia", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-
+	heraldList = {
+		{ planet = "corellia", template = "herald_commoner", customName = "Excited Journalist", x = -5192.9, z = 21, y = -2545.55, angle = 46.5164, cell = 0, destX = 4651, destY = -5616, stringFile = "herald_corellia_imperial_strongold" },
+		{ planet = "corellia", template = "herald_selonian_diplomat", x = 3256.5, z = 300, y = 5418.4, angle = -89, cell = 0, destX = -2482, destY = 2907, stringFile = "herald_corellia_afarathucave" },
+		{ planet = "corellia", template = "herald_corellia_karin", x = -185, z = 28, y = -4460.71, angle = 0, cell = 0, destX = 1041, destY = 4193, stringFile = "herald_corellia_drall_patriot_hideout" },
+		{ planet = "corellia", template = "herald_corellia_lock", x = -5418.26, z = 20.9986, y = -2792.36, angle = 59.9, cell = 0, destX = 1413, destY = -317, stringFile = "herald_corellia_lord_nyax_cult" },
+		{ planet = "corellia", template = "herald_corsec_agent", x = -202.143, z = 28, y = -4504.32, angle = 203.539, cell = 0, destX = 5290, destY = 1493, stringFile = "herald_corellia_rogue_corsec" },
+		--[[
 		{ planet = "dantooine", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
 		{ planet = "dantooine", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
 		{ planet = "dantooine", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
@@ -73,7 +73,12 @@ function heraldScreenPlay:spawnMobiles()
 	for i = 1, table.getn(mobiles), 1 do
 		if isZoneEnabled(mobiles[i].planet) then
 			local pSpawn = spawnMobile(mobiles[i].planet, mobiles[i].template, 1, mobiles[i].x, mobiles[i].z, mobiles[i].y, mobiles[i].angle, mobiles[i].cell)
-			writeData(SceneObject(pSpawn):getObjectID() .. ":heraldID", i)
+			if (pSpawn ~= nil) then
+				if (mobiles[i].customName ~= nil) then
+					CreatureObject(pSpawn):setCustomObjectName(mobiles[i].customName)
+				end
+				writeData(SceneObject(pSpawn):getObjectID() .. ":heraldID", i)
+			end
 		end
 	end
 end

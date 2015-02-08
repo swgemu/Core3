@@ -289,7 +289,6 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "informant_npc_lvl_1",0,-184,28,-4342,90,0)
 	spawnMobile("corellia", "io_tsomcren",60,-140.701,28,-4719.16,44.0418,0)
 	--{"junk_dealer",0,-118.2,28,-4792.9,-144,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
-	spawnMobile("corellia", "karin_featherlight",60,-185.082,28,-4460.71,86.3314,0)
 
 	--Meatlump's outside
 	spawnMobile("corellia", "meatlump_buffoon",300,-145,28.9,-4959.8,63,0)
