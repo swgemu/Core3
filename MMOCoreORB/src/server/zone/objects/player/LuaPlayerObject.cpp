@@ -58,6 +58,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getCharacterAgeInDays", &LuaPlayerObject::getCharacterAgeInDays},
 		{ "isPrivileged", &LuaPlayerObject::isPrivileged},
 		{ "getExperienceRatio", &LuaPlayerObject::getExperienceRatio},
+		{ "closeSuiWindowType", &LuaPlayerObject::closeSuiWindowType},
 		{ 0, 0 }
 };
 
@@ -497,4 +498,13 @@ int LuaPlayerObject::getExperienceRatio(lua_State* L) {
 	lua_pushstring(L, ratio.toCharArray());
 
 	return 1;
+}
+
+int LuaPlayerObject::closeSuiWindowType(lua_State* L) {
+        int type = lua_tointeger(L, -1);
+ 	unsigned suiType = (unsigned)type;
+
+	realObject->closeSuiWindowType( suiType );
+
+	return 0;
 }
