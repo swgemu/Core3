@@ -23,9 +23,9 @@ end
 function deathWatchTechnicianConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		
+
 		if (player:hasScreenPlayState(2, "death_watch_bunker_technician_sidequest") == 1) then
-			if (DeathWatchBunkerScreenPlay.ventsRepaired) then
+			if (readData("dwb:ventsEnabled") == 1) then
 				return convoTemplate:getScreen("quest_completed_gas_cleared")
 			else
 				return convoTemplate:getScreen("intro_prev_completed_new_escort")
@@ -42,8 +42,11 @@ function deathWatchTechnicianConvoHandler:getInitialScreen(pPlayer, pNpc, pConve
 				return convoTemplate:getScreen("escort_failed")
 			end
 		else
-			return convoTemplate:getScreen("cant_talk_busy") -- Temporary until escort implemented
-			--return convoTemplate:getScreen("intro")
+			if (readData("dwb:ventsEnabled") == 1) then
+				return convoTemplate:getScreen("cant_talk_busy")
+			else
+				return convoTemplate:getScreen("intro")
+			end
 		end
 	end)
 end
@@ -60,15 +63,16 @@ function deathWatchTechnicianConvoHandler:runScreenHandlers(conversationTemplate
 			player:setScreenPlayState(1, "death_watch_bunker_technician_sidequest")
 			writeData("dwb:droidEscortStatus", 1)
 			writeData("dwb:droidEscortStarter", player:getObjectID())
+			DeathWatchBunkerScreenPlay:doVentDroidStep(nil)
 		elseif (screenID == "escort_failed") then
-			if (DeathWatchBunkerScreenPlay.ventDroidAvailable) then
+			if (readData("dwb:ventDroidAvailable") == 1) then
 				clonedConversation:addOption("@conversation/death_watch_technician:s_7d875e15", "release_the_droid")
 			else
 				clonedConversation:addOption("@conversation/death_watch_technician:s_7d875e15", "building_new_droid")
 			end
 			clonedConversation:addOption("@conversation/death_watch_technician:s_3bc0260c", "not_first_person")
 		elseif (screenID == "intro_prev_completed_new_escort") then
-			if (DeathWatchBunkerScreenPlay.ventDroidAvailable) then
+			if (readData("dwb:ventDroidAvailable") == 1) then
 				clonedConversation:addOption("@conversation/death_watch_technician:s_373533eb", "knew_could_count")
 			else
 				clonedConversation:addOption("@conversation/death_watch_technician:s_373533eb", "building_new_droid")

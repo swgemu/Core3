@@ -141,7 +141,7 @@ should_be_escorting = ConvoScreen:new {
 deathWatchTechnicianConvoTemplate:addScreen(should_be_escorting);
 
 escort_in_progress = ConvoScreen:new {
-	id = "should_be_escorting",
+	id = "escort_in_progress",
 	leftDialog = "@conversation/death_watch_technician:s_1fb416ce", -- Give me a few minutes. I just sent out one of my droids on a dangerous mission with an escort. I am hoping that this works.
 	stopConversation = "true",
 	options = {
