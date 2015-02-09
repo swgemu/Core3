@@ -8,6 +8,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/creature/events/RespawnCreatureTask.h"
 #include "engine/engine.h"
 
 class TameCreatureTask : public Task {
@@ -158,6 +159,17 @@ public:
 		if (creature->isAiAgent()) {
 			AiAgent* agent = cast<AiAgent*>(creature.get());
 			ManagedReference<SceneObject*> parent = player->getParent().get();
+
+			if (agent->getHomeObject() == NULL) {
+				float respawn = agent->getRespawnTimer() * 1000;
+
+				if (agent->getRandomRespawn()) {
+					respawn = System::random(respawn) + (respawn / 2.f);
+				}
+
+				Reference<Task*> task = new RespawnCreatureTask(agent, agent->getZone(), agent->getLevel());
+				task->schedule(respawn);
+			}
 
 			agent->setFollowObject(player);
 			agent->storeFollowObject();
