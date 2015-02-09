@@ -4562,6 +4562,15 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 		return false;
 	}
 
+	uint32 forceRun1CRC = BuffCRC::JEDI_FORCE_RUN_1;
+	uint32 forceRun2CRC = BuffCRC::JEDI_FORCE_RUN_2;
+	uint32 forceRun3CRC = BuffCRC::JEDI_FORCE_RUN_3;
+
+	if(player->hasBuff(forceRun1CRC) || player->hasBuff(forceRun2CRC) || player->hasBuff(forceRun3CRC)) {
+		player->sendSystemMessage("@combat_effects:burst_run_no"); // You cannot burst run right now.
+		return false;
+	}
+
 	Zone* zone = player->getZone();
 
 	if (zone == NULL) {

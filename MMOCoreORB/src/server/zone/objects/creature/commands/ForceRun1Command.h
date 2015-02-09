@@ -68,29 +68,29 @@ public:
 			return NOJEDIARMOR;
 		}
 
+		uint32 forceRun1CRC = BuffCRC::JEDI_FORCE_RUN_1;
+		uint32 forceRun2CRC = BuffCRC::JEDI_FORCE_RUN_2;
+		uint32 forceRun3CRC = BuffCRC::JEDI_FORCE_RUN_3;
 
-		uint32 buffcrc1 = BuffCRC::JEDI_FORCE_RUN_1;
-		uint32 buffcrc2 = BuffCRC::JEDI_FORCE_RUN_2;
-		uint32 buffcrc3 = BuffCRC::JEDI_FORCE_RUN_3;
-
-		if(creature->hasBuff(buffcrc1) || creature->hasBuff(buffcrc2) || creature->hasBuff(buffcrc3)) {
-			creature->sendSystemMessage("@jedi_spam:force_buff_present");
+		if(creature->hasBuff(forceRun1CRC) || creature->hasBuff(forceRun3CRC) || creature->hasBuff(forceRun3CRC)) {
+			creature->sendSystemMessage("@jedi_spam:force_buff_present"); //"You already have a similar Force enhancement active."
 			return GENERALERROR;
 		}
 
+		if (creature->hasBuff(String("burstrun").hashCode()) || creature->hasBuff(String("retreat").hashCode())) {
+			creature->removeBuff(String("burstrun").hashCode());
+			creature->removeBuff(String("retreat").hashCode());
+		}
 
 		// Force cost of skill.
 		int forceCost = 200;
-
 
 		//Check for and deduct Force cost.
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
-
 		if (playerObject->getForcePower() <= forceCost) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
-
 			return GENERALERROR;
 		}
 
@@ -101,7 +101,7 @@ public:
 
 		int duration = 120;
 
-		ManagedReference<Buff*> buff = new Buff(creature, buffcrc1, duration, BuffType::JEDI);
+		ManagedReference<Buff*> buff = new Buff(creature, forceRun1CRC, duration, BuffType::JEDI);
 		buff->setSpeedMultiplierMod(1.5f);
 		buff->setAccelerationMultiplierMod(1.5f);
 		buff->setStartMessage(startStringId);
