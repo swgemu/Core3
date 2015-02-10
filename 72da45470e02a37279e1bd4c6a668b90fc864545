@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_862b0c94",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealAllSelf2Command.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2015-02-10T01:44:46Z",
+      "side": 1,
+      "message": "I tried doing it this way you suggested, and it threw an error at the linking stage, so  unfortunately I think it has to be done in this fashion.",
+      "parentUuid": "1a486d77_46363405",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_263b38ed",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealStatesSelfCommand.h",
         "patchSetId": 6
