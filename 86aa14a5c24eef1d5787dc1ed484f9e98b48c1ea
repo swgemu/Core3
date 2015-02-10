@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_461d1473",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1576,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-10T23:43:54Z",
+      "side": 1,
+      "message": "Each of the steps that have a wait say 20 seconds in the comments, but none of the events you create match that. Which is correct?",
+      "revId": "86aa14a5c24eef1d5787dc1ed484f9e98b48c1ea",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
