@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a486d77_a6572826",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4569,
+      "author": {
+        "id": 1369
+      },
+      "writtenOn": "2015-02-10T00:13:01Z",
+      "side": 1,
+      "message": "This gets repeated/copied \u0026 pasted around a lot, I\u0027m just getting my legs back under me, but is there a better way to have the isForceRunning once to avoid the crc typos",
+      "revId": "c69876657de45c43783198f0500afade745de668",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_26445873",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceRun1Command.h",
         "patchSetId": 2
@@ -13,6 +30,23 @@
       "writtenOn": "2015-02-09T23:39:18Z",
       "side": 1,
       "message": "You\u0027re checking 3 twice and not checking 2.",
+      "revId": "c69876657de45c43783198f0500afade745de668",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_86542c22",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceRun1Command.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1369
+      },
+      "writtenOn": "2015-02-10T00:13:01Z",
+      "side": 1,
+      "message": "probably should have a creature-\u003eisForceRunning helper or some such",
       "revId": "c69876657de45c43783198f0500afade745de668",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
