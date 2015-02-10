@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_e62400c8",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceArmor2Command.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1369
+      },
+      "writtenOn": "2015-02-10T01:41:45Z",
+      "side": 1,
+      "message": "maybe inline the BuffCRC::JEDI_FORCE_ARMOR_1/2 in the .add() calls to avoid having the generic naming \"buffCRC1\" for readability",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_c62104b6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceHealQueueCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1369
+      },
+      "writtenOn": "2015-02-10T01:41:45Z",
+      "side": 1,
+      "message": "Was this used at all?",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_46363405",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealAllSelf2Command.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1369
+      },
+      "writtenOn": "2015-02-10T01:41:45Z",
+      "side": 1,
+      "message": "Why not just inline the CreatureAttribute::HEALTH directly in the .put invocation to avoid the extra uint8 attr variable creation/assignment/mutable variable issues \u0026 it also might help improve readability a tidbit",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_263b38ed",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealStatesSelfCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1369
+      },
+      "writtenOn": "2015-02-10T01:41:45Z",
+      "side": 1,
+      "message": "I\u0027d just inline the CreatureState::\u0027s into the healStates.add invocations here too unless there was a good reason",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_06403c55",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediCombatQueueCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1369
+      },
+      "writtenOn": "2015-02-10T01:41:45Z",
+      "side": 1,
+      "message": "you might consider making this private",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
