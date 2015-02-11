@@ -61,10 +61,6 @@ export CC=clang
 export CXX=clang++
 export CPPFLAGS="-w -lstdc++ -DGTEST_USE_OWN_TR1_TUPLE=1 -I/usr/local/include"
 export CXXFLAGS="-lstdc++ -stdlib=libstdc++"
-
-
-CPPFLAGS="$CPPFLAGS -I/mypath/include"
-
 export CLASSPATH="PROJECT_PATH/MMOEngine/bin/idlc.jar"
 
 5.) Install idlc to /usr/local/bin
