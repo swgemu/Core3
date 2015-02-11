@@ -5,9 +5,9 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
 2.) Install the following homebrew packages
 brew install automake
-brew install lua
+brew install lua (need 5.1.x, engine doesn't work with 5.3x, to get around this I (McMahon downloaded it directly and installed it into /usr/local))
 brew install luarocks
-brew install mysql
+brew install mysql (If using the official mysql see below)
 brew install autoconf
 brew install libtool
 brew install apple-gcc42 (if you want to compile with older gcc)
@@ -59,16 +59,36 @@ brew install berkeley-db
 Setup the following variables for compiling
 export CC=clang
 export CXX=clang++
-export CPPFLAGS="-w -lstdc++ -DGTEST_USE_OWN_TR1_TUPLE=1"
+export CPPFLAGS="-w -lstdc++ -DGTEST_USE_OWN_TR1_TUPLE=1 -I/usr/local/include"
 export CXXFLAGS="-lstdc++ -stdlib=libstdc++"
 export CLASSPATH="PROJECT_PATH/MMOEngine/bin/idlc.jar"
 
 5.) Install idlc to /usr/local/bin
 cp PROJECT_PATH/MMOEngine/bin/idlc* /usr/local/bin
 
+McMahon's hack:
+$ cat /usr/local/bin/idlc
+export CLASSPATH=$CLASSPATH:/usr/local/bin/idlc.jar
+java org.sr.idlc.compiler.Compiler
+
 6.) Create a symlink for mysql
+
 mkdir /usr/local/include/mysql5
 ln -s /usr/local/include/mysql /usr/local/include/mysql5/mysql
+
+# Additionally McMahon's Path (Using the Official OSX MySQL Bundle): 
+6.a) Includes
+ln -s /usr/local/mysql/include /usr/local/include/mysql (the #include's use the convention "mysql/mysql.h")
+mkdir /usr/local/include/mysql5  (There are additional mysql5/mysql references)
+ln -s /usr/local/include/mysql /usr/local/include/mysql5/mysql
+
+6.b) Libraries
+ln -s /usr/local/mysql/lib /usr/local/lib/mysql
+mkdir /usr/local/lib/mysql5
+ln -s /usr/local/lib/mysql /usr/local/lib/mysql5/mysql
+
+6.c) Make sure the dylib is installed correctly
+sudo install_name_tool -id /usr/local/mysql-5.5.25a-osx10.6-x86_64/lib/libmysqlclient.18.dylib  /usr/local/mysql-5.5.25a-osx10.6-x86_64/lib/libmysqlclient.18.dylib
 
 7.) make clean && make config && make build
 8.) Profit!
