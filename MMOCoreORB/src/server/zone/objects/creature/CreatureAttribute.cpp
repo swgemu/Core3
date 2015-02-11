@@ -42,39 +42,90 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef CREATUREATTRIBUTE_H_
-#define CREATUREATTRIBUTE_H_
+#include "CreatureAttribute.h"
 
-#include "engine/engine.h"
+const uint8 CreatureEncumbrance::HEALTH = 0;
+const uint8 CreatureEncumbrance::ACTION = 1;
+const uint8 CreatureEncumbrance::MIND = 2;
 
-class CreatureEncumbrance {
-public:
-	static const uint8 HEALTH;
-	static const uint8 ACTION;
-	static const uint8 MIND;
-};
+const uint8 CreatureAttribute::HEALTH = 0;
+const uint8 CreatureAttribute::STRENGTH = 1;
+const uint8 CreatureAttribute::CONSTITUTION = 2;
+const uint8 CreatureAttribute::ACTION = 3;
+const uint8 CreatureAttribute::QUICKNESS = 4;
+const uint8 CreatureAttribute::STAMINA = 5;
+const uint8 CreatureAttribute::MIND = 6;
+const uint8 CreatureAttribute::FOCUS = 7;
+const uint8 CreatureAttribute::WILLPOWER = 8;
+const uint8 CreatureAttribute::UNKNOWN = 9;
 
-class CreatureAttribute {
-public:
-	static const uint8 HEALTH;
-	static const uint8 STRENGTH;
-	static const uint8 CONSTITUTION;
-	static const uint8 ACTION;
-	static const uint8 QUICKNESS;
-	static const uint8 STAMINA;
-	static const uint8 MIND;
-	static const uint8 FOCUS;
-	static const uint8 WILLPOWER;
-	static const uint8 UNKNOWN;
-
-	static const uint8 ARRAYSIZE;
-
-	static bool isHAM(uint8 attribute);
-
-	static uint8 getAttribute(String attribute);
-
-	static String getName(const uint8 attribute, bool initialCap = false);
-};
+const uint8 CreatureAttribute::ARRAYSIZE = 9;
 
 
-#endif /* CREATUREATTRIBUTE_H_ */
+bool CreatureAttribute::isHAM(uint8 attribute) {
+	return (attribute == HEALTH || attribute == ACTION || attribute == MIND);
+}
+
+uint8 CreatureAttribute::getAttribute(String attribute) {
+	attribute = attribute.toLowerCase();
+
+	if (attribute == "action")
+		return ACTION;
+	else if (attribute == "mind")
+		return MIND;
+	else if (attribute == "strength")
+		return STRENGTH;
+	else if (attribute == "constitution")
+		return CONSTITUTION;
+	else if (attribute == "quickness")
+		return QUICKNESS;
+	else if (attribute == "stamina")
+		return STAMINA;
+	else if (attribute == "focus")
+		return FOCUS;
+	else if (attribute == "willpower")
+		return WILLPOWER;
+	else
+		return HEALTH;
+
+}
+
+String CreatureAttribute::getName(const uint8 attribute, bool initialCap) {
+	String name = "";
+
+	switch (attribute) {
+	case ACTION:
+		name = "action";
+		break;
+	case MIND:
+		name = "mind";
+		break;
+	case STRENGTH:
+		name = "strength";
+		break;
+	case CONSTITUTION:
+		name = "constitution";
+		break;
+	case QUICKNESS:
+		name = "quickness";
+		break;
+	case STAMINA:
+		name = "stamina";
+		break;
+	case FOCUS:
+		name = "focus";
+		break;
+	case WILLPOWER:
+		name = "willpower";
+		break;
+	default:
+	case HEALTH:
+		name = "health";
+		break;
+	}
+
+	if (initialCap)
+		name[0] = toupper(name[0]);
+
+	return name;
+}
