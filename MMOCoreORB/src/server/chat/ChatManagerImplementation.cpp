@@ -547,7 +547,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 					ManagedReference<ChatMessage*> chatMessage = new ChatMessage();
 					chatMessage->setString(message.toString());
 
-					object->notifyObservers(ObserverEventType::SPATIALCHATRECEIVED, chatMessage);
+					object->notifyObservers(ObserverEventType::SPATIALCHATRECEIVED, chatMessage, player->getObjectID());
 				}
 
 				if (object->isPlayerCreature()) {
@@ -659,7 +659,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 					ManagedReference<ChatMessage*> chatMessage = new ChatMessage();
 					chatMessage->setString(message.toString());
 
-					object->notifyObservers(ObserverEventType::SPATIALCHATRECEIVED, chatMessage);
+					object->notifyObservers(ObserverEventType::SPATIALCHATRECEIVED, chatMessage, player->getObjectID());
 				}
 
 				if (object->isPlayerCreature()) {

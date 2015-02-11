@@ -253,8 +253,8 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	-- Voice Recognition Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/terminal_free_s1.iff",74.7941,-54,-143.444,5996348,-0.707107,0,0.707107,0)
 	spawnedSceneObject:_setObject(spawnedPointer)
-	createObserver(SPATIALCHATRECEIVED, "DeathWatchBunkerScreenPlay", "voiceTerminalSpatialReceived", spawnedPointer)
 	spawnedSceneObject:setCustomObjectName("Voice Control Terminal")
+	createObserver(SPATIALCHATRECEIVED, "DeathWatchBunkerScreenPlay", "voiceTerminalSpatialReceived", spawnedPointer)
 
 	-- Voice Terminal Instruction message
 	local pActiveArea = spawnSceneObject("endor", "object/active_area.iff",-4588,-41.6,4182.3,0,0,0,0,0)
@@ -275,8 +275,10 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	createObserver(OBJECTDESTRUCTION, "DeathWatchBunkerScreenPlay", "bombDroidDetonated", spawnedPointer)
 
 	-- Bomb Droid Debris
-	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 112.552,-64,-116.21,5996348,0.925444,0,0.378885,0)
+	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 112.552,-63.7,-116.21,5996348,0.925444,0,0.378885,0)
 	writeData("dwb:bombDebris", SceneObject(spawnedPointer):getObjectID())
+	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 113.134,-63.8,-149.44,5996348,0.376442,0,0.92644,0)
+	writeData("dwb:bombDebris2", SceneObject(spawnedPointer):getObjectID())
 
 	-- Armorsmith Access Terminal
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -232.11,-60,-219.996,5996373,0.707107,0,0.707107,0)
@@ -774,22 +776,33 @@ function DeathWatchBunkerScreenPlay:bombDroidDetonated(pBombDroid, pBombDroid2)
 	end
 
 	local debrisID = readData("dwb:bombDebris")
+	local debrisID2 = readData("dwb:bombDebris2")
 
 	local pDebris = getSceneObject(debrisID)
+	local pDebris2 = getSceneObject(debrisID2)
 
-	if (pDebris == nil) then
+	if (pDebris == nil and pDebris2 == nil) then
 		return
 	end
 
-	if (SceneObject(pBombDroid):isInRangeWithObject(pDebris, 5)) then
+	if (pDebris ~= nil and SceneObject(pBombDroid):isInRangeWithObject(pDebris, 5)) then
 		SceneObject(pDebris):playEffect("clienteffect/combat_grenade_proton.cef", "")
 		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris)
+	elseif (pDebris2 ~= nil and SceneObject(pBombDroid):isInRangeWithObject(pDebris2, 5)) then
+		SceneObject(pDebris):playEffect("clienteffect/combat_grenade_proton.cef", "")
+		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris2)
 	end
 end
 
 function DeathWatchBunkerScreenPlay:respawnDebris(pOldDebris)
-	local pDebris = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 112.552,-64,-116.21,5996348,0.925444,0,0.378885,0)
-	writeData("dwb:bombDebris", SceneObject(pDebris):getObjectID())
+	local oldDebrisID = SceneObject(pOldDebris):getObjectID()
+	if (oldDebrisID == readData("dwb:bombDebris")) then 
+		local pDebris = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 112.552,-64,-116.21,5996348,0.925444,0,0.378885,0)
+		writeData("dwb:bombDebris", SceneObject(pDebris):getObjectID())
+	elseif (oldDebrisID == readData("dwb:bombDebris2")) then
+		local pDebris = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 113.134,-64,-149.44,5996348,0.376442,0,0.92644,0)
+		writeData("dwb:bombDebris2", SceneObject(pDebris):getObjectID())
+	end
 end
 
 function DeathWatchBunkerScreenPlay:destroyDebris(pDebris)
@@ -803,7 +816,7 @@ function DeathWatchBunkerScreenPlay:respawnBombDroid(pDroid)
 	local spawn = deathWatchSpecialSpawns["bombdroid"]
 	local pBombDroid = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 	CreatureObject(pBombDroid):setPvpStatusBitmask(0)
-	CreatureObject(spawnedPointer):setCustomObjectName("R2-M2")
+	CreatureObject(pBombDroid):setCustomObjectName("R2-M2")
 	AiAgent(pBombDroid):setAiTemplate("idlewait") -- Don't move unless patrol point is added to list
 	AiAgent(pBombDroid):setFollowState(4) -- Patrolling
 	writeData("dwb:bombDroid", SceneObject(pBombDroid):getObjectID())
