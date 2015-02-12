@@ -99,9 +99,11 @@ class GuildManager extends ManagedService implements Logger {
 		chatManager = chatmanager;
 	}
 
+	public native void loadLuaConfig();
+
 	private native void scheduleGuildUpdates();
 	public native void processGuildUpdate(GuildObject guild);
-	private native void destroyGuild(GuildObject guild);
+	private native void destroyGuild(GuildObject guild, @dereferenced StringIdChatParameter mailbody);
 
 	public native void sendGuildListTo(CreatureObject player, final string guildFilter);
 	public native void sendAdminGuildInfoTo(CreatureObject player, GuildObject guild);
