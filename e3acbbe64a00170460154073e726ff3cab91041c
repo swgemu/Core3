@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_0973adb2",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/StrafeShot1Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-12T04:13:01Z",
+      "side": 1,
+      "message": "why the playercreature check?",
+      "revId": "e3acbbe64a00170460154073e726ff3cab91041c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_e31f5208",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/StrafeShot2Command.h",
         "patchSetId": 1
