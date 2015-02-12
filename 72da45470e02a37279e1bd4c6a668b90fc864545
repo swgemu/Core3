@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_c93d95bd",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealAllSelf2Command.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-12T04:01:37Z",
+      "side": 1,
+      "message": "What error?",
+      "parentUuid": "1a486d77_862b0c94",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_263b38ed",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealStatesSelfCommand.h",
         "patchSetId": 6
@@ -99,6 +117,75 @@
       "writtenOn": "2015-02-10T01:41:45Z",
       "side": 1,
       "message": "you might consider making this private",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_a94a5953",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediCombatQueueCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-12T04:01:37Z",
+      "side": 1,
+      "message": "Moreover, you should be using the attackType variable already in this command, and probably don\u0027t need to define a method to check if (attackType \u003d\u003d CombatManager::FORCEATTACK). Checking if saber is in the name is definitely not future-proof.",
+      "parentUuid": "1a486d77_06403c55",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_89479d4b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-12T04:01:37Z",
+      "side": 1,
+      "message": "You don\u0027t need a whole method for this, especially when you use it once. Just check if (creature-\u003ehasAttackDelay()) when you need it. Since it\u0027s actually the attack delay that is causing the error and not the actual warcry debuff, this is also a clearer code intention.",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_6974619c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-12T04:01:37Z",
+      "side": 1,
+      "message": "The need for this function is also iffy, but if you really think it\u0027s necessary, then get rid of all the nesting. You can do everything in one if check, and you should be directly return the result of the comparison instead of explicit true or false returns. (which is why the need for this is iffy at best)",
+      "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_4979a592",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-12T04:01:37Z",
+      "side": 1,
+      "message": "No need to assign this int here, just put the call to checks inside the if below this. (This is a recurring problem in this patch, avoid creation of unnecessary variables).",
       "revId": "72da45470e02a37279e1bd4c6a668b90fc864545",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
