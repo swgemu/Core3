@@ -286,6 +286,7 @@ void ZoneServerImplementation::startManagers() {
 	guildManager = new GuildManager(_this.get(), processor);
 	guildManager->deploy("GuildManager");
 	guildManager->setChatManager(chatManager);
+	guildManager->loadLuaConfig();
 	guildManager->loadGuilds();
 
 	chatManager->initiatePlanetRooms();

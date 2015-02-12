@@ -64,6 +64,22 @@
 
 #include "GuildMailTask.h"
 
+void GuildManagerImplementation::loadLuaConfig() {
+	info("Loading configuration file.", true);
+
+	Lua* lua = new Lua();
+	lua->init();
+
+	lua->runFile("scripts/managers/guild_manager.lua");
+
+	guildUpdateInterval = lua->getGlobalInt("GuildUpdateInterval");
+	requiredMembers = lua->getGlobalInt("RequiredMembers");
+	maximumMembers = lua->getGlobalInt("MaximumMembers");
+
+	delete lua;
+	lua = NULL;
+}
+
 void GuildManagerImplementation::loadGuilds() {
 	Locker _lock(_this.get());
 
@@ -158,15 +174,18 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 		}
 	}
 
-	// Destroy guild if there are no members remaining
-	if (guild->getTotalMembers() == 0) {
+	// Destroy guild if there are not enough members remaining
+	if (guild->getTotalMembers() < requiredMembers) {
 		guild->unlock();
 
-		destroyGuild(guild);
+		StringIdChatParameter params;
+		params.setStringId("@guildmail:disband_not_enough_members_text"); // The guild has been disbanded due to lack of members.
+
+		destroyGuild(guild, params);
 
 		Locker locker(guild);
 
-		info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> was destroyed for having no members.", true);
+		info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> was destroyed due to lack of members.", true);
 		return;
 	}
 
@@ -175,7 +194,7 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 	guild->rescheduleUpdateEvent(guildUpdateInterval * 60);
 }
 
-void GuildManagerImplementation::destroyGuild(GuildObject* guild) {
+void GuildManagerImplementation::destroyGuild(GuildObject* guild, StringIdChatParameter& mailbody) {
 	Locker _lock(_this.get());
 
 	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
@@ -233,6 +252,8 @@ void GuildManagerImplementation::destroyGuild(GuildObject* guild) {
 			CreatureObject* member = cast<CreatureObject*>( obj.get());
 
 			member->setGuildObject(NULL);
+
+			chatManager->sendMail(guild->getGuildName(), "@guildmail:disband_subject", mailbody, member->getFirstName());
 
 			locker.release();
 
@@ -965,14 +986,11 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildTermi
 		return false;
 	}
 
-	// Send emails to guild
 	StringIdChatParameter params;
 	params.setStringId("@guildmail:disband_text"); //The guild has been disbanded by %TU
 	params.setTU(player->getFirstName());
 
-	sendGuildMail("@guildmail:disband_subject", params, guild);
-
-	destroyGuild(guild);
+	destroyGuild(guild, params);
 
 	guildTerminal->setGuildObject(NULL);
 
