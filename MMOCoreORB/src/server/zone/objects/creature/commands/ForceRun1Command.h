@@ -72,7 +72,7 @@ public:
 		uint32 forceRun2CRC = BuffCRC::JEDI_FORCE_RUN_2;
 		uint32 forceRun3CRC = BuffCRC::JEDI_FORCE_RUN_3;
 
-		if(creature->hasBuff(forceRun1CRC) || creature->hasBuff(forceRun3CRC) || creature->hasBuff(forceRun3CRC)) {
+		if(creature->hasBuff(forceRun1CRC) || creature->hasBuff(forceRun2CRC) || creature->hasBuff(forceRun3CRC)) {
 			creature->sendSystemMessage("@jedi_spam:force_buff_present"); //"You already have a similar Force enhancement active."
 			return GENERALERROR;
 		}

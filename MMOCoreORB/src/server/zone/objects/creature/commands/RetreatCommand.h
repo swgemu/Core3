@@ -68,7 +68,7 @@ public:
 		}
 
 		if (zone->getZoneName() == "dungeon1") {
-			creature->sendSystemMessage("@cbt_spam:burst_run_space_dungeon"); //The artificial gravity makes burst running impossible here.
+			creature->sendSystemMessage("@combat_effects:burst_run_space_dungeon"); //The artificial gravity makes burst running impossible here.
 			return false;
 		}
 
