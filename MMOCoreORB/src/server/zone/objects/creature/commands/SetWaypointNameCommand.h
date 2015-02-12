@@ -90,7 +90,7 @@ public:
 
 		waypoint->setCustomObjectName(arguments, false);
 
-		ghost->setWaypoint(waypoint, true);
+		ghost->updateWaypoint(waypoint->getObjectID());
 
 		return SUCCESS;
 	}

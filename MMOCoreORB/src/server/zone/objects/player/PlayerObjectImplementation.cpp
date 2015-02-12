@@ -718,6 +718,21 @@ void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyCl
 	}
 }
 
+void PlayerObjectImplementation::updateWaypoint(uint64 waypointID) {
+	ManagedReference<WaypointObject*> waypoint = waypointList.get(waypointID);
+
+	if (waypoint == NULL)
+		return;
+
+	PlayerObjectDeltaMessage8* msg = new PlayerObjectDeltaMessage8(this);
+	msg->startUpdate(1);
+	waypointList.update(waypointID, msg, 1);
+	msg->close();
+
+	sendMessage(msg);
+
+}
+
 void PlayerObjectImplementation::removeWaypointBySpecialType(int specialTypeID, bool notifyClient) {
 	uint64 waypointID = waypointList.getWaypointBySpecialType(specialTypeID);
 

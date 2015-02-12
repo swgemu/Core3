@@ -89,6 +89,25 @@ public:
 		return true;
 	}
 
+	bool update(const uint64& key, DeltaMessage* message, int updates = 1) {
+		if (!vectorMap.contains(key))
+			return false;
+
+		ManagedReference<WaypointObject*> value = vectorMap.get(key);
+
+		if (message != NULL) {
+			if (updates != 0)
+				message->startList(updates, updateCounter += updates);
+
+			message->insertByte(2);
+
+			message->insertLong(key);
+			value->insertToMessage(message);
+		}
+
+		return true;
+	}
+
 	void insertToMessage(BaseMessage* msg) {
 		msg->insertInt(size());
 		msg->insertInt(getUpdateCounter());

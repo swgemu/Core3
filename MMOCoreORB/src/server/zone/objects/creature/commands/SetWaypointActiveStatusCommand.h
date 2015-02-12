@@ -68,9 +68,19 @@ public:
 		if (wp == NULL || !wp->isWaypointObject())
 			return INVALIDPARAMETERS;
 
+		PlayerObject* ghost = creature->getPlayerObject();
+
+		if (ghost == NULL)
+			return GENERALERROR;
+
 		WaypointObject* waypoint = cast<WaypointObject*>( wp.get());
 
+		if (!ghost->hasWaypoint(waypoint->getObjectID()))
+			return GENERALERROR;
+
 		waypoint->toggleStatus();
+
+		ghost->updateWaypoint(waypoint->getObjectID());
 
 		return SUCCESS;
 	}
