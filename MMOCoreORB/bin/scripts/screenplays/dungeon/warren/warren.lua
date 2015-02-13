@@ -742,7 +742,7 @@ end
 function MCRElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
 	return ObjectManager.withCreatureObject(pPlayer, function(creature)
 		if (selectedID ~= 199) or (not WarrenScreenPlay:isMCRElevatorActive()) then
-			SceneObject(pTerminal):showFlyText("theme_park/warren/warren_system_messages", "elev_one_secure", 0, 255, 0)
+			SceneObject(pSceneObject):showFlyText("theme_park/warren/warren_system_messages", "elev_one_secure", 0, 255, 0)
 			return 0
 		end
 
