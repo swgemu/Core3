@@ -2747,6 +2747,11 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 		playerManager->notifyDestruction(attacker, _this.get(), condition);
 	}
 
+	if (attacker->isAiAgent()) {
+		AiAgent* aiAgent = cast<AiAgent*>(attacker);
+		aiAgent->sendReactionChat(CreatureManager::GLOAT);
+	}
+
 	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
 

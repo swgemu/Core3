@@ -22,6 +22,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/creature/buffs/StateBuff.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 #include "server/zone/objects/creature/AiAgent.h"
@@ -237,6 +238,17 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	}
 
 	tano->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
+
+	if (damage > 0 && tano->isAiAgent()) {
+		AiAgent* aiAgent = cast<AiAgent*>(tano);
+		aiAgent->sendReactionChat(CreatureManager::HIT);
+	}
+
+	if (damage > 0 && attacker->isAiAgent()) {
+		AiAgent* aiAgent = cast<AiAgent*>(attacker);
+		aiAgent->sendReactionChat(CreatureManager::HITTARGET);
+	}
+
 	return damage;
 }
 

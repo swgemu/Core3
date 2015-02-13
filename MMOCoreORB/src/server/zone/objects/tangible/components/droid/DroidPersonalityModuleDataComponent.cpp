@@ -238,3 +238,6 @@ void DroidPersonalityModuleDataComponent::notifyEvent(unsigned int eventType, Ma
 	}
 }
 
+String DroidPersonalityModuleDataComponent::getPersonalityBase() {
+	return personalityBase;
+}
