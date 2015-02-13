@@ -34,7 +34,6 @@ rebel_trooper = Creature:new {
 		"object/mobile/dressed_rebel_trooper_twk_female_01.iff",
 		"object/mobile/dressed_rebel_trooper_twk_male_01.iff"
 	},
-	
 	lootGroups = {
 		{
 			groups = {
@@ -53,6 +52,7 @@ rebel_trooper = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

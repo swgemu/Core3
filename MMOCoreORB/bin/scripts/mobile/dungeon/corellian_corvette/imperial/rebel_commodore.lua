@@ -42,10 +42,11 @@ rebel_commodore = Creature:new {
 				{group = "wearables_rare", chance = 500000}
 			},
 			lootChance = 6000000
-		}	
+		}
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
 }
 

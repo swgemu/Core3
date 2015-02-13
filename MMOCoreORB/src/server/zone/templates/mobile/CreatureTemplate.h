@@ -98,6 +98,8 @@ protected:
 	String controlDeviceTemplate;
 	String containerComponentTemplate;
 
+	String reactionStf;
+
 public:
 	CreatureTemplate();
 
@@ -374,6 +376,10 @@ public:
 
 	inline String getContainerComponentTemplate() {
 		return containerComponentTemplate;
+	}
+
+	inline String getReactionStf() {
+		return reactionStf;
 	}
 
 	inline bool isSpecialProtection(int resistType) {

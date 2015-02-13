@@ -53,6 +53,7 @@ imperial_officer = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster,marksmanmaster),
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	optionsBitmask = 128
 }
 

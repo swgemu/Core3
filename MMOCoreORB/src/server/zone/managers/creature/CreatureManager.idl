@@ -47,7 +47,29 @@ class CreatureManager extends ZoneManager {
 	public static final short HASDNA = 0x00;
 	public static final short DNASAMPLED = 0x01;
 	public static final short DNADEATH = 0x03;
-	
+
+	// reaction types
+	public static final int ALERT = 0;
+	public static final int ALLY = 1;
+	public static final int ASSIST = 2;
+	public static final int ATTACKED = 3;
+	public static final int BYE = 4;
+	public static final int CALM = 5;
+	public static final int DEATH = 6;
+	public static final int FLEE = 7;
+	public static final int GLOAT = 8;
+	public static final int HELP = 9;
+	public static final int HI = 10;
+	public static final int HIT = 11;
+	public static final int HITTARGET = 12;
+	public static final int THREAT = 13;
+
+	// reaction states
+	public static final int NONE = 0;
+	public static final int NICE = 1;
+	public static final int MID = 2;
+	public static final int MEAN = 3;
+
 	public CreatureManager(Zone planet) {
 		super("CreatureManager " + planet.getZoneName());
 		

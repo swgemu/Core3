@@ -79,6 +79,7 @@ public:
 	void copy(BaseDroidModuleComponent* other);
 	void notifyEvent(unsigned int eventType, ManagedObject* arg1, int64 arg2,bool forced = false);
 	void quip(String message,DroidObject* droid);
+	String getPersonalityBase();
 };
 
 

@@ -46,6 +46,7 @@ warden_vinzel_heylon = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 

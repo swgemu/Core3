@@ -50,6 +50,7 @@ imperial_senior_cadet = Creature:new {
 		}
 	},
 	weapons = {"ranged_weapons"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 
