@@ -30,6 +30,7 @@ civil_patrol_commander = Creature:new {
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

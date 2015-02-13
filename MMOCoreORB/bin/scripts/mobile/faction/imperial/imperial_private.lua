@@ -50,6 +50,7 @@ imperial_private = Creature:new {
 		}
 	},
 	weapons = {"imperial_weapons_light"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

@@ -971,7 +971,15 @@ class AiAgent extends CreatureObject {
 		
 		return npcTemplate.get().getLootGroups();
 	}
-	
+
+	@dirty
+	public string getReactionStf() {
+		if (npcTemplate.get() == null)
+			return "";
+
+		return npcTemplate.get().getReactionStf();
+	}
+
 	@read
 	public float getRespawnTimer() {
 		return respawnTimer;
@@ -1191,5 +1199,8 @@ class AiAgent extends CreatureObject {
 	public PetDeed getPetDeed() {
 		return petDeed;
 	}
-	
+
+	@preLocked
+	public native void sendReactionChat(int type, int state = 0);
+
 }

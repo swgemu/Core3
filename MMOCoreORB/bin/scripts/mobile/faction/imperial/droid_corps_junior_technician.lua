@@ -45,6 +45,7 @@ droid_corps_junior_technician = Creature:new {
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

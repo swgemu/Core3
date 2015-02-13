@@ -46,6 +46,7 @@ assault_trooper = Creature:new {
 	},
 	weapons = {"st_assault_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/stormtrooper",
 	attacks = merge(marksmanmaster,carbineermaster,brawlermaster)
 }
 

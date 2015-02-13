@@ -42,10 +42,11 @@ rebel_admiral = Creature:new {
 				{group = "wearables_scarce", chance = 1000000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
 }
 

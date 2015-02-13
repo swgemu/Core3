@@ -28,6 +28,7 @@ veteran_compforce_trooper = Creature:new {
 	templates = {"object/mobile/dressed_stormtrooper_groupleader_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 

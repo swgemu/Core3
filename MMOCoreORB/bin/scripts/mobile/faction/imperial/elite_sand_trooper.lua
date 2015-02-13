@@ -47,6 +47,7 @@ elite_sand_trooper = Creature:new {
 	},
 	weapons = {"sandtrooper_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/stormtrooper",
 	attacks = merge(riflemanmaster,marksmanmaster,brawlermaster)
 }
 

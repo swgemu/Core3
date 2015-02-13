@@ -34,6 +34,7 @@ rebel_scout = Creature:new {
 		"object/mobile/dressed_rebel_scout_zabrak_female_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

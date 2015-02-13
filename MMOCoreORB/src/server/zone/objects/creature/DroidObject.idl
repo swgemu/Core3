@@ -272,7 +272,13 @@ class DroidObject extends AiAgent {
 	 */
 	@local
 	public native CraftingStation getCraftingStation(int type);	
-	
+
+	/**
+	 * Returns a reaction stf if the droid has a personality chip
+	 */
+	@local
+	public native string getPersonalityBase();
+
 	@local
 	@dirty
 	public native BaseDroidModuleComponent getModule(final string name);

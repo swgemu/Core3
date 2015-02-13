@@ -63,6 +63,7 @@ CreatureTemplate::CreatureTemplate() {
 	defaultAttack = "defaultattack";
 	controlDeviceTemplate = "object/intangible/pet/pet_control.iff";
 	containerComponentTemplate = "";
+	reactionStf = "";
 }
 
 CreatureTemplate::~CreatureTemplate() {
@@ -82,9 +83,6 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	useOnlyRandomName = templateData->getBooleanField("useOnlyRandomName");
 	if(useOnlyRandomName)generateRandomName = true;
 	hasLastName = ! templateData->getBooleanField("firstNameOnly");
-
-
-
 
 	customName = templateData->getStringField("customName").trim();
 	socialGroup = templateData->getStringField("socialGroup").trim();
@@ -195,7 +193,5 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 
 	containerComponentTemplate = templateData->getStringField("containerComponentTemplate");
 
-	/*if ((pvpBitmask & CreatureFlag::ATTACKABLE) && attacks->size() == 0) {
-		System::out << "ERROR " << templateName << " is attackable but has no skills\n";
-	}*/
+	reactionStf = templateData->getStringField("reactionStf");
 }

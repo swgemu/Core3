@@ -101,15 +101,10 @@ void DroidPersonalityModuleDataComponent::onCall() {
 	}
 	Locker plock(droid);
 	notifyEvent(ObserverEventType::ENTEREDAREA,NULL,0,true);
-	droid->registerObserver(ObserverEventType::KILLEDCREATURE, observer);
 	droid->registerObserver(ObserverEventType::DAMAGERECEIVED, observer);
 	droid->registerObserver(ObserverEventType::ENTEREDAREA, observer);
 	droid->registerObserver(ObserverEventType::EXITEDAREA, observer);
-	droid->registerObserver(ObserverEventType::STARTCOMBAT, observer);
 	droid->registerObserver(ObserverEventType::DEFENDERADDED, observer);
-	droid->registerObserver(ObserverEventType::PLAYERKILLED, observer);
-	droid->registerObserver(ObserverEventType::PEACE, observer);
-	droid->registerObserver(ObserverEventType::FLEEING, observer);
 }
 void DroidPersonalityModuleDataComponent::onStore() {
 	ManagedReference<DroidObject*> droid = getDroidObject();
@@ -124,15 +119,10 @@ void DroidPersonalityModuleDataComponent::onStore() {
 	Locker dlock( droid );
 	notifyEvent(ObserverEventType::EXITEDAREA,NULL,0,true);
 
-	droid->dropObserver(ObserverEventType::KILLEDCREATURE, observer);
 	droid->dropObserver(ObserverEventType::DAMAGERECEIVED, observer);
 	droid->dropObserver(ObserverEventType::ENTEREDAREA, observer);
 	droid->dropObserver(ObserverEventType::EXITEDAREA, observer);
-	droid->dropObserver(ObserverEventType::STARTCOMBAT, observer);
 	droid->dropObserver(ObserverEventType::DEFENDERADDED, observer);
-	droid->dropObserver(ObserverEventType::PLAYERKILLED, observer);
-	droid->dropObserver(ObserverEventType::PEACE, observer);
-	droid->dropObserver(ObserverEventType::FLEEING, observer);
 }
 
 void DroidPersonalityModuleDataComponent::copy(BaseDroidModuleComponent* other) {
@@ -156,10 +146,6 @@ void DroidPersonalityModuleDataComponent::notifyEvent(unsigned int eventType, Ma
 		int roll = System::random(100);
 		StringBuffer message;
 		if (roll > 50 || forced) {
-			if (eventType == ObserverEventType::KILLEDCREATURE || eventType == ObserverEventType::PLAYERKILLED) {
-				// Droid killed a creature or player
-				quip("gloat",droid);
-			}
 			if (eventType == ObserverEventType::ENTEREDAREA || eventType == ObserverEventType::EXITEDAREA) {
 				if (eventType ==ObserverEventType::ENTEREDAREA)
 					message << "hi_";
@@ -180,15 +166,6 @@ void DroidPersonalityModuleDataComponent::notifyEvent(unsigned int eventType, Ma
 				}
 				message << responseAttitude;
 				quip(message.toString(),droid);
-			}
-			if (eventType == ObserverEventType::STARTCOMBAT) {
-				quip("attacked",droid);
-			}
-			if (eventType == ObserverEventType::FLEEING) {
-				quip("flee",droid);
-			}
-			if (eventType == ObserverEventType::PEACE) {
-				quip("calm",droid);
 			}
 			if (eventType == ObserverEventType::DEFENDERADDED) {
 				short type = System::random(1);
@@ -211,9 +188,6 @@ void DroidPersonalityModuleDataComponent::notifyEvent(unsigned int eventType, Ma
 				// quip("ally",droid);
 				if (target->getObjectID() == droid->getObjectID()) {
 					// it was us, how low is our health?
-					if (droid->isIncapacitated() || droid->isDead()) {
-						quip("death",droid);
-					}
 					int h,a,m, hM, aM, mM;
 					h = droid->getHAM(0);
 					a = droid->getHAM(3);
@@ -223,12 +197,7 @@ void DroidPersonalityModuleDataComponent::notifyEvent(unsigned int eventType, Ma
 					mM = droid->getMaxHAM(6);
 					if ( (hM - h < (hM/2)) || (aM - a < (aM/2)) || (mM - m < (mM/2))) {
 						quip("help",droid);
-					} else {
-						quip("hit",droid);
 					}
-				} else {
-					// droid hit a target
-					quip("hit_target",droid);
 				}
 			}
 			// we are going todo something
@@ -238,3 +207,6 @@ void DroidPersonalityModuleDataComponent::notifyEvent(unsigned int eventType, Ma
 	}
 }
 
+String DroidPersonalityModuleDataComponent::getPersonalityBase() {
+	return personalityBase;
+}

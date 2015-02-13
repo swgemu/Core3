@@ -472,8 +472,11 @@ int LuaAiAgent::runAway(lua_State* L) {
 	CreatureObject* target = static_cast<CreatureObject*>(lua_touserdata(L, -2));
 	float range = lua_tonumber(L, -1);
 
-	if (target != NULL)
+	if (target != NULL) {
+		Locker locker(realObject);
+
 		realObject->runAway(target, range);
+	}
 
 	return 0;
 }

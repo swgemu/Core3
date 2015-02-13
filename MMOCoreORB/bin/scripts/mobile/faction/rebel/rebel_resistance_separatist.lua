@@ -35,6 +35,7 @@ rebel_resistance_separatist = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 
