@@ -49,6 +49,7 @@ senior_specforce_lieutenant = Creature:new {
 		}
 	},
 	weapons = {"imperial_weapons_medium"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

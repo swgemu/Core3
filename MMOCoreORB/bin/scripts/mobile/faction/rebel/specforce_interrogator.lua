@@ -49,6 +49,7 @@ specforce_interrogator = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_medium"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

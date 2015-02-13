@@ -46,6 +46,7 @@ stormtrooper_rifleman = Creature:new {
 	},
 	weapons = {"st_rifleman_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/stormtrooper",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 

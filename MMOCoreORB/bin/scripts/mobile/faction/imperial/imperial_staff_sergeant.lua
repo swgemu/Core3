@@ -43,6 +43,7 @@ imperial_staff_sergeant = Creature:new {
 		}						
 	},
 	weapons = {"imperial_weapons_medium"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

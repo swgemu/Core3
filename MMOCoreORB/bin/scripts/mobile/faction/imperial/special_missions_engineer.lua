@@ -28,6 +28,7 @@ special_missions_engineer = Creature:new {
 	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

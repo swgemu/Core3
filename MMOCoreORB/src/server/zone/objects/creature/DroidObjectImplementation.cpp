@@ -55,6 +55,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.h"
+#include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
 #include "server/zone/managers/crafting/labratories/DroidMechanics.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
@@ -291,6 +292,17 @@ CraftingStation* DroidObjectImplementation::getCraftingStation(int type){
 	}
 	return NULL;
 }
+
+String DroidObjectImplementation::getPersonalityBase() {
+	for( int i=0; i<modules.size(); i++){
+		DroidPersonalityModuleDataComponent* module = cast<DroidPersonalityModuleDataComponent*>(modules.get(i));
+		if( module != NULL){
+			return module->getPersonalityBase();
+		}
+	}
+	return "";
+}
+
 void DroidObjectImplementation::onStore() {
 	for( int i=0; i<modules.size(); i++){
 		BaseDroidModuleComponent* module = modules.get(i);

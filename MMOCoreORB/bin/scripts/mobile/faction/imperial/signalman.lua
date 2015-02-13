@@ -28,6 +28,7 @@ signalman = Creature:new {
 	templates = {"object/mobile/dressed_imperial_soldier_m.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

@@ -46,6 +46,7 @@ rebel_resistance_dissident = Creature:new {
 		}	
 	},
 	weapons = {"rebel_weapons_light"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

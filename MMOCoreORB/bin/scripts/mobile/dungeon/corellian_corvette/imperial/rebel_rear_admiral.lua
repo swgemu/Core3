@@ -35,6 +35,7 @@ rebel_rear_admiral = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
 }
 

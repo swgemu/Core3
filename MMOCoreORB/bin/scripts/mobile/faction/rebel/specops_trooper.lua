@@ -34,6 +34,7 @@ specops_trooper = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
