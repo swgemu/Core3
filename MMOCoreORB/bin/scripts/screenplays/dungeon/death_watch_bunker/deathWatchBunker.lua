@@ -128,10 +128,8 @@ DeathWatchBunkerScreenPlay = ScreenPlay:new {
 
 	deathWatchValveEffects = { {42.2316,-30.5,-72.5555}, {56.0941,-30.5,-61.251}, {73.7982,-30.5,-76.4291}, {55.5855,-30.5,-92.8} },
 	ventDroidPatrolPoints = {
-		{{-6.2, -52, -120.8}},
-		{{-11.2, -52, -120.2}},
-		{{-21.8, -52, -117.4},{-21.8, -52, -114.3},{-5.6, -54.1, -112}},
-		{{-1.2, -54.1, -113.4},{-1.2, -54.1, -99.7},{6.2, -52, -99.6},{4.3, -52, -62.4}},
+		{{-19.9,-52.0,-131.0,5996345},{6.0,-52.0,-130.8, 5996345},{5.4,-52.0,-120.4,5996379},{-6.2, -52, -120.8,5996379}},
+		{{-21.8, -52, -117.4,5996379},{-21.8, -52, -114.3,5996379},{-5.7, -54.1, -112,5996379}},
 	},
 
 	spawnGroups = { "", "terminalAnextSpawn", "terminalBnextSpawn", "terminalCnextSpawn" },
@@ -155,6 +153,8 @@ function DeathWatchBunkerScreenPlay:start()
 		self:spawnObjects()
 		self:spawnMobiles()
 		self:setupPermissionGroups()
+
+		writeData("dwb:ventDroidAvailable", 1)
 
 		createEvent(1000 * 45, "DeathWatchBunkerScreenPlay", "poisonEvent", pBunker)
 		createObserver(ENTEREDBUILDING, "DeathWatchBunkerScreenPlay", "onEnterDWB", pBunker)
@@ -792,7 +792,7 @@ end
 
 function DeathWatchBunkerScreenPlay:respawnDebris(pOldDebris)
 	local oldDebrisID = SceneObject(pOldDebris):getObjectID()
-	if (oldDebrisID == readData("dwb:bombDebris")) then 
+	if (oldDebrisID == readData("dwb:bombDebris")) then
 		local pDebris = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/invulnerable_debris.iff", 112.552,-64,-116.21,5996348,0.925444,0,0.378885,0)
 		writeData("dwb:bombDebris", SceneObject(pDebris):getObjectID())
 	elseif (oldDebrisID == readData("dwb:bombDebris2")) then
@@ -1585,59 +1585,32 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		createEvent(30 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
 		writeData("dwb:ventDroidStep", curStep + 1)
 	elseif (curStep == 1) then -- Move to toolbox
+		self:sendMessageToCell(5996345, "@dungeon/death_watch:protect_tools")
+		self:sendMessageToCell(5996378, "@dungeon/death_watch:protect_tools")
+		self:sendMessageToCell(5996379, "@dungeon/death_watch:protect_tools")
 		self:doVentDroidMove(pDroid)
-	elseif (curStep == 2) then -- Wait 60 seconds
-		SceneObject(pDroid):updateDirection(30)
+	elseif (curStep == 2) then -- Wait 120 seconds
 		self:sendMessageToCell(5996379, "@dungeon/death_watch:protect_tools")
 		spawnMobile("endor", "death_watch_bloodguard", 0, -7.4, -52, -119.1, 120, 5996379)
-		createEvent(60 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
+		spawnMobile("endor", "death_watch_bloodguard", 0, -4.6, -52, -117.2, 172, 5996379)
+		spawnMobile("endor", "death_watch_bloodguard", 0, -3.1, -52, -120.7, -113, 5996379)
+		createEvent(120 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
 		writeData("dwb:ventDroidStep", curStep + 1)
-	elseif (curStep == 3) then -- Move to pipes next to toolbox
-		self:doVentDroidMove(pDroid)
-	elseif (curStep == 4) then -- Start repair effect, wait 60 secs
+	elseif (curStep == 3) then -- move to first center boxed area
 		self:sendMessageToCell(5996379, "@dungeon/death_watch:protect_fix")
-		spawnMobile("endor", "death_watch_bloodguard", 0, -12.4, -52, -118.2, 157, 5996379)
-		local pValveEffect = spawnSceneObject("endor","object/static/particle/pt_poi_droid_weld_sparks.iff",-11.4, -51.5, -120.2,5996379,0.707,0,0,0.707)
-		if (pValveEffect ~= nil) then
-			writeData("dwb:ventDroidEffectID", SceneObject(pValveEffect):getObjectID())
-		end
-		createEvent(60 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
-		writeData("dwb:ventDroidStep", curStep + 1)
-	elseif (curStep == 5) then -- End repair effect, move to first center boxed area
-		local effectID = readData("dwb:ventDroidEffectID")
-		local pEffect = getSceneObject(effectID)
-		if (pEffect ~= nil) then
-			SceneObject(pEffect):destroyObjectFromWorld()
-		end
 		self:doVentDroidMove(pDroid)
-	elseif (curStep == 6) then -- Start repair effect, wait 60 seconds
+	elseif (curStep == 4) then -- Start repair effect, wait 120 seconds
 		spawnMobile("endor", "death_watch_bloodguard", 0, -1.9, -54.1, -112.9, -66, 5996379)
-		self:sendMessageToCell(5996379, "@dungeon/death_watch:protect_fix")
+		spawnMobile("endor", "death_watch_bloodguard", 0, -1.7, -54.1, -110.0, -137, 5996379)
+		spawnMobile("endor", "death_watch_bloodguard", 0, -8.3, -54.1, -113.9, 83, 5996379)
 		SceneObject(pDroid):updateDirection(0)
 		local pValveEffect = spawnSceneObject("endor","object/static/particle/pt_poi_droid_weld_sparks.iff",-6.0, -53.2, -112,5996379,0.707,0.707,0,0)
 		if (pValveEffect ~= nil) then
 			writeData("dwb:ventDroidEffectID", SceneObject(pValveEffect):getObjectID())
 		end
-		createEvent(60 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
-		writeData("dwb:ventDroidStep", curStep + 1)
-	elseif (curStep == 7) then -- End repair effect, move to second center boxed area
-		local effectID = readData("dwb:ventDroidEffectID")
-		local pEffect = getSceneObject(effectID)
-		if (pEffect ~= nil) then
-			SceneObject(pEffect):destroyObjectFromWorld()
-		end
-		self:doVentDroidMove(pDroid)
-	elseif (curStep == 8) then -- Start repair effect, wait 120 seconds
-		self:sendMessageToCell(5996379, "@dungeon/death_watch:protect_fix")
-		spawnMobile("endor", "death_watch_bloodguard", 0, 6.5, -52, -62.7, -145, 5996379)
-		spawnMobile("endor", "death_watch_bloodguard", 0, 0.6, -52, -62.6, 116, 5996379)
-		local pValveEffect = spawnSceneObject("endor","object/static/particle/pt_poi_droid_weld_sparks.iff",4.3, -51.5, -62.4,5996379,0.707,0.707,0,0)
-		if (pValveEffect ~= nil) then
-			writeData("dwb:ventDroidEffectID", SceneObject(pValveEffect):getObjectID())
-		end
 		createEvent(120 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
 		writeData("dwb:ventDroidStep", curStep + 1)
-	elseif (curStep == 9) then -- End effect, Despawn droid, complete quest
+	elseif (curStep == 5) then -- End effect, Despawn droid, complete quest
 		local effectID = readData("dwb:ventDroidEffectID")
 		local pEffect = getSceneObject(effectID)
 		if (pEffect ~= nil) then
@@ -1661,9 +1634,9 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		if (pStarter == nil) then
 			return
 		end
-		
+
 		CreatureObject(pStarter):setScreenPlayState(2, "death_watch_bunker_technician_sidequest")
-		
+
 		createEvent(60 * 60 * 1000, "DeathWatchBunkerScreenPlay", "disableVents", pStarter) -- Disable vents after an hour
 	end
 end
@@ -1679,10 +1652,6 @@ function DeathWatchBunkerScreenPlay:doVentDroidMove(pDroid)
 		patrolPoints = self.ventDroidPatrolPoints[1]
 	elseif (curStep == 3) then
 		patrolPoints = self.ventDroidPatrolPoints[2]
-	elseif (curStep == 5) then
-		patrolPoints = self.ventDroidPatrolPoints[3]
-	elseif (curStep == 7) then
-		patrolPoints = self.ventDroidPatrolPoints[4]
 	else
 		printf("ERROR: DeathWatchBunkerScreenPlay:doVentDroidMove called on wrong step.\n")
 		return
@@ -1698,8 +1667,12 @@ function DeathWatchBunkerScreenPlay:doVentDroidMove(pDroid)
 		return
 	end
 
-	local pCell = getSceneObject(5996379)
 	local nextPoint = patrolPoints[onCurrentPoint + 1]
+	local pCell = getSceneObject(nextPoint[4])
+
+	if (pCell == nil) then
+		return 0
+	end
 
 	AiAgent(pDroid):stopWaiting()
 	AiAgent(pDroid):setWait(0)
