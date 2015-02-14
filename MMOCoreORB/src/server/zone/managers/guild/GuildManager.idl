@@ -212,9 +212,7 @@ class GuildManager extends ManagedService implements Logger {
 	public native void leaveGuild(CreatureObject player, GuildObject guild);
 	
 	public native void setMemberTitle(CreatureObject player, CreatureObject target, final string title);
-	
-	public native void setAllegianceTo(CreatureObject player, unsigned long targetID, GuildTerminal guildTerminal);
-	
+
 	public native void toggleGuildPermission(CreatureObject player, unsigned long targetID, int permissionIndex, GuildTerminal guildTerminal);
 	
 	public native ChatRoom createGuildChannels(GuildObject guild);

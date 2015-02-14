@@ -63,21 +63,14 @@ public:
 
 		CreatureObject* target = cast<CreatureObject*>( playObj.get());
 
-		//Guild Leader doesn't have the set allegiance option, so if this player is the guild leader, then we need to increment the index by 1!
-		if (guild->isGuildLeader(player))
-			++index;
-
 		switch (index) {
-		case 0: //Set Allegiance
-			guildManager->setAllegianceTo(player, memberID, guildTerminal);
-			break;
-		case 1: //Kick
+		case 0: //Kick
 			guildManager->sendGuildKickPromptTo(player, target);
 			break;
-		case 2: //Set Title
+		case 1: //Set Title
 			guildManager->sendGuildSetTitleTo(player, target);
 			break;
-		case 3: //Change Permissions
+		case 2: //Change Permissions
 			guildManager->sendMemberPermissionsTo(player, memberID, guildTerminal);
 			break;
 		default:

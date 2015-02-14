@@ -21,13 +21,11 @@ namespace guild {
 		uint64 playerID;
 		String guildTitle;
 		uint8 permissions;
-		uint64 declaredAllegiance;
 
 	public:
 		GuildMemberInfo() {
 			playerID = 0;
 			permissions = 0;
-			declaredAllegiance = 0;
 
 			//addSerializableVariables();
 		}
@@ -38,7 +36,6 @@ namespace guild {
 			playerID = gmi.playerID;
 			guildTitle = gmi.guildTitle;
 			permissions = gmi.permissions;
-			declaredAllegiance = gmi.declaredAllegiance;
 
 			//addSerializableVariables();
 		}
@@ -51,7 +48,6 @@ namespace guild {
 			stream->writeLong(playerID);
 			guildTitle.toBinaryStream(stream);
 			stream->writeByte(permissions);
-			stream->writeLong(declaredAllegiance);
 
 			return true;
 		}
@@ -60,7 +56,6 @@ namespace guild {
 			playerID = stream->readLong();
 			guildTitle.parseFromBinaryStream(stream);
 			permissions = stream->readByte();
-			declaredAllegiance = stream->readLong();
 
 			return true;
 		}
@@ -69,7 +64,6 @@ namespace guild {
 			addSerializableVariable("playerID", &playerID);
 			addSerializableVariable("guildTitle", &guildTitle);
 			addSerializableVariable("permissions", &permissions);
-			addSerializableVariable("declaredAllegiance", &declaredAllegiance);
 		}*/
 
 		inline uint64 getPlayerID() {
@@ -110,14 +104,6 @@ namespace guild {
 
 		inline bool hasPermission(uint8 permission) {
 			return (permissions & permission);
-		}
-
-		inline uint64 getDeclaredAllegiance() {
-			return declaredAllegiance;
-		}
-
-		inline void setDeclaredAllegiance(uint64 playerid) {
-			declaredAllegiance = playerid;
 		}
 	};
 }

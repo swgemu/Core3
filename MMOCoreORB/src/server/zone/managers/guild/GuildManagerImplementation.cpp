@@ -604,10 +604,6 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player
 	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
 
-	//Guild leader's don't have this option!
-	if (guild->getGuildLeaderID() != player->getObjectID())
-		suiBox->addMenuItem("@guild:allegiance", memberID); //Set Allegiance
-
 	suiBox->addMenuItem("@guild:kick", memberID); //Kick
 	suiBox->addMenuItem("@guild:title", memberID); //Set Title
 	suiBox->addMenuItem("@guild:permissions", memberID); //Change Permissions
@@ -986,7 +982,6 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, con
 
 	//Handle setting of the guild leader.
 	GuildMemberInfo* gmi = guild->getMember(playerID);
-	gmi->setDeclaredAllegiance(playerID);
 	gmi->setPermissions(GuildObject::PERMISSION_ALL);
 
 	player->setGuildObject(guild);
@@ -1307,10 +1302,6 @@ void GuildManagerImplementation::setMemberTitle(CreatureObject* player, Creature
 		params.setTU(player->getDisplayedName());
 		target->sendSystemMessage(params);
 	}
-
-}
-
-void GuildManagerImplementation::setAllegianceTo(CreatureObject* player, uint64 targetID, GuildTerminal* guildTerminal) {
 
 }
 
