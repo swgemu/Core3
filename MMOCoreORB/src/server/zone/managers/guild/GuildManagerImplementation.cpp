@@ -296,6 +296,7 @@ void GuildManagerImplementation::sendGuildCreateNameTo(CreatureObject* player, G
 	inputBox->setPromptText("@guild:create_name_prompt");
 	inputBox->setMaxInputSize(24);
 	inputBox->setUsingObject(terminal);
+	inputBox->setForceCloseDistance(32);
 
 	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
@@ -321,6 +322,7 @@ void GuildManagerImplementation::sendGuildChangeNameTo(CreatureObject* player, G
 	inputBox->setPromptText("@guild:namechange_name_prompt"); // Enter the name to which you wish to change your guild. Guild names must be between 1 and 25 characters. Name changes take approximately 7 days to take effect.
 	inputBox->setMaxInputSize(24);
 	inputBox->setUsingObject(terminal);
+	inputBox->setForceCloseDistance(32);
 
 	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
@@ -393,6 +395,7 @@ void GuildManagerImplementation::sendGuildCreateAbbrevTo(CreatureObject* player,
 	inputBox->setPromptText("@guild:create_abbrev_prompt");
 	inputBox->setMaxInputSize(4);
 	inputBox->setUsingObject(terminal);
+	inputBox->setForceCloseDistance(32);
 
 	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
@@ -405,6 +408,7 @@ void GuildManagerImplementation::sendGuildChangeAbbrevTo(CreatureObject* player,
 	inputBox->setPromptText("@guild:namechange_abbrev_prompt"); // Enter the abbreviation for your guild's new name. Guild abbreviations must be between 1 and 5 characters in length.
 	inputBox->setMaxInputSize(4);
 	inputBox->setUsingObject(terminal);
+	inputBox->setForceCloseDistance(32);
 
 	player->getPlayerObject()->addSuiBox(inputBox);
 	player->sendMessage(inputBox->generateMessage());
@@ -507,6 +511,7 @@ void GuildManagerImplementation::sendGuildInformationTo(CreatureObject* player, 
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(player, 0x00);
 	suiBox->setPromptTitle("@guild:info_title"); //Guild Information
 	suiBox->setUsingObject(guildTerminal);
+	suiBox->setForceCloseDistance(32);
 
 	ManagedReference<SceneObject*> guildLeader = server->getObject(guild->getGuildLeaderID());
 
@@ -541,6 +546,7 @@ void GuildManagerImplementation::sendGuildDisbandConfirmTo(CreatureObject* playe
 	suiBox->setPromptTitle("@guild:disband_title"); //Disband Guild
 	suiBox->setPromptText("@guild:disband_prompt"); //Are you sure you wish to disband your guild?
 	suiBox->setUsingObject(guildTerminal);
+	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
@@ -573,6 +579,7 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player
 	suiBox->setPromptTitle("@guild:member_options_title"); //Guild Member Options
 	suiBox->setPromptText("@guild:member_options_prompt");
 	suiBox->setUsingObject(guildTerminal);
+	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
 
 	//Guild leader's don't have this option!
@@ -597,6 +604,7 @@ void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, Gui
 		suiBox->setPromptText("@guild:make_leader_d"); // You are about to transfer leadership of this Player Association!  Once you take this action you will be made a normal member and your leader permissions will be revoked.
 		suiBox->setCancelButton(true, "@cancel");
 		suiBox->setUsingObject(guildTerminal);
+		suiBox->setForceCloseDistance(32);
 		player->getPlayerObject()->addSuiBox(suiBox);
 		player->sendMessage(suiBox->generateMessage());
 
@@ -633,7 +641,7 @@ void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const
 
 	Locker _clocker(target, player);
 
-	// make sure player transferring to  is nearby
+	// make sure player transferring to is nearby
 	if (!target->isOnline() || !player->isInRange(target, 32)) {
 		StringIdChatParameter params("@cmd_err:target_range_prose");  // your target is too far away to %TO
 		params.setTO("Transfer PA Leadership");
@@ -650,6 +658,7 @@ void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const
 		suiBox->setPromptTitle("@guild:make_leader_p"); //Transfer PA leadership
 		suiBox->setPromptText("@guild:make_leader_p");  // the lead of this PA wants to transfer leadership to you.  Do you accept?
 		suiBox->setUsingObject(sceoTerminal);  // maybe can remove this
+		suiBox->setForceCloseDistance(32);
 		suiBox->setCancelButton(true, "@no");
 		suiBox->setOkButton(true, "@yes");
 
@@ -672,6 +681,7 @@ void GuildManagerImplementation::sendAcceptLotsTo(CreatureObject* newOwner, Guil
     													 // members can use the management terminal.
 
 		suiBox->setUsingObject(guildTerminal);
+		suiBox->setForceCloseDistance(32);
 		suiBox->setOkButton(true,"@guild:accept_pa_hall_t");
 		suiBox->setCancelButton(true, "@cancel");
 		newOwner->getPlayerObject()->addSuiBox(suiBox);
@@ -767,6 +777,7 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 	suiBox->setPromptTitle("@guild:members_title"); //Guild Members
 	suiBox->setPromptText("@guild:members_prompt");
 	suiBox->setUsingObject(guildTerminal);
+	suiBox->setForceCloseDistance(32);
 
 	GuildMemberList* memberList = guild->getGuildMemberList();
 
@@ -808,6 +819,7 @@ void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* pla
 	suiBox->setPromptTitle("@guild:sponsored_options_title"); //Sponsored For Membership
 	suiBox->setPromptText("@guild:sponsored_options_prompt");
 	suiBox->setUsingObject(guildTerminal);
+	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
 
 	suiBox->addMenuItem("@guild:accept", playerID); //Accept
@@ -828,6 +840,7 @@ void GuildManagerImplementation::sendGuildSponsoredListTo(CreatureObject* player
 	suiBox->setPromptTitle("@guild:sponsored_title"); //Sponsored for Membership
 	suiBox->setPromptText("@guild:sponsored_prompt");
 	suiBox->setUsingObject(guildTerminal);
+	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
 
 	for (int i = 0; i < guild->getSponsoredPlayerCount(); ++i) {
@@ -863,6 +876,7 @@ void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, Guil
 	suiBox->setPromptTitle("@guild:sponsor_title"); //Sponsor for Membership
 	suiBox->setPromptText("@guild:sponsor_prompt");
 	suiBox->setUsingObject(guildTerminal);
+	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
 
 	player->getPlayerObject()->addSuiBox(suiBox);
@@ -919,7 +933,7 @@ ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
 	return guildChat;
 }
 
-GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, GuildTerminal* terminal, const String& guildName, const String& guildAbbrev) {
+GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, const String& guildName, const String& guildAbbrev) {
 	if (player->isInGuild()) {
 		player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
 		return NULL;
@@ -954,7 +968,6 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 	gmi->setPermissions(GuildObject::PERMISSION_ALL);
 
 	player->setGuildObject(guild);
-	terminal->setGuildObject(guild);
 
 	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
 	gildd3->startUpdate(0x04);
@@ -976,7 +989,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 	return guild;
 }
 
-bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildTerminal* guildTerminal, GuildObject* guild) {
+bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObject* guild) {
 
 	if (guild == NULL)
 		return false;
@@ -992,17 +1005,15 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildTermi
 
 	destroyGuild(guild, params);
 
-	guildTerminal->setGuildObject(NULL);
-
 	info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> disbanded.", true);
 
 	return true;
 }
 
-void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, GuildTerminal* guildTerminal, const String& playerName) {
+void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, const String& playerName) {
 	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL)
 		return;
@@ -1050,6 +1061,7 @@ void GuildManagerImplementation::sendGuildSponsorVerifyTo(CreatureObject* player
 	suiBox->setPromptTitle("@guild:sponsor_verify_title"); //Sponsored For Guild Membership
 	suiBox->setPromptText("@guild:sponsor_verify_prompt");
 	suiBox->setUsingObject(player);
+	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
@@ -1154,7 +1166,7 @@ void GuildManagerImplementation::sendGuildKickPromptTo(CreatureObject* player, C
 	suiBox->setPromptTitle("@guild:kick_title"); //Kick From Guild
 	suiBox->setPromptText("@guild:kick_prompt"); //Are you sure you want to kick %TU out of the guild?
 	suiBox->setUsingObject(target);
-	suiBox->setForceCloseDisabled();
+	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
@@ -1175,6 +1187,7 @@ void GuildManagerImplementation::sendGuildSetTitleTo(CreatureObject* player, Cre
 	suiBox->setPromptTitle("@guild:title_title"); //Set Title
 	suiBox->setPromptText("@guild:title_prompt"); //Enter a title to set for %TU.
 	suiBox->setUsingObject(target);
+	suiBox->setForceCloseDistance(32);
 	suiBox->setMaxInputSize(24);
 	suiBox->setCancelButton(true, "@cancel");
 
@@ -1300,6 +1313,7 @@ void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player,
 	listBox->setPromptTitle("@guild:permissions_title"); //Guild Member Permissions
 	listBox->setPromptText("@guild:permissions_prompt");
 	listBox->setUsingObject(guildTerminal);
+	listBox->setForceCloseDistance(32);
 	listBox->setCancelButton(true, "@cancel");
 
 	listBox->addMenuItem(String("@guild:permission_mail_") + (gmi->hasPermission(GuildObject::PERMISSION_MAIL) ? "yes" : "no"), targetID);
@@ -1316,11 +1330,8 @@ void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player,
 }
 
 void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, uint64 targetID, int permissionIndex, GuildTerminal* guildTerminal) {
-	//TODO: Change to not require a guild terminal, it only needs passing to the sui list send to be set as using object...
-	if (guildTerminal == NULL)
-		return;
 
-	ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL || !guild->isGuildLeader(player)) {
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
@@ -1608,7 +1619,7 @@ void GuildManagerImplementation::sendGuildWarStatusTo(CreatureObject* player, Gu
 	listbox->setPromptTitle("@guild:enemies_title"); //Guild Enemies
 	listbox->setPromptText("@guild:enemies_prompt");
 	listbox->setUsingObject(terminal);
-	listbox->setForceCloseDistance(16.f);
+	listbox->setForceCloseDistance(32);
 	listbox->setCallback(new GuildAddEnemySuiCallback(server, guild));
 
 	listbox->addMenuItem("@guild:add_enemy", 0); //Add New Enemy;
@@ -1654,7 +1665,7 @@ void GuildManagerImplementation::promptAddNewEnemy(CreatureObject* creature, Gui
 	box->setPromptText("@guild:war_enemy_name_prompt"); //Enter a guild name or abbreviation to declare war upon.
 	box->setCancelButton(true, "@cancel");
 	box->setUsingObject(terminal);
-	box->setForceCloseDistance(16.f);
+	box->setForceCloseDistance(32);
 	box->setCallback(new GuildWarEnemyNameSuiCallback(server, guild));
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();

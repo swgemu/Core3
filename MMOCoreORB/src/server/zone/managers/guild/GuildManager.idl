@@ -197,11 +197,11 @@ class GuildManager extends ManagedService implements Logger {
 
 	public native void renameGuild(GuildObject guild, CreatureObject player, final string newName, final string newAbbrev);
 
-	public native GuildObject createGuild(CreatureObject player, GuildTerminal guildTerminal, final string guildName, final string guildAbbrev);
+	public native GuildObject createGuild(CreatureObject player, final string guildName, final string guildAbbrev);
 	
-	public native boolean disbandGuild(CreatureObject player, GuildTerminal guildTerminal, GuildObject guild);
+	public native boolean disbandGuild(CreatureObject player, GuildObject guild);
 	
-	public native void sponsorPlayer(CreatureObject player, GuildTerminal guildTerminal, final string playerName);
+	public native void sponsorPlayer(CreatureObject player, final string playerName);
 	
 	public native void acceptSponsorshipRequest(CreatureObject player, CreatureObject target);
 	

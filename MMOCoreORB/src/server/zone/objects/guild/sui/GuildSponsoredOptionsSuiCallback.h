@@ -38,9 +38,7 @@ public:
 		if (!terminal->isGuildTerminal())
 			return;
 
-		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
-
-		ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
+		ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 		if (guild == NULL || !guild->hasAcceptPermission(player->getObjectID())) {
 			player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.

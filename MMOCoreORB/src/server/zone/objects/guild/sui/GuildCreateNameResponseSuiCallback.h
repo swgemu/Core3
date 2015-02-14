@@ -45,10 +45,6 @@ public:
 
 		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
-		//Check to see if the guild terminal already has a guild object tied to it.
-		if (guildTerminal->getGuildObject() != NULL)
-			return;
-
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		uint64 playerID = player->getObjectID();

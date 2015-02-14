@@ -40,11 +40,7 @@ public:
 		if (!terminal->isGuildTerminal())
 			return;
 
-		//Locker _lock(terminal);
-
-		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
-
-		guildManager->sponsorPlayer(player, guildTerminal, playerName);
+		guildManager->sponsorPlayer(player, playerName);
 	}
 };
 

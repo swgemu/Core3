@@ -42,20 +42,18 @@ public:
 		if (!terminal->isGuildTerminal())
 			return;
 
-		//Locker _lock(terminal);
-
 		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
-
-		ManagedReference<GuildObject*> guild = guildTerminal->getGuildObject();
-
-		if (guild == NULL || guild != player->getGuildObject()) {
-			player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
-			return;
-		}
 
 		SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 		uint64 memberID = listBox->getMenuObjectID(index);
+
+		ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+		if (guild == NULL || !guild->hasMember(memberID)) {
+			player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+			return;
+		}
 
 		guildManager->sendGuildMemberOptionsTo(player, guild, memberID, guildTerminal);
 	}

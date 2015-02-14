@@ -47,10 +47,6 @@ public:
 
 		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
-		//Check to make sure the terminal is tied to the guild
-		if (guildTerminal->getGuildObject() != guild)
-			return;
-
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		//Check if this player is already creating a guild...

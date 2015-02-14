@@ -62,8 +62,6 @@ public:
 			return;
 		}
 
-		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
-
 		if (guildManager->validateGuildAbbrev(player, guildAbbrev, guild)) {
 			guild->setPendingNewAbbrev(guildAbbrev);
 			guildManager->scheduleGuildRename(player, guild);

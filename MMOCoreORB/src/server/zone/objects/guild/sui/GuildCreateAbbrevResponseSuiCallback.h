@@ -61,11 +61,9 @@ public:
 			return;
 		}
 
-		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
-
 		if (guildManager->validateGuildAbbrev(player, guildAbbrev)) {
 			String guildName = guildManager->getPendingGuildName(playerID);
-			guildManager->createGuild(player, guildTerminal, guildName, guildAbbrev); //Handles the removing of the pending guild.
+			guildManager->createGuild(player, guildName, guildAbbrev); //Handles the removing of the pending guild.
 			return;
 		}
 
