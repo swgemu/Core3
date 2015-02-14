@@ -20,29 +20,31 @@ public:
 		uint64 playerID = player->getObjectID();
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
-
 		ManagedReference<GuildObject*> guild = guildObject.get();
+		if (guild == NULL || guildManager == NULL)
+			return;
 
 		Locker glocker(guild, player);
 
-		//If a rename isn't pending, then exit.
-		if (!guild->isRenamePending())
+		//If the new name isn't set, then exit.
+		if (guild->getPendingNewName().isEmpty())
 			return;
 
+		//After this point, we have to resetRename() anywhere we return prematurely
+
 		if (!guild->hasNamePermission(playerID) && !player->getPlayerObject()->isPrivileged()) {
+			guild->resetRename();
 			player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
 			return;
 		}
 
-		//After this point, we have to setRenamePending(false) anywhere we return, since they have to be renaming a guild at this point.
-
 		if (!suiBox->isInputBox() || cancelPressed) {
-			guild->setRenamePending(false);
+			guild->resetRename();
 			return;
 		}
 
 		if (args->size() < 1) {
-			guild->setRenamePending(false);
+			guild->resetRename();
 			return;
 		}
 
@@ -51,20 +53,20 @@ public:
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 
 		if (obj == NULL || !obj->isTerminal()) {
-			guild->setRenamePending(false);
+			guild->resetRename();
 			return;
 		}
 
 		Terminal* terminal = cast<Terminal*>( obj.get());
 
 		if (!terminal->isGuildTerminal()) {
-			guild->setRenamePending(false);
+			guild->resetRename();
 			return;
 		}
 
 		if (guildManager->validateGuildAbbrev(player, guildAbbrev, guild)) {
 			guild->setPendingNewAbbrev(guildAbbrev);
-			guildManager->scheduleGuildRename(player, guild);
+			guildManager->setupGuildRename(player, guild);
 			return;
 		}
 

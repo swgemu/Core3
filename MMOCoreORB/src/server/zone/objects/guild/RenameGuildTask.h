@@ -12,15 +12,11 @@ class RenameGuildTask : public Task {
 
 	ManagedWeakReference<GuildObject*> guildObject;
 
-	ManagedWeakReference<CreatureObject*> member;
-
 public:
-	RenameGuildTask(CreatureObject* creature, ZoneServer* zserv, GuildObject* guildObj) : Task() {
+	RenameGuildTask(ZoneServer* zserv, GuildObject* guildObj) : Task() {
 		guildObject = guildObj;
 
 		server = zserv;
-
-		member = creature;
 	}
 
 	void run() {
@@ -31,28 +27,13 @@ public:
 
 		Locker locker(guild);
 
-		ManagedReference<CreatureObject*> player = member.get();
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
-
-		if (player == NULL || guildManager == NULL) {
-			guild->setRenamePending(false);
+		if (guildManager == NULL) {
+			guild->resetRename();
 			return;
 		}
 
-		String newName = guild->getPendingNewName();
-		String newAbbrev = guild->getPendingNewAbbrev();
-
-		if (!guildManager->validateGuildName(player, newName, guild)) {
-			guild->setRenamePending(false);
-			return;
-		}
-
-		if (!guildManager->validateGuildAbbrev(player, newAbbrev, guild)) {
-			guild->setRenamePending(false);
-			return;
-		}
-
-		guildManager->renameGuild(guild, player, newName, newAbbrev);
+		guildManager->renameGuild(guild);
 	}
 };
 

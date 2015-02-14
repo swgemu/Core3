@@ -59,16 +59,16 @@ include system.thread.ReadWriteLock;
 
 class GuildObject extends SceneObject {
 	protected ChatRoom chatRoom;
-	
+
 	@dereferenced
 	protected GuildMemberList guildMembers;
-	
+
 	@dereferenced
 	protected SortedVector<unsigned long> sponsoredPlayers;
-	
+
 	@dereferenced
 	protected VectorMap<unsigned long, byte> waringGuilds;
-	
+
 	protected unsigned int guildID;
 	protected string guildName;
 	protected string guildAbbrev;
@@ -79,18 +79,15 @@ class GuildObject extends SceneObject {
 	protected unsigned long renamerID;
 
 	@dereferenced
-	protected Time renameTime;
-
-	@dereferenced
 	protected Time nextUpdateTime;
 
 	protected transient GuildUpdateEvent guildUpdateEvent;
 
 	@dereferenced
 	protected transient ReadWriteLock waringGuildsMutex; 
-	
+
 	protected unsigned long guildLeaderID;
-	
+
 	public static final byte PERMISSION_NONE = 0x00;
 	public static final byte PERMISSION_MAIL = 0x01;
 	public static final byte PERMISSION_SPONSOR = 0x02;
@@ -101,22 +98,22 @@ class GuildObject extends SceneObject {
 	public static final byte PERMISSION_NAME = 0x40;
 	public static final byte PERMISSION_DISBAND = 0x80;
 	public static final byte PERMISSION_ALL = 0xFF;
-	
+
 	public static final byte WAR_NONE = 0;
 	public static final byte WAR_MUTUAL = 0x3D; //'='
 	public static final byte WAR_IN = 0x3C; //'<'
 	public static final byte WAR_OUT = 0x3E; //'>'
-	
+
 	public GuildObject() {		
 		Logger.setLoggingName("GuildObject");
-		
+
 		guildLeaderID = 0;
 		guildID = 0;
 		chatRoom = null;
 
 		renamePending = false;
 		renamerID = 0;
-		
+
 		waringGuilds.setAllowOverwriteInsertPlan();
 		sponsoredPlayers.setNoDuplicateInsertPlan();
 		guildMembers.setNoDuplicateInsertPlan();
@@ -237,7 +234,6 @@ class GuildObject extends SceneObject {
 
 	public void setPendingNewName(final string newName) {
 		pendingNewName = newName;
-		setRenamePending(true);
 	}
 
 	@read
@@ -272,13 +268,11 @@ class GuildObject extends SceneObject {
 		return renamerID;
 	}
 
-	public native void updateRenameTime(unsigned long miliseconds);
-
-	public native void rescheduleRename();
-
-	@local
-	public Time getRenameTime() {
-		return renameTime;
+	public void resetRename() {
+		renamerID = 0;
+		renamePending = false;
+		pendingNewName = "";
+		pendingNewAbbrev = "";
 	}
 
 	@read

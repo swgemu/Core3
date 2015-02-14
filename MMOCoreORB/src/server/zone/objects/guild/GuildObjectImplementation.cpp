@@ -28,33 +28,6 @@ void GuildObjectImplementation::rescheduleUpdateEvent(uint32 seconds) {
 	Core::getTaskManager()->getNextExecutionTime(guildUpdateEvent, nextUpdateTime);
 }
 
-void GuildObjectImplementation::rescheduleRename() {
-	Locker locker(_this.get());
-
-	if (renamePending) {
-		CreatureObject* renamer = server->getZoneServer()->getObject(renamerID).castTo<CreatureObject*>();
-
-		if (renamer == NULL) {
-			setRenamePending(false);
-		} else {
-			RenameGuildTask* renameGuildTask = new RenameGuildTask(renamer, server->getZoneServer(), _this.get());
-
-			if (renameTime.isPast()) {
-				renameGuildTask->execute();
-			} else {
-				renameGuildTask->schedule(renameTime);
-			}
-		}
-	}
-}
-
-void GuildObjectImplementation::updateRenameTime(uint64 miliseconds) {
-	Locker locker(_this.get());
-
-	renameTime.updateToCurrentTime();
-	renameTime.addMiliTime(miliseconds);
-}
-
 void GuildObjectImplementation::sendBaselinesTo(SceneObject* player) {
 }
 

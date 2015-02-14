@@ -119,10 +119,6 @@ void GuildManagerImplementation::loadGuilds() {
 
 			//Recreate the guild chat rooms on load
 			createGuildChannels(guild);
-
-			if (guild->isRenamePending()) {
-				guild->rescheduleRename();
-			}
 		}
 
 	} catch (DatabaseException& e) {
@@ -187,6 +183,11 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 
 		info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> was destroyed due to lack of members.", true);
 		return;
+	}
+
+	if (guild->isRenamePending()) {
+		RenameGuildTask* task = new RenameGuildTask(server, guild);
+		task->execute();
 	}
 
 	//TODO: kick off elections for guilds without a leader
@@ -440,13 +441,12 @@ bool GuildManagerImplementation::validateGuildAbbrev(CreatureObject* player, con
 	return true;
 }
 
-void GuildManagerImplementation::scheduleGuildRename(CreatureObject* player, GuildObject* guild) {
-	if (!guild->isRenamePending())
-		return;
-
-	RenameGuildTask* task = new RenameGuildTask(player, server, guild);
+void GuildManagerImplementation::setupGuildRename(CreatureObject* player, GuildObject* guild) {
+	guild->setRenamePending(true);
+	guild->setRenamerID(player->getObjectID());
 
 	if (player->getPlayerObject()->isPrivileged()) {
+		RenameGuildTask* task = new RenameGuildTask(server, guild);
 		task->execute();
 		return;
 	}
@@ -455,13 +455,35 @@ void GuildManagerImplementation::scheduleGuildRename(CreatureObject* player, Gui
 	params.setTU(guild->getPendingNewName());
 	params.setTT(guild->getPendingNewAbbrev());
 	player->sendSystemMessage(params); // You have set your guild's name and abbreviation to bechanged to '%TU' and '%TT' respectively. The change will take place in approximately 7 days, if there are no conflicts at that time.
-
-	task->schedule(604800000); // 1 week
-	guild->updateRenameTime(604800000);
-	guild->setRenamerID(player->getObjectID());
 }
 
-void GuildManagerImplementation::renameGuild(GuildObject* guild, CreatureObject* player, const String& newName, const String& newAbbrev) {
+void GuildManagerImplementation::renameGuild(GuildObject* guild) {
+	if (!guild->isRenamePending()) {
+		guild->resetRename();
+		return;
+	}
+
+	uint64 renamerID = guild->getRenamerID();
+	CreatureObject* renamer = server->getObject(renamerID).castTo<CreatureObject*>();
+
+	if (renamer == NULL || !renamer->isPlayerCreature() || (!guild->hasNamePermission(renamerID) && !renamer->getPlayerObject()->isPrivileged())) {
+		guild->resetRename();
+		return;
+	}
+
+	String newName = guild->getPendingNewName();
+	String newAbbrev = guild->getPendingNewAbbrev();
+
+	if (!validateGuildName(renamer, newName, guild)) {
+		guild->resetRename();
+		return;
+	}
+
+	if (!validateGuildAbbrev(renamer, newAbbrev, guild)) {
+		guild->resetRename();
+		return;
+	}
+
 	Locker _lock(_this.get());
 
 	if (guildList.contains(guild->getGuildKey())) {
@@ -490,12 +512,12 @@ void GuildManagerImplementation::renameGuild(GuildObject* guild, CreatureObject*
 	//Send the delta to everyone currently online!
 	chatManager->broadcastMessage(gildd3);
 
-	guild->setRenamePending(false);
+	guild->resetRename();
 
 	// Send emails to guild
 	StringIdChatParameter params;
 	params.setStringId("@guildmail:namechange_text"); //%TO has renamed the guild to %TU <%TT>
-	params.setTO(player->getFirstName());
+	params.setTO(renamer->getFirstName());
 	params.setTU(newName);
 	params.setTT(newAbbrev);
 
@@ -1448,14 +1470,14 @@ void GuildManagerImplementation::sendAdminGuildInfoTo(CreatureObject* player, Gu
 
 	promptText << "Guild Leader: " << (leader == NULL ? "None" : leader->getFirstName()) << endl;
 
+	Time* updateTime = guild->getNextUpdateTime();
+	promptText << "Next guild update: " << updateTime->getFormattedTime() << endl;
+
 	bool renamePending = guild->isRenamePending();
 	promptText << "Rename Pending?: " << (renamePending ? "yes" : "no") << endl;
 
 	if (renamePending) {
 		promptText << "Pending Name: " << guild->getPendingNewName() << " <" << guild->getPendingNewAbbrev() << ">" << endl;
-
-		Time* renameTime = guild->getRenameTime();
-		promptText << "Time until rename: " << renameTime->getFormattedTime() << endl;
 
 		uint64 renamerID = guild->getRenamerID();
 		CreatureObject* renamer;
