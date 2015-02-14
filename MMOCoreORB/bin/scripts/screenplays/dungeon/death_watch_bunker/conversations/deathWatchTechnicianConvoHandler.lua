@@ -40,6 +40,8 @@ function deathWatchTechnicianConvoHandler:getInitialScreen(pPlayer, pNpc, pConve
 				end
 			elseif (readData("dwb:droidEscortStatus") == 2) then
 				return convoTemplate:getScreen("escort_failed")
+			else
+				return convoTemplate:getScreen("intro")
 			end
 		else
 			if (readData("dwb:ventsEnabled") == 1) then

@@ -3,10 +3,6 @@ local ObjectManager = require("managers.object.object_manager")
 DeathWatchBunkerScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
-	-- Technician vent repair quest
-	ventsRepaired = false,
-	ventDroidAvailable = true,
-
 	passkey = {
 		hall = "object/tangible/dungeon/death_watch_bunker/passkey_hall.iff",
 		storage = "object/tangible/dungeon/death_watch_bunker/passkey_storage.iff",
@@ -1662,11 +1658,13 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		writeData("dwb:ventsEnabled", 1)
 
 
-		if (pStarter ~= nil) then
-			CreatureObject(pStarter):setScreenPlayState(2, "death_watch_bunker_technician_sidequest")
+		if (pStarter == nil) then
+			return
 		end
-
-		createEvent(60 * 60 * 1000, "DeathWatchBunkerScreenPlay", "disableVents", pDroid) -- Disable vents after an hour
+		
+		CreatureObject(pStarter):setScreenPlayState(2, "death_watch_bunker_technician_sidequest")
+		
+		createEvent(60 * 60 * 1000, "DeathWatchBunkerScreenPlay", "disableVents", pStarter) -- Disable vents after an hour
 	end
 end
 
