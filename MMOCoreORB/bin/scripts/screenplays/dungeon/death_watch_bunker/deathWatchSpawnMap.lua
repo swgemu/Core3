@@ -62,8 +62,8 @@ deathWatchSpecialSpawns = {
 	droidengineerattack2 = {"death_watch_wraith", 0, -241.9, -40.0, -95.8, 23, 5996370},
 	droidengineerattack3 = {"death_watch_ghost", 0,-249.1, -40.0, -85.1, 114, 5996370},
 	droidengineerattack4 = {"death_watch_bloodguard", 0,-254.9, -40.0, -92.7, -130, 5996370},
-	bombdroid = {"r2", 300, 94, -64, -132, 90, 5996348},
-	ventdroid = {"mand_bunker_vent_droid", 0, 5.4, -52.0, -120.8, -62, 5996379},
+	bombdroid = {"r2", 0, 94, -64, -132, 90, 5996348},
+	ventdroid = {"mand_bunker_vent_droid", 0, -20.3, -52, -160.9, 0, 5996378},
 }
 
 deathWatchStaticSpawns = {
