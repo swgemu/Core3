@@ -2571,7 +2571,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	return false;
 }
 
-bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object){
+bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object) {
 	if(object->isCreatureObject())
 		return isAttackableBy(cast<CreatureObject*>(object));
 
@@ -2619,9 +2619,14 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (object->getZone() != getZone())
 		return false;
 
-	if (object->isAiAgent()){
+	if (object->isAiAgent()) {
 
 		if (object->isPet()) {
+			ManagedReference<PetControlDevice*> pcd = object->getControlDevice().get().castTo<PetControlDevice*>();
+			if (pcd != NULL && pcd->getPetType() == PetManager::FACTIONPET && isNeutral()) {
+				return false;
+			}
+
 			ManagedReference<CreatureObject*> owner = object->getLinkedCreature().get();
 
 			if (owner == NULL)
