@@ -1,6 +1,6 @@
 twilek_slave = Creature:new {
 	objectName = "@mob/creature_names:slave_twilek_female",
-	generateRandomName = true,
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

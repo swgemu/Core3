@@ -1,7 +1,7 @@
 criminal_target = Creature:new {
 	objectName = "@mob/creature_names:criminal",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
-	generateRandomName = true,
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 7,
@@ -28,15 +28,15 @@ criminal_target = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_thug_human_male_01.iff",
-					"object/mobile/dressed_criminal_thug_bothan_female_01.iff",
-					"object/mobile/dressed_goon_twk_male_01.iff",
-					"object/mobile/dressed_robber_twk_female_01.iff",
-					"object/mobile/dressed_goon_twk_female_01.iff",
-					"object/mobile/dressed_robber_human_female_01.iff",
-					"object/mobile/dressed_villain_trandoshan_male_01.iff",
-					"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
-					"object/mobile/dressed_villain_trandoshan_female_01.iff"
-					},
+		"object/mobile/dressed_criminal_thug_bothan_female_01.iff",
+		"object/mobile/dressed_goon_twk_male_01.iff",
+		"object/mobile/dressed_robber_twk_female_01.iff",
+		"object/mobile/dressed_goon_twk_female_01.iff",
+		"object/mobile/dressed_robber_human_female_01.iff",
+		"object/mobile/dressed_villain_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
+		"object/mobile/dressed_villain_trandoshan_female_01.iff"
+	},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "generic_criminal_mission_target_convotemplate",

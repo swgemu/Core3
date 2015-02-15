@@ -1,6 +1,6 @@
 lian_imperial_operative = Creature:new {
 	objectName = "@mob/creature_names:commoner",
-	generateRandomName = true,
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

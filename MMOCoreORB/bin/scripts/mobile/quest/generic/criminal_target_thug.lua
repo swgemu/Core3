@@ -1,7 +1,7 @@
 criminal_target_thug = Creature:new {
 	objectName = "@mob/creature_names:thug",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
-	generateRandomName = true,
 	pvpFaction = "thug",
 	faction = "thug",
 	level = 7,

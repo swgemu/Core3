@@ -22,9 +22,7 @@ CreatureTemplate::CreatureTemplate() {
 	scale = 1.f;
 
 	objectName = "";
-	generateRandomName = false;
-	useOnlyRandomName = false;
-	hasLastName = true;
+	randomNameType = 0;
 	customName = "";
 	socialGroup = "";
 	faction = "";
@@ -78,11 +76,7 @@ CreatureTemplate::~CreatureTemplate() {
 void CreatureTemplate::readObject(LuaObject* templateData) {
 	conversationTemplate = String(templateData->getStringField("conversationTemplate").trim()).hashCode();
 	objectName = templateData->getStringField("objectName").trim();
-
-	generateRandomName = templateData->getBooleanField("generateRandomName");
-	useOnlyRandomName = templateData->getBooleanField("useOnlyRandomName");
-	if(useOnlyRandomName)generateRandomName = true;
-	hasLastName = ! templateData->getBooleanField("firstNameOnly");
+	randomNameType = templateData->getIntField("randomNameType");
 
 	customName = templateData->getStringField("customName").trim();
 	socialGroup = templateData->getStringField("socialGroup").trim();

@@ -1,6 +1,6 @@
 info_broker = Creature:new {
 	objectName = "@mob/creature_names:info_broker",
-	generateRandomName =true,
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "poacher",
 	pvpFaction = "",
 	faction = "",

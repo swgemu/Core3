@@ -257,28 +257,22 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	objectName = npcTemplate->getObjectName();
 
-	if(npcTemplate->getGenerateRandomName())//generateRandomName
+	if(npcTemplate->getRandomNameType() != NameManagerType::TAG) // Generate random name
 	{
 		NameManager* nm = server->getNameManager();
-		if(npcTemplate->getUseOnlyRandomName())
-		{
-			setCustomObjectName(nm->makeCreatureName(npcTemplate->getHasLastName()), false);
-		}
-		else
-		{
-			String newName = nm->makeCreatureName(npcTemplate->getHasLastName());
+		if(npcTemplate->getRandomNameType() == NameManagerType::GENERIC || npcTemplate->getRandomNameType() == NameManagerType::GENERIC_FIRSTNAME) {
+			setCustomObjectName(nm->makeCreatureName(npcTemplate->getRandomNameType()), false);
+		} else {
+			String newName = nm->makeCreatureName(npcTemplate->getRandomNameType());
 			newName += " (";
 			newName += StringIdManager::instance()->getStringId(objectName.getFullPath().hashCode()).toString();
 			StringIdManager::instance()->getStringId(objectName.getFullPath().hashCode()).toString();
 			newName += ")";
 			setCustomObjectName(newName, false);
 		}
-	}
-	else// if(templateData->getCustomName().count != 0)//not nessicary.
-	{
+	} else {
 		setCustomObjectName(templateData->getCustomName(), false);
 	}
-
 
 	setHeight(templateData->getScale(), false);
 

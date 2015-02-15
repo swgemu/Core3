@@ -1,6 +1,6 @@
 default = Creature:new {
 	objectName = "@npc_name:human_base_male",
-	generateRandomName = true,
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
