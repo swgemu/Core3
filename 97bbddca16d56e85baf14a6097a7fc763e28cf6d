@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_099e0d57",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/tatooine/hero_of_tat/hero_of_tat_farmers_child.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-15T23:58:09Z",
+      "side": 1,
+      "message": "Since this mob will be following, you should set this child as attackable like the mother so that it will have a closeObjects vector.",
+      "revId": "97bbddca16d56e85baf14a6097a7fc763e28cf6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_29b0a9dc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/conversations/heroOfTatFarmerConvoHandler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-15T23:58:09Z",
+      "side": 1,
+      "message": "I don\u0027t see where this data is written.",
+      "revId": "97bbddca16d56e85baf14a6097a7fc763e28cf6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_09b5edcc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/conversations/heroOfTatFarmerConvoHandler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-15T23:58:09Z",
+      "side": 1,
+      "message": "You may want to store the waypoint\u0027s oid, replace it if they ask for another, and remove it when they are finished with it.",
+      "revId": "97bbddca16d56e85baf14a6097a7fc763e28cf6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_2999c96e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/conversations/heroOfTatMotherConvoHandler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-15T23:58:09Z",
+      "side": 1,
+      "message": "You aren\u0027t using playerObject",
+      "revId": "97bbddca16d56e85baf14a6097a7fc763e28cf6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_49bbe5c4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-15T23:58:09Z",
+      "side": 1,
+      "message": "What\u0027s the point of caveWallStatus? You write it in three places but never once read it.",
+      "revId": "97bbddca16d56e85baf14a6097a7fc763e28cf6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_89a9dd7d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-15T23:58:09Z",
+      "side": 1,
+      "message": "Having the getRandomNumber() call for the eventChangeTime where it is, does it change each time or is it only randomized once each time the server starts? Would it be better to randomize it here just before creating the event?",
+      "revId": "97bbddca16d56e85baf14a6097a7fc763e28cf6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_e9a29199",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-15T23:58:09Z",
+      "side": 1,
+      "message": "It\u0027s a nit pick, but maybe pCourageMob isn\u0027t the most descriptive of names for a mark of altruism mob.",
+      "revId": "97bbddca16d56e85baf14a6097a7fc763e28cf6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_c99fd54f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-15T23:58:09Z",
+      "side": 1,
+      "message": "Don\u0027t you want one of the altruismSpawns?",
+      "revId": "97bbddca16d56e85baf14a6097a7fc763e28cf6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_a9ac998d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-15T23:58:09Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "97bbddca16d56e85baf14a6097a7fc763e28cf6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_69b6a1de",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooineMenuComponents.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-15T23:58:09Z",
+      "side": 1,
+      "message": "I would rename pSkull.",
+      "revId": "97bbddca16d56e85baf14a6097a7fc763e28cf6d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
