@@ -93,6 +93,8 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 		ghost->updateLastValidatedPosition();
 		player->setMovementCounter(0);
 		ghost->setClientLastMovementStamp(0);
+
+		ghost->unloadSpawnedChildren();
 	}
 
 	ZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
