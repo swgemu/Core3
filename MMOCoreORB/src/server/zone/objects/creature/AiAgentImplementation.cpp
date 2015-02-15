@@ -2702,6 +2702,11 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	}
 
 	if (isPet()) {
+		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
+		if (pcd != NULL && pcd->getPetType() == PetManager::FACTIONPET && object->isNeutral()) {
+			return false;
+		}
+
 		ManagedReference<CreatureObject*> owner = getLinkedCreature().get();
 
 		if (owner == NULL) {
@@ -2712,6 +2717,11 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	}
 
 	if (object->isPet()) {
+		ManagedReference<PetControlDevice*> pcd = object->getControlDevice().get().castTo<PetControlDevice*>();
+		if (pcd != NULL && pcd->getPetType() == PetManager::FACTIONPET && isNeutral()) {
+			return false;
+		}
+
 		ManagedReference<CreatureObject*> owner = object->getLinkedCreature().get();
 
 		if (owner == NULL) {

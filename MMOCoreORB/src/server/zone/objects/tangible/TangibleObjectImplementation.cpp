@@ -73,7 +73,9 @@ which carries forward this exception.
 #include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
 #include "server/zone/objects/tangible/tool/repair/RepairTool.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "engine/engine.h"
 
 
@@ -874,6 +876,13 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 
 		if (ai->getHomeObject() == _this.get()) {
 			return false;
+		}
+
+		if (ai->isPet()) {
+			ManagedReference<PetControlDevice*> pcd = ai->getControlDevice().get().castTo<PetControlDevice*>();
+			if (pcd != NULL && pcd->getPetType() == PetManager::FACTIONPET && isNeutral()) {
+				return false;
+			}
 		}
 	}
 
