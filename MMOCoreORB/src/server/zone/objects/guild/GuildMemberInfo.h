@@ -56,6 +56,8 @@ namespace guild {
 			playerID = stream->readLong();
 			guildTitle.parseFromBinaryStream(stream);
 			permissions = stream->readByte();
+			if (stream->hasData())
+				stream->readLong(); // TODO: remove
 
 			return true;
 		}
