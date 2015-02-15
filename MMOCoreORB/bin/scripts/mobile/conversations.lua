@@ -39,6 +39,11 @@ includeFile("conversations/events/life_day/life_day_oraalarri_conv.lua")
 includeFile("conversations/events/life_day/life_day_radrrl_conv.lua")
 includeFile("conversations/events/life_day/life_day_tebeurra_conv.lua")
 
+-- Hero of Tat
+includeFile("conversations/tasks/hero_of_tatooine/hermit_conv.lua")
+includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_farmer_conv.lua")
+includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_mother_conv.lua")
+
 -- Events
 includeFile("conversations/events/event_promoter_conv.lua")
 
@@ -101,7 +106,6 @@ includeFile("conversations/recruiter/rebel_recruiter_conv.lua")
 includeFile("conversations/recruiter/imperial_recruiter_conv.lua")
 
 -- Tasks
-includeFile("conversations/tasks/hero_of_tatooine/hermit_conv.lua")
 includeFile("conversations/tasks/mozo_bondog_conv.lua")
 includeFile("conversations/tasks/dolac_legasi_conv.lua")
 includeFile("conversations/tasks/dolac_legasi_escaped_prisoner_conv.lua")
