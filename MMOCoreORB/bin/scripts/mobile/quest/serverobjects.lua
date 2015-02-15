@@ -6,6 +6,13 @@ includeFile("quest/chadra_fan_thief.lua")
 includeFile("quest/gadget_specialist.lua")
 includeFile("quest/theater_manager.lua")
 
+--Hero of Tatooine
+includeFile("quest/tatooine/hero_of_tat/hero_of_tat_farmer.lua")
+includeFile("quest/tatooine/hero_of_tat/hero_of_tat_farmers_child.lua")
+includeFile("quest/tatooine/hero_of_tat/hero_of_tat_farmers_wife.lua")
+includeFile("quest/tatooine/hero_of_tat/hero_of_tat_hermit.lua")
+includeFile("quest/tatooine/hero_of_tat/wild_bladeback_boar.lua")
+
 --Generic
 includeFile("quest/generic/businessman_target_thief_award.lua")
 includeFile("quest/generic/businessman_target_thief_briefcase.lua")
@@ -544,7 +551,6 @@ includeFile("quest/tatooine/gramm_surveyor.lua")
 includeFile("quest/tatooine/greenfingers.lua")
 includeFile("quest/tatooine/harbo_linn.lua")
 includeFile("quest/tatooine/hedon_istee.lua")
-includeFile("quest/tatooine/hermit_quest.lua")
 includeFile("quest/tatooine/huff_darklighter.lua")
 includeFile("quest/tatooine/huff_delivery_guy.lua")
 includeFile("quest/tatooine/huff_niece.lua")
