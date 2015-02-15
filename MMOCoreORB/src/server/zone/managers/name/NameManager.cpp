@@ -326,8 +326,9 @@ int NameManager::validateName(const String& name, int species) {
 		return NameManagerResult::DECLINED_RESERVED;
 
 	//Make sure that only valid characters are allowed in the name.
-	if (strspn(fname.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-") != fname.length() ||
-			strspn(lname.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-") != lname.length())
+
+	if ((strspn(fname.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-") != fname.length() ||
+			strspn(lname.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'-") != lname.length()))
 		return NameManagerResult::DECLINED_SYNTAX;
 
 	if (species == -1)
@@ -358,6 +359,96 @@ int NameManager::validateName(const String& name, int species) {
 		if (lname.indexOf('\'') != lname.lastIndexOf('\'') || lname.indexOf('-') != lname.lastIndexOf('-'))
 			return NameManagerResult::DECLINED_RACE_INAPP;
 	}
+
+	return NameManagerResult::ACCEPTED;
+}
+
+int NameManager::validateGuildName(const String& name) {
+	if (name.isEmpty())
+		return NameManagerResult::DECLINED_EMPTY;
+
+	if (name.length() > 40)
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+
+	if (isDeveloper(name))
+		return NameManagerResult::DECLINED_DEVELOPER;
+
+	if (isFiction(name))
+		return NameManagerResult::DECLINED_FICT_RESERVED;
+
+	if (isReserved(name))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	// Guilds allowed multiple spaces
+	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	// Multiple consecutive spaces not allowed
+	if (name.indexOf("  ") != -1)
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	return NameManagerResult::ACCEPTED;
+}
+
+int NameManager::validateCityName(const String& name) {
+	if (name.isEmpty())
+		return NameManagerResult::DECLINED_EMPTY;
+
+	if (name.length() > 40)
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+
+	if (isDeveloper(name))
+		return NameManagerResult::DECLINED_DEVELOPER;
+
+	if (isFiction(name))
+		return NameManagerResult::DECLINED_FICT_RESERVED;
+
+	if (isReserved(name))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	// Cities allowed multiple spaces
+	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	// Multiple consecutive spaces not allowed
+	if (name.indexOf("  ") != -1)
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	return NameManagerResult::ACCEPTED;
+}
+
+int NameManager::validateVendorName(const String& name) {
+	if (name.isEmpty())
+		return NameManagerResult::DECLINED_EMPTY;
+
+	if (name.length() > 40)
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+
+	if (isDeveloper(name))
+		return NameManagerResult::DECLINED_DEVELOPER;
+
+	if (isFiction(name))
+		return NameManagerResult::DECLINED_FICT_RESERVED;
+
+	if (isReserved(name))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	// Vendors allowed multiple spaces
+	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	// Multiple consecutive spaces not allowed
+	if (name.indexOf("  ") != -1)
+		return NameManagerResult::DECLINED_SYNTAX;
 
 	return NameManagerResult::ACCEPTED;
 }
@@ -448,11 +539,11 @@ int NameManager::validateLastName(const String& name, int species) {
 	return NameManagerResult::ACCEPTED;
 }
 
-const String NameManager::makeCreatureName(bool lastName) {
+const String NameManager::makeCreatureName(int type) {
 
 	String name = makeName(3 + System::random(6));
 
-	if(lastName) {
+	if (type == NameManagerType::GENERIC || type == NameManagerType::GENERIC_TAG) {
 		name += " ";
 		name += makeName(3 + System::random(6));
 	}

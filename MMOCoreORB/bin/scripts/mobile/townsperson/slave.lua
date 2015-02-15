@@ -1,6 +1,6 @@
 slave = Creature:new {
 	objectName = "@mob/creature_names:slave",
-	generateRandomName = true,
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

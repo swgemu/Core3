@@ -59,7 +59,7 @@ bool VendorManager::isValidVendorName(const String& name) {
 		return false;
 	}
 
-	return nameManager->validateName(name) == 7;
+	return nameManager->validateVendorName(name) == NameManagerResult::ACCEPTED;
 }
 
 void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* vendor) {

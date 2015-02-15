@@ -1,6 +1,6 @@
 ananda_dwyce = Creature:new {
 	objectName = "@mob/creature_names:commoner",
-	generateRandomName = true,
+	customName = "Ananda Dwyce",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

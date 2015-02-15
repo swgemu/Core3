@@ -53,7 +53,7 @@ public:
 
 		NameManager* nameManager = NameManager::instance();
 
-		int nameResult = nameManager->validateName(cityName);
+		int nameResult = nameManager->validateCityName(cityName);
 
 		switch (nameResult) {
 		case NameManagerResult::DECLINED_PROFANE:

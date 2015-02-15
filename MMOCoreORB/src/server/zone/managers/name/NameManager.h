@@ -95,6 +95,16 @@ public:
 	static const uint8 ACCEPTED	= 7;
 };
 
+class NameManagerType {
+public:
+	static const int TAG = 0; // a mobile
+	static const int GENERIC = 1; // Firstname Lastname
+	static const int GENERIC_TAG = 2; // Firstname Lastname (a mobile)
+	static const int GENERIC_FIRSTNAME = 3; // Firstname
+	static const int GENERIC_FIRSTNAME_TAG = 4; // Firstname (a mobile)
+	static const int STORMTROOPER = 5;
+};
+
 namespace server {
 	namespace zone {
 		namespace managers {
@@ -165,8 +175,11 @@ public:
 	int validateName(const String& name, int species = -1);
 	int validateFirstName(const String& name, int species = -1);
 	int validateLastName(const String& name, int species = -1);
+	int validateGuildName(const String& name);
+	int validateCityName(const String& name);
+	int validateVendorName(const String& name);
 
-	const String makeCreatureName(bool surname = true);
+	const String makeCreatureName(int type = 1);
 
 	const String makeResourceName(bool isOrganic);
 };
