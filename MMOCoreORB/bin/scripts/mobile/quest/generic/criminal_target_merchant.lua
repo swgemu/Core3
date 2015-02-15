@@ -1,6 +1,6 @@
 criminal_target_merchant = Creature:new {
 	objectName = "@mob/creature_names:noble",
-	generateRandomName = true,
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

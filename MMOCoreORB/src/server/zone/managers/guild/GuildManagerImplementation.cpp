@@ -330,20 +330,16 @@ void GuildManagerImplementation::sendGuildChangeNameTo(CreatureObject* player, G
 }
 
 bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const String& guildName, GuildObject* guild) {
-	if (guildName.length() < 1 || guildName.length() > 25) {
-		player->sendSystemMessage("@guild:create_fail_name_bad_length"); //Guild names must be 1-25 characters in length.
-		return false;
-	}
-
-	if (guildName.contains("\\") || guildName.contains("\n") || guildName.contains("\r") || guildName.contains("#")) {
-		player->sendSystemMessage("@guild:create_fail_name_not_allowed"); //That guild name is not allowed sinc it contains special characters
-		return false;
-	}
-
 	NameManager* nameManager = processor->getNameManager();
 
-	if (nameManager->validateName(guildName) != NameManagerResult::ACCEPTED) {
-		player->sendSystemMessage("@guild:create_fail_name_not_allowed"); //That guild name is not allowed.
+	int validate = nameManager->validateGuildName(guildName, NameManagerType::GUILD_NAME);
+
+	if (validate != NameManagerResult::ACCEPTED) {
+		if (validate == NameManagerResult::DECLINED_GUILD_LENGTH)
+			player->sendSystemMessage("@guild:create_fail_name_bad_length"); //Guild names must be 1-25 characters in length.
+		else
+			player->sendSystemMessage("@guild:create_fail_name_not_allowed"); //That guild name is not allowed.
+
 		return false;
 	}
 
@@ -416,18 +412,16 @@ void GuildManagerImplementation::sendGuildChangeAbbrevTo(CreatureObject* player,
 }
 
 bool GuildManagerImplementation::validateGuildAbbrev(CreatureObject* player, const String& guildAbbrev, GuildObject* guild) {
-	if (guildAbbrev.length() < 1 || guildAbbrev.length() > 5) {
-		player->sendSystemMessage("@guild:create_fail_abbrev_bad_length"); //Guild abbreviations must be 1-5 characters in length.
-		return false;
-	}
-	if (guildAbbrev.contains("\\") || guildAbbrev.contains("\n") || guildAbbrev.contains("\r") || guildAbbrev.contains("#")) {
-		player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); // That guild abbreviation is not allowed.
-		return false;
-	}
 	NameManager* nameManager = processor->getNameManager();
 
-	if (nameManager->validateName(guildAbbrev) != NameManagerResult::ACCEPTED) {
-		player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); //That guild abbreviation is not allowed.
+	int validate = nameManager->validateGuildName(guildAbbrev, NameManagerType::GUILD_ABBREV);
+
+	if (validate != NameManagerResult::ACCEPTED) {
+		if (validate == NameManagerResult::DECLINED_GUILD_LENGTH)
+			player->sendSystemMessage("@guild:create_fail_abbrev_bad_length"); //Guild abbreviations must be 1-5 characters in length.
+		else
+			player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); //That guild abbreviation is not allowed.
+
 		return false;
 	}
 
@@ -1276,15 +1270,16 @@ void GuildManagerImplementation::setMemberTitle(CreatureObject* player, Creature
 		return;
 	}
 
-	if (title.isEmpty() || title.length() > 25) {
-		player->sendSystemMessage("@guild:title_fail_bad_length"); //Guild member titles may be at most 25 characters in length.
-		return;
-	}
-
 	NameManager* nameManager = processor->getNameManager();
 
-	if (nameManager->validateName(title) != NameManagerResult::ACCEPTED) {
-		player->sendSystemMessage("@guild:title_fail_not_allowed"); //That title is not allowed.
+	int validate = nameManager->validateGuildName(title, NameManagerType::GUILD_TITLE);
+
+	if (validate != NameManagerResult::ACCEPTED) {
+		if (validate == NameManagerResult::DECLINED_GUILD_LENGTH)
+			player->sendSystemMessage("@guild:title_fail_bad_length"); //Guild member titles may be at most 25 characters in length.
+		else
+			player->sendSystemMessage("@guild:title_fail_not_allowed"); //That title is not allowed.
+
 		return;
 	}
 

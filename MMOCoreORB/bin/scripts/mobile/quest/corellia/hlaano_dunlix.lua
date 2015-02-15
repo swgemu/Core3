@@ -1,6 +1,6 @@
 hlaano_dunlix = Creature:new {
 	objectName = "@mob/creature_names:commoner",
-	generateRandomName =true,
+	customName = "Hlaano Dunlix",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

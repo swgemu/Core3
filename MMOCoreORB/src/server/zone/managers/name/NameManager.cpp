@@ -362,6 +362,102 @@ int NameManager::validateName(const String& name, int species) {
 	return NameManagerResult::ACCEPTED;
 }
 
+int NameManager::validateGuildName(const String& name, int type) {
+	if (name.isEmpty())
+		return NameManagerResult::DECLINED_EMPTY;
+
+	if ((type == NameManagerType::GUILD_NAME || type == NameManagerType::GUILD_TITLE) && name.length() > 25)
+		return NameManagerResult::DECLINED_GUILD_LENGTH;
+
+	if (type == NameManagerType::GUILD_ABBREV && name.length() > 5)
+		return NameManagerResult::DECLINED_GUILD_LENGTH;
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+
+	if (isDeveloper(name))
+		return NameManagerResult::DECLINED_DEVELOPER;
+
+	if (isFiction(name))
+		return NameManagerResult::DECLINED_FICT_RESERVED;
+
+	if (isReserved(name))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	// Guilds allowed multiple spaces
+	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	// Multiple consecutive spaces not allowed
+	if (name.indexOf("  ") != -1)
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	if (name.contains("\\") || name.contains("\n") || name.contains("\r") || name.contains("#"))
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	return NameManagerResult::ACCEPTED;
+}
+
+int NameManager::validateCityName(const String& name) {
+	if (name.isEmpty())
+		return NameManagerResult::DECLINED_EMPTY;
+
+	if (name.length() > 40)
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+
+	if (isDeveloper(name))
+		return NameManagerResult::DECLINED_DEVELOPER;
+
+	if (isFiction(name))
+		return NameManagerResult::DECLINED_FICT_RESERVED;
+
+	if (isReserved(name))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	// Cities allowed multiple spaces
+	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	// Multiple consecutive spaces not allowed
+	if (name.indexOf("  ") != -1)
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	return NameManagerResult::ACCEPTED;
+}
+
+int NameManager::validateVendorName(const String& name) {
+	if (name.isEmpty())
+		return NameManagerResult::DECLINED_EMPTY;
+
+	if (name.length() > 40)
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	if (isProfane(name))
+		return NameManagerResult::DECLINED_PROFANE;
+
+	if (isDeveloper(name))
+		return NameManagerResult::DECLINED_DEVELOPER;
+
+	if (isFiction(name))
+		return NameManagerResult::DECLINED_FICT_RESERVED;
+
+	if (isReserved(name))
+		return NameManagerResult::DECLINED_RESERVED;
+
+	// Vendors allowed multiple spaces
+	if (strspn(name.toCharArray(), "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'- ") != name.length())
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	// Multiple consecutive spaces not allowed
+	if (name.indexOf("  ") != -1)
+		return NameManagerResult::DECLINED_SYNTAX;
+
+	return NameManagerResult::ACCEPTED;
+}
+
 int NameManager::validateFirstName(const String& name, int species) {
 	if (name.isEmpty())
 		return NameManagerResult::DECLINED_EMPTY;
@@ -448,11 +544,11 @@ int NameManager::validateLastName(const String& name, int species) {
 	return NameManagerResult::ACCEPTED;
 }
 
-const String NameManager::makeCreatureName(bool lastName) {
+const String NameManager::makeCreatureName(int type) {
 
 	String name = makeName(3 + System::random(6));
 
-	if(lastName) {
+	if (type == NameManagerType::GENERIC || type == NameManagerType::GENERIC_TAG) {
 		name += " ";
 		name += makeName(3 + System::random(6));
 	}

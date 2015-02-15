@@ -1,6 +1,6 @@
 chassis_broker = Creature:new {
 	objectName = "@npc_spawner_n:chassis_broker",
-	generateRandomName = true,
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

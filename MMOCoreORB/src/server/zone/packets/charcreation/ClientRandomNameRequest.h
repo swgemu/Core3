@@ -28,9 +28,12 @@ public:
 	void run() {
 		NameManager* nameManager = server->getNameManager();
 
-		bool notwook = (raceFile.indexOf("wookie") == -1);
+		int type = NameManagerType::GENERIC;
 
-		BaseMessage* msg = new ClientRandomNameResponse(raceFile, nameManager->makeCreatureName(notwook));
+		if (raceFile.indexOf("wookie") != -1)
+			type = NameManagerType::GENERIC_FIRSTNAME;
+
+		BaseMessage* msg = new ClientRandomNameResponse(raceFile, nameManager->makeCreatureName(type));
 		client->sendMessage(msg);
 	}
 };

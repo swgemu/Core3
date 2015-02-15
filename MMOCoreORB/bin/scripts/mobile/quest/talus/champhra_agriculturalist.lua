@@ -1,6 +1,6 @@
 champhra_agriculturalist = Creature:new {
 	objectName = "@mob/creature_names:farmer_agriculturalist",
-	generateRandomName =true,
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -28,9 +28,9 @@ champhra_agriculturalist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_quest_farmer.iff",
-					"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff",
-					"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff",
-					"object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff"},
+		"object/mobile/dressed_commoner_tatooine_nikto_male_04.iff",
+		"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff",
+		"object/mobile/dressed_commoner_tatooine_ishitib_male_02.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "champhra_biahin_mission_target_convotemplate",
