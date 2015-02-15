@@ -96,8 +96,14 @@ public:
 				Reference<Task*> task = creature->getPendingTask("invisibledelayevent");
 
 				if (task != NULL) {
-					player->sendSystemMessage("You can not go invisible at this time");
-					return GENERALERROR;
+					if (!task->isScheduled()) {
+						creature->playEffect("clienteffect/pl_force_resist_disease_self.cef");
+						task->schedule(1600);
+						return SUCCESS;
+					} else {
+						player->sendSystemMessage("You can not go invisible at this time");
+						return GENERALERROR;
+					}
 				}
 
 				Reference<InvisibleDelayEvent*> invisTask = new InvisibleDelayEvent(player);

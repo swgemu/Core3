@@ -1008,6 +1008,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 
 			void run() {
 				Locker locker(ai);
+				Locker clocker(sceno, ai);
 				if (sceno == ai->getFollowObject()) {
 					ai->restoreFollowObject();
 				}
@@ -2772,14 +2773,15 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 void AiAgentImplementation::restoreFollowObject() {
 	ManagedReference<SceneObject*> obj = followStore.get();
 
-	if (obj == NULL)
+	if (obj == NULL) {
 		setOblivious();
-	else if (getCloseObjects() != NULL && !getCloseObjects()->contains(obj.get()))
+	} else if (getCloseObjects() != NULL && !getCloseObjects()->contains(obj.get())) {
 		setOblivious();
-	else if (obj->isCreatureObject() && cast<CreatureObject*>(obj.get())->isInvisible())
+	} else if (obj->isCreatureObject() && cast<CreatureObject*>(obj.get())->isInvisible()) {
 		setOblivious();
-	else
+	} else {
 		setFollowObject(obj);
+	}
 }
 
 void AiAgentImplementation::sendReactionChat(int type, int state) {

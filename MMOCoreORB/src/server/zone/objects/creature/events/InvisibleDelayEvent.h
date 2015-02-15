@@ -94,9 +94,8 @@ public:
 					}
 
 					player->setInvisible(true);
-					//player->setPvpStatusBitmask(0);
+
 					player->sendSystemMessage("You are now invisible to other players and creatures.");
-					player->sendSystemMessage("DO NOT CHANGE YOUR EQUIPPED ITEMS!");
 
 				} else {
 					player->setInvisible(false);
@@ -111,7 +110,6 @@ public:
 
 					}
 
-					//player->setPvpStatusBitmask(CreatureFlag::PLAYER);
 					player->sendSystemMessage("You are now visible to all players and creatures.");
 
 				}
