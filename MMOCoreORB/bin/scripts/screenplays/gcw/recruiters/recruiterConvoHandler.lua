@@ -89,6 +89,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 		elseif (screenID == "accepted_resume_duties") then
 			playerObject:setFactionStatus(3)
 			createEvent(30000, "recruiterScreenplay", "handleGoCovert", conversingPlayer)
+			writeData(player:getObjectID() .. ":changingFactionStatus", 1)
 
 		elseif (screenID == "confirm_promotion") then
 			local rank = player:getFactionRank() + 1
