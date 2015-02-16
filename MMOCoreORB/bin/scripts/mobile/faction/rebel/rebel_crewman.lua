@@ -1,7 +1,6 @@
 rebel_crewman = Creature:new {
 	objectName = "@mob/creature_names:rebel_crewman",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 22,
 	chanceHit = 0.35,

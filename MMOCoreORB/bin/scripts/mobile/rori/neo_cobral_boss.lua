@@ -1,7 +1,6 @@
 neo_cobral_boss = Creature:new {
 	objectName = "@mob/creature_names:cobral_boss",
 	socialGroup = "cobral",
-	pvpFaction = "cobral",
 	faction = "cobral",
 	level = 30,
 	chanceHit = 0.38,

@@ -2,7 +2,6 @@ ragtag_thug = Creature:new {
 	objectName = "",
 	customName = "a Ragtag thug",
 	socialGroup = "ragtag",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 8,
 	chanceHit = 0.270000,

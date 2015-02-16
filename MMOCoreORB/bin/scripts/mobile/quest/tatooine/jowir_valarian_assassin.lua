@@ -1,7 +1,6 @@
 jowir_valarian_assassin = Creature:new {
 	objectName = "@mob/creature_names:valarian_assassin",
 	socialGroup = "valarian",
-	pvpFaction = "valarian",
 	faction = "valarian",
 	level = 16,
 	chanceHit = 0.31,

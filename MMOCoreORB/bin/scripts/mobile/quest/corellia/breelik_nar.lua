@@ -1,7 +1,6 @@
 breelik_nar = Creature:new {
 	objectName = "",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 15,
 	chanceHit = 0.31,

@@ -2,7 +2,6 @@ herald_biogenic_03 = Creature:new {
 	objectName = "",
 	customName = "Teraeza Furloti",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

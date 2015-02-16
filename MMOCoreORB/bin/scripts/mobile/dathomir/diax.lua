@@ -2,7 +2,6 @@ diax = Creature:new {
 	objectName = "@mob/creature_names:diax",
 	customName = "Diax",
 	socialGroup = "nightsister",
-	pvpFaction = "nightsister",
 	faction = "nightsister",
 	level = 22,
 	chanceHit = 0.33,

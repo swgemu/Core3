@@ -1,7 +1,6 @@
 gungan_hunter = Creature:new {
 	objectName = "@mob/creature_names:gungan_hunter",
 	socialGroup = "gungan",
-	pvpFaction = "gungan",
 	faction = "gungan",
 	level = 17,
 	chanceHit = 0.32,

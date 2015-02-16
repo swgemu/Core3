@@ -2,7 +2,6 @@ liane = Creature:new {
 	objectName = "",
 	customName = "Liane",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

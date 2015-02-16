@@ -2,7 +2,6 @@ needia_solum = Creature:new {
 	objectName = "",
 	customName = "Needia Solum",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 20,
 	chanceHit = 0.33,

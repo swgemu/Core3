@@ -2,7 +2,6 @@ ihatha_hawit = Creature:new {
 	objectName = "@npc_name:rodian_base_female",
 	customName = "Ihatha Hawit",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

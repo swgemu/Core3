@@ -2,7 +2,6 @@ enraged_miner = Creature:new {
 	objectName = "",
 	customName = "an Enraged Miner",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.27,

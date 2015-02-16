@@ -1,7 +1,6 @@
 common_thief = Creature:new {
 	objectName = "@mob/creature_names:common_thief",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 11,
 	chanceHit = 0.29,

@@ -2,7 +2,6 @@ rebel_research_attacker_2_coa3 = Creature:new {
 	objectName = "",
 	customName = "an Imperial Research Attacker",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 45,
 	chanceHit = 0.46,

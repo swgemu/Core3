@@ -2,7 +2,6 @@ haleen_snowline = Creature:new {
 	objectName = "",
 	customName = "Haleen Snowline",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

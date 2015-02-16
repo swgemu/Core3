@@ -1,7 +1,6 @@
 male_langlatch = Creature:new {
 	objectName = "@mob/creature_names:langlatch_male",
 	socialGroup = "langlatch",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

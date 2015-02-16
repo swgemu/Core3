@@ -2,7 +2,6 @@ weequay_captain = Creature:new {
 	objectName = "",
 	customName = "Weequay Captain",
 	socialGroup = "weequay",
-	pvpFaction = "",
 	faction = "",
 	level = 19,
 	chanceHit = 0.33,

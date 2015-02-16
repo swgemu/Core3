@@ -1,7 +1,6 @@
 dz70_crafted_advanced = Creature:new {
 	objectName = "@droid_name:dz_70_fugitive_tracker_crafted_advanced",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

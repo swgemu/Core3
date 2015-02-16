@@ -1,7 +1,6 @@
 stranded_imperial_pilot = Creature:new {
 	objectName = "@mob/creature_names:stranded_imperial_pilot",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 20,
 	chanceHit = 3.03,

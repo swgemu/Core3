@@ -2,7 +2,6 @@ garm_bel_iblis = Creature:new {
 	objectName = "",
 	customName = "Garm Bel Iblis",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

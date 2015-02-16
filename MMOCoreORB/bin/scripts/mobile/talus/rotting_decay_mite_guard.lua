@@ -1,7 +1,6 @@
 rotting_decay_mite_guard = Creature:new {
 	objectName = "@mob/creature_names:rotting_pustule_guard",
 	socialGroup = "mite",
-	pvpFaction = "",
 	faction = "",
 	level = 13,
 	chanceHit = 0.3,

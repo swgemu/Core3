@@ -2,7 +2,6 @@ wealthy_patron = Creature:new {
 	objectName = "",
 	customName = "a wealthy patron",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

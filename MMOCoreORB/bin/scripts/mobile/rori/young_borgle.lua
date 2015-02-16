@@ -1,7 +1,6 @@
 young_borgle = Creature:new {
 	objectName = "@mob/creature_names:young_borgle",
 	socialGroup = "borgle",
-	pvpFaction = "",
 	faction = "",
 	level = 6,
 	chanceHit = 0.25,

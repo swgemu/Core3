@@ -1,7 +1,6 @@
 spice_collective_foreman = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_foreman",
 	socialGroup = "spice_collective",
-	pvpFaction = "spice_collective",
 	faction = "spice_collective",
 	level = 18,
 	chanceHit = 0.32,

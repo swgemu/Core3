@@ -1,7 +1,6 @@
 prowling_gurreck = Creature:new {
 	objectName = "@mob/creature_names:gurreck_prowler",
 	socialGroup = "gurreck",
-	pvpFaction = "",
 	faction = "",
 	level = 45,
 	chanceHit = 0.44,

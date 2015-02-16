@@ -2,7 +2,6 @@ lord_sloan_rusper = Creature:new {
 	objectName = "",
 	customName = "Lord Sloan Rusper",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

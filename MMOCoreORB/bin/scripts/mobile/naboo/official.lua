@@ -1,7 +1,6 @@
 official = Creature:new {
 	objectName = "@mob/creature_names:official",
 	socialGroup = "naboo",
-	pvpFaction = "naboo",
 	faction = "naboo",
 	level = 5,
 	chanceHit = 0.250000,

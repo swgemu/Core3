@@ -1,7 +1,6 @@
 wlinc_tchrr = Creature:new {
 	objectName = "@npc_spawner_n:wlinc_tchrr",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 19,
 	chanceHit = 0.33,

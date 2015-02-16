@@ -1,7 +1,6 @@
 space_rebel_tier3_beissa = Creature:new {
 	objectName = "@npc_spawner_n:beissa",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 10,
 	chanceHit = 0.28,

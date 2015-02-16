@@ -1,7 +1,6 @@
 elder_hanadak_matriarch = Creature:new {
 	objectName = "@mob/creature_names:elder_hanadak_matriarch",
 	socialGroup = "hanadak",
-	pvpFaction = "",
 	faction = "",
 	level = 35,
 	chanceHit = 0.41,

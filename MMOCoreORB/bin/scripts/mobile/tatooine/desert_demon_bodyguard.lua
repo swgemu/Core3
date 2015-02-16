@@ -1,7 +1,6 @@
 desert_demon_bodyguard = Creature:new {
 	objectName = "@mob/creature_names:desert_demon_bodyguard",
 	socialGroup = "desert_demon",
-	pvpFaction = "desert_demon",
 	faction = "desert_demon",
 	level = 15,
 	chanceHit = 0.31,

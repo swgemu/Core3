@@ -1,7 +1,6 @@
 stranded_rebel_pilot = Creature:new {
 	objectName = "@mob/creature_names:stranded_rebel_pilot",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 20,
 	chanceHit = 3.03,

@@ -1,7 +1,6 @@
 corporal_sova = Creature:new {
 	objectName = "@mob/creature_names:corporal_sova",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 17,
 	chanceHit = 0.32,

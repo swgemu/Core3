@@ -1,7 +1,6 @@
 seasoned_panshee_warrior = Creature:new {
 	objectName = "@mob/creature_names:seasoned_panshee_warrior",
 	socialGroup = "panshee_tribe",
-	pvpFaction = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 42,
 	chanceHit = 0.440000,

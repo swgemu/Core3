@@ -1,7 +1,6 @@
 vehement_warrior = Creature:new {
 	objectName = "@mob/creature_names:durni_vehement_warrior",
 	socialGroup = "durni",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.28,

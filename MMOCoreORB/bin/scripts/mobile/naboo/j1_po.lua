@@ -1,7 +1,6 @@
 j1_po = Creature:new {
 	objectName = "@npc_spawner_n:j1_po",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.390000,

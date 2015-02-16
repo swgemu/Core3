@@ -1,7 +1,6 @@
 xalox_slicer = Creature:new {
 	objectName = "@mob/creature_names:slicer",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 23,
 	chanceHit = 0.33,

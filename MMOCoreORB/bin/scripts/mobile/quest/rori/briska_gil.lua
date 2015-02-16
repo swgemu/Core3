@@ -2,7 +2,6 @@ briska_gil = Creature:new {
 	objectName = "",
 	customName = "Briska Gil",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

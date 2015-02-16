@@ -1,7 +1,6 @@
 huff_guard = Creature:new {
 	objectName = "@mob/creature_names:darklighter_guard",
 	socialGroup = "darklighter",
-	pvpFaction = "",
 	faction = "",
 	level = 99,
 	chanceHit = 0.99,

@@ -1,7 +1,6 @@
 young_mos_taike_guard = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_guard_young",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 21,
 	chanceHit = 0.33,

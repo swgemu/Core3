@@ -1,7 +1,6 @@
 denner = Creature:new {
 	objectName = "@npc_spawner_n:denner",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

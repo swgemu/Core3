@@ -2,7 +2,6 @@ herald_biogenic_harmon = Creature:new {
 	objectName = "",
 	customName = "Harmon Vintollo",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

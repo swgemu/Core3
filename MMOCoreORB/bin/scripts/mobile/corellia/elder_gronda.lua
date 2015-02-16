@@ -1,7 +1,6 @@
 elder_gronda = Creature:new {
 	objectName = "@mob/creature_names:gronda_elder",
 	socialGroup = "gronda",
-	pvpFaction = "",
 	faction = "",
 	level = 33,
 	chanceHit = 0.39,

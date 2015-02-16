@@ -1,7 +1,6 @@
 senior_specforce_marine = Creature:new {
 	objectName = "@mob/creature_names:senior_specforce_marine",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 20,
 	chanceHit = 0.33,

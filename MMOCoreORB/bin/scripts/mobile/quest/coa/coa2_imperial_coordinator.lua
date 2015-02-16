@@ -1,7 +1,6 @@
 coa2_imperial_coordinator = Creature:new {
 	objectName = "@mob/creature_names:coa2_imperial_coordinator",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 25,
 	chanceHit = 0.36,

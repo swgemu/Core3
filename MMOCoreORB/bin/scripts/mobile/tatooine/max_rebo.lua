@@ -1,7 +1,6 @@
 max_rebo = Creature:new {
 	objectName = "@mob/creature_names:max_rebo",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 100,
 	chanceHit = 1.000000,

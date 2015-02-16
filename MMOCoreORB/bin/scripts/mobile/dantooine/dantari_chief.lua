@@ -1,7 +1,6 @@
 dantari_chief = Creature:new {
 	objectName = "@mob/creature_names:dantari_raider_chief",
 	socialGroup = "dantari_raiders",
-	pvpFaction = "dantari_raiders",
 	faction = "dantari_raiders",
 	level = 42,
 	chanceHit = 0.44,

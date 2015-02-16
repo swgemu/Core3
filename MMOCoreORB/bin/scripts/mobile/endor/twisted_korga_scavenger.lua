@@ -1,7 +1,6 @@
 twisted_korga_scavenger = Creature:new {
 	objectName = "@mob/creature_names:twisted_korga_scavenger",
 	socialGroup = "korga_tribe",
-	pvpFaction = "korga_tribe",
 	faction = "korga_tribe",
 	level = 26,
 	chanceHit = 0.35,

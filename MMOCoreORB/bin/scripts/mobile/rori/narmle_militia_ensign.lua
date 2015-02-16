@@ -1,7 +1,6 @@
 narmle_militia_ensign = Creature:new {
 	objectName = "@mob/creature_names:narmle_ensign",
 	socialGroup = "narmle",
-	pvpFaction = "narmle",
 	faction = "narmle",
 	level = 5,
 	chanceHit = 0.25,

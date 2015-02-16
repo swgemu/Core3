@@ -1,7 +1,6 @@
 valarian_swooper_leader = Creature:new {
 	objectName = "@mob/creature_names:valarian_swooper_leader",
 	socialGroup = "valarian",
-	pvpFaction = "valarian",
 	faction = "valarian",
 	level = 13,
 	chanceHit = 0.3,

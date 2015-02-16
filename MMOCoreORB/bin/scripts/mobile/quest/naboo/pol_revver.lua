@@ -1,7 +1,6 @@
 pol_revver = Creature:new {
 	objectName = "",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 21,
 	chanceHit = 0.34,

@@ -2,7 +2,6 @@ talia_reede = Creature:new {
 	objectName = "",
 	customName = "Talia Reede",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

@@ -1,7 +1,6 @@
 enraged_reptilian_flier = Creature:new {
 	objectName = "@mob/creature_names:enraged_reptilian_flier",
 	socialGroup = "reptilian_flier",
-	pvpFaction = "",
 	faction = "",
 	level = 27,
 	chanceHit = 0.35,

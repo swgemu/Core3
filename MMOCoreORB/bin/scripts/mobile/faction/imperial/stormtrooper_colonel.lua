@@ -1,7 +1,6 @@
 stormtrooper_colonel = Creature:new {
 	objectName = "@mob/creature_names:fbase_stormtrooper_squad_leader_hard",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 27,
 	chanceHit = 0.37,

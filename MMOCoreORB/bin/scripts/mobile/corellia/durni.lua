@@ -1,7 +1,6 @@
 durni = Creature:new {
 	objectName = "@mob/creature_names:durni",
 	socialGroup = "durni",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

@@ -1,7 +1,6 @@
 gondula_chief = Creature:new {
 	objectName = "@mob/creature_names:gundula_chief",
 	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 48,
 	chanceHit = 0.49,

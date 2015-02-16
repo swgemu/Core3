@@ -1,7 +1,6 @@
 warren_altered_atst = Creature:new {
 	objectName = "@mob/creature_names:warren_agro_droid_atst",
 	socialGroup = "warren_imperial",
-	pvpFaction = "",
 	faction = "",
 	level = 46,
 	chanceHit = 0.36,

@@ -1,7 +1,6 @@
 sap_covered_forest_mite_queen = Creature:new {
 	objectName = "@mob/creature_names:sap_covered_forest_mite_queen",
 	socialGroup = "mite",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,

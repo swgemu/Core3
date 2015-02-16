@@ -2,7 +2,6 @@ baze_joz = Creature:new {
 	objectName = "",
 	customName = "Baze Joz",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

@@ -2,7 +2,6 @@ relay_captain_coa2 = Creature:new {
 	objectName = "",
 	customName = "a Relay Captain",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 29,
 	chanceHit = 0.38,

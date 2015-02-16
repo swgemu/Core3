@@ -2,7 +2,6 @@ durgur_pyne = Creature:new {
 	objectName = "",
 	customName = "Durgur Pyne",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

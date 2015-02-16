@@ -2,7 +2,6 @@ kaeline_ungasan = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Kaeline Ungasan",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 11,
 	chanceHit = 0.28,

@@ -2,7 +2,6 @@ maestro = Creature:new {
 	objectName = "",
 	customName = "Maestro",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

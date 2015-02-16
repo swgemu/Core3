@@ -1,7 +1,6 @@
 theme_park_rebel_edycu = Creature:new {
 	objectName = "@mob/creature_names:binayre_smuggler",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "pirate",
 	level = 17,
 	chanceHit = 0.32,

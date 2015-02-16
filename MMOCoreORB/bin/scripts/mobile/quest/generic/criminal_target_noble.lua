@@ -2,7 +2,6 @@ criminal_target_noble = Creature:new {
 	objectName = "@mob/creature_names:noble",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,

@@ -1,7 +1,6 @@
 alliance_intelligence_case = Creature:new {
 	objectName = "@mob/creature_names:mission_alliance_intelligence_case_officer",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 22,
 	chanceHit = 0.35,

@@ -1,7 +1,6 @@
 rebel_network_leader = Creature:new {
 	objectName = "@mob/creature_names:network_leader",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 12,
 	chanceHit = 0.29,

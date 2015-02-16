@@ -1,7 +1,6 @@
 kinad_baz_nitch = Creature:new {
 	objectName = "@mob/creature_names:kinad_baz_nitch",
 	socialGroup = "baz_nitch",
-	pvpFaction = "",
 	faction = "",
 	level = 46,
 	chanceHit = 0.48,

@@ -1,7 +1,6 @@
 belshu_dadar = Creature:new {
 	objectName = "@npc_spawner_n:smuggler_pilot",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

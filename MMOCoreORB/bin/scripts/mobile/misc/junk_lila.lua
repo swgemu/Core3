@@ -2,7 +2,6 @@ junk_lila = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Lila",
 	socialGroup = "borvo",
-	pvpFaction = "borvo",
 	faction = "borvo",
 	level = 100,
 	chanceHit = 1,

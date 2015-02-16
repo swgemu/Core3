@@ -1,7 +1,6 @@
 chiss_female = Creature:new {
 	objectName = "@mob/creature_names:patron_chiss_female",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

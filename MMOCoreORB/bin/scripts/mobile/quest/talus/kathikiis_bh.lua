@@ -1,7 +1,6 @@
 kathikiis_bh = Creature:new {
 	objectName = "",
 	socialGroup = "lok_mercenaries",
-	pvpFaction = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 44,
 	chanceHit = 0.47,

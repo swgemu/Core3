@@ -2,7 +2,6 @@ kitster_banai = Creature:new {
 	objectName = "",
 	customName = "Kitster Banai",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

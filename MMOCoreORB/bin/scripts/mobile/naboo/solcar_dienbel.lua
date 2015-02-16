@@ -2,7 +2,6 @@ solcar_dienbel = Creature:new {
 	objectName = "",
 	customName = "Solcar Dienbel",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

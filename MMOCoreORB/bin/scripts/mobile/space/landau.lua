@@ -1,7 +1,6 @@
 landau = Creature:new {
 	objectName = "@npc_spawner_n:cmdr_landau",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 0.33,

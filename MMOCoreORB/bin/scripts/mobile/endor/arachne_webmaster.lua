@@ -1,7 +1,6 @@
 arachne_webmaster = Creature:new {
 	objectName = "@mob/creature_names:arachne_webmaster",
 	socialGroup = "arachne",
-	pvpFaction = "",
 	faction = "",
 	level = 50,
 	chanceHit = 0.5,

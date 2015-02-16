@@ -1,7 +1,6 @@
 corsec_traitor = Creature:new {
 	objectName = "@mob/creature_names:corsec_traitor",
 	socialGroup = "rogue_corsec",
-	pvpFaction = "rogue_corsec",
 	faction = "rogue_corsec",
 	level = 16,
 	chanceHit = 0.31,

@@ -2,7 +2,6 @@ large_berzerk_ikopi = Creature:new {
 	objectName = "@mob/creature_names:mountain_ikopi",
 	customName = "Large Berzerk Ikopi",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 17,
 	chanceHit = 0.31,

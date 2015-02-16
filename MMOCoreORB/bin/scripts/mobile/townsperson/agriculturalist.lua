@@ -2,7 +2,6 @@ agriculturalist = Creature:new {
 	objectName = "@mob/creature_names:farmer_agriculturalist",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

@@ -1,7 +1,6 @@
 dulios = Creature:new {
 	objectName = "@npc_spawner_n:dulios",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

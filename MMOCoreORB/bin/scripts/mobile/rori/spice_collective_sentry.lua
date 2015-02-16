@@ -1,7 +1,6 @@
 spice_collective_sentry = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_sentry",
 	socialGroup = "spice_collective",
-	pvpFaction = "spice_collective",
 	faction = "spice_collective",
 	level = 14,
 	chanceHit = 0.3,

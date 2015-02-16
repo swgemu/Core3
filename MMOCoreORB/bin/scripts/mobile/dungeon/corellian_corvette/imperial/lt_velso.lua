@@ -2,7 +2,6 @@ lt_velso = Creature:new {
 	objectName = "",
 	customName = "Lt. Velso",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

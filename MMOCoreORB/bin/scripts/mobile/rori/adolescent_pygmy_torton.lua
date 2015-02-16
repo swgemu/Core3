@@ -1,7 +1,6 @@
 adolescent_pygmy_torton = Creature:new {
 	objectName = "@mob/creature_names:torton_pygmy_adolescent",
 	socialGroup = "torton",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

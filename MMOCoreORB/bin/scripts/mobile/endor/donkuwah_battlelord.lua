@@ -1,7 +1,6 @@
 donkuwah_battlelord = Creature:new {
 	objectName = "@mob/creature_names:donkuwah_battlelord",
 	socialGroup = "donkuwah_tribe",
-	pvpFaction = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 26,
 	chanceHit = 0.36,

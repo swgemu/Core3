@@ -1,7 +1,6 @@
 spiderclan_acolyte = Creature:new {
 	objectName = "@mob/creature_names:spider_nightsister_initiate",
 	socialGroup = "spider_nightsister",
-	pvpFaction = "spider_nightsister",
 	faction = "spider_nightsister",
 	level = 64,
 	chanceHit = 0.5,

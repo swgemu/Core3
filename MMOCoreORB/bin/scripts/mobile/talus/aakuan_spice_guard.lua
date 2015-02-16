@@ -2,7 +2,6 @@ aakuan_spice_guard = Creature:new {
 	objectName = "",
 	customName = "an Aa'kuan Spice Guard",
 	socialGroup = "aakuans",
-	pvpFaction = "aakuans",
 	faction = "aakuans",
 	level = 27,
 	chanceHit = 0.36,

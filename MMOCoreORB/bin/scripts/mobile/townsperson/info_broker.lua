@@ -2,7 +2,6 @@ info_broker = Creature:new {
 	objectName = "@mob/creature_names:info_broker",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "poacher",
-	pvpFaction = "",
 	faction = "",
 	level = 16,
 	chanceHit = 0.310000,

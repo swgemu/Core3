@@ -1,7 +1,6 @@
 cannibal = Creature:new {
 	objectName = "@mob/creature_names:cannibal",
 	socialGroup = "cannibal",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

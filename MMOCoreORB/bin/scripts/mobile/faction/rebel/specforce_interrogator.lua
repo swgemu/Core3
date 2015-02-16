@@ -1,7 +1,6 @@
 specforce_interrogator = Creature:new {
 	objectName = "@mob/creature_names:specforce_interrogator",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 16,
 	chanceHit = 0.31,

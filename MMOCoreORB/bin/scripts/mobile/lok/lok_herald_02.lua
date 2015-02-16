@@ -1,7 +1,6 @@
 lok_herald_02 = Creature:new {
 	objectName = "@npc_name:lok_herald_02",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,

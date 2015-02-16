@@ -2,7 +2,6 @@ mebi_axane = Creature:new {
 	objectName = "@npc_name:gran_base_male",
 	customName = "Mebi Axane",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

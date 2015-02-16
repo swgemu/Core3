@@ -1,7 +1,6 @@
 lost_aqualish_lookout = Creature:new {
 	objectName = "@mob/creature_names:lost_aqualish_lookout",
 	socialGroup = "lost_aqualish",
-	pvpFaction = "lost_aqualish",
 	faction = "lost_aqualish",
 	level = 10,
 	chanceHit = 0.28,

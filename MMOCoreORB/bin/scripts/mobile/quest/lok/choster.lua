@@ -2,7 +2,6 @@ choster = Creature:new {
 	objectName = "@mob/creature_names:hermit",
 	customName = "Choster (Retired Engineer)",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

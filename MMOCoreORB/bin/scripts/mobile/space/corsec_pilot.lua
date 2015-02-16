@@ -1,7 +1,6 @@
 corsec_pilot = Creature:new {
 	objectName = "@npc_spawner_n:corsec_pilot",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 0.33,

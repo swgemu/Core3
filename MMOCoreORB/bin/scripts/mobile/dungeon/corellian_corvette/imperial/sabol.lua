@@ -2,7 +2,6 @@ sabol = Creature:new {
 	objectName = "",
 	customName = "Lt. Sabol",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

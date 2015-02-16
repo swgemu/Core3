@@ -2,7 +2,6 @@ ikka_gesul = Creature:new {
 	objectName = "",
 	customName = "Ikka Gesul",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

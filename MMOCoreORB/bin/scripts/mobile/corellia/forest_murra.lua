@@ -1,7 +1,6 @@
 forest_murra = Creature:new {
 	objectName = "@mob/creature_names:forest_murra",
 	socialGroup = "murra",
-	pvpFaction = "",
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

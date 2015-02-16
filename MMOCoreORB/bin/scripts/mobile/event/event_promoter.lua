@@ -1,7 +1,6 @@
 event_promoter = Creature:new {
 	customName = "an Event Promoter",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

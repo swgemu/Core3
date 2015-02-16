@@ -1,7 +1,6 @@
 rot_mite = Creature:new {
 	objectName = "@mob/creature_names:rot_mite",
 	socialGroup = "mite",
-	pvpFaction = "",
 	faction = "",
 	level = 11,
 	chanceHit = 0.29,

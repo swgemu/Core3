@@ -1,7 +1,6 @@
 bol = Creature:new {
 	objectName = "@mob/creature_names:bol",
 	socialGroup = "bol",
-	pvpFaction = "",
 	faction = "",
 	level = 29,
 	chanceHit = 0.39,

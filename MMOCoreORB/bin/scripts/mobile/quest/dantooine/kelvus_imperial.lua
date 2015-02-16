@@ -2,7 +2,6 @@ kelvus_imperial = Creature:new {
 	objectName = "",
 	customName = "Imperial Corporal",		
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 16,
 	chanceHit = 0.31,

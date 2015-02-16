@@ -1,7 +1,6 @@
 pugoriss_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_pugoriss",
 	socialGroup = "pugoriss",
-	pvpFaction = "",
 	faction = "",
 	level = 5,
 	chanceHit = 0.2,

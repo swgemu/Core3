@@ -1,7 +1,6 @@
 quest_crowd_pleaser_theater_manager = Creature:new {
 	objectName = "@mob/creature_names:quest_crowd_pleaser_theater_manager",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

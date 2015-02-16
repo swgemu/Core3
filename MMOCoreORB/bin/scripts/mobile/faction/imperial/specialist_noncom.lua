@@ -1,7 +1,6 @@
 specialist_noncom = Creature:new {
 	objectName = "@mob/creature_names:specialist_noncom",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 13,
 	chanceHit = 0.3,

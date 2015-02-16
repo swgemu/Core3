@@ -2,7 +2,6 @@ herald_corellia_lock = Creature:new {
 	objectName = "@npc_name:corellia_herald_01",
 	customName = "",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 swooper_corellia = Creature:new {
 	objectName = "@mob/creature_names:swooper",
 	socialGroup = "cor_swoop",
-	pvpFaction = "cor_swoop",
 	faction = "cor_swoop",
 	level = 8,
 	chanceHit = 0.27,

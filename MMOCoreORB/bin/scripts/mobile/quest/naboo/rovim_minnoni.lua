@@ -2,7 +2,6 @@ rovim_minnoni = Creature:new {
 	objectName = "",
 	customName = "Rovim Minnoni",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

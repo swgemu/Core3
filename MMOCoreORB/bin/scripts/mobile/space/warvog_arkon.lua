@@ -1,7 +1,6 @@
 warvog_arkon = Creature:new {
 	objectName = "@npc_spawner_n:warvog_arkon",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 19,
 	chanceHit = 0.33,

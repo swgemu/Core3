@@ -2,7 +2,6 @@ capt_loftus = Creature:new {
 	objectName = "",
 	customName = "Captain Hantor Loftus",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 10,
 	chanceHit = 0.28,

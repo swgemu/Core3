@@ -2,7 +2,6 @@ herald_corellia_ren = Creature:new {
 	objectName = "",
 	customName = "Herald Corellia Ren",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

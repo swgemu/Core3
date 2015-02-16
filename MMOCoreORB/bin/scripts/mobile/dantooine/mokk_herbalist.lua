@@ -1,7 +1,6 @@
 mokk_herbalist = Creature:new {
 	objectName = "@mob/creature_names:mokk_herbalist",
 	socialGroup = "mokk_tribe",
-	pvpFaction = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 26,
 	chanceHit = 0.36,

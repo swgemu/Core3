@@ -2,7 +2,6 @@ rebel_vacca_coa3 = Creature:new {
 	objectName = "",
 	customName = "Vacca",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 35,
 	chanceHit = 0.41,

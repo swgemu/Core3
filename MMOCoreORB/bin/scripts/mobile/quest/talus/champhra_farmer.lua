@@ -1,7 +1,6 @@
 champhra_farmer = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 17,
 	chanceHit = 0.32,

@@ -2,7 +2,6 @@ oevitt_piboi = Creature:new {
 	objectName = "",
 	customName = "O'Evitt Piboi (en escapee)",
 	socialGroup = "warren_imperial_worker",
-	pvpFaction = "",
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

@@ -2,7 +2,6 @@ palejo_reshad = Creature:new {
 	objectName = "",
 	customName = "Palejo Reshad",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

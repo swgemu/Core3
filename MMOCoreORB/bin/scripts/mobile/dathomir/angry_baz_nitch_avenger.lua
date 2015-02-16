@@ -1,7 +1,6 @@
 angry_baz_nitch_avenger = Creature:new {
 	objectName = "@mob/creature_names:angry_baz_nitch_avenger",
 	socialGroup = "baz_nitch",
-	pvpFaction = "",
 	faction = "",
 	level = 24,
 	chanceHit = 0.35,

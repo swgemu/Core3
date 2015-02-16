@@ -1,7 +1,6 @@
 dinge = Creature:new {
 	objectName = "@npc_spawner_n:dinge",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

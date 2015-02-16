@@ -1,7 +1,6 @@
 maerzen = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.270000,

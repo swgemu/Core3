@@ -1,7 +1,6 @@
 reclusive_roba = Creature:new {
 	objectName = "@mob/creature_names:reclusive_roba",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.39,

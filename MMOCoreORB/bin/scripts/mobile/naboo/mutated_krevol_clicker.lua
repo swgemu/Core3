@@ -1,7 +1,6 @@
 mutated_krevol_clicker = Creature:new {
 	objectName = "@mob/creature_names:mutated_krevol_clicker",
 	socialGroup = "krevol",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

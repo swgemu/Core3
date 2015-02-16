@@ -1,7 +1,6 @@
 plasma_thieving_swamp_trooper = Creature:new {
 	objectName = "@mob/creature_names:swamp_trooper_anti_gungan",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 25,
 	chanceHit = 0.36,

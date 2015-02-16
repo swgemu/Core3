@@ -2,7 +2,6 @@ ysnide_omewror = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
 	customName = "Ysnide Omewror",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 8,
 	chanceHit = 0.27,

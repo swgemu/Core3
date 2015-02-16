@@ -1,7 +1,6 @@
 sennex_warder = Creature:new {
 	objectName = "@mob/creature_names:sennex_warder",
 	socialGroup = "sennex",
-	pvpFaction = "pirate",
 	faction = "pirate",
 	level = 20,
 	chanceHit = 0.33,

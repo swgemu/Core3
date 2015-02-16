@@ -2,7 +2,6 @@ crowley = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
 	customName = "Master Sergeant Crowley",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

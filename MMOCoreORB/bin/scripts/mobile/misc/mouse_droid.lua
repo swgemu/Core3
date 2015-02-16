@@ -1,7 +1,6 @@
 mouse_droid = Creature:new {
 	objectName = "@mob/creature_names:mouse_droid",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

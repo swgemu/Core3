@@ -1,7 +1,6 @@
 sulfur_lake_pirate_armsman = Creature:new {
 	objectName = "@mob/creature_names:slp_armsman",
 	socialGroup = "pirate",
-	pvpFaction = "",
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

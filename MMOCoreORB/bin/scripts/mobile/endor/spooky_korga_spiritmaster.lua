@@ -1,7 +1,6 @@
 spooky_korga_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:spooky_korga_spiritmaster",
 	socialGroup = "korga_tribe",
-	pvpFaction = "korga_tribe",
 	faction = "korga_tribe",
 	level = 50,
 	chanceHit = 0.5,

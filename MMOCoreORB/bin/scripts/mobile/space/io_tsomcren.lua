@@ -1,7 +1,6 @@
 io_tsomcren = Creature:new {
 	objectName = "@npc_spawner_n:io_tsomcren",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 19,
 	chanceHit = 0.33,

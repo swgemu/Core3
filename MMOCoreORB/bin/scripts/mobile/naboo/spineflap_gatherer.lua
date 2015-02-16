@@ -1,7 +1,6 @@
 spineflap_gatherer = Creature:new {
 	objectName = "@mob/creature_names:spineflap_gatherer",
 	socialGroup = "spineflap",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.27,

@@ -2,7 +2,6 @@ jonda_trask = Creature:new {
 	objectName = "",
 	customName = "Jonda Trask",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

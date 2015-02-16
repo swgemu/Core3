@@ -1,7 +1,6 @@
 infant_graul = Creature:new {
 	objectName = "@mob/creature_names:infant_graul",
 	socialGroup = "graul",
-	pvpFaction = "",
 	faction = "",
 	level = 27,
 	chanceHit = 0.36,

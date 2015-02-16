@@ -2,7 +2,6 @@ rodian_sif = Creature:new {
 	objectName = "",
 	customName = "a rodian Sif",
 	socialGroup = "sif",
-	pvpFaction = "sif",
 	faction = "sif",
 	level = 37,
 	chanceHit = 0.42,

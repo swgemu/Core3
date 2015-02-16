@@ -1,7 +1,6 @@
 dr_dea_tore = Creature:new {
 	objectName = "@mob/creature_names:dr_dea_tore",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

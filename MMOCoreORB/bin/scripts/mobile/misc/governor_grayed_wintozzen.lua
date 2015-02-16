@@ -2,7 +2,6 @@ governor_grayed_wintozzen = Creature:new {
 	objectName = "",
 	customName = "Governor Grayed Wintozzen",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 5,
 	chanceHit = 0.250000,

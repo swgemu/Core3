@@ -1,7 +1,6 @@
 diminutive_bounding_jax = Creature:new {
 	objectName = "@mob/creature_names:jax_bounding_dwarf",
 	socialGroup = "jax",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.27,

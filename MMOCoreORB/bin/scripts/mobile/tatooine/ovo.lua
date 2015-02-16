@@ -2,7 +2,6 @@ ovo = Creature:new {
 	objectName = "@npc_name:bith_base_male",
 	customName = "Ovo",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 10,
 	chanceHit = 0.28,

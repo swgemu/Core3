@@ -1,7 +1,6 @@
 hardened_gondula_warrior = Creature:new {
 	objectName = "@mob/creature_names:hardened_gondula_warrior",
 	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 53,
 	chanceHit = 0.53,

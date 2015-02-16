@@ -1,7 +1,6 @@
 aujante_klee = Creature:new {
 	objectName = "@mob/creature_names:aujante_klee",
 	socialGroup = "mtn_clan",
-	pvpFaction = "mtn_clan",
 	faction = "mtn_clan",
 	level = 23,
 	chanceHit = 0.33,

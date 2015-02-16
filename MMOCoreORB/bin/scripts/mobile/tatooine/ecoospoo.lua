@@ -2,7 +2,6 @@ ecoospoo = Creature:new {
 	objectName = "",
 	customName = "Ecoospoo",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

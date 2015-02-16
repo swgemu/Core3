@@ -1,7 +1,6 @@
 bh_tusken_death_hunter = Creature:new {
 	objectName = "@mob/creature_names:tusken_death_hunter",
 	socialGroup = "tusken_raider",
-	pvpFaction = "tusken_raider",
 	faction = "tusken_raider",
 	level = 50,
 	chanceHit = 0.5,

@@ -1,7 +1,6 @@
 domestic_krahbu = Creature:new {
 	objectName = "@mob/creature_names:domestic_krahbu",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

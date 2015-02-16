@@ -1,7 +1,6 @@
 bh_bounty_hunter_thug = Creature:new {
 	objectName = "@mob/creature_names:bounty_hunter",
 	socialGroup = "mercenary",
-	pvpFaction = "",
 	faction = "",
 	level = 24,
 	chanceHit = 0.350000,

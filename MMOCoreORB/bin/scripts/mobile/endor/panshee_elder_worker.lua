@@ -1,7 +1,6 @@
 panshee_elder_worker = Creature:new {
 	objectName = "@mob/creature_names:panshee_elder_worker",
 	socialGroup = "panshee_tribe",
-	pvpFaction = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 27,
 	chanceHit = 0.36,

@@ -2,7 +2,6 @@ record_keeper_planet_tatooine = Creature:new {
 	objectName = "",
 	customName = "Lt. Ogo (Planetary Record Keeper)",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

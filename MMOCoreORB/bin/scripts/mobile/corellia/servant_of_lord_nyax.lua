@@ -1,7 +1,6 @@
 servant_of_lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax_servant",
 	socialGroup = "followers_of_lord_nyax",
-	pvpFaction = "followers_of_lord_nyax",
 	faction = "followers_of_lord_nyax",
 	level = 8,
 	chanceHit = 0.27,

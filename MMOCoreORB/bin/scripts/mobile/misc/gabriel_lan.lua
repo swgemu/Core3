@@ -2,7 +2,6 @@ gabriel_lan = Creature:new {
 	objectName = "",
 	customName = "Gabriel Ian",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

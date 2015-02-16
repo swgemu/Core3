@@ -1,7 +1,6 @@
 ragtag_loon = Creature:new {
 	objectName = "@mob/creature_names:ragtag_loon",
 	socialGroup = "ragtag",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 6,
 	chanceHit = 0.250000,

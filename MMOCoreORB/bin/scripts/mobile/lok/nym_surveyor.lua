@@ -1,7 +1,6 @@
 nym_surveyer = Creature:new {
 	objectName = "@mob/creature_names:nym_surveyer",
 	socialGroup = "nym",
-	pvpFaction = "nym",
 	faction = "nym",
 	level = 21,
 	chanceHit = 0.33,

@@ -1,7 +1,6 @@
 tatooine_mynock = Creature:new {
 	objectName = "@mob/creature_names:tatooine_mynock",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 3,
 	chanceHit = 0.23,

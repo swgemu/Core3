@@ -2,7 +2,6 @@ pirate_squab = Creature:new {
 	objectName = "",
 	customName = "a Pirate Squab",
 	socialGroup = "pirate",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

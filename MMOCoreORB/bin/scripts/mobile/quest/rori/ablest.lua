@@ -2,7 +2,6 @@ ablest = Creature:new {
 	objectName = "",
 	customName = "Ablest",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

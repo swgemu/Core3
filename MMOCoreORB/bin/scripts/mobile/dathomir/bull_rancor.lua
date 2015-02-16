@@ -1,7 +1,6 @@
 bull_rancor = Creature:new {
 	objectName = "@mob/creature_names:bull_rancor",
 	socialGroup = "rancor",
-	pvpFaction = "",
 	faction = "",
 	level = 65,
 	chanceHit = 0.6,

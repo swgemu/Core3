@@ -2,7 +2,6 @@ darkstone = Creature:new {
 	objectName = "",
 	customName = "Colonel Darkstone",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

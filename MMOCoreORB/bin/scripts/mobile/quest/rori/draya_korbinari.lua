@@ -2,7 +2,6 @@ draya_korbinari = Creature:new {
 	objectName = "",
 	customName = "Draya Korbinari",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

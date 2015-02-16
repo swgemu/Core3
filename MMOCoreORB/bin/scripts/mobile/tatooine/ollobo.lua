@@ -2,7 +2,6 @@ ollobo = Creature:new {
 	objectName = "@npc_name:quarren_base_male",
 	customName = "Ollobo",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

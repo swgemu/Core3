@@ -1,7 +1,6 @@
 rebel_specforce_colonel = Creature:new {
 	objectName = "@mob/creature_names:rebel_specforce_colonel",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 27,
 	chanceHit = 0.37,

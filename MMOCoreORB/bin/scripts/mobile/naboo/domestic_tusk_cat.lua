@@ -1,7 +1,6 @@
 domestic_tusk_cat = Creature:new {
 	objectName = "@mob/creature_names:domestic_tusk_cat",
 	socialGroup = "naboo",
-	pvpFaction = "",
 	faction = "",
 	level = 18,
 	chanceHit = 0.32,

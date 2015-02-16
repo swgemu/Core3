@@ -1,7 +1,6 @@
 mokk_loreweaver = Creature:new {
 	objectName = "@mob/creature_names:mokk_loreweaver",
 	socialGroup = "mokk_tribe",
-	pvpFaction = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 47,
 	chanceHit = 0.47,

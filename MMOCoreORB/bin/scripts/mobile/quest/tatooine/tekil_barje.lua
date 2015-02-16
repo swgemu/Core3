@@ -2,7 +2,6 @@ tekil_barje = Creature:new {
 	objectName = "",
 	customName = "Tekil Barje",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

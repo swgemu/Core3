@@ -1,7 +1,6 @@
 kobola_guard = Creature:new {
 	objectName = "@mob/creature_names:kobola_guard",
 	socialGroup = "kobola",
-	pvpFaction = "kobola",
 	faction = "kobola",
 	level = 12,
 	chanceHit = 0.29,

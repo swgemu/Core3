@@ -1,7 +1,6 @@
 sennex_guard = Creature:new {
 	objectName = "@mob/creature_names:sennex_guard",
 	socialGroup = "sennex",
-	pvpFaction = "pirate",
 	faction = "pirate",
 	level = 32,
 	chanceHit = 0.4,

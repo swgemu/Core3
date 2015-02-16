@@ -1,7 +1,6 @@
 dalyrake = Creature:new {
 	objectName = "@mob/creature_names:dalyrake",
 	socialGroup = "dalyrake",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.27,

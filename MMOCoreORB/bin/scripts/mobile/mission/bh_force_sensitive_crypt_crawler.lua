@@ -1,7 +1,6 @@
 bh_force_sensitive_crypt_crawler = Creature:new {
 	objectName = "@mob/creature_names:force_sensitive_crypt_crawler",
 	socialGroup = "kun",
-	pvpFaction = "",
 	faction = "",
 	level = 95,
 	chanceHit = 0.9,

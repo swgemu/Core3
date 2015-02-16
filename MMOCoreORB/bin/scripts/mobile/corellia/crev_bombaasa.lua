@@ -2,7 +2,6 @@ crev_bombaasa = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Crev Bombaasa",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

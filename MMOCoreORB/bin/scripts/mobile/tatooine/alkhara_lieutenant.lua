@@ -1,7 +1,6 @@
 alkhara_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:alkhara_lieutenant",
 	socialGroup = "alkhara",
-	pvpFaction = "alkhara",
 	faction = "alkhara",
 	level = 16,
 	chanceHit = 0.31,

@@ -2,7 +2,6 @@ booto_lubble = Creature:new {
 	objectName = "",
 	customName = "Booto Lubble",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

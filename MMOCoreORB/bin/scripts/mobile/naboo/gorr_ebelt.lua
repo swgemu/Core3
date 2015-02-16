@@ -1,7 +1,6 @@
 gorr_ebelt = Creature:new {
 	objectName = "@mob/creature_names:gorr_ebelt",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 21,
 	chanceHit = 0.33,

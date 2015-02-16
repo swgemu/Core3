@@ -2,7 +2,6 @@ arosp_eslykewa = Creature:new {
 	objectName = "@npc_name:moncal_base_female",
 	customName = "Arosp Eslykewa",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

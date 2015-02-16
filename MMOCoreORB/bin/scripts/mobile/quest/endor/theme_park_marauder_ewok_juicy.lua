@@ -1,8 +1,7 @@
 theme_park_marauder_ewok_juicy = Creature:new {
 	objectName = "@npc_name:ewok_base_male",
 	customName = "Juicy Ewok",
-	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
+	socialGroup = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 35,
 	chanceHit = 0.41,

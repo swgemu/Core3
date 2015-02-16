@@ -1,7 +1,6 @@
 rodian_clan_medic = Creature:new {
 	objectName = "@mob/creature_names:rodian_clan_medic",
 	socialGroup = "rodian",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

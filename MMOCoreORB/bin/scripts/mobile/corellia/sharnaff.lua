@@ -1,7 +1,6 @@
 sharnaff = Creature:new {
 	objectName = "@mob/creature_names:sharnaff",
 	socialGroup = "sharnaff",
-	pvpFaction = "",
 	faction = "",
 	level = 31,
 	chanceHit = 0.38,

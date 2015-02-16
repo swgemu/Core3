@@ -1,7 +1,6 @@
 infant_brackaset = Creature:new {
 	objectName = "@mob/creature_names:infant_brackaset",
 	socialGroup = "brackaset",
-	pvpFaction = "",
 	faction = "",
 	level = 6,
 	chanceHit = 0.25,

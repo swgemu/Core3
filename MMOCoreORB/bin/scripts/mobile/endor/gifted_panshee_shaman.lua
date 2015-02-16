@@ -1,7 +1,6 @@
 gifted_panshee_shaman = Creature:new {
 	objectName = "@mob/creature_names:gifted_panshee_shaman",
 	socialGroup = "panshee_tribe",
-	pvpFaction = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 38,
 	chanceHit = 0.42,

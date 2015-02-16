@@ -1,7 +1,6 @@
 toxic_slasher = Creature:new {
 	objectName = "@mob/creature_names:vir_vur_toxic_slasher",
 	socialGroup = "vir_vur",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.31,

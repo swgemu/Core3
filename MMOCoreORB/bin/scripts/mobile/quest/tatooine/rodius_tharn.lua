@@ -1,7 +1,6 @@
 rodius_tharn = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 16,
 	chanceHit = 0.31,

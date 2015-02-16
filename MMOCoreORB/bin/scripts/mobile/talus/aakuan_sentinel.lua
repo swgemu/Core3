@@ -1,7 +1,6 @@
 aakuan_sentinel = Creature:new {
 	objectName = "@mob/creature_names:aakuan_sentinal",
 	socialGroup = "aakuans",
-	pvpFaction = "aakuans",
 	faction = "aakuans",
 	level = 17,
 	chanceHit = 0.31,

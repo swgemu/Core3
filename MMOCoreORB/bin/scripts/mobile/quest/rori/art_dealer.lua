@@ -2,7 +2,6 @@ art_dealer = Creature:new {
 	objectName = "",
 	customName = "Art Dealer",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

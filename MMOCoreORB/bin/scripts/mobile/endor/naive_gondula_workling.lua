@@ -1,7 +1,6 @@
 naive_gondula_workling = Creature:new {
 	objectName = "@mob/creature_names:naive_gondula_workling",
 	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 9,
 	chanceHit = 0.27,

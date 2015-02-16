@@ -1,7 +1,6 @@
 perlek_ravager = Creature:new {
 	objectName = "@mob/creature_names:perlek_ravager",
 	socialGroup = "perlek",
-	pvpFaction = "",
 	faction = "",
 	level = 18,
 	chanceHit = 0.32,

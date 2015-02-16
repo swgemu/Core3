@@ -1,7 +1,6 @@
 malkloc_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_malkloc",
 	socialGroup = "malkloc",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.2,

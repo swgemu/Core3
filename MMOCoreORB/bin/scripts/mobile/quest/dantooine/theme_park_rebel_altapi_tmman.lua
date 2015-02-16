@@ -1,7 +1,6 @@
 theme_park_rebel_altapi_tmman = Creature:new {
 	objectName = "",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

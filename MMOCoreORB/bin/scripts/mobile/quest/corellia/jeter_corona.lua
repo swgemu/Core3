@@ -1,7 +1,6 @@
 jeter_corona = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.280000,

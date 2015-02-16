@@ -1,7 +1,6 @@
 spynet_operative = Creature:new {
 	objectName = "@mob/creature_names:spynet_operative",
 	socialGroup = "spynet",
-	pvpFaction = "",
 	faction = "",
 	level = 17,
 	chanceHit = 0.32,

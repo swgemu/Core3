@@ -1,7 +1,6 @@
 swarming_kliknik = Creature:new {
 	objectName = "@mob/creature_names:kliknik_swarming",
 	socialGroup = "kliknik",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.27,

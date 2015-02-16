@@ -1,7 +1,6 @@
 kunga_herbalist = Creature:new {
 	objectName = "@mob/creature_names:kunga_herbalist",
 	socialGroup = "kunga_tribe",
-	pvpFaction = "kunga_tribe",
 	faction = "kunga_tribe",
 	level = 16,
 	chanceHit = 0.31,

@@ -1,7 +1,6 @@
 hagrin_aide = Creature:new {
 	objectName = "@mob/creature_names:businessman",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

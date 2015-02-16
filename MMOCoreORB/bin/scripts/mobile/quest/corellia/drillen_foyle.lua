@@ -1,7 +1,6 @@
 drillen_foyle = Creature:new {
 	objectName = "",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 19,
 	chanceHit = 0.33,

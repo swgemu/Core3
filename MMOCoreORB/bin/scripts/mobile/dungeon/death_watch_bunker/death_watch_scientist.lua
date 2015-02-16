@@ -1,7 +1,6 @@
 death_watch_scientist = Creature:new {
 	objectName = "@mob/creature_names:scientist",
 	socialGroup = "death_watch",
-	pvpFaction = "",
 	faction = "",
 	level = 34,
 	chanceHit = 0.410000,

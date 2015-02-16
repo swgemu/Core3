@@ -1,7 +1,6 @@
 chunker_creep = Creature:new {
 	objectName = "@mob/creature_names:chunker_creep",
 	socialGroup = "chunker",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 9,
 	chanceHit = 0.270000,

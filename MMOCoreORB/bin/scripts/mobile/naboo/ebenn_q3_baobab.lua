@@ -2,7 +2,6 @@ ebenn_q3_baobab = Creature:new {
 	objectName = "",
 	customName = "Ebenn Q3 Baobab",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

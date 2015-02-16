@@ -2,7 +2,6 @@ junk_malik = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Malik",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 swirl_prong_pack_leader = Creature:new {
 	objectName = "@mob/creature_names:swirl_prong_pack_leader",
 	socialGroup = "prong",
-	pvpFaction = "",
 	faction = "",
 	level = 32,
 	chanceHit = 0.4,

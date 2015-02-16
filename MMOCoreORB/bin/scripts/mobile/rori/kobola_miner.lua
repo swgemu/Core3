@@ -1,7 +1,6 @@
 kobola_miner = Creature:new {
 	objectName = "@mob/creature_names:kobola_miner",
 	socialGroup = "kobola",
-	pvpFaction = "kobola",
 	faction = "kobola",
 	level = 8,
 	chanceHit = 0.27,

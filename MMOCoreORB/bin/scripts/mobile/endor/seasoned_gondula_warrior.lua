@@ -1,7 +1,6 @@
 seasoned_gondula_warrior = Creature:new {
 	objectName = "@mob/creature_names:seasoned_gondula_warrior",
 	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 45,
 	chanceHit = 0.460000,

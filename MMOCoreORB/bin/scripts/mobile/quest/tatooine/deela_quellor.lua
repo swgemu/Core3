@@ -1,7 +1,6 @@
 deela_quellor = Creature:new {
 	objectName = "@mob/creature_names:entertainer",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

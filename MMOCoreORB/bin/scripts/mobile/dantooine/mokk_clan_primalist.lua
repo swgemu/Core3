@@ -1,7 +1,6 @@
 mokk_clan_primalist = Creature:new {
 	objectName = "@mob/creature_names:mokk_primalist",
 	socialGroup = "mokk_tribe",
-	pvpFaction = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 47,
 	chanceHit = 0.47,

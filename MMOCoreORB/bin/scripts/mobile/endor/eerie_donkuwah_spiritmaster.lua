@@ -1,7 +1,6 @@
 eerie_donkuwah_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:eerie_donkuwah_spiritmaster",
 	socialGroup = "donkuwah_tribe",
-	pvpFaction = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 39,
 	chanceHit = 0.44,

@@ -1,7 +1,6 @@
 snorbal_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_snorbal",
 	socialGroup = "snorbal",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.2,

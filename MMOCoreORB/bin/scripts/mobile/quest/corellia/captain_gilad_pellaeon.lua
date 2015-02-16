@@ -2,7 +2,6 @@ captain_gilad_pellaeon = Creature:new {
 	objectName = "",
 	customName = "Captain Gilad Pellaeon",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

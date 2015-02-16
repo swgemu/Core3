@@ -1,7 +1,6 @@
 siih_shadow_mercenary = Creature:new {
 	objectName = "@mob/creature_names:shadow_mercenary",
 	socialGroup = "sith_shadow",
-	pvpFaction = "sith_shadow",
 	faction = "sith_shadow",
 	level = 69,
 	chanceHit = 0.6,

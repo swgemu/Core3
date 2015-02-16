@@ -2,7 +2,6 @@ death_watch_overlord = Creature:new {
 	objectName = "",
 	customName = "Drartih Oure (a Death Watch Overlord)",
 	socialGroup = "death_watch",
-	pvpFaction = "",
 	faction = "",
 	level = 221,
 	chanceHit = 19,

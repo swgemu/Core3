@@ -1,7 +1,6 @@
 weak_mercenary = Creature:new {
 	objectName = "@mob/creature_names:mercenary_weak",
 	socialGroup = "lok_mercenaries",
-	pvpFaction = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 34,
 	chanceHit = 0.41,

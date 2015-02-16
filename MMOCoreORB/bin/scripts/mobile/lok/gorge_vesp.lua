@@ -1,7 +1,6 @@
 gorge_vesp = Creature:new {
 	objectName = "@mob/creature_names:gorge_vesp",
 	socialGroup = "vesp",
-	pvpFaction = "",
 	faction = "",
 	level = 27,
 	chanceHit = 0.36,

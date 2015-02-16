@@ -2,7 +2,6 @@ indintra_imbru_yerevan = Creature:new {
 	objectName = "",
 	customName = "Indintra Imbru Yerevan",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

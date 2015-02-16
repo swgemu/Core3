@@ -1,7 +1,6 @@
 foul_pubam_laborer = Creature:new {
 	objectName = "@mob/creature_names:foul_pubam_laborer",
 	socialGroup = "pubam",
-	pvpFaction = "pubam",
 	faction = "pubam",
 	level = 31,
 	chanceHit = 0.39,

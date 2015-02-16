@@ -1,7 +1,6 @@
 janta_scout = Creature:new {
 	objectName = "@mob/creature_names:janta_scout",
 	socialGroup = "janta_tribe",
-	pvpFaction = "janta_tribe",
 	faction = "janta_tribe",
 	level = 51,
 	chanceHit = 0.55,

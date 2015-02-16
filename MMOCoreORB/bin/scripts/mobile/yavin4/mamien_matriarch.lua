@@ -1,7 +1,6 @@
 mamien_matriarch = Creature:new {
 	objectName = "@mob/creature_names:mamien_matriarch",
 	socialGroup = "mamien",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,

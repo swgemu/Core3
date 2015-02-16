@@ -1,7 +1,6 @@
 mauler_apprentice = Creature:new {
 	objectName = "@mob/creature_names:mauler_apprentice",
 	socialGroup = "mauler",
-	pvpFaction = "",
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

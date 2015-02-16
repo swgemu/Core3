@@ -2,7 +2,6 @@ mol_nimai = Creature:new {
 	objectName = "",
 	customName = "Mol Ni'mai",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

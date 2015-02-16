@@ -1,7 +1,6 @@
 imperial_noncom = Creature:new {
 	objectName = "@mob/creature_names:imperial_noncom",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 14,
 	chanceHit = 0.3,

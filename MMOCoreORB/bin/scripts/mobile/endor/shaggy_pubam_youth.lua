@@ -1,7 +1,6 @@
 shaggy_pubam_youth = Creature:new {
 	objectName = "@mob/creature_names:shaggy_ubam_youth",
 	socialGroup = "pubam",
-	pvpFaction = "pubam",
 	faction = "pubam",
 	level = 5,
 	chanceHit = 0.25,

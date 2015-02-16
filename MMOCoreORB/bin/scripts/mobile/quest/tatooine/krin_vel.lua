@@ -2,7 +2,6 @@ krin_vel = Creature:new {
 	objectName = "",
 	customName = "Krin Vel",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

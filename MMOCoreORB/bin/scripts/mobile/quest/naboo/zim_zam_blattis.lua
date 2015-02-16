@@ -2,7 +2,6 @@ zim_zam_blattis = Creature:new {
 	objectName = "",
 	customName = "Zim Zam Blattis",
 	socialGroup = "gungan",
-	pvpFaction = "gungan",
 	faction = "gungan",
 	level = 14,
 	chanceHit = 0.3,

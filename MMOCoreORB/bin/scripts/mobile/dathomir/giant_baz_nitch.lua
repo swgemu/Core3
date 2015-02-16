@@ -1,7 +1,6 @@
 giant_baz_nitch = Creature:new {
 	objectName = "@mob/creature_names:giant_baz_nitch",
 	socialGroup = "baz_nitch",
-	pvpFaction = "",
 	faction = "",
 	level = 35,
 	chanceHit = 0.41,

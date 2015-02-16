@@ -1,7 +1,6 @@
 tutorial_commoner = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.390000,
@@ -46,7 +45,6 @@ CreatureTemplates:addCreatureTemplate(tutorial_commoner, "tutorial_commoner")
 tutorial_commoner_1 = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.390000,
@@ -85,7 +83,6 @@ CreatureTemplates:addCreatureTemplate(tutorial_commoner_1, "tutorial_commoner_1"
 tutorial_commoner_2 = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.390000,
@@ -124,7 +121,6 @@ CreatureTemplates:addCreatureTemplate(tutorial_commoner_2, "tutorial_commoner_2"
 tutorial_commoner_3 = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.390000,
@@ -163,7 +159,6 @@ CreatureTemplates:addCreatureTemplate(tutorial_commoner_3, "tutorial_commoner_3"
 tutorial_commoner_talking = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.390000,

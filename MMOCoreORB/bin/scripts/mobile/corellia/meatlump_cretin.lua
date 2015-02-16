@@ -1,7 +1,6 @@
 meatlump_cretin = Creature:new {
 	objectName = "@mob/creature_names:meatlump_cretin",
 	socialGroup = "meatlump",
-	pvpFaction = "meatlump",
 	faction = "meatlump",
 	level = 9,
 	chanceHit = 0.270000,

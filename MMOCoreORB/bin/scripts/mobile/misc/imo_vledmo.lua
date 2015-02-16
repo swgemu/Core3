@@ -2,7 +2,6 @@ imo_vledmo = Creature:new {
 	objectName = "",
 	customName = "Imo Vledmo",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

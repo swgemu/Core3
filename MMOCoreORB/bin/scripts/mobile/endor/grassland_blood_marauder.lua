@@ -1,7 +1,6 @@
 grassland_blood_marauder = Creature:new {
 	objectName = "@mob/creature_names:grassland_blood_marauder",
 	socialGroup = "endor_marauder",
-	pvpFaction = "endor_marauder",
 	faction = "endor_marauder",
 	level = 50,
 	chanceHit = 0.5,

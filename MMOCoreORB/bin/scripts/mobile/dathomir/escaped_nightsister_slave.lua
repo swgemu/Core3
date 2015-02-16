@@ -1,7 +1,6 @@
 escaped_nightsister_slave = Creature:new {
 	objectName = "@mob/creature_names:escaped_nightsister_slave",
 	socialGroup = "slave",
-	pvpFaction = "",
 	faction = "",
 	level = 28,
 	chanceHit = 0.36,

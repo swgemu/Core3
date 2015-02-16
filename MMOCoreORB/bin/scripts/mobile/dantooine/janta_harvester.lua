@@ -1,7 +1,6 @@
 janta_harvester = Creature:new {
 	objectName = "@mob/creature_names:janta_harvester",
 	socialGroup = "janta_tribe",
-	pvpFaction = "janta_tribe",
 	faction = "janta_tribe",
 	level = 40,
 	chanceHit = 0.44,

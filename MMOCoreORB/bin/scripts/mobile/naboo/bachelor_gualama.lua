@@ -1,7 +1,6 @@
 bachelor_gualama = Creature:new {
 	objectName = "@mob/creature_names:bachelor_gualama",
 	socialGroup = "gualama",
-	pvpFaction = "",
 	faction = "",
 	level = 13,
 	chanceHit = 0.3,

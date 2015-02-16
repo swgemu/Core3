@@ -1,7 +1,6 @@
 voydd_blancken = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 23,
 	chanceHit = 0.35,

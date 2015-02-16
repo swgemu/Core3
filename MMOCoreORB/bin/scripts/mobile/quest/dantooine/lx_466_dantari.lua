@@ -2,7 +2,6 @@ lx_466_dantari = Creature:new {
 	objectName = "",
 	customName = "(a Dantari tribesman)",	
 	socialGroup = "dantari_raiders",
-	pvpFaction = "dantari_raiders",
 	faction = "dantari_raiders",
 	level = 25,
 	chanceHit = 0.36,

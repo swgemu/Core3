@@ -1,7 +1,6 @@
 flit_bloodsucker = Creature:new {
 	objectName = "@mob/creature_names:flit_bloodsucker",
 	socialGroup = "flit",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.27,

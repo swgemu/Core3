@@ -1,7 +1,6 @@
 vicious_korga_battlelord = Creature:new {
 	objectName = "@mob/creature_names:vicious_korga_battlelord",
 	socialGroup = "korga_tribe",
-	pvpFaction = "korga_tribe",
 	faction = "korga_tribe",
 	level = 48,
 	chanceHit = 0.49,

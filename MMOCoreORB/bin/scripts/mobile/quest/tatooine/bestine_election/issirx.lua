@@ -2,7 +2,6 @@ issirx = Creature:new {
 	objectName = "@npc_name:trandoshan_base_female",
 	customName = "Issirx",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

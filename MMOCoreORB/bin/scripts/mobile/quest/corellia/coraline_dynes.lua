@@ -2,7 +2,6 @@ coraline_dynes = Creature:new {
 	objectName = "@npc_name:human_base_female",
 	customName = "Coraline Dynes",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

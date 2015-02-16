@@ -2,7 +2,6 @@ rale_moonraiser = Creature:new {
 	objectName = "",
 	customName = "Rale Moonraiser",
 	socialGroup = "darklighter",
-	pvpFaction = "",
 	faction = "",
 	level = 99,
 	chanceHit = 0.99,

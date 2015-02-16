@@ -1,7 +1,6 @@
 grassland_voritor_tracker = Creature:new {
 	objectName = "@mob/creature_names:grassland_voritor_tracker",
 	socialGroup = "voritor",
-	pvpFaction = "",
 	faction = "",
 	level = 45,
 	chanceHit = 0.44,

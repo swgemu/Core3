@@ -2,7 +2,6 @@ relay_guard_coa2 = Creature:new {
 	objectName = "",
 	customName = "a Relay Guard",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 27,
 	chanceHit = 0.37,

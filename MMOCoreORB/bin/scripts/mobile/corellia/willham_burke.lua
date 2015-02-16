@@ -1,7 +1,6 @@
 willham_burke = Creature:new {
 	objectName = "@npc_spawner_n:willham_burke",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

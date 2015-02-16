@@ -2,7 +2,6 @@ biogenic_crazyguy = Creature:new {
 	objectName = "",
 	customName = "Ebotia Dived (a scientist)",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 25,
 	chanceHit = 0.35,

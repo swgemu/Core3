@@ -1,7 +1,6 @@
 force_sensitive_renegade = Creature:new {
 	objectName = "@mob/creature_names:force_sensitive_renegade",
 	socialGroup = "force",
-	pvpFaction = "",
 	faction = "",
 	level = 80,
 	chanceHit = 0.8,

@@ -1,7 +1,6 @@
 kafleer_tredahl = Creature:new {
 	objectName = "",
 	socialGroup = "townsperson",
-	pvpFaction = "",
 	faction = "",
 	level = 16,
 	chanceHit = 0.310000,

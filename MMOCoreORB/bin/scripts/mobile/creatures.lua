@@ -1,7 +1,6 @@
 Creature = {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 0,
 	chanceHit = 0.000000,

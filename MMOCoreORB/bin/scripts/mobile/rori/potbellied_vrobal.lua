@@ -1,7 +1,6 @@
 potbellied_vrobal = Creature:new {
 	objectName = "@mob/creature_names:potbellied_vrobal",
 	socialGroup = "vrobal",
-	pvpFaction = "",
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

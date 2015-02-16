@@ -1,7 +1,6 @@
 stoos_imperial_ensign = Creature:new {
   objectName = "",
   socialGroup = "imperial",
-  pvpFaction = "imperial",
   faction = "imperial",
   level = 30,
   chanceHit = 0.390000,

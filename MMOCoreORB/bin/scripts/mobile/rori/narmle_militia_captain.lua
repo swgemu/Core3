@@ -1,7 +1,6 @@
 narmle_militia_captain = Creature:new {
 	objectName = "@mob/creature_names:narmle_captain",
 	socialGroup = "narmle",
-	pvpFaction = "narmle",
 	faction = "narmle",
 	level = 17,
 	chanceHit = 0.32,

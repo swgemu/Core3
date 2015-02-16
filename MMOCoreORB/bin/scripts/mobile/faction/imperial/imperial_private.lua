@@ -1,7 +1,6 @@
 imperial_private = Creature:new {
 	objectName = "@mob/creature_names:imperial_private",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 15,
 	chanceHit = 0.31,

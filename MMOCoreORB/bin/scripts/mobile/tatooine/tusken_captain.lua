@@ -1,7 +1,6 @@
 tusken_captain = Creature:new {
 	objectName = "@mob/creature_names:tusken_captain",
 	socialGroup = "tusken_raider",
-	pvpFaction = "tusken_raider",
 	faction = "tusken_raider",
 	level = 40,
 	chanceHit = 0.44,

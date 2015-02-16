@@ -1,7 +1,6 @@
 bolle_bol_herd_leader = Creature:new {
 	objectName = "@mob/creature_names:bolle_bol_herd_leader",
 	socialGroup = "bol",
-	pvpFaction = "",
 	faction = "",
 	level = 35,
 	chanceHit = 0.41,

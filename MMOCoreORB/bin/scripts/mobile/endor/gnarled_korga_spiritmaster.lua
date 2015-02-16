@@ -1,7 +1,6 @@
 gnarled_korga_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:gnarled_korga_spiritmaster",
 	socialGroup = "korga_tribe",
-	pvpFaction = "korga_tribe",
 	faction = "korga_tribe",
 	level = 33,
 	chanceHit = 0.4,

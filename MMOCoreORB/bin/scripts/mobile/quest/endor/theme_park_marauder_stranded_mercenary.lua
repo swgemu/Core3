@@ -2,7 +2,6 @@ theme_park_marauder_stranded_mercenary = Creature:new {
 	objectName = "",
 	customName = "a stranded mercenary",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 35,
 	chanceHit = 0.35,

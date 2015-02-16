@@ -1,7 +1,6 @@
 wolf_kima = Creature:new {
 	objectName = "@mob/creature_names:wolf_kima",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 19,
 	chanceHit = 0.32,

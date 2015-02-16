@@ -1,7 +1,6 @@
 four_lom = Creature:new {
 	objectName = "@mob/creature_names:droid_4lom",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

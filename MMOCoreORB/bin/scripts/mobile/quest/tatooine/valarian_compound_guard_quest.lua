@@ -1,7 +1,6 @@
 valarian_compound_guard_quest = Creature:new {
 	objectName = "@mob/creature_names:valarian_compound_guard",
 	socialGroup = "valarian",
-	pvpFaction = "valarian",
 	faction = "valarian",
 	level = 12,
 	chanceHit = 0.29,

@@ -1,7 +1,6 @@
 daktar_bloodmoon = Creature:new {
 	objectName = "@mob/creature_names:daktar_bloodmoon",
 	socialGroup = "sith_shadow",
-	pvpFaction = "sith_shadow",
 	faction = "sith_shadow",
 	level = 115,
 	chanceHit = 1,

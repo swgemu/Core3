@@ -1,7 +1,6 @@
 competent_panshee_ritualist = Creature:new {
 	objectName = "@mob/creature_names:competent_panshee_ritualist",
 	socialGroup = "panshee_tribe",
-	pvpFaction = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 22,
 	chanceHit = 0.33,

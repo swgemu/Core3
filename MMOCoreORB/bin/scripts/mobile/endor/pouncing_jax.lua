@@ -1,7 +1,6 @@
 pouncing_jax = Creature:new {
 	objectName = "@mob/creature_names:pouncing_jax",
 	socialGroup = "jax",
-	pvpFaction = "",
 	faction = "",
 	level = 13,
 	chanceHit = 0.29,

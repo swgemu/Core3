@@ -1,7 +1,6 @@
 mokk_harvester = Creature:new {
 	objectName = "@mob/creature_names:mokk_harvester",
 	socialGroup = "mokk_tribe",
-	pvpFaction = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 32,
 	chanceHit = 0.39,

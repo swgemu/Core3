@@ -1,7 +1,6 @@
 lieutenant_ori = Creature:new {
 	objectName = "@mob/creature_names:lieutenant_ori",
 	socialGroup = "rorgungan",
-	pvpFaction = "rorgungan",
 	faction = "rorgungan",
 	level = 33,
 	chanceHit = 0.39,

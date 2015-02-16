@@ -1,7 +1,6 @@
 gadsle_distombe = Creature:new {
 	objectName = "@mob/creature_names:gadsle_distombe",
 	socialGroup = "sith_shadow",
-	pvpFaction = "sith_shadow",
 	faction = "sith_shadow",
 	level = 87,
 	chanceHit = 0.75,

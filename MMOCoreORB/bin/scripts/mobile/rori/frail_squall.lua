@@ -1,7 +1,6 @@
 frail_squall = Creature:new {
 	objectName = "@mob/creature_names:frail_squall",
 	socialGroup = "squall",
-	pvpFaction = "",
 	faction = "",
 	level = 6,
 	chanceHit = 0.25,

@@ -1,7 +1,6 @@
 flail_executioner = Creature:new {
 	objectName = "@mob/creature_names:flail_executioner",
 	socialGroup = "flail",
-	pvpFaction = "flail",
 	faction = "flail",
 	level = 25,
 	chanceHit = 0.36,

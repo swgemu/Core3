@@ -1,7 +1,6 @@
 pilot = Creature:new {
 	objectName = "@mob/creature_names:pilot",
 	socialGroup = "mercenary",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.270000,

@@ -1,7 +1,6 @@
 storm_commando = Creature:new {
 	objectName = "@mob/creature_names:storm_commando",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 29,
 	chanceHit = 0.38,

@@ -1,7 +1,6 @@
 docile_kahmurra = Creature:new {
 	objectName = "@mob/creature_names:docile_kahmurra",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

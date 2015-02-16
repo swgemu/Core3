@@ -1,7 +1,6 @@
 crackdown_swamp_trooper = Creature:new {
 	objectName = "@mob/creature_names:crackdown_swamp_trooper",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 1,
 	chanceHit = 0.36,

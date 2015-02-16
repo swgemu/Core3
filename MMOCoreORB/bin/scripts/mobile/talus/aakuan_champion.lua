@@ -1,7 +1,6 @@
 aakuan_champion = Creature:new {
 	objectName = "@mob/creature_names:aakuan_champion",
 	socialGroup = "aakuans",
-	pvpFaction = "aakuans",
 	faction = "aakuans",
 	level = 30,
 	chanceHit = 0.39,

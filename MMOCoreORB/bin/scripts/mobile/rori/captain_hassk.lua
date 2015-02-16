@@ -1,7 +1,6 @@
 captain_hassk = Creature:new {
 	objectName = "@mob/creature_names:captain_hassk",
 	socialGroup = "rorgungan",
-	pvpFaction = "rorgungan",
 	faction = "rorgungan",
 	level = 73,
 	chanceHit = 0.7,

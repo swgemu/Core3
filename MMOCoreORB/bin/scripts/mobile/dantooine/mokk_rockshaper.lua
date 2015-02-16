@@ -1,7 +1,6 @@
 mokk_rockshaper = Creature:new {
 	objectName = "@mob/creature_names:mokk_rockshaper",
 	socialGroup = "mokk_tribe",
-	pvpFaction = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 71,
 	chanceHit = 0.65,

@@ -1,7 +1,6 @@
 theme_park_imperial_captain_sargon = Creature:new {
 	objectName = "@mob/creature_names:crackdown_imperial_army_captain",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 30,
 	chanceHit = 0.390000,

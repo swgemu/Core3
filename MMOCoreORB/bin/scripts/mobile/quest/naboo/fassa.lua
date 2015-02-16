@@ -1,7 +1,6 @@
 fassa = Creature:new {
 	objectName = "",
 	socialGroup = "gungan",
-	pvpFaction = "gungan",
 	faction = "gungan",
 	level = 26,
 	chanceHit = 0.36,

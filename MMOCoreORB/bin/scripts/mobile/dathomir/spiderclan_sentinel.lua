@@ -1,7 +1,6 @@
 spiderclan_sentinel = Creature:new {
 	objectName = "@mob/creature_names:spider_nightsister_sentinel",
 	socialGroup = "spider_nightsister",
-	pvpFaction = "spider_nightsister",
 	faction = "spider_nightsister",
 	level = 92,
 	chanceHit = 0.8,

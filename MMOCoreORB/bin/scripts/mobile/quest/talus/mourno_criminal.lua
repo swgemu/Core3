@@ -1,7 +1,6 @@
 mourno_criminal = Creature:new {
 	objectName = "@mob/creature_names:criminal",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 7,
 	chanceHit = 0.26,

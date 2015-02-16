@@ -2,7 +2,6 @@ green_laser = Creature:new {
 	objectName = "",
 	customName = "Green Laser",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

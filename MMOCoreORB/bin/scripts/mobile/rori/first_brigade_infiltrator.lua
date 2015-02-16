@@ -1,7 +1,6 @@
 first_brigade_infiltrator = Creature:new {
 	objectName = "@mob/creature_names:brigade_infiltrator",
 	socialGroup = "restuss",
-	pvpFaction = "restuss",
 	faction = "restuss",
 	level = 13,
 	chanceHit = 0.3,

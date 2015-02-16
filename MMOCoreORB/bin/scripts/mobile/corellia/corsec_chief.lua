@@ -1,7 +1,6 @@
 corsec_chief = Creature:new {
 	objectName = "@mob/creature_names:corsec_chief",
 	socialGroup = "corsec",
-	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 27,
 	chanceHit = 0.37,

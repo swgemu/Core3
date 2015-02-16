@@ -1,7 +1,6 @@
 wend_dinard = Creature:new {
 	objectName = "",
 	socialGroup = "hutt",
-	pvpFaction = "hutt",
 	faction = "hutt",
 	level = 7,
 	chanceHit = 0.26,

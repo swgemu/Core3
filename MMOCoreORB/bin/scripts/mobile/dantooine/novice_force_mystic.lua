@@ -1,7 +1,6 @@
 novice_force_mystic = Creature:new {
 	objectName = "@mob/creature_names:novice_force_mystic",
 	socialGroup = "force",
-	pvpFaction = "",
 	faction = "",
 	level = 60,
 	chanceHit = 0.6,

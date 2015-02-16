@@ -1,7 +1,6 @@
 sulfur_lake_pirate_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:slp_privateer",
 	socialGroup = "pirate",
-	pvpFaction = "",
 	faction = "",
 	level = 17,
 	chanceHit = 0.320000,

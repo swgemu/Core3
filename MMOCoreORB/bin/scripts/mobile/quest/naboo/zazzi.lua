@@ -1,7 +1,6 @@
 zazzi = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 35,
 	chanceHit = 0.41,

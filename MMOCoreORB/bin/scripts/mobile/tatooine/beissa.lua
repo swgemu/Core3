@@ -1,7 +1,6 @@
 beissa = Creature:new {
 	objectName = "@npc_spawner_n:beissa",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

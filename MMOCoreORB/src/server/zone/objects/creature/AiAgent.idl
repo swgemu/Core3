@@ -1027,14 +1027,6 @@ class AiAgent extends CreatureObject {
 		return (getControlDevice() != null);
 	}
 
-	@dirty
-	public string getPvPFaction(){
-		if (npcTemplate.get() == null)
-			return "";
-		
-		return npcTemplate.get().getPvpFaction();
-	}
-	
 	/**
 	 * Pull an AI template from AiMap and set up the tree using the rules from the template. Then 
 	 * store the root behavior in the trees Map.

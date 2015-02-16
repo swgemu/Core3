@@ -1,7 +1,6 @@
 trainer_1hsword = Creature:new {
 	objectName = "@mob/creature_names:trainer_1hsword",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 0.39,

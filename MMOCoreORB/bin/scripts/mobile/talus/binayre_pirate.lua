@@ -1,8 +1,7 @@
 binayre_pirate = Creature:new {
 	objectName = "@mob/creature_names:binayre_pirate",
 	socialGroup = "binayre",
-	pvpFaction = "binayre",
-	faction = "pirate",
+	faction = "binayre",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

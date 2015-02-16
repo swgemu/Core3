@@ -1,7 +1,6 @@
 mummer_punk = Creature:new {
 	objectName = "@mob/creature_names:mummer_punk",
 	socialGroup = "mummer",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 8,
 	chanceHit = 0.270000,

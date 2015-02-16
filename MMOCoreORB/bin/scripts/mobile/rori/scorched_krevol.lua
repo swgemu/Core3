@@ -1,7 +1,6 @@
 scorched_krevol = Creature:new {
 	objectName = "@mob/creature_names:scorched_krevol",
 	socialGroup = "krevol",
-	pvpFaction = "",
 	faction = "",
 	level = 8,
 	chanceHit = 0.27,

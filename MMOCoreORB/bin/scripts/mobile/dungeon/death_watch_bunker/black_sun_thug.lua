@@ -1,7 +1,6 @@
 black_sun_thug = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_blksun_thug",
 	socialGroup = "death_watch",
-	pvpFaction = "",
 	faction = "",
 	level = 86,
 	chanceHit = 0.85,

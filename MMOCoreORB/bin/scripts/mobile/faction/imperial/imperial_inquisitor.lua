@@ -1,7 +1,6 @@
 imperial_inquisitor = Creature:new {
 	objectName = "@mob/creature_names:imperial_inquisitor",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 120,
 	chanceHit = 4.000000,

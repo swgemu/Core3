@@ -2,7 +2,6 @@ yith_seenath = Creature:new {
 	objectName = "",
 	customName = "Yith Seenath",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

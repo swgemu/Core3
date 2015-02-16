@@ -1,7 +1,6 @@
 pubam_tribesman = Creature:new {
 	objectName = "@mob/creature_names:pubam_tribesman",
 	socialGroup = "pubam",
-	pvpFaction = "pubam",
 	faction = "pubam",
 	level = 37,
 	chanceHit = 0.47,

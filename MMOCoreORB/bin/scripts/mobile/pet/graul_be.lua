@@ -1,7 +1,6 @@
 graul_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_graul",
 	socialGroup = "graul",
-	pvpFaction = "",
 	faction = "",
 	level = 25,
 	chanceHit = 0.2,

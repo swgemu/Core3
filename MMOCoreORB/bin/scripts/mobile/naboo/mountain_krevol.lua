@@ -1,7 +1,6 @@
 mountain_krevol = Creature:new {
 	objectName = "@mob/creature_names:mountain_krevol",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.39,

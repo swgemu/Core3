@@ -2,7 +2,6 @@ binna_jode = Creature:new {
 	objectName = "",
 	customName = "Binna Jode",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

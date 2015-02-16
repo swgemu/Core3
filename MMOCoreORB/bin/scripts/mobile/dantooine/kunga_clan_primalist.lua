@@ -1,7 +1,6 @@
 kunga_clan_primalist = Creature:new {
 	objectName = "@mob/creature_names:kunga_clan_primalist",
 	socialGroup = "kunga_tribe",
-	pvpFaction = "kunga_tribe",
 	faction = "kunga_tribe",
 	level = 40,
 	chanceHit = 0.42,

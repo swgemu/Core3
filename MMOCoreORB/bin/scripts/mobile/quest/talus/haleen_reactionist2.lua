@@ -1,7 +1,6 @@
 haleen_reactionist2 = Creature:new {
 	objectName = "@mob/creature_names:liberation_reactionist",
 	socialGroup = "liberation_party",
-	pvpFaction = "liberation_party",
 	faction = "liberation_party",
 	level = 19,
 	chanceHit = 0.33,

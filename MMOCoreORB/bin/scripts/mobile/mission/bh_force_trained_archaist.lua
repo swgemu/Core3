@@ -1,7 +1,6 @@
 bh_force_trained_archaist = Creature:new {
 	objectName = "@mob/creature_names:force_trained_archaist",
 	socialGroup = "force",
-	pvpFaction = "",
 	faction = "",
 	level = 90,
 	chanceHit = 0.9,

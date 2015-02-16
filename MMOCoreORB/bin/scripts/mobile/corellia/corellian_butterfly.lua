@@ -1,7 +1,6 @@
 corellian_butterfly = Creature:new {
 	objectName = "@mob/creature_names:corellian_butterfly",
 	socialGroup = "butterfly",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

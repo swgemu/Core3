@@ -2,7 +2,6 @@ frontiersman = Creature:new {
 	objectName = "",
 	customName = "Frontiersman",
 	socialGroup = "wilder",
-	pvpFaction = "",
 	faction = "",
 	level = 17,
 	chanceHit = 0.32,

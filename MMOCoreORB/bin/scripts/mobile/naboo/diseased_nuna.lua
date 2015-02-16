@@ -1,7 +1,6 @@
 diseased_nuna = Creature:new {
 	objectName = "@mob/creature_names:diseased_nuna",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 6,
 	chanceHit = 0.25,

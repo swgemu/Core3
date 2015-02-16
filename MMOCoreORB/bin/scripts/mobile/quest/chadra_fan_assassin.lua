@@ -1,7 +1,6 @@
 chadra_fan_assassin = Creature:new {
 	objectName = "@mob/creature_names:chadra_fan_assassin",
 	socialGroup = "chadra_fan",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,

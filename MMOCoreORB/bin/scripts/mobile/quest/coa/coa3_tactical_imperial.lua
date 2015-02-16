@@ -1,7 +1,6 @@
 coa3_tactical_imperial = Creature:new {
 	objectName = "@mob/creature_names:coa3_tactical_imperial",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 25,
 	chanceHit = 0.36,

@@ -1,7 +1,6 @@
 singing_mountain_clan_dragoon = Creature:new {
 	objectName = "@mob/creature_names:singing_mtn_clan_dragoon",
 	socialGroup = "mtn_clan",
-	pvpFaction = "mtn_clan",
 	faction = "mtn_clan",
 	level = 94,
 	chanceHit = 0.95,

@@ -1,7 +1,6 @@
 valarian_henchman = Creature:new {
 	objectName = "@mob/creature_names:valarian_henchman",
 	socialGroup = "valarian",
-	pvpFaction = "valarian",
 	faction = "valarian",
 	level = 9,
 	chanceHit = 0.27,

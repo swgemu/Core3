@@ -1,7 +1,6 @@
 drall_abbot = Creature:new {
 	objectName = "@mob/creature_names:drall_abbot",
 	socialGroup = "drall",
-	pvpFaction = "drall",
 	faction = "drall",
 	level = 15,
 	chanceHit = 0.31,

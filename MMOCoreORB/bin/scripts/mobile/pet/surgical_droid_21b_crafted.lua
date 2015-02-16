@@ -1,7 +1,6 @@
 surgical_droid_21b_crafted = Creature:new {
 	objectName = "@droid_name:b_surgical_droid_crafted",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

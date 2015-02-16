@@ -1,7 +1,6 @@
 thune_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_thune",
 	socialGroup = "thune",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.2,

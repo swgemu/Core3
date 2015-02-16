@@ -1,7 +1,6 @@
 mordran = Creature:new {
 	objectName = "@mob/creature_names:mordran",
 	socialGroup = "borvo",
-	pvpFaction = "borvo",
 	faction = "borvo",
 	level = 78,
 	chanceHit = 0.750000,

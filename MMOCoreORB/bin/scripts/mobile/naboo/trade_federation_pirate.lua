@@ -1,7 +1,6 @@
 trade_federation_pirate = Creature:new {
 	objectName = "@mob/creature_names:trade_federation_pirate",
 	socialGroup = "trade_federation",
-	pvpFaction = "trade_federation",
 	faction = "trade_federation",
 	level = 10,
 	chanceHit = 0.28,

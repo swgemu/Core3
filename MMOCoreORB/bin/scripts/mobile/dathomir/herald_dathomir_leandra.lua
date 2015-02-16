@@ -2,7 +2,6 @@ herald_dathomir_leandra = Creature:new {
 	objectName = "",
 	customName = "Spell Weaver Leandra",
 	socialGroup = "nightsister",
-	pvpFaction = "nightsister",
 	faction = "nightsister",
 	level = 100,
 	chanceHit = 1,

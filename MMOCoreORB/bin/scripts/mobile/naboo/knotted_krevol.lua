@@ -1,7 +1,6 @@
 knotted_krevol = Creature:new {
 	objectName = "@mob/creature_names:knotted_krevol",
 	socialGroup = "krevol",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

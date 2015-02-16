@@ -1,7 +1,6 @@
 jabba_compound_guard = Creature:new {
 	objectName = "@mob/creature_names:jabba_compound_guard",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 14,
 	chanceHit = 0.3,

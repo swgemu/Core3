@@ -1,7 +1,6 @@
 lurking_angler = Creature:new {
 	objectName = "@mob/creature_names:lurking_angler",
 	socialGroup = "angler",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.39,

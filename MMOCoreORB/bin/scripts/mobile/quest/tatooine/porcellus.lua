@@ -1,7 +1,6 @@
 porcellus = Creature:new {
 	objectName = "@mob/creature_names:porcellus",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 10,
 	chanceHit = 0.28,

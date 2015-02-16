@@ -1,7 +1,6 @@
 giant_crystal_snake = Creature:new {
 	objectName = "@mob/creature_names:giant_crystal_snake",
 	socialGroup = "snake",
-	pvpFaction = "",
 	faction = "",
 	level = 31,
 	chanceHit = 0.39,

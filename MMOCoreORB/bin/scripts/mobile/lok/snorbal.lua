@@ -1,7 +1,6 @@
 snorbal = Creature:new {
 	objectName = "@mob/creature_names:snorbal",
 	socialGroup = "snorbal",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.39,

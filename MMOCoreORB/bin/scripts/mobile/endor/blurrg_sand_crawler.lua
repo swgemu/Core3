@@ -1,7 +1,6 @@
 blurrg_sand_crawler = Creature:new {
 	objectName = "@mob/creature_names:blurrg_sand_crawler",
 	socialGroup = "blurrg",
-	pvpFaction = "",
 	faction = "",
 	level = 43,
 	chanceHit = 0.44,

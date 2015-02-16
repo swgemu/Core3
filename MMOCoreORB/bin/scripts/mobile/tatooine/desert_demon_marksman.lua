@@ -1,7 +1,6 @@
 desert_demon_marksman = Creature:new {
 	objectName = "@mob/creature_names:desert_demon_marksman",
 	socialGroup = "desert_demon",
-	pvpFaction = "desert_demon",
 	faction = "desert_demon",
 	level = 13,
 	chanceHit = 0.3,

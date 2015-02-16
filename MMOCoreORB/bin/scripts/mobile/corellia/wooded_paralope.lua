@@ -1,7 +1,6 @@
 wooded_paralope = Creature:new {
 	objectName = "@mob/creature_names:wooded_paralope",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

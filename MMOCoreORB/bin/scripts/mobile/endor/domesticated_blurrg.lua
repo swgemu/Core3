@@ -1,7 +1,6 @@
 domesticated_blurrg = Creature:new {
 	objectName = "@mob/creature_names:domesticated_blurrg",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,

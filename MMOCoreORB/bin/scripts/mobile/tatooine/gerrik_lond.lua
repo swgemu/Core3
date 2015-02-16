@@ -1,7 +1,6 @@
 gerrik_lond = Creature:new {
 	objectName = "@mob/creature_names:gerrick_lond",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 21,
 	chanceHit = 0.33,

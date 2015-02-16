@@ -1,7 +1,6 @@
 rebel_sergeant_major = Creature:new {
 	objectName = "@mob/creature_names:rebel_sergeant_major",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 17,
 	chanceHit = 0.32,

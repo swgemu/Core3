@@ -1,7 +1,6 @@
 imperial_sharpshooter = Creature:new {
 	objectName = "@mob/creature_names:imperial_sharpshooter",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 17,
 	chanceHit = 0.32,

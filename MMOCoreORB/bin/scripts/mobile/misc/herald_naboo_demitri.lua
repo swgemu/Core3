@@ -2,7 +2,6 @@ herald_naboo_demitri = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Demitri Firewatcher",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

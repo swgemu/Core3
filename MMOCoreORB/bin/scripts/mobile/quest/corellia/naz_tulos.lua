@@ -1,7 +1,6 @@
 naz_tulos = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,

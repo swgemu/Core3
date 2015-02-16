@@ -1,7 +1,6 @@
 kobola_smuggler = Creature:new {
 	objectName = "@mob/creature_names:kobola_smuggler",
 	socialGroup = "kobola",
-	pvpFaction = "kobola",
 	faction = "kobola",
 	level = 10,
 	chanceHit = 0.28,

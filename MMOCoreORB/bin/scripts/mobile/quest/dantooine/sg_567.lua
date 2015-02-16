@@ -2,7 +2,6 @@ sg_567 = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "SG-567",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

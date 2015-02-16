@@ -1,7 +1,6 @@
 female_kwi = Creature:new {
 	objectName = "@mob/creature_names:female_kwi",
 	socialGroup = "kwi",
-	pvpFaction = "",
 	faction = "",
 	level = 11,
 	chanceHit = 0.28,

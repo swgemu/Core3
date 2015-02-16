@@ -1,7 +1,6 @@
 lian_byrne = Creature:new {
 	objectName = "@mob/creature_names:commander_byrne",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 23,
 	chanceHit = 0.35,

@@ -1,7 +1,6 @@
 blood_stained_merek = Creature:new {
 	objectName = "@mob/creature_names:blood_stained_merek",
 	socialGroup = "merek",
-	pvpFaction = "",
 	faction = "",
 	level = 32,
 	chanceHit = 0.4,

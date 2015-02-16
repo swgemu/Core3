@@ -2,7 +2,6 @@ rogue_marauder = Creature:new {
 	objectName = "",
 	customName = "a Rogue Marauder",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 44,
 	chanceHit = 0.47,

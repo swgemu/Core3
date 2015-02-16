@@ -1,7 +1,6 @@
 falumpaset_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_falumpaset",
 	socialGroup = "falumpaset",
-	pvpFaction = "",
 	faction = "",
 	level = 5,
 	chanceHit = 0.2,

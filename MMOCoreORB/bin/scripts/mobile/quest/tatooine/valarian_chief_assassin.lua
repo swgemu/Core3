@@ -1,7 +1,6 @@
 valarian_chief_assassin = Creature:new {
 	objectName = "",
 	socialGroup = "valarian",
-	pvpFaction = "valarian",
 	faction = "valarian",
 	level = 16,
 	chanceHit = 0.31,

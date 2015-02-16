@@ -2,7 +2,6 @@ eni_ayka = Creature:new {
 	objectName = "",
 	customName = "Eni A'Yka",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

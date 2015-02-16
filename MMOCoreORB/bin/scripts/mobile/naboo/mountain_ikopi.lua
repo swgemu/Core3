@@ -1,7 +1,6 @@
 mountain_ikopi = Creature:new {
 	objectName = "@mob/creature_names:mountain_ikopi",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 17,
 	chanceHit = 0.31,

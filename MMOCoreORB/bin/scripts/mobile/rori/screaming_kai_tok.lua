@@ -1,7 +1,6 @@
 screaming_kai_tok = Creature:new {
 	objectName = "@mob/creature_names:screaming_kai_tok",
 	socialGroup = "kai_tok",
-	pvpFaction = "",
 	faction = "",
 	level = 21,
 	chanceHit = 0.32,

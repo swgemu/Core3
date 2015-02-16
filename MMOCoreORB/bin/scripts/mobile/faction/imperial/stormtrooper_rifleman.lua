@@ -1,7 +1,6 @@
 stormtrooper_rifleman = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_rifleman",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 25,
 	chanceHit = 0.36,

@@ -1,7 +1,6 @@
 hero_of_tat_farmers_wife = Creature:new {
 	objectName = "@mob/creature_names:quest_hero_of_tatooine_farmer_wife",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

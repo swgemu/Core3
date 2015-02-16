@@ -1,7 +1,6 @@
 eight_lom = Creature:new {
 	objectName = "@theme_park_name:lom",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 21,
 	chanceHit = 0.33,

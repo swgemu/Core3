@@ -1,7 +1,6 @@
 lesser_prophet_of_the_light_side = Creature:new {
 	objectName = "@mob/creature_names:lesser_prophet_of_the_dark_side",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 85,
 	chanceHit = 0.85,

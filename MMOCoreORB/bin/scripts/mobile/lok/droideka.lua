@@ -1,7 +1,6 @@
 droideka = Creature:new {
 	objectName = "@mob/creature_names:droideka",
 	socialGroup = "droideka",
-	pvpFaction = "",
 	faction = "",
 	level = 39,
 	chanceHit = 0.44,

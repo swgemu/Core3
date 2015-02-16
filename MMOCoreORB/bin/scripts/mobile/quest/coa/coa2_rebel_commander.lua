@@ -1,7 +1,6 @@
 coa2_rebel_commander = Creature:new {
 	objectName = "@mob/creature_names:coa2_rebel_commander",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

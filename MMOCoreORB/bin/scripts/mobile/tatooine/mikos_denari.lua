@@ -2,7 +2,6 @@ mikos_denari = Creature:new {
 	objectName = "",
 	customName = "Mikos Denari",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

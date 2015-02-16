@@ -1,7 +1,6 @@
 bapibac = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 6,
 	chanceHit = 0.250000,

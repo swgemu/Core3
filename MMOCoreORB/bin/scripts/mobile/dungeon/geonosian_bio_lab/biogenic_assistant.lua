@@ -1,7 +1,6 @@
 biogenic_assistant = Creature:new {
 	objectName = "@mob/creature_names:geonosian_scientist",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 25,
 	chanceHit = 0.35,

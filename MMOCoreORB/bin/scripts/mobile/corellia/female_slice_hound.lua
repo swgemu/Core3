@@ -1,7 +1,6 @@
 female_slice_hound = Creature:new {
 	objectName = "@mob/creature_names:female_slice_hound",
 	socialGroup = "slice_hound",
-	pvpFaction = "",
 	faction = "",
 	level = 8,
 	chanceHit = 0.27,

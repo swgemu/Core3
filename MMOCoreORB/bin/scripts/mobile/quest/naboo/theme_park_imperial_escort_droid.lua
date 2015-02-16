@@ -1,7 +1,6 @@
 theme_park_imperial_escort_droid = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.390000,

@@ -1,7 +1,6 @@
 grungy_donkuwah_laborer = Creature:new {
 	objectName = "@mob/creature_names:grungy_donkuwah_laborer",
 	socialGroup = "donkuwah_tribe",
-	pvpFaction = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 28,
 	chanceHit = 0.37,

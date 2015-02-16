@@ -1,6 +1,5 @@
 trainer_chef = Creature:new {
 	objectName = "@mob/creature_names:trainer_chef",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,

@@ -1,7 +1,6 @@
 large_cave_beetle = Creature:new {
 	objectName = "@mob/creature_names:large_cave_beetle",
 	socialGroup = "beetle",
-	pvpFaction = "",
 	faction = "",
 	level = 23,
 	chanceHit = 0.35,

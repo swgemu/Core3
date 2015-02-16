@@ -2,7 +2,6 @@ warden_vinzel_haylon = Creature:new {
 	objectName = "",
 	customName = "Warden Vinzel Hayon",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

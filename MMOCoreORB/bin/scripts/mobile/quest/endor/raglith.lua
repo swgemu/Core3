@@ -2,7 +2,6 @@ raglith = Creature:new {
 	objectName = "",
 	customName = "Raglith",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

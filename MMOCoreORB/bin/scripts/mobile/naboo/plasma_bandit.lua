@@ -2,7 +2,6 @@ plasma_bandit = Creature:new {
 	objectName = "",
 	customName = "a Plasma Bandit",
 	socialGroup = "plasma_thief",
-	pvpFaction = "plasma_thief",
 	faction = "plasma_thief",
 	level = 8,
 	chanceHit = 0.27,

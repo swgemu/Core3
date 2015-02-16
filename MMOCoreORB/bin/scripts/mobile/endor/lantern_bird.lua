@@ -1,7 +1,6 @@
 lantern_bird = Creature:new {
 	objectName = "@mob/creature_names:lantern_bird",
 	socialGroup = "lantern",
-	pvpFaction = "",
 	faction = "",
 	level = 21,
 	chanceHit = 0.33,

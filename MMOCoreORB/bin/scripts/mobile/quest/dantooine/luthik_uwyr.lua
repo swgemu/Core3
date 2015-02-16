@@ -2,7 +2,6 @@ luthik_uwyr = Creature:new {
 	objectName = "",
 	customName = "Luthik Uwyr",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

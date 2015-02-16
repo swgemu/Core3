@@ -2,7 +2,6 @@ singular_nak = Creature:new {
 	objectName = "",
 	customName = "Singular Nak",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

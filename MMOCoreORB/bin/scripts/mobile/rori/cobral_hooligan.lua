@@ -2,7 +2,6 @@ cobral_hooligan = Creature:new {
 	objectName = "",
 	customName = "a Neo-Cobral Hooligan",
 	socialGroup = "cobral",
-	pvpFaction = "cobral",
 	faction = "cobral",
 	level = 10,
 	chanceHit = 0.28,

@@ -2,7 +2,6 @@ sindra_lintikoor = Creature:new {
 	objectName = "",
 	customName = "Sindra Lintikoor",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

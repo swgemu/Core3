@@ -1,7 +1,6 @@
 theme_park_imperial_rebel_sympathizer = Creature:new {
 	objectName = "@mob/creature_names:rebel_corporal",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 15,
 	chanceHit = 0.31,

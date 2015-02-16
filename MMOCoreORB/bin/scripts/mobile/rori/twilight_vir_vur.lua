@@ -1,7 +1,6 @@
 twilight_vir_vur = Creature:new {
 	objectName = "@mob/creature_names:twilight_vir_vur",
 	socialGroup = "vir_vur",
-	pvpFaction = "",
 	faction = "",
 	level = 13,
 	chanceHit = 0.3,

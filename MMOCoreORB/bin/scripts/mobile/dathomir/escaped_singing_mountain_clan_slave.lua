@@ -1,7 +1,6 @@
 escaped_singing_mountain_clan_slave = Creature:new {
 	objectName = "@mob/creature_names:escaped_singing_mtn_clan_slave",
 	socialGroup = "slave",
-	pvpFaction = "",
 	faction = "",
 	level = 26,
 	chanceHit = 0.36,

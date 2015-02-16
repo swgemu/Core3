@@ -1,7 +1,6 @@
 kulton_woodle = Creature:new {
 	objectName = "@npc_spawner_n:kultin_woodle",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 verne_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_verne",
 	socialGroup = "verne",
-	pvpFaction = "",
 	faction = "",
 	level = 5,
 	chanceHit = 0.2,

@@ -2,7 +2,6 @@ sliv_jurek = Creature:new {
 	objectName = "",
 	customName = "Sliv Jurek",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 13,
 	chanceHit = 0.3,

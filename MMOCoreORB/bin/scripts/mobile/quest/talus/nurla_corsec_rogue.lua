@@ -1,7 +1,6 @@
 nurla_corsec_rogue = Creature:new {
 	objectName = "@mob/creature_names:corsec_rogue",
 	socialGroup = "corsec",
-	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 17,
 	chanceHit = 0.32,

@@ -1,7 +1,6 @@
 tough_wookiee_brawler = Creature:new {
 	objectName = "@mob/creature_names:brawler",
 	socialGroup = "mercenary",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

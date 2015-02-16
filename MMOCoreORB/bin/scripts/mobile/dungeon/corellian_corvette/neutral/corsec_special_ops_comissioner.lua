@@ -1,7 +1,6 @@
 corsec_special_ops_comissioner = Creature:new {
 	objectName = "@mob/creature_names:corsec_commissioner_aggro",
 	socialGroup = "corsec",
-	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 226,
 	chanceHit = 19.75,

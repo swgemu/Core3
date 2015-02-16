@@ -1,7 +1,6 @@
 blood_razor_strong_pirate = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_pirate_strong",
 	socialGroup = "bloodrazor",
-	pvpFaction = "bloodrazor",
 	faction = "bloodrazor",
 	level = 26,
 	chanceHit = 0.36,

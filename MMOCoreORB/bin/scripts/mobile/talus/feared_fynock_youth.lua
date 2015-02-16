@@ -1,7 +1,6 @@
 feared_fynock_youth = Creature:new {
 	objectName = "@mob/creature_names:feared_fynock_youth",
 	socialGroup = "fynock",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.25,

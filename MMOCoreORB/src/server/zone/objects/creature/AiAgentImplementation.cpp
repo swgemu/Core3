@@ -285,10 +285,10 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		setLoggingName(logName.toString());
 	}
 
-	String pvpFaction = npcTemplate->getPvpFaction();
+	String factionString = npcTemplate->getFaction();
 
-	if (!pvpFaction.isEmpty() && (pvpFaction == "imperial" || pvpFaction == "rebel")) {
-		setFaction(pvpFaction.hashCode());
+	if (!factionString.isEmpty() && (factionString == "imperial" || factionString == "rebel")) {
+		setFaction(factionString.hashCode());
 	}
 
 	if (!loadedOutfit) {
@@ -2195,11 +2195,11 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 			return true;
 	}
 
-	String pvpFaction = getPvPFaction();
+	String factionString = getFactionString();
 
-	if (!pvpFaction.isEmpty()) {
+	if (!factionString.isEmpty()) {
 		if (target->isPlayerCreature() && ghost != NULL) {
-			float targetsStanding = ghost->getFactionStanding(pvpFaction);
+			float targetsStanding = ghost->getFactionStanding(factionString);
 
 			if (targetsStanding <= -3000)
 				return true;
@@ -2210,7 +2210,7 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 			AiAgent* targetAi = cast<AiAgent*>(target);
 
 			if (targetAi != NULL) {
-				if (FactionManager::instance()->isEnemy(pvpFaction, targetAi->getPvPFaction()))
+				if (FactionManager::instance()->isEnemy(factionString, targetAi->getFactionString()))
 					return true;
 				else
 					return false;

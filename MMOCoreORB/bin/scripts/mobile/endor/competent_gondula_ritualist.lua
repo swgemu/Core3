@@ -1,7 +1,6 @@
 competent_gondula_ritualist = Creature:new {
 	objectName = "@mob/creature_names:competent_gundula_ritualist",
 	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 17,
 	chanceHit = 0.32,

@@ -1,7 +1,6 @@
 melious_purl = Creature:new {
 	objectName = "@theme_park_name:melious_purl",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

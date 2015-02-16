@@ -1,7 +1,6 @@
 theme_park_rebel_nym_contact = Creature:new {
 	objectName = "@mob/creature_names:nym_pirate_strong",
 	socialGroup = "nym",
-	pvpFaction = "nym",
 	faction = "nym",
 	level = 26,
 	chanceHit = 0.36,

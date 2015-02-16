@@ -1,7 +1,6 @@
 giant_fynock = Creature:new {
 	objectName = "@mob/creature_names:giant_fynock",
 	socialGroup = "fynock",
-	pvpFaction = "",
 	faction = "",
 	level = 42,
 	chanceHit = 0.44,

@@ -1,7 +1,6 @@
 remmer_carrion_keeper = Creature:new {
 	objectName = "@mob/creature_names:remmer_carrion_keeper",
 	socialGroup = "remmer",
-	pvpFaction = "",
 	faction = "",
 	level = 24,
 	chanceHit = 0.35,

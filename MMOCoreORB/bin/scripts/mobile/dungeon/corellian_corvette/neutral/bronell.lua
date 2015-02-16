@@ -2,7 +2,6 @@ bronell = Creature:new {
 	objectName = "",
 	customName = "Bronell",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 100,
 	chanceHit = 1,

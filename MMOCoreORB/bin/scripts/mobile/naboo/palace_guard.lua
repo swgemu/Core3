@@ -1,7 +1,6 @@
 palace_guard = Creature:new {
 	objectName = "@mob/creature_names:palace_guard",
 	socialGroup = "naboo_security_force",
-	pvpFaction = "naboo_security_force",
 	faction = "naboo_security_force",
 	level = 16,
 	chanceHit = 0.310000,

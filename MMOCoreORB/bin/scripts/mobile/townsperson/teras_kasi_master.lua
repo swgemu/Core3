@@ -2,7 +2,6 @@ teras_kasi_master = Creature:new {
 	objectName = "@mob/creature_names:teras_kasi_master",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 21,
 	chanceHit = 0.33,

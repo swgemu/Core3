@@ -1,7 +1,6 @@
 fringer = Creature:new {
 	objectName = "@mob/creature_names:fringer",
 	socialGroup = "mercenary",
-	pvpFaction = "",
 	faction = "townsperson",
 	level = 7,
 	chanceHit = 0.260000,

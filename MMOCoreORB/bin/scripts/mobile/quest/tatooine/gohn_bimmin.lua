@@ -2,7 +2,6 @@ gohn_bimmin = Creature:new {
 	objectName = "",
 	customName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

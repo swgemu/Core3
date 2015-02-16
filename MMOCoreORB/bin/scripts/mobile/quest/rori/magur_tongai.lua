@@ -2,7 +2,6 @@ magur_torigai = Creature:new {
 	objectName = "",
 	customName = "Magur Torigai",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

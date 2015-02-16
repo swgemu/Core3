@@ -1,7 +1,6 @@
 korga_elder = Creature:new {
 	objectName = "@mob/creature_names:korga_elder",
 	socialGroup = "korga_tribe",
-	pvpFaction = "korga_tribe",
 	faction = "korga_tribe",
 	level = 22,
 	chanceHit = 0.35,

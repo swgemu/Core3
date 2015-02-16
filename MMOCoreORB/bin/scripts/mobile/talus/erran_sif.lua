@@ -1,7 +1,6 @@
 erran_sif = Creature:new {
 	objectName = "@mob/creature_names:erran_sif",
 	socialGroup = "sif",
-	pvpFaction = "sif",
 	faction = "sif",
 	level = 67,
 	chanceHit = 0.67,

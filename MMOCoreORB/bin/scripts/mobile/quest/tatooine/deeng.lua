@@ -2,7 +2,6 @@ deeng = Creature:new {
 	objectName = "",
 	customName = "Deeng",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

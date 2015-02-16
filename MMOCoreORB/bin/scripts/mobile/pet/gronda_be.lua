@@ -1,7 +1,6 @@
 gronda_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_gronda",
 	socialGroup = "gronda",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.2,

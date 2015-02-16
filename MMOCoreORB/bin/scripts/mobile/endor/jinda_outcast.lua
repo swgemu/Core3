@@ -1,7 +1,6 @@
 jinda_outcast = Creature:new {
 	objectName = "@mob/creature_names:jinda_outcast",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.39,

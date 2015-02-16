@@ -2,7 +2,6 @@ brennis_doore = Creature:new {
 	objectName = "",
 	customName = "Brennis Doore",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

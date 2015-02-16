@@ -1,7 +1,6 @@
 injured_purbole = Creature:new {
 	objectName = "@mob/creature_names:injured_purbole",
 	socialGroup = "purbole",
-	pvpFaction = "",
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

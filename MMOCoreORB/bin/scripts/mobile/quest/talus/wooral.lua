@@ -1,7 +1,6 @@
 wooral = Creature:new {
 	objectName = "",
 	socialGroup = "selonian",
-	pvpFaction = "",
 	faction = "",
 	level = 11,
 	chanceHit = 0.29,

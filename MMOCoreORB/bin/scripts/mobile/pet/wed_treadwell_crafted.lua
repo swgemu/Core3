@@ -1,7 +1,6 @@
 wed_treadwell_crafted = Creature:new {
 	objectName = "@droid_name:wed_treadwell_crafted",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

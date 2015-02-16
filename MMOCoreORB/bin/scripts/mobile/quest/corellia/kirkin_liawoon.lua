@@ -2,7 +2,6 @@ kirkin_liawoon = Creature:new {
 	objectName = "",
 	customName = "Kirkin Lianwoon",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

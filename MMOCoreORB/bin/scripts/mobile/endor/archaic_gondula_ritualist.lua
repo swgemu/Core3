@@ -1,7 +1,6 @@
 archaic_gondula_ritualist = Creature:new {
 	objectName = "@mob/creature_names:archaic_gondula_ritualist",
 	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 30,
 	chanceHit = 0.39,

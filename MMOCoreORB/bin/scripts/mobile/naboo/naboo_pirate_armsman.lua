@@ -1,7 +1,6 @@
 naboo_pirate_armsman = Creature:new {
 	objectName = "@mob/creature_names:naboo_pirate_armsman",
 	socialGroup = "naboo_pirate",
-	pvpFaction = "naboo_pirate",
 	faction = "naboo_pirate",
 	level = 13,
 	chanceHit = 0.3,

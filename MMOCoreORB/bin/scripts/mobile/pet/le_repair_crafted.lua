@@ -1,7 +1,6 @@
 le_repair_crafted = Creature:new {
 	objectName = "@droid_name:le_repair_droid_crafted",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

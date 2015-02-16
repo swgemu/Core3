@@ -1,7 +1,6 @@
 corsec_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:corsec_lieutenant",
 	socialGroup = "corsec",
-	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 20,
 	chanceHit = 0.33,

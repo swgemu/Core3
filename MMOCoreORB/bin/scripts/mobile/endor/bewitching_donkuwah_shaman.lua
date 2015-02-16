@@ -1,7 +1,6 @@
 bewitching_donkuwah_shaman = Creature:new {
 	objectName = "@mob/creature_names:bewitching_donkuwah_shaman",
 	socialGroup = "donkuwah_tribe",
-	pvpFaction = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 21,
 	chanceHit = 0.34,

@@ -2,7 +2,6 @@ imperial_informant_coa2 = Creature:new {
 	objectName = "",
 	customName = "Imperial Informant",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 20,
 	chanceHit = 0.33,

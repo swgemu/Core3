@@ -2,7 +2,6 @@ imi_eficoaw = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Imi Eficoaw",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

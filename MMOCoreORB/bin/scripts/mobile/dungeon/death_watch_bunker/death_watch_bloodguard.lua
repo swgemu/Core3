@@ -1,7 +1,6 @@
 death_watch_bloodguard = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_dthwatch_red",
 	socialGroup = "death_watch",
-	pvpFaction = "",
 	faction = "",
 	level = 121,
 	chanceHit = 4,

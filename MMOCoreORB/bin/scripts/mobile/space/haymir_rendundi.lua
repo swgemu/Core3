@@ -1,7 +1,6 @@
 haymir_rendundi = Creature:new {
 	objectName = "@npc_spawner_n:haymir_rendundi",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

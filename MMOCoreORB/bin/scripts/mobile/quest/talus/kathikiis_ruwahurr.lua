@@ -1,7 +1,6 @@
 kathikiis_ruwahurr = Creature:new {
 	objectName = "@mob/creature_names:kathikiis_ruwahurr",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1.000000,

@@ -54,7 +54,6 @@ protected:
 	int randomNameType;
 	String socialGroup;
 	String faction;
-	String pvpFaction;
 
 	int level;
 
@@ -322,10 +321,6 @@ public:
 
 	inline CreatureAttackMap* getAttacks() {
 		return attacks;
-	}
-
-	inline String getPvpFaction() {
-		return pvpFaction;
 	}
 
 	inline String getPatrolPathTemplate() {

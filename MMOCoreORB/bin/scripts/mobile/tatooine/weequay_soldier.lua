@@ -1,7 +1,6 @@
 weequay_soldier = Creature:new {
 	objectName = "@mob/creature_names:weequay_soldier",
 	socialGroup = "weequay",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

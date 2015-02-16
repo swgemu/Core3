@@ -1,7 +1,6 @@
 r5 = Creature:new {
 	objectName = "@mob/creature_names:r5",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

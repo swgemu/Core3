@@ -1,7 +1,6 @@
 gleaming_lantern_bird = Creature:new {
 	objectName = "@mob/creature_names:gleaming_lantern_bird",
 	socialGroup = "lantern",
-	pvpFaction = "",
 	faction = "",
 	level = 34,
 	chanceHit = 0.4,

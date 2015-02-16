@@ -2,7 +2,6 @@ naeton_baykurr = Creature:new {
 	objectName = "",
 	customName = "Naeton Baykurr",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

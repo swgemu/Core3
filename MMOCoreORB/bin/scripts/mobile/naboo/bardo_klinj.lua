@@ -2,7 +2,6 @@ bardo_klinj = Creature:new {
 	objectName = "",
 	customName = "Bardo Klinj",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

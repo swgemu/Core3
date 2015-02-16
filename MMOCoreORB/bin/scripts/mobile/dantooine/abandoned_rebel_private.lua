@@ -1,7 +1,6 @@
 abandoned_rebel_private = Creature:new {
 	objectName = "@mob/creature_names:abandoned_rebel_private",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 27,
 	chanceHit = 0.36,

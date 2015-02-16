@@ -1,7 +1,6 @@
 beldonnas_league_marshal = Creature:new {
 	objectName = "@mob/creature_names:beldonnas_marshal",
 	socialGroup = "beldonnas_league",
-	pvpFaction = "beldonnas_league",
 	faction = "beldonnas_league",
 	level = 26,
 	chanceHit = 0.36,

@@ -1,7 +1,6 @@
 ta_667 = Creature:new {
 	objectName = "@npc_spawner_n:ta_667",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 chewbacca = Creature:new {
 	objectName = "@mob/creature_names:chewbacca",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 wormed_vrobal = Creature:new {
 	objectName = "@mob/creature_names:wormed_vrobal",
 	socialGroup = "vrobal",
-	pvpFaction = "",
 	faction = "",
 	level = 11,
 	chanceHit = 0.29,

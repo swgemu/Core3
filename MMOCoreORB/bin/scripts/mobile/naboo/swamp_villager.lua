@@ -1,7 +1,6 @@
 swamp_villager = Creature:new {
 	objectName = "@mob/creature_names:swamp_villager",
 	socialGroup = "villager",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

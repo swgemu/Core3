@@ -2,7 +2,6 @@ junelle_astor = Creature:new {
 	objectName = "",
 	customName = "Junelle Astor",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

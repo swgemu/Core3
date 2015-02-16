@@ -2,7 +2,6 @@ coris_mao = Creature:new {
 	objectName = "@npc_name:bith_base_female",
 	customName = "Coris Mao",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

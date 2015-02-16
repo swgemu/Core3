@@ -1,7 +1,6 @@
 squatter = Creature:new {
 	objectName = "@mob/creature_names:squatter",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.240000,

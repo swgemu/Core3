@@ -1,7 +1,6 @@
 prisk_kith_vys = Creature:new {
 	objectName = "@npc_spawner_n:prisk_kith_vys",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 tempest_rill = Creature:new {
 	objectName = "@mob/creature_names:rill_tempest",
 	socialGroup = "rill",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.28,

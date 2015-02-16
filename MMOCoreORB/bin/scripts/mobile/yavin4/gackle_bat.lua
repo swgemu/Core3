@@ -1,7 +1,6 @@
 gackle_bat = Creature:new {
 	objectName = "@mob/creature_names:gackle_bat",
 	socialGroup = "gacklebat",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

@@ -1,7 +1,6 @@
 kliknik_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_kliknik",
 	socialGroup = "kliknik",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.2,

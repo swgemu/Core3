@@ -1,7 +1,6 @@
 minor_gubbur = Creature:new {
 	objectName = "@mob/creature_names:minor_gubbur",
 	socialGroup = "gubbur",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

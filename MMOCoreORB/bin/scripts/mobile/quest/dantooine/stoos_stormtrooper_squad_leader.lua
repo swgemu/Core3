@@ -1,7 +1,6 @@
 stoos_stormtrooper_squad_leader = Creature:new {
   objectName = "@mob/creature_names:stormtrooper_squad_leader",
   socialGroup = "imperial",
-  pvpFaction = "imperial",
   faction = "imperial",
   level = 27,
   chanceHit = 0.37,

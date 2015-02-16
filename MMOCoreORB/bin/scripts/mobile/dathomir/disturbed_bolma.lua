@@ -1,7 +1,6 @@
 disturbed_bolma = Creature:new {
 	objectName = "@mob/creature_names:disturbed_bolma",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 24,
 	chanceHit = 0.35,

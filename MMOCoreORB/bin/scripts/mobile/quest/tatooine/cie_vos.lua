@@ -1,7 +1,6 @@
 cie_vos = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 13,
 	chanceHit = 0.3,

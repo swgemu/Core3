@@ -1,7 +1,6 @@
 ancient_reptilian_flier = Creature:new {
 	objectName = "@mob/creature_names:ancient_reptilian_flier",
 	socialGroup = "reptilian_flier",
-	pvpFaction = "",
 	faction = "",
 	level = 25,
 	chanceHit = 0.35,

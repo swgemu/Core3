@@ -2,7 +2,6 @@ joz_jodhul = Creature:new {
 	objectName = "",
 	customName = "Joz Jodhul",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

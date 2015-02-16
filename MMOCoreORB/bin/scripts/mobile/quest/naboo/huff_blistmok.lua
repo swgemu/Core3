@@ -1,7 +1,6 @@
 huff_blistmok = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 22,
 	chanceHit = 0.35,

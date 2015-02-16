@@ -2,7 +2,6 @@ shaultra_loraweet = Creature:new {
 	objectName = "",
 	customName = "Shaultra Loraweet",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

@@ -1,7 +1,6 @@
 bocatt_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_bocatt",
 	socialGroup = "bocatt",
-	pvpFaction = "",
 	faction = "",
 	level = 2,
 	chanceHit = 0.2,

@@ -2,7 +2,6 @@ jaaves = Creature:new {
 	objectName = "",
 	customName = "Jaaves",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

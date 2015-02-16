@@ -2,7 +2,6 @@ biribas_tarun = Creature:new {
 	objectName = "",
 	customName = "Biribas Tarun",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

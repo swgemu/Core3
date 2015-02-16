@@ -2,7 +2,6 @@ tour_aryon = Creature:new {
 	objectName = "@npc_name:human_base_female",
 	customName = "Tour Aryon (governor)",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

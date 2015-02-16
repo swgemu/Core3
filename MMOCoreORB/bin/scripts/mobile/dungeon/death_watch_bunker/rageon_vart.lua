@@ -2,7 +2,6 @@ rageon_vart = Creature:new {
 	objectName = "",
 	customName = "Rageon Vart",
 	socialGroup = "death_watch",
-	pvpFaction = "",
 	faction = "",
 	level = 178,
 	chanceHit = 12.25,

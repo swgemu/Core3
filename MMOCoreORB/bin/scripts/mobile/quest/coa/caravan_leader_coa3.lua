@@ -2,7 +2,6 @@ caravan_leader_coa3 = Creature:new {
 	objectName = "",
 	customName = "Caravan Leader",
 	socialGroup = "caravan",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 19,
 	chanceHit = 0.33,

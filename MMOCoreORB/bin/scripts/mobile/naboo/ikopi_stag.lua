@@ -1,7 +1,6 @@
 ikopi_stag = Creature:new {
 	objectName = "@mob/creature_names:ikopi_stag",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.39,

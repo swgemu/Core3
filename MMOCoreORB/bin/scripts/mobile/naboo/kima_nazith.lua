@@ -2,7 +2,6 @@ kima_nazith = Creature:new {
 	objectName = "",
 	customName = "Kima Nazith",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

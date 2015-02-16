@@ -1,7 +1,6 @@
 spiked_krevol = Creature:new {
 	objectName = "@mob/creature_names:spiked_krevol",
 	socialGroup = "krevol",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

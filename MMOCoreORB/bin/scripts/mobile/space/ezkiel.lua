@@ -1,7 +1,6 @@
 ezkiel = Creature:new {
 	objectName = "@npc_spawner_n:ezkiel",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

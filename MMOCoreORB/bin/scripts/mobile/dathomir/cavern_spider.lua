@@ -1,7 +1,6 @@
 cavern_spider = Creature:new {
 	objectName = "@mob/creature_names:cave_gaping_spider",
 	socialGroup = "spider",
-	pvpFaction = "",
 	faction = "",
 	level = 27,
 	chanceHit = 0.36,

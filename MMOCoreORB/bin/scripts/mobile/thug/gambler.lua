@@ -1,7 +1,6 @@
 gambler = Creature:new {
 	objectName = "@mob/creature_names:gambler",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 8,
 	chanceHit = 0.270000,

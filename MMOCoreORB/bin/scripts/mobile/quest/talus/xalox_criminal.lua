@@ -1,7 +1,6 @@
 xalox_criminal = Creature:new {
 	objectName = "@mob/creature_names:criminal",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 14,
 	chanceHit = 0.3,

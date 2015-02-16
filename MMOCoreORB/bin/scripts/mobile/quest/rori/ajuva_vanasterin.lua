@@ -2,7 +2,6 @@ ajuva_vanasterin = Creature:new {
 	objectName = "",
 	customName = "Ajuva Vanasterin",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

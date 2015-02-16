@@ -1,7 +1,6 @@
 lice_ridden_remmer_queen = Creature:new {
 	objectName = "@mob/creature_names:lice_ridden_remmer_queen",
 	socialGroup = "remmer",
-	pvpFaction = "",
 	faction = "",
 	level = 37,
 	chanceHit = 0.41,

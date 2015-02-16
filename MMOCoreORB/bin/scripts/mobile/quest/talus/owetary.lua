@@ -2,7 +2,6 @@ owetary = Creature:new {
 	objectName = "@mob/creature_names:businessman",
 	customName = "Owetary",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

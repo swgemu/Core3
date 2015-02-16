@@ -1,7 +1,6 @@
 cu_pa_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_cu_pa",
 	socialGroup = "cu_pa",
-	pvpFaction = "",
 	faction = "",
 	level = 5,
 	chanceHit = 0.2,

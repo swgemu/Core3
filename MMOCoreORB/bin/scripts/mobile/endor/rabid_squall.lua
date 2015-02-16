@@ -1,7 +1,6 @@
 rabid_squall = Creature:new {
 	objectName = "@mob/creature_names:rabid_squall",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.27,

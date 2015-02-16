@@ -1,7 +1,6 @@
 foot_of_solitude = Creature:new {
 	objectName = "@mob/creature_names:foot_of_solitude",
 	socialGroup = "solitude",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 9,
 	chanceHit = 0.270000,

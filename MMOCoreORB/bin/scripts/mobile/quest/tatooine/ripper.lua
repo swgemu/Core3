@@ -1,7 +1,6 @@
 ripper = Creature:new {
 	objectName = "",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 8,
 	chanceHit = 0.27,

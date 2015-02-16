@@ -1,7 +1,6 @@
 toxic_merek_battlelord = Creature:new {
 	objectName = "@mob/creature_names:toxic_merek_battlelord",
 	socialGroup = "merek",
-	pvpFaction = "",
 	faction = "",
 	level = 45,
 	chanceHit = 0.47,

@@ -1,7 +1,6 @@
 borvo_the_hutt = Creature:new {
 	objectName = "@mob/creature_names:borvo_the_hutt",
 	socialGroup = "borvo",
-	pvpFaction = "borvo",
 	faction = "borvo",
 	level = 100,
 	chanceHit = 1,

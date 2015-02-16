@@ -1,7 +1,6 @@
 imperial_retreat_guard = Creature:new {
 	objectName = "@mob/creature_names:imperial_retreat_guard",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 72,
 	chanceHit = 0.75,

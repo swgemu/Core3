@@ -1,7 +1,6 @@
 revered_panshee_matriarch = Creature:new {
 	objectName = "@mob/creature_names:revered_panshee_matriarch",
 	socialGroup = "panshee_tribe",
-	pvpFaction = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 39,
 	chanceHit = 0.43,

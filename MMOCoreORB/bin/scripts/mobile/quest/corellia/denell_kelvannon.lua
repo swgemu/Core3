@@ -2,7 +2,6 @@ denell_kelvannon = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Denell Kel'Vannon",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 mercenary_sentry = Creature:new {
 	objectName = "@mob/creature_names:geonosian_human_security_force",
 	socialGroup = "geonosian",
-	pvpFaction = "",
 	faction = "",
 	level = 66,
 	chanceHit = 0.65,

@@ -1,7 +1,6 @@
 yras_shen_jen = Creature:new {
 	objectName = "@npc_spawner_n:yras_shen_jen",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

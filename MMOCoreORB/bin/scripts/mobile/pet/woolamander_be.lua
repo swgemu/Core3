@@ -1,7 +1,6 @@
 woolamander_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_woolamander",
 	socialGroup = "woolamander",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.2,

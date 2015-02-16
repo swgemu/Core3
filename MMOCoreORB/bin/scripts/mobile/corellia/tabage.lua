@@ -1,7 +1,6 @@
 tabage = Creature:new {
 	objectName = "@mob/creature_names:tabage",
 	socialGroup = "tabage",
-	pvpFaction = "",
 	faction = "",
 	level = 11,
 	chanceHit = 0.29,

@@ -1,7 +1,6 @@
 armodragon = Creature:new {
 	objectName = "@mob/creature_names:dragonet_armodragon",
 	socialGroup = "lizard",
-	pvpFaction = "",
 	faction = "",
 	level = 34,
 	chanceHit = 0.41,

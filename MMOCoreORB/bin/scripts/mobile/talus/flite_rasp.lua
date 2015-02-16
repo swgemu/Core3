@@ -1,7 +1,6 @@
 flite_rasp = Creature:new {
 	objectName = "@mob/creature_names:flite_rasp",
 	socialGroup = "rasp",
-	pvpFaction = "",
 	faction = "",
 	level = 8,
 	chanceHit = 0.27,

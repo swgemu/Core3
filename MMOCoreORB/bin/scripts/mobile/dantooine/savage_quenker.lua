@@ -1,7 +1,6 @@
 savage_quenker = Creature:new {
 	objectName = "@mob/creature_names:savage_quenker",
 	socialGroup = "quenker",
-	pvpFaction = "",
 	faction = "",
 	level = 28,
 	chanceHit = 0.36,

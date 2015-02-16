@@ -1,7 +1,6 @@
 langlatch_hatchling = Creature:new {
 	objectName = "@mob/creature_names:langlatch_hatchling",
 	socialGroup = "langlatch",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

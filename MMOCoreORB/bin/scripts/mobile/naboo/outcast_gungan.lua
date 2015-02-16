@@ -1,7 +1,6 @@
 outcast_gungan = Creature:new {
 	objectName = "@mob/creature_names:mordran_gungan_outcast",
 	socialGroup = "borvo",
-	pvpFaction = "borvo",
 	faction = "borvo",
 	level = 30,
 	chanceHit = 0.39,

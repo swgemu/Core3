@@ -1,7 +1,6 @@
 nurla_hutt_gangster = Creature:new {
 	objectName = "",
 	socialGroup = "hutt",
-	pvpFaction = "hutt",
 	faction = "hutt",
 	level = 17,
 	chanceHit = 0.32,

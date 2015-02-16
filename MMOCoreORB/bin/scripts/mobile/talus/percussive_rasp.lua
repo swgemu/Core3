@@ -1,7 +1,6 @@
 percussive_rasp = Creature:new {
 	objectName = "@mob/creature_names:percussive_rasp",
 	socialGroup = "rasp",
-	pvpFaction = "",
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

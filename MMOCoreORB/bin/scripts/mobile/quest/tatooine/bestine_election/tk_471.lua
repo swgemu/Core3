@@ -2,7 +2,6 @@ tk_471 = Creature:new {
 	objectName = "",
 	customName = "TK-471",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

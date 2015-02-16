@@ -1,7 +1,6 @@
 plainsfolk = Creature:new {
 	objectName = "@mob/creature_names:plainsfolk",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 5,
 	chanceHit = 0.250000,

@@ -1,8 +1,7 @@
 binayre_ruffian = Creature:new {
 	objectName = "@mob/creature_names:binayre_ruffian",
 	socialGroup = "binayre",
-	pvpFaction = "binayre",
-	faction = "pirate",
+	faction = "binayre",
 	level = 13,
 	chanceHit = 0.3,
 	damageMin = 140,

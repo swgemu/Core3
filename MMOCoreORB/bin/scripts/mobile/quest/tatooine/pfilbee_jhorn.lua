@@ -2,7 +2,6 @@ pfilbee_jhorn = Creature:new {
 	objectName = "",
 	customName = "Pfilbee Jhorn",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 10,
 	chanceHit = 0.28,

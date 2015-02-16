@@ -1,7 +1,6 @@
 kliknik_dark_worker = Creature:new {
 	objectName = "@mob/creature_names:kliknik_dark_worker",
 	socialGroup = "kliknik",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.39,

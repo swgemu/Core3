@@ -1,7 +1,6 @@
 enraged_donkuwah = Creature:new {
 	objectName = "@mob/creature_names:enraged_donkuwah",
 	socialGroup = "donkuwah_tribe",
-	pvpFaction = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 34,
 	chanceHit = 0.4,

@@ -1,7 +1,6 @@
 grecks_henchman = Creature:new {
 	objectName = "@mob/creature_names:greck_henchman",
 	socialGroup = "olag_greck",
-	pvpFaction = "olag_greck",
 	faction = "olag_greck",
 	level = 6,
 	chanceHit = 0.25,

@@ -1,7 +1,6 @@
 razor_cat = Creature:new {
 	objectName = "@mob/creature_names:sand_panther",
 	socialGroup = "panther",
-	pvpFaction = "",
 	faction = "",
 	level = 22,
 	chanceHit = 0.34,

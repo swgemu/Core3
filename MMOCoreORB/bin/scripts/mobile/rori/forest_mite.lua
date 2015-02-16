@@ -1,7 +1,6 @@
 forest_mite = Creature:new {
 	objectName = "@mob/creature_names:forest_mite",
 	socialGroup = "mite",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

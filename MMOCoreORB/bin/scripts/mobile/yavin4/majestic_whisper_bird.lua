@@ -1,7 +1,6 @@
 majestic_whisper_bird = Creature:new {
 	objectName = "@mob/creature_names:whisper_bird_majestic",
 	socialGroup = "bird",
-	pvpFaction = "",
 	faction = "",
 	level = 19,
 	chanceHit = 0.32,

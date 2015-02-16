@@ -1,7 +1,6 @@
 scholar_szingo = Creature:new {
 	objectName = "@mob/creature_names:scholar_szingo",
 	socialGroup = "endor_marauder",
-	pvpFaction = "endor_marauder",
 	faction = "endor_marauder",
 	level = 100,
 	chanceHit = 0.33,

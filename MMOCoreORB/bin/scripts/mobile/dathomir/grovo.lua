@@ -1,7 +1,6 @@
 grovo = Creature:new {
 	objectName = "@monster_name:grovo",
 	socialGroup = "nightsister",
-	pvpFaction = "nightsister",
 	faction = "nightsister",
 	level = 75,
 	chanceHit = 0.7,

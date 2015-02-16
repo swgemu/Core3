@@ -1,7 +1,6 @@
 kai_tok_bloodreaver = Creature:new {
 	objectName = "@mob/creature_names:kai_tok_bloodreaver",
 	socialGroup = "kai_tok",
-	pvpFaction = "",
 	faction = "",
 	level = 35,
 	chanceHit = 0.42,

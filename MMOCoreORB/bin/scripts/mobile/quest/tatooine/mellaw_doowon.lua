@@ -2,7 +2,6 @@ mellaw_doowon = Creature:new {
 	objectName = "",
 	customName = "Mellaw Doowon",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

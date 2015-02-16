@@ -1,7 +1,6 @@
 frenzied_korga = Creature:new {
 	objectName = "@mob/creature_names:frenzied_korga",
 	socialGroup = "korga_tribe",
-	pvpFaction = "korga_tribe",
 	faction = "korga_tribe",
 	level = 35,
 	chanceHit = 0.41,

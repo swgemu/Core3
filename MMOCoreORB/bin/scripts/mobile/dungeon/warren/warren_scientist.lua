@@ -1,7 +1,6 @@
 warren_scientist = Creature:new {
 	objectName = "@mob/creature_names:warren_scientist",
 	socialGroup = "warren_scientist",
-	pvpFaction = "",
 	faction = "",
 	level = 36,
 	chanceHit = 0.420000,

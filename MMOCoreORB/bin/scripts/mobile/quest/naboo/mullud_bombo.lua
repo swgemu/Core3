@@ -2,7 +2,6 @@ mullud_bombo = Creature:new {
 	objectName = "",
 	customName = "Mullud Bombo",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

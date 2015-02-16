@@ -2,7 +2,6 @@ insane_miner = Creature:new {
 	objectName = "",
 	customName = "an Insane Miner",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.27,

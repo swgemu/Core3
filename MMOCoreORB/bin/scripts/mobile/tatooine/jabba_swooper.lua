@@ -1,7 +1,6 @@
 jabba_swooper = Creature:new {
 	objectName = "@mob/creature_names:jabbas_swooper",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 8,
 	chanceHit = 0.27,

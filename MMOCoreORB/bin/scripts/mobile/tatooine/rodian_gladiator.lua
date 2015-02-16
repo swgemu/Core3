@@ -1,7 +1,6 @@
 rodian_gladiator = Creature:new {
 	objectName = "@mob/creature_names:rodian_gladiator",
 	socialGroup = "rodian",
-	pvpFaction = "",
 	faction = "",
 	level = 6,
 	chanceHit = 0.25,

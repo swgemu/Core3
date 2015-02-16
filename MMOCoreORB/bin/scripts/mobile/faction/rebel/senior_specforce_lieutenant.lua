@@ -1,7 +1,6 @@
 senior_specforce_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:senior_specforce_lieutenant",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 24,
 	chanceHit = 0.35,

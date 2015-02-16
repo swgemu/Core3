@@ -1,7 +1,6 @@
 skaak_tipper_prowler = Creature:new {
 	objectName = "@mob/creature_names:skaak_tipper_prowler",
 	socialGroup = "skaak_tipper_gang",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 5,
 	chanceHit = 0.250000,

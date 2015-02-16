@@ -1,7 +1,6 @@
 janta_rockshaper = Creature:new {
 	objectName = "@mob/creature_names:janta_rockshaper",
 	socialGroup = "janta_tribe",
-	pvpFaction = "janta_tribe",
 	faction = "janta_tribe",
 	level = 75,
 	chanceHit = 0.7,

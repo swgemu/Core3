@@ -1,7 +1,6 @@
 theme_park_rebel_iris = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.280000,

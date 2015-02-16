@@ -2,7 +2,6 @@ vhaunda = Creature:new {
 	objectName = "",
 	customName = "Vhaunda",
 	socialGroup = "mtn_clan",
-	pvpFaction = "mtn_clan",
 	faction = "mtn_clan",
 	level = 100,
 	chanceHit = 1,

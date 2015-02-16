@@ -1,7 +1,6 @@
 blood_razor_officer = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_officer",
 	socialGroup = "bloodrazor",
-	pvpFaction = "bloodrazor",
 	faction = "bloodrazor",
 	level = 40,
 	chanceHit = 0.43,

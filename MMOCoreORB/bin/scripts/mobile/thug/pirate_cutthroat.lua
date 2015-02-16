@@ -2,7 +2,6 @@ pirate_cutthroat = Creature:new {
 	objectName = "",
 	costumName = "a Pirate Cutthroat",
 	socialGroup = "pirate",
-	pvpFaction = "",
 	faction = "",
 	level = 8,
 	chanceHit = 0.27,

@@ -2,7 +2,6 @@ figrin_dan = Creature:new {
 	objectName = "",
 	customName = "Figrin D'an",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

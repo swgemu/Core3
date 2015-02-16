@@ -2,7 +2,6 @@ flail_enforcer = Creature:new {
 	objectName = "",
 	customName = "a Flail enforcer",
 	socialGroup = "flail",
-	pvpFaction = "flail",
 	faction = "flail",
 	level = 19,
 	chanceHit = 0.33,

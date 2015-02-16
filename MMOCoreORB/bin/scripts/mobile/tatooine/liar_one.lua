@@ -2,7 +2,6 @@ liar_one = Creature:new {
 	objectName = "",
 	customName = "Liar One",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

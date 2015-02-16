@@ -1,7 +1,6 @@
 slooni_slavemaster = Creature:new {
 	objectName = "@mob/creature_names:slavemaster",
 	socialGroup = "slaver",
-	pvpFaction = "",
 	faction = "thug",
 	level = 14,
 	chanceHit = 0.3,

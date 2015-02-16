@@ -1,7 +1,6 @@
 first_brigade_trooper = Creature:new {
 	objectName = "@mob/creature_names:brigade_trooper",
 	socialGroup = "restuss",
-	pvpFaction = "restuss",
 	faction = "restuss",
 	level = 6,
 	chanceHit = 0.25,

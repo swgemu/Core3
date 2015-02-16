@@ -1,7 +1,6 @@
 skreeg_male = Creature:new {
 	objectName = "@mob/creature_names:skreeg_male",
 	socialGroup = "skreeg",
-	pvpFaction = "",
 	faction = "",
 	level = 22,
 	chanceHit = 0.35,

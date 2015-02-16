@@ -3,7 +3,6 @@ audience_member = Creature:new {
 	randomNameType = NAME_GENERIC,
 	--customName = "audience_member",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

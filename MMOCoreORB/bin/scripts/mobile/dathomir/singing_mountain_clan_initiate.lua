@@ -1,7 +1,6 @@
 singing_mountain_clan_initiate = Creature:new {
 	objectName = "@mob/creature_names:singing_mtn_clan_initiate",
 	socialGroup = "mtn_clan",
-	pvpFaction = "mtn_clan",
 	faction = "mtn_clan",
 	level = 50,
 	chanceHit = 0.5,

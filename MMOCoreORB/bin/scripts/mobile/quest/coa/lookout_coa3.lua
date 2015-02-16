@@ -2,7 +2,6 @@ lookout_coa3 = Creature:new {
 	objectName = "",
 	customName = "a Lookout",
 	socialGroup = "self",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 12,
 	chanceHit = 0.29,

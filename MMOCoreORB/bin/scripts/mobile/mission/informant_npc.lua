@@ -2,7 +2,6 @@ function createInformantNPC(lvl)
 	informant_npc = Creature:new {
 		objectName = "@mob/creature_names:spynet_operative",
 		socialGroup = "",
-		pvpFaction = "",
 		faction = "",
 		level = 100,
 		chanceHit = 0.39,

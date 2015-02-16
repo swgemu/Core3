@@ -1,7 +1,6 @@
 gurk_whelp = Creature:new {
 	objectName = "@mob/creature_names:gurk_whelp",
 	socialGroup = "gurk",
-	pvpFaction = "",
 	faction = "",
 	level = 27,
 	chanceHit = 0.36,

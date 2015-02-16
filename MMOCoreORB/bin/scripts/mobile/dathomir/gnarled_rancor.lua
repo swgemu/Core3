@@ -1,7 +1,6 @@
 gnarled_rancor = Creature:new {
 	objectName = "@mob/creature_names:gnarled_rancor",
 	socialGroup = "rancor",
-	pvpFaction = "",
 	faction = "",
 	level = 46,
 	chanceHit = 0.47,

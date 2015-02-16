@@ -1,7 +1,6 @@
 dune_stalker_brawler = Creature:new {
 	objectName = "@mob/creature_names:dune_stalker_brawler",
 	socialGroup = "dune_stalker",
-	pvpFaction = "",
 	faction = "",
 	level = 17,
 	chanceHit = 0.32,

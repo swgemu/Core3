@@ -2,7 +2,6 @@ big_blismo = Creature:new {
 	objectName = "",
 	customName = "Big Blismo",
 	socialGroup = "gungan",
-	pvpFaction = "gungan",
 	faction = "gungan",
 	level = 24,
 	chanceHit = 0.35,

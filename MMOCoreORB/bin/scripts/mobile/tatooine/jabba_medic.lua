@@ -2,7 +2,6 @@ jabba_medic = Creature:new {
 	objectName = "",
 	customName = "Jabba's Medic",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 16,
 	chanceHit = 0.31,

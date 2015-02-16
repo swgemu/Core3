@@ -1,7 +1,6 @@
 diness_imler = Creature:new {
 	objectName = "@npc_spawner_n:diness_imler",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

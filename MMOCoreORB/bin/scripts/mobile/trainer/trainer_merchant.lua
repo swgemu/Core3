@@ -1,6 +1,5 @@
 trainer_merchant = Creature:new {
 	objectName = "@mob/creature_names:trainer_merchant",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,

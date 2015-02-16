@@ -1,7 +1,6 @@
 wandering_kitonak = Creature:new {
 	objectName = "@mob/creature_names:wandering_kitonak",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 6,
 	chanceHit = 0.25,

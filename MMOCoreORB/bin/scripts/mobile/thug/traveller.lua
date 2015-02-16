@@ -2,7 +2,6 @@ traveller = Creature:new {
 	objectName = "",
 	customName = "a Traveller",
 	socialGroup = "wilder",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

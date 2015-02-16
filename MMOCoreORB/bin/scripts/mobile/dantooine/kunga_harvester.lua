@@ -1,7 +1,6 @@
 kunga_harvester = Creature:new {
 	objectName = "@mob/creature_names:kunga_harvester",
 	socialGroup = "kunga_tribe",
-	pvpFaction = "kunga_tribe",
 	faction = "kunga_tribe",
 	level = 28,
 	chanceHit = 0.37,

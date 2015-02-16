@@ -1,7 +1,6 @@
 alpha_bolma = Creature:new {
 	objectName = "@mob/creature_names:alpha_bolma",
 	socialGroup = "bolma",
-	pvpFaction = "",
 	faction = "",
 	level = 33,
 	chanceHit = 0.4,

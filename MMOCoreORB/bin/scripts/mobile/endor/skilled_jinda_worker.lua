@@ -1,7 +1,6 @@
 skilled_jinda_worker = Creature:new {
 	objectName = "@mob/creature_names:skilled_jinda_worker",
 	socialGroup = "jinda_tribe",
-	pvpFaction = "",
 	faction = "",
 	level = 29,
 	chanceHit = 0.39,

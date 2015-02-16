@@ -2,7 +2,6 @@ gavyn_sykes = Creature:new {
 	objectName = "",
 	customName = "Captain Gavyn Sykes",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

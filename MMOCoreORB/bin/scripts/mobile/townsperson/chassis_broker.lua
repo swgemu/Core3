@@ -2,7 +2,6 @@ chassis_broker = Creature:new {
 	objectName = "@npc_spawner_n:chassis_broker",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

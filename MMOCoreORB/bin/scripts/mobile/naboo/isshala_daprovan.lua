@@ -2,7 +2,6 @@ isshala_daprovan = Creature:new {
 	objectName = "",
 	customName = "Isshala Daprovan",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

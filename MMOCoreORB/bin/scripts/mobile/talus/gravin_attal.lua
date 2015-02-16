@@ -2,7 +2,6 @@ gravin_attal = Creature:new {
 	objectName = "",
 	customName = "Gravin Attal",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

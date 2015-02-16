@@ -1,7 +1,6 @@
 korga_cub = Creature:new {
 	objectName = "@mob/creature_names:korga_cub",
 	socialGroup = "korga_tribe",
-	pvpFaction = "korga_tribe",
 	faction = "korga_tribe",
 	level = 5,
 	chanceHit = 0.25,

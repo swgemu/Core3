@@ -1,7 +1,6 @@
 imperial_officer_tutorial_1 = Creature:new {
 	objectName = "@mob/creature_names:warren_imperial_officer",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 30,
 	chanceHit = 0.390000,

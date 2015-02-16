@@ -2,7 +2,6 @@ kwin_moonraiser = Creature:new {
 	objectName = "",
 	customName = "Kwin Moonraiser",
 	socialGroup = "darklighter",
-	pvpFaction = "",
 	faction = "",
 	level = 99,
 	chanceHit = 0.99,

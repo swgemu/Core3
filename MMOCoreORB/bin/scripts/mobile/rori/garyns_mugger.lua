@@ -1,7 +1,6 @@
 garyns_mugger = Creature:new {
 	objectName = "@mob/creature_names:garyn_mugger",
 	socialGroup = "garyn",
-	pvpFaction = "garyn",
 	faction = "garyn",
 	level = 16,
 	chanceHit = 0.31,

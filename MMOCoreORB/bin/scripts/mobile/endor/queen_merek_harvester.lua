@@ -1,7 +1,6 @@
 queen_merek_harvester = Creature:new {
 	objectName = "@mob/creature_names:queen_merek_harvester",
 	socialGroup = "merek",
-	pvpFaction = "",
 	faction = "",
 	level = 50,
 	chanceHit = 0.5,

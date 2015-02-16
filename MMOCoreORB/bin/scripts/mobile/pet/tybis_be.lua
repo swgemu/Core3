@@ -1,7 +1,6 @@
 tybis_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_tybis",
 	socialGroup = "tybis",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.2,

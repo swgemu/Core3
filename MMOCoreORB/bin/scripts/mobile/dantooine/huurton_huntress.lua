@@ -1,7 +1,6 @@
 huurton_huntress = Creature:new {
 	objectName = "@mob/creature_names:huurton_huntress",
 	socialGroup = "huurton",
-	pvpFaction = "",
 	faction = "",
 	level = 28,
 	chanceHit = 0.37,

@@ -1,7 +1,6 @@
 jaleela_protestor_leader = Creature:new {
 	objectName = "",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 17,
 	chanceHit = 0.320000,

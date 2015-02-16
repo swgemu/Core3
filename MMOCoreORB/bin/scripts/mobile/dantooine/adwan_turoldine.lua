@@ -1,7 +1,6 @@
 adwan_turoldine = Creature:new {
 	objectName = "@npc_spawner_n:adwan_turoldine",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

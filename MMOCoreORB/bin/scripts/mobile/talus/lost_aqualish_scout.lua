@@ -1,7 +1,6 @@
 lost_aqualish_scout = Creature:new {
 	objectName = "@mob/creature_names:lost_aqualish_scout",
 	socialGroup = "lost_aqualish",
-	pvpFaction = "lost_aqualish",
 	faction = "lost_aqualish",
 	level = 9,
 	chanceHit = 0.27,

@@ -2,7 +2,6 @@ hutt_informant_quest = Creature:new {
 	objectName = "",
 	customName = "Hutt Informant",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -2,7 +2,6 @@ crix_yarrow = Creature:new {
 	objectName = "@npc_name:twilek_base_male",
 	customName = "Crix Yarrow",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

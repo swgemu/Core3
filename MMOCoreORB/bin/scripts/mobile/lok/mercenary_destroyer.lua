@@ -1,7 +1,6 @@
 mercenary_destroyer = Creature:new {
 	objectName = "@mob/creature_names:mercenary_destroyer",
 	socialGroup = "lok_mercenaries",
-	pvpFaction = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 40,
 	chanceHit = 0.43,

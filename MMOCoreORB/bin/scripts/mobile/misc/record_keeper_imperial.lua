@@ -2,7 +2,6 @@ record_keeper_imperial = Creature:new {
 	objectName = "",
 	customName = "Wurson Harro",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

@@ -2,7 +2,6 @@ jowir_arlensa = Creature:new {
 	objectName = "",
 	customName = "Jowir Ar'Lensa",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

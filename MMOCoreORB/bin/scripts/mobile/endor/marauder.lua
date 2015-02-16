@@ -1,7 +1,6 @@
 marauder = Creature:new {
 	objectName = "@mob/creature_names:marauder",
 	socialGroup = "endor_marauder",
-	pvpFaction = "endor_marauder",
 	faction = "endor_marauder",
 	level = 44,
 	chanceHit = 0.47,

@@ -1,7 +1,6 @@
 narmle_militia_commando = Creature:new {
 	objectName = "@mob/creature_names:narmle_commando",
 	socialGroup = "narmle",
-	pvpFaction = "narmle",
 	faction = "narmle",
 	level = 19,
 	chanceHit = 0.33,

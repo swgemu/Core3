@@ -1,7 +1,6 @@
 corellia_herald_01 = Creature:new {
 	objectName = "@npc_name:corellia_herald_01",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

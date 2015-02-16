@@ -1,7 +1,6 @@
 moisture_thief = Creature:new {
 	objectName = "@mob/creature_names:moisture_thief",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 6,
 	chanceHit = 0.250000,

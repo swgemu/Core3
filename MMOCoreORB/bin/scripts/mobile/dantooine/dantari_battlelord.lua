@@ -1,7 +1,6 @@
 dantari_battlelord = Creature:new {
 	objectName = "@mob/creature_names:dantari_raider_battlelord",
 	socialGroup = "dantari_raiders",
-	pvpFaction = "dantari_raiders",
 	faction = "dantari_raiders",
 	level = 36,
 	chanceHit = 0.41,

@@ -1,7 +1,6 @@
 fa_zoll = Creature:new {
 	objectName = "@npc_spawner_n:fa_zoll",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

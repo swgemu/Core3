@@ -1,7 +1,6 @@
 diseased_blurrg = Creature:new {
 	objectName = "@mob/creature_names:diseased_blurrg",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 37,
 	chanceHit = 0.41,

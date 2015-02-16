@@ -1,7 +1,6 @@
 outlaw = Creature:new {
 	objectName = "@mob/creature_names:outlaw",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 7,
 	chanceHit = 0.260000,

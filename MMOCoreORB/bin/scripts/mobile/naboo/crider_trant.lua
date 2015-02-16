@@ -2,7 +2,6 @@ crider_trant = Creature:new {
 	objectName = "",
 	customName = "Crider Trant",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

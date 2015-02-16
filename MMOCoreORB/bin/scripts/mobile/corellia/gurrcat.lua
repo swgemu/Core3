@@ -1,7 +1,6 @@
 gurrcat = Creature:new {
 	objectName = "@mob/creature_names:gurrcat",
 	socialGroup = "gurrcat",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

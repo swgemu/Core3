@@ -1,7 +1,6 @@
 mat_rags_bantha_matriarch = Creature:new {
 	objectName = "@mob/creature_names:matriarch_bantha",
 	socialGroup = "bantha",
-	pvpFaction = "",
 	faction = "",
 	level = 25,
 	chanceHit = 0.35,

@@ -1,7 +1,6 @@
 kunga_hunter = Creature:new {
 	objectName = "@mob/creature_names:kunga_hunter",
 	socialGroup = "kunga_tribe",
-	pvpFaction = "kunga_tribe",
 	faction = "kunga_tribe",
 	level = 37,
 	chanceHit = 0.41,

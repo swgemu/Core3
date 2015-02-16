@@ -1,8 +1,7 @@
 daclif_gallamby = Creature:new {
 	objectName = "",
 	customName = "Daclif Gallamby",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
+	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

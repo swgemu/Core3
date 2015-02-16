@@ -1,7 +1,6 @@
 carrion_spat_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_carrion_spat",
 	socialGroup = "carrion_spat",
-	pvpFaction = "",
 	faction = "",
 	level = 5,
 	chanceHit = 0.2,

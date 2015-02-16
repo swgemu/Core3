@@ -81,7 +81,6 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	customName = templateData->getStringField("customName").trim();
 	socialGroup = templateData->getStringField("socialGroup").trim();
 	faction = templateData->getStringField("faction").trim().toLowerCase();
-	pvpFaction = templateData->getStringField("pvpFaction").trim().toLowerCase();
 	level = templateData->getIntField("level");
 	chanceHit = templateData->getFloatField("chanceHit");
 	damageMin = templateData->getIntField("damageMin");

@@ -2,7 +2,6 @@ junk_dender = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Dender",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

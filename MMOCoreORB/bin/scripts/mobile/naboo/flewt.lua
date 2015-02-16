@@ -1,7 +1,6 @@
 flewt = Creature:new {
 	objectName = "@mob/creature_names:flewt",
 	socialGroup = "flewt",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

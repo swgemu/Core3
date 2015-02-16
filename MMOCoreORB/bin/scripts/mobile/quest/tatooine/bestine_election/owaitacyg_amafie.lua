@@ -2,7 +2,6 @@ owaitacyg_amafie = Creature:new {
 	objectName = "@npc_name:zabrak_base_male",
 	customName = "Owaitacyg Amafie",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 13,
 	chanceHit = 0.29,

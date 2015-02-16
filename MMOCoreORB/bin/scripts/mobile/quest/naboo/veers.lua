@@ -2,7 +2,6 @@ veers = Creature:new {
 	objectName = "",
 	customName = "Colonel Veers",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 25,
 	chanceHit = 0.36,

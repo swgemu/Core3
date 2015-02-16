@@ -2,7 +2,6 @@ midgoss_dlabaninaph = Creature:new {
 	objectName = "@mob/creature_names:patron_devaronian_male",
 	customName = "Midgoss D'labaninaph",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

@@ -1,7 +1,6 @@
 hardened_panshee_warrior = Creature:new {
 	objectName = "@mob/creature_names:hardened_panshee_warrior",
 	socialGroup = "panshee_tribe",
-	pvpFaction = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 17,
 	chanceHit = 0.31,

@@ -1,7 +1,6 @@
 mountain_squill_hunter = Creature:new {
 	objectName = "@mob/creature_names:mountain_squill_hunter",
 	socialGroup = "squill",
-	pvpFaction = "",
 	faction = "",
 	level = 25,
 	chanceHit = 0.35,

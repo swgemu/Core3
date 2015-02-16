@@ -1,7 +1,6 @@
 ree_yees = Creature:new {
 	objectName = "@theme_park_name:ree_yees",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 20,
 	chanceHit = 0.330000,

@@ -1,7 +1,6 @@
 tusken_war_master = Creature:new {
 	objectName = "@mob/creature_names:tusken_war_master",
 	socialGroup = "tusken_raider",
-	pvpFaction = "tusken_raider",
 	faction = "tusken_raider",
 	level = 53,
 	chanceHit = 0.53,

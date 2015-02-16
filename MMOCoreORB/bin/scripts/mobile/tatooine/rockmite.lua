@@ -1,7 +1,6 @@
 rockmite = Creature:new {
 	objectName = "@mob/creature_names:rockmite",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 8,
 	chanceHit = 0.27,

@@ -2,7 +2,6 @@ borvos_soldier = Creature:new {
 	objectName = "",
 	customName = "Borvo's Soldier",
 	socialGroup = "borvo",
-	pvpFaction = "borvo",
 	faction = "borvo",
 	level = 10,
 	chanceHit = 0.28,

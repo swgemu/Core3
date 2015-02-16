@@ -1,7 +1,6 @@
 spice_collective_elite_guard = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_eliteguard",
 	socialGroup = "spice_collective",
-	pvpFaction = "spice_collective",
 	faction = "spice_collective",
 	level = 25,
 	chanceHit = 0.35,

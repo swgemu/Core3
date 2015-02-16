@@ -1,7 +1,6 @@
 hidden_daggers_extremist = Creature:new {
 	objectName = "@mob/creature_names:hidden_daggers_extremist",
 	socialGroup = "hidden_daggers",
-	pvpFaction = "hidden_daggers",
 	faction = "hidden_daggers",
 	level = 13,
 	chanceHit = 0.3,

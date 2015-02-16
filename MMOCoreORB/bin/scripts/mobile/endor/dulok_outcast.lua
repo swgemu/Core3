@@ -1,7 +1,6 @@
 dulok_outcast = Creature:new {
 	objectName = "@mob/creature_names:dulok_outcast",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,

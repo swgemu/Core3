@@ -1,7 +1,6 @@
 kunga_shaman = Creature:new {
 	objectName = "@mob/creature_names:kunga_shaman",
 	socialGroup = "kunga_tribe",
-	pvpFaction = "kunga_tribe",
 	faction = "kunga_tribe",
 	level = 57,
 	chanceHit = 0.55,

@@ -2,7 +2,6 @@ rohd_gostervek = Creature:new {
 	objectName = "@mob/creature_names:imperial_army_captain",
 	customName = "Captain Rohd Gostervek",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 30,
 	chanceHit = 0.39,

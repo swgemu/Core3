@@ -1,7 +1,6 @@
 black_sun_guard = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_blksun_guard",
 	socialGroup = "death_watch",
-	pvpFaction = "",
 	faction = "",
 	level = 96,
 	chanceHit = 0.95,

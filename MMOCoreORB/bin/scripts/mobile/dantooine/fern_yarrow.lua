@@ -1,7 +1,6 @@
 fern_yarrow = Creature:new {
 	objectName = "@npc_spawner_n:fern_yarrow",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

@@ -2,7 +2,6 @@ lt_harburik = Creature:new {
 	objectName = "@npc_name:it_harburik",
 	customName = "Lt. Harburik",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 10,
 	chanceHit = 0.28,

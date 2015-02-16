@@ -1,7 +1,6 @@
 qualdo_herm = Creature:new {
 	objectName = "@mob/creature_names:qualdo_herm",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1.000000,

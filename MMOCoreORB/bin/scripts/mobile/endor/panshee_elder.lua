@@ -1,7 +1,6 @@
 panshee_elder = Creature:new {
 	objectName = "@mob/creature_names:panshee_elder",
 	socialGroup = "panshee_tribe",
-	pvpFaction = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 46,
 	chanceHit = 0.48,

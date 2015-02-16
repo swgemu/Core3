@@ -1,7 +1,6 @@
 eerie_korga_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:eerie_korga_spiritmaster",
 	socialGroup = "korga_tribe",
-	pvpFaction = "korga_tribe",
 	faction = "korga_tribe",
 	level = 43,
 	chanceHit = 0.46,

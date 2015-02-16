@@ -2,7 +2,6 @@ scavenger = Creature:new {
 	objectName = "@mob/creature_names:scavenger",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 7,
 	chanceHit = 0.260000,

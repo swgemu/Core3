@@ -1,7 +1,6 @@
 giga_flite_rasp = Creature:new {
 	objectName = "@mob/creature_names:giga_flite_rasp",
 	socialGroup = "rasp",
-	pvpFaction = "",
 	faction = "",
 	level = 11,
 	chanceHit = 0.29,

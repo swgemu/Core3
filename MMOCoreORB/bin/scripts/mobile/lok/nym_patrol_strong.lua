@@ -1,7 +1,6 @@
 nym_patrol_strong = Creature:new {
 	objectName = "@mob/creature_names:nym_patrol_strong",
 	socialGroup = "nym",
-	pvpFaction = "nym",
 	faction = "nym",
 	level = 33,
 	chanceHit = 0.4,

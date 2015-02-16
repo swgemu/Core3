@@ -1,7 +1,6 @@
 spineflap_guard = Creature:new {
 	objectName = "@mob/creature_names:spineflap_guard",
 	socialGroup = "spineflap",
-	pvpFaction = "",
 	faction = "",
 	level = 18,
 	chanceHit = 0.32,

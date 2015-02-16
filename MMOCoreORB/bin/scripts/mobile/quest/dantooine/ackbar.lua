@@ -2,7 +2,6 @@ ackbar = Creature:new {
 	objectName = "@mob/creature_names:ackbar",
 	customName = "Captain Ackbar",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

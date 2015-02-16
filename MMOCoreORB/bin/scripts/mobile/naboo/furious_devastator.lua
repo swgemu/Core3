@@ -1,7 +1,6 @@
 furious_devastator = Creature:new {
 	objectName = "@mob/creature_names:fambaa_furious_devastator",
 	socialGroup = "fambaa",
-	pvpFaction = "",
 	faction = "",
 	level = 38,
 	chanceHit = 0.4,

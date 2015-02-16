@@ -1,7 +1,6 @@
 janta_primalist = Creature:new {
 	objectName = "@mob/creature_names:janta_primalist",
 	socialGroup = "janta_tribe",
-	pvpFaction = "janta_tribe",
 	faction = "janta_tribe",
 	level = 42,
 	chanceHit = 0.47,

@@ -2,7 +2,6 @@ jaleela_imperial_courier = Creature:new {
 	objectName = "",
 	customName = "(an Imperial Courier)",   
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 30,
 	chanceHit = 0.390000,

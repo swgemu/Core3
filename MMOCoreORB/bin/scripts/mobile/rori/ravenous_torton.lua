@@ -1,7 +1,6 @@
 ravenous_torton = Creature:new {
 	objectName = "@mob/creature_names:ravenous_torton",
 	socialGroup = "torton",
-	pvpFaction = "",
 	faction = "",
 	level = 34,
 	chanceHit = 0.4,

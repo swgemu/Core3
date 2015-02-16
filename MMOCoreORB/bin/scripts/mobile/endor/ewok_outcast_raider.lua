@@ -1,7 +1,6 @@
 ewok_outcast_raider = Creature:new {
 	objectName = "@mob/creature_names:ewok_outcast_raider",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "gondula_tribe",
 	level = 31,
 	chanceHit = 0.39,

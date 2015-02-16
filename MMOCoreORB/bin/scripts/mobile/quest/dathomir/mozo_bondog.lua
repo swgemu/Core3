@@ -2,7 +2,6 @@ mozo_bondog = Creature:new {
 	objectName = "",
 	customName = "Mozo Bondog",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

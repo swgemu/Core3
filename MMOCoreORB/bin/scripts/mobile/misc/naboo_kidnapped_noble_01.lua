@@ -2,7 +2,6 @@ naboo_kidnapped_noble_01 = Creature:new {
 	objectName = "",
 	customName = "a Kidnapped Noble",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 20,
 	chanceHit = 0.33,

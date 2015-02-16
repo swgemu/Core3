@@ -1,7 +1,6 @@
 bomarr_monk = Creature:new {
 	objectName = "@mob/creature_names:bomarr_monk",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 3,
 	chanceHit = 0.23,

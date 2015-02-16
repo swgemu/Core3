@@ -2,7 +2,6 @@ gramm_rile = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_mayor",
 	customName = "Gramm Rile",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 20,
 	chanceHit = 0.33,

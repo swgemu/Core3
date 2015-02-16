@@ -1,7 +1,6 @@
 feral_force_wielder = Creature:new {
 	objectName = "@mob/creature_names:feral_force_wilder",
 	socialGroup = "force",
-	pvpFaction = "",
 	faction = "",
 	level = 115,
 	chanceHit = 1,

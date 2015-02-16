@@ -1,7 +1,6 @@
 shadowy_figure = Creature:new {
 	objectName = "@mob/creature_names:assassin_mission_recruiter_neutral",
 	socialGroup = "hutt",
-	pvpFaction = "",
 	faction = "",
 	level = 16,
 	chanceHit = 0.31,

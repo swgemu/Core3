@@ -1,7 +1,6 @@
 sigrix_selonian_warrior = Creature:new {
 	objectName = "@mob/creature_names:selonian_warrior",
 	socialGroup = "selonian",
-	pvpFaction = "",
 	faction = "",
 	level = 13,
 	chanceHit = 0.3,

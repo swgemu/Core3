@@ -1,7 +1,6 @@
 blood_thirsty_borgle = Creature:new {
 	objectName = "@mob/creature_names:blood_thirsty_borgle",
 	socialGroup = "borgle",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

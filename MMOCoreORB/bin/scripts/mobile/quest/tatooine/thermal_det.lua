@@ -2,7 +2,6 @@ thermal_det = Creature:new {
 	objectName = "",
 	customName = "Thermal Det",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 13,
 	chanceHit = 0.3,

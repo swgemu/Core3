@@ -1,8 +1,7 @@
 theme_park_marauder_indar = Creature:new {
 	objectName = "@npc_name:marauder_base_male",
 	customName = "Indar",
-	socialGroup = "self",
-	pvpFaction = "",
+	socialGroup = "self",
 	faction = "",
 	level = 44,
 	chanceHit = 0.47,

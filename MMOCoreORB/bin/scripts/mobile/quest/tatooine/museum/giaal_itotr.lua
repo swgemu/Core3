@@ -1,7 +1,6 @@
 giaal_itotr = Creature:new {
 	objectName = "@mob/creature_names:bestine_artist03",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

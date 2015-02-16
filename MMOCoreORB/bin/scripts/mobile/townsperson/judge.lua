@@ -2,7 +2,6 @@ judge = Creature:new {
 	objectName = "@mob/creature_names:quest_crowd_pleaser_judge",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

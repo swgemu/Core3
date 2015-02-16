@@ -1,7 +1,6 @@
 wald = Creature:new {
 	objectName = "@mob/creature_names:wald",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 22,
 	chanceHit = 0.33,

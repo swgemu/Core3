@@ -1,7 +1,6 @@
 merek_cavern_creeper = Creature:new {
 	objectName = "@mob/creature_names:merek_cavern_creeper",
 	socialGroup = "merek",
-	pvpFaction = "",
 	faction = "",
 	level = 40,
 	chanceHit = 0.44,

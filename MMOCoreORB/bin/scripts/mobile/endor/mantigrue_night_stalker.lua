@@ -1,7 +1,6 @@
 mantigrue_night_stalker = Creature:new {
 	objectName = "@mob/creature_names:mantigrue_night_stalker",
 	socialGroup = "mantigrue",
-	pvpFaction = "",
 	faction = "",
 	level = 28,
 	chanceHit = 0.36,

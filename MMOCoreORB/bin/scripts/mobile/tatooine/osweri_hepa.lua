@@ -2,7 +2,6 @@ osweri_hepa = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
 	customName = "Osweri Hepa",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

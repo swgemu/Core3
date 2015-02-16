@@ -1,7 +1,6 @@
 guf_drolg_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_guf_drolg",
 	socialGroup = "guf_drolg",
-	pvpFaction = "",
 	faction = "",
 	level = 5,
 	chanceHit = 0.2,

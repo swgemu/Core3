@@ -1,7 +1,6 @@
 drall_patriot_foot_soldier = Creature:new {
 	objectName = "@mob/creature_names:drall_patriot_footsoldier",
 	socialGroup = "drall",
-	pvpFaction = "drall",
 	faction = "drall",
 	level = 13,
 	chanceHit = 0.3,

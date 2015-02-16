@@ -2,7 +2,6 @@ mand_bunker_foreman = Creature:new {
 	objectName = "",
 	customName = "Japer Witter (a mine Foreman)",
 	socialGroup = "death_watch",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

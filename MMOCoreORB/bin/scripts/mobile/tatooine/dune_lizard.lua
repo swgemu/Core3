@@ -1,7 +1,6 @@
 dune_lizard = Creature:new {
 	objectName = "@mob/creature_names:dune_lizard",
 	socialGroup = "lizard",
-	pvpFaction = "",
 	faction = "",
 	level = 18,
 	chanceHit = 0.32,

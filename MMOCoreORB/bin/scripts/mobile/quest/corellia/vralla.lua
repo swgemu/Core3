@@ -1,7 +1,6 @@
 vralla = Creature:new {
 	objectName = "",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 16,
 	chanceHit = 0.31,

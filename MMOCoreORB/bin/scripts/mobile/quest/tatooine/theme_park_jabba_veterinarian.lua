@@ -1,7 +1,6 @@
 theme_park_jabba_veterinarian = Creature:new {
 	objectName = "@mob/creature_names:alkhara_champion",
 	socialGroup = "alkhara",
-	pvpFaction = "alkhara",
 	faction = "alkhara",
 	level = 20,
 	chanceHit = 0.33,

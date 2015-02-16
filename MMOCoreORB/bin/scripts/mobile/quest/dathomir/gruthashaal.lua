@@ -1,7 +1,6 @@
 gruthashaal = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 40,
 	chanceHit = 10,

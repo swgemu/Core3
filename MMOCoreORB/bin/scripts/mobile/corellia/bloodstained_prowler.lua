@@ -1,7 +1,6 @@
 bloodstained_prowler = Creature:new {
 	objectName = "@mob/creature_names:wrix_bloodstained_prowler",
 	socialGroup = "wrix",
-	pvpFaction = "",
 	faction = "",
 	level = 29,
 	chanceHit = 0.35,

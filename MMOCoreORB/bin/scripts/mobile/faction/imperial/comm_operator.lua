@@ -1,7 +1,6 @@
 comm_operator = Creature:new {
 	objectName = "@mob/creature_names:comm_operator",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 14,
 	chanceHit = 0.3,

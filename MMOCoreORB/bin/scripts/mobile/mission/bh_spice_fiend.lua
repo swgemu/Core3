@@ -1,7 +1,6 @@
 bh_spice_fiend = Creature:new {
 	objectName = "@mob/creature_names:spice_fiend",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 8,
 	chanceHit = 0.270000,

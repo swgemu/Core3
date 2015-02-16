@@ -2,7 +2,6 @@ sayama_edosun = Creature:new {
 	objectName = "",
 	customName = "Sayama Edosun",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

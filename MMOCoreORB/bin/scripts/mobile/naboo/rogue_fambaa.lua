@@ -1,7 +1,6 @@
 rogue_fambaa = Creature:new {
 	objectName = "@mob/creature_names:rogue_fambaa",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 37,
 	chanceHit = 0.42,

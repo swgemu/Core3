@@ -1,7 +1,6 @@
 specforce_marine = Creature:new {
 	objectName = "@mob/creature_names:specforce_marine",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 18,
 	chanceHit = 0.32,

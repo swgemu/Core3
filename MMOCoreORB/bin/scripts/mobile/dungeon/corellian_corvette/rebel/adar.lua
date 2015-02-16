@@ -2,7 +2,6 @@ adar = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Adar Tallon",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 deranged_squall = Creature:new {
 	objectName = "@mob/creature_names:deranged_squall",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.31,

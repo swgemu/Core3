@@ -1,7 +1,6 @@
 lesser_dewback = Creature:new {
 	objectName = "@mob/creature_names:lesser_dewback",
 	socialGroup = "dewback",
-	pvpFaction = "",
 	faction = "",
 	level = 9,
 	chanceHit = 0.27,

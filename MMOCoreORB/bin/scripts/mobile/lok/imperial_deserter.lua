@@ -1,7 +1,6 @@
 imperial_deserter = Creature:new {
 	objectName = "@mob/creature_names:imperial_deserter",
 	socialGroup = "nym",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 26,
 	chanceHit = 0.36,

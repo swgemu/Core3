@@ -1,7 +1,6 @@
 proficient_gondula_worker = Creature:new {
 	objectName = "@mob/creature_names:proficient_gondula_worker",
 	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 35,
 	chanceHit = 0.41,

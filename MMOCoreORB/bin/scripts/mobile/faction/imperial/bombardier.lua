@@ -1,8 +1,7 @@
 bombardier = Creature:new {
 	objectName = "@mob/creature_names:bombardier",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
-	faction = "",
+	faction = "imperial",
 	level = 15,
 	chanceHit = 0.31,
 	damageMin = 160,

@@ -1,7 +1,6 @@
 janta_loreweaver = Creature:new {
 	objectName = "@mob/creature_names:janta_loreweaver",
 	socialGroup = "janta_tribe",
-	pvpFaction = "janta_tribe",
 	faction = "janta_tribe",
 	level = 55,
 	chanceHit = 0.6,

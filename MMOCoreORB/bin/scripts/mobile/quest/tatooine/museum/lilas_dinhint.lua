@@ -2,7 +2,6 @@ lilas_dinhint = Creature:new {
 	objectName = "",
 	customName = "Lilas Dinhint (museum curator)",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

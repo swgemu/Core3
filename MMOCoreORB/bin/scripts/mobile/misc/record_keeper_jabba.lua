@@ -2,7 +2,6 @@ record_keeper_jabba = Creature:new {
 	objectName = "@theme_park_name:lom",
 	customName = "8-LOM",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 100,
 	chanceHit = 1,

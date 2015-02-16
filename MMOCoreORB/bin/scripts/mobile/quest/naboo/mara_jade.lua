@@ -1,7 +1,6 @@
 mara_jade = Creature:new {
 	objectName = "@mob/creature_names:mara_jade",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

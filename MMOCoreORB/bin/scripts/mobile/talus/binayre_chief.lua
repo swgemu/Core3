@@ -1,8 +1,7 @@
 binayre_chief = Creature:new {
 	objectName = "@mob/creature_names:binayre_chief",
 	socialGroup = "binayre",
-	pvpFaction = "binayre",
-	faction = "pirate",
+	faction = "binayre",
 	level = 22,
 	chanceHit = 0.34,
 	damageMin = 200,

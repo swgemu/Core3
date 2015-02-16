@@ -1,7 +1,6 @@
 dwarf_nuna = Creature:new {
 	objectName = "@mob/creature_names:dwarf_nuna",
 	socialGroup = "nuna",
-	pvpFaction = "",
 	faction = "",
 	level = 5,
 	chanceHit = 0.25,

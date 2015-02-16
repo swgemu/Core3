@@ -1,7 +1,6 @@
 pubam_chieftan = Creature:new {
 	objectName = "@mob/creature_names:pubam_chieftan",
 	socialGroup = "pubam",
-	pvpFaction = "pubam",
 	faction = "pubam",
 	level = 51,
 	chanceHit = 0.6,

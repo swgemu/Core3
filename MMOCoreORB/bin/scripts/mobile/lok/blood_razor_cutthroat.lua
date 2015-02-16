@@ -1,7 +1,6 @@
 blood_razor_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_cutthroat",
 	socialGroup = "bloodrazor",
-	pvpFaction = "bloodrazor",
 	faction = "bloodrazor",
 	level = 34,
 	chanceHit = 0.4,

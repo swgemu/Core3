@@ -1,7 +1,6 @@
 wrix = Creature:new {
 	objectName = "@mob/creature_names:wrix",
 	socialGroup = "wrix",
-	pvpFaction = "",
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

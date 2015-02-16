@@ -1,7 +1,6 @@
 melo = Creature:new {
 	objectName = "@npc_name:rodian_base_female",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,

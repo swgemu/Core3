@@ -1,7 +1,6 @@
 deranged_mantigrue = Creature:new {
 	objectName = "@mob/creature_names:deranged_mantigrue",
 	socialGroup = "mantigrue",
-	pvpFaction = "",
 	faction = "",
 	level = 45,
 	chanceHit = 0.44,

@@ -1,7 +1,6 @@
 theme_park_rebel_engineer = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

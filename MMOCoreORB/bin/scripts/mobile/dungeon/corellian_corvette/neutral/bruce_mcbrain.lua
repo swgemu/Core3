@@ -2,7 +2,6 @@ bruce_mcbrain = Creature:new {
 	objectName = "",
 	customName = "Bruce Mcbrain",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 100,
 	chanceHit = 1,

@@ -2,7 +2,6 @@ feinu_zerk = Creature:new {
 	objectName = "",
 	customName = "Feinu Zerk",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

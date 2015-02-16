@@ -1,7 +1,6 @@
 giant_cave_veermok = Creature:new {
 	objectName = "@mob/creature_names:veermok_giant_cave",
 	socialGroup = "veermok",
-	pvpFaction = "",
 	faction = "",
 	level = 26,
 	chanceHit = 0.35,

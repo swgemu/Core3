@@ -1,7 +1,6 @@
 kole = Creature:new {
 	objectName = "@mob/creature_names:kole",
 	socialGroup = "nym",
-	pvpFaction = "nym",
 	faction = "nym",
 	level = 22,
 	chanceHit = 0.33,

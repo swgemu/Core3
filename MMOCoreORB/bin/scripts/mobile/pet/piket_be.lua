@@ -1,7 +1,6 @@
 piket_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_piket",
 	socialGroup = "piket",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.2,

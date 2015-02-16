@@ -1,7 +1,6 @@
 fadulk_dikeer = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 3,
 	chanceHit = 0.23,

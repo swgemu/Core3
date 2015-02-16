@@ -2,7 +2,6 @@ palu = Creature:new {
 	objectName = "@npc_name:human_base_female",
 	customName = "Palu Zerk",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

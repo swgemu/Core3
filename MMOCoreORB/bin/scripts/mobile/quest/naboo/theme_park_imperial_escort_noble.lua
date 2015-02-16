@@ -2,7 +2,6 @@ theme_park_imperial_escort_noble = Creature:new {
 	objectName = "",
 	customName = "escort",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

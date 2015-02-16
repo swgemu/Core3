@@ -133,7 +133,7 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	local effectiveLevel = ObjectManager.withCreatureObject(pAgent, function(creo) return creo:getLevel() end)
 	if scno:isPlayerCreature() then
 		effectiveLevel = effectiveLevel * (1 + agent:getFerocity() / 4)
-		local faction = agent:getPvPFaction()
+		local faction = agent:getFactionString()
 		if faction == "rebel" or faction == "imperial" then
 			effectiveLevel = effectiveLevel * 2.5
 		elseif faction ~= "" and faction ~= nil then

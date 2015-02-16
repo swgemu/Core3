@@ -2,7 +2,6 @@ athok_dinvar = Creature:new {
 	objectName = "",
 	customName = "Athok Dinvar",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

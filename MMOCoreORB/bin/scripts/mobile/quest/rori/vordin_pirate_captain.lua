@@ -2,7 +2,6 @@ vordin_pirate_captain = Creature:new {
 	objectName = "",
 	customName = "a Pirate Captain",
 	socialGroup = "pirate",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,

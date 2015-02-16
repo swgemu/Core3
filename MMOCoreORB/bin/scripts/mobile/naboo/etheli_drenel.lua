@@ -2,7 +2,6 @@ etheli_drenel = Creature:new {
 	objectName = "@npc_name:bothan_base_male",
 	customName = "Etheli Dre'nel",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 8,
 	chanceHit = 0.27,

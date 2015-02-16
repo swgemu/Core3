@@ -1,7 +1,6 @@
 bh_ig_assassin_droid = Creature:new {
 	objectName = "@mob/creature_names:ig_assassin_droid",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 45,
 	chanceHit = 0.47,

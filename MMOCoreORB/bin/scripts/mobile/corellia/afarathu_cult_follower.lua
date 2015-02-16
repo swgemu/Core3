@@ -1,7 +1,6 @@
 afarathu_cult_follower = Creature:new {
 	objectName = "@mob/creature_names:afarathu_cult_follower",
 	socialGroup = "afarathu",
-	pvpFaction = "afarathu",
 	faction = "afarathu",
 	level = 5,
 	chanceHit = 0.25,

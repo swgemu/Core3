@@ -1,7 +1,6 @@
 kylaena_haley = Creature:new {
 	objectName = "@mob/creature_names:kylaena_haley",
 	socialGroup = "sith_shadow",
-	pvpFaction = "sith_shadow",
 	faction = "sith_shadow",
 	level = 103,
 	chanceHit = 0.9,

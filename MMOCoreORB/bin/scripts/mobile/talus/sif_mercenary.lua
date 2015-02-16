@@ -1,7 +1,6 @@
 sif_mercenary = Creature:new {
 	objectName = "@mob/creature_names:trandoshan_sif",
 	socialGroup = "sif",
-	pvpFaction = "sif",
 	faction = "sif",
 	level = 36,
 	chanceHit = 0.42,

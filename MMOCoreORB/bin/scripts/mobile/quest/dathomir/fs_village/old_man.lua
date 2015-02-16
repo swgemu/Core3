@@ -1,7 +1,6 @@
 old_man = Creature:new {
 	objectName = "@mob/creature_names:fs_intro_oldman",
 	socialGroup = "fs_villager",
-	pvpFaction = "fs_villager",
 	faction = "fs_villager",
 	level = 12,
 	chanceHit = 0.29,

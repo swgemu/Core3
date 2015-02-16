@@ -2,7 +2,6 @@ venthan_chassu = Creature:new {
 	objectName = "",
 	customName = "Venthan Chassu",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

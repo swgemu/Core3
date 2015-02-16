@@ -1,7 +1,6 @@
 imperial_research_captain_coa3 = Creature:new {
 	objectName = "@mob/creature_names:crackdown_imperial_army_captain",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 45,
 	chanceHit = 0.46,

@@ -1,7 +1,6 @@
 theme_park_jabba_valarian_thug_02 = Creature:new {
 	objectName = "@mob/creature_names:valarian_thug",
 	socialGroup = "valarian",
-	pvpFaction = "valarian",
 	faction = "valarian",
 	level = 11,
 	chanceHit = 0.29,

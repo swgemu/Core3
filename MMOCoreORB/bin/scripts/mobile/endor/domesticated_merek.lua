@@ -1,7 +1,6 @@
 domesticated_merek = Creature:new {
 	objectName = "@mob/creature_names:domesticated_merek",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 49,
 	chanceHit = 0.5,

@@ -1,7 +1,6 @@
 insurgent = Creature:new {
 	objectName = "@npc_spawner_n:insurgent",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 17,
 	chanceHit = 0.320000,

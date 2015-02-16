@@ -2,7 +2,6 @@ junk_ollobo = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
 	customName = "Ollobo",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 100,
 	chanceHit = 1,

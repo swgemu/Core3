@@ -1,7 +1,6 @@
 logro_elsin = Creature:new {
 	objectName = "@npc_spawner_n:logro_elsin",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 23,
 	chanceHit = 0.33,

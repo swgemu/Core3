@@ -1,7 +1,6 @@
 neo_cobral_bandit = Creature:new {
 	objectName = "@mob/creature_names:cobral_bandit",
 	socialGroup = "cobral",
-	pvpFaction = "cobral",
 	faction = "cobral",
 	level = 20,
 	chanceHit = 0.33,

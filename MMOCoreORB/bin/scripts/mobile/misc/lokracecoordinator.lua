@@ -1,7 +1,6 @@
 lok_race_coordinator = Creature:new {
 	objectName = "@event_perk:name_race_droid",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

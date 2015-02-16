@@ -1,7 +1,6 @@
 talon_karrde = Creature:new {
 	objectName = "@mob/creature_names:talon_karrde",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

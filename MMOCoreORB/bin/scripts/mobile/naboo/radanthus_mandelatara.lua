@@ -2,7 +2,6 @@ radanthus_mandelatara = Creature:new {
 	objectName = "",
 	customName = "Radanthus Mandelatara",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

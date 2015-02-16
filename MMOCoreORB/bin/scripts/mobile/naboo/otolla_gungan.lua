@@ -1,7 +1,6 @@
 otolla_gungan = Creature:new {
 	objectName = "@mob/creature_names:otolla_gungan",
 	socialGroup = "gungan",
-	pvpFaction = "gungan",
 	faction = "gungan",
 	level = 10,
 	chanceHit = 0.28,

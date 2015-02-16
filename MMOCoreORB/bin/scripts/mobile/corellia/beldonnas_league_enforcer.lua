@@ -1,7 +1,6 @@
 beldonnas_league_enforcer = Creature:new {
 	objectName = "@mob/creature_names:beldonnas_enforcer",
 	socialGroup = "beldonnas_league",
-	pvpFaction = "beldonnas_league",
 	faction = "beldonnas_league",
 	level = 23,
 	chanceHit = 0.35,

@@ -2,7 +2,6 @@ izaryx = Creature:new {
 	objectName = "",
 	customName = "Izaryx",
 	socialGroup = "mtn_clan",
-	pvpFaction = "mtn_clan",
 	faction = "mtn_clan",
 	level = 100,
 	chanceHit = 1,

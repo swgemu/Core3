@@ -1,7 +1,6 @@
 luke_skywalker = Creature:new {
 	objectName = "@mob/creature_names:luke_skywalker",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

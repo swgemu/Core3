@@ -1,7 +1,6 @@
 kaadu_male = Creature:new {
 	objectName = "@mob/creature_names:kaadu_male",
 	socialGroup = "kaadu",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

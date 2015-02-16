@@ -1,7 +1,6 @@
 mantigrue_reaper = Creature:new {
 	objectName = "@mob/creature_names:mantigrue_reaper",
 	socialGroup = "mantigrue",
-	pvpFaction = "",
 	faction = "",
 	level = 50,
 	chanceHit = 0.47,

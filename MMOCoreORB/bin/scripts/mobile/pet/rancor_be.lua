@@ -1,7 +1,6 @@
 rancor_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_rancor",
 	socialGroup = "rancor",
-	pvpFaction = "",
 	faction = "",
 	level = 35,
 	chanceHit = 0.2,

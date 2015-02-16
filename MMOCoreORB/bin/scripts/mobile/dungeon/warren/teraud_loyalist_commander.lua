@@ -1,7 +1,6 @@
 teraud_loyalist_commander = Creature:new {
 	objectName = "@mob/creature_names:warren_teraud_loyalist_commander",
 	socialGroup = "warren_teraud",
-	pvpFaction = "",
 	faction = "",
 	level = 44,
 	chanceHit = 0.47,

@@ -1,7 +1,6 @@
 naboo_holy_man = Creature:new {
 	objectName = "@mob/creature_names:naboo_holy_man",
 	socialGroup = "naboo",
-	pvpFaction = "naboo",
 	faction = "naboo",
 	level = 5,
 	chanceHit = 0.250000,

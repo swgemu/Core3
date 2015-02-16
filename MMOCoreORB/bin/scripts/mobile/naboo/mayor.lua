@@ -1,7 +1,6 @@
 mayor = Creature:new {
 	objectName = "@mob/creature_names:mayor",
 	socialGroup = "naboo",
-	pvpFaction = "naboo",
 	faction = "naboo",
 	level = 7,
 	chanceHit = 0.260000,

@@ -1,7 +1,6 @@
 krahbu_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_krahbu",
 	socialGroup = "krahbu",
-	pvpFaction = "",
 	faction = "",
 	level = 2,
 	chanceHit = 0.2,

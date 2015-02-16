@@ -1,7 +1,6 @@
 scientist_target_robber = Creature:new {
 	objectName = "@mob/creature_names:scavenger",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 7,
 	chanceHit = 0.260000,

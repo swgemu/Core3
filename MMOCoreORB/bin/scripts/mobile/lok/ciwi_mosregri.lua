@@ -1,7 +1,6 @@
 ciwi_mosregri = Creature:new {
 	objectName = "@npc_name:twilek_base_female",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 6,
 	chanceHit = 0.250000,

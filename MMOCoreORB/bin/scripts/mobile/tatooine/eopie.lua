@@ -1,7 +1,6 @@
 eopie = Creature:new {
 	objectName = "@mob/creature_names:eopie",
 	socialGroup = "eopie",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

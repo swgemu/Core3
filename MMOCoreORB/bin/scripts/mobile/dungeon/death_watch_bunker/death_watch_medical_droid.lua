@@ -2,7 +2,6 @@ death_watch_medical_droid = Creature:new {
 	objectName = "",
 	customName = "G12-4J (a medical droid)",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.390000,

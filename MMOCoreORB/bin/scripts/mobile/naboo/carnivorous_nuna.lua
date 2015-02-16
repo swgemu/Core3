@@ -1,7 +1,6 @@
 carnivorous_nuna = Creature:new {
 	objectName = "@mob/creature_names:carnivorous_nuna",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 13,
 	chanceHit = 0.3,

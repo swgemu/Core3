@@ -2,7 +2,6 @@ theme_park_imperial_escort_rebel_leader = Creature:new {
 	objectName = "",
 	customName = "escort",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 4,
 	chanceHit = 0.24,

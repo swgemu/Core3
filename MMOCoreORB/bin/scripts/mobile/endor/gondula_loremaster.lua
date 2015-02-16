@@ -1,7 +1,6 @@
 gondula_loremaster = Creature:new {
 	objectName = "@mob/creature_names:gondula_loremaster",
 	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 20,
 	chanceHit = 0.33,

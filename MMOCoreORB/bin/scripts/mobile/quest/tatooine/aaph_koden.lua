@@ -2,7 +2,6 @@ aaph_koden = Creature:new {
 	objectName = "",
 	customName = "Aaph Koden",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 10,
 	chanceHit = 0.28,

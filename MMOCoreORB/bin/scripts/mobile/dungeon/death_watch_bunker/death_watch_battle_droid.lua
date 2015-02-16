@@ -1,7 +1,6 @@
 death_watch_battle_droid = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_battle_droid",
 	socialGroup = "death_watch",
-	pvpFaction = "",
 	faction = "",
 	level = 134,
 	chanceHit = 5.5,

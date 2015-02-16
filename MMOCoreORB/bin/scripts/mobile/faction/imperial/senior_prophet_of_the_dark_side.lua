@@ -1,7 +1,6 @@
 senior_prophet_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:senior_prophet_of_the_dark_side",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 138,
 	chanceHit = 4.75,

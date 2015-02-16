@@ -1,7 +1,6 @@
 vana_pilot = Creature:new {
 	objectName = "@mob/creature_names:rebel_pilot",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,

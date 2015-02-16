@@ -1,7 +1,6 @@
 elite_novatrooper = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_novatrooper_elite",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 162,
 	chanceHit = 10,

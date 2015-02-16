@@ -2,7 +2,6 @@ corran_horn = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Corran Horn",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

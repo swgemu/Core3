@@ -1,7 +1,6 @@
 captain_eso = Creature:new {
 	objectName = "@mob/creature_names:captain_eso",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 22,
 	chanceHit = 0.33,

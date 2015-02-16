@@ -2,7 +2,6 @@ echi = Creature:new {
 	objectName = "",
 	customName = "Echi (a Holovid Developer)",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 7,
 	chanceHit = 0.26,

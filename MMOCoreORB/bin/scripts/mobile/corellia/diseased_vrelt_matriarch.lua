@@ -1,7 +1,6 @@
 diseased_vrelt_matriarch = Creature:new {
 	objectName = "@mob/creature_names:diseased_vrelt_matriarch",
 	socialGroup = "vrelt",
-	pvpFaction = "",
 	faction = "",
 	level = 11,
 	chanceHit = 0.28,

@@ -1,7 +1,6 @@
 spice_collective_workchief = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_workchief",
 	socialGroup = "spice_collective",
-	pvpFaction = "spice_collective",
 	faction = "spice_collective",
 	level = 11,
 	chanceHit = 0.29,

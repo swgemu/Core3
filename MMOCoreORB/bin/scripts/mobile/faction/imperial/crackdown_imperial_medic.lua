@@ -1,7 +1,6 @@
 crackdown_imperial_medic = Creature:new {
 	objectName = "@mob/creature_names:crackdown_imperial_medic",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 1,
 	chanceHit = 0.31,

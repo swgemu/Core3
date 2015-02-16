@@ -1,7 +1,6 @@
 quharek = Creature:new {
 	objectName = "@mob/creature_names:quharek",
 	socialGroup = "fs_villager",
-	pvpFaction = "fs_villager",
 	faction = "fs_villager",
 	level = 12,
 	chanceHit = 0.290000,

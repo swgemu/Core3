@@ -2,7 +2,6 @@ death_watch_herald_rebel = Creature:new {
 	objectName = "",
 	customName = "Lutin Nightstalker",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 99,
 	chanceHit = 0.99,

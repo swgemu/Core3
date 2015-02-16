@@ -2,7 +2,6 @@ dede_chesmi = Creature:new {
 	objectName = "@npc_name:human_base_female",
 	customName = "Dede Chesmi",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

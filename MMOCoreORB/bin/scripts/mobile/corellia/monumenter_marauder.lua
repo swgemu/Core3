@@ -1,7 +1,6 @@
 monumenter_marauder = Creature:new {
 	objectName = "@mob/creature_names:monumenter_marauder",
 	socialGroup = "monumenter",
-	pvpFaction = "monumenter",
 	faction = "monumenter",
 	level = 13,
 	chanceHit = 0.3,

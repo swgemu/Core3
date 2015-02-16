@@ -2,7 +2,6 @@ windom_starkiller = Creature:new {
 	objectName = "",
 	customName = "Windom Starkiller",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

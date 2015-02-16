@@ -1,7 +1,6 @@
 narmle_militia_rifleman = Creature:new {
 	objectName = "@mob/creature_names:narmle_rifleman",
 	socialGroup = "narmle",
-	pvpFaction = "narmle",
 	faction = "narmle",
 	level = 14,
 	chanceHit = 0.3,

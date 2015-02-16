@@ -2,7 +2,6 @@ death_watch_herald_imperial = Creature:new {
 	objectName = "",
 	customName = "Commander D'krn",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

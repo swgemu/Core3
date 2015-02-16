@@ -2,7 +2,6 @@ bab_esrus = Creature:new {
 	objectName = "",
 	customName = "Bab Esrus",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

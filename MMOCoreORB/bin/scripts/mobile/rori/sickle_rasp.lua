@@ -1,7 +1,6 @@
 sickle_rasp = Creature:new {
 	objectName = "@mob/creature_names:sickle_rasp",
 	socialGroup = "rasp",
-	pvpFaction = "",
 	faction = "",
 	level = 8,
 	chanceHit = 0.27,

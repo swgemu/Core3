@@ -1,7 +1,6 @@
 shaupaut_hunter = Creature:new {
 	objectName = "@mob/creature_names:shaupaut_hunter",
 	socialGroup = "shaupaut",
-	pvpFaction = "",
 	faction = "",
 	level = 22,
 	chanceHit = 0.34,

@@ -1,7 +1,6 @@
 adept_jinda_shaman = Creature:new {
 	objectName = "@mob/creature_names:adept_jinda_shaman",
 	socialGroup = "jinda_tribe",
-	pvpFaction = "",
 	faction = "",
 	level = 32,
 	chanceHit = 0.39,

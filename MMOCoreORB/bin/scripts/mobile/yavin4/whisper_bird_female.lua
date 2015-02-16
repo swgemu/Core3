@@ -1,7 +1,6 @@
 whisper_bird_female = Creature:new {
 	objectName = "@mob/creature_names:whisper_bird_female",
 	socialGroup = "whisperbird",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.31,

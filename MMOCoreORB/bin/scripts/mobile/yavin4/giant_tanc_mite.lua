@@ -1,7 +1,6 @@
 giant_tanc_mite = Creature:new {
 	objectName = "@mob/creature_names:giant_tanc_mite",
 	socialGroup = "mite",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

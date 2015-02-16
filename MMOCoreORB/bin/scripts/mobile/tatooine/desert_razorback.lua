@@ -1,7 +1,6 @@
 desert_razorback = Creature:new {
 	objectName = "@mob/creature_names:desert_razorback",
 	socialGroup = "boar",
-	pvpFaction = "",
 	faction = "",
 	level = 24,
 	chanceHit = 0.35,

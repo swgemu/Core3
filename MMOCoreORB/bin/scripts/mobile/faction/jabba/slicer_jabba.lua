@@ -1,7 +1,6 @@
 slicer_jabba = Creature:new {
 	objectName = "@mob/creature_names:slicer",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 6,
 	chanceHit = 0.25,

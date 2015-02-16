@@ -1,7 +1,6 @@
 eg6_crafted = Creature:new {
 	objectName = "@droid_name:eg_6_power_droid_crafted",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

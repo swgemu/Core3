@@ -2,7 +2,6 @@ keanna_likyna = Creature:new {
 	objectName = "",
 	customName = "Keanna Li'kyna",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

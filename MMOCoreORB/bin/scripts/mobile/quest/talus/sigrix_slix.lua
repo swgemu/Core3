@@ -2,7 +2,6 @@ sigrix_slix = Creature:new {
 	objectName = "",
 	customName = "Sigrix Slix",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

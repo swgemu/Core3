@@ -1,7 +1,6 @@
 langlatch_destroyer = Creature:new {
 	objectName = "@mob/creature_names:langlatch_destroyer",
 	socialGroup = "langlatch",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.32,

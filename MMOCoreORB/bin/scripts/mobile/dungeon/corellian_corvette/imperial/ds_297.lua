@@ -2,7 +2,6 @@ ds_297 = Creature:new {
 	objectName = "",
 	customName = "DS-297",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 20,
 	chanceHit = 0.33,

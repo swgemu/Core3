@@ -1,7 +1,6 @@
 feeble_kima = Creature:new {
 	objectName = "@mob/creature_names:feeble_kima",
 	socialGroup = "kima",
-	pvpFaction = "",
 	faction = "",
 	level = 11,
 	chanceHit = 0.29,

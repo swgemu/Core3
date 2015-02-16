@@ -1,7 +1,6 @@
 dirk_maggin = Creature:new {
 	objectName = "@theme_park/warren/warren_system_messages:name_dirk",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 1,

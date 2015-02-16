@@ -1,7 +1,6 @@
 large_chuba = Creature:new {
 	objectName = "@mob/creature_names:chuba_large",
 	socialGroup = "chuba",
-	pvpFaction = "",
 	faction = "",
 	level = 5,
 	chanceHit = 0.25,

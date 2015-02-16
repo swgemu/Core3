@@ -1,7 +1,6 @@
 malakili = Creature:new {
 	objectName = "@mob/creature_names:malakili",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 10,
 	chanceHit = 0.28,

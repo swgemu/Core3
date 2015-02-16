@@ -1,7 +1,6 @@
 jawa_avenger = Creature:new {
 	objectName = "@mob/creature_names:jawa_avenger",
 	socialGroup = "jawa",
-	pvpFaction = "jawa",
 	faction = "jawa",
 	level = 21,
 	chanceHit = 0.33,

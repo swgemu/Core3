@@ -1,7 +1,6 @@
 weathered_gondula_shaman = Creature:new {
 	objectName = "@mob/creature_names:weathered_gondula_shaman",
 	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 43,
 	chanceHit = 0.45,

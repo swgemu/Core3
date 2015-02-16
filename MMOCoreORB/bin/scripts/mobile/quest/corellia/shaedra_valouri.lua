@@ -1,7 +1,6 @@
 shaedra_valouri = Creature:new {
 	objectName = "@mob/creature_names:corsec_investigator",
 	socialGroup = "corsec",
-	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 15,
 	chanceHit = 0.31,

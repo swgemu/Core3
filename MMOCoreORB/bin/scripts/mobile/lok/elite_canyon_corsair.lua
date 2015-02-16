@@ -1,7 +1,6 @@
 elite_canyon_corsair = Creature:new {
 	objectName = "@mob/creature_names:elite_canyon_corsair",
 	socialGroup = "canyon_corsair",
-	pvpFaction = "canyon_corsair",
 	faction = "canyon_corsair",
 	level = 45,
 	chanceHit = 0.47,

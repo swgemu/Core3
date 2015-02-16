@@ -1,7 +1,6 @@
 jabba_thief = Creature:new {
 	objectName = "@mob/creature_names:jabba_thief",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 9,
 	chanceHit = 0.27,

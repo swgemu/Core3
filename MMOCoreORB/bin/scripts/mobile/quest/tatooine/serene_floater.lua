@@ -2,7 +2,6 @@ serene_floater = Creature:new {
 	objectName = "",
 	customName = "Serene Floater",
 	socialGroup = "bomarr",
-	pvpFaction = "",
 	faction = "",
 	level = 32,
 	chanceHit = 0.28,

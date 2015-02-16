@@ -1,7 +1,6 @@
 karin_featherlight = Creature:new {
 	objectName = "@npc_name:corellia_herald_02",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

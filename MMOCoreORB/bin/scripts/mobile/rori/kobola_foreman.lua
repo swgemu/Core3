@@ -1,7 +1,6 @@
 kobola_foreman = Creature:new {
 	objectName = "@mob/creature_names:kobola_foreman",
 	socialGroup = "kobola",
-	pvpFaction = "kobola",
 	faction = "kobola",
 	level = 16,
 	chanceHit = 0.31,

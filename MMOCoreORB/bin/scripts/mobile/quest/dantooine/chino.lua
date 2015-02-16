@@ -2,7 +2,6 @@ chino = Creature:new {
 	objectName = "",
 	customName = "Chino (an Empire Chief Inquisitor)",	
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 120,
 	chanceHit = 4.000000,

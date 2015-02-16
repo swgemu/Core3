@@ -1,7 +1,6 @@
 gungan_grand_army_soldier = Creature:new {
 	objectName = "@mob/creature_names:gungan_grand_army_soldier",
 	socialGroup = "gungan",
-	pvpFaction = "gungan",
 	faction = "gungan",
 	level = 18,
 	chanceHit = 0.32,

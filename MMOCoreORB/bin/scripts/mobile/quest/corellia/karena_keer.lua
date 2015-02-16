@@ -2,7 +2,6 @@ karena_keer = Creature:new {
 	objectName = "@npc_name:zabrak_base_female",
 	customName = "Karena Keer",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

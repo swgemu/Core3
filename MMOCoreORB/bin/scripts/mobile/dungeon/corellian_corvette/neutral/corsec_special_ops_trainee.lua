@@ -1,7 +1,6 @@
 corsec_special_ops_trainee = Creature:new {
 	objectName = "@mob/creature_names:corsec_cadet_aggro",
 	socialGroup = "corsec",
-	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 71,
 	chanceHit = 0.7,

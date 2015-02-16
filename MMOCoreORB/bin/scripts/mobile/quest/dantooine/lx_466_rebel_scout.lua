@@ -2,7 +2,6 @@ lx_466_rebel_scout = Creature:new {
 	objectName = "",
 	customName = "(a Stranded Rebel Scout)",	
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 50,
 	chanceHit = 1,

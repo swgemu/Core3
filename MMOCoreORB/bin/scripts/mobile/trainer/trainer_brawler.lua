@@ -1,6 +1,5 @@
 trainer_brawler = Creature:new {
 	objectName = "@mob/creature_names:trainer_brawler",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,

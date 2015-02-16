@@ -1,7 +1,6 @@
 vicious_pubam_battlelord = Creature:new {
 	objectName = "@mob/creature_names:vicious_pubam_battlelord",
 	socialGroup = "pubam",
-	pvpFaction = "pubam",
 	faction = "pubam",
 	level = 35,
 	chanceHit = 0.41,

@@ -2,7 +2,6 @@ biogenic_scientist_human = Creature:new {
 	objectName = "",
 	customName = "a scientist",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 25,
 	chanceHit = 0.35,

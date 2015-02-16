@@ -1,7 +1,6 @@
 deliver_npc = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 0.39,

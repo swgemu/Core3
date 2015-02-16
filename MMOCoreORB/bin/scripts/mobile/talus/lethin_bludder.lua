@@ -2,7 +2,6 @@ lethin_bludder = Creature:new {
 	objectName = "",
 	customName = "Lethin Bludder",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

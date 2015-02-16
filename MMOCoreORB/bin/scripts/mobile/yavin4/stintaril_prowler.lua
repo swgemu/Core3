@@ -1,7 +1,6 @@
 stintaril_prowler = Creature:new {
 	objectName = "@mob/creature_names:stintaril_prowler",
 	socialGroup = "stinaril",
-	pvpFaction = "",
 	faction = "",
 	level = 83,
 	chanceHit = 0.85,

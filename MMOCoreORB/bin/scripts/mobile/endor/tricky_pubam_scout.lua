@@ -1,7 +1,6 @@
 tricky_pubam_scout = Creature:new {
 	objectName = "@mob/creature_names:tricky_pubam_scout",
 	socialGroup = "pubam",
-	pvpFaction = "pubam",
 	faction = "pubam",
 	level = 50,
 	chanceHit = 0.55,

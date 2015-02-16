@@ -1,7 +1,6 @@
 jinda_ritualist = Creature:new {
 	objectName = "@mob/creature_names:jinda_ritualist",
 	socialGroup = "jinda_tribe",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.33,

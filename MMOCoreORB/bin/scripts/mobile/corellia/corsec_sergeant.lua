@@ -1,7 +1,6 @@
 corsec_sergeant = Creature:new {
 	objectName = "@mob/creature_names:corsec_sergeant",
 	socialGroup = "corsec",
-	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 16,
 	chanceHit = 0.31,

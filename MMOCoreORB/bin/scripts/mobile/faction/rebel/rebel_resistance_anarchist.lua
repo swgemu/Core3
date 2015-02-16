@@ -1,7 +1,6 @@
 rebel_resistance_anarchist = Creature:new {
 	objectName = "@mob/creature_names:rebel_resistance_anarchist",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 9,
 	chanceHit = 0.27,

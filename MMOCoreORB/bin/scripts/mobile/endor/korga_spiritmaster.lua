@@ -1,7 +1,6 @@
 korga_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:korga_spiritmaster",
 	socialGroup = "korga_tribe",
-	pvpFaction = "korga_tribe",
 	faction = "korga_tribe",
 	level = 17,
 	chanceHit = 0.31,

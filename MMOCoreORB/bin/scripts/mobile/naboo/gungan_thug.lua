@@ -2,7 +2,6 @@ gungan_thug = Creature:new {
 	objectName = "",
 	customName = "a Gungan Thug",
 	socialGroup = "gungan",
-	pvpFaction = "gungan",
 	faction = "gungan",
 	level = 14,
 	chanceHit = 0.3,

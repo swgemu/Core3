@@ -2,7 +2,6 @@ dannik_malaan = Creature:new {
 	objectName = "@npc_name:zabrak_base_male",
 	customName = "Dannik Malaan",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

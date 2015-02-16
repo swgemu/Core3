@@ -1,7 +1,6 @@
 eerie_pubam_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:eerie_pubam_spiritmaster",
 	socialGroup = "pubam",
-	pvpFaction = "pubam",
 	faction = "pubam",
 	level = 10,
 	chanceHit = 0.28,

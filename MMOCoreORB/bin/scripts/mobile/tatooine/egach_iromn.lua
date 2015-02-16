@@ -2,7 +2,6 @@ egach_iromn = Creature:new {
 	objectName = "",
 	customName = "Egach Iromn",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

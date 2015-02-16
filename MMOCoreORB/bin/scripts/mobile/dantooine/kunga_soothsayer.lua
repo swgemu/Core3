@@ -1,7 +1,6 @@
 kunga_soothsayer = Creature:new {
 	objectName = "@mob/creature_names:kunga_soothsayer",
 	socialGroup = "kunga_tribe",
-	pvpFaction = "kunga_tribe",
 	faction = "kunga_tribe",
 	level = 27,
 	chanceHit = 0.36,

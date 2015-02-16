@@ -1,7 +1,6 @@
 gulginaw = Creature:new {
 	objectName = "@mob/creature_names:gulginaw",
 	socialGroup = "gulginaw",
-	pvpFaction = "",
 	faction = "",
 	level = 13,
 	chanceHit = 0.29,

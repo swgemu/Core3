@@ -1,7 +1,6 @@
 shaggy_donkuwah_youth = Creature:new {
 	objectName = "@mob/creature_names:shaggy_donkuwah_youth",
 	socialGroup = "donkuwah_tribe",
-	pvpFaction = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 14,
 	chanceHit = 0.3,

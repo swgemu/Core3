@@ -2,7 +2,6 @@ pathfinder = Creature:new {
 	objectName = "",
 	costumName = "Pathfinder",
 	socialGroup = "wilder",
-	pvpFaction = "",
 	faction = "",
 	level = 21,
 	chanceHit = 0.33,

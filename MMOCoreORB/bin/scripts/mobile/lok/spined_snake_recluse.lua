@@ -1,7 +1,6 @@
 spined_snake_recluse = Creature:new {
 	objectName = "@mob/creature_names:spined_snake_recluse",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

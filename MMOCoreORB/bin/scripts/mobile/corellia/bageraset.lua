@@ -1,7 +1,6 @@
 bageraset = Creature:new {
 	objectName = "@mob/creature_names:bageraset",
 	socialGroup = "bageraset",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

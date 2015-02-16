@@ -1,7 +1,6 @@
 specforce_master_sergeant = Creature:new {
 	objectName = "@mob/creature_names:specforce_master_sergeant",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 22,
 	chanceHit = 0.35,

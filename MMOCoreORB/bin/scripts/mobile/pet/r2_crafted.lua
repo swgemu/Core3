@@ -1,7 +1,6 @@
 r2_crafted = Creature:new {
 	objectName = "@droid_name:r2_crafted",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

@@ -1,7 +1,6 @@
 bors_teraud = Creature:new {
 	objectName = "@mob/creature_names:warren_bors_teraud",
 	socialGroup = "warren_teraud",
-	pvpFaction = "",
 	faction = "",
 	level = 75,
 	chanceHit = 0.75,

@@ -1,7 +1,6 @@
 tough_thug_aqualish_male = Creature:new {
 	objectName = "@mob/creature_names:thug",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 16,
 	chanceHit = 0.31,

@@ -1,7 +1,6 @@
 rhoa_kwi_hunter = Creature:new {
 	objectName = "@mob/creature_names:rhoa_kwi_hunter",
 	socialGroup = "kwi",
-	pvpFaction = "",
 	faction = "",
 	level = 43,
 	chanceHit = 0.44,

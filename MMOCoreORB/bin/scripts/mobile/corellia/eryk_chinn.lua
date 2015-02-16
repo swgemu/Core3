@@ -1,7 +1,6 @@
 eryk_chinn = Creature:new {
 	objectName = "@npc_spawner_n:eryk_chinn",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 23,
 	chanceHit = 0.33,

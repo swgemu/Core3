@@ -1,7 +1,6 @@
 civilian_patrolman = Creature:new {
 	objectName = "@mob/creature_names:imperial_civil_patrolman",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 6,
 	chanceHit = 0.25,

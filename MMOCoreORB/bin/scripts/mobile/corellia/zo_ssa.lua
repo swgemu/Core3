@@ -1,7 +1,6 @@
 zo_ssa = Creature:new {
 	objectName = "@npc_spawner_n:zo_ssa",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

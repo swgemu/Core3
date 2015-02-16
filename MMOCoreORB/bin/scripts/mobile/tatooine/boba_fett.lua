@@ -1,7 +1,6 @@
 boba_fett = Creature:new {
 	objectName = "@mob/creature_names:boba_fett",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 99,
 	chanceHit = 0.99,

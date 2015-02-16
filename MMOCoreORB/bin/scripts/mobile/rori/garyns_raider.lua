@@ -1,7 +1,6 @@
 garyns_raider = Creature:new {
 	objectName = "@mob/creature_names:garyn_raider",
 	socialGroup = "garyn",
-	pvpFaction = "garyn",
 	faction = "garyn",
 	level = 20,
 	chanceHit = 0.33,

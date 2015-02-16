@@ -1,7 +1,6 @@
 outrider = Creature:new {
 	objectName = "@mob/creature_names:lost_aqualish_outrider",
 	socialGroup = "wilder",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

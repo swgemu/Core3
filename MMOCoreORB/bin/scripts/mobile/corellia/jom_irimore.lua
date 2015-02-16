@@ -2,7 +2,6 @@ jom_irimore = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Jom Irimore",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 kobola_pitboss = Creature:new {
 	objectName = "@mob/creature_names:kobola_pitboss",
 	socialGroup = "kobola",
-	pvpFaction = "kobola",
 	faction = "kobola",
 	level = 22,
 	chanceHit = 0.33,

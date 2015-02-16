@@ -1,7 +1,6 @@
 giant_decay_mite_queen = Creature:new {
 	objectName = "@mob/creature_names:giant_decay_mite_queen",
 	socialGroup = "mite",
-	pvpFaction = "",
 	faction = "",
 	level = 26,
 	chanceHit = 0.35,

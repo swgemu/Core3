@@ -1,6 +1,5 @@
 dr_kaum = Creature:new {
 	objectName = "",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

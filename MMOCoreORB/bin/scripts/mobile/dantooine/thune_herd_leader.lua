@@ -1,7 +1,6 @@
 thune_herd_leader = Creature:new {
 	objectName = "@mob/creature_names:thune_herd_leader",
 	socialGroup = "thune",
-	pvpFaction = "",
 	faction = "",
 	level = 48,
 	chanceHit = 0.48,

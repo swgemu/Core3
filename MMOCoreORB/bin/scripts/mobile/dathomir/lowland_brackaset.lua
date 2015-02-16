@@ -1,7 +1,6 @@
 lowland_brackaset = Creature:new {
 	objectName = "@mob/creature_names:brackaset_lowlands",
 	socialGroup = "brackaset",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

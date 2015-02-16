@@ -1,7 +1,6 @@
 grecks_assassin = Creature:new {
 	objectName = "@mob/creature_names:greck_assassin",
 	socialGroup = "olag_greck",
-	pvpFaction = "olag_greck",
 	faction = "olag_greck",
 	level = 11,
 	chanceHit = 0.29,

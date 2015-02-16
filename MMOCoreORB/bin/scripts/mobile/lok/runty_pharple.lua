@@ -1,7 +1,6 @@
 runty_pharple = Creature:new {
 	objectName = "@mob/creature_names:runty_pharple",
 	socialGroup = "pharple",
-	pvpFaction = "",
 	faction = "",
 	level = 3,
 	chanceHit = 0.23,

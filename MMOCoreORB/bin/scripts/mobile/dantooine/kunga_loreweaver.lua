@@ -1,7 +1,6 @@
 kunga_loreweaver = Creature:new {
 	objectName = "@mob/creature_names:kunga_loreweaver",
 	socialGroup = "kunga_tribe",
-	pvpFaction = "kunga_tribe",
 	faction = "kunga_tribe",
 	level = 51,
 	chanceHit = 0.48,

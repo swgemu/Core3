@@ -2,7 +2,6 @@ drognuz = Creature:new {
 	objectName = "",
 	customName = "Drognuz",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 14,
 	chanceHit = 0.28,

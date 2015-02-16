@@ -1,7 +1,6 @@
 corsec_special_agent = Creature:new {
 	objectName = "@mob/creature_names:corsec_agent_aggro",
 	socialGroup = "corsec",
-	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 105,
 	chanceHit = 1.75,

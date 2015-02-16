@@ -1,8 +1,7 @@
 theme_park_marauder_lizardman = Creature:new {
 	objectName = "@npc_name:trandoshan_base_male",
 	customName = "Lizardman",
-	socialGroup = "",
-	pvpFaction = "",
+	socialGroup = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.26,

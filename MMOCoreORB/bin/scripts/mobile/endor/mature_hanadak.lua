@@ -1,7 +1,6 @@
 mature_hanadak = Creature:new {
 	objectName = "@mob/creature_names:mature_hanadak",
 	socialGroup = "hanadak",
-	pvpFaction = "",
 	faction = "",
 	level = 31,
 	chanceHit = 0.39,

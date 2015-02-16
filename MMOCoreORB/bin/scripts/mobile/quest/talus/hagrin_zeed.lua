@@ -2,7 +2,6 @@ hagrin_zeed = Creature:new {
 	objectName = "",
 	customName = "Hagrin Zeed",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

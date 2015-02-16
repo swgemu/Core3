@@ -1,7 +1,6 @@
 rsf_pilot = Creature:new {
 	objectName = "@mob/creature_names:rsf_pilot",
 	socialGroup = "naboo_security_force",
-	pvpFaction = "naboo_security_force",
 	faction = "naboo_security_force",
 	level = 14,
 	chanceHit = 0.3,

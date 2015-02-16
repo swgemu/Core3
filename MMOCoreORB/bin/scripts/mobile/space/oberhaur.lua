@@ -1,7 +1,6 @@
 oberhaur = Creature:new {
 	objectName = "@npc_spawner_n:oberhaur",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 19,
 	chanceHit = 0.33,

@@ -1,7 +1,6 @@
 grecks_smuggler = Creature:new {
 	objectName = "@mob/creature_names:greck_smuggler",
 	socialGroup = "olag_greck",
-	pvpFaction = "olag_greck",
 	faction = "olag_greck",
 	level = 7,
 	chanceHit = 0.26,

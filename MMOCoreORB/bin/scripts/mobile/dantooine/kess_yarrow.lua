@@ -1,7 +1,6 @@
 kess_yarrow = Creature:new {
 	objectName = "@npc_spawner_n:kess_yarrow",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

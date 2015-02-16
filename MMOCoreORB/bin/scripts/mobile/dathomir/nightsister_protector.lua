@@ -1,7 +1,6 @@
 nightsister_protector = Creature:new {
 	objectName = "@mob/creature_names:nightsister_protector",
 	socialGroup = "nightsister",
-	pvpFaction = "nightsister",
 	faction = "nightsister",
 	level = 131,
 	chanceHit = 4.75,

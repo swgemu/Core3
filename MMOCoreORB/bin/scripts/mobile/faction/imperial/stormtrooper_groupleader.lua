@@ -1,7 +1,6 @@
 stormtrooper_groupleader = Creature:new {
 	objectName = "@mob/creature_names:crackdown_stormtrooper_captain",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 29,
 	chanceHit = 3.08,

@@ -1,7 +1,6 @@
 sennex_hunter = Creature:new {
 	objectName = "@mob/creature_names:sennex_hunter",
 	socialGroup = "sennex",
-	pvpFaction = "pirate",
 	faction = "pirate",
 	level = 28,
 	chanceHit = 0.37,

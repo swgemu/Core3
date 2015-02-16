@@ -1,7 +1,6 @@
 warren_stormtrooper = Creature:new {
 	objectName = "@mob/creature_names:warren_stormtrooper",
 	socialGroup = "warren_imperial",
-	pvpFaction = "",
 	faction = "",
 	level = 26,
 	chanceHit = 0.360000,

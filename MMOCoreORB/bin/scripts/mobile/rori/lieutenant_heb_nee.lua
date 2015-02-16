@@ -1,7 +1,6 @@
 lieutenant_heb_nee = Creature:new {
 	objectName = "@mob/creature_names:lieutenant_heb_nee",
 	socialGroup = "rorgungan",
-	pvpFaction = "rorgungan",
 	faction = "rorgungan",
 	level = 50,
 	chanceHit = 0.5,

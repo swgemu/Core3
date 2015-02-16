@@ -2,7 +2,6 @@ kelvus_naria = Creature:new {
 	objectName = "@npc_name:gran_base_male",
 	customName = "Kelvus Naria",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

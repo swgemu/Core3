@@ -1,7 +1,6 @@
 voracious_patriarch = Creature:new {
 	objectName = "@mob/creature_names:torton_voracious_patriarch",
 	socialGroup = "torton",
-	pvpFaction = "",
 	faction = "",
 	level = 37,
 	chanceHit = 0.4,

@@ -1,7 +1,6 @@
 giant_spined_snake = Creature:new {
 	objectName = "@mob/creature_names:giant_spined_snake",
 	socialGroup = "spine_snake",
-	pvpFaction = "",
 	faction = "",
 	level = 22,
 	chanceHit = 0.34,

@@ -1,7 +1,6 @@
 wonderous_cu_pa = Creature:new {
 	objectName = "@mob/creature_names:cu_pa_wonderous",
 	socialGroup = "cu_pa",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

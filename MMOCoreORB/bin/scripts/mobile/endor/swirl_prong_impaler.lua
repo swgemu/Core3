@@ -1,7 +1,6 @@
 swirl_prong_impaler = Creature:new {
 	objectName = "@mob/creature_names:swirl_prong_impaler",
 	socialGroup = "prong",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.37,

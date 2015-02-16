@@ -1,7 +1,6 @@
 strong_mercenary = Creature:new {
 	objectName = "@mob/creature_names:mercenary_strong",
 	socialGroup = "lok_mercenaries",
-	pvpFaction = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 36,
 	chanceHit = 0.42,

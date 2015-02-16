@@ -1,7 +1,6 @@
 theme_park_imperial_kayderr = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

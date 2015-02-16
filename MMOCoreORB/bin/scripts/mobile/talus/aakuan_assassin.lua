@@ -2,7 +2,6 @@ aakuan_assassin = Creature:new {
 	objectName = "",
 	customName = "an Aa'kuan Assassin",
 	socialGroup = "aakuans",
-	pvpFaction = "aakuans",
 	faction = "aakuans",
 	level = 31,
 	chanceHit = 0.37,

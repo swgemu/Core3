@@ -1,7 +1,6 @@
 feral_selonian = Creature:new {
 	objectName = "@mob/creature_names:feral_selonian",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 12,
 	chanceHit = 0.29,

@@ -2,7 +2,6 @@ zideera = Creature:new {
 	objectName = "",
 	customName = "Zideera",
 	socialGroup = "mtn_clan",
-	pvpFaction = "mtn_clan",
 	faction = "mtn_clan",
 	level = 100,
 	chanceHit = 1,

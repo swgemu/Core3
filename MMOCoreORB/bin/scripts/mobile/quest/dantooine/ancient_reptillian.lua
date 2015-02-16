@@ -2,7 +2,6 @@ ancient_reptillian = Creature:new {
 	objectName = "",
 	customName = "Ancient Reptillian",	
 	socialGroup = "voritor",
-	pvpFaction = "",
 	faction = "",
 	level = 57,
 	chanceHit = 0.55,

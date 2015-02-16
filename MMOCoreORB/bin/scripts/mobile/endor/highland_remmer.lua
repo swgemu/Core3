@@ -1,7 +1,6 @@
 highland_remmer = Creature:new {
 	objectName = "@mob/creature_names:highland_remmer",
 	socialGroup = "remmer",
-	pvpFaction = "",
 	faction = "",
 	level = 26,
 	chanceHit = 0.36,

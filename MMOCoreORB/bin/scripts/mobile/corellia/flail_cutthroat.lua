@@ -1,7 +1,6 @@
 flail_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:flail_cutthroat",
 	socialGroup = "flail",
-	pvpFaction = "flail",
 	faction = "flail",
 	level = 15,
 	chanceHit = 0.31,

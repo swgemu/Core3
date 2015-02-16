@@ -2,7 +2,6 @@ tech_mor = Creature:new {
 	objectName = "@npc_name:bith_base_male",
 	customName = "Tech Mo'r",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

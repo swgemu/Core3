@@ -2,7 +2,6 @@ ric_olie = Creature:new {
 	objectName = "",
 	customName = "Ric Olie",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

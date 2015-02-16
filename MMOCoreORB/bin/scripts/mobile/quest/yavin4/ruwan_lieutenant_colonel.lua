@@ -1,7 +1,6 @@
 ruwan_lieutenant_colonel = Creature:new {
 	objectName = "@mob/creature_names:imperial_lieutenant_colonel",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 22,
 	chanceHit = 0.35,

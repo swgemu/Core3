@@ -1,7 +1,6 @@
 theme_park_imperial_haro_whitesun = Creature:new {
 	objectName = "@mob/creature_names:moisture_farmer",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 11,
 	chanceHit = 0.29,

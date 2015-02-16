@@ -1,7 +1,6 @@
 giant_mutant_bark_mite = Creature:new {
 	objectName = "@mob/creature_names:mutant_bark_mite_giant",
 	socialGroup = "mite",
-	pvpFaction = "",
 	faction = "",
 	level = 16,
 	chanceHit = 0.31,

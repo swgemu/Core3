@@ -2,7 +2,6 @@ marco_vahn = Creature:new {
 	objectName = "",
 	customName = "Marco Vahn (a booking agent)",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

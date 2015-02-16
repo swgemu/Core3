@@ -2,7 +2,6 @@ ussox = Creature:new {
 	objectName = "@npc_name:trandoshan_base_male",
 	customName = "Ussox",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

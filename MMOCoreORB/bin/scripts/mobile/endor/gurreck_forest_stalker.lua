@@ -1,7 +1,6 @@
 gurreck_forest_stalker = Creature:new {
 	objectName = "@mob/creature_names:woodland_gurreck",
 	socialGroup = "gurreck",
-	pvpFaction = "",
 	faction = "",
 	level = 32,
 	chanceHit = 0.39,

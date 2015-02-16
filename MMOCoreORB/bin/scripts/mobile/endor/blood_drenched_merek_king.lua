@@ -1,7 +1,6 @@
 blood_drenched_merek_king = Creature:new {
 	objectName = "@mob/creature_names:blood_drenched_merek_king",
 	socialGroup = "merek",
-	pvpFaction = "",
 	faction = "",
 	level = 56,
 	chanceHit = 0.55,

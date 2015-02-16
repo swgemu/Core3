@@ -1,7 +1,6 @@
 imperial_high_general = Creature:new {
 	objectName = "@mob/creature_names:imperial_high_general",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 29,
 	chanceHit = 0.38,

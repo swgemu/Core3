@@ -2,7 +2,6 @@ scrib_leras = Creature:new {
 	objectName = "",
 	customName = "Scrib Leras",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

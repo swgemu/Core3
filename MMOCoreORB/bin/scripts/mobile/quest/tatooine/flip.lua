@@ -1,7 +1,6 @@
 flip = Creature:new {
 	objectName = "",
 	socialGroup = "valarian",
-	pvpFaction = "valarian",
 	faction = "valarian",
 	level = 11,
 	chanceHit = 0.29,

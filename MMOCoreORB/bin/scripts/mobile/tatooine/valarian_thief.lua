@@ -1,7 +1,6 @@
 valarian_thief = Creature:new {
 	objectName = "@mob/creature_names:valarian_thief",
 	socialGroup = "valarian",
-	pvpFaction = "valarian",
 	faction = "valarian",
 	level = 10,
 	chanceHit = 0.28,

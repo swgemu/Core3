@@ -1,7 +1,6 @@
 jawa_smuggler = Creature:new {
 	objectName = "@mob/creature_names:jawa_smuggler",
 	socialGroup = "jawa",
-	pvpFaction = "jawa",
 	faction = "jawa",
 	level = 6,
 	chanceHit = 0.25,

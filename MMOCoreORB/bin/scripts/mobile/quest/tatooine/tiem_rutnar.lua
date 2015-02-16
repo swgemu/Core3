@@ -2,7 +2,6 @@ tiem_rutnar = Creature:new {
 	objectName = "",
 	customName = "Tiem Rutnar",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

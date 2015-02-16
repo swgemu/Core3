@@ -2,7 +2,6 @@ vordin_sildor = Creature:new {
 	objectName = "",
 	customName = "Vordin Sildor",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

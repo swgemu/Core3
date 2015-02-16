@@ -1,7 +1,6 @@
 dune_stalker_scavenger = Creature:new {
 	objectName = "@mob/creature_names:dune_stalker_avenger",
 	socialGroup = "dune_stalker",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

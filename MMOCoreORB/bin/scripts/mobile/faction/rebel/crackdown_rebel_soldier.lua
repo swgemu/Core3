@@ -1,7 +1,6 @@
 crackdown_rebel_soldier = Creature:new {
 	objectName = "@mob/creature_names:crackdown_rebel_soldier",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 1,
 	chanceHit = 0.36,

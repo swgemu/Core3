@@ -1,7 +1,6 @@
 panshee_cub = Creature:new {
 	objectName = "@mob/creature_names:panshee_cub",
 	socialGroup = "panshee_tribe",
-	pvpFaction = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 5,
 	chanceHit = 0.25,

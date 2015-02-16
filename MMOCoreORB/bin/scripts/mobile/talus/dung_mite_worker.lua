@@ -1,7 +1,6 @@
 dung_mite_worker = Creature:new {
 	objectName = "@mob/creature_names:sickening_dung_mite_worker",
 	socialGroup = "mite",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.31,

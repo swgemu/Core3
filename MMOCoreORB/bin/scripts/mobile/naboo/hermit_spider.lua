@@ -1,7 +1,6 @@
 hermit_spider = Creature:new {
 	objectName = "@mob/creature_names:hermit_spider",
 	socialGroup = "spider",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

@@ -1,7 +1,6 @@
 bothan_diplomat = Creature:new {
 	objectName = "@mob/creature_names:bothan_diplomat",
 	socialGroup = "spynet",
-	pvpFaction = "",
 	faction = "",
 	level = 3,
 	chanceHit = 0.23,

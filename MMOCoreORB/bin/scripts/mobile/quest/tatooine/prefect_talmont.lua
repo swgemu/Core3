@@ -1,7 +1,6 @@
 prefect_talmont = Creature:new {
 	objectName = "@mob/creature_names:prefect_talmont",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 10,
 	chanceHit = 0.28,

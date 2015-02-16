@@ -2,7 +2,6 @@ acun_solari = Creature:new {
 	objectName = "@npc_name:bothan_base_male",
 	customName = "Acun Solari",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

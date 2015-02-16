@@ -2,7 +2,6 @@ jinderliss_prason = Creature:new {
 	objectName = "",
 	customName = "Jinderliss Prason",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

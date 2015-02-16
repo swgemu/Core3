@@ -1,7 +1,6 @@
 frenzied_pubam = Creature:new {
 	objectName = "@mob/creature_names:frenzied_pubam",
 	socialGroup = "pubam",
-	pvpFaction = "pubam",
 	faction = "pubam",
 	level = 40,
 	chanceHit = 0.44,

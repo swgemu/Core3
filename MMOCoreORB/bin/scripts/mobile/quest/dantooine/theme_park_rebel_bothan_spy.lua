@@ -1,7 +1,6 @@
 theme_park_rebel_bothan_spy = Creature:new {
 	objectName = "",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

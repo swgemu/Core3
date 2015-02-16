@@ -1,7 +1,6 @@
 sivrool_linnaie = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 17,
 	chanceHit = 0.320000,

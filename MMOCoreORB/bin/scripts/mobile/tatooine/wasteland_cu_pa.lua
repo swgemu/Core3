@@ -1,7 +1,6 @@
 wasteland_cu_pa = Creature:new {
 	objectName = "@mob/creature_names:wasteland_cu_pa",
 	socialGroup = "cu_pa",
-	pvpFaction = "",
 	faction = "",
 	level = 19,
 	chanceHit = 0.32,

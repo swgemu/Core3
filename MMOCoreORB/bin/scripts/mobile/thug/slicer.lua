@@ -1,7 +1,6 @@
 slicer = Creature:new {
 	objectName = "@mob/creature_names:slicer",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 6,
 	chanceHit = 0.25,

@@ -1,7 +1,6 @@
 shear_mite_hunter = Creature:new {
 	objectName = "@mob/creature_names:shear_mite_hunter",
 	socialGroup = "shear_mite",
-	pvpFaction = "",
 	faction = "",
 	level = 29,
 	chanceHit = 0.38,

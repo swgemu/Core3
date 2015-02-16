@@ -2,7 +2,6 @@ mat_rags = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Mat Rags",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

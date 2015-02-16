@@ -1,7 +1,6 @@
 craggy_bolma = Creature:new {
 	objectName = "@mob/creature_names:craggy_bolma",
 	socialGroup = "bolma",
-	pvpFaction = "",
 	faction = "",
 	level = 47,
 	chanceHit = 0.47,

@@ -1,7 +1,6 @@
 gondula_elder_worker = Creature:new {
 	objectName = "@mob/creature_names:gondula_elder_worker",
 	socialGroup = "gondula_tribe",
-	pvpFaction = "gondula_tribe",
 	faction = "gondula_tribe",
 	level = 19,
 	chanceHit = 0.32,

@@ -1,7 +1,6 @@
 savage_guf_drolg = Creature:new {
 	objectName = "@mob/creature_names:savage_guf_drolg",
 	socialGroup = "guf_drolg",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.31,

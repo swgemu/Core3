@@ -1,7 +1,6 @@
 sleemo_scamp = Creature:new {
 	objectName = "@mob/creature_names:sleemo_scamp",
 	socialGroup = "sleemo_gang",
-	pvpFaction = "",
 	faction = "",
 	level = 8,
 	chanceHit = 0.270000,

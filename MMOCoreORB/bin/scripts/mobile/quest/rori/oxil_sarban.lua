@@ -2,7 +2,6 @@ oxil_sarban = Creature:new {
   objectName = "",
   customName = "Oxil Sarban",
   socialGroup = "townsperson",
-  pvpFaction = "townsperson",
   faction = "townsperson",
   level = 100,
   chanceHit = 1,

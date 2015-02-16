@@ -1,7 +1,6 @@
 rorgungan_warrior = Creature:new {
 	objectName = "@mob/creature_names:rorgungan_warrior",
 	socialGroup = "rorgungan",
-	pvpFaction = "rorgungan",
 	faction = "rorgungan",
 	level = 17,
 	chanceHit = 0.31,

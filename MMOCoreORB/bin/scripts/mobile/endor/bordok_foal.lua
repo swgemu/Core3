@@ -1,7 +1,6 @@
 bordok_foal = Creature:new {
 	objectName = "@mob/creature_names:bordok_foal",
 	socialGroup = "bordok",
-	pvpFaction = "",
 	faction = "",
 	level = 25,
 	chanceHit = 0.36,

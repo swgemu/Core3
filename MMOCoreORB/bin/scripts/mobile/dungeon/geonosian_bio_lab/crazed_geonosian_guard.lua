@@ -1,7 +1,6 @@
 crazed_geonosian_guard = Creature:new {
 	objectName = "@mob/creature_names:geonosian_crazed_guard",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 65,
 	chanceHit = 0.64,

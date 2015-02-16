@@ -1,7 +1,6 @@
 selonian_captain = Creature:new {
 	objectName = "@mob/creature_names:selonian_captain",
 	socialGroup = "selonian",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

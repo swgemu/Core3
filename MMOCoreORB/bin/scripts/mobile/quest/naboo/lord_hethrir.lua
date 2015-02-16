@@ -1,7 +1,6 @@
 lord_hethrir = Creature:new {
 	objectName = "@mob/creature_names:lord_hethrir",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 canyon_corsair_guard = Creature:new {
 	objectName = "@mob/creature_names:canyon_corsair_guard",
 	socialGroup = "canyon_corsair",
-	pvpFaction = "canyon_corsair",
 	faction = "canyon_corsair",
 	level = 36,
 	chanceHit = 0.42,

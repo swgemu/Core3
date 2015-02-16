@@ -1,7 +1,6 @@
 hidden_daggers_dissident = Creature:new {
 	objectName = "@mob/creature_names:hidden_daggers_dissident",
 	socialGroup = "hidden_daggers",
-	pvpFaction = "hidden_daggers",
 	faction = "hidden_daggers",
 	level = 11,
 	chanceHit = 0.29,

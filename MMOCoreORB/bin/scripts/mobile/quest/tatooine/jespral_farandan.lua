@@ -1,7 +1,6 @@
 jespral_farandan = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 15,
 	chanceHit = 0.31,

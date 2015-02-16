@@ -1,7 +1,6 @@
 bounding_jax = Creature:new {
 	objectName = "@mob/creature_names:bounding_jax",
 	socialGroup = "jax",
-	pvpFaction = "",
 	faction = "",
 	level = 16,
 	chanceHit = 0.31,

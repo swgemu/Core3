@@ -2,7 +2,6 @@ ekoarili_eichreemo = Creature:new {
 	objectName = "",
 	customName = "Ek'oarili Eichreemo",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

@@ -1,7 +1,6 @@
 twisted_donkuwah_scavenger = Creature:new {
 	objectName = "@mob/creature_names:twisted_donkuwah_scavenger",
 	socialGroup = "donkuwah_tribe",
-	pvpFaction = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 27,
 	chanceHit = 0.37,

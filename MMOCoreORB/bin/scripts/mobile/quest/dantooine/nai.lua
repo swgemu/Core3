@@ -2,7 +2,6 @@ nai = Creature:new {
 	objectName = "",
 	customName = "Nai (a Rogue Trooper)",	
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 18,
 	chanceHit = 0.32,

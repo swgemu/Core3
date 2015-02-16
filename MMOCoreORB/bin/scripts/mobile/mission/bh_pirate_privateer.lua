@@ -2,7 +2,6 @@ bh_pirate_privateer = Creature:new {
 	objectName = "",
 	customName = "a Privateer Pirate",
 	socialGroup = "pirate",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

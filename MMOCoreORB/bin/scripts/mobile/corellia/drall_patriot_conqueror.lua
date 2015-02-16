@@ -1,7 +1,6 @@
 drall_patriot_conqueror = Creature:new {
 	objectName = "@mob/creature_names:drall_patriot_conqueror",
 	socialGroup = "drall",
-	pvpFaction = "drall",
 	faction = "drall",
 	level = 19,
 	chanceHit = 0.32,

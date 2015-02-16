@@ -1,7 +1,6 @@
 giant_sand_beetle = Creature:new {
 	objectName = "@mob/creature_names:giant_sand_beetle",
 	socialGroup = "beetle",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.39,

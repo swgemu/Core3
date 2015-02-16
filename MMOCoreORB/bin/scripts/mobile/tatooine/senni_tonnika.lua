@@ -2,7 +2,6 @@ senni_tonnika = Creature:new {
 	objectName = "",
 	customName = "Senni Tonnika",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

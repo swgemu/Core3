@@ -1,7 +1,6 @@
 talon_bcb_courier = Creature:new {
 	objectName = "",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 9,
 	chanceHit = 0.27,

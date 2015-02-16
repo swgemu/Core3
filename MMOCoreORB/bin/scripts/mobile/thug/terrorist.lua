@@ -1,7 +1,6 @@
 terrorist = Creature:new {
 	objectName = "@mob/creature_names:terrorist",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 17,
 	chanceHit = 0.32,

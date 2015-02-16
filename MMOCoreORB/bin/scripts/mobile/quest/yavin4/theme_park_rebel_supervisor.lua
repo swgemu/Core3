@@ -1,7 +1,6 @@
 theme_park_rebel_supervisor = Creature:new {
 	objectName = "@mob/creature_names:rebel_brigadier_general",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 25,
 	chanceHit = 0.36,

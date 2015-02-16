@@ -1,7 +1,6 @@
 tybis = Creature:new {
 	objectName = "@mob/creature_names:tybis",
 	socialGroup = "tybis",
-	pvpFaction = "",
 	faction = "",
 	level = 24,
 	chanceHit = 0.35,

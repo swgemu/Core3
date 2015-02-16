@@ -1,7 +1,6 @@
 ra7_bug_droid = Creature:new {
 	objectName = "@mob/creature_names:ra7_bug_droid",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.330000,

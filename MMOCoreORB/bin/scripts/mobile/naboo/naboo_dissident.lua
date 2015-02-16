@@ -1,7 +1,6 @@
 naboo_dissident = Creature:new {
 	objectName = "@mob/creature_names:naboo_dissident",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 7,
 	chanceHit = 0.26,

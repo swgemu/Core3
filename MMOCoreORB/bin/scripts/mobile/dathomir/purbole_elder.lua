@@ -1,7 +1,6 @@
 purbole_elder = Creature:new {
 	objectName = "@mob/creature_names:purbole_elder",
 	socialGroup = "purbole",
-	pvpFaction = "",
 	faction = "",
 	level = 24,
 	chanceHit = 0.35,

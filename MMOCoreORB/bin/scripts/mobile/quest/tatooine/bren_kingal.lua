@@ -2,7 +2,6 @@ bren_kingal = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_guard_young",
 	customName = "Bren Kingal",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 20,
 	chanceHit = 0.33,

@@ -1,7 +1,6 @@
 deranged_wrix = Creature:new {
 	objectName = "@mob/creature_names:deranged_wrix",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 18,
 	chanceHit = 0.32,

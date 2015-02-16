@@ -1,7 +1,6 @@
 salt_mynock = Creature:new {
 	objectName = "@mob/creature_names:salt_mynock",
 	socialGroup = "mynock",
-	pvpFaction = "",
 	faction = "",
 	level = 23,
 	chanceHit = 0.35,

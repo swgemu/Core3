@@ -1,7 +1,6 @@
 mad_angler = Creature:new {
 	objectName = "@mob/creature_names:mad_angler",
 	socialGroup = "angler",
-	pvpFaction = "",
 	faction = "",
 	level = 95,
 	chanceHit = 0.85,

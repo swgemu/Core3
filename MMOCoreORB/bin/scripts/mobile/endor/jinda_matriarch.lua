@@ -1,7 +1,6 @@
 jinda_matriarch = Creature:new {
 	objectName = "@mob/creature_names:jinda_matriarch",
 	socialGroup = "jinda_tribe",
-	pvpFaction = "",
 	faction = "",
 	level = 41,
 	chanceHit = 0.44,

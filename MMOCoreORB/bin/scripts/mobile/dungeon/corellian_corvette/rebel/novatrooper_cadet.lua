@@ -1,7 +1,6 @@
 novatrooper_cadet = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_novatrooper_cadet",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 72,
 	chanceHit = 0.7,

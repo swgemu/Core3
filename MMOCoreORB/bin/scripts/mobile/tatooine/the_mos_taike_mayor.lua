@@ -1,7 +1,6 @@
 the_mos_taike_mayor = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_mayor",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 21,
 	chanceHit = 0.33,

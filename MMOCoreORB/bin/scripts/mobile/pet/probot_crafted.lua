@@ -1,7 +1,6 @@
 probot_crafted = Creature:new {
 	objectName = "@droid_name:probe_droid_crafted",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,

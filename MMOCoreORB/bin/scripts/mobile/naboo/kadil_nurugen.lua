@@ -2,7 +2,6 @@ kadil_nurugen = Creature:new {
 	objectName = "",
 	customName = "Kadil Nurugen",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

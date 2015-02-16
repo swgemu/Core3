@@ -1,7 +1,6 @@
 shamdon_kree = Creature:new {
 	objectName = "@npc_spawner_n:shamdon_kree",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

@@ -2,7 +2,6 @@ drenn_zebber = Creature:new {
 	objectName = "",
 	customName = "Drenn Zebber",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

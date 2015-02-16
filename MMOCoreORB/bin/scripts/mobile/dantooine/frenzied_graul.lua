@@ -1,7 +1,6 @@
 frenzied_graul = Creature:new {
 	objectName = "@mob/creature_names:frenzied_graul",
 	socialGroup = "graul",
-	pvpFaction = "",
 	faction = "",
 	level = 56,
 	chanceHit = 0.5,

@@ -1,7 +1,6 @@
 male_plains_tusk_cat = Creature:new {
 	objectName = "@mob/creature_names:male_great_grass_plains_tusk_cat",
 	socialGroup = "tusk_cat",
-	pvpFaction = "",
 	faction = "",
 	level = 16,
 	chanceHit = 0.31,

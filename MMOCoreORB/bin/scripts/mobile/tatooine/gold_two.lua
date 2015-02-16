@@ -2,7 +2,6 @@ gold_two = Creature:new {
 	objectName = "",
 	customName = "Gold Two",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 kkatamk = Creature:new {
 	customName = "Kkatamk",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 4,
 	chanceHit = 0.24,

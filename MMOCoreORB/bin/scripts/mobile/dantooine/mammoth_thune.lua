@@ -1,7 +1,6 @@
 mammoth_thune = Creature:new {
 	objectName = "@mob/creature_names:mammoth_thune",
 	socialGroup = "thune",
-	pvpFaction = "",
 	faction = "",
 	level = 129,
 	chanceHit = 4.75,

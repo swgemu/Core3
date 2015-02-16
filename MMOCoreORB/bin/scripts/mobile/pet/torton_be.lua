@@ -1,7 +1,6 @@
 torton_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_torton",
 	socialGroup = "torton",
-	pvpFaction = "",
 	faction = "",
 	level = 20,
 	chanceHit = 0.2,

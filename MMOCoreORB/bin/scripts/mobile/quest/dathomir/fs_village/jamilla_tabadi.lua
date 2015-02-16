@@ -1,7 +1,6 @@
 jamilla_tabadi = Creature:new {
 	objectName = "@mob/creature_names:fs_intro_female",
 	socialGroup = "fs_villager",
-	pvpFaction = "fs_villager",
 	faction = "fs_villager",
 	level = 4,
 	chanceHit = 0.24,

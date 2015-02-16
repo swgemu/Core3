@@ -1,7 +1,6 @@
 c_3po = Creature:new {
 	objectName = "@theme_park_name:c_3po",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 100,
 	chanceHit = 1,

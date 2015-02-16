@@ -1,7 +1,6 @@
 wizzel = Creature:new {
 	objectName = "",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 13,
 	chanceHit = 0.3,

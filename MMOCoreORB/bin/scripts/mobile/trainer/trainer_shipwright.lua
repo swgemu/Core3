@@ -1,6 +1,5 @@
 trainer_shipwright = Creature:new {
 	objectName = "@npc_spawner_n:shipwright_trainer",
-	pvpFaction = "",
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,

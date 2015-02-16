@@ -2,7 +2,6 @@ theme_park_imperial_seller = Creature:new {
 	objectName = "",
 	customName = "escort",
 	socialGroup = "thug",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 4,
 	chanceHit = 0.24,

@@ -1,7 +1,6 @@
 gundark_hooligan = Creature:new {
 	objectName = "@mob/creature_names:gundark_hooligan",
 	socialGroup = "gundark_gang",
-	pvpFaction = "thug",
 	faction = "thug",
 	level = 6,
 	chanceHit = 0.250000,

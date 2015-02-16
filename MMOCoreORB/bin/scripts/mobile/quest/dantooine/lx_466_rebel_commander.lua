@@ -2,7 +2,6 @@ lx_466_rebel_commander = Creature:new {
 	objectName = "",
 	customName = "(a Stranded Rebel Commander)",	
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 25,
 	chanceHit = 0.36,

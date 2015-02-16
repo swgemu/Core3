@@ -2,7 +2,6 @@ gungan_reject = Creature:new {
 	objectName = "",
 	customName = "a Gungan reject",
 	socialGroup = "borvo",
-	pvpFaction = "borvo",
 	faction = "borvo",
 	level = 35,
 	chanceHit = 0.41,

@@ -1,7 +1,6 @@
 sith_shadow = Creature:new {
 	objectName = "@mob/creature_names:shadow_punk",
 	socialGroup = "sith_shadow",
-	pvpFaction = "sith_shadow",
 	faction = "sith_shadow",
 	level = 10,
 	chanceHit = 0.28,

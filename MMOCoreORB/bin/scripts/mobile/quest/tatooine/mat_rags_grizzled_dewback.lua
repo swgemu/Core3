@@ -1,7 +1,6 @@
 mat_rags_grizzled_dewback = Creature:new {
 	objectName = "@mob/creature_names:grizzled_dewback",
 	socialGroup = "dewback",
-	pvpFaction = "",
 	faction = "",
 	level = 27,
 	chanceHit = 0.35,

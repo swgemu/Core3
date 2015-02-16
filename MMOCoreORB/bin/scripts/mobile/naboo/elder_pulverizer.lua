@@ -1,7 +1,6 @@
 elder_pulverizer = Creature:new {
 	objectName = "@mob/creature_names:bolle_bol_elder_pulverizer",
 	socialGroup = "bol",
-	pvpFaction = "",
 	faction = "",
 	level = 30,
 	chanceHit = 0.35,

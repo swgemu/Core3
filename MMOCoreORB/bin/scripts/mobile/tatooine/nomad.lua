@@ -1,7 +1,6 @@
 nomad = Creature:new {
 	objectName = "@mob/creature_names:nomad",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 5,
 	chanceHit = 0.25,

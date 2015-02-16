@@ -1,7 +1,6 @@
 lesser_desert_womp_rat = Creature:new {
 	objectName = "@mob/creature_names:lesser_desert_womprat",
 	socialGroup = "rat",
-	pvpFaction = "",
 	faction = "",
 	level = 5,
 	chanceHit = 0.25,

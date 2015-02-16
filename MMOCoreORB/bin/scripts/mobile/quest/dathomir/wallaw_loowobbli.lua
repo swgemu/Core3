@@ -2,7 +2,6 @@ wallaw_loowobbli = Creature:new {
 	objectName = "",
 	customName = "Wallaw Loowobbli",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

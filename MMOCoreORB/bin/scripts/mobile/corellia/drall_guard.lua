@@ -1,7 +1,6 @@
 drall_guard = Creature:new {
 	objectName = "@mob/creature_names:drall_guard",
 	socialGroup = "drall",
-	pvpFaction = "drall",
 	faction = "drall",
 	level = 11,
 	chanceHit = 0.29,

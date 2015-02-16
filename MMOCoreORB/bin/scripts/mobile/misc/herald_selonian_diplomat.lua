@@ -2,7 +2,6 @@ herald_selonian_diplomat = Creature:new {
 	objectName = "",
 	customName = "Selonian Diplomat",
 	socialGroup = "selonian",
-	pvpFaction = "",
 	faction = "",
 	level = 14,
 	chanceHit = 0.3,

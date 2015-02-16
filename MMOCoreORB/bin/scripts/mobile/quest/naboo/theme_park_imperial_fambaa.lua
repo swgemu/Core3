@@ -1,7 +1,6 @@
 theme_park_imperial_fambaa = Creature:new {
 	objectName = "@mob/creature_names:fambaa",
 	socialGroup = "fambaa",
-	pvpFaction = "",
 	faction = "",
 	level = 34,
 	chanceHit = 0.41,

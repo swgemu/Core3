@@ -1,7 +1,6 @@
 huurton_stalker = Creature:new {
 	objectName = "@mob/creature_names:huurton_stalker",
 	socialGroup = "huurton",
-	pvpFaction = "",
 	faction = "",
 	level = 33,
 	chanceHit = 0.4,

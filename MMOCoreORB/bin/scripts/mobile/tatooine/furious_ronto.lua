@@ -1,7 +1,6 @@
 furious_ronto = Creature:new {
 	objectName = "@mob/creature_names:ronto_furious",
 	socialGroup = "ronto",
-	pvpFaction = "",
 	faction = "",
 	level = 27,
 	chanceHit = 0.37,

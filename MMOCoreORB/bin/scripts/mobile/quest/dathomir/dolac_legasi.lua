@@ -2,7 +2,6 @@ dolac_legasi = Creature:new {
 	objectName = "",
 	customName = "Dolac Legasi",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 100,
 	chanceHit = 1,

@@ -1,7 +1,6 @@
 specforce_major = Creature:new {
 	objectName = "@mob/creature_names:specforce_major",
 	socialGroup = "rebel",
-	pvpFaction = "rebel",
 	faction = "rebel",
 	level = 26,
 	chanceHit = 0.360000,

@@ -1,7 +1,6 @@
 reggi_tirver = Creature:new {
 	objectName = "@npc_name:gran_base_male",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 6,
 	chanceHit = 0.250000,

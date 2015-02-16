@@ -1,7 +1,6 @@
 savage_humbaba = Creature:new {
 	objectName = "@mob/creature_names:savage_humbaba",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 24,
 	chanceHit = 0.35,

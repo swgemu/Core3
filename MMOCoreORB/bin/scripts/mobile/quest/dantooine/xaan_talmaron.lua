@@ -2,7 +2,6 @@ xaan_talmaron = Creature:new {
 	objectName = "@npc_name:human_base_male",
 	customName = "Xaan Talmaron",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

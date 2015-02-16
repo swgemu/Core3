@@ -1,7 +1,6 @@
 motley_kaadu = Creature:new {
 	objectName = "@mob/creature_names:kaadu_motley",
 	socialGroup = "kaadu",
-	pvpFaction = "",
 	faction = "",
 	level = 8,
 	chanceHit = 0.27,

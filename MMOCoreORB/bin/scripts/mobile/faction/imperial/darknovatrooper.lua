@@ -1,7 +1,6 @@
 darknovatrooper = Creature:new {
 	objectName = "",
 	socialGroup = "",
-	pvpFaction = "",
 	faction = "",
 	level = 1,
 	chanceHit = 19.75,

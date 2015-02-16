@@ -1,7 +1,6 @@
 corsec_special_ops_chief = Creature:new {
 	objectName = "@mob/creature_names:corsec_chief_aggro",
 	socialGroup = "corsec",
-	pvpFaction = "corsec",
 	faction = "corsec",
 	level = 200,
 	chanceHit = 16.0,

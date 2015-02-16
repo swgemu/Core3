@@ -1,7 +1,6 @@
 imperial_surface_marshall = Creature:new {
 	objectName = "@mob/creature_names:mission_imperial_surface_marshal",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 30,
 	chanceHit = 0.39,

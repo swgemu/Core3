@@ -1,7 +1,6 @@
 fightmaster_jorak = Creature:new {
 	objectName = "@mob/creature_names:fightmaster_jorak",
 	socialGroup = "endor_marauder",
-	pvpFaction = "endor_marauder",
 	faction = "endor_marauder",
 	level = 22,
 	chanceHit = 0.33,

@@ -2,7 +2,6 @@ shalera_the_hutt = Creature:new {
 	objectName = "@npc_name:hutt_base_female",
 	customName = "Shalera the Hutt",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

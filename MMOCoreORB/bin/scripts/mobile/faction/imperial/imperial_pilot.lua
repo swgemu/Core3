@@ -1,7 +1,6 @@
 imperial_pilot = Creature:new {
 	objectName = "@npc_spawner_n:imperial_pilot",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 20,
 	chanceHit = 0.33,

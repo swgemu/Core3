@@ -2,7 +2,6 @@ senator_pooja_naberrie = Creature:new {
 	objectName = "",
 	customName = "Senator Pooja Naberrie",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

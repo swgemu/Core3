@@ -1,7 +1,6 @@
 imprisoned_imperial_officer = Creature:new {
 	objectName = "@mob/creature_names:imprisoned_imperial",
 	socialGroup = "imperial",
-	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 12,
 	chanceHit = 0.29,

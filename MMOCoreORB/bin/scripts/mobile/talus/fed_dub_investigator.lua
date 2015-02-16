@@ -1,7 +1,6 @@
 fed_dub_investigator = Creature:new {
 	objectName = "@mob/creature_names:fed_dub_investigator",
 	socialGroup = "fed_dub",
-	pvpFaction = "fed_dub",
 	faction = "fed_dub",
 	level = 14,
 	chanceHit = 0.3,

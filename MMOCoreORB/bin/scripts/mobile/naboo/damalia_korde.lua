@@ -2,7 +2,6 @@ damalia_korde = Creature:new {
 	objectName = "",
 	customName = "Damalia Korde",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,

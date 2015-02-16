@@ -1,7 +1,6 @@
 greater_gulginaw = Creature:new {
 	objectName = "@mob/creature_names:greater_gulginaw",
 	socialGroup = "gulginaw",
-	pvpFaction = "",
 	faction = "",
 	level = 21,
 	chanceHit = 0.33,

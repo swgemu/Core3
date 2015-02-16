@@ -1,7 +1,6 @@
 kunga_rockshaper = Creature:new {
 	objectName = "@mob/creature_names:kunga_rockshaper",
 	socialGroup = "kunga_tribe",
-	pvpFaction = "kunga_tribe",
 	faction = "kunga_tribe",
 	level = 71,
 	chanceHit = 0.65,

@@ -1,7 +1,6 @@
 plumed_rasp = Creature:new {
 	objectName = "@mob/creature_names:plumed_rasp",
 	socialGroup = "rasp",
-	pvpFaction = "",
 	faction = "",
 	level = 7,
 	chanceHit = 0.26,

@@ -1,7 +1,6 @@
 crimelord = Creature:new {
 	objectName = "@mob/creature_names:crimelord",
 	socialGroup = "hutt",
-	pvpFaction = "hutt",
 	faction = "hutt",
 	level = 17,
 	chanceHit = 0.32,

@@ -1,7 +1,6 @@
 mokk_warrior = Creature:new {
 	objectName = "@mob/creature_names:mokk_warrior",
 	socialGroup = "mokk_tribe",
-	pvpFaction = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 70,
 	chanceHit = 0.7,

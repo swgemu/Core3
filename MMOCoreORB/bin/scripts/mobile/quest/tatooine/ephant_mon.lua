@@ -1,7 +1,6 @@
 ephant_mon = Creature:new {
 	objectName = "@mob/creature_names:ephant_mon",
 	socialGroup = "jabba",
-	pvpFaction = "jabba",
 	faction = "jabba",
 	level = 100,
 	chanceHit = 1,

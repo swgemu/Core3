@@ -2,7 +2,6 @@ oka_alewame = Creature:new {
 	objectName = "@npc_name:moncal_base_male",
 	customName = "Oka Alewame",
 	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
 	faction = "townsperson",
 	level = 10,
 	chanceHit = 0.28,

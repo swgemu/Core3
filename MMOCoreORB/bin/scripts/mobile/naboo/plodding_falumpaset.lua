@@ -1,7 +1,6 @@
 plodding_falumpaset = Creature:new {
 	objectName = "@mob/creature_names:domestic_falumpaset",
 	socialGroup = "self",
-	pvpFaction = "",
 	faction = "",
 	level = 10,
 	chanceHit = 0.28,

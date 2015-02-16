@@ -1,8 +1,7 @@
 binayre_scalawag = Creature:new {
 	objectName = "@mob/creature_names:binayre_scalawag",
 	socialGroup = "binayre",
-	pvpFaction = "binayre",
-	faction = "pirate",
+	faction = "binayre",
 	level = 11,
 	chanceHit = 0.29,
 	damageMin = 120,

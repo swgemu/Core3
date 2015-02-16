@@ -1,7 +1,6 @@
 slice_hound_be = Creature:new {
 	objectName = "@mob/creature_names:bio_engineered_slice_hound",
 	socialGroup = "slice_hound",
-	pvpFaction = "",
 	faction = "",
 	level = 2,
 	chanceHit = 0.2,

@@ -1,7 +1,6 @@
 jinda_chief = Creature:new {
 	objectName = "@mob/creature_names:jinda_chief",
 	socialGroup = "jinda_tribe",
-	pvpFaction = "",
 	faction = "",
 	level = 51,
 	chanceHit = 0.55,
