@@ -8,7 +8,12 @@ ind_republic_blaster = {
 	customizationValues = {},
 	skillMods = {
 
-	}
+	},
+
+	randomDotChance = 800,
+	junkDealerTypeNeeded = JUNKWEAPONS,
+	junkMinValue = 30,
+	junkMaxValue = 55
 }
 
 addLootItemTemplate("ind_republic_blaster", ind_republic_blaster)
