@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_a94819cd",
+        "filename": "MMOCoreORB/src/server/zone/managers/guild/GuildManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-16T06:41:41Z",
+      "side": 1,
+      "message": "You should move the above checks into the NameManager method. Then send messages based on the return from that method.",
+      "revId": "f0a2d536ad16bf2ae25d49b78f7cb155344ea7fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_89455db5",
+        "filename": "MMOCoreORB/src/server/zone/managers/guild/GuildManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-16T06:41:41Z",
+      "side": 1,
+      "message": "As with above, move these checks into the manager. You may want to give that method a second parameter to distinguish between names, abbreviations, and titles.",
+      "revId": "f0a2d536ad16bf2ae25d49b78f7cb155344ea7fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
