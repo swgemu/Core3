@@ -67,6 +67,8 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("NAME_GENERIC_TAG", NameManagerType::GENERIC_TAG);
 	lua->setGlobalInt("NAME_GENERIC_FIRSTNAME", NameManagerType::GENERIC_FIRSTNAME);
 	lua->setGlobalInt("NAME_GENERIC_FIRSTNAME_TAG", NameManagerType::GENERIC_FIRSTNAME_TAG);
+	lua->setGlobalInt("NAME_STORMTROOPER", NameManagerType::STORMTROOPER);
+	lua->setGlobalInt("NAME_STORMTROOPER_TAG", NameManagerType::STORMTROOPER_TAG);
 }
 
 CreatureTemplateManager::~CreatureTemplateManager() {

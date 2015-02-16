@@ -119,7 +119,8 @@ npcsurnames = {
 
 };
 
-
+-- Stormtrooper Prefixes
+stormtrooperPrefixes = { "GK", "LK", "RK", "TK", "VK" };
 
 
 

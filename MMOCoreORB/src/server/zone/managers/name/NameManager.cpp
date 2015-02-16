@@ -180,6 +180,12 @@ bool NameManager::loadConfigData() {
 
 	npcSurnamesObject.pop();
 
+	LuaObject stormtrooperPrefixesObject = lua->getGlobalObject("stormtrooperPrefixes");
+	for (int i = 1; i <= stormtrooperPrefixesObject.getTableSize(); ++i)
+		stormtrooperPrefixes.add(stormtrooperPrefixesObject.getStringAt(i));
+
+	stormtrooperPrefixesObject.pop();
+
 	return true;
 }
 
@@ -545,13 +551,28 @@ int NameManager::validateLastName(const String& name, int species) {
 }
 
 const String NameManager::makeCreatureName(int type) {
+	String name;
 
-	String name = makeName(3 + System::random(6));
+	if (type == NameManagerType::STORMTROOPER || type == NameManagerType::STORMTROOPER_TAG) {
+		name = makeStormtrooperName();
+	} else {
+		name = makeName(3 + System::random(6));
 
-	if (type == NameManagerType::GENERIC || type == NameManagerType::GENERIC_TAG) {
-		name += " ";
-		name += makeName(3 + System::random(6));
+		if (type == NameManagerType::GENERIC || type == NameManagerType::GENERIC_TAG) {
+			name += " ";
+			name += makeName(3 + System::random(6));
+		}
 	}
+
+	return name;
+}
+
+String NameManager::makeStormtrooperName() {
+	String name;
+
+	name += stormtrooperPrefixes.get(System::random(stormtrooperPrefixes.size() - 1));
+	name += "-";
+	name += String::valueOf(1 + System::random(898));
 
 	return name;
 }

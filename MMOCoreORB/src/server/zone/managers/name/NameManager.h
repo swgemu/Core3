@@ -99,12 +99,17 @@ public:
 
 class NameManagerType {
 public:
+
 	static const int TAG = 0; // a mobile
+
+	// List format must be main type with odd value followed by _TAG type with even value for AiAgent to properly generate name
 	static const int GENERIC = 1; // Firstname Lastname
 	static const int GENERIC_TAG = 2; // Firstname Lastname (a mobile)
 	static const int GENERIC_FIRSTNAME = 3; // Firstname
 	static const int GENERIC_FIRSTNAME_TAG = 4; // Firstname (a mobile)
-	static const int STORMTROOPER = 5;
+
+	static const int STORMTROOPER = 11; // XX-123
+	static const int STORMTROOPER_TAG = 12; // XX-123 (a stormtrooper)
 
 	static const int GUILD_NAME = 31;
 	static const int GUILD_ABBREV = 32;
@@ -137,6 +142,9 @@ class NameManager : public Singleton<NameManager>, public Logger, public Object 
 	Vector<String> npcFirstNames;
 	Vector<String> npcSurnames;
 
+	Vector<String> stormtrooperPrefixes;
+
+
 private:
 
 	void initialize();
@@ -166,6 +174,8 @@ private:
 	char chooseLetterInclusive(String include);
 
 	String makeName(int nameLength);
+
+	String makeStormtrooperName();
 
 public:
 	NameManager();
