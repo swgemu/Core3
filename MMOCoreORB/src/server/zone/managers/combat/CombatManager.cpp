@@ -1042,7 +1042,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		float armorPiercing = getArmorPiercing(psg, weapon);
 		float armorReduction =  getArmorObjectReduction(weapon, psg);
 
-        if (armorPiercing <= 1 && armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
+        if (armorPiercing <= 1 && armorReduction > 0) damage *= armorPiercing*(1.f - (armorReduction / 100.f));
 
 		// inflict condition damage
 		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
@@ -1139,8 +1139,8 @@ float CombatManager::getArmorPiercing(TangibleObject* defender, WeaponObject* we
 
 	if (armorPiercing > armorReduction)
 		return pow(1.25, armorPiercing - armorReduction);
-	else
-		return pow(0.50, armorReduction - armorPiercing);
+    else
+        return pow(0.50, armorReduction - armorPiercing);
 }
 
 float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender) {
