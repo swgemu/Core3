@@ -750,6 +750,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
 		server/zone/managers/structure/StructureManager.cpp \
 		server/zone/managers/weather/WeatherManagerImplementation.cpp \
+		server/zone/managers/city/CityDecorationTask.cpp \
 		server/zone/managers/city/CityManagerImplementation.cpp \
 		server/zone/objects/structure/StructureObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \
