@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_09eccdc6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/conversations/heroOfTatFarmerConvoHandler.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-16T02:44:03Z",
+      "side": 1,
+      "message": "I think you forgot to remove this addWaypoint call.",
+      "revId": "671129bdf8b8c4ba3ae1b0bd04df49be30e9f522",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
