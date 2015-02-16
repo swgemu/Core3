@@ -29,7 +29,11 @@ public:
 		if (pet->hasRidingCreature())
 			return GENERALERROR;
 
-		ManagedReference<CreatureObject*> owner = pet->getLinkedCreature();
+		ManagedReference<CreatureObject*> owner = pet->getLinkedCreature().get();
+		if (owner == NULL) {
+			return GENERALERROR;
+		}
+
 		Locker olock(owner);
 		Reference<CreatureObject*> target = server->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();
 
