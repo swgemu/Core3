@@ -200,9 +200,14 @@ class CreatureObject extends TangibleObject {
 	
 	@dereferenced
 	protected Time timeOfDeath;
-	
+
 	@dereferenced
-	protected VectorMap<string, unsigned long> screenPlayStates; 
+	private transient Mutex screenPlayStatesMutex;
+	/*
+	 * Whenever screenPlayStates is being used the screenPlayStatesMutex should be held.
+	 */
+	@dereferenced
+	private VectorMap<string, unsigned long> screenPlayStates;
 	
 	protected transient byte healthWoundHeal;
 	protected transient byte actionWoundHeal;
@@ -1202,13 +1207,26 @@ class CreatureObject extends TangibleObject {
 	public boolean checkPostureDownRecovery() {
 		return cooldownTimerMap.isPast("postureDownRecovery");
 	}
-	
+	/**
+	 * Returns the given ScreenPlayState.
+	 * Takes the screenPlayStatesMutex.
+	 * @param screenPlay ScreenPlay to retrieve
+         */
 	public unsigned long getScreenPlayState(final string screenPlay) {
-		return screenPlayStates.get(screenPlay);
+		synchronized (screenPlayStatesMutex) {
+			return screenPlayStates.get(screenPlay);
+		}
 	}
-	
+	/**
+	 * Sets the given ScreenPlayState.
+	 * Takes the screenPlayStatesMutex.
+	 * @param screenPlay ScreenPlay to modify
+	 * @param state the State to set
+         */
 	public void setScreenPlayState(final string screenPlay, unsigned long state) {
-		screenPlayStates.put(screenPlay, state);
+		synchronized (screenPlayStatesMutex) {
+			screenPlayStates.put(screenPlay, state);
+		}
 	}
 
 	@dirty
