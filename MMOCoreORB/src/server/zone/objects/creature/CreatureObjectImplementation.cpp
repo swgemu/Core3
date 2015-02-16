@@ -1148,6 +1148,8 @@ int CreatureObjectImplementation::addWounds(int type, int value,
 
 	setWounds(type, newValue, notifyClient);
 
+	addShockWounds(1, true);
+
 	return returnValue;
 }
 

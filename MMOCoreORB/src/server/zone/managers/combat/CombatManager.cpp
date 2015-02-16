@@ -1682,7 +1682,6 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 	float ratio = weapon->getWoundsRatio();
 	float healthDamage = 0.f, actionDamage = 0.f, mindDamage = 0.f;
-	bool wounded = false;
 
 	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
 		return 0;
@@ -1699,32 +1698,44 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 	if (poolsToDamage & HEALTH) {
 		healthDamage = getArmorReduction(attacker, weapon, defender, damage, HEALTH, data) * damageMultiplier * data.getHealthDamageMultiplier();
 		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType);
-		if (!wounded && System::random(100) < ratio) {
-			defender->addWounds(CreatureAttribute::HEALTH + System::random(2), 1, true);
-			wounded = true;
-		}
+
+		if (System::random(100) < ratio)
+			defender->addWounds(CreatureAttribute::HEALTH, 1, true);
+
+		if (System::random(100) < ratio)
+			defender->addWounds(CreatureAttribute::STRENGTH, 1, true);
+
+		if (System::random(100) < ratio)
+			defender->addWounds(CreatureAttribute::CONSTITUTION, 1, true);
 	}
 
 	if (poolsToDamage & ACTION) {
 		actionDamage = getArmorReduction(attacker, weapon, defender, damage, ACTION, data) * damageMultiplier * data.getActionDamageMultiplier();
 		defender->inflictDamage(attacker, CreatureAttribute::ACTION, (int)actionDamage, true, xpType);
-		if (!wounded && System::random(100) < ratio) {
-			defender->addWounds(CreatureAttribute::ACTION + System::random(2), 1, true);
-			wounded = true;
-		}
+
+		if (System::random(100) < ratio)
+			defender->addWounds(CreatureAttribute::ACTION, 1, true);
+
+		if (System::random(100) < ratio)
+			defender->addWounds(CreatureAttribute::QUICKNESS, 1, true);
+
+		if (System::random(100) < ratio)
+			defender->addWounds(CreatureAttribute::STAMINA, 1, true);
 	}
 
 	if (poolsToDamage & MIND) {
 		mindDamage = getArmorReduction(attacker, weapon, defender, damage, MIND, data) * damageMultiplier * data.getMindDamageMultiplier();
 		defender->inflictDamage(attacker, CreatureAttribute::MIND, (int)mindDamage, true, xpType);
-		if (!wounded && System::random(100) < ratio) {
-			defender->addWounds(CreatureAttribute::MIND + System::random(2), 1, true);
-			wounded = true;
-		}
-	}
 
-	if (wounded)
-		defender->addShockWounds(1, true);
+		if (System::random(100) < ratio)
+			defender->addWounds(CreatureAttribute::MIND, 1, true);
+
+		if (System::random(100) < ratio)
+			defender->addWounds(CreatureAttribute::FOCUS, 1, true);
+
+		if (System::random(100) < ratio)
+			defender->addWounds(CreatureAttribute::WILLPOWER, 1, true);
+	}
 
 	// This method can be called multiple times for area attacks.  Let the calling method decrease the powerup once
 	if (!data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction() && attacker->isCreatureObject()) {
