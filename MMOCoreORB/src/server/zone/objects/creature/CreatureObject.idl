@@ -200,9 +200,12 @@ class CreatureObject extends TangibleObject {
 	
 	@dereferenced
 	protected Time timeOfDeath;
+
+	@dereferenced
+	private Mutex screenPlayStatesMutex;
 	
 	@dereferenced
-	protected VectorMap<string, unsigned long> screenPlayStates; 
+	private VectorMap<string, unsigned long> screenPlayStates;
 	
 	protected transient byte healthWoundHeal;
 	protected transient byte actionWoundHeal;
@@ -1204,11 +1207,15 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public unsigned long getScreenPlayState(final string screenPlay) {
-		return screenPlayStates.get(screenPlay);
+		synchronized (screenPlayStatesMutex) {
+			return screenPlayStates.get(screenPlay);
+		}
 	}
 	
 	public void setScreenPlayState(final string screenPlay, unsigned long state) {
-		screenPlayStates.put(screenPlay, state);
+		synchronized (screenPlayStatesMutex) {
+			screenPlayStates.put(screenPlay, state);
+		}
 	}
 
 	@dirty
