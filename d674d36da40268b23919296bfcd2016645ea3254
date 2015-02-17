@@ -16,6 +16,23 @@
       "revId": "d674d36da40268b23919296bfcd2016645ea3254",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_a9a93926",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1369
+      },
+      "writtenOn": "2015-02-17T07:06:58Z",
+      "side": 1,
+      "message": "Why is this needed? int64 endDif; is this just a lazy data truncation?",
+      "revId": "d674d36da40268b23919296bfcd2016645ea3254",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
