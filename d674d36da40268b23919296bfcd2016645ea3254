@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_09bbad73",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1369
+      },
+      "writtenOn": "2015-02-17T06:58:15Z",
+      "side": 1,
+      "message": "soft tabs vs hard tabs",
+      "revId": "d674d36da40268b23919296bfcd2016645ea3254",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
