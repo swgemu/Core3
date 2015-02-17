@@ -31,6 +31,7 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/objects/creature/events/SampleDeedTask.h"
+#include "server/zone/managers/crafting/labratories/Genetics.h"
 
 
 void PetDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -203,6 +204,7 @@ String PetDeedImplementation::getTemplateName() {
 
 void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ManagedReference<ManufactureSchematic*> manufact = values->getManufactureSchematic();
+	float clFactor = 0;
 	for (int i = 0; i < manufact->getSlotCount(); ++i) {
 		// Dna Component Slots
 		Reference<IngredientSlot* > iSlot = manufact->getSlot(i);
@@ -211,7 +213,7 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 			ManagedReference<TangibleObject*> tano = cSlot->getPrototype();
 			ManagedReference<GeneticComponent*> component = cast<GeneticComponent*>( tano.get());
 			// Now we can suck in the values
-			level = component->getLevel();
+			clFactor = component->getLevel();
 			quality = component->getQuality();
 			chanceHit = component->getHit();
 			attackSpeed = component->getSpeed();
@@ -267,13 +269,51 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 	ManagedReference<CreatureTemplate*> petTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
 	if (petTemplate != NULL) {
 		// get min CL from the template
-		int minCl = petTemplate->getLevel();
-		if (level < minCl) {
-			level = minCl;
-		}
-		// max pet deed lvel is 75 mantis #5610
+		int skinFactor = petTemplate->getLevel();
+		float complexityFactor = manufact->getComplexity();
+		// Step 1. total resists
+		float negativeFactor = Genetics::generateNegativeFactor(
+				isSpecialResist(WeaponObject::KINETIC) ? 0 : kinResist < 0 ? kinResist : 0,
+				isSpecialResist(WeaponObject::ACID) ? 0 : acidResist < 0 ? acidResist : 0,
+				isSpecialResist(WeaponObject::BLAST) ? 0 : blastResist < 0 ? blastResist : 0,
+				isSpecialResist(WeaponObject::COLD) ? 0 : coldResist < 0 ? coldResist : 0,
+				isSpecialResist(WeaponObject::ELECTRICITY) ? 0 : elecResist < 0 ? elecResist : 0,
+				isSpecialResist(WeaponObject::ENERGY) ? 0 : energyResist < 0 ? energyResist : 0,
+				isSpecialResist(WeaponObject::HEAT) ? 0 : heatResist < 0 ? heatResist : 0,
+				isSpecialResist(WeaponObject::LIGHTSABER) ? 0 : saberResist < 0 ? saberResist : 0,
+				isSpecialResist(WeaponObject::STUN) ? 0 : stunResist < 0 ? stunResist : 0);
+
+		float positiveFactor = Genetics::generatePositiveFactor(
+				isSpecialResist(WeaponObject::KINETIC) ? 0 : kinResist > 0 ? kinResist : 0,
+				isSpecialResist(WeaponObject::ACID) ? 0 : acidResist > 0 ? acidResist : 0,
+				isSpecialResist(WeaponObject::BLAST) ? 0 : blastResist > 0 ? blastResist : 0,
+				isSpecialResist(WeaponObject::COLD) ? 0 : coldResist > 0 ? coldResist : 0,
+				isSpecialResist(WeaponObject::ELECTRICITY) ? 0 : elecResist > 0 ? elecResist : 0,
+				isSpecialResist(WeaponObject::ENERGY) ? 0 : energyResist > 0 ? energyResist : 0,
+				isSpecialResist(WeaponObject::HEAT) ? 0 : heatResist > 0 ? heatResist : 0,
+				isSpecialResist(WeaponObject::LIGHTSABER) ? 0 : saberResist > 0 ? saberResist : 0,
+				isSpecialResist(WeaponObject::STUN) ? 0 : stunResist > 0 ? stunResist : 0);
+		float specialFactor = Genetics::generateSpecialFactor(
+				isSpecialResist(WeaponObject::KINETIC) ? kinResist : 0,
+				isSpecialResist(WeaponObject::ACID) ? acidResist : 0,
+				isSpecialResist(WeaponObject::BLAST) ? blastResist : 0,
+				isSpecialResist(WeaponObject::COLD) ? coldResist : 0,
+				isSpecialResist(WeaponObject::ELECTRICITY) ? elecResist : 0,
+				isSpecialResist(WeaponObject::ENERGY) ? energyResist : 0,
+				isSpecialResist(WeaponObject::HEAT) ? heatResist : 0,
+				isSpecialResist(WeaponObject::LIGHTSABER) ? saberResist : 0,
+				isSpecialResist(WeaponObject::STUN) ? stunResist : 0);
+
+		float damFactor = Genetics::generateDamageFactor(chanceHit,attackSpeed,damageMax);
+		float hamFactor = Genetics::generateHamFactor(health,action,mind);
+		float armorFactor = armor * 10.0;
+		level = ((negativeFactor + positiveFactor + specialFactor + damFactor)/hamFactor) + armorFactor - (skinFactor/complexityFactor) - (clFactor/complexityFactor);
+		level = round(level);
 		if (getLevel() > 75) {
 			level = 75;
+		}
+		if (getLevel() < skinFactor) {
+			level = skinFactor;
 		}
 	}
 	// setup attack map

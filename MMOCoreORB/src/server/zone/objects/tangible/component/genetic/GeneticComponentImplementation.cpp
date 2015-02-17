@@ -140,7 +140,7 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 		setSpecialResist(WeaponObject::STUN);
 	if (values->getCurrentValue("lightsabereffectiveness") > 0)
 		setSpecialResist(WeaponObject::LIGHTSABER);
-
+	/*
 	if (firstUpdate) {
 		if (fortitude > 500) {
 			armorRating = 1;
@@ -165,7 +165,11 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 			resetResists(values);
 		}
 	}
-	// max values
+	*/
+	if (fortitude > 500) {
+		armorRating = 1;
+	}
+	// min - max values
 	if (fortitude > 1000) {
 		fortitude = 1000;
 	}
@@ -251,9 +255,6 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	minDam = ceil(((float)power*0.8)/10)*10;
 	maxDam = minDam + 10;
 	speed = 2.5-((ceil(((float)courage)/10)*10)/1000);
-	// Redo this forumla section we made it up anyways so lets figure a better range
-	// New Level formula
-	level = Genetics::generateCL(health+action+mind,hit,speed,minDam,kinResist,blastResist,heatResist,coldResist,energyResist,elecResist,acidResist,stunResist,armorRating);
 }
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {
 	if (attackName == "defaultattack" || attackName == "")

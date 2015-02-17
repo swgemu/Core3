@@ -90,9 +90,24 @@ public:
 		float maxCount = maxACount > maxBCount ? maxACount : maxBCount;
 		return maxCount > 1 ? 1 : maxCount;
 	}
+
+	/**
+	 * Any special in the line
+	 */
 	static bool hasASpecial(DnaComponent* a, DnaComponent* b, DnaComponent* c, DnaComponent* d, DnaComponent* e,int type) {
 		return a->isSpecialResist(type) || b->isSpecialResist(type) || c->isSpecialResist(type) || d->isSpecialResist(type) || e->isSpecialResist(type);
 	}
+
+	/**
+	 * Any vulnerability int he line
+	 */
+	static bool hasVulnerability(float a, float b, float c, float d, float e) {
+		return a < 0 || b < 0 || c < 0 || d < 0 || e < 0;
+	}
+
+	/**
+	 * Normlaize a vlaue for resist cals
+	 */
 	static float normalize(float a,bool special, bool override) {
 		if(a < 0)
 			return -99;
@@ -104,12 +119,16 @@ public:
 		}
 		return a;
 	}
+
+	/**
+	 * Resistnce calculation formula
+	 */
 	static float resistanceFormula(DnaComponent* a, DnaComponent* b, DnaComponent* c, DnaComponent* d, DnaComponent* e, int type, int max) {
 		float av,bv,cv,dv,ev;
 		bool any = false;
 		switch(type) {
 			case WeaponObject::ACID:
-				any = hasASpecial(a,b,c,d,e,type);
+				any = hasASpecial(a,b,c,d,e,type) || hasVulnerability(a->getAcid(),b->getAcid(),c->getAcid(), d->getAcid(), e->getAcid());
 				av = normalize(a->getAcid(),a->isSpecialResist(type),any);
 				bv = normalize(b->getAcid(),b->isSpecialResist(type),any);
 				cv = normalize(c->getAcid(),c->isSpecialResist(type),any);
@@ -117,7 +136,7 @@ public:
 				ev = normalize(e->getAcid(),e->isSpecialResist(type),any);
 				break;
 			case WeaponObject::BLAST:
-				any = hasASpecial(a,b,c,d,e,type);
+				any = hasASpecial(a,b,c,d,e,type) || hasVulnerability(a->getBlast(),b->getBlast(),c->getBlast(), d->getBlast(), e->getBlast());
 				av = normalize(a->getBlast(),a->isSpecialResist(type),any);
 				bv = normalize(b->getBlast(),b->isSpecialResist(type),any);
 				cv = normalize(c->getBlast(),c->isSpecialResist(type),any);
@@ -125,7 +144,7 @@ public:
 				ev = normalize(e->getBlast(),e->isSpecialResist(type),any);
 				break;
 			case WeaponObject::COLD:
-				any = hasASpecial(a,b,c,d,e,type);
+				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getCold(),b->getCold(),c->getCold(), d->getCold(), e->getCold());
 				av = normalize(a->getCold(),a->isSpecialResist(type),any);
 				bv = normalize(b->getCold(),b->isSpecialResist(type),any);
 				cv = normalize(c->getCold(),c->isSpecialResist(type),any);
@@ -133,7 +152,7 @@ public:
 				ev = normalize(e->getCold(),e->isSpecialResist(type),any);
 				break;
 			case WeaponObject::ELECTRICITY:
-				any = hasASpecial(a,b,c,d,e,type);
+				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getElectric(),b->getElectric(),c->getElectric(), d->getElectric(), e->getElectric());
 				av = normalize(a->getElectric(),a->isSpecialResist(type),any);
 				bv = normalize(b->getElectric(),b->isSpecialResist(type),any);
 				cv = normalize(c->getElectric(),c->isSpecialResist(type),any);
@@ -141,7 +160,7 @@ public:
 				ev = normalize(e->getElectric(),e->isSpecialResist(type),any);
 				break;
 			case WeaponObject::ENERGY:
-				any = hasASpecial(a,b,c,d,e,type);
+				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getEnergy(),b->getEnergy(),c->getEnergy(), d->getEnergy(), e->getEnergy());
 				av = normalize(a->getEnergy(),a->isSpecialResist(type),any);
 				bv = normalize(b->getEnergy(),b->isSpecialResist(type),any);
 				cv = normalize(c->getEnergy(),c->isSpecialResist(type),any);
@@ -149,7 +168,7 @@ public:
 				ev = normalize(e->getEnergy(),e->isSpecialResist(type),any);
 				break;
 			case WeaponObject::HEAT:
-				any = hasASpecial(a,b,c,d,e,type);
+				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getHeat(),b->getHeat(),c->getHeat(), d->getHeat(), e->getHeat());
 				av = normalize(a->getHeat(),a->isSpecialResist(type),any);
 				bv = normalize(b->getHeat(),b->isSpecialResist(type),any);
 				cv = normalize(c->getHeat(),c->isSpecialResist(type),any);
@@ -157,7 +176,7 @@ public:
 				ev = normalize(e->getHeat(),e->isSpecialResist(type),any);
 				break;
 			case WeaponObject::KINETIC:
-				any = hasASpecial(a,b,c,d,e,type);
+				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getKinetic(),b->getKinetic(),c->getKinetic(), d->getKinetic(), e->getKinetic());
 				av = normalize(a->getKinetic(),a->isSpecialResist(type),any);
 				bv = normalize(b->getKinetic(),b->isSpecialResist(type),any);
 				cv = normalize(c->getKinetic(),c->isSpecialResist(type),any);
@@ -165,7 +184,7 @@ public:
 				ev = normalize(e->getKinetic(),e->isSpecialResist(type),any);
 				break;
 			case WeaponObject::LIGHTSABER:
-				any = hasASpecial(a,b,c,d,e,type);
+				any = hasASpecial(a,b,c,d,e,type)|| hasVulnerability(a->getSaber(),b->getSaber(),c->getSaber(), d->getSaber(), e->getSaber());
 				av = normalize(a->getSaber(),a->isSpecialResist(type),any);
 				bv = normalize(b->getSaber(),b->isSpecialResist(type),any);
 				cv = normalize(c->getSaber(),c->isSpecialResist(type),any);
@@ -176,30 +195,98 @@ public:
 		float value = round(physiqueFormula(av,bv,cv,dv,ev));
 		return value > max ? max : value;
 	}
+
 	static uint32 initialValue(float maxValue) {
 		return round(maxValue * ((maxValue/(float)1000)+0.15));
 	}
+
 	static float determineMinResistance(float input) {
 		if (input < 0) // if max is vulnerable the min is always vulnerable
 			return -99;
 		return round(input * ((input/100.0f) + 0.15f));
 	}
-	static int generateCL(float hamTotal, float toHit, float speed, float damage, float kinetic, float blast, float heat, float cold, float energy, float electricy, float acid, float stun, float armorRating) {
-		// calculate resists
-		float base = ((float)(hamTotal-100.0)) * toHit * (((float)(damage+80.0))/speed);
-		float armor = armorRating == 0 ? 1.125 : 0.75;
-		float rKinetic = kinetic >= 0 ? kinetic : armorRating == 0 ? 0 : -50;
-		float rBlast = blast >= 0 ? blast : armorRating == 0 ? 0 : -50;
-		float rHeat = heat >= 0 ? heat : armorRating == 0 ? 0 : -50;
-		float rCold = cold >= 0 ? cold : armorRating == 0 ? 0 : -50;
-		float rEnergy = energy >= 0 ? energy : armorRating == 0 ? 0 : -50;
-		float rElectricity = electricy >= 0 ? electricy : armorRating == 0 ? 0 : -50;
-		float rAcid = acid >= 0 ? acid : armorRating == 0 ? 0 : -50;
-		float rStun = stun >= 0 ? stun : armorRating == 0 ? 0 : -50;
-		// We need to maybe handle special resists differently for the calc, we also need to adust for newer informaiton
-		float resist = 1 - (0.35*rKinetic/100) - (0.35*rEnergy/100) - (0.05*rBlast/100) - (0.05*rHeat/100) - (0.05*rCold/100) - (0.05*rElectricity/100) - (0.05*rAcid/100) - (0.05*rStun/100);
-		return floor( (1.5/(float)100) * (Math::sqrt(base/(armor * resist))+7));
+
+	/**
+	 * Generate damage factor
+	 */
+	static float generateDamageFactor(float hit, float speed, float maxDamage) {
+		return (((maxDamage-10.0) * 0.5) * hit) * speed;
 	}
+
+	/**
+	 * Generate ham factor
+	 */
+	static float generateHamFactor(float h, float a, float m) {
+		return ((h+a+m)/1500.0) - 3;
+	}
+
+	/**
+	 * Generate positive factor
+	 */
+	static float generatePositiveFactor(float a, float b, float c, float d, float e, float f, float g, float h, float i) {
+		return (a+b+c+d+e+f+g+h+i)/25.0;
+	}
+
+	/**
+	 * Generate negative fctor
+	 */
+	static float generateNegativeFactor(float a, float b, float c, float d, float e, float f, float g, float h, float i) {
+		float factor = -5.0;
+		return (a * factor) + (b * factor) + (c * factor)+ (d * factor)+ (e * factor)+ (f * factor)+ (g * factor)+ (h * factor)+ (i * factor);
+	}
+
+	/**
+	 * Generate the special factor for CL
+	 * params: kinetic, blast, energy, stun, cold, acid, heat, electricity, saber
+	 */
+	static float generateSpecialFactor(float a, float b, float c, float d, float e, float f, float g, float h, float i) {
+		float div = 5.0;
+		float accumulator = 0;
+		accumulator = (a/div) + (b/div) + (c/div) + (d/div) + (e/div) + (f/div) + (g/div) + (h/div) + (i/div);
+		return accumulator * 2.5;
+	}
+
+	/** reversal formulas **/
+
+	/**
+	 * Reverse Ham value
+	 */
+	static int reverseHam(int value, int quality) {
+		float x = value/18;
+		int min = x - (35 + quality);
+		int max = x + (11 - quality);
+		return (int) (System::random(max-min) + min);
+	}
+
+	/**
+	 * Reverse damage value
+	 */
+	static int reverseDamage(int value, int quality) {
+		float x = round(value/0.8);
+		int min = x - (35 + quality);
+		int max = x + (11 - quality);
+		return (int)(System::random(max-min) + min);
+	}
+	static float reverseHit(float hit, int quality) {
+		float x = round((hit - 0.19) * 1500.0);
+		float min = x - (9 + quality);
+		float max = x + (21 - quality);
+		return (float)(System::random(max-min) + min);
+	}
+	static float reverseResistance(float effective, int armor) {
+		// find effective resist
+		float min = effective - 10;
+		float max = effective + 20;
+		float score = 0;
+		score = System::random(max - min) + min;
+		if (score < 0)
+			score = 0;
+		if (armor > 0) {
+			score += 500;
+		}
+		return score;
+	}
+
 };
 
 }

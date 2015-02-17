@@ -124,6 +124,7 @@ class GeneticComponent extends Component {
 		maxDam = 1;
 		specialResists = 0;
 	}
+	
 	@dirty
 	public native void setSpecialResist(int type);
 	

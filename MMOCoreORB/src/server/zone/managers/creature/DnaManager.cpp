@@ -17,6 +17,7 @@
 #include "server/zone/templates/tangible/DnaSampleTemplate.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
 #include "server/zone/objects/tangible/deed/pet/PetDeed.h"
+#include "server/zone/managers/crafting/labratories/Genetics.h"
 
 AtomicInteger DnaManager::loadedDnaData;
 
@@ -217,10 +218,10 @@ void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int qu
 	int factor = (int)System::random(quality) - 7;
 	int reductionAmount = (factor + 15 + quality) ;
 	int cle = reduceByPercent(deed->getCleverness(),reductionAmount);
-	int cou = reduceByPercent(deed->getCourage(),reductionAmount);
-	int dep = reduceByPercent(deed->getDependency(),reductionAmount);
+	int cou = deed->getCourage();
+	int dep = deed->getDependency();
 	int dex = reduceByPercent(deed->getDexterity(),reductionAmount);
-	int end = reduceByPercent(deed->getEndurance(),reductionAmount);
+	int end = deed->getEndurance();
 	int fie = reduceByPercent(deed->getFierceness(),reductionAmount);
 	int frt = reduceByPercent(deed->getFortitude(),reductionAmount);
 	int har = reduceByPercent(deed->getHardiness(),reductionAmount);
@@ -298,19 +299,17 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 
 	int ferocity = creatureTemplate->getFerocity();
 	int cl = creature->getLevel();
-	int cle = instance()->generateScoreFor(DnaManager::CLEVERNESS,cl,quality);
-	int cou = instance()->generateScoreFor(DnaManager::COURAGE,cl,quality);
-	int dep = instance()->generateScoreFor(DnaManager::DEPENDABILITY,cl,quality);
-	int dex = instance()->generateScoreFor(DnaManager::DEXTERITY,cl,quality);
-	int end = instance()->generateScoreFor(DnaManager::ENDURANCE,cl,quality);
-	int fie = instance()->generateScoreFor(DnaManager::FIERCENESS,ferocity,quality);
-	int frt = instance()->generateScoreFor(DnaManager::FORTITUDE,cl,quality);
-	int har = instance()->generateScoreFor(DnaManager::HARDINESS,cl,quality);
-	int ite = instance()->generateScoreFor(DnaManager::INTELLIGENCE,cl,quality);
-	int pow = instance()->generateScoreFor(DnaManager::POWER,cl,quality);
-	if (creatureTemplate->getArmor() > 0 && frt < 500) {
-		frt = instance()->generateScoreFor(DnaManager::FORTITUDE,50,quality);
-	}
+	int cle = Genetics::reverseHit(creature->getHitChance(),quality);
+	int cou = (int)System::random(545-485)+485; // random fixed range
+	int dep = (int)System::random(780-500)+500; // random fixed range
+	int dex = Genetics::reverseHam(creature->getMaxHAM(3),quality);
+	int end = (int)System::random(525-470)+470; // random fixed range
+	int baseFerocity = (ferocity * 45) + 95;
+	int fie = (int)System::random((baseFerocity+11-quality)-(baseFerocity-20-quality)) + (baseFerocity-20-quality);
+	int frt = Genetics::reverseResistance(creature->getEffectiveResist(),creature->getArmor());
+	int har = Genetics::reverseHam(creature->getMaxHAM(0),quality);
+	int ite = Genetics::reverseHam(creature->getMaxHAM(6),quality);
+	int pow = Genetics::reverseDamage(creature->getDamageMax(),quality);
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 

@@ -2889,3 +2889,24 @@ void AiAgentImplementation::sendReactionChat(int type, int state) {
 		getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat",30000); // 30 second cooldown
 	}
 }
+float AiAgentImplementation::getEffectiveResist() {
+	if (!isSpecialProtection(WeaponObject::ACID) && getAcid() > 0)
+		return getAcid();
+	if (!isSpecialProtection(WeaponObject::BLAST) && getBlast() > 0)
+		return getBlast();
+	if (!isSpecialProtection(WeaponObject::COLD) && getCold() > 0)
+		return getCold();
+	if (!isSpecialProtection(WeaponObject::ELECTRICITY) && getElectricity() > 0)
+		return getElectricity();
+	if (!isSpecialProtection(WeaponObject::ENERGY) && getEnergy() > 0)
+		return getEnergy();
+	if (!isSpecialProtection(WeaponObject::HEAT) && getHeat() > 0)
+		return getLightSaber();
+	if (!isSpecialProtection(WeaponObject::KINETIC) && getKinetic() > 0)
+		return getKinetic();
+	if (!isSpecialProtection(WeaponObject::LIGHTSABER) && getLightSaber() > 0)
+		return getLightSaber();
+	if (!isSpecialProtection(WeaponObject::STUN) && getStun() > 0)
+		return getStun();
+	return 0;
+}

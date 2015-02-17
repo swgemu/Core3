@@ -1194,5 +1194,8 @@ class AiAgent extends CreatureObject {
 
 	@preLocked
 	public native void sendReactionChat(int type, int state = 0);
+	
+	@local
+	public native float getEffectiveResist();
 
 }
