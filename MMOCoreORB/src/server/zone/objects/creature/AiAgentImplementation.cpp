@@ -608,7 +608,7 @@ void AiAgentImplementation::selectWeapon() {
 	for (int i = 0; i < weapons.size(); ++i) {
 		WeaponObject* weap = weapons.get(i);
 
-		float range = abs(weap->getIdealRange() - dist);
+		float range = fabs(weap->getIdealRange() - dist);
 
 		if (range < diff) {
 			diff = range;
@@ -2545,7 +2545,7 @@ void AiAgentImplementation::setCurrentBehavior(uint32 b) {
 
 		chatManager->broadcastMessage(_this.get(), currentBehaviorID, 0, 0, 0);*/
 	} else
-		error("Null Behavior in " + currentBehaviorID);
+		error("Null Behavior in " + String::valueOf(currentBehaviorID));
 }
 
 int AiAgentImplementation::getBehaviorStatus() {
