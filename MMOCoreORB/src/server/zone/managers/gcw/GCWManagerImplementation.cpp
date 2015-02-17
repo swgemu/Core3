@@ -254,7 +254,7 @@ void GCWManagerImplementation::scheduleVulnerabilityStart(BuildingObject* buildi
 	}
 
 	Reference<Task*> newTask = new StartVulnerabilityTask(_this.get(), building);
-	newTask->schedule(fabs(vulnDif));
+	newTask->schedule(llabs(vulnDif));
 	this->addStartTask(building->getObjectID(),newTask);
 
 
@@ -282,7 +282,7 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building){
 	else
 		nextTime = baseData->getLastVulnerableTime();
 
-	int64 intPeriodsPast = (fabs(nextTime.miliDifference())) / (this->vulnerabilityFrequency*1000);
+	int64 intPeriodsPast = (llabs(nextTime.miliDifference())) / (this->vulnerabilityFrequency*1000);
 
 	// TODO: use periodspast to get the amount of time to add and avoid the loop
 	while(nextTime.isPast()){
@@ -440,7 +440,7 @@ void GCWManagerImplementation::scheduleVulnerabilityEnd(BuildingObject* building
 #endif
 	Reference<Task*> newTask = new EndVulnerabilityTask(_this.get(), building);
 
-	newTask->schedule(fabs(endDif));
+	newTask->schedule(llabs(endDif));
 
 	this->addEndTask(building->getObjectID(),newTask);
 }
@@ -787,7 +787,7 @@ void GCWManagerImplementation::checkVulnerabilityData(BuildingObject* building){
 	if(!vulnTime.isPast()) {
 
 #ifdef GCW_DEBUG
-		info(zone->getZoneName() + " scheduling building " + String::valueOf(building->getObjectID()) + "vulnerability start " + String::valueOf(fabs(endDif)));
+		info(zone->getZoneName() + " scheduling building " + String::valueOf(building->getObjectID()) + "vulnerability start " + String::valueOf(llabs(endDif)));
 #endif
 		this->scheduleVulnerabilityStart(building);
 	} else if (vulnTime.isPast() && !nextEnd.isPast()) {

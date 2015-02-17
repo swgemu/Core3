@@ -171,8 +171,8 @@ private:
 			return std::numeric_limits<float>::max();
 		}
 
-		return abs(position.getX() - mission->getWaypointToMission()->getWorldPositionX())
-				+ abs(position.getY() - mission->getWaypointToMission()->getWorldPositionY());
+		return fabs(position.getX() - mission->getWaypointToMission()->getWorldPositionX())
+				+ fabs(position.getY() - mission->getWaypointToMission()->getWorldPositionY());
 	}
 
 	void setPlayersNearestMissionForGroupWaypoint(PlayerObject* ghost, MissionObject* nearestMissionForGroup) {

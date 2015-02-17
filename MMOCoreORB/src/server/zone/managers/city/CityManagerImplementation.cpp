@@ -353,7 +353,7 @@ void CityManagerImplementation::promptCitySpecialization(CityRegion* city,
 		Time* timeRemaining = mayor->getCooldownTime("city_specialization");
 		params.setTO(
 				String::valueOf(
-						round(abs(timeRemaining->miliDifference() / 1000.f)))
+						round(fabs(timeRemaining->miliDifference() / 1000.f)))
 						+ " seconds");
 		mayor->sendSystemMessage(params);
 

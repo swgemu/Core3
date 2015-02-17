@@ -121,13 +121,12 @@ public:
 
 	byte getWeatherAt(float x, float y) {
 
-		if(time(0) > endTime)
+		if(time(0) > endTime || time(0) < startTime)
 			return 0;
 
-
-		float mid = (endTime - startTime) / 2.f;
-		float current = abs(time(0) - startTime);
+		float current = time(0) - startTime; // cannot be negative
 		float end = endTime - startTime;
+		float mid = end / 2.f;
 
 		if(current > mid)
 			current = end - current;
@@ -150,9 +149,9 @@ public:
 
 	String printInfo(float x, float y) {
 
-		float mid = (endTime - startTime) / 2.f;
-		float current = abs(time(0) - startTime);
+		float current = time(0) - startTime;
 		float end = endTime - startTime;
+		float mid = end / 2.f;
 
 		if(current > mid)
 			current = end - current;
