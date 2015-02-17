@@ -132,16 +132,16 @@ class AiAgent extends CreatureObject {
 	
 	protected boolean despawnOnNoPlayerInRange;
 	
-	protected SceneObject followObject;
+	private SceneObject followObject;
 	@weakReference
-	protected SceneObject followStore;
-	protected unsigned int followState;
+	private SceneObject followStore;
+	private unsigned int followState;
 	@dereferenced
-	protected transient Mutex targetMutex;
+	private transient Mutex targetMutex;
 	@dereferenced
-	protected transient Mutex awarenessEventMutex;
+	private transient Mutex awarenessEventMutex;
 	@dereferenced
-	protected transient Mutex movementEventMutex;
+	private transient Mutex movementEventMutex;
 	
 	@dereferenced
 	protected transient Time lastDamageReceived;
@@ -620,22 +620,29 @@ class AiAgent extends CreatureObject {
 	public native boolean generatePatrol(int num, float dist);
 	
 	public SceneObject getFollowObject() {
-		return followObject;
+		synchronized (targetMutex) {
+			return followObject;
+		}
 	}
 	
 	public void storeFollowObject() {
-		followStore = followObject;
+		synchronized (targetMutex) {
+			followStore = followObject;
+		}
 	}
 	
 	public native void restoreFollowObject();
-	
-	@read
+
 	public unsigned int getFollowState() {
-		return followState;
+		synchronized (targetMutex) {
+			return followState;
+		}
 	}
 
 	public void setFollowState(int state) {
-		followState = state;
+		synchronized (targetMutex) {
+			followState = state;
+		}
 	}
 	
 	@dirty
@@ -681,10 +688,9 @@ class AiAgent extends CreatureObject {
 	public boolean isRetreating() {
 		return !homeLocation.isReached();
 	}
-	
-	@read
+
 	public boolean isFleeing() {
-		return followState == FLEEING;
+		return getFollowState() == FLEEING;
 	}
 	
 	public native void clearDespawnEvent();
