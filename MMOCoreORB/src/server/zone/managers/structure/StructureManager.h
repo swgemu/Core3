@@ -187,11 +187,18 @@ public:
 
 	/**
 	 * Sends the transfer box prompting for maintenance to be paid.
-	 * @param structure The structure being paid maintenance too.
+	 * @param structure The structure being paid maintenance to.
 	 * @param creature The creature attempting to pay maintenance.
 	 * @param terminal The terminal used in the process. Defaults to null.
 	 */
 	void promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	/**
+	 * Sends the transfer box prompting for maintenance to be withdrawn.
+	 * @param structure The structure having maintenance withdrawn from.
+	 * @param creature The creature attempting to withdraw maintenance.
+	 */
+	void promptWithdrawMaintenance(StructureObject* structure, CreatureObject* creature);
 
 	/**
 	 * Sends the transfer box prompting for selection of sign
@@ -215,6 +222,14 @@ public:
 	 * @param amount The amount to pay maintenance.
 	 */
 	void payMaintenance(StructureObject* structure, CreatureObject* creature, int amount);
+
+	/**
+	 * Attempts to withdraw the requested amount from the structure, and notifies the creature.
+	 * @param structure The structure having maintenance withdrawn from.
+	 * @param creature The creature attempting to withdraw maintenance.
+	 * @param amount The amount of maintenance to withdraw.
+	 */
+	void withdrawMaintenance(StructureObject* structure, CreatureObject* creature, int amount);
 
 	int getStructureFootprint(SharedObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1);
 

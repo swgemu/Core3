@@ -19,6 +19,7 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
+#include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 
 #include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 
@@ -449,6 +450,18 @@ bool StructureObjectImplementation::isCommercialStructure() {
 
 
 	return ssot->isCommercialStructure();
+}
+
+bool StructureObjectImplementation::isGuildHall() {
+	for (int i = 0; i < childObjects.size(); i++) {
+		GuildTerminal* child = childObjects.get(i).castTo<GuildTerminal*>();
+
+		if (child != NULL) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 int StructureObjectImplementation::getBaseMaintenanceRate(){
