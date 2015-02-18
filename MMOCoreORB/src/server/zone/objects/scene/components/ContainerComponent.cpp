@@ -85,6 +85,12 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 			}
 		}
 
+	} else if (object->isVendor()) {
+		ManagedReference<SceneObject*> containerPlayerParent = sceneObject->getParentRecursively(SceneObjectType::PLAYERCREATURE);
+
+		if (!sceneObject->isCellObject() && (!sceneObject->hasArrangementDescriptor("inventory") || containerPlayerParent == NULL)) {
+			return TransferErrorCode::CANTADD;
+		}
 	}
 
 	Locker contLocker(sceneObject->getContainerLock());
