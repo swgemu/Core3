@@ -305,6 +305,8 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(parent.get().get());
 
+	creature->broadcastPvpStatusBitmask();
+
 	if (creature == NULL)
 		return;
 
