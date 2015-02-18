@@ -381,6 +381,10 @@ class StructureObject extends TangibleObject {
 		surplusMaintenance += add;
 	}
 
+	public void subtractMaintenance(float subtract) {
+		surplusMaintenance = surplusMaintenance - subtract;
+	}
+
 	/**
 	 * Withdraws maintenance from payer and deposits it in the structure
 	 * maintenance pool. Updates maintenance modifier depending on skill
@@ -472,6 +476,9 @@ class StructureObject extends TangibleObject {
 
 	@dirty
 	public native boolean isCommercialStructure();
+
+	@dirty
+	public native boolean isGuildHall();
 
 	public void migratePermissions() {
 		structurePermissionList.migrateLists(super.getZoneServer(), getOwnerObjectID());

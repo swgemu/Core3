@@ -57,6 +57,11 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 		menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
 		menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
 		menuResponse->addRadialMenuItemToRadialID(118, 129, 3, "@player_structure:management_pay"); //Pay Maintenance
+
+		if (structureObject->isGuildHall()) {
+			menuResponse->addRadialMenuItemToRadialID(118, 70, 3, "@player_structure:take_maintenance"); // Withdraw Maintenance
+		}
+
 		menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@player_structure:management_name_structure"); //Name Structure
 
 		if (structureObject->isBuildingObject()) {
@@ -77,7 +82,6 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 
 
 			menuResponse->addRadialMenuItemToRadialID(118, 69, 3, "@player_structure:management_change_sign"); //Change Sign
-			//menuResponse->addRadialMenuItemToRadialID(118, 200, 3, "@player_structure:withdraw_maintenance"); //Withdraw from Treasury
 			menuResponse->addRadialMenuItemToRadialID(118, 201, 3, "@player_structure:delete_all_items"); //Delete all items
 			menuResponse->addRadialMenuItemToRadialID(118, 202, 3, "@player_structure:move_first_item"); //Find Lost Items
 		}
@@ -174,6 +178,9 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 			break;
 		case 129:
 			creature->executeObjectControllerAction(0xE7E35B30, structureObject->getObjectID(), ""); //payMaintenance
+			break;
+		case 70:
+			structureManager->promptWithdrawMaintenance(structureObject, creature);
 			break;
 		case 124:
 			creature->executeObjectControllerAction(0x13F7E585, structureObject->getObjectID(), ""); //structureStatus
