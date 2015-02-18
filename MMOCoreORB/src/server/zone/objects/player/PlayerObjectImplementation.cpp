@@ -308,6 +308,8 @@ void PlayerObjectImplementation::notifySceneReady() {
 	if (creature == NULL)
 		return;
 
+	creature->broadcastPvpStatusBitmask();
+
 	creature->sendBuffsTo(creature);
 
 	GuildObject* guild = creature->getGuildObject();

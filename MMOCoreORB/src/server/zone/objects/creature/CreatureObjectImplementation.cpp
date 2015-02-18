@@ -2555,6 +2555,9 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (ghost == NULL || targetGhost == NULL)
 		return false;
 
+	if (ghost->isTeleporting())
+		return false;
+
 	bool areInDuel = (ghost->requestedDuelTo(object) && targetGhost->requestedDuelTo(_this.get()));
 
 	if (areInDuel)
@@ -2585,6 +2588,9 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object) {
 	PlayerObject* ghost = getPlayerObject();
 
 	if(ghost == NULL)
+		return false;
+
+	if (ghost->isTeleporting())
 		return false;
 
 	if (isDead() || isIncapacitated() || isInvisible())
@@ -2620,6 +2626,14 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 
 	if (object->getZone() != getZone())
 		return false;
+
+	if (isPlayerCreature()) {
+		PlayerObject* ghost = getPlayerObject();
+
+		if (ghost != NULL && ghost->isTeleporting()) {
+			return false;
+		}
+	}
 
 	if (object->isAiAgent()) {
 
