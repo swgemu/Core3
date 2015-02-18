@@ -60,10 +60,11 @@ selonian_assassin = Creature:new {
 				{group = "tailor_components", chance = 1500000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

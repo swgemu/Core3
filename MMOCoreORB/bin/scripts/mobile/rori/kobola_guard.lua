@@ -29,7 +29,7 @@ kobola_guard = Creature:new {
 		"object/mobile/dressed_kobola_guard_trandoshan_female_01.iff",
 		"object/mobile/dressed_kobola_guard_trandoshan_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2400000},
 				{group = "tailor_components", chance = 2000000},
@@ -37,10 +37,11 @@ kobola_guard = Creature:new {
 				{group = "kobola_common", chance = 3600000}
 			},
 			lootChance = 2400000
-		}					
+		}
 	},
 	weapons = {"novice_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

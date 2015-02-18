@@ -48,10 +48,11 @@ selonian_healer = Creature:new {
 				{group = "tailor_components", chance = 1500000}
 			},
 			lootChance = 3000000
-		}		
+		}
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

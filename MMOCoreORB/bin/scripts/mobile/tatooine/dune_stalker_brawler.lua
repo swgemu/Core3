@@ -27,7 +27,7 @@ dune_stalker_brawler = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_dune_stalker_brawler.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
@@ -41,6 +41,7 @@ dune_stalker_brawler = Creature:new {
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

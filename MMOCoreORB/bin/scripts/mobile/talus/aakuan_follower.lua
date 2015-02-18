@@ -29,20 +29,21 @@ aakuan_follower = Creature:new {
 		"object/mobile/dressed_aakuan_follower_trandoshan_female_01.iff",
 		"object/mobile/dressed_aakuan_follower_trandoshan_male_01.iff"},
 	lootGroups = {
-	    {
-		    groups = {
+		{
+			groups = {
 				{group = "junk", chance = 6600000},
 				{group = "aakuan_common", chance = 2300000},
 				{group = "armor_attachments", chance = 200000},
 				{group = "rifles", chance = 300000},
 				{group = "carbines", chance = 300000},
-				{group = "pistols", chance = 300000}				
+				{group = "pistols", chance = 300000}
 			},
-		    lootChance = 2200000
+			lootChance = 2200000
 		}
 	},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = brawlermid
 }
 

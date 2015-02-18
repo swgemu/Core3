@@ -29,7 +29,7 @@ naboo_dissident = Creature:new {
 		{
 			groups = {
 				{group = "junk", chance = 4000000},
-				{group = "wearables_common", chance = 2000000},				
+				{group = "wearables_common", chance = 2000000},
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
@@ -37,6 +37,7 @@ naboo_dissident = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_medium"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

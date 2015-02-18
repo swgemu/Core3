@@ -27,7 +27,7 @@ desert_swooper = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_desert_swooper.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "tailor_components", chance = 1500000},
@@ -36,10 +36,11 @@ desert_swooper = Creature:new {
 				{group = "desert_swooper_common", chance = 2000000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

@@ -29,6 +29,7 @@ trandoshan_sif_02 = Creature:new {
 	lootGroups = {},
 	weapons = {"sif_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,fencermaster,swordsmanmaster)
 }
 

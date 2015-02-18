@@ -26,7 +26,7 @@ skaak_tipper_mugger = Creature:new {
 
 	templates = {"object/mobile/dressed_mugger.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4500000},
 				{group = "tailor_components", chance = 1500000},
@@ -35,9 +35,10 @@ skaak_tipper_mugger = Creature:new {
 				{group = "skaak_tipper_common", chance = 1000000},
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_light"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

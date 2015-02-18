@@ -29,6 +29,7 @@ stranded_imperial_pilot = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

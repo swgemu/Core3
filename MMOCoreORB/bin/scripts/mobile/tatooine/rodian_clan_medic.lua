@@ -40,6 +40,7 @@ rodian_clan_medic = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

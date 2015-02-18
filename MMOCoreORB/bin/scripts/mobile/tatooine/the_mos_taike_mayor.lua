@@ -27,17 +27,18 @@ the_mos_taike_mayor = Creature:new {
 
 	templates = {"object/mobile/dressed_mayor.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 6500000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 2400000
-		}			
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

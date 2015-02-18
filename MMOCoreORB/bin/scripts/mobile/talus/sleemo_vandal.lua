@@ -28,8 +28,8 @@ sleemo_vandal = Creature:new {
 
 	templates = {"object/mobile/dressed_hoodlum_zabrak_female_01.iff"},
 	lootGroups = {
-	    {
-	        groups = {
+		{
+			groups = {
 				{group = "junk", chance = 3200000},
 				{group = "wearables_common", chance = 2000000},
 				{group = "rifles", chance = 700000},
@@ -38,12 +38,13 @@ sleemo_vandal = Creature:new {
 				{group = "carbines", chance = 700000},
 				{group = "printer_parts", chance = 1000000},
 				{group = "loot_kit_parts", chance = 1000000},
-	    	},
+			},
 			lootChance = 2200000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

@@ -27,20 +27,21 @@ alkhara_champion = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_alkhara_champion.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2550000},
 				{group = "wearables_common", chance = 2000000},
-				{group = "carbines", chance = 2000000},				
+				{group = "carbines", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "alkhara_common", chance = 450000}
 			},
 			lootChance = 2200000
-		}			
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

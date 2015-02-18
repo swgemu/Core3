@@ -48,10 +48,11 @@ bh_dune_stalker_brawler = Creature:new {
 				{group = "armor_attachments", chance = 1000000}
 			},
 			lootChance = 6000000
-		}				
+		}
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

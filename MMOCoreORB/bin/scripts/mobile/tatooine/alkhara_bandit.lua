@@ -27,20 +27,21 @@ alkhara_bandit = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_alkhara_bandit.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2550000},
 				{group = "wearables_common", chance = 2000000},
-				{group = "pistols", chance = 2000000},								
+				{group = "pistols", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "alkhara_common", chance = 450000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

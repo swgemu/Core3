@@ -26,18 +26,19 @@ palace_guard = Creature:new {
 
 	templates = {"object/mobile/dressed_palace_guard.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
-				{group = "carbines", chance = 2000000},				
+				{group = "carbines", chance = 2000000},
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 4800000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

@@ -37,6 +37,7 @@ plasma_thief_leader = Creature:new {
 		}
 	},
 	weapons = {"ranged_weapons"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

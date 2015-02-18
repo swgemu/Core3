@@ -27,6 +27,7 @@ hand_of_solitude = Creature:new {
 	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

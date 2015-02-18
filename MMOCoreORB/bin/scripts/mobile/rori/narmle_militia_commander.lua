@@ -29,7 +29,7 @@ narmle_militia_commander = Creature:new {
 		"object/mobile/dressed_narmle_commander_rodian_female_01.iff",
 		"object/mobile/dressed_narmle_commander_rodian_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 3500000},
 				{group = "wearables_all", chance = 2000000},
@@ -38,10 +38,11 @@ narmle_militia_commander = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}				
+		}
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

@@ -27,7 +27,7 @@ valarian_henchman = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_valarian_henchman.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
@@ -37,10 +37,11 @@ valarian_henchman = Creature:new {
 				{group = "valarian_common", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

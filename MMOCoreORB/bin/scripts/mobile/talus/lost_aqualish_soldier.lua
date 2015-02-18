@@ -29,7 +29,7 @@ lost_aqualish_soldier = Creature:new {
 		"object/mobile/dressed_lost_aqualish_soldier_female_01.iff",
 		"object/mobile/dressed_lost_aqualish_soldier_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},
@@ -38,10 +38,11 @@ lost_aqualish_soldier = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

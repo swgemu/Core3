@@ -29,7 +29,7 @@ lost_aqualish_infiltrator = Creature:new {
 		"object/mobile/dressed_lost_aqualish_infiltrator_female_01.iff",
 		"object/mobile/dressed_lost_aqualish_infiltrator_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},
@@ -38,10 +38,11 @@ lost_aqualish_infiltrator = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
