@@ -27,6 +27,7 @@ mind_of_solitude = Creature:new {
 	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

@@ -34,6 +34,7 @@ dathomir_prisoner = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = brawlermid
 }
 

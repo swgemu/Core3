@@ -39,6 +39,7 @@ minion_of_lord_nyax = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

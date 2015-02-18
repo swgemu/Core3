@@ -29,7 +29,7 @@ kobola_underboss = Creature:new {
 		"object/mobile/dressed_kobola_underboss_bith_female_01.iff",
 		"object/mobile/dressed_kobola_underboss_bith_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2400000},
 				{group = "tailor_components", chance = 2000000},
@@ -37,10 +37,11 @@ kobola_underboss = Creature:new {
 				{group = "kobola_common", chance = 3600000}
 			},
 			lootChance = 2700000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

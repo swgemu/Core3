@@ -46,6 +46,7 @@ hidden_daggers_leader = Creature:new {
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

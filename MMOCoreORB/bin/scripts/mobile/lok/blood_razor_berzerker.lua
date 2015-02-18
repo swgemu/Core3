@@ -51,6 +51,7 @@ blood_razor_berzerker = Creature:new {
 	},
 	weapons = {"blood_razer_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(pistoleermaster,pikemanmaster,tkamaster,brawlermaster,marksmanmaster)
 }
 

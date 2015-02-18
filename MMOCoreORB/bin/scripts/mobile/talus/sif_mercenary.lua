@@ -29,6 +29,7 @@ sif_mercenary = Creature:new {
 	lootGroups = {},
 	weapons = {"sif_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,fencermaster,swordsmanmaster)
 }
 

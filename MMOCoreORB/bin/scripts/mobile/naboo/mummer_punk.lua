@@ -32,7 +32,7 @@ mummer_punk = Creature:new {
 		"object/mobile/dressed_ravager_human_female_01.iff",
 		"object/mobile/dressed_ravager_human_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "tailor_components", chance = 1500000},
@@ -41,9 +41,10 @@ mummer_punk = Creature:new {
 				{group = "mummer_common", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_light"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

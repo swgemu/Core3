@@ -27,6 +27,7 @@ kardeer = Creature:new {
 	templates = {"object/mobile/kardeer.iff"},
 	lootGroups = {},
 	weapons = {},
+	reactionStf = "@npc_reaction/slang",
 	attacks = brawlermaster
 }
 

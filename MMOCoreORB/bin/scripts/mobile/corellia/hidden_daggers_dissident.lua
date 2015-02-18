@@ -47,10 +47,11 @@ hidden_daggers_dissident = Creature:new {
 				{group = "hidden_dagger_common", chance = 2700000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

@@ -60,10 +60,11 @@ selonian_scout = Creature:new {
 				{group = "tailor_components", chance = 1500000}
 			},
 			lootChance = 3000000
-		}		
+		}
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

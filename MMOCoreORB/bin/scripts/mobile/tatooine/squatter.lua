@@ -37,6 +37,7 @@ squatter = Creature:new {
 		}
 	},
 	weapons = {},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

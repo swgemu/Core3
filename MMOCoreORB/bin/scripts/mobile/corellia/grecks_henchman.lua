@@ -41,17 +41,18 @@ grecks_henchman = Creature:new {
 		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
 		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 7000000},
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "tailor_components", chance = 1000000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

@@ -40,6 +40,7 @@ imperial_retreat_guard = Creature:new {
 		}
 	},
 	weapons = {"imperial_weapons_medium"},
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,carbineermaster,tkamaster)
 }
 

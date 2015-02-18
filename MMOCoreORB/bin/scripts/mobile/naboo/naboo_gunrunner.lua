@@ -26,7 +26,7 @@ naboo_gunrunner = Creature:new {
 
 	templates = {"object/mobile/dressed_naboo_gunrunner.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 2000000},
@@ -34,9 +34,10 @@ naboo_gunrunner = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}				
+		}
 	},
 	weapons = {"ranged_weapons"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

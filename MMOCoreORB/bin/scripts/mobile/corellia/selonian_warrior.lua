@@ -64,6 +64,7 @@ selonian_warrior = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

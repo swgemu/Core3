@@ -39,6 +39,7 @@ slave = Creature:new {
 				 "object/mobile/bothan_female.iff",},
 	lootGroups = {},
 	weapons = {},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = brawlernovice
 }
 

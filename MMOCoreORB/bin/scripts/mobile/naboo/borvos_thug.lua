@@ -38,10 +38,11 @@ borvos_thug = Creature:new {
 				{group = "borvos_common", chance = 2800000}
 			},
 			lootChance = 2500000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

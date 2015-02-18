@@ -29,6 +29,7 @@ captain_eso = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

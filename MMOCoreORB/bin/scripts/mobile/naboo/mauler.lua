@@ -26,7 +26,7 @@ mauler = Creature:new {
 
 	templates = {"object/mobile/dressed_mauler.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "tailor_components", chance = 1000000},
@@ -35,9 +35,10 @@ mauler = Creature:new {
 				{group = "mauler_common", chance = 2000000}
 			},
 			lootChance = 2500000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

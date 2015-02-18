@@ -42,6 +42,7 @@ hunter = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_light"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

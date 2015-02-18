@@ -40,6 +40,7 @@ information_broker = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

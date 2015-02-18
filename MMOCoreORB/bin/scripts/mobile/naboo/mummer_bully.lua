@@ -34,7 +34,7 @@ mummer_bully = Creature:new {
 		"object/mobile/dressed_hooligan_rodian_female_01.iff",
 		"object/mobile/dressed_hooligan_rodian_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "tailor_components", chance = 1500000},
@@ -43,9 +43,10 @@ mummer_bully = Creature:new {
 				{group = "mummer_common", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_light"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

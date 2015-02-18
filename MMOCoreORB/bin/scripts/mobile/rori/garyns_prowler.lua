@@ -29,7 +29,7 @@ garyns_prowler = Creature:new {
 		"object/mobile/dressed_garyn_prowler_trandoshan_female_01.iff",
 		"object/mobile/dressed_garyn_prowler_trandoshan_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
@@ -38,10 +38,11 @@ garyns_prowler = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}					
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

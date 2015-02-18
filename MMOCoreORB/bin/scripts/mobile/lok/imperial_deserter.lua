@@ -33,7 +33,7 @@ imperial_deserter = Creature:new {
 				{group = "junk", chance = 4100000},
 				{group = "rifles", chance = 1600000},
 				{group = "pistols", chance = 1600000},
-                {group = "melee_weapons", chance = 1500000},
+				{group = "melee_weapons", chance = 1500000},
 				{group = "clothing_attachments", chance = 250000},
 				{group = "armor_attachments", chance = 250000},
 				{group = "wearables_common", chance = 500000}
@@ -43,6 +43,7 @@ imperial_deserter = Creature:new {
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(riflemanmaster,carbineermaster,marksmanmaster,brawlermaster)
 }
 

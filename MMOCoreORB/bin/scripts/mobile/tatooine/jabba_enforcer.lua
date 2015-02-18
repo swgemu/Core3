@@ -27,7 +27,7 @@ jabba_enforcer = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_jabba_enforcer.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 1500000},
 				{group = "wearables_common", chance = 2000000},
@@ -41,6 +41,7 @@ jabba_enforcer = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

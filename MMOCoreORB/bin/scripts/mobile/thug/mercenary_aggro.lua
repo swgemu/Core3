@@ -35,14 +35,14 @@ mercenary_aggro = Creature:new {
 	},
 	lootGroups = {
 		{
-	        groups = {
+			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 3700000},
-				{group = "wearables_common", chance = 2000000},				
+				{group = "wearables_common", chance = 2000000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-                		{group = "melee_weapons", chance = 1000000},
-                		{group = "carbines", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000}
 			},
@@ -51,6 +51,7 @@ mercenary_aggro = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

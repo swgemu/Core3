@@ -46,10 +46,11 @@ grecks_assassin = Creature:new {
 				{group = "tailor_components", chance = 1000000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

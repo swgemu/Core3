@@ -42,9 +42,10 @@ hidden_daggers_extremist = Creature:new {
 				{group = "hidden_dagger_common", chance = 2700000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

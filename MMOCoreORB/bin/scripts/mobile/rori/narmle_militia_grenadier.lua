@@ -29,7 +29,7 @@ narmle_militia_grenadier = Creature:new {
 		"object/mobile/dressed_narmle_grenadier_zabrak_female_01.iff",
 		"object/mobile/dressed_narmle_grenadier_zabrak_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
@@ -38,10 +38,11 @@ narmle_militia_grenadier = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}					
+		}
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

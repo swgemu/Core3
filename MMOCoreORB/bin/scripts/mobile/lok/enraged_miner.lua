@@ -30,6 +30,7 @@ enraged_miner = Creature:new {
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

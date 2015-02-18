@@ -27,17 +27,18 @@ grecks_mugger = Creature:new {
 
 	templates = {"object/mobile/dressed_mugger.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 7000000},
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "tailor_components", chance = 1000000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

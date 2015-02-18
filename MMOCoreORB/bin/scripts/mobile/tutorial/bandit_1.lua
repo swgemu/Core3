@@ -29,6 +29,7 @@ bandit_tutorial_1 = Creature:new {
 	weapons = {"tutorial_bandit"},--dont change this
 	attacks = {{"defaultattack", ""}},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	optionsBitmask = 0
 }
 

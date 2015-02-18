@@ -41,6 +41,7 @@ mordran = Creature:new {
 		}
 	},
 	weapons = {"mordran_weapons"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster, swordsmanmaster)
 }
 

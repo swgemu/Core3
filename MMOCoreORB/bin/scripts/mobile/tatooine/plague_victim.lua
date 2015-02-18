@@ -37,6 +37,7 @@ plague_victim = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_light"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

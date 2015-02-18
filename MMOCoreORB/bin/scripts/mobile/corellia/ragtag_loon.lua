@@ -52,6 +52,7 @@ ragtag_loon = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_light"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

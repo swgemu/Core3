@@ -40,6 +40,7 @@ drall_monk = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

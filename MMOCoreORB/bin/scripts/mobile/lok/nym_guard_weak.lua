@@ -41,6 +41,7 @@ nym_guard_weak = Creature:new {
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(bountyhuntermaster,marksmanmaster,brawlermaster)
 }
 

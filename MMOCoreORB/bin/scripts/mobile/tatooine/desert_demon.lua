@@ -27,20 +27,21 @@ desert_demon = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_desert_demon.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2500000},
-				{group = "wearables_common", chance = 2000000},				
+				{group = "wearables_common", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "printer_parts", chance = 1000000},
 				{group = "desert_demon_common", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

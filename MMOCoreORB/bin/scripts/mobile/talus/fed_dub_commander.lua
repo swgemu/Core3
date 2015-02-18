@@ -29,7 +29,7 @@ fed_dub_commander = Creature:new {
 		"object/mobile/dressed_fed_dub_commander_bith_female_01.iff",
 		"object/mobile/dressed_fed_dub_commander_bith_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},
@@ -38,10 +38,11 @@ fed_dub_commander = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

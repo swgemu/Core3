@@ -39,6 +39,7 @@ naboo_police_chief = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

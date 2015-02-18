@@ -41,6 +41,7 @@ corsec_investigator = Creature:new {
 	},
 	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

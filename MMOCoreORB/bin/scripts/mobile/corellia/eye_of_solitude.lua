@@ -29,6 +29,7 @@ eye_of_solitude = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

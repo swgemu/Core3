@@ -27,10 +27,10 @@ imperial_exterminator = Creature:new {
 
 	templates = {"object/mobile/dressed_imperial_exterminator.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 3200000},
-				{group = "wearables_common", chance = 2000000},				
+				{group = "wearables_common", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "pistols", chance = 1000000},
@@ -38,10 +38,11 @@ imperial_exterminator = Creature:new {
 				{group = "armor_attachments", chance = 150000}
 			},
 			lootChance = 2500000
-		}				
+		}
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,carbineermaster)
 }
 

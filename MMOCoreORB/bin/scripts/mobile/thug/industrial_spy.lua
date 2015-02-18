@@ -38,6 +38,7 @@ industrial_spy = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_light"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

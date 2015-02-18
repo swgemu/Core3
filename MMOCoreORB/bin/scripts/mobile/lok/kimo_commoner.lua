@@ -147,6 +147,7 @@ kimo_commoner = Creature:new {
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

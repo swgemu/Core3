@@ -38,19 +38,20 @@ sennex_lookout = Creature:new {
 		"object/mobile/dressed_sennex_pirate_11.iff",
 		"object/mobile/dressed_sennex_pirate_12.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},
-				{group = "heavy_weapons", chance = 2000000},				
+				{group = "heavy_weapons", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000}
 			},
 			lootChance = 2200000
-		}					
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

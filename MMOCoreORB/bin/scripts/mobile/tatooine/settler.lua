@@ -31,6 +31,7 @@ settler = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

@@ -40,6 +40,7 @@ drall_patriot_legionnaire = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

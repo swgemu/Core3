@@ -27,20 +27,21 @@ weequay_thug = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_weequay_thug.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
-				{group = "wearables_common", chance = 2000000},				
+				{group = "wearables_common", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "printer_parts", chance = 1000000},
 				{group = "weequay_common", chance = 500000}
 			},
 			lootChance = 2100000
-		}				
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

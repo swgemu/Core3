@@ -29,7 +29,7 @@ neo_cobral_bandit = Creature:new {
 		"object/mobile/dressed_cobral_bandit_bith_female_01.iff",
 		"object/mobile/dressed_cobral_bandit_bith_male_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 2000000},
 				{group = "wearables_common", chance = 2000000},
@@ -38,10 +38,11 @@ neo_cobral_bandit = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}					
+		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

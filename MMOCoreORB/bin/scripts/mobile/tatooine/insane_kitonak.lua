@@ -27,6 +27,7 @@ insane_kitonak = Creature:new {
 	templates = {"object/mobile/kitonak_male.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 
