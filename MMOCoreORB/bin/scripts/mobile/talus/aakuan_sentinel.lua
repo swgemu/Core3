@@ -43,6 +43,7 @@ aakuan_sentinel = Creature:new {
 	},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = brawlermaster
 }
 

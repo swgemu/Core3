@@ -41,6 +41,7 @@ dune_stalker_scavenger = Creature:new {
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

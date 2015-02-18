@@ -41,6 +41,7 @@ dune_stalker_leader = Creature:new {
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

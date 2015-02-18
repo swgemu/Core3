@@ -37,6 +37,7 @@ naboo_gunrunner = Creature:new {
 		}				
 	},
 	weapons = {"ranged_weapons"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

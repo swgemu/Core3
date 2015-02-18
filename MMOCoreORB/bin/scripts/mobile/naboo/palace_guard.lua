@@ -38,6 +38,7 @@ palace_guard = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_medium"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

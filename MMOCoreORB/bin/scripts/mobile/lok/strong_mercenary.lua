@@ -52,6 +52,7 @@ strong_mercenary = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 

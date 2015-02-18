@@ -43,6 +43,7 @@ cas_vankoo = Creature:new {
 	},
 	weapons = {"cas_vankoo_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(pistoleermaster,pikemanmaster,marksmanmaster,brawlermaster)
 }
 

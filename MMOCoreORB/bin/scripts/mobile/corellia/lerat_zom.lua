@@ -29,6 +29,7 @@ lerat_zom = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = brawlermaster
 }
 

@@ -40,6 +40,7 @@ lord_nyax = Creature:new {
 	},
 	weapons = {"nyaxs_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(brawlermaster,swordsmanmaster)
 }
 

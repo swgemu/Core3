@@ -46,6 +46,7 @@ smashball_bully = Creature:new {
 		}	
 	},
 	weapons = {"pirate_weapons_medium"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

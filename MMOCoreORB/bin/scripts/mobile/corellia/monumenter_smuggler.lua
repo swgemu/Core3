@@ -40,6 +40,7 @@ monumenter_smuggler = Creature:new {
 		"object/mobile/dressed_desperado_bith_male_01.iff"},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

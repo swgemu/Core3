@@ -49,6 +49,7 @@ smashball_degenerate = Creature:new {
 		}	
 	},
 	weapons = {"pirate_weapons_heavy"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

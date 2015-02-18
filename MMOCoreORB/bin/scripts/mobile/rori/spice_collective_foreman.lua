@@ -40,6 +40,7 @@ spice_collective_foreman = Creature:new {
 		}
 	},
 	weapons = {"ranged_weapons"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

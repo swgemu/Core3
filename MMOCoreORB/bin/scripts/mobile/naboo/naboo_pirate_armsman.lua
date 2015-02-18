@@ -45,6 +45,7 @@ naboo_pirate_armsman = Creature:new {
 		}					
 	},
 	weapons = {"pirate_weapons_heavy"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

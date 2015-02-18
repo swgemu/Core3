@@ -39,6 +39,7 @@ young_mos_taike_guard = Creature:new {
 	weapons = {},
 	outfit = "mos_taike_guard_outfit",
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

@@ -39,6 +39,7 @@ spynet_operative = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

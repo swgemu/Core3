@@ -40,6 +40,7 @@ dim_u_priestess = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = brawlernovice
 }
 

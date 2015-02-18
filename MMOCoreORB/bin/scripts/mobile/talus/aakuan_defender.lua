@@ -43,6 +43,7 @@ aakuan_defender = Creature:new {
 	},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = brawlermaster
 }
 

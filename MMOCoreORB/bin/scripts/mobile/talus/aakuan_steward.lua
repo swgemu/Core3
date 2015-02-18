@@ -43,6 +43,7 @@ aakuan_steward = Creature:new {
 	},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = brawlermid
 }
 

@@ -30,6 +30,7 @@ gerak_vurtimis = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/townperson",
 	attacks = brawlermaster
 }
 

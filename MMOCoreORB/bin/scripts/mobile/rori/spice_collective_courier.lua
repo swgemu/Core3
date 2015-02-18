@@ -38,6 +38,7 @@ spice_collective_courier = Creature:new {
 		}				
 	},
 	weapons = {"pirate_weapons_medium"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

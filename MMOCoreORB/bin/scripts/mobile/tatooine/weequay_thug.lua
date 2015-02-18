@@ -41,6 +41,7 @@ weequay_thug = Creature:new {
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/military",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

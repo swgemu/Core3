@@ -27,6 +27,7 @@ megan_drlar = Creature:new {
 	templates = {"object/mobile/megan_drlar.iff"},
 	lootGroups = {},
 	weapons = {},
+	reactionStf = "@npc_reaction/slang",
 	attacks = brawlermaster
 }
 

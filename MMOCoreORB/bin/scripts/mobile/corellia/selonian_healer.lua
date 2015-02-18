@@ -52,6 +52,7 @@ selonian_healer = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

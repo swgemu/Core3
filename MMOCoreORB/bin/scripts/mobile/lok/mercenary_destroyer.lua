@@ -45,6 +45,7 @@ mercenary_destroyer = Creature:new {
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
 }
 

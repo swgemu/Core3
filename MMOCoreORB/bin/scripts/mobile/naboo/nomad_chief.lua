@@ -38,6 +38,7 @@ nomad_chief = Creature:new {
 		}					
 	},
 	weapons = {"rebel_weapons_medium"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

@@ -1,7 +1,7 @@
 fringer = Creature:new {
 	objectName = "@mob/creature_names:fringer",
 	socialGroup = "mercenary",
-	faction = "townsperson",
+	faction = "",
 	level = 7,
 	chanceHit = 0.260000,
 	damageMin = 55,
@@ -44,6 +44,7 @@ fringer = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

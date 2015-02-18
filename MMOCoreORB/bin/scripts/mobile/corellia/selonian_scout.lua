@@ -64,6 +64,7 @@ selonian_scout = Creature:new {
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

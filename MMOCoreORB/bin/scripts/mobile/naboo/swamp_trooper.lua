@@ -45,6 +45,7 @@ swamp_trooper = Creature:new {
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/stormtrooper",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

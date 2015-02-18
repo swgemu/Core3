@@ -43,6 +43,7 @@ aakuan_warder = Creature:new {
 	},
 	weapons = {"melee_weapons"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(brawlermaster,swordsmanmaster)
 }
 

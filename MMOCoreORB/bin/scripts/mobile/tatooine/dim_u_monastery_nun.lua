@@ -40,6 +40,7 @@ dim_u_monastery_nun = Creature:new {
 	},
 	weapons = {},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = brawlernovice
 }
 

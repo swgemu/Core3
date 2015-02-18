@@ -64,6 +64,7 @@ selonian_hunter = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
+	reactionStf = "@npc_reaction/fancy",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

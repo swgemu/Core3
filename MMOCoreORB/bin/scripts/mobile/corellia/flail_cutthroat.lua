@@ -48,6 +48,7 @@ flail_cutthroat = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_medium"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

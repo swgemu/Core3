@@ -39,6 +39,7 @@ moisture_thief = Creature:new {
 		}				
 	},
 	weapons = {"rebel_weapons_light"},
+	reactionStf = "@npc_reaction/slang",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

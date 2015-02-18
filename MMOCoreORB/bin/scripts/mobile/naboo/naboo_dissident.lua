@@ -37,6 +37,7 @@ naboo_dissident = Creature:new {
 		}
 	},
 	weapons = {"rebel_weapons_medium"},
+	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 
