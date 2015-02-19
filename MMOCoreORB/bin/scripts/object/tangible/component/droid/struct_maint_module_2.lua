@@ -43,6 +43,7 @@
 
 object_tangible_component_droid_struct_maint_module_2 = object_tangible_component_droid_shared_struct_maint_module_2:new {
 
+	dataObjectComponent = "DroidMaintenanceModuleDataComponent",
 
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},
@@ -50,7 +51,7 @@ object_tangible_component_droid_struct_maint_module_2 = object_tangible_componen
 	experimentalGroupTitles = {"null", "null", "exp_durability", "null", "exp_effectiveness", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "mechanism_quality", "struct_module"},
 	experimentalMin = {0, 0, 5, 1000, -10, 6},
-	experimentalMax = {0, 0, 15, 1000, 15, 10},
+	experimentalMax = {0, 0, 15, 1000, 15, 11},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 4, 1, 1},
 }
