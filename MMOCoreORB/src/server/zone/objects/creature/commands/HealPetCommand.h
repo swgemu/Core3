@@ -198,6 +198,12 @@ public:
 			return GENERALERROR;
 		}
 
+		PetControlDevice* pcd = pet->getControlDevice().get().castTo<PetControlDevice*>();
+		if (pcd == NULL || pcd->getPetType() != PetManager::CREATUREPET) {
+			creature->sendSystemMessage("Invalid Target.");
+			return GENERALERROR;
+		}
+
 		if (!creature->isInRange(pet, range))
 			return TOOFAR;
 
