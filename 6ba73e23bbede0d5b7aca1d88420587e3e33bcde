@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_cc92439f",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/StructureAssignDroidSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-19T23:18:37Z",
+      "side": 1,
+      "message": "It\u0027s not a good idea to lock 3 objects in the same thread. It can cause deadlocks. It doesn\u0027t really look to me like structure needs to be locked since all you are doing with it is getting it\u0027s oid. You should probably just crosslock droid to player.",
+      "revId": "6ba73e23bbede0d5b7aca1d88420587e3e33bcde",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
