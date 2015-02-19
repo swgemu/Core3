@@ -212,7 +212,7 @@ int DroidHarvestModuleDataComponent::getBatteryDrain() {
 		return 4;
 	}
 
-	return 1;
+	return 0;
 }
 
 void DroidHarvestModuleDataComponent::deactivate() {

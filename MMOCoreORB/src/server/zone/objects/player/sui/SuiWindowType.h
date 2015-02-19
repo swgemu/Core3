@@ -153,6 +153,7 @@ public:
 	static const uint16 STRUCTURE_VENDOR_PAY = 155;
 	static const uint16 STRUCTURE_VENDOR_WITHDRAW = 156;
 	static const uint16 STRUCTURE_SELECT_SIGN = 157;
+	static const uint16 STRUCTURE_ASSIGN_DROID = 158;
 
 	//Admin 171 - 220
 	static const uint16 ADMIN_COMMANDS = 171;
@@ -265,6 +266,9 @@ public:
 	static const uint16 DROID_DELETE_TRACK = 1031;
 	static const uint16 DROID_SET_INTEREST = 1032;
 	static const uint16 NEWSNET_INFO = 1033;
+	static const uint16 DROID_EDIT_ASSIGNED_STRUCTURES = 1034;
+	static const uint16 DROID_MAINTENANCE_RUN_LIST = 1035;
+	static const uint16 DROID_ADD_STRUCTURE_AMOUNT = 1036;
 };
 
 #endif /*SuiWindowType_H_*/

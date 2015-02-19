@@ -149,7 +149,6 @@ StimPack* DroidStimpackModuleDataComponent::compatibleStimpack(float power) {
 	if(craftingComponents != NULL) {
 		SceneObject* satchel = craftingComponents->getContainerObject(0);
 		if(satchel == NULL) {
-			System::out << "satch null for compa call\n";
 			return NULL;
 		}
 		for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {

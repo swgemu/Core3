@@ -14,6 +14,8 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!sceneObject->isInstallationObject())
@@ -28,6 +30,21 @@ void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 	menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
 	menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
 	menuResponse->addRadialMenuItemToRadialID(118, 129, 3, "@player_structure:management_pay"); //Pay Maintenance
+	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+	if(datapad != NULL) {
+		for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
+			ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+
+			if (object != NULL && object->isPetControlDevice()) {
+				PetControlDevice* device = cast<PetControlDevice*>( object.get());
+
+				if (device->getPetType() == PetManager::DROIDPET) {
+					menuResponse->addRadialMenuItemToRadialID(118, 131, 3, "@player_structure:assign_droid"); //Assign Droid
+					break;
+				}
+			}
+		}
+	}
 	menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@base_player:set_name"); //Set Name
 
 	if (!installation->isGeneratorObject()) {
@@ -69,6 +86,9 @@ int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 		player->executeObjectControllerAction(0x18FC1726, installation->getObjectID(), ""); //destroyStructure command
 		break;
 
+	case 131:
+		structureManager->promptMaintenanceDroid(installation,player);
+		break;
 	case 50:
 		structureManager->promptNameStructure(player, installation, installation);
 		//player->executeObjectControllerAction(0xC367B461, installation->getObjectID(), ""); //nameStructure

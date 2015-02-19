@@ -33,6 +33,7 @@ public:
 	const static int PROPOSEUNITY = 21;
 	const static int VETERANREWARD = 22;
 	const static int INTERPLANETARYSURVEYDROID = 23;
+	const static int DROIDMAINTENANCERUN = 24;
 
 };
 
