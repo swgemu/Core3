@@ -318,6 +318,8 @@ void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
 		if (defenderList.get(i) == defender) {
 			info("removing defender");
 
+			notifyObservers(ObserverEventType::DEFENDERDROPPED, defender);
+
 			TangibleObjectDeltaMessage6* dtano6 = new TangibleObjectDeltaMessage6(_this.get());
 
 			dtano6->startUpdate(0x01);
@@ -330,8 +332,6 @@ void TangibleObjectImplementation::removeDefender(SceneObject* defender) {
 			dtano6->close();
 
 			broadcastMessage(dtano6, true);
-
-			notifyObservers(ObserverEventType::DEFENDERDROPPED, defender);
 
 			//info("defender found and removed");
 			break;
