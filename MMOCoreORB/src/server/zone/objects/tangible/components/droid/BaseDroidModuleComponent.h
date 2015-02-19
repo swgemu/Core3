@@ -70,6 +70,9 @@ protected:
 	static const uint8 REPAIR_MODULE_TRAIN  = 184;
 	static const uint8 LOAD_STIMPACK = 185;
 	static const uint8 REQUEST_STIMPACK = 186;
+	static const uint8 MAINT_MODULE_ROOT = 187;
+	static const uint8 MAINT_MODULE_PERFORM = 188;
+	static const uint8 MAINT_MODULE_EDIT = 189;
 	static const uint8 EFFECTS_MODULE_TOGGLE = 190;
 	static const uint8 EFFECTS_MODULE_SLOT1 = 191;
 	static const uint8 EFFECTS_MODULE_SLOT2 = 192;

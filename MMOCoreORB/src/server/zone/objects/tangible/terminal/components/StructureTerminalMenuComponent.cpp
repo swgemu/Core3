@@ -16,10 +16,21 @@
 #include "server/zone/objects/player/sessions/StructureSetAccessFeeSession.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/chat/StringIdChatParameter.h"
+#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/managers/creature/PetManager.h"
+
 
 void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) {
 
 	if(!sceneObject->isTerminal())
+		return;
+
+	if(!creature->isPlayerCreature())
+		return;
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+	if( ghost == NULL )
 		return;
 
 	ManagedReference<Terminal*> terminal = cast<Terminal*>(sceneObject);
@@ -64,6 +75,22 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 
 		menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@player_structure:management_name_structure"); //Name Structure
 
+		ManagedReference<SceneObject*> datapad = creature->getSlottedObject("datapad");
+		if(datapad != NULL) {
+			for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
+				ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+
+				if (object != NULL && object->isPetControlDevice()) {
+					PetControlDevice* device = cast<PetControlDevice*>( object.get());
+
+					if (device->getPetType() == PetManager::DROIDPET) {
+						menuResponse->addRadialMenuItemToRadialID(118, 131, 3, "@player_structure:assign_droid"); //Assign Droid
+						break;
+					}
+				}
+			}
+		}
+
 		if (structureObject->isBuildingObject()) {
 			menuResponse->addRadialMenuItemToRadialID(118, 127, 3, "@player_structure:management_residence"); //Declare Residence
 			menuResponse->addRadialMenuItemToRadialID(118, 125, 3, "@player_structure:management_privacy"); //Privacy
@@ -105,6 +132,13 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
 	ManagedReference<Terminal*> terminal = cast<Terminal*>(sceneObject);
 	if(terminal == NULL)
+		return 1;
+
+	if(!creature->isPlayerCreature())
+		return 1;
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+	if( ghost == NULL )
 		return 1;
 
 	ManagedReference<StructureObject*> structureObject = cast<StructureObject*>(terminal->getControlledObject());
@@ -221,7 +255,11 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 		case 69:
 			structureManager->promptSelectSign(structureObject, creature);
 			break;
+		case 131: // Assign Droid
+			structureManager->promptMaintenanceDroid(structureObject,creature);
+			break;
 		}
+
 	}
 
 	if(selectedID == 130 && (structureObject->isOnAdminList(creature) || structureObject->isOnPermissionList("VENDOR", creature))) {

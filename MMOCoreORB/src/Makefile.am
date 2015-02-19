@@ -98,6 +98,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
 core3_IDLS =	autogen/server/zone/objects/tangible/components/droid/DroidPersonalityObserver.cpp \
+				autogen/server/zone/objects/player/sessions/DroidMaintenanceSession.cpp \
 				autogen/server/zone/objects/tangible/components/droid/DroidHarvestObserver.cpp \
 				autogen/server/zone/objects/tangible/components/droid/DroidPlaybackObserver.cpp \
 				autogen/server/zone/objects/tangible/tool/antidecay/AntiDecayKit.cpp \
@@ -395,6 +396,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/survey/SurveySessionImplementation.cpp \
 		server/zone/objects/player/sessions/admin/PlayerManagementSessionImplementation.cpp \
 		server/zone/objects/player/sessions/StructureSetAccessFeeSessionImplementation.cpp \
+		server/zone/objects/player/sessions/DroidMaintenanceSessionImplementation.cpp \
 		server/zone/objects/region/CityRegionImplementation.cpp \
 		server/zone/objects/tangible/threat/ThreatMapObserverImplementation.cpp \
 		server/zone/objects/area/LuaActiveArea.cpp \
@@ -640,6 +642,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/ArmorObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/droid/BaseDroidModuleComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.cpp \
+		server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidEffectsModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidRepairModuleDataComponent.cpp \
 		server/zone/objects/tangible/components/droid/DroidAutoRepairModuleDataComponent.cpp \

@@ -207,7 +207,6 @@ int DnaManager::addRange(lua_State* L) {
 	int count = loadedDnaData.increment();
 	if (ConfigManager::instance()->isProgressMonitorActivated())
 		printf("\r\tLoading dna range: [%d] / [745]\t", count);
-
 	return 0;
 }
 void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int quality) {
