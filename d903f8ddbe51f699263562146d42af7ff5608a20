@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_8c30cbe9",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2652,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-19T06:18:06Z",
+      "side": 1,
+      "message": "Add the check here as well to make players invuln vs ai while loading.",
+      "revId": "d903f8ddbe51f699263562146d42af7ff5608a20",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_ac3387f5",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-19T06:18:06Z",
+      "side": 1,
+      "message": "Put this after the null check.",
+      "revId": "d903f8ddbe51f699263562146d42af7ff5608a20",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
