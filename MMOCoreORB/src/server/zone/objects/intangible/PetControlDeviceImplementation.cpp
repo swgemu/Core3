@@ -68,6 +68,13 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
+	if (!pet->getCooldownTimerMap()->isPast("call_cooldown")) {
+		if (petType == PetManager::DROIDPET)
+			player->sendSystemMessage("@pet/droid_modules:droid_maint_on_maint_run"); //You cannot call that droid. It is currently on a maintenance run.
+		else
+			player->sendSystemMessage("@pet/pet_menu:cant_call"); // cant call pet right now
+		return;
+	}
 	assert(pet->isLockedByCurrentThread());
 
 	unsigned int petFaction = pet->getFaction();

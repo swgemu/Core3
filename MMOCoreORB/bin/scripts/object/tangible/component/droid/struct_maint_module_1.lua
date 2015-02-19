@@ -43,6 +43,7 @@
 
 object_tangible_component_droid_struct_maint_module_1 = object_tangible_component_droid_shared_struct_maint_module_1:new {
 
+	dataObjectComponent = "DroidMaintenanceModuleDataComponent",
 
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ"},

@@ -220,15 +220,15 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 			damageMin = component->getMinDamage();
 			damageMax = component->getMaxDamage();
 			armor = component->getArmor();
-			kinResist = component->getKinetic();
-			energyResist = component->getEnergy();
-			blastResist = component->getBlast();
-			coldResist = component->getCold();
-			heatResist = component->getHeat();
-			elecResist = component->getElectrical();
-			acidResist = component->getAcid();
-			stunResist = component->getStun();
-			saberResist = component->getSaber();
+			kinResist = round(component->getKinetic());
+			energyResist = round(component->getEnergy());
+			blastResist = round(component->getBlast());
+			coldResist = round(component->getCold());
+			heatResist = round(component->getHeat());
+			elecResist = round(component->getElectrical());
+			acidResist = round(component->getAcid());
+			stunResist = round(component->getStun());
+			saberResist = round(component->getSaber());
 			health = component->getHealth();
 			action = component->getAction();
 			mind = component->getMind();
@@ -273,15 +273,15 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 		float complexityFactor = manufact->getComplexity();
 		// Step 1. total resists
 		float negativeFactor = Genetics::generateNegativeFactor(
-				isSpecialResist(WeaponObject::KINETIC) ? 0 : kinResist < 0 ? kinResist : 0,
-				isSpecialResist(WeaponObject::ACID) ? 0 : acidResist < 0 ? acidResist : 0,
-				isSpecialResist(WeaponObject::BLAST) ? 0 : blastResist < 0 ? blastResist : 0,
-				isSpecialResist(WeaponObject::COLD) ? 0 : coldResist < 0 ? coldResist : 0,
-				isSpecialResist(WeaponObject::ELECTRICITY) ? 0 : elecResist < 0 ? elecResist : 0,
-				isSpecialResist(WeaponObject::ENERGY) ? 0 : energyResist < 0 ? energyResist : 0,
-				isSpecialResist(WeaponObject::HEAT) ? 0 : heatResist < 0 ? heatResist : 0,
-				isSpecialResist(WeaponObject::LIGHTSABER) ? 0 : saberResist < 0 ? saberResist : 0,
-				isSpecialResist(WeaponObject::STUN) ? 0 : stunResist < 0 ? stunResist : 0);
+				isSpecialResist(WeaponObject::KINETIC) ? 0 : kinResist < 0 ? 1 : 0,
+				isSpecialResist(WeaponObject::ACID) ? 0 : acidResist < 0 ? 1 : 0,
+				isSpecialResist(WeaponObject::BLAST) ? 0 : blastResist < 0 ? 1 : 0,
+				isSpecialResist(WeaponObject::COLD) ? 0 : coldResist < 0 ? 1 : 0,
+				isSpecialResist(WeaponObject::ELECTRICITY) ? 0 : elecResist < 0 ? 1 : 0,
+				isSpecialResist(WeaponObject::ENERGY) ? 0 : energyResist < 0 ? 1 : 0,
+				isSpecialResist(WeaponObject::HEAT) ? 0 : heatResist < 0 ? 1 : 0,
+				isSpecialResist(WeaponObject::LIGHTSABER) ? 0 : saberResist < 0 ? 1 : 0,
+				isSpecialResist(WeaponObject::STUN) ? 0 : stunResist < 0 ?1 : 0);
 
 		float positiveFactor = Genetics::generatePositiveFactor(
 				isSpecialResist(WeaponObject::KINETIC) ? 0 : kinResist > 0 ? kinResist : 0,
@@ -307,7 +307,9 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 		float damFactor = Genetics::generateDamageFactor(chanceHit,attackSpeed,damageMax);
 		float hamFactor = Genetics::generateHamFactor(health,action,mind);
 		float armorFactor = armor * 10.0;
-		level = ((negativeFactor + positiveFactor + specialFactor + damFactor)/hamFactor) + armorFactor - (skinFactor/complexityFactor) - (clFactor/complexityFactor);
+		level = ((negativeFactor + (positiveFactor) + specialFactor + damFactor)/hamFactor) + hamFactor + armorFactor - (skinFactor/complexityFactor) - (clFactor/complexityFactor);
+		if (chanceHit > 0.5) // greater than 50% like armor is + 10 levels
+			level += 10;
 		level = round(level);
 		if (getLevel() > 75) {
 			level = 75;

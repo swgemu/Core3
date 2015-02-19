@@ -33,6 +33,7 @@
 #include "server/zone/objects/player/sui/callbacks/FindLostItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/DeleteAllItemsSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructureStatusSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/StructureAssignDroidSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructureWithdrawMaintenanceSuiCallback.h"
@@ -41,6 +42,8 @@
 #include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "tasks/DestroyStructureTask.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 void StructureManager::loadPlayerStructures(const String& zoneName) {
 
@@ -999,7 +1002,53 @@ void StructureManager::promptNameStructure(CreatureObject* creature,
 	ghost->addSuiBox(inputBox);
 	creature->sendMessage(inputBox->generateMessage());
 }
+void StructureManager::promptMaintenanceDroid(StructureObject* structure, CreatureObject* creature) {
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
+	if (ghost == NULL)
+		return;
+
+	Vector<DroidObject*> droids;
+	ManagedReference<SceneObject*> datapad = creature->getSlottedObject("datapad");
+	if(datapad == NULL) {
+		return;
+	}
+	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+
+		if (object != NULL && object->isPetControlDevice()) {
+			PetControlDevice* device = cast<PetControlDevice*>( object.get());
+
+			if (device->getPetType() == PetManager::DROIDPET) {
+				DroidObject* pet = cast<DroidObject*>(device->getControlledObject());
+				if (pet->isMaintenanceDroid()) {
+					droids.add(pet);
+				}
+			}
+		}
+	}
+	if (droids.size() == 0) {
+		creature->sendSystemMessage("@player_structure:no_droids");
+		return;
+	}
+
+	ManagedReference<SuiListBox*> box = new SuiListBox(creature,SuiWindowType::STRUCTURE_ASSIGN_DROID);
+	box->setCallback(new StructureAssignDroidSuiCallback(creature->getZoneServer()));
+
+	box->setPromptText("@sui:assign_droid_prompt");
+	box->setPromptTitle("@sui:assign_droid_title"); // Configure Effects
+	box->setOkButton(true, "@ok");
+
+	// Check if player has a droid called with a maintenance module installed
+	for (int i = 0; i < droids.size(); ++i) {
+		DroidObject* droidObject = droids.elementAt(i);
+		box->addMenuItem(droidObject->getDisplayedName(),droidObject->getObjectID());
+	}
+	box->setUsingObject(structure);
+	ghost->addSuiBox(box);
+	creature->sendMessage(box->generateMessage());
+
+}
 void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature,
 		StructureObject* structure) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
