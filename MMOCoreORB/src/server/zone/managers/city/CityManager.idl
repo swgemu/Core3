@@ -85,6 +85,7 @@ class CityManager extends ManagedService implements Logger {
 	
 	public transient static int cityUpdateInterval;
 	public transient static int newCityGracePeriod;
+	public transient static int oldCityGracePeriod;
 	public transient static unsigned long citySpecializationCooldown;
 	public transient static int cityVotingDuration;
 	public transient static unsigned long treasuryWithdrawalCooldown;
@@ -127,6 +128,8 @@ class CityManager extends ManagedService implements Logger {
 	public native boolean isCityInRange(Zone zone, float x, float y);
 	
 	public native CityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
+
+	public native void assessCitizens(CityRegion city);
 	
 	public native void processCityUpdate(CityRegion city);
 	

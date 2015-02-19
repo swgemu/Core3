@@ -16,6 +16,8 @@ void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, boo
 	ManagedReference<CityRegion*> cityRegion = sceneObject->getCityRegion();
 
 	if (cityRegion != NULL ) {
+		Locker clocker(cityRegion, sceneObject);
+
 		int i;
 		for ( i = CityManager::METROPOLIS; i > 0; i--)
 			cityRegion->destroyAllStructuresForRank(uint8(i));
@@ -27,6 +29,8 @@ void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, boo
 		if (cityRegion->getCityHall() == sceneObject) {
 			cityRegion->setCityHall(NULL);
 		}
+
+		clocker.release();
 
 		CityManager* cityManager = sceneObject->getZoneServer()->getCityManager();
 

@@ -561,6 +561,16 @@ void ZoneImplementation::updateCityRegions() {
 
 		city->rescheduleUpdateEvent(seconds);
 
+		if (city->hasAssessmentPending()) {
+			Time* nextAssessmentTime = city->getNextAssessmentTime();
+			int seconds2 = -1 * round(nextAssessmentTime->miliDifference() / 1000.f);
+
+			if (seconds2 < 0)
+				seconds2 = 0;
+
+			city->scheduleCitizenAssessment(seconds2);
+		}
+
 		if (!city->isRegistered())
 			continue;
 

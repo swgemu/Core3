@@ -6,7 +6,8 @@
  */
 
 #include "server/zone/objects/region/CityRegion.h"
-#include "events/CityUpdateEvent.h"
+#include "server/zone/objects/region/events/CityUpdateEvent.h"
+#include "server/zone/objects/region/events/CitizenAssessmentEvent.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/ServerCore.h"
 #include "server/zone/managers/city/CityManager.h"
@@ -100,6 +101,10 @@ void CityRegionImplementation::initialize() {
 
 	cityUpdateEvent = NULL;
 
+	citizenAssessmentEvent = NULL;
+
+	assessmentPending = false;
+
 	zoningRights.setAllowOverwriteInsertPlan();
 	zoningRights.setNullValue(0);
 
@@ -156,6 +161,20 @@ void CityRegionImplementation::rescheduleUpdateEvent(uint32 seconds) {
 	cityUpdateEvent->schedule(seconds * 1000);
 
 	Core::getTaskManager()->getNextExecutionTime(cityUpdateEvent, nextUpdateTime);
+}
+
+void CityRegionImplementation::scheduleCitizenAssessment(uint32 seconds) {
+
+
+	if (citizenAssessmentEvent == NULL) {
+		citizenAssessmentEvent = new CitizenAssessmentEvent(_this.get(), ServerCore::getZoneServer());
+	} else if (citizenAssessmentEvent->isScheduled()) {
+		citizenAssessmentEvent->cancel();
+	}
+
+	citizenAssessmentEvent->schedule(seconds * 1000);
+
+	Core::getTaskManager()->getNextExecutionTime(citizenAssessmentEvent, nextCitizenAssessment);
 }
 
 int CityRegionImplementation::getTimeToUpdate() {

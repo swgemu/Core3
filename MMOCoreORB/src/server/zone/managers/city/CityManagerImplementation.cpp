@@ -48,6 +48,7 @@ Vector<uint8> CityManagerImplementation::citizensPerRank;
 Vector<uint16> CityManagerImplementation::radiusPerRank;
 int CityManagerImplementation::cityUpdateInterval = 0;
 int CityManagerImplementation::newCityGracePeriod = 0;
+int CityManagerImplementation::oldCityGracePeriod = 0;
 uint64 CityManagerImplementation::citySpecializationCooldown = 0;
 int CityManagerImplementation::cityVotingDuration = 0;
 uint64 CityManagerImplementation::treasuryWithdrawalCooldown = 0;
@@ -111,6 +112,7 @@ void CityManagerImplementation::loadLuaConfig() {
 	//Only load the static values on the first zone.
 	cityUpdateInterval = lua->getGlobalInt("CityUpdateInterval");
 	newCityGracePeriod = lua->getGlobalInt("NewCityGracePeriod");
+	oldCityGracePeriod = lua->getGlobalInt("OldCityGracePeriod");
 	citySpecializationCooldown = lua->getGlobalLong(
 			"CitySpecializationCooldown");
 	cityVotingDuration = lua->getGlobalInt("CityVotingDuration");
@@ -203,10 +205,19 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor,
 	Region* region =
 			city->addRegion(x, y, radiusPerRank.get(OUTPOST - 1), true);
 
-	city->rescheduleUpdateEvent(newCityGracePeriod * 60); //Minutes
 	city->resetVotingPeriod();
+	city->setAssessmentPending(true);
+	city->scheduleCitizenAssessment(newCityGracePeriod * 60);
+	city->rescheduleUpdateEvent(cityUpdateInterval * 60); //Minutes
 
-	//TODO: Send email to mayor.
+	StringIdChatParameter params("city/city", "new_city_body");
+	params.setTO(mayor);
+	UnicodeString subject = "@city/city:new_city_subject";
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+	chatManager->sendMail("@city/city:new_city_from", subject, params,
+				mayor->getFirstName(), NULL);
+
 
 	cities.put(cityName, city);
 
@@ -671,6 +682,46 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city,
 	creature->sendMessage(listbox->generateMessage());
 }
 
+void CityManagerImplementation::assessCitizens(CityRegion* city) {
+	Locker locker(city);
+
+	city->cleanupCitizens();
+
+	int citizens = city->getCitizenCount();
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
+	CreatureObject* mayor = NULL;
+
+	if (obj != NULL && obj->isPlayerCreature()) {
+		mayor = cast<CreatureObject*> (obj.get());
+	}
+
+	if (citizens < citizensPerRank.get(0)) {
+		if (mayor != NULL) {
+			StringIdChatParameter params("city/city", "new_city_fail_body");
+			UnicodeString subject = "@city/city:new_city_fail_subject";
+
+			chatManager->sendMail("@city/city:new_city_from", subject, params,
+					mayor->getFirstName(), NULL);
+		}
+
+		StructureManager::instance()->destroyStructure(city->getCityHall());
+
+	} else {
+		if (mayor != NULL) {
+			StringIdChatParameter params("city/city", "new_city_success_body");
+			UnicodeString subject = "@city/city:new_city_success_subject";
+
+			chatManager->sendMail("@city/city:new_city_from", subject, params,
+					mayor->getFirstName(), NULL);
+		}
+
+		city->setAssessmentPending(false);
+	}
+}
+
 void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	info("Processing city update: " + city->getRegionName());
 
@@ -685,16 +736,15 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 
 		radius = city->getRadius();
 	} catch (Exception& e) {
-		error(
-				e.getMessage()
-						+ "in CityManagerImplementation::processCityUpdate");
-
+		error(e.getMessage() + "in CityManagerImplementation::processCityUpdate");
 		return;
 	}
 
 	Locker lock(city);
 
 	city->cleanupCitizens();
+
+	updateCityVoting(city);
 
 	int citizens = city->getCitizenCount();
 
@@ -712,8 +762,6 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 		if (citizens >= advanceCitizens)
 			expandCity(city);
 	}
-
-	updateCityVoting(city);
 
 	ManagedReference<SceneObject*> mayor = zoneServer->getObject(
 			city->getMayorID());
@@ -1193,14 +1241,16 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city,
 
 void CityManagerImplementation::contractCity(CityRegion* city) {
 	uint8 newRank = city->getCityRank() - 1;
+	bool startedAssessment = false;
 
-	if (newRank == CLIENT) {
-		StructureManager::instance()->destroyStructure(city->getCityHall());
-		return;
+	if (city->getCitizenCount() < citizensPerRank.get(0)) {
+		newRank = OUTPOST;
+		startedAssessment = true;
+		city->setAssessmentPending(true);
+		city->scheduleCitizenAssessment(oldCityGracePeriod * 60);
 	}
 
-	ManagedReference<SceneObject*> obj = zoneServer->getObject(
-			city->getMayorID());
+	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
 
 	if (obj != NULL && obj->isCreatureObject()) {
 		CreatureObject* mayor = cast<CreatureObject*> (obj.get());
@@ -1209,21 +1259,30 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 			unregisterCity(city, mayor);
 		}
 
-		//Send out contraction mail.
-		StringIdChatParameter params("city/city", "city_contract_body");
-		params.setTO(city->getRegionName());
-		params.setDI(newRank);
+		ChatManager* chatManager = zoneServer->getChatManager();
 
-		UnicodeString subject = "@city/city:city_contract_subject";
+		if (startedAssessment) {
+			StringIdChatParameter params("city/city", "city_invalid_body");
+			params.setDI(newRank);
+			UnicodeString subject = "@city/city:city_invalid_subject";
 
-		if (newRank == OUTPOST) {
-			params.setStringId("city/city", "city_invalid_body");
-			subject = "@city/city:city_invalid_subject";
+			chatManager->sendMail("@city/city:new_city_from", subject, params,
+					mayor->getFirstName(), NULL);
 		}
 
-		ChatManager* chatManager = zoneServer->getChatManager();
-		chatManager->sendMail("@city/city:new_city_from", subject, params,
-				mayor->getFirstName(), NULL);
+		if (newRank != city->getCityRank()) {
+			//Send out contraction mail.
+			StringIdChatParameter params("city/city", "city_contract_body");
+			params.setTO(city->getRegionName());
+			params.setDI(newRank);
+
+			UnicodeString subject = "@city/city:city_contract_subject";
+
+			chatManager->sendMail("@city/city:new_city_from", subject, params,
+					mayor->getFirstName(), NULL);
+		} else {
+			return;
+		}
 	}
 
 	CitizenList* cityMilitia = city->getMilitiaMembers();
@@ -1301,7 +1360,6 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {
-	//TODO: Review this.
 	Locker locker(_this.get());
 
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(
@@ -1311,13 +1369,6 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	if (obj != NULL && obj->isCreatureObject()) {
 		CreatureObject* mayor = cast<CreatureObject*> (obj.get());
 
-		//Send out contraction mail.
-		StringIdChatParameter params("city/city", "new_city_fail_body");
-
-		ChatManager* chatManager = zoneServer->getChatManager();
-		chatManager->sendMail("@city/city:new_city_from",
-				"@city/city:new_city_fail_subject", params,
-				mayor->getFirstName(), NULL);
 		unregisterCity(city, mayor);
 	}
 
@@ -1327,15 +1378,15 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 
 	locker.release();
 
+	Locker lock(city);
+
 	city->destroyActiveAreas();
 
 	ManagedReference<StructureObject*> cityhall = city->getCityHall();
 
 	if (cityhall != NULL) {
-		city->setCityHall(NULL);
-
 		if (zone == NULL)
-			cityhall->getZone();
+			zone = cityhall->getZone();
 
 		if (zone != NULL) {
 			StructureManager::instance()->destroyStructure(cityhall);
@@ -1345,8 +1396,6 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	zoneServer->destroyObjectFromDatabase(city->_getObjectID());
 
 	city->setZone(NULL);
-
-	//TODO: Destroy civic structures.
 }
 
 void CityManagerImplementation::registerCitizen(CityRegion* city,

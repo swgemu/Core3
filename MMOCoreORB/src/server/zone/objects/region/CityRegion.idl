@@ -22,6 +22,7 @@ include server.zone.objects.scene.variables.StringId;
 include system.lang.Time;
 include server.zone.objects.region.CitizenList;
 include server.zone.objects.region.events.CityUpdateEvent;
+include server.zone.objects.region.events.CitizenAssessmentEvent;
 include server.zone.objects.region.CityStructureInventory;
 include system.thread.atomic.AtomicInteger;
 import system.thread.Mutex;
@@ -89,7 +90,14 @@ class CityRegion extends ManagedObject implements Logger {
 	@dereferenced
 	protected Time nextInauguration;
 
+	@dereferenced
+	protected Time nextCitizenAssessment;
+
 	protected transient CityUpdateEvent cityUpdateEvent;
+
+	protected transient CitizenAssessmentEvent citizenAssessmentEvent;
+
+	boolean assessmentPending;
 
 	protected string citySpecialization; //We want to implement this with skill mods.
 
@@ -167,6 +175,7 @@ class CityRegion extends ManagedObject implements Logger {
 	public native Region addRegion(float x, float y, float radius, boolean persistent);
 
 	public native void rescheduleUpdateEvent(unsigned int seconds);
+	public native void scheduleCitizenAssessment(unsigned int seconds);
 
 	public native void destroyActiveAreas();
 
@@ -210,6 +219,21 @@ class CityRegion extends ManagedObject implements Logger {
 	@dirty
 	public Time getNextUpdateTime() {
 		return nextUpdateTime;
+	}
+
+	@local
+	@dirty
+	public Time getNextAssessmentTime() {
+		return nextCitizenAssessment;
+	}
+
+	@dirty
+	public boolean hasAssessmentPending() {
+		return assessmentPending;
+	}
+
+	public void setAssessmentPending(boolean pend) {
+		assessmentPending = pend;
 	}
 
 	@dirty
