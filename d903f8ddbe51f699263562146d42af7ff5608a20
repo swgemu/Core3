@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_4c52d314",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2652,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-19T06:21:36Z",
+      "side": 1,
+      "message": "Better yet, just do the check once before the object-\u003eisAiAgent() check.",
+      "parentUuid": "1a486d77_8c30cbe9",
+      "revId": "d903f8ddbe51f699263562146d42af7ff5608a20",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_ac3387f5",
         "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
         "patchSetId": 1
