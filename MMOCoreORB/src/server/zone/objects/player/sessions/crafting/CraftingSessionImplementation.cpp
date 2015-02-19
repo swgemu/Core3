@@ -1328,6 +1328,23 @@ void CraftingSessionImplementation::addSkillMods() {
 
 	for (int i = 0; i < skillMods->size(); i++) {
 		VectorMapEntry<String, int> mod = skillMods->elementAt(i);
+
+		if (prototype->isWearableObject()) {
+			WearableObject* wearable = prototype.castTo<WearableObject*>();
+			VectorMap<String, int>* wearableMods = wearable->getWearableSkillMods();
+
+			if (wearableMods->contains(mod.getKey())) {
+				int oldValue = wearableMods->get(mod.getKey());
+				int newValue = mod.getValue() + oldValue;
+
+				if (newValue > 25)
+					newValue = 25;
+
+				wearableMods->put(mod.getKey(), newValue);
+				continue;
+			}
+		}
+
 		prototype->addSkillMod(SkillModManager::WEARABLE, mod.getKey(), mod.getValue(), false);
 	}
 }
