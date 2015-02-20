@@ -69,11 +69,11 @@ function GetTargetBase:doAction(pAgent)
 			return BEHAVIOR_SUCCESS
 		end
 		
-		--if (agent:isInCombat()) then
+		if (agent:isInCombat()) then
 		--print("5")
-		--	agent:clearCombatState(true)
-		--	agent:setOblivious()
-		--end
+			agent:clearCombatState(true)
+			agent:setOblivious()
+		end
 	end
 	return BEHAVIOR_FAILURE
 end

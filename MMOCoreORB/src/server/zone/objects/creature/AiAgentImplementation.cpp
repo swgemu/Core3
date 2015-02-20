@@ -569,7 +569,7 @@ bool AiAgentImplementation::validateTarget() {
 	if (followCopy->isCreatureObject() && (!followCopy.castTo<CreatureObject*>()->isAttackableBy(_this.get()) || followCopy.castTo<CreatureObject*>()->isDead() || followCopy.castTo<CreatureObject*>()->isIncapacitated()))
 		return false;
 
-	if (followCopy->isTangibleObject() && (followCopy.castTo<TangibleObject*>()->isAttackableBy(_this.get()) || followCopy.castTo<TangibleObject*>()->isDestroyed()))
+	if (followCopy->isTangibleObject() && (!followCopy.castTo<TangibleObject*>()->isAttackableBy(_this.get()) || followCopy.castTo<TangibleObject*>()->isDestroyed()))
 		return false;
 
 	return true;
