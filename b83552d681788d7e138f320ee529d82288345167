@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_ec94df45",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2553,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "Reduce this to 70 since those are the only objects you need anyway.",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_cc912354",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2576,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "You don\u0027t want to broadcast custom spam to others?",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_ac9ee761",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "color is already 0, you don\u0027t need to re-set it.",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_8c9b2b72",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "Reduce to 70",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_4c8d3331",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "Why is this code repeated? Can\u0027t you just call the CREO method you made?",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_2c82f700",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/Intimidate1Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "Just delete it if it\u0027s not necessary.",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_0c873b11",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/Intimidate2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_ec7bbf27",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RescueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "delete these comments",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_cc78032e",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/RescueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "delete",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_ac75c733",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TauntCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "Once again, don\u0027t copy and paste code. It\u0027s unbecoming.",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_8c720b48",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/Warcry1Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "delete",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_6c8fcf24",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/Warcry2Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "delete",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_4c941337",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/WookieeRoarCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "delete",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_2c99d76e",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/CombatSpam.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "If you want to do it this way, don\u0027t use the variable name string. string is a type in most c++ implementations.",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_0c9e1b57",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/CombatSpam.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:20:35Z",
+      "side": 1,
+      "message": "insertAscii() is overloaded to accept char arrays or Strings. Just insertAscii(\"\"); should be fine",
+      "revId": "b83552d681788d7e138f320ee529d82288345167",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
