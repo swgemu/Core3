@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/pet/PetRechargeCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetRechargeOtherCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetRecoverCommand.h"
+#include "server/zone/objects/creature/commands/pet/PetSpecialAttackCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetStayCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetStoreCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetTrickCommand.h"
@@ -361,6 +362,7 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("petRecharge").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petRechargeOther").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petRecover").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("petSpecialAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petStay").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petStore").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petTransfer").toLowerCase())->setCommandGroup(0xe1c9a54a);
@@ -1541,6 +1543,7 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<PetRechargeCommand>(String("petRecharge").toLowerCase());
 	commandFactory.registerCommand<PetRechargeOtherCommand>(String("petRechargeOther").toLowerCase());
 	commandFactory.registerCommand<PetRecoverCommand>(String("petRecover").toLowerCase());
+	commandFactory.registerCommand<PetSpecialAttackCommand>(String("petSpecialAttack").toLowerCase());
 	commandFactory.registerCommand<PetStayCommand>(String("petStay").toLowerCase());
 	commandFactory.registerCommand<PetStoreCommand>(String("petStore").toLowerCase());
 	commandFactory.registerCommand<PetTransferCommand>(String("petTransfer").toLowerCase());
