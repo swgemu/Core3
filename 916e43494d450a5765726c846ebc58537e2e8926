@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_2cdd5743",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetSpecialAttackCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T21:16:03Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this automatically happen after the attack is enqueued? I\u0027m not sure I see a reason to force the startCombat() call like this.",
+      "revId": "916e43494d450a5765726c846ebc58537e2e8926",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_0ce29b03",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetSpecialAttackCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T21:16:03Z",
+      "side": 1,
+      "message": "Same thing here, the observer should activate the STARTCOMBAT interrupt automatically through the combatmanager system.",
+      "revId": "916e43494d450a5765726c846ebc58537e2e8926",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
