@@ -37,8 +37,8 @@ dune_kimogila = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareacombo",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"creatureareacombo",""}
 	}
 }
 

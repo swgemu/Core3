@@ -31,6 +31,7 @@ cannibal_dewback = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"dizzyattack","dizzyChance=50"}
 	}
 }

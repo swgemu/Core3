@@ -31,8 +31,8 @@ cavern_spider_hunter = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"mediumpoison",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"mediumpoison",""}
 	}
 }
 

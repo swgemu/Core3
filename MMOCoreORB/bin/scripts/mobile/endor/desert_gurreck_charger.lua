@@ -32,6 +32,7 @@ desert_gurreck_charger = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"blindattack","blindChance=50"}
 	}
 }

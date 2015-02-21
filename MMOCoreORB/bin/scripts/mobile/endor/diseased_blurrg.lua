@@ -31,8 +31,8 @@ diseased_blurrg = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareableeding",""},
-		{"mediumdisease",""}
+		{"mediumdisease",""},
+		{"creatureareableeding",""}
 	}
 }
 

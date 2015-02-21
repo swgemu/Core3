@@ -31,8 +31,8 @@ blood_frenzied_boar_wolf = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"creatureareableeding",""}
+		{"creatureareableeding",""},
+		{"blindattack","blindChance=50"}
 	}
 }
 

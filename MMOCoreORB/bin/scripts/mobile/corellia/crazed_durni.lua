@@ -32,6 +32,7 @@ crazed_durni = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"posturedownattack","postureDownChance=50"}
 	}
 }

@@ -28,7 +28,7 @@ arachne_queen = Creature:new {
 	templates = {"object/mobile/queen_arachne.iff"},
 	scale = 1.3,
 	lootGroups = {},
-	weapons = {"creature_spit_small_green","creature_spit_small_green"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareapoison",""},

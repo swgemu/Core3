@@ -28,9 +28,10 @@ angry_baz_nitch_avenger = Creature:new {
 	templates = {"object/mobile/baz_nitch_hue.iff"},
 	scale = 1.05,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"dizzyattack","dizzyChance=50"}
 	}
 }

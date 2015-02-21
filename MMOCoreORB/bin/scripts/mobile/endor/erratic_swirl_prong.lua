@@ -31,8 +31,8 @@ erratic_swirl_prong = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

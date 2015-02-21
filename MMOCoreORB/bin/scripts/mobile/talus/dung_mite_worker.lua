@@ -32,8 +32,8 @@ dung_mite_worker = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"mediumdisease",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"mediumdisease",""}
 	}
 }
 

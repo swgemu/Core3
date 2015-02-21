@@ -31,8 +31,8 @@ angler = Creature:new {
 	weapons = {"creature_spit_small_green","creature_spit_small_green"},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"strongpoison",""}
+		{"strongpoison",""},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 
