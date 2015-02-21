@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_8c68cb88",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2015-02-21T04:48:15Z",
+      "side": 1,
+      "message": "What\u0027s this for? Doesn\u0027t seem to be used anywhere.",
+      "revId": "1f4acad5c2fcfdaba20f070561da6a927f81f25f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_6c058fc1",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/DroidMaintenanceSessionImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2015-02-21T04:48:15Z",
+      "side": 1,
+      "message": "Oi, the spelling \u003d/",
+      "revId": "1f4acad5c2fcfdaba20f070561da6a927f81f25f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_2c0f97e3",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/DroidMaintenanceSessionImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2015-02-21T04:48:15Z",
+      "side": 1,
+      "message": "Why not do this at the beginning of the function?",
+      "revId": "1f4acad5c2fcfdaba20f070561da6a927f81f25f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_0c14dbf3",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/DroidMaintenanceSessionImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2015-02-21T04:48:15Z",
+      "side": 1,
+      "message": "Whats this used for? Are we doing a check against powerCost or are we letting the droid go out without enough power as stated in the comments below?",
+      "revId": "1f4acad5c2fcfdaba20f070561da6a927f81f25f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_ecf85fc6",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/DroidMaintenanceSessionImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2015-02-21T04:48:15Z",
+      "side": 1,
+      "message": "Might as well initialize this variable in the else block since it\u0027s not used anywhere else.",
+      "revId": "1f4acad5c2fcfdaba20f070561da6a927f81f25f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_8cffabaa",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/DroidMaintenanceSessionImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2015-02-21T04:48:15Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this be where we wanted to use powerCost, rather then wiping the droid\u0027s entire power pool?",
+      "revId": "1f4acad5c2fcfdaba20f070561da6a927f81f25f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
