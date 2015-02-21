@@ -243,7 +243,7 @@ public:
 		float div = 5.0;
 		float accumulator = 0;
 		accumulator = (a/div) + (b/div) + (c/div) + (d/div) + (e/div) + (f/div) + (g/div) + (h/div) + (i/div);
-		return accumulator * 2.5;
+		return accumulator * 2.50;
 	}
 
 	/** reversal formulas **/
@@ -255,6 +255,8 @@ public:
 		float x = value/18;
 		int min = x - (35 + quality);
 		int max = x + (11 - quality);
+		if (min < 0)
+			min = 0;
 		return (int) (System::random(max-min) + min);
 	}
 
@@ -262,22 +264,30 @@ public:
 	 * Reverse damage value
 	 */
 	static int reverseDamage(int value, int quality) {
-		float x = round(value/0.8);
+		float x = round(((float)value) * 0.8);
 		int min = x - (35 + quality);
 		int max = x + (11 - quality);
+		if (min < 0)
+			min = 0;
 		return (int)(System::random(max-min) + min);
 	}
 	static float reverseHit(float hit, int quality) {
 		float x = round((hit - 0.19) * 1500.0);
 		float min = x - (9 + quality);
+		if (min < 0)
+			min = 0;
 		float max = x + (21 - quality);
 		return (float)(System::random(max-min) + min);
 	}
 	static float reverseResistance(float effective, int armor) {
 		// find effective resist
-		float min = effective - 10;
-		float max = effective + 20;
+		// multiply effective resist * 10 to get base + 500 for armor
+		// so rancor level 75 comes out with 250 + 500 - the wiggle.
+		float min = (effective * 10) - 10;
+		float max = (effective * 10 ) + 20;
 		float score = 0;
+		if (min < 0)
+			min = 0;
 		score = System::random(max - min) + min;
 		if (score < 0)
 			score = 0;

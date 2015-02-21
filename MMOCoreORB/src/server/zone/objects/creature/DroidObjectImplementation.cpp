@@ -56,7 +56,9 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
+#include "server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.h"
 #include "server/zone/managers/crafting/labratories/DroidMechanics.h"
+#include "server/zone/objects/structure/StructureObject.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
@@ -77,7 +79,6 @@ void DroidObjectImplementation::initializeTransientMembers() {
 			}
 		}
 	}
-
 }
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
@@ -381,6 +382,41 @@ bool DroidObjectImplementation::hasStorage() {
 		BaseDroidModuleComponent* module = modules.get(i);
 		if(module->getModuleName() == "item_storage_module") {
 			return true;
+		}
+	}
+	return false;
+}
+
+bool DroidObjectImplementation::isMaintenanceDroid() {
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if(module->getModuleName() == "maintenance_module") {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool DroidObjectImplementation::assignStructure( StructureObject* structure ){
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if(module->getModuleName() == "maintenance_module") {
+			DroidMaintenanceModuleDataComponent* maintModule = dynamic_cast<DroidMaintenanceModuleDataComponent*>(module);
+			if( maintModule != NULL ){
+				return maintModule->assignStructure( structure->getObjectID() );
+			}
+		}
+	}
+	return false;
+}
+bool DroidObjectImplementation::isStructureAssigned( StructureObject* structure ){
+	for( int i=0; i<modules.size(); i++){
+		BaseDroidModuleComponent* module = modules.get(i);
+		if(module->getModuleName() == "maintenance_module") {
+			DroidMaintenanceModuleDataComponent* maintModule = dynamic_cast<DroidMaintenanceModuleDataComponent*>(module);
+			if( maintModule != NULL ){
+				return maintModule->isAssignedTo( structure->getObjectID() );
+			}
 		}
 	}
 	return false;

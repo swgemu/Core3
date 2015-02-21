@@ -207,7 +207,6 @@ int DnaManager::addRange(lua_State* L) {
 	int count = loadedDnaData.increment();
 	if (ConfigManager::instance()->isProgressMonitorActivated())
 		printf("\r\tLoading dna range: [%d] / [745]\t", count);
-
 	return 0;
 }
 void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int quality) {
@@ -299,13 +298,15 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 
 	int ferocity = creatureTemplate->getFerocity();
 	int cl = creature->getLevel();
-	int cle = Genetics::reverseHit(creature->getHitChance(),quality);
+	int cle = Genetics::reverseHit(creature->getChanceHit(),quality);
 	int cou = (int)System::random(545-485)+485; // random fixed range
 	int dep = (int)System::random(780-500)+500; // random fixed range
 	int dex = Genetics::reverseHam(creature->getMaxHAM(3),quality);
 	int end = (int)System::random(525-470)+470; // random fixed range
 	int baseFerocity = (ferocity * 45) + 95;
-	int fie = (int)System::random((baseFerocity+11-quality)-(baseFerocity-20-quality)) + (baseFerocity-20-quality);
+	int minFie = baseFerocity-20-quality;
+	int maxFie = (baseFerocity+11-quality);
+	int fie = (int)(System::random(maxFie-minFie) + minFie);
 	int frt = Genetics::reverseResistance(creature->getEffectiveResist(),creature->getArmor());
 	int har = Genetics::reverseHam(creature->getMaxHAM(0),quality);
 	int ite = Genetics::reverseHam(creature->getMaxHAM(6),quality);

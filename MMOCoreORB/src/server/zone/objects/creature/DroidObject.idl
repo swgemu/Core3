@@ -55,6 +55,7 @@ import engine.util.u3d.Coordinate;
 import server.zone.objects.tangible.components.droid.BaseDroidModuleComponent;
 include server.zone.objects.tangible.tool.CraftingStation;
 import server.zone.templates.SharedObjectTemplate;
+import server.zone.objects.structure.StructureObject;
 
 class DroidObject extends AiAgent {
 	
@@ -213,6 +214,7 @@ class DroidObject extends AiAgent {
 		}
 		
 	}
+	
 	@dirty
 	public native void runModulePowerDrain();
 	
@@ -445,4 +447,13 @@ class DroidObject extends AiAgent {
 	
 	@dirty
 	public native boolean hasStorage();
+	
+	@dirty
+	public native boolean isMaintenanceDroid();
+	
+	@local
+	public native boolean assignStructure( StructureObject structure );
+	
+	@local
+	public native boolean isStructureAssigned(StructureObject structure);
 }
