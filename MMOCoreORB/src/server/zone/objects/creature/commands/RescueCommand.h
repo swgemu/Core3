@@ -98,14 +98,14 @@ public:
 		if(chanceRoll > 30) {
 			ThreatMap* threatMap = targetCreature->getThreatMap();
 			if(threatMap->setThreatState(creature, ThreatStates::TAUNTED, 5000, 5000)) {
-				CombatSpam* msg = new CombatSpam(creature, rescuedPlayer, NULL, 0, "cbt_spam", "rescue_success", creature);
-				creature->broadcastMessage(msg, true);
+				//CombatSpam* msg = new CombatSpam(creature, rescuedPlayer, NULL, 0, "cbt_spam", "rescue_success", creature);
+				//creature->broadcastMessage(msg, true);
 				return SUCCESS;
 			}
 		}
 
-		CombatSpam* msg = new CombatSpam(creature, rescuedPlayer, NULL, 0, "cbt_spam", "rescue_fail", creature);
-		creature->broadcastMessage(msg, true);
+		//CombatSpam* msg = new CombatSpam(creature, rescuedPlayer, NULL, 0, "cbt_spam", "rescue_fail", creature);
+		//creature->broadcastMessage(msg, true);
 
 		return SUCCESS;
 	}

@@ -9,6 +9,7 @@
 #define COMBATQUEUECOMMAND_H_
 
 #include"server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -20,6 +21,7 @@
 #include "server/zone/objects/creature/commands/effect/StateEffect.h"
 #include "server/zone/objects/creature/commands/effect/DotEffect.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
+#include "server/zone/packets/object/CombatSpam.h"
 #include "QueueCommand.h"
 #include "server/zone/managers/collision/PathFinderManager.h"
 
@@ -554,7 +556,7 @@ public:
 			if (creature->isKnockedDown() || creature->isProne()) {
 				if (80 > System::random(100))
 					creature->setPosture(CreaturePosture::UPRIGHT, true);
-				break;
+			break;
 			}
 
 			if (creature->isRidingMount()) {
@@ -568,7 +570,6 @@ public:
 			creature->updateKnockdownRecovery();
 			creature->updateLastKnockdown();
 			creature->sendSystemMessage("@cbt_spam:posture_knocked_down");
-
 			break;
 		case CommandEffect::POSTUREUP:
 			if (creature->isRidingMount()) {
@@ -579,10 +580,12 @@ public:
 			if (creature->getPosture() == CreaturePosture::PRONE) {
 				creature->setPosture(CreaturePosture::CROUCHED);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_1");
+				creature->sendStateCombatSpam("force_posture_change_1", 0, false);
 				creature->updatePostureUpRecovery();
 			} else if (creature->getPosture() == CreaturePosture::CROUCHED) {
 				creature->setPosture(CreaturePosture::UPRIGHT);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_0");
+				creature->sendStateCombatSpam("force_posture_change_0", 0, false);
 				creature->updatePostureUpRecovery();
 			}
 
@@ -596,10 +599,12 @@ public:
 			if (creature->getPosture() == CreaturePosture::UPRIGHT) {
 				creature->setPosture(CreaturePosture::CROUCHED);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_1");
+				creature->sendStateCombatSpam("force_posture_change_1", 0, false);
 				creature->updatePostureDownRecovery();
 			} else if (creature->getPosture() == CreaturePosture::CROUCHED) {
 				creature->setPosture(CreaturePosture::PRONE);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_2");
+				creature->sendStateCombatSpam("force_posture_change_2", 0, false);
 				creature->updatePostureDownRecovery();
 			}
 
@@ -629,6 +634,63 @@ public:
 			break;
 		}
 		return;
+	}
+
+	//Override for special cases (skills like Taunt that don't have 5 result strings)
+	virtual void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage) {
+		Zone* zone = attacker->getZone();
+		if (zone == NULL || attacker == NULL || defender == NULL)
+			return;
+
+		String stringName = combatSpam;
+		byte color = 0;
+
+		switch (attackResult) {
+		case CombatManager::HIT:
+			stringName += "_hit";
+			color = 1;
+			break;
+		case CombatManager::MISS:
+			stringName += "_miss";
+			color = 0;
+			break;
+		case CombatManager::DODGE:
+			stringName += "_evade";
+			color = 0;
+			break;
+		case CombatManager::COUNTER:
+			stringName += "_counter";
+			color = 0;
+			break;
+		case CombatManager::BLOCK:
+		case CombatManager::RICOCHET:
+			stringName += "_block";
+			color = 0;
+			break;
+		default:
+			break;
+		}
+
+		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+		if (vec != NULL) {
+			closeObjects.removeAll(vec->size(), 10);
+			vec->safeCopyTo(closeObjects);
+		} else {
+			info("Null closeobjects vector in CombatQueueCommand::sendAttackCombatSpam", true);
+			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+		}
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
+
+			if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
+				CreatureObject* receiver = cast<CreatureObject*>( object);
+				CombatSpam* spam = new CombatSpam(attacker, defender, receiver, NULL, damage, "cbt_spam", stringName, color);
+				receiver->sendMessage(spam);
+			}
+		}
 	}
 
 	uint8 getAttackType() const {

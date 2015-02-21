@@ -74,8 +74,8 @@ public:
 		int res = doCombatAction(creature, target);
 
 		if (res == TOOFAR && creature->isPlayerCreature()) {
-			CombatSpam* msg = new CombatSpam(creature, targetObject.castTo<TangibleObject*>(), creature->getWeapon(), 0, "cbt_spam", "intim_out_of_range", creature);
-			creature->sendMessage(msg);
+			//CombatSpam* msg = new CombatSpam(creature, targetObject.castTo<TangibleObject*>(), creature->getWeapon(), 0, "cbt_spam", "intim_out_of_range", creature);
+			//creature->sendMessage(msg);
 		}
 		
 		if (res == GENERALERROR)

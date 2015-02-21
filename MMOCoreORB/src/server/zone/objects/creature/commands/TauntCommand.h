@@ -65,12 +65,15 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isCreatureObject())
+		if (targetObject == NULL || !targetObject->isCreatureObject() || targetObject->isPlayerCreature())
 			return INVALIDTARGET;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
 
 		if (targetCreature == NULL)
+			return INVALIDTARGET;
+
+		if (!targetCreature->isAttackableBy(creature))
 			return INVALIDTARGET;
 
 		int res = doCombatAction(creature, target);
@@ -80,12 +83,65 @@ public:
 		if (res == SUCCESS) {
 			targetCreature->getThreatMap()->addAggro(creature, creature->getSkillMod("taunt") * 10, 0);
 			targetCreature->getThreatMap()->setThreatState(creature, ThreatStates::TAUNTED,(uint64)creature->getSkillMod("taunt") / 10, (uint64)creature->getSkillMod("taunt") / 10);
-			combatManager->broadcastCombatSpam(creature, targetCreature, creature->getWeapon(), 0, "taunt_success");
-		} else
-			combatManager->broadcastCombatSpam(creature, targetCreature, creature->getWeapon(), 0, "taunt_fail");
+			//creature->doCombatAnimation(creature,String("taunt").hashCode(),0,0xFF);
+			creature->doAnimation("taunt");
 
+			if (creature->isPlayerCreature())
+				creature->sendSystemMessage("@cbt_spam:taunt_success_single");
+
+		} else {
+
+			if (creature->isPlayerCreature())
+				creature->sendSystemMessage("@cbt_spam:taunt_fail_single");
+		}
 
 		return res;
+	}
+
+	void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage) {
+		Zone* zone = attacker->getZone();
+		if (zone == NULL)
+			return;
+
+		String stringName = combatSpam;
+		byte color = 1;
+
+		switch (attackResult) {
+		case CombatManager::HIT:
+			stringName += "_success";
+			break;
+		case CombatManager::MISS:
+		case CombatManager::DODGE:
+		case CombatManager::COUNTER:
+		case CombatManager::BLOCK:
+		case CombatManager::RICOCHET:
+			stringName += "_fail";
+			color = 0;
+			break;
+		default:
+			break;
+		}
+
+		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+		if (vec != NULL) {
+			closeObjects.removeAll(vec->size(), 10);
+			vec->safeCopyTo(closeObjects);
+		} else {
+			info("Null closeobjects vector in TauntCommand::sendAttackCombatSpam", true);
+			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+		}
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
+
+			if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
+				CreatureObject* receiver = cast<CreatureObject*>( object);
+				CombatSpam* spam = new CombatSpam(attacker, NULL, receiver, NULL, damage, "cbt_spam", stringName, color);
+				receiver->sendMessage(spam);
+			}
+		}
 	}
 
 };
