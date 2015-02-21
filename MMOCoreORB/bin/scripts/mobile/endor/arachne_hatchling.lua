@@ -31,6 +31,7 @@ arachne_hatchling = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"mediumpoison",""}
 	}
 }

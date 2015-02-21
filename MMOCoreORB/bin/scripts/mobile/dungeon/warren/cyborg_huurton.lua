@@ -30,8 +30,8 @@ cyborg_huurton = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

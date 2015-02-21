@@ -31,6 +31,7 @@ desert_squill = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"stunattack","stunChance=50"}
 	}
 }

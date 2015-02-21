@@ -32,8 +32,8 @@ arachne_fleshripper = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"strongpoison",""}
+		{"strongpoison",""},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

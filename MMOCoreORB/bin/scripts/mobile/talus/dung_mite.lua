@@ -31,6 +31,7 @@ dung_mite = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"intimidationattack","intimidationChance=50"}
 	}
 }

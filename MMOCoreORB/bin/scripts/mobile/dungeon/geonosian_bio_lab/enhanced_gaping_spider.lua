@@ -36,7 +36,7 @@ enhanced_gaping_spider = Creature:new {
 			lootChance = 6000000
 		}	
 	},
-	weapons = {"creature_spit_small_toxicgreen"},
+	weapons = {"creature_spit_heavy_flame"},
 	conversationTemplate = "",
 	attacks = {
 		{"strongpoison",""},

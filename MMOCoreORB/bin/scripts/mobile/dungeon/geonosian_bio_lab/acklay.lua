@@ -38,8 +38,8 @@ acklay = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareacombo",""},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"creatureareacombo",""}
 	}
 }
 

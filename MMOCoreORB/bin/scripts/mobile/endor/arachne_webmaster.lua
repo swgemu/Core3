@@ -32,8 +32,8 @@ arachne_webmaster = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"strongpoison",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"strongpoison",""}
 	}
 }
 

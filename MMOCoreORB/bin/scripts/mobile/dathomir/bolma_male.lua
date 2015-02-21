@@ -32,6 +32,7 @@ bolma_male = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"stunattack","stunChance=50"}
 	}
 }

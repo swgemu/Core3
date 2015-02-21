@@ -31,8 +31,8 @@ bark_mite_burrower_queen = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"strongdisease",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"strongdisease",""}
 	}
 }
 

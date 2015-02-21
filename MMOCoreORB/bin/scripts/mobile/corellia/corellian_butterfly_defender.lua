@@ -32,6 +32,7 @@ corellian_butterfly_defender = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"intimidationattack","intimidationChance=50"}
 	}
 }

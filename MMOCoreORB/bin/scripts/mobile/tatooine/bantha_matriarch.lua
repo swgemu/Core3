@@ -32,6 +32,7 @@ bantha_matriarch = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"posturedownattack","postureDownChance=50"}
 	}
 }

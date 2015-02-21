@@ -39,6 +39,7 @@ brackaset_male = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"posturedownattack","postureDownChance=50"}
 	}
 }
