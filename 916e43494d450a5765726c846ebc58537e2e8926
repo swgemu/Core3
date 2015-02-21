@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a486d77_cce36304",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetSpecialAttackCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2015-02-21T21:19:24Z",
+      "side": 1,
+      "message": "shouldn\u0027t you check for empty args?",
+      "revId": "916e43494d450a5765726c846ebc58537e2e8926",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_2cdd5743",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetSpecialAttackCommand.h",
         "patchSetId": 2
