@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_cc9fe34f",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityDecorationTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-21T22:29:59Z",
+      "side": 1,
+      "message": "these two things should be weak references to save on resources.",
+      "revId": "1090d369f63fd6b52022a42f4af36983d15a7301",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
