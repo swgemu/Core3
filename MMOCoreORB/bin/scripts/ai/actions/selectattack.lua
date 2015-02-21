@@ -23,20 +23,31 @@ end
 function SelectAttackBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local creature = CreatureObject(pAgent)
-		
+
 		if (creature:getQueueSize() > 3) then
 			return BEHAVIOR_SUCCESS
 		end
-		
-    local agent = AiAgent(pAgent)
-		
-		agent:selectSpecialAttack(-1)
-		if (not agent:validateStateAttack() or getRandomNumber(5) == 1) then
-			agent:selectDefaultAttack()
+
+		local agent = AiAgent(pAgent)
+
+		if (agent:isCreature()) then
+			if (getRandomNumber(5) ~= 1) then
+				agent:selectDefaultAttack()
+			else
+				agent:selectSpecialAttack(-1)
+				if (not agent:validateStateAttack()) then
+					agent:selectDefaultAttack()
+				end
+			end
+		else
+			agent:selectSpecialAttack(-1)
+			if (not agent:validateStateAttack() or getRandomNumber(5) == 1) then
+				agent:selectDefaultAttack()
+			end
 		end
-		
+
 		agent:enqueueAttack()
-		
+
 		return BEHAVIOR_SUCCESS
 	end
 	return BEHAVIOR_FAILURE

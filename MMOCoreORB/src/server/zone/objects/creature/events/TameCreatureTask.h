@@ -160,8 +160,9 @@ public:
 			AiAgent* agent = cast<AiAgent*>(creature.get());
 			ManagedReference<SceneObject*> parent = player->getParent().get();
 
-			if (agent->getHomeObject() == NULL) {
-				float respawn = agent->getRespawnTimer() * 1000;
+			float respawn = agent->getRespawnTimer() * 1000;
+
+			if (respawn > 0 && agent->getHomeObject() == NULL) {
 
 				if (agent->getRandomRespawn()) {
 					respawn = System::random(respawn) + (respawn / 2.f);
