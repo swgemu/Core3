@@ -1,6 +1,6 @@
 
-#ifndef PETATTACKCOMMAND_H_
-#define PETATTACKCOMMAND_H_
+#ifndef PETSPECIALATTACKCOMMAND_H_
+#define PETSPECIALATTACKCOMMAND_H_
 
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/AiAgent.h"
@@ -9,9 +9,9 @@
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/managers/creature/PetManager.h"
 
-class PetAttackCommand : public QueueCommand {
+class PetSpecialAttackCommand : public QueueCommand {
 public:
-	PetAttackCommand(const String& name, ZoneProcessServer* server)
+	PetSpecialAttackCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 	}
 
@@ -22,24 +22,17 @@ public:
 		if (controlDevice == NULL)
 			return GENERALERROR;
 
+		int petType = controlDevice->getPetType();
+		if( petType == PetManager::DROIDPET || petType == PetManager::FACTIONPET ) {
+			return GENERALERROR;
+		}
+
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
 		if( pet == NULL )
 			return GENERALERROR;
 
 		if (pet->hasRidingCreature())
 			return GENERALERROR;
-
-		// Check if droid has power
-		if( controlDevice->getPetType() == PetManager::DROIDPET ){
-			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
-			if( droidPet == NULL )
-				return GENERALERROR;
-
-			if( !droidPet->hasPower() ){
-				creature->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
-				return GENERALERROR;
-			}
-		}
 
 		Reference<TangibleObject*> targetObject = server->getZoneServer()->getObject(target, true).castTo<TangibleObject*>();
 		if (targetObject == NULL || !targetObject->isAttackableBy(pet) ) {
@@ -49,12 +42,29 @@ public:
 
 		ManagedReference<TangibleObject*> targetTano = targetObject.castTo<TangibleObject*>();
 
-		controlDevice->setLastCommand(PetManager::ATTACK);
+		int attackNumber = Integer::valueOf(arguments.toCharArray());
+
+		if (attackNumber < 1 || attackNumber > 2)
+			return INVALIDPARAMETERS;
+
+		switch (attackNumber) {
+		case 1:
+			controlDevice->setLastCommand(PetManager::SPECIAL_ATTACK1);
+			break;
+		case 2:
+			controlDevice->setLastCommand(PetManager::SPECIAL_ATTACK2);
+			break;
+		}
+
 		controlDevice->setLastCommandTarget(targetTano);
 
-		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
+		if (!pet->isInCombat()) {
+			pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
+		} else if (targetTano != pet->getFollowObject()) {
+			pet->setDefender(targetTano);
+		}
 
-		pet->selectDefaultAttack();
+		pet->selectSpecialAttack(attackNumber - 1);
 		pet->enqueueAttack(QueueCommand::FRONT);
 
 		return SUCCESS;
@@ -63,4 +73,4 @@ public:
 };
 
 
-#endif /* PETATTACKCOMMAND_H_ */
+#endif /* PETSPECIALATTACKCOMMAND_H_ */

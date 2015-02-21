@@ -475,11 +475,17 @@ void AiAgentImplementation::selectSpecialAttack(int attackNum) {
 	}
 
 	if (attackNum >= 0 && attackNum < attackMap->size()) {
-		String args = attackMap->getArguments(attackNum);
-		nextActionCRC = attackMap->getCommand(attackNum).hashCode();
-		nextActionArgs = attackMap->getArguments(attackNum);
-	} else
+		String cmd = attackMap->getCommand(attackNum);
+
+		if (cmd.isEmpty()) {
+			selectDefaultAttack();
+		} else {
+			nextActionCRC = cmd.hashCode();
+			nextActionArgs = attackMap->getArguments(attackNum);
+		}
+	} else {
 		selectDefaultAttack();
+	}
 }
 
 void AiAgentImplementation::selectDefaultAttack() {
@@ -491,11 +497,11 @@ void AiAgentImplementation::selectDefaultAttack() {
 	nextActionArgs = "";
 }
 
-void AiAgentImplementation::enqueueAttack() {
+void AiAgentImplementation::enqueueAttack(int priority) {
 	ManagedReference<SceneObject*> followCopy = getFollowObject();
 
 	if (followCopy != NULL) {
-		enqueueCommand(nextActionCRC, 0, followCopy->getObjectID(), nextActionArgs);
+		enqueueCommand(nextActionCRC, 0, followCopy->getObjectID(), nextActionArgs, priority);
 		nextActionCRC = 0;
 		nextActionArgs = "";
 	}

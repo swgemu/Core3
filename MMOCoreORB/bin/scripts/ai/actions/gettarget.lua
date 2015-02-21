@@ -89,11 +89,11 @@ function GetTargetCreaturePet:doAction(pAgent)
 		local agent = AiAgent(pAgent)
 		
 		local command = agent:getLastCommand()
-		if (command ~= PET_ATTACK and command ~= PET_GUARD ) then
+		if (command ~= PET_ATTACK and command ~= PET_GUARD and command ~= PET_SPECIAL_ATTACK1 and command ~= PET_SPECIAL_ATTACK2) then
 			return BEHAVIOR_FAILURE	
 		end
 
-		if (command == PET_ATTACK ) then
+		if (command ~= PET_GUARD ) then
 			local pTarget = agent:getLastCommandTarget()
 			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
 				agent:setFollowObject(pTarget)
