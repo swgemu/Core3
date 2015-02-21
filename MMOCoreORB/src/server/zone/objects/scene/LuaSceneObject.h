@@ -61,6 +61,7 @@ namespace scene {
 		int isCreatureObject(lua_State* L);
 		int isAiAgent(lua_State* L);
 		int isPlayerCreature(lua_State* L);
+		int isCreature(lua_State* L);
 		int isBuildingObject(lua_State* L);
 		int getZoneName(lua_State* L);
 		int sendTo(lua_State* L);

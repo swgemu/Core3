@@ -406,7 +406,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		for (int i = 0; i < cam->size(); i++) {
 			String commandName = cam->getCommand(i);
 
-			EXPECT_TRUE( commandConfigManager->contains(commandName) ) << "Attack: " << commandName.toCharArray() << " is not a valid command in mobile template: " << templateName;
+			EXPECT_TRUE( commandName.isEmpty() || commandConfigManager->contains(commandName) ) << "Attack: " << commandName.toCharArray() << " is not a valid command in mobile template: " << templateName;
 		}
 
 		// Very attackable npcs

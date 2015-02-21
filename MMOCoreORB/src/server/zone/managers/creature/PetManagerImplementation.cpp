@@ -237,10 +237,10 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
 	}
 	else if( isTrainedCommand( pcd, SPECIAL_ATTACK1, message ) ){
-		speaker->sendSystemMessage("SPECIAL_ATTACK1 pet command is not yet implemented.");
+		enqueuePetCommand(speaker, pet, String("petSpecialAttack").toLowerCase().hashCode(), "1");
 	}
 	else if( isTrainedCommand( pcd, SPECIAL_ATTACK2, message ) ){
-		speaker->sendSystemMessage("SPECIAL_ATTACK2 pet command is not yet implemented.");
+		enqueuePetCommand(speaker, pet, String("petSpecialAttack").toLowerCase().hashCode(), "2");
 	}
 	else if( isTrainedCommand( pcd, RANGED_ATTACK, message ) ){
 		speaker->sendSystemMessage("RANGED_ATTACK pet command is not yet implemented.");

@@ -152,11 +152,14 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 	if (attackMap != NULL)
 		skillNum = attackMap->size();
 	if (creaKnowledge >= 70) {
-		String skillname = "none";
+		String skillname = "";
 		if (skillNum >= 1)
 			skillname = attackMap->getCommand(0);
+
 		if (skillname == "creatureareaattack")
 			skillname = "unknown_attack";
+		else if (skillname.isEmpty())
+			skillname = "none";
 
 		StringBuffer skillMsg;
 		skillMsg << "@combat_effects:" << skillname;
@@ -165,13 +168,16 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 	}
 
 	if (creaKnowledge >= 80) {
-		String skillname = "none";
+		String skillname = "";
 		if (skillNum >= 2)
 			skillname = attackMap->getCommand(1);
 
-		StringBuffer skillMsg;
 		if (skillname == "creatureareaattack")
 			skillname = "unknown_attack";
+		else if (skillname.isEmpty())
+			skillname = "none";
+
+		StringBuffer skillMsg;
 		skillMsg << "@combat_effects:" << skillname;
 
 		alm->insertAttribute("pet_command_19", skillMsg.toString());
