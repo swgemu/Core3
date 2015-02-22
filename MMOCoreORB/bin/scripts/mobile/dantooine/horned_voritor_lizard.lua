@@ -38,8 +38,8 @@ horned_voritor_lizard = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareapoison",""},
-		{"strongpoison",""}
+		{"strongpoison",""},
+		{"creatureareapoison",""}
 	}
 }
 

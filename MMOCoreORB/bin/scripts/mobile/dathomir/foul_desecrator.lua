@@ -32,8 +32,8 @@ foul_desecrator = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareadisease",""},
-		{"strongdisease",""}
+		{"strongdisease",""},
+		{"creatureareadisease",""}
 	}
 }
 

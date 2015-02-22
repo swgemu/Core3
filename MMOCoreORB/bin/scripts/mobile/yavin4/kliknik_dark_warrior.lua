@@ -39,8 +39,8 @@ kliknik_dark_warrior = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

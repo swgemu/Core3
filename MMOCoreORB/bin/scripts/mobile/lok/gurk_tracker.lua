@@ -31,8 +31,8 @@ gurk_tracker = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"blindattack","blindChance=50"}
 	}
 }
 

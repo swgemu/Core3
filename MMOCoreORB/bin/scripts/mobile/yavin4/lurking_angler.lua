@@ -31,8 +31,8 @@ lurking_angler = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"mediumpoison",""}
+		{"mediumpoison",""},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

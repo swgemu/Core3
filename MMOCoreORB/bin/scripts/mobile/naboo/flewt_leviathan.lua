@@ -32,6 +32,7 @@ flewt_leviathan = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"dizzyattack","dizzyChance=50"}
 	}
 }

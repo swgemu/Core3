@@ -31,6 +31,7 @@ gaping_spider_broodling = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"mildpoison",""}
 	}
 }

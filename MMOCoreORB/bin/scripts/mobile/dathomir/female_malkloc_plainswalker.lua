@@ -32,8 +32,8 @@ female_malkloc_plainswalker = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareaknockdown","knockdownChance=30"},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"creatureareaknockdown","knockdownChance=30"}
 	}
 }
 

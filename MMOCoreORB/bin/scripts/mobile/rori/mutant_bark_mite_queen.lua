@@ -31,8 +31,8 @@ mutant_bark_mite_queen = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareableeding",""},
-		{"strongpoison",""}
+		{"strongpoison",""},
+		{"creatureareableeding",""}
 	}
 }
 

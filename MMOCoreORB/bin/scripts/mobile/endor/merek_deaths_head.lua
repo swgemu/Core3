@@ -32,8 +32,8 @@ merek_deaths_head = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"strongdisease",""},
-		{"strongpoison",""}
+		{"strongpoison",""},
+		{"strongdisease",""}
 	}
 }
 

@@ -31,6 +31,7 @@ fierce_borgle = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"blindattack","blindChance=50"}
 	}
 }

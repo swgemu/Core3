@@ -30,6 +30,7 @@ giant_decay_mite_hatchling = Creature:new {
         weapons = {},
         conversationTemplate = "",
         attacks = {
+		{"",""},
                 {"milddisease",""}
         }
 }

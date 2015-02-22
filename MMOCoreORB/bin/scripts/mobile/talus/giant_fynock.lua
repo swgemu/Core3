@@ -31,8 +31,8 @@ giant_fynock = Creature:new {
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareaknockdown","knockdownChance=30"},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack","intimidationChance=50"},
+		{"creatureareaknockdown","knockdownChance=30"}
 	}
 }
 

@@ -32,8 +32,8 @@ mature_snorbal_female = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"knockdownattack","knockdownChance=50"}
 	}
 }
 

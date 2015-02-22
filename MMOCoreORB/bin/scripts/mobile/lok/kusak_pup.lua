@@ -31,6 +31,7 @@ kusak_pup = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"blindattack","blindChance=50"}
 	}
 }

@@ -31,8 +31,8 @@ king_merek_harvester = Creature:new {
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"creatureareapoison",""}
+		{"creatureareapoison",""},
+		{"blindattack","blindChance=50"}
 	}
 }
 

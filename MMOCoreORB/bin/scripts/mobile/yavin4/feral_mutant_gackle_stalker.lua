@@ -31,8 +31,8 @@ feral_mutant_gackle_stalker = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"milddisease",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"milddisease",""}
 	}
 }
 

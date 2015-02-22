@@ -31,8 +31,8 @@ hermit_spider_queen = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"mildpoison",""}
+		{"mildpoison",""},
+		{"blindattack","blindChance=50"}
 	}
 }
 

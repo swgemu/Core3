@@ -32,6 +32,7 @@ hostile_thune_mother = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"blindattack","blindChance=50"}
 	}
 }

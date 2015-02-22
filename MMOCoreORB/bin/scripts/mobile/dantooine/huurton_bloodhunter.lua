@@ -32,7 +32,8 @@ huurton_bloodhunter = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

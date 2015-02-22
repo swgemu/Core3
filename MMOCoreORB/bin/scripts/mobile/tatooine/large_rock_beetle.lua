@@ -32,6 +32,8 @@ large_rock_beetle = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 
