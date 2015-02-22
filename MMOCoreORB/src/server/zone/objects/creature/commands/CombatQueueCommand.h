@@ -38,24 +38,6 @@ protected:
 	float forceCostMultiplier;
 	float forceCost;
 
-	int knockdownStateChance;
-	int postureDownStateChance;
-	int postureUpStateChance;
-
-	int dizzyStateChance;
-	int blindStateChance;
-	int stunStateChance;
-	int intimidateStateChance;
-	int nextAttackDelayChance;
-	int durationStateTime;
-
-	uint32 dotDuration;
-	uint64 dotType;
-	uint8 dotPool;
-	uint32 dotStrength;
-	float dotPotency;
-	bool dotDamageOfHit;
-
 	int range;
 
 	String accuracySkillMod;
@@ -95,25 +77,7 @@ public:
 
 		poolsToDamage = CombatManager::RANDOM;
 
-		knockdownStateChance = 0;
-		postureDownStateChance = 0;
-		postureUpStateChance = 0;
-		dizzyStateChance = 0;
-		blindStateChance = 0;
-		stunStateChance = 0;
-		intimidateStateChance = 0;
-		nextAttackDelayChance = 0;
-
-		durationStateTime = 10;
-
-		dotDuration = 0;
-		dotType = 0;
-		dotPool = 0;
-		dotStrength = 0;
-		dotPotency = 80;
-
 		coneAngle = 30;
-		dotDamageOfHit = false;
 
 		//for weapon set -1
 		range = -1;
@@ -207,26 +171,6 @@ public:
 		return CombatManager::instance()->calculateWeaponAttackSpeed(object, object->getWeapon(), speedMultiplier);
 	}
 
-	inline uint32 getDotDuration() const {
-		return dotDuration;
-	}
-
-	inline uint64 getDotType() const {
-		return dotType;
-	}
-
-	inline uint8 getDotPool() const {
-		return dotPool;
-	}
-
-	inline uint32 getDotStrength() const {
-		return dotStrength;
-	}
-
-	inline float getDotPotency() const {
-		return dotPotency;
-	}
-
 	inline float getHealthCostMultiplier() const {
 		return healthCostMultiplier;
 	}
@@ -247,36 +191,12 @@ public:
 		return accuracySkillMod;
 	}
 
-	inline int getBlindChance() const {
-		return blindStateChance;
-	}
-
 	inline float getDamageMultiplier() const {
 		return damageMultiplier;
 	}
 
 	inline int getAccuracyBonus() const {
 		return accuracyBonus;
-	}
-
-	inline int getDizzyChance() const {
-		return dizzyStateChance;
-	}
-
-	inline int getIntimidateChance() const {
-		return intimidateStateChance;
-	}
-
-	inline int getKnockdownChance() const {
-		return knockdownStateChance;
-	}
-
-	inline int getPostureDownChance() const {
-		return postureDownStateChance;
-	}
-
-	inline int getPostureUpChance() const {
-		return postureUpStateChance;
 	}
 
 	inline float getSpeedMultiplier() const {
@@ -287,20 +207,12 @@ public:
 		return speed;
 	}
 
-	inline int getStunChance() const {
-		return stunStateChance;
-	}
-
 	inline bool isAreaAction() const {
 		return areaAction;
 	}
 
 	inline bool isConeAction() const {
 		return coneAction;
-	}
-
-	inline bool isDotDamageOfHit() const {
-		return dotDamageOfHit;
 	}
 
 	inline int getConeAngle() const {
@@ -311,24 +223,12 @@ public:
 		return areaRange;
 	}
 
-	inline int getDurationStateTime() const {
-		return durationStateTime;
-	}
-
 	inline float getForceCostMultiplier() const {
 		return forceCostMultiplier;
 	}
 
 	inline float getForceCost() const {
 		return forceCost;
-	}
-
-	inline int getNextAttackDelayChance() const {
-		return nextAttackDelayChance;
-	}
-
-	void setBlindStateChance(int blindStateChance) {
-		this->blindStateChance = blindStateChance;
 	}
 
 	void setDamageMultiplier(float damageMultiplier) {
@@ -359,60 +259,8 @@ public:
 		this->forceCost = f;
 	}
 
-	void setDizzyStateChance(int dizzyStateChance) {
-		this->dizzyStateChance = dizzyStateChance;
-	}
-
-	void setIntimidateStateChance(int intimidateStateChance) {
-		this->intimidateStateChance = intimidateStateChance;
-	}
-
-	void setKnockdownStateChance(int knockdownStateChance) {
-		this->knockdownStateChance = knockdownStateChance;
-	}
-
-	void setPostureDownStateChance(int postureDownStateChance) {
-		this->postureDownStateChance = postureDownStateChance;
-	}
-
-	void setPostureUpStateChance(int postureUpStateChance) {
-		this->postureUpStateChance = postureUpStateChance;
-	}
-
-	void setNextAttackDelayChance(int i) {
-		this->nextAttackDelayChance = i;
-	}
-
-	void setDurationStateTime(int i) {
-		this->durationStateTime = i;
-	}
-
-	void setDotDuration(uint32 i) {
-		this->dotDuration = i;
-	}
-
-	void setDotType(uint64 l) {
-		this->dotType = l;
-	}
-
-	void setDotPool(uint8 c) {
-		this->dotPool = c;
-	}
-
-	void setDotStrength(uint32 i) {
-		this->dotStrength = i;
-	}
-
-	void setDotPotency(float f) {
-		this->dotPotency = f;
-	}
-
 	void setConeAngle(int i) {
 		this->coneAngle = i;
-	}
-
-	void setDotDamageOfHit(bool b) {
-		this->dotDamageOfHit = b;
 	}
 
 	void setAreaAction(bool b) {
@@ -437,10 +285,6 @@ public:
 
 	void setSpeed(float speedd) {
 		this->speed = speedd;
-	}
-
-	void setStunStateChance(int stunStateChance) {
-		this->stunStateChance = stunStateChance;
 	}
 
 	inline uint32 getAnimationCRC() const {

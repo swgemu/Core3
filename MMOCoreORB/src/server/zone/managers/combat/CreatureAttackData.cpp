@@ -50,14 +50,6 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 	stateEffects = data.stateEffects;
 	dotEffects = data.dotEffects;
-	nextAttackDelayChance = data.nextAttackDelayChance;
-	durationStateTime = data.durationStateTime;
-
-	dotDuration = data.dotDuration;
-	dotType = data.dotType;
-	dotPool = data.dotPool;
-	dotStrength = data.dotStrength;
-	dotPotency = data.dotPotency;
 
 	range = data.range;
 	coneAngle = data.coneAngle;
@@ -83,13 +75,6 @@ void CreatureAttackData::fillFromBase() {
 	poolsToDamage = baseCommand->getPoolsToDamage();
 	stateEffects = baseCommand->getStateEffects();
 	dotEffects = baseCommand->getDotEffects();
-	nextAttackDelayChance = baseCommand->getNextAttackDelayChance();
-	durationStateTime = baseCommand->getDurationStateTime();
-	dotDuration = baseCommand->getDotDuration();
-	dotType = baseCommand->getDotType();
-	dotPool = baseCommand->getDotPool();
-	dotStrength = baseCommand->getDotStrength();
-	dotPotency = baseCommand->getDotPotency();
 	coneAngle = baseCommand->getConeAngle();
 	range = baseCommand->getRange();
 	areaRange = baseCommand->getAreaRange();
@@ -141,27 +126,6 @@ void CreatureAttackData::setVariable(const String& var, const String& val) {
 		break;
 	case 0xBF4C6ADB: // String("poolsToDamage").hashCode()
 		poolsToDamage = Integer::valueOf(val);
-		break;
-	case 0xB8BC4726: // String("nextAttackDelayChance").hashCode()
-		nextAttackDelayChance = Integer::valueOf(val);
-		break;
-	case 0x91E2CE2E: // String("durationStateTime").hashCode()
-		durationStateTime = Integer::valueOf(val);
-		break;
-	case 0x3B3CF0ED: // String("dotDuration").hashCode()
-		dotDuration = (uint32)Long::valueOf(val);
-		break;
-	case 0x5292F0A8: // String("dotType").hashCode()
-		dotType = UnsignedLong::valueOf(val);
-		break;
-	case 0xB821C9FB: // String("dotPool").hashCode()
-		dotPool = (uint8)Integer::valueOf(val);
-		break;
-	case 0x35656F0F: // String("dotStrength").hashCode()
-		dotStrength = (uint32)Long::valueOf(val);
-		break;
-	case 0x509E1FC0: // String("dotPotency").hashCode()
-		dotPotency = Float::valueOf(val);
 		break;
 	case 0xD2C29953: // String("coneAngle").hashCode()
 		coneAngle = Integer::valueOf(val);
