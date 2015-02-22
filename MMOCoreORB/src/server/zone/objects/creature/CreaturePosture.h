@@ -126,22 +126,25 @@ public:
 
 class CreaturePosture : public Singleton<CreaturePosture>, public Object, public Logger {
 public:
-	static const uint8 INVALID = 0xFF;
-	static const uint8 UPRIGHT = 0;
-	static const uint8 CROUCHED = 1;
-	static const uint8 PRONE = 2;
-	static const uint8 SNEAKING = 3;
-	static const uint8 BLOCKING = 4;
-	static const uint8 CLIMBING = 5;
-	static const uint8 FLYING = 6;
-	static const uint8 LYINGDOWN = 7;
-	static const uint8 SITTING = 8;
-	static const uint8 SKILLANIMATING = 9;
-	static const uint8 DRIVINGVEHICLE = 10;
-	static const uint8 RIDINGCREATURE = 11;
-	static const uint8 KNOCKEDDOWN = 12;
-	static const uint8 INCAPACITATED = 13;
-	static const uint8 DEAD = 14;
+	
+	enum {
+		INVALID        = 0xFF,
+		UPRIGHT        = 0,
+		CROUCHED       = 1,
+		PRONE          = 2,
+		SNEAKING       = 3,
+		BLOCKING       = 4,
+		CLIMBING       = 5,
+		FLYING         = 6,
+		LYINGDOWN      = 7,
+		SITTING        = 8,
+		SKILLANIMATING = 9,
+		DRIVINGVEHICLE = 10,
+		RIDINGCREATURE = 11,
+		KNOCKEDDOWN    = 12,
+		INCAPACITATED  = 13,
+		DEAD           = 14
+	};
 
 	HashTable<uint8, CreatureMovementEntry> movementTable;
 

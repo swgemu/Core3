@@ -47,40 +47,41 @@ which carries forward this exception.
 
 class OptionBitmask {
 public:
-	static const uint32 NONE       = 0x00000000;
-	static const uint32 ACTIVATED   = 0x00000001;
-	static const uint32 VENDOR     = 0x00000002; //Vendor flag in creatures
-	static const uint32 INSURED    = 0x00000004;
-	static const uint32 CONVERSE   = 0x00000008; //Converse flag in creatures
-	static const uint32 UNKNOWN3   = 0x00000010;
-	static const uint32 YELLOW     = 0x00000020; //Yellow items in tangibles
-	static const uint32 UNKNOWN5   = 0x00000040;
-	static const uint32 UNKNOWN6   = 0x00000080;
-	static const uint32 HIDEHAM    = 0x00000100; //Shows no information about condition or HAM
-	static const uint32 UNKNOWN8   = 0x00000200;
-	static const uint32 UNKNOWN9   = 0x00000400;
-	static const uint32 QUESTGIVER = 0x00000800; //Info Icon 1 in creatures
-	static const uint32 VEHICLE    = 0x00001000; //Vehicles will only appear with this bit enabled
-	static const uint32 HASSERIAL  = 0x00002000; // Has a serial number
-	static const uint32 UNKNOWN13  = 0x00004000;
-	static const uint32 QUESTDONE  = 0x00008000; //Info Icon 2 in creatures
-	static const uint32 UNKNOWN14  = 0x00010000;
-	static const uint32 UNKNOWN15  = 0x00020000;
-	static const uint32 UNKNOWN16  = 0x00040000;
-	static const uint32 UNKNOWN17  = 0x00080000;
-	static const uint32 UNKNOWN18  = 0x00100000;
-	static const uint32 UNKNOWN19  = 0x00200000;
-	static const uint32 UNKNOWN20  = 0x00400000;
-	static const uint32 UNKNOWN21  = 0x00800000;
-	static const uint32 UNKNOWN22  = 0x01000000;
-	static const uint32 UNKNOWN23  = 0x02000000;
-	static const uint32 UNKNOWN24  = 0x04000000;
-	static const uint32 UNKNOWN25  = 0x08000000;
-	static const uint32 UNKNOWN26  = 0x10000000;
-	static const uint32 UNKNOWN27  = 0x20000000;
-	static const uint32 UNKNOWN28  = 0x40000000;
-	static const uint32 UNKNOWN29  = 0x80000000;
-
+	enum {
+		NONE       = 0x00000000,
+		ACTIVATED  = 0x00000001,
+		VENDOR     = 0x00000002, //Vendor flag in creatures
+		INSURED    = 0x00000004,
+		CONVERSE   = 0x00000008, //Converse flag in creatures
+		UNKNOWN3   = 0x00000010,
+		YELLOW     = 0x00000020, //Yellow items in tangibles
+		UNKNOWN5   = 0x00000040,
+		UNKNOWN6   = 0x00000080,
+		HIDEHAM    = 0x00000100, //Shows no information about condition or HAM
+		UNKNOWN8   = 0x00000200,
+		UNKNOWN9   = 0x00000400,
+		QUESTGIVER = 0x00000800, //Info Icon 1 in creatures
+		VEHICLE    = 0x00001000, //Vehicles will only appear with this bit enabled
+		HASSERIAL  = 0x00002000, // Has a serial number
+		UNKNOWN13  = 0x00004000,
+		QUESTDONE  = 0x00008000, //Info Icon 2 in creatures
+		UNKNOWN14  = 0x00010000,
+		UNKNOWN15  = 0x00020000,
+		UNKNOWN16  = 0x00040000,
+		UNKNOWN17  = 0x00080000,
+		UNKNOWN18  = 0x00100000,
+		UNKNOWN19  = 0x00200000,
+		UNKNOWN20  = 0x00400000,
+		UNKNOWN21  = 0x00800000,
+		UNKNOWN22  = 0x01000000,
+		UNKNOWN23  = 0x02000000,
+		UNKNOWN24  = 0x04000000,
+		UNKNOWN25  = 0x08000000,
+		UNKNOWN26  = 0x10000000,
+		UNKNOWN27  = 0x20000000,
+		UNKNOWN28  = 0x40000000,
+		UNKNOWN29  = 0x80000000
+	};
 };
 
 #endif /*OptionBitmask_H_*/
