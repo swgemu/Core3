@@ -4635,6 +4635,8 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 
 	player->addBuff(buff);
 
+	player->sendStateCombatSpam("burstrun_start", 0);
+
 	player->updateCooldownTimer("burstrun", (newCooldown + duration) * 1000);
 
 	Reference<BurstRunNotifyAvailableEvent*> task = new BurstRunNotifyAvailableEvent(player);

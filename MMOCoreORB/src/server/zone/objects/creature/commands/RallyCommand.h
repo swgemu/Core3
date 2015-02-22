@@ -83,9 +83,10 @@ public:
 
 		int chance = 75;
 
-		if (System::random(100) > chance)
-			player->sendSystemMessage("@cbt_spam:rally_fail_single");
-		else
+		if (System::random(100) > chance) {
+			player->sendSystemMessage("@cbt_spam:rally_fail_single"); //"You fail to rally the group!"
+			sendRallyCombatSpam(player, group, false);
+		} else
 			if (!doRally(player, group))
 				return GENERALERROR;
 
@@ -99,7 +100,8 @@ public:
 		int amount = 25;
 		int duration = 30;
 
-		sendCombatSpam(leader);
+		leader->sendSystemMessage("@cbt_spam:rally_success_single"); //"You rally the group!"
+		sendRallyCombatSpam(leader, group, true);
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
 
@@ -114,6 +116,9 @@ public:
 				continue;
 
 			Locker clocker(memberPlayer, leader);
+
+			if (memberPlayer != leader)
+				memberPlayer->sendSystemMessage("@cbt_spam:rally_success_group_msg"); //"Your group rallies to the attack!"
 
 			ManagedReference<Buff*> buff = new Buff(memberPlayer, actionCRC, duration, BuffType::SKILL);
 
@@ -139,6 +144,59 @@ public:
 //		leader->updateCooldownTimer("rally", (duration + 30) * 1000);
 
 		return true;
+	}
+
+	void sendRallyCombatSpam(CreatureObject* leader, GroupObject* group, bool success) {
+		Zone* zone = leader->getZone();
+		if (zone == NULL || leader == NULL || group == NULL)
+			return;
+
+		String stringName = combatSpam;
+		byte color = 0;
+
+		if (success)
+			stringName += "_success";
+		else
+			stringName += "_fail";
+
+
+		/*To get this spam to come out properly:
+		  For all, attacker in packet is squad leader.
+		  For leader or group member, defender has to be any third party object.
+		  For bystanders, the defender is themselves.*/
+
+
+		//Send to group members if they are on the same planet.
+		for (int i = 0; i < group->getGroupSize(); i++) {
+			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+			if (member == NULL || !member->isPlayerCreature() || member->getZone() != leader->getZone())
+								continue;
+			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
+			CombatSpam* spam = new CombatSpam(leader, leader->getWeapon(), memberPlayer, NULL, 0, "cbt_spam", stringName, color);
+			memberPlayer->sendMessage(spam);
+		}
+
+		//Send to players near the leader and not in group.
+		CloseObjectsVector* vec = (CloseObjectsVector*) leader->getCloseObjects();
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+		if (vec != NULL) {
+			closeObjects.removeAll(vec->size(), 10);
+			vec->safeCopyTo(closeObjects);
+		} else {
+			info("Null closeobjects vector in RallyCommand::sendRallyCombatSpam", true);
+			zone->getInRangeObjects(leader->getWorldPositionX(), leader->getWorldPositionY(), 128, &closeObjects, true);
+		}
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
+			if (object == NULL || !object->isPlayerCreature() || !leader->isInRange(object, 70) || group->hasMember(object))
+				continue;
+
+			CreatureObject* receiver = cast<CreatureObject*>( object); //in range player who isn't in group.
+
+			CombatSpam* spam = new CombatSpam(leader, receiver, receiver, NULL, 0, "cbt_spam", stringName, color);
+			receiver->sendMessage(spam);
+		}
 	}
 
 };
