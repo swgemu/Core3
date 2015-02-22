@@ -103,7 +103,9 @@ public:
 class ThreatMap : public VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry> {
 public:
 	/// Time between normal target evaluation
-	static const int EVALUATIONCOOLDOWN = 24000;
+	enum {
+		EVALUATIONCOOLDOWN = 24000
+	};
 
 protected:
 	ManagedWeakReference<TangibleObject*> self;

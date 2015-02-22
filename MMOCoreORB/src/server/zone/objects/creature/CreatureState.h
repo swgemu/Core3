@@ -54,41 +54,44 @@ class CreatureState : public Singleton<CreatureState>, public Logger, public Obj
 public:
 	HashTable<String, uint64> states;
 
-	static const uint64 INVALID = 0x00;
-	static const uint64 COVER = 0x01;
-	static const uint64 COMBAT = 0x02;
-	static const uint64 PEACE = 0x04;
-	static const uint64 AIMING = 0x08;
-	static const uint64 ALERT = 0x10;
-	static const uint64 BERSERK = 0x20;
-	static const uint64 FEIGNDEATH = 0x40;
-	static const uint64 COMBATATTITUDEEVASIVE = 0x80;
-	static const uint64 COMBATATTITUDENORMAL = 0x100;
-	static const uint64 COMBATATTITUDEAGGRESSIVE = 0x200;
-	static const uint64 TUMBLING = 0x400;
-	static const uint64 RALLIED = 0x800;
-	static const uint64 STUNNED = 0x1000;
-	static const uint64 BLINDED = 0x2000;
-	static const uint64 DIZZY = 0x4000;
-	static const uint64 INTIMIDATED = 0x8000;
-	static const uint64 IMMOBILIZED = 0x10000;
-	static const uint64 FROZEN = 0x20000;
-	static const uint64 SWIMMING = 0x40000;
-	static const uint64 SITTINGONCHAIR = 0x80000;
-	static const uint64 CRAFTING = 0x100000;
-	static const uint64 GLOWINGJEDI = 0x200000;
-	static const uint64 MASKSCENT = 0x400000;
-	static const uint64 POISONED = 0x800000;
-	static const uint64 BLEEDING = 0x1000000;
-	static const uint64 DISEASED = 0x2000000;
-	static const uint64 ONFIRE = 0x4000000;
-	static const uint64 RIDINGMOUNT = 0x8000000; // Is riding a vehicle or creature mount
-	static const uint64 MOUNTEDCREATURE = 0x10000000; // Is a vehicle or creature mount that has a rider
-	static const uint64 PILOTINGSHIP = 0x20000000;
-	static const uint64 SHIPOPERATIONS = 0x40000000;
-	static const uint64 SHIPGUNNER = 0x80000000;
-	static const uint64 SHIPINTERIOR = (uint64) 1 << 32;
-	static const uint64 PILOTINGPOBSHIP = (uint64) 1 << 33;
+	enum {
+		INVALID                  = 0x00,
+		COVER                    = 0x01,
+		COMBAT                   = 0x02,
+		PEACE                    = 0x04,
+		AIMING                   = 0x08,
+		ALERT                    = 0x10,
+		BERSERK                  = 0x20,
+		FEIGNDEATH               = 0x40,
+		COMBATATTITUDEEVASIVE    = 0x80,
+		COMBATATTITUDENORMAL     = 0x100,
+		COMBATATTITUDEAGGRESSIVE = 0x200,
+		TUMBLING                 = 0x400,
+		RALLIED                  = 0x800,
+		STUNNED                  = 0x1000,
+		BLINDED                  = 0x2000,
+		DIZZY                    = 0x4000,
+		INTIMIDATED              = 0x8000,
+		IMMOBILIZED              = 0x10000,
+		FROZEN                   = 0x20000,
+		SWIMMING                 = 0x40000,
+		SITTINGONCHAIR           = 0x80000,
+		CRAFTING                 = 0x100000,
+		GLOWINGJEDI              = 0x200000,
+		MASKSCENT                = 0x400000,
+		POISONED                 = 0x800000,
+		BLEEDING                 = 0x1000000,
+		DISEASED                 = 0x2000000,
+		ONFIRE                   = 0x4000000,
+		RIDINGMOUNT              = 0x8000000, // Is riding a vehicle or creature mount
+		MOUNTEDCREATURE          = 0x10000000, // Is a vehicle or creature mount that has a rider
+		PILOTINGSHIP             = 0x20000000,
+		SHIPOPERATIONS           = 0x40000000,
+		SHIPGUNNER               = 0x80000000,
+		SHIPINTERIOR             = (uint64) 1 << 32,
+		PILOTINGPOBSHIP          = (uint64) 1 << 33
+	};
+
 
 	void loadStateData() {
 		IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/include/state.iff");
