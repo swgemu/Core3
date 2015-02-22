@@ -39,8 +39,8 @@ spiked_slasher = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareapoison",""},
-		{"strongpoison",""}
+		{"strongpoison",""},
+		{"creatureareapoison",""}
 	}
 }
 

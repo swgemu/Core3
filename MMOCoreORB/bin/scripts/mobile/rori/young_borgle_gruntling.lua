@@ -31,6 +31,7 @@ young_borgle_gruntling = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"posturedownattack","postureDownChance=50"}
 	}
 }

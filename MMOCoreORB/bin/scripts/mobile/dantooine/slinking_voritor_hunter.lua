@@ -38,8 +38,8 @@ slinking_voritor_hunter = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"dizzyattack","dizzyChance=50"}
 	}
 }
 

@@ -32,6 +32,7 @@ rabid_squall = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"milddisease",""}
 	}
 }

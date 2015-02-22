@@ -32,6 +32,7 @@ ominous_skreeg = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"stunattack","stunChance=50"}
 	}
 }

@@ -27,11 +27,11 @@ venom_filled_arachne = Creature:new {
 
 	templates = {"object/mobile/queen_arachne.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"strongpoison",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"strongpoison",""}
 	}
 }
 

@@ -30,8 +30,8 @@ remmer_carrion_keeper = Creature:new {
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"blindattack","blindChance=50"}
 	}
 }
 

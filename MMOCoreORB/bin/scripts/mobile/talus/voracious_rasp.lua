@@ -31,8 +31,8 @@ voracious_rasp = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"strongpoison",""}
+		{"strongpoison",""},
+		{"blindattack","blindChance=50"}
 	}
 }
 

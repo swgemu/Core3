@@ -32,8 +32,8 @@ vine_rawl = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareadisease",""},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack","postureDownChance=50"},
+		{"mediumpoison",""}
 	}
 }
 

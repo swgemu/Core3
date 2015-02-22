@@ -29,11 +29,11 @@ vrelt_mother = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/stintaril_hue.iff",
 	scale = 1.2,
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"knockdownattack","knockdownChance=50"}
+		{"knockdownattack","knockdownChance=50"},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

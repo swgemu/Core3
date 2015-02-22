@@ -31,8 +31,8 @@ spined_snake_recluse = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"mediumpoison",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"mediumpoison",""}
 	}
 }
 

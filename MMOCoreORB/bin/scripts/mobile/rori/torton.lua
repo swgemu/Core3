@@ -30,8 +30,8 @@ torton = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"knockdownattack","knockdownChance=50"}
+		{"knockdownattack","knockdownChance=50"},
+		{"dizzyattack","dizzyChance=50"}
 	}
 }
 

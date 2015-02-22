@@ -31,8 +31,8 @@ quenker_ravager = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareapoison",""},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack","dizzyChance=50"},
+		{"creatureareapoison",""}
 	}
 }
 

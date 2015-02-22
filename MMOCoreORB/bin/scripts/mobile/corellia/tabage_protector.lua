@@ -32,8 +32,8 @@ tabage_protector = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"mildpoison",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"mildpoison",""}
 	}
 }
 

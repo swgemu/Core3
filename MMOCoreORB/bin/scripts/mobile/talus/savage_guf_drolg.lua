@@ -32,6 +32,7 @@ savage_guf_drolg = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"intimidationattack","intimidationChance=50"}
 	}
 }

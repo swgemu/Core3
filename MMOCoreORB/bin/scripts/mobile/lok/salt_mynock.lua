@@ -32,8 +32,8 @@ salt_mynock = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"knockdownattack","knockdownChance=50"}
+		{"knockdownattack","knockdownChance=50"},
+		{"blindattack","blindChance=50"}
 	}
 }
 

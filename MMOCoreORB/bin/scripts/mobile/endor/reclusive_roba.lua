@@ -31,8 +31,8 @@ reclusive_roba = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"blindattack","blindChance=50"}
 	}
 }
 

@@ -32,8 +32,8 @@ stout_ikopi_buck = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"posturedownattack","postureDownChance=50"}
 	}
 }
 

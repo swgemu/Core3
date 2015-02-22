@@ -32,8 +32,8 @@ razor_cat_eviscerator = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"knockdownattack","knockdownChance=50"}
+		{"knockdownattack","knockdownChance=50"},
+		{"intimidationattack","intimidationChance=50"}
 	}
 }
 

@@ -32,8 +32,8 @@ skreeg_warrior_elite = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"stunattack","stunChance=50"}
+		{"stunattack","stunChance=50"},
+		{"dizzyattack","dizzyChance=50"}
 	}
 }
 

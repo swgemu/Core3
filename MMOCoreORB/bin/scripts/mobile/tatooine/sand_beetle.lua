@@ -32,6 +32,7 @@ sand_beetle = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"",""},
 		{"stunattack","stunChance=50"}
 	}
 }

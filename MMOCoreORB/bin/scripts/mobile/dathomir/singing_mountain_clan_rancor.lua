@@ -47,6 +47,7 @@ singing_mountain_clan_rancor = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
+		{"intimidationattack","intimidationChance=50"},
 		{"intimidationattack","intimidationChance=50"}
 	}
 }
