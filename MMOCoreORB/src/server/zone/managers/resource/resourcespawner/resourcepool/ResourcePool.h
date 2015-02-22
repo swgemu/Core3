@@ -80,12 +80,14 @@ protected:
 
 public:
 
-	static const short NOPOOL = 0;
-	static const short MINIMUMPOOL = 1;
-	static const short RANDOMPOOL = 2;
-	static const short FIXEDPOOL = 3;
-	static const short NATIVEPOOL = 4;
-	static const short MANUALPOOL = 5;
+	enum {
+		NOPOOL,
+		MINIMUMPOOL,
+		RANDOMPOOL,
+		FIXEDPOOL,
+		NATIVEPOOL,
+		MANUALPOOL
+	};
 
 public:
 	  /** Constructor

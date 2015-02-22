@@ -13,8 +13,10 @@
 
 class PerformanceType {
 public:
-	static const int DANCE  = -1788534963;
-	static const int MUSIC  = 866729052;
+	enum {
+		DANCE  = -1788534963,
+		MUSIC  = 866729052
+	};
 
 };
 
