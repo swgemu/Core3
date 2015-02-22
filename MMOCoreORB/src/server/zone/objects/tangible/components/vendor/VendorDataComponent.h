@@ -51,20 +51,22 @@ protected:
 
 public:
 	/// 5 minutes
-	static const int USEXPINTERVAL = 5;
+	enum {
+		USEXPINTERVAL       = 5,
 
-	// 60 Minutes
-	static const int VENDORCHECKINTERVAL = 60;
-	static const int VENDORCHECKDELAY = 20;
+		// 60 Minutes
+		VENDORCHECKINTERVAL = 60,
+		VENDORCHECKDELAY    = 20,
 
-	static const int FIRSTWARNING = 60 * 60 * 24 * 25; // 5 days
-	static const int SECONDWARNING = 60 * 60 * 24 * 50; // 10 days
-	static const int EMPTYDELETE = 60 * 60 * 24 * 14; // 14 days
+		FIRSTWARNING        = 60 * 60 * 24 * 25, // 5 days
+		SECONDWARNING       = 60 * 60 * 24 * 50, // 10 days
+		EMPTYDELETE         = 60 * 60 * 24 * 14, // 14 days
 
-	static const int DELETEWARNING = 60 * 60 * 24 * 100; // 100 days
+		DELETEWARNING       = 60 * 60 * 24 * 100, // 100 days
 
-	static const int BARKRANGE = 15; //Meters
-	static const int BARKINTERVAL = 60 * 2; //Minutes
+		BARKRANGE           = 15, //Meters
+		BARKINTERVAL        = 60 * 2 //Minutes
+	};
 
 public:
 	VendorDataComponent();

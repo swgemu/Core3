@@ -47,228 +47,229 @@ which carries forward this exception.
 
 class SuiWindowType {
 public:
-	//This window type can be sent when you don't need to handle a callback.
-	static const uint16 NONE = 0;
+	enum {
+		NONE                               = 0, //This window type can be sent when you don't need to handle a callback.
 
-	//Cloning 1 - 10
-	static const uint16 CLONE_REQUEST_DECAY = 1;
-	static const uint16 CLONE_REQUEST = 2;
-	static const uint16 CLONE_REQUEST_FACTIONAL = 3;
-	static const uint16 CLONE_CONFIRM = 10;
+		//Cloning 1 - 10
+		CLONE_REQUEST_DECAY                = 1,
+		CLONE_REQUEST                      = 2,
+		CLONE_REQUEST_FACTIONAL            = 3,
+		CLONE_CONFIRM                      = 10,
 
-	//Entertaining 11 - 20
-	static const uint16 MUSIC_START = 11;
-	static const uint16 MUSIC_CHANGE = 12;
-	static const uint16 DANCING_START = 13;
-	static const uint16 DANCING_CHANGE = 14;
-	static const uint16 BAND_START = 15;
-	static const uint16 BAND_CHANGE = 16;
+		//Entertaining 11 - 20
+		MUSIC_START                        = 11,
+		MUSIC_CHANGE                       = 12,
+		DANCING_START                      = 13,
+		DANCING_CHANGE                     = 14,
+		BAND_START                         = 15,
+		BAND_CHANGE                        = 16,
 
-	//Guilds 21 - 50
-	static const uint16 GUILD_CREATE_NAME = 21;
-	static const uint16 GUILD_CREATE_ABBREV = 22;
-	static const uint16 GUILD_SPONSOR = 23;
-	static const uint16 GUILD_SPONSOR_VERIFY = 24;
-	static const uint16 GUILD_SPONSORED_LIST = 25;
-	static const uint16 GUILD_SPONSORED_OPTIONS = 26;
-	static const uint16 GUILD_CHANGE_NAME = 27;
-	static const uint16 GUILD_CHANGE_ABBREV = 28;
-	static const uint16 GUILD_INFORMATION = 29;
-	static const uint16 GUILD_DISBAND = 30;
-	static const uint16 GUILD_MEMBER_LIST = 31;
-	static const uint16 GUILD_MEMBER_OPTIONS = 32;
-	static const uint16 GUILD_MEMBER_REMOVE = 33;
-	static const uint16 GUILD_MEMBER_PERMISSIONS = 34;
-	static const uint16 GUILD_MEMBER_TITLE = 35;
-	static const uint16 GUILD_TRANSFER_LEADER = 36;
-	static const uint16 GUILD_TRANSFER_LEADER_CONFIRM = 37;
-	static const uint16 GUILD_WAR_LIST = 38;
-	static const uint16 GUILD_WAR_ENTER_NAME = 39;
-	static const uint16 GUILD_TAKE_LOTS = 40;
+		//Guilds 21 - 50
+		GUILD_CREATE_NAME                  = 21,
+		GUILD_CREATE_ABBREV                = 22,
+		GUILD_SPONSOR                      = 23,
+		GUILD_SPONSOR_VERIFY               = 24,
+		GUILD_SPONSORED_LIST               = 25,
+		GUILD_SPONSORED_OPTIONS            = 26,
+		GUILD_CHANGE_NAME                  = 27,
+		GUILD_CHANGE_ABBREV                = 28,
+		GUILD_INFORMATION                  = 29,
+		GUILD_DISBAND                      = 30,
+		GUILD_MEMBER_LIST                  = 31,
+		GUILD_MEMBER_OPTIONS               = 32,
+		GUILD_MEMBER_REMOVE                = 33,
+		GUILD_MEMBER_PERMISSIONS           = 34,
+		GUILD_MEMBER_TITLE                 = 35,
+		GUILD_TRANSFER_LEADER              = 36,
+		GUILD_TRANSFER_LEADER_CONFIRM      = 37,
+		GUILD_WAR_LIST                     = 38,
+		GUILD_WAR_ENTER_NAME               = 39,
+		GUILD_TAKE_LOTS                    = 40,
 
 
-	//Travel 51 - 60
-	static const uint16 TICKET_PURCHASE_MESSAGE = 51;
-	static const uint16 TRAVEL_TICKET_SELECTION = 52;
+		//Travel 51 - 60
+		TICKET_PURCHASE_MESSAGE            = 51,
+		TRAVEL_TICKET_SELECTION            = 52,
 
-	//Color Pickers 61 - 70
-	static const uint16 COLOR_PICKER1 = 61;
-	static const uint16 COLOR_PICKER2 = 62;
+		//Color Pickers 61 - 70
+		COLOR_PICKER1                      = 61,
+		COLOR_PICKER2                      = 62,
 
-	//Bank 71 - 80
-	static const uint16 BANK_TRANSFER = 71;
-	static const uint16 BANK_TIP_CONFIRM = 72;
+		//Bank 71 - 80
+		BANK_TRANSFER                      = 71,
+		BANK_TIP_CONFIRM                   = 72,
 
-	//Resource 81 - 90
-	static const uint16 FREE_RESOURCE = 81;
-	static const uint16 GIVE_FREE_RESOURCE = 82;
+		//Resource 81 - 90
+		FREE_RESOURCE                      = 81,
+		GIVE_FREE_RESOURCE                 = 82,
 
-	//Factory 91 - 100
-	static const uint16 FACTORY_SCHEMATIC2BUTTON = 91;
-	static const uint16 FACTORY_SCHEMATIC3BUTTON = 92;
-	static const uint16 FACTORY_INGREDIENTS = 93;
+		//Factory 91 - 100
+		FACTORY_SCHEMATIC2BUTTON           = 91,
+		FACTORY_SCHEMATIC3BUTTON           = 92,
+		FACTORY_INGREDIENTS                = 93,
 
-	//Insurance 101 - 110
-	static const uint16 INSURANCE_MENU = 101;
-	static const uint16 INSURANCE_CONFIRM_ALL = 102;
+		//Insurance 101 - 110
+		INSURANCE_MENU                     = 101,
+		INSURANCE_CONFIRM_ALL              = 102,
 
-	//City 111 - 140
-	static const uint16 CITY_CREATE = 111;
-	static const uint16 CITY_ENABLE_ZONING = 112;
-	static const uint16 CITY_SET_NAME = 113;
-	static const uint16 CITY_MILITIA = 114;
-	static const uint16 CITY_ADD_MILITIA = 115;
-	static const uint16 CITY_SPEC = 116;
-	static const uint16 CITY_SPEC_CONFIRM = 117;
-	static const uint16 CITY_STATUS_REPORT = 118;
-	static const uint16 CITY_TREASURY_WITHDRAWAL = 119;
-	static const uint16 CITY_TREASURY_WITHDRAWAL_REASON = 120;
-	static const uint16 CITY_TREASURY_DEPOSIT = 121;
-	static const uint16 CITY_CITIZEN_REPORT = 122;
-	static const uint16 CITY_REMOVE_MILITIA = 123;
-	static const uint16 CITY_TREASURY_REPORT = 124;
-	static const uint16 CITY_ADVANCEMENT = 125;
-	static const uint16 CITY_REGISTER = 126;
-	static const uint16 CITY_MAYOR_STANDINGS = 127;
-	static const uint16 CITY_MAYOR_VOTE = 128;
-	static const uint16 CITY_ADJUST_TAX = 129;
-	static const uint16 CITY_TAX_PROMPT = 130;
-	static const uint16 CITY_RENAME = 131;
+		//City 111 - 140
+		CITY_CREATE                        = 111,
+		CITY_ENABLE_ZONING                 = 112,
+		CITY_SET_NAME                      = 113,
+		CITY_MILITIA                       = 114,
+		CITY_ADD_MILITIA                   = 115,
+		CITY_SPEC                          = 116,
+		CITY_SPEC_CONFIRM                  = 117,
+		CITY_STATUS_REPORT                 = 118,
+		CITY_TREASURY_WITHDRAWAL           = 119,
+		CITY_TREASURY_WITHDRAWAL_REASON    = 120,
+		CITY_TREASURY_DEPOSIT              = 121,
+		CITY_CITIZEN_REPORT                = 122,
+		CITY_REMOVE_MILITIA                = 123,
+		CITY_TREASURY_REPORT               = 124,
+		CITY_ADVANCEMENT                   = 125,
+		CITY_REGISTER                      = 126,
+		CITY_MAYOR_STANDINGS               = 127,
+		CITY_MAYOR_VOTE                    = 128,
+		CITY_ADJUST_TAX                    = 129,
+		CITY_TAX_PROMPT                    = 130,
+		CITY_RENAME                        = 131,
 
-	//Structure 141 - 170
-	static const uint16 STRUCTURE_STATUS = 141;
-	static const uint16 STRUCTURE_DESTROY_CODE = 142;
-	static const uint16 STRUCTURE_DESTROY_CONFIRM = 143;
-	static const uint16 STRUCTURE_MANAGE_MAINTENANCE = 144;
-	static const uint16 STRUCTURE_ADD_ENERGY = 145;
-	static const uint16 STRUCTURE_CREATE_VENDOR = 146;
-	static const uint16 STRUCTURE_NAME_VENDOR = 147;
-	static const uint16 STRUCTURE_DESTROY_VENDOR_CONFIRM = 148;
-	static const uint16 STRUCTURE_VENDOR_STATUS = 149;
-	static const uint16 STRUCTURE_VENDOR_REGISTER = 150;
-	static const uint16 STRUCTURE_UNCONDEMN_CONFIRM = 151;
-	static const uint16 STRUCTURE_SET_ACCESS_FEE = 152;
-	static const uint16 STRUCTURE_SET_ACCESS_DURATION = 153;
-	static const uint16 STRUCTURE_CONSENT_PAY_ACCESS_FEE = 154;
-	static const uint16 STRUCTURE_VENDOR_PAY = 155;
-	static const uint16 STRUCTURE_VENDOR_WITHDRAW = 156;
-	static const uint16 STRUCTURE_SELECT_SIGN = 157;
-	static const uint16 STRUCTURE_ASSIGN_DROID = 158;
+		//Structure 141 - 170
+		STRUCTURE_STATUS                   = 141,
+		STRUCTURE_DESTROY_CODE             = 142,
+		STRUCTURE_DESTROY_CONFIRM          = 143,
+		STRUCTURE_MANAGE_MAINTENANCE       = 144,
+		STRUCTURE_ADD_ENERGY               = 145,
+		STRUCTURE_CREATE_VENDOR            = 146,
+		STRUCTURE_NAME_VENDOR              = 147,
+		STRUCTURE_DESTROY_VENDOR_CONFIRM   = 148,
+		STRUCTURE_VENDOR_STATUS            = 149,
+		STRUCTURE_VENDOR_REGISTER          = 150,
+		STRUCTURE_UNCONDEMN_CONFIRM        = 151,
+		STRUCTURE_SET_ACCESS_FEE           = 152,
+		STRUCTURE_SET_ACCESS_DURATION      = 153,
+		STRUCTURE_CONSENT_PAY_ACCESS_FEE   = 154,
+		STRUCTURE_VENDOR_PAY               = 155,
+		STRUCTURE_VENDOR_WITHDRAW          = 156,
+		STRUCTURE_SELECT_SIGN              = 157,
+		STRUCTURE_ASSIGN_DROID             = 158,
 
-	//Admin 171 - 220
-	static const uint16 ADMIN_COMMANDS = 171;
-	static const uint16 ADMIN_BANLIST = 172;
-	static const uint16 ADMIN_ACCOUNTINFO = 173;
-	static const uint16 ADMIN_PLAYERINFO = 174;
-	static const uint16 ADMIN_GUILDLIST = 175;
-	static const uint16 ADMIN_DESTROY_CONFIRM = 176;
-	static const uint16 ADMIN_BAN_DURATION = 177;
-	static const uint16 ADMIN_BAN_REASON = 178;
-	static const uint16 ADMIN_BAN_SUMMARY = 179;
-	static const uint16 ADMIN_UNBAN_SUMMARY = 180;
-	static const uint16 ADMIN_PLAYER_CREDITS = 181;
-	static const uint16 ADMIN_FIND_OBJECT = 182;
+		//Admin 171 - 220
+		ADMIN_COMMANDS                     = 171,
+		ADMIN_BANLIST                      = 172,
+		ADMIN_ACCOUNTINFO                  = 173,
+		ADMIN_PLAYERINFO                   = 174,
+		ADMIN_GUILDLIST                    = 175,
+		ADMIN_DESTROY_CONFIRM              = 176,
+		ADMIN_BAN_DURATION                 = 177,
+		ADMIN_BAN_REASON                   = 178,
+		ADMIN_BAN_SUMMARY                  = 179,
+		ADMIN_UNBAN_SUMMARY                = 180,
+		ADMIN_PLAYER_CREDITS               = 181,
+		ADMIN_FIND_OBJECT                  = 182,
 
-	//Teach 221 - 230
-	static const uint16 TEACH_SKILL = 221;
-	static const uint16 TEACH_PLAYER = 222;
-	static const uint16 TEACH_DENY = 223;
-	static const uint16 TEACH_OFFER = 224;
+		//Teach 221 - 230
+		TEACH_SKILL                        = 221,
+		TEACH_PLAYER                       = 222,
+		TEACH_DENY                         = 223,
+		TEACH_OFFER                        = 224,
 
-	//Survey Tool 231 - 240
-	static const uint16 SURVEY_TOOL_RANGE = 231;
-	static const uint16 SURVEY_TOOL_CONCENTRATED_MINIGAME = 232;
-	static const uint16 SURVEY_TOOL_CONCENTRATED_MINIGAME2 = 233;
-	// survey droid tool
-	static const uint16 SURVERY_DROID_MENU = 234;
+		//Survey Tool 231 - 240
+		SURVEY_TOOL_RANGE                  = 231,
+		SURVEY_TOOL_CONCENTRATED_MINIGAME  = 232,
+		SURVEY_TOOL_CONCENTRATED_MINIGAME2 = 233,
+		// survey droid tool
+		SURVERY_DROID_MENU                 = 234,
 
-	//Sample 241 - 250
-	static const uint16 SAMPLE_RADIOACTIVE_CONFIRM = 241;
+		//Sample 241 - 250
+		SAMPLE_RADIOACTIVE_CONFIRM         = 241,
 
-	//Slicing 251 - 260
-	static const uint16 SLICING_MENU = 251;
+		//Slicing 251 - 260
+		SLICING_MENU                       = 251,
 
-	//Gambling 261 - 270
-	static const uint16 GAMBLING_ROULETTE = 261;
-	static const uint16 GAMBLING_SLOT = 262;
-	static const uint16 GAMBLING_SLOT_PAYOUT = 263;
+		//Gambling 261 - 270
+		GAMBLING_ROULETTE                  = 261,
+		GAMBLING_SLOT                      = 262,
+		GAMBLING_SLOT_PAYOUT               = 263,
 
-	//Fishing 271 - 280
-	static const uint16 FISHING = 271;
+		//Fishing 271 - 280
+		FISHING                            = 271,
 
-	//Junk Dealer 281 - 290
-	static const uint16 JUNK_DEALER_SELL_LIST = 281;
+		//Junk Dealer 281 - 290
+		JUNK_DEALER_SELL_LIST              = 281,
 
-	//Medic 291 - 300
-	static const uint16 MEDIC_CONSENT = 291;
-	static const uint16 MEDIC_DIAGNOSE = 292;
+		//Medic 291 - 300
+		MEDIC_CONSENT                      = 291,
+		MEDIC_DIAGNOSE                     = 292,
 
-	//MOTD 301 - 310
-	static const uint16 MOTD = 301;
-	static const uint16 MOTD_SET = 302;
+		//MOTD 301 - 310
+		MOTD                               = 301,
+		MOTD_SET                           = 302,
 
-	//Character Builder 311 - 320
-	static const uint16 CHARACTER_BUILDER_LIST = 311;
+		//Character Builder 311 - 320
+		CHARACTER_BUILDER_LIST             = 311,
 
-	//
-	static const uint16 DELEGATE_TRANSFER = 321;
+		//
+		DELEGATE_TRANSFER                  = 321,
 
-	// Ranger 400 - 401
-	static const uint16 RANGER_TRACK_OPTIONS = 400;
-	static const uint16 RANGER_TRACK_RESULTS = 401;
+		// Ranger 400 - 401
+		RANGER_TRACK_OPTIONS               = 400,
+		RANGER_TRACK_RESULTS               = 401,
 
-	// FACTION HQ STRUCTURE
-	//static const uint16 HQ_DEFENSE_STATUS = 420;
-	//static const uint16 HQ_RESET_VULNERABILITY = 421;
-	static const uint16 HQ_TERMINAL = 420;
-	static const uint16 HQ_TURRET_TERMINAL = 421;
+		// FACTION HQ STRUCTURE
+		//HQ_DEFENSE_STATUS = 420,
+		//HQ_RESET_VULNERABILITY = 421,
+		HQ_TERMINAL                        = 420,
+		HQ_TURRET_TERMINAL                 = 421,
 
-	// Firework Show 500-503
-	static const uint16 FIREWORK_SHOW_ADDEVENT = 500;
-	static const uint16 FIREWORK_SHOW_REMOVEEVENT = 501;
-	static const uint16 FIREWORK_SHOW_REORDERSHOW = 502;
-	static const uint16 FIREWORK_SHOW_MODIFYEVENT = 503;
-	static const uint16 FIREWORK_SHOW_DELAYSELECTION = 504;
+		// Firework Show 500-503
+		FIREWORK_SHOW_ADDEVENT             = 500,
+		FIREWORK_SHOW_REMOVEEVENT          = 501,
+		FIREWORK_SHOW_REORDERSHOW          = 502,
+		FIREWORK_SHOW_MODIFYEVENT          = 503,
+		FIREWORK_SHOW_DELAYSELECTION       = 504,
 
-	//Miscellaneous 1000+
-	static const uint16 OBJECT_NAME = 1000;
-	static const uint16 FINDSESSION = 1001;
-	static const uint16 GARAGE_REPAIR = 1002;
-	static const uint16 CAMP_STATUS = 1003;
-	static const uint16 TUNE_CRYSTAL = 1004;
-	static const uint16 INSTALL_MISSION_TERMINAL = 1005;
-	static const uint16 RECRUIT_SKILL_TRAINER = 1006;
-	static const uint16 HOLOGRIND_UNLOCK = 1007;
-	static const uint16 MARKET_INFO = 1008;
-	static const uint16 VENDOR_PHRASES = 1009;
-	static const uint16 VENDOR_MOODS = 1010;
-	static const uint16 VENDOR_CUSTOM_PHRASE = 1011;
-	static const uint16 VENDOR_ANIMATION = 1012;
-	static const uint16 COLOR_GOGGLES = 1013;
-	static const uint16 COLOR_ARMOR = 1014;	
-	static const uint16 CUSTOMIZE_KIT = 1015;//listbox to select FRAME or TRIM
-	static const uint16 MOUNT_GROWTH_ARREST = 1016;
-	static const uint16 HOLO_EMOTE_HELP = 1017;
-	static const uint16 PROPOSE_UNITY = 1018;
-	static const uint16 SELECT_UNITY_RING = 1019;
-	static const uint16 SELECT_VETERAN_REWARD = 1020;
-	static const uint16 CONFIRM_VETERAN_REWARD = 1021;
-	static const uint16 CONFIRM_DIVORCE = 1022;
-	static const uint16 CONFIRM_FLASH_SPEEDER_PURCHASE = 1023;
-	static const uint16 COA_MESSAGE_FRAGMENT = 1024;
-	static const uint16 COA_MESSAGE = 1025;
-	static const uint16 DATA_STORAGE_UNIT_MESSAGE = 1026;
-	static const uint16 DROID_LOAD_STIMPACK = 1027;
-	static const uint16 SELECT_DROID_EFFECT = 1028;
-	static const uint16 SELECT_DROID_EFFECT_DELAY = 1029;
-	static const uint16 SELECT_MERCHANT_WAYPOINT = 1030;
-	static const uint16 DROID_PLAYBACK_MENU = 1031;
-	static const uint16 DROID_DELETE_TRACK = 1031;
-	static const uint16 DROID_SET_INTEREST = 1032;
-	static const uint16 NEWSNET_INFO = 1033;
-	static const uint16 DROID_EDIT_ASSIGNED_STRUCTURES = 1034;
-	static const uint16 DROID_MAINTENANCE_RUN_LIST = 1035;
-	static const uint16 DROID_ADD_STRUCTURE_AMOUNT = 1036;
+		//Miscellaneous 1000+
+		OBJECT_NAME                        = 1000,
+		FINDSESSION                        = 1001,
+		GARAGE_REPAIR                      = 1002,
+		CAMP_STATUS                        = 1003,
+		TUNE_CRYSTAL                       = 1004,
+		INSTALL_MISSION_TERMINAL           = 1005,
+		RECRUIT_SKILL_TRAINER              = 1006,
+		HOLOGRIND_UNLOCK                   = 1007,
+		MARKET_INFO                        = 1008,
+		VENDOR_PHRASES                     = 1009,
+		VENDOR_MOODS                       = 1010,
+		VENDOR_CUSTOM_PHRASE               = 1011,
+		VENDOR_ANIMATION                   = 1012,
+		COLOR_GOGGLES                      = 1013,
+		COLOR_ARMOR                        = 1014,	
+		CUSTOMIZE_KIT                      = 1015, // listbox to select FRAME or TRIM
+		MOUNT_GROWTH_ARREST                = 1016,
+		HOLO_EMOTE_HELP                    = 1017,
+		PROPOSE_UNITY                      = 1018,
+		SELECT_UNITY_RING                  = 1019,
+		SELECT_VETERAN_REWARD              = 1020,
+		CONFIRM_VETERAN_REWARD             = 1021,
+		CONFIRM_DIVORCE                    = 1022,
+		CONFIRM_FLASH_SPEEDER_PURCHASE     = 1023,
+		COA_MESSAGE_FRAGMENT               = 1024,
+		COA_MESSAGE                        = 1025,
+		DATA_STORAGE_UNIT_MESSAGE          = 1026,
+		DROID_LOAD_STIMPACK                = 1027,
+		SELECT_DROID_EFFECT                = 1028,
+		SELECT_DROID_EFFECT_DELAY          = 1029,
+		SELECT_MERCHANT_WAYPOINT           = 1030,
+		DROID_PLAYBACK_MENU                = 1031,
+		DROID_DELETE_TRACK                 = 1031,
+		DROID_SET_INTEREST                 = 1032,
+		NEWSNET_INFO                       = 1033,
+		DROID_EDIT_ASSIGNED_STRUCTURES     = 1034,
+		DROID_MAINTENANCE_RUN_LIST         = 1035,
+		DROID_ADD_STRUCTURE_AMOUNT         = 1036
+	};
 };
 
 #endif /*SuiWindowType_H_*/

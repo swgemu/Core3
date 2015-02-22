@@ -41,16 +41,18 @@ public:
 	int generateXp(int creatureLevel);
 	static int addRange(lua_State* L);
 	static int addQualityTemplate(lua_State* L);
-	static const int FORTITUDE     = 1;
-	static const int ENDURANCE     = 2;
-	static const int CLEVERNESS    = 3;
-	static const int INTELLIGENCE  = 4;
-	static const int DEXTERITY     = 5;
-	static const int HARDINESS     = 6;
-	static const int DEPENDABILITY = 7;
-	static const int COURAGE       = 8;
-	static const int POWER         = 9;
-	static const int FIERCENESS    = 10;
+	enum {
+		FORTITUDE     = 1,
+		ENDURANCE     = 2,
+		CLEVERNESS    = 3,
+		INTELLIGENCE  = 4,
+		DEXTERITY     = 5,
+		HARDINESS     = 6,
+		DEPENDABILITY = 7,
+		COURAGE       = 8,
+		POWER         = 9,
+		FIERCENESS    = 10
+	};
 	int generateScoreFor(int stat, int cl,int quality);
 	void generateSample(Creature* creature, CreatureObject* player, int quality);
 	void generationalSample(PetDeed* deed, CreatureObject* player, int quality);

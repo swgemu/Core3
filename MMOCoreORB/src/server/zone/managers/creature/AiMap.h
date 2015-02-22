@@ -26,20 +26,24 @@
 
 class AiMap : public Singleton<AiMap>, public Logger, public Object {
 public:
-	static const uint8 INVALID = 0;   // finished without result
-	static const uint8 SUCCESS = 1;   // finished with success
-	static const uint8 FAILURE = 2;   // finished with failure
-	static const uint8 RUNNING = 3;   // running and not finished
-	static const uint8 SUSPEND = 4;   // not yet started, or temporarily paused
+	enum {
+		INVALID,   // finished without result
+		SUCCESS,   // finished with success
+		FAILURE,   // finished with failure
+		RUNNING,   // running and not finished
+		SUSPEND,   // not yet started, or temporarily paused
+	};
 
 	// class types
-	static const uint8 BEHAVIOR = 0;
-	static const uint8 SEQUENCEBEHAVIOR = 1;
-	static const uint8 SELECTORBEHAVIOR = 2;
-	static const uint8 NONDETERMINISTICSEQUENCEBEHAVIOR = 3;
-	static const uint8 NONDETERMINISTICSELECTORBEHAVIOR = 4;
-	static const uint8 PARALLELSEQUENCEBEHAVIOR = 5;
-	static const uint8 PARALLELSELECTORBEHAVIOR = 6;
+	enum {
+		BEHAVIOR,
+		SEQUENCEBEHAVIOR,
+		SELECTORBEHAVIOR,
+		NONDETERMINISTICSEQUENCEBEHAVIOR,
+		NONDETERMINISTICSELECTORBEHAVIOR,
+		PARALLELSEQUENCEBEHAVIOR,
+		PARALLELSELECTORBEHAVIOR
+	};
 
 	HashTable<String, Reference<AiTemplate*> > aiMap;
 	HashTable<String, Reference<LuaBehavior*> > behaviors;
@@ -155,7 +159,7 @@ public:
 	}
 
 private:
-	static const uint8 DEBUG_MODE = 0;
+	static const bool DEBUG_MODE = false;
 
 	void registerFunctions(Lua* lua) {
 		lua_register(lua->getLuaState(), "addAiTemplate", addAiTemplate);

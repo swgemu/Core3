@@ -75,39 +75,20 @@ private:
 	void setupLuaValues(Lua* luaEngine);
 
 public:
-	/**
-	 * Jedi progression not available.
-	 */
-	static const int NOJEDIPROGRESSION = 0;
-
-	/**
-	 * Jedi progression through the hologrind system, i.e. master five random professions.
-	 */
-	static const int HOLOGRINDJEDIPROGRESSION = 1;
-
-	/**
-	 * Jedi progression through the village system.
-	 */
-	static const int VILLAGEJEDIPROGRESSION = 2;
-
-	/**
-	 * Custom defined jedi progression system.
-	 */
-	static const int CUSTOMJEDIPROGRESSION = 3;
-
-	/**
-	 * Item type holocron.
-	 */
-	static const int ITEMHOLOCRON = 0;
-
-	/**
-	 * Item type waypoint datapad.
-	 */
-	static const int ITEMWAYPOINTDATAPAD = 1;
-
-	// Item type theater datapad.
-	static const int ITEMTHEATERDATAPAD = 2;
-
+	
+	enum {
+		NOJEDIPROGRESSION,         // Jedi progression not available.
+		HOLOGRINDJEDIPROGRESSION,  // Jedi progression through the hologrind system, i.e. master five random professions.
+		VILLAGEJEDIPROGRESSION,    // Jedi progression through the village system.
+		CUSTOMJEDIPROGRESSION      // Custom defined jedi progression system.
+	};
+	
+	enum {
+		ITEMHOLOCRON,         // Item type holocron.
+		ITEMWAYPOINTDATAPAD,  // Item type waypoint datapad.
+		ITEMTHEATERDATAPAD    // ITEMTHEATERDATAPAD
+	};
+	
 	/**
 	 * Constructor for the Jedi Manager.
 	 */
