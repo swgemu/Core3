@@ -12,20 +12,21 @@ class CreatureEmote {
 public:
 
 	// Partial list
-	static const uint32 BAD = 17;
-	static const uint32 BECKON = 26;
-	static const uint32 BONK = 39;
-	static const uint32 HUG = 167;
-	static const uint32 NUZZLE = 220;
-	static const uint32 PET = 229;
-	static const uint32 POINTAT = 237;
-	static const uint32 REASSURE = 263;
-	static const uint32 SCOLD = 275;
-	static const uint32 SLAP = 290;
-	static const uint32 SUMMON = 323;
-	static const uint32 TAP = 332;
-	static const uint32 WHAP = 366;
-
+	enum {
+		BAD      = 17,
+		BECKON   = 26,
+		BONK     = 39,
+		HUG      = 167,
+		NUZZLE   = 220,
+		PET      = 229,
+		POINTAT  = 237,
+		REASSURE = 263,
+		SCOLD    = 275,
+		SLAP     = 290,
+		SUMMON   = 323,
+		TAP      = 332,
+		WHAP     = 366
+	};
 };
 
 

@@ -64,10 +64,12 @@ protected:
 	ManagedReference<DroidHarvestObserver*> observer;
 
 public:
-	static const uint8 INTREST_BONE = 1;
-	static const uint8 INTREST_MEAT = 2;
-	static const uint8 INTREST_HIDE = 3;
-	static const uint8 INTREST_RANDOM = 0;
+	enum {
+		INTREST_RANDOM,
+		INTREST_BONE,
+		INTREST_MEAT,
+		INTREST_HIDE
+	};
 
 	DroidHarvestModuleDataComponent();
 	~DroidHarvestModuleDataComponent();

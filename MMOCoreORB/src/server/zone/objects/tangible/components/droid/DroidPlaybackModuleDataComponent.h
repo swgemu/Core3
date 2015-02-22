@@ -71,8 +71,11 @@ protected:
 	Vector<int> instruments; // instrument for a given track
 	ManagedReference<DroidPlaybackObserver*> observer;
 	// states of recording
-	static const uint8 STATE_WAITING_TO_RECORD = 1;
-	static const uint8 STATE_RECORDING_TRACK = 2;
+	enum {
+		STATE_WAITING_TO_RECORD = 1,
+		STATE_RECORDING_TRACK   = 2
+	};
+
 	Vector<uint64> listeners;
 
 public:

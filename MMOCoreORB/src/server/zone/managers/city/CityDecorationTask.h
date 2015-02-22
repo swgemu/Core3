@@ -20,8 +20,10 @@ class CityDecorationTask : public Task {
 	byte option;
 
 public:
-	static const byte PLACE = 0;
-	static const byte REMOVE = 1;
+	enum {
+		PLACE = 0,
+		REMOVE = 1
+	};
 
 	CityDecorationTask( CreatureObject* creature, SceneObject* object, byte function) {
 		mayor = creature;

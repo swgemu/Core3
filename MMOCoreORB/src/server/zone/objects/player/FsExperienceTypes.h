@@ -5,20 +5,24 @@
 
 class FsExperienceTypes {
 public:
-	static const int COMBAT = 1;
-	static const int SQUADLEADER = 2;
-	static const int INVESTIGATION = 3;
-	static const int IMAGEDESIGNER = 4;
-	static const int DANCER = 5;
-	static const int MUSICIAN = 6;
-	static const int CRAFTING = 7;
-	static const int SPACE = 8;
-	static const int HEALING = 9;
-	static const int WEAPON = 10;
+	enum {
+		COMBAT        = 1,
+		SQUADLEADER   = 2,
+		INVESTIGATION = 3,
+		IMAGEDESIGNER = 4,
+		DANCER        = 5,
+		MUSICIAN      = 6,
+		CRAFTING      = 7,
+		SPACE         = 8,
+		HEALING       = 9,
+		WEAPON        = 10
+	};
 
 	// Ratios.
-	static const int WEAPON_RATIO = 10;
-	static const int COMBAT_RATIO = 1;
+	enum {
+		WEAPON_RATIO = 10,
+		COMBAT_RATIO = 1
+	};
 
 	static String getFsExperienceTypeName(uint8 type) {
 		String name = "";

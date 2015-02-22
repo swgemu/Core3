@@ -49,22 +49,23 @@ which carries forward this exception.
 
 class BuffAttribute {
 public:
-	static const uint8 HEALTH = 0;
-	static const uint8 STRENGTH = 1;
-	static const uint8 CONSTITUTION = 2;
-	static const uint8 ACTION = 3;
-	static const uint8 QUICKNESS = 4;
-	static const uint8 STAMINA = 5;
-	static const uint8 MIND = 6;
-	static const uint8 FOCUS = 7;
-	static const uint8 WILLPOWER = 8;
-	static const uint8 POISON = 9;
-	static const uint8 DISEASE = 10;
-	static const uint8 UNKNOWN = 11;
+	enum {
+		HEALTH,
+		STRENGTH,
+		CONSTITUTION,
+		ACTION,
+		QUICKNESS,
+		STAMINA,
+		MIND,
+		FOCUS,
+		WILLPOWER,
+		POISON,
+		DISEASE,
+		UNKNOWN
+	};
 
 	//TODO: This entire class needs to be removed. Posion and Disease are not attributes.
 	//THEY ARE SKILLMODS
-
 	static const uint8 ARRAYSIZE = 11;
 
 	static bool isHAM(uint8 attribute) {

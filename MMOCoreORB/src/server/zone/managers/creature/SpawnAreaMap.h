@@ -30,11 +30,13 @@ protected:
 
 public:
 
-	static const int UNDEFINEDAREA       = 0x00000000;
-	static const int SPAWNAREA           = 0x00000001;
-	static const int NOSPAWNAREA         = 0x00000002;
-	static const int WORLDSPAWNAREA      = 0x00000010;
-	static const int NOBUILDZONEAREA     = 0x00000100;
+	enum {
+		UNDEFINEDAREA       = 0x00000000,
+		SPAWNAREA           = 0x00000001,
+		NOSPAWNAREA         = 0x00000002,
+		WORLDSPAWNAREA      = 0x00000010,
+		NOBUILDZONEAREA     = 0x00000100
+	};
 
 	SpawnAreaMap() : Logger("SpawnAreaMap") {
 		lua = new Lua();

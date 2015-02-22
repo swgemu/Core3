@@ -28,10 +28,12 @@ namespace bountyhunter {
 class BountyHunterDroid : public Logger, public Object {
 public:
 
-	static const int CALLDROID = 0;
-	static const int TRANSMITBIOLOGICALSIGNATURE = 1;
-	static const int FINDTARGET = 2;
-	static const int FINDANDTRACKTARGET = 3;
+	enum {
+		CALLDROID,
+		TRANSMITBIOLOGICALSIGNATURE,
+		FINDTARGET,
+		FINDANDTRACKTARGET
+	};
 
 	BountyHunterDroid() :
 		Logger("BountyHunterDroid") {

@@ -51,8 +51,11 @@ which carries forward this exception.
 class ChatSystemMessage : public BaseMessage {
 
 public:
-	static const byte DISPLAY_CHATANDSCREEN = 0x00;
-	static const byte DISPLAY_CHATONLY = 0x02;
+	enum {
+		DISPLAY_CHATANDSCREEN = 0x00,
+		DISPLAY_CHATONLY      = 0x02
+	};
+
 public:
 
 	ChatSystemMessage(const UnicodeString& message, byte displayType = DISPLAY_CHATANDSCREEN) : BaseMessage() {

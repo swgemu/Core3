@@ -100,8 +100,10 @@ public:
 
 	static float VALUENOTFOUND;
 
-	static const int NORMAL = 1;
-	static const int HIDDEN = 2;
+	enum {
+		NORMAL = 1,
+		HIDDEN = 2
+	};
 
 public:
 	CraftingValues();

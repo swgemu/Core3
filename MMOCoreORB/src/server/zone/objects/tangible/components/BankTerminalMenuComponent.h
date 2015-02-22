@@ -12,12 +12,14 @@
 
 class BankTerminalMenuComponent : public TangibleObjectMenuComponent {
 protected:
-	static const int JOIN = 71;
-	static const int QUIT = 72;
-	static const int DEPOSIT = 73;
-	static const int WITHDRAW = 68;
-	static const int DEPOSITALL = 69;
-	static const int WITHDRAWALL = 70;
+	enum {
+		JOIN        = 71,
+		QUIT        = 72,
+		DEPOSIT     = 73,
+		WITHDRAW    = 68,
+		DEPOSITALL  = 69,
+		WITHDRAWALL = 70
+	};
 
 	// @TODO Move this to a proper configuration manager so no rebuild is necessary
 	static const bool GLOBALSAFETYDEPOSIT = false;

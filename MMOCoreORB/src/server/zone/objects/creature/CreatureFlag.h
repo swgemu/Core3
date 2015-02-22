@@ -49,30 +49,32 @@ which carries forward this exception.
 
 class CreatureFlag {
 public:
-	static const int NONE = 0x00;
-	static const int ATTACKABLE = 0x01;
-	static const int AGGRESSIVE = 0x02;
-	static const int OVERT = 0x04;
-	static const int TEF = 0x08;
-	static const int PLAYER = 0x10;
-	static const int ENEMY = 0x20;
-	static const int CHANGEFACTIONSTATUS = 0x40;
-	static const int BLINK_GREEN = 0x80;
+	enum {
+		NONE                = 0x00,
+		ATTACKABLE          = 0x01,
+		AGGRESSIVE          = 0x02,
+		OVERT               = 0x04,
+		TEF                 = 0x08,
+		PLAYER              = 0x10,
+		ENEMY               = 0x20,
+		CHANGEFACTIONSTATUS = 0x40,
+		BLINK_GREEN         = 0x80,
 
-	static const int PACK = 0x01;
-	static const int HERD = 0x02;
-	static const int KILLER = 0x04;
-	static const int STALKER = 0x08;
-	static const int BABY = 0x10;
-	static const int LAIR = 0x20;
-	static const int HEALER = 0x40;
-	static const int STATIC = 0x80;
-	static const int PET = 0x100;
-	static const int DROID_PET = 0x200;
-	static const int FACTION_PET = 0x400;
+		PACK                = 0x01,
+		HERD                = 0x02,
+		KILLER              = 0x04,
+		STALKER             = 0x08,
+		BABY                = 0x10,
+		LAIR                = 0x20,
+		HEALER              = 0x40,
+		STATIC              = 0x80,
+		PET                 = 0x100,
+		DROID_PET           = 0x200,
+		FACTION_PET         = 0x400,
 
-	static const int CARNIVORE = 0x01;
-	static const int HERBIVORE = 0x02;
+		CARNIVORE           = 0x01,
+		HERBIVORE           = 0x02
+	};
 };
 
 

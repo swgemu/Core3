@@ -13,8 +13,11 @@ class ForageArea : public Object {
 
 protected:
 
-	static const uint8 SIZE = 10;     //Determines the side length of the forage area 'box' (in meters).
-	static const uint8 EXPIRE = 30;   //Determines the age when each area expires (in minutes).
+	enum {
+		SIZE   = 10, //Determines the side length of the forage area 'box' (in meters).
+		EXPIRE = 30  //Determines the age when each area expires (in minutes).
+	};
+
 	String planet;
 	short xCoord;
 	short yCoord;

@@ -62,46 +62,49 @@ class BaseDroidModuleComponent : public DataObjectComponent, public Logger {
 
 protected:
 	int species;
+
 	// Radial IDs
-	static const uint8 AUTO_REPAIR_MODULE_TOGGLE = 180;
-	static const uint8 ITEM_STORAGE_MODULE_OPEN  = 181;
-	static const uint8 DATA_STORAGE_MODULE_OPEN  = 182;
-	static const uint8 REPAIR_MODULE_ACTIVATE  = 183;
-	static const uint8 REPAIR_MODULE_TRAIN  = 184;
-	static const uint8 LOAD_STIMPACK = 185;
-	static const uint8 REQUEST_STIMPACK = 186;
-	static const uint8 MAINT_MODULE_ROOT = 187;
-	static const uint8 MAINT_MODULE_PERFORM = 188;
-	static const uint8 MAINT_MODULE_EDIT = 189;
-	static const uint8 EFFECTS_MODULE_TOGGLE = 190;
-	static const uint8 EFFECTS_MODULE_SLOT1 = 191;
-	static const uint8 EFFECTS_MODULE_SLOT2 = 192;
-	static const uint8 EFFECTS_MODULE_SLOT3 = 193;
-	static const uint8 EFFECTS_MODULE_SLOT4 = 194;
-	static const uint8 EFFECTS_MODULE_SLOT5 = 195;
-	static const uint8 EFFECTS_MODULE_SLOT6 = 196;
-	static const uint8 EFFECTS_MODULE_SLOT7 = 197;
-	static const uint8 EFFECTS_MODULE_SLOT8 = 198;
-	static const uint8 EFFECTS_MODULE_SLOT9 = 199;
-	static const uint8 EFFECTS_MODULE_SLOT10 = 200;
-	static const uint8 EFFECTS_MODULE_CONFIGURE = 201;
-	static const uint8 DETONATE_DROID = 202;
-	static const uint8 BARKER_STORE_WAYPOINT = 203;
-	static const uint8 BARKER_RECORD_MESSAGE = 204;
-	static const uint8 BARKER_TOGGLE = 205;
-	static const uint8 PLAYBACK_ACCESS_MENU = 206;
-	static const uint8 PLAYBACK_STOP_MENU = 207;
-	static const uint8 TRAP_MODULE_CONTROLS = 208;
-	static const uint8 TRAP_MODULE_CLEAR = 209;
-	static const uint8 TRAP_MODULE_TRAIN = 210;
-	static const uint8 HARVEST_MENU = 211;
-	static const uint8 HARVEST_TOGGLE = 212;
-	static const uint8 HARVEST_INTREST_RANDOM = 213;
-	static const uint8 HARVEST_INTREST_MEAT = 214;
-	static const uint8 HARVEST_INTREST_HIDE = 215;
-	static const uint8 HARVEST_INTREST_BONE = 216;
-	static const uint8 HARVEST_PROGRAM_COMMAND = 217;
-	static const uint8 HARVEST_SET_INTEREST = 218;
+	enum {
+		AUTO_REPAIR_MODULE_TOGGLE = 180,
+		ITEM_STORAGE_MODULE_OPEN  = 181,
+		DATA_STORAGE_MODULE_OPEN  = 182,
+		REPAIR_MODULE_ACTIVATE    = 183,
+		REPAIR_MODULE_TRAIN       = 184,
+		LOAD_STIMPACK             = 185,
+		REQUEST_STIMPACK          = 186,
+		MAINT_MODULE_ROOT         = 187,
+		MAINT_MODULE_PERFORM      = 188,
+		MAINT_MODULE_EDIT         = 189,
+		EFFECTS_MODULE_TOGGLE     = 190,
+		EFFECTS_MODULE_SLOT1      = 191,
+		EFFECTS_MODULE_SLOT2      = 192,
+		EFFECTS_MODULE_SLOT3      = 193,
+		EFFECTS_MODULE_SLOT4      = 194,
+		EFFECTS_MODULE_SLOT5      = 195,
+		EFFECTS_MODULE_SLOT6      = 196,
+		EFFECTS_MODULE_SLOT7      = 197,
+		EFFECTS_MODULE_SLOT8      = 198,
+		EFFECTS_MODULE_SLOT9      = 199,
+		EFFECTS_MODULE_SLOT10     = 200,
+		EFFECTS_MODULE_CONFIGURE  = 201,
+		DETONATE_DROID            = 202,
+		BARKER_STORE_WAYPOINT     = 203,
+		BARKER_RECORD_MESSAGE     = 204,
+		BARKER_TOGGLE             = 205,
+		PLAYBACK_ACCESS_MENU      = 206,
+		PLAYBACK_STOP_MENU        = 207,
+		TRAP_MODULE_CONTROLS      = 208,
+		TRAP_MODULE_CLEAR         = 209,
+		TRAP_MODULE_TRAIN         = 210,
+		HARVEST_MENU              = 211,
+		HARVEST_TOGGLE            = 212,
+		HARVEST_INTREST_RANDOM    = 213,
+		HARVEST_INTREST_MEAT      = 214,
+		HARVEST_INTREST_HIDE      = 215,
+		HARVEST_INTREST_BONE      = 216,
+		HARVEST_PROGRAM_COMMAND   = 217,
+		HARVEST_SET_INTEREST      = 218
+	};
 
 public:
 	BaseDroidModuleComponent();
