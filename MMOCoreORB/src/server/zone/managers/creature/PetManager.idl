@@ -95,6 +95,8 @@ class PetManager extends ManagedService implements Logger {
 	public static final unsigned int REPAIR = 19;
 	public static final unsigned int THROWTRAP = 20;
 	public static final unsigned int HARVEST = 21;
+	public static final unsigned int GETPATROLPOINT = 22;
+	public static final unsigned int CLEARPATROLPOINTS = 23;
 	
 	public PetManager(ZoneServer server) {
 		zoneServer = server;

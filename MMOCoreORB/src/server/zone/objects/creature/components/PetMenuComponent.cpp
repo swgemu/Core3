@@ -39,7 +39,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 
 	menuResponse->addRadialMenuItem(59, 3, "@pet/pet_menu:menu_store"); // Store
 
-	if (pet->getLinkedCreature() != player)
+	if (pet->getLinkedCreature().get() != player)
 		return;
 
 	ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
@@ -70,7 +70,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 		menuResponse->addRadialMenuItemToRadialID(141, 150, 3, "@pet/pet_menu:menu_assume_formation_1" ); // PET_ASSUME_FORMATION_1
 		menuResponse->addRadialMenuItemToRadialID(141, 151, 3, "@pet/pet_menu:menu_assume_formation_2" ); // PET_ASSUME_FORMATION_2
 		menuResponse->addRadialMenuItemToRadialID(141, 158, 3, "@pet/pet_menu:menu_group" ); // PET_GROUP
-		if (droidObject != NULL && droidObject->isCombatDroid())
+		if (droidObject != NULL && droidObject->isCombatDroid() && droidObject->hasRangedWeapon())
 			menuResponse->addRadialMenuItemToRadialID(141, 163, 3, "@pet/pet_menu:menu_ranged_attack" );
 		menuResponse->addRadialMenuItemToRadialID(141, 164, 3, "@pet/pet_menu:menu_store" );
 		menuResponse->addRadialMenuItemToRadialID(141, 165, 3, "@pet/pet_menu:menu_follow_other" );
@@ -160,16 +160,19 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 			menuResponse->addRadialMenuItemToRadialID(141, 145, 3, "@pet/pet_menu:menu_friend" ); // PET_FRIEND
 		}
 
-		if( player->hasSkill( "outdoors_creaturehandler_taming_03" ) ){
+		if( player->hasSkill( "outdoors_creaturehandler_taming_03" ) && pet->hasSpecialAttack(1) ){
 			menuResponse->addRadialMenuItemToRadialID(141, 161, 3, "@pet/pet_menu:menu_specialattack_one" ); // PET_SPECIAL_ATTACK_ONE
 		}
 
-		if( player->hasSkill( "outdoors_creaturehandler_taming_04" ) ){
+		if( player->hasSkill( "outdoors_creaturehandler_taming_04" ) && pet->hasSpecialAttack(2) ){
 			menuResponse->addRadialMenuItemToRadialID(141, 162, 3, "@pet/pet_menu:menu_specialattack_two" ); // PET_SPECIAL_ATTACK_TWO
 		}
 
 		if( player->hasSkill( "outdoors_creaturehandler_master" ) ){
-			menuResponse->addRadialMenuItemToRadialID(141, 163, 3, "@pet/pet_menu:menu_ranged_attack" );
+			if (pet->hasRangedWeapon()) {
+				menuResponse->addRadialMenuItemToRadialID(141, 163, 3, "@pet/pet_menu:menu_ranged_attack" );
+			}
+
 			menuResponse->addRadialMenuItemToRadialID(141, 152, 3, "@pet/pet_menu:menu_transfer" ); // PET_TRANSFER
 		}
 
@@ -201,7 +204,7 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 
 	AiAgent* pet = cast<AiAgent*>(sceneObject);
 
-	if (!player->getPlayerObject()->isPrivileged() && pet->getLinkedCreature() != player)
+	if (!player->getPlayerObject()->isPrivileged() && pet->getLinkedCreature().get() != player)
 		return 0;
 
 	Locker crossLocker(pet, player);
@@ -229,7 +232,7 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 		return 0;
 	}
 
-	if (pet->getLinkedCreature() != player)
+	if (pet->getLinkedCreature().get() != player)
 		return 0;
 
 	switch(selectedID) {
@@ -252,12 +255,10 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 		petControlDevice->setTrainingCommand( PetManager::PATROL );
 		break;
 	case 148: // Train Command: Get Patrol Point
-		// TODO Handle setting patrol point
-		player->sendSystemMessage("PET_GET_PATROL_POINT pet command is not yet implemented.");
+		petControlDevice->setTrainingCommand( PetManager::GETPATROLPOINT );
 		break;
 	case 149: // Train Command: Clear Patrol Points
-		// TODO Handle clearing patrol points
-		player->sendSystemMessage("PET_CLEAR_PATROL_POINTS pet command is not yet implemented.");
+		petControlDevice->setTrainingCommand( PetManager::CLEARPATROLPOINTS );
 		break;
 	case 150: // Train Command: Wedge Formation
 		petControlDevice->setTrainingCommand( PetManager::FORMATION1 );
@@ -296,6 +297,9 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 		petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petRecover").toLowerCase().hashCode(), "");
 		break;
 	case 207: // Train Pet As A Mount
+		if (petControlDevice->getPetType() != PetManager::CREATUREPET) {
+			return 0;
+		}
 		petControlDevice->trainAsMount(player);
 		break;
 	case 234: // Recharge/Feed

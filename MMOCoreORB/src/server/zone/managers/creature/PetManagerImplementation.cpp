@@ -230,6 +230,12 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	else if( isTrainedCommand( pcd, PATROL, message ) ){
 		speaker->sendSystemMessage("PATROL pet command is not yet implemented.");
 	}
+	else if( isTrainedCommand( pcd, GETPATROLPOINT, message ) ){
+		speaker->sendSystemMessage("GETPATROLPOINT pet command is not yet implemented.");
+	}
+	else if( isTrainedCommand( pcd, CLEARPATROLPOINTS, message ) ){
+		speaker->sendSystemMessage("CLEARPATROLPOINTS pet command is not yet implemented.");
+	}
 	else if( isTrainedCommand( pcd, FORMATION1, message ) ){
 		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
 	}
