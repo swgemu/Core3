@@ -93,6 +93,7 @@ public:
 		pmsg->updatePosture();
 		pmsg->close();
 		creature->broadcastMessage(pmsg, true);
+		creature->sendStateCombatSpam("tum_prone", 0);
 
 		return SUCCESS;
 	}

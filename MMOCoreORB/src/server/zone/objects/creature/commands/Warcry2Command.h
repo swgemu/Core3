@@ -73,7 +73,7 @@ public:
 		int res = doCombatAction(creature, target);
 
 		if (res == TOOFAR)
-			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, creature->getWeapon(), 0, "warcry_out_of_range");
+			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, NULL, 0, "cbt_spam", "warcry_out_of_range", 0);
 
 		if (res == GENERALERROR)
 			creature->sendSystemMessage("@combat_effects:warcry_miss");

@@ -67,6 +67,15 @@ public:
 	const static int GRENADE = 0x1000;
 	const static int LIGHTNINGRIFLE = 0x2000;
 
+	//Mitigation types
+	const static int PSG = 0x1;
+	const static int FORCESHIELD = 0x02;
+	const static int FORCEFEEDBACK = 0x03;
+	const static int FORCEABSORB = 0x04;
+	const static int FORCEARMOR = 0x5;
+	const static int ARMOR = 0x6;
+	const static int FOOD = 0x7;
+
 	// does not need to be bitmasked, these are just used so we know if we use a weapon or not in a command (not a bool for extensibility)
 	const static int WEAPONATTACK = 0x0;
 	const static int FORCEATTACK = 0x1;
@@ -156,7 +165,9 @@ public:
 
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
 
-	void broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
+	void sendMitigationCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, int type);
+	void broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* item, int damage, const String& file, const String& stringName, byte color);
+
 	void broadcastCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, WeaponObject* weapon, const CreatureAttackData& data, uint8 hit);
 
 	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
@@ -191,20 +202,20 @@ protected:
 	int getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObject* weapon);
 	int getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon);
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender);
-	float getDefenderToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage);
+	float getDefenderToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage, Vector<int>& foodMitigation);
 	int calculateDamageRange(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	float applyDamageModifiers(CreatureObject* attacker, WeaponObject* weapon, float damage);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
-	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data);
-	float calculateDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data);
+	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, Vector<int>& foodMitigation);
+	float calculateDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data, Vector<int>& foodMitigation);
 	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender);
 	bool checkConeAngle(SceneObject* targetCreature, float angle, float creatureVectorX, float creatureVectorY, float directionVectorX, float directionVectorY);
 
-	void doMiss(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam);
-	void doCounterAttack(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam);
-	void doBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam);
-	void doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam);
-	void doLightsaberBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam);
+	void doMiss(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);
+	void doCounterAttack(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);
+	void doBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);
+	void doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);
+	void doLightsaberBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage);
 
 	int applyDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, int poolsToDamage, const CreatureAttackData& data);
 	int applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);

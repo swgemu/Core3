@@ -45,7 +45,7 @@ RallyCommand = {
         name = "rally",
 
 	action = "rally",
-	combatSpam = "rally_success_single",
+	combatSpam = "rally",
 
 }
 

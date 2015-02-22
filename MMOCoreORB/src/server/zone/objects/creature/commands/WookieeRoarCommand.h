@@ -104,7 +104,7 @@ public:
 		int res = doCombatAction(creature, target);
 
 		if (res == TOOFAR) 
-			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, creature->getWeapon(), 0, "wookiee_roar_out_of_range");
+			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, NULL, 0, "cbt_spam", "wookiee_roar_out_of_range", 0);
 		
 		if (res == GENERALERROR)
 			creature->sendSystemMessage("@combat_effects:wookiee_roar_miss");	
