@@ -908,6 +908,14 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 		alm->insertAttribute("pet_command_5", trainedCommands.get(PetManager::PATROL) );
 	}
 
+	if( trainedCommands.contains(PetManager::GETPATROLPOINT) ){
+		alm->insertAttribute("pet_command_6", trainedCommands.get(PetManager::GETPATROLPOINT) );
+	}
+
+	if( trainedCommands.contains(PetManager::CLEARPATROLPOINTS) ){
+		alm->insertAttribute("pet_command_7", trainedCommands.get(PetManager::CLEARPATROLPOINTS) );
+	}
+
 	if( trainedCommands.contains(PetManager::FORMATION1) ){
 		alm->insertAttribute("pet_command_8", trainedCommands.get(PetManager::FORMATION1) );
 	}
@@ -969,6 +977,8 @@ void PetControlDeviceImplementation::setDefaultCommands(){
 	trainedCommands.put(PetManager::FRIEND, "friend");
 	trainedCommands.put(PetManager::FOLLOWOTHER, "followother");
 	trainedCommands.put(PetManager::PATROL, "patrol");
+	trainedCommands.put(PetManager::GETPATROLPOINT, "getpatrolpoint");
+	trainedCommands.put(PetManager::CLEARPATROLPOINTS, "clearpatrolpoints");
 	trainedCommands.put(PetManager::FORMATION1, "formation1");
 	trainedCommands.put(PetManager::FORMATION2, "formation2");
 	if(droid != NULL) {
@@ -1021,7 +1031,7 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 			(commandID == PetManager::STAY && !owner->hasSkill("outdoors_creaturehandler_training_01")) ||
 			(commandID == PetManager::GUARD && !owner->hasSkill("outdoors_creaturehandler_training_02")) ||
 			(commandID == PetManager::FRIEND && !owner->hasSkill("outdoors_creaturehandler_support_03")) ||
-			(commandID == PetManager::PATROL && !owner->hasSkill("outdoors_creaturehandler_training_03")) ||
+			((commandID == PetManager::PATROL || commandID == PetManager::GETPATROLPOINT || commandID == PetManager::CLEARPATROLPOINTS) && !owner->hasSkill("outdoors_creaturehandler_training_03")) ||
 			((commandID == PetManager::FORMATION1 || commandID == PetManager::FORMATION2) && !owner->hasSkill("outdoors_creaturehandler_training_04")) ||
 			(commandID == PetManager::TRANSFER && !owner->hasSkill("outdoors_creaturehandler_master")) ||
 			(commandID == PetManager::TRICK1 && !owner->hasSkill("outdoors_creaturehandler_healing_01")) ||

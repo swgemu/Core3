@@ -1181,10 +1181,13 @@ class AiAgent extends CreatureObject {
 			trackingTask.schedule(300000);
 		}
 	}
-	
+
 	@dirty
 	public native boolean hasRangedWeapon();
-	
+
+	@dirty
+	public native boolean hasSpecialAttack(int num);
+
 	public void setPetDeed(PetDeed deed) {
 		petDeed = deed;
 	}

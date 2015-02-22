@@ -2716,6 +2716,25 @@ bool AiAgentImplementation::hasRangedWeapon() {
 	return false;
 }
 
+bool AiAgentImplementation::hasSpecialAttack(int num) {
+	CreatureAttackMap* attackMap = getAttackMap();
+	if (attackMap == NULL) {
+		return false;
+	}
+
+	if (num == 0 || (num > attackMap->size())) {
+		return false;
+	}
+
+	String cmd = attackMap->getCommand(num - 1);
+
+	if (cmd.isEmpty()) {
+		return false;
+	}
+
+	return true;
+}
+
 bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 	if (object == NULL || object == _this.get()) {
 		return false;
