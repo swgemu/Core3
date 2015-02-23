@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_6ceeaf8d",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-02-23T10:22:15Z",
+      "side": 1,
+      "message": "Since you have to rebase anyway, change this to an enum to coincide with McMahon\u0027s changes.",
+      "revId": "f371d24e286960f90eda721e8dd8cc1a0026af9a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
