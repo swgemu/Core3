@@ -36,6 +36,7 @@ specops_alliance_free_agent = Creature:new {
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",			
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 

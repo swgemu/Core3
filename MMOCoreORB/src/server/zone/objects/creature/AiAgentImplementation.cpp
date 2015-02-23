@@ -2870,7 +2870,18 @@ void AiAgentImplementation::restoreFollowObject() {
 		setFollowObject(obj);
 	}
 }
-
+String AiAgentImplementation::getPersonalityStf() {
+	if(isDroidObject()) {
+		DroidObject* droid = _this.get().castTo<DroidObject*>();
+		return droid->getPersonalityStf();
+	} else {
+		if (npcTemplate == NULL)
+			return "";
+		else
+			return npcTemplate->getPersonalityStf();
+	}
+	return "";
+}
 void AiAgentImplementation::sendReactionChat(int type, int state) {
 	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZone() == NULL) {
 		return;

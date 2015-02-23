@@ -50,6 +50,7 @@ senior_specforce_technician = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",			
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

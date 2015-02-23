@@ -52,6 +52,7 @@ imprisoned_imperial_officer = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",	
 	attacks = brawlermid
 }
 

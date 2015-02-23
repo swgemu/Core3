@@ -1206,5 +1206,8 @@ class AiAgent extends CreatureObject {
 	
 	@local
 	public native float getEffectiveResist();
+	
+	@dirty
+	public native string getPersonalityStf();
 
 }
