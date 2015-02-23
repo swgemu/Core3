@@ -33,7 +33,7 @@ mound_mite = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

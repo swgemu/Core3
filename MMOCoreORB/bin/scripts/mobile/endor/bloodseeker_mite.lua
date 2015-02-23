@@ -31,8 +31,8 @@ bloodseeker_mite = Creature:new {
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"dizzyattack",""},
+		{"posturedownattack",""}
 	}
 }
 

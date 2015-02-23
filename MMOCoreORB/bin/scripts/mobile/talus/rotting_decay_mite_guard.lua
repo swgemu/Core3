@@ -32,7 +32,7 @@ rotting_decay_mite_guard = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
+		{"intimidationattack",""},
 		{"mediumdisease",""}
 	}
 }

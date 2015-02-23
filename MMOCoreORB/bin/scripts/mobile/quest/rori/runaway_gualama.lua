@@ -31,7 +31,7 @@ runaway_gualama = Creature:new {
 	weapons = {},
 	conversationTemplate = "hefsen_zindalai_mission_target_convotemplate",
 	attacks = {
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

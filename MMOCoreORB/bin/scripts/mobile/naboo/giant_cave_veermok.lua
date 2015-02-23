@@ -32,7 +32,7 @@ giant_cave_veermok = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

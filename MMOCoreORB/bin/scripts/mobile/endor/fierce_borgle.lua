@@ -32,7 +32,7 @@ fierce_borgle = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack",""}
 	}
 }
 

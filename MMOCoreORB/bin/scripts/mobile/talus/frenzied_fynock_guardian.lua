@@ -33,7 +33,7 @@ frenzied_fynock_guardian = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack",""}
 	}
 }
 

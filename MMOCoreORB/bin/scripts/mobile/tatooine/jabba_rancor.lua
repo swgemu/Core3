@@ -28,8 +28,8 @@ jabba_rancor = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"stunattack",""},
+		{"intimidationattack",""}
 	}
 }
 

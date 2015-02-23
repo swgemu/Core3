@@ -32,7 +32,7 @@ giga_flite_rasp = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack",""}
 	}
 }
 

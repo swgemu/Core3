@@ -30,8 +30,8 @@ bol = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"knockdownattack",""},
+		{"intimidationattack",""}
 	}
 }
 

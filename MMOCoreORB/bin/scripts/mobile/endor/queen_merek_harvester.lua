@@ -31,7 +31,7 @@ queen_merek_harvester = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
+		{"knockdownattack",""},
 		{"creatureareableeding",""}
 	}
 }

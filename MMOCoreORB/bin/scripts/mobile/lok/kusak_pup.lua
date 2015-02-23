@@ -32,7 +32,7 @@ kusak_pup = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack",""}
 	}
 }
 

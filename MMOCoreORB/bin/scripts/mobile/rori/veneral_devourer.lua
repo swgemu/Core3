@@ -32,8 +32,8 @@ veneral_devourer = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"blindattack","blindChance=50"}
+		{"intimidationattack",""},
+		{"blindattack",""}
 	}
 }
 

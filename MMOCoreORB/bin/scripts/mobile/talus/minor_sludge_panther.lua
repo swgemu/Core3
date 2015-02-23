@@ -33,7 +33,7 @@ minor_sludge_panther = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack",""}
 	}
 }
 

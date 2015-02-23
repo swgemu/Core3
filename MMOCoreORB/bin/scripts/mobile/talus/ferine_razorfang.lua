@@ -32,8 +32,8 @@ ferine_razorfang = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"blindattack",""},
+		{"intimidationattack",""}
 	}
 }
 

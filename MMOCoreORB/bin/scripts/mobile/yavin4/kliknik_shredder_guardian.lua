@@ -39,8 +39,8 @@ kliknik_shredder_guardian = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"stunattack","stunChance=50"}
+		{"knockdownattack",""},
+		{"stunattack",""}
 	}
 }
 

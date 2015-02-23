@@ -32,8 +32,8 @@ demolishing_snorbal_titan = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"knockdownattack","knockdownChance=50"}
+		{"intimidationattack",""},
+		{"knockdownattack",""}
 	}
 }
 

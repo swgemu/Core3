@@ -31,8 +31,8 @@ bolle_bol_male = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"blindattack","blindChance=50"}
+		{"posturedownattack",""},
+		{"blindattack",""}
 	}
 }
 

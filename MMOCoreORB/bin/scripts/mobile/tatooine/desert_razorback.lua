@@ -33,7 +33,7 @@ desert_razorback = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

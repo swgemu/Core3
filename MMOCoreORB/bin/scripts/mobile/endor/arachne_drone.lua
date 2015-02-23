@@ -32,7 +32,7 @@ arachne_drone = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"strongpoison",""},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack",""}
 	}
 }
 

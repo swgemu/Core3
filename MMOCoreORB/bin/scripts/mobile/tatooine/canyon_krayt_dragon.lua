@@ -50,7 +50,7 @@ canyon_krayt_dragon = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareaattack",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

@@ -32,8 +32,8 @@ vrelt_mother = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"knockdownattack",""},
+		{"intimidationattack",""}
 	}
 }
 

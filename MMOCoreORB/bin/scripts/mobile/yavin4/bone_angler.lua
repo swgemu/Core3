@@ -33,7 +33,7 @@ bone_angler = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"strongpoison",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack",""}
 	}
 }
 

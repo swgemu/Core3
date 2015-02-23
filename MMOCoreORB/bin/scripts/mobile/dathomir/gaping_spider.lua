@@ -32,7 +32,7 @@ gaping_spider = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"mildpoison",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack",""}
 	}
 }
 

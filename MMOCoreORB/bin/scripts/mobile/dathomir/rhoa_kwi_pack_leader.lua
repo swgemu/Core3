@@ -32,8 +32,8 @@ rhoa_kwi_pack_leader = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"posturedownattack",""},
+		{"dizzyattack",""}
 	}
 }
 

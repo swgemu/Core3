@@ -31,8 +31,8 @@ trained_veermok = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"knockdownattack","knockdownChance=50"}
+		{"dizzyattack",""},
+		{"knockdownattack",""}
 	}
 }
 

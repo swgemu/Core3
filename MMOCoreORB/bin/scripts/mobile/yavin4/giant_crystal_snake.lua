@@ -32,7 +32,7 @@ giant_crystal_snake = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
+		{"posturedownattack",""},
 		{"strongpoison",""}
 	}
 }

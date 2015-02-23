@@ -31,8 +31,8 @@ grizzled_dewback = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"knockdownattack",""},
+		{"dizzyattack",""}
 	}
 }
 

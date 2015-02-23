@@ -40,7 +40,7 @@ kliknik_defender = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack",""}
 	}
 }
 

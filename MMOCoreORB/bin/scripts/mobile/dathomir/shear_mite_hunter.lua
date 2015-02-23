@@ -33,7 +33,7 @@ shear_mite_hunter = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"mediumpoison",""},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack",""}
 	}
 }
 

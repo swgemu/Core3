@@ -32,7 +32,7 @@ vine_rawl = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
+		{"posturedownattack",""},
 		{"mediumpoison",""}
 	}
 }

@@ -31,8 +31,8 @@ rotten_gut_remmer_king = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"posturedownattack",""},
+		{"dizzyattack",""}
 	}
 }
 

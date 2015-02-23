@@ -33,7 +33,7 @@ female_grassland_slice_hound = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

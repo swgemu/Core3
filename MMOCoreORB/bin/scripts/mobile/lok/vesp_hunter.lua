@@ -32,8 +32,8 @@ vesp_hunter = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"blindattack",""},
+		{"posturedownattack",""}
 	}
 }
 

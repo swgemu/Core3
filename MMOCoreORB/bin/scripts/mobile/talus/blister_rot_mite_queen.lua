@@ -32,7 +32,7 @@ blister_rot_mite_queen = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"mediumdisease",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

@@ -33,7 +33,7 @@ ancient_reptilian_flier = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack",""}
 	}
 }
 

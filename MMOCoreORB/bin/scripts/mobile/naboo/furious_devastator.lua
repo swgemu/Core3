@@ -39,8 +39,8 @@ furious_devastator = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"intimidationattack",""},
+		{"posturedownattack",""}
 	}
 }
 

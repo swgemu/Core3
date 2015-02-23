@@ -31,7 +31,7 @@ giant_spined_snake = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
+		{"dizzyattack",""},
 		{"strongpoison",""}
 	}
 }

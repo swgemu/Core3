@@ -32,7 +32,7 @@ king_merek_harvester = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareapoison",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack",""}
 	}
 }
 

@@ -33,7 +33,7 @@ cave_beetle = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"mediumpoison",""},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack",""}
 	}
 }
 

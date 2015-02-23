@@ -32,7 +32,7 @@ mad_angler = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"strongpoison",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack",""}
 	}
 }
 

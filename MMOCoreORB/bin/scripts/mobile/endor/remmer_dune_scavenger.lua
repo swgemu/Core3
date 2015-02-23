@@ -31,8 +31,8 @@ remmer_dune_scavenger = Creature:new {
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"stunattack","stunChance=50"}
+		{"posturedownattack",""},
+		{"stunattack",""}
 	}
 }
 

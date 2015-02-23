@@ -42,7 +42,7 @@
 --true = 1, false = 0
 
 CreatureAreaAttackCommand = {
-        name = "creatureareattack",
+        name = "creatureareaattack",
 	damageMultiplier = 1.5,
 	speedMultiplier = 1,
 

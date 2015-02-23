@@ -32,8 +32,8 @@ vesp_scavenger = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"intimidationattack",""},
+		{"dizzyattack",""}
 	}
 }
 

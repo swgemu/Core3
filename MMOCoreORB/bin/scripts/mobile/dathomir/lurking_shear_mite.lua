@@ -33,7 +33,7 @@ lurking_shear_mite = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack",""}
 	}
 }
 

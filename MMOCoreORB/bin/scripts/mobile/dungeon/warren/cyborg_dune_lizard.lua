@@ -30,8 +30,8 @@ cyborg_dune_lizard = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"stunattack",""},
+		{"intimidationattack",""}
 	}
 }
 

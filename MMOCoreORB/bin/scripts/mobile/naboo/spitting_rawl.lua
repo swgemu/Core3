@@ -32,7 +32,7 @@ spitting_rawl = Creature:new {
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
+		{"blindattack",""},
 		{"strongpoison",""}
 	}
 }

@@ -32,8 +32,8 @@ boar_wolf_ravager = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"blindattack","blindChance=50"}
+		{"stunattack",""},
+		{"blindattack",""}
 	}
 }
 

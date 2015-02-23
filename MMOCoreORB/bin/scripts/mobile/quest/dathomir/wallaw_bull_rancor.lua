@@ -48,7 +48,7 @@ wallaw_bull_rancor = Creature:new {
   conversationTemplate = "wallaw_loowobbli_mission_target_convotemplate",
   attacks = {
     {"creatureareadisease",""},
-    {"dizzyattack","dizzyChance=50"}
+    {"dizzyattack",""}
   }
 }
 

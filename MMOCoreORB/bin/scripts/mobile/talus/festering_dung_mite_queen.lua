@@ -31,7 +31,7 @@ festering_dung_mite_queen = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
+		{"dizzyattack",""},
 		{"milddisease",""}
 	}
 }

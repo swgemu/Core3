@@ -47,8 +47,8 @@ nightsister_rancor = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"creatureareaknockdown","knockdownChance=30"}
+		{"posturedownattack",""},
+		{"creatureareaknockdown",""}
 	}
 }
 

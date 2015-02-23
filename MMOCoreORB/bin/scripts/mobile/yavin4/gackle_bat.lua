@@ -32,7 +32,7 @@ gackle_bat = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack",""}
 	}
 }
 

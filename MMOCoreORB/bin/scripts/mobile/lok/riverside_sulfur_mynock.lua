@@ -32,7 +32,7 @@ riverside_sulfur_mynock = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
+		{"blindattack",""},
 		{"mediumdisease",""}
 	}
 }

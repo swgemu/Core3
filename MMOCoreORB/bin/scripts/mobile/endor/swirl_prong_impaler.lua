@@ -32,7 +32,7 @@ swirl_prong_impaler = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack",""}
 	}
 }
 

@@ -50,7 +50,7 @@ krayt_dragon_ancient = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareacombo",""},
-		{"creatureareaknockdown","knockdownChance=50"}
+		{"creatureareaknockdown",""}
 	}
 }
 

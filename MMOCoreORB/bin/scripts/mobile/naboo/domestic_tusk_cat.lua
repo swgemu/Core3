@@ -31,7 +31,7 @@ domestic_tusk_cat = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack",""}
 	}
 }
 

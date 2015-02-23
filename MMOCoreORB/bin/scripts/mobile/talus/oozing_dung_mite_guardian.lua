@@ -33,7 +33,7 @@ oozing_dung_mite_guardian = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"mediumdisease",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

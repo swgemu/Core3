@@ -33,7 +33,7 @@ diseased_vrelt_matriarch = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"milddisease",""},
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack",""}
 	}
 }
 

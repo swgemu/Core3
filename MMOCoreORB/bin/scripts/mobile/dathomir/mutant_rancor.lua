@@ -48,7 +48,7 @@ mutant_rancor = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareableeding",""},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack",""}
 	}
 }
 

@@ -33,7 +33,7 @@ reclusive_shear_mite = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack",""}
 	}
 }
 

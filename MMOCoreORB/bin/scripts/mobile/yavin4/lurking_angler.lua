@@ -32,7 +32,7 @@ lurking_angler = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"mediumpoison",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack",""}
 	}
 }
 

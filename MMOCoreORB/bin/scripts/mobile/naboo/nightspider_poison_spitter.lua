@@ -31,7 +31,7 @@ nightspider_poison_spitter = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
+		{"stunattack",""},
 		{"mildpoison",""}
 	}
 }

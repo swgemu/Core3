@@ -31,8 +31,8 @@ bolle_bol_herd_leader = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"knockdownattack",""},
+		{"intimidationattack",""}
 	}
 }
 

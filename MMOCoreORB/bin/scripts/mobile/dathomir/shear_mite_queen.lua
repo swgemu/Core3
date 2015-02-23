@@ -31,7 +31,7 @@ shear_mite_queen = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
+		{"dizzyattack",""},
 		{"strongpoison",""}
 	}
 }

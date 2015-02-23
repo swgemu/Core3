@@ -32,8 +32,8 @@ piket_longhorn_female = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"dizzyattack",""},
+		{"posturedownattack",""}
 	}
 }
 

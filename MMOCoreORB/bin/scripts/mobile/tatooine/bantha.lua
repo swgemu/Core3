@@ -33,7 +33,7 @@ bantha = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack",""}
 	}
 }
 

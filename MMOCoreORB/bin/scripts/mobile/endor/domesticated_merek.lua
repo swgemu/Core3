@@ -30,8 +30,8 @@ domesticated_merek = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"stunattack","stunChance=50"}
+		{"posturedownattack",""},
+		{"stunattack",""}
 	}
 }
 

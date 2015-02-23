@@ -30,7 +30,7 @@ giant_gackle_bat = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	attacks = {
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack",""}
 	}
 }
 

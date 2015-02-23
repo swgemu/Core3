@@ -32,8 +32,8 @@ terrible_quenker = Creature:new {
 	weapons = {"creature_spit_small_green"},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
-		{"stunattack","stunChance=50"}
+		{"intimidationattack",""},
+		{"stunattack",""}
 	}
 }
 

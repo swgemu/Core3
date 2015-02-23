@@ -48,7 +48,7 @@ nightsister_bull_rancor = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareadisease",""},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack",""}
 	}
 }
 

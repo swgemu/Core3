@@ -31,7 +31,7 @@ foaming_vynock = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
+		{"intimidationattack",""},
 		{"milddisease",""}
 	}
 }

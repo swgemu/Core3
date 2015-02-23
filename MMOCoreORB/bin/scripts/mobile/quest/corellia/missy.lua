@@ -30,7 +30,7 @@ missy = Creature:new {
 	weapons = {},
 	conversationTemplate = "diktatTargetConvo",
 	attacks = {
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

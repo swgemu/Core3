@@ -31,7 +31,7 @@ crystal_snake = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"mediumpoison",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

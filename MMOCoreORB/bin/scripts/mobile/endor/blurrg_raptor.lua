@@ -31,8 +31,8 @@ blurrg_raptor = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"blindattack","blindChance=50"}
+		{"stunattack",""},
+		{"blindattack",""}
 	}
 }
 

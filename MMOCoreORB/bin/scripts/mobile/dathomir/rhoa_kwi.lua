@@ -31,8 +31,8 @@ rhoa_kwi = Creature:new {
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"stunattack",""},
+		{"intimidationattack",""}
 	}
 }
 

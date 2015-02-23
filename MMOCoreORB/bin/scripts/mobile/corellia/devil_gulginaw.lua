@@ -33,7 +33,7 @@ devil_gulginaw = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack",""}
 	}
 }
 

@@ -39,7 +39,7 @@ peko_peko_albatross = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareacombo",""},
-		{"creatureareaknockdown","knockdownChance=30"}
+		{"creatureareaknockdown",""}
 	}
 }
 

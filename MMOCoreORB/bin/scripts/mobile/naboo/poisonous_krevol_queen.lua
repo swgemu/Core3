@@ -31,7 +31,7 @@ poisonous_krevol_queen = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"blindattack","blindChance=50"},
+		{"blindattack",""},
 		{"mediumpoison",""}
 	}
 }

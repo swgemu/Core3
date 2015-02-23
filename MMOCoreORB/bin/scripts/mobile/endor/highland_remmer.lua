@@ -31,8 +31,8 @@ highland_remmer = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"dizzyattack",""},
+		{"posturedownattack",""}
 	}
 }
 

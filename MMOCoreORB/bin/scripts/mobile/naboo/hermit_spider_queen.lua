@@ -32,7 +32,7 @@ hermit_spider_queen = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"mildpoison",""},
-		{"blindattack","blindChance=50"}
+		{"blindattack",""}
 	}
 }
 

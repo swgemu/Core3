@@ -31,7 +31,7 @@ lowland_salt_mynock = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
+		{"dizzyattack",""},
 		{"mediumdisease",""}
 
 	}

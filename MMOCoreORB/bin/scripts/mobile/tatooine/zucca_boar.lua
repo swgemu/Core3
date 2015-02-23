@@ -32,7 +32,7 @@ zucca_boar = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

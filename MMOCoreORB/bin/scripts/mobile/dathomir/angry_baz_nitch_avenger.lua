@@ -32,7 +32,7 @@ angry_baz_nitch_avenger = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack",""}
 	}
 }
 

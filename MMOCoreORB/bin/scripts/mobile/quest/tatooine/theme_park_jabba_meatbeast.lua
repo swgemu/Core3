@@ -39,7 +39,7 @@ theme_park_jabba_meatbeast = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"dizzyattack","dizzyChance=50"}
+		{"dizzyattack",""}
 	}
 }
 

@@ -51,10 +51,10 @@ krayt_dragon_grand = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareacombo",""},
-		{"blindattack","blindChance=50"},
-		{"intimidationattack","intimidationChance=50"},
-		{"creatureareaknockdown","knockdownChance=50"},
-		{"stunattack","stunChance=50"}
+		{"blindattack",""},
+		{"intimidationattack",""},
+		{"creatureareaknockdown",""},
+		{"stunattack",""}
 	}
 }
 

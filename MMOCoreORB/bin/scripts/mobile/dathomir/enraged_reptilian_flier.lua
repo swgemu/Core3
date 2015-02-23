@@ -32,8 +32,8 @@ enraged_reptilian_flier = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"blindattack","blindChance=50"}
+		{"dizzyattack",""},
+		{"blindattack",""}
 	}
 }
 

@@ -33,7 +33,7 @@ frenzied_graul = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareableeding",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

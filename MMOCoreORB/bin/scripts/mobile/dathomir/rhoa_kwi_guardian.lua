@@ -32,8 +32,8 @@ rhoa_kwi_guardian = Creature:new {
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"posturedownattack",""},
+		{"dizzyattack",""}
 	}
 }
 

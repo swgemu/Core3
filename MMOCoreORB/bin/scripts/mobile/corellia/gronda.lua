@@ -32,7 +32,7 @@ gronda = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"knockdownattack","knockdownChance=50"}
+		{"knockdownattack",""}
 	}
 }
 

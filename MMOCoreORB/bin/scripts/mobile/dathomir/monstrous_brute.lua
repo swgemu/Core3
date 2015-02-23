@@ -47,7 +47,7 @@ monstrous_brute = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
+		{"knockdownattack",""},
 		{"creatureareaattack",""}
 	}
 }

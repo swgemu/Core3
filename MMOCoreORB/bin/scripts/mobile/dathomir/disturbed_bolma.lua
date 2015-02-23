@@ -31,8 +31,8 @@ disturbed_bolma = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"knockdownattack","knockdownChance=50"}
+		{"posturedownattack",""},
+		{"knockdownattack",""}
 	}
 }
 

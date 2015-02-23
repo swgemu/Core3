@@ -33,7 +33,7 @@ stintaril_ravager = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"mediumdisease",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

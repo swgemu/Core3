@@ -42,13 +42,13 @@
 --true = 1, false = 0
 
 CreatureAreaComboCommand = {
-    name = "creatureareacombo",
-    damageMultiplier = 1,
+	name = "creatureareacombo",
+	damageMultiplier = 1,
 	speedMultiplier = 1,
     
-    poolsToDamage = RANDOM_ATTRIBUTE,
+	poolsToDamage = RANDOM_ATTRIBUTE,
     
-    combatSpam = "attack",
+	combatSpam = "attack",
 	animationCRC = 0,
 
 	healthCostMultiplier = 0,

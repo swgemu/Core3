@@ -33,7 +33,7 @@ rabid_mutant_kahmurra = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"strongdisease",""},
-		{"stunattack","stunChance=50"}
+		{"stunattack",""}
 	}
 }
 

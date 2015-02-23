@@ -31,8 +31,8 @@ mountain_vesp = Creature:new {
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	attacks = {
-		{"blindattack","blindChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"blindattack",""},
+		{"dizzyattack",""}
 	}
 }
 

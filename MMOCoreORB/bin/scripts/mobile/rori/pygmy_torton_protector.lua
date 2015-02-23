@@ -31,8 +31,8 @@ pygmy_torton_protector = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"knockdownattack",""},
+		{"dizzyattack",""}
 	}
 }
 

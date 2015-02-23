@@ -32,7 +32,7 @@ woolamander_reaper = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareadisease",""},
-		{"intimidationattack","intimidationChance=50"}
+		{"intimidationattack",""}
 	}
 }
 

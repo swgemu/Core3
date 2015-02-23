@@ -31,7 +31,7 @@ male_kai_tok = Creature:new {
 	weapons = {"creature_spit_small_green"},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"}
+		{"posturedownattack",""}
 	}
 }
 

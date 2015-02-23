@@ -31,8 +31,8 @@ deranged_wrix = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"intimidationattack","intimidationChance=50"}
+		{"stunattack",""},
+		{"intimidationattack",""}
 	}
 }
 

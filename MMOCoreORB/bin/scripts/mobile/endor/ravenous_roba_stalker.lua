@@ -33,7 +33,7 @@ ravenous_roba_stalker = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"",""},
-		{"knockdownattack","knockdownChance=50"}
+		{"knockdownattack",""}
 	}
 }
 

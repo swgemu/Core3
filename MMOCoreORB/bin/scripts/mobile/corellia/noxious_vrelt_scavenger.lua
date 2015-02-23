@@ -32,7 +32,7 @@ noxious_vrelt_scavenger = Creature:new {
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
+		{"stunattack",""},
 		{"milddisease",""}
 	}
 }

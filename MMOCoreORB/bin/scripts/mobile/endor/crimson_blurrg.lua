@@ -30,8 +30,8 @@ crimson_blurrg = Creature:new {
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",
 	attacks = {
-		{"posturedownattack","postureDownChance=50"},
-		{"knockdownattack","knockdownChance=50"}
+		{"posturedownattack",""},
+		{"knockdownattack",""}
 	}
 }
 

@@ -32,8 +32,8 @@ hilltop_gurreck_hunter = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"posturedownattack","postureDownChance=50"}
+		{"stunattack",""},
+		{"posturedownattack",""}
 	}
 }
 

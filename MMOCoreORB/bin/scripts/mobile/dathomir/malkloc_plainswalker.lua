@@ -31,8 +31,8 @@ malkloc_plainswalker = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
-		{"creatureareaknockdown","knockdownChance=30"}
+		{"dizzyattack",""},
+		{"creatureareaknockdown",""}
 	}
 }
 

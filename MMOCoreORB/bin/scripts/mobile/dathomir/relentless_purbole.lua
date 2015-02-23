@@ -32,8 +32,8 @@ relentless_purbole = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"stunattack","stunChance=50"},
-		{"dizzyattack","dizzyChance=50"}
+		{"stunattack",""},
+		{"dizzyattack",""}
 	}
 }
 

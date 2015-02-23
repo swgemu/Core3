@@ -31,7 +31,7 @@ giant_decay_mite_sentry = Creature:new {
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {
-		{"knockdownattack","knockdownChance=50"},
+		{"knockdownattack",""},
 		{"mediumdisease",""}
 	}
 }

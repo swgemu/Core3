@@ -31,7 +31,7 @@ giant_decay_mite_guardian = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"intimidationattack","intimidationChance=50"},
+		{"intimidationattack",""},
 		{"mildpoison",""}
 	}
 }
