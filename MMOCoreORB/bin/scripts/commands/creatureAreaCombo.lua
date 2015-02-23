@@ -45,18 +45,57 @@ CreatureAreaComboCommand = {
 	name = "creatureareacombo",
 	damageMultiplier = 1,
 	speedMultiplier = 1,
-    
+
 	poolsToDamage = RANDOM_ATTRIBUTE,
-    
+
 	combatSpam = "attack",
 	animationCRC = 0,
 
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
-    
+
 	areaRange = 25,
-	areaAction = true
+	areaAction = true,
+
+	stateEffects = {
+	  StateEffect(
+		STUN_EFFECT,
+		{},
+		{ "stun_defense", "resistance_states" },
+		{ "jedi_state_defense" },
+		30,
+		100,
+		10
+	  ),
+	  StateEffect(
+		DIZZY_EFFECT,
+		{},
+		{ "dizzy_defense", "resistance_states" },
+		{ "jedi_state_defense" },
+		30,
+		100,
+		10
+	  ),
+	  StateEffect(
+		BLIND_EFFECT,
+		{},
+		{ "blind_defense", "resistance_states" },
+		{ "jedi_state_defense" },
+		30,
+		100,
+		10
+	  ),
+	  StateEffect(
+		INTIMIDATE_EFFECT,
+		{},
+		{ "intimidate_defense", "resistance_states" },
+		{ "jedi_state_defense" },
+		30,
+		100,
+		10
+	  )
+	}
 }
 
 AddCommand(CreatureAreaComboCommand)
