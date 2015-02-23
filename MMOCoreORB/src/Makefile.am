@@ -97,7 +97,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/tangible/components/droid/DroidPersonalityObserver.cpp \
+core3_IDLS =	autogen/server/zone/objects/creature/conversation/PetTrainingConversationObserver.cpp \
+				autogen/server/zone/objects/tangible/components/droid/DroidPersonalityObserver.cpp \
 				autogen/server/zone/objects/player/sessions/DroidMaintenanceSession.cpp \
 				autogen/server/zone/objects/tangible/components/droid/DroidHarvestObserver.cpp \
 				autogen/server/zone/objects/tangible/components/droid/DroidPlaybackObserver.cpp \
@@ -684,9 +685,11 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/conversation/ConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/TrainerConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/DeliverMissionConversationObserverImplementation.cpp \
+		server/zone/objects/creature/conversation/PetTrainingConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/InformantMissionConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/TrainerScreenHandlers.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/DeliverMissionScreenHandler.cpp \
+		server/zone/objects/creature/conversation/screenhandlers/PetTrainingScreenHandler.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/InformantMissionScreenHandler.cpp \
 		server/zone/objects/player/PlayerObjectImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/DelegateSuiCallback.cpp \

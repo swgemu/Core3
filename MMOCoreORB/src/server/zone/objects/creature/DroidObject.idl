@@ -456,4 +456,13 @@ class DroidObject extends AiAgent {
 	
 	@local
 	public native boolean isStructureAssigned(StructureObject structure);
+	
+	/**
+	 * sends the conversation notification 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
+	
+	@dirty
+	public native void sendConversationStartTo(SceneObject player);
 }

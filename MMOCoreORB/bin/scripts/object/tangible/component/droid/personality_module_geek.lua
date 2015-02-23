@@ -56,6 +56,7 @@ object_tangible_component_droid_personality_module_geek = object_tangible_compon
 	experimentalMax = {0, 0, 15, 1000, 15, 30},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {1, 1, 1, 1, 1, 1},
+	conversationTemplate = "pet_geek_convotemplate"
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_personality_module_geek, "object/tangible/component/droid/personality_module_geek.iff")

@@ -56,6 +56,7 @@ object_tangible_component_droid_personality_module_prissy = object_tangible_comp
 	experimentalMax = {0, 0, 15, 1000, 15, 15},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 4, 1, 1},
+	conversationTemplate = "pet_prissy_convotemplate"	
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_personality_module_prissy, "object/tangible/component/droid/personality_module_prissy.iff")
