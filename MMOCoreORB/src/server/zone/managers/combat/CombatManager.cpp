@@ -1556,7 +1556,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObjec
 }
 
 void CombatManager::applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data) {
-	VectorMap<uint64, StateEffect>* stateEffects = data.getStateEffects();
+	VectorMap<uint8, StateEffect>* stateEffects = data.getStateEffects();
 
 	if (targetCreature->isPlayerCreature() && targetCreature->getPvpStatusBitmask() == CreatureFlag::NONE) {
 		return;

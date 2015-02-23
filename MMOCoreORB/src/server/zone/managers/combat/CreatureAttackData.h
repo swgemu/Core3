@@ -38,7 +38,7 @@ protected:
 
     uint32 animationCRC;
 
-    VectorMap<uint64, StateEffect>* stateEffects;
+    VectorMap<uint8, StateEffect>* stateEffects;
     VectorMap<uint64, DotEffect>* dotEffects;
 
 	uint8 attackType;
@@ -137,7 +137,7 @@ public:
 		return speedMultiplier;
 	}
 
-	VectorMap<uint64, StateEffect>* getStateEffects() const {
+	VectorMap<uint8, StateEffect>* getStateEffects() const {
 		return stateEffects;
 	}
 

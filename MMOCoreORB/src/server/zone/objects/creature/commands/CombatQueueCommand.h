@@ -52,7 +52,7 @@ protected:
 	uint32 animationCRC;
 	String effectString;
 
-	VectorMap<uint64, StateEffect> stateEffects;
+	VectorMap<uint8, StateEffect> stateEffects;
 	VectorMap<uint64, DotEffect> dotEffects;
 
 	uint8 attackType;
@@ -303,7 +303,7 @@ public:
 		return poolsToDamage;
 	}
 
-	inline VectorMap<uint64, StateEffect>* getStateEffects() {
+	inline VectorMap<uint8, StateEffect>* getStateEffects() {
 		return &stateEffects;
 	}
 
@@ -323,7 +323,7 @@ public:
 		this->poolsToDamage = poolsToDamage;
 	}
 
-	void setStateEffects(VectorMap<uint64, StateEffect> stateEffects) {
+	void setStateEffects(VectorMap<uint8, StateEffect> stateEffects) {
 		this->stateEffects = stateEffects;
 	}
 
@@ -331,7 +331,7 @@ public:
 		stateEffects.put(stateEffect.getEffectType(), stateEffect);
 	}
 
-	StateEffect getStateEffect(uint64 type) {
+	StateEffect getStateEffect(uint8 type) {
 		return stateEffects.get(type);
 	}
 

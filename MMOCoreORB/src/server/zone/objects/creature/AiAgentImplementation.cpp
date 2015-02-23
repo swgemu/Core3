@@ -33,6 +33,7 @@
 #include <cmath>
 #include <cstdlib>
 
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -42,6 +43,7 @@
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
+#include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/Zone.h"
@@ -513,7 +515,7 @@ bool AiAgentImplementation::validateStateAttack() {
 	if (followCopy == NULL || !followCopy->isCreatureObject())
 		return false;
 
-	return validateStateAttack(followCopy.castTo<CreatureObject*>(), nextActionArgs);
+	return validateStateAttack(followCopy.castTo<CreatureObject*>(), nextActionCRC);
 }
 
 SceneObject* AiAgentImplementation::getTargetFromMap() {
@@ -668,25 +670,66 @@ void AiAgentImplementation::selectDefaultWeapon() {
 		currentWeapon->destroyObjectFromWorld(false);
 }
 
-bool AiAgentImplementation::validateStateAttack(CreatureObject* target, String& args) {
-	StringTokenizer tokenizer(args);
-	tokenizer.setDelimeter(";");
+bool AiAgentImplementation::validateStateAttack(CreatureObject* target, unsigned int actionCRC) {
+	ManagedReference<ObjectController*> objectController = getZoneServer()->getObjectController();
+	CombatQueueCommand* queueCommand = cast<CombatQueueCommand*>(objectController->getQueueCommand(actionCRC));
 
-	while (tokenizer.hasMoreTokens()) {
-		String singleArg;
-		tokenizer.getStringToken(singleArg);
+	VectorMap<uint8, StateEffect>* effects = queueCommand->getStateEffects();
 
-		if (singleArg.indexOf("Chance") != -1) {
-			String stateName = singleArg.subString(0, args.indexOf("Chance"));
-			uint64 state = CreatureState::instance()->getState(stateName);
-			if (target->hasState(state) || (stateName == "postureDown" && target->isProne()) || (stateName == "knockdown" && target->isKnockedDown()) || (stateName == "postureUp" && target->isStanding())) {
-				return false;
+	if (effects->size() == 0) {
+		return true;
+	}
 
+	for (int i = 0; i < effects->size(); i++) {
+		uint8 effectType = effects->elementAt(i).getKey();
+
+		switch (effectType) {
+		case CommandEffect::BLIND:
+			if (!target->hasState(CreatureState::BLINDED)) {
+				return true;
 			}
+			break;
+		case CommandEffect::DIZZY:
+			if (!target->hasState(CreatureState::DIZZY)) {
+				return true;
+			}
+			break;
+		case CommandEffect::INTIMIDATE:
+			if (!target->hasState(CreatureState::INTIMIDATED)) {
+				return true;
+			}
+			break;
+		case CommandEffect::STUN:
+			if (!target->hasState(CreatureState::STUNNED)) {
+				return true;
+			}
+			break;
+		case CommandEffect::KNOCKDOWN:
+			if (!target->isKnockedDown()) {
+				return true;
+			}
+			break;
+		case CommandEffect::POSTUREUP:
+			if (!target->isStanding()) {
+				return true;
+			}
+			break;
+		case CommandEffect::POSTUREDOWN:
+			if (!target->isProne()) {
+				return true;
+			}
+			break;
+		case CommandEffect::NEXTATTACKDELAY:
+			if (!target->hasAttackDelay()) {
+				return true;
+			}
+			break;
+		default:
+			break;
 		}
 	}
 
-	return true;
+	return false;
 }
 
 void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {

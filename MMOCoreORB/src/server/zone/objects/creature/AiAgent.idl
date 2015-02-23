@@ -677,7 +677,7 @@ class AiAgent extends CreatureObject {
 
 	public native void selectWeapon();
 	public native void selectDefaultWeapon();
-	public native boolean validateStateAttack(CreatureObject target, string args);
+	public native boolean validateStateAttack(CreatureObject target, unsigned int actionCRC);
 	public native void selectSpecialAttack();
 	public native void selectSpecialAttack(int attackNum);
 	public native void selectDefaultAttack();
