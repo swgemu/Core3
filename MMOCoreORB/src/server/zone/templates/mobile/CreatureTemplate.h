@@ -96,6 +96,7 @@ protected:
 	String containerComponentTemplate;
 
 	String reactionStf;
+	String personalityStf;
 
 public:
 	CreatureTemplate();
@@ -365,6 +366,10 @@ public:
 
 	inline String getReactionStf() {
 		return reactionStf;
+	}
+
+	inline String getPersonalityStf() {
+		return personalityStf;
 	}
 
 	inline bool isSpecialProtection(int resistType) {

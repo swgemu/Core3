@@ -44,6 +44,7 @@ stormtrooper_sniper = Creature:new {
 	},
 	weapons = {"st_sniper_weapons"},
 	reactionStf = "@npc_reaction/stormtrooper",
+	personalityStf = "@hireling/hireling_stormtrooper",		
 	attacks = merge(riflemanmaster,brawlermaster)
 }
 

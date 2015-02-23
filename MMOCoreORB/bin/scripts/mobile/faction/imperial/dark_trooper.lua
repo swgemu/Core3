@@ -46,6 +46,7 @@ dark_trooper = Creature:new {
 	weapons = {"dark_trooper_weapons"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/stormtrooper",
+	personalityStf = "@hireling/hireling_stormtrooper",	
 	attacks = merge(riflemanmaster,marksmanmaster,fencermaster,brawlermaster)
 }
 

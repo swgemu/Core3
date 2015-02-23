@@ -22,6 +22,7 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "tasks/StorePetTask.h"
+#include "server/chat/ChatManager.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	assert(player->isLockedByCurrentThread());
@@ -373,6 +374,10 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	}
 	if (petType == PetManager::FACTIONPET) {
 		pet->setCreatureBitmask(CreatureFlag::FACTION_PET);
+		/** dont know if npc faction pets trained via converse instead of radial
+		if (pet->isNonPlayerCreatureObject() && pet->getDiet() != CreatureFlag::NONE) // show converse to npcs that eat food i.e. not atst
+			pet->setOptionBit(OptionBitmask::CONVERSE,true);
+		**/
 	}
 	pet->activateLoad("");
 	pet->activateRecovery();
@@ -993,6 +998,12 @@ void PetControlDeviceImplementation::setDefaultCommands(){
 
 void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID ){
 
+	// we set to 0 to flag completion so skip all this then.
+	if (commandID == 0) {
+		trainingCommand = 0;
+		return;
+	}
+
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 	if (controlledObject == NULL || !controlledObject->isAiAgent())
 		return;
@@ -1055,8 +1066,18 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 				return;
 	}
 
+	/** Check for converse and if so, get its personalityStf**/
+	if (pet->getOptionsBitmask() & OptionBitmask::CONVERSE) {
+		String stf = pet->getPersonalityStf();
+		StringBuffer message;
+		message << stf << ":start_convo_4";
+		StringIdChatParameter chat;
+		chat.setStringId(message.toString());
+		pet->getZoneServer()->getChatManager()->broadcastMessage(pet,chat,0,0,0);
+	} else {
+		pet->showFlyText("npc_reaction/flytext","alert", 204, 0, 0);  // "?"
+	}
 	trainingCommand = commandID;
-	pet->showFlyText("npc_reaction/flytext","alert", 204, 0, 0);  // "?"
 }
 
 void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {

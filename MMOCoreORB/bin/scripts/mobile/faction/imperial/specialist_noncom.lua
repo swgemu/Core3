@@ -28,6 +28,7 @@ specialist_noncom = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_light"},
 	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",	
 	attacks = merge(brawlermid,marksmanmid)
 }
 

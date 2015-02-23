@@ -30,6 +30,7 @@ Creature = {
 	weapons = {},
 	attacks = {},
 	conversationTemplate = "",
+	personalityStf = "",
 	optionsBitmask = 128
 }
 

@@ -51,6 +51,7 @@ rebel_commando = Creature:new {
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",			
 	attacks = merge(commandomaster,marksmanmaster,brawlermaster)
 }
 

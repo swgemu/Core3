@@ -137,3 +137,6 @@ includeFile("conversations/record_keepers/planet_record_keeper_tatoonie_conv.lua
 includeFile("conversations/record_keepers/record_keeper_imperial_conv.lua")
 includeFile("conversations/record_keepers/record_keeper_jabba_conv.lua")
 includeFile("conversations/record_keepers/record_keeper_rebel_conv.lua")
+
+-- Personality Conversations
+includeFile("conversations/pet/pets_conv.lua")

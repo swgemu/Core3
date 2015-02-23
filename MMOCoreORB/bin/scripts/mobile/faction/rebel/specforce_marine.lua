@@ -49,6 +49,7 @@ specforce_marine = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",			
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
