@@ -68,6 +68,12 @@ void DroidRepairModuleDataComponent::fillObjectMenuResponse(SceneObject* droidOb
 	menuResponse->addRadialMenuItemToRadialID(132, REPAIR_MODULE_ACTIVATE, 3, "Repair" );
 
 	// Add to Program subradial from PetMenuComponent
+	ManagedReference<DroidObject*> droid = getDroidObject();
+	if (droid == NULL)
+		return;
+	// converse droid can not have their repair command changed. droids without a personality chip are considered base and get all normal radials
+	if (droid->getOptionsBitmask() & OptionBitmask::CONVERSE)
+		return;
 	menuResponse->addRadialMenuItemToRadialID(141, REPAIR_MODULE_TRAIN, 3, "@pet/pet_menu:menu_repair_other" ); // "Repair Other Droid"
 }
 

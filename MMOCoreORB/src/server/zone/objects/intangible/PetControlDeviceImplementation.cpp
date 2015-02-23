@@ -373,6 +373,10 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	}
 	if (petType == PetManager::FACTIONPET) {
 		pet->setCreatureBitmask(CreatureFlag::FACTION_PET);
+		/** dont know if npc faction pets trained via converse instead of radial
+		if (pet->isNonPlayerCreatureObject() && pet->getDiet() != CreatureFlag::NONE) // show converse to npcs that eat food i.e. not atst
+			pet->setOptionBit(OptionBitmask::CONVERSE,true);
+		**/
 	}
 	pet->activateLoad("");
 	pet->activateRecovery();

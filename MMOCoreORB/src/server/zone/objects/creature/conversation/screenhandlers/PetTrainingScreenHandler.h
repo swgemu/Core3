@@ -42,67 +42,61 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef NPCCONVERSATIONSTARTCOMMAND_H_
-#define NPCCONVERSATIONSTARTCOMMAND_H_
+#ifndef PETTRAININGSCREENHANDLER_H_
+#define PETTRAININGSCREENHANDLER_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "ScreenHandler.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/DeliverMissionObjective.h"
+#include "engine/log/Logger.h"
 
-class NpcConversationStartCommand : public QueueCommand {
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace conversation {
+namespace screenhandlers {
+
+class PetTrainingScreenHandler : public ScreenHandler, Logger {
+
 public:
+	static const String STARTSCREENHANDLERID;
+	static const String PETCOMMANDREPAIR;
+	static const String PETFORMATION1COMMAND;
+	static const String PETFORMATION2COMMAND;
+	static const String PETGUARDCOMMAND;
+	static const String PETATTACKCOMMAND;
+	static const String PETFRIENDCOMMAND;
+	static const String PETTRANSFERCOMMAND;
+	static const String PETCLEARPOINTSCOMMAND;
+	static const String PETGETPOINTSCOMMAND;
+	static const String PETPATROLCOMMAND;
+	static const String PETSTAYCOMMAND;
+	static const String PETFOLLOWCOMMAND;
+	static const String PETFOLLOWOTHERCOMMAND;
+	static const String PETGROUPCOMMAND;
+	static const String PETRELEASECOMMAND;
 
-	NpcConversationStartCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	PetTrainingScreenHandler() : ScreenHandler(), Logger("PetTrainingScreenHandler") {}
 
+	ConversationScreen* handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return true;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature)) {
-			return INVALIDSTATE;
-		}
-
-		if (!checkInvalidLocomotions(creature)) {
-			return INVALIDLOCOMOTION;
-		}
-
-		if (!creature->isPlayerCreature()) {
-			return GENERALERROR;
-		}
-
-		CreatureObject* player = cast<CreatureObject*>(creature);
-		PlayerObject* ghost = player->getPlayerObject();
-
-		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
-
-		if (object != NULL && object->isCreatureObject()) {
-			CreatureObject* creatureObject = cast<CreatureObject*>(object.get());
-
-			try {
-				Locker clocker(creatureObject, creature);
-				ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
-				uint64 parentid = validPosition->getParent();
-				if (parentid != creatureObject->getParentID()) {
-					return TOOFAR;
-				}
-
-				if (player->getDistanceTo(creatureObject) <= 5.f) {
-					ghost->setConversatingCreature(creatureObject);
-					creatureObject->sendConversationStartTo(creature);
-					creatureObject->notifyObservers(ObserverEventType::STARTCONVERSATION, player);
-				} else {
-					return TOOFAR;
-				}
-
-			} catch (Exception& e) {
-				e.printStackTrace();
-				creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
-			}
-		} else {
-			return INVALIDTARGET;
-		}
-		return SUCCESS;
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return true;
 	}
-
 };
 
-#endif //NPCCONVERSATIONSTARTCOMMAND_H_
+} // namespace screenhandlers
+} // namespace conversation
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::conversation::screenhandlers;
+
+#endif /* PETTRAININGSCREENHANDLER_H_ */

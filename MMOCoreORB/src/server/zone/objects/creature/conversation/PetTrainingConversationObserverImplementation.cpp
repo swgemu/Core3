@@ -42,67 +42,25 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef NPCCONVERSATIONSTARTCOMMAND_H_
-#define NPCCONVERSATIONSTARTCOMMAND_H_
+#include "server/zone/objects/creature/conversation/PetTrainingConversationObserver.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-
-class NpcConversationStartCommand : public QueueCommand {
-public:
-
-	NpcConversationStartCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
-	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature)) {
-			return INVALIDSTATE;
-		}
-
-		if (!checkInvalidLocomotions(creature)) {
-			return INVALIDLOCOMOTION;
-		}
-
-		if (!creature->isPlayerCreature()) {
-			return GENERALERROR;
-		}
-
-		CreatureObject* player = cast<CreatureObject*>(creature);
-		PlayerObject* ghost = player->getPlayerObject();
-
-		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
-
-		if (object != NULL && object->isCreatureObject()) {
-			CreatureObject* creatureObject = cast<CreatureObject*>(object.get());
-
-			try {
-				Locker clocker(creatureObject, creature);
-				ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
-				uint64 parentid = validPosition->getParent();
-				if (parentid != creatureObject->getParentID()) {
-					return TOOFAR;
-				}
-
-				if (player->getDistanceTo(creatureObject) <= 5.f) {
-					ghost->setConversatingCreature(creatureObject);
-					creatureObject->sendConversationStartTo(creature);
-					creatureObject->notifyObservers(ObserverEventType::STARTCONVERSATION, player);
-				} else {
-					return TOOFAR;
-				}
-
-			} catch (Exception& e) {
-				e.printStackTrace();
-				creature->error("unreported ObjectControllerMessage::parseNpcStartConversation(creature* creature, Message* pack) exception");
-			}
-		} else {
-			return INVALIDTARGET;
-		}
-		return SUCCESS;
-	}
-
-};
-
-#endif //NPCCONVERSATIONSTARTCOMMAND_H_
+PetTrainingConversationObserverImplementation::PetTrainingConversationObserverImplementation(ConversationTemplate* conversationTemplate) :
+	ConversationObserverImplementation(conversationTemplate) {
+	//Register screen handler.
+	registerScreenHandler(PetTrainingScreenHandler::STARTSCREENHANDLERID, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETATTACKCOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETCLEARPOINTSCOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETCOMMANDREPAIR, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETFOLLOWCOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETFOLLOWOTHERCOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETFORMATION1COMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETFORMATION2COMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETFRIENDCOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETGETPOINTSCOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETGROUPCOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETGUARDCOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETPATROLCOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETRELEASECOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETSTAYCOMMAND, &screenHandler);
+	registerScreenHandler(PetTrainingScreenHandler::PETTRANSFERCOMMAND, &screenHandler);
+}

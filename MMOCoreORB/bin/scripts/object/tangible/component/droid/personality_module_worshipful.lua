@@ -56,6 +56,7 @@ object_tangible_component_droid_personality_module_worshipful = object_tangible_
 	experimentalMax = {0, 0, 15, 1000, 15, 20},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 4, 1, 1},
+	conversationTemplate = "pet_worshipful_convotemplate"	
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_personality_module_worshipful, "object/tangible/component/droid/personality_module_worshipful.iff")

@@ -57,8 +57,10 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/components/droid/DroidArmorModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
 #include "server/zone/objects/tangible/components/droid/DroidMaintenanceModuleDataComponent.h"
+#include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
 #include "server/zone/managers/crafting/labratories/DroidMechanics.h"
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/objects/creature/conversation/ConversationObserver.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
@@ -421,3 +423,54 @@ bool DroidObjectImplementation::isStructureAssigned( StructureObject* structure 
 	}
 	return false;
 }
+void DroidObjectImplementation::sendConversationStartTo(SceneObject* player) {
+	if (!player->isPlayerCreature() || isDead())
+		return;
+
+	BaseDroidModuleComponent* m = getModule("personality_chip");
+	if (m == NULL) {
+		return;
+	}
+
+	DroidPersonalityModuleDataComponent* personality = dynamic_cast<DroidPersonalityModuleDataComponent*>(m);
+	if (personality == NULL) {
+		return;
+	}
+
+	if (personality->getPersonalityConversationTemplate() == 0) {
+		return;
+	}
+
+	//Face player.
+	faceObject(player);
+
+	PatrolPoint current(coordinates.getPosition(), getParent().get());
+
+	broadcastNextPositionUpdate(&current);
+
+	CreatureObject* playerCreature = cast<CreatureObject*>( player);
+	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
+	player->sendMessage(conv);
+
+	SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::STARTCONVERSATION);
+
+	for (int i = 0;  i < observers.size(); ++i) {
+		if (dynamic_cast<ConversationObserver*>(observers.get(i).get()) != NULL) {
+			return;
+		}
+	}
+	//Create conversation observer.
+	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(personality->getPersonalityConversationTemplate());
+
+	if (conversationObserver != NULL) {
+		//Register observers.
+		registerObserver(ObserverEventType::CONVERSE, conversationObserver);
+		registerObserver(ObserverEventType::STARTCONVERSATION, conversationObserver);
+		registerObserver(ObserverEventType::SELECTCONVERSATION, conversationObserver);
+		registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
+	} else {
+		error("Could not create conversation observer.");
+		return;
+	}
+}
+
