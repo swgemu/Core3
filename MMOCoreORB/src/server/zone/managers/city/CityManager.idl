@@ -104,7 +104,12 @@ class CityManager extends ManagedService implements Logger {
 	public static final byte TOWNSHIP = 3;
 	public static final byte CITY = 4;
 	public static final byte METROPOLIS = 5;
-	
+
+	// Lost citizen reasons
+	public static final byte GENERAL = 0;
+	public static final byte USEDTERMINAL = 1;
+	public static final byte INACTIVE = 2;
+
 	public CityManager(ZoneServer zserv) {
 		Logger.setLoggingName("CityManager");
 		Logger.setLogging(false);
@@ -187,7 +192,7 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native void registerCitizen(CityRegion city, CreatureObject creature);
 	
-	public native void unregisterCitizen(CityRegion city, CreatureObject creature, boolean inactive = false);
+	public native void unregisterCitizen(CityRegion city, CreatureObject creature, byte reason = 0);
 	
 	public native void sendManageMilitia(CityRegion city, CreatureObject creature, SceneObject terminal = null);
 	

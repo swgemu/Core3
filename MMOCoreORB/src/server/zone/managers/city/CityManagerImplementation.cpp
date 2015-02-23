@@ -1398,20 +1398,19 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	city->setZone(NULL);
 }
 
-void CityManagerImplementation::registerCitizen(CityRegion* city,
-		CreatureObject* creature) {
+void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject* creature) {
 	ChatManager* chatManager = zoneServer->getChatManager();
 
-	ManagedReference<SceneObject*> mayor = zoneServer->getObject(
-			city->getMayorID());
+	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
 
-	if (mayor != NULL && mayor->isCreatureObject()) {
+	if (mayor != NULL && mayor->isPlayerCreature()) {
 		CreatureObject* mayorCreature = cast<CreatureObject*> (mayor.get());
 
 		StringIdChatParameter params("city/city", "new_city_citizen_body");
 		params.setTO(creature->getDisplayedName());
+
 		chatManager->sendMail("@city/city:new_city_from",
-				"@city/city:new_city_citizen_subject", params,
+				"@city/city:new_city_citizen_subject", params, // City Growth: Added Citizen
 				mayorCreature->getFirstName(), NULL);
 
 		params.setStringId("city/city", "new_city_citizen_other_body");
@@ -1419,33 +1418,41 @@ void CityManagerImplementation::registerCitizen(CityRegion* city,
 		params.setTT(mayorCreature->getDisplayedName());
 
 		chatManager->sendMail("@city/city:new_city_from",
-				"@city/city:new_city_citizen_other_subject", params,
+				"@city/city:new_city_citizen_other_subject", params, // Welcome, Citizen!
 				creature->getFirstName(), NULL);
-
 	}
 
 	city->addCitizen(creature->getObjectID());
 }
 
-void CityManagerImplementation::unregisterCitizen(CityRegion* city,
-		CreatureObject* creature, bool inactive) {
+void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObject* creature, byte reason) {
 	ChatManager* chatManager = zoneServer->getChatManager();
 
-	ManagedReference<SceneObject*> mayor = zoneServer->getObject(
-			city->getMayorID());
+	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
 
-	if (mayor != NULL && mayor->isCreatureObject()) {
+	if (mayor != NULL && mayor->isPlayerCreature()) {
 		CreatureObject* mayorCreature = cast<CreatureObject*> (mayor.get());
 
-		StringIdChatParameter params("city/city", "lost_citizen_body"); //A citizen has left your city by using the revoke option on the city terminal. Citizen Name: %TO
-		params.setTO(creature->getDisplayedName());
+		StringIdChatParameter params;
 
-		UnicodeString subject = "@city/city:lost_citizen_subject";
+		UnicodeString subject;
 
-		if (inactive) {
-			params.setStringId("city/city", "lost_inactive_citizen_body"); //A citizen has been removed due to six weeks inactivity.  If they return, they can rejoin the city by redeclaring at their residence.
-			subject = "@city/city:lost_inactive_citizen_subject"; //Lost Inactive Citizen!
+		switch (reason) {
+		case 0: // GENERAL
+			params.setStringId("city/city", "lost_city_citizen_body"); // A citizen has left your city. Citizen Name: %TO
+			subject = "@city/city:lost_city_citizen_subject"; // Lost Citizen!
+			break;
+		case 1: // USEDTERMINAL
+			params.setStringId("city/city", "lost_citizen_body"); // A citizen has left your city by using the revoke option on the city terminal. Citizen Name: %TO
+			subject = "@city/city:lost_citizen_subject"; // Lost Citizen!
+			break;
+		case 2: // INACTIVE
+			params.setStringId("city/city", "lost_inactive_citizen_body"); // A citizen has been removed due to six weeks inactivity. If they return, they can rejoin the city by redeclaring at their residence. Citizen Name: %TO
+			subject = "@city/city:lost_inactive_citizen_subject"; // Lost Inactive Citizen!
+			break;
 		}
+
+		params.setTO(creature->getDisplayedName());
 
 		chatManager->sendMail("@city/city:new_city_from", subject, params,
 				mayorCreature->getFirstName(), NULL);

@@ -204,7 +204,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	if (isClientRegion())
 		return;
 
-	if (object->isCreatureObject()){
+	if (object->isCreatureObject()) {
 		CreatureObject* creature = cast<CreatureObject*>(object);
 
 		StringIdChatParameter params("city/city", "city_enter_city"); //You have entered %TT (%TO).
@@ -225,7 +225,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		applySpecializationModifiers(creature);
 	}
 
-	if (object->isStructureObject()){
+	if (object->isStructureObject()) {
 		StructureObject* structure = cast<StructureObject*>(object);
 
 		Locker slocker(&structureListMutex);
@@ -233,10 +233,13 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		if (structure->isBuildingObject()) {
 
 			BuildingObject* building = cast<BuildingObject*>(object);
-			uint64 owner = structure->getOwnerObjectID();
+			uint64 ownerID = structure->getOwnerObjectID();
 
-			if(building->isResidence() &&  owner != 0 && !citizenList.contains(owner)) {
-				addCitizen(owner);
+			ManagedReference<CreatureObject*> owner = zone->getZoneServer()->getObject(ownerID).castTo<CreatureObject*>();
+
+			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && !citizenList.contains(ownerID)) {
+				CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
+				cityManager->registerCitizen(_this.get(), owner);
 			}
 		 }
 
@@ -301,7 +304,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 	if (isClientRegion())
 		return;
 
-	if (object->isCreatureObject()){
+	if (object->isCreatureObject()) {
 
 		CreatureObject* creature = cast<CreatureObject*>(object);
 
@@ -324,10 +327,13 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		if (structure->isBuildingObject()) {
 
 			BuildingObject* building = cast<BuildingObject*>(object);
-			uint64 owner = structure->getOwnerObjectID();
+			uint64 ownerID = structure->getOwnerObjectID();
 
-			if( building->isResidence() &&  owner != 0 && citizenList.contains(owner)) {
-				removeCitizen(owner);
+			ManagedReference<CreatureObject*> owner = zone->getZoneServer()->getObject(ownerID).castTo<CreatureObject*>();
+
+			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && citizenList.contains(ownerID)) {
+				CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
+				cityManager->unregisterCitizen(_this.get(), owner, CityManager::GENERAL);
 			}
 		}
 
@@ -420,11 +426,13 @@ void CityRegionImplementation::setRadius(float rad) {
 	if (regions.size() <= 0)
 		return;
 
-	ManagedReference<ActiveArea*> aa = regions.get(0).get();
-	aa->setRadius(rad);
+	ManagedReference<Region*> oldRegion = regions.get(0).get();
 
-	zone->removeObject(aa, NULL, false);
-	zone->transferObject(aa, -1, false);
+	addRegion(oldRegion->getPositionX(), oldRegion->getPositionY(), rad, true);
+
+	zone->removeObject(oldRegion, NULL, false);
+	regions.drop(oldRegion);
+	oldRegion->destroyObjectFromDatabase(true);
 }
 
 void CityRegionImplementation::destroyActiveAreas() {
