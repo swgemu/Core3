@@ -62,6 +62,7 @@ CreatureTemplate::CreatureTemplate() {
 	controlDeviceTemplate = "object/intangible/pet/pet_control.iff";
 	containerComponentTemplate = "";
 	reactionStf = "";
+	personalityStf = "";
 }
 
 CreatureTemplate::~CreatureTemplate() {
@@ -187,4 +188,5 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	containerComponentTemplate = templateData->getStringField("containerComponentTemplate");
 
 	reactionStf = templateData->getStringField("reactionStf");
+	personalityStf = templateData->getStringField("personalityStf");
 }

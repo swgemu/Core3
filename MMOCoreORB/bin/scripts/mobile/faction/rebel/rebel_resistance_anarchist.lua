@@ -46,6 +46,7 @@ rebel_resistance_anarchist = Creature:new {
 	},
 	weapons = {"rebel_weapons_light"},
 	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",			
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

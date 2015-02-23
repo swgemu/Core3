@@ -435,7 +435,10 @@ class DroidObject extends AiAgent {
 			return super.getChanceHit();
 		}
 	}
-	
+
+	@dirty
+	public native string getPersonalityStf();
+		
 	@dirty
 	public native boolean isAdvancedModel();	
 	
@@ -456,4 +459,13 @@ class DroidObject extends AiAgent {
 	
 	@local
 	public native boolean isStructureAssigned(StructureObject structure);
+	
+	/**
+	 * sends the conversation notification 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
+	
+	@dirty
+	public native void sendConversationStartTo(SceneObject player);
 }

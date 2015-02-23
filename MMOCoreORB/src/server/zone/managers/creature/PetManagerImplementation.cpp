@@ -15,6 +15,7 @@
 #include "server/zone/templates/datatables/DataTableIff.h"
 #include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/templates/params/primitives/StringParam.h"
+#include "server/chat/ChatManager.h"
 
 void PetManagerImplementation::loadLuaConfig() {
 	info("Loading configuration file.", true);
@@ -325,7 +326,16 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 		return false;
 
 	if( pcd->hasTrainedCommandString(message) ){
-		pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		if (pet->getOptionsBitmask() & OptionBitmask::CONVERSE) {
+			String stf = pet->getPersonalityStf();
+			StringBuffer message;
+			message << stf << ":confused";
+			StringIdChatParameter chat;
+			chat.setStringId(message.toString());
+			pet->getZoneServer()->getChatManager()->broadcastMessage(pet,chat,0,0,0);
+		} else {
+			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?"
+		}
 		return true;
 	}
 
@@ -346,7 +356,7 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 				success = true;
 
 			if (!success) {
-				pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+				pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?"
 				speaker->sendSystemMessage("@pet/pet_menu:pet_nolearn"); // Your pet doesn't seem to understand you.
 				return true;
 			}
@@ -354,7 +364,7 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 
 		// Success
 		pcd->addTrainedCommand( trainingCommand, message );
-		pet->showFlyText("npc_reaction/flytext","threaten", 204, 0, 0);  // "!"
+		pet->showFlyText("npc_reaction/flytext","threaten", 204, 0, 0);  // "?"
 		speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
 
 		if (!alreadyTrained) {
@@ -374,14 +384,25 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 	}
 	else{
 		pcd->addTrainedCommand( trainingCommand, message );
-		pet->showFlyText("npc_reaction/flytext","threaten", 204, 0, 0);  // "!"
-		speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
+		if (pet->getOptionsBitmask() & OptionBitmask::CONVERSE) {
+			String stf = pet->getPersonalityStf();
+			StringBuffer message;
+			message << stf << ":end_convo";
+			StringIdChatParameter chat;
+			chat.setStringId(message.toString());
+			pet->getZoneServer()->getChatManager()->broadcastMessage(pet,chat,0,0,0);
+		} else {
+			pet->showFlyText("npc_reaction/flytext","threaten", 204, 0, 0);  // "?"
+			speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
+		}
 	}
 
 	// No renaming of faction pets
 	if (petType == FACTIONPET)
 		return true;
-
+	// no renaming of converse style droids with personalities installed.
+	if ( (pet->getOptionsBitmask() & OptionBitmask::CONVERSE) && petType == DROIDPET )
+		return true;
 	// Check for naming string
 	StringTokenizer tokenizer(message);
 	tokenizer.setDelimeter(" ");

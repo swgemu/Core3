@@ -42,6 +42,7 @@ imperial_cadet = Creature:new {
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",	
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

@@ -46,6 +46,7 @@ imperial_captain = Creature:new {
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster),
 	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",	
 	optionsBitmask = 136
 }
 

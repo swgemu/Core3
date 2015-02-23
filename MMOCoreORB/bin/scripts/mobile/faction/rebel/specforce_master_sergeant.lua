@@ -50,6 +50,7 @@ specforce_master_sergeant = Creature:new {
 			
 	weapons = {"imperial_weapons_heavy"},
 	reactionStf = "@npc_reaction/military",
+	personalityStf = "@hireling/hireling_military",			
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

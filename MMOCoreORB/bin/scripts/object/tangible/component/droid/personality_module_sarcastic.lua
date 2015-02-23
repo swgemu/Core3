@@ -46,6 +46,7 @@ object_tangible_component_droid_personality_module_sarcastic = object_tangible_c
 	templateType = DROIDPERSONALITYCHIP,
 	dataObjectComponent = "DroidPersonalityModuleDataComponent",
 	reactionName = "@npc_reaction/droid_sarcastic",
+	personalityStf = "@hireling/hireling_droid_sarcastic",
 	attrName = "@craft_droid_ingredients_n:personality_module_sarcastic",
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},
@@ -56,6 +57,7 @@ object_tangible_component_droid_personality_module_sarcastic = object_tangible_c
 	experimentalMax = {0, 0, 15, 1000, 15, 10},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {1, 1, 1, 1, 1, 1},
+	conversationTemplate = "pet_sarcastic_convotemplate"	
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_droid_personality_module_sarcastic, "object/tangible/component/droid/personality_module_sarcastic.iff")
