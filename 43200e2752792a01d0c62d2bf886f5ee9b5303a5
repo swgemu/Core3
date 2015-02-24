@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_ac80278c",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/pet/pets_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-24T05:48:33Z",
+      "side": 1,
+      "message": "I don\u0027t think it makes much sense to have group and release here in the initial menu. If they were being used to actually give orders, that would be one thing, but they are just like all of the others in that you are teaching a command. I think you should fit them into the main categories. Maybe under friendship?",
+      "revId": "43200e2752792a01d0c62d2bf886f5ee9b5303a5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_ec761fd8",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/pet/pets_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-24T05:48:33Z",
+      "side": 1,
+      "message": "This comment should say combat instead of friendship.",
+      "revId": "43200e2752792a01d0c62d2bf886f5ee9b5303a5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_cc7363e6",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/pet/pets_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-24T05:48:33Z",
+      "side": 1,
+      "message": "This should be pet_friendship_commands.",
+      "revId": "43200e2752792a01d0c62d2bf886f5ee9b5303a5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_4c6893f5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/conversation/screenhandlers/PetTrainingScreenHandler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-24T05:48:33Z",
+      "side": 1,
+      "message": "This should be FOLLOWOTHER",
+      "revId": "43200e2752792a01d0c62d2bf886f5ee9b5303a5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_8ca68b52",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-24T05:48:33Z",
+      "side": 1,
+      "message": "What is d for?",
+      "revId": "43200e2752792a01d0c62d2bf886f5ee9b5303a5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_aca94726",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-24T05:48:33Z",
+      "side": 1,
+      "message": "Wouldn\u0027t isAggressiveTo be a better check here?",
+      "revId": "43200e2752792a01d0c62d2bf886f5ee9b5303a5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_6c634f1b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-24T05:48:33Z",
+      "side": 1,
+      "message": "I would make this an else if",
+      "revId": "43200e2752792a01d0c62d2bf886f5ee9b5303a5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
