@@ -295,4 +295,5 @@ class CityManager extends ManagedService implements Logger {
 
 	public native void sendChangeCityName(CityRegion city, CreatureObject mayor);
 
+	public native void sendAddStructureMails(CityRegion city, StructureObject structure);
 }

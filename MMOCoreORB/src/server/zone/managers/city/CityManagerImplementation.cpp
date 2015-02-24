@@ -2341,3 +2341,34 @@ void CityManagerImplementation::sendChangeCityName(CityRegion* city, CreatureObj
 	ghost->addSuiBox(inputBox);
 	mayor->sendMessage(inputBox->generateMessage());
 }
+
+void CityManagerImplementation::sendAddStructureMails(CityRegion* city, StructureObject* structure) {
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	ManagedReference<CreatureObject*> owner = structure->getOwnerCreatureObject();
+	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
+
+	if (mayor != NULL && mayor->isPlayerCreature() && owner != NULL && owner->isPlayerCreature()) {
+		CreatureObject* mayorCreature = cast<CreatureObject*> (mayor.get());
+
+		if (owner == mayorCreature)
+			return;
+
+		StringIdChatParameter params("city/city", "new_city_structure_body");
+		params.setTO(owner->getDisplayedName());
+		params.setTT(structure->getObjectName());
+
+		chatManager->sendMail("@city/city:new_city_from",
+				"@city/city:new_city_structure_subject", params, // City Growth: Added Structure
+				mayorCreature->getFirstName(), NULL);
+
+		StringIdChatParameter params2("city/city", "new_city_structure_other_body");
+		params2.setTU(city->getRegionName());
+		params2.setTO(structure->getObjectName());
+		params2.setTT(mayorCreature->getDisplayedName());
+
+		chatManager->sendMail("@city/city:new_city_from",
+				"@city/city:new_city_structure_other_subject", params2, // Structure Added to City
+				owner->getFirstName(), NULL);
+	}
+}

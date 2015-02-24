@@ -227,8 +227,13 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 	if (object->isStructureObject()) {
 		StructureObject* structure = cast<StructureObject*>(object);
+		CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
 
 		Locker slocker(&structureListMutex);
+
+		if (isLoaded() && !completeStructureList.contains(structure->getObjectID()) && structure->getBaseMaintenanceRate() > 0) {
+			cityManager->sendAddStructureMails(_this.get(), structure);
+		}
 
 		if (structure->isBuildingObject()) {
 
@@ -238,7 +243,6 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 			ManagedReference<CreatureObject*> owner = zone->getZoneServer()->getObject(ownerID).castTo<CreatureObject*>();
 
 			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && !citizenList.contains(ownerID)) {
-				CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
 				cityManager->registerCitizen(_this.get(), owner);
 			}
 		 }
