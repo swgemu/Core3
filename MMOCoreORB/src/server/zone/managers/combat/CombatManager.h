@@ -200,7 +200,7 @@ protected:
 
 	int getAttackerAccuracyModifier(TangibleObject* attacker, WeaponObject* weapon);
 	int getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObject* weapon);
-	int getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon);
+	int getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon, TangibleObject* attacker);
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender);
 	float getDefenderToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage, Vector<int>& foodMitigation);
 	int calculateDamageRange(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon);

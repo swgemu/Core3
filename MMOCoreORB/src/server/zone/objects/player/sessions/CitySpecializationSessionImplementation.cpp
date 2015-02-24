@@ -66,12 +66,17 @@ int CitySpecializationSessionImplementation::sendConfirmationBox(const String& c
 
 	SuiMessageBox* confirm = new SuiMessageBox(creatureObject, SuiWindowType::CITY_SPEC_CONFIRM);
 	confirm->setPromptTitle("@city/city:confirm_spec_t"); //Confirm Specialization
-	confirm->setPromptText(choice + "_d\n\n@city/city:confirm_spec_d");
+
+	if (choice == "@city/city:null") {
+		confirm->setPromptText(choice + "_d");
+		specialization = "";
+	} else {
+		confirm->setPromptText(choice + "_d\n\n@city/city:confirm_spec_d");
+		specialization = choice;
+	}
 	confirm->setOkButton(true, "@yes");
 	confirm->setCancelButton(true, "@no");
 	confirm->setCallback(new CitySpecializationConfirmSuiCallback(creatureObject->getZoneServer()));
-
-	specialization = choice;
 
 	ghost->addSuiBox(confirm);
 	creatureObject->sendMessage(confirm->generateMessage());

@@ -36,9 +36,9 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 
 #ifdef CITY_DEBUG
 	if(player->getPlayerObject()->isPrivileged()){
-		menuResponse->addRadialMenuItem(227,3,"MANUAL");
-		menuResponse->addRadialMenuItemToRadialID(227,228,3,"EXPAND CITY");
-		menuResponse->addRadialMenuItemToRadialID(227,229,3,"CONTRACT CITY");
+		menuResponse->addRadialMenuItem(227,3,"@city/city:city_hacks"); // City Hacks (GODMODE ONLY)
+		menuResponse->addRadialMenuItemToRadialID(227,228,3,"@city/city:rank_up"); // 	Force Rank Up
+		menuResponse->addRadialMenuItemToRadialID(227,229,3,"@city/city:rank_down"); // Force Rank Down
 		menuResponse->addRadialMenuItemToRadialID(227,230,3,"UPDATE CITY");
 		menuResponse->addRadialMenuItemToRadialID(227,231,3,"COUNT VOTES");
 
@@ -128,7 +128,8 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		cityManager->sendMaintenanceReport(city, player, sceneObject);
 		break;
 	case 225: //Set City Specialization
-		cityManager->promptCitySpecialization(city, player, sceneObject);
+		if (city->isMayor(player->getObjectID()))
+			cityManager->promptCitySpecialization(city, player, sceneObject);
 		break;
 	case 226: //Toggle Zoning Enabled
 		cityManager->toggleZoningEnabled(city, player);

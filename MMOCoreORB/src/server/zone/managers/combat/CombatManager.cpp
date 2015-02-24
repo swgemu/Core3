@@ -654,7 +654,7 @@ int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObje
 	return bonus;
 }
 
-int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon) {
+int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon, TangibleObject* attacker) {
 	if (!defender->isPlayerCreature())
 		return MIN(125, defender->getLevel());
 
@@ -675,7 +675,8 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 	if (targetDefense > 125)
 		targetDefense = 125;
 
-	targetDefense += defender->getSkillMod("private_defense");
+	if (attacker->isPlayerCreature())
+		targetDefense += defender->getSkillMod("private_defense");
 
 	//info("Target defense after state affects and cap is " +  String::valueOf(targetDefense), true);
 
@@ -1406,7 +1407,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	totalBonus += calculateTargetPostureModifier(weapon, targetCreature);
 	//info("Attacker total bonus is " + String::valueOf(totalBonus), true);
 
-	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
+	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon, attacker);
 	//info("Defender defense is " + String::valueOf(targetDefense), true);
 
 	// first (and third) argument is divided by 2, second isn't

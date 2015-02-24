@@ -46,13 +46,14 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 	if (cityRank == CityManager::CLIENT)
 		return;
 
-	//if (zone !=)
+	if (cityRank < CityManager::TOWNSHIP) {
+		citySpecialization = "";
+	}
 
 	Zone* zone = getZone();
 
 	if (zone == NULL)
 		return;
-
 
 	zone->addCityRegionToUpdate(_this.get());
 
@@ -68,16 +69,6 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 		taxes.add(0);
 		taxes.add(0);
 	}
-
-	/*
-	int seconds = -1 * round(nextUpdateTime.miliDifference() / 1000.f);
-
-	if (seconds < 0) //If the update occurred in the past, force an immediate update.
-		seconds = 0;
-
-	rescheduleUpdateEvent(seconds);
-	 */
-
 }
 
 void CityRegionImplementation::initialize() {
@@ -408,11 +399,9 @@ void CityRegionImplementation::addZoningRights(uint64 objectid, uint32 duration)
 }
 
 bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
-	//if (isMilitiaMember(objectid))
-	//	return true;
-
 	if(objectid == getMayorID())
 		return true;
+
 	uint32 timestamp = zoningRights.get(objectid);
 
 	if (timestamp == 0)
@@ -432,11 +421,18 @@ void CityRegionImplementation::setRadius(float rad) {
 
 	ManagedReference<Region*> oldRegion = regions.get(0).get();
 
-	addRegion(oldRegion->getPositionX(), oldRegion->getPositionY(), rad, true);
+	ManagedReference<Region*> newRegion = addRegion(oldRegion->getPositionX(), oldRegion->getPositionY(), rad, true);
 
 	zone->removeObject(oldRegion, NULL, false);
 	regions.drop(oldRegion);
 	oldRegion->destroyObjectFromDatabase(true);
+
+	if (registered) {
+		Reference<PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
+
+		newRegion->setPlanetMapCategory(cityCat);
+		newRegion->getZone()->registerObjectWithPlanetaryMap(newRegion);
+	}
 }
 
 void CityRegionImplementation::destroyActiveAreas() {
@@ -560,7 +556,7 @@ bool CityRegionImplementation::isVotingLocked(){
 	int64 minimumDifference = CityManagerImplementation::cityUpdateInterval * lockedCycles * 60000;
 
 	int64 dif = rightnow.miliDifference(nextInauguration);
-	//info("dif is " + String::valueOf(dif) + " minimum is " + String::valueOf(minimumdifference),true);
+
 	return ( dif < minimumDifference);
 
 }
@@ -587,6 +583,9 @@ void CityRegionImplementation::applySpecializationModifiers(CreatureObject* crea
 
 	for (int i = 0; i < mods->size(); ++i) {
 		VectorMapEntry<String, int> entry = mods->elementAt(i);
+
+		if (entry.getKey() == "private_defense" && !isMilitiaMember(creature->getObjectID()))
+			continue;
 
 		creature->addSkillMod(SkillModManager::CITY, entry.getKey(), entry.getValue());
 	}
@@ -674,8 +673,6 @@ void CityRegionImplementation::transferCivicStructuresToMayor(){
 			mayorPlayer->setDeclaredResidence(cityBuilding);
 	}
 
-
-
 }
 
 void CityRegionImplementation::cleanupDuplicateCityStructures(){
@@ -703,7 +700,6 @@ void CityRegionImplementation::cleanupDuplicateCityStructures(){
 
 	commercialStructures.removeAll();
 	commercialStructures.addAll(singleStructures);
-
 
 	Vector<ManagedReference<SceneObject*> > singleDecorations;
 
