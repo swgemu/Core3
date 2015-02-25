@@ -465,6 +465,11 @@ class CityRegion extends ManagedObject implements Logger {
 		return 50000;
 	}
 
+	@read
+	public int getMinWithdrawal() {
+		return 10000;
+	}
+
 	@local
 	public native Vector<TangibleObject> getVendorsInCity();
 

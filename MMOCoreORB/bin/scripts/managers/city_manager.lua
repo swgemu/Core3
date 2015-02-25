@@ -123,16 +123,6 @@ CitiesAllowed = {
 	emailBody: The body of the email that is sent to citizens when this tax changes. %DI = Amount of new tax; %TO = Name of the city.
 --]]
 CityTaxes = {
-	{--Property Tax
-		min = 0, max = 50,
-		menuText = "@city/city:property_tax_prompt",
-		inputTitle = "@city/city:set_tax_t_property",
-		inputText = "@city/city:set_tax_d_property",
-		statusPrompt = "@city/city:promperty_tax_prompt",
-		systemMessage = "@city/city:set_property_tax",
-		emailSubject = "@city/city:tax_property_subject",
-		emailBody = "@city/city:tax_property_body"
-	},
 	{--Income Tax
 		min = 0, max = 2000,
 		menuText = "@city/city:income_tax",
@@ -142,6 +132,16 @@ CityTaxes = {
 		systemMessage = "@city/city:set_income_tax",
 		emailSubject = "@city/city:tax_income_subject",
 		emailBody = "@city/city:tax_income_body"
+	},
+	{--Property Tax
+		min = 0, max = 50,
+		menuText = "@city/city:property_tax_prompt",
+		inputTitle = "@city/city:set_tax_t_property",
+		inputText = "@city/city:set_tax_d_property",
+		statusPrompt = "@city/city:promperty_tax_prompt",
+		systemMessage = "@city/city:set_property_tax",
+		emailSubject = "@city/city:tax_property_subject",
+		emailBody = "@city/city:tax_property_body"
 	},
 	{--Sales Tax
 		min = 0, max = 20,
@@ -205,7 +205,7 @@ CitySpecializations = {
 		}
 	},
 	{--Clone Lab
-		name = "@city/city:city_spec_clone",
+		name = "@city/city:city_spec_cloning",
 		cost = 80000,
 		skillMods = {
 			{"private_spec_cloning", 20}
@@ -222,7 +222,7 @@ CitySpecializations = {
 		name = "@city/city:city_spec_missions",
 		cost = 80000,
 		skillMods = {
-			{"private_spec_missions", 20}
+			{"private_spec_missions", 15}
 		}
 	},
 	{--Entertainment District
