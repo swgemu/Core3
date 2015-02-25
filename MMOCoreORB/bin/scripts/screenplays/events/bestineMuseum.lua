@@ -15,7 +15,7 @@ local PHASE_CHANGE_TIME = 15 * 24 * 60 * 60 * 1000 -- 15 days
 
 local artistMobiles = { "vanvi_hotne", "kolka_zteht", "giaal_itotr", "kahfr_oladi", "klepa_laeel", "boulo_siesi" }
 local artistPaintings = {
-	{ "boffa", "ronka", "mattberry", "blumbrush" },
+	{ "boffa", "ronka", "mattberry", "blumbush" },
 	{ "blueleaf_temple", "house" },
 	{ "lucky_despot", "krayt_skeleton" },
 	{ "moncal_eye_01", "moncal_eye_02" },
