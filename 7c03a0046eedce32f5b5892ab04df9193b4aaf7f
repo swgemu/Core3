@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_2c12f762",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/pet/pets_conv.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-25T04:41:43Z",
+      "side": 1,
+      "message": "This comment is still incorrect.",
+      "revId": "7c03a0046eedce32f5b5892ab04df9193b4aaf7f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_4c1d3373",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/pet/pets_conv.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-25T04:41:43Z",
+      "side": 1,
+      "message": "You still need to fix this to be pet_friendship_commands",
+      "revId": "7c03a0046eedce32f5b5892ab04df9193b4aaf7f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_8c2b2b94",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/PetManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-25T04:41:43Z",
+      "side": 1,
+      "message": "This block seems unnecessary because no creature pets will be conversant.",
+      "revId": "7c03a0046eedce32f5b5892ab04df9193b4aaf7f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_6c18ef84",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/PetManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-02-25T04:41:43Z",
+      "side": 1,
+      "message": "Same with this one.",
+      "revId": "7c03a0046eedce32f5b5892ab04df9193b4aaf7f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
