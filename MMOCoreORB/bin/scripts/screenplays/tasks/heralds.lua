@@ -45,15 +45,15 @@ heraldScreenPlay = ScreenPlay:new {
 	{ planet = "talus", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
 	{ planet = "talus", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
 	{ planet = "talus", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-
-	{ planet = "tatooine", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-	{ planet = "tatooine", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-	{ planet = "tatooine", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-	{ planet = "tatooine", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-	{ planet = "tatooine", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-	{ planet = "tatooine", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-	{ planet = "tatooine", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
-
+]]
+	{ planet = "tatooine", template = "herald_commoner", x = 1271.2, z = 7, y = 2972.48, angle = 288.274, cell = 0, destX = 57.5, destY = -88.6,  stringFile = "herald_tatooine_squill_cave" },
+	{ planet = "tatooine", template = "herald_commoner", x = 145.91, z = 52, y = -5336.3, angle = 210, cell = 0, destX = -5370, destY = -4468,  stringFile = "herald_tatooine_tusken_village" },
+	{ planet = "tatooine", template = "herald_commoner", x = -9.5, z = 0.408, y = 0.574, angle = 94, cell = 1213345, destX = 6551, destY = -1323,  stringFile = "herald_tatooine_beetle_cave" },
+	{ planet = "tatooine", template = "herald_commoner", x = 3371.3, z = 5.0, y = -4520.8, angle = 118, cell = 0, destX = 5148, destY = 613,  stringFile = "herald_tatooine_hutt_hideout" },
+	{ planet = "tatooine", template = "herald_lorne_prestar", x = 3376.1, z = 5, y = -4786, angle = 117, cell = 0, destX = -3976, destY = 6317,  stringFile = "herald_tatooine_fort_tusken" },
+	{ planet = "tatooine", template = "herald_imperial_colonel", x = -1300, z = 12, y = -3507.2, angle = 100, cell = 0, destX = 0, destY = 0,  stringFile = "herald_tatooine_tusken_bunker" },
+	{ planet = "tatooine", template = "herald_imperial_army_captain", x = -1307.46, z = 12, y = -3662.44, angle = 218.6, cell = 0, destX = -784, destY = -4451,  stringFile = "herald_tatooine_rebel_military_base" },
+--[[
 	{ planet = "yavin4", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
 	{ planet = "yavin4", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
 	{ planet = "yavin4", template = "", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "" },
