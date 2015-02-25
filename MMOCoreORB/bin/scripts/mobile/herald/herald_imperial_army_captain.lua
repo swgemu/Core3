@@ -1,0 +1,36 @@
+herald_imperial_army_captain = Creature:new {
+	objectName = "@mob/creature_names:imperial_army_captain",
+	randomNameType = NAME_GENERIC_TAG,
+	socialGroup = "imperial",
+	faction = "imperial",
+	level = 21,
+	chanceHit = 0.34,
+	damageMin = 200,
+	damageMax = 210,
+	baseXp = 2006,
+	baseHAM = 5400,
+	baseHAMmax = 6600,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_imperial_captain_m.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "heraldConvoTemplate",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(herald_imperial_army_captain, "herald_imperial_army_captain")
