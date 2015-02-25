@@ -482,8 +482,11 @@ public:
 
 	//Override for special cases (skills like Taunt that don't have 5 result strings)
 	virtual void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage) {
+		if (attacker == NULL || defender == NULL)
+			return;
+
 		Zone* zone = attacker->getZone();
-		if (zone == NULL || attacker == NULL || defender == NULL)
+		if (zone == NULL)
 			return;
 
 		String stringName = combatSpam;

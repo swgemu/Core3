@@ -107,7 +107,7 @@ public:
 
 			ManagedReference<SceneObject*> member = group->getGroupMember(i);
 
-			if (!member->isPlayerCreature() || member == NULL || member->getZone() != leader->getZone())
+			if (member == NULL || !member->isPlayerCreature() || member->getZone() != leader->getZone())
 				continue;
 
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
@@ -147,8 +147,11 @@ public:
 	}
 
 	void sendRallyCombatSpam(CreatureObject* leader, GroupObject* group, bool success) {
+		if (leader == NULL || group == NULL)
+			return;
+
 		Zone* zone = leader->getZone();
-		if (zone == NULL || leader == NULL || group == NULL)
+		if (zone == NULL)
 			return;
 
 		String stringName = combatSpam;

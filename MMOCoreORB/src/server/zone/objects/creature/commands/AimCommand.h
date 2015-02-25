@@ -73,7 +73,7 @@ public:
 
 		//Send combat spam.
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
-		if (targetObject->isTangibleObject() && creature != targetObject) {
+		if (targetObject != NULL && targetObject->isTangibleObject() && creature != targetObject) {
 			TangibleObject* defender = cast<TangibleObject*>( targetObject.get());
 			sendAttackCombatSpam(creature, defender, -1, 0);
 		}
