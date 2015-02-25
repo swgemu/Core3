@@ -2974,7 +2974,13 @@ void AiAgentImplementation::sendReactionChat(int type, int state) {
 	}
 
 	if (System::random(99) < chance) {
-		message << ":" << typeString << (System::random(15) + 1);
+		int num = System::random(15) + 1;
+
+		// All of the reaction stfs are missing attacked_15
+		if (type == CreatureManager::ATTACKED && num == 15)
+			return;
+
+		message << ":" << typeString << num;
 		StringIdChatParameter chat;
 		chat.setStringId(message.toString());
 		getZoneServer()->getChatManager()->broadcastMessage(_this.get(),chat,0,0,0);
