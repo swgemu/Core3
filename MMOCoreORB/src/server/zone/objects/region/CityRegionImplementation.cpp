@@ -38,6 +38,7 @@ void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
 	loaded = false;
+	completeStructureList.setNoDuplicateInsertPlan();
 }
 
 void CityRegionImplementation::notifyLoadFromDatabase() {
@@ -100,7 +101,6 @@ void CityRegionImplementation::initialize() {
 	zoningRights.setNullValue(0);
 
 	cityMissionTerminals.setNoDuplicateInsertPlan();
-	cityDecorations.setNoDuplicateInsertPlan();
 	citySkillTrainers.setNoDuplicateInsertPlan();
 
 	bazaars.setNoDuplicateInsertPlan();
@@ -240,21 +240,19 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 		completeStructureList.put(structure->getObjectID());
 
-		if(isLoaded()){
-
-			if ( structure->isDecoration() ) {
-				addDecoration(structure);
-			} else if (structure->isCivicStructure()) {
-				addStructure(structure);
-			} else if (structure->isCommercialStructure()) {
-				addCommercialStructure(structure);
-			}
-
+		if (structure->isCivicStructure()) {
+			addStructure(structure);
+		} else if (structure->isCommercialStructure()) {
+			addCommercialStructure(structure);
 		}
 
 		if (registered) {
 			zone->registerObjectWithPlanetaryMap(structure);
 		}
+	}
+
+	if (object->isDecoration() && object->getParent().get() == NULL) {
+		addDecoration(object);
 	}
 }
 
@@ -334,13 +332,15 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 		completeStructureList.drop(structure->getObjectID());
 
-		if (structure->isDecoration()){
-			removeDecoration(structure);
-		} else if (structure->isCivicStructure()) {
+		if (structure->isCivicStructure()) {
 			removeStructure(structure);
 		} else if (structure->isCommercialStructure()) {
 			removeCommercialStructure(structure);
 		}
+	}
+
+	if (object->isDecoration() && object->getParent().get() == NULL) {
+		removeDecoration(object);
 	}
 }
 
@@ -496,7 +496,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 
 		structureManager->destroyStructure(structure);
 
-		structures.drop(structure);
+		structures.removeElement(structure);
 	}
 }
 
@@ -672,46 +672,6 @@ void CityRegionImplementation::transferCivicStructuresToMayor(){
 		if(cityBuilding != NULL)
 			mayorPlayer->setDeclaredResidence(cityBuilding);
 	}
-
-}
-
-void CityRegionImplementation::cleanupDuplicateCityStructures(){
-	Vector<ManagedReference<StructureObject*> > singleStructures;
-
-	for(int i = 0; i < getStructuresCount(); i++){
-
-		if(!singleStructures.contains(structures.get(i))){
-			singleStructures.add(structures.get(i));
-		}
-
-	}
-
-	structures.removeAll();
-	structures.addAll(singleStructures);
-
-	singleStructures.removeAll();
-
-	for(int i = 0; i < getCommercialStructuresCount(); i++){
-
-		if(!singleStructures.contains(commercialStructures.get(i)))
-			singleStructures.add(commercialStructures.get(i));
-
-	}
-
-	commercialStructures.removeAll();
-	commercialStructures.addAll(singleStructures);
-
-	Vector<ManagedReference<SceneObject*> > singleDecorations;
-
-	for(int i = 0; i < getDecorationCount(); i++){
-
-		if(!singleDecorations.contains(cityDecorations.get(i)))
-			singleDecorations.add(cityDecorations.get(i));
-
-	}
-
-	cityDecorations.removeAll();
-	cityDecorations.addAll(singleDecorations);
 
 }
 

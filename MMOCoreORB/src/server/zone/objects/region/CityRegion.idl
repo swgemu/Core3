@@ -107,16 +107,16 @@ class CityRegion extends ManagedObject implements Logger {
 	protected SortedVector<Region> regions;
 
 	@dereferenced
-	protected SortedVector<StructureObject> structures;
+	protected Vector<StructureObject> structures;
 
 	@dereferenced
-	protected SortedVector<StructureObject> commercialStructures;
+	protected Vector<StructureObject> commercialStructures;
 
 	@dereferenced
 	protected SortedVector<SceneObject> cityMissionTerminals;
 
 	@dereferenced
-	protected SortedVector<SceneObject> cityDecorations;
+	protected Vector<SceneObject> cityDecorations;
 
 	@dereferenced
 	protected SortedVector<SceneObject> citySkillTrainers;
@@ -153,10 +153,6 @@ class CityRegion extends ManagedObject implements Logger {
 
 		mayoralVotes.setAllowOverwriteInsertPlan();
 		mayoralVotes.setNullValue(0);
-
-		structures.setNoDuplicateInsertPlan();
-		commercialStructures.setNoDuplicateInsertPlan();
-		completeStructureList.setNoDuplicateInsertPlan();
 	}
 
 	public native void initialize();
@@ -534,7 +530,9 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public void addDecoration(SceneObject deco){
 		 synchronized (structureListMutex) {
-			cityDecorations.put(deco);
+			if (!cityDecorations.contains(deco)) {
+				cityDecorations.add(deco);
+			}
 		}
 	}
 
@@ -548,7 +546,7 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public void removeDecoration(SceneObject deco){
 		synchronized (structureListMutex) {
-			cityDecorations.drop(deco);
+			cityDecorations.removeElement(deco);
 		}
 	}
 
@@ -580,25 +578,29 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public void addStructure(StructureObject structure) {
 		synchronized (structureListMutex) {
-			structures.put(structure);
+			if (!structures.contains(structure)) {
+				structures.add(structure);
+			}
 		}
 	}
 
 	public void addCommercialStructure(StructureObject structure) {
 		synchronized (structureListMutex) {
-			commercialStructures.put(structure);
+			if (!commercialStructures.contains(structure)) {
+				commercialStructures.add(structure);
+			}
 		}
 	}
 
 	public void removeStructure(StructureObject structure) {
 		synchronized (structureListMutex) {
-			structures.drop(structure);
+			structures.removeElement(structure);
 		}
 	}
 
 	public void removeCommercialStructure(StructureObject structure) {
 		synchronized (structureListMutex) {
-			commercialStructures.drop(structure);
+			commercialStructures.removeElement(structure);
 		}
 	}
 
@@ -773,8 +775,6 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
 	public native void transferCivicStructuresToMayor();
-
-	public native void cleanupDuplicateCityStructures();
 
 	public native void removeDecorationsOutsideCity(int newRadius);
 

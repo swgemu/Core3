@@ -16,7 +16,7 @@
 
 class CityDecorationTask : public Task {
 	ManagedReference<CreatureObject*> mayor;
-	ManagedReference<SceneObject*> obj;
+	ManagedReference<TangibleObject*> obj;
 	byte option;
 
 public:
@@ -25,7 +25,7 @@ public:
 		REMOVE = 1
 	};
 
-	CityDecorationTask( CreatureObject* creature, SceneObject* object, byte function) {
+	CityDecorationTask( CreatureObject* creature, TangibleObject* object, byte function) {
 		mayor = creature;
 		obj = object;
 		option = function;
@@ -61,6 +61,15 @@ public:
 			return;
 		}
 
+		PlayerObject* mayorGhost = mayor->getPlayerObject().get();
+		if (mayorGhost == NULL) {
+			return;
+		}
+
+		if ((obj->isCityStreetLamp() && !mayorGhost->hasAbility("place_streetlamp")) || (obj->isCityStatue() && !mayorGhost->hasAbility("place_statue")) || (obj->isCityFountain() && !mayorGhost->hasAbility("place_fountain"))) {
+			mayor->sendSystemMessage("@city/city:no_skill_deco"); // You lack the skill to place this decoration in your city.
+			return;
+		}
 
 		if(!cityManager->canSupportMoreDecorations(city)){
 			StringIdChatParameter param("city/city", "no_more_decos"); //"Your city can't support any more decorations at its current rank!");
@@ -151,9 +160,5 @@ public:
 	}
 
 };
-
-
-
-
 
 #endif /* CITYDECORATIONTASK_H_ */

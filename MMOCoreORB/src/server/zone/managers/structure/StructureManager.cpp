@@ -193,14 +193,11 @@ int StructureManager::getStructureFootprint(SharedObjectTemplate* objectTemplate
 	return 0;
 }
 
-int StructureManager::placeStructureFromDeed(CreatureObject* creature,
-		StructureDeed* deed, float x, float y, int angle) {
+int StructureManager::placeStructureFromDeed(CreatureObject* creature, StructureDeed* deed, float x, float y, int angle) {
 	ManagedReference<Zone*> zone = creature->getZone();
 
 	//Already placing a structure?
-	if (zone == NULL
-			|| creature->containsActiveSession(
-					SessionFacadeType::PLACESTRUCTURE))
+	if (zone == NULL || creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
 		return 1;
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
@@ -211,13 +208,12 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 		creature->sendSystemMessage("You are not the correct faction");
 		return 1;
 	}
+
 	Reference<SharedStructureObjectTemplate*> serverTemplate =
-			dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(
-					serverTemplatePath.hashCode()));
+			dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
 
 	//Check to see if this zone allows this structure.
-	if (serverTemplate == NULL
-			|| !serverTemplate->isAllowedZone(zone->getZoneName())) {
+	if (serverTemplate == NULL || !serverTemplate->isAllowedZone(zone->getZoneName())) {
 		creature->sendSystemMessage("@player_structure:wrong_planet"); //That deed cannot be used on this planet.
 		return 1;
 	}
@@ -243,7 +239,6 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 		if (city != NULL)
 			break;
 	}
-
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > inRangeObjects;
 	zone->getInRangeObjects(x, y, 128, &inRangeObjects, true);
@@ -314,19 +309,18 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 	int rankRequired = serverTemplate->getCityRankRequired();
 
 	if (city == NULL && rankRequired > 0) {
-		creature->sendSystemMessage("@city/city:build_no_city");
+		creature->sendSystemMessage("@city/city:build_no_city"); // You must be in a city to place that structure.
 		return 1;
 	}
 
 	if (city != NULL) {
-		if (city->isZoningEnabled()
-				&& !city->hasZoningRights(creature->getObjectID())) {
+		if (city->isZoningEnabled() && !city->hasZoningRights(creature->getObjectID())) {
 			creature->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
 			return 1;
 		}
 
 		if (rankRequired != 0 && city->getCityRank() < rankRequired) {
-			StringIdChatParameter param("city/city", "rank_req");
+			StringIdChatParameter param("city/city", "rank_req"); // The city must be at least rank %DI (%TO) in order for you to place this structure.
 			param.setDI(rankRequired);
 			param.setTO("city/city", "rank" + String::valueOf(rankRequired));
 
@@ -339,13 +333,10 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 				return 1;
 		}
 
-		if (serverTemplate->isUniqueStructure()
-				&& city->hasUniqueStructure(
-						serverTemplate->getServerObjectCRC())) {
+		if (serverTemplate->isUniqueStructure() && city->hasUniqueStructure(serverTemplate->getServerObjectCRC())) {
 			creature->sendSystemMessage("@player_structure:cant_place_unique"); //This city can only support a single structure of this type.
 			return 1;
 		}
-
 	}
 
 	Locker _lock(deed, creature);
@@ -396,8 +387,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 	//Ensure that no other objects impede on this structures footprint, or overlap any city regions or no build areas.
 	//Make sure that the player has zoning rights in the area.
 
-	ManagedReference<PlaceStructureSession*> session =
-			new PlaceStructureSession(creature, deed);
+	ManagedReference<PlaceStructureSession*> session = new PlaceStructureSession(creature, deed);
 	creature->addActiveSession(SessionFacadeType::PLACESTRUCTURE, session);
 
 	//Construct the structure.

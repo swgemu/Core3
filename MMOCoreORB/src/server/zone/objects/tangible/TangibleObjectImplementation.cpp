@@ -895,3 +895,15 @@ void TangibleObjectImplementation::addActiveArea(ActiveArea* area) {
 
 	activeAreas.put(area);
 }
+
+bool TangibleObjectImplementation::isCityStreetLamp(){
+	return (templateObject != NULL && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/streetlamp"));
+}
+
+bool TangibleObjectImplementation::isCityStatue(){
+	return (templateObject != NULL && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/statue"));
+}
+
+bool TangibleObjectImplementation::isCityFountain(){
+	return (templateObject != NULL && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/fountain"));
+}

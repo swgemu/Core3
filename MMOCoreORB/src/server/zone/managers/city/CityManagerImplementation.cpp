@@ -572,8 +572,7 @@ void CityManagerImplementation::depositToCityTreasury(CityRegion* city, Creature
 	creature->sendSystemMessage(params);
 }
 
-void CityManagerImplementation::sendCitizenshipReport(CityRegion* city,
-		CreatureObject* creature, SceneObject* terminal) {
+void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost == NULL)
@@ -583,24 +582,23 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city,
 	if (ghost->hasSuiBoxWindowType(SuiWindowType::CITY_CITIZEN_REPORT))
 		return;
 
-	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature,
-			SuiWindowType::CITY_CITIZEN_REPORT);
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature, SuiWindowType::CITY_CITIZEN_REPORT);
 	listbox->setPromptTitle("@city/city:citizen_list_t"); //City Citizenship Report
 	listbox->setPromptText("@city/city:citizen_list_d"); //The following is a list of the currently declared citizens (residents) of this city. All citizens are elligible to vote.
 	listbox->setUsingObject(terminal);
 	listbox->setForceCloseDistance(16.f);
+	listbox->addMenuItem("@city/city:reg_citizen_prompt"); // Registered Citizens:
 
 	CitizenList* citizenList = city->getCitizenList();
 
 	for (int i = 0; i < citizenList->size(); ++i) {
-		ManagedReference<SceneObject*> citizen = zoneServer->getObject(
-				citizenList->get(i));
+		ManagedReference<SceneObject*> citizen = zoneServer->getObject(citizenList->get(i));
 
 		if (citizen != NULL) {
-			String name = citizen->getDisplayedName();
+			String name = "\t" + citizen->getDisplayedName();
 
 			if (city->isMilitiaMember(citizen->getObjectID()))
-				name += " (Militia)";
+				name += " (Militia)"; // TODO: figure out how to append "@city/city:militia_suffix" and have it display properly
 
 			listbox->addMenuItem(name);
 		}
@@ -703,8 +701,6 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	city->rescheduleUpdateEvent(cityUpdateInterval * 60);
 
 	processIncomeTax(city);
-
-	city->cleanupDuplicateCityStructures();
 
 	if( city->getDecorationCount() > (decorationsPerRank * city->getCityRank())){
 		city->cleanupDecorations(decorationsPerRank * city->getCityRank());
@@ -1233,23 +1229,11 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 		}
 	}
 
-	CitizenList* cityMilitia = city->getMilitiaMembers();
-
-	SortedVector<uint64> militiaMembers;
-
-	for (int i = 0; i < cityMilitia->size(); ++i) {
-		militiaMembers.put(cityMilitia->get(i));
-	}
-
 	city->removeAmenitiesOutsideCity(radiusPerRank.get(newRank - 1));
 
 	city->setCityRank(newRank);
 	city->setRadius(radiusPerRank.get(newRank - 1));
 	city->destroyAllStructuresForRank(uint8(newRank + 1));
-
-	for (int i = 0; i < militiaMembers.size(); ++i) {
-		city->addMilitiaMember(militiaMembers.get(i));
-	}
 
 	city->cleanupCitizens();
 }
@@ -1291,20 +1275,8 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 				mayor->getFirstName(), NULL);
 	}
 
-	CitizenList* cityMilitia = city->getMilitiaMembers();
-
-	SortedVector<uint64> militiaMembers;
-
-	for (int i = 0; i < cityMilitia->size(); ++i) {
-		militiaMembers.put(cityMilitia->get(i));
-	}
-
 	city->setCityRank(newRank);
 	city->setRadius(radiusPerRank.get(newRank - 1));
-
-	for (int i = 0; i < militiaMembers.size(); ++i) {
-		city->addMilitiaMember(militiaMembers.get(i));
-	}
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {

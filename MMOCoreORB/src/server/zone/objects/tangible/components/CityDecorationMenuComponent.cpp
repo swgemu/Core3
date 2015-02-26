@@ -40,13 +40,13 @@ int CityDecorationMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 	if ( selectedID == 233 ) {
 
-		Reference<CityDecorationTask*> task = new CityDecorationTask(player, sceneObject, CityDecorationTask::PLACE);
+		Reference<CityDecorationTask*> task = new CityDecorationTask(player, cast<TangibleObject*>(sceneObject), CityDecorationTask::PLACE);
 		task->execute();
 		return 0;
 
 	} else if (selectedID == 234) {
 
-		Reference<CityDecorationTask*> task = new CityDecorationTask(player, sceneObject, CityDecorationTask::REMOVE);
+		Reference<CityDecorationTask*> task = new CityDecorationTask(player, cast<TangibleObject*>(sceneObject), CityDecorationTask::REMOVE);
 		task->execute();
 		return 0;
 	}
