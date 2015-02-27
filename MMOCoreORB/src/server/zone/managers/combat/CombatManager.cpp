@@ -1078,8 +1078,11 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 
 		// Force Feedback
 		int forceFeedback = defender->getSkillMod("force_feedback");
-		if (forceFeedback > 0)
-			attacker->inflictDamage(defender, System::random(2) * 3, rawDamage - (damage *= 1.f - (forceFeedback / 100.f)), true);
+		if (forceFeedback > 0) {
+			float feedbackDmg = rawDamage - (damage * (1.f - (forceFeedback / 100.f)));
+			attacker->inflictDamage(defender, System::random(2) * 3, feedbackDmg, true);
+			broadcastCombatSpam(defender, attacker, NULL, feedbackDmg, "cbt_spam", "forcefeedback_hit", 1);
+		}
 
 		// Force Absorb
 		if (defender->getSkillMod("force_absorb") > 0 && defender->isPlayerCreature()) {

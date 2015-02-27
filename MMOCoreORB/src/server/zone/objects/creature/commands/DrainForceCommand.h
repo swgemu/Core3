@@ -72,46 +72,60 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isCreatureObject())
+		if (object == NULL || !object->isPlayerCreature())
 			return INVALIDTARGET;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
-		if (targetCreature == NULL)
+		if (targetCreature == NULL || targetCreature->isDead() || targetCreature->isIncapacitated() || !targetCreature->isAttackableBy(creature))
 			return INVALIDTARGET;
+
+		if (!targetCreature->isInRange(creature, range))
+			return TOOFAR;
+
+		if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return GENERALERROR;
+		}
 
 		Locker clocker(targetCreature, creature);
 
 		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+		ManagedReference<PlayerObject*> playerGhost = creature->getPlayerObject();
 
-		if (targetGhost == NULL || playerObject == NULL)
+		if (targetGhost == NULL || playerGhost == NULL)
 			return GENERALERROR;
 
-		if (targetCreature->isAiAgent() || targetCreature->isDead())
-			return INVALIDTARGET;
-			
-		if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {
-			creature->sendSystemMessage("@container_error_message:container18");
-			return GENERALERROR;	
-		}
+		CombatManager* manager = CombatManager::instance();
 
-		if (targetGhost->getForcePower() <= 0) {
-			creature->sendSystemMessage("@jedi_spam:target_no_force"); //That target does not have any Force Power.
-			return GENERALERROR;
-		}
-		
-		if (playerObject->getForcePower() >= playerObject->getForcePowerMax())
-			return GENERALERROR;			
+		if (manager->startCombat(creature, targetCreature, false)) { //lockDefender = false because already locked above.
+			int forceSpace = playerGhost->getForcePowerMax() - playerGhost->getForcePower();
+			if (forceSpace <= 0) //Cannot Force Drain if attacker can't hold any more Force.
+				return GENERALERROR;
 
-		if (targetCreature->isAttackableBy(creature)) {
-			targetGhost->setForcePower(targetGhost->getForcePower() - 100);
-			playerObject->setForcePower(playerObject->getForcePower() + 100);
-			
-			return doCombatAction(creature, target);
+			int maxDrain = damage; //Value set in command lua.
+
+			int targetForce = targetGhost->getForcePower();
+			if (targetForce <= 0) {
+				creature->sendSystemMessage("@jedi_spam:target_no_force"); //That target does not have any Force Power.
+				return GENERALERROR;
+			}
+
+			int forceDrain = targetForce >= maxDrain ? maxDrain : targetForce; //Drain whatever Force the target has, up to max.
+			if (forceDrain > forceSpace)
+				forceDrain = forceSpace; //Drain only what attacker can hold in their own Force pool.
+
+			playerGhost->setForcePower(playerGhost->getForcePower() + forceDrain);
+			targetGhost->setForcePower(targetGhost->getForcePower() - forceDrain);
+
+			creature->doCombatAnimation(targetCreature, animationCRC, 0x1, 0xFF);
+			manager->broadcastCombatSpam(creature, targetCreature, NULL, forceDrain, "cbt_spam", combatSpam, 1);
+
+			return SUCCESS;
 		}
 
 		return GENERALERROR;
+
 	}
 
 	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
