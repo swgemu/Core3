@@ -592,11 +592,9 @@ String StructureManager::getTimeString(uint32 timestamp) {
 	return "(" + str.toString() + ")";
 }
 
-int StructureManager::declareResidence(CreatureObject* player,
-		StructureObject* structureObject) {
+int StructureManager::declareResidence(CreatureObject* player, StructureObject* structureObject) {
 	if (!structureObject->isBuildingObject()) {
-		player->sendSystemMessage(
-				"@player_structure:residence_must_be_building"); //Your declared residence must be a building.
+		player->sendSystemMessage("@player_structure:residence_must_be_building"); //Your declared residence must be a building.
 		return 1;
 	}
 
@@ -604,18 +602,14 @@ int StructureManager::declareResidence(CreatureObject* player,
 
 	if (!player->checkCooldownRecovery("declare_residence") && !ghost->isPrivileged()) {
 		Time* timeremaining = player->getCooldownTime("declare_residence");
-		StringIdChatParameter params("player_structure",
-				"change_residence_time"); //You cannot change residence for %NO hours.
-		params.setTO(
-				String::valueOf(
-						ceil(timeremaining->miliDifference() / -3600000.f)));
+		StringIdChatParameter params("player_structure", "change_residence_time"); //You cannot change residence for %NO hours.
+		params.setTO(String::valueOf(ceil(timeremaining->miliDifference() / -3600000.f)));
 
 		player->sendSystemMessage(params);
 		return 1;
 	}
 
-	ManagedReference<BuildingObject*> buildingObject =
-			cast<BuildingObject*>(structureObject);
+	ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>(structureObject);
 
 	if (!buildingObject->isOwnerOf(player)) {
 		player->sendSystemMessage("@player_structure:declare_must_be_owner"); //You must be the owner of the building to declare residence.
@@ -627,8 +621,7 @@ int StructureManager::declareResidence(CreatureObject* player,
 
 	uint64 declaredOidResidence = ghost->getDeclaredResidence();
 
-	ManagedReference<BuildingObject*> declaredResidence =
-			server->getObject(declaredOidResidence).castTo<BuildingObject*>();
+	ManagedReference<BuildingObject*> declaredResidence = server->getObject(declaredOidResidence).castTo<BuildingObject*>();
 	ManagedReference<CityRegion*> cityRegion = buildingObject->getCityRegion();
 
 	CityManager* cityManager = server->getCityManager();
@@ -639,8 +632,7 @@ int StructureManager::declareResidence(CreatureObject* player,
 			return 1;
 		}
 
-		ManagedReference<CityRegion*> residentCity =
-				declaredResidence->getCityRegion();
+		ManagedReference<CityRegion*> residentCity = declaredResidence->getCityRegion();
 
 		if (residentCity != NULL) {
 			Locker lock(residentCity, player);
@@ -650,7 +642,7 @@ int StructureManager::declareResidence(CreatureObject* player,
 				return 1;
 			}
 
-			cityManager->unregisterCitizen(residentCity, player, CityManager::GENERAL);
+			cityManager->unregisterCitizen(residentCity, player, false);
 		}
 
 		player->sendSystemMessage("@player_structure:change_residence"); //You change your residence to this building.
@@ -672,10 +664,9 @@ int StructureManager::declareResidence(CreatureObject* player,
 	//Set the characters home location to this structure.
 	ghost->setDeclaredResidence(buildingObject);
 
-	if(declaredResidence != NULL){
+	if(declaredResidence != NULL) {
 		Locker oldLock(declaredResidence, player);
 		declaredResidence->setResidence(false);
-
 	}
 
 	Locker newLock(buildingObject,player);

@@ -611,7 +611,7 @@ class CityRegion extends ManagedObject implements Logger {
 	 */
 	public native boolean hasUniqueStructure(unsigned int crc);
 
-	public native void destroyAllStructuresForRank(byte rank);
+	public native void destroyAllStructuresForRank(byte rank, boolean sendMail);
 
 	/**
 	 * Adds a candidate to the ballot.
@@ -795,6 +795,8 @@ class CityRegion extends ManagedObject implements Logger {
 		removeTrainersOutsideCity(newRadius);
 		removeTerminalsOutsideCity(newRadius);
 	}
+
+	public native void sendDestroyOutsideObjectMail(SceneObject obj);
 
 	public native void cleanupDecorations(int decorationLimit);
 
