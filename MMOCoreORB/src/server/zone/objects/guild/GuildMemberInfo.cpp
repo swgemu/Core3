@@ -11,6 +11,7 @@
 GuildMemberInfo::GuildMemberInfo(uint64 playerid) : Object() {
 	playerID = playerid;
 	permissions = GuildObject::PERMISSION_NONE;
+	declaredAllegiance = 0;
 
 	//addSerializableVariables();
 }
@@ -31,6 +32,7 @@ GuildMemberInfo& GuildMemberInfo::operator=(const GuildMemberInfo& gmi) {
 	playerID = gmi.playerID;
 	guildTitle = gmi.guildTitle;
 	permissions = gmi.permissions;
+	declaredAllegiance = gmi.declaredAllegiance;
 
 	return *this;
 }

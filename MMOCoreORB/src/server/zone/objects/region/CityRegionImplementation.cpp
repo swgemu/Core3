@@ -675,6 +675,45 @@ void CityRegionImplementation::transferCivicStructuresToMayor(){
 
 }
 
+void CityRegionImplementation::cleanupDuplicateCityStructures() {
+	Vector<ManagedReference<StructureObject*> > singleStructures;
+
+	for(int i = 0; i < getStructuresCount(); i++){
+
+		if(!singleStructures.contains(structures.get(i))){
+			singleStructures.add(structures.get(i));
+		}
+
+	}
+
+	structures.removeAll();
+	structures.addAll(singleStructures);
+
+	singleStructures.removeAll();
+
+	for(int i = 0; i < getCommercialStructuresCount(); i++){
+
+		if(!singleStructures.contains(commercialStructures.get(i)))
+			singleStructures.add(commercialStructures.get(i));
+
+	}
+
+	commercialStructures.removeAll();
+	commercialStructures.addAll(singleStructures);
+
+	Vector<ManagedReference<SceneObject*> > singleDecorations;
+
+	for(int i = 0; i < getDecorationCount(); i++){
+
+		if(!singleDecorations.contains(cityDecorations.get(i)))
+			singleDecorations.add(cityDecorations.get(i));
+
+	}
+
+	cityDecorations.removeAll();
+	cityDecorations.addAll(singleDecorations);
+}
+
 void CityRegionImplementation::removeDecorationsOutsideCity(int newRadius){
 	if(cityHall == NULL)
 		return;
@@ -793,3 +832,4 @@ void CityRegionImplementation::cleanupDecorations(int limit){
 uint64 CityRegionImplementation::getObjectID() {
 	return _this.get()->_getObjectID();
 }
+
