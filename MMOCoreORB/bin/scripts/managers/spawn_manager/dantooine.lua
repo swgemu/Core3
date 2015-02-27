@@ -230,7 +230,6 @@ dantooine_regions = {
 dantooine_static_spawns = {
 	{"adwan_turoldine",60,-9.37871,0.625,2.98841,82.9313,6205565, "neutral", "", "stationary"},
 	{"dark_jedi_master",3600,-738.2,1.7,2103.9,55,0, "", "", "stationary"},
-	{"daiv_dekven",60,1603.42,4,-6434.54,102.877,0, "calm", "Daiv Dekven", "stationary"},
 	{"fern_yarrow",60,-625.684,3,2481.19,119.665,0, "neutral", "", "stationary"},
 	{"insurgent",60,0,0,-5.7,0,1365878, "npc_imperial", "", "stationary"},
 	{"kess_yarrow",60,-623.484,3,2481.77,149.192,0, "neutral", "", "stationary"},

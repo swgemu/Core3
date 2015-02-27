@@ -1,0 +1,36 @@
+herald_nightsister_protector = Creature:new {
+	objectName = "@mob/creature_names:nightsister_protector",
+	randomNameType = NAME_GENERIC_TAG,
+	socialGroup = "nightsister",
+	faction = "nightsister",
+	level = 131,
+	chanceHit = 4.75,
+	damageMin = 770,
+	damageMax = 1250,
+	baseXp = 12424,
+	baseHAM = 50000,
+	baseHAMmax = 61000,
+	armor = 2,
+	resists = {55,100,55,100,100,100,100,100,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_dathomir_nightsister_protector.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "heraldConvoTemplate",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(herald_nightsister_protector, "herald_nightsister_protector")

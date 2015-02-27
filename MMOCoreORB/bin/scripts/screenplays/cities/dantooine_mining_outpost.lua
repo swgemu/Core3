@@ -25,7 +25,6 @@ function DantooineMiningOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "businessman", 60, -627, 3, 2531, 81, 0)
 	spawnMobile("dantooine", "commando", 300, -616, 3, 2509, 314, 0)
 	spawnMobile("dantooine", "commando", 300, -562, 3, 2512, 108, 0)
-	spawnMobile("dantooine", "commoner", 60, -643, 3, 2449, 341,0)
 	spawnMobile("dantooine", "commoner", 60, -600, 3, 2548, 16, 0)
 	spawnMobile("dantooine", "commoner", 60, -580, 3, 2530, 29, 0)
 	spawnMobile("dantooine", "commoner", 60, -611, 3, 2533, 209, 0)
@@ -45,7 +44,6 @@ function DantooineMiningOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "mercenary", 300, -594, 3, 2500, 47, 0)
 	spawnMobile("dantooine", "mercenary", 300, -658, 3, 2480, 334, 0)
 	spawnMobile("dantooine", "mercenary", 300, -665, 3, 2465, 120, 0)
-	spawnMobile("dantooine", "imperial_colonel", 450,-588.773,3,2499.09,264.624,0)
 	
 	--Left these in dantooine.lua because of the custom name etc
 	--{"adwan_turoldine",60,-9.37871,0.625,2.98841,82.9313,6205565, "neutral", ""},
