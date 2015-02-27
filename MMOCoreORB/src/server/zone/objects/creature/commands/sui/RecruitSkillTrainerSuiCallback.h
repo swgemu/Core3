@@ -33,18 +33,25 @@ public:
 			return;
 
 		ManagedReference<CityRegion*> city = player->getCityRegion();
-
 		if (city == NULL)
 			return;
 
-		if (city->getSkillTrainerCount() >= (int) city->getCityRank() * 3){
-					player->sendSystemMessage("@city/city:no_more_trainers");
+		if (!city->isMayor(player->getObjectID()))
+			return;
+
+		if (city->getSkillTrainerCount() >= (int) city->getCityRank() * 3) {
+					player->sendSystemMessage("@city/city:no_more_trainers"); // Your city can't support any more trainers at its current rank!
 					return;
 		}
 
 		Zone* zone = player->getZone();
 
 		PlayerObject* ghost = player->getPlayerObject();
+		if (ghost == NULL)
+			return;
+
+		if (!ghost->hasAbility("recruitskilltrainer"))
+			return;
 
 		int option = Integer::valueOf(args->get(0).toString());
 
@@ -152,9 +159,10 @@ public:
 
 		}
 
-		if (trainerTemplatePath != ""){
+		if (trainerTemplatePath != "") {
+			Locker clocker(city, player);
 
-			if(city->getCityTreasury() < 1000){
+			if(city->getCityTreasury() < 1000) {
 				StringIdChatParameter msg;
 				msg.setStringId("@city/city:action_no_money");
 				msg.setDI(1000);

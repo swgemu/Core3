@@ -384,7 +384,7 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 	if (mayor != NULL) {
 		list->addMenuItem("@city/city:mayor_prompt " + mayor->getDisplayedName()); //Mayor:
 	} else {
-		list->addMenuItem("@city/city:mayor_prompt " + String("@city/city:null")); // Mayor: None
+		list->addMenuItem("@city/city:mayor_prompt @city/city:null"); // Mayor: None
 	}
 
 	StringBuffer location;
@@ -394,7 +394,14 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 	list->addMenuItem("@city/city:radius_prompt " + String::valueOf(city->getRadius())); //Radius:
 	list->addMenuItem("@city/city:citizen_prompt " + String::valueOf(city->getCitizenCount())); //Citizenship:
 	list->addMenuItem("@city/city:structures_prompt " + String::valueOf(city->getAllStructuresCount())); //Structures:
-	list->addMenuItem("@city/city:specialization_prompt " + city->getCitySpecialization()); //Specialization:
+
+	if (city->getCitySpecialization().isEmpty())
+		list->addMenuItem("@city/city:specialization_prompt @city/city:null"); //Specialization: None
+	else
+		list->addMenuItem("@city/city:specialization_prompt " + city->getCitySpecialization()); //Specialization:
+
+	list->addMenuItem("@city/city:current_trainers " + String::valueOf(city->getSkillTrainerCount())); // Current Trainer Count:
+	list->addMenuItem("@city/city:current_mt " + String::valueOf(city->getMissionTerminalCount())); // Current Terminal Count:
 
 	for (int i = 0; i < cityTaxes.size(); ++i) {
 		CityTax* cityTax = &cityTaxes.get(i);
@@ -404,7 +411,12 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 		if (prompt.isEmpty())
 			continue;
 
-		list->addMenuItem(prompt + " " + String::valueOf(tax));
+		if (prompt == "@city/city:travel_cost_prompt" && !city->hasShuttleInstallation()) {
+			prompt += "_none";
+			list->addMenuItem(prompt);
+		} else {
+			list->addMenuItem(prompt + " " + String::valueOf(tax));
+		}
 	}
 
 	creature->sendMessage(list->generateMessage());
@@ -423,31 +435,21 @@ void CityManagerImplementation::sendStructureReport(CityRegion* city, CreatureOb
 	maintList->setPromptText("@city/city:structure_list_d");
 
 	for (int i = 0; i < city->getStructuresCount(); i++) {
-		ManagedReference<StructureObject*> structure = city->getCivicStructure(
-				i);
+		ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
 		if (structure != NULL)
-			maintList->addMenuItem(
-					structure->getDisplayedName() + " - Condition : "
-							+ String::valueOf(
-									(1.0f * structure->getMaxCondition()
-											- structure->getConditionDamage())
-											/ structure->getMaxCondition()
-											* 100) + "%", i);
+			maintList->addMenuItem(structure->getObjectName()->getFullPath() + " - Condition : "
+					+ String::valueOf((1.0f * structure->getMaxCondition() - structure->getConditionDamage())
+							/ structure->getMaxCondition() * 100) + "%", i);
 
 	}
 
 	for (int i = 0; i < city->getDecorationCount(); i++) {
-		ManagedReference<StructureObject*> deco = cast<StructureObject*> (
-				city->getCityDecoration(i));
+		ManagedReference<StructureObject*> deco = cast<StructureObject*> (city->getCityDecoration(i));
 
 		if (deco != NULL)
-			maintList->addMenuItem(
-					deco->getDisplayedName() + " - Condition : "
-					+ String::valueOf(
-							(1.0f * deco->getMaxCondition()
-									- deco->getConditionDamage())
-									/ deco->getMaxCondition()
-									* 100) + "%", i);
+			maintList->addMenuItem(deco->getObjectName()->getFullPath() + " - Condition : "
+					+ String::valueOf((1.0f * deco->getMaxCondition() - deco->getConditionDamage())
+							/ deco->getMaxCondition() * 100) + "%", i);
 	}
 
 	ghost->addSuiBox(maintList);
@@ -595,10 +597,10 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, Creature
 		ManagedReference<SceneObject*> citizen = zoneServer->getObject(citizenList->get(i));
 
 		if (citizen != NULL) {
-			String name = "\t" + citizen->getDisplayedName();
+			String name = "@city/city:default \t" + citizen->getDisplayedName();
 
 			if (city->isMilitiaMember(citizen->getObjectID()))
-				name += " (Militia)"; // TODO: figure out how to append "@city/city:militia_suffix" and have it display properly
+				name += " @city/city:militia_suffix"; // (Militia)
 
 			listbox->addMenuItem(name);
 		}
@@ -627,10 +629,9 @@ void CityManagerImplementation::assessCitizens(CityRegion* city) {
 	if (citizens < citizensPerRank.get(0)) {
 		if (mayor != NULL) {
 			StringIdChatParameter params("city/city", "new_city_fail_body");
-			UnicodeString subject = "@city/city:new_city_fail_subject";
+			UnicodeString subject = "@city/city:new_city_fail_subject"; // Zoning Permits Rejected
 
-			chatManager->sendMail("@city/city:new_city_from", subject, params,
-					mayor->getFirstName(), NULL);
+			chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
 		}
 
 		StructureManager::instance()->destroyStructure(city->getCityHall());
@@ -638,10 +639,9 @@ void CityManagerImplementation::assessCitizens(CityRegion* city) {
 	} else {
 		if (mayor != NULL) {
 			StringIdChatParameter params("city/city", "new_city_success_body");
-			UnicodeString subject = "@city/city:new_city_success_subject";
+			UnicodeString subject = "@city/city:new_city_success_subject"; // New City Approved!
 
-			chatManager->sendMail("@city/city:new_city_from", subject, params,
-					mayor->getFirstName(), NULL);
+			chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
 		}
 
 		city->setAssessmentPending(false);
@@ -689,12 +689,10 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 			expandCity(city);
 	}
 
-	ManagedReference<SceneObject*> mayor = zoneServer->getObject(
-			city->getMayorID());
+	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
 
 	if (mayor != NULL && mayor->isPlayerCreature()) {
-		Reference<PlayerObject*> ghost =
-				mayor->getSlottedObject("ghost").castTo<PlayerObject*> ();
+		Reference<PlayerObject*> ghost = mayor->getSlottedObject("ghost").castTo<PlayerObject*> ();
 		ghost->addExperience("political", 750, true);
 	}
 
@@ -715,13 +713,10 @@ void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 	if (incomeTax <= 0)
 		return;
 
-	ManagedReference<SceneObject*> mayorObject = zoneServer->getObject(
-			city->getMayorID());
+	ManagedReference<SceneObject*> mayorObject = zoneServer->getObject(city->getMayorID());
 
 	if (mayorObject == NULL || !mayorObject->isPlayerCreature()) {
-		error(
-				"Mayor is null or not set in process income tax for city: "
-						+ city->getRegionName());
+		error("Mayor is null or not set in process income tax for city: " + city->getRegionName());
 		return;
 	}
 
@@ -732,8 +727,7 @@ void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 
 	CitizenList* citizens = city->getCitizenList();
 
-	Reference<TaxPayMailTask*> task = new TaxPayMailTask(incomeTax, mayorName,
-			chatManager, city);
+	Reference<TaxPayMailTask*> task = new TaxPayMailTask(incomeTax, mayorName, chatManager, city);
 
 	for (int i = 0; i < citizens->size(); ++i) {
 		uint64 oid = citizens->get(i);
@@ -751,9 +745,6 @@ void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 	task->execute();
 }
 
-// pay city hall first
-// next pay civic structures
-
 void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 	int totalPaid = 0;
 
@@ -761,7 +752,6 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 
 	// pay city hall maintenanance first
 	TemplateManager* templateManager = TemplateManager::instance();
-
 	if (templateManager == NULL)
 		return;
 
@@ -770,18 +760,15 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 	if (ch == NULL || ch->getObjectTemplate() == NULL)
 		return;
 
-	Reference<SharedStructureObjectTemplate*> structureTemplate = cast<
-			SharedStructureObjectTemplate*> (ch->getObjectTemplate());
+	Reference<SharedStructureObjectTemplate*> structureTemplate = cast<SharedStructureObjectTemplate*> (ch->getObjectTemplate());
 
 	if (structureTemplate == NULL)
 		return;
 
-	int thisCost = maintenanceDiscount * structureTemplate->getCityMaintenanceAtRank(
-			city->getCityRank() - 1);
+	int thisCost = maintenanceDiscount * structureTemplate->getCityMaintenanceAtRank(city->getCityRank() - 1);
 
 	if (city->getCitySpecialization() != "") {
-		CitySpecialization* spec = getCitySpecialization(
-				city->getCitySpecialization());
+		CitySpecialization* spec = getCitySpecialization(city->getCitySpecialization());
 
 		if (spec != NULL)
 			thisCost += spec->getCost();
@@ -1508,18 +1495,12 @@ void CityManagerImplementation::sendTreasuryReport(CityRegion* city,
 	creature->sendMessage(listbox->generateMessage());
 }
 
-void CityManagerImplementation::sendCityAdvancement(CityRegion* city,
-		CreatureObject* creature, SceneObject* terminal) {
-	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature,
-			SuiWindowType::CITY_ADVANCEMENT);
+void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(creature, SuiWindowType::CITY_ADVANCEMENT);
 	listbox->setPromptTitle("@city/city:rank_info_t"); //City Rank Info
 	listbox->setPromptText("@city/city:rank_info_d"); //The following report shows the current city rank, the current city population, the abilities of the city and the population required for the next rank.  If you have met your rank requirement, the city will advance in rank during the next city update.  Check the maintenance report for a projected time to the next update.
 	listbox->setUsingObject(terminal);
 	listbox->setForceCloseDistance(16.f);
-
-	//City Abilities:
-	//bank Bank
-	//cantina  Cantina
 
 	int rank = city->getCityRank();
 
@@ -1529,18 +1510,39 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city,
 	int currentRank = citizensPerRank.get(rank - 1);
 	int nextRank = citizensPerRank.get(rank == METROPOLIS ? rank - 1 : rank);
 
-	//pop_req_current_rankPop. Req. for Current Rank:
-	//pop_req_next_rankPop. Req. for Next Rank:
-	listbox->addMenuItem(
-			"@city/city:city_rank_prompt @city/city:rank" + String::valueOf(
-					rank));
-	listbox->addMenuItem(
-			"@city/city:reg_citizen_prompt " + String::valueOf(
-					city->getCitizenCount()));
-	listbox->addMenuItem(
-			"@city/city:pop_req_current_rank " + String::valueOf(currentRank));
-	listbox->addMenuItem(
-			"@city/city:pop_req_next_rank " + String::valueOf(nextRank));
+	listbox->addMenuItem("@city/city:city_rank_prompt @city/city:rank" + String::valueOf(rank)); // City Rank:
+	listbox->addMenuItem("@city/city:city_pop_prompt " + String::valueOf(city->getCitizenCount()) + " @city/city:citizens"); // City Population: citizens
+	listbox->addMenuItem("@city/city:pop_req_current_rank " + String::valueOf(currentRank) + " @city/city:citizens"); // Pop. Req. for Current Rank: citizens
+
+	if (rank < CityRegion::RANK_METROPOLIS)
+		listbox->addMenuItem("@city/city:pop_req_next_rank " + String::valueOf(nextRank) + " @city/city:citizens"); // Pop. Req. for Next Rank: citizens
+	else
+		listbox->addMenuItem("@city/city:pop_req_next_rank @city/city:max_rank_achieved"); // Pop. Req. for Next Rank: Maximum City Rank Achieved
+
+	listbox->addMenuItem("@city/city:max_decorations " + String::valueOf(rank * decorationsPerRank)); // Max Decorations:
+	listbox->addMenuItem("@city/city:max_trainers " + String::valueOf(rank * 3)); // Max Skill Trainers:
+	listbox->addMenuItem("@city/city:max_terminals " + String::valueOf(rank * 3)); // Max Mission Terminals:
+
+	listbox->addMenuItem("@city/city:rank_enabled_structures"); // Rank Enabled Structures
+
+	if (rank >= CityRegion::RANK_OUTPOST) {
+		listbox->addMenuItem("@city/city:default \t @city/city:small_garden"); // Small Gardens
+	}
+	if (rank >= CityRegion::RANK_VILLAGE) {
+		listbox->addMenuItem("@city/city:default \t @city/city:bank"); // Bank
+		listbox->addMenuItem("@city/city:default \t @city/city:cantina"); // Cantina
+		listbox->addMenuItem("@city/city:default \t @city/city:medium_garden"); // Medium Gardens
+		listbox->addMenuItem("@city/city:default \t @city/city:garage"); // Garage
+	}
+	if (rank >= CityRegion::RANK_TOWNSHIP) {
+		listbox->addMenuItem("@city/city:default \t @city/city:cloning_facility"); // Cloning Facility
+		listbox->addMenuItem("@city/city:default \t @city/city:hospital"); // Hospital
+		listbox->addMenuItem("@city/city:default \t @city/city:large_garden"); // Large Gardens
+	}
+	if (rank >= CityRegion::RANK_CITY) {
+		listbox->addMenuItem("@city/city:default \t @city/city:theater"); // Theater
+		listbox->addMenuItem("@city/city:default \t @city/city:shuttleport"); // Shuttleport
+	}
 
 	creature->sendMessage(listbox->generateMessage());
 }
@@ -2159,8 +2161,7 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 	}
 }
 
-CitySpecialization* CityManagerImplementation::getCitySpecialization(
-		const String& name) {
+CitySpecialization* CityManagerImplementation::getCitySpecialization(const String& name) {
 	if (!citySpecializations.containsKey(name))
 		return NULL;
 
@@ -2174,8 +2175,7 @@ CityTax* CityManagerImplementation::getCityTax(int idx) {
 	return &cityTaxes.get(idx);
 }
 
-void CityManagerImplementation::sendMail(CityRegion* city,
-		const String& sender, const UnicodeString& subject,
+void CityManagerImplementation::sendMail(CityRegion* city, const String& sender, const UnicodeString& subject,
 		StringIdChatParameter& params, WaypointObject* waypoint) {
 	ChatManager* chat = zoneServer->getChatManager();
 
@@ -2203,9 +2203,9 @@ void CityManagerImplementation::fixMayor(CityRegion* city, CreatureObject* mayor
 		return;
 
 	ManagedReference<PlayerObject*> ghost = mayor->getPlayerObject();
-
 	if (ghost == NULL)
 		return;
+
 	uint64 mayorid = mayor->getObjectID();
 
 	if (city->isMayor(mayorid) && !city->isCitizen(mayorid)) {
@@ -2219,9 +2219,7 @@ bool CityManagerImplementation::canSupportMoreDecorations(CityRegion* city) {
 	if (city == NULL)
 		return false;
 
-	return city->getDecorationCount() < (decorationsPerRank
-			* city->getCityRank());
-
+	return city->getDecorationCount() < (decorationsPerRank * city->getCityRank());
 }
 
 void CityManagerImplementation::sendChangeCityName(CityRegion* city, CreatureObject* mayor){

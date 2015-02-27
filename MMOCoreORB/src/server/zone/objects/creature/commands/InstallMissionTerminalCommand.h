@@ -65,7 +65,11 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (!creature->hasSkill("social_politician_civic_01"))
+		PlayerObject* ghost = creature->getPlayerObject();
+		if (ghost == NULL)
+			return GENERALERROR;
+
+		if (!ghost->hasAbility("installmissionterminal"))
 			return GENERALERROR;
 
 		ManagedReference<CityRegion*> city = creature->getCityRegion();
@@ -79,20 +83,18 @@ public:
 		ManagedReference<SuiListBox*> suiTerminalType = new SuiListBox(creature, SuiWindowType::INSTALL_MISSION_TERMINAL, 0);
 		suiTerminalType->setCallback(new InstallMissionTerminalSuiCallback(server->getZoneServer()));
 
-		suiTerminalType->setPromptTitle("@city/city:job_n");
+		suiTerminalType->setPromptTitle("@city/city:job_n"); // Install Mission Terminal
 		suiTerminalType->setPromptText("@city/city:job_d");
 
-		suiTerminalType->addMenuItem("@terminal_name:terminal_mission", 0);
-		suiTerminalType->addMenuItem("@terminal_name:terminal_mission_artisan", 1);
-		suiTerminalType->addMenuItem("@terminal_name:terminal_mission_bounty", 2);
-		suiTerminalType->addMenuItem("@terminal_name:terminal_mission_entertainer", 3);
-		suiTerminalType->addMenuItem("@terminal_name:terminal_mission_scout", 4);
+		suiTerminalType->addMenuItem("@city/city:mt_generic", 0);
+		suiTerminalType->addMenuItem("@city/city:mt_artisan", 1);
+		suiTerminalType->addMenuItem("@city/city:mt_bounty", 2);
+		suiTerminalType->addMenuItem("@city/city:mt_entertainer", 3);
+		suiTerminalType->addMenuItem("@city/city:mt_scout", 4);
+		suiTerminalType->addMenuItem("@city/city:mt_imperial", 5);
+		suiTerminalType->addMenuItem("@city/city:mt_rebel", 6);
 
-		if(creature->hasSkill("social_politician_martial_04")){
-			suiTerminalType->addMenuItem("@terminal_name:terminal_mission_imperial", 5);
-			suiTerminalType->addMenuItem("@terminal_name:terminal_mission_rebel", 6);
-		}
-		creature->getPlayerObject()->addSuiBox(suiTerminalType);
+		ghost->addSuiBox(suiTerminalType);
 		creature->sendMessage(suiTerminalType->generateMessage());
 
 		return SUCCESS;

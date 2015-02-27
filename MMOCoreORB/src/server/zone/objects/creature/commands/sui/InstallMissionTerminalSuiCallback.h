@@ -31,12 +31,14 @@ public:
 			return;
 
 		ManagedReference<CityRegion*> city = player->getCityRegion();
-
 		if (city == NULL)
 			return;
 
-		if (city->getMissionTerminalCount() >= (int) city->getCityRank() * 3){
-			player->sendSystemMessage("@city/city:no_more_mt");
+		if (!city->isMayor(player->getObjectID()))
+			return;
+
+		if (city->getMissionTerminalCount() >= (int) city->getCityRank() * 3) {
+			player->sendSystemMessage("@city/city:no_more_mt"); // Your city can't support any more mission terminals at its current rank!
 			return;
 		}
 
@@ -46,8 +48,18 @@ public:
 			return;
 
 		PlayerObject* ghost = player->getPlayerObject();
+		if (ghost == NULL)
+			return;
+
+		if (!ghost->hasAbility("installmissionterminal"))
+			return;
 
 		int option = Integer::valueOf(args->get(0).toString());
+
+		if ((option == 5 || option == 6) && !ghost->hasAbility("place_faction_terminal")) {
+			player->sendSystemMessage("@city/city:no_factional"); // You must have Martial Policy IV: Faction to place faction aligned mission terminals.
+			return;
+		}
 
 		String terminalTemplatePath = "";
 
@@ -75,7 +87,8 @@ public:
 		break;
 		}
 
-		if (terminalTemplatePath != ""){
+		if (terminalTemplatePath != "") {
+			Locker clocker(city, player);
 
 			if(city->getCityTreasury() < 1000){
 				StringIdChatParameter msg;
@@ -94,7 +107,6 @@ public:
 			city->subtractFromCityTreasury(1000);
 
 		}
-
 	}
 };
 
