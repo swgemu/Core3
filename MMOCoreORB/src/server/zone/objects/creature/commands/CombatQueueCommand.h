@@ -485,10 +485,6 @@ public:
 		if (attacker == NULL || defender == NULL)
 			return;
 
-		Zone* zone = attacker->getZone();
-		if (zone == NULL)
-			return;
-
 		String stringName = combatSpam;
 		byte color = 0;
 

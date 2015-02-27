@@ -187,7 +187,7 @@ public:
 			vec->safeCopyTo(closeObjects);
 		} else {
 			info("Null closeobjects vector in RallyCommand::sendRallyCombatSpam", true);
-			zone->getInRangeObjects(leader->getWorldPositionX(), leader->getWorldPositionY(), 128, &closeObjects, true);
+			zone->getInRangeObjects(leader->getWorldPositionX(), leader->getWorldPositionY(), 70, &closeObjects, true);
 		}
 
 		for (int i = 0; i < closeObjects.size(); ++i) {

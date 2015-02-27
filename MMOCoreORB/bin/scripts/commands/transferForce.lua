@@ -43,6 +43,14 @@
 
 TransferForceCommand = {
         name = "transferforce",
+	
+	animationCRC = hashCode("force_transfer_1"),
+
+	combatSpam = "forcetransfer_hit",
+	
+	damage = 200, --Force transferred
+	
+	range = 32
 }
 
 AddCommand(TransferForceCommand)
