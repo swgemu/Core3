@@ -34,7 +34,7 @@ public:
 			creature->updateKnockdownRecovery();
 			creature->updateLastKnockdown();
 			creature->sendSystemMessage("@cbt_spam:dizzy_fall_down_single");
-			creature->sendStateCombatSpam("dizzy_fall_down", 11);
+			creature->sendStateCombatSpam("cbt_spam", "dizzy_fall_down", 11);
 		}
 
 		creature->removePendingTask("dizzyFallDownEvent");

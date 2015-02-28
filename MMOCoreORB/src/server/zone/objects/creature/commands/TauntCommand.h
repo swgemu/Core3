@@ -98,7 +98,7 @@ public:
 		return res;
 	}
 
-	void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage) {
+	void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage, const CreatureAttackData& data) {
 		if (attacker == NULL)
 			return;
 
@@ -106,7 +106,7 @@ public:
 		if (zone == NULL)
 			return;
 
-		String stringName = combatSpam;
+		String stringName = data.getCombatSpam();
 		byte color = 1;
 
 		switch (attackResult) {

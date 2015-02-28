@@ -75,7 +75,7 @@ public:
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 		if (targetObject != NULL && targetObject->isTangibleObject() && creature != targetObject) {
 			TangibleObject* defender = cast<TangibleObject*>( targetObject.get());
-			sendAttackCombatSpam(creature, defender, -1, 0);
+			CombatManager::instance()->broadcastCombatSpam(creature, defender, NULL, 0, "cbt_spam", combatSpam, 0);
 		}
 
 		return SUCCESS;

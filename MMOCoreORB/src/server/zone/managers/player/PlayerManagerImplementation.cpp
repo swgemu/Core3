@@ -4633,9 +4633,13 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 		buff->setStartMessage(modifiedStartStringId);
 	buff->setEndMessage(endStringId);
 
-	player->addBuff(buff);
+	StringIdChatParameter startSpam("cbt_spam", "burstrun_start");
+	StringIdChatParameter endSpam("cbt_spam", "burstrun_stop");
+	buff->setStartSpam(startSpam);
+	buff->setEndSpam(endSpam);
+	buff->setBroadcastSpam(true);
 
-	player->sendStateCombatSpam("burstrun_start", 0);
+	player->addBuff(buff);
 
 	player->updateCooldownTimer("burstrun", (newCooldown + duration) * 1000);
 

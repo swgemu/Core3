@@ -98,7 +98,7 @@ object_weapon_ranged_grenade_grenade_cryoban = object_weapon_ranged_grenade_shar
 
 	useCount = 5,
 
-	combatSpam = "grenade_cryoban",
+	combatSpam = "throw_cryoban",
 
 	healthAttackCost = 40,
 	actionAttackCost = 100,

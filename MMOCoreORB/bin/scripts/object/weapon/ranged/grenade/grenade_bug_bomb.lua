@@ -97,7 +97,7 @@ object_weapon_ranged_grenade_grenade_bug_bomb = object_weapon_ranged_grenade_sha
 
 	useCount = 5,
 
-	combatSpam = "perform_throwgrenadebug",
+	combatSpam = "throw_bug_bomb",
 
 	healthAttackCost = 97,
 	actionAttackCost = 97,

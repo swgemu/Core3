@@ -233,7 +233,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 		broadcastCombatAction(attacker, tano, weapon, data, 0x01);
 
-		data.getCommand()->sendAttackCombatSpam(attacker, tano, HIT, damage);
+		data.getCommand()->sendAttackCombatSpam(attacker, tano, HIT, damage, data);
 	}
 
 	tano->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
@@ -269,7 +269,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	hitVal = getHitChance(attacker, defender, weapon, damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
 
 	//Send Attack Combat Spam
-	data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage);
+	data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 
 	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 
@@ -370,7 +370,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	int hitVal = getHitChance(attacker, defenderObject, weapon, damage, data.getAccuracyBonus());
 
 	//Send Attack Combat Spam
-	data.getCommand()->sendAttackCombatSpam(attacker, defenderObject, hitVal, damage);
+	data.getCommand()->sendAttackCombatSpam(attacker, defenderObject, hitVal, damage, data);
 
 	CombatAction* combatAction = NULL;
 

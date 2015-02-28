@@ -424,12 +424,12 @@ public:
 			if (creature->getPosture() == CreaturePosture::PRONE) {
 				creature->setPosture(CreaturePosture::CROUCHED);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_1");
-				creature->sendStateCombatSpam("force_posture_change_1", 0, false);
+				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, false);
 				creature->updatePostureUpRecovery();
 			} else if (creature->getPosture() == CreaturePosture::CROUCHED) {
 				creature->setPosture(CreaturePosture::UPRIGHT);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_0");
-				creature->sendStateCombatSpam("force_posture_change_0", 0, false);
+				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_0", 0, false);
 				creature->updatePostureUpRecovery();
 			}
 
@@ -443,12 +443,12 @@ public:
 			if (creature->getPosture() == CreaturePosture::UPRIGHT) {
 				creature->setPosture(CreaturePosture::CROUCHED);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_1");
-				creature->sendStateCombatSpam("force_posture_change_1", 0, false);
+				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, false);
 				creature->updatePostureDownRecovery();
 			} else if (creature->getPosture() == CreaturePosture::CROUCHED) {
 				creature->setPosture(CreaturePosture::PRONE);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_2");
-				creature->sendStateCombatSpam("force_posture_change_2", 0, false);
+				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_2", 0, false);
 				creature->updatePostureDownRecovery();
 			}
 
@@ -481,11 +481,11 @@ public:
 	}
 
 	//Override for special cases (skills like Taunt that don't have 5 result strings)
-	virtual void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage) {
+	virtual void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage, const CreatureAttackData& data) {
 		if (attacker == NULL || defender == NULL)
 			return;
 
-		String stringName = combatSpam;
+		String stringName = data.getCombatSpam();
 		byte color = 0;
 
 		switch (attackResult) {

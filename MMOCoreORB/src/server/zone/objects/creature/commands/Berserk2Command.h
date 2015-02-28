@@ -69,7 +69,7 @@ public:
 			if (creature->isPlayerCreature())
 				(cast<CreatureObject*>(creature))->sendSystemMessage("@cbt_spam:berserk_fail_single");
 
-			creature->sendStateCombatSpam("berserk_fail", 0);
+			creature->sendStateCombatSpam("cbt_spam", "berserk_fail", 0);
 			return INVALIDWEAPON;
 		}
 
@@ -77,7 +77,7 @@ public:
 			if (creature->isPlayerCreature())
 				(cast<CreatureObject*>(creature))->sendSystemMessage("@cbt_spam:berserk_fail_single");
 
-			creature->sendStateCombatSpam("berserk_fail", 0);
+			creature->sendStateCombatSpam("cbt_spam", "berserk_fail", 0);
 			return GENERALERROR;
 		}
 
@@ -87,7 +87,7 @@ public:
 			if (creature->isPlayerCreature())
 				(cast<CreatureObject*>(creature))->sendSystemMessage("@cbt_spam:berserk_fail_single");
 
-			creature->sendStateCombatSpam("berserk_fail", 0);
+			creature->sendStateCombatSpam("cbt_spam", "berserk_fail", 0);
 			return GENERALERROR;
 		}
 
@@ -100,7 +100,7 @@ public:
 			(cast<CreatureObject*>(creature))->sendSystemMessage("@cbt_spam:berserk_success_single");
 
 
-		creature->sendStateCombatSpam("berserk_success", 0);
+		creature->sendStateCombatSpam("cbt_spam", "berserk_success", 0);
 		return SUCCESS;
 	}
 

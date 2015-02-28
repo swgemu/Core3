@@ -98,7 +98,7 @@ object_weapon_ranged_grenade_grenade_fragmentation_light = object_weapon_ranged_
 
 	useCount = 5,
 
-	combatSpam = "grenade_frag",
+	combatSpam = "throw_fragmentation",
 
 	healthAttackCost = 50,
 	actionAttackCost = 50,

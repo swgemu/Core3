@@ -81,6 +81,14 @@ class Buff extends ManagedObject implements Logger {
 	protected StringIdChatParameter startMessage;
 	@dereferenced
 	protected StringIdChatParameter endMessage;
+
+	@dereferenced
+	protected StringIdChatParameter startSpam;
+	@dereferenced
+	protected StringIdChatParameter endSpam;
+
+	protected byte spamColor;
+	protected boolean broadcastSpam;
 	
 	protected string startFlyFile;
 	protected string startFlyAux;
@@ -106,6 +114,9 @@ class Buff extends ManagedObject implements Logger {
 		
 		startFlyFile = "";
 		endFlyFile = "";
+
+		spamColor = 0; //default, use buff->setSpamColor() to change. 0=white, 10=red, 11=yellow
+		broadcastSpam = false; //default, use buff->setBroadcastSpam() to change.
 
 		Logger.setLoggingName("Buff");
 		
@@ -260,6 +271,15 @@ class Buff extends ManagedObject implements Logger {
 	public native void setStartMessage(@dereferenced StringIdChatParameter start);
 	@local
 	public native void setEndMessage(@dereferenced StringIdChatParameter end);
+
+	@local
+	public native void setStartSpam(@dereferenced StringIdChatParameter start);
+	@local
+	public native void setEndSpam(@dereferenced StringIdChatParameter end);
+
+	public native void setSpamColor(byte color);
+
+	public native void setBroadcastSpam(boolean value);
 	
 	public native void setStartFlyText(final string file, final string aux, byte red, byte green, byte blue);
 	

@@ -144,6 +144,10 @@ void BuffImplementation::activate(bool applyModifiers) {
 		if (!startFlyFile.isEmpty())
 			creature.get()->showFlyText(startFlyFile, startFlyAux, startFlyRed, startFlyGreen, startFlyBlue);
 
+		if (!startSpam.isEmpty()) {
+			creature.get()->sendStateCombatSpam(startSpam.getFile(), startSpam.getStringID(), spamColor, broadcastSpam);
+		}
+
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
@@ -171,6 +175,10 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 
 		if (!endFlyFile.isEmpty())
 			creature.get()->showFlyText(endFlyFile, endFlyAux, endFlyRed, endFlyGreen, endFlyBlue);
+
+		if (!endSpam.isEmpty()) {
+			creature.get()->sendStateCombatSpam(endSpam.getFile(), endSpam.getStringID(), spamColor, broadcastSpam);
+		}
 
 		clearBuffEvent();
 
@@ -421,6 +429,22 @@ void BuffImplementation::setStartMessage(StringIdChatParameter& start) {
 
 void BuffImplementation::setEndMessage(StringIdChatParameter& end) {
 	endMessage = end;
+}
+
+void BuffImplementation::setStartSpam(StringIdChatParameter& start) {
+	startSpam = start;
+}
+
+void BuffImplementation::setEndSpam(StringIdChatParameter& end) {
+	endSpam = end;
+}
+
+void BuffImplementation::setSpamColor(uint8 color) {
+	spamColor = color;
+}
+
+void BuffImplementation::setBroadcastSpam(bool value) {
+	broadcastSpam = value;
 }
 
 void BuffImplementation::setStartFlyText(const String& file, const String& aux, uint8 red, uint8 green, uint8 blue) {

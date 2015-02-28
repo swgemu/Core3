@@ -613,7 +613,7 @@ void CreatureObjectImplementation::addShockWounds(int shockToAdd,
 	}
 
 	if (shockToAdd > 0 && _this.get()->isPlayerCreature())
-		sendStateCombatSpam("shock_wound", 1, shockToAdd, false);
+		sendStateCombatSpam("cbt_spam", "shock_wound", 1, shockToAdd, false);
 
 	setShockWounds(newShockWounds, notifyClient);
 }
@@ -806,17 +806,17 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 			case CreatureState::STUNNED:
 				playEffect("clienteffect/combat_special_defender_stun.cef");
 				sendSystemMessage("@cbt_spam:go_stunned_single");
-				sendStateCombatSpam("go_stunned", 0);
+				sendStateCombatSpam("cbt_spam", "go_stunned", 0);
 				break;
 			case CreatureState::BLINDED:
 				playEffect("clienteffect/combat_special_defender_blind.cef");
 				sendSystemMessage("@cbt_spam:go_blind_single");
-				sendStateCombatSpam("go_blind", 0);
+				sendStateCombatSpam("cbt_spam", "go_blind", 0);
 				break;
 			case CreatureState::DIZZY: {
 				playEffect("clienteffect/combat_special_defender_dizzy.cef");
 				sendSystemMessage("@cbt_spam:go_dizzy_single");
-				sendStateCombatSpam("go_dizzy", 0);
+				sendStateCombatSpam("cbt_spam", "go_dizzy", 0);
 				break;
 			}
 			case CreatureState::POISONED:
@@ -848,11 +848,11 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 			case CreatureState::COVER:
 				playEffect("clienteffect/combat_special_attacker_cover.cef");
 				sendSystemMessage("@cbt_spam:cover_success_single");
-				sendStateCombatSpam("cover_success", 0);
+				sendStateCombatSpam("cbt_spam", "cover_success", 0);
 				break;
 			case CreatureState::PEACE:
 				sendSystemMessage("@cbt_spam:peace_single");
-				sendStateCombatSpam("peace", 0);
+				sendStateCombatSpam("cbt_spam", "peace", 0);
 				break;
 
 			default:
@@ -883,15 +883,15 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 		switch (state) {
 		case CreatureState::STUNNED:
 			sendSystemMessage("@cbt_spam:no_stunned_single");
-			sendStateCombatSpam("no_stunned", 0);
+			sendStateCombatSpam("cbt_spam", "no_stunned", 0);
 			break;
 		case CreatureState::BLINDED:
 			sendSystemMessage("@cbt_spam:no_blind_single");
-			sendStateCombatSpam("no_blind", 0);
+			sendStateCombatSpam("cbt_spam", "no_blind", 0);
 			break;
 		case CreatureState::DIZZY:
 			sendSystemMessage("@cbt_spam:no_dizzy_single");
-			sendStateCombatSpam("no_dizzy", 0);
+			sendStateCombatSpam("cbt_spam", "no_dizzy", 0);
 			break;
 		case CreatureState::POISONED:
 			sendSystemMessage("@dot_message:stop_poisoned");
@@ -1156,7 +1156,7 @@ int CreatureObjectImplementation::addWounds(int type, int value,
 		returnValue = value - newValue;
 
 	if (value > 0 && _this.get()->isPlayerCreature())
-		sendStateCombatSpam("wounded", 1, value, false);
+		sendStateCombatSpam("cbt_spam", "wounded", 1, value, false);
 
 	setWounds(type, newValue, notifyClient);
 
@@ -1440,13 +1440,13 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 		switch (posture) {
 		case CreaturePosture::UPRIGHT:
-			sendStateCombatSpam("stand", 11);
+			sendStateCombatSpam("cbt_spam", "stand", 11);
 			break;
 		case CreaturePosture::PRONE:
-			sendStateCombatSpam("prone", 11);
+			sendStateCombatSpam("cbt_spam", "prone", 11);
 			break;
 		case CreaturePosture::CROUCHED:
-			sendStateCombatSpam("kneel", 11);
+			sendStateCombatSpam("cbt_spam", "kneel", 11);
 			break;
 		}
 	}
@@ -2532,7 +2532,7 @@ void CreatureObjectImplementation::sendMessage(BasePacket* msg) {
 	}
 }
 
-void CreatureObjectImplementation::sendStateCombatSpam(const String& stringName, byte color, int damage, bool broadcast) {
+void CreatureObjectImplementation::sendStateCombatSpam(const String& fileName, const String& stringName, byte color, int damage, bool broadcast) {
 	Zone* zone = getZone();
 	if (zone == NULL)
 		return;
@@ -2543,13 +2543,13 @@ void CreatureObjectImplementation::sendStateCombatSpam(const String& stringName,
 	ManagedReference<CreatureObject*> creature = _this.get();
 
 	if (broadcast) { //Send spam to all nearby players.
-		CombatManager::instance()->broadcastCombatSpam(creature, NULL, NULL, 0, "cbt_spam", stringName, color);
+		CombatManager::instance()->broadcastCombatSpam(creature, NULL, NULL, 0, fileName, stringName, color);
 
 	} else { //Send spam only to originating player.
 		if (!creature->isPlayerCreature())
 			return;
 
-		CombatSpam* spam = new CombatSpam(creature, NULL, creature, NULL, damage, "cbt_spam", stringName, color);
+		CombatSpam* spam = new CombatSpam(creature, NULL, creature, NULL, damage, fileName, stringName, color);
 		creature->sendMessage(spam);
 	}
 }

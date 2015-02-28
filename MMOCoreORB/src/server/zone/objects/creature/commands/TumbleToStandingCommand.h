@@ -95,7 +95,7 @@ public:
 		pmsg->updatePosture();
 		pmsg->close();
 		creature->broadcastMessage(pmsg, true);
-		creature->sendStateCombatSpam("tum_standing", 0);
+		creature->sendStateCombatSpam("cbt_spam", "tum_standing", 0);
 
 		return SUCCESS;
 	}

@@ -1032,7 +1032,7 @@ class CreatureObject extends TangibleObject {
 	 * @param broadcast Specifies whether to send the packet to all nearby players or just this player.
 	 */
 	@dirty
-	public native void sendStateCombatSpam(final string stringName, byte color, int damage = 0, boolean broadcast = true);
+	public native void sendStateCombatSpam(final string fileName, final string stringName, byte color, int damage = 0, boolean broadcast = true);
 
 	/**
 	 * Sends custom CombatSpam strings to players
