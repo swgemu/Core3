@@ -19,20 +19,20 @@ void TrainerMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Obje
 	ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
 
 	if (city != NULL && city->isMayor(player->getObjectID()))
-		menuResponse->addRadialMenuItem(72, 3, "@city/city:mt_remove"); //Remove
+		menuResponse->addRadialMenuItem(72, 3, "@city/city:mt_remove"); // Remove
 }
 
 int TrainerMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
 	if (selectedID == 72) {
 		ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
 
-		if (city != NULL && city->isMayor(player->getObjectID()))
-		{
+		if (city != NULL && city->isMayor(player->getObjectID())) {
 			city->removeSkillTrainers(sceneObject);
 
-			//TODO: Move this to CityRegion::removeSkillTrainer()
-			sceneObject->destroyObjectFromWorld(false);
-			sceneObject->destroyObjectFromDatabase(false);
+			player->sendSystemMessage("@city/city:mt_removed"); // The object has been removed from the city.
+
+			sceneObject->destroyObjectFromWorld(true);
+			sceneObject->destroyObjectFromDatabase(true);
 		}
 
 		return 0;

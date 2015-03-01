@@ -66,7 +66,7 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = zserv->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isCreatureObject()) {
+		if (targetObject == NULL || !targetObject->isPlayerCreature()) {
 			try {
 				String targetFirstName;
 				UnicodeTokenizer tokenizer(arguments);
@@ -78,7 +78,7 @@ public:
 			}
 		}
 
-		if (targetObject == NULL || !targetObject->isCreatureObject())
+		if (targetObject == NULL || !targetObject->isPlayerCreature())
 			return INVALIDTARGET;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());

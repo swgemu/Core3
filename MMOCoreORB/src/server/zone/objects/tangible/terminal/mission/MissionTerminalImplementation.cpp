@@ -19,9 +19,9 @@ void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 
 	ManagedReference<CityRegion*> city = player->getCityRegion();
 
-	if(city != NULL && city->isMayor(player->getObjectID())){
+	if(city != NULL && city->isMayor(player->getObjectID())) {
 
-		menuResponse->addRadialMenuItem(72, 3, "Remove");
+		menuResponse->addRadialMenuItem(72, 3, "@city/city:mt_remove"); // Remove
 
 	}
 }
@@ -51,12 +51,13 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 		ManagedReference<CityRegion*> city = player->getCityRegion();
 
-		if (city != NULL && city->isMayor(player->getObjectID()))
-		{
+		if (city != NULL && city->isMayor(player->getObjectID())) {
 			city->removeMissionTerminal(_this.get());
 
+			player->sendSystemMessage("@city/city:mt_removed"); // The object has been removed from the city.
+
 			destroyObjectFromWorld(true);
-			destroyObjectFromDatabase(false);
+			destroyObjectFromDatabase(true);
 
 			return 0;
 		}

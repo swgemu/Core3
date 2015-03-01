@@ -31,8 +31,10 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	menuResponse->addRadialMenuItemToRadialID(211, 214, 3, "@city/city:city_structures"); //Structure Report
 	menuResponse->addRadialMenuItemToRadialID(211, 223, 3, "@city/city:city_rank"); //City Advancement
 	menuResponse->addRadialMenuItemToRadialID(211, 224, 3, "@city/city:city_maint"); //Maintenance Report
-	menuResponse->addRadialMenuItemToRadialID(211, 215, 3, "@city/city:treasury_status"); //Treasury Report
-	menuResponse->addRadialMenuItemToRadialID(211, 220, 3, "@city/city:treasury_deposit"); //Treasury Deposit
+
+	menuResponse->addRadialMenuItem(210, 3, "@city/city:treasury_management"); // City Treasury
+	menuResponse->addRadialMenuItemToRadialID(210, 215, 3, "@city/city:treasury_status"); //Treasury Report
+	menuResponse->addRadialMenuItemToRadialID(210, 220, 3, "@city/city:treasury_deposit"); //Treasury Deposit
 
 #ifdef CITY_DEBUG
 	if(player->getPlayerObject()->isPrivileged()){
@@ -41,12 +43,13 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 		menuResponse->addRadialMenuItemToRadialID(227,229,3,"@city/city:rank_down"); // Force Rank Down
 		menuResponse->addRadialMenuItemToRadialID(227,230,3,"UPDATE CITY");
 		menuResponse->addRadialMenuItemToRadialID(227,231,3,"COUNT VOTES");
-
 	}
 #endif
 
 	if (!city->isMayor(player->getObjectID()))
 		return;
+
+	menuResponse->addRadialMenuItemToRadialID(210, 221, 3, "@city/city:treasury_withdraw"); //Treasury Withdraw
 
 	menuResponse->addRadialMenuItem(216, 3, "@city/city:city_management"); //City Management
 	menuResponse->addRadialMenuItemToRadialID(216, 217, 3, "@city/city:city_name"); //Change City Name
@@ -67,8 +70,6 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 
 	menuResponse->addRadialMenuItemToRadialID(216, 219, 3, "@city/city:treasury_taxes"); //Adjust Taxes
 
-	menuResponse->addRadialMenuItemToRadialID(216, 221, 3, "@city/city:treasury_withdraw"); //Treasury Withdraw
-
 	menuResponse->addRadialMenuItemToRadialID(216, 225, 3, "@city/city:city_specializations"); //City Specialization
 
 	menuResponse->addRadialMenuItemToRadialID(216, 232, 3, "@city/city:fix_mayor"); // Restore Mayor Citizenship
@@ -85,6 +86,7 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	CityManager* cityManager = player->getZoneServer()->getCityManager();
 
 	switch (selectID) {
+	case 211: // City Information
 	case 212: //Status Report
 		cityManager->sendStatusReport(city, player, sceneObject);
 		break;
@@ -94,6 +96,7 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	case 214: // Structure Report
 		cityManager->sendStructureReport(city, player, sceneObject);
 		break;
+	case 210: // City Treasury
 	case 215: //Treasury Report
 		cityManager->sendTreasuryReport(city, player, sceneObject);
 		break;
@@ -132,7 +135,7 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 			cityManager->promptCitySpecialization(city, player, sceneObject);
 		break;
 	case 226: //Toggle Zoning Enabled
-		cityManager->toggleZoningEnabled(city, player);
+		cityManager->promptToggleZoningEnabled(city, player);
 		break;
 	case 232: // Restore Mayor Citizenship
 		cityManager->fixMayor(city, player);

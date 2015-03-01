@@ -239,6 +239,10 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public void addCitizen(unsigned long citizenID) {
 		citizenList.put(citizenID);
+
+		if (isBanned(citizenID)) {
+			removeBannedPlayer(citizenID);
+		}
 	}
 
 	public void removeCitizen(unsigned long citizenID) {
@@ -474,6 +478,13 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public void setCityRank(byte rank) {
 		cityRank = rank;
+
+		// reset taxes if rank drops below 2
+		if (rank < RANK_VILLAGE) {
+			for (int i = 0; i < taxes.size(); i++) {
+				setTax(i, 0);
+			}
+		}
 	}
 
 	public void setMayorID(unsigned long id) {

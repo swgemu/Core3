@@ -21,12 +21,12 @@ void CityDecorationMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	ManagedReference<CityRegion*> city = player->getCityRegion();
 
 
-	if(isInInventory(sceneObject, player) && player->getParent() == NULL){
+	if(isInInventory(sceneObject, player) && player->getParent() == NULL) {
 		menuResponse->addRadialMenuItem(233, 3, "@city/city:place"); // Place Decoration
 	}
 
-	if(city != NULL && sceneObject->getParent() == NULL && sceneObject->getCityRegion() == city && city->isMayor(player->getObjectID()) ){
-		menuResponse->addRadialMenuItem(234, 3, "Remove");
+	if(city != NULL && sceneObject->getParent() == NULL && sceneObject->getCityRegion() == city && city->isMayor(player->getObjectID()) ) {
+		menuResponse->addRadialMenuItem(234, 3, "@city/city:mt_remove"); // Remove
 	}
 
 }

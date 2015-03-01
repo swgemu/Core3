@@ -191,7 +191,7 @@ public:
 
 		if (departCity != NULL){
 			if (departCity->isBanned(creature->getObjectID())) {
-				creature->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures
+				creature->sendSystemMessage("@city/city:city_cant_board"); // You are banned from using the services of this city.\nYou may not board the transport.
 				return GENERALERROR;
 			}
 		}

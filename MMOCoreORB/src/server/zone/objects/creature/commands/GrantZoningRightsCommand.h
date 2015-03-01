@@ -64,9 +64,15 @@ public:
 
 		ManagedReference<CityRegion*> city = creature->getCityRegion();
 
-		if (city == NULL || !city->isMilitiaMember(creature->getObjectID())) {
-			creature->sendSystemMessage("@city/city:grant_rights_fail"); //You must be the mayor of the city or a member of the city militia to grant zoning rights.
+		if (city == NULL) {
+			creature->sendSystemMessage("@city/city:not_in_city"); //You must be in a city to use this command.
 			return GENERALERROR;
+		}
+
+		Locker clocker(city, creature);
+
+		if (!city->isMilitiaMember(creature->getObjectID())) {
+			creature->sendSystemMessage("@city/city:grant_rights_fail"); //You must be the mayor of the city or a member of the city militia to grant zoning rights.
 		}
 
 		ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);

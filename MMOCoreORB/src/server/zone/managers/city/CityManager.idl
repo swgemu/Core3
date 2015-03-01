@@ -228,16 +228,16 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native boolean validateCityInRange(CreatureObject creature, Zone zone, float x, float y);
 
+	public native void promptToggleZoningEnabled(CityRegion city, CreatureObject mayor);
+
 	public void toggleZoningEnabled(CityRegion city, CreatureObject mayor) {
-		if (city.isMayor(mayor.getObjectID())) {
-			boolean val = city.isZoningEnabled();
-			city.setZoningEnabled(!val);
-			
-			if (!val) {
-				mayor.sendSystemMessage("@city/city:zoning_enabled"); //Your city now has zoning enabled.
-			} else {
-				mayor.sendSystemMessage("@city/city:zoning_disabled"); //Your city now has zoning disabled.
-			}
+		boolean val = city.isZoningEnabled();
+		city.setZoningEnabled(!val);
+
+		if (!val) {
+			mayor.sendSystemMessage("@city/city:zoning_enabled"); //Your city now has zoning enabled.
+		} else {
+			mayor.sendSystemMessage("@city/city:zoning_disabled"); //Your city now has zoning disabled.
 		}
 	}
 	
@@ -245,7 +245,7 @@ class CityManager extends ManagedService implements Logger {
 		return cities.size();
 	}
 
-	public boolean renameCity(CityRegion city, final string newName){
+	public boolean renameCity(CityRegion city, final string newName) {
 		if(cities.contains(city.getRegionName())){
 			cities.drop(city.getRegionName());
 			cities.put(newName, city);
