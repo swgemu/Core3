@@ -273,6 +273,7 @@ class CityManager extends ManagedService implements Logger {
 	 * @post city locked, creature locked
 	 */
 	public native void registerForMayoralRace(CityRegion city, CreatureObject creature);
+	public native void unregisterFromMayoralRace(CityRegion city, CreatureObject creature, boolean force);
 	
 	public native void castMayoralVote(CityRegion city, CreatureObject creature, unsigned long oid);
 
@@ -291,4 +292,6 @@ class CityManager extends ManagedService implements Logger {
 	public native void sendChangeCityName(CityRegion city, CreatureObject mayor);
 
 	public native void sendAddStructureMails(CityRegion city, StructureObject structure);
+
+	public native void promptForceRank(CityRegion city, CreatureObject player, boolean rankUp);
 }

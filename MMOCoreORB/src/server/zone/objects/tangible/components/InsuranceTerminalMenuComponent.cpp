@@ -14,6 +14,7 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/player/sui/callbacks/InsuranceMenuSuiCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 void InsuranceTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
@@ -26,6 +27,15 @@ int InsuranceTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 
 	if (!player->isPlayerCreature())
 		return 0;
+
+	ManagedReference<CityRegion* > region = sceneObject->getCityRegion().get();
+
+	if (region != NULL) {
+		if (region->isBanned(player->getObjectID())) {
+				player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
+				return 0;
+		}
+	}
 
 	if(selectedID == 20) {
 
