@@ -30,6 +30,7 @@
 #include "server/zone/objects/player/sui/callbacks/CityMayoralVoteSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/CityAdjustTaxSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/CitySetTaxSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/CityToggleZoningSuiCallback.h"
 #include "server/zone/objects/region/CitizenList.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "TaxPayMailTask.h"
@@ -1626,8 +1627,7 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
 }
 
-void CityManagerImplementation::promptAdjustTaxes(CityRegion* city,
-		CreatureObject* mayor, SceneObject* terminal) {
+void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
 	ManagedReference<PlayerObject*> ghost = mayor->getPlayerObject();
 
 	if (ghost == NULL)
@@ -1638,8 +1638,12 @@ void CityManagerImplementation::promptAdjustTaxes(CityRegion* city,
 		return;
 	}
 
-	ManagedReference<SuiListBox*> listbox = new SuiListBox(mayor,
-			SuiWindowType::CITY_ADJUST_TAX);
+	if (city->getCityRank() < CityRegion::RANK_VILLAGE) {
+		mayor->sendSystemMessage("@city/city:no_rank_taxes"); // Your city must be at least rank 2 to levy taxes.
+		return;
+	}
+
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(mayor, SuiWindowType::CITY_ADJUST_TAX);
 	listbox->setPromptTitle("@city/city:adjust_taxes_t"); //Adjust Taxes
 	listbox->setPromptText("@city/city:adjust_taxes_d"); //Select the tax you wish to adjust from the list below.
 	listbox->setUsingObject(terminal);
@@ -1655,8 +1659,7 @@ void CityManagerImplementation::promptAdjustTaxes(CityRegion* city,
 	mayor->sendMessage(listbox->generateMessage());
 }
 
-void CityManagerImplementation::promptSetTax(CityRegion* city,
-		CreatureObject* mayor, int selectedTax, SceneObject* terminal) {
+void CityManagerImplementation::promptSetTax(CityRegion* city, CreatureObject* mayor, int selectedTax, SceneObject* terminal) {
 	CityTax* cityTax = getCityTax(selectedTax);
 
 	if (cityTax == NULL)
@@ -1672,12 +1675,20 @@ void CityManagerImplementation::promptSetTax(CityRegion* city,
 		return;
 	}
 
-	ManagedReference<SuiInputBox*> inputbox = new SuiInputBox(mayor,
-			SuiWindowType::CITY_TAX_PROMPT);
+	if (city->getCityRank() < CityRegion::RANK_VILLAGE) {
+		mayor->sendSystemMessage("@city/city:no_rank_taxes"); // Your city must be at least rank 2 to levy taxes.
+		return;
+	}
+
+	if (cityTax->getMenuText() == "@city/city:travel_tax" && !city->hasShuttleInstallation()) {
+		mayor->sendSystemMessage("@city/city:no_shuttleport"); // You can't place a travel fee. There is no shuttleport in this city.
+		return;
+	}
+
+	ManagedReference<SuiInputBox*> inputbox = new SuiInputBox(mayor, SuiWindowType::CITY_TAX_PROMPT);
 	inputbox->setUsingObject(terminal);
 	inputbox->setForceCloseDistance(16.f);
-	inputbox->setCallback(
-			new CitySetTaxSuiCallback(zoneServer, city, selectedTax));
+	inputbox->setCallback(new CitySetTaxSuiCallback(zoneServer, city, selectedTax));
 	inputbox->setPromptTitle(cityTax->getInputTitle());
 	inputbox->setPromptText(cityTax->getInputText());
 
@@ -1685,8 +1696,7 @@ void CityManagerImplementation::promptSetTax(CityRegion* city,
 	mayor->sendMessage(inputbox->generateMessage());
 }
 
-void CityManagerImplementation::setTax(CityRegion* city, CreatureObject* mayor,
-		int selectedTax, int value) {
+void CityManagerImplementation::setTax(CityRegion* city, CreatureObject* mayor, int selectedTax, int value) {
 	CityTax* cityTax = getCityTax(selectedTax);
 
 	if (cityTax == NULL)
@@ -1713,8 +1723,7 @@ void CityManagerImplementation::setTax(CityRegion* city, CreatureObject* mayor,
 	params.setStringId(cityTax->getEmailBody());
 	params.setTO(city->getRegionName());
 
-	sendMail(city, "@city/city:new_city_from", cityTax->getEmailSubject(),
-			params, NULL);
+	sendMail(city, "@city/city:new_city_from", cityTax->getEmailSubject(), params, NULL);
 }
 
 void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
@@ -2248,4 +2257,32 @@ void CityManagerImplementation::sendAddStructureMails(CityRegion* city, Structur
 				"@city/city:new_city_structure_other_subject", params2, // Structure Added to City
 				owner->getFirstName(), NULL);
 	}
+}
+
+void CityManagerImplementation::promptToggleZoningEnabled(CityRegion* city, CreatureObject* mayor) {
+	if (!city->isMayor(mayor->getObjectID())) {
+		return;
+	}
+
+	if (!mayor->hasSkill("social_politician_novice")) {
+		mayor->sendSystemMessage("@city/city:zoning_skill"); // You must be a Politician to enable city zoning.
+		return;
+	}
+
+	bool val = city->isZoningEnabled();
+
+	if (val) {
+		toggleZoningEnabled(city, mayor);
+		return;
+	}
+
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(mayor, SuiWindowType::CITY_ENABLE_ZONING);
+	box->setPromptTitle("@city/city:zoning_t"); // Zoning
+	box->setPromptText("@city/city:zoning_d"); // If you enable zoning laws in your city, other players will not be able to build structures in your city without permission. You and your militia can grant permission with the /grantZoningRights command. This command gives the target the right to build structures in your city for 24 hours.
+	box->setCallback(new CityToggleZoningSuiCallback(zoneServer, city) );
+
+	ghost->addSuiBox(box);
+	mayor->sendMessage(box->generateMessage());
 }

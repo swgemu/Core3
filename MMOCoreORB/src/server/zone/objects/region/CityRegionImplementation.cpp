@@ -373,6 +373,8 @@ void CityRegionImplementation::cleanupCitizens() {
 
 		if (!ownerIds.contains(id))
 			removeIds.put(id);
+		else if (isBanned(id))
+			removeBannedPlayer(id);
 	}
 
 	for (int i = 0; i < removeIds.size(); ++i) {
@@ -498,7 +500,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank, bool send
 		if (mayor != NULL && sendMail) {
 			StringIdChatParameter params("city/city", "structure_destroyed_body");
 			params.setTO(mayor->getFirstName());
-			params.setTT(structure);
+			params.setTT(structure->getObjectName());
 			UnicodeString subject = "@city/city:structure_destroyed_subject"; // Structure Removed!
 
 			chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
@@ -826,7 +828,7 @@ void CityRegionImplementation::sendDestroyOutsideObjectMail(SceneObject* obj) {
 	if (mayor != NULL && obj != NULL) {
 		StringIdChatParameter params("city/city", "structure_destroyed_radius_body");
 		params.setTO(mayor->getFirstName());
-		params.setTT(obj);
+		params.setTT(obj->getObjectName());
 		UnicodeString subject = "@city/city:structure_destroyed_subject"; // Structure Removed!
 
 		chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);

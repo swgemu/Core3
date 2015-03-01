@@ -166,9 +166,9 @@ CityTaxes = {
 	{--Garage Tax
 		min = 0, max = 30,
 		menuText = "@city/city:garage_tax",
-		inputTitle = "@city/city:set_tax_t_garage",
+		inputTitle = "Adjust Garage Service Fee", -- missing from stf
 		inputText = "@city/city:set_tax_d_garage",
-		statusPrompt = "Garage Cost: ",
+		statusPrompt = "Garage Cost: ", -- missing from stf
 		systemMessage = "@city/city:set_garage_tax",
 		emailSubject = "@city/city:garage_fee_subject",
 		emailBody = "@city/city:garage_fee_body"

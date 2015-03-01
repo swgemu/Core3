@@ -83,6 +83,11 @@ public:
 			return GENERALERROR;
 		}
 
+		if ((structure->isGCWBase()) || structure->isTurret() || structure->isMinefield()) {
+			creature->sendSystemMessage("@player_structure:faction_base"); // You cannot transfer your factional base access and allotment responsibility to anyone else.
+			return INVALIDTARGET;
+		}
+
 		if (structure->isBuildingObject() && creature->getRootParent() != structure) {
 			creature->sendSystemMessage("@player_structure:not_in_building"); //You must be inside your building to transfer it.
 			return GENERALERROR;
@@ -105,7 +110,7 @@ public:
 						continue;
 
 					if(obj->isNoTrade() || obj->containsNoTradeObjectRecursive()) {
-						StringIdChatParameter param("@player_structure:building_has_notrade");
+						StringIdChatParameter param("@player_structure:building_has_notrade"); // The object %TT may not be traded and must be put in your inventory or destroyed before the building can be transferred.
 						param.setTT(obj->getDisplayedName());
 						creature->sendSystemMessage(param);
 						return GENERALERROR;
@@ -196,8 +201,6 @@ public:
 
 		//TODO:
 		//@player_structure:trail_no_transfer Trial accounts may not be involved in a property ownership transfer.
-		//@player_structure:building_has_no_trade The object %TT may not be traded and must be put in your inventory or destroyed before the building can be transferred.
-		//@player_structure:faction_base You cannot transfer your factional base access and allotment responsibility to anyone else.
 		ManagedReference<CityRegion*> region = structure->getCityRegion();
 
 		if (region != NULL) {

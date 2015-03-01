@@ -44,19 +44,19 @@ public:
 		}
 	}
 
-	void placeDecoration(){
+	void placeDecoration() {
 		Locker _lock(mayor);
 
 		ManagedReference<CityRegion*> city = mayor->getCityRegion();
 
-		if(city == NULL){
+		if(city == NULL) {
 			mayor->sendSystemMessage("@player_structure:cant_place_civic"); //This structure must be placed within the borders of the city in which you are mayor.
 			return;
 		}
 
 		CityManager* cityManager = mayor->getZoneServer()->getCityManager();
 
-		if(!city->isMayor(mayor->getObjectID())){
+		if(!city->isMayor(mayor->getObjectID())) {
 			mayor->sendSystemMessage("@player_structure:cant_place_civic"); //This structure must be placed within the borders of the city in which you are mayor.
 			return;
 		}
@@ -71,7 +71,7 @@ public:
 			return;
 		}
 
-		if(!cityManager->canSupportMoreDecorations(city)){
+		if(!cityManager->canSupportMoreDecorations(city)) {
 			StringIdChatParameter param("city/city", "no_more_decos"); //"Your city can't support any more decorations at its current rank!");
 			mayor->sendSystemMessage(param);
 			return;
@@ -94,17 +94,17 @@ public:
 			return;
 		}
 
-		if(city->getCityTreasury() < 1000){
+		if(city->getCityTreasury() < 1000) {
 			StringIdChatParameter msg;
 			msg.setStringId("@city/city:action_no_money");
 			msg.setDI(1000);
 			mayor->sendSystemMessage(msg); //"The city treasury must have %DI credits in order to perform that action.");
 			return;
-
 		}
+
 		Locker tlock(obj, mayor);
 
-		if(!obj->isASubChildOf(mayor)){
+		if(!obj->isASubChildOf(mayor)) {
 			mayor->sendSystemMessage("@space/quest:not_in_inv"); // The object must be in your inventory
 			return;
 		}
@@ -112,7 +112,7 @@ public:
 		obj->initializePosition(mayor->getWorldPositionX(), mayor->getWorldPositionZ(),mayor->getWorldPositionY());
 		obj->rotate(mayor->getDirectionAngle() - obj->getDirectionAngle());
 
-		if(zone->transferObject(obj, -1, true)){
+		if(zone->transferObject(obj, -1, true)) {
 			tlock.release();
 			Locker clock(city, mayor);
 			city->addDecoration(obj);
@@ -121,7 +121,7 @@ public:
 
 	}
 
-	void removeDecoration(){
+	void removeDecoration() {
 		Locker _lock(mayor);
 
 		ManagedReference<CityRegion*> city = mayor->getCityRegion();
@@ -129,7 +129,7 @@ public:
 		if(city == NULL)
 			return;
 
-		if(!city->isMayor(mayor->getObjectID())){
+		if(!city->isMayor(mayor->getObjectID())) {
 			return;
 		}
 
@@ -143,18 +143,20 @@ public:
 		if(inv == NULL)
 			return;
 
-		if(inv->isContainerFull()){
+		if(inv->isContainerFull()) {
 			//mayor->sendSystemMessage("@error_message:inv_full"); // You inventory is full
 			mayor->sendSystemMessage("@event_perk:promoter_full_inv"); //"Your inventory is full. Please make some room and try again.");
 			return;
 		} else {
 			Locker tlock(obj, mayor);
 
-			if(	inv->transferObject(obj, -1, true)){
+			if(	inv->transferObject(obj, -1, true)) {
 				inv->broadcastObject(obj, true);
 				tlock.release();
 				Locker clock(city, mayor);
 				city->removeDecoration(obj);
+
+				mayor->sendSystemMessage("@city/city:mt_removed"); // The object has been removed from the city.
 			}
 		}
 	}
