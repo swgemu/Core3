@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_f74a6826",
+        "filename": "MMOCoreORB/src/server/zone/managers/objectcontroller/command/CommandConfigManager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 0,
+      "message": "I would rather you leave forceCost as a variable that can be set in lua. In fact, I\u0027d like to see more of the variables able to be set in lua.",
+      "revId": "b31bf214da7b08b6baafca0ebf8316e36b350980",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_d7476c1c",
+        "filename": "MMOCoreORB/src/server/zone/managers/objectcontroller/command/CommandConfigManager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 0,
+      "message": "A quick glance at /datatables/command_table.iff shows that these commands are in the client. Don\u0027t remove them.",
+      "revId": "b31bf214da7b08b6baafca0ebf8316e36b350980",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

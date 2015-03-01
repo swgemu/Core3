@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_570a5cd3",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealHealthSelf1Command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "This is the same value as HealHealthSelf2.",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_b754f0ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "Rather than two bools here, I think it would be better to have 1 variable and an enum of possible values. Something like:\n\nenum {\n    SELFONLY,\n    TARGETONLY,\n    SELFORTARGET\n}",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_9751f4da",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "This method seems unnecessary. Why not just call creature-\u003ehasAttackDelay() directly?",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_775e78eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "What are you trying to accomplish here? The two checks are redundant. Also, why pass both creature and target to this method? You\u0027re always going to end up with them being equal with this check/assignment.",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_57637cb1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "Don\u0027t change what object creature is pointing to. That will mess up it\u0027s locks.",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_9768d488",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "Return res here.",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_770558c1",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "Don\u0027t modify forceCost directly in the command. Instantiate a new variable to use here.",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_175d04ea",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "Return res here.",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_d76e4c96",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "Will all jedi buff commands need this event type? Perhaps you can make that configurable.",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_f7714878",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "Make sure you aren\u0027t passing a NULL creatureTarget to doAnimations below.",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_b76bd084",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-01T13:39:20Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the arg for both elementAt() calls be i and not 0?",
+      "revId": "722c7c0565eafcf305a9aa909d80e4ef6ea47e77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
