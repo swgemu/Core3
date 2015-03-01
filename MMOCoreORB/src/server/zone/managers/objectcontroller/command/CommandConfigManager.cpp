@@ -648,15 +648,7 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			command.pop();
 		}
 
-	} else if (slashCommand->isForceHealCommand()) {
-		ForceHealQueueCommand* healCommand = cast<ForceHealQueueCommand*>(slashCommand);
-		if (varName == "forceCost")
-			healCommand->setForceCost(Lua::getIntParameter(L));
-		else {
-			Logger::console.error("unknown variable " + varName + " in force healing command " + slashCommand->getQueueCommandName());
-			command.pop();
-		}
-	} else {
+	}  else {
 		Logger::console.error("unknown variable " + varName + " in command " + slashCommand->getQueueCommandName());
 		command.pop();
 	}
@@ -1010,8 +1002,6 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<HealAllOther2Command>(String("healAllOther2").toLowerCase());
 	commandFactory.registerCommand<HealAllSelf1Command>(String("healAllSelf1").toLowerCase());
 	commandFactory.registerCommand<HealAllSelf2Command>(String("healAllSelf2").toLowerCase());
-	commandFactory.registerCommand<HealBattleFatigueOther1Command>(String("healBattleFatigueOther1").toLowerCase());
-	commandFactory.registerCommand<HealBattleFatigueOther2Command>(String("healBattleFatigueOther2").toLowerCase());
 	commandFactory.registerCommand<HealBattleFatigueSelf1Command>(String("healBattleFatigueSelf1").toLowerCase());
 	commandFactory.registerCommand<HealBattleFatigueSelf2Command>(String("healBattleFatigueSelf2").toLowerCase());
 	commandFactory.registerCommand<HealDamageCommand>(String("healDamage").toLowerCase());

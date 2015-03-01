@@ -315,8 +315,6 @@
 #include "HealAllOther2Command.h"
 #include "HealAllSelf1Command.h"
 #include "HealAllSelf2Command.h"
-#include "HealBattleFatigueOther1Command.h"
-#include "HealBattleFatigueOther2Command.h"
 #include "HealBattleFatigueSelf1Command.h"
 #include "HealBattleFatigueSelf2Command.h"
 #include "HealDamageCommand.h"
