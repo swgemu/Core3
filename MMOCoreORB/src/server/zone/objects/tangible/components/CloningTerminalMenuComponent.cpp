@@ -18,6 +18,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/CloningStoreSuiCallback.h"
+#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 
@@ -32,6 +33,15 @@ int CloningTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 	if (!player->isPlayerCreature())
 		return 0;
+
+	ManagedReference<CityRegion* > region = sceneObject->getCityRegion().get();
+
+	if (region != NULL) {
+		if (region->isBanned(player->getObjectID())) {
+				player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
+				return 0;
+		}
+	}
 
 	if(selectedID == 20) {
 

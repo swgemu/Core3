@@ -134,6 +134,7 @@ public:
 		CITY_ADJUST_TAX                    = 129,
 		CITY_TAX_PROMPT                    = 130,
 		CITY_RENAME                        = 131,
+		CITY_ADMIN_FORCE_RANK              = 132,
 
 		//Structure 141 - 170
 		STRUCTURE_STATUS                   = 141,

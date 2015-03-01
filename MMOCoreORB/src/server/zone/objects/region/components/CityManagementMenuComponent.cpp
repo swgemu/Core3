@@ -144,12 +144,12 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 #ifdef CITY_DEBUG
 	case 228:
 		if(player->getPlayerObject()->isPrivileged()){
-			cityManager->expandCity(city);
+			cityManager->promptForceRank(city, player, true);
 		}
 		break;
 	case 229:
 		if(player->getPlayerObject()->isPrivileged()){
-			cityManager->contractCity(city);
+			cityManager->promptForceRank(city, player, false);
 		}
 		break;
 	case 230:

@@ -609,7 +609,7 @@ void CityRegionImplementation::removeSpecializationModifiers(CreatureObject* cre
 	creature->removeAllSkillModsOfType(SkillModManager::CITY);
 }
 
-void CityRegionImplementation::transferCivicStructuresToMayor(){
+void CityRegionImplementation::transferCivicStructuresToMayor() {
 	Locker tlock(&structureListMutex);
 
 	if(zone == NULL)
@@ -636,22 +636,22 @@ void CityRegionImplementation::transferCivicStructuresToMayor(){
 		return;
 
 	// transfer civic structures
-	for(int i = 0; i < structures.size(); ++i){
+	for(int i = 0; i < structures.size(); ++i) {
 		ManagedReference<StructureObject*> structure = structures.get(i);
 
-		if(!structure->isCivicStructure()){
+		if(!structure->isCivicStructure()) {
 			continue;
 		}
 
 		ManagedReference<CreatureObject*> oldOwner = structure->getOwnerCreatureObject();
 
-		if(oldOwner != NULL && oldOwner != newMayor){
+		if(oldOwner != NULL && oldOwner != newMayor) {
 			TransferstructureCommand::doTransferStructure(oldOwner, newMayor, structure,true);
 		}
 	}
 
 	// transfer decorations
-	for(int i = 0; i < cityDecorations.size(); ++i){
+	for(int i = 0; i < cityDecorations.size(); ++i) {
 		ManagedReference<SceneObject*> str = cityDecorations.get(i);
 
 		if(str == NULL || !str->isStructureObject())
@@ -672,9 +672,9 @@ void CityRegionImplementation::transferCivicStructuresToMayor(){
 	// declare new mayor at the city hall
 	ManagedReference<StructureObject* > cityhall = getCityHall();
 	PlayerObject* mayorPlayer = newMayor->getPlayerObject();
-	if(mayorPlayer != NULL && cityhall != NULL && mayorPlayer->getDeclaredResidence() != cityhall->getObjectID()){
+	if(mayorPlayer != NULL && cityhall != NULL && mayorPlayer->getDeclaredResidence() != cityhall->getObjectID()) {
 		ManagedReference<CreatureObject*> creature = cityhall->getOwnerCreatureObject();
-		if(creature != NULL){
+		if(creature != NULL) {
 			PlayerObject* oldMayor = creature->getPlayerObject();
 
 			if (oldMayor != NULL)
