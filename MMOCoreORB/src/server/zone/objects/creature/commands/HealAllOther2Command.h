@@ -46,167 +46,23 @@ which carries forward this exception.
 #define HEALALLOTHER2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/packets/object/CombatAction.h"
-#include "ForceHealQueueCommand.h"
+#include "JediQueueCommand.h"
 
-class HealAllOther2Command : public ForceHealQueueCommand {
-protected:
+class HealAllOther2Command : public JediQueueCommand {
 
-	int healthHealed;
-	int actionHealed;
-	int mindHealed;
-	
-	int heal;	
-
-	float speed;
-	float range;
-	String effectName;
 public:
 	HealAllOther2Command(const String& name, ZoneProcessServer* server)
-		: ForceHealQueueCommand(name, server) {
-
-		range = 32;
-
-		healthHealed = 0;
-		actionHealed = 0;
-		mindHealed = 0;
-		
-		heal = 1500;		
-
-		speed = 3.0;
+: JediQueueCommand(name, server) {
+		animation = "force_healing_1";
+		healAttributesDamage.put(CreatureAttribute::HEALTH, 1500);
+		healAttributesDamage.put(CreatureAttribute::ACTION, 1500);
+		healAttributesDamage.put(CreatureAttribute::MIND, 1500);
+		isTargetHeal = true;
 	}
 
-	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
-
-		if (!creatureTarget->isPlayerCreature()) {
-			return false;
-		}
-
-		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH)) {
-			return false;
-		}
-
-		if (!creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
-			return false;
-		}
-
-		if (!creatureTarget->hasDamage(CreatureAttribute::MIND)) {
-			return false;
-		}
-		
-		PlayerManager* playerManager = server->getPlayerManager();
-
-		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
-			return false;
-		}
-
-		return true;
-	}
-	
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
-		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION) && !creatureTarget->hasDamage(CreatureAttribute::MIND)) {
-			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other"); //Your target has no damage of that type to heal.
-			return false;
-		}
-
-		if (creature->isProne()) {
-			return false;
-		}
-
-		if (creature->isKnockedDown()) {
-			return false;
-		}
-			
-		PlayerManager* playerManager = server->getPlayerManager();
-
-		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
-			creature->sendSystemMessage("@container_error_message:container18");
-			return false;
-		}		
-
-		return true;
-	}	
-	
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		if (isWearingArmor(creature)) {
-			return NOJEDIARMOR;
-		}
-		
-		if (isWarcried(creature)) {
-			return GENERALERROR;
-		}
-
-		if (!checkForceCost(creature)) {
-			creature->sendSystemMessage("@jedi_spam:no_force_power");
-			return GENERALERROR;
-		}
-
-		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
-
-		if (object != NULL) {
-			if (!object->isCreatureObject()) {
-				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
-
-				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
-					object = creature;
-				} else {
-					creature->sendSystemMessage("@jedi_spam:not_this_target"); //This command cannot be used on this target.
-					return GENERALERROR;
-				}
-			}
-		} else
-			object = creature;
-
-		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
-
-		Locker clocker(creatureTarget, creature);
-
-		if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingMount() || creatureTarget->isAttackableBy(creature))
-			creatureTarget = creature;
-
-
-		PlayerObject* targetGhost = creatureTarget->getPlayerObject();
-		
-		if (creatureTarget == creature) {
-			return GENERALERROR;
-		}		
-
-		if (!canPerformSkill(creature, creatureTarget))
-			return GENERALERROR;
-
-		if (!creatureTarget->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help");
-			return GENERALERROR;
-		}
-		
-
-		int healedHealth = creatureTarget->healDamage(creature, CreatureAttribute::HEALTH, heal, true);
-		int healedAction = creatureTarget->healDamage(creature, CreatureAttribute::ACTION, heal, true);
-		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, heal, true);
-
-		
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-		
-		int forceCostDeducted = forceCost;
-
-		forceCostDeducted = MIN(((healedHealth + healedAction + healedMind) / 9.5), forceCost);
-		
-		playerObject->setForcePower(playerObject->getForcePower() - forceCostDeducted); // Deduct force.
-
-		sendHealMessage(creature, creatureTarget, healedHealth, healedAction, healedMind);
-		
-		doAnimations(creature, creatureTarget);	
-			
-		return SUCCESS;
+		return doJediHealCommand(creature, target, arguments);
 	}
-
 };
 
 #endif /* HEALALLOTHER2COMMAND_H_ */
