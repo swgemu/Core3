@@ -249,6 +249,7 @@ function HeroOfTatooineScreenPlay:onEnteredAltruismCave(pCave, pCreature)
 	end
 
 	local count = self:getCavePlayerWithQuestCount()
+
 	if (count == 1) then
 		self:spawnAltruismObjects()
 	end
@@ -359,7 +360,14 @@ function HeroOfTatooineScreenPlay:destroyCaveWall(pCrevice)
 		return
 	end
 
-	SceneObject(pCrevice):playEffect("clienteffect/combat_grenade_proton.cef", "")
+	local planterId = readData("hero_of_tat:explosivePlanterID")
+
+	if (planterId ~= 0 and getSceneObject(planterId) ~= nil) then
+		playClientEffectLoc(planterId, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 162.5, -66.8, -97.7, 5995573)
+		playClientEffectLoc(planterId, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 150.96, -65.83, -97.66, 5995573)
+		writeData("hero_of_tat:explosivePlanterID", 0)
+	end
+
 	SceneObject(pCrevice):destroyObjectFromWorld()
 	SceneObject(pWall):destroyObjectFromWorld()
 end

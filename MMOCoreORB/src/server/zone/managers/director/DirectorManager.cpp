@@ -68,6 +68,7 @@
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/db/ServerDatabase.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -298,6 +299,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getQuestStatus", getQuestStatus);
 	lua_register(luaEngine->getLuaState(), "removeQuestStatus", removeQuestStatus);
 	lua_register(luaEngine->getLuaState(), "getControllingFaction", getControllingFaction);
+	lua_register(luaEngine->getLuaState(), "playClientEffectLoc", playClientEffectLoc);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -1017,7 +1019,7 @@ int DirectorManager::createServerEvent(lua_State* L) {
 	Reference<PersistentEvent*> pEvent = getServerEvent(eventName);
 
 	if (pEvent != NULL) {
-		instance()->error("The server event already exists, exiting...");
+		instance()->error("Server event " + eventName + " already exists, exiting...");
 		ERROR_CODE = GENERAL_ERROR;
 		return 0;
 	}
@@ -2622,5 +2624,27 @@ int DirectorManager::getControllingFaction(lua_State* L) {
 			lua_pushinteger(L, gcwMan->getWinningFaction());
 		}
 	}
+	return 1;
+}
+
+int DirectorManager::playClientEffectLoc(lua_State* L) {
+	uint64 playerId = lua_tointeger(L, -7);
+	String effect = lua_tostring(L, -6);
+	String zone = lua_tostring(L, -5);
+	float x = lua_tonumber(L, -4);
+	float z = lua_tonumber(L, -3);
+	float y = lua_tonumber(L, -2);
+	int cell = lua_tonumber(L, -1);
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	ManagedReference<CreatureObject*> creature = zoneServer->getObject(playerId).castTo<CreatureObject*>();
+
+	if (creature == NULL)
+		return 0;
+
+	PlayClientEffectLoc* effectLoc = new PlayClientEffectLoc(effect, zone, x, z, y, cell);
+	creature->broadcastMessage(effectLoc, true);
+
 	return 1;
 }
