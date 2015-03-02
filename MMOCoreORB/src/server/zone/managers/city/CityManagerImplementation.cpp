@@ -1283,6 +1283,8 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 
 	city->destroyActiveAreas();
 
+	city->cancelTasks();
+
 	ManagedReference<StructureObject*> cityhall = city->getCityHall();
 
 	if (cityhall != NULL) {
@@ -1983,7 +1985,7 @@ void CityManagerImplementation::promptMayoralVote(CityRegion* city, CreatureObje
 		ManagedReference<SceneObject*> candidate = zoneServer->getObject(entry->getKey());
 
 		if (candidate != NULL) {
-			if (candidate == mayor)
+			if (mayor != NULL && candidate == mayor)
 				listbox->addMenuItem(mayor->getDisplayedName() + " (Incumbent)", city->getMayorID());
 			else
 				listbox->addMenuItem(candidate->getDisplayedName() + " (Challenger)", entry->getKey());
@@ -2145,23 +2147,6 @@ void CityManagerImplementation::sendMail(CityRegion* city, const String& sender,
 		CreatureObject* creo = obj.castTo<CreatureObject*> ();
 		//TODO: Modify Chat Manager so that you can send a creo instead of simply the firstname, since sendMail eventually gets the creo anyways
 		chat->sendMail(sender, subject, params, creo->getFirstName(), waypoint);
-	}
-}
-
-void CityManagerImplementation::fixMayor(CityRegion* city, CreatureObject* mayor) {
-	if (mayor == NULL && !mayor->isPlayerCreature())
-		return;
-
-	ManagedReference<PlayerObject*> ghost = mayor->getPlayerObject();
-	if (ghost == NULL)
-		return;
-
-	uint64 mayorid = mayor->getObjectID();
-
-	if (city->isMayor(mayorid) && !city->isCitizen(mayorid)) {
-		registerCitizen(city, mayor);
-	} else {
-		mayor->sendSystemMessage("Mayor is already a citizen.");
 	}
 }
 

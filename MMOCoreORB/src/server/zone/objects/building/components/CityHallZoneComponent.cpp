@@ -13,7 +13,7 @@
 #include "server/zone/ZoneServer.h"
 
 void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) {
-	ManagedReference<CityRegion*> cityRegion = sceneObject->getCityRegion();
+	ManagedReference<CityRegion*> cityRegion = sceneObject->getCityRegion().get();
 
 	if (cityRegion != NULL ) {
 		Locker clocker(cityRegion, sceneObject);

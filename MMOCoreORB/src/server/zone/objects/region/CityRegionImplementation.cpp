@@ -381,7 +381,7 @@ void CityRegionImplementation::cleanupCitizens() {
 		removeCitizen(removeIds.get(i));
 	}
 
-	if(!isCitizen(getMayorID()))
+	if(getMayorID() != 0 && !isCitizen(getMayorID()))
 		citizenList.put(getMayorID());
 }
 
@@ -402,7 +402,7 @@ void CityRegionImplementation::addZoningRights(uint64 objectid, uint32 duration)
 }
 
 bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
-	if(objectid == getMayorID())
+	if(getMayorID() != 0 && objectid == getMayorID())
 		return true;
 
 	uint32 timestamp = zoningRights.get(objectid);
@@ -451,6 +451,22 @@ void CityRegionImplementation::destroyActiveAreas() {
 	}
 }
 
+void CityRegionImplementation::cancelTasks() {
+	if (cityUpdateEvent != NULL) {
+		if (cityUpdateEvent->isScheduled())
+			cityUpdateEvent->cancel();
+
+		cityUpdateEvent = NULL;
+	}
+
+	if (citizenAssessmentEvent != NULL) {
+		if (citizenAssessmentEvent->isScheduled())
+			citizenAssessmentEvent->cancel();
+
+		citizenAssessmentEvent = NULL;
+	}
+}
+
 String CityRegionImplementation::getRegionName() {
 	if(!customRegionName.isEmpty())
 		return customRegionName;
@@ -485,8 +501,8 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank, bool send
 		return;
 
 	StructureManager* structureManager = StructureManager::instance();
-	ManagedReference<CreatureObject*> mayor = cityHall->getZoneServer()->getObject(getMayorID()).castTo<CreatureObject*>();
-	ChatManager* chatManager = cityHall->getZoneServer()->getChatManager();
+	ManagedReference<CreatureObject*> mayor = zone->getZoneServer()->getObject(getMayorID()).castTo<CreatureObject*>();
+	ChatManager* chatManager = zone->getZoneServer()->getChatManager();
 
 	for (int i = structures.size() - 1; i >= 0; --i) {
 		ManagedReference<StructureObject*> structure = structures.get(i);
@@ -627,7 +643,7 @@ void CityRegionImplementation::transferCivicStructuresToMayor() {
 
 	ManagedReference<SceneObject*> mayorObject = server->getObject(getMayorID());
 
-	if(mayorObject == NULL)
+	if(mayorObject == NULL || !mayorObject->isPlayerCreature())
 		return;
 
 	ManagedReference<CreatureObject*> newMayor = cast<CreatureObject*>(mayorObject.get());
@@ -645,7 +661,7 @@ void CityRegionImplementation::transferCivicStructuresToMayor() {
 
 		ManagedReference<CreatureObject*> oldOwner = structure->getOwnerCreatureObject();
 
-		if(oldOwner != NULL && oldOwner != newMayor) {
+		if(newMayor != oldOwner) {
 			TransferstructureCommand::doTransferStructure(oldOwner, newMayor, structure,true);
 		}
 	}
@@ -664,7 +680,7 @@ void CityRegionImplementation::transferCivicStructuresToMayor() {
 
 		ManagedReference<CreatureObject*> oldOwner = structure->getOwnerCreatureObject();
 
-		if(oldOwner != NULL && oldOwner != newMayor) {
+		if(newMayor != oldOwner) {
 			TransferstructureCommand::doTransferStructure(oldOwner, newMayor, structure,true);
 		}
 	}
@@ -672,19 +688,39 @@ void CityRegionImplementation::transferCivicStructuresToMayor() {
 	// declare new mayor at the city hall
 	ManagedReference<StructureObject* > cityhall = getCityHall();
 	PlayerObject* mayorPlayer = newMayor->getPlayerObject();
-	if(mayorPlayer != NULL && cityhall != NULL && mayorPlayer->getDeclaredResidence() != cityhall->getObjectID()) {
+	uint64 oldResidenceID = mayorPlayer->getDeclaredResidence();
+
+	if(mayorPlayer != NULL && cityhall != NULL && oldResidenceID != cityhall->getObjectID()) {
 		ManagedReference<CreatureObject*> creature = cityhall->getOwnerCreatureObject();
 		if(creature != NULL) {
 			PlayerObject* oldMayor = creature->getPlayerObject();
 
-			if (oldMayor != NULL)
+			if (oldMayor != NULL) {
+				Locker clocker(creature, _this.get());
+
 				oldMayor->setDeclaredResidence(NULL);
+
+				clocker.release();
+			}
 		}
 
 		BuildingObject* cityBuilding = cast<BuildingObject*>(cityhall.get());
 
-		if(cityBuilding != NULL)
+		if(cityBuilding != NULL) {
+			ManagedReference<BuildingObject*> oldResidence = server->getObject(oldResidenceID).castTo<BuildingObject*>();
+
+			if (oldResidence != NULL) {
+				Locker olocker(oldResidence, _this.get());
+
+				oldResidence->setResidence(false);
+
+				olocker.release();
+			}
+
+			Locker clock(newMayor, _this.get());
+
 			mayorPlayer->setDeclaredResidence(cityBuilding);
+		}
 	}
 
 }

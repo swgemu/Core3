@@ -739,7 +739,7 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 }
 
 // pre: newOwner locked ... old owner not locked
-void GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, SceneObject* sceoTerminal){
+void GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, SceneObject* sceoTerminal) {
 	if (sceoTerminal == NULL || !sceoTerminal->isTerminal())
 		return;
 
@@ -765,9 +765,9 @@ void GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, Sce
 			else
 				return;
 
-			if ( oldOwner != newOwner && oldOwner != NULL){
+			if ( oldOwner != NULL && oldOwner != newOwner ) {
 
-				Locker _lockc(oldOwner, newOwner);
+				newOwner->unlock();
 
 				TransferstructureCommand::doTransferStructure(oldOwner, newOwner, buildingObject, true);
 
