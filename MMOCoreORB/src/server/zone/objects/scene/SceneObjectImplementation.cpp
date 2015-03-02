@@ -49,7 +49,6 @@ which carries forward this exception.
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-#include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
 #include "server/zone/packets/scene/SceneObjectDestroyMessage.h"
 #include "server/zone/packets/scene/SceneObjectCloseMessage.h"
@@ -1696,9 +1695,4 @@ int SceneObjectImplementation::getArrangementDescriptorSize() {
 }
 bool SceneObjectImplementation::isDataPad() {
 	return templateObject->getFullTemplateString().contains("datapad");
-}
-
-void SceneObjectImplementation::playEffect(const String& file, const String& aux) {
-	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(_this.get(), file, aux);
-	broadcastMessage(effect, true);
 }
