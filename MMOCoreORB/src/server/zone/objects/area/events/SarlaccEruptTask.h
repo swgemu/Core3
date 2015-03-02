@@ -1,6 +1,8 @@
 /*
 Copyright (C) 2007 <SWGEmu>
+
 This File is part of Core3.
+
 This program is free software; you can redistribute
 it and/or modify it under the terms of the GNU Lesser
 General Public License as published by the Free Software
@@ -38,29 +40,58 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-
 */
 
-package server.zone.objects.area;
+#ifndef SARLACCERUPTTASK_H_
+#define SARLACCERUPTTASK_H_
 
-import engine.core.ManagedObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.area.ActiveArea;
+#include "engine/engine.h"
+#include "server/zone/Zone.h"
+#include "server/zone/objects/area/SarlaccArea.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 
-class SarlaccArea extends ActiveArea {
+class SarlaccEruptTask: public Task {
+	ManagedReference<SarlaccArea*> sarlaccArea;
 
-	@dereferenced
-	protected Time lastErupt;
 
-	public SarlaccArea() {
-		super();
+public:
+	SarlaccEruptTask(SarlaccArea* area) {
+		sarlaccArea = area;
 	}
 
-	public void updateEruptTime() {
-		lastErupt.updateToCurrentTime();
+	void run() {
+		if (sarlaccArea == NULL)
+			return;
+
+		Zone* zone = sarlaccArea->getZone();
+
+		Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+		zone->getInRangeObjects(sarlaccArea->getWorldPositionX(), sarlaccArea->getWorldPositionY(), 60, closeObjects, true);
+
+		for (int i = 0; i < closeObjects->size(); ++i) {
+			SceneObject* scno = cast<SceneObject*>(closeObjects->get(i).get());
+
+			if (scno != NULL && scno->isPlayerCreature()) {
+				ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>(scno);
+
+				if (playerCreature == NULL)
+					continue;
+
+				Locker locker(playerCreature);
+
+				playerCreature->sendSystemMessage("@mob/sarlacc:sarlacc_erupt"); // The Sarlacc suddenly erupts, spewing a diseased and corrosive substance into the air!
+
+				if (playerCreature->getSkillMod("resistance_disease") < 24) {
+					playerCreature->addDotState(playerCreature, CreatureState::DISEASED, 0, 30 + System::random(20), CreatureAttribute::HEALTH, 30 * 60, 2000, 0);
+					playerCreature->sendSystemMessage("@mob/sarlacc:sarlacc_dot"); // You suddenly feel weak and sick.
+				}
+			}
+		}
+
 	}
-	
-	@dirty
-	public native void notifyEnter(SceneObject player);
-}
+};
+
+#endif /* SARLACCERUPTTASK_H_ */

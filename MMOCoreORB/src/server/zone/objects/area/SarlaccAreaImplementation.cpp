@@ -2,27 +2,34 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
+#include "server/zone/objects/area/events/SarlaccEruptTask.h"
 #include "server/zone/Zone.h"
 
-void SarlaccAreaImplementation::notifyEnter(SceneObject* player) {
-	if (!player->isPlayerCreature()) {
+void SarlaccAreaImplementation::notifyEnter(SceneObject* object) {
+	if (object == NULL || !object->isPlayerCreature())
 		return;
-	}
 
-	Locker plocker(player);
+	CreatureObject* player = cast<CreatureObject*>(object);
 
-	CreatureObject* playerCreature = cast<CreatureObject*>(player);
-	playerCreature->sendSystemMessage("@mob/sarlacc:sarlacc_poison"); // The air is thick with the smell of rot and disease.
+	if (player == NULL)
+		return;
 
-	SceneObject* sco = NULL;
-	for (int i=0; i< player->getSlottedObjectsSize(); i++) {
-		sco = player->getSlottedObject(i);
-		if (sco == NULL)
-			continue;
+	if (getRadius() == 60) {
+		player->sendSystemMessage("@mob/sarlacc:sarlacc_poison"); // The air is thick with the smell of rot and disease.
+	} else {
+		Time currentTime;
+		int timeDiff = currentTime.getMiliTime() - lastErupt.getMiliTime();
 
-		if (sco->getServerObjectCRC() == String("object/tangible/wearables/bodysuit/bodysuit_sarlacc_coverall.iff").hashCode())
+		if (timeDiff < 10000) // 10 second cooldown on erupt
 			return;
+
+		PlayClientEffectLoc* effectLoc = new PlayClientEffectLoc("clienteffect/cr_sarlacc_erupt.cef", "tatooine", getPositionX(), getPositionZ(), getPositionY(), 0, 3);
+		player->broadcastMessage(effectLoc, true);
+
+		Reference<Task*> task = new SarlaccEruptTask(_this.get());
+		task->execute();
+
+		updateEruptTime();
 	}
-	playerCreature->addDotState(playerCreature, CreatureState::DISEASED, 0, 30 + System::random(20), CreatureAttribute::HEALTH, 30 * 60, 2000, 0);
-	playerCreature->sendSystemMessage("@mob/sarlacc:sarlacc_dot"); // You suddenly feel weak and sick.
 }
