@@ -50,6 +50,9 @@ import server.zone.objects.area.ActiveArea;
 
 class SarlaccArea extends ActiveArea {
 
+	@dereferenced
+	protected Time lastErupt;
+
 	public SarlaccArea() {
 		super();
 	}
