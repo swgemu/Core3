@@ -278,8 +278,6 @@ class CityManager extends ManagedService implements Logger {
 	public native void castMayoralVote(CityRegion city, CreatureObject creature, unsigned long oid);
 
 	public native void sendStructureReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
-
-	public native void fixMayor(CityRegion city, CreatureObject mayor);
 		
 	public native boolean canSupportMoreDecorations(CityRegion city);
 

@@ -151,33 +151,32 @@ public:
 			return GENERALERROR;
 		}
 
-
-		Locker _lock(targetCreature, creature);
-
 		return doTransferStructure(creature, targetCreature, structure);
 
 	}
 
-	// pre: creature locked and targetCreature are locked
-	// structure not locked
-	// bForceTransfer = whether or not to force the transfer.  meaning do the trasnfer even if the owner is offline or out of range
+	// pre: creature, targetCreature, and structure are not locked
+	// bForceTransfer = whether or not to force the transfer. This means do the transfer even if the target is offline or out of range, or if the old owner is NULL
 	static int doTransferStructure(CreatureObject* creature, CreatureObject* targetCreature, StructureObject* structure, bool bForceTransfer = false){
-		Locker _cclock(creature);
+		if (targetCreature == NULL || structure == NULL)
+			return GENERALERROR;
 
-		Locker _crlock(targetCreature, creature);
-
-
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
+		if (targetGhost == NULL)
+			return GENERALERROR;
 
-		if (targetGhost == NULL || ghost == NULL) {
-			return GENERALERROR; //Target or creature is not a player and cannot own this structure!
+		ManagedReference<PlayerObject*> ghost = NULL;
+
+		if (creature != NULL) {
+			ghost == creature->getPlayerObject();
 		}
 
-		Locker _slock(structure);
+		if (!bForceTransfer && (creature == NULL || ghost == NULL)) {
+			return GENERALERROR;
+		}
 
 		//Ensure that they are within at least 16m of the transferrer.
-		if ((!targetCreature->isInRange(creature, 16.f) || !targetGhost->isOnline()) && !bForceTransfer ) {
+		if (!bForceTransfer && (!targetCreature->isInRange(creature, 16.f) || !targetGhost->isOnline()) ) {
 			StringIdChatParameter params("@cmd_err:target_range_prose"); //Your target is too far away to %TO.
 			params.setTO("Transfer Structure");
 			creature->sendSystemMessage(params);
@@ -196,15 +195,17 @@ public:
 
 				// send message to the person trying to do the guild transfer
 			}
+
 			return GENERALERROR;
 		}
 
 		//TODO:
 		//@player_structure:trail_no_transfer Trial accounts may not be involved in a property ownership transfer.
+
 		ManagedReference<CityRegion*> region = structure->getCityRegion();
 
-		if (region != NULL) {
-			Locker locker(region, creature);
+		if (region != NULL && ghost != NULL) {
+			Locker locker(region);
 
 			if (region->isBanned(targetCreature->getObjectID())) {
 				creature->sendSystemMessage("@city/city:cant_transfer_to_city_banned"); //You cannot transfer ownership of a structure to someone who is banned from the city in which the structure resides.
@@ -220,39 +221,56 @@ public:
 			if (ghost->getDeclaredResidence() == structure->getObjectID()) {
 				region->removeCitizen(creature->getObjectID());
 			}
+
+			locker.release();
 		}
 
-		if (ghost->getDeclaredResidence() == structure->getObjectID()) {
-			ghost->setDeclaredResidence(NULL);
+		if (ghost != NULL) {
+			Locker lock(creature);
+
+			if (ghost->getDeclaredResidence() == structure->getObjectID()) {
+				ghost->setDeclaredResidence(NULL);
+			}
+
+			ghost->removeOwnedStructure(structure);
+
+			lock.release();
 		}
 
-		//Transfer ownership
-		ghost->removeOwnedStructure(structure);
+		Locker targetLock(targetCreature);
+
 		targetGhost->addOwnedStructure(structure);
+
+		Locker clocker(structure, targetCreature);
 
 		//Setup permissions.
 		structure->revokeAllPermissions(targetCreature->getObjectID());
 		structure->grantPermission("ADMIN", targetCreature->getObjectID());
 
 		structure->setOwner(targetCreature->getObjectID());
-		structure->revokePermission("ADMIN", creature->getObjectID());
+
+		if (creature != NULL)
+			structure->revokePermission("ADMIN", creature->getObjectID());
 
 		//Update the cell permissions if the structure is private and a building.
 		if (!structure->isPublicStructure() && structure->isBuildingObject()) {
 			BuildingObject* buildingObject = cast<BuildingObject*>( structure);
 
 			buildingObject->updateCellPermissionsTo(targetCreature);
-			buildingObject->updateCellPermissionsTo(creature);
+
+			if (creature != NULL)
+				buildingObject->updateCellPermissionsTo(creature);
 		}
 
-		StringIdChatParameter params("@player_structure:ownership_transferred_in"); //%TT has transfered ownership of the structure to you
-		params.setTT(creature->getFirstName());
-		targetCreature->sendSystemMessage(params);
+		if (creature != NULL) {
+			StringIdChatParameter params("@player_structure:ownership_transferred_in"); //%TT has transfered ownership of the structure to you
+			params.setTT(creature->getFirstName());
+			targetCreature->sendSystemMessage(params);
 
-
-		params.setStringId("@player_structure:ownership_transferred_out"); //Ownership of the structure has been transferred to %NT.
-		params.setTT(targetCreature->getFirstName());
-		creature->sendSystemMessage(params);
+			params.setStringId("@player_structure:ownership_transferred_out"); //Ownership of the structure has been transferred to %NT.
+			params.setTT(targetCreature->getFirstName());
+			creature->sendSystemMessage(params);
+		}
 
 		return SUCCESS;
 	}
