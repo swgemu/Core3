@@ -106,8 +106,8 @@ void ThreatMap::addDamage(CreatureObject* target, uint32 damage, String xp) {
 	}
 
 	// randomly change target everytime threatmap is added to, TODO: keep this in mind and perhaps make it slightly more complicated
-	if (System::random(5) == 0)
-		currentThreat = target;
+	//if (System::random(5) == 0)
+	//	currentThreat = target;
 }
 
 void ThreatMap::removeAll() {
