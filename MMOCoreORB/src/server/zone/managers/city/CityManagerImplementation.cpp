@@ -636,7 +636,11 @@ void CityManagerImplementation::assessCitizens(CityRegion* city) {
 			chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
 		}
 
-		StructureManager::instance()->destroyStructure(city->getCityHall());
+		ManagedReference<StructureObject*> cityhall = city->getCityHall();
+
+		if (cityhall != NULL) {
+			StructureManager::instance()->destroyStructure(cityhall);
+		}
 
 	} else {
 		if (mayor != NULL) {
