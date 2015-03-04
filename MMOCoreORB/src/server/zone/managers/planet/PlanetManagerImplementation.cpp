@@ -74,16 +74,26 @@ void PlanetManagerImplementation::initialize() {
 		zone->transferObject(area, -1, true);
 
 		Reference<ActiveArea*> sarlaccArea = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
-		sarlaccArea->setRadius(50.f);
+		sarlaccArea->setRadius(60.f);
 		sarlaccArea->initializePosition(-2085, 0, 3147);
 		zone->transferObject(sarlaccArea, -1, true);
+
+		Reference<ActiveArea*> sarlaccPreArea = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+		sarlaccPreArea->setRadius(30.f);
+		sarlaccPreArea->initializePosition(-2085, 0, 3147);
+		zone->transferObject(sarlaccPreArea, -1, true);
 	}
 
 	if (zone->getZoneName() == "tatooine") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
-		area->setRadius(50.f);
+		area->setRadius(30.f);
 		area->initializePosition(-6174, 0, -3361);
 		zone->transferObject(area, -1, true);
+
+		Reference<ActiveArea*> preArea = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+		preArea->setRadius(60.f);
+		preArea->initializePosition(-6174, 0, -3361);
+		zone->transferObject(preArea, -1, true);
 	}
 }
 
