@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_f77b8827",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/SarlaccAreaImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-04T06:31:15Z",
+      "side": 1,
+      "message": "This is unneeded. It\u0027s already locked before this method is called.",
+      "revId": "7d7ce38beabd19000b8cbeb3cc6f4101a7af66a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_57949c36",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/SarlaccAreaImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-04T06:31:15Z",
+      "side": 1,
+      "message": "You should either update the time in this method or keep a pointer to the task on the area so you can check if there\u0027s already one scheduled. Otherwise, it\u0027s possible you could get a second task queued before the first executes.",
+      "revId": "7d7ce38beabd19000b8cbeb3cc6f4101a7af66a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_d7788c2d",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/events/SarlaccEruptTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-04T06:31:15Z",
+      "side": 1,
+      "message": "Locker locker(sarlaccArea);\nLocker clocker(triggerPlayer, sarlaccArea);",
+      "revId": "7d7ce38beabd19000b8cbeb3cc6f4101a7af66a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_b7751034",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/events/SarlaccEruptTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-04T06:31:15Z",
+      "side": 1,
+      "message": "clocker.release();",
+      "revId": "7d7ce38beabd19000b8cbeb3cc6f4101a7af66a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_97721448",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/events/SarlaccEruptTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-04T06:31:15Z",
+      "side": 1,
+      "message": "Locker clock(playerCreature, sarlaccArea);",
+      "revId": "7d7ce38beabd19000b8cbeb3cc6f4101a7af66a8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
