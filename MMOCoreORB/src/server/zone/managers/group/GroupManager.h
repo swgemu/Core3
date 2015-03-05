@@ -95,9 +95,16 @@ public:
 	void leaveGroup(ManagedReference<GroupObject*> group, CreatureObject* player);
 	void makeLeader(GroupObject* group, CreatureObject* player, CreatureObject* newLeader);
 
+	void changeLootRule(GroupObject* group, int newRule);
+	void changeMasterLooter(GroupObject* group, CreatureObject* newLooter, bool enableRule);
+	void sendMasterLooterList(GroupObject* group, CreatureObject* leader);
+	void notifyMasterLooter(GroupObject* group);
+
 	void disbandGroup(ManagedReference<GroupObject*> group, CreatureObject* player);
 
 	GroupObject* createGroup(CreatureObject* leader);
+
+
 
 };
 
