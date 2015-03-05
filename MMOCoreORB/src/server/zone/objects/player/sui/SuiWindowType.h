@@ -227,12 +227,18 @@ public:
 		HQ_TERMINAL                        = 420,
 		HQ_TURRET_TERMINAL                 = 421,
 
-		// Firework Show 500-503
+		// Firework Show 500-510
 		FIREWORK_SHOW_ADDEVENT             = 500,
 		FIREWORK_SHOW_REMOVEEVENT          = 501,
 		FIREWORK_SHOW_REORDERSHOW          = 502,
 		FIREWORK_SHOW_MODIFYEVENT          = 503,
 		FIREWORK_SHOW_DELAYSELECTION       = 504,
+
+		//Group Loot 511-520
+		GROUP_LOOT_RULE                    = 511,
+		GROUP_LOOT_CHANGED                 = 512,
+		GROUP_LOOT_PICK_LOOTER             = 513,
+		GROUP_LOOT_LOTTERY                 = 514,
 
 		//Miscellaneous 1000+
 		OBJECT_NAME                        = 1000,

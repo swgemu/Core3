@@ -604,7 +604,7 @@ int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 
 			return 0;
 		case 36:
-			getZoneServer()->getPlayerManager()->lootAll(player, _this.get());
+			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "all");
 
 			return 0;
 		}
