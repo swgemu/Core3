@@ -64,34 +64,70 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-			ManagedReference<AiAgent*> ai = server->getZoneServer()->getObject(target).castTo<AiAgent*>();
+		ManagedReference<AiAgent*> ai = server->getZoneServer()->getObject(target).castTo<AiAgent*>();
 
-			if (ai == NULL)
-				return INVALIDTARGET;
+		if (ai == NULL)
+			return INVALIDTARGET;
 
-			Locker locker(ai, creature);
+		Locker locker(ai, creature);
 
-			if (!ai->isDead())
+		if (!ai->isDead())
+			return GENERALERROR;
+
+		//Get the corpse's inventory.
+		SceneObject* creatureInventory = ai->getSlottedObject("inventory");
+		if (creatureInventory == NULL)
+			return GENERALERROR;
+
+		//Determine the loot rights.
+		bool looterIsOwner = (creatureInventory->getContainerPermissions()->getOwnerID() == creature->getObjectID());
+		bool groupIsOwner = (creatureInventory->getContainerPermissions()->getOwnerID() == creature->getGroupID());
+
+		if (looterIsOwner == false && groupIsOwner == false) {
+			creature->sendSystemMessage("@error_message:no_corpse_permission"); //You do not have permission to access this corpse.
+			return GENERALERROR;
+		}
+
+		//Check group looting rules.
+		if (groupIsOwner) {
+			ManagedReference<GroupObject*> group = creature->getGroup();
+			if (group == NULL)
 				return GENERALERROR;
 
-			if (arguments.toString().beginsWith("all")) {
-				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
-
-				playerManager->lootAll(creature, ai);
-			} else {
-				SceneObject* creatureInventory = ai->getSlottedObject("inventory");
-
-				if (creatureInventory == NULL)
+			switch (group->getLootRule()) {
+			case GroupObject::FREEFORALL:
+				//We allow the ninja to loot.
+				break;
+			case GroupObject::MASTERLOOTER: {
+				if (!group->checkMasterLooter(creature)) {
+					StringIdChatParameter error("@group:master_only"); //"Only the Master Looter is allowed to loot!"
+					error.setTO(group->getMasterLooterID());
+					creature->sendSystemMessage(error);
 					return GENERALERROR;
-
-					if (creatureInventory->getContainerPermissions()->getOwnerID() != creature->getObjectID() && creatureInventory->getContainerPermissions()->getOwnerID() != creature->getGroupID()) {
-						creature->sendSystemMessage("@error_message:no_corpse_permission"); //You do not have permission to access this corpse.
-						return GENERALERROR;
-						}
-
-				ai->notifyObservers(ObserverEventType::LOOTCREATURE, creature, 0);
-				creatureInventory->openContainerTo(creature);
+				}
+				break;
 			}
+			case GroupObject::LOTTERY:
+				//TODO: Send player and corpse to Lottery rule handler.
+				//return SUCCESS;
+				break;
+			case GroupObject::RANDOM:
+				//TODO: Send player and corpse to Random rule handler.
+				//return SUCCESS;
+				break;
+			default:
+				return GENERALERROR;
+			}
+		}
+
+		//Allow player to loot the corpse.
+		if (arguments.toString().beginsWith("all")) {
+			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
+			playerManager->lootAll(creature, ai);
+		} else {
+			ai->notifyObservers(ObserverEventType::LOOTCREATURE, creature, 0);
+			creatureInventory->openContainerTo(creature);
+		}
 
 		return SUCCESS;
 	}

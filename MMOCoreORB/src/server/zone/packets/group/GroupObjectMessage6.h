@@ -64,8 +64,8 @@ public:
 		insertAscii("");
 		insertShort((uint16)gr->getGroupLevel());
 		insertInt(0);
-		insertLong(0);
-		insertInt(0);
+		insertLong(gr->getMasterLooterID()); //Master Looter objectID
+		insertInt(gr->getLootRule()); //Loot Rule: 0=Free4All, 1=Master Looter, 2=Lottery, 3=Random
 		
 		setSize();
 	}
