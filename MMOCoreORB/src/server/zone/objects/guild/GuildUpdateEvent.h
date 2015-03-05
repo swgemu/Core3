@@ -32,6 +32,11 @@ public:
 
 		Locker locker(guild);
 
+		if (server->isServerLoading()) {
+			guild->rescheduleUpdateEvent(10);
+			return;
+		}
+
 		GuildManager* guildManager = server->getGuildManager();
 
 		guildManager->processGuildUpdate(guild);

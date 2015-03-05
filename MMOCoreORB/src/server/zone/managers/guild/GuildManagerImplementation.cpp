@@ -159,7 +159,7 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 	// Check that members still exist
 	for (int i = 0; i < guild->getTotalMembers(); i++) {
 		uint64 memberID = guild->getMember(i);
-		CreatureObject* member = server->getObject(memberID).castTo<CreatureObject*>();
+		ManagedReference<CreatureObject*> member = server->getObject(memberID).castTo<CreatureObject*>();
 
 		if (member == NULL) {
 			guild->removeMember(memberID);
