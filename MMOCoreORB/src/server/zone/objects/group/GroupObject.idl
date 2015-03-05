@@ -65,7 +65,7 @@ class GroupObject extends SceneObject {
 	
 	@dereferenced	
 	VectorMap<unsigned int, Reference<UpdateNearestMissionForGroupTask> > updateNearestMissionForGroupTasks;
-	
+
 	protected transient SquadLeaderBonusTask squadLeaderBonusTask;
 	
 	ChatRoom chatRoom;
@@ -73,6 +73,16 @@ class GroupObject extends SceneObject {
 	int groupLevel;
 
 	protected string bandSong;
+
+	int lootRule;
+
+	unsigned long masterLooterID;
+
+	public static final int FREEFORALL = 0;
+	public static final int MASTERLOOTER = 1;
+	public static final int LOTTERY = 2;
+	public static final int RANDOM = 3;
+
 	
 	public GroupObject() {		
 		groupLevel = 0;
@@ -82,6 +92,10 @@ class GroupObject extends SceneObject {
 		chatRoom = null;
 
 		bandSong = "";
+
+		lootRule = FREEFORALL;
+		masterLooterID = 0;
+		
 	}
 	
 	@dirty
@@ -167,7 +181,7 @@ class GroupObject extends SceneObject {
 	public GroupList getGroupList() {
 		return groupMembers;
 	}
-	
+
 	@dirty
 	public boolean isGroupObject() {
 		return true;
@@ -196,7 +210,31 @@ class GroupObject extends SceneObject {
 		bandSong = song;
 	}
 
+	@read
+	public int getLootRule() {
+		return lootRule;
+	}
+
+	public void setLootRule(int newRule) {
+		lootRule = newRule;
+	}
+
+	@read
+	public unsigned long getMasterLooterID() {
+		return masterLooterID;
+	}
+
+	public void setMasterLooterID(unsigned long newID) {
+		masterLooterID = newID;
+	}
+
+	public boolean checkMasterLooter(SceneObject object) {
+		return object.getObjectID() == masterLooterID;
+	}
+
 	public native void scheduleUpdateNearestMissionForGroup(unsigned int planetCRC);
 	
 	public native void scheduleSquadLeaderBonusTask();
+
+	public native void updateLootRules();
 }
