@@ -98,6 +98,16 @@ public:
 		startUpdate(0x04);
 		insertShort(value);
 	}
+
+	void updateLootRules(uint64 looter, int rule) {
+		startUpdate(0x06);
+		insertLong(looter);
+		startUpdate(0x07);
+		insertInt(rule);
+	}
+
+
+
 };
 
 #endif /*GROUPOBJECTDELTAMESSAGE6_H_*/

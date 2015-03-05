@@ -53,6 +53,7 @@ import engine.lua.LuaObject;
 import engine.service.proto.BaseMessage;
 include server.zone.objects.group.GroupList;
 include server.zone.managers.mission.MissionManager;
+include server.zone.managers.group.GroupManager;
 import server.zone.objects.group.tasks.UpdateNearestMissionForGroupTask;
 import server.zone.objects.player.events.SquadLeaderBonusTask;
 //import server.zone.objects.group.tasks.UpdateNearestMissionForGroupTaskList;
@@ -65,7 +66,7 @@ class GroupObject extends SceneObject {
 	
 	@dereferenced	
 	VectorMap<unsigned int, Reference<UpdateNearestMissionForGroupTask> > updateNearestMissionForGroupTasks;
-	
+
 	protected transient SquadLeaderBonusTask squadLeaderBonusTask;
 	
 	ChatRoom chatRoom;
@@ -73,6 +74,10 @@ class GroupObject extends SceneObject {
 	int groupLevel;
 
 	protected string bandSong;
+
+	int lootRule;
+
+	unsigned long masterLooterID;
 	
 	public GroupObject() {		
 		groupLevel = 0;
@@ -82,6 +87,10 @@ class GroupObject extends SceneObject {
 		chatRoom = null;
 
 		bandSong = "";
+
+		lootRule = GroupManager.FREEFORALL;
+		masterLooterID = 0;
+		
 	}
 	
 	@dirty
@@ -100,9 +109,9 @@ class GroupObject extends SceneObject {
 */
 	@local
 	@dirty
-	public native void sendSystemMessage(@dereferenced StringIdChatParameter param);
+	public native void sendSystemMessage(@dereferenced StringIdChatParameter param, boolean sendLeader = true);
 	@dirty
-	public native void sendSystemMessage(final string fullPath);
+	public native void sendSystemMessage(final string fullPath, boolean sendLeader = true);
 	
 	public native void addMember(SceneObject newMember);
 	public native void removeMember(SceneObject member);
@@ -167,7 +176,7 @@ class GroupObject extends SceneObject {
 	public GroupList getGroupList() {
 		return groupMembers;
 	}
-	
+
 	@dirty
 	public boolean isGroupObject() {
 		return true;
@@ -196,7 +205,31 @@ class GroupObject extends SceneObject {
 		bandSong = song;
 	}
 
+	@read
+	public int getLootRule() {
+		return lootRule;
+	}
+
+	public void setLootRule(int newRule) {
+		lootRule = newRule;
+	}
+
+	@read
+	public unsigned long getMasterLooterID() {
+		return masterLooterID;
+	}
+
+	public void setMasterLooterID(unsigned long newID) {
+		masterLooterID = newID;
+	}
+
+	public boolean checkMasterLooter(SceneObject object) {
+		return object.getObjectID() == masterLooterID;
+	}
+
 	public native void scheduleUpdateNearestMissionForGroup(unsigned int planetCRC);
 	
 	public native void scheduleSquadLeaderBonusTask();
+
+	public native void updateLootRules();
 }

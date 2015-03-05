@@ -2920,7 +2920,7 @@ int CreatureObjectImplementation::handleObjectMenuSelect(CreatureObject* player,
 
 			return 0;
 		case 36:
-			getZoneServer()->getPlayerManager()->lootAll(player, _this.get());
+			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "all");
 
 			return 0;
 		}
