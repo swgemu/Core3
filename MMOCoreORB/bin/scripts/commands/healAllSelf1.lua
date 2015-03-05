@@ -42,8 +42,7 @@
 --true = 1, false = 0
 
 HealAllSelf1Command = {
-        name = "healallself1",
-	forceCost = 340,
+        name = "healallself1"
 }
 
 AddCommand(HealAllSelf1Command)

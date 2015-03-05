@@ -40,85 +40,30 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef HEALSTATESSELFCOMMAND_H_
 #define HEALSTATESSELFCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "JediQueueCommand.h"
+#include "server/zone/objects/creature/CreatureState.h"
 
-class HealStatesSelfCommand : public QueueCommand {
+class HealStatesSelfCommand : public JediQueueCommand {
 public:
 
 	HealStatesSelfCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
-	}
-
-	bool canPerformSkill(CreatureObject* creature) {
-		if (!creature->hasState(CreatureState::STUNNED) && !creature->hasState(CreatureState::DIZZY) && !creature->hasState(CreatureState::INTIMIDATED) && !creature->hasState(CreatureState::BLINDED)) {
-			creature->sendSystemMessage("@healing_response:healing_response_72"); // You have no states of that type.		
-			return false;
-		}					
-
-		return true;
+: JediQueueCommand(name, server) {
+		clientEffect = "clienteffect/pl_force_heal_self.cef";
+		healStates.add(CreatureState::STUNNED);
+		healStates.add(CreatureState::BLINDED);
+		healStates.add(CreatureState::DIZZY);
+		healStates.add(CreatureState::INTIMIDATED);
+		isSelfHeal = true;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		if (isWearingArmor(creature)) {
-			return NOJEDIARMOR;
-		}
-
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
-
-		if (playerObject != NULL) {
-			if (playerObject->getForcePower() <= 50) {
-				creature->sendSystemMessage("@jedi_spam:no_force_power");
-				return GENERALERROR;
-			}
-
-			// At this point, the player has enough Force... Can they perform skill?
-
-			if (!canPerformSkill(creature))
-				return GENERALERROR;
-
-
-			int forceCost = 50; // Static amount.
-
-			if (creature->hasState(CreatureState::STUNNED))
-			creature->removeStateBuff(CreatureState::STUNNED);
-
-			if (creature->hasState(CreatureState::DIZZY))
-			creature->removeStateBuff(CreatureState::DIZZY);
-
-			if (creature->hasState(CreatureState::BLINDED))
-			creature->removeStateBuff(CreatureState::BLINDED);
-
-			if (creature->hasState(CreatureState::INTIMIDATED))
-			creature->removeStateBuff(CreatureState::INTIMIDATED);
-
-			// Play client effect, and deduct Force Power.
-
-			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
-			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-
-		return SUCCESS;
-		}
-
-		return GENERALERROR;
-	}
-
-
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
-		return defaultTime * 2.0;
+		return doJediHealCommand(creature, target, arguments);
 	}
 
 };
