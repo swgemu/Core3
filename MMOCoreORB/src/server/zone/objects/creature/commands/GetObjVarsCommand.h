@@ -70,8 +70,8 @@ public:
 				tokenizer.setDelimeter(" ");
 
 				// if we have an argument passed, use it
-				if (tokenizer.hasMoreTokens())
-				{	try {
+				if (tokenizer.hasMoreTokens()) {
+					try {
 						objectID = tokenizer.getLongToken();
 					} catch ( Exception& err ) {
 						creature->sendSystemMessage("INVALID OBJECT.  Please specify a valid object name or objectid");
@@ -82,14 +82,14 @@ public:
 					objectID = target;
 				}
 
-				if ( objectID == 0 ){
+				if ( objectID == 0 ) {
 					creature->sendSystemMessage("You need to target an object or specify an object id: /getobjvars <objectID> ");
 				}
 
 				ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(objectID, false);
 
-				if ( object == NULL){
-					creature->sendSystemMessage("ERROR GETTIGN OBJECT - NULL" + String::valueOf(target));
+				if ( object == NULL) {
+					creature->sendSystemMessage("ERROR GETTIGN OBJECT - NULL " + String::valueOf(objectID));
 				} else {
 
 					String strClassName = object->getObjectNameStringIdName();
@@ -102,7 +102,7 @@ public:
 					msg << endl << "OBJECTID: " << String::valueOf(objectID) << endl;
 					msg << "OBJECTTYPE: " << String::valueOf(object->getGameObjectType()) << endl;
 
-					if(object->isCreatureObject()){
+					if(object->isCreatureObject()) {
 						msg << "Creature First Name: " << object.castTo<CreatureObject*>()->getFirstName() << endl;
 					}
 
@@ -113,8 +113,13 @@ public:
 					msg << "Path: " << object->getObjectTemplate()->getFullTemplateString() << endl;
 					msg << "Children: " << String::valueOf(object->getChildObjects()->size()) << endl;
 					msg << "PARENT OBJECTID: " << String::valueOf(parentID) << endl;
+
 					if(object->getZone() != NULL)
-						msg << "location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName();
+						msg << "location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName() << endl;
+
+					ManagedReference<CityRegion*> city = object->getCityRegion().get();
+					if (city != NULL)
+						msg << "City Region oid: " << String::valueOf(city->getObjectID()) << ", name: " << city->getRegionDisplayedName() << endl;
 
 					creature->sendSystemMessage(msg.toString());
 				}

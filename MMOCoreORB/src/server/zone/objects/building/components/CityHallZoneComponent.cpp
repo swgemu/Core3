@@ -18,14 +18,6 @@ void CityHallZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, boo
 	if (cityRegion != NULL ) {
 		Locker clocker(cityRegion, sceneObject);
 
-		int i;
-		for ( i = CityManager::METROPOLIS; i > 0; i--)
-			cityRegion->destroyAllStructuresForRank(uint8(i), false);
-
-		cityRegion->removeAllTerminals();
-		cityRegion->removeAllSkillTrainers();
-		cityRegion->removeAllDecorations();
-
 		if (cityRegion->getCityHall() == sceneObject) {
 			cityRegion->setCityHall(NULL);
 		}

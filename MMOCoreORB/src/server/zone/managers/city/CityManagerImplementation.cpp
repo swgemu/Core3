@@ -241,7 +241,7 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 
 	Vector < byte > *citiesAllowed = &citiesAllowedPerRank.get(planetName.toLowerCase());
 
-	if(citiesAllowed->size()== 0){
+	if(citiesAllowed->size() == 0){
 		creature->sendSystemMessage("INVALID PLANET");
 		return;
 	}
@@ -254,7 +254,7 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 	report << endl << "===============================" << endl;
 	report << "City Report / Planet = " << planetName.toUpperCase() << "  Rank = " << String::valueOf(rank) << endl;
 	report << "===================================" << endl;
-	report << "City, oid, citizens, civicstructures, totalstructures, treasury, Loc, Next Update" << endl;
+	report << "City, oid, citizens, civicstructures, totalstructures, treasury, Loc, Next Update, next citizen Assessment (if pending)" << endl;
 
 
 
@@ -280,7 +280,13 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 			<< ", " << String::valueOf(city->getAllStructuresCount())
 			<< ", " << String::valueOf((int)city->getCityTreasury())
 			<< ",x: " << String::valueOf(city->getPositionX()) << " y:" << String::valueOf(city->getPositionY())
-			<< ", " << city->getNextUpdateTime()->getFormattedTime()<<  endl;
+			<< ", " << city->getNextUpdateTime()->getFormattedTime();
+
+		if (city->hasAssessmentPending()) {
+			report << ", " << city->getNextAssessmentTime()->getFormattedTime() << endl;
+		} else {
+			report << endl;
+		}
 
 	}
 
@@ -640,6 +646,10 @@ void CityManagerImplementation::assessCitizens(CityRegion* city) {
 
 		if (cityhall != NULL) {
 			StructureManager::instance()->destroyStructure(cityhall);
+		} else {
+			locker.release();
+
+			destroyCity(city);
 		}
 
 	} else {
@@ -1183,17 +1193,17 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 		city->scheduleCitizenAssessment(oldCityGracePeriod * 60);
 	}
 
+	if (newRank < TOWNSHIP) {
+		city->setCitySpecialization("");
+
+		if (city->isRegistered())
+			unregisterCity(city, NULL);
+	}
+
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
 
 	if (obj != NULL && obj->isPlayerCreature()) {
 		CreatureObject* mayor = cast<CreatureObject*> (obj.get());
-
-		if (newRank < TOWNSHIP) {
-			city->setCitySpecialization("");
-
-			if (city->isRegistered())
-				unregisterCity(city, mayor);
-		}
 
 		ChatManager* chatManager = zoneServer->getChatManager();
 
@@ -1285,9 +1295,17 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 
 	Locker lock(city);
 
-	city->destroyActiveAreas();
-
 	city->cancelTasks();
+
+	for (int i = CityManager::METROPOLIS; i > 0; i--) {
+		city->destroyAllStructuresForRank(uint8(i), false);
+	}
+
+	city->removeAllTerminals();
+	city->removeAllSkillTrainers();
+	city->removeAllDecorations();
+
+	city->destroyActiveAreas();
 
 	ManagedReference<StructureObject*> cityhall = city->getCityHall();
 
@@ -1631,7 +1649,8 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 		aa->setPlanetMapCategory(NULL);
 	}
 
-	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
+	if (mayor != NULL)
+		mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
 }
 
 void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
