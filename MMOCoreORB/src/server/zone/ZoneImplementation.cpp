@@ -135,10 +135,7 @@ void ZoneImplementation::startManagers() {
 
 	gcwManager->start();
 
-	updateCityRegions();
-
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
-
 
 
 	managersStarted = true;

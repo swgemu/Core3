@@ -296,6 +296,13 @@ void ZoneServerImplementation::startManagers() {
 
 	cityManager->loadCityRegions();
 
+	for (int i = 0; i < zones->size(); ++i) {
+		Zone* zone = zones->get(i);
+		if (zone != NULL) {
+			zone->updateCityRegions();
+		}
+	}
+
 	//Start global screen plays
 	DirectorManager::instance()->loadPersistentEvents();
 	DirectorManager::instance()->loadPersistentStatus();

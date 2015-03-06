@@ -252,11 +252,9 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 
 	StringBuffer report;
 	report << endl << "===============================" << endl;
-	report << "City Report / Planet = " << planetName.toUpperCase() << "  Rank = " << String::valueOf(rank) << endl;
+	report << "City Info / Planet = " << planetName.toUpperCase() << "  Rank = " << String::valueOf(rank) << endl;
 	report << "===================================" << endl;
-	report << "City, oid, citizens, civicstructures, totalstructures, treasury, Loc, Next Update, next citizen Assessment (if pending)" << endl;
-
-
+	report << "City, oid, mayorid, cityhallid, regions, citizens, civicstructures, totalstructures, treasury, Loc, Next Update, next citizen Assessment (if pending)" << endl;
 
 	for (int i = 0; i < cities.size(); ++i) {
 		CityRegion* city = cities.get(i);
@@ -272,14 +270,25 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 			continue;
 		}
 
+		ManagedReference<StructureObject*> cityHall = city->getCityHall();
+
 		totalCitiesAtRank++;
 		report << city->getRegionName()
 			<< ", " << String::valueOf(city->getObjectID())
+			<< ", " << String::valueOf(city->getMayorID());
+
+		if (cityHall != NULL) {
+			report << ", " << String::valueOf(cityHall->getObjectID());
+		} else {
+			report << ", NULL";
+		}
+
+		report << ", " << String::valueOf(city->getRegionsCount())
 			<< ", " << String::valueOf(city->getCitizenCount())
 			<< ", " << String::valueOf(city->getStructuresCount())
 			<< ", " << String::valueOf(city->getAllStructuresCount())
 			<< ", " << String::valueOf((int)city->getCityTreasury())
-			<< ",x: " << String::valueOf(city->getPositionX()) << " y:" << String::valueOf(city->getPositionY())
+			<< ", x: " << String::valueOf(city->getPositionX()) << " y:" << String::valueOf(city->getPositionY())
 			<< ", " << city->getNextUpdateTime()->getFormattedTime();
 
 		if (city->hasAssessmentPending()) {
@@ -296,6 +305,10 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 	report << "Total Errored Cities (all planets & ranks): " << String::valueOf(totalErroredCities) << endl;
 	report << "==============================" << endl;
 	creature->sendSystemMessage(report.toString());
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+	String title = "cityInfo - " + planetName.toUpperCase() + ", Rank " + String::valueOf(rank);
+	chatManager->sendMail("System", title , report.toString(), creature->getFirstName());
 }
 
 bool CityManagerImplementation::validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y) {
@@ -621,6 +634,13 @@ void CityManagerImplementation::sendCitizenshipReport(CityRegion* city, Creature
 void CityManagerImplementation::assessCitizens(CityRegion* city) {
 	Locker locker(city);
 
+	if (zoneServer->isServerLoading()) {
+		city->scheduleCitizenAssessment(10);
+		return;
+	}
+
+	info("Assessing city citizens: " + city->getRegionName(), true);
+
 	city->cleanupCitizens();
 
 	int citizens = city->getCitizenCount();
@@ -665,7 +685,7 @@ void CityManagerImplementation::assessCitizens(CityRegion* city) {
 }
 
 void CityManagerImplementation::processCityUpdate(CityRegion* city) {
-	info("Processing city update: " + city->getRegionName());
+	info("Processing city update: " + city->getRegionName(), true);
 
 	int cityRank;
 	float radius;
@@ -1276,18 +1296,9 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {
+	info("Destroying city: " + city->getRegionDisplayedName(), true);
+
 	Locker locker(_this.get());
-
-	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
-	Zone* zone = NULL;
-
-	if (obj != NULL && obj->isCreatureObject()) {
-		CreatureObject* mayor = cast<CreatureObject*> (obj.get());
-
-		unregisterCity(city, mayor);
-	}
-
-	zone = city->getZone();
 
 	cities.drop(city->getRegionName());
 
@@ -1296,6 +1307,8 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	Locker lock(city);
 
 	city->cancelTasks();
+
+	unregisterCity(city, NULL);
 
 	for (int i = CityManager::METROPOLIS; i > 0; i--) {
 		city->destroyAllStructuresForRank(uint8(i), false);
@@ -1310,6 +1323,8 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 	ManagedReference<StructureObject*> cityhall = city->getCityHall();
 
 	if (cityhall != NULL) {
+		Zone* zone = city->getZone();
+
 		if (zone == NULL)
 			zone = cityhall->getZone();
 
