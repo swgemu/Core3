@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_370c8094",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-06T23:00:32Z",
+      "side": 1,
+      "message": "Move this to earlier in the method. You want group to be locked before setMasterLooterID() is called.",
+      "revId": "6b0035de86727086c70f455af5377866acccbaf1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_171184ac",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-06T23:00:32Z",
+      "side": 1,
+      "message": "Locker locker(group);",
+      "revId": "6b0035de86727086c70f455af5377866acccbaf1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_f725c80a",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-06T23:00:32Z",
+      "side": 1,
+      "message": "Wouldn\u0027t you want to send notificationLeader to the leader in this case? I would add an additional argument to GroupObject::sendSystemMessage() to give the option of sending to everyone but the leader. Then you can send the leader message separately here.",
+      "revId": "6b0035de86727086c70f455af5377866acccbaf1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
