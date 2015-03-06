@@ -47,7 +47,9 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/chat/ChatManager.h"
 
 class SocialInternalCommand : public QueueCommand {
 public:
@@ -72,6 +74,8 @@ public:
 
 		chatManager->handleSocialInternalMessage(creature, arguments);
 
+		printf("SocialInternalCommand args: %s \n", arguments.toCharArray());
+
 		// Parse arguments
 		StringTokenizer tokenizer(arguments.toString());
 		uint64 targetid;
@@ -79,13 +83,20 @@ public:
 		try {
 			targetid = tokenizer.getLongToken();
 			emoteid = tokenizer.getIntToken();
+
+			String socialType = creature->getZoneServer()->getChatManager()->getSocialType(emoteid);
+			int reaction = creature->getZone()->getCreatureManager()->getReactionLevel(socialType);
+			printf("Social type: %s, reaction level: %i \n", socialType.toCharArray(), reaction);
 		} catch (const Exception& e) {
 			return GENERALERROR;
 		}
 
 		// If target is a pet, enqueue command to handle it
 		Reference<AiAgent*> aiAgent = server->getZoneServer()->getObject(targetid, true).castTo<AiAgent*>();
-		if( aiAgent != NULL && aiAgent->isPet() ){
+		if(aiAgent == NULL)
+			return SUCCESS;
+
+		if (aiAgent->isPet()) {
 
 			Locker crossLocker(aiAgent, creature);
 
@@ -95,6 +106,8 @@ public:
 
 			petManager->enqueueOwnerOnlyPetCommand(creature, aiAgent,String("petEmote").toLowerCase().hashCode(), arguments.toString() );
 
+		} else {
+			creature->getZone()->getCreatureManager()->emoteReaction(creature, aiAgent, emoteid);
 		}
 
 		return SUCCESS;

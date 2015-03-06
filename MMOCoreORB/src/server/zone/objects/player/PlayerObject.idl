@@ -109,6 +109,8 @@ class PlayerObject extends IntangibleObject {
 	
 	protected int drinkFilling;
 	protected int drinkFillingMax;
+
+	protected int reactionFines;
 	
 	protected string starterProfession;
 	
@@ -863,6 +865,11 @@ class PlayerObject extends IntangibleObject {
 	@dirty
 	public int getConsentListSize() {
 		return consentList.size();
+	}
+
+	@dirty
+	public int getReactionFines() {
+		return reactionFines;
 	}
 	
 	@local
@@ -1739,5 +1746,17 @@ class PlayerObject extends IntangibleObject {
 	}
 
 	public native int getCharacterAgeInDays();
+
+	public void addToReactionFines(int fine) {
+		reactionFines = reactionFines + fine;
+	}
+
+	public void setReactionFines(int amount) {
+		reactionFines = amount;
+	}
+
+	public void subtractFromReactionFines(int amount) {
+		reactionFines = reactionFines - amount;
+	}
 }
 

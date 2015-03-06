@@ -30,6 +30,7 @@
 #include "server/zone/objects/creature/events/SampleDnaTask.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/objects/region/Region.h"
@@ -44,6 +45,8 @@
 #include "server/zone/packets/object/SpatialChat.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/tangible/LairObject.h"
+#include "server/zone/objects/player/sui/callbacks/ReactionFinePaymentSuiCallback.h"
+
 
 Mutex CreatureManagerImplementation::loadMutex;
 
@@ -1215,4 +1218,242 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 
 Vector3 CreatureManagerImplementation::getRandomJediTrainer() {
 	return spawnAreaMap.getRandomJediTrainer();
+}
+
+void CreatureManagerImplementation::loadReactionData() {
+	Lua* lua = new Lua();
+	lua->init();
+
+	if (!lua->runFile("scripts/managers/reaction_manager.lua")) {
+		error("Cannot read reaction manager data.");
+		return;
+	}
+
+	LuaObject emoteReactions = lua->getGlobalObject("emoteReactionLevels");
+
+	if (!emoteReactions.isValidTable()) {
+		error("Invalid emoteReactionLevels table.");
+	} else {
+
+		for(int i = 1; i <= emoteReactions.getTableSize(); ++i) {
+			LuaObject entry = emoteReactions.getObjectAt(i);
+
+			String emote = entry.getStringAt(1);
+			int level = entry.getIntAt(2);
+
+			reactionEmotes.put(emote, level);
+
+			entry.pop();
+		}
+
+		emoteReactions.pop();
+	}
+
+	LuaObject reactionRanks = lua->getGlobalObject("imperialReactionRanks");
+
+	if (reactionRanks.isValidTable()) {
+		for(int i = 1; i <= reactionRanks.getTableSize(); ++i) {
+			LuaObject entry = reactionRanks.getObjectAt(i);
+
+			String name = entry.getStringAt(1);
+			int min = entry.getIntAt(2);
+			int max = entry.getIntAt(3);
+
+			Reference<ReactionRankData*> data = new ReactionRankData(name, min, max);
+
+			reactionRankData.add(data);
+
+			entry.pop();
+		}
+
+		reactionRanks.pop();
+	}
+
+	LuaObject luaObject = lua->getGlobalObject("emoteReactionFines");
+
+	if (luaObject.isValidTable()) {
+		for (int i = 1; i <= luaObject.getTableSize(); ++i) {
+			LuaObject reactionData = luaObject.getObjectAt(i);
+
+			if (reactionData.isValidTable()) {
+				int reactLevel = reactionData.getIntAt(1);
+				bool isImperial = reactionData.getBooleanAt(2);
+				bool isHuman = reactionData.getBooleanAt(3);
+				int rankCompare = reactionData.getIntAt(4);
+				int creditFine = reactionData.getIntAt(5);
+				int factionFine = reactionData.getIntAt(6);
+				bool doKnockdown = reactionData.getBooleanAt(7);
+				int minQuip = reactionData.getIntAt(8);
+				int maxQuip = reactionData.getIntAt(9);
+				String responseEmote = reactionData.getStringAt(10);
+
+				Reference<EmoteReactionFine*> data = new EmoteReactionFine(reactLevel, isImperial, isHuman, rankCompare, creditFine, factionFine, doKnockdown, minQuip, maxQuip, responseEmote);
+
+				emoteReactionFines.add(data);
+			}
+
+			reactionData.pop();
+		}
+	}
+
+	luaObject.pop();
+
+	info("Loaded " + String::valueOf(emoteReactionFines.size()) + " emote reaction records.", true);
+}
+
+void CreatureManagerImplementation::emoteReaction(CreatureObject* emoteUser, CreatureObject* emoteTarget, int emoteid) {
+	if (emoteUser == NULL || emoteTarget == NULL)
+		return;
+
+	Zone* zone = emoteUser->getZone();
+
+	if (zone == NULL)
+		return;
+
+	// Only Imperials react to emotes (non droids)
+	if (!emoteTarget->isImperial() || !emoteTarget->isAiAgent() || emoteTarget->isDroidObject())
+		return;
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+	PlayerObject* playerObject = emoteUser->getPlayerObject();
+
+	if (playerObject == NULL)
+		return;
+
+	String socialType = chatManager->getSocialType(emoteid);
+
+	// Handle hail if player has existing fines
+	if (socialType == "hail" && playerObject->getReactionFines() != 0) {
+		StringBuffer suiFineMsg;
+		suiFineMsg << "@stormtrooper_attitude/st_response:pay_outstanding_fine_prefix \n \n @stormtrooper_attitude/st_response:pay_fine_total_suffix ";
+		suiFineMsg << String::valueOf(playerObject->getReactionFines()) << " @stormtrooper_attitude/st_response:imperial_fine_credits";
+
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(emoteUser, SuiWindowType::REACTION_FINE);
+		box->setPromptTitle("@stormtrooper_attitude/st_response:imperial_fine_t"); // Imperial Fine
+		box->setPromptText(suiFineMsg.toString());
+		box->setCallback(new ReactionFinePaymentSuiCallback(zoneServer));
+		box->setUsingObject(emoteTarget);
+		box->setForceCloseDistance(16.f);
+		playerObject->addSuiBox(box);
+		emoteUser->sendMessage(box->generateMessage());
+
+		return;
+	}
+
+	int reactionLevel = getReactionLevel(socialType);
+	EmoteReactionFine* reactionFine = getEmoteReactionFine(emoteUser, emoteTarget, reactionLevel);
+
+	// No reaction if there is no fine data
+	if (reactionFine == NULL)
+		return;
+
+	int randomQuip = reactionFine->getRandomQuip();
+	printf("emote reaction data, credit fine: %i, faction fine: %i, rand quip: %i, string random quip: %s \n", reactionFine->getCreditFine(), reactionFine->getFactionFine(), randomQuip, String::valueOf(randomQuip).toCharArray());
+
+	if (randomQuip != -1) {
+		chatManager->broadcastMessage(emoteTarget, getReactionQuip(randomQuip), 0, 0, 0);
+	}
+
+	if (reactionFine->getFactionFine() != 0)
+		playerObject->decreaseFactionStanding("imperial", reactionFine->getFactionFine());
+
+	if (reactionFine->shouldKnockdown()) {
+		// TODO: add knockdown functionality
+	}
+
+	if (reactionFine->getCreditFine() != 0) {
+		StringBuffer suiFineMsg;
+		suiFineMsg << "@stormtrooper_attitude/st_response:imperial_fine_" << String::valueOf(reactionFine->getCreditFine());
+		if (playerObject->getReactionFines() != 0) {
+			suiFineMsg << " @stormtrooper_attitude/st_response:imperial_fine_outstanding " << String::valueOf(playerObject->getReactionFines() + reactionFine->getCreditFine()) << " @stormtrooper_attitude/st_response:imperial_fine_credits";
+		}
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(emoteUser, SuiWindowType::REACTION_FINE);
+		box->setPromptTitle("@stormtrooper_attitude/st_response:imperial_fine_t"); // Imperial Fine
+		box->setPromptText(suiFineMsg.toString());
+
+		playerObject->addSuiBox(box);
+		emoteUser->sendMessage(box->generateMessage());
+
+		playerObject->addToReactionFines(reactionFine->getCreditFine());
+
+	}
+}
+
+EmoteReactionFine* CreatureManagerImplementation::getEmoteReactionFine(CreatureObject* emoteUser, CreatureObject* emoteTarget, int level) {
+	if (emoteUser == NULL)
+		return NULL;
+
+	for (int i = 0; i < emoteReactionFines.size(); i++) {
+		Reference<EmoteReactionFine*> data = emoteReactionFines.get(i);
+
+		if (level == data->getReactionLevel() && emoteUser->isImperial() == data->isImperial() && data->isHuman() == (emoteUser->getSpecies() == 0)) {
+			if (data->isImperial()) {
+				if (!emoteTarget->isAiAgent())
+					return NULL;
+
+				ManagedReference<AiAgent*> targetAgent = cast<AiAgent*>(emoteTarget);
+
+				if (targetAgent == NULL)
+					return NULL;
+
+				int userFactionRank = emoteUser->getFactionRank();
+				int targetReactionRank = emoteTarget->getReactionRank();
+
+				printf("target template: %s, user rank: %i, target rank: %i \n", targetAgent->getCreatureTemplate()->getTemplateName().toCharArray(), userFactionRank, targetReactionRank);
+
+				if (targetReactionRank == 0) {
+					Reference<ReactionRankData*> rankData = getReactionRankData(targetAgent->getCreatureTemplate()->getTemplateName());
+
+					if (rankData != NULL) {
+						targetReactionRank = rankData->getRandomRank();
+						// Set rank to creature object so that it isnt randomized on every emote
+						emoteTarget->setReactionRank(targetReactionRank);
+					}
+				}
+
+				// No reaction if the target has no reaction rank
+				if (targetReactionRank == 0)
+					return NULL;
+
+				printf("user faction rank: %i, target faction rank: %i \n", userFactionRank, targetReactionRank);
+
+				if (userFactionRank > targetReactionRank && data->getRankComparison() == 1) {
+					return data;
+				} else if (userFactionRank < targetReactionRank && data->getRankComparison() == -1) {
+					return data;
+				} else if (userFactionRank == targetReactionRank && data->getRankComparison() == 0) {
+					return data;
+				} else {
+					continue;
+				}
+			} else {
+				return data;
+			}
+		}
+	}
+
+	return NULL;
+}
+
+ReactionRankData* CreatureManagerImplementation::getReactionRankData(const String& name) {
+	for (int i = 0; i < reactionRankData.size(); i++) {
+		Reference<ReactionRankData*> data = reactionRankData.get(i);
+
+		if (data->getTemplateName() == name)
+			return data;
+	}
+
+	return NULL;
+}
+
+String CreatureManagerImplementation::getReactionQuip(int num) {
+	StringBuffer quip;
+	quip << "@stormtrooper_attitude/st_response:st_response_";
+
+	if (num < 10)
+		quip << "0";
+
+	quip << String::valueOf(num);
+
+	return quip.toString();
 }

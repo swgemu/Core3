@@ -157,6 +157,8 @@ void CreatureObjectImplementation::initializeMembers() {
 	factionRank = 0;
 	faction = 0;
 
+	reactionRank = 0;
+
 	stateBitmask = 0;
 	terrainNegotiation = 0.0f;
 

@@ -16,6 +16,8 @@ import system.util.Vector;
 include server.zone.managers.creature.CreatureMap;
 include server.zone.managers.creature.SpawnAreaMap;
 include server.zone.managers.creature.AiMap;
+include server.zone.managers.creature.EmoteReactionFine;
+include server.zone.managers.creature.ReactionRankData;
 import engine.util.u3d.Vector3;
 import system.thread.Mutex;
 
@@ -35,11 +37,23 @@ class CreatureManager extends ZoneManager {
 
 	@dereferenced
 	protected SortedVector<AiAgent> reservePool;
+
+	@dereferenced
+	private transient VectorMap<int, string> socialTypes;
+
+	@dereferenced
+	protected Vector<Reference<EmoteReactionFine> > emoteReactionFines;
+
+	@dereferenced
+	protected Vector<Reference<ReactionRankData> > reactionRankData;
 	
 	protected int spawnedRandomCreatures;
 
 	@dereferenced
 	protected static transient Mutex loadMutex;
+
+	@dereferenced
+	private transient VectorMap<string, int> reactionEmotes;
 
 	public static final short NOTMILKED = 0x00;
 	public static final short BEINGMILKED = 0x01;
@@ -82,6 +96,7 @@ class CreatureManager extends ZoneManager {
 	
 	public void initialize() {
 		loadSpawnAreas();
+		loadReactionData();
 	}
 
 	public native SceneObject spawn(unsigned int lairTemplate, int difficultyLevel, int difficulty, float x, float z, float y, float size);
@@ -178,5 +193,23 @@ class CreatureManager extends ZoneManager {
 	
 	public native boolean addWearableItem(CreatureObject creature, TangibleObject clothing);
 
+	private native void loadReactionData();
+
+	public abstract int getReactionLevel(final string emote) {
+		if (reactionEmotes.contains(emote))
+			return reactionEmotes.get(emote);
+
+		return 0;
+	}
+
+	@local
+	public native EmoteReactionFine getEmoteReactionFine(CreatureObject emoteUser, CreatureObject emoteTarget, int reactionLevel);
+	
+	@local
+	public native ReactionRankData getReactionRankData(final string name);
+
+	public native string getReactionQuip(int num);
+
+	public native void emoteReaction(CreatureObject emoteUser, CreatureObject emoteTarget, int emoteid);
 }
 
