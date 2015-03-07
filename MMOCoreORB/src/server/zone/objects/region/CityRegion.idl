@@ -297,11 +297,6 @@ class CityRegion extends ManagedObject implements Logger {
 		return militiaMembers;
 	}
 
-	@local
-	public CitizenList getBannedPlayers() {
-		return bannedList;
-	}
-
 	@read
 	public boolean isRegistered() {
 		return registered;
@@ -380,7 +375,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
 	@dirty
-	public int getAllStructuresCount(){
+	public int getAllStructuresCount() {
 		return completeStructureList.size();
 	}
 
@@ -428,11 +423,6 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public void setRegionName(final string fullPath) {
 		regionName.setStringId(fullPath);
-	}
-
-	@local
-	public void setCityTreasury(double val) {
-		cityTreasury = val;
 	}
 
 	@local
@@ -506,41 +496,41 @@ class CityRegion extends ManagedObject implements Logger {
 		cityHall = building;
 	}
 
-	public void removeShuttleInstallation(){
+	public void removeShuttleInstallation() {
 		hasShuttle = false;
 		shuttleID = 0;
 	}
 	
 	@read
-	public boolean hasShuttleInstallation(){
+	public boolean hasShuttleInstallation() {
 		return hasShuttle;
 	}
 
-	public void setShuttleID(unsigned long id){
+	public void setShuttleID(unsigned long id) {
 		shuttleID = id;
 		hasShuttle = true;
 	}
 
 	@dirty
-	public int getMissionTerminalCount(){
+	public int getMissionTerminalCount() {
 		return cityMissionTerminals.size();
 	}
 
 	@dirty
-	public int getDecorationCount(){
+	public int getDecorationCount() {
 		return cityDecorations.size();
 	}
 
 	@dirty
-	public int getSkillTrainerCount(){
+	public int getSkillTrainerCount() {
 		return citySkillTrainers.size();
 	}
 
-	public void addMissionTerminal(SceneObject mt){
+	public void addMissionTerminal(SceneObject mt) {
 		cityMissionTerminals.put(mt);
 	}
 
-	public void addDecoration(SceneObject deco){
+	public void addDecoration(SceneObject deco) {
 		 synchronized (structureListMutex) {
 			if (!cityDecorations.contains(deco)) {
 				cityDecorations.add(deco);
@@ -548,21 +538,21 @@ class CityRegion extends ManagedObject implements Logger {
 		}
 	}
 
-	public void addSkillTrainer(SceneObject trainer){
+	public void addSkillTrainer(SceneObject trainer) {
 		citySkillTrainers.put(trainer);
 	}
 
-	public void removeMissionTerminal(SceneObject mt){
+	public void removeMissionTerminal(SceneObject mt) {
 		cityMissionTerminals.drop(mt);
 	}
 
-	public void removeDecoration(SceneObject deco){
+	public void removeDecoration(SceneObject deco) {
 		synchronized (structureListMutex) {
 			cityDecorations.removeElement(deco);
 		}
 	}
 
-	public void removeSkillTrainers(SceneObject trainer){
+	public void removeSkillTrainers(SceneObject trainer) {
 		citySkillTrainers.drop(trainer);
 	}
 
@@ -585,8 +575,6 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void removeAllTerminals();
 
 	public native void removeAllDecorations();
-
-	public native void updateMilitia();
 
 	public void addStructure(StructureObject structure) {
 		synchronized (structureListMutex) {
@@ -661,23 +649,12 @@ class CityRegion extends ManagedObject implements Logger {
 		return candidates;
 	}
 
-	@local
-	public VectorMap<unsigned long, unsigned long> getMayoralVotes() {
-		return mayoralVotes;
-	}
-
 	/**
-	 * At the end of a voting term, all candidates are removed from the ballot.
+	 * At the end of a voting term, all votes and candidates are removed from the ballot.
 	 */
-	public void resetCandidates() {
-		candidates.removeAll();
-	}
-
-	/**
-	 * All votes are removed from the ballot.
-	 */
-	public void resetMayoralVotes() {
+	public void resetBallot() {
 		mayoralVotes.removeAll();
+		candidates.removeAll();
 	}
 
 	public void removeCandidate(unsigned long candidateoid) {
@@ -692,11 +669,6 @@ class CityRegion extends ManagedObject implements Logger {
 	@dirty
 	public boolean isVotingPeriodOver() {
 		return nextInauguration.isPast();
-	}
-
-	@dirty
-	public boolean isVotingPeriod() {
-		return !nextInauguration.isPast();
 	}
 
 	@dirty
@@ -758,31 +730,31 @@ class CityRegion extends ManagedObject implements Logger {
 
 	@local
 	@dirty
-	public StructureObject getCivicStructure(int indx){
+	public StructureObject getCivicStructure(int indx) {
 		return structures.get(indx);
 	}
 
 	@local
 	@dirty
-	public StructureObject getCommercialStructure(int indx){
+	public StructureObject getCommercialStructure(int indx) {
 		return commercialStructures.get(indx);
 	}
 
 	@local
 	@dirty
-	public SceneObject getCityDecoration(int indx){
+	public SceneObject getCityDecoration(int indx) {
 		return cityDecorations.get(indx);
 	}
 
 	@local
 	@dirty
-	public SceneObject getCityMissionTerminal(int indx){
+	public SceneObject getCityMissionTerminal(int indx) {
 		return cityMissionTerminals.get(indx);
 	}
 
 	@local
 	@dirty
-	public SceneObject getCitySkillTrainer(int indx){
+	public SceneObject getCitySkillTrainer(int indx) {
 		return citySkillTrainers.get(indx);
 	}
 
@@ -801,7 +773,7 @@ class CityRegion extends ManagedObject implements Logger {
 	@dirty
 	public native boolean isInsideRadius(SceneObject obj, int radiusToUse);
 
-	public void removeAmenitiesOutsideCity(int newRadius){
+	public void removeAmenitiesOutsideCity(int newRadius) {
 		removeStructuresOutsideCity(newRadius);
 		removeDecorationsOutsideCity(newRadius);
 		removeTrainersOutsideCity(newRadius);

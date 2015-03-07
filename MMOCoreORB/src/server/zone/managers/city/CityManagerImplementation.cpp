@@ -891,7 +891,7 @@ int CityManagerImplementation::collectNonStructureMaintenance(SceneObject* objec
 
 
 		object->destroyObjectFromWorld(true);
-		object->destroyObjectFromDatabase();
+		object->destroyObjectFromDatabase(true);
 	}
 
 	return amountPaid;
@@ -1124,8 +1124,7 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city, bool override
 	//Make them the new mayor.
 	city->setMayorID(topCandidate);
 
-	city->resetMayoralVotes();
-	city->resetCandidates();
+	city->resetBallot();
 	city->resetVotingPeriod();
 
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(topCandidate);
@@ -1394,6 +1393,7 @@ void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObje
 	}
 
 	city->removeCitizen(creature->getObjectID());
+	city->setMayoralVote(creature->getObjectID(), 0);
 
 	if (city->isCandidate(creature->getObjectID())) {
 		unregisterFromMayoralRace(city, creature, true);

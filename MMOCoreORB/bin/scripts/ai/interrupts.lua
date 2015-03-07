@@ -110,7 +110,7 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	
 	if CreatureObject(pAgent):isDead() or CreatureObject(pAgent):isIncapacitated() then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1b") end
-	if CreatureObject(pObject):isDead() or CreatureObject(pObject):isIncapacitated()) then return end
+	if CreatureObject(pObject):isDead() or CreatureObject(pObject):isIncapacitated() then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1c") end
 
 	if AiAgent(pAgent):isInCombat() then return end
