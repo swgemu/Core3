@@ -51,7 +51,6 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/region/CityRegion.h"
-#include "server/zone/managers/city/CityManager.h"
 
 class PurchaseTicketCommand : public QueueCommand {
 public:
@@ -97,7 +96,7 @@ public:
 				return GENERALERROR;
 			}
 			if(!currentCity->isClientRegion()){
-				departureTax = currentCity->getTax(CityRegion::TAX_TRAVEL);
+				departureTax = currentCity->getTravelTax();
 			}
 		}
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");

@@ -642,7 +642,7 @@ int StructureManager::declareResidence(CreatureObject* player, StructureObject* 
 				return 1;
 			}
 
-			cityManager->unregisterCitizen(residentCity, player, false);
+			cityManager->unregisterCitizen(residentCity, player);
 		}
 
 		player->sendSystemMessage("@player_structure:change_residence"); //You change your residence to this building.

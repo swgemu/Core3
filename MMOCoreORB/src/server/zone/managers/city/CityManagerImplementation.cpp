@@ -891,7 +891,7 @@ int CityManagerImplementation::collectNonStructureMaintenance(SceneObject* objec
 
 
 		object->destroyObjectFromWorld(true);
-		object->destroyObjectFromDatabase();
+		object->destroyObjectFromDatabase(true);
 	}
 
 	return amountPaid;
@@ -1124,8 +1124,7 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city, bool override
 	//Make them the new mayor.
 	city->setMayorID(topCandidate);
 
-	city->resetMayoralVotes();
-	city->resetCandidates();
+	city->resetBallot();
 	city->resetVotingPeriod();
 
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(topCandidate);
@@ -1368,7 +1367,7 @@ void CityManagerImplementation::registerCitizen(CityRegion* city, CreatureObject
 	city->addCitizen(creature->getObjectID());
 }
 
-void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObject* creature, bool terminal) {
+void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObject* creature) {
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
@@ -1376,24 +1375,15 @@ void CityManagerImplementation::unregisterCitizen(CityRegion* city, CreatureObje
 	if (mayor != NULL && mayor->isPlayerCreature()) {
 		CreatureObject* mayorCreature = cast<CreatureObject*> (mayor.get());
 
-		StringIdChatParameter params;
-
-		UnicodeString subject;
-
-		if (terminal) {
-			params.setStringId("city/city", "lost_citizen_body"); // A citizen has left your city by using the revoke option on the city terminal. Citizen Name: %TO
-			subject = "@city/city:lost_citizen_subject"; // Lost Citizen!
-		} else {
-			params.setStringId("city/city", "lost_city_citizen_body"); // A citizen has left your city. Citizen Name: %TO
-			subject = "@city/city:lost_city_citizen_subject"; // Lost Citizen!
-		}
-
+		StringIdChatParameter params("city/city", "lost_city_citizen_body"); // A citizen has left your city. Citizen Name: %TO
 		params.setTO(creature->getDisplayedName());
+		UnicodeString subject = "@city/city:lost_city_citizen_subject"; // Lost Citizen!
 
 		chatManager->sendMail("@city/city:new_city_from", subject, params, mayorCreature->getFirstName(), NULL);
 	}
 
 	city->removeCitizen(creature->getObjectID());
+	city->setMayoralVote(creature->getObjectID(), 0);
 
 	if (city->isCandidate(creature->getObjectID())) {
 		unregisterFromMayoralRace(city, creature, true);

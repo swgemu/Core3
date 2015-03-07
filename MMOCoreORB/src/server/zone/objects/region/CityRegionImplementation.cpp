@@ -234,7 +234,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 			ManagedReference<CreatureObject*> owner = zone->getZoneServer()->getObject(ownerID).castTo<CreatureObject*>();
 
-			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && !citizenList.contains(ownerID)) {
+			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && !isCitizen(ownerID)) {
 				cityManager->registerCitizen(_this.get(), owner);
 			}
 		 }
@@ -325,9 +325,9 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 			ManagedReference<CreatureObject*> owner = zone->getZoneServer()->getObject(ownerID).castTo<CreatureObject*>();
 
-			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && citizenList.contains(ownerID)) {
+			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && isCitizen(ownerID)) {
 				CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
-				cityManager->unregisterCitizen(_this.get(), owner, false);
+				cityManager->unregisterCitizen(_this.get(), owner);
 			}
 		}
 
@@ -382,7 +382,7 @@ void CityRegionImplementation::cleanupCitizens() {
 	}
 
 	if(getMayorID() != 0 && !isCitizen(getMayorID()))
-		citizenList.put(getMayorID());
+		addCitizen(getMayorID());
 }
 
 void CityRegionImplementation::setRegionName(const StringId& name) {
@@ -527,21 +527,6 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank, bool send
 		structureManager->destroyStructure(structure);
 
 		structures.removeElement(structure);
-	}
-}
-
-void CityRegionImplementation::updateMilitia(){
-
-	Locker locker (_this.get());
-
-	uint64 objectID;
-
-	for (int i = militiaMembers.size() - 1;i >= 0; --i){
-
-		objectID = militiaMembers.get(i);
-
-		if (!isCitizen(objectID))
-			removeMilitiaMember(objectID);
 	}
 }
 
