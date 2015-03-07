@@ -2255,21 +2255,28 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 	if (!isAttackableBy(target))
 		return false;
 
+	// grab the GCW faction
 	uint32 targetFaction = target->getFaction();
-
 	PlayerObject* ghost = target->getPlayerObject();
 
+	// check the GCW factions if both entities have one
 	if (getFaction() != 0 && targetFaction != 0) {
 
+		// this is basically the isEnemy check, but with the GCW faction (they should both return the same thing)
 		if (ghost == NULL && (targetFaction != getFaction()))
 			return true;
+		// this is the same thing, but ensures that if the target is a player, that they aren't on leave
 		else if (ghost != NULL && (targetFaction != getFaction()) && ghost->getFactionStatus() != FactionStatus::ONLEAVE)
 			return true;
 	}
 
+	// now grab the generic faction (which could include imp/reb)
 	String factionString = getFactionString();
 
 	if (!factionString.isEmpty()) {
+		// for players, we are only an enemy if the standing is less than -3000, but we are
+		// forced to non-aggressive status if the standing is over 3000, otherwise use the
+		// pvpStatusBitmask to determine aggressiveness
 		if (target->isPlayerCreature() && ghost != NULL) {
 			float targetsStanding = ghost->getFactionStanding(factionString);
 
@@ -2278,22 +2285,18 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 			else if (targetsStanding >= 3000)
 				return false;
 
+		// AI can check the enemy strings directly vs other AI (since they don't have a
+		// standing)
 		} else if (target->isAiAgent()) {
 			AiAgent* targetAi = cast<AiAgent*>(target);
 
-			if (targetAi != NULL) {
-				if (FactionManager::instance()->isEnemy(factionString, targetAi->getFactionString()))
-					return true;
-				else
-					return false;
-			}
+			if (targetAi != NULL && FactionManager::instance()->isEnemy(factionString, targetAi->getFactionString()))
+				return true;
 		}
 	}
 
-	if (getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE)
-		return true;
-
-	return false;
+	// if we've made it this far then the target is a valid target, but we will only be aggressive based on the pvpStatusBitmask
+	return getPvpStatusBitmask() & CreatureFlag::AGGRESSIVE;
 }
 
 bool AiAgentImplementation::hasLoot(){
