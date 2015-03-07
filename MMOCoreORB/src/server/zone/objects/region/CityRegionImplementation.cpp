@@ -546,7 +546,7 @@ void CityRegionImplementation::updateMilitia(){
 }
 
 void CityRegionImplementation::removeAllTerminals() {
-	for (int i = 0; i < cityMissionTerminals.size(); i++) {
+	for (int i = cityMissionTerminals.size() - 1; i >= 0 ; --i) {
 		cityMissionTerminals.get(i)->destroyObjectFromWorld(false);
 		cityMissionTerminals.get(i)->destroyObjectFromDatabase(true);
 	}
@@ -556,7 +556,7 @@ void CityRegionImplementation::removeAllTerminals() {
 
 void CityRegionImplementation::removeAllSkillTrainers() {
 
-	for (int i = 0; i < citySkillTrainers.size(); i++) {
+	for (int i = citySkillTrainers.size() - 1; i >= 0 ; --i) {
 		citySkillTrainers.get(i)->destroyObjectFromWorld(false);
 		citySkillTrainers.get(i)->destroyObjectFromDatabase(true);
 	}
@@ -565,7 +565,7 @@ void CityRegionImplementation::removeAllSkillTrainers() {
 }
 
 void CityRegionImplementation::removeAllDecorations() {
-	for (int i = 0; i < cityDecorations.size(); i++) {
+	for (int i = cityDecorations.size() - 1; i >= 0 ; --i) {
 		ManagedReference<SceneObject*> dec = cityDecorations.get(i);
 		if(dec->isStructureObject()) {
 			StructureManager::instance()->destroyStructure(cast<StructureObject*>(dec.get()));
