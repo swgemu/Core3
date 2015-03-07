@@ -188,6 +188,7 @@ class AiAgent extends CreatureObject {
 	public static final int FOLLOWING = 3;
 	public static final int PATROLLING = 4;
 	public static final int FLEEING = 5;
+	public static final int LEASHING = 6;
 	
 	
 	public AiAgent() {
@@ -616,6 +617,8 @@ class AiAgent extends CreatureObject {
 	}
 	
 	public native void runAway(CreatureObject target, float range);
+
+	public native void leash();
 	
 	public native boolean generatePatrol(int num, float dist);
 	

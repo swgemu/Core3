@@ -785,6 +785,17 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	}
 }
 
+void AiAgentImplementation::leash() {
+	setFollowState(AiAgent::LEASHING);
+	setTargetObject(NULL);
+	storeFollowObject();
+
+	CombatManager::instance()->forcePeace(_this.get());
+
+	homeLocation.setReached(false);
+	setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
+}
+
 void AiAgentImplementation::setDefender(SceneObject* defender) {
 	setFollowObject(defender);
 
@@ -1726,6 +1737,11 @@ int AiAgentImplementation::setDestination() {
 			activateAwarenessEvent(followCopy.castTo<CreatureObject*>());
 			return setDestination();
 		}
+
+		break;
+	case AiAgent::LEASHING:
+		if (!isRetreating())
+			setOblivious();
 
 		break;
 	case AiAgent::PATROLLING:
@@ -2786,7 +2802,7 @@ bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
 		return false;
 	}
 
-	if (isDead() || isIncapacitated()) {
+	if (isDead() || isIncapacitated() || getFollowState() == AiAgent::LEASHING) {
 		return false;
 	}
 

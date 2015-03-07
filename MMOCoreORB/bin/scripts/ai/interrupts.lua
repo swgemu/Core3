@@ -169,7 +169,7 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 		SceneObject(pAgent):showFlyText("npc_reaction/flytext", "alert", 255, 0, 0)
 		AiAgent(pAgent):activateAwareness(pObject)
 	elseif pObject == pFollow and AiAgent(pAgent):alertedTimeIsPast() and AiAgent(pAgent):getAvgSpeed() <= (CreatureObject(pObject):getWalkSpeed() * CreatureObject(pObject):getWalkSpeed()) then
-		--if not SceneObject(pObject):isAiAgent() then agent:info("4") end
+		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("4") end
 		AiAgent(pAgent):setOblivious() -- if we're "standing still" (and they aren't aggressive) forget about us
 	elseif pObject == pFollow and not inRange then
 		AiAgent(pAgent):activateAwareness(pObject)

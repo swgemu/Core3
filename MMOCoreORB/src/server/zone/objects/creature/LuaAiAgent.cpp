@@ -103,6 +103,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "isConcealed", &LuaAiAgent::isConcealed },
 		{ "isCamouflaged", &LuaAiAgent::isCamouflaged },
 		{ "shouldRetreat", &LuaAiAgent::shouldRetreat },
+		{ "leash", &LuaAiAgent::leash },
 		{ "clearCombatState", &LuaAiAgent::clearCombatState },
 		{ "isInCombat", &LuaAiAgent::isInCombat },
 		{ "checkLineOfSight", &LuaAiAgent::checkLineOfSight },
@@ -666,6 +667,14 @@ int LuaAiAgent::shouldRetreat(lua_State* L) {
 	lua_pushboolean(L, retVal);
 
 	return 1;
+}
+
+int LuaAiAgent::leash(lua_State* L) {
+	Locker locker(realObject);
+
+	realObject->leash();
+
+	return 0;
 }
 
 int LuaAiAgent::clearCombatState(lua_State* L) {
