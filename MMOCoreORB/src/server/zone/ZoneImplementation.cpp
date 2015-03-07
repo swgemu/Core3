@@ -544,6 +544,8 @@ void ZoneImplementation::updateCityRegions() {
 	for (int i = 0; i < cityRegionUpdateVector.size(); ++i) {
 		CityRegion* city = cityRegionUpdateVector.get(i);
 
+		Locker locker(city);
+
 		Time* nextUpdateTime = city->getNextUpdateTime();
 		int seconds = -1 * round(nextUpdateTime->miliDifference() / 1000.f);
 

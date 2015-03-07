@@ -12,6 +12,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/managers/city/CityRemoveAmenityTask.h"
 
 void TrainerMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
@@ -27,12 +28,11 @@ int TrainerMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creat
 		ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
 
 		if (city != NULL && city->isMayor(player->getObjectID())) {
-			city->removeSkillTrainers(sceneObject);
+			CityRemoveAmenityTask* task = new CityRemoveAmenityTask(sceneObject, city);
+			task->execute();
 
 			player->sendSystemMessage("@city/city:mt_removed"); // The object has been removed from the city.
 
-			sceneObject->destroyObjectFromWorld(true);
-			sceneObject->destroyObjectFromDatabase(true);
 		}
 
 		return 0;

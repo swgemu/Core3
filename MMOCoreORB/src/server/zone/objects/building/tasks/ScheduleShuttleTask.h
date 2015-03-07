@@ -37,7 +37,7 @@ public:
 
 		ManagedReference<CityRegion*> cityRegion = strongReference->getCityRegion();
 
-		if ((cityRegion != NULL) && (cityRegion->getMayorID() != 0)){
+		if ((cityRegion != NULL) && (cityRegion->getMayorID() != 0)) {
 			float x = strongReference->getWorldPositionX();
 			float y = strongReference->getWorldPositionY();
 			float z = strongReference->getWorldPositionZ();
@@ -46,9 +46,12 @@ public:
 
 			String zoneName = zone->getZoneName();
 
+			Locker clocker(cityRegion, strongReference);
+			cityRegion->setShuttleID(strongReference->getObjectID());
+			clocker.release();
+
 			PlanetTravelPoint* planetTravelPoint = new PlanetTravelPoint(zoneName, cityRegion->getRegionName(), arrivalVector, arrivalVector, strongReference);
 			planetManager->addPlayerCityTravelPoint(planetTravelPoint);
-			cityRegion->setShuttleID(strongReference->getObjectID());
 			planetManager->scheduleShuttle(strongReference, PlanetManager::SHUTTLEPORT);
 
 		} else {

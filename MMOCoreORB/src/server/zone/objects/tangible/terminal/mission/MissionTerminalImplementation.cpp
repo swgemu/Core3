@@ -11,6 +11,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/managers/city/CityRemoveAmenityTask.h"
 
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
@@ -52,15 +53,13 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 		ManagedReference<CityRegion*> city = player->getCityRegion();
 
 		if (city != NULL && city->isMayor(player->getObjectID())) {
-			city->removeMissionTerminal(_this.get());
+			CityRemoveAmenityTask* task = new CityRemoveAmenityTask(_this.get(), city);
+			task->execute();
 
 			player->sendSystemMessage("@city/city:mt_removed"); // The object has been removed from the city.
-
-			destroyObjectFromWorld(true);
-			destroyObjectFromDatabase(true);
-
-			return 0;
 		}
+
+		return 0;
 	}
 
 	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);

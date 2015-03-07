@@ -497,6 +497,10 @@ void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, Creat
 	 string/en/city/city.stf	265	treasury_withdraw_subject	City Treasury Withdrawal
 	 string/en/city/city.stf	266	treasury_withdraw_body	Attention! Mayor %TO has made a withdrawal from the City Treasury. Amount: %DI Reason: %TT - Treasury Authority
 	 */
+
+	Locker locker(mayor);
+	Locker clocker(city, mayor);
+
 	int minWithdrawal = city->getMinWithdrawal();
 
 	if (city->getCityTreasury() < minWithdrawal) {
@@ -547,7 +551,6 @@ void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, Creat
 	emailBody.setTO(mayor);
 	emailBody.setTT(reason);
 
-	Locker clock(city, mayor);
 	sendMail(city, "@city/city:treasury_withdraw_from", "@city/city:treasury_withdraw_subject", emailBody, NULL);
 }
 
@@ -1448,6 +1451,8 @@ void CityManagerImplementation::promptAddMilitiaMember(CityRegion* city, Creatur
 }
 
 void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObject* mayor, const String& playerName) {
+	Locker clocker(city, mayor);
+
 	if (!city->isMayor(mayor->getObjectID()))
 		return;
 
@@ -1483,6 +1488,8 @@ void CityManagerImplementation::addMilitiaMember(CityRegion* city, CreatureObjec
 }
 
 void CityManagerImplementation::removeMilitiaMember(CityRegion* city, CreatureObject* mayor, uint64 militiaid) {
+	Locker clocker(city, mayor);
+
 	if (!city->isMayor(mayor->getObjectID()))
 		return;
 
@@ -2041,9 +2048,7 @@ void CityManagerImplementation::promptMayoralVote(CityRegion* city, CreatureObje
 }
 
 void CityManagerImplementation::castMayoralVote(CityRegion* city, CreatureObject* creature, uint64 oid) {
-	/*
-	 not_politician That citizen is not a politician.
-	 */
+
 	if (!city->isCitizen(creature->getObjectID())) {
 		creature->sendSystemMessage("@city/city:vote_noncitizen"); //You must be a citizen of the city to vote for Mayor.
 		return;
