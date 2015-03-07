@@ -43,6 +43,7 @@ class ThreatMapEntry : public VectorMap<String, uint32> {
 	int aggroMod;
 	uint64 threatBitmask;
 	int healAmount;
+	uint32 nonAggroDamageTotal;
 
 public:
 	ThreatMapEntry() {
@@ -50,6 +51,7 @@ public:
 		aggroMod = 0;
 		threatBitmask = 0;
 		healAmount = 0;
+		nonAggroDamageTotal = 0;
 	}
 
 	ThreatMapEntry(const ThreatMapEntry& e) : VectorMap<String, uint32>(e) {
@@ -57,6 +59,7 @@ public:
 		aggroMod = e.aggroMod;
 		threatBitmask = e.threatBitmask;
 		healAmount = e.healAmount;
+		nonAggroDamageTotal = e.nonAggroDamageTotal;
 	}
 
 	ThreatMapEntry& operator=(const ThreatMapEntry& e) {
@@ -64,6 +67,7 @@ public:
 		aggroMod = e.aggroMod;
 		threatBitmask = e.threatBitmask;
 		healAmount = e.healAmount;
+		nonAggroDamageTotal = e.nonAggroDamageTotal;
 
 		return *this;
 	}
@@ -97,6 +101,23 @@ public:
 
 	void clearAggro() {
 		aggroMod = 0;
+	}
+
+	uint32 getTotalDamage() {
+		uint32 totalDamage = 0;
+
+		for (int i = 0; i < size(); i++)
+			totalDamage += elementAt(i).getValue();
+
+		return totalDamage;
+	}
+
+	void addNonAggroDamage(uint32 amount) {
+		nonAggroDamageTotal += amount;
+	}
+
+	uint32 getNonAggroDamage() {
+		return nonAggroDamageTotal;
 	}
 };
 

@@ -114,7 +114,22 @@ void ThreatMap::removeAll() {
 	Locker locker(&lockMutex);
 
 	removeObservers();
-	VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>::removeAll();
+
+	for (int i = 0; i < size(); i++) {
+		VectorMapEntry<ManagedReference<CreatureObject*> , ThreatMapEntry> entry = elementAt(i);
+
+		ManagedReference<CreatureObject*> key = entry.getKey();
+		ThreatMapEntry value = entry.getValue();
+
+		ManagedReference<TangibleObject*> selfStrong = self.get();
+
+		// these checks will determine if we should store the damage from the dropped aggressor
+		if (key == NULL || selfStrong == NULL || key->isDead() || !key->isOnline() || key->getPlanetCRC() != selfStrong->getPlanetCRC())
+			remove(i);
+		else
+			value.addNonAggroDamage(value.getTotalDamage());
+	}
+
 	currentThreat = NULL;
 	threatMatrix.clear();
 }
@@ -122,7 +137,13 @@ void ThreatMap::removeAll() {
 void ThreatMap::dropDamage(CreatureObject* target) {
 	Locker llocker(&lockMutex);
 
-	drop(target);
+	ManagedReference<TangibleObject*> selfStrong = self.get();
+	if (target == NULL || selfStrong == NULL || target->isDead() || !target->isOnline() || target->getPlanetCRC() != selfStrong->getPlanetCRC())
+		drop(target);
+	else {
+		ThreatMapEntry entry = get(target);
+		entry.addNonAggroDamage(entry.getTotalDamage());
+	}
 
 	llocker.release();
 
