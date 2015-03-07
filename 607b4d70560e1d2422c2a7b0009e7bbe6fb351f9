@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_375a4084",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-07T09:48:10Z",
+      "side": 1,
+      "message": "Trace back your locks. You can\u0027t lock group like this if something else is locked before it (hint: there is something else locked before it, find it). Also, you need to make sure that people know what should be locked coming into this function, or they will fail to lock things properly when trying to use this thing.",
+      "revId": "607b4d70560e1d2422c2a7b0009e7bbe6fb351f9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_175f4474",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-07T09:48:10Z",
+      "side": 1,
+      "message": "I didn\u0027t trace this one, but are you sure nothing is locked coming into this?",
+      "revId": "607b4d70560e1d2422c2a7b0009e7bbe6fb351f9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_178864e6",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-07T09:48:10Z",
+      "side": 1,
+      "message": "Why are you locking group so late? Can you be certain that you won\u0027t get a race before this? Also, I know something else is locked coming into this fuction. Fix it.",
+      "revId": "607b4d70560e1d2422c2a7b0009e7bbe6fb351f9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_f76ca838",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GroupLootCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-07T09:48:10Z",
+      "side": 1,
+      "message": "use the other version of the sendSystemMessage function. This method sends the text as unicode, which artificially inflates packet size. Do this for all...",
+      "revId": "607b4d70560e1d2422c2a7b0009e7bbe6fb351f9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_d769ac26",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/LootCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-07T09:48:10Z",
+      "side": 1,
+      "message": "This should be done in a task so you can follow locking, group can be NULL after you check for it. All that\u0027s locked here is the creature doing the command and the target.",
+      "revId": "607b4d70560e1d2422c2a7b0009e7bbe6fb351f9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_b7763005",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/MakeMasterLooterCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-07T09:48:10Z",
+      "side": 1,
+      "message": "You have no locks here. Did you mean to do that?",
+      "revId": "607b4d70560e1d2422c2a7b0009e7bbe6fb351f9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_5765bc43",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GroupLootPickLooterSuiCallback.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-07T09:48:10Z",
+      "side": 1,
+      "message": "You don\u0027t need locks here either?",
+      "revId": "607b4d70560e1d2422c2a7b0009e7bbe6fb351f9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_7760b835",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/GroupLootRuleSuiCallback.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-07T09:48:10Z",
+      "side": 1,
+      "message": "Or locks here?",
+      "revId": "607b4d70560e1d2422c2a7b0009e7bbe6fb351f9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
