@@ -46,6 +46,7 @@ which carries forward this exception.
 #define TRANSFERSTRUCTURECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
@@ -168,7 +169,7 @@ public:
 		ManagedReference<PlayerObject*> ghost = NULL;
 
 		if (creature != NULL) {
-			ghost == creature->getPlayerObject();
+			ghost = creature->getPlayerObject().get();
 		}
 
 		if (!bForceTransfer && (creature == NULL || ghost == NULL)) {
@@ -219,7 +220,8 @@ public:
 			}
 
 			if (ghost->getDeclaredResidence() == structure->getObjectID()) {
-				region->removeCitizen(creature->getObjectID());
+				CityManager* cityManager = creature->getZoneServer()->getCityManager();
+				cityManager->unregisterCitizen(region, creature);
 			}
 
 			locker.release();

@@ -70,7 +70,7 @@ public:
 				ManagedReference<CityRegion*> city = shuttle->getCityRegion().get();
 
 				if (ptp == origin)
-					message->insertInt(city->getTax(CityRegion::TAX_TRAVEL));
+					message->insertInt(city->getTravelTax());
 				else
 					message->insertInt(0);
 			}
