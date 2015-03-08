@@ -26,9 +26,17 @@ int ThreatMapObserverImplementation::notifyObserverEvent(uint32 eventType, Obser
 		if (originator == NULL )
 			return 1;
 
-		ThreatMapEntry entry = threatMap->get(originator);
-		if (entry == NULL || entry.getTotalDamage() == entry.getNonAggroDamage())
+		int findIndex = threatMap->find(originator);
+
+		if (findIndex >= 0) {
+			ThreatMapEntry& entry = threatMap->get(findIndex);
+
+			if (entry.getTotalDamage() == entry.getNonAggroDamage())
+				return 1;
+
+		} else {
 			return 1;
+		}
 
 		CreatureObject* target = cast<CreatureObject*>(arg1);
 		if (target != NULL)
