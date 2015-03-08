@@ -563,7 +563,18 @@ void CityRegionImplementation::removeAllDecorations() {
 	cityDecorations.removeAll();
 }
 
-bool CityRegionImplementation::isVotingLocked(){
+void CityRegionImplementation::removeCandidate(uint64 candidateoid) {
+	candidates.drop(candidateoid);
+
+	// Remove votes for the candidate
+	for (int i = mayoralVotes.size() - 1; i >= 0; --i) {
+		if (mayoralVotes.get(i) == candidateoid) {
+			mayoralVotes.drop(mayoralVotes.elementAt(i).getKey());
+		}
+	}
+}
+
+bool CityRegionImplementation::isVotingLocked() {
 	Time rightnow;
 	rightnow.updateToCurrentTime();
 

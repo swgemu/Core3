@@ -351,19 +351,6 @@ bool CityManagerImplementation::validateCityName(const String& name) {
 }
 
 void CityManagerImplementation::promptCitySpecialization(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
-	if (city->getCityRank() < CityRegion::RANK_TOWNSHIP) {
-		mayor->sendSystemMessage("@city/city:no_rank_spec"); //Your city must be at least rank 3 before you can set a specialization
-		return;
-	}
-
-	if (!mayor->checkCooldownRecovery("city_specialization")) {
-		StringIdChatParameter params("city/city", "spec_time"); //You can't set another city spec right now. Time Remaining: %TO
-		Time* timeRemaining = mayor->getCooldownTime("city_specialization");
-		params.setTO(String::valueOf(round(fabs(timeRemaining->miliDifference() / 1000.f))) + " seconds");
-		mayor->sendSystemMessage(params);
-
-		return;
-	}
 
 	ManagedReference<CitySpecializationSession*> session = new CitySpecializationSession(mayor, city, terminal);
 	mayor->addActiveSession(SessionFacadeType::CITYSPEC, session);
@@ -374,11 +361,19 @@ void CityManagerImplementation::changeCitySpecialization(CityRegion* city, Creat
 	Locker _clock(city, mayor);
 
 	city->setCitySpecialization(spec);
-#ifndef CITY_DEBUG
-	mayor->addCooldown("city_specialization", citySpecializationCooldown); //1 week.
-#endif
+
+	PlayerObject* ghost = mayor->getPlayerObject().get();
+
+	if (ghost != NULL && !ghost->isPrivileged())
+		mayor->addCooldown("city_specialization", citySpecializationCooldown); //1 week.
+
 	StringIdChatParameter params("city/city", "spec_set"); //The city's specialization has been set to %TO.
-	params.setTO(spec);
+
+	if (spec.isEmpty())
+		params.setTO("@city/city:null");
+	else
+		params.setTO(spec);
+
 	mayor->sendSystemMessage(params);
 
 	//Resetting the city radius will remove it and reinsert it, updating it to everything in the area.
@@ -448,8 +443,6 @@ void CityManagerImplementation::sendStructureReport(CityRegion* city, CreatureOb
 
 	if (ghost == NULL)
 		return;
-
-	Locker clocker(city);
 
 	ManagedReference<SuiListBox*> maintList = new SuiListBox(creature, SuiWindowType::CITY_TREASURY_REPORT);
 	maintList->setPromptTitle("@city/city:structure_list_t"); // City Structure Report
@@ -704,8 +697,6 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 		error(e.getMessage() + "in CityManagerImplementation::processCityUpdate");
 		return;
 	}
-
-	Locker lock(city);
 
 	city->cleanupCitizens();
 
@@ -1557,6 +1548,72 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 	}
 
 	creature->sendMessage(listbox->generateMessage());
+
+	StringIdChatParameter params("city/city", "city_update_eta"); // Next City Update: %TO
+	params.setTO(getNextUpdateTimeString(city));
+	creature->sendSystemMessage(params);
+}
+
+String CityManagerImplementation::getNextUpdateTimeString(CityRegion* city) {
+	if (city == NULL)
+		return "";
+
+	int seconds = city->getTimeToUpdate();
+
+	int days = floor(seconds / 86400);
+	seconds -= days * 86400;
+
+	int hours = floor(seconds / 3600);
+	seconds -= hours * 3600;
+
+	int minutes = floor(seconds / 60);
+	seconds -= minutes * 60;
+
+	StringBuffer buffer;
+
+	if (days > 0) {
+		buffer << days << " day";
+
+		if (days > 1)
+			buffer << "s";
+
+		if (hours > 0 || minutes > 0 || seconds > 0)
+			buffer << ", ";
+	}
+
+	if (hours > 0) {
+		buffer << hours << " hour";
+
+		if (hours > 1)
+			buffer << "s";
+
+		if (minutes > 0 || seconds > 0)
+			buffer << ", ";
+	}
+
+	if (minutes > 0) {
+		buffer << minutes << " minute";
+
+		if (minutes > 1)
+			buffer << "s";
+
+		if (seconds > 0)
+			buffer << ", ";
+	}
+
+	if (seconds > 0) {
+		buffer << seconds << " second";
+
+		if (seconds > 1)
+			buffer << "s";
+	}
+
+	String updateStr = buffer.toString();
+
+	if (updateStr.isEmpty())
+		updateStr = "Now";
+
+	return updateStr;
 }
 
 void CityManagerImplementation::promptRegisterCity(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
@@ -1764,184 +1821,146 @@ void CityManagerImplementation::setTax(CityRegion* city, CreatureObject* mayor, 
 	sendMail(city, "@city/city:new_city_from", cityTax->getEmailSubject(), params, NULL);
 }
 
-void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
-		CreatureObject* creature, SceneObject* terminal) {
-	//TODO: Encapsulate this, and clean up.
-
+void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	if (city == NULL || creature == NULL)
 		return;
 
 	PlayerObject* ghost = creature->getPlayerObject();
-
 	if (ghost == NULL)
 		return;
 
-	int seconds = city->getTimeToUpdate();
-
-	int days = floor(seconds / 86400);
-	seconds -= days * 86400;
-
-	int hours = floor(seconds / 3600);
-	seconds -= hours * 3600;
-
-	int minutes = floor(seconds / 60);
-	seconds -= minutes * 60;
-
-	StringBuffer buffer;
-
-	if (days > 0) {
-		buffer << days << " day";
-
-		if (days > 1)
-			buffer << "s";
-
-		if (hours > 0 || minutes > 0 || seconds > 0)
-			buffer << ", ";
-	}
-
-	if (hours > 0) {
-		buffer << hours << " hour";
-
-		if (hours > 1)
-			buffer << "s";
-
-		if (minutes > 0 || seconds > 0)
-			buffer << ", ";
-	}
-
-	if (minutes > 0) {
-		buffer << minutes << " minute";
-
-		if (minutes > 1)
-			buffer << "s";
-
-		if (seconds > 0)
-			buffer << ", ";
-	}
-
-	if (seconds > 0) {
-		buffer << seconds << " second";
-
-		if (seconds > 1)
-			buffer << "s";
-	}
-
-	String updateStr = buffer.toString();
-
-
-
-	if (updateStr.isEmpty())
-		updateStr = "Now";
-
-	//StringIdChatParameter params("city/city", "city_update_eta"); //Next City Update: %TO
-	//params.setTO(updateStr);
-
-	//creature->sendSystemMessage(params);
-
+	TemplateManager* templateManager = TemplateManager::instance();
+	if (templateManager == NULL)
+		return;
 
 	int totalcost = 0;
 
-	ManagedReference<SuiListBox*> maintList = new SuiListBox(creature,
-			SuiWindowType::CITY_TREASURY_REPORT);
-	maintList->setPromptTitle("@city/city:maint_info_t");
+	ManagedReference<SuiListBox*> maintList = new SuiListBox(creature, SuiWindowType::CITY_TREASURY_REPORT);
+	maintList->setPromptTitle("@city/city:maint_info_t"); // Maintenance Report
 	maintList->setPromptText("@city/city:maint_info_d");
 
-	maintList->addMenuItem("Next City Update: " + updateStr);
-	Locker lock(city);
+	ManagedReference<StructureObject*> cityHall = city->getCityHall();
 
-	TemplateManager* templateManager = TemplateManager::instance();
+	if (cityHall != NULL) {
+		String maintString = "@city/city:city_hall "; // City Hall:
+
+		if (cityHall->getObjectTemplate() != NULL) {
+			Reference<SharedStructureObjectTemplate*> serverTemplate = cast<SharedStructureObjectTemplate*> (cityHall->getObjectTemplate());
+
+			if (serverTemplate != NULL) {
+				int thiscost = maintenanceDiscount * serverTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
+
+				totalcost += thiscost;
+
+				maintString += String::valueOf(thiscost) + " @city/city:credits";
+
+			}
+		}
+
+		maintList->addMenuItem(maintString);
+	}
+
+	if (city->isRegistered()) {
+		totalcost += 5000;
+		maintList->addMenuItem("@city/city:map_reg_cost"); // Map Registration: 5000 credits
+	} else {
+		maintList->addMenuItem("@city/city:map_unreg"); // Map Registration: Unregistered
+	}
+
+	if (city->getCitySpecialization() != "") {
+		CitySpecialization* spec = getCitySpecialization(city->getCitySpecialization());
+
+		if (spec != NULL) {
+			int speccost = maintenanceDiscount * spec->getCost();
+			totalcost += speccost;
+			maintList->addMenuItem("@city/city:specialization " + String::valueOf(speccost) + " @city/city:credits");
+		}
+
+	} else {
+		maintList->addMenuItem("@city/city:specialization @city/city:null"); // Specialization: None
+	}
+
+	maintList->addMenuItem("@city/city:structures"); // Structures:
 
 	for (int i = 0; i < city->getStructuresCount(); i++) {
-		ManagedReference<StructureObject*> structure = city->getCivicStructure(
-				i);
+		ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
 
 		if (structure != NULL) {
-			String maintString = structure->getDisplayedName();
+			if(structure->isCityHall())
+				continue;
 
-					if (templateManager != NULL) {
-				if (structure->getObjectTemplate() == NULL)
-					continue;
+			String maintString = "@city/city:default \t" + structure->getObjectName()->getFullPath();
 
-				Reference<SharedStructureObjectTemplate*> serverTemplate =
-						cast<SharedStructureObjectTemplate*> (
-								structure->getObjectTemplate());
+			if (structure->getObjectTemplate() == NULL)
+				continue;
 
-				if (serverTemplate != NULL) {
-					int thiscost = maintenanceDiscount * serverTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
+			Reference<SharedStructureObjectTemplate*> serverTemplate = cast<SharedStructureObjectTemplate*> (structure->getObjectTemplate());
 
-					if(structure->isCityHall() && city->isRegistered())
-							thiscost += 5000;
+			if (serverTemplate != NULL) {
+				int thiscost = maintenanceDiscount * serverTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
 
-					totalcost += thiscost;
+				totalcost += thiscost;
 
-					maintString += " : " + String::valueOf(thiscost);
-
-				} else {
-					maintString += " : NA";
-				}
-
+				maintString += " : " + String::valueOf(thiscost) + " @city/city:credits";
 			}
 
 			maintList->addMenuItem(maintString);
 		}
 	}
 
-	for (int i = 0; i < city->getSkillTrainerCount(); i++) {
-		ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
-		int trainerCost = maintenanceDiscount * 1500;
-		if (trainer != NULL) {
-			totalcost += trainerCost;
-			maintList->addMenuItem(trainer->getDisplayedName() + " : " + String::valueOf(trainerCost), i);
-		}
-	}
+	maintList->addMenuItem("@city/city:decorations"); // Decorations:
 
 	for (int i = 0; i < city->getDecorationCount(); i++) {
 		ManagedReference<SceneObject*> sceno = city->getCityDecoration(i);
+
+		String maintString = "@city/city:default \t";
+
 		if (sceno != NULL && sceno->isStructureObject()) {
 			StructureObject* structure = cast<StructureObject*>(sceno.get());
 
-			if (templateManager != NULL) {
-					if (structure->getObjectTemplate() == NULL)
-						continue;
+			if (structure->getObjectTemplate() == NULL)
+				continue;
 
-					Reference<SharedStructureObjectTemplate*> serverTemplate =
-							cast<SharedStructureObjectTemplate*> (structure->getObjectTemplate());
+			Reference<SharedStructureObjectTemplate*> serverTemplate = cast<SharedStructureObjectTemplate*> (structure->getObjectTemplate());
 
-					int decCost = maintenanceDiscount * serverTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
-					totalcost += decCost;
-					maintList->addMenuItem(sceno->getDisplayedName() + " : " + String::valueOf(decCost));
+			if (serverTemplate != NULL) {
+				int decCost = maintenanceDiscount * serverTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
+				totalcost += decCost;
+				maintString += structure->getObjectName()->getFullPath() + " : " + String::valueOf(decCost) + " @city/city:credits";
 			}
 
 		} else if ( sceno != NULL) {
 			int decCost = maintenanceDiscount * 1500;
 			totalcost += decCost;
-			maintList->addMenuItem(sceno->getDisplayedName() + " : " + String::valueOf(decCost));
+			maintString += sceno->getObjectName()->getFullPath() + " : " + String::valueOf(decCost) + " @city/city:credits";
+		}
+
+		maintList->addMenuItem(maintString);
+	}
+
+	maintList->addMenuItem("@city/city:train_and_term"); // Trainers & Terminals:
+
+	for (int i = 0; i < city->getSkillTrainerCount(); i++) {
+		ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
+
+		if (trainer != NULL) {
+			int trainerCost = maintenanceDiscount * 1500;
+			totalcost += trainerCost;
+			maintList->addMenuItem("@city/city:default \t" + trainer->getObjectName()->getFullPath() + " : " + String::valueOf(trainerCost) + " @city/city:credits");
 		}
 	}
 
 	for (int i = 0; i < city->getMissionTerminalCount(); i++) {
 		ManagedReference<SceneObject*> term = city->getCityMissionTerminal(i);
-		int terminalCost = maintenanceDiscount * 1500;
+
 		if (term != NULL) {
+			int terminalCost = maintenanceDiscount * 1500;
 			totalcost += terminalCost;
-			maintList->addMenuItem(term->getDisplayedName() + " : " + String::valueOf(terminalCost));
+			maintList->addMenuItem("@city/city:default \t" + term->getObjectName()->getFullPath() + " : " + String::valueOf(terminalCost) + " @city/city:credits");
 		}
 	}
 
-	if (city->getCitySpecialization() != "") {
-		CitySpecialization* spec = getCitySpecialization(
-				city->getCitySpecialization());
-
-		if (spec != NULL) {
-			int speccost = maintenanceDiscount * spec->getCost();
-			totalcost += speccost;
-			maintList->addMenuItem(
-					city->getCitySpecialization() + " : " + String::valueOf(
-							speccost));
-		}
-
-	}
-	maintList->addMenuItem("Total: " + String::valueOf(totalcost));
+	maintList->addMenuItem("@city/city:tot_maint " + String::valueOf(totalcost) + " @city/city:credits"); // Total Maintenance:
 
 	ghost->addSuiBox(maintList);
 	creature->sendMessage(maintList->generateMessage());

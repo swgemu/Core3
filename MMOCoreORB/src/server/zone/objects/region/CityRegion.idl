@@ -657,9 +657,7 @@ class CityRegion extends ManagedObject implements Logger {
 		candidates.removeAll();
 	}
 
-	public void removeCandidate(unsigned long candidateoid) {
-		candidates.drop(candidateoid);
-	}
+	public native void removeCandidate(unsigned long candidateoid);
 
 	@dirty
 	public boolean isCandidate(unsigned long candidateoid) {

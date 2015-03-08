@@ -45,12 +45,14 @@ int CitySpecializationSessionImplementation::initializeSession() {
 			sui->addMenuItem("@city/city:" + abilityName);
 	}
 
+	if (!cityRegion->getCitySpecialization().isEmpty()) {
+		sui->addMenuItem("@city/city:null",-1);
+	}
+
 	if (sui->getMenuSize() <= 0) {
 		creatureObject->sendSystemMessage("@city/city:no_specs"); //You need to learn a specialization skill before you can select one for your city.
 		return cancelSession();
 	}
-
-	sui->addMenuItem("@city/city:null",-1);
 
 	ghost->addSuiBox(sui);
 	creatureObject->sendMessage(sui->generateMessage());
@@ -63,6 +65,22 @@ int CitySpecializationSessionImplementation::sendConfirmationBox(const String& c
 
 	if (ghost == NULL)
 		return cancelSession();
+
+	if (choice != "@city/city:null") {
+		if (cityRegion->getCityRank() < CityRegion::RANK_TOWNSHIP) {
+			creatureObject->sendSystemMessage("@city/city:no_rank_spec"); //Your city must be at least rank 3 before you can set a specialization
+			return cancelSession();
+		}
+
+		if (!creatureObject->checkCooldownRecovery("city_specialization")) {
+			StringIdChatParameter params("city/city", "spec_time"); //You can't set another city spec right now. Time Remaining: %TO
+			Time* timeRemaining = creatureObject->getCooldownTime("city_specialization");
+			params.setTO(String::valueOf(round(fabs(timeRemaining->miliDifference() / 1000.f))) + " seconds");
+			creatureObject->sendSystemMessage(params);
+
+			return cancelSession();
+		}
+	}
 
 	SuiMessageBox* confirm = new SuiMessageBox(creatureObject, SuiWindowType::CITY_SPEC_CONFIRM);
 	confirm->setPromptTitle("@city/city:confirm_spec_t"); //Confirm Specialization

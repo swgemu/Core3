@@ -37,7 +37,7 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	menuResponse->addRadialMenuItemToRadialID(210, 220, 3, "@city/city:treasury_deposit"); //Treasury Deposit
 
 #ifdef CITY_DEBUG
-	if(player->getPlayerObject()->isPrivileged()){
+	if(player->getPlayerObject()->isPrivileged()) {
 		menuResponse->addRadialMenuItem(227,3,"@city/city:city_hacks"); // City Hacks (GODMODE ONLY)
 		menuResponse->addRadialMenuItemToRadialID(227,228,3,"@city/city:rank_up"); // 	Force Rank Up
 		menuResponse->addRadialMenuItemToRadialID(227,229,3,"@city/city:rank_down"); // Force Rank Down
@@ -78,6 +78,8 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 	if (city == NULL)
 		return 1;
+
+	sceneObject->unlock();
 
 	Locker lock(city, player);
 
@@ -138,27 +140,32 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 #ifdef CITY_DEBUG
 	case 228:
-		if(player->getPlayerObject()->isPrivileged()){
+		if(player->getPlayerObject()->isPrivileged()) {
 			cityManager->promptForceRank(city, player, true);
 		}
 		break;
 	case 229:
-		if(player->getPlayerObject()->isPrivileged()){
+		if(player->getPlayerObject()->isPrivileged()) {
 			cityManager->promptForceRank(city, player, false);
 		}
 		break;
 	case 230:
-		if(player->getPlayerObject()->isPrivileged()){
+		if(player->getPlayerObject()->isPrivileged()) {
 			cityManager->processCityUpdate(city);
 		}
 		break;
 	case 231:
-		if(player->getPlayerObject()->isPrivileged()){
+		if(player->getPlayerObject()->isPrivileged()) {
 			cityManager->updateCityVoting(city,true);
 		}
 		break;
 #endif
 
 	}
+
+	lock.release();
+
+	sceneObject->wlock(player);
+
 	return 0;
 }
