@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_37b6c08b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/threat/ThreatMap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-08T05:38:06Z",
+      "side": 1,
+      "message": "Currently, this observer is only registered if the target isn\u0027t in the map already. If you drop the observer without dropping their entry, the observer won\u0027t get re-registered if the target engages again.",
+      "revId": "34b09232e8ffda1e832817e5b08da2da8d5f246d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_17bbc473",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/threat/ThreatMap.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-08T05:38:06Z",
+      "side": 1,
+      "message": "You could just call getTotalDamage from each entry to reduce duplicate code.",
+      "revId": "34b09232e8ffda1e832817e5b08da2da8d5f246d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
