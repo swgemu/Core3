@@ -1,0 +1,42 @@
+hero_of_tat_smuggler_captain = Creature:new {
+	objectName = "",
+	customName = "Himfan (a smuggler captain)",
+	socialGroup = "",
+	faction = "",
+	level = 14,
+	chanceHit = 0.3,
+	damageMin = 150,
+	damageMax = 160,
+	baseXp = 714,
+	baseHAM = 2000,
+	baseHAMmax = 3000,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
+	diet = HERBIVORE,
+
+	templates = {
+		"object/mobile/dressed_criminal_slicer_human_male_01.iff",
+		"object/mobile/dressed_criminal_slicer_human_female_01.iff",
+		"object/mobile/dressed_smuggler_trainer_01.iff",
+		"object/mobile/dressed_smuggler_trainer_02.iff",
+		"object/mobile/dressed_smuggler_trainer_03.iff",
+	},
+	lootGroups = {},
+	weapons = {"pirate_weapons_medium"},
+	conversationTemplate = "heroOfTatIntellectLiarConvoTemplate",
+	attacks = merge(brawlermid,marksmanmid)
+}
+
+CreatureTemplates:addCreatureTemplate(hero_of_tat_smuggler_captain, "hero_of_tat_smuggler_captain")
