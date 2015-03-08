@@ -41,7 +41,9 @@ includeFile("conversations/events/life_day/life_day_tebeurra_conv.lua")
 
 -- Hero of Tat
 includeFile("conversations/tasks/hero_of_tatooine/hermit_conv.lua")
+includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_bounty_hunter_conv.lua")
 includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_farmer_conv.lua")
+includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_intellect_liar_conv.lua")
 includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_mother_conv.lua")
 
 -- Events
