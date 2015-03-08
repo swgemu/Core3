@@ -84,13 +84,10 @@ public:
 		if (args.hasMoreTokens()) {
 			rank = args.getIntToken();
 			if(rank < 1 || rank > 5) {
-				creature->sendSystemMessage("Rank must be between 1 and 5");
+				creature->sendSystemMessage("Rank, if specified, must be between 1 and 5.");
 				return INVALIDPARAMETERS;
 			}
 
-		} else {
-			sendSyntax(creature);
-			return INVALIDSYNTAX;
 		}
 
 		if(creature->getZoneServer() == NULL)
@@ -106,7 +103,7 @@ public:
 	}
 
 	static void sendSyntax(CreatureObject* creature) {
-		String syntax = "/cityinfo [planetname] [rank]";
+		String syntax = "/cityinfo [planetname] <rank>";
 		creature->sendSystemMessage(syntax);
 	}
 };

@@ -241,20 +241,30 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 
 	Vector < byte > *citiesAllowed = &citiesAllowedPerRank.get(planetName.toLowerCase());
 
-	if(citiesAllowed->size() == 0){
+	if(citiesAllowed->size() == 0) {
 		creature->sendSystemMessage("INVALID PLANET");
 		return;
 	}
 
-	byte maxAtRank = citiesAllowed->get(rank - 1);
-	int totalCitiesAtRank = 0;
+	int totalCities = 0;
 	int totalErroredCities = 0;
 
 	StringBuffer report;
 	report << endl << "===============================" << endl;
-	report << "City Info / Planet = " << planetName.toUpperCase() << "  Rank = " << String::valueOf(rank) << endl;
+	report << "City Info / Planet = " << planetName.toUpperCase();
+
+	if (rank > 0)
+		report << "  Rank = " << String::valueOf(rank) << endl;
+	else
+		report << endl;
+
 	report << "===================================" << endl;
-	report << "City, oid, mayorid, cityhallid, regions, citizens, civicstructures, totalstructures, treasury, Loc, Next Update, next citizen Assessment (if pending)" << endl;
+	report << "City, ";
+
+	if (rank == 0)
+		report << "Rank, ";
+
+	report << "oid, mayorid, cityhallid, regions, citizens, civicstructures, totalstructures, treasury, Loc, Next Update, next citizen Assessment (if pending)" << endl;
 
 	for (int i = 0; i < cities.size(); ++i) {
 		CityRegion* city = cities.get(i);
@@ -266,15 +276,22 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 				continue;
 		}
 
-		if( cityZone->getZoneName().toLowerCase() != planetName.toLowerCase() || city->getCityRank() != rank ) {
+		if(cityZone->getZoneName().toLowerCase() != planetName.toLowerCase()) {
 			continue;
 		}
 
+		if (rank > 0 && city->getCityRank() != rank)
+			continue;
+
 		ManagedReference<StructureObject*> cityHall = city->getCityHall();
 
-		totalCitiesAtRank++;
-		report << city->getRegionName()
-			<< ", " << String::valueOf(city->getObjectID())
+		totalCities++;
+		report << city->getRegionName();
+
+		if (rank == 0)
+			report << ", " << String::valueOf(city->getCityRank());
+
+		report << ", " << String::valueOf(city->getObjectID())
 			<< ", " << String::valueOf(city->getMayorID());
 
 		if (cityHall != NULL) {
@@ -300,14 +317,22 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 	}
 
 	report << "==============================" << endl;
-	report << "Total Cities at rank: " << String::valueOf(totalCitiesAtRank) << endl;
-	report << "Max at rank: " << String::valueOf(maxAtRank) << endl;
+	report << "Total Cities: " << String::valueOf(totalCities) << endl;
+
+	if (rank > 0) {
+		byte maxAtRank = citiesAllowed->get(rank - 1);
+		report << "Max at rank: " << String::valueOf(maxAtRank) << endl;
+	}
+
 	report << "Total Errored Cities (all planets & ranks): " << String::valueOf(totalErroredCities) << endl;
 	report << "==============================" << endl;
 	creature->sendSystemMessage(report.toString());
 
 	ChatManager* chatManager = zoneServer->getChatManager();
-	String title = "cityInfo - " + planetName.toUpperCase() + ", Rank " + String::valueOf(rank);
+	String title = "cityInfo - " + planetName.toUpperCase();
+	if (rank > 0)
+		title += ", Rank " + String::valueOf(rank);
+
 	chatManager->sendMail("System", title , report.toString(), creature->getFirstName());
 }
 
