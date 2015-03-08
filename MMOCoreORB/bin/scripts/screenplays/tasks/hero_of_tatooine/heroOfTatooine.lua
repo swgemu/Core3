@@ -9,6 +9,16 @@ HeroOfTatooineScreenPlay = ScreenPlay:new {
 	altruismSpawns = { { 2123, 1291 }, { 2470, 1394 }, { 2511, 1357 }, { 2439, 1294 }, { 3196, 1272 }, { 3303, 1107 }, { 2123, 1291 }, { 2494, 1714 }, { 2545, 1741 },
 		{ 2778, 1507 }, { 5100, 800 }, { 2168, 1293 }, { 2488, 1676 }, { 3640, -44 }, { 1839, 966 }, { 2570, 1164 }, { 2478, 687 }, { 1003, 1240 }, { 2560, 1324 }, { 2437, 1421 } },
 
+	intellectSpawns = {
+		{ x1 = 59.5, z1 = 52, y1 = -5372.23, x2 = 57.56, z2 = 52, y2 = -5366.43, bhX = 59.4, bhZ = 52, bhY = -5368.9, bhAngle = 84 },
+		{ x1 = -1370.11, z1 = 12, y1 = -3639.83, x2 = -1363.3, z2 = 12, y2 = -3642.07, bhX = -1367, bhZ = 12, bhY = -3642.2, bhAngle = -168 },
+		{ x1 = 3481.75, z1 = 5, y1 = -4641.05, x2 = 3486.69, z2 = 5, y2 = -4645.42, bhX = 3483.8, bhZ = 5, bhY = -4644.1, bhAngle = -145 },
+		{ x1 = 1541.44, z1 = 7, y1 = 3126.77, x2 = 1551.83, z2 = 7, y2 = 3124.25, bhX = 1546.2, bhZ = 7, bhY = 3124.3, bhAngle = -165 },
+		{ x1 = -2890.04, z1 = 5, y1 = 2198.77, x2 = -2893.69, z2 = 5, y2 = 2204.23, bhX = -2890.9, bhZ = 5, bhY = 2201.9, bhAngle = 57 },
+		{ x1 = 3793.97, z1 = 11.62, y1 = 2389.19, x2 = 3794.33, z2 = 11.66, y2 = 2396.27, bhX = 3795.4, bhZ = 11.9, bhY = 2392.4, bhAngle = 91 },
+		{ x1 = -5166.3, z1 = 75, y1 = -6620.24, x2 = -5171.38, z2 = 75, y2 = -6624.75, bhX = -5169.4, bhZ = 75, bhY = -6621.8, bhAngle = -42 }
+	}
+
 }
 
 registerScreenPlay("HeroOfTatooineScreenPlay", true)
@@ -69,6 +79,9 @@ function HeroOfTatooineScreenPlay:initEvents()
 	if (not hasServerEvent("HeroOfTatAltruism")) then
 		self:createAltruismEvent()
 	end
+	if (not hasServerEvent("HeroOfTatIntellect")) then
+		self:createIntellectEvent()
+	end
 end
 
 function HeroOfTatooineScreenPlay:createCourageEvent()
@@ -77,6 +90,10 @@ end
 
 function HeroOfTatooineScreenPlay:createAltruismEvent()
 	createServerEvent(self:getEventChangeTime(), "HeroOfTatooineScreenPlay", "doAltruismChange", "HeroOfTatAltruism")
+end
+
+function HeroOfTatooineScreenPlay:createIntellectEvent()
+	createServerEvent(self:getEventChangeTime(), "HeroOfTatooineScreenPlay", "doIntellectSpawn", "HeroOfTatIntellect")
 end
 
 function HeroOfTatooineScreenPlay:doCourageChange()
@@ -241,6 +258,195 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 	end
 
 	self:createAltruismEvent()
+end
+
+function HeroOfTatooineScreenPlay:doIntellectSpawn()
+	if (not isZoneEnabled("tatooine")) then
+		return 0
+	end
+
+	local hermitId = readData("hero_of_tat:hermit_id")
+	local pHermit = getSceneObject(hermitId)
+
+	if (pHermit == nil) then
+		printf("Error in HeroOfTatooineScreenPlay, unable to find hermit object.\n")
+		return 0
+	end
+
+
+	local mobLoc = readData("hero_of_tat:intellect_mob_loc")
+
+	self:destroyIntellectMobs()
+
+	local newLoc = getRandomNumber(1, table.getn(self.intellectSpawns))
+
+	if (newLoc == mobLoc) then
+		if (newLoc == table.getn(self.intellectSpawns)) then
+			newLoc = newLoc - 1
+		else
+			newLoc = newLoc + 1
+		end
+	end
+
+	writeData("hero_of_tat:intellect_mob_loc", newLoc)
+
+	local pBountyHunter = spawnMobile("tatooine", "hero_of_tat_bh", 0, self.intellectSpawns[newLoc]["bhX"], self.intellectSpawns[newLoc]["bhZ"], self.intellectSpawns[newLoc]["bhY"], self.intellectSpawns[newLoc]["bhAngle"], 0)
+
+	if (pBountyHunter == nil) then
+		printf("Error in HeroOfTatooineScreenPlay, unable to spawn bounty hunter.\n")
+		return
+	end
+
+	writeData("hero_of_tat:intellect_mob_id", SceneObject(pBountyHunter):getObjectID())
+	CreatureObject(pBountyHunter):setPvpStatusBitmask(0)
+
+	self:spawnIntellectLiars(pBountyHunter)
+end
+
+function HeroOfTatooineScreenPlay:getIntellectLiarName(liarNum)
+	local liarId = readData("hero_of_tat:liar_" .. liarNum)
+	local pLiar = getSceneObject(liarId)
+
+	if (pLiar == nil) then
+		return "unknown"
+	end
+
+	return string.match(SceneObject(pLiar):getCustomObjectName(), "%a+")
+end
+
+function HeroOfTatooineScreenPlay:sendImplicateSui(pPlayer, pNpc)
+	local liarTable = { }
+
+	for i = 1, 6, 1 do
+		local liarId = readData("hero_of_tat:liar_" .. i)
+		local pLiar = getSceneObject(liarId)
+
+		if (pLiar ~= nil) then
+			table.insert(liarTable, self:getIntellectLiarName(i))
+		end
+	end
+
+	local suiManager = LuaSuiManager()
+	suiManager:sendListBox(pNpc, pPlayer, "@quest/hero_of_tatooine/intellect_liar:sui_title", "@quest/hero_of_tatooine/intellect_liar:sui_prompt", 2, "@quest/hero_of_tatooine/intellect_liar:sui_btn_cancel", "", "@quest/hero_of_tatooine/intellect_liar:sui_btn_ok", "HeroOfTatooineScreenPlay", "handleSuiImplication", liarTable)
+end
+
+function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, cancelPressed, arg0)
+	if (pPlayer == nil) then
+		return
+	end
+
+	if (cancelPressed) then
+		return
+	end
+
+	local mobId = readData("hero_of_tat:intellect_mob_id")
+
+	if (mobId == 0) then
+		return
+	end
+
+	local pBountyHunter = getSceneObject(mobId)
+
+	if (pBountyHunter == nil) then
+		return
+	end
+
+
+	local liarNum = arg0 + 1
+	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
+		if (liarNum == 4) then
+			local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+			if (pInventory == nil) then
+				return
+			end
+
+			if (SceneObject(pInventory):hasFullContainerObjects()) then
+				player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:intellect_inv_full")
+			else
+				local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_intellect.iff", -1)
+
+				if (pMark == nil) then
+					player:sendSystemMessage("Error creating object. Please file a bug report.")
+				end
+			end
+
+			player:setScreenPlayState(8, "hero_of_tatooine")
+			player:setScreenPlayState(2, "hero_of_tatooine_intellect")
+			playerObject:awardBadge(POI_TWOLIARS)
+			spatialChat(pBountyHunter, "@quest/hero_of_tatooine/intellect_liar:bh_win")
+			createEvent(10 * 1000, "HeroOfTatooineScreenPlay", "doIntellectSpawn", pBountyHunter)
+		else
+			spatialChat(pBountyHunter, "@quest/hero_of_tatooine/intellect_liar:bh_lose")
+			writeData(player:getObjectID() .. ":hero_of_tat:failedIntellect", mobId)
+		end
+	end)
+end
+
+function HeroOfTatooineScreenPlay:destroyIntellectMobs()
+	local mobId = readData("hero_of_tat:intellect_mob_id")
+	local mobLoc = readData("hero_of_tat:intellect_mob_loc")
+	local pBountyHunter
+
+	if (mobId ~= 0) then
+		pBountyHunter = getSceneObject(mobId)
+	end
+
+	if (pBountyHunter ~= nil) then
+		SceneObject(pBountyHunter):destroyObjectFromWorld()
+	end
+
+	for i = 1, 6, 1 do
+		local liarId = readData("hero_of_tat:liar_" .. i)
+		local pLiar = getSceneObject(liarId)
+
+		if (pLiar ~= nil) then
+			deleteData(SceneObject(pLiar):getObjectID() .. ":liarId")
+			SceneObject(pLiar):destroyObjectFromWorld()
+		end
+
+		deleteData("hero_of_tat:liar_" .. i)
+	end
+end
+
+function HeroOfTatooineScreenPlay:spawnIntellectLiars(pBountyHunter)
+	local mobLoc = readData("hero_of_tat:intellect_mob_loc")
+	local mobId = readData("hero_of_tat:intellect_mob_id")
+
+	for i = 1, 6, 1 do
+		local x, y, z
+
+		if (i < 4) then
+			x = self.intellectSpawns[mobLoc]["x1"]
+			z = self.intellectSpawns[mobLoc]["z1"]
+			y = self.intellectSpawns[mobLoc]["y1"]
+		else
+			x = self.intellectSpawns[mobLoc]["x2"]
+			z = self.intellectSpawns[mobLoc]["z2"]
+			y = self.intellectSpawns[mobLoc]["y2"]
+		end
+
+		if (i == 1 or i == 4) then x = x - .75; y = y + 1.3
+		elseif (i == 2 or i == 5) then x = x - .75; y = y - 1.3
+		elseif (i == 3 or i == 6) then x = x + 1.5 end
+
+		local pLiar
+
+		if (i == 1) then
+			pLiar = spawnMobile("tatooine", "hero_of_tat_smuggler_captain", 0, x, z, y, getRandomNumber(360) - 180, 0)
+		else
+			pLiar = spawnMobile("tatooine", "hero_of_tat_smuggler", 0, x, z, y, getRandomNumber(360) - 180, 0)
+		end
+
+		if (pLiar == nil) then
+			printf("Error in HeroOfTatooineScreenPlay, unable to spawn Mark of Intellect smugglers.\n")
+			self:destroyIntellectMobs() -- If not all were able to spawn, destroy them all until next spawn attempt
+			return
+		end
+		CreatureObject(pLiar):setPvpStatusBitmask(0)
+		writeData("hero_of_tat:liar_" .. i, SceneObject(pLiar):getObjectID())
+		writeData(SceneObject(pLiar):getObjectID() .. ":liarId", i)
+	end
 end
 
 function HeroOfTatooineScreenPlay:onEnteredAltruismCave(pCave, pCreature)
@@ -459,9 +665,9 @@ function HeroOfTatooineScreenPlay:completeEscort(pPlayer)
 		if (SceneObject(pInventory):hasFullContainerObjects()) then
 			player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_inv_full")
 		else
-			local pSkull = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_altruism.iff", -1)
+			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_altruism.iff", -1)
 
-			if (pSkull == nil) then
+			if (pMark == nil) then
 				player:sendSystemMessage("Error creating object. Please file a bug report.")
 			end
 		end
