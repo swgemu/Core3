@@ -2074,10 +2074,16 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 		if (structure != NULL) {
 			Zone* zone = structure->getZone();
 
-			if (zone != NULL)
+			if (zone != NULL) {
+				if (structure->isCivicStructure()) {
+					structure->setOwner(0);
+					continue;
+				}
+
 				StructureManager::instance()->destroyStructure(structure);
-			else
+			} else {
 				structure->destroyObjectFromDatabase(true);
+			}
 		}
 	}
 
