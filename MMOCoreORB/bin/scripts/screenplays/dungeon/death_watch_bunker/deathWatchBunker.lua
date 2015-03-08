@@ -138,6 +138,9 @@ DeathWatchBunkerScreenPlay = ScreenPlay:new {
 
 	containerRespawnTime = 20 * 60 * 1000, -- 20 minutes
 	debrisRespawnTime = 10 * 60 * 1000, -- 10 minutes
+
+	primaryArmorColors = { 48, 55, 60, 95, 111, 127, 135, 143 },
+	secondaryArmorColors = { 42, 90, 236, 244, 252, 253, 254, 255 }
 }
 
 registerScreenPlay("DeathWatchBunkerScreenPlay", true)
@@ -1359,15 +1362,8 @@ function DeathWatchBunkerScreenPlay:stopCraftingProcess(pCreature, pTerm, succes
 			end
 
 			if (number ~= 4) then
-				local armorColorCount = TangibleObject(pReward):getPaletteColorCount("index_color_1")
-				if (armorColorCount ~= 0) then
-					TangibleObject(pReward):setCustomizationVariable("/private/index_color_1", getRandomNumber(armorColorCount))
-				end
-
-				armorColorCount = TangibleObject(pReward):getPaletteColorCount("index_color_2")
-				if (armorColorCount ~= 0) then
-					TangibleObject(pReward):setCustomizationVariable("/private/index_color_2", getRandomNumber(armorColorCount))
-				end
+				TangibleObject(pReward):setCustomizationVariable("/private/index_color_1", self.primaryArmorColors[getRandomNumber(1,8)])
+				TangibleObject(pReward):setCustomizationVariable("/private/index_color_2", self.secondaryArmorColors[getRandomNumber(1,8)])
 			end
 		end
 
