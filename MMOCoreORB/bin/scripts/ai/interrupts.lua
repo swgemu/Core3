@@ -130,8 +130,11 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 		if faction == "rebel" or faction == "imperial" then
 			effectiveLevel = effectiveLevel * 2.5
 		elseif faction ~= "" and faction ~= nil and SceneObject(pObject):isPlayerCreature() then
-			local standing = PlayerObject(pObject):getFactionStanding(faction)
-			effectiveLevel = effectiveLevel * (1 + (standing / -5000))
+			local pGhost = CreatureObject(pObject):getPlayerObject()
+			if pGhost ~= nil then
+				local standing = PlayerObject(pGhost):getFactionStanding(faction)
+				effectiveLevel = effectiveLevel * (1 + (standing / -5000))
+			end
 		end
 	end
 
