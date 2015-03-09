@@ -63,9 +63,66 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 	//gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 
 	//gameCommandHandler = new GameCommandHandler();
+
+	loadSpatialChatTypes();
 }
 
 void ChatManagerImplementation::finalize() {
+}
+
+void ChatManagerImplementation::loadSpatialChatTypes() {
+	TemplateManager* templateManager = TemplateManager::instance();
+	IffStream* iffStream = templateManager->openIffFile("chat/spatial_chat_types.iff");
+
+	if (iffStream == NULL) {
+		error("Could not open chat/spatial_chat_types.iff");
+		return;
+	}
+
+	iffStream->openForm('SPCT');
+
+	Chunk* version = iffStream->openForm('0000');
+
+	Chunk* data = iffStream->openChunk('TYPS');
+	int i = 0;
+
+	while (data->hasData()) {
+		String key;
+		data->readString(key);
+		i++;
+
+		spatialChatTypes.put(key, i);
+	}
+
+	iffStream->closeChunk('TYPS');
+
+	Chunk* version2 = iffStream->openForm('VOLS');
+
+	for (int j = 0; j < version2->getChunksSize(); j++) {
+		Chunk* data2 = version2->getNextChunk();
+
+		String name;
+		data2->readString(name);
+
+		uint16 distance = 0;
+
+		distance = data2->readShort();
+
+		if (name.isEmpty()) {
+			defaultSpatialChatDistance = distance;
+		} else {
+			uint32 chatType = spatialChatTypes.get(name);
+
+			spatialChatDistances.put(chatType, distance);
+		}
+	}
+
+	iffStream->closeForm('VOLS');
+
+	iffStream->closeForm('0000');
+	iffStream->closeForm('SPCT');
+
+	delete iffStream;
 }
 
 ChatRoom* ChatManagerImplementation::createRoom(const String& roomName, ChatRoom* parent) {
@@ -367,8 +424,10 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 		vec->safeCopyTo(closeEntryObjects);
 	} else {
 		sender->info("Null closeobjects vector in ChatManager::handleSocialInternalMessage", true);
-		zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionX(), 192, &closeEntryObjects, true);
+		zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionX(), 128, &closeEntryObjects, true);
 	}
+
+	float range = defaultSpatialChatDistance;
 
 	for (int i = 0; i < closeEntryObjects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
@@ -381,9 +440,8 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 			if (ghost == NULL)
 				continue;
 
-			if (!ghost->isIgnoring(firstName) && creature->isInRange(sender, 128)) {
-				Emote* emsg = new Emote(creature, sender, targetid,
-						emoteid, showtext);
+			if (!ghost->isIgnoring(firstName) && creature->isInRange(sender, range)) {
+				Emote* emsg = new Emote(creature, sender, targetid, emoteid, showtext);
 				creature->sendMessage(emsg);
 
 			}
@@ -533,14 +591,21 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		closeObjects->safeCopyTo(closeEntryObjects);
 	} else {
 		player->info("Null closeobjects vector in ChatManager::broadcastMessage", true);
-		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 192, &closeEntryObjects, true);
+		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 128, &closeEntryObjects, true);
+	}
+
+	float range = defaultSpatialChatDistance;
+
+	float specialRange = spatialChatDistances.get(mood2);
+	if (specialRange != -1) {
+		range = specialRange;
 	}
 
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
 			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
 
-			if (player->isInRange(object, 128)) {
+			if (player->isInRange(object, range)) {
 
 				//Notify observers that are expecting spatial chat.
 				if (object->getObserverCount(ObserverEventType::SPATIALCHATRECEIVED)) {
