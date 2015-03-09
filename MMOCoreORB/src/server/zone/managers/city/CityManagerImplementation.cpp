@@ -1707,6 +1707,15 @@ void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* m
 	for (int i = 0; i < city->getStructuresCount(); i++) {
 		ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
 		aa->getZone()->registerObjectWithPlanetaryMap(structure);
+
+		SortedVector<ManagedReference<SceneObject*> >* children = structure->getChildObjects();
+
+		for (int j = 0; j < children->size(); j++) {
+			SceneObject* child = children->get(j);
+
+			if (child != NULL)
+				aa->getZone()->registerObjectWithPlanetaryMap(child);
+		}
 	}
 
 	for (int i = 0; i < city->getCommercialStructuresCount(); i++) {
@@ -1732,6 +1741,15 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 			for (int i = 0; i < city->getStructuresCount(); i++) {
 				ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
 				aaZone->unregisterObjectWithPlanetaryMap(structure);
+
+				SortedVector<ManagedReference<SceneObject*> >* children = structure->getChildObjects();
+
+				for (int j = 0; j < children->size(); j++) {
+					SceneObject* child = children->get(j);
+
+					if (child != NULL)
+						aa->getZone()->unregisterObjectWithPlanetaryMap(child);
+				}
 			}
 
 			for (int i = 0; i < city->getCommercialStructuresCount(); i++) {

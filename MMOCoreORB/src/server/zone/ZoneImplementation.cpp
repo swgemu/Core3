@@ -58,6 +58,7 @@ which carries forward this exception.
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
@@ -422,6 +423,15 @@ void ZoneImplementation::addSceneObject(SceneObject* object) {
 		StructureObject* structure = cast<StructureObject*>(object);
 		if (structure->isCivicStructure() || structure->isCommercialStructure()) {
 			return;
+		}
+	//Same thing for player city bank terminals
+	} else if (object->isTerminal()) {
+		Terminal* terminal = cast<Terminal*>(object);
+		ManagedReference<SceneObject*> controlledObject = terminal->getControlledObject();
+		if (controlledObject != NULL && controlledObject->isStructureObject()) {
+			StructureObject* structure = controlledObject.castTo<StructureObject*>();
+			if (structure->isCivicStructure())
+				return;
 		}
 	}
 	

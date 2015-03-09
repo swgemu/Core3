@@ -1223,6 +1223,7 @@ void BuildingObjectImplementation::createChildObjects(){
 			childObjects.put(obj);
 			obj->initializePosition(childPosition.getX(), childPosition.getZ(), childPosition.getY());
 			obj->setDirection(child->getDirection());
+			obj->initializeChildObject(_this.get());
 
 
 			// if it's inside
@@ -1309,7 +1310,6 @@ void BuildingObjectImplementation::createChildObjects(){
 			permissions->setInheritPermissionsFromParent(false);
 			permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 			permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
-			obj->initializeChildObject(_this.get());
 
 			if(obj->isTurret() || obj->isMinefield() || obj->isDetector()){
 				TangibleObject* tano = cast<TangibleObject*>(obj.get());
