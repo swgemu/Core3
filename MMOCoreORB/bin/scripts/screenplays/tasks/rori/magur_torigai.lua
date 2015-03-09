@@ -4,7 +4,7 @@ magur_torigai_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "giant_gubber", planetName = "rori", npcName = "" }
+			{ npcTemplate = "giant_gubbur", planetName = "rori", npcName = "" }
 		}, 
 		secondarySpawns =
 		{
