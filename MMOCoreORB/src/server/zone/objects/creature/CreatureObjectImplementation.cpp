@@ -750,6 +750,20 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 	//info("finished clearCombatState");
 }
 
+void CreatureObjectImplementation::setAlternateAppearance(const String& appearanceTemplate, bool notifyClient) {
+	alternateAppearance = appearanceTemplate;
+
+	if (!notifyClient)
+		return;
+
+	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(
+			_this.get());
+	dcreo6->updateAlternateAppearance();
+	dcreo6->close();
+
+	broadcastMessage(dcreo6, true);
+}
+
 bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 	if (!(stateBitmask & state)) {
 		stateBitmask |= state;
