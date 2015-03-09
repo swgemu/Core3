@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_32580efa",
+        "filename": "MMOCoreORB/src/server/zone/managers/reaction/EmoteReactionFine.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-09T09:07:33Z",
+      "side": 1,
+      "message": "What happens here if maxQuip \u003d\u003d -1 and minQuip \u003d\u003d 0? What does System::random(-1) return? Also, if minQuip \u003d\u003d -1 and maxQuip \u003d\u003d 0, then you are returning eitehr -1 or 0, I\u0027m not sure that is what you want, either.",
+      "revId": "717c75e8f60954e33c9e642fae575d125fb375ca",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_125d12ea",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SocialInternalCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-09T09:07:33Z",
+      "side": 1,
+      "message": "Can you ensure that reactionManager is not NULL?",
+      "revId": "717c75e8f60954e33c9e642fae575d125fb375ca",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_f2715678",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/ReactionFinePaymentSuiCallback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-09T09:07:33Z",
+      "side": 1,
+      "message": "NULL checks",
+      "revId": "717c75e8f60954e33c9e642fae575d125fb375ca",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
