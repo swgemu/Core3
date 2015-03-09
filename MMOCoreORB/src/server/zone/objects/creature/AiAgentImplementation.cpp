@@ -87,6 +87,7 @@
 #include "events/AiMoveEvent.h"
 #include "events/AiThinkEvent.h"
 #include "events/AiWaitEvent.h"
+#include "events/AiWaitTimeoutEvent.h"
 #include "events/AiInterruptTask.h"
 #include "events/AiLoadTask.h"
 #include "events/CamoTask.h"
@@ -1227,6 +1228,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	float maxDist = newSpeed;
 
 	bool found = false;
+	uint32 origSize = patrolPoints.size();
 	float dist = 0;
 	float dx = 0, dy = 0;
 	ManagedReference<SceneObject*> cellObject;
@@ -1598,6 +1600,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	updateLocomotion();
 	//activateMovementEvent();
 
+	if (patrolPoints.size() < origSize)
+		activateWaitTimeoutEvent();
+
 	return found;
 }
 
@@ -1740,8 +1745,10 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::LEASHING:
-		if (!isRetreating())
+		if (!isRetreating()) {
 			setOblivious();
+			return setDestination();
+		}
 
 		break;
 	case AiAgent::PATROLLING:
@@ -1929,12 +1936,36 @@ void AiAgentImplementation::activateWaitEvent() {
 		waitEvent->schedule(UPDATEMOVEMENTINTERVAL * 10);
 }
 
+void AiAgentImplementation::activateWaitTimeoutEvent() {
+	if (getZone() == NULL || patrolPoints.isEmpty())
+		return;
+
+	Vector3 targetPoint = patrolPoints.get(0).getWorldPosition();
+	Coordinate targetCoord = Coordinate(targetPoint.getX(), targetPoint.getZ(), targetPoint.getY());
+	uint64 delay = getRunSpeed() / getDistanceTo(&targetCoord);
+
+	if (waitTimeoutEvent == NULL)
+		waitTimeoutEvent = new AiWaitTimeoutEvent(_this.get());
+
+	if (!waitTimeoutEvent->isScheduled())
+		waitTimeoutEvent->schedule(delay*1000);
+}
+
+PatrolPoint* AiAgentImplementation::getNextPosition() {
+	if (patrolPoints.isEmpty())
+		return &homeLocation;
+
+	return &patrolPoints.get(0);
+}
+
 void AiAgentImplementation::setNextPosition(float x, float z, float y, SceneObject* cell) {
 	Locker locker(&targetMutex);
 
 	PatrolPoint point(x, z, y, cell);
 
 	patrolPoints.add(0, point);
+
+	activateWaitTimeoutEvent();
 }
 
 void AiAgentImplementation::setNextStepPosition(float x, float z, float y, SceneObject* cell) {
