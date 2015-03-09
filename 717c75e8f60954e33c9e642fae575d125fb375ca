@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_9268e288",
+        "filename": "MMOCoreORB/src/server/zone/managers/reaction/EmoteReactionFine.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 584
+      },
+      "writtenOn": "2015-03-09T09:28:55Z",
+      "side": 1,
+      "message": "It\u0027ll never happen. -1 is used in the data to refer to there not being a quip for that particular npc. But, I\u0027ll change it to an or anyway.",
+      "parentUuid": "1a486d77_32580efa",
+      "revId": "717c75e8f60954e33c9e642fae575d125fb375ca",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_125d12ea",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SocialInternalCommand.h",
         "patchSetId": 3
