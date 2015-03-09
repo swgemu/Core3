@@ -75,6 +75,7 @@ import server.zone.managers.object.ObjectManager;
 import server.zone.managers.player.PlayerManager;
 import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.managers.radial.RadialManager;
+import server.zone.managers.reaction.ReactionManager;
 import server.zone.managers.skill.SkillManager;
 import server.zone.managers.resource.ResourceManager;
 import server.zone.managers.crafting.CraftingManager;
@@ -107,6 +108,7 @@ class ZoneServer extends ManagedService implements Logger {
 	
 	private transient ObjectManager objectManager;
 	private PlayerManager playerManager;
+	private ReactionManager reactionManager;
 	private ChatManager chatManager;
 	private RadialManager radialManager;
 	private CityManager cityManager;
@@ -345,6 +347,11 @@ class ZoneServer extends ManagedService implements Logger {
 	@dirty
 	public PlayerManager getPlayerManager() {
 		return playerManager;
+	}
+
+	@dirty
+	public ReactionManager getReactionManager() {
+		return reactionManager;
 	}
 	
 	@dirty
