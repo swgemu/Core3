@@ -146,7 +146,9 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 	int randomQuip = reactionFine->getRandomQuip();
 
 	if (randomQuip != -1) {
-		chatManager->broadcastMessage(emoteTarget, getReactionQuip(randomQuip), 0, 0, 0);
+		StringIdChatParameter param(getReactionQuip(randomQuip));
+		param.setTT(emoteUser->getObjectID());
+		chatManager->broadcastMessage(emoteTarget, param, 0, 0, 0);
 	}
 
 	if (reactionFine->getFactionFine() != 0)
