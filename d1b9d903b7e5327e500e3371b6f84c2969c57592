@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_92b58233",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureManager.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T02:38:41Z",
+      "side": 1,
+      "message": "This seems to be an unused duplicate of the one in ChatManager.",
+      "revId": "d1b9d903b7e5327e500e3371b6f84c2969c57592",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_928c6281",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T02:38:41Z",
+      "side": 1,
+      "message": "Change emoteTarget to AiAgent. It\u0027s already cast as an AiAgent before being passed to this method. Why cast it back to a Creo and then cast it back to an AiAgent later on?",
+      "revId": "d1b9d903b7e5327e500e3371b6f84c2969c57592",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_1281924a",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T02:38:41Z",
+      "side": 1,
+      "message": "What if the player is more than 16m away when they /hail the npc?",
+      "revId": "d1b9d903b7e5327e500e3371b6f84c2969c57592",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_f295d688",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T02:38:41Z",
+      "side": 1,
+      "message": "Why not return here, before calling getEmoteReactionFine, if reactionLevel is 0?",
+      "revId": "d1b9d903b7e5327e500e3371b6f84c2969c57592",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_72e9e619",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T02:38:41Z",
+      "side": 1,
+      "message": "I would move all of this to before the for loop. If emoteUser is an imperial, do the rank checks and comparisons once and set the result to an int that you just compare with the data\u0027s rank comparison inside the for loop.",
+      "revId": "d1b9d903b7e5327e500e3371b6f84c2969c57592",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_d292da9e",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/CreatureManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1400,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T02:38:41Z",
+      "side": 1,
+      "message": "Since emoteTarget is always an AiAgent, put reactionRank in AiAgent instead of CreatureObject.",
+      "revId": "d1b9d903b7e5327e500e3371b6f84c2969c57592",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_52870a62",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T02:38:41Z",
+      "side": 1,
+      "message": "It looks like you moved reactionFines to PlayerObject but forgot to remove it from here.",
+      "revId": "d1b9d903b7e5327e500e3371b6f84c2969c57592",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_b28f5e75",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SocialInternalCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T02:38:41Z",
+      "side": 1,
+      "message": "Move this to before the if isPet check so that aiAgent will be locked going into emoteReaction as well.",
+      "revId": "d1b9d903b7e5327e500e3371b6f84c2969c57592",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_327c8e72",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 1760,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T02:38:41Z",
+      "side": 1,
+      "message": "I don\u0027t see you using the addto or subtractfrom methods. Why bother creating them?",
+      "revId": "d1b9d903b7e5327e500e3371b6f84c2969c57592",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
