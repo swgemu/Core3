@@ -157,7 +157,7 @@ class CityManager extends ManagedService implements Logger {
 
 	public native void sendMaintenanceDecayEmail(CityRegion city, StructureObject structure, int maintenanceDue);
 
-	public native void sendMaintenanceDestroyEmail(CityRegion city, StructureObject structure);
+	public native void sendMaintenanceDestroyEmail(CityRegion city, SceneObject object);
 
 	public native void sendMaintenanceRepairEmail(CityRegion city, StructureObject structure);
 
