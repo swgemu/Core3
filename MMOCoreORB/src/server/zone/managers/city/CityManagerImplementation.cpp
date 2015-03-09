@@ -2356,3 +2356,13 @@ void CityManagerImplementation::promptForceRank(CityRegion* city, CreatureObject
 	ghost->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
 }
+
+void CityManagerImplementation::alignAmenity(CityRegion* city, CreatureObject* player, SceneObject* amenity, int direction) {
+	if (amenity == NULL || player == NULL || city == NULL)
+		return;
+
+	if (!city->isMayor(player->getObjectID()) || amenity->getParent().get() != NULL)
+		return;
+
+	amenity->updateDirection(Math::deg2rad(90 * direction));
+}

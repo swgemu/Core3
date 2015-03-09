@@ -294,4 +294,6 @@ class CityManager extends ManagedService implements Logger {
 	public native void sendAddStructureMails(CityRegion city, StructureObject structure);
 
 	public native void promptForceRank(CityRegion city, CreatureObject player, boolean rankUp);
+
+	public native void alignAmenity(CityRegion city, CreatureObject player, SceneObject amenity, int direction);
 }
