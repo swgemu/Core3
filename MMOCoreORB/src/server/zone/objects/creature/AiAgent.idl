@@ -149,6 +149,8 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected transient Time lastDamageReceived;
 	
+	protected int reactionRank;
+
 	protected float respawnTimer;
 	protected int respawnCounter;
 	protected boolean randomRespawn;
@@ -200,6 +202,8 @@ class AiAgent extends CreatureObject {
 		respawnTimer = 0;
 		respawnCounter = 0;
 		randomRespawn = false;
+
+		reactionRank = 0;
 
 		showNextMovementPosition = true;
 		
@@ -1226,5 +1230,14 @@ class AiAgent extends CreatureObject {
 	
 	@dirty
 	public native string getPersonalityStf();
+
+	@read
+	public int getReactionRank() {
+		return reactionRank;
+	}
+
+	public void setReactionRank(int rank) {
+		reactionRank = rank;
+	}
 
 }

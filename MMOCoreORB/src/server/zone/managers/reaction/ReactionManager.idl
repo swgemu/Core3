@@ -42,75 +42,58 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SOCIALINTERNALCOMMAND_H_
-#define SOCIALINTERNALCOMMAND_H_
+package server.zone.managers.reaction;
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/creature/PetManager.h"
-#include "server/zone/managers/reaction/ReactionManager.h"
-#include "server/zone/objects/creature/AiAgent.h"
-#include "server/chat/ChatManager.h"
+import engine.core.ManagedService;
+import engine.log.Logger;
+import engine.lua.Lua;
+import server.zone.ZoneServer;
+import server.zone.Zone;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.AiAgent;
+import server.zone.objects.scene.SceneObject;
+import system.util.VectorMap;
+import system.util.Vector;
+include server.zone.managers.reaction.EmoteReactionFine;
+include server.zone.managers.reaction.ReactionRankData;
 
-class SocialInternalCommand : public QueueCommand {
-public:
+class ReactionManager extends ManagedService implements Logger {
+	private transient ZoneServer zoneServer;
 
-	SocialInternalCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	@dereferenced
+	protected transient Vector<Reference<EmoteReactionFine> > emoteReactionFines;
 
+	@dereferenced
+	protected transient Vector<Reference<ReactionRankData> > reactionRankData;
+
+	@dereferenced
+	private transient VectorMap<string, int> reactionEmotes;
+
+	
+	public ReactionManager(ZoneServer zserv) {
+		Logger.setLoggingName("ReactionManager");
+		Logger.setLogging(true);
+
+		zoneServer = zserv;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	public native int getReactionLevel(final string emote) {
+		if (reactionEmotes.contains(emote))
+			return reactionEmotes.get(emote);
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-
-		ChatManager* chatManager = server->getChatManager();
-		if (chatManager == NULL)
-			return GENERALERROR;
-
-		chatManager->handleSocialInternalMessage(creature, arguments);
-
-		// Parse arguments
-		StringTokenizer tokenizer(arguments.toString());
-		uint64 targetid;
-		uint32 emoteid;
-		try {
-			targetid = tokenizer.getLongToken();
-			emoteid = tokenizer.getIntToken();
-		} catch (const Exception& e) {
-			return GENERALERROR;
-		}
-
-		// If target is a pet, enqueue command to handle it
-		Reference<AiAgent*> aiAgent = server->getZoneServer()->getObject(targetid, true).castTo<AiAgent*>();
-		if(aiAgent == NULL)
-			return SUCCESS;
-
-		Locker crossLocker(aiAgent, creature);
-
-		if (aiAgent->isPet()) {
-
-			PetManager* petManager = aiAgent->getZoneServer()->getPetManager();
-			if (petManager == NULL)
-				return GENERALERROR;
-
-			petManager->enqueueOwnerOnlyPetCommand(creature, aiAgent,String("petEmote").toLowerCase().hashCode(), arguments.toString() );
-
-		} else {
-
-			ReactionManager* reactionManager = creature->getZoneServer()->getReactionManager();
-
-			if (reactionManager != NULL)
-				reactionManager->emoteReaction(creature, aiAgent, emoteid);
-
-		}
-		return SUCCESS;
+		return 0;
 	}
 
-};
+	public native void loadLuaConfig();
 
-#endif //SOCIALINTERNALCOMMAND_H_
+	@local
+	public native EmoteReactionFine getEmoteReactionFine(CreatureObject emoteUser, AiAgent emoteTarget, int reactionLevel);
+	
+	@local
+	public native ReactionRankData getReactionRankData(final string name);
+
+	public native string getReactionQuip(int num);
+
+	public native void emoteReaction(CreatureObject emoteUser, AiAgent emoteTarget, int emoteid);
+
+}

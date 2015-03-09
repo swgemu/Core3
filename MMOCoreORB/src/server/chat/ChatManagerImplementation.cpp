@@ -60,6 +60,8 @@ ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int inits
 
 	setLoggingName("ChatManager");
 
+	loadSocialTypes();
+
 	//gameRooms = new VectorMap<String, ManagedReference<ChatRoom*> >();
 
 	//gameCommandHandler = new GameCommandHandler();
@@ -1414,4 +1416,28 @@ UnicodeString ChatManagerImplementation::formatMessage(const UnicodeString& mess
 	}
 
 	return text;
+}
+
+void ChatManagerImplementation::loadSocialTypes() {
+	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/chat/social_types.iff");
+
+	if (iffStream == NULL) {
+		error("Could not load social types.");
+		return;
+	}
+
+	DataTableIff dtiff;
+	dtiff.readObject(iffStream);
+
+	delete iffStream;
+
+	for (int i = 0; i < dtiff.getTotalRows(); ++i) {
+		DataTableRow* row = dtiff.getRow(i);
+
+		String key;
+		row->getCell(0)->getValue(key);
+		socialTypes.put(i + 1, key);
+	}
+
+	info("Loaded " + String::valueOf(socialTypes.size()) + " social types.", true);
 }

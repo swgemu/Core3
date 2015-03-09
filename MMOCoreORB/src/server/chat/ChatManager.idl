@@ -82,6 +82,9 @@ class ChatManager extends ManagedService implements Logger {
 	@dereferenced 
 	private VectorMap<string, ChatRoom> gameRooms;
 
+	@dereferenced
+	protected VectorMap<unsigned int, string> socialTypes;
+
 	ChatRoom groupRoom;
 	ChatRoom guildRoom;
 	ChatRoom core3Room;
@@ -119,6 +122,8 @@ class ChatManager extends ManagedService implements Logger {
 	public native void initiateRooms();
 	public native void initiatePlanetRooms();
 	public native void destroyRooms();
+
+	private native void loadSocialTypes();
 	
 	public native ChatRoom createRoom(final string roomName, ChatRoom parent = null);
 	
@@ -268,5 +273,10 @@ class ChatManager extends ManagedService implements Logger {
 	 */
 	public ChatRoom getGeneralRoom() {
 		return generalRoom;
+	}
+
+	@dirty
+	public string getSocialType(unsigned int id) {
+		return socialTypes.get(id);
 	}
 }
