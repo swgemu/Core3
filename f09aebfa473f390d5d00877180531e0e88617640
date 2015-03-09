@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_32ddae43",
+        "filename": "MMOCoreORB/bin/scripts/managers/reaction_manager.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T13:57:50Z",
+      "side": 1,
+      "message": "The strings also include 10,000 credit fine notice. None of your scenarios use that one. Should it be used?",
+      "revId": "f09aebfa473f390d5d00877180531e0e88617640",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_9216a2f0",
+        "filename": "MMOCoreORB/src/server/zone/managers/reaction/ReactionManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T13:57:50Z",
+      "side": 1,
+      "message": "You have the other .pop() calls inside the isValidTable() checks. I\u0027m not sure if it matters or not, but we should find out and, either way, be consistent.",
+      "revId": "f09aebfa473f390d5d00877180531e0e88617640",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_52d82a53",
+        "filename": "MMOCoreORB/src/server/zone/managers/reaction/ReactionManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T13:57:50Z",
+      "side": 1,
+      "message": "Change this to:\nif (rankData \u003d\u003d NULL)\n   return;",
+      "revId": "f09aebfa473f390d5d00877180531e0e88617640",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_72d32639",
+        "filename": "MMOCoreORB/src/server/zone/managers/reaction/ReactionManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T13:57:50Z",
+      "side": 1,
+      "message": "Move this check to right after you call getRandomRank(). No point in setting if it\u0027s zero.",
+      "revId": "f09aebfa473f390d5d00877180531e0e88617640",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_b2199e24",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SocialInternalCommand.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-09T13:57:50Z",
+      "side": 1,
+      "message": "Remove this.",
+      "revId": "f09aebfa473f390d5d00877180531e0e88617640",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
