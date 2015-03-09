@@ -2299,7 +2299,7 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 }
 
 bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
-	if (!isAttackableBy(target))
+	if (!isAttackableBy(target) || target->isVehicleObject())
 		return false;
 
 	// grab the GCW faction
