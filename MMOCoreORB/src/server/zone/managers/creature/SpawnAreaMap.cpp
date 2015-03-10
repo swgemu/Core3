@@ -122,7 +122,10 @@ void SpawnAreaMap::loadStaticSpawns() {
 			ManagedReference<CreatureObject*> creatureObject = creatureManager->spawnCreature(name.hashCode(), 0, x, z, y, parentID);
 
 			if (creatureObject != NULL) {
+				Locker objLocker(creatureObject);
+
 				creatureObject->setDirection(Math::deg2rad(heading));
+				
 				if (creatureObject->isJunkDealer()){
 					cast<JunkdealerCreature*>(creatureObject.get())->setJunkDealerConversationType(junkDealerConversationType);
 					cast<JunkdealerCreature*>(creatureObject.get())->setJunkDealerBuyerType(junkDealerBuyingType);
@@ -213,11 +216,13 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	if (radius == 0 && width == 0 && height == 0 && innerRadius == 0 && outerRadius == 0)
 		return;
 
-	uint32 crc = String("object/spawn_area.iff").hashCode();
+	static const uint32 crc = String("object/spawn_area.iff").hashCode();
 
 	ManagedReference<SpawnArea*> area = dynamic_cast<SpawnArea*>(ObjectManager::instance()->createObject(crc, 0, "spawnareas"));
 	if (area == NULL)
 		return;
+
+	Locker objLocker(area);
 
 	StringId nameID(zone->getZoneName() + "_region_names", name);
 

@@ -314,6 +314,8 @@ int LuaAiAgent::completeMove(lua_State* L) {
 int LuaAiAgent::setLevel(lua_State* L) {
 	int level = (int) lua_tonumber(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setLevel(level);
 
 	return 0;

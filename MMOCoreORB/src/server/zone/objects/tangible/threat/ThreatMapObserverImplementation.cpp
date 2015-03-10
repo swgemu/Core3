@@ -18,14 +18,16 @@ int ThreatMapObserverImplementation::notifyObserverEvent(uint32 eventType, Obser
 		return 1;
 	}
 
+	CreatureObject* originator = cast<CreatureObject*>(observable);
+
+	if (originator == NULL )
+		return 1;
+
+	Locker crossLocker(strongRef, originator);
+
 	ThreatMap* threatMap = strongRef->getThreatMap();
 
 	if (threatMap != NULL) {
-		CreatureObject* originator = cast<CreatureObject*>(observable);
-
-		if (originator == NULL )
-			return 1;
-
 		int findIndex = threatMap->find(originator);
 
 		if (findIndex >= 0) {
