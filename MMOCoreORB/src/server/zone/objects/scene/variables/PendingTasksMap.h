@@ -10,13 +10,15 @@
 
 #include "engine/engine.h"
 
-class PendingTasksMap : public VectorMap<String, Reference<Task*> > {
+#include "system/util/SynchronizedVectorMap.h"
+
+class PendingTasksMap : public SynchronizedVectorMap<String, Reference<Task*> > {
 public:
-	PendingTasksMap() : VectorMap<String, Reference<Task*> >(1, 1) {
+	PendingTasksMap() : SynchronizedVectorMap<String, Reference<Task*> >(1, 1) {
 
 	}
 
-	PendingTasksMap(const PendingTasksMap& p) : VectorMap<String, Reference<Task*> >(p) {
+	PendingTasksMap(const PendingTasksMap& p) : SynchronizedVectorMap<String, Reference<Task*> >(p) {
 
 	}
 };

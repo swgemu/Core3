@@ -76,6 +76,8 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		Locker crossLocker(object, creature);
+
 		if (object->canBeDestroyed(creature) != 0)
 			return GENERALERROR;
 

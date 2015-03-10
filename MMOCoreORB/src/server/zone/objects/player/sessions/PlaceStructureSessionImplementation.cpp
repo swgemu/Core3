@@ -56,6 +56,9 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 
 			constructionBarricade->rotate(angle); //All construction barricades need to be rotated 180 degrees for some reason.
 			//constructionBarricade->insertToZone(zone);
+
+			Locker tLocker(constructionBarricade);
+
 			zone->transferObject(constructionBarricade, -1, true);
 
 			constructionDuration = serverTemplate->getLotSize() * 3000; //3 seconds per lot.
@@ -84,18 +87,25 @@ void PlaceStructureSessionImplementation::placeTemporaryNoBuildZone(SharedStruct
 	temporaryNoBuildZone->setAreaShape(areaShape);
 	temporaryNoBuildZone->setNoBuildArea(true);
 
+	Locker locker(temporaryNoBuildZone);
+
 	zone->transferObject(temporaryNoBuildZone, -1, true);
 }
 
 void PlaceStructureSessionImplementation::removeTemporaryNoBuildZone() {
 	if (temporaryNoBuildZone != NULL) {
+		Locker locker(temporaryNoBuildZone);
+
 		temporaryNoBuildZone->destroyObjectFromWorld(true);
 	}
 }
 
 int PlaceStructureSessionImplementation::completeSession() {
-	if (constructionBarricade != NULL)
+	if (constructionBarricade != NULL) {
+		Locker locker(constructionBarricade);
+
 		constructionBarricade->destroyObjectFromWorld(true);
+	}
 
 	String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
 

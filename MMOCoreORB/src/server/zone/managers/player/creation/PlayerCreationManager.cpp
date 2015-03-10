@@ -452,6 +452,8 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 		return false;
 	}
 
+	Locker playerLocker(playerCreature);
+
 	playerCreature->createChildObjects();
 	playerCreature->setHeight(height);
 	playerCreature->setCustomObjectName(characterName, false); //TODO: Validate with Name Manager.
