@@ -69,6 +69,27 @@ class ReactionManager extends ManagedService implements Logger {
 	@dereferenced
 	private transient VectorMap<string, int> reactionEmotes;
 
+	// chat reaction types
+	public static final int ALERT = 0;
+	public static final int ALLY = 1;
+	public static final int ASSIST = 2;
+	public static final int ATTACKED = 3;
+	public static final int BYE = 4;
+	public static final int CALM = 5;
+	public static final int DEATH = 6;
+	public static final int FLEE = 7;
+	public static final int GLOAT = 8;
+	public static final int HELP = 9;
+	public static final int HI = 10;
+	public static final int HIT = 11;
+	public static final int HITTARGET = 12;
+	public static final int THREAT = 13;
+
+	// chat reaction states
+	public static final int NONE = 0;
+	public static final int NICE = 1;
+	public static final int MID = 2;
+	public static final int MEAN = 3;
 	
 	public ReactionManager(ZoneServer zserv) {
 		Logger.setLoggingName("ReactionManager");
@@ -86,14 +107,24 @@ class ReactionManager extends ManagedService implements Logger {
 
 	public native void loadLuaConfig();
 
+	/**
+	 * Sends a chat message
+	 * @pre { npc is locked }
+	 * @post { npc is locked }
+	 * @param npc: the npc that sends the message
+	 * @param type: the type of reaction the message is in response to
+	 * @param state: the state of the reaction
+	 */
+	@arg1preLocked
+	public native void sendChatReaction(AiAgent npc, int type, int state = 0);
+
 	@local
 	public native EmoteReactionFine getEmoteReactionFine(CreatureObject emoteUser, AiAgent emoteTarget, int reactionLevel);
-	
+
 	@local
 	public native ReactionRankData getReactionRankData(final string name);
 
 	public native string getReactionQuip(int num);
 
 	public native void emoteReaction(CreatureObject emoteUser, AiAgent emoteTarget, int emoteid);
-
 }

@@ -54,6 +54,7 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/creature/CreatureObjectMessage1.h"
 #include "server/zone/packets/creature/CreatureObjectMessage3.h"
@@ -2836,7 +2837,7 @@ int CreatureObjectImplementation::notifyObjectDestructionObservers(TangibleObjec
 
 	if (attacker->isAiAgent()) {
 		AiAgent* aiAgent = cast<AiAgent*>(attacker);
-		aiAgent->sendReactionChat(CreatureManager::GLOAT);
+		aiAgent->sendReactionChat(ReactionManager::GLOAT);
 	}
 
 	return TangibleObjectImplementation::notifyObjectDestructionObservers(attacker, condition);

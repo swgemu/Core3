@@ -4,6 +4,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
@@ -88,6 +89,120 @@ void ReactionManagerImplementation::loadLuaConfig() {
 	}
 
 	info("Loaded " + String::valueOf(emoteReactionFines.size()) + " emote reaction records.", true);
+}
+
+void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int state) {
+	StringBuffer message;
+
+	if (npc->getReactionStf() != "") {
+		message << npc->getReactionStf();
+	} else if (npc->isDroidObject()) {
+		DroidObject* droid = cast<DroidObject*>(npc);
+		if (droid->getPersonalityBase() != "") {
+			message << droid->getPersonalityBase();
+		} else {
+			return;
+		}
+	} else {
+		return;
+	}
+
+	int chance = 0;
+	String typeString;
+
+	switch(type) {
+	case ReactionManager::ALERT: // TODO: add trigger
+		chance = 25;
+		typeString = "alert_";
+		break;
+	case ReactionManager::ALLY: // TODO: add trigger
+		chance = 25;
+		typeString = "ally_";
+		break;
+	case ReactionManager::ASSIST: // TODO: add trigger
+		chance = 25;
+		typeString = "assist_";
+		break;
+	case ReactionManager::ATTACKED:
+		chance = 25;
+		typeString = "attacked_";
+		break;
+	case ReactionManager::BYE: // TODO: add trigger
+		chance = 25;
+		typeString = "bye_";
+		break;
+	case ReactionManager::CALM:
+		chance = 25;
+		typeString = "calm_";
+		break;
+	case ReactionManager::DEATH:
+		chance = 50;
+		typeString = "death_";
+		break;
+	case ReactionManager::FLEE:
+		chance = 25;
+		typeString = "flee_";
+		break;
+	case ReactionManager::GLOAT:
+		chance = 100;
+		typeString = "gloat_";
+		break;
+	case ReactionManager::HELP: // TODO: add trigger
+		chance = 25;
+		typeString = "help_";
+		break;
+	case ReactionManager::HI: // TODO: add trigger
+		chance = 25;
+		typeString = "hi_";
+		break;
+	case ReactionManager::HIT:
+		chance = 10;
+		typeString = "hit_";
+		break;
+	case ReactionManager::HITTARGET:
+		chance = 10;
+		typeString = "hit_target_";
+		break;
+	case ReactionManager::THREAT: // TODO: add trigger
+		chance = 25;
+		typeString = "threat_";
+		break;
+	default:
+		return;
+		break;
+	}
+
+	switch (state) {
+	case ReactionManager::NONE:
+		break;
+	case ReactionManager::NICE:
+		typeString = typeString + "nice_";
+		break;
+	case ReactionManager::MID:
+		typeString = typeString + "mid_";
+		break;
+	case ReactionManager::MEAN:
+		typeString = typeString + "mean_";
+		break;
+	default:
+		return;
+		break;
+	}
+
+	if (System::random(99) < chance) {
+		int num = System::random(15) + 1;
+
+		// All of the reaction stfs are missing attacked_15
+		if (type == ReactionManager::ATTACKED && num == 15)
+			return;
+
+		message << ":" << typeString << num;
+		StringIdChatParameter chat;
+		chat.setStringId(message.toString());
+		zoneServer->getChatManager()->broadcastMessage(npc,chat,0,0,0);
+
+		npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat",30000); // 30 second cooldown
+	}
 }
 
 void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiAgent* emoteTarget, int emoteid) {

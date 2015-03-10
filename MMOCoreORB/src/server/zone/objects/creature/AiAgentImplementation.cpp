@@ -38,6 +38,7 @@
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/Creature.h"
@@ -426,8 +427,9 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		return;
 
 	CreatureObject* target = cast<CreatureObject*>(entry);
-	if (target != NULL)
+	if (target != NULL) {
 		activateAwarenessEvent(target);
+	}
 
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
 }
@@ -767,7 +769,7 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 
 	showFlyText("npc_reaction/flytext", "afraid", 0xFF, 0, 0);
 	notifyObservers(ObserverEventType::FLEEING, target);
-	sendReactionChat(CreatureManager::FLEE);
+	sendReactionChat(ReactionManager::FLEE);
 
 	Locker locker(&targetMutex);
 	followState = AiAgent::FLEEING;
@@ -869,7 +871,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 		threatMap->removeAll();
 
 	notifyObservers(ObserverEventType::PEACE);
-	sendReactionChat(CreatureManager::CALM);
+	sendReactionChat(ReactionManager::CALM);
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
@@ -2009,7 +2011,7 @@ int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* atta
 		}
 	}
 
-	sendReactionChat(CreatureManager::DEATH);
+	sendReactionChat(ReactionManager::DEATH);
 
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
@@ -2782,7 +2784,7 @@ void AiAgentImplementation::setCombatState() {
 	if (homeObject != NULL)
 		homeObject->notifyObservers(ObserverEventType::AIMESSAGE, _this.get(), ObserverEventType::STARTCOMBAT);
 
-	sendReactionChat(CreatureManager::ATTACKED);
+	sendReactionChat(ReactionManager::ATTACKED);
 
 	//broadcastInterrupt(ObserverEventType::STARTCOMBAT);
 
@@ -2932,123 +2934,18 @@ String AiAgentImplementation::getPersonalityStf() {
 	}
 	return "";
 }
+
 void AiAgentImplementation::sendReactionChat(int type, int state) {
 	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZone() == NULL) {
 		return;
 	}
 
-	StringBuffer message;
+	ReactionManager* reactionManager = getZoneServer()->getReactionManager();
 
-	if (getReactionStf() != "") {
-		message << getReactionStf();
-	} else if (isDroidObject()) {
-		DroidObject* droid = _this.get().castTo<DroidObject*>();
-		if (droid->getPersonalityBase() != "") {
-			message << droid->getPersonalityBase();
-		} else {
-			return;
-		}
-	} else {
-		return;
-	}
-
-	int chance = 0;
-	String typeString;
-
-	switch(type) {
-	case CreatureManager::ALERT: // TODO: add trigger
-		chance = 25;
-		typeString = "alert_";
-		break;
-	case CreatureManager::ALLY: // TODO: add trigger
-		chance = 25;
-		typeString = "ally_";
-		break;
-	case CreatureManager::ASSIST: // TODO: add trigger
-		chance = 25;
-		typeString = "assist_";
-		break;
-	case CreatureManager::ATTACKED:
-		chance = 25;
-		typeString = "attacked_";
-		break;
-	case CreatureManager::BYE: // TODO: add trigger
-		chance = 25;
-		typeString = "bye_";
-		break;
-	case CreatureManager::CALM:
-		chance = 25;
-		typeString = "calm_";
-		break;
-	case CreatureManager::DEATH:
-		chance = 50;
-		typeString = "death_";
-		break;
-	case CreatureManager::FLEE:
-		chance = 25;
-		typeString = "flee_";
-		break;
-	case CreatureManager::GLOAT:
-		chance = 100;
-		typeString = "gloat_";
-		break;
-	case CreatureManager::HELP: // TODO: add trigger
-		chance = 25;
-		typeString = "help_";
-		break;
-	case CreatureManager::HI: // TODO: add trigger
-		chance = 25;
-		typeString = "hi_";
-		break;
-	case CreatureManager::HIT:
-		chance = 10;
-		typeString = "hit_";
-		break;
-	case CreatureManager::HITTARGET:
-		chance = 10;
-		typeString = "hit_target_";
-		break;
-	case CreatureManager::THREAT: // TODO: add trigger
-		chance = 25;
-		typeString = "threat_";
-		break;
-	default:
-		return;
-		break;
-	}
-
-	switch (state) {
-	case CreatureManager::NONE:
-		break;
-	case CreatureManager::NICE:
-		typeString = typeString + "nice_";
-		break;
-	case CreatureManager::MID:
-		typeString = typeString + "mid_";
-		break;
-	case CreatureManager::MEAN:
-		typeString = typeString + "mean_";
-		break;
-	default:
-		return;
-		break;
-	}
-
-	if (System::random(99) < chance) {
-		int num = System::random(15) + 1;
-
-		// All of the reaction stfs are missing attacked_15
-		if (type == CreatureManager::ATTACKED && num == 15)
-			return;
-
-		message << ":" << typeString << num;
-		StringIdChatParameter chat;
-		chat.setStringId(message.toString());
-		getZoneServer()->getChatManager()->broadcastMessage(_this.get(),chat,0,0,0);
-
-		getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat",30000); // 30 second cooldown
-	}
+	if (reactionManager != NULL)
+		reactionManager->sendChatReaction(_this.get(), type, state);
 }
+
 float AiAgentImplementation::getEffectiveResist() {
 	if (!isSpecialProtection(WeaponObject::ACID) && getAcid() > 0)
 		return getAcid();

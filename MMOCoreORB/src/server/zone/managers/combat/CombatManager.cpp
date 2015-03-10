@@ -24,6 +24,7 @@
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 #include "server/zone/objects/creature/AiAgent.h"
 
@@ -240,12 +241,12 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 	if (damage > 0 && tano->isAiAgent()) {
 		AiAgent* aiAgent = cast<AiAgent*>(tano);
-		aiAgent->sendReactionChat(CreatureManager::HIT);
+		aiAgent->sendReactionChat(ReactionManager::HIT);
 	}
 
 	if (damage > 0 && attacker->isAiAgent()) {
 		AiAgent* aiAgent = cast<AiAgent*>(attacker);
-		aiAgent->sendReactionChat(CreatureManager::HITTARGET);
+		aiAgent->sendReactionChat(ReactionManager::HITTARGET);
 	}
 
 	return damage;
