@@ -821,6 +821,8 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 	if (defenderList.size() == 0 && defender != NULL) {
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 		setFollowObject(defender);
+		if (defender->isCreatureObject())
+			threatMap->addAggro(cast<CreatureObject*>(defender), 1);
 	} else if (stateCopy <= STALKING) {
 		Locker locker(&targetMutex);
 		followState = FOLLOWING;
@@ -1951,6 +1953,10 @@ void AiAgentImplementation::activateWaitTimeoutEvent() {
 
 	if (!waitTimeoutEvent->isScheduled())
 		waitTimeoutEvent->schedule(delay*1000);
+	else {
+		waitTimeoutEvent->cancel();
+		waitTimeoutEvent->reschedule(delay*1000);
+	}
 }
 
 PatrolPoint* AiAgentImplementation::getNextPosition() {
