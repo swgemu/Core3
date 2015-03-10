@@ -325,6 +325,10 @@ function GeonosianLabScreenPlay:notifyEnteredLab(pBuilding, pPlayer)
 end
 
 function GeonosianLabScreenPlay:notifyLockedDoorArea(pArea, pPlayer)
+	if (not SceneObject(pPlayer):isCreatureObject()) then
+		return 0
+	end
+	
 	ObjectManager.withCreatureObject(pPlayer, function(player)
 		if (player:isAiAgent()) then
 			return 0
@@ -334,6 +338,8 @@ function GeonosianLabScreenPlay:notifyLockedDoorArea(pArea, pPlayer)
 		if not self:hasPermission(pPlayer, "GeoLabKeypad" .. areaDoor) then
 			player:sendSystemMessage("@dungeon/geonosian_madbio:door_locked") -- This door is locked.
 		end
+		
+		return 0;
 	end)
 end
 
