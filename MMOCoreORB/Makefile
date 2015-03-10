@@ -40,9 +40,9 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-IDLC = /usr/local/bin/idlc 
+IDLC = ../MMOEngine/bin/idlc 
 				
-IDL_CLASSPATH = ../MMOEngine/include
+IDL_CLASSPATH = ../MMOEngine/src
 
 IDL_DIRECTIVES = -makefile src/Makefile.am -outdir autogen -cp $(IDL_CLASSPATH)
 
@@ -53,7 +53,7 @@ all: #build
 	#cp build/unix/src/core3 bin
 
 build: idl gtest
-	cd build/unix && make -j4 UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)" #CC=clang CXX=clang++
+	cd build/unix && make -j1 UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)" #CC=clang CXX=clang++
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	#cd bin/conf && svnversion > rev.txt

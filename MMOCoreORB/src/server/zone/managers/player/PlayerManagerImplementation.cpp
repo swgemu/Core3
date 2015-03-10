@@ -538,13 +538,21 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 	String cell = "object/cell/cell.iff";
 
 	Reference<BuildingObject*> tutorial = server->createObject(tut.hashCode(), 1).castTo<BuildingObject*>();
+
+	Locker locker(tutorial);
+
 	tutorial->createCellObjects();
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 	zone->transferObject(tutorial, -1, true);
 
+	locker.release();
+
 	Reference<SceneObject*> travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
 	SceneObject* cellTut = tutorial->getCell(1);
+
+	Locker locker2(travelTutorialTerminal);
+
 	cellTut->transferObject(travelTutorialTerminal, -1);
 
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
