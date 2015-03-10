@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_f2d036f9",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/GroupObject.idl",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-10T07:45:02Z",
+      "side": 1,
+      "message": "Put these statics in GroupManager instead.",
+      "revId": "2f835f6465978341a07f0c2df75e6e9b1542bd95",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
