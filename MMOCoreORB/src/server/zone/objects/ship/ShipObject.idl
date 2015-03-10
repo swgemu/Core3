@@ -113,7 +113,7 @@ class ShipObject extends TangibleObject {
 	public ShipObject() {
 		Logger.setLoggingName("ShipObject");
 		
-		super.unknownByte = 1;
+		super.objectVisible = 1;
 		
 		totalMass = 500.0;
 		

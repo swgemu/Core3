@@ -165,6 +165,8 @@ class Zone extends SceneObject {
 	@mock
 	public native float getHeight(float x, float y);
 
+	@arg1preLocked
+	@preLocked
 	public native void addSceneObject(SceneObject object);
 
 	public synchronized void addCityRegionToUpdate(CityRegion city) {
@@ -175,6 +177,8 @@ class Zone extends SceneObject {
 
 	public native void sendMapLocationsTo(SceneObject player);
 
+	@arg1preLocked
+	@preLocked
 	public native void dropSceneObject(SceneObject object);
 
 	@dirty
