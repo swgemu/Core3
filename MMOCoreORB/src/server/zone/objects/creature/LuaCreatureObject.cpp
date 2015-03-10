@@ -167,6 +167,8 @@ int LuaCreatureObject::addDotState(lua_State* L) {
 int LuaCreatureObject::setState(lua_State* L) {
 	uint32 state = (uint32) lua_tonumber(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setState(state, true);
 
 	return 0;
@@ -188,6 +190,8 @@ int LuaCreatureObject::setPosture(lua_State* L) {
 
 int LuaCreatureObject::setMoodString(lua_State* L) {
 	String value = lua_tostring(L, -1);
+
+	Locker locker(realObject);
 
 	realObject->setMoodString(value);
 

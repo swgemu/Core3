@@ -138,7 +138,10 @@ class VehicleObject extends CreatureObject {
 	 * @post { this object is locked }
 	 * @return unused for now
 	 */
+	@preLocked
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	
+	@preLocked
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
 	
 	/**
@@ -146,6 +149,7 @@ class VehicleObject extends CreatureObject {
 	 * @pre { this, healer locked }
 	 * @post { this, healer locked }
 	 */
+	@preLocked
 	public native int healDamage(TangibleObject healer, int damageType, int damageToHeal, boolean notifyClient = true);
 
 	/**

@@ -240,6 +240,8 @@ public:
 			}
 		}
 
+		Locker ticketLocker(ticketObject);
+
 		//remove the ticket from inventory and destory it.
 		ticketObject->destroyObjectFromWorld(true);
 		ticketObject->destroyObjectFromDatabase(true);

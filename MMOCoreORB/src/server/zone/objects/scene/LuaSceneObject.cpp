@@ -462,6 +462,8 @@ int LuaSceneObject::updateDirection(lua_State* L) {
 }
 
 int LuaSceneObject::destroyObjectFromWorld(lua_State* L) {
+	Locker locker(realObject);
+
 	realObject->destroyObjectFromWorld(true);
 
 	return 0;
