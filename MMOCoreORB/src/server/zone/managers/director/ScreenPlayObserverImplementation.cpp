@@ -66,6 +66,7 @@ int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Obse
 			return 1;
 		}
 
+		assert(lua_isnumber(lua->getLuaState(), -1));
 
 		ret = lua->getIntParameter(lua->getLuaState());
 
