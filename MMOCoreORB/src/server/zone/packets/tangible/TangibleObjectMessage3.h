@@ -89,7 +89,7 @@ public:
 		insertInt(int(tano->getConditionDamage()));
 		insertInt(tano->getMaxCondition());
 
-		insertByte(tano->getUnknownByte());
+		insertByte(tano->getObjectVisible());
 
 		setSize();
 	}

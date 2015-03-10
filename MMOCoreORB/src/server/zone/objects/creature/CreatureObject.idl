@@ -285,6 +285,7 @@ class CreatureObject extends TangibleObject {
 	 * @param tab1 message 1
 	 * @param tab2 message 2 
 	 */
+	@preLocked
 	public native void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 	public native void clearQueueActions(boolean combatOnly = true);
 
@@ -388,6 +389,7 @@ class CreatureObject extends TangibleObject {
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object is in a combat state }
 	 */
+	@preLocked
 	public abstract native void setCombatState();
 	
 	/**
@@ -396,10 +398,13 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked, this object is not in a combat state }
 	 * @param clearDefenders if true the defender vector willl be emptied
 	 */
+	@preLocked
 	public native void clearCombatState(boolean clearDefenders = true);
 
+	@preLocked
 	public native void addMountedCombatSlow();
 
+	@preLocked
 	public native void removeMountedCombatSlow();
 
 	/**
@@ -409,6 +414,7 @@ class CreatureObject extends TangibleObject {
 	 * @param newPosture posture to set
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native abstract void setPosture(int newPosture, boolean notifyClient = true);
 	
 	/**
@@ -418,9 +424,11 @@ class CreatureObject extends TangibleObject {
 	 */
 	@dirty
 	public native float calculateSpeed();
-	 
+	
+	@preLocked
 	public native abstract void updateLocomotion();
 	
+	@preLocked
 	public native void setHeight(float heigh, boolean notifyClient = true);
 	
 	/**
@@ -430,6 +438,7 @@ class CreatureObject extends TangibleObject {
 	 * @param newMultiplierBase new multiplier base to set
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void setAccelerationMultiplierBase(float newMultiplierBase, boolean notifyClient = true);
 
 	/**
@@ -439,6 +448,7 @@ class CreatureObject extends TangibleObject {
 	 * @param newMultiplierMod new multiplier mod to set
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void setAccelerationMultiplierMod(float newMultiplierMod, boolean notifyClient = true);
 
 	/**
@@ -448,6 +458,7 @@ class CreatureObject extends TangibleObject {
 	 * @param newMultiplierBase new multiplier base to set
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void setSpeedMultiplierBase(float newMultiplierBase, boolean notifyClient = true);
 
 	/**
@@ -457,6 +468,7 @@ class CreatureObject extends TangibleObject {
 	 * @param newMultiplierMod new multiplier mod to set
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native abstract void setSpeedMultiplierMod(float newMultiplierMod, boolean notifyClient = true);
 
 	/**
@@ -466,6 +478,7 @@ class CreatureObject extends TangibleObject {
 	 * @param newMultiplierMod new multiplier mod to set
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native abstract void setTurnScale(float newMultiplierMod, boolean notifyClient = true);
 
 	/**
@@ -474,8 +487,10 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * 
 	 */
+	@preLocked
 	public native void setRunSpeed(float newSpeed, boolean notifyClient = true);
 	
+	@preLocked
 	public void setCurrentSpeed(float newSpeed) {
 		currentSpeed = newSpeed;
 	}
@@ -496,7 +511,10 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * @return unused for now
 	 */
+	@preLocked
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	
+	@preLocked
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
 
 	@dirty
@@ -510,6 +528,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * @return unused for now
 	 */
+	@preLocked
 	public native int healDamage(TangibleObject healer, int damageType, int damage, boolean notifyClient = true, boolean notifyObservers = true);
 	
 	
@@ -519,6 +538,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * @return unused for now
 	 */
+	@preLocked
 	public native abstract int healWound(TangibleObject healer, int damageType, int damage, boolean notifyClient = true, boolean notifyObservers = true);
 	
 	/**
@@ -547,6 +567,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * @return returns wounds added
 	 */
+	@preLocked
 	public native abstract int addWounds(int type, int value, boolean notifyClient = true, boolean doShockWounds = true);
 	
 	/**
@@ -570,6 +591,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void setEncumbrance(int type, int value, boolean notifyClient = true);
 	
+	@preLocked
 	public native void addEncumbrance(int type, int value, boolean notifyClient = true);	
 	/**
 	 * Updates the weapon to the specified object
@@ -578,6 +600,7 @@ class CreatureObject extends TangibleObject {
 	 * @param weao the new weapon
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void setWeapon(WeaponObject weao, boolean notifyClient = false);
 	
 	/**
@@ -599,11 +622,13 @@ class CreatureObject extends TangibleObject {
 	 * @param instrumentid the new instrument id
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void setInstrumentID(int instrumentid, boolean notifyClient = true);
 	
 	/**
 	 * Updates listen id
 	 */
+	@preLocked
 	public native void setListenToID(unsigned long id, boolean notifyClient = true); 
 	
 	/**
@@ -613,6 +638,7 @@ class CreatureObject extends TangibleObject {
 	 * @param counter new performance counter
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void setPerformanceCounter(int counter, boolean notifyClient = true);
 	
 	/**
@@ -622,6 +648,7 @@ class CreatureObject extends TangibleObject {
 	 * @param animation new animation
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void setPerformanceAnimation(final string animation, boolean notifyClient = true);
 	
 	/**
@@ -633,6 +660,7 @@ class CreatureObject extends TangibleObject {
 	 */
 	public native void setShockWounds(int newShock, boolean notifyClient = true);
 
+	@preLocked
 	public native void addShockWounds(int shockToAdd, boolean notiyClient = true, boolean sendSpam = true);
 
 	/**
@@ -642,6 +670,7 @@ class CreatureObject extends TangibleObject {
 	 * @param objectID the new target id
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void setTargetID(unsigned long targetID, boolean notifyClient = true);
 	
 	/**
@@ -651,6 +680,7 @@ class CreatureObject extends TangibleObject {
 	 * @param credits the new credits
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void setBankCredits(int credits, boolean notifyClient = true);
 	
 	/**
@@ -658,20 +688,26 @@ class CreatureObject extends TangibleObject {
 	 * Buffs should never be added to the list without sending of packets.
 	 * @param buff The Buff object to add the creature.
 	 */
+	@preLocked
 	public native void addBuff(Buff buff);
+	
 	/**
 	 * Removes the buff from the creature, activating it and sending packets if it is a player.
 	 * Buffs should never be removed from the list without sending of packets.
 	 * @param buffcrc The buff crc to remove from the buff list.
 	 */
+	@preLocked
 	public native boolean removeBuff(unsigned int buffcrc);
+	
 	/**
 	 * Removes the buff from the creature, activating it and sending packets if it is a player.
 	 * Buffs should never be removed from the list without sending of packets.
 	 * @param buffcrc The buff object to remove from the list.
 	 */
+	@preLocked
 	public native void removeBuff(Buff buff);
 	
+	@preLocked
 	public boolean removeStateBuff(unsigned long state) {
 		return removeBuff(Long.hashCode(state));
 	}
@@ -680,9 +716,13 @@ class CreatureObject extends TangibleObject {
 	 * Removes all buffs from the creature, deactivating any currently active buffs.
 	 * @param updateclient Should packets be sent to the player?
 	 */
+	@preLocked
 	public native void clearBuffs(boolean updateclient);
 	
+	@preLocked
 	public native void addWearableObject(TangibleObject object, boolean notifyClient = true);
+	
+	@preLocked
 	public native void removeWearableObject(TangibleObject object, boolean notifyClient = true);
 	
 	@local
@@ -715,14 +755,17 @@ class CreatureObject extends TangibleObject {
 		return creatureBuffs.getModifierByName(skillMod);
 	}
 	
+	@preLocked
 	public abstract int addDotState(CreatureObject attacker, unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense, int secondaryStrength = 0) {
 		return damageOverTimeList.addDot(this, attacker, objectID, duration, dotType, type, strength, potency, defense, secondaryStrength);
 	}
 
+	@preLocked
 	public boolean healDot(unsigned long dotType, int reduction) {
 		return damageOverTimeList.healState(this, dotType, reduction);
 	}
 	
+	@preLocked
 	public void clearDots() {
 		damageOverTimeList.clear(this);
 	}
@@ -737,9 +780,13 @@ class CreatureObject extends TangibleObject {
 		return creatureBuffs.hasBuff(buffcrc);
 	}
 	
+	@preLocked
 	public native void notifySelfPositionUpdate();
+	
+	@preLocked
 	public native void notifyPostureChange(int newPosture);
 	
+	@preLocked
 	public native void setLevel(int level, boolean randomHam = true);
 	
 	public native void updateToDatabaseAllObjects(boolean startTask);
@@ -747,18 +794,22 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public native boolean isResuscitable();
 	
+	@preLocked
 	public void addBankCredits(int credits, boolean notifyClient = true) {
 		int newCredits = bankCredits + credits;
 		setBankCredits(newCredits);
 	}
 	
+	@preLocked
 	public void addCashCredits(int credits, boolean notifyClient = true) {
 		int newCredits = cashCredits + credits;
 		setCashCredits(newCredits);
 	}
 	
+	@preLocked
 	public native void subtractBankCredits(int credits);
 	
+	@preLocked
 	public native void subtractCashCredits(int credits);
 	
 	@dirty
@@ -789,6 +840,7 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public native boolean isPlayingMusic();
 	
+	@preLocked
 	public native void stopEntertaining();
 	
 	@dirty
@@ -828,6 +880,7 @@ class CreatureObject extends TangibleObject {
 	 * @param skillbox skillbox to add
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	@local
 	public native void addSkill(Skill skill, boolean notifyClient = true);
 	
@@ -838,6 +891,7 @@ class CreatureObject extends TangibleObject {
 	 * @param skillbox skillbox name to add
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void addSkill(final string skill, boolean notifyClient = true);
 	
 	/**
@@ -847,6 +901,7 @@ class CreatureObject extends TangibleObject {
 	 * @param skillBox skillBox to remove
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	@local
 	public native void removeSkill(Skill skill, boolean notifyClient = true);
 	
@@ -857,6 +912,7 @@ class CreatureObject extends TangibleObject {
 	 * @param skillBox skillBox to remove
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void removeSkill(final string skill, boolean notifyClient = true);
 	
 	/**
@@ -867,6 +923,7 @@ class CreatureObject extends TangibleObject {
 	 * @param value value to add/subtract
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void addSkillMod(final int modType, final string skillMod, int value, boolean notifyClient = true);
 	
 	/**
@@ -887,8 +944,10 @@ class CreatureObject extends TangibleObject {
 	 * @param skillMod skill mod to remove
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
+	@preLocked
 	public native void removeSkillMod(final int modType, final string skillMod, int value, boolean notifyClient = true);
 	
+	@preLocked
 	public native void removeAllSkillModsOfType(final int modType, boolean notifyClient = true);
 	
 	/**
@@ -919,6 +978,7 @@ class CreatureObject extends TangibleObject {
 	 * @param arguments arguments
 	 * @param priority command priority
 	 */
+	@preLocked
 	public native void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments, int priority = -1);
 	
 	/**
@@ -935,6 +995,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this is locked }
 	 * @param mood mood animation string
 	 */
+	@preLocked
 	public native void setMoodString(final string animation, boolean notifyClient = true);
 	
 	/**
@@ -943,6 +1004,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked }
 	 * @param actionCount the action count to remove
 	 */
+	@preLocked
 	public native void deleteQueueAction(unsigned int actionCount);
 	
 	/**
@@ -951,6 +1013,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked, stateBitmask has the new state }
 	 * @param state state to add
 	 */
+	@preLocked
 	public native boolean setState(unsigned long state, boolean notifyClient = true);
 	
 	
@@ -969,6 +1032,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this object is locked, stateBitmask doesnt have the specified state }
 	 * @param state state to clear
 	 */
+	@preLocked
 	public native boolean clearState(unsigned long state, boolean notifyClient = true);
 	
 	public void setControlDevice(ControlDevice device) {
@@ -985,7 +1049,10 @@ class CreatureObject extends TangibleObject {
 	/**
 	 * Executes an object controller command
 	 */
+	@preLocked
 	public native void executeObjectControllerAction(unsigned int actionCRC);
+	
+	@preLocked
 	public native void executeObjectControllerAction(unsigned int actionCRC, unsigned long targetID, final unicode args);
 	
 	/**
@@ -1083,6 +1150,7 @@ class CreatureObject extends TangibleObject {
 	 * @pre { this, attacker locked }
 	 * @post { this, attacker locked }
 	 */
+	@preLocked
 	public native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
 	/**
@@ -1091,6 +1159,7 @@ class CreatureObject extends TangibleObject {
 	 * @post { this, killer locked }
 	 * @param killer The killer.
 	 */
+	@preLocked
 	public native int notifyObjectKillObservers(TangibleObject killer);
 	
 	/**
@@ -1156,6 +1225,7 @@ class CreatureObject extends TangibleObject {
 		owner = cli;
 	}
 
+	@preLocked
 	public native void dismount();
 	
 	@dirty
@@ -1185,8 +1255,13 @@ class CreatureObject extends TangibleObject {
 
 	public native void setMeditateState();
 	
+	@preLocked
 	public abstract native void activateHAMRegeneration();
+	
+	@preLocked
 	public abstract native void activatePassiveWoundRegeneration();
+	
+	@preLocked
 	public abstract native void activateStateRecovery();
 	
 	public void updateTimeOfDeath() {
@@ -1301,8 +1376,10 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit, byte trails);
 	
+	@preLocked
 	public native void activateQueueAction();
 	
+	@preLocked
 	public native void activateImmediateAction();
 	
 	@dirty
@@ -1458,12 +1535,14 @@ class CreatureObject extends TangibleObject {
 		return currentSpeed;
 	}
 	
+	@preLocked
 	@local
 	@dirty
 	public SpeedMultiplierModChanges getSpeedMultiplierModChanges() {
 		return speedMultiplierModChanges;
 	}
 	
+	@preLocked
 	@local
 	@dirty
 	public CommandQueueActionVector getCommandQueue() {
@@ -1523,6 +1602,7 @@ class CreatureObject extends TangibleObject {
 	
 	@reference
 	@dirty
+	@preLocked
 	public native WeaponObject getWeapon();
 	
 	@reference
@@ -1679,12 +1759,15 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	@dirty
+	@preLocked
 	public native int getSkillMod(final string skillmod);
 
 	@dirty
+	@preLocked
 	public native int getSkillModOfType(final string skillmod, final unsigned int modType);
 	
 	@dirty
+	@preLocked
 	public boolean hasSkill(final string skill) {
 		return skillList.containsSkill(skill);
 	}
@@ -1926,6 +2009,7 @@ class CreatureObject extends TangibleObject {
 		currentWind = value;
 	}
 	
+	@preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	@read
@@ -1950,6 +2034,7 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public native float calculateCostAdjustment(byte stat, float baseCost);
 
+	@preLocked
 	public native void updateSpeedAndAccelerationMods();
 
 	public native void setFaction(unsigned int crc);
