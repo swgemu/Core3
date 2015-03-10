@@ -320,6 +320,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 						ManagedReference<TangibleObject*> tano = (server->getZoneServer()->createObject(templ.hashCode(), getPersistenceLevel())).castTo<TangibleObject*>();
 
 						if (tano != NULL) {
+							Locker objLocker(tano);
+
 							VectorMap<String, uint8>* cust = obj->getCustomizationVariables();
 
 							for (int j = 0; j < cust->size(); ++j) {

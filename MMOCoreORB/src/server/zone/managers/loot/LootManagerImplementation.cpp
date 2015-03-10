@@ -254,6 +254,8 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		return NULL;
 	}
 
+	Locker objLocker(prototype);
+
 	prototype->createChildObjects();
 
 	String serial = craftingManager->generateSerial();

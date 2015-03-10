@@ -118,6 +118,7 @@ class Creature extends AiAgent {
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
+	@preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	@dirty
