@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+#include "system/util/SynchronizedHashTable.h"
+
 class CooldownTimer : public Variable {
 	Time timeStamp;
 
@@ -98,7 +100,7 @@ public:
 };
 
 class CooldownTimerMap : public Object {
-	HashTable<String, CooldownTimer> timers;
+	SynchronizedHashTable<String, CooldownTimer> timers;
 
 public:
 	CooldownTimerMap() : timers(1, 1) {

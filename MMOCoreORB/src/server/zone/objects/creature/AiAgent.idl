@@ -239,6 +239,7 @@ class AiAgent extends CreatureObject {
 	 * @pre { at least this is locked }
 	 * @post { at least this is locked }
 	 */
+	@preLocked
 	public abstract native void activateRecovery();
 	
 	/**
@@ -246,6 +247,7 @@ class AiAgent extends CreatureObject {
 	 * @pre { this is locked }
 	 * @post { this is locked }
 	 */
+	@preLocked
 	public abstract native void activateMovementEvent();
 	
 	/**
@@ -253,6 +255,7 @@ class AiAgent extends CreatureObject {
 	 * @pre { this is locked }
 	 * @post { this is locked }
 	 */
+	@preLocked
 	public abstract native void activateWaitEvent();
 	
 	/**
@@ -261,8 +264,9 @@ class AiAgent extends CreatureObject {
 	 * @post { this is locked, target is locked }
 	 * @param target The CREO to check awareness against
 	 */
+	@preLocked
 	public native void activateAwarenessEvent(CreatureObject target);
-	
+
 	/**
 	 * Executes an AI interrupt in a separate thread (to shed locks)
 	 * @pre { this is locked, source is locked }
@@ -282,6 +286,7 @@ class AiAgent extends CreatureObject {
 	 * @pre { this is locked }
 	 * @post { this is locked }
 	 */
+	@preLocked
 	public native void doRecovery();
 	
 	/**
@@ -289,8 +294,10 @@ class AiAgent extends CreatureObject {
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this AI will have performed one update tick }
 	 */
+	@preLocked
 	public native void doMovement();
 	
+	@preLocked
 	public native void setLevel(int lvl, boolean randomHam = true);
 	
 	/**
@@ -311,8 +318,13 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public native float calculateAttackSpeed(int level);
 	
+	@preLocked
 	public native SceneObject getTargetFromMap();
+	
+	@preLocked
 	public native SceneObject getTargetFromDefenders();
+	
+	@preLocked
 	public native boolean validateTarget();
 	
 	@dirty
@@ -326,6 +338,7 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public native boolean isConcealed(CreatureObject target);
 	
+	@preLocked
 	public native boolean findNextPosition(float maxDistance, boolean walk = false);
 	
 	@local
@@ -338,6 +351,7 @@ class AiAgent extends CreatureObject {
 	 * @param target the CREO that will be checked against
 	 */
 	@local
+	@preLocked
 	public native void doAwarenessCheck(CreatureObject target);
 	
 	@dirty
@@ -353,8 +367,10 @@ class AiAgent extends CreatureObject {
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
+	@preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 		
+	@preLocked
 	public native void checkNewAngle();
 	
 	@dirty
@@ -368,6 +384,7 @@ class AiAgent extends CreatureObject {
 	public native void notifyPositionUpdate(QuadTreeEntry entry);
 	
 	@local
+	@preLocked
 	public native void updateCurrentPosition(PatrolPoint point);
 	
 	@local
@@ -430,9 +447,12 @@ class AiAgent extends CreatureObject {
 	 * @post { this object is locked }
 	 * @return unused for now
 	 */
+	@preLocked
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	@preLocked
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
 	
+	@preLocked
 	public native int addDotState(CreatureObject attacker, unsigned long dotType, unsigned long objectID, unsigned int strength, byte type, unsigned int duration, float potency, unsigned int defense, int secondaryStrength = 0) {
 		activateRecovery();
 		return super.addDotState(attacker, dotType, objectID, strength, type, duration, potency, defense, secondaryStrength);
@@ -479,6 +499,7 @@ class AiAgent extends CreatureObject {
 	public native int notifyAttack(Observable observable);
 	public native int notifyCallForHelp(Observable observable, ManagedObject arg1);
 	
+	@preLocked
 	public void destroyObjectFromWorld(boolean sendSelfDestroy) {
 		super.destroyObjectFromWorld(sendSelfDestroy);
 		
@@ -506,6 +527,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this object is locked, this object is not in a combat state }
 	 * @param clearDefenders if true the defender vector willl be emptied
 	 */
+	@preLocked
 	public native void clearCombatState(boolean clearDefenders = true);
 	
 	/**
@@ -514,6 +536,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this object is locked, defender is active }
 	 * @param defender SceneObject to set as the active defender
 	 */
+	@preLocked
 	public native void setDefender(SceneObject defender);
 	
 	/**
@@ -522,6 +545,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this object is locked, defender is in the defender vector }
 	 * @param defender SceneObject to add to the defender vector
 	 */
+	@preLocked
 	public native void addDefender(SceneObject defender);
 	
 	/**
@@ -530,6 +554,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this object is locked, defender is not in the defender vector }
 	 * @param defender SceneObject to remove from the defender vector
 	 */
+	@preLocked
 	public native void removeDefender(SceneObject defender);
 	
 	public native void setDespawnOnNoPlayerInRange(boolean val);
@@ -548,11 +573,13 @@ class AiAgent extends CreatureObject {
 	 * Schedules despawn of the AiAgent.
 	 * @param timeToDespawn the time to despawn the AiAgent in seconds.
 	 */
+	@preLocked
 	public abstract native void scheduleDespawn(int timeToDespawn); 
 	
 	/**
 	 * Respawns creature to specified zone with home location position
 	 */
+	@preLocked
 	public native void respawn(Zone zone, int level);
 	
 	@local
@@ -652,8 +679,10 @@ class AiAgent extends CreatureObject {
 		}
 	}
 	
+	@preLocked
 	public native void runAway(CreatureObject target, float range);
 
+	@preLocked
 	public native void leash();
 	
 	public native boolean generatePatrol(int num, float dist);
@@ -715,13 +744,20 @@ class AiAgent extends CreatureObject {
 		waiting = false;
 	}
 
+	@preLocked
 	public native void selectWeapon();
 	public native void selectDefaultWeapon();
+	
+	@preLocked
 	public native boolean validateStateAttack(CreatureObject target, unsigned int actionCRC);
+	
+	@preLocked
 	public native void selectSpecialAttack();
 	public native void selectSpecialAttack(int attackNum);
 	public native void selectDefaultAttack();
 	public native boolean validateStateAttack();
+	
+	@preLocked
 	public native void enqueueAttack(int priority = -1);
 	
 	@dirty
@@ -1144,6 +1180,7 @@ class AiAgent extends CreatureObject {
 	public native int getBehaviorStatus();
 
 	@local
+	@preLocked
 	public native void setBehaviorStatus(int status);
 
 	@local
@@ -1158,9 +1195,11 @@ class AiAgent extends CreatureObject {
 	 * @post { this is locked }
 	 */
 	@local
+	@preLocked
 	public native void resetBehaviorList();
 	
 	@local
+	@preLocked
 	public native void clearBehaviorList();
 	
 	/**
@@ -1171,9 +1210,11 @@ class AiAgent extends CreatureObject {
 	 * @param msg The long id of the message (argument) of the interrupt
 	 */
 	@local
+	@preLocked
 	public native int interrupt(SceneObject source, long msg);
 	
 	@local
+	@preLocked
 	public native void broadcastInterrupt(long msg);
 
 	public void setHomeObject(SceneObject home) {
@@ -1190,6 +1231,7 @@ class AiAgent extends CreatureObject {
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object is in a combat state }
 	 */
+	@preLocked
 	public native void setCombatState();
 	
 	@dirty

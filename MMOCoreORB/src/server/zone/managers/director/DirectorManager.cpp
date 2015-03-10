@@ -1930,6 +1930,8 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), 0);
 
 	if (object != NULL) {
+		Locker objLocker(object);
+
 		object->initializePosition(x, z, y);
 		object->setDirection(dw, dx, dy, dz);
 
