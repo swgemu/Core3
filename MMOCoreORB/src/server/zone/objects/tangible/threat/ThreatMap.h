@@ -63,11 +63,15 @@ public:
 	}
 
 	ThreatMapEntry& operator=(const ThreatMapEntry& e) {
-		VectorMap<String, uint32>::operator=(e);
+		if (this == &e)
+			return *this;
+
 		aggroMod = e.aggroMod;
 		threatBitmask = e.threatBitmask;
 		healAmount = e.healAmount;
 		nonAggroDamageTotal = e.nonAggroDamageTotal;
+
+		VectorMap<String, uint32>::operator=(e);
 
 		return *this;
 	}
@@ -112,8 +116,8 @@ public:
 		return totalDamage;
 	}
 
-	void addNonAggroDamage(uint32 amount) {
-		nonAggroDamageTotal += amount;
+	void setNonAggroDamage(uint32 amount) {
+		nonAggroDamageTotal = amount;
 	}
 
 	uint32 getNonAggroDamage() {

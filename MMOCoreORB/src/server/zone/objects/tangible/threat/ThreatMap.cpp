@@ -99,10 +99,10 @@ void ThreatMap::removeAll() {
 	removeObservers();
 
 	for (int i = 0; i < size(); i++) {
-		VectorMapEntry<ManagedReference<CreatureObject*> , ThreatMapEntry> entry = elementAt(i);
+		VectorMapEntry<ManagedReference<CreatureObject*> , ThreatMapEntry> *entry = &elementAt(i);
 
-		ManagedReference<CreatureObject*> key = entry.getKey();
-		ThreatMapEntry value = entry.getValue();
+		ManagedReference<CreatureObject*> key = entry->getKey();
+		ThreatMapEntry *value = &entry->getValue();
 
 		ManagedReference<TangibleObject*> selfStrong = self.get();
 
@@ -112,8 +112,10 @@ void ThreatMap::removeAll() {
 
 			if (threatMapObserver != NULL)
 				key->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
-		} else
-			value.addNonAggroDamage(value.getTotalDamage());
+		} else {
+			value->setNonAggroDamage(value->getTotalDamage());
+			value->clearAggro();
+		}
 	}
 
 	currentThreat = NULL;
@@ -130,8 +132,9 @@ void ThreatMap::dropDamage(CreatureObject* target) {
 		if (threatMapObserver != NULL)
 			target->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
 	} else {
-		ThreatMapEntry entry = get(target);
-		entry.addNonAggroDamage(entry.getTotalDamage());
+		ThreatMapEntry *entry = &get(target);
+		entry->setNonAggroDamage(entry->getTotalDamage());
+		entry->clearAggro();
 	}
 
 	llocker.release();
