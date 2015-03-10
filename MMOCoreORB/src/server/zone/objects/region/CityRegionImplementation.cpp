@@ -117,12 +117,14 @@ Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool
 		return NULL;
 	}
 
-	String temp = "object/region_area.iff";
+	static const String temp = "object/region_area.iff";
 	ManagedReference<SceneObject*> obj = zone->getZoneServer()->createObject(temp.hashCode(), persistent ? 1 : 0);
 
 	if (obj == NULL || !obj->isRegion()) {
 		return NULL;
 	}
+	
+	Locker locker(obj);
 
 	ManagedReference<Region*> region = cast<Region*>(obj.get());
 	region->setCityRegion(_this.get());

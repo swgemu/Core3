@@ -82,7 +82,7 @@ public:
 		insertInt(int(crate->getConditionDamage()));
 		insertInt(crate->getMaxCondition());
 
-		insertByte(crate->getUnknownByte());
+		insertByte(crate->getObjectVisible());
 
 		setSize();
 	}

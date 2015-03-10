@@ -69,16 +69,28 @@ void PlanetManagerImplementation::initialize() {
 
 	if (zone->getZoneName() == "dathomir") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(String("object/fs_village_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+
+		Locker locker(area);
 		area->setRadius(512.f);
 		area->initializePosition(5306, 0, -4145);
 		zone->transferObject(area, -1, true);
 
+		locker.release();
+
 		Reference<ActiveArea*> sarlaccArea = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+
+		Locker locker2(sarlaccArea);
+
 		sarlaccArea->setRadius(60.f);
 		sarlaccArea->initializePosition(-2085, 0, 3147);
 		zone->transferObject(sarlaccArea, -1, true);
 
+		locker2.release();
+
 		Reference<ActiveArea*> sarlaccPreArea = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+
+		Locker locker3(sarlaccPreArea);
+
 		sarlaccPreArea->setRadius(30.f);
 		sarlaccPreArea->initializePosition(-2085, 0, 3147);
 		zone->transferObject(sarlaccPreArea, -1, true);
@@ -86,11 +98,18 @@ void PlanetManagerImplementation::initialize() {
 
 	if (zone->getZoneName() == "tatooine") {
 		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+
+		Locker locker(area);
 		area->setRadius(30.f);
 		area->initializePosition(-6174, 0, -3361);
 		zone->transferObject(area, -1, true);
 
+		locker.release();
+
 		Reference<ActiveArea*> preArea = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+
+		Locker locker2(preArea);
+
 		preArea->setRadius(60.f);
 		preArea->initializePosition(-6174, 0, -3361);
 		zone->transferObject(preArea, -1, true);
@@ -172,6 +191,9 @@ void PlanetManagerImplementation::loadLuaConfig() {
 			int badgeID = badge.getIntAt(5);
 
 			ManagedReference<BadgeActiveArea*> obj = server->getZoneServer()->createObject(hashCode, 0).castTo<BadgeActiveArea*>();
+
+			Locker objLocker(obj);			
+
 			obj->setRadius(radius);
 			obj->setBadge(badgeID);
 			obj->initializePosition(x, 0, y);
@@ -203,6 +225,8 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 		ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(templateFile.hashCode(), 0, "");
 
 		if (obj != NULL) {
+			Locker objLocker(obj);
+
 			float x = planetObject.getFloatField("x");
 			float y = planetObject.getFloatField("y");
 			float z = planetObject.getFloatField("z");
@@ -311,9 +335,12 @@ Reference<SceneObject*> PlanetManagerImplementation::loadSnapshotObject(WorldSna
 	else if (node->getParentID() != 0)
 		error("parent id " + String::valueOf(node->getParentID()));
 
-	if (parentObject == NULL)
+	if (parentObject == NULL) {
 		//object->insertToZone(zone);
+		Locker clocker(object);
+
 		zone->transferObject(object, -1, true);
+	}
 
 	//Load child nodes
 	for (int i = 0; i < node->getNodeCount(); ++i) {
@@ -524,6 +551,9 @@ void PlanetManagerImplementation::loadClientRegions() {
 		}
 
 		ManagedReference<ActiveArea*> noBuild = zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+
+		Locker areaLocker(noBuild);
+
 		noBuild->initializePosition(x, 0, y);
 		ManagedReference<CircularAreaShape*> areaShape = new CircularAreaShape();
 		areaShape->setRadius(radius * 2);
@@ -533,6 +563,9 @@ void PlanetManagerImplementation::loadClientRegions() {
 		noBuild->setNoBuildArea(true);
 		// Cities already have "Municipal" protection so the structure no-build should not apply to camps
 		noBuild->setCampingPermitted(true);
+
+		Locker zoneLocker(zone);
+
 		zone->transferObject(noBuild, -1, true);
 	}
 

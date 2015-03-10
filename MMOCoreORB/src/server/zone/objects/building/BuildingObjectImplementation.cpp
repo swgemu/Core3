@@ -1359,6 +1359,8 @@ void BuildingObjectImplementation::spawnChildSceneObject(String& templatePath, f
 	if (object == NULL || object->isCreatureObject())
 		return;
 
+	Locker objLocker(object);
+
 	object->initializePosition(x, z, y);
 	object->setDirection(dw, dx, dy, dz);
 
@@ -1374,8 +1376,11 @@ void BuildingObjectImplementation::spawnChildSceneObject(String& templatePath, f
 
 	if (cell != NULL) {
 		cell->transferObject(object, -1);
-	} else
+	} else {
 		zone->transferObject(object, -1, true);
+	}
+
+	objLocker.release();
 
 	object->createChildObjects();
 
