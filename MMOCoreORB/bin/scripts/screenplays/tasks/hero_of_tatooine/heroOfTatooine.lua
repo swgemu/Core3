@@ -156,13 +156,13 @@ function HeroOfTatooineScreenPlay:notifyDefeatedBoar(pVictim, pAttacker)
 			CreatureObject(pAttacker):sendSystemMessage("@quest/hero_of_tatooine/system_messages:courage_already_have_mark")
 		end
 		self:clearInventory(pVictim)
-		return 0
+		return 1
 	end
 
 	local pInventory = CreatureObject(pVictim):getSlottedObject("inventory")
 
 	if pInventory == nil then
-		return 0
+		return 1
 	end
 
 	if (SceneObject(pInventory):getContainerObjectsSize() > 0) then
@@ -196,7 +196,7 @@ end
 
 function HeroOfTatooineScreenPlay:notifyMarkOfCourageLooted(pItem, pLooter)
 	if pItem == nil or pLooter == nil then
-		return 0
+		return 1
 	end
 
 	ObjectManager.withCreatureAndPlayerObject(pLooter, function(player, playerObject)
@@ -451,7 +451,7 @@ end
 
 function HeroOfTatooineScreenPlay:onEnteredAltruismCave(pCave, pCreature)
 	if (pCreature == nil or not SceneObject(pCreature):isPlayerCreature() or SceneObject(pCreature):getParentID() == 5995573) then
-		return
+		return 0
 	end
 
 	local count = self:getCavePlayerWithQuestCount()
@@ -459,11 +459,13 @@ function HeroOfTatooineScreenPlay:onEnteredAltruismCave(pCave, pCreature)
 	if (count == 1) then
 		self:spawnAltruismObjects()
 	end
+	
+	return 0
 end
 
 function HeroOfTatooineScreenPlay:onExitedAltruismCave(pCave, pCreature)
 	if (pCreature == nil or not SceneObject(pCreature):isPlayerCreature()) then
-		return
+		return 0
 	end
 
 	local escorterID = readData("hero_of_tat:altruismEscorterID")
@@ -477,6 +479,8 @@ function HeroOfTatooineScreenPlay:onExitedAltruismCave(pCave, pCreature)
 	if (count == 0) then
 		self:despawnAltruismObjects()
 	end
+	
+	return 0
 end
 
 function HeroOfTatooineScreenPlay:despawnAltruismObjects()
