@@ -320,6 +320,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 						ManagedReference<TangibleObject*> tano = (server->getZoneServer()->createObject(templ.hashCode(), getPersistenceLevel())).castTo<TangibleObject*>();
 
 						if (tano != NULL) {
+							Locker objLocker(tano);
+
 							VectorMap<String, uint8>* cust = obj->getCustomizationVariables();
 
 							for (int j = 0; j < cust->size(); ++j) {
@@ -648,6 +650,8 @@ void AiAgentImplementation::selectWeapon() {
 
 	if (currentWeapon != finalWeap) {
 		if (currentWeapon != NULL && currentWeapon != defaultWeapon) {
+			Locker locker(currentWeapon);
+
 			currentWeapon->destroyObjectFromWorld(false);
 
 			//info("removed weapon " + currentWeapon->getDisplayedName(), true);
@@ -656,6 +660,7 @@ void AiAgentImplementation::selectWeapon() {
 		if (finalWeap != defaultWeapon) {
 
 			//info("selected weapon " + finalWeap->getDisplayedName(), true);
+			Locker locker(finalWeap);
 
 			transferObject(finalWeap, 4, false);
 			broadcastObject(finalWeap, false);
