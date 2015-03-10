@@ -88,7 +88,7 @@ class TangibleObject extends SceneObject {
 	protected unsigned int optionsBitmask;
 	protected unsigned int pvpStatusBitmask;
 	
-	protected byte unknownByte;
+	protected byte objectVisible;
 	protected string craftersName;
 
 	protected int junkDealerNeeded;
@@ -133,7 +133,7 @@ class TangibleObject extends SceneObject {
 
 		volume = 1;
 
-		unknownByte = 1;
+		objectVisible = 1;
 
 		useCount = 1;
 
@@ -247,6 +247,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked, defender is active }
 	 * @param defender SceneObject to set as the active defender
 	 */
+	@preLocked
 	public native abstract void setDefender(SceneObject defender);
 	
 	/**
@@ -255,6 +256,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked, defender is in the defender vector }
 	 * @param defender SceneObject to add to the defender vector
 	 */
+	@preLocked
 	public native abstract void addDefender(SceneObject defender);
 	
 	/**
@@ -263,6 +265,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked, defender is not in the defender vector }
 	 * @param defender SceneObject to remove from the defender vector
 	 */
+	@preLocked
 	public native abstract void removeDefender(SceneObject defender);
 	
 	/**
@@ -270,6 +273,7 @@ class TangibleObject extends SceneObject {
 	 * @pre { this object is locked }
 	 * @post { this object is locked, defender vector is empty }
 	 */
+	@preLocked
 	public native abstract void removeDefenders();
 	
 	/**
@@ -287,13 +291,16 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked }
 	 * @param newUseCount new value to update
 	 */
+	@preLocked
 	public native abstract void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
 	
+	@preLocked
 	public native void setCountdownTimer(unsigned int newCount, boolean notifyClient = true);
 	
 	/**
 	 * Decreases use count, when reaches 0 destroys itself
 	 */
+	@preLocked
 	public native void decreaseUseCount();
 	
 	/**
@@ -313,6 +320,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked, this object is not in a combat state }
 	 * @param clearDefenders if true the defender vector willl be emptied
 	 */
+	@preLocked
 	public abstract void clearCombatState(boolean clearDefenders = true) {
 		if (clearDefenders)
 			removeDefenders();
@@ -324,6 +332,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked }
 	 * @return returns true if SceneObject defender exists in the defender vector
 	 */
+	@preLocked
 	@dirty
 	public boolean hasDefender(SceneObject defender) {
 		for (int i = 0; i < defenderList.size(); ++i) {
@@ -373,7 +382,10 @@ class TangibleObject extends SceneObject {
 	 * @post { attacker, this object is locked }
 	 * @return unused for now
 	 */
+	@preLocked
 	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, boolean notifyClient = true);
+	
+	@preLocked
 	public native abstract int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
 	
 	/**
@@ -382,6 +394,7 @@ class TangibleObject extends SceneObject {
 	 * @post { this, healer locked }
 	 * @return returns total health healed
 	 */
+	@preLocked
 	public native abstract int healDamage(TangibleObject healer, int damageType, float damageToHeal, boolean notifyClient = true);
 	
 	
@@ -391,15 +404,19 @@ class TangibleObject extends SceneObject {
 	 * @post { this object is locked }
 	 * @param condDamage new condition damage
 	 */
+	@preLocked
 	public native void setConditionDamage(float condDamage, boolean notifyClient = true);
 	
 	/**
 	 * Updates a customization variable
 	 */
+	@preLocked
 	public native void setCustomizationVariable(byte type, short value, boolean notifyClient = true);
 
+	@preLocked
 	public native void setCustomizationVariable(final string type, short value, boolean notifyClient = true);
 	
+	@preLocked
 	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
 	
 	public native void setOptionBit(unsigned int option, boolean notifyClient = true);
@@ -410,11 +427,12 @@ class TangibleObject extends SceneObject {
 	
 	public abstract native int notifyObjectDestructionObservers(TangibleObject attacker, int condition);
 	
+	@preLocked
 	public native void dropFromDefenderLists(TangibleObject destructor);
 	
 	@dirty
-	public byte getUnknownByte() {
-		return unknownByte;
+	public byte getObjectVisible() {
+		return objectVisible;
 	}
 	
 	@dirty
@@ -504,6 +522,7 @@ class TangibleObject extends SceneObject {
 	
 	@local
 	@dirty
+	@preLocked
 	public DeltaVector<SceneObject> getDefenderList() {
 		return defenderList;
 	}
@@ -631,6 +650,7 @@ class TangibleObject extends SceneObject {
 	}
 
 	@local
+	@preLocked
 	public native ThreatMap getThreatMap();
 	
 	/*
