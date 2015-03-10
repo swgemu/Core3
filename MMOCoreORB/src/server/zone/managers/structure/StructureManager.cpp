@@ -492,8 +492,11 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	structureObject->setPublicStructure(serverTemplate->isPublicStructure());
 	structureObject->initializePosition(x, z, y);
 	structureObject->rotate(angle);
-	//structureObject->insertToZone(zone);
+
+	Locker sLocker(structureObject);
+	
 	zone->transferObject(structureObject, -1, true);
+	
 	structureObject->createChildObjects();
 
 	structureObject->notifyStructurePlaced(creature);

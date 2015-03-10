@@ -1901,6 +1901,8 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), 0);
 
 	if (object != NULL) {
+		Locker objLocker(object);
+
 		object->initializePosition(x, z, y);
 		object->setDirection(dw, dx, dy, dz);
 
@@ -1966,6 +1968,8 @@ int DirectorManager::spawnActiveArea(lua_State* L) {
 			return 1;
 		}
 
+		Locker locker(area);
+
 		area->initializePosition(x, z, y);
 		area->setRadius(radius);
 
@@ -1981,6 +1985,8 @@ int DirectorManager::spawnActiveArea(lua_State* L) {
 
 		area->setCellObjectID(cellID);
 
+		Locker zoneLocker(zone);
+		
 		zone->transferObject(area, -1, true);
 
 		area->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA

@@ -202,6 +202,8 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player, boo
 			return;
 	}
 
+	Locker crossLocker(controlledObject, player);
+
 	controlledObject->destroyObjectFromWorld(true);
 
 	if (controlledObject->isCreatureObject())

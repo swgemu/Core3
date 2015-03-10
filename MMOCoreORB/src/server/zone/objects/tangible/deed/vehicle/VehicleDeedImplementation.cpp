@@ -107,6 +107,8 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 			return 1;
 		}
 
+		Locker vlocker(vehicle, player);
+
 		vehicle->createChildObjects();
 		vehicle->setMaxCondition(hitPoints);
 		vehicle->setConditionDamage(0);
