@@ -325,6 +325,10 @@ function GeonosianLabScreenPlay:notifyEnteredLab(pBuilding, pPlayer)
 end
 
 function GeonosianLabScreenPlay:notifyLockedDoorArea(pArea, pPlayer)
+	if (not SceneObject(pPlayer):isCreatureObject()) then
+		return 0
+	end
+	
 	ObjectManager.withCreatureObject(pPlayer, function(player)
 		if (player:isAiAgent()) then
 			return 0
