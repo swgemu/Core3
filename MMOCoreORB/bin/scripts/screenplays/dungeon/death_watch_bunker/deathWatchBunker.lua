@@ -449,17 +449,19 @@ function DeathWatchBunkerScreenPlay:setLootBoxPermissions(pContainer)
 end
 
 function DeathWatchBunkerScreenPlay:onEnterDWB(sceneObject, creatureObject)
-	ObjectManager.withCreatureObject(creatureObject, function(creature)
+	return ObjectManager.withCreatureObject(creatureObject, function(creature)
 		if (creature:isAiAgent()) then
 			return 0
 		end
 
 		self:lockAll(creatureObject)
+
+		return 0
 	end)
 end
 
 function DeathWatchBunkerScreenPlay:onExitDWB(sceneObject, creatureObject, long)
-	ObjectManager.withCreatureObject(creatureObject, function(creature)
+	return ObjectManager.withCreatureObject(creatureObject, function(creature)
 		if (creature:isAiAgent() == true) then
 			return 0
 		end
@@ -467,6 +469,8 @@ function DeathWatchBunkerScreenPlay:onExitDWB(sceneObject, creatureObject, long)
 		if long == self.buildingIds.outside or long == 0 then
 			self:lockAll(creatureObject)
 		end
+
+		return 0
 	end)
 end
 
@@ -530,6 +534,8 @@ function DeathWatchBunkerScreenPlay:boxLooted(pSceneObject, pCreature, selectedI
 
 		createEvent(self.containerRespawnTime, "DeathWatchBunkerScreenPlay", "refillContainer", pSceneObject)
 	end
+
+	return 0
 end
 
 function DeathWatchBunkerScreenPlay:refillContainer(pSceneObject)
@@ -741,20 +747,23 @@ function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pCha
 	AiAgent(pBombDroid):setWait(0)
 	AiAgent(pBombDroid):setNextPosition(droidLoc.x, droidLoc.z, droidLoc.y, pCell)
 	AiAgent(pBombDroid):executeBehavior()
+
+	return 0
 end
 
 function DeathWatchBunkerScreenPlay:notifyEnteredVoiceTerminalArea(pArea, pPlayer)
-	ObjectManager.withCreatureObject(pPlayer, function(player)
+	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		if (player:isAiAgent()) then
 			return 0
 		end
 
 		player:sendSystemMessage("@dungeon/death_watch:rc_mouse_instructions")
+		return 0
 	end)
 end
 
 function DeathWatchBunkerScreenPlay:notifyEnteredOutsideLockedDoorArea(pArea, pPlayer)
-	ObjectManager.withCreatureObject(pPlayer, function(player)
+	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		if (player:isAiAgent()) then
 			return 0
 		end
@@ -762,12 +771,14 @@ function DeathWatchBunkerScreenPlay:notifyEnteredOutsideLockedDoorArea(pArea, pP
 		if (player:hasScreenPlayState(1, "death_watch_bunker") == 0) then
 			player:sendSystemMessage("@dungeon/death_watch:entrance_denied")
 		end
+
+		return 0
 	end)
 end
 
 function DeathWatchBunkerScreenPlay:bombDroidDetonated(pBombDroid, pBombDroid2)
 	if (pBombDroid == nil) then
-		return
+		return 1
 	end
 
 	local debrisID = readData("dwb:bombDebris")
@@ -777,7 +788,7 @@ function DeathWatchBunkerScreenPlay:bombDroidDetonated(pBombDroid, pBombDroid2)
 	local pDebris2 = getSceneObject(debrisID2)
 
 	if (pDebris == nil and pDebris2 == nil) then
-		return
+		return 1
 	end
 
 	if (pDebris ~= nil and SceneObject(pBombDroid):isInRangeWithObject(pDebris, 5)) then
@@ -787,6 +798,8 @@ function DeathWatchBunkerScreenPlay:bombDroidDetonated(pBombDroid, pBombDroid2)
 		SceneObject(pDebris):playEffect("clienteffect/combat_grenade_proton.cef", "")
 		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris2)
 	end
+
+	return 1
 end
 
 function DeathWatchBunkerScreenPlay:respawnDebris(pOldDebris)
@@ -834,7 +847,7 @@ end
 
 function DeathWatchBunkerScreenPlay:haldoKilled(pHaldo, pPlayer)
 	createEvent(1000 * 240, "DeathWatchBunkerScreenPlay", "respawnHaldo", pPlayer)
-	ObjectManager.withCreatureObject(pPlayer, function(creature)
+	return ObjectManager.withCreatureObject(pPlayer, function(creature)
 		if (creature:hasScreenPlayState(2, "death_watch_foreman_stage") == 1 and creature:hasScreenPlayState(4, "death_watch_foreman_stage") == 0) then
 			local pInventory = creature:getSlottedObject("inventory")
 			if (pInventory == nil) then
@@ -842,7 +855,7 @@ function DeathWatchBunkerScreenPlay:haldoKilled(pHaldo, pPlayer)
 			else
 				if (SceneObject(pInventory):hasFullContainerObjects() == true) then
 					creature:sendSystemMessage("@error_message:inv_full")
-					return 0
+					return 1
 				else
 					local pBattery = getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", true)
 					if (pBattery == nil) then
@@ -857,15 +870,17 @@ function DeathWatchBunkerScreenPlay:haldoKilled(pHaldo, pPlayer)
 				end
 			end
 		end
+
+		return 1
 	end)
 end
 
 function DeathWatchBunkerScreenPlay:haldoDamage(pHaldo, pPlayer, damage)
 	if pHaldo == nil or pPlayer == nil then
-		return
+		return 1
 	end
 
-	ObjectManager.withCreatureObject(pHaldo, function(haldo)
+	return ObjectManager.withCreatureObject(pHaldo, function(haldo)
 		if ((haldo:getHAM(0) <= (haldo:getMaxHAM(0) * 0.9)) or (haldo:getHAM(3) <= (haldo:getMaxHAM(3) * 0.9)) or (haldo:getHAM(6) <= (haldo:getMaxHAM(6) * 0.9))) then
 			local spawnLoc = { x = haldo:getPositionX(), z = haldo:getPositionZ(), y = haldo:getPositionY(), cell = haldo:getParentID(), angle = haldo:getDirectionAngle() }
 			local spawnHam = { h = haldo:getHAM(0), a = haldo:getHAM(3), m = haldo:getHAM(6) }
@@ -874,7 +889,7 @@ function DeathWatchBunkerScreenPlay:haldoDamage(pHaldo, pPlayer, damage)
 			local pNewHaldo = spawnMobile("endor", "mand_bunker_crazed_miner_converse", 0, spawnLoc.x, spawnLoc.z, spawnLoc.y, spawnLoc.angle, spawnLoc.cell)
 
 			if (pNewHaldo == nil) then
-				return
+				return 1
 			end
 			CreatureObject(pNewHaldo):setPvpStatusBitmask(0)
 			CreatureObject(pNewHaldo):setHAM(0, spawnHam.h)
@@ -883,6 +898,8 @@ function DeathWatchBunkerScreenPlay:haldoDamage(pHaldo, pPlayer, damage)
 
 			spatialChat(pNewHaldo, "@dungeon/death_watch:help_me")
 		end
+
+		return 1
 	end)
 end
 
@@ -1635,6 +1652,7 @@ end
 
 function DeathWatchBunkerScreenPlay:ventDroidDestinationReached(pDroid)
 	createEvent(2000, "DeathWatchBunkerScreenPlay", "doVentDroidMove", pDroid)
+	return 1
 end
 
 function DeathWatchBunkerScreenPlay:doVentDroidMove(pDroid)
