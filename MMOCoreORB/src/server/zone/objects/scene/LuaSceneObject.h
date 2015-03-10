@@ -10,6 +10,8 @@
 
 #include "engine/engine.h"
 
+#define DYNAMIC_CAST_LUAOBJECTS 1
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -87,6 +89,11 @@ namespace scene {
 		int setContainerOwnerID(lua_State* L);
 		int setObjectName(lua_State* L);
 		int isASubChildOf(lua_State* L);
+
+	protected:
+		SceneObject* _getRealSceneObject() {
+			return realObject.get();
+		}
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

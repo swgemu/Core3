@@ -78,7 +78,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 };
 
 LuaSceneObject::LuaSceneObject(lua_State *L) {
-	realObject = (SceneObject*)lua_touserdata(L, 1);
+	realObject = reinterpret_cast<SceneObject*>(lua_touserdata(L, 1));
 }
 
 LuaSceneObject::~LuaSceneObject(){
@@ -94,7 +94,7 @@ int LuaSceneObject::_getObject(lua_State* L) {
 }
 
 int LuaSceneObject::_setObject(lua_State* L) {
-	realObject = (SceneObject*)lua_touserdata(L, -1);
+	realObject = reinterpret_cast<SceneObject*>(lua_touserdata(L, -1));
 
 	return 0;
 }

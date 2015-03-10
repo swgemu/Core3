@@ -36,16 +36,28 @@ Luna<LuaBuildingObject>::RegType LuaBuildingObject::Register[] = {
 };
 
 LuaBuildingObject::LuaBuildingObject(lua_State *L) : LuaTangibleObject(L) {
-	realObject = (BuildingObject*)lua_touserdata(L, 1);
+#ifdef DYNAMIC_CAST_LUAOBJECTS
+	realObject = dynamic_cast<BuildingObject*>(_getRealSceneObject());
+
+	assert(!_getRealSceneObject() || realObject != NULL);
+#else
+	realObject = reinterpret_cast<BuildingObject*>(lua_touserdata(L, 1));
+#endif
 }
 
 LuaBuildingObject::~LuaBuildingObject(){
 }
 
 int LuaBuildingObject::_setObject(lua_State* L) {
-	realObject = (BuildingObject*)lua_touserdata(L, -1);
-
 	LuaTangibleObject::_setObject(L);
+
+#ifdef DYNAMIC_CAST_LUAOBJECTS
+	realObject = dynamic_cast<BuildingObject*>(_getRealSceneObject());
+
+	assert(!_getRealSceneObject() || realObject != NULL);
+#else
+	realObject = reinterpret_cast<BuildingObject*>(lua_touserdata(L, -1));
+#endif
 
 	return 0;
 }

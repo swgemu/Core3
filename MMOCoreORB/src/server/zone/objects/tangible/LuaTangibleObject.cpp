@@ -31,16 +31,28 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 };
 
 LuaTangibleObject::LuaTangibleObject(lua_State *L) : LuaSceneObject(L) {
+#ifdef DYNAMIC_CAST_LUAOBJECTS
+	realObject = dynamic_cast<TangibleObject*>(_getRealSceneObject());
+
+	assert(!_getRealSceneObject() || realObject != NULL);
+#else
 	realObject = static_cast<TangibleObject*>(lua_touserdata(L, 1));
+#endif
 }
 
 LuaTangibleObject::~LuaTangibleObject(){
 }
 
 int LuaTangibleObject::_setObject(lua_State* L) {
-	realObject = static_cast<TangibleObject*>(lua_touserdata(L, -1));
-
 	LuaSceneObject::_setObject(L);
+
+#ifdef DYNAMIC_CAST_LUAOBJECTS
+	realObject = dynamic_cast<TangibleObject*>(_getRealSceneObject());
+
+	assert(!_getRealSceneObject() || realObject != NULL);
+#else
+	realObject = static_cast<TangibleObject*>(lua_touserdata(L, -1));
+#endif
 
 	return 0;
 }

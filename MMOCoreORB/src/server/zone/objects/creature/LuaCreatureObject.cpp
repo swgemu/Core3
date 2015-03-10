@@ -112,16 +112,28 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 };
 
 LuaCreatureObject::LuaCreatureObject(lua_State *L) : LuaSceneObject(L) {
+#ifdef DYNAMIC_CAST_LUAOBJECTS
+	realObject = dynamic_cast<CreatureObject*>(_getRealSceneObject());
+
+	assert(!_getRealSceneObject() || realObject != NULL);
+#else
 	realObject = static_cast<CreatureObject*>(lua_touserdata(L, 1));
+#endif
 }
 
 LuaCreatureObject::~LuaCreatureObject(){
 }
 
 int LuaCreatureObject::_setObject(lua_State* L) {
-	realObject = static_cast<CreatureObject*>(lua_touserdata(L, -1));
-
 	LuaSceneObject::_setObject(L);
+
+#ifdef DYNAMIC_CAST_LUAOBJECTS
+	realObject = dynamic_cast<CreatureObject*>(_getRealSceneObject());
+
+	assert(!_getRealSceneObject() || realObject != NULL);
+#else
+	realObject = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+#endif
 
 	return 0;
 }

@@ -17,16 +17,28 @@ Luna<LuaIntangibleObject>::RegType LuaIntangibleObject::Register[] = {
 
 
 LuaIntangibleObject::LuaIntangibleObject(lua_State *L) : LuaSceneObject(L) {
-	realObject = (IntangibleObject*)lua_touserdata(L, 1);
+#ifdef DYNAMIC_CAST_LUAOBJECTS
+	realObject = dynamic_cast<IntangibleObject*>(_getRealSceneObject());
+
+	assert(!_getRealSceneObject() || realObject != NULL);
+#else
+	realObject = reinterpret_cast<IntangibleObject*>(lua_touserdata(L, 1));
+#endif
 }
 
 LuaIntangibleObject::~LuaIntangibleObject() {
 }
 
 int LuaIntangibleObject::_setObject(lua_State* L) {
-	realObject = (IntangibleObject*)lua_touserdata(L, -1);
-
 	LuaSceneObject::_setObject(L);
+
+#ifdef DYNAMIC_CAST_LUAOBJECTS
+	realObject = dynamic_cast<IntangibleObject*>(_getRealSceneObject());
+
+	assert(!_getRealSceneObject() || realObject != NULL);
+#else
+	realObject = reinterpret_cast<IntangibleObject*>(lua_touserdata(L, -1));
+#endif
 
 	return 0;
 }
