@@ -69,26 +69,20 @@ function GeonosianLabScreenPlay:start()
 end
 
 function GeonosianLabScreenPlay:spawnActiveAreas()
-	local pActiveArea = spawnSceneObject("yavin4", "object/active_area.iff", -6435.5, 85.6, -367, 0, 0, 0, 0, 0)
-	ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-		activeArea:setCellObjectID(1627783)
-		activeArea:setRadius(10)
+	local pActiveArea = spawnActiveArea("yavin4", "object/active_area.iff", -6435.5, 85.6, -367, 10, 1627783)
+	if pActiveArea ~= nil then
 		createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyEnteredPoisonGas", pActiveArea)
-	end)
+	end
 
-	local pGasArea = spawnSceneObject("yavin4", "object/active_area.iff", -6181.9, 48.3, -197.2, 0, 0, 0, 0, 0)
-	ObjectManager.withActiveArea(pGasArea, function(gasArea)
-		gasArea:setCellObjectID(1627822)
-		gasArea:setRadius(4)
+	local pGasArea = spawnActiveArea("yavin4", "object/active_area.iff", -6181.9, 48.3, -197.2, 4, 1627822)
+	if pGasArea ~= nil then
 		createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyEnteredPoisonGas", pGasArea)
-	end)
+	end
 
-	local pShockArea = spawnSceneObject("yavin4", "object/active_area.iff", -6169.0, 48.3, -382.3, 0, 0, 0, 0, 0)
-	ObjectManager.withActiveArea(pShockArea, function(shockArea)
-		shockArea:setCellObjectID(1627813)
-		shockArea:setRadius(4)
+	local pShockArea = spawnActiveArea("yavin4", "object/active_area.iff", -6169.0, 48.3, -382.3, 4, 1627813)
+	if pShockArea ~= nil then
 		createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyElectroShock", pShockArea)
-	end)
+	end
 end
 
 function GeonosianLabScreenPlay:spawnSceneObjects()
@@ -115,13 +109,11 @@ function GeonosianLabScreenPlay:spawnSceneObjects()
 		createObserver(OBJECTRADIALUSED, "GeonosianLabScreenPlay", "notifyKeypadUsed", pSceneObject)
 
 		local aa = self.doorActiveAreas[i]
-		local pActiveArea = spawnSceneObject("yavin4", "object/active_area.iff", aa.worldX, aa.worldZ, aa.worldY, 0, 0, 0, 0, 0)
-		ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-			writeData(activeArea:getObjectID() .. ":GeoLabKeypad", i)
-			activeArea:setCellObjectID(aa.cell)
-			activeArea:setRadius(4)
+		local pActiveArea = spawnActiveArea("yavin4", "object/active_area.iff", aa.worldX, aa.worldZ, aa.worldY, 4, aa.cell)
+		if pActiveArea ~= nil then
+			writeData(SceneObject(pActiveArea):getObjectID() .. ":GeoLabKeypad", i)
 			createObserver(ENTEREDAREA, "GeonosianLabScreenPlay", "notifyLockedDoorArea", pActiveArea)
-		end)
+		end
 	end
 
 	for i = 1, 15, 1 do

@@ -72,7 +72,6 @@ describe("GoToLocation", function()
         activeArea = {}
         activeArea.getObjectID = spy.new(function() return activeAreaId end)
         activeArea.destroyObjectFromWorld = spy.new(function() end)
-        activeArea.setRadius = spy.new(function() end)
         DirectorManagerMocks.sceneObjects[pActiveArea] = activeArea
         DirectorManagerMocks.activeAreas[pActiveArea] = activeArea
     end)
@@ -96,24 +95,18 @@ describe("GoToLocation", function()
             it("Should setup an active area at the target location.", function()
                 testGoToLocation:start(pCreatureObject)
 
-                assert.spy(spawnSceneObject).was.called_with(testGoToLocation.spawnPlanet, ACTIVE_AREA_IFF, testGoToLocation.spawnPoint.x, 0, testGoToLocation.spawnPoint.y, 0, 0)
+                assert.spy(spawnActiveArea).was.called_with(testGoToLocation.spawnPlanet, ACTIVE_AREA_IFF, testGoToLocation.spawnPoint.x, 0, testGoToLocation.spawnPoint.y, testGoToLocation.spawnRadius, 0)
             end)
 
             describe("and the active area was successfully created", function()
                 before_each(function()
-                    spawnSceneObject = spy.new(function() return pActiveArea end)
+                    spawnActiveArea = spy.new(function() return pActiveArea end)
                 end)
 
                 it("Should save the active area id on the player.", function()
                     testGoToLocation:start(pCreatureObject)
 
                     assert.spy(writeData).was.called_with(creatureObject:getObjectID() .. testGoToLocation.taskName .. ACTIVE_AREA_ID_STRING, activeAreaId)
-                end)
-
-                it("Should set the radius of the active area.", function()
-                    testGoToLocation:start(pCreatureObject)
-
-                    assert.spy(activeArea.setRadius).was.called_with(activeArea, testGoToLocation.spawnRadius)
                 end)
 
                 it("Should create an observer for the onEntered event on the active area.", function()
@@ -157,7 +150,7 @@ describe("GoToLocation", function()
 
             describe("and an active area could not be created", function()
                 before_each(function()
-                    spawnSceneObject = spy.new(function() return nil end)
+                    spawnActiveArea = spy.new(function() return nil end)
                 end)
 
                 it("Should finish the task to clean up.", function()

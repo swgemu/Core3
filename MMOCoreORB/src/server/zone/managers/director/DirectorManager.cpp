@@ -249,6 +249,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "writeStringSharedMemory", writeStringSharedMemory);
 	lua_register(luaEngine->getLuaState(), "deleteStringSharedMemory", deleteStringSharedMemory);
 	lua_register(luaEngine->getLuaState(), "spawnSceneObject", spawnSceneObject);
+	lua_register(luaEngine->getLuaState(), "spawnActiveArea", spawnActiveArea);
 	lua_register(luaEngine->getLuaState(), "spawnBuilding", spawnBuilding);
 	lua_register(luaEngine->getLuaState(), "destroyBuilding", destroyBuilding);
 	lua_register(luaEngine->getLuaState(), "getSceneObject", getSceneObject);
@@ -1907,6 +1908,67 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 
 		lua_pushlightuserdata(L, object.get());
+	} else {
+		lua_pushnil(L);
+	}
+
+	return 1;
+}
+
+int DirectorManager::spawnActiveArea(lua_State* L) {
+	int numberOfArguments = lua_gettop(L);
+	if (numberOfArguments != 7) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::spawnActiveArea");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	uint64 cellID = lua_tointeger(L, -1);
+	int radius = lua_tointeger(L, -2);
+	float y = lua_tonumber(L, -3);
+	float z = lua_tonumber(L, -4);
+	float x = lua_tonumber(L, -5);
+	String script = lua_tostring(L, -6);
+	String zoneID = lua_tostring(L, -7);
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+	Zone* zone = zoneServer->getZone(zoneID);
+
+	if (zone == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	ManagedReference<SceneObject*> object = zoneServer->createObject(script.hashCode(), 0);
+
+	if (object != NULL && object->isActiveArea()) {
+		ActiveArea* area = object.castTo<ActiveArea*>();
+
+		if (area == NULL) {
+			lua_pushnil(L);
+			return 1;
+		}
+
+		area->initializePosition(x, z, y);
+		area->setRadius(radius);
+
+		Reference<SceneObject*> cellParent = NULL;
+
+		if (cellID != 0) {
+			cellParent = zoneServer->getObject(cellID);
+
+			if (cellParent == NULL || !cellParent->isCellObject()) {
+				cellID = 0;
+			}
+		}
+
+		area->setCellObjectID(cellID);
+
+		zone->transferObject(area, -1, true);
+
+		area->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
+
+		lua_pushlightuserdata(L, area);
 	} else {
 		lua_pushnil(L);
 	}

@@ -9,11 +9,9 @@ function options_bitmask_test:start()
 		return 0
 	end
 	
-	local pActiveArea1 = spawnSceneObject("simple", "object/active_area.iff", 0, 0, 0, 0, 0, 0, 0, 0)
+	local pActiveArea1 = spawnActiveArea("simple", "object/active_area.iff", 0, 0, 0, 200, 0)
 
 	if (pActiveArea1 ~= nil) then
-		local activeArea = LuaActiveArea(pActiveArea1)
-		activeArea:setRadius(200)
 		createObserver(ENTEREDAREA, "options_bitmask_test", "notifyEnteredArea1", pActiveArea1)
 	end
 

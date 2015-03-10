@@ -99,6 +99,7 @@ namespace server {
 		static int dropObserver(lua_State* L);
 		static int spawnMobile(lua_State* L);
 		static int spawnSceneObject(lua_State* L);
+		static int spawnActiveArea(lua_State* L);
 		static int spawnBuilding(lua_State* L);
 		static int destroyBuilding(lua_State* L);
 		static int createLoot(lua_State* L);

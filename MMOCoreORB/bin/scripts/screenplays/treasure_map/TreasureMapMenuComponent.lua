@@ -273,10 +273,13 @@ end
 function TreasureMapMenuComponent:spawnSearchArea(mapType, pCreature, x, y)
 	local mapData = treasureMapData[mapType]
 	local z = getTerrainHeight(pCreature, x, y)
-	local pActiveArea = spawnSceneObject(mapData.planet, "object/active_area.iff", x, z, y, 0, 0, 0, 0, 0)
+	local pActiveArea = spawnActiveArea(mapData.planet, "object/active_area.iff", x, z, y, 64, 0)
 
-	ActiveArea(pActiveArea):setRadius(64)
-	return SceneObject(pActiveArea):getObjectID()
+	if pActiveArea ~= nil then
+		return SceneObject(pActiveArea):getObjectID()
+	else
+		return 0
+	end
 end
 
 function TreasureMapMenuComponent:getMapType(pObject)

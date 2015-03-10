@@ -33,15 +33,12 @@ GoToLocation = Task:new {
 -- @return true if setup was successful, false otherwise.
 function GoToLocation:setupActiveArea(pCreatureObject, spawnPoint, spawnPlanet, spawnRadius)
 	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		local pActiveArea = spawnSceneObject(spawnPlanet, ACTIVE_AREA_IFF, spawnPoint.x, 0, spawnPoint.y, 0, 0)
+		local pActiveArea = spawnActiveArea(spawnPlanet, ACTIVE_AREA_IFF, spawnPoint.x, 0, spawnPoint.y, spawnRadius, 0)
 
 		return ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-			return ObjectManager.withSceneObject(pActiveArea, function(activeAreaSceneObject)
-				writeData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, activeAreaSceneObject:getObjectID())
-				activeArea:setRadius(spawnRadius)
-				createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
-				return pActiveArea
-			end)
+			writeData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING, activeArea:getObjectID())
+			createObserver(ENTEREDAREA, self.taskName, "handleEnteredAreaEvent", pActiveArea)
+			return pActiveArea
 		end)
 	end)
 end

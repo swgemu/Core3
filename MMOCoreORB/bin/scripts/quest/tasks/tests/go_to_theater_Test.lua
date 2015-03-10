@@ -90,7 +90,6 @@ describe("GoToTheater", function()
 		activeArea = {}
 		activeArea.getObjectID = spy.new(function() return activeAreaId end)
 		activeArea.destroyObjectFromWorld = spy.new(function() end)
-		activeArea.setRadius = spy.new(function() end)
 		DirectorManagerMocks.sceneObjects[pActiveArea] = activeArea
 		DirectorManagerMocks.activeAreas[pActiveArea] = activeArea
 
@@ -155,27 +154,16 @@ describe("GoToTheater", function()
 					end)
 
 					describe("and the mobiles was spawned", function()
-						local spawnSceneObjectTimes
-
 						before_each(function()
-							spawnSceneObjectTimes = 0
-
 							SpawnMobilesMocks.spawnMobiles = spy.new(function() return spawnedMobilesList end)
 
-							spawnSceneObject = spy.new(function()
-								spawnSceneObjectTimes = spawnSceneObjectTimes + 1
-								if spawnSceneObjectTimes == 1 then
-									return pTheater
-								else
-									return pActiveArea
-								end
-							end)
+							spawnActiveArea = spy.new(function() return pActiveArea end)
 						end)
 
 						it("Should setup and active area at the spawn point.", function()
 							testGoToTheater:start(pCreatureObject)
 
-							assert.spy(spawnSceneObject).was.called_with(zoneName, "object/active_area.iff", spawnAreaPosition[1], 0, spawnAreaPosition[3], 0, 0)
+							assert.spy(spawnActiveArea).was.called_with(zoneName, "object/active_area.iff", spawnAreaPosition[1], 0, spawnAreaPosition[3], testGoToTheater.activeAreaRadius, 0)
 						end)
 
 						describe("and the active area was spawned", function()
@@ -195,12 +183,6 @@ describe("GoToTheater", function()
 										assert.same(waypointId, value)
 									end
 								end)
-							end)
-
-							it("Should set the radius of the active area.", function()
-								testGoToTheater:start(pCreatureObject)
-
-								assert.spy(activeArea.setRadius).was.called_with(activeArea, testGoToTheater.activeAreaRadius)
 							end)
 
 							it("Should create an observer for entering the active area.", function()
@@ -247,17 +229,8 @@ describe("GoToTheater", function()
 						end)
 
 						describe("and the active area was not spawned", function()
-							local spawnSceneObjectTimes = 0
-
 							before_each(function()
-								spawnSceneObject = spy.new(function()
-									spawnSceneObjectTimes = spawnSceneObjectTimes + 1
-									if spawnSceneObjectTimes == 1 then
-										return pTheater
-									else
-										return nil
-									end
-								end)
+								spawnActiveArea = spy.new(function() return nil end)
 							end)
 
 							it("Should call the onFailedSpawn function.", function()
@@ -296,6 +269,7 @@ describe("GoToTheater", function()
 				describe("and the theater was not spawned", function()
 					before_each(function()
 						spawnSceneObject = spy.new(function() return nil end)
+						spawnActiveArea = spy.new(function() return nil end)
 					end)
 
 					it("Should call the onFailedSpawn function.", function()

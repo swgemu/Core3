@@ -221,12 +221,10 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	writeData(spawnedSceneObject:getObjectID() .. ":dwb:terminal", 1)
 
 	-- Outside locked door message
-	local pActiveArea = spawnSceneObject("endor", "object/active_area.iff", -4680.6,0.4,4324.5,0,0,0,0,0)
-	ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-		activeArea:setRadius(5)
-		activeArea:setCellObjectID(5996315)
+	local pActiveArea = spawnActiveArea("endor", "object/active_area.iff", -4680.6, 0.4, 4324.5, 5, 5996315)
+	if pActiveArea ~= nil then
 		createObserver(ENTEREDAREA, "DeathWatchBunkerScreenPlay", "notifyEnteredOutsideLockedDoorArea", pActiveArea)
-	end)
+	end
 
 	-- Door Access Terminal A
 	spawnedPointer = spawnSceneObject("endor", "object/tangible/dungeon/death_watch_bunker/door_control_terminal.iff", -84.4526,-20,-50.504,5996323,-0.707107,0,0.707107,0)
@@ -256,12 +254,10 @@ function DeathWatchBunkerScreenPlay:spawnObjects()
 	createObserver(SPATIALCHATRECEIVED, "DeathWatchBunkerScreenPlay", "voiceTerminalSpatialReceived", spawnedPointer)
 
 	-- Voice Terminal Instruction message
-	local pActiveArea = spawnSceneObject("endor", "object/active_area.iff",-4588,-41.6,4182.3,0,0,0,0,0)
-	ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-		activeArea:setRadius(10)
-		activeArea:setCellObjectID(5996348)
+	local pActiveArea = spawnActiveArea("endor", "object/active_area.iff", -4588, -41.6, 4182.3, 10, 5996348)
+	if pActiveArea ~= nil then
 		createObserver(ENTEREDAREA, "DeathWatchBunkerScreenPlay", "notifyEnteredVoiceTerminalArea", pActiveArea)
-	end)
+	end
 
 	--Blastromech
 	local spawn = deathWatchSpecialSpawns["bombdroid"]

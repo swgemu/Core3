@@ -4,11 +4,9 @@ RaceTrack =ScreenPlay:new {}
 
 function RaceTrack:createRaceTrack()
 	for lc = 1, table.getn(self.trackConfig.waypoints) , 1 do
-		local pWaypointAA = spawnSceneObject(self.trackConfig.planetName, "object/active_area.iff", self.trackConfig.waypoints[lc].x, 0, self.trackConfig.waypoints[lc].y, 0, 0, 0, 0, 0)
+		local pWaypointAA = spawnActiveArea(self.trackConfig.planetName, "object/active_area.iff", self.trackConfig.waypoints[lc].x, 0, self.trackConfig.waypoints[lc].y, self.trackConfig.waypointRadius, 0)
 
 		if (pWaypointAA ~= nil) then
-			local activeArea = ActiveArea(pWaypointAA)
-			activeArea:setRadius(self.trackConfig.waypointRadius)
 			createObserver(ENTEREDAREA, self.trackConfig.className, "enteredWaypoint" , pWaypointAA)
 		end
 	end
