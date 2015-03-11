@@ -555,8 +555,8 @@ void CityRegionImplementation::removeAllDecorations() {
 		if(dec->isStructureObject()) {
 			StructureManager::instance()->destroyStructure(cast<StructureObject*>(dec.get()));
 		} else {
-			cityDecorations.get(i)->destroyObjectFromWorld(false);
-			cityDecorations.get(i)->destroyObjectFromDatabase(true);
+			dec->destroyObjectFromWorld(false);
+			dec->destroyObjectFromDatabase(true);
 		}
 	}
 
