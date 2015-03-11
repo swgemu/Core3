@@ -54,7 +54,6 @@ import server.zone.objects.creature.events.AiThinkEvent;
 import server.zone.objects.creature.events.AiMoveEvent;
 import server.zone.objects.creature.events.AiWaitEvent;
 import server.zone.objects.creature.events.AiAwarenessEvent;
-import server.zone.objects.creature.events.AiWaitTimeoutEvent;
 import system.lang.ref.Reference;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
@@ -96,8 +95,6 @@ class AiAgent extends CreatureObject {
 	protected transient AiWaitEvent waitEvent;
 	
 	protected transient AiAwarenessEvent awarenessEvent;
-
-	protected transient AiWaitTimeoutEvent waitTimeoutEvent;
 	
 	@dereferenced
 	protected transient ReadWriteLock despawnMutex;
@@ -261,13 +258,6 @@ class AiAgent extends CreatureObject {
 	 * @param target The CREO to check awareness against
 	 */
 	public native void activateAwarenessEvent(CreatureObject target);
-
-	/**
-	 * Schedules an event to make sure mobs aren't perpetually in movement
-	 * @pre { this is locked }
-	 * @post { this is locked }
-	 */
-	public native void activateWaitTimeoutEvent();
 	
 	/**
 	 * Executes an AI interrupt in a separate thread (to shed locks)
