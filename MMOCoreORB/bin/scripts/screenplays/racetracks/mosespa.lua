@@ -53,7 +53,7 @@ function mosespa_racetrack_screenplay:spawnMobiles()
 end
 
 function mosespa_racetrack_screenplay:enteredWaypoint(pActiveArea, pObject)
-	self:processWaypoint(pActiveArea, pObject)
+	return self:processWaypoint(pActiveArea, pObject)
 end
 
 mosespa_conversationtemplate = Object:new {}

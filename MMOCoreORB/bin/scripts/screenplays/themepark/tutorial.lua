@@ -2600,6 +2600,7 @@ end
 
 function TutorialScreenPlay:officer4select(creatureObject, playerObject)
 	createEvent(1000, "TutorialScreenPlay", "part7_2", playerObject)
+	return 0
 end
 
 function TutorialScreenPlay:part7_2(movingCreature)

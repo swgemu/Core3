@@ -99,14 +99,17 @@ end
 function stresstest_20120128:teleportDWB(pCollector, pPlayer)
 	local player = LuaSceneObject(pPlayer)
 	player:switchZone("endor", -4650, 0, 4294, 0)
+	return 0
 end
 
 function stresstest_20120128:teleportGEO(pCollector, pPlayer)
 	local player = LuaSceneObject(pPlayer)
 	player:switchZone("yavin4", -6490, 0, -446, 0)
+	return 0
 end
 
 function stresstest_20120128:teleportCnet(pCollector, pPlayer)
 	local player = LuaSceneObject(pPlayer)
 	player:switchZone("corellia", -159, 28, -4774, 0)
+	return 0
 end

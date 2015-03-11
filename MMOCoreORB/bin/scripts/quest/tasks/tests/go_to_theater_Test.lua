@@ -29,6 +29,7 @@ describe("GoToTheater", function()
 	local positionY = 5678
 	local minDistance = 768
 	local maxDistance = 1280
+	local sceneObject
 	local creatureObject
 	local spawnAreaPosition = {1, 2, 3}
 	local zoneName = "testZone"
@@ -65,6 +66,10 @@ describe("GoToTheater", function()
 		testGoToTheater.onFailedSpawn = spy.new(function() end)
 		testGoToTheater.onSuccessfulSpawn = spy.new(function() end)
 		testGoToTheater.onEnteredActiveArea = spy.new(function() end)
+
+		sceneObject = {}
+		sceneObject.isCreatureObject = spy.new(function() return true end)
+		DirectorManagerMocks.sceneObjects[pCreatureObject] = sceneObject
 
 		creatureObject = {}
 		creatureObject.getObjectID = spy.new(function() return playerObjectId end)

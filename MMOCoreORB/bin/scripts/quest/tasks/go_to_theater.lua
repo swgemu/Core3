@@ -73,6 +73,10 @@ end
 -- @param pCreatureObject pointer to the creature who is entering the active area.
 -- @param nothing not used.
 function GoToTheater:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothing)
+	if not SceneObject(pCreatureObject):isCreatureObject() then
+		return 0
+	end
+
 	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 		local storedActiveAreaId = readData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
 		ObjectManager.withSceneObject(pActiveArea, function(activeArea)
@@ -83,6 +87,8 @@ function GoToTheater:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothin
 			end
 		end)
 	end)
+
+	return 0
 end
 
 -- Start the GoToTheater.

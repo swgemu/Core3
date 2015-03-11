@@ -48,7 +48,7 @@ function keren_racetrack_screenplay:spawnMobiles()
 end
 
 function keren_racetrack_screenplay:enteredWaypoint(pActiveArea, pObject)
-	self:processWaypoint(pActiveArea, pObject)
+	return self:processWaypoint(pActiveArea, pObject)
 end
 
 keren_racetrack_convo_handler = Object:new {}

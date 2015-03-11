@@ -109,7 +109,10 @@ function heraldScreenPlay:notifyEnteredHeraldArea(pActiveArea, pPlayer)
 		if (ownerID == CreatureObject(pPlayer):getObjectID()) then
 			CreatureObject(pPlayer):sendSystemMessage("@theme_park/messages:go_message")
 			self:cleanUp(pPlayer, heraldNum)
+			return 1
 		end
+
+		return 0
 	end)
 end
 

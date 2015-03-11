@@ -28,7 +28,7 @@ end
 
 function RaceTrack:processWaypoint(pActiveArea, pObject)
 	if not SceneObject(pObject):isPlayerCreature() then
-		return
+		return 0
 	end
 
 	local lastIndex =  readScreenPlayData(pObject, self.trackConfig.trackName, "waypoint")
@@ -39,9 +39,13 @@ function RaceTrack:processWaypoint(pActiveArea, pObject)
 				self:finalWaypoint(pActiveArea, pObject)
 			else
 				self:actuallyProcessWaypoint(pObject,index)
-			end 
+			end
+
+			return 1
 		end
 	end
+
+	return 0
 end
 
 function RaceTrack:roundNumber(num)

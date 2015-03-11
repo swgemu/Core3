@@ -92,7 +92,7 @@ end
 
 function ImperialVsGunganScreenPlay:notifyExtermDead(pMarshall, pKiller)
 	if (readData("nabooimperialvgungan:imperial_veermok") == 0) then
-		local pCaptain = spawnMobile("naboo", "imperial_veermok", 0, 4758.1, 10.6, -3824.5, 133, 0)
+		local pImperialVeermok = spawnMobile("naboo", "imperial_veermok", 0, 4758.1, 10.6, -3824.5, 133, 0)
 
 		--[[ temporarily disabled to prevent infestation of swamp troopers, should work once AI is done and they fight on their own 
 
@@ -131,7 +131,7 @@ end
 
 function ImperialVsGunganScreenPlay:notifyPriestDead(pPriest, pKiller)
 	if (readData("nabooimperialvgungan:gungan_veermok") == 0) then
-		local pVeermok = spawnMobile("naboo", "gungan_veermok", 0, 4777.3, 13.1, -3868.9, 0, 0)
+		local pGunganVeermok = spawnMobile("naboo", "gungan_veermok", 0, 4777.3, 13.1, -3868.9, 0, 0)
 		
 		--[[ temporarily disabled to prevent infestation of swamp troopers, should work once AI is done and they fight on their own
 
