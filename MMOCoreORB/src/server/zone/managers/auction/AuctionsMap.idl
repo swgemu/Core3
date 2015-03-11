@@ -75,8 +75,7 @@ class AuctionsMap extends ManagedObject {
 	public AuctionsMap() {
 		allItems.setNullValue(null);
 		allItems.setNoDuplicateInsertPlan();
-		
-		commoditiesLimit.setNullValue(null);
+
 		commoditiesLimit.setNoDuplicateInsertPlan();
 
 		logger.setLoggingName("AuctionsMap");

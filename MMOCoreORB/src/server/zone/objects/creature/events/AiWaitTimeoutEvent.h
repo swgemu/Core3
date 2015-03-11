@@ -31,7 +31,16 @@ public:
 
 		PatrolPoint* nextLocation = strongRef->getNextPosition();
 
-		strongRef->teleport(nextLocation->getPositionX(), nextLocation->getPositionZ(), nextLocation->getPositionY(), nextLocation->getCell() != NULL ? nextLocation->getCell()->getObjectID() : 0);
+		if (nextLocation != NULL) {
+			SceneObject* cell = strongRef->getParent().get();
+			Zone* zone = strongRef->getZone();
+			if (cell == NULL && zone != NULL)
+				strongRef->teleport(nextLocation->getPositionX(), zone->getHeight(nextLocation->getPositionX(), nextLocation->getPositionY()), nextLocation->getPositionY(), 0);
+			else if (cell != NULL && cell->isCellObject())
+				strongRef->teleport(nextLocation->getPositionX(), nextLocation->getPositionZ(), nextLocation->getPositionY(), cell->getObjectID());
+			else
+				strongRef->teleport(nextLocation->getPositionX(), nextLocation->getPositionZ(), nextLocation->getPositionY(), 0);
+		}
 	}
 
 };

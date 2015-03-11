@@ -821,7 +821,7 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 	if (defenderList.size() == 0 && defender != NULL) {
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 		setFollowObject(defender);
-		if (defender->isCreatureObject())
+		if (defender->isCreatureObject() && threatMap != NULL)
 			threatMap->addAggro(cast<CreatureObject*>(defender), 1);
 	} else if (stateCopy <= STALKING) {
 		Locker locker(&targetMutex);
@@ -1946,16 +1946,23 @@ void AiAgentImplementation::activateWaitTimeoutEvent() {
 
 	Vector3 targetPoint = patrolPoints.get(0).getWorldPosition();
 	Coordinate targetCoord = Coordinate(targetPoint.getX(), targetPoint.getZ(), targetPoint.getY());
-	uint64 delay = getRunSpeed() / getDistanceTo(&targetCoord);
+	uint32 dist = getDistanceTo(&targetCoord);
+	if (dist == 0) {
+		if (waitTimeoutEvent != NULL && waitTimeoutEvent->isScheduled())
+			waitTimeoutEvent->cancel();
+		return;
+	}
+
+	uint64 delay = getRunSpeed() / dist;
 
 	if (waitTimeoutEvent == NULL)
 		waitTimeoutEvent = new AiWaitTimeoutEvent(_this.get());
 
 	if (!waitTimeoutEvent->isScheduled())
-		waitTimeoutEvent->schedule(delay*1000);
+		waitTimeoutEvent->schedule(delay*10000);
 	else {
 		waitTimeoutEvent->cancel();
-		waitTimeoutEvent->reschedule(delay*1000);
+		waitTimeoutEvent->reschedule(delay*10000);
 	}
 }
 
