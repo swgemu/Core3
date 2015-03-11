@@ -84,7 +84,6 @@ end
 function fs_experience_converter_conv_handler:chooseBranchToUnlock(pCreature)
 	local suiManager = LuaSuiManager()
 	local options = ExperienceConverter:getNextUnlockableBranches(pCreature)
-	local playerObject = LuaPlayerObject(pCreature)
 
 	if (options == nil) then
 		local player = LuaCreatureObject(pCreature)
