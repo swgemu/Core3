@@ -1,3 +1,7 @@
+-- When an interrupt gets called (startXXXInterrupt), pAgent and pObject both come in locked. This means that any object that
+-- gets declared in the course of the method CANNOT be locked in any subsequent cpp call. For example, startAwarenessInterrupt
+-- declares a pFollow object, and many calls are made using it. All of those calls MUST be threadsafe WITHOUT locking pFollow.
+
 require("ai.ai")
 local ObjectManager = require("managers.object.object_manager")
 

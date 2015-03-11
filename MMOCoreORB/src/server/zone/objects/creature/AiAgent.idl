@@ -870,7 +870,7 @@ class AiAgent extends CreatureObject {
 	public string getFactionString() {
 		if (npcTemplate.get() == null)
 			return "";
-		
+
 		return npcTemplate.get().getFaction();
 	}
 	
@@ -878,7 +878,7 @@ class AiAgent extends CreatureObject {
 	public string getSocialGroup() {
 		if (npcTemplate.get() == null)
 			return "";
-		
+
 		return npcTemplate.get().getSocialGroup();
 	}
 	
@@ -1128,8 +1128,8 @@ class AiAgent extends CreatureObject {
 	
 	/**
 	 * Executes an interrupt called from a new thread
-	 * @pre { this is locked }
-	 * @post { this is locked }
+	 * @pre { this is locked, source is locked }
+	 * @post { this is locked, source is locked }
 	 * @param source The originator of the interrupt call
 	 * @param msg The long id of the message (argument) of the interrupt
 	 */
