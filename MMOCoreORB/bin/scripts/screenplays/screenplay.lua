@@ -56,17 +56,19 @@ function ScreenPlay:spawnContainerLoot(pContainer)
 	local time = getTimestamp()
 
 	if (readData(container:getObjectID()) > time) then
-		return
+		return 0
 	end
 
 	writeData(container:getObjectID(), time + self.lootContainerRespawn)
 
 	--If it has loot already, then exit.
 	if (container:getContainerObjectsSize() > 0) then
-		return
+		return 0
 	end
 
 	createLootFromCollection(pContainer, self.lootGroups, self.lootLevel)
+
+	return 0
 end
 
 Act = Object:new {

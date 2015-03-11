@@ -48,12 +48,19 @@ end
 -- @param pCreatureObject pointer to the creature who is entering the active area.
 -- @param nothing not used.
 function GoToLocation:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothing)
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+	if not SceneObject(pCreatureObject):isCreatureObject() then
+		return 0
+	end
+
+	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 		local storedActiveAreaId = readData(creatureObject:getObjectID() .. self.taskName .. ACTIVE_AREA_ID_STRING)
-		ObjectManager.withSceneObject(pActiveArea, function(activeArea)
+		return ObjectManager.withSceneObject(pActiveArea, function(activeArea)
 			if storedActiveAreaId == activeArea:getObjectID() then
 				self:onEnteredActiveArea(pCreatureObject)
+				return 1
 			end
+
+			return 0
 		end)
 	end)
 end

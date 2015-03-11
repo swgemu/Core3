@@ -54,7 +54,7 @@ function options_bitmask_test:notifyEnteredArea1(pActiveArea, pMovingObject)
 		
 		if (pTangible == nil) then
 			printf("tangible is nil\n")
-			return
+			return 0
 		end
 		
 		local tangible = LuaTangibleObject(pTangible)
@@ -65,4 +65,6 @@ function options_bitmask_test:notifyEnteredArea1(pActiveArea, pMovingObject)
 			tangible:setOptionsBitmask(2^i)
 		end
 	end
+
+	return 0
 end

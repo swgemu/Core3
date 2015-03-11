@@ -713,7 +713,7 @@ function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
 	if self:killedByCorrectPlayer(victimID, attackerID) == false and (self:isGroupedWith(pOwner, pAttacker) == false or self:isInQuestRangeOf(pOwner, pVictim) == false) then
 		self:clearInventory(pVictim)
 		self:failMission(pOwner)
-		return 0
+		return 1
 	end
 
 	CreatureObject(pVictim):setLootRights(pOwner)
@@ -924,7 +924,7 @@ function ThemeParkLogic:notifyDefeatedTarget(pVictim, pAttacker)
 
 	if self:killedByCorrectPlayer(victimID, attackerID) == false and (self:isGroupedWith(pOwner, pAttacker) == false or self:isInQuestRangeOf(pOwner, pVictim) == false) then
 		self:failMission(pOwner)
-		return 0
+		return 1
 	else
 		local currentKillCount = readData(ownerID .. ":killedMissionNpcs") + 1
 		writeData(ownerID .. ":killedMissionNpcs", currentKillCount)
@@ -939,7 +939,7 @@ end
 
 function ThemeParkLogic:notifyDestroyedBuilding(pBuilding, pBuilding2)
 	if pBuilding == nil then
-		return 0
+		return 1
 	end
 
 	local ownerID = BuildingObject(pBuilding):getOwnerID()
