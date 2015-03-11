@@ -83,6 +83,8 @@ function GoToTheater:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothin
 			end
 		end)
 	end)
+
+	return 0
 end
 
 -- Start the GoToTheater.

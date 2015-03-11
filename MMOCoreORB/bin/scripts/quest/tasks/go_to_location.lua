@@ -53,9 +53,12 @@ function GoToLocation:handleEnteredAreaEvent(pActiveArea, pCreatureObject, nothi
 		ObjectManager.withSceneObject(pActiveArea, function(activeArea)
 			if storedActiveAreaId == activeArea:getObjectID() then
 				self:onEnteredActiveArea(pCreatureObject)
+				return 1
 			end
 		end)
 	end)
+
+	return 0
 end
 
 -- Start the GoToLocation.

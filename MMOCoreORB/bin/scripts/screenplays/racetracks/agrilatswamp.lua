@@ -51,7 +51,7 @@ function agrilatswamp_racetrack_screenplay:spawnMobiles()
 end
 
 function agrilatswamp_racetrack_screenplay:enteredWaypoint(pActiveArea, pObject)
-	self:processWaypoint(pActiveArea, pObject)
+	return self:processWaypoint(pActiveArea, pObject)
 end
 
 agrilat_swamp_racetrack_convo_handler = Object:new {}

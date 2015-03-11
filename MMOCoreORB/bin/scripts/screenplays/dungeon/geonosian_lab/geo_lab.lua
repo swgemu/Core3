@@ -244,6 +244,8 @@ function GeonosianLabScreenPlay:notifyGasValveUsed(pGasValve, pPlayer, radialSel
 			end
 		end)
 	end
+
+	return 0
 end
 
 function GeonosianLabScreenPlay:notifyKeypadUsed(pKeypad, pPlayer, radialSelected)
@@ -251,6 +253,8 @@ function GeonosianLabScreenPlay:notifyKeypadUsed(pKeypad, pPlayer, radialSelecte
 		local suiManager = LuaSuiManager()
 		suiManager:sendKeypadSui(pKeypad, pPlayer, "GeonosianLabScreenPlay", "keypadSuiCallback")
 	end
+
+	return 0
 end
 
 function GeonosianLabScreenPlay:restartGasLeak()
@@ -314,6 +318,8 @@ function GeonosianLabScreenPlay:notifyEnteredLab(pBuilding, pPlayer)
 
 		player:sendSystemMessage("@dungeon/geonosian_madbio:relock") --Security systems at this facility have been cycled and reset.
 	end)
+
+	return 0
 end
 
 function GeonosianLabScreenPlay:notifyLockedDoorArea(pArea, pPlayer)
@@ -398,17 +404,19 @@ function GeonosianLabScreenPlay:notifyEnteredPoisonGas(pActiveArea, pMovingObjec
 				player:sendSystemMessage("@dungeon/geonosian_madbio:toxic_fumes") --You breathe in toxic fumes!
 			end)
 		end
+		return 0
 	end)
 end
 
 function GeonosianLabScreenPlay:notifyElectroShock(pActiveArea, pMovingObject)
-	ObjectManager.withCreatureObject(pMovingObject, function(player)
+	return ObjectManager.withCreatureObject(pMovingObject, function(player)
 		if (player:isAiAgent() and not AiAgent(pMovingObject):isPet()) then
 			return 0
 		end
 
 		player:inflictDamage(pMovingObject, 0, 1000, 0)
 		player:sendSystemMessage("@dungeon/geonosian_madbio:shock") --You feel electricity coursing through your body!
+		return 0
 	end)
 end
 

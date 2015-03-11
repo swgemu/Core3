@@ -66,9 +66,12 @@ function TheaterManagerScreenPlay:notifyEnteredAuditionArea(pActiveArea, pPlayer
 			local areaOwnerID = readData(activeArea:getObjectID() .. ":ownerID")
 			if (playerID == areaOwnerID) then
 				writeData(player:getObjectID() .. ":inAuditionArea", 1)
+				return 0
 			end
 		end)
 	end)
+
+	return 0
 end
 
 function TheaterManagerScreenPlay:notifyExitedAuditionArea(pActiveArea, pPlayer)
@@ -80,10 +83,13 @@ function TheaterManagerScreenPlay:notifyExitedAuditionArea(pActiveArea, pPlayer)
 				writeData(player:getObjectID() .. ":inAuditionArea", 0)
 				if (readData(player:getObjectID() .. ":auditionPhase") ~= nil and readData(player:getObjectID() .. ":auditionPhase") ~= 0) then
 					self:failAudition(pPlayer, "fail_left_audition_area")
+					return 1
 				end
 			end
 		end)
 	end)
+
+	return 0
 end
 
 function TheaterManagerScreenPlay:startAudition(pPlayer)
@@ -179,6 +185,8 @@ function TheaterManagerScreenPlay:notifyPerformanceObserver(pPlayer, pPlayer2)
 			dropObserver(CHANGEENTERTAIN, pPlayer)
 		end
 	end)
+
+	return 0
 end
 
 function TheaterManagerScreenPlay:notifyFlourishObserver(pPlayer, pPlayer2, flourishID)
@@ -187,9 +195,11 @@ function TheaterManagerScreenPlay:notifyFlourishObserver(pPlayer, pPlayer2, flou
 		local expectedPerformance = readData(player:getObjectID() .. ":expectedPerformance")
 		if (flourishID == expectedPerformance) then
 			writeData(player:getObjectID() .. ":performanceCompleted", 1)
-			dropObserver(FLOURISH, pPlayer)
+			return 1
 		end
 	end)
+
+	return 0
 end
 
 function TheaterManagerScreenPlay:isExpectedPerformance(pPlayer, performance, auditionType)
@@ -528,6 +538,8 @@ function TheaterManagerScreenPlay:notifyPromotionObserver(pPlayer, pEntertained)
 					player:sendSystemMessage("You are entertaining " .. entertainedPlayer:getFirstName() .. ". You must entertain " .. (requiredPromotions - currentPromotions) .. " more people to achieve Popularity Rank Three.")
 				end
 			end
+
+			return 0
 		end)
 	end)
 end
