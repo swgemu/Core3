@@ -2382,7 +2382,7 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 	else if (isSitting())
 		modifier *= (2);
 
-	if (!isPlayerCreature() && !isPet() && isInCombat())
+	if (!isPlayerCreature() && isInCombat())
 		return;
 
 	uint32 healthTick = (uint32) ceil((float) MAX(0, getHAM(

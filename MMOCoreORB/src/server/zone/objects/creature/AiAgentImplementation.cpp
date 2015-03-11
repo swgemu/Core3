@@ -231,21 +231,21 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 				ham = System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM();
 				baseHAM.add(ham);
 			} else
-				baseHAM.add(ham/100);
+				baseHAM.add(ham/10);
 		}
 	} else {
 		int health = petDeed->getHealth();
 		baseHAM.add(health);
-		baseHAM.add(health/100);
-		baseHAM.add(health/100);
+		baseHAM.add(health/10);
+		baseHAM.add(health/10);
 		int action = petDeed->getAction();
 		baseHAM.add(action);
-		baseHAM.add(action/100);
-		baseHAM.add(action/100);
+		baseHAM.add(action/10);
+		baseHAM.add(action/10);
 		int mind = petDeed->getMind();
 		baseHAM.add(mind);
-		baseHAM.add(mind/100);
-		baseHAM.add(mind/100);
+		baseHAM.add(mind/10);
+		baseHAM.add(mind/10);
 	}
 	hamList.removeAll();
 	for (int i = 0; i < 9; ++i) {
