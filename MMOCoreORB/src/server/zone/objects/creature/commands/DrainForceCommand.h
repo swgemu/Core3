@@ -80,7 +80,7 @@ public:
 		if (targetCreature == NULL || targetCreature->isDead() || targetCreature->isIncapacitated() || !targetCreature->isAttackableBy(creature))
 			return INVALIDTARGET;
 
-		if (!targetCreature->isInRange(creature, range))
+		if (!targetCreature->isInRange(creature, range + targetCreature->getRadius() + creature->getRadius()))
 			return TOOFAR;
 
 		if (!CollisionManager::checkLineOfSight(creature, targetCreature)) {

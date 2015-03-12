@@ -193,7 +193,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!creature->isInRange(droid, range))
+		if (!creature->isInRange(droid, range + droid->getRadius() + creature->getRadius()))
 			return TOOFAR;
 
 		uint64 objectID = 0;
