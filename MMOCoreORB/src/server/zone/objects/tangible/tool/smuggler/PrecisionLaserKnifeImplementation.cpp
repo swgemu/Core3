@@ -9,8 +9,10 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/Zone.h"
+
 int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 
 	if (!isASubChildOf(player))
@@ -33,13 +35,22 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 		return 0;
 	}
 
-	if (target->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
+	if (target->isMissionTerminal()) {
+		if (!player->hasSkill("combat_smuggler_slicing_01")) {
+			return 0;
+		}
+
+		ManagedReference<CityRegion*> city = player->getCityRegion();
+		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
+			player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
+			return 0;
+		}
+
+	} else if (target->isWeaponObject() && !player->hasSkill("combat_smuggler_slicing_02")) {
 		return 0;
-	else if (target->isWeaponObject() && !player->hasSkill("combat_smuggler_slicing_02"))
+	} else if (target->isArmorObject() && !player->hasSkill("combat_smuggler_slicing_03")) {
 		return 0;
-	else if (target->isArmorObject() && !player->hasSkill("combat_smuggler_slicing_03"))
-		return 0;
-	else if (target->isSecurityTerminal()){
+	} else if (target->isSecurityTerminal()) {
 		if (!player->hasSkill("combat_smuggler_slicing_01"))
 			return 0;
 

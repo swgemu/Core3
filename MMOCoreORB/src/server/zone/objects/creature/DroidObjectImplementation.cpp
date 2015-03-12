@@ -423,22 +423,22 @@ bool DroidObjectImplementation::isStructureAssigned( StructureObject* structure 
 	}
 	return false;
 }
-void DroidObjectImplementation::sendConversationStartTo(SceneObject* player) {
+bool DroidObjectImplementation::sendConversationStartTo(SceneObject* player) {
 	if (!player->isPlayerCreature() || isDead())
-		return;
+		return false;
 
 	BaseDroidModuleComponent* m = getModule("personality_chip");
 	if (m == NULL) {
-		return;
+		return false;
 	}
 
 	DroidPersonalityModuleDataComponent* personality = dynamic_cast<DroidPersonalityModuleDataComponent*>(m);
 	if (personality == NULL) {
-		return;
+		return false;
 	}
 
 	if (personality->getPersonalityConversationTemplate() == 0) {
-		return;
+		return false;
 	}
 
 	//Face player.
@@ -456,7 +456,7 @@ void DroidObjectImplementation::sendConversationStartTo(SceneObject* player) {
 
 	for (int i = 0;  i < observers.size(); ++i) {
 		if (dynamic_cast<ConversationObserver*>(observers.get(i).get()) != NULL) {
-			return;
+			return true;
 		}
 	}
 	//Create conversation observer.
@@ -470,8 +470,10 @@ void DroidObjectImplementation::sendConversationStartTo(SceneObject* player) {
 		registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
 	} else {
 		error("Could not create conversation observer.");
-		return;
+		return false;
 	}
+
+	return true;
 }
 String DroidObjectImplementation::getPersonalityStf() {
 	for( int i=0; i<modules.size(); i++){

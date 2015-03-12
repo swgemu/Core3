@@ -124,6 +124,7 @@ public:
 		}
 
 		city->addBannedPlayer(targetCreature->getObjectID());
+		city->removeSpecializationModifiers(targetCreature);
 
 		targetCreature->sendSystemMessage("@city/city:city_banned"); //You have been banned from the this city.  You may no longer use any city services.
 

@@ -117,13 +117,14 @@ class JunkdealerCreature extends CreatureObject {
 	@dirty
 	public native void sendInitialChoices(CreatureObject player);
 	/**
-	 * Sends the intial message to start the
-	 * training conversation. Checks for
-	 * qualificactions.
+	 * Sends the intial message to start the conversation. Checks for qualificactions.
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
 	 * \param player The player to send the conversation to (in SceneObject form).
+	 * @return whether the conversation was started or not
 	 */
 	@dirty
-	public native void sendConversationStartTo(SceneObject obj);
+	public native boolean sendConversationStartTo(SceneObject obj);
 	
 
 	/**

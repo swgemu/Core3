@@ -1012,9 +1012,11 @@ class CreatureObject extends TangibleObject {
 	 * sends the conversation list 
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
+	 * @return whether the conversation was started or not
 	 */
 	@dirty
-	public abstract void sendConversationStartTo(SceneObject player) {
+	public abstract boolean sendConversationStartTo(SceneObject player) {
+		return false;
 	}
 	
 	/**

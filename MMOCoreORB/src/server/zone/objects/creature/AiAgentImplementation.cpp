@@ -2237,10 +2237,9 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 	}
 }
 
-
-void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
+bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	if (!player->isPlayerCreature() || isDead() || npcTemplate == NULL || npcTemplate->getConversationTemplate() == 0)
-		return;
+		return false;
 
 	//Face player.
 	faceObject(player);
@@ -2249,7 +2248,21 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 
 	broadcastNextPositionUpdate(&current);
 
+	if (npcTemplate == NULL)
+		return false;
+
 	CreatureObject* playerCreature = cast<CreatureObject*>( player);
+
+	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(npcTemplate->getConversationTemplate());
+	if (conversationTemplate != NULL && conversationTemplate->getConversationTemplateType() == ConversationTemplate::ConversationTemplateTypeTrainer) {
+		ManagedReference<CityRegion*> city = player->getCityRegion();
+
+		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
+			playerCreature->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
+			return false;
+		}
+	}
+
 	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
 	player->sendMessage(conv);
 
@@ -2257,11 +2270,9 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 
 	for (int i = 0;  i < observers.size(); ++i) {
 		if (dynamic_cast<ConversationObserver*>(observers.get(i).get()) != NULL)
-			return;
+			return true;
 	}
 
-	if (npcTemplate == NULL)
-		return;
 	//Create conversation observer.
 	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(npcTemplate->getConversationTemplate());
 
@@ -2273,11 +2284,10 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 		registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
 	} else {
 		error("Could not create conversation observer.");
-		return;
+		return false;
 	}
 
-
-
+	return true;
 }
 
 bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {

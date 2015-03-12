@@ -22,9 +22,10 @@
 #include "server/zone/objects/creature/AiAgent.h"
 
 
-void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
+bool JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	if (!obj->isPlayerCreature())
-		return;
+		return false;
+
 	CreatureObject* player = cast<CreatureObject*>( obj);
 	int dealerType = _this.get()->getJunkDealerConversationType();
 	if (dealerType == JUNKCONVJAWAARMS || dealerType == JUNKCONVJAWAFINARY || dealerType == JUNKCONVJAWAGENERIC || dealerType == JUNKCONVJAWATUSKEN){
@@ -36,9 +37,10 @@ void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj)
 			StringIdChatParameter msg;
 			msg.setStringId("@jawa_trader:cant_understand");
 			player->sendSystemMessage(msg);
-			return;
+			return false;
 		}
 	}
+
 	PlayerObject* ghost = player->getPlayerObject();
 	StartNpcConversation* conv = new StartNpcConversation(player, getObjectID(), "");
 	player->sendMessage(conv);
@@ -46,6 +48,7 @@ void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj)
 	ghost->setLastNpcConvMessStr("");
 	sendInitialMessage(player);
 
+	return true;
 }
 
 

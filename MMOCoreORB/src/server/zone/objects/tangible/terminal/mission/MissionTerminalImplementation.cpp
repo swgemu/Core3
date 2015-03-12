@@ -34,7 +34,14 @@ void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	ManagedReference<CityRegion*> city = player->getCityRegion();
+
 	if (selectedID == 69 && player->hasSkill("combat_smuggler_slicing_01")) {
+
+		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
+			player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
+			return 0;
+		}
 
 		if (player->containsActiveSession(SessionFacadeType::SLICING)) {
 			player->sendSystemMessage("@slicing/slicing:already_slicing");
@@ -54,8 +61,6 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 	} else if (selectedID == 72) {
 
-		ManagedReference<CityRegion*> city = player->getCityRegion();
-
 		if (city != NULL && city->isMayor(player->getObjectID())) {
 			CityRemoveAmenityTask* task = new CityRemoveAmenityTask(_this.get(), city);
 			task->execute();
@@ -66,7 +71,6 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 		return 0;
 
 	} else if (selectedID == 74 || selectedID == 75 || selectedID == 76 || selectedID == 77) {
-		ManagedReference<CityRegion*> city = player->getCityRegion();
 
 		CityManager* cityManager = getZoneServer()->getCityManager();
 		cityManager->alignAmenity(city, player, _this.get(), selectedID - 74);

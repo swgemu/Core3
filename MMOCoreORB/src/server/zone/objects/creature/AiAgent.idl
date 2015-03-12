@@ -411,9 +411,10 @@ class AiAgent extends CreatureObject {
 	 * sends the conversation notification 
 	 * @pre {this locked, player locked }
 	 * @post { this locked, player locked }
+	 * @return whether the conversation was started or not
 	 */
 	@dirty
-	public native void sendConversationStartTo(SceneObject player);
+	public native boolean sendConversationStartTo(SceneObject player);
 	
 	/**
 	 * sends the default conversation list

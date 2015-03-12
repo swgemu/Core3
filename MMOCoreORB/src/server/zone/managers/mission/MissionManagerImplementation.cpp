@@ -124,7 +124,7 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 
 	if (terminalCity != NULL) {
 		if (terminalCity.get()->isBanned(player->getObjectID())) {
-			player->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures.
+			player->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
 			return;
 		}
 	}
