@@ -93,7 +93,7 @@ class MeshAppearanceTemplate : public AppearanceTemplate {
 	//Vector<Triangle> triangles;
 
 	AABBTree* aabbTree;
-
+	Sphere boundingSphere;
 	//String file;
 
 public:
@@ -134,6 +134,10 @@ public:
 
 	inline AABBTree* getAABBTree() {
 		return aabbTree;
+	}
+
+	inline const Sphere& getBoundingSphere() {
+		return boundingSphere;
 	}
 
 };

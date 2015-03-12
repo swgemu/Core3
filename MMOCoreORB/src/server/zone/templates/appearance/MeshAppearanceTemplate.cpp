@@ -70,6 +70,14 @@ void MeshAppearanceTemplate::createAABB() {
 	heurData.storePrimitives = true;
 
 	aabbTree = new AABBTree(triangles, 0, heurData);
+
+	AABB& box = aabbTree->getBoundingBox();
+
+	Vector3 center = box.center();
+	Vector3 extents = box.extents();
+	float radius = extents.length();
+
+	boundingSphere = new Sphere(center, radius);
 }
 
 /*AABNode* MeshAppearanceTemplate::createNewAABB(float rotationRadians = 0) {
