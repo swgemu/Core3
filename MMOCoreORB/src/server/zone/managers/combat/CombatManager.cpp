@@ -1390,7 +1390,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 	float weaponAccuracy = 0.0f;
 	// Get the weapon mods for range and add the mods for stance
-	weaponAccuracy = getWeaponRangeModifier(attacker->getDistanceTo(targetCreature), weapon);
+	weaponAccuracy = getWeaponRangeModifier(attacker->getDistanceTo(targetCreature) + targetCreature->getRadius() + attacker->getRadius(), weapon);
 	// accounts for steadyaim, general aim, and specific weapon aim, these buffs will clear after a completed combat action
 	if (creoAttacker != NULL) {
 		if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) weaponAccuracy += creoAttacker->getSkillMod("private_aim");
@@ -2199,7 +2199,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 	}
 
 	if (weapon->isThrownWeapon() || weapon->isHeavyWeapon())
-		range = weapon->getMaxRange() + data.getAreaRange();
+		range = weapon->getMaxRange() + attacker->getRadius() + data.getAreaRange();
 
 	try {
 		//zone->rlock();
@@ -2236,13 +2236,13 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 				continue;
 			}
 
-			if (!attacker->isInRange(object, range)) {
+			if (!attacker->isInRange(object, range + object->getRadius() + attacker->getRadius())) {
 				//error("not in range " + String::valueOf(range));
 				continue;
 			}
 
 			if (weapon->isThrownWeapon() || weapon->isHeavyWeapon()) {
-				if (!(tano == defenderObject) && !(tano->isInRange(defenderObject, data.getAreaRange())))
+				if (!(tano == defenderObject) && !(tano->isInRange(defenderObject, data.getAreaRange() + defenderObject->getRadius())))
 					continue;
 			}
 
@@ -2351,7 +2351,7 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 				continue;
 			}
 
-			if (!attacker->isInRange(object, range)) {
+			if (!attacker->isInRange(object, range + object->getRadius() + attacker->getRadius())) {
 				//error("not in range " + String::valueOf(range));
 				continue;
 			}

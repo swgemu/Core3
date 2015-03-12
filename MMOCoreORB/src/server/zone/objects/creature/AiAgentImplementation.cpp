@@ -1700,11 +1700,14 @@ float AiAgentImplementation::getMaxDistance() {
 		break;
 	case AiAgent::FOLLOWING:
 		// stop in weapons range
-		if (followCopy != NULL && !CollisionManager::checkLineOfSight(_this.get(), followCopy)) {
+		if (followCopy == NULL)
+			return 0.5;
+
+		if (!CollisionManager::checkLineOfSight(_this.get(), followCopy)) {
 			return 0.5;
 		} else if (getWeapon() != NULL ) {
 			float weapMaxRange = MIN(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
-			return MAX(0.5, weapMaxRange - 2);
+			return MAX(0.5, weapMaxRange + getRadius() + followCopy->getRadius());
 		}
 		break;
 	}
@@ -1771,6 +1774,7 @@ int AiAgentImplementation::setDestination() {
 		}
 
 		clearPatrolPoints();
+
 		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get());
 		break;
 	default:
