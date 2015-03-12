@@ -170,7 +170,7 @@ public:
 
 		int range = 32;
 
-		if (!creature->isInRange(creatureTarget, range))
+		if (!creature->isInRange(creatureTarget, range + creatureTarget->getRadius() + creature->getRadius()))
 			return TOOFAR;
 
 		PlayerObject* targetGhost = creatureTarget->getPlayerObject();

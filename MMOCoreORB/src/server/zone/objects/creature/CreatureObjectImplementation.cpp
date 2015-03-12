@@ -3077,3 +3077,12 @@ void CreatureObjectImplementation::destroyPlayerCreatureFromDatabase(bool destro
 		guild->removeMember(oid);
 	}
 }
+
+float CreatureObjectImplementation::getRadius() {
+	SharedCreatureObjectTemplate* creoTempl = templateObject.castTo<SharedCreatureObjectTemplate*>();
+
+	if (creoTempl == NULL)
+		return 0;
+
+	return creoTempl->getCollisionRadius()*getHeight();
+}
