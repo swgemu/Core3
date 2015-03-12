@@ -270,7 +270,7 @@ public:
 
 		int	range = int(dotPack->getRange() + creature->getSkillMod("healing_range") / 100 * 14);
 
-		if (creature != creatureTarget && !creature->isInRange(creatureTarget, range)){
+		if (creature != creatureTarget && !creature->isInRange(creatureTarget, range + creatureTarget->getTemplateRadius() + creature->getTemplateRadius())){
 			creature->sendSystemMessage("@error_message:target_out_of_range"); //Your target is out of range for this action.
 			return TOOFAR;
 		}

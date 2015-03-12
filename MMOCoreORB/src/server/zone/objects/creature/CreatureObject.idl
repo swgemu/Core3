@@ -1941,4 +1941,6 @@ class CreatureObject extends TangibleObject {
 	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
 	 */
 	public abstract native void destroyPlayerCreatureFromDatabase(boolean destroyContainedObjects = false);
+
+	public native float getTemplateRadius();
 }

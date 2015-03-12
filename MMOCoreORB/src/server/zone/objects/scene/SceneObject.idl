@@ -1941,5 +1941,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public native boolean isDataPad();
 
+	public native abstract float getTemplateRadius();
 }
 

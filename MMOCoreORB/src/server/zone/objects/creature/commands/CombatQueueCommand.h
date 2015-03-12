@@ -131,10 +131,10 @@ public:
 		if (creature->isKneeling() && weapon->isMeleeWeapon() && range == -1 && !weapon->isJediWeapon())
 			return NOKNEELING;
 
-		if (creature->isProne() && (!weapon->isRangedWeapon() || targetObject->isInRange(creature, 5)) && range == -1)
+		if (creature->isProne() && (!weapon->isRangedWeapon() || targetObject->isInRange(creature, 5 + targetObject->getTemplateRadius() + creature->getTemplateRadius())) && range == -1)
 			return NOPRONE;
 
-		if (!targetObject->isInRange(creature, checkRange))
+		if (!targetObject->isInRange(creature, checkRange + targetObject->getTemplateRadius() + creature->getTemplateRadius()))
 			return TOOFAR;
 
 		if (!CollisionManager::checkLineOfSight(creature, targetObject)) {

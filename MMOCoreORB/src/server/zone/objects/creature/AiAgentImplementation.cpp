@@ -1210,7 +1210,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	Vector3 thisWorldPos = getWorldPosition();
 	WorldCoordinates* nextPosition = new WorldCoordinates();
 
-	float newSpeed = runSpeed * 1.5f; // FIXME (dannuic): Why is this *1.5? Is that some magic number?
+	float newSpeed = runSpeed; // Is this *1.5? Is that some magic number?
 	if (walk && !(isRetreating() || isFleeing()))
 		newSpeed = walkSpeed;
 
@@ -1433,29 +1433,23 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 						float distanceToTravel = dist - (pathDistance - maxDist);
 
-						if (distanceToTravel <= 0.01) {
-							// Stop here because we can get to this point in one time step
+						//float rest = Math::sqrt(distanceToTravel);
+
+						float rest = distanceToTravel;
+
+						//dist = Math::sqrt(dist);
+
+						if (dist != 0 && !isnan(dist)) {
+							// calculate how far between the points we can get, and set that as the new position
+							dx = nextPosition->getX() - oldCoordinates.getX();
+							dy = nextPosition->getY() - oldCoordinates.getY();
+
+							newPositionX = oldCoordinates.getX() + (rest * (dx / dist));// (newSpeed * (dx / dist));
+							newPositionY = oldCoordinates.getY() + (rest * (dy / dist)); //(newSpeed * (dy / dist));
+						} else {
+							// failsafe if dist is somehow 0 (or nan), which is basically only when pathDistance == maxDist
 							newPositionX = nextPosition->getX();
 							newPositionY = nextPosition->getY();
-						} else {
-							//float rest = Math::sqrt(distanceToTravel);
-
-							float rest = distanceToTravel;
-
-							//dist = Math::sqrt(dist);
-
-							if (dist != 0 && !isnan(dist)) {
-								// calculate how far between the points we can get, and set that as the new position
-								dx = nextPosition->getX() - oldCoordinates.getX();
-								dy = nextPosition->getY() - oldCoordinates.getY();
-
-								newPositionX = oldCoordinates.getX() + (rest * (dx / dist));// (newSpeed * (dx / dist));
-								newPositionY = oldCoordinates.getY() + (rest * (dy / dist)); //(newSpeed * (dy / dist));
-							} else {
-								// failsafe if dist is somehow 0 (or nan), which is basically only when pathDistance == maxDist
-								newPositionX = nextPosition->getX();
-								newPositionY = nextPosition->getY();
-							}
 						}
 
 						// Now do cell checks to get the Z coordinate outside or inside
@@ -1700,11 +1694,14 @@ float AiAgentImplementation::getMaxDistance() {
 		break;
 	case AiAgent::FOLLOWING:
 		// stop in weapons range
-		if (followCopy != NULL && !CollisionManager::checkLineOfSight(_this.get(), followCopy)) {
+		if (followCopy == NULL)
+			return 0.5;
+
+		if (!CollisionManager::checkLineOfSight(_this.get(), followCopy)) {
 			return 0.5;
 		} else if (getWeapon() != NULL ) {
 			float weapMaxRange = MIN(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
-			return MAX(0.5, weapMaxRange - 2);
+			return MAX(0.5, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius() - 2);
 		}
 		break;
 	}
@@ -1771,6 +1768,7 @@ int AiAgentImplementation::setDestination() {
 		}
 
 		clearPatrolPoints();
+
 		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get());
 		break;
 	default:

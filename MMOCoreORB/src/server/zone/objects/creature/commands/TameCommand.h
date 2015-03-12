@@ -76,7 +76,7 @@ public:
 
 		Creature* baby = cast<Creature*>(object.get());
 
-		if (!object->isInRange(creature, 8.0f)){
+		if (!object->isInRange(creature, 8.0f + object->getTemplateRadius() + creature->getTemplateRadius())){
 			creature->sendSystemMessage("@system_msg:out_of_range"); // You are out of range
 			return TOOFAR;
 		}
