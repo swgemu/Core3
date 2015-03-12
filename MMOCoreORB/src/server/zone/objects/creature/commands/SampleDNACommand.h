@@ -105,7 +105,7 @@ public:
 		}
 
 		// Sample DNa is a 16M max range
-		if (!object->isInRange(creature, 16.0f)){
+		if (!object->isInRange(creature, 16.0f + object->getTemplateRadius() + creature->getTemplateRadius())){
 			player->sendSystemMessage("@bio_engineer:harvest_dna_out_of_range"); // Your target is too far away to be able to sample from.
 			return TOOFAR;
 		}

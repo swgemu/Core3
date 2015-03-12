@@ -101,11 +101,9 @@ public:
 
 		// Check next milestone
 		int nextMilestone = playerManager->getFirstIneligibleMilestone( playerGhost, account );
-		if( nextMilestone > -1 ){
-			buff << "You will be eligible for the " << String::valueOf(nextMilestone) << "-day reward in ";
-			buff << String::valueOf(nextMilestone - account->getAgeInDays() ) << " days";
-			player->sendSystemMessage( buff.toString() );
-		}
+		buff << "You will be eligible for the " << String::valueOf(nextMilestone) << "-day reward in ";
+		buff << String::valueOf(nextMilestone - account->getAgeInDays() ) << " days";
+		player->sendSystemMessage( buff.toString() );
 
 		return SUCCESS;
 	}

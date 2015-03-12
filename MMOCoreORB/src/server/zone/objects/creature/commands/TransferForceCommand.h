@@ -90,7 +90,7 @@ public:
 			return GENERALERROR;	
 		}			
 			
-		if (!creature->isInRange(targetCreature, range))
+		if (!creature->isInRange(targetCreature, range + targetCreature->getTemplateRadius() + creature->getTemplateRadius()))
 			return TOOFAR;
 			
 		int maxTransfer = damage; //Value set in command lua
