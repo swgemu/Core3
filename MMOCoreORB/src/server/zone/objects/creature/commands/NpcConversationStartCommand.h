@@ -88,7 +88,6 @@ public:
 				if (player->getDistanceTo(creatureObject) <= 5.f) {
 					ghost->setConversatingCreature(creatureObject);
 					creatureObject->sendConversationStartTo(creature);
-					creatureObject->notifyObservers(ObserverEventType::STARTCONVERSATION, player);
 				} else {
 					return TOOFAR;
 				}

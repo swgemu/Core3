@@ -472,6 +472,8 @@ void DroidObjectImplementation::sendConversationStartTo(SceneObject* player) {
 		error("Could not create conversation observer.");
 		return;
 	}
+
+	notifyObservers(ObserverEventType::STARTCONVERSATION, player);
 }
 String DroidObjectImplementation::getPersonalityStf() {
 	for( int i=0; i<modules.size(); i++){

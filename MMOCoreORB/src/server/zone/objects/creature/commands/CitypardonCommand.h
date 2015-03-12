@@ -101,6 +101,7 @@ public:
 		}
 
 		city->removeBannedPlayer(targetCreature->getObjectID());
+		city->applySpecializationModifiers(targetCreature);
 
 		targetCreature->sendSystemMessage("@city/city:city_pardoned"); //You have been pardoned and are once again able to use city services.
 

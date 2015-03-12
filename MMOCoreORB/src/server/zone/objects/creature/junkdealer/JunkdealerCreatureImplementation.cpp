@@ -46,6 +46,7 @@ void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj)
 	ghost->setLastNpcConvMessStr("");
 	sendInitialMessage(player);
 
+	notifyObservers(ObserverEventType::STARTCONVERSATION, player);
 }
 
 

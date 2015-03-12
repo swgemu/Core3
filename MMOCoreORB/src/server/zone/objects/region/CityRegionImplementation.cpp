@@ -605,6 +605,10 @@ void CityRegionImplementation::applySpecializationModifiers(CreatureObject* crea
 	//Remove all current city skillmods
 	creature->removeAllSkillModsOfType(SkillModManager::CITY);
 
+	if (isBanned(creature->getObjectID())) {
+		return;
+	}
+
 	VectorMap<String, int>* mods = cityspec->getSkillMods();
 
 	for (int i = 0; i < mods->size(); ++i) {

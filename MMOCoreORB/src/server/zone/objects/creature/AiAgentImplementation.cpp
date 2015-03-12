@@ -2249,10 +2249,6 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 
 	broadcastNextPositionUpdate(&current);
 
-	CreatureObject* playerCreature = cast<CreatureObject*>( player);
-	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
-	player->sendMessage(conv);
-
 	SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::STARTCONVERSATION);
 
 	for (int i = 0;  i < observers.size(); ++i) {
@@ -2262,6 +2258,22 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 
 	if (npcTemplate == NULL)
 		return;
+
+	CreatureObject* playerCreature = cast<CreatureObject*>( player);
+
+	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(npcTemplate->getConversationTemplate());
+	if (conversationTemplate != NULL && conversationTemplate->getConversationTemplateType() == ConversationTemplate::ConversationTemplateTypeTrainer) {
+		ManagedReference<CityRegion*> city = player->getCityRegion();
+
+		if (city != NULL && !city->isClientRegion() && city->isBanned(player->getObjectID())) {
+			playerCreature->sendSystemMessage("@city/city:banned_services"); // You are banned from using this city's services.
+			return;
+		}
+	}
+
+	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
+	player->sendMessage(conv);
+
 	//Create conversation observer.
 	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(npcTemplate->getConversationTemplate());
 
@@ -2276,8 +2288,7 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 		return;
 	}
 
-
-
+	notifyObservers(ObserverEventType::STARTCONVERSATION, player);
 }
 
 bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
