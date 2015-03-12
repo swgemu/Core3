@@ -171,9 +171,15 @@ public:
 
 			}
 
-			city->subtractFromCityTreasury(1000);
 			CreatureObject* trainer = zone->getCreatureManager()->spawnCreature(trainerTemplatePath.hashCode(),0,player->getWorldPositionX(),player->getWorldPositionZ(),player->getWorldPositionY(),0,true);
+
+			if (trainer == NULL) {
+				player->sendSystemMessage("@city/city:st_fail"); // Failed to create the skill trainer for some reason. Try again.
+				return;
+			}
+
 			trainer->rotate(player->getDirectionAngle());
+			city->subtractFromCityTreasury(1000);
 			city->addSkillTrainer(trainer);
 
 		}
