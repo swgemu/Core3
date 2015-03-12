@@ -135,6 +135,8 @@ public:
 		CITY_TAX_PROMPT                    = 130,
 		CITY_RENAME                        = 131,
 		CITY_ADMIN_FORCE_RANK              = 132,
+		CITY_ADMIN_FORCE_UPDATE            = 133,
+		CITY_ADMIN_CONFIRM_UPDATE_TYPE     = 134,
 
 		//Structure 141 - 170
 		STRUCTURE_STATUS                   = 141,

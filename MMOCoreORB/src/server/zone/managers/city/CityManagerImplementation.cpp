@@ -32,6 +32,7 @@
 #include "server/zone/objects/player/sui/callbacks/CitySetTaxSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/CityToggleZoningSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/CityForceRankSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/CityForceUpdateSuiCallback.h"
 #include "server/zone/objects/region/CitizenList.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "TaxPayMailTask.h"
@@ -2344,6 +2345,25 @@ void CityManagerImplementation::promptForceRank(CityRegion* city, CreatureObject
 	box->setPromptText("@city/city:force_city_rank_d");
 	box->setCancelButton(true, "@cancel");
 	box->setCallback(new CityForceRankSuiCallback(zoneServer, city, rankUp) );
+
+	ghost->addSuiBox(box);
+	player->sendMessage(box->generateMessage());
+}
+
+void CityManagerImplementation::promptForceUpdate(CityRegion* city, CreatureObject* player) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!ghost->isPrivileged())
+		return;
+
+	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::CITY_ADMIN_FORCE_UPDATE);
+	box->setPromptTitle("@city/city:force_city_update_t"); // Force City Update
+	box->setPromptText("@city/city:confirm_city_update");
+	box->setCancelButton(true, "@cancel");
+	box->setCallback(new CityForceUpdateSuiCallback(zoneServer, city) );
 
 	ghost->addSuiBox(box);
 	player->sendMessage(box->generateMessage());

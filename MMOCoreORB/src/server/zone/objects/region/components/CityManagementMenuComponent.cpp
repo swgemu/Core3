@@ -41,8 +41,7 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 		menuResponse->addRadialMenuItem(227,3,"@city/city:city_hacks"); // City Hacks (GODMODE ONLY)
 		menuResponse->addRadialMenuItemToRadialID(227,228,3,"@city/city:rank_up"); // 	Force Rank Up
 		menuResponse->addRadialMenuItemToRadialID(227,229,3,"@city/city:rank_down"); // Force Rank Down
-		menuResponse->addRadialMenuItemToRadialID(227,230,3,"UPDATE CITY");
-		menuResponse->addRadialMenuItemToRadialID(227,231,3,"COUNT VOTES");
+		menuResponse->addRadialMenuItemToRadialID(227,230,3,"@city/city:force_update"); // Force City Update or Election
 	}
 #endif
 
@@ -151,12 +150,7 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		break;
 	case 230:
 		if(player->getPlayerObject()->isPrivileged()) {
-			cityManager->processCityUpdate(city);
-		}
-		break;
-	case 231:
-		if(player->getPlayerObject()->isPrivileged()) {
-			cityManager->updateCityVoting(city,true);
+			cityManager->promptForceUpdate(city, player);
 		}
 		break;
 #endif
