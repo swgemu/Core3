@@ -188,6 +188,7 @@ void PlayerManagerImplementation::loadLuaConfig() {
 	baseStoredVehicles = lua->getGlobalInt("baseStoredVehicles");
 	baseStoredShips = lua->getGlobalInt("baseStoredShips");
 
+	veteranRewardAdditionalMilestones = lua->getGlobalInt("veteranRewardAdditionalMilestones");
 
 	LuaObject rewardMilestonesLua = lua->getGlobalObject("veteranRewardMilestones");
 	for (int i = 1; i <= rewardMilestonesLua.getTableSize(); ++i) {
@@ -4232,21 +4233,39 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player )
 	}
 }
 
-int PlayerManagerImplementation::getEligibleMilestone( PlayerObject *playerGhost, Account* account ){
+int PlayerManagerImplementation::getEligibleMilestone( PlayerObject *playerGhost, Account* account ) {
 
 	if( account == NULL || playerGhost == NULL )
 		return -1;
 
 	int accountAge = account->getAgeInDays();
+	int milestone = -1;
+
+	// Return -1 if account age is less than the first milestone
+	if (accountAge < veteranRewardMilestones.get(0)) {
+		return -1;
+	}
 
 	// Return the first milestone for which the player is eligible and has not already claimed
-	for( int i=0; i < veteranRewardMilestones.size(); i++){
-		int milestone = veteranRewardMilestones.get(i);
-		if( accountAge >= milestone && playerGhost->getChosenVeteranReward(milestone).isEmpty() ){
+	for( int i=0; i < veteranRewardMilestones.size(); i++) {
+		milestone = veteranRewardMilestones.get(i);
+		if( accountAge >= milestone && playerGhost->getChosenVeteranReward(milestone).isEmpty() ) {
 			return milestone;
 		}
 	}
 
+	// They've claimed all of the established milestones, see if they're eligible for an additional one
+	milestone += veteranRewardAdditionalMilestones;
+
+	while (accountAge >= milestone) {
+		if (playerGhost->getChosenVeteranReward(milestone).isEmpty()) {
+			return milestone;
+		}
+
+		milestone += veteranRewardAdditionalMilestones;
+	}
+
+	// Not eligible for any milestones
 	return -1;
 }
 
@@ -4256,16 +4275,22 @@ int PlayerManagerImplementation::getFirstIneligibleMilestone( PlayerObject *play
 		return -1;
 
 	int accountAge = account->getAgeInDays();
+	int milestone = -1;
 
 	// Return the first milestone the player has not already claimed
 	for( int i=0; i < veteranRewardMilestones.size(); i++){
-		int milestone = veteranRewardMilestones.get(i);
-		if( accountAge < milestone && !playerGhost->getChosenVeteranReward(milestone).isEmpty() ){
+		milestone = veteranRewardMilestones.get(i);
+		if( accountAge < milestone ) {
 			return milestone;
 		}
 	}
 
-	return -1;
+	// Check additional milestones if all established ones have been claimed
+	while (accountAge >= milestone) {
+		milestone += veteranRewardAdditionalMilestones;
+	}
+
+	return milestone;
 }
 
 bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSession* client) {
