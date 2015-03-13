@@ -373,6 +373,10 @@ public:
 		return true;
 	}
 
+	bool isStateOnlyAttack() {
+		return poolsToDamage == 0;
+	}
+
 	virtual bool isSquadLeaderCommand() {
 		return false;
 	}

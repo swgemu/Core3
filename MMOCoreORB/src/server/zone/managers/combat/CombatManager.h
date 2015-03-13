@@ -172,6 +172,7 @@ public:
 
 	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
 	float doDroidDetonation(CreatureObject* droid, CreatureObject* defender, float damage);
+
 	//all the combat math will go here
 protected:
 

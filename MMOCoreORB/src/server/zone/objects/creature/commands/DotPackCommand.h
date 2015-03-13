@@ -68,20 +68,15 @@ public:
 			objectId = 0;
 	}
 
-	bool checkTarget(CreatureObject* creature, CreatureObject* targetCreature) {
+	bool checkTarget(CreatureObject* creature, CreatureObject* targetCreature, uint32 dotType) {
 		if (!targetCreature->isAttackableBy(creature))
 			return false;
-		/*else if (targetCreature->isPlayingMusic())
-			targetCreature->stopPlayingMusic();
-		else if (targetCreature->isDancing())
-			targetCreature->stopDancing();
-		 */
 
-		PlayerManager* playerManager = server->getPlayerManager();
-
-		if (creature != targetCreature && !CollisionManager::checkLineOfSight(creature, targetCreature)) {
+		if (targetCreature->hasDotImmunity(dotType))
 			return false;
-		}
+
+		if (creature != targetCreature && !CollisionManager::checkLineOfSight(creature, targetCreature))
+			return false;
 
 		return true;
 	}
@@ -134,9 +129,8 @@ public:
 					if (!creatureTarget->isAttackableBy(creature))
 						continue;
 
-					if (checkTarget(creature, creatureTarget)) {
+					if (checkTarget(creature, creatureTarget, pharma->getDotType()))
 						doAreaMedicActionTarget(creature, creatureTarget, pharma);
-					}
 
 				} catch (Exception& e) {
 				}
@@ -236,13 +230,7 @@ public:
 			return INSUFFICIENTHAM;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
-
-		if (object != NULL && !object->isCreatureObject()) {
-			return INVALIDTARGET;
-		} else if (object == NULL)
-			return INVALIDTARGET;
-
-		if (creature == object)
+		if (object == NULL || !object->isCreatureObject() || creature == object)
 			return INVALIDTARGET;
 
 		uint64 objectId = 0;
@@ -259,9 +247,10 @@ public:
 		if (dotPack == NULL)
 			return GENERALERROR;
 
-		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
-
 		PlayerManager* playerManager = server->getPlayerManager();
+		CombatManager* combatManager = CombatManager::instance();
+
+		CreatureObject* creatureTarget = cast<CreatureObject*>(object.get());
 
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
 			creature->sendSystemMessage("@container_error_message:container18");
@@ -277,8 +266,8 @@ public:
 		//timer
 		if (!creature->checkCooldownRecovery(skillName)) {
 			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
-
 			return GENERALERROR;
+
 		} else {
 			float modSkill = (float)creature->getSkillMod("healing_range_speed");
 			int delay = (int)round(12.0f - (6.0f * modSkill / 100 ));
@@ -301,38 +290,43 @@ public:
 
 		Locker clocker(creatureTarget, creature);
 
-		if (!CombatManager::instance()->startCombat(creature, creatureTarget))
+		if (!combatManager->startCombat(creature, creatureTarget))
 			return INVALIDTARGET;
 
 		applyCost(creature, cost);
 
 		int dotPower = dotPack->calculatePower(creature);
-
 		int dotDMG = 0;
+
 		if (dotPack->isPoisonDeliveryUnit()) {
-			StringIdChatParameter stringId("healing", "apply_poison_self");
-			stringId.setTT(creatureTarget->getObjectID());
+			if (!creatureTarget->hasDotImmunity(dotPack->getDotType())) {
+				StringIdChatParameter stringId("healing", "apply_poison_self");
+				stringId.setTT(creatureTarget->getObjectID());
 
-			creature->sendSystemMessage(stringId);
+				creature->sendSystemMessage(stringId);
 
-			StringIdChatParameter stringId2("healing", "apply_poison_other");
-			stringId2.setTU(creature->getObjectID());
+				StringIdChatParameter stringId2("healing", "apply_poison_other");
+				stringId2.setTU(creature->getObjectID());
 
-			creatureTarget->sendSystemMessage(stringId2);
+				creatureTarget->sendSystemMessage(stringId2);
 
-			dotDMG = creatureTarget->addDotState(creature, CreatureState::POISONED, dotPack->getServerObjectCRC(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_poison") + creatureTarget->getSkillMod("poison_disease_resist"));
+				dotDMG = creatureTarget->addDotState(creature, CreatureState::POISONED, dotPack->getServerObjectCRC(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_poison") + creatureTarget->getSkillMod("poison_disease_resist"));
+			}
+
 		} else {
-			StringIdChatParameter stringId("healing", "apply_disease_self");
-			stringId.setTT(creatureTarget->getObjectID());
+			if (!creatureTarget->hasDotImmunity(dotPack->getDotType())) {
+				StringIdChatParameter stringId("healing", "apply_disease_self");
+				stringId.setTT(creatureTarget->getObjectID());
 
-			creature->sendSystemMessage(stringId);
+				creature->sendSystemMessage(stringId);
 
-			StringIdChatParameter stringId2("healing", "apply_disease_other");
-			stringId2.setTU(creature->getObjectID());
+				StringIdChatParameter stringId2("healing", "apply_disease_other");
+				stringId2.setTU(creature->getObjectID());
 
-			creatureTarget->sendSystemMessage(stringId2);
+				creatureTarget->sendSystemMessage(stringId2);
 
-			dotDMG = creatureTarget->addDotState(creature, CreatureState::DISEASED, dotPack->getServerObjectCRC(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_disease") + creatureTarget->getSkillMod("poison_disease_resist"));
+				dotDMG = creatureTarget->addDotState(creature, CreatureState::DISEASED, dotPack->getServerObjectCRC(), dotPower, dotPack->getPool(), dotPack->getDuration(), dotPack->getPotency(), creatureTarget->getSkillMod("resistance_disease") + creatureTarget->getSkillMod("poison_disease_resist"));
+			}
 		}
 
 		if (dotDMG) {
