@@ -11,6 +11,8 @@
 #include "engine/engine.h"
 #include "server/zone/objects/creature/variables/CreatureAttackMap.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
+#include "server/zone/objects/creature/commands/effect/CommandEffect.h"
+#include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
 #include "MobileOutfit.h"
@@ -78,6 +80,9 @@ protected:
 	LootGroupCollection lootgroups;
 
 	Vector<String> weapons;
+
+	SortedVector<uint8> effectImmunities;
+	SortedVector<uint32> dotImmunities;
 
 	CreatureAttackMap* attacks;
 	uint32 conversationTemplate;
@@ -186,6 +191,14 @@ public:
 
 	inline bool isHerd() {
 		return creatureBitmask & CreatureFlag::HERD;
+	}
+
+	inline bool hasEffectImmunity(uint8 effect) {
+		return effectImmunities.contains(effect);
+	}
+
+	inline bool hasDotImmunity(uint32 dot) {
+		return dotImmunities.contains(dot);
 	}
 
 	inline float getTame() {

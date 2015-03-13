@@ -172,6 +172,9 @@ public:
 
 	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
 	float doDroidDetonation(CreatureObject* droid, CreatureObject* defender, float damage);
+
+	bool hasEffectImmunity(CreatureObject* defender, uint8 effectType);
+	bool hasDotImmunity(CreatureObject* defender, uint32 dotType);
 	//all the combat math will go here
 protected:
 

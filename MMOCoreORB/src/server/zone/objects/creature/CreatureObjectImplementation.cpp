@@ -1453,16 +1453,18 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 		broadcastMessages(&messages, true);
 
-		switch (posture) {
-		case CreaturePosture::UPRIGHT:
-			sendStateCombatSpam("cbt_spam", "stand", 11);
-			break;
-		case CreaturePosture::PRONE:
-			sendStateCombatSpam("cbt_spam", "prone", 11);
-			break;
-		case CreaturePosture::CROUCHED:
-			sendStateCombatSpam("cbt_spam", "kneel", 11);
-			break;
+		if (isPlayerCreature() || isAiAgent()) {
+			switch (posture) {
+			case CreaturePosture::UPRIGHT:
+				sendStateCombatSpam("cbt_spam", "stand", 11);
+				break;
+			case CreaturePosture::PRONE:
+				sendStateCombatSpam("cbt_spam", "prone", 11);
+				break;
+			case CreaturePosture::CROUCHED:
+				sendStateCombatSpam("cbt_spam", "kneel", 11);
+				break;
+			}
 		}
 	}
 

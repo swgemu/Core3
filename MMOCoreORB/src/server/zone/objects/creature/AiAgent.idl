@@ -810,6 +810,22 @@ class AiAgent extends CreatureObject {
 	}
 
 	@dirty
+	public boolean hasEffectImmunity(unsigned int effectType) {
+		if (npcTemplate.get() == null)
+			return false;
+		
+		return npcTemplate.get().hasEffectImmunity(effectType);
+	}
+
+	@dirty
+	public boolean hasDotImmunity(unsigned long dotType) {
+		if (npcTemplate.get() == null)
+			return false;
+		
+		return npcTemplate.get().hasDotImmunity(dotType);
+	}
+
+	@dirty
 	public abstract boolean isSpecialProtection(int resistType) {
 		if (petDeed != null) {
 			return petDeed.isSpecialResist(resistType);

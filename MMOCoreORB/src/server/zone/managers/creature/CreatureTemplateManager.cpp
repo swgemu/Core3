@@ -61,6 +61,20 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 	lua->setGlobalInt("CARNIVORE", CreatureFlag::CARNIVORE);
 	lua->setGlobalInt("HERBIVORE", CreatureFlag::HERBIVORE);
 
+	// Used for Creature Immunity to certain states/dots.
+	lua->setGlobalInt("BLIND", CommandEffect::BLIND);
+	lua->setGlobalInt("DIZZY", CommandEffect::DIZZY);
+	lua->setGlobalInt("INTIMIDATE", CommandEffect::INTIMIDATE);
+	lua->setGlobalInt("STUN", CommandEffect::STUN);
+	lua->setGlobalInt("KNOCKDOWN", CommandEffect::KNOCKDOWN);
+	lua->setGlobalInt("POSTUREUP", CommandEffect::POSTUREUP);
+	lua->setGlobalInt("POSTUREDOWN", CommandEffect::POSTUREDOWN);
+	lua->setGlobalInt("NEXTATTACKDELAY", CommandEffect::NEXTATTACKDELAY);
+	lua->setGlobalInt("BLEEDING", CreatureState::BLEEDING);
+	lua->setGlobalInt("POISONED", CreatureState::POISONED);
+	lua->setGlobalInt("DISEASED", CreatureState::DISEASED);
+	lua->setGlobalInt("ONFIRE", CreatureState::ONFIRE);
+
 	// NameManager Types
 	lua->setGlobalInt("NAME_TAG", NameManagerType::TAG);
 	lua->setGlobalInt("NAME_GENERIC", NameManagerType::GENERIC);

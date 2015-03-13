@@ -269,14 +269,20 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	damageMultiplier = 1.0f;
 	hitVal = getHitChance(attacker, defender, weapon, damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
 
-	//Send Attack Combat Spam
-	data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
+	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
+	// TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
 
 	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
+
+	//Send Attack Combat Spam. For state-only attacks, this is sent in applyStates().
+	if (poolsToDamage != 0)
+		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defender, damage);
+		if (poolsToDamage == 0)
+			data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 		return 0;
 		break;
 	case HIT:
@@ -304,9 +310,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 	// Apply states first
 	applyStates(attacker, defender, data);
-
-	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
-	// TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
 
 	// Return if it's a state only attack (intimidate, warcry, wookiee roar) so they don't apply dots or break combat delays
 	if (poolsToDamage == 0)
@@ -435,7 +438,12 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 	for (int i = 0; i < dotEffects->size(); i++) {
 		DotEffect effect = dotEffects->get(i);
 
-		if (effect.getDotDuration() == 0 || System::random(100) > effect.getDotChance()) continue;
+		//Check for dot immunity.
+		if (hasDotImmunity(defender, effect.getDotType()))
+			continue;
+
+		if (effect.getDotDuration() == 0 || System::random(100) > effect.getDotChance())
+			continue;
 
 		Vector<String> defenseMods = effect.getDefenderStateDefenseModifers();
 		int resist = 0;
@@ -469,7 +477,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 		int resist = 0;
 
-		if (attackerWeapon->getDotType(i) == 1) { // Poison.
+		if (attackerWeapon->getDotType(i) == 1 && !hasDotImmunity(defender, CreatureState::POISONED)) { // Poison.
 			resist = defender->getSkillMod("resistance_poison") + defender->getSkillMod("poison_disease_resist");
 			int power = defender->addDotState(attacker, CreatureState::POISONED, attackerWeapon->getObjectID(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist, attackerWeapon->getDotStrength(i));
 
@@ -480,7 +488,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 			}
 		}
 
-		if (attackerWeapon->getDotType(i) == 2) { // Disease.
+		if (attackerWeapon->getDotType(i) == 2 && !hasDotImmunity(defender, CreatureState::DISEASED)) { // Disease.
 			resist = defender->getSkillMod("resistance_disease") + defender->getSkillMod("poison_disease_resist");
 			int power = defender->addDotState(attacker, CreatureState::DISEASED, attackerWeapon->getObjectID(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist, attackerWeapon->getDotStrength(i));
 
@@ -491,7 +499,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 			}
 		}
 
-		if (attackerWeapon->getDotType(i) == 3) { // Fire.
+		if (attackerWeapon->getDotType(i) == 3 && !hasDotImmunity(defender, CreatureState::ONFIRE)) { // Fire.
 			resist = defender->getSkillMod("resistance_fire") + defender->getSkillMod("fire_resist");
 			int power = defender->addDotState(attacker, CreatureState::ONFIRE, attackerWeapon->getObjectID(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist, attackerWeapon->getDotStrength(i) * .5f);
 
@@ -502,7 +510,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 			}
 		}
 
-		if (attackerWeapon->getDotType(i) == 4) { // Bleeding.
+		if (attackerWeapon->getDotType(i) == 4 && !hasDotImmunity(defender, CreatureState::BLEEDING)) { // Bleeding.
 			resist = defender->getSkillMod("resistance_bleeding") + defender->getSkillMod("combat_bleeding_defense") + defender->getSkillMod("bleed_resist");
 			int power = defender->addDotState(attacker, CreatureState::BLEEDING, attackerWeapon->getObjectID(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist, attackerWeapon->getDotStrength(i));
 
@@ -513,6 +521,30 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 			}
 		}
 	}
+}
+
+bool CombatManager::hasEffectImmunity(CreatureObject* defender, uint8 effectType) {
+	if (defender->isAiAgent()) {
+		AiAgent* ai = cast<AiAgent*>(defender);
+		if (ai->hasEffectImmunity(effectType))
+			return true;
+
+	} else if (defender->isVehicleObject())
+		return true;
+
+	return false;
+}
+
+bool CombatManager::hasDotImmunity(CreatureObject* defender, uint32 dotType) {
+	if (defender->isAiAgent()) {
+		AiAgent* ai = cast<AiAgent*>(defender);
+		if (ai->hasDotImmunity(dotType))
+			return true;
+
+	} else if (defender->isVehicleObject() && dotType != CreatureState::ONFIRE)
+		return true;
+
+	return false;
 }
 
 float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* weapon) {
@@ -1597,10 +1629,16 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 		if (System::random(100) > effect.getStateChance()) continue; // effect didn't trigger this attack and don't send a message
 
-		Vector<String> exclusionTimers = effect.getDefenderExclusionTimers();
-		// loop through any exclusion timers
-		for (int j = 0; j < exclusionTimers.size(); j++)
-			if (!targetCreature->checkCooldownRecovery(exclusionTimers.get(j))) failed = true;
+		//Check for state immunity.
+		if (hasEffectImmunity(targetCreature, effectType))
+			failed = true;
+
+		if(!failed) {
+			Vector<String> exclusionTimers = effect.getDefenderExclusionTimers();
+			// loop through any exclusion timers
+			for (int j = 0; j < exclusionTimers.size(); j++)
+				if (!targetCreature->checkCooldownRecovery(exclusionTimers.get(j))) failed = true;
+		}
 
 		float targetDefense = 0.f;
 
@@ -1683,6 +1721,13 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 			if ((combatEquil >> 1) > (int) System::random(100) && !targetCreature->isDead() && !targetCreature->isIntimidated())
 				targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
+		}
+		//Send Combat Spam for state-only attacks.
+		if (data.getPoolsToDamage() == 0) {
+			if (failed)
+				data.getCommand()->sendAttackCombatSpam(creature, targetCreature, MISS, 0, data);
+			else
+				data.getCommand()->sendAttackCombatSpam(creature, targetCreature, HIT, 0, data);
 		}
 	}
 

@@ -54,6 +54,9 @@ CreatureTemplate::CreatureTemplate() {
 
 	weapons.removeAll();
 
+	effectImmunities.removeAll();
+	dotImmunities.removeAll();
+
 	attacks = new CreatureAttackMap();
 
 	aiTemplate = "example";
@@ -69,6 +72,9 @@ CreatureTemplate::~CreatureTemplate() {
 	templates.removeAll();
 
 	weapons.removeAll();
+
+	effectImmunities.removeAll();
+	dotImmunities.removeAll();
 
 	delete attacks;
 	attacks = NULL;
@@ -130,6 +136,28 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	}
 
 	res.pop();
+
+	LuaObject effImm = templateData->getObjectField("effectImmunities");
+	if (effImm.isValidTable()) {
+		int size = effImm.getTableSize();
+		for (int i = 1; i <= effImm.getTableSize(); ++i) {
+			int effect = effImm.getIntAt(i);
+			effectImmunities.put(effect);
+		}
+	}
+
+	effImm.pop();
+
+	LuaObject dotImm = templateData->getObjectField("dotImmunities");
+	if (dotImm.isValidTable()) {
+		int size = dotImm.getTableSize();
+		for (int i = 1; i <= dotImm.getTableSize(); ++i) {
+			int dot = dotImm.getIntAt(i);
+			dotImmunities.put(dot);
+		}
+	}
+
+	dotImm.pop();
 
 	LuaObject temps = templateData->getObjectField("templates");
 	if (temps.isValidTable()) {
