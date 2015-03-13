@@ -1162,7 +1162,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param obj The object to face.
 	 */
 	public native void faceObject(SceneObject obj);
-	
+
 	public native abstract void notifySelfPositionUpdate();
 	
 	@dirty
@@ -1881,7 +1881,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native SortedVector<Observer> getObservers(unsigned int eventType);
 	
 	public native abstract void createChildObjects();
-	
+
+	public void addChildObject(SceneObject obj) {
+		childObjects.put(obj);
+	}
+
 	@local
 	@dirty
 	public Matrix4 getTransformForCollisionMatrix() {
