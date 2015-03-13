@@ -612,9 +612,16 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	ghost->updateIncapacitationCounter();
 
-	destructor->removeDefender(destructedObject);
+	DeltaVector<ManagedReference<SceneObject*> >* defenderList = destructor->getDefenderList();
 
-	if (!destructor->isKiller() && ghost->getIncapacitationCounter() < 3) {
+	bool isDefender = false;
+
+	if (defenderList->contains(destructedObject)) {
+		isDefender = true;
+		destructor->removeDefender(destructedObject);
+	}
+
+	if ((!destructor->isKiller() || !isDefender) && ghost->getIncapacitationCounter() < 3) {
 		playerCreature->setCurrentSpeed(0);
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
 		playerCreature->updateLocomotion();
