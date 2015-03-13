@@ -98,14 +98,25 @@ public:
 				return;
 			}
 
+			StructureObject* cityHall = city->getCityHall();
+			if (cityHall == NULL)
+				return;
+
 			ManagedReference<SceneObject*> sceneObject = ObjectManager::instance()->createObject(terminalTemplatePath.hashCode(), 1, "sceneobjects");
 
 			sceneObject->initializePosition(player->getWorldPositionX(), player->getWorldPositionZ(),player->getWorldPositionY());
 			sceneObject->rotate(player->getDirectionAngle());
-			zone->transferObject(sceneObject, -1, true);
 			city->addMissionTerminal(sceneObject);
 			city->subtractFromCityTreasury(1000);
 
+			clocker.release();
+
+			Locker clocker2(cityHall, player);
+
+			cityHall->addChildObject(sceneObject);
+			sceneObject->initializeChildObject(cityHall);
+
+			zone->transferObject(sceneObject, -1, true);
 		}
 	}
 };

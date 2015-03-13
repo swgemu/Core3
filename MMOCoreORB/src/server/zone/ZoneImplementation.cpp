@@ -424,7 +424,7 @@ void ZoneImplementation::addSceneObject(SceneObject* object) {
 		if (structure->isCivicStructure() || structure->isCommercialStructure()) {
 			return;
 		}
-	//Same thing for player city bank terminals
+	//Same thing for player city bank/mission terminals
 	} else if (object->isTerminal()) {
 		Terminal* terminal = cast<Terminal*>(object);
 		ManagedReference<SceneObject*> controlledObject = terminal->getControlledObject();

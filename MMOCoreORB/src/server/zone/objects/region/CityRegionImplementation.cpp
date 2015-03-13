@@ -255,6 +255,10 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	if (object->isDecoration() && object->getParent().get() == NULL) {
 		addDecoration(object);
 	}
+
+	if (registered && cityMissionTerminals.contains(object)) {
+		zone->registerObjectWithPlanetaryMap(object);
+	}
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
