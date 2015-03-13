@@ -55,7 +55,7 @@ public:
 	const static int MELEEWEAPON = 0x1;
 	const static int RANGEDWEAPON = 0x2;
 	const static int THROWNWEAPON = 0x4;
-	const static int HEAVYWEAPON = 0x8;;
+	const static int HEAVYWEAPON = 0x8;
 	const static int MINE = 0x10;
 	const static int SPECIALHEAVYWEAPON = 0x20;
 	const static int ONEHANDMELEEWEAPON = 0x40;
