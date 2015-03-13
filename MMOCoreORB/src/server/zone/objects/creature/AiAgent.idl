@@ -113,9 +113,8 @@ class AiAgent extends CreatureObject {
 	
 	protected transient CurrentFoundPath currentFoundPath;
 	protected transient SceneObject targetCellObject;
-		
-	@dereferenced
-	protected Vector<WeaponObject> weapons;
+
+	protected WeaponObject readyWeapon;
 	
 	@dereferenced 
 	protected Vector<SceneObject> camouflagedObjects;

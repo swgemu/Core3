@@ -173,46 +173,47 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	if (petDeed != NULL) {
 		allowedWeapon = petDeed->getRanged();
 	}
-	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
-	if (weapons.size() == 0) {
-		Vector<String> wepgroups = npcTemplate->getWeapons();
-		if (allowedWeapon) {
-			for (int i = 0; i < wepgroups.size(); ++i) {
-				Vector<String> weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
 
-				for (int i = 0; i < weptemps.size(); ++i) {
-					uint32 crc = weptemps.get(i).hashCode();
+	Vector<WeaponObject*> weapons;
+	Vector<String> wepgroups = npcTemplate->getWeapons();
+	if (allowedWeapon) {
+		for (int i = 0; i < wepgroups.size(); ++i) {
+			Vector<String> weptemps = CreatureTemplateManager::instance()->getWeapons(wepgroups.get(i));
 
-					ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, getPersistenceLevel())).castTo<WeaponObject*>();
+			for (int i = 0; i < weptemps.size(); ++i) {
+				uint32 crc = weptemps.get(i).hashCode();
 
-					if (weao != NULL) {
-						weao->setMinDamage(minDmg * 0.5);
-						weao->setMaxDamage(maxDmg * 0.5);
+				ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, getPersistenceLevel())).castTo<WeaponObject*>();
 
-						SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(weao->getObjectTemplate());
-						if (weaoTemp != NULL && weaoTemp->getPlayerRaces()->size() > 0) {
-							weao->setAttackSpeed(speed);
-						} else if (petDeed != NULL) {
-							weao->setAttackSpeed(petDeed->getAttackSpeed());
-						}
+				if (weao != NULL) {
+					float mod = 1 - 0.1*weao->getArmorPiercing();
+					weao->setMinDamage(minDmg * mod);
+					weao->setMaxDamage(maxDmg * mod);
 
-						weapons.add(weao);
-
-						if (i == 0)
-							transferObject(weao, 4, false);
-					} else {
-						error("could not create weapon " + weptemps.get(i));
+					SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(weao->getObjectTemplate());
+					if (weaoTemp != NULL && weaoTemp->getPlayerRaces()->size() > 0) {
+						weao->setAttackSpeed(speed);
+					} else if (petDeed != NULL) {
+						weao->setAttackSpeed(petDeed->getAttackSpeed());
 					}
+
+					weapons.add(weao);
+
+					if (i == 0)
+						transferObject(weao, 4, false);
+				} else {
+					error("could not create weapon " + weptemps.get(i));
 				}
 			}
 		}
-
-		if (defaultWeapon != NULL) {
-			weapons.add(defaultWeapon);
-		}
-
 	}
 
+	if (weapons.size() > 0)
+		readyWeapon =  weapons.get(System::random(weapons.size() - 1));
+	else
+		readyWeapon = NULL;
+
+	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 	if (defaultWeapon != NULL) {
 		// set the damage of the default weapon
 		defaultWeapon->setMinDamage(minDmg);
@@ -365,25 +366,25 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 	float maxDmg = calculateAttackMaxDamage(baseLevel);
 	float speed = calculateAttackSpeed(lvl);
 
-	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
-
 	float ratio = ((float)lvl) / (float)baseLevel;
 
 	minDmg *= ratio;
 	maxDmg *= ratio;
 
-	for (int i = 0; i < weapons.size(); ++i) {
-		WeaponObject* weao = weapons.get(i);
+	if (readyWeapon != NULL) {
+		float mod = 1 - 0.1*readyWeapon->getArmorPiercing();
+		readyWeapon->setMinDamage(minDmg * mod);
+		readyWeapon->setMaxDamage(maxDmg * mod);
 
-		weao->setMinDamage(minDmg * 0.5);
-		weao->setMaxDamage(maxDmg * 0.5);
-
-		SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(weao->getObjectTemplate());
+		SharedWeaponObjectTemplate* weaoTemp = cast<SharedWeaponObjectTemplate*>(readyWeapon->getObjectTemplate());
 		if (weaoTemp != NULL && weaoTemp->getPlayerRaces()->size() > 0) {
-			weao->setAttackSpeed(speed);
+			readyWeapon->setAttackSpeed(speed);
+		} else if (petDeed != NULL) {
+			readyWeapon->setAttackSpeed(petDeed->getAttackSpeed());
 		}
 	}
 
+	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 	if (defaultWeapon != NULL) {
 		defaultWeapon->setMinDamage(minDmg);
 		defaultWeapon->setMaxDamage(maxDmg);
@@ -619,31 +620,13 @@ void AiAgentImplementation::selectWeapon() {
 	if (followCopy != NULL)
 		dist = getDistanceTo(followCopy);
 
-	float diff = 1024.f;
-	WeaponObject* finalWeap = getWeapon();
-
-	for (int i = 0; i < weapons.size(); ++i) {
-		WeaponObject* weap = weapons.get(i);
-
-		float range = fabs(weap->getIdealRange() - dist);
-
-		if (range < diff) {
-			diff = range;
-			finalWeap = weap;
-		}
-	}
-
-	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
+	WeaponObject* finalWeap = readyWeapon;
 	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
-	// TODO (dannuic): this is an awful way to randomly not have a weapon. It would be far better to randomize the weapons vector on load in (based on some chance in the template lua)
-/*	if ((dist < 6) && (finalWeap->isRangedWeapon() || (finalWeap->isMeleeWeapon() && System::random(10) == 0))) {
-		float range = fabs(defaultWeapon->getIdealRange() - dist);
+	if (fabs(readyWeapon->getIdealRange() - dist) > fabs(defaultWeapon->getIdealRange() - dist))
+		finalWeap = defaultWeapon;
 
-		if (range < diff) {
-			finalWeap = defaultWeapon;
-		}
-	}*/
+	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
 
 	if (currentWeapon != finalWeap) {
 		if (currentWeapon != NULL && currentWeapon != defaultWeapon) {
@@ -2790,13 +2773,9 @@ void AiAgentImplementation::activateLoad(const String& temp) {
 }
 
 bool AiAgentImplementation::hasRangedWeapon() {
-	for(int i=0;i<weapons.size();i++) {
-		ManagedReference<WeaponObject* > weapon = weapons.get(i);
-		if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) {
-			return true;
-		}
-	}
-	return false;
+	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
+
+	return (defaultWeapon != NULL && defaultWeapon->isRangedWeapon()) || (readyWeapon != NULL && readyWeapon->isRangedWeapon());
 }
 
 bool AiAgentImplementation::hasSpecialAttack(int num) {

@@ -22,12 +22,8 @@ end
 function SelectWeaponBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = AiAgent(pAgent)
-		
-		if (getRandomNumber(10) == 0) then
-			agent:selectDefaultWeapon()
-		else
-			agent:selectWeapon()
-		end
+
+		agent:selectWeapon()
 		
 		return BEHAVIOR_SUCCESS
 	end
