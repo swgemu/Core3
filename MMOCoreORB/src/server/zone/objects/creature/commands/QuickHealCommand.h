@@ -152,7 +152,7 @@ public:
 
 		Locker clocker(creatureTarget, creature);
 		
-		if (!creature->isInRange(creatureTarget, range + creatureTarget->getRadius() + creature->getRadius()))
+		if (!creature->isInRange(creatureTarget, range + creatureTarget->getTemplateRadius() + creature->getTemplateRadius()))
 			return TOOFAR;		
 
 		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject() || creatureTarget->isDead() || creatureTarget->isRidingMount() || creatureTarget->isAttackableBy(creature))

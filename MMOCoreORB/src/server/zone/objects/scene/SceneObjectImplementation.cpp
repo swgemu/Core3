@@ -1699,7 +1699,7 @@ bool SceneObjectImplementation::isDataPad() {
 	return templateObject->getFullTemplateString().contains("datapad");
 }
 
-float SceneObjectImplementation::getRadius() {
+float SceneObjectImplementation::getTemplateRadius() {
 	if (templateObject == NULL || templateObject->getAppearanceTemplate() == NULL)
 		return 0.f;
 

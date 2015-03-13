@@ -96,33 +96,35 @@ class PlayerManager extends Observer implements Logger {
 	protected int baseStoredDroids;
 	protected int baseStoredVehicles;
 	protected int baseStoredShips;
-	
+
 	@dereferenced
 	private SortedVector<int> veteranRewardMilestones;
-	
+
+	private int veteranRewardAdditionalMilestones;
+
 	@dereferenced 
 	private VeteranRewardList veteranRewards;
 
 	@dereferenced
 	private transient VectorMap<int, string> badgeMap;
-	
+
 	private int highestBadgeIndex;
-	
+
 	private ZoneServer server;
-	
+
 	transient PlayerMap playerMap;
 	transient CharacterNameMap nameMap;
 	private float globalExpMultiplier;
 	private float groupExpMultiplier;
-	
+
 	@dereferenced
 	private transient ReadWriteLock onlineMapMutex;
-	
+
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
-	
+
 	public transient static int MAX_CHAR_ONLINE_COUNT;
-	
+
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
 	public native void loadNameMap();
 
@@ -130,38 +132,38 @@ class PlayerManager extends Observer implements Logger {
 	private native void loadStartingLocations();
 	private native void loadBadgeMap();
 	private native void loadPermissionLevels();
-	
+
 	public int getHighestBadgeIndex() {
 		return highestBadgeIndex;
 	}
-	
+
 	public native void finalize();
 
 	private transient PermissionLevelList permissionLevelList;
-	
+
 	@dereferenced
 	private transient StartingLocationList startingLocationList;
-	
+
 	@local
 	public native void sendStartingLocationsTo(CreatureObject player);
-	
+
 	@local
 	public native StartingLocation getStartingLocation(final string city);
-	
+
 	/**
 	 * Kicks a user
 	 *
 	 */
 	public native boolean kickUser(final string name, final string admin, string reason, boolean doBan = true);
-	
+
 	@local
 	public native boolean createPlayer(MessageCallback callback);
-		
+
 	@local
 	public native boolean checkPlayerName(MessageCallback callback);
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-		
+
 	/**
 	 * @pre { destructor and destructedObject locked }
 	 * @post { destructor and destructedObject locked }
@@ -179,13 +181,13 @@ class PlayerManager extends Observer implements Logger {
 	 * @post { attacker and player locked }
 	 */
 	public native void killPlayer(TangibleObject attacker, CreatureObject player, int typeofdeath = 0);
-	
+
 	/**
 	 * Calculates the length of time that incapacitation should last. Cannot exceed 1 minute.
 	 * \return Returns the number of seconds until the player should recover from incapacitation.
 	 */
 	public native byte calculateIncapacitationTimer(CreatureObject player, int condition);
-	
+
 	/**
 	 * Check for enough encumbrances 
 	 */
@@ -193,16 +195,16 @@ class PlayerManager extends Observer implements Logger {
 	public native void applyEncumbrancies(CreatureObject player, ArmorObject armor);
 	public native void removeEncumbrancies(CreatureObject player, ArmorObject armor);
 	public native void awardBadge(PlayerObject ghost, unsigned int badge);
-	
+
 	public native void setExperienceMultiplier(float globalMultiplier);
 	public native void awardExperience(CreatureObject player, final string xpType, int amount, boolean sendSystemMessage = true, float localMultiplier = 1.0f);
-	
+
 	@local @dereferenced
 	public native SortedVector<SceneObject> getInsurableItems(CreatureObject player, boolean onlyInsurable = true);
-	
+
 	@local
 	public native void addInsurableItemsRecursive(SceneObject obj, SortedVector<SceneObject> items, boolean onlyInsurable);
-	
+
 	public native void handleAbortTradeMessage(CreatureObject player);
 	public native void handleAddItemToTradeWindow(CreatureObject player, unsigned long itemID);
 	public native void handleGiveMoneyMessage(CreatureObject player, unsigned int value);
@@ -210,7 +212,7 @@ class PlayerManager extends Observer implements Logger {
 	public native void handleUnAcceptTransactionMessage(CreatureObject player);
 	public native void handleVerifyTradeMessage(CreatureObject player);
 	public native boolean checkTradeItems(CreatureObject player, CreatureObject receiver);
-	
+
 	/**
 	 * Finds the closest structure in range with Administration priveleges.
 	 * This is primarily used for commands that require a building or installation.
@@ -221,18 +223,18 @@ class PlayerManager extends Observer implements Logger {
 	 * @param targetID The object id of the players target.
 	 */
 	public native SceneObject getInRangeStructureWithAdminRights(CreatureObject creature, unsigned long targetID = 0);
-	
+
 	public native StructureObject getInRangeOwnedStructure(CreatureObject creature, float range = 128);
-	
+
 	public native void sendBattleFatigueMessage(CreatureObject player, CreatureObject target);
-	
+
 	public native void stopWatch(CreatureObject creature, unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
 	public native void stopListen(CreatureObject creature, unsigned long entid, boolean doSendPackets = true, boolean forced = false, boolean doLock = true, boolean outOfRange = false);
 	public native void startWatch(CreatureObject creature, unsigned long entid);
 	public native void startListen(CreatureObject creature, unsigned long entid);
-	
+
 	public native void lootAll(CreatureObject player, CreatureObject creature);
-	
+
 	/**
 	 * Starts the ProposeUnitySession
 	 * @param askingPlayer Player iniating the proposal
@@ -242,7 +244,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @post askingPlayer locked
 	 */
 	public native void proposeUnity( CreatureObject askingPlayer, CreatureObject respondingPlayer, SceneObject askingPlayerRing );
-	
+
 	/**
 	 * Responder has denied unity
 	 * @param respondingPlayer Player responding to the proposal
@@ -258,7 +260,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @post respondingPlayer locked
 	 */
 	public native void acceptUnity(CreatureObject respondingPlayer);
-	
+
 	/**
 	 * Responder has selected a ring; Exchange rings with asker and assign as spouse
 	 * @param respondingPlayer Player responding to the proposal
@@ -266,7 +268,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @post respondingPlayer locked
 	 */
 	public native void completeUnity(CreatureObject respondingPlayer, unsigned long respondingPlayerRing);	
-	
+
 	/**
 	 * Cancel the propose unity session
 	 * @param respondingPlayer Player responding to the proposal
@@ -283,7 +285,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @post player locked
 	 */
 	public native void promptDivorce(CreatureObject player);	
-	
+
 	/**
 	 * Nullify unity
 	 * @param Player requesting divorce
@@ -300,7 +302,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @post player locked
 	 */
 	public native void claimVeteranRewards(CreatureObject player);
-	
+
 	/**
 	 * Returns the minimum veteran reward milestone the for which the account is eligible
 	 * Returns -1 if not eligible
@@ -308,7 +310,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @param account requesting veteran rewards
 	 */
 	public native int getEligibleMilestone(PlayerObject playerGhost, Account account);
-	
+
 	/**
 	 * Returns the next veteran reward milestone the account will be eligible for
 	 * Returns -1 if no further rewards
@@ -316,7 +318,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @param account requesting veteran rewards
 	 */
 	public native int getFirstIneligibleMilestone(PlayerObject playerGhost, Account account);	
-	
+
 	/**
 	 * Cancels the current reward session
 	 * @param player requesting veteran rewards
@@ -329,7 +331,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @param itemIndex index to item in veteranRewards list
 	 */
 	public native void confirmVeteranReward( CreatureObject player, int itemIndex );	
-	
+
 	/**
 	 * Generates the selected reward for the player. Starts a new reward session
 	 * if player is eligible for additional milestones
@@ -337,7 +339,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @param itemIndex index to item in veteranRewards list
 	 */
 	public native void generateVeteranReward( CreatureObject player );
-	
+
 	/**
 	 * Enhances the patients attribute by a specified amount for a specified duration.
 	 * @param patient The patient to enhance.
@@ -347,7 +349,7 @@ class PlayerManager extends Observer implements Logger {
 	 * @return The amount that was enhanced. If a buff existed, this is the amount exceeding the previous buff.
 	 */
 	public native int healEnhance(CreatureObject enhancer, CreatureObject patient, byte attribute, int buffvalue, float duration);
-	
+
 	@local
 	public native void disseminateExperience(TangibleObject destructedObject, ThreatMap threatMap, Vector<CreatureObject> lairSpawnedCreatures = null);
 
@@ -356,49 +358,49 @@ class PlayerManager extends Observer implements Logger {
 
 	public native void sendLoginMessage(CreatureObject player);
 	public native void resendLoginMessageToAll();
-	
+
 	public native void sendActivateCloneRequest(CreatureObject player, int typeofdeath = 0);
 	public native void sendPlayerToCloner(CreatureObject player, unsigned long clonerID, int typeofdeath = 0);
 
 	public native void ejectPlayerFromBuilding(CreatureObject player);
-	
+
 	public native boolean checkExistentNameInDatabase(final string firstName);
 
 	public native void createTutorialBuilding(CreatureObject player);
 	public native void createSkippedTutorialBuilding(CreatureObject player);
-	
+
 	@local
 	public native void updateSwimmingState(CreatureObject player, float newZ, IntersectionResults intersections = null, CloseObjectsVector closeObjects = null);
 	@local
 	public native int checkSpeedHackFirstTest(CreatureObject player, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, float errorMultiplier = 1);
 	public native int checkSpeedHackSecondTest(CreatureObject player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null);
-	
+
 	public native boolean existsName(final string name);
 	public native unsigned long getObjectID(final string name);
 	@reference
 	public native CreatureObject getPlayer(final string name);
-	
+
 	public native void updatePermissionLevel(CreatureObject player, int adminLevel = 1);
 	public native void updatePermissionName(CreatureObject player, int adminLevel);
-	
+
 	public void addPlayer(CreatureObject player) {
 		nameMap.put(player);
 	}
-	
+
 	public void removePlayer(string playerName) {
 		nameMap.remove(playerName);
 	}
 	
 	public native string getBadgeKey(int idx);
-	
+
 	public native CraftingStation getNearbyCraftingStation(CreatureObject player, int type);
-	
+
 	public native void finishHologrind(CreatureObject player);
 
 	public native Account getAccount(final string username);	
 	public native Account getAccount(unsigned int accountID);
 	private native Account queryForAccount(final string query);
-	
+
 	public native string banAccount(PlayerObject admin, Account account, unsigned int seconds, final string reason);	
 	public native string unbanAccount(PlayerObject admin, Account account, final string reason);	
 	public native string banFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, unsigned int seconds, final string reason);	
@@ -408,13 +410,13 @@ class PlayerManager extends Observer implements Logger {
 	public native void clearOwnedStructuresPermissions(CreatureObject player);
 
 	public native boolean promptTeachableSkills(CreatureObject teacher, SceneObject target);
-	
+
 	public native void decreaseOnlineCharCount(ZoneClientSession client);
 	public native boolean increaseOnlineCharCountIfPossible(ZoneClientSession client);
 	//public native int getOnlineCharCount(unsigned int accountId);
-	
+
 	public native void fixHAM(CreatureObject player);
-	
+
 	/**
 	 * Sends a confirmation box to the student asking if they want to learn the skill.
 	 * @pre student crosslocked with teacher
@@ -422,7 +424,7 @@ class PlayerManager extends Observer implements Logger {
 	 */
 	@local
 	public native boolean offerTeaching(CreatureObject teacher, CreatureObject student, Skill skill);
-	
+
 	/**
 	 * Accepts a teaching office.
 	 * @pre student crosslocked with teacher
@@ -430,7 +432,7 @@ class PlayerManager extends Observer implements Logger {
 	 */
 	@local
 	public native boolean acceptTeachingOffer(CreatureObject teacher, CreatureObject student, Skill skill);
-	
+
 	/**
 	 * Gets a vector skillboxes this teacher can teach this student.
 	 * @pre student crosslocked with teacher
@@ -444,7 +446,6 @@ class PlayerManager extends Observer implements Logger {
 		return onlineZoneClientMap;
 	}
 
-		
 	public native void getCleanupCharacterCount();
 
 	public native void cleanupCharacters();
@@ -488,11 +489,11 @@ class PlayerManager extends Observer implements Logger {
 	public int getBaseStoredShips() {
 		return baseStoredShips;
 	}
-	
+
 	public int getNumVeteranRewardMilestones(){
 		return veteranRewardMilestones.size();
 	}
-	
+
 	public int getVeteranRewardMilestone( int index ){
 		return veteranRewardMilestones.get(index);
 	}

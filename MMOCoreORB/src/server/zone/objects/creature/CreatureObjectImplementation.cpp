@@ -3078,7 +3078,7 @@ void CreatureObjectImplementation::destroyPlayerCreatureFromDatabase(bool destro
 	}
 }
 
-float CreatureObjectImplementation::getRadius() {
+float CreatureObjectImplementation::getTemplateRadius() {
 	SharedCreatureObjectTemplate* creoTempl = templateObject.castTo<SharedCreatureObjectTemplate*>();
 
 	if (creoTempl == NULL)

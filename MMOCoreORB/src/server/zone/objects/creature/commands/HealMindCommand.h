@@ -180,7 +180,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (!creatureTarget->isInRange(creature, range + creatureTarget->getRadius() + creature->getRadius()))
+		if (!creatureTarget->isInRange(creature, range + creatureTarget->getTemplateRadius() + creature->getTemplateRadius()))
 			return TOOFAR;
 
 		PlayerManager* playerManager = server->getPlayerManager();

@@ -69,6 +69,8 @@ baseStoredShips = 3
 -----------------------------------
 veteranRewardMilestones = {90, 180, 270, 360, 450, 540, 630, 720, 810, 900, 990, 1080} --days, must be sorted low to high
 
+veteranRewardAdditionalMilestones = 360 --frequency, in days, of additional milestones (beyond the established ones)
+
 veteranRewards = {
 
 	-- 90 Day Rewards
