@@ -1609,7 +1609,31 @@ class CreatureObject extends TangibleObject {
 	public float getHeight() {
 		return height;
 	}
-	
+
+	@dirty
+	public boolean isDroidSpecies() {
+		//Determine if creature is a droid.
+		if (species >= 203 && species <= 225 && species != 207)
+			return true;
+
+		return false;
+	}
+
+	@dirty 
+	public boolean isWalkerSpecies() {
+		//Determine if creature is an ATST or ATAT.
+		if (species == 226)
+			return true;
+
+		return false;
+	} 
+
+	@dirty
+	public native boolean hasEffectImmunity(byte effectType);
+
+	@dirty
+	public native boolean hasDotImmunity(unsigned int dotType);
+		
 	@read
 	public int getSpecies() {
 		return species;
@@ -1778,7 +1802,7 @@ class CreatureObject extends TangibleObject {
 	@read
 	public boolean isStunned() {
 		return stateBitmask & CreatureState.STUNNED;
-	}
+	}	
 
 	@read
 	public boolean isBlinded() {
