@@ -5,6 +5,7 @@
 #include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
@@ -214,6 +215,9 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 	if (zone == NULL)
 		return;
 
+	if (emoteTarget->isIncapacitated() || emoteTarget->isDead() || emoteTarget->isInCombat())
+		return;
+
 	// Only Imperials react to emotes (non droids)
 	if (!emoteTarget->isImperial() || emoteTarget->isDroidObject())
 		return;
@@ -270,7 +274,7 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 		playerObject->decreaseFactionStanding("imperial", reactionFine->getFactionFine());
 
 	if (reactionFine->shouldKnockdown()) {
-		// TODO: add knockdown functionality
+		doKnockdown(emoteUser, emoteTarget);
 	}
 
 	if (reactionFine->getCreditFine() != 0) {
@@ -367,4 +371,21 @@ String ReactionManagerImplementation::getReactionQuip(int num) {
 	quip << String::valueOf(num);
 
 	return quip.toString();
+}
+
+void ReactionManagerImplementation::doKnockdown(CreatureObject* victim, AiAgent* attacker) {
+	String knockdownAnim = "";
+
+	WeaponObject* weapon = attacker->getWeapon();
+
+	if (weapon != NULL && weapon->isRangedWeapon())
+		knockdownAnim = "ranged_melee_light";
+	else
+		knockdownAnim = "attack_high_center_light_0";
+
+	// TODO: Get knockdown animation working
+	//attacker->doCombatAnimation(victim, knockdownAnim.hashCode(), 0, 0xFF);
+
+	victim->inflictDamage(attacker, CreatureAttribute::MIND, victim->getHAM(CreatureAttribute::MIND) + 200, true);
+
 }

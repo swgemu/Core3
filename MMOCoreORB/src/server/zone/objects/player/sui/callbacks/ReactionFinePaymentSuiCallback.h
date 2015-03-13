@@ -48,15 +48,29 @@ public:
 			creature->subtractCashCredits(playerCredits);
 			playerObject->subtractFromReactionFines(playerCredits);
 
+			emoteTarget->doAnimation("point_accusingly");
 			String quip = reactionManager->getReactionQuip(6 + System::random(6));
 			chatManager->broadcastMessage(emoteTarget, quip, 0, 0, 0);
 
 		} else {
-			// TODO: subtract additional credits if player can afford (see st_response_00 - st_response_05)
+			int randomQuip = System::random(5);
+			String tauntMsg = "laugh_pointing";
+
+			if (playerCredits > totalFine * 1000) {
+				totalFine += (totalFine / 10) * (5 + System::random(15)); // Steals 50% to 200% more
+			} else if (playerCredits > totalFine * 100) {
+				totalFine += (totalFine / 10) * (3 + System::random(12)); // Steals 30% to 150% more
+			} else if (playerCredits > totalFine * 10) {
+				totalFine += (totalFine / 10) * (1 + System::random(9)); // Steals 10% to 100% more
+			} else {
+				tauntMsg = "point_accusingly";
+				randomQuip = 42 + System::random(3);
+			}
 			creature->subtractCashCredits(totalFine);
 			playerObject->setReactionFines(0);
 
-			String quip = reactionManager->getReactionQuip(42 + System::random(3));
+			emoteTarget->doAnimation(tauntMsg);
+			String quip = reactionManager->getReactionQuip(randomQuip);
 			chatManager->broadcastMessage(emoteTarget, quip, 0, 0, 0);
 
 		}
