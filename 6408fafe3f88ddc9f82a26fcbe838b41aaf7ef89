@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_7d0537c1",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-13T23:16:51Z",
+      "side": 1,
+      "message": "I don\u0027t understand why you are checking this out like this when you check for the opposite in doMiss and then send the exact same spam.",
+      "revId": "6408fafe3f88ddc9f82a26fcbe838b41aaf7ef89",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_9d68f388",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-13T23:16:51Z",
+      "side": 1,
+      "message": "These two methods should be in the creature, and you can exploit inheritance instead of if-checking.",
+      "revId": "6408fafe3f88ddc9f82a26fcbe838b41aaf7ef89",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_bd028fb2",
+        "filename": "MMOCoreORB/src/server/zone/templates/mobile/CreatureTemplate.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-13T23:16:51Z",
+      "side": 1,
+      "message": "don\u0027t use the creature state numbers for these, use the dot types so you don\u0027t need to cross-link these numbers when you use them.",
+      "revId": "6408fafe3f88ddc9f82a26fcbe838b41aaf7ef89",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_bd6baf84",
+        "filename": "MMOCoreORB/src/server/zone/templates/mobile/CreatureTemplate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-13T23:16:51Z",
+      "side": 1,
+      "message": "Why are you including these?",
+      "revId": "6408fafe3f88ddc9f82a26fcbe838b41aaf7ef89",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
