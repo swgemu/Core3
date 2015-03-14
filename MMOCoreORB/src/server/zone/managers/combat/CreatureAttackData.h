@@ -172,6 +172,10 @@ public:
 	void setCombatSpam(String spam) {
 		this->combatSpam = spam;
 	}
+
+	bool isStateOnlyAttack() const {
+		return poolsToDamage == 0;
+	}
 };
 
 #endif /* CREATUREATTACKDATA_H_ */

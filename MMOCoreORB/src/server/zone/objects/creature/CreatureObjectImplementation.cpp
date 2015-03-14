@@ -78,6 +78,7 @@
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/packets/object/Animation.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
+#include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 #include "server/zone/objects/creature/events/CommandQueueActionEvent.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
@@ -1453,16 +1454,18 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 		broadcastMessages(&messages, true);
 
-		switch (posture) {
-		case CreaturePosture::UPRIGHT:
-			sendStateCombatSpam("cbt_spam", "stand", 11);
-			break;
-		case CreaturePosture::PRONE:
-			sendStateCombatSpam("cbt_spam", "prone", 11);
-			break;
-		case CreaturePosture::CROUCHED:
-			sendStateCombatSpam("cbt_spam", "kneel", 11);
-			break;
+		if (isPlayerCreature() || isAiAgent()) {
+			switch (posture) {
+			case CreaturePosture::UPRIGHT:
+				sendStateCombatSpam("cbt_spam", "stand", 11);
+				break;
+			case CreaturePosture::PRONE:
+				sendStateCombatSpam("cbt_spam", "prone", 11);
+				break;
+			case CreaturePosture::CROUCHED:
+				sendStateCombatSpam("cbt_spam", "kneel", 11);
+				break;
+			}
 		}
 	}
 
@@ -3085,4 +3088,44 @@ float CreatureObjectImplementation::getTemplateRadius() {
 		return 0;
 
 	return creoTempl->getCollisionRadius()*getHeight();
+}
+
+bool CreatureObjectImplementation::hasEffectImmunity(uint8 effectType) {
+	switch (effectType) {
+	case CommandEffect::BLIND:
+	case CommandEffect::DIZZY:
+	case CommandEffect::INTIMIDATE:
+	case CommandEffect::STUN:
+	case CommandEffect::NEXTATTACKDELAY:
+		if (isDroidSpecies() || isVehicleObject() || isWalkerSpecies())
+			return true;
+		break;
+	case CommandEffect::KNOCKDOWN:
+	case CommandEffect::POSTUREUP:
+	case CommandEffect::POSTUREDOWN:
+		if (isVehicleObject() || isWalkerSpecies())
+			return true;
+		break;
+	default:
+		return false;
+	}
+
+	return false;
+}
+
+bool CreatureObjectImplementation::hasDotImmunity(uint32 dotType) {
+	switch (dotType) {
+	case CreatureState::POISONED:
+	case CreatureState::BLEEDING:
+	case CreatureState::DISEASED:
+		if (isDroidSpecies() || isVehicleObject())
+			return true;
+		break;
+	case CreatureState::ONFIRE:
+		return false;
+	default:
+		return false;
+	}
+
+	return false;
 }
