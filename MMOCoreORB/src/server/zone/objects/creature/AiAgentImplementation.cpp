@@ -620,10 +620,22 @@ void AiAgentImplementation::selectWeapon() {
 	if (followCopy != NULL)
 		dist = getDistanceTo(followCopy) + followCopy->getTemplateRadius() + getTemplateRadius() - 2;
 
-	WeaponObject* finalWeap = readyWeapon;
+	WeaponObject* finalWeap = NULL;
 	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
-	if (fabs(readyWeapon->getIdealRange() - dist) > fabs(defaultWeapon->getIdealRange() - dist))
+	float readyWeaponRangeDiff = -1.f;
+	float defaultWeaponRangeDiff = 100.f;
+
+	if (readyWeapon != NULL) {
+		finalWeap = readyWeapon;
+		readyWeaponRangeDiff = fabs(readyWeapon->getIdealRange() - dist);
+	}
+
+	if (defaultWeapon != NULL) {
+		defaultWeaponRangeDiff = fabs(defaultWeapon->getIdealRange() - dist);
+	}
+
+	if (finalWeap == NULL || readyWeaponRangeDiff > defaultWeaponRangeDiff)
 		finalWeap = defaultWeapon;
 
 	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
@@ -635,7 +647,7 @@ void AiAgentImplementation::selectWeapon() {
 			//info("removed weapon " + currentWeapon->getDisplayedName(), true);
 		}
 
-		if (finalWeap != defaultWeapon) {
+		if (finalWeap != NULL && finalWeap != defaultWeapon) {
 
 			//info("selected weapon " + finalWeap->getDisplayedName(), true);
 
