@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_dde30b04",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CombatQueueCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-14T17:43:02Z",
+      "side": 1,
+      "message": "Put this in CreatureAttackData instead. There\u0027s no reason to get the command from the data just to call this method when the data already has the info you need.",
+      "revId": "25372f290d48ddc106003d1e4cc06b4748d162a7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
