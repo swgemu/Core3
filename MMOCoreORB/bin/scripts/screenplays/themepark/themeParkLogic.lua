@@ -824,6 +824,10 @@ function ThemeParkLogic:getMissionPreReq(pPlayer)
 end
 
 function ThemeParkLogic:notifyEnteredBreechArea(pActiveArea, pPlayer)
+	if not SceneObject(pPlayer):isCreatureObject() then
+		return 0
+	end
+
 	return ObjectManager.withActiveArea(pActiveArea, function(activeArea)
 		local playerID = CreatureObject(pPlayer):getObjectID()
 		local breechNpcID = readData(playerID .. ":breechNpcID")
