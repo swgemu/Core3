@@ -618,7 +618,7 @@ void AiAgentImplementation::selectWeapon() {
 	float dist = 5.f;
 
 	if (followCopy != NULL)
-		dist = getDistanceTo(followCopy);
+		dist = getDistanceTo(followCopy) + followCopy->getTemplateRadius() + getTemplateRadius() - 2;
 
 	WeaponObject* finalWeap = readyWeapon;
 	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
