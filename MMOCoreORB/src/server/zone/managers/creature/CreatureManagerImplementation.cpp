@@ -44,6 +44,8 @@
 #include "server/zone/packets/object/SpatialChat.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/tangible/LairObject.h"
+#include "server/zone/objects/building/PoiBuilding.h"
+#include "server/zone/objects/intangible/TheaterObject.h"
 
 Mutex CreatureManagerImplementation::loadMutex;
 
@@ -162,7 +164,7 @@ SceneObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTempla
  		return NULL;
  	}
 
- 	ManagedReference<TangibleObject*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<TangibleObject*>();
+ 	ManagedReference<PoiBuilding*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<PoiBuilding*>();
 
  	if (building == NULL) {
  		error("error spawning " + buildingToSpawn);
@@ -172,6 +174,7 @@ SceneObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTempla
  	Locker blocker(building);
 
  	building->initializePosition(x, z, y);
+ 	building->setDespawnOnNoPlayersInRange(true);
 
  	ManagedReference<DynamicSpawnObserver*> theaterObserver = new DynamicSpawnObserver();
  	theaterObserver->deploy();
@@ -181,6 +184,7 @@ SceneObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTempla
  	theaterObserver->setSize(size);
 
  	building->registerObserver(ObserverEventType::CREATUREDESPAWNED, theaterObserver);
+ 	building->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, theaterObserver);
 
 
  	zone->transferObject(building, -1, false);
@@ -201,19 +205,17 @@ SceneObject* CreatureManagerImplementation::spawnDynamicSpawn(unsigned int lairT
 	if (mobiles->size() == 0)
 		return NULL;
 
-	ManagedReference<ActiveArea*> area = zoneServer->createObject(String("object/active_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+	ManagedReference<TheaterObject*> theater = zoneServer->createObject(String("object/intangible/theater/base_theater.iff").hashCode(), 0).castTo<TheaterObject*>();
 
-	if (area == NULL) {
-		error("error creating active area");
+	if (theater == NULL) {
+		error("error creating intangible theater");
 		return NULL;
 	}
 
-	Locker blocker(area);
+	Locker blocker(theater);
 
-	area->initializePosition(x, z, y);
-	area->setRadius(64);
-	area->setNoSpawnArea(true);
-	area->setNoBuildArea(true);
+	theater->initializePosition(x, z, y);
+	theater->setDespawnOnNoPlayersInRange(true);
 
 	ManagedReference<DynamicSpawnObserver*> dynamicObserver = new DynamicSpawnObserver();
 	dynamicObserver->deploy();
@@ -222,13 +224,14 @@ SceneObject* CreatureManagerImplementation::spawnDynamicSpawn(unsigned int lairT
 	dynamicObserver->setObserverType(ObserverType::LAIR);
 	dynamicObserver->setSize(size);
 
-	area->registerObserver(ObserverEventType::CREATUREDESPAWNED, dynamicObserver);
+	theater->registerObserver(ObserverEventType::CREATUREDESPAWNED, dynamicObserver);
+	theater->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, dynamicObserver);
 
-	zone->transferObject(area, -1, false);
+	zone->transferObject(theater, -1, false);
 
-	dynamicObserver->spawnInitialMobiles(area);
+	dynamicObserver->spawnInitialMobiles(theater);
 
-	return area;
+	return theater;
 }
 
 void CreatureManagerImplementation::spawnRandomCreature(int number, float x, float z, float y, uint64 parentID) {

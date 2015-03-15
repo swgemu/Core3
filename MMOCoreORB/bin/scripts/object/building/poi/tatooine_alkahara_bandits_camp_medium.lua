@@ -42,7 +42,7 @@
 
 
 object_building_poi_tatooine_alkahara_bandits_camp_medium = object_building_poi_shared_tatooine_alkahara_bandits_camp_medium:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_tatooine_alkahara_bandits_camp_medium, "object/building/poi/tatooine_alkahara_bandits_camp_medium.iff")

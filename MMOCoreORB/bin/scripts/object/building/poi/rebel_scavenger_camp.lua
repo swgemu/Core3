@@ -42,7 +42,7 @@
 
 
 object_building_poi_rebel_scavenger_camp = object_building_poi_shared_rebel_scavenger_camp:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_rebel_scavenger_camp, "object/building/poi/rebel_scavenger_camp.iff")

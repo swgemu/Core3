@@ -42,7 +42,8 @@
 
 
 object_intangible_theater_base_theater = object_intangible_theater_shared_base_theater:new {
-
+	gameObjectType = 2060,
+	noBuildRadius = 64,
 }
 
 ObjectTemplates:addTemplate(object_intangible_theater_base_theater, "object/intangible/theater/base_theater.iff")

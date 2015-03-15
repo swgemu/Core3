@@ -42,7 +42,7 @@
 
 
 object_building_poi_naboo_mvillager_large2 = object_building_poi_shared_naboo_mvillager_large2:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_naboo_mvillager_large2, "object/building/poi/naboo_mvillager_large2.iff")

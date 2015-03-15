@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_exploding_homestead = object_building_poi_shared_creature_lair_exploding_homestead:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_exploding_homestead, "object/building/poi/creature_lair_exploding_homestead.iff")

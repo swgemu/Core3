@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_swampy_lair = object_building_poi_shared_creature_lair_swampy_lair:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_swampy_lair, "object/building/poi/creature_lair_swampy_lair.iff")

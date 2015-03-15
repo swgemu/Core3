@@ -42,7 +42,7 @@
 
 
 object_building_poi_tatooine_rodianhunter_medium = object_building_poi_shared_tatooine_rodianhunter_medium:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_tatooine_rodianhunter_medium, "object/building/poi/tatooine_rodianhunter_medium.iff")

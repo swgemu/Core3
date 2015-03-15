@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_reptilian_flyer = object_building_poi_shared_creature_lair_reptilian_flyer:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_reptilian_flyer, "object/building/poi/creature_lair_reptilian_flyer.iff")

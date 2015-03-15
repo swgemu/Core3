@@ -42,7 +42,7 @@
 
 
 object_building_poi_tatooine_slaver_large4 = object_building_poi_shared_tatooine_slaver_large4:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_tatooine_slaver_large4, "object/building/poi/tatooine_slaver_large4.iff")

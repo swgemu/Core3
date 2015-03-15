@@ -42,7 +42,7 @@
 
 
 object_building_poi_naboo_farm_medium_1 = object_building_poi_shared_naboo_farm_medium_1:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_naboo_farm_medium_1, "object/building/poi/naboo_farm_medium_1.iff")

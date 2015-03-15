@@ -42,7 +42,7 @@
 
 
 object_building_poi_endor_marauder_large2 = object_building_poi_shared_endor_marauder_large2:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_endor_marauder_large2, "object/building/poi/endor_marauder_large2.iff")

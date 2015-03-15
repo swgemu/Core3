@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_forest_bloom_herbivore = object_building_poi_shared_creature_lair_forest_bloom_herbivore:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_forest_bloom_herbivore, "object/building/poi/creature_lair_forest_bloom_herbivore.iff")

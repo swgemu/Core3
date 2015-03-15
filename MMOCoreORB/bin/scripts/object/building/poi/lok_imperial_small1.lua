@@ -42,7 +42,7 @@
 
 
 object_building_poi_lok_imperial_small1 = object_building_poi_shared_lok_imperial_small1:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_lok_imperial_small1, "object/building/poi/lok_imperial_small1.iff")

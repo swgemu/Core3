@@ -42,7 +42,7 @@
 
 
 object_building_poi_destroyed_sandcrawler_theater = object_building_poi_shared_destroyed_sandcrawler_theater:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_destroyed_sandcrawler_theater, "object/building/poi/destroyed_sandcrawler_theater.iff")

@@ -42,7 +42,7 @@
 
 
 object_building_poi_corellia_solitude_small4 = object_building_poi_shared_corellia_solitude_small4:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_corellia_solitude_small4, "object/building/poi/corellia_solitude_small4.iff")

@@ -42,7 +42,7 @@
 
 
 object_building_poi_tatooine_factory_liberation = object_building_poi_shared_tatooine_factory_liberation:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_tatooine_factory_liberation, "object/building/poi/tatooine_factory_liberation.iff")

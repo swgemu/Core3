@@ -42,7 +42,7 @@
 
 
 object_building_poi_yavin4_abandoned_rebel_camp_large3 = object_building_poi_shared_yavin4_abandoned_rebel_camp_large3:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_yavin4_abandoned_rebel_camp_large3, "object/building/poi/yavin4_abandoned_rebel_camp_large3.iff")

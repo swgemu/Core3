@@ -42,7 +42,7 @@
 
 
 object_building_poi_dantooine_mokk_medium1 = object_building_poi_shared_dantooine_mokk_medium1:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_dantooine_mokk_medium1, "object/building/poi/dantooine_mokk_medium1.iff")

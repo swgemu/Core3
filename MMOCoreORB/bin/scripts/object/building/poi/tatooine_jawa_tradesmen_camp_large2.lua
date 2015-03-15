@@ -42,7 +42,7 @@
 
 
 object_building_poi_tatooine_jawa_tradesmen_camp_large2 = object_building_poi_shared_tatooine_jawa_tradesmen_camp_large2:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_tatooine_jawa_tradesmen_camp_large2, "object/building/poi/tatooine_jawa_tradesmen_camp_large2.iff")

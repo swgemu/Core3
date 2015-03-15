@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_guardian_rancor = object_building_poi_shared_creature_lair_guardian_rancor:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_guardian_rancor, "object/building/poi/creature_lair_guardian_rancor.iff")

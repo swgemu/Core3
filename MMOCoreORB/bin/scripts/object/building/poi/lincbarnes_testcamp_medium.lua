@@ -42,7 +42,7 @@
 
 
 object_building_poi_lincbarnes_testcamp_medium = object_building_poi_shared_lincbarnes_testcamp_medium:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_lincbarnes_testcamp_medium, "object/building/poi/lincbarnes_testcamp_medium.iff")

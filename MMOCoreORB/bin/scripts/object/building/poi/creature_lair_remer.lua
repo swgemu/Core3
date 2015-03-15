@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_remer = object_building_poi_shared_creature_lair_remer:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_remer, "object/building/poi/creature_lair_remer.iff")

@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_deathstarruins_junktown = object_building_poi_shared_creature_lair_deathstarruins_junktown:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_deathstarruins_junktown, "object/building/poi/creature_lair_deathstarruins_junktown.iff")

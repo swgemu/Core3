@@ -42,7 +42,7 @@
 
 
 object_building_poi_small_imperial_tie_bomber_base = object_building_poi_shared_small_imperial_tie_bomber_base:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_small_imperial_tie_bomber_base, "object/building/poi/small_imperial_tie_bomber_base.iff")

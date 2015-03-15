@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_baz_nitch = object_building_poi_shared_creature_lair_baz_nitch:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_baz_nitch, "object/building/poi/creature_lair_baz_nitch.iff")

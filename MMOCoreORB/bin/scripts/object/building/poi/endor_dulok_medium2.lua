@@ -42,7 +42,7 @@
 
 
 object_building_poi_endor_dulok_medium2 = object_building_poi_shared_endor_dulok_medium2:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_endor_dulok_medium2, "object/building/poi/endor_dulok_medium2.iff")

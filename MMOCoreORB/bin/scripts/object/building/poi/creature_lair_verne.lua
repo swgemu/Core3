@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_verne = object_building_poi_shared_creature_lair_verne:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_verne, "object/building/poi/creature_lair_verne.iff")
