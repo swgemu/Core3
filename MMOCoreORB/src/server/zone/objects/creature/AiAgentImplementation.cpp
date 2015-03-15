@@ -431,6 +431,49 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		activateAwarenessEvent(target);
 	}
 
+	if (target != NULL && target->isPlayerCreature() && hasReactionChatMessages()) {
+		Locker locker(target);
+		Locker clocker(_this.get(), target);
+
+		float dist = target->getDistanceTo(_this.get());
+
+		if (dist < 45.f && dist > 40.f && getCooldownTimerMap()->isPast("reaction_chat") && getParentID() == target->getParentID()
+				&& !isDead() && !isIncapacitated() && !isInCombat() && CollisionManager::checkLineOfSight(target, _this.get())) {
+
+			String factionString = getFactionString();
+			uint64 aiFaction = getFaction();
+			int state = 0;
+
+			if (aiFaction != 0) {
+				if (target->getFaction() == aiFaction)
+					state = ReactionManager::NICE;
+				else if (target->getFaction() == 0)
+					state = ReactionManager::MID;
+				else
+					state = ReactionManager::MEAN;
+
+			} else if (!factionString.isEmpty()) {
+				PlayerObject* ghost = target->getPlayerObject().get();
+				if (ghost != NULL) {
+					float standing = ghost->getFactionStanding(factionString);
+					if (standing >= 3000)
+						state = ReactionManager::NICE;
+					else if (standing <= -3000)
+						state = ReactionManager::MEAN;
+					else
+						state = ReactionManager::MID;
+				}
+			} else {
+				state = ReactionManager::MID;
+			}
+
+			if (target->isFacingObject(_this.get()))
+				sendReactionChat(ReactionManager::HI, state);
+			else
+				sendReactionChat(ReactionManager::BYE, state);
+		}
+	}
+
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
 }
 
@@ -2914,7 +2957,7 @@ String AiAgentImplementation::getPersonalityStf() {
 	return "";
 }
 
-void AiAgentImplementation::sendReactionChat(int type, int state) {
+void AiAgentImplementation::sendReactionChat(int type, int state, bool force) {
 	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZone() == NULL) {
 		return;
 	}
@@ -2922,7 +2965,7 @@ void AiAgentImplementation::sendReactionChat(int type, int state) {
 	ReactionManager* reactionManager = getZoneServer()->getReactionManager();
 
 	if (reactionManager != NULL)
-		reactionManager->sendChatReaction(_this.get(), type, state);
+		reactionManager->sendChatReaction(_this.get(), type, state, force);
 }
 
 float AiAgentImplementation::getEffectiveResist() {
