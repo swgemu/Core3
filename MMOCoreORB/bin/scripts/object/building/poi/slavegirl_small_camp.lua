@@ -42,7 +42,7 @@
 
 
 object_building_poi_slavegirl_small_camp = object_building_poi_shared_slavegirl_small_camp:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_slavegirl_small_camp, "object/building/poi/slavegirl_small_camp.iff")

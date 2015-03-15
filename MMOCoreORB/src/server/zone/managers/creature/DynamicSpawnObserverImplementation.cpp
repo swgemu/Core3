@@ -7,8 +7,13 @@
 #include "server/zone/objects/creature/Creature.h"
 
 int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	if (eventType != ObserverEventType::CREATUREDESPAWNED)
+
+	if (eventType == ObserverEventType::OBJECTREMOVEDFROMZONE) {
+		despawnSpawns();
+		return 1;
+	} else if (eventType != ObserverEventType::CREATUREDESPAWNED) {
 		return 0;
+	}
 
 	Reference<AiAgent*> ai = cast<AiAgent*>(arg1);
 	Reference<SceneObject*> spawn = cast<SceneObject*>(observable);
@@ -24,7 +29,7 @@ int DynamicSpawnObserverImplementation::notifyObserverEvent(unsigned int eventTy
 		if (spawnedCreatures.isEmpty()) {
 
 			Reference<Task*> task = new DespawnDynamicSpawnTask(spawn);
-			task->schedule(300000);
+			task->schedule(60000);
 
 			return 1;
 		}

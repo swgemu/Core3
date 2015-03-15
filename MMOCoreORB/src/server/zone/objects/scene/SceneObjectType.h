@@ -55,6 +55,7 @@ public:
 	const static int GARAGEBUILDING = 0x210;
 	const static int CITYHALLBUILDING = 0x211;
 	const static int SALONBUILDING = 0x212;
+	const static int POIBUILDING = 0x213;
 	/// End not in client *************
 
 	const static int CREATURE = 0x400;  // ENTITY
@@ -82,6 +83,10 @@ public:
 	const static int VEHICLECONTROLDEVICE = 0x808;
 	const static int SHIPCONTROLDEVICE = 0x80A;
 	const static int DROIDCONTROLDEVICE = 0x80B;
+
+	/// Not in client **********
+	const static int THEATEROBJECT = 0x80C;
+	/// End not in client ************
 
 	const static int INSTALLATION = 0x1000;
 	const static int FACTORY = 0x1001;

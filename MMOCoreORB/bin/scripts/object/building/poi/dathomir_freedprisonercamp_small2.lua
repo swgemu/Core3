@@ -42,7 +42,7 @@
 
 
 object_building_poi_dathomir_freedprisonercamp_small2 = object_building_poi_shared_dathomir_freedprisonercamp_small2:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_dathomir_freedprisonercamp_small2, "object/building/poi/dathomir_freedprisonercamp_small2.iff")

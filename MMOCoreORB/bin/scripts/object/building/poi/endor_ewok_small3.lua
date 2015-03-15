@@ -42,7 +42,7 @@
 
 
 object_building_poi_endor_ewok_small3 = object_building_poi_shared_endor_ewok_small3:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_endor_ewok_small3, "object/building/poi/endor_ewok_small3.iff")

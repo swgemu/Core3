@@ -109,6 +109,7 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<IntangibleObject>(SceneObjectType::INTANGIBLE);
 	objectFactory.registerObject<IntangibleObject>(SceneObjectType::DATA2);
+	objectFactory.registerObject<TheaterObject>(SceneObjectType::THEATEROBJECT);
 
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::BODYARMOR); //chest plates
@@ -182,6 +183,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::UNIVERSITYBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::GARAGEBUILDING);
 	objectFactory.registerObject<BuildingObject>(SceneObjectType::SALONBUILDING);
+	objectFactory.registerObject<PoiBuilding>(SceneObjectType::POIBUILDING);
 
 
 	objectFactory.registerObject<InstallationObject>(SceneObjectType::INSTALLATION);

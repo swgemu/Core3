@@ -42,7 +42,7 @@
 
 
 object_building_poi_yavin4_hutt_scavenger_camp_small2 = object_building_poi_shared_yavin4_hutt_scavenger_camp_small2:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_yavin4_hutt_scavenger_camp_small2, "object/building/poi/yavin4_hutt_scavenger_camp_small2.iff")

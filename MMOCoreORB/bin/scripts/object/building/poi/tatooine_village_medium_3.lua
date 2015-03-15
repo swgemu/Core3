@@ -42,7 +42,7 @@
 
 
 object_building_poi_tatooine_village_medium_3 = object_building_poi_shared_tatooine_village_medium_3:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_tatooine_village_medium_3, "object/building/poi/tatooine_village_medium_3.iff")

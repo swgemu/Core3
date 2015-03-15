@@ -42,7 +42,7 @@
 
 
 object_building_poi_dantooine_janta_small1 = object_building_poi_shared_dantooine_janta_small1:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_dantooine_janta_small1, "object/building/poi/dantooine_janta_small1.iff")

@@ -42,7 +42,7 @@
 
 
 object_building_poi_rebel_listening_post = object_building_poi_shared_rebel_listening_post:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_rebel_listening_post, "object/building/poi/rebel_listening_post.iff")

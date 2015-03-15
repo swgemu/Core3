@@ -42,7 +42,7 @@
 
 
 object_building_poi_anywhere_uberlair_imperial_01 = object_building_poi_shared_anywhere_uberlair_imperial_01:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_anywhere_uberlair_imperial_01, "object/building/poi/anywhere_uberlair_imperial_01.iff")

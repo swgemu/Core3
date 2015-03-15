@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_sand_panther = object_building_poi_shared_creature_lair_sand_panther:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_sand_panther, "object/building/poi/creature_lair_sand_panther.iff")

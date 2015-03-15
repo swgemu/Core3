@@ -42,7 +42,7 @@
 
 
 object_building_poi_naboo_ruins_small_3 = object_building_poi_shared_naboo_ruins_small_3:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_naboo_ruins_small_3, "object/building/poi/naboo_ruins_small_3.iff")

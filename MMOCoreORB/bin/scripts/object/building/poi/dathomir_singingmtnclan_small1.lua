@@ -42,7 +42,7 @@
 
 
 object_building_poi_dathomir_singingmtnclan_small1 = object_building_poi_shared_dathomir_singingmtnclan_small1:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_dathomir_singingmtnclan_small1, "object/building/poi/dathomir_singingmtnclan_small1.iff")

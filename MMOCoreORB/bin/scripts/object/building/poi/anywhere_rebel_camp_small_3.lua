@@ -42,7 +42,7 @@
 
 
 object_building_poi_anywhere_rebel_camp_small_3 = object_building_poi_shared_anywhere_rebel_camp_small_3:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_anywhere_rebel_camp_small_3, "object/building/poi/anywhere_rebel_camp_small_3.iff")

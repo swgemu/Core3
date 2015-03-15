@@ -42,7 +42,7 @@
 
 
 object_building_poi_anywhere_imperial_base_large_1 = object_building_poi_shared_anywhere_imperial_base_large_1:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_anywhere_imperial_base_large_1, "object/building/poi/anywhere_imperial_base_large_1.iff")

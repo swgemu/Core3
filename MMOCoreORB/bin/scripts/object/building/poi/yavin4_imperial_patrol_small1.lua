@@ -42,7 +42,7 @@
 
 
 object_building_poi_yavin4_imperial_patrol_small1 = object_building_poi_shared_yavin4_imperial_patrol_small1:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_yavin4_imperial_patrol_small1, "object/building/poi/yavin4_imperial_patrol_small1.iff")

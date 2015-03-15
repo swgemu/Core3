@@ -42,7 +42,7 @@
 
 
 object_building_poi_lok_imperial_medium5 = object_building_poi_shared_lok_imperial_medium5:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_lok_imperial_medium5, "object/building/poi/lok_imperial_medium5.iff")

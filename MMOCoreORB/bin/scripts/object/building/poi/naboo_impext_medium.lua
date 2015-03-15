@@ -42,7 +42,7 @@
 
 
 object_building_poi_naboo_impext_medium = object_building_poi_shared_naboo_impext_medium:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_naboo_impext_medium, "object/building/poi/naboo_impext_medium.iff")

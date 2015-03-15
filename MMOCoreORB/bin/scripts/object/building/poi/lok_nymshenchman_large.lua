@@ -42,7 +42,7 @@
 
 
 object_building_poi_lok_nymshenchman_large = object_building_poi_shared_lok_nymshenchman_large:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_lok_nymshenchman_large, "object/building/poi/lok_nymshenchman_large.iff")

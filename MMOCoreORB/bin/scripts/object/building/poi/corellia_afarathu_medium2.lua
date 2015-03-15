@@ -42,7 +42,7 @@
 
 
 object_building_poi_corellia_afarathu_medium2 = object_building_poi_shared_corellia_afarathu_medium2:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_corellia_afarathu_medium2, "object/building/poi/corellia_afarathu_medium2.iff")

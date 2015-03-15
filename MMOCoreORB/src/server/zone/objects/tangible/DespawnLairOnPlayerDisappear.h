@@ -5,10 +5,12 @@
  *      Author: victor
  */
 
-#ifndef DESPAWNCREATUREONPLAYERDISAPPEAR_H_
-#define DESPAWNCREATUREONPLAYERDISAPPEAR_H_
+#ifndef DESPAWNLAIRONPLAYERDISAPPEAR_H_
+#define DESPAWNLAIRONPLAYERDISAPPEAR_H_
 
 #include "server/zone/objects/tangible/LairObject.h"
+#include "server/zone/objects/building/PoiBuilding.h"
+#include "server/zone/objects/intangible/TheaterObject.h"
 
 namespace server {
  namespace zone {
@@ -17,30 +19,57 @@ namespace server {
 
 
 class DespawnLairOnPlayerDisappear : public Task {
-	ManagedWeakReference<LairObject*> lair;
+	ManagedWeakReference<SceneObject*> lair;
 
 public:
-	DespawnLairOnPlayerDisappear(LairObject* l) {
+	DespawnLairOnPlayerDisappear(SceneObject* l) {
 		lair = l;
 	}
 
 	void run() {
-		ManagedReference<LairObject*> strongRef = lair.get();
+		ManagedReference<SceneObject*> strongRef = lair.get();
 
 		if (strongRef == NULL)
 			return;
-
-		Locker locker(strongRef);
-
-		strongRef->clearDespawnEvent();
 
 		Zone* zone = strongRef->getZone();
 
 		if (zone == NULL)
 			return;
 
-		if (strongRef->getNumberOfPlayersInRange() <= 0) {
-			strongRef->destroyObjectFromWorld(true);
+		if (strongRef->isLairObject()) {
+			ManagedReference<LairObject*> strongLair = strongRef.castTo<LairObject*>();
+
+			Locker locker(strongLair);
+
+			strongLair->clearDespawnEvent();
+
+			if (strongLair->getNumberOfPlayersInRange() <= 0) {
+				strongLair->destroyObjectFromWorld(true);
+			}
+
+		} else if (strongRef->isPoiBuilding()) {
+			ManagedReference<PoiBuilding*> strongPoi = strongRef.castTo<PoiBuilding*>();
+
+			Locker locker(strongPoi);
+
+			strongPoi->clearDespawnEvent();
+
+			if (strongPoi->getNumberOfPlayersInRange() <= 0) {
+				strongPoi->destroyObjectFromWorld(true);
+			}
+
+		} else if (strongRef->isTheaterObject()) {
+			ManagedReference<TheaterObject*> strongTheater = strongRef.castTo<TheaterObject*>();
+
+			Locker locker(strongTheater);
+
+			strongTheater->clearDespawnEvent();
+
+			if (strongTheater->getNumberOfPlayersInRange() <= 0) {
+				strongTheater->destroyObjectFromWorld(true);
+			}
+
 		}
 	}
 };
@@ -52,4 +81,4 @@ public:
 
 using namespace server::zone::objects::tangible;
 
-#endif /* DESPAWNCREATUREONPLAYERDISAPPEAR_H_ */
+#endif /* DESPAWNLAIRONPLAYERDISAPPEAR_H_ */

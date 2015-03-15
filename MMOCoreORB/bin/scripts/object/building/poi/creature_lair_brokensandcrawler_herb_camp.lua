@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_brokensandcrawler_herb_camp = object_building_poi_shared_creature_lair_brokensandcrawler_herb_camp:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_brokensandcrawler_herb_camp, "object/building/poi/creature_lair_brokensandcrawler_herb_camp.iff")

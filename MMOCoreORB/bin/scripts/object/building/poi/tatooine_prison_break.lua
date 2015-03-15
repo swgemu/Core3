@@ -42,7 +42,7 @@
 
 
 object_building_poi_tatooine_prison_break = object_building_poi_shared_tatooine_prison_break:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_tatooine_prison_break, "object/building/poi/tatooine_prison_break.iff")

@@ -42,7 +42,7 @@
 
 
 object_building_poi_creature_lair_gaping_spider = object_building_poi_shared_creature_lair_gaping_spider:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_creature_lair_gaping_spider, "object/building/poi/creature_lair_gaping_spider.iff")

@@ -42,7 +42,7 @@
 
 
 object_building_poi_corellia_corellia_times_investigator_large1 = object_building_poi_shared_corellia_corellia_times_investigator_large1:new {
-
+	gameObjectType = 531,
 }
 
 ObjectTemplates:addTemplate(object_building_poi_corellia_corellia_times_investigator_large1, "object/building/poi/corellia_corellia_times_investigator_large1.iff")
