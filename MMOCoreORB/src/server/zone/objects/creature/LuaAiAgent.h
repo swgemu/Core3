@@ -124,6 +124,8 @@ namespace creature {
 		int setAlertDuration(lua_State* L);
 		int alertedTimeIsPast(lua_State* L);
 		int setLevel(lua_State* L);
+		int hasReactionChatMessages(lua_State* L);
+		int sendReactionChat(lua_State* L);
 	private:
 		AiAgent* realObject;
 	};

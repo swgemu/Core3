@@ -1433,6 +1433,20 @@ void SceneObjectImplementation::createChildObjects() {
 	}
 }
 
+bool SceneObjectImplementation::isFacingObject(SceneObject* obj) {
+	Vector3 thisPos = getPosition();
+	Vector3 targetPos = obj->getPosition();
+
+	float directionangle = atan2(targetPos.getX() - thisPos.getX(), targetPos.getY() - thisPos.getY());
+
+	if (directionangle < 0) {
+		float a = M_PI + directionangle;
+		directionangle = M_PI + a;
+	}
+
+	return fabs(directionangle - direction.getRadians()) < (M_PI / 2);
+}
+
 void SceneObjectImplementation::faceObject(SceneObject* obj) {
 	Vector3 thisPos = getPosition();
 	Vector3 targetPos = obj->getPosition();

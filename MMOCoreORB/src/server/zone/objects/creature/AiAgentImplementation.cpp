@@ -2914,7 +2914,7 @@ String AiAgentImplementation::getPersonalityStf() {
 	return "";
 }
 
-void AiAgentImplementation::sendReactionChat(int type, int state) {
+void AiAgentImplementation::sendReactionChat(int type, int state, bool force) {
 	if (!getCooldownTimerMap()->isPast("reaction_chat") || getZone() == NULL) {
 		return;
 	}
@@ -2922,7 +2922,7 @@ void AiAgentImplementation::sendReactionChat(int type, int state) {
 	ReactionManager* reactionManager = getZoneServer()->getReactionManager();
 
 	if (reactionManager != NULL)
-		reactionManager->sendChatReaction(_this.get(), type, state);
+		reactionManager->sendChatReaction(_this.get(), type, state, force);
 }
 
 float AiAgentImplementation::getEffectiveResist() {

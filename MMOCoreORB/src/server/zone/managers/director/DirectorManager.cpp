@@ -34,6 +34,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
+#include "server/zone/managers/reaction/ReactionManager.h"
 #include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/ChatMessage.h"
@@ -398,6 +399,13 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("TRANSFERCANTREMOVE", TransferErrorCode::CANTREMOVE);
 	luaEngine->setGlobalInt("TRANSFERSUCCESS", 1);
 	luaEngine->setGlobalInt("TRANSFERFAIL", 0);
+
+	// NPC reaction chat types / states
+	luaEngine->setGlobalInt("REACTION_HI", ReactionManager::HI);
+	luaEngine->setGlobalInt("REACTION_BYE", ReactionManager::BYE);
+	luaEngine->setGlobalInt("REACTION_NICE", ReactionManager::NICE);
+	luaEngine->setGlobalInt("REACTION_MID", ReactionManager::MID);
+	luaEngine->setGlobalInt("REACTION_MEAN", ReactionManager::MEAN);
 
 	// Badges
 	luaEngine->setGlobalInt("COUNT_5", Badge::COUNT_5);

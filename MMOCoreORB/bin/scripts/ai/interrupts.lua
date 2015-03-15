@@ -47,6 +47,9 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	if TangibleObject(pAgent):getPvpStatusBitmask() == NONE or CreatureObject(pAgent):isDead() or CreatureObject(pAgent):isIncapacitated() then return false end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("4") end
 	if AiAgent(pAgent):getNumberOfPlayersInRange() <= 0  or AiAgent(pAgent):isRetreating() or AiAgent(pAgent):isFleeing() or AiAgent(pAgent):isInCombat() then return false	end
+
+	self:checkForReactionChat(pAgent, pObject)
+
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("5") end
 	if AiAgent(pAgent):getFollowObject() ~= nil and AiAgent(pAgent):getFollowObject() ~= pObject then return false end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("6") end
@@ -58,7 +61,7 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	if not SceneObject(pAgent):isInRangeWithObject(pObject, radius) then return false end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("7") end
 
-	if not SceneObject(pObject):isCreatureObject() then	return false end -- don't aggro TANOs (lairs, turrets, etc)
+	if not SceneObject(pObject):isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("8") end
 	if TangibleObject(pAgent):getPvpStatusBitmask() == NONE or CreatureObject(pObject):isDead() or CreatureObject(pObject):isIncapacitated() then return false end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("9") end
@@ -102,6 +105,59 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	
 	-- All the checks are out of the way, now we know we want to notice them
 	return true
+end
+
+function DefaultInterrupt:checkForReactionChat(pAgent, pObject)
+	if not SceneObject(pObject):isPlayerCreature() then return end
+
+	if not AiAgent(pAgent):hasReactionChatMessages() then return end
+
+	if SceneObject(pObject):getParentID() ~= SceneObject(pAgent):getParentID() then return end
+
+	local dist = SceneObject(pObject):getDistanceTo(pAgent)
+
+	if dist > 48 or dist < 35 then return end
+
+	if not CreatureObject(pAgent):checkCooldownRecovery("reaction_chat") then return end
+
+	if not AiAgent(pAgent):checkLineOfSight(pObject) then return end
+
+	local factionString = AiAgent(pAgent):getFactionString()
+	local aiFaction = CreatureObject(pAgent):getFaction()
+	local targetFaction = CreatureObject(pObject):getFaction()
+	local state = 0
+
+	if aiFaction ~= 0 then
+		if targetFaction == aiFaction then
+			state = REACTION_NICE
+		elseif targetFaction == 0 then
+			state = REACTION_MID
+		else
+			state = REACTION_MEAN
+		end
+
+	elseif factionString ~= "" then
+		local pGhost = CreatureObject(pObject):getPlayerObject()
+
+		if pGhost ~= nil then
+			local standing = PlayerObject(pGhost):getFactionStanding(factionString)
+			if standing >= 3000 then
+				state = REACTION_NICE
+			elseif standing <= -3000 then
+				state = REACTION_MEAN
+			else
+				state = REACTION_MID
+			end
+		end
+	else
+		state = REACTION_MID
+	end
+
+	if SceneObject(pObject):isFacingObject(pAgent) then
+		AiAgent(pAgent):sendReactionChat(REACTION_HI, state)
+	else
+		AiAgent(pAgent):sendReactionChat(REACTION_BYE, state)
+	end
 end
 
 -- put this in a different function so that the generic checks are re-usable

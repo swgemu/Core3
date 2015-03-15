@@ -57,6 +57,7 @@ namespace scene {
 		//int removeObject(lua_State* L);
 		int getGameObjectType(lua_State* L);
 		int faceObject(lua_State* L);
+		int isFacingObject(lua_State* L);
 		int destroyObjectFromWorld(lua_State* L);
 		int destroyObjectFromDatabase(lua_State* L);
 		int updateDirection(lua_State* L);

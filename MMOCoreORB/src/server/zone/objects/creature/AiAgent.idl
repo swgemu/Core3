@@ -986,7 +986,7 @@ class AiAgent extends CreatureObject {
 	}
 
 	@dirty
-	public string getReactionStf() {
+	public abstract string getReactionStf() {
 		if (npcTemplate.get() == null)
 			return "";
 
@@ -1213,8 +1213,12 @@ class AiAgent extends CreatureObject {
 	}
 
 	@preLocked
-	public native void sendReactionChat(int type, int state = 0);
-	
+	public native void sendReactionChat(int type, int state = 0, boolean force = false);
+
+	public abstract boolean hasReactionChatMessages() {
+		return getReactionStf() != "";
+	}
+
 	@local
 	public native float getEffectiveResist();
 	

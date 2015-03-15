@@ -44,6 +44,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 //		{ "removeObject", &LuaSceneObject::removeObject },
 		{ "getGameObjectType", &LuaSceneObject::getGameObjectType },
 		{ "faceObject", &LuaSceneObject::faceObject },
+		{ "isFacingObject", &LuaSceneObject::isFacingObject },
 		{ "destroyObjectFromWorld", &LuaSceneObject::destroyObjectFromWorld },
 		{ "destroyObjectFromDatabase", &LuaSceneObject::destroyObjectFromDatabase },
 		{ "isCreatureObject", &LuaSceneObject::isCreatureObject },
@@ -296,6 +297,22 @@ int LuaSceneObject::faceObject(lua_State* L) {
 	realObject->faceObject(obj);
 
 	return 0;
+}
+
+int LuaSceneObject::isFacingObject(lua_State* L) {
+	SceneObject* obj = (SceneObject*)lua_touserdata(L, -1);
+
+	if (obj == NULL) {
+		lua_pushboolean(L, false);
+
+		return 1;
+	}
+
+	bool res = realObject->isFacingObject(obj);
+
+	lua_pushboolean(L, res);
+
+	return 1;
 }
 
 int LuaSceneObject::isInRangeWithObject(lua_State* L) {
