@@ -92,18 +92,11 @@ void ReactionManagerImplementation::loadLuaConfig() {
 	info("Loaded " + String::valueOf(emoteReactionFines.size()) + " emote reaction records.", true);
 }
 
-void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int state) {
+void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int state, bool force) {
 	StringBuffer message;
 
 	if (npc->getReactionStf() != "") {
 		message << npc->getReactionStf();
-	} else if (npc->isDroidObject()) {
-		DroidObject* droid = cast<DroidObject*>(npc);
-		if (droid->getPersonalityBase() != "") {
-			message << droid->getPersonalityBase();
-		} else {
-			return;
-		}
 	} else {
 		return;
 	}
@@ -128,8 +121,8 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 		chance = 25;
 		typeString = "attacked_";
 		break;
-	case ReactionManager::BYE: // TODO: add trigger
-		chance = 25;
+	case ReactionManager::BYE:
+		chance = 100;
 		typeString = "bye_";
 		break;
 	case ReactionManager::CALM:
@@ -152,8 +145,8 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 		chance = 25;
 		typeString = "help_";
 		break;
-	case ReactionManager::HI: // TODO: add trigger
-		chance = 25;
+	case ReactionManager::HI:
+		chance = 100;
 		typeString = "hi_";
 		break;
 	case ReactionManager::HIT:
@@ -190,7 +183,7 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 		break;
 	}
 
-	if (System::random(99) < chance) {
+	if (force || System::random(99) < chance) {
 		int num = System::random(15) + 1;
 
 		// All of the reaction stfs are missing attacked_15
@@ -202,7 +195,7 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 		chat.setStringId(message.toString());
 		zoneServer->getChatManager()->broadcastMessage(npc,chat,0,0,0);
 
-		npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat",30000); // 30 second cooldown
+		npc->getCooldownTimerMap()->updateToCurrentAndAddMili("reaction_chat", 60000); // 60 second cooldown
 	}
 }
 

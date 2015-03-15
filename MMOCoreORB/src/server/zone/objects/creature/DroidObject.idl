@@ -468,4 +468,16 @@ class DroidObject extends AiAgent {
 	 */
 	@dirty
 	public native boolean sendConversationStartTo(SceneObject player);
+
+	public boolean hasReactionChatMessages() {
+		return getPersonalityBase() != "" || super.hasReactionChatMessages();
+	}
+
+	@dirty
+	public string getReactionStf() {
+		if (getPersonalityBase() != "")
+			return getPersonalityBase();
+
+		return super.getReactionStf();
+	}
 }

@@ -127,6 +127,8 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "setAlertDuration", &LuaAiAgent::setAlertDuration },
 		{ "alertedTimeIsPast", &LuaAiAgent::alertedTimeIsPast },
 		{ "setLevel", &LuaAiAgent::setLevel },
+		{ "hasReactionChatMessages", &LuaAiAgent::hasReactionChatMessages },
+		{ "sendReactionChat", &LuaAiAgent::sendReactionChat },
 		{ 0, 0 }
 };
 
@@ -910,4 +912,21 @@ int LuaAiAgent::alertedTimeIsPast(lua_State* L) {
 		lua_pushboolean(L, true);
 
 	return 1;
+}
+
+int LuaAiAgent::hasReactionChatMessages(lua_State* L) {
+	lua_pushboolean(L, realObject->hasReactionChatMessages());
+
+	return 1;
+}
+
+int LuaAiAgent::sendReactionChat(lua_State* L) {
+	int state = lua_tointeger(L, -1);
+	int type = lua_tointeger(L, -2);
+
+	Locker locker(realObject);
+
+	realObject->sendReactionChat(type, state);
+
+	return 0;
 }

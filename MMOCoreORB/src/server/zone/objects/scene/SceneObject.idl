@@ -1163,6 +1163,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	public native void faceObject(SceneObject obj);
 
+	public native boolean isFacingObject(SceneObject obj);
+
 	public native abstract void notifySelfPositionUpdate();
 	
 	@dirty
