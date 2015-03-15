@@ -45,6 +45,7 @@
 #include "server/zone/objects/tangible/component/droid/DroidComponent.h"
 #include "server/zone/templates/tangible/DroidPersonalityModuleTemplate.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/managers/reaction/ReactionManager.h"
 
 DroidPersonalityModuleDataComponent::DroidPersonalityModuleDataComponent() {
 	setLoggingName("DroidCraftingModule");
@@ -110,11 +111,11 @@ void DroidPersonalityModuleDataComponent::onCall() {
 		observer->deploy();
 	}
 	Locker plock(droid);
-	notifyEvent(ObserverEventType::ENTEREDAREA,NULL,0,true);
+
 	droid->registerObserver(ObserverEventType::DAMAGERECEIVED, observer);
-	droid->registerObserver(ObserverEventType::ENTEREDAREA, observer);
-	droid->registerObserver(ObserverEventType::EXITEDAREA, observer);
 	droid->registerObserver(ObserverEventType::DEFENDERADDED, observer);
+
+	droid->sendReactionChat(ReactionManager::HI, ReactionManager::NICE, true);
 }
 void DroidPersonalityModuleDataComponent::onStore() {
 	ManagedReference<DroidObject*> droid = getDroidObject();
@@ -127,12 +128,11 @@ void DroidPersonalityModuleDataComponent::onStore() {
 		return;
 	}
 	Locker dlock( droid );
-	notifyEvent(ObserverEventType::EXITEDAREA,NULL,0,true);
 
 	droid->dropObserver(ObserverEventType::DAMAGERECEIVED, observer);
-	droid->dropObserver(ObserverEventType::ENTEREDAREA, observer);
-	droid->dropObserver(ObserverEventType::EXITEDAREA, observer);
 	droid->dropObserver(ObserverEventType::DEFENDERADDED, observer);
+
+	droid->sendReactionChat(ReactionManager::BYE, ReactionManager::NICE, true);
 }
 
 void DroidPersonalityModuleDataComponent::copy(BaseDroidModuleComponent* other) {
@@ -156,37 +156,6 @@ void DroidPersonalityModuleDataComponent::notifyEvent(unsigned int eventType, Ma
 		int roll = System::random(100);
 		StringBuffer message;
 		if (roll > 50 || forced) {
-			if (eventType == ObserverEventType::ENTEREDAREA || eventType == ObserverEventType::EXITEDAREA) {
-				if (eventType ==ObserverEventType::ENTEREDAREA)
-					message << "hi_";
-				else
-					message << "bye_";
-				// reaction should be based on faction alignment.
-				int droidFaction = droid->getFaction();
-				SceneObject* sceno = dynamic_cast<SceneObject*>(arg1);
-				int inputFaction = droidFaction;
-				bool aggressive = false;
-				if (sceno != NULL) {
-					CreatureObject* target = dynamic_cast<CreatureObject*>(sceno);
-					inputFaction = target->getFaction();
-					if (target->isAttackableBy(droid)) // attackable checks pet owner for npc to npc quips, is aggressiveTo doesnt.
-						aggressive = true;
-				}
-				String responseAttitude;
-				if (responseAttitude == "") {
-					if (inputFaction == droidFaction)
-						responseAttitude = "nice";
-					else if (aggressive)
-						responseAttitude = "mean";
-					else
-						responseAttitude = "mid";
-				}
-				if (forced) {
-					responseAttitude = "nice";
-				}
-				message << responseAttitude;
-				quip(message.toString(),droid);
-			}
 			if (eventType == ObserverEventType::DEFENDERADDED) {
 				short type = System::random(1);
 				if (type == 0)
