@@ -1,5 +1,6 @@
 crackdown_storm_commando = Creature:new {
 	objectName = "@mob/creature_names:crackdown_storm_commando",
+	randomNameType = NAME_STORMTROOPER_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 1,

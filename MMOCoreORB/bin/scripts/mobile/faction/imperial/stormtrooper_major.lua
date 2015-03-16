@@ -1,5 +1,6 @@
 stormtrooper_major = Creature:new {
 	objectName = "@mob/creature_names:stormtrooper_major",
+	randomNameType = NAME_STORMTROOPER_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 32,
