@@ -1,5 +1,6 @@
 crackdown_dark_trooper = Creature:new {
 	objectName = "@mob/creature_names:crackdown_dark_trooper",
+	randomNameType = NAME_DARKTROOPER,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 35,
@@ -24,6 +25,7 @@ crackdown_dark_trooper = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
+	scale = 1.5,
 
 	templates = {"object/mobile/dark_trooper.iff"},
 	lootGroups = {

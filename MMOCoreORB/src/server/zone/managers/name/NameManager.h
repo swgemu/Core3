@@ -110,6 +110,12 @@ public:
 
 	static const int STORMTROOPER = 11; // XX-123
 	static const int STORMTROOPER_TAG = 12; // XX-123 (a stormtrooper)
+	static const int SCOUTTROOPER = 13; // XX-123
+	static const int SCOUTTROOPER_TAG = 14; // XX-123 (a scout trooper)
+	static const int DARKTROOPER = 15; // XX-123
+	static const int DARKTROOPER_TAG = 16; // XX-123 (a dark trooper)
+	static const int SWAMPTROOPER = 17; // XX-123
+	static const int SWAMPTROOPER_TAG = 18; // XX-123 (a swamp trooper)
 
 	static const int GUILD_NAME = 31;
 	static const int GUILD_ABBREV = 32;
@@ -143,6 +149,9 @@ class NameManager : public Singleton<NameManager>, public Logger, public Object 
 	Vector<String> npcSurnames;
 
 	Vector<String> stormtrooperPrefixes;
+	Vector<String> scouttrooperPrefixes;
+	Vector<String> darktrooperPrefixes;
+	Vector<String> swamptrooperPrefixes;
 
 
 private:
@@ -175,7 +184,7 @@ private:
 
 	String makeName(int nameLength);
 
-	String makeStormtrooperName();
+	String makeImperialTrooperName(int type);
 
 public:
 	NameManager();

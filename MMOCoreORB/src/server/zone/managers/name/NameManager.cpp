@@ -186,6 +186,23 @@ bool NameManager::loadConfigData() {
 
 	stormtrooperPrefixesObject.pop();
 
+	LuaObject scouttrooperPrefixesObject = lua->getGlobalObject("scouttrooperPrefixes");
+	for (int i = 1; i <= scouttrooperPrefixesObject.getTableSize(); ++i)
+		scouttrooperPrefixes.add(scouttrooperPrefixesObject.getStringAt(i));
+
+	scouttrooperPrefixesObject.pop();
+
+	LuaObject darktrooperPrefixesObject = lua->getGlobalObject("darktrooperPrefixes");
+	for (int i = 1; i <= darktrooperPrefixesObject.getTableSize(); ++i)
+		darktrooperPrefixes.add(darktrooperPrefixesObject.getStringAt(i));
+
+	darktrooperPrefixesObject.pop();
+
+	LuaObject swamptrooperPrefixesObject = lua->getGlobalObject("swamptrooperPrefixes");
+	for (int i = 1; i <= swamptrooperPrefixesObject.getTableSize(); ++i)
+		swamptrooperPrefixes.add(swamptrooperPrefixesObject.getStringAt(i));
+
+	swamptrooperPrefixesObject.pop();
 	return true;
 }
 
@@ -553,8 +570,11 @@ int NameManager::validateLastName(const String& name, int species) {
 const String NameManager::makeCreatureName(int type) {
 	String name;
 
-	if (type == NameManagerType::STORMTROOPER || type == NameManagerType::STORMTROOPER_TAG) {
-		name = makeStormtrooperName();
+	if (type == NameManagerType::STORMTROOPER || type == NameManagerType::STORMTROOPER_TAG
+			|| type == NameManagerType::SCOUTTROOPER || type == NameManagerType::SCOUTTROOPER_TAG
+				||type == NameManagerType::DARKTROOPER || type == NameManagerType::DARKTROOPER_TAG
+					|| type == NameManagerType::SWAMPTROOPER || type == NameManagerType::SWAMPTROOPER_TAG) {
+		name = makeImperialTrooperName(type);
 	} else {
 		name = makeName(3 + System::random(6));
 
@@ -567,10 +587,18 @@ const String NameManager::makeCreatureName(int type) {
 	return name;
 }
 
-String NameManager::makeStormtrooperName() {
+String NameManager::makeImperialTrooperName(int type) {
 	String name;
 
-	name += stormtrooperPrefixes.get(System::random(stormtrooperPrefixes.size() - 1));
+	if (type == NameManagerType::STORMTROOPER || type == NameManagerType::STORMTROOPER_TAG)
+		name += stormtrooperPrefixes.get(System::random(stormtrooperPrefixes.size() - 1));
+	else if (type == NameManagerType::SCOUTTROOPER || type == NameManagerType::SCOUTTROOPER_TAG)
+		name += scouttrooperPrefixes.get(System::random(scouttrooperPrefixes.size() - 1));
+	else if (type == NameManagerType::DARKTROOPER || type == NameManagerType::DARKTROOPER_TAG)
+		name += darktrooperPrefixes.get(System::random(darktrooperPrefixes.size() - 1));
+	else if (type == NameManagerType::SWAMPTROOPER || type == NameManagerType::SWAMPTROOPER_TAG)
+		name += swamptrooperPrefixes.get(System::random(swamptrooperPrefixes.size() - 1));
+
 	name += "-";
 	name += String::valueOf(1 + System::random(898));
 
