@@ -1705,9 +1705,9 @@ float SceneObjectImplementation::getTemplateRadius() {
 
 	MeshAppearanceTemplate* app = cast<MeshAppearanceTemplate*>(templateObject->getAppearanceTemplate());
 
-	if (app == NULL || app->getAABBTree() == NULL)
+	if (app == NULL || app->getBoundingSphere() == NULL)
 		return 0.f;
 
 	// we currently don't scale these, so we have no scale variable
-	return app->getAABBTree()->getBoundingBox().extents().length();
+	return app->getBoundingSphere()->getRadius();
 }
