@@ -2842,6 +2842,8 @@ function TutorialScreenPlay:missionTerminalMove(creatureObject, movingCreature)
 			return 0
 		end
 	end
+	
+	return 0
 end
 
 function TutorialScreenPlay:part8_check(movingCreature)
