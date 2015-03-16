@@ -143,10 +143,28 @@ public:
 			return sendLots(creature, targetObj);
 		} else if (container == "vendors") {
 			return sendVendorInfo(creature, targetObj);
-		}else if( container == "veteranrewards" ){
+		} else if (container == "veteranrewards") {
 			return sendVeteranRewardInfo( creature, targetObj );
-		}else if( container == "faction" ){
+		} else if( container == "faction") {
 			return sendFactionInfo( creature, targetObj );
+		} else if (container == "screenplaystate") {
+			if (!args.hasMoreTokens()) {
+				creature->sendSystemMessage("SYNTAX: /snoop [player] screenplaystate <stateName> [state]");
+				return INVALIDPARAMETERS;
+			}
+			String stateName;
+			args.getStringToken(stateName);
+
+			uint64 state = targetObj->getScreenPlayState(stateName);
+			if (args.hasMoreTokens()) {
+				uint64 stateToCheck = args.getIntToken();
+				if (state & stateToCheck)
+					creature->sendSystemMessage(targetObj->getFirstName() + " state check of '" + String::valueOf(stateToCheck) + "' for screenplayState '" + stateName + "': TRUE.");
+				else
+					creature->sendSystemMessage(targetObj->getFirstName() + " state check of '" + String::valueOf(stateToCheck) + "' for screenplayState '" + stateName + "': FALSE.");
+			} else {
+				creature->sendSystemMessage(targetObj->getFirstName() + " state check for screenplayState '" + stateName + "': " + String::valueOf(state) + ".");
+			}
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
