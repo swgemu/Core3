@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_5d65db43",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SetPlayerAppearanceCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-17T10:14:36Z",
+      "side": 1,
+      "message": "I think you mean to check isPlayerCreature() here.",
+      "revId": "8e35fbbadc55a1a28e5e20dbfea65c9f8f1d1693",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_1d5f6374",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SetPlayerAppearanceCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-17T10:14:36Z",
+      "side": 1,
+      "message": "You need to do more than this to ensure that argument is a valid server object template. We don\u0027t want to be sending an invalid template to the client.",
+      "revId": "8e35fbbadc55a1a28e5e20dbfea65c9f8f1d1693",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_3d5a1f84",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SetPlayerAppearanceCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-17T10:14:36Z",
+      "side": 1,
+      "message": "It\u0027d probably be more correct if you say mobile object template.",
+      "revId": "8e35fbbadc55a1a28e5e20dbfea65c9f8f1d1693",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
