@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_7dc77713",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SetPlayerAppearanceCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-17T10:48:43Z",
+      "side": 1,
+      "message": "} else if (argument !\u003d \"\") {",
+      "revId": "3e1039286dfc9bc9b6f42f265ab39c14e99bf518",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_5dccbb35",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SetPlayerAppearanceCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-17T10:48:43Z",
+      "side": 1,
+      "message": "} else {\n   templateName \u003d argument;\n}",
+      "revId": "3e1039286dfc9bc9b6f42f265ab39c14e99bf518",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
