@@ -56,6 +56,12 @@ dantooine_destroy_missions = {
 			size = 25,
 		},
 		{
+			lairTemplateName = "dantooine_dantari_chief_squad_neutral_none",
+			minDifficulty = 30,
+			maxDifficulty = 40,
+			size = 25,
+		},
+		{
 			lairTemplateName = "dantooine_graul_mauler_lair_neutral_large_boss_01",
 			minDifficulty = 31,
 			maxDifficulty = 39,

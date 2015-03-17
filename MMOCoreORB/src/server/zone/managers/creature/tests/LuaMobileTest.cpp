@@ -471,6 +471,15 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			}
 		}
 
+		// Verify mission buildings exist and are lairs
+		String missionBuilding = lair->getMissionBuilding(10);
+		if (!missionBuilding.isEmpty()) {
+			std::string buildingStr = missionBuilding.toCharArray();
+			SharedObjectTemplate* templateObject = templateManager->getTemplate(missionBuilding.hashCode());
+			EXPECT_TRUE( templateObject != NULL && templateObject->isSharedTangibleObjectTemplate() ) << "Mission building template " << buildingStr << " in lair template " << templateName << " does not exist";
+			EXPECT_TRUE( missionBuilding.beginsWith( "object/tangible/lair/") ) << "Mission building template " << buildingStr << " in lair template " << templateName << " is not a child of object/tangible/lair/";
+		}
+
 		if( lair->getBuildingType() == LairTemplate::THEATER ){
 			EXPECT_TRUE( buildingCount > 0 ) << "There are no buildings configured in theater type lair template " << templateName;
 		}
@@ -541,17 +550,28 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			// Verify lair template exists
 			String lairTemplateName = spawn->getLairTemplateName();
 			Reference<LairTemplate*> lairTemplate = CreatureTemplateManager::instance()->getLairTemplate(lairTemplateName.hashCode());
-			EXPECT_TRUE( lairTemplate != NULL ) << "Lair template " << lairName << " in spawn group " << templateName << " does not exist.";
+			EXPECT_TRUE( lairTemplate != NULL ) << "Lair template " << lairName << " in destroy mission spawn group " << templateName << " does not exist.";
+
+			// Verify that lair template has a valid mission building or is of type LAIR
+			String missionBuilding = lairTemplate->getMissionBuilding(10);
+			if (!missionBuilding.isEmpty()) {
+				std::string buildingStr = missionBuilding.toCharArray();
+				SharedObjectTemplate* templateObject = templateManager->getTemplate(missionBuilding.hashCode());
+				EXPECT_TRUE( templateObject != NULL && templateObject->isSharedTangibleObjectTemplate() ) << "Mission building template " << buildingStr << " in lair template " << lairName << ", part of destroy mission group " << templateName << " does not exist";
+				EXPECT_TRUE( missionBuilding.beginsWith( "object/tangible/lair/") ) << "Mission building template " << buildingStr << " in lair template " << lairName << ", part of destroy mission group " << templateName << " is not a child of object/tangible/lair/";
+			} else {
+				EXPECT_TRUE( lairTemplate->getBuildingType() == LairTemplate::LAIR ) << "Lair template " << lairName << ", part of destroy mission group " << templateName << " is not of type LAIR";
+			}
 
 			// Verify difficulties
 			int minDiff = spawn->getMinDifficulty();
 			int maxDiff = spawn->getMaxDifficulty();
-			EXPECT_TRUE( minDiff > 0 ) << "MinDifficulty for lairTemplate " << lairName << " in spawn group " << templateName << " is not positive.";
-			EXPECT_TRUE( maxDiff >= minDiff ) << "MaxDifficulty for lairTemplate " << lairName << " in spawn group " << templateName << " is less than min difficulty.";
+			EXPECT_TRUE( minDiff > 0 ) << "MinDifficulty for lairTemplate " << lairName << " in destroy mission spawn group " << templateName << " is not positive.";
+			EXPECT_TRUE( maxDiff >= minDiff ) << "MaxDifficulty for lairTemplate " << lairName << " in destroy mission spawn group " << templateName << " is less than min difficulty.";
 
 			// Verify size is at least 1
 			float size = spawn->getSize();
-			EXPECT_TRUE( size >= 1 ) << "Size for lairTemplate " << lairName << " in spawn group " << templateName << " is less than 1.";
+			EXPECT_TRUE( size >= 1 ) << "Size for lairTemplate " << lairName << " in destroy mission spawn group " << templateName << " is less than 1.";
 		}
 	}
 }

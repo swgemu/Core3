@@ -29,6 +29,7 @@ protected:
 
 	VectorMap<uint32, Reference<Vector<String>*> > buildings;
 
+	String missionBuilding;
 	String name;
 
 	unsigned int faction;
@@ -71,6 +72,13 @@ public:
 			return objects->get(System::random(objects->size() - 1));
 		else
 			return String();
+	}
+
+	String getMissionBuilding(uint32 difficulty) {
+		if (!missionBuilding.isEmpty() || difficulty > VERYHARD)
+			return missionBuilding;
+
+		return getBuilding(difficulty);
 	}
 
 	Vector<String>* getBuildings( int difficulty ){
@@ -215,6 +223,9 @@ public:
 
 		veryHard.pop();
 
+		if (templateData->getStringField("missionBuilding").length() > 0) {
+			missionBuilding = templateData->getStringField("missionBuilding");
+		}
 	}
 
 	int getSpawnLimit() {

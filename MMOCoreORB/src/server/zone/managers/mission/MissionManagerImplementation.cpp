@@ -586,7 +586,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	else
 		diffDisplay += playerLevel;
 
-	String building = lairTemplateObject->getBuilding(difficulty);
+	String building = lairTemplateObject->getMissionBuilding(difficulty);
 
 	if (building.isEmpty()) {
 		mission->setTypeCRC(0);

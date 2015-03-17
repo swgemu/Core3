@@ -175,7 +175,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	}
 
 	if (lairObject == NULL) {
-		String buildingToSpawn = lair->getBuilding(difficulty);
+		String buildingToSpawn = lair->getMissionBuilding(difficulty);
 
 	 	if (buildingToSpawn.isEmpty()) {
 	 		error("error spawning " + buildingToSpawn);
