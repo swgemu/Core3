@@ -274,7 +274,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	float excMod = 1.0;
 
-	if (System::random(legendaryChance) == legendaryChance) {
+	if (System::random(legendaryChance) >= legendaryChance - floor(level/100 + 0.5)) {
 			uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
 
 			UnicodeString newName = prototype->getDisplayedName() + " (Legendary)";
@@ -283,7 +283,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 			excMod = legendaryModifier;
 
 			prototype->setOptionsBitmask(bitmask, false);
-	} else if (System::random(exceptionalChance) == exceptionalChance) {
+	} else if (System::random(exceptionalChance) >= exceptionalChance - floor(level/100 + 0.5)) {
 		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
 
 		UnicodeString newName = prototype->getDisplayedName() + " (Exceptional)";
