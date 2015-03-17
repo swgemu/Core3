@@ -42,7 +42,9 @@ void ReactionManagerImplementation::loadLuaConfig() {
 
 	LuaObject reactionRanks = lua->getGlobalObject("imperialReactionRanks");
 
-	if (reactionRanks.isValidTable()) {
+	if (!reactionRanks.isValidTable()) {
+		error("Invalid imperialReactionRanks table.");
+	} else {
 		for(int i = 1; i <= reactionRanks.getTableSize(); ++i) {
 			LuaObject entry = reactionRanks.getObjectAt(i);
 
@@ -62,7 +64,9 @@ void ReactionManagerImplementation::loadLuaConfig() {
 
 	LuaObject luaObject = lua->getGlobalObject("emoteReactionFines");
 
-	if (luaObject.isValidTable()) {
+	if (!luaObject.isValidTable()) {
+		error("Invalid emoteReactionFines table.");
+	} else {
 		for (int i = 1; i <= luaObject.getTableSize(); ++i) {
 			LuaObject reactionData = luaObject.getObjectAt(i);
 
@@ -275,10 +279,15 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 		suiFineMsg << "@stormtrooper_attitude/st_response:imperial_fine_" << String::valueOf(reactionFine->getCreditFine());
 		if (playerObject->getReactionFines() != 0) {
 			suiFineMsg << " @stormtrooper_attitude/st_response:imperial_fine_outstanding " << String::valueOf(playerObject->getReactionFines() + reactionFine->getCreditFine()) << " @stormtrooper_attitude/st_response:imperial_fine_credits";
+		} else {
+			playerObject->updateReactionFineTimestamp();
 		}
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(emoteUser, SuiWindowType::REACTION_FINE);
 		box->setPromptTitle("@stormtrooper_attitude/st_response:imperial_fine_t"); // Imperial Fine
 		box->setPromptText(suiFineMsg.toString());
+		box->setCallback(new ReactionFinePaymentSuiCallback(zoneServer));
+		box->setUsingObject(emoteTarget);
+		box->setForceCloseDistance(16.f);
 
 		playerObject->addSuiBox(box);
 		emoteUser->sendMessage(box->generateMessage());
@@ -381,4 +390,50 @@ void ReactionManagerImplementation::doKnockdown(CreatureObject* victim, AiAgent*
 
 	victim->inflictDamage(attacker, CreatureAttribute::MIND, victim->getHAM(CreatureAttribute::MIND) + 200, true);
 
+}
+
+void ReactionManagerImplementation::doReactionFineMailCheck(CreatureObject* player) {
+	if (player == NULL)
+		return;
+
+	PlayerObject* playerObject = player->getPlayerObject();
+
+	if (playerObject == NULL)
+		return;
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	if (chatManager == NULL)
+		return;
+
+	if (playerObject->getReactionFines() == 0)
+		return;
+
+	//int weekLength = 7 * 24 * 60 * 60 * 1000;
+	//int dayLength = 24 * 60 * 60 * 1000;
+	int weekLength = 24 * 60 * 60 * 1000; // 1 day for testing
+	int dayLength = 24 * 60 * 60 * 1000; // 1 day for testing
+
+	Time currentTime;
+
+	uint32 timeDiff = currentTime.getMiliTime() - playerObject->getReactionFineTimestamp()->getMiliTime();
+
+	// Don't send mail until fine is a week overdue
+	if (timeDiff < weekLength)
+		return;
+
+	uint32 mailTimeDiff = currentTime.getMiliTime() - playerObject->getReactionFineMailTimestamp()->getMiliTime();
+
+	// Don't send more than one mail a day
+	if (mailTimeDiff < dayLength)
+		return;
+
+	// Mail has been sent at least once since player received fine, send overdue notice
+	if (playerObject->getReactionFineMailTimestamp()->getMiliTime() > playerObject->getReactionFineTimestamp()->getMiliTime()) {
+		chatManager->sendMail("@stormtrooper_attitude/st_response:imperial_collection_email_t", "@stormtrooper_attitude/st_response:st_overdue_fine_warning_02", "@stormtrooper_attitude/st_response:st_overdue_fine_warning_01", player->getFirstName());
+	} else {
+		chatManager->sendMail("@stormtrooper_attitude/st_response:imperial_collection_email_t", "@stormtrooper_attitude/st_response:st_overdue_fine_warning_02", "@stormtrooper_attitude/st_response:st_overdue_fine_warning_00", player->getFirstName());
+	}
+
+	playerObject->updateReactionFineMailTimestamp();
 }

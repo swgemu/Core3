@@ -112,6 +112,12 @@ class PlayerObject extends IntangibleObject {
 
 	protected int reactionFines;
 	
+	@dereferenced
+	protected Time reactionFineTimestamp; // Timestamp of when player was given a fine
+
+	@dereferenced
+	protected Time reactionFineMailTimestamp; // Timestamp of last mail sent regarding fine being due
+
 	protected string starterProfession;
 	
 	protected string bankLocation;
@@ -376,7 +382,7 @@ class PlayerObject extends IntangibleObject {
 		holoEmoteUseCount = 0;
 		
 		spouseName = "";
-		
+
 		Logger.setLoggingName("PlayerObject");
 	}
 	
@@ -1757,6 +1763,24 @@ class PlayerObject extends IntangibleObject {
 
 	public void subtractFromReactionFines(int amount) {
 		reactionFines = reactionFines - amount;
+	}
+
+	public void updateReactionFineTimestamp() {
+		reactionFineTimestamp.updateToCurrentTime();
+	}
+
+	public void updateReactionFineMailTimestamp() {
+		reactionFineMailTimestamp.updateToCurrentTime();
+	}
+
+	@local
+	public Time getReactionFineTimestamp() {
+		return reactionFineTimestamp;
+	}
+
+	@local
+	public Time getReactionFineMailTimestamp() {
+		return reactionFineMailTimestamp;
 	}
 }
 
