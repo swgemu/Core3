@@ -13,6 +13,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/reaction/ReactionManager.h"
 
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
@@ -190,6 +191,9 @@ public:
 
 			PlayerManager* playerManager = zoneServer->getPlayerManager();
 			playerManager->sendLoginMessage(player);
+
+			ReactionManager* reactionManager = zoneServer->getReactionManager();
+			reactionManager->doReactionFineMailCheck(player);
 
 			//player->info("sending login Message:" + zoneServer->getLoginMessage(), true);
 

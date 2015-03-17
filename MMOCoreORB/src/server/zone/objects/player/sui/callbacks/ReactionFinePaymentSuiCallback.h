@@ -13,7 +13,7 @@ public:
 	}
 
 	void run(CreatureObject* creature, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
-		if (!sui->isMessageBox() || cancelPressed || creature == NULL)
+		if (!sui->isMessageBox() || creature == NULL)
 			return;
 
 		if(!creature->isPlayerCreature())
