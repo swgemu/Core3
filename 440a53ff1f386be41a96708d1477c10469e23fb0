@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_1d03e374",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgent.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-17T01:06:55Z",
+      "side": 1,
+      "message": "Just return getReactionStf() !\u003d \"\";",
+      "revId": "440a53ff1f386be41a96708d1477c10469e23fb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_fdf7e78a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-17T01:06:55Z",
+      "side": 1,
+      "message": "It would be nice to have this in luas instead of hard-coded in cpp since it defines behaviors and should be able to be different per creature. It is also a lot to happen in the position update, and might be better served in the awareness event.",
+      "revId": "440a53ff1f386be41a96708d1477c10469e23fb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_ddf42b89",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/DroidObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-17T01:06:55Z",
+      "side": 1,
+      "message": "nitpicky, but return (getPersonalityBase() !\u003d \"\") || super.hasReactionChatMessages(); will put everything together.",
+      "revId": "440a53ff1f386be41a96708d1477c10469e23fb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_bdf16f97",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1449,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-17T01:06:55Z",
+      "side": 1,
+      "message": "This is pretty heavy, it should be avoided whenever possible (the atan2 call). The function itself is fine, but make sure you actually need the result.",
+      "revId": "440a53ff1f386be41a96708d1477c10469e23fb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
