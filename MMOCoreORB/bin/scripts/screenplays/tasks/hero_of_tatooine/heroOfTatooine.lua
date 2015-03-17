@@ -62,6 +62,9 @@ function HeroOfTatooineScreenPlay:spawnAltruismObjects()
 	if (pCrevice ~= nil) then
 		writeData("hero_of_tat:altruismCrevice", SceneObject(pCrevice):getObjectID())
 		SceneObject(pCrevice):setContainerComponent("heroOfTatooineRockCrevice")
+		SceneObject(pCrevice):setContainerInheritPermissionsFromParent(false)
+		SceneObject(pCrevice):setContainerDefaultAllowPermission(MOVEIN)
+		SceneObject(pCrevice):setContainerDefaultAllowPermission(OPEN)
 	end
 
 	local pWife = spawnMobile("tatooine", "hero_of_tat_farmers_wife", 0, 190.8, -66.6, -104.6, -70, 5995573)
