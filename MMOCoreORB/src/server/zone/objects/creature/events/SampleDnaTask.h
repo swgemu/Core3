@@ -40,8 +40,8 @@ public:
 		creature->setPvpStatusBitmask(CreatureFlag::NONE,true);
 	}
 	void run() {
-		Locker locker(player);
-		Locker crosslocker(creature,player);
+		Locker locker(creature);
+		Locker crosslocker(player,creature);
 		player->removePendingTask("sampledna");
 		if (!creature->isInRange(player, 16.f) ) {
 			player->sendSystemMessage("@bio_engineer:harvest_dna_out_of_range");
@@ -184,17 +184,14 @@ public:
 					if (creature->getDnaSampleCount() > 5) {
 						creature->setDnaState(CreatureManager::DNASAMPLED);
 					}
-					if (aggro) {
-						crosslocker.release();
-						CombatManager::instance()->startCombat(creature,player,true);
-					}
 					if (death) {
 						killCreature();
+					} else if (aggro) {
+						CombatManager::instance()->startCombat(creature,player,true);
 					}
 				} else {
 					player->sendSystemMessage("@bio_engineer:harvest_dna_failed");
 					if (aggro) {
-						crosslocker.release();
 						CombatManager::instance()->startCombat(creature,player,true);
 					}
 				}
