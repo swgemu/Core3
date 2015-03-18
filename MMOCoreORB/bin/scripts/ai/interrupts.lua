@@ -53,13 +53,6 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("5") end
 	if AiAgent(pAgent):getFollowObject() ~= nil and AiAgent(pAgent):getFollowObject() ~= pObject then return false end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("6") end
-	
-	-- TODO (dannuic): factor in level difference here
-	local radius = 32
-	if CreatureObject(pAgent):getInCellNumber() ~= -1 then radius = 12 end
-	radius = radius + AiAgent(pAgent):getFerocity()
-	if not SceneObject(pAgent):isInRangeWithObject(pObject, radius) then return false end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("7") end
 
 	if not SceneObject(pObject):isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("8") end
@@ -75,15 +68,9 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	if AiAgent(pAgent):isCamouflaged(pObject) or not AiAgent(pAgent):isAttackableBy(pObject) or not CreatureObject(pObject):isAttackableBy(pAgent) then return false end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("11") end
 	
-	--TODO (dannuic): this seems wrong
+	--TODO (dannuic): this still seems wrong, but it's only for AI aggroing AI anyway
 	if SceneObject(pObject):isAiAgent() then
 		--AiAgent(pObject):info("attacking me!")
-		
-		local agentFerocity = AiAgent(pAgent):getFerocity();
-		
-		--local agentTarget = LuaAiAgent(pObject)
-		local agentTargetFerocity = AiAgent(pObject):getFerocity()
-		
 		
 		--local creature = LuaCreatureObject(pAgent)
 		local creatureFaction = CreatureObject(pAgent):getFaction()
@@ -91,11 +78,9 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 		--local creatureTarget = LuaCreatureObject(pObject)
 		local creatureTargetFaction = CreatureObject(pObject):getFaction()
 		
-		
 		if not AiAgent(pObject):isAttackableBy(pAgent) then return false end
 		--AiAgent(pAgent):info("12")
-		if ((agentTargetFerocity <= 0 or agentFerocity <= 0) 
-		    and CreatureObject(pObject):getLevel() >= CreatureObject(pAgent):getLevel()) 
+		if (CreatureObject(pObject):getLevel() >= CreatureObject(pAgent):getLevel())
 		    or (creatureFaction ~= 0 and creatureTargetFaction == 0) 
 		    or (creatureFaction == 0 and creatureTargetFaction ~= 0) 
 		    then return false 
@@ -183,25 +168,25 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1f") end
 	
 	-- TODO (dannuic): tweak these formulae based on feedback
-	local effectiveLevel = CreatureObject(pAgent):getLevel()
+	-- TODO (dannuic): should we be using group levels here (if available)?
+	local levelDiff = CreatureObject(pObject):getLevel() - CreatureObject(pAgent):getLevel()
+	local mod = math.max(0.04, math.min((1 - (levelDiff/20)), 1.2))
 	if SceneObject(pObject):isPlayerCreature() then
-		effectiveLevel = effectiveLevel * (1 + AiAgent(pAgent):getFerocity() / 4)
 		local faction = AiAgent(pAgent):getFactionString()
 		if faction == "rebel" or faction == "imperial" then
-			effectiveLevel = effectiveLevel * 2.5
-		elseif faction ~= "" and faction ~= nil and SceneObject(pObject):isPlayerCreature() then
+			mod = mod * 2.5
+		elseif faction ~= "" and faction ~= nil then
 			local pGhost = CreatureObject(pObject):getPlayerObject()
 			if pGhost ~= nil then
 				local standing = PlayerObject(pGhost):getFactionStanding(faction)
-				effectiveLevel = effectiveLevel * (1 + (standing / -5000))
+				mod = mod * (1 + (standing / -5000))
 			end
 		end
 	end
 
-	local radius = 32 - CreatureObject(pObject):getLevel() + effectiveLevel
-	if not SceneObject(pObject):isPlayerCreature() then radius = radius * AiAgent(pAgent):getFerocity() end
-	if radius < 10 then radius = 10 end
-	if radius > 64 then radius = 64 end
+	local radius = AiAgent(pAgent):getAggroRadius()
+	if radius == 0 then radius = DEFAULTAGGRORADIUS end
+	radius = radius*mod
 	local inRange = SceneObject(pObject):isInRangeWithObject(pAgent, radius)
 	
 	local pFollow = AiAgent(pAgent):getFollowObject();

@@ -182,11 +182,15 @@ private:
 		lua->setGlobalInt("PARALLELSEQUENCEBEHAVIOR",AiMap::PARALLELSEQUENCEBEHAVIOR);
 		lua->setGlobalInt("PARALLELSELECTORBEHAVIOR",AiMap::PARALLELSELECTORBEHAVIOR);
 
+		lua->setGlobalInt("DEFAULTAGGRORADIUS",AiAgent::DEFAULTAGGRORADIUS); // TODO: this could perhaps be set in a lua config
+
 		lua->setGlobalInt("OBLIVIOUS",AiAgent::OBLIVIOUS);
 		lua->setGlobalInt("WATCHING",AiAgent::WATCHING);
 		lua->setGlobalInt("STALKING",AiAgent::STALKING);
 		lua->setGlobalInt("FOLLOWING",AiAgent::FOLLOWING);
 		lua->setGlobalInt("PATROLLING",AiAgent::PATROLLING);
+		lua->setGlobalInt("FLEEING",AiAgent::FLEEING);
+		lua->setGlobalInt("LEASHING",AiAgent::LEASHING);
 
 		lua->setGlobalInt("NONE",CreatureFlag::NONE);
 		lua->setGlobalInt("PACK",CreatureFlag::PACK);

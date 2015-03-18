@@ -68,6 +68,7 @@ protected:
 	int baseHAM;
 	int baseHAMmax;
 
+	int aggroRadius;
 	unsigned int pvpBitmask;
 	unsigned int creatureBitmask;
 	unsigned int diet;
@@ -294,6 +295,10 @@ public:
 
 	inline int getBaseHAMmax() {
 		return baseHAMmax;
+	}
+
+	inline int getAggroRadius() {
+		return aggroRadius;
 	}
 
 	inline uint32 getPvpBitmask() {

@@ -83,6 +83,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "isStalker", &LuaAiAgent::isStalker },
 		{ "isKiller", &LuaAiAgent::isKiller },
 		{ "getFerocity", &LuaAiAgent::getFerocity },
+		{ "getAggroRadius", &LuaAiAgent::getAggroRadius },
 		{ "getArmor", &LuaAiAgent::getArmor },
 		{ "getDespawnOnNoPlayerInRange", &LuaAiAgent::getDespawnOnNoPlayerInRange },
 		{ "getNumberOfPlayersInRange", &LuaAiAgent::getNumberOfPlayersInRange },
@@ -553,6 +554,11 @@ int LuaAiAgent::isKiller(lua_State* L) {
 
 int LuaAiAgent::getFerocity(lua_State* L) {
 	lua_pushinteger(L, realObject->getFerocity());
+	return 1;
+}
+
+int LuaAiAgent::getAggroRadius(lua_State* L) {
+	lua_pushinteger(L, realObject->getAggroRadius());
 	return 1;
 }
 

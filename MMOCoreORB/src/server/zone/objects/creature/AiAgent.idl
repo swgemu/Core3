@@ -183,6 +183,8 @@ class AiAgent extends CreatureObject {
 	
 	public static final int UPDATEMOVEMENTINTERVAL = 500; // msec
 	
+	public static final int DEFAULTAGGRORADIUS = 24;
+	
 	public static final int OBLIVIOUS = 0;
 	public static final int WATCHING = 1;
 	public static final int STALKING = 2;
@@ -842,6 +844,14 @@ class AiAgent extends CreatureObject {
 			return 0;
 		
 		return npcTemplate.get().getFerocity();
+	}
+	
+	@dirty
+	public int getAggroRadius() {
+		if (npcTemplate.get() == null)
+			return 0;
+		
+		return npcTemplate.get().getAggroRadius();
 	}
 	
 	@dirty

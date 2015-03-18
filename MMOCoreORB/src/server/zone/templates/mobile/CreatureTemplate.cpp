@@ -45,6 +45,7 @@ CreatureTemplate::CreatureTemplate() {
 	milk = 0.f;
 	tamingChance = 0.f;
 	ferocity = 0;
+	aggroRadius = 0;
 	pvpBitmask = 0;
 	creatureBitmask = 0;
 	diet = 0;
@@ -100,6 +101,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	milk = templateData->getIntField("milk");
 	tamingChance = templateData->getFloatField("tamingChance");
 	ferocity = templateData->getIntField("ferocity");
+	aggroRadius = templateData->getIntField("aggroRadius");
 	pvpBitmask = templateData->getIntField("pvpBitmask");
 	creatureBitmask = templateData->getIntField("creatureBitmask");
 	diet = templateData->getIntField("diet");

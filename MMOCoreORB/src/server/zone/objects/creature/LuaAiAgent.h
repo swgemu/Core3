@@ -81,6 +81,7 @@ namespace creature {
 		int isStalker(lua_State* L);
 		int isKiller(lua_State* L);
 		int getFerocity(lua_State* L);
+		int getAggroRadius(lua_State* L);
 		int getArmor(lua_State* L);
 		int getDespawnOnNoPlayerInRange(lua_State* L);
 		int getNumberOfPlayersInRange(lua_State* L);
