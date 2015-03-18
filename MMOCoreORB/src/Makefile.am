@@ -56,7 +56,7 @@ AUTOGEN_PATH=../../../src/autogen
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/include/lua5.1 -I/usr/include/mysql \
+            -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/include/lua5.1 -I/usr/include/mysql \
 	    -I/usr/local/BerkeleyDB.5.0/include \
 	    -I/usr/include/db5.0 \
 	    -I$(GTEST_PATH)/include \
@@ -194,6 +194,8 @@ core3_IDLS =	autogen/server/zone/objects/intangible/TheaterObject.cpp \
 				autogen/server/zone/objects/creature/buffs/PerformanceBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/SingleUseBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/SingleUseBuffObserver.cpp \
+				autogen/server/zone/objects/creature/buffs/SquadLeaderBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/SquadLeaderBuffObserver.cpp \
 				autogen/server/zone/objects/player/PlayerObject.cpp \
 				autogen/server/zone/objects/player/sui/SuiBox.cpp \
 				autogen/server/zone/objects/player/sui/keypadbox/SuiKeypadBox.cpp \
@@ -638,6 +640,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/PerformanceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/SingleUseBuffObserverImplementation.cpp \
+		server/zone/objects/creature/buffs/SquadLeaderBuffObserverImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
 		server/zone/objects/tangible/components/vendor/VendorContainerComponent.cpp \
 		server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp \

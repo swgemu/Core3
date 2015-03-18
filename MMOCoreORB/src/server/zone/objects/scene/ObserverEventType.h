@@ -74,7 +74,8 @@ public:
 	const static int WASLISTENEDTO				= 62; // ManagedObject arg1 = player listening, long arg2 = 0
 	const static int WASWATCHED					= 63; // ManagedObject arg1 = player watching, long arg2 = 0
 	const static int FLEEING					= 64; // ManagedObject arg1 = creature, long arg2 = 0
-	const static int PEACE						= 65; // ManagedObejct arg1 = null, long arg2 = 0
+	const static int PEACE						= 65; // ManagedObject arg1 = null, long arg2 = 0
+	const static int PARENTCHANGED				= 66; // ManagedObject arg1 = newParent, long arg2 = 0
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */
