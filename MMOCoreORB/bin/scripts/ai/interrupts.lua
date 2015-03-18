@@ -67,8 +67,8 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("9") end
 	
 	-- if not in combat, ignore creatures in different cells
-	local agentParentID = SceneObject(pAgent):getParentID()
-	local targetParentID = SceneObject(pObject):getParentID()
+	local agentParentID = CreatureObject(pAgent):getBuildingParentID()
+	local targetParentID = CreatureObject(pObject):getBuildingParentID()
 	if agentParentID ~= targetParentID then	return false end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("10") end
 	

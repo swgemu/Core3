@@ -64,16 +64,17 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "setObjectMenuComponent", &LuaSceneObject::setObjectMenuComponent },
 		{ "setContainerComponent", &LuaSceneObject::setContainerComponent },
 		{ "switchZone", &LuaSceneObject::switchZone },
-		{ "setContainerInheritPermissionsFromParent", &LuaSceneObject::setContainerInheritPermissionsFromParent},
-		{ "setContainerAllowPermission", &LuaSceneObject::setContainerAllowPermission},
-		{ "setContainerDenyPermission", &LuaSceneObject::setContainerDenyPermission},
-		{ "setContainerDefaultAllowPermission", &LuaSceneObject::setContainerDefaultAllowPermission},
-		{ "clearContainerDefaultAllowPermission", &LuaSceneObject::clearContainerDefaultAllowPermission},
-		{ "setContainerDefaultDenyPermission", &LuaSceneObject::setContainerDefaultDenyPermission},
-		{ "clearContainerDefaultDenyPermission", &LuaSceneObject::clearContainerDefaultDenyPermission},
-		{ "setContainerOwnerID", &LuaSceneObject::setContainerOwnerID},
-		{ "setObjectName", &LuaSceneObject::setObjectName},
-		{ "isASubChildOf", &LuaSceneObject::isASubChildOf},
+		{ "setContainerInheritPermissionsFromParent", &LuaSceneObject::setContainerInheritPermissionsFromParent },
+		{ "setContainerAllowPermission", &LuaSceneObject::setContainerAllowPermission },
+		{ "setContainerDenyPermission", &LuaSceneObject::setContainerDenyPermission },
+		{ "setContainerDefaultAllowPermission", &LuaSceneObject::setContainerDefaultAllowPermission },
+		{ "clearContainerDefaultAllowPermission", &LuaSceneObject::clearContainerDefaultAllowPermission },
+		{ "setContainerDefaultDenyPermission", &LuaSceneObject::setContainerDefaultDenyPermission },
+		{ "clearContainerDefaultDenyPermission", &LuaSceneObject::clearContainerDefaultDenyPermission },
+		{ "setContainerOwnerID", &LuaSceneObject::setContainerOwnerID },
+		{ "setObjectName", &LuaSceneObject::setObjectName },
+		{ "isASubChildOf", &LuaSceneObject::isASubChildOf },
+		{ "isOwned", &LuaSceneObject::isOwned },
 		{ 0, 0 }
 
 };
@@ -643,6 +644,12 @@ int LuaSceneObject::isASubChildOf(lua_State* L) {
 	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
 
 	lua_pushboolean(L, realObject->isASubChildOf(obj));
+
+	return 1;
+}
+
+int LuaSceneObject::isOwned(lua_State* L) {
+	lua_pushboolean(L, realObject->isPet() || realObject->isVehicleObject());
 
 	return 1;
 }

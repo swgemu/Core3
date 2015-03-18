@@ -36,6 +36,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "playEffect", &LuaCreatureObject::playEffect },
 		{ "sendNewbieTutorialEnableHudElement", &LuaCreatureObject::sendNewbieTutorialEnableHudElement },
 		{ "getInCellNumber", &LuaCreatureObject::getInCellNumber },
+		{ "getBuildingParentID", &LuaCreatureObject::getBuildingParentID },
 		{ "sendOpenHolocronToPageMessage", &LuaCreatureObject::sendOpenHolocronToPageMessage },
 		{ "inflictDamage", &LuaCreatureObject::inflictDamage },
 		{ "setHAM", &LuaCreatureObject::setHAM },
@@ -108,6 +109,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isDroidPet", &LuaCreatureObject::isDroidPet },
 		{ "isCombatDroidPet", &LuaCreatureObject::isCombatDroidPet },
 		{ "awardExperience", &LuaCreatureObject::awardExperience },
+		{ "getOwner", &LuaCreatureObject::getOwner },
 		{ 0, 0 }
 };
 
@@ -367,6 +369,17 @@ int LuaCreatureObject::getInCellNumber(lua_State* L) {
 	}
 
 	return 1; // we return the number of vars pushed to the L stack
+}
+
+int LuaCreatureObject::getBuildingParentID(lua_State* L) {
+	SceneObject* parent = realObject->getParentRecursively(SceneObjectType::BUILDING).get().get();
+
+	if (parent == NULL)
+		lua_pushnumber(L, 0);
+	else
+		lua_pushnumber(L, parent->getObjectID());
+
+	return 1;
 }
 
 int LuaCreatureObject::setScreenPlayState(lua_State *L) {
@@ -803,4 +816,14 @@ int LuaCreatureObject::awardExperience(lua_State* L) {
 	playerManager->awardExperience(realObject, experienceType, experienceAmount, false);
 
 	return 0;
+}
+
+int LuaCreatureObject::getOwner(lua_State* L) {
+	CreatureObject* retVal = realObject->getLinkedCreature().get();
+
+	if (retVal == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, retVal);
+	return 1;
 }
