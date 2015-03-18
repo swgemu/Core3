@@ -121,7 +121,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "checkRange", &LuaAiAgent::checkRange },
 		{ "broadcastInterrupt", &LuaAiAgent::broadcastInterrupt },
 		{ "getSocialGroup", &LuaAiAgent::getSocialGroup },
-		{ "getOwner", &LuaAiAgent::getOwner },
+		{ "getOwner", &LuaCreatureObject::getOwner },
 		{ "getLastCommand", &LuaAiAgent::getLastCommand },
 		{ "getLastCommandTarget", &LuaAiAgent::getLastCommandTarget },
 		{ "setAlertDuration", &LuaAiAgent::setAlertDuration },
@@ -852,16 +852,6 @@ int LuaAiAgent::getSocialGroup(lua_State* L) {
 
 	lua_pushstring(L, socGroup.toCharArray());
 
-	return 1;
-}
-
-int LuaAiAgent::getOwner(lua_State* L) {
-	CreatureObject* retVal = realObject->getLinkedCreature().get();
-
-	if (retVal == NULL)
-		lua_pushnil(L);
-	else
-		lua_pushlightuserdata(L, retVal);
 	return 1;
 }
 
