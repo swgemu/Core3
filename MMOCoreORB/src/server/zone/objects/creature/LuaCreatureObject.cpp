@@ -36,6 +36,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "playEffect", &LuaCreatureObject::playEffect },
 		{ "sendNewbieTutorialEnableHudElement", &LuaCreatureObject::sendNewbieTutorialEnableHudElement },
 		{ "getInCellNumber", &LuaCreatureObject::getInCellNumber },
+		{ "getBuildingParentID", &LuaCreatureObject::getBuildingParentID },
 		{ "sendOpenHolocronToPageMessage", &LuaCreatureObject::sendOpenHolocronToPageMessage },
 		{ "inflictDamage", &LuaCreatureObject::inflictDamage },
 		{ "setHAM", &LuaCreatureObject::setHAM },
@@ -367,6 +368,17 @@ int LuaCreatureObject::getInCellNumber(lua_State* L) {
 	}
 
 	return 1; // we return the number of vars pushed to the L stack
+}
+
+int LuaCreatureObject::getBuildingParentID(lua_State* L) {
+	SceneObject* parent = realObject->getParentRecursively(SceneObjectType::BUILDING).get().get();
+
+	if (parent == NULL)
+		lua_pushnumber(L, 0);
+	else
+		lua_pushnumber(L, parent->getObjectID());
+
+	return 1;
 }
 
 int LuaCreatureObject::setScreenPlayState(lua_State *L) {

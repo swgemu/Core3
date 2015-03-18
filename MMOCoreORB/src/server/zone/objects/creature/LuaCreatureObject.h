@@ -46,6 +46,7 @@ namespace creature {
 		int getScreenPlayState(lua_State *L);
 		int sendNewbieTutorialEnableHudElement(lua_State* L);
 		int getInCellNumber(lua_State* L);
+		int getBuildingParentID(lua_State* L);
 		int sendOpenHolocronToPageMessage(lua_State* L);
 		int getTargetID(lua_State* L);
 		int clearCombatState(lua_State* L);

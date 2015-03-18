@@ -427,6 +427,10 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		return;
 
 	CreatureObject* target = cast<CreatureObject*>(entry);
+	if (target != NULL && (target->isVehicleObject() || target->isMount())) {
+		target =  target->getSlottedObject("rider").castTo<CreatureObject*>();
+	}
+
 	if (target != NULL) {
 		activateAwarenessEvent(target);
 	}
@@ -1675,14 +1679,15 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 
 float AiAgentImplementation::getMaxDistance() {
 	if (isRetreating() || isFleeing())
-		return 0.5;
+		return 0.1f;
 
 	ManagedReference<SceneObject*> followCopy = getFollowObject();
 	unsigned int stateCopy = getFollowState();
 
 	switch (stateCopy) {
 	case AiAgent::PATROLLING:
-		return 0.5;
+	case AiAgent::LEASHING:
+		return 0.1f;
 		break;
 	case AiAgent::STALKING:
 		return followCopy != NULL ? getDistanceTo(followCopy) : 25;
@@ -1690,13 +1695,13 @@ float AiAgentImplementation::getMaxDistance() {
 	case AiAgent::FOLLOWING:
 		// stop in weapons range
 		if (followCopy == NULL)
-			return 0.5;
+			return 0.1f;
 
 		if (!CollisionManager::checkLineOfSight(_this.get(), followCopy)) {
-			return 0.5;
+			return 0.1f;
 		} else if (getWeapon() != NULL ) {
 			float weapMaxRange = MIN(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
-			return MAX(0.5, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius() - 2);
+			return MAX(0.1f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius() - 2);
 		}
 		break;
 	}
@@ -2284,7 +2289,7 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 }
 
 bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
-	if (!isAttackableBy(target) || target->isVehicleObject())
+	if (!isAttackableBy(target))
 		return false;
 
 	// grab the GCW faction
