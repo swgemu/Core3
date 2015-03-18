@@ -278,6 +278,8 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	if (rootParent != NULL)
 		rootParent->notifyObjectInsertedToChild(object, sceneObject, objParent);
 
+	object->notifyObservers(ObserverEventType::PARENTCHANGED, sceneObject);
+
 	return true;
 }
 

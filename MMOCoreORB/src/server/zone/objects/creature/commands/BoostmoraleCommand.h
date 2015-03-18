@@ -86,10 +86,11 @@ public:
 //		shoutCommand(player, group);
 
 		int wounds[9] = {0,0,0,0,0,0,0,0,0};
-		if (!getWounds(player, group, wounds))
+		int sizeAffected = getWounds(player, group, wounds);
+		if (sizeAffected == 0)
 			return GENERALERROR;
 
-		if (!distributeWounds(player, group, wounds))
+		if (!distributeWounds(player, group, wounds, sizeAffected))
 			return GENERALERROR;
 			
 		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("boostmorale").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
@@ -101,9 +102,11 @@ public:
 		return SUCCESS;
 	}
 
-	bool getWounds(CreatureObject* leader, GroupObject* group, int* wounds) {
+	int getWounds(CreatureObject* leader, GroupObject* group, int* wounds) {
 		if (group == NULL || leader == NULL)
-			return false;
+			return 0;
+
+		int sizeAffected = 0;
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
 
@@ -126,20 +129,23 @@ public:
 				wounds[j] = wounds[j] + memberPlayer->getWounds(j);
 				memberPlayer->setWounds(j, 0);
 			}
+
+			sizeAffected++;
 		}
 
-		return true;
+		return sizeAffected;
 	}
 
-	bool distributeWounds(CreatureObject* leader, GroupObject* group, int* wounds) {
+	bool distributeWounds(CreatureObject* leader, GroupObject* group, int* wounds, int sizeAffected) {
 		if (group == NULL || leader == NULL)
 			return false;
 
-		int groupSize = group->getGroupSize();
-
-		for (int i = 0; i < groupSize; i++) {
+		for (int i = 0; i < group->getGroupSize(); i++) {
 
 			ManagedReference<SceneObject*> member = group->getGroupMember(i);
+
+			if (member == NULL)
+				continue;
 
 			if (!member->isPlayerCreature())
 				continue;
@@ -154,7 +160,7 @@ public:
 			sendCombatSpam(memberPlayer);
 
 			for (int j = 0; j < 9; j++)
-				memberPlayer->addWounds(j, (int) wounds[j] / groupSize);
+				memberPlayer->addWounds(j, (int) wounds[j] / sizeAffected);
 		}
 
 		return true;

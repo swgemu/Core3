@@ -68,6 +68,9 @@ public:
 		if (target == leader)
 			return true;
 
+		if (target->getParentRecursively(SceneObjectType::BUILDING) != leader->getParentRecursively(SceneObjectType::BUILDING))
+			return false;
+
 		PlayerObject* leaderGhost = leader->getPlayerObject();
 		PlayerObject* targetGhost = target->getPlayerObject();
 
