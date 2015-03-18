@@ -348,8 +348,6 @@ void GroupObjectImplementation::addGroupModifiers(CreatureObject* player) {
 	buff->setSkillModifier("melee_defense", leader->getSkillMod("group_melee_defense"));
 	buff->setSkillModifier("burst_run", leader->getSkillMod("group_burst_run"));
 	player->addBuff(buff);
-
-	player->updateTerrainNegotiation();
 }
 
 void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player) {

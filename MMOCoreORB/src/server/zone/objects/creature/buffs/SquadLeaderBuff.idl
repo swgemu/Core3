@@ -99,8 +99,15 @@ class SquadLeaderBuff extends Buff {
 			return;
 		}
 		
-		if (player.getParentRecursively(SceneObjectType.BUILDING) == leader.getParentRecursively(SceneObjectType.BUILDING))
+		if (player.getParentRecursively(SceneObjectType.BUILDING) == leader.getParentRecursively(SceneObjectType.BUILDING)) {
 			super.activate();
+			player.updateTerrainNegotiation();
+		}
+	}
+	
+	public void deactivate() {
+		super.deactivate();
+		player.updateTerrainNegotiation();
 	}
 	
 }
