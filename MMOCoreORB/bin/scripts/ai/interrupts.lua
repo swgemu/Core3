@@ -228,7 +228,7 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 			local creoLevel = CreatureObject(pFollow):getLevel()
 			local isBackwardsAggressive = SceneObject(pFollow):isAiAgent() and AiAgent(pFollow):isAggressiveTo(pAgent)
  
-			if effectiveLevel < creoLevel and (isBackwardsAggressive or SceneObject(pFollow):isPlayerCreature()) then
+			if CreatureObject(pAgent):getLevel()*mod < creoLevel and (isBackwardsAggressive or SceneObject(pFollow):isPlayerCreature()) then
 				AiAgent(pAgent):runAway(pFollow, 64 - radius)
 			else
 				AiAgent(pAgent):activateAwareness(pFollow)
