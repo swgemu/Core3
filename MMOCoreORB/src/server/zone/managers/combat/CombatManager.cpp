@@ -2170,6 +2170,18 @@ void CombatManager::declineDuel(CreatureObject* player, CreatureObject* targetPl
 	}
 }
 
+bool CombatManager::areInDuel(CreatureObject* player1, CreatureObject* player2) {
+	PlayerObject* ghost1 = player1->getPlayerObject().get();
+	PlayerObject* ghost2 = player2->getPlayerObject().get();
+
+	if (ghost1 != NULL && ghost2 != NULL) {
+		if (ghost1->requestedDuelTo(player2) && ghost2->requestedDuelTo(player1))
+			return true;
+	}
+
+	return false;
+}
+
 bool CombatManager::checkConeAngle(SceneObject* target, float angle,
 		float creatureVectorX, float creatureVectorY, float directionVectorX,
 		float directionVectorY) {

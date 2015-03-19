@@ -2616,9 +2616,6 @@ Reference<PlayerObject*> CreatureObjectImplementation::getPlayerObject() {
 }
 
 bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
-	/*if (duelList.contains(object) && object.requestedDuelTo(this))
-	 return true;*/
-
 	PlayerObject* ghost = getPlayerObject();
 	PlayerObject* targetGhost = object->getPlayerObject();
 
@@ -2628,9 +2625,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (ghost->isTeleporting())
 		return false;
 
-	bool areInDuel = (ghost->requestedDuelTo(object) && targetGhost->requestedDuelTo(_this.get()));
-
-	if (areInDuel)
+	if (CombatManager::instance()->areInDuel(object, _this.get()))
 		return true;
 
 	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())

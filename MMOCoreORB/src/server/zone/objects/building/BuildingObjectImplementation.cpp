@@ -57,16 +57,6 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	updatePaidAccessList();
 	
 	registeredPlayerIdList.removeAll();
-
-	if(isGCWBase()) {
-		SharedBuildingObjectTemplate* buildingTemplateData =
-				dynamic_cast<SharedBuildingObjectTemplate*> (getObjectTemplate());
-
-		// TODO:  remove.  this is just to correct existing bases
-		if(buildingTemplateData != NULL)
-			setPvpStatusBitmask(buildingTemplateData->getPvpStatusBitmask());
-
-	}
 	
 }
 
@@ -371,13 +361,21 @@ bool BuildingObjectImplementation::isCityBanned(CreatureObject* player){
 
 bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 
-	if(isGCWBase()){
+	if(isGCWBase()) {
 		if (factionBaseType == GCWManager::STATICFACTIONBASE)
 			return true;
 
 		return checkContainerPermission(player,ContainerPermissions::WALKIN);
 	}
-	
+
+	if (isPrivateStructure() && getLotSize() > 0) {
+		PlayerObject* ghost = player->getPlayerObject().get();
+
+		if (ghost != NULL && ghost->hasPvpTef()) {
+			return false;
+		}
+	}
+
 	if (getOwnerObjectID() == player->getObjectID())
 		return true;
 
