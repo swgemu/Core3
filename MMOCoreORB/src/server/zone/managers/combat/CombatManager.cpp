@@ -557,7 +557,7 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 	} else if (currentRange <= minRange)
 		return smallMod;
 
-	return smallMod + ((currentRange - smallRange) / (bigRange - smallRange) * (bigMod - smallMod));
+	return smallMod + ((currentRange - smallRange) / (bigRange == smallRange ? 1 : (bigRange - smallRange)) * (bigMod - smallMod));
 }
 
 int CombatManager::calculatePostureModifier(CreatureObject* creature, WeaponObject* weapon) {
