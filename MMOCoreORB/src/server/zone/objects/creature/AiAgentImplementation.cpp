@@ -767,10 +767,8 @@ void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	notifyObservers(ObserverEventType::FLEEING, target);
 	sendReactionChat(ReactionManager::FLEE);
 
-	Locker locker(&targetMutex);
-	followState = AiAgent::FLEEING;
+	setFollowState(AiAgent::FLEEING);
 	fleeRange = range;
-	locker.release();
 
 	if (!homeLocation.isInRange(_this.get(), 128)) {
 		homeLocation.setReached(false);
@@ -821,7 +819,7 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 			threatMap->addAggro(cast<CreatureObject*>(defender), 1);
 	} else if (stateCopy <= STALKING) {
 		Locker locker(&targetMutex);
-		followState = FOLLOWING;
+		setFollowState(AiAgent::FOLLOWING);
 	}
 
 	CreatureObjectImplementation::addDefender(defender);
@@ -1331,6 +1329,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			// we weren't able to find a path, so remove this location from patrolPoints and try again with the next one
 			PatrolPoint oldPoint = patrolPoints.remove(0);
 
+			if (getFollowState() == AiAgent::PATROLLING)
+				savedPatrolPoints.add(oldPoint);
+
 			continue;
 		}
 
@@ -1349,6 +1350,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		else { // we are already where we need to be, so we have no new position
 			//activateMovementEvent();
 			PatrolPoint oldPoint = patrolPoints.remove(0);
+
+			if (getFollowState() == AiAgent::PATROLLING)
+				savedPatrolPoints.add(oldPoint);
 
 			ManagedReference<SceneObject*> followCopy = getFollowObject();
 
@@ -1405,6 +1409,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 					if (i == path->size() - 1) {
 						// this is the last point in the path to the patrolPoint
 						PatrolPoint oldPoint = patrolPoints.remove(0);
+
+						if (getFollowState() == AiAgent::PATROLLING)
+							savedPatrolPoints.add(oldPoint);
+
 						// make sure the patrolPoint doesn't get removed twice (removing a new target position)
 						remove = false;
 					}
@@ -1534,6 +1542,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (!found && remove) {
 			// we were not able to find the next point to head to, and we haven't popped patrolPoints yet
 			PatrolPoint oldPoint = patrolPoints.remove(0);
+
+			if (getFollowState() == AiAgent::PATROLLING)
+				savedPatrolPoints.add(oldPoint);
 		}
 	}
 
@@ -1625,7 +1636,9 @@ void AiAgentImplementation::doMovement() {
 }
 
 bool AiAgentImplementation::generatePatrol(int num, float dist) {
+	Locker patrolLocker(&targetMutex);
 	patrolPoints.removeAll();
+	targetMutex.unlock();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
@@ -1663,12 +1676,11 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 			newPoint.setPositionZ(planetManager->findClosestWorldFloor(newPoint.getPositionX(), newPoint.getPositionY(), newPoint.getPositionZ(), this->getSwimHeight(), &intersections, (CloseObjectsVector*) this->getCloseObjects()));
 		}
 
-		patrolPoints.add(newPoint);
+		addPatrolPoint(newPoint);
 	}
 
 	if (patrolPoints.size() > 0) {
-		Locker locker(&targetMutex);
-		followState = AiAgent::PATROLLING;
+		setFollowState(AiAgent::PATROLLING);
 		return true;
 	}
 
@@ -1711,6 +1723,9 @@ int AiAgentImplementation::setDestination() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject();
 	unsigned int stateCopy = getFollowState();
 
+	Locker targetLocker(&targetMutex);
+	targetMutex.unlock();
+
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
 		if (followCopy != NULL)
@@ -1746,6 +1761,13 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::PATROLLING:
+		if (patrolPoints.size() == 0) {
+			targetMutex.lock();
+			patrolPoints = savedPatrolPoints;
+			targetMutex.unlock();
+			savedPatrolPoints.removeAll();
+		}
+
 		break;
 	case AiAgent::WATCHING:
 		if (followCopy == NULL) {

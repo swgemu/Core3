@@ -204,6 +204,7 @@ private:
 		lua->setGlobalInt("CREATURE_PET",CreatureFlag::PET);
 		lua->setGlobalInt("DROID_PET",CreatureFlag::DROID_PET);
 		lua->setGlobalInt("FACTION_PET",CreatureFlag::FACTION_PET);
+		lua->setGlobalInt("WANDER",CreatureFlag::WANDER);
 
 		lua->setGlobalInt("PET_FOLLOW", PetManager::FOLLOW);
 		lua->setGlobalInt("PET_STORE", PetManager::STORE);
