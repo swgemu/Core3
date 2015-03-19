@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_789b05ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1641,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2015-03-19T21:05:14Z",
+      "side": 1,
+      "message": "dont unlock the mutex\nrelease the locker..",
+      "revId": "f84a0b09d34508abaaab4afc748f2e822398b7d6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
