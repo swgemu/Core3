@@ -557,7 +557,10 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 	} else if (currentRange <= minRange)
 		return smallMod;
 
-	return smallMod + ((currentRange - smallRange) / (bigRange == smallRange ? 1 : (bigRange - smallRange)) * (bigMod - smallMod));
+	if (bigRange == smallRange) // if they are equal, we know at least one is ideal, so just return the ideal accuracy mod
+		return weapon->getIdealAccuracy();
+
+	return smallMod + ((currentRange - smallRange) / (bigRange - smallRange) * (bigMod - smallMod));
 }
 
 int CombatManager::calculatePostureModifier(CreatureObject* creature, WeaponObject* weapon) {
@@ -1399,7 +1402,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 	float weaponAccuracy = 0.0f;
 	// Get the weapon mods for range and add the mods for stance
-	weaponAccuracy = getWeaponRangeModifier(attacker->getDistanceTo(targetCreature) + targetCreature->getTemplateRadius() + attacker->getTemplateRadius(), weapon);
+	weaponAccuracy = getWeaponRangeModifier(attacker->getDistanceTo(targetCreature) - targetCreature->getTemplateRadius() - attacker->getTemplateRadius(), weapon);
 	// accounts for steadyaim, general aim, and specific weapon aim, these buffs will clear after a completed combat action
 	if (creoAttacker != NULL) {
 		if (weapon->getAttackType() == WeaponObject::RANGEDATTACK) weaponAccuracy += creoAttacker->getSkillMod("private_aim");

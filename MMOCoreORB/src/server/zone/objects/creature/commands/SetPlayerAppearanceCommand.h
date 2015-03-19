@@ -109,6 +109,8 @@ public:
 			templateName = argument;
 		}
 
+		Locker targetLocker(targetCreature, creature);
+
 		targetCreature->setAlternateAppearance(templateName, true);
 
 		// Required to reset a target to its normal template
