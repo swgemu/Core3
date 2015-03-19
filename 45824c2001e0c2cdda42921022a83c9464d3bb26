@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_f8401537",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SetPlayerAppearanceCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2015-03-19T17:18:50Z",
+      "side": 1,
+      "message": "Locker targetLocker(targetCreature, creature);",
+      "revId": "45824c2001e0c2cdda42921022a83c9464d3bb26",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
