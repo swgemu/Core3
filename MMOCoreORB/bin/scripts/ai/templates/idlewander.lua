@@ -17,3 +17,11 @@ idlewanderpack = {
 }
 
 addAiTemplate("idlewanderpack", idlewanderpack)
+
+idlewanderstatic = {
+	{"idroot", "CompositeDefault", "none", SELECTORBEHAVIOR},
+	{"move0", "WalkDefault", "idroot", BEHAVIOR},
+	{"move1", "Wait10Default", "idroot", BEHAVIOR},
+}
+
+addAiTemplate("idlewanderstatic", idlewanderpack)
