@@ -75,8 +75,8 @@ public:
 		String targetName = "";
 		String argument;
 
-		if (creature->getTargetID() != 0) {
-			targetCreature = server->getZoneServer()->getObject(creature->getTargetID()).castTo<CreatureObject*>();
+		if (target != 0) {
+			targetCreature = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 		} else {
 			if (!tokenizer.hasMoreTokens()) {
 				sendSyntax(creature);
