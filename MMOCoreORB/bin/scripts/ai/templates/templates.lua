@@ -38,6 +38,7 @@ idle = {
 	{CREATURE_PET, "idlepetc"},
 	{DROID_PET, "idlepetd"},
 	{FACTION_PET, "idlepetf"},
+	{STATIC + WANDER, "idlewanderstatic"},
 	{STATIC, "idlewait"},
 	{PACK, "idlewanderpack"},
 	{NONE, "idlewander"},

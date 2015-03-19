@@ -130,6 +130,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "setLevel", &LuaAiAgent::setLevel },
 		{ "hasReactionChatMessages", &LuaAiAgent::hasReactionChatMessages },
 		{ "sendReactionChat", &LuaAiAgent::sendReactionChat },
+		{ "addPatrolPoint", &LuaAiAgent::addPatrolPoint },
 		{ 0, 0 }
 };
 
@@ -923,6 +924,19 @@ int LuaAiAgent::sendReactionChat(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->sendReactionChat(type, state);
+
+	return 0;
+}
+
+int LuaAiAgent::addPatrolPoint(lua_State* L) {
+	SceneObject* cell = static_cast<SceneObject*>(lua_touserdata(L, -1));
+	float y = lua_tonumber(L, -2);
+	float z = lua_tonumber(L, -3);
+	float x = lua_tonumber(L, -4);
+
+	PatrolPoint newPoint(x, z, y, cell);
+
+	realObject->addPatrolPoint(newPoint);
 
 	return 0;
 }

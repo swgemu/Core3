@@ -71,6 +71,7 @@ public:
 		PET                 = 0x100,
 		DROID_PET           = 0x200,
 		FACTION_PET         = 0x400,
+		WANDER				= 0x800,
 
 		CARNIVORE           = 0x01,
 		HERBIVORE           = 0x02
