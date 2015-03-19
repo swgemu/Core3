@@ -39,6 +39,8 @@ public:
 		if (chatManager == NULL || reactionManager == NULL)
 			return;
 
+		Locker clocker(emoteTarget, creature);
+
 		if (totalFine > playerCredits) {
 			if (totalFine > 1000000) {
 				totalFine = 1000000;
