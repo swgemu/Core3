@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_fd0b6729",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/SquadLeaderBuff.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-19T04:40:22Z",
+      "side": 1,
+      "message": "You may also want to remove the buff from player if leader is null.",
+      "revId": "ca414e3d90d703fef15366f9f6b8e23c73e5f3a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_1d176353",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/SquadLeaderBuffObserverImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-19T04:40:22Z",
+      "side": 1,
+      "message": "You may want to validate eventType is the expected type just in case.",
+      "revId": "ca414e3d90d703fef15366f9f6b8e23c73e5f3a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_3d121f63",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/SquadLeaderBuffObserverImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-19T04:40:22Z",
+      "side": 1,
+      "message": "Maybe you should remove the buff from player if leader is NULL.",
+      "revId": "ca414e3d90d703fef15366f9f6b8e23c73e5f3a9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
