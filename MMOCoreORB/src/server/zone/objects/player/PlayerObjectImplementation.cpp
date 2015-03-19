@@ -110,6 +110,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
 #include "server/zone/objects/player/events/BountyHunterTefRemovalTask.h"
 #include "server/zone/objects/player/events/RemoveSpouseTask.h"
+#include "server/zone/objects/player/events/PvpHouseTefRemovalTask.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
@@ -1973,6 +1974,33 @@ Time PlayerObjectImplementation::getLastVisibilityUpdateTimestamp() {
 	return lastVisibilityUpdateTimestamp;
 }
 
+Time PlayerObjectImplementation::getLastPvpCombatActionTimestamp() {
+	return lastPvpCombatActionTimestamp;
+}
+
+void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp() {
+	bool alreadyHasTef = hasPvpTef();
+
+	lastPvpCombatActionTimestamp.updateToCurrentTime();
+	lastPvpCombatActionTimestamp.addMiliTime(300000); // 5 minutes
+
+	if (pvpTefTask == NULL) {
+		pvpTefTask = new PvpHouseTefRemovalTask(_this.get());
+	}
+
+	if (!pvpTefTask->isScheduled()) {
+		pvpTefTask->schedule(300000); // 5 minutes
+	}
+
+	if (!alreadyHasTef) {
+		updateInRangeBuildingPermissions();
+	}
+}
+
+bool PlayerObjectImplementation::hasPvpTef() {
+	return !lastPvpCombatActionTimestamp.isPast();
+}
+
 Vector3 PlayerObjectImplementation::getTrainerCoordinates() {
 	return trainerCoordinates;
 }
@@ -1981,43 +2009,22 @@ void PlayerObjectImplementation::setTrainerCoordinates(const Vector3& trainer) {
 	trainerCoordinates = trainer;
 }
 
-void PlayerObjectImplementation::addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions) {
+void PlayerObjectImplementation::addPermissionGroup(const String& group, bool updatePermissions) {
 	permissionGroups.put(group);
 
-	if (!updateInRangeBuildingPermissions)
-		return;
-
-	ManagedReference<SceneObject*> parent = getParent().get();
-
-	if (parent == NULL)
-		return;
-
-	Zone* zone = parent->getZone();
-
-	if (zone == NULL)
-		return;
-
-	CloseObjectsVector* vec = (CloseObjectsVector*) parent->getCloseObjects();
-
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
-	vec->safeCopyTo(closeObjects);
-
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		BuildingObject* building = closeObjects.get(i).castTo<BuildingObject*>();
-
-		if (building != NULL) {
-			building->broadcastCellPermissions();
-		}
-	}
+	if (updatePermissions)
+		updateInRangeBuildingPermissions();
 }
 
-void PlayerObjectImplementation::removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions) {
+void PlayerObjectImplementation::removePermissionGroup(const String& group, bool updatePermissions) {
 	permissionGroups.drop(group);
 
-	if (!updateInRangeBuildingPermissions)
-		return;
+	if (updatePermissions)
+		updateInRangeBuildingPermissions();
+}
 
-	ManagedReference<SceneObject*> parent = getParent().get();
+void PlayerObjectImplementation::updateInRangeBuildingPermissions() {
+	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == NULL)
 		return;
@@ -2036,7 +2043,7 @@ void PlayerObjectImplementation::removePermissionGroup(const String& group, bool
 		BuildingObject* building = closeObjects.get(i).castTo<BuildingObject*>();
 
 		if (building != NULL) {
-			building->broadcastCellPermissions();
+			building->updateCellPermissionsTo(parent);
 		}
 	}
 }
