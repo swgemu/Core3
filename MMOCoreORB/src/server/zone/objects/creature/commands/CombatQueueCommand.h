@@ -166,6 +166,15 @@ public:
 		creature->removeStateBuff(CreatureState::AIMING);
 		creature->removeBuff(String("steadyaim").hashCode());
 
+		// Update PvP TEF
+		if (creature->isPlayerCreature() && targetObject->isPlayerCreature()) {
+			PlayerObject* ghost = creature->getPlayerObject().get();
+
+			if (ghost != NULL) {
+				ghost->updateLastPvpCombatActionTimestamp();
+			}
+		}
+
 		return SUCCESS;
 	}
 
