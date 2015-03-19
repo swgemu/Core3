@@ -163,6 +163,8 @@ public:
 	 */
 	void declineDuel(CreatureObject* player, CreatureObject* targetPlayer);
 
+	bool areInDuel(CreatureObject* player1, CreatureObject* player2);
+
 	float calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio);
 
 	void sendMitigationCombatSpam(CreatureObject* defender, TangibleObject* item, uint32 damage, int type);

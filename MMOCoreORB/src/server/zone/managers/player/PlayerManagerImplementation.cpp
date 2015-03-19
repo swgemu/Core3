@@ -699,12 +699,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 			}
 
 			if (attackerCreature->isPlayerCreature()) {
-				PlayerObject* attackerGhost = attackerCreature->getPlayerObject();
-				PlayerObject* ghost = player->getPlayerObject();
-
-				bool areInDuel = (ghost->requestedDuelTo(attackerCreature) && attackerGhost->requestedDuelTo(player));
-
-				if (!areInDuel) {
+				if (!CombatManager::instance()->areInDuel(attackerCreature, player)) {
 					FactionManager::instance()->awardPvpFactionPoints(attackerCreature, player);
 				}
 			}

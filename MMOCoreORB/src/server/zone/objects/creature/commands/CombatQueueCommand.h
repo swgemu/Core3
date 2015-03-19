@@ -166,6 +166,35 @@ public:
 		creature->removeStateBuff(CreatureState::AIMING);
 		creature->removeBuff(String("steadyaim").hashCode());
 
+		// Update PvP TEF Duration
+		if (creature->isPlayerCreature() && targetObject->isPlayerCreature()) {
+			PlayerObject* ghost = creature->getPlayerObject().get();
+
+			if (ghost != NULL && !combatManager->areInDuel(creature, targetObject.castTo<CreatureObject*>())) {
+					ghost->updateLastPvpCombatActionTimestamp();
+			}
+		} else if (creature->isPet() && targetObject->isPlayerCreature()) {
+			ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
+
+			if (owner != NULL && owner->isPlayerCreature()) {
+				PlayerObject* ownerGhost = owner->getPlayerObject().get();
+
+				if (ownerGhost != NULL && !combatManager->areInDuel(owner, targetObject.castTo<CreatureObject*>())) {
+						ownerGhost->updateLastPvpCombatActionTimestamp();
+				}
+			}
+		} else if (creature->isPlayerCreature() && targetObject->isPet()) {
+			ManagedReference<CreatureObject*> targetOwner = targetObject.castTo<CreatureObject*>()->getLinkedCreature().get();
+
+			if (targetOwner != NULL && targetOwner->isPlayerCreature()) {
+				PlayerObject* ghost = creature->getPlayerObject().get();
+
+				if (ghost != NULL && !combatManager->areInDuel(creature, targetOwner)) {
+						ghost->updateLastPvpCombatActionTimestamp();
+				}
+			}
+		}
+
 		return SUCCESS;
 	}
 

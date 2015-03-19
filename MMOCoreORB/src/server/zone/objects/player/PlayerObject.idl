@@ -58,6 +58,7 @@ import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
 import server.zone.objects.player.events.ForceRegenerationEvent;
+import server.zone.objects.player.events.PvpHouseTefRemovalTask;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.structure.StructureObject;
 import server.zone.objects.tangible.tool.CraftingTool;
@@ -270,6 +271,12 @@ class PlayerObject extends IntangibleObject {
 	protected Time lastVisibilityUpdateTimestamp;
 
 	@dereferenced
+	protected Time lastPvpCombatActionTimestamp;
+
+	@dereferenced
+	protected Reference<PvpHouseTefRemovalTask> pvpTefTask;
+
+	@dereferenced
 	protected Time lastDigestion;
 
 	@dereferenced
@@ -374,6 +381,8 @@ class PlayerObject extends IntangibleObject {
 		
 		visibility = 0;
 		lastVisibilityUpdateTimestamp.updateToCurrentTime();
+
+		lastPvpCombatActionTimestamp.updateToCurrentTime();
 
 		lastDigestion.updateToCurrentTime();
 		
@@ -1034,19 +1043,21 @@ class PlayerObject extends IntangibleObject {
 		
 		return null;
 	}
-	
+
 	public void addSuiBox(SuiBox sui) {
 		unsigned int key = sui.getBoxID();
 		suiBoxes.put(key, sui);
 	}
-	
-	public native void addPermissionGroup(final string group, boolean updateInRangeBuildingPermissions = false);
-	
-	public native void removePermissionGroup(final string group, boolean updateInRangeBuildingPermissions = false);
-	
+
+	public native void addPermissionGroup(final string group, boolean updatePermissions = false);
+
+	public native void removePermissionGroup(final string group, boolean updatePermissions = false);
+
+	public native void updateInRangeBuildingPermissions();
+
 	@dirty
 	public native boolean hasPermissionGroup(final string group);
-	
+
 	@local
 	@dirty
 	public SortedVector<string> getPermissionGroups() {
@@ -1609,7 +1620,15 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	@local
 	public native Time getLastVisibilityUpdateTimestamp();
-	
+
+	@dereferenced
+	@local
+	public native Time getLastPvpCombatActionTimestamp();
+
+	public native void updateLastPvpCombatActionTimestamp();
+
+	public native boolean hasPvpTef();
+
 	public void addVendor(SceneObject vendor) {
 		ownedVendors.add(vendor.getObjectID());
 	}
