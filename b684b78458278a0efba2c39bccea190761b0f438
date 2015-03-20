@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_b8bdfd04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/naboo_imperial_vs_gungan.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-20T06:43:35Z",
+      "side": 1,
+      "message": "Check for nil first.",
+      "revId": "b684b78458278a0efba2c39bccea190761b0f438",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_98ba4109",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/naboo_imperial_vs_gungan.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-03-20T06:43:35Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "b684b78458278a0efba2c39bccea190761b0f438",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
