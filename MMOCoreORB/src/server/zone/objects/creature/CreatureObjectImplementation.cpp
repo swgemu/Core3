@@ -101,6 +101,7 @@
 #include "events/DizzyFallDownEvent.h"
 #include "server/zone/packets/ui/ExecuteConsoleCommand.h"
 #include "server/zone/objects/creature/buffs/StateBuff.h"
+#include "server/zone/objects/creature/buffs/PrivateBuff.h"
 #include "server/zone/objects/building/hospital/HospitalBuildingObject.h"
 
 #include "server/zone/packets/object/SitOnObject.h"
@@ -2190,7 +2191,6 @@ void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 		state->setStartFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
 		state->setEndFlyText("combat_effects", "no_stunned", 0xFF, 0, 0);
 
-		// FIXME: QA test this damage multiplier, is 9/10 correct?
 		int div = getSkillMod("private_damage_divisor") * 10;
 		if (div == 0) div = 10;
 
@@ -2200,7 +2200,8 @@ void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 		if (mul == 0) mul = 9;
 
 		state->setSkillModifier("private_damage_multiplier", mul);
-		state->setSkillModifier("private_defense", -50);
+		state->setSkillModifier("private_melee_defense", -50);
+		state->setSkillModifier("private_ranged_defense", -50);
 
 		addBuff(state);
 	}
@@ -2219,21 +2220,50 @@ void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 	}
 }
 
-void CreatureObjectImplementation::setIntimidatedState(uint32 mod, int durationSeconds) {
+void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, int durationSeconds) {
+	// put the skillmods into a crc buff so we can stack all forms of intim
+	if (!hasBuff(crc)) {
+		Reference<PrivateBuff*> buff = new PrivateBuff(_this.get(), crc, durationSeconds, BuffType::STATE);
+
+		int div = getSkillMod("private_damage_divisor") * 2;
+		if (div == 0) div = 2;
+
+		div += (int)(mod/10);
+
+		buff->setSkillModifier("private_damage_divisor", div);
+
+		addBuff(buff);
+	} else { // already have this intimidation buff, don't keep stacking the multiplier, but do extend the duration
+		Reference<Buff*> buff = getBuff(crc);
+
+		if (buff == NULL) { // this shouldn't happen, but if it does, we want to make sure intim gets set
+			removeBuff(crc);
+			setIntimidatedState(mod, crc, durationSeconds);
+			return;
+		}
+
+		if (buff->getTimeLeft() < durationSeconds)
+			buff->renew(durationSeconds);
+	}
+
 	if (!hasState(CreatureState::INTIMIDATED)) {
-		StateBuff* state = new StateBuff(_this.get(), CreatureState::INTIMIDATED, durationSeconds);
+		Reference<StateBuff*> state = new StateBuff(_this.get(), CreatureState::INTIMIDATED, durationSeconds);
 
 		state->setStartFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 		state->setEndFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
 
-		int div = getSkillMod("private_max_damage_divisor") * 2;
-		if (div == 0) div = 2;
-
-		div += mod / 10;
-
-		state->setSkillModifier("private_max_damage_divisor", div);
-
 		addBuff(state);
+	} else { // already have the intimidated state, so extend it. This is the buff that gets sent to the client
+		Reference<Buff*> state = getBuff(Long::hashCode(CreatureState::INTIMIDATED));
+
+		if (state == NULL) { // this shouldn't happen, but if it does, we want to make sure intim gets set
+			removeStateBuff(CreatureState::INTIMIDATED);
+			setIntimidatedState(mod, crc, durationSeconds);
+			return;
+		}
+
+		if (state->getTimeLeft() < durationSeconds)
+			state->renew(durationSeconds);
 	}
 }
 

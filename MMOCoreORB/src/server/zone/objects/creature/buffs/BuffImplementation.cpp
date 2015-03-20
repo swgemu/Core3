@@ -128,10 +128,7 @@ void BuffImplementation::activate(bool applyModifiers) {
 			applyStates();
 		}
 
-		buffEvent = new BuffDurationEvent(creature.get(), _this.get());
-		buffEvent->schedule((int) (buffDuration * 1000));
-		//nextExecutionTime = buffEvent->getNextExecutionTime();
-		Core::getTaskManager()->getNextExecutionTime(buffEvent, nextExecutionTime);
+		scheduleBuffEvent();
 
 		//info("nextExecutionTime miliDifference:" + String::valueOf(nextExecutionTime.miliDifference()), true);
 
@@ -237,7 +234,9 @@ String BuffImplementation::getSkillModifierString() {
 }
 
 void BuffImplementation::scheduleBuffEvent() {
-	//buffEvent = new BuffDurationEvent(creature.get(), _this.get());
+	buffEvent = new BuffDurationEvent(creature.get(), _this.get());
+	buffEvent->schedule((int) (buffDuration * 1000));
+	Core::getTaskManager()->getNextExecutionTime(buffEvent, nextExecutionTime);
 }
 
 float BuffImplementation::getTimeLeft() {

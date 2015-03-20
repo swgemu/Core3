@@ -196,6 +196,7 @@ core3_IDLS =	autogen/server/zone/objects/intangible/TheaterObject.cpp \
 				autogen/server/zone/objects/creature/buffs/SingleUseBuffObserver.cpp \
 				autogen/server/zone/objects/creature/buffs/SquadLeaderBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/SquadLeaderBuffObserver.cpp \
+				autogen/server/zone/objects/creature/buffs/PrivateBuff.cpp \
 				autogen/server/zone/objects/player/PlayerObject.cpp \
 				autogen/server/zone/objects/player/sui/SuiBox.cpp \
 				autogen/server/zone/objects/player/sui/keypadbox/SuiKeypadBox.cpp \
