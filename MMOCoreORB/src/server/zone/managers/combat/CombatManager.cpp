@@ -256,7 +256,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	if (defender->isEntertaining())
 		defender->stopEntertaining();
 
-	int hitVal = 0;
+	int hitVal = HIT;
 	float damageMultiplier = data.getDamageMultiplier();
 
 	// need to calculate damage here to get proper client spam
@@ -267,22 +267,19 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		damage = calculateDamage(attacker, weapon, defender, data, foodMitigation) * damageMultiplier;
 
 	damageMultiplier = 1.0f;
-	hitVal = getHitChance(attacker, defender, weapon, damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
 
-	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
-	// TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
+	if (!data.isStateOnlyAttack()) {
+		hitVal = getHitChance(attacker, defender, weapon, damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
+
+		//Send Attack Combat Spam. For state-only attacks, this is sent in applyStates().
+		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
+	}
 
 	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
-
-	//Send Attack Combat Spam. For state-only attacks, this is sent in applyStates().
-	if (!data.isStateOnlyAttack())
-		data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 
 	switch (hitVal) {
 	case MISS:
 		doMiss(attacker, weapon, defender, damage);
-		if (data.isStateOnlyAttack()) //Send combat spam for failed state attack.
-			data.getCommand()->sendAttackCombatSpam(attacker, defender, hitVal, damage, data);
 		return 0;
 		break;
 	case HIT:
@@ -312,7 +309,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	applyStates(attacker, defender, data);
 
 	// Return if it's a state only attack (intimidate, warcry, wookiee roar) so they don't apply dots or break combat delays
-	if (poolsToDamage == 0)
+	if (data.isStateOnlyAttack())
 		return 0;
 
 	if (defender->hasAttackDelay())
@@ -323,6 +320,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		applyDots(attacker, defender, data, damage);
 		applyWeaponDots(attacker, defender, weapon);
 
+		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage()); // TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
 		damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, data);
 	}
 
@@ -788,21 +786,6 @@ int CombatManager::calculateDamageRange(TangibleObject* attacker, CreatureObject
 			maxDamage = minDamage + (maxDamage - minDamage) * (1 - (0.2 * damageMitigation));
 	}
 
-	int maxDamageMultiplier = 0;
-	int maxDamageDivisor = 0;
-
-	if (attacker->isCreatureObject()) {
-		CreatureObject* attackerCreo = cast<CreatureObject*>(attacker);
-		maxDamageMultiplier = attackerCreo->getSkillMod("private_max_damage_multiplier");
-		maxDamageDivisor = attackerCreo->getSkillMod("private_max_damage_divisor");
-	}
-
-	if (maxDamageMultiplier != 0)
-		maxDamage *= maxDamageMultiplier;
-
-	if (maxDamageDivisor != 0)
-		maxDamage /= maxDamageDivisor;
-
 	float range = maxDamage - minDamage;
 
 	//info("attacker weapon damage mod is " + String::valueOf(maxDamage), true);
@@ -1192,16 +1175,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
 
-	int maxDamageMuliplier = attacker->getSkillMod("private_max_damage_multiplier");
-	int maxDamageDivisor = attacker->getSkillMod("private_max_damage_divisor");
-
 	float diff = maxDamage - minDamage;
-
-	if (maxDamageMuliplier != 0)
-		diff *= maxDamageMuliplier;
-
-	if (maxDamageDivisor != 0)
-		diff /= maxDamageDivisor;
 
 	if (diff >= 0)
 		damage = System::random(diff) + (int)minDamage;
@@ -1668,9 +1642,9 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		}
 
 		if (!failed)
-			data.getCommand()->applyEffect(targetCreature, effectType, creature->getSkillMod(data.getCommand()->getAccuracySkillMod()));
+			data.getCommand()->applyEffect(targetCreature, effectType, creature->getSkillMod(data.getCommand()->getAccuracySkillMod()), data.getCommandCRC());
 
-		// can move this to scripts, but only these three states have fail messages
+		// can move this to scripts, but only these states have fail messages
 		if (failed) {
 			switch (effectType) {
 			case CommandEffect::KNOCKDOWN:

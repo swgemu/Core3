@@ -168,6 +168,14 @@ class Buff extends ManagedObject implements Logger {
 	public native void setBuffEventNull();
 
 	public native void scheduleBuffEvent();
+	
+	public void renew(float newDuration = -1) {
+		if (newDuration > 0)
+			buffDuration = newDuration;
+		
+		clearBuffEvent();
+		scheduleBuffEvent();
+	}
 
 	public native abstract void parseAttributeModifierString(final string modifierstring);
 	public native abstract void parseSkillModifierString(final string modifierstring);
