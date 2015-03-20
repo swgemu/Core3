@@ -66,26 +66,14 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = zserv->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isPlayerCreature()) {
-			try {
-				String targetFirstName;
-				UnicodeTokenizer tokenizer(arguments);
-				tokenizer.getStringToken(targetFirstName);
-
-				targetObject = zserv->getPlayerManager()->getPlayer(targetFirstName);
-			} catch (Exception& e) {
-				return INVALIDPARAMETERS;
-			}
-		}
-
-		if (targetObject == NULL || !targetObject->isPlayerCreature())
+		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature)
 			return INVALIDTARGET;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>(targetObject.get());
 
-		ManagedReference<CityRegion*> city = creature->getCityRegion();
+		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
 
-		if (city == NULL) {
+		if (city == NULL || city != targetObject->getCityRegion().get()) {
 			creature->sendSystemMessage("@city/city:not_in_city"); //You must be in a city to use this command.
 			return GENERALERROR;
 		}

@@ -62,9 +62,14 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CityRegion*> city = creature->getCityRegion();
+		ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);
 
-		if (city == NULL) {
+		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature)
+			return INVALIDTARGET;
+
+		ManagedReference<CityRegion*> city = creature->getCityRegion().get();
+
+		if (city == NULL || city != targetObject->getCityRegion().get()) {
 			creature->sendSystemMessage("@city/city:not_in_city"); //You must be in a city to use this command.
 			return GENERALERROR;
 		}
@@ -74,11 +79,6 @@ public:
 		if (!city->isMilitiaMember(creature->getObjectID())) {
 			creature->sendSystemMessage("@city/city:grant_rights_fail"); //You must be the mayor of the city or a member of the city militia to grant zoning rights.
 		}
-
-		ManagedReference<SceneObject*> targetObject = creature->getZoneServer()->getObject(target);
-
-		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == creature)
-			return INVALIDTARGET;
 
 		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
 
