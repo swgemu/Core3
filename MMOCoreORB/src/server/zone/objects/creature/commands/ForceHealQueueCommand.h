@@ -32,13 +32,6 @@ public:
 			creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
 	}
 
-	bool isWarcried(CreatureObject* creature) {
-		if (creature->hasAttackDelay()) {
-			return true;
-		}
-		return false;
-	}
-
 	bool checkForceCost(CreatureObject* creature) {
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 

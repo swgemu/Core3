@@ -296,6 +296,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay()) // no message associated with this
+			return GENERALERROR;
+
 		CreatureObject* enhancer = creature;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);

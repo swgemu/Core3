@@ -75,14 +75,11 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (isWearingArmor(creature)) {
-			return NOJEDIARMOR;
-		}
-
-		if (isWarcried(creature)) {
+		if (creature->hasAttackDelay()) // no message associated with this
 			return GENERALERROR;
-		}
 
+		if (isWearingArmor(creature))
+			return NOJEDIARMOR;
 
 		if (!checkForceCost(creature)) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power");

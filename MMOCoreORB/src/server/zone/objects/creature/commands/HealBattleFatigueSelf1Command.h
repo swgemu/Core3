@@ -85,9 +85,11 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (isWearingArmor(creature)) {
+		if (creature->hasAttackDelay()) // no message associated with this
+			return GENERALERROR;
+
+		if (isWearingArmor(creature))
 			return NOJEDIARMOR;
-		}
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 

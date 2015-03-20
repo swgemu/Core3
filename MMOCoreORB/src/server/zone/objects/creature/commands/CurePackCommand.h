@@ -362,6 +362,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (creature->hasAttackDelay()) // no message associated with this
+			return GENERALERROR;
+
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object != NULL && !object->isCreatureObject()) {
