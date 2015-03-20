@@ -998,7 +998,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	int currentValue = hamList.get(damageType);
 
-	int newValue = currentValue - damage;
+	int newValue = currentValue - (int) damage;
 
 	if (!destroy && newValue <= 0)
 		newValue = 1;
