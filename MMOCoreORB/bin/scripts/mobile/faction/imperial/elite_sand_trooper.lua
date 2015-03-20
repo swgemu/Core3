@@ -25,7 +25,7 @@ elite_sand_trooper = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_black_gold.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_sand_trooper_m.iff"},
 	lootGroups = {
 		{
 			groups = {
