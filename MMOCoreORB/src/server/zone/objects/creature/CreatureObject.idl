@@ -513,12 +513,12 @@ class CreatureObject extends TangibleObject {
 	
 	
 	/**
-	 * Heals wound
+	 * Heals wounds
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 * @return unused for now
 	 */
-	public native int healWound(TangibleObject healer, int damageType, int damage, boolean notifyClient = true, boolean notifyObservers = true);
+	public native abstract int healWound(TangibleObject healer, int damageType, int damage, boolean notifyClient = true, boolean notifyObservers = true);
 	
 	/**
 	 * Updates a specific type of the Base HAM
@@ -531,19 +531,22 @@ class CreatureObject extends TangibleObject {
 	public native void setBaseHAM(int type, int value, boolean notifyClient = true);
 	
 	/**
-	 * Updates a specific type of the Wounds
+	 * Updates a specific type of wound
 	 * @pre { this object is locked }
 	 * @post { this object is locked, this object has the Wounds type updated to the new value }
 	 * @param type specifies which Wounds type to update
 	 * @param value the new value
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
-	public native void setWounds(int type, int value, boolean notifyClient = true);
+	public native abstract void setWounds(int type, int value, boolean notifyClient = true);
 	
 	/**
+	 * adds wounds
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
 	 * @return returns wounds added
 	 */
-	public native int addWounds(int type, int value, boolean notifyClient = true);
+	public native abstract int addWounds(int type, int value, boolean notifyClient = true);
 	
 	/**
 	 * Updates a specific type of the Max HAM

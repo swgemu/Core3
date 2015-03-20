@@ -147,7 +147,34 @@ class VehicleObject extends CreatureObject {
 	 * @post { this, healer locked }
 	 */
 	public native int healDamage(TangibleObject healer, int damageType, int damageToHeal, boolean notifyClient = true);
-	
+
+	/**
+	 * Heals wounds
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 */
+	public int healWound(TangibleObject healer, int damageType, int damage, boolean notifyClient = true, boolean notifyObservers = true) {
+		return 0;
+	}
+
+	/**
+	 * adds wounds
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 */
+	public int addWounds(int type, int value, boolean notifyClient = true) {
+		return 0;
+	}
+
+	/**
+	 * Updates a specific type of wound
+	 * @pre { this object is locked }
+	 * @post { this object is locked, }
+	 */
+	public void setWounds(int type, int value, boolean notifyClient = true) {
+
+	}
+
 	/**
 	 * Adds a SceneObject to the defender vector
 	 * @pre { this object is locked }

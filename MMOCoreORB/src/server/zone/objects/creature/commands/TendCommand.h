@@ -173,9 +173,10 @@ public:
 
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else 
+				} else {
 					creature->sendSystemMessage("@healing_response:healing_response_a1"); //Target must be a player or a creature pet in order to tend damage
 					return GENERALERROR;
+				}
 			}
 		} else
 			object = creature;
@@ -184,7 +185,7 @@ public:
 
 		Locker clocker(creatureTarget, creature);
 
-		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject() || creatureTarget->isDead() || creatureTarget->isRidingMount() || creatureTarget->isAttackableBy(creature))
+		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject() || creatureTarget->isVehicleObject() || creatureTarget->isDead() || creatureTarget->isRidingMount() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;
 
 		if (!creatureTarget->isInRange(creature, range + creatureTarget->getTemplateRadius() + creature->getTemplateRadius()))

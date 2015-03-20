@@ -400,7 +400,7 @@ public:
 
 		Locker clocker(targetCreature, creature);
 
-		if ((targetCreature->isAiAgent() && !targetCreature->isPet()) || targetCreature->isDroidObject() || targetCreature->isDead() || targetCreature->isRidingMount() || targetCreature->isAttackableBy(creature))
+		if ((targetCreature->isAiAgent() && !targetCreature->isPet()) || targetCreature->isDroidObject() || targetCreature->isVehicleObject() || targetCreature->isDead() || targetCreature->isRidingMount() || targetCreature->isAttackableBy(creature))
 			targetCreature = creature;
 
 		uint64 pharmaceuticalObjectID = 0;
