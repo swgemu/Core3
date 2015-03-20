@@ -171,18 +171,6 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	-- TODO (dannuic): should we be using group levels here (if available)?
 	local levelDiff = CreatureObject(pObject):getLevel() - CreatureObject(pAgent):getLevel()
 	local mod = math.max(0.04, math.min((1 - (levelDiff/20)), 1.2))
-	if SceneObject(pObject):isPlayerCreature() then
-		local faction = AiAgent(pAgent):getFactionString()
-		if faction == "rebel" or faction == "imperial" then
-			mod = mod * 2.5
-		elseif faction ~= "" and faction ~= nil then
-			local pGhost = CreatureObject(pObject):getPlayerObject()
-			if pGhost ~= nil then
-				local standing = PlayerObject(pGhost):getFactionStanding(faction)
-				mod = mod * (1 + (standing / -5000))
-			end
-		end
-	end
 
 	local radius = AiAgent(pAgent):getAggroRadius()
 	if radius == 0 then radius = DEFAULTAGGRORADIUS end
