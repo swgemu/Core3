@@ -196,6 +196,8 @@ core3_IDLS =	autogen/server/zone/objects/intangible/TheaterObject.cpp \
 				autogen/server/zone/objects/creature/buffs/SingleUseBuffObserver.cpp \
 				autogen/server/zone/objects/creature/buffs/SquadLeaderBuff.cpp \
 				autogen/server/zone/objects/creature/buffs/SquadLeaderBuffObserver.cpp \
+				autogen/server/zone/objects/creature/buffs/PrivateBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/PrivateSkillMultiplierBuff.cpp \
 				autogen/server/zone/objects/player/PlayerObject.cpp \
 				autogen/server/zone/objects/player/sui/SuiBox.cpp \
 				autogen/server/zone/objects/player/sui/keypadbox/SuiKeypadBox.cpp \
@@ -641,6 +643,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/buffs/PerformanceBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/SingleUseBuffObserverImplementation.cpp \
 		server/zone/objects/creature/buffs/SquadLeaderBuffObserverImplementation.cpp \
+		server/zone/objects/creature/buffs/PrivateSkillMultiplierBuffImplementation.cpp \
 		server/zone/objects/creature/buffs/BuffList.cpp \
 		server/zone/objects/tangible/components/vendor/VendorContainerComponent.cpp \
 		server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp \
