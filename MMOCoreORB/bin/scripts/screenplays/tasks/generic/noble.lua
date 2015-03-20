@@ -129,7 +129,7 @@ generic_noble_missions =
 			},
 			rewards =
 			{
-				{ rewardType = "item", itemTemplate = "object/tangible/loot/misc/firework_dud_s01.iff" }
+				{ rewardType = "item", itemTemplate = "object/tangible/loot/misc/firework_dud_s1.iff" }
 			}
 		},
 		{
@@ -145,7 +145,7 @@ generic_noble_missions =
 			},
 			rewards =
 			{
-				{ rewardType = "item", itemTemplate = "object/tangible/loot/misc/firework_dud_s02.iff" }
+				{ rewardType = "item", itemTemplate = "object/tangible/loot/misc/firework_dud_s2.iff" }
 			}
 		},
 		{
