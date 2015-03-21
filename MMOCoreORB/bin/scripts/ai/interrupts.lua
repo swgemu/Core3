@@ -175,8 +175,12 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	local radius = AiAgent(pAgent):getAggroRadius()
 	if radius == 0 then radius = DEFAULTAGGRORADIUS end
 	radius = radius*mod
+
+	-- TODO possibly tweak, but we need a cap on mob awareness distance
+	if not SceneObject(pObject):isInRangeWithObject(pAgent, radius * 2) then return end
+
 	local inRange = SceneObject(pObject):isInRangeWithObject(pAgent, radius)
-	
+
 	local pFollow = AiAgent(pAgent):getFollowObject();
 	
 	if AiAgent(pAgent):isStalker() and AiAgent(pAgent):isAggressiveTo(pObject) then
