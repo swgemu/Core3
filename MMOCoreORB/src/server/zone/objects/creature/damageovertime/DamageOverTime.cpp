@@ -238,7 +238,7 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 	int woundsToApply = (int)(secondaryStrength * (100 + victim->getShockWounds() ) / 100.0f);
 
 	if ((int)strength > 0) {
-		victim->addWounds(attribute, woundsToApply, true);
+		victim->addWounds(attribute, woundsToApply, true, false);
 		victim->addShockWounds((int)(woundsToApply * 0.075f));
 	}
 
@@ -276,7 +276,7 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
 	uint32 power = strength + (shockWounds * strength / 500);
 
 	if ((int)power > 0) {
-		victim->addWounds(attribute, power);
+		victim->addWounds(attribute, power, true, false);
 		if (victim->hasAttackDelay())
 			victim->removeAttackDelay();
 	}

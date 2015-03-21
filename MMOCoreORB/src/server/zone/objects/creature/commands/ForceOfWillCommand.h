@@ -120,15 +120,15 @@ public:
 
 		//Handle successes.
 		if (deltaRoll < 10) {
-			player->addWounds(CreatureAttribute::HEALTH, 100, true);
-			player->addWounds(CreatureAttribute::STRENGTH, 100, true);
-			player->addWounds(CreatureAttribute::CONSTITUTION, 100, true);
-			player->addWounds(CreatureAttribute::ACTION, 100, true);
-			player->addWounds(CreatureAttribute::QUICKNESS, 100, true);
-			player->addWounds(CreatureAttribute::STAMINA, 100, true);
-			player->addWounds(CreatureAttribute::MIND, 100, true);
-			player->addWounds(CreatureAttribute::FOCUS, 100, true);
-			player->addWounds(CreatureAttribute::WILLPOWER, 100, true);
+			player->addWounds(CreatureAttribute::HEALTH, 100, true, false);
+			player->addWounds(CreatureAttribute::STRENGTH, 100, true, false);
+			player->addWounds(CreatureAttribute::CONSTITUTION, 100, true, false);
+			player->addWounds(CreatureAttribute::ACTION, 100, true, false);
+			player->addWounds(CreatureAttribute::QUICKNESS, 100, true, false);
+			player->addWounds(CreatureAttribute::STAMINA, 100, true, false);
+			player->addWounds(CreatureAttribute::MIND, 100, true, false);
+			player->addWounds(CreatureAttribute::FOCUS, 100, true, false);
+			player->addWounds(CreatureAttribute::WILLPOWER, 100, true, false);
 			player->addShockWounds(100, true);
 
 			player->sendSystemMessage("@teraskasi:forceofwill_crit_fail"); //You strain to bring yourself back to consciousness.

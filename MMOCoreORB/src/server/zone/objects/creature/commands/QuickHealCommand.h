@@ -220,7 +220,6 @@ public:
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
 		creature->addWounds(CreatureAttribute::FOCUS, mindWoundCost, true);
 		creature->addWounds(CreatureAttribute::WILLPOWER, mindWoundCost, true);
-		creature->addShockWounds(2);
 
 		doAnimations(creature, creatureTarget);
 

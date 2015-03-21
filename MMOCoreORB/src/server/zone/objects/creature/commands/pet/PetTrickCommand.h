@@ -83,12 +83,12 @@ public:
 		int shockHeal = 100 * trickNumber;
 
 		// Heal wounds
-		pet->addWounds(CreatureAttribute::MIND, -mindHeal);
-		pet->addWounds(CreatureAttribute::FOCUS, -focusHeal);
-		pet->addWounds(CreatureAttribute::WILLPOWER, -willHeal);
+		pet->healWound(player, CreatureAttribute::MIND, mindHeal, true, false);
+		pet->healWound(player, CreatureAttribute::FOCUS, focusHeal, true, false);
+		pet->healWound(player, CreatureAttribute::WILLPOWER, willHeal, true, false);
 
 		// Heal battle fatigue
-		pet->addShockWounds(-shockHeal);
+		pet->addShockWounds(-shockHeal, true, false);
 
 		// Heal damage
 		mindHeal = MIN( mindHeal, pet->getMaxHAM(CreatureAttribute::MIND) - pet->getHAM(CreatureAttribute::MIND) );

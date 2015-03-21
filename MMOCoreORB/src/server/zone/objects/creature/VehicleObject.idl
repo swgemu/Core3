@@ -162,7 +162,7 @@ class VehicleObject extends CreatureObject {
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 */
-	public int addWounds(int type, int value, boolean notifyClient = true) {
+	public int addWounds(int type, int value, boolean notifyClient = true, boolean doShockWounds = true) {
 		return 0;
 	}
 

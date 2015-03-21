@@ -161,15 +161,15 @@ void EntertainingSessionImplementation::healWounds(CreatureObject* creature, flo
 		return;
 
 	if(shockHeal > 0 && creature->getShockWounds() > 0 && canHealBattleFatigue()) {
-		creature->addShockWounds(-shockHeal);
+		creature->addShockWounds(-shockHeal, true, false);
 		amountHealed += shockHeal;
 	}
 	if(woundHeal > 0 && (creature->getWounds(CreatureAttribute::MIND) > 0
 			|| creature->getWounds(CreatureAttribute::FOCUS) > 0
 			|| creature->getWounds(CreatureAttribute::WILLPOWER) > 0)) {
-		creature->addWounds(CreatureAttribute::MIND, -woundHeal);
-		creature->addWounds(CreatureAttribute::FOCUS, -woundHeal);
-		creature->addWounds(CreatureAttribute::WILLPOWER, -woundHeal);
+		creature->healWound(entertainer, CreatureAttribute::MIND, woundHeal, true, false);
+		creature->healWound(entertainer, CreatureAttribute::FOCUS, woundHeal, true, false);
+		creature->healWound(entertainer, CreatureAttribute::WILLPOWER, woundHeal, true, false);
 
 		amountHealed += woundHeal;
 	}

@@ -261,9 +261,9 @@ public:
 
 		creatureTarget->setPosture(CreaturePosture::UPRIGHT);
 
-		int healedHealthWounds = creatureTarget->addWounds(CreatureAttribute::HEALTH, - (int) (round(revivePack->getHealthWoundHealed())));
-		int healedActionWounds = creatureTarget->addWounds(CreatureAttribute::ACTION, - (int) (round(revivePack->getActionWoundHealed())));
-		int healedMindWounds = creatureTarget->addWounds(CreatureAttribute::MIND, - (int) (round(revivePack->getMindWoundHealed())));
+		int healedHealthWounds = creatureTarget->healWound(creature, CreatureAttribute::HEALTH, (int) (round(revivePack->getHealthWoundHealed())));
+		int healedActionWounds = creatureTarget->healWound(creature, CreatureAttribute::ACTION, (int) (round(revivePack->getActionWoundHealed())));
+		int healedMindWounds = creatureTarget->healWound(creature, CreatureAttribute::MIND, (int) (round(revivePack->getMindWoundHealed())));
 
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
 

@@ -85,7 +85,7 @@ public:
 
 		int healedValue = MIN(currentValue, damage);
 
-		creature->addShockWounds(-healedValue);
+		creature->addShockWounds(-healedValue, true, false);
 
 		return healedValue;
 

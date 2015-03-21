@@ -387,7 +387,7 @@ public:
 		int healedAction = creatureTarget->healDamage(creature, CreatureAttribute::ACTION, heal);
 		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, heal, true, false);		
 
-		creatureTarget->addShockWounds(-1000);
+		creatureTarget->addShockWounds(-1000, true, false);
 		
 		creatureTarget->removeStateBuff(CreatureState::STUNNED);
 

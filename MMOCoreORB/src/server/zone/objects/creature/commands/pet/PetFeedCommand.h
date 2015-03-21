@@ -144,12 +144,12 @@ public:
 		int quicknessHeal = pet->getBaseHAM(CreatureAttribute::QUICKNESS) * 0.10;
 		int staminaHeal = pet->getBaseHAM(CreatureAttribute::STAMINA) * 0.10;
 
-		pet->addWounds(CreatureAttribute::HEALTH, -healthHeal);
-		pet->addWounds(CreatureAttribute::STRENGTH, -strengthHeal);
-		pet->addWounds(CreatureAttribute::CONSTITUTION, -conHeal);
-		pet->addWounds(CreatureAttribute::ACTION, -actionHeal);
-		pet->addWounds(CreatureAttribute::QUICKNESS, -quicknessHeal);
-		pet->addWounds(CreatureAttribute::STAMINA, -staminaHeal);
+		pet->healWound(player, CreatureAttribute::HEALTH, healthHeal, true, false);
+		pet->healWound(player, CreatureAttribute::STRENGTH, strengthHeal, true, false);
+		pet->healWound(player, CreatureAttribute::CONSTITUTION, conHeal, true, false);
+		pet->healWound(player, CreatureAttribute::ACTION, actionHeal, true, false);
+		pet->healWound(player, CreatureAttribute::QUICKNESS, quicknessHeal, true, false);
+		pet->healWound(player, CreatureAttribute::STAMINA, staminaHeal, true, false);
 
 		// Perform eat animation and do fly text
 		pet->doAnimation("eat");

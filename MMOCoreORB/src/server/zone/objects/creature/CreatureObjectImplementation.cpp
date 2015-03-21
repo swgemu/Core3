@@ -606,8 +606,7 @@ void CreatureObjectImplementation::setShockWounds(int newShock,
 	}
 }
 
-void CreatureObjectImplementation::addShockWounds(int shockToAdd,
-		bool notifyClient) {
+void CreatureObjectImplementation::addShockWounds(int shockToAdd, bool notifyClient, bool sendSpam) {
 	int newShockWounds = shockWounds + shockToAdd;
 
 	if (newShockWounds < 0) {
@@ -616,7 +615,7 @@ void CreatureObjectImplementation::addShockWounds(int shockToAdd,
 		newShockWounds = 1000;
 	}
 
-	if (shockToAdd > 0 && _this.get()->isPlayerCreature())
+	if (sendSpam && shockToAdd > 0 && _this.get()->isPlayerCreature())
 		sendStateCombatSpam("cbt_spam", "shock_wound", 1, shockToAdd, false);
 
 	setShockWounds(newShockWounds, notifyClient);
@@ -1157,10 +1156,9 @@ void CreatureObjectImplementation::setWounds(int type, int value,
 	}
 }
 
-int CreatureObjectImplementation::addWounds(int type, int value,
-		bool notifyClient) {
+int CreatureObjectImplementation::addWounds(int type, int value, bool notifyClient, bool doShockWounds) {
 	if (type < 0 || type >= wounds.size()) {
-		error("unknown wound type in changeWounds");
+		error("unknown wound type in addWounds");
 		return 0;
 	}
 
@@ -1178,7 +1176,8 @@ int CreatureObjectImplementation::addWounds(int type, int value,
 
 	setWounds(type, newValue, notifyClient);
 
-	addShockWounds(1, true);
+	if (doShockWounds)
+		addShockWounds(1, true);
 
 	return returnValue;
 }

@@ -160,7 +160,7 @@ public:
 			sendCombatSpam(memberPlayer);
 
 			for (int j = 0; j < 9; j++)
-				memberPlayer->addWounds(j, (int) wounds[j] / sizeAffected);
+				memberPlayer->addWounds(j, (int) wounds[j] / sizeAffected, true, false);
 		}
 
 		return true;

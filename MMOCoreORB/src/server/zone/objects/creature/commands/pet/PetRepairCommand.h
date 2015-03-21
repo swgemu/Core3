@@ -51,7 +51,7 @@ public:
 		bool targetHealed = false;
 		for( int attr = 0; attr <= 8; attr++ ){
 			if( targetDroid->getWounds( attr ) > 0 ){
-				targetDroid->addWounds(attr, -targetDroid->getWounds( attr ));
+				targetDroid->healWound(droidPet, attr, targetDroid->getWounds( attr ), true, false);
 				targetHealed = true;
 			}
 		}

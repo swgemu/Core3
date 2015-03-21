@@ -890,9 +890,9 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		player->sendSystemMessage("@base_player:bind_removed");
 		ghost->setCloningFacility(NULL);
 	} else {
-		player->addWounds(CreatureAttribute::HEALTH, 100, true);
-		player->addWounds(CreatureAttribute::ACTION, 100, true);
-		player->addWounds(CreatureAttribute::MIND, 100, true);
+		player->addWounds(CreatureAttribute::HEALTH, 100, true, false);
+		player->addWounds(CreatureAttribute::ACTION, 100, true, false);
+		player->addWounds(CreatureAttribute::MIND, 100, true, false);
 	}
 
 	player->addShockWounds(100, true);

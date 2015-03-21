@@ -205,9 +205,9 @@ public:
 		sendHealMessage(creature, creatureTarget, healedMind);
 		int mindWound = (int) healedMind * .05; // 5% of mind healed in wounds
 
-		creature->addWounds(CreatureAttribute::MIND, mindWound);
-		creature->addWounds(CreatureAttribute::FOCUS, mindWound);
-		creature->addWounds(CreatureAttribute::WILLPOWER, mindWound);
+		creature->addWounds(CreatureAttribute::MIND, mindWound, true, false);
+		creature->addWounds(CreatureAttribute::FOCUS, mindWound, true, false);
+		creature->addWounds(CreatureAttribute::WILLPOWER, mindWound, true, false);
 
 		creature->addShockWounds(mindWound); // 5% of mind healed in bf
 
