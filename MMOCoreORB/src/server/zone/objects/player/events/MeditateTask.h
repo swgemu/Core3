@@ -122,7 +122,7 @@ public:
 				//Cap the heal at the amount of wounds the creature has.
 				heal = MIN(wounds, heal);
 
-				player->addWounds(pool, -heal, true);
+				player->healWound(player, pool, heal, true, false);
 
 				// Sending System healing Message (wounds)
 				healParams.setStringId("teraskasi", "prose_curewound"); // [meditation] Your %TO wounds heal by %DI points.
