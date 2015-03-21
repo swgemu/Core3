@@ -54,6 +54,12 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	if AiAgent(pAgent):getFollowObject() ~= nil and AiAgent(pAgent):getFollowObject() ~= pObject then return false end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("6") end
 
+	local radius = AiAgent(pAgent):getAggroRadius()
+	if radius == 0 then radius = DEFAULTAGGRORADIUS end
+
+	-- TODO possibly tweak, but we need a cap on mob awareness distance
+	if not SceneObject(pObject):isInRangeWithObject(pAgent, radius * 2.4) then return false end
+
 	if not SceneObject(pObject):isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("8") end
 	if TangibleObject(pAgent):getPvpStatusBitmask() == NONE or CreatureObject(pObject):isDead() or CreatureObject(pObject):isIncapacitated() then return false end
@@ -175,8 +181,9 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	local radius = AiAgent(pAgent):getAggroRadius()
 	if radius == 0 then radius = DEFAULTAGGRORADIUS end
 	radius = radius*mod
+
 	local inRange = SceneObject(pObject):isInRangeWithObject(pAgent, radius)
-	
+
 	local pFollow = AiAgent(pAgent):getFollowObject();
 	
 	if AiAgent(pAgent):isStalker() and AiAgent(pAgent):isAggressiveTo(pObject) then
