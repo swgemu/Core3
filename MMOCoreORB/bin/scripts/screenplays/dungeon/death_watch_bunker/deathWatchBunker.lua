@@ -795,7 +795,7 @@ function DeathWatchBunkerScreenPlay:bombDroidDetonated(pBombDroid, pBombDroid2)
 		SceneObject(pDebris):playEffect("clienteffect/combat_grenade_proton.cef", "")
 		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris)
 	elseif (pDebris2 ~= nil and SceneObject(pBombDroid):isInRangeWithObject(pDebris2, 5)) then
-		SceneObject(pDebris):playEffect("clienteffect/combat_grenade_proton.cef", "")
+		SceneObject(pDebris2):playEffect("clienteffect/combat_grenade_proton.cef", "")
 		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris2)
 	end
 
