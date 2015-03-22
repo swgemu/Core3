@@ -189,8 +189,6 @@ public:
 		stateMask = mask;
 	}
 
-
-
 	/*inline void setTarget(int num) {
 		target = num;
 	}*/
@@ -350,6 +348,8 @@ public:
 
 	virtual void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
 	}
+
+	int doCommonMedicalCommandChecks(CreatureObject* creature);
 };
 
 

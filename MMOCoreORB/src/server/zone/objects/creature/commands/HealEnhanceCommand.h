@@ -154,16 +154,6 @@ public:
 			}
 		}
 
-		if (enhancer->isProne() || enhancer->isMeditating()) {
-			enhancer->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
-			return false;
-		}
-
-		if (enhancer->isRidingMount()) {
-			enhancer->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
-			return false;
-		}
-
 		if (enhancer->isInCombat()) {
 			enhancer->sendSystemMessage("You cannot do that while in Combat.");
 			return false;
@@ -290,14 +280,10 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		int result = doCommonMedicalCommandChecks(creature);
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		if (creature->hasAttackDelay()) // no message associated with this
-			return GENERALERROR;
+		if (result != SUCCESS)
+			return result;
 
 		CreatureObject* enhancer = creature;
 

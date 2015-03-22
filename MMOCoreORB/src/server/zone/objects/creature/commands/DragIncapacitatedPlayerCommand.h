@@ -207,11 +207,10 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		int result = doCommonMedicalCommandChecks(creature);
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+		if (result != SUCCESS)
+			return result;
 
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
@@ -239,7 +238,7 @@ public:
 			player->sendSystemMessage("@healing_response:healing_response_a9"); //"You lack the ability to drag incapacitated players!"
 			return GENERALERROR;
 		}
-		
+
 		if (!targetPlayer->isHealableBy(creature)) {
 			player->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return GENERALERROR;

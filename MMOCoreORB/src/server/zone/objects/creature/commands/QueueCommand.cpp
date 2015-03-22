@@ -177,3 +177,25 @@ void QueueCommand::onComplete(uint32 actioncntr, CreatureObject* player, float c
 		player->clearQueueAction(actioncntr, commandDuration);
 }
 
+int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) {
+	if (!checkStateMask(creature))
+		return INVALIDSTATE;
+
+	if (!checkInvalidLocomotions(creature))
+		return INVALIDLOCOMOTION;
+
+	if (creature->hasAttackDelay()) // no message associated with this
+		return GENERALERROR;
+
+	if (creature->isProne() || creature->isMeditating() || creature->isSwimming()) {
+		creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
+		return GENERALERROR;
+	}
+
+	if (creature->isRidingMount()) {
+		creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
+		return GENERALERROR;
+	}
+
+	return SUCCESS;
+}

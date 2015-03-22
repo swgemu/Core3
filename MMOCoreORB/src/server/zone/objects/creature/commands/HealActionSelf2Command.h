@@ -67,15 +67,10 @@ public:
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
+		int result = doCommonMedicalCommandChecks(creature);
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		if (creature->hasAttackDelay()) // no message associated with this
-			return GENERALERROR;
+		if (result != SUCCESS)
+			return result;
 
 		if (isWearingArmor(creature))
 			return NOJEDIARMOR;

@@ -158,10 +158,6 @@ public:
 			creature->sendSystemMessage("Your target has no wounds of that type to heal."); //%NT has no wounds of that type to heal.
 			return false;
 		}
-		
-		if (creature->isProne()) {
-			return false;
-		}
 
 		PlayerManager* playerManager = server->getPlayerManager();
 
@@ -175,14 +171,10 @@ public:
 	
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		int result = doCommonMedicalCommandChecks(creature);
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		if (creature->hasAttackDelay()) // no message associated with this
-			return GENERALERROR;
+		if (result != SUCCESS)
+			return result;
 
 		if (isWearingArmor(creature))
 			return NOJEDIARMOR;
