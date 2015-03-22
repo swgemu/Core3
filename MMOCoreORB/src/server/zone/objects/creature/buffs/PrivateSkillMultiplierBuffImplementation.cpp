@@ -50,7 +50,7 @@ void PrivateSkillMultiplierBuffImplementation::removeSkillModifiers() {
 
 		int prevMod = strongCreo->getSkillMod(key);
 
-		strongCreo->addSkillMod(SkillModManager::BUFF, key, prevMod <= value ? -prevMod : (int)(prevMod*(1/value-1)), true);
+		strongCreo->addSkillMod(SkillModManager::BUFF, key, prevMod <= value ? -prevMod : (int)(prevMod*((1/(float)(value))-1)), true);
 
 	}
 
