@@ -427,8 +427,9 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 		return;
 
 	CreatureObject* target = cast<CreatureObject*>(entry);
-	if (target != NULL && target->getSlottedObject("rider").castTo<CreatureObject*>() != NULL)
-		target = target->getSlottedObject("rider").castTo<CreatureObject*>();
+	CreatureObject* rider = NULL;
+	if (target != NULL && (target->isVehicleObject() || target->isMount()) && (rider = target->getSlottedObject("rider").castTo<CreatureObject*>()) != NULL)
+		target = rider;
 
 	if (target != NULL)
 		activateAwarenessEvent(target);
