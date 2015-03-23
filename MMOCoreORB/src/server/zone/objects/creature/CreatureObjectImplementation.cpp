@@ -2186,7 +2186,7 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 }
 void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 	if (!hasState(CreatureState::STUNNED)) {
-		Reference<StateBuff*> state = new StateBuff(_this.get(), CreatureState::STUNNED, durationSeconds);
+		Reference<StateBuff*> state = new StateBuff(_this.get(), CreatureState::STUNNED, durationSeconds, String("stunstate").hashCode());
 		Reference<PrivateSkillMultiplierBuff*> multBuff = new PrivateSkillMultiplierBuff(_this.get(), String("stunstate").hashCode(), durationSeconds, BuffType::STATE);
 
 		state->setStartFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
@@ -2223,6 +2223,7 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 		buff->setSkillModifier("private_damage_divisor", 2 + (int)(mod/10));
 
 		addBuff(buff);
+
 	} else { // already have this intimidation buff, don't keep stacking the multiplier, but do extend the duration
 		Reference<Buff*> buff = getBuff(crc);
 
@@ -2237,7 +2238,7 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 	}
 
 	if (!hasState(CreatureState::INTIMIDATED)) {
-		Reference<StateBuff*> state = new StateBuff(_this.get(), CreatureState::INTIMIDATED, durationSeconds);
+		Reference<StateBuff*> state = new StateBuff(_this.get(), CreatureState::INTIMIDATED, durationSeconds, crc);
 
 		state->setStartFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 		state->setEndFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
@@ -2251,6 +2252,8 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 			setIntimidatedState(mod, crc, durationSeconds);
 			return;
 		}
+
+		state->addSecondaryBuffCRC(crc);
 
 		if (state->getTimeLeft() < durationSeconds)
 			state->renew(durationSeconds);
@@ -2344,8 +2347,21 @@ void CreatureObjectImplementation::addBuff(Buff* buff) {
 }
 
 bool CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
+
+	Reference<Buff*> buff = getBuff(buffcrc);
+
 	//BuffList::removeBuff checks to see if the buffcrc exists in the map.
-	return creatureBuffs.removeBuff(buffcrc);
+	bool ret = creatureBuffs.removeBuff(buffcrc);
+
+	if (buff != NULL) {
+		Vector<unsigned long long>* secondaryCRCs = buff->getSecondaryBuffCRCs();
+
+		for (int i = 0; i < secondaryCRCs->size(); i++) {
+			removeBuff(secondaryCRCs->get(i));
+		}
+	}
+
+	return ret;
 }
 
 void CreatureObjectImplementation::removeBuff(Buff* buff) {
