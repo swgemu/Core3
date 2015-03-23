@@ -105,13 +105,19 @@ class Buff extends ManagedObject implements Logger {
 	@dereferenced
 	protected Time nextExecutionTime; 
 
-	public Buff(CreatureObject creo, unsigned int buffcrc, float duration, int bufftype) {
+	@dereferenced
+	protected Vector<unsigned long> secondaryBuffCRCs;
+
+	public Buff(CreatureObject creo, unsigned int buffcrc, float duration, int bufftype, unsigned long secondaryCRC = 0) {
 		creature = creo;
 		buffCRC = buffcrc;
 		buffDuration = duration;
 		buffType = bufftype;
 		fillAttributesOnBuff = false;
-		
+
+		if (secondaryCRC != 0)
+			secondaryBuffCRCs.add(secondaryCRC);
+
 		startFlyFile = "";
 		endFlyFile = "";
 
@@ -292,4 +298,15 @@ class Buff extends ManagedObject implements Logger {
 	public native void setStartFlyText(final string file, final string aux, byte red, byte green, byte blue);
 	
 	public native void setEndFlyText(final string file, final string aux, byte red, byte green, byte blue);
+
+	public void addSecondaryBuffCRC(unsigned long secondaryCRC) {
+		if (secondaryCRC != 0 && !secondaryBuffCRCs.contains(secondaryCRC))
+			secondaryBuffCRCs.add(secondaryCRC);
+	}
+
+	@local
+	@dirty
+	public Vector<unsigned long> getSecondaryBuffCRCs() {
+		return secondaryBuffCRCs;
+	}
 }

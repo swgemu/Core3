@@ -52,12 +52,12 @@ import engine.log.Logger;
 
 class StateBuff extends Buff {
 	protected unsigned long stateApplied;
-	
-	public StateBuff(CreatureObject creo, unsigned long buffState, int duration) {
-		super(creo, Long.hashCode(buffState), duration, BuffType.STATE);
-		
+
+	public StateBuff(CreatureObject creo, unsigned long buffState, int duration, unsigned long secondaryCRC = 0) {
+		super(creo, Long.hashCode(buffState), duration, BuffType.STATE, secondaryCRC);
+
 		//Logger.info("creating state buff with duration " + String.valueOf(duration), true);
-		
+
 		stateApplied = buffState;
 	}
 	
