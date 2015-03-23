@@ -1324,12 +1324,17 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			currentFoundPath = NULL;
 		}
 
+		bool remove = true;
+
 		if (path == NULL) {
 			// we weren't able to find a path, so remove this location from patrolPoints and try again with the next one
 			PatrolPoint oldPoint = patrolPoints.remove(0);
 
 			if (getFollowState() == AiAgent::PATROLLING)
 				savedPatrolPoints.add(oldPoint);
+
+			// don't remove a good patrol point
+			remove = false;
 
 			continue;
 		}
@@ -1339,8 +1344,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		WorldCoordinates* oldCoord = NULL;
 		float pathDistance = 0;
-
-		bool remove = true;
 
 		float targetDistance = targetPosition->getWorldPosition().distanceTo(getWorldPosition());
 
@@ -1370,7 +1373,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 				checkNewAngle();
 			}
 
-			return getFollowState() == AiAgent::WATCHING || getFollowState() == AiAgent::FLEEING;
+			return getFollowState() == AiAgent::WATCHING || getFollowState() == AiAgent::FLEEING || getFollowState() == AiAgent::LEASHING;
 		}
 
 		for (int i = 1; i < path->size() && !found; ++i) { // i = 0 is our position
