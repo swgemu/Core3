@@ -52,13 +52,19 @@ import engine.log.Logger;
 
 class StateBuff extends Buff {
 	protected unsigned long stateApplied;
-	
-	public StateBuff(CreatureObject creo, unsigned long buffState, int duration) {
+
+	@dereferenced
+	protected Vector<unsigned long> secondaryBuffCRCs;
+
+	public StateBuff(CreatureObject creo, unsigned long buffState, int duration, unsigned long secondaryCRC = 0) {
 		super(creo, Long.hashCode(buffState), duration, BuffType.STATE);
-		
+
 		//Logger.info("creating state buff with duration " + String.valueOf(duration), true);
-		
+
 		stateApplied = buffState;
+
+		if (secondaryCRC != 0)
+			secondaryBuffCRCs.add(secondaryCRC);
 	}
 	
 	public void activate(boolean applyModifiers) {
@@ -75,5 +81,16 @@ class StateBuff extends Buff {
 	//	Logger.info("deatctivating state buff", true);
 		
 		super.creature.clearState(stateApplied);
+	}
+
+	public void addSecondaryBuffCRC(unsigned long secondaryCRC) {
+		if (secondaryCRC != 0 && !secondaryBuffCRCs.contains(secondaryCRC))
+			secondaryBuffCRCs.add(secondaryCRC);
+	}
+
+	@local
+	@dirty
+	public Vector<unsigned long> getSecondaryBuffCRCs() {
+		return secondaryBuffCRCs;
 	}
 }
