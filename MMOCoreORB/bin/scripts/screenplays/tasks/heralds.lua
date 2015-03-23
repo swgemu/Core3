@@ -256,8 +256,8 @@ function HeraldConvoHandler:handleScreenNpcBackToWork(pConversationTemplate, pCo
 	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":heraldID")
 	local stfFile = "@spawning/static_npc/" .. self.themePark.heraldList[heraldNumber].stringFile
 
-	heraldScreenPlay:createLoc(pConversingPlayer, heraldNumber)
 	heraldScreenPlay:cleanUp(pConversingPlayer, heraldNumber)
+	heraldScreenPlay:createLoc(pConversingPlayer, heraldNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_backtowork_1")
 
