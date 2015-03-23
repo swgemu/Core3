@@ -670,11 +670,9 @@ class CreatureObject extends TangibleObject {
 	 * @param buffcrc The buff object to remove from the list.
 	 */
 	public native void removeBuff(Buff buff);
-	
-	public boolean removeStateBuff(unsigned long state) {
-		return removeBuff(Long.hashCode(state));
-	}
-	
+
+	public native boolean removeStateBuff(unsigned long state);
+
 	/**
 	 * Removes all buffs from the creature, deactivating any currently active buffs.
 	 * @param updateclient Should packets be sent to the player?
