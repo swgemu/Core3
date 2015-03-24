@@ -21,16 +21,13 @@ namespace creature {
 
 class DnaManager : public Singleton<DnaManager>, public Object, public Logger {
 protected:
-	HashTable<uint32, DnaSampleRange* > dexerity;
-	HashTable<uint32, DnaSampleRange* > fortitude;
-	HashTable<uint32, DnaSampleRange* > endurance;
-	HashTable<uint32, DnaSampleRange* > intelligence;
-	HashTable<uint32, DnaSampleRange* > hardiness;
-	HashTable<uint32, DnaSampleRange* > power;
-	HashTable<uint32, DnaSampleRange* > cleverness;
-	HashTable<uint32, DnaSampleRange* > courage;
-	HashTable<uint32, DnaSampleRange* > dependency;
-	HashTable<uint32, DnaSampleRange* > fierceness;
+	// how to store this?
+	ArrayList<float> dnaHit;
+	ArrayList<int> dnaHam;
+	ArrayList<int> dnaDPS;
+	ArrayList<int> dnaArmor;
+	ArrayList<int> dnaRegen;
+
 	HashTable<int,uint32> qualityTemplates;
 	Lua* lua;
 	static AtomicInteger loadedDnaData;
@@ -39,7 +36,6 @@ public:
 	virtual ~DnaManager();
 	void loadSampleData();
 	int generateXp(int creatureLevel);
-	static int addRange(lua_State* L);
 	static int addQualityTemplate(lua_State* L);
 	enum {
 		FORTITUDE     = 1,
@@ -53,10 +49,8 @@ public:
 		POWER         = 9,
 		FIERCENESS    = 10
 	};
-	int generateScoreFor(int stat, int cl,int quality);
 	void generateSample(Creature* creature, CreatureObject* player, int quality);
 	void generationalSample(PetDeed* deed, CreatureObject* player, int quality);
-	int getLevelForStat(int stat, int value);
 protected:
 	int reduceByPercent(int source, int percent) {
 		float reduceBy = (100.0 - (float)percent) / 100.0;

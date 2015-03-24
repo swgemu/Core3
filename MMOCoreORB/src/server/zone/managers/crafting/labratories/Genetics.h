@@ -5,7 +5,7 @@
 #include "engine/engine.h"
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
-
+#include "server/zone/objects/creature/CreatureFlag.h"
 namespace server {
 namespace zone {
 namespace managers {
@@ -22,33 +22,41 @@ private:
 public:
 	Genetics();
 	virtual ~Genetics();
+
 	static float physiqueFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.4) + (b *0.25) + (c * 0.05) + (d * 0.05) + (e * 0.25));
 		return rc > 1000 ? 1000.0 : rc;
 	}
+
 	static float prowessFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.25) + (b *0.42) + (c * 0.17) + (d * 0.085) + (e * .075));
 		return rc > 1000 ? 1000.0 : rc;
 	}
+
 	static float mentalFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.05) + (b *0.1) + (c * 0.5) + (d * 0.3) + (e * .05));
 		return rc > 1000 ? 1000.0 : rc;
 	}
+
 	static float aggressionFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.17) + (b *0.16) + (c * 0.085) + (d * 0.165) + (e * 0.42));
 		return rc > 1000 ? 1000.0 : rc;
 	}
+
 	static float physchologicalFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.09) + (b *0.05) + (c * 0.26) + (d * 0.43) + (e * 0.17));
 		return rc > 1000 ? 1000.0 : rc;
 	}
+
 	static float experimentFormula(float a, float b) {
 		float multiplier = 140.0;
 		return (round( (a/(a+b)*multiplier)));
 	}
+
 	static float determineMaxExperimentation(float min, float max) {
 		return ceil((max / 10.0f) * .01f); // deterine max percentage. we will lock the stats each round after experimentation to handle adjustment our selves.
 	}
+
 	/**
 	 * Genetic experiments differently, we have know formula increase per point spent.
 	 * so we can calculate the max points possible for any given stat they arent as linear as resource items are.
@@ -205,6 +213,69 @@ public:
 			return -99;
 		return round(input * ((input/100.0f) + 0.15f));
 	}
+	static int randomizeValue(int value, int quality) {
+		int wQuality = 8 - quality; // reverse range this is not the first time.
+		int min = (value) + ((wQuality-5) * 5);
+		int max = (value) + ((wQuality-3) * 5);
+		return (int) (System::random(max-min) + min);
+	}
+	/**
+	 * New Genetics Code - washu 03/08/15
+	 */
+	// convert creature hit chance to cleverness value
+	static int hitChanceToValue(float input,int quality) {
+		int base = round(((input-0.19)/(0.66)) * 1000.0);
+		// in vert quality as VLQ is 1 VHQ is 7
+		return randomizeValue(base,quality);
+	}
+
+	// convert creature damage range to power score
+	static int damageToValue(float dps, int quality) {
+		int base = round(((dps-15.0)/(725.0))*1000.0);
+		return randomizeValue(base,quality);
+	}
+
+	static int hamToValue(float ham, int quality) {
+		int base = round(((ham-50.0)/(17950)) * 1000.0);
+		return randomizeValue(base,quality);
+	}
+	static int ferocityToValue(int level, int quality) {
+		int base = (level * 45) + 90;
+		return randomizeValue(base,quality);
+	}
+	static int accelerationToValue(float speed, int quality) {
+		int base = round(((speed-1.0)/(4.0)) * 1000.0);
+		return randomizeValue(base,quality);
+	}
+	static int meatTypeToValue(String type, int quality) {
+		return randomizeValue(500,quality);
+	}
+	static int dietToValue(int diet, int quality) {
+		int min = 0.1;
+		int max = 9.3;
+		int base = 0;
+		int level = 0;
+		if (diet != CreatureFlag::HERBIVORE) {
+			level = 8/1.701;
+		} else {
+			level = 7.0;
+		}
+		if (level == 0 ){
+			level = 1.0;
+		}
+		base = round(((level-0.1)/(9.2)) * 1000.0);
+		return randomizeValue(base,quality);
+	}
+	static float resistanceToValue(float effective, int armor,int quality) {
+		// find effective resist
+		int base = effective * 10;
+		int rand = randomizeValue(base,quality);
+		if (rand < 0)
+			rand = 0;
+		if (armor > 0)
+			rand += 500;
+		return rand;
+	}
 
 	/**
 	 * Generate damage factor
@@ -278,23 +349,6 @@ public:
 			min = 0;
 		float max = x + (21 - quality);
 		return (float)(System::random(max-min) + min);
-	}
-	static float reverseResistance(float effective, int armor) {
-		// find effective resist
-		// multiply effective resist * 10 to get base + 500 for armor
-		// so rancor level 75 comes out with 250 + 500 - the wiggle.
-		float min = (effective * 10) - 10;
-		float max = (effective * 10 ) + 20;
-		float score = 0;
-		if (min < 0)
-			min = 0;
-		score = System::random(max - min) + min;
-		if (score < 0)
-			score = 0;
-		if (armor > 0) {
-			score += 500;
-		}
-		return score;
 	}
 
 };

@@ -24,7 +24,6 @@ AtomicInteger DnaManager::loadedDnaData;
 DnaManager::DnaManager() : Logger("DnaManager") {
 	lua = new Lua();
 	lua->init();
-	lua_register(lua->getLuaState(), "addRange", addRange);
 	lua_register(lua->getLuaState(), "addQualityTemplate", addQualityTemplate);
 
 	lua->setGlobalInt("FORTITUDE", DnaManager::FORTITUDE);
@@ -46,11 +45,35 @@ void DnaManager::loadSampleData() {
 	info("Loading DNA Information",true);
 	try {
 		lua->runFile("scripts/managers/dna_manager.lua");
+		// pull stat balcne out and set it up.
+		LuaObject luaObject = lua->getGlobalObject("DNACharacteristics");
+
+			if (luaObject.isValidTable()) {
+				for (int i = 1; i <= luaObject.getTableSize(); ++i) {
+					LuaObject statRow = luaObject.getObjectAt(i);
+
+					if (statRow.isValidTable()) {
+						int level = statRow.getIntAt(1);
+						int dps = statRow.getIntAt(2);
+						float hit = statRow.getFloatAt(3);
+						int ham = statRow.getIntAt(4);
+						int armorBase = statRow.getIntAt(5);
+						int regen = statRow.getIntAt(6);
+						dnaDPS.add(dps);
+						dnaArmor.add(armorBase);
+						dnaHam.add(ham);
+						dnaHit.add(hit);
+						dnaRegen.add(regen);
+					}
+					statRow.pop();
+				}
+			}
+			luaObject.pop();
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
 	}
-
+	info("Loaded " + String::valueOf(dnaDPS.size()) + " dna stats.", true);
 	delete lua;
 	lua = NULL;
 }
@@ -63,88 +86,6 @@ int DnaManager::generateXp(int creatureLevel) {
 	float x5 = 46.75746899;
 	return (int)ceil(x1-x2+x3+x4+x5);
 }
-int DnaManager::getLevelForStat(int stat, int value) {
-	HashTable<uint32, DnaSampleRange* > ranges;
-	switch(stat) {
-		case DnaManager::CLEVERNESS:
-			ranges = instance()->cleverness;
-			break;
-		case DnaManager::COURAGE:
-			ranges = instance()->courage;
-			break;
-		case DnaManager::DEPENDABILITY:
-			ranges = instance()->dependency;
-			break;
-		case DnaManager::ENDURANCE:
-			ranges = instance()->endurance;
-			break;
-		case DnaManager::DEXTERITY:
-			ranges = instance()->dexerity;
-			break;
-		case DnaManager::FIERCENESS:
-			ranges = instance()->fierceness;
-			break;
-		case DnaManager::FORTITUDE:
-			ranges = instance()->fortitude;
-			break;
-		case DnaManager::HARDINESS:
-			ranges = instance()->hardiness;
-			break;
-		case DnaManager::INTELLIGENCE:
-			ranges = instance()->intelligence;
-			break;
-		case DnaManager::POWER:
-			ranges = instance()->power;
-			break;
-		default:
-			return 1;
-	}
-	int level = 1;
-	// walk the walk ranges and see what level this should be
-	for(int i=1;i<80;i++) {
-		DnaSampleRange* range = ranges.get(i);
-		if (range == NULL)
-			return level;
-		if (range->inRange(value)) {
-			return level;
-		}
-	}
-	return level;
-}
-int DnaManager::generateScoreFor(int stat, int cl, int quality) {
-	int actualCl;
-	actualCl = cl;
-	if (actualCl > 80) {
-		actualCl = 80;
-	}
-	switch(stat){
-		case DnaManager::CLEVERNESS:
-			return instance()->cleverness.get(actualCl)->generateValue(quality);
-		case DnaManager::COURAGE:
-			return instance()->courage.get(actualCl)->generateValue(quality);
-		case DnaManager::DEPENDABILITY:
-			return instance()->dependency.get(actualCl)->generateValue(quality);
-		case DnaManager::DEXTERITY:
-			return instance()->dexerity.get(actualCl)->generateValue(quality);
-		case DnaManager::ENDURANCE:
-			return instance()->endurance.get(actualCl)->generateValue(quality);
-		case DnaManager::FIERCENESS:
-			if (actualCl > 20) {
-				actualCl = 20;
-			}
-			return instance()->fierceness.get(actualCl)->generateValue(quality);
-		case DnaManager::FORTITUDE:
-			return instance()->fortitude.get(actualCl)->generateValue(quality);
-		case DnaManager::HARDINESS:
-			return instance()->hardiness.get(actualCl)->generateValue(quality);
-		case DnaManager::INTELLIGENCE:
-			return instance()->intelligence.get(actualCl)->generateValue(quality);
-		case DnaManager::POWER:
-			return instance()->power.get(actualCl)->generateValue(quality);
-		default:
-			return 0;
-	}
-}
 int DnaManager::addQualityTemplate(lua_State * L) {
 	int qual = lua_tointeger(L,-2);
 	String ascii = lua_tostring(L,-1);
@@ -152,75 +93,18 @@ int DnaManager::addQualityTemplate(lua_State * L) {
 	DnaManager::instance()->qualityTemplates.put(qual,crc);
 	return 0;
 }
-int DnaManager::addRange(lua_State* L) {
-	int stat = lua_tointeger(L,-3);
-	int level = lua_tointeger(L,-2);
-	LuaObject obj(L);
-	// Find the right Range
-	switch(stat) {
-		case DnaManager::CLEVERNESS: {
-			DnaManager::instance()->cleverness.put(level,new DnaSampleRange(obj));
-			break;
-		}
-		case DnaManager::COURAGE: {
-			DnaManager::instance()->courage.put(level,new DnaSampleRange(obj));
-			break;
-		}
-		case DnaManager::DEPENDABILITY: {
-			DnaManager::instance()->dependency.put(level,new DnaSampleRange(obj));
-			break;
-		}
-		case DnaManager::DEXTERITY: {
-			DnaManager::instance()->dexerity.put(level,new DnaSampleRange(obj));
-			break;
-		}
-		case DnaManager::ENDURANCE: {
-			DnaManager::instance()->endurance.put(level,new DnaSampleRange(obj));
-			break;
-		}
-		case DnaManager::FIERCENESS: {
-			DnaManager::instance()->fierceness.put(level,new DnaSampleRange(obj));
-			break;
-		}
-		case DnaManager::FORTITUDE: {
-			DnaManager::instance()->fortitude.put(level,new DnaSampleRange(obj));
-			break;
-		}
-		case DnaManager::HARDINESS: {
-			DnaManager::instance()->hardiness.put(level,new DnaSampleRange(obj));
-			break;
-		}
-		case DnaManager::INTELLIGENCE: {
-			DnaManager::instance()->intelligence.put(level,new DnaSampleRange(obj));
-			break;
-		}
-		case DnaManager::POWER: {
-			DnaManager::instance()->power.put(level,new DnaSampleRange(obj));
-			break;
-		}
-		default: {
-			DnaManager::instance()->info("Unknown stat provided "+ String::valueOf(stat));
-			break;
-		}
-	}
-	obj.pop();
-	int count = loadedDnaData.increment();
-	if (ConfigManager::instance()->isProgressMonitorActivated())
-		printf("\r\tLoading dna range: [%d] / [745]\t", count);
-	return 0;
-}
 void DnaManager::generationalSample(PetDeed* deed, CreatureObject* player,int quality) {
 	// We are making a generational sample rules are a little different.
 	// Reduce each stat by lets say 10% as the max to be on par with old docs
 	int cl = deed->getLevel();
-	int ferocity = 0;
+	int ferocity = 0; // 1 highest 7 lowest
 	int factor = (int)System::random(quality) - 7;
 	int reductionAmount = (factor + 15 + quality) ;
 	int cle = reduceByPercent(deed->getCleverness(),reductionAmount);
-	int cou = deed->getCourage();
-	int dep = deed->getDependency();
+	int cou = reduceByPercent(deed->getCourage(),reductionAmount);
+	int dep = reduceByPercent(deed->getDependency(),reductionAmount);
 	int dex = reduceByPercent(deed->getDexterity(),reductionAmount);
-	int end = deed->getEndurance();
+	int end = reduceByPercent(deed->getEndurance(),reductionAmount);
 	int fie = reduceByPercent(deed->getFierceness(),reductionAmount);
 	int frt = reduceByPercent(deed->getFortitude(),reductionAmount);
 	int har = reduceByPercent(deed->getHardiness(),reductionAmount);
@@ -298,19 +182,16 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 
 	int ferocity = creatureTemplate->getFerocity();
 	int cl = creature->getLevel();
-	int cle = Genetics::reverseHit(creature->getChanceHit(),quality);
-	int cou = (int)System::random(545-485)+485; // random fixed range
-	int dep = (int)System::random(780-500)+500; // random fixed range
-	int dex = Genetics::reverseHam(creature->getMaxHAM(3),quality);
-	int end = (int)System::random(525-470)+470; // random fixed range
-	int baseFerocity = (ferocity * 45) + 95;
-	int minFie = baseFerocity-20-quality;
-	int maxFie = (baseFerocity+11-quality);
-	int fie = (int)(System::random(maxFie-minFie) + minFie);
-	int frt = Genetics::reverseResistance(creature->getEffectiveResist(),creature->getArmor());
-	int har = Genetics::reverseHam(creature->getMaxHAM(0),quality);
-	int ite = Genetics::reverseHam(creature->getMaxHAM(6),quality);
-	int pow = Genetics::reverseDamage(creature->getDamageMax(),quality);
+	int cle = Genetics::hitChanceToValue(creature->getHitChance(),quality);
+	int cou = Genetics::meatTypeToValue(creature->getMeatType(),quality);
+	int dep = Genetics::dietToValue(creature->getDiet(),quality);
+	int dex = Genetics::hamToValue(creature->getMaxHAM(3),quality);
+	int end = Genetics::accelerationToValue(creature->getWalkAcceleration(),quality);
+	int fie = Genetics::ferocityToValue(ferocity,quality);
+	int frt = Genetics::resistanceToValue(creature->getEffectiveResist(),creature->getArmor(),quality);
+	int har = Genetics::hamToValue(creature->getMaxHAM(0),quality);
+	int ite = Genetics::hamToValue(creature->getMaxHAM(6),quality);
+	int pow = Genetics::damageToValue((creature->getDamageMax() + creature->getDamageMin())/2,quality);
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 

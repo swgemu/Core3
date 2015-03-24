@@ -98,16 +98,16 @@ void DnaComponentImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 			alm->insertAttribute("dna_comp_quality","@obj_attr_n:dna_comp_very_low");
 			break;
 	}
-	alm->insertAttribute("dna_comp_hardiness",(int)hardiness);
-	alm->insertAttribute("dna_comp_fortitude",(int)fortitude);
-	alm->insertAttribute("dna_comp_endurance",(int)endurance);
-	alm->insertAttribute("dna_comp_intellect",(int)intelligence);
-	alm->insertAttribute("dna_comp_cleverness",(int)cleverness);
-	alm->insertAttribute("dna_comp_dependability",(int)dependency);
-	alm->insertAttribute("dna_comp_courage",(int)courage);
-	alm->insertAttribute("dna_comp_dexterity",(int)dexterity);
-	alm->insertAttribute("dna_comp_fierceness",(int)fierceness);
-	alm->insertAttribute("dna_comp_power",(int)power);
+	alm->insertAttribute("dna_comp_hardiness",hardiness);
+	alm->insertAttribute("dna_comp_fortitude",fortitude);
+	alm->insertAttribute("dna_comp_endurance",endurance);
+	alm->insertAttribute("dna_comp_intellect",intelligence);
+	alm->insertAttribute("dna_comp_cleverness",cleverness);
+	alm->insertAttribute("dna_comp_dependability",dependency);
+	alm->insertAttribute("dna_comp_courage",courage);
+	alm->insertAttribute("dna_comp_dexterity",dexterity);
+	alm->insertAttribute("dna_comp_fierceness",fierceness);
+	alm->insertAttribute("dna_comp_power",power);
 	if (armorRating == 0)
 		alm->insertAttribute("dna_comp_armor_rating","@obj_attr_n:armor_pierce_none");
 	else if (armorRating == 1)
