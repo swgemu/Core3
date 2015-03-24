@@ -398,6 +398,13 @@ class AiAgent extends CreatureObject {
 	}
 	
 	@local
+	public int getPatrolPointSize() {
+		synchronized (targetMutex) {
+			return patrolPoints.size();
+		}
+	}
+	
+	@local
 	@dirty
 	public native void notifyInsert(QuadTreeEntry entry);
 	
