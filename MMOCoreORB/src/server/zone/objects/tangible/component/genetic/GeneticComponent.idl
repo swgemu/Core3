@@ -53,16 +53,16 @@ include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
  
 class GeneticComponent extends Component {
 
-	protected unsigned int cleverness;
-	protected unsigned int endurance;
-	protected unsigned int fierceness;
-	protected unsigned int power;
-	protected unsigned int intelligence;
-	protected unsigned int courage;
-	protected unsigned int dependency;
-	protected unsigned int dexterity;
-	protected unsigned int fortitude;
-	protected unsigned int hardiness;
+	protected int cleverness;
+	protected int endurance;
+	protected int fierceness;
+	protected int power;
+	protected int intelligence;
+	protected int courage;
+	protected int dependency;
+	protected int dexterity;
+	protected int fortitude;
+	protected int hardiness;
 	protected string special1;
 	protected string special2;
 	protected boolean ranged;
@@ -131,9 +131,9 @@ class GeneticComponent extends Component {
 	@dirty
 	public native boolean isSpecialResist(int type);
 	
-	public void setStats(unsigned int cle, unsigned int end, unsigned int fie, unsigned int pow, 
-						    unsigned int ite, unsigned int cou, unsigned int dep, unsigned int dex, 
-						    unsigned int frt, unsigned int har){
+	public void setStats(int cle, int end, int fie, int pow, 
+						    int ite, int cou, int dep, int dex, 
+						    int frt, int har){
 		cleverness = cle;
 		endurance = end;
 		fierceness = fie;
@@ -147,52 +147,52 @@ class GeneticComponent extends Component {
 	}
 	
 	@dirty
-	public unsigned int getCleverness() { 
+	public int getCleverness() { 
 		return cleverness; 
 	}
 	
 	@dirty
-	public unsigned int getEndurance() { 
+	public int getEndurance() { 
 		return endurance; 
 	}
 	
 	@dirty
-	public unsigned int getFierceness() { 
+	public int getFierceness() { 
 		return fierceness; 
 	}
 	
 	@dirty
-	public unsigned int getPower() { 
+	public int getPower() { 
 		return power; 
 	}
 	
 	@dirty
-	public unsigned int getIntelligence() { 
+	public int getIntelligence() { 
 		return intelligence; 
 	}
 	
 	@dirty
-	public unsigned int getCourage() { 
+	public int getCourage() { 
 		return courage; 
 	}
 	
 	@dirty
-	public unsigned int getDependency() { 
+	public int getDependency() { 
 		return dependency; 
 	}
 	
 	@dirty
-	public unsigned int getDexterity() { 
+	public int getDexterity() { 
 		return dexterity; 
 	}
 	
 	@dirty
-	public unsigned int getFortitude() { 
+	public int getFortitude() { 
 		return fortitude; 
 	}
 	
 	@dirty
-	public unsigned int getHardiness() { 
+	public int getHardiness() { 
 		return hardiness; 
 	}
 	
@@ -306,43 +306,43 @@ class GeneticComponent extends Component {
 	}
 
 	
-	public void setCleverness(unsigned int value) {
+	public void setCleverness(int value) {
 		cleverness = value;
 	}
 	
-	public void setEndurance(unsigned int value) {
+	public void setEndurance(int value) {
 		endurance = value;
 	}
 	
-	public void setFierceness(unsigned int value) {
+	public void setFierceness(int value) {
 		fierceness = value;
 	}
 	
-	public void setPower(unsigned int value) {
+	public void setPower(int value) {
 		power = value;
 	}
 
-	public void setIntellect(unsigned int value) {
+	public void setIntellect(int value) {
 		intelligence = value;
 	}
 	
-	public void setCourage(unsigned int value) {
+	public void setCourage(int value) {
 		courage = value;
 	}
 	
-	public void setDependency(unsigned int value) {
+	public void setDependency(int value) {
 		dependency = value;
 	}
 	
-	public void setDexterity(unsigned int value) {
+	public void setDexterity(int value) {
 		dexterity = value;
 	}
 	
-	public void setFortitude(unsigned int value) {
+	public void setFortitude(int value) {
 		fortitude = value;
 	}
 	
-	public void setHardiness(unsigned int value) {
+	public void setHardiness(int value) {
 		hardiness = value;
 	}
 	
