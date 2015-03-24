@@ -1418,8 +1418,15 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		// we've made it this far, so we know that we've found a place to move to
 		// even if the for loop failed, we will move to the last position in the path
-		// we found
-		found = true;
+		// we found. This happens when we have re-used a path and the target position
+		// has moved enough to cause the distance along the path to be shorter than
+		// the distance we can travel, so we also need to reset the path so next tick
+		// we recalculate.
+		if (!found) {
+			found = true;
+			currentFoundPath = NULL;
+			targetCellObject = NULL;
+		}
 	}
 
 #ifdef SHOW_WALK_PATH
@@ -1597,7 +1604,7 @@ float AiAgentImplementation::getMaxDistance() {
 		return 0.1f;
 		break;
 	case AiAgent::STALKING:
-		return followCopy != NULL ? getDistanceTo(followCopy) : 25;
+		return followCopy != NULL ? getAggroRadius()*2 : 25;
 		break;
 	case AiAgent::FOLLOWING:
 		// stop in weapons range
