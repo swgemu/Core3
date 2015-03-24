@@ -788,6 +788,8 @@ void AiAgentImplementation::leash() {
 	setTargetObject(NULL);
 	storeFollowObject();
 
+	clearPatrolPoints();
+
 	CombatManager::instance()->forcePeace(_this.get());
 
 	homeLocation.setReached(false);
@@ -1289,6 +1291,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			if (getFollowState() == AiAgent::PATROLLING)
 				savedPatrolPoints.add(oldPoint);
 
+			if (isRetreating())
+				homeLocation.setReached(true);
+
 			continue;
 		}
 
@@ -1471,10 +1476,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (followCopy == NULL)
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
-		if (isRetreating()) {
+		if (isRetreating())
 			homeLocation.setReached(true);
-			setOblivious();
-		}
 
 		currentFoundPath = NULL;
 		currentSpeed = 0;
