@@ -350,6 +350,8 @@ public:
 	}
 
 	int doCommonMedicalCommandChecks(CreatureObject* creature);
+
+	void checkForTef(CreatureObject* creature, CreatureObject* target);
 };
 
 

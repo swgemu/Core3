@@ -302,6 +302,8 @@ public:
 
 			if (targetCreature != creature && !targetCreature->isPet())
 				awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself or pets.
+
+			checkForTef(creature, targetCreature);
 		}
 	}
 
@@ -382,8 +384,9 @@ public:
 					return GENERALERROR;
 				}
 			}
-		} else
+		} else {
 			object = creature;
+		}
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 
@@ -456,12 +459,15 @@ public:
 
 		if (stimPack->isRangedStimPack()) {
 			doAnimationsRange(creature, targetCreature, stimPack->getObjectID(), creature->getDistanceTo(targetCreature));
-		} else
+		} else {
 			doAnimations(creature, targetCreature);
+		}
 
 		deactivateInjuryTreatment(creature, stimPack->isRangedStimPack());
 
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
+
+		checkForTef(creature, targetCreature);
 
 		return SUCCESS;
 	}

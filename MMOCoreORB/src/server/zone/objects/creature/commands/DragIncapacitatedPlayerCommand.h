@@ -226,10 +226,10 @@ public:
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		Locker clocker(targetPlayer, creature);
-		
+
 		if (creature->getZone() == NULL)
 			return GENERALERROR;
-			
+
 		if (targetPlayer->getZone() == NULL)
 			return GENERALERROR;
 
@@ -242,10 +242,12 @@ public:
 		if (!targetPlayer->isHealableBy(creature)) {
 			player->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return GENERALERROR;
-		}		
+		}
 
 		//Attempt to drag the target player.
 		drag(player, targetPlayer, maxRange, maxMovement, needsConsent, false);
+
+		checkForTef(player, targetPlayer);
 
 		return SUCCESS;
 	}

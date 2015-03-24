@@ -253,6 +253,8 @@ public:
 
 		if (creatureTarget != creature && !creatureTarget->isPet())
 			awardXp(creature, "medical", 50); //No experience for healing yourself or pets.
+
+		checkForTef(creature, creatureTarget);
 	}
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, CurePack* curePack) {
@@ -337,7 +339,6 @@ public:
 		return true;
 	}
 
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		int result = doCommonMedicalCommandChecks(creature);
@@ -406,9 +407,10 @@ public:
 
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
 
+		checkForTef(creature, targetCreature);
+
 		return SUCCESS;
 	}
 };
-
 
 #endif /* CURESTATECOMMAND_H_ */

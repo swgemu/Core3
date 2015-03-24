@@ -225,6 +225,8 @@ public:
 
 		deactivateInjuryTreatment(creature);
 
+		checkForTef(creature, droid);
+
 		return SUCCESS;
 	}
 

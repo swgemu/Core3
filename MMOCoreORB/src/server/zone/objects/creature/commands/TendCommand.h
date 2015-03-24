@@ -177,8 +177,9 @@ public:
 					return GENERALERROR;
 				}
 			}
-		} else
+		} else {
 			object = creature;
+		}
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>(object.get());
 
@@ -250,8 +251,10 @@ public:
 
 			if (creatureTarget != creature && healedWounds > 0)
 				awardXp(creature, "medical", round(healedWounds * 2.5f));
-		} else
+
+		} else {
 			return GENERALERROR;
+		}
 
 		if (creature->isPlayerCreature()) {
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
@@ -263,6 +266,8 @@ public:
 		creature->addWounds(CreatureAttribute::WILLPOWER, mindWoundCost);
 
 		doAnimations(creature, creatureTarget);
+
+		checkForTef(creature, creatureTarget);
 
 		return SUCCESS;
 	}

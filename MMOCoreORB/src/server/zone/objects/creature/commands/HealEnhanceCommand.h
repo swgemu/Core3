@@ -169,11 +169,6 @@ public:
 			return false;
 		}
 
-		if (!patient->isHealableBy(enhancer)) {
-			enhancer->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
-			return false;
-		}
-
 		if (enhancer->getHAM(CreatureAttribute::MIND) < mindCost) {
 			enhancer->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
 			return false;

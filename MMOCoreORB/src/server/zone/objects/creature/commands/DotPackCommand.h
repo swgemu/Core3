@@ -188,6 +188,8 @@ public:
 
 			creature->sendSystemMessage(stringId);
 		}
+
+		checkForTef(creature, creatureTarget);
 	}
 
 	int hasCost(CreatureObject* creature) {
@@ -352,10 +354,11 @@ public:
 
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
 
+		checkForTef(creature, creatureTarget);
+
 		return SUCCESS;
 	}
 
 };
-
 
 #endif /* DOTPACKCOMMAND_H_ */

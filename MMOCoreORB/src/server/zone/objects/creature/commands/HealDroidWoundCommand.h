@@ -271,6 +271,8 @@ public:
 
 		doAnimations(creature, droid);
 
+		checkForTef(creature, droid);
+
 		return SUCCESS;
 	}
 

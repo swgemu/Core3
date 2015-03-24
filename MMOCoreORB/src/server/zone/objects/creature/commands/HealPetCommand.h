@@ -241,6 +241,8 @@ public:
 
 		deactivateInjuryTreatment(creature);
 
+		checkForTef(creature, pet);
+
 		return SUCCESS;
 	}
 

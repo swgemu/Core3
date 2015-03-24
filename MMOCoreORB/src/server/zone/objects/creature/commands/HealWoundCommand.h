@@ -391,6 +391,8 @@ public:
 
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
 
+		checkForTef(creature, creatureTarget);
+
 		return SUCCESS;
 	}
 

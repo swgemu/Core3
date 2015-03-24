@@ -54,7 +54,7 @@ public:
 
 	FirstAidCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-		
+
 		mindCost = 0;
 		range = 6;
 	}
@@ -67,14 +67,14 @@ public:
 		else
 			creature->doAnimation("heal_other");
 	}
-	
+
 	void sendCureMessage(CreatureObject* object, CreatureObject* target) {
 		if (!object->isPlayerCreature())
 			return;
 
 		CreatureObject* creature = cast<CreatureObject*>( object);
 		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
-		
+
 		if (creatureTarget != creature) {
 			StringBuffer msgPlayer;
 			if (creatureTarget->isPlayerCreature()) {
@@ -90,10 +90,9 @@ public:
 			}
 		} else {
 			creature->sendSystemMessage("@healing_response:first_aid_self"); //You apply first aid to yourself.
-		}		
-	}				
-		
-	
+		}
+	}
+
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
 		if (!creatureTarget->isBleeding()) {
 			if (creature == creatureTarget)
@@ -108,7 +107,7 @@ public:
 				creature->sendSystemMessage(message.toString());
 			}
 			return false;
-		}	
+		}
 
 		PlayerManager* playerManager = server->getPlayerManager();
 
@@ -118,8 +117,8 @@ public:
 		}
 
 		return true;
-	}	
-		
+	}
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		int result = doCommonMedicalCommandChecks(creature);
@@ -135,12 +134,14 @@ public:
 
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else
-					creature->sendSystemMessage("@healing_response:healing_response_79"); //Target must be a player or a creature pet in order to apply first aid.					
+				} else {
+					creature->sendSystemMessage("@healing_response:healing_response_79"); //Target must be a player or a creature pet in order to apply first aid.
 					return GENERALERROR;
+				}
 			}
-		} else
+		} else {
 			object = creature;
+		}
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
@@ -163,18 +164,19 @@ public:
 		}
 
 		if (!canPerformSkill(creature, creatureTarget))
-			return GENERALERROR;		
-					
-			
+			return GENERALERROR;
+
 		uint32 skillMod = creature->getSkillMod("healing_injury_treatment");
-			
+
 		creatureTarget->healDot(CreatureState::BLEEDING, skillMod*3);
-			
+
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
-		
+
 		sendCureMessage(creature, creatureTarget);
- 
-		doAnimations(creature, creatureTarget);		
+
+		doAnimations(creature, creatureTarget);
+
+		checkForTef(creature, creatureTarget);
 
 		return SUCCESS;
 	}

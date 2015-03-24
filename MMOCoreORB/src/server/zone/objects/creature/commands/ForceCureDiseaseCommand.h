@@ -56,14 +56,14 @@ public:
 		: QueueCommand(name, server) {
 
 	}
-	
+
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
 		if (creatureTarget == creature)
 			creature->playEffect("clienteffect/pl_force_healing.cef", "");
-		 else 
+		else
 			creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
-	}		
-	
+	}
+
 	void sendCureMessage(CreatureObject* object, CreatureObject* target) {
 		if (!object->isPlayerCreature())
 			return;
@@ -77,52 +77,29 @@ public:
 			msgPlayer << creatureTarget->getFirstName() << " disease has slightly decreased.";
 //			msgTarget << creature->getFirstName() << " uses the Force to heal your disease.";
 
-		if (creature != creatureTarget) 
+		if (creature != creatureTarget)
 			creature->sendSystemMessage(msgPlayer.toString());
 //			creatureTarget->sendSystemMessage(msgTarget.toString());
-	}	
-	
-	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
-		
-		if (!creatureTarget->isPlayerCreature()) {
-			return false;
-		}
-
-		if (!creatureTarget->isDiseased()) {
-			return false;
-		}
-
-		PlayerManager* playerManager = server->getPlayerManager();
-
-		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
-			return false;
-		}
-
-		return true;
 	}
-	
+
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
 		if (!creatureTarget->isDiseased()) {
-			if (creature == creatureTarget)
+			if (creature == creatureTarget) {
 				creature->sendSystemMessage("@healing_response:healing_response_90"); //You are not diseased.
-			else {
+			} else {
 				StringIdChatParameter stringId("healing_response", "healing_response_92");
 				stringId.setTT(creatureTarget->getObjectID());
 				creature->sendSystemMessage(stringId); //%NT is not diseased.
 			}
 			return false;
-		}	
+		}
 
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-		
+
 		if (playerObject->getForcePower() <= 75) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power"); //You do not have enough force to do that.
 			return false;
 		}
-		
-		playerObject->setForcePower(playerObject->getForcePower() - 75); // Static amount.
-
-		PlayerManager* playerManager = server->getPlayerManager();
 
 		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
 			creature->sendSystemMessage("@container_error_message:container18");
@@ -130,8 +107,8 @@ public:
 		}
 
 		return true;
-	}	
-	
+	}
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		int result = doCommonMedicalCommandChecks(creature);
@@ -150,13 +127,14 @@ public:
 
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else
+				} else {
 					creature->sendSystemMessage("@jedi_spam:not_this_target"); //This command cannot be used on this target.
-					
 					return GENERALERROR;
+				}
 			}
-		} else
+		} else {
 			object = creature;
+		}
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
@@ -170,24 +148,25 @@ public:
 		if (!creature->isInRange(creatureTarget, range + creatureTarget->getTemplateRadius() + creature->getTemplateRadius()))
 			return TOOFAR;
 
-		PlayerObject* targetGhost = creatureTarget->getPlayerObject();
-
 		if (!creatureTarget->isHealableBy(creature)) {
 			creature->sendSystemMessage("@healing:pvp_no_help");
 			return GENERALERROR;
 		}
 
-
 		if (!canPerformSkill(creature, creatureTarget))
 			return GENERALERROR;
 
+		PlayerObject* playerObject = creature->getPlayerObject().get();
+		playerObject->setForcePower(playerObject->getForcePower() - 75); // Static amount.
 
 		creatureTarget->healDot(CreatureState::DISEASED, 30);
 
 		sendCureMessage(creature, creatureTarget);
-		
-		doAnimations(creature, creatureTarget);	
-			
+
+		doAnimations(creature, creatureTarget);
+
+		checkForTef(creature, creatureTarget);
+
 		return SUCCESS;
 	}
 

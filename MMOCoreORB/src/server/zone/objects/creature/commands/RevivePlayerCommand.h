@@ -199,8 +199,9 @@ public:
 					return GENERALERROR;
 				}
 			}
-		} else
+		} else {
 			object = creature;
+		}
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
@@ -261,6 +262,8 @@ public:
 		awardXp(creature, "medical", xpAmount);
 
 		doAnimations(creature, creatureTarget);
+
+		checkForTef(creature, creatureTarget);
 
 		return SUCCESS;
 	}

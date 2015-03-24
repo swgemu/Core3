@@ -7,6 +7,8 @@
 
 #include "QueueCommand.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : Logger() {
@@ -198,4 +200,31 @@ int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) {
 	}
 
 	return SUCCESS;
+}
+
+void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target) {
+	if (!creature->isPlayerCreature() || creature == target)
+		return;
+
+	PlayerObject* ghost = creature->getPlayerObject().get();
+	if (ghost == NULL)
+		return;
+
+	if (target->isPlayerCreature()) {
+		PlayerObject* targetGhost = target->getPlayerObject().get();
+
+		if (targetGhost != NULL && targetGhost->getFactionStatus() == FactionStatus::OVERT) {
+			ghost->updateLastPvpCombatActionTimestamp();
+		}
+	} else if (target->isPet()) {
+		ManagedReference<CreatureObject*> owner = target->getLinkedCreature().get();
+
+		if (owner != NULL && owner->isPlayerCreature()) {
+			PlayerObject* ownerGhost = owner->getPlayerObject().get();
+
+			if (ownerGhost != NULL && ownerGhost->getFactionStatus() == FactionStatus::OVERT) {
+				ghost->updateLastPvpCombatActionTimestamp();
+			}
+		}
+	}
 }
