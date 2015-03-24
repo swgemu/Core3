@@ -173,59 +173,59 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	if (fortitude > 1000) {
 		fortitude = 1000;
 	}
-	if ((int)fortitude < 0)
+	if (fortitude < 0)
 		fortitude = 1;
 
 	if (endurance > 1000){
 		endurance = 1000;
 	}
-	if ((int)endurance < 0)
+	if (endurance < 0)
 		endurance = 1;
 
 	if (cleverness > 1000){
 		cleverness = 1000;
 	}
-	if ((int)cleverness < 0)
+	if (cleverness < 0)
 		cleverness = 1;
 
 	if (courage > 1000){
 		courage = 1000;
 	}
-	if ((int)courage < 0)
+	if (courage < 0)
 		courage = 1;
 
 	if (dependency > 1000){
 		dependency = 1000;
 	}
-	if ((int)dependency < 0)
+	if (dependency < 0)
 		dependency = 1;
 
 	if (dexterity > 1000) {
 		dexterity = 1000;
 	}
-	if ((int)dexterity < 0)
+	if (dexterity < 0)
 		dexterity = 1;
 
 	if (fierceness > 1000){
 		fierceness = 1000;
 	}
-	if ((int)fierceness < 0)
+	if (fierceness < 0)
 		fierceness = 1;
 	if (hardiness > 1000) {
 		hardiness = 1000;
 	}
-	if ((int)hardiness < 0)
+	if (hardiness < 0)
 		hardiness = 1;
 	if (intelligence > 1000){
 		intelligence = 1000;
 	}
-	if ((int)intelligence < 0)
+	if (intelligence < 0)
 		intelligence = 1;
 
 	if (power > 1000) {
 		power = 1000;
 	}
-	if ((int)power < 0)
+	if (power < 0)
 		power = 1;
 	// max on resists
 	if (kinResist > 60)
@@ -319,7 +319,7 @@ void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm
 	else if (armorRating == 2)
 		alm->insertAttribute("dna_comp_armor_rating","@obj_attr_n:armor_pierce_medium");
 	else if (armorRating == 3)
-		alm->insertAttribute("dna_comp_armor_rating","@obj_attr_n:armor_pierce_none");
+		alm->insertAttribute("dna_comp_armor_rating","@obj_attr_n:armor_pierce_heavy");
 	// Add resists
 	alm->insertAttribute("dna_comp_armor_kinetic",resistValue(kinResist));
 	alm->insertAttribute("dna_comp_armor_energy",resistValue(energyResist));

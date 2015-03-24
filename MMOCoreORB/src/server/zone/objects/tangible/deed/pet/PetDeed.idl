@@ -90,16 +90,16 @@ class PetDeed extends Deed {
 	protected string controlDeviceObjectTemplate;
 	protected string mobileTemplate;
 
-	protected unsigned int cleverness;
-	protected unsigned int endurance;
-	protected unsigned int fierceness;
-	protected unsigned int power;
-	protected unsigned int intelligence;
-	protected unsigned int courage;
-	protected unsigned int dependency;
-	protected unsigned int dexterity;
-	protected unsigned int fortitude;
-	protected unsigned int hardiness;
+	protected int cleverness;
+	protected int endurance;
+	protected int fierceness;
+	protected int power;
+	protected int intelligence;
+	protected int courage;
+	protected int dependency;
+	protected int dexterity;
+	protected int fortitude;
+	protected int hardiness;
 	// sampling
 	protected int sampleCount;
 	protected int specialResists;
@@ -306,52 +306,52 @@ class PetDeed extends Deed {
 	}
 	
 	@dirty
-	public unsigned int getCleverness() { 
+	public int getCleverness() { 
 		return cleverness; 
 	}
 	
 	@dirty
-	public unsigned int getEndurance() { 
+	public int getEndurance() { 
 		return endurance; 
 	}
 	
 	@dirty
-	public unsigned int getFierceness() { 
+	public int getFierceness() { 
 		return fierceness; 
 	}
 	
 	@dirty
-	public unsigned int getPower() { 
+	public int getPower() { 
 		return power; 
 	}
 	
 	@dirty
-	public unsigned int getIntelligence() { 
+	public int getIntelligence() { 
 		return intelligence; 
 	}
 	
 	@dirty
-	public unsigned int getCourage() { 
+	public int getCourage() { 
 		return courage; 
 	}
 	
 	@dirty
-	public unsigned int getDependency() { 
+	public int getDependency() { 
 		return dependency; 
 	}
 	
 	@dirty
-	public unsigned int getDexterity() { 
+	public int getDexterity() { 
 		return dexterity; 
 	}
 	
 	@dirty
-	public unsigned int getFortitude() { 
+	public int getFortitude() { 
 		return fortitude; 
 	}
 	
 	@dirty
-	public unsigned int getHardiness() { 
+	public int getHardiness() { 
 		return hardiness; 
 	}
 	
