@@ -7,8 +7,11 @@
 
 #include "gtest/gtest.h"
 #include "server/zone/templates/LootItemTemplate.h"
+#include "server/zone/templates/SharedObjectTemplate.h"
+#include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 #include "server/zone/templates/LootGroupTemplate.h"
 #include "server/zone/managers/faction/FactionManager.h"
+#include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/managers/loot/LootGroupMap.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollectionEntry.h"
@@ -168,13 +171,16 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		TemplateManager::instance()->loadLuaTemplates();
 		ASSERT_EQ(TemplateManager::ERROR_CODE, 0);
 	}
+	// verify DNA manager loads
+	DnaManager::instance()->loadSampleData();
+	ASSERT_TRUE( DnaManager::instance() != NULL);
+
 
 	// Test Creature Templates
 	HashTableIterator<uint32, Reference<CreatureTemplate*> > creatureIterator = CreatureTemplateManager::instance()->iterator();
 	while (creatureIterator.hasNext()) {
 		CreatureTemplate* creature = creatureIterator.next();
 		std::string templateName( creature->getTemplateName().toCharArray() );
-
 		//Verify non-empty objectName is a valid string
 		String objName = creature->getObjectName();
 		if (!objName.isEmpty()) {
@@ -191,11 +197,17 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			std::string objName = objTemps.get(j).toCharArray();
 			EXPECT_TRUE( templateData != NULL ) << "Mobile " << templateName << " has invalid template configured: " << objName;
 
+			// Check Template Genetics math to find invalid mobs
+			if (templateData != NULL) {
+				SharedCreatureObjectTemplate* creoData = dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
+				if (creoData != NULL) {
+				}
+			}
+
 			if (objectType == 0) {
 				objectType = templateData->getGameObjectType();
 			}
 		}
-
 		// Verify that control device template is valid
 		String controlDeviceTemplate = creature->getControlDeviceTemplate();
 		if (!controlDeviceTemplate.isEmpty()) {
