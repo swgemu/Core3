@@ -8,6 +8,8 @@
 #ifndef CREATECLIENTPATHMESSAGE_H_
 #define CREATECLIENTPATHMESSAGE_H_
 
+#include "engine/engine.h"
+
 class CreateClientPathMessage : public BaseMessage {
 	int coordinateCount;
 public:
