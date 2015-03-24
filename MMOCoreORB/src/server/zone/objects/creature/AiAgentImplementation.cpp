@@ -1255,27 +1255,8 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		if (targetCoordinateCell == NULL && zone != NULL && targetPosition->getPositionZ() == 0) {
 			// We are not in a cell, so we need to calculate which Z we want to move to
-			PlanetManager* planetManager = zone->getPlanetManager();
-
 			targetMutex.unlock();
-
-			if (closeObjects == NULL) {
-				closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-
-				if (closeobjects != NULL) {
-					closeobjects->safeCopyTo(*closeObjects);
-				} else {
-					zone->info("Null closeobjects vector in AiAgentImplementation::findNextPosition", true);
-
-					Vector3 worldPosition = getWorldPosition();
-					zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, closeObjects, true);
-				}
-			}
-
-			IntersectionResults intersections;
-			CollisionManager::getWorldFloorCollisions(targetPosition->getPositionX(), targetPosition->getPositionY(), zone, &intersections, *closeObjects);
-			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), targetPosition->getPositionZ(), this->getSwimHeight(), &intersections, NULL));
-
+			targetPosition->setPositionZ(getWorldZ(targetPosition->getWorldPosition()));
 			targetMutex.lock();
 		}
 
@@ -1348,16 +1329,16 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		for (int i = 1; i < path->size() && !found; ++i) { // i = 0 is our position
 			nextPosition = path->get(i);
 
+#ifdef SHOW_WALK_PATH
 			Vector3 nextWorldPos = nextPosition.getWorldPosition();
 
-#ifdef SHOW_WALK_PATH
 			if (nextPosition.getCell() == NULL)
 				pathMessage->addCoordinate(nextWorldPos.getX(), getZone()->getHeight(nextWorldPos.getX(), nextWorldPos.getY()), nextWorldPos.getY());
 			else
 				pathMessage->addCoordinate(nextWorldPos.getX(), nextWorldPos.getZ(), nextWorldPos.getY());
 #endif
 
-			float dist = oldCoord.getWorldPosition().distanceTo(nextWorldPos);
+			float dist = oldCoord.getWorldPosition().distanceTo(nextPosition.getWorldPosition());
 			pathDistance += dist;
 
 			// To find our stopping point, either we need to go all the way through the path (which shouldn't
@@ -1387,30 +1368,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 				// Now do cell checks to get the Z coordinate outside
 				if (nextPosition.getCell() == NULL) {
-
-
-					if (zone != NULL) {
-						targetMutex.unlock();
-
-						if (closeObjects == NULL) {
-							closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-
-							if (closeobjects != NULL) {
-								closeobjects->safeCopyTo(*closeObjects);
-							} else {
-								zone->info("Null closeobjects vector in Ai::findNextPosition", true);
-
-								Vector3 worldPosition = getWorldPosition();
-								zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, closeObjects, true);
-							}
-						}
-
-						IntersectionResults intersections;
-						CollisionManager::getWorldFloorCollisions(nextPosition.getX(), nextPosition.getY(), zone, &intersections, *closeObjects);
-						nextPosition.setZ(zone->getPlanetManager()->findClosestWorldFloor(nextPosition.getX(), nextPosition.getY(), targetPosition->getPositionZ(), this->getSwimHeight(), &intersections, NULL));
-
-						targetMutex.lock();
-					}
+					targetMutex.unlock();
+					nextPosition.setZ(getWorldZ(nextPosition.getWorldPosition()));
+					targetMutex.lock();
 				}
 			}
 
@@ -1520,6 +1480,27 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 	updateLocomotion();
 
 	return getFollowState() == AiAgent::WATCHING || getFollowState() == AiAgent::FLEEING || found;
+}
+
+float AiAgentImplementation::getWorldZ(const Vector3& position) {
+	Zone* zone = getZone();
+	if (zone == NULL)
+		return 0.f;
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+	if (closeobjects != NULL) {
+		closeobjects->safeCopyTo(closeObjects);
+	} else {
+		zone->info("Null closeobjects vector in AiAgentImplementation::getWorldZ", true);
+
+		Vector3 worldPosition = getWorldPosition();
+		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, &closeObjects, true);
+	}
+
+	IntersectionResults intersections;
+	CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
+	return zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, NULL);
 }
 
 // TODO (dannuic): All of the AI goes into the movement cycle, the recovery cycle is only for HAM/status recovery

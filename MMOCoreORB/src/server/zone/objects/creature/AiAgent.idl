@@ -328,6 +328,9 @@ class AiAgent extends CreatureObject {
 	
 	public native boolean findNextPosition(float maxDistance, boolean walk = false);
 	
+	@local
+	public native float getWorldZ(@dereferenced final Vector3 position);
+	
 	/**
 	 * Does the AI awareness update tick
 	 * @pre { this is locked, target is locked }
