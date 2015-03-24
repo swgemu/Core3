@@ -391,9 +391,16 @@ class AiAgent extends CreatureObject {
 	
 	@local
 	@dereferenced
-	public PatrolPoint getNextPatrolPoint() {
+	public PatrolPoint getNextPosition() {
 		synchronized (targetMutex) {
 			return patrolPoints.get(0);
+		}
+	}
+	
+	@local
+	public int getPatrolPointSize() {
+		synchronized (targetMutex) {
+			return patrolPoints.size();
 		}
 	}
 	
@@ -1047,10 +1054,6 @@ class AiAgent extends CreatureObject {
 	public PatrolPoint getHomeLocation() {
 		return homeLocation;
 	}
-
-	@local
-	@dirty
-	public native PatrolPoint getNextPosition();
 	
 	@dirty
 	public boolean isAiAgent() {

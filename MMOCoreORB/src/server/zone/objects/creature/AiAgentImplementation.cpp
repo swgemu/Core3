@@ -1204,11 +1204,11 @@ void AiAgentImplementation::checkNewAngle() {
 // the AI has not reached the first patrolPoint in their queue and if false,
 // they have and that patrolPoint has been popped (and saved if necessary).
 bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
-	Locker locker(&targetMutex);
-
 	/*
 	 * SETUP: Calculate and initialize situational variables
 	 */
+
+	Locker locker(&targetMutex);
 
 	WorldCoordinates nextPosition;
 
@@ -1241,19 +1241,19 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 #endif
 
 	// setNextPosition will add a point to patrolPoints (at the beginning)
-	while (!found && patrolPoints.size() != 0) {
+	while (!found && getPatrolPointSize() != 0) {
 		// the first position in patrolPoints is where we want to move to
-		PatrolPoint* targetPosition = &patrolPoints.get(0);
-		ManagedReference<SceneObject*> targetCoordinateCell = targetPosition->getCell();
+		PatrolPoint targetPosition = getNextPosition();
+		ManagedReference<SceneObject*> targetCoordinateCell = targetPosition.getCell();
 
 		/*
 		 * PRE-STEP: calculate z if we need to for our target location
 		 */
 
-		if (targetCoordinateCell == NULL && targetPosition->getPositionZ() == 0) {
+		if (targetCoordinateCell == NULL && targetPosition.getPositionZ() == 0) {
 			// We are not in a cell, so we need to calculate which Z we want to move to
 			targetMutex.unlock();
-			targetPosition->setPositionZ(getWorldZ(targetPosition->getWorldPosition()));
+			targetPosition.setPositionZ(getWorldZ(targetPosition.getWorldPosition()));
 			targetMutex.lock();
 		}
 
@@ -1265,9 +1265,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		if (targetCellObject == targetCoordinateCell && currentFoundPath != NULL) {
 			// We have previously found a path into the same target cell that we want to move into
-			if (currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().distanceTo(targetPosition->getCoordinates().getWorldPosition()) > 3) {
+			if (currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().distanceTo(targetPosition.getCoordinates().getWorldPosition()) > 3) {
 				// Our target has moved, so we will need a new path with a new position
-				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates()));
+				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(_this.get().get(), targetPosition.getCoordinates()));
 			} else {
 				// Our target is close to where it was before, so our path begins where we are standing
 				WorldCoordinates curr(_this.get().get());
@@ -1278,7 +1278,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		} else {
 			// either our target cell is different than the current path cell or we don't have a current path,
 			// so we need to automatically re-calculate the path (and we don't need to include our current location)
-			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates()));
+			path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(_this.get().get(), targetPosition.getCoordinates()));
 			targetCellObject = targetCoordinateCell;
 		}
 
@@ -1299,7 +1299,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		 * STEP 2: Calculate distance to travel
 		 */
 
-		float targetDistance = targetPosition->getWorldPosition().distanceTo(getWorldPosition());
+		float targetDistance = targetPosition.getWorldPosition().distanceTo(getWorldPosition());
 
 		if (targetDistance > maxDistance)
 			// this is the actual "distance we can travel" calculation. We only want to
@@ -1571,7 +1571,7 @@ bool AiAgentImplementation::generatePatrol(int num, float dist) {
 		addPatrolPoint(newPoint);
 	}
 
-	if (patrolPoints.size() > 0) {
+	if (getPatrolPointSize() > 0) {
 		setFollowState(AiAgent::PATROLLING);
 		return true;
 	}
@@ -1650,7 +1650,7 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::PATROLLING:
-		if (patrolPoints.size() == 0) {
+		if (getPatrolPointSize() == 0) {
 			setPatrolPoints(savedPatrolPoints);
 			savedPatrolPoints.removeAll();
 		}
@@ -1664,8 +1664,10 @@ int AiAgentImplementation::setDestination() {
 
 		setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent().get()); // sets patrolPoints[0] to current position
 		checkNewAngle(); // sends update zone packet
-		if (patrolPoints.size() > 0)
+		if (getPatrolPointSize() > 0) {
+			Locker locker(&targetMutex);
 			updateCurrentPosition(&patrolPoints.get(0));
+		}
 		break;
 	case AiAgent::STALKING:
 	case AiAgent::FOLLOWING:
@@ -1685,7 +1687,7 @@ int AiAgentImplementation::setDestination() {
 
 	//activateMovementEvent();
 
-	return patrolPoints.size();
+	return getPatrolPointSize();
 }
 
 bool AiAgentImplementation::completeMove() {
@@ -1838,13 +1840,6 @@ void AiAgentImplementation::activateWaitEvent() {
 
 	if (!waitEvent->isScheduled())
 		waitEvent->schedule(UPDATEMOVEMENTINTERVAL * 10);
-}
-
-PatrolPoint* AiAgentImplementation::getNextPosition() {
-	if (patrolPoints.isEmpty())
-		return &homeLocation;
-
-	return &patrolPoints.get(0);
 }
 
 void AiAgentImplementation::setNextPosition(float x, float z, float y, SceneObject* cell) {
