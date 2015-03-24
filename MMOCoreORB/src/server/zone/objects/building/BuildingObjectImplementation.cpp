@@ -368,7 +368,7 @@ bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 		return checkContainerPermission(player,ContainerPermissions::WALKIN);
 	}
 
-	if (isPrivateStructure() && getLotSize() > 0) {
+	if (getLotSize() > 0) {
 		PlayerObject* ghost = player->getPlayerObject().get();
 
 		if (ghost != NULL && ghost->hasPvpTef()) {
