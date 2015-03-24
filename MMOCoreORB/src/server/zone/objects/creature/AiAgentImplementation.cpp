@@ -1415,6 +1415,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			}
 #endif
 		}
+
+		// we've made it this far, so we know that we've found a place to move to
+		// even if the for loop failed, we will move to the last position in the path
+		// we found
+		found = true;
 	}
 
 #ifdef SHOW_WALK_PATH
