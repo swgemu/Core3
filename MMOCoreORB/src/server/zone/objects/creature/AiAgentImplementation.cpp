@@ -750,7 +750,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 
 void AiAgentImplementation::runAway(CreatureObject* target, float range) {
 	ManagedReference<SceneObject*> followCopy = getFollowObject();
-	if (target == NULL || getZone() == NULL) {
+	if (target == NULL || getZone() == NULL || followCopy == NULL) {
 		setOblivious();
 		return;
 	}
