@@ -131,6 +131,8 @@ public:
 
 			sendCombatSpam(memberPlayer);
 			doRetreat(memberPlayer);
+
+			checkForTef(player, memberPlayer);
 		}
 
 		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("retreat").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {

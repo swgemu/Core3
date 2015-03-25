@@ -139,6 +139,8 @@ public:
 			uint64 queueActionCRC = queueAction.hashCode();
 
 			memberPlayer->enqueueCommand(queueActionCRC, 0, (uint64)target, "");
+
+			checkForTef(leader, memberPlayer);
 		}
 
 		return true;

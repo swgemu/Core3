@@ -90,7 +90,7 @@ public:
 			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("formup").hashCode()));
  	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
  	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
-		}			
+		}
 
 		return SUCCESS;
 	}
@@ -122,6 +122,8 @@ public:
 
 			if (memberPlayer->isStunned())
 					memberPlayer->removeStateBuff(CreatureState::STUNNED);
+
+			checkForTef(leader, memberPlayer);
 		}
 
 		return true;

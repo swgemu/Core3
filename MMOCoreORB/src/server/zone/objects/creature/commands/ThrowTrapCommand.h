@@ -100,7 +100,7 @@ public:
 				return GENERALERROR;
 			}
 
-			if (!(targetCreature->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
+			if (!targetCreature->isAttackableBy(creature) || targetCreature->isPet()) {
 				creature->sendSystemMessage("@trap/trap:sys_no_pets");
 				return GENERALERROR;
 			}
@@ -151,9 +151,6 @@ public:
 				creature->sendSystemMessage("@trap/trap:sys_not_ready");
 				return GENERALERROR;
 			}
-
-			if(!CombatManager::instance()->startCombat(creature, targetCreature))
-				return GENERALERROR;
 
 			float hitChance = CombatManager::instance()->hitChanceEquation(trappingSkill, 0, targetDefense);
 
@@ -229,6 +226,10 @@ public:
 		}
 
 		return GENERALERROR;
+	}
+
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
+		return defaultTime;
 	}
 
 };

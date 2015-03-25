@@ -92,12 +92,12 @@ public:
 
 		if (!distributeWounds(player, group, wounds, sizeAffected))
 			return GENERALERROR;
-			
+
 		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("boostmorale").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
 			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("boostmorale").hashCode()));
  	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
  	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
-		}			
+		}
 
 		return SUCCESS;
 	}
@@ -161,6 +161,8 @@ public:
 
 			for (int j = 0; j < 9; j++)
 				memberPlayer->addWounds(j, (int) wounds[j] / sizeAffected, true, false);
+
+			checkForTef(leader, memberPlayer);
 		}
 
 		return true;

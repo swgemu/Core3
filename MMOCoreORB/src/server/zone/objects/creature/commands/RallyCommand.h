@@ -86,9 +86,10 @@ public:
 		if (System::random(100) > chance) {
 			player->sendSystemMessage("@cbt_spam:rally_fail_single"); //"You fail to rally the group!"
 			sendRallyCombatSpam(player, group, false);
-		} else
+		} else {
 			if (!doRally(player, group))
 				return GENERALERROR;
+		}
 
 		return SUCCESS;
 	}
@@ -138,6 +139,8 @@ public:
 			memberPlayer->addBuff(buff);
 
 			memberPlayer->setRalliedState(duration);
+
+			checkForTef(leader, memberPlayer);
 		}
 
 //		What is this used for?		

@@ -11,6 +11,7 @@
 #include "engine/util/u3d/Coordinate.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
 
 namespace server {
 namespace zone {
@@ -48,10 +49,15 @@ public:
 		Locker locker2(player);
 
 		player->removePendingTask("throwtrap");
+
+		Locker locker(target, player);
+
+		if(!CombatManager::instance()->startCombat(player, target))
+			return;
+
 		player->sendSystemMessage(message);
 
 		if(hit) {
-			Locker locker(target, player);
 
 			if(buff != NULL) {
 				target->addBuff(buff);
