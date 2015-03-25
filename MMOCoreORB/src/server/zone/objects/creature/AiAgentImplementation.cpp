@@ -493,6 +493,18 @@ void AiAgentImplementation::selectSpecialAttack(int attackNum) {
 			nextActionCRC = cmd.hashCode();
 			nextActionArgs = attackMap->getArguments(attackNum);
 
+			ZoneServer* zoneServer = getZoneServer();
+			if (zoneServer == NULL) {
+				selectDefaultAttack();
+				return;
+			}
+
+			ObjectController* objectController = zoneServer->getObjectController();
+			if (objectController == NULL) {
+				selectDefaultAttack();
+				return;
+			}
+
 			QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
 			ManagedReference<SceneObject*> followCopy = getFollowObject();
 			if (queueCommand == NULL || followCopy == NULL
@@ -1940,10 +1952,6 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 		if (damage > 0) {
 			getThreatMap()->addDamage(creature, damage);
-
-			if (System::random(5) == 1) {
-				setDefender(creature);
-			}
 		}
 	}
 	activateInterrupt(attacker, ObserverEventType::DAMAGERECEIVED);
@@ -1960,10 +1968,6 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 
 		if (damage > 0) {
 			getThreatMap()->addDamage(creature, damage, xp);
-
-			if (System::random(5) == 1) {
-				setDefender(creature);
-			}
 		}
 	}
 	activateInterrupt(attacker, ObserverEventType::DAMAGERECEIVED);

@@ -74,6 +74,7 @@ function GetTargetBase:doAction(pAgent)
 			agent:clearCombatState(true)
 			agent:setOblivious()
 		end
+		--print("6")
 	end
 	return BEHAVIOR_FAILURE
 end

@@ -499,6 +499,37 @@ void CreatureObjectImplementation::clearQueueAction(uint32 actioncntr,
 	sendMessage(queuemsg);
 }
 
+void CreatureObjectImplementation::clearQueueActions(bool combatOnly) {
+	for (int i = commandQueue->size() - 1; i >= 0; i--) {
+		CommandQueueAction* command = commandQueue->get(i);
+
+		if (command == NULL)
+			continue;
+
+		if (combatOnly) {
+			ZoneServer* zoneServer = getZoneServer();
+			if (zoneServer == NULL)
+				continue;
+
+			ObjectController* objectController = zoneServer->getObjectController();
+			if (objectController == NULL)
+				continue;
+
+			QueueCommand* qc = objectController->getQueueCommand(command->getCommand());
+			if (qc == NULL)
+				continue;
+
+			if (!qc->addToCombatQueue())
+				continue;
+		}
+
+		if (command->getActionCounter() != 0)
+			clearQueueAction(command->getActionCounter());
+
+		commandQueue->remove(i);
+	}
+}
+
 void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 		bool notifyClient) {
 	if (weao == NULL)
@@ -744,6 +775,8 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 
 		broadcastMessage(dcreo3, true);
 	}
+
+	clearQueueActions();
 
 	if (removedefenders)
 		removeDefenders();

@@ -286,6 +286,7 @@ class CreatureObject extends TangibleObject {
 	 * @param tab2 message 2 
 	 */
 	public native void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
+	public native void clearQueueActions(boolean combatOnly = true);
 
 	/**
 	 * Sends the CREO baseline messages of this object to the specified player
