@@ -492,6 +492,14 @@ void AiAgentImplementation::selectSpecialAttack(int attackNum) {
 		} else {
 			nextActionCRC = cmd.hashCode();
 			nextActionArgs = attackMap->getArguments(attackNum);
+
+			QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
+			ManagedReference<SceneObject*> followCopy = getFollowObject();
+			if (queueCommand == NULL || followCopy == NULL
+					|| (queueCommand->getMaxRange() >= 0 && !followCopy->isInRange(_this.get(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
+					|| (queueCommand->getMaxRange() < 0 && !followCopy->isInRange(_this.get(), getWeapon()->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))) {
+				selectDefaultAttack();
+			}
 		}
 	} else {
 		selectDefaultAttack();
@@ -623,7 +631,7 @@ void AiAgentImplementation::selectWeapon() {
 	float dist = 5.f;
 
 	if (followCopy != NULL)
-		dist = getDistanceTo(followCopy) + followCopy->getTemplateRadius() + getTemplateRadius() - 2;
+		dist = getDistanceTo(followCopy) - followCopy->getTemplateRadius() - getTemplateRadius();
 
 	WeaponObject* finalWeap = NULL;
 	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
@@ -636,7 +644,7 @@ void AiAgentImplementation::selectWeapon() {
 		readyWeaponRangeDiff = fabs(readyWeapon->getIdealRange() - dist);
 	}
 
-	if (defaultWeapon != NULL) {
+	if (defaultWeapon != NULL && defaultWeapon->getMaxRange() <= dist) {
 		defaultWeaponRangeDiff = fabs(defaultWeapon->getIdealRange() - dist);
 	}
 
