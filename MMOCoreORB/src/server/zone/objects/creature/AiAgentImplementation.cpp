@@ -1163,7 +1163,7 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	if (getZone() == NULL)
 		return;
 
-	Locker clocker(getZone(), _this.get());
+//	Locker clocker(getZone(), _this.get()); updateZone locks zone
 
 	if (cell != NULL && cell->getParent() != NULL)
 		updateZoneWithParent(cell, false, false);
@@ -1681,7 +1681,12 @@ int AiAgentImplementation::setDestination() {
 		checkNewAngle(); // sends update zone packet
 		if (getPatrolPointSize() > 0) {
 			Locker locker(&targetMutex);
-			updateCurrentPosition(&patrolPoints.get(0));
+
+			PatrolPoint patrolPoint = patrolPoints.get(0);
+
+			locker.release(); // we cant have targetMutex locked before locking zone because at least in notifyDisappear zone is locked before locking targetMutex
+
+			updateCurrentPosition(&patrolPoint);
 		}
 		break;
 	case AiAgent::STALKING:
