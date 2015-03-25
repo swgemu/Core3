@@ -519,7 +519,7 @@ void CreatureObjectImplementation::clearQueueActions(bool combatOnly) {
 			if (qc == NULL)
 				continue;
 
-			if (!qc->addToCombatQueue())
+			if (!qc->isCombatCommand())
 				continue;
 		}
 
@@ -776,7 +776,7 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 		broadcastMessage(dcreo3, true);
 	}
 
-	clearQueueActions();
+	clearQueueActions(false);
 
 	if (removedefenders)
 		removeDefenders();

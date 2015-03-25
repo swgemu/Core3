@@ -115,7 +115,6 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 
 	if (defenderList->size() != 0) {
 		//info("defenderList not empty, trying to set Peace State");
-		attacker->clearQueueActions();
 
 		attacker->setState(CreatureState::PEACE);
 
