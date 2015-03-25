@@ -644,7 +644,7 @@ void AiAgentImplementation::selectWeapon() {
 		readyWeaponRangeDiff = fabs(readyWeapon->getIdealRange() - dist);
 	}
 
-	if (defaultWeapon != NULL && defaultWeapon->getMaxRange() <= dist) {
+	if (defaultWeapon != NULL && defaultWeapon->getMaxRange() >= dist) {
 		defaultWeaponRangeDiff = fabs(defaultWeapon->getIdealRange() - dist);
 	}
 
