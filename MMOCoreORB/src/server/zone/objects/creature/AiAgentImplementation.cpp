@@ -439,6 +439,8 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 
 void AiAgentImplementation::doAwarenessCheck(CreatureObject* target) {
 	Behavior* current = behaviors.get(currentBehaviorID);
+	if (_this.get() == target)
+		return;
 	if (current != NULL && target != NULL && numberOfPlayersInRange > 0 && current->doAwarenessCheck(target)) {
 		activateInterrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
 		activateAwarenessEvent(target);
@@ -792,8 +794,12 @@ void AiAgentImplementation::leash() {
 
 	CombatManager::instance()->forcePeace(_this.get());
 
-	homeLocation.setReached(false);
-	setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY(), homeLocation.getCell());
+	if (!homeLocation.isInRange(_this.get(), 1.5)) {
+		homeLocation.setReached(false);
+		addPatrolPoint(homeLocation);
+	} else {
+		homeLocation.setReached(true);
+	}
 }
 
 void AiAgentImplementation::setDefender(SceneObject* defender) {
@@ -1163,8 +1169,6 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 	if (getZone() == NULL)
 		return;
 
-//	Locker clocker(getZone(), _this.get()); updateZone locks zone
-
 	if (cell != NULL && cell->getParent() != NULL)
 		updateZoneWithParent(cell, false, false);
 	else
@@ -1480,6 +1484,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			homeLocation.setReached(true);
 
 		currentFoundPath = NULL;
+		targetCellObject = NULL;
 		currentSpeed = 0;
 	}
 
@@ -1680,12 +1685,7 @@ int AiAgentImplementation::setDestination() {
 		setNextPosition(getPositionX(), getPositionZ(), getPositionY(), getParent().get()); // sets patrolPoints[0] to current position
 		checkNewAngle(); // sends update zone packet
 		if (getPatrolPointSize() > 0) {
-			Locker locker(&targetMutex);
-
-			PatrolPoint patrolPoint = patrolPoints.get(0);
-
-			locker.release(); // we cant have targetMutex locked before locking zone because at least in notifyDisappear zone is locked before locking targetMutex
-
+			PatrolPoint patrolPoint = getNextPosition();
 			updateCurrentPosition(&patrolPoint);
 		}
 		break;
