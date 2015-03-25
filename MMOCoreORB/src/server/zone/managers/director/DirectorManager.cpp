@@ -1148,14 +1148,48 @@ int DirectorManager::spatialChat(lua_State* L) {
 		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -1);
 
 		if (creature != NULL && message != NULL) {
-			chatManager->broadcastMessage(creature, *message, 0, 0, 0);
+			class BroadcastMessageTask : public Task {
+				ChatManager* chatManager;
+				StringIdChatParameter message;
+			public:
+				BroadcastMessageTask(ChatManager* chatManager, StringIdChatParameter* message) :
+					chatManager(chatManager), message(*message) {
+
+				}
+
+				void run() {
+					Locker locker(creature);
+
+					chatManager->broadcastMessage(creature, *message, 0, 0, 0);
+				}
+			};
+
+			Reference<BroadcastMessageTask*> task = new BroadcastMessageTask(chatManager, message);
+			task->execute();
 		}
 	} else {
 		String message = lua_tostring(L, -1);
 
 		if (creature != NULL) {
-			Locker locker(creature);
-			chatManager->broadcastMessage(creature, message, 0, 0, 0);
+
+			class BroadcastMessageTask : public Task {
+				ChatManager* chatManager;
+				String message;
+			public:
+				BroadcastMessageTask(ChatManager* chatManager, const String& message) :
+					chatManager(chatManager), message(message) {
+
+				}
+
+				void run() {
+					Locker locker(creature);
+
+					chatManager->broadcastMessage(creature, message, 0, 0, 0);
+				}
+			};
+
+			Reference<BroadcastMessageTask*> task = new BroadcastMessageTask(chatManager, message);
+			task->execute();
 		}
 	}
 
