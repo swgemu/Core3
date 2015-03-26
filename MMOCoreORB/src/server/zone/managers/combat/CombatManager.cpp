@@ -18,6 +18,7 @@
 #include "server/zone/packets/object/CombatAction.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
+#include "server/zone/packets/object/ObjectControllerMessage.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/creature/buffs/StateBuff.h"
@@ -292,11 +293,11 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		doDodge(attacker, weapon, defender, damage);
 		damageMultiplier = 0.0f;
 		break;
-	case COUNTER:
+	case COUNTER: {
 		doCounterAttack(attacker, weapon, defender, damage);
-		//defender->enqueueCommand(String("counterattack").hashCode(), 0, attacker->getObjectID(), "");
+		defender->executeObjectControllerAction(String("attack").hashCode(), attacker->getObjectID(), "");
 		damageMultiplier = 0.0f;
-		break;
+		break;}
 	case RICOCHET:
 		doLightsaberBlock(attacker, weapon, defender, damage);
 		damageMultiplier = 0.0f;
@@ -396,8 +397,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 		damageMultiplier = 0.0f;
 		break;
 	case COUNTER:
-		doCounterAttack(attacker, weapon, defenderObject, damage);
-		//defenderObject->enqueueCommand(String("counterattack").hashCode(), 0, attacker->getObjectID(), "");
+		defenderObject->executeObjectControllerAction(String("attack").hashCode(), attacker->getObjectID(), "");
 		damageMultiplier = 0.0f;
 		break;
 	case RICOCHET:

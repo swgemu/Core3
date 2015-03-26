@@ -490,7 +490,7 @@ void CreatureObjectImplementation::sendSystemMessage(UnicodeString& message) {
 
 void CreatureObjectImplementation::clearQueueAction(uint32 actioncntr,
 		float timer, uint32 tab1, uint32 tab2) {
-	if (!isPlayerCreature())
+	if (actioncntr == 0 || !isPlayerCreature())
 		return;
 
 	BaseMessage* queuemsg = new CommandQueueRemove(_this.get(), actioncntr, timer,
@@ -535,15 +535,6 @@ void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 		weao = TangibleObjectImplementation::getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	weapon = weao;
-
-	if (isPlayerCreature()) {
-		PlayerObject* ghost = getSlottedObject("ghost").castTo<PlayerObject*>();
-		if (ghost != NULL) {
-			if (ghost->hasAbility("counterAttack") && !(weapon->isCarbineWeapon() || (weapon->isTwoHandMeleeWeapon() && !weapon->isJediWeapon()))) {
-				SkillManager::instance()->removeAbility(ghost, "counterAttack", false);
-			}
-		}
-	}
 
 	if (notifyClient) {
 		CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(
