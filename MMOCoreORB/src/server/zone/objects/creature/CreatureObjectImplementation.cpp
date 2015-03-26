@@ -2126,14 +2126,6 @@ void CreatureObjectImplementation::doAnimation(const String& anim) {
 	broadcastMessage(msg, true);
 }
 
-void CreatureObjectImplementation::playEffect(const String& file,
-		const String& aux) {
-	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(
-			_this.get(), file, aux);
-
-	broadcastMessage(effect, true);
-}
-
 void CreatureObjectImplementation::dismount() {
 	executeObjectControllerAction(String("dismount").hashCode());
 }

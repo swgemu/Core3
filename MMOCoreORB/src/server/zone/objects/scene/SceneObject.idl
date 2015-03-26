@@ -846,6 +846,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	public native void updateVehiclePosition(boolean sendPackets);
 	
+	@dirty
+	public native void playEffect(final string file, final string aux);
+	
+	@dirty
+	public void playEffect(final string file) {
+		playEffect(file, "");
+	}
+	
 	
 	/**
 	 * Is called when this object has been inserted with an object

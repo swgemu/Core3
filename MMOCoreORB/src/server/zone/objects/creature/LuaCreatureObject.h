@@ -53,7 +53,7 @@ namespace creature {
 		int getHAM(lua_State* L);
 		int getMaxHAM(lua_State* L);
 		int inflictDamage(lua_State* L);
-		int playEffect(lua_State* L);
+		//int playEffect(lua_State* L);
 		int setState(lua_State* L);
 		int setPosture(lua_State* L);
 		int setMoodString(lua_State* L);

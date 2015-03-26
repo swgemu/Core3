@@ -75,6 +75,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "setObjectName", &LuaSceneObject::setObjectName },
 		{ "isASubChildOf", &LuaSceneObject::isASubChildOf },
 		{ "isOwned", &LuaSceneObject::isOwned },
+		{ "playEffect", &LuaSceneObject::playEffect },
 		{ 0, 0 }
 
 };
@@ -447,6 +448,18 @@ int LuaSceneObject::showFlyText(lua_State* L) {
 
 	return 0;
 }
+
+int LuaSceneObject::playEffect(lua_State* L) {
+	//public native void playEffect(final string file, final string aux);
+
+	String aux = lua_tostring(L, -1);
+	String file = lua_tostring(L, -2);
+
+	realObject->playEffect(file, aux);
+
+	return 0;
+}
+
 
 int LuaSceneObject::updateDirection(lua_State* L) {
 	//void updateDirection(float fw, float fx, float fy, float fz);

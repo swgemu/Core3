@@ -1725,3 +1725,11 @@ float SceneObjectImplementation::getTemplateRadius() {
 	// we currently don't scale these, so we have no scale variable
 	return app->getBoundingSphere()->getRadius();
 }
+
+void SceneObjectImplementation::playEffect(const String& file,
+		const String& aux) {
+	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(
+			_this.get(), file, aux);
+
+	broadcastMessage(effect, true);
+}

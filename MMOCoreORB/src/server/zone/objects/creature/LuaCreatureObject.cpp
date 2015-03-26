@@ -33,7 +33,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "hasScreenPlayState", &LuaCreatureObject::hasScreenPlayState },
 		{ "setScreenPlayState", &LuaCreatureObject::setScreenPlayState },
 		{ "getScreenPlayState", &LuaCreatureObject::getScreenPlayState },
-		{ "playEffect", &LuaCreatureObject::playEffect },
+		{ "playEffect", &LuaSceneObject::playEffect },
 		{ "sendNewbieTutorialEnableHudElement", &LuaCreatureObject::sendNewbieTutorialEnableHudElement },
 		{ "getInCellNumber", &LuaCreatureObject::getInCellNumber },
 		{ "getBuildingParentID", &LuaCreatureObject::getBuildingParentID },
@@ -448,17 +448,6 @@ int LuaCreatureObject::inflictDamage(lua_State* L) {
 	TangibleObject* attacker = (TangibleObject*) lua_touserdata(L, -4);
 
 	realObject->inflictDamage(attacker, damageType, damage, destroy);
-
-	return 0;
-}
-
-int LuaCreatureObject::playEffect(lua_State* L) {
-	//public native void playEffect(final string file, final string aux);
-
-	String aux = lua_tostring(L, -1);
-	String file = lua_tostring(L, -2);
-
-	realObject->playEffect(file, aux);
 
 	return 0;
 }
