@@ -138,7 +138,7 @@ public:
 			String queueAction = "volleyfireattack";
 			uint64 queueActionCRC = queueAction.hashCode();
 
-			memberPlayer->enqueueCommand(queueActionCRC, 0, (uint64)target, "");
+			memberPlayer->executeObjectControllerAction(queueActionCRC, (uint64)target, "");
 
 			checkForTef(leader, memberPlayer);
 		}
