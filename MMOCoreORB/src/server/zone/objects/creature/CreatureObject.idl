@@ -1301,14 +1301,6 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public native void doCombatAnimation(CreatureObject defender, unsigned int animationCRC, byte hit, byte trails);
 	
-	@dirty
-	public native void playEffect(final string file, final string aux);
-	
-	@dirty
-	public void playEffect(final string file) {
-		playEffect(file, "");
-	}
-	
 	public native void activateQueueAction();
 	
 	public native void activateImmediateAction();

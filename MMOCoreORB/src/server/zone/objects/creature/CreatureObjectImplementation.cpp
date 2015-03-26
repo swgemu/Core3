@@ -75,7 +75,6 @@
 #include "server/zone/packets/player/NewbieTutorialRequest.h"
 #include "server/zone/packets/ui/NewbieTutorialEnableHudElement.h"
 #include "server/zone/packets/ui/OpenHolocronToPageMessage.h"
-#include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/packets/object/Animation.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
@@ -2124,14 +2123,6 @@ void CreatureObjectImplementation::doAnimation(const String& anim) {
 	Animation* msg = new Animation(_this.get(), anim);
 
 	broadcastMessage(msg, true);
-}
-
-void CreatureObjectImplementation::playEffect(const String& file,
-		const String& aux) {
-	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(
-			_this.get(), file, aux);
-
-	broadcastMessage(effect, true);
 }
 
 void CreatureObjectImplementation::dismount() {

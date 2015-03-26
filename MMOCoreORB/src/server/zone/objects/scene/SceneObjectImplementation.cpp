@@ -61,6 +61,7 @@ which carries forward this exception.
 #include "server/zone/packets/scene/ClientOpenContainerMessage.h"
 #include "server/zone/packets/object/DataTransform.h"
 #include "server/zone/packets/object/DataTransformWithParent.h"
+#include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
@@ -1724,4 +1725,12 @@ float SceneObjectImplementation::getTemplateRadius() {
 
 	// we currently don't scale these, so we have no scale variable
 	return app->getBoundingSphere()->getRadius();
+}
+
+void SceneObjectImplementation::playEffect(const String& file,
+		const String& aux) {
+	PlayClientEffectObjectMessage* effect = new PlayClientEffectObjectMessage(
+			_this.get(), file, aux);
+
+	broadcastMessage(effect, true);
 }
