@@ -48,16 +48,22 @@ function deathWatchWorkshopDroidConvoHandler:runScreenHandlers(conversationTempl
 	local screen = LuaConversationScreen(conversationScreen)
 
 	local screenID = screen:getScreenID()
+	local conversationScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(conversationScreen)
+
+	if (screenID == "no_battery_intro" or screenID == "intro") then
+		CreatureObject(conversingNPC):playEffect("clienteffect/treadwell_chatter_01.cef", "")
+	elseif (screenID == "clean_battery" or screenID == "end_convo") then
+		CreatureObject(conversingNPC):playEffect("clienteffect/treadwell_chatter_02.cef", "")
+	end
 
 	return ObjectManager.withCreatureObject(conversingPlayer, function(player)
-		local conversationScreen = screen:cloneScreen()
-		local clonedConversation = LuaConversationScreen(conversationScreen)
 		if (screenID == "clean_battery") then
 			local pInventory = player:getSlottedObject("inventory")
 
 			if (pInventory ~= nil) then
 				local pBatt = getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", true)
-				
+
 				if (pBatt == nil) then
 					player:sendSystemMessage("Error: Battery not found in inventory.")
 					return 0

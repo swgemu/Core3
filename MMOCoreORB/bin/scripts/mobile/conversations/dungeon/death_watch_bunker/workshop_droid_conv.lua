@@ -37,7 +37,7 @@ deathWatchWorkshopDroidConvoTemplate:addScreen(end_convo);
 
 no_battery_intro = ConvoScreen:new {
 	id = "no_battery_intro",
-	leftDialog = "@conversation/death_watch_treadwell:s_9208410d",
+	leftDialog = "@conversation/death_watch_treadwell:s_9208410d", -- ...
 	stopConversation = "true",
 	options = {
 	}
