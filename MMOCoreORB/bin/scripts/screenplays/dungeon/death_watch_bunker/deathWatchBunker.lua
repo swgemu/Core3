@@ -1480,8 +1480,11 @@ function DeathWatchBunkerScreenPlay:doValveSwitch(pCreature, valveNumber)
 	local state4 = readData("dwb:valve4")
 
 	if (state1 == 1 and state2 == 1 and state3 == 1 and state4 == 1) then
-		CreatureObject(pCreature):setScreenPlayState(64, "death_watch_foreman_stage")
-		CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:restored_pressure")
+		ObjectManager.withCreatureObject(pCreature, function(creature)
+			playClientEffectLoc(creature:getObjectID(), "clienteffect/dth_watch_water_pressure.cef", "endor", creature:getPositionX(), creature:getPositionZ(), creature:getPositionY(), creature:getParentID())
+			creature:setScreenPlayState(64, "death_watch_foreman_stage")
+			creature:sendSystemMessage("@dungeon/death_watch:restored_pressure")
+		end)
 		-- Reset valves to starting state with A, B and D active
 		self:swapValveState(pCreature, 3, false)
 	end
