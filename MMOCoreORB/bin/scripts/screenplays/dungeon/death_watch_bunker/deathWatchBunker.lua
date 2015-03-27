@@ -658,11 +658,12 @@ function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pCha
 		writeData("dwb:bombDroidHandlerLastUse", os.time())
 	elseif (bombDroidHandlerID ~= terminalUserID) then
 		local lastTerminalUse = readData("dwb:bombDroidHandlerLastUse")
+
 		if (os.difftime(os.time(), lastTerminalUse) < 120) then
 			CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:terminal_in_use")
 			return 0
 		else
-			writeData("dwb:bombDroidHandler", bombDroidHandlerID)
+			writeData("dwb:bombDroidHandler", terminalUserID)
 			writeData("dwb:bombDroidHandlerLastUse", os.time())
 		end
 	end
@@ -675,18 +676,13 @@ function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pCha
 	local spatialCommand = tokenizer[1]
 	local moveDistance = 0
 
-	if (spatialCommand == "reset") then
-		local lastDetonate = readData("dwb:lastDroidDetonate")
-		if (lastDetonate ~= 0 and os.difftime(os.time(), lastDetonate) < 180) then
-			CreatureObject(pPlayer):sendSystemMessage("@dungeon/death_watch:reload_voice_pattern")
-			return 0
-		end
+	local bombDroidID = readData("dwb:bombDroid")
+	local pBombDroid = getSceneObject(bombDroidID)
+
+	if (spatialCommand == "reset" and pBombDroid == nil) then
 		self:respawnBombDroid()
 		return 0
 	end
-
-	local bombDroidID = readData("dwb:bombDroid")
-	local pBombDroid = getSceneObject(bombDroidID)
 
 	if (pBombDroid == nil or not SceneObject(pBombDroid):isAiAgent()) then
 		return 0
@@ -799,6 +795,8 @@ function DeathWatchBunkerScreenPlay:bombDroidDetonated(pBombDroid, pBombDroid2)
 		createEvent(1000, "DeathWatchBunkerScreenPlay", "destroyDebris", pDebris2)
 	end
 
+	deleteData("dwb:bombDroid")
+
 	return 1
 end
 
@@ -897,9 +895,11 @@ function DeathWatchBunkerScreenPlay:haldoDamage(pHaldo, pPlayer, damage)
 			CreatureObject(pNewHaldo):setHAM(6, spawnHam.m)
 
 			spatialChat(pNewHaldo, "@dungeon/death_watch:help_me")
-		end
 
-		return 1
+			return 1
+		else
+			return 0
+		end
 	end)
 end
 
