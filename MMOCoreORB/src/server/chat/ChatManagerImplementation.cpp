@@ -614,7 +614,20 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 					ManagedReference<ChatMessage*> chatMessage = new ChatMessage();
 					chatMessage->setString(message.toString());
 
-					object->notifyObservers(ObserverEventType::SPATIALCHATRECEIVED, chatMessage, player->getObjectID());
+					EXECUTE_TASK_3(object, chatMessage, player, {
+						if (player_p == NULL || object_p == NULL)
+							return;
+
+						Locker locker(object_p);
+
+						SortedVector<ManagedReference<Observer*> > observers = object_p->getObservers(ObserverEventType::SPATIALCHATRECEIVED);
+						for (int oc = 0; oc < observers.size(); oc++) {
+							Observer* observer = observers.get(oc);
+							Locker clocker(observer, object_p);
+							if (observer->notifyObserverEvent(ObserverEventType::SPATIALCHATRECEIVED, object_p, chatMessage_p, player_p->getObjectID()) == 1)
+								object_p->dropObserver(ObserverEventType::SPATIALCHATRECEIVED, observer);
+						}
+					});
 				}
 
 				if (object->isPlayerCreature()) {
