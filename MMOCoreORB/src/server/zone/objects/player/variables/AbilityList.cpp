@@ -83,7 +83,11 @@ void AbilityList::loadFromNames(Vector<String>& abilities) {
 
 		Ability* ability = skillManager->getAbility(name);
 
-		vector.add(ability);
+		if (ability == NULL) {
+			Logger::console.error(name + " is null when trying to load from database");
+		} else {
+			vector.add(ability);
+		}
 	}
 }
 
