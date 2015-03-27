@@ -58,14 +58,10 @@ void StructureObjectImplementation::notifyLoadFromDatabase() {
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 
 	if (permissionsFixed == false) {
-		class MigratePermissionsTask : public Task {
-			ManagedReference<StructureObject*> structure;
+		ManagedReference<StructureObject*> structure = _this.get();
 
-		public:
-			MigratePermissionsTask(StructureObject* stru) : structure(stru) {}
-
-			void run() {
-				ZoneServer* zoneServer = structure->getZoneServer();
+		EXECUTE_TASK_1(structure, {
+				ZoneServer* zoneServer = structure_p->getZoneServer();
 
 				if (zoneServer == NULL) {
 					return;
@@ -76,14 +72,10 @@ void StructureObjectImplementation::notifyLoadFromDatabase() {
 					return;
 				}
 
-				Locker locker(structure);
+				Locker locker(structure_p);
 
-				structure->migratePermissions();
-			}
-		};
-
-		MigratePermissionsTask* task = new MigratePermissionsTask(_this.get().get());
-		task->execute();
+				structure_p->migratePermissions();
+		});
 	}
 }
 

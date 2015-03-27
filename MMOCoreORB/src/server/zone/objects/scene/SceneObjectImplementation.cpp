@@ -988,38 +988,22 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	if (parent == NULL || (!parent->isVehicleObject() && !parent->isMount()))
 		return;
 
-	class UpdateVehiclePositionTask : public Task {
-		ManagedReference<SceneObject*> parent;
-		Quaternion direction;
-		float x, y, z;
-		bool sendPackets;
-
-	public:
-		UpdateVehiclePositionTask(SceneObject* parent, Quaternion& quat,
-				float x, float z, float y, bool sendPackets) : parent(parent),
-				direction(quat), x(x), y(y), z(z), sendPackets(sendPackets) {
-
-		}
-
-		void run() {
-			Locker locker(parent);
-
-			parent->setDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
-			parent->setPosition(x, z, y);
-
-			parent->incrementMovementCounter();
-
-			parent->updateZone(false, sendPackets);
-		}
-	};
+	Vector3 position = getPosition();
 
 	parent->setPosition(getPositionX(), getPositionZ(), getPositionY());
 
-	UpdateVehiclePositionTask* task = new UpdateVehiclePositionTask(parent,
-			direction, getPositionX(), getPositionZ(), getPositionY(),
-			sendPackets);
+	EXECUTE_TASK_4(parent, position, direction, sendPackets, {
+			Locker locker(parent_p);
 
-	task->execute();
+			parent_p->setDirection(direction_p.getW(),
+					direction_p.getX(), direction_p.getY(), direction_p.getZ());
+			parent_p->setPosition(position_p.getX(), position_p.getZ(), position_p.getY());
+
+			parent_p->incrementMovementCounter();
+
+			parent_p->updateZone(false, sendPackets_p);
+		}
+	);
 }
 
 void SceneObjectImplementation::updateZone(bool lightUpdate, bool sendPackets) {

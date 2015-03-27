@@ -569,9 +569,9 @@ String StructureManager::getTimeString(uint32 timestamp) {
 		return "";
 	}
 
-	String abbrvs[3] = { "minutes", "hours", "days" };
+	static const String abbrvs[3] = { "minutes", "hours", "days" };
 
-	int intervals[3] = { 60, 3600, 86400 };
+	static const int intervals[3] = { 60, 3600, 86400 };
 	int values[3] = { 0, 0, 0 };
 
 	StringBuffer str;
