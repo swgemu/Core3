@@ -1142,13 +1142,13 @@ int DirectorManager::spatialChat(lua_State* L) {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	ChatManager* chatManager = zoneServer->getChatManager();
 
-	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
+	Reference<CreatureObject*> creature = (CreatureObject*)lua_touserdata(L, -2);
 
 	if (lua_islightuserdata(L, -1)) {
 		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -1);
 
 		if (creature != NULL && message != NULL) {
-			class BroadcastMessageTask : public Task {
+			/*class BroadcastMessageTask : public Task {
 				Reference<CreatureObject*> creature;
 				ChatManager* chatManager;
 				StringIdChatParameter message;
@@ -1167,14 +1167,22 @@ int DirectorManager::spatialChat(lua_State* L) {
 			};
 
 			BroadcastMessageTask* task = new BroadcastMessageTask(creature, chatManager, message);
-			task->execute();
+			task->execute();*/
+
+			StringIdChatParameter taskMessage = *message;
+
+			EXECUTE_TASK_3(creature, chatManager, taskMessage, {
+				Locker locker(param1);
+
+				param2->broadcastMessage(param1, param3, 0, 0, 0);
+			});
 		}
 	} else {
 		String message = lua_tostring(L, -1);
 
 		if (creature != NULL) {
 
-			class BroadcastMessageTask : public Task {
+			/*class BroadcastMessageTask : public Task {
 				Reference<CreatureObject*> creature;
 				ChatManager* chatManager;
 				String message;
@@ -1193,7 +1201,13 @@ int DirectorManager::spatialChat(lua_State* L) {
 			};
 
 			BroadcastMessageTask* task = new BroadcastMessageTask(creature, chatManager, message);
-			task->execute();
+			task->execute();*/
+
+			EXECUTE_TASK_3(creature, chatManager, message, {
+					Locker locker(param1);
+
+					param2->broadcastMessage(param1, param3, 0, 0, 0);
+			});
 		}
 	}
 
