@@ -1563,11 +1563,11 @@ function DeathWatchBunkerScreenPlay:craftingConfirmCallback(pCreature, pSui, can
 	if step == 1 then
 		writeData(SceneObject(pUsingObject):getObjectID() .. ":dwb:currentlycrafting", 2)
 		CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:alum_process_begun")
-		createEvent(30 * 1000, "DeathWatchBunkerScreenPlay", "nextCraftingStep", pUsingObject)
+		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "nextCraftingStep", pUsingObject)
 	elseif step == 3 then
 		writeData(SceneObject(pUsingObject):getObjectID() .. ":dwb:currentlycrafting", 4)
 		CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:aeration_process_begun")
-		createEvent(30 * 1000, "DeathWatchBunkerScreenPlay", "finishCraftingStep", pUsingObject)
+		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "finishCraftingStep", pUsingObject)
 	end
 
 	return 0
