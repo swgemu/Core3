@@ -1171,24 +1171,14 @@ void PlayerObjectImplementation::removeAllFriends() {
 		ManagedReference<CreatureObject*> playerToRemove = zoneServer->getObject(objID).castTo<CreatureObject*>();
 
 		if (playerToRemove != NULL && playerToRemove->isPlayerCreature()) {
-			class RemoveFriendTask : public Task {
-				ManagedReference<CreatureObject*> player;
-				String name;
+			EXECUTE_TASK_2(playerToRemove, name, {
+					Locker locker(playerToRemove_p);
 
-			public:
-				RemoveFriendTask(CreatureObject* play, String nam) : player(play), name(nam) {}
-
-				void run() {
-					Locker locker(player);
-					PlayerObject* ghost = player->getPlayerObject();
+					PlayerObject* ghost = playerToRemove_p->getPlayerObject();
 					if (ghost != NULL) {
-						ghost->removeFriend(name, false);
+						ghost->removeFriend(name_p, false);
 					}
-				}
-			};
-
-			RemoveFriendTask* task = new RemoveFriendTask(playerToRemove.get(), playerName);
-			task->execute();
+			});
 		}
 
 		removeReverseFriend(name);

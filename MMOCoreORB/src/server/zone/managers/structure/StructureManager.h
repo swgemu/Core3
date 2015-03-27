@@ -139,7 +139,7 @@ public:
 	 * @param obj The object to use as reference for searching for the nearest parking garage.
 	 * @return Returns a SceneObject representing the nearest parking garage, or NULL if one was not found in the required range.
 	 */
-	SceneObject* getInRangeParkingGarage(SceneObject* obj, int range = 64);
+	Reference<SceneObject*> getInRangeParkingGarage(SceneObject* obj, int range = 64);
 
 	/**
 	 * Sends a sui list box containing information about the structure.
