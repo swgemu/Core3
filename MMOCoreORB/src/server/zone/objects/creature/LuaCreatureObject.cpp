@@ -447,6 +447,8 @@ int LuaCreatureObject::inflictDamage(lua_State* L) {
 	int damageType = lua_tonumber(L, -3);
 	TangibleObject* attacker = (TangibleObject*) lua_touserdata(L, -4);
 
+	Locker locker(realObject);
+
 	realObject->inflictDamage(attacker, damageType, damage, destroy);
 
 	return 0;
