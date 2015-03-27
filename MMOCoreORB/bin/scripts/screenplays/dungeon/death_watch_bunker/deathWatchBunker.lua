@@ -897,9 +897,11 @@ function DeathWatchBunkerScreenPlay:haldoDamage(pHaldo, pPlayer, damage)
 			CreatureObject(pNewHaldo):setHAM(6, spawnHam.m)
 
 			spatialChat(pNewHaldo, "@dungeon/death_watch:help_me")
-		end
 
-		return 1
+			return 1
+		else
+			return 0
+		end
 	end)
 end
 
