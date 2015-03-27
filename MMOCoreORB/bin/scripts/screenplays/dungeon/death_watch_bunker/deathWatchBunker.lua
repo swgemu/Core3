@@ -1586,7 +1586,7 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		return
 	end
 
-	if (curStep == 0) then -- Initial spawn at toolbox, wait 30 seconds
+	if (curStep == 0) then -- Initial spawn at technician, wait 10 secs
 		local spawn = deathWatchSpecialSpawns["ventdroid"]
 		pDroid = spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
 		SceneObject(pDroid):setCustomObjectName("Ventilation Repair Droid")
@@ -1594,7 +1594,7 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 		createObserver(DESTINATIONREACHED, "DeathWatchBunkerScreenPlay", "ventDroidDestinationReached", pDroid)
 		AiAgent(pDroid):setAiTemplate("manualescortwalk") -- Don't move unless patrol point is added to list, walking speed
 		AiAgent(pDroid):setFollowState(4) -- Patrolling
-		createEvent(30 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
+		createEvent(10 * 1000, "DeathWatchBunkerScreenPlay", "doVentDroidStep", pDroid)
 		writeData("dwb:ventDroidStep", curStep + 1)
 	elseif (curStep == 1) then -- Move to toolbox
 		self:sendMessageToCell(5996345, "@dungeon/death_watch:protect_tools")
@@ -1654,8 +1654,8 @@ function DeathWatchBunkerScreenPlay:doVentDroidStep(pDroid)
 end
 
 function DeathWatchBunkerScreenPlay:ventDroidDestinationReached(pDroid)
-	createEvent(2000, "DeathWatchBunkerScreenPlay", "doVentDroidMove", pDroid)
-	return 1
+	createEvent(1500, "DeathWatchBunkerScreenPlay", "doVentDroidMove", pDroid)
+	return 0
 end
 
 function DeathWatchBunkerScreenPlay:doVentDroidMove(pDroid)

@@ -1335,7 +1335,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			// go to the edge of the maxDistance radius and stop, so select the minimum
 			// of either our max travel distance (newSpeed) or the distance from the
 			// maxDistance radius
-			maxDist = MIN(newSpeed, targetDistance - maxDistance);
+			maxDist = MIN(newSpeed, targetDistance - maxDistance + 0.1);
 		else
 			// We are already at or inside the maxDistance radius, so we have reached this
 			// patrolPoint. We want to stop at every patrolPoint exactly once, so we will
@@ -1370,7 +1370,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			// To find our stopping point, either we need to go all the way through the path (which shouldn't
 			// happen because of our earlier check for distance) or we've gone as far down the path as we can
 			// in one tick.
-			if (pathDistance >= maxDist) {
+			if (pathDistance > maxDist) {
 				// this is farther than we can go in one timestep
 				found = true;
 
