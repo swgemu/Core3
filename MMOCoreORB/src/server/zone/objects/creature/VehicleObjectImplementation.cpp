@@ -122,7 +122,7 @@ void VehicleObjectImplementation::notifyInsertToZone(Zone* zone) {
 }
 
 bool VehicleObjectImplementation::checkInRangeGarage() {
-	ManagedReference<SceneObject*> garage = StructureManager::instance()->getInRangeParkingGarage(_this.get());
+	Reference<SceneObject*> garage = StructureManager::instance()->getInRangeParkingGarage(_this.get());
 
 	if (garage == NULL)
 		return false;
