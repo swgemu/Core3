@@ -50,7 +50,7 @@ ENGINE3_PATH=../../../../../MMOEngine
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
 	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I/usr/include/lua5.1 -I/usr/include/mysql \
-	   	-I/usr/local/BerkeleyDB.5.0/include
+	   	-I/usr/local/BerkeleyDB.5.0/include -I../../../../utils
 			
 LIBS =	$(SYSTEM_LIBS)  \
 	-L../../../build/unix/src/client \
