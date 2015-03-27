@@ -46,37 +46,69 @@ which carries forward this exception.
 #include "engine/lua/LuaPanicException.h"
 
 int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	int ret = 1;
 
-	try {
-		Lua* lua = DirectorManager::instance()->getLuaInstance();
+	class ScreenPlayTask : public Task {
+		ManagedWeakReference<Observer*> observer;
+		uint32 eventType;
+		ManagedWeakReference<Observable*> observable;
+		ManagedWeakReference<ManagedObject*> arg1;
+		int64 arg2;
+		String play;
+		String key;
 
-		LuaFunction startScreenPlay(lua->getLuaState(), play, key, 1);
-		startScreenPlay << observable;
-		startScreenPlay << arg1;
-		startScreenPlay << arg2;
-
-		startScreenPlay.callFunction();
-
-		if (lua_gettop(lua->getLuaState()) == 0) {
-			Logger::console.error("ScreenPlayObserverImplementation::notifyObserverEvent didnt return a value from " + play + ":" + key);
-
-			assert(0 && "no return value in  ScreenPlayObserverImplementation::notifyObserverEvent");
-
-			return 1;
+	public:
+		ScreenPlayTask(Observer* observer, uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2, String play, String key) :
+			observer(observer), eventType(eventType), observable(observable), arg1(arg1), arg2(arg2), play(play), key(key) {
 		}
 
-		if (!lua_isnumber(lua->getLuaState(), -1)) {
-			assert(printf("ScreenPlayObserver %s:%s didnt return a valid value in an observer handler\n", play.toCharArray(), key.toCharArray()) && 0);
+		void run() {
+			ManagedReference<Observer*> strongObserver = observer.get();
+			ManagedReference<Observable*> strongObservable = observable.get();
+			ManagedReference<ManagedObject*> strongArg1 = arg1.get();
+
+			if (strongObserver == NULL || strongObservable == NULL)
+				return;
+
+			int ret = 1;
+
+			try {
+				Lua* lua = DirectorManager::instance()->getLuaInstance();
+
+				LuaFunction startScreenPlay(lua->getLuaState(), play, key, 1);
+				startScreenPlay << strongObservable;
+				startScreenPlay << strongArg1;
+				startScreenPlay << arg2;
+
+				startScreenPlay.callFunction();
+
+				if (lua_gettop(lua->getLuaState()) == 0) {
+					Logger::console.error("ScreenPlayObserverImplementation::notifyObserverEvent didnt return a value from " + play + ":" + key);
+
+					assert(0 && "no return value in  ScreenPlayObserverImplementation::notifyObserverEvent");
+
+					strongObservable->dropObserver(eventType, strongObserver);
+					return;
+				}
+
+				if (!lua_isnumber(lua->getLuaState(), -1)) {
+					assert(printf("ScreenPlayObserver %s:%s didnt return a valid value in an observer handler\n", play.toCharArray(), key.toCharArray()) && 0);
+				}
+
+				ret = lua->getIntParameter(lua->getLuaState());
+
+			} catch (LuaPanicException& panic) {
+				Logger::console.error("Panic exception: " + panic.getMessage() + " while trying to run SceenPlayObserver: " + play + ":" + key);
+			}
+
+			if (ret > 0)
+				strongObservable->dropObserver(eventType, strongObserver);
 		}
+	};
 
-		ret = lua->getIntParameter(lua->getLuaState());
-
-	} catch (LuaPanicException& panic) {
-		Logger::console.error("Panic exception: " + panic.getMessage() + " while trying to run SceenPlayObserver: " + play + ":" + key);
-	}
+	ScreenPlayTask* task = new ScreenPlayTask(_this.get(), eventType, observable, arg1, arg2, play, key);
+	task->execute();
 
 	//1 remove observer, 0 keep observer
 
-	return ret;
+	return 0;
 }
