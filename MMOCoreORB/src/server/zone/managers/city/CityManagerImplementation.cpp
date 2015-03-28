@@ -741,15 +741,14 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 		return;
 
 	int maintainCitizens = citizensPerRank.get(cityRank - 1);
+	int advanceCitizens = citizensPerRank.get(cityRank);
 
 	if (citizens < maintainCitizens) {
 		contractCity(city);
+	} else if (cityRank < METROPOLIS && citizens >= advanceCitizens) {
+		expandCity(city);
 	} else if (cityRank < METROPOLIS) {
-
-		int advanceCitizens = citizensPerRank.get(cityRank);
-
-		if (citizens >= advanceCitizens)
-			expandCity(city);
+		city->destroyAllStructuresForRank(uint8(cityRank + 1), true);
 	}
 
 	city->rescheduleUpdateEvent(cityUpdateInterval * 60);
@@ -1264,7 +1263,8 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 
 	city->setCityRank(newRank);
 	city->setRadius(radiusPerRank.get(newRank - 1));
-	city->destroyAllStructuresForRank(uint8(newRank + 1), true);
+	city->destroyAllStructuresForRank(uint8(newRank + 2), true);
+	city->sendStructureInvalidMails();
 }
 
 void CityManagerImplementation::expandCity(CityRegion* city) {
@@ -1304,6 +1304,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 
 	city->setCityRank(newRank);
 	city->setRadius(radiusPerRank.get(newRank - 1));
+	city->sendStructureValidMails();
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {

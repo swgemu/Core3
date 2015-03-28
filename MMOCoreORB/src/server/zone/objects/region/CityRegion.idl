@@ -780,6 +780,9 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public native void sendDestroyOutsideObjectMail(SceneObject obj);
 
+	public native void sendStructureInvalidMails();
+	public native void sendStructureValidMails();
+
 	public native void cleanupDecorations(int decorationLimit);
 
 	@dirty

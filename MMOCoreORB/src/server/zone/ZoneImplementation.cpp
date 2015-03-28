@@ -549,7 +549,7 @@ float ZoneImplementation::getMaxY() {
 }
 
 void ZoneImplementation::updateCityRegions() {
-	info("updating " + String::valueOf(cityRegionUpdateVector.size()) + " cities", true);
+	info("scheduling updates for " + String::valueOf(cityRegionUpdateVector.size()) + " cities", true);
 
 	for (int i = 0; i < cityRegionUpdateVector.size(); ++i) {
 		CityRegion* city = cityRegionUpdateVector.get(i);
