@@ -926,9 +926,9 @@ float PlanetManagerImplementation::findClosestWorldFloor(float x, float y, float
 	}
 
 	float waterHeight;
-	getTerrainManager()->getWaterHeight(x, y, waterHeight);
+	bool result = getTerrainManager()->getWaterHeight(x, y, waterHeight);
 
-	if (waterHeight > (closestHeight + swimHeight)) {
+	if (result && waterHeight > (closestHeight + swimHeight)) {
 		closestHeight = waterHeight - swimHeight;
 	}
 
