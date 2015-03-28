@@ -31,13 +31,14 @@ public:
 			return;
 
 		ManagedReference<CityRegion*> city = player->getCityRegion();
-		if (city == NULL)
+		CityManager* cityManager = player->getZoneServer()->getCityManager();
+		if (city == NULL || cityManager == NULL)
 			return;
 
 		if (!city->isMayor(player->getObjectID()))
 			return;
 
-		if (city->getMissionTerminalCount() >= (int) city->getCityRank() * 3) {
+		if (!cityManager->canSupportMoreMissionTerminals(city)) {
 			player->sendSystemMessage("@city/city:no_more_mt"); // Your city can't support any more mission terminals at its current rank!
 			return;
 		}

@@ -505,8 +505,6 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank, bool send
 		return;
 
 	StructureManager* structureManager = StructureManager::instance();
-	ManagedReference<CreatureObject*> mayor = zone->getZoneServer()->getObject(getMayorID()).castTo<CreatureObject*>();
-	ChatManager* chatManager = zone->getZoneServer()->getChatManager();
 
 	for (int i = structures.size() - 1; i >= 0; --i) {
 		ManagedReference<StructureObject*> structure = structures.get(i);
@@ -517,20 +515,35 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank, bool send
 		if (ssot == NULL || ssot->getCityRankRequired() < rank || !ssot->isCivicStructure())
 			continue;
 
-		if (mayor != NULL && sendMail) {
-			StringIdChatParameter params("city/city", "structure_destroyed_body");
-			params.setTO(mayor->getFirstName());
-			params.setTT(structure->getObjectName());
-			UnicodeString subject = "@city/city:structure_destroyed_subject"; // Structure Removed!
-
-			chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
-		}
+		sendDestroyObjectMail(structure);
 
 		Locker _clocker(structure, _this.get());
 
 		structureManager->destroyStructure(structure);
 
 		structures.removeElement(structure);
+	}
+
+	for (int i = cityDecorations.size() - 1; i >= 0; --i) {
+		ManagedReference<SceneObject*> decoration = cityDecorations.get(i);
+		StructureObject* structure = decoration.castTo<StructureObject*>();
+
+		if (structure == NULL)
+			continue;
+
+		SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+
+		//We only want to destroy civic structures.
+		if (ssot == NULL || ssot->getCityRankRequired() < rank || !ssot->isCivicStructure())
+			continue;
+
+		sendDestroyObjectMail(structure);
+
+		Locker _clocker(structure, _this.get());
+
+		structureManager->destroyStructure(structure);
+
+		cityDecorations.removeElement(decoration);
 	}
 }
 
@@ -875,6 +888,23 @@ void CityRegionImplementation::sendDestroyOutsideObjectMail(SceneObject* obj) {
 	}
 }
 
+void CityRegionImplementation::sendDestroyObjectMail(SceneObject* obj) {
+	if(cityHall == NULL)
+		return;
+
+	ManagedReference<CreatureObject*> mayor = cityHall->getZoneServer()->getObject(getMayorID()).castTo<CreatureObject*>();
+	ChatManager* chatManager = cityHall->getZoneServer()->getChatManager();
+
+	if (mayor != NULL && obj != NULL) {
+		StringIdChatParameter params("city/city", "structure_destroyed_body");
+		params.setTO(mayor->getFirstName());
+		params.setTT(obj->getObjectName());
+		UnicodeString subject = "@city/city:structure_destroyed_subject"; // Structure Removed!
+
+		chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
+	}
+}
+
 void CityRegionImplementation::sendStructureInvalidMails() {
 	if(cityHall == NULL)
 		return;
@@ -884,6 +914,27 @@ void CityRegionImplementation::sendStructureInvalidMails() {
 
 	for (int i = structures.size() - 1; i >= 0; --i) {
 		ManagedReference<StructureObject*> structure = structures.get(i);
+
+		SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+
+		if (ssot == NULL || ssot->getCityRankRequired() <= cityRank || !ssot->isCivicStructure())
+			continue;
+
+		if (mayor != NULL) {
+			StringIdChatParameter params("city/city", "structure_invalid_body");
+			params.setTO(mayor->getFirstName());
+			params.setTT(structure->getObjectName());
+			UnicodeString subject = "@city/city:structure_invalid_subject"; // City Can't Support Structure!
+
+			chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
+		}
+	}
+
+	for (int i = cityDecorations.size() - 1; i >= 0; --i) {
+		ManagedReference<StructureObject*> structure = cityDecorations.get(i).castTo<StructureObject*>();
+
+		if (structure == NULL)
+			continue;
 
 		SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
 
@@ -925,11 +976,32 @@ void CityRegionImplementation::sendStructureValidMails() {
 			chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
 		}
 	}
+
+	for (int i = cityDecorations.size() - 1; i >= 0; --i) {
+		ManagedReference<StructureObject*> structure = cityDecorations.get(i).castTo<StructureObject*>();
+
+		if (structure == NULL)
+			continue;
+
+		SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+
+		if (ssot == NULL || ssot->getCityRankRequired() < cityRank || !ssot->isCivicStructure())
+			continue;
+
+		if (mayor != NULL) {
+			StringIdChatParameter params("city/city", "structure_valid_body");
+			params.setTO(mayor->getFirstName());
+			params.setTT(structure->getObjectName());
+			UnicodeString subject = "@city/city:structure_valid_subject"; // Structure Support Reestablished!
+
+			chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
+		}
+	}
 }
 
 void CityRegionImplementation::cleanupDecorations(int limit) {
 
-	int decorationsToRemove = cityDecorations.size() -limit;
+	int decorationsToRemove = cityDecorations.size() - limit;
 
 	if(decorationsToRemove <= 0)
 		return;
@@ -938,6 +1010,8 @@ void CityRegionImplementation::cleanupDecorations(int limit) {
 
 		SceneObject* dec = getCityDecoration(0);
 		if(dec != NULL) {
+
+			sendDestroyObjectMail(dec);
 
 			if(dec->isStructureObject()){
 				StructureManager* structureManager = StructureManager::instance();
@@ -950,7 +1024,52 @@ void CityRegionImplementation::cleanupDecorations(int limit) {
 			}
 
 			cityDecorations.removeElementAt(0);
+		}
+	}
+}
 
+void CityRegionImplementation::cleanupTrainers(int limit) {
+
+	int trainersToRemove = citySkillTrainers.size() - limit;
+
+	if(trainersToRemove <= 0)
+		return;
+
+	for(int i =  0; i < trainersToRemove; i++) {
+
+		SceneObject* trainer = getCitySkillTrainer(0);
+		if(trainer != NULL) {
+
+			sendDestroyObjectMail(trainer);
+
+			Locker clock(trainer, _this.get());
+			trainer->destroyObjectFromWorld(true);
+			trainer->destroyObjectFromDatabase(true);
+
+			citySkillTrainers.removeElementAt(0);
+		}
+	}
+}
+
+void CityRegionImplementation::cleanupMissionTerminals(int limit) {
+
+	int terminalsToRemove = cityMissionTerminals.size() - limit;
+
+	if(terminalsToRemove <= 0)
+		return;
+
+	for(int i =  0; i < terminalsToRemove; i++) {
+
+		SceneObject* terminal = getCityMissionTerminal(0);
+		if(terminal != NULL) {
+
+			sendDestroyObjectMail(terminal);
+
+			Locker clock(terminal, _this.get());
+			terminal->destroyObjectFromWorld(true);
+			terminal->destroyObjectFromDatabase(true);
+
+			cityMissionTerminals.removeElementAt(0);
 		}
 	}
 }

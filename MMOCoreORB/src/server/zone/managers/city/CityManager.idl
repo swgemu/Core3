@@ -92,6 +92,8 @@ class CityManager extends ManagedService implements Logger {
 	public transient static byte cityVotingCycles;
 	public transient static byte cityVotingCyclesUntilLocked;
 	public transient static int decorationsPerRank;
+	public transient static int trainersPerRank;
+	public transient static int missionTerminalsPerRank;
 	public transient static float maintenanceDiscount;
 
 	@dereferenced
@@ -282,6 +284,8 @@ class CityManager extends ManagedService implements Logger {
 	public native void sendStructureReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
 
 	public native boolean canSupportMoreDecorations(CityRegion city);
+	public native boolean canSupportMoreTrainers(CityRegion city);
+	public native boolean canSupportMoreMissionTerminals(CityRegion city);
 
 	@local
 	public native CitySpecialization getCitySpecialization(final string cityspec); 
