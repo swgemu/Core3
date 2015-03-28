@@ -875,6 +875,58 @@ void CityRegionImplementation::sendDestroyOutsideObjectMail(SceneObject* obj) {
 	}
 }
 
+void CityRegionImplementation::sendStructureInvalidMails() {
+	if(cityHall == NULL)
+		return;
+
+	ManagedReference<CreatureObject*> mayor = cityHall->getZoneServer()->getObject(getMayorID()).castTo<CreatureObject*>();
+	ChatManager* chatManager = cityHall->getZoneServer()->getChatManager();
+
+	for (int i = structures.size() - 1; i >= 0; --i) {
+		ManagedReference<StructureObject*> structure = structures.get(i);
+
+		SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+
+		if (ssot == NULL || ssot->getCityRankRequired() <= cityRank || !ssot->isCivicStructure())
+			continue;
+
+		if (mayor != NULL) {
+			StringIdChatParameter params("city/city", "structure_invalid_body");
+			params.setTO(mayor->getFirstName());
+			params.setTT(structure->getObjectName());
+			UnicodeString subject = "@city/city:structure_invalid_subject"; // City Can't Support Structure!
+
+			chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
+		}
+	}
+}
+
+void CityRegionImplementation::sendStructureValidMails() {
+	if(cityHall == NULL)
+		return;
+
+	ManagedReference<CreatureObject*> mayor = cityHall->getZoneServer()->getObject(getMayorID()).castTo<CreatureObject*>();
+	ChatManager* chatManager = cityHall->getZoneServer()->getChatManager();
+
+	for (int i = structures.size() - 1; i >= 0; --i) {
+		ManagedReference<StructureObject*> structure = structures.get(i);
+
+		SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+
+		if (ssot == NULL || ssot->getCityRankRequired() < cityRank || !ssot->isCivicStructure())
+			continue;
+
+		if (mayor != NULL) {
+			StringIdChatParameter params("city/city", "structure_valid_body");
+			params.setTO(mayor->getFirstName());
+			params.setTT(structure->getObjectName());
+			UnicodeString subject = "@city/city:structure_valid_subject"; // Structure Support Reestablished!
+
+			chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
+		}
+	}
+}
+
 void CityRegionImplementation::cleanupDecorations(int limit) {
 
 	int decorationsToRemove = cityDecorations.size() -limit;
