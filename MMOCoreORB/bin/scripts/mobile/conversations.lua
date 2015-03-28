@@ -108,12 +108,7 @@ includeFile("conversations/recruiter/rebel_recruiter_conv.lua")
 includeFile("conversations/recruiter/imperial_recruiter_conv.lua")
 
 -- Tasks
-includeFile("conversations/tasks/mozo_bondog_conv.lua")
-includeFile("conversations/tasks/dolac_legasi_conv.lua")
-includeFile("conversations/tasks/dolac_legasi_escaped_prisoner_conv.lua")
-includeFile("conversations/tasks/hedon_istee_conv.lua")
 includeFile("conversations/tasks/herald_conv.lua")
-includeFile("conversations/tasks/serene_floater_conv.lua")
 includeFile("conversations/tasks/ris_armor_quest_conv.lua")
 includeFile("conversations/tasks/librarian_conv.lua")
 includeFile("conversations/tasks/theater_manager_conv.lua")
