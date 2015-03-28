@@ -718,6 +718,10 @@ function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
 
 	local ownerID = readData(victimID .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
+	
+	if (pOwner == nil) then
+		return 0
+	end
 
 	if self:killedByCorrectPlayer(victimID, attackerID) == false and (self:isGroupedWith(pOwner, pAttacker) == false or self:isInQuestRangeOf(pOwner, pVictim) == false) then
 		self:clearInventory(pVictim)
@@ -735,8 +739,8 @@ function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
 	local inventory = LuaSceneObject(pInventory)
 
 	local numberOfItems = inventory:getContainerObjectsSize()
-	local activeNpcNumber = self:getActiveNpcNumber(pAttacker)
-	local requiredItems = self:getRequiredItem(activeNpcNumber, pAttacker)
+	local activeNpcNumber = self:getActiveNpcNumber(pOwner)
+	local requiredItems = self:getRequiredItem(activeNpcNumber, pOwner)
 
 	for j = 1, # requiredItems, 1 do
 		for i = 0, numberOfItems - 1, 1 do
