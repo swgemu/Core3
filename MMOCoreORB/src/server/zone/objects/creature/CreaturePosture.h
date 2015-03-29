@@ -147,8 +147,108 @@ public:
 	};
 
 	HashTable<uint8, CreatureMovementEntry> movementTable;
+	HashTable<uint8, int> rangedAttackMod;
+	HashTable<uint8, int> rangedDefenseMod;
+	HashTable<uint8, int> meleeAttackMod;
+	HashTable<uint8, int> meleeDefenseMod;
 
-	CreaturePosture() {}
+	CreaturePosture() {
+		rangedAttackMod.put(CreatureLocomotion::STANDING, 0);
+		rangedAttackMod.put(CreatureLocomotion::SNEAKING, -5);
+		rangedAttackMod.put(CreatureLocomotion::WALKING, -20);
+		rangedAttackMod.put(CreatureLocomotion::RUNNING, -30);
+		rangedAttackMod.put(CreatureLocomotion::KNEELING, 15);
+		rangedAttackMod.put(CreatureLocomotion::CROUCHSNEAKING, 0);
+		rangedAttackMod.put(CreatureLocomotion::CROUCHWALKING, 0);
+		rangedAttackMod.put(CreatureLocomotion::PRONE, 30);
+		rangedAttackMod.put(CreatureLocomotion::CRAWLING, -10);
+		rangedAttackMod.put(CreatureLocomotion::CLIMBINGSTATIONARY, 15);
+		rangedAttackMod.put(CreatureLocomotion::CLIMBING, 15);
+		rangedAttackMod.put(CreatureLocomotion::HOVERING, 0);
+		rangedAttackMod.put(CreatureLocomotion::FLYING, -10);
+		rangedAttackMod.put(CreatureLocomotion::LYINGDOWN, 30);
+		rangedAttackMod.put(CreatureLocomotion::SITTING, 15);
+		rangedAttackMod.put(CreatureLocomotion::SKILLANIMATING, 0);
+		rangedAttackMod.put(CreatureLocomotion::DRIVINGVEHICLE, 15);
+		rangedAttackMod.put(CreatureLocomotion::RIDINGCREATURE, 0);
+		rangedAttackMod.put(CreatureLocomotion::KNOCKEDDOWN, 0);
+		rangedAttackMod.put(CreatureLocomotion::INCAPACITATED, 0);
+		rangedAttackMod.put(CreatureLocomotion::BLOCKING, 0);
+		rangedAttackMod.put(CreatureLocomotion::DEAD, 0);
+		rangedAttackMod.put(CreatureLocomotion::INVALID, 0);
+
+		rangedDefenseMod.put(CreatureLocomotion::STANDING, 0);
+		rangedDefenseMod.put(CreatureLocomotion::SNEAKING, 15);
+		rangedDefenseMod.put(CreatureLocomotion::WALKING, 15);
+		rangedDefenseMod.put(CreatureLocomotion::RUNNING, 25);
+		rangedDefenseMod.put(CreatureLocomotion::KNEELING, 5);
+		rangedDefenseMod.put(CreatureLocomotion::CROUCHSNEAKING, 0);
+		rangedDefenseMod.put(CreatureLocomotion::CROUCHWALKING, 0);
+		rangedDefenseMod.put(CreatureLocomotion::PRONE, 25);
+		rangedDefenseMod.put(CreatureLocomotion::CRAWLING, 15);
+		rangedDefenseMod.put(CreatureLocomotion::CLIMBINGSTATIONARY, 5);
+		rangedDefenseMod.put(CreatureLocomotion::CLIMBING, 5);
+		rangedDefenseMod.put(CreatureLocomotion::HOVERING, -5);
+		rangedDefenseMod.put(CreatureLocomotion::FLYING, -10);
+		rangedDefenseMod.put(CreatureLocomotion::LYINGDOWN, 25);
+		rangedDefenseMod.put(CreatureLocomotion::SITTING, 5);
+		rangedDefenseMod.put(CreatureLocomotion::SKILLANIMATING, 10);
+		rangedDefenseMod.put(CreatureLocomotion::DRIVINGVEHICLE, 5);
+		rangedDefenseMod.put(CreatureLocomotion::RIDINGCREATURE, 0);
+		rangedDefenseMod.put(CreatureLocomotion::KNOCKEDDOWN, 0);
+		rangedDefenseMod.put(CreatureLocomotion::INCAPACITATED, 10);
+		rangedDefenseMod.put(CreatureLocomotion::DEAD, 0);
+		rangedDefenseMod.put(CreatureLocomotion::BLOCKING, 0);
+		rangedDefenseMod.put(CreatureLocomotion::INVALID, 0);
+
+		meleeAttackMod.put(CreatureLocomotion::STANDING, 0);
+		meleeAttackMod.put(CreatureLocomotion::SNEAKING, -20);
+		meleeAttackMod.put(CreatureLocomotion::WALKING, -50);
+		meleeAttackMod.put(CreatureLocomotion::RUNNING, -15);
+		meleeAttackMod.put(CreatureLocomotion::KNEELING, 10);
+		meleeAttackMod.put(CreatureLocomotion::CROUCHSNEAKING, 0);
+		meleeAttackMod.put(CreatureLocomotion::CROUCHWALKING, 0);
+		meleeAttackMod.put(CreatureLocomotion::PRONE, -30);
+		meleeAttackMod.put(CreatureLocomotion::CRAWLING, -40);
+		meleeAttackMod.put(CreatureLocomotion::CLIMBINGSTATIONARY, 10);
+		meleeAttackMod.put(CreatureLocomotion::CLIMBING, 10);
+		meleeAttackMod.put(CreatureLocomotion::HOVERING, 0);
+		meleeAttackMod.put(CreatureLocomotion::FLYING, -10);
+		meleeAttackMod.put(CreatureLocomotion::LYINGDOWN, -30);
+		meleeAttackMod.put(CreatureLocomotion::SITTING, 10);
+		meleeAttackMod.put(CreatureLocomotion::SKILLANIMATING, 0);
+		meleeAttackMod.put(CreatureLocomotion::DRIVINGVEHICLE, 10);
+		meleeAttackMod.put(CreatureLocomotion::RIDINGCREATURE, 0);
+		meleeAttackMod.put(CreatureLocomotion::KNOCKEDDOWN, 0);
+		meleeAttackMod.put(CreatureLocomotion::INCAPACITATED, 0);
+		meleeAttackMod.put(CreatureLocomotion::BLOCKING, 0);
+		meleeAttackMod.put(CreatureLocomotion::DEAD, 0);
+		meleeAttackMod.put(CreatureLocomotion::INVALID, 0);
+
+		meleeDefenseMod.put(CreatureLocomotion::STANDING, 0);
+		meleeDefenseMod.put(CreatureLocomotion::SNEAKING, -5);
+		meleeDefenseMod.put(CreatureLocomotion::WALKING, -5);
+		meleeDefenseMod.put(CreatureLocomotion::RUNNING, -10);
+		meleeDefenseMod.put(CreatureLocomotion::KNEELING, -10);
+		meleeDefenseMod.put(CreatureLocomotion::CROUCHSNEAKING, 0);
+		meleeDefenseMod.put(CreatureLocomotion::CROUCHWALKING, 0);
+		meleeDefenseMod.put(CreatureLocomotion::PRONE, -30);
+		meleeDefenseMod.put(CreatureLocomotion::CRAWLING, -45);
+		meleeDefenseMod.put(CreatureLocomotion::CLIMBINGSTATIONARY, -10);
+		meleeDefenseMod.put(CreatureLocomotion::CLIMBING, -10);
+		meleeDefenseMod.put(CreatureLocomotion::HOVERING, -5);
+		meleeDefenseMod.put(CreatureLocomotion::FLYING, -40);
+		meleeDefenseMod.put(CreatureLocomotion::LYINGDOWN, -30);
+		meleeDefenseMod.put(CreatureLocomotion::SITTING, -10);
+		meleeDefenseMod.put(CreatureLocomotion::SKILLANIMATING, 0);
+		meleeDefenseMod.put(CreatureLocomotion::DRIVINGVEHICLE, -10);
+		meleeDefenseMod.put(CreatureLocomotion::RIDINGCREATURE, 0);
+		meleeDefenseMod.put(CreatureLocomotion::KNOCKEDDOWN, 0);
+		meleeDefenseMod.put(CreatureLocomotion::INCAPACITATED, 0);
+		meleeDefenseMod.put(CreatureLocomotion::DEAD, 0);
+		meleeDefenseMod.put(CreatureLocomotion::BLOCKING, 0);
+		meleeDefenseMod.put(CreatureLocomotion::INVALID, 0);
+	}
 
 	~CreaturePosture() {}
 
@@ -249,6 +349,22 @@ public:
 
 			movementTable.put(entry.posture, entry);
 		}
+	}
+
+	int getRangedAttackMod(uint loc) {
+		return rangedAttackMod.get(loc);
+	}
+
+	int getRangedDefenseMod(uint loc) {
+		return rangedDefenseMod.get(loc);
+	}
+
+	int getMeleeAttackMod(uint loc) {
+		return meleeAttackMod.get(loc);
+	}
+
+	int getMeleeDefenseMod(uint loc) {
+		return meleeDefenseMod.get(loc);
 	}
 };
 
