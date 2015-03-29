@@ -148,7 +148,7 @@ public:
 			if(!CombatManager::instance()->startCombat(droid, target))
 				return GENERALERROR;
 
-			float hitChance = CombatManager::instance()->hitChanceEquation(trappingSkill, 0, targetDefense);
+			float hitChance = CombatManager::instance()->hitChanceEquation(trappingSkill, System::random(199) + 1, targetDefense, System::random(199) + 1);
 
 			if (hitChance > 100)
 				hitChance = 100.0;
