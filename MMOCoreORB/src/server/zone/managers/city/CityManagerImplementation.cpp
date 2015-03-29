@@ -1720,6 +1720,11 @@ void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* m
 		aa->getZone()->registerObjectWithPlanetaryMap(structure);
 	}
 
+	for (int i = 0; i < city->getSkillTrainerCount(); i++) {
+		ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
+		aa->getZone()->registerObjectWithPlanetaryMap(trainer);
+	}
+
 	mayor->sendSystemMessage("@city/city:registered"); //Your city is now registered on the planetary map. All civic and major commercial structures in the city are also registered and can be found with the /find command.
 }
 
@@ -1752,6 +1757,11 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 			for (int i = 0; i < city->getCommercialStructuresCount(); i++) {
 				ManagedReference<StructureObject*> structure = city->getCommercialStructure(i);
 				aaZone->unregisterObjectWithPlanetaryMap(structure);
+			}
+
+			for (int i = 0; i < city->getSkillTrainerCount(); i++) {
+				ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
+				aaZone->unregisterObjectWithPlanetaryMap(trainer);
 			}
 		}
 

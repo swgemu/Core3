@@ -32,7 +32,7 @@ public:
 		if (player->getParent() != NULL)
 			return;
 
-		ManagedReference<CityRegion*> city = player->getCityRegion();
+		ManagedReference<CityRegion*> city = player->getCityRegion().get();
 		CityManager* cityManager = player->getZoneServer()->getCityManager();
 		if (city == NULL || cityManager == NULL)
 			return;
@@ -183,6 +183,9 @@ public:
 			city->subtractFromCityTreasury(1000);
 			city->addSkillTrainer(trainer);
 
+			if (!city->isRegistered()) {
+				zone->unregisterObjectWithPlanetaryMap(trainer);
+			}
 		}
 	}
 };
