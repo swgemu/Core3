@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_2c11d2ac",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/static_spawns/naboo_static_spawns_north.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-03-29T09:18:46Z",
+      "side": 1,
+      "message": "respawn of 15 minutes? Looking at the evidence nee posted, I would think something more like hours (or more).",
+      "revId": "2764c1b2bdf3d95025e60cd26cdcefba11e7c33f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
