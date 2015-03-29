@@ -182,7 +182,7 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 	return false;
 }
 
-TangibleObject* FactoryCrateImplementation::extractObject(int count) {
+Reference<TangibleObject*> FactoryCrateImplementation::extractObject(int count) {
 
 	Locker locker(_this.get());
 
@@ -198,9 +198,11 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype));
+	Reference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype));
 
 	if(protoclone != NULL) {
+		Locker protoLocker(protoclone);
+
 		protoclone->setParent(NULL);
 		protoclone->setUseCount(count, false);
 

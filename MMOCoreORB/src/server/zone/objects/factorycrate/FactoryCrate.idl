@@ -139,6 +139,7 @@ class FactoryCrate extends TangibleObject {
 	
 	public native boolean extractObjectToParent();
 	
+	@reference
 	public native TangibleObject extractObject(int count = 1);
 	
 	public native void split(int newStackSize);
