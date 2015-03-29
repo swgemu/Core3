@@ -614,7 +614,7 @@ class WeaponObject extends TangibleObject {
 
 	public native string repairAttempt(int repairChance);
 	
-	public native void decay(CreatureObject user, float damage);
+	public native void decay(CreatureObject user);
 	
 	public void setDamageSlice(float value) {
 		if(value > 0.5f || value < 0)
