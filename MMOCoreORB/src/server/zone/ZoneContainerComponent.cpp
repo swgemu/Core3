@@ -307,8 +307,11 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 			if (outdoorChild == NULL)
 				continue;
 
-			if (outdoorChild->isInQuadTree())
+			if (outdoorChild->isInQuadTree()) {
+				Locker locker(outdoorChild);
+
 				outdoorChild->destroyObjectFromWorld(true);
+			}
 		}
 
 	} catch (Exception& e) {
