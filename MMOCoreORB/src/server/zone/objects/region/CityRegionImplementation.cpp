@@ -625,6 +625,8 @@ void CityRegionImplementation::applySpecializationModifiers(CreatureObject* crea
 	if (cityspec == NULL)
 		return;
 
+	Locker locker(creature); //dangerous.. but better detect deadlocks than data races
+
 	//Remove all current city skillmods
 	creature->removeAllSkillModsOfType(SkillModManager::CITY);
 
