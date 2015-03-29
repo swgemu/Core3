@@ -17,30 +17,33 @@ function heroOfTatooineRockCrevice:canAddObject(pCrevice, pIngredient, slot)
 		return TRANSFERCANTADD
 	end
 
-	return ObjectManager.withCreatureObject(pParent, function(player)
-		if player:hasScreenPlayState(1, "hero_of_tatooine_altruism") == 0 or player:hasScreenPlayState(2, "hero_of_tatooine_altruism") == 1 then
-			return TRANSFERCANTADD
-		elseif (SceneObject(pIngredient):getTemplateObjectPath() ~= "object/tangible/item/quest/hero_of_tatooine/explosives.iff") then
-			player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_no_reason")
-			return TRANSFERCANTADD
-		else
-			return TRANSFERCANADD
-		end
-	end)
+	if CreatureObject(pParent):hasScreenPlayState(1, "hero_of_tatooine_altruism") == 0 or CreatureObject(pParent):hasScreenPlayState(2, "hero_of_tatooine_altruism") == 1 then
+		return TRANSFERCANTADD
+	elseif (SceneObject(pIngredient):getTemplateObjectPath() ~= "object/tangible/item/quest/hero_of_tatooine/explosives.iff") then
+		CreatureObject(pParent):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_no_reason")
+		return TRANSFERCANTADD
+	else
+		printf("transfercanadd\n")
+		return TRANSFERCANADD
+	end
 end
 
 function heroOfTatooineRockCrevice:transferObject(pCrevice, pIngredient, slot)
+	printf("inside transferObject\n")
 	if (pIngredient == nil) then
+		printf("transferfail 1\n")
 		return TRANSFERFAIL
 	end
 
 	if slot ~= -1 then
+		printf("transferfail 2, slot: " .. slot .. "\n")
 		return TRANSFERFAIL
 	end
 
 	local pParent = DeathWatchBunkerScreenPlay:getObjOwner(pIngredient)
 
 	if (pParent == nil or not SceneObject(pParent):isPlayerCreature()) then
+		printf("transferfail 3\n")
 		return TRANSFERFAIL
 	end
 
@@ -49,9 +52,10 @@ function heroOfTatooineRockCrevice:transferObject(pCrevice, pIngredient, slot)
 		CreatureObject(pParent):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_explosive_set")
 		SceneObject(pIngredient):destroyObjectFromWorld()
 		createEvent(1000 * 10, "HeroOfTatooineScreenPlay", "destroyCaveWall", pCrevice)
+		printf("transfersuccess 4\n")
 		return TRANSFERSUCCESS
 	end
-
+	printf("transferfail 4\n")
 	return TRANSFERFAIL
 end
 

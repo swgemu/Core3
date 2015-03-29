@@ -17,8 +17,23 @@ HeroOfTatooineScreenPlay = ScreenPlay:new {
 		{ x1 = -2890.04, z1 = 5, y1 = 2198.77, x2 = -2893.69, z2 = 5, y2 = 2204.23, bhX = -2890.9, bhZ = 5, bhY = 2201.9, bhAngle = 57 },
 		{ x1 = 3793.97, z1 = 11.62, y1 = 2389.19, x2 = 3794.33, z2 = 11.66, y2 = 2396.27, bhX = 3795.4, bhZ = 11.9, bhY = 2392.4, bhAngle = 91 },
 		{ x1 = -5166.3, z1 = 75, y1 = -6620.24, x2 = -5171.38, z2 = 75, y2 = -6624.75, bhX = -5169.4, bhZ = 75, bhY = -6621.8, bhAngle = -42 }
-	}
+	},
 
+	honorSpawns = { { 4650, -3860 }, { 4091, -4310 }, { 4835, -4845 }, { 5946, -5233 }, { 6390, -5220 }, { 5966, -5224 }, { 5513, -5362 }, { 4467, -5192 }, { 5267, -4349 },
+		{ 6377, -4623 }, { 5912, -5135 }, { 4704, -4399 }, { 4612, -3969 }, { 4614, -4978 }, { 6337, -5325 }, { 4373, -3956 }, { 5930, -5933 }, { 6144, -4800 },
+	},
+
+	honorFailPoints = {
+		pirate1 = {{-6.53, 0.03, -3.21, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
+		pirate2 = {}
+	},
+	
+	honorSuccessPoints = {
+		pirate1 = {},
+		pirate2 = {},
+		stormtrooper1 = {},
+		stormtrooper2 = {}
+	}
 }
 
 registerScreenPlay("HeroOfTatooineScreenPlay", true)
@@ -27,6 +42,11 @@ function HeroOfTatooineScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then
 		self:spawnMobiles()
 		self:initEvents()
+		self:initRanchHouse()
+
+		local pRanchHouse = getSceneObject(5995564)
+		createObserver(ENTEREDBUILDING, "HeroOfTatooineScreenPlay", "onEnteredRanchHouse", pRanchHouse)
+		createObserver(EXITEDBUILDING, "HeroOfTatooineScreenPlay", "onExitedRanchHouse", pRanchHouse)
 
 		local pAltCave = getSceneObject(5995564)
 		createObserver(ENTEREDBUILDING, "HeroOfTatooineScreenPlay", "onEnteredAltruismCave", pAltCave)
@@ -40,7 +60,8 @@ function HeroOfTatooineScreenPlay:spawnMobiles()
 end
 
 function HeroOfTatooineScreenPlay:getEventChangeTime()
-	return getRandomNumber(20, 30) * 60 * 1000 -- 20-30 minutes
+	--return getRandomNumber(20, 30) * 60 * 1000 -- 20-30 minutes
+	return 3 * 60 * 1000
 end
 
 function HeroOfTatooineScreenPlay:spawnAltruismObjects()
@@ -61,7 +82,6 @@ function HeroOfTatooineScreenPlay:spawnAltruismObjects()
 
 	if (pCrevice ~= nil) then
 		writeData("hero_of_tat:altruismCrevice", SceneObject(pCrevice):getObjectID())
-		SceneObject(pCrevice):setContainerComponent("heroOfTatooineRockCrevice")
 		SceneObject(pCrevice):setContainerInheritPermissionsFromParent(false)
 		SceneObject(pCrevice):setContainerDefaultAllowPermission(MOVEIN)
 		SceneObject(pCrevice):setContainerDefaultAllowPermission(OPEN)
@@ -85,6 +105,9 @@ function HeroOfTatooineScreenPlay:initEvents()
 	if (not hasServerEvent("HeroOfTatIntellect")) then
 		self:createIntellectEvent()
 	end
+	if (not hasServerEvent("HeroOfTatHonor")) then
+		self:createHonorEvent()
+	end
 end
 
 function HeroOfTatooineScreenPlay:createCourageEvent()
@@ -97,6 +120,10 @@ end
 
 function HeroOfTatooineScreenPlay:createIntellectEvent()
 	createServerEvent(self:getEventChangeTime(), "HeroOfTatooineScreenPlay", "doIntellectSpawn", "HeroOfTatIntellect")
+end
+
+function HeroOfTatooineScreenPlay:createHonorEvent()
+	createServerEvent(self:getEventChangeTime(), "HeroOfTatooineScreenPlay", "doHonorChange", "HeroOfTatHonor")
 end
 
 function HeroOfTatooineScreenPlay:doCourageChange()
@@ -251,14 +278,10 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 	local z = getTerrainHeight(pHermit, self.altruismSpawns[newLoc][1], self.altruismSpawns[newLoc][2])
 	local pFarmer = spawnMobile("tatooine", "hero_of_tat_farmer", 0, self.altruismSpawns[newLoc][1], z, self.altruismSpawns[newLoc][2], getRandomNumber(360) - 180, 0)
 
+	printf("Farmer spawned at " .. self.altruismSpawns[newLoc][1] .. " " .. self.altruismSpawns[newLoc][2] .. "\n")
 	if (pFarmer ~= nil) then
 		writeData("hero_of_tat:altruism_mob_id", SceneObject(pFarmer):getObjectID())
 		CreatureObject(pFarmer):setPvpStatusBitmask(0)
-
-		if (CreatureObject(pFarmer):isAiAgent()) then
-			AiAgent(pFarmer):setAiTemplate("idlewait")
-			AiAgent(pFarmer):setFollowState(4)
-		end
 	else
 		printf("Error in HeroOfTatooineScreenPlay:doAltruismChange, unable to spawn farmer.\n")
 	end
@@ -553,7 +576,7 @@ function HeroOfTatooineScreenPlay:giveAltruismWaypoint(pPlayer)
 			playerObject:removeWaypoint(oldWaypointID, true)
 			removeQuestStatus(player:getObjectID() .. ":altruismWaypointID")
 		end
-		local waypointID = playerObject:addWaypoint("tatooine", "Kidnapped Family", "", 6555, -1311, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
+		local waypointID = playerObject:addWaypoint("tatooine", "Kidnapped Family", "", 6555, -1311, WAYPOINT_COLOR_PURPLE, true, true, 0, 1)
 		setQuestStatus(player:getObjectID() .. ":altruismWaypointID", waypointID)
 	end)
 end
@@ -579,8 +602,9 @@ function HeroOfTatooineScreenPlay:destroyCaveWall(pCrevice)
 	local planterId = readData("hero_of_tat:explosivePlanterID")
 
 	if (planterId ~= 0 and getSceneObject(planterId) ~= nil) then
-		playClientEffectLoc(planterId, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 162.5, -66.8, -97.7, 5995573)
-		playClientEffectLoc(planterId, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 150.96, -65.83, -97.66, 5995573)
+		local pPlanter = getSceneObject(planterId)
+		playClientEffectLoc(pPlanter, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 162.5, -66.8, -97.7, 5995573)
+		playClientEffectLoc(pPlanter, "clienteffect/lair_damage_heavy_shake.cef", "tatooine", 150.96, -65.83, -97.66, 5995573)
 		writeData("hero_of_tat:explosivePlanterID", 0)
 	end
 
@@ -588,28 +612,30 @@ function HeroOfTatooineScreenPlay:destroyCaveWall(pCrevice)
 	SceneObject(pWall):destroyObjectFromWorld()
 end
 
-function HeroOfTatooineScreenPlay:doFarmerDespawn(pFarmer)
-	if (pFarmer == nil) then
+function HeroOfTatooineScreenPlay:doGiverDespawn(pGiver)
+	if (pGiver == nil) then
 		return
 	end
 
-	if (CreatureObject(pFarmer):isAiAgent()) then
-		AiAgent(pFarmer):generatePatrol(1, 30)
-		createObserver(DESTINATIONREACHED, "HeroOfTatooineScreenPlay", "farmerDespawnDestinationReached", pFarmer)
+	if (CreatureObject(pGiver):isAiAgent()) then
+		AiAgent(pGiver):setAiTemplate("idlewait")
+		AiAgent(pGiver):setFollowState(4)
+		AiAgent(pGiver):generatePatrol(1, 30)
+		createObserver(DESTINATIONREACHED, "HeroOfTatooineScreenPlay", "giverDespawnDestinationReached", pGiver)
 	else
-		SceneObject(pFarmer):destroyObjectFromWorld()
+		SceneObject(pGiver):destroyObjectFromWorld()
 	end
 end
 
-function HeroOfTatooineScreenPlay:farmerDespawnDestinationReached(pFarmer)
-	createEvent(2000, "HeroOfTatooineScreenPlay", "destroyFarmer", pFarmer)
+function HeroOfTatooineScreenPlay:giverDespawnDestinationReached(pGiver)
+	createEvent(2000, "HeroOfTatooineScreenPlay", "destroyGiver", pGiver)
 	return 1
 end
 
-function HeroOfTatooineScreenPlay:destroyFarmer(pFarmer)
-	if (pFarmer ~= nil) then
-		deleteData(CreatureObject(pFarmer):getObjectID() .. ":gaveQuest")
-		SceneObject(pFarmer):destroyObjectFromWorld()
+function HeroOfTatooineScreenPlay:destroyGiver(pGiver)
+	if (pGiver ~= nil) then
+		deleteData(CreatureObject(pGiver):getObjectID() .. ":gaveQuest")
+		SceneObject(pGiver):destroyObjectFromWorld()
 	end
 end
 
@@ -690,3 +716,304 @@ function HeroOfTatooineScreenPlay:completeEscort(pPlayer)
 		createEvent(3000, "HeroOfTatooineScreenPlay", "despawnAltruismObjects", pPlayer)
 	end)
 end
+
+function HeroOfTatooineScreenPlay:getObjOwner(pObj)
+	local pPlayerInv = SceneObject(pObj):getParent()
+
+	if (pPlayerInv == nil) then
+		return nil
+	end
+
+	local parent = SceneObject(pPlayerInv):getParent()
+
+	if (parent == nil) then
+		return nil
+	end
+
+	if (SceneObject(parent):isCreatureObject()) then
+		return parent
+	end
+
+	return nil
+end
+
+function HeroOfTatooineScreenPlay:doHonorChange()
+	if (not isZoneEnabled("tatooine")) then
+		return 0
+	end
+
+	local hermitId = readData("hero_of_tat:hermit_id")
+	local pHermit = getSceneObject(hermitId)
+
+	if (pHermit == nil) then
+		printf("Error in HeroOfTatooineScreenPlay, unable to find hermit object.\n")
+		return 0
+	end
+
+	local leaderId = readData("hero_of_tat:honor_leader_id")
+	local pirate1Id = readData("hero_of_tat:honor_pirate_1_id")
+	local pirate2Id = readData("hero_of_tat:honor_pirate_2_id")
+	local mobLoc = readData("hero_of_tat:honor_leader_loc")
+	local pLeader, pPirate1, pPirate2
+
+	if (leaderId ~= 0) then
+		pLeader = getSceneObject(leaderId)
+	end
+
+	if (pirate1Id ~= 0) then
+		pPirate1 = getSceneObject(pirate1Id)
+	end
+
+	if (pirate2Id ~= 0) then
+		pPirate2 = getSceneObject(pirate2Id)
+	end
+
+	-- Reschedule respawn if leader or pirates are in combat
+	if ((pLeader ~= nil and AiAgent(pLeader):isInCombat()) or (pPirate1 ~= nil and AiAgent(pPirate1):isInCombat()) or (pPirate2 ~= nil and AiAgent(pPirate2):isInCombat())) then
+		self:createHonorEvent()
+		return 0
+	end
+
+	if (pLeader ~= nil) then
+		SceneObject(pLeader):destroyObjectFromWorld()
+	end
+
+	if (pPirate1 ~= nil) then
+		SceneObject(pPirate1):destroyObjectFromWorld()
+	end
+
+	if (pPirate2 ~= nil) then
+		SceneObject(pPirate2):destroyObjectFromWorld()
+	end
+
+	local newLoc = getRandomNumber(1, table.getn(self.honorSpawns))
+
+	if (newLoc == mobLoc) then
+		if (newLoc == table.getn(self.honorSpawns)) then
+			newLoc = newLoc - 1
+		else
+			newLoc = newLoc + 1
+		end
+	end
+
+	writeData("hero_of_tat:honor_leader_loc", newLoc)
+
+	local x, y
+	local z = getTerrainHeight(pHermit, self.honorSpawns[newLoc][1], self.honorSpawns[newLoc][2])
+
+	pLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader", 0, self.honorSpawns[newLoc][1], z, self.honorSpawns[newLoc][2], getRandomNumber(360) - 180, 0)
+	if (pLeader == nil) then
+		printf("Failed to create leader in HeroOfTatooineScreenPlay:doHonorChange()\n")
+		return
+	end
+
+	printf("Pirate leader spawned at " .. self.honorSpawns[newLoc][1] .. " " .. self.honorSpawns[newLoc][2] .. "\n")
+	writeData("hero_of_tat:honor_leader_id", SceneObject(pLeader):getObjectID())
+
+	x = self.honorSpawns[newLoc][1] - 10 + getRandomNumber(20)
+	y = self.honorSpawns[newLoc][2] - 10 + getRandomNumber(20)
+	z = getTerrainHeight(pHermit, x, y)
+	pPirate1 = spawnMobile("tatooine", "pirate", 0, x, z, y, getRandomNumber(360) - 180, 0)
+	if (pPirate1 ~= nil) then
+		writeData("hero_of_tat:honor_pirate_1_id", SceneObject(pPirate1):getObjectID())
+	end
+
+	x = self.honorSpawns[newLoc][1] - 10 + getRandomNumber(20)
+	y = self.honorSpawns[newLoc][2] - 10 + getRandomNumber(20)
+	z = getTerrainHeight(pHermit, x, y)
+	pPirate2 = spawnMobile("tatooine", "pirate", 0, x, z, y, getRandomNumber(360) - 180, 0)
+	if (pPirate2 ~= nil) then
+		writeData("hero_of_tat:honor_pirate_2_id", SceneObject(pPirate2):getObjectID())
+	end
+
+
+	createObserver(DAMAGERECEIVED, "HeroOfTatooineScreenPlay", "pirateLeaderDamage", pLeader)
+
+	self:createHonorEvent()
+end
+
+
+function HeroOfTatooineScreenPlay:pirateLeaderDamage(pLeader, pPlayer, damage)
+	if pLeader == nil or pPlayer == nil then
+		return 1
+	end
+
+	if (CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine") == 0 or CreatureObject(pPlayer):hasScreenPlayState(32, "hero_of_tatooine") == 1
+		or CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine_honor") == 1 or CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_honor") == 1) then
+		return 0
+	end
+
+	return ObjectManager.withCreatureObject(pLeader, function(leader)
+		if ((leader:getHAM(0) <= (leader:getMaxHAM(0) * 0.8)) or (leader:getHAM(3) <= (leader:getMaxHAM(3) * 0.8)) or (leader:getHAM(6) <= (leader:getMaxHAM(6) * 0.8))) then
+			local spawnLoc = { x = leader:getPositionX(), z = leader:getPositionZ(), y = leader:getPositionY(), cell = leader:getParentID(), angle = leader:getDirectionAngle() }
+			local spawnHam = { h = leader:getHAM(0), a = leader:getHAM(3), m = leader:getHAM(6) }
+			local leaderName = SceneObject(pLeader):getCustomObjectName()
+			SceneObject(pLeader):destroyObjectFromWorld()
+
+			local pNewLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader_converse", 0, spawnLoc.x, spawnLoc.z, spawnLoc.y, spawnLoc.angle, spawnLoc.cell)
+
+			if (pNewLeader == nil) then
+				return 1
+			end
+
+			SceneObject(pNewLeader):setCustomObjectName(leaderName)
+			CreatureObject(pNewLeader):setPvpStatusBitmask(0)
+			CreatureObject(pNewLeader):setHAM(0, spawnHam.h)
+			CreatureObject(pNewLeader):setHAM(3, spawnHam.a)
+			CreatureObject(pNewLeader):setHAM(6, spawnHam.m)
+
+			spatialChat(pNewLeader, "@quest/pirates:dont_hurt_us")
+			return 1
+		else
+			return 0
+		end
+	end)
+end
+
+function HeroOfTatooineScreenPlay:spawnAggroLeader(pOldLeader, pPlayer, screenID)
+	if (pOldLeader == nil or pPlayer == nil) then
+		return
+	end
+
+	ObjectManager.withCreatureObject(pOldLeader, function(leader)
+		local spawnLoc = { x = leader:getPositionX(), z = leader:getPositionZ(), y = leader:getPositionY(), cell = leader:getParentID(), angle = leader:getDirectionAngle() }
+		local spawnHam = { h = leader:getHAM(0), a = leader:getHAM(3), m = leader:getHAM(6) }
+		local leaderName = SceneObject(pOldLeader):getCustomObjectName()
+		SceneObject(pOldLeader):destroyObjectFromWorld()
+
+		local pNewLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader", 0, spawnLoc.x, spawnLoc.z, spawnLoc.y, spawnLoc.angle, spawnLoc.cell)
+
+		if (pNewLeader == nil) then
+			return
+		end
+
+		SceneObject(pNewLeader):setCustomObjectName(leaderName)
+		CreatureObject(pNewLeader):setHAM(0, spawnHam.h)
+		CreatureObject(pNewLeader):setHAM(3, spawnHam.a)
+		CreatureObject(pNewLeader):setHAM(6, spawnHam.m)
+
+		if (screenID == "lets_get_em") then
+			spatialChat(pNewLeader, "@conversation/quest_hero_of_tatooine_pirate_leader:s_cacfa6a2")
+		elseif (screenID == "is_that_so") then
+			spatialChat(pNewLeader, "@conversation/quest_hero_of_tatooine_pirate_leader:s_5a3d905f")
+		elseif (screenID == "teach_a_lesson") then
+			spatialChat(pNewLeader, "@conversation/quest_hero_of_tatooine_pirate_leader:s_d9706ae2")
+		end
+
+		CreatureObject(pNewLeader):engageCombat(pPlayer)
+	end)
+end
+
+function HeroOfTatooineScreenPlay:giveHonorWaypoint(pPlayer)
+	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
+		local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":honorWaypointID"))
+		if (oldWaypointID ~= 0) then
+			playerObject:removeWaypoint(oldWaypointID, true)
+			removeQuestStatus(player:getObjectID() .. ":honorWaypointID")
+		end
+		local waypointID = playerObject:addWaypoint("tatooine", "Ranch House", "", 4993, -4682, WAYPOINT_COLOR_PURPLE, true, true, 0, 1)
+		setQuestStatus(player:getObjectID() .. ":honorWaypointID", waypointID)
+	end)
+end
+
+function HeroOfTatooineScreenPlay:initRanchHouse()
+	local pBedroom = getSceneObject(4005944) -- Ranch House bedroom
+
+	if (pBedroom == nil) then
+		return
+	end
+
+	ObjectManager.withSceneObject(pBedroom, function(bedroom)
+		bedroom:setContainerInheritPermissionsFromParent(false)
+		bedroom:clearContainerDefaultDenyPermission(WALKIN)
+		bedroom:clearContainerDefaultAllowPermission(WALKIN)
+		bedroom:setContainerAllowPermission("heroOfTatRanchBedroom", WALKIN)
+		bedroom:setContainerDenyPermission("heroOfTatRanchBedroom", MOVEIN)
+	end)
+
+	--TODO: Droid temporary until we can come up with a way to make TANO's conversible
+	--local pObject = spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_up.iff", -6.33, -3.57, -7.27, 4005942, 0.0436, 0, -0.999, 0)
+	local pObject = spawnMobile("tatooine", "hero_of_tat_intercom_droid", 0, -6.33, -4.0, -7.9, 180, 4005942)
+
+	if (pObject ~= nil) then
+		TangibleObject(pObject):setPvpStatusBitmask(0)
+		writeData("hero_of_tat:ranch_house_speaker_box", SceneObject(pObject):getObjectID())
+	end
+
+	local pObject = spawnMobile("tatooine", "hero_of_tat_ranchers_wife", 0, -6.53, 0.03, -3.21, 0, 4005941)
+
+	if (pObject ~= nil) then
+		writeData("hero_of_tat:ranch_house_wife", SceneObject(pObject):getObjectID())
+		CreatureObject(pObject):setPvpStatusBitmask(0)
+	end
+end
+
+function HeroOfTatooineScreenPlay:clearRanchHouse()
+end
+
+function HeroOfTatooineScreenPlay:doHonorFail(pPlayer)
+	local pPirate1 = spawnMobile("tatooine", "fugitive", 0, -9.0, -4.0, -8.6, 0, 4005942)
+	local pPirate2 = spawnMobile("tatooine", "fugitive", 0, -7.3, -4.0, -9.4, 0, 4005942)
+	
+	if (pPirate1 == nil or pPirate2 == nil) then
+		printf("one of pirates is nil, returning \n")
+		return
+	end
+	
+	CreatureObject(pPirate1):setPvpStatusBitmask(0)
+	CreatureObject(pPirate2):setPvpStatusBitmask(0)
+	
+	writeData("hero_of_tat:honor_pirate1", SceneObject(pPirate1):getObjectID())
+	writeData("hero_of_tat:honor_pirate1_step", 1) -- First step, spawn mobile
+	writeData("hero_of_tat:honor_pirate2", SceneObject(pPirate2):getObjectID())
+	writeData("hero_of_tat:honor_pirate2_step", 1) -- First step, spawn mobile
+	
+	createObserver(DESTINATIONREACHED, "HeroOfTatooineScreenPlay", "honorFailDestReached", pPirate1)
+	createObserver(DESTINATIONREACHED, "HeroOfTatooineScreenPlay", "honorFailDestReached", pPirate2)
+	
+	--Explosion effect
+	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/combat_grenade_thermal_detonator.cef", "tatooine", -4.8, 0.3, -2.3, 4005941)
+	--House shake effect
+	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/cr_bodyfall_huge.cef", "tatooine", -4.8, 0.3, -2.3, 4005941)
+	
+	AiAgent(pPirate1):setAiTemplate("manualescortwalk") -- Don't move unless patrol point is added to list, walking speed
+	AiAgent(pPirate1):setFollowState(4) -- Patrolling
+	HeroOfTatooineScreenPlay:doHonorFailStep(pPirate1)
+end
+
+function HeroOfTatooineScreenPlay:honorFailDestReached(pPirate)
+	createEvent(1500, "HeroOfTatooineScreenPlay", "doHonorFailStep", pPirate)
+	return 0
+end
+
+function HeroOfTatooineScreenPlay:doHonorFailStep(pPirate)
+	if (pPirate == nil) then
+		return
+	end
+	
+	local activePirateID = SceneObject(pPirate):getObjectID()
+	
+	local pirate1ID = readData("hero_of_tat:honor_pirate1")
+	local pirate2ID = readData("hero_of_tat:honor_pirate2")
+	local curStep
+	local piratePoints
+	
+	if (activePirateID == pirate1ID) then
+		curStep = readData("hero_of_tat:honor_pirate1_step")
+		writeData("hero_of_tat:honor_pirate1_step", curStep + 1)
+		piratePoints = self.honorFailPoints.pirate1
+	elseif (activePirateID == pirate2ID) then
+		curStep = readData("hero_of_tat:honor_pirate2_step")
+		writeData("hero_of_tat:honor_pirate2_step", curStep + 1)
+		piratePoints = self.honorFailPoints.pirate2
+	else
+		return
+	end
+	
+	local nextPoint = piratePoints[curStep]
+	
+	AiAgent(pPirate):stopWaiting()
+	AiAgent(pPirate):setWait(0)
+	AiAgent(pPirate):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
+	AiAgent(pPirate):executeBehavior()
+end	

@@ -1,7 +1,8 @@
-ranchers_wife = Creature:new {
-	objectName = "@mob/creature_names:quest_hero_of_tatooine_wife",
-	socialGroup = "townsperson",
-	faction = "townsperson",
+hero_of_tat_intercom_droid = Creature:new {
+	objectName = "",
+	customName = "Intercom Droid",
+	socialGroup = "",
+	faction = "",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -20,17 +21,17 @@ ranchers_wife = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_farmer_wife_of_tatooine.iff"},
+	templates = {"object/mobile/3po_protocol_droid.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "heroOfTatIntercomConvoTemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(ranchers_wife, "ranchers_wife")
+CreatureTemplates:addCreatureTemplate(hero_of_tat_intercom_droid, "hero_of_tat_intercom_droid")
