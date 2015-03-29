@@ -67,6 +67,8 @@ void DestroyMissionObjectiveImplementation::activate() {
 			return;
 		}
 
+		Locker alocker(spawnActiveArea);
+
 		spawnActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 		spawnActiveArea->setRadius(128.f);
 		zone->transferObject(spawnActiveArea, -1, false);
