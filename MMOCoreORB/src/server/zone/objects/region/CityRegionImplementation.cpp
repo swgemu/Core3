@@ -432,9 +432,13 @@ void CityRegionImplementation::setRadius(float rad) {
 
 	ManagedReference<Region*> newRegion = addRegion(oldRegion->getPositionX(), oldRegion->getPositionY(), rad, true);
 
+	Locker locker(oldRegion, _this.get());
+
 	zone->removeObject(oldRegion, NULL, false);
 	regions.drop(oldRegion);
 	oldRegion->destroyObjectFromDatabase(true);
+
+	locker.release();
 
 	if (registered) {
 		Reference<PlanetMapCategory*> cityCat = TemplateManager::instance()->getPlanetMapCategoryByName("city");
