@@ -98,7 +98,6 @@ public:
 		if (leader == NULL || group == NULL)
 			return false;
 
-		int amount = 25;
 		int duration = 30;
 
 		leader->sendSystemMessage("@cbt_spam:rally_success_single"); //"You rally the group!"
@@ -129,12 +128,12 @@ public:
 				if (!weapon->getCreatureAccuracyModifiers()->isEmpty()) {
 					String skillCRC = weapon->getCreatureAccuracyModifiers()->get(0);
 
-					buff->setSkillModifier(skillCRC, amount);
+					buff->setSkillModifier(skillCRC, 50);
 				}
 			}
 
-			buff->setSkillModifier("ranged_defense", amount);
-			buff->setSkillModifier("melee_defense", amount);
+			buff->setSkillModifier("private_group_ranged_defense", 30);
+			buff->setSkillModifier("private_group_melee_defense", 30);
 
 			memberPlayer->addBuff(buff);
 
