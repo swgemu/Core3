@@ -40,5 +40,5 @@ end
 
 function NabooStaticSpawnsNorthScreenPlay:spawnMobiles()
 		--Ruins (-3739, 252)
-	spawnMobile("naboo", "dark_jedi_master", 900, -3726.1, 77.1, 264.4, 97, 0)
+	spawnMobile("naboo", "dark_jedi_master", 43200, -3726.1, 77.1, 264.4, 97, 0)
 end
