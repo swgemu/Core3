@@ -172,7 +172,7 @@ public:
 
 	void broadcastCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, WeaponObject* weapon, const CreatureAttackData& data, uint8 hit);
 
-	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
+	float hitChanceEquation(float attackerAccuracy, float attackerRoll, float targetDefense, float defenderRoll);
 	float doDroidDetonation(CreatureObject* droid, CreatureObject* defender, float damage);
 	//all the combat math will go here
 protected:
@@ -200,7 +200,7 @@ protected:
 	int calculatePostureModifier(CreatureObject* creature, WeaponObject* weapon);
 	int calculateTargetPostureModifier(WeaponObject* weapon, CreatureObject* targetCreature);
 
-	int getAttackerAccuracyModifier(TangibleObject* attacker, WeaponObject* weapon);
+	int getAttackerAccuracyModifier(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 	int getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObject* weapon);
 	int getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon, TangibleObject* attacker);
 	int getDefenderSecondaryDefenseModifier(CreatureObject* defender);

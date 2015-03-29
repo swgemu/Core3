@@ -713,33 +713,31 @@ String WeaponObjectImplementation::repairAttempt(int repairChance) {
 	return message;
 }
 
-void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
+void WeaponObjectImplementation::decay(CreatureObject* user) {
 	if (_this.get() == user->getSlottedObject("default_weapon") || user->isAiAgent() || hasAntiDecayKit()) {
 		return;
 	}
 
-	damage = damage / 10000.f;
-	if (isSliced()) damage *= 1.1;
-	if (hasPowerup()) damage *= 1.1;
+	if (System::random(100) < 5 || ((isSliced() || hasPowerup()) && System::random(100) < 15)) {
+		if (isJediWeapon()) {
+			ManagedReference<SceneObject*> saberInv = getSlottedObject("saber_inv");
 
-	if (isJediWeapon()) {
-		ManagedReference<SceneObject*> saberInv = getSlottedObject("saber_inv");
-		damage = damage / saberInv->getContainerObjectsSize();
+			// TODO: is this supposed to be every crystal, or random crystal(s)?
+			for (int i = 0; i < saberInv->getContainerObjectsSize(); i++) {
+				ManagedReference<LightsaberCrystalComponent*> crystal = saberInv->getContainerObject(i).castTo<LightsaberCrystalComponent*>();
 
-		for (int i = 0; i < saberInv->getContainerObjectsSize(); i++) {
-			ManagedReference<LightsaberCrystalComponent*> crystal = saberInv->getContainerObject(i).castTo<LightsaberCrystalComponent*>();
-
-			if (crystal != NULL) {
-				crystal->inflictDamage(crystal, 0, damage, true, true);
+				if (crystal != NULL) {
+					crystal->inflictDamage(crystal, 0, 1, true, true);
+				}
 			}
-		}
-	} else {
-		inflictDamage(_this.get(), 0, damage, true, true);
+		} else {
+			inflictDamage(_this.get(), 0, 1, true, true);
 
-		if ((conditionDamage - damage / maxCondition < 0.75) && (conditionDamage / maxCondition > 0.75))
-			user->sendSystemMessage("@combat_effects:weapon_quarter");
-		if ((conditionDamage - damage / maxCondition < 0.50) && (conditionDamage / maxCondition > 0.50))
-			user->sendSystemMessage("@combat_effects:weapon_half");
+			if ((conditionDamage - 1 / maxCondition < 0.75) && (conditionDamage / maxCondition > 0.75))
+				user->sendSystemMessage("@combat_effects:weapon_quarter");
+			if ((conditionDamage - 1 / maxCondition < 0.50) && (conditionDamage / maxCondition > 0.50))
+				user->sendSystemMessage("@combat_effects:weapon_half");
+		}
 	}
 }
 
