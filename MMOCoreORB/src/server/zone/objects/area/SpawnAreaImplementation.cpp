@@ -72,6 +72,8 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 		if (sceno->isLairObject()) {
 			ManagedReference<ActiveArea*> area = (ServerCore::getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0)).castTo<ActiveArea*>();
 
+			Locker locker(area);
+
 			area->setRadius(64);
 			area->setNoSpawnArea(true);
 			area->initializePosition(sceno->getPositionX(), sceno->getPositionZ(), sceno->getPositionY());
