@@ -1056,6 +1056,9 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		// inflict condition damage
 		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
 		// it can be fixed by doing condition damage after all damage reductions
+
+		Locker plocker(psg);
+
 		psg->inflictDamage(psg, 0, damage * 0.1, true, true);
 
 	}
@@ -1128,6 +1131,8 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		}
 
 		// inflict condition damage
+		Locker alocker(armor);
+
 		armor->inflictDamage(armor, 0, damage * 0.1, true, true);
 	}
 
@@ -1245,7 +1250,10 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 			if (psgArmor != NULL && !psgArmor->isVulnerable(WeaponObject::BLAST)) {
 				float armorReduction =  psgArmor->getBlast();
 				if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
-					psgArmor->inflictDamage(psgArmor, 0, damage * 0.1, true, true);
+
+				Locker plocker(psgArmor);
+
+				psgArmor->inflictDamage(psgArmor, 0, damage * 0.1, true, true);
 			}
 			// reduced by psg not check each spot for damage
 			healthDamage = damage;
@@ -1255,6 +1263,9 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 				float armorReduction = healthArmor->getBlast();
 				if (armorReduction > 0)
 					healthDamage *= (1.f - (armorReduction / 100.f));
+
+				Locker hlocker(healthArmor);
+
 				healthArmor->inflictDamage(healthArmor, 0, healthDamage * 0.1, true, true);
 				return (int)healthDamage * 0.1;
 			}
@@ -1262,6 +1273,9 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 				float armorReduction = mindArmor->getBlast();
 				if (armorReduction > 0)
 					mindDamage *= (1.f - (armorReduction / 100.f));
+
+				Locker mlocker(mindArmor);
+
 				mindArmor->inflictDamage(mindArmor, 0, mindDamage * 0.1, true, true);
 				return (int)mindDamage * 0.1;
 			}
@@ -1269,6 +1283,9 @@ float CombatManager::doDroidDetonation(CreatureObject* droid, CreatureObject* de
 				float armorReduction = actionArmor->getBlast();
 				if (armorReduction > 0)
 					actionDamage *= (1.f - (armorReduction / 100.f));
+
+				Locker alocker(actionArmor);
+
 				actionArmor->inflictDamage(actionArmor, 0, actionDamage * 0.1, true, true);
 				return (int)actionDamage * 0.1;
 			}
