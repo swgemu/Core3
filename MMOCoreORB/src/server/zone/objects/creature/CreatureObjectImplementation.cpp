@@ -2191,10 +2191,10 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 
 		int mod = getSkillMod("berserk");
 
-		state->setSkillModifier("private_damage_susceptibility", 50 - mod);
-		state->setSkillModifier("private_melee_accuracy_bonus", 10 + mod);
-		state->setSkillModifier("private_melee_damage_bonus", 10 + mod);
-		state->setSkillModifier("private_melee_speed_bonus", 10 + mod);
+		state->setSkillModifier("private_melee_accuracy_bonus", 20 + mod);
+		state->setSkillModifier("private_melee_damage_bonus", 75 + mod);
+		state->setSkillModifier("private_melee_defense", -60);
+		state->setSkillModifier("private_ranged_defense", -60);
 
 		addBuff(state);
 	}
@@ -2207,8 +2207,8 @@ void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 		state->setStartFlyText("combat_effects", "go_stunned", 0, 0xFF, 0);
 		state->setEndFlyText("combat_effects", "no_stunned", 0xFF, 0, 0);
 
-		multBuff->setSkillModifier("private_damage_divisor", 10);
-		multBuff->setSkillModifier("private_damage_multiplier", 9);
+		multBuff->setSkillModifier("private_damage_divisor", 5);
+		multBuff->setSkillModifier("private_damage_multiplier", 4);
 		state->setSkillModifier("private_melee_defense", -50);
 		state->setSkillModifier("private_ranged_defense", -50);
 
@@ -2224,7 +2224,8 @@ void CreatureObjectImplementation::setBlindedState(int durationSeconds) {
 		state->setStartFlyText("combat_effects", "go_blind", 0, 0xFF, 0);
 		state->setEndFlyText("combat_effects", "no_blind", 0xFF, 0, 0);
 
-		state->setSkillModifier("private_attack_accuracy", -50);
+		state->setSkillModifier("private_attack_accuracy", -60);
+		state->setSkillModifier("private_dodge_attack", -60);
 
 		addBuff(state);
 	}
@@ -2235,7 +2236,7 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 	if (!hasBuff(crc)) {
 		Reference<PrivateSkillMultiplierBuff*> buff = new PrivateSkillMultiplierBuff(_this.get(), crc, durationSeconds, BuffType::STATE);
 
-		buff->setSkillModifier("private_damage_divisor", 2 + (int)(mod/10));
+		buff->setSkillModifier("private_damage_divisor", 2);
 
 		addBuff(buff);
 
@@ -2257,6 +2258,9 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 
 		state->setStartFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 		state->setEndFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
+
+		state->setSkillModifier("private_melee_defense", -50);
+		state->setSkillModifier("private_ranged_defense", -50);
 
 		addBuff(state);
 	} else { // already have the intimidated state, so extend it. This is the buff that gets sent to the client
