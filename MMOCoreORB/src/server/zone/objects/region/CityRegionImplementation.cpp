@@ -261,6 +261,10 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	if (registered && cityMissionTerminals.contains(object)) {
 		zone->registerObjectWithPlanetaryMap(object);
 	}
+
+	if (!registered && citySkillTrainers.contains(object)) {
+		zone->unregisterObjectWithPlanetaryMap(object);
+	}
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
