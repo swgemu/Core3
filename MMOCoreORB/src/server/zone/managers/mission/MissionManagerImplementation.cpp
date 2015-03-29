@@ -383,6 +383,8 @@ void MissionManagerImplementation::removeMission(MissionObject* mission, Creatur
 	if (missionParent != datapad)
 		return;
 
+	Locker mlocker(mission);
+
 	mission->destroyObjectFromWorld(true);
 	mission->sendDestroyTo(player);
 
