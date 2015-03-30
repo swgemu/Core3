@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class UpdateTransformWithParentMessage : public BaseMessage {
 public:
@@ -64,8 +65,11 @@ public:
 
 		// add movement counter
 		insertInt(object->getMovementCounter());
-		
-		insertByte(0); // unknown
+
+		if (object->isCreatureObject())
+			insertByte((int8)cast<CreatureObject*>(object)->getCurrentSpeed());
+		else
+			insertByte(0);
 		
 		// add direction
 		insertByte((byte) object->getSpecialDirectionAngle());
@@ -91,7 +95,10 @@ public:
 		// add movement counter
 		insertInt(object->getMovementCounter());
 
-		insertByte(0); // unknown
+		if (object->isCreatureObject())
+			insertByte((int8)cast<CreatureObject*>(object)->getCurrentSpeed());
+		else
+			insertByte(0);
 
 		// add direction
 		insertByte((byte) object->getSpecialDirectionAngle());
