@@ -991,12 +991,12 @@ void SceneObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	Vector3 position = getPosition();
 
 	parent->setPosition(getPositionX(), getPositionZ(), getPositionY());
-
-	EXECUTE_TASK_4(parent, position, direction, sendPackets, {
+	Quaternion dir = direction;
+	EXECUTE_TASK_4(parent, position, dir, sendPackets, {
 			Locker locker(parent_p);
 
-			parent_p->setDirection(direction_p.getW(),
-					direction_p.getX(), direction_p.getY(), direction_p.getZ());
+			parent_p->setDirection(dir_p.getW(),
+					dir_p.getX(), dir_p.getY(), dir_p.getZ());
 			parent_p->setPosition(position_p.getX(), position_p.getZ(), position_p.getY());
 
 			parent_p->incrementMovementCounter();
