@@ -161,6 +161,9 @@ public:
 			incomingTano->setUseCount(newCount, true);
 
 			itemToUse = cast<TangibleObject*>( objectManager->cloneObject(incomingTano));
+
+			Locker ilocker(itemToUse);
+
 			itemToUse->setUseCount(slotNeeds, false);
 			itemToUse->setParent(NULL);
 			itemToUse->sendAttributeListTo(player);
@@ -176,6 +179,9 @@ public:
 		while(itemToUse->getUseCount() > 1) {
 
 			ManagedReference<TangibleObject*> newTano = cast<TangibleObject*>( objectManager->cloneObject(itemToUse));
+
+			Locker ilocker(newTano);
+
 			newTano->setParent(NULL);
 			newTano->setUseCount(1, false);
 			itemsToAdd.add(newTano);
