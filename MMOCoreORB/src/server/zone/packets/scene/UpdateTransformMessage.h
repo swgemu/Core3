@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class UpdateTransformMessage : public BaseMessage {
 public:
@@ -64,10 +65,13 @@ public:
 		// add movement counter
 		insertInt(scno->getMovementCounter());
 
-		insertByte(0); // unknown
+		if (scno->isCreatureObject())
+			insertByte((int8)cast<CreatureObject*>(scno)->getCurrentSpeed());
+		else
+			insertByte(0);
 
 		// add direction
-		insertByte((byte)scno->getSpecialDirectionAngle());
+		insertByte((int8)scno->getSpecialDirectionAngle());
 	}
 
 	UpdateTransformMessage(SceneObject* scno, float posX, float posZ, float posY) : BaseMessage(50) {
@@ -83,10 +87,13 @@ public:
 		// add movement counter
 		insertInt(scno->getMovementCounter());
 
-		insertByte(0); // unknown
+		if (scno->isCreatureObject())
+			insertByte((int8)cast<CreatureObject*>(scno)->getCurrentSpeed());
+		else
+			insertByte(0);
 
 		// add direction
-		insertByte((byte) scno->getSpecialDirectionAngle());
+		insertByte((int8) scno->getSpecialDirectionAngle());
 	}
 
 	static void parse(Packet* pack, SceneObject* scno) {
