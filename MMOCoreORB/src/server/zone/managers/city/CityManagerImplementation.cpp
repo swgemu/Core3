@@ -745,14 +745,17 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 		return;
 
 	int maintainCitizens = citizensPerRank.get(cityRank - 1);
-	int advanceCitizens = citizensPerRank.get(cityRank);
 
 	if (citizens < maintainCitizens) {
 		contractCity(city);
-	} else if (cityRank < METROPOLIS && citizens >= advanceCitizens) {
-		expandCity(city);
 	} else if (cityRank < METROPOLIS) {
-		city->destroyAllStructuresForRank(uint8(cityRank + 1), true);
+		int advanceCitizens = citizensPerRank.get(cityRank);
+
+		if (citizens >= advanceCitizens) {
+			expandCity(city);
+		} else {
+			city->destroyAllStructuresForRank(uint8(cityRank + 1), true);
+		}
 	}
 
 	city->rescheduleUpdateEvent(cityUpdateInterval * 60);
