@@ -913,10 +913,10 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 	if (scno->isPlayerCreature()) {
 		CreatureObject* creo = cast<CreatureObject*>(scno);
 		if (!creo->isInvisible()) {
-			numberOfPlayersInRange.increment();
+			int newValue = (int) numberOfPlayersInRange.increment();
 			activateMovementEvent();
 
-			if (numberOfPlayersInRange == 1) { // we had no players in range before, and now we do. Need to "activate" AI
+			if (newValue == 1) { // we had no players in range before, and now we do. Need to "activate" AI
 				CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
 				if (vec == NULL)
 					return;
