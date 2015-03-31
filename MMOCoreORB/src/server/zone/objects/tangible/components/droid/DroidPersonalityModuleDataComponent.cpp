@@ -112,7 +112,6 @@ void DroidPersonalityModuleDataComponent::onCall() {
 	}
 	Locker plock(droid);
 
-	droid->registerObserver(ObserverEventType::DAMAGERECEIVED, observer);
 	droid->registerObserver(ObserverEventType::DEFENDERADDED, observer);
 
 	droid->sendReactionChat(ReactionManager::HI, ReactionManager::NICE, true);
@@ -129,7 +128,6 @@ void DroidPersonalityModuleDataComponent::onStore() {
 	}
 	Locker dlock( droid );
 
-	droid->dropObserver(ObserverEventType::DAMAGERECEIVED, observer);
 	droid->dropObserver(ObserverEventType::DEFENDERADDED, observer);
 
 	droid->sendReactionChat(ReactionManager::BYE, ReactionManager::NICE, true);
@@ -162,32 +160,6 @@ void DroidPersonalityModuleDataComponent::notifyEvent(unsigned int eventType, Ma
 					quip("threat",droid);
 				else
 					quip("alert",droid);
-			}
-			if (eventType == ObserverEventType::DAMAGERECEIVED) {
-				// cast arg1 to a creature object
-				SceneObject* sceno = dynamic_cast<SceneObject*>(arg1);
-				if (sceno == NULL) {
-					return;
-				}
-				CreatureObject* target = dynamic_cast<CreatureObject*>(sceno);
-				if (target == NULL) {
-					return;
-				}
-				// is the target our guard target?
-				// quip("ally",droid);
-				if (target->getObjectID() == droid->getObjectID()) {
-					// it was us, how low is our health?
-					int h,a,m, hM, aM, mM;
-					h = droid->getHAM(0);
-					a = droid->getHAM(3);
-					m = droid->getHAM(6);
-					hM = droid->getMaxHAM(0);
-					aM = droid->getMaxHAM(3);
-					mM = droid->getMaxHAM(6);
-					if ( (hM - h < (hM/2)) || (aM - a < (aM/2)) || (mM - m < (mM/2))) {
-						quip("help",droid);
-					}
-				}
 			}
 			// we are going todo something
 			// END

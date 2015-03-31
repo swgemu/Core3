@@ -241,7 +241,19 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 	if (damage > 0 && tano->isAiAgent()) {
 		AiAgent* aiAgent = cast<AiAgent*>(tano);
-		aiAgent->sendReactionChat(ReactionManager::HIT);
+		bool help = false;
+
+		for (int i = 0; i < 9; i += 3) {
+			if (aiAgent->getHAM(i) < (aiAgent->getMaxHAM(i) / 2)) {
+				help = true;
+				break;
+			}
+		}
+
+		if (help)
+			aiAgent->sendReactionChat(ReactionManager::HELP);
+		else
+			aiAgent->sendReactionChat(ReactionManager::HIT);
 	}
 
 	if (damage > 0 && attacker->isAiAgent()) {
