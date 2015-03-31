@@ -1290,7 +1290,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (targetCellObject == targetCoordinateCell && currentFoundPath != NULL) {
 			// We have previously found a path into the same target cell that we want to move into
 			SceneObject* currentCell = getParent().get();
-			if (!currentCell->isCellObject())
+			if (currentCell != NULL && !currentCell->isCellObject())
 				currentCell = NULL;
 
 			// Don't recalculate path if mob hasn't entered the target cell yet (we already checked to make sure the target is still in the same cell)
