@@ -196,8 +196,9 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 			--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1a") end
 			AiAgent(pAgent):setStalkObject(pObject)
 			AiAgent(pAgent):setAlertDuration(10000)
-			-- TODO (dannuic): is there a skill check associated with this message?
-			CreatureObject(pObject):sendSystemMessageWithTO("@skl_use:notify_stalked", SceneObject(pAgent):getDisplayedName())
+			if CreatureObject(pObject):hasSkill("outdoors_ranger_novice") then
+				CreatureObject(pObject):sendSystemMessageWithTO("@skl_use:notify_stalked", SceneObject(pAgent):getDisplayedName())
+			end
 			AiAgent(pAgent):activateAwareness(pObject)
 		elseif inRange or AiAgent(pAgent):getAvgSpeed() <= (CreatureObject(pObject):getWalkSpeed() + CreatureObject(pObject):getWalkSpeed()) then
 			--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1b") end
