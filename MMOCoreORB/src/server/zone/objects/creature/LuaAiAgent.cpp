@@ -243,7 +243,19 @@ int LuaAiAgent::getFollowState(lua_State* L) {
 }
 
 int LuaAiAgent::setNextPosition(lua_State* L) {
-	SceneObject* cell = static_cast<SceneObject*>(lua_touserdata(L, -1));
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+	if (zoneServer == NULL)
+		return 0;
+
+	uint64 cellID = lua_tointeger(L, -1);
+	SceneObject* cell = NULL;
+
+	if (cellID != 0) {
+		cell = zoneServer->getObject(cellID);
+		if (cell != NULL && !cell->isCellObject())
+			cell = NULL;
+	}
+
 	float y = lua_tonumber(L, -2);
 	float z = lua_tonumber(L, -3);
 	float x = lua_tonumber(L, -4);

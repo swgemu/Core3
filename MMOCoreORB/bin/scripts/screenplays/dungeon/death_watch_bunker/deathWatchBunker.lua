@@ -733,15 +733,9 @@ function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pCha
 		end
 	end
 
-	local pCell = getSceneObject(droidLoc.cell)
-
-	if (pCell == nil) then
-		return 0
-	end
-
 	AiAgent(pBombDroid):stopWaiting()
 	AiAgent(pBombDroid):setWait(0)
-	AiAgent(pBombDroid):setNextPosition(droidLoc.x, droidLoc.z, droidLoc.y, pCell)
+	AiAgent(pBombDroid):setNextPosition(droidLoc.x, droidLoc.z, droidLoc.y, droidLoc.cell)
 	AiAgent(pBombDroid):executeBehavior()
 
 	return 0
@@ -1681,15 +1675,10 @@ function DeathWatchBunkerScreenPlay:doVentDroidMove(pDroid)
 	end
 
 	local nextPoint = patrolPoints[onCurrentPoint + 1]
-	local pCell = getSceneObject(nextPoint[4])
-
-	if (pCell == nil) then
-		return 0
-	end
 
 	AiAgent(pDroid):stopWaiting()
 	AiAgent(pDroid):setWait(0)
-	AiAgent(pDroid):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], pCell)
+	AiAgent(pDroid):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
 	AiAgent(pDroid):executeBehavior()
 
 	writeData("dwb:ventDroidCurrentPoint", onCurrentPoint + 1)
