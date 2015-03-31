@@ -144,6 +144,7 @@ class AiAgent extends CreatureObject {
 	private transient Mutex awarenessEventMutex;
 	@dereferenced
 	private transient Mutex movementEventMutex;
+	private int nextMovementInterval;
 	
 	@dereferenced
 	protected transient Time lastDamageReceived;
@@ -203,6 +204,8 @@ class AiAgent extends CreatureObject {
 		respawnTimer = 0;
 		respawnCounter = 0;
 		randomRespawn = false;
+		
+		nextMovementInterval = UPDATEMOVEMENTINTERVAL;
 
 		reactionRank = 0;
 
