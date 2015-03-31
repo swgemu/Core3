@@ -54,7 +54,7 @@ public:
 		Locker clocker(targetRef, strongRef);
 
 		if (mtime != 0)
-			avgSpeed = Vector3(targetRef->getPositionX() - coord.getPositionX(), targetRef->getPositionY() - coord.getPositionY(), 0).squaredLength() / (mtime) * 1000000;
+			avgSpeed = Vector3(targetRef->getPositionX() - coord.getPositionX(), targetRef->getPositionY() - coord.getPositionY(), 0).length() / (mtime) * 1000;
 
 		strongRef->doAwarenessCheck(targetRef);
 	}

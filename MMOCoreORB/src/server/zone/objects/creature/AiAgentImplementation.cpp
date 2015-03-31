@@ -1695,7 +1695,7 @@ int AiAgentImplementation::setDestination() {
 
 		break;
 	case AiAgent::WATCHING:
-		if (followCopy == NULL) {
+		if (followCopy == NULL || getAlertedTime() == NULL || getAlertedTime()->isPast()) {
 			setOblivious();
 			return setDestination();
 		}
@@ -1708,6 +1708,10 @@ int AiAgentImplementation::setDestination() {
 		}
 		break;
 	case AiAgent::STALKING:
+		if (getAlertedTime() == NULL || getAlertedTime()->isPast()) {
+			setOblivious();
+			return setDestination();
+		}
 	case AiAgent::FOLLOWING:
 		if (followCopy == NULL) {
 			setOblivious();
