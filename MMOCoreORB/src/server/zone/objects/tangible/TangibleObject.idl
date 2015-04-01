@@ -67,6 +67,7 @@ include server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.objects.tangible.threat.ThreatMap;
 import server.zone.objects.tangible.weapon.WeaponObject;
+include server.zone.objects.scene.variables.AutoDeltaSet;
 
 class TangibleObject extends SceneObject {
 	protected boolean targetable;
@@ -86,6 +87,10 @@ class TangibleObject extends SceneObject {
 	protected short level;
 	
 	protected unsigned int optionsBitmask;
+	
+	@dereferenced
+	protected AutoDeltaSet<int> visibleComponents;
+	
 	protected unsigned int pvpStatusBitmask;
 	
 	protected byte objectVisible;
@@ -407,6 +412,22 @@ class TangibleObject extends SceneObject {
 	@preLocked
 	public native void setConditionDamage(float condDamage, boolean notifyClient = true);
 	
+
+	@preLocked
+	public native void addVisibleComponent(int value, boolean notifyClient = true);
+	
+	@preLocked
+	public native void removeVisibleComponent(int value, boolean notifyClient = true);
+	
+	@preLocked
+	public native void removeAllVisibleComponents(boolean notifyClient = true);
+	
+	@preLocked
+	@dirty
+	public boolean hasVisibleComponent(int value) {
+		return visibleComponents.contains(value);
+	}
+	
 	/**
 	 * Updates a customization variable
 	 */
@@ -525,6 +546,11 @@ class TangibleObject extends SceneObject {
 	@preLocked
 	public DeltaVector<SceneObject> getDefenderList() {
 		return defenderList;
+	}
+	
+	@local
+	public AutoDeltaSet<int> getVisibleComponents() {
+		return visibleComponents;
 	}
 	
 	@dirty
