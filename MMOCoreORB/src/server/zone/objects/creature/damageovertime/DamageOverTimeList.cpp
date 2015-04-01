@@ -12,6 +12,8 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 	uint64 states = 0;
 	uint64 statesBefore = 0;
 
+	Locker guardLocker(&guard);
+
 	for (int i = 0; i < size(); ++i) {
 		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
 

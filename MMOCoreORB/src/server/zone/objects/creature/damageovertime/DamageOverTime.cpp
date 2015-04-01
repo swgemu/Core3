@@ -225,13 +225,23 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* at
 		damage = attr - 1;
 	}
 
-	Locker crossLocker(attacker, victim);
+	Reference<CreatureObject*> attackerRef = attacker;
+	Reference<CreatureObject*> victimRef = victim;
+	uint8 attribute = this->attribute;
 
-	victim->inflictDamage(attacker, attribute, damage, false);
-	if (victim->hasAttackDelay())
-		victim->removeAttackDelay();
+	EXECUTE_TASK_4(attackerRef, victimRef, attribute, damage, {
+			Locker locker(victimRef_p);
 
-	victim->playEffect("clienteffect/dot_bleeding.cef","");
+			Locker crossLocker(attackerRef_p, victimRef_p);
+
+			victimRef_p->inflictDamage(attackerRef_p, attribute_p, damage_p, false);
+
+			if (victimRef_p->hasAttackDelay())
+				victimRef_p->removeAttackDelay();
+
+			victimRef_p->playEffect("clienteffect/dot_bleeding.cef","");
+	});
+
 
 	return damage;
 }
@@ -249,18 +259,28 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 
 	int woundsToApply = (int)(secondaryStrength * (100 + victim->getShockWounds() ) / 100.0f);
 
-	Locker crossLocker(attacker, victim);
+	Reference<CreatureObject*> attackerRef = attacker;
+	Reference<CreatureObject*> victimRef = victim;
+	uint8 attribute = this->attribute;
+	uint32 strength = this->strength;
 
-	if ((int)strength > 0) {
-		victim->addWounds(attribute, woundsToApply, true, false);
-		victim->addShockWounds((int)(woundsToApply * 0.075f));
-	}
+	EXECUTE_TASK_6(attackerRef, victimRef, attribute, damage, woundsToApply, strength, {
+			Locker locker(victimRef_p);
 
-	victim->inflictDamage(attacker, attribute, damage, true);
-	if (victim->hasAttackDelay())
-		victim->removeAttackDelay();
+			Locker crossLocker(attackerRef_p, victimRef_p);
 
-	victim->playEffect("clienteffect/dot_fire.cef","");
+			if ((int)strength_p > 0) {
+				victimRef_p->addWounds(attribute_p, woundsToApply_p, true, false);
+				victimRef_p->addShockWounds((int)(woundsToApply_p * 0.075f));
+			}
+
+			victimRef_p->inflictDamage(attackerRef_p, attribute_p, damage_p, true);
+			if (victimRef_p->hasAttackDelay())
+				victimRef_p->removeAttackDelay();
+
+			victimRef_p->playEffect("clienteffect/dot_fire.cef","");
+	});
+
 
 	return damage;
 }
@@ -276,13 +296,21 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* atta
 		damage = attr - 1;
 	}
 
-	Locker crossLocker(attacker, victim);
+	Reference<CreatureObject*> attackerRef = attacker;
+	Reference<CreatureObject*> victimRef = victim;
+	uint8 attribute = this->attribute;
 
-	victim->inflictDamage(attacker, attribute, damage, false);
-	if (victim->hasAttackDelay())
-		victim->removeAttackDelay();
+	EXECUTE_TASK_4(attackerRef, victimRef, attribute, damage, {
+			Locker locker(victimRef_p);
 
-	victim->playEffect("clienteffect/dot_poisoned.cef","");
+			Locker crossLocker(attackerRef_p, victimRef_p);
+
+			victimRef_p->inflictDamage(attackerRef_p, attribute_p, damage_p, false);
+			if (victimRef_p->hasAttackDelay())
+				victimRef_p->removeAttackDelay();
+
+			victimRef_p->playEffect("clienteffect/dot_poisoned.cef","");
+	});
 
 	return damage;
 }
@@ -292,16 +320,23 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
 
 	// absorption reduces the strength of a dot by the given %.
 	int damage = (int)(strength * (1.f - absorptionMod / 100.f));
+	uint8 attribute = this->attribute;
+	uint32 strength = this->strength;
+	Reference<CreatureObject*> victimRef = victim;
 
-	if ((int)damage > 0) {
-		victim->addWounds(attribute, damage, true, false);
-		if (victim->hasAttackDelay())
-			victim->removeAttackDelay();
-	}
+	EXECUTE_TASK_4(attribute, strength, victimRef, damage, {
+			Locker locker(victimRef_p);
 
-	victim->addShockWounds((int)(strength * 0.075f));
+			if ((int)damage_p > 0) {
+				victimRef_p->addWounds(attribute_p, damage_p, true, false);
+				if (victimRef_p->hasAttackDelay())
+					victimRef_p->removeAttackDelay();
+			}
 
-	victim->playEffect("clienteffect/dot_diseased.cef","");
+			victimRef_p->addShockWounds((int)(strength_p * 0.075f));
+
+			victimRef_p->playEffect("clienteffect/dot_diseased.cef","");
+	});
 
 	return damage;
 }
