@@ -488,8 +488,7 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				apron->createChildObjects();
 
 				if (apron->isWearableObject()) {
-					uint32 bitmask = apron->getOptionsBitmask() | OptionBitmask::YELLOW;
-					apron->setOptionsBitmask(bitmask, false);
+					apron->addMagicBit(false);
 
 					UnicodeString modName = "(General)";
 					apron->addSkillMod(SkillModManager::WEARABLE, "general_assembly", 25);

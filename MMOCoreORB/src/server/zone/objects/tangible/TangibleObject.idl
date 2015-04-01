@@ -87,6 +87,8 @@ class TangibleObject extends SceneObject {
 	protected short level;
 	
 	protected unsigned int optionsBitmask;
+	@dereferenced
+	protected AtomicInteger magicBits;
 	
 	@dereferenced
 	protected AutoDeltaSet<int> visibleComponents;
@@ -519,6 +521,16 @@ class TangibleObject extends SceneObject {
 	@dirty
 	public unsigned int getOptionsBitmask() {
 		return optionsBitmask;
+	}
+	
+	public void addMagicBit(boolean notifyClient = true) {
+		if (magicBits.increment() == 1)
+			setOptionBit(OptionBitmask.YELLOW, notifyClient);
+	}
+	
+	public void removeMagicBit(boolean notifyClient = true) {
+		if (magicBits.decrement() == 0)
+			clearOptionBit(OptionBitmask.YELLOW, notifyClient);
 	}
 	
 	@dirty

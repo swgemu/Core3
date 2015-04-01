@@ -90,7 +90,7 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 				pup->destroyObjectFromWorld( true );
 				pup->destroyObjectFromDatabase( true );
 			} else {
-			        ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 				if(inventory == NULL)
 					return 1;
 

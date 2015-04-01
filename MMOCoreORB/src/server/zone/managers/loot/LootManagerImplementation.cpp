@@ -277,23 +277,19 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	float excMod = 1.0;
 
 	if (level >= 50 && System::random(legendaryChance) >= legendaryChance - floor((level-50)/2 + 0.5)) {
-			uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
-
 			UnicodeString newName = prototype->getDisplayedName() + " (Legendary)";
 			prototype->setCustomObjectName(newName, false);
 
 			excMod = legendaryModifier;
 
-			prototype->setOptionsBitmask(bitmask, false);
+			prototype->addMagicBit(false);
 	} else if (level >= 50 && System::random(exceptionalChance) >= exceptionalChance - floor((level-50)/2 + 0.5)) {
-		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
-
 		UnicodeString newName = prototype->getDisplayedName() + " (Exceptional)";
 		prototype->setCustomObjectName(newName, false);
 
 		excMod = exceptionalModifier;
 
-		prototype->setOptionsBitmask(bitmask, false);
+		prototype->addMagicBit(false);
 	}
 	String subtitle;
 	bool yellow = false;
@@ -392,8 +388,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	}
 
 	if (yellow) {
-		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
-		prototype->setOptionsBitmask(bitmask, false);
+		prototype->addMagicBit(false);
 		prototype->setJunkValue((int)(fJunkValue * 1.25));
 	}else{
 		if (excMod==1){
@@ -494,11 +489,8 @@ void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTem
 		}
 	}
 
-	if (yellow) {
-	uint32 bitmask = object->getOptionsBitmask() | OptionBitmask::YELLOW;
-
-	object->setOptionsBitmask(bitmask, false);
-	}
+	if (yellow)
+		object->addMagicBit(false);
 
 	if (object->isWearableObject()) {
 		ManagedReference<WearableObject*> wearableObject = cast<WearableObject*>(object);
@@ -878,11 +870,8 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 			weapon->addDotUses(use * excMod);
 		}
 
-		if (yellow) {
-			uint32 bitmask = weapon->getOptionsBitmask() | OptionBitmask::YELLOW;
-
-			weapon->setOptionsBitmask(bitmask, false);
-		}
+		if (yellow)
+			weapon->addMagicBit(false);
 	}
 }
 
