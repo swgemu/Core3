@@ -226,6 +226,57 @@ void TangibleObjectImplementation::setSerialNumber(const String& serial) {
 	objectSerial = serial;
 }
 
+void TangibleObjectImplementation::addVisibleComponent(int value, bool notifyClient) {
+	if (visibleComponents.contains(value))
+		return;
+
+	if (notifyClient) {
+		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this.get());
+		dtano3->startUpdate(0x05);
+
+		visibleComponents.add(value, dtano3);
+
+		dtano3->close();
+
+		broadcastMessage(dtano3, true);
+	} else {
+		visibleComponents.add(value);
+	}
+}
+
+void TangibleObjectImplementation::removeAllVisibleComponents(bool notifyClient) {
+	if (notifyClient) {
+		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this.get());
+		dtano3->startUpdate(0x05);
+
+		visibleComponents.removeAll(dtano3);
+
+		dtano3->close();
+
+		broadcastMessage(dtano3, true);
+	} else {
+		visibleComponents.removeAll();
+	}
+}
+
+void TangibleObjectImplementation::removeVisibleComponent(int value, bool notifyClient) {
+	if (!visibleComponents.contains(value))
+		return;
+
+	if (notifyClient) {
+		TangibleObjectDeltaMessage3* dtano3 = new TangibleObjectDeltaMessage3(_this.get());
+		dtano3->startUpdate(0x05);
+
+		visibleComponents.drop(value, dtano3);
+
+		dtano3->close();
+
+		broadcastMessage(dtano3, true);
+	} else {
+		visibleComponents.drop(value);
+	}
+}
+
 void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 	if (defender == _this.get())
 		return;
