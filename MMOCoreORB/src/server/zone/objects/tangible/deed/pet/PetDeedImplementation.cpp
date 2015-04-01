@@ -263,6 +263,7 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 				setSpecialResist(WeaponObject::LIGHTSABER);
 			if (component->isSpecialResist(WeaponObject::STUN))
 				setSpecialResist(WeaponObject::STUN);
+			level = Genetics::calculatePetLevel(component);
 		}
 	}
 	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
@@ -270,51 +271,10 @@ void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool fi
 	if (petTemplate != NULL) {
 		// get min CL from the template
 		int skinFactor = petTemplate->getLevel();
-		float complexityFactor = manufact->getComplexity();
-		// Step 1. total resists
-		float negativeFactor = Genetics::generateNegativeFactor(
-				isSpecialResist(WeaponObject::KINETIC) ? 0 : kinResist < 0 ? 1 : 0,
-				isSpecialResist(WeaponObject::ACID) ? 0 : acidResist < 0 ? 1 : 0,
-				isSpecialResist(WeaponObject::BLAST) ? 0 : blastResist < 0 ? 1 : 0,
-				isSpecialResist(WeaponObject::COLD) ? 0 : coldResist < 0 ? 1 : 0,
-				isSpecialResist(WeaponObject::ELECTRICITY) ? 0 : elecResist < 0 ? 1 : 0,
-				isSpecialResist(WeaponObject::ENERGY) ? 0 : energyResist < 0 ? 1 : 0,
-				isSpecialResist(WeaponObject::HEAT) ? 0 : heatResist < 0 ? 1 : 0,
-				isSpecialResist(WeaponObject::LIGHTSABER) ? 0 : saberResist < 0 ? 1 : 0,
-				isSpecialResist(WeaponObject::STUN) ? 0 : stunResist < 0 ?1 : 0);
-
-		float positiveFactor = Genetics::generatePositiveFactor(
-				isSpecialResist(WeaponObject::KINETIC) ? 0 : kinResist > 0 ? kinResist : 0,
-				isSpecialResist(WeaponObject::ACID) ? 0 : acidResist > 0 ? acidResist : 0,
-				isSpecialResist(WeaponObject::BLAST) ? 0 : blastResist > 0 ? blastResist : 0,
-				isSpecialResist(WeaponObject::COLD) ? 0 : coldResist > 0 ? coldResist : 0,
-				isSpecialResist(WeaponObject::ELECTRICITY) ? 0 : elecResist > 0 ? elecResist : 0,
-				isSpecialResist(WeaponObject::ENERGY) ? 0 : energyResist > 0 ? energyResist : 0,
-				isSpecialResist(WeaponObject::HEAT) ? 0 : heatResist > 0 ? heatResist : 0,
-				isSpecialResist(WeaponObject::LIGHTSABER) ? 0 : saberResist > 0 ? saberResist : 0,
-				isSpecialResist(WeaponObject::STUN) ? 0 : stunResist > 0 ? stunResist : 0);
-		float specialFactor = Genetics::generateSpecialFactor(
-				isSpecialResist(WeaponObject::KINETIC) ? kinResist : 0,
-				isSpecialResist(WeaponObject::ACID) ? acidResist : 0,
-				isSpecialResist(WeaponObject::BLAST) ? blastResist : 0,
-				isSpecialResist(WeaponObject::COLD) ? coldResist : 0,
-				isSpecialResist(WeaponObject::ELECTRICITY) ? elecResist : 0,
-				isSpecialResist(WeaponObject::ENERGY) ? energyResist : 0,
-				isSpecialResist(WeaponObject::HEAT) ? heatResist : 0,
-				isSpecialResist(WeaponObject::LIGHTSABER) ? saberResist : 0,
-				isSpecialResist(WeaponObject::STUN) ? stunResist : 0);
-
-		float damFactor = Genetics::generateDamageFactor(chanceHit,attackSpeed,damageMax);
-		float hamFactor = Genetics::generateHamFactor(health,action,mind);
-		float armorFactor = armor * 10.0;
-		level = ((negativeFactor + (positiveFactor) + specialFactor + damFactor)/hamFactor) + hamFactor + armorFactor - (skinFactor/complexityFactor) - (clFactor/complexityFactor);
-		if (chanceHit > 0.5) // greater than 50% like armor is + 10 levels
-			level += 10;
-		level = round(level);
-		if (getLevel() > 75) {
+		if (level > 75) {
 			level = 75;
 		}
-		if (getLevel() < skinFactor) {
+		if (level < skinFactor) {
 			level = skinFactor;
 		}
 	}

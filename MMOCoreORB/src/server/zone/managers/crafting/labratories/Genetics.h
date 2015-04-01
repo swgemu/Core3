@@ -5,6 +5,7 @@
 #include "engine/engine.h"
 #include "server/zone/managers/creature/DnaManager.h"
 #include "server/zone/objects/tangible/component/dna/DnaComponent.h"
+#include "server/zone/objects/tangible/component/genetic/GeneticComponent.h"
 #include "server/zone/objects/creature/CreatureFlag.h"
 namespace server {
 namespace zone {
@@ -235,21 +236,30 @@ public:
 		return randomizeValue(base,quality);
 	}
 
+	// convert ham value to score
 	static int hamToValue(float ham, int quality) {
 		int base = round(((ham-50.0)/(17950)) * 1000.0);
 		return randomizeValue(base,quality);
 	}
+
+	// convert ferocity value
 	static int ferocityToValue(int level, int quality) {
 		int base = (level * 45) + 90;
 		return randomizeValue(base,quality);
 	}
+
+	// convert acceletation
 	static int accelerationToValue(float speed, int quality) {
 		int base = round(((speed-1.0)/(4.0)) * 1000.0);
 		return randomizeValue(base,quality);
 	}
+
+	// convert meat type to value
 	static int meatTypeToValue(String type, int quality) {
 		return randomizeValue(500,quality);
 	}
+
+	// convert diet to value
 	static int dietToValue(int diet, int quality) {
 		int min = 0.1;
 		int max = 9.3;
@@ -266,6 +276,8 @@ public:
 		base = round(((level-0.1)/(9.2)) * 1000.0);
 		return randomizeValue(base,quality);
 	}
+
+	// convert resistance to value
 	static float resistanceToValue(float effective, int armor,int quality) {
 		// find effective resist
 		int base = effective * 10;
@@ -277,80 +289,96 @@ public:
 		return rand;
 	}
 
-	/**
-	 * Generate damage factor
-	 */
-	static float generateDamageFactor(float hit, float speed, float maxDamage) {
-		return (((maxDamage-10.0) * 0.5) * hit) * speed;
+	// level factor rules
+	static float calculateArmorLevel(float armorBase) {
+		return DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL,armorBase);
+	}
+	// dps to level range
+	static float calculateDPSLevel(float maxDamage, float minDamage) {
+		float dps = (maxDamage + minDamage)/2;
+		return DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL,dps);
+	}
+	// ham level
+	static float calculateHamLevel(float ham) {
+		return DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL,ham);
+	}
+	// regen level
+	static float calculatRegenLevel(float regen) {
+		return DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL,regen);
+	}
+	// hit level
+	static float calculatHitLevel(float toHit) {
+		return DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL,toHit);
 	}
 
-	/**
-	 * Generate ham factor
-	 */
-	static float generateHamFactor(float h, float a, float m) {
-		return ((h+a+m)/1500.0) - 3;
+	// calculate the resistance level modifier
+	static int resistMath(int input, int rating, int effectiveness,bool multiply,int multValue, int lowValue) {
+		int rValue = rating * 25;
+		int eValue = ( effectiveness / (rating + 1));
+		if(input > 0) {
+			if (multiply) {
+				return MAX((input - (rValue +eValue)),0) * multValue;
+			} else {
+				return MAX((input - (rValue +eValue)),0) / multValue;
+			}
+		} else {
+			if (lowValue == 1) {
+				return input * (rValue + eValue);
+			} else {
+				return input * (rValue + eValue) * lowValue;
+			}
+		}
 	}
 
-	/**
-	 * Generate positive factor
-	 */
-	static float generatePositiveFactor(float a, float b, float c, float d, float e, float f, float g, float h, float i) {
-		return (a+b+c+d+e+f+g+h+i)/25.0;
+	// calculate the armor level for a pet
+	static int calculateArmorValue(GeneticComponent* pet, int armorLevel, int baseLevel, int armorBase) {
+		// Armor Levevel
+		int level = armorLevel + 1;
+		if (level < baseLevel)
+			level = baseLevel;
+		int eff = armorBase/50;
+		if (armorBase > 500)
+			eff = (armorBase-500)/50;
+		if (armorBase == 500)
+			eff = 0;
+		int armorRating = pet->getArmor();
+		int resistanceLevel = 0;
+		resistanceLevel += resistMath(pet->getKinetic(),armorRating,eff,true,3,6);
+		resistanceLevel += resistMath(pet->getEnergy(),armorRating,eff,true,3,6);
+		resistanceLevel += resistMath(pet->getBlast(),armorRating,eff,false,2.0,1);
+		resistanceLevel += resistMath(pet->getHeat(),armorRating,eff,false,2.0,1);
+		resistanceLevel += resistMath(pet->getCold(),armorRating,eff,false,2.0,1);
+		resistanceLevel += resistMath(pet->getElectrical(),armorRating,eff,false,2.0,1);
+		resistanceLevel += resistMath(pet->getAcid(),armorRating,eff,false,2.0,1);
+		resistanceLevel += resistMath(pet->getStun(),armorRating,eff,false,2.0,1);
+		level += ((float) resistanceLevel) / 10.0;
+		return level;
 	}
 
-	/**
-	 * Generate negative fctor
-	 */
-	static float generateNegativeFactor(float a, float b, float c, float d, float e, float f, float g, float h, float i) {
-		float factor = -5.0;
-		return (a * factor) + (b * factor) + (c * factor)+ (d * factor)+ (e * factor)+ (f * factor)+ (g * factor)+ (h * factor)+ (i * factor);
+	// Calculate the creatures overall level as a pet.
+	static int calculatePetLevel(GeneticComponent* pet) {
+		// reverse the values out.
+		int statLevel = (DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, pet->getHealth())+1) * 6;
+		int damageLevel = DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL, (pet->getMaxDamage() + pet->getMinDamage()) / 2) * 10;
+		int hitLevel = (DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL, pet->getHitChance()) + 1) * 1;
+		int defenseLevel = (hitLevel);
+		int regen = DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL,pet->getAction()/10);
+		regen += 1;
+		int regenerationLevel =  regen * 2;
+		int armorLevel = DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, (pet->getArmor() * 500) + (( pet->getEffectiveArmor()) * 10.0)  );
+		int armorBase = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,armorLevel);
+		int baseLevel = (((statLevel) + (damageLevel) + (regenerationLevel) + (hitLevel)) / 19.0) + 0.5;
+		int armorLevel2 = calculateArmorValue(pet, armorLevel, baseLevel, armorBase) * 2;
+		if (defenseLevel < baseLevel)
+			defenseLevel = baseLevel;
+		int level = round((((float)(statLevel + damageLevel + hitLevel + defenseLevel + armorLevel + regenerationLevel ))/22.0) + 0.5);
+		return level;
 	}
 
-	/**
-	 * Generate the special factor for CL
-	 * params: kinetic, blast, energy, stun, cold, acid, heat, electricity, saber
-	 */
-	static float generateSpecialFactor(float a, float b, float c, float d, float e, float f, float g, float h, float i) {
-		float div = 5.0;
-		float accumulator = 0;
-		accumulator = (a/div) + (b/div) + (c/div) + (d/div) + (e/div) + (f/div) + (g/div) + (h/div) + (i/div);
-		return accumulator * 2.50;
+	// Calculate the input creature levels
+	static int levelForCreature(Creature* creature) {
+		return creature->getLevel();
 	}
-
-	/** reversal formulas **/
-
-	/**
-	 * Reverse Ham value
-	 */
-	static int reverseHam(int value, int quality) {
-		float x = value/18;
-		int min = x - (35 + quality);
-		int max = x + (11 - quality);
-		if (min < 0)
-			min = 0;
-		return (int) (System::random(max-min) + min);
-	}
-
-	/**
-	 * Reverse damage value
-	 */
-	static int reverseDamage(int value, int quality) {
-		float x = round(((float)value) * 0.8);
-		int min = x - (35 + quality);
-		int max = x + (11 - quality);
-		if (min < 0)
-			min = 0;
-		return (int)(System::random(max-min) + min);
-	}
-	static float reverseHit(float hit, int quality) {
-		float x = round((hit - 0.19) * 1500.0);
-		float min = x - (9 + quality);
-		if (min < 0)
-			min = 0;
-		float max = x + (21 - quality);
-		return (float)(System::random(max-min) + min);
-	}
-
 };
 
 }

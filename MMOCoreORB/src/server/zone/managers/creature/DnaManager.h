@@ -49,8 +49,17 @@ public:
 		POWER         = 9,
 		FIERCENESS    = 10
 	};
+	enum {
+		HIT_LEVEL = 1,
+		HAM_LEVEL = 2,
+		DPS_LEVEL = 3,
+		ARM_LEVEL = 4,
+		REG_LEVEL = 5
+	};
 	void generateSample(Creature* creature, CreatureObject* player, int quality);
 	void generationalSample(PetDeed* deed, CreatureObject* player, int quality);
+	int levelForScore(int type, float value);
+	float valueForLevel(int type, int level);
 protected:
 	int reduceByPercent(int source, int percent) {
 		float reduceBy = (100.0 - (float)percent) / 100.0;
