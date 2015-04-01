@@ -1384,12 +1384,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		}
 
 #ifdef SHOW_WALK_PATH
-		for (int i = 1; i < path->size() && !found; ++i) { // i = 0 is our position
-			nextPosition = path->get(i);
+		for (int i = 1; i < path->size(); ++i) { // i = 0 is our position
+			WorldCoordinates nextPositionDebug = path->get(i);
 
-			Vector3 nextWorldPos = nextPosition.getWorldPosition();
+			Vector3 nextWorldPos = nextPositionDebug.getWorldPosition();
 
-			if (nextPosition.getCell() == NULL)
+			if (nextPositionDebug.getCell() == NULL)
 				pathMessage->addCoordinate(nextWorldPos.getX(), getZone()->getHeight(nextWorldPos.getX(), nextWorldPos.getY()), nextWorldPos.getY());
 			else
 				pathMessage->addCoordinate(nextWorldPos.getX(), nextWorldPos.getZ(), nextWorldPos.getY());
@@ -1403,12 +1403,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 				Reference<SceneObject*> movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
 
-				movementMarker->initializePosition(nextPosition.getX(), nextPosition.getZ(), nextPosition.getY());
+				movementMarker->initializePosition(nextPositionDebug.getX(), nextPositionDebug.getZ(), nextPositionDebug.getY());
 				StringBuffer msg;
-				msg << "Next Position: path distance: " << pathDistance << " maxDist:" << maxDist;
+				msg << "Next Position: path distance: " << nextPositionDebug.getWorldPosition().distanceTo(getWorldPosition()) << " maxDist:" << maxDist;
 				movementMarker->setCustomObjectName(msg.toString(), false);
 
-				CellObject* cellObject = dynamic_cast<CellObject*>(nextPosition.getCell());
+				CellObject* cellObject = dynamic_cast<CellObject*>(nextPositionDebug.getCell());
 
 				if (cellObject != NULL) {
 					cellObject->transferObject(movementMarker, -1, true);
@@ -1474,7 +1474,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 		float dist = fabs(thisWorldPos.distanceTo(nextWorldPos));
 		if (dist > 0 && newSpeed > 0.1) {
-			nextMovementInterval = MIN((int)(dist/newSpeed + 0.5), UPDATEMOVEMENTINTERVAL);
+			nextMovementInterval = MIN((int)((MIN(dist, maxDist)/newSpeed)*1000 + 0.5), UPDATEMOVEMENTINTERVAL);
 			currentSpeed = newSpeed;
 		} else
 			currentSpeed = 0;
