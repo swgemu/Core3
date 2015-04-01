@@ -328,12 +328,11 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		defender->removeAttackDelay();
 
 	if (damageMultiplier != 0 && damage != 0) {
-		// Apply dots before damage so that target's armor doesn't reduce
-		applyDots(attacker, defender, data, damage);
-		applyWeaponDots(attacker, defender, weapon);
-
 		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage()); // TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
 		damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, data);
+
+		applyDots(attacker, defender, data, damage);
+		applyWeaponDots(attacker, defender, weapon, damage);
 	}
 
 	//Send defensive buff combat spam last.
@@ -457,80 +456,50 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 			resist += defender->getSkillMod(defenseMods.get(j));
 
 		//info("entering addDotState", true);
-		defender->addDotState(attacker, effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? appliedDamage * effect.getPrimaryPercent() / 100.0f : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), effect.getDotPotency(), resist,
+		defender->addDotState(attacker, effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? appliedDamage * effect.getPrimaryPercent() / 100.0f : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), 150, resist,
 				effect.isDotDamageofHit() ? appliedDamage * effect.getSecondaryPercent() / 100.0f : effect.getDotStrength());
 	}
 }
 
-void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
-	// Get attacker's weapon they have.
-	ManagedReference<WeaponObject*> attackerWeapon = cast<WeaponObject*>(weapon);
-
-	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE)
+void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, int appliedDamage) {
+	if (defender->isPlayerCreature() || defender->getPvpStatusBitmask() == CreatureFlag::NONE)
 		return;
 
-	if (!attackerWeapon->isCertifiedFor(attacker))
+	if (!weapon->isCertifiedFor(attacker))
 		return;
 
-	for (int i = 0; i < attackerWeapon->getNumberOfDots(); i++) {
-		if (attackerWeapon->getDotUses(i) <= 0)
+	int resist = defender->getSkillMod("combat_bleeding_defense");
+	float bleedChance = MAX(5.f, appliedDamage * (1.f - (float)resist / 100.f));
+
+	for (int i = 0; i < weapon->getNumberOfDots(); i++) {
+		if (weapon->getDotUses(i) <= 0)
 			continue;
 
-		int resist = 0;
-		int power = 0;
+		int type = 0;
 
-		switch (attackerWeapon->getDotType(i)) {
+		switch (weapon->getDotType(i)) {
 		case 1: //POISON
-			if (defender->hasDotImmunity(CreatureState::POISONED))
-				break;
-			resist = defender->getSkillMod("resistance_poison") + defender->getSkillMod("poison_disease_resist");
-			power = defender->addDotState(attacker, CreatureState::POISONED, attackerWeapon->getObjectID(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist, attackerWeapon->getDotStrength(i));
-
-			if (power > 0) { // Unresisted, reduce use count.
-				if (attackerWeapon->getDotUses(i) > 0) {
-					attackerWeapon->setDotUses(attackerWeapon->getDotUses(i) - 1, i);
-				}
-			}
+			type = CreatureState::POISONED;
 			break;
 		case 2: //DISEASE
-			if (defender->hasDotImmunity(CreatureState::DISEASED))
-				break;
-			resist = defender->getSkillMod("resistance_disease") + defender->getSkillMod("poison_disease_resist");
-			power = defender->addDotState(attacker, CreatureState::DISEASED, attackerWeapon->getObjectID(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist, attackerWeapon->getDotStrength(i));
-
-			if (power > 0) { // Unresisted, reduce use count.
-				if (attackerWeapon->getDotUses(i) > 0) {
-					attackerWeapon->setDotUses(attackerWeapon->getDotUses(i) - 1, i);
-				}
-			}
+			type = CreatureState::DISEASED;
 			break;
 		case 3: //FIRE
-			if (defender->hasDotImmunity(CreatureState::ONFIRE))
-				break;
-			resist = defender->getSkillMod("resistance_fire") + defender->getSkillMod("fire_resist");
-			power = defender->addDotState(attacker, CreatureState::ONFIRE, attackerWeapon->getObjectID(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist, attackerWeapon->getDotStrength(i) * .5f);
-
-			if (power > 0) { // Unresisted, reduce use count.
-				if (attackerWeapon->getDotUses(i) > 0) {
-					attackerWeapon->setDotUses(attackerWeapon->getDotUses(i) - 1, i);
-				}
-			}
+			type = CreatureState::ONFIRE;
 			break;
 		case 4: //BLEED
-			if (defender->hasDotImmunity(CreatureState::BLEEDING))
-				break;
-			resist = defender->getSkillMod("resistance_bleeding") + defender->getSkillMod("combat_bleeding_defense") + defender->getSkillMod("bleed_resist");
-			power = defender->addDotState(attacker, CreatureState::BLEEDING, attackerWeapon->getObjectID(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist, attackerWeapon->getDotStrength(i));
-
-			if (power > 0) { // Unresisted, reduce use count.
-				if (attackerWeapon->getDotUses(i) > 0) {
-					attackerWeapon->setDotUses(attackerWeapon->getDotUses(i) - 1, i);
-				}
-			}
+			type = CreatureState::BLEEDING;
 			break;
 		default:
 			break;
 		}
+
+		if (defender->hasDotImmunity(type))
+			continue;
+
+		if (System::random(10000) <= bleedChance)
+			if (defender->addDotState(attacker, type, weapon->getObjectID(), weapon->getDotStrength(i), weapon->getDotAttribute(i), weapon->getDotDuration(i), weapon->getDotPotency(i), resist, weapon->getDotStrength(i)) > 0) // Unresisted, reduce use count.
+				if (weapon->getDotUses(i) > 0) weapon->setDotUses(weapon->getDotUses(i) - 1, i);
 	}
 }
 

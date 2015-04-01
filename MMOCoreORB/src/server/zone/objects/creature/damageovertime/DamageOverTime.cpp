@@ -57,13 +57,12 @@ DamageOverTime::DamageOverTime() {
 	setAttribute(CreatureAttribute::HEALTH);
 	strength = 0;
 	setDuration(0);
-	setPotency(0.0f);
 	setExpires(0);
 	setSecondaryStrength(0);
 	addSerializableVariables();
 }
 
-DamageOverTime::DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency, int secondaryStrength) {
+DamageOverTime::DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib, uint32 str, uint32 dur, int secondaryStrength) {
 
 	if (attacker != NULL)
 		setAttackerID(attacker->getObjectID());
@@ -72,7 +71,6 @@ DamageOverTime::DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib
 	setAttribute(attrib);
 	strength = str;
 	setDuration(dur);
-	setPotency(potency);
 	setSecondaryStrength(secondaryStrength);
 	activate();
 
@@ -87,7 +85,6 @@ DamageOverTime::DamageOverTime(const DamageOverTime& dot) : Object(), Serializab
 	attribute = dot.attribute;
 	strength = dot.strength;
 	duration = dot.duration;
-	potency = dot.potency;
 	expires = dot.expires;
 	nextTick = dot.nextTick;
 	secondaryStrength = dot.secondaryStrength;
@@ -103,7 +100,6 @@ DamageOverTime& DamageOverTime::operator=(const DamageOverTime& dot) {
 	attribute = dot.attribute;
 	strength = dot.strength;
 	duration = dot.duration;
-	potency = dot.potency;
 	expires = dot.expires;
 	nextTick = dot.nextTick;
 	secondaryStrength = dot.secondaryStrength;
@@ -118,7 +114,6 @@ void DamageOverTime::addSerializableVariables() {
 	addSerializableVariable("attribute", &attribute);
 	addSerializableVariable("strength", &strength);
 	addSerializableVariable("duration", &duration);
-	addSerializableVariable("potency", &potency);
 	addSerializableVariable("expires", &expires);
 	addSerializableVariable("nextTick", &nextTick);
 	addSerializableVariable("secondaryStrength", &secondaryStrength);
@@ -189,23 +184,29 @@ uint32 DamageOverTime::applyDot(CreatureObject* victim) {
 
 uint32 DamageOverTime::initDot(CreatureObject* victim) {
 	uint32 power = 0;
+	int absorptionMod = 0;
+	nextTick.updateToCurrentTime();
 
 	switch(type) {
 	case CreatureState::BLEEDING:
-	case CreatureState::POISONED:
-	case CreatureState::ONFIRE:
-		//System::out << "init dot\n";
-		nextTick.updateToCurrentTime();
+		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_bleeding")));
 		nextTick.addMiliTime(9000);
-		power = strength;
+		break;
+	case CreatureState::POISONED:
+		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_poison")));
+		nextTick.addMiliTime(9000);
+		break;
+	case CreatureState::ONFIRE:
+		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_fire")));
+		nextTick.addMiliTime(9000);
 		break;
 	case CreatureState::DISEASED:
-		nextTick.updateToCurrentTime();
+		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_disease")));
 		nextTick.addMiliTime(19000);
-		uint32 shockWounds = (uint32) victim->getShockWounds();
-		power = strength + (shockWounds * strength / 500);
 		break;
 	}
+
+	power = (uint32)(strength * (1.f - absorptionMod / 100.f));
 
 	//victim->addDamage(attacker,1);
 
@@ -213,81 +214,96 @@ uint32 DamageOverTime::initDot(CreatureObject* victim) {
 }
 
 uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* attacker) {
-	uint32 strengthToApply = strength;
+	// TODO: Do we try to resist again?
 	uint32 attr = victim->getHAM(attribute);
+	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_bleeding")));
 
-	if (attr < strengthToApply) {
+	// absorption reduces the strength of a dot by the given %.
+	int damage = (int)(strength * (1.f - absorptionMod / 100.f));
+	if (attr < damage) {
 		//System::out << "setting strength to " << attr -1 << endl;
-		strengthToApply = attr - 1;
+		damage = attr - 1;
 	}
 
 	Locker crossLocker(attacker, victim);
 
-	victim->inflictDamage(attacker, attribute, strengthToApply, false);
+	victim->inflictDamage(attacker, attribute, damage, false);
 	if (victim->hasAttackDelay())
 		victim->removeAttackDelay();
 
 	victim->playEffect("clienteffect/dot_bleeding.cef","");
 
-	return strengthToApply;
+	return damage;
 }
 
 uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attacker) {
 	uint32 attr = victim->getHAM(attribute);
-	uint32 strengthToApply = strength;
+	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_fire")));
+
+	// absorption reduces the strength of a dot by the given %.
+	int damage = (int)(strength * (1.f - absorptionMod / 100.f));
+	if (attr < damage) {
+		//System::out << "setting strength to " << attr -1 << endl;
+		damage = attr - 1;
+	}
+
 	int woundsToApply = (int)(secondaryStrength * (100 + victim->getShockWounds() ) / 100.0f);
+
+	Locker crossLocker(attacker, victim);
 
 	if ((int)strength > 0) {
 		victim->addWounds(attribute, woundsToApply, true, false);
 		victim->addShockWounds((int)(woundsToApply * 0.075f));
 	}
 
-	Locker crossLocker(attacker, victim);
-
-	victim->inflictDamage(attacker, attribute, strengthToApply, true);
+	victim->inflictDamage(attacker, attribute, damage, true);
 	if (victim->hasAttackDelay())
 		victim->removeAttackDelay();
 
 	victim->playEffect("clienteffect/dot_fire.cef","");
 
-	return strengthToApply;
+	return damage;
 }
 
 uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* attacker) {
 	uint32 attr = victim->getHAM(attribute);
-	uint32 strengthToApply = strength;
+	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_poison")));
 
-	if (attr < strengthToApply)
-		strengthToApply = attr - 1;
+	// absorption reduces the strength of a dot by the given %.
+	int damage = (int)(strength * (1.f - absorptionMod / 100.f));
+	if (attr < damage) {
+		//System::out << "setting strength to " << attr -1 << endl;
+		damage = attr - 1;
+	}
 
 	Locker crossLocker(attacker, victim);
 
-	victim->inflictDamage(attacker, attribute, strengthToApply, false);
+	victim->inflictDamage(attacker, attribute, damage, false);
 	if (victim->hasAttackDelay())
 		victim->removeAttackDelay();
 
 	victim->playEffect("clienteffect/dot_poisoned.cef","");
 
-	return strengthToApply;
+	return damage;
 }
 
 uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
-	uint32 shockWounds = (uint32) victim->getShockWounds();
-	uint32 power = strength + (shockWounds * strength / 500);
+	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_disease")));
 
-	if ((int)power > 0) {
-		victim->addWounds(attribute, power, true, false);
+	// absorption reduces the strength of a dot by the given %.
+	int damage = (int)(strength * (1.f - absorptionMod / 100.f));
+
+	if ((int)damage > 0) {
+		victim->addWounds(attribute, damage, true, false);
 		if (victim->hasAttackDelay())
 			victim->removeAttackDelay();
 	}
-
-	//victim->addDamage(attacker,power);
 
 	victim->addShockWounds((int)(strength * 0.075f));
 
 	victim->playEffect("clienteffect/dot_diseased.cef","");
 
-	return power;
+	return damage;
 }
 
 float DamageOverTime::reduceTick(float reduction) {

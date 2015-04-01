@@ -29,7 +29,6 @@ protected:
 	uint8 attribute;
 	uint32 strength;
 	uint32 duration;
-	float potency;
 
 	Time expires;
 	Time nextTick;
@@ -37,7 +36,7 @@ protected:
 
 public:
 	DamageOverTime();
-	DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency, int secondaryStr = 0);
+	DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib, uint32 str, uint32 dur, int secondaryStr = 0);
 
 	DamageOverTime(const DamageOverTime& dot);
 	DamageOverTime& operator=(const DamageOverTime& dot);
@@ -81,10 +80,6 @@ public:
 		duration = seconds;
 	}
 
-	inline void setPotency(float percent) {
-		potency = percent;
-	}
-
 	inline void setExpires(Time time) {
 		expires = time;
 	}
@@ -115,10 +110,6 @@ public:
 
 	inline uint32 getDuration() {
 		return duration;
-	}
-
-	inline float getPotency() {
-		return potency;
 	}
 
 	inline bool isActivated() {

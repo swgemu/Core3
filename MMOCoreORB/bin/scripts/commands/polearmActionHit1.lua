@@ -58,7 +58,7 @@ PolearmActionHit1Command = {
 	dotEffects = {
 	  DotEffect( 
 		BLEEDING, 
-		{ "resistance_bleeding", "bleed_resist", "combat_bleeding_defense" },
+		{ "resistance_bleeding", "bleed_resist" },
 		ACTION,
 		true,
 		125,

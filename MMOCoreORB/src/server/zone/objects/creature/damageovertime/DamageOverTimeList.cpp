@@ -100,50 +100,44 @@ int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
 uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attacker, uint64 objectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense, int secondaryStrength) {
 	Locker locker(&guard);
 
-	if (strength == 0) return 0;
+	if (strength == 0 || duration == 0)
+		return 0;
+
+	// determine chance to hit, if no hit, just return 0. potency of less than 0 can't be resisted
+	if (potency > 0 && System::random(100) >= MAX(5.f, MIN(potency * (80.f / (100.f + defense)), 95.f)))
+		return 0;
+
 	int oldStrength = getStrength(pool, dotType);
-	float dotReductionMod = 1.0f;
-	int redStrength;
-	float redPotency;
 
-	if (!(dotType == CreatureState::DISEASED || dotType == CreatureState::POISONED)) { // Calculate hit for non poison & disease dots
-		if (defense > 0)
-			dotReductionMod -= (float) defense / 125.0f;
+	int durationMod = 0;
 
-		redStrength = (int)(strength * dotReductionMod);
-		redPotency = potency * dotReductionMod;
-		if (!(redPotency > System::random(125) || redPotency > System::random(125)))
-			return 0;
+	switch (dotType) {
+	case CreatureState::POISONED:
+		durationMod = victim->getSkillMod("dissipation_poison");
+		break;
+	case CreatureState::DISEASED:
+		durationMod = victim->getSkillMod("dissipation_disease");
+		break;
+	case CreatureState::ONFIRE:
+		durationMod = victim->getSkillMod("dissipation_fire");
+		break;
+	case CreatureState::BLEEDING:
+		durationMod = victim->getSkillMod("dissipation_bleeding");
+		break;
+	default:
+		break;
+	}
 
-	} else {
-
-		int missChance = System::random(100); // find out 5% miss and 5% hit
-
-		if (missChance <= 5) // 5% miss chance
-			return 0;
-
-		else if (missChance >5 && missChance <=95){ // Over 95 is 5% hit
-
-			int dotChance = 50;   // If potency and resist are equal, then 50% chance to land
-
-			if (potency >= defense)
-				dotChance += (int)((potency - defense)*.5); // For every point of difference, increase chance by .5%
-			else
-				dotChance -= (int)((defense - potency)*.5); // For every point of difference, decrease chance by .5%
-
-			if (dotChance < (int)System::random(100))
-				return 0;
-
-		}
-		redStrength = strength;
-		redPotency = potency;
+	if (durationMod > 0) {
+		if (durationMod > 90) durationMod = 90;
+		duration = MAX(1, (int)(duration * (1.f - (durationMod / 100.f))));
 	}
 
 	//only 1 disease per bar allowed
 	if(dotType == CreatureState::DISEASED)
 		objectID = Long::hashCode(CreatureState::DISEASED);
 
-	DamageOverTime newDot(attacker, dotType, pool, redStrength, duration, redPotency, secondaryStrength);
+	DamageOverTime newDot(attacker, dotType, pool, strength, duration, secondaryStrength);
 	int dotPower = newDot.initDot(victim);
 
 	Time nTime = newDot.getNextTick();
