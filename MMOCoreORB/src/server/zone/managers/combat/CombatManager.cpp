@@ -462,7 +462,7 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 }
 
 void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon, int appliedDamage) {
-	if (defender->isPlayerCreature() || defender->getPvpStatusBitmask() == CreatureFlag::NONE)
+	if (defender->getPvpStatusBitmask() == CreatureFlag::NONE)
 		return;
 
 	if (!weapon->isCertifiedFor(attacker))
