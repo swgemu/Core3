@@ -1335,7 +1335,8 @@ bool StructureManager::isInStructureFootprint(StructureObject* structure, float 
 
 	float placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1;
 
-	getStructureFootprint(serverTemplate, structure->getDirectionAngle(), placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1);
+	if (getStructureFootprint(serverTemplate, structure->getDirectionAngle(), placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1) != 0)
+		return false;
 
 	float x0 = structure->getPositionX() + placingFootprintWidth0 + (placingFootprintWidth0 >= 0 ? extraFootprintMargin : (extraFootprintMargin * -1));
 	float y0 = structure->getPositionY() + placingFootprintLength0 + (placingFootprintLength0 >= 0 ? extraFootprintMargin : (extraFootprintMargin * -1));
