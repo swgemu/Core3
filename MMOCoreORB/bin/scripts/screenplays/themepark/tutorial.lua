@@ -1118,9 +1118,9 @@ end
 
 function TutorialScreenPlay:officerTargetEvent(creatureObject, targetCreature)
 	local player = LuaCreatureObject(creatureObject)
-	local officer = LuaCreatureObject(targetCreature)
+	local officer = LuaSceneObject(targetCreature)
 		
-	officer1ObjectID = readData(player:getObjectID() .. ":tutorial:officer1")
+	local officer1ObjectID = readData(player:getObjectID() .. ":tutorial:officer1")
 
 	if officer:getObjectID() == officer1ObjectID then
 		
