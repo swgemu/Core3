@@ -110,6 +110,10 @@ public:
 	inline uint32 getUpdateCounter() {
 		return updateCounter;
 	}
+
+	inline HashSetIterator<K> getIterator() {
+		return set.iterator();
+	}
 };
 
 

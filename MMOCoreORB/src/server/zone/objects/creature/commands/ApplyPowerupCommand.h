@@ -101,13 +101,20 @@ public:
 
 			if(!weapon->hasPowerup()) {
 
-				weapon->applyPowerup(creature, pup);
+				if (weapon->applyPowerup(creature, pup)) {
 
-				StringIdChatParameter message("powerup", "prose_pup_apply"); //You powerup your %TT with %TU.
-				message.setTT(weapon->getDisplayedName());
-				message.setTU(pup->getDisplayedName());
+					StringIdChatParameter message("powerup", "prose_pup_apply"); //You powerup your %TT with %TU.
+					message.setTT(weapon->getDisplayedName());
+					message.setTU(pup->getDisplayedName());
 
-				creature->sendSystemMessage(message);
+					creature->sendSystemMessage(message);
+				} else {
+					StringIdChatParameter message("powerup", "prose_apply_restricted"); //You cannot apply %TU to %TT.
+					message.setTT(weapon->getDisplayedName());
+					message.setTU(pup->getDisplayedName());
+
+					creature->sendSystemMessage(message);
+				}
 
 			} else {
 
@@ -119,6 +126,12 @@ public:
 			}
 
 			return SUCCESS;
+		} else {
+			StringIdChatParameter message("powerup", "prose_apply_restricted"); //You cannot apply %TU to %TT.
+			message.setTT(weapon->getDisplayedName());
+			message.setTU(pup->getDisplayedName());
+
+			creature->sendSystemMessage(message);
 		}
 
 		return GENERALERROR;

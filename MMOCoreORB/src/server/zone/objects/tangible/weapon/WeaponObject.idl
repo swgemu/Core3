@@ -590,25 +590,9 @@ class WeaponObject extends TangibleObject {
 		return powerupObject != null;
 	}
 	
-	public void applyPowerup(CreatureObject player, PowerupObject pup) {
-		if(!hasPowerup()) {
-			powerupObject = pup;
-			
-			if(pup.getParent() != null)
-				pup.destroyObjectFromWorld(true);
-		
-			sendAttributeListTo(player);
-		}
-	}
+	public native boolean applyPowerup(CreatureObject player, PowerupObject pup);
 	
-	public PowerupObject removePowerup() {
-		if(hasPowerup()) {
-			PowerupObject pup = powerupObject;
-			powerupObject = null;
-			return pup;
-		}
-		return null;
-	}
+	public native PowerupObject removePowerup();
 	
 	public native void decreasePowerupUses(CreatureObject player);
 

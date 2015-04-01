@@ -54,7 +54,7 @@ public:
 		INSURED    = 0x00000004,
 		CONVERSE   = 0x00000008, //Converse flag in creatures
 		UNKNOWN3   = 0x00000010,
-		YELLOW     = 0x00000020, //Yellow items in tangibles
+		YELLOW     = 0x00000020, //Yellow items in tangibles -- should be set whenever an item is modified (pup, SEA, BE, etc) and probably also legendary/exceptional loot
 		UNKNOWN5   = 0x00000040,
 		UNKNOWN6   = 0x00000080,
 		HIDEHAM    = 0x00000100, //Shows no information about condition or HAM
