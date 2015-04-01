@@ -77,8 +77,8 @@ public:
 		tano->getCustomizationString(app);
 		insertAscii(app);
 
-		insertInt(0);
-		insertInt(0);
+		AutoDeltaSet<int>* visibleComponents = tano->getVisibleComponents();
+		visibleComponents->insertToMessage(this);
 
 		insertInt(tano->getOptionsBitmask());
 
