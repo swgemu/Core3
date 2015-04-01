@@ -49,12 +49,12 @@ function heroOfTatFarmerConvoHandler:runScreenHandlers(conversationTemplate, con
 		CreatureObject(conversingPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_quest_fail")
 		writeData(CreatureObject(conversingNPC):getObjectID() .. ":gaveQuest", 1)
 		CreatureObject(conversingPlayer):subtractCashCredits(10000)
-		HeroOfTatooineScreenPlay:doFarmerDespawn(conversingNPC)
+		HeroOfTatooineScreenPlay:doGiverDespawn(conversingNPC)
 	elseif (screenID == "sincerest_gratitude") then
 		HeroOfTatooineScreenPlay:giveAltruismWaypoint(conversingPlayer)
 		writeData(CreatureObject(conversingNPC):getObjectID() .. ":gaveQuest", 1)
 		CreatureObject(conversingPlayer):setScreenPlayState(1, "hero_of_tatooine_altruism")
-		HeroOfTatooineScreenPlay:doFarmerDespawn(conversingNPC)
+		HeroOfTatooineScreenPlay:doGiverDespawn(conversingNPC)
 	elseif (screenID == "here_is_loc_again") then
 		HeroOfTatooineScreenPlay:giveAltruismWaypoint(conversingPlayer)
 	elseif (screenID == "a_lot_of_money") then
