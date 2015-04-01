@@ -266,3 +266,67 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 		prototype->destroyObjectFromDatabase(true);
 	}
 }
+float DnaManager::valueForLevel(int type, int level) {
+	float rc = 0;
+	switch(type) {
+		case HIT_LEVEL:
+			return dnaHit.get(level);
+		case DPS_LEVEL:
+			return dnaDPS.get(level);
+		case HAM_LEVEL:
+			return dnaHam.get(level);
+		case ARM_LEVEL:
+			return dnaArmor.get(level);
+		case REG_LEVEL:
+			return dnaRegen.get(level);
+	}
+	return rc;
+}
+int DnaManager::levelForScore(int type, float value) {
+	int rc = 0;
+	switch(type) {
+		case HIT_LEVEL:
+			for (int i=0;i<dnaHit.size();i++) {
+				float lv = dnaHit.get(i);
+				if(lv == value) {
+					rc = i;
+				}
+			}
+			break;
+		case DPS_LEVEL:
+			for (int i=0;i<dnaDPS.size();i++) {
+				float lv = dnaDPS.get(i);
+				if(lv == value || lv +1 == value || lv -1 == value) {
+					rc = i;
+				}
+			}
+			break;
+		case HAM_LEVEL:
+			for (int i=0;i<dnaHam.size();i++) {
+				float lv = dnaHam.get(i);
+				if(lv == value) {
+					rc = i;
+				}
+			}
+			break;
+		case ARM_LEVEL:
+			for (int i=0;i<dnaArmor.size();i++) {
+				float lv = dnaArmor.get(i);
+				if(lv == value) {
+					rc = i;
+				}
+			}
+			break;
+		case REG_LEVEL:
+			for (int i=0;i<dnaRegen.size();i++) {
+				float lv = dnaRegen.get(i);
+				if(lv == value) {
+					rc = i;
+				}
+			}
+			break;
+		default:
+			rc = 0;
+	}
+	return rc;
+}

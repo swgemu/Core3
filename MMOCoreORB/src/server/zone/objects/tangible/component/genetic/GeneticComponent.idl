@@ -77,11 +77,22 @@ class GeneticComponent extends Component {
 	protected float acidResist;
 	protected float stunResist;
 	protected float saberResist;
+	
 	// Extra non visible stats
 	protected int level;
+	
 	protected int health;
 	protected int action;
 	protected int mind;
+	
+	protected int willPower;
+	protected int constitution;
+	protected int stamina;
+	
+	protected int strength;
+	protected int focus;
+	protected int quickness; 
+	
 	protected float hit;
 	protected float speed;
 	protected int minDam;
@@ -100,6 +111,13 @@ class GeneticComponent extends Component {
 		dexterity = 0;
 		fortitude = 0;
 		hardiness = 0;
+		willPower = 0;
+		constitution = 0;
+		stamina = 0;
+		strength = 0;
+		focus = 0;
+		quickness = 0;
+		
 		special1 = "none";
 		special2 = "none";
 		ranged = false;
@@ -305,6 +323,54 @@ class GeneticComponent extends Component {
 		return ranged;
 	}
 
+	@dirty
+	public int getFocus() {
+		return focus;
+	}
+	
+	@dirty
+	public int getWillPower() {
+		return willPower;
+	}
+
+	@dirty
+	public int getStrength() {
+		return strength;
+	}
+	
+	@dirty
+	public int getConstitution() {
+		return constitution;
+	}
+	
+	@dirty
+	public int getQuickness() {
+		return quickness;
+	}
+	
+	@dirty
+	public int getStamina() {
+		return stamina;
+	}
+
+	public void setWillPower(int value) {
+		willPower = value;
+	}
+	public void setFocus(int value) {
+		focus = value;
+	}
+	public void setStamina(int value) {
+		stamina = value;
+	}
+	public void setStrength(int value) {
+		strength = value;
+	}
+	public void setQuickness(int value) {
+		quickness = value;
+	}
+	public void setConstitution(int value) {
+		constitution = value;
+	}
 	
 	public void setCleverness(int value) {
 		cleverness = value;
@@ -428,4 +494,7 @@ class GeneticComponent extends Component {
 	
 	@local
 	public native void resetResists(CraftingValues values);	
+	
+	@local
+	public native int getEffectiveArmor();
 }
