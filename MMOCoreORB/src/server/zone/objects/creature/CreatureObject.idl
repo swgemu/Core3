@@ -342,7 +342,7 @@ class CreatureObject extends TangibleObject {
 	 * Sends NewbieTutorialEnableHud
 	 */
 	@dirty
-	public native void sendNewbieTutorialEnableHudElement(final string ui, boolean enable = true);
+	public native void sendNewbieTutorialEnableHudElement(final string ui, boolean enable = true, float blinkCount = 0.0f);
 	
 	@dirty
 	public native void sendOpenHolocronToPageMessage();

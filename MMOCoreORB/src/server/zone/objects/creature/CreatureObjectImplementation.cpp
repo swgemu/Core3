@@ -454,9 +454,9 @@ void CreatureObjectImplementation::sendNewbieTutorialRequest(
 }
 
 void CreatureObjectImplementation::sendNewbieTutorialEnableHudElement(
-		const String& ui, bool enable) {
+		const String& ui, bool enable, float blinkCount) {
 	NewbieTutorialEnableHudElement* message =
-			new NewbieTutorialEnableHudElement(ui, enable);
+			new NewbieTutorialEnableHudElement(ui, enable, blinkCount);
 	sendMessage(message);
 }
 

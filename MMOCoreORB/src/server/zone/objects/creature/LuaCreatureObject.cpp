@@ -336,10 +336,11 @@ int LuaCreatureObject::getScreenPlayState(lua_State *L) {
 }
 
 int LuaCreatureObject::sendNewbieTutorialEnableHudElement(lua_State* L) {
-	String ui = lua_tostring(L, -2);
-	int enable = lua_tonumber(L, -1);
+	String ui = lua_tostring(L, -3);
+	int enable = lua_tonumber(L, -2);
+	float blinkCount = lua_tonumber(L, -1);
 
-	realObject->sendNewbieTutorialEnableHudElement(ui, enable);
+	realObject->sendNewbieTutorialEnableHudElement(ui, enable, blinkCount);
 
 	return 0;
 }

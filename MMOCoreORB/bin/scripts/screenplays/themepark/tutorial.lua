@@ -754,9 +754,9 @@ function TutorialScreenPlay:start(creatureObject)
 	--lock cell door
 	updateCellPermission(buildingObject:getCell(9), 0, creatureObject)
 		
-	creature:sendNewbieTutorialEnableHudElement("all", 0)
+	creature:sendNewbieTutorialEnableHudElement("all", 0, 0)
 	
-	creature:sendNewbieTutorialEnableHudElement("buttonbar", 1)
+	creature:sendNewbieTutorialEnableHudElement("buttonbar", 1, 0)
 	creature:sendSystemMessage("@newbie_tutorial/system_messages:welcome")
 	creature:playMusicMessage("sound/tut_01_welcome.snd")
 	writeData(creature:getObjectID() .. ":tutorial:message1",0)
@@ -833,7 +833,7 @@ function TutorialScreenPlay:zoomEvent(creatureObject)
 		createEvent(1000, "TutorialScreenPlay", "zoomEvent", creatureObject)
 	else
 		creature:setScreenPlayState(1, "tutorial")
-		creature:sendNewbieTutorialEnableHudElement("chatbox", 1)
+		creature:sendNewbieTutorialEnableHudElement("chatbox", 1, 0)
 	
 		creature:playMusicMessage("sound/tut_04_chat.snd")
 		creature:sendSystemMessage("@newbie_tutorial/system_messages:chatwindow")
@@ -872,7 +872,7 @@ function TutorialScreenPlay:chatEvent(creatureObject, nothing, test)
 	if message == "silence" then
 		writeData(creature:getObjectID() .. ":tutorial:sound", 0)
 	elseif message == "banditdebug" then
-		creature:sendNewbieTutorialEnableHudElement("all", 1)
+		creature:sendNewbieTutorialEnableHudElement("all", 1, 0)
 		writeData(creature:getObjectID() .. ":tutorial:banditdebug", 1)
 		local debris = LuaSceneObject(getSceneObject(readData(creature:getObjectID() .. ":tutorial:debrisoid")))
 		debris:destroyObjectFromWorld()
@@ -1095,7 +1095,7 @@ function TutorialScreenPlay:secondMessage(creatureObject)
 	room2 = readData(creature:getObjectID() .. ":tutorial:room2")
 	
 	if room2 == 0 then
-		creature:sendNewbieTutorialEnableHudElement("chatbox", 1)
+		creature:sendNewbieTutorialEnableHudElement("chatbox", 1, 0)
 		playSound = readData(creature:getObjectID() .. ":tutorial:sound")
 		if playSound == 1 then
 			creature:playMusicMessage("sound/tut_08_imperialofficer.snd")
@@ -1301,7 +1301,7 @@ function TutorialScreenPlay:stopOfficer1ConversationMessage(creatureObject)
 		writeData(creature:getObjectID() .. ":tutorial:converse3", 2)
 	elseif finished == 2 then
 		creature:sendNewbieTutorialRequest("changeLookAtTarget")
-		creature:sendNewbieTutorialEnableHudElement("chatbox", 1)
+		creature:sendNewbieTutorialEnableHudElement("chatbox", 1, 0)
 		
 		creature:sendSystemMessage("@newbie_tutorial/system_messages:prompt_open_box")
 	
@@ -1602,7 +1602,7 @@ function TutorialScreenPlay:activateToolbar(creatureObject)
 	message = readData(player:getObjectID() .. ":tutorial:toolbarmessage")
 	
 	if message == 0 then
-		player:sendNewbieTutorialEnableHudElement("toolbar", 1)
+		player:sendNewbieTutorialEnableHudElement("toolbar", 1, 3)
 		player:sendSystemMessage("@newbie_tutorial/system_messages:show_toolbar")
 		
 		playSound = readData(player:getObjectID() .. ":tutorial:sound")
@@ -1632,8 +1632,8 @@ function TutorialScreenPlay:activateToolbar(creatureObject)
 		writeData(player:getObjectID() .. ":tutorial:toolbarmessage", 3)
 		createEvent(11000, "TutorialScreenPlay", "activateToolbar", creatureObject)
 	elseif message == 3 then
-		player:sendNewbieTutorialEnableHudElement("toolbar", 1)
-		player:sendNewbieTutorialEnableHudElement("chatbox", 1)
+		player:sendNewbieTutorialEnableHudElement("toolbar", 1, 0)
+		player:sendNewbieTutorialEnableHudElement("chatbox", 1, 0)
 		writeData(player:getObjectID() .. ":tutorial:toolbarmessage", 4)
 		player:setScreenPlayState(256, "tutorial")
 		createEvent(1000, "TutorialScreenPlay", "checkCommerceRoom", creatureObject)
@@ -1925,7 +1925,7 @@ function TutorialScreenPlay:part4StartObserver(creatureObject)
 			
 			spatialChat(droidPointer, "@newbie_tutorial/newbie_convo:clone_greeting")
 			
-			--player:sendNewbieTutorialEnableHudElement("all", 1)
+			--player:sendNewbieTutorialEnableHudElement("all", 1, 0)
 			
 			return 1
 		end
@@ -2144,7 +2144,7 @@ function TutorialScreenPlay:panic1MoveObserver(creatureObject, movingCreature)
 			if playSound == 1 then
 				player:playMusicMessage("sound/tut_41_advancewarning.snd")
 			end
-			player:sendNewbieTutorialEnableHudElement("radar", 1)
+			player:sendNewbieTutorialEnableHudElement("radar", 1, 0)
 			writeData(player:getObjectID() .. ":tutorial:radartalk", 0)
 			createEvent(1000, "TutorialScreenPlay", "continuePanic1", creatureObject)
 			
@@ -2198,7 +2198,7 @@ end
 function TutorialScreenPlay:explainRadar(creatureObject)
 	local player = LuaCreatureObject(creatureObject)
 	
-	player:sendNewbieTutorialEnableHudElement("radar", 1)
+	player:sendNewbieTutorialEnableHudElement("radar", 1, 0)
 			
 	player:sendSystemMessage("@newbie_tutorial/system_messages:radar_more")
 	playSound = readData(player:getObjectID() .. ":tutorial:sound")
@@ -2206,7 +2206,7 @@ function TutorialScreenPlay:explainRadar(creatureObject)
 		player:playMusicMessage("sound/tut_42_map.snd")
 	end
 				
-	--player:sendNewbieTutorialEnableHudElement("all", 1)
+	--player:sendNewbieTutorialEnableHudElement("all", 1, 0)
 	
 	createEvent(15000, "TutorialScreenPlay", "explainOverlayMap", creatureObject)
 end
@@ -2326,7 +2326,7 @@ function TutorialScreenPlay:debrisDestroyedObserver(debrisObject, playerObject)
 		return 1
 	end
 	
-	player:sendNewbieTutorialEnableHudElement("all", 1)
+	player:sendNewbieTutorialEnableHudElement("all", 1, 0)
 	
 	debris:destroyObjectFromWorld()
 	
