@@ -126,56 +126,32 @@ void DamageOverTime::activate() {
 }
 
 uint32 DamageOverTime::applyDot(CreatureObject* victim) {
+	if (expires.isPast() || !nextTick.isPast())
+		return 0;
+
+	nextTick.updateToCurrentTime();
+	nextTick.addMiliTime(10000);
+
 	uint32 power = 0;
-	ManagedReference<CreatureObject*> attacker = victim->getZoneServer()->getObject(attackerID).castTo<CreatureObject*>();;
+	ManagedReference<CreatureObject*> attacker = victim->getZoneServer()->getObject(attackerID).castTo<CreatureObject*>();
 
 	if (attacker == NULL)
 		attacker = victim;
 
 	switch(type) {
 	case CreatureState::BLEEDING:
-		if (expires.isPast()) {
-			return 0;
-		}
-		else if (nextTick.isPast()){
-			power = doBleedingTick(victim, attacker);
-
-			nextTick.updateToCurrentTime();
-			nextTick.addMiliTime(10000);
-		}
+		power = doBleedingTick(victim, attacker);
+		nextTick.addMiliTime(10000);
 		break;
 	case CreatureState::POISONED:
-		if (expires.isPast()) {
-			return 0;
-		}
-		else if (nextTick.isPast()) {
-			power = doPoisonTick(victim, attacker);
-
-			nextTick.updateToCurrentTime();
-			nextTick.addMiliTime(10000);
-		}
+		power = doPoisonTick(victim, attacker);
 		break;
 	case CreatureState::DISEASED:
-		if (expires.isPast()) {
-			return 0;
-		}
-		else if (nextTick.isPast()) {
-			power = doDiseaseTick(victim);
-
-			nextTick.updateToCurrentTime();
-			nextTick.addMiliTime(40000);
-		}
+		power = doDiseaseTick(victim);
+		nextTick.addMiliTime(30000);
 		break;
 	case CreatureState::ONFIRE:
-		if (expires.isPast()) {
-			return 0;
-		}
-		else if (nextTick.isPast()) {
-			power = doFireTick(victim, attacker);
-
-			nextTick.updateToCurrentTime();
-			nextTick.addMiliTime(10000);
-		}
+		power = doFireTick(victim, attacker);
 		break;
 	}
 
@@ -186,23 +162,22 @@ uint32 DamageOverTime::initDot(CreatureObject* victim) {
 	uint32 power = 0;
 	int absorptionMod = 0;
 	nextTick.updateToCurrentTime();
+	nextTick.addMiliTime(10000);
 
 	switch(type) {
 	case CreatureState::BLEEDING:
 		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_bleeding")));
-		nextTick.addMiliTime(9000);
+		nextTick.addMiliTime(10000);
 		break;
 	case CreatureState::POISONED:
 		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_poison")));
-		nextTick.addMiliTime(9000);
 		break;
 	case CreatureState::ONFIRE:
 		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_fire")));
-		nextTick.addMiliTime(9000);
 		break;
 	case CreatureState::DISEASED:
 		absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_disease")));
-		nextTick.addMiliTime(19000);
+		nextTick.addMiliTime(30000);
 		break;
 	}
 
@@ -257,7 +232,7 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 		damage = attr - 1;
 	}
 
-	int woundsToApply = (int)(secondaryStrength * (100 + victim->getShockWounds() ) / 100.0f);
+	int woundsToApply = (int)(secondaryStrength * (1.f + victim->getShockWounds() / 100.0f));
 
 	Reference<CreatureObject*> attackerRef = attacker;
 	Reference<CreatureObject*> victimRef = victim;
@@ -319,7 +294,8 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
 	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_disease")));
 
 	// absorption reduces the strength of a dot by the given %.
-	int damage = (int)(strength * (1.f - absorptionMod / 100.f));
+	// make sure that the CM dots modify the strength
+	int damage = (int)(strength * (1.f - absorptionMod / 100.f) * (1.f + victim->getShockWounds() / 100.0f));
 	uint8 attribute = this->attribute;
 	uint32 strength = this->strength;
 	Reference<CreatureObject*> victimRef = victim;
