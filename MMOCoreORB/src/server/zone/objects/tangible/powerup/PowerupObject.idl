@@ -61,10 +61,35 @@ class PowerupObject extends TangibleObject {
 	
 	protected string type;
 	
+	protected unsigned int componentCRC;
+	
 	public PowerupObject() {
 		uses = 0;
+		componentCRC = 0;
 		
 		Logger.setLoggingName("PowerupObject");
+	}
+
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
+	@local
+	public abstract void loadTemplateData(SharedObjectTemplate templateData) {
+		super.loadTemplateData(templateData);
+
+		unsigned int appCRC = getObjectTemplate().getAppearanceCRC();
+		
+		// these come from the appearance templates in the powerup client files, but there's no easy way to regex it
+		// but since there are only 3 possible visibles, it's a small if check. If there are more, this could become a table
+		if (appCRC == 269388589) // String("appearance/wp_scope_sm_s04.apt").hashCode();
+			componentCRC = 3879215975; // String("object/tangible/component/weapon/shared_scope_weapon_sm_s04.iff").hashCode();
+		else if (appCRC == 3124983723) // String("appearance/wp_muzzle_sm_s06.apt").hashCode();
+			componentCRC = 1185101574; //String("object/tangible/component/weapon/shared_blaster_barrel_wp_muzzle_sm_s06.iff").hashCode();
+		else if (appCRC == 778808691) // String("appearance/wp_rifle_laser_stock.apt").hashCode();
+			componentCRC = 2098038776; //String("object/tangible/component/weapon/shared_weapon_rifle_laser_stock.iff").hashCode();
 	}
 	
 	@dirty
@@ -98,6 +123,11 @@ class PowerupObject extends TangibleObject {
 	
 	@dirty
 	public native float getPowerupStat(final string stat);
+	
+	@dirty
+	public unsigned int getComponentCRC() {
+		return componentCRC;
+	}
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature

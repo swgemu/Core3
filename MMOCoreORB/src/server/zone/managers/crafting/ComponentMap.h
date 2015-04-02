@@ -113,6 +113,16 @@ public:
 
 		delete iffStream;
 	}
+
+	ComponentMapEntry getFromID(uint32 id) {
+		for (int i = 0; i < size(); i++) {
+			ComponentMapEntry entry = elementAt(i).getValue();
+			if (entry.getId() == id)
+				return entry;
+		}
+
+		return ComponentMapEntry(0, "", "");
+	}
 };
 
 #endif /* COMPONENTMAP_H_ */

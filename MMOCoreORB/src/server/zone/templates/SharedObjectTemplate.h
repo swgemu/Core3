@@ -226,6 +226,10 @@ public:
 		return appearanceFilename;
 	}
 
+	inline uint32 getAppearanceCRC() const {
+		return appearanceFilename.getValue().hashCode();
+	}
+
 	inline float getClearFloraRadius() const {
 		return clearFloraRadius;
 	}

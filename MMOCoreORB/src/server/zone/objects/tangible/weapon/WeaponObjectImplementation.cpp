@@ -787,13 +787,17 @@ bool WeaponObjectImplementation::applyPowerup(CreatureObject* player, PowerupObj
 		return false;
 
 	// only update visible components if there is a pup in the client
-	ComponentMapEntry pupEntry = ComponentMap::instance()->get(pup->getClientObjectCRC());
+	ComponentMapEntry pupEntry = ComponentMap::instance()->get(pup->getComponentCRC());
 	if (pupEntry.getId() > 0) {
 		// now let's see if we've got a visible on this weapon occupying the same hardpoint
 		HashSetIterator<int> iter = visibleComponents.getIterator();
-		while (iter.hasNext()) // eww, string compare, but they are short strings
-			if (pupEntry.getHardpoint() == ComponentMap::instance()->get(iter.next()).getHardpoint())
+		while (iter.hasNext()) { // eww, string compare, but they are short strings
+			uint32 key = iter.next();
+			String hardpoint = ComponentMap::instance()->getFromID(key).getHardpoint();
+			//info("pup hardpoint: " + pupEntry.getHardpoint() + ", compare hardpoint: " + hardpoint, true);
+			if (pupEntry.getHardpoint() == hardpoint)
 				return false;
+		}
 
 		addVisibleComponent(pupEntry.getId(), false);
 		addMagicBit(false);
@@ -824,7 +828,7 @@ PowerupObject* WeaponObjectImplementation::removePowerup() {
 	powerupObject = NULL;
 
 	// only update visible components if there is a pup in the client
-	ComponentMapEntry pupEntry = ComponentMap::instance()->get(pup->getClientObjectCRC());
+	ComponentMapEntry pupEntry = ComponentMap::instance()->get(pup->getComponentCRC());
 	if (pupEntry.getId() > 0) {
 		removeVisibleComponent(pupEntry.getId(), false);
 		removeMagicBit(false);
