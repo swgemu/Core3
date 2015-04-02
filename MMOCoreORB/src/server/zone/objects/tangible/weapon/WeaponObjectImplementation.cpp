@@ -12,7 +12,6 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
-#include "server/zone/managers/crafting/ComponentMap.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/objects/tangible/powerup/PowerupObject.h"
@@ -786,25 +785,7 @@ bool WeaponObjectImplementation::applyPowerup(CreatureObject* player, PowerupObj
 	if(hasPowerup())
 		return false;
 
-	// only update visible components if there is a pup in the client
-	ComponentMapEntry pupEntry = ComponentMap::instance()->get(pup->getClientObjectCRC());
-	if (pupEntry.getId() > 0) {
-		// now let's see if we've got a visible on this weapon occupying the same hardpoint
-		HashSetIterator<int> iter = visibleComponents.getIterator();
-		while (iter.hasNext()) // eww, string compare, but they are short strings
-			if (pupEntry.getHardpoint() == ComponentMap::instance()->get(iter.next()).getHardpoint())
-				return false;
-
-		addVisibleComponent(pupEntry.getId(), false);
-		addMagicBit(false);
-
-		ManagedReference<SceneObject*> parent = getParent().get();
-		if (parent != NULL) {
-			parent->broadcastDestroy(_this.get(), true);
-			parent->broadcastObject(_this.get(), true);
-		}
-	} else
-		addMagicBit(true);
+	addMagicBit(true);
 
 	powerupObject = pup;
 
@@ -823,19 +804,7 @@ PowerupObject* WeaponObjectImplementation::removePowerup() {
 	PowerupObject* pup = powerupObject;
 	powerupObject = NULL;
 
-	// only update visible components if there is a pup in the client
-	ComponentMapEntry pupEntry = ComponentMap::instance()->get(pup->getClientObjectCRC());
-	if (pupEntry.getId() > 0) {
-		removeVisibleComponent(pupEntry.getId(), false);
-		removeMagicBit(false);
-
-		ManagedReference<SceneObject*> parent = getParent().get();
-		if (parent != NULL) {
-			parent->broadcastDestroy(_this.get(), true);
-			parent->broadcastObject(_this.get(), true);
-		}
-	} else
-		removeMagicBit(true);
+	removeMagicBit(true);
 
 	return pup;
 }

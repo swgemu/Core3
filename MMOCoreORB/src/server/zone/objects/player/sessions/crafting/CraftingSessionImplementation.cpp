@@ -13,6 +13,8 @@
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/managers/crafting/ComponentMap.h"
+#include "server/zone/objects/manufactureschematic/ingredientslots/ComponentSlot.h"
 
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
 #include "server/zone/packets/player/PlayerObjectDeltaMessage9.h"
@@ -692,6 +694,27 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	Reference<CraftingValues*> craftingValues = manufactureSchematic->getCraftingValues();
 	craftingValues->setManufactureSchematic(manufactureSchematic);
 	craftingValues->setPlayer(crafter);
+
+	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
+
+		ComponentSlot* compSlot = cast<ComponentSlot*>(manufactureSchematic->getSlot(i));
+		if (compSlot == NULL)
+			continue;
+
+		ManagedReference<TangibleObject*> tano = compSlot->getPrototype();
+		if (tano == NULL)
+			continue;
+
+		// we know that we can only have one component per hardpoint slot, so don't worry about checking them
+		ComponentMapEntry entry = ComponentMap::instance()->get(tano->getClientObjectCRC());
+		if (entry.getId() > 0)
+			prototype->addVisibleComponent(entry.getId(), false);
+	}
+
+	if (prototype->getVisibleComponents() != NULL && prototype->getVisibleComponents()->size() > 0) {
+		prototype->sendDestroyTo(crafter);
+		prototype->sendTo(crafter, true);
+	}
 
 	// Flag to get the experimenting window
 	if (craftingStation != NULL && (craftingValues->getVisibleExperimentalPropertyTitleSize() > 0 || manufactureSchematic->allowFactoryRun()))
