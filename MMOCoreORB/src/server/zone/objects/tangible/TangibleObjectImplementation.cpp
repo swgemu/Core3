@@ -281,6 +281,8 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 	if (defender == _this.get())
 		return;
 
+	assert(defender);
+
 	if (defenderList.size() == 0) {
 		addDefender(defender);
 		return;
@@ -319,6 +321,8 @@ void TangibleObjectImplementation::setDefender(SceneObject* defender) {
 void TangibleObjectImplementation::addDefender(SceneObject* defender) {
 	if (defender == _this.get())
 		return;
+
+	assert(defender);
 
 	for (int i = 0; i < defenderList.size(); ++i) {
 		if (defender == defenderList.get(i))
