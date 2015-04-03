@@ -133,9 +133,9 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 	DeltaVector<ManagedReference<SceneObject*> >* defenderList = attacker->getDefenderList();
 
 	for (int i = 0; i < defenderList->size(); ++i) {
-		ManagedReference<SceneObject*> object = defenderList->get(i);
+		ManagedReference<SceneObject*> object = defenderList->getSafe(i);
 
-		if (!object->isTangibleObject())
+		if (object == NULL || !object->isTangibleObject())
 			continue;
 
 		TangibleObject* defender = cast<TangibleObject*>( object.get());
