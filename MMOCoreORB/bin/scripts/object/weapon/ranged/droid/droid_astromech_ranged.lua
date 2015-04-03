@@ -48,19 +48,41 @@ object_weapon_ranged_droid_droid_astromech_ranged = object_weapon_ranged_droid_s
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = RANGEDATTACK,
-	
+
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = ELECTRICITY,
-	
+
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = LIGHT,
-	
+
+	xpType = "combat_general",
+
+	certificationsRequired = {  },
+
+	creatureAccuracyModifiers = { "rifle_accuracy" },
+
+	defenderDefenseModifiers = { "ranged_defense" },
+
+	defenderSecondaryDefenseModifiers = { "block" },
+
+	speedModifiers = { "rifle_speed" },
+
+	damageModifiers = { },
+
+	-- The values below are the default values.  To be used for blue frog objects primarily
+	healthAttackCost = 0,
+	actionAttackCost = 0,
+	mindAttackCost = 0,
+	forceCost = 0,
+
 	pointBlankRange = 0,
 	pointBlankAccuracy = 10,
 	idealRange = 15,
 	idealAccuracy = 50,
 	maxRange = 65,
 	maxRangeAccuracy = 0,
+	minDamage = 100,
+	maxDamage = 200,
 	attackSpeed = 2,
 	woundsRatio = 10,
 }

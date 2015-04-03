@@ -56,6 +56,26 @@ object_weapon_ranged_vehicle_vehicle_atst_ranged = object_weapon_ranged_vehicle_
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = HEAVY,
 
+	xpType = "combat_general",
+
+	certificationsRequired = {  },
+
+	creatureAccuracyModifiers = { "rifle_accuracy" },
+
+	defenderDefenseModifiers = { "ranged_defense" },
+
+	defenderSecondaryDefenseModifiers = { "block" },
+
+	speedModifiers = { "rifle_speed" },
+
+	damageModifiers = { },
+
+	-- The values below are the default values.  To be used for blue frog objects primarily
+	healthAttackCost = 0,
+	actionAttackCost = 0,
+	mindAttackCost = 0,
+	forceCost = 0,
+
 	pointBlankRange = 0,
 	pointBlankAccuracy = 0,
 
@@ -71,7 +91,6 @@ object_weapon_ranged_vehicle_vehicle_atst_ranged = object_weapon_ranged_vehicle_
 	attackSpeed = 2,
 
 	woundsRatio = 10,
-
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_vehicle_vehicle_atst_ranged, "object/weapon/ranged/vehicle/vehicle_atst_ranged.iff")
