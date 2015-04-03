@@ -135,7 +135,7 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 	for (int i = 0; i < defenderList->size(); ++i) {
 		ManagedReference<SceneObject*> object = defenderList->get(i);
 
-		if (!object->isTangibleObject())
+		if (object == NULL || !object->isTangibleObject())
 			continue;
 
 		TangibleObject* defender = cast<TangibleObject*>( object.get());
