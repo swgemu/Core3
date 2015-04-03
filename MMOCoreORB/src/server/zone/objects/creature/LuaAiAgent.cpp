@@ -842,6 +842,8 @@ int LuaAiAgent::assist(lua_State* L) {
 		return 0;
 
 	SceneObject* target = agent->getFollowObject();
+	if (target == NULL)
+		return 0;
 
 	Locker locker(realObject);
 
