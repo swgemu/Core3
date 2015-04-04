@@ -45,8 +45,8 @@ Saber2hSweep1Command = {
         name = "saber2hsweep1",
         
     damageMultiplier = 1.25,
-	speedMultiplier = 1.5,
-	forceCostMultiplier = 3.0, -- Not correct
+	speedMultiplier = 1.25,
+	forceCostMultiplier = 1.25,
 
 	stateEffects = {
 	  StateEffect( 
@@ -54,13 +54,13 @@ Saber2hSweep1Command = {
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
 		{}, 
-		15, 
+		100, 
 		100, 
 		0 
 	  )
 	},
 
-	animationCRC = hashCode("combo_2a_light"),
+	animationCRC = hashCode("lower_posture_2h_melee_3"),
 
 	combatSpam = "saber2hsweep1",
 	

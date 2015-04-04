@@ -44,13 +44,13 @@
 SaberPolearmSpinAttack1Command = {
         name = "saberpolearmspinattack1",
        
-    damageMultiplier = 1.5,
-	speedMultiplier = 1.5,
-	forceCostMultiplier = 1.5,
+    damageMultiplier = 0.75,
+	speedMultiplier = 1.25,
+	forceCostMultiplier = 1.25,
 	areaAction = true,
-	areaRange = 7,
+	areaRange = 8,
 
-	animationCRC = hashCode("showoff_1_light"),
+	animationCRC = hashCode("counter_low_left_light"),
 
 	combatSpam = "saberpolearmspinattack1",
 	

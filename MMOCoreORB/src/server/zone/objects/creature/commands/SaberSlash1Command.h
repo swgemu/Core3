@@ -70,7 +70,14 @@ public:
 
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 
-		if (!weapon->isJediWeapon()) {
+
+		if (weapon->isJediOneHandedWeapon()) {
+			animationCRC = String("knockdown_1h_melee_1").hashCode();
+		} else if (weapon->isJediTwoHandedWeapon()) {
+			animationCRC = String("knockdown_2h_melee_1").hashCode();
+		} else if (weapon->isJediPolearmWeapon()) {
+			animationCRC = String("knockdown_polearm_1").hashCode();
+		} else {
 			return INVALIDWEAPON;
 		}
 

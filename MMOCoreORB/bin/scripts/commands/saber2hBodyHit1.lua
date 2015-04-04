@@ -44,11 +44,11 @@
 Saber2hBodyHit1Command = {
         name = "saber2hbodyhit1",
         
-    damageMultiplier = 1.25,
+    damageMultiplier = 1.5,
 	speedMultiplier = 1.5,
-	forceCostMultiplier = 1.5, -- Not correct
+	forceCostMultiplier = 1.25,
 
-	animationCRC = hashCode("combo_3a_medium"),
+	animationCRC = hashCode("combo_3b_medium"),
 
 	combatSpam = "saber2hbodyhit1",
 	

@@ -47,10 +47,10 @@ SaberThrow3Command = {
                 
         
 	damageMultiplier = 2.0,
-	speedMultiplier = 1.5,
-	coneAngle = 60,
+	speedMultiplier = 4.5,
+	coneAngle = 30,
 	coneAction = true,
-	forceCostMultiplier = 3.0,
+	forceCostMultiplier = 2.5,
 
 	stateEffects = {
 	   StateEffect( 
@@ -58,13 +58,13 @@ SaberThrow3Command = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		40, 
 		100, 
-		10
+		0, 
+		0
 	  )
 	},
 
-	animationCRC = hashCode("saberthrow_light"),
+	animationCRC = hashCode("saberthrow_posture_change"),
 
 	combatSpam = "saberthrow3",
 	

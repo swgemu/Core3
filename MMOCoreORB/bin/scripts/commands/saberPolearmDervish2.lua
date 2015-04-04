@@ -46,8 +46,8 @@ SaberPolearmDervish2Command = {
         
         
 	damageMultiplier = 4.5,
-	speedMultiplier = 1.5,
-	coneAngle = 60,
+	speedMultiplier = 4.0,
+	coneAngle = 45,
 	coneAction = true,
 	forceCostMultiplier = 3.0,
 
@@ -57,27 +57,27 @@ SaberPolearmDervish2Command = {
 		{}, 
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		30, 
+		75, 
 		100, 
-		10 
+		60 
 	  ),
 	  StateEffect( 
 		DIZZY_EFFECT, 
 		{}, 
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		30, 
+		75, 
 		100, 
-		10 
+		30 
 	  ),
 	  StateEffect( 
 		STUN_EFFECT, 
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		30, 
+		76, 
 		100, 
-		10 
+		60
 	  )
 	},
 
