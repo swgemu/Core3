@@ -18,7 +18,7 @@ protected:
 	InformationHeader informationHeader;
 
 public:
-	ProceduralRule() {
+	ProceduralRule() : IffTemplateVariable() {
 
 	}
 

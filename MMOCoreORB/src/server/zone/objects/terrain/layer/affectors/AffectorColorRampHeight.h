@@ -18,7 +18,7 @@ class AffectorColorRampHeight : public ProceduralRule<'ACRH'>, public AffectorPr
 	String shaderFile; //.tga
 
 public:
-	AffectorColorRampHeight() {
+	AffectorColorRampHeight() : familyId(0), min(0), max(0) {
 
 	}
 

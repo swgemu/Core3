@@ -17,7 +17,7 @@ class AffectorHeightConstant : public ProceduralRule<'AHCN'>, public AffectorPro
 	float height;
 
 public:
-	AffectorHeightConstant() {
+	AffectorHeightConstant() : operationType(0), height(0) {
 		affectorType = HEIGHTCONSTANT;
 	}
 

@@ -17,7 +17,7 @@ class ChatDeletePersistentMessageCallback : public MessageCallback {
 
 public:
 	ChatDeletePersistentMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), mailid(0) {
 	}
 
 	void parse(Message* message) {

@@ -36,10 +36,7 @@ public:
 	const static int SHADER = 4;
 	const static int BITMAP = 5;
 
-	FilterProceduralRule(int type) {
-		featheringType = 0;
-		filterType = 0;
-		internalType = type;
+	FilterProceduralRule(int type) : featheringType(0), featheringAmount(0), filterType(0), internalType(type) {
 	}
 
 	virtual ~FilterProceduralRule() {

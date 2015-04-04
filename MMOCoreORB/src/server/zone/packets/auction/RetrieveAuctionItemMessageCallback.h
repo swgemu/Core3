@@ -19,7 +19,7 @@ class RetrieveAuctionItemMessageCallback : public MessageCallback {
 
 public:
 	RetrieveAuctionItemMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-			MessageCallback(client, server) {
+			MessageCallback(client, server), objectid(0), bazaarid(0) {
 
 	}
 

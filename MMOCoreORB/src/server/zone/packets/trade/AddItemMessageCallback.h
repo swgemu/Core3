@@ -17,7 +17,7 @@ class AddItemMessageCallback : public MessageCallback {
 
 public:
 	AddItemMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), id(0) {
 
 	}
 

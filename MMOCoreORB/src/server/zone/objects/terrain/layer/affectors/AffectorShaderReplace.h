@@ -19,7 +19,7 @@ class AffectorShaderReplace : public ProceduralRule<'ASRP'>, public AffectorProc
 	float featheringAmount;
 
 public:
-	AffectorShaderReplace() {
+	AffectorShaderReplace() : oldShaderId(0), newShaderId(0), featheringType(0), featheringAmount(0) {
 
 	}
 

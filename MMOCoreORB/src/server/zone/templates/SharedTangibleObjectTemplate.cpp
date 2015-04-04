@@ -23,6 +23,23 @@ SharedTangibleObjectTemplate::SharedTangibleObjectTemplate() {
 	experimentalCombineType = new Vector<short>();
 	playerRaces = new Vector<uint32>();
 
+	playerUseMask = 0;
+
+	level = 0;
+
+	maxCondition = 0;
+
+	optionsBitmask = 0;
+	pvpStatusBitmask = 0;
+
+	useCount = 0;
+
+	factoryCrateSize = 0;
+
+	sliceable = false;
+
+	faction = 0;
+
 	resourceWeights = new Vector<Reference<ResourceWeight* > >();
 
 	skillMods.setNoDuplicateInsertPlan();

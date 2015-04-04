@@ -17,7 +17,7 @@ class FilterHeight : public ProceduralRule<'FHGT'>, public FilterProceduralRule 
 	float maxHeight;
 
 public:
-	FilterHeight() : FilterProceduralRule(0) {
+	FilterHeight() : FilterProceduralRule(0), minHeight(0), maxHeight(0) {
 		filterType = HEIGHTTYPE;
 	}
 

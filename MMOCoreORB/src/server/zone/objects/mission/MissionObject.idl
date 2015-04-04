@@ -233,10 +233,12 @@ class MissionObject extends IntangibleObject {
 		endPlanet = planetName;
 	}
 
+	@local
 	public void setMissionTarget(NpcSpawnPoint target) {
 		missionTarget = target;
 	}
 
+	@local
 	public void setMissionTargetDest(NpcSpawnPoint target) {
 		missionTargetDest = target;
 	}
@@ -315,11 +317,13 @@ class MissionObject extends IntangibleObject {
 	}
 	
 	@dirty
+	@local
 	public NpcSpawnPoint getMissionTarget() {
 		return missionTarget;
 	}
 	
 	@dirty
+	@local
 	public NpcSpawnPoint getMissionTargetDest() {
 		return missionTargetDest;
 	}

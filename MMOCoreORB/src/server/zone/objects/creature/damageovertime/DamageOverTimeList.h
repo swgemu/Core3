@@ -22,7 +22,7 @@ public:
 		dot = false;
 	}
 
-	DamageOverTimeList(const DamageOverTimeList& list) : VectorMap<uint64, Vector<DamageOverTime> >(list) {
+	DamageOverTimeList(const DamageOverTimeList& list) : VectorMap<uint64, Vector<DamageOverTime> >(list), guard() {
 		setNoDuplicateInsertPlan();
 
 		nextTick = list.nextTick;

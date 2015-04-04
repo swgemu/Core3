@@ -25,7 +25,7 @@ class CreateAuctionMessageCallback : public MessageCallback {
 	byte premium;
 public:
 	CreateAuctionMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-			MessageCallback(client, server) {
+			MessageCallback(client, server), objectID(0), vendorID(0), price(0), duration(0), premium(0) {
 
 	}
 
