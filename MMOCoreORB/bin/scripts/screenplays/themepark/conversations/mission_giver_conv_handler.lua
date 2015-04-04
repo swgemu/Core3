@@ -92,6 +92,7 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
 	local nextScreenName
 	local activeScreenPlay = readStringData(CreatureObject(pConversingPlayer):getObjectID() .. ":activeScreenPlay")
+
 	if activeScreenPlay == self.themePark.className or activeScreenPlay == "" then
 		local activeNpcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
 		local thisNpcNumber = self.themePark:getNpcNumber(pConversingNpc)
@@ -99,13 +100,12 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 		local npcCompare = thisNpcNumber - activeNpcNumber
 		local globalFaction = self.themePark:getGlobalFaction()
 		local currentMissionNumber = self.themePark:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
-		local missionFaction
+		local missionFaction = 0
+
 		if currentMissionNumber > 0 and thisNpcNumber == activeNpcNumber then
 			missionFaction = self.themePark:getMissionFaction(activeNpcNumber, currentMissionNumber)
 		elseif thisNpcNumber ~= activeNpcNumber then
 			missionFaction = self.themePark:getNpcFaction(thisNpcNumber)
-		else
-			missionFaction = 0
 		end
 
 		if (self.themePark:missionStatus(pConversingPlayer) == -1) then
@@ -251,9 +251,14 @@ function mission_giver_conv_handler:handleScreenNpc1(pConversationTemplate, pCon
 	local clonedScreen = LuaConversationScreen(pConversationScreen)
 
 	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
-	local npcData = self.themePark:getNpcData(npcNumber)
 
 	if (self.themePark.genericGiver) then
+		local npcData = self.themePark:getNpcData(npcNumber)
+
+		if npcData == nil then
+			return nil
+		end
+
 		writeData(CreatureObject(pConversingPlayer):getObjectID() .. ":generic_mission_number", getRandomNumber(1, table.getn(npcData.missions)))
 	end
 
@@ -400,6 +405,7 @@ function mission_giver_conv_handler:handleScreenReset(pConversationTemplate, pCo
 	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
+
 	if (self.themePark:isValidConvoString(stfFile, ":npc_reset_" .. missionNumber)) then
 		clonedScreen:setDialogTextStringId(stfFile .. ":npc_reset_" .. missionNumber)
 	else
@@ -435,7 +441,6 @@ function mission_giver_conv_handler:handleScreenNext(pConversationTemplate, pCon
 	local clonedScreen = LuaConversationScreen(pConversationScreen)
 
 	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
-	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local stfFile = self.themePark:getStfFile(npcNumber)
 
 	clonedScreen:setDialogTextStringId(stfFile .. ":next")
@@ -492,6 +497,7 @@ function mission_giver_conv_handler:handleScreenCantWork(pConversationTemplate, 
 
 	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
 	local stfFile = self.themePark:getStfFile(npcNumber)
+
 	if (self.themePark:isValidConvoString(stfFile, ":cant_work")) then
 		clonedScreen:setDialogTextStringId(stfFile .. ":cant_work")
 	elseif (self.themePark:isValidConvoString(stfFile, ":cantwork")) then
