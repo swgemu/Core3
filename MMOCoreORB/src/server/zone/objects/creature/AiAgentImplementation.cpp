@@ -2700,7 +2700,15 @@ void AiAgentImplementation::setCombatState() {
 	if (homeObject != NULL)
 		homeObject->notifyObservers(ObserverEventType::AIMESSAGE, _this.get(), ObserverEventType::STARTCOMBAT);
 
-	sendReactionChat(ReactionManager::ATTACKED);
+	ManagedReference<SceneObject*> followCopy = getFollowObject();
+	if (followCopy != NULL && followCopy->isTangibleObject()) {
+		TangibleObject* target = cast<TangibleObject*>(followCopy.get());
+
+		Locker clocker(target, _this.get());
+
+		if (target->hasDefender(_this.get()))
+			sendReactionChat(ReactionManager::ATTACKED);
+	}
 
 	//broadcastInterrupt(ObserverEventType::STARTCOMBAT);
 
