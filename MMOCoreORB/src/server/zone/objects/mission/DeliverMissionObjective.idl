@@ -111,11 +111,13 @@ class DeliverMissionObjective extends MissionObjective {
 	public abstract native boolean updateMissionTarget(CreatureObject player);
 
 	@dirty
+	@local
 	public NpcSpawnPoint getTargetSpawnPoint() {
 		return targetSpawnPoint;
 	}
 	
 	@dirty
+	@local
 	public NpcSpawnPoint getDestinationSpawnPoint() {
 		return destinationSpawnPoint;
 	}

@@ -23,9 +23,8 @@ class CraftingRemoveIngredientCallback : public MessageCallback {
 	ObjectControllerMessageCallback* objectControllerMain;
 public:
 	CraftingRemoveIngredientCallback(ObjectControllerMessageCallback* objectControllerCallback) :
-		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
-
-		objectControllerMain = objectControllerCallback;
+		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
+		objectID(0), slot(0), counter(0), objectControllerMain(objectControllerCallback) {
 	}
 
 	void parse(Message* message) {

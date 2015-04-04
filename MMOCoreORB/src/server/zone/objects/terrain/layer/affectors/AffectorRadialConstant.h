@@ -18,7 +18,7 @@ class AffectorRadialConstant : public ProceduralRule<'AFDN'>, public AffectorPro
 	float featheringAmount;
 
 public:
-	AffectorRadialConstant() {
+	AffectorRadialConstant() : familyId(0), var2(0), flag(0), featheringType(0), featheringAmount(0) {
 
 	}
 

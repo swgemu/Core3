@@ -163,6 +163,7 @@ class MissionManager extends Observer implements Logger {
 	public native void createBountyMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 	public native void createCraftingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 
+	@local
 	public native NpcSpawnPoint getRandomFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
 	public native void createSpawnPoint(CreatureObject player, final string spawnTypes);
 	
@@ -192,7 +193,9 @@ class MissionManager extends Observer implements Logger {
 	
 	@local
 	public native void allocateMissionNpcs(NpcSpawnPoint target, NpcSpawnPoint destination, TerrainManager terrainManager, CreatureManager creatureManager);
+	@local
 	public native void freeMissionNpc(NpcSpawnPoint npc);
+	@local
 	public native void despawnMissionNpc(NpcSpawnPoint npc);
 	
 	public native void deactivateMissions(CreatureObject player);

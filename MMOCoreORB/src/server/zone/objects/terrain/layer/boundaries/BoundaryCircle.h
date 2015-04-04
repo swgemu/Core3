@@ -18,7 +18,7 @@ class BoundaryCircle : public ProceduralRule<'BCIR'>, public Boundary {
 	float radiusSquared;
 
 public:
-	BoundaryCircle() {
+	BoundaryCircle() : centerX(0), centerY(0), radius(0), radiusSquared(0) {
 		//ruleType = BOUNDARYCIRCLE;
 	}
 

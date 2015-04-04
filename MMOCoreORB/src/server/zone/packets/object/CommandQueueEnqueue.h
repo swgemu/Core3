@@ -75,9 +75,9 @@ class CommandQueueEnqueueCallback : public MessageCallback {
 
 public:
 	CommandQueueEnqueueCallback(ObjectControllerMessageCallback* objectControllerCallback) :
-		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
+		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
+		size(0), actionCount(0), actionCRC(0), targetID(0), objectControllerMain(objectControllerCallback) {
 
-		objectControllerMain = objectControllerCallback;
 	}
 
 	void parse(Message* message) {

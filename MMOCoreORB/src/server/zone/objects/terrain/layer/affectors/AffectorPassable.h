@@ -15,7 +15,7 @@ class AffectorPassable : public ProceduralRule<'APAS'>, public AffectorProcedura
 	float var1, var2;
 
 public:
-	AffectorPassable() {
+	AffectorPassable() : var1(0), var2(0) {
 
 	}
 

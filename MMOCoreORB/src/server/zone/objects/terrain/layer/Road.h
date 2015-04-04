@@ -16,6 +16,10 @@ class Road : public TemplateVariable<'ROAD'> {
 	Vector<Segment*> sgmts;
 
 public:
+	Road() : IffTemplateVariable() {
+
+	}
+
 	~Road() {
 		for (int i = 0; i < sgmts.size(); ++i)
 			delete sgmts.get(i);

@@ -15,7 +15,7 @@ class ClientInactivityMessageCallback : public MessageCallback {
 
 public:
 	ClientInactivityMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), flag(0) {
 
 	}
 

@@ -32,8 +32,7 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	Vector<SignTemplate> shopSigns;
 
 public:
-	SharedBuildingObjectTemplate() {
-		factionBaseType = 0;
+	SharedBuildingObjectTemplate() : medicalRating(0), publicStructure(false), alwaysPublic(false), factionBaseType(0) {
 	}
 
 	~SharedBuildingObjectTemplate() {

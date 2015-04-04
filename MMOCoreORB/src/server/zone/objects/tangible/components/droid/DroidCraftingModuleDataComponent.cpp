@@ -45,7 +45,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/templates/tangible/DroidCraftingModuleTemplate.h"
 
-DroidCraftingModuleDataComponent::DroidCraftingModuleDataComponent() {
+DroidCraftingModuleDataComponent::DroidCraftingModuleDataComponent() : craftingType(0) {
 	setLoggingName("DroidCraftingModule");
 }
 DroidCraftingModuleDataComponent::~DroidCraftingModuleDataComponent() {

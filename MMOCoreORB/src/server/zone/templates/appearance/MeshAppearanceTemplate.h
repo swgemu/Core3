@@ -53,7 +53,7 @@ protected:
 	int vertex1, vertex2, vertex3;
 
 public:
-	MeshTriangle() {
+	MeshTriangle() : vertex1(0), vertex2(0), vertex3(0) {
 
 	}
 

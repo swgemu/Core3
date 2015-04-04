@@ -26,9 +26,8 @@ class ImageDesignChangeMessageCallback : public MessageCallback {
 
 public:
 	ImageDesignChangeMessageCallback(ObjectControllerMessageCallback* objectControllerCallback) :
-		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
-
-		objectControllerMain = objectControllerCallback;
+		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
+		designerID(0), targetID(0), tentID(0), type(0), objectControllerMain(objectControllerCallback) {
 
 	}
 

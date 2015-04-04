@@ -18,12 +18,21 @@ ThreatMatrix::~ThreatMatrix() {
 
 }
 
-ThreatMatrix::ThreatMatrix(const ThreatMatrix& e) {
+ThreatMatrix::ThreatMatrix(const ThreatMatrix& e) : tauntThreat(e.tauntThreat),
+		focusedThreat(e.focusedThreat), damageMap(e.damageMap), aggroMap(e.aggroMap), healMap(e.healMap) {
 
 }
 
 ThreatMatrix& ThreatMatrix::operator=(const ThreatMatrix& e) {
-	//VectorMap<ManagedReference<WeaponObject*>, uint32>::operator=(e);
+	if (this == &e)
+		return *this;
+
+	tauntThreat = e.tauntThreat;
+	focusedThreat = e.focusedThreat;
+
+	damageMap = e.damageMap;
+	aggroMap = e.aggroMap;
+	healMap = e.healMap;
 
 	return *this;
 }

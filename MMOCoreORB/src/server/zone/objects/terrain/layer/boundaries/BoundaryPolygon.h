@@ -26,14 +26,14 @@ class BoundaryPolygon : public ProceduralRule<'BPOL'>,  public Boundary {
 	float minX, minY, maxX, maxY;
 
 public:
-	BoundaryPolygon() {
+	BoundaryPolygon() : localWaterTableEnabled(0), localWaterTableHeight(0), shaderSize(0) {
 		//ruleType = BOUNDARYPOLYGON;
 
 		minX = 800000000;
 		minY = 800000000;
 
 		maxX = -80000000;
-		minX = -80000000;
+		maxY = -80000000;
 	}
 
 	~BoundaryPolygon() {
@@ -51,7 +51,7 @@ public:
 		minY = 800000000;
 
 		maxX = -80000000;
-		minX = -80000000;
+		maxY = -80000000;
 
 		for(int i = 0; i < vertices.size(); ++i) {
 			Point2D* point = vertices.get(i);

@@ -17,7 +17,7 @@ class CancelLiveAuctionMessageCallback : public MessageCallback {
 
 public:
 	CancelLiveAuctionMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-			MessageCallback(client, server) {
+			MessageCallback(client, server), objectid(0) {
 
 	}
 

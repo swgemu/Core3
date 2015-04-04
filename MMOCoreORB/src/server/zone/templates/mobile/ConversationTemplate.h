@@ -78,6 +78,8 @@ public:
 	ConversationTemplate(uint32 hashCode) : Logger("ConversationTemplate") {
 		screens.setNoDuplicateInsertPlan();
 		crc = hashCode;
+
+		conversationTemplateType = ConversationTemplateTypeNormal;
 	}
 
 	virtual ~ConversationTemplate() {
