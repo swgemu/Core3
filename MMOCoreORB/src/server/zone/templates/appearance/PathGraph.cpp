@@ -20,7 +20,7 @@ void PathGraph::readObject(IffStream* iffStream) {
 	iffStream->openForm('0001');
 	iffStream->openChunk('META');
 
-	unkownMetaInt = iffStream->getInt();
+	type = static_cast<PathGraphType>(iffStream->getInt());
 
 	iffStream->closeChunk('META');
 
@@ -59,7 +59,7 @@ void PathGraph::readObject(IffStream* iffStream) {
 	int ecntSize = iffStream->getInt();
 
 	for (int i = 0; i < ecntSize; ++i) {
-		ecnt.add(iffStream->getInt());
+		edgeCounts.add(iffStream->getInt());
 	}
 
 	iffStream->closeChunk('ECNT');
@@ -69,7 +69,7 @@ void PathGraph::readObject(IffStream* iffStream) {
 	int estrSize = iffStream->getInt();
 
 	for (int i = 0; i < estrSize; ++i) {
-		estr.add(iffStream->getInt());
+		edgeStarts.add(iffStream->getInt());
 	}
 
 	iffStream->closeChunk('ESTR');
