@@ -78,7 +78,7 @@ void CreatureAttackData::fillFromBase() {
 	coneAngle = baseCommand->getConeAngle();
 	range = baseCommand->getRange();
 	areaRange = baseCommand->getAreaRange();
-	animationCRC = baseCommand->getAnimationCRC();
+	animationCRC = baseCommand->getAnimationCRC(System::random(baseCommand->getAnimationCRCs.size() - 1));
 	attackType = baseCommand->getAttackType();
 	trails = baseCommand->getTrails();
 	combatSpam = baseCommand->getCombatSpam();
