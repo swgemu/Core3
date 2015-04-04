@@ -46,10 +46,10 @@ Saber1hHit3Command = {
         
                            
     damageMultiplier = 2.5,
-	speedMultiplier = 1.5,
-	forceCostMultiplier = 3.0,
+	speedMultiplier = 2.5,
+	forceCostMultiplier = 2.0,
 
-	animationCRC = hashCode("combo_4a_medium"),
+	animationCRC = hashCode("combo_jedi_3_light"),
 	
 	stateEffects = {
 	  StateEffect( 
@@ -57,9 +57,9 @@ Saber1hHit3Command = {
 		{}, 
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		40, 
+		75, 
 		100, 
-		10 
+		90 
 	  )
 	},
 

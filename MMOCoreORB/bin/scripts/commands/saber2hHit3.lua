@@ -45,10 +45,10 @@ Saber2hHit3Command = {
         name = "saber2hhit3",
         
     damageMultiplier = 2.5,
-	speedMultiplier = 3.0,
-	forceCostMultiplier = 3.0,
+	speedMultiplier = 2.5,
+	forceCostMultiplier = 2.0,
 
-	animationCRC = hashCode("combo_4a_medium"),
+	animationCRC = hashCode("showoff_3_light"),
 
 	combatSpam = "saber2hhit3",
 	

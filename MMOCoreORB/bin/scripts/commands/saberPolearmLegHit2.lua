@@ -46,10 +46,10 @@ SaberPolearmLegHit2Command = {
         
                 
     damageMultiplier = 1.5,
-	speedMultiplier = 1.5,
-	forceCostMultiplier = 1.5,
+	speedMultiplier = 1.25,
+	forceCostMultiplier = 1.25,
 
-	animationCRC = hashCode("combo_3d_medium"),
+	animationCRC = hashCode("combo_3b_medium"),
 
 	combatSpam = "saberpolearmleghit2",
 	

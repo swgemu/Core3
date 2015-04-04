@@ -45,9 +45,7 @@ SaberThrow1Command = {
         name = "saberthrow1",                
         
 	damageMultiplier = 1.5,
-	speedMultiplier = 1.5,
-	coneAngle = 60,
-	coneAction = true,
+	speedMultiplier = 2.0,
 	forceCostMultiplier = 1.5,
 
 	animationCRC = hashCode("saberthrow_light"),
