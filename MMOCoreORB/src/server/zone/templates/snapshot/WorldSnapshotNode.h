@@ -27,7 +27,7 @@ class WorldSnapshotNode : public Object {
 	uint32 unknown2;
 
 public:
-	WorldSnapshotNode() : Object() {
+	WorldSnapshotNode() : Object(), objectID(0), parentID(0), nameID(0), cellid(0), gameObjectType(0), unknown2(0) {
 
 	}
 

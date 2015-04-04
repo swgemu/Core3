@@ -16,7 +16,7 @@ class AffectorHeightTerrace : public ProceduralRule<'AHTR'>, public AffectorProc
 	float height;
 
 public:
-	AffectorHeightTerrace() {
+	AffectorHeightTerrace() : flatRatio(0), height(0) {
 		affectorType = HEIGHTTERRACE;
 	}
 

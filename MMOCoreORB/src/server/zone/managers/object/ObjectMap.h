@@ -55,10 +55,10 @@ class ObjectMap : public Object {
 	int maxConnections;
 
 public:
-	ObjectMap() : objects(3000){
+	ObjectMap() : objects(3000), maxConnections(50000) {
 	}
 
-	ObjectMap(int initsize) : objects(initsize) {
+	ObjectMap(int initsize) : objects(initsize), maxConnections(50000) {
 	}
 
 	SceneObject* put(uint64 oid, SceneObject* object) {

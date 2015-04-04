@@ -19,7 +19,7 @@ class VerifyPlayerNameCallback : public MessageCallback {
 
 public:
 	VerifyPlayerNameCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), playerID(0) {
 
 	}
 

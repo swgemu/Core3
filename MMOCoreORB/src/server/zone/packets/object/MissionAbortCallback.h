@@ -22,9 +22,9 @@ class MissionAbortCallback : public MessageCallback {
 	ObjectControllerMessageCallback* objectControllerMain;
 public:
 	MissionAbortCallback(ObjectControllerMessageCallback* objectControllerCallback) :
-		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
+		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
+		missionObjectID(0), objectControllerMain(objectControllerCallback) {
 
-		objectControllerMain = objectControllerCallback;
 	}
 
 	void parse(Message* message) {

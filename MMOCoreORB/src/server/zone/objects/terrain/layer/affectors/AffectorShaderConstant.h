@@ -17,7 +17,7 @@ class AffectorShaderConstant : public ProceduralRule<'ASCN'>, public AffectorPro
 	float featheringAmount; // how much to soften
 
 public:
-	AffectorShaderConstant() {
+	AffectorShaderConstant() : familyId(0), featheringType(0), featheringAmount(0) {
 
 	}
 

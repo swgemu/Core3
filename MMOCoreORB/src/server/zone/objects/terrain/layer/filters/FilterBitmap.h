@@ -25,8 +25,7 @@ class FilterBitmap : public ProceduralRule<'FBIT'>, public FilterProceduralRule 
 	TargaBitmap* map;
 
 public:
-	FilterBitmap() : FilterProceduralRule(5) { //magic numbers from the client
-		map = NULL;
+	FilterBitmap() : FilterProceduralRule(5), bitmapId(0), min(0), max(0), map(NULL) { //magic numbers from the client
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {

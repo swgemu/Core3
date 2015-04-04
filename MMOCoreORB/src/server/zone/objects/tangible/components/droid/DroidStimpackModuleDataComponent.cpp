@@ -58,6 +58,7 @@ DroidStimpackModuleDataComponent::DroidStimpackModuleDataComponent() {
 	speed = 0;
 	capacity = 0;
 	rate = 0;
+	loaded = 0;
 }
 DroidStimpackModuleDataComponent::~DroidStimpackModuleDataComponent() {
 

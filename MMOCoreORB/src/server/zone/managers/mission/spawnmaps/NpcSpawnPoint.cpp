@@ -47,6 +47,7 @@ which carries forward this exception.
 #include "server/zone/managers/name/NameManager.h"
 
 NpcSpawnPoint::NpcSpawnPoint() {
+	inUseByNumberOfMissions = 0;
 	spawnType = 0;
 	despawnMissionNpcTask = NULL;
 	npcSpawned = false;

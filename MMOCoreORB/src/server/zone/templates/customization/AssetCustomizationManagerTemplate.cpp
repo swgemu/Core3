@@ -11,17 +11,29 @@
 
 AssetCustomizationManagerTemplate::AssetCustomizationManagerTemplate() {
 	ulstTable = NULL;
+	ulstTableCount = 0;
 	ucmpTable = NULL;
+	ucmpTableCount = 0;
 	vnofTable = NULL;
+	vnofTableCount = 0;
 	nameTable = NULL;
+	nameTableCount = 0;
 	pnofTable = NULL;
+	pnofTableCount = 0;
 	defvTable = NULL;
+	defvTableCount = 0;
 	irngTable = NULL;
+	irngTableCount = 0;
 	rtypTable = NULL;
+	rtypTableCount = 0;
 	uidxTable = NULL;
+	uidxTableCount = 0;
 	llstTable = NULL;
+	llstTableCount = 0;
 	lidxTable = NULL;
+	lidxTableCount = 0;
 	cidxTable = NULL;
+	cidxTableCount = 0;
 }
 
 AssetCustomizationManagerTemplate::~AssetCustomizationManagerTemplate() {

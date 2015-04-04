@@ -83,7 +83,7 @@ namespace spawnmaps {
 /**
  * Container for a NPC spawn point usable in missions.
  */
-class NpcSpawnPoint : public DistributedObject, public Logger {
+class NpcSpawnPoint : public Logger, public Object {
 protected:
 	/**
 	 * The position on the planet.

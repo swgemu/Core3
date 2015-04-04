@@ -8,8 +8,10 @@
 #ifndef SHIPUPDATETRANSFORMMESSAGE_H_
 #define SHIPUPDATETRANSFORMMESSAGE_H_
 
-
 #include "server/zone/objects/ship/ShipObject.h"
+
+#include "PackedVelocity.h"
+#include "PackedRotationRate.h"
 
 class ShipUpdateTransformMessage : public BaseMessage {
 public:
@@ -42,6 +44,36 @@ public:
 
 	    insertInt(scno->getMovementCounter());
 	}
+
+	ShipUpdateTransformMessage(ShipObject* scno, int8 dirX, int8 dirY, int8 dirZ, int8 dirW,
+			int16 posX, int16 posZ, int16 posY,
+			PackedVelocity& velocity, PackedRotationRate& rA, PackedRotationRate& rB, PackedRotationRate& rC) : BaseMessage(50) {
+			insertShort(0x08);
+			insertInt(0x76026fb9);
+		   // insertLong(scno->getObjectID());
+
+		    insertShort(scno->getUniqueID());
+
+			// add coordinates
+
+		    //direction
+		    insertByte((byte)dirX);
+		    insertByte((byte)dirY);
+		    insertByte((byte)dirZ);
+		    insertByte((byte)dirW);
+
+		    insertShort((int16)posX);
+		    insertShort((int16)posZ);
+		    insertShort((int16)posY);
+
+		    velocity.write(this);
+
+		    rA.write(this);
+		    rB.write(this);
+		    rC.write(this);
+
+		    insertInt(scno->getMovementCounter());
+		}
 
 };
 

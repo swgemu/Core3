@@ -16,7 +16,7 @@ class AffectorEnvironment : public ProceduralRule<'AENV'>, public AffectorProced
 	float weight;
 
 public:
-	AffectorEnvironment() {
+	AffectorEnvironment(): environmentId(0), var2(0), weight(0) {
 		affectorType = ENVIRONMENT;
 	}
 

@@ -17,7 +17,7 @@ class GuildRequestCallback : public MessageCallback {
 
 public:
 	GuildRequestCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), objectID(0) {
 
 	}
 

@@ -20,14 +20,14 @@ class BoundaryPolyline : public ProceduralRule<'BPLN'>,  public Boundary {
 	float minX, minY, maxX, maxY;
 
 public:
-	BoundaryPolyline() {
+	BoundaryPolyline() : lineWidth(0) {
 		//ruleType = BOUNDARYPOLYLINE;
 
 		minX = 800000000;
 		minY = 800000000;
 
 		maxX = -80000000;
-		minX = -80000000;
+		maxY = -80000000;
 	}
 
 	~BoundaryPolyline() {
@@ -81,7 +81,7 @@ public:
 		minY = 800000000;
 
 		maxX = -80000000;
-		minX = -80000000;
+		maxY = -80000000;
 
 		for(int i = 0; i < points.size(); ++i) {
 			Point2D* point = points.get(i);
