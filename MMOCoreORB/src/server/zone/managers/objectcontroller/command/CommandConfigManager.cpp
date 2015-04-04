@@ -605,9 +605,23 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setAreaRange(Lua::getIntParameter(L));
 		else if (varName == "combatSpam")
 			combatCommand->setCombatSpam(Lua::getStringParameter(L));
-		else if (varName == "animationCRC")
-			combatCommand->setAnimationCRC(Lua::getUnsignedIntParameter(L));
-		else if (varName == "effectString")
+		else if (varName == "animationCRC") {
+			LuaObject animationCRCsTable(L);
+
+			if (!animationCRCsTable.isValidTable()) {
+				animationCRCsTable.pop();
+				combatCommand->setAnimationCRC(Lua::getUnsignedIntParameter(L));
+			} else {
+				for (int i = 1; i <= animationCRCsTable.getTableSize(); ++i) {
+					lua_rawgeti(L, -1, i);
+					LuaObject theCRC(L);
+					combatCommand->setAnimationCRC(Lua::getUnsignedIntParameter(L));
+					theCRC.pop();
+				}
+
+				animationCRCsTable.pop();
+			}
+		} else if (varName == "effectString")
 			combatCommand->setEffectString(Lua::getStringParameter(L));
 		else if (varName == "trails")
 			combatCommand->setTrails(Lua::getIntParameter(L));

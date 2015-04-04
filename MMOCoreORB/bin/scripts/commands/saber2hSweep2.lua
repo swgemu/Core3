@@ -54,13 +54,13 @@ Saber2hSweep2Command = {
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
 		{}, 
-		20, 
+		100, 
 		100, 
 		0 
 	  )
 	},
 
-	animationCRC = hashCode("combo_3d_light"),
+	animationCRC = hashCode("combo_4b_light"),
 
 	combatSpam = "saber2hsweep2",
 	

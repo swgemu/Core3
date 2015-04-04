@@ -51,7 +51,7 @@ protected:
 
 	String combatSpam;
 	String stateSpam;
-	uint32 animationCRC;
+	Vector<uint32> animationCRCs;
 	String effectString;
 
 	VectorMap<uint8, StateEffect> stateEffects;
@@ -91,7 +91,6 @@ public:
 		coneAction = false;
 
 		combatSpam = "";
-		animationCRC = 0;
 
 		attackType = CombatManager::WEAPONATTACK;
 		trails = CombatManager::DEFAULTTRAIL;
@@ -318,9 +317,14 @@ public:
 		this->speed = speedd;
 	}
 
-	inline uint32 getAnimationCRC() const {
-		return animationCRC;
+	inline Vector<uint32>* getAnimationCRCs() const {
+		return &animationCRCs;
 	}
+
+	inline uint32 getAnimationCRC(int idx) const {
+		return animationCRCs.get(idx);
+	}
+
 
 	inline String getEffectString() const {
 		return effectString;
@@ -343,7 +347,7 @@ public:
 	}
 
 	void setAnimationCRC(uint32 animationCRC) {
-		this->animationCRC = animationCRC;
+		this->animationCRCs.add(animationCRC);
 	}
 
 	void setCombatSpam(String combatSpam) {
