@@ -18,7 +18,7 @@ class AffectorColorConstant : public ProceduralRule<'ACCN'>, public AffectorProc
 	byte b;
 
 public:
-	AffectorColorConstant() {
+	AffectorColorConstant() : id(0), r(0), g(0), b(0) {
 
 	}
 

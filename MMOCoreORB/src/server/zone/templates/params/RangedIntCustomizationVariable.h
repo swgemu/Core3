@@ -35,6 +35,15 @@ public:
 		maxValueExclusive = m.maxValueExclusive;
 	}
 
+	RangedIntCustomizationVariable& operator=(const RangedIntCustomizationVariable& m) {
+		variableName = m.variableName;
+		minValueInclusive = m.minValueInclusive;
+		defaultValue = m.defaultValue;
+		maxValueExclusive = m.maxValueExclusive;
+
+		return *this;
+	}
+
 	~RangedIntCustomizationVariable() {
 	}
 

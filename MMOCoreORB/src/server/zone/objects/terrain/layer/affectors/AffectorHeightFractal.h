@@ -20,8 +20,7 @@ class AffectorHeightFractal : public ProceduralRule<'AHFR'>, public AffectorProc
 	MapFractal* mfrc;
 
 public:
-	AffectorHeightFractal() {
-		mfrc = NULL;
+	AffectorHeightFractal() : fractalId(0), operationType(0), height(0), mfrc(NULL) {
 		affectorType = HEIGHTFRACTAL;
 	}
 

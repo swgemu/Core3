@@ -29,15 +29,17 @@ public:
 };
 
 class LagReportCallback : public MessageCallback {
-	uint64 unknown;
+	uint32 connectionServerLag;
+	uint32 gameServerLag;
 public:
 	LagReportCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), connectionServerLag(0), gameServerLag(0) {
 
 	}
 
 	void parse(Message* message) {
-		unknown = message->parseLong();
+		connectionServerLag = message->parseInt();
+		gameServerLag = message->parseInt();
 	}
 
 	void run() {

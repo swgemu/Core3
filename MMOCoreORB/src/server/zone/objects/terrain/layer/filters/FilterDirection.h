@@ -18,7 +18,7 @@ class FilterDirection : public ProceduralRule<'FDIR'>, public FilterProceduralRu
 	float max; // +24h
 
 public:
-	FilterDirection()  : FilterProceduralRule(3) {
+	FilterDirection()  : FilterProceduralRule(3), minDegree(0), min(0), maxDegree(0), max(0) {
 		filterType = 0;
 	}
 

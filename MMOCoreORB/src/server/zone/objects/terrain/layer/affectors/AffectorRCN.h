@@ -19,7 +19,7 @@ class AffectorRCN : public ProceduralRule<'ARCN'>, public AffectorProceduralRule
 	float featheringAmount;
 
 public:
-	AffectorRCN() {
+	AffectorRCN() : familyId(0), var2(0), flag(0), featheringType(0), featheringAmount(0) {
 
 	}
 

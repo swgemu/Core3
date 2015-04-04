@@ -20,7 +20,7 @@ class BidAuctionMessageCallback : public MessageCallback {
 
 public:
 	BidAuctionMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-			MessageCallback(client, server) {
+			MessageCallback(client, server), objectid(0), price1(0), price2(0) {
 
 	}
 
