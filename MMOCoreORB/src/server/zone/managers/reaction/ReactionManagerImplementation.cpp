@@ -117,7 +117,7 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 		chance = 25;
 		typeString = "ally_";
 		break;
-	case ReactionManager::ASSIST: // TODO: add trigger
+	case ReactionManager::ASSIST:
 		chance = 25;
 		typeString = "assist_";
 		break;
