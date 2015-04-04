@@ -846,7 +846,7 @@ void AiAgentImplementation::queueDizzyFallEvent() {
 void AiAgentImplementation::addDefender(SceneObject* defender) {
 	unsigned int stateCopy = getFollowState();
 
-	if (defenderList.size() == 0 && defender != NULL) {
+	if ((defenderList.size() == 0 || getFollowObject() == NULL) && defender != NULL) {
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 		setFollowObject(defender);
 		if (defender->isCreatureObject() && threatMap != NULL)
