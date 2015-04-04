@@ -20,7 +20,7 @@ function mission_target_conv_handler:getNextConversationScreen(pConversationTemp
 
 	local conversation = LuaConversationTemplate(pConversationTemplate)
 
-	local nextConversationScreen
+	local nextConversationScreen = nil
 
 	if (lastConversationScreen ~= nil) then
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
@@ -85,12 +85,10 @@ function mission_target_conv_handler:handleScreenNotIt(pConversationTemplate, pC
 
 	if self.themePark:isValidConvoString(stfFile, ":notit_" .. missionNumber) then
 		clonedScreen:setDialogTextStringId(stfFile .. ":notit_" .. missionNumber)
+	elseif self.themePark:isValidConvoString(stfFile, ":notit") then
+		clonedScreen:setDialogTextStringId(stfFile .. ":notit")
 	else
-		if self.themePark:isValidConvoString(stfFile, ":notit") then
-			clonedScreen:setDialogTextStringId(stfFile .. ":notit")
-		else
-			clonedScreen:setDialogTextStringId(stfFile .. ":not_it")
-		end
+		clonedScreen:setDialogTextStringId(stfFile .. ":not_it")
 	end
 
 	return pConversationScreen
@@ -143,6 +141,11 @@ function mission_target_conv_handler:handleScreenOtherEscort(pConversationTempla
 
 	local ownerID = readData(CreatureObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
+
+	if pOwner == nil then
+		return nil
+	end
+
 	local npcNumber = self.themePark:getActiveNpcNumber(pOwner)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pOwner)
 	local stfFile = self.themePark:getStfFile(npcNumber)
@@ -167,6 +170,11 @@ function mission_target_conv_handler:handleScreenDontKnowYou(pConversationTempla
 
 	local ownerID = readData(CreatureObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
+
+	if pOwner == nil then
+		return nil
+	end
+
 	local npcNumber = self.themePark:getActiveNpcNumber(pOwner)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pOwner)
 	local stfFile = self.themePark:getStfFile(npcNumber)
@@ -185,33 +193,41 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 		return nil
 	end
 
-	local creature = CreatureObject(pConversingPlayer)
-	local activeMission = readData(creature:getObjectID() .. ":activeMission")
-	local npcID = readData(creature:getObjectID() .. ":missionSpawn:no1")
+	local playerID = SceneObject(pConversingPlayer):getObjectID()
+	local activeMission = readData(playerID .. ":activeMission")
+	local npcID = readData(playerID .. ":missionSpawn:no1")
 	local correctNpc = true
-	if npcID ~= CreatureObject(pConversingNpc):getObjectID() then
+	if npcID ~= SceneObject(pConversingNpc):getObjectID() then
 		correctNpc = false
 	end
 
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	local ownerID = readData(CreatureObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
+	local ownerID = readData(SceneObject(pConversingNpc):getObjectID() .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
+
+	if pOwner == nil then
+		return nil
+	end
 
 	local npcNumber = self.themePark:getActiveNpcNumber(pOwner)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pOwner)
 	local mission = self.themePark:getMission(npcNumber, missionNumber)
 	local npcData = self.themePark:getNpcData(npcNumber)
 
+	if mission == nil or npcData == nil then
+		return nil
+	end
+
 	local planetName
 	local worldPosition
 
 	if (self.themePark.genericGiver) then
-		local giverId = readData(CreatureObject(pConversingPlayer):getObjectID() ..":genericGiverID")
+		local giverId = readData(playerID ..":genericGiverID")
 		local pGiver = getSceneObject(giverId)
 		if (pGiver == nil) then
 			printf("Error in mission_target_conv_handler:handleScreenMissionType(), unable to find generic quest giver.")
-			return
+			return nil
 		end
 		worldPosition = { x = SceneObject(pGiver):getWorldPositionX(), y = SceneObject(pGiver):getWorldPositionY() }
 		planetName = SceneObject(pGiver):getZoneName()
@@ -227,12 +243,10 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 				self.themePark:removeDeliverItem(pConversingPlayer)
 				self.themePark:completeMission(pConversingPlayer)
 				nextScreenID = "npc_smuggle_n"
+			elseif activeMission == 2 then
+				nextScreenID = "npc_smuggle_n"
 			else
-				if activeMission == 2 then
-					nextScreenID = "npc_smuggle_n"
-				else
-					nextScreenID = "notit_n"
-				end
+				nextScreenID = "notit_n"
 			end
 		else
 			nextScreenID = "dontknowyou_n"
@@ -248,12 +262,12 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 		end
 	elseif mission.missionType == "retrieve" then
 		if correctNpc == true then
-			if activeMission ~= 2 and self.themePark:hasFullInventory(pConversingPlayer) == false then
+			if activeMission ~= 2 and self.themePark:hasFullInventory(pConversingPlayer) == true then
+				nextScreenID = "inv_full"
+			elseif activeMission ~= 2 then
 				self.themePark:giveMissionItems(mission, pConversingPlayer)
 				self.themePark:updateWaypoint(pConversingPlayer, planetName, worldPosition.x, worldPosition.y, "return")
 				nextScreenID = "npc_smuggle_n"
-			elseif activeMission ~= 2 and self.themePark:hasFullInventory(pConversingPlayer) == true then
-				nextScreenID = "inv_full"
 			else
 				nextScreenID = "npc_smuggle_n"
 			end
