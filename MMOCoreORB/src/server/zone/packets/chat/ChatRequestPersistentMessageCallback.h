@@ -16,7 +16,7 @@ class ChatRequestPersistentMessageCallback : public MessageCallback {
 
 public:
 	ChatRequestPersistentMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), mailid(0) {
 	}
 
 	void parse(Message* message) {

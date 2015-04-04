@@ -53,6 +53,10 @@ class PerlinNoise {
 
 public:
 	PerlinNoise(trn::ptat::Random* r) {
+		p[0] = 0;
+		g2[0][0] = 0;
+		g1[0] = 0;
+
 		start = 1;
 		rand = r;
 	}

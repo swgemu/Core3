@@ -24,7 +24,7 @@ class AuctionQueryHeadersMessageCallback : public MessageCallback {
 
 public:
 	AuctionQueryHeadersMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-			MessageCallback(client, server) {
+			MessageCallback(client, server), extent(0), counter(0), screen(0), category(0), vendorID(0), unk1(0), offset(0) {
 
 	}
 

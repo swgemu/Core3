@@ -36,6 +36,7 @@ public:
 		permissionLevel = al.permissionLevel;
 		tag  = al.tag;
 		skillList = al.skillList;
+		name = al.name;
 	}
 
 	int getPermissionLevel() {

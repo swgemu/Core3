@@ -18,7 +18,7 @@ class ChatSendToRoomCallback : public MessageCallback {
 
 public:
 	ChatSendToRoomCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), roomID(0), counter(0) {
 
 	}
 

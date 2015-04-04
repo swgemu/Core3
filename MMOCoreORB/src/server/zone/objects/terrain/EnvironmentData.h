@@ -18,7 +18,7 @@ class EnvironmentData : public TemplateVariable<'EFAM'> {
 	float var6;
 public:
 
-	EnvironmentData() {
+	EnvironmentData() : environmentId(0), var3(0), var4(0), var5(0), var6(0) {
 
 	}
 

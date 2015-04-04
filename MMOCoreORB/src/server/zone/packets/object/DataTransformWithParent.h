@@ -95,6 +95,17 @@ class DataTransformWithParentCallback : public MessageCallback {
 public:
 	DataTransformWithParentCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
+		movementStamp = 0;
+		movementCounter = 0;
+		parent = 0;
+		directionX = 0;
+		directionY = 0;
+		directionZ = 0;
+		directionW = 0;
+		positionX = 0;
+		positionZ = 0;
+		positionY = 0;
+		parsedSpeed = 0;
 
 		objectControllerMain = objectControllerCallback;
 

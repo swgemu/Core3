@@ -16,7 +16,7 @@ class GiveMoneyMessageCallback : public MessageCallback {
 
 public:
 	GiveMoneyMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), money(0) {
 
 	}
 

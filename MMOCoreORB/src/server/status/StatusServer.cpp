@@ -52,6 +52,9 @@ StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 	configManager = conf;
 	statusHandler = new StatusHandler(this);
 
+	oid = 0;
+	lastStatus = true;
+
 	statusInterval = configManager->getStatusInterval();
 
 	signal(SIGPIPE, SIG_IGN);

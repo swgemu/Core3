@@ -16,7 +16,41 @@ ProceduralTerrainAppearance::ProceduralTerrainAppearance() : Logger("ProceduralT
 	terrainGenerator = new TerrainGenerator(this);
 	terrainMaps = new TerrainMaps();
 
+	//float defaultHeight;
+
+	size = 0;
+	chunkSize = 0;
+	tilesPerChunk = 0;
+
 	useGlobalWaterTable = 0;
+	globalWaterTableHeight = 0;
+	globalWaterTableShaderSize = 0;
+
+	timeCycle = 0;
+
+	floraCollidableMinDistance = 0;
+	floraCollidableMaxDistance = 0;
+	floraCollidableTileSize = 0;
+	floraCollidableTileBorder = 0;
+	floraCollidableSeed = 0;
+
+	floraNonCollidableMinDistance = 0;
+	floraNonCollidableMaxDistance = 0;
+	floraNonCollidableTileSize = 0;
+	floraNonCollidableTileBorder = 0;
+	floraNonCollidableSeed = 0;
+
+	radialNearMinDistance = 0;
+	radialNearMaxDistance = 0;
+	radialNearTileSize = 0;
+	radialNearTileBorder = 0;
+	radialNearSeed = 0;
+
+	radialFarMinDistance = 0;
+	radialFarMaxDistance = 0;
+	radialFarTileSize = 0;
+	radialFarTileBorder = 0;
+	radialFarSeed = 0;
 }
 
 ProceduralTerrainAppearance::~ProceduralTerrainAppearance() {
