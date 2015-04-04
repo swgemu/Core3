@@ -30,7 +30,7 @@ class AffectorRoad : public ProceduralRule<'AROA'>, public AffectorProceduralRul
 	float var7;
 
 public:
-	AffectorRoad() {
+	AffectorRoad() : var1(0), var2(0), var3(0), featheringType(0), featheringAmount(0), var6(0), var7(0) {
 
 	}
 

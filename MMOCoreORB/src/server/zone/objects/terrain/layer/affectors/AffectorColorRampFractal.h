@@ -16,7 +16,7 @@ class AffectorColorRampFractal : public ProceduralRule<'ACRF'>, public AffectorP
 	String shaderFile; // .tga
 
 public:
-	AffectorColorRampFractal() {
+	AffectorColorRampFractal() : familyId(0), var2(0) {
 
 	}
 

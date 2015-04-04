@@ -13,6 +13,7 @@ HttpResponse::HttpResponse(HttpSession* session) {
 	docType = "html";
 	this->session = session;
 
+	conn = NULL;
 }
 
 HttpResponse::~HttpResponse() {

@@ -23,7 +23,7 @@ class CreateImmediateAuctionMessageCallback : public MessageCallback {
 	UnicodeString description;
 public:
 	CreateImmediateAuctionMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-			MessageCallback(client, server) {
+			MessageCallback(client, server), objectID(0), vendorID(0), price(0), duration(0), premium(0) {
 
 	}
 

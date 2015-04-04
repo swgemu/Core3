@@ -17,6 +17,10 @@ class Hdta : public TemplateVariable<'HDTA'> {
 
 
 public:
+	Hdta() : IffTemplateVariable() {
+
+	}
+
 	~Hdta() {
 		for (int i = 0; i < sgmts.size(); ++i)
 			delete sgmts.get(i);

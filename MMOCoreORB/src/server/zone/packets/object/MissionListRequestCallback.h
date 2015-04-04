@@ -21,10 +21,8 @@ class MissionListRequestCallback : public MessageCallback {
 
 public:
 	MissionListRequestCallback(ObjectControllerMessageCallback* objectControllerCallback) :
-			MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
-
-		objectControllerMain = objectControllerCallback;
-
+			MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
+			unk1(0), unk2(0), terminalObjectID(0), objectControllerMain(objectControllerCallback) {
 	}
 
 	void parse(Message* message) {

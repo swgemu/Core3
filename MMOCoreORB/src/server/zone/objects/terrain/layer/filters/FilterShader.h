@@ -16,7 +16,7 @@ class FilterShader : public ProceduralRule<'FSHD'>, public FilterProceduralRule 
 	int shaderId;
 
 public:
-	FilterShader() : FilterProceduralRule(4) {
+	FilterShader() : FilterProceduralRule(4), shaderId(0) {
 
 	}
 

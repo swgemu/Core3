@@ -15,6 +15,10 @@ class InformationHeader : public TemplateVariable<'IHDR'> {
 	String description;
 
 public:
+	InformationHeader() : IffTemplateVariable(), var1(0) {
+
+	}
+
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
 		uint32 version = iffStream->getNextFormType();
 

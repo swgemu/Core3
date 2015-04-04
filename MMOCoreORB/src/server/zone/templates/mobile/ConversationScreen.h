@@ -130,6 +130,7 @@ public:
 		options = objectToCopy.options;
 		stopConversation = objectToCopy.stopConversation;
 		readOnly = objectToCopy.readOnly;
+		customText = objectToCopy.customText;
 	}
 
 	ConversationScreen* cloneScreen() {

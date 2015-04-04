@@ -21,9 +21,8 @@ class LotteryWindowCallback : public MessageCallback {
 
 public:
 	LotteryWindowCallback(ObjectControllerMessageCallback* objectControllerCallback) :
-		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
-
-		objectControllerMain = objectControllerCallback;
+		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()),
+		containerID(0), listSize(0), objectControllerMain(objectControllerCallback) {
 	}
 
 	void parse(Message* msg) {

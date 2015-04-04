@@ -9,6 +9,14 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 
 DraftSchematicObjectTemplate::DraftSchematicObjectTemplate() {
+	craftingToolTab = 0;
+
+	complexity = 0;
+	size = 0;
+
+	xp = 0;
+
+	tanoCRC = 0;
 
 	ingredientTemplateNames = new Vector<String> ();
 	ingredientTitleNames = new Vector<String> ();

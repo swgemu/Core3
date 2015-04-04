@@ -20,7 +20,7 @@ class SuiEventNotificationCallback : public MessageCallback {
 
 public:
 	SuiEventNotificationCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), opcode(0), cancel(0), listSize1(0), listSize2(0) {
 
 	}
 

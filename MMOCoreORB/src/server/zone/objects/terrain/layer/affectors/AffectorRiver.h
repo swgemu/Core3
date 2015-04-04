@@ -49,7 +49,8 @@ class AffectorRiver : public ProceduralRule<'ARIV'>, public AffectorProceduralRu
 	String var15;
 
 public:
-	AffectorRiver() {
+	AffectorRiver() : var1(0), var2(0), var3(0), var4(0), var5(0), var6(0), var7(0), var8(0),
+		var9(0), var10(0), var11(0), var12(0) {
 
 	}
 

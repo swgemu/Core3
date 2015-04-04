@@ -31,7 +31,17 @@ protected:
 
 public:
 	SharedStructureObjectTemplate() {
+		baseMaintenanceRate = 0;
+		basePowerRate = 0;
+
+		lotSize = 0;
 		cityRankRequired = 0;
+
+		uniqueStructure = false;
+
+		//If it has a maintenance rate, then it is a civic structure.
+		cityMaintenanceBase = 0;
+		cityMaintenanceRate = 0;
 	}
 
 	~SharedStructureObjectTemplate() {
