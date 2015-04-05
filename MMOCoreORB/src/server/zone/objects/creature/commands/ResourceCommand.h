@@ -71,29 +71,29 @@ public:
 			if(args.hasMoreTokens())
 				args.getStringToken(command);
 
-			if(command == "list")
+			if(command == "list") {
 				listResources(creature, &args);
 
-			if(command == "health")
+			} else if(command == "health") {
 				healthCheck(creature, &args);
 
-			if(command == "dump")
+			} else if(command == "dump") {
 				dumpResources(creature, &args);
 
-			if(command == "despawn")
+			} else if(command == "despawn") {
 				despawnResource(creature, &args);
 
-			if(command == "info")
+			} else if(command == "info") {
 				listResourceInfo(creature, &args);
 
-			else
+			} else {
 				throw Exception();
+			}
 
 		} catch (Exception& e){
 			creature->sendSystemMessage("invalid arguments for resources command:  /resource [option] [params]");
 			creature->sendSystemMessage("		list [planet] : Lists resources on specified planet");
-			//creature->sendSystemMessage("		info [spawn] : Lists Info about specific resource");
-
+			creature->sendSystemMessage("		info [resource name] : Lists Info about a specific resource");
 		}
 
 		return SUCCESS;
@@ -164,19 +164,31 @@ public:
 
 		creature->sendSystemMessage("******** " + spawn->getName() + " *********");
 
-		int hours = (((spawn->getDespawned() - System::getTime()) / 60) /60);
-		int minutes = (((spawn->getDespawned() - System::getTime()) / 60) % 60);
+		uint64 despawned = spawn->getDespawned();
+		uint64 currTime = System::getTime();
 
-		if(hours > 0 || minutes > 0) {
-			creature->sendSystemMessage("Expires: " + String::valueOf(hours) + " hours " + String::valueOf(minutes) + " minutes");
+		int diff = 0;
+		if(despawned > currTime) {
+			diff = despawned - currTime;
+		} else {
+			diff = currTime - despawned;
+		}
+
+		int days = (diff / 60 / 60 / 24);
+		int hours = ((diff / 60 / 60) % 24);
+		int minutes = ((diff / 60) % 60);
+
+		if(despawned > currTime) {
+			creature->sendSystemMessage("Expires in: " + String::valueOf(days) + " days, " + String::valueOf(hours) + " hours, " + String::valueOf(minutes) + " minutes");
 			creature->sendSystemMessage("Pool: " + String::valueOf(spawn->getSpawnPool()));
 
 			for(int i = 0; i < spawn->getSpawnMapSize(); ++i) {
 				creature->sendSystemMessage("Spawned on: " + spawn->getSpawnMapZone(i));
 			}
 
-		} else
-			creature->sendSystemMessage("No current spawns");
+		} else {
+			creature->sendSystemMessage("Expired: " + String::valueOf(days) + " days, " + String::valueOf(hours) + " hours, " + String::valueOf(minutes) + " minutes ago");
+		}
 
 
 		for(int i = 0; i < 12; ++i) {
