@@ -62,7 +62,7 @@ public:
 		range = 5;
 	}
 
-	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) const {
 		creatureTarget->playEffect("clienteffect/healing_healenhance.cef", "");
 
 		if (creature == creatureTarget)
@@ -71,7 +71,7 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int mindDamage) {
+	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int mindDamage) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -99,12 +99,12 @@ public:
 		}
 	}
 
-	int calculateWound(int wound, int poolWounds, int poolMax) {
+	int calculateWound(int wound, int poolWounds, int poolMax) const {
 		int maxWound = poolMax - poolWounds - 1;
 		return (MAX(0,MIN(maxWound,wound)));
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 

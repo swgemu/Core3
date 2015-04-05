@@ -68,7 +68,7 @@ public:
 		range = 6;
 	}
 
-	void deactivateStateTreatment(CreatureObject* creature) {
+	void deactivateStateTreatment(CreatureObject* creature) const {
 		float modSkill = (float)creature->getSkillMod("healing_injury_speed");
 		int delay = (int)round(20.0f - (modSkill / 5));
 
@@ -90,7 +90,7 @@ public:
 		creature->addPendingTask("stateTreatment", task, delay * 1000);
 	}
 
-	void awardXp(CreatureObject* creature, String type, int power) {
+	void awardXp(CreatureObject* creature, String type, int power) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -105,7 +105,7 @@ public:
 		playerManager->awardExperience(player, type, amount, true);
 	}
 
-	void sendStateMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint64 state) {
+	void sendStateMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint64 state) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -129,7 +129,7 @@ public:
 		}
 	}
 
-	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) const {
 		creatureTarget->playEffect("clienteffect/healing_healdamage.cef", "");
 
 		if (creature == creatureTarget)
@@ -138,7 +138,7 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StatePack* statePack) {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StatePack* statePack) const {
 		if (!creature->canTreatStates()) {
 			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
 			return false;
@@ -162,7 +162,7 @@ public:
 		return true;
 	}
 
-	StatePack* findStatePack(CreatureObject* creature, uint64 state) {
+	StatePack* findStatePack(CreatureObject* creature, uint64 state) const {
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
 		int medicineUse = creature->getSkillMod("healing_ability");
@@ -192,7 +192,7 @@ public:
 		return NULL;
 	}
 
-	void parseModifier(const String& modifier, uint64& state, uint64& objectId) {
+	void parseModifier(const String& modifier, uint64& state, uint64& objectId) const {
 		if (!modifier.isEmpty()) {
 			StringTokenizer tokenizer(modifier);
 			tokenizer.setDelimeter("|");
@@ -211,7 +211,7 @@ public:
 		}
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 

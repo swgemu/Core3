@@ -55,7 +55,7 @@ public:
 
 	}
 
-	bool canPerformSkill(CreatureObject* creature) {
+	bool canPerformSkill(CreatureObject* creature) const {
 		if (!creature->hasState(CreatureState::STUNNED) && !creature->hasState(CreatureState::DIZZY) && !creature->hasState(CreatureState::INTIMIDATED) && !creature->hasState(CreatureState::BLINDED)) {
 			creature->sendSystemMessage("@healing_response:healing_response_72"); // You have no states of that type.		
 			return false;
@@ -64,7 +64,7 @@ public:
 		return true;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 
@@ -115,7 +115,7 @@ public:
 	}
 
 
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
 		return defaultTime * 2.0;
 	}
 

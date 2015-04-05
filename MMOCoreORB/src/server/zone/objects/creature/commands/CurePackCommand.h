@@ -32,7 +32,7 @@ public:
 		state = 0;
 	}
 
-	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) const {
 		creatureTarget->playEffect("clienteffect/healing_healdamage.cef", "");
 
 		if (creature == creatureTarget)
@@ -41,14 +41,14 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	void parseModifier(const String& modifier, uint64& objectId) {
+	void parseModifier(const String& modifier, uint64& objectId) const {
 		if (!modifier.isEmpty())
 			objectId = Long::valueOf(modifier);
 		else
 			objectId = 0;
 	}
 
-	CurePack* findCurePack(CreatureObject* creature) {
+	CurePack* findCurePack(CreatureObject* creature) const {
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
 		int medicineUse = creature->getSkillMod("healing_ability");
@@ -78,7 +78,7 @@ public:
 		return NULL;
 	}
 
-	void sendCureMessage(CreatureObject* object, CreatureObject* target) {
+	void sendCureMessage(CreatureObject* object, CreatureObject* target) const {
 		if (!object->isPlayerCreature())
 			return;
 
@@ -122,7 +122,7 @@ public:
 		}
 	}
 
-	void deactivateConditionTreatment(CreatureObject* creature) {
+	void deactivateConditionTreatment(CreatureObject* creature) const {
 		float modSkill = (float)creature->getSkillMod("healing_injury_speed");
 		int delay = (int)round(20.0f - (modSkill / 5));
 
@@ -144,7 +144,7 @@ public:
 		creature->addPendingTask("conditionTreatment", task, delay * 1000);
 	}
 
-	void awardXp(CreatureObject* creature, const String& type, int power) {
+	void awardXp(CreatureObject* creature, const String& type, int power) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -159,7 +159,7 @@ public:
 		playerManager->awardExperience(player, type, amount, true);
 	}
 
-	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
+	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) const {
 
 		switch (state) {
 		case CreatureState::POISONED:
@@ -193,7 +193,7 @@ public:
 	}
 
 	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, CurePack* pharma,
-			float range) {
+			float range) const {
 
 		Zone* zone = creature->getZone();
 
@@ -240,7 +240,7 @@ public:
 		}
 	}
 
-	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, PharmaceuticalObject* pharma) {
+	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, PharmaceuticalObject* pharma) const {
 		CurePack* curePack = NULL;
 
 		if (pharma->isCurePack())
@@ -258,7 +258,7 @@ public:
 		checkForTef(creature, creatureTarget);
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, CurePack* curePack) {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, CurePack* curePack) const {
 		switch (state) {
 		case CreatureState::POISONED:
 			if (!creatureTarget->isPoisoned()) {
@@ -340,7 +340,7 @@ public:
 		return true;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 

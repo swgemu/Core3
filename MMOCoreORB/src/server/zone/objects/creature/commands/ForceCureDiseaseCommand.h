@@ -57,14 +57,14 @@ public:
 
 	}
 
-	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) const {
 		if (creatureTarget == creature)
 			creature->playEffect("clienteffect/pl_force_healing.cef", "");
 		else
 			creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
 	}
 
-	void sendCureMessage(CreatureObject* object, CreatureObject* target) {
+	void sendCureMessage(CreatureObject* object, CreatureObject* target) const {
 		if (!object->isPlayerCreature())
 			return;
 
@@ -82,7 +82,7 @@ public:
 //			creatureTarget->sendSystemMessage(msgTarget.toString());
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) const {
 		if (!creatureTarget->isDiseased()) {
 			if (creature == creatureTarget) {
 				creature->sendSystemMessage("@healing_response:healing_response_90"); //You are not diseased.
@@ -109,7 +109,7 @@ public:
 		return true;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 

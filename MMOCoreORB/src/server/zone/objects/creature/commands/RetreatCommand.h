@@ -55,7 +55,7 @@ public:
 		: SquadLeaderCommand(name, server) {
 	}
 
-	bool checkRetreat(CreatureObject* creature) {
+	bool checkRetreat(CreatureObject* creature) const {
 		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("@cbt_spam:no_burst"); // You cannot burst-run while mounted on a creature or vehicle.
 			return false;
@@ -90,7 +90,7 @@ public:
 		return true;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -145,7 +145,7 @@ public:
 	}
 
 
-	void doRetreat(CreatureObject* player) {
+	void doRetreat(CreatureObject* player) const {
 		if (player == NULL)
 			return;
 

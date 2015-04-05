@@ -68,7 +68,7 @@ public:
 		range = 7;
 	}
 
-	void deactivateWoundTreatment(CreatureObject* creature) {
+	void deactivateWoundTreatment(CreatureObject* creature) const {
 		float modSkill = (float)creature->getSkillMod("healing_wound_speed");
 
 		int delay = (int)round((modSkill * -(2.0f / 25.0f)) + 20.0f);
@@ -91,7 +91,7 @@ public:
 		creature->addPendingTask("woundTreatment", task, delay * 1000);
 	}
 
-	EnhancePack* findEnhancePack(CreatureObject* enhancer, uint8 attribute) {
+	EnhancePack* findEnhancePack(CreatureObject* enhancer, uint8 attribute) const {
 		SceneObject* inventory = enhancer->getSlottedObject("inventory");
 
 		int medicineUse = enhancer->getSkillMod("healing_ability");
@@ -121,7 +121,7 @@ public:
 		return NULL;
 	}
 
-	bool canPerformSkill(CreatureObject* enhancer, CreatureObject* patient, EnhancePack* enhancePack) {
+	bool canPerformSkill(CreatureObject* enhancer, CreatureObject* patient, EnhancePack* enhancePack) const {
 		if (patient->isDead())
 			return false;
 
@@ -182,7 +182,7 @@ public:
 		return true;
 	}
 
-	void parseModifier(const String& modifier, uint8& attribute, uint64& objectId) {
+	void parseModifier(const String& modifier, uint8& attribute, uint64& objectId) const {
 		if (!modifier.isEmpty()) {
 			StringTokenizer tokenizer(modifier);
 			tokenizer.setDelimeter("|");
@@ -201,7 +201,7 @@ public:
 		}
 	}
 
-	void sendEnhanceMessage(CreatureObject* creature, CreatureObject* target, uint8 attribute, uint32 buffApplied) {
+	void sendEnhanceMessage(CreatureObject* creature, CreatureObject* target, uint8 attribute, uint32 buffApplied) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -249,7 +249,7 @@ public:
 		}
 	}
 
-	void awardXp(CreatureObject* creature, const String& type, int power) {
+	void awardXp(CreatureObject* creature, const String& type, int power) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -264,7 +264,7 @@ public:
 		playerManager->awardExperience(player, type, amount, true);
 	}
 
-	void doAnimations(CreatureObject* enhancer, CreatureObject* patient) {
+	void doAnimations(CreatureObject* enhancer, CreatureObject* patient) const {
 		patient->playEffect("clienteffect/healing_healenhance.cef", "");
 
 		if (enhancer == patient)
@@ -273,7 +273,7 @@ public:
 			enhancer->doAnimation("heal_other");
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 

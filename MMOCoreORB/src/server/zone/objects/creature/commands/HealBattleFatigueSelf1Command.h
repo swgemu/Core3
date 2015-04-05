@@ -55,7 +55,7 @@ public:
 
 	}
 
-	bool canPerformSkill(CreatureObject* creature) {
+	bool canPerformSkill(CreatureObject* creature) const {
 
 		if (creature->getShockWounds() == 0) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_self"); // You have no damage of that type.
@@ -65,7 +65,7 @@ public:
 		return true;
 	}
 
-	int healBattleFatigue(CreatureObject* creature, int damage){
+	int healBattleFatigue(CreatureObject* creature, int damage) const {
 
 		int currentValue = creature->getShockWounds();
 
@@ -77,7 +77,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 
@@ -133,7 +133,7 @@ public:
 		return GENERALERROR;
 	}
 
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
 		return defaultTime * 3.0;
 	}
 

@@ -57,7 +57,7 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target,
-			const UnicodeString& arguments) {
+			const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -100,7 +100,7 @@ public:
 		return SUCCESS;
 	}
 
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
 		ManagedReference<Facade*> facade = object->getActiveSession(
 				SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session =

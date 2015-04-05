@@ -34,7 +34,7 @@ public:
 		//defaultTime = 0;
 	}
 
-	void doAnimationsRange(CreatureObject* creature, CreatureObject* creatureTarget, uint64 oid, float range, bool area) {
+	void doAnimationsRange(CreatureObject* creature, CreatureObject* creatureTarget, uint64 oid, float range, bool area) const {
 		String crc;
 
 		if (range < 10.0f) {
@@ -61,14 +61,14 @@ public:
 		creature->broadcastMessage(action, true);
 	}
 
-	void parseModifier(const String& modifier, uint64& objectId) {
+	void parseModifier(const String& modifier, uint64& objectId) const {
 		if (!modifier.isEmpty())
 			objectId = Long::valueOf(modifier);
 		else
 			objectId = 0;
 	}
 
-	bool checkTarget(CreatureObject* creature, CreatureObject* targetCreature, uint32 dotType) {
+	bool checkTarget(CreatureObject* creature, CreatureObject* targetCreature, uint32 dotType) const {
 		if (!targetCreature->isAttackableBy(creature))
 			return false;
 
@@ -81,7 +81,7 @@ public:
 		return true;
 	}
 
-	void awardXp(CreatureObject* creature, const String& type, int power) {
+	void awardXp(CreatureObject* creature, const String& type, int power) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -97,7 +97,7 @@ public:
 	}
 
 	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, DotPack* pharma,
-			float range) {
+			float range) const {
 
 		Zone* zone = creature->getZone();
 
@@ -139,7 +139,7 @@ public:
 		}
 	}
 
-	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, DotPack* pharma)	{
+	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* creatureTarget, DotPack* pharma)	const {
 		DotPack* dotPack = NULL;
 
 		if (pharma->isPoisonDeliveryUnit() || pharma->isDiseaseDeliveryUnit())
@@ -192,7 +192,7 @@ public:
 		checkForTef(creature, creatureTarget);
 	}
 
-	int hasCost(CreatureObject* creature) {
+	int hasCost(CreatureObject* creature) const {
 		if (!creature->isPlayerCreature())
 			return 0;
 
@@ -211,14 +211,14 @@ public:
 		return mindAttackCost;
 	}
 
-	void applyCost(CreatureObject* creature, int mindDamage) {
+	void applyCost(CreatureObject* creature, int mindDamage) const {
 		if (mindDamage == 0)
 			return;
 
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindDamage, false);
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 

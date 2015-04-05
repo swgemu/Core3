@@ -58,7 +58,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -98,7 +98,7 @@ public:
 		return SUCCESS;
 	}
 
-	void handleEmote( CreatureObject* player, String arg ){
+	void handleEmote( CreatureObject* player, String& arg ) const {
 
 		PlayerObject* ghost = player->getPlayerObject();
 		if( player == NULL )
@@ -149,7 +149,7 @@ public:
 
 	}
 
-	void handleHelp( CreatureObject* player ){
+	void handleHelp( CreatureObject* player ) const {
 
 		PlayerObject* ghost = player->getPlayerObject();
 		if( ghost == NULL )
@@ -194,7 +194,7 @@ public:
 		player->sendMessage(box->generateMessage());
 	}
 
-	void handleDelete( CreatureObject* player ){
+	void handleDelete( CreatureObject* player ) const {
 
 		PlayerObject* ghost = player->getPlayerObject();
 		if( ghost == NULL )
@@ -207,7 +207,7 @@ public:
 
 	}
 
-	bool isValidArgument( String arg ){
+	bool isValidArgument(const String& arg) const {
 
 		if( arg == "help" ||
 		    arg == "beehive" ||

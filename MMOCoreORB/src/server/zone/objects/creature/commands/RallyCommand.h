@@ -55,7 +55,7 @@ public:
 		: SquadLeaderCommand(name, server) {
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -94,7 +94,7 @@ public:
 		return SUCCESS;
 	}
 
-	bool doRally(CreatureObject* leader, GroupObject* group) {
+	bool doRally(CreatureObject* leader, GroupObject* group) const {
 		if (leader == NULL || group == NULL)
 			return false;
 
@@ -148,7 +148,7 @@ public:
 		return true;
 	}
 
-	void sendRallyCombatSpam(CreatureObject* leader, GroupObject* group, bool success) {
+	void sendRallyCombatSpam(CreatureObject* leader, GroupObject* group, bool success) const {
 		if (leader == NULL || group == NULL)
 			return;
 

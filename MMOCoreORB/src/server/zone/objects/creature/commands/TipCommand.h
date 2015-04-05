@@ -53,7 +53,7 @@ class TipCommand: public QueueCommand {
 private:
 
 	int performTip(CreatureObject* player, CreatureObject* targetPlayer,
-			int amount) {
+			int amount) const {
 
 		// Target player must be in range (I think it's likely to assume this is the maximum targeting range, 190m)
 		if (!player->isInRange(targetPlayer, 190)) {
@@ -94,7 +94,7 @@ private:
 	}
 
 	int performBankTip(CreatureObject* player, CreatureObject* targetPlayer,
-			int amount) {
+			int amount) const {
 
 		// Player must have sufficient bank funds
 		int cash = player->getBankCredits();
@@ -137,7 +137,7 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target,
-			const UnicodeString& arguments) {
+			const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;

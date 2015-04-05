@@ -55,7 +55,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -99,7 +99,7 @@ public:
 		return SUCCESS;
 	}
 
-	void listResources(CreatureObject* creature, StringTokenizer* args) {
+	void listResources(CreatureObject* creature, StringTokenizer* args) const {
 		if(creature->getZoneServer() == NULL)
 			return;
 
@@ -114,7 +114,7 @@ public:
 		resMan->listResourcesForPlanetOnScreen(creature, planet);
 	}
 
-	void healthCheck(CreatureObject* creature, StringTokenizer* args) {
+	void healthCheck(CreatureObject* creature, StringTokenizer* args) const {
 		if(creature->getZoneServer() == NULL)
 			return;
 
@@ -123,7 +123,7 @@ public:
 		creature->sendSystemMessage(resMan->healthCheck());
 	}
 
-	void dumpResources(CreatureObject* creature, StringTokenizer* args) {
+	void dumpResources(CreatureObject* creature, StringTokenizer* args) const {
 		if(creature->getZoneServer() == NULL)
 			return;
 
@@ -132,7 +132,7 @@ public:
 		creature->sendSystemMessage(resMan->dumpResources());
 	}
 
-	void despawnResource(CreatureObject* creature, StringTokenizer* args) {
+	void despawnResource(CreatureObject* creature, StringTokenizer* args) const {
 		if(creature->getZoneServer() == NULL)
 			return;
 
@@ -146,7 +146,7 @@ public:
 		creature->sendSystemMessage(resMan->despawnResource(resourceName));
 	}
 
-	void listResourceInfo(CreatureObject* creature, StringTokenizer* args) {
+	void listResourceInfo(CreatureObject* creature, StringTokenizer* args) const {
 		if(creature->getZoneServer() == NULL)
 			return;
 

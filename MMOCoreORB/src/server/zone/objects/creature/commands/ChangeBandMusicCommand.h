@@ -62,7 +62,7 @@ public:
 
 	}
 
-	bool canPlaySong(CreatureObject* entertainer, String song) {
+	bool canPlaySong(CreatureObject* entertainer, const String& song) const {
 		ManagedReference<EntertainingSession*> session = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 		if (session == NULL || !session->isPlayingMusic())
@@ -91,7 +91,7 @@ public:
 		return true;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;

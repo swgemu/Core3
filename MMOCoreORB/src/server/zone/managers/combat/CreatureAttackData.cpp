@@ -8,7 +8,7 @@
 #include "CreatureAttackData.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 
-CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, CombatQueueCommand* base) {
+CreatureAttackData::CreatureAttackData(const UnicodeString& dataString, const CombatQueueCommand* base) {
 	baseCommand = base;
 	fillFromBase();
 

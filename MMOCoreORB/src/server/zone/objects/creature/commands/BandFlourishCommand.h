@@ -255,7 +255,7 @@ public:
 		return;
 	}
 
-	void printStatus(CreatureObject* player) {
+	void printStatus(CreatureObject* player) const {
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
@@ -267,7 +267,7 @@ public:
 		return;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;

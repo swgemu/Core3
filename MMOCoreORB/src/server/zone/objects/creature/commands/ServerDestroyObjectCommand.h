@@ -58,7 +58,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -148,7 +148,7 @@ public:
 		return SUCCESS;
 	}
 
-	void destroyObject(SceneObject* object, CreatureObject* creature) {
+	void destroyObject(SceneObject* object, CreatureObject* creature) const {
 		object->destroyObjectFromWorld(true);
 
 		object->destroyObjectFromDatabase(true);

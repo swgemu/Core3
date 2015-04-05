@@ -68,7 +68,7 @@ public:
 		mindCost = 50;
 	}
 
-	void deactivateInjuryTreatment(CreatureObject* creature, bool isRangedStim) {
+	void deactivateInjuryTreatment(CreatureObject* creature, bool isRangedStim) const {
 		float modSkill = 0.0f;
 
 		if (isRangedStim)
@@ -96,7 +96,7 @@ public:
 		creature->addPendingTask("injuryTreatment", task, delay * 1000);
 	}
 
-	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) const {
 		creatureTarget->playEffect("clienteffect/healing_healdamage.cef", "");
 
 		if (creature == creatureTarget)
@@ -105,7 +105,7 @@ public:
 			creature->doAnimation("heal_other");
 	}
 
-	void doAnimationsRange(CreatureObject* creature, CreatureObject* creatureTarget, int oid, float range) {
+	void doAnimationsRange(CreatureObject* creature, CreatureObject* creatureTarget, int oid, float range) const {
 		String crc;
 
 		if (range < 10.0f) {
@@ -122,7 +122,7 @@ public:
 		creature->broadcastMessage(action, true);
 	}
 
-	StimPack* findStimPack(CreatureObject* creature) {
+	StimPack* findStimPack(CreatureObject* creature) const {
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
 		if (inventory == NULL)
@@ -163,7 +163,7 @@ public:
 		return NULL;
 	}
 
-	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
+	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) const {
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
 			return false;
 		}
@@ -180,7 +180,7 @@ public:
 		return true;
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack) {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, StimPack* stimPack) const {
 		if (!creature->canTreatInjuries()) {
 			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
 			return false;
@@ -231,7 +231,7 @@ public:
 		return true;
 	}
 
-	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint32 healthDamage, uint32 actionDamage) {
+	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint32 healthDamage, uint32 actionDamage) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -266,7 +266,7 @@ public:
 		}
 	}
 
-	void awardXp(CreatureObject* creature, const String& type, int power) {
+	void awardXp(CreatureObject* creature, const String& type, int power) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -281,7 +281,7 @@ public:
 		playerManager->awardExperience(player, type, amount, true);
 	}
 
-	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* targetCreature, PharmaceuticalObject* pharma) {
+	void doAreaMedicActionTarget(CreatureObject* creature, CreatureObject* targetCreature, PharmaceuticalObject* pharma) const {
 		if (pharma->isRangedStimPack()) {
 			RangedStimPack* rangeStim = cast<RangedStimPack*>( pharma);
 
@@ -308,7 +308,7 @@ public:
 	}
 
 	void handleArea(CreatureObject* creature, CreatureObject* areaCenter, StimPack* pharma,
-			float range) {
+			float range) const {
 
 		Zone* zone = creature->getZone();
 
@@ -364,7 +364,7 @@ public:
 		}
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 

@@ -328,7 +328,7 @@ QueueCommand* CommandConfigManager::createCommand(const String& name) {
 
 void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	slashCommands = sCommands;
-	QueueCommand* admin = new QueueCommand("admin", server);
+	QueueCommand* admin = new AdminCommand("admin", server);
 	slashCommands->put(admin);
 	// Fri Oct  7 17:09:26 PDT 2011 - Karl Bunch <karlbunch@karlbunch.com>
 	// Turns out this isn't in the base datatables/command/command_tables_shared.iff file

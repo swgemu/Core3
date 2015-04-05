@@ -97,7 +97,7 @@ public:
 		trails = CombatManager::DEFAULTTRAIL;
 	}
 
-	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "", ManagedReference<WeaponObject*> weapon = NULL) {
+	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "", ManagedReference<WeaponObject*> weapon = NULL) const {
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 		PlayerManager* playerManager = server->getPlayerManager();
 
@@ -157,8 +157,8 @@ public:
 			}
 
 		} catch (Exception& e) {
-			error("unreported exception caught in CombatQueueCommand::doCombatAction");
-			error(e.getMessage());
+			creature->error("unreported exception caught in CombatQueueCommand::doCombatAction");
+			creature->error(e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -198,7 +198,7 @@ public:
 		return SUCCESS;
 	}
 
-	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) {
+	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) const {
 		return CombatManager::instance()->calculateWeaponAttackSpeed(object, object->getWeapon(), speedMultiplier);
 	}
 
@@ -334,12 +334,12 @@ public:
 		return poolsToDamage;
 	}
 
-	inline VectorMap<uint8, StateEffect>* getStateEffects() {
-		return &stateEffects;
+	inline VectorMap<uint8, StateEffect>* getStateEffects() const {
+		return &(const_cast<CombatQueueCommand*>(this)->stateEffects);
 	}
 
-	inline VectorMap<uint64, DotEffect>* getDotEffects() {
-		return &dotEffects;
+	inline VectorMap<uint64, DotEffect>* getDotEffects() const {
+		return &(const_cast<CombatQueueCommand*>(this)->dotEffects);
 	}
 
 	void setAnimationCRC(uint32 animationCRC) {
@@ -362,8 +362,8 @@ public:
 		stateEffects.put(stateEffect.getEffectType(), stateEffect);
 	}
 
-	StateEffect getStateEffect(uint8 type) {
-		return stateEffects.get(type);
+	StateEffect getStateEffect(uint8 type) const {
+		return const_cast<CombatQueueCommand*>(this)->stateEffects.get(type);
 	}
 
 	void setDotEffects(VectorMap<uint64, DotEffect> dotEffects) {
@@ -407,7 +407,7 @@ public:
 	}
 
 	// this goes in command in order to allow for overriding for special commands
-	virtual void applyEffect(CreatureObject* creature, uint8 effectType, uint32 mod, uint32 crc = 0) {
+	virtual void applyEffect(CreatureObject* creature, uint8 effectType, uint32 mod, uint32 crc = 0) const {
 		CombatManager* combatManager = CombatManager::instance();
 		StateEffect effect = getStateEffect(effectType);
 		Reference<Buff*> buff = NULL;
@@ -510,7 +510,7 @@ public:
 	}
 
 	//Override for special cases (skills like Taunt that don't have 5 result strings)
-	virtual void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage, const CreatureAttackData& data) {
+	virtual void sendAttackCombatSpam(TangibleObject* attacker, TangibleObject* defender, int attackResult, int damage, const CreatureAttackData& data) const {
 		if (attacker == NULL || defender == NULL)
 			return;
 

@@ -57,7 +57,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("@player_structure:cant_place_mounted");
 			return INVALIDLOCOMOTION;

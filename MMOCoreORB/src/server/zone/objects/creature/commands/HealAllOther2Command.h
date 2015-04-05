@@ -76,7 +76,7 @@ public:
 		speed = 3.0;
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) const {
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION) && !creatureTarget->hasDamage(CreatureAttribute::MIND)) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other"); //Your target has no damage of that type to heal.
 			return false;
@@ -94,7 +94,7 @@ public:
 		return true;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 

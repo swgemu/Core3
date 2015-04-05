@@ -56,7 +56,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments)
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const
 	{
 
 		if (!checkStateMask(creature))

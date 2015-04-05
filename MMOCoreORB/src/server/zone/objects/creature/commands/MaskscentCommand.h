@@ -55,7 +55,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -97,7 +97,7 @@ public:
 		return SUCCESS;
 	}
 
-	bool checkMaskScent(CreatureObject* creature) {
+	bool checkMaskScent(CreatureObject* creature) const {
 
 		if(creature->getSkillMod("mask_scent") <= 0) {
 			creature->sendSystemMessage("@skl_use:sys_scentmask_noskill"); // You might be a very clean person, but you lack the skill to mask your scent from creatures.

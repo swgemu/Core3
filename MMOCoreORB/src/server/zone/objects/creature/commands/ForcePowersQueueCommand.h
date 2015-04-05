@@ -28,7 +28,7 @@ public:
 
 	ForcePowersQueueCommand(const String& name, ZoneProcessServer* server) : CombatQueueCommand(name, server) {}
 
-	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") {
+	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") const {
 			ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 			PlayerManager* playerManager = server->getPlayerManager();
 

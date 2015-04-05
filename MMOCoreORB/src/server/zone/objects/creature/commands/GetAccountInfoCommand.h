@@ -58,7 +58,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -295,7 +295,7 @@ public:
 		return SUCCESS;
 	}
 
-	void sendUsage(CreatureObject* creature) {
+	void sendUsage(CreatureObject* creature) const {
 		creature->sendSystemMessage("Usage /getAccountInfo [-a|-b|-c] [args]");
 		creature->sendSystemMessage("	ex: /getAccountInfo -a <accountname>");
 		creature->sendSystemMessage("	ex: /getAccountInfo -b -- Lists bans");

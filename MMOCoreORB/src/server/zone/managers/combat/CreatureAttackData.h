@@ -16,7 +16,7 @@ class CombatQueueCommand;
 
 class CreatureAttackData {
 protected:
-	CombatQueueCommand* baseCommand;
+	const CombatQueueCommand* baseCommand;
 
 	float damage;
 	float damageMultiplier;
@@ -47,7 +47,7 @@ protected:
 	String combatSpam;
 
 public:
-    CreatureAttackData(const UnicodeString & dataString, CombatQueueCommand *base);
+    CreatureAttackData(const UnicodeString & dataString, const CombatQueueCommand *base);
     CreatureAttackData(const CreatureAttackData& data);
     virtual ~CreatureAttackData() {}
 
@@ -81,7 +81,7 @@ public:
 		this->mindDamageMultiplier = mindDamageMultiplier;
 	}
 
-    CombatQueueCommand* getCommand() const {
+    const CombatQueueCommand* getCommand() const {
     	return baseCommand;
     }
 

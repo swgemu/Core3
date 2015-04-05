@@ -56,7 +56,7 @@ public:
 
 	}
 
-	void setPetsPvpStatusBitMask(PlayerObject* ghost, int mask) {
+	void setPetsPvpStatusBitMask(PlayerObject* ghost, int mask) const {
 		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
 			Reference<AiAgent*> pet = ghost->getActivePet(i);
 
@@ -65,7 +65,7 @@ public:
 		}
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;

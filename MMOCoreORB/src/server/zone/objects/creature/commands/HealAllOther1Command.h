@@ -78,14 +78,14 @@ public:
 		speed = 3.0;
 	}
 
-	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
+	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) const {
 		if (creatureTarget == creature)
 			creature->playEffect("clienteffect/pl_force_healing.cef", "");
 		 else
 			creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
 	}
 
-	void sendHealMessage(CreatureObject* object, CreatureObject* target, int healthDamage, int actionDamage, int mindDamage) {
+	void sendHealMessage(CreatureObject* object, CreatureObject* target, int healthDamage, int actionDamage, int mindDamage) const {
 		if (!object->isPlayerCreature())
 			return;
 
@@ -119,7 +119,7 @@ public:
 		creatureTarget->sendSystemMessage(msgTarget.toString());
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) const {
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION) && !creatureTarget->hasDamage(CreatureAttribute::MIND)) {
 			creature->sendSystemMessage("@jedi_spam:no_damage_heal_other"); //Your target has no damage of that type to heal.
 			return false;
@@ -133,7 +133,7 @@ public:
 		return true;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 
@@ -184,7 +184,7 @@ public:
 			return false;
 		}
 
-		forceCost = MIN(((healedHealth + healedAction + healedMind) / 4), 340);
+		float forceCost = MIN(((healedHealth + healedAction + healedMind) / 4), 340);
 
 		playerObject->setForcePower(playerObject->getForcePower() - forceCost); // Deduct force.
 

@@ -61,7 +61,7 @@ public:
 		range = 6;
 	}
 
-	void deactivateWoundTreatment(CreatureObject* creature) {
+	void deactivateWoundTreatment(CreatureObject* creature) const {
 		int delay = 20;
 
 		StringIdChatParameter message("healing_response", "healing_response_59");
@@ -69,13 +69,13 @@ public:
 		creature->addPendingTask("woundTreatment", task, delay * 1000);
 	}
 
-	void doAnimations(CreatureObject* creature, CreatureObject* droid) {
+	void doAnimations(CreatureObject* creature, CreatureObject* droid) const {
 		droid->playEffect("clienteffect/healing_healwound.cef", "");
 
 		creature->doAnimation("heal_other");
 	}
 
-	void sendWoundMessage(CreatureObject* creature, DroidObject* droid, uint32 woundsHealed) {
+	void sendWoundMessage(CreatureObject* creature, DroidObject* droid, uint32 woundsHealed) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -95,7 +95,7 @@ public:
 		}
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* droid, WoundPack* woundPack) {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* droid, WoundPack* woundPack) const {
 		if (!creature->canTreatWounds()) {
 			creature->sendSystemMessage("@healing_response:enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
 			return false;
@@ -153,7 +153,7 @@ public:
 		return true;
 	}
 
-	void parseModifier(const String& modifier, uint64& objectId) {
+	void parseModifier(const String& modifier, uint64& objectId) const {
 		if (!modifier.isEmpty()) {
 			StringTokenizer tokenizer(modifier);
 
@@ -163,7 +163,7 @@ public:
 		}
 	}
 
-	uint8 findAttribute(CreatureObject* creature) {
+	uint8 findAttribute(CreatureObject* creature) const {
 		for (int i = 0; i < 9; ++i) {
 			int wounds = creature->getWounds(i);
 
@@ -174,7 +174,7 @@ public:
 		return CreatureAttribute::UNKNOWN;
 	}
 
-	WoundPack* findWoundPack(CreatureObject* creature) {
+	WoundPack* findWoundPack(CreatureObject* creature) const {
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
 		if (inventory != NULL) {
@@ -201,7 +201,7 @@ public:
 		return NULL;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 

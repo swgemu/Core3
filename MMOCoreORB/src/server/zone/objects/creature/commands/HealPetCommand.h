@@ -61,7 +61,7 @@ public:
 		mindCost = 50;
 	}
 
-	void deactivateInjuryTreatment(CreatureObject* creature) {
+	void deactivateInjuryTreatment(CreatureObject* creature) const {
 		int delay = 20;
 
 		StringIdChatParameter message("healing_response", "healing_response_58"); //You are now ready to heal more damage.
@@ -69,13 +69,13 @@ public:
 		creature->addPendingTask("injuryTreatment", task, delay * 1000);
 	}
 
-	void doAnimations(CreatureObject* creature, CreatureObject* pet) {
+	void doAnimations(CreatureObject* creature, CreatureObject* pet) const {
 		pet->playEffect("clienteffect/healing_healdamage.cef", "");
 
 		creature->doAnimation("heal_other");
 	}
 
-	StimPack* findStimPack(CreatureObject* creature) {
+	StimPack* findStimPack(CreatureObject* creature) const {
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
 		if (inventory != NULL) {
@@ -103,7 +103,7 @@ public:
 		return NULL;
 	}
 
-	bool canPerformSkill(CreatureObject* creature, CreatureObject* pet, StimPack* stimPack) {
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* pet, StimPack* stimPack) const {
 		if (!creature->canTreatInjuries()) {
 			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
 			return false;
@@ -134,7 +134,7 @@ public:
 		return true;
 	}
 
-	void sendHealMessage(CreatureObject* creature, CreatureObject* pet, int healthDamage, int actionDamage, int mindDamage) {
+	void sendHealMessage(CreatureObject* creature, CreatureObject* pet, int healthDamage, int actionDamage, int mindDamage) const {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -164,7 +164,7 @@ public:
 		creature->sendSystemMessage(msgPlayer.toString());
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 

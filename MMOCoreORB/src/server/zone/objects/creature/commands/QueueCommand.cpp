@@ -59,7 +59,7 @@ void QueueCommand::setInvalidLocomotions(const String& lStr) {
 /*
  * Checks each invalid locomotion with the player's current locomotion
  */
-bool QueueCommand::checkInvalidLocomotions(CreatureObject* creature) {
+bool QueueCommand::checkInvalidLocomotions(CreatureObject* creature) const {
 	for (int i = 0; i < invalidLocomotion.size(); ++i) {
 		if (invalidLocomotion.get(i) == creature->getLocomotion())
 			return false;
@@ -68,7 +68,7 @@ bool QueueCommand::checkInvalidLocomotions(CreatureObject* creature) {
 	return true;
 }
 
-void QueueCommand::onStateFail(CreatureObject* creature, uint32 actioncntr) {
+void QueueCommand::onStateFail(CreatureObject* creature, uint32 actioncntr) const {
 	if (!addToQueue)
 		return;
 
@@ -89,10 +89,10 @@ void QueueCommand::onStateFail(CreatureObject* creature, uint32 actioncntr) {
 		++num;
 	}
 
-	error("unknown invalid state in onStateFail");
+	creature->error("unknown invalid state in onStateFail");
 }
 
-void QueueCommand::onLocomotionFail(CreatureObject* creature, uint32 actioncntr) {
+void QueueCommand::onLocomotionFail(CreatureObject* creature, uint32 actioncntr) const {
 	if (!checkInvalidLocomotions(creature))
 		creature->clearQueueAction(actioncntr, 0, 1, creature->getLocomotion());
 }
@@ -100,7 +100,7 @@ void QueueCommand::onLocomotionFail(CreatureObject* creature, uint32 actioncntr)
 /*
  * Unsuccessful command completion alerts the player of the invalid state
  */
-void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 errorNumber) {
+void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 errorNumber) const {
 	StringIdChatParameter prm;
 	switch (errorNumber) {
 	case INVALIDSYNTAX:
@@ -171,7 +171,7 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 	}
 }
 
-void QueueCommand::onComplete(uint32 actioncntr, CreatureObject* player, float commandDuration) {
+void QueueCommand::onComplete(uint32 actioncntr, CreatureObject* player, float commandDuration) const {
 	if (!player->isPlayerCreature())
 		return;
 
@@ -179,7 +179,7 @@ void QueueCommand::onComplete(uint32 actioncntr, CreatureObject* player, float c
 		player->clearQueueAction(actioncntr, commandDuration);
 }
 
-int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) {
+int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) const {
 	if (!checkStateMask(creature))
 		return INVALIDSTATE;
 
@@ -202,7 +202,7 @@ int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) {
 	return SUCCESS;
 }
 
-void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target) {
+void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target) const {
 	if (!creature->isPlayerCreature() || creature == target)
 		return;
 

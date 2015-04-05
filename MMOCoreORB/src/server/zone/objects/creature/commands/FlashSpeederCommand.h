@@ -59,7 +59,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* player, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* player, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(player))
 			return INVALIDSTATE;

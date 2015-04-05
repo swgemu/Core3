@@ -58,7 +58,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -180,7 +180,7 @@ public:
 		return SUCCESS;
 	}
 
-	int sendVeteranRewardInfo(CreatureObject* creature, CreatureObject* target) {
+	int sendVeteranRewardInfo(CreatureObject* creature, CreatureObject* target) const {
 		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
@@ -217,7 +217,7 @@ public:
 
 	}
 
-	int sendFactionInfo(CreatureObject* creature, CreatureObject* target) {
+	int sendFactionInfo(CreatureObject* creature, CreatureObject* target) const {
 		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
@@ -268,7 +268,7 @@ public:
 	}
 
 
-	int sendVendorInfo(CreatureObject* creature, CreatureObject* target) {
+	int sendVendorInfo(CreatureObject* creature, CreatureObject* target) const {
 		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
@@ -353,7 +353,7 @@ public:
 		return SUCCESS;
 	}
 
-	int sendLots(CreatureObject* creature, CreatureObject* target) {
+	int sendLots(CreatureObject* creature, CreatureObject* target) const {
 		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
@@ -406,7 +406,7 @@ public:
 		return SUCCESS;
 	}
 
-	int sendHam(CreatureObject* creature, CreatureObject* target) {
+	int sendHam(CreatureObject* creature, CreatureObject* target) const {
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 		if (ghost == NULL) {

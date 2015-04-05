@@ -59,7 +59,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -109,8 +109,8 @@ public:
 		return SUCCESS;
 	}
 
-	int disbandCamp(CreatureObject* creature, StructureObject* structure) {
-		Terminal* campTerminal = NULL;
+	int disbandCamp(CreatureObject* creature, StructureObject* structure) const {
+		Reference<Terminal*> campTerminal = NULL;
 		SortedVector < ManagedReference<SceneObject*> > *childObjects = structure->getChildObjects();
 
 		for (int i = 0; i < childObjects->size(); ++i) {

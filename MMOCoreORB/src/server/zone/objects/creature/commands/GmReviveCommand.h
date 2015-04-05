@@ -54,7 +54,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -220,7 +220,7 @@ public:
 		return SUCCESS;
 	}
 
-	void revivePatient(CreatureObject* creature, CreatureObject* patient) {
+	void revivePatient(CreatureObject* creature, CreatureObject* patient) const {
 		Locker clocker(patient, creature);
 
 		patient->healDamage(creature, CreatureAttribute::HEALTH, 5000);

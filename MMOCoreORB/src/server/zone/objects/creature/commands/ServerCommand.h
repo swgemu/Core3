@@ -77,7 +77,7 @@ public:
 		methodFactory.registerMethod<ServerStatisticsCommand>("statistics");
 }
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -96,7 +96,9 @@ public:
 		if (tokenizer.hasMoreTokens())
 			tokenizer.finalToken(restOfArguments);
 
-		int ret = methodFactory.runMethod(commandName, creature, target, restOfArguments);
+		ServerCommand* unconst = const_cast<ServerCommand*>(this);
+		
+		int ret = unconst->methodFactory.runMethod(commandName, creature, target, restOfArguments);
 
 		return SUCCESS;
 	}

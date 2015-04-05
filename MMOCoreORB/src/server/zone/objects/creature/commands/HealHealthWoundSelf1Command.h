@@ -55,7 +55,7 @@ public:
 
 	}
 
-	bool canPerformSkill(CreatureObject* creature) {
+	bool canPerformSkill(CreatureObject* creature) const {
 		if (!creature->getWounds(CreatureAttribute::HEALTH) && !creature->getWounds(CreatureAttribute::STRENGTH) && !creature->getWounds(CreatureAttribute::CONSTITUTION)) {
 			creature->sendSystemMessage("@healing_response:healing_response_67"); // You have no wounds of that type.
 			return false;
@@ -64,7 +64,7 @@ public:
 		return true;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 
@@ -139,7 +139,7 @@ public:
 	}
 
 
-	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) const {
 		return defaultTime * 3.0;
 	}
 

@@ -109,12 +109,12 @@ public:
 	
 	}
 	
-	void doAnimations(CreatureObject* creature) {
+	void doAnimations(CreatureObject* creature) const {
 			creature->playEffect("clienteffect/pl_force_healing.cef", "");
 	}
 		
 	
-	void sendWoundMessage(CreatureObject* creature, int healthWound, int actionWound, int mindWound, int strengthWound, int constitutionWound, int quicknessWound, int staminaWound, int focusWound, int willpowerWound) {
+	void sendWoundMessage(CreatureObject* creature, int healthWound, int actionWound, int mindWound, int strengthWound, int constitutionWound, int quicknessWound, int staminaWound, int focusWound, int willpowerWound) const {
 
 		StringBuffer msgPlayer, msgBody, msgTail;
 
@@ -150,7 +150,7 @@ public:
 
 	}
 	
-	void sendHealMessage(CreatureObject* creature, int healthDamage, int actionDamage, int mindDamage) {
+	void sendHealMessage(CreatureObject* creature, int healthDamage, int actionDamage, int mindDamage) const {
 
 		StringBuffer msgPlayer, msgBody, msgTail;
 
@@ -175,7 +175,7 @@ public:
 	}	
 		
 		
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		int result = doCommonMedicalCommandChecks(creature);
 
@@ -230,7 +230,7 @@ public:
 		}
 		
 		
-		forceCost = MIN(((healedHealth + healedAction + healedMind + healedHealthWound + healedStrengthWound + healedConstitutionWound + healedActionWound + healedQuicknessWound + healedStaminaWound + healedMindWound + healedFocusWound + healedWillpowerWound + healDisease + healPoison + healBleeding + healOnFire) / 20), 400);
+		float forceCost = MIN(((healedHealth + healedAction + healedMind + healedHealthWound + healedStrengthWound + healedConstitutionWound + healedActionWound + healedQuicknessWound + healedStaminaWound + healedMindWound + healedFocusWound + healedWillpowerWound + healDisease + healPoison + healBleeding + healOnFire) / 20), 400);
 
 		
 		playerObject->setForcePower(playerObject->getForcePower() - forceCost); // Deduct force.	

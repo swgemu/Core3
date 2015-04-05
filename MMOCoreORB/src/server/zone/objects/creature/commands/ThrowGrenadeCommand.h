@@ -55,7 +55,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -113,7 +113,7 @@ public:
 		return GENERALERROR;
 	}
 
-	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) {
+	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) const {
 		StringTokenizer tokenizer(arguments.toString());
 		uint64 weaponID = tokenizer.getLongToken();
 
