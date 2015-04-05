@@ -55,7 +55,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* player, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* player, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(player))
 			return INVALIDSTATE;
@@ -93,7 +93,7 @@ public:
 		return SUCCESS;
 	}
 
-	void addPlayerToBuilding(CreatureObject* player) {
+	void addPlayerToBuilding(CreatureObject* player) const {
 		ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
 		if (building != NULL) {
 			Locker blocker(building, player);
@@ -101,16 +101,16 @@ public:
 		}
 	}
 
-	bool isNoviceDoctor(CreatureObject* player) {
+	bool isNoviceDoctor(CreatureObject* player) const {
 		return player->hasSkill("science_doctor_novice");
 	}
 
-	bool isNoviceEntertainer(CreatureObject* player) {
+	bool isNoviceEntertainer(CreatureObject* player) const {
 		return (player->hasSkill("social_musician_novice") ||
 				player->hasSkill("social_dancer_novice"));
 	}
 
-	bool isInMedicalBuilding(CreatureObject* player) {
+	bool isInMedicalBuilding(CreatureObject* player) const {
 		ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
 		if (building != NULL) {
 			PlanetMapCategory* pmc = building->getPlanetMapSubCategory();
@@ -129,7 +129,7 @@ public:
 		return false;
 	}
 
-	bool isInEntertainingBuilding(CreatureObject* player) {
+	bool isInEntertainingBuilding(CreatureObject* player) const {
 		ManagedReference<BuildingObject*> building = player->getRootParent().get().castTo<BuildingObject*>();
 		if (building != NULL) {
 			PlanetMapCategory* pmc = building->getPlanetMapSubCategory();

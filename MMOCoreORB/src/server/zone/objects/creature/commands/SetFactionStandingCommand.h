@@ -60,7 +60,7 @@ public:
 		creature->sendSystemMessage("Invalid parameter. Format is /setFactionStanding <player> <faction name> <value>");
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 

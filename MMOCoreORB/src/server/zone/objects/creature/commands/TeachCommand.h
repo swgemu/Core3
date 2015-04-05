@@ -57,7 +57,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* teacher, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* teacher, const uint64& target, const UnicodeString& arguments) const {
 		if (!checkStateMask(teacher))
 			return INVALIDSTATE;
 
