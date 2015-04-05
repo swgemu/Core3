@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_4fb6408c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2705,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2015-04-05T02:29:09Z",
+      "side": 1,
+      "message": "ManagedReference\u003cTangibleObject*\u003e",
+      "revId": "4bc14d12e8a79eab86769fb681b5036be80609c6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
