@@ -68,7 +68,7 @@ class ParametersMessageCallback : public MessageCallback {
 	uint16 ackSequence;
 public:
 	ParametersMessageCallback(ZoneClientSession* client, ZoneProcessServer* server) :
-		MessageCallback(client, server) {
+		MessageCallback(client, server), ackSequence(0) {
 	}
 
 	void parse(Message* msg) {

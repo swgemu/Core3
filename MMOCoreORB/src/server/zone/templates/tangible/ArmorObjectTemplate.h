@@ -37,6 +37,25 @@ class ArmorObjectTemplate : public SharedTangibleObjectTemplate {
 
 public:
 	ArmorObjectTemplate() {
+		healthEncumbrance = 0;
+		actionEncumbrance = 0;
+		mindEncumbrance = 0;
+
+		rating = 0;
+
+		kinetic = 0;
+		energy = 0;
+		electricity = 0;
+		stun = 0;
+		blast = 0;
+		heat = 0;
+		cold = 0;
+		acid = 0;
+		lightSaber = 0;
+
+		vulnerabilites = 0;
+		specialResists = 0;
+
 		hitLocation = CombatManager::NOLOCATION;
 	}
 

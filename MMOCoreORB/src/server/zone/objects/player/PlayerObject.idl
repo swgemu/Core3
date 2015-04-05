@@ -327,6 +327,8 @@ class PlayerObject extends IntangibleObject {
 	public static final int LOADING = 6;
 	
 	public PlayerObject() {
+		characterBitmask = 0;
+		
 		commandMessageStrings.setNoDuplicateInsertPlan();
 		
 		bankLocation = "";
@@ -355,6 +357,8 @@ class PlayerObject extends IntangibleObject {
 		forcePowerRegen = 0;
 		jediState = 0;
 		
+		pvpRating = 0;
+		
 		trainerZoneName = "";
 		
 		duelList.setNoDuplicateInsertPlan();
@@ -373,7 +377,13 @@ class PlayerObject extends IntangibleObject {
 		
 		maximumLots = 10;
 		
+		debugOutput = false;
+		
 		spawnedBlueFrog = false;
+		
+		adminLevel = 0;
+		
+		languageID = 0;
 		
 		setOffline();
 		
@@ -391,6 +401,17 @@ class PlayerObject extends IntangibleObject {
 		holoEmoteUseCount = 0;
 		
 		spouseName = "";
+		
+		foodFilling = 0;
+		foodFillingMax = 0;
+		
+		drinkFilling = 0;
+		drinkFillingMax = 0;
+		
+		incapacitationCounter = 0;
+		suiBoxNextID = 0;
+		
+		reactionFines = 0;
 
 		Logger.setLoggingName("PlayerObject");
 	}

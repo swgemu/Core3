@@ -21,7 +21,7 @@ class SlotId : public Object {
 	byte unk6;
 
 public:
-	SlotId() {
+	SlotId() : unk1(0), unk2(0), unk3(0), unk4(0), unk5(0), unk6(0) {
 	}
 
 	SlotId(const SlotId& sid) : Object() {

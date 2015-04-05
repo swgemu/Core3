@@ -17,7 +17,7 @@ class SkillBuffTemplate : public SharedTangibleObjectTemplate {
 	unsigned int buffCRC;
 
 public:
-	SkillBuffTemplate() {
+	SkillBuffTemplate() : duration(0), buffCRC(0) {
 
 	}
 

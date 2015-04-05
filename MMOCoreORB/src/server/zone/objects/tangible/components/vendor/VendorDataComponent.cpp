@@ -32,6 +32,7 @@ VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent() {
 	mail1Sent = false;
 	mail2Sent = false;
 	barkMessage = "";
+	lastBark = 0;
 	originalDirection = 1000;
 	addSerializableVariables();
 }

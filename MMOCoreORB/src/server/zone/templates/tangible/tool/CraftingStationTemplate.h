@@ -17,7 +17,7 @@ private:
 	int complexityLevel;
 
 public:
-	CraftingStationTemplate() {
+	CraftingStationTemplate() : stationType(0), complexityLevel(0) {
 
 	}
 

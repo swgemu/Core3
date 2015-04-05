@@ -19,8 +19,8 @@ class CharacterBuilderTerminalTemplate : public SharedTangibleObjectTemplate {
 	int	medicalDuration;
 
 public:
-	CharacterBuilderTerminalTemplate() {
-		rootNode = NULL;
+	CharacterBuilderTerminalTemplate() : rootNode(NULL), performanceBuff(0),
+		medicalBuff(0), performanceDuration(0), medicalDuration(0) {
 	}
 
 	~CharacterBuilderTerminalTemplate() {

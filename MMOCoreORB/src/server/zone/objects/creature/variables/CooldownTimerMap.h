@@ -105,7 +105,7 @@ public:
 	CooldownTimerMap() : timers(1, 1) {
 	}
 
-	CooldownTimerMap(const CooldownTimerMap& map) : Object() {
+	CooldownTimerMap(const CooldownTimerMap& map) : Object(), cooldownMutex() {
 		timers = map.timers;
 	}
 
@@ -117,6 +117,7 @@ public:
 			return *this;
 
 		timers = map.timers;
+		cooldownMutex = map.cooldownMutex;
 
 		return *this;
 	}

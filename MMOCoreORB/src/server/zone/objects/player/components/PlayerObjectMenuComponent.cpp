@@ -121,7 +121,7 @@ int PlayerObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 	case 117:
 		if(player->getPlayerObject()->isPrivileged()) {
-			Locker( ownerPlayer, player );
+			Locker locker( ownerPlayer, player );
 			PlayerManager* playerManager = player->getZoneServer()->getPlayerManager();
 			playerManager->grantDivorce( ownerPlayer );
 		}

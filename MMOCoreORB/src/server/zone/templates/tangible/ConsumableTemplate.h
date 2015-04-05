@@ -38,7 +38,25 @@ class ConsumableTemplate : public SharedTangibleObjectTemplate {
 
 public:
 	ConsumableTemplate() {
+		duration = 0;
+		filling = 0;
+		nutrition = 0;
 
+		effectType = 0;
+
+		fillingMin = 0;
+		fillingMax = 0;
+		flavorMin = 0;
+		flavorMax = 0;
+		nutritionMin = 0;
+		nutritionMax = 0;
+		quantityMin = 0;
+		quantityMax = 0;
+
+		buffCRC = 0;
+
+		consumableType = 0;
+		foragedFood = 0;
 	}
 
 	~ConsumableTemplate() {

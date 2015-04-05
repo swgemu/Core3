@@ -19,7 +19,7 @@ private:
 	String sampleAnimation;
 
 public:
-	SurveyToolTemplate() {
+	SurveyToolTemplate() : toolType(0) {
 
 	}
 

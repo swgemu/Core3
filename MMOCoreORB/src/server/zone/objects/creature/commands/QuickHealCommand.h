@@ -78,6 +78,7 @@ public:
 		mindCost = 800;
 		mindWoundCost = 10;
 
+		speed = 1;
 		range = 6;
 	}
 
