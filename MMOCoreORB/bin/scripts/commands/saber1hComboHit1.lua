@@ -44,9 +44,9 @@
 Saber1hComboHit1Command = {
         name = "saber1hcombohit1",
         
-    damageMultiplier = 1.5,
-	speedMultiplier = 1.5,
-	forceCostMultiplier = 1.5,
+   damageMultiplier = 1.5,
+	speedMultiplier = 1.25,
+	forceCostMultiplier = 1.25,
 
 	animationCRC = hashCode("combo_3b_light"),
 

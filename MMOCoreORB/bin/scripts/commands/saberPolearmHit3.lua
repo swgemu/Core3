@@ -46,8 +46,8 @@ SaberPolearmHit3Command = {
         
                         
     damageMultiplier = 2.5,
-	speedMultiplier = 1.5,
-	forceCostMultiplier = 3.0,
+	speedMultiplier = 2.5,
+	forceCostMultiplier = 2.0,
 	
 	stateEffects = {
 	  StateEffect( 
@@ -55,13 +55,13 @@ SaberPolearmHit3Command = {
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		20, 
+		75, 
 		100, 
-		10 
+		90 
 	  )
 	},
 
-	animationCRC = hashCode("combo_5a_medium"),
+	animationCRC = hashCode("combo_4b_medium"),
 
 	combatSpam = "saberpolearmhit3",
 	

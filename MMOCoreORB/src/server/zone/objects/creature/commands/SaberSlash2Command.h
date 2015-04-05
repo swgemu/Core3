@@ -69,12 +69,21 @@ public:
 		}
 
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+		String animCRC = "";
 
-		if (!weapon->isJediWeapon()) {
+		if (weapon->isJediOneHandedWeapon()) {
+			animCRC = "knockdown_1h_melee_1";
+		} else if (weapon->isJediTwoHandedWeapon()) {
+			animCRC = "knockdown_2h_melee_1";
+		} else if (weapon->isJediPolearmWeapon()) {
+			animCRC = "knockdown_polearm_1";
+		} else {
 			return INVALIDWEAPON;
 		}
 
-		return doCombatAction(creature, target);
+		UnicodeString args = "animationCRC=" + String::valueOf(animCRC.hashCode()) + ";";
+
+		return doCombatAction(creature, target, args);
 	}
 
 };
