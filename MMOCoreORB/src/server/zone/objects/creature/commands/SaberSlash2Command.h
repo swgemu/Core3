@@ -72,9 +72,9 @@ public:
 		String animCRC = "";
 
 		if (weapon->isJediOneHandedWeapon()) {
-			animCRC = "knockdown_1h_melee_1";
+			animCRC = "knockdown_1hmelee_1";
 		} else if (weapon->isJediTwoHandedWeapon()) {
-			animCRC = "knockdown_2h_melee_1";
+			animCRC = "knockdown_2hmelee_1";
 		} else if (weapon->isJediPolearmWeapon()) {
 			animCRC = "knockdown_polearm_1";
 		} else {

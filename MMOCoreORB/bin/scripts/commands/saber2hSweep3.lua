@@ -60,7 +60,7 @@ Saber2hSweep3Command = {
 	  )
 	},
 
-	animationCRC = hashCode("lower_posture_2h_melee_3"),
+	animationCRC = hashCode("lower_posture_2hmelee_3"),
 
 	combatSpam = "saber2hsweep3",
 	
