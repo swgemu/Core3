@@ -85,26 +85,27 @@ public:
 	TotalHealSelfCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
-	forceCost = 0;
-	heal = 6000;
-		
-	healthHealed = 0;
-	actionHealed = 0;
-	mindHealed = 0;
-		
-	healthWoundHealed = 0;
-	strengthWoundHealed = 0;
-	constitutionWoundHealed = 0;		
-		
-	actionWoundHealed = 0;
-	quicknessWoundHealed = 0;
-	staminaWoundHealed = 0;	
+		forceCost = 0;
+		heal = 6000;
 
-	mindWoundHealed = 0;
-	focusWoundHealed = 0;
-	willpowerWoundHealed = 0;	
+		healthHealed = 0;
+		actionHealed = 0;
+		mindHealed = 0;
 
-	speed = 3.0f;
+		healthWoundHealed = 0;
+		strengthWoundHealed = 0;
+		constitutionWoundHealed = 0;
+
+		actionWoundHealed = 0;
+		quicknessWoundHealed = 0;
+		staminaWoundHealed = 0;
+
+		mindWoundHealed = 0;
+		focusWoundHealed = 0;
+		willpowerWoundHealed = 0;
+
+		speed = 3.0f;
+		range = 0;
 	
 	}
 	

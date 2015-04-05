@@ -147,7 +147,7 @@ public:
 		setNoDuplicateInsertPlan();
 	}
 
-	ThreatMap(const ThreatMap& map) : VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>(map) {
+	ThreatMap(const ThreatMap& map) : VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>(map), lockMutex() {
 		setNoDuplicateInsertPlan();
 		self = map.self;
 		currentThreat = map.currentThreat;

@@ -17,7 +17,7 @@ class RecreationBuildingObjectTemplate : public SharedBuildingObjectTemplate {
 	int mindWoundRegenRate;
 
 public:
-	RecreationBuildingObjectTemplate() {
+	RecreationBuildingObjectTemplate() : medicalRating(0), healthWoundRegenRate(0), actionWoundRegenRate(0), mindWoundRegenRate(0) {
 	}
 
 	~RecreationBuildingObjectTemplate() {

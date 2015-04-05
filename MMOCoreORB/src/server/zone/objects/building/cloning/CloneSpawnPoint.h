@@ -15,7 +15,7 @@ class CloneSpawnPoint : public Object {
 	Quaternion direction;
 	int cellid;
 public:
-	CloneSpawnPoint() {
+	CloneSpawnPoint() : cellid(0) {
 	}
 
 	CloneSpawnPoint(const CloneSpawnPoint& p) : Object() {

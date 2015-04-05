@@ -29,6 +29,7 @@ public:
 		: QueueCommand(name, server) {
 		range = 7;
 		mindCost = 100;
+		state = 0;
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {

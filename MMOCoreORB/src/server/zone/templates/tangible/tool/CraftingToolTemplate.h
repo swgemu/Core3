@@ -17,7 +17,7 @@ private:
 	Vector<uint32> tabs;
 
 public:
-	CraftingToolTemplate() {
+	CraftingToolTemplate() : toolType(0), complexityLevel(0) {
 
 	}
 

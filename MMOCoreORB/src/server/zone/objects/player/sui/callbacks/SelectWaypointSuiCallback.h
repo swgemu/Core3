@@ -21,8 +21,7 @@ class SelectWaypointSuiCallback : public SuiCallback, public Logger {
 	int slotIndex;
 
 public:
-	SelectWaypointSuiCallback(ZoneServer* serv,DroidMerchantModuleDataComponent* module) : SuiCallback(serv) {
-		this->module = module;
+	SelectWaypointSuiCallback(ZoneServer* serv,DroidMerchantModuleDataComponent* module) : SuiCallback(serv), module(module), slotIndex(0) {
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {

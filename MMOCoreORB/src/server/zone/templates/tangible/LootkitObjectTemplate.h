@@ -22,7 +22,7 @@ protected:
 
 
 public:
-	LootkitObjectTemplate() {
+	LootkitObjectTemplate() : deleteComponents(false) {
 
 	}
 

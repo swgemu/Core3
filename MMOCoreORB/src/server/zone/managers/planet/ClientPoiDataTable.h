@@ -20,7 +20,7 @@ protected:
 	float x, y, z;
 
 public:
-	PoiData() {
+	PoiData() : x(0), y(0), z(0) {
 
 	}
 

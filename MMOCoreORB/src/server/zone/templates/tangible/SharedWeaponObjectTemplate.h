@@ -51,7 +51,6 @@ protected:
 	Vector<String> creatureAccuracyModifiers;
 	Vector<String> creatureAimModifiers;
 	Vector<String> defenderDefenseModifiers;
-	Vector<String> certificationsRequired;
 	Vector<String> defenderSecondaryDefenseModifiers;
 	Vector<String> defenderToughnessModifiers;
 

@@ -12,25 +12,35 @@ protected:
 	String craftingStationTemplate;
 	String attributeListString;
 public:
-	DroidCraftingModuleTemplate()  {}
-	~DroidCraftingModuleTemplate() {}
+	DroidCraftingModuleTemplate() : craftingType(0) {
+
+	}
+
+	~DroidCraftingModuleTemplate() {
+
+	}
+
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
 		craftingType = templateData->getIntField("craftingType");
 		craftingStationTemplate = templateData->getStringField("craftingStationTemplate");
 		attributeListString = templateData->getStringField("attributeListString");
 	}
+
 	int getCraftingType() {
 		return craftingType;
 	}
+
 	String& getCraftingStationTemplate() {
 		return craftingStationTemplate;
 	}
+
 	String& getAttributeListString() {
 		return attributeListString;
 	}
-	 bool isDroidCraftingModuleTemplate() {
-		 return true;
-	 }
+
+	bool isDroidCraftingModuleTemplate() {
+		return true;
+	}
 };
 #endif /*DROIDCRAFTINGMODULETEMPLATE_H_*/
