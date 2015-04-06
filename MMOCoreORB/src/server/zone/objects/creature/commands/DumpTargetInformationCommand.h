@@ -100,6 +100,27 @@ public:
 		if (buildingTemplate != 0)
 			msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
 
+		if (obj->isAiAgent()) {
+			AiAgent* objCreo = obj.castTo<AiAgent*>();
+
+			PatrolPoint* home = objCreo->getHomeLocation();
+			if (home != NULL) {
+				cell = home->getCell();
+
+				if (cell != NULL && cell->isCellObject()) {
+					cellid = (cast<CellObject*>(cell.get()))->getCellNumber();
+					ManagedReference<SceneObject*> building = cell->getParent();
+					buildingTemplate = building->getServerObjectCRC();
+				}
+
+				msg << endl << "homeX = " << home->getPositionX() << ", homeZ = " << home->getPositionZ() << ", homeY = " << home->getPositionY()
+						<< ", homeCell = " << cellid;
+
+				if (buildingTemplate != 0)
+					msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
+			}
+		}
+
 		player->sendSystemMessage(msg.toString());
 
 		ChatManager* chatManager = server->getZoneServer()->getChatManager();
