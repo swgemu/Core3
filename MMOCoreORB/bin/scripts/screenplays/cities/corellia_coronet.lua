@@ -9,7 +9,19 @@ registerScreenPlay("CorelliaCoronetScreenPlay", true)
 function CorelliaCoronetScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function CorelliaCoronetScreenPlay:spawnSceneObjects()
+
+	-- Shuttleport A
+    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -29, 200, -4401, 0, 1, 0, 0, 0)
+    -- Shuttleport B
+    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -329, 200, -4636, 0, 1, 0, 0, 0)
+    -- Starport
+    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -131, 200, -4723, 0, 1, 0, 0, 0)
+
 end
 
 function CorelliaCoronetScreenPlay:spawnMobiles()
@@ -132,8 +144,6 @@ function CorelliaCoronetScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "trainer_musician",0,21.8947,2.12814,63.5,0,2365399)
 	--{"farmer_rancher",60,-20.3488,2.12878,65.9854,180.006,2365400, "conversation", ""},
 	spawnMobile("corellia", "trainer_imagedesigner",0,-21.4483,2.12878,74.4461,185,2365400)
-
-
 
 	--Outside Misc
 	spawnMobile("corellia", "businessman",60,-306.34,28,-4620.82,67.4368,0)

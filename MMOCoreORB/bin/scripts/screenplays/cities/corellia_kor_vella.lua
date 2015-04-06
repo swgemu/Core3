@@ -9,7 +9,17 @@ registerScreenPlay("CorelliaKorVellaScreenPlay", true)
 function CorelliaKorVellaScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function CorelliaKorVellaScreenPlay:spawnSceneObjects()
+
+	-- Shuttleport
+    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -3777, 50, 3240, 0, 1, 0, 0, 0)
+    -- Starport
+    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -3154, 50, 2872, 0, 1, 0, 0, 0)
+
 end
 
 function CorelliaKorVellaScreenPlay:spawnMobiles()
@@ -124,6 +134,8 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "corsec_trooper", 360, -3151.32, 31, 2772.13, 282.871, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, -3103.98, 31, 2988.38, 266.9, 0)
 	spawnMobile("corellia", "corsec_trooper", 360, -3102.95, 31, 2989.56, 266.9, 0)
+
+	spawnSceneObject("corellia", "object/static/particle/particle_distant_ships_rebel.iff", -3654.48, 86, 3081.81, 0, 1, 0, 0, 0)
 
 	--misc
 	spawnMobile("corellia", "cll8_binary_load_lifter", 60, -3654.48, 86, 3081.81, 26.971, 0)

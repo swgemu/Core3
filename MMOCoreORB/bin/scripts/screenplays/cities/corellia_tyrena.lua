@@ -9,7 +9,19 @@ registerScreenPlay("CorelliaTyrenaScreenPlay", true)
 function CorelliaTyrenaScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function CorelliaTyrenaScreenPlay:spawnSceneObjects()
+
+	-- Shuttleport A
+    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -5001, 50, -2355, 0, 1, 0, 0, 0)
+	-- Shuttleport B
+    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -5605, 50, -2790, 0, 1, 0, 0, 0)    
+    -- Starport
+    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -4998, 50, -2226, 0, 1, 0, 0, 0)
+
 end
 
 function CorelliaTyrenaScreenPlay:spawnMobiles()
@@ -152,6 +164,7 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "cll_8", 60,-5050.13,21,-2288.73,145.718,0)
 	--{"coa2_rebel_coordinator",60,-5218.4,21,-2602.17,331.695,0, "calm", ""},
 	--{"comm_operator",300,-5467.56,21,-2792.59,0,0, "conversation", ""},
+	spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -5633.73,21,-2757.46, 0, 1, 0, 0, 0)
 	spawnMobile("corellia", "commoner", 60,-5633.73,21,-2757.46,93.1038,0)
 	spawnMobile("corellia", "commoner", 60,-5583.79,21,-2764.8,215.273,0)
 	spawnMobile("corellia", "commoner", 60,-5538.94,21,-2600.55,4.08279,0)

@@ -10,7 +10,15 @@ registerScreenPlay("VreniIslandScreenPlay", true)
 function VreniIslandScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function VreniIslandScreenPlay:spawnSceneObjects()
+ 
+	-- Shuttleport
+    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships_rebel.iff", -5551, 100, -6041, 0, 1, 0, 0, 0)
+   
 end
 
 function VreniIslandScreenPlay:spawnMobiles()
