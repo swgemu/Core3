@@ -1,0 +1,3 @@
+duplInheritedMember:*autogen/*
+duplInheritedMember:*MMOEngine/*
+*:*mongoose*
