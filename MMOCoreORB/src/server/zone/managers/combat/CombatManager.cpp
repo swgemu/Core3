@@ -520,6 +520,12 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 		bigMod = (float) weapon->getIdealAccuracy();
 	}
 
+	if (currentRange >= maxRange)
+		return (float) weapon->getMaxRangeAccuracy();
+
+	if (currentRange <= minRange)
+		return smallMod;
+
 	// this assumes that we are attacking somewhere between point blank and ideal range
 	float smallRange = minRange;
 	float bigRange = idealRange;
@@ -533,8 +539,7 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 
 		smallRange = idealRange;
 		bigRange = maxRange;
-	} else if (currentRange <= minRange)
-		return smallMod;
+	}
 
 	if (bigRange == smallRange) // if they are equal, we know at least one is ideal, so just return the ideal accuracy mod
 		return weapon->getIdealAccuracy();

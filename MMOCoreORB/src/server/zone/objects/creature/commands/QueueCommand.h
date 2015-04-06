@@ -114,6 +114,7 @@ public:
 	const static int INSUFFICIENTPERMISSION = 11;
 	const static int NOJEDIARMOR = 12;
 	const static int INVALIDSYNTAX = 13;
+	const static int TOOCLOSE = 14;
 
 
 	virtual ~QueueCommand() {
