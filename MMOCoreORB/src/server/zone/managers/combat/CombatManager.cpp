@@ -1414,7 +1414,11 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	}
 	//info("Attacker total bonus is " + String::valueOf(bonusAccuracy), true);
 
-	int postureAccuracy = calculatePostureModifier(creoAttacker, weapon);
+	int postureAccuracy = 0;
+
+	if (creoAttacker != NULL)
+		postureAccuracy = calculatePostureModifier(creoAttacker, weapon);
+
 	//info("Attacker posture accuracy is " + String::valueOf(postureAccuracy), true);
 
 	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon, attacker);
