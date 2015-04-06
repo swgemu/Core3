@@ -52,6 +52,8 @@ ContainerObjectsMap& ContainerObjectsMap::operator=(const ContainerObjectsMap& c
 
 	copyData(c);
 
+	loadMutex = c.loadMutex;
+
 	return *this;
 }
 
