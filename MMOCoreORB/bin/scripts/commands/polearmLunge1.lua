@@ -56,7 +56,7 @@ PolearmLunge1Command = {
 
 	combatSpam = "lungestrike",
 
-	range = 15,
+	range = 20,
 
 	stateEffects = {
 	  StateEffect( 

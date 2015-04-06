@@ -164,6 +164,13 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);
 		break;
+	case TOOCLOSE:
+		prm.setStringId("combat_effects", "prone_ranged_too_close");
+		creature->sendSystemMessage(prm);
+
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr);
+		break;
 	default:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);

@@ -115,9 +115,8 @@ public:
 			}
 		}
 
-		if (checkRange == -1) {
-			checkRange = weapon->getMaxRange();
-		}
+		if (checkRange == -1)
+			checkRange = MAX(10.f, weapon->getMaxRange());
 
 		if (creature->isDead() || (creature->isPet() && creature->isIncapacitated()))
 			return INVALIDLOCOMOTION;
@@ -131,11 +130,14 @@ public:
 		if (creature->isKneeling() && weapon->isMeleeWeapon() && range == -1 && !weapon->isJediWeapon())
 			return NOKNEELING;
 
-		if (creature->isProne() && (!weapon->isRangedWeapon() || targetObject->isInRange(creature, 5 + targetObject->getTemplateRadius() + creature->getTemplateRadius())) && range == -1)
+		if (creature->isProne() && !weapon->isRangedWeapon() && range == -1)
 			return NOPRONE;
 
 		if (!targetObject->isInRange(creature, checkRange + targetObject->getTemplateRadius() + creature->getTemplateRadius()))
 			return TOOFAR;
+
+		if (weapon->isRangedWeapon() && creature->isProne() && targetObject->isInRange(creature, 7 + targetObject->getTemplateRadius() + creature->getTemplateRadius()))
+			return TOOCLOSE;
 
 		if (!CollisionManager::checkLineOfSight(creature, targetObject)) {
 			creature->sendSystemMessage("@container_error_message:container18");
