@@ -44,7 +44,10 @@ includeFile("conversations/tasks/hero_of_tatooine/hermit_conv.lua")
 includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_bounty_hunter_conv.lua")
 includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_farmer_conv.lua")
 includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_intellect_liar_conv.lua")
+includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_intercom_conv.lua")
 includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_mother_conv.lua")
+includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_pirate_leader_conv.lua")
+includeFile("conversations/tasks/hero_of_tatooine/hero_of_tat_ranchers_wife_conv.lua")
 
 -- Events
 includeFile("conversations/events/event_promoter_conv.lua")
