@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-class CitizenList : public SortedVector<uint64> {
+class CitizenList : public SynchronizedSortedVector<uint64> {
 public:
 	CitizenList() : SortedVector<uint64>() {
 		setNoDuplicateInsertPlan();
