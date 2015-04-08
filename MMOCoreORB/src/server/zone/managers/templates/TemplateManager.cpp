@@ -476,9 +476,9 @@ void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject*
 
 		if (iffStream != NULL) {
 			templateObject->readObject(iffStream);
-		}
 
-		delete iffStream;
+			delete iffStream;
+		}
 	}
 
 	templateObject->readObject(templateData);
