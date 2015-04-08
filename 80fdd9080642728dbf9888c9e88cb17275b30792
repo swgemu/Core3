@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_427cd772",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 0,
+      "message": "Did you mean to delete this? I don\u0027t see the component getting set anywhere else. Or did you mean to add it to the object\u0027s template directly and forget to include that file?",
+      "revId": "80fdd9080642728dbf9888c9e88cb17275b30792",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

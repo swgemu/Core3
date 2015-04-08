@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_8282cf50",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/conversations/heroOfTatIntercomConvoHandler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 1,
+      "message": "I would ditch this withCreatureObject wrapper since you\u0027re only using player once, even though you could use it 3 times. Since all three of those call are just to get pPlayer\u0027s objectID, I would just get it once at the start and store it in a local variable for use where it\u0027s needed.",
+      "revId": "efda740e70304b0f14ab818112840505e68a22c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_6287d362",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/conversations/heroOfTatPirateLeaderConvoHandler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 1,
+      "message": "Player is unused, ditch the withCreatureObject wrapper.",
+      "revId": "efda740e70304b0f14ab818112840505e68a22c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_2281db4a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 1,
+      "message": "Don\u0027t call getSceneObject twice. Move the nil check to after you instantiate pPlanter.",
+      "revId": "efda740e70304b0f14ab818112840505e68a22c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_0296df94",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 1,
+      "message": "playClientEffectLoc should take an objectID unless you meant to change that and forgot to include that change in this patch. But then, you use an objectID in the calls within doHonorFail below.",
+      "revId": "efda740e70304b0f14ab818112840505e68a22c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_c28fa774",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 1,
+      "message": "Where is this called from?",
+      "revId": "efda740e70304b0f14ab818112840505e68a22c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_a28cab80",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 1,
+      "message": "Events don\u0027t need to return a value. Some of the returns in this function do, others don\u0027t. Be consistent with return value types.",
+      "revId": "efda740e70304b0f14ab818112840505e68a22c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_e292a39e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 1,
+      "message": "If you\u0027re going to reuse pObject, drop the local so you\u0027re not instantiating a new variable.",
+      "revId": "efda740e70304b0f14ab818112840505e68a22c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_82e9af1c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 1,
+      "message": "What is this for?",
+      "revId": "efda740e70304b0f14ab818112840505e68a22c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_62eeb324",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 970,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 1,
+      "message": "I don\u0027t see honorFailDestReached defined anywhere.",
+      "revId": "efda740e70304b0f14ab818112840505e68a22c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_42f3b70a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-08T03:53:41Z",
+      "side": 1,
+      "message": "I don\u0027t see this function being called anywhere.",
+      "revId": "efda740e70304b0f14ab818112840505e68a22c0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
