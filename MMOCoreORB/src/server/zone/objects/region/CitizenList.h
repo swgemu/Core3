@@ -9,10 +9,11 @@
 #define CITIZENLIST_H_
 
 #include "engine/engine.h"
+#include "system/util/SynchronizedSortedVector.h"
 
-class CitizenList : public SortedVector<uint64> {
+class CitizenList : public SynchronizedSortedVector<uint64> {
 public:
-	CitizenList() : SortedVector<uint64>() {
+	CitizenList() : SynchronizedSortedVector<uint64>() {
 		setNoDuplicateInsertPlan();
 	}
 };
