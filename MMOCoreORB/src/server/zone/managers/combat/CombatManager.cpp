@@ -1592,15 +1592,15 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 	if (targetCreature->isPlayerCreature() && targetCreature->getPvpStatusBitmask() == CreatureFlag::NONE)
 		return;
 
-	float accuracyMod = data.isStateOnlyAttack() ? creature->getSkillMod(data.getCommand()->getAccuracySkillMod()) : 0;
-
 	// loop through all the states in the command
 	for (int i = 0; i < stateEffects->size(); i++) {
 		StateEffect effect = stateEffects->get(i);
 		bool failed = false;
 		uint8 effectType = effect.getEffectType();
 
-		if (System::random(100) > effect.getStateChance()) continue; // effect didn't trigger this attack and don't send a message
+		float accuracyMod = effect.getStateChance();
+		if (data.isStateOnlyAttack())
+			accuracyMod += creature->getSkillMod(data.getCommand()->getAccuracySkillMod());
 
 		//Check for state immunity.
 		if (targetCreature->hasEffectImmunity(effectType))
@@ -1623,14 +1623,9 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				targetDefense += targetCreature->getSkillMod(defenseMods.get(j));
 
 			targetDefense -= targetCreature->calculateBFRatio();
+			targetDefense /= 1.5;
 
-			// now roll to see if it gets applied
-			int defDiff = targetDefense - 95;
-			float lRatio = MAX(0.5, targetCreature->getLevel() / MAX(1, creature->getLevel()));
-			if (defDiff > 0)
-				targetDefense = 95 + defDiff * 0.25 * lRatio;
-
-			if (targetDefense > 0 && System::random(100) < targetDefense - accuracyMod)
+			if (System::random(100) > accuracyMod - targetDefense)
 				failed = true;
 
 			// no reason to apply jedi defenses if primary defense was successful
@@ -1641,12 +1636,9 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				for (int j = 0; j < jediMods.size(); j++)
 					targetDefense += targetCreature->getSkillMod(jediMods.get(j));
 
-				// now roll again to see if it gets applied
-				defDiff = targetDefense - 95;
-				if (defDiff > 0)
-					targetDefense = 95 + defDiff * 0.25 * lRatio;
+				targetDefense /= 1.5;
 
-				if (targetDefense > 0 && System::random(100) < targetDefense - accuracyMod)
+				if (System::random(100) > accuracyMod - targetDefense)
 					failed = true;
 			}
 		}
