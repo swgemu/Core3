@@ -390,11 +390,13 @@ function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, cancelPres
 			end
 
 			if (SceneObject(pInventory):hasFullContainerObjects()) then
+				player:setScreenPlayState(2, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
 				player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:intellect_inv_full")
 			else
 				local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_intellect.iff", -1)
 
 				if (pMark == nil) then
+					player:setScreenPlayState(2, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
 					player:sendSystemMessage("Error creating object. Please file a bug report.")
 				end
 			end
@@ -699,11 +701,13 @@ function HeroOfTatooineScreenPlay:completeEscort(pPlayer)
 		end
 
 		if (SceneObject(pInventory):hasFullContainerObjects()) then
+			player:setScreenPlayState(1, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
 			player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:altruism_inv_full")
 		else
 			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_altruism.iff", -1)
 
 			if (pMark == nil) then
+				player:setScreenPlayState(1, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
 				player:sendSystemMessage("Error creating object. Please file a bug report.")
 			end
 		end
@@ -1007,11 +1011,13 @@ function HeroOfTatooineScreenPlay:doSuccessHonorPhase(pPlayer)
 		end
 
 		if (SceneObject(pInventory):hasFullContainerObjects()) then
+			player:setScreenPlayState(8, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
 			player:sendSystemMessage("@quest/hero_of_tatooine/system_messages:honor_inv_full")
 		else
 			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_honor.iff", -1)
 
 			if (pMark == nil) then
+				player:setScreenPlayState(8, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor
 				player:sendSystemMessage("Error creating object. Please file a bug report.")
 			end
 		end
@@ -1295,4 +1301,77 @@ function HeroOfTatooineScreenPlay:onEnteredRanchHouse(pHouse, pObject)
 	end
 
 	return 0
+end
+
+function HeroOfTatooineScreenPlay:isMissingMark(pPlayer)
+	return ObjectManager.withCreatureObject(pPlayer, function(player)
+		if (player:hasScreenPlayState(1, "hero_of_tatooine_missing_marks") == 1 or player:hasScreenPlayState(2, "hero_of_tatooine_missing_marks") == 1 or player:hasScreenPlayState(4, "hero_of_tatooine_missing_marks") == 1
+			or player:hasScreenPlayState(8, "hero_of_tatooine_missing_marks") == 1 or player:hasScreenPlayState(16, "hero_of_tatooine_missing_marks") == 1) then
+			return true
+		else
+			return false
+		end
+	end)
+end
+
+function HeroOfTatooineScreenPlay:giveMissingMarks(pPlayer)
+	return ObjectManager.withCreatureObject(pPlayer, function(player)
+		local pInventory = player:getSlottedObject("inventory")
+
+		if (pInventory == nil) then
+			return false
+		end
+
+		if (player:hasScreenPlayState(1, "hero_of_tatooine_missing_marks") == 1) then
+			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_altruism.iff", -1)
+
+			if (pMark ~= nil) then
+				player:removeScreenPlayState(1, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+			else
+				return false
+			end
+		end
+
+		if (player:hasScreenPlayState(2, "hero_of_tatooine_missing_marks") == 1) then
+			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_intellect.iff", -1)
+
+			if (pMark ~= nil) then
+				player:removeScreenPlayState(2, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+			else
+				return false
+			end
+		end
+
+		if (player:hasScreenPlayState(4, "hero_of_tatooine_missing_marks") == 1) then
+			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_courage.iff", -1)
+
+			if (pMark ~= nil) then
+				player:removeScreenPlayState(4, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+			else
+				return false
+			end
+		end
+
+		if (player:hasScreenPlayState(8, "hero_of_tatooine_missing_marks") == 1) then
+			local pMark = giveItem(pInventory, "object/tangible/loot/quest/hero_of_tatooine/mark_honor.iff", -1)
+
+			if (pMark ~= nil) then
+				player:removeScreenPlayState(8, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+			else
+				return false
+			end
+		end
+
+		if (player:hasScreenPlayState(16, "hero_of_tatooine_missing_marks") == 1) then
+			local pMark = giveItem(pInventory, "object/tangible/wearables/ring/ring_mark_hero.iff", -1)
+
+			if (pMark ~= nil) then
+				player:removeScreenPlayState(16, "hero_of_tatooine_missing_marks") -- 1 - Altruism, 2 - Intellect, 4 - Courage, 8 - Honor, 16 - Ring
+			else
+				return false
+			end
+		end
+
+		return true
+	end)
 end

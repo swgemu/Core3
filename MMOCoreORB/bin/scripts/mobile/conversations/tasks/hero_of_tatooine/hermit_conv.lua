@@ -226,8 +226,8 @@ you_have_returned = ConvoScreen:new {
 	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_2a82993c", -- I see that you have returned, my child. What do you seek?
 	stopConversation = "false",
 	options = {
-		{"@conversation/quest_hero_of_tatooine_hermit:s_503d468c", "which_mark"}, -- I would like more information about...
-		{"@conversation/quest_hero_of_tatooine_hermit:s_da196589", "as_you_wish"} -- Nevermind.
+		--{"@conversation/quest_hero_of_tatooine_hermit:s_503d468c", "which_mark"}, -- I would like more information about...
+		--{"@conversation/quest_hero_of_tatooine_hermit:s_da196589", "as_you_wish"} -- Nevermind.
 	}
 }
 heroOfTatHermitConvoTemplate:addScreen(you_have_returned);
@@ -264,5 +264,78 @@ as_you_wish = ConvoScreen:new {
 	}
 }
 heroOfTatHermitConvoTemplate:addScreen(as_you_wish);
+
+you_bear_marks = ConvoScreen:new {
+	id = "you_bear_marks",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_59283967", -- I see you bear the Marks of Courage, Honor, Intellect and Altruism! Can it be? Have I found the one I have sought for so long?
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_hero_of_tatooine_hermit:s_48bfa35f", "done_great_things"}, -- Yes, I am the hero you seek.
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(you_bear_marks);
+
+done_great_things = ConvoScreen:new {
+	id = "done_great_things",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_579bac17", -- You have done great things in the name of the light. I am honored to be in your presence. Take my Mark of the Hero and let it remind you of your cause. Do not forget why you fight. Good luck, young warrior.
+	stopConversation = "true",
+	options = {}
+}
+heroOfTatHermitConvoTemplate:addScreen(done_great_things);
+
+you_have_returned_missing_marks = ConvoScreen:new {
+	id = "you_have_returned_missing_marks",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_63076377", -- I see that you have returned. You have done well so far, but I sense that something is missing. Please allow me to fulfil that which you are owed.
+	stopConversation = "false",
+	options = {
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(you_have_returned_missing_marks);
+
+inv_full = ConvoScreen:new {
+	id = "inv_full",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_ab4620a6", -- It appears that your inventory is full. You must free some room before we proceed.
+	stopConversation = "true",
+	options = {
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(inv_full);
+
+dont_have_room = ConvoScreen:new {
+	id = "dont_have_room",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_5ff9d2ec", -- You do not have the room in your inventory to receive all the items you need. Please free some room and speak to me again.
+	stopConversation = "true",
+	options = {
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(dont_have_room);
+
+now_have_items = ConvoScreen:new {
+	id = "now_have_items",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_db6d4167", -- You should now have all the items that you have not yet received.
+	stopConversation = "true",
+	options = {
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(now_have_items);
+
+hero_returns = ConvoScreen:new {
+	id = "hero_returns",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_7adceec5", -- Ah! The hero returns! It is good to see you are still well.
+	stopConversation = "false",
+	options = {
+		{"@conversation/quest_hero_of_tatooine_hermit:s_cfb883ed", "drafty_cave"}, -- I am well. Just seeing how the old man is.
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(hero_returns);
+
+drafty_cave = ConvoScreen:new {
+	id = "drafty_cave",
+	leftDialog = "@conversation/quest_hero_of_tatooine_hermit:s_e0ab34b6", -- I am well. Yet, I am still here in this drafty old cave. It suits me well, I think. I must return to my meditation. Go forth and spread your wisdom throughout the galaxy.
+	stopConversation = "true",
+	options = {
+	}
+}
+heroOfTatHermitConvoTemplate:addScreen(drafty_cave);
 
 addConversationTemplate("heroOfTatHermitConvoTemplate", heroOfTatHermitConvoTemplate);
