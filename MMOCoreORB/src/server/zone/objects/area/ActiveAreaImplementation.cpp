@@ -24,8 +24,8 @@ void ActiveAreaImplementation::enqueueEnterEvent(SceneObject* obj) {
 	notifyEnter(obj);
 #else
 	Reference<Task*> task = new ActiveAreaEvent(_this.get(), obj, ActiveAreaEvent::ENTEREVENT);
+	obj->executeOrderedTask(task);
 
-	Core::getTaskManager()->executeTask(task);
 #endif
 }
 
@@ -34,8 +34,8 @@ void ActiveAreaImplementation::enqueueExitEvent(SceneObject* obj) {
 	notifyExit(obj);
 #else
 	Reference<Task*> task = new ActiveAreaEvent(_this.get(), obj, ActiveAreaEvent::EXITEVENT);
+	obj->executeOrderedTask(task);
 
-	Core::getTaskManager()->executeTask(task);
 #endif
 }
 

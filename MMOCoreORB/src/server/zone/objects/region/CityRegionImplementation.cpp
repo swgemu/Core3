@@ -629,29 +629,44 @@ void CityRegionImplementation::applySpecializationModifiers(CreatureObject* crea
 	if (cityspec == NULL)
 		return;
 
-	Locker locker(creature); //dangerous.. but better detect deadlocks than data races
-
-	//Remove all current city skillmods
-	creature->removeAllSkillModsOfType(SkillModManager::CITY);
-
 	if (isBanned(creature->getObjectID())) {
 		return;
 	}
 
-	VectorMap<String, int>* mods = cityspec->getSkillMods();
+	Reference<CreatureObject*> creatureReference = creature;
+	Reference<CityRegion*> city = _this.get();
 
-	for (int i = 0; i < mods->size(); ++i) {
-		VectorMapEntry<String, int> entry = mods->elementAt(i);
+	typedef VectorMap<String, int> SkillMods;
+	typedef VectorMapEntry<String, int> SkillModsEntry;
 
-		if (entry.getKey() == "private_defense" && !isMilitiaMember(creature->getObjectID()))
-			continue;
+	EXECUTE_ORDERED_TASK_3(creature, creatureReference, cityspec, city, {
+			Locker locker(creatureReference_p);
 
-		creature->addSkillMod(SkillModManager::CITY, entry.getKey(), entry.getValue());
-	}
+			//Remove all current city skillmods
+			creatureReference_p->removeAllSkillModsOfType(SkillModManager::CITY);
+
+			SkillMods* mods = cityspec_p->getSkillMods();
+
+			for (int i = 0; i < mods->size(); ++i) {
+				SkillModsEntry& entry = mods->elementAt(i);
+
+				if (entry.getKey() == "private_defense" && !city_p->isMilitiaMember(creatureReference_p->getObjectID()))
+					continue;
+
+				creatureReference_p->addSkillMod(SkillModManager::CITY, entry.getKey(), entry.getValue());
+			}
+	});
 }
 
 void CityRegionImplementation::removeSpecializationModifiers(CreatureObject* creature) {
-	creature->removeAllSkillModsOfType(SkillModManager::CITY);
+	Reference<CreatureObject*> creatureReference = creature;
+
+	EXECUTE_ORDERED_TASK_1(creature, creatureReference, {
+			Locker locker(creatureReference_p);
+
+			creatureReference_p->removeAllSkillModsOfType(SkillModManager::CITY);
+	});
+
 }
 
 void CityRegionImplementation::transferCivicStructuresToMayor() {
