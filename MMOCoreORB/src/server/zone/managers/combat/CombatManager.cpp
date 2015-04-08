@@ -1472,7 +1472,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 		targetDefense += cobMod;
 		//info("Final modified secondary defense is " + String::valueOf(targetDefense), true);
 
-		if (targetDefense > attackerAccuracy + weaponAccuracy + accuracyBonus + postureAccuracy + bonusAccuracy + attackerRoll) { // successful secondary defense, return type of defense
+		if (targetDefense > 50 + attackerAccuracy + weaponAccuracy + accuracyBonus + postureAccuracy + bonusAccuracy + attackerRoll) { // successful secondary defense, return type of defense
 
 			//info("Secondaries defenses prevailed", true);
 			// this means use defensive acuity, which mean random 1, 2, or 3
