@@ -727,6 +727,22 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	/**
+	 * Executes a task async of this SceneObject in a serialized manner
+	 * Order of execution is guaranteed to be the same as insertion order
+	 * @pre { this locked }
+	 * @post { this locked}
+	 * @param name Name of the task
+	 * @param task Task to add
+	 */
+	@local
+	@preLocked
+	public void executeOrderedTask(Task task) {
+		synchronized (containerLock) {
+			getPendingTasks().putOrdered(task, this);
+		}
+	}
+	
+	/**
 	 * Removes a pending task from this SceneObject
 	 * @pre { this locked }
 	 * @post { this locked }
@@ -747,8 +763,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		synchronized (containerLock) {
 			if (pendingTasks == null) {
 				pendingTasks = new PendingTasksMap();
-				pendingTasks.setNoDuplicateInsertPlan();
-				pendingTasks.setNullValue(null);
 			}
 
 			return pendingTasks;
