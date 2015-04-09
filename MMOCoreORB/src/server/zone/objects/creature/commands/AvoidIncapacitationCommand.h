@@ -67,6 +67,9 @@ public:
 			return NOJEDIARMOR;
 		}
 
+		if (creature->hasAttackDelay()) // no message associated with this
+			return GENERALERROR;
+
 		uint32 buffcrc;
 
 		uint32 buffcrc1 = BuffCRC::JEDI_AVOID_INCAPACITATION;
