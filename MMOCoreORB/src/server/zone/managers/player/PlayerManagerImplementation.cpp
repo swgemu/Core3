@@ -601,6 +601,10 @@ uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* 
 }
 
 int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition) {
+	if (destructor == NULL) {
+		assert(0 && "destructor should always be != NULL.");
+	}
+
 	if (!destructedObject->isPlayerCreature())
 		return 1;
 

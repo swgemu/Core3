@@ -1035,6 +1035,9 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 
 	setHAM(damageType, newValue, notifyClient);
 
+	if (attacker == NULL)
+		attacker = _this.get();
+
 	if (newValue <= 0)
 		notifyObjectDestructionObservers(attacker, newValue);
 
