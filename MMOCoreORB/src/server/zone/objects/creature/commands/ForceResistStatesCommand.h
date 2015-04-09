@@ -68,6 +68,9 @@ public:
 			return NOJEDIARMOR;
 		}
 
+		if (creature->hasAttackDelay()) // no message associated with this
+			return GENERALERROR;
+
 
 		uint32 buffcrc = BuffCRC::JEDI_RESIST_STATES;
 
