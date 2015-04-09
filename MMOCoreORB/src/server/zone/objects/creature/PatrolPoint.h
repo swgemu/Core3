@@ -185,6 +185,17 @@ public:
 		estimatedTimeOfArrival.updateToCurrentTime();
 		estimatedTimeOfArrival.addMiliTime(mili);
 	}
+
+	/**
+	 * Returns the string representation of the vector in (x, y, z) format plus the cellID.
+	 */
+	inline String toString() {
+		StringBuffer sb;
+		sb <<"(x:" << getPositionX() << ", y:" << getPositionY() << ", z:" << getPositionZ() << ")";
+		CellObject* cell = cast<CellObject*>(getCoordinates().getCell());
+		sb << " in " << String::valueOf(cell != NULL ? cell->getCellNumber() : 0) << ".";
+		return sb.toString();
+	}
 };
 
 #endif /*PATROLPOINT_H_*/

@@ -1321,6 +1321,13 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 			if (isRetreating())
 				homeLocation.setReached(true);
 
+			if (getPatrolPointSize() == 0) {
+				CellObject* sourceCell = getParent().get().castTo<CellObject*>();
+				error("NULL or empty path in AiAgent::findNextPosition. Source was " + getPosition().toString() + " in " + String::valueOf(sourceCell != NULL ? sourceCell->getCellNumber() : 0) + ". Destination was " + oldPoint.toString());
+				nextPosition = oldPoint.getCoordinates();
+				found = true;
+			}
+
 			continue;
 		}
 
