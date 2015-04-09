@@ -149,6 +149,11 @@ class ResourceManager extends Observer implements Logger {
 	
 	public native void addPlanetsToListBox(SuiListBox sui);
 	public native string getPlanetByIndex(int idx);
+	
+	@local
+	public ResourceSpawner getResourceSpawner() {
+		return resourceSpawner;
+	}
 
 }
 

@@ -86,14 +86,22 @@ public:
 			} else if(command == "info") {
 				listResourceInfo(creature, &args);
 
+			} else if(command == "find") {
+				findResources(creature, &args);
+
+			} else if(command == "create") {
+				giveResource(creature, &args);
+
 			} else {
 				throw Exception();
 			}
 
 		} catch (Exception& e){
-			creature->sendSystemMessage("invalid arguments for resources command:  /resource [option] [params]");
-			creature->sendSystemMessage("		list [planet] : Lists resources on specified planet");
-			creature->sendSystemMessage("		info [resource name] : Lists Info about a specific resource");
+			creature->sendSystemMessage("invalid arguments for resources command:  /resource <option> [params]");
+			creature->sendSystemMessage("		list <planet> : Lists resources on specified planet");
+			creature->sendSystemMessage("		info <resource name> : Lists Info about a specific resource");
+			creature->sendSystemMessage("		find <class> <attribute> <gt|lt> <value> [<and|or> <attribute> <gt|lt> <value> [...]]");
+			creature->sendSystemMessage("		create <name> [quantity] : Spawns resource in inventory");
 		}
 
 		return SUCCESS;
@@ -198,6 +206,161 @@ public:
 				creature->sendSystemMessage(attribute + ": " + String::valueOf(value));
 			}
 		}
+	}
+
+	void findResources(CreatureObject* creature, StringTokenizer* args) const {
+		if(creature->getZoneServer() == NULL || !args->hasMoreTokens())
+			throw Exception();
+
+		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
+		if (resMan == NULL)
+			throw Exception();
+
+		String resourceType = "";
+		args->getStringToken(resourceType);
+
+		ResourceSpawner* resSpawner = resMan->getResourceSpawner();
+		if (resSpawner == NULL)
+			throw Exception();
+
+		ResourceMap* map = resSpawner->getResourceMap();
+		if (map == NULL)
+			throw Exception();
+
+		Reference<ResourceMap*> resultsMap = new ResourceMap();
+		map->getTypeSubset(*resultsMap, resourceType);
+
+		if (resultsMap->isEmpty()) {
+			creature->sendSystemMessage("No results from resource type.");
+			return;
+		}
+
+		bool andFlag = true;
+		while (args->hasMoreTokens()) {
+			String attribute = "";
+			args->getStringToken(attribute);
+
+			if (!args->hasMoreTokens())
+				throw Exception();
+
+			String qualifier = "";
+			args->getStringToken(qualifier);
+
+			if (!args->hasMoreTokens() || (qualifier != "gt" && qualifier != "lt"))
+				throw Exception();
+
+			int value = args->getIntToken();
+
+			Reference<ResourceMap*> tempMap = new ResourceMap();
+
+			if (andFlag) //and means only get results from that which we have already eliminated
+				resultsMap->getAttributeSubset(*tempMap, attribute);
+			else //or means look at everything and concat the vectors
+				map->getAttributeSubset(*tempMap, attribute);
+
+			for (int i = tempMap->size() - 1; i >= 0 && tempMap->size() > 0; i--) {
+				ResourceSpawn* spawn = tempMap->get(i);
+				int stat = 0;
+
+				if (attribute == "res_cold_resist")
+					stat = spawn->getValueOf(CraftingManager::CR);
+				else if (attribute == "res_conductivity")
+					stat = spawn->getValueOf(CraftingManager::CD);
+				else if (attribute == "res_decay_resist")
+					stat = spawn->getValueOf(CraftingManager::DR);
+				else if (attribute == "res_heat_resist")
+					stat = spawn->getValueOf(CraftingManager::HR);
+				else if (attribute == "res_flavor")
+					stat = spawn->getValueOf(CraftingManager::FL);
+				else if (attribute == "res_malleability")
+					stat = spawn->getValueOf(CraftingManager::MA);
+				else if (attribute == "res_potential_energy")
+					stat = spawn->getValueOf(CraftingManager::PE);
+				else if (attribute == "res_quality")
+					stat = spawn->getValueOf(CraftingManager::OQ);
+				else if (attribute == "res_shock_resistance")
+					stat = spawn->getValueOf(CraftingManager::SR);
+				else if (attribute == "res_toughness")
+					stat = spawn->getValueOf(CraftingManager::UT);
+				else {
+					creature->sendSystemMessage("Invalid attribute name " + attribute + " in /resource find");
+					return;
+				}
+
+				if (qualifier == "gt") {
+					if (stat < value)
+						tempMap->drop(spawn->getName().toLowerCase());
+				} else {
+					if (stat > value)
+						tempMap->drop(spawn->getName().toLowerCase());
+				}
+			}
+
+			if (andFlag)
+				resultsMap = tempMap;
+			else
+				resultsMap->addAll(*tempMap);
+
+			// no grab the trailing conjunction so we know what to do with the next argument
+			if (args->hasMoreTokens()) {
+				String conjunction = "";
+				args->getStringToken(conjunction);
+
+				if (conjunction == "and")
+					andFlag = true;
+				else
+					andFlag = false;
+			}
+		}
+
+		if (resultsMap->isEmpty()) {
+			creature->sendSystemMessage("No results from resource search.");
+			return;
+		}
+
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
+		box->setPromptTitle(String::valueOf(resultsMap->size()) + " Results from Resource Find");
+
+		StringBuffer promptText;
+		for (int i = 0; i < resultsMap->size(); i++) {
+			ResourceSpawn* spawn = resultsMap->get(i);
+
+			promptText << String::valueOf(i) << ": " << spawn->getName() << ", " << spawn->getFinalClass() << endl;
+			for (int j = 0; j < 12; j++) {
+				String attribute = "";
+				int value = spawn->getAttributeAndValue(attribute, j);
+				if (attribute != "") {
+					StringId attrName("obj_attr_n", attribute);
+					promptText << "    " << StringIdManager::instance()->getStringId(attrName).toString() << ": " << String::valueOf(value) << endl;
+				}
+			}
+
+		}
+
+		box->setPromptText(promptText.toString());
+
+		creature->sendMessage(box->generateMessage());
+	}
+
+	void giveResource(CreatureObject* creature, StringTokenizer* args) const {
+		if(creature->getZoneServer() == NULL || !args->hasMoreTokens())
+			throw Exception();
+
+		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
+		if (resMan == NULL)
+			throw Exception();
+
+		if (!args->hasMoreTokens())
+			throw Exception();
+
+		String resName = "";
+		args->getStringToken(resName);
+
+		int quantity = ResourceManager::RESOURCE_DEED_QUANTITY;
+		if (args->hasMoreTokens())
+			quantity = args->getIntToken();
+
+		resMan->givePlayerResource(creature, resName.toLowerCase(), quantity);
 	}
 
 };

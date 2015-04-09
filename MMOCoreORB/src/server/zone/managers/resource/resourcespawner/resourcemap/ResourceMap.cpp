@@ -141,3 +141,38 @@ void ResourceMap::addToSuiListBox(SuiListBox* suil, const String& name) {
 	}
 
 }
+
+void ResourceMap::getTypeSubset(ResourceMap& subMap, const String& typeName) {
+	for (int i = 0; i < size(); i++) {
+		ManagedReference<ResourceSpawn*> spawn = get(i);
+		if (spawn == NULL)
+			continue;
+
+		for (int j = 0; j < 8; j++) {
+			String thisClassName = spawn->getStfClass(j);
+			if (thisClassName.isEmpty())
+				continue;
+
+			if (thisClassName == typeName)
+				subMap.add(spawn->getName().toLowerCase(), spawn);
+		}
+	}
+}
+
+void ResourceMap::getAttributeSubset(ResourceMap& subMap, const String& attributeName) {
+	for (int i = 0; i < size(); i++) {
+		ManagedReference<ResourceSpawn*> spawn = get(i);
+		if (spawn == NULL)
+			continue;
+
+		for (int j = 0; j < 12; j++) {
+			String thisAttributeName = "";
+			int value = spawn->getAttributeAndValue(thisAttributeName, j);
+			if (thisAttributeName.isEmpty())
+				continue;
+
+			if (thisAttributeName == attributeName)
+				subMap.add(spawn->getName().toLowerCase(), spawn);
+		}
+	}
+}
