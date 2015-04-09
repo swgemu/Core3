@@ -318,6 +318,10 @@ public:
 		return false;
 	}
 
+	virtual bool isJediQueueCommand() {
+		return false;
+	}
+
 	inline int getSkillModSize() const {
 		return skillMods.size();
 	}
@@ -349,6 +353,8 @@ public:
 	}
 
 	int doCommonMedicalCommandChecks(CreatureObject* creature) const;
+
+	int doCommonJediSelfChecks(CreatureObject* creature) const;
 
 	void checkForTef(CreatureObject* creature, CreatureObject* target) const;
 };

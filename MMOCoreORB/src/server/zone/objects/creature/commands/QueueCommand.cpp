@@ -209,6 +209,18 @@ int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) const {
 	return SUCCESS;
 }
 
+int QueueCommand::doCommonJediSelfChecks(CreatureObject* creature) const {
+	int res = doCommonMedicalCommandChecks(creature);
+
+	if (res != SUCCESS)
+		return res;
+
+	if (isWearingArmor(creature))
+		return NOJEDIARMOR;
+
+	return SUCCESS;
+}
+
 void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target) const {
 	if (!creature->isPlayerCreature() || creature == target)
 		return;
