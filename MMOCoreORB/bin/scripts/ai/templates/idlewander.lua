@@ -24,4 +24,4 @@ idlewanderstatic = {
 	{"move1", "Wait10Default", "idroot", BEHAVIOR},
 }
 
-addAiTemplate("idlewanderstatic", idlewanderpack)
+addAiTemplate("idlewanderstatic", idlewanderstatic)

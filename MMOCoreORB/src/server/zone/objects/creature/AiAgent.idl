@@ -393,7 +393,7 @@ class AiAgent extends CreatureObject {
 	@local
 	@dirty
 	public native void broadcastNextPositionUpdate(PatrolPoint point);
-	
+
 	public void clearPatrolPoints() {
 		synchronized (targetMutex) {
 			if (getFollowState() == PATROLLING) {
@@ -405,7 +405,13 @@ class AiAgent extends CreatureObject {
 			patrolPoints.removeAll();
 		}
 	}
-	
+
+	public void clearSavedPatrolPoints() {
+		synchronized (targetMutex) {		
+			savedPatrolPoints.removeAll();
+		}
+	}
+
 	@local
 	public native void setPatrolPoints(@dereferenced PatrolPointsVector pVector);
 	
@@ -565,6 +571,7 @@ class AiAgent extends CreatureObject {
 	/**
 	 * Gets called when the creature was despawned
 	 */
+	@preLocked
 	public abstract native void notifyDespawn(Zone zone);
 	
 	public abstract void scheduleDespawn() {

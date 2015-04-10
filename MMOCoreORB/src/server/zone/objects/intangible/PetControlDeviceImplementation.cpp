@@ -383,6 +383,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	pet->activateRecovery();
 	// Not training any commands
 	trainingCommand = 0;
+	clearPatrolPoints();
 }
 
 void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
@@ -440,7 +441,7 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 	Reference<StorePetTask*> task = new StorePetTask(player, pet);
 
 	// Store non-faction pets immediately.  Store faction pets after 60sec delay.
-	if( petType != PetManager::FACTIONPET || force){
+	if( petType != PetManager::FACTIONPET || force || player->getPlayerObject()->isPrivileged()){
 		task->execute();
 	}
 	else{
@@ -1108,4 +1109,12 @@ void PetControlDeviceImplementation::resetNamingCommands() {
 		return;
 
 	namingCommands.removeAll();
+}
+
+void PetControlDeviceImplementation::addPatrolPoint(PatrolPoint& point) {
+	patrolPoints.add(point);
+}
+
+PatrolPoint PetControlDeviceImplementation::getPatrolPoint(int idx) {
+	return patrolPoints.get(idx);
 }

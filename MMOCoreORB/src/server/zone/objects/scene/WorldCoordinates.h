@@ -9,6 +9,7 @@
 #define WORLDCOORDINATES_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/cell/CellObject.h"
 
 namespace server {
  namespace zone {
@@ -87,6 +88,13 @@ public:
 		return point.getZ();
 	}
 
+	inline String toString() {
+		StringBuffer sb;
+		sb << point.toString();
+		CellObject* thisCell = cast<CellObject*>(cell.get());
+		sb << " in " << String::valueOf(thisCell != NULL ? thisCell->getCellNumber() : 0) << ".";
+		return sb.toString();
+	}
 };
 
 

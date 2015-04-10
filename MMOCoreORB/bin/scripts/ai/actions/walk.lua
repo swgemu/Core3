@@ -4,14 +4,21 @@ require("ai.interrupts")
 WalkBase = createClass(MoveBase)
 
 -- overrides so that we walk instead of run
-function WalkBase:findNextPosition(pAgent)
+function WalkBase:doAction(pAgent)
 	if (pAgent ~= nil) then
 		local agent = AiAgent(pAgent)
-		if (agent:findNextPosition(agent:getMaxDistance(), true)) then
-			return true
+		
+		if (agent:getCurrentSpeed() > 0) then 
+			agent:completeMove()
+		end
+		
+		if (self:findNextPosition(pAgent, true)) then
+			return BEHAVIOR_RUNNING
+		else
+			return BEHAVIOR_SUCCESS
 		end
 	end
-	return false
+	return BEHAVIOR_FAILURE
 end
 
 Walk = createClass(WalkBase, Interrupt)

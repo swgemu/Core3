@@ -26,7 +26,7 @@ function MoveBase:doAction(pAgent)
 			agent:completeMove()
 		end
 		
-		if (self:findNextPosition(pAgent)) then
+		if (self:findNextPosition(pAgent, false)) then
 			return BEHAVIOR_RUNNING
 		else
 			return BEHAVIOR_SUCCESS
@@ -35,11 +35,11 @@ function MoveBase:doAction(pAgent)
 	return BEHAVIOR_FAILURE
 end
 
--- default action is to run
-function MoveBase:findNextPosition(pAgent)
+-- walk: true to walk, false to run
+function MoveBase:findNextPosition(pAgent, walk)
 	if (pAgent ~= nil) then
 		local agent = AiAgent(pAgent)
-		if (agent:findNextPosition(agent:getMaxDistance(), false)) then
+		if (agent:findNextPosition(agent:getMaxDistance(), walk)) then
 			return true
 		end
 	end
@@ -73,7 +73,14 @@ function MoveCreaturePet:doAction(pAgent)
 			agent:completeMove()
 		end
 
-		self:findNextPosition(pAgent)
+		if agent:getFollowState() == PATROLLING then
+			if not self:findNextPosition(pAgent, true) then
+				return BEHAVIOR_SUCCESS
+			end
+		else
+			self:findNextPosition(pAgent, false)
+		end
+
 		return BEHAVIOR_RUNNING
 	end
 	return BEHAVIOR_FAILURE
@@ -99,7 +106,14 @@ function MoveDroidPet:doAction(pAgent)
 			agent:completeMove()
 		end
 
-		self:findNextPosition(pAgent)
+		if agent:getFollowState() == PATROLLING then
+			if not self:findNextPosition(pAgent, true) then
+				return BEHAVIOR_SUCCESS
+			end
+		else
+			self:findNextPosition(pAgent, false)
+		end
+
 		return BEHAVIOR_RUNNING
 	end
 	return BEHAVIOR_FAILURE
@@ -126,7 +140,14 @@ function MoveFactionPet:doAction(pAgent)
 			agent:completeMove()
 		end
 
-		self:findNextPosition(pAgent)
+		if agent:getFollowState() == PATROLLING then
+			if not self:findNextPosition(pAgent, true) then
+				return BEHAVIOR_SUCCESS
+			end
+		else
+			self:findNextPosition(pAgent, false)
+		end
+
 		return BEHAVIOR_RUNNING
 	end
 	return BEHAVIOR_FAILURE

@@ -229,13 +229,13 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		enqueuePetCommand(speaker, pet, String("petTrick").toLowerCase().hashCode(), "2", true);
 	}
 	else if( isTrainedCommand( pcd, PATROL, message ) ){
-		speaker->sendSystemMessage("PATROL pet command is not yet implemented.");
+		enqueuePetCommand(speaker, pet, String("petPatrol").toLowerCase().hashCode(), "");
 	}
 	else if( isTrainedCommand( pcd, GETPATROLPOINT, message ) ){
-		speaker->sendSystemMessage("GETPATROLPOINT pet command is not yet implemented.");
+		enqueuePetCommand(speaker, pet, String("petGetPatrolPoint").toLowerCase().hashCode(), "", true);
 	}
 	else if( isTrainedCommand( pcd, CLEARPATROLPOINTS, message ) ){
-		speaker->sendSystemMessage("CLEARPATROLPOINTS pet command is not yet implemented.");
+		enqueuePetCommand(speaker, pet, String("petClearPatrolPoints").toLowerCase().hashCode(), "", true);
 	}
 	else if( isTrainedCommand( pcd, FORMATION1, message ) ){
 		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
