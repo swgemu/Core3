@@ -93,6 +93,12 @@ object_tangible_wearables_ring_ring_mark_hero = object_tangible_wearables_ring_s
 				"object/mobile/vendor/wookiee_male.iff",
 				"object/mobile/vendor/zabrak_female.iff",
 				"object/mobile/vendor/zabrak_male.iff" },
+				
+				noTrade = 1,
+				
+				objectMenuComponent = {"cpp", "HeroRingMenuComponent"},
+				attributeListComponent = "HeroRingAttributeListComponent",
+				dataObjectComponent = "HeroRingDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_ring_ring_mark_hero, "object/tangible/wearables/ring/ring_mark_hero.iff")
