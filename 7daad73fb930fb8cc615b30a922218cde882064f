@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_628d9331",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/conversations/hermitConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-10T00:25:42Z",
+      "side": 1,
+      "message": "Put this after you set the screenplay state so as not to change the player pointer.",
+      "revId": "7daad73fb930fb8cc615b30a922218cde882064f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_82888f23",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/conversations/hermitConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-10T00:25:42Z",
+      "side": 1,
+      "message": "Put this after you check for and destroy the skull. Otherwise the screenplay state might get set on the npc instead of player.",
+      "revId": "7daad73fb930fb8cc615b30a922218cde882064f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
