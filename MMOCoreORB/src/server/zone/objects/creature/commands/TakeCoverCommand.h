@@ -96,13 +96,18 @@ public:
 			}
 		}
 
-		creature->setCoverState();
-		
-		if (creature->isDizzied())
-			creature->queueDizzyFallEvent();				
+		if (!creature->checkDizzyDelay() && creature->isDizzied()) {
+			creature->queueDizzyFallEvent();
+		} else {
+			creature->setCoverState();
 
-		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, false);
-		creature->sendStateCombatSpam("cbt_spam", "cover_success", 0);
+			if (creature->isDizzied())
+				creature->queueDizzyFallEvent();
+
+			creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, false);
+			creature->sendStateCombatSpam("cbt_spam", "cover_success", 0);
+		}
+
 		return SUCCESS;
 	}
 

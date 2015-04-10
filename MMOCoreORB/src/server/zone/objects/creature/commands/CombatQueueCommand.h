@@ -428,10 +428,10 @@ public:
 			creature->setStunnedState(effect.getStateLength());
 			break;
 		case CommandEffect::KNOCKDOWN:
-			if (creature->isKnockedDown() || creature->isProne()) {
-				if (80 > System::random(100))
-					creature->setPosture(CreaturePosture::UPRIGHT, true);
-			break;
+			if (!creature->checkPostureChangeRecovery()) {
+				if (creature->getPosture() != CreaturePosture::UPRIGHT)
+					creature->setPosture(CreaturePosture::UPRIGHT);
+				break;
 			}
 
 			if (creature->isRidingMount()) {
@@ -442,11 +442,18 @@ public:
 			if (!creature->isDead() && !creature->isIncapacitated())
 				creature->setPosture(CreaturePosture::KNOCKEDDOWN);
 
-			creature->updateKnockdownRecovery();
-			creature->updateLastKnockdown();
+			creature->updatePostureChangeRecovery();
+			creature->updatePostureChangeDelay(5000);
 			creature->sendSystemMessage("@cbt_spam:posture_knocked_down");
+			creature->sendStateCombatSpam("cbt_spam", "posture_knocked_down", 0, 0, false);
 			break;
 		case CommandEffect::POSTUREUP:
+			if (!creature->checkPostureChangeRecovery()) {
+				if (creature->getPosture() != CreaturePosture::UPRIGHT)
+					creature->setPosture(CreaturePosture::UPRIGHT);
+				break;
+			}
+
 			if (creature->isRidingMount()) {
 				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
@@ -455,17 +462,23 @@ public:
 			if (creature->getPosture() == CreaturePosture::PRONE) {
 				creature->setPosture(CreaturePosture::CROUCHED);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_1");
-				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, false);
-				creature->updatePostureUpRecovery();
+				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, 0, false);
 			} else if (creature->getPosture() == CreaturePosture::CROUCHED) {
 				creature->setPosture(CreaturePosture::UPRIGHT);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_0");
-				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_0", 0, false);
-				creature->updatePostureUpRecovery();
+				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_0", 0, 0, false);
 			}
 
+			creature->updatePostureChangeRecovery();
+			creature->updatePostureChangeDelay(2500);
 			break;
 		case CommandEffect::POSTUREDOWN:
+			if (!creature->checkPostureChangeRecovery()) {
+				if (creature->getPosture() != CreaturePosture::UPRIGHT)
+					creature->setPosture(CreaturePosture::UPRIGHT);
+				break;
+			}
+
 			if (creature->isRidingMount()) {
 				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
@@ -474,15 +487,15 @@ public:
 			if (creature->getPosture() == CreaturePosture::UPRIGHT) {
 				creature->setPosture(CreaturePosture::CROUCHED);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_1");
-				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, false);
-				creature->updatePostureDownRecovery();
+				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_1", 0, 0, false);
 			} else if (creature->getPosture() == CreaturePosture::CROUCHED) {
 				creature->setPosture(CreaturePosture::PRONE);
 				creature->sendSystemMessage("@cbt_spam:force_posture_change_2");
-				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_2", 0, false);
-				creature->updatePostureDownRecovery();
+				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_2", 0, 0, false);
 			}
 
+			creature->updatePostureChangeRecovery();
+			creature->updatePostureChangeDelay(2500);
 			break;
 		case CommandEffect::NEXTATTACKDELAY:
 			creature->setNextAttackDelay(mod, effect.getStateLength());

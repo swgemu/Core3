@@ -172,7 +172,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 
 	//info("past start combat", true);
 
-	if (attacker->hasAttackDelay() || !attacker->checkKnockdownRecovery())
+	if (attacker->hasAttackDelay() || !attacker->checkPostureChangeDelay())
 		return -3;
 
 	//info("past delay", true);

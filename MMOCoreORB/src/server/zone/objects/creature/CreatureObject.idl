@@ -62,6 +62,7 @@ import system.util.VectorMap;
 import system.lang.Time;
 import server.zone.Zone;
 import system.util.SortedVector;
+import server.zone.objects.creature.events.DizzyFallDownEvent;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.tangible.weapon.WeaponObject;
@@ -197,6 +198,8 @@ class CreatureObject extends TangibleObject {
 	
 	@dereferenced
 	protected Time lastSuccessfulCombatAction;
+	
+	protected transient DizzyFallDownEvent dizzyFallDownEvent;
 	
 	@dereferenced
 	protected Time timeOfDeath;
@@ -1291,36 +1294,47 @@ class CreatureObject extends TangibleObject {
 		lastSuccessfulCombatAction.updateToCurrentTime();
 	}
 	
-	public void updateKnockdownRecovery() {
-		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 5000);
+	public void updatePostureChangeDelay(int delay) {
+		cooldownTimerMap.updateToCurrentAndAddMili("postureChangeDelay", delay);
+	}
+
+	@dirty
+	public boolean checkPostureChangeDelay() {
+		return cooldownTimerMap.isPast("postureChangeDelay");
+	}
+	
+	public void updatePostureChangeRecovery() {
+		cooldownTimerMap.updateToCurrentAndAddMili("postureChangeRecovery", 3000);
+	}
+
+	@dirty
+	public boolean checkPostureChangeRecovery() {
+		return cooldownTimerMap.isPast("postureChangeRecovery");
+	}
+	
+	public void updateDizzyDelay() {
+		cooldownTimerMap.updateToCurrentAndAddMili("dizzyDelay", 2000);
+	}
+	
+	@dirty
+	public boolean checkDizzyDelay() {
+		return cooldownTimerMap.isPast("dizzyDelay");
 	}
 
 	// misc methods
 	public abstract native void queueDizzyFallEvent();
 	
-	public void updateLastKnockdown() {
-		cooldownTimerMap.updateToCurrentAndAddMili("lastKnockdown", 60000);
+	public boolean hasDizzyEvent() {
+		return dizzyFallDownEvent != null;
 	}
-
-	public boolean checkKnockdownRecovery() {
-		return cooldownTimerMap.isPast("knockdownRecovery");
+	
+	public void clearDizzyEvent() {
+		if (hasDizzyEvent()) {
+			dizzyFallDownEvent.cancel();
+			dizzyFallDownEvent = null;
+		}
 	}
-
-	public boolean checkLastKnockdown() {
-		return cooldownTimerMap.isPast("lastKnockdown");
-	}
-
-	public void updatePostureDownRecovery() {
-		cooldownTimerMap.updateToCurrentAndAddMili("postureDownRecovery", 30000);
-	}
-
-	public void updatePostureUpRecovery() {
-		cooldownTimerMap.updateToCurrentAndAddMili("postureUpRecovery", 30000);
-	}
-
-	public boolean checkPostureDownRecovery() {
-		return cooldownTimerMap.isPast("postureDownRecovery");
-	}
+	
 	/**
 	 * Returns the given ScreenPlayState.
 	 * Takes the screenPlayStatesMutex.
@@ -1341,11 +1355,6 @@ class CreatureObject extends TangibleObject {
 		synchronized (screenPlayStatesMutex) {
 			screenPlayStates.put(screenPlay, state);
 		}
-	}
-
-	@dirty
-	public boolean checkPostureUpRecovery() {
-		return cooldownTimerMap.isPast("postureUpRecovery");
 	}
 	
 	public void updateCooldownTimer(final string coooldownTimer, unsigned int miliSecondsToAdd = 0) {

@@ -74,15 +74,19 @@ public:
 		if (ret != SUCCESS)
 			return ret;
 
-		creature->setPosture(CreaturePosture::CROUCHED, false);
-		
-		if (creature->isDizzied())
-			creature->queueDizzyFallEvent();		
+		if (!creature->checkDizzyDelay() && creature->isDizzied()) {
+			creature->queueDizzyFallEvent();
+		} else {
+			creature->setPosture(CreaturePosture::CROUCHED, false);
 
-		CreatureObjectDeltaMessage3* pmsg = new CreatureObjectDeltaMessage3(creature);
-		pmsg->updatePosture();
-		pmsg->close();
-		creature->broadcastMessage(pmsg, true);
+			if (creature->isDizzied())
+				creature->queueDizzyFallEvent();
+
+			CreatureObjectDeltaMessage3* pmsg = new CreatureObjectDeltaMessage3(creature);
+			pmsg->updatePosture();
+			pmsg->close();
+			creature->broadcastMessage(pmsg, true);
+		}
 
 		return SUCCESS;
 	}
