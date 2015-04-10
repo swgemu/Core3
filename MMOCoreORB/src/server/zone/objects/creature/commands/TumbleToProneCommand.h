@@ -64,36 +64,40 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		//Check for and deduct HAM cost.
-		int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 100);
-		if (creature->getHAM(CreatureAttribute::ACTION) <= actionCost)
-			return INSUFFICIENTHAM;
+		if (!creature->checkDizzyDelay() && creature->isDizzied()) {
+			creature->queueDizzyFallEvent();
+		} else {
+			//Check for and deduct HAM cost.
+			int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 100);
+			if (creature->getHAM(CreatureAttribute::ACTION) <= actionCost)
+				return INSUFFICIENTHAM;
 
-		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
+			creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
 
-		creature->setPosture(CreaturePosture::PRONE, false);
+			creature->setPosture(CreaturePosture::PRONE, false);
 
-		if (creature->isDizzied())
-			creature->queueDizzyFallEvent();		
-		
-		Reference<CreatureObject*> defender = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
-		if (defender == NULL)
-			creature->doCombatAnimation(creature,String("tumble").hashCode(),0,0xFF);
-		else
-			creature->doCombatAnimation(defender,String("tumble_facing").hashCode(),0,0xFF);
+			if (creature->isDizzied())
+				creature->queueDizzyFallEvent();
 
-		Reference<StateBuff*> buff = new StateBuff(creature, CreatureState::TUMBLING, 1);
+			Reference<CreatureObject*> defender = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
+			if (defender == NULL)
+				creature->doCombatAnimation(creature,String("tumble").hashCode(),0,0xFF);
+			else
+				creature->doCombatAnimation(defender,String("tumble_facing").hashCode(),0,0xFF);
 
-		buff->setSkillModifier("melee_defense", 50);
-		buff->setSkillModifier("ranged_defense", 50);
+			Reference<StateBuff*> buff = new StateBuff(creature, CreatureState::TUMBLING, 1);
 
-		creature->addBuff(buff);
+			buff->setSkillModifier("melee_defense", 50);
+			buff->setSkillModifier("ranged_defense", 50);
 
-		CreatureObjectDeltaMessage3* pmsg = new CreatureObjectDeltaMessage3(creature);
-		pmsg->updatePosture();
-		pmsg->close();
-		creature->broadcastMessage(pmsg, true);
-		creature->sendStateCombatSpam("cbt_spam", "tum_prone", 0);
+			creature->addBuff(buff);
+
+			CreatureObjectDeltaMessage3* pmsg = new CreatureObjectDeltaMessage3(creature);
+			pmsg->updatePosture();
+			pmsg->close();
+			creature->broadcastMessage(pmsg, true);
+			creature->sendStateCombatSpam("cbt_spam", "tum_prone", 0);
+		}
 
 		return SUCCESS;
 	}

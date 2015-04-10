@@ -2334,11 +2334,14 @@ void CreatureObjectImplementation::setMeditateState() {
 }
 
 void CreatureObjectImplementation::queueDizzyFallEvent() {
-	if (getPendingTask("dizzyFallDownEvent") != NULL)
+	if (hasDizzyEvent())
 		return;
 
-	Reference<Task*> task = new DizzyFallDownEvent(_this.get());
-	addPendingTask("dizzyFallDownEvent", task, 200);
+	if (checkDizzyDelay())
+		updateDizzyDelay();
+
+	dizzyFallDownEvent = new DizzyFallDownEvent(_this.get());
+	dizzyFallDownEvent->schedule(200);
 }
 
 void CreatureObjectImplementation::activateStateRecovery() {

@@ -142,7 +142,7 @@ void BuffImplementation::activate(bool applyModifiers) {
 			creature.get()->showFlyText(startFlyFile, startFlyAux, startFlyRed, startFlyGreen, startFlyBlue);
 
 		if (!startSpam.isEmpty()) {
-			creature.get()->sendStateCombatSpam(startSpam.getFile(), startSpam.getStringID(), spamColor, broadcastSpam);
+			creature.get()->sendStateCombatSpam(startSpam.getFile(), startSpam.getStringID(), spamColor, 0, broadcastSpam);
 		}
 
 	} catch (Exception& e) {
@@ -174,7 +174,7 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 			creature.get()->showFlyText(endFlyFile, endFlyAux, endFlyRed, endFlyGreen, endFlyBlue);
 
 		if (!endSpam.isEmpty()) {
-			creature.get()->sendStateCombatSpam(endSpam.getFile(), endSpam.getStringID(), spamColor, broadcastSpam);
+			creature.get()->sendStateCombatSpam(endSpam.getFile(), endSpam.getStringID(), spamColor, 0, broadcastSpam);
 		}
 
 		clearBuffEvent();
