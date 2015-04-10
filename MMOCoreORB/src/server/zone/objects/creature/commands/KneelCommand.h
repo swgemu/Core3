@@ -74,10 +74,14 @@ public:
 			}
 		}*/
 
-		creature->setPosture(CreaturePosture::CROUCHED, true);
-
-		if (creature->isDizzied())
+		if (!creature->checkDizzyDelay() && creature->isDizzied()) {
 			creature->queueDizzyFallEvent();
+		} else {
+			creature->setPosture(CreaturePosture::CROUCHED, true);
+
+			if (creature->isDizzied())
+				creature->queueDizzyFallEvent();
+		}
 
 		return SUCCESS;
 	}

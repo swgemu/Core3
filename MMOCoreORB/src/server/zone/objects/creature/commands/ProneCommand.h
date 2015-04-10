@@ -74,10 +74,14 @@ public:
 					return GENERALERROR;
 
 				if (!ghost->hasAbility("admin")) {
-					creature->setPosture(CreaturePosture::PRONE);
-
-					if (creature->isDizzied())
+					if (!creature->checkDizzyDelay() && creature->isDizzied()) {
 						creature->queueDizzyFallEvent();
+					} else {
+						creature->setPosture(CreaturePosture::PRONE);
+
+						if (creature->isDizzied())
+							creature->queueDizzyFallEvent();
+					}
 
 					return SUCCESS;
 				}
@@ -107,18 +111,14 @@ public:
 				info("blue frog created", true);
 			}
 		} else {// TODO STOP DELETE HERE
-			/*if (creature->isDizzied()) {
-				if (creature->getPosture() != CreaturePosture::PRONE) {
-					creature->setPosture(CreaturePosture::KNOCKEDDOWN);
-					creature->sendSystemMessage("@cbt_spam:dizzy_fall_down_single");
-
-					return SUCCESS;
-				}
-			}*/
-			creature->setPosture(CreaturePosture::PRONE);
-
-			if (creature->isDizzied())
+			if (!creature->checkDizzyDelay() && creature->isDizzied()) {
 				creature->queueDizzyFallEvent();
+			} else {
+				creature->setPosture(CreaturePosture::PRONE);
+
+				if (creature->isDizzied())
+					creature->queueDizzyFallEvent();
+			}
 		}// TODO DELETE THIS LINE
 
 		return SUCCESS;

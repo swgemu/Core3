@@ -165,8 +165,8 @@ public:
 			return;
 
 		int posture = object->getPosture();
-		if(posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::DRIVINGVEHICLE
-				|| posture == CreaturePosture::RIDINGCREATURE || posture == CreaturePosture::SKILLANIMATING ) {
+		if (!object->hasDizzyEvent() && (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE
+				|| posture == CreaturePosture::DRIVINGVEHICLE || posture == CreaturePosture::RIDINGCREATURE || posture == CreaturePosture::SKILLANIMATING) ) {
 
 			updatePosition(object);
 		} else {

@@ -732,17 +732,17 @@ bool AiAgentImplementation::validateStateAttack(CreatureObject* target, unsigned
 			}
 			break;
 		case CommandEffect::KNOCKDOWN:
-			if (!target->isKnockedDown()) {
+			if (!target->isKnockedDown() && target->checkPostureChangeRecovery()) {
 				return true;
 			}
 			break;
 		case CommandEffect::POSTUREUP:
-			if (!target->isStanding()) {
+			if (!target->isStanding() && target->checkPostureChangeRecovery()) {
 				return true;
 			}
 			break;
 		case CommandEffect::POSTUREDOWN:
-			if (!target->isProne()) {
+			if (!target->isProne() && target->checkPostureChangeRecovery()) {
 				return true;
 			}
 			break;
