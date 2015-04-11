@@ -25,7 +25,7 @@ end
 -- @return true if the player has the state.
 function VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, state)
 	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		return creatureObject:hasScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING) == 1
+		return creatureObject:hasScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING)
 	end) == true
 end
 

@@ -758,7 +758,7 @@ function DeathWatchBunkerScreenPlay:notifyEnteredOutsideLockedDoorArea(pArea, pP
 			return 0
 		end
 
-		if (player:hasScreenPlayState(1, "death_watch_bunker") == 0) then
+		if (not player:hasScreenPlayState(1, "death_watch_bunker")) then
 			player:sendSystemMessage("@dungeon/death_watch:entrance_denied")
 		end
 
@@ -825,12 +825,12 @@ end
 
 function DeathWatchBunkerScreenPlay:haldoTimer(pCreature)
 	ObjectManager.withCreatureObject(pCreature, function(creature)
-		if creature:hasScreenPlayState(4, "death_watch_foreman_stage") == 0 then
+		if (not creature:hasScreenPlayState(4, "death_watch_foreman_stage")) then
 			creature:removeScreenPlayState(1, "death_watch_foreman_stage")
 			creature:removeScreenPlayState(2, "death_watch_foreman_stage")
 			creature:removeScreenPlayState(4, "death_watch_foreman_stage")
 			creature:sendSystemMessage("@dungeon/death_watch:haldo_failed")
-			if (creature:hasScreenPlayState(2, "death_watch_haldo") == 0) then
+			if (not creature:hasScreenPlayState(2, "death_watch_haldo")) then
 				creature:removeScreenPlayState(1, "death_watch_haldo")
 			end
 		end
@@ -840,7 +840,7 @@ end
 function DeathWatchBunkerScreenPlay:haldoKilled(pHaldo, pPlayer)
 	createEvent(1000 * 240, "DeathWatchBunkerScreenPlay", "respawnHaldo", pPlayer)
 	return ObjectManager.withCreatureObject(pPlayer, function(creature)
-		if (creature:hasScreenPlayState(2, "death_watch_foreman_stage") == 1 and creature:hasScreenPlayState(4, "death_watch_foreman_stage") == 0) then
+		if (creature:hasScreenPlayState(2, "death_watch_foreman_stage") and not creature:hasScreenPlayState(4, "death_watch_foreman_stage")) then
 			local pInventory = creature:getSlottedObject("inventory")
 			if (pInventory == nil) then
 				creature:sendSystemMessage("Error: Unable to find player inventory.")
@@ -921,7 +921,7 @@ end
 
 function DeathWatchBunkerScreenPlay:pumpTimer(pCreature)
 	ObjectManager.withCreatureObject(pCreature, function(creature)
-		if creature:hasScreenPlayState(64, "death_watch_foreman_stage") == 0 then
+		if (not creature:hasScreenPlayState(64, "death_watch_foreman_stage")) then
 			creature:removeScreenPlayState(32, "death_watch_foreman_stage")
 			creature:setScreenPlayState(2, "death_watch_foreman_stage_failed")
 			creature:sendSystemMessage("@dungeon/death_watch:water_pressure_failed")
@@ -1177,8 +1177,7 @@ function DeathWatchBunkerScreenPlay:checkDoor(pSceneObject, pCreature)
 		local doorType = self.doorData[doorNumber].doorType
 
 		if doorType == 1 then
-			local state = creature:hasScreenPlayState(1, "death_watch_bunker")
-			if state == 0 then
+			if not creature:hasScreenPlayState(1, "death_watch_bunker") then
 				if (doorEnabled == 0) then
 					creature:sendSystemMessage(self.doorMessages[doorNumber].lock)
 					return

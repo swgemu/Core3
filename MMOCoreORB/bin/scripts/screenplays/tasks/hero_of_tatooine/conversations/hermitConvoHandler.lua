@@ -35,11 +35,11 @@ function heroOfTatHermitConvoHandler:getInitialScreen(pPlayer, pNpc, pConversati
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 		if (HeroOfTatooineScreenPlay:isMissingMark(pPlayer)) then
 			return convoTemplate:getScreen("you_have_returned_missing_marks")
-		elseif (player:hasScreenPlayState(64, "hero_of_tatooine") == 1) then
+		elseif (player:hasScreenPlayState(64, "hero_of_tatooine")) then
 			return convoTemplate:getScreen("hero_returns")
-		elseif (player:hasScreenPlayState(2, "hero_of_tatooine") == 1) then
+		elseif (player:hasScreenPlayState(2, "hero_of_tatooine")) then
 			return convoTemplate:getScreen("you_have_returned")
-		elseif (player:hasScreenPlayState(1, "hero_of_tatooine") == 1) then
+		elseif (player:hasScreenPlayState(1, "hero_of_tatooine")) then
 			return convoTemplate:getScreen("return_intro")
 		else
 			return convoTemplate:getScreen("intro")
@@ -70,8 +70,8 @@ function heroOfTatHermitConvoHandler:runScreenHandlers(conversationTemplate, con
 				end
 			end
 		elseif (screenID == "you_have_returned") then
-			if (player:hasScreenPlayState(2, "hero_of_tatooine") == 1 and player:hasScreenPlayState(4, "hero_of_tatooine") == 1 and player:hasScreenPlayState(8, "hero_of_tatooine") == 1
-				and player:hasScreenPlayState(16, "hero_of_tatooine") == 1 and player:hasScreenPlayState(32, "hero_of_tatooine") == 1) then
+			if (player:hasScreenPlayState(2, "hero_of_tatooine") and player:hasScreenPlayState(4, "hero_of_tatooine") and player:hasScreenPlayState(8, "hero_of_tatooine")
+				and player:hasScreenPlayState(16, "hero_of_tatooine") and player:hasScreenPlayState(32, "hero_of_tatooine")) then
 				clonedConversation:addOption("@conversation/quest_hero_of_tatooine_hermit:s_cd2c070a", "you_bear_marks")
 			end
 			clonedConversation:addOption("@conversation/quest_hero_of_tatooine_hermit:s_503d468c", "which_mark")

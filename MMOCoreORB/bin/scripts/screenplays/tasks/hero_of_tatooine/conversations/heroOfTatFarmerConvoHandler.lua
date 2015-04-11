@@ -25,9 +25,9 @@ end
 function heroOfTatFarmerConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (player:hasScreenPlayState(2, "hero_of_tatooine_altruism") == 1) then
+		if (player:hasScreenPlayState(2, "hero_of_tatooine_altruism")) then
 			return convoTemplate:getScreen("intro_completed")
-		elseif (player:hasScreenPlayState(1, "hero_of_tatooine_altruism") == 1) then
+		elseif (player:hasScreenPlayState(1, "hero_of_tatooine_altruism")) then
 			return convoTemplate:getScreen("intro_has_quest")
 		elseif (readData(CreatureObject(pNpc):getObjectID() .. ":gaveQuest") == 1) then
 			return convoTemplate:getScreen("intro_someone_else_started")

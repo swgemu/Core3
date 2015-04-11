@@ -25,9 +25,9 @@ function deathWatchCommanderDkrnConvoHandler:getInitialScreen(pPlayer, pNpc, pCo
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 		if (playerObject:isOnLeave() or not player:isImperial()) then
 			return convoTemplate:getScreen("wrong_faction")
-		elseif (player:hasScreenPlayState(2, "death_watch_bunker_imperial_sidequest") == 1) then
+		elseif (player:hasScreenPlayState(2, "death_watch_bunker_imperial_sidequest")) then
 			return convoTemplate:getScreen("quest_already_completed")
-		elseif (player:hasScreenPlayState(1, "death_watch_bunker_imperial_sidequest") == 1) then
+		elseif (player:hasScreenPlayState(1, "death_watch_bunker_imperial_sidequest")) then
 			return convoTemplate:getScreen("return_intro")
 		else
 			return convoTemplate:getScreen("intro")

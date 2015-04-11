@@ -245,7 +245,7 @@ function ThemeParkLogic:hasMissionState(mission, missionState, pCreature)
 end
 
 function ThemeParkLogic:hasNpcMissionState(npcState, state, pCreature)
-	if CreatureObject(pCreature):hasScreenPlayState(state, npcState) == 1 then
+	if (CreatureObject(pCreature):hasScreenPlayState(state, npcState)) then
 		return true
 	else
 		return false
@@ -292,7 +292,7 @@ function ThemeParkLogic:getActiveNpcNumber(pConversingPlayer)
 	end
 
 	for i = 1, 10, 1 do
-		if CreatureObject(pConversingPlayer):hasScreenPlayState(npcNumber, self.screenPlayState) == 1 then
+		if (CreatureObject(pConversingPlayer):hasScreenPlayState(npcNumber, self.screenPlayState)) then
 			activeNpcNumber = npcNumber * 2
 		end
 		npcNumber = npcNumber * 2
@@ -333,7 +333,7 @@ function ThemeParkLogic:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local missionsCompleted = 0
 	local stateToCheck = 1
 	for i = 1, numberOfMissionsTotal, 1 do
-		if creature:hasScreenPlayState(stateToCheck, self.screenPlayState .. "_mission_" .. npcName) == 1 then
+		if (creature:hasScreenPlayState(stateToCheck, self.screenPlayState .. "_mission_" .. npcName)) then
 			stateToCheck = stateToCheck * 2
 			missionsCompleted = missionsCompleted + 1
 		end
@@ -729,7 +729,7 @@ function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
 
 	local ownerID = readData(victimID .. ":missionOwnerID")
 	local pOwner = getCreatureObject(ownerID)
-	
+
 	if (pOwner == nil) then
 		return 0
 	end
@@ -1238,7 +1238,7 @@ function ThemeParkLogic:notifyEnteredEscortArea(pActiveArea, pCreature)
 			SceneObject(pActiveArea):destroyObjectFromWorld()
 			return 1
 		end
-		
+
 		return 0
 	end)
 end

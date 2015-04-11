@@ -27,9 +27,9 @@ end
 function deathWatchRescueScientistConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (player:hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest") == 1) then
+		if (player:hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest")) then
 			return convoTemplate:getScreen("return_thanks")
-		elseif (player:hasScreenPlayState(1, "death_watch_bunker_rebel_sidequest") == 1) then
+		elseif (player:hasScreenPlayState(1, "death_watch_bunker_rebel_sidequest")) then
 			player:setScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
 			player:sendSystemMessageWithDI("@theme_park/messages:theme_park_credits_pp", "487")
 			player:addCashCredits(487, true)

@@ -38,7 +38,7 @@ function NymConvoHandler:runNymScreenHandlers(conversationTemplate, conversingPl
 		local conversationScreen = screen:cloneScreen()
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		if (screenID == "first_time_hello" or screenID == "yo_es_nym") then
-			if (player:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc") ~= 1) or (player:hasScreenPlayState(2, "nym_theme_park_koleNpc") ~= 1) then
+			if (not player:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc")) or (not player:hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
 				clonedConversation:addOption("@celebrity/nym:tell_me_quest", "help_others")
 			else
 				clonedConversation:addOption("@celebrity/nym:tell_me_quest", "quest_info")
@@ -73,7 +73,7 @@ function NymConvoHandler:runChosterScreenHandlers(conversationTemplate, conversi
 		local conversationScreen = screen:cloneScreen()
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		if (screenID == "hello") then
-			if (player:hasScreenPlayState(1, "nym_theme_park_chosterNpc") == 1) then
+			if (player:hasScreenPlayState(1, "nym_theme_park_chosterNpc")) then
 				clonedConversation:addOption("@celebrity/lok_engineer:who_are_you", "just_a_guy")
 			else
 				clonedConversation:addOption("@celebrity/lok_engineer:who_are_you_2", "go_away_dude")
@@ -108,7 +108,7 @@ function NymConvoHandler:runJinkinsScreenHandlers(conversationTemplate, conversi
 			setQuestStatus(player:getObjectID() .. ":nymHermitWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_chosterNpc")
 		elseif (screenID == "good_work" and clonedConversation:getOptionCount() == 0) then
-			if (player:hasScreenPlayState(2, "nym_theme_park_koleNpc") == 1) then
+			if (player:hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
 				clonedConversation:addOption("@celebrity/jinkins:what_now", "talk_to_nym")
 			else
 				clonedConversation:addOption("@celebrity/jinkins:what_now", "talk_to_kole")
@@ -126,7 +126,7 @@ function NymConvoHandler:runKoleScreenHandlers(conversationTemplate, conversingP
 		local conversationScreen = screen:cloneScreen()
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		if (screenID == "first_time_hello" or screenID == "jinkins_is_friend" or screenID == "im_kole" or screenID == "nym_is_chief") then
-			if (player:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc") ~= 1) then
+			if (not player:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc")) then
 				clonedConversation:addOption("@celebrity/kole:tell_me_quest", "quest_tease")
 			else
 				clonedConversation:addOption("@celebrity/kole:tell_me_quest", "quest_info")
@@ -162,7 +162,7 @@ function NymConvoHandler:runMooreScreenHandlers(conversationTemplate, conversing
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		local playerCredits = player:getCashCredits()
 		if (screenID == "leave_me_alone") then
-			if (player:hasScreenPlayState(1, "nym_theme_park_mooreNpc") ~= 1) then
+			if (not player:hasScreenPlayState(1, "nym_theme_park_mooreNpc")) then
 				clonedConversation:addOption("@celebrity/imperial_bribe:who_are_you", "nunya")
 			else
 				clonedConversation:addOption("@celebrity/imperial_bribe:perhaps_bribe", "what_you_got")
@@ -222,13 +222,13 @@ function NymConvoHandler:runHackerScreenHandlers(conversationTemplate, conversin
 		local guessedMath = player:hasScreenPlayState(2, "nym_theme_park_hackerNpc")
 		local guessedJoke = player:hasScreenPlayState(4, "nym_theme_park_hackerNpc")
 		local doorStatus = player:hasScreenPlayState(8, "nym_theme_park_hackerNpc")
-		if (((guessedColor == 1) and (guessedMath == 1) and (guessedJoke == 1)) and (doorStatus ~= 1)) then
+		if (guessedColor and guessedMath and guessedJoke and not doorStatus) then
 			self.themePark:setState(player, 8, "nym_theme_park_hackerNpc")
 			playerObject:addPermissionGroup("NymPirateCave", true)
 		end
 		doorStatus = player:hasScreenPlayState(8, "nym_theme_park_hackerNpc")
 		if ((screenID == "right_color") or (screenID == "right_answer") or (screenID == "right_joke")) then
-			if (doorStatus == 1) then
+			if (doorStatus) then
 				local convoTemplate = LuaConversationTemplate(conversationTemplate)
 				local successScreen = convoTemplate:getScreen("success")
 				local screenObject = LuaConversationScreen(successScreen)
@@ -236,13 +236,13 @@ function NymConvoHandler:runHackerScreenHandlers(conversationTemplate, conversin
 			else
 				conversationScreen = screen:cloneScreen()
 				local clonedConversation = LuaConversationScreen(conversationScreen)
-				if (guessedColor ~= 1) then
+				if (not guessedColor) then
 					clonedConversation:addOption("@celebrity/lok_hacker:codec_2", "color_codes")
 				end
-				if (guessedMath ~= 1) then
+				if (not guessedMath) then
 					clonedConversation:addOption("@celebrity/lok_hacker:rewire_2", "math_problem")
 				end
-				if (guessedJoke ~= 1) then
+				if (not guessedJoke) then
 					clonedConversation:addOption("@celebrity/lok_hacker:defender_2", "joke")
 				end
 			end
@@ -283,13 +283,13 @@ function NymConvoHandler:runBeremaScreenHandlers(conversationTemplate, conversin
 			if pickedCard == 1 then
 				clonedConversation:addOption("@celebrity/lok_gambler:thermal_detonator", "tie")
 				clonedConversation:addOption("@celebrity/lok_gambler:sarlacc", "you_lose_s")
-				if player:hasScreenPlayState(2, "nym_theme_park_nymNpc") == 1 and player:hasScreenPlayState(16, "nym_theme_park_nymNpc") ~= 1 then
+				if player:hasScreenPlayState(2, "nym_theme_park_nymNpc") and not player:hasScreenPlayState(16, "nym_theme_park_nymNpc") then
 					clonedConversation:addOption("@celebrity/lok_gambler:bounty_hunter", "begin_game_five_wins")
 				else
 					clonedConversation:addOption("@celebrity/lok_gambler:bounty_hunter", "you_win_bh")
 				end
 			elseif pickedCard == 2 then
-				if player:hasScreenPlayState(2, "nym_theme_park_nymNpc") == 1 and player:hasScreenPlayState(16, "nym_theme_park_nymNpc") ~= 1 then
+				if player:hasScreenPlayState(2, "nym_theme_park_nymNpc") and not player:hasScreenPlayState(16, "nym_theme_park_nymNpc") then
 					clonedConversation:addOption("@celebrity/lok_gambler:thermal_detonator", "begin_game_five_wins")
 				else
 					clonedConversation:addOption("@celebrity/lok_gambler:thermal_detonator", "you_win_td")
@@ -298,7 +298,7 @@ function NymConvoHandler:runBeremaScreenHandlers(conversationTemplate, conversin
 				clonedConversation:addOption("@celebrity/lok_gambler:bounty_hunter", "you_lose_bh")
 			else
 				clonedConversation:addOption("@celebrity/lok_gambler:thermal_detonator", "you_lose_td")
-				if player:hasScreenPlayState(2, "nym_theme_park_nymNpc") == 1 and player:hasScreenPlayState(16, "nym_theme_park_nymNpc") ~= 1 then
+				if player:hasScreenPlayState(2, "nym_theme_park_nymNpc") and not player:hasScreenPlayState(16, "nym_theme_park_nymNpc") then
 					clonedConversation:addOption("@celebrity/lok_gambler:sarlacc", "begin_game_five_wins")
 				else
 					clonedConversation:addOption("@celebrity/lok_gambler:sarlacc", "you_win_s")
@@ -374,7 +374,7 @@ function NymConvoHandler:getInitialHackerScreen(pPlayer, pNpc, pConversationTemp
 	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 		-- Hacker states: 1= guessed color, 2 = guessed math, 4 = guessed joke, 8 = door opened
-		if conversingPlayer:hasScreenPlayState(8, "nym_theme_park_hackerNpc") == 1 then
+		if (conversingPlayer:hasScreenPlayState(8, "nym_theme_park_hackerNpc")) then
 			return convoTemplate:getScreen("doors_open")
 		end
 		return convoTemplate:getScreen("help_me_hack")
@@ -385,15 +385,15 @@ function NymConvoHandler:getInitialNymScreen(pPlayer, pNpc, pConversationTemplat
 	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 		-- Nym states: 1 = initial talk, 2 = sent to berema, 4 = turned in grenade, 8 =turned in data, 16 = all completed
-		if conversingPlayer:hasScreenPlayState(1, "nym_theme_park_nymNpc") ~= 1 then
+		if (not conversingPlayer:hasScreenPlayState(1, "nym_theme_park_nymNpc")) then
 			return convoTemplate:getScreen("first_time_hello")
-		elseif conversingPlayer:hasScreenPlayState(4, "nym_theme_park_nymNpc") == 1 and conversingPlayer:hasScreenPlayState(8, "nym_theme_park_nymNpc") ~= 1 then
+		elseif (conversingPlayer:hasScreenPlayState(4, "nym_theme_park_nymNpc") and not conversingPlayer:hasScreenPlayState(8, "nym_theme_park_nymNpc")) then
 			return convoTemplate:getScreen("wheres_drive")
-		elseif conversingPlayer:hasScreenPlayState(4, "nym_theme_park_nymNpc") ~= 1 and conversingPlayer:hasScreenPlayState(8, "nym_theme_park_nymNpc") == 1 then
+		elseif (not conversingPlayer:hasScreenPlayState(4, "nym_theme_park_nymNpc") and conversingPlayer:hasScreenPlayState(8, "nym_theme_park_nymNpc")) then
 			return convoTemplate:getScreen("wheres_imggcu")
-		elseif conversingPlayer:hasScreenPlayState(4, "nym_theme_park_nymNpc") == 1 and conversingPlayer:hasScreenPlayState(8, "nym_theme_park_nymNpc") == 1 and conversingPlayer:hasScreenPlayState(16, "nym_theme_park_nymNpc") ~= 1 then
+		elseif (conversingPlayer:hasScreenPlayState(4, "nym_theme_park_nymNpc") and conversingPlayer:hasScreenPlayState(8, "nym_theme_park_nymNpc") and not conversingPlayer:hasScreenPlayState(16, "nym_theme_park_nymNpc")) then
 			return convoTemplate:getScreen("youre_the_best")
-		elseif conversingPlayer:hasScreenPlayState(16, "nym_theme_park_nymNpc") == 1 then
+		elseif (conversingPlayer:hasScreenPlayState(16, "nym_theme_park_nymNpc")) then
 			return convoTemplate:getScreen("youre_done")
 		end
 		return convoTemplate:getScreen("hello_again")
@@ -404,7 +404,7 @@ function NymConvoHandler:getInitialChosterScreen(pPlayer, pNpc, pConversationTem
 	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 		-- Choster states: 1 = Sent to talk to choster, 2 = has talked to choster
-		if conversingPlayer:hasScreenPlayState(2, "nym_theme_park_chosterNpc") == 1 then
+		if (conversingPlayer:hasScreenPlayState(2, "nym_theme_park_chosterNpc")) then
 			return convoTemplate:getScreen("more_questions")
 		end
 		return convoTemplate:getScreen("hello")
@@ -415,9 +415,9 @@ function NymConvoHandler:getInitialJinkinsScreen(pPlayer, pNpc, pConversationTem
 	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 		-- Jinkins states: 1 = started quest, 2 = completed quest
-		if conversingPlayer:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc") == 1 then
+		if (conversingPlayer:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc")) then
 			return convoTemplate:getScreen("good_work")
-		elseif conversingPlayer:hasScreenPlayState(1, "nym_theme_park_jinkinsNpc") == 1 then
+		elseif (conversingPlayer:hasScreenPlayState(1, "nym_theme_park_jinkinsNpc")) then
 			return convoTemplate:getScreen("you_got_memory")
 		end
 		return convoTemplate:getScreen("first_time_hello")
@@ -428,9 +428,9 @@ function NymConvoHandler:getInitialKoleScreen(pPlayer, pNpc, pConversationTempla
 	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 		-- Kole states: 1 = started quest, 2 = completed quest
-		if conversingPlayer:hasScreenPlayState(2, "nym_theme_park_koleNpc") == 1 then
+		if (conversingPlayer:hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
 			return convoTemplate:getScreen("good_work")
-		elseif conversingPlayer:hasScreenPlayState(1, "nym_theme_park_koleNpc") == 1 then
+		elseif (conversingPlayer:hasScreenPlayState(1, "nym_theme_park_koleNpc")) then
 			return convoTemplate:getScreen("bring_gas")
 		end
 		return convoTemplate:getScreen("first_time_hello")
@@ -440,7 +440,7 @@ end
 function NymConvoHandler:getInitialBeremaScreen(pPlayer, pNpc, pConversationTemplate)
 	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if conversingPlayer:hasScreenPlayState(2, "nym_theme_park_nymNpc") == 1 and conversingPlayer:hasScreenPlayState(16, "nym_theme_park_nymNpc") ~= 1 then
+		if (conversingPlayer:hasScreenPlayState(2, "nym_theme_park_nymNpc") and not conversingPlayer:hasScreenPlayState(16, "nym_theme_park_nymNpc")) then
 			return convoTemplate:getScreen("nym_sent_you")
 		end
 		return convoTemplate:getScreen("play_game")

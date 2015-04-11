@@ -54,15 +54,15 @@ end
 function GoruConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if conversingPlayer:hasScreenPlayState(8, "zicx_bug_bomb_goruNpc") == 1 then
+		if conversingPlayer:hasScreenPlayState(8, "zicx_bug_bomb_goruNpc") then
 			return convoTemplate:getScreen("please_begone")
-		elseif conversingPlayer:hasScreenPlayState(2, "zicx_bug_bomb_goruNpc") == 1 and conversingPlayer:hasScreenPlayState(4, "zicx_bug_bomb_goruNpc") == 1 then
+		elseif conversingPlayer:hasScreenPlayState(2, "zicx_bug_bomb_goruNpc") and conversingPlayer:hasScreenPlayState(4, "zicx_bug_bomb_goruNpc") then
 			return convoTemplate:getScreen("heres_your_bomb")
-		elseif conversingPlayer:hasScreenPlayState(2, "zicx_bug_bomb_goruNpc") == 1 and conversingPlayer:hasScreenPlayState(4, "zicx_bug_bomb_goruNpc") ~= 1 then
+		elseif conversingPlayer:hasScreenPlayState(2, "zicx_bug_bomb_goruNpc") and not conversingPlayer:hasScreenPlayState(4, "zicx_bug_bomb_goruNpc") then
 			return convoTemplate:getScreen("get_the_bile")
-		elseif conversingPlayer:hasScreenPlayState(2, "zicx_bug_bomb_goruNpc") ~= 1 and conversingPlayer:hasScreenPlayState(4, "zicx_bug_bomb_goruNpc") == 1 then
+		elseif not conversingPlayer:hasScreenPlayState(2, "zicx_bug_bomb_goruNpc") and conversingPlayer:hasScreenPlayState(4, "zicx_bug_bomb_goruNpc") then
 			return convoTemplate:getScreen("get_the_bugs")
-		elseif conversingPlayer:hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") == 1 then
+		elseif conversingPlayer:hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") then
 			return convoTemplate:getScreen("are_you_done")
 		else
 			-- initial talk

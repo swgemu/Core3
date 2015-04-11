@@ -36,23 +36,23 @@ function deathWatchForemanConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
 		-- Player has not spoken to Foreman before
-		if (player:hasScreenPlayState(1, "death_watch_foreman_stage") == 0) then
+		if (not player:hasScreenPlayState(1, "death_watch_foreman_stage")) then
 			return convoTemplate:getScreen("init")
 		end
 
 		--Player has spoken to Foreman but has not started Haldo quest
-		if (player:hasScreenPlayState(2, "death_watch_foreman_stage") == 0) then
+		if (not player:hasScreenPlayState(2, "death_watch_foreman_stage")) then
 			return convoTemplate:getScreen("offer_quest_again")
 		end
 
 		-- Player has started but not completed Haldo quest
-		if (player:hasScreenPlayState(4, "death_watch_foreman_stage") == 0) then
+		if (not player:hasScreenPlayState(4, "death_watch_foreman_stage")) then
 			return convoTemplate:getScreen("found_him_yet")
 		end
 
 		-- Player has completed Haldo quest but has not started quest to clean battery
-		if (player:hasScreenPlayState(8, "death_watch_foreman_stage") == 0) then
-			if (player:hasScreenPlayState(4, "death_watch_haldo") == 0) then
+		if (not player:hasScreenPlayState(8, "death_watch_foreman_stage")) then
+			if (not player:hasScreenPlayState(4, "death_watch_haldo")) then
 				return convoTemplate:getScreen("thank_you_didnt_kill")
 			else
 				return convoTemplate:getScreen("thank_you_killed")
@@ -60,7 +60,7 @@ function deathWatchForemanConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 		end
 
 		-- Player has started but not completed battery cleaning quest
-		if (player:hasScreenPlayState(16, "death_watch_foreman_stage") == 0) then
+		if (not player:hasScreenPlayState(16, "death_watch_foreman_stage")) then
 			local pInventory = player:getSlottedObject("inventory")
 
 			if (pInventory == nil) then
@@ -70,7 +70,7 @@ function deathWatchForemanConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 			local pBatt = getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/death_watch_bunker/drill_battery_clean.iff", true)
 
 			if (pBatt ~= nil) then
-				if (player:hasScreenPlayState(4, "death_watch_haldo") == 0) then
+				if (not player:hasScreenPlayState(4, "death_watch_haldo")) then
 					return convoTemplate:getScreen("return_battery_cleaned_no_haldo_kill")
 				else
 					return convoTemplate:getScreen("return_battery_cleaned_killed_haldo")
@@ -81,21 +81,21 @@ function deathWatchForemanConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 		end
 
 		-- Player has completed battery cleaning but not started pump quest
-		if (player:hasScreenPlayState(32, "death_watch_foreman_stage") == 0) then
+		if (not player:hasScreenPlayState(32, "death_watch_foreman_stage")) then
 			return convoTemplate:getScreen("pump_room_upstairs")
 		end
 
 		-- Player has started but not completed pump quest
-		if (player:hasScreenPlayState(64, "death_watch_foreman_stage") == 0) then
-			if (player:hasScreenPlayState(2, "death_watch_foreman_stage_failed") == 1) then
+		if (not player:hasScreenPlayState(64, "death_watch_foreman_stage")) then
+			if (player:hasScreenPlayState(2, "death_watch_foreman_stage_failed")) then
 				return convoTemplate:getScreen("try_pump_again")
 			end
 			return convoTemplate:getScreen("pump_timer_running")
 		end
 
 		-- Player has completed but not turned in pump quest
-		if (player:hasScreenPlayState(128, "death_watch_foreman_stage") == 0) then
-			if (player:hasScreenPlayState(4, "death_watch_haldo") == 1) then
+		if (not player:hasScreenPlayState(128, "death_watch_foreman_stage")) then
+			if (player:hasScreenPlayState(4, "death_watch_haldo")) then
 				return convoTemplate:getScreen("pump_success_haldo_kill")
 			end
 			return convoTemplate:getScreen("pump_success_no_haldo_kill")
@@ -154,7 +154,7 @@ function deathWatchForemanConvoHandler:runScreenHandlers(conversationTemplate, c
 				player:setScreenPlayState(16, "death_watch_foreman_stage")
 			end
 		end
-		if ((screenID == "thank_you_didnt_kill" or screenID == "thank_you_killed") and player:hasScreenPlayState(4, "death_watch_foreman_stage") == 0) then
+		if ((screenID == "thank_you_didnt_kill" or screenID == "thank_you_killed") and not player:hasScreenPlayState(4, "death_watch_foreman_stage")) then
 			player:setScreenPlayState(4, "death_watch_foreman_stage")
 		end
 
@@ -188,7 +188,7 @@ function deathWatchForemanConvoHandler:runScreenHandlers(conversationTemplate, c
 			local pInventory = player:getSlottedObject("inventory")
 			if (pInventory ~= nil) then
 				if (getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", true) ~= nil) then
-					if (player:hasScreenPlayState(4, "death_watch_haldo") == 0) then
+					if (not player:hasScreenPlayState(4, "death_watch_haldo")) then
 						clonedConversation:addOption("@conversation/death_watch_foreman:s_829888a9", "thank_you_didnt_kill")
 					else
 						clonedConversation:addOption("@conversation/death_watch_foreman:s_829888a9", "thank_you_killed")
@@ -199,7 +199,7 @@ function deathWatchForemanConvoHandler:runScreenHandlers(conversationTemplate, c
 			clonedConversation:addOption("@conversation/death_watch_foreman:s_baac9005", "what_i_expected")
 		end
 		if (screenID == "pump_room_upstairs") then
-			if (player:hasScreenPlayState(4, "death_watch_haldo") == 0) then
+			if (not player:hasScreenPlayState(4, "death_watch_haldo")) then
 				clonedConversation:addOption("@conversation/death_watch_foreman:s_d4b1da9f", "tricky_pumps_no_haldo_kill")
 			else
 				clonedConversation:addOption("@conversation/death_watch_foreman:s_d4b1da9f", "tricky_pumps_haldo_kill")

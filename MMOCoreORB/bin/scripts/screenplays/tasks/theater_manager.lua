@@ -324,14 +324,14 @@ end
 function TheaterManagerScreenPlay:getCurrentStep(pPlayer, series)
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		local state = "theater_manager_" .. series
-		if (player:hasScreenPlayState(64, state) == 1) then return 8 -- Completed
-		elseif (player:hasScreenPlayState(32, state) == 1) then return 7 -- Show 3
-		elseif (player:hasScreenPlayState(16, state) == 1) then return 6 -- Promo 3
-		elseif (player:hasScreenPlayState(8, state) == 1) then return 5 -- Show 2
-		elseif (player:hasScreenPlayState(4, state) == 1) then return 4 -- Promo 2
-		elseif (player:hasScreenPlayState(2, state) == 1) then return 3 -- Show 1
-		elseif (player:hasScreenPlayState(1, state) == 1) then return 2 -- Promo 1
-		elseif (player:hasScreenPlayState(1, state) == 0) then return 1 -- Audition
+		if (player:hasScreenPlayState(64, state)) then return 8 -- Completed
+		elseif (player:hasScreenPlayState(32, state)) then return 7 -- Show 3
+		elseif (player:hasScreenPlayState(16, state)) then return 6 -- Promo 3
+		elseif (player:hasScreenPlayState(8, state)) then return 5 -- Show 2
+		elseif (player:hasScreenPlayState(4, state)) then return 4 -- Promo 2
+		elseif (player:hasScreenPlayState(2, state)) then return 3 -- Show 1
+		elseif (player:hasScreenPlayState(1, state)) then return 2 -- Promo 1
+		elseif (not player:hasScreenPlayState(1, state)) then return 1 -- Audition
 		else return 0
 		end
 	end)

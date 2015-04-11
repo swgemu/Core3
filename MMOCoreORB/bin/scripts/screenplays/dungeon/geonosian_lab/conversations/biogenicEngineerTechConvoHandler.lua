@@ -39,7 +39,7 @@ function BiogenicEngineerTechConvoHandler:getInitialScreen(pPlayer, pNpc, pConve
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		local hasTalked = readData(player:getObjectID() .. ":geo_engineertech_talked")
-		if (player:hasScreenPlayState(1, "geonosian_lab_datapad_delivered") == 1) then
+		if (player:hasScreenPlayState(1, "geonosian_lab_datapad_delivered")) then
 			return convoTemplate:getScreen("things_under_control")
 		elseif (hasTalked ~= nil and hasTalked == 1) then
 			return convoTemplate:getScreen("return_init")

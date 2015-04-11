@@ -809,9 +809,9 @@ end
 function TutorialScreenPlay:helpZoom(creatureObject)
 	local creature = LuaCreatureObject(creatureObject)
 
-	state = creature:hasScreenPlayState(1, "tutorial")
+	local state = creature:hasScreenPlayState(1, "tutorial")
 	
-	if state == 0 then
+	if not state then
 		creature:sendNewbieTutorialRequest("zoomCamera")
 		creature:sendSystemMessage("@newbie_tutorial/system_messages:mousewheel_repeat")
 		creature:playMusicMessage("sound/tut_03_scroll_out.snd")
@@ -1042,9 +1042,9 @@ function TutorialScreenPlay:officer1(creatureObject, movingCreature)
 	end
 	
 	if distance > 10 and distance < 15 then
-		state = player:hasScreenPlayState(8, "tutorial")
+		local state = player:hasScreenPlayState(8, "tutorial")
 		
-		if state ~= 1 then
+		if not state then
 			player:setScreenPlayState(8, "tutorial")
 			
 			spatialChat(creatureObject, "@newbie_tutorial/newbie_convo:greeter1_bark1")
@@ -1052,9 +1052,9 @@ function TutorialScreenPlay:officer1(creatureObject, movingCreature)
 		
 		return 0
 	elseif distance > 7 and distance < 10 then
-		state = player:hasScreenPlayState(16, "tutorial")
+		local state = player:hasScreenPlayState(16, "tutorial")
 	
-		if state ~= 1 then
+		if not state then
 			player:setScreenPlayState(16, "tutorial")
 			
 			spatialChat(creatureObject, "@newbie_tutorial/newbie_convo:greeter1_bark2")
@@ -1062,9 +1062,9 @@ function TutorialScreenPlay:officer1(creatureObject, movingCreature)
 				
 		return 0
 	elseif distance > 5 and distance < 7 then
-		state = player:hasScreenPlayState(32, "tutorial")
+		local state = player:hasScreenPlayState(32, "tutorial")
 	
-		if state ~= 1 then
+		if not state then
 			player:setScreenPlayState(32, "tutorial")
 			
 			spatialChat(creatureObject, "@newbie_tutorial/newbie_convo:greeter1_bark3")
@@ -1402,9 +1402,9 @@ function TutorialScreenPlay:openDrumEventMessage(creatureObject)
 	
 	finished = readData(creature:getObjectID() .. ":tutorial:drummessage")
 	
-	state = creature:hasScreenPlayState(128, "tutorial")
+	local state = creature:hasScreenPlayState(128, "tutorial")
 	
-	if state ~= 0 then
+	if not state then
 		writeData(creature:getObjectID() .. ":tutorial:drummessage", 5)
 		return
 	end
@@ -1914,9 +1914,9 @@ function TutorialScreenPlay:part4StartObserver(creatureObject)
 	local player = LuaCreatureObject(creatureObject)
 	
 	if player:getInCellNumber() == 5 then
-		state = player:hasScreenPlayState(16384, "tutorial")
+		local state = player:hasScreenPlayState(16384, "tutorial")
 		
-		if state == 0 then
+		if not state then
 			player:sendSystemMessage("@newbie_tutorial/system_messages:part_4")
 			player:setScreenPlayState(16384, "tutorial")
 			
@@ -1972,9 +1972,9 @@ function TutorialScreenPlay:cloneHereEvent(creatureObject)
 	
 	cloneTerminal:showFlyText("newbie_tutorial/system_messages", "clone_here", 0, 255, 0)
 	
-	state = player:hasScreenPlayState(32768, "tutorial")
+	local state = player:hasScreenPlayState(32768, "tutorial")
 	
-	if state == 0 then
+	if not state then
 		createEvent(2000, "TutorialScreenPlay", "cloneHereEvent", creatureObject)
 	end
 end
@@ -2023,9 +2023,9 @@ function TutorialScreenPlay:insuranceCheckEvent(creatureObject)
 	insuranceObject:showFlyText("newbie_tutorial/system_messages", "insure_here", 0, 255, 0)
 	
 	
-	state = player:hasScreenPlayState(65536, "tutorial")
+	local state = player:hasScreenPlayState(65536, "tutorial")
 	
-	if state == 0 then
+	if not state then
 		createEvent(2000, "TutorialScreenPlay", "insuranceCheckEvent", creatureObject)
 	end
 
@@ -2175,14 +2175,14 @@ function TutorialScreenPlay:part5StartObserver(creatureObject)
 	local player = LuaCreatureObject(creatureObject)
 	
 	if player:getInCellNumber() == 6 then
-		state = player:hasScreenPlayState(131072, "tutorial")
+		local state = player:hasScreenPlayState(131072, "tutorial")
 		radartalk = readData(player:getObjectID() .. ":tutorial:radartalk")
 		
 		if radartalk == 0 then
 			return 0
 		end
 		
-		if state == 0 then
+		if not state then
 			player:setScreenPlayState(131072, "tutorial")
 			createEvent(1000, "TutorialScreenPlay", "explainRadar", creatureObject)
 			

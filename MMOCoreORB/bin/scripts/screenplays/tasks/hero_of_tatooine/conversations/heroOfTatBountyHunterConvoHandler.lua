@@ -26,11 +26,11 @@ function heroOfTatBountyHunterConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 	local npcId = CreatureObject(pNpc):getObjectID()
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (player:hasScreenPlayState(2, "hero_of_tatooine_intellect") == 1) then
+		if (player:hasScreenPlayState(2, "hero_of_tatooine_intellect")) then
 			return convoTemplate:getScreen("intro_completed")
 		elseif (readData(player:getObjectID() .. ":hero_of_tat:failedIntellect") == npcId) then
 			return convoTemplate:getScreen("already_failed")
-		elseif (player:hasScreenPlayState(1, "hero_of_tatooine_intellect") == 1) then
+		elseif (player:hasScreenPlayState(1, "hero_of_tatooine_intellect")) then
 			return convoTemplate:getScreen("intro_hasquest")
 		else
 			return convoTemplate:getScreen("intro")

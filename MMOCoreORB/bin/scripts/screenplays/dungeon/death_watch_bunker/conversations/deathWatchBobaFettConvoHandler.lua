@@ -16,7 +16,7 @@ end
 function deathWatchBobaFettConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (player:hasScreenPlayState(1, "death_watch_bunker") == 1) then
+		if (player:hasScreenPlayState(1, "death_watch_bunker")) then
 			return convoTemplate:getScreen("back_again")
 		else
 			return convoTemplate:getScreen("intro")
