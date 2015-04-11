@@ -46,71 +46,46 @@ which carries forward this exception.
 #define FORCERUN1COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/buffs/Buff.h"
+#include "JediQueueCommand.h"
 
-class ForceRun1Command : public QueueCommand {
+class ForceRun1Command : public JediQueueCommand {
 public:
 
 	ForceRun1Command(const String& name, ZoneProcessServer* server)
-	: QueueCommand(name, server) {
+: JediQueueCommand(name, server) {
 
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		// Construct buffs.
+		Vector<uint32> buffCRCs;
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+		// BuffCRC's, first one is used.
+		buffCRCs.add(BuffCRC::JEDI_FORCE_RUN_1);
+		buffCRCs.add(BuffCRC::JEDI_FORCE_RUN_2);
+		buffCRCs.add(BuffCRC::JEDI_FORCE_RUN_3);
 
-		if (isWearingArmor(creature)) {
-			return NOJEDIARMOR;
+		// Construct Skillmods.
+		VectorMap<String, int> skillMods;
+
+		// Skill mods.
+		skillMods.put("force_run", 1);
+
+		int res = doJediSelfBuffCommand(creature, buffCRCs, skillMods);
+
+		// Return if something errored.
+		if (res != SUCCESS) {
+			return res;
 		}
 
-		uint32 forceRun1CRC = BuffCRC::JEDI_FORCE_RUN_1;
-		uint32 forceRun2CRC = BuffCRC::JEDI_FORCE_RUN_2;
-		uint32 forceRun3CRC = BuffCRC::JEDI_FORCE_RUN_3;
-
-		if(creature->hasBuff(forceRun1CRC) || creature->hasBuff(forceRun2CRC) || creature->hasBuff(forceRun3CRC)) {
-			creature->sendSystemMessage("@jedi_spam:force_buff_present"); //"You already have a similar Force enhancement active."
-			return GENERALERROR;
-		}
-
+		// SPECIAL - For Force Run.
 		if (creature->hasBuff(String("burstrun").hashCode()) || creature->hasBuff(String("retreat").hashCode())) {
 			creature->removeBuff(String("burstrun").hashCode());
 			creature->removeBuff(String("retreat").hashCode());
 		}
 
-		// Force cost of skill.
-		int forceCost = 200;
-
-		//Check for and deduct Force cost.
-
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
-		if (playerObject->getForcePower() <= forceCost) {
-			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
-			return GENERALERROR;
-		}
-
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-
-		StringIdChatParameter startStringId("jedi_spam", "apply_forcerun1");
-		StringIdChatParameter endStringId("jedi_spam", "remove_forcerun1");
-
-		int duration = 120;
-
-		ManagedReference<Buff*> buff = new Buff(creature, forceRun1CRC, duration, BuffType::JEDI);
-		buff->setSpeedMultiplierMod(1.5f);
-		buff->setAccelerationMultiplierMod(1.5f);
-		buff->setStartMessage(startStringId);
-		buff->setEndMessage(endStringId);
-		buff->setSkillModifier("force_run", 1);
-
-		creature->addBuff(buff);
-		creature->playEffect("clienteffect/pl_force_run_self.cef", "");
-
+		// Return.
 		return SUCCESS;
 	}
 

@@ -648,18 +648,32 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 				Logger::console.error("unknown variable " + varName + " in squadleader command " + slashCommand->getQueueCommandName());
 				command.pop();
 			}
-
 		} else {
-			Logger::console.error("unknown variable " + varName + " in combat command " + slashCommand->getQueueCommandName());
+			Logger::console.error("unknown variable " + varName + " in combat queue command " + slashCommand->getQueueCommandName());
 			command.pop();
 		}
-
 	} else if (slashCommand->isForceHealCommand()) {
 		ForceHealQueueCommand* healCommand = cast<ForceHealQueueCommand*>(slashCommand);
 		if (varName == "forceCost")
 			healCommand->setForceCost(Lua::getIntParameter(L));
 		else {
 			Logger::console.error("unknown variable " + varName + " in force healing command " + slashCommand->getQueueCommandName());
+			command.pop();
+		}
+	} else if (slashCommand->isJediQueueCommand()) {
+		JediQueueCommand* jediCommand = cast<JediQueueCommand*>(slashCommand);
+		if (varName == "forceCost")
+			jediCommand->setForceCost(Lua::getIntParameter(L));
+		else if (varName == "duration")
+			jediCommand->setDuration(Lua::getIntParameter(L));
+		else if (varName == "animationCRC")
+			jediCommand->setAnimationCRC(Lua::getUnsignedIntParameter(L));
+		else if (varName == "clientEffect")
+			jediCommand->setClientEffect(Lua::getStringParameter(L));
+		else if (varName == "speedMod")
+			jediCommand->setSpeedMod(Lua::getFloatParameter(L));
+		else {
+			Logger::console.error("unknown variable " + varName + " in jedi queue command " + slashCommand->getQueueCommandName());
 			command.pop();
 		}
 	} else {
