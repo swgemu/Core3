@@ -90,11 +90,11 @@ function GetTargetCreaturePet:doAction(pAgent)
 		local agent = AiAgent(pAgent)
 		
 		local command = agent:getLastCommand()
-		if (command ~= PET_ATTACK and command ~= PET_GUARD and command ~= PET_SPECIAL_ATTACK1 and command ~= PET_SPECIAL_ATTACK2) then
+		if (command ~= PET_ATTACK and command ~= PET_GUARD and command ~= PET_SPECIAL_ATTACK1 and command ~= PET_SPECIAL_ATTACK2 and command ~= PET_PATROL) then
 			return BEHAVIOR_FAILURE	
 		end
 
-		if (command ~= PET_GUARD ) then
+		if (command ~= PET_GUARD and command ~= PET_PATROL ) then
 			local pTarget = agent:getLastCommandTarget()
 			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
 				agent:setFollowObject(pTarget)
@@ -152,7 +152,7 @@ end
 function GetTargetCreaturePet:terminate(pAgent)
 	if pAgent ~= nil then
 		local agent = AiAgent(pAgent)
-		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE then agent:restoreFollowObject() end
+		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE and agent:getFollowState() ~= PATROLLING then agent:restoreFollowObject() end
 	end
 	return 0
 end
@@ -164,7 +164,7 @@ function GetTargetDroidPet:doAction(pAgent)
 		local agent = AiAgent(pAgent)
 		
 		local command = agent:getLastCommand()
-		if (command ~= PET_ATTACK and command ~= PET_GUARD ) then
+		if (command ~= PET_ATTACK and command ~= PET_GUARD and command ~= PET_PATROL ) then
 			return BEHAVIOR_FAILURE	
 		end
 
@@ -226,7 +226,7 @@ end
 function GetTargetDroidPet:terminate(pAgent)
 	if pAgent ~= nil then
 		local agent = AiAgent(pAgent)
-		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE then agent:restoreFollowObject() end
+		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE and agent:getFollowState() ~= PATROLLING then agent:restoreFollowObject() end
 	end
 	return 0
 end
@@ -238,7 +238,7 @@ function GetTargetFactionPet:doAction(pAgent)
 		local agent = AiAgent(pAgent)
 		
 		local command = agent:getLastCommand()
-		if (command ~= PET_ATTACK and command ~= PET_GUARD) then
+		if (command ~= PET_ATTACK and command ~= PET_GUARD and command ~= PET_PATROL) then
 			return BEHAVIOR_FAILURE	
 		end
 
@@ -300,7 +300,7 @@ end
 function GetTargetFactionPet:terminate(pAgent)
 	if pAgent ~= nil then
 		local agent = AiAgent(pAgent)
-		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE then agent:restoreFollowObject() end
+		if agent:getBehaviorStatus() == BEHAVIOR_FAILURE and agent:getFollowState() ~= PATROLLING then agent:restoreFollowObject() end
 	end
 	return 0
 end

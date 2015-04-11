@@ -65,20 +65,6 @@ function MoveCreaturePet:checkConditions(pAgent)
 	return false
 end
 
-function MoveCreaturePet:doAction(pAgent)
-	if (pAgent ~= nil) then
-		local agent = AiAgent(pAgent)
-
-		if (agent:getCurrentSpeed() > 0) then 
-			agent:completeMove()
-		end
-
-		self:findNextPosition(pAgent)
-		return BEHAVIOR_RUNNING
-	end
-	return BEHAVIOR_FAILURE
-end
-
 function MoveDroidPet:checkConditions(pAgent)
 	if (pAgent ~= nil) then
 		local agent = AiAgent(pAgent)
@@ -91,21 +77,6 @@ function MoveDroidPet:checkConditions(pAgent)
 	return false
 end
 
-function MoveDroidPet:doAction(pAgent)
-	if (pAgent ~= nil) then
-		local agent = AiAgent(pAgent)
-
-		if (agent:getCurrentSpeed() > 0) then 
-			agent:completeMove()
-		end
-
-		self:findNextPosition(pAgent)
-		return BEHAVIOR_RUNNING
-	end
-	return BEHAVIOR_FAILURE
-end
-
-
 function MoveFactionPet:checkConditions(pAgent)
 	if (pAgent ~= nil) then
 		local agent = AiAgent(pAgent)
@@ -116,18 +87,4 @@ function MoveFactionPet:checkConditions(pAgent)
 		end
 	end
 	return false
-end
-
-function MoveFactionPet:doAction(pAgent)
-	if (pAgent ~= nil) then
-		local agent = AiAgent(pAgent)
-
-		if (agent:getCurrentSpeed() > 0) then 
-			agent:completeMove()
-		end
-
-		self:findNextPosition(pAgent)
-		return BEHAVIOR_RUNNING
-	end
-	return BEHAVIOR_FAILURE
 end

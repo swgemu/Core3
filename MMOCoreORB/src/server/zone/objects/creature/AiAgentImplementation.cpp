@@ -1011,8 +1011,13 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		moveEvent = NULL;
 	}
 
-	for (int i = 0; i < movementMarkers.size(); ++i)
-		movementMarkers.get(i)->destroyObjectFromWorld(false);
+	mLocker.release();
+
+	for (int i = 0; i < movementMarkers.size(); ++i) {
+		ManagedReference<SceneObject*> marker = movementMarkers.get(i);
+		Locker clocker(marker, _this.get());
+		marker->destroyObjectFromWorld(false);
+	}
 
 	SceneObject* creatureInventory = getSlottedObject("inventory");
 
@@ -1403,12 +1408,17 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 #ifdef SHOW_NEXT_POSITION
 			if (showNextMovementPosition) {
-				for (int i = 0; i < movementMarkers.size(); ++i)
-					movementMarkers.get(i)->destroyObjectFromWorld(false);
+				for (int i = 0; i < movementMarkers.size(); ++i) {
+					ManagedReference<SceneObject*> marker = movementMarkers.get(i);
+					Locker clocker(marker, _this.get());
+					marker->destroyObjectFromWorld(false);
+				}
 
 				movementMarkers.removeAll();
 
 				Reference<SceneObject*> movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
+
+				Locker clocker(movementMarker, _this.get());
 
 				movementMarker->initializePosition(nextPositionDebug.getX(), nextPositionDebug.getZ(), nextPositionDebug.getY());
 				StringBuffer msg;
@@ -1425,11 +1435,16 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 				movementMarkers.add(movementMarker);
 
+				clocker.release();
+
 				for (int i = 0; i < path->size(); ++i) {
 					WorldCoordinates* coord = &path->get(i);
 					SceneObject* coordCell = coord->getCell();
 
 					movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
+
+					Locker clocker(movementMarker, _this.get());
+
 					movementMarker->initializePosition(coord->getPoint().getX(), coord->getPoint().getZ(), coord->getPoint().getY());
 
 					if (coordCell != NULL) {
