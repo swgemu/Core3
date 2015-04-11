@@ -63,6 +63,10 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ResourceManager* resMan = creature->getZoneServer()->getResourceManager();
+
+		Locker locker(resMan);
+
 		StringTokenizer args(arguments.toString());
 
 		try {

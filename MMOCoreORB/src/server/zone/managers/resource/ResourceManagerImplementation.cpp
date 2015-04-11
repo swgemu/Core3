@@ -457,6 +457,8 @@ String ResourceManagerImplementation::addParentNodeToListBox(SuiListBox* sui, co
 }
 
 void ResourceManagerImplementation::listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet) {
+	Locker locker(_this.get());
+
 	resourceSpawner->listResourcesForPlanetOnScreen(creature, planet);
 }
 
@@ -466,6 +468,7 @@ String ResourceManagerImplementation::healthCheck() {
 
 String ResourceManagerImplementation::dumpResources() {
 	Locker locker(_this.get());
+
 	return resourceSpawner->dumpResources();
 }
 
