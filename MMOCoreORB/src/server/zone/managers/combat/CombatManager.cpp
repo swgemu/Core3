@@ -1592,6 +1592,17 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 	if (targetCreature->isPlayerCreature() && targetCreature->getPvpStatusBitmask() == CreatureFlag::NONE)
 		return;
 
+	int playerLevel = 0;
+	if (targetCreature->isPlayerCreature()) {
+		ZoneServer* server = targetCreature->getZoneServer();
+		if (server != NULL) {
+			PlayerManager* pManager = server->getPlayerManager();
+			if (pManager != NULL) {
+				playerLevel = pManager->calculatePlayerLevel(targetCreature) - 5;
+			}
+		}
+	}
+
 	// loop through all the states in the command
 	for (int i = 0; i < stateEffects->size(); i++) {
 		StateEffect effect = stateEffects->get(i);
@@ -1624,6 +1635,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 			targetDefense -= targetCreature->calculateBFRatio();
 			targetDefense /= 1.5;
+			targetDefense += playerLevel;
 
 			if (System::random(100) > accuracyMod - targetDefense)
 				failed = true;
@@ -1637,6 +1649,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 					targetDefense += targetCreature->getSkillMod(jediMods.get(j));
 
 				targetDefense /= 1.5;
+				targetDefense += playerLevel;
 
 				if (System::random(100) > accuracyMod - targetDefense)
 					failed = true;
