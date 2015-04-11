@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_c248c7ce",
+        "filename": "MMOCoreORB/bin/scripts/ai/actions/move.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-11T09:10:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure why you didn\u0027t make these patrol movements use a Walk behavior (then you wouldn\u0027t need to add the argument to findNextPosition).",
+      "revId": "e133da00cb2dab0289985c271cf2d59d4e3bf736",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_a245cbb4",
+        "filename": "MMOCoreORB/bin/scripts/ai/templates/idlepet.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-11T09:10:12Z",
+      "side": 1,
+      "message": "I never noticed how un-descriptive these template names are...",
+      "revId": "e133da00cb2dab0289985c271cf2d59d4e3bf736",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_420cd794",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-11T09:10:12Z",
+      "side": 1,
+      "message": "shouldn\u0027t this stuff be enclosed in the SHOW_NEXT_POSITION #ifdefs?",
+      "revId": "e133da00cb2dab0289985c271cf2d59d4e3bf736",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_2211dbac",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetClearPatrolPointsCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-11T09:10:12Z",
+      "side": 1,
+      "message": "Is there built in NULL protection for getZoneServer() ?",
+      "revId": "e133da00cb2dab0289985c271cf2d59d4e3bf736",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
