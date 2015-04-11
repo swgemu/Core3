@@ -1624,6 +1624,15 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 			targetDefense -= targetCreature->calculateBFRatio();
 			targetDefense /= 1.5;
+			if (targetCreature->isPlayerCreature()) {
+				ZoneServer* server = targetCreature->getZoneServer();
+				if (server != NULL) {
+					PlayerManager* pManager = server->getPlayerManager();
+					if (pManager != NULL) {
+						targetDefense += pManager->calculatePlayerLevel(targetCreature) - 5;
+					}
+				}
+			}
 
 			if (System::random(100) > accuracyMod - targetDefense)
 				failed = true;
@@ -1637,6 +1646,15 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 					targetDefense += targetCreature->getSkillMod(jediMods.get(j));
 
 				targetDefense /= 1.5;
+				if (targetCreature->isPlayerCreature()) {
+					ZoneServer* server = targetCreature->getZoneServer();
+					if (server != NULL) {
+						PlayerManager* pManager = server->getPlayerManager();
+						if (pManager != NULL) {
+							targetDefense += pManager->calculatePlayerLevel(targetCreature) - 5;
+						}
+					}
+				}
 
 				if (System::random(100) > accuracyMod - targetDefense)
 					failed = true;
