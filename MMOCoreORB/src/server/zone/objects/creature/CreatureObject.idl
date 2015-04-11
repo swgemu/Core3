@@ -63,6 +63,7 @@ import system.lang.Time;
 import server.zone.Zone;
 import system.util.SortedVector;
 import server.zone.objects.creature.events.DizzyFallDownEvent;
+import server.zone.objects.creature.events.CommandQueueActionEvent;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.creature.buffs.Buff;
 import server.zone.objects.tangible.weapon.WeaponObject;
@@ -188,6 +189,9 @@ class CreatureObject extends TangibleObject {
 	@dereferenced
 	protected Time nextAction;
 	
+	@dereferenced
+	protected Time delayedAction;
+	
 	@transactional
 	protected CooldownTimerMap cooldownTimerMap;
 	
@@ -200,6 +204,8 @@ class CreatureObject extends TangibleObject {
 	protected Time lastSuccessfulCombatAction;
 	
 	protected transient DizzyFallDownEvent dizzyFallDownEvent;
+	
+	protected transient CommandQueueActionEvent queueEvent;
 	
 	@dereferenced
 	protected Time timeOfDeath;
@@ -1278,6 +1284,7 @@ class CreatureObject extends TangibleObject {
 	
 	public void removeAttackDelay() {
 		cooldownTimerMap.updateToCurrentTime("nextAttackDelay");
+		removeDelay();
 	}
 	
 	@local
@@ -1800,6 +1807,12 @@ class CreatureObject extends TangibleObject {
 	public boolean isNextActionPast() {
 		return nextAction.isPast();
 	}
+	
+	public native void delayNextAction(int delay, boolean storeAction = false);
+	
+	public native void removeDelay();
+	
+	public native void scheduleNextAction();
 	
 	@dirty
 	public abstract boolean isTrainerCreature() {

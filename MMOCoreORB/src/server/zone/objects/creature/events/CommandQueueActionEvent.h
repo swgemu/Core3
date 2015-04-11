@@ -47,6 +47,12 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace events {
+
 class CommandQueueActionEvent : public Task {
 	ManagedWeakReference<CreatureObject*> creature;
 	int type;
@@ -96,5 +102,11 @@ public:
 	}
 
 };
+
+}
+}
+}
+}
+}
 
 #endif /*COMMANDQUEUEACTIONEVENT_H_*/

@@ -444,6 +444,7 @@ public:
 
 			creature->updatePostureChangeRecovery();
 			creature->updatePostureChangeDelay(5000);
+			creature->delayNextAction(5000);
 			creature->sendSystemMessage("@cbt_spam:posture_knocked_down");
 			creature->sendStateCombatSpam("cbt_spam", "posture_knocked_down", 0, 0, false);
 			break;
@@ -471,6 +472,7 @@ public:
 
 			creature->updatePostureChangeRecovery();
 			creature->updatePostureChangeDelay(2500);
+			creature->delayNextAction(2500);
 			break;
 		case CommandEffect::POSTUREDOWN:
 			if (!creature->checkPostureChangeRecovery()) {
@@ -496,9 +498,11 @@ public:
 
 			creature->updatePostureChangeRecovery();
 			creature->updatePostureChangeDelay(2500);
+			creature->delayNextAction(2500);
 			break;
 		case CommandEffect::NEXTATTACKDELAY:
 			creature->setNextAttackDelay(mod, effect.getStateLength());
+			creature->delayNextAction(effect.getStateLength() * 1000, true);
 			break;
 		case CommandEffect::HEALTHDEGRADE:
 			buff = new Buff(creature, String("healthdegrade").hashCode(), effect.getStateLength(), BuffType::STATE);

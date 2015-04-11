@@ -1863,9 +1863,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 
 	if (commandQueue->size() != 0 || !nextAction.isPast()) {
 		if (commandQueue->size() == 0) {
-			Reference<CommandQueueActionEvent*> e =
-					new CommandQueueActionEvent(_this.get());
-			e->schedule(nextAction);
+			scheduleNextAction();
 		}
 
 		if (priority == QueueCommand::NORMAL)
@@ -1909,8 +1907,7 @@ void CreatureObjectImplementation::activateImmediateAction() {
 
 void CreatureObjectImplementation::activateQueueAction() {
 	if (nextAction.isFuture()) {
-		CommandQueueActionEvent* e = new CommandQueueActionEvent(_this.get());
-		e->schedule(nextAction);
+		scheduleNextAction();
 
 		return;
 	}
@@ -1936,15 +1933,12 @@ void CreatureObjectImplementation::activateQueueAction() {
 		nextAction.addMiliTime((uint32)(time * 1000));
 
 	if (commandQueue->size() != 0) {
-		Reference<CommandQueueActionEvent*> e = new CommandQueueActionEvent(
-				_this.get());
-
 		if (!nextAction.isFuture()) {
 			nextAction.updateToCurrentTime();
 			nextAction.addMiliTime(100);
 		}
 
-		e->schedule(nextAction);
+		scheduleNextAction();
 	}
 }
 
@@ -1957,6 +1951,38 @@ void CreatureObjectImplementation::deleteQueueAction(uint32 actionCount) {
 			break;
 		}
 	}
+}
+
+void CreatureObjectImplementation::delayNextAction(int delay, bool storeAction) {
+	if (storeAction)
+		delayedAction = nextAction;
+
+	nextAction.updateToCurrentTime();
+	nextAction.addMiliTime(delay);
+
+	scheduleNextAction();
+}
+
+void CreatureObjectImplementation::removeDelay() {
+	if (!delayedAction.isPast())
+		nextAction = delayedAction;
+	else
+		nextAction.updateToCurrentTime();
+
+	nextAction.updateToCurrentTime();
+	nextAction.addMiliTime(100);
+
+	scheduleNextAction();
+}
+
+void CreatureObjectImplementation::scheduleNextAction() {
+	if (queueEvent == NULL) {
+		queueEvent = new CommandQueueActionEvent(_this.get());
+	} else {
+		queueEvent->cancel();
+	}
+
+	queueEvent->schedule(nextAction);
 }
 
 void CreatureObjectImplementation::subtractBankCredits(int credits) {
