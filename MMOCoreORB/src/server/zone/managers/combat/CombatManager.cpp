@@ -304,7 +304,8 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		break;
 	case COUNTER: {
 		doCounterAttack(attacker, weapon, defender, damage);
-		defender->executeObjectControllerAction(String("attack").hashCode(), attacker->getObjectID(), "");
+		if (!defender->hasState(CreatureState::PEACE))
+			defender->executeObjectControllerAction(String("attack").hashCode(), attacker->getObjectID(), "");
 		damageMultiplier = 0.0f;
 		break;}
 	case RICOCHET:
@@ -408,7 +409,8 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 		break;
 	case COUNTER:
 		doCounterAttack(attacker, weapon, defenderObject, damage);
-		defenderObject->executeObjectControllerAction(String("attack").hashCode(), attacker->getObjectID(), "");
+		if (!defenderObject->hasState(CreatureState::PEACE))
+			defenderObject->executeObjectControllerAction(String("attack").hashCode(), attacker->getObjectID(), "");
 		damageMultiplier = 0.0f;
 		break;
 	case RICOCHET:
