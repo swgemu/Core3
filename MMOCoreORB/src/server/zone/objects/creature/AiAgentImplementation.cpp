@@ -1645,15 +1645,19 @@ float AiAgentImplementation::getMaxDistance() {
 		return followCopy != NULL ? getAggroRadius()*2 : 25;
 		break;
 	case AiAgent::FOLLOWING:
-		// stop in weapons range
 		if (followCopy == NULL)
 			return 0.1f;
 
-		if (!CollisionManager::checkLineOfSight(_this.get(), followCopy)) {
-			return 0.1f;
-		} else if (getWeapon() != NULL ) {
-			float weapMaxRange = MIN(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
-			return MAX(0.1f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius() - 2);
+		if (isInCombat()) {
+			// stop in weapons range
+			if (!CollisionManager::checkLineOfSight(_this.get(), followCopy)) {
+				return 0.1f;
+			} else if (getWeapon() != NULL ) {
+				float weapMaxRange = MIN(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
+				return MAX(0.1f, weapMaxRange + getTemplateRadius() + followCopy->getTemplateRadius() - 2);
+			}
+		} else {
+			return 1 + getTemplateRadius() + followCopy->getTemplateRadius();
 		}
 		break;
 	}
