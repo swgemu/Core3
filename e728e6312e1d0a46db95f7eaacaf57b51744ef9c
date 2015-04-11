@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_4283b7cc",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-11T09:38:39Z",
+      "side": 1,
+      "message": "Why is this command specific stuff in a generic method? This should be in the AI header",
+      "revId": "e728e6312e1d0a46db95f7eaacaf57b51744ef9c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
