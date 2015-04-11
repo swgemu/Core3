@@ -318,6 +318,10 @@ public:
 		return false;
 	}
 
+	virtual bool isJediQueueCommand() {
+		return false;
+	}
+
 	inline int getSkillModSize() const {
 		return skillMods.size();
 	}

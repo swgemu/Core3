@@ -40,100 +40,44 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef AVOIDINCAPACITATIONCOMMAND_H_
 #define AVOIDINCAPACITATIONCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "JediQueueCommand.h"
 
-class AvoidIncapacitationCommand : public QueueCommand {
+class AvoidIncapacitationCommand : public JediQueueCommand {
 public:
 
 	AvoidIncapacitationCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+: JediQueueCommand(name, server) {
 
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		// Construct buffs.
+		Vector<uint32> buffCRCs;
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+		// BuffCRC's, first one is used.
+		buffCRCs.add(BuffCRC::JEDI_AVOID_INCAPACITATION);
 
-		if (isWearingArmor(creature)) {
-			return NOJEDIARMOR;
-		}
+		// Construct Skillmods.
+		VectorMap<String, int> skillMods;
 
-		if (creature->hasAttackDelay()) // no message associated with this
-			return GENERALERROR;
+		// Skill mods.
+		skillMods.put("avoid_incapacitation", 1);
 
-		uint32 buffcrc;
+		int res = doJediSelfBuffCommand(creature, buffCRCs, skillMods);
 
-		uint32 buffcrc1 = BuffCRC::JEDI_AVOID_INCAPACITATION;
-		uint32 buffcrc2 = BuffCRC::JEDI_AVOID_INCAPACITATION_1;
-		uint32 buffcrc3 = BuffCRC::JEDI_AVOID_INCAPACITATION_2;
-		uint32 buffcrc4 = BuffCRC::JEDI_AVOID_INCAPACITATION_3;
-		uint32 buffcrc5 = BuffCRC::JEDI_AVOID_INCAPACITATION_4;
-		uint32 buffcrc6 = BuffCRC::JEDI_AVOID_INCAPACITATION_5;
-
-		if(creature->hasBuff(buffcrc1)) {
-;			buffcrc = buffcrc2;
-		}
-
-		else if (creature->hasBuff(buffcrc2)) {
-			buffcrc = buffcrc3;
-		}
-
-
-		else if (creature->hasBuff(buffcrc3)) {
-			buffcrc = buffcrc4;
-		}
-
-		else if (creature->hasBuff(buffcrc4)) {
-			buffcrc = buffcrc5;
-		}
-
-		else if (creature->hasBuff(buffcrc5)) {
-			buffcrc = buffcrc6;
-		}
-
-		else buffcrc = buffcrc1;
-
-
-		// Force cost of skill.
-		int forceCost = 750;
-
-
-		//Check for and deduct Force cost.
-
-		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
-
-		if (playerObject->getForcePower() <= forceCost) {
-			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
-
+		// Return if something errored.
+		if (res != SUCCESS) {
 			return GENERALERROR;
 		}
 
-		playerObject->setForcePower(playerObject->getForcePower() - forceCost);
-
-		StringIdChatParameter startStringId("jedi_spam", "apply_avoidincapacitation");
-		StringIdChatParameter endStringId("jedi_spam", "remove_avoidincapacitation");
-
-		int duration = 30;
-
-		ManagedReference<Buff*> buff = new Buff(creature, buffcrc, duration, BuffType::JEDI);
-		buff->setStartMessage(startStringId);
-		buff->setEndMessage(endStringId);
-		buff->setSkillModifier("avoid_incapacitation", 1);
-
-		creature->addBuff(buff);
-		creature->playEffect("clienteffect/pl_force_avoid_incap_self.cef", "");
-
-
+		// Return.
 		return SUCCESS;
 	}
 
