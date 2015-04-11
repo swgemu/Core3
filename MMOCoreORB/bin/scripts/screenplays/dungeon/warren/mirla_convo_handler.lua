@@ -31,9 +31,9 @@ function MirlaConversationHandler:getInitialScreen(pPlayer, pNpc, pConversationT
 	
 	local player = LuaCreatureObject(pPlayer)
 	
-	if (player:hasScreenPlayState(WarrenScreenPlay.states.mirla.done, "warren") == 1) then
+	if (player:hasScreenPlayState(WarrenScreenPlay.states.mirla.done, "warren")) then
 		return convoTemplate:getScreen("mirla_done")
-	elseif (player:hasScreenPlayState(WarrenScreenPlay.states.mirla.started, "warren") == 1) then
+	elseif (player:hasScreenPlayState(WarrenScreenPlay.states.mirla.started, "warren")) then
 		return convoTemplate:getScreen("mirla_get_teraud")
 	end
 	

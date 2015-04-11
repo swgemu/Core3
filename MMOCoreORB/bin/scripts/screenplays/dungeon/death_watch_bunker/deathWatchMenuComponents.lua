@@ -149,9 +149,7 @@ function deathWatchWaterValve:handleObjectMenuSelect(pSceneObject, pPlayer, sele
 	end
 
 	return ObjectManager.withCreatureObject(pPlayer, function(creature)
-		local startedState = creature:hasScreenPlayState(32, "death_watch_foreman_stage")
-		local finishedState = creature:hasScreenPlayState(64, "death_watch_foreman_stage")
-		if startedState == 0 or finishedState == 1 then
+		if not creature:hasScreenPlayState(32, "death_watch_foreman_stage") or creature:hasScreenPlayState(64, "death_watch_foreman_stage") then
 			creature:sendSystemMessage("@dungeon/death_watch:access_denied")
 			return 0
 		end

@@ -163,7 +163,7 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 					local missionPreReq = self.themePark:getMissionPreReq(pConversingPlayer)
 					if missionPreReq.type == "item" and (readData(CreatureObject(pConversingPlayer):getObjectID() .. ":hasPreReqItem") == 1 or self.themePark:doPreReqItemCheck(pConversingPlayer, missionPreReq) == true) then
 						nextScreenName = "npc_1_n"
-					elseif missionPreReq.type == "state" and CreatureObject(pConversingPlayer):hasScreenPlayState(missionPreReq.state, missionPreReq.screenPlayState) == 1 then
+					elseif missionPreReq.type == "state" and CreatureObject(pConversingPlayer):hasScreenPlayState(missionPreReq.state, missionPreReq.screenPlayState) then
 						nextScreenName = "npc_1_n"
 					else
 						nextScreenName = "notyet"

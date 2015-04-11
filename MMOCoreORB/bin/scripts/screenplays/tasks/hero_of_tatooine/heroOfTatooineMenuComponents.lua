@@ -5,7 +5,7 @@ squillLairMenuComponent = { }
 function squillLairMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
 	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
 
-	if (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine") == 1 and CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine") == 0) then
+	if (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine") and not CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine")) then
 		menuResponse:addRadialMenuItem(120, 3, "@quest/hero_of_tatooine/system_messages:search") -- Search
 	end
 end
@@ -15,7 +15,7 @@ function squillLairMenuComponent:handleObjectMenuSelect(pObject, pPlayer, select
 		return 0
 	end
 
-	if (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine") == 0 or CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine") == 1) then
+	if (not CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine") or CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine")) then
 		return 0
 	end
 
@@ -62,7 +62,7 @@ function explosivesCrateMenuComponent:fillObjectMenuResponse(pSceneObject, pMenu
 		return 0
 	end
 
-	if (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine_altruism") == 1 and CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_altruism") == 0 and
+	if (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine_altruism") and not CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_altruism") and
 		getContainerObjectByTemplate(pInventory, "object/tangible/item/quest/hero_of_tatooine/explosives.iff", true) == nil) then
 		menuResponse:addRadialMenuItem(120, 3, "@quest/hero_of_tatooine/system_messages:search") -- Search
 	end
@@ -73,7 +73,7 @@ function explosivesCrateMenuComponent:handleObjectMenuSelect(pObject, pPlayer, s
 		return 0
 	end
 
-	if (CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine_altruism") == 0 or CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_altruism") == 1) then
+	if (not CreatureObject(pPlayer):hasScreenPlayState(1, "hero_of_tatooine_altruism") or CreatureObject(pPlayer):hasScreenPlayState(2, "hero_of_tatooine_altruism")) then
 		return 0
 	end
 

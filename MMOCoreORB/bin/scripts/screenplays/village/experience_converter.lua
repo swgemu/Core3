@@ -89,7 +89,7 @@ function ExperienceConverter:getHighestScreenPlayState(pCreatureObject, pScreenP
 
 	local check = pScreenPlayState
 	local state = ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		return (creatureObject:hasScreenPlayState(1, check) == 1)
+		return creatureObject:hasScreenPlayState(1, check)
 	end) == true
 	return state
 

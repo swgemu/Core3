@@ -24,13 +24,13 @@ function deathWatchTechnicianConvoHandler:getInitialScreen(pPlayer, pNpc, pConve
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
-		if (player:hasScreenPlayState(2, "death_watch_bunker_technician_sidequest") == 1) then
+		if (player:hasScreenPlayState(2, "death_watch_bunker_technician_sidequest")) then
 			if (readData("dwb:ventsEnabled") == 1) then
 				return convoTemplate:getScreen("quest_completed_gas_cleared")
 			else
 				return convoTemplate:getScreen("intro_prev_completed_new_escort")
 			end
-		elseif (player:hasScreenPlayState(1, "death_watch_bunker_technician_sidequest") == 1) then
+		elseif (player:hasScreenPlayState(1, "death_watch_bunker_technician_sidequest")) then
 			-- dwb:droidEscortStatus": 1 - escort in progress, 2 - escort failed
 			if (readData("dwb:droidEscortStatus") == 1) then
 				if (readData("dwb:droidEscortStarter") == player:getObjectID()) then

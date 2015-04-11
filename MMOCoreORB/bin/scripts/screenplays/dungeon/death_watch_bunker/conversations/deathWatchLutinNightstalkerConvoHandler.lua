@@ -25,9 +25,9 @@ function deathWatchLutinNightstalkerConvoHandler:getInitialScreen(pPlayer, pNpc,
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 		if (playerObject:isOnLeave() or not player:isRebel()) then
 			return convoTemplate:getScreen("wrong_faction")
-		elseif (player:hasScreenPlayState(4, "death_watch_bunker_rebel_sidequest") == 1) then
+		elseif (player:hasScreenPlayState(4, "death_watch_bunker_rebel_sidequest")) then
 			return convoTemplate:getScreen("quest_already_completed")
-		elseif (player:hasScreenPlayState(1, "death_watch_bunker_rebel_sidequest") == 1) then
+		elseif (player:hasScreenPlayState(1, "death_watch_bunker_rebel_sidequest")) then
 			return convoTemplate:getScreen("return_intro")
 		else
 			return convoTemplate:getScreen("intro")
@@ -46,7 +46,7 @@ function deathWatchLutinNightstalkerConvoHandler:runScreenHandlers(conversationT
 		if (screenID == "excellent_travel_to_bunker") then
 			player:setScreenPlayState(1, "death_watch_bunker_rebel_sidequest")
 		elseif (screenID == "return_intro") then
-			if (player:hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest") == 1) then
+			if (player:hasScreenPlayState(2, "death_watch_bunker_rebel_sidequest")) then
 				clonedConversation:addOption("@conversation/death_watch_rebel_herald:s_9b06da0", "excellent_reward")
 			end
 			clonedConversation:addOption("@conversation/death_watch_rebel_herald:s_dc839e59", "please_be_quick")

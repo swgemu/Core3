@@ -23,7 +23,7 @@ end
 function heroOfTatMotherConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (player:hasScreenPlayState(1, "hero_of_tatooine_altruism") == 1 and player:hasScreenPlayState(2, "hero_of_tatooine_altruism") ~= 1) then
+		if (player:hasScreenPlayState(1, "hero_of_tatooine_altruism") and not player:hasScreenPlayState(2, "hero_of_tatooine_altruism")) then
 			return convoTemplate:getScreen("intro")
 		else
 			return convoTemplate:getScreen("intro_noquest")

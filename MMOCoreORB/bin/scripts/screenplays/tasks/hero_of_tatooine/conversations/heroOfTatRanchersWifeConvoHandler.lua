@@ -27,9 +27,9 @@ function heroOfTatRanchersWifeConvoHandler:getInitialScreen(pPlayer, pNpc, pConv
 		local inProgressID = readData("hero_of_tat:ranch_player_id")
 		if (inProgressID ~= 0 and inProgressID ~= player:getObjectID()) then
 			return convoTemplate:getScreen("intro_otherinprogress")
-		elseif (player:hasScreenPlayState(2, "hero_of_tatooine_honor") == 1) then
+		elseif (player:hasScreenPlayState(2, "hero_of_tatooine_honor")) then
 			return convoTemplate:getScreen("intro_noquest")
-		elseif (player:hasScreenPlayState(2, "hero_of_tatooine_honor") == 0 and player:hasScreenPlayState(1, "hero_of_tatooine_honor") == 1 and readData(player:getObjectID() .. ":hero_of_tat_honor:accepted") == 1) then
+		elseif (not player:hasScreenPlayState(2, "hero_of_tatooine_honor") and player:hasScreenPlayState(1, "hero_of_tatooine_honor") and readData(player:getObjectID() .. ":hero_of_tat_honor:accepted") == 1) then
 			if (readData(player:getObjectID() .. ":hero_of_tat_honor:distracting_wife") == 1) then
 				return convoTemplate:getScreen("intro_distract")
 			else

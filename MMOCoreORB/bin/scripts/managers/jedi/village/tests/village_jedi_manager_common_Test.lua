@@ -18,7 +18,7 @@ describe("Village Jedi Manager Common", function()
 		DirectorManagerMocks.mocks.before_each()
 
 		creatureObject = {}
-		creatureObject.hasScreenPlayState = spy.new(function() return 0 end)
+		creatureObject.hasScreenPlayState = spy.new(function() return false end)
 		creatureObject.setScreenPlayState = spy.new(function() end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObject
 	end)
@@ -51,7 +51,7 @@ describe("Village Jedi Manager Common", function()
 				end)
 
 				it("Should return true if the player has the screen play state.", function()
-					creatureObject.hasScreenPlayState = spy.new(function() return 1 end)
+					creatureObject.hasScreenPlayState = spy.new(function() return true end)
 
 					assert.same(true, VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE))
 				end)

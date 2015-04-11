@@ -25,11 +25,11 @@ end
 function deathWatchHaldoConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (player:hasScreenPlayState(2, "death_watch_foreman_stage") == 0) then
+		if (not player:hasScreenPlayState(2, "death_watch_foreman_stage")) then
 			return convoTemplate:getScreen("intro_noquest")
-		elseif (player:hasScreenPlayState(2, "death_watch_haldo") == 1) then
+		elseif (player:hasScreenPlayState(2, "death_watch_haldo")) then
 			return convoTemplate:getScreen("thank_you")
-		elseif (player:hasScreenPlayState(1, "death_watch_haldo") == 1) then
+		elseif (player:hasScreenPlayState(1, "death_watch_haldo")) then
 			return convoTemplate:getScreen("return_intro")
 		else
 			return convoTemplate:getScreen("intro")
@@ -60,7 +60,7 @@ function deathWatchHaldoConvoHandler:runScreenHandlers(conversationTemplate, con
 		elseif (screenID == "wont_help") then
 			DeathWatchBunkerScreenPlay:spawnAggroHaldo(conversingNPC, conversingPlayer)
 		elseif (screenID == "thank_you") then
-			if (player:hasScreenPlayState(2, "death_watch_haldo") == 0) then
+			if (not player:hasScreenPlayState(2, "death_watch_haldo")) then
 				local pInventory = player:getSlottedObject("inventory")
 				if (pInventory ~= nil) then
 					local pCure = getContainerObjectByTemplate(pInventory, "object/tangible/dungeon/death_watch_bunker/crazed_miner_medicine.iff", true)

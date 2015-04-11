@@ -23,7 +23,7 @@ end
 function deathWatchWorkshopDroidConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		if (player:hasScreenPlayState(16, "death_watch_foreman_stage") == 1 or player:hasScreenPlayState(8, "death_watch_foreman_stage") == 0) then
+		if (player:hasScreenPlayState(16, "death_watch_foreman_stage") or not player:hasScreenPlayState(8, "death_watch_foreman_stage")) then
 			player:sendSystemMessage("@dungeon/death_watch:not_authorized")
 			return convoTemplate:getScreen("end_convo")
 		end

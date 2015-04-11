@@ -21,7 +21,7 @@ function BiogenicAssistantConvoHandler:getInitialScreen(pPlayer, pNpc, pConversa
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		local hasTalked = readData(player:getObjectID() .. ":geo_assistant_talked")
 
-		if (player:hasScreenPlayState(1, "geonosian_lab_datapad_delivered") == 1) then
+		if (player:hasScreenPlayState(1, "geonosian_lab_datapad_delivered")) then
 			return convoTemplate:getScreen("thanks_for_delivering")
 		elseif (GeonosianLabScreenPlay:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
 			return convoTemplate:getScreen("please_deliver_codes")

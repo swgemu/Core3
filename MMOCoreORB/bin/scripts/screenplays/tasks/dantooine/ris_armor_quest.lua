@@ -55,19 +55,19 @@ function risArmorQuestConvoHandler:getInitialScreen(pPlayer, npc, pConversationT
 
 		if (not player:hasSkill("crafting_armorsmith_master")) then
 			return convoTemplate:getScreen("not_master_armorsmith")
-		elseif (player:hasScreenPlayState(64, "ris_armor_quest") == 1) then -- All quests completed
+		elseif (player:hasScreenPlayState(64, "ris_armor_quest")) then -- All quests completed
 			return convoTemplate:getScreen("completed_all_quests")
-		elseif (player:hasScreenPlayState(32, "ris_armor_quest") == 1) then -- On quest 6
+		elseif (player:hasScreenPlayState(32, "ris_armor_quest")) then -- On quest 6
 			return convoTemplate:getScreen("quest_6_query")
-		elseif (player:hasScreenPlayState(16, "ris_armor_quest") == 1) then
+		elseif (player:hasScreenPlayState(16, "ris_armor_quest")) then
 			return convoTemplate:getScreen("quest_5_start")
-		elseif (player:hasScreenPlayState(8, "ris_armor_quest") == 1) then
+		elseif (player:hasScreenPlayState(8, "ris_armor_quest")) then
 			return convoTemplate:getScreen("quest_4_query")
-		elseif (player:hasScreenPlayState(4, "ris_armor_quest") == 1) then
+		elseif (player:hasScreenPlayState(4, "ris_armor_quest")) then
 			return convoTemplate:getScreen("quest_3_start")
-		elseif (player:hasScreenPlayState(2, "ris_armor_quest") == 1) then
+		elseif (player:hasScreenPlayState(2, "ris_armor_quest")) then
 			return convoTemplate:getScreen("quest_2_query")
-		elseif (player:hasScreenPlayState(1, "ris_armor_quest") == 1) then
+		elseif (player:hasScreenPlayState(1, "ris_armor_quest")) then
 			return convoTemplate:getScreen("quest_1_description")
 		else
 			return convoTemplate:getScreen("quest_1_start")

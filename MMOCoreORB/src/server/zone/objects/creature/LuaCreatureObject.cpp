@@ -318,10 +318,9 @@ int LuaCreatureObject::hasScreenPlayState(lua_State *L) {
 
 	uint64 state = realObject->getScreenPlayState(play);
 
-	if (state & stateToCheck)
-		lua_pushnumber(L, 1);
-	else
-		lua_pushnumber(L, 0);
+	bool check = state & stateToCheck;
+
+	lua_pushboolean(L, check);
 
 	return 1;
 }

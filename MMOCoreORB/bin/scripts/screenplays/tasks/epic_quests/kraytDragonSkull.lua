@@ -246,8 +246,8 @@ function KraytSkullContainerComponent:canAddObject(pContainer, pObj, slot)
 		return -1
 	end
 
-	if (SceneObject(pContainer):getObjectName() == "borvo_the_hutt" and CreatureObject(pPlayer):hasScreenPlayState(1, "krayt_skull_epic_quest") == 1) or
-		(SceneObject(pContainer):getCustomObjectName() == "Huff Darklighter" and CreatureObject(pPlayer):hasScreenPlayState(2, "krayt_skull_epic_quest") == 1) then
+	if (SceneObject(pContainer):getObjectName() == "borvo_the_hutt" and CreatureObject(pPlayer):hasScreenPlayState(1, "krayt_skull_epic_quest")) or
+		(SceneObject(pContainer):getCustomObjectName() == "Huff Darklighter" and CreatureObject(pPlayer):hasScreenPlayState(2, "krayt_skull_epic_quest")) then
 		return -1
 	else
 		return true
