@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_02d13ffb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceRun1Command.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-11T04:27:17Z",
+      "side": 1,
+      "message": "Why isn\u0027t this stuff in doCommonJediSelfChecks?",
+      "revId": "7354e6ae6cab5bb261aa38c6745412912e2eb6e2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_22ec3bc7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceRun1Command.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-11T04:27:17Z",
+      "side": 1,
+      "message": "You\u0027re going to have a good bit of copied code here because every one of these commands is going to addBuff, setForcePower, playEffect, and playAnimation, all with variables stored in the command. I think you should move all of this int doJediSelfBuff and only leave the special case stuff in the actual commands. The side effect of this is that you don\u0027t really need to be returning the buff. Perhaps a result code, but not a buff.",
+      "revId": "7354e6ae6cab5bb261aa38c6745412912e2eb6e2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_e2cd035f",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/QueueCommand.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-11T04:27:17Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this method be in JediQueueCommand, and not the base QueueCommand?",
+      "revId": "7354e6ae6cab5bb261aa38c6745412912e2eb6e2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
