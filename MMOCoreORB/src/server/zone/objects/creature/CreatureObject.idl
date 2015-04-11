@@ -1304,7 +1304,7 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public void updatePostureChangeRecovery() {
-		cooldownTimerMap.updateToCurrentAndAddMili("postureChangeRecovery", 3000);
+		cooldownTimerMap.updateToCurrentAndAddMili("postureChangeRecovery", 30000);
 	}
 
 	@dirty
