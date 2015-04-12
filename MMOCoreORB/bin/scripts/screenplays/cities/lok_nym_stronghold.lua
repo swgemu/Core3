@@ -140,7 +140,6 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("lok", "commoner_tatooine",60,342.313,11.9993,5024.26,97.0775,0)
 	spawnMobile("lok", "commoner_tatooine",60,462.534,11.8294,5148.35,23.6115,0)
 	spawnMobile("lok", "commoner_tatooine",60,462.685,11.9861,5192.39,127.19,0)
-	spawnMobile("lok", "commoner_tatooine",60,429.839,13,5136.92,340.915,0)
 	--{"commoner_tatooine",60,14.3,-0.9,23.3,181,8145380, "npc_sitting_chair", "Berema"},
 	--{"commoner_tatooine",60,-2.27845,0.999959,6.45641,0,8145356, "conversation", ""},
 	--{"commoner_technician",60,0.856204,7.26,-13.2226,0,2745872, "conversation", ""},
