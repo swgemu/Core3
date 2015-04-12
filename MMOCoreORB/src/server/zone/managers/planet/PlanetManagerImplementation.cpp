@@ -265,6 +265,8 @@ void PlanetManagerImplementation::loadTravelFares() {
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
 
+	delete iffStream;
+
 	//Initialize the rows so we can do a symmetric insert
 	for(int i = 0; i < dtiff.getTotalRows(); i++) {
 		VectorMap<String, int> planetFares;
