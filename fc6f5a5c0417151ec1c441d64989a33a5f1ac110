@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_22bb1b74",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/AvoidIncapacitationCommand.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-12T03:11:06Z",
+      "side": 1,
+      "message": "should have else return GENERALERROR; or whatever error is supposed to be returned when you can\u0027t apply a buff.",
+      "revId": "fc6f5a5c0417151ec1c441d64989a33a5f1ac110",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_42b6178c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceRun1Command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-12T03:11:06Z",
+      "side": 1,
+      "message": "return res here",
+      "revId": "fc6f5a5c0417151ec1c441d64989a33a5f1ac110",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
