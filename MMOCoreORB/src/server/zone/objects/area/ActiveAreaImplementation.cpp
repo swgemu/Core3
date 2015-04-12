@@ -43,12 +43,16 @@ void ActiveAreaImplementation::notifyEnter(SceneObject* obj) {
 	if (cellObjectID == 0 || cellObjectID == obj->getParentID())
 		notifyObservers(ObserverEventType::ENTEREDAREA, obj);
 
-	if (obj->isPlayerCreature() && attachedScenery != NULL) {
+	if (obj->isPlayerCreature() && attachedScenery.size() > 0) {
 		ManagedReference<SceneObject*> sceno = obj;
-		EXECUTE_TASK_2(attachedScenery, sceno, {
-			Locker locker(attachedScenery_p);
 
-			attachedScenery_p->sendTo(sceno_p, true);
+		EXECUTE_TASK_2(attachedScenery, sceno, {
+			for (int i = 0; i < attachedScenery_p.size(); i++) {
+				SceneObject* scenery = attachedScenery_p.get(i);
+				Locker locker(scenery);
+
+				scenery->sendTo(sceno_p, true);
+			}
 		});
 	}
 }
@@ -57,12 +61,16 @@ void ActiveAreaImplementation::notifyExit(SceneObject* obj) {
 	if (cellObjectID == 0 || cellObjectID == obj->getParentID())
 		notifyObservers(ObserverEventType::EXITEDAREA, obj);
 
-	if (obj->isPlayerCreature() && attachedScenery != NULL) {
+	if (obj->isPlayerCreature() && attachedScenery.size() > 0) {
 		ManagedReference<SceneObject*> sceno = obj;
-		EXECUTE_TASK_2(attachedScenery, sceno, {
-			Locker locker(attachedScenery_p);
 
-			attachedScenery_p->sendDestroyTo(sceno_p);
+		EXECUTE_TASK_2(attachedScenery, sceno, {
+			for (int i = 0; i < attachedScenery_p.size(); i++) {
+				SceneObject* scenery = attachedScenery_p.get(i);
+				Locker locker(scenery);
+
+				scenery->sendDestroyTo(sceno_p);
+			}
 		});
 	}
 }

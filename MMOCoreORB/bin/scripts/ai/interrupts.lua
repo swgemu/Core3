@@ -111,7 +111,7 @@ function DefaultInterrupt:checkForReactionChat(pAgent, pObject)
 
 	local dist = SceneObject(pObject):getDistanceTo(pAgent)
 
-	if dist > 48 or dist < 35 then return end
+	if dist > 40 or dist < 30 then return end
 
 	if not CreatureObject(pAgent):checkCooldownRecovery("reaction_chat") then return end
 

@@ -64,7 +64,8 @@ class ActiveArea extends SceneObject {
 
 	protected AreaShape areaShape;
 
-	protected transient SceneObject attachedScenery;
+	@dereferenced
+	protected transient Vector<SceneObject> attachedScenery;
 
 	public ActiveArea() {		
 		cellObjectID = 0;
@@ -203,6 +204,6 @@ class ActiveArea extends SceneObject {
 	public native boolean intersectsWith(ActiveArea area);
 
 	public void attachScenery(SceneObject scene) {
-		attachedScenery = scene;
+		attachedScenery.add(scene);
 	}
 }
