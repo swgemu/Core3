@@ -80,6 +80,8 @@ bool ResourceTree::buildTreeFromClient() {
 	DataTableIff dtiff;
 	dtiff.readObject(iffStream);
 
+	delete iffStream;
+
 	Vector<String> currentClasses;
 	Vector<String> currentStfClasses;
 

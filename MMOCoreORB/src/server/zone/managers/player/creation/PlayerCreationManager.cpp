@@ -265,6 +265,8 @@ void PlayerCreationManager::loadDefaultCharacterItems() {
 
 	iffStream->closeForm(version);
 	iffStream->closeForm('LOEQ');
+
+	delete iffStream;
 }
 
 void PlayerCreationManager::loadHairStyleInfo() {
