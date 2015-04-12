@@ -126,18 +126,15 @@ void ZoneImplementation::initializeTransientMembers() {
 }
 
 void ZoneImplementation::startManagers() {
+	gcwManager->start();
+
 	planetManager->initialize();
 
 	creatureManager->initialize();
 
 	StructureManager::instance()->loadPlayerStructures(getZoneName());
 
-	//gcwManager->loadFactionStructures(getZoneName());
-
-	gcwManager->start();
-
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
-
 
 	managersStarted = true;
 }

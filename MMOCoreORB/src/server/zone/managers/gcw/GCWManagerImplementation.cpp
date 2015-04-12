@@ -77,6 +77,8 @@ int GCWManagerImplementation::initialVulnerabilityDelay = 0;
 VectorMap<String, int> GCWManagerImplementation::baseValue;
 HashTable<int, float> GCWManagerImplementation::racialPenaltyMap;
 Mutex GCWManagerImplementation::baseMutex;
+Vector<String> GCWManagerImplementation::imperialStrongholds;
+Vector<String> GCWManagerImplementation::rebelStrongholds;
 
 void GCWManagerImplementation::initialize(){
 	// TODO: initialize things
@@ -91,15 +93,22 @@ void GCWManagerImplementation::initialize(){
 
 }
 
-void GCWManagerImplementation::start(){
+void GCWManagerImplementation::start() {
+
+	loadLuaConfig();
+
+	// randomize a bit so every zone doesn't run it's check at the same time
+	uint64 timer = (System::random(gcwCheckTimer / 10) + gcwCheckTimer) * 1000;
 
 	CheckGCWTask* task = new CheckGCWTask(_this.get());
-	loadLuaConfig();
-	task->schedule(this->gcwCheckTimer * 1000);
+	task->schedule(timer);
+
 	initialize();
 }
 
 void GCWManagerImplementation::loadLuaConfig(){
+	Locker locker(&baseMutex);
+
 	if(maxBases >= 0)
 		return;
 
@@ -137,7 +146,6 @@ void GCWManagerImplementation::loadLuaConfig(){
 			if(baseObject.isValidTable()){
 				String templateString = baseObject.getStringAt(1);
 				int pointsValue = baseObject.getIntAt(2);
-				//info("Template: " + templateString + " point value = " + String::valueOf(pointsValue),true);
 				addPointValue(templateString, pointsValue);
 			}
 			baseObject.pop();
@@ -145,26 +153,49 @@ void GCWManagerImplementation::loadLuaConfig(){
 		}
 	}
 
+	pointsObject.pop();
 
+	info("Loaded " + String::valueOf(baseValue.size()) + " GCW base scoring values.",true);
 
 	LuaObject penaltyObject = lua->getGlobalObject("imperial_racial_penalty");
 	if(penaltyObject.isValidTable()){
-		for(int i = 1; i <= pointsObject.getTableSize(); ++i){
+		for(int i = 1; i <= penaltyObject.getTableSize(); ++i){
 			LuaObject raceObject = penaltyObject.getObjectAt(i);
 			if(raceObject.isValidTable()){
 				int race = raceObject.getIntAt(1);
 				float penalty = raceObject.getFloatAt(2);
-				info("RACE: " + String::valueOf(race) + " has penalty of " + String::valueOf(penalty),true);
 				addRacialPenalty(race, penalty);
 			}
 			raceObject.pop();
 		}
 	}
 
+	penaltyObject.pop();
 
-	info("Loaded " + String::valueOf(baseValue.size()) + " GCW base scoring values.",true);
+	info("Loaded " + String::valueOf(racialPenaltyMap.size()) + " racial penalties.",true);
 
+	LuaObject strongholdsObject = lua->getGlobalObject("strongholdCities");
+	if(strongholdsObject.isValidTable()) {
+		LuaObject imperialObject = strongholdsObject.getObjectField("imperial");
+		if (imperialObject.isValidTable()) {
+			for(int i = 1; i <= imperialObject.getTableSize(); ++i) {
+				imperialStrongholds.add(imperialObject.getStringAt(i));
+			}
+		}
+		imperialObject.pop();
 
+		LuaObject rebelObject = strongholdsObject.getObjectField("rebel");
+		if (rebelObject.isValidTable()) {
+			for(int i = 1; i <= rebelObject.getTableSize(); ++i) {
+				rebelStrongholds.add(rebelObject.getStringAt(i));
+			}
+		}
+		rebelObject.pop();
+	}
+
+	strongholdsObject.pop();
+
+	info("Loaded " + String::valueOf(imperialStrongholds.size()) + " imperial strongholds and " + String::valueOf(rebelStrongholds.size()) + " rebel strongholds.",true);
 }
 
 // PRE: Nothing needs to be locked
@@ -648,14 +679,14 @@ void GCWManagerImplementation::performGCWTasks(){
 	int endCount = gcwEndTasks.size();
 	int destroyCount = gcwDestroyTasks.size();
 
-	info(String::valueOf(totalBase) + " bases ", true);
+	info("Checking " + String::valueOf(totalBase) + " bases on " + zone->getZoneName(), true);
 	//info("Size of start list is " + String::valueOf(startCount), true);
 	//info("Size of end list is   " + String::valueOf(endCount),true);
 	//info("Size of destroy list is   " + String::valueOf(destroyCount),true);
 
 	uint64  thisOid;
 
-		int rebelCheck = 0;
+	int rebelCheck = 0;
 	int imperialCheck = 0;
 
 	for(int i = 0; i< gcwBaseList.size();i++){
@@ -2607,4 +2638,20 @@ float GCWManagerImplementation::getGCWDiscount(CreatureObject* creature){
 		discount *= getRacialPenalty(creature->getSpecies());
 
 	return discount;
+}
+
+int GCWManagerImplementation::isStrongholdCity(String& city) {
+	for (int i = 0; i < imperialStrongholds.size(); i++) {
+		if (city.contains(imperialStrongholds.get(i))) {
+			return IMPERIALHASH;
+		}
+	}
+
+	for (int i = 0; i < rebelStrongholds.size(); i++) {
+		if (city.contains(rebelStrongholds.get(i))) {
+			return REBELHASH;
+		}
+	}
+
+	return 0;
 }

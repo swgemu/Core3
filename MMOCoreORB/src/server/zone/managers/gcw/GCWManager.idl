@@ -85,6 +85,11 @@ class GCWManager extends ManagedService implements Logger {
 	
 	public transient static boolean racialPenaltyEnabled;
 
+	@dereferenced
+	protected transient static Vector<string> imperialStrongholds;
+	@dereferenced
+	protected transient static Vector<string> rebelStrongholds;
+
 	public GCWManager(Zone zne){
 		imperialBases = 0;
 		imperialScore = 0;
@@ -106,6 +111,11 @@ class GCWManager extends ManagedService implements Logger {
 		gcwDestroyTasks.setNullValue(null);
 
 		baseValue.setNoDuplicateInsertPlan();
+	}
+
+	@dirty
+	public Zone getZone() {
+		return zone;
 	}
 
 	public native void loadLuaConfig();
@@ -406,16 +416,12 @@ class GCWManager extends ManagedService implements Logger {
 
 	@local
 	public void addPointValue(final string templateString, int val){
-		synchronized (baseMutex) {
-			baseValue.put(templateString, val);
-		}
+		baseValue.put(templateString, val);
 	}
 
 	@local
 	public void addRacialPenalty(int race, float val){
-		synchronized (baseMutex) {
-			racialPenaltyMap.put(race, val);
-		}
+		racialPenaltyMap.put(race, val);
 	}
 
 	@local
@@ -445,5 +451,7 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native void awardSlicingXP(CreatureObject creature, final string xpType, int value);
 
+	@dirty
+	public native int isStrongholdCity(string city);
 }
 

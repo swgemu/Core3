@@ -9,19 +9,7 @@ registerScreenPlay("NabooKerenScreenPlay", true)
 function NabooKerenScreenPlay:start()
 	if (isZoneEnabled("naboo")) then
 		self:spawnMobiles()
-		self:spawnSceneObjects()
 	end
-end
-
-function NabooKerenScreenPlay:spawnSceneObjects()
- 
-	-- Shuttleport A
-    spawnSceneObject("naboo", "object/static/particle/particle_distant_ships.iff", 2047, 50, 2522, 0, 1, 0, 0, 0)
-	-- Shuttleport B
-    spawnSceneObject("naboo", "object/static/particle/particle_distant_ships.iff", 1567, 50, 2857, 0, 1, 0, 0, 0)   
-	-- Starport
-    spawnSceneObject("naboo", "object/static/particle/particle_distant_ships.iff", 1429, 50, 2770, 0, 1, 0, 0, 0)
-
 end
 
 function NabooKerenScreenPlay:spawnMobiles()

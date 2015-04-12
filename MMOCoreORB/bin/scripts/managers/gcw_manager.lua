@@ -94,3 +94,8 @@ imperial_racial_penalty = {
 		{49, 2}, -- sullustan
 	
 }
+
+strongholdCities = {
+		imperial = {"bela_vistal", "deeja_peak", "bestine"},
+		rebel = {"vreni_island", "moenia", "anchorhead"}
+}

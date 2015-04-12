@@ -10,15 +10,7 @@ registerScreenPlay("NabooDeejaPeakScreenPlay", true)
 function NabooDeejaPeakScreenPlay:start()
 	if (isZoneEnabled("naboo")) then
 		self:spawnMobiles()
-		self:spawnSceneObjects()
 	end
-end
-
-function NabooDeejaPeakScreenPlay:spawnSceneObjects()
-
-	-- Shuttleport
-    spawnSceneObject("naboo", "object/static/particle/particle_distant_ships_imperial.iff", 5337, 400, -1578, 0, 1, 0, 0, 0)
-
 end
 
 function NabooDeejaPeakScreenPlay:spawnMobiles()

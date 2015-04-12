@@ -14,6 +14,7 @@
 #include "server/zone/managers/weather/WeatherManager.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 
 #include "engine/util/iffstream/IffStream.h"
 #include "server/zone/templates/snapshot/WorldSnapshotIff.h"
@@ -548,6 +549,20 @@ void PlanetManagerImplementation::loadClientRegions() {
 			}
 
 			region->setMunicipalZone(true);
+
+			int strongholdFaction = zone->getGCWManager()->isStrongholdCity(regionName);
+			ManagedReference<SceneObject*> scenery = NULL;
+
+			if (strongholdFaction == GCWManager::IMPERIALHASH || regionName.contains("imperial")) {
+				scenery = zone->getZoneServer()->createObject(String("object/static/particle/particle_distant_ships_imperial.iff").hashCode(), 0);
+			} else if (strongholdFaction == GCWManager::REBELHASH || regionName.contains("rebel")) {
+				scenery = zone->getZoneServer()->createObject(String("object/static/particle/particle_distant_ships_rebel.iff").hashCode(), 0);
+			} else {
+				scenery = zone->getZoneServer()->createObject(String("object/static/particle/particle_distant_ships.iff").hashCode(), 0);
+			}
+
+			scenery->initializePosition(x, zone->getHeight(x, y) + 100, y);
+			region->attachScenery(scenery);
 		}
 
 		ManagedReference<ActiveArea*> noBuild = zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0).castTo<ActiveArea*>();
@@ -570,6 +585,8 @@ void PlanetManagerImplementation::loadClientRegions() {
 	}
 
 	info("Added " + String::valueOf(regionMap.getTotalRegions()) + " client regions.");
+
+	delete iffStream;
 }
 
 bool PlanetManagerImplementation::validateClientCityInRange(CreatureObject* creature, float x, float y) {

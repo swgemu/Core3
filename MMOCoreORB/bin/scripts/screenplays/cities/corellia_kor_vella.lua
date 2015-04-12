@@ -9,17 +9,7 @@ registerScreenPlay("CorelliaKorVellaScreenPlay", true)
 function CorelliaKorVellaScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
-		self:spawnSceneObjects()
 	end
-end
-
-function CorelliaKorVellaScreenPlay:spawnSceneObjects()
-
-	-- Shuttleport
-    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -3777, 50, 3240, 0, 1, 0, 0, 0)
-    -- Starport
-    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", -3154, 50, 2872, 0, 1, 0, 0, 0)
-
 end
 
 function CorelliaKorVellaScreenPlay:spawnMobiles()

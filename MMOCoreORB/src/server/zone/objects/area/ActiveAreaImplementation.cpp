@@ -42,11 +42,29 @@ void ActiveAreaImplementation::enqueueExitEvent(SceneObject* obj) {
 void ActiveAreaImplementation::notifyEnter(SceneObject* obj) {
 	if (cellObjectID == 0 || cellObjectID == obj->getParentID())
 		notifyObservers(ObserverEventType::ENTEREDAREA, obj);
+
+	if (obj->isPlayerCreature() && attachedScenery != NULL) {
+		ManagedReference<SceneObject*> sceno = obj;
+		EXECUTE_TASK_2(attachedScenery, sceno, {
+			Locker locker(attachedScenery_p);
+
+			attachedScenery_p->sendTo(sceno_p, true);
+		});
+	}
 }
 
 void ActiveAreaImplementation::notifyExit(SceneObject* obj) {
 	if (cellObjectID == 0 || cellObjectID == obj->getParentID())
 		notifyObservers(ObserverEventType::EXITEDAREA, obj);
+
+	if (obj->isPlayerCreature() && attachedScenery != NULL) {
+		ManagedReference<SceneObject*> sceno = obj;
+		EXECUTE_TASK_2(attachedScenery, sceno, {
+			Locker locker(attachedScenery_p);
+
+			attachedScenery_p->sendDestroyTo(sceno_p);
+		});
+	}
 }
 
 bool ActiveAreaImplementation::intersectsWith(ActiveArea* area) {
