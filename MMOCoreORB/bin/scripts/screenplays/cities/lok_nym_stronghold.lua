@@ -9,7 +9,15 @@ registerScreenPlay("LokNymStrongholdScreenPlay", true)
 function LokNymStrongholdScreenPlay:start()
 	if (isZoneEnabled("lok")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function LokNymStrongholdScreenPlay:spawnSceneObjects()
+ 
+	-- Starport
+    spawnSceneObject("lok", "object/static/particle/particle_distant_ships.iff", 458, 50, 5494, 0, 1, 0, 0, 0)
+
 end
 
 function LokNymStrongholdScreenPlay:spawnMobiles()

@@ -9,7 +9,18 @@ registerScreenPlay("TalusDearicScreenPlay", true)
 function TalusDearicScreenPlay:start()
 	if (isZoneEnabled("talus")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function TalusDearicScreenPlay:spawnSceneObjects()
+ 
+	-- Shuttleport
+    spawnSceneObject("talus", "object/static/particle/particle_distant_ships.iff", 699, 50, -3061, 0, 1, 0, 0, 0)	
+	
+	-- Starport
+    spawnSceneObject("talus", "object/static/particle/particle_distant_ships.iff", 254, 50, -2978, 0, 1, 0, 0, 0)
+
 end
 
 function TalusDearicScreenPlay:spawnMobiles()

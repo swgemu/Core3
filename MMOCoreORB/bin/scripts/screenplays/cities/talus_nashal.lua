@@ -9,7 +9,18 @@ registerScreenPlay("TalusNashalScreenPlay", true)
 function TalusNashalScreenPlay:start()
 	if (isZoneEnabled("talus")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function TalusNashalScreenPlay:spawnSceneObjects()
+ 
+	-- Shuttleport
+    spawnSceneObject("talus", "object/static/particle/particle_distant_ships.iff", 4314, 50, 5431, 0, 1, 0, 0, 0)	
+	
+	-- Starport
+    spawnSceneObject("talus", "object/static/particle/particle_distant_ships.iff", 4479, 50, 5365, 0, 1, 0, 0, 0)
+
 end
 
 function TalusNashalScreenPlay:spawnMobiles()

@@ -8,7 +8,15 @@ registerScreenPlay("TalusImperialOutpostScreenPlay", true)
 function TalusImperialOutpostScreenPlay:start()
 	if (isZoneEnabled("talus")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+function TalusImperialOutpostScreenPlay:spawnSceneObjects()
+ 	
+	-- Starport
+    spawnSceneObject("talus", "object/static/particle/particle_distant_ships_imperial.iff", -2211, 100, 2301, 0, 1, 0, 0, 0)
+
 end
 
 function TalusImperialOutpostScreenPlay:spawnMobiles()
