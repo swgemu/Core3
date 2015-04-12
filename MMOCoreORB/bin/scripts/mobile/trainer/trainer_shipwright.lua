@@ -1,5 +1,6 @@
 trainer_shipwright = Creature:new {
 	objectName = "@npc_spawner_n:shipwright_trainer",
+	randomNameType = NAME_GENERIC_TAG,
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,
@@ -21,9 +22,17 @@ trainer_shipwright = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
-	templates = {"object/mobile/space_shipwright_trainer_01.iff","object/mobile/space_shipwright_trainer_02.iff","object/mobile/space_shipwright_trainer_03.iff"},
+
+	templates = {
+		"object/mobile/space_shipwright_trainer_01.iff",
+		"object/mobile/space_shipwright_trainer_02.iff",
+		"object/mobile/space_shipwright_trainer_03.iff"
+	},
+	lootGroups = {},
+	weapons = {},
 	conversationTemplate = "trainer_shipwright_convotemplate",
-	optionsBitmask = 264
+	attacks = {}
 }
 CreatureTemplates:addCreatureTemplate(trainer_shipwright,"trainer_shipwright")

@@ -1,5 +1,6 @@
 trainer_ranger = Creature:new {
 	objectName = "@mob/creature_names:trainer_ranger",
+	randomNameType = NAME_GENERIC_TAG,
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,
@@ -21,9 +22,17 @@ trainer_ranger = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
-	templates = {"object/mobile/dressed_ranger_trainer_01.iff","object/mobile/dressed_ranger_trainer_02.iff","object/mobile/dressed_ranger_trainer_03.iff"},
+
+	templates = {
+		"object/mobile/dressed_ranger_trainer_01.iff",
+		"object/mobile/dressed_ranger_trainer_02.iff",
+		"object/mobile/dressed_ranger_trainer_03.iff"
+	},
+	lootGroups = {},
+	weapons = {},
 	conversationTemplate = "trainer_ranger_convotemplate",
-	optionsBitmask = 264
+	attacks = {}
 }
 CreatureTemplates:addCreatureTemplate(trainer_ranger,"trainer_ranger")

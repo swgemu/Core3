@@ -1,5 +1,6 @@
 trainer_armorsmith = Creature:new {
 	objectName = "@mob/creature_names:trainer_armorsmith",
+	randomNameType = NAME_GENERIC_TAG,
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,
@@ -22,7 +23,12 @@ trainer_armorsmith = Creature:new {
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
-	templates = {"object/mobile/dressed_armorsmith_trainer_01.iff","object/mobile/dressed_armorsmith_trainer_02.iff","object/mobile/dressed_armorsmith_trainer_03.iff"},
+
+	templates = {
+		"object/mobile/dressed_armorsmith_trainer_01.iff",
+		"object/mobile/dressed_armorsmith_trainer_02.iff",
+		"object/mobile/dressed_armorsmith_trainer_03.iff"
+	},
 	conversationTemplate = "trainer_armorsmith_convotemplate",
 	optionsBitmask = 264
 }

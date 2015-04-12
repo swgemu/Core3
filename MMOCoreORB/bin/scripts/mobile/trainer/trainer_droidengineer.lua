@@ -1,5 +1,6 @@
 trainer_droidengineer = Creature:new {
 	objectName = "@mob/creature_names:trainer_droidengineer",
+	randomNameType = NAME_GENERIC_TAG,
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,
@@ -21,9 +22,17 @@ trainer_droidengineer = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
-	templates = {"object/mobile/dressed_droidengineer_trainer_human_male_01.iff","object/mobile/dressed_droidengineer_trainer_moncal_male_01.iff","object/mobile/dressed_droidengineer_trainer_rodian_male_01.iff"},
+
+	templates = {
+		"object/mobile/dressed_droidengineer_trainer_human_male_01.iff",
+		"object/mobile/dressed_droidengineer_trainer_moncal_male_01.iff",
+		"object/mobile/dressed_droidengineer_trainer_rodian_male_01.iff"
+	},
+	lootGroups = {},
+	weapons = {},
 	conversationTemplate = "trainer_droidengineer_convotemplate",
-	optionsBitmask = 264
+	attacks = {}
 }
 CreatureTemplates:addCreatureTemplate(trainer_droidengineer,"trainer_droidengineer")

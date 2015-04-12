@@ -1,5 +1,6 @@
 trainer_combatmedic = Creature:new {
 	objectName = "@mob/creature_names:trainer_combatmedic",
+	randomNameType = NAME_GENERIC_TAG,
 	faction = "",
 	level = 100,
 	chanceHit = 0.390000,
@@ -21,9 +22,17 @@ trainer_combatmedic = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
-	templates = {"object/mobile/dressed_combatmedic_trainer_human_female_01.iff","object/mobile/dressed_combatmedic_trainer_human_male_01.iff","object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff"},
+
+	templates = {
+		"object/mobile/dressed_combatmedic_trainer_human_female_01.iff",
+		"object/mobile/dressed_combatmedic_trainer_human_male_01.iff",
+		"object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff"
+	},
+	lootGroups = {},
+	weapons = {},
 	conversationTemplate = "trainer_combatmedic_convotemplate",
-	optionsBitmask = 264
+	attacks = {}
 }
 CreatureTemplates:addCreatureTemplate(trainer_combatmedic,"trainer_combatmedic")
