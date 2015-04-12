@@ -706,13 +706,22 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 }
 
 void CreatureObjectImplementation::removeMountedCombatSlow() {
-	uint32 crc = String("mounted_combat_slow").hashCode();
-	removeBuff(crc);
+	ManagedReference<CreatureObject*> creo = _this.get();
 
-	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
+	EXECUTE_TASK_1(creo, {
+			Locker locker(creo_p);
 
-	if (parent != NULL)
-		parent->removeBuff(crc);
+			uint32 crc = String("mounted_combat_slow").hashCode();
+			creo_p->removeBuff(crc);
+
+			ManagedReference<CreatureObject*> parent = creo_p->getParent().get().castTo<CreatureObject*>();
+
+			if (parent != NULL) {
+				Locker clocker(parent, creo_p);
+				parent->removeBuff(crc);
+			}
+	});
+
 }
 
 void CreatureObjectImplementation::setCombatState() {
