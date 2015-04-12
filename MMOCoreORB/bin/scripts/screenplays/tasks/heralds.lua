@@ -144,9 +144,6 @@ function HeraldConvoHandler:runScreenHandlers(conversationTemplate, conversingPl
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
 
-	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
-
 	if screenID == "init" then
 		conversationScreen = self:handleScreenInit(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	elseif screenID == "npc_1_1" then
