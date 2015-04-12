@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_8231af0d",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/wearables/ring/ring_mark_hero.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-12T12:21:33Z",
+      "side": 1,
+      "message": "You should remove this since you\u0027re adding a different menu component.",
+      "revId": "b9a8e5cdb7d0d64b913f8f5291080dc3f5d35ecf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_6236b305",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/HeroRingAttributeListComponent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-12T12:21:33Z",
+      "side": 1,
+      "message": "The floor is unnecessary since you\u0027re performing integer division.",
+      "revId": "b9a8e5cdb7d0d64b913f8f5291080dc3f5d35ecf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_423bb7eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/HeroRingAttributeListComponent.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-12T12:21:33Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "b9a8e5cdb7d0d64b913f8f5291080dc3f5d35ecf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_c22e87a5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/HeroRingMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-12T12:21:33Z",
+      "side": 1,
+      "message": "This is redundant. The posture is set to upright in healDamage.",
+      "revId": "b9a8e5cdb7d0d64b913f8f5291080dc3f5d35ecf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_2240bb55",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/HeroRingMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-12T12:21:33Z",
+      "side": 1,
+      "message": "floor is unnecessary here. You\u0027re dividing integers.",
+      "revId": "b9a8e5cdb7d0d64b913f8f5291080dc3f5d35ecf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_0225bfc1",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/HeroRingMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-12T12:21:33Z",
+      "side": 1,
+      "message": "And here.",
+      "revId": "b9a8e5cdb7d0d64b913f8f5291080dc3f5d35ecf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
