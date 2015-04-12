@@ -59,7 +59,7 @@ CreatureAreaKnockdownCommand = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		30, 
+		75, 
 		100, 
 		0 
 	  )

@@ -64,7 +64,7 @@ CreatureAreaComboCommand = {
 		{},
 		{ "stun_defense", "resistance_states" },
 		{ "jedi_state_defense" },
-		30,
+		75,
 		100,
 		10
 	  ),
@@ -73,7 +73,7 @@ CreatureAreaComboCommand = {
 		{},
 		{ "dizzy_defense", "resistance_states" },
 		{ "jedi_state_defense" },
-		30,
+		75,
 		100,
 		10
 	  ),
@@ -82,7 +82,7 @@ CreatureAreaComboCommand = {
 		{},
 		{ "blind_defense", "resistance_states" },
 		{ "jedi_state_defense" },
-		30,
+		75,
 		100,
 		10
 	  ),
@@ -91,7 +91,7 @@ CreatureAreaComboCommand = {
 		{},
 		{ "intimidate_defense", "resistance_states" },
 		{ "jedi_state_defense" },
-		30,
+		75,
 		0,
 		10
 	  )
