@@ -444,6 +444,8 @@ public:
 
 			creature->updatePostureChangeRecovery();
 			creature->updatePostureChangeDelay(5000);
+			creature->removeBuff(String("burstrun").hashCode());
+			creature->removeBuff(String("retreat").hashCode());
 			creature->sendSystemMessage("@cbt_spam:posture_knocked_down");
 			creature->sendStateCombatSpam("cbt_spam", "posture_knocked_down", 0, 0, false);
 			break;
@@ -471,6 +473,8 @@ public:
 
 			creature->updatePostureChangeRecovery();
 			creature->updatePostureChangeDelay(2500);
+			creature->removeBuff(String("burstrun").hashCode());
+			creature->removeBuff(String("retreat").hashCode());
 			break;
 		case CommandEffect::POSTUREDOWN:
 			if (!creature->checkPostureChangeRecovery()) {
@@ -496,6 +500,8 @@ public:
 
 			creature->updatePostureChangeRecovery();
 			creature->updatePostureChangeDelay(2500);
+			creature->removeBuff(String("burstrun").hashCode());
+			creature->removeBuff(String("retreat").hashCode());
 			break;
 		case CommandEffect::NEXTATTACKDELAY:
 			creature->setNextAttackDelay(mod, effect.getStateLength());
