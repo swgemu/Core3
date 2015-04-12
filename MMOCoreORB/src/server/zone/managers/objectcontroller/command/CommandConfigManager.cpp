@@ -488,6 +488,7 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("HEALTHDEGRADE_EFFECT", CommandEffect::HEALTHDEGRADE);
 	setGlobalInt("ACTIONDEGRADE_EFFECT", CommandEffect::ACTIONDEGRADE);
 	setGlobalInt("MINDDEGRADE_EFFECT", CommandEffect::MINDDEGRADE);
+	setGlobalInt("REMOVE_COVER_EFFECT", CommandEffect::REMOVECOVER);
 
 	// trails
 	setGlobalInt("NOTRAIL", CombatManager::NOTRAIL);

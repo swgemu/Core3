@@ -524,6 +524,13 @@ public:
 			buff->setAttributeModifier(CreatureAttribute::WILLPOWER, -1*effect.getStateStrength());
 			creature->addBuff(buff);
 			break;
+		case CommandEffect::REMOVECOVER:
+			if (creature->hasState(CreatureState::COVER)) {
+				creature->clearState(CreatureState::COVER);
+				creature->sendSystemMessage("@combat_effects:strafe_system");
+				creature->setNextAttackDelay(mod, effect.getStateLength());
+			}
+			break;
 		default:
 			break;
 		}

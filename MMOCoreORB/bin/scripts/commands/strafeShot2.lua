@@ -56,6 +56,18 @@ StrafeShot2Command = {
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
+	stateEffects = {
+	  StateEffect(
+		REMOVE_COVER_EFFECT,
+		{},
+		{},
+		{},
+		50,
+		0,
+		10
+	  )
+	},
+
 	animationCRC = hashCode("fire_area_medium"),
 
 	combatSpam = "advancedstrafe",
