@@ -145,7 +145,6 @@ function HeraldConvoHandler:runScreenHandlers(conversationTemplate, conversingPl
 	local screenID = screen:getScreenID()
 
 	local conversationScreen = screen:cloneScreen()
-	local clonedConversation = LuaConversationScreen(conversationScreen)
 
 	if screenID == "init" then
 		conversationScreen = self:handleScreenInit(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
@@ -168,8 +167,6 @@ function HeraldConvoHandler:runScreenHandlers(conversationTemplate, conversingPl
 end
 
 function HeraldConvoHandler:handleScreenNpc1(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	pConversationScreen = screen:cloneScreen()
 	local clonedScreen = LuaConversationScreen(pConversationScreen)
 
 	local heraldNumber = readData(SceneObject(pConversingNpc):getObjectID() .. ":heraldID")
