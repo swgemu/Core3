@@ -457,6 +457,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/DroidCustomKitObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/RingObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/RobeObjectMenuComponent.cpp \
+		server/zone/objects/tangible/components/HeroRingMenuComponent.cpp \
 		server/zone/objects/tangible/components/SkillBuffObjectMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/ShellfishHarvesterMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/CreatureHabitatMenuComponent.cpp \

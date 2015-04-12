@@ -59,6 +59,9 @@
 #include "server/zone/objects/tangible/components/SaberInventoryContainerComponent.h"
 #include "server/zone/objects/tangible/components/generic/LootSchematicAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/RingObjectMenuComponent.h"
+#include "server/zone/objects/tangible/components/HeroRingMenuComponent.h"
+#include "server/zone/objects/tangible/components/HeroRingAttributeListComponent.h"
+#include "server/zone/objects/tangible/components/HeroRingDataComponent.h"
 #include "server/zone/objects/tangible/components/JediRobeAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/SkillBuffObjectAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/SkillBuffObjectMenuComponent.h"
@@ -181,6 +184,10 @@ ComponentManager::ComponentManager() {
 	components.put("LootSchematicAttributeListComponent", new LootSchematicAttributeListComponent());
 
 	components.put("RingObjectMenuComponent", new RingObjectMenuComponent());
+
+	components.put("HeroRingMenuComponent", new HeroRingMenuComponent());
+	components.put("HeroRingAttributeListComponent", new HeroRingAttributeListComponent());
+	dataObjectFactory.registerObject<HeroRingDataComponent>("HeroRingDataComponent");
 
 	components.put("JediRobeAttributeListComponent", new JediRobeAttributeListComponent());
 
