@@ -669,50 +669,67 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 		return;
 	}
 
-	float newSpeed = 1;
-	SharedObjectTemplate* templateData = getObjectTemplate();
-	SharedCreatureObjectTemplate* playerTemplate = dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
+	ManagedReference<CreatureObject*> creo = _this.get();
 
-	if (playerTemplate != NULL) {
-		Vector<FloatParam> speedTempl = playerTemplate->getSpeed();
-		newSpeed = speedTempl.get(0);
-	}
+	EXECUTE_TASK_2(creo, parent, {
+			Locker locker(creo_p);
+			Locker clocker(parent_p, creo_p);
 
-	float oldSpeed = 1;
-	PetManager* petManager = server->getZoneServer()->getPetManager();
+			float newSpeed = 1;
+			SharedObjectTemplate* templateData = creo_p->getObjectTemplate();
+			SharedCreatureObjectTemplate* playerTemplate = dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
 
-	if (petManager != NULL) {
-		oldSpeed = petManager->getMountedRunSpeed(parent);
-	}
+			if (playerTemplate != NULL) {
+				Vector<FloatParam> speedTempl = playerTemplate->getSpeed();
+				newSpeed = speedTempl.get(0);
+			}
 
-	float magnitude = newSpeed / oldSpeed;
+			float oldSpeed = 1;
+			PetManager* petManager = creo_p->getZoneServer()->getPetManager();
 
-	StringIdChatParameter startStringId("combat_effects", "mount_slow_for_combat"); // Your mount slows down to prepare for combat.
-	StringIdChatParameter endStringId("combat_effects", "mount_speed_after_combat"); // Your mount speeds up.
+			if (petManager != NULL) {
+				oldSpeed = petManager->getMountedRunSpeed(parent_p);
+			}
 
-	ManagedReference<Buff*> buff = new Buff(_this.get(), crc, 604800, BuffType::OTHER);
-	buff->setSpeedMultiplierMod(magnitude);
-	buff->setAccelerationMultiplierMod(magnitude);
-	buff->setStartMessage(startStringId);
-	buff->setEndMessage(endStringId);
+			float magnitude = newSpeed / oldSpeed;
 
-	addBuff(buff);
+			uint32 crc = String("mounted_combat_slow").hashCode();
+			StringIdChatParameter startStringId("combat_effects", "mount_slow_for_combat"); // Your mount slows down to prepare for combat.
+			StringIdChatParameter endStringId("combat_effects", "mount_speed_after_combat"); // Your mount speeds up.
 
-	ManagedReference<Buff*> buff2 = new Buff(parent, crc, 604800, BuffType::OTHER);
-	buff2->setSpeedMultiplierMod(magnitude);
-	buff2->setAccelerationMultiplierMod(magnitude);
+			ManagedReference<Buff*> buff = new Buff(creo_p, crc, 604800, BuffType::OTHER);
+			buff->setSpeedMultiplierMod(magnitude);
+			buff->setAccelerationMultiplierMod(magnitude);
+			buff->setStartMessage(startStringId);
+			buff->setEndMessage(endStringId);
 
-	parent->addBuff(buff2);
+			creo_p->addBuff(buff);
+
+			ManagedReference<Buff*> buff2 = new Buff(parent_p, crc, 604800, BuffType::OTHER);
+			buff2->setSpeedMultiplierMod(magnitude);
+			buff2->setAccelerationMultiplierMod(magnitude);
+
+			parent_p->addBuff(buff2);
+	});
 }
 
 void CreatureObjectImplementation::removeMountedCombatSlow() {
-	uint32 crc = String("mounted_combat_slow").hashCode();
-	removeBuff(crc);
+	ManagedReference<CreatureObject*> creo = _this.get();
 
-	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
+	EXECUTE_TASK_1(creo, {
+			Locker locker(creo_p);
 
-	if (parent != NULL)
-		parent->removeBuff(crc);
+			uint32 crc = String("mounted_combat_slow").hashCode();
+			creo_p->removeBuff(crc);
+
+			ManagedReference<CreatureObject*> parent = creo_p->getParent().get().castTo<CreatureObject*>();
+
+			if (parent != NULL) {
+				Locker clocker(parent, creo_p);
+				parent->removeBuff(crc);
+			}
+	});
+
 }
 
 void CreatureObjectImplementation::setCombatState() {
