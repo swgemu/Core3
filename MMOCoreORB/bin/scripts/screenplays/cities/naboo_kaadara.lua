@@ -9,17 +9,7 @@ registerScreenPlay("NabooKadaaraScreenPlay", true)
 function NabooKadaaraScreenPlay:start()
 	if (isZoneEnabled("naboo")) then
 		self:spawnMobiles()
-		self:spawnSceneObjects()
 	end
-end
-
-function NabooKadaaraScreenPlay:spawnSceneObjects()
- 
-	-- Shuttleport
-    spawnSceneObject("naboo", "object/static/particle/particle_distant_ships.iff", 5137, -100, 6601, 0, 1, 0, 0, 0)
-	-- Starport
-    spawnSceneObject("naboo", "object/static/particle/particle_distant_ships.iff", 5293, -100, 6712, 0, 1, 0, 0, 0)
-
 end
 
 function NabooKadaaraScreenPlay:spawnMobiles()

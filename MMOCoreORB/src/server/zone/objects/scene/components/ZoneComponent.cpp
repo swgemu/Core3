@@ -82,8 +82,10 @@ void ZoneComponent::insertChildObjectsToZone(SceneObject* sceneObject, Zone* zon
 		if (outdoorChild == NULL)
 			continue;
 
-		if (outdoorChild->getContainmentType() != 4 && outdoorChild->getParent() == NULL)
+		if (outdoorChild->getContainmentType() != 4 && outdoorChild->getParent() == NULL) {
+			Locker clocker(outdoorChild, sceneObject);
 			zone->transferObject(outdoorChild, -1, true);
+		}
 	}
 }
 

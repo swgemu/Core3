@@ -9,17 +9,7 @@ registerScreenPlay("CorelliaDoabaGuerfelScreenPlay", true)
 function CorelliaDoabaGuerfelScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
-		self:spawnSceneObjects()
 	end
-end
-
-function CorelliaDoabaGuerfelScreenPlay:spawnSceneObjects()
- 
-	-- Shuttleport
-    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", 3078, 500, 4995, 0, 1, 0, 0, 0)
-	-- Starport
-    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships.iff", 3340, 500, 5534, 0, 1, 0, 0, 0)    
-
 end
 
 function CorelliaDoabaGuerfelScreenPlay:spawnMobiles()

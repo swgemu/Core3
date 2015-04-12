@@ -9,17 +9,7 @@ registerScreenPlay("BelaVistalScreenPlay", true)
 function BelaVistalScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
-		self:spawnSceneObjects()
 	end
-end
-
-function BelaVistalScreenPlay:spawnSceneObjects()
- 
-	-- Shuttleport A
-    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships_imperial.iff", 6643, 400, -5924, 0, 1, 0, 0, 0)
-	-- Shuttleport B
-    spawnSceneObject("corellia", "object/static/particle/particle_distant_ships_imperial.iff", 6936, 400, -5538, 0, 1, 0, 0, 0)    
-
 end
 
 function BelaVistalScreenPlay:spawnMobiles()
