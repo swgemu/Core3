@@ -1087,10 +1087,15 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 	}
 
 	player->subtractCashCredits(accessFee);
-	if(getOwnerCreatureObject() != NULL)
-		getOwnerCreatureObject()->addBankCredits(accessFee, true);
-	else
+
+	ManagedReference<CreatureObject*> owner = getOwnerCreatureObject();
+
+	if(owner != NULL) {
+		Locker clocker(owner, player);
+		owner->addBankCredits(accessFee, true);
+	} else {
 		error("Unable to pay access fee credits to owner");
+	}
 
 
 	if(paidAccessList.contains(player->getObjectID()))
@@ -1100,8 +1105,10 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 
 	acessLock.release();
 
-	if(getOwnerCreatureObject() != NULL && getOwnerCreatureObject()->isPlayerCreature())
-		getOwnerCreatureObject()->getPlayerObject()->addExperience("merchant", 50, true);
+	if(owner != NULL && owner->isPlayerCreature()) {
+		Locker clocker(owner, player);
+		owner->getPlayerObject()->addExperience("merchant", 50, true);
+	}
 
 	updatePaidAccessList();
 
