@@ -119,6 +119,7 @@ includeFile("conversations/tasks/theater_manager_conv.lua")
 -- Village
 includeFile("conversations/village/old_man_conv.lua")
 includeFile("conversations/village/paemos_conv.lua")
+includeFile("conversations/village/elder_conv.lua")
 
 -- Race Tracks
 includeFile("conversations/racetracks/agrilatswampconversation.lua")
