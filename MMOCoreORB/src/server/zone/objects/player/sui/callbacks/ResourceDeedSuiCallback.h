@@ -74,8 +74,11 @@ public:
 
 			//They chose the resource, eat the deed and give them what they want...fuck it.
 			if (spawn != NULL) {
-				deed->destroyDeed();
 				resourceManager->givePlayerResource(creature, nodeName, ResourceManager::RESOURCE_DEED_QUANTITY);
+
+				Locker clocker(deed, creature);
+				deed->destroyDeed();
+
 				return;
 			}
 
