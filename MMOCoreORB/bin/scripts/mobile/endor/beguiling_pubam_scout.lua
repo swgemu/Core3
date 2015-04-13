@@ -1,5 +1,6 @@
 beguiling_pubam_scout = Creature:new {
 	objectName = "@mob/creature_names:beguiling_pubam_scout",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 25,
@@ -26,8 +27,8 @@ beguiling_pubam_scout = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

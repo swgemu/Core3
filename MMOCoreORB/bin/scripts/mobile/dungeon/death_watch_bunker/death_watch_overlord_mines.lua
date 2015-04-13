@@ -1,5 +1,6 @@
 death_watch_overlord_mines = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_dthwatch_gold",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 221,

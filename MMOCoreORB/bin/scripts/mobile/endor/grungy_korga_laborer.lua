@@ -1,5 +1,6 @@
 grungy_korga_laborer = Creature:new {
 	objectName = "@mob/creature_names:grungy_korga_laborer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "korga_tribe",
 	faction = "korga_tribe",
 	level = 26,
@@ -26,8 +27,8 @@ grungy_korga_laborer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

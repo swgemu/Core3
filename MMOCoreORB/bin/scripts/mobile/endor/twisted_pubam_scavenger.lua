@@ -1,5 +1,6 @@
 twisted_pubam_scavenger = Creature:new {
 	objectName = "@mob/creature_names:twisted_pubam_scavenger",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 34,
@@ -26,11 +27,11 @@ twisted_pubam_scavenger = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "ewok", chance = 9000000},
 				{group = "wearables_uncommon", chance = 1000000},
 			},

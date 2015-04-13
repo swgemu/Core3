@@ -1,5 +1,6 @@
 bedraggled_pubam_laborer = Creature:new {
 	objectName = "@mob/creature_names:bedraggled_pubam_laborer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 21,
@@ -26,8 +27,8 @@ bedraggled_pubam_laborer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

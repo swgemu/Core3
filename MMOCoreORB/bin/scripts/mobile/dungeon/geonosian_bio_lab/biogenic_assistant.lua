@@ -1,5 +1,6 @@
 biogenic_assistant = Creature:new {
 	objectName = "@mob/creature_names:geonosian_scientist",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "self",
 	faction = "",
 	level = 25,
@@ -24,7 +25,7 @@ biogenic_assistant = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = 392,
 	diet = HERBIVORE,
-	
+
 	templates = {"object/mobile/dressed_geonosian_scientist_01.iff","object/mobile/dressed_geonosian_scientist_02.iff"},
 	lootGroups = {},
 	weapons = {},

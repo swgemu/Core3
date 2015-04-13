@@ -1,5 +1,6 @@
 grassland_raider = Creature:new {
 	objectName = "@mob/creature_names:grassland_raider",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "endor_marauder",
 	faction = "endor_marauder",
 	level = 40,
@@ -26,12 +27,12 @@ grassland_raider = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dressed_grassland_blood_marauder.iff",
-			"object/mobile/dressed_marauder.iff",
-			"object/mobile/marauder_male.iff",
-			"object/mobile/marauder_male_02.iff",
-			"object/mobile/marauder_male_03.iff",
-			"object/mobile/marauder_female.iff"},
+		"object/mobile/dressed_grassland_blood_marauder.iff",
+		"object/mobile/dressed_marauder.iff",
+		"object/mobile/marauder_male.iff",
+		"object/mobile/marauder_male_02.iff",
+		"object/mobile/marauder_male_03.iff",
+		"object/mobile/marauder_female.iff"},
 	lootGroups = {
 		{
 			groups = {

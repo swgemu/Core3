@@ -1,5 +1,6 @@
 rebel_sailor = Creature:new {
 	objectName = "@mob/creature_names:corvette_rebel_sailor",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 96,
@@ -26,11 +27,11 @@ rebel_sailor = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_crewman_human_female_01.iff",
-				 "object/mobile/dressed_rebel_crewman_human_female_02.iff",
-				 "object/mobile/dressed_rebel_crewman_human_male_01.iff",
-				 "object/mobile/dressed_rebel_crewman_human_male_02.iff",
-				 "object/mobile/dressed_rebel_crewman_human_male_03.iff",
-				 "object/mobile/dressed_rebel_crewman_human_male_04.iff"
+		"object/mobile/dressed_rebel_crewman_human_female_02.iff",
+		"object/mobile/dressed_rebel_crewman_human_male_01.iff",
+		"object/mobile/dressed_rebel_crewman_human_male_02.iff",
+		"object/mobile/dressed_rebel_crewman_human_male_03.iff",
+		"object/mobile/dressed_rebel_crewman_human_male_04.iff"
 	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_medium"},

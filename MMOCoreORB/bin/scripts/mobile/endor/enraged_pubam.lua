@@ -1,5 +1,6 @@
 enraged_pubam = Creature:new {
 	objectName = "@mob/creature_names:enraged_pubam",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 10,
@@ -26,11 +27,11 @@ enraged_pubam = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "ewok", chance = 10000000}
 			},
 			lootChance = 2300000

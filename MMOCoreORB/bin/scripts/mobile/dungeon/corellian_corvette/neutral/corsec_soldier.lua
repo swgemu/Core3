@@ -1,5 +1,6 @@
 corsec_soldier = Creature:new {
 	objectName = "@mob/creature_names:corsec_trooper_aggro",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 86,
@@ -26,10 +27,10 @@ corsec_soldier = Creature:new {
 	diet = HERBIVORE,
 
 	templates = { "object/mobile/dressed_corsec_officer_human_male_01.iff",
-			"object/mobile/dressed_corsec_officer_human_female_01.iff"
-		},
+		"object/mobile/dressed_corsec_officer_human_female_01.iff"
+	},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "corsec_weapons", chance = 2500000},

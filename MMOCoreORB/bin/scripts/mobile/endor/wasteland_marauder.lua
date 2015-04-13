@@ -1,5 +1,6 @@
 wasteland_marauder = Creature:new {
 	objectName = "@mob/creature_names:wasteland_marauder",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "endor_marauder",
 	faction = "endor_marauder",
 	level = 55,

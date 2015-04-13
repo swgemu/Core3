@@ -1,5 +1,6 @@
 crazed_geonosian_guard = Creature:new {
 	objectName = "@mob/creature_names:geonosian_crazed_guard",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "self",
 	faction = "",
 	level = 65,

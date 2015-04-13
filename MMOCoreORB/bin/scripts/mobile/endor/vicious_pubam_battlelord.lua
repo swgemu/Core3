@@ -1,5 +1,6 @@
 vicious_pubam_battlelord = Creature:new {
 	objectName = "@mob/creature_names:vicious_pubam_battlelord",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 35,
@@ -26,11 +27,11 @@ vicious_pubam_battlelord = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "ewok", chance = 9000000},
 				{group = "wearables_all", chance = 1000000},
 			},

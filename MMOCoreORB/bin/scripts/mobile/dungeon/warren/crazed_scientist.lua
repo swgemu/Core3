@@ -1,5 +1,6 @@
 crazed_scientist = Creature:new {
 	objectName = "@mob/creature_names:warren_irradiated_worker",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "warren_imperial_worker",
 	faction = "",
 	level = 10,

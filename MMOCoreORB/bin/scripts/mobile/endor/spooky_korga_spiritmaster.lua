@@ -1,5 +1,6 @@
 spooky_korga_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:spooky_korga_spiritmaster",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "korga_tribe",
 	faction = "korga_tribe",
 	level = 50,
@@ -26,11 +27,11 @@ spooky_korga_spiritmaster = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "ewok", chance = 9000000},
 				{group = "wearables_all", chance = 1000000},
 			},

@@ -1,5 +1,6 @@
 marauder = Creature:new {
 	objectName = "@mob/creature_names:marauder",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "endor_marauder",
 	faction = "endor_marauder",
 	level = 44,
@@ -26,7 +27,7 @@ marauder = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dressed_marauder.iff"},
+		"object/mobile/dressed_marauder.iff"},
 	lootGroups = {
 		{
 			groups = {
