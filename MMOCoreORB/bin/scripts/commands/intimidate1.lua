@@ -67,7 +67,7 @@ Intimidate1Command = {
 	combatSpam = "intim",
 	animationCRC = hashCode("intimidate"),
 	effectString = "clienteffect/combat_special_attacker_intimidate.cef",
-	range = 15,
+	range = 24,
 
 	poolsToDamage = 0
 }

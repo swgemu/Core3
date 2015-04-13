@@ -67,7 +67,7 @@ Warcry2Command = {
 	combatSpam = "warcry",
 	animationCRC = hashCode("warcry"),
 	effectString = "clienteffect/combat_special_attacker_warcry.cef",
-	range = 15,
+	range = 24,
 
 	coneAction = true,
 	coneAngle = 30,
