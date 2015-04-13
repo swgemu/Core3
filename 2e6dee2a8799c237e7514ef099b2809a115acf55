@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_e51ced15",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/elder_conv.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-13T22:13:55Z",
+      "side": 1,
+      "message": "Please rename this template.",
+      "revId": "2e6dee2a8799c237e7514ef099b2809a115acf55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_c519f123",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/elder_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-13T22:13:55Z",
+      "side": 1,
+      "message": "Don\u0027t require things unless they\u0027re actually used/needed.",
+      "revId": "2e6dee2a8799c237e7514ef099b2809a115acf55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_65d8fd53",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/elder_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-13T22:13:55Z",
+      "side": 1,
+      "message": "What is this for?",
+      "revId": "2e6dee2a8799c237e7514ef099b2809a115acf55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_45dd0142",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/elder_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-13T22:13:55Z",
+      "side": 1,
+      "message": "What is this for?",
+      "revId": "2e6dee2a8799c237e7514ef099b2809a115acf55",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
