@@ -1458,6 +1458,8 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate(){
 			if(creature == NULL)
 				continue;
 
+			Locker clocker(creature, _this.get());
+
 			creature->updateDirection(child->getHeading());
 
 			if(creature->isAiAgent()){
@@ -1480,6 +1482,8 @@ void BuildingObjectImplementation::spawnChildCreature(String& mobile, int respaw
 
 	if(creature == NULL)
 		return;
+
+	Locker clocker(creature, _this.get());
 
 	creature->updateDirection(Math::deg2rad(heading));
 
