@@ -56,7 +56,7 @@ Melee1hSpinAttack1Command = {
 	combatSpam = "slashspin",
 
 	areaAction = true,
-	areaRange = 7,
+	areaRange = 16,
 
 	range = -1
 }

@@ -86,7 +86,7 @@ Saber2hPhantomCommand = {
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
-	range = -1
+	range = 24
 }
 
 AddCommand(Saber2hPhantomCommand)

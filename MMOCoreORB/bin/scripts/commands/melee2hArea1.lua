@@ -50,7 +50,7 @@ Melee2hArea1Command = {
 	mindCostMultiplier = 0.50,
         accuracyBonus = 10,
 
-	areaRange = 7,
+	areaRange = 16,
 	areaAction = true,
 	stateEffects = {
         --documentation says nothing about a blind effect

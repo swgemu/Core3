@@ -51,7 +51,7 @@ PolearmArea2Command = {
 	mindCostMultiplier = 1.5,
 	accuracyBonus = 10,
 
-	areaRange = 7,
+	areaRange = 16,
 	areaAction = true,
 
 	stateEffects = {

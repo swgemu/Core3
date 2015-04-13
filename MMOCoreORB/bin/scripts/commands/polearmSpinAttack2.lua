@@ -52,7 +52,7 @@ PolearmSpinAttack2Command = {
 	accuracyBonus = 10,
 
 	areaAction = true,
-	areaRange = 7,
+	areaRange = 16,
 
 	stateEffects = {
 	  StateEffect( 

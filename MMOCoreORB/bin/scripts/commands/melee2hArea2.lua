@@ -72,7 +72,7 @@ Melee2hArea2Command = {
 	  )
 	},
 
-	areaRange = 7,
+	areaRange = 16,
 	areaAction = true,
 
 	animationCRC = hashCode("combo_4b_medium"),
