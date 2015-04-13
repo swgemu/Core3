@@ -189,7 +189,7 @@ SceneObject* CreatureManagerImplementation::spawnTheater(unsigned int lairTempla
 
  	zone->transferObject(building, -1, false);
 
- 	theaterObserver->spawnInitialMobiles(building);
+	theaterObserver->spawnInitialMobiles(building);
 
  	return building;
 }
