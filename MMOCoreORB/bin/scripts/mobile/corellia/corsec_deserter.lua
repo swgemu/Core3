@@ -1,5 +1,6 @@
 corsec_deserter = Creature:new {
 	objectName = "@mob/creature_names:corsec_deserter",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rogue_corsec",
 	faction = "rogue_corsec",
 	level = 9,
@@ -29,9 +30,9 @@ corsec_deserter = Creature:new {
 		"object/mobile/dressed_corsec_pilot_human_female_01.iff",
 		"object/mobile/dressed_corsec_pilot_human_male_01.iff",
 		"object/mobile/dressed_corsec_officer_human_male_01.iff"
-		},
+	},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "corsec_weapons", chance = 2500000},

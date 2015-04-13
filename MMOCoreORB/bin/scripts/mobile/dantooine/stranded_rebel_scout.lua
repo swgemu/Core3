@@ -1,5 +1,6 @@
 stranded_rebel_scout = Creature:new {
 	objectName = "@mob/creature_names:stranded_rebel_scout",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 22,

@@ -1,5 +1,6 @@
 janta_harvester = Creature:new {
 	objectName = "@mob/creature_names:janta_harvester",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "janta_tribe",
 	faction = "janta_tribe",
 	level = 40,

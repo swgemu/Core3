@@ -1,5 +1,6 @@
 corsec_commissioner = Creature:new {
 	objectName = "@mob/creature_names:corsec_comissioner",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 30,
@@ -29,7 +30,7 @@ corsec_commissioner = Creature:new {
 		"object/mobile/dressed_corsec_detective_human_male_01.iff",
 		"object/mobile/dressed_corsec_detective_human_female_01.iff",
 		"object/mobile/dressed_corsec_captain_human_female_01.iff"
-		},
+	},
 	lootGroups = {
 		{
 			groups = {

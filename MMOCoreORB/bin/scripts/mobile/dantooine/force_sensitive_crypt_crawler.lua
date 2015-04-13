@@ -1,5 +1,6 @@
 force_sensitive_crypt_crawler = Creature:new {
 	objectName = "@mob/creature_names:force_sensitive_crypt_crawler",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "kun",
 	faction = "",
 	level = 95,

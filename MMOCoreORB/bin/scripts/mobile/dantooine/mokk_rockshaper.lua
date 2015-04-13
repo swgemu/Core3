@@ -1,5 +1,6 @@
 mokk_rockshaper = Creature:new {
 	objectName = "@mob/creature_names:mokk_rockshaper",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 71,

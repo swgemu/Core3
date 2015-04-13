@@ -1,5 +1,6 @@
 renegade_corsec_trooper = Creature:new {
 	objectName = "@mob/creature_names:corsec_renegade",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rogue_corsec",
 	faction = "rogue_corsec",
 	level = 12,

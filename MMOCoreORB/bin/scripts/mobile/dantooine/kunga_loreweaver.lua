@@ -1,5 +1,6 @@
 kunga_loreweaver = Creature:new {
 	objectName = "@mob/creature_names:kunga_loreweaver",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "kunga_tribe",
 	faction = "kunga_tribe",
 	level = 51,

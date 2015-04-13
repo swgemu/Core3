@@ -1,5 +1,6 @@
 kunga_scout = Creature:new {
 	objectName = "@mob/creature_names:kunga_scout",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "kunga_tribe",
 	faction = "kunga_tribe",
 	level = 48,

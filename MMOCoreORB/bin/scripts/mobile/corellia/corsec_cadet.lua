@@ -1,5 +1,6 @@
 corsec_cadet = Creature:new {
 	objectName = "@mob/creature_names:corsec_cadet",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 12,
@@ -29,7 +30,7 @@ corsec_cadet = Creature:new {
 		"object/mobile/dressed_corsec_pilot_human_female_01.iff",
 		"object/mobile/dressed_corsec_pilot_human_male_01.iff",
 		"object/mobile/dressed_corsec_officer_human_female_01.iff"
-		},
+	},
 	lootGroups = {
 		{
 			groups = {

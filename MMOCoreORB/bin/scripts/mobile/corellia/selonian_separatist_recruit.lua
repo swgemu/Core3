@@ -1,5 +1,6 @@
 selonian_separatist_recruit = Creature:new {
 	objectName = "@mob/creature_names:selonian_separatist_recruit",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "selonian",
 	faction = "",
 	level = 6,

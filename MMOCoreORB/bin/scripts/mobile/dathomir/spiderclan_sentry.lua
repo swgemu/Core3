@@ -1,5 +1,6 @@
 spiderclan_sentry = Creature:new {
 	objectName = "@mob/creature_names:spider_nightsister_sentry",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "spider_nightsister",
 	faction = "spider_nightsister",
 	level = 27,
@@ -41,7 +42,7 @@ spiderclan_sentry = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 1500000
-		}			
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

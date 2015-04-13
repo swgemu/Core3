@@ -1,5 +1,6 @@
 drall_chieftain = Creature:new {
 	objectName = "@mob/creature_names:drall_chieftain",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "drall",
 	faction = "drall",
 	level = 22,
@@ -27,7 +28,7 @@ drall_chieftain = Creature:new {
 
 	templates = {"object/mobile/drall_male.iff"},
 	lootGroups = {
-	      	{
+		{
 			groups = {
 				{group = "junk", chance = 7000000},
 				{group = "loot_kit_parts", chance = 2000000},

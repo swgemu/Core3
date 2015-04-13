@@ -1,5 +1,6 @@
 afarathu_cult_bodyguard = Creature:new {
 	objectName = "@mob/creature_names:afarathu_cult_bodyguard",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "afarathu",
 	faction = "afarathu",
 	level = 15,

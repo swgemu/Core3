@@ -1,5 +1,6 @@
 hidden_daggers_activist = Creature:new {
 	objectName = "@mob/creature_names:hidden_daggers_activist",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "hidden_daggers",
 	faction = "hidden_daggers",
 	level = 9,
@@ -25,7 +26,7 @@ hidden_daggers_activist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-	"object/mobile/dressed_crook_zabrak_female_01.iff",
+		"object/mobile/dressed_crook_zabrak_female_01.iff",
 		"object/mobile/dressed_crook_zabrak_male_01.iff",
 		"object/mobile/dressed_desperado_bith_female_01.iff",
 		"object/mobile/dressed_desperado_bith_male_01.iff",

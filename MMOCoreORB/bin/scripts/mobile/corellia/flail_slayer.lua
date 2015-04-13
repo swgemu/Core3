@@ -1,5 +1,6 @@
 flail_slayer = Creature:new {
 	objectName = "@mob/creature_names:flail_slayer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "flail",
 	faction = "flail",
 	level = 20,
@@ -31,7 +32,7 @@ flail_slayer = Creature:new {
 		"object/mobile/dressed_villain_trandoshan_female_01.iff",
 		"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
-	 	{
+		{
 			groups = {
 				{group = "junk", chance = 3500000},
 				{group = "wearables_common", chance = 3000000},

@@ -1,5 +1,6 @@
 dantari_battlelord = Creature:new {
 	objectName = "@mob/creature_names:dantari_raider_battlelord",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "dantari_raiders",
 	faction = "dantari_raiders",
 	level = 36,

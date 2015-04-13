@@ -1,5 +1,6 @@
 beldonnas_league_soldier = Creature:new {
 	objectName = "@mob/creature_names:beldonnas_soldier",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "beldonnas_league",
 	faction = "beldonnas_league",
 	level = 16,

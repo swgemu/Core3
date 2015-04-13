@@ -1,5 +1,6 @@
 corsec_traitor = Creature:new {
 	objectName = "@mob/creature_names:corsec_traitor",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rogue_corsec",
 	faction = "rogue_corsec",
 	level = 16,
@@ -31,7 +32,7 @@ corsec_traitor = Creature:new {
 		"object/mobile/dressed_mercenary_destroyer_nikto_m.iff",
 		"object/mobile/dressed_mercenary_elite_hum_m.iff",
 		"object/mobile/dressed_mercenary_destroyer_hum_m.iff"
-		},
+	},
 	lootGroups = {
 		{
 			groups = {
