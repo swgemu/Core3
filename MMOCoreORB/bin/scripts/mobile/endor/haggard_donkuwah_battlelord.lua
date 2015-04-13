@@ -1,5 +1,6 @@
 haggard_donkuwah_battlelord = Creature:new {
 	objectName = "@mob/creature_names:haggard_donkuwah_battlelord",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 24,
@@ -26,11 +27,11 @@ haggard_donkuwah_battlelord = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "donkuwah_common", chance = 10000000}
 			},
 			lootChance = 2300000

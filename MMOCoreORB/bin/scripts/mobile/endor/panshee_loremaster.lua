@@ -1,5 +1,6 @@
 panshee_loremaster = Creature:new {
 	objectName = "@mob/creature_names:panshee_loremaster",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 25,
@@ -33,8 +34,8 @@ panshee_loremaster = Creature:new {
 		"object/mobile/dressed_ewok_m_10.iff",
 		"object/mobile/dressed_ewok_m_12.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "ewok", chance = 10000000}
 			},
 			lootChance = 3000000

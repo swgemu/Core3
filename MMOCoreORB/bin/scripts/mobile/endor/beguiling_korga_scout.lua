@@ -1,5 +1,6 @@
 beguiling_korga_scout = Creature:new {
 	objectName = "@mob/creature_names:beguiling_korga_scout",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "korga_tribe",
 	faction = "korga_tribe",
 	level = 32,
@@ -26,8 +27,8 @@ beguiling_korga_scout = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -1,5 +1,6 @@
 gnarled_korga_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:gnarled_korga_spiritmaster",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "korga_tribe",
 	faction = "korga_tribe",
 	level = 33,
@@ -26,11 +27,11 @@ gnarled_korga_spiritmaster = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "ewok", chance = 10000000}
 			},
 			lootChance = 2300000

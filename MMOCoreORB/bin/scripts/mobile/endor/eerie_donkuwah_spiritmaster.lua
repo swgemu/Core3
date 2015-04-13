@@ -1,5 +1,6 @@
 eerie_donkuwah_spiritmaster = Creature:new {
 	objectName = "@mob/creature_names:eerie_donkuwah_spiritmaster",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 39,
@@ -26,11 +27,11 @@ eerie_donkuwah_spiritmaster = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "donkuwah_common", chance = 9000000},
 				{group = "wearables_uncommon", chance = 1000000},
 			},

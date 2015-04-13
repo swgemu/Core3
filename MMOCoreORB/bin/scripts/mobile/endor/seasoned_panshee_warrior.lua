@@ -1,5 +1,6 @@
 seasoned_panshee_warrior = Creature:new {
 	objectName = "@mob/creature_names:seasoned_panshee_warrior",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "panshee_tribe",
 	faction = "panshee_tribe",
 	level = 42,
@@ -28,8 +29,8 @@ seasoned_panshee_warrior = Creature:new {
 		"object/mobile/dressed_ewok_m_09.iff",
 		"object/mobile/dressed_ewok_m_10.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "ewok", chance = 9000000},
 				{group = "wearables_uncommon", chance = 1000000},
 			},

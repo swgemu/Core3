@@ -1,5 +1,6 @@
 corsec_special_ops_chief = Creature:new {
 	objectName = "@mob/creature_names:corsec_chief_aggro",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 200,
@@ -27,11 +28,11 @@ corsec_special_ops_chief = Creature:new {
 
 	templates = {"object/mobile/dressed_corellia_local_corsec_chief.iff"},
 	lootGroups = {
-	  {
+		{
 			groups = {
 				{group = "junk", chance = 4500000},
 				{group = "wearables_scarce", chance = 1000000},
-                                {group = "clothing_attachments", chance = 250000},
+				{group = "clothing_attachments", chance = 250000},
 				{group = "armor_attachments", chance = 250000},
 				{group = "corsec_weapons", chance = 2500000},
 				{group = "crystals_premium", chance = 650000},

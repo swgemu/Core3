@@ -1,5 +1,6 @@
 rebel_ensign = Creature:new {
 	objectName = "@mob/creature_names:corvette_rebel_ensign",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 72,
@@ -28,7 +29,7 @@ rebel_ensign = Creature:new {
 	templates = {"object/mobile/dressed_rebel_major_human_male_01.iff"},
 	lootGroups = {
 		{
-	        groups = {
+			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 4700000},
 				{group = "rifles", chance = 1000000},

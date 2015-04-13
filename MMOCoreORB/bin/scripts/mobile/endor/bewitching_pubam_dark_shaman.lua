@@ -1,5 +1,6 @@
 bewitching_pubam_dark_shaman = Creature:new {
 	objectName = "@mob/creature_names:bewitching_pubam_dark_shaman",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "pubam",
 	faction = "pubam",
 	level = 30,
@@ -26,7 +27,7 @@ bewitching_pubam_dark_shaman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff"},
+		"object/mobile/dulok_male.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

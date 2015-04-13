@@ -1,5 +1,6 @@
 corsec_security_specialist = Creature:new {
 	objectName = "@mob/creature_names:corsec_detective_aggro",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 120,
@@ -29,7 +30,7 @@ corsec_security_specialist = Creature:new {
 		"object/mobile/dressed_corsec_detective_human_male_01.iff",
 		"object/mobile/dressed_corsec_detective_human_female_01.iff"},
 	lootGroups = {
-	  {
+		{
 			groups = {
 				{group = "junk", chance = 6500000},
 				{group = "clothing_attachments", chance = 250000},

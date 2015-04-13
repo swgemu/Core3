@@ -1,5 +1,6 @@
 warren_scientist = Creature:new {
 	objectName = "@mob/creature_names:warren_scientist",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "warren_scientist",
 	faction = "",
 	level = 36,
@@ -29,7 +30,7 @@ warren_scientist = Creature:new {
 		"object/mobile/warren_scientist_s02.iff",
 		"object/mobile/warren_scientist_s03.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4500000},
 				{group = "tailor_components", chance = 1000000},
@@ -38,7 +39,7 @@ warren_scientist = Creature:new {
 				{group = "wearables_common", chance = 1500000}
 			},
 			lootChance = 4800000
-		}			
+		}
 	},
 	weapons = {},
 	attacks = brawlermaster

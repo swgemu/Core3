@@ -1,5 +1,6 @@
 vile_donkuwah_battlelord = Creature:new {
 	objectName = "@mob/creature_names:vile_donkuwah_battlelord",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "donkuwah_tribe",
 	faction = "donkuwah_tribe",
 	level = 34,
@@ -26,11 +27,11 @@ vile_donkuwah_battlelord = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "donkuwah_common", chance = 9000000},
 				{group = "wearables_uncommon", chance = 1000000},
 			},

@@ -1,5 +1,6 @@
 masterful_jinda_warrior = Creature:new {
 	objectName = "@mob/creature_names:masterful_jinda_warrior",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "jinda_tribe",
 	faction = "",
 	level = 42,
@@ -26,13 +27,13 @@ masterful_jinda_warrior = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/jinda_male.iff",
-			"object/mobile/jinda_female.iff",
-			"object/mobile/jinda_male_01.iff",
-			"object/mobile/jinda_female_01.iff"},
+		"object/mobile/jinda_male.iff",
+		"object/mobile/jinda_female.iff",
+		"object/mobile/jinda_male_01.iff",
+		"object/mobile/jinda_female_01.iff"},
 	lootGroups = {
-		 {
-	        groups = {
+		{
+			groups = {
 				{group = "ewok", chance = 8100000},
 				{group = "wearables_uncommon", chance = 1000000},
 				{group = "armor_attachments", chance = 450000},

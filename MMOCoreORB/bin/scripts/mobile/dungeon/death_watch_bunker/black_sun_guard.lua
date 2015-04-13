@@ -1,5 +1,6 @@
 black_sun_guard = Creature:new {
 	objectName = "@mob/creature_names:mand_bunker_blksun_guard",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "death_watch",
 	faction = "",
 	level = 96,

@@ -1,5 +1,6 @@
 dulok_outcast_raider = Creature:new {
 	objectName = "@mob/creature_names:dulok_outcast_raider",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "self",
 	faction = "",
 	level = 20,
@@ -26,8 +27,8 @@ dulok_outcast_raider = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dulok_male.iff",
-			"object/mobile/dulok_female.iff"},
+		"object/mobile/dulok_male.iff",
+		"object/mobile/dulok_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
