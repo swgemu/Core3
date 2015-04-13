@@ -118,7 +118,7 @@ function GoToTheater:taskStart(pCreatureObject)
 
 						if waypointId ~= nil then
 							writeData(creatureObject:getObjectID() .. self.taskName .. WAYPOINT_ID_STRING, waypointId)
-							createEvent(self.despawnTime, "handleDespawnTheater", self.taskName, pCreatureObject)
+							createEvent(self.despawnTime, self.taskName, "handleDespawnTheater", pCreatureObject)
 							self:callFunctionIfNotNil(self.onSuccessfulSpawn, nil, pCreatureObject, spawnedMobilesList)
 							return true
 						end

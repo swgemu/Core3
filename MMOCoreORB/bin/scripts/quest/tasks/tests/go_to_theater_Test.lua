@@ -217,7 +217,7 @@ describe("GoToTheater", function()
 							it("Should schedule the despawn event.", function()
 								testGoToTheater:start(pCreatureObject)
 
-								assert.spy(createEvent).was.called_with(testGoToTheater.despawnTime, "handleDespawnTheater", testGoToTheater.taskName, pCreatureObject)
+								assert.spy(createEvent).was.called_with(testGoToTheater.despawnTime, testGoToTheater.taskName, "handleDespawnTheater", pCreatureObject)
 							end)
 
 							it("Should call the onSuccessfulSpawn function.", function()
