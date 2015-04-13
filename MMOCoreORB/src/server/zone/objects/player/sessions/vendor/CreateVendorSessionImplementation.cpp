@@ -140,6 +140,8 @@ void CreateVendorSessionImplementation::handleVendorSelection(byte menuID) {
 void CreateVendorSessionImplementation::createVendor(String& name) {
 	ManagedReference<CreatureObject*> player = this->player.get();
 
+	Locker locker(player);
+
 	if (!VendorManager::instance()->isValidVendorName(name)) {
 		player->sendSystemMessage("@player_structure:obscene");
 		SuiInputBox* input = new SuiInputBox(player, SuiWindowType::STRUCTURE_NAME_VENDOR);
@@ -173,6 +175,8 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		return;
 	}
 
+	Locker clocker(vendor, player);
+
 	if (!vendor->isVendor()) {
 		error("could not create vendor " + templatePath);
 		vendor->destroyObjectFromDatabase(true);
@@ -181,8 +185,6 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 	}
 
 	vendor->createChildObjects();
-
-	Locker inventoryLocker(inventory);
 
 	if (inventory->hasFullContainerObjects()) {
 		player->sendSystemMessage("@player_structure:create_failed");
