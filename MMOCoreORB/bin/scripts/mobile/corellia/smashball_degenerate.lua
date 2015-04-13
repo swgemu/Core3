@@ -1,5 +1,6 @@
 smashball_degenerate = Creature:new {
 	objectName = "@mob/creature_names:smashball_degenerate",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "smashball",
 	faction = "smashball",
 	level = 9,

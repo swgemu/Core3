@@ -1,5 +1,6 @@
 feral_selonian = Creature:new {
 	objectName = "@mob/creature_names:feral_selonian",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "self",
 	faction = "",
 	level = 12,

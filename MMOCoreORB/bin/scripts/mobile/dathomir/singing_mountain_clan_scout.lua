@@ -1,5 +1,6 @@
 singing_mountain_clan_scout = Creature:new {
 	objectName = "@mob/creature_names:singing_mtn_clan_scout",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mtn_clan",
 	faction = "mtn_clan",
 	level = 75,
@@ -42,7 +43,7 @@ singing_mountain_clan_scout = Creature:new {
 				{group = "wearables_uncommon", chance = 500000}
 			},
 			lootChance = 2500000
-		}			
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

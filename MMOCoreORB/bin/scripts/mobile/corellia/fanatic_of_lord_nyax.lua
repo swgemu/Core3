@@ -1,5 +1,6 @@
 fanatic_of_lord_nyax = Creature:new {
 	objectName = "@mob/creature_names:lord_nyax_fanatic",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "followers_of_lord_nyax",
 	faction = "followers_of_lord_nyax",
 	level = 20,

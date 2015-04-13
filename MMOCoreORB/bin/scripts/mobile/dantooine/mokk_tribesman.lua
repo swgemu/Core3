@@ -1,5 +1,6 @@
 mokk_tribesman = Creature:new {
 	objectName = "@mob/creature_names:mokk_tribesman",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 20,

@@ -1,5 +1,6 @@
 afarathu_ruffian = Creature:new {
 	objectName = "@mob/creature_names:afarathu_cult_ruffian",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "afarathu",
 	faction = "afarathu",
 	level = 5,
@@ -50,7 +51,7 @@ afarathu_ruffian = Creature:new {
 		"object/mobile/dressed_selonian_m_11.iff",
 		"object/mobile/dressed_selonian_m_12.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 7000000},
 				{group = "loot_kit_parts", chance = 2000000},

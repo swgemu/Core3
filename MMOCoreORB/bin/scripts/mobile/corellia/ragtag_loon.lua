@@ -1,5 +1,6 @@
 ragtag_loon = Creature:new {
 	objectName = "@mob/creature_names:ragtag_loon",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "ragtag",
 	faction = "thug",
 	level = 6,
@@ -38,7 +39,7 @@ ragtag_loon = Creature:new {
 		"object/mobile/dressed_commoner_old_human_female_01.iff",
 		"object/mobile/dressed_commoner_old_human_male_02.iff",
 		"object/mobile/dressed_commoner_tatooine_aqualish_female_07.iff"
-		},
+	},
 	lootGroups = {
 		{
 			groups = {

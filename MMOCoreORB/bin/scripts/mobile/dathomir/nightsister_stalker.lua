@@ -1,5 +1,6 @@
 nightsister_stalker = Creature:new {
 	objectName = "@mob/creature_names:nightsister_stalker",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nightsister",
 	faction = "nightsister",
 	level = 96,

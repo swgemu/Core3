@@ -1,5 +1,6 @@
 corsec_master_sergeant = Creature:new {
 	objectName = "@mob/creature_names:corsec_master_sergeant",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "corsec",
 	faction = "corsec",
 	level = 18,
@@ -29,7 +30,7 @@ corsec_master_sergeant = Creature:new {
 		"object/mobile/dressed_corsec_officer_human_female_01.iff",
 		"object/mobile/dressed_corsec_officer_human_male_01.iff",
 		"object/mobile/dressed_corsec_pilot_human_male_01.iff"
-		},
+	},
 	lootGroups = {
 		{
 			groups = {

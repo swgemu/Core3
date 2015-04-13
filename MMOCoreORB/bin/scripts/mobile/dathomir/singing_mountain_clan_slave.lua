@@ -1,5 +1,6 @@
 singing_mountain_clan_slave = Creature:new {
 	objectName = "@mob/creature_names:singing_mtn_clan_slave",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mtn_clan",
 	faction = "mtn_clan",
 	level = 10,

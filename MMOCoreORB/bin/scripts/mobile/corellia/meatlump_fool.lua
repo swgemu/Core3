@@ -1,5 +1,6 @@
 meatlump_fool = Creature:new {
 	objectName = "@mob/creature_names:meatlump_fool",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "meatlump",
 	faction = "meatlump",
 	level = 6,

@@ -1,5 +1,6 @@
 monumenter_smuggler = Creature:new {
 	objectName = "@mob/creature_names:monumenter_smuggler",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "monumenter",
 	faction = "monumenter",
 	level = 12,

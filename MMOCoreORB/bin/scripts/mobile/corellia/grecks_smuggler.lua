@@ -1,5 +1,6 @@
 grecks_smuggler = Creature:new {
 	objectName = "@mob/creature_names:greck_smuggler",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "olag_greck",
 	faction = "olag_greck",
 	level = 7,

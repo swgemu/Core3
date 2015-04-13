@@ -1,5 +1,6 @@
 mokk_harvester = Creature:new {
 	objectName = "@mob/creature_names:mokk_harvester",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mokk_tribe",
 	faction = "mokk_tribe",
 	level = 32,
