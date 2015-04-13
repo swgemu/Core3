@@ -102,6 +102,7 @@ class CraftingSession extends Facade {
 	/**
 	 * The SelectDraftSchematicCommand uses this
 	 */
+	@preLocked
 	public native void selectDraftSchematic(int index);
 
 	/**
@@ -122,23 +123,27 @@ class CraftingSession extends Facade {
 	/**
 	 * Sends ingredients on ManufactureSchematic::synchronizedUIListen
 	 */
+	@preLocked
 	public native void sendIngredientForUIListen();
 	
 	/**
 	 * The CraftingAddIngredientCallback executes this method
 	 * when an object is added in the crafting window
 	 */
+	@preLocked
 	public native void addIngredient(TangibleObject tano, int slotUpdated, int clientCounter);
 
 	/**
 	 * The CraftingRemoveIngredientCallback executes this method
 	 * when an object is removed from the crafting window
 	 */
+	@preLocked
 	public native void removeIngredient(TangibleObject tano, int slotUpdated, int clientCounter);
 
 	/**
 	 * The NextCraftingStageCommand uses this
 	 */
+	@preLocked
 	public native void nextCraftingStage(int clientCounter);
 
 	/**
@@ -157,12 +162,14 @@ class CraftingSession extends Facade {
 	 * The CraftingExperimentCallback executes this method
 	 * when a player experiments in a crafting tool
 	 */
+	@preLocked
 	public native void experiment(int rowsAttempted, final string expAttempt, int clientCounter);
 
 	/**
 	 * The CraftingCustomizationCallback executes this method 
 	 * a user customizes a tano in the crafting tool
 	 */
+	@preLocked
 	public native void customization(final string name, byte templateChoice, int schematicCount, final string customizationString);
 
 	/**
@@ -178,11 +185,13 @@ class CraftingSession extends Facade {
 	/**
 	 * CreatePrototypeCommand calls this
 	 */
+	@preLocked
 	public native void createPrototype(int clientCounter, boolean practice);
 	
 	/**
 	 * CreateManfSchematicCommand calls this
 	 */
+	@preLocked
 	public native void createManufactureSchematic(int clientCounter);
 
 	/**

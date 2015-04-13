@@ -278,8 +278,6 @@ void CraftingSessionImplementation::selectDraftSchematic(int index) {
 
 	clearSession();
 
-	Locker slocker(_this.get());
-
 	if(crafterGhost != NULL && crafterGhost->getDebug()) {
 		crafter->sendSystemMessage("Selected DraftSchematic: " + draftschematic->getCustomName());
 	}
@@ -469,9 +467,7 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		return;
 	}
 
-	Locker locker(_this.get());
-
-	Locker locker2(tano);
+	Locker locker(tano);
 
 	/// Check if item is on the player, but not in a crafting tool
 	/// Or if the item is in a crafting station to prevent some duping
@@ -572,8 +568,7 @@ void CraftingSessionImplementation::removeIngredient(TangibleObject* tano, int s
 		return;
 	}
 
-	Locker locker(_this.get());
-	Locker locker2(tano);
+	Locker locker(tano);
 
 	int result = manufactureSchematic->removeIngredientFromSlot(crafter, tano, slotUpdated);
 
@@ -620,8 +615,7 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 		return;
 	}
 
-	Locker locker(_this.get());
-	Locker locker2(manufactureSchematic);
+	Locker locker(manufactureSchematic);
 
 	ManagedReference<SceneObject*> craftingComponents = craftingTool->getSlottedObject("crafted_components");
 
@@ -686,7 +680,6 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 			draftSchematic, craftingTool->getEffectiveness());
 
 	Locker locker(prototype);
-	Locker schLock(manufactureSchematic);
 	//Set initial crafting percentages
 	craftingManager.get()->setInitialCraftingValues(prototype,manufactureSchematic,assemblyResult);
 	//prototype->setInitialCraftingValues(manufactureSchematic, assemblyResult);
@@ -902,7 +895,7 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 
 	Locker locker(craftingTool);
 	Locker locker2(manufactureSchematic);
-	Locker locker3(_this.get());
+	Locker locker3(prototype);
 
 	StringTokenizer tokenizer(expAttempt);
 
@@ -1049,7 +1042,7 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 
 	Locker locker(craftingTool);
 	Locker locker2(manufactureSchematic);
-	Locker locker3(_this.get());
+	Locker locker3(prototype);
 
 	if (templateChoice != 0xFF) {
 
@@ -1204,8 +1197,7 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool crea
 		return;
 	}
 
-	Locker locker(_this.get());
-	Locker locker2(manufactureSchematic);
+	Locker locker(manufactureSchematic);
 
 
 	if (manufactureSchematic->isAssembled()
@@ -1306,8 +1298,6 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 		sendSlotMessage(0, IngredientSlot::NOSCHEMATIC);
 		return;
 	}
-
-	Locker locker(_this.get());
 
 	if (manufactureSchematic->isAssembled()
 			&& !manufactureSchematic->isCompleted()) {
