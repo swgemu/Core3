@@ -320,8 +320,10 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	applyStates(attacker, defender, data);
 
 	// Return if it's a state only attack (intimidate, warcry, wookiee roar) so they don't apply dots or break combat delays
-	if (data.isStateOnlyAttack())
+	if (data.isStateOnlyAttack()) {
+		broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 		return 0;
+	}
 
 	if (defender->hasAttackDelay())
 		defender->removeAttackDelay();
