@@ -37,10 +37,14 @@ public:
 
 			ManagedReference<TangibleObject*> targetTano = cast<TangibleObject*>(target.get());
 
-			if (targetTano != NULL)
+			if (targetTano != NULL) {
+				Locker clocker(targetTano, creature);
+
 				targetTano->setCustomizationVariable(palette, index, true);
+			}
 
 			if(customizationKit != NULL){
+				Locker clocker(customizationKit, creature);
 				customizationKit->decreaseUseCount();
 			}
 		}
