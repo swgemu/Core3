@@ -48,7 +48,7 @@ Saber1hFlurryCommand = {
         
    damageMultiplier = 3.5,
 	speedMultiplier = 3.0,
-	areaRange = 8,
+	areaRange = 16,
 	areaAction = true,
 	forceCostMultiplier = 2.5,
 

@@ -62,7 +62,7 @@ PolearmSweep2Command = {
 		0 
 	  )
 	},
-	areaRange = 7,
+	areaRange = 16,
 	areaAction = true,
 
 	animationCRC = hashCode("combo_3d_medium"),

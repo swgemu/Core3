@@ -48,7 +48,7 @@ SaberPolearmSpinAttack3Command = {
 	speedMultiplier = 2.0,
 	forceCostMultiplier = 2.5,
 	areaAction = true,
-	areaRange = 7,
+	areaRange = 16,
 	
 	stateEffects = {
 	  StateEffect( 
