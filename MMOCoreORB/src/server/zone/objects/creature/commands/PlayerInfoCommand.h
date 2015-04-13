@@ -85,9 +85,7 @@ public:
 			for (int i = 0; i < holoProfessions->size(); ++i) {
 				byte prof = holoProfessions->get(i);
 
-				int badgeIdx = 42 + prof;
-
-				String stringKey = creature->getZoneServer()->getPlayerManager()->getBadgeKey(badgeIdx);
+				String stringKey = creature->getZoneServer()->getPlayerManager()->getBadgeKey(prof);
 
 				promptText << "@skl_n:" + stringKey << endl;
 			}
