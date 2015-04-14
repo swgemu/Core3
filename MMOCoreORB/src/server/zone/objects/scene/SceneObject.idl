@@ -735,7 +735,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param task Task to add
 	 */
 	@local
-	@preLocked
 	public void executeOrderedTask(Task task) {
 		synchronized (containerLock) {
 			getPendingTasks().putOrdered(task, this);
