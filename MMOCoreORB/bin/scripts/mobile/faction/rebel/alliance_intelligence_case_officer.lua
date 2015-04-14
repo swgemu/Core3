@@ -1,5 +1,6 @@
 alliance_intelligence_case_officer = Creature:new {
 	objectName = "@mob/creature_names:alliance_intelligence_case_officer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 22,
@@ -45,7 +46,7 @@ alliance_intelligence_case_officer = Creature:new {
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

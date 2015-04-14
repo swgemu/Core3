@@ -1,5 +1,6 @@
 rebel_gungan_war_chief = Creature:new {
 	objectName = "@mob/creature_names:gungan_war_chief",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 20,

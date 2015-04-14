@@ -1,5 +1,6 @@
 canyon_corsair_captain = Creature:new {
 	objectName = "@mob/creature_names:canyon_corsair_captain",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "canyon_corsair",
 	faction = "canyon_corsair",
 	level = 50,
@@ -30,7 +31,7 @@ canyon_corsair_captain = Creature:new {
 		"object/mobile/dressed_corsair_captain_nikto_m.iff",
 		"object/mobile/dressed_corsair_captain_wee_m.iff",
 		"object/mobile/dressed_corsair_captain_zab_m.iff"
-		},
+	},
 
 	lootGroups = {
 		{

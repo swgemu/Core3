@@ -1,5 +1,6 @@
 nym_droideka = Creature:new {
 	objectName = "@mob/creature_names:nym_droideka_strong",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 45,
@@ -27,7 +28,7 @@ nym_droideka = Creature:new {
 
 	templates = {"object/mobile/droideka.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4500000},
 				{group = "wearables_uncommon", chance = 2000000},

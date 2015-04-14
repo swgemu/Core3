@@ -1,5 +1,6 @@
 apprentice_creature_handler = Creature:new {
 	objectName = "@mob/creature_names:rebel_creature_handler_apprentice",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 12,
@@ -45,7 +46,7 @@ apprentice_creature_handler = Creature:new {
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

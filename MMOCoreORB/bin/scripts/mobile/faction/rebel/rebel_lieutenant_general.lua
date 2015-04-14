@@ -1,5 +1,6 @@
 rebel_lieutenant_general = Creature:new {
 	objectName = "@mob/creature_names:rebel_lieutenant_general",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 27,
@@ -34,7 +35,7 @@ rebel_lieutenant_general = Creature:new {
 		"object/mobile/dressed_rebel_lieutenant_general_twilek_male_01.iff"},
 	lootGroups = {
 		{
-	        groups = {
+			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 4250000},
 				{group = "rifles", chance = 1000000},

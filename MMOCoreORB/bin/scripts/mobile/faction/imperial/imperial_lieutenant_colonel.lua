@@ -1,5 +1,6 @@
 imperial_lieutenant_colonel = Creature:new {
 	objectName = "@mob/creature_names:imperial_lieutenant_colonel",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 22,
@@ -46,7 +47,7 @@ imperial_lieutenant_colonel = Creature:new {
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "imperialRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",	
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

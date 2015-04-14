@@ -1,5 +1,6 @@
 rebel_major_general = Creature:new {
 	objectName = "@mob/creature_names:rebel_major_general",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 26,
@@ -34,7 +35,7 @@ rebel_major_general = Creature:new {
 		"object/mobile/dressed_rebel_major_zabrak_male_01.iff"},
 	lootGroups = {
 		{
-	        groups = {
+			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 4250000},
 				{group = "rifles", chance = 1000000},
@@ -52,7 +53,7 @@ rebel_major_general = Creature:new {
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "rebelRecruiterConvoTemplate",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 

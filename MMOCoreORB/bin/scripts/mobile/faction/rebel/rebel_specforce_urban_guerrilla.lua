@@ -1,5 +1,6 @@
 rebel_specforce_urban_guerrilla = Creature:new {
 	objectName = "@mob/creature_names:rebel_specforce_guerrilla",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 18,
@@ -51,7 +52,7 @@ rebel_specforce_urban_guerrilla = Creature:new {
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

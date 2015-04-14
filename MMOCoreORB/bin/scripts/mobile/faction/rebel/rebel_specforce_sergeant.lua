@@ -1,5 +1,6 @@
 rebel_specforce_sergeant = Creature:new {
 	objectName = "@mob/creature_names:rebel_specforce_sergeant",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 21,
@@ -51,7 +52,7 @@ rebel_specforce_sergeant = Creature:new {
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

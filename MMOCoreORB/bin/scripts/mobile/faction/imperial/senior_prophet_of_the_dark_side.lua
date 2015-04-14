@@ -1,5 +1,6 @@
 senior_prophet_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:senior_prophet_of_the_dark_side",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 138,
@@ -28,7 +29,7 @@ senior_prophet_of_the_dark_side = Creature:new {
 		"object/mobile/dressed_dark_jedi_human_male_01.iff",
 		"object/mobile/dressed_dark_jedi_human_female_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "holocron_dark", chance = 600000},
 				{group = "holocron_light", chance = 600000},
@@ -38,7 +39,7 @@ senior_prophet_of_the_dark_side = Creature:new {
 				{group = "melee_weapons", chance = 1500000},
 				{group = "armor_attachments", chance = 1100000},
 				{group = "clothing_attachments", chance = 1100000},
-				{group = "carbines", chance = 1500000}				
+				{group = "carbines", chance = 1500000}
 			},
 			lootChance = 8500000
 		}
