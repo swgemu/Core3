@@ -1,5 +1,6 @@
 senior_specforce_wilderness_scout = Creature:new {
 	objectName = "@mob/creature_names:mission_senior_specforce_wilderness_trooper",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 20,
@@ -26,11 +27,11 @@ senior_specforce_wilderness_scout = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_specforce_guerilla_human_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",},
+		"object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",},
 
 	lootGroups = {
 		{
@@ -51,7 +52,7 @@ senior_specforce_wilderness_scout = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

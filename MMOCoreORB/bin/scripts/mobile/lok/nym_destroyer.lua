@@ -1,5 +1,6 @@
 nym_destroyer = Creature:new {
 	objectName = "@mob/creature_names:nym_destroyer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 40,
@@ -26,11 +27,11 @@ nym_destroyer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_destroyer_rod_m.iff",
-				"object/mobile/dressed_nym_destroyer_hum_m.iff",
-				"object/mobile/dressed_nym_destroyer_nikto_m.iff",
-				"object/mobile/dressed_nym_destroyer_wee_m.iff"},
+		"object/mobile/dressed_nym_destroyer_hum_m.iff",
+		"object/mobile/dressed_nym_destroyer_nikto_m.iff",
+		"object/mobile/dressed_nym_destroyer_wee_m.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4500000},
 				{group = "wearables_uncommon", chance = 2000000},

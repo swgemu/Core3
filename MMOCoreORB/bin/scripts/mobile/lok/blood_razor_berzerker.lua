@@ -1,5 +1,6 @@
 blood_razor_berzerker = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_berzerker",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "bloodrazor",
 	faction = "bloodrazor",
 	level = 36,
@@ -30,7 +31,7 @@ blood_razor_berzerker = Creature:new {
 		"object/mobile/dressed_blood_razor_pirate_berzerker_hum_m.iff",
 		"object/mobile/dressed_blood_razor_pirate_berzerker_rod_m.iff",
 		"object/mobile/dressed_blood_razor_pirate_berzerker_tran_m.iff"
-		},
+	},
 
 	lootGroups = {
 		{

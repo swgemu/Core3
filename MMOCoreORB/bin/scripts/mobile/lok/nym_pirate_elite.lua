@@ -1,5 +1,6 @@
 nym_pirate_elite = Creature:new {
 	objectName = "@mob/creature_names:nym_pirate_elite",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 31,
@@ -26,9 +27,9 @@ nym_pirate_elite = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_pirate_elite_rod_m.iff",
-				"object/mobile/dressed_nym_pirate_elite_nikto_m.iff",
-				"object/mobile/dressed_nym_pirate_elite_hum_m.iff",
-				"object/mobile/dressed_nym_pirate_elite_wee_m.iff"},
+		"object/mobile/dressed_nym_pirate_elite_nikto_m.iff",
+		"object/mobile/dressed_nym_pirate_elite_hum_m.iff",
+		"object/mobile/dressed_nym_pirate_elite_wee_m.iff"},
 	lootGroups = {
 		{
 			groups = {

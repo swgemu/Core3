@@ -1,5 +1,6 @@
 rebel_resistance_dissident = Creature:new {
 	objectName = "@mob/creature_names:rebel_resistance_dissident",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 6,
@@ -42,11 +43,11 @@ rebel_resistance_dissident = Creature:new {
 				{group = "wearables_common", chance = 1000000}
 			},
 			lootChance = 2100000
-		}	
+		}
 	},
 	weapons = {"rebel_weapons_light"},
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

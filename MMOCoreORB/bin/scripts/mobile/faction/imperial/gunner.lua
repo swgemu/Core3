@@ -1,5 +1,6 @@
 gunner = Creature:new {
 	objectName = "@mob/creature_names:gunner",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 15,
@@ -30,7 +31,7 @@ gunner = Creature:new {
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",	
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

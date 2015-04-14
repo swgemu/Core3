@@ -1,5 +1,6 @@
 nym_guard_elite = Creature:new {
 	objectName = "@mob/creature_names:nym_guard_elite",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 38,
@@ -26,10 +27,10 @@ nym_guard_elite = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_guard_elite_rod_m.iff",
-				"object/mobile/dressed_nym_guard_elite_nikto_m.iff",
-				"object/mobile/dressed_nym_guard_elite_hum_m.iff"},
+		"object/mobile/dressed_nym_guard_elite_nikto_m.iff",
+		"object/mobile/dressed_nym_guard_elite_hum_m.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 6500000},
 				{group = "nyms_common", chance = 1000000},

@@ -1,5 +1,6 @@
 compforce_trooper = Creature:new {
 	objectName = "@mob/creature_names:compforce_trooper",
+	randomNameType = NAME_STORMTROOPER_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 21,
@@ -30,7 +31,7 @@ compforce_trooper = Creature:new {
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",	
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

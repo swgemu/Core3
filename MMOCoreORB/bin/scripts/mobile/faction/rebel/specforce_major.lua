@@ -1,5 +1,6 @@
 specforce_major = Creature:new {
 	objectName = "@mob/creature_names:specforce_major",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 26,
@@ -26,15 +27,15 @@ specforce_major = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_specforce_guerilla_human_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",
 	},
 	lootGroups = {
 		{
-	        groups = {
+			groups = {
 				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 4250000},
 				{group = "rifles", chance = 1000000},

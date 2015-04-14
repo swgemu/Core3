@@ -1,5 +1,6 @@
 rebel_scout = Creature:new {
 	objectName = "@mob/creature_names:rebel_scout",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 15,
@@ -34,7 +35,7 @@ rebel_scout = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

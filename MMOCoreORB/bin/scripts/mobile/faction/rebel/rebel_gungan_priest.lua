@@ -1,5 +1,6 @@
 rebel_gungan_priest = Creature:new {
 	objectName = "@mob/creature_names:gungan_priest",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 9,
@@ -27,7 +28,7 @@ rebel_gungan_priest = Creature:new {
 
 	templates = {"object/mobile/gungan_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "gungan_common", chance = 2000000},
@@ -35,7 +36,7 @@ rebel_gungan_priest = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}				
+		}
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

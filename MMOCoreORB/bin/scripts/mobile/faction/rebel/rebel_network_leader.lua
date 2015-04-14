@@ -1,5 +1,6 @@
 rebel_network_leader = Creature:new {
 	objectName = "@mob/creature_names:network_leader",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 12,
@@ -37,7 +38,7 @@ rebel_network_leader = Creature:new {
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

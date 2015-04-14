@@ -1,5 +1,6 @@
 mercenary_destroyer = Creature:new {
 	objectName = "@mob/creature_names:mercenary_destroyer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 40,
@@ -30,9 +31,9 @@ mercenary_destroyer = Creature:new {
 		"object/mobile/dressed_mercenary_destroyer_hum_m.iff",
 		"object/mobile/dressed_mercenary_destroyer_nikto_m.iff",
 		"object/mobile/dressed_mercenary_destroyer_wee_m.iff"
-		},
+	},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},

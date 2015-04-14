@@ -1,5 +1,6 @@
 veteran_compforce_trooper = Creature:new {
 	objectName = "@mob/creature_names:veteran_compforce_trooper",
+	randomNameType = NAME_STORMTROOPER_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 25,
@@ -28,7 +29,7 @@ veteran_compforce_trooper = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",		
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 

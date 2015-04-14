@@ -1,5 +1,6 @@
 nym_guard_weak = Creature:new {
 	objectName = "@mob/creature_names:nym_guard_weak",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 36,
@@ -24,10 +25,10 @@ nym_guard_weak = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_guard_weak_hum_f.iff", 
-				"object/mobile/dressed_nym_guard_weak_rod_m.iff",
-				"object/mobile/dressed_nym_guard_weak_nikto_m.iff",
-				"object/mobile/dressed_nym_guard_weak_hum_m.iff"},
+	templates = {"object/mobile/dressed_nym_guard_weak_hum_f.iff",
+		"object/mobile/dressed_nym_guard_weak_rod_m.iff",
+		"object/mobile/dressed_nym_guard_weak_nikto_m.iff",
+		"object/mobile/dressed_nym_guard_weak_hum_m.iff"},
 	lootGroups = {
 		{
 			groups = {
