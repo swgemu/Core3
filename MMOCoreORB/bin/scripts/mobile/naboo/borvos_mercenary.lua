@@ -1,5 +1,6 @@
 borvos_mercenary = Creature:new {
 	objectName = "@mob/creature_names:borvos_mercenary",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "borvo",
 	faction = "borvo",
 	level = 12,

@@ -1,5 +1,6 @@
 poacher = Creature:new {
 	objectName = "@mob/creature_names:poacher_talus",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "poacher",
 	faction = "",
 	level = 17,
@@ -26,14 +27,14 @@ poacher = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-                        "object/mobile/dressed_commoner_naboo_twilek_female_02.iff",
-                        "object/mobile/dressed_quest_farmer.iff",
-			"object/mobile/dressed_criminal_smuggler_human_female_01.iff",
-			"object/mobile/dressed_criminal_smuggler_human_male_01.iff",
-			"object/mobile/dressed_biribas_tarun.iff",
-			"object/mobile/dressed_brigade_scout_trandoshan_male_01.iff",
-			"object/mobile/dressed_brigade_scout_trandoshan_female_01.iff"
-        },
+		"object/mobile/dressed_commoner_naboo_twilek_female_02.iff",
+		"object/mobile/dressed_quest_farmer.iff",
+		"object/mobile/dressed_criminal_smuggler_human_female_01.iff",
+		"object/mobile/dressed_criminal_smuggler_human_male_01.iff",
+		"object/mobile/dressed_biribas_tarun.iff",
+		"object/mobile/dressed_brigade_scout_trandoshan_male_01.iff",
+		"object/mobile/dressed_brigade_scout_trandoshan_female_01.iff"
+	},
 	lootGroups = {
 		{
 			groups = {

@@ -1,5 +1,6 @@
 jabba_scout = Creature:new {
 	objectName = "@mob/creature_names:jabba_scout",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "jabba",
 	faction = "jabba",
 	level = 8,
@@ -30,7 +31,7 @@ jabba_scout = Creature:new {
 		"object/mobile/dressed_hoodlum_zabrak_male_01.iff",
 		"object/mobile/dressed_criminal_thug_human_female_01.iff",
 		"object/mobile/dressed_mugger.iff"
-		
+
 	},
 	lootGroups = {
 		{

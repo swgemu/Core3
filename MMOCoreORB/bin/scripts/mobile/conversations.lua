@@ -115,6 +115,7 @@ includeFile("conversations/tasks/herald_conv.lua")
 includeFile("conversations/tasks/ris_armor_quest_conv.lua")
 includeFile("conversations/tasks/librarian_conv.lua")
 includeFile("conversations/tasks/theater_manager_conv.lua")
+includeFile("conversations/tasks/theater_manager_audience_member_conv.lua")
 
 -- Village
 includeFile("conversations/village/old_man_conv.lua")

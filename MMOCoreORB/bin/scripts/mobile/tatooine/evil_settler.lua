@@ -1,5 +1,6 @@
 evil_settler = Creature:new {
 	objectName = "@mob/creature_names:evil_settler",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "evil",
 	faction = "",
 	level = 5,

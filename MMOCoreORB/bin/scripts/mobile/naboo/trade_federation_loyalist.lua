@@ -1,5 +1,6 @@
 trade_federation_loyalist = Creature:new {
 	objectName = "@mob/creature_names:trade_federation_loyalist",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "trade_federation",
 	faction = "trade_federation",
 	level = 12,

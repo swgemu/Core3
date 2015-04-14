@@ -1,5 +1,6 @@
 fed_dub_supporter = Creature:new {
 	objectName = "@mob/creature_names:fed_dub_supporter",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "fed_dub",
 	faction = "fed_dub",
 	level = 8,

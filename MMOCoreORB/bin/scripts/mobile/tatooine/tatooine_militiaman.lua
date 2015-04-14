@@ -1,5 +1,6 @@
 tatooine_militiaman = Creature:new {
 	objectName = "@mob/creature_names:tatooine_militiaman",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 5,

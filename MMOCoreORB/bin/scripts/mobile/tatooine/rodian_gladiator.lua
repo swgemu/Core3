@@ -1,5 +1,6 @@
 rodian_gladiator = Creature:new {
 	objectName = "@mob/creature_names:rodian_gladiator",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rodian",
 	faction = "",
 	level = 6,
@@ -27,7 +28,7 @@ rodian_gladiator = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_rodian_gladiator.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},

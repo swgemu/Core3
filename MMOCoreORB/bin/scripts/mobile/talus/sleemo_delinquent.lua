@@ -1,5 +1,6 @@
 sleemo_delinquent = Creature:new {
 	objectName = "@mob/creature_names:sleemo_delinquent",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "sleemo_gang",
 	faction = "",
 	level = 7,
@@ -25,8 +26,8 @@ sleemo_delinquent = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
-				"object/mobile/dressed_hooligan_rodian_male_01.iff",
-				"object/mobile/dressed_hoodlum_zabrak_male_01.iff"},
+		"object/mobile/dressed_hooligan_rodian_male_01.iff",
+		"object/mobile/dressed_hoodlum_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
