@@ -674,26 +674,9 @@ function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pCha
 	for word in spatialMsg:gmatch("%w+") do table.insert(tokenizer, word) end
 
 	local spatialCommand = tokenizer[1]
+	writeStringData("dwb:bombDroidHandlerLastSpatialCommand", spatialCommand)
+
 	local moveDistance = 0
-
-	local bombDroidID = readData("dwb:bombDroid")
-	local pBombDroid = getSceneObject(bombDroidID)
-
-	if (spatialCommand == "reset" and pBombDroid == nil) then
-		self:respawnBombDroid()
-		return 0
-	end
-
-	if (pBombDroid == nil or not SceneObject(pBombDroid):isAiAgent()) then
-		return 0
-	end
-
-	if (spatialCommand == "detonate") then
-		CreatureObject(pBombDroid):playEffect("clienteffect/combat_grenade_proton.cef", "")
-		CreatureObject(pBombDroid):inflictDamage(pBombDroid, 0, 1000000, 1)
-		writeData("dwb:lastDroidDetonate", os.time())
-		return 0
-	end
 
 	if (tokenizer[2] ~= nil) then
 		moveDistance = tonumber(tokenizer[2])
@@ -708,6 +691,37 @@ function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pCha
 			moveDistance = 1
 		end
 	end
+
+	writeData("dwb:bombDroidHandlerLastMoveDistance", moveDistance)
+
+	local bombDroidID = readData("dwb:bombDroid")
+	local pBombDroid = getSceneObject(bombDroidID)
+
+	createEvent(500, "DeathWatchBunkerScreenPlay", "doBombDroidAction", pBombDroid)
+
+	return 0
+end
+
+function DeathWatchBunkerScreenPlay:doBombDroidAction(pBombDroid)
+	local spatialCommand = readStringData("dwb:bombDroidHandlerLastSpatialCommand")
+
+	if (spatialCommand == "reset" and pBombDroid == nil) then
+		self:respawnBombDroid()
+		return
+	end
+
+	if (pBombDroid == nil or not SceneObject(pBombDroid):isAiAgent()) then
+		return
+	end
+
+	if (spatialCommand == "detonate") then
+		CreatureObject(pBombDroid):playEffect("clienteffect/combat_grenade_proton.cef", "")
+		CreatureObject(pBombDroid):inflictDamage(pBombDroid, 0, 1000000, 1)
+		writeData("dwb:lastDroidDetonate", os.time())
+		return
+	end
+
+	local moveDistance = readData("dwb:bombDroidHandlerLastMoveDistance")
 
 	local droidLoc = { x = SceneObject(pBombDroid):getPositionX(), z = SceneObject(pBombDroid):getPositionZ(), y = SceneObject(pBombDroid):getPositionY(), cell = SceneObject(pBombDroid):getParentID() }
 
@@ -737,8 +751,6 @@ function DeathWatchBunkerScreenPlay:voiceTerminalSpatialReceived(pTerminal, pCha
 	AiAgent(pBombDroid):setWait(0)
 	AiAgent(pBombDroid):setNextPosition(droidLoc.x, droidLoc.z, droidLoc.y, droidLoc.cell)
 	AiAgent(pBombDroid):executeBehavior()
-
-	return 0
 end
 
 function DeathWatchBunkerScreenPlay:notifyEnteredVoiceTerminalArea(pArea, pPlayer)
