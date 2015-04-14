@@ -171,6 +171,8 @@ void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 er
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);
 		break;
+	case DELAYED:
+		break; // do nothing on delay
 	default:
 		if (addToQueue)
 			creature->clearQueueAction(actioncntr);
@@ -193,8 +195,8 @@ int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) const {
 	if (!checkInvalidLocomotions(creature))
 		return INVALIDLOCOMOTION;
 
-	if (creature->hasAttackDelay()) // no message associated with this
-		return GENERALERROR;
+	if (creature->hasAttackDelay() || !creature->checkPostureChangeDelay()) // no message associated with this
+		return DELAYED;
 
 	if (creature->isProne() || creature->isMeditating() || creature->isSwimming()) {
 		creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.

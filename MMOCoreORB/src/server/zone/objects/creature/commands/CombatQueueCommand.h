@@ -155,7 +155,7 @@ public:
 			case -2:
 				return INSUFFICIENTHAM;
 			case -3:
-				return GENERALERROR;
+				return DELAYED;
 			}
 
 		} catch (Exception& e) {

@@ -1616,7 +1616,7 @@ void PlayerObjectImplementation::doRecovery() {
 
 	CommandQueueActionVector* commandQueue = creature->getCommandQueue();
 
-	if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced()
+	if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced() && !creature->hasAttackDelay() && creature->checkPostureChangeDelay()
 			&& (commandQueue->size() == 0) && creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated()) {
 		creature->sendExecuteConsoleCommand("/attack");
 		//enqueueCommand(0xA8FEF90A, 0, getTargetID(), ""); // Do default attack
