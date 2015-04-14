@@ -58,7 +58,7 @@ Warcry1Command = {
 		{ "nextAttackDelayRecovery" },  
 		{ "warcry_defense" }, 
 		{}, 
-		50, 
+		100, 
 		0, 
 		10 
 	  )
