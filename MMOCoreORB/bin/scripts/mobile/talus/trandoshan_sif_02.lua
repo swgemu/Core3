@@ -1,5 +1,6 @@
 trandoshan_sif_02 = Creature:new {
 	objectName = "@mob/creature_names:trandoshan_sif",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "sif",
 	faction = "sif",
 	level = 43,

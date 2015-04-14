@@ -1,5 +1,6 @@
 hutt_expeditonary_force_leader = Creature:new {
 	objectName = "@mob/creature_names:hutt_expedition_force_leader",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "hutt",
 	faction = "hutt",
 	level = 21,
@@ -43,7 +44,7 @@ hutt_expeditonary_force_leader = Creature:new {
 			},
 			lootChance = 2600000
 		}
-},
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/slang",

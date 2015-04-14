@@ -1,5 +1,6 @@
 coa2_imperial_commander = Creature:new {
 	objectName = "@mob/creature_names:coa2_imperial_commander",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 100,
@@ -30,7 +31,7 @@ coa2_imperial_commander = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
-	
+
 }
 
 CreatureTemplates:addCreatureTemplate(coa2_imperial_commander, "coa2_imperial_commander")

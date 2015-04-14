@@ -1,5 +1,6 @@
 assassin = Creature:new {
 	objectName = "@mob/creature_names:assassin",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mercenary",
 	faction = "",
 	level = 23,
@@ -27,7 +28,7 @@ assassin = Creature:new {
 
 	templates = {"object/mobile/dressed_criminal_assassin_human_male_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

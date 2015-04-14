@@ -1,6 +1,6 @@
 gungan_reject = Creature:new {
-	objectName = "",
-	customName = "a Gungan reject",
+	objectName = "@mob/creature_names:mordran_gungan_reject",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "borvo",
 	faction = "borvo",
 	level = 35,

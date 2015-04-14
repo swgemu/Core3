@@ -1,5 +1,6 @@
 gambler = Creature:new {
 	objectName = "@mob/creature_names:gambler",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 8,
@@ -25,11 +26,11 @@ gambler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_tatooine_nikto_male_02.iff",
-					"object/mobile/dressed_commoner_tatooine_aqualish_female_01.iff",
-					"object/mobile/dressed_commoner_naboo_twilek_female_01.iff",
-					"object/mobile/dressed_commoner_naboo_human_female_03.iff",
-					"object/mobile/dressed_commoner_tatooine_devaronian_male_01.iff"
-					},
+		"object/mobile/dressed_commoner_tatooine_aqualish_female_01.iff",
+		"object/mobile/dressed_commoner_naboo_twilek_female_01.iff",
+		"object/mobile/dressed_commoner_naboo_human_female_03.iff",
+		"object/mobile/dressed_commoner_tatooine_devaronian_male_01.iff"
+	},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	attacks = merge(marksmannovice,brawlernovice)

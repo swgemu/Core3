@@ -1,5 +1,6 @@
 scoundrel = Creature:new {
 	objectName = "@mob/creature_names:scoundrel",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 7,
@@ -25,13 +26,13 @@ scoundrel = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
-			"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
-			"object/mobile/dressed_robber_twk_female_01.iff"},
+		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+		"object/mobile/dressed_robber_twk_female_01.iff"},
 	lootGroups = {
 		{
-	        	groups = {
+			groups = {
 				{group = "junk", chance = 3500000},
-				{group = "wearables_common", chance = 2000000},			
+				{group = "wearables_common", chance = 2000000},
 				{group = "armor_all", chance = 500000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},

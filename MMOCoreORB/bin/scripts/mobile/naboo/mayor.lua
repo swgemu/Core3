@@ -1,5 +1,6 @@
 mayor = Creature:new {
 	objectName = "@mob/creature_names:mayor",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "naboo",
 	faction = "naboo",
 	level = 7,

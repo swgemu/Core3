@@ -1,5 +1,6 @@
 imperial_slicer_gang_coa2 = Creature:new {
 	objectName = "@mob/creature_names:slicer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 11,
@@ -26,8 +27,8 @@ imperial_slicer_gang_coa2 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_assassin_human_female_01.iff",
-			"object/mobile/dressed_criminal_pirate_human_male_01.iff",
-			"object/mobile/dressed_criminal_slicer_human_female_01.iff" },
+		"object/mobile/dressed_criminal_pirate_human_male_01.iff",
+		"object/mobile/dressed_criminal_slicer_human_female_01.iff" },
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

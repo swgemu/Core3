@@ -1,5 +1,6 @@
 neo_cobral_thug = Creature:new {
 	objectName = "@mob/creature_names:cobral_thug",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "cobral",
 	faction = "cobral",
 	level = 12,

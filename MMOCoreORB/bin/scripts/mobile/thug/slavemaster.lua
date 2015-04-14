@@ -1,5 +1,6 @@
 slavemaster = Creature:new {
 	objectName = "@mob/creature_names:slavemaster",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "slaver",
 	faction = "thug",
 	level = 4,
@@ -25,9 +26,9 @@ slavemaster = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_trandoshan_slaver.iff",
-			"object/mobile/dressed_tatooine_slaver.iff"},
+		"object/mobile/dressed_tatooine_slaver.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

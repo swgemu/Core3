@@ -1,5 +1,6 @@
 valarian_swooper_leader = Creature:new {
 	objectName = "@mob/creature_names:valarian_swooper_leader",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "valarian",
 	faction = "valarian",
 	level = 13,

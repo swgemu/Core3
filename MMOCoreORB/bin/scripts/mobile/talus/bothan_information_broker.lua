@@ -1,5 +1,6 @@
 bothan_information_broker = Creature:new {
 	objectName = "@mob/creature_names:bothan_information_broker",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "spynet",
 	faction = "",
 	level = 3,
@@ -29,7 +30,7 @@ bothan_information_broker = Creature:new {
 		"object/mobile/dressed_hutt_informant_quest.iff",
 		"object/mobile/dressed_eisley_officer_bothan_female_01.iff",
 		"object/mobile/dressed_eisley_officer_bothan_male_01.iff"
-					},
+	},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

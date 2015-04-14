@@ -1,5 +1,6 @@
 rsf_captain = Creature:new {
 	objectName = "@mob/creature_names:rsf_captain",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "naboo_security_force",
 	faction = "naboo_security_force",
 	level = 16,
