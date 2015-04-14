@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a486d77_852bf9ea",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/elder_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2015-04-14T18:40:05Z",
+      "side": 1,
+      "message": "As far as I am aware I was under the impression you\u0027d only need to clone the screen if you were modifying any of it\u0027s text in the convo handler. As I am just returning another existing screen, it doesn\u0027t seem to be needed.",
+      "parentUuid": "1a486d77_c5ac518f",
+      "revId": "45d300801821ee17bc85b6e0f46cc978f27d82d6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a486d77_85b659db",
         "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/elder_conv_handler.lua",
         "patchSetId": 2
