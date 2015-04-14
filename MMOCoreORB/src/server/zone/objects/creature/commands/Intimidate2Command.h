@@ -77,9 +77,6 @@ public:
 			CombatSpam* msg = new CombatSpam(creature, targetObject, creature, NULL, 0, "cbt_spam", "intim_out_of_range", 0);
 			creature->sendMessage(msg);
 		}
-		
-		if (res == GENERALERROR)
-			creature->sendSystemMessage("@combat_effects:intimidated_miss");
 
 		if (res == SUCCESS && creature->isPlayerCreature() && creature->getPlayerObject()->getCommandMessageString(String("intimidate2").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
 			UnicodeString shout(creature->getPlayerObject()->getCommandMessageString(String("intimidate2").hashCode()));

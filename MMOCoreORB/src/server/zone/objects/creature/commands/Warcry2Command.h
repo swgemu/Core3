@@ -75,9 +75,6 @@ public:
 		if (res == TOOFAR)
 			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, NULL, 0, "cbt_spam", "warcry_out_of_range", 0);
 
-		if (res == GENERALERROR)
-			creature->sendSystemMessage("@combat_effects:warcry_miss");
-
 		if (res == SUCCESS && creature->isPlayerCreature() && creature->getPlayerObject()->getCommandMessageString(String("warcry2").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
 			UnicodeString shout(creature->getPlayerObject()->getCommandMessageString(String("warcry2").hashCode()));
  	 	 	server->getChatManager()->broadcastMessage(creature, shout, 0, 0, 80);

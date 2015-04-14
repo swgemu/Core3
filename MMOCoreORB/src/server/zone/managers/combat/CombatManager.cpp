@@ -1676,10 +1676,10 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				creature->sendSystemMessage("@cbt_spam:posture_change_fail");
 				break;
 			case CommandEffect::NEXTATTACKDELAY:
-				creature->sendSystemMessage("@combat_effects:warcry_miss");
+				creature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0 );
 				break;
 			case CommandEffect::INTIMIDATE:
-				creature->sendSystemMessage("@combat_effects:intimidated_miss");
+				creature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0 );
 				break;
 			default:
 				break;
