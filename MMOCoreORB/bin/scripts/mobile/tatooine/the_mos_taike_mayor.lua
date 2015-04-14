@@ -1,5 +1,6 @@
 the_mos_taike_mayor = Creature:new {
 	objectName = "@mob/creature_names:mos_taike_mayor",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 21,

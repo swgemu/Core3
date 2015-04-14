@@ -1,5 +1,6 @@
 chunker_swindler = Creature:new {
 	objectName = "@mob/creature_names:chunker_swindler",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "chunker",
 	faction = "thug",
 	level = 8,
@@ -25,8 +26,8 @@ chunker_swindler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
-			"object/mobile/dressed_crook_zabrak_female_01.iff",
-			"object/mobile/dressed_criminal_thug_aqualish_female_01.iff"},
+		"object/mobile/dressed_crook_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_01.iff"},
 	lootGroups = {
 		{
 			groups = {

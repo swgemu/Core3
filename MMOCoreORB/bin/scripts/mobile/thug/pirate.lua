@@ -1,5 +1,6 @@
 pirate = Creature:new {
 	objectName = "@mob/creature_names:pirate",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 17,
@@ -30,7 +31,7 @@ pirate = Creature:new {
 	},
 	lootGroups = {
 		{
-	        	groups = {
+			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 2000000},
 				{group = "rifles", chance = 1000000},

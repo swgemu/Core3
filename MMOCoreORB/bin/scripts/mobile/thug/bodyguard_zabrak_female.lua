@@ -1,5 +1,6 @@
 bodyguard_zabrak_female = Creature:new {
 	objectName = "@mob/creature_names:bodyguard",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 18,
@@ -27,7 +28,7 @@ bodyguard_zabrak_female = Creature:new {
 
 	templates = {"object/mobile/dressed_garyn_theif_zabrak_female_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

@@ -1,5 +1,6 @@
 master_thief = Creature:new {
 	objectName = "@mob/creature_names:master_thief",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 14,
@@ -33,7 +34,7 @@ master_thief = Creature:new {
 		"object/mobile/dressed_plasma_thief.iff"
 	},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

@@ -1,5 +1,6 @@
 explorer = Creature:new {
 	objectName = "@mob/creature_names:explorer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "wilder",
 	faction = "",
 	level = 7,
@@ -26,17 +27,17 @@ explorer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {	"object/mobile/dressed_commoner_fat_zabrak_male_01.iff",
-					"object/mobile/dressed_commoner_naboo_human_female_07.iff",
-					"object/mobile/dressed_commoner_naboo_human_male_08.iff",
-					"object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff",
-					"object/mobile/dressed_commoner_naboo_moncal_female_01.iff",
-					"object/mobile/dressed_commoner_tatooine_aqualish_male_05.iff",
-					"object/mobile/dressed_commoner_naboo_bothan_male_01.iff",
-					"object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff",
-					"object/mobile/dressed_commoner_naboo_moncal_male_02.iff"
-					},
+		"object/mobile/dressed_commoner_naboo_human_female_07.iff",
+		"object/mobile/dressed_commoner_naboo_human_male_08.iff",
+		"object/mobile/dressed_commoner_tatooine_aqualish_female_03.iff",
+		"object/mobile/dressed_commoner_naboo_moncal_female_01.iff",
+		"object/mobile/dressed_commoner_tatooine_aqualish_male_05.iff",
+		"object/mobile/dressed_commoner_naboo_bothan_male_01.iff",
+		"object/mobile/dressed_commoner_tatooine_aqualish_female_04.iff",
+		"object/mobile/dressed_commoner_naboo_moncal_male_02.iff"
+	},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

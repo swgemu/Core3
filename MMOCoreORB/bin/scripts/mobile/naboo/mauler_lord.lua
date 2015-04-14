@@ -1,5 +1,6 @@
 mauler_lord = Creature:new {
 	objectName = "@mob/creature_names:mauler_lord",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mauler",
 	faction = "",
 	level = 27,

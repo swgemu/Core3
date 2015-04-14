@@ -1,5 +1,6 @@
 gungan_guard = Creature:new {
 	objectName = "@mob/creature_names:gungan_guard",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "gungan",
 	faction = "gungan",
 	level = 16,
@@ -26,7 +27,7 @@ gungan_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_male.iff",
-				"object/mobile/gungan_s02_male.iff"},
+		"object/mobile/gungan_s02_male.iff"},
 	lootGroups = {
 		{
 			groups = {

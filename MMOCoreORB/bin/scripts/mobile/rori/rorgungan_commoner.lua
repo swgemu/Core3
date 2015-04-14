@@ -1,5 +1,6 @@
 rorgungan_commoner = Creature:new {
 	objectName = "@mob/creature_names:rorgungan_commoner",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rorgungan",
 	faction = "rorgungan",
 	level = 14,
@@ -27,7 +28,7 @@ rorgungan_commoner = Creature:new {
 
 	templates = {"object/mobile/gungan_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5500000},
 				{group = "gungan_common", chance = 2000000},
@@ -37,7 +38,7 @@ rorgungan_commoner = Creature:new {
 				{group = "crystals_poor", chance = 250000}
 			},
 			lootChance = 3200000
-		}					
+		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",

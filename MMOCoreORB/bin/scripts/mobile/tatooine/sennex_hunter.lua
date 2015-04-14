@@ -1,5 +1,6 @@
 sennex_hunter = Creature:new {
 	objectName = "@mob/creature_names:sennex_hunter",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "sennex",
 	faction = "pirate",
 	level = 28,

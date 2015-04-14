@@ -1,5 +1,6 @@
 philosopher = Creature:new {
 	objectName = "@mob/creature_names:philosopher",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,

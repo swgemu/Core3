@@ -1,5 +1,6 @@
 commando = Creature:new {
 	objectName = "@mob/creature_names:commando",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mercenary",
 	faction = "",
 	level = 19,
@@ -27,7 +28,7 @@ commando = Creature:new {
 
 	templates = {"object/mobile/dressed_mercenary_commander_zab_m.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

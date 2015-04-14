@@ -1,5 +1,6 @@
 fringer = Creature:new {
 	objectName = "@mob/creature_names:fringer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mercenary",
 	faction = "",
 	level = 7,
@@ -25,8 +26,8 @@ fringer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_tatooine_rodian_male_02.iff",
-				"object/mobile/dressed_commoner_naboo_human_male_02.iff",
-				"object/mobile/dressed_commoner_tatooine_bith_male_05.iff"
+		"object/mobile/dressed_commoner_naboo_human_male_02.iff",
+		"object/mobile/dressed_commoner_tatooine_bith_male_05.iff"
 	},
 	lootGroups = {
 		{

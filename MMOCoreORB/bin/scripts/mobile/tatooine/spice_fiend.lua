@@ -1,5 +1,6 @@
 spice_fiend = Creature:new {
 	objectName = "@mob/creature_names:spice_fiend",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 8,
@@ -26,7 +27,7 @@ spice_fiend = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_spice_fiend.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},
