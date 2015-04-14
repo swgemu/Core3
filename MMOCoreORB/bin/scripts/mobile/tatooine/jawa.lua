@@ -1,5 +1,6 @@
 jawa = Creature:new {
 	objectName = "@mob/creature_names:jawa",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "jawa",
 	faction = "jawa",
 	level = 6,
@@ -27,7 +28,7 @@ jawa = Creature:new {
 
 	templates = {"object/mobile/jawa_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5000000},
 				{group = "jawa_common", chance = 1500000},

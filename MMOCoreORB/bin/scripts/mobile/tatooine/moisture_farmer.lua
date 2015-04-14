@@ -1,5 +1,6 @@
 moisture_farmer = Creature:new {
 	objectName = "@mob/creature_names:moisture_farmer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,
@@ -26,7 +27,7 @@ moisture_farmer = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_moisture_farmer.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

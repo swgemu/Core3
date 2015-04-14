@@ -1,5 +1,6 @@
 naboo_nomad = Creature:new {
 	objectName = "@mob/creature_names:naboo_nomad",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nomad",
 	faction = "naboo",
 	level = 6,
@@ -26,7 +27,7 @@ naboo_nomad = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_naboo_nomad.iff",
-				"object/mobile/dressed_commoner_fat_zabrak_male_01.iff"},
+		"object/mobile/dressed_commoner_fat_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

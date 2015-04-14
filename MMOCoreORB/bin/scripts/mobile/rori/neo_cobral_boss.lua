@@ -1,5 +1,6 @@
 neo_cobral_boss = Creature:new {
 	objectName = "@mob/creature_names:cobral_boss",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "cobral",
 	faction = "cobral",
 	level = 30,
@@ -28,7 +29,7 @@ neo_cobral_boss = Creature:new {
 	templates = {
 		"object/mobile/dressed_cobral_boss_twk_female_01.iff",
 		"object/mobile/dressed_cobral_boss_twk_male_01.iff"},
-	
+
 	lootGroups = {
 		{
 			groups = {
