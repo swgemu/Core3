@@ -126,6 +126,10 @@ class SpawnArea extends ActiveArea {
 	@dirty
 	public native SpawnGroup getSpawnGroup();
 
+	public void enqueueEnterEvent(SceneObject obj) {
+		notifyEnter(obj);
+	}
+
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);
 
