@@ -1,5 +1,6 @@
 freelance_pilot = Creature:new {
 	objectName = "@npc_spawner_n:freelance_pilot",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 10,

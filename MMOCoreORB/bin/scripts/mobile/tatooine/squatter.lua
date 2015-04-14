@@ -1,5 +1,6 @@
 squatter = Creature:new {
 	objectName = "@mob/creature_names:squatter",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,
@@ -26,7 +27,7 @@ squatter = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_squatter.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

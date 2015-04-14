@@ -1,5 +1,6 @@
 lyda_thug_coa2 = Creature:new {
 	objectName = "@mob/creature_names:thug",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 11,
@@ -27,7 +28,7 @@ lyda_thug_coa2 = Creature:new {
 
 	templates = {"object/mobile/dressed_lyda_skims.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

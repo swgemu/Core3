@@ -1,5 +1,6 @@
 outlaw = Creature:new {
 	objectName = "@mob/creature_names:outlaw",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 7,

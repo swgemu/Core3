@@ -1,5 +1,6 @@
 imperial_research_captain_coa3 = Creature:new {
 	objectName = "@mob/creature_names:crackdown_imperial_army_captain",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 45,

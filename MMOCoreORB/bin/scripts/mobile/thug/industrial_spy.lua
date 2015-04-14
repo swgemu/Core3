@@ -1,5 +1,6 @@
 industrial_spy = Creature:new {
 	objectName = "@mob/creature_names:industrial_spy",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mercenary",
 	faction = "",
 	level = 8,
@@ -25,9 +26,9 @@ industrial_spy = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_smuggler_human_female_01.iff",
-			"object/mobile/dressed_criminal_smuggler_human_male_01.iff" },
+		"object/mobile/dressed_criminal_smuggler_human_male_01.iff" },
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
