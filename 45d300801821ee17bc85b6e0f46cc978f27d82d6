@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_c5ac518f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/elder_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-14T08:10:21Z",
+      "side": 1,
+      "message": "Don\u0027t you need to clone the screen and returned the cloned screen in this function?",
+      "revId": "45d300801821ee17bc85b6e0f46cc978f27d82d6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_85b659db",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/elder_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-14T08:10:21Z",
+      "side": 1,
+      "message": "You should check for nil before proceeding.",
+      "revId": "45d300801821ee17bc85b6e0f46cc978f27d82d6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
