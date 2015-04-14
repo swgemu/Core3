@@ -1,5 +1,6 @@
 mercenary_commander = Creature:new {
 	objectName = "@mob/creature_names:mercenary_commander",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 42,
@@ -30,7 +31,7 @@ mercenary_commander = Creature:new {
 		"object/mobile/dressed_mercenary_commander_nikto_m.iff",
 		"object/mobile/dressed_mercenary_commander_wee_m.iff",
 		"object/mobile/dressed_mercenary_commander_zab_m.iff"
-		},
+	},
 	lootGroups = {
 		{
 			groups = {

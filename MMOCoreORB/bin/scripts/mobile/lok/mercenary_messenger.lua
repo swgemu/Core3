@@ -1,5 +1,6 @@
 mercenary_messenger = Creature:new {
 	objectName = "@mob/creature_names:mercenary_messanger",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 21,
@@ -30,9 +31,9 @@ mercenary_messenger = Creature:new {
 		"object/mobile/dressed_mercenary_messanger_hum_m.iff",
 		"object/mobile/dressed_mercenary_messanger_rod_m.iff",
 		"object/mobile/dressed_mercenary_messanger_sullustan_m.iff"
-		},
+	},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},

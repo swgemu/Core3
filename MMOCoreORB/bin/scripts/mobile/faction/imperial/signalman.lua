@@ -1,5 +1,6 @@
 signalman = Creature:new {
 	objectName = "@mob/creature_names:signalman",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 15,
@@ -28,7 +29,7 @@ signalman = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",	
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermid,marksmanmid)
 }
 

@@ -1,5 +1,6 @@
 nym_guard_strong = Creature:new {
 	objectName = "@mob/creature_names:nym_guard_strong",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 9,
@@ -25,10 +26,10 @@ nym_guard_strong = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_nym_guard_strong_hum_f.iff", 
-			"object/mobile/dressed_nym_guard_strong_rod_m.iff",
-			"object/mobile/dressed_nym_guard_strong_nikto_m.iff",
-			"object/mobile/dressed_nym_guard_strong_hum_m.iff"},
+	templates = {"object/mobile/dressed_nym_guard_strong_hum_f.iff",
+		"object/mobile/dressed_nym_guard_strong_rod_m.iff",
+		"object/mobile/dressed_nym_guard_strong_nikto_m.iff",
+		"object/mobile/dressed_nym_guard_strong_hum_m.iff"},
 	lootGroups = {
 		{
 			groups = {

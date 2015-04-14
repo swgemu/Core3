@@ -1,5 +1,6 @@
 special_missions_engineer = Creature:new {
 	objectName = "@mob/creature_names:special_missions_engineer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 16,
@@ -28,7 +29,7 @@ special_missions_engineer = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",	
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

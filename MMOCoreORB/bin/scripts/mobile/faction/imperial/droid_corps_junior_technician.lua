@@ -1,5 +1,6 @@
 droid_corps_junior_technician = Creature:new {
 	objectName = "@mob/creature_names:imperial_probot_handler",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 10,
@@ -45,7 +46,7 @@ droid_corps_junior_technician = Creature:new {
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",	
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlernovice,marksmannovice)
 }
 

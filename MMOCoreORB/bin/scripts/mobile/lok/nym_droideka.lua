@@ -27,7 +27,7 @@ nym_droideka = Creature:new {
 
 	templates = {"object/mobile/droideka.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4500000},
 				{group = "wearables_uncommon", chance = 2000000},

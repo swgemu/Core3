@@ -1,5 +1,6 @@
 nym_surveyer = Creature:new {
 	objectName = "@mob/creature_names:nym_surveyer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 21,
@@ -26,11 +27,11 @@ nym_surveyer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_surveyer_rod_m.iff",
-				"object/mobile/dressed_nym_surveyer_hum_m.iff",
-				"object/mobile/dressed_nym_surveyer_hum_f.iff",
-				"object/mobile/dressed_nym_surveyer_rod_f.iff"},
+		"object/mobile/dressed_nym_surveyer_hum_m.iff",
+		"object/mobile/dressed_nym_surveyer_hum_f.iff",
+		"object/mobile/dressed_nym_surveyer_rod_f.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 6500000},
 				{group = "nyms_common", chance = 1000000},

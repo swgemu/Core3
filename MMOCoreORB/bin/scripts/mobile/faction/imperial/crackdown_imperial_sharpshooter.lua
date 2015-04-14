@@ -1,5 +1,6 @@
 crackdown_imperial_sharpshooter = Creature:new {
 	objectName = "@mob/creature_names:crackdown_imperial_sharpshooter",
+	randomNameType = NAME_STORMTROOPER_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 1,
@@ -33,13 +34,13 @@ crackdown_imperial_sharpshooter = Creature:new {
 				{group = "junk", chance = 7650000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",

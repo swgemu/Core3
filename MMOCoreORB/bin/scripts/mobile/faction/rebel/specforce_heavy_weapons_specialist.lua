@@ -1,5 +1,6 @@
 specforce_heavy_weapons_specialist = Creature:new {
 	objectName = "@mob/creature_names:specforce_heavy_weapons_specialist",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 18,
@@ -25,11 +26,11 @@ specforce_heavy_weapons_specialist = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_specforce_guerilla_human_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",},
+		"object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",},
 	lootGroups = {
 		{
 			groups = {
@@ -48,7 +49,7 @@ specforce_heavy_weapons_specialist = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

@@ -1,5 +1,6 @@
 lance_bombardier = Creature:new {
 	objectName = "@mob/creature_names:lance_bombardier",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 16,
@@ -45,7 +46,7 @@ lance_bombardier = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",	
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

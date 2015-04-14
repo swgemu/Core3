@@ -1,5 +1,6 @@
 specops_agent = Creature:new {
 	objectName = "@mob/creature_names:specops_agent",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 24,
@@ -25,11 +26,11 @@ specops_agent = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_specforce_guerilla_human_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
-	             "object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
+		"object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",
 	},
 	lootGroups = {
 		{
@@ -50,7 +51,7 @@ specops_agent = Creature:new {
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

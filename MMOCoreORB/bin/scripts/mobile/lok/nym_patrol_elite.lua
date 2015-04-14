@@ -1,5 +1,6 @@
 nym_patrol_elite = Creature:new {
 	objectName = "@mob/creature_names:nym_patrol_elite",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "nym",
 	faction = "nym",
 	level = 41,
@@ -26,8 +27,8 @@ nym_patrol_elite = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_nym_patrol_elite_rod_m.iff",
-				"object/mobile/dressed_nym_patrol_elite_hum_m.iff",
-				"object/mobile/dressed_nym_patrol_elite_nikto_m.iff"},
+		"object/mobile/dressed_nym_patrol_elite_hum_m.iff",
+		"object/mobile/dressed_nym_patrol_elite_nikto_m.iff"},
 	lootGroups = {
 		{
 			groups = {

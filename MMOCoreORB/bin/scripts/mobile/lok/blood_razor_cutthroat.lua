@@ -1,5 +1,6 @@
 blood_razor_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:blood_razor_cutthroat",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "bloodrazor",
 	faction = "bloodrazor",
 	level = 34,
@@ -31,7 +32,7 @@ blood_razor_cutthroat = Creature:new {
 		"object/mobile/dressed_blood_razor_pirate_cutthroat_nikto_m.iff",
 		"object/mobile/dressed_blood_razor_pirate_cutthroat_tran_m.iff",
 		"object/mobile/dressed_blood_razor_pirate_cutthroat_wee_m.iff"
-		},
+	},
 
 	lootGroups = {
 		{

@@ -1,5 +1,6 @@
 rebel_resistance_leader = Creature:new {
 	objectName = "@mob/creature_names:rebel_resistance_leader",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 10,
@@ -35,7 +36,7 @@ rebel_resistance_leader = Creature:new {
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",			
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

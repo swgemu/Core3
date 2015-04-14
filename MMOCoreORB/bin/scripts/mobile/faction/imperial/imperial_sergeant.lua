@@ -1,5 +1,6 @@
 imperial_sergeant = Creature:new {
 	objectName = "@mob/creature_names:imperial_sergeant",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 16,
@@ -52,7 +53,7 @@ imperial_sergeant = Creature:new {
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",
-	personalityStf = "@hireling/hireling_military",	
+	personalityStf = "@hireling/hireling_military",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

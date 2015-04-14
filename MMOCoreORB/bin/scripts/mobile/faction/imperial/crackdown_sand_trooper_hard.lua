@@ -1,5 +1,6 @@
 crackdown_sand_trooper_hard = Creature:new {
 	objectName = "@mob/creature_names:crackdown_sand_trooper_hard",
+	randomNameType = NAME_STORMTROOPER_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 160,
@@ -33,15 +34,15 @@ crackdown_sand_trooper_hard = Creature:new {
 				{group = "junk", chance = 6550000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
+				{group = "melee_weapons", chance = 550000},
+				{group = "carbines", chance = 550000},
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "stormtrooper_common", chance = 100000},
 				{group = "wearables_rare", chance = 1000000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 	weapons = {"sandtrooper_weapons"},
 	conversationTemplate = "",
