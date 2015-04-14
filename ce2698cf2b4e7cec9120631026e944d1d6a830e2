@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_45e741e5",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lok/nym_droideka.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-14T11:10:45Z",
+      "side": 1,
+      "message": "Generic name for a droideka?",
+      "revId": "ce2698cf2b4e7cec9120631026e944d1d6a830e2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
