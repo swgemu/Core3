@@ -127,7 +127,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return true if the encounter is finished. I.e. the player has access to the village or lost the crystal.
 function SithShadowEncounter:isEncounterFinished(pCreatureObject)
-	return not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
+	return not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 end
 
 -- Handling of the activation of the looted datapad.
