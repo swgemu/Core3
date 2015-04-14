@@ -1,5 +1,6 @@
 terrorist = Creature:new {
 	objectName = "@mob/creature_names:terrorist",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 17,
@@ -38,7 +39,7 @@ terrorist = Creature:new {
 		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
 		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff" },
 	lootGroups = {
-      		{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

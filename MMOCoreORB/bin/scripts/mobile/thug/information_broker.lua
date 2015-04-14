@@ -1,5 +1,6 @@
 information_broker = Creature:new {
 	objectName = "@mob/creature_names:bothan_information_broker",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mercenary",
 	faction = "",
 	level = 5,
@@ -26,9 +27,9 @@ information_broker = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_slicer_human_male_01.iff",
-			"object/mobile/dressed_criminal_slicer_human_female_01.iff", },
+		"object/mobile/dressed_criminal_slicer_human_female_01.iff", },
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

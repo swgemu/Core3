@@ -1,5 +1,6 @@
 mountain_villager = Creature:new {
 	objectName = "@mob/creature_names:mountain_villager",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "villager",
 	faction = "",
 	level = 4,
@@ -26,7 +27,7 @@ mountain_villager = Creature:new {
 
 	templates = {"object/mobile/dressed_mountain_villager.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},

@@ -1,5 +1,6 @@
 narmle_militia_commando = Creature:new {
 	objectName = "@mob/creature_names:narmle_commando",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "narmle",
 	faction = "narmle",
 	level = 19,

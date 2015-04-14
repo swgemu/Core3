@@ -1,5 +1,6 @@
 drall_guard_coa2 = Creature:new {
 	objectName = "@mob/creature_names:drall_guard",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 27,

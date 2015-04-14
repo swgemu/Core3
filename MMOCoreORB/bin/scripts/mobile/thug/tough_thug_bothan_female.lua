@@ -1,5 +1,6 @@
 tough_thug_bothan_female = Creature:new {
 	objectName = "@mob/creature_names:thug",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 16,
@@ -27,7 +28,7 @@ tough_thug_bothan_female = Creature:new {
 
 	templates = {"object/mobile/dressed_criminal_thug_bothan_female_01.iff"},
 	lootGroups = {
-      		{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

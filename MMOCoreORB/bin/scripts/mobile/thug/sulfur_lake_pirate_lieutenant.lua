@@ -1,5 +1,6 @@
 sulfur_lake_pirate_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:slp_privateer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "pirate",
 	faction = "",
 	level = 17,
@@ -25,9 +26,9 @@ sulfur_lake_pirate_lieutenant = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = { "object/mobile/dressed_criminal_pirate_human_male_01.iff" }, 
+	templates = { "object/mobile/dressed_criminal_pirate_human_male_01.iff" },
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

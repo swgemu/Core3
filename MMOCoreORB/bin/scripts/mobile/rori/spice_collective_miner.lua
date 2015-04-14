@@ -1,5 +1,6 @@
 spice_collective_miner = Creature:new {
 	objectName = "@mob/creature_names:spice_collective_miner",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "spice_collective",
 	faction = "spice_collective",
 	level = 9,

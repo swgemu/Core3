@@ -1,5 +1,6 @@
 naboo_police = Creature:new {
 	objectName = "@mob/creature_names:naboo_police",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "naboo_security_force",
 	faction = "naboo_security_force",
 	level = 8,
@@ -26,7 +27,7 @@ naboo_police = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_naboo_police.iff",
-				"object/mobile/dressed_royal_officer_human_male_01.iff"},
+		"object/mobile/dressed_royal_officer_human_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

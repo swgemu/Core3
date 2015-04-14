@@ -1,5 +1,6 @@
 tough_thug_male_rodian = Creature:new {
 	objectName = "@mob/creature_names:thug",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 16,
@@ -26,9 +27,9 @@ tough_thug_male_rodian = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_cobral_thug_rodian_male_01.iff",
-			"object/mobile/dressed_criminal_thug_rodian_male_01.iff"},
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff"},
 	lootGroups = {
-      		{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

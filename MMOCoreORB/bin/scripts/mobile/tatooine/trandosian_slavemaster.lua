@@ -1,5 +1,6 @@
 trandosian_slavemaster = Creature:new {
 	objectName = "@mob/creature_names:trandoshan_slavemaster",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "slaver",
 	faction = "",
 	level = 7,
@@ -27,7 +28,7 @@ trandosian_slavemaster = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_trandoshan_slavemaster.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},

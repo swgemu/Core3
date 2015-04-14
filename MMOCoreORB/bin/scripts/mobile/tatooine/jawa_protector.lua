@@ -1,5 +1,6 @@
 jawa_protector = Creature:new {
 	objectName = "@mob/creature_names:jawa_protector",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "jawa",
 	faction = "jawa",
 	level = 17,
@@ -27,7 +28,7 @@ jawa_protector = Creature:new {
 
 	templates = {"object/mobile/jawa_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5000000},
 				{group = "jawa_common", chance = 1500000},
@@ -37,7 +38,7 @@ jawa_protector = Creature:new {
 				{group = "color_crystals", chance = 200000}
 			},
 			lootChance = 2900000
-		}				
+		}
 	},
 	weapons = {"jawa_warlord_weapons"},
 	conversationTemplate = "",
