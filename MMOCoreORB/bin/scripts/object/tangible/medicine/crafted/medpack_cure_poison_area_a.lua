@@ -48,7 +48,7 @@ object_tangible_medicine_crafted_medpack_cure_poison_area_a = object_tangible_me
 	medicineUse = 5,
 	effectiveness = 100,
 	state = POISONED,
-	commandToExecute = "/curepoison",
+	commandToExecute = "curepoison",
 	area = 5,
 
 

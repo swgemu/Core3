@@ -53,7 +53,7 @@ object_tangible_medicine_crafted_medpack_poison_area_health_a = object_tangible_
 	pool = 0,
 	dotType = POISONED,
 	potency = 150,
-	commandToExecute = "/applypoison",
+	commandToExecute = "applypoison",
 	area = 10,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1},

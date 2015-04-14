@@ -22,11 +22,7 @@ int FireHeavyWeaponMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 		return 0;
 
 	if (selectedID == 20) {
-		String args = String::valueOf(sceneObject->getObjectID());
-		String action = "/fireheavyweapon ";
-		String command = action + args;
-
-		player->sendExecuteConsoleCommand(command);
+		player->sendCommand(String("fireheavyweapon").hashCode(), String::valueOf(sceneObject->getObjectID()), player->getTargetID());
 
 		return 1;
 	}

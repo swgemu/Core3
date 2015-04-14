@@ -129,8 +129,7 @@ class RangedStimPack extends StimPack {
 			
 			return 0;
 		} else {
-			string command = "/healdamage "; 
-			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
+			player.sendCommand("healdamage", String.valueOf(super.getObjectID()), player.getTargetID());
 			
 			return 0;
 		}

@@ -147,10 +147,7 @@ class RevivePack extends PharmaceuticalObject {
 			
 			return 0;
 		} else {
-			string command = "/reviveplayer ";
-			command = command + String.valueOf(super.getObjectID());
-			
-			player.sendExecuteConsoleCommand(command);
+			player.sendCommand("reviveplayer", String.valueOf(super.getObjectID()), player.getTargetID());
 			
 			return 0;
 		}

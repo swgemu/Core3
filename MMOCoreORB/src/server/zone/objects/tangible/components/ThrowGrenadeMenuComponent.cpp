@@ -31,15 +31,7 @@ int ThrowGrenadeMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		return 1;
 
 	if(selectedID == 20) {
-		ManagedReference<ZoneServer*> server = player->getZoneServer();
-		if(server == NULL)
-			return 0;
-
-		String args = String::valueOf(sceneObject->getObjectID());
-		String action = "/throwgrenade ";
-		String command = action + args;
-
-		player->sendExecuteConsoleCommand(command);
+		player->sendCommand(String("throwgrenade").hashCode(), String::valueOf(sceneObject->getObjectID()), player->getTargetID());
 
 		return 1;
 	}

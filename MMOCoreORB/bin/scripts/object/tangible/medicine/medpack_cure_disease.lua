@@ -47,7 +47,7 @@ object_tangible_medicine_medpack_cure_disease = object_tangible_medicine_shared_
 	medicineUse = 5,
 	effectiveness = 100,
 	state = DISEASED,
-	commandToExecute = "/curedisease",
+	commandToExecute = "curedisease",
 	area = 0
 }
 
