@@ -187,10 +187,7 @@ class DotPack extends PharmaceuticalObject {
 			
 			return 0;
 		} else {
-			string command = commandToExecute + " ";
-			command = command + String.valueOf(super.getObjectID());
-			
-			player.sendExecuteConsoleCommand(command);
+			player.sendCommand(commandToExecute, String.valueOf(super.getObjectID()), player.getTargetID());
 			
 			return 0;
 		}

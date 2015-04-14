@@ -116,12 +116,7 @@ class StatePack extends PharmaceuticalObject {
 			
 			return 0;
 		} else {
-			string command = "/healstate ";
-			command = command + CreatureState.instance().getName(state);
-			command = command + "|";
-			command = command + String.valueOf(super.getObjectID());
-			
-			player.sendExecuteConsoleCommand(command);
+			player.sendCommand("healstate", CreatureState.instance().getName(state) + "|" + String.valueOf(super.getObjectID()), player.getTargetID());
 			
 			return 0;
 		}

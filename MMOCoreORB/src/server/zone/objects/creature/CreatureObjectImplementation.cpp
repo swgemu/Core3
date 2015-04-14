@@ -69,6 +69,7 @@
 #include "server/zone/packets/object/PostureMessage.h"
 #include "server/zone/packets/object/SitOnObject.h"
 #include "server/zone/packets/object/CommandQueueRemove.h"
+#include "server/zone/packets/object/CommandQueueAdd.h"
 #include "server/zone/packets/object/CombatAction.h"
 #include "server/zone/packets/object/WeaponRanges.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
@@ -140,6 +141,8 @@ void CreatureObjectImplementation::initializeTransientMembers() {
 	groupInviteCounter = 0;
 	currentWeather = 0;
 	currentWind = 0;
+
+	lastActionCounter = 0x40000000;
 
 	setContainerOwnerID(getObjectID());
 	setMood(moodID);
@@ -1831,7 +1834,8 @@ float CreatureObjectImplementation::getTerrainNegotiation() {
 
 void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 		unsigned int actionCount, uint64 targetID,
-		const UnicodeString& arguments, int priority) {
+		const UnicodeString& arguments, int priority,
+		int compareCounter) {
 	ManagedReference<ObjectController*> objectController =
 			getZoneServer()->getObjectController();
 
@@ -1878,6 +1882,9 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 	action = new CommandQueueAction(_this.get(), targetID, actionCRC, actionCount,
 			arguments);
 
+	if (compareCounter >= 0)
+		action->setCompareToCounter((int)compareCounter);
+
 	if (commandQueue->size() != 0 || !nextAction.isPast()) {
 		if (commandQueue->size() == 0) {
 			Reference<CommandQueueActionEvent*> e =
@@ -1900,6 +1907,24 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 		commandQueue->put(action.get());
 		activateQueueAction();
 	}
+}
+
+void CreatureObjectImplementation::sendCommand(const String& action, const UnicodeString& args, uint64 targetID, int priority) {
+	sendCommand(action.hashCode(), args, targetID, priority);
+}
+
+void CreatureObjectImplementation::sendCommand(uint32 crc, const UnicodeString& args, uint64 targetID, int priority) {
+	uint32 nextCounter = incrementLastActionCounter();
+	CommandQueueAdd* msg = new CommandQueueAdd(_this.get(), crc, nextCounter);
+	sendMessage(msg);
+
+	int compareCnt = -1;
+	if (commandQueue->size() == 0 || priority == QueueCommand::FRONT)
+		compareCnt = 0;
+	else if (priority == QueueCommand::NORMAL)
+		compareCnt = commandQueue->get(commandQueue->size() - 1)->getCompareToCounter() + 1;
+
+	enqueueCommand(crc, nextCounter, targetID, args, priority, compareCnt);
 }
 
 void CreatureObjectImplementation::activateImmediateAction() {

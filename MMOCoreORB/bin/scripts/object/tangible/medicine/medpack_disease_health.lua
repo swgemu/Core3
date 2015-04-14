@@ -52,7 +52,7 @@ object_tangible_medicine_medpack_disease_health = object_tangible_medicine_share
 	pool = 0,
 	dotType = DISEASED,
 	potency = 150,
-	commandToExecute = "/applydisease",
+	commandToExecute = "applydisease",
 	area = 0
 }
 

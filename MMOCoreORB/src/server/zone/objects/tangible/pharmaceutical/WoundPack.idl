@@ -138,8 +138,7 @@ class WoundPack extends PharmaceuticalObject {
 			return 1;
 
 		if (isDroidReconstructionKit()) {
-			string command = "/healdroidwound "; 
-			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
+			player.sendCommand("healdroidwound", String.valueOf(super.getObjectID()), player.getTargetID());
 			
 			return 0;
 		} else if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
@@ -147,12 +146,7 @@ class WoundPack extends PharmaceuticalObject {
 			
 			return 0;
 		} else {
-			string command = "/healwound ";
-			command = command + CreatureAttribute.getName(attribute);
-			command = command + "|";
-			command = command + String.valueOf(super.getObjectID());
-			
-			player.sendExecuteConsoleCommand(command);
+			player.sendCommand("healwound", CreatureAttribute.getName(attribute) + "|" + String.valueOf(super.getObjectID()), player.getTargetID());
 			
 			return 0;
 		}
