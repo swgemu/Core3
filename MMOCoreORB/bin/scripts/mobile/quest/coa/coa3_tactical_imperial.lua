@@ -1,5 +1,6 @@
 coa3_tactical_imperial = Creature:new {
 	objectName = "@mob/creature_names:coa3_tactical_imperial",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 25,
@@ -37,7 +38,7 @@ coa3_tactical_imperial = Creature:new {
 				{group = "armor_attachments", chance = 1100000}
 			},
 			lootChance = 4000000
-		}			
+		}
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

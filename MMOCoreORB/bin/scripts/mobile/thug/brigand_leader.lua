@@ -1,5 +1,6 @@
 brigand_leader = Creature:new {
 	objectName = "@mob/creature_names:brigand_leader",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "brigand",
 	faction = "",
 	level = 20,
@@ -25,10 +26,10 @@ brigand_leader = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
-			"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
-			"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
-			"object/mobile/dressed_criminal_thug_human_male_01.iff",
-			"object/mobile/dressed_criminal_thug_human_male_02.iff" },
+		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff",
+		"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_02.iff" },
 	lootGroups = {
 		{
 			groups = {

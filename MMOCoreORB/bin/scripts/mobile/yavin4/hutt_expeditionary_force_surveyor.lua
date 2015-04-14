@@ -1,5 +1,6 @@
 hutt_expeditionary_force_surveyor = Creature:new {
 	objectName = "@mob/creature_names:hutt_expedition_force_surveyer",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "hutt",
 	faction = "hutt",
 	level = 15,
@@ -43,7 +44,7 @@ hutt_expeditionary_force_surveyor = Creature:new {
 			},
 			lootChance = 2500000
 		}
-},
+	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/slang",

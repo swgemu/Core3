@@ -1,5 +1,6 @@
 assassin_twilek_mate = Creature:new {
 	objectName = "@mob/creature_names:assassin",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 18,
@@ -27,7 +28,7 @@ assassin_twilek_mate = Creature:new {
 
 	templates = {"object/mobile/dressed_cobral_assassin_twk_male_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

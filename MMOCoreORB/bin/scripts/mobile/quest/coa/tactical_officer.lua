@@ -1,5 +1,6 @@
 tactical_officer = Creature:new {
 	objectName = "@mob/creature_names:coa3_tactical_rebel",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "rebel",
 	faction = "rebel",
 	level = 25,
@@ -26,11 +27,11 @@ tactical_officer = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_first_lieutenant_bothan_male_01.iff",
-				 "object/mobile/dressed_rebel_first_lieutenant_human_female_01.iff",
-				 "object/mobile/dressed_rebel_first_lieutenant_human_male_01.iff",
-				 "object/mobile/dressed_rebel_first_lieutenant_moncal_female_01.iff",
-				 "object/mobile/dressed_rebel_first_lieutenant_moncal_female_02.iff",
-				 "object/mobile/dressed_rebel_first_lieutenant_sullustan_male_01.iff"},
+		"object/mobile/dressed_rebel_first_lieutenant_human_female_01.iff",
+		"object/mobile/dressed_rebel_first_lieutenant_human_male_01.iff",
+		"object/mobile/dressed_rebel_first_lieutenant_moncal_female_01.iff",
+		"object/mobile/dressed_rebel_first_lieutenant_moncal_female_02.iff",
+		"object/mobile/dressed_rebel_first_lieutenant_sullustan_male_01.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

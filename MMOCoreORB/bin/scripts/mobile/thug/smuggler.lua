@@ -1,5 +1,6 @@
 smuggler = Creature:new {
 	objectName = "@mob/creature_names:smuggler",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 14,
@@ -27,7 +28,7 @@ smuggler = Creature:new {
 	templates = {"object/mobile/dressed_criminal_slicer_human_male_01.iff"},
 	lootGroups = {
 		{
-	        	groups = {
+			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 2000000},
 				{group = "rifles", chance = 1000000},
