@@ -566,7 +566,7 @@ function DeathWatchBunkerScreenPlay:poisonEvent(pSceneObject)
 					if pObject ~= nil then
 						if (SceneObject(pObject):isCreatureObject() and not CreatureObject(pObject):isAiAgent() and not self:hasRebreather(pObject)
 							and not CreatureObject(pObject):isDead() and not CreatureObject(pObject):isIncapacitated()) then
-							self:doPoison(pObject)
+							createEvent(500, "DeathWatchBunkerScreenPlay", "doPoison", pObject)
 						end
 					end
 				end
