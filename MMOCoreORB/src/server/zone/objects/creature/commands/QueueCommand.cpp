@@ -193,7 +193,7 @@ int QueueCommand::doCommonMedicalCommandChecks(CreatureObject* creature) const {
 	if (!checkInvalidLocomotions(creature))
 		return INVALIDLOCOMOTION;
 
-	if (creature->hasAttackDelay()) // no message associated with this
+	if (creature->hasAttackDelay() || !creature->checkPostureChangeDelay()) // no message associated with this
 		return GENERALERROR;
 
 	if (creature->isProne() || creature->isMeditating() || creature->isSwimming()) {

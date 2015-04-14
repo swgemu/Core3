@@ -68,7 +68,7 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		if (creature->hasAttackDelay()) // no message associated with this
+		if (creature->hasAttackDelay() || !creature->checkPostureChangeDelay()) // no message associated with this
 			return GENERALERROR;
 
 
