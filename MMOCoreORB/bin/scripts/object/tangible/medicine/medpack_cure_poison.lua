@@ -47,7 +47,7 @@ object_tangible_medicine_medpack_cure_poison = object_tangible_medicine_shared_m
 	medicineUse = 5,
 	effectiveness = 100,
 	state = POISONED,
-	commandToExecute = "/curepoison",
+	commandToExecute = "curepoison",
 	area = 0
 }
 

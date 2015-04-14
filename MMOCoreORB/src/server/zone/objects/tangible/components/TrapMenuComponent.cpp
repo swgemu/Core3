@@ -58,16 +58,7 @@ int TrapMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creature
 			return 0;
 
 	if(selectedID == 20) {
-		ManagedReference<ZoneServer*> server = player->getZoneServer();
-		if(server == NULL)
-			return 0;
-
-		String args = String::valueOf(sceneObject->getObjectID());
-		String action = "/throwtrap ";
-		String command = action + args;
-
-
-		player->sendExecuteConsoleCommand(command);
+		player->sendCommand(String("throwtrap").hashCode(), String::valueOf(sceneObject->getObjectID()), player->getTargetID());
 
 		return 1;
 	}

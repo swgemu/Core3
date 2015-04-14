@@ -138,13 +138,11 @@ class StimPack extends PharmaceuticalObject {
 			return 1;
 
 		if (isPetStimPack()) {
-			string command = "/healpet "; 
-			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
+			player.sendCommand("healpet", String.valueOf(super.getObjectID()), player.getTargetID());
 			
 			return 0;
 		} else if (isDroidRepairKit()) {
-			string command = "/healdroiddamage "; 
-			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
+			player.sendCommand("healdroiddamage", String.valueOf(super.getObjectID()), player.getTargetID());
 			
 			return 0;
 		} else if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
@@ -152,8 +150,7 @@ class StimPack extends PharmaceuticalObject {
 			
 			return 0;
 		} else {
-			string command = "/healdamage "; 
-			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
+			player.sendCommand("healdamage", String.valueOf(super.getObjectID()), player.getTargetID());
 			
 			return 0;
 		}

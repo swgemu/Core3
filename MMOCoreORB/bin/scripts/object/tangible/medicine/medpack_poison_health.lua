@@ -52,7 +52,7 @@ object_tangible_medicine_medpack_poison_health = object_tangible_medicine_shared
 	pool = 0,
 	dotType = POISONED,
 	potency = 150,
-	commandToExecute = "/applypoison",
+	commandToExecute = "applypoison",
 	area = 0
 }
 

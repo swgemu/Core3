@@ -48,7 +48,7 @@ object_tangible_medicine_crafted_medpack_cure_disease_area_b = object_tangible_m
 	medicineUse = 5,
 	effectiveness = 100,
 	state = DISEASED,
-	commandToExecute = "/curedisease",
+	commandToExecute = "curedisease",
 	area = 5,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},

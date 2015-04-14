@@ -47,7 +47,7 @@ object_tangible_medicine_test_fire_blanket = object_tangible_medicine_shared_tes
 	medicineUse = 5,
 	effectiveness = 100,
 	state = ONFIRE,
-	commandToExecute = "/extinguishfire",
+	commandToExecute = "extinguishfire",
 	area = 0
 }
 

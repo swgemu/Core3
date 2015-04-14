@@ -53,7 +53,7 @@ object_tangible_medicine_crafted_medpack_disease_strength_b = object_tangible_me
 	pool = 1,
 	dotType = DISEASED,
 	potency = 250,
-	commandToExecute = "/applydisease",
+	commandToExecute = "applydisease",
 	area = 0,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 1},

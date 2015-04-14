@@ -185,6 +185,8 @@ class CreatureObject extends TangibleObject {
 	@transactional
 	protected transient CommandQueueActionVector immediateQueue;
 	
+	protected transient unsigned int lastActionCounter;
+	
 	@dereferenced
 	protected Time nextAction;
 	
@@ -982,7 +984,13 @@ class CreatureObject extends TangibleObject {
 	 * @param priority command priority
 	 */
 	@preLocked
-	public native void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments, int priority = -1);
+	public native void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long targetID, final unicode arguments, int priority = -1, int compareCount = -1);
+
+	@preLocked
+	public native void sendCommand(unsigned int crc, final unicode args, unsigned long targetID = 0, int priority = 2);
+	
+	@preLocked
+	public native void sendCommand(final string action, final unicode args, unsigned long targetID = 0, int priority = 2);
 	
 	/**
 	 * Sets characters mood
@@ -1561,6 +1569,22 @@ class CreatureObject extends TangibleObject {
 	@read
 	public int getCommandQueueSize() {
 		return commandQueue.size();
+	}
+	
+	public void setLastActionCounter(unsigned int ctr) {
+		lastActionCounter = ctr;
+	}
+	
+	public unsigned int incrementLastActionCounter() {
+		lastActionCounter = lastActionCounter + 32;
+		if (lastActionCounter < 0x40000000)
+			lastActionCounter = 0x40000000;
+		
+		return lastActionCounter;
+	}
+	
+	public unsigned int getLastActionCounter() {
+		return lastActionCounter;
 	}
 
 	@read
