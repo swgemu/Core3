@@ -338,7 +338,13 @@ public:
 			stringId.setTT(creatureTarget->getObjectID());
 
 			creature->sendSystemMessage(stringId);
+
+			StringIdChatParameter stringId2("healing", "dot_resist_other");
+
+			creatureTarget->sendSystemMessage(stringId2);
 		}
+
+		checkForTef(creature, creatureTarget);
 
 		if (dotPack->isArea()) {
 			if (creatureTarget != creature)
@@ -347,14 +353,17 @@ public:
 			handleArea(creature, creatureTarget, dotPack, dotPack->getArea());
 		}
 
-		if (dotPack != NULL)
+		if (dotPack != NULL) {
+			if (creatureTarget != creature)
+				clocker.release();
+
+			Locker dlocker(dotPack, creature);
 			dotPack->decreaseUseCount();
+		}
 
 		doAnimationsRange(creature, creatureTarget, dotPack->getObjectID(), creature->getDistanceTo(creatureTarget), dotPack->isArea());
 
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
-
-		checkForTef(creature, creatureTarget);
 
 		return SUCCESS;
 	}

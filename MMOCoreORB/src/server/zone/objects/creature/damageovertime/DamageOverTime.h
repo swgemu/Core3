@@ -30,6 +30,7 @@ protected:
 	uint32 strength;
 	uint32 duration;
 
+	Time applied;
 	Time expires;
 	Time nextTick;
 	int secondaryStrength;
@@ -130,6 +131,10 @@ public:
 
 	inline bool nextTickPast() {
 		return nextTick.isPast();
+	}
+
+	inline Time getApplied() {
+		return applied;
 	}
 
 	inline Time getNextTick() {

@@ -187,34 +187,38 @@ bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float
 	if (!hasDot())
 		return reduction;
 
+	VectorMap<uint64, DamageOverTime*> timeMap;
+
+	for (int i = 0; i < size(); i++) {
+		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
+
+		for (int j = 0; j < vector->size(); j++) {
+			DamageOverTime* dot = &vector->elementAt(j);
+
+			if (dot->getType() == dotType && !dot->isPast())
+				timeMap.put(dot->getApplied().getMiliTime(), dot);
+		}
+	}
+
 	bool expired = true;
 
 	float reductionLeft = reduction;
 
-	for (int i = 0; i < size(); ++i) {
-		uint64 type = elementAt(i).getKey();
+	for (int i = 0; i < timeMap.size(); i++) {
+		DamageOverTime* dot = timeMap.elementAt(i).getValue();
 
-		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
-
-		for (int j = 0; j < vector->size(); ++j) {
-			DamageOverTime* dot = &vector->elementAt(j);
-
-			if (dot->getType() == dotType && !dot->isPast()) {
-				if (reductionLeft >= dot->getStrength()) {
-					reductionLeft -= dot->getStrength();
-					dot->reduceTick(dot->getStrength());
-					expired = expired && true;
-				} else {
-					dot->reduceTick(reductionLeft);
-					reductionLeft = 0;
-					expired = false;
-					break;
-				}
+		if (!dot->isPast()) {
+			if (reductionLeft >= dot->getStrength()) {
+				reductionLeft -= dot->getStrength();
+				dot->reduceTick(dot->getStrength());
+				expired = expired && true;
+			} else {
+				dot->reduceTick(reductionLeft);
+				reductionLeft = 0;
+				expired = false;
+				break;
 			}
 		}
-
-		if (reductionLeft == 0)
-			break;
 	}
 
 	if (expired) {

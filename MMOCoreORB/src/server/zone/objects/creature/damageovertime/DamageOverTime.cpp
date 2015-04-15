@@ -72,6 +72,7 @@ DamageOverTime::DamageOverTime(CreatureObject* attacker, uint64 tp, uint8 attrib
 	strength = str;
 	setDuration(dur);
 	setSecondaryStrength(secondaryStrength);
+	applied.updateToCurrentTime();
 	activate();
 
 	addSerializableVariables();
@@ -85,6 +86,7 @@ DamageOverTime::DamageOverTime(const DamageOverTime& dot) : Object(), Serializab
 	attribute = dot.attribute;
 	strength = dot.strength;
 	duration = dot.duration;
+	applied = dot.applied;
 	expires = dot.expires;
 	nextTick = dot.nextTick;
 	secondaryStrength = dot.secondaryStrength;
@@ -100,6 +102,7 @@ DamageOverTime& DamageOverTime::operator=(const DamageOverTime& dot) {
 	attribute = dot.attribute;
 	strength = dot.strength;
 	duration = dot.duration;
+	applied = dot.applied;
 	expires = dot.expires;
 	nextTick = dot.nextTick;
 	secondaryStrength = dot.secondaryStrength;
@@ -114,6 +117,7 @@ void DamageOverTime::addSerializableVariables() {
 	addSerializableVariable("attribute", &attribute);
 	addSerializableVariable("strength", &strength);
 	addSerializableVariable("duration", &duration);
+	addSerializableVariable("applied", &applied);
 	addSerializableVariable("expires", &expires);
 	addSerializableVariable("nextTick", &nextTick);
 	addSerializableVariable("secondaryStrength", &secondaryStrength);
