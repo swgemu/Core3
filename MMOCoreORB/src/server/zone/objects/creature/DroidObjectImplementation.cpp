@@ -69,7 +69,7 @@ void DroidObjectImplementation::initializeTransientMembers() {
 		// Fix messed up ham, that could occur when overall quality was negative during experimentation.
 		if (this->getMaxHAM(0) < 0) {
 			int overallQuality = 1;
-			float maxHam = DroidMechanics::determineHam(overallQuality,species);
+			float maxHam = DroidMechanics::determineHam(overallQuality,getSpecies());
 			for (int i = 0; i < 9; ++i) {
 				if (i % 3 == 0) {
 					setMaxHAM(i,maxHam,true);
@@ -244,15 +244,14 @@ void DroidObjectImplementation::handleLowPower(){
 
 	return;
 }
-void DroidObjectImplementation::setSpecies(int i) {
-	species = i;
-}
+
 bool DroidObjectImplementation::isPowerDroid(){
-	if(species == 0)
+	if(getSpecies() == 0)
 		return getObjectTemplate()->getFullTemplateString().contains( "eg_6_power_droid" );
 	else
-		return POWER_DROID == species;
+		return POWER_DROID == getSpecies();
 }
+
 void DroidObjectImplementation::initDroidModules(){
 	modules.removeAll();
 	ManagedReference<SceneObject*> container = getSlottedObject("crafted_components");
@@ -276,6 +275,7 @@ void DroidObjectImplementation::initDroidModules(){
 		}
 	}
 }
+
 CraftingStation* DroidObjectImplementation::getCraftingStation(int type){
 	for( int i=0; i<modules.size(); i++){
 		BaseDroidModuleComponent* module = modules.get(i);
@@ -365,7 +365,7 @@ bool DroidObjectImplementation::isCombatDroid() {
 		}
 	}
 	// inante comabt ability, regardless of module installed
-	if (species == PROBOT || species == DZ70)
+	if (getSpecies() == PROBOT || getSpecies() == DZ70)
 		return true;
 
 	return false;

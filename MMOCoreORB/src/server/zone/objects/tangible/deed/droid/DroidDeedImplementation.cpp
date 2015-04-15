@@ -252,7 +252,6 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		}
 
 		droid->loadTemplateData( creatureTemplate );
-		droid->setSpecies(species);
 		droid->setCustomObjectName(StringIdManager::instance()->getStringId(*droid->getObjectName()), true);
 
 		// Transfer crafting components from deed to droid

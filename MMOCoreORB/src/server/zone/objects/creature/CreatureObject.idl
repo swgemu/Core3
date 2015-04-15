@@ -93,8 +93,6 @@ class CreatureObject extends TangibleObject {
 
 	protected int bankCredits;
 	protected int cashCredits;
-	protected int gender;
-	protected int species;
 	
 	@dereferenced
 	protected DeltaVector<int> baseHAM;
@@ -1722,34 +1720,30 @@ class CreatureObject extends TangibleObject {
 	@dirty
 	public boolean isDroidSpecies() {
 		//Determine if creature is a droid.
-		if (species >= 203 && species <= 225 && species != 207)
-			return true;
-
-		return false;
+		return getSpecies() >= 203 && getSpecies() <= 225 && getSpecies() != 207;
 	}
 
 	@dirty 
 	public boolean isWalkerSpecies() {
 		//Determine if creature is an ATST or ATAT.
-		if (species == 226)
-			return true;
-
-		return false;
-	} 
+		return getSpecies() == 226;
+	}
+	
+	@dirty
+	public boolean isProbotSpecies() {
+		return getSpecies() == 216;
+	}
 
 	@dirty
 	public native boolean hasEffectImmunity(byte effectType);
 
 	@dirty
 	public native boolean hasDotImmunity(unsigned int dotType);
-		
-	@read
-	public int getSpecies() {
-		return species;
-	}
 
-	@read
+	public abstract native int getSpecies();
+
 	public string getSpeciesName() {
+		int species = getSpecies();
 		if(species == 0)
 			return "human";
 		else if(species == 1)
@@ -1774,10 +1768,7 @@ class CreatureObject extends TangibleObject {
 			return "";
 	}
 
-	@read
-	public int getGender() {
-		return gender;
-	}
+	public native int getGender();
 	
 	@local
 	@dirty

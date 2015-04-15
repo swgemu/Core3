@@ -44,7 +44,8 @@
 
 object_creature_npc_theme_park_player_transport_theed_hangar = object_creature_npc_theme_park_shared_player_transport_theed_hangar:new {
 	optionsBitmask = 256,
-        zoneComponent = "ShuttleZoneComponent"
+	zoneComponent = "ShuttleZoneComponent",
+	species = 216
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_theme_park_player_transport_theed_hangar, "object/creature/npc/theme_park/player_transport_theed_hangar.iff")

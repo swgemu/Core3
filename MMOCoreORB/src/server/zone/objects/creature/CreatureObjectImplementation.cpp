@@ -219,8 +219,6 @@ void CreatureObjectImplementation::loadTemplateData(
 	SharedCreatureObjectTemplate* creoData =
 			dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
 
-	gender = creoData->getGender();
-	species = creoData->getSpecies();
 	slopeModPercent = creoData->getSlopeModPercent();
 	slopeModAngle = creoData->getSlopeModAngle();
 	swimHeight = creoData->getSwimHeight();
@@ -1501,7 +1499,7 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 		broadcastMessages(&messages, true);
 
-		if (isPlayerCreature() || isAiAgent()) {
+		if (!isProbotSpecies() && (isPlayerCreature() || isAiAgent())) {
 			switch (posture) {
 			case CreaturePosture::UPRIGHT:
 				sendStateCombatSpam("cbt_spam", "stand", 11);
@@ -3229,4 +3227,22 @@ bool CreatureObjectImplementation::hasDotImmunity(uint32 dotType) {
 	}
 
 	return false;
+}
+
+int CreatureObjectImplementation::getSpecies() {
+	SharedCreatureObjectTemplate* creoData = templateObject.castTo<SharedCreatureObjectTemplate*>().get();
+
+	if (creoData == NULL)
+		return -1;
+
+	return creoData->getSpecies();
+}
+
+int CreatureObjectImplementation::getGender() {
+	SharedCreatureObjectTemplate* creoData = templateObject.castTo<SharedCreatureObjectTemplate*>().get();
+
+	if (creoData == NULL)
+		return -1;
+
+	return creoData->getGender();
 }
