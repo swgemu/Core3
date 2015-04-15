@@ -45,7 +45,6 @@ which carries forward this exception.
 #ifndef FORCERUN1COMMAND_H_
 #define FORCERUN1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
 #include "JediQueueCommand.h"
 
 class ForceRun1Command : public JediQueueCommand {
@@ -53,26 +52,18 @@ public:
 
 	ForceRun1Command(const String& name, ZoneProcessServer* server)
 : JediQueueCommand(name, server) {
-
-	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
-
-		// Construct buffs.
-		Vector<uint32> buffCRCs;
-
 		// BuffCRC's, first one is used.
 		buffCRCs.add(BuffCRC::JEDI_FORCE_RUN_1);
 		buffCRCs.add(BuffCRC::JEDI_FORCE_RUN_2);
 		buffCRCs.add(BuffCRC::JEDI_FORCE_RUN_3);
 
-		// Construct Skillmods.
-		VectorMap<String, int> skillMods;
-
 		// Skill mods.
 		skillMods.put("force_run", 1);
+		skillMods.put("slope_move", 33);
+	}
 
-		int res = doJediSelfBuffCommand(creature, buffCRCs, skillMods);
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
+		int res = doJediSelfBuffCommand(creature);
 
 		// Return if something errored.
 		if (res != SUCCESS) {
