@@ -1,5 +1,6 @@
 dread_pirate = Creature:new {
 	objectName = "@mob/creature_names:naboo_dread_pirate",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "pirate",
 	faction = "",
 	level = 23,
@@ -27,7 +28,7 @@ dread_pirate = Creature:new {
 
 	templates = {"object/mobile/dressed_criminal_pirate_human_female_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

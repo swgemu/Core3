@@ -1,5 +1,6 @@
 bounty_hunter_thug = Creature:new {
 	objectName = "@mob/creature_names:bounty_hunter",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "mercenary",
 	faction = "",
 	level = 24,
@@ -26,7 +27,7 @@ bounty_hunter_thug = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_bountyhunter_trainer_03.iff",
-			"object/mobile/dressed_bounty_hunter_zabrak_female_01.iff"},
+		"object/mobile/dressed_bounty_hunter_zabrak_female_01.iff"},
 	lootGroups = {
 		{
 			groups = {

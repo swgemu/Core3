@@ -1,5 +1,6 @@
 common_thief = Creature:new {
 	objectName = "@mob/creature_names:common_thief",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 11,

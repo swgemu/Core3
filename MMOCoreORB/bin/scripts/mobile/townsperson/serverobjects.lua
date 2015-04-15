@@ -1,7 +1,5 @@
-
 includeFile("townsperson/agriculturalist.lua")
 includeFile("townsperson/artisan.lua")
-includeFile("townsperson/audience_member.lua")
 includeFile("townsperson/bartender.lua")
 includeFile("townsperson/businessman.lua")
 includeFile("townsperson/chassis_broker.lua")

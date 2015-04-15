@@ -1,5 +1,6 @@
 roughneck = Creature:new {
 	objectName = "@mob/creature_names:roughneck",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 7,
@@ -31,9 +32,9 @@ roughneck = Creature:new {
 	},
 	lootGroups = {
 		{
-	        	groups = {
+			groups = {
 				{group = "junk", chance = 3500000},
-				{group = "wearables_common", chance = 2000000},			
+				{group = "wearables_common", chance = 2000000},
 				{group = "armor_all", chance = 500000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},

@@ -1,5 +1,6 @@
 brigand = Creature:new {
 	objectName = "@mob/creature_names:brigand",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "brigand",
 	faction = "",
 	level = 4,
@@ -27,7 +28,7 @@ brigand = Creature:new {
 
 	templates = {"object/mobile/human_male.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},
@@ -41,7 +42,7 @@ brigand = Creature:new {
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/slang",
 	attacks = merge(marksmannovice,brawlernovice)
-	--outfit = "testoutfit"
+--outfit = "testoutfit"
 }
 
 CreatureTemplates:addCreatureTemplate(brigand, "brigand")

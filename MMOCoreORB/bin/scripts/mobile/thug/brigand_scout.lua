@@ -1,5 +1,6 @@
 brigand_scout = Creature:new {
 	objectName = "@mob/creature_names:brigand",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "brigand",
 	faction = "",
 	level = 13,
@@ -32,7 +33,7 @@ brigand_scout = Creature:new {
 		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff"
 	},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

@@ -1,5 +1,6 @@
 bith_sniper = Creature:new {
 	objectName = "@mob/creature_names:bith_sniper",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "bith",
 	faction = "",
 	level = 9,
@@ -27,7 +28,7 @@ bith_sniper = Creature:new {
 
 	templates = {"object/mobile/dressed_brigade_gunner_bith_male_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

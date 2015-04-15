@@ -1,5 +1,6 @@
 hermit = Creature:new {
 	objectName = "@mob/creature_names:hermit",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 4,

@@ -1,5 +1,6 @@
 binayre_pirate = Creature:new {
 	objectName = "@mob/creature_names:binayre_pirate",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "binayre",
 	faction = "binayre",
 	level = 15,
