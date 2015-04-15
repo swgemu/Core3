@@ -35,6 +35,7 @@ public:
 
 		duration = d.duration;
 		strength = d.strength;
+		timeStarted = d.timeStarted;
 
 		return *this;
 	}
