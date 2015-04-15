@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_25bb2574",
+        "filename": "MMOCoreORB/bin/scripts/mobile/quest/audience_member.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-15T03:48:23Z",
+      "side": 1,
+      "message": "Wasn\u0027t this style of random name generation deprecated?",
+      "revId": "5d7141452224eaa4b30bae824e9990ba53b77835",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
