@@ -1662,8 +1662,16 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			}
 		}
 
-		if (!failed)
+		if (!failed) {
+			if (effectType == CommandEffect::NEXTATTACKDELAY) {
+				StringIdChatParameter stringId("combat_effects", "delay_applied_other");
+				stringId.setTT(targetCreature);
+				stringId.setDI(effect.getStateLength());
+				creature->sendSystemMessage(stringId);
+			}
+
 			data.getCommand()->applyEffect(targetCreature, effectType, effect.getStateStrength(), data.getCommandCRC());
+		}
 
 		// can move this to scripts, but only these states have fail messages
 		if (failed) {
@@ -1676,10 +1684,10 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				creature->sendSystemMessage("@cbt_spam:posture_change_fail");
 				break;
 			case CommandEffect::NEXTATTACKDELAY:
-				creature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0 );
+				targetCreature->showFlyText("combat_effects", "warcry_miss", 0xFF, 0, 0 );
 				break;
 			case CommandEffect::INTIMIDATE:
-				creature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0 );
+				targetCreature->showFlyText("combat_effects", "intimidated_miss", 0xFF, 0, 0 );
 				break;
 			default:
 				break;

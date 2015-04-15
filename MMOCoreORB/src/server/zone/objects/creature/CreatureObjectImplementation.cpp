@@ -2317,6 +2317,9 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 			return;
 		}
 
+		// the intimidate flytext should show up everytime it succeeds
+		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
+
 		state->addSecondaryBuffCRC(crc);
 
 		if (state->getTimeLeft() < durationSeconds)
