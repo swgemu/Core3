@@ -110,7 +110,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
 #include "server/zone/objects/player/events/BountyHunterTefRemovalTask.h"
 #include "server/zone/objects/player/events/RemoveSpouseTask.h"
-#include "server/zone/objects/player/events/PvpHouseTefRemovalTask.h"
+#include "server/zone/objects/player/events/PvpTefRemovalTask.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
@@ -1968,13 +1968,18 @@ Time PlayerObjectImplementation::getLastPvpCombatActionTimestamp() {
 }
 
 void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp() {
+	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
+
+	if (parent == NULL)
+		return;
+
 	bool alreadyHasTef = hasPvpTef();
 
 	lastPvpCombatActionTimestamp.updateToCurrentTime();
 	lastPvpCombatActionTimestamp.addMiliTime(300000); // 5 minutes
 
 	if (pvpTefTask == NULL) {
-		pvpTefTask = new PvpHouseTefRemovalTask(_this.get());
+		pvpTefTask = new PvpTefRemovalTask(parent);
 	}
 
 	if (!pvpTefTask->isScheduled()) {
@@ -1983,6 +1988,7 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp() {
 
 	if (!alreadyHasTef) {
 		updateInRangeBuildingPermissions();
+		parent->setPvpStatusBit(CreatureFlag::TEF);
 	}
 }
 
