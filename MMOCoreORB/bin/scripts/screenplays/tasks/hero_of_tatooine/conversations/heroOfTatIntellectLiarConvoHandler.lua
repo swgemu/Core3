@@ -71,7 +71,7 @@ function heroOfTatIntellectLiarConvoHandler:runScreenHandlers(conversationTempla
 			end
 
 		elseif (screenID == "bye") then
-			clonedConversation:setDialogTextStringId("@quest/hero_of_tatooine/intellect_liar:bye" .. getRandomNumber(11))
+			clonedConversation:setDialogTextStringId("@quest/hero_of_tatooine/intellect_liar:bye_" .. getRandomNumber(11))
 		end
 
 		return conversationScreen
