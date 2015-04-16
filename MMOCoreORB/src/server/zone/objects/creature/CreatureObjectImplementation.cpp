@@ -2061,6 +2061,7 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 		return;
 
 	getZoneServer()->getPlayerManager()->fixHAM(_this.get());
+	getZoneServer()->getPlayerManager()->fixBuffSkillMods(_this.get());
 
 	for (int i = 0; i < creatureBuffs.getBuffListSize(); ++i) {
 		ManagedReference<Buff*> buff = creatureBuffs.getBuffByIndex(i);

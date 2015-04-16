@@ -208,8 +208,8 @@ void GroupManager::joinGroup(CreatureObject* player) {
 
 	player->info("joining group");
 
-	group->addMember(player);
 	player->updateGroup(group);
+	group->addMember(player);
 
 	if (player->isPlayerCreature()) {
 		player->sendSystemMessage("@group:joined_self");

@@ -3413,6 +3413,41 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 	}
 }
 
+void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
+	Locker locker(player);
+
+	try {
+		GroupObject* grp = player->getGroup();
+		if (grp != NULL)
+			GroupManager::instance()->leaveGroup(grp, player);
+
+		Reference<Buff*> buff = player->getBuff(String("squadleader").hashCode());
+		if (buff != NULL)
+			player->removeBuff(buff);
+
+		if (player->getSkillModList() == NULL)
+			return;
+
+		SkillModGroup* smodGroup = player->getSkillModList()->getSkillModGroup(SkillModManager::BUFF);
+		smodGroup->removeAll();
+
+		BuffList* buffs = player->getBuffList();
+
+		for (int i = 0; i < buffs->getBuffListSize(); i++) {
+			ManagedReference<Buff*> buff = buffs->getBuffByIndex(i);
+
+			buff->applySkillModifiers();
+		}
+
+		if (grp != NULL && grp->getLeader() != NULL) {
+			player->updateGroupInviterID(grp->getLeader()->getObjectID());
+			GroupManager::instance()->joinGroup(player);
+		}
+	} catch (Exception& e) {
+		error(e.getMessage());
+	}
+}
+
 bool PlayerManagerImplementation::promptTeachableSkills(CreatureObject* teacher, SceneObject* target) {
 	if (target == NULL || !target->isPlayerCreature()) {
 		teacher->sendSystemMessage("@teaching:no_target"); //Whom do you want to teach?

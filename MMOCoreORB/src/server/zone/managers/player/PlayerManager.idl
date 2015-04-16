@@ -416,6 +416,7 @@ class PlayerManager extends Observer implements Logger {
 	//public native int getOnlineCharCount(unsigned int accountId);
 
 	public native void fixHAM(CreatureObject player);
+	public native void fixBuffSkillMods(CreatureObject player);
 
 	/**
 	 * Sends a confirmation box to the student asking if they want to learn the skill.
