@@ -10,6 +10,7 @@
 
 
 #include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/SingleUseBuff.h"
 #include "QueueCommand.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -23,6 +24,7 @@ protected:
 	float speedMod;
 
 	Vector<uint32> buffCRCs;
+	Vector<unsigned int> eventTypes;
 
 public:
 	JediQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
@@ -98,12 +100,20 @@ public:
 		// Check for current buff and other buffs supplied in the vector. If they have any, return error.
 		for (int i=0; i < buffCRCs.size(); ++i) {
 			if (creature->hasBuff(buffCRCs.get(i))) {
+				creature->sendSystemMessage("@jedi_spam:force_buff_present");
 				return NULL;
 			}
 		}
 
 		// Create buff object.
-		ManagedReference<Buff*> buff = new Buff(creature, buffCRCs.get(0), duration, BuffType::JEDI);
+		ManagedReference<Buff*> buff = NULL;
+
+		// If it does not have any eventTypes, it's a regular Buff.
+		if (eventTypes.size() <= 0) {
+			buff = new Buff(creature, buffCRCs.get(0), duration, BuffType::JEDI);
+		} else { // Otherwise it's a SingleUseBuff
+			buff = new SingleUseBuff(creature, buffCRCs.get(0), duration, BuffType::JEDI, name);
+		}
 
 		if (speedMod > 0) {
 			buff->setSpeedMultiplierMod(speedMod);
@@ -118,6 +128,10 @@ public:
 
 		for (int i=0; i < skillMods.size(); ++i) {
 			buff->setSkillModifier(skillMods.elementAt(i).getKey(), skillMods.elementAt(i).getValue());
+		}
+
+		for (int i=0; i < eventTypes.size(); ++i) {
+			buff->init(&eventTypes);
 		}
 
 		return buff;
