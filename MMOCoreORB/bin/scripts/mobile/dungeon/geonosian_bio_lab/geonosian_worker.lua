@@ -1,6 +1,5 @@
 geonosian_worker = Creature:new {
 	objectName = "@mob/creature_names:geonosian_worker",
-	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "geonosian",
 	faction = "",
 	level = 44,
