@@ -1,5 +1,6 @@
 bh_untrained_wielder_of_the_dark_side = Creature:new {
 	objectName = "@mob/creature_names:untrained_wielder_of_the_dark_side",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "kun",
 	faction = "",
 	level = 65,
@@ -53,7 +54,7 @@ bh_untrained_wielder_of_the_dark_side = Creature:new {
 				{group = "clothing_attachments", chance = 1500000}
 			},
 			lootChance = 6000000
-		}			
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

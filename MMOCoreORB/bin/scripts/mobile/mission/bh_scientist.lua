@@ -1,5 +1,6 @@
 bh_scientist = Creature:new {
 	objectName = "@mob/creature_names:scientist",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
 	faction = "townsperson",
 	level = 34,
@@ -25,13 +26,13 @@ bh_scientist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_combatmedic_trainer_human_male_01.iff", 
-			"object/mobile/dressed_brigade_captain_human_male_01.iff",
-			"object/mobile/dressed_hutt_medic2_twilek_male_01.iff",
-			"object/mobile/dressed_combatmedic_trainer_human_female_01.iff",
-			"object/mobile/dressed_doctor_trainer_moncal_male_01.iff",
-			"object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff",
-			"object/mobile/dressed_mercenary_medic_rodian_female_01.iff" },
+	templates = {"object/mobile/dressed_combatmedic_trainer_human_male_01.iff",
+		"object/mobile/dressed_brigade_captain_human_male_01.iff",
+		"object/mobile/dressed_hutt_medic2_twilek_male_01.iff",
+		"object/mobile/dressed_combatmedic_trainer_human_female_01.iff",
+		"object/mobile/dressed_doctor_trainer_moncal_male_01.iff",
+		"object/mobile/dressed_combatmedic_trainer_rodian_male_01.iff",
+		"object/mobile/dressed_mercenary_medic_rodian_female_01.iff" },
 	lootGroups = {
 		{
 			groups = {

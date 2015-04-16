@@ -1,6 +1,7 @@
 frontiersman = Creature:new {
 	objectName = "",
-	customName = "Frontiersman",
+	randomNameType = NAME_GENERIC_TAG,
+	customName = "a Frontiersman",
 	socialGroup = "wilder",
 	faction = "",
 	level = 17,
@@ -27,9 +28,9 @@ frontiersman = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
-			     "object/mobile/dressed_criminal_thug_bothan_female_01.iff"},
+		"object/mobile/dressed_criminal_thug_bothan_female_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

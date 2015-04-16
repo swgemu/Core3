@@ -1,5 +1,6 @@
 swooper_gangmember = Creature:new {
-	objectName = "@mob/creature_names:swooper",
+	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "a swooper gangmember",
 	socialGroup = "cor_swoop",
 	faction = "cor_swoop",
@@ -27,7 +28,7 @@ swooper_gangmember = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_swooper_zabrak_female_01.iff",
-				"object/mobile/dressed_criminal_swooper_human_male_01.iff"},
+		"object/mobile/dressed_criminal_swooper_human_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {

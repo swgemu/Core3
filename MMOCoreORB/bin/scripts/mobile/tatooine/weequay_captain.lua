@@ -1,5 +1,6 @@
 weequay_captain = Creature:new {
 	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "Weequay Captain",
 	socialGroup = "weequay",
 	faction = "",

@@ -1,5 +1,6 @@
 bh_dark_adept = Creature:new {
 	objectName = "@mob/creature_names:dark_adept",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "dark_jedi",
 	faction = "",
 	level = 120,

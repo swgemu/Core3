@@ -1,5 +1,6 @@
 borvos_soldier = Creature:new {
 	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "Borvo's Soldier",
 	socialGroup = "borvo",
 	faction = "borvo",

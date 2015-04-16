@@ -1,5 +1,6 @@
 bh_mercenary_warlord = Creature:new {
 	objectName = "@mob/creature_names:mercenary_warlord",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "lok_mercenaries",
 	faction = "lok_mercenaries",
 	level = 44,
@@ -29,7 +30,7 @@ bh_mercenary_warlord = Creature:new {
 		"object/mobile/dressed_mercenary_warlord_hum_m.iff",
 		"object/mobile/dressed_mercenary_warlord_nikto_m.iff",
 		"object/mobile/dressed_mercenary_warlord_wee_m.iff"
-		},
+	},
 	lootGroups = {
 		{
 			groups = {

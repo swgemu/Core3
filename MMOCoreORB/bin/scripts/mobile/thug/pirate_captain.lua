@@ -1,5 +1,6 @@
 pirate_captain = Creature:new {
 	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "a Pirate Captain",
 	socialGroup = "pirate",
 	faction = "",
@@ -47,7 +48,7 @@ pirate_captain = Creature:new {
 		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff"
 	},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

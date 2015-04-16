@@ -1,5 +1,6 @@
 rogue_marauder = Creature:new {
 	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "a Rogue Marauder",
 	socialGroup = "self",
 	faction = "",
@@ -27,11 +28,11 @@ rogue_marauder = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dressed_marauder.iff",
-			"object/mobile/marauder_male.iff",
-			"object/mobile/marauder_male_02.iff",
-			"object/mobile/marauder_male_03.iff",
-			"object/mobile/marauder_female.iff"
+		"object/mobile/dressed_marauder.iff",
+		"object/mobile/marauder_male.iff",
+		"object/mobile/marauder_male_02.iff",
+		"object/mobile/marauder_male_03.iff",
+		"object/mobile/marauder_female.iff"
 	},
 	lootGroups = {
 		{

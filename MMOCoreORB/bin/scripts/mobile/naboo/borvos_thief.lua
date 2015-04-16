@@ -1,5 +1,6 @@
 borvos_thief = Creature:new {
 	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "Borvo's Thief",
 	socialGroup = "borvo",
 	faction = "borvo",
@@ -28,7 +29,7 @@ borvos_thief = Creature:new {
 
 	templates = {"object/mobile/dressed_borvos_thief.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "color_crystals", chance = 200000},

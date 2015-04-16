@@ -1,5 +1,6 @@
 stormtrooper_black_hole = Creature:new {
 	objectName = "",
+	randomNameType = NAME_STORMTROOPER_TAG,
 	customName = "a Black Hole Stormtrooper",
 	socialGroup = "imperial",
 	faction = "imperial",
@@ -47,7 +48,7 @@ stormtrooper_black_hole = Creature:new {
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/stormtrooper",
-	personalityStf = "@hireling/hireling_stormtrooper",		
+	personalityStf = "@hireling/hireling_stormtrooper",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 

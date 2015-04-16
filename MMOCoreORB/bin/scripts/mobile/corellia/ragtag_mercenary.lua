@@ -1,5 +1,6 @@
 ragtag_mercenary = Creature:new {
 	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "a Ragtag mercenary",
 	socialGroup = "ragtag",
 	faction = "thug",
@@ -26,11 +27,11 @@ ragtag_mercenary = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-				"object/mobile/dressed_hoodlum_zabrak_male_01.iff",
-				"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
-				"object/mobile/dressed_villain_trandoshan_male_01.iff",
-				"object/mobile/dressed_criminal_thug_rodian_male_01.iff"
-				},
+		"object/mobile/dressed_hoodlum_zabrak_male_01.iff",
+		"object/mobile/dressed_criminal_thug_rodian_female_01.iff",
+		"object/mobile/dressed_villain_trandoshan_male_01.iff",
+		"object/mobile/dressed_criminal_thug_rodian_male_01.iff"
+	},
 	lootGroups = {
 		{
 			groups = {
