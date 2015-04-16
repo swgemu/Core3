@@ -1,6 +1,7 @@
 herald_selonian_diplomat = Creature:new {
 	objectName = "",
-	customName = "Selonian Diplomat",
+	randomNameType = NAME_GENERIC_TAG,
+	customName = "a Selonian Diplomat",
 	socialGroup = "selonian",
 	faction = "",
 	level = 14,

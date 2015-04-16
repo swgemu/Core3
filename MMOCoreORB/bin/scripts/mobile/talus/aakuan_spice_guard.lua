@@ -1,5 +1,6 @@
 aakuan_spice_guard = Creature:new {
 	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "an Aa'kuan Spice Guard",
 	socialGroup = "aakuans",
 	faction = "aakuans",

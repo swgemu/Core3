@@ -1,5 +1,6 @@
 bh_terrorist = Creature:new {
 	objectName = "@mob/creature_names:terrorist",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 17,

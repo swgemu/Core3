@@ -1,5 +1,6 @@
 bh_bodyguard = Creature:new {
 	objectName = "@mob/creature_names:bodyguard",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "thug",
 	faction = "thug",
 	level = 7,
@@ -26,15 +27,15 @@ bh_bodyguard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-					"object/mobile/dressed_tatooine_desert_demon_bodyguard.iff",
-					"object/mobile/dressed_mugger.iff",
-					"object/mobile/dressed_hoodlum_zabrak_female_01.iff",
-					"object/mobile/dressed_robber_twk_male_01.iff",
-					"object/mobile/dressed_criminal_thug_human_female_01.iff",
-					"object/mobile/dressed_robber_twk_female_01.iff",
-					"object/mobile/dressed_crook_zabrak_male_01.iff",
-					"object/mobile/dressed_hooligan_rodian_female_01.iff"
-				},
+		"object/mobile/dressed_tatooine_desert_demon_bodyguard.iff",
+		"object/mobile/dressed_mugger.iff",
+		"object/mobile/dressed_hoodlum_zabrak_female_01.iff",
+		"object/mobile/dressed_robber_twk_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_female_01.iff",
+		"object/mobile/dressed_robber_twk_female_01.iff",
+		"object/mobile/dressed_crook_zabrak_male_01.iff",
+		"object/mobile/dressed_hooligan_rodian_female_01.iff"
+	},
 	lootGroups = {
 		{
 			groups = {

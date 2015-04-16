@@ -1,5 +1,6 @@
 bh_pirate_leader = Creature:new {
 	objectName = "@mob/creature_names:pirate_leader",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "pirate",
 	faction = "pirate",
 	level = 17,

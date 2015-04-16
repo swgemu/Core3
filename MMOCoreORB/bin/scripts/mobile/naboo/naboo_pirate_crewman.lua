@@ -1,6 +1,7 @@
 naboo_pirate_crewman = Creature:new {
 	objectName = "",
-	customName = "Pirate Crewman",
+	randomNameType = NAME_GENERIC_TAG,
+	customName = "a Pirate Crewman",
 	socialGroup = "naboo_pirate",
 	faction = "naboo_pirate",
 	level = 10,

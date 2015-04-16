@@ -1,5 +1,6 @@
 informant_npc = Creature:new {
 	objectName = "@mob/creature_names:spynet_operative",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "",
 	faction = "",
 	level = 100,
@@ -27,7 +28,7 @@ informant_npc = Creature:new {
 
 	templates = {"object/mobile/dressed_hutt_informant_quest.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5000000},
 				{group = "carbines", chance = 1000000},
@@ -38,7 +39,7 @@ informant_npc = Creature:new {
 				{group = "wearables_uncommon", chance = 500000}
 			},
 			lootChance = 3000000
-		}	
+		}
 	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "informant_npc",

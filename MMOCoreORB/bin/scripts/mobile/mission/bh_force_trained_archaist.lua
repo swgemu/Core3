@@ -1,5 +1,6 @@
 bh_force_trained_archaist = Creature:new {
 	objectName = "@mob/creature_names:force_trained_archaist",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "force",
 	faction = "",
 	level = 90,
@@ -52,7 +53,7 @@ bh_force_trained_archaist = Creature:new {
 				{group = "clothing_attachments", chance = 1500000}
 			},
 			lootChance = 6000000
-		}			
+		}
 	},
 	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",

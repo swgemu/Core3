@@ -1,5 +1,6 @@
 veteran_explorer = Creature:new {
 	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "a Veteran Explorer",
 	socialGroup = "wilder",
 	faction = "",
@@ -28,7 +29,7 @@ veteran_explorer = Creature:new {
 
 	templates = {"object/mobile/dressed_hutt_expedition_force_member.iff"},
 	lootGroups = {
-      		{
+		{
 			groups = {
 				{group = "junk", chance = 4000000},
 				{group = "wearables_common", chance = 3000000},

@@ -1,5 +1,6 @@
 bh_canyon_corsair_cutthroat = Creature:new {
 	objectName = "@mob/creature_names:canyon_corsair_cutthroat",
+	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "canyon_corsair",
 	faction = "canyon_corsair",
 	level = 35,
@@ -30,8 +31,8 @@ bh_canyon_corsair_cutthroat = Creature:new {
 		"object/mobile/dressed_corsair_cutthroat_hum_m.iff",
 		"object/mobile/dressed_corsair_cutthroat_wee_m.iff",
 		"object/mobile/dressed_corsair_cutthroat_zab_m.iff"
-		},
-	
+	},
+
 	lootGroups = {
 		{
 			groups = {

@@ -1,5 +1,6 @@
 cobral_hooligan = Creature:new {
 	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "a Neo-Cobral Hooligan",
 	socialGroup = "cobral",
 	faction = "cobral",
@@ -30,7 +31,7 @@ cobral_hooligan = Creature:new {
 		"object/mobile/dressed_cobral_hooligan_bith_male_01.iff",
 		"object/mobile/dressed_cobral_hooligan_bith_female_01.iff"},
 	lootGroups = {
-      	{
+		{
 			groups = {
 				{group = "junk", chance = 3000000},
 				{group = "wearables_common", chance = 2000000},

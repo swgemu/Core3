@@ -1,5 +1,6 @@
 pirate_privateer = Creature:new {
 	objectName = "",
+	randomNameType = NAME_GENERIC_TAG,
 	customName = "a Privateer Pirate",
 	socialGroup = "pirate",
 	faction = "",
