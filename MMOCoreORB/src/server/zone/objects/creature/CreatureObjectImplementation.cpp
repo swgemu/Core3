@@ -2845,6 +2845,9 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (areInDuel)
 		return true;
 
+	if (getGroupID() != 0 && getGroupID() == object->getGroupID())
+		return false;
+
 	if ((pvpStatusBitmask & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT) && object->getFaction() != getFaction())
 		return true;
 

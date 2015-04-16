@@ -10,6 +10,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
 
 QueueCommand::QueueCommand(const String& skillname, ZoneProcessServer* serv) : Logger() {
 	server = serv;
@@ -220,7 +221,8 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 	if (target->isPlayerCreature()) {
 		PlayerObject* targetGhost = target->getPlayerObject().get();
 
-		if (targetGhost != NULL && targetGhost->getFactionStatus() == FactionStatus::OVERT) {
+		if (!CombatManager::instance()->areInDuel(creature, target)
+				&& targetGhost != NULL && targetGhost->getFactionStatus() == FactionStatus::OVERT) {
 			ghost->updateLastPvpCombatActionTimestamp();
 		}
 	} else if (target->isPet()) {
@@ -229,7 +231,8 @@ void QueueCommand::checkForTef(CreatureObject* creature, CreatureObject* target)
 		if (owner != NULL && owner->isPlayerCreature()) {
 			PlayerObject* ownerGhost = owner->getPlayerObject().get();
 
-			if (ownerGhost != NULL && ownerGhost->getFactionStatus() == FactionStatus::OVERT) {
+			if (!CombatManager::instance()->areInDuel(creature, owner)
+					&& ownerGhost != NULL && ownerGhost->getFactionStatus() == FactionStatus::OVERT) {
 				ghost->updateLastPvpCombatActionTimestamp();
 			}
 		}
