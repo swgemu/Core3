@@ -87,6 +87,8 @@ public:
 			return;
 		}
 
+		Locker locker(playerRef);
+
 		switch (time) {
 		case 20:
 			playerRef->sendSystemMessage("@mission/mission_generic:probe_droid_launch_prep");
@@ -117,7 +119,10 @@ public:
 			break;
 		case -1:
 			objectiveRef->setArakydDroid(NULL);
-			droid->destroyObjectFromWorld(true);
+			if (droid != NULL) {
+				Locker clocker(droid, playerRef);
+				droid->destroyObjectFromWorld(true);
+			}
 			break;
 		default:
 			error("Unknowns state.");
