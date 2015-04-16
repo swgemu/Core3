@@ -10,6 +10,7 @@
 
 
 #include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/SingleUseBuff.h"
 #include "QueueCommand.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -23,6 +24,7 @@ protected:
 	float speedMod;
 
 	Vector<uint32> buffCRCs;
+	Vector<uint32> eventTypes;
 
 public:
 	JediQueueCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
@@ -48,14 +50,11 @@ public:
 		if (res != SUCCESS)
 			return res;
 
-		ManagedReference<Buff*> buff = createJediSelfBuff(creature);
+		// Create Buff.
+		int buff = createJediSelfBuff(creature);
 
-		// Return if buff is NOT valid.
-		if (buff == NULL)
-			return GENERALERROR;
-
-		// Add buff.
-		creature->addBuff(buff);
+		if (buff != SUCCESS)
+			return buff;
 
 		// Force Cost.
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
@@ -93,17 +92,28 @@ public:
 		return SUCCESS;
 	}
 
-	ManagedReference<Buff*> createJediSelfBuff(CreatureObject* creature) const {
+	int createJediSelfBuff(CreatureObject* creature) const {
 
 		// Check for current buff and other buffs supplied in the vector. If they have any, return error.
 		for (int i=0; i < buffCRCs.size(); ++i) {
 			if (creature->hasBuff(buffCRCs.get(i))) {
-				return NULL;
+				creature->sendSystemMessage("@jedi_spam:force_buff_present");
+				return GENERALERROR;
 			}
 		}
 
 		// Create buff object.
-		ManagedReference<Buff*> buff = new Buff(creature, buffCRCs.get(0), duration, BuffType::JEDI);
+		ManagedReference<Buff*> buff = NULL;
+
+		if (eventTypes.size() > 0) {
+			SingleUseBuff* buff = new SingleUseBuff(creature, buffCRCs.get(0), duration, BuffType::JEDI, nameCRC);
+			buff->init(&eventTypes);
+		} else {
+			buff = new Buff(creature, buffCRCs.get(0), duration, BuffType::JEDI);
+		}
+
+		if (buff == NULL)
+			return GENERALERROR;
 
 		if (speedMod > 0) {
 			buff->setSpeedMultiplierMod(speedMod);
@@ -120,7 +130,10 @@ public:
 			buff->setSkillModifier(skillMods.elementAt(i).getKey(), skillMods.elementAt(i).getValue());
 		}
 
-		return buff;
+		// Add buff.
+		creature->addBuff(buff);
+
+		return SUCCESS;
 	}
 
 	void setForceCost(int fc) {
