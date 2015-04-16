@@ -1,7 +1,7 @@
 factional_imperial_destroy_missions = {
 
 	lairSpawns = {
-		{
+		--[[{
 			lairTemplateName = "rebel_detachment",
 			minDifficulty = 7,
 			maxDifficulty = 11,
@@ -36,7 +36,7 @@ factional_imperial_destroy_missions = {
 			minDifficulty = 21,
 			maxDifficulty = 28,
 			size = 25,
-		},
+		},]]
 	}
 }
 

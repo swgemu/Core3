@@ -1,7 +1,7 @@
 factional_neutral_destroy_missions = {
 
 	lairSpawns = {
-		{
+		--[[{
 			lairTemplateName = "criminal_base",
 			minDifficulty = 6,
 			maxDifficulty = 8,
@@ -12,7 +12,7 @@ factional_neutral_destroy_missions = {
 			minDifficulty = 7,
 			maxDifficulty = 9,
 			size = 25,
-		},
+		},]]
 	}
 }
 

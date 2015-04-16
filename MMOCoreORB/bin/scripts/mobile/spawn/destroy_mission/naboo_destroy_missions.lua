@@ -62,12 +62,6 @@ naboo_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "borvos_camp",
-			minDifficulty = 7,
-			maxDifficulty = 16,
-			size = 25,
-		},
-		{
 			lairTemplateName = "naboo_krevol_lair_neutral_boss_02",
 			minDifficulty = 8,
 			maxDifficulty = 12,
@@ -80,14 +74,8 @@ naboo_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "mauler_gang",
-			minDifficulty = 10,
-			maxDifficulty = 18,
-			size = 25,
-		},
-		{
-			lairTemplateName = "veermok_forest",
-			minDifficulty = 11,
+			lairTemplateName = "naboo_veermok_camp_neutral_medium",
+			minDifficulty = 9,
 			maxDifficulty = 15,
 			size = 25,
 		},
@@ -113,12 +101,6 @@ naboo_destroy_missions = {
 			lairTemplateName = "naboo_plains_tusk_cat_pride_neutral_medium",
 			minDifficulty = 14,
 			maxDifficulty = 18,
-			size = 25,
-		},
-		{
-			lairTemplateName = "borvos_gang",
-			minDifficulty = 14,
-			maxDifficulty = 24,
 			size = 25,
 		},
 		{
@@ -152,7 +134,7 @@ naboo_destroy_missions = {
 			size = 30,
 		},
 		{
-			lairTemplateName = "fambaa",
+			lairTemplateName = "naboo_fambaa_lair_neutral_large_boss_01",
 			minDifficulty = 30,
 			maxDifficulty = 38,
 			size = 35,

@@ -32,39 +32,15 @@ tatooine_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "jabba_swooper_camp",
-			minDifficulty = 6,
-			maxDifficulty = 10,
-			size = 25,
-		},
-		{
 			lairTemplateName = "tatooine_rockmite_click_neutral_small",
 			minDifficulty = 7,
 			maxDifficulty = 9,
 			size = 25,
 		},
 		{
-			lairTemplateName = "valarian_camp",
-			minDifficulty = 7,
-			maxDifficulty = 11,
-			size = 25,
-		},
-		{
-			lairTemplateName = "weequay_tribe_camp",
-			minDifficulty = 8,
-			maxDifficulty = 13,
-			size = 25,
-		},
-		{
 			lairTemplateName = "tatooine_cupa_cupa_neutral_medium_boss_01",
 			minDifficulty = 9,
 			maxDifficulty = 13,
-			size = 25,
-		},
-		{
-			lairTemplateName = "valarian_swooper_camp",
-			minDifficulty = 9,
-			maxDifficulty = 14,
 			size = 25,
 		},
 		{

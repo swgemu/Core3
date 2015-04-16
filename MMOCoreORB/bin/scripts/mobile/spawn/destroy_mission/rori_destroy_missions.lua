@@ -74,12 +74,6 @@ rori_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "pugoriss",
-			minDifficulty = 12,
-			maxDifficulty = 16,
-			size = 25,
-		},
-		{
 			lairTemplateName = "rori_chared_krevol_lair_neutral_medium",
 			minDifficulty = 13,
 			maxDifficulty = 17,
@@ -95,6 +89,12 @@ rori_destroy_missions = {
 			lairTemplateName = "rori_swamp_tusk_cat_pride_neutral_medium",
 			minDifficulty = 14,
 			maxDifficulty = 19,
+			size = 25,
+		},
+		{
+			lairTemplateName = "rori_elder_pugoriss_lair_neutral_medium_boss_01",
+			minDifficulty = 14,
+			maxDifficulty = 20,
 			size = 25,
 		},
 		{

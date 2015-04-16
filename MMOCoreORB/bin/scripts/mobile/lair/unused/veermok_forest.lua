@@ -1,4 +1,4 @@
-global_commoner_neutral_none = Lair:new {
+veermok_forest = Lair:new {
 	mobiles = {},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
@@ -6,7 +6,6 @@ global_commoner_neutral_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
-	buildingType = "none"
 }
 
-addLairTemplate("global_commoner_neutral_none", global_commoner_neutral_none)
+addLairTemplate("veermok_forest", veermok_forest)

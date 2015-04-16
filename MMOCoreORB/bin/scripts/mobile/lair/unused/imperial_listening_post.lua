@@ -1,4 +1,4 @@
-global_commoner_neutral_none = Lair:new {
+imperial_listening_post = Lair:new {
 	mobiles = {},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
@@ -6,7 +6,6 @@ global_commoner_neutral_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
-	buildingType = "none"
 }
 
-addLairTemplate("global_commoner_neutral_none", global_commoner_neutral_none)
+addLairTemplate("imperial_listening_post", imperial_listening_post)
