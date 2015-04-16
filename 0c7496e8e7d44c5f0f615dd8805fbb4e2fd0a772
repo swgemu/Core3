@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_80a087f5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb1Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-16T19:52:08Z",
+      "side": 1,
+      "message": "This is no longer needed.",
+      "revId": "0c7496e8e7d44c5f0f615dd8805fbb4e2fd0a772",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_60a58b03",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb1Command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-16T19:52:08Z",
+      "side": 1,
+      "message": "This is no longer needed.",
+      "revId": "0c7496e8e7d44c5f0f615dd8805fbb4e2fd0a772",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_40aa8fd5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-16T19:52:08Z",
+      "side": 1,
+      "message": "size can\u0027t be less than 0",
+      "revId": "0c7496e8e7d44c5f0f615dd8805fbb4e2fd0a772",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_00ac97ec",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-16T19:52:08Z",
+      "side": 1,
+      "message": "The last command is supposed to be a CRC.",
+      "revId": "0c7496e8e7d44c5f0f615dd8805fbb4e2fd0a772",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_20af93e5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1005
+      },
+      "writtenOn": "2015-04-16T19:52:08Z",
+      "side": 1,
+      "message": "Why is this in a for loop? You should put this up in the else statement (just after you declare the buff a SingleUseBuff). You\u0027re also going to need to case buff to SingleUseBuff to be able to have access to this init overload.",
+      "revId": "0c7496e8e7d44c5f0f615dd8805fbb4e2fd0a772",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
