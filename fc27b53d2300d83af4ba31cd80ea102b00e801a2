@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_20967395",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2015-04-16T21:30:23Z",
+      "side": 1,
+      "message": "go to SingleBuff.idl\n\nchange \npublic void init(Vector\u003cunsigned int\u003e events)\nto\npublic void init(final Vector\u003cunsigned int\u003e events)\n\nthen you can pass \u0026eventType instead of doing this cloning bs",
+      "revId": "fc27b53d2300d83af4ba31cd80ea102b00e801a2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
