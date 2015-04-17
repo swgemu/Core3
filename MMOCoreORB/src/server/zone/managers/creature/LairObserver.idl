@@ -69,6 +69,7 @@ class LairObserver extends SpawnObserver {
 
 	public native void notifyDestruction(TangibleObject lair, TangibleObject attacker, int condition);
 
+	@arg1preLocked
 	public abstract native boolean checkForNewSpawns(TangibleObject lair, TangibleObject attacker, boolean forceSpawn = false);
 	public native void healLair(TangibleObject lair, TangibleObject attacker);
 	public abstract native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);

@@ -1584,7 +1584,7 @@ void AiAgentImplementation::doMovement() {
 
 bool AiAgentImplementation::generatePatrol(int num, float dist) {
 	clearPatrolPoints();
-	savedPatrolPoints.removeAll();
+	clearSavedPatrolPoints();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
@@ -1710,7 +1710,7 @@ int AiAgentImplementation::setDestination() {
 	case AiAgent::PATROLLING:
 		if (getPatrolPointSize() == 0) {
 			setPatrolPoints(savedPatrolPoints);
-			savedPatrolPoints.removeAll();
+			clearSavedPatrolPoints();
 		}
 
 		break;

@@ -421,6 +421,8 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 			return 1;
 		}
 
+		Locker locker(controlDevice);
+
 		String templateToSpawn = creatureManager->getTemplateToSpawn(mobileTemplate.hashCode());
 		ManagedReference<CreatureObject*> creatureObject = creatureManager->createCreature(templateToSpawn.hashCode(), true, 0 );
 		if( creatureObject == NULL ) {
@@ -428,6 +430,8 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 			player->sendSystemMessage("wrong pet template;mobileTemplate=[" + mobileTemplate + "]" );
 			return 1;
 		}
+
+		Locker clocker(creatureObject, player);
 
 		ManagedReference<Creature*> pet = creatureObject.castTo<Creature*>();
 		if( pet == NULL ) {
@@ -473,14 +477,12 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 			return 1;
 		}
 
-		Locker crossLocker(pet, player);
-
 		datapad->broadcastObject(controlDevice, true);
 		controlDevice->growPet(player,true);
 		controlDevice->callObject(player);
 
 		//Remove the deed from it's container.
-		ManagedReference<SceneObject*> deedContainer = getParent();
+		ManagedReference<SceneObject*> deedContainer = getParent().get();
 
 		if (deedContainer != NULL) {
 			destroyObjectFromWorld(true);
