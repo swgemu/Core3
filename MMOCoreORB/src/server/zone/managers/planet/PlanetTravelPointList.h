@@ -20,6 +20,14 @@ public:
 		setNullValue(NULL);
 	}
 
+	Reference<PlanetTravelPoint*> get(int index) {
+		Locker guard(this);
+
+		Reference<PlanetTravelPoint*> point = VectorMap<String, Reference<PlanetTravelPoint*> >::get(index);
+
+		return point;
+	}
+
 	void insertToMessage(BaseMessage* message, PlanetTravelPoint* origin) {
 		rlock();
 
@@ -28,7 +36,7 @@ public:
 		int insertionPoints = totalPoints;
 
 		for (int i = 0; i < totalPoints; ++i) {
-			Reference<PlanetTravelPoint*> ptp = get(i);
+			Reference<PlanetTravelPoint*> ptp = VectorMap<String, Reference<PlanetTravelPoint*> >::get(i);
 			incomingAllowed[i] = ptp->isIncomingAllowed();
 			if (!incomingAllowed[i])
 				insertionPoints--;
@@ -38,14 +46,14 @@ public:
 
 		for (int i = 0; i < totalPoints; ++i) {
 			if (incomingAllowed[i])
-				message->insertAscii(get(i)->getPointName());
+				message->insertAscii(VectorMap<String, Reference<PlanetTravelPoint*> >::get(i)->getPointName());
 		}
 
 		message->insertInt(insertionPoints);
 
 		for (int i = 0; i < totalPoints; ++i) {
 			if (incomingAllowed[i]) {
-				Reference<PlanetTravelPoint*> ptp = get(i);
+				Reference<PlanetTravelPoint*> ptp = VectorMap<String, Reference<PlanetTravelPoint*> >::get(i);
 				message->insertFloat(ptp->getArrivalPositionX());
 				message->insertFloat(ptp->getArrivalPositionZ());
 				message->insertFloat(ptp->getArrivalPositionY());
@@ -56,7 +64,7 @@ public:
 
 		for (int i = 0; i < totalPoints; ++i){
 			if (incomingAllowed[i]) {
-				Reference<PlanetTravelPoint*> ptp = get(i);
+				Reference<PlanetTravelPoint*> ptp = VectorMap<String, Reference<PlanetTravelPoint*> >::get(i);
 				ManagedReference<CreatureObject*> shuttle = ptp->getShuttle();
 				if(shuttle == NULL){
 					message->insertInt(0);
@@ -80,7 +88,7 @@ public:
 
 		for (int i = 0; i < totalPoints; ++i) {
 			if (incomingAllowed[i])
-				message->insertByte((byte) get(i)->isInterplanetary());
+				message->insertByte((byte) VectorMap<String, Reference<PlanetTravelPoint*> >::get(i)->isInterplanetary());
 		}
 
 		runlock();
