@@ -6,6 +6,7 @@ naboo_borvos_fort_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/naboo_borvos_large1.iff","object/building/poi/naboo_borvos_large2.iff","object/building/poi/naboo_borvos_large3.iff"},
 	buildingsHard = {"object/building/poi/naboo_borvos_large1.iff","object/building/poi/naboo_borvos_large2.iff","object/building/poi/naboo_borvos_large3.iff"},
 	buildingsVeryHard = {"object/building/poi/naboo_borvos_large1.iff","object/building/poi/naboo_borvos_large2.iff","object/building/poi/naboo_borvos_large3.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

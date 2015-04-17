@@ -6,6 +6,7 @@ naboo_swamp_rat_lair_neutral_small = Lair:new {
 	buildingsMedium = {"object/building/poi/naboo_swamp_rat_gang_camp_medium.iff"},
 	buildingsHard = {"object/building/poi/naboo_swamp_rat_gang_camp_medium.iff"},
 	buildingsVeryHard = {"object/building/poi/naboo_swamp_rat_gang_camp_medium.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

@@ -6,6 +6,7 @@ naboo_borvos_camp_neutral_small_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/naboo_borvos_medium.iff"},
 	buildingsHard = {"object/building/poi/naboo_borvos_medium.iff"},
 	buildingsVeryHard = {"object/building/poi/naboo_borvos_medium.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

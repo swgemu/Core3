@@ -8,6 +8,7 @@ global_pirate_cutthroat_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/naboo_gunrunners_medium.iff","object/building/poi/tatooine_gunrunners_medium.iff"},
 	buildingsHard = {"object/building/poi/naboo_gunrunners_medium.iff","object/building/poi/tatooine_gunrunners_medium.iff"},
 	buildingsVeryHard = {"object/building/poi/naboo_gunrunners_medium.iff","object/building/poi/tatooine_gunrunners_medium.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

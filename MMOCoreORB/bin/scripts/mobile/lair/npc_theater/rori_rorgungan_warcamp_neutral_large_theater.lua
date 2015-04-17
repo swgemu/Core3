@@ -6,6 +6,7 @@ rori_rorgungan_warcamp_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/naboo_gungwar_large1.iff"},
 	buildingsHard = {"object/building/poi/naboo_gungwar_large1.iff"},
 	buildingsVeryHard = {"object/building/poi/naboo_gungwar_large1.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

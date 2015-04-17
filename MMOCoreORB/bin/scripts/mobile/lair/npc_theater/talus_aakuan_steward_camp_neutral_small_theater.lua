@@ -6,6 +6,7 @@ talus_aakuan_steward_camp_neutral_small_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/corellia_selonian_separatists_small1.iff","object/building/poi/corellia_selonian_separatists_small2.iff"},
 	buildingsHard = {"object/building/poi/corellia_selonian_separatists_small1.iff","object/building/poi/corellia_selonian_separatists_small2.iff"},
 	buildingsVeryHard = {"object/building/poi/corellia_selonian_separatists_small1.iff","object/building/poi/corellia_selonian_separatists_small2.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

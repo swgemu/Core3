@@ -11,6 +11,7 @@ endor_korga_tricky_scout_neutral_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	mobType = "npc",
 	buildingType = "none"
 }
 

@@ -6,6 +6,7 @@ yavin4_stranded_imperial_base_imperial_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/yavin4_imperial_patrol_camp_large1.iff","object/building/poi/yavin4_imperial_patrol_camp_large2.iff","object/building/poi/yavin4_imperial_patrol_camp_large4.iff"},
 	buildingsHard = {"object/building/poi/yavin4_imperial_patrol_camp_large1.iff","object/building/poi/yavin4_imperial_patrol_camp_large2.iff","object/building/poi/yavin4_imperial_patrol_camp_large4.iff"},
 	buildingsVeryHard = {"object/building/poi/yavin4_imperial_patrol_camp_large1.iff","object/building/poi/yavin4_imperial_patrol_camp_large2.iff","object/building/poi/yavin4_imperial_patrol_camp_large4.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

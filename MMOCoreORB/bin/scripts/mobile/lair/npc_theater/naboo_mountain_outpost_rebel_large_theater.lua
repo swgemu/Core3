@@ -14,6 +14,7 @@ naboo_mountain_outpost_rebel_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/anywhere_rebel_base_large_1.iff","object/building/poi/anywhere_rebel_camp_large_1.iff"},
 	buildingsHard = {"object/building/poi/anywhere_rebel_base_large_1.iff","object/building/poi/anywhere_rebel_camp_large_1.iff"},
 	buildingsVeryHard = {"object/building/poi/anywhere_rebel_base_large_1.iff","object/building/poi/anywhere_rebel_camp_large_1.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

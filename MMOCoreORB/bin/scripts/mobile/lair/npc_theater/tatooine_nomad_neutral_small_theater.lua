@@ -6,6 +6,7 @@ tatooine_nomad_neutral_small_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_nomad_squatter_medium1.iff"},
 	buildingsHard = {"object/building/poi/tatooine_nomad_squatter_medium1.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_nomad_squatter_medium1.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

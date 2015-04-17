@@ -6,6 +6,7 @@ tatooine_outcast_camp_neutral_small_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_evil_settlers_medium.iff"},
 	buildingsHard = {"object/building/poi/tatooine_evil_settlers_medium.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_evil_settlers_medium.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

@@ -6,6 +6,7 @@ lok_mercenary_patrol2_neutral_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	mobType = "npc",
 	buildingType = "none"
 }
 

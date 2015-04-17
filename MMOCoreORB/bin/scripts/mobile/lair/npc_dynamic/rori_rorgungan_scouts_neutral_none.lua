@@ -6,6 +6,7 @@ rori_rorgungan_scouts_neutral_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	mobType = "npc",
 	buildingType = "none"
 }
 

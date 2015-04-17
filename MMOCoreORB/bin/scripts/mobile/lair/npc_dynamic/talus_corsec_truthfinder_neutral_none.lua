@@ -6,6 +6,7 @@ talus_corsec_truthfinder_neutral_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	mobType = "npc",
 	buildingType = "none",
 }
 

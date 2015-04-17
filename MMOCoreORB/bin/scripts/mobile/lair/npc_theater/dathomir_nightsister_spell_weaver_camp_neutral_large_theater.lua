@@ -10,6 +10,7 @@ dathomir_nightsister_spell_weaver_camp_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/dathomir_nightsisterpatrol_large1.iff","object/building/poi/dathomir_nightsisterpatrol_large2.iff"},
 	buildingsHard = {"object/building/poi/dathomir_nightsisterpatrol_large1.iff","object/building/poi/dathomir_nightsisterpatrol_large2.iff"},
 	buildingsVeryHard = {"object/building/poi/dathomir_nightsisterpatrol_large1.iff","object/building/poi/dathomir_nightsisterpatrol_large2.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

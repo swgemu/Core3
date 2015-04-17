@@ -8,6 +8,7 @@ global_corporal_patrol_rebel_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	mobType = "npc",
 	buildingType = "none"
 }
 

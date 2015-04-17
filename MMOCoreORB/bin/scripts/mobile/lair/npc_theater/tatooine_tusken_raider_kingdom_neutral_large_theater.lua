@@ -14,6 +14,7 @@ tatooine_tusken_raider_kingdom_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_tuskenwar_large1.iff","object/building/poi/tatooine_tuskenwar_large2.iff","object/building/poi/tatooine_tuskenwar_large3.iff"},
 	buildingsHard = {"object/building/poi/tatooine_tuskenwar_large1.iff","object/building/poi/tatooine_tuskenwar_large2.iff","object/building/poi/tatooine_tuskenwar_large3.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_tuskenwar_large1.iff","object/building/poi/tatooine_tuskenwar_large2.iff","object/building/poi/tatooine_tuskenwar_large3.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

@@ -6,6 +6,7 @@ corellia_flail_cut_throat_squad_neutral_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	mobType = "npc",
 	buildingType = "none"
 }
 

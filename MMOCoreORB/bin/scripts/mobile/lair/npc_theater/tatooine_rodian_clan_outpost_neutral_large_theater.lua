@@ -6,6 +6,7 @@ tatooine_rodian_clan_outpost_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_rodianhunter_large1.iff","object/building/poi/tatooine_rodianhunter_large2.iff","object/building/poi/tatooine_rodianhunter_medium.iff"},
 	buildingsHard = {"object/building/poi/tatooine_rodianhunter_large1.iff","object/building/poi/tatooine_rodianhunter_large2.iff","object/building/poi/tatooine_rodianhunter_medium.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_rodianhunter_large1.iff","object/building/poi/tatooine_rodianhunter_large2.iff","object/building/poi/tatooine_rodianhunter_medium.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

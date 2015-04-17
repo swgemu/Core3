@@ -6,6 +6,7 @@ corellia_afarathu_cult_outpost_neutral_medium = Lair:new {
 	buildingsMedium = {"object/building/poi/corellia_afarathu_medium2.iff"},
 	buildingsHard = {"object/building/poi/corellia_afarathu_medium2.iff"},
 	buildingsVeryHard = {"object/building/poi/corellia_afarathu_medium2.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

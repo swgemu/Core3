@@ -6,6 +6,7 @@ naboo_rsf_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/naboo_police_medium.iff","object/building/poi/naboo_politic_medium.iff"},
 	buildingsHard = {"object/building/poi/naboo_police_medium.iff","object/building/poi/naboo_politic_medium.iff"},
 	buildingsVeryHard = {"object/building/poi/naboo_police_medium.iff","object/building/poi/naboo_politic_medium.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

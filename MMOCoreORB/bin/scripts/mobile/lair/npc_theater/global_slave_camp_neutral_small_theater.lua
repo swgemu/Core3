@@ -6,6 +6,7 @@ global_slave_camp_neutral_small_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/slavegirl_medium_camp_1.iff","object/building/poi/slavegirl_medium_camp_2.iff","object/building/poi/slavegirl_small_camp.iff"},
 	buildingsHard = {"object/building/poi/slavegirl_medium_camp_1.iff","object/building/poi/slavegirl_medium_camp_2.iff","object/building/poi/slavegirl_small_camp.iff"},
 	buildingsVeryHard = {"object/building/poi/slavegirl_medium_camp_1.iff","object/building/poi/slavegirl_medium_camp_2.iff","object/building/poi/slavegirl_small_camp.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

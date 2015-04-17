@@ -12,6 +12,7 @@ endor_gondula_archaic_ritualist_neutral_small_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/endor_ewok_small1.iff","object/building/poi/endor_ewok_small2.iff","object/building/poi/endor_ewok_small3.iff"},
 	buildingsHard = {"object/building/poi/endor_ewok_small1.iff","object/building/poi/endor_ewok_small2.iff","object/building/poi/endor_ewok_small3.iff"},
 	buildingsVeryHard = {"object/building/poi/endor_ewok_small1.iff","object/building/poi/endor_ewok_small2.iff","object/building/poi/endor_ewok_small3.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

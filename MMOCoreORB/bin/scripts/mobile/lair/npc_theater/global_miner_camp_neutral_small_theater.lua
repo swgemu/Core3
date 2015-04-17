@@ -6,6 +6,7 @@ global_miner_camp_neutral_small_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_mineral_farmer_medium1.iff","object/building/poi/tatooine_mineral_farmer_medium2.iff"},
 	buildingsHard = {"object/building/poi/tatooine_mineral_farmer_medium1.iff","object/building/poi/tatooine_mineral_farmer_medium2.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_mineral_farmer_medium1.iff","object/building/poi/tatooine_mineral_farmer_medium2.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

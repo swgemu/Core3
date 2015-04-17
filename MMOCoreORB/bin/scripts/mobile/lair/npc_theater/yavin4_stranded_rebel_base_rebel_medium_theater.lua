@@ -6,6 +6,7 @@ yavin4_stranded_rebel_base_rebel_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/yavin4_abandoned_rebel_camp_large1.iff","object/building/poi/yavin4_abandoned_rebel_camp_large2.iff","object/building/poi/yavin4_abandoned_rebel_camp_large3.iff"},
 	buildingsHard = {"object/building/poi/yavin4_abandoned_rebel_camp_large1.iff","object/building/poi/yavin4_abandoned_rebel_camp_large2.iff","object/building/poi/yavin4_abandoned_rebel_camp_large3.iff"},
 	buildingsVeryHard = {"object/building/poi/yavin4_abandoned_rebel_camp_large1.iff","object/building/poi/yavin4_abandoned_rebel_camp_large2.iff","object/building/poi/yavin4_abandoned_rebel_camp_large3.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

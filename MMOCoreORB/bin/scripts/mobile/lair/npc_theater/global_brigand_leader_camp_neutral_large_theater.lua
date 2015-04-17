@@ -6,6 +6,7 @@ global_brigand_leader_camp_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/corellia_swoop_large1.iff","object/building/poi/corellia_swoop_large2.iff","object/building/poi/corellia_swoop_large3.iff"},
 	buildingsHard = {"object/building/poi/corellia_swoop_large1.iff","object/building/poi/corellia_swoop_large2.iff","object/building/poi/corellia_swoop_large3.iff"},
 	buildingsVeryHard = {"object/building/poi/corellia_swoop_large1.iff","object/building/poi/corellia_swoop_large2.iff","object/building/poi/corellia_swoop_large3.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

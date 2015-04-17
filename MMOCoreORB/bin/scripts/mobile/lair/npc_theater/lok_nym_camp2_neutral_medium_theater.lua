@@ -6,6 +6,7 @@ lok_nym_camp2_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/lok_nymshenchman_small3.iff","object/building/poi/lok_nymshenchman_small4.iff"},
 	buildingsHard = {"object/building/poi/lok_nymshenchman_small3.iff","object/building/poi/lok_nymshenchman_small4.iff"},
 	buildingsVeryHard = {"object/building/poi/lok_nymshenchman_small3.iff","object/building/poi/lok_nymshenchman_small4.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

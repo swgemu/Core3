@@ -6,6 +6,7 @@ rori_cobral_overlord_camp_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/naboo_gunrunners_medium.iff"},
 	buildingsHard = {"object/building/poi/naboo_gunrunners_medium.iff"},
 	buildingsVeryHard = {"object/building/poi/naboo_gunrunners_medium.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

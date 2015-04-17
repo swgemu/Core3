@@ -6,6 +6,7 @@ global_wookiee_brawler_camp_neutral_small_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_rodianhunter_medium.iff"},
 	buildingsHard = {"object/building/poi/tatooine_rodianhunter_medium.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_rodianhunter_medium.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

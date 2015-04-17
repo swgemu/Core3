@@ -9,6 +9,7 @@ global_imperial_compforce_trooper_camp_imperial_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/lok_imperial_medium4.iff","object/building/poi/lok_imperial_medium5.iff"},
 	buildingsHard = {"object/building/poi/lok_imperial_medium4.iff","object/building/poi/lok_imperial_medium5.iff"},
 	buildingsVeryHard = {"object/building/poi/lok_imperial_medium4.iff","object/building/poi/lok_imperial_medium5.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

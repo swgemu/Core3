@@ -6,6 +6,7 @@ global_wilder_frontiersman_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsVeryHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

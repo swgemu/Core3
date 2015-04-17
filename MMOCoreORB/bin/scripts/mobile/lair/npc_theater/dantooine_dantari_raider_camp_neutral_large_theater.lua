@@ -7,6 +7,7 @@ dantooine_dantari_raider_camp_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsVeryHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

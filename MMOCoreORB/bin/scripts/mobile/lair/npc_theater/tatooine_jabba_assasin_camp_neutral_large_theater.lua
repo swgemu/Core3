@@ -6,6 +6,7 @@ tatooine_jabba_assasin_camp_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_hutt_assassin_camp_large1.iff","object/building/poi/tatooine_hutt_assassin_camp_large2.iff","object/building/poi/tatooine_hutt_assassin_camp_large3.iff","object/building/poi/tatooine_hutt_assassin_camp_large4.iff"},
 	buildingsHard = {"object/building/poi/tatooine_hutt_assassin_camp_large1.iff","object/building/poi/tatooine_hutt_assassin_camp_large2.iff","object/building/poi/tatooine_hutt_assassin_camp_large3.iff","object/building/poi/tatooine_hutt_assassin_camp_large4.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_hutt_assassin_camp_large1.iff","object/building/poi/tatooine_hutt_assassin_camp_large2.iff","object/building/poi/tatooine_hutt_assassin_camp_large3.iff","object/building/poi/tatooine_hutt_assassin_camp_large4.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

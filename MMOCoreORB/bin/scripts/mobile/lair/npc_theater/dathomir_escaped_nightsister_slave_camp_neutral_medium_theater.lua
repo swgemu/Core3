@@ -9,6 +9,7 @@ dathomir_escaped_nightsister_slave_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/dathomir_freedprisonerscamp_medium1.iff","object/building/poi/dathomir_freedprisonerscamp_medium2.iff"},
 	buildingsHard = {"object/building/poi/dathomir_freedprisonerscamp_medium1.iff","object/building/poi/dathomir_freedprisonerscamp_medium2.iff"},
 	buildingsVeryHard = {"object/building/poi/dathomir_freedprisonerscamp_medium1.iff","object/building/poi/dathomir_freedprisonerscamp_medium2.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

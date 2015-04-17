@@ -6,6 +6,7 @@ tatooine_dune_stalker_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_dunestalkers_large1.iff","object/building/poi/tatooine_dunestalkers_medium.iff"},
 	buildingsHard = {"object/building/poi/tatooine_dunestalkers_large1.iff","object/building/poi/tatooine_dunestalkers_medium.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_dunestalkers_large1.iff","object/building/poi/tatooine_dunestalkers_medium.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

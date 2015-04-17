@@ -11,6 +11,7 @@ naboo_rsf_outpost_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/naboo_police_large2.iff","object/building/poi/naboo_politic_large2.iff"},
 	buildingsHard = {"object/building/poi/naboo_police_large2.iff","object/building/poi/naboo_politic_large2.iff"},
 	buildingsVeryHard = {"object/building/poi/naboo_police_large2.iff","object/building/poi/naboo_politic_large2.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

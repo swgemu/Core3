@@ -6,6 +6,7 @@ tatooine_moisture_thief_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_moisture_farmer_large1.iff","object/building/poi/tatooine_moisture_farmer_large2.iff","object/building/poi/tatooine_moisture_farmer_large3.iff","object/building/poi/tatooine_moisture_farmer_large4.iff"},
 	buildingsHard = {"object/building/poi/tatooine_moisture_farmer_large1.iff","object/building/poi/tatooine_moisture_farmer_large2.iff","object/building/poi/tatooine_moisture_farmer_large3.iff","object/building/poi/tatooine_moisture_farmer_large4.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_moisture_farmer_large1.iff","object/building/poi/tatooine_moisture_farmer_large2.iff","object/building/poi/tatooine_moisture_farmer_large3.iff","object/building/poi/tatooine_moisture_farmer_large4.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

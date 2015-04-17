@@ -6,6 +6,7 @@ lok_mercenary_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_hutt_assassin_camp_medium1.iff","object/building/poi/tatooine_hutt_assassin_camp_medium2.iff"},
 	buildingsHard = {"object/building/poi/tatooine_hutt_assassin_camp_medium1.iff","object/building/poi/tatooine_hutt_assassin_camp_medium2.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_hutt_assassin_camp_medium1.iff","object/building/poi/tatooine_hutt_assassin_camp_medium2.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

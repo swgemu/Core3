@@ -6,6 +6,7 @@ tatooine_imperial_camp = Lair:new {
 	buildingsMedium = {"object/building/poi/anywhere_imperial_base_small_1.iff"},
 	buildingsHard = {"object/building/poi/anywhere_imperial_base_small_1.iff"},
 	buildingsVeryHard = {"object/building/poi/anywhere_imperial_base_small_1.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

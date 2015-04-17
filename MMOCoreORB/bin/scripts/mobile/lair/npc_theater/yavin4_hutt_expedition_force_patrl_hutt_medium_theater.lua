@@ -6,6 +6,7 @@ yavin4_hutt_expedition_force_patrl_hutt_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/yavin4_hutt_scavenger_camp_medium1.iff","object/building/poi/yavin4_hutt_scavenger_camp_medium2.iff"},
 	buildingsHard = {"object/building/poi/yavin4_hutt_scavenger_camp_medium1.iff","object/building/poi/yavin4_hutt_scavenger_camp_medium2.iff"},
 	buildingsVeryHard = {"object/building/poi/yavin4_hutt_scavenger_camp_medium1.iff","object/building/poi/yavin4_hutt_scavenger_camp_medium2.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 

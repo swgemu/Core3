@@ -8,6 +8,7 @@ dathomir_mtn_clan_initiate_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/dathomir_singingmtnclanpatrol_large1.iff"},
 	buildingsHard = {"object/building/poi/dathomir_singingmtnclanpatrol_large1.iff"},
 	buildingsVeryHard = {"object/building/poi/dathomir_singingmtnclanpatrol_large1.iff"},
+	mobType = "npc",
 	buildingType = "theater"
 }
 
