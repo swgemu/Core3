@@ -20,26 +20,23 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 		return false;
 
 	int spawnLimitAdjustment = 0;
-	if (getMobType() == LairTemplate::NPC) {
-		spawnLimitAdjustment = difficulty - 2;
-	} else {
-		if (difficulty == 0) {
-			spawnLimitAdjustment = -3;
-		} else if (difficulty == 4) {
-			spawnLimitAdjustment = 3;
-		}
+
+	if (difficulty == 0) {
+		spawnLimitAdjustment = -3;
+	} else if (difficulty == 4) {
+		spawnLimitAdjustment = 3;
 	}
 
 	int spawnLimit = lairTemplate->getSpawnLimit() + spawnLimitAdjustment;
-
-	if (spawnedCreatures.size() >= spawnLimit && !lairTemplate->hasBossMobs())
-		return true;
 
 	if (forceSpawn) {
 		spawnNumber++;
 	} else if (getMobType() == LairTemplate::NPC) {
 		return false;
 	} else {
+		if (spawnedCreatures.size() >= spawnLimit && !lairTemplate->hasBossMobs())
+			return true;
+
 		int conditionDamage = lair->getConditionDamage();
 		int maxCondition = lair->getMaxCondition();
 
@@ -93,7 +90,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 		if (getMobType() == LairTemplate::CREATURE) {
 			amountToSpawn = spawnLimit / 3;
 		} else {
-			amountToSpawn = spawnLimit;
+			amountToSpawn = System::random(2) + (spawnLimit / 3);
 		}
 
 		if (amountToSpawn < 1)
