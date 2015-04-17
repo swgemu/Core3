@@ -20,6 +20,14 @@ public:
 		setNullValue(NULL);
 	}
 
+	Reference<PlanetTravelPoint*> get(int index) {
+		Locker guard(this);
+
+		Reference<PlanetTravelPoint*> point = VectorMap<String, Reference<PlanetTravelPoint*> >::get(index);
+
+		return point;
+	}
+
 	void insertToMessage(BaseMessage* message, PlanetTravelPoint* origin) {
 		rlock();
 
