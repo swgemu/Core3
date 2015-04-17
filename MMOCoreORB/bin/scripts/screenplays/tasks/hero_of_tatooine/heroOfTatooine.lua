@@ -332,7 +332,7 @@ function HeroOfTatooineScreenPlay:doIntellectSpawn()
 end
 
 function HeroOfTatooineScreenPlay:getIntellectLiarName(liarNum)
-	local liarId = readData("hero_of_tat:liar_" .. liarNum)
+	local liarId = readData("hero_of_tat:liar_" .. liarNum + 1)
 	local pLiar = getSceneObject(liarId)
 
 	if (pLiar == nil) then
