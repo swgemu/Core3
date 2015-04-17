@@ -237,12 +237,16 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			return 1;
 		}
 
+		Locker locker(controlDevice);
+
 		Reference<CreatureObject*> creatureObject = creatureManager->createCreature(generatedObjectTemplate.hashCode(), true, mobileTemplate.hashCode() );
 		if( creatureObject == NULL ){
 			controlDevice->destroyObjectFromDatabase(true);
 			player->sendSystemMessage("wrong droid templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]" );
 			return 1;
 		}
+
+		Locker clocker(creatureObject, player);
 
 		Reference<DroidObject*> droid = creatureObject.castTo<DroidObject*>();
 		if( droid == NULL ) {
@@ -268,7 +272,9 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			}
 			satchel->removeAllContainerObjects();
 			for(int i=0;i<toRemove.size();i++) {
-				toRemove.get(i)->destroyObjectFromWorld(true);
+				SceneObject* component = toRemove.get(i);
+				Locker componenetLocker(component);
+				component->destroyObjectFromWorld(true);
 			}
 			// this will change to use stacked modules. we wont care about non droid modules as they arent needed.
 			String key;
@@ -334,12 +340,10 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		datapad->broadcastObject(controlDevice, true);
 
-		Locker crossLocker (droid, player);
-
 		controlDevice->callObject(player);
 		droid->initDroidModules();
 		//Remove the deed from its container.
-		ManagedReference<SceneObject*> deedContainer = getParent();
+		ManagedReference<SceneObject*> deedContainer = getParent().get();
 
 		if (deedContainer != NULL) {
 			destroyObjectFromWorld(true);

@@ -1766,6 +1766,8 @@ int DirectorManager::spawnMobile(lua_State* L) {
 
 		lua_pushnil(L);
 	} else {
+		Locker locker(creature);
+
 		creature->updateDirection(Math::deg2rad(heading));
 
 		if (creature->isAiAgent()) {
