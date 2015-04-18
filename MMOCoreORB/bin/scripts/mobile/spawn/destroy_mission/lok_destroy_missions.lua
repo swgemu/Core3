@@ -1,5 +1,4 @@
 lok_destroy_missions = {
-
 	lairSpawns = {
 		{
 			lairTemplateName = "lok_pharple_lair_neutral_medium",
@@ -44,9 +43,27 @@ lok_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "lok_flit_lair2_neutral_medium_boss_01",
-			minDifficulty = 16,
-			maxDifficulty = 22,
+			lairTemplateName = "lok_marooned_pirate_camp_neutral_medium_theater",
+			minDifficulty = 18,
+			maxDifficulty = 25,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_perlek_lair_neutral_medium",
+			minDifficulty = 11,
+			maxDifficulty = 17,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_blood_razor_camp_neutral_easy_theater",
+			minDifficulty = 20,
+			maxDifficulty = 37,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_nym_base2_neutral_large_theater",
+			minDifficulty = 20,
+			maxDifficulty = 46,
 			size = 25,
 		},
 		{
@@ -59,6 +76,12 @@ lok_destroy_missions = {
 			lairTemplateName = "lok_mynock_lair_neutral_medium",
 			minDifficulty = 21,
 			maxDifficulty = 28,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_nym_camp_neutral_medium_theater",
+			minDifficulty = 25,
+			maxDifficulty = 32,
 			size = 25,
 		},
 		{
@@ -77,6 +100,48 @@ lok_destroy_missions = {
 			lairTemplateName = "lok_gurk_lair2_neutral_medium_boss_01",
 			minDifficulty = 27,
 			maxDifficulty = 34,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_nym_base_neutral_large_theater",
+			minDifficulty = 28,
+			maxDifficulty = 45,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_canyon_corsair_camp_neutral_medium_theater",
+			minDifficulty = 28,
+			maxDifficulty = 51,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_blood_razor_camp_neutral_medium_theater",
+			minDifficulty = 32,
+			maxDifficulty = 44,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_mercenary_camp2_neutral_medium_theater",
+			minDifficulty = 35,
+			maxDifficulty = 43,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_canyon_corsair_camp2_neutral_medium_theater",
+			minDifficulty = 38,
+			maxDifficulty = 44,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_mercenary_camp_neutral_medium_theater",
+			minDifficulty = 39,
+			maxDifficulty = 45,
+			size = 25,
+		},
+		{
+			lairTemplateName = "lok_nym_camp2_neutral_medium_theater",
+			minDifficulty = 39,
+			maxDifficulty = 45,
 			size = 25,
 		},
 	}

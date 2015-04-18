@@ -6,6 +6,7 @@ corellia_flail_cut_throat_outpost_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/corellia_flail_large1.iff","object/building/poi/corellia_flail_large2.iff"},
 	buildingsHard = {"object/building/poi/corellia_flail_large1.iff","object/building/poi/corellia_flail_large2.iff"},
 	buildingsVeryHard = {"object/building/poi/corellia_flail_large1.iff","object/building/poi/corellia_flail_large2.iff"},
+	missionBuilding = "object/tangible/lair/base/objective_power_generator.iff",
 	mobType = "npc",
 	buildingType = "theater"
 }

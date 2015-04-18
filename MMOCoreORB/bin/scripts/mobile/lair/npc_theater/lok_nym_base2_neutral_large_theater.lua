@@ -6,6 +6,7 @@ lok_nym_base2_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/lok_nymshenchman_large3.iff","object/building/poi/lok_nymshenchman_large5.iff"},
 	buildingsHard = {"object/building/poi/lok_nymshenchman_large3.iff","object/building/poi/lok_nymshenchman_large5.iff"},
 	buildingsVeryHard = {"object/building/poi/lok_nymshenchman_large3.iff","object/building/poi/lok_nymshenchman_large5.iff"},
+	missionBuilding = "object/tangible/lair/base/objective_power_generator.iff",
 	mobType = "npc",
 	buildingType = "theater"
 }
