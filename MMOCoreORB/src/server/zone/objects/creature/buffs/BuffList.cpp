@@ -127,14 +127,17 @@ void BuffList::addBuff(Buff* buff) {
 bool BuffList::removeBuff(uint32 buffcrc) {
 	Locker guard(&mutex);
 
-	ManagedReference<Buff*> buff = buffList.get(buffcrc);
+	bool ret = false;
 
-	if (buff == NULL)
-		return false;
+	while (buffList.contains(buffcrc)) {
+		ret = true;
 
-	removeBuff(buff);
+		ManagedReference<Buff*> buff = buffList.get(buffcrc);
 
-	return true;
+		removeBuff(buff);
+	}
+
+	return ret;
 }
 
 void BuffList::removeBuff(Buff* buff) {
@@ -147,8 +150,10 @@ void BuffList::removeBuff(Buff* buff) {
 
 	uint32 buffcrc = buff->getBuffCRC();
 
-	if (buffList.contains(buffcrc)) {
-		//This only gets called if the event has been scheduled and is not executing.
+	int index = findBuff(buff);
+
+	if (index != -1) {
+		//isActive returns true only if the event has been scheduled and is not executing.
 		if (buff->isActive())
 			buff->clearBuffEvent();
 
@@ -157,13 +162,37 @@ void BuffList::removeBuff(Buff* buff) {
 
 		buff->clearBuffEvent();
 
-		buffList.drop(buffcrc);
+		buffList.remove(index);
 
 		buff->deactivate();
 
 		if (buff->isPersistent())
 			ObjectManager::instance()->destroyObjectFromDatabase(buff->_getObjectID());
 	}
+}
+
+int BuffList::findBuff(Buff* buff) {
+	Locker guard(&mutex);
+
+	uint32 buffCRC = buff->getBuffCRC();
+
+	VectorMapEntry<uint32, ManagedReference<Buff*> > entry(buffCRC);
+
+	int index = buffList.lowerBound(entry);
+
+	if (index < 0)
+		return index;
+
+	for (int i = index; i < buffList.size(); ++i) {
+		Buff* buffObject = buffList.get(i);
+
+		if (buffObject == buff)
+			return i;
+
+		assert(buffObject->getBuffCRC() == buffCRC);//either we found the buff or its a different buff with the same crc
+	}
+
+	return -1;
 }
 
 void BuffList::clearBuffs(bool updateclient) {
