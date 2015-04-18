@@ -1,10 +1,63 @@
 talus_destroy_missions = {
-
 	lairSpawns = {
+		{
+			lairTemplateName = "talus_chunker_bruiser_camp_neutral_medium_theater",
+			minDifficulty = 4,
+			maxDifficulty = 12,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_sleemo_delinquent_camp_neutral_medium_theater",
+			minDifficulty = 5,
+			maxDifficulty = 8,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_chunker_goon_camp_neutral_small_theater",
+			minDifficulty = 5,
+			maxDifficulty = 9,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_sleemo_vandal_camp_neutral_medium_theater",
+			minDifficulty = 5,
+			maxDifficulty = 10,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_liberation_loyalist_camp_neutral_medium_theater",
+			minDifficulty = 7,
+			maxDifficulty = 10,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_liberation_patriot_camp_neutral_medium_theater",
+			minDifficulty = 7,
+			maxDifficulty = 15,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_fed_dub_constable_camp_neutral_large_theater",
+			minDifficulty = 7,
+			maxDifficulty = 13,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_liberation_activist_camp_neutral_medium_theater",
+			minDifficulty = 7,
+			maxDifficulty = 22,
+			size = 25,
+		},
 		{
 			lairTemplateName = "talus_dalyrake_nest_neutral_medium",
 			minDifficulty = 8,
 			maxDifficulty = 10,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_drall_patriot_base_neutral_large_theater",
+			minDifficulty = 10,
+			maxDifficulty = 20,
 			size = 25,
 		},
 		{
@@ -17,6 +70,18 @@ talus_destroy_missions = {
 			lairTemplateName = "talus_devil_gulginaw_nest_neutral_medium",
 			minDifficulty = 15,
 			maxDifficulty = 21,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_lost_aqualish_captain_camp_neutral_large_theater",
+			minDifficulty = 10,
+			maxDifficulty = 26,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_lost_aqualish_warchief_camp_neutral_large_theater",
+			minDifficulty = 10,
+			maxDifficulty = 28,
 			size = 25,
 		},
 		{
@@ -131,6 +196,36 @@ talus_destroy_missions = {
 			lairTemplateName = "talus_wrix_lair_neutral_medium",
 			minDifficulty = 10,
 			maxDifficulty = 14,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_binayre_pirate_camp_neutral_medium_theater",
+			minDifficulty = 10,
+			maxDifficulty = 18,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_aakuan_steward_camp_neutral_small_theater",
+			minDifficulty = 13,
+			maxDifficulty = 28,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_binayre_chief_camp_neutral_large_theater",
+			minDifficulty = 14,
+			maxDifficulty = 23,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_beldonna_base_neutral_large_theater",
+			minDifficulty = 15,
+			maxDifficulty = 27,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_aakuan_champion_camp_neutral_large_theater",
+			minDifficulty = 22,
+			maxDifficulty = 30,
 			size = 25,
 		},
 	}
