@@ -58,48 +58,48 @@ import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.structure.StructureObject;
 
 class DroidObject extends AiAgent {
-	
+
 	/**
 	 * Droid's power when recharged
 	 */
 	public static final int MAX_POWER = 1000;
-	
+
 	/**
 	 * Current amount of power
 	 */
 	protected int power;
-	
+
 	/**
 	 * Current paint decay
 	 */
 	protected int paintCount;
-	
+
 	/**
 	 * Maximum paint charges
 	 */
 	public static final int PAINTCHARGES = 999;
-	
+
 	/**
 	 * Armor type
 	 */
 	protected unsigned int armor = 0;
-	
+
 	/**
 	 * Damage resistance (same for all types except lightsaber)
 	 */
-	protected float resist = 0;	
+	protected float resist = 0;
 
 	/**
 	 * List of installed droid modules
-	 */	
+	 */
 	@dereferenced
 	protected Vector<BaseDroidModuleComponent> modules;       
-	
+
 	/**
 	 * Droid hit chance
 	 */
 	protected float hitChance = 0;
-	
+
 	/**
 	 * Droid species for Identification
 	 */
@@ -121,12 +121,12 @@ class DroidObject extends AiAgent {
 	public static final int LE_REPAIR = 0xDA;
 	public static final int MONK_SPIDER = 0xDB;
 	public static final int SURGICAL = 0xDC;
-	public static final int TT_8L = 0xDD;	
+	public static final int TT_8L = 0xDD;
 	public static final int DZ70 = 0xDE;
 	public static final int TREADWELL = 0xDF;
 	public static final int PROBE_DROID = 0xE1;
-		
-	
+
+
 	public DroidObject() {
 		Logger.setLoggingName("DroidObject");
 		Logger.setLogging(false);
@@ -134,14 +134,14 @@ class DroidObject extends AiAgent {
 		power = MAX_POWER;
 		paintCount = 0;
 	}
-	
+
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre {transient members are not initialized }
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -152,7 +152,7 @@ class DroidObject extends AiAgent {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -163,8 +163,10 @@ class DroidObject extends AiAgent {
 	 */
 	@local
 	@dirty
+	@preLocked
+	@arg1preLocked
 	public native abstract int handleObjectMenuSelect(CreatureObject player, byte selectedID);	
-	
+
 	/**
 	 * Fills the module radial options, needs to be overriden
 	 * @pre { this object is locked }
@@ -182,18 +184,18 @@ class DroidObject extends AiAgent {
 	 * @param zone Zone object where this object will be inserted
 	 */
 	@local
-	public native void notifyInsertToZone(Zone zone);	
-		
+	public native void notifyInsertToZone(Zone zone);
+
 	@dirty
 	public boolean isDroidObject() {
 		return true;
 	}
-	
+
 	@dirty
 	public boolean isCamouflaged(CreatureObject target) {
 		return isAggressiveTo(target) && isConcealed(target);
 	}
-	
+
 	@dirty
 	public boolean hasPower(){
 		return power > 0;
@@ -205,21 +207,23 @@ class DroidObject extends AiAgent {
 	 * @post { this object is locked }
 	 * @param amount int the amount of power to use
 	 */
+	@preLocked
 	public void usePower( int amount ){
 		power = power - amount;
 		if( power <= 0 ){
 			power = 0;
-			handleLowPower();			
+			handleLowPower();
 		}
-		
 	}
-	
+
 	@dirty
+	@preLocked
 	public native void runModulePowerDrain();
-	
+
 	/**
 	 * Reset paint back to full
 	 */
+	@preLocked
 	public void refreshPaint() {
 		paintCount = PAINTCHARGES;
 	}
@@ -231,48 +235,54 @@ class DroidObject extends AiAgent {
 	 * @param player CreatureObject that selected the option
 	 * @returns 0 if successful, 1 otherwise
 	 */
+	@preLocked
+	@arg1preLocked
 	public native int rechargeFromBattery(CreatureObject player);
-	
+
 	/**
 	 * Handles droid being recharged by another droid
-	 * @pre { this object is locked, player is locked }
-	 * @post { this object is locked, player is locked }
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
 	 * @param player CreatureObject that selected the option
 	 */
-	public native void rechargeFromDroid();	
-		
+	@preLocked
+	public native void rechargeFromDroid();
+
 	/**
 	 * Instructs droid to recharge another droid
 	 * @pre { this object is locked, droid is locked }
 	 * @post { this object is locked, droid is locked }
 	 * @param droid DroidObject that selected the option
 	 */
+	@preLocked
+	@arg1preLocked
 	public native void rechargeOtherDroid( DroidObject otherDroid );	
-		
+
 	/**
 	 * Called when the droid runs out of power
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 */
+	@preLocked
 	public native void handleLowPower();
-	
+
 	/**
 	 * Whether or not droid is a power droid
 	 */
 	@dirty
-	public native boolean isPowerDroid();	
+	public native boolean isPowerDroid();
 
 	/**
 	 * Initializes droid modules from crafted_components scenos
 	 */
 	@local
 	public native void initDroidModules();
-	
+
 	/**
 	 * Returns a crafting station of the given type if droid has the appropriate module. Returns NULL otherwise.
 	 */
 	@local
-	public native CraftingStation getCraftingStation(int type);	
+	public native CraftingStation getCraftingStation(int type);
 
 	/**
 	 * Returns a reaction stf if the droid has a personality chip
@@ -283,16 +293,20 @@ class DroidObject extends AiAgent {
 	@local
 	@dirty
 	public native BaseDroidModuleComponent getModule(final string name);
-	
+
 	@local
+	@preLocked
 	public native void onStore();
 	@local
+	@preLocked
 	public native void onCall();
 	@local
+	@preLocked
 	public native void loadSkillMods(CreatureObject player);
 	@local
+	@preLocked
 	public native void unloadSkillMods(CreatureObject player);
-	
+
 	/**
 	 * Handles chat messages to the droid and hands it off to the modules
 	 * @pre { }
@@ -302,30 +316,34 @@ class DroidObject extends AiAgent {
 	 */
 	@local
 	public native void handleChat(CreatureObject speaker, final string message);
-	
+
 	/**
 	 * Set armor type (from armor module)
-	 */	
+	 */
 	@local
+	@preLocked
 	public void setArmor(unsigned int level){
 		armor = level;
 	}
-	
+
 	/**
 	 * Set droid hit chance (form combat module)
 	 */
 	@local
+	@preLocked
 	public void setHitChance(float v) {
 		hitChance = v;
 	}
+
 	/**
 	 * Set resists (from armor module)
-	 */	
+	 */
 	@local
+	@preLocked
 	public void setResists(float res){
 		resist = res;
 	}
-		
+
 	@local
 	public unsigned int getArmor(){
 		if( isPet() ){
@@ -345,7 +363,7 @@ class DroidObject extends AiAgent {
 			return super.getKinetic();
 		}
 	}
-	
+
 	@dirty
 	public float getEnergy(){
 		if( isPet() ){
@@ -355,7 +373,7 @@ class DroidObject extends AiAgent {
 			return super.getEnergy();
 		}
 	}
-	
+
 	@dirty
 	public float getElectricity() {
 		if( isPet() ){
@@ -365,7 +383,7 @@ class DroidObject extends AiAgent {
 			return super.getElectricity();
 		}
 	}
-	
+
 	@dirty
 	public float getStun() {
 		if( isPet() ){
@@ -375,7 +393,7 @@ class DroidObject extends AiAgent {
 			return super.getStun();
 		}
 	}
-	
+
 	@dirty
 	public float getBlast() {
 		if( isPet() ){
@@ -385,7 +403,7 @@ class DroidObject extends AiAgent {
 			return super.getBlast();
 		}
 	}
-	
+
 	@dirty
 	public float getHeat() {
 		if( isPet() ){
@@ -395,7 +413,7 @@ class DroidObject extends AiAgent {
 			return super.getHeat();
 		}
 	}
-	
+
 	@dirty
 	public float getCold() {
 		if( isPet() ){
@@ -405,7 +423,7 @@ class DroidObject extends AiAgent {
 			return super.getCold();
 		}
 	}
-	
+
 	@dirty
 	public float getAcid() {
 		if( isPet() ){
@@ -415,7 +433,7 @@ class DroidObject extends AiAgent {
 			return super.getAcid();
 		}
 	}
-	
+
 	@dirty
 	public float getLightSaber() {
 		if( isPet() ){
@@ -423,9 +441,9 @@ class DroidObject extends AiAgent {
 		}
 		else{
 			return super.getLightSaber();
-		}				
+		}
 	}
-	
+
 	@dirty
 	public float getChanceHit() {
 		if (isPet()) {
@@ -437,28 +455,29 @@ class DroidObject extends AiAgent {
 
 	@dirty
 	public native string getPersonalityStf();
-		
+
 	@dirty
-	public native boolean isAdvancedModel();	
-	
+	public native boolean isAdvancedModel();
+
 	@dirty
 	public native boolean isCombatDroid();
-	
+
 	@dirty
 	public native boolean isTrapDroid();
-	
+
 	@dirty
 	public native boolean hasStorage();
-	
+
 	@dirty
 	public native boolean isMaintenanceDroid();
-	
+
 	@local
+	@preLocked
 	public native boolean assignStructure( StructureObject structure );
-	
+
 	@local
 	public native boolean isStructureAssigned(StructureObject structure);
-	
+
 	/**
 	 * sends the conversation notification 
 	 * @pre {this locked, player locked }
@@ -466,6 +485,7 @@ class DroidObject extends AiAgent {
 	 * @return whether the conversation was started or not
 	 */
 	@dirty
+	@preLocked
 	public native boolean sendConversationStartTo(SceneObject player);
 
 	public boolean hasReactionChatMessages() {

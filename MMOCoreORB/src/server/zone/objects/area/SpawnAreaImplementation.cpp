@@ -117,7 +117,13 @@ void SpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (object->getCityRegion() != NULL)
 		return;
 
-	tryToSpawn(object);
+	ManagedReference<SpawnArea*> spawnArea = _this.get();
+	ManagedReference<SceneObject*> obj = object;
+
+	EXECUTE_TASK_2(spawnArea, obj, {
+			spawnArea_p->tryToSpawn(obj_p);
+	});
+
 }
 
 void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
@@ -137,8 +143,14 @@ void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 	if (parent != NULL && parent->isCellObject())
 		return;
 
-	if (System::random(25) == 1)
-		tryToSpawn(creature);
+	if (System::random(25) == 1) {
+		ManagedReference<SpawnArea*> spawnArea = _this.get();
+		ManagedReference<SceneObject*> object = cast<SceneObject*>(obj);
+
+		EXECUTE_TASK_2(spawnArea, object, {
+				spawnArea_p->tryToSpawn(object_p);
+		});
+	}
 }
 
 void SpawnAreaImplementation::notifyExit(SceneObject* object) {
@@ -147,6 +159,8 @@ void SpawnAreaImplementation::notifyExit(SceneObject* object) {
 }
 
 int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
+	Locker _locker(_this.get());
+
 	if (spawnGroup == NULL && spawnGroupTemplateCRC != 0)
 		spawnGroup = CreatureTemplateManager::instance()->getSpawnGroup(spawnGroupTemplateCRC);
 
@@ -219,8 +233,6 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 
 	int spawnLimit = finalSpawn->getSpawnLimit();
 
-	Locker _locker(_this.get());
-
 	lastSpawn.updateToCurrentTime();
 
 	String lairTemplate = finalSpawn->getLairTemplateName();
@@ -241,6 +253,8 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 	if (difficulty >= 5)
 		difficulty = 4;
 
+	_locker.release();
+
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
 	ManagedReference<SceneObject*> obj = creatureManager->spawn(lairHashCode, difficultyLevel, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), finalSpawn->getSize());
@@ -255,6 +269,8 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 		return 11;
 	}
 
+	Locker _locker2(_this.get());
+
 	if (exitObserver == NULL) {
 		exitObserver = new SpawnAreaObserver(_this.get());
 		exitObserver->deploy();
@@ -262,7 +278,7 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 
 	spawnTypes.put(obj->getObjectID(), lairHashCode);
 
-	Locker objLocker(obj);
+	Locker clocker(obj, _this.get());
 
 	obj->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, exitObserver);
 
