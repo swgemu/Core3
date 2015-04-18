@@ -240,7 +240,7 @@ class Buff extends ManagedObject implements Logger {
 		return buffName;
 	}
 
-	public int getBuffCRC() {
+	public unsigned int getBuffCRC() {
 		return buffCRC;
 	}
 
