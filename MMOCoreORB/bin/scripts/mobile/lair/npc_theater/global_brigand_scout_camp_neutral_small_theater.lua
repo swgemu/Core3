@@ -6,6 +6,7 @@ global_brigand_scout_camp_neutral_small_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsVeryHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	missionBuilding = "object/tangible/lair/base/objective_banner_generic_2.iff",
 	mobType = "npc",
 	buildingType = "theater"
 }
