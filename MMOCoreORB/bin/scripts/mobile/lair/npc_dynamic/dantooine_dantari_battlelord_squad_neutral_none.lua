@@ -7,6 +7,7 @@ dantooine_dantari_battlelord_squad_neutral_none = Lair:new {
 	buildingsHard = {},
 	buildingsVeryHard = {},
 	mobType = "npc",
+	missionBuilding = "object/tangible/lair/base/poi_all_lair_rock_shelter_large_evil_fire_red.iff",
 	buildingType = "none"
 }
 
