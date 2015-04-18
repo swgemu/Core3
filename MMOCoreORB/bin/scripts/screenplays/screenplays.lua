@@ -50,7 +50,7 @@ includeFile("dungeon/corellian_corvette/klaatu.lua")
 includeFile("dungeon/corellian_corvette/lt_lance.lua")
 
 -- Village
-includeFile("village/fs_experience_converter_conv_handler.lua")
+includeFile("village/convos/fs_experience_converter_conv_handler.lua")
 includeFile("village/convos/elder_conv_handler.lua")
 
 -- Events

@@ -1777,7 +1777,7 @@ class PlayerObject extends IntangibleObject {
 		return fsEligibleExperiences.get(type);
 	}
 	
-	public native string getForceSensitiveExperienceRatio(final string type);
+	public native string getForceSensitiveExperienceRatio(final string typeOfExperience, int typeOfConversion);
 
 	public void addEventPerk(SceneObject deed) {
 		currentEventPerks.put(deed.getObjectID());

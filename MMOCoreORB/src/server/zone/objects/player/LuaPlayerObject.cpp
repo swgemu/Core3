@@ -505,8 +505,9 @@ int LuaPlayerObject::isPrivileged(lua_State* L) {
 
 int LuaPlayerObject::getExperienceRatio(lua_State* L) {
 	String type = lua_tostring(L, -1);
+	int conversionType = lua_tointeger(L, -2);
 
-	String ratio = realObject->getForceSensitiveExperienceRatio(type);
+	String ratio = realObject->getForceSensitiveExperienceRatio(type, conversionType);
 	lua_pushstring(L, ratio.toCharArray());
 
 	return 1;
