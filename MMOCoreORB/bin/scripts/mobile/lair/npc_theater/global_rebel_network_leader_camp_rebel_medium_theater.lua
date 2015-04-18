@@ -9,6 +9,7 @@ global_rebel_network_leader_camp_rebel_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/anywhere_rebel_camp_large_1.iff"},
 	buildingsHard = {"object/building/poi/anywhere_rebel_camp_large_1.iff"},
 	buildingsVeryHard = {"object/building/poi/anywhere_rebel_camp_large_1.iff"},
+	missionBuilding = "object/tangible/lair/base/objective_banner_rebel.iff",
 	mobType = "npc",
 	buildingType = "theater"
 }
