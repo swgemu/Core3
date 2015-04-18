@@ -113,10 +113,6 @@ void BuffList::removeBuff(Buff* buff) {
 	int index = findBuff(buff);
 
 	if (index != -1) {
-		//isActive returns true only if the event has been scheduled and is not executing.
-		if (buff->isActive())
-			buff->clearBuffEvent();
-
 		if (buff->isSpiceBuff())
 			spiceActive = false;
 
