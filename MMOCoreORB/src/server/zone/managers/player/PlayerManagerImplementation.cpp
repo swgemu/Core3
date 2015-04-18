@@ -3436,6 +3436,8 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 		for (int i = 0; i < buffs->getBuffListSize(); i++) {
 			ManagedReference<Buff*> buff = buffs->getBuffByIndex(i);
 
+			buff->setModsApplied(true);
+
 			buff->applySkillModifiers();
 		}
 

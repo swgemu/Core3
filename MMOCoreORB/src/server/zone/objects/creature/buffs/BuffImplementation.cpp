@@ -82,10 +82,11 @@ void BuffImplementation::sendDestroyTo(CreatureObject* player) {
 void BuffImplementation::activate(bool applyModifiers) {
 	//info("activating buff with crc " + String::hexvalueOf((int)buffCRC), true);
 	try {
-		if (applyModifiers) {
+		if (applyModifiers && !modsApplied) {
 			applyAttributeModifiers();
 			applySkillModifiers();
 			applyStates();
+			modsApplied = true;
 		}
 
 		scheduleBuffEvent();
@@ -118,10 +119,11 @@ void BuffImplementation::deactivate(bool removeModifiers) {
 		return;
 
 	try {
-		if (removeModifiers) {
+		if (removeModifiers && modsApplied) {
 			removeAttributeModifiers();
 			removeSkillModifiers();
 			removeStates();
+			modsApplied = false;
 		}
 
 		if (creature.get()->isPlayerCreature())
