@@ -121,7 +121,7 @@ rori_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "rori_brigade_camp_neutral_large_theater",
+			lairTemplateName = "rori_brigade_base_neutral_large_theater",
 			minDifficulty = 11,
 			maxDifficulty = 26,
 			size = 25,

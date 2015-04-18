@@ -555,6 +555,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		SpawnGroup* group = missionIterator.next();
 		std::string templateName( group->getTemplateName().toCharArray() );
 
+		Vector<String> lairTemplates;
+
 		// Verify spawn list
 		Vector<Reference<LairSpawn*> >* spawnList = group->getSpawnList();
 		for (int i = 0; i < spawnList->size(); i++) {
@@ -565,6 +567,8 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 			String lairTemplateName = spawn->getLairTemplateName();
 			Reference<LairTemplate*> lairTemplate = CreatureTemplateManager::instance()->getLairTemplate(lairTemplateName.hashCode());
 			EXPECT_TRUE( lairTemplate != NULL ) << "Lair template " << lairName << " in destroy mission spawn group " << templateName << " does not exist.";
+			EXPECT_FALSE( lairTemplates.contains(lairTemplateName) ) << "Lair template " << lairName << " is duplicated in destroy mission spawn group " << templateName;
+			lairTemplates.add(lairTemplateName);
 
 			if (lairTemplate != NULL) {
 				// Verify that lair template has a valid mission building or is of type LAIR
