@@ -52,6 +52,7 @@ class BuffList : public Serializable {
 protected:
 	bool spiceActive;
 	VectorMap<uint32, ManagedReference<Buff*> > buffList;
+	Mutex mutex;
 
 public:
 	BuffList();
@@ -75,7 +76,9 @@ public:
 		return buffList.size();
 	}
 
-	inline Buff* getBuffByIndex(int index) {
+	Buff* getBuffByIndex(int index) {
+		Locker guard(&mutex);
+
 		if (index < 0 || index >= buffList.size())
 			return NULL;
 
@@ -84,14 +87,18 @@ public:
 		return buffList.elementAt(index).getValue();
 	}
 
-	inline Buff* getBuffByCRC(uint32 buffcrc) {
+	Buff* getBuffByCRC(uint32 buffcrc) {
+		Locker guard(&mutex);
+
 		if (buffList.contains(buffcrc))
 			return buffList.get(buffcrc);
 
 		return NULL;
 	}
 
-	inline long long getModifierByName(const String& skillMod) {
+	long long getModifierByName(const String& skillMod) {
+		Locker guard(&mutex);
+
 		int mod = 0;
 
 		for (int i = 0; i < buffList.size(); i++) {
@@ -102,7 +109,9 @@ public:
 		return mod;
 	}
 
-	inline bool hasBuff(uint32 buffcrc) {
+	bool hasBuff(uint32 buffcrc) {
+		Locker guard(&mutex);
+
 		return buffList.contains(buffcrc);
 	}
 

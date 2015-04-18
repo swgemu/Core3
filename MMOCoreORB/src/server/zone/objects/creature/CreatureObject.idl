@@ -711,9 +711,7 @@ class CreatureObject extends TangibleObject {
 	public native void removeBuff(Buff buff);
 	
 	@preLocked
-	public boolean removeStateBuff(unsigned long state) {
-		return removeBuff(Long.hashCode(state));
-	}
+	public native boolean removeStateBuff(unsigned long state);
 	
 	/**
 	 * Removes all buffs from the creature, deactivating any currently active buffs.

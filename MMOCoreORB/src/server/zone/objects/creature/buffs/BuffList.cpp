@@ -65,6 +65,8 @@ BuffList::BuffList(const BuffList& bf) : Object(), Serializable() {
 }
 
 void BuffList::updateBuffsToDatabase() {
+	Locker guard(&mutex);
+
 	for (int i = 0; i < getBuffListSize(); ++i) {
 		ManagedReference<Buff*> buff = getBuffByIndex(i);
 
@@ -76,6 +78,8 @@ void BuffList::updateBuffsToDatabase() {
 }
 
 void BuffList::sendTo(CreatureObject* player) {
+	Locker guard(&mutex);
+
 	for (int i = 0; i < buffList.size(); ++i) {
 		Buff* buff = buffList.get(i);
 
@@ -84,6 +88,8 @@ void BuffList::sendTo(CreatureObject* player) {
 }
 
 void BuffList::sendDestroyTo(CreatureObject* player) {
+	Locker guard(&mutex);
+
 	for (int i = 0; i < buffList.size(); ++i) {
 		Buff* buff = buffList.get(i);
 
@@ -94,6 +100,8 @@ void BuffList::sendDestroyTo(CreatureObject* player) {
 void BuffList::addBuff(Buff* buff) {
 	if (buff == NULL)
 		return;
+
+	Locker guard(&mutex);
 
 	ManagedReference<Buff*> ref = buff;
 
@@ -117,6 +125,8 @@ void BuffList::addBuff(Buff* buff) {
 }
 
 bool BuffList::removeBuff(uint32 buffcrc) {
+	Locker guard(&mutex);
+
 	ManagedReference<Buff*> buff = buffList.get(buffcrc);
 
 	if (buff == NULL)
@@ -130,6 +140,8 @@ bool BuffList::removeBuff(uint32 buffcrc) {
 void BuffList::removeBuff(Buff* buff) {
 	if (buff == NULL)
 		return;
+
+	Locker guard(&mutex);
 
 	ManagedReference<Buff*> ref = buff;
 
@@ -153,6 +165,8 @@ void BuffList::removeBuff(Buff* buff) {
 }
 
 void BuffList::clearBuffs(bool updateclient) {
+	Locker guard(&mutex);
+
 	while (buffList.size() > 0) {
 		ManagedReference<Buff*> buff = buffList.get(0);
 
