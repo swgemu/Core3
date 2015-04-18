@@ -1,5 +1,4 @@
 yavin4_destroy_missions = {
-
 	lairSpawns = {
 		{
 			lairTemplateName = "yavin4_tanc_mite_lair_neutral_medium",
@@ -35,6 +34,12 @@ yavin4_destroy_missions = {
 			lairTemplateName = "yavin4_whisper_bird_male_neutral_medium_boss_01",
 			minDifficulty = 13,
 			maxDifficulty = 19,
+			size = 25,
+		},
+		{
+			lairTemplateName = "yavin4_hutt_expedition_force_camp_hutt_medium_theater",
+			minDifficulty = 14,
+			maxDifficulty = 22,
 			size = 25,
 		},
 		{

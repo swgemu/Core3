@@ -11,6 +11,7 @@ global_rebel_specforce_base2_rebel_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/anywhere_rebel_base_large_1.iff"},
 	buildingsHard = {"object/building/poi/anywhere_rebel_base_large_1.iff"},
 	buildingsVeryHard = {"object/building/poi/anywhere_rebel_base_large_1.iff"},
+	missionBuilding = "object/tangible/lair/base/objective_banner_rebel.iff",
 	mobType = "npc",
 	buildingType = "theater"
 }

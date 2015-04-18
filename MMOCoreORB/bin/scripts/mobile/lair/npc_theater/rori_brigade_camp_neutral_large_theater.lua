@@ -6,6 +6,7 @@ rori_brigade_camp_neutral_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/naboo_mauler_large1.iff","object/building/poi/naboo_mauler_large2.iff"},
 	buildingsHard = {"object/building/poi/naboo_mauler_large1.iff","object/building/poi/naboo_mauler_large2.iff"},
 	buildingsVeryHard = {"object/building/poi/naboo_mauler_large1.iff","object/building/poi/naboo_mauler_large2.iff"},
+	missionBuilding = "object/tangible/lair/base/objective_power_node.iff",
 	mobType = "npc",
 	buildingType = "theater"
 }
