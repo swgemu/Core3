@@ -30,6 +30,8 @@ class Buff extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected Vector<unsigned long> states;
+	
+	protected boolean modsApplied;
 
 	protected string buffName;
 	protected float buffDuration;
@@ -268,5 +270,10 @@ class Buff extends ManagedObject implements Logger {
 	@dirty
 	public Vector<unsigned long> getSecondaryBuffCRCs() {
 		return secondaryBuffCRCs;
+	}
+	
+	@read
+	public boolean hasMods() {
+		return modsApplied;
 	}
 }
