@@ -1,10 +1,21 @@
 corellia_destroy_missions = {
-
 	lairSpawns = {
+		{
+			lairTemplateName = "corellia_meatlump_camp_neutral_medium_theater",
+			minDifficulty = 4,
+			maxDifficulty = 10,
+			size = 20,
+		},
 		{
 			lairTemplateName = "corellia_gubbur_lair_neutral_small",
 			minDifficulty = 5,
 			maxDifficulty = 7,
+			size = 20,
+		},
+		{
+			lairTemplateName = "corellia_selonian_base_neutral_large_theater",
+			minDifficulty = 5,
+			maxDifficulty = 17,
 			size = 20,
 		},
 		{
@@ -26,6 +37,12 @@ corellia_destroy_missions = {
 			size = 20,
 		},
 		{
+			lairTemplateName = "corellia_greck_base_neutral_large_theater",
+			minDifficulty = 6,
+			maxDifficulty = 12,
+			size = 25,
+		},
+		{
 			lairTemplateName = "corellia_scavenger_rat_lair_neutral_small",
 			minDifficulty = 7,
 			maxDifficulty = 9,
@@ -35,6 +52,30 @@ corellia_destroy_missions = {
 			lairTemplateName = "corellia_diseased_vrelt_lair_neutral_boss_02",
 			minDifficulty = 7,
 			maxDifficulty = 9,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_meatlump_outpost_neutral_medium_theater",
+			minDifficulty = 7,
+			maxDifficulty = 11,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_swooper_camp_neutral_small_theater",
+			minDifficulty = 7,
+			maxDifficulty = 13,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_lord_nyax_chapel_neutral_medium_theater",
+			minDifficulty = 7,
+			maxDifficulty = 13,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_drall_camp_neutral_medium_theater",
+			minDifficulty = 7,
+			maxDifficulty = 23,
 			size = 25,
 		},
 		{
@@ -96,12 +137,42 @@ corellia_destroy_missions = {
 			minDifficulty = 8,
 			maxDifficulty = 12,
 			size = 25,
-		},		
+		},
+		{
+			lairTemplateName = "corellia_hidden_daggers_camp_neutral_medium_theater",
+			minDifficulty = 8,
+			maxDifficulty = 14,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_hidden_daggers_outpost_neutral_medium_theater",
+			minDifficulty = 8,
+			maxDifficulty = 19,
+			size = 25,
+		},
 		{
 			lairTemplateName = "corellia_tabage_lair_neutral_medium",
 			minDifficulty = 9,
 			maxDifficulty = 13,
 			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_monumenter_base_neutral_medium_theater",
+			minDifficulty = 10,
+			maxDifficulty = 14,
+			size = 20,
+		},
+		{
+			lairTemplateName = "corellia_drall_patriot_base_neutral_large_theater",
+			minDifficulty = 10,
+			maxDifficulty = 20,
+			size = 30,
+		},
+		{
+			lairTemplateName = "corellia_corsec_camp_neutral_medium_theater",
+			minDifficulty = 10,
+			maxDifficulty = 22,
+			size = 30,
 		},
 		{
 			lairTemplateName = "corellia_gulginaw_nest_neutral_medium",
@@ -114,6 +185,24 @@ corellia_destroy_missions = {
 			minDifficulty = 12,
 			maxDifficulty = 16,
 			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_drall_patriot_camp_neutral_medium_theater",
+			minDifficulty = 12,
+			maxDifficulty = 20,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_selonian_outpost_neutral_large_theater",
+			minDifficulty = 12,
+			maxDifficulty = 21,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_corsec_traitor_base_neutral_medium_theater",
+			minDifficulty = 14,
+			maxDifficulty = 18,
+			size = 30,
 		},
 		{
 			lairTemplateName = "corellia_humbaba_lair_neutral_medium",
@@ -134,15 +223,51 @@ corellia_destroy_missions = {
 			size = 25,
 		},
 		{
+			lairTemplateName = "corellia_corsec_outpost_neutral_medium_theater",
+			minDifficulty = 15,
+			maxDifficulty = 25,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_lord_nyax_church_neutral_medium_theater",
+			minDifficulty = 15,
+			maxDifficulty = 26,
+			size = 30,
+		},
+		{
+			lairTemplateName = "corellia_beldonna_base_neutral_large_theater",
+			minDifficulty = 15,
+			maxDifficulty = 27,
+			size = 30,
+		},
+		{
 			lairTemplateName = "corellia_gronda_lair_neutral_large",
 			minDifficulty = 16,
 			maxDifficulty = 22,
 			size = 30,
 		},
 		{
+			lairTemplateName = "corellia_corsec_base_neutral_large_theater",
+			minDifficulty = 17,
+			maxDifficulty = 31,
+			size = 30,
+		},
+		{
 			lairTemplateName = "corellia_razor_cat_pride_neutral_medium_boss_01",
 			minDifficulty = 19,
 			maxDifficulty = 25,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_flail_cut_throat_outpost_neutral_medium_theater",
+			minDifficulty = 19,
+			maxDifficulty = 27,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_lord_nyax_visionary_neutral_large_theater",
+			minDifficulty = 24,
+			maxDifficulty = 32,
 			size = 25,
 		},
 		{

@@ -6,6 +6,7 @@ dantooine_mokk_hunter_neutral_none = Lair:new {
 	buildingsMedium = {},
 	buildingsHard = {},
 	buildingsVeryHard = {},
+	missionBuilding = "object/tangible/lair/base/objective_dantari_fire_pit.iff",
 	mobType = "npc",
 	buildingType = "none"
 }

@@ -7,6 +7,7 @@ dantooine_janta_rockshaper_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/dantooine_janta_medium1.iff","object/building/poi/dantooine_janta_medium2.iff"},
 	buildingsHard = {"object/building/poi/dantooine_janta_medium1.iff","object/building/poi/dantooine_janta_medium2.iff"},
 	buildingsVeryHard = {"object/building/poi/dantooine_janta_medium1.iff","object/building/poi/dantooine_janta_medium2.iff"},
+	missionBuilding = "object/tangible/lair/base/objective_dantari_monolith.iff",
 	mobType = "npc",
 	buildingType = "theater"
 }
