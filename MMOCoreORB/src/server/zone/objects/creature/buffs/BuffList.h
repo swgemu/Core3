@@ -69,6 +69,8 @@ public:
 
 	void clearBuffs(bool updateclient);
 
+	int findBuff(Buff* buff);
+
 	String getDurationString(bool showhours = true, bool showminutes = true) const;
 
 	//Getters
