@@ -2311,7 +2311,7 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 		Reference<Buff*> state = getBuff(Long::hashCode(CreatureState::INTIMIDATED));
 
 		if (state == NULL) { // this shouldn't happen, but if it does, we want to make sure intim gets set
-			removeStateBuff(CreatureState::INTIMIDATED);
+			clearState(CreatureState::INTIMIDATED);
 			setIntimidatedState(mod, crc, durationSeconds);
 			return;
 		}
