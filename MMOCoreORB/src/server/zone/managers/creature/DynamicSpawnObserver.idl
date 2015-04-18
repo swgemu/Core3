@@ -60,6 +60,7 @@ class DynamicSpawnObserver extends SpawnObserver {
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 
+	@arg1preLocked
 	public native void spawnInitialMobiles(SceneObject building);
 
 	public boolean isTheaterSpawnObserver() {

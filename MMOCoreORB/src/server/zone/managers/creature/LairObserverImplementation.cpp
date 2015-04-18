@@ -28,6 +28,9 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 	Reference<LairAggroTask*> task = NULL;
 	SceneObject* sourceObject = cast<SceneObject*>(arg1);
 	AiAgent* agent = NULL;
+	ManagedReference<LairObserver*> lairObserver = _this.get();
+	ManagedReference<TangibleObject*> lair = cast<TangibleObject*>(observable);
+	ManagedReference<TangibleObject*> attacker = cast<TangibleObject*>(arg1);
 
 	switch (eventType) {
 	case ObserverEventType::OBJECTREMOVEDFROMZONE:
@@ -35,19 +38,22 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 		return 1;
 		break;
 	case ObserverEventType::OBJECTDESTRUCTION:
-		notifyDestruction(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), (int)arg2);
+		notifyDestruction(lair, attacker, (int)arg2);
 		return 1;
 		break;
 	case ObserverEventType::DAMAGERECEIVED:
 		// if there are living creatures, make them aggro
 		if(getLivingCreatureCount() > 0 ){
-			task = new LairAggroTask(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), _this.get(), false);
+			task = new LairAggroTask(lair, attacker.get(), _this.get(), false);
 			task->execute();
 		}
 
-		// if new creatures have spawned or there are live creatures near the lair
-		if( checkForNewSpawns(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1)) || getLivingCreatureCount() > 0 )
-			checkForHeal(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1));
+		EXECUTE_TASK_3(lairObserver, lair, attacker, {
+				Locker locker(lair_p);
+				lairObserver_p->checkForNewSpawns(lair_p, attacker_p);
+		});
+
+		checkForHeal(lair, attacker);
 
 		break;
 	case ObserverEventType::AIMESSAGE:
@@ -315,7 +321,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 			} else {
 				AiAgent* ai = cast<AiAgent*>( creo.get());
 
-				//Locker clocker(npc, lair);
+				Locker clocker(ai, lair);
 
 				ai->setDespawnOnNoPlayerInRange(false);
 				ai->setHomeLocation(x, z, y);

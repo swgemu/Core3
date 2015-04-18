@@ -286,6 +286,8 @@ class PetDeed extends Deed {
 	 * @post { this object is locked, player is locked }
 	 * @returns 0 if successfull
 	 */
+	@preLocked
+	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	@local

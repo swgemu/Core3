@@ -99,6 +99,8 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 			return 1;
 		}
 
+		Locker locker(vehicleControlDevice);
+
 		Reference<VehicleObject*> vehicle = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1)).castTo<VehicleObject*>();
 
 		if (vehicle == NULL) {

@@ -74,7 +74,7 @@ class Creature extends AiAgent {
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 	}
-	
+
 	/**
 	 * Initializes the transient members of SceneObject, must call the inherited object method first.
 	 * @pre {transient members are not initialized }
@@ -86,7 +86,7 @@ class Creature extends AiAgent {
 	public boolean isCreature() {
 		return true;
 	}
-	
+
 	@read
 	public short getDnaState() {
 		return dnaState;
@@ -94,18 +94,19 @@ class Creature extends AiAgent {
 
 	@read
 	public short getDnaSampleCount(){
-		return dnaSampleCount;	
+		return dnaSampleCount;
 	}
-	
+
+	@preLocked
 	public void incDnaSampleCount() {
-		dnaSampleCount++;	
+		dnaSampleCount++;
 	}
-	
+
 	@dirty
 	public boolean isCamouflaged(CreatureObject target) {
 		return isAggressiveTo(target) && (isScentMasked(target) || isConcealed(target));
 	}
-	
+
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
@@ -119,8 +120,9 @@ class Creature extends AiAgent {
 	 * @returns 0 if successfull
 	 */
 	@preLocked
+	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
@@ -128,13 +130,13 @@ class Creature extends AiAgent {
 	public native void loadTemplateDataForBaby(CreatureTemplate templateData);
 
 	public native void scheduleDespawn(); 
-		
+
 	public native boolean hasOrganics();
 
 	public native boolean hasMilk();
-	
+
 	public native boolean hasDNA();
-	
+
 	public native boolean canHarvestMe(CreatureObject player);
 	public native boolean canDroidHarvestMe(CreatureObject player,CreatureObject droid);
 
@@ -149,15 +151,20 @@ class Creature extends AiAgent {
 	public native boolean canCollectDna(CreatureObject player);
 
 	public native boolean hasSkillToSampleMe(CreatureObject player);
-	
+
+	@preLocked
 	public native void addAlreadyHarvested(CreatureObject player);
 
+	@preLocked
 	public native void setMilkState(short milkState);
 
+	@preLocked
 	public native void setDnaState(short dnaState);
-	
+
+	@preLocked
 	public native void notifyDespawn(Zone zone);
 
+	@preLocked
 	public native void setPetLevel(int newLevel);
 
 	public native boolean isVicious();
@@ -166,6 +173,7 @@ class Creature extends AiAgent {
 		return baby;
 	}
 
+	@preLocked
 	public void setBaby(boolean bab) {
 		baby = bab;
 	}
@@ -173,45 +181,45 @@ class Creature extends AiAgent {
 	public float getTame() {
 		if (super.npcTemplate == null)
 			return 0;
-		
+
 		return super.npcTemplate.getTame();
 	}
-	
+
 	public string getMeatType() {
 		if (super.npcTemplate == null)
 			return "";
-		
+
 		return super.npcTemplate.getMeatType();
 	}
-	
+
 	public string getBoneType() {
 		if (super.npcTemplate == null)
 			return "";
-		
+
 		return super.npcTemplate.getBoneType();
 	}
-	
+
 	public string getHideType() {
 		if (super.npcTemplate == null)
 			return "";
-		
+
 		return super.npcTemplate.getHideType();
 	}
-	
+
 	public string getMilkType() {
 		if (super.npcTemplate == null)
 			return "";
-		
+
 		return super.npcTemplate.getMilkType();
 	}
-	
+
 	public float getMilk() {
 		if (super.npcTemplate == null || isEventMob())
 			return 0;
-		
+
 		return super.npcTemplate.getMilk();
 	}
-	
+
 	public float getHideMax() {
 		if (super.npcTemplate == null || isEventMob())
 			return 0;
@@ -221,7 +229,7 @@ class Creature extends AiAgent {
 		else
 			return super.npcTemplate.getHideMax();
 	}
-	
+
 	public float getBoneMax() {
 		if (super.npcTemplate == null || isEventMob())
 			return 0;
@@ -231,7 +239,7 @@ class Creature extends AiAgent {
 		else
 			return super.npcTemplate.getBoneMax();
 	}
-	
+
 	public float getMeatMax() {
 		if (super.npcTemplate == null || isEventMob())
 			return 0;
