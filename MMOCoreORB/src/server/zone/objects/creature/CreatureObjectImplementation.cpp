@@ -2287,12 +2287,6 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 	} else { // already have this intimidation buff, don't keep stacking the multiplier, but do extend the duration
 		Reference<Buff*> buff = getBuff(crc);
 
-		if (buff == NULL) { // this shouldn't happen, but if it does, we want to make sure intim gets set
-			removeBuff(crc);
-			setIntimidatedState(mod, crc, durationSeconds);
-			return;
-		}
-
 		if (buff->getTimeLeft() < durationSeconds)
 			buff->renew(durationSeconds);
 	}
@@ -2310,11 +2304,12 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 	} else { // already have the intimidated state, so extend it. This is the buff that gets sent to the client
 		Reference<Buff*> state = getBuff(Long::hashCode(CreatureState::INTIMIDATED));
 
-		if (state == NULL) { // this shouldn't happen, but if it does, we want to make sure intim gets set
+		/*if (state == NULL) { // this shouldn't happen, but if it does, we want to make sure intim gets set
 			removeStateBuff(CreatureState::INTIMIDATED);
 			setIntimidatedState(mod, crc, durationSeconds);
 			return;
-		}
+		}*/
+		assert(state != NULL);
 
 		// the intimidate flytext should show up everytime it succeeds
 		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
@@ -2416,7 +2411,6 @@ void CreatureObjectImplementation::addBuff(Buff* buff) {
 }
 
 bool CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
-
 	Reference<Buff*> buff = getBuff(buffcrc);
 
 	//BuffList::removeBuff checks to see if the buffcrc exists in the map.
@@ -2429,6 +2423,14 @@ bool CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
 			removeBuff(secondaryCRCs->get(i));
 		}
 	}
+
+	return ret;
+}
+
+bool CreatureObjectImplementation::removeStateBuff(uint64 state) {
+	bool ret = removeBuff(Long::hashCode(state));
+
+	assert(!hasState(state));
 
 	return ret;
 }
