@@ -150,7 +150,7 @@ void BuffList::removeBuff(Buff* buff) {
 	if (buffList.contains(buffcrc)) {
 		//This only gets called if the event has been scheduled and is not executing.
 		if (buff->isActive())
-			buff->deactivate();
+			buff->clearBuffEvent();
 
 		if (buff->isSpiceBuff())
 			spiceActive = false;
@@ -158,6 +158,8 @@ void BuffList::removeBuff(Buff* buff) {
 		buff->clearBuffEvent();
 
 		buffList.drop(buffcrc);
+
+		buff->deactivate();
 
 		if (buff->isPersistent())
 			ObjectManager::instance()->destroyObjectFromDatabase(buff->_getObjectID());
