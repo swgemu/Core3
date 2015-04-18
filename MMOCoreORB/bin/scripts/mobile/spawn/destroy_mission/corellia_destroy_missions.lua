@@ -79,6 +79,12 @@ corellia_destroy_missions = {
 			size = 25,
 		},
 		{
+			lairTemplateName = "corellia_giant_gubbur_lair_neutral_medium",
+			minDifficulty = 8,
+			maxDifficulty = 10,
+			size = 20,
+		},
+		{
 			lairTemplateName = "corellia_corellian_butterfly_pod_neutral_small",
 			minDifficulty = 8,
 			maxDifficulty = 10,
@@ -196,6 +202,12 @@ corellia_destroy_missions = {
 			lairTemplateName = "corellia_selonian_outpost_neutral_large_theater",
 			minDifficulty = 12,
 			maxDifficulty = 21,
+			size = 25,
+		},
+		{
+			lairTemplateName = "corellia_dire_cat_lair_neutral_medium",
+			minDifficulty = 13,
+			maxDifficulty = 15,
 			size = 25,
 		},
 		{

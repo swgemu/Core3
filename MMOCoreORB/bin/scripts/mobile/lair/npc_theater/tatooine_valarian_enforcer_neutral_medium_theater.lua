@@ -11,6 +11,7 @@ tatooine_valarian_enforcer_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/tatooine_valariangang_medium.iff","object/building/poi/tatooine_valariantrader_medium.iff"},
 	buildingsHard = {"object/building/poi/tatooine_valariangang_medium.iff","object/building/poi/tatooine_valariantrader_medium.iff"},
 	buildingsVeryHard = {"object/building/poi/tatooine_valariangang_medium.iff","object/building/poi/tatooine_valariantrader_medium.iff"},
+	missionBuilding = "object/tangible/lair/base/objective_power_transformer.iff",
 	mobType = "npc",
 	buildingType = "theater"
 }
