@@ -97,18 +97,6 @@ naboo_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "naboo_krevol_lair_neutral_boss_02",
-			minDifficulty = 8,
-			maxDifficulty = 12,
-			size = 25,
-		},
-		{
-			lairTemplateName = "naboo_kaadu_lair_neutral_medium_boss_01",
-			minDifficulty = 8,
-			maxDifficulty = 12,
-			size = 25,
-		},
-		{
 			lairTemplateName = "naboo_veermok_camp_neutral_medium",
 			minDifficulty = 9,
 			maxDifficulty = 11,
@@ -127,7 +115,7 @@ naboo_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "naboo_trade_federation_camp_neutral_large_theater",
+			lairTemplateName = "naboo_borvos_fort_neutral_large_theater",
 			minDifficulty = 9,
 			maxDifficulty = 22,
 			size = 25,
@@ -172,30 +160,6 @@ naboo_destroy_missions = {
 			lairTemplateName = "naboo_gungan_war_base_neutral_large_theater",
 			minDifficulty = 13,
 			maxDifficulty = 26,
-			size = 25,
-		},
-		{
-			lairTemplateName = "naboo_plains_tusk_cat_pride_neutral_medium",
-			minDifficulty = 14,
-			maxDifficulty = 18,
-			size = 25,
-		},
-		{
-			lairTemplateName = "naboo_gualama_small_lair_neutral_medium",
-			minDifficulty = 11,
-			maxDifficulty = 15,
-			size = 25,
-		},
-		{
-			lairTemplateName = "naboo_peko_peko_eyrie_neutral_large",
-			minDifficulty = 12,
-			maxDifficulty = 16,
-			size = 25,
-		},
-		{
-			lairTemplateName = "naboo_gualama_large_lair_neutral_medium",
-			minDifficulty = 12,
-			maxDifficulty = 16,
 			size = 25,
 		},
 		{

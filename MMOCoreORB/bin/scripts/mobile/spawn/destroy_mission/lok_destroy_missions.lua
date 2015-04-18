@@ -49,9 +49,9 @@ lok_destroy_missions = {
 			size = 25,
 		},
 		{
-			lairTemplateName = "lok_perlek_lair_neutral_medium",
-			minDifficulty = 11,
-			maxDifficulty = 17,
+			lairTemplateName = "lok_flit_lair2_neutral_medium_boss_01",
+			minDifficulty = 16,
+			maxDifficulty = 22,
 			size = 25,
 		},
 		{
