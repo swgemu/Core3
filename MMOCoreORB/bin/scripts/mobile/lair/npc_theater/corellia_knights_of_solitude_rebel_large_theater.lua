@@ -6,6 +6,7 @@ corellia_knights_of_solitude_rebel_large_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/corellia_solitude_medium3.iff"},
 	buildingsHard = {"object/building/poi/corellia_solitude_large1.iff","object/building/poi/corellia_solitude_large2.iff"},
 	buildingsVeryHard = {"object/building/poi/corellia_solitude_large1.iff","object/building/poi/corellia_solitude_large2.iff"},
+	missionBuilding = "object/tangible/lair/base/objective_power_node.iff",
 	mobType = "npc",
 	buildingType = "theater"
 }

@@ -1,5 +1,4 @@
 dathomir_destroy_missions = {
-
 	lairSpawns = {
 		{
 			lairTemplateName = "dathomir_kwi_lair_neutral_small",

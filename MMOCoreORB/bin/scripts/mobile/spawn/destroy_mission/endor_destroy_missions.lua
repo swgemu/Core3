@@ -1,5 +1,4 @@
 endor_destroy_missions = {
-
 	lairSpawns = {
 		{
 			lairTemplateName = "endor_squall_rabid_neutral_small",
@@ -125,6 +124,18 @@ endor_destroy_missions = {
 			lairTemplateName = "endor_merek_toxic_battlelord_neutral_small",
 			minDifficulty = 40,
 			maxDifficulty = 50,
+			size = 25,
+		},
+		{
+			lairTemplateName = "endor_marauder_frenzied_neutral_medium_theater",
+			minDifficulty = 48,
+			maxDifficulty = 52,
+			size = 25,
+		},
+		{
+			lairTemplateName = "endor_marauder_blood_crazed_plains_neutral_medium_theater",
+			minDifficulty = 54,
+			maxDifficulty = 58,
 			size = 25,
 		},
 		{

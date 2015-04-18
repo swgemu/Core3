@@ -6,6 +6,7 @@ corellia_hidden_daggers_camp_neutral_medium_theater = Lair:new {
 	buildingsMedium = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
 	buildingsVeryHard = {"object/building/poi/anywhere_misc_camp_small_1.iff"},
+	missionBuilding = "object/tangible/lair/base/objective_power_generator.iff",
 	mobType = "npc",
 	buildingType = "theater"
 }

@@ -1,5 +1,4 @@
 dantooine_destroy_missions = {
-
 	lairSpawns = {
 		{
 			lairTemplateName = "dantooine_bol_pigmy_neutral_small",
@@ -23,6 +22,12 @@ dantooine_destroy_missions = {
 			lairTemplateName = "dantooine_huurton_howler_lair_neutral_medium_boss_01",
 			minDifficulty = 22,
 			maxDifficulty = 28,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_dantari_raider_camp_neutral_large_theater",
+			minDifficulty = 23,
+			maxDifficulty = 27,
 			size = 25,
 		},
 		{
@@ -62,15 +67,75 @@ dantooine_destroy_missions = {
 			size = 25,
 		},
 		{
+			lairTemplateName = "dantooine_dantari_battlelord_squad_neutral_none",
+			minDifficulty = 30,
+			maxDifficulty = 40,
+			size = 25,
+		},
+		{
 			lairTemplateName = "dantooine_graul_mauler_lair_neutral_large_boss_01",
 			minDifficulty = 31,
 			maxDifficulty = 39,
 			size = 35,
 		},
 		{
+			lairTemplateName = "dantooine_kunga_hunter_neutral_none",
+			minDifficulty = 36,
+			maxDifficulty = 39,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_hunter_neutral_none",
+			minDifficulty = 40,
+			maxDifficulty = 44,
+			size = 25,
+		},
+		{
 			lairTemplateName = "dantooine_voritor_tracker_lair_neutral_medium",
 			minDifficulty = 40,
 			maxDifficulty = 50,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_soothsayer_camp_neutral_medium_theater",
+			minDifficulty = 42,
+			maxDifficulty = 44,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_scout_neutral_none",
+			minDifficulty = 46,
+			maxDifficulty = 49,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_kunga_scout_neutral_none",
+			minDifficulty = 47,
+			maxDifficulty = 49,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_janta_hunter_neutral_none",
+			minDifficulty = 49,
+			maxDifficulty = 51,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_janta_scout_neutral_none",
+			minDifficulty = 50,
+			maxDifficulty = 52,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_janta_shaman_camp_neutral_medium_theater",
+			minDifficulty = 58,
+			maxDifficulty = 62,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_mokk_shaman_neutral_none",
+			minDifficulty = 58,
+			maxDifficulty = 62,
 			size = 25,
 		},
 	}
