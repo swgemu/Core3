@@ -2304,13 +2304,15 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, uint32 crc, i
 	} else { // already have the intimidated state, so extend it. This is the buff that gets sent to the client
 		Reference<Buff*> state = getBuff(Long::hashCode(CreatureState::INTIMIDATED));
 
-		/*if (state == NULL) { // this shouldn't happen, but if it does, we want to make sure intim gets set
-			removeStateBuff(CreatureState::INTIMIDATED);
+		if (state == NULL) { // this shouldn't happen, but if it does, we want to make sure intim gets set
+			//removeStateBuff(CreatureState::INTIMIDATED);
+			//setIntimidatedState(mod, crc, durationSeconds);
+			error("no intimidate state buff in setIntimidatedState");
+			clearState(CreatureState::INTIMIDATED);
+			removeBuff(crc);
 			setIntimidatedState(mod, crc, durationSeconds);
 			return;
-		}*/
-		assert(state != NULL);
-
+		}
 		// the intimidate flytext should show up everytime it succeeds
 		showFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 
