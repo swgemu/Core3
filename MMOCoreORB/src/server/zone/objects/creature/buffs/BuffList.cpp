@@ -149,7 +149,9 @@ int BuffList::findBuff(Buff* buff) {
 		if (buffObject == buff)
 			return i;
 
-		assert(buffObject->getBuffCRC() == buffCRC);//either we found the buff or its a different buff with the same crc
+		/*uint32 buffObjectCRC = buffObject->getBuffCRC();
+
+		assert(buffObjectCRC == buffCRC);//either we found the buff or its a different buff with the same crc*/
 	}
 
 	return -1;
