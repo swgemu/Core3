@@ -43,9 +43,21 @@ dantooine_destroy_missions = {
 			size = 25,
 		},
 		{
+			lairTemplateName = "dantooine_huurton_matron_lair_neutral_medium",
+			minDifficulty = 25,
+			maxDifficulty = 27,
+			size = 25,
+		},
+		{
 			lairTemplateName = "dantooine_graul_lair_neutral_medium",
 			minDifficulty = 26,
 			maxDifficulty = 34,
+			size = 35,
+		},
+		{
+			lairTemplateName = "dantooine_quenker_savage_lair_neutral_medium",
+			minDifficulty = 27,
+			maxDifficulty = 29,
 			size = 35,
 		},
 		{
@@ -85,6 +97,12 @@ dantooine_destroy_missions = {
 			size = 25,
 		},
 		{
+			lairTemplateName = "dantooine_quenker_ravager_lair_neutral_medium",
+			minDifficulty = 37,
+			maxDifficulty = 39,
+			size = 25,
+		},
+		{
 			lairTemplateName = "dantooine_mokk_hunter_neutral_none",
 			minDifficulty = 40,
 			maxDifficulty = 44,
@@ -100,6 +118,18 @@ dantooine_destroy_missions = {
 			lairTemplateName = "dantooine_mokk_soothsayer_camp_neutral_medium_theater",
 			minDifficulty = 42,
 			maxDifficulty = 44,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_bol_seething_lair_neutral_medium",
+			minDifficulty = 43,
+			maxDifficulty = 45,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_quenker_relic_reaper_lair_neutral_medium",
+			minDifficulty = 44,
+			maxDifficulty = 46,
 			size = 25,
 		},
 		{
@@ -124,6 +154,18 @@ dantooine_destroy_missions = {
 			lairTemplateName = "dantooine_janta_scout_neutral_none",
 			minDifficulty = 50,
 			maxDifficulty = 52,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_voritor_jungle_lair_neutral_medium",
+			minDifficulty = 52,
+			maxDifficulty = 54,
+			size = 25,
+		},
+		{
+			lairTemplateName = "dantooine_voritor_hunter_lair_neutral_medium",
+			minDifficulty = 56,
+			maxDifficulty = 58,
 			size = 25,
 		},
 		{

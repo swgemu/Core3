@@ -31,6 +31,12 @@ naboo_destroy_missions = {
 			size = 20,
 		},
 		{
+			lairTemplateName = "naboo_flesh_eating_chuba_lair_neutral_small",
+			minDifficulty = 5,
+			maxDifficulty = 7,
+			size = 20,
+		},
+		{
 			lairTemplateName = "naboo_flewt_lair_neutral_boss_02",
 			minDifficulty = 6,
 			maxDifficulty = 8,
@@ -94,6 +100,12 @@ naboo_destroy_missions = {
 			lairTemplateName = "naboo_kaadu_lair_neutral_medium_boss_01",
 			minDifficulty = 8,
 			maxDifficulty = 12,
+			size = 25,
+		},
+		{
+			lairTemplateName = "naboo_nuna_lair_neutral_medium",
+			minDifficulty = 9,
+			maxDifficulty = 11,
 			size = 25,
 		},
 		{

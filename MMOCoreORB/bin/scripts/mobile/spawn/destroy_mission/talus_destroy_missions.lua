@@ -1,6 +1,12 @@
 talus_destroy_missions = {
 	lairSpawns = {
 		{
+			lairTemplateName = "talus_fynock_youth_lair_neutral_small",
+			minDifficulty = 4,
+			maxDifficulty = 6,
+			size = 25,
+		},
+		{
 			lairTemplateName = "talus_chunker_bruiser_camp_neutral_medium_theater",
 			minDifficulty = 4,
 			maxDifficulty = 12,
@@ -115,6 +121,18 @@ talus_destroy_missions = {
 			size = 30,
 		},
 		{
+			lairTemplateName = "talus_vicious_huf_dun_lair_neutral_medium",
+			minDifficulty = 17,
+			maxDifficulty = 21,
+			size = 30,
+		},
+		{
+			lairTemplateName = "talus_wolf_kima_lair_neutral_medium",
+			minDifficulty = 17,
+			maxDifficulty = 21,
+			size = 30,
+		},
+		{
 			lairTemplateName = "talus_huf_dun_lair_neutral_medium",
 			minDifficulty = 18,
 			maxDifficulty = 25,
@@ -205,6 +223,12 @@ talus_destroy_missions = {
 			size = 25,
 		},
 		{
+			lairTemplateName = "talus_savage_guf_drolg_lair_neutral_medium",
+			minDifficulty = 13,
+			maxDifficulty = 17,
+			size = 25,
+		},
+		{
 			lairTemplateName = "talus_aakuan_steward_camp_neutral_small_theater",
 			minDifficulty = 13,
 			maxDifficulty = 28,
@@ -226,6 +250,12 @@ talus_destroy_missions = {
 			lairTemplateName = "talus_aakuan_champion_camp_neutral_large_theater",
 			minDifficulty = 22,
 			maxDifficulty = 30,
+			size = 25,
+		},
+		{
+			lairTemplateName = "talus_mutated_kahmurra_lair_neutral_medium",
+			minDifficulty = 24,
+			maxDifficulty = 28,
 			size = 25,
 		},
 	}

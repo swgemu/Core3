@@ -277,6 +277,12 @@ corellia_destroy_missions = {
 			size = 25,
 		},
 		{
+			lairTemplateName = "corellia_savage_humbaba_lair_neutral_medium",
+			minDifficulty = 23,
+			maxDifficulty = 25,
+			size = 25,
+		},
+		{
 			lairTemplateName = "corellia_lord_nyax_visionary_neutral_large_theater",
 			minDifficulty = 24,
 			maxDifficulty = 32,
@@ -286,6 +292,12 @@ corellia_destroy_missions = {
 			lairTemplateName = "corellia_sharnaff_lair_neutral_large_boss_01",
 			minDifficulty = 27,
 			maxDifficulty = 35,
+			size = 35,
+		},
+		{
+			lairTemplateName = "corellia_war_gronda_lair_neutral_large",
+			minDifficulty = 31,
+			maxDifficulty = 33,
 			size = 35,
 		},
 	}

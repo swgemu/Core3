@@ -7,6 +7,12 @@ rori_destroy_missions = {
 			size = 20,
 		},
 		{
+			lairTemplateName = "rori_borgal_young_lair_neutral_small",
+			minDifficulty = 5,
+			maxDifficulty = 7,
+			size = 20,
+		},
+		{
 			lairTemplateName = "rori_gundark_hooligan_camp_neutral_medium_theater",
 			minDifficulty = 5,
 			maxDifficulty = 10,

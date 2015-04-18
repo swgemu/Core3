@@ -8,9 +8,27 @@ tatooine_destroy_missions = {
 				size = 25,
 			},
 			{
+				lairTemplateName = "tatooine_kreetle_lair_neutral_small",
+				minDifficulty = 2,
+				maxDifficulty = 4,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_tatooine_mynock_lair_neutral_small",
+				minDifficulty = 2,
+				maxDifficulty = 4,
+				size = 25,
+			},
+			{
 				lairTemplateName = "tatooine_womprat_womprat_neutral_medium_boss_01",
 				minDifficulty = 2,
 				maxDifficulty = 4,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_dwarf_nuna_lair_neutral_medium",
+				minDifficulty = 4,
+				maxDifficulty = 6,
 				size = 25,
 			},
 			{
@@ -56,6 +74,12 @@ tatooine_destroy_missions = {
 				size = 25,
 			},
 			{
+				lairTemplateName = "tatooine_diseased_bocatt_lair_neutral_medium",
+				minDifficulty = 7,
+				maxDifficulty = 9,
+				size = 25,
+			},
+			{
 				lairTemplateName = "tatooine_rockmite_click_neutral_small",
 				minDifficulty = 7,
 				maxDifficulty = 9,
@@ -92,9 +116,27 @@ tatooine_destroy_missions = {
 				size = 25,
 			},
 			{
+				lairTemplateName = "tatooine_jundland_eopie_lair_neutral_medium",
+				minDifficulty = 9,
+				maxDifficulty = 11,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_zucca_boar_lair_neutral_medium",
+				minDifficulty = 9,
+				maxDifficulty = 11,
+				size = 25,
+			},
+			{
 				lairTemplateName = "tatooine_cupa_cupa_neutral_medium_boss_01",
 				minDifficulty = 9,
 				maxDifficulty = 13,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_cu_pa_lair_neutral_medium",
+				minDifficulty = 10,
+				maxDifficulty = 12,
 				size = 25,
 			},
 			{
@@ -110,6 +152,18 @@ tatooine_destroy_missions = {
 				size = 25,
 			},
 			{
+				lairTemplateName = "tatooine_mutant_womprat_lair_neutral_small",
+				minDifficulty = 12,
+				maxDifficulty = 14,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_rock_beetle_click_neutral_medium",
+				minDifficulty = 12,
+				maxDifficulty = 22,
+				size = 25,
+			},
+			{
 				lairTemplateName = "tatooine_alkhara_bandit_outpost_neutral_large_theater",
 				minDifficulty = 12,
 				maxDifficulty = 23,
@@ -122,9 +176,21 @@ tatooine_destroy_missions = {
 				size = 25,
 			},
 			{
+				lairTemplateName = "tatooine_swarming_lesser_dewback_lair_neutral_large",
+				minDifficulty = 14,
+				maxDifficulty = 16,
+				size = 25,
+			},
+			{
 				lairTemplateName = "tatooine_desert_eopie_lair_neutral_small",
 				minDifficulty = 14,
 				maxDifficulty = 18,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_matriarch_bantha_lair_neutral_large",
+				minDifficulty = 14,
+				maxDifficulty = 26,
 				size = 25,
 			},
 			{
@@ -164,15 +230,57 @@ tatooine_destroy_missions = {
 				size = 25,
 			},
 			{
+				lairTemplateName = "tatooine_mountain_dewback_lair_neutral_large",
+				minDifficulty = 19,
+				maxDifficulty = 21,
+				size = 25,
+			},
+			{
 				lairTemplateName = "tatooine_bocatt_bocatt_neutral_medium_boss_01",
 				minDifficulty = 19,
 				maxDifficulty = 25,
 				size = 25,
 			},
 			{
+				lairTemplateName = "tatooine_cannibal_dewback_lair_neutral_large",
+				minDifficulty = 20,
+				maxDifficulty = 22,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_greater_womprat_lair_neutral_medium",
+				minDifficulty = 21,
+				maxDifficulty = 23,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_mountain_worrt_lair_neutral_large",
+				minDifficulty = 21,
+				maxDifficulty = 23,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_giant_sand_beetle_click_neutral_large",
+				minDifficulty = 24,
+				maxDifficulty = 32,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_grizzled_dewback_lair_neutral_large",
+				minDifficulty = 25,
+				maxDifficulty = 29,
+				size = 25,
+			},
+			{
 				lairTemplateName = "tatooine_dragonet_dragonet_neutral_medium_boss_01",
 				minDifficulty = 25,
 				maxDifficulty = 33,
+				size = 25,
+			},
+			{
+				lairTemplateName = "tatooine_mountain_squill_lair_neutral_medium",
+				minDifficulty = 32,
+				maxDifficulty = 36,
 				size = 25,
 			},
 		}
