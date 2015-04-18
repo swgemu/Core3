@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_80a647c0",
+        "filename": "MMOCoreORB/bin/scripts/mobile/spawn/destroy_mission/corellia_destroy_missions.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-18T10:20:02Z",
+      "side": 1,
+      "message": "I don\u0027t think we should have missions on the regular terminal that have factional targets.",
+      "revId": "b6dcbcce0650ca535bbb0ecaeeb13f29b919b6d6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
