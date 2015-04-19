@@ -396,6 +396,7 @@ TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, Tangi
 	ManagedReference<TangibleObject*> hair = creo->getSlottedObject("hair").castTo<TangibleObject*>();
 
 	if (hair != NULL) {
+		Locker locker(hair);
 		hair->destroyObjectFromWorld(true);
 		hair->destroyObjectFromDatabase(true);
 	}
