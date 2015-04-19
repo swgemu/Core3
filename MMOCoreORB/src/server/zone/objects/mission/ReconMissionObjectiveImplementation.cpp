@@ -43,6 +43,7 @@ void ReconMissionObjectiveImplementation::activate() {
 		locationActiveArea->setRadius(32.f);
 
 		if (zone != NULL) {
+			Locker locker(locationActiveArea);
 			zone->transferObject(locationActiveArea, -1, true);
 		} else {
 			error("Failed to insert recon location to zone.");
