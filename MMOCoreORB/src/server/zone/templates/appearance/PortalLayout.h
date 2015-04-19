@@ -9,6 +9,7 @@
 #define PORTALLAYOUT_H_
 
 #include "../IffTemplate.h"
+#include "CellProperty.h"
 
 class MeshAppearanceTemplate;
 class PathNode;
@@ -16,11 +17,9 @@ class FloorMesh;
 class PathGraph;
 
 class PortalLayout : public IffTemplate, public Logger {
-	int cellTotalNumber;
-	Vector<FloorMesh*> floorMeshes; // indexed by cells started by 0
-	Vector<MeshAppearanceTemplate*> appearanceTemplates;
 	PathGraph* pathGraph;
 
+	Vector<CellProperty> cellProperties;
 public:
 	PortalLayout();
 	~PortalLayout();
@@ -39,24 +38,22 @@ public:
 
 	Vector<PathNode*>* getPath(PathNode* node1, PathNode* node2);
 
-	inline int getCellTotalNumber() {
-		return cellTotalNumber;
-	}
+	int getCellID(const String& cellName);
 
-	inline int getFloorMeshNumber() {
-		return floorMeshes.size();
+	inline int getCellTotalNumber() {
+		return cellProperties.size() - 1; //exclude the outside cell
 	}
 
 	inline FloorMesh* getFloorMesh(int cellIndex) {
-		return floorMeshes.get(cellIndex);
+		return cellProperties.get(cellIndex).getFloorMesh();
 	}
 
 	inline MeshAppearanceTemplate* getMeshAppearanceTemplate(int cellIndex) {
-		return appearanceTemplates.get(cellIndex);
+		return cellProperties.get(cellIndex).getAppearanceTemplate();
 	}
 
 	inline int getAppearanceTemplatesSize() {
-		return appearanceTemplates.size();
+		return cellProperties.size();
 	}
 
 };

@@ -13,7 +13,6 @@
 #include "engine/util/u3d/AStarAlgorithm.h"
 
 PortalLayout::PortalLayout() {
-	cellTotalNumber = 0;
 	pathGraph = NULL;
 
 	setLoggingName("PortalLayout");
@@ -37,7 +36,6 @@ void PortalLayout::parse(IffStream* iffStream) {
 
 			return;
 		}
-
 
 		iffStream->openForm(type);
 
@@ -77,9 +75,20 @@ void PortalLayout::parse(IffStream* iffStream) {
 	connectFloorMeshGraphs();
 }
 
+int PortalLayout::getCellID(const String& cellName) {
+	for (int i = 0; i < cellProperties.size(); ++i) {
+		CellProperty& cell = cellProperties.get(i);
+
+		if (cell.getName() == cellName)
+			return i;
+	}
+
+	return -1;
+}
+
 void PortalLayout::connectFloorMeshGraphs() {
-	for (int i = 0; i < floorMeshes.size(); ++i) {
-		FloorMesh* floorMesh = floorMeshes.get(i);
+	for (int i = 0; i < cellProperties.size(); ++i) {
+		FloorMesh* floorMesh = getFloorMesh(i);
 
 		if (floorMesh == NULL)
 			continue;
@@ -96,9 +105,9 @@ void PortalLayout::connectFloorMeshGraphs() {
 
 			int globalID = node->getGlobalGraphNodeID();
 
-			for (int k = 0; k < floorMeshes.size(); ++k) {
+			for (int k = 0; k < cellProperties.size(); ++k) {
 				if (i != k) {
-					FloorMesh* newMesh = floorMeshes.get(k);
+					FloorMesh* newMesh = getFloorMesh(k);
 
 					if (newMesh != NULL) {
 						PathGraph* newPathGraph = newMesh->getPathGraph();
@@ -124,11 +133,11 @@ void PortalLayout::connectFloorMeshGraphs() {
 }
 
 int PortalLayout::getFloorMeshID(int globalNodeID, int floorMeshToExclude) {
-	for (int i = 0; i < floorMeshes.size(); ++i) {
+	for (int i = 0; i < cellProperties.size(); ++i) {
 		if (i == floorMeshToExclude)
 			continue;
 
-		FloorMesh* floorMesh = floorMeshes.get(i);
+		FloorMesh* floorMesh = getFloorMesh(i);
 		PathNode* node = floorMesh->getGlobalNode(globalNodeID);
 
 		if (node != NULL)
@@ -145,71 +154,11 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 		uint32 nextType;
 
 		while (iffStream->getRemainingSubChunksNumber() > 0 && (nextType = iffStream->getNextFormType()) == 'CELL') {
-			try {
-				iffStream->openForm('CELL');
+			CellProperty cell(cellProperties.size());
 
-				++cellTotalNumber;
-				uint32 nextForm = iffStream->getNextFormType();
+			cell.readObject(iffStream);
 
-				if (nextForm != '0005') {
-					//SWGForensics::instance->printToConsole(QString("wrong cell form ") + iffStream->getFileName().c_str());
-					error(String("wrong cell form ") + iffStream->getFileName());
-
-					continue;
-				}
-
-				iffStream->openForm('0005');
-
-				Chunk* dataChunk = iffStream->openChunk('DATA');
-
-				int sizeunk = iffStream->getInt();
-
-				int readCase = iffStream->getByte();
-
-				String cellName;
-				iffStream->getString(cellName);
-
-				String meshFile;
-				iffStream->getString(meshFile);
-
-				if (meshFile.length() > 1) {
-					AppearanceTemplate* app = TemplateManager::instance()->getAppearanceTemplate(meshFile);
-
-					if (app != NULL)
-						appearanceTemplates.add(dynamic_cast<MeshAppearanceTemplate*>(app->getFirstMesh()));
-				}
-
-				int readCase2 = iffStream->getByte();
-
-				if (dataChunk->hasData()) {
-					String floorFile;
-					iffStream->getString(floorFile);
-
-					if (floorFile.length() > 1) {
-						FloorMesh* floorMesh = TemplateManager::instance()->getFloorMesh(floorFile);
-
-						floorMeshes.add(floorMesh);
-
-						floorMesh->setCellID(floorMeshes.size() - 1);
-					} else
-						floorMeshes.add(NULL);
-				} else
-					floorMeshes.add(NULL);
-
-				iffStream->closeChunk();
-
-				iffStream->closeForm('0005');
-
-				iffStream->closeForm('CELL');
-			} catch (Exception& e) {
-				error(e.getMessage());
-				error("parsing CELL for " + iffStream->getFileName());
-				e.printStackTrace();
-			} catch (...) {
-				error("parsing CELL for " + iffStream->getFileName());
-
-				throw;
-			}
+			cellProperties.add(cell);
 		}
 
 		iffStream->closeForm('CELS');
@@ -222,10 +171,6 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 
 		throw;
 	}
-
-
-	if (cellTotalNumber > 0)
-		--cellTotalNumber;
 }
 
 Vector<PathNode*>* PortalLayout::getPath(PathNode* node1, PathNode* node2) {
