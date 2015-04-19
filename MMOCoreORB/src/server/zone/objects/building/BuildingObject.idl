@@ -244,6 +244,9 @@ class BuildingObject extends StructureObject {
 		return cells.get(idx);
 	}
 	
+	@dirty
+	public native CellObject getCell(final string cellName);
+	
 	@read
 	public int getTotalCellNumber() {
 		return totalCellNumber;
