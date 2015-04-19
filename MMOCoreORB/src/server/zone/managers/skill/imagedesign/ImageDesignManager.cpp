@@ -164,6 +164,7 @@ void ImageDesignManager::updateColorVariable(const Vector<String>& fullVariables
 					}
 				}
 
+				Locker locker(tano);
 				tano->setCustomizationVariable(fullVariableNameLimit, currentVal, true);
 
 				//info("setting " + fullVariableNameLimit + " to " + String::valueOf(currentVal), true);
