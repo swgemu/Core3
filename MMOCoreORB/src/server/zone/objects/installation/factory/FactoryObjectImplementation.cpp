@@ -344,6 +344,8 @@ void FactoryObjectImplementation::handleRemoveFactorySchem(CreatureObject* playe
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
 	ManagedReference<SceneObject*> schematic = getContainerObject(0);
+
+	Locker locker(schematic);
 	schematic->destroyObjectFromWorld(true);
 
 	if(!schematic->isManufactureSchematic())
