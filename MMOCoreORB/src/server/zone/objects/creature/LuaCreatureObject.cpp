@@ -541,6 +541,8 @@ int LuaCreatureObject::isImperial(lua_State* L) {
 int LuaCreatureObject::setFaction(lua_State* L) {
 	uint32 faction = lua_tointeger(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setFaction(faction);
 
 	return 0;
@@ -548,6 +550,8 @@ int LuaCreatureObject::setFaction(lua_State* L) {
 
 int LuaCreatureObject::setFactionRank(lua_State* L) {
 	int rank = lua_tointeger(L, -1);
+
+	Locker locker(realObject);
 
 	realObject->setFactionRank(rank);
 
