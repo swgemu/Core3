@@ -405,6 +405,8 @@ public:
 		sendHealMessage(creature, targetCreature, healthHealed, actionHealed);
 
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+
+		Locker locker(stimPack);
 		stimPack->decreaseUseCount();
 
 		if (targetCreature != creature && !targetCreature->isPet())
