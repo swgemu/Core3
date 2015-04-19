@@ -276,8 +276,10 @@ bool SlicingSessionImplementation::hasPrecisionLaserKnife(bool removeItem) {
 
 		if (objType == SceneObjectType::LASERKNIFE) {
 			PrecisionLaserKnife* knife = cast<PrecisionLaserKnife*>( sceno.get());
-			if (removeItem)
+			if (removeItem) {
+				Locker locker(knife);
 				knife->useCharge(player);
+			}
 			return 1;
 		}
 	}
@@ -305,7 +307,7 @@ bool SlicingSessionImplementation::hasWeaponUpgradeKit() {
 		uint32 objType = sceno->getGameObjectType();
 
 		if (objType == SceneObjectType::WEAPONUPGRADEKIT) {
-			//inventory->removeObject(sceno, true);
+			Locker locker(sceno);
 			sceno->destroyObjectFromWorld(true);
 			sceno->destroyObjectFromDatabase(true);
 			return true;
@@ -335,9 +337,9 @@ bool SlicingSessionImplementation::hasArmorUpgradeKit() {
 		uint32 objType = sceno->getGameObjectType();
 
 		if (objType == SceneObjectType::ARMORUPGRADEKIT) {
+			Locker locker(sceno);
 			sceno->destroyObjectFromWorld(true);
 			sceno->destroyObjectFromDatabase(true);
-			//inventory->removeObject(sceno, true);
 			return true;
 		}
 	}
@@ -356,7 +358,7 @@ void SlicingSessionImplementation::useClampFromInventory(SlicingTool* clamp) {
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	Locker inventoryLocker(inventory);
+	Locker locker(clamp);
 
 	//inventory->removeObject(clamp, true);
 	clamp->destroyObjectFromWorld(true);
@@ -387,7 +389,7 @@ void SlicingSessionImplementation::handleUseClamp() {
 		uint32 objType = sceno->getGameObjectType();
 
 		if (objType == SceneObjectType::MOLECULARCLAMP) {
-			//inventory->removeObject(sceno, true);
+			Locker locker(sceno);
 			sceno->destroyObjectFromWorld(true);
 			sceno->destroyObjectFromDatabase(true);
 
@@ -428,7 +430,7 @@ void SlicingSessionImplementation::handleUseFlowAnalyzer() {
 					nodeCable = 0; // Failed - Make the Cable incorrect
 			}
 
-			//inventory->removeObject(sceno, true);
+			Locker locker(sceno);
 			sceno->destroyObjectFromWorld(true);
 			sceno->destroyObjectFromDatabase(true);
 
@@ -688,14 +690,14 @@ void SlicingSessionImplementation::handleContainerSlice() {
 		if (containerSceno == NULL)
 			return;
 
+		Locker clocker(containerSceno, player);
+
 		Container* container = dynamic_cast<Container*>(containerSceno.get());
 
 		if (container == NULL) {
 			containerSceno->destroyObjectFromDatabase(true);
 			return;
 		}
-
-		Locker clocker(container, player);
 
 		if (System::random(10) != 4)
 			lootManager->createLoot(container, "looted_container");
@@ -715,9 +717,6 @@ void SlicingSessionImplementation::handleContainerSlice() {
 		Container* container = dynamic_cast<Container*>(tangibleObject.get());
         if (container == NULL)
 			return;
-        Locker clocker(container);
-		
-
 
 		container->setSliced(true);
 		container->setLockedStatus(false);
@@ -758,7 +757,7 @@ void SlicingSessionImplementation::handleSliceFailed() {
         
 		
 		ManagedReference<Container*> container = tangibleObject.castTo<Container*>();
-        Locker clocker(container);
+        Locker clocker(container, player);
        
 		if(!container)
 			return;

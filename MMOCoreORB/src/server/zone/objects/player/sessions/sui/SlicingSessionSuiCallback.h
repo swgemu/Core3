@@ -29,9 +29,11 @@ public:
 
 		if (session == NULL) {
 			ManagedReference<TangibleObject*> obj = cast<TangibleObject*>( suiBox->getUsingObject().get().get());
-			if (obj != NULL)
+
+			if (obj != NULL) {
 				Locker crosslock(obj, player);
 				obj->dropActiveSession(SessionFacadeType::SLICING);
+			}
 
 			return;
 		}
