@@ -267,6 +267,8 @@ int LuaCreatureObject::setHAM(lua_State* L) {
 	uint32 type = (uint32) lua_tonumber(L, -2);
 	uint32 value = (uint32) lua_tonumber(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setHAM(type, value);
 
 	return 0;
@@ -276,6 +278,8 @@ int LuaCreatureObject::setBaseHAM(lua_State* L) {
 	uint32 type = (uint32) lua_tonumber(L, -2);
 	uint32 value = (uint32) lua_tonumber(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setBaseHAM(type, value);
 
 	return 0;
@@ -284,6 +288,8 @@ int LuaCreatureObject::setBaseHAM(lua_State* L) {
 int LuaCreatureObject::setMaxHAM(lua_State* L) {
 	uint32 type = (uint32) lua_tonumber(L, -2);
 	uint32 value = (uint32) lua_tonumber(L, -1);
+
+	Locker locker(realObject);
 
 	realObject->setMaxHAM(type, value);
 
