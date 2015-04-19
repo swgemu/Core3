@@ -132,6 +132,7 @@ public:
 
 		targetPlayer->addBuff(buff);
 
+		Locker clocker(usableKit, creature);
 		usableKit->decreaseUseCount();
 
 		return SUCCESS;
