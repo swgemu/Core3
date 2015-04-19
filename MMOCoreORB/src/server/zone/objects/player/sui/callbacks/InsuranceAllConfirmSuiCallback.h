@@ -75,6 +75,9 @@ public:
 			if (obj != NULL && obj->isTangibleObject()) {
 				j++;
 				TangibleObject* item = cast<TangibleObject*>( obj);
+
+				Locker locker(item, player);
+
 				uint32 bitmask = item->getOptionsBitmask();
 				bitmask |= OptionBitmask::INSURED;
 				item->setOptionsBitmask(bitmask);
