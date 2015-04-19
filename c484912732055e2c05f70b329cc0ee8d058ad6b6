@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_00513762",
+        "filename": "MMOCoreORB/bin/scripts/mobile/spawn/destroy_mission/rori_destroy_missions.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-19T01:24:50Z",
+      "side": 1,
+      "message": "Did you mean to have this listed twice with different difficulties?",
+      "revId": "c484912732055e2c05f70b329cc0ee8d058ad6b6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
