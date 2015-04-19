@@ -214,8 +214,6 @@ int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) {
 	int damage = 0;
 
-	Locker clocker(tano, attacker);
-
 	if (!tano->isAttackableBy(attacker))
 		return 0;
 
@@ -350,8 +348,6 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) {
 
 	int damage = 0;
-
-	Locker clocker(tano, attacker);
 
 	if (tano->isCreatureObject()) {
 		CreatureObject* defenderObject = cast<CreatureObject*>( tano);
@@ -2241,6 +2237,8 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 	if (weapon->isThrownWeapon() || weapon->isHeavyWeapon())
 		range = weapon->getMaxRange() + data.getAreaRange();
 
+	defenderObject->unlock();
+
 	try {
 		//zone->rlock();
 
@@ -2270,6 +2268,8 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 				//error("object is attacker");
 				continue;
 			}
+
+			Locker clocker(tano, attacker);
 
 			if (!tano->isAttackableBy(attacker)) {
 				//error("object is not attackable");
@@ -2326,6 +2326,8 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 		throw;
 	}
 
+	Locker clocker2(defenderObject, attacker);
+
 	weapon->decreasePowerupUses(attacker);
 	return damage;
 }
@@ -2356,6 +2358,8 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 		range = weapon->getMaxRange();
 	}
 
+	defenderObject->unlock();
+
 	try {
 		//zone->rlock();
 
@@ -2385,6 +2389,8 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 				//error("object is attacker");
 				continue;
 			}
+
+			Locker clocker(tano, attacker);
 
 			if (!(tano->getPvpStatusBitmask() & CreatureFlag::ATTACKABLE)) {
 				//error("object is not attackable");
@@ -2431,8 +2437,9 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 		throw;
 	}
 
+	Locker clocker2(defenderObject, attacker);
+
 	return damage;
-	return 0;
 }
 
 int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, WeaponObject* weapon){
