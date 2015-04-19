@@ -31,6 +31,8 @@ public:
 			return INVALIDTARGET;
 		}
 
+		Locker clocker(targetPlayer, creature);
+
 		if(targetPlayer->getDistanceTo(creature) > 10.0) {
 			return GENERALERROR;
 		}
@@ -132,6 +134,7 @@ public:
 
 		targetPlayer->addBuff(buff);
 
+		Locker locker(usableKit);
 		usableKit->decreaseUseCount();
 
 		return SUCCESS;
