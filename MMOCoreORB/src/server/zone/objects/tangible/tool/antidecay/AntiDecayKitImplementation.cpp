@@ -57,6 +57,8 @@ void AntiDecayKitImplementation::doApplyAntiDecay(CreatureObject* player)
 		return;
 	}
 
+	Locker locker(tano, player);
+
 	if(inventory->getContainerVolumeLimit() < (inventory->getCountableObjectsRecursive() + 1)){
 		player->sendSystemMessage("@veteran_new:failed_item_cannot_be_placed_in_inventory"); // The Anti Decay Kit failed to place an item back into your inventory. Please make sure that your inventory has room for this item and try again.
 		return;
