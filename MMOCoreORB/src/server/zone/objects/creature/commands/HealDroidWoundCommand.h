@@ -227,6 +227,7 @@ public:
 
 		deactivateWoundTreatment(creature);
 
+		Locker locker(woundPack);
 		woundPack->decreaseUseCount();
 
 		doAnimations(creature, droid);

@@ -195,6 +195,8 @@ public:
 		sendHealMessage(creature, pet, healthHealed, actionHealed, mindHealed);
 
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+
+		Locker locker(stimPack);
 		stimPack->decreaseUseCount();
 
 		doAnimations(creature, pet);

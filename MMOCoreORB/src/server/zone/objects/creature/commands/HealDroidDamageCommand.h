@@ -179,6 +179,8 @@ public:
 		sendHealMessage(creature, droid, healthHealed, actionHealed, mindHealed);
 
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+
+		Locker locker(stimPack);
 		stimPack->decreaseUseCount();
 
 		doAnimations(creature, droid);

@@ -358,8 +358,10 @@ public:
 
 		deactivateWoundTreatment(enhancer);
 
-		if (enhancePack != NULL)
+		if (enhancePack != NULL) {
+			Locker locker(enhancePack);
 			enhancePack->decreaseUseCount();
+		}
 
 		if (patient != enhancer)
 			awardXp(enhancer, "medical", amountEnhanced); //No experience for healing yourself.

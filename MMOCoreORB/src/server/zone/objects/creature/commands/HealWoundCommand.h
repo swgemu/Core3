@@ -342,6 +342,7 @@ public:
 
 		deactivateWoundTreatment(creature);
 
+		Locker locker(woundPack);
 		woundPack->decreaseUseCount();
 
 		if (creatureTarget != creature && !creatureTarget->isPet())
