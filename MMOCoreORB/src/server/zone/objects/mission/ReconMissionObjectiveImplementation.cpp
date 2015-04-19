@@ -39,6 +39,8 @@ void ReconMissionObjectiveImplementation::activate() {
 
 		Zone* zone = zoneServer->getZone(planetName);
 
+		Locker locker(locationActiveArea);
+
 		locationActiveArea->initializePosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 		locationActiveArea->setRadius(32.f);
 
