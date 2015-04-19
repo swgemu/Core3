@@ -248,6 +248,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 1;
 		}
 
+		Locker areaLocker(campArea, player);
+
 		campArea->init(campStructureData);
 		campArea->setTerminal(campTerminal);
 		campArea->setCamp(structureObject);
