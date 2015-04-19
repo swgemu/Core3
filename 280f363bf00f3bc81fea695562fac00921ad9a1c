@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_40d60fc7",
+        "filename": "MMOCoreORB/bin/scripts/mobile/spawn/destroy_mission/factional_imperial_destroy_missions.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-19T01:42:10Z",
+      "side": 1,
+      "message": "This template is listed twice.",
+      "revId": "280f363bf00f3bc81fea695562fac00921ad9a1c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_80cc0737",
+        "filename": "MMOCoreORB/bin/scripts/mobile/spawn/destroy_mission/rori_destroy_missions.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-19T01:42:10Z",
+      "side": 1,
+      "message": "This template is listed twice.",
+      "revId": "280f363bf00f3bc81fea695562fac00921ad9a1c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_60d10bcd",
+        "filename": "MMOCoreORB/bin/scripts/mobile/spawn/destroy_mission/talus_destroy_missions.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-19T01:42:10Z",
+      "side": 1,
+      "message": "This template is listed twice.",
+      "revId": "280f363bf00f3bc81fea695562fac00921ad9a1c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
