@@ -457,12 +457,13 @@ void CityRegionImplementation::destroyActiveAreas() {
 		ManagedReference<Region*> aa = regions.get(i);
 
 		if (aa != NULL) {
+			Locker clocker(aa, _this.get());
 			aa->destroyObjectFromWorld(false);
 			aa->destroyObjectFromDatabase(true);
-
-			regions.drop(aa);
 		}
 	}
+
+	regions.removeAll();
 }
 
 void CityRegionImplementation::cancelTasks() {
