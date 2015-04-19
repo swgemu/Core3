@@ -63,9 +63,15 @@ int LuaBuildingObject::_setObject(lua_State* L) {
 }
 
 int LuaBuildingObject::getCell(lua_State* L) {
-	int number = lua_tonumber(L, -1);
+	if (lua_isstring(L, -1)) {
+		String name = lua_tostring(L, -1);
 
-	lua_pushlightuserdata(L, realObject->getCell(number));
+		lua_pushlightuserdata(L, realObject->getCell(name));
+	} else {
+		int number = lua_tonumber(L, -1);
+
+		lua_pushlightuserdata(L, realObject->getCell(number));
+	}
 
 	return 1;
 }
