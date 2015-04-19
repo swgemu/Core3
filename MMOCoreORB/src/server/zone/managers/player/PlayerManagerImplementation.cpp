@@ -922,6 +922,8 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 			if (item != NULL && item->isTangibleObject()) {
 				ManagedReference<TangibleObject*> obj = cast<TangibleObject*>(item);
 
+				Locker clocker(obj, player);
+
 				if (obj->getOptionsBitmask() & OptionBitmask::INSURED) {
 					//1% Decay for insured items
 					obj->inflictDamage(obj, 0, 0.01 * obj->getMaxCondition(), true, true);
