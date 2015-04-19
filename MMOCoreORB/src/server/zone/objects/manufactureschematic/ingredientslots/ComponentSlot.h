@@ -146,6 +146,10 @@ public:
 			newTano->setUseCount(1, false);
 			itemsToAdd.add(newTano);
 
+			ilocker.release();
+
+			Locker itemToUseLocker(itemToUse);
+
 			itemToUse->decreaseUseCount();
 		}
 
