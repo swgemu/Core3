@@ -46,6 +46,8 @@ protected:
 
 	String combatSpam;
 
+	int stateAccuracyBonus;
+
 public:
     CreatureAttackData(const UnicodeString & dataString, const CombatQueueCommand *base);
     CreatureAttackData(const CreatureAttackData& data);
@@ -175,6 +177,14 @@ public:
 
 	bool isStateOnlyAttack() const {
 		return poolsToDamage == 0;
+	}
+
+	int getStateAccuracyBonus() const {
+		return stateAccuracyBonus;
+	}
+
+	void setStateAccuracyBonus(int stateAccuracyBonus) {
+		this->stateAccuracyBonus = stateAccuracyBonus;
 	}
 };
 
