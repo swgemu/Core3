@@ -1313,6 +1313,8 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 
 		ManagedReference<SceneObject*> datapad = crafter->getSlottedObject("datapad");
 
+		Locker prototypeLocker(prototype);
+
 		prototype->destroyObjectFromWorld(0);
 
 		manufactureSchematic->setPersistent(2);
