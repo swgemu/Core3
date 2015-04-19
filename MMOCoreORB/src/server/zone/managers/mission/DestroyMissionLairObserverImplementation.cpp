@@ -151,7 +151,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 			} else {
 				AiAgent* ai = cast<AiAgent*>( creo.get());
 
-				//Locker clocker(npc, lair);
+				Locker clocker(ai, lair);
 
 				ai->setDespawnOnNoPlayerInRange(false);
 				ai->setHomeLocation(x, z, y);
