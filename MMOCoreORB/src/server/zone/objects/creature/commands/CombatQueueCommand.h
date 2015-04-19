@@ -173,7 +173,7 @@ public:
 			PlayerObject* ghost = creature->getPlayerObject().get();
 
 			if (ghost != NULL && !combatManager->areInDuel(creature, targetObject.castTo<CreatureObject*>())) {
-					ghost->updateLastPvpCombatActionTimestamp();
+				ghost->updateLastPvpCombatActionTimestamp();
 			}
 		} else if (creature->isPet() && targetObject->isPlayerCreature()) {
 			ManagedReference<CreatureObject*> owner = creature->getLinkedCreature().get();
@@ -182,7 +182,8 @@ public:
 				PlayerObject* ownerGhost = owner->getPlayerObject().get();
 
 				if (ownerGhost != NULL && !combatManager->areInDuel(owner, targetObject.castTo<CreatureObject*>())) {
-						ownerGhost->updateLastPvpCombatActionTimestamp();
+					Locker olocker(owner, creature);
+					ownerGhost->updateLastPvpCombatActionTimestamp();
 				}
 			}
 		} else if (creature->isPlayerCreature() && targetObject->isPet()) {
@@ -192,7 +193,7 @@ public:
 				PlayerObject* ghost = creature->getPlayerObject().get();
 
 				if (ghost != NULL && !combatManager->areInDuel(creature, targetOwner)) {
-						ghost->updateLastPvpCombatActionTimestamp();
+					ghost->updateLastPvpCombatActionTimestamp();
 				}
 			}
 		}
