@@ -129,6 +129,8 @@ public:
 
 				ManagedReference<SceneObject*> parent = creature->getParent();
 
+				Locker clocker(object, creature);
+
 				object->initializePosition(x, z, y);
 				object->setDirection(creature->getDirectionW(), creature->getDirectionX(), creature->getDirectionY(), creature->getDirectionZ());
 
@@ -167,6 +169,8 @@ public:
 						return GENERALERROR;
 					}
 				}
+
+				Locker clocker(object, creature);
 
 				object->destroyObjectFromWorld(true);
 
