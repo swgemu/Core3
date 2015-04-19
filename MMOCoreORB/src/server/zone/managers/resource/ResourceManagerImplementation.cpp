@@ -184,17 +184,9 @@ int ResourceManagerImplementation::getResourceRecycleType(ResourceSpawn* resourc
 }
 
 void ResourceManagerImplementation::sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType) {
-	rlock();
+	ReadLocker locker(_this.get());
 
-	try {
-		resourceSpawner->sendResourceListForSurvey(playerCreature, toolType, surveyType);
-	} catch (...) {
-		runlock();
-
-		throw;
-	}
-
-	runlock();
+	resourceSpawner->sendResourceListForSurvey(playerCreature, toolType, surveyType);
 }
 
 ResourceContainer* ResourceManagerImplementation::harvestResource(CreatureObject* player, const String& type, const int quantity) {
@@ -233,19 +225,11 @@ void ResourceManagerImplementation::createResourceSpawn(CreatureObject* playerCr
 ResourceSpawn* ResourceManagerImplementation::getResourceSpawn(const String& spawnName) {
 	ResourceSpawn* spawn = NULL;
 
-	rlock();
+	ReadLocker locker(_this.get());
 
-	try {
-		ResourceMap* resourceMap = resourceSpawner->getResourceMap();
+	ResourceMap* resourceMap = resourceSpawner->getResourceMap();
 
-		spawn = resourceMap->get(spawnName.toLowerCase());
-	} catch (...) {
-		runlock();
-
-		throw;
-	}
-
-	runlock();
+	spawn = resourceMap->get(spawnName.toLowerCase());
 
 	return spawn;
 }
@@ -257,7 +241,7 @@ ResourceSpawn* ResourceManagerImplementation::getCurrentSpawn(const String& rest
 void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, const String& zoneName) {
 	list.removeAll();
 
-	rlock();
+	ReadLocker locker(_this.get());
 
 	ManagedReference<ResourceSpawn*> resourceSpawn;
 
@@ -288,13 +272,7 @@ void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReferenc
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
-	} catch (...) {
-		runlock();
-
-		throw;
 	}
-
-	runlock();
 }
 
 uint32 ResourceManagerImplementation::getAvailablePowerFromPlayer(CreatureObject* player) {
