@@ -34,8 +34,11 @@ public:
 
 			ManagedReference<TangibleObject*> armorRehueTano = cast<TangibleObject*>(armorRehue.get());
 
-			if (armorRehueTano != NULL)
+			if (armorRehueTano != NULL) {
+				Locker locker(armorRehueTano, creature);
+
 				armorRehueTano->setCustomizationVariable(palette, index, true);
+			}
 
 		}
 	}
