@@ -1594,6 +1594,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObjec
 
 void CombatManager::applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data) {
 	VectorMap<uint8, StateEffect>* stateEffects = data.getStateEffects();
+	int stateAccuracyBonus = data.getStateAccuracyBonus();
 
 	if (targetCreature->isPlayerCreature() && targetCreature->getPvpStatusBitmask() == CreatureFlag::NONE)
 		return;
@@ -1615,7 +1616,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		bool failed = false;
 		uint8 effectType = effect.getEffectType();
 
-		float accuracyMod = effect.getStateChance();
+		float accuracyMod = effect.getStateChance() + stateAccuracyBonus;
 		if (data.isStateOnlyAttack())
 			accuracyMod += creature->getSkillMod(data.getCommand()->getAccuracySkillMod());
 

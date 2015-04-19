@@ -49,8 +49,8 @@ krayt_dragon_ancient = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareacombo",""},
-		{"creatureareaknockdown",""}
+		{"creatureareacombo","stateAccuracyBonus=100"},
+		{"creatureareaknockdown","stateAccuracyBonus=100"}
 	}
 }
 
