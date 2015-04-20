@@ -123,9 +123,10 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	DnaComponent* men = slots.get("mental_profile").get();
 	DnaComponent* psy = slots.get("psychological_profile").get();
 	DnaComponent* agr = slots.get("aggression_profile").get();
-
+	// REVAMP FROM HERE DOWN.
+	// STEP 1. Determine Attributes
 	uint32 harMax, fortMax, endMax,intMax, dexMax,cleMax,depMax,couMax,fieMax,powMax;
-
+	// Calculate the max values i.e. the weighter resource avergae.
 	fortMax = Genetics::physiqueFormula(phy->getForititude(),pro->getForititude(),men->getForititude(),psy->getForititude(),agr->getForititude());
 	harMax = Genetics::physiqueFormula(phy->getHardiness(),pro->getHardiness(),men->getHardiness(),psy->getHardiness(),agr->getHardiness());
 	dexMax = Genetics::prowessFormula(phy->getDexterity(),pro->getDexterity(),men->getDexterity(),psy->getDexterity(),agr->getDexterity());
@@ -136,18 +137,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	couMax = Genetics::physchologicalFormula(phy->getCourage(),pro->getCourage(),men->getCourage(),psy->getCourage(),agr->getCourage());
 	fieMax = Genetics::aggressionFormula(phy->getFierceness(),pro->getFierceness(),men->getFierceness(),psy->getFierceness(),agr->getFierceness());
 	powMax = Genetics::aggressionFormula(phy->getPower(),pro->getPower(),men->getPower(),psy->getPower(),agr->getPower());
-
-	uint32 fortMin,endMin,harMin,intMin,dexMin,cleMin,depMin,couMin,fieMin,powMin;
-	fortMin = Genetics::initialValue(fortMax);
-	harMin = Genetics::initialValue(harMax);
-	dexMin = Genetics::initialValue(dexMax);
-	endMin = Genetics::initialValue(endMax);
-	intMin = Genetics::initialValue(intMax);
-	cleMin = Genetics::initialValue(cleMax);
-	depMin = Genetics::initialValue(depMax);
-	couMin = Genetics::initialValue(couMax);
-	fieMin = Genetics::initialValue(fieMax);
-	powMin = Genetics::initialValue(powMax);
+	// acknowledge any specials found in the experimentation line. this means specials will not modify later by experimentaiton as its an overlay value.
 	bool spBlast = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::BLAST);
 	bool spKinetic = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::KINETIC);
 	bool spEnergy = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::ENERGY);
@@ -157,8 +147,8 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	bool spAcid = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::ACID);
 	bool spStun = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::STUN);
 	bool spSaber = Genetics::hasASpecial(phy,pro,men,psy,agr,WeaponObject::LIGHTSABER);
-
-	// Need to revist now for special protections
+	// Calculate resists
+	// 1 percent: (1000 - 0) / 100.0f;
 	float blastMax, energyMax, kineticMax,heatMax,coldMax,electricMax,acidMax,stunMax,saberMax;
 	blastMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::BLAST,100.0f);
 	kineticMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::KINETIC,60.0f);
@@ -169,121 +159,100 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	acidMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::ACID,100.0f);
 	stunMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::STUN,100.0f);
 	saberMax = Genetics::resistanceFormula(phy,pro,men,psy,agr,WeaponObject::LIGHTSABER,100.0f);
-
-	float blastMin, energyMin, kineticMin, heatMin, coldMin, electricMin, acidMin, stunMin, saberMin;
-	blastMin = Genetics::determineMinResistance(blastMax);
-	kineticMin = Genetics::determineMinResistance(kineticMax);
-	energyMin = Genetics::determineMinResistance(energyMax);
-	heatMin = Genetics::determineMinResistance(heatMax);
-	coldMin = Genetics::determineMinResistance(coldMax);
-	electricMin = Genetics::determineMinResistance(electricMax);
-	acidMin = Genetics::determineMinResistance(acidMax);
-	stunMin = Genetics::determineMinResistance(stunMax);
-	saberMin = Genetics::determineMinResistance(saberMax);
-
-	// special resists that are 0 goto effective resists of 0
-	if(saberMax <= 0)
+	// lets clear the special bit if it moved to effective range.
+	if(saberMax == 0) {
 		spSaber = false;
-	if (blastMax <= 0)
+		saberMax = 100;
+	}
+	if (blastMax == 0) {
 		spBlast = false;
-	if (kineticMax <= 0)
+		blastMax = 100;
+	}
+	if (kineticMax == 0) {
 		spKinetic = false;
-	if (energyMax <= 0)
+		kineticMax = 60;
+	}
+	if (energyMax == 0) {
 		spEnergy = false;
-	if (heatMax <= 0)
+		energyMax = 60;
+	}
+	if (heatMax == 0) {
 		spHeat = false;
-	if (coldMax <= 0)
+		heatMax = 100;
+	}
+	if (coldMax == 0) {
 		spCold = false;
-	if (electricMax <= 0)
+		coldMax = 100;
+	}
+	if (electricMax == 0) {
 		spElectric = false;
-	if(acidMax <= 0)
+		electricMax = 100;
+	}
+	if(acidMax == 0) {
 		spAcid = false;
-	if(stunMax <= 0)
+		acidMax = 100;
+	}
+	if(stunMax == 0) {
 		spStun = false;
+		stunMax = 100;
+	}
 
-	craftingValues->addExperimentalProperty("expPhysiqueProfile","fortitude",fortMin,fortMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expPhysiqueProfile","hardiness",harMin,harMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expProwessProfile","dexterity",dexMin,dexMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expProwessProfile","endurance",endMin,endMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expMentalProfile","intellect",intMin,intMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expMentalProfile","cleverness",cleMin,cleMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expPsychologicalProfile","dependability",depMin,depMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expPsychologicalProfile","courage",couMin,couMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expAggressionProfile","fierceness",fieMin,fieMax,0,false,CraftingManager::LINEARCOMBINE);
-	craftingValues->addExperimentalProperty("expAggressionProfile","power",powMin,powMax,0,false,CraftingManager::LINEARCOMBINE);
-
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_kinetic",kineticMin,kineticMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_blast",blastMin,blastMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_energy",energyMin,energyMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_heat",heatMin,heatMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_cold",coldMin,coldMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_electric",electricMin,electricMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_acid",acidMin,acidMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_stun",stunMin,stunMax,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("resists","dna_comp_armor_saber",saberMin,saberMax,0,true,CraftingManager::OVERRIDECOMBINE);
-
+	// Step 2. At this point we know the max values for all stats and we have calculated any armor specials needed
+	// So now we need to setup the min and initial values of stats and define the experimental attributes. // Ranges are 0 to 100 for any one of these
+	// set current value to be 70% less than max calculated as the experimentation range. i.e.
+	craftingValues->addExperimentalProperty("expPhysiqueProfile","fortitude",0,fortMax,0,false,CraftingManager::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expPhysiqueProfile","hardiness",0,harMax,0,false,CraftingManager::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expProwessProfile","dexterity",0,dexMax,0,false,CraftingManager::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expProwessProfile","endurance",0,endMax,0,false,CraftingManager::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expMentalProfile","intellect",0,intMax,0,false,CraftingManager::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expMentalProfile","cleverness",0,cleMax,0,false,CraftingManager::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expPsychologicalProfile","dependability",0,depMax,0,false,CraftingManager::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expPsychologicalProfile","courage",0,couMax,0,false,CraftingManager::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expAggressionProfile","fierceness",0,fieMax,0,false,CraftingManager::LINEARCOMBINE);
+	craftingValues->addExperimentalProperty("expAggressionProfile","power",0,powMax,0,false,CraftingManager::LINEARCOMBINE);
+	String title;
+	int armorBase = 0;
+	int effectiveness = 0;
+	for(int i=0;i<craftingValues->getExperimentalPropertySubtitleSize();i++) {
+		title = craftingValues->getExperimentalPropertySubtitle(i);
+		if (craftingValues->isHidden(title))
+			continue;
+		// We need to accoutn for assembly percentage. do some swapping around as well.
+		float maxValue = craftingValues->getMaxValue(title);
+		float initialValue = Genetics::initialValue(craftingValues->getMaxValue(title));
+		// determine max percentage
+		craftingValues->setMaxPercentage(title, maxValue/1000.0f);
+		craftingValues->setMaxValue(title,1000);
+		// using assembly to accoutn for a 1 +% increase
+		currentPercentage = getAssemblyPercentage(initialValue) * modifier;
+		//craftingValues->setMaxPercentage(title, maxPercentage);
+		craftingValues->setCurrentPercentage(title, currentPercentage);
+		if (title == "fortitude") {
+			armorBase = craftingValues->getCurrentValue(title);
+		}
+	}
+	int armorValue = armorBase/500;
+	effectiveness = (int)(((armorBase - (armorValue * 500)) / 50) * 5);
+	// Store off armor data
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_kinetic",spKinetic ? kineticMax : kineticMax < 0 ? -1 : effectiveness,kineticMax,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_blast",spBlast ? blastMax : blastMax < 0 ? -1 : effectiveness, blastMax,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_energy",spEnergy ? energyMax : energyMax < 0 ? -1 : effectiveness, energyMax,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_heat",spHeat ? heatMax : heatMax < 0 ? -1 :  effectiveness ,heatMax,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_cold",spCold ? coldMax : coldMax < 0 ? -1 : effectiveness ,coldMax,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_electric",spElectric ? electricMax : electricMax < 0 ? -1 : effectiveness ,electricMax,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_acid",spAcid ? acidMax : acidMax < 0 ? -1 : effectiveness ,acidMax,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_stun",spStun ? stunMax : stunMax < 0 ? -1 : effectiveness ,stunMax,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("resists","dna_comp_armor_saber",spSaber ? saberMax : saberMax < 0 ? -1 : effectiveness ,saberMax,0,true,CraftingManager::OVERRIDECOMBINE);
+	// Store off special information
 	craftingValues->addExperimentalProperty("specials","kineticeffectiveness",spKinetic ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("specials","blasteffectiveness",spBlast ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("specials","energyeffectiveness",spEnergy ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("specials","heateffectiveness",spHeat ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("specials","coldeffectiveness",spCold ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("specials","electricityeffectiveness",spElectric ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("special","acideffectiveness",spAcid ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("special","stuneffectiveness",spStun ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-	craftingValues->addExperimentalProperty("special","lightsabereffectiveness",spSaber ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
-
-	craftingValues->setMaxPercentage("dna_comp_armor_kinetic",1);
-	craftingValues->setMaxPercentage("dna_comp_armor_blast",1);
-	craftingValues->setMaxPercentage("dna_comp_armor_energy",1);
-	craftingValues->setMaxPercentage("dna_comp_armor_heat",1);
-	craftingValues->setMaxPercentage("dna_comp_armor_cold",1);
-	craftingValues->setMaxPercentage("dna_comp_armor_electric",1);
-	craftingValues->setMaxPercentage("dna_comp_armor_acid",1);
-	craftingValues->setMaxPercentage("dna_comp_armor_stun",1);
-	craftingValues->setMaxPercentage("dna_comp_armor_saber",1);
-
-	craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",spKinetic ? 1 : (kineticMin/kineticMax) * modifier);
-	craftingValues->setCurrentPercentage("dna_comp_armor_blast",spBlast ? 1 : (blastMin/blastMax) * modifier);
-	craftingValues->setCurrentPercentage("dna_comp_armor_energy",spEnergy ? 1 : (energyMin/energyMax) * modifier);
-	craftingValues->setCurrentPercentage("dna_comp_armor_heat",spHeat ? 1: (heatMin/heatMax) * modifier );
-	craftingValues->setCurrentPercentage("dna_comp_armor_cold",spCold ? 1: (coldMin/coldMax) * modifier );
-	craftingValues->setCurrentPercentage("dna_comp_armor_electric",spElectric ? 1 : (electricMin/electricMax) * modifier);
-	craftingValues->setCurrentPercentage("dna_comp_armor_acid",spAcid ? 1 : (acidMin/acidMax) * modifier);
-	craftingValues->setCurrentPercentage("dna_comp_armor_stun",spStun ? 1: (stunMin/stunMax) * modifier);
-	craftingValues->setCurrentPercentage("dna_comp_armor_saber",spSaber ? 1: (saberMin/saberMax) * modifier);
-	// update special to be their calculated max
-
-	// Calc the max Percentage, vs Min Percentage genetic can always got up to 100% for a given title
-	craftingValues->setMaxPercentage("fortitude", Genetics::maxExperimentationPercentage(fortMin,harMin,fortMax,harMax));
-	craftingValues->setCurrentPercentage("fortitude",getAssemblyPercentage(fortMin) * modifier);
-
-	craftingValues->setMaxPercentage("hardiness",Genetics::maxExperimentationPercentage(harMin,fortMin,harMax,fortMax));
-	craftingValues->setCurrentPercentage("hardiness",getAssemblyPercentage(harMin) * modifier);
-
-	craftingValues->setMaxPercentage("dexterity",Genetics::maxExperimentationPercentage(dexMin,endMin,dexMax,endMax));
-	craftingValues->setCurrentPercentage("dexterity",getAssemblyPercentage(dexMin) * modifier);
-
-	craftingValues->setMaxPercentage("endurance",Genetics::maxExperimentationPercentage(endMin,dexMin,endMax,dexMax));
-	craftingValues->setCurrentPercentage("endurance",getAssemblyPercentage(endMin) * modifier);
-
-	craftingValues->setMaxPercentage("intellect",Genetics::maxExperimentationPercentage(intMin,cleMin,intMax,cleMax));
-	craftingValues->setCurrentPercentage("intellect",getAssemblyPercentage(intMin) * modifier);
-
-	craftingValues->setMaxPercentage("cleverness",Genetics::maxExperimentationPercentage(cleMin,intMin,cleMax,intMax));
-	craftingValues->setCurrentPercentage("cleverness",getAssemblyPercentage(cleMin) * modifier);
-
-	craftingValues->setMaxPercentage("dependability",Genetics::maxExperimentationPercentage(depMin,couMin,depMax,couMax));
-	craftingValues->setCurrentPercentage("dependability",getAssemblyPercentage(dexMin) * modifier);
-
-	craftingValues->setMaxPercentage("courage",Genetics::maxExperimentationPercentage(couMin,depMin,couMax,depMax));
-	craftingValues->setCurrentPercentage("courage",getAssemblyPercentage(couMin) * modifier);
-
-	craftingValues->setMaxPercentage("fierceness",Genetics::maxExperimentationPercentage(fieMin,powMin,fieMax,powMax));
-	craftingValues->setCurrentPercentage("fierceness",getAssemblyPercentage(fieMin) * modifier);
-
-	craftingValues->setMaxPercentage("power",Genetics::maxExperimentationPercentage(powMin,fieMin,powMax,fieMax));
-	craftingValues->setCurrentPercentage("power",getAssemblyPercentage(powMin) * modifier);
-
+	craftingValues->addExperimentalProperty("specials","acideffectiveness",spAcid ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials","stuneffectiveness",spStun ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
+	craftingValues->addExperimentalProperty("specials","lightsabereffectiveness",spSaber ? 1: 0,1,0,true,CraftingManager::OVERRIDECOMBINE);
 	int quality = ( ((float)phy->getQuality() * 0.2)+ ((float)pro->getQuality()*0.2) + ((float)men->getQuality()*0.2) + ((float)psy->getQuality()*0.2) + ((float)agr->getQuality()*0.2));
 	bool ranged = false;
 	int odds = 0;
@@ -308,7 +277,6 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	int level = Genetics::physchologicalFormula(phy->getLevel(),pro->getLevel(),men->getLevel(), psy->getLevel() ,agr->getLevel());
 	genetic->setLevel(level);
 	craftingValues->recalculateValues(true);
-	recalculateResist(craftingValues);
 }
 
 void GeneticLabratory::initialize(ZoneServer* server) {
@@ -324,266 +292,69 @@ bool GeneticLabratory::allowFactoryRun(ManufactureSchematic* manufactureSchemati
 }
 
 void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult){
-	float modifier, newValue, valA, valB;
-	String title, subtitle, subtitlesTitle;
+	// we can 'run super' then reset our resists accordingly as well as armor base.
+	//
+	// TODO:
+	// Step 1. Perform normal experimentiton run
+	// Step 2. Recalculate armor base, and effective resist based on armor base. (armor base is fort)
+	// Step 3. Profit.
+	// RULES: AMAZING + 15% (+5% if lucky), GREAT: 1% GOOD: 0.5% MODERATE: 0.25% SUCCESS: 0.15% MARGINAL: 0% OK: -0.5% BARELY: -1% CRITICAL FAILURE: -1% + random state reduced by 10%
+	// use normal line mechanics, just add the extra in.
+	float modifier, newValue;
+	String title, subtitle, subtitlesTitle, screwedTitle;
 	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
-	modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
-	// we know points attempted and complextiy at this point always
-	// We need to change this to increase in a more linear fashion and determine percentages inverse
-	String prop1 = "";
-	String prop2 = "";
-	Vector<String> others;
-	float a = 0;
-	float b = 0;
-	float maxA = 0;
-	float maxB = 0;
-	others.add("dexterity");
-	others.add("endurance");
-	others.add("intellect");
-	others.add("cleverness");
-	others.add("dependability");
-	others.add("courage");
-	others.add("fierceness");
-	others.add("power");
-	others.add("hardiness");
-	others.add("fortitude");
-	bool resistLine = false;
-	if (title == "expPhysiqueProfile") {
-		prop1 = "hardiness";
-		prop2 = "fortitude";
-		resistLine = true;
-	}
-	if (title == "expProwessProfile") {
-		prop1 = "dexterity";
-		prop2 = "endurance";
-	}
-	if (title == "expMentalProfile") {
-		prop1 = "intellect";
-		prop2 = "cleverness";
-	}
-	if (title == "expPsychologicalProfile") {
-		prop1 = "dependability";
-		prop2 = "courage";
-	}
-	if (title == "expAggressionProfile") {
-		prop1 = "fierceness";
-		prop2 = "power";
-	}
-	others.removeElement(prop1);
-	others.removeElement(prop2);
-	bool reduceA = false;
-	bool reduceB = false;
-	// get a random 2nd title
-
-	switch(experimentationResult) {
-		case CraftingManager::CRITICALFAILURE:
-			int which = System::random(1);
-			if (which == 0) {
-				reduceA = true;
-			} else {
-				reduceB = true;
-			}
-			break;
-	}
-	float boost = 0.1f;
-	for(int i=0;i<pointsAttempted;i++) {
-		craftingValues->unlockValue(prop1);
-		craftingValues->unlockValue(prop2);
-		a = craftingValues->getCurrentValue(prop1);
-		b = craftingValues->getCurrentValue(prop2);
-		maxA = craftingValues->getMaxValue(prop1);
-		maxB = craftingValues->getMaxValue(prop2);
-		// this is per point add this for each point spent we use slightly diff calcs than resources since we need to work on 2 at once in a relation ship
-		// we need to detmine how much it goes up per point as a percentage
-		// so a/(a+b) * 140
-		//    b/(a+b) * 140
-		// this is the amount we increase
-		float increaseA = Genetics::experimentFormula(b,a);
-		float increaseB = Genetics::experimentFormula(a,b);
-		if (CraftingManager::CRITICALFAILURE == experimentationResult) {
-			boost = -0.08f;
-			if (reduceA){
-				increaseA = -increaseA * 0.08;
-				increaseB = -increaseB * 0.08;
-			}
-			else{
-				increaseA -= increaseA * 0.09;
-				increaseB -= increaseB * 0.09;
-			}
-			if (reduceB){
-				increaseA = -increaseA * 0.08;
-				increaseB = -increaseB * 0.08;
-			}
-			else{
-				increaseA -= increaseA * 0.09;
-				increaseB -= increaseB * 0.09;
-			}
-			a += increaseA;
-			b += increaseB;
-			if (b > maxB)
-				b = maxB;
-			if (a > maxA)
-				a = maxA;
-			float cap = craftingValues->getCurrentPercentage(prop1);
-			float cbp = craftingValues->getCurrentPercentage(prop2);
-			cap += boost;
-			cbp += boost;
-			if (cbp > 1)
-				cbp = 1;
-			if (cap > 1)
-				cap = 1;
-			if (cap < 0)
-				cap = 0;
-			if (cbp < 0)
-				cbp = 0;
-			if (a < 0)
-				a = 1;
-			if (b < 0)
-				b = 1;
-			craftingValues->setCurrentValue(prop1,a);
-			craftingValues->setCurrentValue(prop2,b);
-			craftingValues->setCurrentPercentage(prop1,cap);
-			craftingValues->setCurrentPercentage(prop2,cbp);
-			craftingValues->lockValue(prop1);
-			craftingValues->lockValue(prop2);
-
-			if (System::random(100) < 20) {
-				// increase other property by a percentage point
-				int index = System::random(others.size()-1);
-				String p = others.get(index);
-				int newValue = craftingValues->getCurrentValue(p);
-				int oValue = newValue;
-				int maxValue = craftingValues->getMaxValue(p);
-				newValue = getPercentagOfValue(newValue,0.02);
-				newValue += oValue;
-				if (newValue > maxValue)
-					newValue = maxValue;
-				craftingValues->setCurrentPercentage(p,craftingValues->getCurrentPercentage(p) + 0.02);
-				craftingValues->setCurrentValue(p,newValue);
-			}
-		} else {
-			if (experimentationResult == CraftingManager::AMAZINGSUCCESS) {
-				boost = 0.15;
-				increaseA += increaseA * 0.05;
-				increaseB += increaseB * 0.05;
-			}
+	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
+		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
+		if (subtitlesTitle == title) {
+			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
+			if (experimentationResult == CraftingManager::AMAZINGSUCCESS)
+				modifier = 0.15f * (float)pointsAttempted; //
 			if (experimentationResult == CraftingManager::GREATSUCCESS)
-				boost = 0.1;
-			if (experimentationResult == CraftingManager::GOODSUCCESS) {
-				boost = 0.08;
-				increaseA -= increaseA * 0.02;
-				increaseB -= increaseB * 0.02;
+				modifier = 0.10 * (float)pointsAttempted; //
+			if (experimentationResult == CraftingManager::GOODSUCCESS)
+				modifier = 0.05 * (float)pointsAttempted;
+			if (experimentationResult == CraftingManager::MODERATESUCCESS)
+				modifier = 0.025 * (float)pointsAttempted;
+			if (experimentationResult == CraftingManager::SUCCESS)
+				modifier = 0.015 * (float)pointsAttempted;
+			if (experimentationResult == CraftingManager::MARGINALSUCCESS)
+				modifier = 0.0;
+			if (experimentationResult == CraftingManager::OK)
+				modifier = -0.05 * (float)pointsAttempted;
+			if (experimentationResult == CraftingManager::BARELYSUCCESSFUL)
+				modifier = -0.1 * (float)pointsAttempted;
+			if (experimentationResult == CraftingManager::CRITICALFAILURE) {
+				modifier = -0.1 * (float)pointsAttempted;
+				// pick a random attribute
+				int which = System::random(10);
+				while(which != i) {
+					which = System::random(10);
+				}
+				screwedTitle = craftingValues->getExperimentalPropertySubtitle(which);
+				float current = craftingValues->getCurrentPercentage(which);
+				craftingValues->setCurrentPercentage(screwedTitle,current * (-0.1)); // reduce a random attribute by 10%
 			}
-			if (experimentationResult == CraftingManager::MODERATESUCCESS) {
-				boost = 0.075;
-				increaseA -= increaseA * 0.025;
-				increaseB -= increaseB * 0.025;
-			}
-			if (experimentationResult == CraftingManager::SUCCESS) {
-				boost = 0.01;
-				increaseA -= increaseA * 0.09;
-				increaseB -= increaseB * 0.09;
-			}
-			if (experimentationResult == CraftingManager::MARGINALSUCCESS) {
-				boost = 0.00;
-				increaseA = 0;
-				increaseB = 0;
-			}
-			if (experimentationResult == CraftingManager::OK) {
-				boost = -0.04;
-				increaseA = -increaseA * 0.04;
-				increaseB = -increaseB * 0.04;
-			}
-			if (experimentationResult == CraftingManager::BARELYSUCCESSFUL) {
-				boost = -0.07;
-				increaseA = -increaseA * 0.07;
-				increaseB = -increaseB * 0.07;
-			}
-			a += increaseA;
-			b += increaseB;
-			if (b > maxB)
-				b = maxB;
-			if (a > maxA)
-				a = maxA;
-			float cap = craftingValues->getCurrentPercentage(prop1);
-			float cbp = craftingValues->getCurrentPercentage(prop2);
-			cap += boost;
-			cbp += boost;
-			if (cbp > 1)
-				cbp = 1;
-			if (cap > 1)
-				cap = 1;
-			// Re calc percentage from the new value?
-			craftingValues->setCurrentValue(prop1,a);
-			craftingValues->setCurrentValue(prop2,b);
-			craftingValues->setCurrentPercentage(prop1,cap);
-			craftingValues->setCurrentPercentage(prop2,cbp);
-			craftingValues->lockValue(prop1);
-			craftingValues->lockValue(prop2);
+			//modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
+			newValue = craftingValues->getCurrentPercentage(subtitle) + modifier;
+			if (newValue > craftingValues->getMaxPercentage(subtitle))
+				newValue = craftingValues->getMaxPercentage(subtitle);
+
+			if (newValue < 0)
+				newValue = 0;
+
+			craftingValues->setCurrentPercentage(subtitle, newValue);
 		}
-		// we have an initial value: and a max value inrease by same percentage as the experimented row. so 10 points of great success would be 100% on the resist values
-		// this should go for every point tried that was a bug.
-		if (resistLine) {
-			// only recalc resists when the line was physique. We could do the following
-			// for all NON special resist, we recalc the percent and if less than max by formula then we set it to that, exp seems to hold so lets try this
-			float currentFort = craftingValues->getCurrentValue("fortitude");
-			float currentEffective = ceil(currentFort * 0.1); // use ceil to round
-			if (currentFort > 500) {
-				currentEffective = (currentFort - 500.0) * 0.1;
-			}
-			// we -recalc effective based on fort.
-			// Check to see if it is NOT a special resist and it is NOT vulnerable
-			if (craftingValues->getCurrentPercentage("dna_comp_armor_kinetic") < 1 && craftingValues->getMaxValue("dna_comp_armor_kinetic") > 0) {
-				craftingValues->unlockValue("dna_comp_armor_kinetic");
-				craftingValues->setCurrentValue("dna_comp_armor_kinetic",currentEffective);
-				craftingValues->lockValue("dna_comp_armor_kinetic");
-			}
-
-			if (craftingValues->getCurrentPercentage("dna_comp_armor_blast") < 1 && craftingValues->getMaxValue("dna_comp_armor_blast") > 0) {
-				craftingValues->unlockValue("dna_comp_armor_blast");
-				craftingValues->setCurrentValue("dna_comp_armor_blast",currentEffective);
-				craftingValues->lockValue("dna_comp_armor_blast");
-			}
-
-			if (craftingValues->getCurrentPercentage("dna_comp_armor_energy") < 1 && craftingValues->getMaxValue("dna_comp_armor_energy") > 0){
-				craftingValues->unlockValue("dna_comp_armor_energy");
-				craftingValues->setCurrentValue("dna_comp_armor_energy",currentEffective);
-				craftingValues->lockValue("dna_comp_armor_energy");
-			}
-
-			if (craftingValues->getCurrentPercentage("dna_comp_armor_heat") < 1 && craftingValues->getMaxValue("dna_comp_armor_heat") > 0) {
-				craftingValues->unlockValue("dna_comp_armor_heat");
-				craftingValues->setCurrentValue("dna_comp_armor_heat",currentEffective);
-				craftingValues->lockValue("dna_comp_armor_heat");
-			}
-
-			if (craftingValues->getCurrentPercentage("dna_comp_armor_cold") < 1 && craftingValues->getMaxValue("dna_comp_armor_cold") > 0) {
-				craftingValues->unlockValue("dna_comp_armor_cold");
-				craftingValues->setCurrentValue("dna_comp_armor_cold",currentEffective);
-				craftingValues->lockValue("dna_comp_armor_cold");
-			}
-
-			if (craftingValues->getCurrentPercentage("dna_comp_armor_electric") < 1 && craftingValues->getMaxValue("dna_comp_armor_electric") > 0){
-				craftingValues->unlockValue("dna_comp_armor_electric");
-				craftingValues->setCurrentValue("dna_comp_armor_electric",currentEffective);
-				craftingValues->lockValue("dna_comp_armor_electric");
-			}
-
-			if (craftingValues->getCurrentPercentage("dna_comp_armor_acid") < 1 && craftingValues->getMaxValue("dna_comp_armor_acid") > 0) {
-				craftingValues->unlockValue("dna_comp_armor_acid");
-				craftingValues->setCurrentValue("dna_comp_armor_acid",currentEffective);
-				craftingValues->lockValue("dna_comp_armor_acid");
-			}
-
-			if (craftingValues->getCurrentPercentage("dna_comp_armor_stun") < 1 && craftingValues->getMaxValue("dna_comp_armor_stun") > 0){
-				craftingValues->unlockValue("dna_comp_armor_stun");
-				craftingValues->setCurrentValue("dna_comp_armor_stun",currentEffective);
-				craftingValues->lockValue("dna_comp_armor_stun");
-			}
-			if (craftingValues->getCurrentPercentage("dna_comp_armor_saber") < 1 && craftingValues->getMaxValue("dna_comp_armor_saber") > 0){
-				craftingValues->unlockValue("dna_comp_armor_saber");
-				craftingValues->setCurrentValue("dna_comp_armor_saber",currentEffective);
-				craftingValues->lockValue("dna_comp_armor_saber");
+	}
+	craftingValues->recalculateValues(false);
+	float currentFort = craftingValues->getCurrentValue("fortitude");
+	int armorValue = currentFort/500;
+	float currentEffective = (int)(((currentFort - (armorValue * 500)) / 50) * 5);
+	title = craftingValues->getExperimentalPropertyTitle("resists");
+	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
+		if (subtitlesTitle == title) {
+			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
+			if (craftingValues->getMaxValue(subtitle) != craftingValues->getCurrentValue(i)) {
+				craftingValues->setCurrentValue(subtitle,currentEffective);
 			}
 		}
 	}

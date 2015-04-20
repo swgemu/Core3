@@ -33,70 +33,9 @@ void CraftingManagerImplementation::sendResourceWeightsTo(CreatureObject* player
 	schematicMap->sendResourceWeightsTo(player, schematicID);
 }
 
-int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* player,
-		DraftSchematic* draftSchematic, float effectiveness) {
-
-	// assemblyPoints is 0-12
-	/// City bonus should be 10
-	float cityBonus = player->getSkillMod("private_spec_assembly");
-
-	float assemblyPoints = ((float)player->getSkillMod(draftSchematic->getAssemblySkill())) / 10.0f;
-	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill()) - 100 + cityBonus) / 7;
-
-	if(failMitigate < 0)
-		failMitigate = 0;
-	if(failMitigate > 5)
-		failMitigate = 5;
-
-	// 0.85-1.15
-	float toolModifier = 1.0f + (effectiveness / 100.0f);
-
-	//Pyollian Cake
-
-	float craftbonus = 0;
-	if (player->hasBuff(BuffCRC::FOOD_CRAFT_BONUS)) {
-		Buff* buff = player->getBuff(BuffCRC::FOOD_CRAFT_BONUS);
-
-		if (buff != NULL) {
-			craftbonus = buff->getSkillModifierValue("craft_bonus");
-			toolModifier *= 1.0f + (craftbonus / 100.0f);
-		}
-	}
-
-	int luckRoll = System::random(100) + cityBonus;
-
-	if(luckRoll > (95 - craftbonus))
-		return AMAZINGSUCCESS;
-
-	if(luckRoll < (5 - craftbonus - failMitigate))
-		luckRoll -= System::random(100);
-
-	//if(luckRoll < 5)
-	//	return CRITICALFAILURE;
-
-	luckRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
-
-	int assemblyRoll = (toolModifier * (luckRoll + (assemblyPoints * 5)));
-
-	if (assemblyRoll > 70)
-		return GREATSUCCESS;
-
-	if (assemblyRoll > 60)
-		return GOODSUCCESS;
-
-	if (assemblyRoll > 50)
-		return MODERATESUCCESS;
-
-	if (assemblyRoll > 40)
-		return SUCCESS;
-
-	if (assemblyRoll > 30)
-		return MARGINALSUCCESS;
-
-	if (assemblyRoll > 20)
-		return OK;
-
-	return BARELYSUCCESSFUL;
+int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* player,	DraftSchematic* draftSchematic, float effectiveness) {
+	SharedLabratory* lab = labs.get(draftSchematic->getLabratory());
+	return lab->calculateAssemblySuccess(player,draftSchematic,effectiveness);
 }
 
 

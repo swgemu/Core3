@@ -20,8 +20,10 @@ String DnaComponentImplementation::convertSpecialAttack(String &attackName) {
 		return "@combat_effects:none";
 	else if (attackName == "creatureareaattack")
 		return "@combat_effects:unknown_attack";
-	else
+	else if (attackName.length() > 0)
 		return "@combat_effects:" + attackName;
+	else
+		return "@combat_effects:none";
 }
 String DnaComponentImplementation::resistValue(float input){
 	if (input < 0) {

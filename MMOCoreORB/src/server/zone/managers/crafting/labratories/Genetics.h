@@ -26,27 +26,27 @@ public:
 
 	static float physiqueFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.4) + (b *0.25) + (c * 0.05) + (d * 0.05) + (e * 0.25));
-		return rc > 1000 ? 1000.0 : rc;
+		return rc > 1000 ? 1000.0 : rc < 0 ? 0 : rc;
 	}
 
 	static float prowessFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.25) + (b *0.42) + (c * 0.17) + (d * 0.085) + (e * .075));
-		return rc > 1000 ? 1000.0 : rc;
+		return rc > 1000 ? 1000.0 : rc < 0 ? 0 : rc;
 	}
 
 	static float mentalFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.05) + (b *0.1) + (c * 0.5) + (d * 0.3) + (e * .05));
-		return rc > 1000 ? 1000.0 : rc;
+		return rc > 1000 ? 1000.0 : rc < 0 ? 0 : rc;
 	}
 
 	static float aggressionFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.17) + (b *0.16) + (c * 0.085) + (d * 0.165) + (e * 0.42));
-		return rc > 1000 ? 1000.0 : rc;
+		return rc > 1000 ? 1000.0 : rc < 0 ? 0 : rc;
 	}
 
 	static float physchologicalFormula(float a,float b,float c,float d,float e){
 		float rc = ceil((a * 0.09) + (b *0.05) + (c * 0.26) + (d * 0.43) + (e * 0.17));
-		return rc > 1000 ? 1000.0 : rc;
+		return rc > 1000 ? 1000.0 : rc < 0 ? 0 : rc;
 	}
 
 	static float experimentFormula(float a, float b) {
@@ -119,7 +119,7 @@ public:
 	 */
 	static float normalize(float a,bool special, bool override) {
 		if(a < 0)
-			return -99;
+			return -100;
 		if (special) {
 			return a;
 		}
@@ -201,7 +201,7 @@ public:
 				ev = normalize(e->getSaber(),e->isSpecialResist(type),any);
 				break;
 		}
-		float value = round(physiqueFormula(av,bv,cv,dv,ev));
+		float value = ceil((av * 0.41) + (bv *0.25) + (cv * 0.04) + (dv * 0.04) + (ev * 0.25));
 		return value > max ? max : value;
 	}
 
@@ -211,7 +211,7 @@ public:
 
 	static float determineMinResistance(float input) {
 		if (input < 0) // if max is vulnerable the min is always vulnerable
-			return -99;
+			return -100;
 		return round(input * ((input/100.0f) + 0.15f));
 	}
 	static int randomizeValue(int value, int quality) {
@@ -226,7 +226,6 @@ public:
 	// convert creature hit chance to cleverness value
 	static int hitChanceToValue(float input,int quality) {
 		int base = round(((input-0.19)/(0.66)) * 1000.0);
-		// in vert quality as VLQ is 1 VHQ is 7
 		return randomizeValue(base,quality);
 	}
 
@@ -332,7 +331,7 @@ public:
 
 	// calculate the armor level for a pet
 	static int calculateArmorValue(GeneticComponent* pet, int armorLevel, int baseLevel, int armorBase) {
-		// Armor Levevel
+		// Armor Level
 		int level = armorLevel + 1;
 		if (level < baseLevel)
 			level = baseLevel;
@@ -361,10 +360,8 @@ public:
 		int statLevel = (DnaManager::instance()->levelForScore(DnaManager::HAM_LEVEL, pet->getHealth())+1) * 6;
 		int damageLevel = DnaManager::instance()->levelForScore(DnaManager::DPS_LEVEL, (pet->getMaxDamage() + pet->getMinDamage()) / 2) * 10;
 		int hitLevel = (DnaManager::instance()->levelForScore(DnaManager::HIT_LEVEL, pet->getHitChance()) + 1) * 1;
-		int defenseLevel = (hitLevel);
-		int regen = DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL,pet->getAction()/10);
-		regen += 1;
-		int regenerationLevel =  regen * 2;
+		int defenseLevel = hitLevel;
+		int regenerationLevel =  (DnaManager::instance()->levelForScore(DnaManager::REG_LEVEL,pet->getAction()/10) + 1)* 2;
 		int armorLevel = DnaManager::instance()->levelForScore(DnaManager::ARM_LEVEL, (pet->getArmor() * 500) + (( pet->getEffectiveArmor()) * 10.0)  );
 		int armorBase = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,armorLevel);
 		int baseLevel = (((statLevel) + (damageLevel) + (regenerationLevel) + (hitLevel)) / 19.0) + 0.5;
