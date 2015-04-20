@@ -74,6 +74,8 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 int SaberInventoryContainerComponent::notifyObjectInserted(SceneObject* sceneObject, SceneObject* object) {
 	ManagedReference<WeaponObject*> weao = cast<WeaponObject*>( sceneObject->getParent().get().get());
 
+	Locker locker(weao);
+
 	if (weao->isJediWeapon()) {
 		ManagedReference<LightsaberCrystalComponent*> crystal = cast<LightsaberCrystalComponent*>( object);
 		if (crystal->getColor() == 31){
@@ -86,6 +88,7 @@ int SaberInventoryContainerComponent::notifyObjectInserted(SceneObject* sceneObj
 			weao->setWoundsRatio(weao->getWoundsRatio() + crystal->getWoundChance());
 			weao->setForceCost(weao->getForceCost() + crystal->getForceCost());
 		}
+
 		if (crystal->getColor() != 31) {
 			int color = crystal->getColor();
 			weao->setBladeColor(color);
@@ -110,6 +113,8 @@ int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObje
 				return sceneObject->notifyObjectRemoved(object);
 			}
 
+			Locker locker(weao);
+
 			if (crystal->getColor() == 31){
 				weao->setAttackSpeed(weao->getAttackSpeed() - crystal->getAttackSpeed());
 				weao->setMinDamage(weao->getMinDamage() - crystal->getMinimumDamage());
@@ -120,6 +125,7 @@ int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObje
 				weao->setWoundsRatio(weao->getWoundsRatio() - crystal->getWoundChance());
 				weao->setForceCost(weao->getForceCost() - crystal->getForceCost());
 			}
+
 			if (crystal->getColor() != 31) {
 				weao->setBladeColor(31);
 				weao->setCustomizationVariable("/private/index_color_blade", 31, true);
