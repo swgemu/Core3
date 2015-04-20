@@ -203,6 +203,8 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			generatedObject = object;
 		}
 
+		Locker locker(object);
+
 		EventPerkDataComponent* data = cast<EventPerkDataComponent*>(object->getDataObjectComponent()->get());
 
 		if (data == NULL) {
@@ -230,6 +232,8 @@ void EventPerkDeedImplementation::destroyObjectFromDatabase(bool destroyContaine
 	ManagedReference<CreatureObject*> strongOwner = owner.get();
 
 	if (strongOwner != NULL) {
+		Locker clocker(strongOwner, _this.get());
+
 		PlayerObject* ghost = strongOwner->getPlayerObject();
 
 		if (ghost != NULL) {

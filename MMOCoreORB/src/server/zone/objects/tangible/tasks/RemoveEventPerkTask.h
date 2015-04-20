@@ -28,7 +28,10 @@ public:
 		ManagedReference<TangibleObject*> genOb = deed->getGeneratedObject().get();
 		ManagedReference<CreatureObject*> player = deed->getOwner().get();
 
+		Locker locker(deed);
+
 		if (genOb != NULL) {
+			Locker clocker(genOb, deed);
 			genOb->destroyObjectFromWorld(true);
 			genOb->destroyObjectFromDatabase();
 		} else if (player != NULL) {
