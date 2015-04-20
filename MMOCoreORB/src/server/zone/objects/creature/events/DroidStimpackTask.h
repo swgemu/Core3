@@ -115,6 +115,7 @@ public:
 
 		// check droid cooldown on dispensing
 		if (droid->getCooldownTimerMap()->isPast("RequestStimpack")) {
+			Locker locker(stimpack);
 			// use the stim pack
 			target->playEffect("clienteffect/healing_healdamage.cef", "");
 			droid->doAnimation("heal_other");
