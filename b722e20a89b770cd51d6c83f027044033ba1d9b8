@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_fbca4a6d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-20T05:11:29Z",
+      "side": 1,
+      "message": "Don\u0027t use the LuaCreatureObject() call. It\u0027s expensive. Instead combine this in to one line of the form:\n\nSceneObject(pCreature):getObjectID()",
+      "revId": "b722e20a89b770cd51d6c83f027044033ba1d9b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_dbc78e63",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-20T05:11:29Z",
+      "side": 1,
+      "message": "You aren\u0027t using creatureObject so what\u0027s the point of adding this wrapper?",
+      "revId": "b722e20a89b770cd51d6c83f027044033ba1d9b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_bbc4d25f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-20T05:11:29Z",
+      "side": 1,
+      "message": "Instead of potentially reading the type 4 times, read it once into a local var and use that in the if checks.",
+      "revId": "b722e20a89b770cd51d6c83f027044033ba1d9b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_9ba116ac",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-20T05:11:29Z",
+      "side": 1,
+      "message": "Ditch the wrapper and use oid from above.",
+      "revId": "b722e20a89b770cd51d6c83f027044033ba1d9b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_7ba65ac3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-20T05:11:29Z",
+      "side": 1,
+      "message": "Ditch the wrapper and just call getObjectID() once and store it in a local var.",
+      "revId": "b722e20a89b770cd51d6c83f027044033ba1d9b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_5bab9e89",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-20T05:11:29Z",
+      "side": 1,
+      "message": "Remove this. You aren\u0027t using playerCreature anyway.",
+      "revId": "b722e20a89b770cd51d6c83f027044033ba1d9b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_3bb0e2f3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-20T05:11:29Z",
+      "side": 1,
+      "message": "As above, don\u0027t use LuaCreatureObject",
+      "revId": "b722e20a89b770cd51d6c83f027044033ba1d9b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a486d77_1b952640",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/FsExperienceTypes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-20T05:11:29Z",
+      "side": 1,
+      "message": "Instead of hard coding all of these, put them in a Lua config file somewhere and load them in during startup.",
+      "revId": "b722e20a89b770cd51d6c83f027044033ba1d9b8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
