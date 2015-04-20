@@ -35,8 +35,11 @@ public:
 
 			ManagedReference<TangibleObject*> gogglesTano = cast<TangibleObject*>(goggles.get());
 
-			if (gogglesTano != NULL)
-			gogglesTano->setCustomizationVariable(palette, index, true);
+			if (gogglesTano != NULL) {
+				Locker locker(gogglesTano, creature);
+
+				gogglesTano->setCustomizationVariable(palette, index, true);
+			}
 
 
 		}
