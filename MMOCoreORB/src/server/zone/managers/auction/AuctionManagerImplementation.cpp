@@ -313,7 +313,11 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 		return;
 	}
 
+	Locker objectToSellLocker(objectToSell);
+
 	objectToSell->destroyObjectFromWorld(true);
+
+	objectToSellLocker.release();
 
 	if (vendor->isBazaarTerminal()) {
 		StringIdChatParameter str("@base_player:sale_fee"); // The fee for your listing is %DI credits.
