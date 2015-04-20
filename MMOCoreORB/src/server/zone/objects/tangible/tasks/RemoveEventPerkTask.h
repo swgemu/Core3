@@ -29,12 +29,14 @@ public:
 		ManagedReference<CreatureObject*> player = deed->getOwner().get();
 
 		if (genOb != NULL) {
+			Locker locker(genOb);
 			genOb->destroyObjectFromWorld(true);
 			genOb->destroyObjectFromDatabase();
 		} else if (player != NULL) {
 			player->sendSystemMessage("@event_perk:deed_expired"); // Your unused Rental Deed expired and has been removed from your inventory.
 		}
 
+		Locker dlocker(deed);
 		deed->destroyObjectFromWorld(true);
 		deed->destroyObjectFromDatabase();
 
