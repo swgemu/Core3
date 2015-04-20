@@ -156,7 +156,13 @@ void PortalLayout::parseCELSForm(IffStream* iffStream) {
 		while (iffStream->getRemainingSubChunksNumber() > 0 && (nextType = iffStream->getNextFormType()) == 'CELL') {
 			CellProperty cell(cellProperties.size());
 
-			cell.readObject(iffStream);
+			try {
+				cell.readObject(iffStream);
+			} catch (Exception& e) {
+				error(e.getMessage());
+			} catch (...) {
+				error("Unreported exception caught parsing cell property");
+			}
 
 			cellProperties.add(cell);
 		}
