@@ -36,9 +36,9 @@ CellProperty& CellProperty::operator=(const CellProperty& c) {
 }
 
 void CellProperty::readObject(IffStream* iffStream) {
-	try {
-		iffStream->openForm('CELL');
+	iffStream->openForm('CELL');
 
+	try {
 		uint32 nextForm = iffStream->getNextFormType();
 
 		if (nextForm != '0005') {
@@ -85,15 +85,13 @@ void CellProperty::readObject(IffStream* iffStream) {
 		iffStream->closeChunk();
 
 		iffStream->closeForm('0005');
-
-		iffStream->closeForm('CELL');
 	} catch (Exception& e) {
 		error(e.getMessage());
 		error("parsing CELL for " + iffStream->getFileName());
 		e.printStackTrace();
 	} catch (...) {
 		error("parsing CELL for " + iffStream->getFileName());
-
-		throw;
 	}
+
+	iffStream->closeForm('CELL');
 }
