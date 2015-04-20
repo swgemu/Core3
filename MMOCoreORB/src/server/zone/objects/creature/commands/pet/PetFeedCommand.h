@@ -105,6 +105,8 @@ public:
 			return GENERALERROR;
 		}
 
+		Locker locker(consumable);
+
 		// Apply buff if this is a pet specific food
 		if( consumable->getSpeciesRestriction() == "pets" ){
 
