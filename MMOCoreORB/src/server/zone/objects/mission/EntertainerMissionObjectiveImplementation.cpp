@@ -92,7 +92,7 @@ void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObserv
 	Locker _lock(_this.get());
 
 	if (locationActiveArea != NULL) {
-		Locker locationLocker(locationActiveArea);
+		Locker locationLocker(locationActiveArea, _this.get());
 
 		for (int i = 0; i < getObserverCount(); i++) {
 			ManagedReference<MissionObserver*> observer = getObserver(i);
@@ -105,8 +105,6 @@ void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObserv
 		}
 
 		removeAllObservers();
-
-		locationLocker.release();
 
 		locationActiveArea->destroyObjectFromWorld(true);
 		locationActiveArea->destroyObjectFromDatabase(true);
