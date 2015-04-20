@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a486d77_bb9bb271",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ForceAbsorb1Command.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-20T05:25:08Z",
+      "side": 1,
+      "message": "You should combine this into 1 line:\n\nreturn doJediSelfBuffCommand(creature);",
+      "revId": "0b30d66044b5e0624a7668d6647f0eb3a4f46cb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
