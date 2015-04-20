@@ -41,7 +41,7 @@ public:
 	int getCellID(const String& cellName);
 
 	inline int getCellTotalNumber() {
-		return cellProperties.size() - 1; //exclude the outside cell
+		return MAX(0, cellProperties.size() - 1); //exclude the outside cell
 	}
 
 	inline int getFloorMeshNumber() {
