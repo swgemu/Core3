@@ -103,6 +103,8 @@ void EntertainingSessionImplementation::doEntertainerPatronEffects() {
 				} else { //patron is not in range, force to stop listening
 					ManagedReference<PlayerManager*> playerManager = patron->getZoneServer()->getPlayerManager();
 
+					Locker locker(patron, entertainer.get());
+
 					if (dancing) {
 						if (playerManager != NULL)
 							playerManager->stopWatch(patron, creo->getObjectID(), true, false, false, true);
