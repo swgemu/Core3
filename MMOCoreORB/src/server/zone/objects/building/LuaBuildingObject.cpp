@@ -17,6 +17,7 @@ Luna<LuaBuildingObject>::RegType LuaBuildingObject::Register[] = {
 		{ "_setObject", &LuaBuildingObject::_setObject },
 		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "getCell", &LuaBuildingObject::getCell },
+		{ "getNamedCell", &LuaBuildingObject::getNamedCell },
 		{ "getOwnerID", &LuaBuildingObject::getOwnerID },
 		{ "getParent", &LuaSceneObject::getParent },
 		{ "getObjectID", &LuaSceneObject::getObjectID },
@@ -63,15 +64,17 @@ int LuaBuildingObject::_setObject(lua_State* L) {
 }
 
 int LuaBuildingObject::getCell(lua_State* L) {
-	if (lua_isstring(L, -1)) {
-		String name = lua_tostring(L, -1);
+	int number = lua_tonumber(L, -1);
 
-		lua_pushlightuserdata(L, realObject->getCell(name));
-	} else {
-		int number = lua_tonumber(L, -1);
+	lua_pushlightuserdata(L, realObject->getCell(number));
 
-		lua_pushlightuserdata(L, realObject->getCell(number));
-	}
+	return 1;
+}
+
+int LuaBuildingObject::getNamedCell(lua_State* L) {
+	String name = lua_tostring(L, -1);
+
+	lua_pushlightuserdata(L, realObject->getCell(name));
 
 	return 1;
 }

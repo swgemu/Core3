@@ -31,6 +31,7 @@ namespace building {
 		int _setObject(lua_State* L);
 		// Methods we will need to use
 		int getCell(lua_State* L);
+		int getNamedCell(lua_State* L);
 		int getOwnerID(lua_State* L);
 		int grantPermission(lua_State* L);
 		int broadcastSpecificCellPermissions(lua_State* L);
