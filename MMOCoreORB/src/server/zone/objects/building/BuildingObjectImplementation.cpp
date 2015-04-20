@@ -563,6 +563,25 @@ void BuildingObjectImplementation::addCell(CellObject* cell, uint32 cellNumber) 
 	cell->setCellNumber(cellNumber);
 }
 
+CellObject* BuildingObjectImplementation::getCell(const String& cellName) {
+	SharedBuildingObjectTemplate* buildingTemplate = templateObject.castTo<SharedBuildingObjectTemplate*>();
+
+	if (buildingTemplate == NULL)
+		return NULL;
+
+	PortalLayout* portalLayout = buildingTemplate->getPortalLayout();
+
+	if (portalLayout == NULL)
+		return NULL;
+
+	int index = portalLayout->getCellID(cellName);
+
+	if (index == -1 || index == 0)
+		return NULL;
+
+	return getCell(index);
+}
+
 void BuildingObjectImplementation::destroyObjectFromDatabase(
 	bool destroyContainedObjects) {
 
