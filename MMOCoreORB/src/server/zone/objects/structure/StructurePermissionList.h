@@ -63,6 +63,8 @@ public:
 	void revokeAllPermissions();
 
 	void setOwner(const uint64 objectID) {
+		Locker locker(&lock);
+
 		ownerID = objectID;
 	}
 

@@ -13,24 +13,24 @@ include server.zone.objects.manufactureschematic.factoryblueprint.BlueprintEntry
 class FactoryObject extends InstallationObject {
 	@dereferenced
 	protected Vector<int> craftingTabsSupported;
-	
+
 	protected int timer;
-	
+
 	protected string currentUserName;
 	protected int currentRunCount;
 
 	protected transient FactoryHopperObserver hopperObserver;
-	
+
 	public FactoryObject() {
 		Logger.setLoggingName("FactoryObject");
 		hopperObserver = null;
 	}
-	
+
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Gets called when this objects is loaded from database
 	 * @pre { this locked }
@@ -38,12 +38,12 @@ class FactoryObject extends InstallationObject {
 	 */
 	public void notifyLoadFromDatabase() {
 		super.notifyLoadFromDatabase();
-		
+
 		if (super.operating) {
 			startFactory();
 		}
 	}
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -54,12 +54,12 @@ class FactoryObject extends InstallationObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	@dirty
 	public boolean isFactory() {
 		return true;
 	}
-	
+
 	/**
 	 * Handles creating the hoppers
 	 */
@@ -71,51 +71,59 @@ class FactoryObject extends InstallationObject {
 	 */
 	@dirty
 	public native void sendInsertManuSui(CreatureObject player);
-	
+
 	@dirty
 	public native void sendIngredientsNeededSui(CreatureObject player);
-	
+
 	@dirty
 	public native void sendIngredientHopper(CreatureObject player);
-	
+
 	@dirty
 	public native void sendOutputHopper(CreatureObject player);
-	
+
 	@dirty
 	public native void openHopper(Observable observable, ManagedObject arg1);
 
 	@dirty
 	public native void closeHopper(Observable observable, ManagedObject arg1);
+
 	/**
 	 * Handles inputting the schematic to the 
 	 * factory
 	 */
+	@preLocked
 	public native void handleInsertFactorySchem(CreatureObject player, ManufactureSchematic schematic);
-	
+
 	/**
 	 * Handles inputting the schematic to the 
 	 * factory
 	 */
+	@preLocked
 	public native void handleRemoveFactorySchem(CreatureObject player);
 
+	@preLocked
 	public native void handleOperateToggle(CreatureObject player);
-	
+
+	@preLocked
 	private native boolean startFactory(); 
-	
+
 	private native void stopFactory(final string message, final string tt, final string to, final int di);
 
 	private native void stopFactory(string type, string displayedName);
-	
+
+	@preLocked
 	public native void createNewObject();
-	
+
+	@preLocked
 	private native FactoryCrate locateCrateInOutputHopper(TangibleObject prototype);
 
+	@preLocked
 	private native FactoryCrate createNewFactoryCrate(TangibleObject prototype);
 
 	private native boolean populateSchematicBlueprint(ManufactureSchematic schematic);
 
 	private native void collectMatchesInInputHopper(BlueprintEntry entry, SceneObject inputHopper);
-	
+
 	@dirty
 	public native string getRedeedMessage();
 }

@@ -84,26 +84,30 @@ class BuildingObject extends StructureObject {
 
 		factionBaseType = 0;
 	}
-	
+
+	@preLocked
 	public native void createCellObjects();
-	
+
+	@preLocked
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-	
+
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-		
+
 	public native void initializeTransientMembers();
-	
+
 	public native void createContainerComponent();
 
+	@preLocked
 	public void setCustomObjectName(final unicode name, boolean notifyClient) {
 		super.customName = name;
 		signName = name;
 		updateSignName(notifyClient);
 	}
 
+	@preLocked
 	public native void updateSignName(boolean notifyClient);
-	
+
 	/**
 	 * Sends the contained non slotted objects to the specified player
 	 * @pre { this object is locked }
@@ -112,13 +116,13 @@ class BuildingObject extends StructureObject {
 	 */
 	@dirty
 	public native void sendContainerObjectsTo(SceneObject player);
-	
+
 	/**
 	 * Updates the cell permissions to the player based on the players permission in the StructurePermissionList.
 	 * @param creature The player to update cell permissions to.
 	 */
 	public native void updateCellPermissionsTo(CreatureObject creature);
-	
+
 	/**
 	 * Updates the cell permissions to the players in the area.
 	 * @pre Zone unlocked
@@ -126,13 +130,13 @@ class BuildingObject extends StructureObject {
 	 */
 	@dirty
 	public native void broadcastCellPermissions();
-	
+
 	/**
 	 * Updates a specific cell's permissions to the players in the area
 	 */
 	@dirty
 	public native void broadcastCellPermissions(unsigned long objectid);
-	
+
 	/**
 	 * Checks to see if the player with the name is allowed entry.
 	 * @param firstName The name of the player.
@@ -140,7 +144,7 @@ class BuildingObject extends StructureObject {
 	 */
 	@dirty
 	public native boolean isAllowedEntry(CreatureObject player);
-	
+
 	/**
 	 * Checks to see if the player is CityBanned from the city
 	 * that the building is in
@@ -149,7 +153,7 @@ class BuildingObject extends StructureObject {
 	 */
 	@dirty
 	public native boolean isCityBanned(CreatureObject player);
-	
+
 	/**
 	 * Gets called when the structure has been created;
 	 */
@@ -175,60 +179,61 @@ class BuildingObject extends StructureObject {
 	@dereferenced
 	@dirty
 	public native Vector3 getEjectionPoint();
-	
+
 	/**
 	 * Ejects an object to this building's ejection point.
 	 * @param creature The creature to eject.
 	 */
 	public native void ejectObject(CreatureObject creature);
-	
+
 	public native void notifyRemoveFromZone();
-	
+
 	/**
 	 * Gets called when this objects is loaded from database
 	 * @pre { this locked }
 	 * @post { this locked }
 	 */
 	public native void notifyLoadFromDatabase();
-	
+
 	@local
 	@dirty
 	public native void notifyInsert(QuadTreeEntry obj);
-	
+
 	public native void notifyInsertToZone(Zone zone);
-	
+
 	@local
 	@dirty
 	public native void notifyDissapear(QuadTreeEntry obj);
 
 	public native void notifyObjectInsertedToZone(SceneObject object);
-	
+
 	@local
 	public native void insert(QuadTreeEntry obj);
-	
+
 	@local
 	public native void remove(QuadTreeEntry obj);
-	
+
 	@local
 	public native void update(QuadTreeEntry obj);
-	
+
 	@local
 	public native void inRange(QuadTreeEntry obj, float range);
-	
+
 	@dirty
 	public native void sendTo(SceneObject player, boolean doClose);
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 	@dirty
 	public native void sendDestroyTo(SceneObject player);
-	
+
+	@preLocked
 	public native void addCell(CellObject cell, unsigned int cellNumber);
-	
+
 	@dirty
 	public boolean isStaticBuilding() {
 		return super.staticObject;
 	}
-	
+
 	/**
 	 * Returns cell based on the index.
 	 * Cells start index 1
@@ -243,28 +248,28 @@ class BuildingObject extends StructureObject {
 			
 		return cells.get(idx);
 	}
-	
+
 	@dirty
 	public native CellObject getCell(final string cellName);
-	
+
 	@read
 	public int getTotalCellNumber() {
 		return totalCellNumber;
 	}
-	
+
 	public native abstract boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false, boolean allowOverflow = false);
-	
+
 	public native int notifyObjectInsertedToChild(SceneObject object, SceneObject child, SceneObject oldParent);
 	public native int notifyObjectRemovedFromChild(SceneObject object, SceneObject child);
-	
+
 	@dirty
 	public native int getCurrentNumberOfPlayerItems();
-	
+
 	/**
 	 * Loops through all the cells, destroying items from the database that aren't contained in the child objects vector.
 	 */
 	public native void destroyAllPlayerItems();
-	
+
 	/**
 	 * Abstract function that is triggered when a player enters a building.
 	 * This function should only be called from CreatureObject::insertToBuilding.
@@ -275,7 +280,7 @@ class BuildingObject extends StructureObject {
 	 */
 	@dirty
 	public native abstract void onEnter(CreatureObject player);
-	
+
 	/**
 	 * Abstract function that is triggered when a player exits a building.
 	 * This function should only be called from CreatureObject::removeFromBuilding.
@@ -286,16 +291,17 @@ class BuildingObject extends StructureObject {
 	 */
 	@dirty
 	public native abstract void onExit(CreatureObject player, unsigned long parentid);
-	
+
 	@dirty
 	public boolean isBuildingObject() {
 		return true;
 	}
 
+	@preLocked
 	public void setSignObject(SignObject sign) {
 		signObject = sign;
 	}
-	
+
 	public SignObject getSignObject() {
 		return signObject;
 	}
@@ -304,12 +310,13 @@ class BuildingObject extends StructureObject {
 	public boolean isPublicStructure() {
 		return publicStructure;
 	}
-	
+
 	@dirty
 	public boolean isPrivateStructure() {
 		return !publicStructure;
 	}
-	
+
+	@preLocked
 	public void setPublicStructure(boolean privacy) {
 		publicStructure = privacy;
 	}
@@ -318,50 +325,51 @@ class BuildingObject extends StructureObject {
 	public boolean isCondemned() {
 		return super.isDecayed();
 	}
-	
+
 	@read
 	public int getMapCellSize() {
 		return cells.size();
 	}
-	
+
 	/**
 	 * Switches the state of this building's privacy. If it is public, it becomes private, and vice-versa.
 	 * @return Returns true if the structure is now public, or false if it is now private.
 	 */
+	@preLocked
 	public boolean togglePrivacy() {
 		return (publicStructure = !publicStructure);
 	}
-	
+
 	/**
 	 * Calculates the maximum number of items that can be stored by a player in this building.
 	 * @return Returns a uint32 number representing the max items that can be stored in this building.
 	 */
 	@dirty
 	public abstract native unsigned int getMaximumNumberOfPlayerItems();
-	
+
 	@dirty
 	public string getRedeedMessage() {
 		if(getCurrentNumberOfPlayerItems() > 0)
 			return "clear_building_for_delete";
-		
+
 		return "";
 	}
-	
+
 	@read
 	public boolean hasAccessFee() {
 		return accessFee > 0;
 	}
-	
+
 	@read
 	public int getAccessFee() {
 		return accessFee;
 	}
-	
+
 	@dirty
 	public native boolean canChangeAccessFee();
-	
+
 	public native void setAccessFee(int fee, int duration);
-	
+
 	public void removeAccessFee() {
 		synchronized (paidAccessListMutex) {
 			accessFee = 0;
@@ -377,6 +385,7 @@ class BuildingObject extends StructureObject {
 	@dirty
 	private native void promptPayAccessFee(CreatureObject player);
 
+	@arg1preLocked
 	public native void payAccessFee(CreatureObject player);
 
 	public native void updatePaidAccessList();
@@ -404,6 +413,7 @@ class BuildingObject extends StructureObject {
 
 	public native boolean hasTemplateChildCreatures();
 
+	@preLocked
 	public native void destroyChildObjects();
 
 	@dirty
@@ -411,6 +421,7 @@ class BuildingObject extends StructureObject {
 		return isOwnerResidence;
 	}
 
+	@preLocked
 	public void setResidence (boolean isResidence){
 		isOwnerResidence = isResidence;
 	}
@@ -427,5 +438,6 @@ class BuildingObject extends StructureObject {
 	 * @post structure object is locked 
 	 */
 	@local
+	@preLocked
 	public native void changeSign( SignTemplate signConfig );	
 }
