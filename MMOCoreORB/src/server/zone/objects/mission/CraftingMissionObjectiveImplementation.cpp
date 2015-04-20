@@ -58,6 +58,8 @@ void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject*
 		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 			Reference<SceneObject*> item = inventory->getContainerObject(i);
 
+			Locker locker(item);
+
 			if (item != NULL && item->getObjectTemplate()->getFullTemplateString() == mission->getTemplateString2()) {
 				//Delete the item.
 				item->destroyObjectFromWorld(true);
