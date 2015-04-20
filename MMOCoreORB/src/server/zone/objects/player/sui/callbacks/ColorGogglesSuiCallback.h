@@ -25,6 +25,7 @@ public:
 		if(!creature->isPlayerCreature())
 			return;
 
+
 		if(!cancelPressed) {
 
 			int index = Integer::valueOf(args->get(0).toString());
