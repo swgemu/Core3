@@ -317,6 +317,9 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 			continue;
 
 		ResourceContainer* rcno = cast<ResourceContainer*>( obj.get());
+
+		Locker locker(rcno);
+
 		ManagedReference<ResourceSpawn*> spawn = rcno->getSpawnObject();
 
 		if (spawn == NULL || !spawn->isEnergy())
