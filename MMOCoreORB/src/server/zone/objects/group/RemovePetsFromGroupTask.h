@@ -31,6 +31,9 @@ public:
 
 			if (group->hasMember(pet)) {
 				group->removeMember(pet);
+
+				Locker locker(pet, player);
+
 				pet->updateGroup(NULL);
 			}
 		}
