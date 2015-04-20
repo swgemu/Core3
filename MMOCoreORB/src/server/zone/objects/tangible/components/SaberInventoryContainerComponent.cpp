@@ -110,6 +110,8 @@ int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObje
 				return sceneObject->notifyObjectRemoved(object);
 			}
 
+			Locker locker(weao);
+
 			if (crystal->getColor() == 31){
 				weao->setAttackSpeed(weao->getAttackSpeed() - crystal->getAttackSpeed());
 				weao->setMinDamage(weao->getMinDamage() - crystal->getMinimumDamage());
@@ -120,6 +122,7 @@ int SaberInventoryContainerComponent::notifyObjectRemoved(SceneObject* sceneObje
 				weao->setWoundsRatio(weao->getWoundsRatio() - crystal->getWoundChance());
 				weao->setForceCost(weao->getForceCost() - crystal->getForceCost());
 			}
+
 			if (crystal->getColor() != 31) {
 				weao->setBladeColor(31);
 				weao->setCustomizationVariable("/private/index_color_blade", 31, true);
