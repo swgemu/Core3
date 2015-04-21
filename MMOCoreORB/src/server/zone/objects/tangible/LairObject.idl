@@ -13,39 +13,40 @@ include engine.util.u3d.QuadTreeEntry;
 class LairObject extends TangibleObject {
 	protected int numberOfPlayersInRange;
 	protected boolean despawnOnNoPlayersInRange;
-	
+
 	protected transient DespawnLairOnPlayerDisappear despawnEvent;
-	
+
 	public LairObject() {
 		Logger.setLoggingName("LairObject");
-	
+
 		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
-		
+
 		numberOfPlayersInRange = 0;
 		despawnOnNoPlayersInRange = false;
 	}
-	
+
 	@read
 	public int getNumberOfPlayersInRange() {
 		return numberOfPlayersInRange;
 	}
-	
+
 	@read
 	public boolean getDespawnOnNoPlayersInRange() {
 		return despawnOnNoPlayersInRange;
 	}
-	
+
+	@preLocked
 	public void setDespawnOnNoPlayersInRange(boolean b) {
 		despawnOnNoPlayersInRange = b;
 	}
-	
+
 	public void notifyInsert(QuadTreeEntry entry) {
 		SceneObject obj = (SceneObject) entry;
-		
+
 		if (obj == this)
 			return;
-		
+
 		if (obj.isPlayerCreature()) {
 			CreatureObject creo = (CreatureObject) obj;
 			if (!creo.isInvisible()) {
@@ -54,13 +55,13 @@ class LairObject extends TangibleObject {
 			}
 		}
 	}
-	
+
 	public void notifyDissapear(QuadTreeEntry entry) {
 		SceneObject obj = (SceneObject) entry;
-		
+
 		if (obj == this)
 			return;
-		
+
 		if (obj.isPlayerCreature()) {
 			CreatureObject creo = (CreatureObject) obj;
 			if (!creo.isInvisible()) {
@@ -71,19 +72,19 @@ class LairObject extends TangibleObject {
 			}
 		}
 	}
-	
+
 	public void activateDespawnEvent() {
 		if (despawnEvent != null)
 			return;
-		
+
 		despawnEvent = new DespawnLairOnPlayerDisappear(this);
 		despawnEvent.schedule(300000);		
 	}
-	
+
 	public void clearDespawnEvent() {
 		if (despawnEvent == null)
 			return;
-		
+
 		despawnEvent.cancel();
 		despawnEvent = null;
 	}

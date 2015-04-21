@@ -14,7 +14,7 @@ import server.zone.objects.cell.CellObject;
 import server.zone.managers.director.DirectorManager;
 
 class TutorialBuildingObject extends BuildingObject {
-	
+
 	protected transient UnloadBuildingTask unloadTask;
 
 	public TutorialBuildingObject() {
@@ -22,37 +22,38 @@ class TutorialBuildingObject extends BuildingObject {
 
 		Logger.setLoggingName("TutorialBuildingObject");
 	}
-	
+
 	public native void notifyRemoveFromZone();
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		unloadTask = null;
-		
+
 		Logger.setLoggingName("TutorialBuildingObject");
 	}
-	
+
 	public void onEnter(CreatureObject player) {
 		if (player.isPlayerCreature())
 			dequeueUnloadEvent();
 	}
-	
+
 	public void onExit(CreatureObject player) {
 		if (player.isPlayerCreature())
 			enqueueUnloadEvent();
 	}
-	
+
+	@preLocked
 	public void clearUnloadEvent() {
 		unloadTask = null;
 	}
-	
+
 	protected void dequeueUnloadEvent() {
 		if (unloadTask) {
 			unloadTask.cancel();
 			clearUnloadEvent();
 		}
 	}
-		
+
 	protected native void enqueueUnloadEvent();
 }
