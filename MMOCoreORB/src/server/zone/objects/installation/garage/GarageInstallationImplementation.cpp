@@ -38,8 +38,14 @@ void GarageInstallationImplementation::createChildObjects() {
 void GarageInstallationImplementation::notifyRemoveFromZone() {
 	InstallationObjectImplementation::notifyRemoveFromZone();
 
+	Reference<ActiveArea* > garageArea = this->garageArea;
+
 	if (garageArea != NULL) {
-		garageArea->destroyObjectFromWorld(false);
+		EXECUTE_TASK_1(garagaArea, {
+				Locker locker(garageArea_p);
+
+				garageArea_p->destroyObjectFromWorld(false);
+		});
 	}
 }
 
