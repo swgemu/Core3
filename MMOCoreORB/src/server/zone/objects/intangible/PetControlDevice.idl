@@ -289,4 +289,7 @@ class PetControlDevice extends ControlDevice {
 	@local
 	@dereferenced
 	public native PatrolPoint getPatrolPoint(int idx);
+	
+	@local
+	public native boolean isValidPet();
 }

@@ -29,8 +29,14 @@ BaseMessage* SuiMessageBoxImplementation::generateMessage() {
 	if (okButtonText.indexOf("@") == 0)
 		addSetting("3", "btnOk", "Text", okButtonText);
 
-	addSetting("3", "btnRevert", "Enabled", "False");
-	addSetting("3", "btnRevert", "Visible", "False");
+	if (otherButtonText.indexOf("@") == 0) {
+		addSetting("3", "btnRevert","Enabled","True");
+		addSetting("3", "btnRevert","Visible","True");
+		addSetting("3", "btnRevert","Text", otherButtonText);
+	} else {
+		addSetting("3", "btnRevert", "Enabled", "False");
+		addSetting("3", "btnRevert", "Visible", "False");
+	}
 
 	setHandlerText("handleSUI");
 

@@ -42,6 +42,7 @@ class PetDeed extends Deed {
 	protected int health;
 	protected int action;
 	protected int mind;
+	protected int regen;
 	// specials
 	protected string special1;
 	protected string special2;
@@ -103,6 +104,7 @@ class PetDeed extends Deed {
 		quality = 7;
 		sampleCount = 0;	
 		specialResists = 0;
+		regen = 1;
 	}
 	@dirty
 	public native void setSpecialResist(int type);
@@ -326,4 +328,12 @@ class PetDeed extends Deed {
 	 */
 	@local	
 	public native void setupAttacks();
+	
+	@local
+	public native int calculatePetLevel();
+	
+	@local
+	public native void adjustPetLevel(CreatureObject player, CreatureObject pet);
+	@local
+	public native void adjustPetStats(CreatureObject player, CreatureObject pet);
 }
