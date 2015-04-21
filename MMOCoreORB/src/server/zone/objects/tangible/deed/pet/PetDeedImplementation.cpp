@@ -201,7 +201,14 @@ String PetDeedImplementation::getTemplateName() {
 	String name = petTemplate->getObjectName();
 	return name;
 }
-
+int PetDeedImplementation::calculatePetLevel() {
+	// Regenerate the LEvel
+	int effective = (int)(((fortitude - (armor * 500)) / 50) * 5);
+	if (regen == 0) {
+		regen = (dexterity*15)     + (endurance * 3);
+	}
+	return Genetics::calculateAgentLevel(health, (damageMax + damageMin)/2, chanceHit, regen, armor, effective, kinResist, energyResist, blastResist, heatResist, coldResist, elecResist, acidResist, stunResist);
+}
 void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ManagedReference<ManufactureSchematic*> manufact = values->getManufactureSchematic();
 	float clFactor = 0;
@@ -501,4 +508,47 @@ bool PetDeedImplementation::isSpecialResist(int type) {
 }
 void PetDeedImplementation::setSpecialResist(int type) {
 	specialResists |= type;
+}
+void PetDeedImplementation::adjustPetLevel(CreatureObject* player, CreatureObject* pet) {
+	int oldLevel = pet->getLevel();
+	int newLevel = calculatePetLevel();
+	if (newLevel < 1) {
+		player->sendSystemMessage("@bio_engineer:pet_sui_fix_error");
+		return;
+	}
+	if (newLevel > 75) {
+		player->sendSystemMessage("@bio_engineer:pet_sui_level_too_high");
+		adjustPetStats(player,pet);
+		return;
+	}
+	level = newLevel;
+	pet->setLevel(newLevel);
+	player->sendSystemMessage("@bio_engineer:pet_sui_level_fixed");
+}
+void PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObject *pet) {
+	int oldLevel = pet->getLevel();
+	if (oldLevel < 1) {
+		player->sendSystemMessage("@bio_engineer:pet_sui_fix_error");
+		return;
+	}
+	health = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel);
+	action = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel);
+	regen = DnaManager::instance()->valueForLevel(DnaManager::REG_LEVEL,oldLevel);
+	float dps = DnaManager::instance()->valueForLevel(DnaManager::DPS_LEVEL,oldLevel);
+	damageMin = round((dps * 2.0) * 0.5);
+	attackSpeed = 2.0;
+	damageMax = round((dps * 2.0) * 1.5);
+	chanceHit = DnaManager::instance()->valueForLevel(DnaManager::HIT_LEVEL,oldLevel);
+	// Adjust Armor Now
+	fortitude = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,oldLevel);
+	// Recalculate the level now we should be good to go now.
+	int newLevel = calculatePetLevel();
+	level = newLevel;
+	if (newLevel > 75) {
+		player->sendSystemMessage("@bio_engineer:pet_sui_fix_error");
+		return;
+	}
+	// ensure the stats are set
+	player->sendSystemMessage("@bio_engineer:pet_sui_stats_fixed");
+	return;
 }

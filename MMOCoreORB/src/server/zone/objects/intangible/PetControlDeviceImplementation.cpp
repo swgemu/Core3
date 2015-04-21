@@ -10,7 +10,9 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/player/sui/callbacks/MountGrowthArrestSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/PetFixSuiCallback.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
@@ -195,7 +197,19 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (tradeContainer != NULL) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
-
+	if (!isValidPet() && petType == PetManager::CREATUREPET) {
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player,SuiWindowType::PET_FIX_DIALOG);
+		box->setCallback(new PetFixSuiCallback(player->getZoneServer(), _this.get()));
+		box->setPromptText("@bio_engineer:pet_sui_text");
+		box->setPromptTitle("@bio_engineer:pet_sui_title");
+		box->setOkButton(true,"@bio_engineer:pet_sui_fix_stats");
+		box->setCancelButton(true,"@bio_engineer:pet_sui_abort");
+		box->setOtherButton(true,"@bio_engineer:pet_sui_fix_level");
+		box->setUsingObject(_this.get());
+		player->getPlayerObject()->addSuiBox(box);
+		player->sendMessage(box->generateMessage());
+		return;
+	}
 	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
 
 		Reference<CallPetTask*> callPet = new CallPetTask(_this.get(), player, "call_pet");
@@ -1117,4 +1131,26 @@ void PetControlDeviceImplementation::addPatrolPoint(PatrolPoint& point) {
 
 PatrolPoint PetControlDeviceImplementation::getPatrolPoint(int idx) {
 	return patrolPoints.get(idx);
+}
+bool PetControlDeviceImplementation::isValidPet() {
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return true;
+
+	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
+	if (pet == NULL)
+		return true;
+	PetDeed* deed = pet->getPetDeed();
+	if (deed != NULL) {
+		// time to calculate!
+		int calculatedLevel =  deed->calculatePetLevel();
+		if (pet->getTemplateLevel() == 0)
+			return true;
+		if (pet->getTemplateLevel() >= (calculatedLevel * 0.85)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	return true;
 }
