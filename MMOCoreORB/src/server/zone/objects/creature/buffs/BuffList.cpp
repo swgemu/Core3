@@ -77,6 +77,8 @@ void BuffList::addBuff(Buff* buff) {
 
 	buffList.put(buffcrc, buff);
 
+	guard.release();
+
 	if (buff->isSpiceBuff())
 		spiceActive = true;
 
@@ -120,10 +122,18 @@ void BuffList::removeBuff(Buff* buff) {
 
 		buffList.remove(index);
 
-		buff->deactivate();
+		mutex.unlock();
+
+		try {
+			buff->deactivate();
+		} catch (...) {
+
+		}
 
 		if (buff->isPersistent())
 			ObjectManager::instance()->destroyObjectFromDatabase(buff->_getObjectID());
+
+		mutex.lock();
 	}
 }
 
