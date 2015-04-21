@@ -107,6 +107,8 @@ void InstrumentImplementation::spawnInForeignCell(CreatureObject* player) {
 	if (spawnedObject->getZone() == NULL) {
 		Instrument* instrument = cast<Instrument*>( spawnedObject.get());
 
+		Locker locker(instrument);
+
 		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		instrument->setSpawnerPlayer(player);
 
@@ -133,6 +135,9 @@ void InstrumentImplementation::spawnOutside(CreatureObject* player) {
 
 	if (spawnedObject->getZone() == NULL) {
 		Instrument* instrument = cast<Instrument*>( spawnedObject.get());
+
+		Locker locker(instrument);
+
 		instrument->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 		instrument->setSpawnerPlayer(player);
 		//instrument->insertToZone(player->getZone());
