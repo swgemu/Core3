@@ -182,7 +182,7 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 
 	int ferocity = creatureTemplate->getFerocity();
 	int cl = creature->getLevel();
-	int cle = Genetics::hitChanceToValue(creature->getHitChance(),quality);
+	int cle = Genetics::hitChanceToValue(creature->getChanceHit(),quality);
 	int cou = Genetics::meatTypeToValue(creature->getMeatType(),quality);
 	int dep = Genetics::dietToValue(creature->getDiet(),quality);
 	int dex = Genetics::hamToValue(creature->getMaxHAM(3),quality);
