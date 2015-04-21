@@ -41,6 +41,8 @@ public:
 		CombatManager* combatManager = CombatManager::instance();
 
 		if (res == SUCCESS) {
+			Locker clocker(targetCreature, creature);
+
 			targetCreature->getThreatMap()->addAggro(creature, creature->getSkillMod("taunt") * 10, 0);
 			targetCreature->getThreatMap()->setThreatState(creature, ThreatStates::TAUNTED,(uint64)creature->getSkillMod("taunt") / 10, (uint64)creature->getSkillMod("taunt") / 10);
 			//creature->doCombatAnimation(creature,String("taunt").hashCode(),0,0xFF);
