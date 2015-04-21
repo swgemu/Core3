@@ -41,7 +41,7 @@ void GarageInstallationImplementation::notifyRemoveFromZone() {
 	Reference<ActiveArea* > garageArea = this->garageArea;
 
 	if (garageArea != NULL) {
-		EXECUTE_TASK_1(garagaArea, {
+		EXECUTE_TASK_1(garageArea, {
 				Locker locker(garageArea_p);
 
 				garageArea_p->destroyObjectFromWorld(false);
