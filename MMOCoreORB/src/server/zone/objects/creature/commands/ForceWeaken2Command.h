@@ -38,6 +38,8 @@ public:
 			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object.get());
 
 			if (creatureTarget != NULL) {
+				Locker clocker(creatureTarget, creature);
+
 				ManagedReference<Buff*> buff = new Buff(creatureTarget, getNameCRC(), 120, BuffType::JEDI);
 				buff->setAttributeModifier(CreatureAttribute::HEALTH, -600);
 				buff->setAttributeModifier(CreatureAttribute::ACTION, -600);
