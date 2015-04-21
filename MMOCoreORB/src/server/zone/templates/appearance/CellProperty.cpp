@@ -16,7 +16,7 @@ CellProperty::CellProperty(int cellID) : Logger("CellProperty"), canSeeParentCel
 }
 
 CellProperty::CellProperty(const CellProperty& c) : Object(), Logger("CellProperty"),
-		canSeeParentCell(c.canSeeParentCell), numberOfPortals(c.numberOfPortals),
+		name(c.name), canSeeParentCell(c.canSeeParentCell), numberOfPortals(c.numberOfPortals),
 			floorMesh(c.floorMesh), appearanceTemplate(c.appearanceTemplate), cellID(c.cellID) {
 
 }
