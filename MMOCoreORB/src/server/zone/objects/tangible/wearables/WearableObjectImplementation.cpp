@@ -196,6 +196,7 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 
 		usedSocketCount++;
 
+		Locker clocker(attachment, player);
 		attachment->destroyObjectFromWorld(true);
 		attachment->destroyObjectFromDatabase(true);
 
