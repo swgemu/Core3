@@ -116,18 +116,21 @@ class StructureObject extends TangibleObject {
 	 * Schedules the event that will be fired when maintenance is due to run out.
 	 * This method calls updateStructureStatus before running.
 	 */
+	@preLocked
 	public native void scheduleMaintenanceExpirationEvent();
 
 	/**
 	 * Schedules the maintenance task.
 	 * @param timeFromNow the time till the task should be run.
 	 */
+	@preLocked
 	public native void scheduleMaintenanceTask(int timeFromNow);
 	
 	/**
 	 * This method should be called anytime a method needs up to date information about
 	 * maintenance, power, and condition of the structure.
 	 */
+	@preLocked
 	public native abstract void updateStructureStatus();
 
 	/**
@@ -280,6 +283,7 @@ class StructureObject extends TangibleObject {
 	@dirty
 	public native int getLotSize();
 
+	@preLocked
 	public void setMaintenanceReduced(boolean value) {
 		maintenanceReduced = value;
 	}
@@ -315,32 +319,39 @@ class StructureObject extends TangibleObject {
 	public abstract boolean isPrivateStructure() {
 		return false;
 	}
-	
+
+	@preLocked
 	public void setOwner(unsigned long objectID) {
 		ownerObjectID = objectID;
 		structurePermissionList.setOwner(objectID);
 	}
-	
+
+	@preLocked
 	public void setDeedObjectID(unsigned long deedID) {
 		deedObjectID = deedID;
 	}
-	
+
+	@preLocked
 	public void setBaseMaintenanceRate(int rate) { //TODO: Move to template
 		baseMaintenanceRate = rate;
 	}
-	
+
+	@preLocked
 	public void setBasePowerRate(int rate) { //TODO: Move to template
 		basePowerRate = rate;
 	}
-	
+
+	@preLocked
 	public void setSurplusMaintenance(int surplus) {
 		surplusMaintenance = surplus;
 	}
-	
+
+	@preLocked
 	public void addMaintenance(float add) {
 		surplusMaintenance += add;
 	}
 
+	@preLocked
 	public void subtractMaintenance(float subtract) {
 		surplusMaintenance = surplusMaintenance - subtract;
 	}
@@ -356,12 +367,16 @@ class StructureObject extends TangibleObject {
 	 * @param cashFirst Indicates if the amount should be withdrawn from
 	 * the player's cash or bank account first.
 	 */
+	@preLocked
+	@arg2preLocked
 	public native void payMaintenance(int maintenance, CreatureObject payer, boolean cashFirst);
-	
+
+	@preLocked
 	public void setSurplusPower(int surplus) {
 		surplusPower = surplus;
 	}
-	
+
+	@preLocked
 	public void addPower(float add) {
 		surplusPower += add;
 	}
@@ -413,6 +428,7 @@ class StructureObject extends TangibleObject {
 	 */
 	@local
 	@dirty
+	@arg1preLocked
 	public native void addTemplateSkillMods(TangibleObject targetObject);
 
 	/*
@@ -421,6 +437,7 @@ class StructureObject extends TangibleObject {
 	 */
 	@local
 	@dirty
+	@arg1preLocked
 	public native void removeTemplateSkillMods(TangibleObject tangibleObject);
 	
 	@dirty
@@ -440,6 +457,7 @@ class StructureObject extends TangibleObject {
 	@dirty
 	public native boolean isGuildHall();
 
+	@preLocked
 	public void migratePermissions() {
 		structurePermissionList.migrateLists(super.getZoneServer(), getOwnerObjectID());
 		permissionsFixed = true;

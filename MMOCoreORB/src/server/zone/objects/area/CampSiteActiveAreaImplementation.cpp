@@ -132,6 +132,8 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 }
 
 int CampSiteActiveAreaImplementation::notifyHealEvent(int64 quantity) {
+	Locker locker(_this.get());
+
 	// Increase XP Pool for heals
 	currentXp += (campStructureData->getExperience() / 180);
 	return 1;
@@ -153,11 +155,13 @@ int CampSiteActiveAreaImplementation::notifyCombatEvent() {
 }
 
 void CampSiteActiveAreaImplementation::abandonCamp() {
+	Locker locker(_this.get());
+
 	abandoned = true;
 
 	currentXp = 0;
 
-	Locker locker(&taskMutex);
+	Locker tlocker(&taskMutex);
 
 	if(despawnTask != NULL && despawnTask->isScheduled()) {
 		despawnTask->cancel();
@@ -167,8 +171,10 @@ void CampSiteActiveAreaImplementation::abandonCamp() {
 		despawnTask->schedule(newTime < maxTime ? newTime : maxTime);
 	}
 
-	if(terminal != NULL)
+	if(terminal != NULL) {
+		Locker clocker(terminal, _this.get());
 		terminal->setCustomObjectName("Abandoned Camp", true);
+	}
 
 	if(campOwner != NULL) {
 		campOwner->dropObserver(ObserverEventType::STARTCOMBAT, campObserver);
@@ -260,11 +266,15 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 		}
 	}
 
+	Locker clocker(campOwner, _this.get());
+
 	PlayerObject* ownerGhost = campOwner->getPlayerObject();
 
 	if (ownerGhost != NULL) {
 		ownerGhost->removeOwnedStructure(camp);
 	}
+
+	clocker.release();
 
 	setOwner(player);
 
@@ -280,6 +290,8 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 		if (scno->isPlayerCreature())
 			visitors.add(scno->getObjectID());
 	}
+
+	Locker clocker2(player, _this.get());
 
 	playerGhost->addOwnedStructure(camp);
 
@@ -305,4 +317,11 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 	}
 
 	player->sendSystemMessage("@camp:assuming_ownership"); //You assume ownership of the camp.
+}
+
+void CampSiteActiveAreaImplementation::setOwner(CreatureObject* player) {
+	campOwner = player;
+
+	Locker clocker(camp, _this.get());
+	camp->setOwner(player->getObjectID());
 }

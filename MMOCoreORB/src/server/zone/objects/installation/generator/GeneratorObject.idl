@@ -7,7 +7,7 @@ class GeneratorObject extends InstallationObject {
 	public GeneratorObject() {		
 		Logger.setLoggingName("GeneratorObject");
 	}
-	
+
 	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
@@ -17,7 +17,7 @@ class GeneratorObject extends InstallationObject {
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -26,8 +26,10 @@ class GeneratorObject extends InstallationObject {
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
+	@preLocked
+	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	/**
 	 * Calls the appropriate UI Listener Function
 	 * @pre { this object is locked, object is locked }
@@ -35,8 +37,9 @@ class GeneratorObject extends InstallationObject {
 	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
+	@preLocked
 	public native void synchronizedUIListen(SceneObject player, int value);
-	
+
 	/**
 	 * Calls the appropriate UI Stop Listener Function
 	 * @pre { this object is locked, object is locked }
@@ -44,8 +47,9 @@ class GeneratorObject extends InstallationObject {
 	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
+	@preLocked
 	public native void synchronizedUIStopListen(SceneObject player, int value);
-		
+
 	@dirty
 	public boolean isGeneratorObject() {
 		return true;
