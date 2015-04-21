@@ -194,6 +194,8 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 			return;
 		}
 
+		Locker clocker(item, player);
+
 		itemName.setStringId("mission/mission_deliver_neutral_easy", itemEntry.toString());
 		item->setObjectName(itemName);
 
@@ -215,6 +217,8 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 		if (item == NULL || !inventory->hasObjectInContainer(item->getObjectID())) {
 			return;
 		}
+
+		Locker clocker(item, player);
 
 		item->destroyObjectFromWorld(true);
 		item->destroyObjectFromDatabase(true);
