@@ -1581,6 +1581,8 @@ void BuildingObjectImplementation::changeSign( SignTemplate* signConfig ){
 		return;
 	}
 
+	Locker clocker(signObject, _this.get());
+
 	Vector3 signPosition = signConfig->getPosition();
 	childObjects.put(signSceno);
 	signObject->initializePosition(signPosition.getX(), signPosition.getZ(), signPosition.getY());
@@ -1615,6 +1617,8 @@ void BuildingObjectImplementation::changeSign( SignTemplate* signConfig ){
 	permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 	permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 
+	clocker.release();
+
 	// Remove old sign (but save its name)
 	UnicodeString signName = "@sign_name:sign";
 	SignObject* oldSign = getSignObject();
@@ -1629,6 +1633,8 @@ void BuildingObjectImplementation::changeSign( SignTemplate* signConfig ){
 		oldSign->destroyObjectFromDatabase(true);
 
 	}
+
+	Locker clocker2(signObject, _this.get());
 
 	// Finish initializing new sign
 	signObject->initializeChildObject(_this.get());  // should call BuildingObject::setSignObject
