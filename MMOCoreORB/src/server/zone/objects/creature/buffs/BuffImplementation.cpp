@@ -188,11 +188,31 @@ void BuffImplementation::parseSkillModifierString(const String& modifierstring) 
 }
 
 String BuffImplementation::getAttributeModifierString() {
-	return String("");
+	if (attributeModifiers.size() == 0)
+		return String("none");
+
+	String retString = "";
+
+	for (int i = 0; i < attributeModifiers.size(); i++) {
+		VectorMapEntry<byte, int> entry = attributeModifiers.elementAt(i);
+		retString += CreatureAttribute::getName(entry.getKey()) + " +" + String::valueOf(entry.getValue()) + ";";
+	}
+
+	return retString;
 }
 
 String BuffImplementation::getSkillModifierString() {
-	return String("");
+	if (skillModifiers.size() == 0)
+		return String("none");
+
+	String retString = "";
+
+	for (int i = 0; i < skillModifiers.size(); i++) {
+		VectorMapEntry<String, int> entry = skillModifiers.elementAt(i);
+		retString += entry.getKey() + " +" + String::valueOf(entry.getValue()) + "; ";
+	}
+
+	return retString;
 }
 
 void BuffImplementation::scheduleBuffEvent() {
