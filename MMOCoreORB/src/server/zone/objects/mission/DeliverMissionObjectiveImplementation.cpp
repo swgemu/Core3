@@ -183,8 +183,7 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 
 	Locker lock(player);
 
-	switch (objectiveStatus) {
-	case 0:
+	if (objectiveStatus == 0) {
 		itemEntry << "l";
 		item = NULL;
 		//TODO: create correct item.
@@ -193,6 +192,8 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 			abort();
 			return;
 		}
+
+		Locker clocker(item, player);
 
 		itemName.setStringId("mission/mission_deliver_neutral_easy", itemEntry.toString());
 		item->setObjectName(itemName);
@@ -209,12 +210,14 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 		updateMissionTarget(player);
 
 		objectiveStatus = PICKEDUPSTATUS;
-		break;
-	case 1:
+
+	} else if (objectiveStatus == 1) {
 		// check for item, then remove item
 		if (item == NULL || !inventory->hasObjectInContainer(item->getObjectID())) {
 			return;
 		}
+
+		Locker clocker2(item, player);
 
 		item->destroyObjectFromWorld(true);
 		item->destroyObjectFromDatabase(true);
@@ -222,9 +225,6 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 		complete();
 
 		objectiveStatus = DELIVEREDSTATUS;
-		break;
-	default:
-		break;
 	}
 }
 
