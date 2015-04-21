@@ -391,8 +391,10 @@ public:
 
 		deactivateConditionTreatment(creature);
 
-		if (curePack != NULL)
+		if (curePack != NULL) {
+			Locker locker(curePack);
 			curePack->decreaseUseCount();
+		}
 
 		if (targetCreature != creature && !targetCreature->isPet())
 			awardXp(creature, "medical", 50); //No experience for healing yourself or pets.
