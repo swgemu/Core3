@@ -33,6 +33,8 @@ public:
 
 		TangibleObject* vendor = cast<TangibleObject*>(object.get());
 
+		Locker clocker(vendor, player);
+
 		VendorManager::instance()->handleDestroyCallback(player, vendor);
 	}
 };
