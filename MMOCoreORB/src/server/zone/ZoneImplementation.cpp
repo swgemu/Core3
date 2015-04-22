@@ -59,6 +59,8 @@ void ZoneImplementation::createContainerComponent() {
 	containerComponent = ComponentManager::instance()->getComponent<ContainerComponent*>("ZoneContainerComponent");
 }
 
+
+
 void ZoneImplementation::initializePrivateData() {
 	if (zoneName.contains("space_")) {
 		planetManager = new SpaceManager(_this.get(), processor);
