@@ -129,6 +129,8 @@ public:
 			creature->broadcastMessage(action, true);
 			creature->addCooldown("throwtrap", 1500);
 
+			Locker clocker(trap, creature);
+
 			trap->decreaseUseCount();
 
 			StringIdChatParameter message;

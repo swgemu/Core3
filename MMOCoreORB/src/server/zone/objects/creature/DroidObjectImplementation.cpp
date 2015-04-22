@@ -161,6 +161,8 @@ int DroidObjectImplementation::rechargeFromBattery(CreatureObject* player){
 	power = MAX_POWER;
 
 	// Consume battery
+	Locker locker(batteryTano);
+
 	batteryTano->decreaseUseCount();
 
 	showFlyText("npc_reaction/flytext","recharged", 0, 153, 0);  // "*Recharged*"
