@@ -54,6 +54,9 @@ void StructureMaintenanceTask::run() {
 		return;
 	}
 
+	Locker _ownerLock(owner);
+	Locker _lock(strongRef, owner);
+
 	//Structure is out of maintenance. Start the decaying process...
 	strongRef->updateStructureStatus();
 
@@ -66,9 +69,6 @@ void StructureMaintenanceTask::run() {
 	if(strongRef->isBuildingObject() && city != NULL){
 		oneWeekMaintenance += city->getPropertyTax() / 100.0f * oneWeekMaintenance;
 	}
-
-	Locker _ownerLock(owner);
-	Locker _lock(strongRef, owner);
 
 	//Check if owner got money in the bank and structure not decaying.
 	if (owner->getBankCredits() >= oneWeekMaintenance) {

@@ -22,34 +22,34 @@ class CampSiteActiveArea extends ActiveArea {
 
 	protected StructureObject camp;
 	protected Terminal terminal;
-	
+
 	@dereferenced
 	protected transient Mutex taskMutex;
 
 	@dereferenced
 	transient protected Vector<unsigned long> visitors;
-	
+
 	protected CampSiteObserver campObserver;
 
 	protected CampAbandonTask abandonTask;
 	protected CampDespawnTask despawnTask;
-	
+
 	protected CreatureObject campOwner;
-	
+
 	protected transient unsigned int timeCreated;
 	protected transient boolean abandoned;
 
 	protected transient int currentXp;
-	
+
 	@dereferenced
 	protected TemplateReference<CampStructureTemplate> campStructureData;
-	
+
 	// 1 Hour
 	public final static int DESPAWNTIME = 6000000;
-	
+
 	// 1 minute
 	public final static int ABANDONTIME = 60000;
-	
+
 	public CampSiteActiveArea() {
 		Logger.setLoggingName("CampsiteActiveArea");
 		timeCreated = System.getTime();
@@ -61,31 +61,32 @@ class CampSiteActiveArea extends ActiveArea {
 		abandonTask = null;
 		despawnTask = null;
 	}
-	
+
 	public native void initializeTransientMembers();
-	
+
 	@local
+	@preLocked
 	public native void init(CampStructureTemplate campData);
 
 	private native void startTasks();
-	
+
 	public native void notifyEnter(SceneObject player);
-	
+
 	public native void notifyExit(SceneObject player);
 
+	@preLocked
 	public void setTerminal(Terminal term) {
 		terminal = term;
 	}
-	
-	public void setOwner(CreatureObject player) {
-		campOwner = player;
-		camp.setOwner(player.getObjectID());
-	}
-	
+
+	@preLocked
+	public native void setOwner(CreatureObject player);
+
+	@preLocked
 	public void setCamp(StructureObject c) {
 		camp = c;
 	}
-	
+
 	@read
 	public StructureObject getCamp() {
 		return camp;
@@ -95,17 +96,17 @@ class CampSiteActiveArea extends ActiveArea {
 	public int getMedicalRating() {
 		return campStructureData.get().getMedicalRating();
 	}
-	
+
 	@dirty
 	public int getHealthWoundRegenRate() {
 		return campStructureData.get().getHealthWoundRegenRate();
 	}
-	
+
 	@dirty
 	public int getActionWoundRegenRate() {
 		return campStructureData.get().getActionWoundRegenRate();
 	}
-	
+
 	@dirty
 	public int getMindWoundRegenRate() {
 		return campStructureData.get().getMindWoundRegenRate();
@@ -115,38 +116,40 @@ class CampSiteActiveArea extends ActiveArea {
 	public float getAggroMod() {
 		return campStructureData.get().getAggroMod();
 	}
-	
+
 	@dirty
 	public abstract boolean isCampArea() {
 		return true;
 	}
-	
+
 	@read
 	public int getVisitorCount() {
 		return visitors.size();
 	}
-	
+
 	@dereferenced
 	@dirty
 	public unsigned int getUptime() {
 		return System.getTime() - timeCreated;
 	}
-	
+
 	@read
 	public boolean isAbandoned() {
 		return abandoned;
 	}
-	
+
 	public native int notifyHealEvent(long quantity);
-	
+
 	public native int notifyCombatEvent();
-	
+
+	@preLocked
 	public native void abandonCamp();
-	
+
 	public native boolean despawnCamp();
-	
+
+	@preLocked
 	public native void assumeOwnership(CreatureObject player);
-	
+
 	@read
 	public CreatureObject getOwner() {
 		return campOwner;

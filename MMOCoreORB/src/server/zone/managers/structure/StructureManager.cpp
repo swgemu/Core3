@@ -461,8 +461,10 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 					structureTemplatePath.hashCode(), persistenceLevel, strDatabase);
 
 	if (obj == NULL || !obj->isStructureObject()) {
-		if (obj != NULL)
+		if (obj != NULL) {
+			Locker locker(obj);
 			obj->destroyObjectFromDatabase(true);
+		}
 
 		error(
 				"Failed to create structure with template: "
@@ -471,6 +473,9 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	}
 
 	StructureObject* structureObject = cast<StructureObject*>(obj.get());
+
+	Locker sLocker(structureObject);
+
 	structureObject->grantPermission("ADMIN", creature->getObjectID());
 	structureObject->setOwner(creature->getObjectID());
 
@@ -492,8 +497,6 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	structureObject->setPublicStructure(serverTemplate->isPublicStructure());
 	structureObject->initializePosition(x, z, y);
 	structureObject->rotate(angle);
-
-	Locker sLocker(structureObject);
 	
 	zone->transferObject(structureObject, -1, true);
 	
