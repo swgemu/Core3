@@ -85,6 +85,8 @@ public:
 					return;
 				}
 
+				Locker locker(item, player);
+
 				TangibleObject* item = cast<TangibleObject*>( obj.get());
 
 				if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isArmorObject() || item->isWearableObject())) {
