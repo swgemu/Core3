@@ -195,6 +195,7 @@ void DroidHarvestModuleDataComponent::deactivate() {
 	if (player != NULL) {
 		Locker clock(player, droid);
 		player->dropObserver(ObserverEventType::KILLEDCREATURE, observer);
+		droid->dropObserver(ObserverEventType::DESTINATIONREACHED, observer);
 	}
 }
 
@@ -204,6 +205,18 @@ String DroidHarvestModuleDataComponent::toString(){
 
 void DroidHarvestModuleDataComponent::onCall(){
 	deactivate();
+	ManagedReference<DroidObject*> droid = getDroidObject();
+	if( droid == NULL ){
+		info( "Droid is null");
+		return;
+	}
+	if (observer == NULL) {
+		observer = new DroidHarvestObserver(this);
+		observer->deploy();
+	}
+	Locker dlock( droid );
+	// add observer for the droid
+	droid->registerObserver(ObserverEventType::DESTINATIONREACHED, observer);
 }
 
 void DroidHarvestModuleDataComponent::onStore(){
@@ -264,7 +277,15 @@ void DroidHarvestModuleDataComponent::handlePetCommand(String cmd, CreatureObjec
 
 	if( petManager->isTrainedCommand( pcd, PetManager::HARVEST, cmd ) ){
 		Locker dlock(droid);
-		// tell droid to goto target
+		uint64 targetID = speaker->getTargetID();
+		harvestTargets.add(targetID);
+		Reference<CreatureObject*> target = droid->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();
+		// this check should occur in the pet speaking handling.
+		if(!target->isInRange(droid,64)) {
+			speaker->sendSystemMessage("@pet/droid_modules:corpse_too_far");
+			return;
+		}
+		// tell droid about the target and run to it.
 		petManager->enqueuePetCommand(speaker, droid, String("petHarvest").toLowerCase().hashCode(), "");
 	}
 }
@@ -274,17 +295,27 @@ void DroidHarvestModuleDataComponent::creatureHarvestCheck(CreatureObject* targe
 	if( droid == NULL){
 		return;
 	}
-	Locker dlock(droid);
-
-	if (droid->getPendingTask("droid_harvest_command_reschedule") != NULL) {
+	PetManager* petManager = droid->getZoneServer()->getPetManager();
+	if( petManager == NULL ) {
 		return;
 	}
 
-	// harvest task check values
-	// tell droid togo target
-	droid->setTargetObject(target);
-	droid->activateMovementEvent();
+	Locker dlock(droid);
+	// add to target list, call command
+	harvestTargets.add(target->getObjectID());
 	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(droid, String("petHarvest").toLowerCase().hashCode(), "", target->getObjectID(), 1);
-	// give a second delay for the command so that all updates can occur for inv and such
-	droid->addPendingTask("droid_harvest_command_reschedule",enqueueCommand,1000);
+	droid->addPendingTask("harvest_check",enqueueCommand,1000);
+}
+void DroidHarvestModuleDataComponent::harvestDestinationReached() {
+	ManagedReference<DroidObject*> droid = getDroidObject();
+	if( droid == NULL){
+		return;
+	}
+	Locker dlock(droid);
+	if (harvestTargets.size() > 0) {
+		EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(droid, String("petHarvest").toLowerCase().hashCode(), "", harvestTargets.get(0), 1);
+		// give a second delay for the command so that all updates can occur for inv and such
+		droid->addPendingTask("harvest_check",enqueueCommand,1000);
+	}
+
 }
