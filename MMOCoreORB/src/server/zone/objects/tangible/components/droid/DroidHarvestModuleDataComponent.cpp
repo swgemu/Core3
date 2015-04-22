@@ -195,6 +195,10 @@ void DroidHarvestModuleDataComponent::deactivate() {
 	if (player != NULL) {
 		Locker clock(player, droid);
 		player->dropObserver(ObserverEventType::KILLEDCREATURE, observer);
+		droid->dropObserver(ObserverEventType::DESTINATIONREACHED, observer);
+	}
+	if(droid->getPendingTask("droid_harvest")) {
+		droid->removePendingTask("droid_harvest");
 	}
 }
 
@@ -204,6 +208,20 @@ String DroidHarvestModuleDataComponent::toString(){
 
 void DroidHarvestModuleDataComponent::onCall(){
 	deactivate();
+	ManagedReference<DroidObject*> droid = getDroidObject();
+	if( droid == NULL ){
+		info( "Droid is null");
+		return;
+	}
+	if (observer == NULL) {
+		observer = new DroidHarvestObserver(this);
+		observer->deploy();
+	}
+	Locker dlock( droid );
+	// add observer for the droid
+	//droid->registerObserver(ObserverEventType::DESTINATIONREACHED, observer);
+	Reference<Task*> task = new DroidHarvestTask( this );
+	droid->addPendingTask("droid_harvest", task, 1000); // 1 sec
 }
 
 void DroidHarvestModuleDataComponent::onStore(){
@@ -264,27 +282,32 @@ void DroidHarvestModuleDataComponent::handlePetCommand(String cmd, CreatureObjec
 
 	if( petManager->isTrainedCommand( pcd, PetManager::HARVEST, cmd ) ){
 		Locker dlock(droid);
-		// tell droid to goto target
-		petManager->enqueuePetCommand(speaker, droid, String("petHarvest").toLowerCase().hashCode(), "");
+		uint64 targetID = speaker->getTargetID();
+		Reference<CreatureObject*> target = droid->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();
+		// this check should occur in the pet speaking handling.
+		if(!target->isInRange(droid,64)) {
+			speaker->sendSystemMessage("@pet/droid_modules:corpse_too_far");
+			return;
+		}
+		harvestTargets.add(targetID);
 	}
 }
 void DroidHarvestModuleDataComponent::creatureHarvestCheck(CreatureObject* target) {
-	// check to see if we have loot rights
+	if(!active)
+		return;
 	ManagedReference<DroidObject*> droid = getDroidObject();
 	if( droid == NULL){
 		return;
 	}
-	Locker dlock(droid);
-
-	if (droid->getPendingTask("droid_harvest_command_reschedule") != NULL) {
+	if(target == NULL) {
 		return;
 	}
-
-	// harvest task check values
-	// tell droid togo target
-	droid->setTargetObject(target);
-	droid->activateMovementEvent();
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(droid, String("petHarvest").toLowerCase().hashCode(), "", target->getObjectID(), 1);
-	// give a second delay for the command so that all updates can occur for inv and such
-	droid->addPendingTask("droid_harvest_command_reschedule",enqueueCommand,1000);
+	if(!target->isCreature()) {
+		return;
+	}
+	// add to target list, call command
+	harvestTargets.add(target->getObjectID());
+}
+void DroidHarvestModuleDataComponent::harvestDestinationReached() {
+	// No-Op
 }

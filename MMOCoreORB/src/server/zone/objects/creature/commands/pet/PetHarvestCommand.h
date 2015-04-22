@@ -17,6 +17,7 @@ public:
 
 
 	int doQueueCommand(CreatureObject* creature, const uint64& targetID, const UnicodeString& arguments) const {
+		System::out << "checking for control device on creature " << creature->getDisplayedName() << "\n";
 
 		ManagedReference<PetControlDevice*> controlDevice = creature->getControlDevice().castTo<PetControlDevice*>();
 		if (controlDevice == NULL)
@@ -25,9 +26,11 @@ public:
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(creature);
 		if( pet == NULL )
 			return GENERALERROR;
+		System::out << "check pet isntbeing ridden\n";
 
 		if (pet->hasRidingCreature())
 			return GENERALERROR;
+		System::out << "get linked creature\n";
 
 		ManagedReference<CreatureObject*> owner = pet->getLinkedCreature().get();
 		if (owner == NULL) {
@@ -35,8 +38,27 @@ public:
 		}
 
 		Locker olock(owner);
-		Reference<CreatureObject*> target = server->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();
+		// RE-DO here, pull target form harvest target list on module. and ignore the target id passed in.
+		ManagedReference<DroidObject*> droid = cast<DroidObject*>(creature);
+		if( droid == NULL )
+			return GENERALERROR;
+		System::out << "check droid task\n";
 
+		if(droid->getPendingTask("harvest_check") != NULL) {
+			droid->removePendingTask("harvest_check");
+		}
+
+		DroidHarvestModuleDataComponent* module = cast<DroidHarvestModuleDataComponent*>(droid->getModule("harvest_module"));
+		if(module == NULL) {
+			return GENERALERROR;
+		}
+		uint64 droidTarget = module->getNextHarvestTarget();
+		// check for no target
+		if (droidTarget == -1)
+			return GENERALERROR;
+		// end re-do
+		Reference<CreatureObject*> target = server->getZoneServer()->getObject(droidTarget, true).castTo<CreatureObject*>();
+		System::out << "load target\n";
 
 		if (target == NULL || !target->isCreature()) {
 			owner->sendSystemMessage("@pet/droid_modules:invalid_harvest_target");
@@ -48,28 +70,9 @@ public:
 			return GENERALERROR;
 		}
 
-		if(!target->isInRange(pet,64)) {
-			owner->sendSystemMessage("@pet/droid_modules:corpse_too_far");
-			return GENERALERROR;
-		}
 		Creature* cr = cast<Creature*>(target.get());
 		if (cr->getZone() == NULL)
 			return GENERALERROR;
-		// Schedule the harvest task
-		ManagedReference<DroidObject*> droid = cast<DroidObject*>(creature);
-		if( droid == NULL )
-			return GENERALERROR;
-
-		if(droid->getPendingTask("droid_harvest_command_reschedule") != NULL) {
-			droid->removePendingTask("droid_harvest_command_reschedule");
-		}
-
-		DroidHarvestModuleDataComponent* module = cast<DroidHarvestModuleDataComponent*>(droid->getModule("harvest_module"));
-		if(module == NULL) {
-			return GENERALERROR;
-		}
-
-		// do actions now, this is queued command
 		// Check if droid is spawned
 		if( droid->getLocalZone() == NULL ){  // Not outdoors
 			ManagedWeakReference<SceneObject*> parent = droid->getParent();
@@ -90,12 +93,10 @@ public:
 		}
 
 		if (!target->isInRange(droid,7.0f)) { // this should run the droid to the target for harvesting
+			module->addHarvestTarget(droidTarget,true);
 			droid->setTargetObject(target);
 			droid->activateMovementEvent();
-			// Droid is now set to go to target, re-enque the command, wuth a 1 second delay
-			EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(droid, String("petHarvest").toLowerCase().hashCode(), "", target->getObjectID(), 1);
-			// delay the execution
-			droid->addPendingTask("droid_harvest_command_reschedule",enqueueCommand,1000);
+			// we will get rescheduled on destination reached message
 			return GENERALERROR;
 		}
 		int harvestInterest = module->getHarvestInterest();
@@ -161,6 +162,7 @@ public:
 		Locker clock(target,droid);
 		ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
 		manager->droidHarvest(cr, droid, type,bonus);
+		droid->restoreFollowObject();
 		return SUCCESS;
 	}
 

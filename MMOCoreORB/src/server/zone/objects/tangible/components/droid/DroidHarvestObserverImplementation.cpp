@@ -14,6 +14,11 @@
 
 int DroidHarvestObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	// check params we should have the player around here
+	if (eventType == ObserverEventType::DESTINATIONREACHED) {
+		module->harvestDestinationReached();
+		return 0;
+	}
+
 	SceneObject* sceno = dynamic_cast<SceneObject*>(arg1);
 	if (sceno == NULL) {
 		return 1;
