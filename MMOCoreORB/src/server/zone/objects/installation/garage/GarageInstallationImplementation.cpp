@@ -25,6 +25,8 @@ void GarageInstallationImplementation::createChildObjects() {
 
 	ActiveArea* activeArea = cast<ActiveArea*>( obj.get());
 
+	Locker clocker(activeArea, _this.get());
+
 	activeArea->setRadius(64);
 	activeArea->initializePosition(getPositionX(), getPositionZ(), getPositionY());
 	//activeArea->insertToZone(getZone());
