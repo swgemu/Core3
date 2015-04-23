@@ -137,7 +137,7 @@ public:
 					closeObjects.removeAll(vec->size(), 10);
 					vec->safeCopyTo(closeObjects);
 				} else {
-					droid->info("Null closeobjects vector in CombatManager::doAreaCombatAction", true);
+					droid->info("Null closeobjects vector in DroudDetonationTask::run", true);
 					droid->getZone()->getInRangeObjects(droid->getWorldPositionX(), droid->getWorldPositionY(), 40, &closeObjects, true);
 				}
 				PlayClientEffectObjectMessage* explode = new PlayClientEffectObjectMessage(droid, "clienteffect/e3_explode_lair_small.cef", "");
