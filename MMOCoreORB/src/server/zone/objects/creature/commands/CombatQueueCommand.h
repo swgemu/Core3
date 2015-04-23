@@ -415,18 +415,25 @@ public:
 		StateEffect effect = getStateEffect(effectType);
 		Reference<Buff*> buff = NULL;
 
+		Vector<String> defenseMods = effect.getDefenderStateDefenseModifiers();
+		float targetDefense = 0.f;
+		for (int j = 0; j < defenseMods.size(); j++)
+			targetDefense += creature->getSkillMod(defenseMods.get(j));
+
+		uint32 duration = MAX(5, effect.getStateLength()*(1.f-targetDefense/100.f));
+
 		switch (effectType) {
 		case CommandEffect::BLIND:
-			creature->setBlindedState(effect.getStateLength());
+			creature->setBlindedState(duration);
 			break;
 		case CommandEffect::DIZZY:
-			creature->setDizziedState(effect.getStateLength());
+			creature->setDizziedState(duration);
 			break;
 		case CommandEffect::INTIMIDATE:
-			creature->setIntimidatedState(mod, crc, effect.getStateLength());
+			creature->setIntimidatedState(mod, crc, duration);
 			break;
 		case CommandEffect::STUN:
-			creature->setStunnedState(effect.getStateLength());
+			creature->setStunnedState(duration);
 			break;
 		case CommandEffect::KNOCKDOWN:
 			if (!creature->checkPostureChangeRecovery()) {
@@ -505,22 +512,22 @@ public:
 			creature->removeBuff(String("retreat").hashCode());
 			break;
 		case CommandEffect::NEXTATTACKDELAY:
-			creature->setNextAttackDelay(mod, effect.getStateLength());
+			creature->setNextAttackDelay(mod, duration);
 			break;
 		case CommandEffect::HEALTHDEGRADE:
-			buff = new Buff(creature, String("healthdegrade").hashCode(), effect.getStateLength(), BuffType::STATE);
+			buff = new Buff(creature, String("healthdegrade").hashCode(), duration, BuffType::STATE);
 			buff->setAttributeModifier(CreatureAttribute::CONSTITUTION, -1*effect.getStateStrength());
 			buff->setAttributeModifier(CreatureAttribute::STRENGTH, -1*effect.getStateStrength());
 			creature->addBuff(buff);
 			break;
 		case CommandEffect::ACTIONDEGRADE:
-			buff = new Buff(creature, String("actiondegrade").hashCode(), effect.getStateLength(), BuffType::STATE);
+			buff = new Buff(creature, String("actiondegrade").hashCode(), duration, BuffType::STATE);
 			buff->setAttributeModifier(CreatureAttribute::QUICKNESS, -1*effect.getStateStrength());
 			buff->setAttributeModifier(CreatureAttribute::STAMINA, -1*effect.getStateStrength());
 			creature->addBuff(buff);
 			break;
 		case CommandEffect::MINDDEGRADE:
-			buff = new Buff(creature, String("minddegrade").hashCode(), effect.getStateLength(), BuffType::STATE);
+			buff = new Buff(creature, String("minddegrade").hashCode(), duration, BuffType::STATE);
 			buff->setAttributeModifier(CreatureAttribute::FOCUS, -1*effect.getStateStrength());
 			buff->setAttributeModifier(CreatureAttribute::WILLPOWER, -1*effect.getStateStrength());
 			creature->addBuff(buff);
@@ -529,7 +536,7 @@ public:
 			if (creature->hasState(CreatureState::COVER)) {
 				creature->clearState(CreatureState::COVER);
 				creature->sendSystemMessage("@combat_effects:strafe_system");
-				creature->setNextAttackDelay(mod, effect.getStateLength());
+				creature->setNextAttackDelay(mod, duration);
 			}
 			break;
 		default:
