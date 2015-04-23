@@ -252,6 +252,7 @@ void StructurePermissionList::revokeAllPermissions() {
 }
 
 void StructurePermissionList::migrateLists(ZoneServer* zoneServer, uint64 ownerObjectID) {
+	Locker locker(&lock);
 
 	ManagedReference<GuildManager*> guildManager = zoneServer->getGuildManager();
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();

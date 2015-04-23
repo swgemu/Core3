@@ -11,9 +11,9 @@ class HarvesterObject extends InstallationObject {
 	public HarvesterObject() {
 		Logger.setLoggingName("HarvesterObject");
 	}
-	
+
 	public native void notifyLoadFromDatabase();
-	
+
 	/**
 	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
@@ -24,7 +24,7 @@ class HarvesterObject extends InstallationObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
 	}
-	
+
 	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
@@ -34,7 +34,7 @@ class HarvesterObject extends InstallationObject {
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -43,8 +43,10 @@ class HarvesterObject extends InstallationObject {
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
+	@preLocked
+	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	/**
 	 * Calls the appropriate UI Listener Function
 	 * @pre { this object is locked, object is locked }
@@ -52,6 +54,7 @@ class HarvesterObject extends InstallationObject {
 	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
+	@preLocked
 	public native void synchronizedUIListen(SceneObject player, int value);
 	
 	/**
@@ -61,15 +64,16 @@ class HarvesterObject extends InstallationObject {
 	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
+	@preLocked
 	public native void synchronizedUIStopListen(SceneObject player, int value);
-	
+
 	public native void updateOperators();
-	
+
 	@dirty
 	public boolean isHarvesterObject() {
 		return true;
 	}
-	
+
 	@dirty
 	public native string getRedeedMessage();
 }

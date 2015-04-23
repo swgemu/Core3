@@ -198,13 +198,19 @@ void CampTerminalMenuComponent::assumeCampOwnership(SceneObject* sceneObject,
 		area = NULL;
 	}
 
-	CampSiteActiveArea* campArea = cast<CampSiteActiveArea*>(area.get());
+	ManagedReference<CampSiteActiveArea*> campArea = cast<CampSiteActiveArea*>(area.get());
 
 	if (campArea != NULL) {
 		if(!campArea->isAbandoned())
 			return;
 
-		campArea->assumeOwnership(player);
+		ManagedReference<CreatureObject*> play = player;
+
+		EXECUTE_TASK_2(campArea, play, {
+				Locker locker(campArea_p);
+				campArea_p->assumeOwnership(play_p);
+		});
+
 	}
 }
 
