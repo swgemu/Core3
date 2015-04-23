@@ -193,6 +193,9 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 
 	if (damage > 0) {
 		attacker->updateLastSuccessfulCombatAction();
+
+		if (attacker->isPlayerCreature())
+			weapon->decay(attacker);
 	}
 
 	return damage;
@@ -1187,9 +1190,6 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 		maxDamage = 10.f;
 	}
 
-	if (attacker->isPlayerCreature())
-		weapon->decay(attacker);
-
 	float damage = minDamage;
 	float diff = maxDamage - minDamage;
 
@@ -1331,8 +1331,6 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 			damage = System::random(diff) + (int)minDamage;
 		else
 			damage = minDamage;
-
-		weapon->decay(attacker);
 	}
 
 	damage = applyDamageModifiers(attacker, weapon, damage);
