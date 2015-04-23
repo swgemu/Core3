@@ -45,12 +45,12 @@ public:
 
 //		shoutCommand(player, group);
 
-		int wounds[9] = {0,0,0,0,0,0,0,0,0};
-		int sizeAffected = getWounds(player, group, wounds);
-		if (sizeAffected == 0)
+		int wounds[2] = {0,0}; // members affected, total wounds
+		getWounds(player, group, wounds);
+		if (wounds[0] == 0)
 			return GENERALERROR;
 
-		if (!distributeWounds(player, group, wounds, sizeAffected))
+		if (!distributeWounds(player, group, wounds))
 			return GENERALERROR;
 
 		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("boostmorale").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
@@ -62,11 +62,9 @@ public:
 		return SUCCESS;
 	}
 
-	int getWounds(CreatureObject* leader, GroupObject* group, int* wounds) const {
+	void getWounds(CreatureObject* leader, GroupObject* group, int* wounds) const {
 		if (group == NULL || leader == NULL)
-			return 0;
-
-		int sizeAffected = 0;
+			return;
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
 
@@ -86,20 +84,22 @@ public:
 			Locker clocker(memberPlayer, leader);
 
 			for (int j = 0; j < 9; j++) {
-				wounds[j] = wounds[j] + memberPlayer->getWounds(j);
+				wounds[1] += memberPlayer->getWounds(j);
 				memberPlayer->setWounds(j, 0);
 			}
 
-			sizeAffected++;
+			wounds[0]++;
 		}
-
-		return sizeAffected;
 	}
 
-	bool distributeWounds(CreatureObject* leader, GroupObject* group, int* wounds, int sizeAffected) const {
+	bool distributeWounds(CreatureObject* leader, GroupObject* group, int* wounds) const {
 		if (group == NULL || leader == NULL)
 			return false;
 
+		int woundsPerMember = ceil((float)wounds[1]/(float)wounds[0]);
+		int woundsPerAttribute = ceil((float)woundsPerMember/9.f);
+
+		int totalWoundsApplied = 0;
 		for (int i = 0; i < group->getGroupSize(); i++) {
 
 			ManagedReference<SceneObject*> member = group->getGroupMember(i);
@@ -119,10 +119,31 @@ public:
 
 			sendCombatSpam(memberPlayer);
 
-			for (int j = 0; j < 9; j++)
-				memberPlayer->addWounds(j, (int) wounds[j] / sizeAffected, true, false);
+			int woundsApplied = 0;
+			for (int j = 0; j < 9; j++) {
+				int woundsToApply = woundsPerAttribute;
+
+				// if we've already applied enough wounds to this member, reduce to the amount we have left
+				if (woundsApplied + woundsToApply > woundsPerMember)
+					woundsToApply = woundsPerMember - woundsApplied;
+
+				// if we've already applied enough wounds to the entire group, reduce to the amount we have left
+				if (totalWoundsApplied + woundsToApply > wounds[1])
+					woundsToApply = wounds[1] - totalWoundsApplied;
+
+				memberPlayer->addWounds(j, woundsToApply, true, false);
+
+				woundsApplied += woundsToApply;
+				totalWoundsApplied += woundsToApply;
+
+				if (woundsApplied >= woundsPerMember || totalWoundsApplied >= wounds[1])
+					break;
+			}
 
 			checkForTef(leader, memberPlayer);
+
+			if (totalWoundsApplied >= wounds[1])
+				break;
 		}
 
 		return true;

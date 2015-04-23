@@ -67,7 +67,7 @@ public:
 
 			ManagedReference<SceneObject*> member = group->getGroupMember(i);
 
-			if (member == NULL || !member->isPlayerCreature() || member->getZone() != leader->getZone())
+			if (member == NULL || member->getZone() != leader->getZone())
 				continue;
 
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
