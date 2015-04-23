@@ -4619,7 +4619,7 @@ bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID, int 
 
 		if(result == NULL) {
 			error("ERROR WHILE LOOKING UP CHARACTER IN SQL TABLE");
-		} else if (result.get()->getRowsAffected() > 1) {
+		} else if (result.get()->getRowsAffected() > 0 ) {
 
 			error("More than one character with oid = " + String::valueOf(characterID) + " in galaxy " + String::valueOf(galaxyID));
 			return false;
