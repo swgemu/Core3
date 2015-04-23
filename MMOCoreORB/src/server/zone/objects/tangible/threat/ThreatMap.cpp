@@ -114,6 +114,7 @@ void ThreatMap::removeAll() {
 				key->dropObserver(ObserverEventType::HEALINGPERFORMED, threatMapObserver);
 		} else {
 			value->setNonAggroDamage(value->getTotalDamage());
+			value->addHeal(-value->getHeal()); // don't need to store healing
 			value->clearAggro();
 		}
 	}
@@ -134,6 +135,7 @@ void ThreatMap::dropDamage(CreatureObject* target) {
 	} else {
 		ThreatMapEntry *entry = &get(target);
 		entry->setNonAggroDamage(entry->getTotalDamage());
+		entry->addHeal(-entry->getHeal()); // don't need to store healing
 		entry->clearAggro();
 	}
 
@@ -440,13 +442,13 @@ void ThreatMap::addHeal(CreatureObject* target, int value) {
 	if (idx == -1) {
 		ThreatMapEntry entry;
 		entry.addHeal(value);
-		entry.addAggro(2);
+		entry.addAggro(1);
 		put(target, entry);
 		registerObserver(target);
 
 	} else {
 		ThreatMapEntry* entry = &elementAt(idx).getValue();
 		entry->addHeal(value);
-		entry->addAggro(2);
+		entry->addAggro(1);
 	}
 }
