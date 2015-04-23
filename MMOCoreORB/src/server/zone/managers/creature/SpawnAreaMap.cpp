@@ -53,6 +53,7 @@ void SpawnAreaMap::loadMap(Zone* z) {
 				SpawnArea* notHere = noSpawnAreas.get(j);
 
 				if (area->intersectsWith(notHere)) {
+					Locker locker(area);
 					area->addNoSpawnArea(notHere);
 				}
 			}

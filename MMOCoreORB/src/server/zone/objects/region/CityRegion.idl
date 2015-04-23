@@ -168,12 +168,17 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);
 
+	@preLocked
 	public native Region addRegion(float x, float y, float radius, boolean persistent);
 
+	@preLocked
 	public native void rescheduleUpdateEvent(unsigned int seconds);
+	@preLocked
 	public native void scheduleCitizenAssessment(unsigned int seconds);
 
+	@preLocked
 	public native void destroyActiveAreas();
+	@preLocked
 	public native void cancelTasks();
 
 	public void addMilitiaMember(unsigned long objectid) {
@@ -189,8 +194,10 @@ class CityRegion extends ManagedObject implements Logger {
 		return (militiaMembers.contains(objectid) || mayorID == objectid);
 	}
 
+	@preLocked
 	public native void addZoningRights(unsigned long objectid, unsigned int duration = 86400);
 
+	@preLocked
 	public void removeZoningRights(unsigned long objectid) {
 		zoningRights.drop(objectid);
 	}
@@ -229,6 +236,7 @@ class CityRegion extends ManagedObject implements Logger {
 		return assessmentPending;
 	}
 
+	@preLocked
 	public void setAssessmentPending(boolean pend) {
 		assessmentPending = pend;
 	}
@@ -411,21 +419,26 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
 	//Setters
+	@preLocked
 	public native void setZone(Zone zne);
 
+	@preLocked
 	public void setCustomRegionName(final string name) {
 		customRegionName = name;
 	}
 
+	@preLocked
 	public void setCitySpecialization(final string spec) {
 		citySpecialization = spec;
 	}
 
+	@preLocked
 	public void setRegionName(final string fullPath) {
 		regionName.setStringId(fullPath);
 	}
 
 	@local
+	@preLocked
 	public float addToCityTreasury(double val) {
 		cityTreasury = cityTreasury + val;
 
@@ -441,6 +454,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 
 	@local
+	@preLocked
 	public double subtractFromCityTreasury(double val) {
 		cityTreasury = cityTreasury - val;
 
@@ -465,8 +479,10 @@ class CityRegion extends ManagedObject implements Logger {
 	public native Vector<TangibleObject> getVendorsInCity();
 
 	@local
+	@preLocked
 	public native void setRegionName(@dereferenced final StringId name);
 
+	@preLocked
 	public void setCityRank(byte rank) {
 		cityRank = rank;
 
@@ -478,34 +494,41 @@ class CityRegion extends ManagedObject implements Logger {
 		}
 	}
 
+	@preLocked
 	public void setMayorID(unsigned long id) {
 		mayorID = id;
 	}
 
+	@preLocked
 	public void setRegistered(boolean val) {
 		registered = val;
 	}
 
+	@preLocked
 	public void setZoningEnabled(boolean val) {
 		zoningEnabled = val;
 	}
 
+	@preLocked
 	public native void setRadius(float rad);
 
+	@preLocked
 	public void setCityHall(StructureObject building) {
 		cityHall = building;
 	}
 
+	@preLocked
 	public void removeShuttleInstallation() {
 		hasShuttle = false;
 		shuttleID = 0;
 	}
-	
+
 	@read
 	public boolean hasShuttleInstallation() {
 		return hasShuttle;
 	}
 
+	@preLocked
 	public void setShuttleID(unsigned long id) {
 		shuttleID = id;
 		hasShuttle = true;
@@ -526,6 +549,7 @@ class CityRegion extends ManagedObject implements Logger {
 		return citySkillTrainers.size();
 	}
 
+	@preLocked
 	public void addMissionTerminal(SceneObject mt) {
 		cityMissionTerminals.put(mt);
 	}
@@ -538,10 +562,12 @@ class CityRegion extends ManagedObject implements Logger {
 		}
 	}
 
+	@preLocked
 	public void addSkillTrainer(SceneObject trainer) {
 		citySkillTrainers.put(trainer);
 	}
 
+	@preLocked
 	public void removeMissionTerminal(SceneObject mt) {
 		cityMissionTerminals.drop(mt);
 	}
@@ -552,10 +578,12 @@ class CityRegion extends ManagedObject implements Logger {
 		}
 	}
 
+	@preLocked
 	public void removeSkillTrainers(SceneObject trainer) {
 		citySkillTrainers.drop(trainer);
 	}
 
+	@preLocked
 	public void addBazaar(TangibleObject ter) {
 		bazaars.put(ter.getObjectID(), ter);
 	}
@@ -570,8 +598,10 @@ class CityRegion extends ManagedObject implements Logger {
 		return bazaars.size();
 	}
 
+	@preLocked
 	public native void removeAllSkillTrainers();
 
+	@preLocked
 	public native void removeAllTerminals();
 
 	public native void removeAllDecorations();
@@ -616,6 +646,7 @@ class CityRegion extends ManagedObject implements Logger {
 	/**
 	 * Adds a candidate to the ballot.
 	 */
+	@preLocked
 	public void addCandidate(unsigned long candidateoid) {
 		candidates.put(candidateoid, 0);
 	}
@@ -624,6 +655,7 @@ class CityRegion extends ManagedObject implements Logger {
 	 * This method does not check to see if they have previously voted. That logic should be contained in the Manager.
 	 * This is just a data container.
 	 */
+	@preLocked
 	public void setMayoralVote(unsigned long voteroid, unsigned long candidateoid) {
 		unsigned long currentoid = mayoralVotes.get(voteroid);
 
@@ -652,11 +684,13 @@ class CityRegion extends ManagedObject implements Logger {
 	/**
 	 * At the end of a voting term, all votes and candidates are removed from the ballot.
 	 */
+	@preLocked
 	public void resetBallot() {
 		mayoralVotes.removeAll();
 		candidates.removeAll();
 	}
 
+	@preLocked
 	public native void removeCandidate(unsigned long candidateoid);
 
 	@dirty
@@ -672,6 +706,7 @@ class CityRegion extends ManagedObject implements Logger {
 	@dirty
 	public native boolean isVotingLocked();
 
+	@preLocked
 	public native void resetVotingPeriod();
 
 	@read
@@ -679,6 +714,7 @@ class CityRegion extends ManagedObject implements Logger {
 		return loaded;
 	}
 
+	@preLocked
 	public void setLoaded() {
 		loaded = true;
 	}
@@ -719,6 +755,7 @@ class CityRegion extends ManagedObject implements Logger {
 		return taxes.get(tax);
 	}
 
+	@preLocked
 	public void setTax(int tax, int value) {
 		if (tax > taxes.size() - 1 || tax < 0)
 			return;
@@ -760,17 +797,22 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public native void cleanupDuplicateCityStructures(); // TODO: Remove
 
+	@preLocked
 	public native void removeDecorationsOutsideCity(int newRadius);
 
+	@preLocked
 	public native void removeTrainersOutsideCity(int newRadius);
 
+	@preLocked
 	public native void removeTerminalsOutsideCity(int newRadius);
 
+	@preLocked
 	public native void removeStructuresOutsideCity(int newRadius);
 
 	@dirty
 	public native boolean isInsideRadius(SceneObject obj, int radiusToUse);
 
+	@preLocked
 	public void removeAmenitiesOutsideCity(int newRadius) {
 		removeStructuresOutsideCity(newRadius);
 		removeDecorationsOutsideCity(newRadius);
@@ -784,8 +826,11 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void sendStructureInvalidMails();
 	public native void sendStructureValidMails();
 
+	@preLocked
 	public native void cleanupDecorations(int limit);
+	@preLocked
 	public native void cleanupTrainers(int limit);
+	@preLocked
 	public native void cleanupMissionTerminals(int limit);
 
 	@dirty

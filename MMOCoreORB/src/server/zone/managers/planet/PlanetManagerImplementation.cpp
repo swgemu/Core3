@@ -536,15 +536,24 @@ void PlanetManagerImplementation::loadClientRegions() {
 
 		if (cityRegion == NULL) {
 			cityRegion = new CityRegion();
+
+			Locker locker(cityRegion);
+
 			cityRegion->deploy();
 			cityRegion->setRegionName(regionName);
 			cityRegion->setZone(zone);
 			regionMap.addRegion(cityRegion);
 		}
 
+		Locker locker(cityRegion);
+
 		ManagedReference<Region*> region = cityRegion->addRegion(x, y, radius, false);
 
+		locker.release();
+
 		if (region != NULL) {
+			Locker rlocker(region);
+
 			if (cityRegion->getRegionsCount() == 1) {//Register the first region only.
 				region->setPlanetMapCategory(cityCat);
 				zone->registerObjectWithPlanetaryMap(region);
@@ -563,6 +572,7 @@ void PlanetManagerImplementation::loadClientRegions() {
 				scenery = zone->getZoneServer()->createObject(String("object/static/particle/particle_distant_ships.iff").hashCode(), 0);
 			}
 
+			Locker slocker(scenery, region);
 			scenery->initializePosition(x, zone->getHeight(x, y) + 100, y);
 			region->attachScenery(scenery);
 		}

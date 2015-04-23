@@ -57,27 +57,33 @@ class SpawnArea extends ActiveArea {
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 
+	@preLocked
 	public void setTemplate(unsigned int tempCRC) {
 		spawnGroupTemplateCRC = tempCRC;
 	}
 
+	@preLocked
 	public void setTier(int n) {
 		tier = n;
 	}
 
+	@preLocked
 	public void setSpawnConstant(int n) {
 		spawnConstant = n;
 	}
 
+	@preLocked
 	public void setMaxSpawnLimit(int n) {
 		maxSpawnLimit = n;
 	}
 
+	@preLocked
 	public void addNoSpawnArea(SpawnArea area) {
 		noSpawnAreas.add(area);
 	}
 
 	@local
+	@preLocked
 	public void setSpawnGroup(SpawnGroup group) {
 		spawnGroup = group;
 	}
