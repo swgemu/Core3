@@ -427,7 +427,7 @@ public:
 		for (int j = 0; j < defenseMods.size(); j++)
 			targetDefense += creature->getSkillMod(defenseMods.get(j));
 
-		uint32 duration = MAX(5, effect.getStateLength()*(1.f-targetDefense/100.f));
+		uint32 duration = MAX(5, effect.getStateLength()*(1.f-targetDefense/120.f));
 
 		switch (effectType) {
 		case CommandEffect::BLIND:
