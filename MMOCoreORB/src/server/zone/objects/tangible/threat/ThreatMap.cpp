@@ -69,6 +69,10 @@ void ThreatMap::removeObservers() {
 void ThreatMap::addDamage(CreatureObject* target, uint32 damage, String xp) {
 	Locker locker(&lockMutex);
 
+	ManagedReference<TangibleObject*> strongSelf = self.get();
+	if (strongSelf == NULL || strongSelf.get() == target)
+		return;
+
 	int idx = find(target);
 	String xpToAward = "";
 
@@ -393,6 +397,10 @@ CreatureObject* ThreatMap::getHighestThreatCreature() {
 void ThreatMap::addAggro(CreatureObject* target, int value, uint64 duration) {
 	Locker locker(&lockMutex);
 
+	ManagedReference<TangibleObject*> strongSelf = self.get();
+	if (strongSelf == NULL || strongSelf.get() == target)
+		return;
+
 	int idx = find(target);
 
 	if (idx == -1) {
@@ -436,6 +444,10 @@ void ThreatMap::clearAggro(CreatureObject* target) {
 
 void ThreatMap::addHeal(CreatureObject* target, int value) {
 	Locker locker(&lockMutex);
+
+	ManagedReference<TangibleObject*> strongSelf = self.get();
+	if (strongSelf == NULL || strongSelf.get() == target)
+		return;
 
 	int idx = find(target);
 
