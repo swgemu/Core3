@@ -41,7 +41,7 @@ function SelectAttackBase:doAction(pAgent)
 			end
 		else
 			agent:selectSpecialAttack(-1)
-			if (not agent:validateStateAttack() or getRandomNumber(5) == 1) then
+			if (not agent:validateStateAttack() or getRandomNumber(3) == 1) then
 				agent:selectDefaultAttack()
 			end
 		end
