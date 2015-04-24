@@ -24,7 +24,7 @@ protected:
 	int interest;
 	bool active;
 	ManagedReference<DroidHarvestObserver*> observer;
-
+	Vector<uint64> harvestTargets;
 public:
 	enum {
 		INTREST_RANDOM,
@@ -55,6 +55,15 @@ public:
 	virtual void addToStack(BaseDroidModuleComponent* other);
 	virtual void copy(BaseDroidModuleComponent* other);
 	void creatureHarvestCheck(CreatureObject* target);
+	void harvestDestinationReached();
+	bool hasMoreTargets() { return harvestTargets.size() > 0; }
+	void addHarvestTarget(uint64 target,bool first = false) {
+		if (first)
+			harvestTargets.add(0,target);
+		else
+			harvestTargets.add(target);
+	}
+	uint64 getNextHarvestTarget() {if (harvestTargets.size() > 0) {return harvestTargets.remove(0);} else { return -1;}}
 };
 
 
