@@ -19,10 +19,11 @@ class SarlaccArea extends ActiveArea {
 		super();
 	}
 
+	@preLocked
 	public void updateEruptTime() {
 		lastErupt.updateToCurrentTime();
 	}
-	
+
 	@dirty
 	public native void notifyEnter(SceneObject player);
 }

@@ -11,29 +11,30 @@ import server.zone.objects.player.PlayerObject;
 
 class BadgeActiveArea extends ActiveArea {
 	public unsigned int areaBadge;
-	
+
 	public BadgeActiveArea() {
 		areaBadge = 0;
-		
+
 		Logger.setLoggingName("BadgeActiveArea");
 	}
 
 	public void notifyEnter(SceneObject player) {
 		if (!player.isPlayerCreature())
 			return;
-		
+
 		CreatureObject playerCreature = (CreatureObject) player;
 		PlayerObject ghost = playerCreature.getPlayerObject();
-		
+
 		if (!ghost.hasBadge(areaBadge)) {
 			ghost.awardBadge(areaBadge);
 		}
 	}
-	
+
+	@preLocked
 	public void setBadge(unsigned int a) {
 		areaBadge = a;
 	}
-	
+
 	@read
 	public unsigned int getBadge() {
 		return areaBadge;

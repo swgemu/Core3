@@ -124,7 +124,7 @@ Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool
 		return NULL;
 	}
 	
-	Locker locker(obj);
+	Locker clocker(obj, _this.get());
 
 	ManagedReference<Region*> region = cast<Region*>(obj.get());
 	region->setCityRegion(_this.get());
@@ -578,6 +578,8 @@ void CityRegionImplementation::removeAllSkillTrainers() {
 }
 
 void CityRegionImplementation::removeAllDecorations() {
+	Locker slocker(&structureListMutex);
+
 	for (int i = cityDecorations.size() - 1; i >= 0 ; --i) {
 		ManagedReference<SceneObject*> dec = cityDecorations.get(i);
 		if(dec->isStructureObject()) {
@@ -771,6 +773,8 @@ void CityRegionImplementation::transferCivicStructuresToMayor() {
 }
 
 void CityRegionImplementation::cleanupDuplicateCityStructures() {
+	Locker tlock(&structureListMutex);
+
 	Vector<ManagedReference<StructureObject*> > singleStructures;
 
 	for(int i = 0; i < getStructuresCount(); i++){

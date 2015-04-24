@@ -13,31 +13,31 @@ import server.zone.Zone;
 class MissionSpawnActiveArea extends ActiveArea {
 	@weakReference
 	protected DestroyMissionObjective destroyMissionObjective;
-	
+
 	public MissionSpawnActiveArea() {
 		destroyMissionObjective = null;
-		
+
 		Logger.setLoggingName("MissionSpawnActiveArea");
 	}
 
 	@dirty
 	public void notifyEnter(SceneObject player) {
 		//Logger.info("notifyEnter mission spawn", true);
-		
+
 		if (!player.isPlayerCreature()) {
 			return;
 		} else {
 			DestroyMissionObjective objective = destroyMissionObjective; 
-					
+
 			if (objective != null) {
 				//Logger.info("objective not null", true);
-				
+
 				CreatureObject missionOwner = objective.getPlayerOwner();
-				
+
 				if ((CreatureObject) player == missionOwner) {
 					//Logger.info("player == missionOwner", true);
 					destroyMissionObjective.spawnLair();
-					
+
 					//super.removeFromZone();
 				}
 			} else {
@@ -51,7 +51,8 @@ class MissionSpawnActiveArea extends ActiveArea {
 			}
 		}
 	}
-	
+
+	@preLocked
 	public void setMissionObjective(DestroyMissionObjective mission) {
 		destroyMissionObjective = mission;
 	}

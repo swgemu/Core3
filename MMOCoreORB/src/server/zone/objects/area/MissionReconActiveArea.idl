@@ -14,32 +14,32 @@ include server.zone.objects.mission.events.CompleteMissionAfterCertainTimeTask;
 class MissionReconActiveArea extends ActiveArea {
 	@weakReference
 	protected ReconMissionObjective missionObjective;
-	
+
 	protected CompleteMissionAfterCertainTimeTask completeTask;
-	
+
 	public MissionReconActiveArea() {
 		missionObjective = null;
 		completeTask = null;
-		
+
 		Logger.setLoggingName("MissionReconActiveArea");
 	}
 
 	public void notifyEnter(SceneObject player) {
 		Logger.info("notifyEnter mission recon");
-		
+
 		if (!player.isPlayerCreature()) {
 			return;
 		} else {
 			ReconMissionObjective strongReference = missionObjective;
-			
+
 			if (strongReference != null) {
 				CreatureObject missionOwner = strongReference.getPlayerOwner();
-				
+
 				if ((CreatureObject)player == missionOwner) {
 					if (completeTask == null) {
 						completeTask = new CompleteMissionAfterCertainTimeTask(strongReference);
 					}
-					
+
 					if (!completeTask.isScheduled()) {
 						missionOwner.sendSystemMessage("Reconnaisance target reached. Stay at the target to do a full inspection.");
 						completeTask.schedule(30 * 1000);
@@ -59,15 +59,15 @@ class MissionReconActiveArea extends ActiveArea {
 
 	public void notifyExit(SceneObject player) {
 		Logger.info("notifyExit mission recon");
-		
+
 		if (!player.isPlayerCreature()) {
 			return;
 		} else {
 			ReconMissionObjective strongReference = missionObjective;
-			
+
 			if (strongReference != null) {
 				CreatureObject missionOwner = strongReference.getPlayerOwner();
-				
+
 				if ((CreatureObject)player == missionOwner) {
 					if (completeTask != null) {
 						missionOwner.sendSystemMessage("Reconnaissance aborted.");
@@ -85,7 +85,8 @@ class MissionReconActiveArea extends ActiveArea {
 			}
 		}
 	}
-	
+
+	@preLocked
 	public void setMissionObjective(ReconMissionObjective mission) {
 		missionObjective = mission;
 	}

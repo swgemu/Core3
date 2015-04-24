@@ -89,6 +89,8 @@ class CityManager extends ManagedService implements Logger {
 
 	public native boolean isCityInRange(Zone zone, float x, float y);
 
+	@preLocked
+	@arg1preLocked
 	public native CityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
 
 	public native void assessCitizens(CityRegion city);

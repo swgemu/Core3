@@ -49,6 +49,8 @@ void SpawnAreaMap::loadMap(Zone* z) {
 		for (int i = 0; i < size(); ++i) {
 			SpawnArea* area = get(i);
 
+			Locker locker(area);
+
 			for (int j = 0; j < noSpawnAreas.size(); ++j) {
 				SpawnArea* notHere = noSpawnAreas.get(j);
 

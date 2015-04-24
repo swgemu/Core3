@@ -16,60 +16,61 @@ include server.zone.objects.region.RegionCenterPointList;
 import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
 
-class Region extends ActiveArea {	
+class Region extends ActiveArea {
 	@weakReference
 	protected CityRegion cityRegion;
 
 	public Region() {
 		super();
 	}
-	
+
+	@preLocked
 	public void setCityRegion(CityRegion city) {
 		cityRegion = city;
 	}
-	
+
 	@weakReference
 	@dirty
 	public CityRegion getCityRegion() {
 		return cityRegion;
 	}
-	
+
 	public native void notifyLoadFromDatabase();
-	
+
 	public void enqueueEnterEvent(SceneObject obj) {
 		notifyEnter(obj);
 	}
-	
+
 	public void enqueueExitEvent(SceneObject obj) {
 		notifyExit(obj);
 	}
-	
+
 	public void notifyEnter(SceneObject object) {
 		super.notifyEnter(object);
-		
+
 		CityRegion strongReference = cityRegion;
-		
+
 		if (strongReference == null)
 			return;
-		
+
 		synchronized (strongReference) {
 			strongReference.notifyEnter(object);
 		}
 	}
-	
+
 	public void notifyExit(SceneObject object) {
 		super.notifyExit(object);
-		
+
 		CityRegion strongReference = cityRegion;
-		
+
 		if (strongReference == null)
 			return;
-		
+
 		synchronized (strongReference) {
 			strongReference.notifyExit(object);
 		}
 	}
-	
+
 	@dirty
 	public boolean isRegion() {
 		return true;
