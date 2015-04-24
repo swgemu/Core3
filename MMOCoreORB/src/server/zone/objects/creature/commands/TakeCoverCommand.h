@@ -50,13 +50,10 @@ public:
 			}
 		}
 
-		if (!creature->checkDizzyDelay() && creature->isDizzied()) {
+		if (creature->isDizzied() && (!creature->checkDizzyDelay() || System::random(100) < 85)) {
 			creature->queueDizzyFallEvent();
 		} else {
 			creature->setCoverState();
-
-			if (creature->isDizzied())
-				creature->queueDizzyFallEvent();
 
 			creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, false);
 			creature->sendStateCombatSpam("cbt_spam", "cover_success", 0);

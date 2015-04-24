@@ -34,13 +34,10 @@ public:
 			}
 		}*/
 
-		if (!creature->checkDizzyDelay() && creature->isDizzied()) {
+		if (creature->isDizzied() && (!creature->checkDizzyDelay() || System::random(100) < 85)) {
 			creature->queueDizzyFallEvent();
 		} else {
 			creature->setPosture(CreaturePosture::CROUCHED, true);
-
-			if (creature->isDizzied())
-				creature->queueDizzyFallEvent();
 		}
 
 		return SUCCESS;

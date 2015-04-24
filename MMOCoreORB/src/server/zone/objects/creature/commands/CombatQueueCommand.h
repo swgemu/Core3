@@ -443,9 +443,8 @@ public:
 			creature->setStunnedState(duration);
 			break;
 		case CommandEffect::KNOCKDOWN:
-			if (!creature->checkPostureChangeRecovery()) {
-				if (creature->getPosture() != CreaturePosture::UPRIGHT)
-					creature->setPosture(CreaturePosture::UPRIGHT);
+			if (!creature->checkPostureChangeRecovery() && creature->getPosture() != CreaturePosture::UPRIGHT) {
+				creature->setPosture(CreaturePosture::UPRIGHT);
 				break;
 			}
 
@@ -465,9 +464,8 @@ public:
 			creature->sendStateCombatSpam("cbt_spam", "posture_knocked_down", 0, 0, false);
 			break;
 		case CommandEffect::POSTUREUP:
-			if (!creature->checkPostureChangeRecovery()) {
-				if (creature->getPosture() != CreaturePosture::UPRIGHT)
-					creature->setPosture(CreaturePosture::UPRIGHT);
+			if (!creature->checkPostureChangeRecovery() && creature->getPosture() != CreaturePosture::UPRIGHT) {
+				creature->setPosture(CreaturePosture::UPRIGHT);
 				break;
 			}
 
@@ -492,9 +490,8 @@ public:
 			creature->removeBuff(String("retreat").hashCode());
 			break;
 		case CommandEffect::POSTUREDOWN:
-			if (!creature->checkPostureChangeRecovery()) {
-				if (creature->getPosture() != CreaturePosture::UPRIGHT)
-					creature->setPosture(CreaturePosture::UPRIGHT);
+			if (!creature->checkPostureChangeRecovery() && creature->getPosture() != CreaturePosture::UPRIGHT) {
+				creature->setPosture(CreaturePosture::UPRIGHT);
 				break;
 			}
 

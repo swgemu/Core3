@@ -24,7 +24,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (!creature->checkDizzyDelay() && creature->isDizzied()) {
+		if (creature->isDizzied() && (!creature->checkDizzyDelay() || System::random(100) < 85)) {
 			creature->queueDizzyFallEvent();
 		} else {
 			//Check for and deduct HAM cost.
@@ -35,9 +35,6 @@ public:
 			creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
 
 			creature->setPosture(CreaturePosture::PRONE, false);
-
-			if (creature->isDizzied())
-				creature->queueDizzyFallEvent();
 
 			Reference<CreatureObject*> defender = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 			if (defender == NULL)

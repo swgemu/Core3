@@ -34,13 +34,10 @@ public:
 					return GENERALERROR;
 
 				if (!ghost->hasAbility("admin")) {
-					if (!creature->checkDizzyDelay() && creature->isDizzied()) {
+					if (creature->isDizzied() && (!creature->checkDizzyDelay() || System::random(100) < 85)) {
 						creature->queueDizzyFallEvent();
 					} else {
 						creature->setPosture(CreaturePosture::PRONE);
-
-						if (creature->isDizzied())
-							creature->queueDizzyFallEvent();
 					}
 
 					return SUCCESS;
@@ -71,13 +68,10 @@ public:
 				info("blue frog created", true);
 			}
 		} else {// TODO STOP DELETE HERE
-			if (!creature->checkDizzyDelay() && creature->isDizzied()) {
+			if (creature->isDizzied() && (!creature->checkDizzyDelay() || System::random(100) < 85)) {
 				creature->queueDizzyFallEvent();
 			} else {
 				creature->setPosture(CreaturePosture::PRONE);
-
-				if (creature->isDizzied())
-					creature->queueDizzyFallEvent();
 			}
 		}// TODO DELETE THIS LINE
 
