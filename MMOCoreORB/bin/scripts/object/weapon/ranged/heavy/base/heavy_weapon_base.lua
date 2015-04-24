@@ -42,6 +42,7 @@
 
 
 object_weapon_ranged_heavy_base_heavy_weapon_base = object_weapon_ranged_heavy_base_shared_heavy_weapon_base:new {
+	weaponType = HEAVYWEAPON,
 
 }
 

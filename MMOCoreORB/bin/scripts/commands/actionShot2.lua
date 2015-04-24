@@ -71,6 +71,8 @@ ActionShot2Command = {
 		60
 	  )
 	},
+	
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 }

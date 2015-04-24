@@ -42,6 +42,7 @@
 
 
 object_weapon_mine_base_mine_base = object_weapon_mine_base_shared_mine_base:new {
+	weaponType = MINEWEAPON,
 
 }
 

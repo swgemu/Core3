@@ -57,6 +57,8 @@ PointBlankArea1Command = {
 	animationCRC = hashCode("fire_area_no_trails_light"),
 
 	combatSpam = "pointblankblast",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = 12
 }

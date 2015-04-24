@@ -24,13 +24,7 @@ public:
 			return INVALIDLOCOMOTION;
 			
 		if (!creature->isPlayerCreature())
-			return GENERALERROR;			
-
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-		if (!weapon->isRifleWeapon()) {
-			return INVALIDWEAPON;
-		}
+			return GENERALERROR;
 		
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 		
@@ -48,6 +42,7 @@ public:
 			return GENERALERROR;
 		}
 
+		WeaponObject* weapon = creature->getWeapon();
 
 		int maxRange = weapon->getMaxRange();
 

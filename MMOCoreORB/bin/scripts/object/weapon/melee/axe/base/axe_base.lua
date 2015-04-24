@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_axe_base_axe_base = object_weapon_melee_axe_base_shared_axe_base:new {
+	weaponType = TWOHANDMELEEWEAPON,
 
 }
 

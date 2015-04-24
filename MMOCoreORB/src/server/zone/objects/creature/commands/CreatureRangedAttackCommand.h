@@ -25,9 +25,10 @@ public:
 
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 
-			if (!weapon->isRangedWeapon()) {
-				return INVALIDWEAPON;
-			}
+		if (!weapon->isRangedWeapon()) {
+			return INVALIDWEAPON;
+		}
+
 		return doCombatAction(creature, target);
 	}
 };

@@ -69,6 +69,8 @@ PolearmStun2Command = {
 	animationCRC = hashCode("lower_posture_2hmelee_5"),
 
 	combatSpam = "breathstealer",
+	
+	weaponType = POLEARMWEAPON,
 
 	range = -1
 }

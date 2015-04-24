@@ -54,6 +54,8 @@ OverChargeShot1Command = {
 	animationCRC = hashCode("fire_1_special_single_medium"),
 
 	combatSpam = "overchargeshot",
+	
+	weaponType = RANGEDWEAPON,
 
 	range = -1
 }

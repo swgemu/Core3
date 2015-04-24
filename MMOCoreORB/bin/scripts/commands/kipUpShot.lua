@@ -54,6 +54,8 @@ KipUpShotCommand = {
 	animationCRC = hashCode("fire_acrobatic"),
 
 	combatSpam = "kipup",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 }

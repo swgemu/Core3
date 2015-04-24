@@ -71,6 +71,8 @@ FlurryShot2Command = {
 	animationCRC = hashCode("fire_area_medium"),
 
 	combatSpam = "flurry",
+	
+	weaponType = RIFLEWEAPON,
 
 	range = -1
 }

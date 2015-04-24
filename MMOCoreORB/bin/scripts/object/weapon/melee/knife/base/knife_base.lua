@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_knife_base_knife_base = object_weapon_melee_knife_base_shared_knife_base:new {
+	weaponType = ONEHANDMELEEWEAPON,
 
 }
 

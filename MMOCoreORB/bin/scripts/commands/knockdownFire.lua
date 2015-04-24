@@ -74,6 +74,8 @@ KnockdownFireCommand = {
 	animationCRC = hashCode("fire_1_special_single_medium"),
 
 	combatSpam = "knockdownfire",
+	
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 }

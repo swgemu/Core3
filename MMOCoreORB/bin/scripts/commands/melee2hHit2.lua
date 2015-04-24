@@ -51,6 +51,8 @@ Melee2hHit2Command = {
         accuracyBonus = 10,
 
 	animationCRC = hashCode("combo_2a_medium"),
+	
+	weaponType = TWOHANDMELEEWEAPON,
 
 	combatSpam = "violentstrike",
 

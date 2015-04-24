@@ -57,6 +57,8 @@ UnarmedSpinAttack1Command = {
 	animationCRC = hashCode("combo_3c_light"),
 
 	combatSpam = "leapingveermok",
+	
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }

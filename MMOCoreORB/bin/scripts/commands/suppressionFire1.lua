@@ -66,6 +66,8 @@ SuppressionFire1Command = {
 	animationCRC = hashCode("fire_area_light"),
 
 	combatSpam = "suppressionfire",
+	
+	weaponType = RANGEDWEAPON,
 
 	range = -1
 }

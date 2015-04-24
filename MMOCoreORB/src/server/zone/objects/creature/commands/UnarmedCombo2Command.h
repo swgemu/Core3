@@ -23,12 +23,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-		if (!weapon->isUnarmedWeapon()) {
-			return INVALIDWEAPON;
-		}
-
 		float healthmod = System::random(70) + 10;
 		float actionmod = System::random(70) + 10;
 		float mindmod = System::random(70) + 10;

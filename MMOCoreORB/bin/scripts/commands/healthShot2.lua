@@ -80,7 +80,9 @@ HealthShot2Command = {
 		60, 
 		60
 	  )
-	},	
+	},
+	
+	weaponType = PISTOLWEAPON,	
 
 	range = -1
 }

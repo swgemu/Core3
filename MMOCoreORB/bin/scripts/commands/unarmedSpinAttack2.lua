@@ -56,6 +56,8 @@ UnarmedSpinAttack2Command = {
 	animationCRC = hashCode("combo_3d_medium"),
 
 	combatSpam = "unarmed_knockdown",
+	
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }

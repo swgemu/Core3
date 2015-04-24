@@ -87,6 +87,8 @@ Saber1hFlurryCommand = {
 	combatSpam = "saber1hflurry",
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = ONEHANDJEDIWEAPON,
 
 	range = -1
 }

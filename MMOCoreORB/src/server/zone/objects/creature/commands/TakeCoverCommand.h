@@ -25,12 +25,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-		if (!weapon->isRifleWeapon()) {
-			return INVALIDWEAPON;
-		}
-
 		int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 50);
 		if (creature->getHAM(CreatureAttribute::ACTION)  < actionCost) {
 

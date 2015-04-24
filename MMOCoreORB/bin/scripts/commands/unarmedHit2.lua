@@ -54,6 +54,8 @@ UnarmedHit2Command = {
 	animationCRC = hashCode("combo_3a_light"),
 
 	combatSpam = "goraxsmash",
+	
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }

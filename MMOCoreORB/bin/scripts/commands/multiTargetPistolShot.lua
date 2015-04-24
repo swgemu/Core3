@@ -60,6 +60,8 @@ MultiTargetPistolShotCommand = {
 	animationCRC = hashCode("fire_5_special_single_light"),
 
 	combatSpam = "pistolmultishot",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 }

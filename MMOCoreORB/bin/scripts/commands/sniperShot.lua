@@ -56,6 +56,8 @@ SniperShotCommand = {
 	animationCRC = hashCode("fire_1_special_single_medium_face"),
 
 	combatSpam = "snipershot",
+	
+	weaponType = RIFLEWEAPON,
 
 	range = -1
 }

@@ -56,6 +56,8 @@ UnarmedCombo2Command = {
 	animationCRC = hashCode("combo_4a_light"),
 
 	combatSpam = "deathweave",
+	
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }

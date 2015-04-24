@@ -65,6 +65,8 @@ Saber1hHit2Command = {
 	},
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = ONEHANDJEDIWEAPON,
 
 	range = -1
 }

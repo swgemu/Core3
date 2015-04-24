@@ -29,12 +29,6 @@ public:
 			return NOJEDIARMOR;
 		}
 
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-		if (!weapon->isJediOneHandedWeapon()) {
-			return INVALIDWEAPON;
-		}
-
 		return doCombatAction(creature, target);
 	}
 

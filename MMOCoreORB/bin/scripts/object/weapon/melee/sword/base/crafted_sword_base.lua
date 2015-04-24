@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_sword_base_crafted_sword_base = object_weapon_melee_sword_base_shared_crafted_sword_base:new {
+	weaponType = ONEHANDMELEEWEAPON,
 
 }
 

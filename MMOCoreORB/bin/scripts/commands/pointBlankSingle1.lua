@@ -54,6 +54,8 @@ PointBlankSingle1Command = {
 	animationCRC = hashCode("fire_3_single_medium"),
 
 	combatSpam = "pointblankshot",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = 12
 }

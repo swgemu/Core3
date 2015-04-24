@@ -69,6 +69,8 @@ Melee1hSpinAttack2Command = {
 		10 
 	  )
 	},
+	
+	weaponType = ONEHANDMELEEWEAPON,
 
 	range = -1
 }

@@ -52,6 +52,7 @@ Melee1hBodyHit2Command = {
         accuracyBonus = 25,
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
+	weaponType = ONEHANDMELEEWEAPON,
 
 	animationCRC = hashCode("combo_4b_medium"),
 

@@ -52,6 +52,7 @@ Melee1hBodyHit3Command = {
         accuracyBonus = 25,
 
 	poolsToDamage = HEALTH_ATTRIBUTE,
+	weaponType = ONEHANDMELEEWEAPON,
 
 	animationCRC = hashCode("combo_3a_light"),
 

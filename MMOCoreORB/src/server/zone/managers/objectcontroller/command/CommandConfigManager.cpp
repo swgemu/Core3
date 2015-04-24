@@ -419,21 +419,26 @@ void CommandConfigManager::registerGlobals() {
 	setGlobalInt("MIND", CreatureAttribute::MIND);
 
 	// weapons
-	// TODO: make valid weapons into a mask and check all combat commands
-	setGlobalInt("MELEEWEAPON_WEAPON", CombatManager::MELEEWEAPON);
-	setGlobalInt("RANGEDWEAPON_WEAPON", CombatManager::RANGEDWEAPON);
-	setGlobalInt("THROWNWEAPON_WEAPON", CombatManager::THROWNWEAPON);
-	setGlobalInt("HEAVYWEAPON_WEAPON", CombatManager::HEAVYWEAPON);
-	setGlobalInt("MINE_WEAPON", CombatManager::MINE);
-	setGlobalInt("SPECIALHEAVYWEAPON_WEAPON", CombatManager::SPECIALHEAVYWEAPON);
-	setGlobalInt("ONEHANDMELEEWEAPON_WEAPON", CombatManager::ONEHANDMELEEWEAPON);
-	setGlobalInt("TWOHANDMELEEWEAPON_WEAPON", CombatManager::TWOHANDMELEEWEAPON);
-	setGlobalInt("POLEARM_WEAPON", CombatManager::POLEARM);
-	setGlobalInt("PISTOL_WEAPON", CombatManager::PISTOL);
-	setGlobalInt("CARBINE_WEAPON", CombatManager::CARBINE);
-	setGlobalInt("RIFLE_WEAPON", CombatManager::RIFLE);
-	setGlobalInt("GRENADE_WEAPON", CombatManager::GRENADE);
-	setGlobalInt("LIGHTNINGRIFLE_WEAPON", CombatManager::LIGHTNINGRIFLE);
+	setGlobalInt("ANYWEAPON", CombatManager::ANYWEAPON);
+	setGlobalInt("THROWNWEAPON", CombatManager::THROWNWEAPON);
+	setGlobalInt("HEAVYWEAPON", CombatManager::HEAVYWEAPON);
+	setGlobalInt("MINEWEAPON", CombatManager::MINEWEAPON);
+	setGlobalInt("SPECIALHEAVYWEAPON", CombatManager::SPECIALHEAVYWEAPON);
+	setGlobalInt("UNARMEDWEAPON", CombatManager::UNARMEDWEAPON);
+	setGlobalInt("ONEHANDMELEEWEAPON", CombatManager::ONEHANDMELEEWEAPON);
+	setGlobalInt("TWOHANDMELEEWEAPON", CombatManager::TWOHANDMELEEWEAPON);
+	setGlobalInt("POLEARMWEAPON", CombatManager::POLEARMWEAPON);
+	setGlobalInt("PISTOLWEAPON", CombatManager::PISTOLWEAPON);
+	setGlobalInt("CARBINEWEAPON", CombatManager::CARBINEWEAPON);
+	setGlobalInt("RIFLEWEAPON", CombatManager::RIFLEWEAPON);
+	setGlobalInt("GRENADEWEAPON", CombatManager::GRENADEWEAPON);
+	setGlobalInt("LIGHTNINGRIFLEWEAPON", CombatManager::LIGHTNINGRIFLEWEAPON);
+	setGlobalInt("ONEHANDJEDIWEAPON", CombatManager::ONEHANDJEDIWEAPON);
+	setGlobalInt("TWOHANDJEDIWEAPON", CombatManager::TWOHANDJEDIWEAPON);
+	setGlobalInt("POLEARMJEDIWEAPON", CombatManager::POLEARMJEDIWEAPON);
+	setGlobalInt("MELEEWEAPON", CombatManager::MELEEWEAPON);
+	setGlobalInt("RANGEDWEAPON", CombatManager::RANGEDWEAPON);
+	setGlobalInt("JEDIWEAPON", CombatManager::JEDIWEAPON);
 
 	// effects
 	setGlobalInt("INVALID_EFFECT", CommandEffect::INVALID);
@@ -546,6 +551,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setSpeed(Lua::getFloatParameter(L));
 		else if (varName == "poolsToDamage")
 			combatCommand->setPoolsToDamage(Lua::getIntParameter(L));
+		else if (varName == "weaponType")
+			combatCommand->setWeaponType(Lua::getIntParameter(L));
 		else if (varName == "healthCostMultiplier")
 			combatCommand->setHealthCostMultiplier(Lua::getFloatParameter(L));
 		else if (varName == "actionCostMultiplier")

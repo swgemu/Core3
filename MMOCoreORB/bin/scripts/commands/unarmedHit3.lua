@@ -67,7 +67,9 @@ UnarmedHit3Command = {
 	  )
 	},
 	
-	combatSpam = "spittingrawl",	
+	combatSpam = "spittingrawl",
+	
+	weaponType = UNARMEDWEAPON,	
 
 	range = -1
 }

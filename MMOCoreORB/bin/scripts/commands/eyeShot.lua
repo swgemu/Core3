@@ -67,6 +67,8 @@ EyeShotCommand = {
 	animationCRC = hashCode("fire_3_special_single_light_face"),
 
 	combatSpam = "eyeshot",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 }

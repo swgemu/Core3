@@ -61,6 +61,8 @@ Melee2hHit3Command = {
 		30 
 	  )
 	},
+	
+	weaponType = TWOHANDMELEEWEAPON,
 
 	animationCRC = hashCode("combo_4a_medium"),
 

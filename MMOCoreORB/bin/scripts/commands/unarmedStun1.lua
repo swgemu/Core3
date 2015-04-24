@@ -67,6 +67,8 @@ UnarmedStun1Command = {
 		60 
 	  )
 	},
+	
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }

@@ -56,6 +56,8 @@ BodyShot2Command = {
 	animationCRC = hashCode("fire_1_special_single_light"),
 
 	combatSpam = "bodyshot",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 }

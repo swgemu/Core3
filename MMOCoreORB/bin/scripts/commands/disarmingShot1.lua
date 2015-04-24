@@ -54,6 +54,8 @@ DisarmingShot1Command = {
 	animationCRC = hashCode("fire_3_single_light_face"),
 
 	combatSpam = "disarmshot",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 }

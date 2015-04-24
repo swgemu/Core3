@@ -59,6 +59,8 @@ PolearmArea1Command = {
 	combatSpam = "whirlwind",
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = POLEARMWEAPON,
 
 	range = -1
 }

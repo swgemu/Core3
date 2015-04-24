@@ -56,6 +56,8 @@ FireLightningCone1Command = {
 
 	coneAngle = 60,
 	coneAction = true,
+	
+	weaponType = SPECIALHEAVYWEAPON,
 
 	range = 16
 }

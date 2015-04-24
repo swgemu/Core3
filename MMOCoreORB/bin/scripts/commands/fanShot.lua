@@ -59,6 +59,8 @@ FanShotCommand = {
 	animationCRC = hashCode("fire_area_light"),
 
 	combatSpam = "fanshot",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 }

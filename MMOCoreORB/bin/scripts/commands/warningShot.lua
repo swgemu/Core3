@@ -56,6 +56,8 @@ WarningShotCommand = {
 	animationCRC = hashCode("fire_area_light"),
 
 	combatSpam = "warningshot",
+	
+	weaponType = RANGEDWEAPON,
 
 	range = -1
 

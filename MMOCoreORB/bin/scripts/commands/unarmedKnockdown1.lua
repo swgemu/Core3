@@ -66,6 +66,8 @@ UnarmedKnockdown1Command = {
 	animationCRC = hashCode("attack_special_shoulder_bash_medium"),
 
 	combatSpam = "sleepingkrayt",
+	
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }

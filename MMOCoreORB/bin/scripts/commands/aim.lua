@@ -48,6 +48,7 @@ AimCommand = {
 	healthCostMultiplier = 3,
 
 	combatSpam = "aim",
+	weaponType = RANGEDWEAPON,
 	range = -1
 }
 

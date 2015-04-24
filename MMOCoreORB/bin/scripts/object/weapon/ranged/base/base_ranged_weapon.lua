@@ -42,6 +42,7 @@
 
 
 object_weapon_ranged_base_base_ranged_weapon = object_weapon_ranged_base_shared_base_ranged_weapon:new {
+	weaponType = RANGEDWEAPON,
 
 }
 

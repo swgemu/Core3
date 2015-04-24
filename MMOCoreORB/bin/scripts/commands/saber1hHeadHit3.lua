@@ -65,6 +65,8 @@ Saber1hHeadHit3Command = {
 		60 
 	  )
 	},
+	
+	weaponType = ONEHANDJEDIWEAPON,
 
 	range = -1
 }

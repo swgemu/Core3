@@ -68,6 +68,8 @@ SuppressionFire2Command = {
 	animationCRC = hashCode("fire_area_medium"),
 
 	combatSpam = "sup_fire",
+	
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 }

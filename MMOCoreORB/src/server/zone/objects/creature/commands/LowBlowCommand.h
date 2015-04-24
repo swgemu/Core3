@@ -23,12 +23,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-		if (!weapon->isPistolWeapon()) {
-			return INVALIDWEAPON;
-		}
-
 		return doCombatAction(creature, target);
 	}
 

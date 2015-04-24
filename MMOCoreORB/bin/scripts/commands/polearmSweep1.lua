@@ -67,6 +67,8 @@ PolearmSweep1Command = {
 	animationCRC = hashCode("attack_low_right_medium_0"),
 
 	combatSpam = "backcracker",
+	
+	weaponType = POLEARMWEAPON,
 
 	range = -1
 }

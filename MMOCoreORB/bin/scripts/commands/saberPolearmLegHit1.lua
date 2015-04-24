@@ -54,6 +54,8 @@ SaberPolearmLegHit1Command = {
 	combatSpam = "saberpolearmleghit1",
 	
 	poolsToDamage = ACTION_ATTRIBUTE,
+	
+	weaponType = POLEARMJEDIWEAPON,
 
 	range = -1
 }

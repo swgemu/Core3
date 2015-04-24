@@ -58,6 +58,8 @@ PolearmSpinAttack1Command = {
 	animationCRC = hashCode("attack_high_left_light_2"),
 
 	combatSpam = "limbsmasher",
+	
+	weaponType = POLEARMWEAPON,
 
 	range = -1
 

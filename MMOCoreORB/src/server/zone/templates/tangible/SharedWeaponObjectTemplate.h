@@ -56,6 +56,8 @@ protected:
 
 	String xpType;
 
+	uint32 weaponType;
+
 public:
 	SharedWeaponObjectTemplate() {
 		damageType = 0;
@@ -84,6 +86,8 @@ public:
 		area = 0;
 
 		attackSpeed = 0;
+
+		weaponType = 0xFFFFFFFF;
 	}
 
 	~SharedWeaponObjectTemplate() {
@@ -334,6 +338,13 @@ public:
 		return animationType;
 	}
 
+	uint32 getWeaponType() const {
+		return weaponType;
+	}
+
+	void setWeaponType(uint32 weaponType) {
+		this->weaponType = weaponType;
+	}
 };
 
 #endif /* SHAREDWEAPONOBJECTTEMPLATE_H_ */

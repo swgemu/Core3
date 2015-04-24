@@ -65,6 +65,8 @@ UnderHandShotCommand = {
 	animationCRC = hashCode("fire_5_single_medium_face"),
 
 	combatSpam = "underhandshot",
+	
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 }

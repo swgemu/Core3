@@ -54,6 +54,8 @@ RollShotCommand = {
 	animationCRC = hashCode("fire_acrobatic"),
 
 	combatSpam = "rollshot",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 

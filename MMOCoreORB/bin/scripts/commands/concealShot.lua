@@ -56,6 +56,8 @@ ConcealShotCommand = {
 	animationCRC = hashCode("fire_1_special_single_medium"),
 
 	combatSpam = "concealedshot",
+	
+	weaponType = RIFLEWEAPON,
 
 	range = -1
 }

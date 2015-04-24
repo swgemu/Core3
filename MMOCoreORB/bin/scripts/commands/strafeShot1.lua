@@ -68,6 +68,8 @@ StrafeShot1Command = {
 	animationCRC = hashCode("fire_5_special_single_medium"),
 
 	combatSpam = "strafeshot",
+	
+	weaponType = RIFLEWEAPON,
 
 	range = -1
 }

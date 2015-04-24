@@ -80,6 +80,8 @@ PolearmArea2Command = {
 	combatSpam = "tornado",
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = POLEARMWEAPON,
 
 	range = -1
 }

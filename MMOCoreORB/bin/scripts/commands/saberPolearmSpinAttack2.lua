@@ -67,6 +67,8 @@ SaberPolearmSpinAttack2Command = {
 	combatSpam = "saberpolearmspinattack2",
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = POLEARMJEDIWEAPON,
 
 	range = -1
 }

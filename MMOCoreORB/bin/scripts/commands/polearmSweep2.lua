@@ -70,6 +70,8 @@ PolearmSweep2Command = {
 	combatSpam = "backbreaker",
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = POLEARMWEAPON,
 
 	range = -1
 }

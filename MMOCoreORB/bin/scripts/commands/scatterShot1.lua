@@ -56,6 +56,8 @@ ScatterShot1Command = {
 	combatSpam = "scattershot",
 
 	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE + MIND_ATTRIBUTE,
+	
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 }

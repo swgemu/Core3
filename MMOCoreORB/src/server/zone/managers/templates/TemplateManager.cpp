@@ -638,6 +638,27 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("HEAVYROCKETLAUNCHERATTACK", WeaponObject::HEAVYROCKETLAUNCHERATTACK);
 	luaTemplatesInstance->setGlobalInt("HEAVYLAUNCHERATTACK", WeaponObject::HEAVYLAUNCHERATTACK);
 
+	luaTemplatesInstance->setGlobalInt("ANYWEAPON", CombatManager::ANYWEAPON);
+	luaTemplatesInstance->setGlobalInt("THROWNWEAPON", CombatManager::THROWNWEAPON);
+	luaTemplatesInstance->setGlobalInt("HEAVYWEAPON", CombatManager::HEAVYWEAPON);
+	luaTemplatesInstance->setGlobalInt("MINEWEAPON", CombatManager::MINEWEAPON);
+	luaTemplatesInstance->setGlobalInt("SPECIALHEAVYWEAPON", CombatManager::SPECIALHEAVYWEAPON);
+	luaTemplatesInstance->setGlobalInt("UNARMEDWEAPON", CombatManager::UNARMEDWEAPON);
+	luaTemplatesInstance->setGlobalInt("ONEHANDMELEEWEAPON", CombatManager::ONEHANDMELEEWEAPON);
+	luaTemplatesInstance->setGlobalInt("TWOHANDMELEEWEAPON", CombatManager::TWOHANDMELEEWEAPON);
+	luaTemplatesInstance->setGlobalInt("POLEARMWEAPON", CombatManager::POLEARMWEAPON);
+	luaTemplatesInstance->setGlobalInt("PISTOLWEAPON", CombatManager::PISTOLWEAPON);
+	luaTemplatesInstance->setGlobalInt("CARBINEWEAPON", CombatManager::CARBINEWEAPON);
+	luaTemplatesInstance->setGlobalInt("RIFLEWEAPON", CombatManager::RIFLEWEAPON);
+	luaTemplatesInstance->setGlobalInt("GRENADEWEAPON", CombatManager::GRENADEWEAPON);
+	luaTemplatesInstance->setGlobalInt("LIGHTNINGRIFLEWEAPON", CombatManager::LIGHTNINGRIFLEWEAPON);
+	luaTemplatesInstance->setGlobalInt("ONEHANDJEDIWEAPON", CombatManager::ONEHANDJEDIWEAPON);
+	luaTemplatesInstance->setGlobalInt("TWOHANDJEDIWEAPON", CombatManager::TWOHANDJEDIWEAPON);
+	luaTemplatesInstance->setGlobalInt("POLEARMJEDIWEAPON", CombatManager::POLEARMJEDIWEAPON);
+	luaTemplatesInstance->setGlobalInt("MELEEWEAPON", CombatManager::MELEEWEAPON);
+	luaTemplatesInstance->setGlobalInt("RANGEDWEAPON", CombatManager::RANGEDWEAPON);
+	luaTemplatesInstance->setGlobalInt("JEDIWEAPON", CombatManager::JEDIWEAPON);
+
 	luaTemplatesInstance->setGlobalInt("OBJECTDESTRUCTION", ObserverEventType::OBJECTDESTRUCTION);
 	luaTemplatesInstance->setGlobalInt("DAMAGERECEIVED", ObserverEventType::DAMAGERECEIVED);
 	luaTemplatesInstance->setGlobalInt("PLAYERKILLED", ObserverEventType::PLAYERKILLED);

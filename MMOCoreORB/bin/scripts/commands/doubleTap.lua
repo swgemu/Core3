@@ -56,6 +56,8 @@ DoubleTapCommand = {
 	animationCRC = hashCode("fire_7_single_light_face"),
 
 	combatSpam = "doubletap",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 }

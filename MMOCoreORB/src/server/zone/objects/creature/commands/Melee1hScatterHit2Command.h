@@ -24,12 +24,6 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
-
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
-
-		if (!weapon->isOneHandMeleeWeapon()) {
-			return INVALIDWEAPON;
-		}
 		
 		float mods[3] = {0.f, 0.f, 0.f};
 		

@@ -56,6 +56,8 @@ StoppingShotCommand = {
 	animationCRC = hashCode("fire_1_special_single_light"),
 
 	combatSpam = "stoppingshot",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 }

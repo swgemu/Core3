@@ -54,6 +54,8 @@ ThreatenShotCommand = {
 	animationCRC = hashCode("fire_1_special_single_light"),
 
 	combatSpam = "threatenshot",
+	
+	weaponType = RANGEDWEAPON,
 
 	range = -1
 }

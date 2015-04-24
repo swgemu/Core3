@@ -42,6 +42,7 @@
 
 
 object_weapon_ranged_pistol_base_pistol_base = object_weapon_ranged_pistol_base_shared_pistol_base:new {
+	weaponType = PISTOLWEAPON,
 
 }
 

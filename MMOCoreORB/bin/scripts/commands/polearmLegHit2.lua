@@ -56,6 +56,8 @@ PolearmLegHit2Command = {
 	combatSpam = "legsmasher",
 
 	poolsToDamage = ACTION_ATTRIBUTE,
+	
+	weaponType = POLEARMWEAPON,
 
 	range = -1
 }
