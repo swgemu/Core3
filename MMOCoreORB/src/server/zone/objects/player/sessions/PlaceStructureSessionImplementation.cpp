@@ -123,6 +123,8 @@ int PlaceStructureSessionImplementation::completeSession() {
 		return cancelSession();
 	}
 
+	Locker clocker(structureObject, creatureObject);
+
 	structureObject->setDeedObjectID(deedObject->getObjectID());
 
 	deedObject->notifyStructurePlaced(creatureObject, structureObject);
