@@ -25,7 +25,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if (creature->isDizzied() && (!creature->checkDizzyDelay() || System::random(100) < 85)) {
+		if (creature->isDizzied() && System::random(100) < 85) {
 			creature->queueDizzyFallEvent();
 		} else {
 			//Check for and deduct HAM cost.

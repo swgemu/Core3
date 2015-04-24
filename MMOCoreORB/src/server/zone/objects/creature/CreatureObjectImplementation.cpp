@@ -2338,9 +2338,6 @@ void CreatureObjectImplementation::queueDizzyFallEvent() {
 	if (hasDizzyEvent())
 		return;
 
-	if (checkDizzyDelay())
-		updateDizzyDelay();
-
 	dizzyFallDownEvent = new DizzyFallDownEvent(_this.get());
 	dizzyFallDownEvent->schedule(200);
 }

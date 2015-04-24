@@ -1302,15 +1302,6 @@ class CreatureObject extends TangibleObject {
 		return cooldownTimerMap.isPast("postureChangeRecovery");
 	}
 
-	public void updateDizzyDelay() {
-		cooldownTimerMap.updateToCurrentAndAddMili("dizzyDelay", 2000);
-	}
-
-	@dirty
-	public boolean checkDizzyDelay() {
-		return cooldownTimerMap.isPast("dizzyDelay");
-	}
-
 	// misc methods
 	@preLocked
 	public abstract native void queueDizzyFallEvent();

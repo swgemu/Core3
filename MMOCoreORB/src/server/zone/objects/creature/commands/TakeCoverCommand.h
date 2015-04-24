@@ -50,7 +50,7 @@ public:
 			}
 		}
 
-		if (creature->isDizzied() && (!creature->checkDizzyDelay() || System::random(100) < 85)) {
+		if (creature->isDizzied() && System::random(100) < 85) {
 			creature->queueDizzyFallEvent();
 		} else {
 			creature->setCoverState();
