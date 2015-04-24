@@ -57,6 +57,8 @@ UnarmedLunge1Command = {
 	combatSpam = "ridingbantha",
 
 	range = 20,
+	
+	weaponType = UNARMEDWEAPON,
 
 	stateEffects = {
 	  StateEffect( 

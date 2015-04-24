@@ -56,6 +56,8 @@ UnarmedLegHit1Command = {
 	animationCRC = hashCode("attack_special_foot_stomp_medium"),
 
 	combatSpam = "grondastomp",
+	
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }

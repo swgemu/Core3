@@ -57,6 +57,8 @@ UnarmedLunge2Command = {
 	combatSpam = "lungeshiak",
 
 	range = 20,
+	
+	weaponType = UNARMEDWEAPON,
 
 	stateEffects = {
 	  StateEffect( 

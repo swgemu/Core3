@@ -53,6 +53,8 @@ FireLightningSingle2Command = {
 	animationCRC = hashCode("fire_1_special_single_medium_face"),
 
 	combatSpam = "firelightningsingle2",
+	
+	weaponType = SPECIALHEAVYWEAPON,
 
 	range = 16
 }

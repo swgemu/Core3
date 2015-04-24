@@ -853,7 +853,7 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 				CreatureAttackMap* attMap = pet->getAttackMap();
 				if (attMap != NULL) {
 					if (attMap->size() > 0) {
-						String cmd = pet->getAttackMap()->getCommand(0);
+						String cmd = attMap->getCommand(0);
 						if (cmd.isEmpty()) {
 							alm->insertAttribute("spec_atk_1", " ---");
 						} else {
@@ -864,7 +864,7 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 						alm->insertAttribute("spec_atk_1", " ---");
 
 					if (attMap->size() > 1) {
-						String cmd = pet->getAttackMap()->getCommand(1);
+						String cmd = attMap->getCommand(1);
 						if (cmd.isEmpty()) {
 							alm->insertAttribute("spec_atk_1", " ---");
 						} else {

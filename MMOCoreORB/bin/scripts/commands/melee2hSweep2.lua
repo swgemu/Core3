@@ -68,6 +68,8 @@ Melee2hSweep2Command = {
 		0 
 	  )
 	},
+	
+	weaponType = TWOHANDMELEEWEAPON,
 
 	range = -1
 }

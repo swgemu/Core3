@@ -71,6 +71,8 @@ WildShot2Command = {
 	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 }

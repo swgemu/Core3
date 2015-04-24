@@ -72,6 +72,9 @@ FlameCone1Command = {
 		2
 	  )
 	},
+	
+	weaponType = SPECIALHEAVYWEAPON,
+	
 	range = 16
 }
 

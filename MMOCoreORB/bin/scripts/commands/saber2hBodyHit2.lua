@@ -53,6 +53,8 @@ Saber2hBodyHit2Command = {
 	combatSpam = "saber2hbodyhit2",
 	
 	poolsToDamage = HEALTH_ATTRIBUTE,
+	
+	weaponType = TWOHANDJEDIWEAPON,
 
 	range = -1
 }

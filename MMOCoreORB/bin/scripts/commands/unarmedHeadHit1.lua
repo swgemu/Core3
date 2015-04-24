@@ -56,6 +56,8 @@ UnarmedHeadHit1Command = {
 	animationCRC = hashCode("knockdown_unarmed_1"),
 
 	combatSpam = "nexugrin",
+	
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }

@@ -65,6 +65,8 @@ Saber1hComboHit3Command = {
 	combatSpam = "saber1hcombohit3",
 	
 	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE + MIND_ATTRIBUTE,
+	
+	weaponType = ONEHANDJEDIWEAPON,
 
 	range = -1
 }

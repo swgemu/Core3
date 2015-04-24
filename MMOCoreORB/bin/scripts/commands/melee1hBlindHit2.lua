@@ -67,6 +67,7 @@ Melee1hBlindHit2Command = {
 	},
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	weaponType = ONEHANDMELEEWEAPON,
 
 	animationCRC = hashCode("combo_2b_medium"),
 

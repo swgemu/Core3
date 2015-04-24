@@ -74,6 +74,8 @@ ConfusionShotCommand = {
 	animationCRC = hashCode("fire_5_special_single_medium_face"),
 
 	combatSpam = "confusionshot",
+	
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 }

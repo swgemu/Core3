@@ -56,6 +56,8 @@ BurstShot1Command = {
 	animationCRC = hashCode("fire_7_single_medium"),
 
 	combatSpam = "burstshot",
+	
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 }

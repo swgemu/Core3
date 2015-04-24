@@ -69,6 +69,8 @@ Melee1hHealthHit2Command = {
 		60
 	  )
 	},
+	
+	weaponType = ONEHANDMELEEWEAPON,
 
 	range = -1
 }

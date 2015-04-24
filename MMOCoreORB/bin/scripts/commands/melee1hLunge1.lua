@@ -56,6 +56,8 @@ Melee1hLunge1Command = {
 	combatSpam = "lungestab",
 
 	range = 20,
+	
+	weaponType = ONEHANDMELEEWEAPON,
 
 	stateEffects = {
 	  StateEffect( 

@@ -42,6 +42,7 @@
 
 
 object_weapon_melee_2h_sword_base_2h_sword_base = object_weapon_melee_2h_sword_base_shared_2h_sword_base:new {
+	weaponType = TWOHANDMELEEWEAPON,
 
 }
 

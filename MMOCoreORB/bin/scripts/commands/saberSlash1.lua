@@ -98,6 +98,8 @@ SaberSlash1Command = {
 	combatSpam = "saberslash1",
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = JEDIWEAPON,
 
 	range = -1
 }

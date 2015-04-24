@@ -56,6 +56,8 @@ HeadShot3Command = {
 	animationCRC = hashCode("fire_1_special_single_medium_face"),
 
 	combatSpam = "masterheadshot",
+	
+	weaponType = RIFLEWEAPON,
 
 	range = -1
 }

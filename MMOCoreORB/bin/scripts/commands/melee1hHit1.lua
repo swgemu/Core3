@@ -54,6 +54,8 @@ Melee1hHit1Command = {
 	animationCRC = hashCode("counter_high_center_light"),
 
 	combatSpam = "chomai",
+	
+	weaponType = ONEHANDMELEEWEAPON,
 
 	range = -1
 }

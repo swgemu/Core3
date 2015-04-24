@@ -224,6 +224,47 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		}
 	}
 
+
+
+	CreatureAttackMap* fullAttackMap;
+	if (petDeed != NULL)
+		fullAttackMap = petDeed->getAttacks();
+	else
+		fullAttackMap = npcTemplate->getAttacks();
+
+	ZoneServer* zoneServer;
+	ObjectController* objectController;
+	if ((zoneServer = getZoneServer()) != NULL && (objectController = zoneServer->getObjectController()) != NULL) {
+		attackMap = new CreatureAttackMap();
+		defaultAttackMap = new CreatureAttackMap();
+
+		for (int i = 0; i < fullAttackMap->size(); i++) {
+			CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(fullAttackMap->getCommand(i)));
+			if (attack == NULL)
+				continue;
+
+			if (readyWeapon != NULL && (attack->getWeaponType() & readyWeapon->getWeaponBitmask())) {
+				attackMap->add(fullAttackMap->get(i));
+
+			}
+
+			if (defaultWeapon != NULL && (attack->getWeaponType() & defaultWeapon->getWeaponBitmask())) {
+				defaultAttackMap->add(fullAttackMap->get(i));
+			}
+		}
+
+		// if we didn't get any attacks or the weapon is NULL, drop the reference to the attack maps
+		if (attackMap->isEmpty())
+			attackMap = NULL;
+
+		if (defaultAttackMap->isEmpty())
+			defaultAttackMap = NULL;
+
+	} else {
+		attackMap = NULL;
+		defaultAttackMap = NULL;
+	}
+
 	int ham;
 	baseHAM.removeAll();
 	if (petDeed == NULL) {
@@ -514,8 +555,8 @@ void AiAgentImplementation::selectSpecialAttack(int attackNum) {
 			QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
 			ManagedReference<SceneObject*> followCopy = getFollowObject();
 			if (queueCommand == NULL || followCopy == NULL
-					|| (queueCommand->getMaxRange() >= 0 && !followCopy->isInRange(_this.get(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
-					|| (queueCommand->getMaxRange() < 0 && !followCopy->isInRange(_this.get(), getWeapon()->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))) {
+					|| (queueCommand->getMaxRange() > 0 && !followCopy->isInRange(_this.get(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
+					|| (queueCommand->getMaxRange() <= 0 && !followCopy->isInRange(_this.get(), getWeapon()->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))) {
 				selectDefaultAttack();
 			}
 		}

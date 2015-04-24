@@ -53,6 +53,8 @@ Melee2hHit1Command = {
 	mindCostMultiplier = 0.5,
 
 	animationCRC = hashCode("combo_2c_medium"),
+	
+	weaponType = TWOHANDMELEEWEAPON,
 
 	combatSpam = "terriblestrike",
 

@@ -86,6 +86,8 @@ SaberPolearmDervishCommand = {
 	combatSpam = "saberpolearmdervish",
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = POLEARMJEDIWEAPON,
 
 	range = -1
 }

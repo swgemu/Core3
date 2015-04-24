@@ -54,6 +54,8 @@ Melee1hSpinAttack1Command = {
 	animationCRC = hashCode("attack_high_right_medium_2"),
 
 	combatSpam = "slashspin",
+	
+	weaponType = ONEHANDMELEEWEAPON,
 
 	areaAction = true,
 	areaRange = 16,

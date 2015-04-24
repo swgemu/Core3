@@ -78,6 +78,8 @@ Melee2hArea2Command = {
 	animationCRC = hashCode("combo_4b_medium"),
 
 	combatSpam = "descendingslam",
+	
+	weaponType = TWOHANDMELEEWEAPON,
 
 	range = -1
 }

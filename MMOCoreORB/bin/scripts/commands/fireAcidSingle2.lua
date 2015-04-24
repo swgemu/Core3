@@ -56,6 +56,9 @@ FireAcidSingle2Command = {
 	animationCRC = hashCode("fire_acid_rifle_single_2_light"),
 
 	combatSpam = "fireacidsingle2",
+	
+	weaponType = SPECIALHEAVYWEAPON,
+	
 	range = 16
 }
 

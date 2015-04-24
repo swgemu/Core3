@@ -42,6 +42,7 @@
 
 
 object_weapon_ranged_rifle_base_rifle_base = object_weapon_ranged_rifle_base_shared_rifle_base:new {
+	weaponType = RIFLEWEAPON,
 
 }
 

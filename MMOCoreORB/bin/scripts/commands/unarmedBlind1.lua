@@ -67,6 +67,8 @@ UnarmedBlind1Command = {
 		50 
 	  )
 	},
+	
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 }

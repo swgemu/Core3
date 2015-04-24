@@ -69,6 +69,8 @@ MindShot2Command = {
 		60
 	  )
 	},
+	
+	weaponType = RIFLEWEAPON,
 
 	range = -1
 }

@@ -64,6 +64,8 @@ Melee2hMindHit2Command = {
 		60
 	  )
 	},
+	
+	weaponType = TWOHANDMELEEWEAPON,
 
 	animationCRC = hashCode("combo_3c_light"),
 

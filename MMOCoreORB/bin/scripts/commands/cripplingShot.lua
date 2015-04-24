@@ -56,6 +56,8 @@ CripplingShotCommand = {
 	animationCRC = hashCode("fire_5_single_light_face"),
 
 	combatSpam = "cripplingshot",
+	
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 }

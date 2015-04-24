@@ -80,6 +80,8 @@ FlushingShot2Command = {
 	animationCRC = hashCode("fire_area_medium"),
 
 	combatSpam = "flushingvolley",
+	
+	weaponType = RIFLEWEAPON,
 
 	range = -1
 }

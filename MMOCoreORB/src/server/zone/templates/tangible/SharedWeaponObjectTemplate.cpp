@@ -16,6 +16,8 @@ void SharedWeaponObjectTemplate::parseVariableData(const String& varName, LuaObj
 		weaponEffectIndex = Lua::getIntParameter(state);
 	} else if (varName == "attackType") {
 		attackType = Lua::getIntParameter(state);
+	} else if (varName == "weaponType") {
+		weaponType = Lua::getIntParameter(state);
 	} else
 		templateData->pop();
 }

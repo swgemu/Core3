@@ -68,6 +68,8 @@ PistolMeleeDefense1Command = {
 	animationCRC = hashCode("ranged_melee_light"),
 
 	combatSpam = "pistolwhip",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = 5
 }

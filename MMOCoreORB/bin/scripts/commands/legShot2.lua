@@ -68,6 +68,8 @@ LegShot2Command = {
 	animationCRC = hashCode("test_homing"),
 
 	combatSpam = "legshot",
+	
+	weaponType = CARBINEWEAPON,
 
 	range = -1
 

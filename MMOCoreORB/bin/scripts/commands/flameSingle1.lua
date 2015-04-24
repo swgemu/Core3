@@ -69,6 +69,9 @@ FlameSingle1Command = {
 		2
 	  )
 	},
+	
+	weaponType = SPECIALHEAVYWEAPON,
+	
 	range = 16
 }
 AddCommand(FlameSingle1Command)

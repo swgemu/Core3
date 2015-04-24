@@ -54,6 +54,8 @@ DiveShotCommand = {
 	animationCRC = hashCode("fire_acrobatic"),
 
 	combatSpam = "diveshot",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 

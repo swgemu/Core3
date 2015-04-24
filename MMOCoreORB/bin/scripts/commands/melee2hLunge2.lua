@@ -57,6 +57,8 @@ Melee2hLunge2Command = {
 	combatSpam = "lungeslam",
 
 	range = 20,
+	
+	weaponType = TWOHANDMELEEWEAPON,
 
 	stateEffects = {
 	  StateEffect( 

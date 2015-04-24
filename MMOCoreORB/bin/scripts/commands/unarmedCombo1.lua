@@ -56,6 +56,8 @@ UnarmedCombo1Command = {
 	animationCRC = hashCode("combo_4b_medium"),
 
 	combatSpam = "shenbitbonecrusher",
+	
+	weaponType = UNARMEDWEAPON,
 
 	range = -1
 

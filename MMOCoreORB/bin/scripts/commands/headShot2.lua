@@ -56,6 +56,8 @@ HeadShot2Command = {
 	animationCRC = hashCode("fire_1_special_single_medium_face"),
 
 	combatSpam = "expertheadshot",
+	
+	weaponType = RIFLEWEAPON,
 
 	range = -1
 

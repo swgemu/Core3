@@ -79,6 +79,9 @@ class AiAgent extends CreatureObject {
 
 	protected WeaponObject readyWeapon;
 
+	protected CreatureAttackMap attackMap;
+	protected CreatureAttackMap defaultAttackMap;
+
 	@dereferenced 
 	protected Vector<SceneObject> camouflagedObjects;
 
@@ -1034,14 +1037,10 @@ class AiAgent extends CreatureObject {
 
 	@local
 	public CreatureAttackMap getAttackMap() {
-		if (petDeed != null) {
-			return petDeed.getAttacks();
-		}
-
-		if (npcTemplate.get() == null)
-			return null;
-
-		return npcTemplate.get().getAttacks();
+		if (getWeapon() == readyWeapon)
+			return attackMap;
+		else
+			return defaultAttackMap;
 	}
 
 	@local

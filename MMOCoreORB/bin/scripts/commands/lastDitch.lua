@@ -70,6 +70,8 @@ LastDitchCommand = {
 	animationCRC = hashCode("fire_1_special_single_light"),
 
 	combatSpam = "lastditch",
+	
+	weaponType = PISTOLWEAPON,
 
 	range = -1
 }

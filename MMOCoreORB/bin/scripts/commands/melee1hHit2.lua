@@ -54,6 +54,8 @@ Melee1hHit2Command = {
 	animationCRC = hashCode("combo_4a_medium"),
 
 	combatSpam = "chosun",
+	
+	weaponType = ONEHANDMELEEWEAPON,
 
 	range = -1,
 }

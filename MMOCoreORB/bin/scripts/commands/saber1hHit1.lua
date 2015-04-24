@@ -54,6 +54,8 @@ Saber1hHit1Command = {
 	combatSpam = "saber1hhit1",
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = ONEHANDJEDIWEAPON,
 
 	range = -1
 }

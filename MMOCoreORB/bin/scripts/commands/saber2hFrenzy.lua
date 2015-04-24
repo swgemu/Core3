@@ -85,6 +85,8 @@ Saber2hFrenzyCommand = {
 	combatSpam = "saber2hfrenzy",
 	
 	poolsToDamage = RANDOM_ATTRIBUTE,
+	
+	weaponType = TWOHANDJEDIWEAPON,
 
 	range = -1
 }

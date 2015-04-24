@@ -54,6 +54,8 @@ Melee2hSpinAttack1Command = {
 
 	areaAction = true,
 	areaRange = 16,
+	
+	weaponType = TWOHANDMELEEWEAPON,
 
 	animationCRC = hashCode("attack_high_right_light_2"),
 

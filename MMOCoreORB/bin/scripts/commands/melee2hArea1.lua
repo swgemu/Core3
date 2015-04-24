@@ -77,6 +77,8 @@ Melee2hArea1Command = {
 	animationCRC = hashCode("attack_high_right_light_2"),
 
 	combatSpam = "descendingstrike",
+	
+	weaponType = TWOHANDMELEEWEAPON,
 
 	range = -1
 }
