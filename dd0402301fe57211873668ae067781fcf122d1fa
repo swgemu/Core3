@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_615ed6eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetHarvestCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-04-24T17:18:53Z",
+      "side": 0,
+      "message": "(owner, creature)",
+      "revId": "dd0402301fe57211873668ae067781fcf122d1fa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
