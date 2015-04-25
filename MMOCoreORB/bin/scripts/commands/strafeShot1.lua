@@ -62,16 +62,6 @@ StrafeShot1Command = {
 		50,
 		0,
 		10
-	  ),
-	  
-	  StateEffect( 
-		NEXTATTACKDELAY_EFFECT, 
-		{}, 
-		{ "warcry_defense" }, 
-		{}, 
-		100, 
-		100, 
-		5 
 	  )
 	},
 
