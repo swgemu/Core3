@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_c1eec2b4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/JediQueueCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-25T08:00:37Z",
+      "side": 1,
+      "message": "You\u0027re instantiating a new pointer called buff here and not assigning the one you instantiated on line 106. No buff will be added to the player when eventTypes.size() \u003e 0 as line 115 will always be true.",
+      "revId": "f6f4458b413079a91efeed450ac2143d32bc95f2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
