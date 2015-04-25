@@ -1194,6 +1194,7 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 			ManagedReference<SceneObject*> slot = creature->getSlottedObject(descriptors.get(j));
 
 			if (slot != NULL) {
+				Locker locker(slot);
 				slot->destroyObjectFromWorld(true);
 				slot->destroyObjectFromDatabase(true);
 			}
