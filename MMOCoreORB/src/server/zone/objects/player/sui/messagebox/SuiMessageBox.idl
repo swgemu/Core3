@@ -17,6 +17,7 @@ class SuiMessageBox extends SuiBox {
 	
 	public SuiMessageBox(CreatureObject player, unsigned int windowType) {
 		super(player, windowType, SuiBox.MESSAGEBOX);
+		setOtherButton(false, "");
 		;
 	}
 	
