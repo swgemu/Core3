@@ -360,11 +360,15 @@ void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCre
 	ManagedReference<SceneObject*> inventory = playerCreature->getSlottedObject("inventory");
 
 	if(inventory != NULL && !inventory->hasFullContainerObjects()) {
+		Locker locker(spawn);
 
 		ResourceContainer* newResource = spawn->createResource(quantity);
 
 		if(newResource != NULL) {
 			spawn->extractResource("", quantity);
+
+			Locker rlocker(newResource);
+
 			if (inventory->transferObject(newResource, -1, true)) {
 				inventory->broadcastObject(newResource, true);
 			} else {

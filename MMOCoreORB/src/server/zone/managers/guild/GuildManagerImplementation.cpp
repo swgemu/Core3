@@ -966,6 +966,9 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, con
 	String tabbrev = guildAbbrev.replaceAll("\n|\r|#","");
 
 	ManagedReference<GuildObject*> guild = cast<GuildObject*>( ObjectManager::instance()->createObject(0xD6888614, 1, "guilds")); //object/guild/guild_object.iff
+
+	Locker clocker(guild, player);
+
 	guild->setGuildLeaderID(playerID);
 	guild->setGuildID(Long::hashCode(guild->getObjectID()));
 	guild->setGuildName(tmp);

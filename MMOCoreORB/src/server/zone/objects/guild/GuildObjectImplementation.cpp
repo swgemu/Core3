@@ -95,6 +95,8 @@ GuildMemberInfo* GuildObjectImplementation::getMember(uint64 playerID) {
 }
 
 bool GuildObjectImplementation::hasMailPermission(uint64 playerID) {
+	Locker locker(_this.get());
+
 	if (!guildMembers.contains(playerID))
 		return false;
 
@@ -104,6 +106,8 @@ bool GuildObjectImplementation::hasMailPermission(uint64 playerID) {
 }
 
 bool GuildObjectImplementation::hasSponsorPermission(uint64 playerID) {
+	Locker locker(_this.get());
+
 	if (!guildMembers.contains(playerID))
 		return false;
 

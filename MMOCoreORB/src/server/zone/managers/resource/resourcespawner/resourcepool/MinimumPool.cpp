@@ -81,6 +81,7 @@ bool MinimumPool::update() {
 				newSpawn = resourceSpawner->createResourceSpawn(resourceType, excludedResources);
 
 			if(newSpawn != NULL) {
+				Locker locker(newSpawn);
 				newSpawn->setSpawnPool(ResourcePool::MINIMUMPOOL, resourceType);
 				spawnedCount++;
 

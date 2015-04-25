@@ -331,8 +331,6 @@ void GroupObjectImplementation::addGroupModifiers(CreatureObject* player) {
 	if (leader == player)
 		return;
 
-	Locker locker(player);
-
 	int duration = 300;
 
 	String action = "squadleader";
@@ -363,7 +361,7 @@ void GroupObjectImplementation::removeGroupModifiers(CreatureObject* player) {
 	if (leader == player)
 		return;
 
-	Locker locker(player);
+	Locker clocker(player, _this.get());
 	String action = "squadleader";
 
 	if (player->hasBuff(action.hashCode()))
@@ -401,6 +399,7 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 			}
 		}
 	}
+
 	return modifier;
 }
 
@@ -505,8 +504,3 @@ void GroupObjectImplementation::updateLootRules() {
 	msg->close();
 	broadcastMessage(msg);
 }
-
-
-
-
-

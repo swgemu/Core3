@@ -149,6 +149,7 @@ void ResourceSpawner::loadResourceSpawns() {
 		}
 
 		if (resourceSpawn->getSpawnPool() != 0) {
+			Locker locker(resourceSpawn);
 
 			switch (resourceSpawn->getSpawnPool()) {
 			case ResourcePool::MINIMUMPOOL:
@@ -213,6 +214,8 @@ void ResourceSpawner::spawnScriptResources() {
 			error("createResourceSpawn is trying to create a resourcespawn with the wrong type");
 			continue;
 		}
+
+		Locker locker(newSpawn);
 
 		newSpawn->setType(resource.getStringField("type"));
 		newSpawn->setName(resource.getStringField("name"));
@@ -348,6 +351,8 @@ ResourceSpawn* ResourceSpawner::createRecycledResourceSpawn(ResourceTreeEntry* e
 		return NULL;
 	}
 
+	Locker locker(newSpawn);
+
 	newSpawn->setType(entry->getType());
 	newSpawn->setName(entry->getFinalClass());
 
@@ -384,8 +389,10 @@ ResourceSpawn* ResourceSpawner::createRecycledResourceSpawn(ResourceTreeEntry* e
 ResourceSpawn* ResourceSpawner::manualCreateResourceSpawn(const String& type) {
 	ResourceSpawn* resourceSpawn = createResourceSpawn(type);
 
-	if (resourceSpawn != NULL)
+	if (resourceSpawn != NULL) {
+		Locker locker(resourceSpawn);
 		manualPool->addResource(resourceSpawn, "any");
+	}
 
 	return resourceSpawn;
 }
@@ -414,6 +421,8 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(const String& type,
 		error("createResourceSpawn is trying to create a resourcespawn with the wrong type");
 		return NULL;
 	}
+
+	Locker locker(newSpawn);
 
 	String resType = resourceEntry->getType();
 	newSpawn->setType(resType);
@@ -483,6 +492,7 @@ ResourceSpawn* ResourceSpawner::createResourceSpawn(
 }
 
 void ResourceSpawner::despawn(ResourceSpawn* spawn) {
+	Locker locker(spawn);
 
 	for(int i = 0; i < spawn->getSpawnMapSize(); ++i) {
 		String zone = spawn->getSpawnMapZone(i);
@@ -948,6 +958,9 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player, const float dens
 
 	// We need the spawn object to track extraction
 	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname.toLowerCase());
+
+	Locker clocker(resourceSpawn, player);
+
 	resourceSpawn->extractResource(zoneName, unitsExtracted);
 
 	int xp = (int) (((float) unitsExtracted / (float) maxUnitsExtracted)
@@ -1033,6 +1046,8 @@ ResourceContainer* ResourceSpawner::harvestResource(CreatureObject* player,
 		resourceSpawn = zoneMap->get(i);
 
 		if (resourceSpawn != NULL && resourceSpawn->getType() == type) {
+			Locker locker(resourceSpawn);
+
 			resourceSpawn->extractResource(player->getZone()->getZoneName(), quantity);
 			return resourceSpawn->createResource(quantity);
 		}
@@ -1043,6 +1058,7 @@ ResourceContainer* ResourceSpawner::harvestResource(CreatureObject* player,
 }
 
 bool ResourceSpawner::harvestResource(CreatureObject* player, ResourceSpawn* resourceSpawn, int quantity) {
+	Locker locker(resourceSpawn);
 
 	resourceSpawn->extractResource(player->getZone()->getZoneName(), quantity);
 
