@@ -41,42 +41,43 @@ function DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
 end
 
 function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Entering doAwarenessCheck()") end
 	if (pAgent == pObject) then return false end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("2") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed unique objects") end
 	if (pAgent == nil or pObject == nil) then return false end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("3") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed non-nil objects") end
 
 	if TangibleObject(pAgent):getPvpStatusBitmask() == NONE or CreatureObject(pAgent):isDead() or CreatureObject(pAgent):isIncapacitated() then return false end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("4") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed self bitmask checks") end
 	if AiAgent(pAgent):getNumberOfPlayersInRange() <= 0  or AiAgent(pAgent):isRetreating() or AiAgent(pAgent):isFleeing() or AiAgent(pAgent):isInCombat() then return false	end
 
 	self:checkForReactionChat(pAgent, pObject)
 
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("5") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed playersInRange, retreat, flee, and inCombat checks") end
 	if AiAgent(pAgent):getFollowObject() ~= nil and AiAgent(pAgent):getFollowObject() ~= pObject then return false end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("6") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed followObject checks") end
 
 	local radius = AiAgent(pAgent):getAggroRadius()
 	if radius == 0 then radius = DEFAULTAGGRORADIUS end
 
 	-- TODO possibly tweak, but we need a cap on mob awareness distance
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Radius "..radius) end
 	if not SceneObject(pObject):isInRangeWithObject(pAgent, radius * 2.4) then return false end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("7") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed radius check") end
 
 	if not SceneObject(pObject):isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("8") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target CREO check") end
 	if TangibleObject(pAgent):getPvpStatusBitmask() == NONE or CreatureObject(pObject):isDead() or CreatureObject(pObject):isIncapacitated() then return false end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("9") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target bitmask checks") end
 	
 	-- if not in combat, ignore creatures in different cells
 	local agentParentID = CreatureObject(pAgent):getBuildingParentID()
 	local targetParentID = CreatureObject(pObject):getBuildingParentID()
 	if agentParentID ~= targetParentID then	return false end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("10") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed parent checks") end
 	
 	if AiAgent(pAgent):isCamouflaged(pObject) or not AiAgent(pAgent):isAttackableBy(pObject) or not CreatureObject(pObject):isAttackableBy(pAgent) then return false end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("11") end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed attackable checks") end
 	
 	--TODO (dannuic): this still seems wrong, but it's only for AI aggroing AI anyway
 	if SceneObject(pObject):isAiAgent() then
@@ -89,13 +90,12 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 		local creatureTargetFaction = CreatureObject(pObject):getFaction()
 		
 		if not AiAgent(pObject):isAttackableBy(pAgent) then return false end
-		--AiAgent(pAgent):info("12")
-		if (CreatureObject(pObject):getLevel() >= CreatureObject(pAgent):getLevel())
-		    or (creatureFaction ~= 0 and creatureTargetFaction == 0) 
+		--AiAgent(pAgent):info("Passed AiAgent target attackable checks")
+		if (creatureFaction ~= 0 and creatureTargetFaction == 0) 
 		    or (creatureFaction == 0 and creatureTargetFaction ~= 0) 
 		    then return false 
 		end
-		--AiAgent(pAgent):info("13")
+		--AiAgent(pAgent):info("Passed all AiAgent attackable checks")
 	end
 	
 	-- All the checks are out of the way, now we know we want to notice them
