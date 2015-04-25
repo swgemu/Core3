@@ -1148,6 +1148,19 @@ class CreatureObject extends TangibleObject {
 	@preLocked
 	public native void notifyLoadFromDatabase();
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
+	@preLocked
+	public void destroyObjectFromDatabase(boolean destroyContainedObjects = false) {
+		clearBuffs(false);
+
+		super.destroyObjectFromDatabase(destroyContainedObjects);
+	}
+
 	@preLocked
 	public native void setFactionRank(int rank, boolean notifyClient = true);
 

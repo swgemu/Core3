@@ -3087,6 +3087,8 @@ void CreatureObjectImplementation::destroyPlayerCreatureFromDatabase(bool destro
 	if (!isPlayerCreature())
 		return;
 
+	clearBuffs(false);
+
 	if(dataObjectComponent != NULL) {
 		dataObjectComponent->notifyObjectDestroyingFromDatabase();
 	}
