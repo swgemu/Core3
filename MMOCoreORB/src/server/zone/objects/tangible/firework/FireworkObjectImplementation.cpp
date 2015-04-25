@@ -181,6 +181,8 @@ void FireworkObjectImplementation::completeLaunch(CreatureObject* player, int re
 	int y = player->getPositionY() + cos(angle) * (distance);
 	int z = player->getZone()->getHeight(x, y);
 
+	Locker locker(launcherObject);
+
 	launcherObject->initializePosition(x, z, y);
 	player->getZone()->transferObject(launcherObject, -1, true);
 
