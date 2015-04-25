@@ -117,6 +117,8 @@ public:
 
 		manager->harvestResourceToPlayer(player, recycledVersion, resCon->getQuantity());
 
+		Locker clocker(insertedItem, player);
+
 		insertedItem->destroyObjectFromWorld(false);
 		insertedItem->destroyObjectFromDatabase(true);
 
