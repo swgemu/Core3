@@ -54,6 +54,7 @@ void DestroyMissionObjectiveImplementation::activate() {
 
 	if (spawnActiveArea == NULL) {
 		spawnActiveArea = ( Core::lookupObject<ZoneServer>("ZoneServer")->createObject(String("object/mission_spawn_area.iff").hashCode(), 1)).castTo<MissionSpawnActiveArea*>();
+		Locker alocker(spawnActiveArea);
 		spawnActiveArea->setMissionObjective(_this.get());
 	}
 
