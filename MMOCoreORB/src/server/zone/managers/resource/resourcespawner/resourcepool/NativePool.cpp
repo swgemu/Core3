@@ -96,19 +96,20 @@ bool NativePool::update() {
 					//buffer << "Removing: " << spawn->getName() << " : " << spawn->getType();
 				}
 
-			ManagedReference<ResourceSpawn* > newSpawn = resourceSpawner->createResourceSpawn(resourceType, excludedResources);
-			if(newSpawn != NULL) {
-				newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL, resourceType);
-				spawnedCount++;
+				ManagedReference<ResourceSpawn* > newSpawn = resourceSpawner->createResourceSpawn(resourceType, excludedResources);
+				if(newSpawn != NULL) {
+					Locker locker(newSpawn);
+					newSpawn->setSpawnPool(ResourcePool::NATIVEPOOL, resourceType);
+					spawnedCount++;
 
-				//buffer << " and replacing with " << newSpawn->getName() << " : " << newSpawn->getType() << endl;
+					//buffer << " and replacing with " << newSpawn->getName() << " : " << newSpawn->getType() << endl;
 
-				VectorMapEntry<String, ManagedReference<ResourceSpawn*> > newEntry(resourceType, newSpawn);
-				spawnZone->setElementAt(j, newEntry);
-			} else {
-				warning("Couldn't spawn resource type in NativePool: " + resourceType);
+					VectorMapEntry<String, ManagedReference<ResourceSpawn*> > newEntry(resourceType, newSpawn);
+					spawnZone->setElementAt(j, newEntry);
+				} else {
+					warning("Couldn't spawn resource type in NativePool: " + resourceType);
+				}
 			}
-					}
 		}
 	}
 

@@ -44,7 +44,7 @@ class GuildObject extends SceneObject {
 	protected transient GuildUpdateEvent guildUpdateEvent;
 
 	@dereferenced
-	protected transient ReadWriteLock waringGuildsMutex; 
+	protected transient ReadWriteLock waringGuildsMutex;
 
 	protected unsigned long guildLeaderID;
 
@@ -64,7 +64,7 @@ class GuildObject extends SceneObject {
 	public static final byte WAR_IN = 0x3C; //'<'
 	public static final byte WAR_OUT = 0x3E; //'>'
 
-	public GuildObject() {		
+	public GuildObject() {
 		Logger.setLoggingName("GuildObject");
 
 		guildLeaderID = 0;
@@ -102,40 +102,41 @@ class GuildObject extends SceneObject {
 	 */
 	public native void addMember(unsigned long playerID);
 	public native void removeMember(unsigned long playerID);
-	
+
 	@dirty
 	public native boolean hasMember(unsigned long playerID);
-	
+
 	@local
 	@dirty
 	public native GuildMemberInfo getMember(unsigned long playerID);
-	
+
 	@dirty
 	public native unsigned long getMember(int index);
-	
+
 	public synchronized void addSponsoredPlayer(unsigned long playerID) {
 		sponsoredPlayers.put(playerID);
 	}
-	
+
 	public synchronized void removeSponsoredPlayer(unsigned long playerID) {
 		sponsoredPlayers.drop(playerID);
 	}
-	
+
 	@dirty
 	public synchronized boolean hasSponsoredPlayer(unsigned long playerID) {
 		return sponsoredPlayers.contains(playerID);
 	}
-	
+
 	@dirty
 	public synchronized unsigned long getSponsoredPlayer(int idx) {
 		return sponsoredPlayers.get(idx);
 	}
-	
+
 	@read
 	public int getSponsoredPlayerCount() {
 		return sponsoredPlayers.size();
 	}
 
+	@preLocked
 	public void setChatRoom(ChatRoom room) {
 		chatRoom = room;
 	}
@@ -154,7 +155,7 @@ class GuildObject extends SceneObject {
 	public unsigned long getGuildLeaderID() {
 		return guildLeaderID;
 	}
-	
+
 	@local
 	@dirty
 	public GuildMemberList getGuildMemberList() {
@@ -165,33 +166,38 @@ class GuildObject extends SceneObject {
 	public string getGuildAbbrev() {
 		return guildAbbrev;
 	}
-	
+
+	@preLocked
 	public void setGuildAbbrev(final string abbrev) {
 		guildAbbrev = abbrev;
 	}
-	
+
+	@preLocked
 	public void setGuildLeaderID(unsigned long leaderID) {
 		guildLeaderID = leaderID;
 	}
-	
+
+	@preLocked
 	public void setGuildID(unsigned int id) {
 		guildID = id;
 	}
-	
+
 	@read
 	public unsigned int getGuildID() {
 		return guildID;
 	}
-	
+
+	@preLocked
 	public void setGuildName(final string gname) {
 		guildName = gname;
 	}
-	
+
 	@read
 	public string getGuildName() {
 		return guildName;
 	}
 
+	@preLocked
 	public void setPendingNewName(final string newName) {
 		pendingNewName = newName;
 	}
@@ -201,6 +207,7 @@ class GuildObject extends SceneObject {
 		return pendingNewName;
 	}
 
+	@preLocked
 	public void setPendingNewAbbrev(final string newAbbrev) {
 		pendingNewAbbrev = newAbbrev;
 	}
@@ -210,6 +217,7 @@ class GuildObject extends SceneObject {
 		return pendingNewAbbrev;
 	}
 
+	@preLocked
 	public void setRenamePending(boolean pending) {
 		renamePending = pending;
 	}
@@ -219,6 +227,7 @@ class GuildObject extends SceneObject {
 		return renamePending;
 	}
 
+	@preLocked
 	public void setRenamerID(unsigned long id) {
 		renamerID = id;
 	}
@@ -228,6 +237,7 @@ class GuildObject extends SceneObject {
 		return renamerID;
 	}
 
+	@preLocked
 	public void resetRename() {
 		renamerID = 0;
 		renamePending = false;
@@ -240,24 +250,24 @@ class GuildObject extends SceneObject {
 		string guildKey = String.valueOf(guildID) + ":" + guildAbbrev;
 		return guildKey;
 	}
-	
+
 	@dirty
 	public boolean isGuildObject() {
 		return true;
 	}
-	
+
 	@read
 	public boolean isGuildLeader(CreatureObject player) {
 		return (guildLeaderID == player.getObjectID());
 	}
-	
+
 	@dirty
 	public byte getWarStatus(unsigned long guildoid) {
 		synchronized (waringGuildsMutex) {
 			return waringGuilds.get(guildoid);
 		}
 	}
-	
+
 	public void setWarStatus(unsigned long guildoid, byte status) {
 		synchronized (waringGuildsMutex) {
 			if (status == WAR_NONE)
@@ -266,31 +276,32 @@ class GuildObject extends SceneObject {
 				waringGuilds.put(guildoid, status);
 		}
 	}
-	
+
 	@dirty
 	public native boolean isInWaringGuild(CreatureObject creature);
-	
+
 	@dirty
 	public native boolean isAtWarWith(unsigned long guildoid);
-	
+
 	@dirty
 	public boolean hasDeclaredWarOn(unsigned long guildoid) {
 		synchronized (waringGuildsMutex) {
 			return waringGuilds.get(guildoid) == WAR_OUT;
 		}
 	}
-	
+
 	@dirty
 	public boolean hasDeclaredWarBy(unsigned long guildoid) {
 		synchronized (waringGuildsMutex) {
 			return waringGuilds.get(guildoid) == WAR_IN;
 		}
 	}
-	
+
 	@local
 	public VectorMap<unsigned long, byte> getWaringGuilds() {
 		return waringGuilds;
 	}
+
 	@dirty
 	public native boolean hasMailPermission(unsigned long playerID);
 	@dirty

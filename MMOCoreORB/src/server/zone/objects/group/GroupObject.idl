@@ -17,15 +17,15 @@ import server.zone.objects.group.tasks.UpdateNearestMissionForGroupTask;
 import server.zone.Zone;
 include server.chat.StringIdChatParameter;
 
-class GroupObject extends SceneObject {	
+class GroupObject extends SceneObject {
 	@dereferenced
 	GroupList groupMembers;
-	
-	@dereferenced	
+
+	@dereferenced
 	VectorMap<unsigned int, Reference<UpdateNearestMissionForGroupTask> > updateNearestMissionForGroupTasks;
-	
+
 	ChatRoom chatRoom;
-	
+
 	int groupLevel;
 
 	protected string bandSong;
@@ -33,30 +33,28 @@ class GroupObject extends SceneObject {
 	int lootRule;
 
 	unsigned long masterLooterID;
-	
-	public GroupObject() {		
+
+	public GroupObject() {
 		groupLevel = 0;
-		
+
 		Logger.setLoggingName("GroupObject");
-		
+
 		chatRoom = null;
 
 		bandSong = "";
 
 		lootRule = GroupManager.FREEFORALL;
 		masterLooterID = 0;
-		
 	}
-	
+
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
-	
+
 	@dirty
 	public native void broadcastMessage(BaseMessage msg);
-	
+
 	@dirty
 	public native void broadcastMessage(CreatureObject player, BaseMessage msg, boolean sendSelf = false);
-
 
 	/*public native void sendSystemMessage(SceneObject player, final string message, boolean sendToSelf = false);
 	public native void sendSystemMessage(SceneObject player, final string file, final string str, unsigned long targetid = 0, boolean sendToSelf = false);
@@ -67,10 +65,12 @@ class GroupObject extends SceneObject {
 	public native void sendSystemMessage(@dereferenced StringIdChatParameter param, boolean sendLeader = true);
 	@dirty
 	public native void sendSystemMessage(final string fullPath, boolean sendLeader = true);
-	
+
 	public native void addMember(SceneObject newMember);
+	@preLocked
 	public native void removeMember(SceneObject member);
 
+	@preLocked
 	public native void disband();
 	public native void makeLeader(SceneObject player);
 
@@ -79,16 +79,16 @@ class GroupObject extends SceneObject {
 	@dirty
 	public native boolean hasMember(unsigned long member);
 
+	@preLocked
 	public native void startChatRoom();
+	@preLocked
 	public native void destroyChatRoom();
 
 	@dirty
 	public native float getGroupHarvestModifier(CreatureObject player);
 
-	/*public native void addSquadLeaderBonuses(CreatureObject groupMember);
-	public native void removeSquadLeaderBonuses(CreatureObject groupMember);*/
-
 	@dirty
+	@preLocked
 	public native void calcGroupLevel();
 
 	@read
@@ -125,7 +125,7 @@ class GroupObject extends SceneObject {
 			return groupMembers.getSafe(0);
 		}
 	}
-	
+
 	@local
 	@dirty
 	public GroupList getGroupList() {
@@ -136,16 +136,20 @@ class GroupObject extends SceneObject {
 	public boolean isGroupObject() {
 		return true;
 	}
-	
+
 	@dirty
 	public native boolean hasSquadLeader();
-	
+
 	public native void addGroupModifiers();
-	
+
+	@preLocked
 	public native void removeGroupModifiers();
-	
+
+	@preLocked
+	@arg1preLocked
 	public native void addGroupModifiers(CreatureObject player);
-	
+
+	@preLocked
 	public native void removeGroupModifiers(CreatureObject player);
 
 	@dirty
@@ -156,6 +160,7 @@ class GroupObject extends SceneObject {
 		return bandSong;
 	}
 
+	@preLocked
 	public void setBandSong(final string song) {
 		bandSong = song;
 	}
@@ -165,6 +170,7 @@ class GroupObject extends SceneObject {
 		return lootRule;
 	}
 
+	@preLocked
 	public void setLootRule(int newRule) {
 		lootRule = newRule;
 	}
@@ -174,6 +180,7 @@ class GroupObject extends SceneObject {
 		return masterLooterID;
 	}
 
+	@preLocked
 	public void setMasterLooterID(unsigned long newID) {
 		masterLooterID = newID;
 	}
@@ -182,6 +189,7 @@ class GroupObject extends SceneObject {
 		return object.getObjectID() == masterLooterID;
 	}
 
+	@preLocked
 	public native void scheduleUpdateNearestMissionForGroup(unsigned int planetCRC);
 
 	public native void updateLootRules();
