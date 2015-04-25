@@ -53,22 +53,12 @@ Melee2hArea1Command = {
 	areaRange = 16,
 	areaAction = true,
 	stateEffects = {
-        --documentation says nothing about a blind effect
-	--StateEffect( 
-	--	BLIND_EFFECT, 
-	--	{}, 
-	--	{ "blind_defense", "resistance_states" }, 
-	--	{ "jedi_state_defense" }, 
-	--	20, 
-	--	100, 
-	--	10 
-        --),
 	  StateEffect( 
 		POSTUREDOWN_EFFECT, 
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
 		{}, 
-		15, 
+		100, 
 		100, 
 		0 
 	  )

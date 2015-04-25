@@ -58,10 +58,8 @@ MindBlast1Command = {
 		55, 
 		100, 
 		10 
-	  )
-	},
-	
-	stateEffects = {
+	  ),
+	  
 	  StateEffect( 
 		BLIND_EFFECT, 
 		{}, 
@@ -70,10 +68,8 @@ MindBlast1Command = {
 		55, 
 		100, 
 		10 
-	  )
-	},	
-	
-	stateEffects = {
+	  ),
+	  
 	  StateEffect( 
 		DIZZY_EFFECT, 
 		{}, 

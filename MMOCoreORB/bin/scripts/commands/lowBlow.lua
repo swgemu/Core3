@@ -57,7 +57,7 @@ LowBlowCommand = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		30, 
+		100, 
 		100, 
 		0 
 	  )

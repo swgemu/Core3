@@ -61,7 +61,7 @@ ChargeShot1Command = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		40, 
+		100, 
 		100, 
 		0 
 	  )

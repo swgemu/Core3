@@ -66,7 +66,7 @@ Melee1hSpinAttack2Command = {
 		{ "jedi_state_defense" }, 
 		40, 
 		100, 
-		10 
+		30 
 	  )
 	},
 	

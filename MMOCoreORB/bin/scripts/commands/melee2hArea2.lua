@@ -66,7 +66,7 @@ Melee2hArea2Command = {
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
 		{}, 
-		15, 
+		100, 
 		100, 
 		0 
 	  )

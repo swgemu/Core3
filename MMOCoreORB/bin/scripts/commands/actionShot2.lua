@@ -50,7 +50,7 @@ ActionShot2Command = {
 	actionCostMultiplier = 1.25,
 	mindCostMultiplier = 0.5,
 
-	coneAngle = 30,
+	coneAngle = 15,
 	coneAction = true,
 
 	poolsToDamage = ACTION_ATTRIBUTE,
@@ -58,6 +58,18 @@ ActionShot2Command = {
 	animationCRC = hashCode("fire_area_medium"),
 
 	combatSpam = "sapblast",
+	    
+	stateEffects = {
+	  StateEffect( 
+		POSTUREDOWN_EFFECT, 
+		{ "postureDownRecovery" }, 
+		{ "posture_change_down_defense" }, 
+		{}, 
+		100, 
+		0, 
+		0 
+	  )
+	},	
 
 	dotEffects = {
 	  DotEffect( 

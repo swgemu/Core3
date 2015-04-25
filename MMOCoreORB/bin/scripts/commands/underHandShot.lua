@@ -56,7 +56,7 @@ UnderHandShotCommand = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		30, 
+		85, 
 		100, 
 		0 
 	  )

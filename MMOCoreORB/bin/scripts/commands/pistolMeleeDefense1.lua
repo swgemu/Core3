@@ -57,7 +57,7 @@ PistolMeleeDefense1Command = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		10, 
+		100, 
 		100, 
 		0 
 	  )
@@ -71,7 +71,7 @@ PistolMeleeDefense1Command = {
 	
 	weaponType = PISTOLWEAPON,
 
-	range = 5
+	range = 10
 }
 
 AddCommand(PistolMeleeDefense1Command)

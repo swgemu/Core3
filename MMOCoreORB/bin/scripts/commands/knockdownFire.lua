@@ -56,7 +56,7 @@ KnockdownFireCommand = {
 		{}, 
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		30, 
+		85, 
 		100, 
 		10 
 	  ),
@@ -65,7 +65,7 @@ KnockdownFireCommand = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		30, 
+		85, 
 		100, 
 		0 
 	  )

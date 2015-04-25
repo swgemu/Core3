@@ -66,7 +66,7 @@ FlushingShot1Command = {
 		{ "postureUpRecovery" }, 
 		{ "posture_change_up_defense" }, 
 		{}, 
-		20, 
+		100, 
 		100, 
 		0 
 	  )
