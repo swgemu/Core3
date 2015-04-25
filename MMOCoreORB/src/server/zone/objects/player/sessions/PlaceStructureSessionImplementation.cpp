@@ -83,11 +83,12 @@ void PlaceStructureSessionImplementation::placeTemporaryNoBuildZone(SharedStruct
 	areaShape->setAreaCenter(positionX, positionY);
 
 	temporaryNoBuildZone = (zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0)).castTo<ActiveArea*>();
+
+	Locker locker(temporaryNoBuildZone);
+
 	temporaryNoBuildZone->initializePosition(positionX, 0, positionY);
 	temporaryNoBuildZone->setAreaShape(areaShape);
 	temporaryNoBuildZone->setNoBuildArea(true);
-
-	Locker locker(temporaryNoBuildZone);
 
 	zone->transferObject(temporaryNoBuildZone, -1, true);
 }
