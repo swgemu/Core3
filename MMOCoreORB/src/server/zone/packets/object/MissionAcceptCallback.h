@@ -69,6 +69,8 @@ public:
 		if (missionTerminal == NULL)
 			return;
 
+		Locker clocker(missionObject, player);
+
 		MissionManager* manager = server->getZoneServer()->getMissionManager();
 		manager->handleMissionAccept(missionTerminal, missionObject, player);
 

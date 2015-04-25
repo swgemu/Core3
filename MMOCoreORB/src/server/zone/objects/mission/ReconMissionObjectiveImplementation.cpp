@@ -31,6 +31,7 @@ void ReconMissionObjectiveImplementation::activate() {
 
 	if (locationActiveArea == NULL) {
 		locationActiveArea = ( zoneServer->createObject(String("object/mission_recon_area.iff").hashCode(), 1)).castTo<MissionReconActiveArea*>();
+		Locker locker(locationActiveArea);
 		locationActiveArea->setMissionObjective(_this.get());
 	}
 

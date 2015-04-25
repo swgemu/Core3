@@ -224,6 +224,9 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 
 void MissionManagerImplementation::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<DestroyMissionObjective*> objective = new DestroyMissionObjective(mission);
+
+	Locker locker(objective);
+
 	objective->setLairTemplateToSpawn(mission->getTargetOptionalTemplate());
 	objective->setDifficultyLevel(mission->getDifficultyLevel());
 	objective->setDifficulty(mission->getDifficulty());
@@ -236,6 +239,8 @@ void MissionManagerImplementation::createDestroyMissionObjectives(MissionObject*
 
 void MissionManagerImplementation::createDeliverMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<DeliverMissionObjective*> objective = new DeliverMissionObjective(mission);
+
+	Locker locker(objective);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
@@ -284,6 +289,8 @@ void MissionManagerImplementation::createCraftingMissionObjectives(MissionObject
 
 	ManagedReference<CraftingMissionObjective*> objective = new CraftingMissionObjective(mission);
 
+	Locker locker(objective);
+
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
 	mission->setMissionObjective(objective);
@@ -292,6 +299,9 @@ void MissionManagerImplementation::createCraftingMissionObjectives(MissionObject
 
 void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<SurveyMissionObjective*> objective = new SurveyMissionObjective(mission);
+
+	Locker locker(objective);
+
 	objective->setEfficiency(mission->getDifficultyLevel());
 
 	String spawnName = mission->getTargetName();
@@ -307,6 +317,8 @@ void MissionManagerImplementation::createSurveyMissionObjectives(MissionObject* 
 void MissionManagerImplementation::createEntertainerMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<EntertainerMissionObjective*> objective = new EntertainerMissionObjective(mission);
 
+	Locker locker(objective);
+
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
 	mission->setMissionObjective(objective);
@@ -315,6 +327,8 @@ void MissionManagerImplementation::createEntertainerMissionObjectives(MissionObj
 
 void MissionManagerImplementation::createHuntingMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<HuntingMissionObjective*> objective = new HuntingMissionObjective(mission);
+
+	Locker locker(objective);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
@@ -325,6 +339,8 @@ void MissionManagerImplementation::createHuntingMissionObjectives(MissionObject*
 void MissionManagerImplementation::createReconMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<ReconMissionObjective*> objective = new ReconMissionObjective(mission);
 
+	Locker locker(objective);
+
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
 	mission->setMissionObjective(objective);
@@ -333,6 +349,8 @@ void MissionManagerImplementation::createReconMissionObjectives(MissionObject* m
 
 void MissionManagerImplementation::createBountyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<BountyMissionObjective*> objective = new BountyMissionObjective(mission);
+
+	Locker locker(objective);
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
