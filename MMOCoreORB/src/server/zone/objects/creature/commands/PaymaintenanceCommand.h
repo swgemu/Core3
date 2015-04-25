@@ -42,6 +42,8 @@ public:
 
 		StructureObject* structure = cast<StructureObject*>(obj.get());
 
+		Locker clocker(structure, creature);
+
 		ManagedReference<Zone*> zone = structure->getZone();
 
 		if (zone == NULL)
