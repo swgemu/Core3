@@ -57,8 +57,11 @@ public:
 
 			int result = doCombatAction(creature, target, args, weapon);
 
-			if (result == SUCCESS)
+			if (result == SUCCESS) {
+				Locker locker(weapon);
+
 				weapon->decreaseUseCount();
+			}
 
 			return result;
 
