@@ -18,7 +18,7 @@
 void LootkitObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	TangibleObjectImplementation::fillAttributeList(alm,object);
 
-	String boolean[] = {"No","Yes"};
+	const String boolean[] = {"No","Yes"};
 
 	StringBuffer componentAttributes;
 	for (int i=0; i<attributes.size();++i) {
@@ -67,6 +67,8 @@ void LootkitObjectImplementation::addToKit(SceneObject* object) {
 				ManagedReference<CreatureObject*> player = getPlayer();
 				if (player == NULL)
 					return;
+
+				Locker locker(object);
 
 				player->sendSystemMessage("@loot_kit:item_used"); // The kit accepts the item and quickly disassembles it, leaving nothing recognizable behind.
 
