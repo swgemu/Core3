@@ -226,12 +226,11 @@ class AiAgent extends CreatureObject {
 
 	/**
 	 * Schedules an event to check awareness
-	 * @pre { this is locked, target is locked }
-	 * @post { this is locked, target is locked }
-	 * @param target The CREO to check awareness against
+	 * @pre { this is locked }
+	 * @post { this is locked }
 	 */
 	@preLocked
-	public native void activateAwarenessEvent(CreatureObject target);
+	public native void activateAwarenessEvent();
 
 	/**
 	 * Executes an AI interrupt in a separate thread (to shed locks)
@@ -312,18 +311,12 @@ class AiAgent extends CreatureObject {
 
 	/**
 	 * Does the AI awareness update tick
-	 * @pre { this is locked, target is locked }
-	 * @post { this is locked, target is locked, this AI will have scheduled one awareness check }
-	 * @param target the CREO that will be checked against
+	 * @pre { this is locked }
+	 * @post { this is locked, this AI will have scheduled one awareness check }
 	 */
 	@local
 	@preLocked
-	public native void doAwarenessCheck(CreatureObject target);
-
-	@dirty
-	public float getAvgSpeed() {
-		return awarenessEvent.getAvgSpeed();
-	}
+	public native void doAwarenessCheck();
 
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
