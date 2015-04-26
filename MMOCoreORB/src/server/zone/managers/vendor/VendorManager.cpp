@@ -272,8 +272,12 @@ void VendorManager::destroyVendor(SceneObject* vendor) {
 		vendor->getZone()->unregisterObjectWithPlanetaryMap(vendor);
 	}
 
+	Locker locker(vendor);
+
 	vendor->destroyObjectFromWorld(true);
 	vendor->destroyObjectFromDatabase(true);
+
+	locker.release();
 
 	auctionsMap->deleteTerminalItems(vendor);
 }
