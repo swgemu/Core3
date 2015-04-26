@@ -128,7 +128,6 @@ public:
 						result = 4;
 					} else {
 						// did we aggro?
-						creature->activateAwarenessEvent(player);
 						result = 5;
 					}
 				}
@@ -150,7 +149,6 @@ public:
 						if ( (aggroChance+aggroMod) > (sampleRoll+rollMod) || aggroChance <= 5)  // aggro
 							result = 3;
 						else { // it didnt care and we didnt kill it
-							creature->activateAwarenessEvent(player);
 							result = 5;
 						}
 					}

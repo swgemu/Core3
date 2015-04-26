@@ -21,16 +21,12 @@ namespace events {
 
 class AiAwarenessEvent : public Task {
 	ManagedWeakReference<AiAgent*> creature;
-	ManagedWeakReference<CreatureObject*> target;
-	Coordinate coord;
 	uint64 mtime;
 	float avgSpeed;
 
 public:
-	AiAwarenessEvent(AiAgent* pl, CreatureObject* t) : Task(1000) {
+	AiAwarenessEvent(AiAgent* pl) : Task(1000) {
 		creature = pl;
-		target = t;
-		coord.setPosition(t->getPosition());
 		mtime = 0;
 		avgSpeed = 0.f;
 		AiMap::instance()->activeAwarenessEvents.increment();
@@ -44,19 +40,13 @@ public:
 		AiMap::instance()->scheduledAwarenessEvents.decrement();
 
 		ManagedReference<AiAgent*> strongRef = creature.get();
-		ManagedReference<CreatureObject*> targetRef = target.get();
 
-		if (strongRef == NULL || targetRef == NULL)
+		if (strongRef == NULL)
 			return;
 
 		Locker locker(strongRef);
 
-		Locker clocker(targetRef, strongRef);
-
-		if (mtime != 0)
-			avgSpeed = Vector3(targetRef->getPositionX() - coord.getPositionX(), targetRef->getPositionY() - coord.getPositionY(), 0).length() / (mtime) * 1000;
-
-		strongRef->doAwarenessCheck(targetRef);
+		strongRef->doAwarenessCheck();
 	}
 
 	void schedule(uint64 delay = 0) {
@@ -79,15 +69,6 @@ public:
 		}
 
 		return ret;
-	}
-
-	void setTarget(CreatureObject *t) {
-		target = t;
-		coord.setPosition(t->getPosition());
-	}
-
-	float getAvgSpeed() {
-		return avgSpeed;
 	}
 };
 

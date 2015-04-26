@@ -8,7 +8,7 @@ local ObjectManager = require("managers.object.object_manager")
 Interrupt = { }
 function Interrupt:interrupt(pAgent, pObject, msg)
 	if     msg == STARTCOMBAT        then self:startCombatInterrupt(pAgent, pObject)    -- pObject = sender of interrupt message
-	elseif msg == OBJECTINRANGEMOVED then self:startAwarenessInterrupt(pAgent, pObject) -- pObject = object that moved
+	elseif msg == OBJECTINRANGEMOVED then self:startAwarenessInterrupt(pAgent, pObject) -- pObject = object that moved TODO: should rename this
 	elseif msg == DAMAGERECEIVED	 then self:startDamageInterrupt(pAgent, pObject)    -- pObject = source of damage
 	end
 end
@@ -201,8 +201,7 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 			if CreatureObject(pObject):hasSkill("outdoors_ranger_novice") then
 				CreatureObject(pObject):sendSystemMessageWithTO("@skl_use:notify_stalked", SceneObject(pAgent):getDisplayedName())
 			end
-			AiAgent(pAgent):activateAwareness(pObject)
-		elseif inRange or AiAgent(pAgent):getAvgSpeed() <= (CreatureObject(pObject):getWalkSpeed() + CreatureObject(pObject):getWalkSpeed()) then
+		elseif inRange or CreatureObject(pObject):getCurrentSpeed() <= CreatureObject(pObject):getWalkSpeed() then
 			--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1b") end
 			AiAgent(pAgent):addDefender(pObject) -- TODO (dannuic): do stalkers also agro when the target starts to move towards them?
 		else
@@ -213,17 +212,14 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("2") end
 		--if SceneObject(pObject):isAiAgent() then AiAgent(pObject):info("attacking me!") end) end
 		AiAgent(pAgent):addDefender(pObject)
-	elseif pFollow == nil and inRange and AiAgent(pAgent):isCreature() and (AiAgent(pAgent):getAvgSpeed() >= CreatureObject(pObject):getWalkSpeed()) then
+	elseif pFollow == nil and inRange and AiAgent(pAgent):isCreature() and (CreatureObject(pObject):getCurrentSpeed() >= CreatureObject(pObject):getWalkSpeed()) then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("3") end
 		AiAgent(pAgent):setWatchObject(pObject)
 		AiAgent(pAgent):setAlertDuration(10000); -- TODO (dannuic): make this wait time more dynamic
 		SceneObject(pAgent):showFlyText("npc_reaction/flytext", "alert", 255, 0, 0)
-		AiAgent(pAgent):activateAwareness(pObject)
 	elseif pObject == pFollow and AiAgent(pAgent):alertedTimeIsPast() and AiAgent(pAgent):getFollowState() == WATCHING then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("4") end
 		AiAgent(pAgent):setOblivious() -- if we're "standing still" (and they aren't aggressive) forget about us
-	elseif pObject == pFollow and not inRange then
-		AiAgent(pAgent):activateAwareness(pObject)
 	elseif pObject == pFollow and inRange and SceneObject(pObject):getParent() == nil then -- TODO: Do we want weaker mobs to run away when indoors? Revisit when indoor pathing is better
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("5") end
 		-- TODO (dannuic): Not sure about this stuff, needs testing
@@ -232,12 +228,10 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 			local isBackwardsAggressive = SceneObject(pFollow):isAiAgent() and AiAgent(pFollow):isAggressiveTo(pAgent)
  
  			-- TODO (dannuic): Add in run away logic for nearby combat
-			if AiAgent(pAgent):isCreature() and CreatureObject(pAgent):getLevel()*mod < creoLevel and (isBackwardsAggressive or SceneObject(pFollow):isPlayerCreature()) and AiAgent(pAgent):getAvgSpeed() > (CreatureObject(pObject):getWalkSpeed() + CreatureObject(pObject):getWalkSpeed()) and SceneObject(pObject):isFacingObject(pAgent) then
+			if AiAgent(pAgent):isCreature() and CreatureObject(pAgent):getLevel()*mod < creoLevel and (isBackwardsAggressive or SceneObject(pFollow):isPlayerCreature()) and CreatureObject(pObject):getCurrentSpeed() > 2*CreatureObject(pObject):getWalkSpeed() and SceneObject(pObject):isFacingObject(pAgent) then
 				--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("run!") end
 				AiAgent(pAgent):runAway(pFollow, 64 - radius)
 				AiAgent(pAgent):setAlertDuration(10000)
-			else
-				AiAgent(pAgent):activateAwareness(pFollow)
 			end
 		else AiAgent(pAgent):setOblivious() end
 	else
