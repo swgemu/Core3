@@ -110,6 +110,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isCombatDroidPet", &LuaCreatureObject::isCombatDroidPet },
 		{ "awardExperience", &LuaCreatureObject::awardExperience },
 		{ "getOwner", &LuaCreatureObject::getOwner },
+		{ "getCurrentSpeed", &LuaCreatureObject::getCurrentSpeed },
 		{ 0, 0 }
 };
 
@@ -828,5 +829,13 @@ int LuaCreatureObject::getOwner(lua_State* L) {
 		lua_pushnil(L);
 	else
 		lua_pushlightuserdata(L, retVal);
+	return 1;
+}
+
+int LuaCreatureObject::getCurrentSpeed(lua_State* L) {
+	float currentSpeed = realObject->getCurrentSpeed();
+
+	lua_pushnumber(L, currentSpeed);
+
 	return 1;
 }

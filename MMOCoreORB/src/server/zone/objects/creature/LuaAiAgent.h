@@ -52,7 +52,6 @@ namespace creature {
 		int getWait(lua_State* L);
 		int isWaiting(lua_State* L);
 		int stopWaiting(lua_State* L);
-		int getCurrentSpeed(lua_State* L);
 		int setCurrentSpeed(lua_State* L);
 		int getTargetFromMap(lua_State* L);
 		int getTargetFromDefenders(lua_State* L);
@@ -94,7 +93,6 @@ namespace creature {
 		int hasLoot(lua_State* L);
 		int isEventMob(lua_State* L);
 		int isPet(lua_State* L);
-		int getAvgSpeed(lua_State* L);
 		int isAggressiveTo(lua_State* L);
 		int isAttackableBy(lua_State* L);
 		int isScentMasked(lua_State* L);

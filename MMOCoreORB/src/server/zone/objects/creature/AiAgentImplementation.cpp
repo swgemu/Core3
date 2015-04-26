@@ -470,28 +470,37 @@ void AiAgentImplementation::initializeTransientMembers() {
 }
 
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
-	if (numberOfPlayersInRange.get() <= 0)
-		return;
-
-	CreatureObject* target = cast<CreatureObject*>(entry);
-	CreatureObject* rider = NULL;
-	if (target != NULL && (target->isVehicleObject() || target->isMount()) && (rider = target->getSlottedObject("rider").castTo<CreatureObject*>()) != NULL)
-		target = rider;
-
-	if (target != NULL)
-		activateAwarenessEvent(target);
-
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
 }
 
-void AiAgentImplementation::doAwarenessCheck(CreatureObject* target) {
-	Behavior* current = behaviors.get(currentBehaviorID);
-	if (_this.get() == target)
+void AiAgentImplementation::doAwarenessCheck() {
+	if (numberOfPlayersInRange.get() <= 0)
 		return;
-	if (current != NULL && target != NULL && numberOfPlayersInRange > 0 && current->doAwarenessCheck(target)) {
-		activateInterrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
-		activateAwarenessEvent(target);
+
+	CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
+	if (vec == NULL)
+		return;
+
+	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	vec->safeCopyTo(closeObjects);
+
+	Behavior* current = behaviors.get(currentBehaviorID);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		CreatureObject* target = closeObjects.get(i).castTo<CreatureObject*>();
+
+		if (_this.get() == target || target == NULL)
+			continue;
+
+		if (target->isVehicleObject() || target->hasRidingCreature())
+			continue;
+
+		if (current != NULL && target != NULL && current->doAwarenessCheck(target)) {
+			activateInterrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
+		}
 	}
+
+	activateAwarenessEvent();
 }
 
 void AiAgentImplementation::doRecovery() {
@@ -953,29 +962,17 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 
 	if (scno == _this.get())
 		return;
-	if (scno == NULL)
+
+	if (scno == NULL || !scno->isCreatureObject())
 		return;
-	if (scno->isPlayerCreature()) {
-		CreatureObject* creo = cast<CreatureObject*>(scno);
-		if (!creo->isInvisible()) {
-			int newValue = (int) numberOfPlayersInRange.increment();
-			activateMovementEvent();
 
-			if (newValue == 1) { // we had no players in range before, and now we do. Need to "activate" AI
-				CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
-				if (vec == NULL)
-					return;
-				SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
-				vec->safeCopyTo(closeObjects);
+	CreatureObject* creo = cast<CreatureObject*>(scno);
+	if (creo != NULL && !creo->isInvisible() && creo->isPlayerCreature()) {
+		int newValue = (int) numberOfPlayersInRange.increment();
+		activateMovementEvent();
 
-				for (int i = 0; i < closeObjects.size(); ++i) {
-					CreatureObject* creo = closeObjects.get(i).castTo<CreatureObject*>();
-
-					if (creo != NULL)
-						activateAwarenessEvent(creo);
-				}
-			}
-		}
+		if (newValue == 1)
+			activateAwarenessEvent();
 	}
 }
 
@@ -1166,10 +1163,16 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 		if (!creo->isInvisible()) {
 			int32 newValue = (int32) numberOfPlayersInRange.decrement();
 
-			if ((newValue == 0) && despawnOnNoPlayerInRange
-					&& (despawnEvent == NULL) && !isPet()) {
-				despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
-				despawnEvent->schedule(30000);
+			if (newValue == 0) {
+				if (despawnOnNoPlayerInRange && (despawnEvent == NULL) && !isPet()) {
+					despawnEvent = new DespawnCreatureOnPlayerDissappear(_this.get());
+					despawnEvent->schedule(30000);
+				}
+
+				if (awarenessEvent != NULL) {
+					awarenessEvent->cancel();
+					awarenessEvent = NULL;
+				}
 			} else if (newValue < 0) {
 				error("numberOfPlayersInRange below 0");
 			}
@@ -1179,7 +1182,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	}
 }
 
-void AiAgentImplementation::activateAwarenessEvent(CreatureObject *target) {
+void AiAgentImplementation::activateAwarenessEvent() {
 
 #ifdef DEBUG
 	info("Starting activateAwarenessEvent check", true);
@@ -1187,21 +1190,18 @@ void AiAgentImplementation::activateAwarenessEvent(CreatureObject *target) {
 	Locker locker(&awarenessEventMutex);
 
 	if (awarenessEvent == NULL) {
-		awarenessEvent = new AiAwarenessEvent(_this.get(), target);
-
-		awarenessEvent->schedule(1000);
+		awarenessEvent = new AiAwarenessEvent(_this.get());
 
 #ifdef DEBUG
-		info("Scheduling new Awareness Event", true);
+		info("Creating new Awareness Event", true);
 #endif
 	}
 
 	if (!awarenessEvent->isScheduled()) {
-		awarenessEvent->setTarget(target);
 		awarenessEvent->schedule(1000);
 
 #ifdef DEBUG
-		info("Rescheduling awareness event", true);
+		info("Scheduling awareness event", true);
 #endif
 	}
 }
@@ -1736,7 +1736,6 @@ int AiAgentImplementation::setDestination() {
 			setWatchObject(followCopy);
 			alertedTime.updateToCurrentTime();
 			alertedTime.addMiliTime(10000);
-			activateAwarenessEvent(followCopy.castTo<CreatureObject*>());
 			return setDestination();
 		}
 
@@ -1908,7 +1907,7 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (isWaiting() && moveEvent != NULL)
 		moveEvent->cancel();
 
-	if ((waitTime < 0 || numberOfPlayersInRange <= 0) && getFollowObject() == NULL && !isRetreating()) {
+	if ((waitTime < 0 || numberOfPlayersInRange.get() <= 0) && getFollowObject() == NULL && !isRetreating()) {
 		if (moveEvent != NULL) {
 			moveEvent->clearCreatureObject();
 			moveEvent = NULL;

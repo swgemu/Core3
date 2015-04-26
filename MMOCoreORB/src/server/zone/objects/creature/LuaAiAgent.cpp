@@ -55,7 +55,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getWait", &LuaAiAgent::getWait },
 		{ "isWaiting", &LuaAiAgent::isWaiting },
 		{ "stopWaiting", &LuaAiAgent::stopWaiting },
-		{ "getCurrentSpeed", &LuaAiAgent::getCurrentSpeed },
+		{ "getCurrentSpeed", &LuaCreatureObject::getCurrentSpeed },
 		{ "setCurrentSpeed", &LuaAiAgent::setCurrentSpeed },
 		{ "getTargetFromMap", &LuaAiAgent::getTargetFromMap },
 		{ "getTargetFromDefenders", &LuaAiAgent::getTargetFromDefenders },
@@ -98,7 +98,6 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "isEventMob", &LuaAiAgent::isEventMob },
 		{ "isPet", &LuaAiAgent::isPet },
 		{ "isCreature", &LuaSceneObject::isCreature},
-		{ "getAvgSpeed", &LuaAiAgent::getAvgSpeed },
 		{ "isAggressiveTo", &LuaAiAgent::isAggressiveTo },
 		{ "isAttackableBy", &LuaAiAgent::isAttackableBy },
 		{ "isScentMasked", &LuaAiAgent::isScentMasked },
@@ -362,14 +361,6 @@ int LuaAiAgent::stopWaiting(lua_State* L) {
 	realObject->stopWaiting();
 
 	return 0;
-}
-
-int LuaAiAgent::getCurrentSpeed(lua_State* L) {
-	float currentSpeed = realObject->getCurrentSpeed();
-
-	lua_pushnumber(L, currentSpeed);
-
-	return 1;
 }
 
 int LuaAiAgent::setCurrentSpeed(lua_State* L) {
@@ -638,11 +629,6 @@ int LuaAiAgent::isPet(lua_State* L) {
 	return 1;
 }
 
-int LuaAiAgent::getAvgSpeed(lua_State* L) {
-	lua_pushnumber(L, realObject->getAvgSpeed());
-	return 1;
-}
-
 int LuaAiAgent::isAggressiveTo(lua_State* L) {
 	CreatureObject* obj = (CreatureObject*) lua_touserdata(L, -1);
 
@@ -751,8 +737,7 @@ int LuaAiAgent::activateRecovery(lua_State* L) {
 }
 
 int LuaAiAgent::activateAwareness(lua_State* L) {
-	CreatureObject* target = (CreatureObject*) lua_touserdata(L, -1);
-	realObject->activateAwarenessEvent(target);
+	realObject->activateAwarenessEvent();
 
 	return 0;
 }
