@@ -71,8 +71,13 @@ int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureO
 		ManagedReference<CityRegion*> city = structure->getCityRegion();
 
 		if (city != NULL && city->isMayor(creature->getObjectID())) {
+			Locker locker(city);
+
 			city->setCityHall(structure);
 			city->setLoaded();
+
+			locker.release();
+
 			StructureManager::instance()->declareResidence(creature, structure);
 		}
 	}
