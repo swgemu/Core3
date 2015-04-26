@@ -104,6 +104,8 @@ end
 
 function DefaultInterrupt:checkForReactionChat(pAgent, pObject)
 	if not SceneObject(pObject):isPlayerCreature() then return end
+	
+	if not CreatureObject(pObject):getCurrentSpeed() > 0.5*CreatureObject(pObject):getWalkSpeed() then return end
 
 	if not AiAgent(pAgent):hasReactionChatMessages() then return end
 
