@@ -1,5 +1,5 @@
-imperial_officer_tutorial_6 = Creature:new {
-	objectName = "@mob/creature_names:warren_imperial_officer",
+tutorial_stormtrooper_filler = Creature:new {
+	objectName = "@mob/creature_names:stormtrooper",
 	socialGroup = "imperial",
 	faction = "imperial",
 	level = 30,
@@ -21,15 +21,15 @@ imperial_officer_tutorial_6 = Creature:new {
 	tamingChance = 0.000000,
 	ferocity = 0,
 	pvpBitmask = NONE,
+	optionsBitmask = 264,
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_officer_m.iff"},
+	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
-	conversationTemplate = "imperial_officer_6_convotemplate",--dont change this
-	optionsBitmask = 264
+	conversationTemplate = "stormtrooperFillerConvoTemplate",
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_officer_tutorial_6, "imperial_officer_tutorial_6")
+CreatureTemplates:addCreatureTemplate(tutorial_stormtrooper_filler, "tutorial_stormtrooper_filler")

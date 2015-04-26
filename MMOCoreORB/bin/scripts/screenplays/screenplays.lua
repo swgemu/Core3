@@ -18,12 +18,28 @@ includeFile("themepark/rebel/themeParkRebel.lua")
 includeFile("themepark/jabba/themeParkJabba.lua")
 includeFile("themepark/valarian/themeParkValarian.lua")
 includeFile("themepark/marauder/themeParkMarauder.lua")
-includeFile("themepark/tutorial.lua")
+
 
 -- GCW
 includeFile("gcw/newsnet.lua")
 includeFile("gcw/recruiters/recruiterConvoHandler.lua")
 includeFile("gcw/recruiters/recruiterScreenplay.lua")
+
+-- Tutorial
+includeFile("tutorial/tutorialContainerComponents.lua")
+includeFile("tutorial/tutorialMenuComponents.lua")
+includeFile("tutorial/tutorial.lua")
+includeFile("tutorial/conversations/tutorialStormtrooperFillerConvoHandler.lua")
+includeFile("tutorial/conversations/tutorialRoomTwoGreeterConvoHandler.lua")
+includeFile("tutorial/conversations/tutorialBankerConvoHandler.lua")
+includeFile("tutorial/conversations/tutorialCloneDroidConvoHandler.lua")
+includeFile("tutorial/conversations/tutorialCommonerConvoHandler.lua")
+includeFile("tutorial/conversations/tutorialCelebrityConvoHandler.lua")
+includeFile("tutorial/conversations/tutorialMissionGiverConvoHandler.lua")
+includeFile("tutorial/conversations/tutorialNervousGuyConvoHandler.lua")
+includeFile("tutorial/conversations/tutorialQuartermasterConvoHandler.lua")
+includeFile("tutorial/conversations/tutorialScaredSoldierConvoHandler.lua")
+includeFile("tutorial/conversations/tutorialTrainingRoomOfficerConvoHandler.lua")
 
 -- Dungeons
 includeFile("dungeon/death_watch_bunker/deathWatchBunker.lua")
