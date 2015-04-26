@@ -1,4 +1,4 @@
-tutorial_commoner = Creature:new {
+tutorial_nervous_guy = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
@@ -39,7 +39,7 @@ tutorial_commoner = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	attacks = merge(marksmannovice,brawlernovice),
-	conversationTemplate = "tutorialCommonerConvoTemplate",
+	conversationTemplate = "tutorialNervousGuyConvoTemplate",
 }
 
-CreatureTemplates:addCreatureTemplate(tutorial_commoner, "tutorial_commoner")
+CreatureTemplates:addCreatureTemplate(tutorial_nervous_guy, "tutorial_nervous_guy")

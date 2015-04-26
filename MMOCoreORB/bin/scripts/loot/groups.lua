@@ -138,6 +138,7 @@ includeFile("groups/npc/skaak_tipper_common.lua")
 includeFile("groups/npc/stormtrooper_common.lua")
 includeFile("groups/npc/swooper_common.lua")
 includeFile("groups/npc/tusken_common.lua")
+includeFile("groups/npc/tutorial_pirate.lua")
 includeFile("groups/npc/valarian_common.lua")
 includeFile("groups/npc/weequay_common.lua")
 
