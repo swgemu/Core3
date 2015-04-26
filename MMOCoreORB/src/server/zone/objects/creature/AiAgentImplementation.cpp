@@ -486,21 +486,29 @@ void AiAgentImplementation::doAwarenessCheck() {
 
 	Behavior* current = behaviors.get(currentBehaviorID);
 
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		CreatureObject* target = closeObjects.get(i).castTo<CreatureObject*>();
+	if (current != NULL) {
+		AiAgent* thisObject = _this.get();
 
-		if (_this.get() == target || target == NULL)
-			continue;
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			CreatureObject* target = closeObjects.get(i).castTo<CreatureObject*>();
 
-		if (target->isVehicleObject() || target->hasRidingCreature())
-			continue;
+			if (thisObject == target || target == NULL)
+				continue;
 
-		if (current != NULL && target != NULL && current->doAwarenessCheck(target)) {
-			activateInterrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
+			if (target->isVehicleObject() || target->hasRidingCreature())
+				continue;
+
+			Locker crossLocker(target, thisObject);
+
+			if (current->doAwarenessCheck(target)) {
+				interrupt(target, ObserverEventType::OBJECTINRANGEMOVED);
+			}
 		}
 	}
 
-	activateAwarenessEvent();
+	if (numberOfPlayersInRange.get() > 0) {
+		activateAwarenessEvent();
+	}
 }
 
 void AiAgentImplementation::doRecovery() {

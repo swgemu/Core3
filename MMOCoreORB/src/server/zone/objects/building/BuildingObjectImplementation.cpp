@@ -1246,6 +1246,8 @@ void BuildingObjectImplementation::createChildObjects(){
 			if (obj == NULL )
 				continue;
 
+			Locker crossLocker(obj, _this.get());
+
 			if(obj->isCreatureObject()) {
 				obj->destroyObjectFromDatabase(true);
 				continue;
