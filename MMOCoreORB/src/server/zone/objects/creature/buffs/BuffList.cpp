@@ -16,7 +16,7 @@ BuffList::BuffList() {
 	addSerializableVariable("buffList", &buffList);
 }
 
-BuffList::BuffList(const BuffList& bf) : Object(), Serializable() {
+BuffList::BuffList(const BuffList& bf) : Object(), Serializable(), mutex() {
 	spiceActive = bf.spiceActive;
 	buffList = bf.buffList;
 
