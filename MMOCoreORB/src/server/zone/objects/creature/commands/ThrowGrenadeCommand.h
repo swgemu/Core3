@@ -61,8 +61,11 @@ public:
 
 			int result = doCombatAction(creature, target, args, grenade);
 
-			if (result == SUCCESS)
+			if (result == SUCCESS) {
+				Locker locker(grenade);
+
 				grenade->decreaseUseCount();
+			}
 
 			return result;
 
