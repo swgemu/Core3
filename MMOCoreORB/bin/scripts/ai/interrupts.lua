@@ -59,10 +59,11 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 
 	local radius = AiAgent(pAgent):getAggroRadius()
 	if radius == 0 then radius = DEFAULTAGGRORADIUS end
+	if SceneObject(pObject):isPlayerCreature() then radius = radius * 2 end
 
 	-- TODO possibly tweak, but we need a cap on mob awareness distance
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Radius "..radius) end
-	if not SceneObject(pObject):isInRangeWithObject(pAgent, radius * 2.4) then return false end
+	if not SceneObject(pObject):isInRangeWithObject(pAgent, radius * 1.2) then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed radius check") end
 
 	if not SceneObject(pObject):isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
