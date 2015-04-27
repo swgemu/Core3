@@ -39,8 +39,12 @@ public:
 		if (zone == NULL)
 			return;
 		// fetch the module object by id
-		DroidObject* droid = cast<DroidObject*>(zone->getZoneServer()->getObject(itemId).get());
+		Reference<DroidObject*> droid = zone->getZoneServer()->getObject(itemId).castTo<DroidObject*>();
 		//Creature is already locked (done in handleSuiEventNotification in SuiManager).
+
+		if (droid == NULL)
+			return;
+
 		Locker _lock(droid, player);
 		if (droid->isStructureAssigned(structure)) {
 			player->sendSystemMessage("@player_structure:structure_on_list");
