@@ -595,6 +595,8 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 				task->execute();
 			}
 
+			Locker locker(petControlDevice);
+
 			petControlDevice->destroyObjectFromWorld(true);
 			petControlDevice->destroyObjectFromDatabase(true);
 
