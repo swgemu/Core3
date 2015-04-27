@@ -174,9 +174,6 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 
 	if AiAgent(pAgent):isInCombat() then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("d") end
-
-	if not AiAgent(pAgent):checkLineOfSight(pObject) then return end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("e") end
 	
 	if AiAgent(pAgent):isCamouflaged(pObject) then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("f") end
@@ -194,18 +191,20 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 
 	local pFollow = AiAgent(pAgent):getFollowObject();
 	
-	if AiAgent(pAgent):isStalker() and AiAgent(pAgent):isAggressiveTo(pObject) and SceneObject(pObject):isInRangeWithObject(pAgent, radius*2) then
+	if AiAgent(pAgent):isStalker() and SceneObject(pObject):isPlayerCreature() and AiAgent(pAgent):isAggressiveTo(pObject) and SceneObject(pObject):isInRangeWithObject(pAgent, radius*2) then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1") end
 		if pFollow == nil and not inRange then
 			--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1a") end
-			AiAgent(pAgent):setStalkObject(pObject)
-			AiAgent(pAgent):setAlertDuration(10000)
-			if CreatureObject(pObject):hasSkill("outdoors_ranger_novice") then
-				CreatureObject(pObject):sendSystemMessageWithTO("@skl_use:notify_stalked", SceneObject(pAgent):getDisplayedName())
+			if AiAgent(pAgent):checkLineOfSight(pObject) then
+				AiAgent(pAgent):setStalkObject(pObject)
+				AiAgent(pAgent):setAlertDuration(10000)
+				if CreatureObject(pObject):hasSkill("outdoors_ranger_novice") then
+					CreatureObject(pObject):sendSystemMessageWithTO("@skl_use:notify_stalked", SceneObject(pAgent):getDisplayedName())
+				end
 			end
 		elseif inRange or CreatureObject(pObject):getCurrentSpeed() <= CreatureObject(pObject):getWalkSpeed() then
 			--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1b") end
-			AiAgent(pAgent):addDefender(pObject) -- TODO (dannuic): do stalkers also agro when the target starts to move towards them?
+			if AiAgent(pAgent):checkLineOfSight(pObject) then AiAgent(pAgent):addDefender(pObject) end -- TODO (dannuic): do stalkers also agro when the target starts to move towards them?
 		else
 			--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1c") end
 			AiAgent(pAgent):setOblivious()
@@ -213,12 +212,15 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	elseif AiAgent(pAgent):isAggressiveTo(pObject) and inRange then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("2") end
 		--if SceneObject(pObject):isAiAgent() then AiAgent(pObject):info("attacking me!") end) end
-		AiAgent(pAgent):addDefender(pObject)
+		if AiAgent(pAgent):checkLineOfSight(pObject) then AiAgent(pAgent):addDefender(pObject) end
+		
 	elseif pFollow == nil and inRange and AiAgent(pAgent):isCreature() and (CreatureObject(pObject):getCurrentSpeed() >= CreatureObject(pObject):getWalkSpeed()) then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("3") end
-		AiAgent(pAgent):setWatchObject(pObject)
-		AiAgent(pAgent):setAlertDuration(10000); -- TODO (dannuic): make this wait time more dynamic
-		SceneObject(pAgent):showFlyText("npc_reaction/flytext", "alert", 255, 0, 0)
+		if AiAgent(pAgent):checkLineOfSight(pObject) then
+			AiAgent(pAgent):setWatchObject(pObject)
+			AiAgent(pAgent):setAlertDuration(10000); -- TODO (dannuic): make this wait time more dynamic
+			SceneObject(pAgent):showFlyText("npc_reaction/flytext", "alert", 255, 0, 0)
+		end
 	elseif pObject == pFollow and AiAgent(pAgent):alertedTimeIsPast() and AiAgent(pAgent):getFollowState() == WATCHING then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("4") end
 		AiAgent(pAgent):setOblivious() -- if we're "standing still" (and they aren't aggressive) forget about us
@@ -232,8 +234,10 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
  			-- TODO (dannuic): Add in run away logic for nearby combat
 			if AiAgent(pAgent):isCreature() and CreatureObject(pAgent):getLevel()*mod < creoLevel and (isBackwardsAggressive or SceneObject(pFollow):isPlayerCreature()) and CreatureObject(pObject):getCurrentSpeed() > 2*CreatureObject(pObject):getWalkSpeed() and SceneObject(pObject):isFacingObject(pAgent) then
 				--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("run!") end
-				AiAgent(pAgent):runAway(pFollow, 64 - radius)
-				AiAgent(pAgent):setAlertDuration(10000)
+				if AiAgent(pAgent):checkLineOfSight(pObject) then
+					AiAgent(pAgent):runAway(pFollow, 64 - radius)
+					AiAgent(pAgent):setAlertDuration(10000)
+				end
 			end
 		else AiAgent(pAgent):setOblivious() end
 	else
