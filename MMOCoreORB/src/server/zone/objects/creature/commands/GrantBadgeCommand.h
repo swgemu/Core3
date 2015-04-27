@@ -33,7 +33,7 @@ public:
 
 		bool area = false;
 		float range = 64;
-		float badgeId;
+		float badgeId = 0;
 
 		if (args.hasMoreTokens()) {
 
