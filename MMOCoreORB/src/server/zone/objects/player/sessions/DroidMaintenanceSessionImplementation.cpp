@@ -194,8 +194,8 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
 	// calculate time
 	// we got milliseconds convert to minutes
 	long minutes = time/1000; // seconds
-	String abbrvs[3] = { "seconds", "minutes, ", "hours" };
-	int intervals[3] = { 1, 60, 3600 };
+	const static String abbrvs[3] = { "seconds", "minutes, ", "hours" };
+	const static int intervals[3] = { 1, 60, 3600 };
 	int values[3] = { 0, 0, 0 };
 	StringBuffer str;
 	str << "Maintenance run started. Completion ETA: ";
@@ -211,6 +211,9 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
 	}
 
 	creature->sendSystemMessage(str.toString());
+
+	Locker droidLock(droid, creature);
+
 	// store the pet off and set the call cooldown.
 	droid->getCooldownTimerMap()->updateToCurrentAndAddMili("call_cooldown",time);
 	Reference<StorePetTask*> task = new StorePetTask(this->player.get(), droid);
