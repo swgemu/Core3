@@ -26,26 +26,24 @@ function TreasureMapMenuComponent:handleObjectMenuSelect(pObject, pPlayer, selec
 		return 0
 	end
 
-	return ObjectManager.withCreatureObject(pPlayer, function(creature)
-		if (SceneObject(pObject):isASubChildOf(pPlayer) == false) then
-			creature:sendSystemMessage("@treasure_map/treasure_map:sys_not_in_inv") -- The treasure map must be in your inventory for you to use it!
-			return 0
-		end
-
-		if (TreasureMapMenuComponent:getMapType(pObject) == 0) then
-			creature:sendSystemMessage("@treasure_map/treasure_map:map_fail") -- This map is obviously a fake.
-			return 0
-		end
-
-		if (selectedID == 120) then
-			TreasureMapMenuComponent:doReadMap(pObject, pPlayer)
-		elseif (selectedID == 121) then
-			TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
-		elseif (selectedID == 122) then
-			TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
-		end
+	if (SceneObject(pObject):isASubChildOf(pPlayer) == false) then
+		CreatureObject(pPlayer):sendSystemMessage("@treasure_map/treasure_map:sys_not_in_inv") -- The treasure map must be in your inventory for you to use it!
 		return 0
-	end)
+	end
+
+	if (TreasureMapMenuComponent:getMapType(pObject) == 0) then
+		CreatureObject(pPlayer):sendSystemMessage("@treasure_map/treasure_map:map_fail") -- This map is obviously a fake.
+		return 0
+	end
+
+	if (selectedID == 120) then
+		TreasureMapMenuComponent:doReadMap(pObject, pPlayer)
+	elseif (selectedID == 121) then
+		TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
+	elseif (selectedID == 122) then
+		TreasureMapMenuComponent:doExtractTreasure(pObject, pPlayer)
+	end
+	return 0
 end
 
 function TreasureMapMenuComponent:doSearchArea(pObject, pPlayer)
@@ -150,16 +148,20 @@ function TreasureMapMenuComponent:openChestEvent(pChest, pCreature)
 
 	return ObjectManager.withCreatureObject(pCreature, function(creature)
 		local chestOwnerID = readData(SceneObject(pChest):getObjectID() .. ":ownerID")
-		if (chestOwnerID ~= creature:getObjectID()) then
+		local playerID = creature:getObjectID()
+
+		if (chestOwnerID ~= playerID) then
 			creature:sendSystemMessage("@treasure_map/treasure_map:sys_not_yours") -- That treasure chest doesn't belong to you.
 			return 0
 		end
-		local hasOpenedChest = readData(creature:getObjectID() .. ":hasOpenedChest")
+
+		local hasOpenedChest = readData(playerID .. ":hasOpenedChest")
+
 		if (hasOpenedChest ~= 1) then
 			local credits = getRandomNumber(500, 5000)
 			creature:addCashCredits(credits, true)
 			creature:sendSystemMessage("You find " .. credits .. " credits in the chest.")
-			writeData(creature:getObjectID() .. ":hasOpenedChest", 1)
+			writeData(playerID .. ":hasOpenedChest", 1)
 		end
 
 		return 0
@@ -206,26 +208,28 @@ function TreasureMapMenuComponent:spawnTreasureDefenders(pObject, pPlayer, x, z,
 end
 
 function TreasureMapMenuComponent:setDefenderAggro(pCreature, pPlayer)
-	ObjectManager.withCreatureAiAgent(pCreature, function(mobile)
-		mobile:setDefender(pPlayer)
-	end)
+	if (pCreature == nil) then
+		return
+	end
+
+	AiAgent(pCreature):setDefender(pPlayer)
 end
 
 function TreasureMapMenuComponent:removeTreasureChest(pChest)
-	ObjectManager.withSceneObject(pChest, function(chest)
-		local chestOwnerID = readData(chest:getObjectID() .. ":ownerID")
-		local pOwner = getSceneObject(chestOwnerID)
-		ObjectManager.withCreaturePlayerObject(pOwner, function(owner)
-			owner:removeWaypointBySpecialType(WAYPOINTTREASUREMAP)
-		end)
+	local chestID = SceneObject(pChest):getObjectID()
+	local chestOwnerID = readData(chestID .. ":ownerID")
+	local pOwner = getSceneObject(chestOwnerID)
 
-		deleteData(chestOwnerID .. ":treasureChestID")
-		deleteData(chest:getObjectID() .. ":ownerID")
-		chest:destroyObjectFromWorld()
-
-		deleteData(chestOwnerID .. ":hasOpenedChest")
-		deleteData(chestOwnerID .. ":treasureMapExactWaypointID")
+	ObjectManager.withCreaturePlayerObject(pOwner, function(owner)
+		owner:removeWaypointBySpecialType(WAYPOINTTREASUREMAP)
 	end)
+
+	deleteData(chestOwnerID .. ":treasureChestID")
+	deleteData(chestID .. ":ownerID")
+	SceneObject(pChest):destroyObjectFromWorld()
+
+	deleteData(chestOwnerID .. ":hasOpenedChest")
+	deleteData(chestOwnerID .. ":treasureMapExactWaypointID")
 end
 
 function TreasureMapMenuComponent:doReadMap(pObject, pPlayer)
@@ -291,17 +295,17 @@ function TreasureMapMenuComponent:spawnSearchArea(mapType, pCreature, x, y)
 end
 
 function TreasureMapMenuComponent:getMapType(pObject)
-	return ObjectManager.withSceneObject(pObject, function(object)
-		if (object:getTemplateObjectPath() == "object/tangible/treasure_map/treasure_map_pirate1.iff") then
-			return 1
-		elseif (object:getTemplateObjectPath() == "object/tangible/treasure_map/treasure_map_pirate2.iff") then
-			return 2
-		elseif (object:getTemplateObjectPath() == "object/tangible/treasure_map/treasure_map_bh.iff") then
-			return 3
-		elseif (object:getTemplateObjectPath() == "object/tangible/loot/quest/treasure_map_hedon.iff") then
-			return 4
-		else
-			return 0
-		end
-	end)
+	local objectTemplate = SceneObject(pObject):getTemplateObjectPath()
+
+	if (objectTemplate == "object/tangible/treasure_map/treasure_map_pirate1.iff") then
+		return 1
+	elseif (objectTemplate == "object/tangible/treasure_map/treasure_map_pirate2.iff") then
+		return 2
+	elseif (objectTemplate == "object/tangible/treasure_map/treasure_map_bh.iff") then
+		return 3
+	elseif (objectTemplate == "object/tangible/loot/quest/treasure_map_hedon.iff") then
+		return 4
+	else
+		return 0
+	end
 end

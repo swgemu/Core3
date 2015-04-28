@@ -4,7 +4,7 @@ RaceTrack = require("screenplays.racetracks.racetrackengine")
 
 keren_racetrack_screenplay = RaceTrack:new {
 	trackConfig={
-    debugMode=1, -- 0 = off, 1 = print debug messages
+		debugMode=1, -- 0 = off, 1 = print debug messages
 		planetName = "naboo", -- The planet the Track is on
 		badgeToAward=BDG_RACING_KEREN_CITY,  -- Badge to be awarded for best daily time
 		trackName="KERENRT",  -- Internal trackname , should be unique to the track
@@ -13,22 +13,22 @@ keren_racetrack_screenplay = RaceTrack:new {
 		trackLaptime="@theme_park/racing/racing:keren_laptime_checkpoint", -- System message sent at each waypoint
 		timeResolution=2, -- number of decimal places to use for the laptimes 0 = none, 1 = well 1 etc
 		expiryTime = (1*3600), --Amount of time in seconds that a player will be expired from the track (stops silly times over this limit)
-    resetTime = (22*3600)+(10*60), --Time of day in seconds that track resets High Scores
+		resetTime = (22*3600)+(10*60), --Time of day in seconds that track resets High Scores
 		waypointRadius=10, -- size of the waypoint observer
 		raceCoordinator = {x=1396,y=2686,z=13}, -- Location of the race coordinator. Note the Z coord is VERY important or conversations break
 		waypoints = { {x = 1518, y = 2732}, -- The coords of the waypoints
-					  {x = 1607, y = 2705},
-					  {x = 1864, y = 2709},
-					  {x = 1932, y = 2707},
-					  {x = 1805, y = 2493},
-					  {x = 1900, y = 2614},
-					  {x = 1990, y = 2683},
-					  {x = 1996, y = 2798},
-					  {x = 1813, y = 2809},
-					  {x = 1663, y = 2785},
-					  {x = 1396, y = 2686}
-					}
+			{x = 1607, y = 2705},
+			{x = 1864, y = 2709},
+			{x = 1932, y = 2707},
+			{x = 1805, y = 2493},
+			{x = 1900, y = 2614},
+			{x = 1990, y = 2683},
+			{x = 1996, y = 2798},
+			{x = 1813, y = 2809},
+			{x = 1663, y = 2785},
+			{x = 1396, y = 2686}
 		}
+	}
 }
 
 registerScreenPlay("keren_racetrack_screenplay", true)
@@ -54,31 +54,29 @@ end
 keren_racetrack_convo_handler = Object:new {}
 
 function keren_racetrack_convo_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
-	return ObjectManager.withCreatureObject(conversingPlayer, function(creatureObject)
-		local convosession = creatureObject:getConversationSession()
-		local lastConversationScreen = nil
-		local conversation = LuaConversationTemplate(conversationTemplate)
-		local nextConversationScreen
-		if ( conversation ~= nil ) then
-			-- checking to see if we have a next screen
-			if ( convosession ~= nil ) then
-				 local session = LuaConversationSession(convosession)
-				 if ( session ~= nil ) then
-				 	lastConversationScreen = session:getLastConversationScreen()
-				 else
-				 	print("session was not good in getNextScreen")
-				 end
-			end
-			if ( lastConversationScreen == nil ) then
-			 	nextConversationScreen = conversation:getInitialScreen()
+	local convosession = CreatureObject(conversingPlayer):getConversationSession()
+	local lastConversationScreen = nil
+	local conversation = LuaConversationTemplate(conversationTemplate)
+	local nextConversationScreen
+	if ( conversation ~= nil ) then
+		-- checking to see if we have a next screen
+		if ( convosession ~= nil ) then
+			local session = LuaConversationSession(convosession)
+			if ( session ~= nil ) then
+				lastConversationScreen = session:getLastConversationScreen()
 			else
-				local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
-				local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-				nextConversationScreen = conversation:getScreen(optionLink)
+				print("session was not good in getNextScreen")
 			end
 		end
-		return nextConversationScreen
-	end)
+		if ( lastConversationScreen == nil ) then
+			nextConversationScreen = conversation:getInitialScreen()
+		else
+			local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
+			local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
+			nextConversationScreen = conversation:getScreen(optionLink)
+		end
+	end
+	return nextConversationScreen
 end
 
 function keren_racetrack_convo_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)

@@ -204,7 +204,7 @@ KraytSkullContainerComponent = {}
 function KraytSkullContainerComponent:transferObject(pContainer, pObj, slot)
 	local pPlayer = KraytDragonSkull:getObjOwner(pObj)
 
-	if (pPlayer == nil) then
+	if (pPlayer == nil or pContainer == nil) then
 		return 0
 	end
 
@@ -242,7 +242,7 @@ end
 function KraytSkullContainerComponent:canAddObject(pContainer, pObj, slot)
 	local pPlayer = KraytDragonSkull:getObjOwner(pObj)
 
-	if (pPlayer == nil) then
+	if (pPlayer == nil or pContainer == nil) then
 		return -1
 	end
 
@@ -267,6 +267,10 @@ function KraytDragonSkull:removeState(creatureObject, state, questGiver)
 end
 
 function KraytDragonSkull:getObjOwner(pObj)
+	if (pObj == nil) then
+		return nil
+	end
+	
 	local pPlayerInv = SceneObject(pObj):getParent()
 
 	if (pPlayerInv == nil) then
@@ -292,10 +296,11 @@ function KraytDragonSkull:spawnNpcs()
 		local npcSpawnData = self.npcMap[i].spawnData
 		if isZoneEnabled(npcSpawnData.planetName) then
 			local pNpc = spawnMobile(npcSpawnData.planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
-			if npcSpawnData.position == SIT then
+			if pNpc ~= nil and npcSpawnData.position == SIT then
 				CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
 			end
-			if npcSpawnData.npcTemplate == "borvo_the_hutt" or npcSpawnData.npcTemplate == "huff_darklighter" then
+			
+			if pNpc ~= nil and npcSpawnData.npcTemplate == "borvo_the_hutt" or npcSpawnData.npcTemplate == "huff_darklighter" then
 				SceneObject(pNpc):setContainerComponent("KraytSkullContainerComponent")
 			end
 		end
