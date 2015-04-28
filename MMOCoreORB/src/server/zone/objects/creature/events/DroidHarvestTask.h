@@ -169,10 +169,16 @@ public:
 			}
 			tpLock.release();
 			Locker clock(target,droid);
-			ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
-			manager->droidHarvest(cr, droid, type,bonus);
-			if (droid->getFollowObject() != owner)
-				droid->setFollowObject(owner);
+
+			Zone* zone = cr->getZone();
+
+			if (zone != NULL) {
+				ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
+				manager->droidHarvest(cr, droid, type,bonus);
+				if (droid->getFollowObject() != owner)
+					droid->setFollowObject(owner);
+			}
+
 			reschedule(1000);
 		} else {
 			reschedule(1000); // try again in 1 scond to see if we got targets to harvest
