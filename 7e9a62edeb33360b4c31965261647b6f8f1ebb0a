@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_8431a8a4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/treasure_map/EncodedDiskMenuComponent.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-28T21:57:46Z",
+      "side": 1,
+      "message": "You need to return a value here.",
+      "revId": "7e9a62edeb33360b4c31965261647b6f8f1ebb0a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
