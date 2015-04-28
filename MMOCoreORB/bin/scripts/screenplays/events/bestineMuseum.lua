@@ -3,7 +3,7 @@ local ObjectManager = require("managers.object.object_manager")
 BestineMuseumScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 	screenplayName = "BestineMuseumScreenPlay",
-	
+
 	restrictSinglePurchase = false -- False during live
 }
 
@@ -88,11 +88,9 @@ function BestineMuseumScreenPlay:spawnMobiles()
 	for i = 1, # artistMobiles do
 		local npcData = artistMobiles[i]
 		local pNpc = spawnMobile("tatooine", npcData.template, 1, npcData.x, npcData.z, npcData.y, npcData.direction, npcData.cellID)
-		ObjectManager.withCreatureObject(pNpc, function(npc)
-			if npcData.position == SIT then
-				npc:setState(STATESITTINGONCHAIR)
-			end
-		end)
+		if pNpc ~= nil and npcData.position == SIT then
+			CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+		end
 	end
 end
 
@@ -100,9 +98,9 @@ function BestineMuseumScreenPlay:doPhaseChange()
 	if (MUSEUM_VOTING_ENABLED == 0) then
 		return 0
 	end
-	
+
 	printf("[BestineMuseum] Initiating phase change.\n")
-	
+
 	local currentPhase = self:getCurrentPhase()
 	if (currentPhase == 1) then
 		self:determinePhaseWinner()
@@ -160,30 +158,34 @@ function BestineMuseumScreenPlay:spawnVisualPainting(winningArtist, winningPaint
 	local paintingDisplayID = tonumber(getQuestStatus("bestine_museum:winning_painting_display"))
 	local pPainting = getSceneObject(paintingDisplayID)
 	local template = self:getPaintingTemplate(tonumber(winningArtist), tonumber(winningPainting))
-	ObjectManager.withSceneObject(pPainting, function(painting)
-		painting:destroyObjectFromWorld()
-	end)
+	SceneObject(pPainting):destroyObjectFromWorld()
 	pPainting = spawnSceneObject("tatooine", template, 10.7, 1.0 + artistPaintingZAxis[tonumber(winningArtist)][tonumber(winningPainting)], 9.9, 1028169, 0.7071067811865476, 0, -0.7071067811865475, 0)
-	ObjectManager.withSceneObject(pPainting, function(painting)
-		setQuestStatus("bestine_museum:winning_painting_display", painting:getObjectID())
-	end)
+	if (pPainting ~= nil) then
+		setQuestStatus("bestine_museum:winning_painting_display", SceneObject(pPainting):getObjectID())
+	end
 end
 
 function BestineMuseumScreenPlay:doSchematicPurchase(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
 	local winningArtist = self:getWinningArtistID()
 	local winningPainting = self:getWinningPainting()
 	local schematic = self:getSchematicTemplate(tonumber(winningArtist), tonumber(winningPainting))
-	ObjectManager.withCreatureObject(pPlayer, function(player)
-		player:subtractCashCredits(48000)
-		player:sendSystemMessage("You successfully make a payment of 48000 credits.")
-		self:writeToPurchasedList(pPlayer)
-		local pInventory = player:getSlottedObject("inventory")
+
+	CreatureObject(pPlayer):subtractCashCredits(48000)
+	CreatureObject(pPlayer):sendSystemMessage("You successfully make a payment of 48000 credits.")
+	self:writeToPurchasedList(pPlayer)
+	local pInventory = player:getSlottedObject("inventory")
+
+	if (pInventory ~= nil) then
 		local pItem = giveItem(pInventory, schematic, -1)
-		ObjectManager.withSceneObject(pItem, function(item)
-			item:sendTo(pPlayer)
-		end)
-		player:sendSystemMessage("@system_msg:give_item_success")
-	end)
+
+		if (pItem ~= nil) then
+			CreatureObject(pPlayer):sendSystemMessage("@system_msg:give_item_success")
+		end
+	end
 end
 
 function BestineMuseumScreenPlay:getWinningArtistID()
@@ -254,112 +256,139 @@ function BestineMuseumScreenPlay:resetAllVotes()
 end
 
 function BestineMuseumScreenPlay:doVote(pPlayer, artistid)
+	if (pPlayer == nil) then
+		return
+	end
+	
 	self:writeToVotedList(pPlayer)
 	self:incrementArtistVotes(artistid)
 end
 
 function BestineMuseumScreenPlay:writeToVotedList(pPlayer)
-	ObjectManager.withCreatureObject(pPlayer, function(player)
-		local playerID = player:getObjectID()
-		local list = getQuestStatus("theater_manager:votedList")
-		if (list == nil or list == "") then
-			list = playerID
-		else
-			list = list .. "," .. playerID
-		end
-		setQuestStatus("theater_manager:votedList", list)
-	end)
+	if (pPlayer == nil) then
+		return
+	end
+	
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local list = getQuestStatus("bestine_museum:votedList")
+
+	if (list == nil or list == "") then
+		list = playerID
+	else
+		list = list .. "," .. playerID
+	end
+
+	setQuestStatus("bestine_museum:votedList", list)
 end
 
 function BestineMuseumScreenPlay:hasAlreadyVoted(pPlayer)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		local playerID = player:getObjectID()
-		local voteList = getQuestStatus("theater_manager:votedList")
-		if (voteList == nil or voteList == "") then
-			return false
-		end
-
-		local list = self:splitString(voteList, ",")
-		for i = 1, table.getn(list), 1 do
-			if tonumber(list[i]) == playerID then
-				return true
-			end
-		end
+	if (pPlayer == nil) then
 		return false
-	end)
+	end
+	
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local voteList = getQuestStatus("bestine_museum:votedList")
+
+	if (voteList == nil or voteList == "") then
+		return false
+	end
+
+	local list = self:splitString(voteList, ",")
+
+	for i = 1, table.getn(list), 1 do
+		if tonumber(list[i]) == playerID then
+			return true
+		end
+	end
+
+	return false
 end
 
 function BestineMuseumScreenPlay:resetVotedList()
-	removeQuestStatus("theater_manager:votedList")
+	removeQuestStatus("bestine_museum:votedList")
 end
 
 function BestineMuseumScreenPlay:writeToPurchasedList(pPlayer)
-	ObjectManager.withCreatureObject(pPlayer, function(player)
-		local playerID = player:getObjectID()
-		local list = getQuestStatus("theater_manager:purchasedList")
-		if (list == nil or list == "") then
-			list = playerID
-		else
-			list = list .. "," .. playerID
-		end
-		setQuestStatus("theater_manager:purchasedList", list)
-	end)
+	if (pPlayer == nil) then
+		return
+	end
+	
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local list = getQuestStatus("bestine_museum:purchasedList")
+
+	if (list == nil or list == "") then
+		list = playerID
+	else
+		list = list .. "," .. playerID
+	end
+
+	setQuestStatus("bestine_museum:purchasedList", list)
 end
 
 function BestineMuseumScreenPlay:hasAlreadyPurchased(pPlayer)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		local playerID = player:getObjectID()
-		local purchaseList = getQuestStatus("theater_manager:purchasedList")
-		if (purchaseList == nil or purchaseList == "") then
-			return false
-		end
-
-		local list = self:splitString(purchaseList, ",")
-		for i = 1, table.getn(list), 1 do
-			if tonumber(list[i]) == playerID then
-				return true
-			end
-		end
+	if (pPlayer == nil) then
 		return false
-	end)
+	end
+	
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local purchaseList = getQuestStatus("bestine_museum:purchasedList")
+	if (purchaseList == nil or purchaseList == "") then
+		return false
+	end
+
+	local list = self:splitString(purchaseList, ",")
+	for i = 1, table.getn(list), 1 do
+		if tonumber(list[i]) == playerID then
+			return true
+		end
+	end
+	return false
 end
 
 function BestineMuseumScreenPlay:resetPurchasedList()
-	removeQuestStatus("theater_manager:purchasedList")
+	removeQuestStatus("bestine_museum:purchasedList")
 end
 
 function BestineMuseumScreenPlay:writeToTalkedList(pPlayer, artistid)
-	ObjectManager.withCreatureObject(pPlayer, function(player)
-		local playerID = player:getObjectID()
-		local list = getQuestStatus("theater_manager:talkedList_" .. artistid)
-		if (list == nil or list == "") then
-			list = playerID
-		else
-			list = list .. "," .. playerID
-		end
-		setQuestStatus("theater_manager:talkedList_" .. artistid, list)
-	end)
+	if (pPlayer == nil) then
+		return
+	end
+	
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local list = getQuestStatus("bestine_museum:talkedList_" .. artistid)
+	if (list == nil or list == "") then
+		list = playerID
+	else
+		list = list .. "," .. playerID
+	end
+	setQuestStatus("bestine_museum:talkedList_" .. artistid, list)
 end
 
 function BestineMuseumScreenPlay:hasTalkedToArtist(pPlayer, artistid)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		local playerID = player:getObjectID()
-		local talkedList = getQuestStatus("theater_manager:talkedList_" .. artistid)
-		if (talkedList == nil or talkedList == "") then
-			return false
-		end
-
-		local list = self:splitString(talkedList, ",")
-		for i = 1, table.getn(list), 1 do
-			if tonumber(list[i]) == playerID then
-				return true
-			end
-		end
+	if (pPlayer == nil) then
 		return false
-	end)
+	end
+	
+	local playerID = CreatureObject(pPlayer):getObjectID()
+	local talkedList = getQuestStatus("bestine_museum:talkedList_" .. artistid)
+	if (talkedList == nil or talkedList == "") then
+		return false
+	end
+
+	local list = self:splitString(talkedList, ",")
+	for i = 1, table.getn(list), 1 do
+		if tonumber(list[i]) == playerID then
+			return true
+		end
+	end
+	return false
 end
 
 function BestineMuseumScreenPlay:hasTalkedToAnyArtist(pPlayer)
+	if (pPlayer == nil) then
+		return false
+	end
+	
 	for i = 1, 6, 1 do
 		if self:hasTalkedToArtist(pPlayer, i) == true then
 			return true
@@ -370,7 +399,7 @@ end
 
 function BestineMuseumScreenPlay:resetAllTalkedToLists()
 	for i = 1, 6, 1 do
-		removeQuestStatus("theater_manager:talkedList_" .. i)
+		removeQuestStatus("bestine_museum:talkedList_" .. i)
 	end
 end
 
