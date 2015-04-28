@@ -87,6 +87,11 @@ public:
 				return;
 			}
 			Creature* cr = cast<Creature*>(target.get());
+
+			if (cr == NULL) {
+				reschedule(1000);
+				return;
+			}
 			// droid should be in rnge now.
 			int harvestInterest = module->getHarvestInterest();
 			int bonus = module->getHarvestPower();
