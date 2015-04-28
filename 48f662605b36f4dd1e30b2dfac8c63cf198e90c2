@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_041d980f",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/treasure_map/TreasureMapMenuComponent.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-04-28T22:31:16Z",
+      "side": 1,
+      "message": "creature is not defined here.",
+      "revId": "48f662605b36f4dd1e30b2dfac8c63cf198e90c2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
