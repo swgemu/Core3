@@ -259,9 +259,10 @@ void DroidMaintenanceModuleDataComponent::payStructures(CreatureObject* player, 
 		int maintToPay = assignments.elementAt(i).getValue();
 		ManagedReference<SceneObject*> obj = player->getZoneServer()->getObject(objectID);
 		StructureObject* structureObject = cast<StructureObject*>(obj.get());
-		if (structureObject != NULL)
+		if (structureObject != NULL) {
 			Locker sLock(obj,player);
 			structureObject->payMaintenance(maintToPay,player,true);
+		}
 	}
 }
 long DroidMaintenanceModuleDataComponent::calculateRunTime(VectorMap<unsigned long long, int> assignments) {
