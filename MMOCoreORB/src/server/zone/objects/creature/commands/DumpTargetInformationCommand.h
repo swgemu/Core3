@@ -79,6 +79,23 @@ public:
 				if (buildingTemplate != 0)
 					msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
 			}
+
+			if (objCreo->getPatrolPointSize() > 0) {
+				PatrolPoint nextPosition = objCreo->getNextPosition();
+				cell = nextPosition.getCell();
+
+				if (cell != NULL && cell->isCellObject()) {
+					cellid = (cast<CellObject*>(cell.get()))->getCellNumber();
+					ManagedReference<SceneObject*> building = cell->getParent();
+					buildingTemplate = building->getServerObjectCRC();
+				}
+
+				msg << endl << "nextX = " << nextPosition.getPositionX() << ", nextZ = " << nextPosition.getPositionZ() << ", nextY = " << nextPosition.getPositionY()
+						<< ", nextCell = " << cellid;
+
+				if (buildingTemplate != 0)
+					msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
+			}
 		}
 
 		player->sendSystemMessage(msg.toString());
