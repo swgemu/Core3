@@ -85,47 +85,47 @@ ZicxContainerComponent = {}
 
 function ZicxContainerComponent:transferObject(pContainer, pObj, slot)
 	local pPlayer = ZicxBugBomb:getObjOwner(pObj)
-	
+
 	if (pPlayer == nil) then
 		return 0
 	end
-	
-	return ObjectManager.withSceneObject(pObj, function(object)
-		return ObjectManager.withCreatureObject(pPlayer, function(player)
-			if (not player:hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") or player:hasScreenPlayState(8, "zicx_bug_bomb_goruNpc")) then
-				return 0
-			elseif (object:getTemplateObjectPath() == "object/tangible/loot/quest/quest_item_zicx_bug_jar.iff") then
-				if (not player:hasScreenPlayState(4, "zicx_bug_bomb_goruNpc")) then
-					spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:get_the_bile")
-				else
-					spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:give_a_minute")
-				end
-				ZicxBugBomb:setState(player, 2, "zicx_bug_bomb_goruNpc")
-			elseif (object:getTemplateObjectPath() == "object/tangible/loot/quest/quest_item_sarlacc_bile_jar.iff") then
-				if (not player:hasScreenPlayState(2, "zicx_bug_bomb_goruNpc")) then
-					spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:get_the_bugs")
-				else
-					spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:give_a_minute")
-				end
-				ZicxBugBomb:setState(player, 4, "zicx_bug_bomb_goruNpc")
-			else
-				spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:what_is_this")
-				return 0
-			end
-			object:destroyObjectFromWorld()
-			object:destroyObjectFromDatabase()
+
+	local objectTemplate = SceneObject(pObj):getTemplateObjectPath()
+
+	return ObjectManager.withCreatureObject(pPlayer, function(player)
+		if (not player:hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") or player:hasScreenPlayState(8, "zicx_bug_bomb_goruNpc")) then
 			return 0
-		end)
+		elseif (objectTemplate == "object/tangible/loot/quest/quest_item_zicx_bug_jar.iff") then
+			if (not player:hasScreenPlayState(4, "zicx_bug_bomb_goruNpc")) then
+				spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:get_the_bile")
+			else
+				spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:give_a_minute")
+			end
+			player:setScreenPlayState(2, "zicx_bug_bomb_goruNpc")
+		elseif (objectTemplate == "object/tangible/loot/quest/quest_item_sarlacc_bile_jar.iff") then
+			if (not player:hasScreenPlayState(2, "zicx_bug_bomb_goruNpc")) then
+				spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:get_the_bugs")
+			else
+				spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:give_a_minute")
+			end
+			player:setScreenPlayState(4, "zicx_bug_bomb_goruNpc")
+		else
+			spatialChat(pContainer, "@epic_quest/zicx_bug_bomb/rori_goru_rainstealer:what_is_this")
+			return 0
+		end
+		SceneObject(pObj):destroyObjectFromWorld()
+		SceneObject(pObj):destroyObjectFromDatabase()
+		return 0
 	end)
 end
 
 function ZicxContainerComponent:canAddObject(pContainer, pObj, slot)
 	local pPlayer = ZicxBugBomb:getObjOwner(pObj)
-	
+
 	if (pPlayer == nil) then
 		return -1
 	end
-	
+
 	return ObjectManager.withCreatureObject(pPlayer, function(player)
 		if (player:hasScreenPlayState(1, "zicx_bug_bomb_goruNpc") and not player:hasScreenPlayState(8, "zicx_bug_bomb_goruNpc")) then
 			return true
@@ -136,8 +136,12 @@ function ZicxContainerComponent:canAddObject(pContainer, pObj, slot)
 end
 
 function ZicxBugBomb:getObjOwner(pObj)
+	if (pObj == nil) then
+		return nil
+	end
+
 	local pPlayerInv = SceneObject(pObj):getParent()
-	
+
 	if (pPlayerInv == nil) then
 		return nil
 	end
@@ -160,30 +164,19 @@ function ZicxContainerComponent:removeObject(pContainer, pObj, slot)
 	return -1
 end
 
-function ZicxBugBomb:setState(creatureObject, state, questGiver)
-	creatureObject:setScreenPlayState(state, questGiver)
-end
-
-function ZicxBugBomb:removeState(creatureObject, state, questGiver)
-	creatureObject:removeScreenPlayState(state, questGiver)
-end
-
 -- Custom spawnNpcs to handle setting npcs as containers for quest item turnin
 function ZicxBugBomb:spawnNpcs()
 	for i = 1, # self.npcMap do
 		local npcSpawnData = self.npcMap[i].spawnData
 		if isZoneEnabled(npcSpawnData.planetName) then
 			local pNpc = spawnMobile(npcSpawnData.planetName, npcSpawnData.npcTemplate, 1, npcSpawnData.x, npcSpawnData.z, npcSpawnData.y, npcSpawnData.direction, npcSpawnData.cellID)
-			ObjectManager.withCreatureObject(pNpc, function(npc)
-				if npcSpawnData.position == SIT then
-					npc:setState(STATESITTINGONCHAIR)
-				end
-				if (npcSpawnData.npcTemplate == "goru_rainstealer") then
-					ObjectManager.withSceneObject(pNpc, function(zicxNpc)
-						zicxNpc:setContainerComponent("ZicxContainerComponent")
-					end)
-				end
-			end)
+
+			if pNpc ~= nil and npcSpawnData.position == SIT then
+				CreatureObject(pNpc):setState(STATESITTINGONCHAIR)
+			end
+			if (pNpc ~= nil and npcSpawnData.npcTemplate == "goru_rainstealer") then
+				SceneObject(pNpc):setContainerComponent("ZicxContainerComponent")
+			end
 		end
 	end
 end
