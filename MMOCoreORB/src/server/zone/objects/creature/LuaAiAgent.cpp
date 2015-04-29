@@ -681,7 +681,7 @@ int LuaAiAgent::shouldRetreat(lua_State* L) {
 	bool retVal;
 	SceneObject* target = realObject->getFollowObject();
 
-	if (!realObject->isRetreating())
+	if (realObject->isRetreating())
 		retVal = false;
 	else if (target != NULL)
 		retVal = !homeLocation->isInRange(target, range);
