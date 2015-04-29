@@ -214,8 +214,11 @@ public:
 
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
 
-		if (revivePack != NULL)
+		if (revivePack != NULL) {
+			Locker locker(revivePack);
+
 			revivePack->decreaseUseCount();
+		}
 
 		int xpAmount = healedHealth + healedAction + healedMind + healedHealthWounds + healedActionWounds + healedMindWounds + 250;
 		
