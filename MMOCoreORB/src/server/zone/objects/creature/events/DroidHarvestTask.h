@@ -173,7 +173,7 @@ public:
 			Zone* zone = cr->getZone();
 
 			if (zone != NULL) {
-				ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
+				ManagedReference<CreatureManager*> manager = zone->getCreatureManager();
 				manager->droidHarvest(cr, droid, type,bonus);
 				if (droid->getFollowObject() != owner)
 					droid->setFollowObject(owner);

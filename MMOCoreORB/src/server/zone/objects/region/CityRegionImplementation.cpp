@@ -560,18 +560,25 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank, bool send
 
 void CityRegionImplementation::removeAllTerminals() {
 	for (int i = cityMissionTerminals.size() - 1; i >= 0 ; --i) {
-		cityMissionTerminals.get(i)->destroyObjectFromWorld(false);
-		cityMissionTerminals.get(i)->destroyObjectFromDatabase(true);
+		Reference<SceneObject*> terminal = cityMissionTerminals.get(i);
+
+		Locker locker(terminal);
+
+		terminal->destroyObjectFromWorld(false);
+		terminal->destroyObjectFromDatabase(true);
 	}
 
 	cityMissionTerminals.removeAll();
 }
 
 void CityRegionImplementation::removeAllSkillTrainers() {
-
 	for (int i = citySkillTrainers.size() - 1; i >= 0 ; --i) {
-		citySkillTrainers.get(i)->destroyObjectFromWorld(false);
-		citySkillTrainers.get(i)->destroyObjectFromDatabase(true);
+		Reference<SceneObject*> trainer = citySkillTrainers.get(i);
+
+		Locker locker(trainer);
+
+		trainer->destroyObjectFromWorld(false);
+		trainer->destroyObjectFromDatabase(true);
 	}
 
 	citySkillTrainers.removeAll();
@@ -582,6 +589,9 @@ void CityRegionImplementation::removeAllDecorations() {
 
 	for (int i = cityDecorations.size() - 1; i >= 0 ; --i) {
 		ManagedReference<SceneObject*> dec = cityDecorations.get(i);
+
+		Locker locker(dec);
+
 		if(dec->isStructureObject()) {
 			StructureManager::instance()->destroyStructure(cast<StructureObject*>(dec.get()));
 		} else {
