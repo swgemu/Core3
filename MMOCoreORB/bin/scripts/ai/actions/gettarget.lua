@@ -38,7 +38,7 @@ function GetTargetBase:doAction(pAgent)
 			end
 		elseif pTarget ~= nil and agent:validateTarget() then
 		--print("2")
-			if agent:followHasState(PEACE) and ranLevel == 1 then
+			if agent:followHasState(PEACE) and ranLevel == 1 and not agent:isAggressiveTo(pTarget) then
 				agent:clearCombatState(true)
 				agent:setOblivious()
 				return BEHAVIOR_FAILURE
@@ -60,7 +60,7 @@ function GetTargetBase:doAction(pAgent)
 			end
 		elseif pTarget ~= nil and agent:validateTarget() then
 		--print("4")
-			if agent:followHasState(PEACE) and ranLevel == 1 then
+			if agent:followHasState(PEACE) and ranLevel == 1 and not agent:isAggressiveTo(pTarget) then
 				agent:clearCombatState(true)
 				agent:setOblivious()
 				return BEHAVIOR_FAILURE
