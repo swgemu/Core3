@@ -1674,13 +1674,17 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 		if (failed) {
 			switch (effectType) {
 			case CommandEffect::KNOCKDOWN:
-				if (!targetCreature->checkPostureChangeRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
+				if (!targetCreature->checkKnockdownRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
 					targetCreature->setPosture(CreaturePosture::UPRIGHT);
 				creature->sendSystemMessage("@cbt_spam:knockdown_fail");
 				break;
 			case CommandEffect::POSTUREDOWN:
+				if (!targetCreature->checkPostureDownRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
+					targetCreature->setPosture(CreaturePosture::UPRIGHT);
+				creature->sendSystemMessage("@cbt_spam:posture_change_fail");
+				break;
 			case CommandEffect::POSTUREUP:
-				if (!targetCreature->checkPostureChangeRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
+				if (!targetCreature->checkPostureUpRecovery() && targetCreature->getPosture() != CreaturePosture::UPRIGHT)
 					targetCreature->setPosture(CreaturePosture::UPRIGHT);
 				creature->sendSystemMessage("@cbt_spam:posture_change_fail");
 				break;

@@ -443,7 +443,7 @@ public:
 			creature->setStunnedState(duration);
 			break;
 		case CommandEffect::KNOCKDOWN:
-			if (!creature->checkPostureChangeRecovery()) {
+			if (!creature->checkKnockdownRecovery()) {
 				if (creature->getPosture() != CreaturePosture::UPRIGHT)
 					creature->setPosture(CreaturePosture::UPRIGHT);
 				break;
@@ -457,7 +457,7 @@ public:
 			if (!creature->isDead() && !creature->isIncapacitated())
 				creature->setPosture(CreaturePosture::KNOCKEDDOWN);
 
-			creature->updatePostureChangeRecovery();
+			creature->updateKnockdownRecovery();
 			creature->updatePostureChangeDelay(5000);
 			creature->removeBuff(String("burstrun").hashCode());
 			creature->removeBuff(String("retreat").hashCode());
@@ -465,7 +465,7 @@ public:
 			creature->sendStateCombatSpam("cbt_spam", "posture_knocked_down", 0, 0, false);
 			break;
 		case CommandEffect::POSTUREUP:
-			if (!creature->checkPostureChangeRecovery()) {
+			if (!creature->checkPostureUpRecovery()) {
 				if (creature->getPosture() != CreaturePosture::UPRIGHT)
 					creature->setPosture(CreaturePosture::UPRIGHT);
 				break;
@@ -486,13 +486,13 @@ public:
 				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_0", 0, 0, false);
 			}
 
-			creature->updatePostureChangeRecovery();
+			creature->updatePostureUpRecovery();
 			creature->updatePostureChangeDelay(2500);
 			creature->removeBuff(String("burstrun").hashCode());
 			creature->removeBuff(String("retreat").hashCode());
 			break;
 		case CommandEffect::POSTUREDOWN:
-			if (!creature->checkPostureChangeRecovery()) {
+			if (!creature->checkPostureDownRecovery()) {
 				if (creature->getPosture() != CreaturePosture::UPRIGHT)
 					creature->setPosture(CreaturePosture::UPRIGHT);
 				break;
@@ -513,7 +513,7 @@ public:
 				creature->sendStateCombatSpam("cbt_spam", "force_posture_change_2", 0, 0, false);
 			}
 
-			creature->updatePostureChangeRecovery();
+			creature->updatePostureDownRecovery();
 			creature->updatePostureChangeDelay(2500);
 			creature->removeBuff(String("burstrun").hashCode());
 			creature->removeBuff(String("retreat").hashCode());
