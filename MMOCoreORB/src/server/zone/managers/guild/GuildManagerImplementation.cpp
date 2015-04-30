@@ -252,7 +252,11 @@ void GuildManagerImplementation::destroyGuild(GuildObject* guild, StringIdChatPa
 
 			CreatureObject* member = cast<CreatureObject*>( obj.get());
 
+			Locker clocker(member, guild);
+
 			member->setGuildObject(NULL);
+
+			clocker.release();
 
 			chatManager->sendMail(guild->getGuildName(), "@guildmail:disband_subject", mailbody, member->getFirstName());
 
