@@ -51,7 +51,8 @@ giant_canyon_krayt_dragon = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareaattack","stateAccuracyBonus=50"},
-		{"creatureareaknockdown","stateAccuracyBonus=50"}
+		{"creatureareaknockdown","stateAccuracyBonus=50"},
+		{"dizzyattack","stateAccuracyBonus=50"}
 	}
 }
 
