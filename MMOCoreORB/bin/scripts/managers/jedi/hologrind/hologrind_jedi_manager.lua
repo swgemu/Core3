@@ -60,7 +60,7 @@ function HologrindJediManager:getGrindableProfessionList()
 		--{ "pilot_neutral_tatooine", 		PILOT_TATOOINE },
 		--{ "pilot_imperial_navy_tatooine", 	PILOT_IMPERIAL_NAVY_TATOOINE },
 		{ "combat_unarmed_master", 		COMBAT_UNARMED_MASTER  },
-		--{ "pilot_rebel_navy_naboo", 		PILOT_REBEL_NAVY_NABOO }
+	--{ "pilot_rebel_navy_naboo", 		PILOT_REBEL_NAVY_NABOO }
 	}
 	return grindableProfessions
 end
@@ -107,7 +107,7 @@ end
 
 -- Sui window ok pressed callback function.
 function HologrindJediManager:notifyOkPressed()
-	-- Do nothing.
+-- Do nothing.
 end
 
 -- Send a sui window to the player about unlocking jedi and award jedi status and force sensitive skill.
@@ -129,8 +129,12 @@ end
 -- Check if the player has mastered all hologrind professions and send sui window and award skills.
 -- @param pCreatureObject pointer to the creature object of the player to check the jedi progression on.
 function HologrindJediManager:checkIfProgressedToJedi(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	if self:getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER and
-	   not self:isJedi(pCreatureObject) then
+		not self:isJedi(pCreatureObject) then
 		self:sendSuiWindow(pCreatureObject)
 		self:awardJediStatusAndSkill(pCreatureObject)
 	end
@@ -142,6 +146,10 @@ end
 -- @param badgeNumber the badge number that was awarded.
 -- @return 0 to keep the observer active.
 function HologrindJediManager:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, badgeNumber)
+	if (pCreatureObject == nil) then
+		return 0
+	end
+
 	self:checkIfProgressedToJedi(pCreatureObject)
 
 	return 0
@@ -150,12 +158,20 @@ end
 -- Register observer on the player for observing badge awards.
 -- @param pCreatureObject pointer to the creature object of the player to register observers on.
 function HologrindJediManager:registerObservers(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	createObserver(BADGEAWARDED, "HologrindJediManager", "badgeAwardedEventHandler", pCreatureObject)
 end
 
 -- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
 -- @param pCreatureObject pointer to the creature object of the player who logged in.
 function HologrindJediManager:onPlayerLoggedIn(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	self:checkIfProgressedToJedi(pCreatureObject)
 	self:registerObservers(pCreatureObject)
 end
@@ -176,12 +192,13 @@ end
 -- Find out and send the response from the holocron to the player
 -- @param pCreatureObject pointer to the creature object of the player who used the holocron.
 function HologrindJediManager:sendHolocronMessage(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	if self:getNumberOfMasteredProfessions(pCreatureObject) >= MAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON then
-		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-			-- The Holocron is quiet. The ancients' knowledge of the Force will no longer assist you
-  			-- on your journey. You must continue seeking on your own.
-			creatureObject:sendSystemMessage("@jedi_spam:holocron_quiet")
-		end)
+		-- The Holocron is quiet. The ancients' knowledge of the Force will no longer assist you on your journey. You must continue seeking on your own.
+		CreatureObject(pCreatureObject):sendSystemMessage("@jedi_spam:holocron_quiet")
 		return true
 	else
 		ObjectManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
@@ -202,6 +219,10 @@ end
 -- @param itemType the type of item that is used.
 -- @param pCreatureObject pointer to the creature object that used the item.
 function HologrindJediManager:useItem(pSceneObject, itemType, pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	if itemType == ITEMHOLOCRON then
 		local isSilent = self:sendHolocronMessage(pCreatureObject)
 		if isSilent then

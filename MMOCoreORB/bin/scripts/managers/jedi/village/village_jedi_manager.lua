@@ -23,6 +23,10 @@ VillageJediManager = JediManager:new {
 -- @param itemType the type of item that is used.
 -- @param pCreatureObject pointer to the creature object that used the item.
 function VillageJediManager:useItem(pSceneObject, itemType, pCreatureObject)
+	if (pSceneObject == nil or pCreatureObject == nil) then
+		return
+	end
+
 	Logger:log("useItem called with item type " .. itemType, LT_INFO)
 	if itemType == ITEMHOLOCRON then
 		VillageJediManagerHolocron.useHolocron(pSceneObject, pCreatureObject)
@@ -38,12 +42,20 @@ end
 -- Handling of the checkForceStatus command.
 -- @param pCreatureObject pointer to the creature object of the player who performed the command
 function VillageJediManager:checkForceStatusCommand(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	Glowing:checkForceStatusCommand(pCreatureObject)
 end
 
 -- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
 -- @param pCreatureObject pointer to the creature object of the player who logged in.
 function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	Glowing:onPlayerLoggedIn(pCreatureObject)
 end
 

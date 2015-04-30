@@ -11,24 +11,32 @@ GoToDathomir = GoToLocation:new {
 	spawnPoint = { x = 5306, y = -4145 },
 	spawnPlanet = "dathomir",
 	spawnRadius = 128,
-    onFailedSpawn = nil,
-    onSuccessfulSpawn = nil,
-    onEnteredActiveArea = nil
+	onFailedSpawn = nil,
+	onSuccessfulSpawn = nil,
+	onEnteredActiveArea = nil
 }
 
 -- Event handler for the enter active area event.
 -- The event will complete the task.
 -- @param pCreatureObject pointer to the creature object of the player.
 function GoToDathomir:onEnteredActiveArea(pCreatureObject)
-    QuestManager.completeQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
-    self:taskFinish(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
+	QuestManager.completeQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
+	self:taskFinish(pCreatureObject)
 end
 
 -- Event handler for the onSuccessfulSpawn.
 -- The event will activate the quest.
 -- @param pCreatureObject pointer to the creature object of the player.
 function GoToDathomir:onSuccessfulSpawn(pCreatureObject)
-    QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
+	if (pCreatureObject == nil) then
+		return
+	end
+
+	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.FS_VILLAGE_ELDER)
 end
 
 return GoToDathomir
