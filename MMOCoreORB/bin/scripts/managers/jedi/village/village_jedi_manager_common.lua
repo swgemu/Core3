@@ -14,9 +14,11 @@ VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE = 16
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param state the state to set.
 function VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, state)
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		creatureObject:setScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING)
-	end)
+	if (pCreatureObject == nil) then
+		return
+	end
+
+	CreatureObject(pCreatureObject):setScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING)
 end
 
 -- Check if the player has the jedi progression screen play state.
@@ -24,9 +26,11 @@ end
 -- @param state the state to check if the player has.
 -- @return true if the player has the state.
 function VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, state)
-	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		return creatureObject:hasScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING)
-	end) == true
+	if (pCreatureObject == nil) then
+		return false
+	end
+
+	return CreatureObject(pCreatureObject):hasScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING)
 end
 
 return VillageJediManagerCommon
