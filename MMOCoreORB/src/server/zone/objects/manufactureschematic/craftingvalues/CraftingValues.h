@@ -115,7 +115,7 @@ public:
 	void resetValue(const String& attribute);
 
 	void setCurrentPercentage(const String& subtitle, const float value);
-	void setCurrentPercentage(const String& subtitle, const float value, const float min, const float max);
+	void setCurrentPercentage(const String& subtitle, const float value, const float max);
 
 	float getCurrentPercentage(const String& attribute);
 	float getCurrentPercentage(const int i);

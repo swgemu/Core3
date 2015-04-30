@@ -456,7 +456,7 @@ void CraftingValues::setCurrentPercentage(
 }
 
 void CraftingValues::setCurrentPercentage(const String& subtitle,
-		 float value, float min, float max) {
+		 float value, float max) {
 
 	Subclasses* subclasses;
 	Values* values;
@@ -470,8 +470,7 @@ void CraftingValues::setCurrentPercentage(const String& subtitle,
 
 			if (values->getName() == subtitle) {
 
-				values->setMaxValue(max);
-				values->setMinValue(min);
+				values->setMaxPercentage(max);
 
 				if (value > max)
 					values->setPercentage(max);
@@ -815,7 +814,7 @@ void CraftingValues::recalculateValues(bool initial) {
 			newValue = max;
 		}
 
-		if (initial || (newValue != oldValue && (!initial && !hidden))) {
+		if (initial || (newValue != oldValue && !initial && !hidden)) {
 			setCurrentValue(attributeName, newValue);
 
 			valuesToSend.add(attributeName);

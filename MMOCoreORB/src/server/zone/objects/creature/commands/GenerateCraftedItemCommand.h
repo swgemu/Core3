@@ -50,12 +50,17 @@ public:
 			StringTokenizer tokenizer(arguments.toString());
 
 			if(!tokenizer.hasMoreTokens()) {
-				creature->sendSystemMessage("Usage: /GenerateCraftedItem SERVERSCRIPTPATH [Quantity] [Template Number]");
+				creature->sendSystemMessage("Usage: /GenerateCraftedItem SERVERSCRIPTPATH [Quantity] [Quality] [Template Number]");
 				return GENERALERROR;
 			}
 
 			String file;
 			tokenizer.getStringToken(file);
+			if (file.indexOf("draft_schematic") == -1)
+				file = "object/draft_schematic/" + file;
+
+			if (file.indexOf(".iff") == -1)
+				file = file + ".iff";
 
 			ManagedReference<DraftSchematic* > draftSchematic =
 					creature->getZoneServer()->createObject(file.hashCode(), 0).castTo<DraftSchematic*>();
@@ -81,6 +86,12 @@ public:
 
 			if(quantity == 0)
 				quantity = 1;
+
+			int quality = 0;
+			if (tokenizer.hasMoreTokens())
+				quality = tokenizer.getIntToken();
+
+			quality = MAX(0, quality);
 
 			unsigned int targetTemplate = draftSchematic->getTanoCRC();
 
@@ -108,10 +119,36 @@ public:
 				creature->sendSystemMessage("Unable to create target item, is it implemented yet?");
 				return GENERALERROR;
 			}
+
 			Locker locker(prototype);
-			Locker mlock(manuSchematic);
+			Locker mlock(manuSchematic, prototype);
 			craftingManager->setInitialCraftingValues(prototype,manuSchematic,CraftingManager::GREATSUCCESS);
-			prototype->updateCraftingValues(manuSchematic->getCraftingValues(), true);
+			Reference<CraftingValues*> craftingValues = manuSchematic->getCraftingValues();
+			int nRows = craftingValues->getVisibleExperimentalPropertyTitleSize();
+			prototype->updateCraftingValues(craftingValues, true);
+
+			if (quality > 0) {
+				for (int i = 0; i < nRows; i++) {
+					String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
+					for (int j = 0; j < craftingValues->getExperimentalPropertySubtitleSize(); ++j) {
+						String subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(j);
+						if (subtitlesTitle == title) {
+							String subtitle = craftingValues->getExperimentalPropertySubtitle(j);
+
+							float maxValue = craftingValues->getMaxValue(subtitle);
+							float minValue = craftingValues->getMinValue(subtitle);
+
+							//float newValue = fabs(maxValue-minValue)*((float)quality/100.f) + MAX(minValue, maxValue);
+							//craftingValues->setCurrentValue(subtitle, newValue);
+
+							craftingValues->setCurrentPercentage(subtitle, (float)quality/100.f, 5.f);
+						}
+					}
+				}
+
+				craftingValues->recalculateValues(true);
+				prototype->updateCraftingValues(craftingValues, true);
+			}
 
 			prototype->createChildObjects();
 
