@@ -330,7 +330,10 @@ int DroidTrapModuleDataComponent::writeObjectMembers(ObjectOutputStream* stream)
 }
 void DroidTrapModuleDataComponent::decrementTrap() {
 	if(trap != NULL) {
+		Locker locker(trap);
+
 		trap->decreaseUseCount();
+
 		if(trap->getUseCount() == 0) {
 			trap = NULL;
 		}
