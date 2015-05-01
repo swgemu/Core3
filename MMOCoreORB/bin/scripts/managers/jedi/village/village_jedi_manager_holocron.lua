@@ -1,8 +1,8 @@
 local ObjectManager = require("managers.object.object_manager")
 local ScreenPlay = require("screenplays.screenplay")
 
-USEDHOLOCRON = "used_holocron"
-HOLOCRONCOOLDOWNTIME = 24 * 60 * 60 * 1000 -- 24 hours
+local USEDHOLOCRON = "used_holocron"
+local HOLOCRONCOOLDOWNTIME = 24 * 60 * 60 * 1000 -- 24 hours
 
 VillageJediManagerHolocron = ScreenPlay:new {}
 
@@ -10,9 +10,22 @@ VillageJediManagerHolocron = ScreenPlay:new {}
 -- @param pCreatureObject pointer to the creature object of the player who tries to use the holocron.
 -- @return true if the player can use the holocron.
 function VillageJediManagerHolocron.canUseHolocron(pCreatureObject)
-	return ObjectManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
-		return playerObject:isJedi() and not creatureObject:checkCooldownRecovery(USEDHOLOCRON)
-	end)
+	if (pCreatureObject == nil) then
+		return
+	end
+
+	if (CreatureObject(pCreatureObject):getPlayerObject() == nil) then
+		return
+	end
+
+	local pPlayerObject = CreatureObject(pCreatureObject):getPlayerObject()
+
+	if (PlayerObject(pPlayerObject):isJedi()) then
+		CreatureObject(pCreatureObject):checkCooldownRecovery(USEDHOLOCRON)
+	else
+		return false
+	end
+
 end
 
 -- Checks if the player can replenish the force or not.
@@ -33,6 +46,7 @@ function VillageJediManagerHolocron.useTheHolocron(pSceneObject, pCreatureObject
 		creatureObject:sendSystemMessage("@jedi_spam:holocron_force_replenish")
 		playerObject:setForcePower(playerObject:getForcePowerMax());
 		creatureObject:addCooldown(USEDHOLOCRON, HOLOCRONCOOLDOWNTIME)
+		creatureObject:playEffect("clienteffect/pl_force_heal_self.cef", "")
 	end)
 	SceneObject(pSceneObject):destroyObjectFromWorld()
 	SceneObject(pSceneObject):destroyObjectFromDatabase()
