@@ -228,6 +228,7 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 			// just clone it and set old one to 0 uses to destroy it so it transfer correctly as we dont store this directly in the droid
 			ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(input));
 			if (protoclone != NULL) {
+				Locker cloneLocker(protoclone);
 				protoclone->setParent(NULL);
 				protoclone->setUseCount(input->getUseCount());
 				trap = protoclone;
@@ -242,6 +243,7 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 			// should technically never happen as you cant experiment traps use count but someone might config base useCount > 10
 			ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(input));
 			if (protoclone != NULL) {
+				Locker cloneLocker(protoclone);
 				protoclone->setParent(NULL);
 				protoclone->setUseCount(allowed);
 				input->setUseCount(input->getUseCount() - allowed);
@@ -259,9 +261,11 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 		// trap already loaded
 		if (trap->getServerObjectCRC() == input->getServerObjectCRC()) {
 			// same trap
-			if (allowed <= 0)
+			if (allowed <= 0) {
 				player->sendSystemMessage("@pet/droid_modules:trap_matrix_full");
-			else {
+			} else {
+				Locker tlocker(trap);
+
 				if (allowed > input->getUseCount()) {
 					trap->setUseCount(trap->getUseCount() + input->getUseCount());
 					input->setUseCount(0);

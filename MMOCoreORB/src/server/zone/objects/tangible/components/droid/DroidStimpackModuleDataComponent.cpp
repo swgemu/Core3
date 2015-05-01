@@ -385,9 +385,13 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 				player->sendSystemMessage("@pet/droid_modules:stimpack_capacity_full");
 				return;
 			}
+
+			Locker plocker(pack);
 			int amountOnStim = pack->getUseCount();
 			StimPack* targetStim = compatibleStimpack(pack->getEffectiveness());
 			if (targetStim != NULL) {
+				Locker tlocker(targetStim);
+
 				if (allowedAmount > amountOnStim) {
 					targetStim->setUseCount(targetStim->getUseCount() + amountOnStim,true);
 					pack->setUseCount(0,true);
@@ -408,9 +412,13 @@ void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* play
 				} else {
 					// we cant load it all so split the diff
 					StimPack* newStim = pack->split(allowedAmount);
-					satchel->transferObject(newStim,-1,true);
-					satchel->broadcastObject(newStim, true);
-					player->sendSystemMessage("@pet/droid_modules:stimpack_loaded");
+
+					if (newStim != NULL) {
+						Locker slocker(newStim);
+						satchel->transferObject(newStim,-1,true);
+						satchel->broadcastObject(newStim, true);
+						player->sendSystemMessage("@pet/droid_modules:stimpack_loaded");
+					}
 				}
 			}
 		}
