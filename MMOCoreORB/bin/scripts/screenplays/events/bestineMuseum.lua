@@ -157,8 +157,13 @@ end
 function BestineMuseumScreenPlay:spawnVisualPainting(winningArtist, winningPainting)
 	local paintingDisplayID = tonumber(getQuestStatus("bestine_museum:winning_painting_display"))
 	local pPainting = getSceneObject(paintingDisplayID)
+
+	if (pPainting ~= nil) then
+		SceneObject(pPainting):destroyObjectFromWorld()
+	end
+
 	local template = self:getPaintingTemplate(tonumber(winningArtist), tonumber(winningPainting))
-	SceneObject(pPainting):destroyObjectFromWorld()
+
 	pPainting = spawnSceneObject("tatooine", template, 10.7, 1.0 + artistPaintingZAxis[tonumber(winningArtist)][tonumber(winningPainting)], 9.9, 1028169, 0.7071067811865476, 0, -0.7071067811865475, 0)
 	if (pPainting ~= nil) then
 		setQuestStatus("bestine_museum:winning_painting_display", SceneObject(pPainting):getObjectID())
@@ -259,7 +264,7 @@ function BestineMuseumScreenPlay:doVote(pPlayer, artistid)
 	if (pPlayer == nil) then
 		return
 	end
-	
+
 	self:writeToVotedList(pPlayer)
 	self:incrementArtistVotes(artistid)
 end
@@ -268,7 +273,7 @@ function BestineMuseumScreenPlay:writeToVotedList(pPlayer)
 	if (pPlayer == nil) then
 		return
 	end
-	
+
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	local list = getQuestStatus("bestine_museum:votedList")
 
@@ -285,7 +290,7 @@ function BestineMuseumScreenPlay:hasAlreadyVoted(pPlayer)
 	if (pPlayer == nil) then
 		return false
 	end
-	
+
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	local voteList = getQuestStatus("bestine_museum:votedList")
 
@@ -312,7 +317,7 @@ function BestineMuseumScreenPlay:writeToPurchasedList(pPlayer)
 	if (pPlayer == nil) then
 		return
 	end
-	
+
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	local list = getQuestStatus("bestine_museum:purchasedList")
 
@@ -329,7 +334,7 @@ function BestineMuseumScreenPlay:hasAlreadyPurchased(pPlayer)
 	if (pPlayer == nil) then
 		return false
 	end
-	
+
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	local purchaseList = getQuestStatus("bestine_museum:purchasedList")
 	if (purchaseList == nil or purchaseList == "") then
@@ -353,7 +358,7 @@ function BestineMuseumScreenPlay:writeToTalkedList(pPlayer, artistid)
 	if (pPlayer == nil) then
 		return
 	end
-	
+
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	local list = getQuestStatus("bestine_museum:talkedList_" .. artistid)
 	if (list == nil or list == "") then
@@ -368,7 +373,7 @@ function BestineMuseumScreenPlay:hasTalkedToArtist(pPlayer, artistid)
 	if (pPlayer == nil) then
 		return false
 	end
-	
+
 	local playerID = CreatureObject(pPlayer):getObjectID()
 	local talkedList = getQuestStatus("bestine_museum:talkedList_" .. artistid)
 	if (talkedList == nil or talkedList == "") then
@@ -388,7 +393,7 @@ function BestineMuseumScreenPlay:hasTalkedToAnyArtist(pPlayer)
 	if (pPlayer == nil) then
 		return false
 	end
-	
+
 	for i = 1, 6, 1 do
 		if self:hasTalkedToArtist(pPlayer, i) == true then
 			return true
