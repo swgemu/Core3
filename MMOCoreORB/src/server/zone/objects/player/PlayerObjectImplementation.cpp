@@ -2179,15 +2179,17 @@ bool PlayerObjectImplementation::hasChosenVeteranReward( const String& rewardTem
 
 void PlayerObjectImplementation::updateForceSensitiveElegibleExperiences(int type) {
 	DeltaVectorMap<String, int>* xpList = getExperienceList();
+	VectorMap<String, int> xpFS = FsExperienceTypes::instance()->getFsEligibleExperienceType(type);
 
-	// Clear the vector for new strings...
+	// Remove existing.
 	fsEligibleExperiences.removeAll();
 
-
-	for (int i=0; i < xpList->size(); ++i){
-		String xpString = xpList->getKeyAt(i);
-		if (FsExperienceTypes::isValid(type, xpString) && (!fsEligibleExperiences.contains(xpList->getKeyAt(i)))) {
-			fsEligibleExperiences.add(xpList->getKeyAt(i));
+	for (int i=0; i < xpList->size(); ++i) {
+		String xp = xpList->getKeyAt(i);
+		for (int j=0; j < xpFS.size(); ++j) {
+			if (xp.contains(xpFS.elementAt(j).getKey())) {
+				fsEligibleExperiences.add(xp);
+			}
 		}
 	}
 }
@@ -2225,8 +2227,9 @@ int PlayerObjectImplementation::getCharacterAgeInDays() {
 	return days;
 }
 
-String PlayerObjectImplementation::getForceSensitiveExperienceRatio(const String& type) {
-	if (!FsExperienceTypes::getFsRatio(type).isEmpty())
-		return FsExperienceTypes::getFsRatio(type);
-	else return "";
+String PlayerObjectImplementation::getForceSensitiveExperienceRatio(const String& typeOfExperience, int typeOfConversion) {
+
+	if (FsExperienceTypes::instance()->getRatio(typeOfExperience, typeOfConversion) == -1)
+		return "";
+	else return String::valueOf(FsExperienceTypes::instance()->getRatio(typeOfExperience, typeOfConversion));
 }

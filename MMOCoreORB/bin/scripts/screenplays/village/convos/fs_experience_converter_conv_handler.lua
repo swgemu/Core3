@@ -1,11 +1,8 @@
-local ExperienceConverter = require("screenplays.village.experience_converter")
-local Logger = require("utils.logger")
-require("utils.helpers")
+local ExperienceConverter = require("screenplays.village.convos.convohelpers.experience_converter")
 local ObjectManager = require("managers.object.object_manager")
 
 fs_experience_converter_conv_handler = Object:new {
-	EXPERIECE_TYPE_FOR_RATIO = 0, -- Defaults to combat, is changed depending on the screenID.
-}
+	}
 
 function fs_experience_converter_conv_handler:getNextConversationScreen(pConversationTemplate, pConversingPlayer, selectedOption)
 	local creature = LuaCreatureObject(pConversingPlayer)
@@ -66,16 +63,12 @@ function fs_experience_converter_conv_handler:runScreenHandlers(pConversationTem
 	elseif screenID == "cs_jsPlumb_1_17" then -- Unlocking new branches.
 		fs_experience_converter_conv_handler:chooseBranchToUnlock(pConversingPlayer)
 	elseif screenID == "cs_jsPlumb_1_11" then -- Transferring Experience of first type.
-		self.EXPERIECE_TYPE_FOR_RATIO = 0
 		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 0)
 	elseif screenID == "cs_jsPlumb_1_126" then -- Transferring Experience of second type.
-		self.EXPERIECE_TYPE_FOR_RATIO = 1
 		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 1)
 	elseif screenID == "cs_jsPlumb_1_139" then -- Transferring Experience of third type.
-		self.EXPERIECE_TYPE_FOR_RATIO = 2
 		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 2)
 	elseif screenID == "cs_jsPlumb_1_152" then -- Transferring Experience of fourth type.
-		self.EXPERIECE_TYPE_FOR_RATIO = 3
 		fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pConversingPlayer, 3)
 	end
 	return pConversationScreen
@@ -124,15 +117,20 @@ function fs_experience_converter_conv_handler:chooseExperienceTypeForRatio(pCrea
 	end
 
 	local experienceTypeFS = nil
-	if (self.EXPERIECE_TYPE_FOR_RATIO == 0) then
+	if (pExperienceType == 0) then
 		experienceTypeFS = "Force-sensitive Combat"
-	elseif (self.EXPERIECE_TYPE_FOR_RATIO == 1) then
+	elseif (pExperienceType == 1) then
 		experienceTypeFS = "Force-sensitive Crafting"
-	elseif (self.EXPERIECE_TYPE_FOR_RATIO == 2) then
+	elseif (pExperienceType == 2) then
 		experienceTypeFS = "Force-sensitive Senses"
-	elseif (self.EXPERIECE_TYPE_FOR_RATIO == 3) then
+	elseif (pExperienceType == 3) then
 		experienceTypeFS = "Force-sensitive Reflex"
 	end
+
+	-- Save the option.
+	ObjectManager.withCreatureObject(pCreature, function(creatureObject)
+		ExperienceConverter:setSuiTransferExperienceType(tonumber(pExperienceType), creatureObject:getObjectID())
+	end)
 
 	if (experienceTypeFS ~= nil) then
 		local suiManager = LuaSuiManager()
@@ -142,28 +140,33 @@ end
 
 function fs_experience_converter_conv_handler:notifyTransfer(pCreature, pSui, cancelPressed, arg0)
 	if (not cancelPressed) then
-		local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, self.EXPERIECE_TYPE_FOR_RATIO)
+	
+		local oid = SceneObject(pCreature):getObjectID()
+		
+		local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, ExperienceConverter:getSuiTransferExperienceType(oid))
+
 		local optionsNameFrom = optionsName[arg0 + 1]
 
 		local experienceTypeFS = nil
-		if (self.EXPERIECE_TYPE_FOR_RATIO == 0) then
+		
+		local expTransferType = ExperienceConverter:getSuiTransferExperienceType(oid)
+
+		if (expTransferType == 0) then
 			experienceTypeFS = "Force-sensitive Combat"
-		elseif (self.EXPERIECE_TYPE_FOR_RATIO == 1) then
+		elseif (expTransferType == 1) then
 			experienceTypeFS = "Force-sensitive Crafting"
-		elseif (self.EXPERIECE_TYPE_FOR_RATIO == 2) then
+		elseif (expTransferType == 2) then
 			experienceTypeFS = "Force-sensitive Senses"
-		elseif (self.EXPERIECE_TYPE_FOR_RATIO == 3) then
+		elseif (ExperienceConverter:getSuiTransferExperienceType(oid) == 3) then
 			experienceTypeFS = "Force-sensitive Reflex"
 		end
 
 		if (experienceTypeFS ~= nil) then
 			-- Save the choice...
-			ObjectManager.withCreatureObject(pCreature, function(creatureObject)
-				ExperienceConverter:setSuiTransferExperienceSelection(tonumber(arg0), creatureObject:getObjectID())
-			end)
+				ExperienceConverter:setSuiTransferExperienceSelection(tonumber(arg0 + 1), SceneObject(pCreature):getObjectID())
 
-			local amount = ExperienceConverter:getExperienceAmount(pCreature, arg0)
-			local ratio = ExperienceConverter:getExperienceRatio(pCreature, arg0)
+			local amount = ExperienceConverter:getExperienceAmount(pCreature, arg0 + 1)
+			local ratio = ExperienceConverter:getExperienceRatio(pCreature, arg0 + 1)
 
 			-- Add Options: 1 = string name, 2 = amount, 3 = ratio
 			local optionsFrom = {optionsNameFrom, amount, ratio}
@@ -176,15 +179,21 @@ end
 
 function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature, pSui, cancelPressed, arg0, arg1)
 	if (not cancelPressed) then
+
 		local experienceTypeFS = nil
-		if (self.EXPERIECE_TYPE_FOR_RATIO == 0) then
-			experienceTypeFS = "fs_combat"
-		elseif (self.EXPERIECE_TYPE_FOR_RATIO == 1) then
-			experienceTypeFS = "fs_senses"
-		elseif (self.EXPERIECE_TYPE_FOR_RATIO == 2) then
-			experienceTypeFS = "fs_reflex"
-		elseif (self.EXPERIECE_TYPE_FOR_RATIO == 3) then
-			experienceTypeFS = "fs_crafting"
+		
+		local oid = SceneObject(pCreature):getObjectID()
+		
+		local expTransferType = ExperienceConverter:getSuiTransferExperienceType(oid)
+
+		if (expTransferType == 0) then
+			experienceTypeFS = "Force-sensitive Combat"
+		elseif (expTransferType == 1) then
+			experienceTypeFS = "Force-sensitive Crafting"
+		elseif (expTransferType == 2) then
+			experienceTypeFS = "Force-sensitive Senses"
+		elseif (ExperienceConverter:getSuiTransferExperienceType(oid) == 3) then
+			experienceTypeFS = "Force-sensitive Reflex"
 		end
 
 		if (arg1 == "0") then
@@ -194,12 +203,22 @@ function fs_experience_converter_conv_handler:transferExperiencePoints(pCreature
 			return
 		end
 
+		-- If they are capped, don't let them transfer any more xp.
+		ObjectManager.withCreatureObject(pCreature, function(creatureObject)
+			if (ExperienceConverter:getExperienceAmount(pCreature, ExperienceConverter:getSuiTransferExperienceType(creatureObject:getObjectID())) > 500000) then
+				creatureObject:sendSystemMessage("@quest/force_sensitive/utils:convert_at_fs_skill_cap")
+			end
+			return
+		end)
+
+
 		if (experienceTypeFS ~= nil) then
 			local experienceTypeFSFinal = "@exp_n:" .. experienceTypeFS
-			local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, self.EXPERIECE_TYPE_FOR_RATIO)
 			ObjectManager.withCreatureAndPlayerObject(pCreature, function(creatureObject, playerObject)
+				local optionsName = ExperienceConverter:getExperienceForConversion(pCreature, ExperienceConverter:getSuiTransferExperienceType(creatureObject:getObjectID()))
 				local optionsChoice = tonumber(ExperienceConverter:getSuiTransferExperienceSelection(creatureObject:getObjectID()))
 				ExperienceConverter:deleteSuiTransferExperienceSelection(creatureObject:getObjectID())
+				ExperienceConverter:deleteSuiTransferExperienceType(creatureObject:getObjectID())
 				local optionsNameFrom = tostring(optionsName[optionsChoice + 1])
 				local optionsNameFromUnformatted = string.sub(optionsNameFrom, 8, string.len(optionsNameFrom))
 				local messageString = LuaStringIdChatParameter("@quest/force_sensitive/utils:xp_convert_lose")
@@ -225,7 +244,8 @@ function fs_experience_converter_conv_handler.handleInit(pConversationTemplate, 
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
 	local nextScreen = nil
 
-	local playerCreature = LuaCreatureObject(pConversingPlayer)
+	-- Paemos - "beckon" animation.
+	CreatureObject(pConversingNpc):doAnimation("beckon")
 
 	-- See if they have a quest to unlock, or having XP to convert.
 	if (ExperienceConverter.qualifiesForConversation(pConversingPlayer) == true) then

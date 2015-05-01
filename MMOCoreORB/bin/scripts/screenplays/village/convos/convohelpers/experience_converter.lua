@@ -44,6 +44,24 @@ function ExperienceConverter:deleteSuiTransferExperienceSelection(oid)
 	return deleteStringData("suiTransferExperienceSelection:"  .. oid)
 end
 
+
+function ExperienceConverter:setSuiTransferExperienceType(var, oid)
+	if (readData("suiTransferExperienceType:" .. oid) ~= nil) then
+		deleteData("suiTransferExperienceType:"  .. oid)
+	end
+	if (var ~= nil) then
+		writeData("suiTransferExperienceType:"  .. oid, var)
+	end
+end
+
+function ExperienceConverter:getSuiTransferExperienceType(oid)
+	return readData("suiTransferExperienceType:"  .. oid)
+end
+
+function ExperienceConverter:deleteSuiTransferExperienceType(oid)
+	return deleteData("suiTransferExperienceType:"  .. oid)
+end
+
 -- See if the player qualifies for the conversion.
 -- @param pPlayerObject pointer to the player object of the player.
 -- @return a boolean.
@@ -129,7 +147,7 @@ function ExperienceConverter:getExperienceRatio(pPlayer, pSelection)
 	local ratio = nil
 	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
 		experienceType = playerObject:getExperienceType(pSelection)
-		ratio = playerObject:getExperienceRatio(experienceType)
+		ratio = playerObject:getExperienceRatio(experienceType, pSelection)
 	end)
 
 	return ratio
