@@ -89,61 +89,66 @@ void ZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float
 }
 
 void ZoneComponent::updateInRangeObjectsOnMount(SceneObject* sceneObject) {
-	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) sceneObject->getCloseObjects();
-	CloseObjectsVector* parentCloseObjectsVector = (CloseObjectsVector*) sceneObject->getRootParent().get()->getCloseObjects();
+	try {
+		CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) sceneObject->getCloseObjects();
+		CloseObjectsVector* parentCloseObjectsVector = (CloseObjectsVector*) sceneObject->getRootParent().get()->getCloseObjects();
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects(closeObjectsVector->size(), 10);
-	closeObjectsVector->safeCopyTo(closeObjects);
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects(closeObjectsVector->size(), 10);
+		closeObjectsVector->safeCopyTo(closeObjects);
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > parentCloseObjects(parentCloseObjectsVector->size(), 10);
-	parentCloseObjectsVector->safeCopyTo(parentCloseObjects);
+		SortedVector<ManagedReference<QuadTreeEntry*> > parentCloseObjects(parentCloseObjectsVector->size(), 10);
+		parentCloseObjectsVector->safeCopyTo(parentCloseObjects);
 
-	//remove old ones
-	float rangesq = 192.f * 192.f;
+		//remove old ones
+		float rangesq = 192.f * 192.f;
 
-	float x = sceneObject->getPositionX();
-	float y = sceneObject->getPositionY();
+		float x = sceneObject->getPositionX();
+		float y = sceneObject->getPositionY();
 
-	float oldx = sceneObject->getPreviousPositionX();
-	float oldy = sceneObject->getPreviousPositionY();
+		float oldx = sceneObject->getPreviousPositionX();
+		float oldy = sceneObject->getPreviousPositionY();
 
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		ManagedReference<QuadTreeEntry*> o = closeObjects.get(i);
-		ManagedReference<QuadTreeEntry*> objectToRemove = o;
-		ManagedReference<QuadTreeEntry*> rootParent = o->getRootParent();
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			ManagedReference<QuadTreeEntry*> o = closeObjects.get(i);
+			ManagedReference<QuadTreeEntry*> objectToRemove = o;
+			ManagedReference<QuadTreeEntry*> rootParent = o->getRootParent();
 
-		if (rootParent != NULL)
-			o = rootParent;
+			if (rootParent != NULL)
+				o = rootParent;
 
-		if (o != sceneObject) {
-			float deltaX = x - o->getPositionX();
-			float deltaY = y - o->getPositionY();
+			if (o != sceneObject) {
+				float deltaX = x - o->getPositionX();
+				float deltaY = y - o->getPositionY();
 
-			if (deltaX * deltaX + deltaY * deltaY > rangesq) {
-				float oldDeltaX = oldx - o->getPositionX();
-				float oldDeltaY = oldy - o->getPositionY();
+				if (deltaX * deltaX + deltaY * deltaY > rangesq) {
+					float oldDeltaX = oldx - o->getPositionX();
+					float oldDeltaY = oldy - o->getPositionY();
 
-				if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY <= rangesq) {
+					if (oldDeltaX * oldDeltaX + oldDeltaY * oldDeltaY <= rangesq) {
 
-					if (sceneObject->getCloseObjects() != NULL)
-						sceneObject->removeInRangeObject(objectToRemove);
+						if (sceneObject->getCloseObjects() != NULL)
+							sceneObject->removeInRangeObject(objectToRemove);
 
-					if (objectToRemove->getCloseObjects() != NULL)
-						objectToRemove->removeInRangeObject(sceneObject);
+						if (objectToRemove->getCloseObjects() != NULL)
+							objectToRemove->removeInRangeObject(sceneObject);
+					}
 				}
 			}
 		}
-	}
 
-	//insert new ones
-	for (int i = 0; i < parentCloseObjects.size(); ++i) {
-		QuadTreeEntry* o = parentCloseObjects.get(i);
+		//insert new ones
+		for (int i = 0; i < parentCloseObjects.size(); ++i) {
+			QuadTreeEntry* o = parentCloseObjects.get(i);
 
-		if (sceneObject->getCloseObjects() != NULL)
-			sceneObject->addInRangeObject(o, false);
+			if (sceneObject->getCloseObjects() != NULL)
+				sceneObject->addInRangeObject(o, false);
 
-		if (o->getCloseObjects() != NULL)
-			o->addInRangeObject(sceneObject, true);
+			if (o->getCloseObjects() != NULL)
+				o->addInRangeObject(sceneObject, true);
+		}
+	} catch (Exception& e) {
+		sceneObject->error(e.getMessage());
+		e.printStackTrace();
 	}
 }
 
@@ -188,7 +193,12 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 			zone->unlock();
 			zoneUnlocked = true;
 
-			zone->inRange(sceneObject, 192);
+			try {
+				zone->inRange(sceneObject, 192);
+			} catch (Exception& e) {
+				sceneObject->error(e.getMessage());
+				e.printStackTrace();
+			}
 		} else if (parent != NULL) {
 			zone->unlock();
 			zoneUnlocked = true;
@@ -197,37 +207,42 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		}
 	}
 
-	if (sceneObject->isTangibleObject()) {
-		TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-
-		zone->updateActiveAreas(tano);
-	}
-
-	bool isInvis = false;
-
-	if (sceneObject->isCreatureObject()) {
-		CreatureObject* creo = cast<CreatureObject*>(sceneObject);
-
-		if(creo->isInvisible())
-			isInvis = true;
-	}
-
-
-	if (!isInvis && sendPackets && (parent == NULL || (!parent->isVehicleObject() && !parent->isMount()))) {
-		if (lightUpdate) {
-			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(sceneObject);
-			sceneObject->broadcastMessage(message, false, true);
-		} else {
-			UpdateTransformMessage* message = new UpdateTransformMessage(sceneObject);
-			sceneObject->broadcastMessage(message, false, true);
-		}
-	}
-
 	try {
-		notifySelfPositionUpdate(sceneObject);
+		if (sceneObject->isTangibleObject()) {
+			TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+
+			zone->updateActiveAreas(tano);
+		}
+
+		bool isInvis = false;
+
+		if (sceneObject->isCreatureObject()) {
+			CreatureObject* creo = cast<CreatureObject*>(sceneObject);
+
+			if(creo->isInvisible())
+				isInvis = true;
+		}
+
+
+		if (!isInvis && sendPackets && (parent == NULL || (!parent->isVehicleObject() && !parent->isMount()))) {
+			if (lightUpdate) {
+				LightUpdateTransformMessage* message = new LightUpdateTransformMessage(sceneObject);
+				sceneObject->broadcastMessage(message, false, true);
+			} else {
+				UpdateTransformMessage* message = new UpdateTransformMessage(sceneObject);
+				sceneObject->broadcastMessage(message, false, true);
+			}
+		}
+
+		try {
+			notifySelfPositionUpdate(sceneObject);
+		} catch (Exception& e) {
+			sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in ZoneComponent::updateZone");
+			sceneObject->error(e.getMessage());
+		}
 	} catch (Exception& e) {
-		sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in ZoneComponent::updateZone");
 		sceneObject->error(e.getMessage());
+		e.printStackTrace();
 	}
 
 	if (zoneUnlocked)
@@ -262,58 +277,68 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		} else {
 			zone->unlock();
 
-			if (sceneObject->isTangibleObject()) {
-				TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-				zone->updateActiveAreas(tano);
+			try {
+				if (sceneObject->isTangibleObject()) {
+					TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+					zone->updateActiveAreas(tano);
+				}
+			} catch (Exception& e) {
+				sceneObject->error(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 
 		//notify in range objects that i moved
 	}
 
-	CloseObjectsVector* closeObjects = (CloseObjectsVector*) sceneObject->getCloseObjects();
+	try {
+		CloseObjectsVector* closeObjects = (CloseObjectsVector*) sceneObject->getCloseObjects();
 
-	if (closeObjects != NULL) {
-		SortedVector<ManagedReference<QuadTreeEntry*> > objects(closeObjects->size(), 10);
-		closeObjects->safeCopyTo(objects);
+		if (closeObjects != NULL) {
+			SortedVector<ManagedReference<QuadTreeEntry*> > objects(closeObjects->size(), 10);
+			closeObjects->safeCopyTo(objects);
 
-		for (int i = 0; i < objects.size(); ++i) {
-			QuadTreeEntry* object = objects.get(i);
-			try {
-				object->notifyPositionUpdate(sceneObject);
-			} catch (Exception& e) {
+			for (int i = 0; i < objects.size(); ++i) {
+				QuadTreeEntry* object = objects.get(i);
+				try {
+					object->notifyPositionUpdate(sceneObject);
+				} catch (Exception& e) {
 
+				}
 			}
 		}
-	}
 
-	//zoneLocker.release();
+		//zoneLocker.release();
 
-	//zone->unlock();
+		//zone->unlock();
 
-	bool isInvis = false;
+		bool isInvis = false;
 
-	if (sceneObject->isCreatureObject()) {
-		CreatureObject* creo = cast<CreatureObject*>(sceneObject);
-		if(creo->isInvisible())
-			isInvis = true;
-	}
-
-	if (sendPackets && !isInvis) {
-		if (lightUpdate) {
-			LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(sceneObject);
-			sceneObject->broadcastMessage(message, false, true);
-		} else {
-			UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(sceneObject);
-			sceneObject->broadcastMessage(message, false, true);
+		if (sceneObject->isCreatureObject()) {
+			CreatureObject* creo = cast<CreatureObject*>(sceneObject);
+			if(creo->isInvisible())
+				isInvis = true;
 		}
-	}
 
-	try {
-		notifySelfPositionUpdate(sceneObject);
+		if (sendPackets && !isInvis) {
+			if (lightUpdate) {
+				LightUpdateTransformWithParentMessage* message = new LightUpdateTransformWithParentMessage(sceneObject);
+				sceneObject->broadcastMessage(message, false, true);
+			} else {
+				UpdateTransformWithParentMessage* message = new UpdateTransformWithParentMessage(sceneObject);
+				sceneObject->broadcastMessage(message, false, true);
+			}
+		}
+
+		try {
+			notifySelfPositionUpdate(sceneObject);
+		} catch (Exception& e) {
+			sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in ZoneComponent::updateZoneWithParent");
+			sceneObject->error(e.getMessage());
+		}
 	} catch (Exception& e) {
-		sceneObject->error("Exception caught while calling notifySelfPositionUpdate(sceneObject) in ZoneComponent::updateZoneWithParent");
 		sceneObject->error(e.getMessage());
+		e.printStackTrace();
 	}
 
 	zone->wlock();
