@@ -51,6 +51,8 @@ public:
 				if (blueFrog == NULL)
 					return GENERALERROR;
 
+				Locker clocker(blueFrog, creature);
+
 				float x = creature->getPositionX();
 				float y = creature->getPositionY();
 				float z = creature->getPositionZ();//creature->getZone()->getHeight(x, y);
