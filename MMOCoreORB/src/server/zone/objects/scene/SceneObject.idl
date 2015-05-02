@@ -1141,8 +1141,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	/**
 	 * Sets this objects direction so that the object is facing the specified object.
 	 * @param obj The object to face.
+	 * @param notifyClient if true, updates the client with the new direction
 	 */
-	public native void faceObject(SceneObject obj);
+	public native void faceObject(SceneObject obj, boolean notifyClient = false);
 
 	public native boolean isFacingObject(SceneObject obj);
 

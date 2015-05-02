@@ -1398,7 +1398,7 @@ bool SceneObjectImplementation::isFacingObject(SceneObject* obj) {
 	return fabs(directionangle - direction.getRadians()) < (M_PI / 2);
 }
 
-void SceneObjectImplementation::faceObject(SceneObject* obj) {
+void SceneObjectImplementation::faceObject(SceneObject* obj, bool notifyClient) {
 	Vector3 thisPos = getPosition();
 	Vector3 targetPos = obj->getPosition();
 
@@ -1416,7 +1416,11 @@ void SceneObjectImplementation::faceObject(SceneObject* obj) {
 		return;
 	}
 
-	direction.setHeadingDirection(directionangle);
+	if (notifyClient) {
+		updateDirection(directionangle);
+	} else {
+		direction.setHeadingDirection(directionangle);
+	}
 }
 
 void SceneObjectImplementation::getContainerObjects(VectorMap<uint64, ManagedReference<SceneObject*> >& objects) {

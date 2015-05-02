@@ -295,9 +295,10 @@ int LuaSceneObject::getServerObjectCRC(lua_State* L) {
 }
 
 int LuaSceneObject::faceObject(lua_State* L) {
-	SceneObject* obj = (SceneObject*)lua_touserdata(L, -1);
+	bool notifyClient = lua_toboolean(L, -1);
+	SceneObject* obj = (SceneObject*)lua_touserdata(L, -2);
 
-	realObject->faceObject(obj);
+	realObject->faceObject(obj, notifyClient);
 
 	return 0;
 }

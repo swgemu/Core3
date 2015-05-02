@@ -151,7 +151,7 @@ function DefaultInterrupt:checkForReactionChat(pAgent, pObject)
 		state = REACTION_MID
 	end
 
-	SceneObject(pAgent):faceObject(pObject)
+	SceneObject(pAgent):faceObject(pObject, true)
 
 	if SceneObject(pObject):isFacingObject(pAgent) then
 		AiAgent(pAgent):sendReactionChat(REACTION_HI, state)
