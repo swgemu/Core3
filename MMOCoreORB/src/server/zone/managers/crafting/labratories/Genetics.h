@@ -133,7 +133,7 @@ public:
 	 * Resistnce calculation formula
 	 */
 	static float resistanceFormula(DnaComponent* a, DnaComponent* b, DnaComponent* c, DnaComponent* d, DnaComponent* e, int type, int max) {
-		float av,bv,cv,dv,ev;
+		float av = 0, bv = 0, cv = 0, dv = 0, ev = 0;
 		bool any = false;
 		switch(type) {
 			case WeaponObject::ACID:

@@ -751,7 +751,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	float posY = player->getPositionY() + (((points - 1) / 2.0f) * spacer);
 
 	float maxDensity = -1;
-	float maxX, maxY;
+	float maxX = 0, maxY = 0;
 
 	for (int i = 0; i < points; i++) {
 		for (int j = 0; j < points; j++) {
