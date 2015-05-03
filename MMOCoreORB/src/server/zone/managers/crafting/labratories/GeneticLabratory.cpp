@@ -300,7 +300,7 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 	// Step 3. Profit.
 	// RULES: AMAZING + 15% (+5% if lucky), GREAT: 1% GOOD: 0.5% MODERATE: 0.25% SUCCESS: 0.15% MARGINAL: 0% OK: -0.5% BARELY: -1% CRITICAL FAILURE: -1% + random state reduced by 10%
 	// use normal line mechanics, just add the extra in.
-	float modifier, newValue;
+	float modifier = 0, newValue = 0;
 	String title, subtitle, subtitlesTitle, screwedTitle;
 	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
 	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
