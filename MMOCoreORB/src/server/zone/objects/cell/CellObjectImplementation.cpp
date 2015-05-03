@@ -204,6 +204,8 @@ void CellObjectImplementation::destroyAllPlayerItems() {
 		if (containerObject->isCreatureObject())
 			continue;
 
+		Locker locker(containerObject);
+
 		containerObject->destroyObjectFromWorld(true);
 		//containerObject->broadcastDestroy(containerObject, false);
 		//removeObject(containerObject, false);
