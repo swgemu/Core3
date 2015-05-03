@@ -31,9 +31,9 @@ lifeDayScreenplay = ScreenPlay:new {
 	},
 
 	randomGifts = {"object/tangible/loot/quest/lifeday_orb.iff",
-			"object/tangible/painting/painting_wookiee_m.iff",
-			"object/tangible/painting/painting_wookiee_f.iff",
-			"object/tangible/painting/painting_trees_s01.iff"},
+		"object/tangible/painting/painting_wookiee_m.iff",
+		"object/tangible/painting/painting_wookiee_f.iff",
+		"object/tangible/painting/painting_trees_s01.iff"},
 
 	robe = "object/tangible/wearables/wookiee/wke_lifeday_robe.iff"
 }
@@ -89,9 +89,10 @@ function lifeDayScreenplay:giveWaypoint(pPlayer)
 			return
 		end
 
+		local playerID = player:getObjectID()
 		local newWaypointID = ghost:addWaypoint(self.waypoints[num].planet, "@quest/lifeday/lifeday:waypoint_name", "", self.waypoints[num].x, self.waypoints[num].y, 2, true, true, 0, 0) -- Life Day Celebration
-		writeData(player:getObjectID() .. "lifeDayWaypointID", newWaypointID)
-		writeData(player:getObjectID() .. ":lifeDayState", 1)
+		writeData(playerID .. "lifeDayWaypointID", newWaypointID)
+		writeData(playerID .. ":lifeDayState", 1)
 
 		player:sendSystemMessage("@quest/lifeday/lifeday:waypoint_updated") -- A waypoint to a planet holding a Life Day celebration was added to your datapad.
 
@@ -100,48 +101,62 @@ function lifeDayScreenplay:giveWaypoint(pPlayer)
 end
 
 function lifeDayScreenplay:giveRandomGift(pPlayer)
-	ObjectManager.withCreatureObject(pPlayer, function(player)
-		local pInventory = player:getSlottedObject("inventory")
+	if (pPlayer == nil) then
+		return
+	end
 
-		ObjectManager.withSceneObject(pInventory, function(inventory)
-			local slotsRemaining = inventory:getContainerVolumeLimit() - inventory:getContainerObjectsSize()
-			if slotsRemaining <= 0 then
-				player:sendSystemMessage("@quest/lifeday/lifeday:full_inv") -- Your inventory is full. Please make some room and speak to the NPC again to receive your gift.
-				return
-			end
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
-			local rand = getRandomNumber(1, table.getn(self.randomGifts))
-			local itemTemplate = self.randomGifts[rand]
-			local pItem = giveItem(pInventory, itemTemplate, -1)
+	if (pInventory == nil) then
+		return
+	end
 
-			writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
-		end)
-	end)
+	local slotsRemaining = SceneObject(pInventory):getContainerVolumeLimit() - SceneObject(pInventory):getContainerObjectsSize()
+
+	if slotsRemaining <= 0 then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/lifeday/lifeday:full_inv") -- Your inventory is full. Please make some room and speak to the NPC again to receive your gift.
+		return
+	end
+
+	local rand = getRandomNumber(1, table.getn(self.randomGifts))
+	local itemTemplate = self.randomGifts[rand]
+	local pItem = giveItem(pInventory, itemTemplate, -1)
+
+	writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
 
 	self:removeWaypoint(pPlayer)
 end
 
 function lifeDayScreenplay:giveRobe(pPlayer)
-	ObjectManager.withCreatureObject(pPlayer, function(player)
-		local pInventory = player:getSlottedObject("inventory")
+	if (pPlayer == nil) then
+		return
+	end
 
-		ObjectManager.withSceneObject(pInventory, function(inventory)
-			local slotsRemaining = inventory:getContainerVolumeLimit() - inventory:getContainerObjectsSize()
-			if slotsRemaining <= 0 then
-				player:sendSystemMessage("@quest/lifeday/lifeday:full_inv") -- Your inventory is full. Please make some room and speak to the NPC again to receive your gift.
-				return
-			end
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
-			local pItem = giveItem(pInventory, self.robe, -1)
+	if (pInventory == nil) then
+		return
+	end
 
-			writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
-		end)
-	end)
+	local slotsRemaining = SceneObject(pInventory):getContainerVolumeLimit() - SceneObject(pInventory):getContainerObjectsSize()
+
+	if slotsRemaining <= 0 then
+		CreatureObject(pPlayer):sendSystemMessage("@quest/lifeday/lifeday:full_inv") -- Your inventory is full. Please make some room and speak to the NPC again to receive your gift.
+		return
+	end
+
+	local pItem = giveItem(pInventory, self.robe, -1)
+
+	writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
 
 	self:removeWaypoint(pPlayer)
 end
 
 function lifeDayScreenplay:noGift(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
 	writeScreenPlayData(pPlayer, "lifeDay", "complete", 1)
 	self:removeWaypoint(pPlayer)
 end
