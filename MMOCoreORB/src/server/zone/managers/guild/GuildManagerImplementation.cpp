@@ -944,6 +944,8 @@ ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
 	guildChat->setTitle(String::valueOf(guild->getGuildID()));
 	guildLobby->addSubRoom(guildChat);
 
+	Locker locker(guild);
+
 	guild->setChatRoom(guildChat);
 
 	return guildChat;
