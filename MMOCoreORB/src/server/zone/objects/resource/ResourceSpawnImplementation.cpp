@@ -240,6 +240,8 @@ Reference<ResourceContainer*> ResourceSpawnImplementation::createResource(int un
    		newResource = (getZoneServer()->createObject(genericContainer.hashCode(), 2)).castTo<ResourceContainer*>();
    	}
 
+   	Locker locker(newResource);
+
    	newResource->setSpawnObject(_this.get());
 
    	if (units != 0)

@@ -210,6 +210,7 @@ void MissionObjectImplementation::updateMissionLocation() {
 
 		if (playerCreature->isGrouped() && playerCreature->getGroup() != NULL) {
 			GroupObject* group = playerCreature->getGroup();
+			Locker locker(group);
 			group->scheduleUpdateNearestMissionForGroup(playerCreature->getPlanetCRC());
 		}
 	}

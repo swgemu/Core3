@@ -72,6 +72,7 @@ void MissionObjectiveImplementation::complete() {
 
 	if (player->isGrouped() && player->getGroup() != NULL) {
 		GroupObject* group = player->getGroup();
+		Locker locker(group);
 		group->scheduleUpdateNearestMissionForGroup(player->getPlanetCRC());
 	}
 

@@ -23,67 +23,67 @@ class ResourceSpawn extends SceneObject {
 
 	protected string spawnType;
 	protected string spawnName;
-	
+
 	@dereferenced
 	protected Vector<string> spawnClasses;
-	
+
 	@dereferenced
 	protected Vector<string> stfSpawnClasses;
-	
+
 	@dereferenced
 	protected VectorMap<string, int> spawnAttributes;
 
 	protected string poolSlot;
 	protected int spawnPool;
-	
+
 	protected string zoneRestriction;
-	
+
 	protected int surveyToolType;
 	protected unsigned int containerCRC;
-	
+
 	protected unsigned long spawned;
 	protected unsigned long despawned;
 
-	@dereferenced 
+	@dereferenced
 	protected SpawnMap spawnMaps;
-		
+
 	protected unsigned long maxUnitsSpawned;
 	protected unsigned long unitsInCirculation;
-	
+
 	protected int containerReferenceCount;
 	protected boolean dbDestroyed;
 	protected boolean energy;
 
-    public ResourceSpawn() {
-       	spawnType = "";
-       	spawnPool = 0;
-       	poolSlot = "";
-       	spawnAttributes.setNoDuplicateInsertPlan();
-       	
-       	containerReferenceCount = 0;
-       	unitsInCirculation = 0;
-       	maxUnitsSpawned = 0;
-       	containerCRC = 0;
-       	spawned = 0;
-       	despawned = 0;
-       	surveyToolType = 0;
-       	zoneRestriction = "";
-       	spawnPool = 0;
-       	dbDestroyed = false;
-       	energy = false;
-       	
-       	setLoggingName("ResourceSpawn");
-    }
-    
-    public native void finalize() {
-    	Logger.info("trying to delete ResourceSpawn: " + spawnName);
-    	//if (!dbDestroyed && (containerReferenceCount == 0))
-    	//	decreaseContainerReferenceCount();
-    }
-    
-    public native void initializeTransientMembers();
-        
-   /**
+	public ResourceSpawn() {
+		spawnType = "";
+		spawnPool = 0;
+		poolSlot = "";
+		spawnAttributes.setNoDuplicateInsertPlan();
+
+		containerReferenceCount = 0;
+		unitsInCirculation = 0;
+		maxUnitsSpawned = 0;
+		containerCRC = 0;
+		spawned = 0;
+		despawned = 0;
+		surveyToolType = 0;
+		zoneRestriction = "";
+		spawnPool = 0;
+		dbDestroyed = false;
+		energy = false;
+
+		setLoggingName("ResourceSpawn");
+	}
+
+	public native void finalize() {
+		Logger.info("trying to delete ResourceSpawn: " + spawnName);
+		//if (!dbDestroyed && (containerReferenceCount == 0))
+		//	decreaseContainerReferenceCount();
+	}
+
+	public native void initializeTransientMembers();
+
+	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
 	 * @post { }
@@ -93,223 +93,240 @@ class ResourceSpawn extends SceneObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	public native void decreaseContainerReferenceCount();
-        
+
 	@dirty
 	public boolean isResourceSpawn() {
 		return true;
 	}
-    /**
+
+	/**
 	 * Sets the resource spawn with the system generated name
 	 * @pre { }
 	 * @post { }
 	 * @param name generated name to set this object with
 	 */
-    public void setName(final string name) {
-    	spawnName = name;
-    }
-    
-    public void setType(final string type) {
-    	spawnType = type;
-    }
-    
-    public void setSpawnPool(int pool, final string slot) {
-    	spawnPool = pool;
-    	poolSlot = slot;
-    	if(spawnPool == 0) {
-    		spawnMaps.removeAll();
-    		poolSlot = "";
-    	}
-    }
-    
-    public void setZoneRestriction(final string zoneName) {
-    	zoneRestriction = zoneName;
-    }
+	@preLocked
+	public void setName(final string name) {
+		spawnName = name;
+	}
 
-    /**
+	@preLocked
+	public void setType(final string type) {
+		spawnType = type;
+	}
+
+	@preLocked
+	public void setSpawnPool(int pool, final string slot) {
+		spawnPool = pool;
+		poolSlot = slot;
+
+		if(spawnPool == 0) {
+			spawnMaps.removeAll();
+			poolSlot = "";
+		}
+	}
+
+	@preLocked
+	public void setZoneRestriction(final string zoneName) {
+		zoneRestriction = zoneName;
+	}
+
+	/**
 	 * adds a class to the resource
 	 * @pre { }
 	 * @post { }
 	 * @param class string added to spawn
 	 */
-    public void addClass(final string newclass) {
-    	spawnClasses.add(newclass);
-    }
-    
-    public void addStfClass(final string newclass) {
-    	stfSpawnClasses.add(newclass);
-    }
+	@preLocked
+	public void addClass(final string newclass) {
+		spawnClasses.add(newclass);
+	}
 
+	@preLocked
+	public void addStfClass(final string newclass) {
+		stfSpawnClasses.add(newclass);
+	}
+
+	@preLocked
 	public native void addAttribute(final string attribute, int value);
-	
+
 	@dirty
 	public boolean isType(final string type) {
 		for(int i = 0; i < stfSpawnClasses.size(); ++i) {
 			if(stfSpawnClasses.get(i) == type)
-				return true;	
+				return true;
 		}
 		for(int i = 0; i < spawnClasses.size(); ++i) {
 			if(spawnClasses.get(i) == type)
-				return true;	
+				return true;
 		}
 		return false;
 	}
-	
+
+	@preLocked
 	public void setSurveyToolType(int type) {
 		surveyToolType = type;
 	}
-	
+
+	@preLocked
 	public void setIsEnergy(boolean val) {
 		energy = val;
 	}
 
-    // getters
+	// getters
 	@dirty
 	public string getName() {
 		return spawnName;
 	}
 
 	@dirty
-    public string getType() {
-    	return spawnType;
-    }
+	public string getType() {
+		return spawnType;
+	}
 
 	@dirty
-    public string getClass(int index) {
-    	if(index < spawnClasses.size()) {
-    		return spawnClasses.get(index);
-    	} else {
-    		return "";
-    	}
-    }
-    
-	@dirty
-    public string getStfClass(int index) {
-    	if(index < stfSpawnClasses.size()) {
-    		return stfSpawnClasses.get(index);
-    	} else {
-    		return "";
-    	}
-    }
-    
-	@dirty
-    public string getFinalClass() {
-    	if(spawnClasses.size() > 1)
-    		return spawnClasses.get(spawnClasses.size() - 1);
-    	else
-    		return "";
-    }
-    
-	@dirty
-    public native string getFamilyName();
-    
-	@dirty
-    public native string getSurveyMissionSpawnFamilyName();
-    
-    public void setSpawned(unsigned long t) {
-    	spawned = t;
-    }
-    
-    public void setDespawned(unsigned long t) {
-    	despawned = t;
-    }
-    
-    @dirty
-    public unsigned long getDespawned() {
-    	return despawned;
-    }
-    
-    public void setContainerCRC(unsigned int crc) {
-    	containerCRC = crc;
-    }
-    
-    @read
-    public unsigned int getContainerCRC() {
-    	return containerCRC;
-    }
-    
-    @read
-    public int getSpawnPool() {
-    	return spawnPool;
-    }
-    
-    @read
-    public string getPoolSlot() {
-    	return poolSlot;
-    }
-    
-    @dirty
-    public boolean isEnergy() {
-    	return energy;
-    }
-    
-    @read
-    public string getZoneRestriction() {
-    	return zoneRestriction;
-    }
-    
-    @read
-    public int getSurveyToolType() {
-    	return surveyToolType;
-    }
-    
-    @dirty
-    public int getSpawnMapSize() {
-    	return spawnMaps.size();
-    }
-    
-    public native void extractResource(final string zoneName, int units);
-    
-    @reference
-    public native ResourceContainer createResource(int units);
+	public string getClass(int index) {
+		if(index < spawnClasses.size()) {
+			return spawnClasses.get(index);
+		} else {
+			return "";
+		}
+	}
 
-    @local
-    @dirty
-    public native string getSpawnMapZone(int i);
-    
-    @local
-    @dirty
-	public native boolean isUnknownType();
-    
-    @local
-    public native void createSpawnMaps(boolean jtl, int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
-    
-    @local 	
-    @dirty
-	private native int getConcentration(boolean jtl);
-    
-    @dirty
-    public native unsigned int getPlanetCRC();
-	
-	@local 	
-	@dereferenced
 	@dirty
-	private native Vector<string> getSpawnZones(int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
-    
-    @local
-    @dirty
-    public native float getDensityAt(final string zoneName, float x, float y);
-    
-    @local
-    @dirty
-    public native boolean inShift();
-    
-    @local
-    @dirty
-    public native int getAttributeAndValue(string attribute, int index);
-    
-    @dirty
-    public int getAttributeValue(int index) {
-    	return spawnAttributes.get(index);
-    }
-    
-    @dirty
-    public native int getValueOf(int index);
-    
-    public native void addStatsToDeedListBox(SuiListBox suil);
+	public string getStfClass(int index) {
+		if(index < stfSpawnClasses.size()) {
+			return stfSpawnClasses.get(index);
+		} else {
+			return "";
+		}
+	}
+
+	@dirty
+	public string getFinalClass() {
+		if(spawnClasses.size() > 1)
+			return spawnClasses.get(spawnClasses.size() - 1);
+		else
+			return "";
+	}
+
+	@dirty
+	public native string getFamilyName();
+
+	@dirty
+	public native string getSurveyMissionSpawnFamilyName();
+
+	@preLocked
+	public void setSpawned(unsigned long t) {
+		spawned = t;
+	}
+
+	@preLocked
+	public void setDespawned(unsigned long t) {
+		despawned = t;
+	}
+
+	@dirty
+	public unsigned long getDespawned() {
+		return despawned;
+	}
+
+	@preLocked
+	public void setContainerCRC(unsigned int crc) {
+		containerCRC = crc;
+	}
+
+	@read
+	public unsigned int getContainerCRC() {
+		return containerCRC;
+	}
+
+	@read
+	public int getSpawnPool() {
+		return spawnPool;
+	}
+
+	@read
+	public string getPoolSlot() {
+		return poolSlot;
+	}
+
+	@dirty
+	public boolean isEnergy() {
+		return energy;
+	}
+
+	@read
+	public string getZoneRestriction() {
+		return zoneRestriction;
+	}
+
+	@read
+	public int getSurveyToolType() {
+		return surveyToolType;
+	}
+
+	@dirty
+	public int getSpawnMapSize() {
+		return spawnMaps.size();
+	}
+
+	@preLocked
+	public native void extractResource(final string zoneName, int units);
+
+	@reference
+	@preLocked
+	public native ResourceContainer createResource(int units);
 
 	@local
 	@dirty
-    public native void print();
+	public native string getSpawnMapZone(int i);
+
+	@local
+	@dirty
+	public native boolean isUnknownType();
+
+	@local
+	@preLocked
+	public native void createSpawnMaps(boolean jtl, int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
+
+	@local
+	@dirty
+	private native int getConcentration(boolean jtl);
+
+	@dirty
+	public native unsigned int getPlanetCRC();
+
+	@local
+	@dereferenced
+	@dirty
+	private native Vector<string> getSpawnZones(int minpool, int maxpool, final string zonerestriction, @dereferenced Vector<string> activeZones);
+
+	@local
+	@dirty
+	public native float getDensityAt(final string zoneName, float x, float y);
+
+	@local
+	@dirty
+	public native boolean inShift();
+
+	@local
+	@dirty
+	public native int getAttributeAndValue(string attribute, int index);
+
+	@dirty
+	public int getAttributeValue(int index) {
+		return spawnAttributes.get(index);
+	}
+
+	@dirty
+	public native int getValueOf(int index);
+
+	public native void addStatsToDeedListBox(SuiListBox suil);
+
+	@local
+	@dirty
+	public native void print();
 }
