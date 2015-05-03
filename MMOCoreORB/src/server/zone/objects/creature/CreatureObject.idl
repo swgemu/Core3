@@ -1803,7 +1803,6 @@ class CreatureObject extends TangibleObject {
 	public native int getSkillModOfType(final string skillmod, final unsigned int modType);
 
 	@dirty
-	@preLocked
 	public boolean hasSkill(final string skill) {
 		return skillList.containsSkill(skill);
 	}

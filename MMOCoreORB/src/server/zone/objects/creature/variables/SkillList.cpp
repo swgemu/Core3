@@ -16,6 +16,8 @@
 bool SkillList::containsSkill(const String& skillBox) {
 	String low = skillBox.toLowerCase();
 
+	ReadLocker readLocker(getLock());
+
 	for (int i = 0; i < vector.size(); ++i) {
 		Reference<Skill*> skill = vector.get(i);
 
