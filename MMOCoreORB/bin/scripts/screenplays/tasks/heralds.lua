@@ -103,32 +103,39 @@ function heraldScreenPlay:createLoc(pPlayer, heraldNum)
 end
 
 function heraldScreenPlay:notifyEnteredHeraldArea(pActiveArea, pPlayer)
-	return ObjectManager.withActiveArea(pActiveArea, function(activeArea)
-		local ownerID = readData(activeArea:getObjectID() .. ":ownerID")
-		local heraldNum = readData(activeArea:getObjectID() .. ":heraldNum")
-		if (ownerID == CreatureObject(pPlayer):getObjectID()) then
-			CreatureObject(pPlayer):sendSystemMessage("@theme_park/messages:go_message")
-			self:cleanUp(pPlayer, heraldNum)
-			return 1
-		end
-
+	if (pActiveArea == nil or pPlayer == nil) then
 		return 0
-	end)
+	end
+
+	local areaID = SceneObject(pActiveArea):getObjectID()
+
+	local ownerID = readData(areaID .. ":ownerID")
+	local heraldNum = readData(areaID .. ":heraldNum")
+	if (ownerID == CreatureObject(pPlayer):getObjectID()) then
+		CreatureObject(pPlayer):sendSystemMessage("@theme_park/messages:go_message")
+		self:cleanUp(pPlayer, heraldNum)
+		return 1
+	end
+
+	return 0
 end
 
 function heraldScreenPlay:cleanUp(pPlayer, heraldNum)
 	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		local waypointID = readData(player:getObjectID() .. ":herald" .. heraldNum)
-		local areaID = readData(player:getObjectID() .. ":heraldArea" .. heraldNum)
+		local playerID = player:getObjectID()
+		local waypointID = readData(playerID .. ":herald" .. heraldNum)
+		local areaID = readData(playerID .. ":heraldArea" .. heraldNum)
 		playerObject:removeWaypoint(waypointID, true)
 		local pArea = getSceneObject(areaID)
 		if (pArea ~= nil) then
+			deleteData(SceneObject(pArea):getObjectID() .. ":ownerID")
+			deleteData(SceneObject(pArea):getObjectID() .. ":heraldNum")
+
 			SceneObject(pArea):destroyObjectFromWorld()
 		end
-		deleteData(SceneObject(pArea):getObjectID() .. ":ownerID")
-		deleteData(SceneObject(pArea):getObjectID() .. ":heraldNum")
-		writeData(player:getObjectID() .. ":heraldArea" .. heraldNum, 0)
-		writeData(player:getObjectID() .. ":herald" .. heraldNum, 0)
+
+		writeData(playerID .. ":heraldArea" .. heraldNum, 0)
+		writeData(playerID .. ":herald" .. heraldNum, 0)
 	end)
 end
 

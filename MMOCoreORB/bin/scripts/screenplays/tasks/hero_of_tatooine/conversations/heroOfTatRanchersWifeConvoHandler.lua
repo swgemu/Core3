@@ -54,8 +54,7 @@ function heroOfTatRanchersWifeConvoHandler:runScreenHandlers(conversationTemplat
 	if (screenID == "leave_now") then
 		writeData(CreatureObject(conversingPlayer):getObjectID() .. ":hero_of_tat_honor:spoke_to_wife", 1)
 	elseif (screenID == "thanks_intercom") then
-		writeData(CreatureObject(conversingPlayer):getObjectID() .. ":hero_of_tat_honor:accepted", 1)
-		writeData("hero_of_tat:ranch_player_id", CreatureObject(conversingPlayer):getObjectID())
+		HeroOfTatooineScreenPlay:doHonorStart(conversingPlayer)
 	elseif (screenID == "so_nice_ahh") then
 		HeroOfTatooineScreenPlay:doHonorFail(conversingPlayer)
 	elseif (screenID == "cant_believe_this") then

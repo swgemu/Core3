@@ -345,7 +345,7 @@ end
 function HeroOfTatooineScreenPlay:sendImplicateSui(pPlayer, pNpc)
 	local liarTable = { }
 
-	for i = 1, 6, 1 do
+	for i = 1, 5, 1 do
 		local liarId = readData("hero_of_tat:liar_" .. i)
 		local pLiar = getSceneObject(liarId)
 
@@ -785,6 +785,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 	local z = getTerrainHeight(pHermit, self.honorSpawns[newLoc][1], self.honorSpawns[newLoc][2])
 
 	pLeader = spawnMobile("tatooine", "hero_of_tat_pirate_leader", 0, self.honorSpawns[newLoc][1], z, self.honorSpawns[newLoc][2], getRandomNumber(360) - 180, 0)
+
 	if (pLeader == nil) then
 		printf("Failed to create leader in HeroOfTatooineScreenPlay:doHonorChange()\n")
 		return
@@ -1207,6 +1208,33 @@ function HeroOfTatooineScreenPlay:doHonorStep(pAgent)
 	AiAgent(pAgent):setWait(0)
 	AiAgent(pAgent):setNextPosition(nextPoint[1], nextPoint[2], nextPoint[3], nextPoint[4])
 	AiAgent(pAgent):executeBehavior()
+end
+
+function HeroOfTatooineScreenPlay:doHonorStart(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+	writeData(playerID .. ":hero_of_tat_honor:accepted", 1)
+	writeData("hero_of_tat:ranch_player_id", playerID)
+
+	createEvent(7 * 60 * 1000, "HeroOfTatooineScreenPlay", "doHonorTimeout", pPlayer) -- 7 Minute timeout
+end
+
+function HeroOfTatooineScreenPlay:doHonorTimeout(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+
+	local curRanchPlayer = readData("hero_of_tat:ranch_player_id")
+
+	if (SceneObject(pPlayer):getObjectID() ~= curRanchPlayer) then
+		return
+	end
+
+	CreatureObject(pPlayer):sendSystemMessage("@quest/hero_of_tatooine/system_messages:restart")
+	self:doRanchHouseCleanup(pPlayer)
 end
 
 function HeroOfTatooineScreenPlay:doHonorSuccess(pPlayer)

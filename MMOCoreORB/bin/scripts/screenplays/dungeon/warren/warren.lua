@@ -387,6 +387,10 @@ function WarrenScreenPlay:hasPermission(pPlayer, permissionGroup)
 end
 
 function WarrenScreenPlay:notifyUseCRTerminal(pTerminal, pPlayer)
+	if (pPlayer == nil) then
+		return 0
+	end
+
 	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
 	if (pInventory == nil) then
@@ -461,12 +465,7 @@ function WarrenScreenPlay:notifyUseCRTerminal(pTerminal, pPlayer)
 end
 
 function WarrenScreenPlay:isMCRElevatorActive()
-	local lock1 = readData("warren:elevator:lock1")
-	local lock2 = readData("warren:elevator:lock2")
-	local lock3 = readData("warren:elevator:lock3")
-	local lock4 = readData("warren:elevator:lock4")
-
-	if (lock1 == 0) and (lock2 == 0) and (lock3 == 0) and (lock4 == 0) then
+	if (readData("warren:elevator:lock1") == 0) and (readData("warren:elevator:lock2") == 0) and (readData("warren:elevator:lock3") == 0) and (readData("warren:elevator:lock4") == 0) then
 		return true
 	end
 
@@ -488,6 +487,12 @@ function WarrenScreenPlay:recycleReactorRoom()
 	writeData("warren:reactor_switch_2:locked", 1)
 	writeData("warren:reactor:active", 1)
 
+	local pWarren = getSceneObject(self.buildingID)
+
+	if (pWarren == nil) then
+		return
+	end
+
 	--Lock the reactor room door
 	local pCell = getSceneObject(8575715)
 
@@ -495,7 +500,6 @@ function WarrenScreenPlay:recycleReactorRoom()
 		SceneObject(pCell):setContainerInheritPermissionsFromParent(false)
 		SceneObject(pCell):clearContainerDefaultAllowPermission(WALKIN)
 
-		local pWarren = getSceneObject(self.buildingID)
 		BuildingObject(pWarren):broadcastSpecificCellPermissions(8575715)
 	end
 
@@ -507,12 +511,15 @@ function WarrenScreenPlay:recycleReactorRoom()
 		SceneObject(pCell):clearContainerDefaultAllowPermission(MOVEIN)
 		SceneObject(pCell):clearContainerDefaultDenyPermission(WALKIN)
 
-		local pWarren = getSceneObject(self.buildingID)
 		BuildingObject(pWarren):broadcastSpecificCellPermissions(8575755)
 	end
 end
 
 function WarrenScreenPlay:useReactorCoreSwitch(pTerminal, pPlayer)
+	if (pTerminal == nil) then
+		return 0
+	end
+
 	local objid = SceneObject(pTerminal):getObjectID()
 
 	local switch1 = readData("warren:reactor_switch_1:locked")
@@ -532,7 +539,10 @@ function WarrenScreenPlay:useReactorCoreSwitch(pTerminal, pPlayer)
 		local pCell = getSceneObject(8575715)
 		SceneObject(pCell):setContainerDefaultAllowPermission(WALKIN)
 		local pWarren = getSceneObject(self.buildingID)
-		BuildingObject(pWarren):broadcastSpecificCellPermissions(8575715)
+
+		if (pWarren ~= nil) then
+			BuildingObject(pWarren):broadcastSpecificCellPermissions(8575715)
+		end
 	end
 
 	return 0
@@ -586,14 +596,29 @@ function WarrenScreenPlay:notifyDebrisDestroyed(pDebris, pPlayer)
 end
 
 function WarrenScreenPlay:deactivateElevator()
-	local pTerminal1 = getSceneObject(8465559)
-	SceneObject(pTerminal1):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_on")
-	local pTerminal2 = getSceneObject(8465560)
-	SceneObject(pTerminal2):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_on")
-	local pTerminal3 = getSceneObject(8465561)
-	SceneObject(pTerminal3):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_on")
-	local pTerminal4 = getSceneObject(8465562)
-	SceneObject(pTerminal4):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_on")
+	local pTerminal = getSceneObject(8465559)
+
+	if (pTerminal ~= nil) then
+		SceneObject(pTerminal1):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_on")
+	end
+
+	pTerminal = getSceneObject(8465560)
+
+	if (pTerminal ~= nil) then
+		SceneObject(pTerminal):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_on")
+	end
+
+	pTerminal = getSceneObject(8465561)
+
+	if (pTerminal ~= nil) then
+		SceneObject(pTerminal):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_on")
+	end
+
+	pTerminal = getSceneObject(8465562)
+
+	if (pTerminal ~= nil) then
+		SceneObject(pTerminal):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_on")
+	end
 	writeData("warren:elevator:lock1", 1)
 	writeData("warren:elevator:lock2", 1)
 	writeData("warren:elevator:lock3", 1)
@@ -602,7 +627,7 @@ end
 
 function WarrenScreenPlay:notifyEnteredWarren(pBuilding, pPlayer)
 
-	if (not SceneObject(pPlayer):isPlayerCreature()) then
+	if (pPlayer == nil or not SceneObject(pPlayer):isPlayerCreature()) then
 		return 0
 	end
 
@@ -630,7 +655,9 @@ function WarrenScreenPlay:activateTurret(pTerminal)
 	if (pTurret ~= nil) then
 		local pCell = getSceneObject(self.turret.cell)
 
-		SceneObject(pCell):transferObject(pTurret, -1, true)
+		if (pCell ~= nil) then
+			SceneObject(pCell):transferObject(pTurret, -1, true)
+		end
 	else
 		local pTurret = spawnSceneObject("dantooine", self.turret.template, self.turret.x, self.turret.z, self.turret.y, self.turret.cell, -0.707107, 0, 0.707107, 0)
 
@@ -653,7 +680,9 @@ function WarrenScreenPlay:deactivateTurret(pTerminal)
 		local objectID = readData("warren:turret:objectid")
 		local pTurret = getSceneObject(objectID)
 
-		SceneObject(pTurret):destroyObjectFromWorld()
+		if (pTurret ~= nil) then
+			SceneObject(pTurret):destroyObjectFromWorld()
+		end
 	end
 	createEvent(self.turret.respawn, "WarrenScreenPlay", "activateTurret", pTerminal)
 end
@@ -675,6 +704,10 @@ function WarrenScreenPlay:refillContainer(pContainer)
 end
 
 function WarrenScreenPlay:notifyTerminalMessage(pTerminal, pPlayer)
+	if (pTerminal == nil or pPlayer == nil) then
+		return 0
+	end
+
 	local message = self.terminals["terminal_" .. SceneObject(pTerminal):getObjectID()].message
 	local suiManager = LuaSuiManager()
 	suiManager:sendMessageBox(pTerminal, pPlayer, "@sui:swg", message, "@ok", "WarrenScreenPlay", "notifyOkPressed")
@@ -682,6 +715,10 @@ function WarrenScreenPlay:notifyTerminalMessage(pTerminal, pPlayer)
 end
 
 function WarrenScreenPlay:notifyTurretMessage(pTerminal, pPlayer)
+	if (pTerminal == nil or pPlayer == nil) then
+		return
+	end
+
 	local message = "@theme_park/warren/warren_system_messages:turret_pass_active"
 
 	if (readData("warren:turret:active") == 0) then
@@ -695,7 +732,7 @@ function WarrenScreenPlay:notifyTurretMessage(pTerminal, pPlayer)
 end
 
 function WarrenScreenPlay:notifyTurretTerminalChatReceived(pTerminal, pChatMessage)
-	if (readData("warren:turret:active") == 0) then
+	if (pTerminal == nil or readData("warren:turret:active") == 0) then
 		return 0
 	end
 
@@ -709,15 +746,26 @@ function WarrenScreenPlay:notifyTurretTerminalChatReceived(pTerminal, pChatMessa
 end
 
 function WarrenScreenPlay:notifyInquisitorTerminalChatReceived(pTerminal, pChatMessage, objectID)
+	if (pTerminal == nil) then
+		return 0
+	end
+
 	local msg = getChatMessage(pChatMessage)
 
 	if (msg == readStringData("warren:mirla:password")) and (readData("warren:inquisitor:locked") == 1) then
 		SceneObject(pTerminal):showFlyText("theme_park/warren/warren_system_messages", "cell_open", 0, 255, 0)
+
 		local pCell = getSceneObject(8575718)
-		SceneObject(pCell):setContainerDefaultAllowPermission(WALKIN)
-		local pWarren = getSceneObject(self.buildingID)
-		BuildingObject(pWarren):broadcastSpecificCellPermissions(8575718)
-		writeData("warren:inquisitor:locked", 0)
+		if (pCell ~= nil) then
+			SceneObject(pCell):setContainerDefaultAllowPermission(WALKIN)
+			local pWarren = getSceneObject(self.buildingID)
+
+			if (pWarren ~= nil) then
+				BuildingObject(pWarren):broadcastSpecificCellPermissions(8575718)
+			end
+
+			writeData("warren:inquisitor:locked", 0)
+		end
 	end
 	return 0
 end
@@ -728,6 +776,10 @@ end
 WarrenTurretMenuComponent = {}
 
 function WarrenTurretMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+	if (pSceneObject == nil or pPlayer == nil) then
+		return
+	end
+
 	local suiManager = LuaSuiManager()
 	suiManager:sendMessageBox(pSceneObject, pPlayer, "@sui:swg", readStringData("warren:turret:code"), "@ok", "WarrenScreenPlay", "notifyOkPressed")
 end
@@ -739,29 +791,35 @@ end
 MCRElevatorMenuComponent = {}
 
 function MCRElevatorMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+	if (pSceneObject == nil or pPlayer == nil) then
+		return
+	end
+
 	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
 	menuResponse:addRadialMenuItem(199, 3, "@elevator_text:down")
 end
 
 function MCRElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	return ObjectManager.withCreatureObject(pPlayer, function(creature)
-		if (selectedID ~= 199) or (not WarrenScreenPlay:isMCRElevatorActive()) then
-			SceneObject(pSceneObject):showFlyText("theme_park/warren/warren_system_messages", "elev_one_secure", 0, 255, 0)
-			return 0
-		end
-
-		if (creature:getParent() ~= SceneObject(pSceneObject):getParent()) then
-			return 0
-		end
-
-		local z = SceneObject(pSceneObject):getPositionZ() - 20
-		local x = creature:getPositionX()
-		local y = creature:getPositionY()
-
-		creature:playEffect("clienteffect", "elevator_descend.cef")
-		creature:teleport(x, z, y, SceneObject(pSceneObject):getParentID())
+	if (pSceneObject == nil or pPlayer == nil) then
 		return 0
-	end)
+	end
+
+	if (selectedID ~= 199) or (not WarrenScreenPlay:isMCRElevatorActive()) then
+		SceneObject(pSceneObject):showFlyText("theme_park/warren/warren_system_messages", "elev_one_secure", 0, 255, 0)
+		return 0
+	end
+
+	if (CreatureObject(pPlayer):getParent() ~= SceneObject(pSceneObject):getParent()) then
+		return 0
+	end
+
+	local z = SceneObject(pSceneObject):getPositionZ() - 20
+	local x = CreatureObject(pPlayer):getPositionX()
+	local y = CreatureObject(pPlayer):getPositionY()
+
+	CreatureObject(pPlayer):playEffect("clienteffect", "elevator_descend.cef")
+	CreatureObject(pPlayer):teleport(x, z, y, SceneObject(pSceneObject):getParentID())
+	return 0
 end
 
 RespawnContainerContentsComponent = {}
@@ -784,53 +842,58 @@ end
 EnterReactorRoomComponent = {}
 
 function EnterReactorRoomComponent:transferObject(pContainer, pObj, slot)
-
-	if (SceneObject(pObj):isPlayerCreature()) then
-
-		--If reactor is active, then we need to check if the player has the rods to shut it off.
-		if (readData("warren:reactor:active") == 1) then
-			--Check for both reactor rods.
-			--object/tangible/mission/quest_item/warren_core_control_rod_s01.iff
-			local pInventory = SceneObject(pObj):getSlottedObject("inventory")
-
-			if (pInventory ~= nil) then
-				local pRod1 = getContainerObjectByTemplate(pInventory, "object/tangible/mission/quest_item/warren_core_control_rod_s01.iff", true)
-				local pRod2 = getContainerObjectByTemplate(pInventory, "object/tangible/mission/quest_item/warren_core_control_rod_s02.iff", true)
-
-				if (pRod1 ~= nil) and (pRod2 ~= nil) then
-					--Remove from inventory, and shut off reactor overload.
-					SceneObject(pRod1):destroyObjectFromWorld()
-					SceneObject(pRod1):destroyObjectFromDatabase()
-					SceneObject(pRod2):destroyObjectFromWorld()
-					SceneObject(pRod2):destroyObjectFromDatabase()
-
-					--Yes, in live it was sent twice, probably once for each rod...
-					CreatureObject(pObj):sendSystemMessage("@theme_park/warren/warren_system_messages:insert_rod") --You insert the reactor core control rods into the reactor core.
-					CreatureObject(pObj):sendSystemMessage("@theme_park/warren/warren_system_messages:insert_rod") --You insert the reactor core control rods into the reactor core.
-
-					local pReactorCore = getSceneObject(6525464)
-
-					SceneObject(pReactorCore):showFlyText("theme_park/warren/warren_system_messages", "deactivate_core", 0, 255, 0)
-
-					writeData("warren:reactor:active", 0)
-
-					--Unlock the door to the control room)
-
-					local pCell = getSceneObject(8575755)
-					SceneObject(pCell):setContainerDefaultAllowPermission(WALKIN)
-					local pWarren = getSceneObject(WarrenScreenPlay.buildingID)
-					BuildingObject(pWarren):broadcastSpecificCellPermissions(8575755)
-
-					createEvent(WarrenScreenPlay.recycleReactor, "WarrenScreenPlay", "recycleReactorRoom", nil)
-				end
-			end
-		end
-
-		SceneObject(pObj):teleport(49.5, -54, -125, 8575714)
-		return 0
+	if (pObj == nil or not SceneObject(pObj):isPlayerCreature()) then
+		return -1
 	end
 
-	return -1
+	--If reactor is active, then we need to check if the player has the rods to shut it off.
+	if (readData("warren:reactor:active") == 1) then
+		--Check for both reactor rods.
+		--object/tangible/mission/quest_item/warren_core_control_rod_s01.iff
+		local pInventory = SceneObject(pObj):getSlottedObject("inventory")
+
+		if (pInventory ~= nil) then
+			local pRod1 = getContainerObjectByTemplate(pInventory, "object/tangible/mission/quest_item/warren_core_control_rod_s01.iff", true)
+			local pRod2 = getContainerObjectByTemplate(pInventory, "object/tangible/mission/quest_item/warren_core_control_rod_s02.iff", true)
+
+			if (pRod1 ~= nil) and (pRod2 ~= nil) then
+				--Remove from inventory, and shut off reactor overload.
+				SceneObject(pRod1):destroyObjectFromWorld()
+				SceneObject(pRod1):destroyObjectFromDatabase()
+				SceneObject(pRod2):destroyObjectFromWorld()
+				SceneObject(pRod2):destroyObjectFromDatabase()
+
+				--Yes, in live it was sent twice, probably once for each rod...
+				CreatureObject(pObj):sendSystemMessage("@theme_park/warren/warren_system_messages:insert_rod") --You insert the reactor core control rods into the reactor core.
+				CreatureObject(pObj):sendSystemMessage("@theme_park/warren/warren_system_messages:insert_rod") --You insert the reactor core control rods into the reactor core.
+
+				local pReactorCore = getSceneObject(6525464)
+
+				if (pReactorCore ~= nil) then
+					SceneObject(pReactorCore):showFlyText("theme_park/warren/warren_system_messages", "deactivate_core", 0, 255, 0)
+				end
+
+				writeData("warren:reactor:active", 0)
+
+				--Unlock the door to the control room)
+
+				local pCell = getSceneObject(8575755)
+
+				if (pCell ~= nil) then
+					SceneObject(pCell):setContainerDefaultAllowPermission(WALKIN)
+					local pWarren = getSceneObject(WarrenScreenPlay.buildingID)
+
+					if (pWarren ~= nil) then
+						BuildingObject(pWarren):broadcastSpecificCellPermissions(8575755)
+					end
+				end
+				createEvent(WarrenScreenPlay.recycleReactor, "WarrenScreenPlay", "recycleReactorRoom", nil)
+			end
+		end
+	end
+
+	SceneObject(pObj):teleport(49.5, -54, -125, 8575714)
+	return 0
 end
 
 function EnterReactorRoomComponent:canAddObject(pContainer, pObj, slot)
@@ -844,7 +907,7 @@ end
 EnterControlRoomLobbyComponent = {}
 
 function EnterControlRoomLobbyComponent:transferObject(pContainer, pObj, slot)
-	if (SceneObject(pObj):isPlayerCreature()) and (readData("warren:reactor:active") == 1) then
+	if (pObj ~= nil and SceneObject(pObj):isPlayerCreature()) and (readData("warren:reactor:active") == 1) then
 		CreatureObject(pObj):sendSystemMessage("@theme_park/warren/warren_system_messages:core_warning") --WARNING: Reactor Core Overload Imminent. Control Center Lock-Down initiated.
 	end
 
@@ -862,19 +925,28 @@ end
 DownloadEvidenceMenuComponent = {}
 
 function DownloadEvidenceMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+	if (pSceneObject == nil) then
+		return
+	end
+
 	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
 	menuResponse:addRadialMenuItem(20, 3, WarrenScreenPlay.evidence["evidence_" .. SceneObject(pSceneObject):getObjectID()].radialText)
 end
 
 function DownloadEvidenceMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	if (selectedID ~= 20) then
+	if (pSceneObject == nil or pPlayer == nil or selectedID ~= 20) then
 		return 0
 	end
 
 	local pDatapad = CreatureObject(pPlayer):getSlottedObject("datapad")
+
+	if (pDatapad == nil) then
+		return 0
+	end
+
 	local pEvidence = getContainerObjectByTemplate(pDatapad, WarrenScreenPlay.evidence["evidence_" .. SceneObject(pSceneObject):getObjectID()].item, false)
 
-	if (pDatapad ~= nil) and (pEvidence == nil) then
+	if (pEvidence == nil) then
 		local pItem = giveItem(pDatapad, WarrenScreenPlay.evidence["evidence_" .. SceneObject(pSceneObject):getObjectID()].item, -1)
 
 		if (pItem ~= nil) then

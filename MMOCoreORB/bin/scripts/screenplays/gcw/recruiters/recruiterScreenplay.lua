@@ -33,6 +33,10 @@ function recruiterScreenplay:getFactionFromHashCode(hash)
 end
 
 function recruiterScreenplay:getRecruiterFactionHashCode(pNpc)
+	if (pNpc == nil) then
+		return nil
+	end
+
 	local faction = self:getRecruiterFaction(pNpc)
 	if (faction == "rebel") then
 		return self.factionHashCode.rebel
@@ -52,6 +56,10 @@ function recruiterScreenplay:getRecruiterFaction(pNpc)
 end
 
 function recruiterScreenplay:getRecruiterEnemyFaction(pNpc)
+	if (pNpc == nil) then
+		return nil
+	end
+
 	if (self:getRecruiterFaction(pNpc) == "rebel") then
 		return self:getFactionHashCode("imperial")
 	elseif (self:getRecruiterFaction(pNpc) == "imperial") then
@@ -61,6 +69,10 @@ function recruiterScreenplay:getRecruiterEnemyFaction(pNpc)
 end
 
 function recruiterScreenplay:getRecruiterEnemyFactionHashCode(pNpc)
+	if (pNpc == nil) then
+		return nil
+	end
+
 	if (self:getRecruiterFaction(pNpc) == "rebel") then
 		return self.factionHashCode.imperial
 	elseif (self:getRecruiterFaction(pNpc) == "imperial") then
@@ -70,6 +82,10 @@ function recruiterScreenplay:getRecruiterEnemyFactionHashCode(pNpc)
 end
 
 function recruiterScreenplay:grantBribe(pRecruiter, pPlayer, cost, factionPoints)
+	if (pRecruiter == nil or pPlayer == nil) then
+		return
+	end
+
 	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		if (player:getCashCredits() >= cost) then
 			player:subtractCashCredits(cost)
@@ -277,6 +293,10 @@ function recruiterScreenplay:getBonusItemCount(faction, itemString)
 end
 
 function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
+	if (pNpc == nil or pPlayer == nil) then
+		return
+	end
+
 	local faction = self:getRecruiterFaction(pNpc)
 	local gcwDiscount = getGCWDiscount(pPlayer)
 	local smugglerDiscount = self:getSmugglerDiscount(pPlayer)
@@ -300,17 +320,19 @@ function recruiterScreenplay:sendPurchaseSui(pNpc, pPlayer, screenID)
 end
 
 function recruiterScreenplay:handleSuiPurchase(pCreature, pSui, cancelPressed, arg0)
-	if (cancelPressed) then
+	if (pCreature == nil or cancelPressed) then
 		deleteStringData(CreatureObject(pCreature):getObjectID() .. ":faction_purchase")
 		return
 	end
-	local purchaseCategory = readStringData(CreatureObject(pCreature):getObjectID() .. ":faction_purchase")
+
+	local playerID = SceneObject(pCreature):getObjectID()
+	local purchaseCategory = readStringData(playerID .. ":faction_purchase")
 	local purchaseIndex = arg0 + 1
 	local faction = self:getFactionFromHashCode(CreatureObject(pCreature):getFaction())
 	local dataTable = self:getFactionDataTable(faction)
 	local itemListTable = self:getItemListTable(faction, purchaseCategory)
 	local itemString = itemListTable[purchaseIndex]
-	deleteStringData(CreatureObject(pCreature):getObjectID() .. ":faction_purchase")
+	deleteStringData(playerID .. ":faction_purchase")
 
 	local awardResult = nil
 
@@ -354,13 +376,15 @@ function recruiterScreenplay:awardItem(pPlayer, faction, itemString)
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
+		if (pInventory == nil) then
+			return self.errorCodes.INVENTORYERROR
+		end
+
 		local factionStanding = playerObject:getFactionStanding(faction)
 		local itemCost = self:getItemCost(faction, itemString)
 
 		if itemCost == nil then
 			return self.errorCodes.ITEMCOST
-		elseif ( pInventory == nil  ) then
-			return self.errorCodes.INVENTORYERROR
 		end
 
 		itemCost  = math.ceil(itemCost *  getGCWDiscount(pPlayer) * self:getSmugglerDiscount(pPlayer))
@@ -414,12 +438,14 @@ function recruiterScreenplay:awardData(pPlayer, faction, itemString)
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local pDatapad = SceneObject(pPlayer):getSlottedObject("datapad")
 
+		if pDatapad == nil then
+			return self.errorCodes.DATAPADERROR
+		end
+
 		local factionStanding = playerObject:getFactionStanding(faction)
 		local itemCost = self:getItemCost(faction, itemString)
 
-		if pDatapad == nil then
-			return self.errorCodes.DATAPADERROR
-		elseif itemCost == nil then
+		if itemCost == nil then
 			return self.errorCodes.ITEMCOST
 		end
 
@@ -459,7 +485,11 @@ function recruiterScreenplay:awardData(pPlayer, faction, itemString)
 	end)
 end
 
-function recruiterScreenplay:transferData(player, pDatapad, faction, itemString)
+function recruiterScreenplay:transferData(pPlayer, pDatapad, faction, itemString)
+	if (pPlayer == nil or pDatapad == nil) then
+		return self.errorCodes.GIVEERROR
+	end
+
 	local pItem
 	local templatePath = self:getTemplatePath(faction, itemString)
 
@@ -484,10 +514,7 @@ function recruiterScreenplay:transferData(player, pDatapad, faction, itemString)
 	end
 
 	if pItem ~= nil then
-		if SceneObject(pItem) == nil then
-			return self.errorCodes.GIVEERROR
-		end
-		SceneObject(pItem):sendTo(player)
+		SceneObject(pItem):sendTo(pPlayer)
 	else
 		return self.errorCodes.GIVEERROR
 	end
@@ -495,22 +522,21 @@ function recruiterScreenplay:transferData(player, pDatapad, faction, itemString)
 	return self.errorCodes.SUCCESS
 end
 
-function recruiterScreenplay:transferItem(player, pInventory, faction, itemString)
-	local pItem
+function recruiterScreenplay:transferItem(pPlayer, pInventory, faction, itemString)
+	if (pPlayer == nil or pInventory == nil) then
+		return self.errorCodes.GIVEERROR
+	end
+
 	local templatePath = self:getTemplatePath(faction, itemString)
 
 	if templatePath == nil then
 		return self.errorCodes.TEMPLATEPATHERROR
 	end
 
-	pItem = giveItem(pInventory, templatePath, -1)
+	local pItem = giveItem(pInventory, templatePath, -1)
 
 	if (pItem == nil) then
 		return self.errorCodes.GIVEERROR
-	end
-
-	if SceneObject(pItem) == nil then
-		return self.GIVEERROR
 	end
 
 	if (self:isInstallation(faction, itemString)) then
@@ -549,6 +575,10 @@ function recruiterScreenplay:getItemListTable(faction, screenID)
 end
 
 function recruiterScreenplay:getSmugglerDiscount(pPlayer)
+	if (pPlayer == nil) then
+		return 1.0
+	end
+
 	if CreatureObject(pPlayer):hasSkill("combat_smuggler_master") then
 		return .75
 	elseif CreatureObject(pPlayer):hasSkill("combat_smuggler_underworld_01") then

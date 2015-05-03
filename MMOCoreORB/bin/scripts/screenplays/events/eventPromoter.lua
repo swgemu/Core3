@@ -44,6 +44,10 @@ function eventPromoterScreenplay:spawnMobiles()
 end
 
 function eventPromoterScreenplay:sendSaleSui(pNpc, pPlayer, screenID)
+	if (pPlayer == nil or pNpc == nil) then
+		return
+	end
+
 	writeStringData(CreatureObject(pPlayer):getObjectID() .. ":event_promoter_purchase", screenID)
 	local suiManager = LuaSuiManager()
 	local perkData = self:getPerkTable(screenID)
@@ -81,22 +85,33 @@ function eventPromoterScreenplay:getPerkTable(category)
 end
 
 function eventPromoterScreenplay:handleSuiPurchase(pPlayer, pSui, cancelPressed, arg0)
+	if (pPlayer == nil) then
+		return
+	end
+
 	if (cancelPressed) then
 		deleteStringData(CreatureObject(pPlayer):getObjectID() .. ":event_promoter_purchase")
 		return
 	end
-	local purchaseCategory = readStringData(CreatureObject(pPlayer):getObjectID() .. ":event_promoter_purchase")
+
+	local playerID = SceneObject(pPlayer):getObjectID()
+	local purchaseCategory = readStringData(playerID .. ":event_promoter_purchase")
 	local purchaseIndex = arg0 + 1
 	local perkData = self:getPerkTable(purchaseCategory)
 
 	local deedData = perkData[purchaseIndex]
-	deleteStringData(CreatureObject(pPlayer):getObjectID() .. ":event_promoter_purchase")
+	deleteStringData(playerID .. ":event_promoter_purchase")
 	self:giveItem(pPlayer, deedData)
 end
 
 function eventPromoterScreenplay:giveItem(pPlayer, deedData)
 	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+		if (pInventory == nil) then
+			return
+		end
+
 		local slotsRemaining = SceneObject(pInventory):getContainerVolumeLimit() - SceneObject(pInventory):getContainerObjectsSize()
 
 		if (player:getCashCredits() < deedData.cost) then
@@ -114,7 +129,10 @@ function eventPromoterScreenplay:giveItem(pPlayer, deedData)
 
 		local templatePath = "object/tangible/deed/event_perk/" .. deedData.template .. ".iff"
 		local pItem = giveItem(pInventory, templatePath, -1)
-		playerObject:addEventPerk(pItem)
+
+		if (pItem ~= nil) then
+			playerObject:addEventPerk(pItem)
+		end
 	end)
 end
 
