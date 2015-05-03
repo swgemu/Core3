@@ -817,7 +817,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public native float getDistanceTo(Coordinate coordinate);
 	
-	public native void updateVehiclePosition(boolean sendPackets);
+	public abstract native void updateVehiclePosition(boolean sendPackets);
 	
 	@dirty
 	public native void playEffect(final string file, final string aux);

@@ -682,6 +682,8 @@ class CreatureObject extends TangibleObject {
 	 */
 	@preLocked
 	public native void clearBuffs(boolean updateclient);
+	
+	public native void updateVehiclePosition(boolean sendPackets);
 
 	@preLocked
 	public native void addWearableObject(TangibleObject object, boolean notifyClient = true);
