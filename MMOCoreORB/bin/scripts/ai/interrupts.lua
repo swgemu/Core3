@@ -46,51 +46,68 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed unique objects") end
 	if (pAgent == nil or pObject == nil) then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed non-nil objects") end
+	
+	local tanoAgent = TangibleObject1(pAgent)
+	local creoAgent = CreatureObject1(pAgent)
+	local aiAgent = AiAgent1(pAgent)
 
-	if TangibleObject(pAgent):getPvpStatusBitmask() == NONE or CreatureObject(pAgent):isDead() or CreatureObject(pAgent):isIncapacitated() then return false end
+	if tanoAgent:getPvpStatusBitmask() == NONE or creoAgent:isDead() or creoAgent:isIncapacitated() then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed self bitmask checks") end
-	if AiAgent(pAgent):getNumberOfPlayersInRange() <= 0  or AiAgent(pAgent):isRetreating() or AiAgent(pAgent):isFleeing() or AiAgent(pAgent):isInCombat() then return false	end
+	if aiAgent:getNumberOfPlayersInRange() <= 0  or aiAgent:isRetreating() or aiAgent:isFleeing() or aiAgent:isInCombat() then return false	end
 
 	self:checkForReactionChat(pAgent, pObject)
+	
+	--restore pointers
+	tanoAgent = TangibleObject1(pAgent)
+  creoAgent = CreatureObject1(pAgent)
+  aiAgent = AiAgent1(pAgent)
 
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed playersInRange, retreat, flee, and inCombat checks") end
-	if AiAgent(pAgent):getFollowObject() ~= nil and AiAgent(pAgent):getFollowObject() ~= pObject then return false end
+	if aiAgent:getFollowObject() ~= nil and aiAgent:getFollowObject() ~= pObject then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed followObject checks") end
 
-	local radius = AiAgent(pAgent):getAggroRadius()
+	local radius = aiAgent:getAggroRadius()
 	if radius == 0 then radius = DEFAULTAGGRORADIUS end
-	if SceneObject(pObject):isPlayerCreature() then radius = radius * 2 end
+	
+	local sceneObject = SceneObject1(pObject)
+	
+	if sceneObject:isPlayerCreature() then radius = radius * 2 end
 
 	-- TODO possibly tweak, but we need a cap on mob awareness distance
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Radius "..radius) end
-	if not SceneObject(pObject):isInRangeWithObject(pAgent, radius * 1.2) then return false end
+	if not sceneObject:isInRangeWithObject(pAgent, radius * 1.2) then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed radius check") end
 
-	if not SceneObject(pObject):isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
+	if not sceneObject:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target CREO check") end
-	if TangibleObject(pAgent):getPvpStatusBitmask() == NONE or CreatureObject(pObject):isDead() or CreatureObject(pObject):isIncapacitated() then return false end
+	
+	local creoObject = CreatureObject2(pObject)
+	
+	if tanoAgent:getPvpStatusBitmask() == NONE or creoObject:isDead() or creoObject:isIncapacitated() then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target bitmask checks") end
 	
 	-- if not in combat, ignore creatures in different cells
-	local agentParentID = CreatureObject(pAgent):getBuildingParentID()
-	local targetParentID = CreatureObject(pObject):getBuildingParentID()
+	local agentParentID = creoAgent:getBuildingParentID()
+	local targetParentID = creoObject:getBuildingParentID()
 	if agentParentID ~= targetParentID then	return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed parent checks") end
 	
-	if AiAgent(pAgent):isCamouflaged(pObject) or not AiAgent(pAgent):isAttackableBy(pObject) or not CreatureObject(pObject):isAttackableBy(pAgent) then return false end
+	if aiAgent:isCamouflaged(pObject) or not aiAgent:isAttackableBy(pObject) or not creoObject:isAttackableBy(pAgent) then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed attackable checks") end
 	
 	--TODO (dannuic): this still seems wrong, but it's only for AI aggroing AI anyway
-	if SceneObject(pObject):isAiAgent() then
+	if sceneObject:isAiAgent() then
 		--AiAgent(pObject):info("attacking me!")
 		
+		local agentObject = AiAgent2(pObject)
+		
 		--local creature = LuaCreatureObject(pAgent)
-		local creatureFaction = CreatureObject(pAgent):getFaction()
+		local creatureFaction = creoAgent:getFaction()
 		
 		--local creatureTarget = LuaCreatureObject(pObject)
-		local creatureTargetFaction = CreatureObject(pObject):getFaction()
+		local creatureTargetFaction = creoObject:getFaction()
 		
-		if not AiAgent(pObject):isAttackableBy(pAgent) then return false end
+		if not agentObject:isAttackableBy(pAgent) then return false end
 		--AiAgent(pAgent):info("Passed AiAgent target attackable checks")
 		if (creatureFaction ~= 0 and creatureTargetFaction == 0) 
 		    or (creatureFaction == 0 and creatureTargetFaction ~= 0) 
@@ -104,25 +121,35 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 end
 
 function DefaultInterrupt:checkForReactionChat(pAgent, pObject)
-	if not SceneObject(pObject):isPlayerCreature() then return end
+  local sceneObject = SceneObject1(pObject)
+  
+	if not sceneObject:isPlayerCreature() then return end
 	
-	if not (CreatureObject(pObject):getCurrentSpeed() > 0.5*CreatureObject(pObject):getWalkSpeed()) then return end
+	local creoObject = CreatureObject1(pObject)
+	
+	if not (creoObject:getCurrentSpeed() > 0.5*creoObject:getWalkSpeed()) then return end
+	
+	local aiAgent = AiAgent1(pAgent)
 
-	if not AiAgent(pAgent):hasReactionChatMessages() then return end
+	if not aiAgent:hasReactionChatMessages() then return end
+	
+	local sceneAgent = SceneObject2(pAgent)
 
-	if SceneObject(pObject):getParentID() ~= SceneObject(pAgent):getParentID() then return end
+	if sceneObject:getParentID() ~= sceneAgent:getParentID() then return end
 
-	local dist = SceneObject(pObject):getDistanceTo(pAgent)
+	local dist = sceneObject:getDistanceTo(pAgent)
 
 	if dist > 40 or dist < 30 then return end
+	
+	local creoAgent = CreatureObject2(pAgent)
 
-	if not CreatureObject(pAgent):checkCooldownRecovery("reaction_chat") then return end
+	if not creoAgent:checkCooldownRecovery("reaction_chat") then return end
 
-	if not AiAgent(pAgent):checkLineOfSight(pObject) then return end
+	if not aiAgent:checkLineOfSight(pObject) then return end
 
-	local factionString = AiAgent(pAgent):getFactionString()
-	local aiFaction = CreatureObject(pAgent):getFaction()
-	local targetFaction = CreatureObject(pObject):getFaction()
+	local factionString = aiAgent:getFactionString()
+	local aiFaction = creoAgent:getFaction()
+	local targetFaction = creoObject:getFaction()
 	local state = 0
 
 	if aiFaction ~= 0 then
@@ -135,7 +162,7 @@ function DefaultInterrupt:checkForReactionChat(pAgent, pObject)
 		end
 
 	elseif factionString ~= "" then
-		local pGhost = CreatureObject(pObject):getPlayerObject()
+		local pGhost = creoObject:getPlayerObject()
 
 		if pGhost ~= nil then
 			local standing = PlayerObject(pGhost):getFactionStanding(factionString)
@@ -151,12 +178,12 @@ function DefaultInterrupt:checkForReactionChat(pAgent, pObject)
 		state = REACTION_MID
 	end
 
-	SceneObject(pAgent):faceObject(pObject, true)
+	sceneAgent:faceObject(pObject, true)
 
-	if SceneObject(pObject):isFacingObject(pAgent) then
-		AiAgent(pAgent):sendReactionChat(REACTION_HI, state)
+	if sceneObject:isFacingObject(pAgent) then
+		aiAgent:sendReactionChat(REACTION_HI, state)
 	else
-		AiAgent(pAgent):sendReactionChat(REACTION_BYE, state)
+		aiAgent:sendReactionChat(REACTION_BYE, state)
 	end
 end
 
