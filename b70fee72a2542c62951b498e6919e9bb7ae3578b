@@ -1,0 +1,480 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_6726e6bc",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "You should leave this indentation alone.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_872bea81",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "And this one.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_4725e2a9",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "This is redundant since you added a check to onPlayerLoggedIn and badgeAwardedEventHandler.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_2720de9a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "Either put this on the previous line or indent it differently than the next two lines.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_c719f27a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "You are checking for nil in onPlayerLoggedIn. createObserver also checks for null. This is redundant.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_6774a69c",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "This is redundant.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_e73996d9",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "You should also check if pSceneObject is nil here.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_27577e04",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/glowing.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "This is redundant.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_475c0226",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/glowing.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "This is redundant.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_e740b637",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/glowing.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "Redundant.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_67e9061a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/glowing.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_c747b24a",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/glowing.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_87ee8a21",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/glowing.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_8779aa95",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/old_man_encounter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_276e9eca",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/old_man_encounter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_e76756e9",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/sith_shadow_encounter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_c75ed212",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/sith_shadow_encounter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_679b46ca",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/sith_shadow_encounter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "Should be pLooter not pLootedCreature.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_c78c9282",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/sith_shadow_encounter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_27a53e04",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/sith_shadow_intro_theater.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_e7ae76e7",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/sith_shadow_intro_theater.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_67826654",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/sith_shadow_intro_theater.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "You should nil check spawnedSithShadowsList as well.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_a78f0e75",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/sith_shadow_intro_theater.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_e7dc3677",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_holocron.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_47f882e5",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_holocron.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_27f3fe0b",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_holocron.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_e7c3d688",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/experience_converter.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_07c11a80",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/fs_experience_converter_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T05:43:02Z",
+      "side": 1,
+      "message": "I\u0027m surprised that you left this as it was.",
+      "revId": "b70fee72a2542c62951b498e6919e9bb7ae3578b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
