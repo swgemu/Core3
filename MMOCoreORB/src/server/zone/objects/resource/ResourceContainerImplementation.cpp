@@ -106,10 +106,16 @@ void ResourceContainerImplementation::split(int newStackSize) {
 	if (sceneParent == NULL)
 		return;
 
+	Locker locker(spawnObject);
+
 	ManagedReference<ResourceContainer*> newResource = spawnObject->createResource(newStackSize);
+
+	locker.release();
 
 	if(newResource == NULL)
 		return;
+
+	Locker rlocker(newResource);
 
 	if (newResource->getSpawnObject() == NULL) {
 		newResource->destroyObjectFromDatabase(true);
@@ -136,10 +142,16 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 	if (inventory == NULL)
 		return;
 
+	Locker locker(spawnObject);
+
 	ManagedReference<ResourceContainer*> newResource = spawnObject->createResource(newStackSize);
+
+	locker.release();
 
 	if (newResource == NULL)
 		return;
+
+	Locker rlocker(newResource);
 
 	if (newResource->getSpawnObject() == NULL) {
 		newResource->destroyObjectFromDatabase(true);

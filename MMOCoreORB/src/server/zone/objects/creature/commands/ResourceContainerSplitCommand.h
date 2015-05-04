@@ -49,6 +49,8 @@ public:
 			return GENERALERROR;
 		}
 
+		Locker clocker(resourceContainer, creature);
+
 		resourceContainer->split(newStackSize);
 
 		return SUCCESS;
