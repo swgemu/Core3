@@ -878,6 +878,8 @@ void PlayerCreationManager::addHair(CreatureObject* creature,
 		return;
 	}
 
+	Locker locker(hair);
+
 	if (!hair->isTangibleObject()) {
 		hair->destroyObjectFromDatabase(true);
 		return;
