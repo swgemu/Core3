@@ -34,6 +34,7 @@ class RingAreaShape extends AreaShape {
 	 * Set the inner radius of the ring.
 	 * @param r the new inner radius of the ring.
 	 */
+	@preLocked
 	public void setInnerRadius(float r) {
 		innerRadius = r;
 		innerRadius2 = r * r;
@@ -43,6 +44,7 @@ class RingAreaShape extends AreaShape {
 	 * Set the outer radius of the ring.
 	 * @param r the new outer radius of the ring.
 	 */
+	@preLocked
 	public void setOuterRadius(float r) {
 		outerRadius = r;
 		outerRadius2 = r * r;
@@ -140,24 +142,6 @@ class RingAreaShape extends AreaShape {
 	@dirty
 	public abstract boolean isRingAreaShape() {
 		return true;
-	}
-
-	/**
-	 * Check if this is a circular area shape.
-	 * @return true if it is a circular area shape.
-	 */
-	@dirty
-	public abstract boolean isCircularAreaShape() {
-		return false;
-	}
-
-	/**
-	 * Check if this is a rectangular area shape.
-	 * @return true if it is a rectangular area shape.
-	 */
-	@dirty
-	public abstract boolean isRectangularAreaShape() {
-		return false;
 	}
 
 	/**

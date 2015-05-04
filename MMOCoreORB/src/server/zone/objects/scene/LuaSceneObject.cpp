@@ -591,6 +591,8 @@ int LuaSceneObject::setDirectionalHeading(lua_State* L) {
 int LuaSceneObject::setContainerInheritPermissionsFromParent(lua_State* L) {
 	bool val = lua_toboolean(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setContainerInheritPermissionsFromParent(val);
 
 	return 0;
@@ -599,6 +601,8 @@ int LuaSceneObject::setContainerInheritPermissionsFromParent(lua_State* L) {
 int LuaSceneObject::setContainerAllowPermission(lua_State* L) {
 	String group = lua_tostring(L, -2);
 	uint16 perm = lua_tointeger(L, -1);
+
+	Locker locker(realObject);
 
 	realObject->setContainerAllowPermission(group, perm);
 
@@ -609,6 +613,8 @@ int LuaSceneObject::setContainerDenyPermission(lua_State* L) {
 	String group = lua_tostring(L, -2);
 	uint16 perm = lua_tointeger(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setContainerDenyPermission(group, perm);
 
 	return 0;
@@ -616,6 +622,8 @@ int LuaSceneObject::setContainerDenyPermission(lua_State* L) {
 
 int LuaSceneObject::setContainerDefaultAllowPermission(lua_State* L) {
 	uint16 perm = lua_tointeger(L, -1);
+
+	Locker locker(realObject);
 
 	realObject->setContainerDefaultAllowPermission(perm);
 
@@ -625,6 +633,8 @@ int LuaSceneObject::setContainerDefaultAllowPermission(lua_State* L) {
 int LuaSceneObject::clearContainerDefaultAllowPermission(lua_State* L) {
 	uint16 perm = lua_tointeger(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->clearContainerDefaultAllowPermission(perm);
 
 	return 0;
@@ -632,6 +642,8 @@ int LuaSceneObject::clearContainerDefaultAllowPermission(lua_State* L) {
 
 int LuaSceneObject::setContainerDefaultDenyPermission(lua_State* L) {
 	uint16 perm = lua_tointeger(L, -1);
+
+	Locker locker(realObject);
 
 	realObject->setContainerDefaultDenyPermission(perm);
 
@@ -641,6 +653,8 @@ int LuaSceneObject::setContainerDefaultDenyPermission(lua_State* L) {
 int LuaSceneObject::clearContainerDefaultDenyPermission(lua_State* L) {
 	uint16 perm = lua_tointeger(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->clearContainerDefaultDenyPermission(perm);
 
 	return 0;
@@ -648,6 +662,8 @@ int LuaSceneObject::clearContainerDefaultDenyPermission(lua_State* L) {
 
 int LuaSceneObject::setContainerOwnerID(lua_State* L) {
 	uint64 ownerID = lua_tointeger(L, -1);
+
+	Locker locker(realObject);
 
 	realObject->setContainerOwnerID(ownerID);
 

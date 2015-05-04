@@ -7,29 +7,30 @@ package server.zone.objects.area.areashapes;
 import server.zone.objects.area.areashapes.AreaShape;
 
 class CircularAreaShape extends AreaShape {
-	
+
 	/** The radius of the circle. */
 	protected float radius;
-	
+
 	/** The squared radius of the circle */
 	protected float radius2;
-	
+
 	/** Constructor */
 	public CircularAreaShape() {
 		super();
 		radius = 0;
 		radius2 = 0;
 	}
-	
+
 	/**
 	 * Set the radius of the cirle.
 	 * @param r the new radius of the circle.
 	 */
+	@preLocked
 	public void setRadius(float r) {
 		radius = r;
 		radius2 = r * r;
 	}
-	
+
 	/**
 	 * Get the radius of the circle.
 	 * @return radius of the circle
@@ -56,7 +57,7 @@ class CircularAreaShape extends AreaShape {
 	 */
 	@dirty
 	public native abstract boolean containsPoint(float x, float y);
-	
+
 	/**
 	 * Check if the coordinate is within the area shape.
 	 * @param point the point to check if it is within the area shape.
@@ -98,24 +99,6 @@ class CircularAreaShape extends AreaShape {
 	}
 
 	/**
-	 * Check if this is a rectangular area shape.
-	 * @return true if it is a rectangular area shape.
-	 */
-	@dirty
-	public abstract boolean isRectangularAreaShape() {
-		return false;
-	}
-
-	/**
-	 * Check if this is a ring area shape.
-	 * @return true if it is a ring area shape.
-	 */
-	@dirty
-	public abstract boolean isRingAreaShape() {
-		return false;
-	}
-
-	/**
 	 * Check if this area shape intersects with the supplied area shape.
 	 * @param areaShape the area shape to check for intersections with.s
 	 * @return true if the area shapes intersects each other.
@@ -130,7 +113,7 @@ class CircularAreaShape extends AreaShape {
 	 */
 	@dirty
 	private native boolean intersectsWithCircle(CircularAreaShape circle);
-	
+
 	/**
 	 * Get the area of the areaShape.
 	 * @return the area of the area shape.

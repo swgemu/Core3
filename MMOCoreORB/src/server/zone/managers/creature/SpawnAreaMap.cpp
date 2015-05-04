@@ -232,22 +232,26 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 
 	if (height > 0 && width > 0) {
 		ManagedReference<RectangularAreaShape*> rectangularAreaShape = new RectangularAreaShape();
+		Locker shapeLocker(rectangularAreaShape);
 		rectangularAreaShape->setAreaCenter(x, y);
 		rectangularAreaShape->setDimensions(height, width);
 		area->setAreaShape(rectangularAreaShape);
 	} else if (radius > 0) {
 		ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
+		Locker shapeLocker(circularAreaShape);
 		circularAreaShape->setAreaCenter(x, y);
 		circularAreaShape->setRadius(radius);
 		area->setAreaShape(circularAreaShape);
 	} else if (innerRadius > 0 && outerRadius > 0) {
 		ManagedReference<RingAreaShape*> ringAreaShape = new RingAreaShape();
+		Locker shapeLocker(ringAreaShape);
 		ringAreaShape->setAreaCenter(x, y);
 		ringAreaShape->setInnerRadius(innerRadius);
 		ringAreaShape->setOuterRadius(outerRadius);
 		area->setAreaShape(ringAreaShape);
 	} else {
 		ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
+		Locker shapeLocker(circularAreaShape);
 		circularAreaShape->setAreaCenter(x, y);
 		circularAreaShape->setRadius(zone->getBoundingRadius());
 		area->setAreaShape(circularAreaShape);

@@ -15,45 +15,46 @@ import server.zone.templates.SharedObjectTemplate;
 @lua
 class CellObject extends SceneObject {
 	protected int cellNumber;
-	
+
 	protected int currentNumberOfItems;
-	
+
 	public CellObject() {
 		Logger.setLoggingName("CellObject");
 
 		cellNumber = 0;
-		
+
 		currentNumberOfItems = 0;
 	}
-	
+
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
+	@preLocked
 	public void setAllowEntryPermissionGroup(final string group) {
 		super.setContainerInheritPermissionsFromParent(false);
 		super.setContainerDefaultDenyPermission(ContainerPermissions.WALKIN);
 		super.setContainerAllowPermission(group, ContainerPermissions.WALKIN);
 	}
-	
+
 	/**
 	 * Gets called when this objects is loaded from database
 	 * @pre { this locked }
 	 * @post { this locked }
 	 */
 	public native void notifyLoadFromDatabase();
-	
+
 	/**
 	 * Sends the contained non slotted objects to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the container objects }
-	 * @param player SceneObject that will receive the objects 
+	 * @param player SceneObject that will receive the objects
 	 */
 	@dirty
 	public native void sendContainerObjectsTo(SceneObject player);
-	
+
 	@dirty
 	public native void sendPermissionsTo(CreatureObject object, boolean allowEntry);
-	
+
 	/**
 	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
 	 * @pre { this object is locked, object is locked }
@@ -64,7 +65,7 @@ class CellObject extends SceneObject {
 	 */
 	@dirty
 	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
-	
+
 	/**
 	 * Tries to add/link object
 	 * @pre { this object is locked, object is locked }
@@ -75,7 +76,7 @@ class CellObject extends SceneObject {
 	 * @return returns true if the object has been successfully added
 	 */
 	public native boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false, boolean allowOverflow = false);
-	
+
 	/**
 	 * Sends the necessary messages to player in order to create this object
 	 * @pre { this object is locked }
@@ -84,33 +85,34 @@ class CellObject extends SceneObject {
 	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
 	 */
 	//public native void sendTo(SceneObject player, boolean doClose);
-	
+
 	public native void initializeTransientMembers();
-	
+
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
-	
+
 	/*public void resetCurrentNumerOfPlayerItems() {
 		currentNumberOfItems = 0;
 	}*/
-	
+
 	@dirty
 	public native int getCurrentNumberOfPlayerItems();
-	
+
 	/**
 	 * This method loops through all items in the cell and attempts to destroy them from the database.
 	 */
 	public native void destroyAllPlayerItems();
-	
+
 	@read
 	public int getCellNumber() {
 		return cellNumber;
 	}
-	
+
+	@preLocked
 	public void setCellNumber(int number) {
 		cellNumber = number;
 	}
-	
+
 	@dirty
 	public boolean isCellObject() {
 		return true;

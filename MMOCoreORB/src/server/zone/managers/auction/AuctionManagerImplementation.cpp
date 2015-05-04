@@ -479,6 +479,8 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 
 	String name = objectToSell->getDisplayedName();
 
+	Locker locker(item);
+
 	item->setVendorUID(getVendorUID(vendor));
 	item->setOnBazaar(vendor->isBazaarTerminal());
 

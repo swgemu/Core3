@@ -1072,6 +1072,7 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	SceneObject* creatureInventory = getSlottedObject("inventory");
 
 	if (creatureInventory != NULL) {
+		Locker clocker(creatureInventory, _this.get());
 		creatureInventory->setContainerOwnerID(0);
 	}
 

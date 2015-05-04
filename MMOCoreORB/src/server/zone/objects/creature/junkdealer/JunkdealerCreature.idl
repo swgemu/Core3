@@ -24,7 +24,6 @@ class JunkdealerCreature extends CreatureObject {
 	public static final int SCULPTURE = 0x5000DA81;//1342233217; // object/tangible/loot/collectible/kits/sculpture_kit.iff
 	public static final int TABLE = 0x4674A1B6;//1182048694; // object/tangible/loot/collectible/kits/light_table_kit.iff
 	public static final int GONG = 0xB26210DB;//2992771291; // object/tangible/loot/collectible/kits/gong_kit.iff
-	
 
 	public static final int JUNKCONVGENERIC = 1;
 	public static final int JUNKCONVARMS = 2;
@@ -48,18 +47,17 @@ class JunkdealerCreature extends CreatureObject {
 	protected int junkDealerBuyerType;
 	protected int junkDealerConversationType;
 
-
 	public JunkdealerCreature() {
 		Logger.setLoggingName("JunkdealerCreature");
 
 		junkDealerConversationType = 0;
 		junkDealerBuyerType = 0;
 	}
-	
+
 	@local
 	public void loadTemplateData(SharedObjectTemplate templateData) {
 		super.loadTemplateData(templateData);
-		
+
 		super.optionsBitmask = 0x108;
 		super.pvpStatusBitmask = 0;
 	}
@@ -70,12 +68,14 @@ class JunkdealerCreature extends CreatureObject {
 	 */
 	@dirty
 	public native void sendInitialMessage(CreatureObject player);
+
 	/**
 	 * Sends the initial trainer NPC options.
 	 * \param player The player to send the conversation to.
 	 */
 	@dirty
 	public native void sendInitialChoices(CreatureObject player);
+
 	/**
 	 * Sends the intial message to start the conversation. Checks for qualificactions.
 	 * @pre {this locked, player locked }
@@ -85,7 +85,6 @@ class JunkdealerCreature extends CreatureObject {
 	 */
 	@dirty
 	public native boolean sendConversationStartTo(SceneObject obj);
-	
 
 	/**
 	 * Handles the options that the player has selected
@@ -104,6 +103,7 @@ class JunkdealerCreature extends CreatureObject {
 		return location;
 	}
 
+	@preLocked
 	public void setLocation(final string loc) {
 		location = loc;
 	}
@@ -112,36 +112,38 @@ class JunkdealerCreature extends CreatureObject {
 	public boolean isAttackableBy(CreatureObject object) {
 		return false;
 	}
-	
+
 	@dirty
 	public native void createSellJunkLootSelection(CreatureObject player);
 
 	@dirty
 	public native boolean canInventoryItemBeSoldAsJunk(TangibleObject lootItem,int dealerType);
 
+	@preLocked
 	public void setJunkDealerBuyerType(int jdBuyerType) {
 		junkDealerBuyerType = jdBuyerType;
 	}
-	
+
 	@dirty
 	public abstract int getJunkDealerBuyerType() {
 		return junkDealerBuyerType;
 	}
-	
+
+	@preLocked
 	public void setJunkDealerConversationType(int jdConvoType) {
 		junkDealerConversationType = jdConvoType;
 	}
-	
+
 	@dirty
 	public abstract int getJunkDealerConversationType() {
 		return junkDealerConversationType;
 	}
-	
+
 	@dirty
 	public boolean isJunkDealer() {
-		return true; 
+		return true;
 	}
-	
+
 	@dirty
 	public native void sendConversationTerminate(CreatureObject player,final string stfFile,final string convTerminateMsg);
 
