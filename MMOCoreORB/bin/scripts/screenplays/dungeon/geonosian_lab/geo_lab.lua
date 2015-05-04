@@ -443,7 +443,7 @@ function GeonosianLabScreenPlay:notifyElectroShock(pActiveArea, pMovingObject)
 		return 0
 	end
 
-	if (player:isAiAgent() and not AiAgent(pMovingObject):isPet()) then
+	if (SceneObject(pMovingObject):isAiAgent() and not AiAgent(pMovingObject):isPet()) then
 		return 0
 	end
 
