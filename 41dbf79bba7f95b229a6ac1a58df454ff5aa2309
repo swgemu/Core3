@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_c7725249",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geo_lab.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "This is redundant",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_678fc624",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geo_lab.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_87944a38",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/geonosian_lab/geo_lab.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_e7719678",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/recruiters/recruiterScreenplay.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_076fda93",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/recruiters/recruiterScreenplay.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_a76b8e84",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/recruiters/recruiterScreenplay.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_670586c1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/recruiters/recruiterScreenplay.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_870a0ad1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/recruiters/recruiterScreenplay.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_270f7ee3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/gcw/recruiters/recruiterScreenplay.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_475de2e8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/record_keepers/record_keeper.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "Leave this indentation as it was.",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_2758def9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T11:36:36Z",
+      "side": 1,
+      "message": "7 minutes seems like a pretty fast timeout. Is it intended to be that fast?",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
