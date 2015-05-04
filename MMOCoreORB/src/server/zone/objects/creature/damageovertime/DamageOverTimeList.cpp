@@ -155,7 +155,7 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attack
 		for (int i = 0; i < vector->size(); ++i) {
 			DamageOverTime dot = vector->get(i);
 
-			if (newDot.getSecondaryStrength() >= dot.getSecondaryStrength()) {
+			if (newDot.getStrength() >= dot.getStrength()) {
 				dot.setStrength(newDot.getStrength());
 				dot.setSecondaryStrength(newDot.getSecondaryStrength());
 				dot.setDuration(newDot.getDuration());
