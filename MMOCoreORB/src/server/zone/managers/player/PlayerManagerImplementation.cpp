@@ -618,8 +618,6 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 		playerCreature->executeObjectControllerAction(String("dismount").hashCode());
 	}
 
-	playerCreature->clearDots();
-
 	PlayerObject* ghost = playerCreature->getPlayerObject();
 
 	ghost->updateIncapacitationCounter();
@@ -684,6 +682,8 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		player->updateCooldownTimer("mount_dismount", 0);
 		player->executeObjectControllerAction(String("dismount").hashCode());
 	}
+
+	player->clearDots();
 
 	player->setCurrentSpeed(0);
 	player->setPosture(CreaturePosture::DEAD, true);
