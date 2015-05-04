@@ -3223,6 +3223,7 @@ void CreatureObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	CreatureObject* creo = cast<CreatureObject*>(parent.get());
 
 	if (creo != NULL) {
+		Locker clocker(creo, _this.get());
 		creo->setCurrentSpeed(getCurrentSpeed());
 	}
 
