@@ -186,6 +186,24 @@
       "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_a7acee8d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hero_of_tatooine/heroOfTatooine.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-05-04T15:27:29Z",
+      "side": 1,
+      "message": "Yup, 7 minutes is the time listed in @quest/hero_of_tatooine/system_messages:restart.",
+      "parentUuid": "da87b5cf_2758def9",
+      "revId": "41dbf79bba7f95b229a6ac1a58df454ff5aa2309",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
