@@ -41,19 +41,15 @@ end
 -- Send message to the player that he cannot replenish the force.
 -- @param pCreatureObject pointer to the creature object of the player that tries to use the holocron.
 function VillageJediManagerHolocron.cannotReplenishForce(pCreatureObject)
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		-- You are already at your maximum Force power.
-		creatureObject:sendSystemMessage("@jedi_spam:holocron_force_max")
-	end)
+	-- You are already at your maximum Force power.
+	CreatureObject(pCreatureObject):sendSystemMessage("@jedi_spam:holocron_force_max")
 end
 
 -- Send message to the player that he cannot use the holocron.
 -- @param pCreatureObject pointer to the creature object of the player that tries to use the holocron.
 function VillageJediManagerHolocron.cannotUseHolocron(pCreatureObject)
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		-- The holocron hums briefly, but otherwise does nothing.
-		creatureObject:sendSystemMessage("@jedi_spam:holocron_no_effect")
-	end)
+	-- The holocron hums briefly, but otherwise does nothing.
+	CreatureObject(pCreatureObject):sendSystemMessage("@jedi_spam:holocron_no_effect")
 end
 
 -- Handling of the useHolocron event.

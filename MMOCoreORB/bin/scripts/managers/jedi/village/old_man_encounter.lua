@@ -33,9 +33,7 @@ OldManEncounter = Encounter:new {
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return the first name of the player.
 function OldManEncounter:getPlayerFirstName(pCreatureObject)
-	local firstName = ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		return creatureObject:getFirstName()
-	end)
+	local firstName = CreatureObject(pCreatureObject):getFirstName()
 
 	if firstName == nil then
 		return ""
@@ -60,6 +58,10 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param oldManPointerList a list with a pointer to the old man.
 function OldManEncounter:onEncounterClosingIn(pCreatureObject, oldManPointerList)
+	if (pCreatureObject == nil or oldManPointerList == nil or oldManPointerList[1] == nil) then
+		return
+	end
+
 	self:sendGreetingString(oldManPointerList[1], pCreatureObject)
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 end
@@ -67,12 +69,20 @@ end
 -- Event handler for the scheduled despawn of the old man when the player has finished the conversation.
 -- @param pCreatureObject pointer to the creatureObject of the player.
 function OldManEncounter:handleScheduledDespawn(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	self:handleDespawnEvent(pCreatureObject)
 end
 
 -- Schedule despawn of old man due to player conversation has ended.
 -- @param pCreatureObject pointer to the creature object of the player.
 function OldManEncounter:scheduleDespawnOfOldMan(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	Logger:log("Scheduling despawn of old man.", LT_INFO)
 	createEvent(OLD_MAN_DESPAWN_TIME, "OldManEncounter", "handleScheduledDespawn", pCreatureObject)
 end
@@ -80,43 +90,50 @@ end
 -- Give the force crystal to the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 function OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	Logger:log("Giving crystal to player.", LT_INFO)
-	ObjectManager.withInventoryPointer(pCreatureObject, function(pInventory)
-		local pCrystal = giveItem(pInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
-		ObjectManager.withSceneObject(pCrystal, function(crystal)
-			ObjectManager.withCreatureObject(pCreatureObject, function(creature)
-				creature:removeScreenPlayState(0xFFFFFFFFFFFFFFFF, self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
-				creature:setScreenPlayState(crystal:getObjectID(), self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
-				creature:sendSystemMessage("@quest/quests:task_complete")
-				creature:sendSystemMessage("@quest/quests:quest_journal_updated")
-			end)
-		end)
+
+	local pInventory = SceneObject(pCreatureObject):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
+	local pCrystal = giveItem(pInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
+
+	if (pCrystal ~= nil) then
+		CreatureObject(pCreatureObject):removeScreenPlayState(0xFFFFFFFFFFFFFFFF, self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
+		CreatureObject(pCreatureObject):setScreenPlayState(SceneObject(pCrystal):getObjectID(), self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
+		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:task_complete")
+		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:quest_journal_updated")
+
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
-	end)
+	end
 end
 
 -- Remove the force crystal from the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 function OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	Logger:log("Removing crystal from player.", LT_INFO)
-	local forceCrystalId = ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		return creatureObject:getScreenPlayState(self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
-	end)
+	local forceCrystalId = CreatureObject(pCreatureObject):getScreenPlayState(self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
 	local pForceCrystal = getSceneObject(forceCrystalId)
 
 	if pForceCrystal ~= nil then
-		ObjectManager.withSceneObject(pForceCrystal, function(forceCrystal)
-			forceCrystal:destroyObjectFromWorld()
-			forceCrystal:destroyObjectFromDatabase()
-		end)
+		SceneObject(pForceCrystal):destroyObjectFromWorld()
+		SceneObject(pForceCrystal):destroyObjectFromDatabase()
 	end
 
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		creatureObject:sendSystemMessage("@quest/quests:quest_journal_updated")
-		return creatureObject:removeScreenPlayState(0xFFFFFFFFFFFFFFFF, self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
-	end)
+	CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:quest_journal_updated")
+	CreatureObject(pCreatureObject):removeScreenPlayState(0xFFFFFFFFFFFFFFFF, self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
 
 	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
@@ -127,9 +144,13 @@ end
 -- @param pConversingOldMan pointer to the creature object of the conversing old man.
 -- @return true if the old man belongs to the player.
 function OldManEncounter:doesOldManBelongToThePlayer(pConversingPlayer, pConversingOldMan)
+	if (pConversingPlayer == nil or pConversingOldMan == nil) then
+		return false
+	end
+
 	local playerOldMan = SpawnMobiles.getSpawnedMobiles(pConversingPlayer, OldManEncounter.taskName)
 
-	if playerOldMan ~= nil and table.getn(playerOldMan) == 1 then
+	if playerOldMan ~= nil and playerOldMan[1] ~= nil and table.getn(playerOldMan) == 1 then
 		return SceneObject(pConversingOldMan):getObjectID() == SceneObject(playerOldMan[1]):getObjectID()
 	else
 		return false
@@ -140,12 +161,20 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return true if the encounter is finished. I.e. the player has the crystal.
 function OldManEncounter:isEncounterFinished(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
 end
 
 -- Handling of finishing the encounter.
 -- @param pCreatureObject pointer to the creature object of the player.
 function OldManEncounter:taskFinish(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	Logger:log("Finishing " .. self.taskName .. " and starting SithShadowEncounter.", LT_INFO)
 	SithShadowEncounter:start(pCreatureObject)
 end
