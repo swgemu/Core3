@@ -1,0 +1,463 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_a4806c8c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialBankerConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "Why get the screenID if you don\u0027t use it?",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_e42434c8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialCelebrityConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "This line is unnecessary.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_042278b9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialCelebrityConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "All you need in this function is this line since none of the screens in the template have options.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_644a6485",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialCloneDroidConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "No need to get the screenID when you aren\u0027t using it.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_4472c0e6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialCommonerConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "The commoner convo template doesn\u0027t have a moveAlong screen",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_c4549023",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialCommonerConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "None of the screens have options so all you really need to do in this function is call self:getInitialScreen.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_87044a16",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialImperialOfficer6ConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "I don\u0027t see a convo template that uses this handler. What\u0027s it for?",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_045b5855",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialNervousGuyConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "This line is unnecessary.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_a4570c26",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialNervousGuyConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "All you really need in this function is the call to self:getInitialScreen as none of the screens have options.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_6431040b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialStormtrooperFillerConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "All you need in this function is the call to self:getInitialScreen.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_246d3c05",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "For each cell, you should encapsulate the spawning of it\u0027s contents within a nil check.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_44408056",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed. All of the trainers should have a pvpBitmask of 0 on their templates already.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_e40bd429",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "This comment makes it sound like there would be more than one stormtrooper. Should there be others?",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_c47d70b3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "\"reschedules if player is receiving bazaar explanation\" - I think you mean bank and not bazaar.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_24445c73",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "It might be better to show this fly text after the clone terminal is used. You\u0027ve obviously set it up so that you expect them to use the cloning terminal first. What happens if they use the insurance terminal first?",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_4449608a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "Use pPanicNpc instead of pPlayer as the argument for this event so that the npc will be locked in that function. You shouldn\u0027t really need the player there anyway. You can pass the npc to getTutorialBuilding. The isRoomComplete call isn\u0027t really necessary since you aren\u0027t ever resetting curStep, only incrementing it.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_e45d144a",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1410,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "You need to come up with some condition for these events to stop recurring, maybe a room complete check or something. The way you have it now, they\u0027ll continue to recur until pGuy is nil.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_243bfcec",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "Fix your indentation on the above 5 lines. It\u0027s confusing.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_a42e2ca4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "You need to add an end condition so this event doesn\u0027t keep repeating forever.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_c42b3093",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1654,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "Same with this one.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_64182485",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1749,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "Again, add some kind of end condition where the event isn\u0027t rescheduled.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_841d2876",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "This function should be named handleRoomEleven",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_67ffc602",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "r11",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_c402500b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1764,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "Why do you need room 10\u0027s current step? You don\u0027t use it here.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_44172052",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1792,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "Add an end condition.",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_844f6892",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorialMenuComponents.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "I don\u0027t see this component being used on any object. What\u0027s it for?",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_24121c63",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorialMenuComponents.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T03:44:32Z",
+      "side": 1,
+      "message": "Is this going to be used in the future?",
+      "revId": "1e17781bf62504b23135757d3de679004793c489",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
