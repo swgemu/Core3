@@ -150,6 +150,8 @@ void BuildingObjectImplementation::createCellObjects() {
 
 		Reference<SceneObject*> newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
 
+		Locker clocker(newCell, _this.get());
+
 		if (!transferObject(newCell, -1))
 			error("could not add cell");
 
