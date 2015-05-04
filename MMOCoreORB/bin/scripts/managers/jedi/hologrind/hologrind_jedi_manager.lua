@@ -129,8 +129,7 @@ end
 -- Check if the player has mastered all hologrind professions and send sui window and award skills.
 -- @param pCreatureObject pointer to the creature object of the player to check the jedi progression on.
 function HologrindJediManager:checkIfProgressedToJedi(pCreatureObject)
-	if self:getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER and
-	   not self:isJedi(pCreatureObject) then
+	if self:getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER and not self:isJedi(pCreatureObject) then
 		self:sendSuiWindow(pCreatureObject)
 		self:awardJediStatusAndSkill(pCreatureObject)
 	end
@@ -142,6 +141,10 @@ end
 -- @param badgeNumber the badge number that was awarded.
 -- @return 0 to keep the observer active.
 function HologrindJediManager:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, badgeNumber)
+	if (pCreatureObject == nil) then
+		return 0
+	end
+
 	self:checkIfProgressedToJedi(pCreatureObject)
 
 	return 0
@@ -156,6 +159,10 @@ end
 -- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
 -- @param pCreatureObject pointer to the creature object of the player who logged in.
 function HologrindJediManager:onPlayerLoggedIn(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return
+	end
+
 	self:checkIfProgressedToJedi(pCreatureObject)
 	self:registerObservers(pCreatureObject)
 end
@@ -177,11 +184,8 @@ end
 -- @param pCreatureObject pointer to the creature object of the player who used the holocron.
 function HologrindJediManager:sendHolocronMessage(pCreatureObject)
 	if self:getNumberOfMasteredProfessions(pCreatureObject) >= MAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON then
-		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-			-- The Holocron is quiet. The ancients' knowledge of the Force will no longer assist you
-  			-- on your journey. You must continue seeking on your own.
-			creatureObject:sendSystemMessage("@jedi_spam:holocron_quiet")
-		end)
+		-- The Holocron is quiet. The ancients' knowledge of the Force will no longer assist you on your journey. You must continue seeking on your own.
+		CreatureObject(pCreatureObject):sendSystemMessage("@jedi_spam:holocron_quiet")
 		return true
 	else
 		ObjectManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
@@ -202,6 +206,10 @@ end
 -- @param itemType the type of item that is used.
 -- @param pCreatureObject pointer to the creature object that used the item.
 function HologrindJediManager:useItem(pSceneObject, itemType, pCreatureObject)
+	if (pCreatureObject == nil or pSceneObject == nil) then
+		return
+	end
+
 	if itemType == ITEMHOLOCRON then
 		local isSilent = self:sendHolocronMessage(pCreatureObject)
 		if isSilent then

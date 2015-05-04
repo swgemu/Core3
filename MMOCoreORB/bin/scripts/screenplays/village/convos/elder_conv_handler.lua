@@ -40,19 +40,18 @@ function elder_conv_handler:runScreenHandlers(pConversationTemplate, pConversing
 
 	if screenID == "cs_jsPlumb_1_42" then
 		-- If they need a crystal...
-		ObjectManager.withCreatureObject(pConversingPlayer, function(creatureObject)
-			local pInventory = creatureObject:getSlottedObject("inventory")
-			if (pInventory ~= nil) then
-				local pInvItem = getContainerObjectByTemplate(pInventory, CRYSTAL_OBJECT, true)
 
-				-- If they DO NOT have a crystal.
-				if (pInvItem == nil) then
-					giveItem(pInventory, CRYSTAL_OBJECT, -1)
-				else -- They have one already.
-					pConversationScreen = conversationTemplate:getScreen("cs_jsPlumb_1_161")
-				end
+		local pInventory = CreatureObject(pConversingPlayer):getSlottedObject("inventory")
+		if (pInventory ~= nil) then
+			local pInvItem = getContainerObjectByTemplate(pInventory, CRYSTAL_OBJECT, true)
+
+			-- If they DO NOT have a crystal.
+			if (pInvItem == nil) then
+				giveItem(pInventory, CRYSTAL_OBJECT, -1)
+			else -- They have one already.
+				pConversationScreen = conversationTemplate:getScreen("cs_jsPlumb_1_161")
 			end
-		end)
+		end
 	end
 	return pConversationScreen
 end
