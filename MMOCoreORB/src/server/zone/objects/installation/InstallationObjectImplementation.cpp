@@ -593,12 +593,15 @@ void InstallationObjectImplementation::destroyObjectFromDatabase(bool destroyCon
 
 	ManagedReference<SceneObject*> deed = getZoneServer()->getObject(deedObjectID);
 
-	if (deed != NULL)
+	if (deed != NULL) {
+		Locker locker(deed);
 		deed->destroyObjectFromDatabase(true);
+	}
 
 	for (int i = 0; i < resourceHopper.size(); ++i) {
 		ResourceContainer* container = resourceHopper.get(i);
 
+		Locker locker(container);
 		container->destroyObjectFromDatabase(true);
 	}
 }
