@@ -1667,7 +1667,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				creature->sendSystemMessage(stringId);
 			}
 
-			data.getCommand()->applyEffect(targetCreature, effectType, effect.getStateStrength(), data.getCommandCRC());
+			data.getCommand()->applyEffect(targetCreature, effectType, effect.getStateStrength() + stateAccuracyBonus, data.getCommandCRC());
 		}
 
 		// can move this to scripts, but only these states have fail messages

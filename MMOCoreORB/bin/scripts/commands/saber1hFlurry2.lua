@@ -58,7 +58,7 @@ Saber1hFlurry2Command = {
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		85, 
-		100, 
+		0, 
 		60
 	  ),
 	  StateEffect( 
@@ -67,7 +67,7 @@ Saber1hFlurry2Command = {
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		85, 
-		100, 
+		0, 
 		30
 	  ),
 	  StateEffect( 
@@ -76,7 +76,7 @@ Saber1hFlurry2Command = {
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		85, 
-		100, 
+		0, 
 		60
 	  )
 	},

@@ -58,7 +58,7 @@ StartleShot1Command = {
 		{ "posture_change_up_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	},

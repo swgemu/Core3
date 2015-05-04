@@ -56,18 +56,6 @@ HealthShot1Command = {
 	animationCRC = hashCode("fire_1_special_single_light"),
 
 	combatSpam = "sapshot",
-
-	stateEffects = {
-	  StateEffect( 
-		HEALTHDEGRADE_EFFECT, 
-		{}, 
-		{}, 
-		{}, 
-		100, 
-		100, 
-		30 
-	  )
-	},
 	
 	dotEffects = {
 	  DotEffect( 

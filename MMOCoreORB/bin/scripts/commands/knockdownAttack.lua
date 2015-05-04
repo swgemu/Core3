@@ -52,7 +52,7 @@ KnockdownAttackCommand = {
 		{ "knockdown_defense" }, 
 		{}, 
 		85, 
-		100, 
+		0, 
 		0 
 	  )
 	}

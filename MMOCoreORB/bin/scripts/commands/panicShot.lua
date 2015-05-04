@@ -58,7 +58,7 @@ PanicShotCommand = {
 		{ "warcry_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		10 
 	  )
 	},

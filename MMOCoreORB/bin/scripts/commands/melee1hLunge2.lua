@@ -66,7 +66,7 @@ Melee1hLunge2Command = {
 		{ "knockdown_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		10 
 	  )
 	}

@@ -57,7 +57,7 @@ Saber2hPhantomCommand = {
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		85, 
-		100, 
+		0, 
 		60 
 	  ),
 	  StateEffect( 
@@ -66,7 +66,7 @@ Saber2hPhantomCommand = {
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		85, 
-		100, 
+		0, 
 		30 
 	  ),
 	  StateEffect( 
@@ -75,7 +75,7 @@ Saber2hPhantomCommand = {
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		85, 
-		100, 
+		0, 
 		60 
 	  )
 	},

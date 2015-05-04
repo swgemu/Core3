@@ -57,7 +57,7 @@ Saber1hComboHit3Command = {
 		{ "posture_change_down_defense" }, 
 		{}, 
 		40, 
-		100, 
+		0, 
 		0 
 	  )
 	},

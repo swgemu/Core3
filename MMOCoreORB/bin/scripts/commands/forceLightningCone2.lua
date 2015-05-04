@@ -58,7 +58,7 @@ ForceLightningCone2Command = {
 		{}, 
 		{ "jedi_state_defense" }, 
 		30, 
-		100, 
+		0, 
 		10 
 	  )
 	},

@@ -51,7 +51,7 @@ PostureDownAttackCommand = {
 		{ "posture_change_down_defense" }, 
 		{}, 
 		85, 
-		100, 
+		0, 
 		0 
 	  )
 	}

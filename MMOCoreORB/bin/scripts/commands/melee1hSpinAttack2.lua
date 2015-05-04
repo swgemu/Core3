@@ -65,7 +65,7 @@ Melee1hSpinAttack2Command = {
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		40, 
-		100, 
+		0, 
 		30 
 	  )
 	},

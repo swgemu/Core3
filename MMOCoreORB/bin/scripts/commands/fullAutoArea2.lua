@@ -65,7 +65,7 @@ FullAutoArea2Command = {
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		30, 
-		100, 
+		0, 
 		30 
 	  ),
 	  StateEffect( 
@@ -74,7 +74,7 @@ FullAutoArea2Command = {
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		30, 
-		100, 
+		0, 
 		40 
 	  ),
 	  StateEffect( 
@@ -83,7 +83,7 @@ FullAutoArea2Command = {
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		30, 
-		100, 
+		0, 
 		30 
 	  )
 	},

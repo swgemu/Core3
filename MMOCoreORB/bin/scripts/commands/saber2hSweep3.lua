@@ -55,7 +55,7 @@ Saber2hSweep3Command = {
 		{ "posture_change_down_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	},

@@ -61,7 +61,7 @@ FlushingShot2Command = {
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		100, 
-		100, 
+		0, 
 		35
 	  ),
 	  StateEffect( 
@@ -70,7 +70,7 @@ FlushingShot2Command = {
 		{ "posture_change_up_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	},

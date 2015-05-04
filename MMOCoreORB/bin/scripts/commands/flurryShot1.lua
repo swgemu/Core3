@@ -58,7 +58,7 @@ FlurryShot1Command = {
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		85, 
-		100, 
+		0, 
 		45 
 	  )
 	},

@@ -56,7 +56,7 @@ MindBlast1Command = {
 		{ "jedi_state_defense" }, 
 		{}, 
 		55, 
-		100, 
+		0, 
 		10 
 	  ),
 	  
@@ -66,7 +66,7 @@ MindBlast1Command = {
 		{ "jedi_state_defense" }, 
 		{}, 
 		55, 
-		100, 
+		0, 
 		10 
 	  ),
 	  
@@ -76,7 +76,7 @@ MindBlast1Command = {
 		{ "jedi_state_defense" }, 
 		{}, 
 		55, 
-		100, 
+		0, 
 		10 
 	  )
 	},	

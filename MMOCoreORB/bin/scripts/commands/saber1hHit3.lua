@@ -58,7 +58,7 @@ Saber1hHit3Command = {
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		75, 
-		100, 
+		0, 
 		90 
 	  )
 	},

@@ -58,7 +58,7 @@ ForceKnockdown3Command = {
 		{ "force_defense" }, 
 		{}, 
 		65, 
-		100, 
+		0, 
 		0 
 	  )
 	},

@@ -58,7 +58,7 @@ Melee2hArea3Command = {
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		30, 
-		100, 
+		0, 
 		30
 	  ),
 	  StateEffect( 
@@ -67,7 +67,7 @@ Melee2hArea3Command = {
 		{ "posture_change_down_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	},

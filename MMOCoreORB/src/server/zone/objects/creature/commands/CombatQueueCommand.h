@@ -427,6 +427,8 @@ public:
 		for (int j = 0; j < defenseMods.size(); j++)
 			targetDefense += creature->getSkillMod(defenseMods.get(j));
 
+		targetDefense -= mod;
+
 		uint32 duration = MAX(5, effect.getStateLength()*(1.f-targetDefense/120.f));
 
 		switch (effectType) {

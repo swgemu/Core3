@@ -57,7 +57,7 @@ Saber2hFrenzyCommand = {
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		75, 
-		100, 
+		0, 
 		60
 	  ),
 	  StateEffect( 
@@ -66,7 +66,7 @@ Saber2hFrenzyCommand = {
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		75, 
-		100, 
+		0, 
 		30
 	  ),
 	  StateEffect( 
@@ -75,7 +75,7 @@ Saber2hFrenzyCommand = {
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		75, 
-		100, 
+		0, 
 		60
 	  )
 	},

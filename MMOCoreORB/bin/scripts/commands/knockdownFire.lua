@@ -57,7 +57,7 @@ KnockdownFireCommand = {
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		85, 
-		100, 
+		0, 
 		10 
 	  ),
 	  StateEffect( 
@@ -66,7 +66,7 @@ KnockdownFireCommand = {
 		{ "knockdown_defense" }, 
 		{}, 
 		85, 
-		100, 
+		0, 
 		0 
 	  )
 	},

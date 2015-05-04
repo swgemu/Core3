@@ -58,7 +58,7 @@ UnarmedKnockdown1Command = {
 		{ "knockdown_defense" }, 
 		{}, 
 		100, 
-		100, 
+		0, 
 		0 
 	  )
 	},
