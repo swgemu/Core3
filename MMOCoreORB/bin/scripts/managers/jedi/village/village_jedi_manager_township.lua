@@ -79,26 +79,28 @@ end
 
 -- Spawning functions.
 
-function VillageJediManagerTownship:spawnMobiles(pCurrentPhase, spawnStaticMobs)
+function VillageJediManagerTownship:spawnMobiles(currentPhase, spawnStaticMobs)
 	if (spawnStaticMobs == true) then
 		foreach(VillagerMobiles, function(mobile)
-			local theSpawnedMobile = spawnMobile("dathomir", mobile.name, mobile.respawn, mobile.x, mobile.z, mobile.y, mobile.header, mobile.cellid)
+			local pMobile = spawnMobile("dathomir", mobile.name, mobile.respawn, mobile.x, mobile.z, mobile.y, mobile.header, mobile.cellid)
 			Logger:log("Spawning a Village Static NPC at " .. mobile.x .. " - " .. mobile.y, LT_INFO)
-			ObjectManager.withSceneObject(theSpawnedMobile, function(villageMobile)
-				writeData("village:npc:oid:" .. mobile.name, villageMobile:getObjectID())
-				Logger:log("Saving a Village Static NPC with a objectID of " .. villageMobile:getObjectID(), LT_INFO)
-			end)
+			if (pMobile ~= nil) then
+				local mobileID = SceneObject(pMobile):getObjectID()
+				writeData("village:npc:oid:" .. mobile.name, mobileID)
+				Logger:log("Saving a Village Static NPC with a objectID of " .. mobileID, LT_INFO)
+			end
 		end)
 	end
 
-	if (pCurrentPhase == VILLAGE_PHASE_ONE) then
+	if (currentPhase == VILLAGE_PHASE_ONE) then
 		foreach(VillagerMobilesPhaseOne, function(mobile)
-			local theSpawnedMobile = spawnMobile("dathomir", mobile.name, mobile.respawn, mobile.x, mobile.z, mobile.y, mobile.header, mobile.cellid)
+			local pMobile = spawnMobile("dathomir", mobile.name, mobile.respawn, mobile.x, mobile.z, mobile.y, mobile.header, mobile.cellid)
 			Logger:log("Spawning a Village Phase One NPC at " .. mobile.x .. " - " .. mobile.y, LT_INFO)
-			ObjectManager.withSceneObject(theSpawnedMobile, function(villageMobile)
-				writeData("village:npc:oid:" .. mobile.name, villageMobile:getObjectID())
-				Logger:log("Saving a Village Phase One NPC with a objectID of " .. villageMobile:getObjectID(), LT_INFO)
-			end)
+			if (pMobile ~= nil) then
+				local mobileID = SceneObject(pMobile):getObjectID()
+				writeData("village:npc:oid:" .. mobile.name, mobileID)
+				Logger:log("Saving a Village Phase One NPC with a objectID of " .. mobileID, LT_INFO)
+			end
 		end)
 	end
 end
@@ -107,12 +109,13 @@ end
 function VillageJediManagerTownship:despawnMobiles(pCurrentPhase)
 	foreach(VillagerMobilesPhaseOne, function(mobile)
 		local objectID = readData("village:npc:oid:" .. mobile.name)
-		local spawnedLookup = getSceneObject(objectID)
-		ObjectManager.withSceneObject(spawnedLookup, function(villageMobile)
-			villageMobile:destroyObjectFromWorld()
+		local pMobile = getSceneObject(objectID)
+
+		if (pMobile ~= nil) then
+			SceneObject(pMobile):destroyObjectFromWorld()
 			deleteData("village:npc:oid:" .. mobile.name)
 			Logger:log("Despawning " .. mobile.name, LT_INFO)
-		end)
+		end
 	end)
 end
 

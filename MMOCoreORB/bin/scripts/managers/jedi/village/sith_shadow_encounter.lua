@@ -37,7 +37,7 @@ SithShadowEncounter = Encounter:new {
 function SithShadowEncounter:isTheFirstSithShadowOfThePlayer(pSithShadow, pCreatureObject)
 	local spawnedSithShadows = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
 
-	if spawnedSithShadows ~= nil then
+	if spawnedSithShadows ~= nil and spawnedSithShadows[1] ~= nil then
 		return CreatureObject(spawnedSithShadows[1]):getObjectID() == CreatureObject(pSithShadow):getObjectID()
 	else
 		return false
@@ -47,9 +47,13 @@ end
 -- Create the waypoint data pad as loot on the sith shadow.
 -- @param pSithShadow pointer to the creature object of the sith shadow.
 function SithShadowEncounter:addWaypointDatapadAsLoot(pSithShadow)
-	ObjectManager.withInventoryPointer(pSithShadow, function(pInventory)
-		createLoot(pInventory, "sith_shadow_encounter_datapad", 0, true)
-	end)
+	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
+	createLoot(pInventory, "sith_shadow_encounter_datapad", 0, true)
 end
 
 -- Event handler for the LOOTCREATURE event on one of the sith shadows.
@@ -58,15 +62,17 @@ end
 -- @param nothing unused variable for the default footprint of event handlers.
 -- @return 1 if the correct player looted the creature to remove the observer, 0 otherwise to keep the observer.
 function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
+	if (pLootedCreature == nil or pLooter == nil) then
+		return 0
+	end
+
 	Logger:log("Looting the sith shadow.", LT_INFO)
 	if QuestManager.hasActiveQuest(pLooter, QuestManager.quests.TwO_MILITARY) then
 		if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
 			self:addWaypointDatapadAsLoot(pLootedCreature)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.TwO_MILITARY)
 			QuestManager.completeQuest(pLooter, QuestManager.quests.GOT_DATAPAD_1)
-			ObjectManager.withCreatureObject(pLooter, function(creature)
-				creature:sendSystemMessage("@quest/quests:quest_journal_updated")
-			end)
+			CreatureObject(pLooter):sendSystemMessage("@quest/quests:quest_journal_updated")
 			return 1
 		end
 	end
@@ -80,6 +86,10 @@ end
 -- @param noting unused variable for the default footprint of event handlers.
 -- @return 1 if the player was killed by one of the sith shadows, otherwise 0 to keep the observer.
 function SithShadowEncounter:onPlayerKilled(pCreatureObject, pKiller, nothing)
+	if (pCreatureObject == nil or pKiller == nil) then
+		return 0
+	end
+
 	Logger:log("Player was killed.", LT_INFO)
 	if SpawnMobiles.isFromSpawn(pCreatureObject, SithShadowEncounter.taskName, pKiller) then
 		OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
@@ -88,10 +98,9 @@ function SithShadowEncounter:onPlayerKilled(pCreatureObject, pKiller, nothing)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.TwO_MILITARY)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_1)
-		ObjectManager.withCreatureObject(pCreatureObject, function(creature)
-			creature:sendSystemMessage("@quest/quests:task_failure")
-			creature:sendSystemMessage("@quest/quests:quest_journal_updated")
-		end)
+
+		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:task_failure")
+		CreatureObject(pCreatureObject):sendSystemMessage("@quest/quests:quest_journal_updated")
 		return 1
 	end
 
@@ -103,6 +112,10 @@ end
 -- @param pCreatureObject pointer to the creature object of the player who has this encounter.
 -- @param spawnedObject list of pointers to the spawned sith shadows.
 function SithShadowEncounter:onEncounterSpawned(pCreatureObject, spawnedObjects)
+	if (pCreatureObject == nil or spawnedObjects == nil or spawnedObjects[1] == nil) then
+		return
+	end
+
 	Logger:log("Register Sith Shadow Encounter observers.", LT_INFO)
 	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedObjects[1])
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
@@ -114,12 +127,14 @@ end
 -- @param pCreatureObject pointer to the creature object of the player who has this encounter.
 -- @param spawnedObjects list of pointers to the spawned sith shadows.
 function SithShadowEncounter:onEncounterClosingIn(pCreatureObject, spawnedObjects)
+	if (pCreatureObject == nil or spawnedObjects == nil or spawnedObjects[1] == nil) then
+		return
+	end
+
 	Logger:log("Sending threaten string.", LT_INFO)
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		local threatenString = LuaStringIdChatParameter(SITH_SHADOW_THREATEN_STRING)
-		threatenString:setTT(creatureObject:getFirstName())
-		spatialChat(spawnedObjects[1], threatenString:_getObject())
-	end)
+	local threatenString = LuaStringIdChatParameter(SITH_SHADOW_THREATEN_STRING)
+	threatenString:setTT(CreatureObject(pCreatureObject):getFirstName())
+	spatialChat(spawnedObjects[1], threatenString:_getObject())
 	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 end
 
@@ -127,6 +142,10 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return true if the encounter is finished. I.e. the player has access to the village or lost the crystal.
 function SithShadowEncounter:isEncounterFinished(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return false
+	end
+
 	return not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 end
 
@@ -137,18 +156,14 @@ function SithShadowEncounter:useWaypointDatapad(pSceneObject, pCreatureObject)
 	Logger:log("Player used the looted waypoint datapad.", LT_INFO)
 	if QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.GOT_DATAPAD_1) then
 		SithShadowIntroTheater:start(pCreatureObject)
-		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-			creatureObject:sendSystemMessage(READ_DISK_1_STRING)
-		end)
-		ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
-			sceneObject:destroyObjectFromWorld()
-			sceneObject:destroyObjectFromDatabase()
-		end)
+
+		CreatureObject(pCreatureObject):sendSystemMessage(READ_DISK_1_STRING)
+
+		SceneObject(pSceneObject):destroyObjectFromWorld()
+		SceneObject(pSceneObject):destroyObjectFromDatabase()
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 	else
-		ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-			creatureObject:sendSystemMessage(READ_DISK_ERROR_STRING)
-		end)
+		CreatureObject(pCreatureObject):sendSystemMessage(READ_DISK_ERROR_STRING)
 	end
 end
 

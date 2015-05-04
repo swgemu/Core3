@@ -175,6 +175,10 @@ end
 -- @param badgeNumber the badge number that was awarded.
 -- @return 0 to keep the observer active.
 function Glowing:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, badgeNumber)
+	if (pCreatureObject == nil) then
+		return 0
+	end
+
 	self:isGlowing(pCreatureObject)
 
 	return 0
@@ -205,11 +209,9 @@ end
 -- Handling of the checkForceStatus command.
 -- @param pCreatureObject pointer to the creature object of the player who performed the command
 function Glowing:checkForceStatusCommand(pCreatureObject)
-  local progress = "@jedi_spam:fs_progress_" .. self:getJediProgressionStatus(pCreatureObject)
-  
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		creatureObject:sendSystemMessage(progress)
-	end)
+	local progress = "@jedi_spam:fs_progress_" .. self:getJediProgressionStatus(pCreatureObject)
+
+	CreatureObject(pCreatureObject):sendSystemMessage(progress)
 end
 
 return Glowing

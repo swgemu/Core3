@@ -48,6 +48,9 @@ end
 -- @param pPlayerObject pointer to the player object of the player.
 -- @return a boolean.
 function ExperienceConverter.qualifiesForConversation(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return false
+	end
 	-- TODO: Research why Paemos wouldn't converse with player.
 	return true
 end
@@ -56,19 +59,20 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return table of strings of the branches ready to unlock.
 function ExperienceConverter:getNextUnlockableBranches(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return nil
+	end
 
 	local trees = {}
 	local insertion = nil
 
-	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		ObjectManager.withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
-			local checkTrees = playerObject:getForceSensitiveUnlockedBranches()
-			foreach(unlockableFSBranches, function(theTable)
-				local state = ExperienceConverter:getHighestScreenPlayState(pCreatureObject, theTable.state)
-				if ((state) and (not ExperienceConverter:contains(checkTrees, theTable.topBox))) then
-					table.insert(trees, theTable.unlockString)
-				end
-			end)
+	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+		local checkTrees = playerObject:getForceSensitiveUnlockedBranches()
+		foreach(unlockableFSBranches, function(theTable)
+			local state = ExperienceConverter:getHighestScreenPlayState(pCreatureObject, theTable.state)
+			if ((state) and (not ExperienceConverter:contains(checkTrees, theTable.topBox))) then
+				table.insert(trees, theTable.unlockString)
+			end
 		end)
 	end)
 
@@ -82,30 +86,22 @@ end
 
 -- Get the screenplay states specified.
 -- @param pCreatureObject pointer to the creature object of the player.
--- @param pScreenPlayState string pointer to the screenplay state requested.
+-- @param state string of screenplay state requested.
 -- @param pUnlockNumber int pointer to the number unlocked (1-4).
 -- @return an boolean that it is unlockable.
-function ExperienceConverter:getHighestScreenPlayState(pCreatureObject, pScreenPlayState)
-
-	local check = pScreenPlayState
-	local state = ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		return creatureObject:hasScreenPlayState(1, check)
-	end) == true
-	return state
-
+function ExperienceConverter:getHighestScreenPlayState(pCreatureObject, state)
+	return CreatureObject(pCreatureObject):hasScreenPlayState(1, state)
 end
 
-function ExperienceConverter:getExperienceForConversion(pPlayer, pType)
+function ExperienceConverter:getExperienceForConversion(pPlayer, type)
 	local baseString = {}
 	local ufString = nil
 
-	ObjectManager.withCreatureObject(pPlayer, function(creatureObject)
-		ObjectManager.withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
-			ufString = playerObject:getExperienceForType(pType)
-			foreach(ufString, function(formattedString)
-				local insertionStringFormatted = "@exp_n:" .. formattedString
-				table.insert(baseString, insertionStringFormatted)
-			end)
+	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
+		ufString = playerObject:getExperienceForType(type)
+		foreach(ufString, function(formattedString)
+			local insertionStringFormatted = "@exp_n:" .. formattedString
+			table.insert(baseString, insertionStringFormatted)
 		end)
 	end)
 
@@ -113,22 +109,22 @@ function ExperienceConverter:getExperienceForConversion(pPlayer, pType)
 end
 
 -- Get the experience amount for the selected experience type.
-function ExperienceConverter:getExperienceAmount(pPlayer, pSelection)
+function ExperienceConverter:getExperienceAmount(pPlayer, selection)
 	local amount = nil
 	-- Unformat string for retrieval.
 	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-		local experienceType = playerObject:getExperienceType(pSelection)
+		local experienceType = playerObject:getExperienceType(selection)
 		amount = playerObject:getExperience(experienceType)
 	end)
 
 	return amount
 end
 
-function ExperienceConverter:getExperienceRatio(pPlayer, pSelection)
+function ExperienceConverter:getExperienceRatio(pPlayer, selection)
 	local experienceType = nil
 	local ratio = nil
 	ObjectManager.withCreaturePlayerObject(pPlayer, function(playerObject)
-		experienceType = playerObject:getExperienceType(pSelection)
+		experienceType = playerObject:getExperienceType(selection)
 		ratio = playerObject:getExperienceRatio(experienceType)
 	end)
 
@@ -136,12 +132,12 @@ function ExperienceConverter:getExperienceRatio(pPlayer, pSelection)
 end
 
 -- Get the highest box from the tables above for the trainer.
-function ExperienceConverter:getHighestBoxForTrainer(pSelection)
+function ExperienceConverter:getHighestBoxForTrainer(selection)
 	local boxName = nil
 
 	foreach(unlockableFSBranches, function(theTable)
 		local theString = theTable.unlockString
-		if (theString == pSelection) then
+		if (theString == selection) then
 			boxName = theTable.topBox
 		end
 	end)
@@ -151,12 +147,13 @@ end
 
 -- Remove corresponding state they just learned the branch for.
 function ExperienceConverter:removeScreenPlayState(pCreature, pNameForState)
+	if (pCreautre == nil) then
+		return
+	end
 
 	foreach(unlockableFSBranches, function(theTable)
 		if (theTable.unlockString == pNameForState) then
-			ObjectManager.withCreatureObject(pCreature, function(creatureObject)
-				creatureObject:setScreenPlayState(0, theTable.state)
-			end)
+			CreatureObject(pCreatureObject):setScreenPlayState(0, theTable.state)
 		end
 	end)
 
