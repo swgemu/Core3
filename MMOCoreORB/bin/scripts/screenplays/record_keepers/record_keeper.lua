@@ -12,9 +12,13 @@ function RecordKeeper:start()
 end
 
 function RecordKeeper:wipeQuests(pObject)
+	if (pObject == nil) then
+		return
+	end
+
 	for k,v in pairs(self.quests) do
 		-- we wipe out all screen play data for this theme park/quest
-		park = _G[v]
+		local park = _G[v]
 		park:resetThemePark(pObject)
 	end
 	writeScreenPlayData(pObject, self.keeperName, "completed", 1)
@@ -22,13 +26,17 @@ end
 
 function RecordKeeper:resetQuests(pObject)
 	for k,v in pairs(self.quests) do
-		park = _G[v]
+		local park = _G[v]
 		park:resetCurrentMission(pObject)
 	end
 	writeScreenPlayData(pObject, self.keeperName, "completed", 1)
 end
 
 function RecordKeeper:available(pObject)
+	if (pObject == nil) then
+		return false
+	end
+
 	-- read the variable
 	local val = readScreenPlayData(pObject, self.keeperName, "completed")
 	if val == "1" then
@@ -39,9 +47,13 @@ function RecordKeeper:available(pObject)
 end
 
 function RecordKeeper:hasStartedPark(pObject)
+	if (pObject == nil) then
+		return false
+	end
+
 	local count = 0
 	for k,v in pairs(self.quests) do
-		park = _G[v]
+		local park = _G[v]
 		count = count + (park:getCurrentMissionNumber(1,pObject) - 1)
 	end
 	return count > 0
@@ -60,9 +72,7 @@ function RecordKeeper:hasFaction(faction, pCreature)
 		return false
 	end
 
-	local creature = CreatureObject(pCreature)
-
-	if creature:getFaction() == faction then
+	if CreatureObject(pCreature):getFaction() == faction then
 		return true
 	else
 		return false
