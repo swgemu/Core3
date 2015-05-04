@@ -170,16 +170,12 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 
 void ResourceContainerImplementation::combine(ResourceContainer* fromContainer) {
 	Locker _locker(_this.get());
-
-	ManagedReference<SceneObject*> parent =
-			fromContainer->getParent().get();
+	Locker clocker(fromContainer, _this.get());
 
 	setQuantity(getQuantity() + fromContainer->getQuantity());
 	fromContainer->setQuantity(0);
 
-	//parent->removeObject(fromContainer, true);
 	fromContainer->destroyObjectFromWorld(true);
-
 	fromContainer->destroyObjectFromDatabase(true);
 }
 
