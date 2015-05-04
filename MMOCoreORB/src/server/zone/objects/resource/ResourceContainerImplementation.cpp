@@ -170,6 +170,7 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 
 void ResourceContainerImplementation::combine(ResourceContainer* fromContainer) {
 	Locker _locker(_this.get());
+	Locker clocker(fromContainer, _this.get());
 
 	ManagedReference<SceneObject*> parent =
 			fromContainer->getParent().get();
