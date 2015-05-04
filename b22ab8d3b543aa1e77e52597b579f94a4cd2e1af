@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_a702aeb2",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-04T06:49:27Z",
+      "side": 1,
+      "message": "you forgot the \u003d\u003d nil",
+      "revId": "b22ab8d3b543aa1e77e52597b579f94a4cd2e1af",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
