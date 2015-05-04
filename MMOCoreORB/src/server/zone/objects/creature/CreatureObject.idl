@@ -1687,6 +1687,7 @@ class CreatureObject extends TangibleObject {
 	}
 
 	@read
+	@reference
 	public GroupObject getGroup() {
 		return group;
 	}

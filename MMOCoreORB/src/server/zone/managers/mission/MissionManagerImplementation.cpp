@@ -409,8 +409,13 @@ void MissionManagerImplementation::removeMission(MissionObject* mission, Creatur
 	mission->destroyObjectFromDatabase(true);
 	player->updateToDatabaseAllObjects(false);
 
+	mlocker.release();
+
 	if (player->isGrouped() && player->getGroup() != NULL) {
-		GroupObject* group = player->getGroup();
+		Reference<GroupObject*> group = player->getGroup();
+
+		Locker locker(group);
+
 		group->scheduleUpdateNearestMissionForGroup(player->getPlanetCRC());
 	}
 }
