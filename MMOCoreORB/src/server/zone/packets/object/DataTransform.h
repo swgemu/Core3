@@ -282,16 +282,14 @@ public:
 		posMsg << "setting position: " << positionX << " " << positionZ << " " << positionY;
 		object->info(posMsg.toString(), true);*/
 
+		object->setCurrentSpeed(parsedSpeed);
+		object->updateLocomotion();
+
 		if (objectControllerMain->getPriority() == 0x23)
 			object->updateZone(false);
 		else
 			object->updateZone(true);
 
-
-		object->setCurrentSpeed(parsedSpeed);
-
-
-		object->updateLocomotion();
 	}
 };
 

@@ -291,15 +291,14 @@ public:
 		object->setPosition(positionX, positionZ, positionY);
 		ghost->setClientLastMovementStamp(movementStamp);
 
+		object->setCurrentSpeed(parsedSpeed);
+		object->updateLocomotion();
+
 		if (objectControllerMain->getPriority() == 0x23)
 			object->updateZoneWithParent(newParent, false);
 		else
 			object->updateZoneWithParent(newParent, true);
 
-
-		object->setCurrentSpeed(parsedSpeed);
-
-		object->updateLocomotion();
 	}
 
 };
