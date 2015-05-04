@@ -42,7 +42,7 @@ public:
 
 		String waypointData = arguments.toString();
 
-		String waypointName = "New Waypoint";
+		String waypointName = "@ui:datapad_new_waypoint"; // New Waypoint
 		String planet = zone->getZoneName();
 		float x = creature->getPositionX();
 		float y = creature->getPositionY();
@@ -103,10 +103,9 @@ public:
 						newWaypointName << name << " ";
 					}
 
-					/*if (!newWaypointName.isEmpty())
-							 newWaypointName.deleteRange(0, 1);*/// ????
+					if (newWaypointName.length() > 0)
+						waypointName = newWaypointName.toString();
 
-					waypointName = newWaypointName.toString();
 				} else {
 					//A waypoint in the form of /waypoint planet X Z Y - Planetary Map
 					planet = arg1;
