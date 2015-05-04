@@ -8,30 +8,31 @@ import server.zone.objects.area.areashapes.AreaShape;
 import server.zone.objects.area.areashapes.CircularAreaShape;
 
 class RectangularAreaShape extends AreaShape {
-	
+
 	/** The height of the rectangle. */
 	protected float height;
-	
+
 	/** The width of the rectangle. */
 	protected float width;
-	
+
 	/** Constructor */
 	public RectangularAreaShape() {
 		super();
 		height = 0;
 		width = 0;
 	}
-	
+
 	/**
 	 * Set the dimensions of the rectangle.
 	 * @param h the height of the rectangle.
 	 * @param w the width of the rectangle.
 	 */
+	@preLocked
 	public void setDimensions(float h, float w) {
 		height = h;
 		width = w;
 	}
-	
+
 	/**
 	 * Get the height of the rectangle.
 	 * @return height of the rectangle.
@@ -40,7 +41,7 @@ class RectangularAreaShape extends AreaShape {
 	public abstract float getHeight() {
 		return height;
 	}
-	
+
 	/**
 	 * Get the width of the rectangle.
 	 * @return width of the rectangle.
@@ -58,7 +59,7 @@ class RectangularAreaShape extends AreaShape {
 	 */
 	@dirty
 	public native abstract boolean containsPoint(float x, float y);
-	
+
 	/**
 	 * Check if the coordinate is within the area shape.
 	 * @param point the point to check if it is within the area shape.
@@ -91,15 +92,6 @@ class RectangularAreaShape extends AreaShape {
 	public native abstract Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
 
 	/**
-	 * Check if this is a circular area shape.
-	 * @return true if it is a circular area shape.
-	 */
-	@dirty
-	public abstract boolean isCircularAreaShape() {
-		return false;
-	}
-
-	/**
 	 * Check if this is a rectangular area shape.
 	 * @return true if it is a rectangular area shape.
 	 */
@@ -109,22 +101,13 @@ class RectangularAreaShape extends AreaShape {
 	}
 
 	/**
-	 * Check if this is a ring area shape.
-	 * @return true if it is a ring area shape.
-	 */
-	@dirty
-	public abstract boolean isRingAreaShape() {
-		return false;
-	}
-
-	/**
 	 * Check if this area shape intersects with the supplied area shape.
 	 * @param areaShape the area shape to check for intersections with.s
 	 * @return true if the area shapes intersects each other.
 	 */
 	@dirty
 	public native abstract boolean intersectsWith(AreaShape areaShape);
-	
+
 	/**
 	 * Calculates the point in the area that has the shortest distance to the supplied
 	 * position.

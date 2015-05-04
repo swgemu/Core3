@@ -443,6 +443,8 @@ CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC
 		return NULL;
 	}
 
+	Locker locker(object);
+
 	if (!object->isCreatureObject()) {
 		StringBuffer errMsg;
 		errMsg << "server did not create a creature object wrong template? 0x" << hex << templateCRC;
@@ -534,6 +536,7 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 
 		if(otherWeapon != NULL) {
 			if (defaultWeapon != NULL && defaultWeapon->isPersistent()) {
+				Locker clocker(defaultWeapon, creature);
 				defaultWeapon->destroyObjectFromDatabase(true);
 			}
 
@@ -544,6 +547,8 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 			error("could not create creature default weapon");
 			return false;
 		}
+
+		Locker clocker(defaultWeapon, creature);
 
 		creature->transferObject(defaultWeapon, 4);
 	}
@@ -556,6 +561,8 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 
 			return false;
 		}
+
+		Locker clocker(creatureInventory, creature);
 
 		creatureInventory->setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 		creatureInventory->setContainerDenyPermission("owner", ContainerPermissions::MOVECONTAINER);

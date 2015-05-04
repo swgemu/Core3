@@ -21,6 +21,7 @@ NameManager::NameManager() {
 	fillNames();
 
 	setLogging(false);
+	setLoggingName("NameManager");
 }
 
 NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {

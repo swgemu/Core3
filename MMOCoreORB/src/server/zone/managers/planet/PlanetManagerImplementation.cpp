@@ -582,7 +582,11 @@ void PlanetManagerImplementation::loadClientRegions() {
 		Locker areaLocker(noBuild);
 
 		noBuild->initializePosition(x, 0, y);
+
 		ManagedReference<CircularAreaShape*> areaShape = new CircularAreaShape();
+
+		Locker shapeLocker(areaShape);
+
 		areaShape->setRadius(radius * 2);
 		areaShape->setAreaCenter(x, y);
 		noBuild->setAreaShape(areaShape);

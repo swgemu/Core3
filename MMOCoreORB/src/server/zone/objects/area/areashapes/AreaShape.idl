@@ -9,25 +9,26 @@ include engine.util.u3d.Vector3;
 
 @mock
 class AreaShape extends ManagedObject {
-	
+
 	/** The center coordinate of the area. */
 	@dereferenced
 	protected Vector3 areaCenter;
-	
+
 	/** Constructor */
 	public AreaShape() {
 		areaCenter.set(0, 0, 0);
 	}
-	
+
 	/**
 	 * Set the area center.
 	 * @param x the x coordinate.
 	 * @param y the y coordinate.
 	 */
+	@preLocked
 	public void setAreaCenter(float x, float y) {
 		areaCenter.set(x, 0, y);
 	}
-	
+
 	/**
 	 * Get the area center.
 	 * @return the area center.
@@ -36,7 +37,7 @@ class AreaShape extends ManagedObject {
 	@local
 	@dirty
 	public native Vector3 getAreaCenter();
-	
+
 	/**
 	 * Check if the coordinate is within the area shape.
 	 * @param x the x coordinate.
@@ -47,7 +48,7 @@ class AreaShape extends ManagedObject {
 	public abstract boolean containsPoint(float x, float y) {
 		return false;
 	}
-	
+
 	/**
 	 * Check if the coordinate is within the area shape.
 	 * @param point the point to check if it is within the area shape.
@@ -60,7 +61,7 @@ class AreaShape extends ManagedObject {
 	public abstract boolean containsPoint(@dereferenced final Vector3 point) {
 		return false;
 	}
-	
+
 	/**
 	 * Get the minimum radius of a circle bounding the area shape.
 	 * @return the minimum bonding radius.
@@ -69,7 +70,7 @@ class AreaShape extends ManagedObject {
 	public abstract float getRadius() {
 		return 0;
 	}
-	
+
 	/**
 	 * Generate a random position within the area.
 	 * @return a random position within the area.
@@ -90,7 +91,7 @@ class AreaShape extends ManagedObject {
 	@local
 	@dirty
 	public native abstract Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
-	
+
 	/**
 	 * Check if this is a circular area shape.
 	 * @return true if it is a circular area shape.
@@ -127,7 +128,7 @@ class AreaShape extends ManagedObject {
 	public abstract boolean intersectsWith(AreaShape areaShape) {
 		return false;
 	}
-	
+
 	/**
 	 * Get the area of the areaShape.
 	 * @return the area of the area shape.
