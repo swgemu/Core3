@@ -72,7 +72,13 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 	if (newStackSize > 0) {
 		if (parent != NULL) {
 
+			Locker locker(spawnObject);
+
 			ResourceContainer* harvestedResource = spawnObject->createResource(newStackSize);
+
+			locker.release();
+
+			Locker clocker(harvestedResource, _this.get());
 
 			if (parent->transferObject(harvestedResource, -1, true)) {
 				parent->broadcastObject(harvestedResource, true);
