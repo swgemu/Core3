@@ -11,6 +11,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 
 NameManager::NameManager() {
+	setLoggingName("NameManager");
+
 	initialize();
 
 	profaneNames = new Vector<String>(55, 5); //based on the original number of banned words
@@ -21,7 +23,6 @@ NameManager::NameManager() {
 	fillNames();
 
 	setLogging(false);
-	setLoggingName("NameManager");
 }
 
 NameManager::NameManager(ZoneProcessServer* serv) : Logger("NameManager") {

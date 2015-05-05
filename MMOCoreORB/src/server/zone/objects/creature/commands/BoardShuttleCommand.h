@@ -194,7 +194,11 @@ public:
 		// Update the nearest mission for group waypoint for both the arrival and departure planet.
 		if (creature->isGrouped()) {
 			GroupObject* group = creature->getGroup();
+
+			Locker clocker(group, creature);
+
 			group->scheduleUpdateNearestMissionForGroup(zone->getPlanetCRC());
+
 			if(departurePlanet != arrivalPlanet) {
 				group->scheduleUpdateNearestMissionForGroup(arrivalZone->getPlanetCRC());
 			}
