@@ -58,6 +58,7 @@ protected:
 	Vector<String>* ingredientTemplateNames;
 	Vector<String>* ingredientTitleNames;
 	Vector<short>* ingredientSlotType;
+	Vector<String>* ingredientAppearance;
 	Vector<String>* resourceTypes;
 	Vector<int>* resourceQuantities;
 	Vector<short>* contribution;
@@ -121,6 +122,14 @@ public:
 
     Vector<short >* getIngredientSlotType() {
         return ingredientSlotType;
+    }
+
+    Vector<String>* getIngredientAppearance() {
+    	return ingredientAppearance;
+    }
+
+    String getIngredientAppearance(int i) {
+    	return ingredientAppearance->get(i);
     }
 
     Vector<String>* getIngredientTemplateNames() {

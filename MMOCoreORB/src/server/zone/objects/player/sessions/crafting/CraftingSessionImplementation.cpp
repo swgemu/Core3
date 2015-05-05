@@ -703,10 +703,15 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 		if (tano == NULL)
 			continue;
 
+		uint32 tanoCRC = prototype->getClientObjectCRC();
+		uint32 visSlot = draftSchematic->getAppearance(i).hashCode();
+
 		// we know that we can only have one component per hardpoint slot, so don't worry about checking them
-		ComponentMapEntry entry = ComponentMap::instance()->get(tano->getClientObjectCRC());
-		if (entry.getId() > 0)
-			prototype->addVisibleComponent(entry.getId(), false);
+		if (visSlot > 0) {
+			uint32 id = ComponentMap::instance()->getVisibleCRC(tanoCRC, visSlot);
+			if (id > 0)
+				prototype->addVisibleComponent(id, false);
+		}
 	}
 
 	if (prototype->getVisibleComponents() != NULL && prototype->getVisibleComponents()->size() > 0) {
