@@ -45,6 +45,14 @@ int CloningTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 	if(selectedID == 20) {
 
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		ManagedReference<BuildingObject*> cloner = sceneObject->getRootParent().get().castTo<BuildingObject*>();
+
+		if (cloner != NULL && (ghost->getCloningFacility() == cloner->getObjectID())) {
+			player->sendSystemMessage("Your clone data is already stored here.");
+			return 0;
+		}
+
 		ZoneServer* server = player->getZoneServer();
 
 		ManagedReference<SuiMessageBox*> cloneConfirm = new SuiMessageBox(player, SuiWindowType::CLONE_CONFIRM);
@@ -56,7 +64,7 @@ int CloningTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 		cloneConfirm->setCallback(new CloningStoreSuiCallback(server));
 
-		player->getPlayerObject()->addSuiBox(cloneConfirm);
+		ghost->addSuiBox(cloneConfirm);
 		player->sendMessage(cloneConfirm->generateMessage());
 	}
 

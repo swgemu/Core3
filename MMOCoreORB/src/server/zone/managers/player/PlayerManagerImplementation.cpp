@@ -897,17 +897,12 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
 	ManagedReference<SceneObject*> preDesignatedFacility = server->getObject(preDesignatedFacilityOid);
 
-	if (preDesignatedFacility != NULL && preDesignatedFacility == cloningBuilding) {
-		// bind removed
-		player->sendSystemMessage("@base_player:bind_removed");
-		ghost->setCloningFacility(NULL);
-	} else {
+	if (preDesignatedFacility == NULL || preDesignatedFacility != cloningBuilding) {
 		player->addWounds(CreatureAttribute::HEALTH, 100, true, false);
 		player->addWounds(CreatureAttribute::ACTION, 100, true, false);
 		player->addWounds(CreatureAttribute::MIND, 100, true, false);
+		player->addShockWounds(100, true);
 	}
-
-	player->addShockWounds(100, true);
 
 	if (ghost->getFactionStatus() != FactionStatus::ONLEAVE)
 		ghost->setFactionStatus(FactionStatus::ONLEAVE);
