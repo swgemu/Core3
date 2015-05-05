@@ -68,6 +68,7 @@ object_draft_schematic_weapon_rifle_t21 = object_draft_schematic_weapon_shared_r
    resourceTypes = {"steel_ditanium", "iron_polonium", "metal", "crystalline_gallinorian", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "ore_carbonate_alantium", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {150, 85, 20, 15, 10, 30, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+   ingredientAppearance = {"", "", "", "", "", "", "muzzle", "stock"},
 
 
    targetTemplate = "object/weapon/ranged/rifle/rifle_t21.iff",

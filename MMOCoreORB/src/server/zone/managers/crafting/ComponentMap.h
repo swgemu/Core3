@@ -81,16 +81,18 @@ public:
 };
 
 class ComponentMap : public VectorMap<uint32, ComponentMapEntry>, public Singleton<ComponentMap>, public Logger {
+	VectorMap<uint32, VectorMap<uint32, uint32> > visibleComponentMap;
+
 public:
 	ComponentMap() {
-		setLoggingName("ComponentMap");
+		Logger::setLoggingName("ComponentMap");
 
 		setNullValue(ComponentMapEntry(0, "", ""));
 
 		IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/crafting/component.iff");
 
 		if (iffStream == NULL) {
-			info("Could not open datatables/crafting/component.iff", true);
+			Logger::info("Could not open datatables/crafting/component.iff", true);
 			return;
 		}
 
@@ -112,6 +114,8 @@ public:
 		}
 
 		delete iffStream;
+
+		loadVisibleComponentsFile();
 	}
 
 	ComponentMapEntry getFromID(uint32 id) {
@@ -122,6 +126,56 @@ public:
 		}
 
 		return ComponentMapEntry(0, "", "");
+	}
+
+	void loadVisibleComponentsFile() {
+		Lua luaInstance;
+		luaInstance.init();
+
+		luaInstance.runFile("scripts/managers/crafting/visible_components.lua");
+
+		// Read and create all the items in the config unless they
+		// were already loaded from database.
+
+		LuaObject componentList = luaInstance.getGlobalObject("visibleComponents");
+
+		int size = componentList.getTableSize();
+		int count = 0;
+		uint32 muzzleTitle = String("muzzle").hashCode(), scopeTitle = String("scope").hashCode(), stockTitle = String("stock").hashCode();
+
+		lua_State* L = componentList.getLuaState();
+
+		for (int i = 0; i < size; ++i) {
+
+			lua_rawgeti(L, -1, i + 1);
+			LuaObject luaObject(L);
+
+			uint32 tempCRC = luaObject.getStringField("template").hashCode();
+			uint32 muzzleCRC = luaObject.getStringField("muzzle").hashCode();
+			uint32 scopeCRC = luaObject.getStringField("scope").hashCode();
+			uint32 stockCRC = luaObject.getStringField("stock").hashCode();
+
+			luaObject.pop();
+
+			if (tempCRC == 0)
+				continue;
+
+			VectorMap<uint32, uint32> visibleMap;
+
+			visibleMap.put(muzzleTitle, muzzleCRC);
+			visibleMap.put(scopeTitle, scopeCRC);
+			visibleMap.put(stockTitle, stockCRC);
+
+			visibleComponentMap.put(tempCRC, visibleMap);
+
+			count++;
+		}
+
+		Logger::info("Loaded " + String::valueOf(count) + " visible components from scripts", true);
+	}
+
+	uint32 getVisibleCRC(uint32 tempCRC, uint32 slotCRC) {
+		return visibleComponentMap.get(tempCRC).get(slotCRC);
 	}
 };
 

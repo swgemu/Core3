@@ -68,6 +68,7 @@ object_draft_schematic_weapon_rifle_light_blaster_imperial_scout_carbine = objec
    resourceTypes = {"steel_ditanium", "iron_polonium", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {65, 25, 12, 4, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
+   ingredientAppearance = {"", "", "", "", "muzzle", "scope", "stock"},
 
 
    targetTemplate = "object/weapon/ranged/carbine/carbine_elite.iff",
