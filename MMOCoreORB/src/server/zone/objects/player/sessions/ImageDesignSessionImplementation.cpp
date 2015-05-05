@@ -182,8 +182,10 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 			hairObject = imageDesignManager->createHairObject(strongReferenceDesigner, strongReferenceTarget, imageDesignData.getHairTemplate(), imageDesignData.getHairCustomizationString());
 
-			if (hairObject != NULL)
+			if (hairObject != NULL) {
+				Locker hlocker(hairObject);
 				hairObject->setCustomizationString(oldCustomization);
+			}
 
 			if (xpGranted < 100)
 				xpGranted = 100;

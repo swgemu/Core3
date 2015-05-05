@@ -367,6 +367,7 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 	//TODO: Validate hairCustomization
 	if (hair == NULL || !hair->isTangibleObject()) {
 		if (hair != NULL) {
+			Locker locker(hair);
 			hair->destroyObjectFromDatabase(true);
 		}
 
@@ -374,6 +375,9 @@ TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesign
 	}
 
 	TangibleObject* tanoHair = cast<TangibleObject*>( hair.get());
+
+	Locker locker(tanoHair);
+
 	tanoHair->setContainerDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 	tanoHair->setContainerDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 
@@ -403,6 +407,8 @@ TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, Tangi
 
 	if (hairObject == NULL)
 		return NULL;
+
+	Locker locker(hairObject);
 
 	creo->transferObject(hairObject, 4);
 	creo->broadcastObject(hairObject, true);
