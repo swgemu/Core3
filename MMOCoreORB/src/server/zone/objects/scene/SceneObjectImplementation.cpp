@@ -1008,8 +1008,8 @@ void SceneObjectImplementation::teleport(float newPositionX, float newPositionZ,
 	zoneComponent->teleport(_this.get(), newPositionX, newPositionZ, newPositionY, parentID);
 }
 
-void SceneObjectImplementation::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
-	zoneComponent->switchZone(_this.get(), newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
+void SceneObjectImplementation::switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) {
+	zoneComponent->switchZone(_this.get(), newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
 }
 
 void SceneObjectImplementation::updateDirection(float fw, float fx, float fy, float fz) {

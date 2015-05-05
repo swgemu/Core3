@@ -96,12 +96,14 @@ public:
 				if (buildingTemplate != 0)
 					msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
 			}
+
+			msg << endl << "numberOfPlayersInRange = " << objCreo->getNumberOfPlayersInRange();
 		}
 
 		player->sendSystemMessage(msg.toString());
 
 		ChatManager* chatManager = server->getZoneServer()->getChatManager();
-		chatManager->sendMail("System", "dumpZoneInformation", msg.toString(), player->getFirstName());
+		chatManager->sendMail("System", "dumpTargetInformation", msg.toString(), player->getFirstName());
 
 		return SUCCESS;
 	}

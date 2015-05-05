@@ -39,48 +39,19 @@ public:
 				if (zone == NULL)
 					return;
 
-				Locker zoneLocker(zone);
+				player->switchZone(zone->getZoneName(), player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID(), true);
 
-				if (!player->isInvisible()) {
-
-					SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
-
-					for (int i = 0; i < closeObjects->size(); ++i) {
-						SceneObject* scno = cast<SceneObject*>( closeObjects->get(i).get());
-
-						if (scno != player && !scno->isBuildingObject())
-								scno->notifyDissapear(player);
-
-					}
-
-					player->setInvisible(true);
-
+				if (player->isInvisible()) {
 					player->sendSystemMessage("You are now invisible to other players and creatures.");
 
 				} else {
-					player->setInvisible(false);
-
-					SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = player->getCloseObjects();
-
-					for (int i = 0; i < closeObjects->size(); ++i) {
-						SceneObject* scno = cast<SceneObject*>( closeObjects->get(i).get());
-
-						if (scno != player && !scno->isBuildingObject())
-								scno->notifyInsert(player);
-
-					}
-
 					player->sendSystemMessage("You are now visible to all players and creatures.");
-
 				}
-
-				UpdatePVPStatusMessage* mess = new UpdatePVPStatusMessage(player, player->getPvpStatusBitmask());
-				player->broadcastMessage(mess, true, false);
 
 			}
 
 		} catch (Exception& e) {
-			player->error("unreported exception caught in InvisibleDelayEvent::activate");
+			player->error("unreported exception caught in InvisibleDelayEvent::run");
 		}
 
 	}

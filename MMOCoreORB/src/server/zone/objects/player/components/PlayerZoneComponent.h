@@ -16,7 +16,7 @@ public:
 
 	void notifyDissapear(SceneObject* sceneObject, QuadTreeEntry* entry);
 
-	void switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID = 0);
+	void switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID = 0, bool toggleInvisibility = false);
 
 	void notifyInsertToZone(SceneObject* sceneObject, Zone* newZone);
 

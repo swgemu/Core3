@@ -344,7 +344,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 	zone->wlock();
 }
 
-void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
+void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) {
 	Zone* zone = sceneObject->getZone();
 	ManagedReference<SceneObject*> thisLocker = sceneObject;
 
@@ -374,6 +374,14 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	}
 
 	sceneObject->destroyObjectFromWorld(false);
+
+	if (toggleInvisibility) {
+		CreatureObject* creo = cast<CreatureObject*>(sceneObject);
+
+		if (creo != NULL) {
+			creo->setInvisible(!creo->isInvisible());
+		}
+	}
 
 	Locker locker(newZone);
 

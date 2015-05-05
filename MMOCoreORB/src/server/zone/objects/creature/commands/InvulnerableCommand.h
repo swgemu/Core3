@@ -16,12 +16,16 @@ public:
 
 	}
 
-	void setPetsPvpStatusBitMask(PlayerObject* ghost, int mask) const {
+	void setPetsPvpStatusBitMask(CreatureObject* player, int mask) const {
+		Reference<PlayerObject*> ghost = player->getPlayerObject();
+
 		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
 			Reference<AiAgent*> pet = ghost->getActivePet(i);
 
-			if (pet != NULL)
+			if (pet != NULL) {
+				Locker clocker(pet, player);
 				pet->setPvpStatusBitmask(mask);
+			}
 		}
 	}
 
@@ -52,7 +56,7 @@ public:
 			String subCmd;
 			args.getStringToken(subCmd);
 
-			if (subCmd.toLowerCase() == "invisible") {
+			if (subCmd.toLowerCase().beginsWith("invis")) {
 				Reference<Task*> task = creature->getPendingTask("invisibledelayevent");
 
 				if (task != NULL) {
@@ -76,12 +80,12 @@ public:
 			if (player->getPvpStatusBitmask() & CreatureFlag::PLAYER) {
 				player->setPvpStatusBitmask(CreatureFlag::NONE);
 				player->sendSystemMessage("You are now invulnerable.");
-				setPetsPvpStatusBitMask(ghost, CreatureFlag::NONE);
+				setPetsPvpStatusBitMask(player, CreatureFlag::NONE);
 
 			} else if (ghost->getFactionStatus() == FactionStatus::OVERT) {
 				player->setPvpStatusBitmask(CreatureFlag::PLAYER | CreatureFlag::OVERT);
 				player->sendSystemMessage("You are no longer invulnerable");
-				setPetsPvpStatusBitMask(ghost, CreatureFlag::OVERT);
+				setPetsPvpStatusBitMask(player, CreatureFlag::OVERT);
 
 			} else {
 				player->setPvpStatusBitmask(CreatureFlag::PLAYER);

@@ -76,7 +76,7 @@ void PlayerZoneComponent::notifyDissapear(SceneObject* sceneObject, QuadTreeEntr
 	//sceneObject->removeNotifiedSentObject(scno);
 }
 
-void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID) {
+void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, uint64 parentID, bool toggleInvisibility) {
 	if (sceneObject->isPlayerCreature()) {
 		CreatureObject* player = cast<CreatureObject*>( sceneObject);
 		PlayerObject* ghost = player->getPlayerObject();
@@ -97,7 +97,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 		ghost->unloadSpawnedChildren();
 	}
 
-	ZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID);
+	ZoneComponent::switchZone(sceneObject, newTerrainName, newPostionX, newPositionZ, newPositionY, parentID, toggleInvisibility);
 }
 
 void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
