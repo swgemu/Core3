@@ -599,7 +599,7 @@ function WarrenScreenPlay:deactivateElevator()
 	local pTerminal = getSceneObject(8465559)
 
 	if (pTerminal ~= nil) then
-		SceneObject(pTerminal1):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_on")
+		SceneObject(pTerminal):setCustomObjectName("theme_park/warren/warren_system_messages", "mcr_term_name_on")
 	end
 
 	pTerminal = getSceneObject(8465560)
