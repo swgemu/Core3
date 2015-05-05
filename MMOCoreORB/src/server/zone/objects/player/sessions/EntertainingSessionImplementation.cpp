@@ -413,7 +413,7 @@ void EntertainingSessionImplementation::startPlayingMusic(const String& song, co
 	if (group != NULL) {
 		if (group->getBandSong() != song)
 
-			Locker locker(group);
+			Locker clocker(group, entertainer);
 
 			group->setBandSong(song);
 	}
