@@ -1276,6 +1276,8 @@ void PlayerObjectImplementation::notifyOnline() {
 
 	if (getForcePowerMax() > 0 && getForcePower() < getForcePowerMax())
 		activateForcePowerRegen();
+
+	schedulePvpTefRemovalTask();
 }
 
 void PlayerObjectImplementation::notifyOffline() {
@@ -1938,13 +1940,7 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp() {
 	lastPvpCombatActionTimestamp.updateToCurrentTime();
 	lastPvpCombatActionTimestamp.addMiliTime(300000); // 5 minutes
 
-	if (pvpTefTask == NULL) {
-		pvpTefTask = new PvpTefRemovalTask(parent);
-	}
-
-	if (!pvpTefTask->isScheduled()) {
-		pvpTefTask->schedule(300000); // 5 minutes
-	}
+	schedulePvpTefRemovalTask();
 
 	if (!alreadyHasTef) {
 		updateInRangeBuildingPermissions();
@@ -1954,6 +1950,26 @@ void PlayerObjectImplementation::updateLastPvpCombatActionTimestamp() {
 
 bool PlayerObjectImplementation::hasPvpTef() {
 	return !lastPvpCombatActionTimestamp.isPast();
+}
+
+void PlayerObjectImplementation::schedulePvpTefRemovalTask() {
+	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
+
+	if (parent == NULL)
+		return;
+
+	if (pvpTefTask == NULL) {
+		pvpTefTask = new PvpTefRemovalTask(parent);
+	}
+
+	if (!pvpTefTask->isScheduled()) {
+		if (hasPvpTef()) {
+			pvpTefTask->schedule(llabs(getLastPvpCombatActionTimestamp().miliDifference()));
+		} else {
+			pvpTefTask->execute();
+		}
+	}
+
 }
 
 Vector3 PlayerObjectImplementation::getTrainerCoordinates() {

@@ -217,7 +217,7 @@ public:
 
 			}
 
-				SkillModManager::instance()->verifyWearableSkillMods(player);
+			SkillModManager::instance()->verifyWearableSkillMods(player);
 
 		} else {
 			if (obj != NULL)
