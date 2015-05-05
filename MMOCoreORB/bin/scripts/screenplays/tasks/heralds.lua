@@ -106,6 +106,10 @@ function heraldScreenPlay:notifyEnteredHeraldArea(pActiveArea, pPlayer)
 	if (pActiveArea == nil or pPlayer == nil) then
 		return 0
 	end
+	
+	if (not SceneObject(pPlayer):isPlayerCreature()) then
+	 return 0
+	end
 
 	local areaID = SceneObject(pActiveArea):getObjectID()
 
