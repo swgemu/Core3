@@ -68,6 +68,7 @@ object_draft_schematic_weapon_rifle_blaster_dlt20a = object_draft_schematic_weap
    resourceTypes = {"metal_ferrous", "metal", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {35, 17, 9, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
+   ingredientAppearance = {"", "", "", "", "", "", "stock"},
 
 
    targetTemplate = "object/weapon/ranged/rifle/rifle_dlt20a.iff",

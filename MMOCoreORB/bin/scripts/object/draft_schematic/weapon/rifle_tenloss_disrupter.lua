@@ -68,6 +68,7 @@ object_draft_schematic_weapon_rifle_tenloss_disrupter = object_draft_schematic_w
    resourceTypes = {"aluminum_titanium", "copper_platinite", "aluminum_duralumin", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_geonosian_power_cube_base.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {100, 40, 15, 5, 1, 2, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+   ingredientAppearance = {"", "", "", "", "", "", "scope", "stock"},
 
 
    targetTemplate = "object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff",
