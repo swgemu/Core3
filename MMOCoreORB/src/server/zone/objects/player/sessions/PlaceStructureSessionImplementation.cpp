@@ -77,6 +77,9 @@ void PlaceStructureSessionImplementation::placeTemporaryNoBuildZone(SharedStruct
 	//float temporaryNoBuildZoneWidth = structureFootprint->getLength() + structureFootprint->getWidth();
 
 	ManagedReference<CircularAreaShape*> areaShape = new CircularAreaShape();
+
+	Locker alocker(areaShape);
+
 	// Guild halls are approximately 55 m long, 64 m radius will surely cover that in all directions.
 	// Even if the placement coordinate aren't in the center of the building.
 	areaShape->setRadius(64);
