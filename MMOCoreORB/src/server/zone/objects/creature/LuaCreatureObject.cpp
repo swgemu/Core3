@@ -626,6 +626,8 @@ int LuaCreatureObject::setLootRights(lua_State* L) {
 	if (inventory == NULL)
 		return 0;
 
+	Locker locker(inventory);
+
 	inventory->setContainerOwnerID(ownerID);
 	return 1;
 }
