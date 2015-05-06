@@ -244,6 +244,8 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	if(protoclone == NULL)
 		return;
 
+	Locker plocker(protoclone);
+
 	ManagedReference<FactoryCrate*> newCrate =
 			(server->getZoneServer()->createObject(getServerObjectCRC(), 2)).castTo<FactoryCrate*>();
 
@@ -253,6 +255,8 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	}
 
 	protoclone->setParent(NULL);
+
+	Locker nlocker(newCrate);
 
 	if (!newCrate->transferObject(protoclone, -1, false)) {
 		protoclone->destroyObjectFromDatabase(true);

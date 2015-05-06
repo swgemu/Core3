@@ -20,14 +20,14 @@ class DraftSchematic extends IntangibleObject {
 
 	/// Name of schematic group this belongs to
 	private transient string groupName;
-	
+
 	/// SharedDraftSchematicTemplate
 	private transient DraftSchematicObjectTemplate schematicTemplate;
 
 	public DraftSchematic() {
 		schematicTemplate = null;
 		groupName = "";
-		
+
 		Logger.setLoggingName("DraftSchematic");
 	}
 
@@ -37,10 +37,11 @@ class DraftSchematic extends IntangibleObject {
 	 * @post { transient members are initialized }
 	 */
 	public native void initializeTransientMembers();
-	
+
 	@local
+	@preLocked
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -52,68 +53,68 @@ class DraftSchematic extends IntangibleObject {
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
-	
 	/**
-	 * Sends the baseline messages of this object to the specified player\
+	 * Sends the baseline messages of this object to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the baseline messages }
-	 * @param player SceneObject that will receive the baselines 
+	 * @param player SceneObject that will receive the baselines
 	 */
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
-	
+
 	/**
-	 * Sends the ingredients of this object to the specified player\
+	 * Sends the ingredients of this object to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the baseline messages }
-	 * @param player SceneObject that will receive the ingredients 
+	 * @param player SceneObject that will receive the ingredients
 	 */
 	@dirty
 	public native void sendDraftSlotsTo(CreatureObject player);
-	
+
 	@dirty
 	@local
 	private native void insertIngredients(ObjectControllerMessage msg);
-	
+
 	/**
-	 * Sends the resource weights of this object to the specified player\
+	 * Sends the resource weights of this object to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the baseline messages }
-	 * @param player SceneObject that will receive the ingredients 
+	 * @param player SceneObject that will receive the ingredients
 	 */
 	@dirty
 	public native void sendResourceWeightsTo(CreatureObject player);
 
 	@reference
 	public native SceneObject createManufactureSchematic(SceneObject craftingTool = null);
-	
+
+	@preLocked
 	public void setGroupName(string name) {
 		groupName = name;
 	}
-	
+
 	@dirty
 	public string getGroupName() {
 		return groupName;
 	}
-	
+
 	@dirty
 	public native int getDraftSlotCount();
-	
+
 	@dirty
 	public boolean isValidDraftSchematic() {
 		return schematicTemplate != null;
 	}
-	
+
 	@local
 	public native DraftSlot getDraftSlot(int i);
-	
+
 	@dirty
 	public native int getResourceWeightCount();
-	
+
 	@local
 	@dirty
 	public native ResourceWeight getResourceWeight(int i);
-	
+
 	/**
 	 * Getter for complexity
 	 * \return complexity
@@ -122,7 +123,7 @@ class DraftSchematic extends IntangibleObject {
 	public native float getComplexity();
 
 	/**
-	 * Setter for the crafting tool tab mask
+	 * Getter for the crafting tool tab mask
 	 * \return toolTab
 	 */
 	@dirty
@@ -162,40 +163,40 @@ class DraftSchematic extends IntangibleObject {
 	 */
 	@dirty
 	public native string getExperimentationSkill();
-	
+
 	@dirty
 	public native string getCustomizationSkill();
-	
+
 	@dirty
 	public native string getCustomName();
-	
+
 	@dirty
 	public native unsigned int getTanoCRC();
-	
+
 	@dirty
 	public int getTemplateListSize() {
 		return schematicTemplate.getTemplateListSize();
 	}
-	
+
 	@dirty
 	public string getTemplate(int i) {
 		return schematicTemplate.getTemplate(i);
 	}
-	
+
 	@dirty
 	public string getAppearance(int i) {
 		return schematicTemplate.getIngredientAppearance(i);
 	}
-	
+
 	@local
 	@dirty
 	public DraftSchematicObjectTemplate getDraftSchematicTemplate() {
 		return schematicTemplate;
 	}
-	
+
 	@dirty
 	public native int getLabratory();
-	
+
 	@dirty
 	public native boolean allowFactoryRun();
 }

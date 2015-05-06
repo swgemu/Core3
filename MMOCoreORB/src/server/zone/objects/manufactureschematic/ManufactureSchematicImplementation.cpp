@@ -341,13 +341,10 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 
 	Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(slot);
 
-	if(ingredientSlot == NULL)
+	if (ingredientSlot == NULL)
 		return IngredientSlot::INVALID;
 
 	bool wasEmpty = false;
-
-	if (ingredientSlot == NULL)
-		return IngredientSlot::INVALIDINGREDIENT;
 
 	if(ingredientSlot->isFull())
 		return IngredientSlot::FULL;
@@ -357,7 +354,6 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 
 	if(!ingredientSlot->add(player, satchel, tano))
 		return IngredientSlot::INVALIDINGREDIENT;
-
 
 	if(wasEmpty) {
 

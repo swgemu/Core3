@@ -570,11 +570,12 @@ void FactoryObjectImplementation::createNewObject() {
 		return;
 	}
 
+	Locker clocker(schematic, _this.get());
+
 	schematic->manufactureItem(_this.get());
 	currentRunCount++;
 
 	if (schematic->getManufactureLimit() < 1) {
-		Locker clocker(schematic, _this.get());
 		schematic->destroyObjectFromWorld(true);
 		schematic->destroyObjectFromDatabase(true);
 		stopFactory("manf_done", getDisplayedName(), "", currentRunCount);

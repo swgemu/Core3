@@ -529,6 +529,8 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 	//Locker crossSatcheLock(craftingComponentsSatchel,crafter);
 	// crafter is pre-locked before entering this method, satchel::trasnferObject is thread safe
 
+	Locker mlocker(manufactureSchematic);
+
 	int result = manufactureSchematic->addIngredientToSlot(crafter, craftingComponentsSatchel, tano, slot);
 
 	sendSlotMessage(clientCounter, result);
@@ -574,6 +576,7 @@ void CraftingSessionImplementation::removeIngredient(TangibleObject* tano, int s
 	}
 
 	Locker locker(tano);
+	Locker mlocker(manufactureSchematic);
 
 	int result = manufactureSchematic->removeIngredientFromSlot(crafter, tano, slotUpdated);
 

@@ -20,26 +20,26 @@ import server.zone.objects.scene.variables.ContainerPermissions;
 class FactoryCrate extends TangibleObject {
 
 	protected int maxCapacity;
-	
+
 	public FactoryCrate() {
 		Logger.setLoggingName("FactoryCrate");
 
 		maxCapacity = 100;
-		
+
 		super.setContainerInheritPermissionsFromParent(false);
 		super.setContainerDefaultDenyPermission(ContainerPermissions.OPEN);
 		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);
 		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEOUT);
 	}
-	
+
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	public native void initializeTransientMembers();
-	
+
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -50,7 +50,7 @@ class FactoryCrate extends TangibleObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
 	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
@@ -60,7 +60,7 @@ class FactoryCrate extends TangibleObject {
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
 	/**
 	 * Handles the radial selection sent by the client, must be overriden by inherited objects
 	 * @pre { this object is locked, player is locked }
@@ -69,41 +69,46 @@ class FactoryCrate extends TangibleObject {
 	 * @param selectedID selected menu id
 	 * @returns 0 if successfull
 	 */
+	@preLocked
+	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	@dirty
 	public abstract boolean isFactoryCrate() {
 		return true;
 	}
-	
+
 	@read
 	public int getMaxCapacity() {
 		return maxCapacity;
 	}
-	
+
+	@preLocked
 	public void setMaxCapacity(int value) {
 		maxCapacity = value;
 	}
-	
+
+	@preLocked
 	public native void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
 
 	@reference
 	@dirty
 	public native TangibleObject getPrototype();
-	
+
 	@dirty
 	public native string getCraftersName();
-	
+
 	@dirty
 	public native string getSerialNumber();
-	
+
 	public native boolean extractObjectToParent();
-	
+
 	@reference
 	public native TangibleObject extractObject(int count = 1);
-	
+
+	@preLocked
 	public native void split(int newStackSize);
-	
+
 	@dirty
 	public abstract native int getCountableObjectsRecursive() {
 		return 0;

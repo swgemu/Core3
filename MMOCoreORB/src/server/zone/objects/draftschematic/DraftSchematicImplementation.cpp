@@ -103,6 +103,8 @@ Reference<SceneObject*> DraftSchematicImplementation::createManufactureSchematic
 		return NULL;
 	}
 
+	Locker locker(manuSchematic);
+
 	manuSchematic->createChildObjects();
 
 	manuSchematic->setDraftSchematic(_this.get());
