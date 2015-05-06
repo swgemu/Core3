@@ -124,8 +124,15 @@ public:
 			}
 
 			if(!found) {
+				Locker locker(currentSpawn);
+
 				ManagedReference<ResourceContainer*> newContainer = currentSpawn->createResource(parents.get(i));
+
+				locker.release();
+
 				if(newContainer != NULL && newContainer->getQuantity() > 0) {
+					Locker locker(newContainer);
+
 					if(parent->transferObject(newContainer, -1, false)) {
 						parent->broadcastObject(newContainer, true);
 					} else {
@@ -136,6 +143,8 @@ public:
 					error("Unable to return resource to parent, NULL container");
 
 					if (newContainer != NULL) {
+						Locker locker(newContainer);
+
 						newContainer->destroyObjectFromDatabase(true);
 					}
 				}
