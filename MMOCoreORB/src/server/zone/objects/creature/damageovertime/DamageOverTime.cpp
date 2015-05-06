@@ -190,6 +190,10 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* at
 }
 
 uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attacker) {
+	// we need to allow dots to tick while incapped, but not do damage
+	if (victim->isIncapacitated())
+		return 0;
+
 	uint32 attr = victim->getHAM(attribute);
 	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_fire")));
 
@@ -199,10 +203,6 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 		//System::out << "setting strength to " << attr -1 << endl;
 		damage = attr - 1;
 	}
-
-	// we need to allow dots to tick while incapped, but not do damage -- we still need to apply wounds
-	if (victim->isIncapacitated())
-		damage = 0;
 
 	int woundsToApply = (int)(secondaryStrength * (1.f + victim->getShockWounds() / 100.0f));
 
@@ -267,6 +267,10 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* atta
 }
 
 uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
+	// we need to allow dots to tick while incapped, but not do damage
+	if (victim->isIncapacitated())
+		return 0;
+
 	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_disease")));
 
 	// absorption reduces the strength of a dot by the given %.
