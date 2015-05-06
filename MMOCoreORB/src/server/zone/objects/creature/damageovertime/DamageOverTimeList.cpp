@@ -142,31 +142,34 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attack
 	DamageOverTime newDot(attacker, dotType, pool, strength, duration, secondaryStrength);
 	int dotPower = newDot.initDot(victim);
 
-	Time nTime = newDot.getNextTick();
-
-	if (isEmpty() || nextTick.isPast() || nTime.compareTo(nextTick) > 0)
-		nextTick = nTime;
-
 	uint64 key = generateKey(dotType, pool, objectID);
 
 	if (contains(key)) {
 		Vector<DamageOverTime>* vector = &get(key);
+		Vector<DamageOverTime> newVec;
 
 		for (int i = 0; i < vector->size(); ++i) {
 			DamageOverTime dot = vector->get(i);
 
 			if (newDot.getStrength() >= dot.getStrength()) {
-				dot.setStrength(newDot.getStrength());
-				dot.setSecondaryStrength(newDot.getSecondaryStrength());
-				dot.setDuration(newDot.getDuration());
-				dot.setExpires(newDot.getExpires());
-			}
+				newDot.setNextTick(dot.getNextTick());
+				newVec.add(newDot);
+			} else
+				newVec.add(dot);
+
+			drop(key);
+			put(key, newVec);
 		}
 	} else {
 		Vector<DamageOverTime> newVector;
 		newVector.add(newDot);
 		put(key, newVector);
 	}
+
+	Time nTime = newDot.getNextTick();
+
+	if (isEmpty() || nextTick.isPast() || nTime.compareTo(nextTick) > 0)
+		nextTick = nTime;
 
 	if(oldStrength == 0)
 		sendStartMessage(victim, dotType);
