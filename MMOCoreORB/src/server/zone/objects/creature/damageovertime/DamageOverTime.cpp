@@ -90,7 +90,7 @@ void DamageOverTime::activate() {
 }
 
 uint32 DamageOverTime::applyDot(CreatureObject* victim) {
-	if (expires.isPast() || !nextTick.isPast())
+	if (expires.isPast() || !nextTick.isPast() || victim->isIncapacitated())
 		return 0;
 
 	nextTick.updateToCurrentTime();
@@ -154,10 +154,6 @@ uint32 DamageOverTime::initDot(CreatureObject* victim) {
 
 uint32 DamageOverTime::doBleedingTick(CreatureObject* victim, CreatureObject* attacker) {
 	// TODO: Do we try to resist again?
-	// we need to allow dots to tick while incapped, but not do damage
-	if (victim->isIncapacitated())
-		return 0;
-
 	uint32 attr = victim->getHAM(attribute);
 	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_bleeding")));
 
@@ -200,10 +196,6 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 		damage = attr - 1;
 	}
 
-	// we need to allow dots to tick while incapped, but not do damage -- we still need to apply wounds
-	if (victim->isIncapacitated())
-		damage = 0;
-
 	int woundsToApply = (int)(secondaryStrength * (1.f + victim->getShockWounds() / 100.0f));
 
 	Reference<CreatureObject*> attackerRef = attacker;
@@ -233,10 +225,6 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim, CreatureObject* attack
 }
 
 uint32 DamageOverTime::doPoisonTick(CreatureObject* victim, CreatureObject* attacker) {
-	// we need to allow dots to tick while incapped, but not do damage
-	if (victim->isIncapacitated())
-		return 0;
-
 	uint32 attr = victim->getHAM(attribute);
 	int absorptionMod = MIN(0, MAX(50, victim->getSkillMod("absorption_poison")));
 
