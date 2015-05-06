@@ -1431,10 +1431,6 @@ void AuctionManagerImplementation::expireSale(AuctionItem* item) {
 
 	StringIdChatParameter sellerBody("@auction:seller_fail"); // Your auction of %TO has been completed and has not been purchased.
 	sellerBody.setTO(itemName);
-	
-	locker.release();
-
-	cman->sendMail(sender, sellerSubject, sellerBody, item->getOwnerName());
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
@@ -1448,6 +1444,10 @@ void AuctionManagerImplementation::expireSale(AuctionItem* item) {
 	item->setStatus(AuctionItem::EXPIRED);
 	item->setExpireTime(availableTime);
 	item->clearAuctionWithdraw();
+
+	locker.release();
+
+	cman->sendMail(sender, sellerSubject, sellerBody, item->getOwnerName());
 
 	if (!item->isOnBazaar()) {
 		ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
