@@ -164,6 +164,7 @@ void SchematicMap::buildSchematicGroups() {
 		DraftSchematic* schematic = schematicCrcMap.get(entry.getKey());
 
 		if(schematic != NULL) {
+			Locker locker(schematic);
 
 			schematic->setGroupName(groupName);
 

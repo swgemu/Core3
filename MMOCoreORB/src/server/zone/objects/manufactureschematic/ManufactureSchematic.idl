@@ -36,31 +36,31 @@ class ManufactureSchematic extends IntangibleObject {
 	protected int manufactureLimit;
 	protected float complexity;
 	protected CreatureObject crafter;
-	
+
 	@dereferenced
 	protected FactoryBlueprint factoryBlueprint;
-	
+
 	@dereferenced
 	protected transient Vector<Reference<IngredientSlot> > ingredientSlots;
 
 	@dereferenced
 	protected transient StringIdDeltaVector ingredientNames;
-	
+
 	@dereferenced
 	protected transient DeltaVector<int> ingredientTypes;
-	
+
 	@dereferenced
 	protected transient Uint64VectorDeltaVector slotOIDs;
-	
+
 	@dereferenced
 	protected transient IntVectorDeltaVector slotQuantities;
-	
+
 	@dereferenced
 	protected transient DeltaVector<float> slotQualities;
-	
+
 	@dereferenced
 	protected transient DeltaVector<int> slotClean;
-	
+
 	@dereferenced
 	protected transient DeltaVector<int> slotIndexes;
 
@@ -70,41 +70,41 @@ class ManufactureSchematic extends IntangibleObject {
 	protected transient int ingredientCounter;
 	protected transient int experimentingCounter;
 	protected transient int experimentingCounterPrevious;
-	
+
 	protected transient boolean possibleSyncIssue;
-	
+
 	@transactional
 	protected transient CraftingValues craftingValues;
-	
+
 	@dereferenced
 	protected Vector<byte> customizationOptions;
-	
+
 	@dereferenced
 	protected Vector<byte> customizationDefaultValues;
-	
+
 	public ManufactureSchematic() {
 		Logger.setLoggingName("ManufactureSchematic");
-		
+
 		craftingValues = new CraftingValues();
-		
+
 		prototype = null;
-		
+
 		draftSchematic = null;
 		dataSize = 0;
 		complexity = 0;
 		crafter = null;
-		
+
 		assembled = false;
 		completed = false;
 		initialized = false;
 		ingredientCounter = 0;
 		experimentingCounter = 0;
 		experimentingCounterPrevious = 0;
-		
+
 		possibleSyncIssue = false;
-		
+
 		manufactureLimit = 1000;
-		
+
 		super.getContainerPermissions().setInheritPermissionsFromParent(true);
 
 		ContainerPermissions permissions = super.getContainerPermissions();
@@ -114,9 +114,7 @@ class ManufactureSchematic extends IntangibleObject {
 
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
 	}
-	
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -138,26 +136,25 @@ class ManufactureSchematic extends IntangibleObject {
 	 */
 	@dirty
 	public native abstract void sendTo(SceneObject player, boolean doClose);
-	
+
 	/**
-	 * Sends the baseline messages of this object to the specified player\
+	 * Sends the baseline messages of this object to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the baseline messages }
-	 * @param player SceneObject that will receive the baselines 
+	 * @param player SceneObject that will receive the baselines
 	 */
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
 
 	/**
-	 * Sends the baseline7 message of this object to the specified player\
+	 * Sends the baseline7 message of this object to the specified player
 	 * @pre { this object is locked }
 	 * @post { this object is locked, player received the baseline messages }
-	 * @param player SceneObject that will receive the baselines 
+	 * @param player SceneObject that will receive the baselines
 	 */
 	@dirty
 	private native void sendMsco7(SceneObject player);
 
-	
 	/**
 	 * Calls the appropriate UI Listener Function
 	 * @pre { this object is locked, object is locked }
@@ -165,8 +162,9 @@ class ManufactureSchematic extends IntangibleObject {
 	 * @param player CreatureObject using the item
 	 * @param value value from packet
 	 */
+	@preLocked
 	public native abstract void synchronizedUIListen(SceneObject player, int value);
-	
+
 	/**
 	 * Calls the appropriate UI Stop Listener Function
 	 * @pre { this object is locked, object is locked }
@@ -180,34 +178,39 @@ class ManufactureSchematic extends IntangibleObject {
 	public boolean isManufactureSchematic() {
 		return true;
 	}
-	
+
+	@preLocked
 	public native void setDraftSchematic(DraftSchematic schematic);
-	
+
 	private native void initializeIngredientSlots();
 
+	@preLocked
 	public native int addIngredientToSlot(CreatureObject player, SceneObject satchel, TangibleObject tano, int slot);
-	
+
+	@preLocked
 	public native int removeIngredientFromSlot(CreatureObject player, TangibleObject tano, int slot);
-	
+
 	@dirty
 	private native void sendDelta7(IngredientSlot ingredientSlot, int slot, CreatureObject player);
-	
+
 	public native void cleanupIngredientSlots(CreatureObject player);
-	
+
 	@dirty
 	public DraftSchematic getDraftSchematic() {
 		return draftSchematic;
 	}
-	
+
+	@preLocked
 	public void increaseComplexity() {
 		complexity++;
 	}
-	
+
+	@preLocked
 	public void decreaseComplexity() {
 		if(complexity > 1)
 			complexity = complexity - 1;
 	}
-	
+
 	@dirty
 	public float getComplexity() {
 		return complexity;
@@ -215,54 +218,58 @@ class ManufactureSchematic extends IntangibleObject {
 
 	@dirty
 	public native boolean isReadyForAssembly();
-	
+
+	@preLocked
 	public native void setAssembled();
-	
+
 	@read
 	public boolean isAssembled() {
 		return assembled;
 	}
-	
+
+	@preLocked
 	public void setCompleted() {
 		completed = true;
 	}
-	
+
 	@read
 	public boolean isCompleted() {
 		return completed;
 	}
-	
+
 	@read
 	public int getSlotCount() {
 		return ingredientSlots.size();
 	}
-	
+
 	@local
 	@dirty
 	public IngredientSlot getSlot(int i) {
 		return ingredientSlots.get(i);
 	}
-	
+
+	@preLocked
 	public void setCrafter(CreatureObject player) {
 		crafter = player;
 	}
-	
+
 	@read
 	public CreatureObject getCrafter() {
 		return crafter;
 	}
-	
+
 	@local
 	@dirty
 	public CraftingValues getCraftingValues() {
 		return craftingValues;
 	}
-	
+
+	@preLocked
 	public void setExperimentingCounter(int value) {
 		experimentingCounterPrevious = experimentingCounter;
 		experimentingCounter = value;
 	}
-	
+
 	@read
 	public int getExperimentingCounter() {
 		return experimentingCounter;
@@ -272,57 +279,61 @@ class ManufactureSchematic extends IntangibleObject {
 	public int getExperimentingCounterPrevious() {
 		return experimentingCounterPrevious;
 	}
-	
+
+	@preLocked
 	private void updateIngredientCounter() {
 		ingredientCounter += 4;
 	}
-	
+
 	@read
 	public int getIngredientCounter() {
 		return ingredientCounter;
 	}
-	
+
+	@preLocked
 	public void setManufactureLimit(int limit) {
 		manufactureLimit = limit;
 	}
-	
+
 	@read
 	public int getManufactureLimit() {
 		return manufactureLimit;
 	}
-	
+
 	public native void setPrototype(TangibleObject tano);
-	
+
 	@dirty
 	public native TangibleObject getPrototype() {
 		return prototype;
 	}
-	
+
 	@dirty
 	public void canManufactureItem(string type, string displayedName) {
 		factoryBlueprint.canManufactureItem(type, displayedName);
 	}
-	
+
+	@preLocked
 	public void manufactureItem(FactoryObject factory) {
 		factoryBlueprint.manufactureItem(factory);
 		setManufactureLimit(getManufactureLimit() - 1);
 	}
-	
+
+	@preLocked
 	public native void createFactoryBlueprint();
-	
+
 	@dirty
 	public int getBlueprintSize() {
 		return factoryBlueprint.getConsolidatedSize();
 	}
-	
+
 	@local
 	@dirty
 	public BlueprintEntry getBlueprintEntry(int i) {
 		return factoryBlueprint.getConsolidatedEntry(i);
 	}
-	
+
 	public native boolean allowFactoryRun();
-	
+
 	@dirty
 	public native int getLabratory();
 }
