@@ -856,6 +856,9 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 		repairChance = 100;
 
 	String result = repairAttempt(repairChance);
+
+	Locker locker(repairTool);
+
 	repairTool->destroyObjectFromWorld(true);
 	repairTool->destroyObjectFromDatabase(true);
 
