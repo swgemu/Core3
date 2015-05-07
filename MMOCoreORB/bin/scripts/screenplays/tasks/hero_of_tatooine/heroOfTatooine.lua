@@ -958,13 +958,8 @@ function HeroOfTatooineScreenPlay:doHonorFail(pPlayer)
 	local pIntercom = getSceneObject(intercomID)
 	local pWife = getSceneObject(wifeID)
 
-	if (pIntercom ~= nil) then
-		CreatureObject(pIntercom):setOptionsBitmask(128) -- No longer conversable
-	end
-
-	if (pWife ~= nil) then
-		CreatureObject(pWife):setOptionsBitmask(128) -- No longer conversable
-	end
+	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pIntercom)
+	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pWife)
 
 	--Explosion effect
 	playClientEffectLoc(SceneObject(pPlayer):getObjectID(), "clienteffect/combat_grenade_thermal_detonator.cef", "tatooine", -4.8, 0.3, -2.3, 4005941)
@@ -976,6 +971,12 @@ function HeroOfTatooineScreenPlay:doHonorFail(pPlayer)
 
 	createEvent(3500, "HeroOfTatooineScreenPlay", "doFailHonorPhase", pPlayer)
 	createEvent(120000, "HeroOfTatooineScreenPlay", "doRanchHouseCleanup", pPlayer)
+end
+
+function HeroOfTatooineScreenPlay:setNotConversable(pNpc)
+	if pNpc ~= nil and SceneObject(pNpc):isCreatureObject() then
+		CreatureObject(pNpc):setOptionsBitmask(128) -- No longer conversable
+	end
 end
 
 function HeroOfTatooineScreenPlay:doStartPatrol(pNpc)
@@ -1269,13 +1270,8 @@ function HeroOfTatooineScreenPlay:doHonorSuccess(pPlayer)
 	local pIntercom = getSceneObject(intercomID)
 	local pWife = getSceneObject(wifeID)
 
-	if (pIntercom ~= nil) then
-		CreatureObject(pIntercom):setOptionsBitmask(128) -- No longer conversable
-	end
-
-	if (pWife ~= nil) then
-		CreatureObject(pWife):setOptionsBitmask(128) -- No longer conversable
-	end
+	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pIntercom)
+	createEvent(500, "HeroOfTatooineScreenPlay", "setNotConversable", pWife)
 
 	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pRancher)
 	createEvent(500, "HeroOfTatooineScreenPlay", "doStartPatrol", pTrooper1)
