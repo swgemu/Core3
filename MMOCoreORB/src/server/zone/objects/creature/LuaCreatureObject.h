@@ -102,6 +102,7 @@ namespace creature {
 		int awardExperience(lua_State* L);
 		int getOwner(lua_State* L);
 		int getCurrentSpeed(lua_State* L);
+		int isInvisible(lua_State* L);
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		CreatureObject* realObject;
