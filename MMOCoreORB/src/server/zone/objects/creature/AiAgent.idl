@@ -761,107 +761,118 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public abstract float getKinetic() {
 		if (petDeed != null) {
-			return petDeed.getKinetic();
+			return getReducedResist(petDeed.getKinetic());
 		}
 		if (npcTemplate.get() == null)
 			return 0;
 
-		return npcTemplate.get().getKinetic();
+		return getReducedResist(npcTemplate.get().getKinetic());
 	}
 
 	@dirty
 	public abstract float getEnergy() {
 		if (petDeed != null) {
-			return petDeed.getEnergy();
+			return getReducedResist(petDeed.getEnergy());
 		}
 		if (npcTemplate.get() == null)
 			return 0;
 
-		return npcTemplate.get().getEnergy();
+		return getReducedResist(npcTemplate.get().getEnergy());
 	}
 
 	@dirty
 	public abstract float getElectricity() {
 		if (petDeed != null) {
-			return petDeed.getElectric();
+			return getReducedResist(petDeed.getElectric());
 		}
 
 		if (npcTemplate.get() == null)
 			return 0;
 
-		return npcTemplate.get().getElectricity();
+		return getReducedResist(npcTemplate.get().getElectricity());
 	}
 
 	@dirty
 	public abstract float getStun() {
 		if (petDeed != null) {
-			return petDeed.getStun();
+			return getReducedResist(petDeed.getStun());
 		}
 
 		if (npcTemplate.get() == null)
 			return 0;
 
-		return npcTemplate.get().getStun();
+		return getReducedResist(npcTemplate.get().getStun());
 	}
 
 	@dirty
 	public abstract float getBlast() {
 		if (petDeed != null) {
-			return petDeed.getBlast();
+			return getReducedResist(petDeed.getBlast());
 		}
 
 		if (npcTemplate.get() == null)
 			return 0;
 
-		return npcTemplate.get().getBlast();
+		return getReducedResist(npcTemplate.get().getBlast());
 	}
 
 	@dirty
 	public abstract float getHeat() {
 		if (petDeed != null) {
-			return petDeed.getHeat();
+			return getReducedResist(petDeed.getHeat());
 		}
 
 		if (npcTemplate.get() == null)
 			return 0;
 
-		return npcTemplate.get().getHeat();
+		return getReducedResist(npcTemplate.get().getHeat());
 	}
 
 	@dirty
 	public abstract float getCold() {
 		if (petDeed != null) {
-			return petDeed.getCold();
+			return getReducedResist(petDeed.getCold());
 		}
 
 		if (npcTemplate.get() == null)
 			return 0;
 
-		return npcTemplate.get().getCold();
+		return getReducedResist(npcTemplate.get().getCold());
 	}
 
 	@dirty
 	public abstract float getAcid() {
 		if (petDeed != null) {
-			return petDeed.getAcid();
+			return getReducedResist(petDeed.getAcid());
 		}
 
 		if (npcTemplate.get() == null)
 			return 0;
 
-		return npcTemplate.get().getAcid();
+		return getReducedResist(npcTemplate.get().getAcid());
 	}
 
 	@dirty
 	public abstract float getLightSaber() {
 		if (petDeed != null) {
-			return petDeed.getSaber();
+			return getReducedResist(petDeed.getSaber());
 		}
 
 		if (npcTemplate.get() == null)
 			return 0;
 
-		return npcTemplate.get().getLightSaber();
+		return getReducedResist(npcTemplate.get().getLightSaber());
+	}
+
+	@dirty
+	protected float getReducedResist(float value) {
+		if (super.shockWounds <= 500) {
+			return value;
+		}
+
+		float newValue = value - (value * (super.shockWounds - 500) * 0.001);
+			
+		return newValue;
 	}
 
 	@dirty
