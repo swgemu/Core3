@@ -54,6 +54,17 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	if tanoAgent:getPvpStatusBitmask() == NONE or creoAgent:isDead() or creoAgent:isIncapacitated() then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed self bitmask checks") end
 	if aiAgent:getNumberOfPlayersInRange() <= 0  or aiAgent:isRetreating() or aiAgent:isFleeing() or aiAgent:isInCombat() then return false	end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed playersInRange, retreat, flee, and inCombat checks") end
+
+	local sceneObject = SceneObject1(pObject)
+
+	if not sceneObject:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target CREO check") end
+
+	local creoObject = CreatureObject2(pObject)
+
+	if creoObject:isInvisible() then return false end
+	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target invisible check") end
 
 	self:checkForReactionChat(pAgent, pObject)
 
@@ -61,16 +72,14 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	tanoAgent = TangibleObject1(pAgent)
 	creoAgent = CreatureObject1(pAgent)
 	aiAgent = AiAgent1(pAgent)
+	sceneObject = SceneObject1(pObject)
+	creoObject = CreatureObject2(pObject)
 
-	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed playersInRange, retreat, flee, and inCombat checks") end
 	if aiAgent:getFollowObject() ~= nil and aiAgent:getFollowObject() ~= pObject then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed followObject checks") end
 
 	local radius = aiAgent:getAggroRadius()
 	if radius == 0 then radius = DEFAULTAGGRORADIUS end
-
-	local sceneObject = SceneObject1(pObject)
-
 	if sceneObject:isPlayerCreature() then radius = radius * 2 end
 
 	-- TODO possibly tweak, but we need a cap on mob awareness distance
@@ -78,12 +87,9 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	if not sceneObject:isInRangeWithObject(pAgent, radius * 1.2) then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed radius check") end
 
-	if not sceneObject:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
-	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target CREO check") end
+	local tanoObject = TangibleObject2(pObject)
 
-	local creoObject = CreatureObject2(pObject)
-
-	if tanoAgent:getPvpStatusBitmask() == NONE or creoObject:isDead() or creoObject:isIncapacitated() then return false end
+	if tanoObject:getPvpStatusBitmask() == NONE or creoObject:isDead() or creoObject:isIncapacitated() then return false end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target bitmask checks") end
 
 	-- if not in combat, ignore creatures in different cells
