@@ -16,6 +16,7 @@
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
@@ -67,6 +68,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setMoodString", &LuaCreatureObject::setMoodString},
 		{ "hasSkill", &LuaCreatureObject::hasSkill},
 		{ "removeSkill", &LuaCreatureObject::removeSkill},
+		{ "surrenderSkill", &LuaCreatureObject::surrenderSkill},
 		{ "getConversationSession", &LuaCreatureObject::getConversationSession},
 		{ "doAnimation", &LuaCreatureObject::doAnimation},
 		{ "engageCombat", &LuaCreatureObject::engageCombat},
@@ -368,6 +370,15 @@ int LuaCreatureObject::removeSkill(lua_State* L) {
 	return 0;
 }
 
+int LuaCreatureObject::surrenderSkill(lua_State* L) {
+	String value = lua_tostring(L, -1);
+
+	SkillManager* skillManager = SkillManager::instance();
+	skillManager->surrenderSkill(value, realObject, true);
+	return 0;
+}
+
+
 int LuaCreatureObject::getInCellNumber(lua_State* L) {
 	SceneObject* parent = realObject->getParent().get().get();
 
@@ -625,8 +636,6 @@ int LuaCreatureObject::setLootRights(lua_State* L) {
 
 	if (inventory == NULL)
 		return 0;
-
-	Locker locker(inventory);
 
 	inventory->setContainerOwnerID(ownerID);
 	return 1;

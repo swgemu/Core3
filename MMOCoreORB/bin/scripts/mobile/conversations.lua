@@ -3,16 +3,17 @@ includeFile("conversation.lua")
 -- ** THEMEPARKS **
 
 -- Tutorial
-includeFile("conversations/themepark/tutorial/imperial_officer_1_conv.lua")
-includeFile("conversations/themepark/tutorial/imperial_officer_2_conv.lua")
-includeFile("conversations/themepark/tutorial/imperial_officer_3_conv.lua")
-includeFile("conversations/themepark/tutorial/imperial_officer_4_conv.lua")
-includeFile("conversations/themepark/tutorial/imperial_officer_5_conv.lua")
-includeFile("conversations/themepark/tutorial/imperial_officer_6_conv.lua")
-includeFile("conversations/themepark/tutorial/commoner_conv.lua")
-includeFile("conversations/themepark/tutorial/stormtrooper_filler_conv.lua")
-includeFile("conversations/themepark/tutorial/panic_npc_1_conv.lua")
-includeFile("conversations/themepark/tutorial/protocol_droid_3po_silver_conv.lua")
+includeFile("conversations/tutorial/room2_greeter_conv.lua")
+includeFile("conversations/tutorial/nervous_guy_conv.lua")
+includeFile("conversations/tutorial/banker_conv.lua")
+includeFile("conversations/tutorial/scared_soldier_conv.lua")
+includeFile("conversations/tutorial/celebrity_conv.lua")
+includeFile("conversations/tutorial/training_room_officer_conv.lua")
+includeFile("conversations/tutorial/mission_giver_conv.lua")
+includeFile("conversations/tutorial/quartermaster_conv.lua")
+includeFile("conversations/tutorial/commoner_conv.lua")
+includeFile("conversations/tutorial/stormtrooper_filler_conv.lua")
+includeFile("conversations/tutorial/clone_droid_conv.lua")
 
 -- Nym Themepark
 includeFile("conversations/themepark/nym/berema_conv.lua")
