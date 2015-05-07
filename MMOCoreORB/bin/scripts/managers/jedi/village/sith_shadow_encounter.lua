@@ -47,7 +47,7 @@ end
 -- Create the waypoint data pad as loot on the sith shadow.
 -- @param pSithShadow pointer to the creature object of the sith shadow.
 function SithShadowEncounter:addWaypointDatapadAsLoot(pSithShadow)
-	local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
+	local pInventory = SceneObject(pSithShadow):getSlottedObject("inventory")
 
 	if (pInventory == nil) then
 		return
