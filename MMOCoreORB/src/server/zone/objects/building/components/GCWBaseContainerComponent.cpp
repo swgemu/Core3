@@ -26,6 +26,9 @@ bool GCWBaseContainerComponent::checkContainerPermission(BuildingObject* buildin
 			return false;
 		}
 
+		if (creature->isPlayerCreature() && creature->getPlayerObject()->isPrivileged())
+			return true;
+
 		if(building->getPvpStatusBitmask() & CreatureFlag::OVERT){
 			return checkPVPPermission( building,  creature,  permission, sendMessage);
 		} else {
