@@ -97,8 +97,7 @@ public:
 		RadialMenuItem* parent = getRadialItem(parentid);
 
 		if (parent == NULL) {
-			System::out << "error parent radial menu item null" << "\n";
-			throw Exception("null parent radial menu specified");
+			throw Exception("error: null parent radial menu (id = " + String::valueOf(parentid) + ") specified. radialid = " + String::valueOf(radialid));
 		}
 
 		parent->addRadialMenuItem(++indexCount, radialid, callback, text);
@@ -111,8 +110,7 @@ public:
 		RadialMenuItem* parent = getRadialItemByRadialID(parentRadialID);
 
 		if (parent == NULL) {
-			System::out << "error parent radial id menu item null" << "\n";
-			throw Exception("error parent radial id menu item null");
+			throw Exception("error: parent radial id (" + String::valueOf(parentRadialID) + ") menu item null. newRadialID = " + String::valueOf(newRadialID));
 		}
 
 		parent->addRadialMenuItem(++indexCount, newRadialID, callback, text);
