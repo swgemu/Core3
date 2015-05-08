@@ -164,6 +164,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 	optionsBitmask = npcTemplate->getOptionsBitmask();
 	creatureBitmask = npcTemplate->getCreatureBitmask();
+
+	convoTemplateCRC = npcTemplate->getConversationTemplate();
+
 	level = getTemplateLevel();
 
 	float minDmg = calculateAttackMinDamage(level);
@@ -2243,7 +2246,7 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 }
 
 bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
-	if (!player->isPlayerCreature() || isDead() || npcTemplate == NULL || npcTemplate->getConversationTemplate() == 0)
+	if (!player->isPlayerCreature() || isDead() || convoTemplateCRC == 0)
 		return false;
 
 	//Face player.
@@ -2253,12 +2256,10 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 
 	broadcastNextPositionUpdate(&current);
 
-	if (npcTemplate == NULL)
-		return false;
-
 	CreatureObject* playerCreature = cast<CreatureObject*>( player);
 
-	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(npcTemplate->getConversationTemplate());
+	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplateCRC);
+
 	if (conversationTemplate != NULL && conversationTemplate->getConversationTemplateType() == ConversationTemplate::ConversationTemplateTypeTrainer) {
 		ManagedReference<CityRegion*> city = player->getCityRegion();
 
@@ -2279,7 +2280,7 @@ bool AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	}
 
 	//Create conversation observer.
-	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(npcTemplate->getConversationTemplate());
+	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(convoTemplateCRC);
 
 	if (conversationObserver != NULL) {
 		//Register observers.
@@ -2976,3 +2977,17 @@ void AiAgentImplementation::setPatrolPoints(PatrolPointsVector& pVector) {
 	Locker locker(&targetMutex);
 	patrolPoints = pVector;
 }
+
+void AiAgentImplementation::setConvoTemplate(const String& templateString) {
+	uint32 templateCRC = templateString.hashCode();
+
+	ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(templateCRC);
+
+	if (conversationTemplate == NULL) {
+		error("Unable to find conversation template " + templateString);
+		return;
+	}
+
+	convoTemplateCRC = templateCRC;
+}
+

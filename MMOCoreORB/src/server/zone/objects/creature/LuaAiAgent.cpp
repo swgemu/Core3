@@ -131,6 +131,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "hasReactionChatMessages", &LuaAiAgent::hasReactionChatMessages },
 		{ "sendReactionChat", &LuaAiAgent::sendReactionChat },
 		{ "addPatrolPoint", &LuaAiAgent::addPatrolPoint },
+		{ "setConvoTemplate", &LuaAiAgent::setConvoTemplate },
 		{ 0, 0 }
 };
 
@@ -943,6 +944,14 @@ int LuaAiAgent::addPatrolPoint(lua_State* L) {
 	PatrolPoint newPoint(x, z, y, cell);
 
 	realObject->addPatrolPoint(newPoint);
+
+	return 0;
+}
+
+int LuaAiAgent::setConvoTemplate(lua_State* L) {
+	String templateName = lua_tostring(L, -1);
+
+	realObject->setConvoTemplate(templateName);
 
 	return 0;
 }

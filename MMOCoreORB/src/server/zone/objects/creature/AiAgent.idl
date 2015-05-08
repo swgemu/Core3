@@ -88,6 +88,8 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected CreatureTemplateReference npcTemplate;
 
+	protected unsigned int convoTemplateCRC;
+
 	protected SceneObject homeObject;
 
 	//DEBUG
@@ -1315,4 +1317,12 @@ class AiAgent extends CreatureObject {
 	public void setReactionRank(int rank) {
 		reactionRank = rank;
 	}
+
+	@read
+	public unsigned int getConvoTemplateCRC() {
+		return convoTemplateCRC;
+	}
+
+	@preLocked
+	public native void setConvoTemplate(final string templateString);
 }
