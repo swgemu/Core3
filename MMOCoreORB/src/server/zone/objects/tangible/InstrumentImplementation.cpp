@@ -32,15 +32,23 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		if (!canDropInstrument())
 			return 1;
 
+		if (player->isSkillAnimating()) {
+			player->sendSystemMessage("@performance:music_fail"); // You are unable to do that at this time.
+			return 1;
+		}
+
 		SortedVector<ManagedReference<Observer* > > observers = player->getObservers(ObserverEventType::POSITIONCHANGED);
 
 		for (int i = 0; i < observers.size(); ++i) {
-			Observer* observer = observers.get(i);
+			InstrumentObserver* observer = dynamic_cast<InstrumentObserver*>(observers.get(i).get());
 
-			if (dynamic_cast<InstrumentObserver*>(observer) != NULL) {
-				//couldnt find stringi
-				player->sendSystemMessage("You already dropped an instrument");
-				return 1;
+			if (observer != NULL) {
+				ManagedReference<Instrument*> oldInstrument = observer->getInstrument().get();
+
+				if (oldInstrument != NULL) {
+					Locker locker(oldInstrument);
+					oldInstrument->destroyObjectFromWorld(true);
+				}
 			}
 		}
 

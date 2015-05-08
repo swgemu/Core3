@@ -26,5 +26,11 @@ class InstrumentObserver extends Observer {
 	}
 
 	@dirty
-	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);	
+	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
+
+	@weakReference
+	@read
+	public Instrument getInstrument() {
+		return instrument;
+	}	
 }
