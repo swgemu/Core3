@@ -30,9 +30,17 @@ class SingleUseBuff extends Buff {
 		commandCRC = comCRC;
 		player = creo;
 	}
+
+	public SingleUseBuff(CreatureObject creo, unsigned int buffcrc, float duration, int bufftype, unsigned int comCRC, final Vector<unsigned int> events) {
+		super(creo, buffcrc, duration, bufftype);
+		
+		commandCRC = comCRC;
+		player = creo;
+		init(events);
+	}
 	
 	@local
-	public void init(Vector<unsigned int> events) {
+	public void init(final Vector<unsigned int> events) {
 		observer = new SingleUseBuffObserver(this);
 		ObjectManager.instance().persistObject(observer, 1, "buffs");
 		
