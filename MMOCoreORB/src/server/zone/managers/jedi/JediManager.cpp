@@ -51,6 +51,8 @@ void JediManager::loadConfiguration(Lua* luaEngine) {
 		break;
 	case VILLAGEJEDIPROGRESSION:
 		luaEngine->runFile("scripts/managers/jedi/village/village_jedi_manager.lua");
+		// For experience types for Paemos NPC
+		FsExperienceTypes::instance()->loadLuaConfig();
 		break;
 	case CUSTOMJEDIPROGRESSION:
 		luaEngine->runFile(luaEngine->getGlobalString(String("customJediProgressionFile")));
