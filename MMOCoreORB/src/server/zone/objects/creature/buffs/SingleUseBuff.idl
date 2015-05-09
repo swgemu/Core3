@@ -32,7 +32,7 @@ class SingleUseBuff extends Buff {
 	}
 	
 	@local
-	public void init(Vector<unsigned int> events) {
+	public void init(final Vector<unsigned int> events) {
 		observer = new SingleUseBuffObserver(this);
 		ObjectManager.instance().persistObject(observer, 1, "buffs");
 		
