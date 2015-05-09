@@ -150,6 +150,8 @@ public:
 				prototype->updateCraftingValues(craftingValues, true);
 			}
 
+			mlock.release();
+
 			prototype->createChildObjects();
 
 			// Set Crafter name and generate serial number
@@ -172,6 +174,8 @@ public:
 					prototype->destroyObjectFromDatabase(true);
 					return GENERALERROR;
 				}
+
+				Locker cratelocker(crate);
 
 				crate->setUseCount(quantity);
 
