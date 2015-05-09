@@ -19,23 +19,24 @@ include server.zone.objects.creature.buffs.BuffType;
 include server.zone.objects.creature.buffs.BuffCRC;
 include server.chat.StringIdChatParameter;
 
-
-class SpiceBuff extends Buff {	
+class SpiceBuff extends Buff {
 	public SpiceBuff(CreatureObject creo, final string name, unsigned int buffCRC, int duration) {
 		super(creo, buffCRC, duration, BuffType.SPICE);
-		
+
 		super.buffName = name;
-		
+
 		Logger.setLoggingName("SpiceBuff " + name);
 	}
-	
-	public void activate(boolean applyModifiers) { 
+
+	@preLocked
+	public void activate(boolean applyModifiers) {
 		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_consume");
-		
+
 		super.activate(true);
 	}
-	
+
+	@preLocked
 	public native void deactivate(boolean removeModifiers);
-	
+
 	public native void setDownerAttributes(CreatureObject creature, Buff buff);
 }

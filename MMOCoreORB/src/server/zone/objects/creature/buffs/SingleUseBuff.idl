@@ -20,51 +20,54 @@ class SingleUseBuff extends Buff {
 	protected SingleUseBuffObserver observer;
 	protected CreatureObject player;
 	protected unsigned int commandCRC;
-	
+
 	@dereferenced
 	protected Vector<unsigned int> eventTypes;
-	
+
 	public SingleUseBuff(CreatureObject creo, unsigned int buffcrc, float duration, int bufftype, unsigned int comCRC) {
 		super(creo, buffcrc, duration, bufftype);
-		
+
 		commandCRC = comCRC;
 		player = creo;
 	}
-	
+
 	@local
+	@preLocked
 	public void init(Vector<unsigned int> events) {
 		observer = new SingleUseBuffObserver(this);
 		ObjectManager.instance().persistObject(observer, 1, "buffs");
-		
+
 		for(int i = 0; i < events.size(); ++i) {
 			eventTypes.add(events.get(i));
 		}
 	}
-	
+
 	public unsigned int getCommandCRC() {
 		return commandCRC;
 	}
-	
+
 	public CreatureObject getPlayer() {
 		return player;
 	}
-	
+
+	@preLocked
 	public void activate() {
 		super.activate();
 		addObservers();
 	}
-	
+
+	@preLocked
 	public void deactivate() {
 		super.deactivate();
 		dropObservers();
 	}
-	
+
 	private void addObservers() {
 		for(int i = 0; i < eventTypes.size(); ++i) {
 			player.registerObserver(eventTypes.get(i), observer);
 		}
 	}
-	
+
 	private void dropObservers() {
 		for(int i = 0; i < eventTypes.size(); ++i) {
 			player.dropObserver(eventTypes.get(i), observer);

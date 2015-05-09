@@ -44,6 +44,9 @@ public:
 			return res;
 
 		ManagedReference<Buff*> buff = new Buff(creature, buffCRCUsed, duration, BuffType::JEDI);
+
+		Locker locker(buff);
+
 		buff->setSkillModifier("avoid_incapacitation", 1);
 		creature->addBuff(buff);
 

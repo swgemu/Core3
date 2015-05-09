@@ -82,6 +82,8 @@ public:
 
 			ManagedReference<Buff*> buff = new Buff(memberPlayer, actionCRC, duration, BuffType::SKILL);
 
+			Locker locker(buff);
+
 			ManagedReference<WeaponObject*> weapon = memberPlayer->getWeapon();
 
 			if (weapon != NULL) {

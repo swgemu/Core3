@@ -23,6 +23,8 @@ int SquadLeaderBuffObserverImplementation::notifyObserverEvent(unsigned int even
 	if (buff == NULL)
 		return 1;
 
+	Locker locker(buff);
+
 	ManagedReference<CreatureObject*> player = buff->getPlayer();
 	if (player == NULL)
 		return 1;

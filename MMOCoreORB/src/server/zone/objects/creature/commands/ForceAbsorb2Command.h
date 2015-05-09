@@ -63,6 +63,9 @@ public:
 		eventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc2, duration, BuffType::JEDI, getNameCRC());
+
+		Locker locker(buff);
+
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("force_absorb", 1);

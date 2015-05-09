@@ -37,15 +37,11 @@ public:
 			return GENERALERROR;
 		}
 
-
 		// Force cost of skill.
 		int forceCost = 250;
 
-
 		//Check for and deduct Force cost.
-
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
 
 		if (playerObject->getForcePower() <= forceCost) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
@@ -61,6 +57,9 @@ public:
 		int duration = 900;
 
 		ManagedReference<Buff*> buff = new Buff(creature, buffcrc, duration, BuffType::JEDI);
+
+		Locker locker(buff);
+
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("resistance_poison", 25);

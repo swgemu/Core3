@@ -96,6 +96,8 @@ bool BuffList::removeBuff(uint32 buffcrc) {
 
 		ManagedReference<Buff*> buff = buffList.get(buffcrc);
 
+		Locker locker(buff);
+
 		removeBuff(buff);
 	}
 
@@ -168,6 +170,8 @@ void BuffList::clearBuffs(bool updateclient) {
 
 	while (buffList.size() > 0) {
 		ManagedReference<Buff*> buff = buffList.get(0);
+
+		Locker locker(buff);
 
 		if (buff->isActive())
 			buff->clearBuffEvent();

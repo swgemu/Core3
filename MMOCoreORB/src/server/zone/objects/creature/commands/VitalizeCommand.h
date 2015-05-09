@@ -53,6 +53,9 @@ public:
 		startMsg.setStringId("@innate:vit_active"); // You feel adrenaline pour into your bloodstream as you become more vitalized.
 
 		ManagedReference<Buff*> buff = new Buff(player, buffcrc, 600, BuffType::INNATE); // Duration of 10min
+
+		Locker locker(buff);
+
 		buff->setAttributeModifier(CreatureAttribute::HEALTH, 50);
 		buff->setAttributeModifier(CreatureAttribute::ACTION, 50);
 		buff->setAttributeModifier(CreatureAttribute::MIND, 50);

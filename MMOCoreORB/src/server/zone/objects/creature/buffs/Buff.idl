@@ -19,18 +19,18 @@ include server.chat.StringIdChatParameter;
 class Buff extends ManagedObject implements Logger {
 	@weakReference
 	protected CreatureObject creature;
-	
+
 	protected transient BuffDurationEvent buffEvent;
 
 	@dereferenced
 	protected VectorMap<byte, int> attributeModifiers;
-	
+
 	@dereferenced
 	protected VectorMap<string, int> skillModifiers;
-	
+
 	@dereferenced
 	protected Vector<unsigned long> states;
-	
+
 	protected boolean modsApplied;
 
 	protected string buffName;
@@ -38,7 +38,7 @@ class Buff extends ManagedObject implements Logger {
 	protected unsigned int buffCRC;
 	protected int buffType;
 	protected boolean fillAttributesOnBuff;
-	
+
 	@dereferenced
 	protected StringIdChatParameter startMessage;
 	@dereferenced
@@ -51,21 +51,21 @@ class Buff extends ManagedObject implements Logger {
 
 	protected byte spamColor;
 	protected boolean broadcastSpam;
-	
+
 	protected string startFlyFile;
 	protected string startFlyAux;
 	protected byte startFlyRed;
 	protected byte startFlyGreen;
 	protected byte startFlyBlue;
-	
+
 	protected string endFlyFile;
 	protected string endFlyAux;
 	protected byte endFlyRed;
 	protected byte endFlyGreen;
 	protected byte endFlyBlue;
-	
+
 	@dereferenced
-	protected Time nextExecutionTime; 
+	protected Time nextExecutionTime;
 
 	@dereferenced
 	protected Vector<unsigned long> secondaryBuffCRCs;
@@ -88,42 +88,44 @@ class Buff extends ManagedObject implements Logger {
 		broadcastSpam = false; //default, use buff->setBroadcastSpam() to change.
 
 		Logger.setLoggingName("Buff");
-		
+
 		init();
 	}
-	
+
 	public native void initializeTransientMembers();
-	
+
 	/**
 	 * Gets called when this objects is loaded from database
 	 * @pre { this locked }
 	 * @post { this locked }
 	 */
 	public native void notifyLoadFromDatabase();
-	
+
 	public native void loadBuffDurationEvent(CreatureObject creo);
-	
+
 	public native void init();
-	
+
 	public native abstract void sendTo(CreatureObject player);
 	public native abstract void sendDestroyTo(CreatureObject player);
 
+	@preLocked
 	public native abstract void activate(boolean applyModifiers);
+	@preLocked
 	public native abstract void deactivate(boolean removeModifiers);
-	
+
 	public abstract void activate() {
 		activate(true);
 	}
-	
+
 	public abstract void deactivate() {
 		deactivate(true);
 	}
-	
+
 	@local
 	public VectorMap<string, int> getSkillModifiers() {
 		return skillModifiers;
-	} 
-	
+	}
+
 	public native abstract void applyAttributeModifiers();
 	public native abstract void applySkillModifiers();
 	public native abstract void applyStates();
@@ -132,21 +134,27 @@ class Buff extends ManagedObject implements Logger {
 	public native abstract void removeSkillModifiers();
 	public native abstract void removeStates();
 
+	@preLocked
 	public abstract native void clearBuffEvent();
 
+	@preLocked
 	public native void setBuffEventNull();
 
+	@preLocked
 	public native void scheduleBuffEvent();
-	
+
+	@preLocked
 	public void renew(float newDuration = -1) {
 		if (newDuration > 0)
 			buffDuration = newDuration;
-		
+
 		clearBuffEvent();
 		scheduleBuffEvent();
 	}
 
+	@preLocked
 	public native abstract void parseAttributeModifierString(final string modifierstring);
+	@preLocked
 	public native abstract void parseSkillModifierString(final string modifierstring);
 
 	public native abstract string getAttributeModifierString();
@@ -154,6 +162,7 @@ class Buff extends ManagedObject implements Logger {
 
 	public native abstract float getTimeLeft();
 
+	@preLocked
 	public void setAttributeModifier(byte attribute, int value) {
 		if (attributeModifiers.contains(attribute))
 			attributeModifiers.get(attribute) = value;
@@ -161,21 +170,25 @@ class Buff extends ManagedObject implements Logger {
 			attributeModifiers.put(attribute, value);
 	}
 
+	@preLocked
 	public void setSkillModifier(final string modname, int value) {
 		if (skillModifiers.contains(modname))
 			skillModifiers.get(modname) = value;
 		else
 			skillModifiers.put(modname, value);
 	}
-	
+
+	@preLocked
 	public void addState(unsigned long option) {
 		states.add(option);
 	}
-	
+
+	@preLocked
 	public void setSpeedMultiplierMod(float multiplier) {
 		setSkillModifier("private_speed_multiplier", multiplier * 100);
 	}
 
+	@preLocked
 	public void setAccelerationMultiplierMod(float multiplier) {
 		setSkillModifier("private_acceleration_multiplier", multiplier * 100);
 	}
@@ -194,6 +207,7 @@ class Buff extends ManagedObject implements Logger {
 		return multiplier;
 	}
 
+	@preLocked
 	public void setFillAttributesOnBuff(boolean val) {
 		fillAttributesOnBuff = val;
 	}
@@ -214,7 +228,7 @@ class Buff extends ManagedObject implements Logger {
 	public int getBuffType() {
 		return buffType;
 	}
-	
+
 	@local
 	public VectorMap<byte, int> getAttributeModifiers() {
 		return attributeModifiers;
@@ -243,25 +257,34 @@ class Buff extends ManagedObject implements Logger {
 	public boolean isAttributeBuff() {
 		return (attributeModifiers.size() != 0);
 	}
-	
+
 	@local
+	@preLocked
 	public native void setStartMessage(@dereferenced StringIdChatParameter start);
 	@local
+	@preLocked
 	public native void setEndMessage(@dereferenced StringIdChatParameter end);
 
 	@local
+	@preLocked
 	public native void setStartSpam(@dereferenced StringIdChatParameter start);
 	@local
+	@preLocked
 	public native void setEndSpam(@dereferenced StringIdChatParameter end);
 
+	@preLocked
 	public native void setSpamColor(byte color);
 
+	@preLocked
 	public native void setBroadcastSpam(boolean value);
-	
+
+	@preLocked
 	public native void setStartFlyText(final string file, final string aux, byte red, byte green, byte blue);
-	
+
+	@preLocked
 	public native void setEndFlyText(final string file, final string aux, byte red, byte green, byte blue);
 
+	@preLocked
 	public void addSecondaryBuffCRC(unsigned long secondaryCRC) {
 		if (secondaryCRC != 0 && !secondaryBuffCRCs.contains(secondaryCRC))
 			secondaryBuffCRCs.add(secondaryCRC);
@@ -272,12 +295,13 @@ class Buff extends ManagedObject implements Logger {
 	public Vector<unsigned long> getSecondaryBuffCRCs() {
 		return secondaryBuffCRCs;
 	}
-	
+
 	@read
 	public boolean hasMods() {
 		return modsApplied;
 	}
-	
+
+	@preLocked
 	public void setModsApplied(boolean applied) {
 		modsApplied = applied;
 	}

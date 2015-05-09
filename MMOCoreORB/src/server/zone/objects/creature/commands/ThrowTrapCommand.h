@@ -142,6 +142,9 @@ public:
 				message.setStringId("trap/trap" , trapData->getSuccessMessage());
 
 				buff = new Buff(targetCreature, crc, trapData->getDuration(), BuffType::STATE);
+
+				Locker locker(buff);
+
 				if(state != 0)
 					buff->addState(state);
 

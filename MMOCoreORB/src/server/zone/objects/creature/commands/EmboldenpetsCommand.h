@@ -82,6 +82,9 @@ public:
 
 				// Build 15% Health, Action, Mind buff
 				ManagedReference<Buff*> buff = new Buff(pet, buffCRC, durationSec, BuffType::OTHER);
+
+				Locker locker(buff);
+
 				int healthBuff = pet->getBaseHAM(CreatureAttribute::HEALTH) * 0.15;
 				int actionBuff = pet->getBaseHAM(CreatureAttribute::ACTION) * 0.15;
 				int mindBuff = pet->getBaseHAM(CreatureAttribute::MIND) * 0.15;
@@ -89,13 +92,10 @@ public:
 				buff->setAttributeModifier(CreatureAttribute::ACTION, actionBuff);
 				buff->setAttributeModifier(CreatureAttribute::MIND, mindBuff);
 
-				// Apply buff
-				if (buff != NULL){
-					pet->addBuff(buff);
-					pet->getCooldownTimerMap()->updateToCurrentAndAddMili("emboldenPetsCooldown", cooldownMilli);
-					pet->showFlyText("combat_effects","pet_embolden", 0, 153, 0); // "! Embolden !"
-					petEmboldened = true;
-				}
+				pet->addBuff(buff);
+				pet->getCooldownTimerMap()->updateToCurrentAndAddMili("emboldenPetsCooldown", cooldownMilli);
+				pet->showFlyText("combat_effects","pet_embolden", 0, 153, 0); // "! Embolden !"
+				petEmboldened = true;
 
 			} // end if creature
 		} // end active pets loop

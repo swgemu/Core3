@@ -54,6 +54,8 @@ public:
 		if (buff == NULL)
 			return GENERALERROR;
 
+		Locker locker(buff);
+
 		// Add buff.
 		creature->addBuff(buff);
 
@@ -104,6 +106,8 @@ public:
 
 		// Create buff object.
 		ManagedReference<Buff*> buff = new Buff(creature, buffCRCs.get(0), duration, BuffType::JEDI);
+
+		Locker locker(buff);
 
 		if (speedMod > 0) {
 			buff->setSpeedMultiplierMod(speedMod);

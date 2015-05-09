@@ -35,10 +35,18 @@ public:
 			return GENERALERROR;
 
 		ManagedReference<PrivateSkillMultiplierBuff*> multBuff = new PrivateSkillMultiplierBuff(creature, name.hashCode(), duration, BuffType::JEDI);
+
+		Locker locker(multBuff);
+
 		multBuff->setSkillModifier("private_damage_multiplier", 19);
 		multBuff->setSkillModifier("private_damage_divisor", 20);
 
 		creature->addBuff(multBuff);
+
+		locker.release();
+
+		Locker blocker(buff);
+
 		buff->addSecondaryBuffCRC(multBuff->getBuffCRC());
 
 		if (creature->hasBuff(String("burstrun").hashCode()) || creature->hasBuff(String("retreat").hashCode())) {

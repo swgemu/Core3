@@ -20,54 +20,55 @@ class SquadLeaderBuff extends Buff {
 	protected SquadLeaderBuffObserver leaderObserver;
 	protected CreatureObject player;
 	protected CreatureObject leader;
-	
+
 	public SquadLeaderBuff(CreatureObject creo, CreatureObject lead, unsigned int buffCRC, int duration) {
 		super(creo, buffCRC, duration, BuffType.SKILL);
-		
+
 		player = creo;
 		leader = lead;
-		
+
 		playerObserver = new SquadLeaderBuffObserver(this);
 		ObjectManager.instance().persistObject(playerObserver, 1, "buffs");
-		
+
 		leaderObserver = new SquadLeaderBuffObserver(this);
 		ObjectManager.instance().persistObject(leaderObserver, 1, "buffs");
 
 		player.registerObserver(ObserverEventType.PARENTCHANGED, playerObserver);
 		leader.registerObserver(ObserverEventType.PARENTCHANGED, leaderObserver);
 	}
-	
+
 	public void finalize() {
 		player.dropObserver(ObserverEventType.PARENTCHANGED, playerObserver);
 		leader.dropObserver(ObserverEventType.PARENTCHANGED, leaderObserver);
 	}
-	
+
 	public CreatureObject getPlayer() {
 		return player;
 	}
-	
+
 	public CreatureObject getLeader() {
 		return leader;
 	}
-	
+
+	@preLocked
 	public void activate() {
 		if (player == null)
 			return;
-		
+
 		if (leader == null || player.getGroupID() != leader.getGroupID()) {
 			player.removeBuff(super.buffCRC);
 			return;
 		}
-		
+
 		if (player.getParentRecursively(SceneObjectType.BUILDING) == leader.getParentRecursively(SceneObjectType.BUILDING)) {
 			super.activate();
 			player.updateTerrainNegotiation();
 		}
 	}
-	
+
+	@preLocked
 	public void deactivate() {
 		super.deactivate();
 		player.updateTerrainNegotiation();
 	}
-	
 }

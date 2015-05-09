@@ -15,23 +15,25 @@ class PrivateBuff extends Buff {
 		super(creo, buffcrc, duration, bufftype);
 	}
 
+	@preLocked
 	public void activate(boolean applyModifiers) {
 		if (applyModifiers) {
 			applyAttributeModifiers();
 			applySkillModifiers();
 			applyStates();
 		}
-		
+
 		scheduleBuffEvent();
 	}
-	
+
+	@preLocked
 	public void deactivate(boolean removeModifiers) {
 		if (removeModifiers) {
 			removeAttributeModifiers();
 			removeSkillModifiers();
 			removeStates();
 		}
-		
+
 		clearBuffEvent();
 	}
 }

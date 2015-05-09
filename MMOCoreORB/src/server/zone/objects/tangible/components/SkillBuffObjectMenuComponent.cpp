@@ -62,6 +62,9 @@ int SkillBuffObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 
 	// Build buff
 	ManagedReference<Buff*> buff = new Buff(player, buffCRC, duration, BuffType::SKILL);
+
+	Locker locker(buff);
+
 	for (int i = 0; i < modifiers->size(); ++i) {
 		String attribute = modifiers->elementAt(i).getKey();
 		float value = modifiers->elementAt(i).getValue();

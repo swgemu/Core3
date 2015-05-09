@@ -63,6 +63,9 @@ public:
 		eventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc1, duration, BuffType::JEDI, getNameCRC());
+
+		Locker locker(buff);
+
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("force_armor", 25);
@@ -91,8 +94,11 @@ public:
 		int forceCost = param * 0.5;
 		if (playerObject->getForcePower() <= forceCost) { // Remove buff if not enough force.
 			Buff* buff = creo->getBuff(BuffCRC::JEDI_FORCE_ARMOR_1);
-			if (buff != NULL)
+			if (buff != NULL) {
+				Locker locker(buff);
+
 				creo->removeBuff(buff);
+			}
 		} else
 			playerObject->setForcePower(playerObject->getForcePower() - forceCost);
 	}

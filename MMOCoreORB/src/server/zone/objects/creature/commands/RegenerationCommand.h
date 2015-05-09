@@ -57,6 +57,8 @@ public:
 
 		ManagedReference<Buff*> regenBuff = new Buff(player, buffcrc, 300, BuffType::INNATE); // Duration of 5min
 
+		Locker locker(regenBuff);
+
 		regenBuff->setAttributeModifier(CreatureAttribute::CONSTITUTION, regenValue);
 
 		StringIdChatParameter startMsg;

@@ -21,10 +21,11 @@ include server.zone.objects.scene.ObserverEventType;
 class SpiceDownerBuff extends Buff {
 	public SpiceDownerBuff(CreatureObject creo, final string name, unsigned int buffCRC, int duration) {
 		super(creo, buffCRC, duration, BuffType.SPICE);
-		
+
 		super.buffName = name;
 	}
-	
+
+	@preLocked
 	public void activate(boolean applyModifiers) {
 		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_downer");
 
@@ -33,15 +34,14 @@ class SpiceDownerBuff extends Buff {
 
 			if (buff != null) {
 				super.buffDuration = super.buffDuration * (100.0 - buff.getSkillModifierValue("reduce_spice_downtime")) / 100.0;
-
-			} 
-			
+			}
 		}
-		
+
 		super.activate(applyModifiers);
 		super.creature.notifyObservers(ObserverEventType.SPICEDOWNERACTIVATED, super.creature, 0);
 	}
 
+	@preLocked
 	public void deactivate(boolean applyModifiers) {
 		super.creature.sendSystemMessage("@spice/spice:" + super.buffName + "_done");
 

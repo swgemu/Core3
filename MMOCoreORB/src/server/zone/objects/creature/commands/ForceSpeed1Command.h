@@ -56,6 +56,9 @@ public:
 		int duration = 180;
 
 		ManagedReference<Buff*> buff = new Buff(creature, buffcrc1, duration, BuffType::JEDI);
+
+		Locker locker(buff);
+
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("combat_haste", 15);
