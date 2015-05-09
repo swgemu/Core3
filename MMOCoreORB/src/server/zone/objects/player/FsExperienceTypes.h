@@ -3,129 +3,128 @@
 
 #include "engine/engine.h"
 
-class FsExperienceTypes {
+class FsExperienceTypes : public Singleton<FsExperienceTypes>,  public Object {
 public:
-	enum {
-		COMBAT        = 1,
-		SQUADLEADER   = 2,
-		INVESTIGATION = 3,
-		IMAGEDESIGNER = 4,
-		DANCER        = 5,
-		MUSICIAN      = 6,
-		CRAFTING      = 7,
-		SPACE         = 8,
-		HEALING       = 9,
-		WEAPON        = 10
-	};
+	// Ratios
+	VectorMap<String, int> xpRatiosCombat;
+	VectorMap<String, int> xpRatiosSenses;
+	VectorMap<String, int> xpRatiosCrafting;
+	VectorMap<String, int> xpNull;
 
-	// Ratios.
-	enum {
-		WEAPON_RATIO = 10,
-		COMBAT_RATIO = 1
-	};
+	Vector<String> tableNames;
 
-	static String getFsExperienceTypeName(uint8 type) {
-		String name = "";
+public:
+	FsExperienceTypes() : Object() {
+		// These MUST match up with your Lua file specified below!!!
+		tableNames.add("combat");
+		tableNames.add("senses");
+		tableNames.add("crafting");
 
-		// This returns the string to use for "contains" to check experience types.
-		switch(type) {
-		case COMBAT:
-			name = "combat_";
-			break;
-		case SQUADLEADER:
-			name = "squad";
-			break;
-		case INVESTIGATION:
-			name = "bounty";
-			break;
-		case IMAGEDESIGNER:
-			name = "image";
-			break;
-		case DANCER:
-			name = "danc";
-			break;
-		case MUSICIAN:
-			name = "music";
-			break;
-		case CRAFTING:
-			name = "craft";
-			break;
-		case SPACE:
-			name = "space";
-			break;
-		case HEALING:
-			name = "heal";
-			break;
-		case WEAPON:
-			name = "weapon_";
-			break;
-		default:
-			break;
+		xpNull.put("", -1);
+
+	}
+
+	void loadLuaConfig() {
+		Logger::console.info("Loading experience for Force Sensitive conversion ratios..", true);
+
+		Lua* lua = new Lua();
+		lua->init();
+
+		// Load the file.
+		lua->runFile("scripts/screenplays/village/convos/convohelpers/force_sensititive_experience_types.lua");
+
+
+		for (int i=0; i < tableNames.size(); ++i) {
+			LuaObject tableObject = lua->getGlobalObject(tableNames.get(i));
+			loadLuaTableObject(tableObject, i);
 		}
 
-		return name;
+		delete lua;
+		lua = NULL;
+	}
 
+	void loadLuaTableObject(LuaObject table, int type) {
+
+		if(table.isValidTable()){
+			for(int i = 1; i <= table.getTableSize(); ++i){
+				LuaObject ratio = table.getObjectAt(i);
+				if(ratio.isValidTable()){
+					String searchString = ratio.getStringAt(1);
+					int ratioConversion = ratio.getIntAt(2);
+					switch (type) {
+					case 0:
+						xpRatiosCombat.put(searchString, ratioConversion);
+						break;
+					case 1:
+						xpRatiosSenses.put(searchString, ratioConversion);
+						break;
+					case 2:
+						xpRatiosCrafting.put(searchString, ratioConversion);
+						break;
+					default:
+						// Shouldn't get here
+						return;
+						break;
+					}
+				}
+				ratio.pop();
+			}
+		}
+		table.pop();
 	}
 
 	// Getting ratios for conversion.
 
-	static String getFsRatio(String type) {
-		if (type.contains(getFsExperienceTypeName(FsExperienceTypes::WEAPON))) {
-			return String::valueOf(FsExperienceTypes::WEAPON_RATIO);
-		} else if (type.contains(getFsExperienceTypeName(FsExperienceTypes::COMBAT))) {
-				return String::valueOf(FsExperienceTypes::COMBAT_RATIO);
+	int getRatio(String typeOfExperience, int typeForConversion) {
+		switch (typeForConversion) {
+		case 0: // FS Combat
+		case 3: // FS Reflex
+			for (int i=0; i < xpRatiosCombat.size(); ++i) {
+				if (typeOfExperience.contains(xpRatiosCombat.elementAt(i).getKey())) {
+					return xpRatiosCombat.elementAt(i).getValue();
+				}
 			}
-		return "";
-	}
-
-	/* This boolean checks to see whether or not the experience types are valid from the LUA call for the Experience Converter.
-	 * It should be returning true if it's a correct type (according to scrapbook), and false if not.
-	 */
-
-	static bool isValid(uint8 type, String experienceType) {
-		switch (type) {
-		case 0: // Type = Combat Prowess. We want combative-type experiences.
-			if ((experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::COMBAT)) ||
-					experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::SQUADLEADER)) ||
-					experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::INVESTIGATION))) &&
-					!experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::SPACE))) {
-				return true;
-				break;
-			}
-			return false;
 			break;
-		case 1: // Type = Heightened Senses. We want entertainer types and healing.
-			if (experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::IMAGEDESIGNER)) ||
-					experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::DANCER)) ||
-					experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::HEALING)) ||
-					experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::MUSICIAN))) {
-				return true;
-				break;
+		case 1: // FS Crafting
+			for (int i=0; i < xpRatiosCrafting.size(); ++i) {
+				if (typeOfExperience.contains(xpRatiosCrafting.elementAt(i).getKey())) {
+					return xpRatiosCrafting.elementAt(i).getValue();
+				}
 			}
-			return false;
 			break;
-		case 2: // Type = Enhanced Reflexes, same as Combat Prowess.
-			if ((experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::COMBAT)) ||
-					experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::SQUADLEADER)) ||
-					experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::INVESTIGATION))) &&
-					!experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::SPACE))) {
-				return true;
-				break;
+		case 2: // FS Senses
+			for (int i=0; i < xpRatiosSenses.size(); ++i) {
+				if (typeOfExperience.contains(xpRatiosSenses.elementAt(i).getKey())) {
+					return xpRatiosSenses.elementAt(i).getValue();
+				}
 			}
-			return false;
-			break;
-		case 3: // Type = Crafting Mastery. Crafting-type experiences.
-			if (experienceType.contains(getFsExperienceTypeName(FsExperienceTypes::CRAFTING))) {
-				return true;
-				break;
-			}
-			return false;
 			break;
 		default:
-			return false;
+			return -1;
+		}
+
+		return -1;
+	}
+
+	VectorMap<String, int> getFsEligibleExperienceType(int typeForConversion) {
+
+		switch (typeForConversion) {
+		case 0: // FS Combat
+		case 3: // FS Reflex
+			return xpRatiosCombat;
+			break;
+		case 1: // FS Crafting
+			return xpRatiosCrafting;
+			break;
+		case 2: // FS Senses
+			return xpRatiosSenses;
+			break;
+		default:
+			return xpNull;
 			break;
 		}
-		return false;
+
+		return xpNull;
 	}
 
 };
