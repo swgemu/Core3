@@ -511,11 +511,16 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	String cell = "object/cell/cell.iff";
 
 	Reference<BuildingObject*> tutorial = server->createObject(tut.hashCode(), 1).castTo<BuildingObject*>();
+
+	Locker locker(tutorial);
+
 	tutorial->createCellObjects();
 	tutorial->setPublicStructure(true);
 
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 	zone->transferObject(tutorial, -1, true);
+
+	locker.release();
 
 	SceneObject* cellTut = tutorial->getCell(11);
 
