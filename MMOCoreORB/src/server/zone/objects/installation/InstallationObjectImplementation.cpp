@@ -526,6 +526,7 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 	ManagedReference<ResourceContainer*> container = getContainerFromHopper(currentSpawn);
 
 	if (container == NULL) {
+		Locker locker(currentSpawn);
 		container = currentSpawn->createResource(0);
 
 		addResourceToHopper(container);
