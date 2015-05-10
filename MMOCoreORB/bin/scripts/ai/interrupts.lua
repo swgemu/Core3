@@ -196,89 +196,100 @@ end
 function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	if (pAgent == pObject) then return end
 	if (pAgent == nil or pObject == nil) then return end
+	
+	local sceneObject = SceneObject1(pObject)
 
-	if not SceneObject(pObject):isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
+	if not sceneObject:isCreatureObject() then return false end -- don't aggro TANOs (lairs, turrets, etc)
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("a") end
+	
+	local creoAgent = CreatureObject1(pAgent)
 
-	if CreatureObject(pAgent):isDead() or CreatureObject(pAgent):isIncapacitated() then return end
+	if creoAgent:isDead() or creoAgent:isIncapacitated() then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("b") end
-	if CreatureObject(pObject):isDead() or CreatureObject(pObject):isIncapacitated() then return end
+	
+	local creoObject = CreatureObject2(pObject)
+	
+	if creoObject:isDead() or creoObject:isIncapacitated() then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("c") end
+	
+	local aiAgent = AiAgent1(pAgent)
 
-	if AiAgent(pAgent):isInCombat() then return end
+	if aiAgent:isInCombat() then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("d") end
 
-	if AiAgent(pAgent):isCamouflaged(pObject) then return end
+	if aiAgent:isCamouflaged(pObject) then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("f") end
 
 	-- TODO (dannuic): tweak these formulae based on feedback
 	-- TODO (dannuic): should we be using group levels here (if available)?
-	local levelDiff = CreatureObject(pObject):getLevel() - CreatureObject(pAgent):getLevel()
+	local levelDiff = creoObject:getLevel() - creoAgent:getLevel()
 	local mod = math.max(0.04, math.min((1 - (levelDiff/20)), 1.2))
 
-	local radius = AiAgent(pAgent):getAggroRadius()
+	local radius = aiAgent:getAggroRadius()
 	if radius == 0 then radius = DEFAULTAGGRORADIUS end
 	radius = radius*mod
 
-	local inRange = SceneObject(pObject):isInRangeWithObject(pAgent, radius)
+	local inRange = sceneObject:isInRangeWithObject(pAgent, radius)
 
-	local pFollow = AiAgent(pAgent):getFollowObject();
+	local pFollow = aiAgent:getFollowObject();
 
-	if AiAgent(pAgent):isStalker() and SceneObject(pObject):isPlayerCreature() and AiAgent(pAgent):isAggressiveTo(pObject) and SceneObject(pObject):isInRangeWithObject(pAgent, radius*2) then
+	if aiAgent:isStalker() and sceneObject:isPlayerCreature() and aiAgent:isAggressiveTo(pObject) and sceneObject:isInRangeWithObject(pAgent, radius*2) then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1") end
 		if pFollow == nil and not inRange then
 			--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1a") end
-			if AiAgent(pAgent):checkLineOfSight(pObject) then
-				AiAgent(pAgent):setStalkObject(pObject)
-				AiAgent(pAgent):setAlertDuration(10000)
-				if CreatureObject(pObject):hasSkill("outdoors_ranger_novice") then
-					CreatureObject(pObject):sendSystemMessageWithTO("@skl_use:notify_stalked", SceneObject(pAgent):getDisplayedName())
+			if aiAgent:checkLineOfSight(pObject) then
+				aiAgent:setStalkObject(pObject)
+				aiAgent:setAlertDuration(10000)
+				if creoObject:hasSkill("outdoors_ranger_novice") then
+					creoObject:sendSystemMessageWithTO("@skl_use:notify_stalked", SceneObject(pAgent):getDisplayedName())
 				end
 			end
-		elseif inRange or CreatureObject(pObject):getCurrentSpeed() <= CreatureObject(pObject):getWalkSpeed() then
+		elseif inRange or creoObject:getCurrentSpeed() <= creoObject:getWalkSpeed() then
 			--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1b") end
-			if AiAgent(pAgent):checkLineOfSight(pObject) then AiAgent(pAgent):addDefender(pObject) end -- TODO (dannuic): do stalkers also agro when the target starts to move towards them?
+			if aiAgent:checkLineOfSight(pObject) then aiAgent:addDefender(pObject) end -- TODO (dannuic): do stalkers also agro when the target starts to move towards them?
 		else
 			--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("1c") end
-			AiAgent(pAgent):setOblivious()
+			aiAgent:setOblivious()
 		end
-	elseif AiAgent(pAgent):isAggressiveTo(pObject) and inRange then
+	elseif aiAgent:isAggressiveTo(pObject) and inRange then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("2") end
 		--if SceneObject(pObject):isAiAgent() then AiAgent(pObject):info("attacking me!") end) end
-		if AiAgent(pAgent):checkLineOfSight(pObject) then AiAgent(pAgent):addDefender(pObject) end
+		if aiAgent:checkLineOfSight(pObject) then aiAgent:addDefender(pObject) end
 
-	elseif pFollow == nil and inRange and AiAgent(pAgent):isCreature() and (CreatureObject(pObject):getCurrentSpeed() >= CreatureObject(pObject):getWalkSpeed()) then
+	elseif pFollow == nil and inRange and aiAgent:isCreature() and (creoObject:getCurrentSpeed() >= creoObject:getWalkSpeed()) then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("3") end
-		if AiAgent(pAgent):checkLineOfSight(pObject) then
-			AiAgent(pAgent):setWatchObject(pObject)
-			AiAgent(pAgent):setAlertDuration(10000); -- TODO (dannuic): make this wait time more dynamic
+		if aiAgent:checkLineOfSight(pObject) then
+			aiAgent:setWatchObject(pObject)
+			aiAgent:setAlertDuration(10000); -- TODO (dannuic): make this wait time more dynamic
 			SceneObject(pAgent):showFlyText("npc_reaction/flytext", "alert", 255, 0, 0)
 		end
-	elseif pObject == pFollow and AiAgent(pAgent):alertedTimeIsPast() and AiAgent(pAgent):getFollowState() == WATCHING then
+	elseif pObject == pFollow and aiAgent:alertedTimeIsPast() and aiAgent:getFollowState() == WATCHING then
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("4") end
-		AiAgent(pAgent):setOblivious() -- if we're "standing still" (and they aren't aggressive) forget about us
-	elseif pObject == pFollow and inRange and SceneObject(pObject):getParent() == nil then -- TODO: Do we want weaker mobs to run away when indoors? Revisit when indoor pathing is better
+		aiAgent:setOblivious() -- if we're "standing still" (and they aren't aggressive) forget about us
+	elseif pObject == pFollow and inRange and sceneObject:getParent() == nil then -- TODO: Do we want weaker mobs to run away when indoors? Revisit when indoor pathing is better
 		--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("5") end
 		-- TODO (dannuic): Not sure about this stuff, needs testing
-		if SceneObject(pFollow):isCreatureObject() then
+		local sceneFollow = SceneObject2(pFollow)
+		
+		if sceneFollow:isCreatureObject() then
 			local creoLevel = CreatureObject(pFollow):getLevel()
-			local isBackwardsAggressive = SceneObject(pFollow):isAiAgent() and AiAgent(pFollow):isAggressiveTo(pAgent)
+			local isBackwardsAggressive = sceneFollow:isAiAgent() and AiAgent(pFollow):isAggressiveTo(pAgent)
  
  			-- TODO (dannuic): Add in run away logic for nearby combat
-			if AiAgent(pAgent):isCreature() and CreatureObject(pAgent):getLevel()*mod < creoLevel and (isBackwardsAggressive or SceneObject(pFollow):isPlayerCreature()) and CreatureObject(pObject):getCurrentSpeed() > 2*CreatureObject(pObject):getWalkSpeed() and SceneObject(pObject):isFacingObject(pAgent) then
+			if aiAgent:isCreature() and creoAgent:getLevel()*mod < creoLevel and (isBackwardsAggressive or sceneFollow:isPlayerCreature()) and creoObject:getCurrentSpeed() > 2*creoObject:getWalkSpeed() and sceneObject:isFacingObject(pAgent) then
 				--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("run!") end
-				if AiAgent(pAgent):checkLineOfSight(pObject) then
-					AiAgent(pAgent):runAway(pFollow, 64 - radius)
-					AiAgent(pAgent):setAlertDuration(10000)
+				if aiAgent:checkLineOfSight(pObject) then
+					aiAgent:runAway(pFollow, 64 - radius)
+					aiAgent:setAlertDuration(10000)
 				end
 			end
-		else AiAgent(pAgent):setOblivious() end
+		else aiAgent:setOblivious() end
 	else
-		AiAgent(pAgent):setOblivious()
+		aiAgent:setOblivious()
 	end
 
-	AiAgent(pAgent):stopWaiting();
-	AiAgent(pAgent):executeBehavior();
+	aiAgent:stopWaiting();
+	aiAgent:executeBehavior();
 end
 
 
