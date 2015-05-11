@@ -116,7 +116,8 @@ class Consumable extends TangibleObject {
 	@local
 	@dirty
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
+	@arg1preLocked
 	public native void setModifiers(Buff buff, boolean skillModifiers = false);
 	
 	@read

@@ -1951,9 +1951,11 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 
 	Reference<Buff*> buff = new Buff(patient, buffname.hashCode(), duration, BuffType::MEDICAL);
 
-	if(BuffAttribute::isProtection(attribute))
+	Locker locker(buff);
+
+	if(BuffAttribute::isProtection(attribute)) {
 		buff->setSkillModifier(BuffAttribute::getProtectionString(attribute), buffvalue);
-	else{
+	} else {
 		buff->setAttributeModifier(attribute, buffvalue);
 		buff->setFillAttributesOnBuff(true);
 	}
@@ -3438,6 +3440,8 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 		for (int i = 0; i < buffs->getBuffListSize(); i++) {
 			ManagedReference<Buff*> buff = buffs->getBuffByIndex(i);
 
+			Locker clocker(buff, player);
+
 			buff->setModsApplied(true);
 
 			buff->applySkillModifiers();
@@ -4714,12 +4718,17 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 	StringIdChatParameter endStringId("cbt_spam", "burstrun_stop_single");
 
 	ManagedReference<Buff*> buff = new Buff(player, crc, duration, BuffType::SKILL);
+
+	Locker locker(buff);
+
 	buff->setSpeedMultiplierMod(1.822f);
 	buff->setAccelerationMultiplierMod(1.822f);
+
 	if (cooldownModifier == 0.f)
 		buff->setStartMessage(startStringId);
 	else
 		buff->setStartMessage(modifiedStartStringId);
+
 	buff->setEndMessage(endStringId);
 
 	StringIdChatParameter startSpam("cbt_spam", "burstrun_start");
@@ -4746,6 +4755,9 @@ bool PlayerManagerImplementation::doEnhanceCharacter(uint32 crc, CreatureObject*
 		return false;
 
 	ManagedReference<Buff*> buff = new Buff(player, crc, duration, buffType);
+
+	Locker locker(buff);
+
 	buff->setAttributeModifier(attribute, amount);
 	player->addBuff(buff);
 

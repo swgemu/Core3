@@ -36,15 +36,11 @@ public:
 			return GENERALERROR;
 		}
 
-
 		// Force cost of skill.
 		int forceCost = 50;
 
-
 		//Check for and deduct Force cost.
-
 		ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
-
 
 		if (playerObject->getForcePower() <= forceCost) {
 			creature->sendSystemMessage("@jedi_spam:no_force_power"); //"You do not have enough Force Power to peform that action.
@@ -63,6 +59,9 @@ public:
 		eventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 		ManagedReference<SingleUseBuff*> buff = new SingleUseBuff(creature, buffcrc1, duration, BuffType::JEDI, getNameCRC());
+
+		Locker locker(buff);
+
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);
 		buff->setSkillModifier("force_feedback", 65);

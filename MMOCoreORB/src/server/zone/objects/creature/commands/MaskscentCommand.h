@@ -43,6 +43,9 @@ public:
 		int duration = 60 + (((float)(maskScentMod / 100.0f)) * 200);
 
 		ManagedReference<Buff*> buff = new Buff(creature, crc, duration, BuffType::SKILL);
+
+		Locker locker(buff);
+
 		buff->addState(CreatureState::MASKSCENT);
 		buff->setStartMessage(startStringId);
 		buff->setEndMessage(endStringId);

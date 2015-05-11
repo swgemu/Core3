@@ -119,6 +119,9 @@ public:
 			}
 			else{
 				ManagedReference<Buff*> buff = new Buff(pet, buffCRC, consumable->getDuration(), BuffType::FOOD);
+
+				Locker blocker(buff);
+
 				consumable->setModifiers(buff, false);
 				pet->addBuff(buff);
 				player->sendSystemMessage("Your pet is fortified by the food!");

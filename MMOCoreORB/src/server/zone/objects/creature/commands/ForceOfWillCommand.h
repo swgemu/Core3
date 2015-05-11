@@ -16,9 +16,11 @@ class ForceOfWillCommand : public QueueCommand {
 	void doDowner(CreatureObject* player, int buffDownerValue, float duration) const {
 			String buffname = "skill.buff.forceofwill";
 			uint32 buffcrc = buffname.hashCode();
-			//StringIdChatParameter startMsg;
 
 			Reference<Buff*> buff = new Buff(player, buffname.hashCode(), duration, BuffType::SKILL);
+
+			Locker locker(buff);
+
 			buff->setAttributeModifier(CreatureAttribute::HEALTH, -buffDownerValue);
 			buff->setAttributeModifier(CreatureAttribute::STRENGTH, -buffDownerValue);
 			buff->setAttributeModifier(CreatureAttribute::CONSTITUTION, -buffDownerValue);
@@ -28,7 +30,6 @@ class ForceOfWillCommand : public QueueCommand {
 			buff->setAttributeModifier(CreatureAttribute::MIND, -buffDownerValue);
 			buff->setAttributeModifier(CreatureAttribute::FOCUS, -buffDownerValue);
 			buff->setAttributeModifier(CreatureAttribute::WILLPOWER, -buffDownerValue);
-			//buff->setStartMessage(startMsg);
 			player->addBuff(buff);
 		}
 
@@ -102,7 +103,6 @@ public:
 		} else {
 			player->sendSystemMessage("@teraskasi:forceofwill_exceptional"); //Through precise focus and concentration, you recapacitate with nominal side effects.
 		}
-
 
 		player->setPosture(CreaturePosture::UPRIGHT, true);
 		incapTask->cancel();

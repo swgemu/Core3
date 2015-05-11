@@ -339,6 +339,9 @@ void GroupObjectImplementation::addGroupModifiers(CreatureObject* player) {
 		player->removeBuff(action.hashCode());
 
 	ManagedReference<SquadLeaderBuff*> buff = new SquadLeaderBuff(player, leader, action.hashCode(), duration);
+
+	Locker locker(buff);
+
 	buff->setSkillModifier("slope_move", leader->getSkillMod("group_slope_move"));
 	buff->setSkillModifier("private_group_ranged_defense", leader->getSkillMod("group_ranged_defense"));
 	buff->setSkillModifier("private_group_melee_defense", leader->getSkillMod("group_melee_defense"));

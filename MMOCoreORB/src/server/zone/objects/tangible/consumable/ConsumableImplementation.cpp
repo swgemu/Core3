@@ -176,22 +176,31 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	switch (effectType) {
 	case EFFECT_ATTRIBUTE: {
 		buff = new Buff(player, buffName.hashCode(), duration, BuffType::FOOD);
+
+		Locker locker(buff);
+
 		setModifiers(buff, false);
 		break;
 	}
 
 	case EFFECT_SKILL: {
 		buff = new Buff(player, buffName.hashCode(), duration, BuffType::FOOD);
+
+		Locker locker(buff);
+
 		setModifiers(buff, true);
 		break;
 	}
 
 	case EFFECT_SPICE: {
 		buff = new SpiceBuff(player, buffName, String("spice." + buffName + ".up").hashCode(), duration);
+
+		Locker locker(buff);
+
 		setModifiers(buff, false);
-		//buff->parseAttributeModifierString(modifierString);
+
 		player->addBuff(buff);
-		//useCharge(player);
+
 		decreaseUseCount();
 		return 1;
 	}
@@ -214,6 +223,9 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 	case EFFECT_DURATION: {
 		buff = new DurationBuff(player, buffName.hashCode(), duration);
+
+		Locker locker(buff);
+
 		setModifiers(buff, true);
 		//buff->parseSkillModifierString(generateModifierString());
 		break;
@@ -221,9 +233,13 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 	case EFFECT_DELAYED: {
 		buff = new DelayedBuff(player, buffName.hashCode(), duration);
+
+		Locker locker(buff);
+
 		setModifiers(buff, true);
 
 		DelayedBuff* delayedBuff = cast<DelayedBuff*>(buff.get());
+
 		delayedBuff->init(&eventTypes);
 
 		break;
@@ -253,8 +269,11 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	}
 	}
 
-	if (buff != NULL)
+	if (buff != NULL) {
+		Locker locker(buff);
+
 		player->addBuff(buff);
+	}
 
 	if (isFood())
 		ghost->setFoodFilling(ghost->getFoodFilling() + filling, true);

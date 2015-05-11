@@ -655,6 +655,7 @@ class CreatureObject extends TangibleObject {
 	 * @param buff The Buff object to add the creature.
 	 */
 	@preLocked
+	@arg1preLocked
 	public native void addBuff(Buff buff);
 
 	/**
@@ -671,6 +672,7 @@ class CreatureObject extends TangibleObject {
 	 * @param buffcrc The buff object to remove from the list.
 	 */
 	@preLocked
+	@arg1preLocked
 	public native void removeBuff(Buff buff);
 
 	@preLocked

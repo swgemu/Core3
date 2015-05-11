@@ -78,12 +78,20 @@ public:
 		StringIdChatParameter endStringId("combat_effects", "gallop_stop"); // Your mount is winded and slows down.
 
 		ManagedReference<GallopBuff*> buff = new GallopBuff(mount, crc, duration);
+
+		Locker locker(buff);
+
 		buff->setSpeedMultiplierMod(magnitude);
 		buff->setAccelerationMultiplierMod(magnitude);
 
 		mount->addBuff(buff);
 
+		locker.release();
+
 		ManagedReference<GallopBuff*> buff2 = new GallopBuff(creature, crc, duration);
+
+		Locker locker2(buff2);
+
 		buff2->setSpeedMultiplierMod(magnitude);
 		buff2->setAccelerationMultiplierMod(magnitude);
 		buff2->setStartMessage(startStringId);

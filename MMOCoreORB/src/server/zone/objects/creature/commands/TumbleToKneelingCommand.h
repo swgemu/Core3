@@ -46,10 +46,14 @@ public:
 
 			Reference<StateBuff*> buff = new StateBuff(creature, CreatureState::TUMBLING, 1);
 
+			Locker locker(buff);
+
 			buff->setSkillModifier("melee_defense", 50);
 			buff->setSkillModifier("ranged_defense", 50);
 
 			creature->addBuff(buff);
+
+			locker.release();
 
 			CreatureObjectDeltaMessage3* pmsg = new CreatureObjectDeltaMessage3(creature);
 			pmsg->updatePosture();

@@ -41,6 +41,9 @@ public:
 				Locker clocker(creatureTarget, creature);
 
 				ManagedReference<Buff*> buff = new Buff(creatureTarget, getNameCRC(), 90, BuffType::JEDI);
+
+				Locker locker(buff);
+
 				buff->setAttributeModifier(System::random(2) * 3, -300);
 
 				creatureTarget->addBuff(buff);

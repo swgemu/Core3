@@ -12,8 +12,11 @@
 int DelayedBuffObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<DelayedBuff*> buff = this->buff.get();
 
-	if (buff != NULL)
+	if (buff != NULL) {
+		Locker locker(buff);
+
 		buff->useCharge();
+	}
 
 	return 0;
 

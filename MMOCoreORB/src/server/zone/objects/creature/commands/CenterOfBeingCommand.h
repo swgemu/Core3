@@ -61,6 +61,9 @@ public:
 			return GENERALERROR;
 
 		Buff* centered = new Buff(creature, String("centerofbeing").hashCode(), duration, BuffType::SKILL);
+
+		Locker locker(centered);
+
 		centered->setSkillModifier("private_center_of_being", efficacy);
 
 		StringIdChatParameter startMsg("combat_effects", "center_start");

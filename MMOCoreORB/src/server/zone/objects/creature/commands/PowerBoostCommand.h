@@ -64,6 +64,9 @@ public:
 
 		String buffname = "skill.buff.powerboost";
 		ManagedReference<Buff*> buff = new PowerBoostBuff(player, buffname, buffname.hashCode(), pbBonus, duration);
+
+		Locker locker(buff);
+
 		player->addBuff(buff);
 
 		return SUCCESS;

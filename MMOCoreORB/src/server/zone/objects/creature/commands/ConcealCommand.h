@@ -121,6 +121,9 @@ public:
 
 
 		ManagedReference<Buff*> buff = new Buff(targetPlayer, crc, duration, BuffType::SKILL);
+
+		Locker blocker(buff);
+
 		buff->addState(CreatureState::MASKSCENT);
 		buff->setSkillModifier("private_conceal", camoMod);
 		buff->setStartMessage(startStringId);
@@ -134,7 +137,9 @@ public:
 
 		targetPlayer->addBuff(buff);
 
-		Locker locker(usableKit);
+		blocker.release();
+
+		Locker ulocker(usableKit);
 		usableKit->decreaseUseCount();
 
 		return SUCCESS;

@@ -22,20 +22,22 @@ class StateBuff extends Buff {
 
 		stateApplied = buffState;
 	}
-	
+
+	@preLocked
 	public void activate(boolean applyModifiers) {
 		super.activate(applyModifiers);
-		
+
 		//Logger.info("activating state buff", true);
-		
+
 		super.creature.setState(stateApplied);
 	}
-	
+
+	@preLocked
 	public void deactivate(boolean removeModifiers) {
 		super.deactivate(removeModifiers);
-		
+
 	//	Logger.info("deatctivating state buff", true);
-		
+
 		super.creature.clearState(stateApplied);
 	}
 }

@@ -32,6 +32,7 @@ namespace server {
 					return;
 
 				Locker locker(creature);
+				Locker clocker(buff, creature);
 
 				creature->removeBuff(buff);
 

@@ -57,6 +57,9 @@ public:
 		uint32 buffCRC = String("setSpeed").hashCode();
 
 		ManagedReference<Buff*> buff = new Buff(creature, buffCRC, duration, BuffType::OTHER);
+
+		Locker locker(buff);
+
 		buff->setSpeedMultiplierMod(speed);
 		buff->setAccelerationMultiplierMod(speed);
 		buff->setStartMessage(startMessage);
