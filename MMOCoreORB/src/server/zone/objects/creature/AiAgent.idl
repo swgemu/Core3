@@ -230,7 +230,7 @@ class AiAgent extends CreatureObject {
 	 * @post { this is locked }
 	 */
 	@preLocked
-	public native void activateAwarenessEvent();
+	public native void activateAwarenessEvent(unsigned long delay = 1000);
 
 	/**
 	 * Executes an AI interrupt in a separate thread (to shed locks)
