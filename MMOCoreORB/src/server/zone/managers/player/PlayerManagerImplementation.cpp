@@ -389,7 +389,12 @@ Reference<CreatureObject*> PlayerManagerImplementation::getPlayer(const String& 
 
 	rlock();
 
-	oid = nameMap->get(name.toLowerCase());
+	try {
+		oid = nameMap->get(name.toLowerCase());
+	} catch (ArrayIndexOutOfBoundsException& ex) {
+		// `oid` is initialized with zero so the method will return NULL after unlocking.
+		error("Didn't find player " +  name);
+	}
 
 	runlock();
 
