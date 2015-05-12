@@ -69,6 +69,8 @@ public:
 					return INVALIDPARAMETERS;
 				}
 
+				Locker locker(object);
+
 				object->createChildObjects();
 
 				// Set Crafter name and generate serial number
