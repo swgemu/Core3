@@ -60,6 +60,8 @@ public:
 		if(hit) {
 
 			if(buff != NULL) {
+				Locker buffLocker(buff);
+
 				target->addBuff(buff);
 			}
 
