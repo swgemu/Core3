@@ -217,9 +217,6 @@ function DefaultInterrupt:startAwarenessInterrupt(pAgent, pObject)
 	if aiAgent:isInCombat() then return end
 	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("d") end
 
-	if aiAgent:isCamouflaged(pObject) then return end
-	--if not SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("f") end
-
 	-- TODO (dannuic): tweak these formulae based on feedback
 	-- TODO (dannuic): should we be using group levels here (if available)?
 	local levelDiff = creoObject:getLevel() - creoAgent:getLevel()
