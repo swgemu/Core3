@@ -382,7 +382,7 @@ function HeroOfTatooineScreenPlay:handleSuiImplication(pPlayer, pSui, cancelPres
 
 	local liarNum = arg0 + 1
 	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
-		if (liarNum == 4) then
+		if (liarNum == 3) then
 			local pInventory = SceneObject(pPlayer):getSlottedObject("inventory")
 
 			if (pInventory == nil) then
