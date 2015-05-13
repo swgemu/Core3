@@ -48,7 +48,7 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 		if (parent == NULL || !parent->isMount())
 			return false;
 
-		if (attacker->hasBuff(String("gallop").hashCode()))
+		if (attacker->hasBuff(String::hashCode("gallop")))
 			return false;
 	}
 
@@ -310,7 +310,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	case COUNTER: {
 		doCounterAttack(attacker, weapon, defender, damage);
 		if (!defender->hasState(CreatureState::PEACE))
-			defender->executeObjectControllerAction(String("attack").hashCode(), attacker->getObjectID(), "");
+			defender->executeObjectControllerAction(String::hashCode("attack"), attacker->getObjectID(), "");
 		damageMultiplier = 0.0f;
 		break;}
 	case RICOCHET:
@@ -417,7 +417,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	case COUNTER:
 		doCounterAttack(attacker, weapon, defenderObject, damage);
 		if (!defenderObject->hasState(CreatureState::PEACE))
-			defenderObject->executeObjectControllerAction(String("attack").hashCode(), attacker->getObjectID(), "");
+			defenderObject->executeObjectControllerAction(String::hashCode("attack"), attacker->getObjectID(), "");
 		damageMultiplier = 0.0f;
 		break;
 	case RICOCHET:
@@ -1516,28 +1516,28 @@ void CombatManager::doMiss(TangibleObject* attacker, WeaponObject* weapon, Creat
 
 void CombatManager::doCounterAttack(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) {
 	defender->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
-	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	//defender->doCombatAnimation(defender, String::hashCode("dodge"), 0);
 
 }
 
 void CombatManager::doBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) {
 	defender->showFlyText("combat_effects", "block", 0, 0xFF, 0);
 
-	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	//defender->doCombatAnimation(defender, String::hashCode("dodge"), 0);
 
 }
 
 void CombatManager::doLightsaberBlock(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) {
 	// No Fly Text.
 
-	//creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
+	//creature->doCombatAnimation(defender, String::hashCode("test_sword_ricochet"), 0);
 
 }
 
 void CombatManager::doDodge(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage) {
 	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
 
-	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+	//defender->doCombatAnimation(defender, String::hashCode("dodge"), 0);
 
 }
 
@@ -1946,11 +1946,11 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 	// TODO: this needs to be fixed.
 	if (attacker->isCreature() && animationCRC == 0) {
 		if (attacker->getGameObjectType() == SceneObjectType::DROIDCREATURE || attacker->getGameObjectType() == SceneObjectType::PROBOTCREATURE)
-			animationCRC = String("droid_attack_light").hashCode();
+			animationCRC = String::hashCode("droid_attack_light");
 		else if (weapon->isRangedWeapon())
-			animationCRC = String("creature_attack_ranged_light").hashCode();
+			animationCRC = String::hashCode("creature_attack_ranged_light");
 		else
-			animationCRC = String("creature_attack_light").hashCode();
+			animationCRC = String::hashCode("creature_attack_light");
 	}
 
 	if (defenderObject->isCreatureObject())

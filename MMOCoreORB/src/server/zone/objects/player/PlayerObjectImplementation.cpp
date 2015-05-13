@@ -173,7 +173,7 @@ void PlayerObjectImplementation::unload() {
 	notifyOffline();
 
 	if (creature->isRidingMount()) {
-		creature->executeObjectControllerAction(String("dismount").hashCode());
+		creature->executeObjectControllerAction(String::hashCode("dismount"));
 	}
 
 	unloadSpawnedChildren();
@@ -1580,7 +1580,7 @@ void PlayerObjectImplementation::doRecovery() {
 
 	if (creature->isInCombat() && creature->getTargetID() != 0 && !creature->isPeaced()
 			&& (commandQueue->size() == 0) && creature->isNextActionPast() && !creature->isDead() && !creature->isIncapacitated()) {
-		creature->sendCommand(String("attack").hashCode(), "", creature->getTargetID());
+		creature->sendCommand(String::hashCode("attack"), "", creature->getTargetID());
 	}
 
 	if (!getZoneServer()->isServerLoading()) {

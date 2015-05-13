@@ -141,7 +141,7 @@ public:
 
 		int size = componentList.getTableSize();
 		int count = 0;
-		uint32 muzzleTitle = String("muzzle").hashCode(), scopeTitle = String("scope").hashCode(), stockTitle = String("stock").hashCode();
+		uint32 muzzleTitle = String::hashCode("muzzle"), scopeTitle = String::hashCode("scope"), stockTitle = String::hashCode("stock");
 
 		lua_State* L = componentList.getLuaState();
 

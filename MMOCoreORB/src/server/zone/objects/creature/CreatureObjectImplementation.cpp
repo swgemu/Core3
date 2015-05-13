@@ -607,7 +607,7 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 	if (!isPlayerCreature() || !isRidingMount() || !isInCombat())
 		return;
 
-	uint32 crc = String("mounted_combat_slow").hashCode();
+	uint32 crc = String::hashCode("mounted_combat_slow");
 
 	if (hasBuff(crc))
 		return;
@@ -625,7 +625,7 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 	if (!parent->isMount())
 		return;
 
-	if (hasBuff(String("gallop").hashCode())) {
+	if (hasBuff(String::hashCode("gallop"))) {
 		sendSystemMessage("@combat_effects:no_combat_while_galloping"); // You cannot attack or react to an attack while galloping. Use /gallopStop to stop galloping.
 		return;
 	}
@@ -654,7 +654,7 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 
 			float magnitude = newSpeed / oldSpeed;
 
-			uint32 crc = String("mounted_combat_slow").hashCode();
+			uint32 crc = String::hashCode("mounted_combat_slow");
 			StringIdChatParameter startStringId("combat_effects", "mount_slow_for_combat"); // Your mount slows down to prepare for combat.
 			StringIdChatParameter endStringId("combat_effects", "mount_speed_after_combat"); // Your mount speeds up.
 
@@ -688,7 +688,7 @@ void CreatureObjectImplementation::removeMountedCombatSlow() {
 	EXECUTE_TASK_1(creo, {
 			Locker locker(creo_p);
 
-			uint32 crc = String("mounted_combat_slow").hashCode();
+			uint32 crc = String::hashCode("mounted_combat_slow");
 			creo_p->removeBuff(crc);
 
 			ManagedReference<CreatureObject*> parent = creo_p->getParent().get().castTo<CreatureObject*>();
@@ -2129,7 +2129,7 @@ void CreatureObjectImplementation::doAnimation(const String& anim) {
 }
 
 void CreatureObjectImplementation::dismount() {
-	executeObjectControllerAction(String("dismount").hashCode());
+	executeObjectControllerAction(String::hashCode("dismount"));
 }
 
 float CreatureObjectImplementation::calculateBFRatio() {
@@ -2223,7 +2223,7 @@ void CreatureObjectImplementation::setBerserkedState(uint32 duration) {
 }
 void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 	if (!hasState(CreatureState::STUNNED)) {
-		Reference<StateBuff*> state = new StateBuff(_this.get(), CreatureState::STUNNED, durationSeconds, String("stunstate").hashCode());
+		Reference<StateBuff*> state = new StateBuff(_this.get(), CreatureState::STUNNED, durationSeconds, String::hashCode("stunstate"));
 
 		Locker locker(state);
 
@@ -2236,7 +2236,7 @@ void CreatureObjectImplementation::setStunnedState(int durationSeconds) {
 
 		locker.release();
 
-		Reference<PrivateSkillMultiplierBuff*> multBuff = new PrivateSkillMultiplierBuff(_this.get(), String("stunstate").hashCode(), durationSeconds, BuffType::STATE);
+		Reference<PrivateSkillMultiplierBuff*> multBuff = new PrivateSkillMultiplierBuff(_this.get(), String::hashCode("stunstate"), durationSeconds, BuffType::STATE);
 
 		Locker blocker(multBuff);
 
@@ -3038,11 +3038,11 @@ int CreatureObjectImplementation::handleObjectMenuSelect(CreatureObject* player,
 	if (isDead() && !isPet()) {
 		switch (selectedID) {
 		case 35:
-			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "");
+			player->executeObjectControllerAction(String::hashCode("loot"), getObjectID(), "");
 
 			return 0;
 		case 36:
-			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "all");
+			player->executeObjectControllerAction(String::hashCode("loot"), getObjectID(), "all");
 
 			return 0;
 		}

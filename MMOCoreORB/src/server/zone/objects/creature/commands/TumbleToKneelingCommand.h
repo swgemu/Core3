@@ -40,9 +40,9 @@ public:
 
 			Reference<CreatureObject*> defender = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 			if (defender == NULL)
-				creature->doCombatAnimation(creature,String("tumble").hashCode(),0,0xFF);
+				creature->doCombatAnimation(creature,String::hashCode("tumble"),0,0xFF);
 			else
-				creature->doCombatAnimation(defender,String("tumble_facing").hashCode(),0,0xFF);
+				creature->doCombatAnimation(defender,String::hashCode("tumble_facing"),0,0xFF);
 
 			Reference<StateBuff*> buff = new StateBuff(creature, CreatureState::TUMBLING, 1);
 

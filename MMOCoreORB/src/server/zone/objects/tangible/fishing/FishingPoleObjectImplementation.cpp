@@ -66,7 +66,7 @@ void FishingPoleObjectImplementation::doFishing(CreatureObject* player) {
 		manager->stopFishing(player, manager->getFishBoxID(player), true);
 	} else {
 		//manager->freeBait(player);
-		player->executeObjectControllerAction(String("fish").hashCode());
+		player->executeObjectControllerAction(String::hashCode("fish"));
 	}
 }
 

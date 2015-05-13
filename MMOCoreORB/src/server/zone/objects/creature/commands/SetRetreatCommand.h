@@ -49,10 +49,10 @@ public:
 		}
 		
         if(message.isEmpty()) {
-            playerObject->removeCommandMessageString(String("retreat").hashCode());
+            playerObject->removeCommandMessageString(String::hashCode("retreat"));
 			player->sendSystemMessage("Your Retreat message has been removed.");
 		} else {
-            playerObject->setCommandMessageString(String("retreat").hashCode(), message);
+            playerObject->setCommandMessageString(String::hashCode("retreat"), message);
 			player->sendSystemMessage("Your Retreat message was set to :-\n" + message);
 		}	
 

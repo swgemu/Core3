@@ -545,7 +545,7 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 
 	locker.release();
 
-	Reference<SceneObject*> travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
+	Reference<SceneObject*> travelTutorialTerminal = server->createObject((uint32)String::hashCode("object/tangible/beta/beta_terminal_warp.iff"), 1);
 
 	SceneObject* cellTut = tutorial->getCell(1);
 
@@ -613,7 +613,7 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 	if (playerCreature->isRidingMount()) {
 		playerCreature->updateCooldownTimer("mount_dismount", 0);
-		playerCreature->executeObjectControllerAction(String("dismount").hashCode());
+		playerCreature->executeObjectControllerAction(String::hashCode("dismount"));
 	}
 
 	PlayerObject* ghost = playerCreature->getPlayerObject();
@@ -678,7 +678,7 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 
 	if (player->isRidingMount()) {
 		player->updateCooldownTimer("mount_dismount", 0);
-		player->executeObjectControllerAction(String("dismount").hashCode());
+		player->executeObjectControllerAction(String::hashCode("dismount"));
 	}
 
 	player->clearDots();
@@ -2822,7 +2822,7 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 	for (int i = totalItems - 1; i >= 0; --i) {
 		SceneObject* object = creatureInventory->getContainerObject(i);
 
-		player->executeObjectControllerAction(String("transferitemmisc").hashCode(), object->getObjectID(), stringArgs);
+		player->executeObjectControllerAction(String::hashCode("transferitemmisc"), object->getObjectID(), stringArgs);
 	}
 
 	if (creatureInventory->getContainerObjectsSize() <= 0) {
@@ -3421,7 +3421,7 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 		if (grp != NULL)
 			GroupManager::instance()->leaveGroup(grp, player);
 
-		Reference<Buff*> buff = player->getBuff(String("squadleader").hashCode());
+		Reference<Buff*> buff = player->getBuff(String::hashCode("squadleader"));
 		if (buff != NULL)
 			player->removeBuff(buff);
 
@@ -4293,7 +4293,7 @@ void PlayerManagerImplementation::generateVeteranReward(CreatureObject* player )
 
 	// If player is eligible for another reward, kick off selection
 	if( getEligibleMilestone( playerGhost, account ) >= 0 ){
-		player->enqueueCommand(String("claimveteranreward").hashCode(), 0, 0, "");
+		player->enqueueCommand(String::hashCode("claimveteranreward"), 0, 0, "");
 	}
 }
 
@@ -4521,7 +4521,7 @@ void PlayerManagerImplementation::getCleanupCharacterCount(){
 	int galaxyID = server->getGalaxyID();
 
 	while(iterator.getNextKeyAndValue(objectID, &objectData)){
-		if(Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)){
+		if(Serializable::getVariable<String>(String::hashCode("_className"), &className, &objectData)){
 			if(className == "CreatureObject"){
 				playerCount++;
 
@@ -4569,7 +4569,7 @@ void PlayerManagerImplementation::cleanupCharacters(){
 	int galaxyID = server->getGalaxyID();
 
 	while(iterator.getNextKeyAndValue(objectID, &objectData) && deletedCount < 400 ){
-		if(Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)){
+		if(Serializable::getVariable<String>(String::hashCode("_className"), &className, &objectData)){
 			if(className == "CreatureObject"){
 				playerCount++;
 
@@ -4646,7 +4646,7 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 		return false;
 	}
 
-	if (player->hasBuff(String("gallop").hashCode()) || player->hasBuff(String("burstrun").hashCode()) || player->hasBuff(String("retreat").hashCode())) {
+	if (player->hasBuff(String::hashCode("gallop")) || player->hasBuff(String::hashCode("burstrun")) || player->hasBuff(String::hashCode("retreat"))) {
 		player->sendSystemMessage("@combat_effects:burst_run_no"); // You cannot burst run right now.
 		return false;
 	}
@@ -4676,7 +4676,7 @@ bool PlayerManagerImplementation::doBurstRun(CreatureObject* player, float hamMo
 		return false;
 	}
 
-	uint32 crc = String("burstrun").hashCode();
+	uint32 crc = String::hashCode("burstrun");
 	float hamCost = 100.0f;
 	float duration = 30;
 	float cooldown = 300;

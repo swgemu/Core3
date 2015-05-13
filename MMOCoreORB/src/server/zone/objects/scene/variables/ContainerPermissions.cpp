@@ -8,8 +8,8 @@
 #include "ContainerPermissions.h"
 
 ContainerPermissions::ContainerPermissions() : groupPermissions(3, 1), ownerID(0), inheritPermissionsFromParent(true) {
-	groupPermissions.put(String("owner").hashCode(), 0xFFFF0000);
-	groupPermissions.put(String("admin").hashCode(), 0xFFFF0000);
+	groupPermissions.put(String::hashCode("owner"), 0xFFFF0000);
+	groupPermissions.put(String::hashCode("admin"), 0xFFFF0000);
 
 	groupPermissions.setNullValue((uint32)MOVECONTAINER << 16);
 }

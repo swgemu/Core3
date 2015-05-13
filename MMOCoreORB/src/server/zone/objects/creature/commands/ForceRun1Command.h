@@ -31,9 +31,9 @@ public:
 		}
 
 		// SPECIAL - For Force Run.
-		if (creature->hasBuff(String("burstrun").hashCode()) || creature->hasBuff(String("retreat").hashCode())) {
-			creature->removeBuff(String("burstrun").hashCode());
-			creature->removeBuff(String("retreat").hashCode());
+		if (creature->hasBuff(String::hashCode("burstrun")) || creature->hasBuff(String::hashCode("retreat"))) {
+			creature->removeBuff(String::hashCode("burstrun"));
+			creature->removeBuff(String::hashCode("retreat"));
 		}
 
 		// Return.

@@ -36,7 +36,7 @@ public:
 
 		Locker crossLocker(mount, creature);
 
-		uint32 crc = String("gallop").hashCode();
+		uint32 crc = String::hashCode("gallop");
 
 		if (!creature->hasBuff(crc)) {
 			if (mount->hasBuff(crc))

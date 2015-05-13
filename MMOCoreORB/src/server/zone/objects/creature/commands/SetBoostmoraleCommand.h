@@ -49,10 +49,10 @@ public:
 		}
 		
         if(message.isEmpty()) {
-            playerObject->removeCommandMessageString(String("boostmorale").hashCode());
+            playerObject->removeCommandMessageString(String::hashCode("boostmorale"));
 			player->sendSystemMessage("Your Boostmorale message has been removed.");
 		} else {
-            playerObject->setCommandMessageString(String("boostmorale").hashCode(), message);
+            playerObject->setCommandMessageString(String::hashCode("boostmorale"), message);
 			player->sendSystemMessage("Your Boostmorale message was set to :-\n" + message);
 		}
 		

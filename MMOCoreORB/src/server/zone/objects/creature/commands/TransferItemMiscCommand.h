@@ -196,8 +196,8 @@ public:
 		if (clearWeapon) {
 			creature->setWeapon(NULL, true);
 
-			if (creature->hasBuff(String("centerofbeing").hashCode()))
-				creature->removeBuff(String("centerofbeing").hashCode());
+			if (creature->hasBuff(String::hashCode("centerofbeing")))
+				creature->removeBuff(String::hashCode("centerofbeing"));
 
 			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
 			if (playerManager != NULL) {

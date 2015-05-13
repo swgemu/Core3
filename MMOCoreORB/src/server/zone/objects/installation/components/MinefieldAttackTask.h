@@ -56,7 +56,7 @@ public:
 
 		if(sceneObject->getZoneServer() != NULL){
 			ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
-			QueueCommand* command = objectController->getQueueCommand(String("minefieldattack").hashCode());
+			QueueCommand* command = objectController->getQueueCommand(String::hashCode("minefieldattack"));
 
 			if(command != NULL){
 				CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(command);

@@ -97,7 +97,7 @@ StringIdManager::StringIdManager() : Logger("StringIdManager") {
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
-	//info("test string = " + getStringId(String("@city/city:city_expand_body").hashCode()).toString(), true);
+	//info("test string = " + getStringId(String::hashCode("@city/city:city_expand_body")).toString(), true);
 }
 
 StringIdManager::~StringIdManager() {}
