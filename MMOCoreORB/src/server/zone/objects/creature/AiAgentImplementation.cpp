@@ -979,8 +979,10 @@ void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 		int newValue = (int) numberOfPlayersInRange.increment();
 		activateMovementEvent();
 
-		if (newValue == 1)
-			activateAwarenessEvent();
+		if (newValue == 1) {
+			uint64 delay = 500 + System::random(1000);
+			activateAwarenessEvent(delay);
+		}
 	}
 }
 
@@ -1191,7 +1193,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	}
 }
 
-void AiAgentImplementation::activateAwarenessEvent() {
+void AiAgentImplementation::activateAwarenessEvent(uint64 delay) {
 
 #ifdef DEBUG
 	info("Starting activateAwarenessEvent check", true);
@@ -1207,7 +1209,7 @@ void AiAgentImplementation::activateAwarenessEvent() {
 	}
 
 	if (!awarenessEvent->isScheduled()) {
-		awarenessEvent->schedule(1000);
+		awarenessEvent->schedule(delay);
 
 #ifdef DEBUG
 		info("Scheduling awareness event", true);
