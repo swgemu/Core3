@@ -320,15 +320,11 @@ void PlayerManagerImplementation::loadNameMap() {
 bool PlayerManagerImplementation::existsName(const String& name) {
 	bool res = false;
 
-	rlock();
-
 	try {
 		res = nameMap->containsKey(name.toLowerCase());
 	} catch (DatabaseException& e) {
 		error(e.getMessage());
 	}
-
-	runlock();
 
 	return res;
 }
@@ -387,16 +383,12 @@ bool PlayerManagerImplementation::kickUser(const String& name, const String& adm
 Reference<CreatureObject*> PlayerManagerImplementation::getPlayer(const String& name) {
 	uint64 oid = 0;
 
-	rlock();
-
 	try {
 		oid = nameMap->get(name.toLowerCase());
 	} catch (ArrayIndexOutOfBoundsException& ex) {
 		// `oid` is initialized with zero so the method will return NULL after unlocking.
 		error("Didn't find player " +  name);
 	}
-
-	runlock();
 
 	if (oid == 0)
 		return NULL;
@@ -412,11 +404,7 @@ Reference<CreatureObject*> PlayerManagerImplementation::getPlayer(const String& 
 uint64 PlayerManagerImplementation::getObjectID(const String& name) {
 	uint64 oid = 0;
 
-	rlock();
-
 	oid = nameMap->get(name.toLowerCase());
-
-	runlock();
 
 	return oid;
 }
