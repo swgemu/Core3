@@ -3378,8 +3378,11 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 			}
 		}
 
-		if (powerBoost != NULL)
+		if (powerBoost != NULL) {
+			Locker buffLocker(powerBoost);
+
 			player->removeBuff(powerBoost);
+		}
 
 		int encumbranceType = -1;
 
