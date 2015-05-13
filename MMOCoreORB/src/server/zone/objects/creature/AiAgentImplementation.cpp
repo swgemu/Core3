@@ -125,7 +125,7 @@ void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData)
 }
 
 int AiAgentImplementation::calculateAttackMinDamage(int level) {
-	int minDmg = MAX(npcTemplate->getDamageMin(), 20 + (level * 5));
+	int minDmg = MAX(getDamageMin(), 20 + (level * 5));
 	if (petDeed != NULL) {
 		minDmg = petDeed->getMinDamage();
 		if (level < petDeed->getLevel()) {
@@ -134,11 +134,14 @@ int AiAgentImplementation::calculateAttackMinDamage(int level) {
 			minDmg *= percent;
 		}
 	}
+	if (isDroidObject()) {
+		minDmg = getDamageMin();
+	}
 	return minDmg;
 }
 
 int AiAgentImplementation::calculateAttackMaxDamage(int level) {
-	int dmg = MAX(npcTemplate->getDamageMax(), calculateAttackMinDamage(level) * 2);
+	int dmg = MAX(getDamageMax(), calculateAttackMinDamage(level) * 2);
 	if (petDeed != NULL) {
 		dmg = petDeed->getMaxDamage();
 		if (level < petDeed->getLevel()) {
@@ -146,12 +149,13 @@ int AiAgentImplementation::calculateAttackMaxDamage(int level) {
 			dmg *= percent;
 		}
 	}
+	if (isDroidObject()) {
+		dmg = getDamageMax();
+	}
 	return dmg;
 }
-
 float AiAgentImplementation::calculateAttackSpeed(int level) {
 	float speed = 3.5f - ((float)level / 100.f);
-
 	return speed;
 }
 
@@ -221,6 +225,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 		if (petDeed != NULL) {
 			defaultWeapon->setAttackSpeed(petDeed->getAttackSpeed());
+		} else if(isPet()){
+			defaultWeapon->setAttackSpeed(speed);
 		}
 	}
 
@@ -270,7 +276,9 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	if (petDeed == NULL) {
 		for (int i = 0; i < 9; ++i) {
 			if (i % 3 == 0) {
-				ham = System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM();
+				ham = System::random(getHamMaximum() - getHamBase()) + getHamBase();
+				if (isDroidObject() && isPet())
+					ham = getHamMaximum();
 				baseHAM.add(ham);
 			} else
 				baseHAM.add(ham/10);
@@ -435,10 +443,14 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 	if (defaultWeapon != NULL) {
 		defaultWeapon->setMinDamage(minDmg);
 		defaultWeapon->setMaxDamage(maxDmg);
+		if(petDeed != NULL)
+			defaultWeapon->setAttackSpeed(petDeed->getAttackSpeed());
+		else if(isPet())
+			defaultWeapon->setAttackSpeed(speed);
 	}
 
-	int baseHamMax = ((float)npcTemplate->getBaseHAMmax()) * ratio;
-	int baseHam = ((float)npcTemplate->getBaseHAM()) * ratio;
+	int baseHamMax = ((float)getHamMaximum()) * ratio;
+	int baseHam = ((float)getHamBase()) * ratio;
 
 	int ham = 0;
 

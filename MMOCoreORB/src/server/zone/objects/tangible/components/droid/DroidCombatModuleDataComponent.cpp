@@ -31,9 +31,27 @@ void DroidCombatModuleDataComponent::initializeTransientMembers() {
 void DroidCombatModuleDataComponent::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	rating = values->getCurrentValue("cmbt_module");
 }
-void DroidCombatModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* droid) {
+void DroidCombatModuleDataComponent::fillAttributeList(AttributeListMessage* alm, CreatureObject* creature) {
 	// convert module rating to actual rating
 	alm->insertAttribute( "cmbt_module", rating);
+	// Should insert Base Stuff for hit/min/max/speed values
+	ManagedReference<DroidObject*>  droid = getDroidObject();
+	if( droid == NULL){
+		return;
+	}
+	// lets make a pcd
+	int maxHam = droid->getMaxHAM(0);
+	int damageMin = droid->getDamageMin();
+	int damageMax = droid->getDamageMax();
+	float chanceHit = droid->getChanceHit();
+	float attackSpeed = droid->calculateAttackSpeed(0);
+	StringBuffer attdisplayValue;
+	attdisplayValue << Math::getPrecision(attackSpeed, 2);
+	StringBuffer hitdisplayValue;
+	hitdisplayValue << Math::getPrecision(chanceHit, 2);
+	alm->insertAttribute("creature_attack", attdisplayValue);
+	alm->insertAttribute("creature_tohit", hitdisplayValue);
+	alm->insertAttribute("creature_damage", String::valueOf(damageMin) + " - " + String::valueOf(damageMax));
 }
 String DroidCombatModuleDataComponent::toString(){
 	return BaseDroidModuleComponent::toString();
@@ -65,6 +83,9 @@ void DroidCombatModuleDataComponent::initialize(CreatureObject* droid) {
 	float toHit = DroidMechanics::determineHit(droid->getSpecies(),maxHam);
 	float speed = DroidMechanics::determineSpeed(droid->getSpecies(),maxHam);
 	cast<DroidObject*>(droid)->setHitChance(toHit);
+	cast<DroidObject*>(droid)->setMaxDamage(maxDmg);
+	cast<DroidObject*>(droid)->setMinDamage(maxDmg);
+
 	// load correct weapon
 	String weaponTemplate = "object/weapon/creature/creature_default_weapon.iff";
 	if(droid->getSpecies() == DroidObject::R_SERIES) { // r-series are the ranged one users.

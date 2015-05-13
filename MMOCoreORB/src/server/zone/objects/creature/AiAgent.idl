@@ -1315,4 +1315,13 @@ class AiAgent extends CreatureObject {
 	public void setReactionRank(int rank) {
 		reactionRank = rank;
 	}
+	
+	@dirty
+	public int getHamMaximum() {
+		return npcTemplate.get().getBaseHAMmax();
+	}
+	@dirty
+	public int getHamBase() {
+		return npcTemplate.get().getBaseHAM();
+	}	
 }
