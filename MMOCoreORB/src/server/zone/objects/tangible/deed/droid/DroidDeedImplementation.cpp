@@ -37,13 +37,35 @@ void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 	controlDeviceObjectTemplate = deedData->getControlDeviceObjectTemplate();
 	mobileTemplate = deedData->getMobileTemplate();
 	species = deedData->getSpecies();
-	overallQuality = 0;
 }
 
 void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	DeedImplementation::fillAttributeList(alm, object);
 
 	// @TODO Add attributes
+	// Deed needs to show a few important bits
+	// 1.) HAM
+	int maxHam = DroidMechanics::determineHam(overallQuality,species);
+	alm->insertAttribute("challenge_level", level);
+	alm->insertAttribute("creature_health", maxHam);
+	alm->insertAttribute("creature_action", maxHam);
+	alm->insertAttribute("creature_mind", maxHam);
+	if(combatRating > 0 || (species == DroidObject::DZ70 || species == DroidObject::PROBOT) ) {
+		StringBuffer attdisplayValue;
+		float attackSpeed = DroidMechanics::determineSpeed(species,maxHam);
+		float chanceHit = DroidMechanics::determineHit(species,maxHam);
+		// do we have a combat module installed?
+		float damageMin = DroidMechanics::determineMinDamage(species,combatRating);
+		float damageMax = DroidMechanics::determineMaxDamage(species,combatRating);
+		attdisplayValue << Math::getPrecision(attackSpeed, 2);
+		StringBuffer hitdisplayValue;
+		hitdisplayValue << Math::getPrecision(chanceHit, 2);
+		alm->insertAttribute("creature_attack", attdisplayValue);
+		alm->insertAttribute("creature_tohit", hitdisplayValue);
+		alm->insertAttribute("creature_damage", String::valueOf(damageMin) + " - " + String::valueOf(damageMax));
+	}
+	// hit and speed?
+	// if object is the master
 	String key;
 	ManagedReference<DroidComponent*> comp = NULL;
 	HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
@@ -65,7 +87,6 @@ void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, Creat
 
 void DroidDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
-	overallQuality = 0;
 	setLoggingName("DroidDeed");
 }
 
@@ -112,10 +133,14 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 		}
 	}
 	modules.removeAll();
-	overallQuality = values->getCurrentValue("exp_effectiveness");
-	if (overallQuality < 0) {
-		overallQuality = 1;
-	}
+
+	overallQuality = values->getCurrentPercentage("power_level"); // effectiveness
+	if (overallQuality < 0)
+		overallQuality = 0.1;
+
+	combatRating = values->getCurrentValue("cmbt_module");
+	if (combatRating < 0)
+		combatRating = 0;
 	// @TODO Add crafting values, this should adjust toHit and Speed based on droid ham, also
 
 	// we need to stack modules if they are stackable.
@@ -169,7 +194,7 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 			}
 		}
 	}
-	// module stacking is completed! .. todo calc other stats
+	// module stacking is completed!
 }
 
 void DroidDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -280,6 +305,8 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			String key;
 			ManagedReference<DroidComponent*> comp = NULL;
 			HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
+			droid->setResists(0);
+			droid->setHitChance(0);
 			for(int i = 0; i < modules.size(); ++i) {
 				iterator.getNextKeyAndValue(key, comp);
 				if (comp) {
@@ -294,19 +321,6 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			}
 			droid->transferObject(craftingComponents, 4, false);
 			craftingComponents->setSendToClient(false);
-		}
-		if(droid->isCombatDroid()) {
-			// change ham to match overall setup
-			float maxHam = DroidMechanics::determineHam(overallQuality,species);
-			for (int i = 0; i < 9; ++i) {
-				if (i % 3 == 0) {
-					droid->setMaxHAM(i,maxHam,true);
-					droid->setHAM(i,maxHam,true);
-				} else {
-					droid->setMaxHAM(i,maxHam/100,true);
-					droid->setHAM(i,maxHam/100,true);
-				}
-			}
 		}
 		// Copy color customization from deed to droid
 		CustomizationVariables* customVars = getCustomizationVariables();
@@ -341,7 +355,18 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		datapad->broadcastObject(controlDevice, true);
 
 		controlDevice->callObject(player);
-		droid->initDroidModules();
+		droid->initDroidModules(true);
+		float maxHam = DroidMechanics::determineHam(overallQuality,species);
+		for (int i = 0; i < 9; ++i) {
+			if (i % 3 == 0) {
+				droid->setMaxHAM(i,maxHam,true);
+				droid->setHAM(i,maxHam,true);
+			} else {
+				droid->setMaxHAM(i,maxHam/100,true);
+				droid->setHAM(i,maxHam/100,true);
+			}
+		}
+
 		//Remove the deed from its container.
 		ManagedReference<SceneObject*> deedContainer = getParent().get();
 

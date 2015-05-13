@@ -25,22 +25,6 @@
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
 	initDroidModules();
-	if(isCombatDroid()) {
-		// Fix messed up ham, that could occur when overall quality was negative during experimentation.
-		if (this->getMaxHAM(0) < 0) {
-			int overallQuality = 1;
-			float maxHam = DroidMechanics::determineHam(overallQuality,getSpecies());
-			for (int i = 0; i < 9; ++i) {
-				if (i % 3 == 0) {
-					setMaxHAM(i,maxHam,true);
-					setHAM(i,maxHam,true);
-				} else {
-					setMaxHAM(i,maxHam/100,true);
-					setHAM(i,maxHam/100,true);
-				}
-			}
-		}
-	}
 }
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
@@ -53,10 +37,13 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 	if (paintCount > 0){
 		msg->insertAttribute("customization_cnt", paintCount);
 	}
-	for( int i=0; i<modules.size(); i++){
-		BaseDroidModuleComponent* module = modules.get(i);
-		if( module != NULL ){
-			module->fillAttributeList(msg, object);
+	// only the owner should see module stats. AiAgent will fill in normal stuff
+	if (getLinkedCreature().get() == object) {
+		for( int i=0; i<modules.size(); i++){
+			BaseDroidModuleComponent* module = modules.get(i);
+			if( module != NULL ){
+				module->fillAttributeList(msg, object);
+			}
 		}
 	}
 }
@@ -214,7 +201,7 @@ bool DroidObjectImplementation::isPowerDroid(){
 		return POWER_DROID == getSpecies();
 }
 
-void DroidObjectImplementation::initDroidModules(){
+void DroidObjectImplementation::initDroidModules(bool init){
 	modules.removeAll();
 	ManagedReference<SceneObject*> container = getSlottedObject("crafted_components");
 	if(container != NULL && container->getContainerObjectsSize() > 0) {
@@ -232,8 +219,15 @@ void DroidObjectImplementation::initDroidModules(){
 				BaseDroidModuleComponent* module = cast<BaseDroidModuleComponent*>(data->get());
 				if( module != NULL ){
 					modules.add(module);
+					if (init) {
+						module->initialize( _this.get());
+					}
 				}
 			}
+		} else {
+			// no modules, so disable some combat stats.
+			setResists(0);
+			setHitChance(0);
 		}
 	}
 }
