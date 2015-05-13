@@ -8,6 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/managers/crafting/ComponentMap.h"
 
 
 class ObjectCommand : public QueueCommand {
@@ -92,6 +93,18 @@ public:
 
 				if(quantity > 1 && quantity <= 100)
 					object->setUseCount(quantity);
+
+				// load visible components
+				while (args.hasMoreTokens()) {
+					String visName;
+					args.getStringToken(visName);
+
+					uint32 visId = visName.hashCode();
+					if (ComponentMap::instance()->getFromID(visId).getId() == 0)
+						continue;
+
+					object->addVisibleComponent(visId, false);
+				}
 
 				if (inventory->transferObject(object, -1, true)) {
 					inventory->broadcastObject(object, true);
