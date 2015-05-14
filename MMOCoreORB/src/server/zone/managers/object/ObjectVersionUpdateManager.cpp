@@ -186,7 +186,7 @@ void ObjectVersionUpdateManager::updateWeaponsDots() {
 	info("update database weapon dots", true);
 
 	int count = 0;
-	uint32 classNameHashCode = String("_className").hashCode();
+	uint32 classNameHashCode = STRING_HASHCODE("_className");
 	try {
 
 		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
@@ -195,7 +195,7 @@ void ObjectVersionUpdateManager::updateWeaponsDots() {
 
 			try {
 				if (!Serializable::getVariable<String>(classNameHashCode, &className, &objectData) ||
-						!Serializable::getVariable<int>(String("WeaponObject.dotType").hashCode(), &oldType, &objectData)) {
+						!Serializable::getVariable<int>(STRING_HASHCODE("WeaponObject.dotType"), &oldType, &objectData)) {
 
 					objectData.clear();
 					continue;
@@ -212,41 +212,41 @@ void ObjectVersionUpdateManager::updateWeaponsDots() {
 				TypeInfo<Vector<int> >::toBinaryStream(&dots, &newDotsValue);
 
 				//	info("we found a Player " + String::valueOf(objectID) + " with residence " + String::valueOf(residence),true);
-				ObjectOutputStream* newData = changeVariableData(String("WeaponObject.dotType").hashCode(), &objectData, &newDotsValue);
+				ObjectOutputStream* newData = changeVariableData(STRING_HASHCODE("WeaponObject.dotType"), &objectData, &newDotsValue);
 				newData->reset();
 
 				ObjectInputStream* inputStream = new ObjectInputStream(newData->getBuffer(), newData->size());
 				delete newData;
 
-				ObjectOutputStream* newNextData = changeVariableData(String("WeaponObject.dotAttribute").hashCode(), inputStream, &newDotsValue);
+				ObjectOutputStream* newNextData = changeVariableData(STRING_HASHCODE("WeaponObject.dotAttribute"), inputStream, &newDotsValue);
 				newNextData->reset();
 
 				delete inputStream;
 				inputStream = new ObjectInputStream(newNextData->getBuffer(), newNextData->size());
 				delete newNextData;
 
-				newData = changeVariableData(String("WeaponObject.dotStrength").hashCode(), inputStream, &newDotsValue);
+				newData = changeVariableData(STRING_HASHCODE("WeaponObject.dotStrength"), inputStream, &newDotsValue);
 				newData->reset();
 
 				delete inputStream;
 				inputStream = new ObjectInputStream(newData->getBuffer(), newData->size());
 				delete newData;
 
-				newNextData = changeVariableData(String("WeaponObject.dotDuration").hashCode(), inputStream, &newDotsValue);
+				newNextData = changeVariableData(STRING_HASHCODE("WeaponObject.dotDuration"), inputStream, &newDotsValue);
 				newNextData->reset();
 
 				delete inputStream;
 				inputStream = new ObjectInputStream(newNextData->getBuffer(), newNextData->size());
 				delete newNextData;
 
-				newData = changeVariableData(String("WeaponObject.dotPotency").hashCode(), inputStream, &newDotsValue);
+				newData = changeVariableData(STRING_HASHCODE("WeaponObject.dotPotency"), inputStream, &newDotsValue);
 				newData->reset();
 
 				delete inputStream;
 				inputStream = new ObjectInputStream(newData->getBuffer(), newData->size());
 				delete newData;
 
-				newNextData = changeVariableData(String("WeaponObject.dotUses").hashCode(), inputStream, &newDotsValue);
+				newNextData = changeVariableData(STRING_HASHCODE("WeaponObject.dotUses"), inputStream, &newDotsValue);
 				newNextData->reset();
 
 				delete inputStream;
@@ -283,7 +283,7 @@ void ObjectVersionUpdateManager::updateStructurePermissionLists() {
 			String className;
 
 			try {
-				if (!Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)) {
+				if (!Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData)) {
 					objectData.clear();
 					continue;
 				}
@@ -298,15 +298,15 @@ void ObjectVersionUpdateManager::updateStructurePermissionLists() {
 				count ++;
 				printf("\r\tUpdating structure owners [%d] / [?]\t", count);
 
-				if( Serializable::getVariable<uint64>(String("StructureObject.ownerObjectID").hashCode(), &ownerID, &objectData)) {
+				if( Serializable::getVariable<uint64>(STRING_HASHCODE("StructureObject.ownerObjectID"), &ownerID, &objectData)) {
 					StructurePermissionList permissionList;
 
-					if ( Serializable::getVariable<StructurePermissionList>(String("StructureObject.structurePermissionList").hashCode(), &permissionList, &objectData)){
+					if ( Serializable::getVariable<StructurePermissionList>(STRING_HASHCODE("StructureObject.structurePermissionList"), &permissionList, &objectData)){
 						ObjectOutputStream newOutputStream;
 						permissionList.setOwner(ownerID);
 						permissionList.toBinaryStream(&newOutputStream);
 
-						ObjectOutputStream* test = changeVariableData(String("StructureObject.structurePermissionList").hashCode(), &objectData, &newOutputStream);
+						ObjectOutputStream* test = changeVariableData(STRING_HASHCODE("StructureObject.structurePermissionList"), &objectData, &newOutputStream);
 						test->reset();
 						database->putData(objectID, test, NULL);
 					} else {
@@ -346,8 +346,8 @@ void ObjectVersionUpdateManager::updateResidences(){
 			uint64 residence = 0;
 
 			try {
-				if (!Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData) ||
-						!Serializable::getVariable<uint64>(String("PlayerObject.declaredResidence").hashCode(), &residence, &objectData)) {
+				if (!Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData) ||
+						!Serializable::getVariable<uint64>(STRING_HASHCODE("PlayerObject.declaredResidence"), &residence, &objectData)) {
 
 					objectData.clear();
 					continue;
@@ -363,8 +363,8 @@ void ObjectVersionUpdateManager::updateResidences(){
 				uint64 residence = 0;
 				count++;
 				printf("\r\tUpdating player residence [%d] / [?]\t", count);
-				if( Serializable::getVariable< SortedVector<unsigned long long> >(String("PlayerObject.ownedStructures").hashCode(), &structureList, &objectData) &&
-						Serializable::getVariable<uint64>(String("PlayerObject.declaredResidence").hashCode(), &residence, &objectData)){
+				if( Serializable::getVariable< SortedVector<unsigned long long> >(STRING_HASHCODE("PlayerObject.ownedStructures"), &structureList, &objectData) &&
+						Serializable::getVariable<uint64>(STRING_HASHCODE("PlayerObject.declaredResidence"), &residence, &objectData)){
 
 					for(int i = 0; i < structureList.size(); i++){
 						bool isRes = (structureList.get(i) == residence);
@@ -400,17 +400,17 @@ void ObjectVersionUpdateManager::setResidence(uint64 buildingID, bool isResidenc
 	if(!database->getData(buildingID,&objectData)){
 
 
-		if ( Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)){
+		if ( Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData)){
 
 			if(className == "BuildingObject"){
-				if ( !Serializable::getVariable<bool>(String("BuildingObject.isOwnerResidence").hashCode(), &isResidence, &objectData)){
+				if ( !Serializable::getVariable<bool>(STRING_HASHCODE("BuildingObject.isOwnerResidence"), &isResidence, &objectData)){
 					//info("setResidence() adding the variable",true);
 					ObjectOutputStream* newVariableData = addVariable("BuildingObject.isOwnerResidence", &objectData, &newResidenceValue);
 					database->putData(buildingID, newVariableData, NULL);
 
 				} else {
 					//info("setResidence() has variable and value = " + String::valueOf(isResidence) +  " ... changing it",true);
-					ObjectOutputStream* test = changeVariableData(String("BuildingObject.isOwnerResidence").hashCode(), &objectData, &newResidenceValue);
+					ObjectOutputStream* test = changeVariableData(STRING_HASHCODE("BuildingObject.isOwnerResidence"), &objectData, &newResidenceValue);
 					test->reset();
 					database->putData(buildingID, test, NULL);
 				}
@@ -444,7 +444,7 @@ void ObjectVersionUpdateManager::updateCityTreasury(){
 			String className;
 			try {
 
-				if (!Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)) {
+				if (!Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData)) {
 
 					objectData.clear();
 					continue;
@@ -459,12 +459,12 @@ void ObjectVersionUpdateManager::updateCityTreasury(){
 			if (className == "CityRegion") {
 				count++;
 				printf("\r\tUpdating city treasury [%d] / [?]\t", count);
-				if ( Serializable::getVariable<int>(String("CityRegion.cityTreasury").hashCode(), &funds, &objectData)){
+				if ( Serializable::getVariable<int>(STRING_HASHCODE("CityRegion.cityTreasury"), &funds, &objectData)){
 
 					floatFunds = funds;
 					ObjectOutputStream newFunds;
 					TypeInfo<float>::toBinaryStream(&floatFunds, &newFunds );
-					ObjectOutputStream* test = changeVariableData(String("CityRegion.cityTreasury").hashCode(), &objectData, &newFunds);
+					ObjectOutputStream* test = changeVariableData(STRING_HASHCODE("CityRegion.cityTreasury"), &objectData, &newFunds);
 					test->reset();
 					database->putData(objectID, test, NULL);
 
@@ -504,7 +504,7 @@ void ObjectVersionUpdateManager::updateCityTreasuryToDouble(){
 			String className;
 			try {
 
-				if (!Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)) {
+				if (!Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData)) {
 
 					objectData.clear();
 					continue;
@@ -519,12 +519,12 @@ void ObjectVersionUpdateManager::updateCityTreasuryToDouble(){
 			if (className == "CityRegion") {
 				count++;
 				printf("\r\tUpdating city treasury [%d] / [?]\t", count);
-				if ( Serializable::getVariable<float>(String("CityRegion.cityTreasury").hashCode(), &funds, &objectData)){
+				if ( Serializable::getVariable<float>(STRING_HASHCODE("CityRegion.cityTreasury"), &funds, &objectData)){
 
 					floatFunds = funds;
 					ObjectOutputStream newFunds;
 					TypeInfo<double>::toBinaryStream(&floatFunds, &newFunds );
-					ObjectOutputStream* test = changeVariableData(String("CityRegion.cityTreasury").hashCode(), &objectData, &newFunds);
+					ObjectOutputStream* test = changeVariableData(STRING_HASHCODE("CityRegion.cityTreasury"), &objectData, &newFunds);
 					test->reset();
 					database->putData(objectID, test, NULL);
 

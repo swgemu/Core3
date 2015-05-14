@@ -32,7 +32,7 @@ public:
 
 		PlayerObject* ghost = creature->getPlayerObject();
 
-		if (creature->hasBuff(String("centerofbeing").hashCode())) {
+		if (creature->hasBuff(STRING_HASHCODE("centerofbeing"))) {
 			creature->sendSystemMessage("@combat_effects:already_centered");
 			return GENERALERROR;
 		}
@@ -60,7 +60,7 @@ public:
 		if (duration == 0 || efficacy == 0)
 			return GENERALERROR;
 
-		Buff* centered = new Buff(creature, String("centerofbeing").hashCode(), duration, BuffType::SKILL);
+		Buff* centered = new Buff(creature, STRING_HASHCODE("centerofbeing"), duration, BuffType::SKILL);
 
 		Locker locker(centered);
 

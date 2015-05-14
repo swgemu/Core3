@@ -39,8 +39,8 @@ public:
 		String message = arguments.toString();
 		if (message.isEmpty()){
 			player->sendSystemMessage("Your Intimidate message has been removed.");
-			ghost->removeCommandMessageString(String("intimidate1").hashCode());
-			ghost->removeCommandMessageString(String("intimidate2").hashCode());
+			ghost->removeCommandMessageString(STRING_HASHCODE("intimidate1"));
+			ghost->removeCommandMessageString(STRING_HASHCODE("intimidate2"));
 			return SUCCESS;
 		}
 		if (message.length()>128){
@@ -52,8 +52,8 @@ public:
 			return GENERALERROR;
 		}
 
-		ghost->setCommandMessageString(String("intimidate1").hashCode(), message);
-		ghost->setCommandMessageString(String("intimidate2").hashCode(), message);
+		ghost->setCommandMessageString(STRING_HASHCODE("intimidate1"), message);
+		ghost->setCommandMessageString(STRING_HASHCODE("intimidate2"), message);
 		//ghost->setIntimidateMessage(arguments.toString());
 		player->sendSystemMessage("Your Intimidate message was set to :-\n" + message);
 

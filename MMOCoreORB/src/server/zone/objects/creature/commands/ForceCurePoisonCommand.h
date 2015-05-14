@@ -21,7 +21,7 @@ public:
 		if (creatureTarget == creature)
 			creature->playEffect("clienteffect/pl_force_healing.cef", "");
 		 else
-			 creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
+			 creature->doCombatAnimation(creatureTarget,STRING_HASHCODE("force_healing_1"),0,0xFF);
 	}
 
 	void sendCureMessage(CreatureObject* object, CreatureObject* target) const {

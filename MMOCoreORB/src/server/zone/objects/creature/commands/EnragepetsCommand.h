@@ -24,7 +24,7 @@ public:
 		int cooldownMilli = 300000; // 5 min
 		int durationSec =  60; // 1 min
 		int mindCost = player->calculateCostAdjustment(CreatureAttribute::FOCUS, 100 );
-		unsigned int buffCRC = String("enragePet").hashCode();
+		unsigned int buffCRC = STRING_HASHCODE("enragePet");
 
 		if (!checkStateMask(player))
 			return INVALIDSTATE;

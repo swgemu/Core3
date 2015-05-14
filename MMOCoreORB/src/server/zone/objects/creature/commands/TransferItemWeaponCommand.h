@@ -144,8 +144,8 @@ public:
 
 						PlayerObject* ghost = playerCreature->getPlayerObject();
 
-						if (creature->hasBuff(String("centerofbeing").hashCode()))
-							creature->removeBuff(String("centerofbeing").hashCode());
+						if (creature->hasBuff(STRING_HASHCODE("centerofbeing")))
+							creature->removeBuff(STRING_HASHCODE("centerofbeing"));
 
 						ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
 						if (playerManager != NULL) {

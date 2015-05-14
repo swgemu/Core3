@@ -29,7 +29,7 @@ public:
 		if (creature == creatureTarget)
 			creature->playEffect("clienteffect/pl_force_heal_self.cef", "");
 		else
-			creature->doCombatAnimation(creatureTarget,String("force_healing_1").hashCode(),0,0xFF);
+			creature->doCombatAnimation(creatureTarget,STRING_HASHCODE("force_healing_1"),0,0xFF);
 	}
 
 	bool checkForceCost(CreatureObject* creature) const {

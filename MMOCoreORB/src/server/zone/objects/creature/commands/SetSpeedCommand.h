@@ -54,7 +54,7 @@ public:
 
 		duration *= 60; //Convert duration to seconds.
 
-		uint32 buffCRC = String("setSpeed").hashCode();
+		uint32 buffCRC = STRING_HASHCODE("setSpeed");
 
 		ManagedReference<Buff*> buff = new Buff(creature, buffCRC, duration, BuffType::OTHER);
 
