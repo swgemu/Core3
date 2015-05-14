@@ -25,9 +25,12 @@ class DroidDeed extends Deed {
 	protected float overallQuality;
 	@dereferenced
 	protected HashTable<string,DroidComponent> modules;
+	protected int combatRating;
 	
 	public DroidDeed() {
 		Logger.setLoggingName("DroidDeed");
+		combatRating = 0;	
+		overallQuality = 0;	
 	}
 	
 	public native void initializeTransientMembers();

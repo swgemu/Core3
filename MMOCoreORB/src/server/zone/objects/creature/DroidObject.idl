@@ -86,13 +86,21 @@ class DroidObject extends AiAgent {
 	public static final int TREADWELL = 0xDF;
 	public static final int PROBE_DROID = 0xE1;
 
-
+	protected int maximumHam;
+	protected int minDamage;
+	protected int maxDamage;
+	protected float attackSpeed;
+	
 	public DroidObject() {
 		Logger.setLoggingName("DroidObject");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 		power = MAX_POWER;
 		paintCount = 0;
+		maximumHam = 55;
+		minDamage = 1;
+		maxDamage = 1;	
+		attackSpeed = 2.0;	
 	}
 
 	/**
@@ -150,7 +158,21 @@ class DroidObject extends AiAgent {
 	public boolean isDroidObject() {
 		return true;
 	}
-
+	
+	@dirty
+	public int getMaximumHAM() {
+		return maximumHam;
+	}
+	
+	@preLocked
+	public void setMaximumHAM(int idx) {
+		maximumHam = idx;
+	}
+	
+	public void setAttackSpeed(float f) {
+		attackSpeed = f;
+	}
+	
 	@dirty
 	public boolean isCamouflaged(CreatureObject target) {
 		return isAggressiveTo(target) && isConcealed(target);
@@ -236,7 +258,7 @@ class DroidObject extends AiAgent {
 	 * Initializes droid modules from crafted_components scenos
 	 */
 	@local
-	public native void initDroidModules();
+	public native void initDroidModules(boolean init=false);
 
 	/**
 	 * Returns a crafting station of the given type if droid has the appropriate module. Returns NULL otherwise.
@@ -303,6 +325,18 @@ class DroidObject extends AiAgent {
 	public void setResists(float res){
 		resist = res;
 	}
+	
+	@local
+	@preLocked
+	public void setMaxDamage(int i){
+		maxDamage = i;
+	}	
+	
+	@local
+	@preLocked
+	public void setMinDamage(int i){
+		minDamage = i;
+	}	
 
 	@local
 	public unsigned int getArmor(){
@@ -458,5 +492,40 @@ class DroidObject extends AiAgent {
 			return getPersonalityBase();
 
 		return super.getReactionStf();
+	}
+	
+	@dirty
+	public int getHamMaximum() {
+		return maximumHam;
+	}
+	
+	@dirty
+	public int getHamBase() {
+		return maximumHam;
+	}
+	
+	@dirty
+	public int getDamageMin() {
+		if (isPet())
+			return minDamage;
+		else
+			return super.getDamageMin();	
+	}
+	
+	@dirty
+	public int getDamageMax() {
+		if(isPet())
+			return maxDamage;
+		else	
+			return super.getDamageMax();	
+	}
+	
+	@dirty
+	@preLocked
+	public float calculateAttackSpeed(int level) {
+		if (isPet()) 
+			return attackSpeed;
+		else
+			return super.calculateAttackSpeed(level);
 	}
 }

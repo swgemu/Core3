@@ -43,7 +43,7 @@ void DroidArmorModuleDataComponent::initialize(CreatureObject* creature) {
 
 	int level = armorModule;
 	unsigned int armor = 0;
-	float resist = -1;
+	float resist = 0;
 
 	// Capped at 6
 	if( level > 6 )
@@ -69,6 +69,8 @@ void DroidArmorModuleDataComponent::initialize(CreatureObject* creature) {
 	}
 	else if( level == 3 || level == 6 ){
 		resist = 40;
+	} else {
+		resist = 0;
 	}
 
 	droid->setArmor( armor );
