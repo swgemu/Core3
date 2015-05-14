@@ -264,7 +264,7 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 
 	if(selectedID == 130 && (structureObject->isOnAdminList(creature) || structureObject->isOnPermissionList("VENDOR", creature))) {
 		if (creature->hasSkill("crafting_artisan_business_03")) {
-			creature->executeObjectControllerAction(String("createvendor").hashCode()); // Create Vendor
+			creature->executeObjectControllerAction(STRING_HASHCODE("createvendor")); // Create Vendor
 		}
 	}
 

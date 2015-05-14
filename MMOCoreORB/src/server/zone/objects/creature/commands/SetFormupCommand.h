@@ -49,10 +49,10 @@ public:
 		}
 		
         if(message.isEmpty()) {
-            playerObject->removeCommandMessageString(String("formup").hashCode());
+            playerObject->removeCommandMessageString(STRING_HASHCODE("formup"));
 			player->sendSystemMessage("Your Formup message has been removed.");
 		} else {
-            playerObject->setCommandMessageString(String("formup").hashCode(), message);
+            playerObject->setCommandMessageString(STRING_HASHCODE("formup"), message);
 			player->sendSystemMessage("Your Formup message was set to :-\n" + message);
 		}
 		return SUCCESS;

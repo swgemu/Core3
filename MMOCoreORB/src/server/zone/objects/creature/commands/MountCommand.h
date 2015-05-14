@@ -22,7 +22,7 @@ public:
 			ZoneServer* zoneServer = server->getZoneServer();
 
 			ManagedReference<ObjectController*> objectController = zoneServer->getObjectController();
-			objectController->activateCommand(creature, String("dismount").hashCode(), 0, 0, "");
+			objectController->activateCommand(creature, STRING_HASHCODE("dismount"), 0, 0, "");
 
 			return GENERALERROR;
 		}
@@ -71,7 +71,7 @@ public:
 			if (!vehicle->transferObject(creature, 4, true))
 				vehicle->error("could not add creature");
 
-			uint32 crc = String("gallop").hashCode();
+			uint32 crc = STRING_HASHCODE("gallop");
 			if (creature->hasBuff(crc) && vehicle->hasBuff(crc)) {
 				//Clear the active negation of the gallop buff.
 				creature->setSpeedMultiplierMod(1.f);
@@ -80,8 +80,8 @@ public:
 				vehicle->setAccelerationMultiplierMod(1.f);
 			}
 
-			if (creature->hasBuff(String("burstrun").hashCode())
-					|| creature->hasBuff(String("retreat").hashCode())) {
+			if (creature->hasBuff(STRING_HASHCODE("burstrun"))
+					|| creature->hasBuff(STRING_HASHCODE("retreat"))) {
 				//Negate effect of the active burst run or retreat buff. The negation will be cleared automatically when the buff is deactivated.
 				creature->setSpeedMultiplierMod(1.f / 1.822f);
 				creature->setAccelerationMultiplierMod(1.f / 1.822f);

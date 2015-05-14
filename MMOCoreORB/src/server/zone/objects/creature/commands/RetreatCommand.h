@@ -32,7 +32,7 @@ public:
 			return false;
 		}
 
-		uint32 burstCRC = String("burstrun").hashCode();
+		uint32 burstCRC = STRING_HASHCODE("burstrun");
 		uint32 forceRun1CRC = BuffCRC::JEDI_FORCE_RUN_1;
 		uint32 forceRun2CRC = BuffCRC::JEDI_FORCE_RUN_2;
 		uint32 forceRun3CRC = BuffCRC::JEDI_FORCE_RUN_3;
@@ -95,8 +95,8 @@ public:
 			checkForTef(player, memberPlayer);
 		}
 
-		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("retreat").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
-			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("retreat").hashCode()));
+		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("retreat")).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
+			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("retreat")));
  	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
  	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
 		}
@@ -112,7 +112,7 @@ public:
 		if (!checkRetreat(player))
 			return;
 
-		uint32 actionCRC = String("retreat").hashCode();
+		uint32 actionCRC = STRING_HASHCODE("retreat");
 
 		if (player->hasBuff(actionCRC)) {
 			return;

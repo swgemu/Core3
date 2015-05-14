@@ -181,9 +181,9 @@ void SuiManager::handleStartDancing(CreatureObject* player, SuiBox* suiBox, uint
 	String dance = listBox->getMenuItemName(index);
 
 	if (!change)
-		player->executeObjectControllerAction(String("startdance").hashCode(), 0, dance);
+		player->executeObjectControllerAction(STRING_HASHCODE("startdance"), 0, dance);
 	else
-		player->executeObjectControllerAction(String("changedance").hashCode(), 0, dance);
+		player->executeObjectControllerAction(STRING_HASHCODE("changedance"), 0, dance);
 }
 
 void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32 cancel, Vector<UnicodeString>* args) {
@@ -206,16 +206,16 @@ void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32
 
 	switch ((uint16)id) {
 	case SuiWindowType::MUSIC_START:
-		player->executeObjectControllerAction(String("startmusic").hashCode(), player->getTargetID(), dance);
+		player->executeObjectControllerAction(STRING_HASHCODE("startmusic"), player->getTargetID(), dance);
 		break;
 	case SuiWindowType::MUSIC_CHANGE:
-		player->executeObjectControllerAction(String("changemusic").hashCode(), player->getTargetID(), dance);
+		player->executeObjectControllerAction(STRING_HASHCODE("changemusic"), player->getTargetID(), dance);
 		break;
 	case SuiWindowType::BAND_CHANGE:
-		player->executeObjectControllerAction(String("changebandmusic").hashCode(), player->getTargetID(), dance);
+		player->executeObjectControllerAction(STRING_HASHCODE("changebandmusic"), player->getTargetID(), dance);
 		break;
 	case SuiWindowType::BAND_START:
-		player->executeObjectControllerAction(String("startband").hashCode(), player->getTargetID(), dance);
+		player->executeObjectControllerAction(STRING_HASHCODE("startband"), player->getTargetID(), dance);
 		break;
 	}
 }

@@ -278,7 +278,7 @@ void ImageDesignManager::loadCustomizationData() {
 
 		//Get the species gender
 		String speciesGender = dataRow->getCell(0)->toString();
-		uint32 templateCRC = String("object/creature/player/" + speciesGender + ".iff").hashCode();
+		uint32 templateCRC = String::hashCode("object/creature/player/" + speciesGender + ".iff");
 		PlayerCreatureTemplate* tmpl = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(templateCRC));
 
 		if (tmpl == NULL)
@@ -310,7 +310,7 @@ void ImageDesignManager::loadCustomizationData() {
 CustomizationData* ImageDesignManager::getCustomizationData(const String& speciesGender, const String& customizationName) {
 	TemplateManager* templateManager = TemplateManager::instance();
 
-	uint32 templateCRC = String("object/creature/player/" + speciesGender + ".iff").hashCode();
+	uint32 templateCRC = String::hashCode("object/creature/player/" + speciesGender + ".iff");
 
 	PlayerCreatureTemplate* tmpl = dynamic_cast<PlayerCreatureTemplate*>(templateManager->getTemplate(templateCRC));
 	CustomizationData* customization = tmpl->getCustomizationData(customizationName);

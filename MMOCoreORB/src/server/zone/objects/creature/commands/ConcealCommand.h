@@ -37,12 +37,12 @@ public:
 			return GENERALERROR;
 		}
 
-		if(targetPlayer->hasBuff(String("skill_buff_mask_scent").hashCode()) || targetPlayer->getSkillModFromBuffs("private_conceal") > 0) {
+		if(targetPlayer->hasBuff(STRING_HASHCODE("skill_buff_mask_scent")) || targetPlayer->getSkillModFromBuffs("private_conceal") > 0) {
 			creature->sendSystemMessage("@skl_use:sys_target_concealed"); // Your target is already concealed.
 			return false;
 		}
 
-		if(targetPlayer->hasBuff(String("skill_buff_mask_scent_self").hashCode()) || (targetPlayer->getOptionsBitmask() & CreatureState::MASKSCENT)) {
+		if(targetPlayer->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self")) || (targetPlayer->getOptionsBitmask() & CreatureState::MASKSCENT)) {
 			creature->sendSystemMessage("@skl_use:sys_conceal_scentmasked"); // You can't Conceal while Scent Masked.
 			return GENERALERROR;
 		}
@@ -114,7 +114,7 @@ public:
 		StringIdChatParameter startStringId("skl_use", "sys_conceal_start"); // You are now concealed from view by complex camouflage.
 		StringIdChatParameter endStringId("skl_use", "sys_conceal_stop"); // You are no longer concealed from view.
 
-		uint32 crc = String("skill_buff_mask_scent").hashCode();
+		uint32 crc = STRING_HASHCODE("skill_buff_mask_scent");
 		int camoMod = creature->getSkillMod("camouflage");
 		int cdReduction = ((float)(camoMod / 100.0f)) * 45;
 		int duration = 60 + (((float)(camoMod / 100.0f)) * 200);
