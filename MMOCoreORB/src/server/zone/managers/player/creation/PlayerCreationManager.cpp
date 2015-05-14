@@ -482,9 +482,9 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 					playerManager->updatePermissionLevel(playerCreature, accountPermissionLevel);
 
 					/*
-					Reference<ShipControlDevice*> shipControlDevice = zoneServer->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1).castTo<ShipControlDevice*>();
-					//ShipObject* ship = (ShipObject*) server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1);
-					Reference<ShipObject*> ship = zoneServer->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1).castTo<ShipObject*>();
+					Reference<ShipControlDevice*> shipControlDevice = zoneServer->createObject(STRING_HASHCODE("object/intangible/ship/sorosuub_space_yacht_pcd.iff"), 1).castTo<ShipControlDevice*>();
+					//ShipObject* ship = (ShipObject*) server->createObject(STRING_HASHCODE("object/ship/player/player_sorosuub_space_yacht.iff"), 1);
+					Reference<ShipObject*> ship = zoneServer->createObject(STRING_HASHCODE("object/ship/player/player_basic_tiefighter.iff"), 1).castTo<ShipObject*>();
 
 					shipControlDevice->setControlledObject(ship);
 

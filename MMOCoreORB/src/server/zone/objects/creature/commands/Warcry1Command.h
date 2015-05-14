@@ -35,8 +35,8 @@ public:
 		if (res == TOOFAR)
 			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, NULL, 0, "cbt_spam", "warcry_out_of_range", 0);
 
-		if (res == SUCCESS && creature->isPlayerCreature() && creature->getPlayerObject()->getCommandMessageString(String("warcry1").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
-			UnicodeString shout(creature->getPlayerObject()->getCommandMessageString(String("warcry1").hashCode()));
+		if (res == SUCCESS && creature->isPlayerCreature() && creature->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("warcry1")).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
+			UnicodeString shout(creature->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("warcry1")));
  	 	 	server->getChatManager()->broadcastMessage(creature, shout, 0, 0, 80);
  	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
 		}

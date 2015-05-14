@@ -43,9 +43,9 @@ public:
 		float skill = 100;
 		bool success = true;
 
-		if (player->hasBuff(String("skill_buff_mask_scent_self").hashCode())) {
+		if (player->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
 			skill += player->getSkillMod("mask_scent");
-		} else if (player->hasBuff(String("skill_buff_mask_scent").hashCode())) {
+		} else if (player->hasBuff(STRING_HASHCODE("skill_buff_mask_scent"))) {
 			skill +=  player->getSkillMod("private_conceal");
 		}
 

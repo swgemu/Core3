@@ -38,7 +38,7 @@ public:
 
 		Locker crossLocker(mount, creature);
 
-		uint32 crc = String("gallop").hashCode();
+		uint32 crc = STRING_HASHCODE("gallop");
 
 		if (mount->hasBuff(crc) || creature->hasBuff(crc)) {
 			return GENERALERROR;
@@ -49,7 +49,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (creature->hasBuff(String("burstrun").hashCode())) {
+		if (creature->hasBuff(STRING_HASHCODE("burstrun"))) {
 			creature->sendSystemMessage("You cannot gallop while burst run is active.");
 			return GENERALERROR;
 		}

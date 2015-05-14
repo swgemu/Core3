@@ -40,8 +40,8 @@ public:
 		
 		if (message.isEmpty()){
 			player->sendSystemMessage("Your Warcry message has been removed.");
-			ghost->removeCommandMessageString(String("warcry1").hashCode());
-			ghost->removeCommandMessageString(String("warcry2").hashCode());
+			ghost->removeCommandMessageString(STRING_HASHCODE("warcry1"));
+			ghost->removeCommandMessageString(STRING_HASHCODE("warcry2"));
 			return SUCCESS;
 		}
 		if (message.length()>128){
@@ -52,8 +52,8 @@ public:
 			player->sendSystemMessage("Your Warcry message has failed the profanity filter.");
 			return GENERALERROR;
 		}
-		ghost->setCommandMessageString(String("warcry1").hashCode(), message);
-		ghost->setCommandMessageString(String("warcry2").hashCode(), message);
+		ghost->setCommandMessageString(STRING_HASHCODE("warcry1"), message);
+		ghost->setCommandMessageString(STRING_HASHCODE("warcry2"), message);
 		player->sendSystemMessage("Your Warcry message was set to :-\n" + message);
 		return SUCCESS;
 	}

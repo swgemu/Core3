@@ -110,7 +110,7 @@ public:
 		// Apply buff if this is a pet specific food
 		if( consumable->getSpeciesRestriction() == "pets" ){
 
-			unsigned int buffCRC = String("petFoodBuff").hashCode();
+			unsigned int buffCRC = STRING_HASHCODE("petFoodBuff");
 
 			// Check if pet already has buff
 			if ( pet->hasBuff(buffCRC) ){

@@ -30,7 +30,7 @@ int StructureDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		if (!isASubChildOf(player))
 			return 0;
 
-		player->executeObjectControllerAction(String("placestructuremode").hashCode(), getObjectID(), "");
+		player->executeObjectControllerAction(STRING_HASHCODE("placestructuremode"), getObjectID(), "");
 
 		return 0;
 	}

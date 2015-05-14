@@ -193,7 +193,7 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	}
 
 	case EFFECT_SPICE: {
-		buff = new SpiceBuff(player, buffName, String("spice." + buffName + ".up").hashCode(), duration);
+		buff = new SpiceBuff(player, buffName, String::hashCode("spice." + buffName + ".up"), duration);
 
 		Locker locker(buff);
 

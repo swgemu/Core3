@@ -70,7 +70,7 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 		locker.release();
 
 		if (sceno->isLairObject()) {
-			ManagedReference<ActiveArea*> area = (ServerCore::getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0)).castTo<ActiveArea*>();
+			ManagedReference<ActiveArea*> area = (ServerCore::getZoneServer()->createObject(STRING_HASHCODE("object/active_area.iff"), 0)).castTo<ActiveArea*>();
 
 			Locker locker(area);
 
