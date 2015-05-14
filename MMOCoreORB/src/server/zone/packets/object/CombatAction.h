@@ -6,6 +6,7 @@
 #define COMBATACTION_H_
 
 #include "ObjectControllerMessage.h"
+#include "server/zone/managers/combat/CreatureAttackData.h"
 
 class CombatAction : public ObjectControllerMessage {
 	int defenderSize;
@@ -26,6 +27,34 @@ public:
 
 		insertByte(attacker->getPosture()); // AttackerEndPosture: 0x0-Standing 0x1-Kneeling 0x2-Prone 0xD-Incapacitated
 		insertByte(trails); // Trails: 0x01-left_foot 0x02-right_foot 0x04-left_hand 0x08-right_hand 0x10-weapon
+		insertByte(0x00); // AttackerSpecialMoveEffect: disabled in the client
+
+		defenderSize = 1;
+
+		insertShort(1);
+		insertLong(defender->getObjectID());
+		insertByte(defender->getPosture()); // DefenderEndPosture: 0x0-Standing 0x1-Kneeling 0x2-Prone 0xD-Incapacitated
+		insertByte(hit); // HitType: 0x0-MISS 0x1-HIT 0x2-BLOCK 0x3-DODGE 0x5-COUNTER 0x7-RICOCHET 0x8-REFLECT 0x9-REFLECT_TO_TARGET
+		insertByte(0x00); // DefenderSpecialMoveEffect: disabled in the client
+	}
+
+	CombatAction(CreatureObject* attacker, CreatureObject* defender, uint32 animcrc, uint8 hit, const CreatureAttackData & data, long weaponID = 0) :
+		ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
+
+		insertInt(animcrc);
+
+		insertLong(attacker->getObjectID());
+		if (weaponID == 0)
+			insertLong(attacker->getWeaponID());
+		else
+			insertLong(weaponID);
+
+		if (data.getAttackerEndPosture() == 0xFF)
+			insertByte(attacker->getPosture()); // AttackerEndPosture: 0x0-Standing 0x1-Kneeling 0x2-Prone 0xD-Incapacitated
+		else
+			insertByte(data.getAttackerEndPosture()); // AttackerEndPosture: 0x0-Standing 0x1-Kneeling 0x2-Prone 0xD-Incapacitated
+
+		insertByte(data.getTrails()); // Trails: 0x01-left_foot 0x02-right_foot 0x04-left_hand 0x08-right_hand 0x10-weapon
 		insertByte(0x00); // AttackerSpecialMoveEffect: disabled in the client
 
 		defenderSize = 1;

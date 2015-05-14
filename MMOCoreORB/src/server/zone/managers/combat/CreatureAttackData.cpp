@@ -57,6 +57,8 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 	animationCRC = data.animationCRC;
 
+	attackerEndPosture = data.attackerEndPosture;
+
 	attackType= data.attackType;
 	trails = data.trails;
 
@@ -84,6 +86,7 @@ void CreatureAttackData::fillFromBase() {
 	attackType = baseCommand->getAttackType();
 	trails = baseCommand->getTrails();
 	combatSpam = baseCommand->getCombatSpam();
+	attackerEndPosture = baseCommand->getAttackerEndPosture();
 
 	stateAccuracyBonus = 0;
 

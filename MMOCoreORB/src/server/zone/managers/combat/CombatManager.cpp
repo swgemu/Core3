@@ -1940,6 +1940,9 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 
 	uint32 animationCRC = data.getAnimationCRC();
 
+	info("cur posture:" + String::valueOf(attacker->getPosture()), true);
+	info("end posture:" + String::valueOf(data.getAttackerEndPosture()), true);
+
 	if (!attacker->isCreature() && animationCRC == 0)
 		animationCRC = getDefaultAttackAnimation(attacker);
 
@@ -1953,10 +1956,14 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 			animationCRC = String("creature_attack_light").hashCode();
 	}
 
-	if (defenderObject->isCreatureObject())
-		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit, data.getTrails(), weapon->getObjectID());
-	else
+	if (defenderObject->isCreatureObject()) {
+		if (data.getAttackerEndPosture() != CreaturePosture::INVALID && data.getAttackerEndPosture() != attacker->getPosture())
+			attacker->setPosture(data.getAttackerEndPosture(), true);
+
+		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit, data, weapon->getObjectID());
+	} else {
 		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit, data.getTrails(), weapon->getObjectID());
+	}
 
 	attacker->broadcastMessage(combatAction, true);
 

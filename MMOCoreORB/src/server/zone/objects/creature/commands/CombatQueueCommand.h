@@ -54,6 +54,8 @@ protected:
 	uint32 animationCRC;
 	String effectString;
 
+	uint8 attackerEndPosture;
+
 	VectorMap<uint8, StateEffect> stateEffects;
 	VectorMap<uint64, DotEffect> dotEffects;
 
@@ -94,6 +96,8 @@ public:
 
 		combatSpam = "";
 		animationCRC = 0;
+
+		attackerEndPosture = 0xFF; // 0xFF if no change from start posture
 
 		attackType = CombatManager::WEAPONATTACK;
 		trails = CombatManager::DEFAULTTRAIL;
@@ -602,6 +606,14 @@ public:
 
 	void setTrails(uint8 trails) {
 		this->trails = trails;
+	}
+
+	uint8 getAttackerEndPosture() const {
+		return attackerEndPosture;
+	}
+
+	void setAttackerEndPosture(uint8 posture) {
+		this->attackerEndPosture = posture;
 	}
 
 	uint32 getWeaponType() const {

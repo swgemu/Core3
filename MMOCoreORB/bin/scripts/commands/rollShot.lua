@@ -50,6 +50,7 @@ RollShotCommand = {
 	actionCostMultiplier = 0.75,
 	mindCostMultiplier = 0.5,
 	accuracyBonus = 50,
+	attackerEndPosture = 1, -- Crouched
 
 	animationCRC = hashCode("fire_acrobatic"),
 

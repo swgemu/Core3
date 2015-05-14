@@ -44,6 +44,8 @@ protected:
 	uint8 attackType;
 	uint8 trails;
 
+	uint8 attackerEndPosture;
+
 	String combatSpam;
 
 	int stateAccuracyBonus;
@@ -165,6 +167,14 @@ public:
 
 	void setTrails(uint8 trails) {
 		this->trails = trails;
+	}
+
+	uint8 getAttackerEndPosture() const {
+		return attackerEndPosture;
+	}
+
+	void setAttackerEndPosture(uint8 posture) {
+		this->attackerEndPosture = posture;
 	}
 
 	String getCombatSpam() const {

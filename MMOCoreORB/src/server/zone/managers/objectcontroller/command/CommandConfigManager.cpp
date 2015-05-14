@@ -585,6 +585,8 @@ void CommandConfigManager::parseVariableData(String varName, LuaObject &command,
 			combatCommand->setEffectString(Lua::getStringParameter(L));
 		else if (varName == "trails")
 			combatCommand->setTrails(Lua::getIntParameter(L));
+		else if (varName == "attackerEndPosture")
+			combatCommand->setAttackerEndPosture(Lua::getIntParameter(L));
 		else if (varName == "stateEffects") {
 			LuaObject states(L);
 
