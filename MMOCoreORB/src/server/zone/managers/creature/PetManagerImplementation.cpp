@@ -571,6 +571,8 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 	pet->clearCombatState(true);
 	pet->setPosture(CreaturePosture::DEAD, true);
 	pet->updateLocomotion();
+	pet->setOblivious();
+	pet->storeFollowObject();
 
 	pet->updateTimeOfDeath();
 
