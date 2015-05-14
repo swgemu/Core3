@@ -1795,6 +1795,7 @@ int AiAgentImplementation::setDestination() {
 			setOblivious();
 			return setDestination();
 		}
+		break;
 	case AiAgent::FOLLOWING:
 		if (followCopy == NULL) {
 			setOblivious();

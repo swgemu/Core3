@@ -161,7 +161,6 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 			Locker plock(player);
 			player->registerObserver(ObserverEventType::KILLEDCREATURE, observer);
 			active = true;
-			// set observer here for creature death to go harvest it if in range
 		}
 
 	}
