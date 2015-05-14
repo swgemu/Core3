@@ -200,6 +200,7 @@ void DroidPlaybackModuleDataComponent::playSong(CreatureObject* player, int inde
 		active = true;
 		selectedIndex = index;
 		droid->addPendingTask("droid_playback",task,0);
+		// future or a unknown, should be start auto listenting to the droid when it starts playing.
 	}
 }
 void DroidPlaybackModuleDataComponent::sessionTimeout(CreatureObject* player, int state) {
@@ -337,6 +338,8 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 	dcreo6->close();
 
 	droid->broadcastMessage(dcreo6, true);
+	if (droid->getPosture() == CreaturePosture::SKILLANIMATING)
+		droid->setPosture(CreaturePosture::UPRIGHT);
 	selectedIndex = -1;
 	ManagedReference<PlayerManager*> playerManager = droid->getZoneServer()->getPlayerManager();
 	if (playerManager != NULL) {

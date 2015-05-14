@@ -44,26 +44,39 @@ public:
 	void deactivate();
 	String toString();
 	void onCall();
-	int getHarvestInterest() { return interest; }
+	int getHarvestInterest() {
+		return interest;
+	}
 	void onStore();
 	void setHarvestInterest(CreatureObject* player, int option);
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 	bool isActive(){ return active; }
-	int getHarvestPower(){ return harvestBonus; }
+	int getHarvestPower(){
+		return harvestBonus;
+	}
 	void handlePetCommand(String cmd, CreatureObject* speaker) ;
 	virtual bool isStackable() { return true; }
 	virtual void addToStack(BaseDroidModuleComponent* other);
 	virtual void copy(BaseDroidModuleComponent* other);
 	void creatureHarvestCheck(CreatureObject* target);
 	void harvestDestinationReached();
-	bool hasMoreTargets() { return harvestTargets.size() > 0; }
+	bool hasMoreTargets() {
+		return harvestTargets.size() > 0;
+	}
 	void addHarvestTarget(uint64 target,bool first = false) {
 		if (first)
 			harvestTargets.add(0,target);
 		else
 			harvestTargets.add(target);
 	}
-	uint64 getNextHarvestTarget() {if (harvestTargets.size() > 0) {return harvestTargets.remove(0);} else { return -1;}}
+	uint64 getNextHarvestTarget() {
+		if (harvestTargets.size() > 0) {
+			return harvestTargets.remove(0);
+		}
+		else {
+			return -1;
+		}
+	}
 };
 
 

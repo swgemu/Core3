@@ -8,6 +8,9 @@
 #include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/tangible/components/droid/DroidPlaybackModuleDataComponent.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
+#include "server/zone/managers/skill/Performance.h"
+#include "server/zone/managers/skill/PerformanceManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 
 namespace server {
 namespace zone {
@@ -72,18 +75,28 @@ public:
 			module->deactivate();
 			return;
 		}
+		SkillManager* skillManager = droid->getZoneServer()->getSkillManager();
+		if (skillManager == NULL)
+			return;
 
+		PerformanceManager* performanceManager = skillManager->getPerformanceManager();
+		if (performanceManager == NULL)
+			return;
+
+		String instrumentAnimation;
+		int instrid = performanceManager->getInstrumentId(performance);
+		instrid += performanceManager->getInstrumentAnimation(instrument, instrumentAnimation);
 		if (!playing) {
-			DroidObject* droid = module->getDroidObject();
+			droid->setPosture(CreaturePosture::SKILLANIMATING);
 			// we fire off the performance piece and let it run
-			droid->setPerformanceAnimation(performance, false);
+			droid->setPerformanceAnimation(instrumentAnimation, false);
 			droid->setPerformanceCounter(0, false);
-			droid->setInstrumentID(instrument, false);
+			droid->setInstrumentID(instrid, false);
 			// broadcast the song
 			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(droid);
-			dcreo6->updatePerformanceAnimation(performance);
+			dcreo6->updatePerformanceAnimation(instrumentAnimation);
 			dcreo6->updatePerformanceCounter(0);
-			dcreo6->updateInstrumentID(instrument);
+			dcreo6->updateInstrumentID(instrid);
 			dcreo6->close();
 			droid->broadcastMessage(dcreo6, true);
 			playing = true;

@@ -17,6 +17,7 @@ DroidHarvestModuleDataComponent::DroidHarvestModuleDataComponent() {
 	interest = 0; // random
 	active = false;
 	setLoggingName("DroidHarvestModule");
+	harvestTargets.removeAll(0,10);
 }
 DroidHarvestModuleDataComponent::~DroidHarvestModuleDataComponent() {
 
@@ -39,6 +40,7 @@ void DroidHarvestModuleDataComponent::initializeTransientMembers() {
 	else{
 		info( "harvest_power attribute not found" );
 	}
+	harvestTargets.removeAll(0,10);
 }
 
 void DroidHarvestModuleDataComponent::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
@@ -161,7 +163,6 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 			Locker plock(player);
 			player->registerObserver(ObserverEventType::KILLEDCREATURE, observer);
 			active = true;
-			// set observer here for creature death to go harvest it if in range
 		}
 
 	}
@@ -200,6 +201,7 @@ void DroidHarvestModuleDataComponent::deactivate() {
 	if(droid->getPendingTask("droid_harvest")) {
 		droid->removePendingTask("droid_harvest");
 	}
+	harvestTargets.removeAll(0,10);
 }
 
 String DroidHarvestModuleDataComponent::toString(){
