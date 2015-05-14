@@ -62,7 +62,7 @@ public:
 			}
 
 			ManagedReference<ObjectController*> objectController = server->getObjectController();
-			objectController->activateCommand(creature, String("teleport").hashCode(), 0, 0, arguments.toString());
+			objectController->activateCommand(creature, STRING_HASHCODE("teleport"), 0, 0, arguments.toString());
 
 		} else {
 			Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();

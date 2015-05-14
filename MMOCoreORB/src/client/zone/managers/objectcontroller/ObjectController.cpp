@@ -43,7 +43,7 @@ void ObjectController::handleSpatialChat(SceneObject* object, Message* pack) {
 
 bool ObjectController::doCommand(uint32 crc, const UnicodeString& arguments) {
 	switch (crc) {
-	case 0x6bc77878: // String("say").hashCode();
+	case 0x6bc77878: // STRING_HASHCODE("say");
 		doSayCommand(arguments);
 		break;
 
@@ -82,7 +82,7 @@ void ObjectController::doSayCommand(const UnicodeString& msg) {
 	BaseMessage* message = new ObjectControllerMessage(object->getObjectID(), 0x23, 0x116);
 
 	message->insertInt(object->getNewActionCount());
-	message->insertInt(String("spatialchatinternal").hashCode());
+	message->insertInt(STRING_HASHCODE("spatialchatinternal"));
 	message->insertLong(0);
 	message->insertUnicode(full.toString());
 

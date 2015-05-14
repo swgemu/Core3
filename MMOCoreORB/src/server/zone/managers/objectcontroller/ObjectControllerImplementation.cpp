@@ -261,7 +261,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		queueCommand->onComplete(actionCount, object, durationTime);
 	}
 
-	/*if (actionCRC == String("stand").hashCode()) {
+	/*if (actionCRC == STRING_HASHCODE("stand")) {
 		Time start;
 
 		for (int i = 0; i < 10000; ++i) {

@@ -77,14 +77,14 @@ public:
 
 		creature->teleport(creature->getPositionX(), z, creature->getPositionY(), 0);
 
-		if (creature->hasBuff(String("burstrun").hashCode())
-				|| creature->hasBuff(String("retreat").hashCode())) {
+		if (creature->hasBuff(STRING_HASHCODE("burstrun"))
+				|| creature->hasBuff(STRING_HASHCODE("retreat"))) {
 			//Clear the active negation of the burst run or retreat buff.
 			creature->setSpeedMultiplierMod(1.f);
 			creature->setAccelerationMultiplierMod(1.f);
 		}
 
-		unsigned int crc = String("gallop").hashCode();
+		unsigned int crc = STRING_HASHCODE("gallop");
 		if (creature->hasBuff(crc)) {
 			ManagedReference<Buff*> buff = creature->getBuff(crc);
 

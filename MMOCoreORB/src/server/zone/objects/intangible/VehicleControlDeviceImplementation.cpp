@@ -160,7 +160,7 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	{
 	
 		controlledObject->setCustomizationVariable("/private/index_hover_height", 40, true); // Illusion of flying.
-		player->executeObjectControllerAction(String("mount").hashCode(), controlledObject->getObjectID(), ""); // Auto mount.
+		player->executeObjectControllerAction(STRING_HASHCODE("mount"), controlledObject->getObjectID(), ""); // Auto mount.
 		
 	}
 
@@ -196,7 +196,7 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player, boo
 		if (!force && !player->checkCooldownRecovery("mount_dismount"))
 			return;
 
-		player->executeObjectControllerAction(String("dismount").hashCode());
+		player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 
 		if (player->isRidingMount())
 			return;
@@ -224,7 +224,7 @@ void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyC
 		if (object != NULL) {
 			Locker clocker(object, controlledObject);
 
-			object->executeObjectControllerAction(String("dismount").hashCode());
+			object->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 
 			object = controlledObject->getSlottedObject("rider").castTo<CreatureObject*>();
 

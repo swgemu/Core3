@@ -49,9 +49,9 @@ public:
 
 		buff->addSecondaryBuffCRC(multBuff->getBuffCRC());
 
-		if (creature->hasBuff(String("burstrun").hashCode()) || creature->hasBuff(String("retreat").hashCode())) {
-			creature->removeBuff(String("burstrun").hashCode());
-			creature->removeBuff(String("retreat").hashCode());
+		if (creature->hasBuff(STRING_HASHCODE("burstrun")) || creature->hasBuff(STRING_HASHCODE("retreat"))) {
+			creature->removeBuff(STRING_HASHCODE("burstrun"));
+			creature->removeBuff(STRING_HASHCODE("retreat"));
 		}
 
 		return SUCCESS;

@@ -27,7 +27,7 @@ public:
 			return GENERALERROR;
 
 
-		uint32 crc = String("skill_buff_mask_scent_self").hashCode();
+		uint32 crc = STRING_HASHCODE("skill_buff_mask_scent_self");
 
 		if (creature->hasBuff(crc)) {
 			creature->sendSystemMessage("@skl_use:sys_scentmask_already"); // You are already masking your scent.
@@ -67,7 +67,7 @@ public:
 			return false;
 		}
 
-		if(creature->hasBuff(String("skill_buff_mask_scent").hashCode()) || creature->getSkillModFromBuffs("private_conceal") > 0) {
+		if(creature->hasBuff(STRING_HASHCODE("skill_buff_mask_scent")) || creature->getSkillModFromBuffs("private_conceal") > 0) {
 			creature->sendSystemMessage("@skl_use:sys_scentmask_concealed"); // You can't mask your scent while you are concealed.
 			return false;
 		}

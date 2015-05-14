@@ -133,7 +133,7 @@ public:
 
 		Locker locker(player);
 
-		player->executeObjectControllerAction(String("transferitemmisc").hashCode(), insertedItem->getObjectID(), stringArgs);
+		player->executeObjectControllerAction(STRING_HASHCODE("transferitemmisc"), insertedItem->getObjectID(), stringArgs);
 
 	}
 

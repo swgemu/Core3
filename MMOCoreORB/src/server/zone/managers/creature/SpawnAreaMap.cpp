@@ -218,7 +218,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	if (radius == 0 && width == 0 && height == 0 && innerRadius == 0 && outerRadius == 0)
 		return;
 
-	static const uint32 crc = String("object/spawn_area.iff").hashCode();
+	static const uint32 crc = STRING_HASHCODE("object/spawn_area.iff");
 
 	ManagedReference<SpawnArea*> area = dynamic_cast<SpawnArea*>(ObjectManager::instance()->createObject(crc, 0, "spawnareas"));
 	if (area == NULL)
