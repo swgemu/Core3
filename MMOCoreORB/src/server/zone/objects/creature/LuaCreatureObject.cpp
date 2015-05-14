@@ -185,6 +185,8 @@ int LuaCreatureObject::getPosture(lua_State* L) {
 int LuaCreatureObject::setPosture(lua_State* L) {
 	uint32 posture = (uint32) lua_tonumber(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setPosture(posture, true);
 
 	return 0;

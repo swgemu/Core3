@@ -1121,9 +1121,9 @@ function HeroOfTatooineScreenPlay:honorDestReached(pAgent)
 					CreatureObject(pWife):setPosture(13)
 				end
 
-				CreatureObject(agentID):doAnimation("cheer")
+				CreatureObject(pAgent):doAnimation("cheer")
 			else
-				CreatureObject(agentID):doAnimation("wave_finger_warning")
+				CreatureObject(pAgent):doAnimation("wave_finger_warning")
 			end
 		end
 	elseif (agentID == rancherID) then
