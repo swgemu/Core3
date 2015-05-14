@@ -685,7 +685,7 @@ void SlicingSessionImplementation::handleContainerSlice() {
 	LootManager* lootManager = player->getZoneServer()->getLootManager();
 
 	if (tangibleObject->getGameObjectType() == SceneObjectType::PLAYERLOOTCRATE) {
-		Reference<SceneObject*> containerSceno = player->getZoneServer()->createObject(String("object/tangible/container/loot/loot_crate.iff").hashCode(), 1);
+		Reference<SceneObject*> containerSceno = player->getZoneServer()->createObject(STRING_HASHCODE("object/tangible/container/loot/loot_crate.iff"), 1);
 
 		if (containerSceno == NULL)
 			return;

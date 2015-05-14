@@ -418,7 +418,7 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 		if (!force && !player->checkCooldownRecovery("mount_dismount"))
 			return;
 
-		player->executeObjectControllerAction(String("dismount").hashCode());
+		player->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 
 		if (player->isRidingMount())
 			return;
@@ -601,7 +601,7 @@ void PetControlDeviceImplementation::destroyObjectFromDatabase(bool destroyConta
 		if (object != NULL) {
 			Locker clocker(object, controlledObject);
 
-			object->executeObjectControllerAction(String("dismount").hashCode());
+			object->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 
 			object = controlledObject->getSlottedObject("rider").castTo<CreatureObject*>();
 

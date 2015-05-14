@@ -596,7 +596,7 @@ void AiAgentImplementation::selectSpecialAttack(int attackNum) {
 
 void AiAgentImplementation::selectDefaultAttack() {
 	if (npcTemplate == NULL)
-		nextActionCRC = String("defaultattack").hashCode();
+		nextActionCRC = STRING_HASHCODE("defaultattack");
 	else
 		nextActionCRC = npcTemplate->getDefaultAttack().hashCode();
 
@@ -705,11 +705,11 @@ int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 	if (isDead() && !isPet()) {
 		switch (selectedID) {
 		case 35:
-			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "");
+			player->executeObjectControllerAction(STRING_HASHCODE("loot"), getObjectID(), "");
 
 			return 0;
 		case 36:
-			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "all");
+			player->executeObjectControllerAction(STRING_HASHCODE("loot"), getObjectID(), "all");
 
 			return 0;
 		}
@@ -1488,7 +1488,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 
 				movementMarkers.removeAll();
 
-				Reference<SceneObject*> movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
+				Reference<SceneObject*> movementMarker = getZoneServer()->createObject(STRING_HASHCODE("object/path_waypoint/path_waypoint.iff"), 0);
 
 				Locker clocker(movementMarker, _this.get());
 
@@ -1513,7 +1513,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 					WorldCoordinates* coord = &path->get(i);
 					SceneObject* coordCell = coord->getCell();
 
-					movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
+					movementMarker = getZoneServer()->createObject(STRING_HASHCODE("object/path_waypoint/path_waypoint.iff"), 0);
 
 					Locker clocker(movementMarker, _this.get());
 
@@ -1832,7 +1832,7 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	if (effectiveTarget == NULL) {
 		return false;
 	}
-	if (!effectiveTarget->hasBuff(String("skill_buff_mask_scent_self").hashCode())) {
+	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
 		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
 		return false;
 	}
@@ -1881,7 +1881,7 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 		return false;
 	}
 
-	if (!effectiveTarget->hasBuff(String("skill_buff_mask_scent").hashCode())) {
+	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent"))) {
 		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
 		return false;
 	}
@@ -2574,7 +2574,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 	// now set parents
 	for (int i = 0; i < parents.size(); i++) {
 		VectorMapEntry<uint32, Vector<uint32> >& element = parents.elementAt(i);
-		if (element.getKey() == String("none").hashCode()) // this is the parent of the root node, just skip it.
+		if (element.getKey() == STRING_HASHCODE("none")) // this is the parent of the root node, just skip it.
 			continue;
 
 		Behavior* b = behaviors.get(element.getKey());
@@ -2601,7 +2601,7 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* aiTemplate) {
 	}
 
 	// now tree is complete, set the root node as the current node
-	Vector<uint32>& roots = parents.get(String("none").hashCode());
+	Vector<uint32>& roots = parents.get(STRING_HASHCODE("none"));
 	if (roots.size() > 1) {
 		error("Multiple root nodes in tree: " + aiTemplate->getTemplateName());
 		return; // all References will be lost here
@@ -2642,8 +2642,8 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 
 	CompositeBehavior* rootSelector = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), name, AiMap::SELECTORBEHAVIOR));
 	CompositeBehavior* attackSequence = cast<CompositeBehavior*>(AiMap::instance()->createNewInstance(_this.get(), name, AiMap::SEQUENCEBEHAVIOR));
-	rootSelector->setID(String("root").hashCode());
-	attackSequence->setID(String("attackSequence").hashCode());
+	rootSelector->setID(STRING_HASHCODE("root"));
+	attackSequence->setID(STRING_HASHCODE("attackSequence"));
 
 	addBehaviorToTree(attackSequence, rootSelector);
 
@@ -2659,8 +2659,8 @@ void AiAgentImplementation::setupBehaviorTree(AiTemplate* getTarget, AiTemplate*
 	setupBehaviorTree(idle);
 	addCurrentBehaviorToTree(rootSelector);
 
-	behaviors.put(String("root").hashCode(), rootSelector);
-	behaviors.put(String("attackSequence").hashCode(), attackSequence);
+	behaviors.put(STRING_HASHCODE("root"), rootSelector);
+	behaviors.put(STRING_HASHCODE("attackSequence"), attackSequence);
 
 	resetBehaviorList();
 
@@ -2723,7 +2723,7 @@ void AiAgentImplementation::resetBehaviorList() {
 	if (b != NULL)
 		b->end();
 
-	currentBehaviorID = String("root").hashCode();
+	currentBehaviorID = STRING_HASHCODE("root");
 	b = behaviors.get(currentBehaviorID);
 	if (b == NULL)
 		return;

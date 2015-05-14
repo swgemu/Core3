@@ -70,7 +70,7 @@ public:
 			break;
 		case 0: {
 				playerRef->sendSystemMessage("@mission/mission_generic:probe_droid_arrival");
-				droid = cast<AiAgent*>(playerRef->getZone()->getCreatureManager()->spawnCreature(String("probot").hashCode(), 0, droidPosition.getX(), droidPosition.getZ(), droidPosition.getY(), 0));
+				droid = cast<AiAgent*>(playerRef->getZone()->getCreatureManager()->spawnCreature(STRING_HASHCODE("probot"), 0, droidPosition.getX(), droidPosition.getZ(), droidPosition.getY(), 0));
 
 				Locker olocker(objectiveRef);
 				objectiveRef->setArakydDroid(droid);

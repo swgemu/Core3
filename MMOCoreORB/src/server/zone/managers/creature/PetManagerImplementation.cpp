@@ -495,7 +495,7 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 
 		if (rider != NULL) {
 			rider->updateCooldownTimer("mount_dismount", 0);
-			rider->executeObjectControllerAction(String("dismount").hashCode());
+			rider->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 		}
 	}
 

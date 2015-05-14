@@ -205,7 +205,7 @@ SceneObject* CreatureManagerImplementation::spawnDynamicSpawn(unsigned int lairT
 	if (mobiles->size() == 0)
 		return NULL;
 
-	ManagedReference<TheaterObject*> theater = zoneServer->createObject(String("object/intangible/theater/base_theater.iff").hashCode(), 0).castTo<TheaterObject*>();
+	ManagedReference<TheaterObject*> theater = zoneServer->createObject(STRING_HASHCODE("object/intangible/theater/base_theater.iff"), 0).castTo<TheaterObject*>();
 
 	if (theater == NULL) {
 		error("error creating intangible theater");
@@ -518,9 +518,9 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 
 		uint32 defaultWeaponCRC = 0;
 		if (creature->isNonPlayerCreatureObject()) {
-			defaultWeaponCRC = String("object/weapon/melee/unarmed/unarmed_default.iff").hashCode();
+			defaultWeaponCRC = STRING_HASHCODE("object/weapon/melee/unarmed/unarmed_default.iff");
 		} else {
-			defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();
+			defaultWeaponCRC = STRING_HASHCODE("object/weapon/creature/creature_default_weapon.iff");
 		}
 		ManagedReference<SceneObject*> defaultWeapon = zoneServer->createObject(defaultWeaponCRC, persistent);
 		ManagedReference<SceneObject*> otherWeapon;
@@ -554,7 +554,7 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 	}
 
 	if (creature->hasSlotDescriptor("inventory")) {
-		Reference<SceneObject*> creatureInventory = zoneServer->createObject(String("object/tangible/inventory/creature_inventory.iff").hashCode(), persistent);
+		Reference<SceneObject*> creatureInventory = zoneServer->createObject(STRING_HASHCODE("object/tangible/inventory/creature_inventory.iff"), persistent);
 
 		if (creatureInventory == NULL) {
 			error("could not create creature inventory");

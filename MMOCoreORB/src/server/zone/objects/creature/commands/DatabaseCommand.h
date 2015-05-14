@@ -106,7 +106,7 @@ private:
 				uint32 serverObjectCRC;
 				String className;
 
-				if (Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)) {
+				if (Serializable::getVariable<String>(STRING_HASHCODE("_className"), &className, &objectData)) {
 
 					msg << endl << "OID: " + String::valueOf(objectID) << endl;
 					msg << "Database: " << db << endl;

@@ -58,7 +58,7 @@ int TrapMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creature
 			return 0;
 
 	if(selectedID == 20) {
-		player->sendCommand(String("throwtrap").hashCode(), String::valueOf(sceneObject->getObjectID()), player->getTargetID());
+		player->sendCommand(STRING_HASHCODE("throwtrap"), String::valueOf(sceneObject->getObjectID()), player->getTargetID());
 
 		return 1;
 	}

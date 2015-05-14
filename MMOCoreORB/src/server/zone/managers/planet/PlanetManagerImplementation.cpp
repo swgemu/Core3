@@ -69,7 +69,7 @@ void PlanetManagerImplementation::initialize() {
 	loadStaticTangibleObjects();
 
 	if (zone->getZoneName() == "dathomir") {
-		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(String("object/fs_village_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(STRING_HASHCODE("object/fs_village_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker(area);
 		area->setRadius(512.f);
@@ -78,7 +78,7 @@ void PlanetManagerImplementation::initialize() {
 
 		locker.release();
 
-		Reference<ActiveArea*> sarlaccArea = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+		Reference<ActiveArea*> sarlaccArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker2(sarlaccArea);
 
@@ -88,7 +88,7 @@ void PlanetManagerImplementation::initialize() {
 
 		locker2.release();
 
-		Reference<ActiveArea*> sarlaccPreArea = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+		Reference<ActiveArea*> sarlaccPreArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker3(sarlaccPreArea);
 
@@ -98,7 +98,7 @@ void PlanetManagerImplementation::initialize() {
 	}
 
 	if (zone->getZoneName() == "tatooine") {
-		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker(area);
 		area->setRadius(30.f);
@@ -107,7 +107,7 @@ void PlanetManagerImplementation::initialize() {
 
 		locker.release();
 
-		Reference<ActiveArea*> preArea = zone->getZoneServer()->createObject(String("object/sarlacc_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+		Reference<ActiveArea*> preArea = zone->getZoneServer()->createObject(STRING_HASHCODE("object/sarlacc_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker locker2(preArea);
 
@@ -178,7 +178,7 @@ void PlanetManagerImplementation::loadLuaConfig() {
 	LuaObject badges = lua->getGlobalObject(zone->getZoneName() + "_badges");
 
 	if (badges.isValidTable()) {
-		uint32 hashCode = String("object/badge_area.iff").hashCode();
+		uint32 hashCode = STRING_HASHCODE("object/badge_area.iff");
 
 		for (int i = 1; i <= badges.getTableSize(); ++i) {
 			lua_rawgeti(lua->getLuaState(), -1, i);
@@ -565,11 +565,11 @@ void PlanetManagerImplementation::loadClientRegions() {
 			ManagedReference<SceneObject*> scenery = NULL;
 
 			if (strongholdFaction == GCWManager::IMPERIALHASH || regionName.contains("imperial")) {
-				scenery = zone->getZoneServer()->createObject(String("object/static/particle/particle_distant_ships_imperial.iff").hashCode(), 0);
+				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_imperial.iff"), 0);
 			} else if (strongholdFaction == GCWManager::REBELHASH || regionName.contains("rebel")) {
-				scenery = zone->getZoneServer()->createObject(String("object/static/particle/particle_distant_ships_rebel.iff").hashCode(), 0);
+				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships_rebel.iff"), 0);
 			} else {
-				scenery = zone->getZoneServer()->createObject(String("object/static/particle/particle_distant_ships.iff").hashCode(), 0);
+				scenery = zone->getZoneServer()->createObject(STRING_HASHCODE("object/static/particle/particle_distant_ships.iff"), 0);
 			}
 
 			Locker slocker(scenery, region);
@@ -577,7 +577,7 @@ void PlanetManagerImplementation::loadClientRegions() {
 			region->attachScenery(scenery);
 		}
 
-		ManagedReference<ActiveArea*> noBuild = zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0).castTo<ActiveArea*>();
+		ManagedReference<ActiveArea*> noBuild = zone->getZoneServer()->createObject(STRING_HASHCODE("object/active_area.iff"), 0).castTo<ActiveArea*>();
 
 		Locker areaLocker(noBuild);
 
@@ -891,7 +891,7 @@ Reference<SceneObject*> PlanetManagerImplementation::findObjectTooCloseToDecorat
 
 
 Reference<SceneObject*> PlanetManagerImplementation::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
-	ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);
+	ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(STRING_HASHCODE("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff"), 1);
 
 	if (obj == NULL)
 		return NULL;

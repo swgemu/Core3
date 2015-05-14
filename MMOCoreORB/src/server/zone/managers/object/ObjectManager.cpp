@@ -32,8 +32,8 @@ using namespace engine::db;
 
 // http://tinyurl.com/2g9mqh
 
-uint32 ObjectManager::serverObjectCrcHashCode = String("SceneObject.serverObjectCRC").hashCode();
-uint32 ObjectManager::_classNameHashCode = String("_className").hashCode();
+uint32 ObjectManager::serverObjectCrcHashCode = STRING_HASHCODE("SceneObject.serverObjectCRC");
+uint32 ObjectManager::_classNameHashCode = STRING_HASHCODE("_className");
 
 ObjectManager::ObjectManager() : DOBObjectManager() {
 	server = NULL;

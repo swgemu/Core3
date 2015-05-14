@@ -187,7 +187,7 @@ public:
 			ZoneServer* zoneServer = server->getZoneServer();
 
 			ObjectController* objectController = zoneServer->getObjectController();
-			objectController->activateCommand(object, String("dismount").hashCode(), 0, 0, "");
+			objectController->activateCommand(object, STRING_HASHCODE("dismount"), 0, 0, "");
 		}
 
 		uint32 objectMovementCounter = object->getMovementCounter();

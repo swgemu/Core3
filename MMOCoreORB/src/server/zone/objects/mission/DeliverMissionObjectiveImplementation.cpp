@@ -190,7 +190,7 @@ void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* 
 		itemEntry << "l";
 		item = NULL;
 		//TODO: create correct item.
-		item = (player->getZoneServer()->createObject(String("object/tangible/mission/mission_datadisk.iff").hashCode(), 2)).castTo<TangibleObject*>();
+		item = (player->getZoneServer()->createObject(STRING_HASHCODE("object/tangible/mission/mission_datadisk.iff"), 2)).castTo<TangibleObject*>();
 		if (item == NULL) {
 			abort();
 			return;

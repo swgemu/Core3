@@ -46,10 +46,10 @@ public:
 		}
 		
         if(message.isEmpty()) {
-            playerObject->removeCommandMessageString(String("steadyaim").hashCode());
+            playerObject->removeCommandMessageString(STRING_HASHCODE("steadyaim"));
 			player->sendSystemMessage("Your Steadyaim message has been removed.");
 		} else {
-            playerObject->setCommandMessageString(String("steadyaim").hashCode(), message);
+            playerObject->setCommandMessageString(STRING_HASHCODE("steadyaim"), message);
 			player->sendSystemMessage("Your Steadyaim message was set to :-\n" + message);
 		}
 		

@@ -45,7 +45,7 @@ public:
 
 			targetCreature->getThreatMap()->addAggro(creature, creature->getSkillMod("taunt") * 10, 0);
 			targetCreature->getThreatMap()->setThreatState(creature, ThreatStates::TAUNTED,(uint64)creature->getSkillMod("taunt") / 10, (uint64)creature->getSkillMod("taunt") / 10);
-			//creature->doCombatAnimation(creature,String("taunt").hashCode(),0,0xFF);
+			//creature->doCombatAnimation(creature,STRING_HASHCODE("taunt"),0,0xFF);
 			creature->doAnimation("taunt");
 
 			if (creature->isPlayerCreature())

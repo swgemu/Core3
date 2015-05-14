@@ -181,7 +181,7 @@ public:
 
 		// only clear aiming states if command was successful
 		creature->removeStateBuff(CreatureState::AIMING);
-		creature->removeBuff(String("steadyaim").hashCode());
+		creature->removeBuff(STRING_HASHCODE("steadyaim"));
 
 		// Update PvP TEF Duration
 		if (creature->isPlayerCreature() && targetObject->isPlayerCreature()) {
@@ -469,8 +469,8 @@ public:
 
 			creature->updateKnockdownRecovery();
 			creature->updatePostureChangeDelay(5000);
-			creature->removeBuff(String("burstrun").hashCode());
-			creature->removeBuff(String("retreat").hashCode());
+			creature->removeBuff(STRING_HASHCODE("burstrun"));
+			creature->removeBuff(STRING_HASHCODE("retreat"));
 			creature->sendSystemMessage("@cbt_spam:posture_knocked_down");
 			creature->sendStateCombatSpam("cbt_spam", "posture_knocked_down", 0, 0, false);
 			break;
@@ -498,8 +498,8 @@ public:
 
 			creature->updatePostureUpRecovery();
 			creature->updatePostureChangeDelay(2500);
-			creature->removeBuff(String("burstrun").hashCode());
-			creature->removeBuff(String("retreat").hashCode());
+			creature->removeBuff(STRING_HASHCODE("burstrun"));
+			creature->removeBuff(STRING_HASHCODE("retreat"));
 			break;
 		case CommandEffect::POSTUREDOWN:
 			if (!creature->checkPostureDownRecovery()) {
@@ -525,26 +525,26 @@ public:
 
 			creature->updatePostureDownRecovery();
 			creature->updatePostureChangeDelay(2500);
-			creature->removeBuff(String("burstrun").hashCode());
-			creature->removeBuff(String("retreat").hashCode());
+			creature->removeBuff(STRING_HASHCODE("burstrun"));
+			creature->removeBuff(STRING_HASHCODE("retreat"));
 			break;
 		case CommandEffect::NEXTATTACKDELAY:
 			creature->setNextAttackDelay(mod, duration);
 			break;
 		case CommandEffect::HEALTHDEGRADE:
-			buff = new Buff(creature, String("healthdegrade").hashCode(), duration, BuffType::STATE);
+			buff = new Buff(creature, STRING_HASHCODE("healthdegrade"), duration, BuffType::STATE);
 			buff->setAttributeModifier(CreatureAttribute::CONSTITUTION, -1*effect.getStateStrength());
 			buff->setAttributeModifier(CreatureAttribute::STRENGTH, -1*effect.getStateStrength());
 			creature->addBuff(buff);
 			break;
 		case CommandEffect::ACTIONDEGRADE:
-			buff = new Buff(creature, String("actiondegrade").hashCode(), duration, BuffType::STATE);
+			buff = new Buff(creature, STRING_HASHCODE("actiondegrade"), duration, BuffType::STATE);
 			buff->setAttributeModifier(CreatureAttribute::QUICKNESS, -1*effect.getStateStrength());
 			buff->setAttributeModifier(CreatureAttribute::STAMINA, -1*effect.getStateStrength());
 			creature->addBuff(buff);
 			break;
 		case CommandEffect::MINDDEGRADE:
-			buff = new Buff(creature, String("minddegrade").hashCode(), duration, BuffType::STATE);
+			buff = new Buff(creature, STRING_HASHCODE("minddegrade"), duration, BuffType::STATE);
 			buff->setAttributeModifier(CreatureAttribute::FOCUS, -1*effect.getStateStrength());
 			buff->setAttributeModifier(CreatureAttribute::WILLPOWER, -1*effect.getStateStrength());
 			creature->addBuff(buff);

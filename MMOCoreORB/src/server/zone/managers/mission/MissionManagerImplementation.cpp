@@ -284,7 +284,7 @@ void MissionManagerImplementation::createCraftingMissionObjectives(MissionObject
 	}
 
 	String itemTemplate = craftingMissionItems.get(itemNumber).replaceFirst("draft_schematic/item/", "tangible/mission/");
-	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/quest_item/attunement_grid.iff").hashCode()));
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/quest_item/attunement_grid.iff")));
 	mission->setTemplateStrings(craftingMissionItems.get(itemNumber), itemTemplate);
 
 	ManagedReference<CraftingMissionObjective*> objective = new CraftingMissionObjective(mission);
@@ -845,7 +845,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	mission->setStartPlanet(playerZone->getZoneName());
 	mission->setStartPosition(player->getPositionX(), player->getPositionY(), playerZone->getZoneName());
 
-	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_bounty_target.iff").hashCode()));
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_bounty_target.iff")));
 
 	mission->setMissionLevel(level);
 	mission->setFaction(faction);
@@ -896,7 +896,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 		String stfFile = "mission/mission_bounty_neutral_";
 
-		UnicodeString numberOfEntries = StringIdManager::instance()->getStringId(String("@" + stfFile + diffString + ":" + "number_of_entries").hashCode());
+		UnicodeString numberOfEntries = StringIdManager::instance()->getStringId(String::hashCode("@" + stfFile + diffString + ":" + "number_of_entries"));
 
 		if (!numberOfEntries.isEmpty()) {
 			randTexts =  System::random(Integer::valueOf(numberOfEntries.toString()) - 1) + 1;
@@ -907,7 +907,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		mission->setMissionNumber(randTexts);
 		mission->setMissionDifficulty(3 * creoTemplate->getLevel() + 7);
 
-		UnicodeString possibleCreatorName = StringIdManager::instance()->getStringId(String("@" + stfFile + diffString + ":" + "m" + String::valueOf(randTexts) + "o").hashCode());
+		UnicodeString possibleCreatorName = StringIdManager::instance()->getStringId(String::hashCode("@" + stfFile + diffString + ":" + "m" + String::valueOf(randTexts) + "o"));
 		String creatorName = "";
 
 
@@ -950,7 +950,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 			String stfFile = "mission/mission_bounty_jedi";
 
-			UnicodeString numberOfEntries = StringIdManager::instance()->getStringId(String("@" + stfFile  + ":" + "number_of_entries").hashCode());
+			UnicodeString numberOfEntries = StringIdManager::instance()->getStringId(String::hashCode("@" + stfFile  + ":" + "number_of_entries"));
 
 			if (!numberOfEntries.isEmpty()) {
 				randTexts = System::random(Integer::valueOf(numberOfEntries.toString()) - 1) + 1;
@@ -960,7 +960,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 			mission->setMissionNumber(randTexts);
 
-			UnicodeString possibleCreatorName = StringIdManager::instance()->getStringId(String("@" + stfFile + "m" + String::valueOf(randTexts) + "o").hashCode());
+			UnicodeString possibleCreatorName = StringIdManager::instance()->getStringId(String::hashCode("@" + stfFile + "m" + String::valueOf(randTexts) + "o"));
 			String creatorName = "";
 
 
@@ -1089,14 +1089,14 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 
 	NameManager* nm = processor->getNameManager();
 	mission->setCreatorName(nm->makeCreatureName());
-	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_datadisk.iff").hashCode())->getObjectName());
+	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_datadisk.iff"))->getObjectName());
 
 	String planet = zone->getZoneName();
 	mission->setStartPlanet(planet);
 	mission->setStartPosition(startNpc->getPosition()->getX(), startNpc->getPosition()->getY(), planet, true);
 	mission->setEndPosition(endNpc->getPosition()->getX(), endNpc->getPosition()->getY(), planet);
 
-	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_datadisk.iff").hashCode()));
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_datadisk.iff")));
 
 	int baseCredits = 50;
 	int deliverDistanceCredits = startNpc->getPosition()->distanceTo(*(endNpc->getPosition())) / 10;
@@ -1183,7 +1183,7 @@ void MissionManagerImplementation::randomizeGenericCraftingMission(CreatureObjec
 		break;
 	}
 
-	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/quest_item/attunement_grid.iff").hashCode()));
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/quest_item/attunement_grid.iff")));
 
 	int missionNumber = System::random(maximumMissionNumber) + 1;
 	mission->setMissionTitle(fileName, "m" + String::valueOf(missionNumber) + "t");
@@ -1241,7 +1241,7 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 		mission->setMissionTargetName("@ui_mission:musician_tab");
 	}
 
-	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/building/general/mun_all_guild_theater_s01.iff").hashCode()));
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/building/general/mun_all_guild_theater_s01.iff")));
 
 	int distanceReward = player->getWorldPosition().distanceTo(target->getPosition()) / 10;
 
@@ -1411,8 +1411,8 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(nm->makeCreatureName());
 
-	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_recon_target.iff").hashCode())->getObjectName());
-	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_recon_target.iff").hashCode()));
+	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_recon_target.iff"))->getObjectName());
+	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(STRING_HASHCODE("object/tangible/mission/mission_recon_target.iff")));
 
 	mission->setStartPlanet(playerZone->getZoneName());
 	mission->setStartPosition(position.getX(), position.getY(), playerZone->getZoneName());

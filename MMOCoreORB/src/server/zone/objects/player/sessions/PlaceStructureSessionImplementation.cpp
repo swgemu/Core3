@@ -85,7 +85,7 @@ void PlaceStructureSessionImplementation::placeTemporaryNoBuildZone(SharedStruct
 	areaShape->setRadius(64);
 	areaShape->setAreaCenter(positionX, positionY);
 
-	temporaryNoBuildZone = (zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0)).castTo<ActiveArea*>();
+	temporaryNoBuildZone = (zone->getZoneServer()->createObject(STRING_HASHCODE("object/active_area.iff"), 0)).castTo<ActiveArea*>();
 
 	Locker locker(temporaryNoBuildZone);
 
@@ -138,7 +138,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 	if (ghost != NULL) {
 
 		//Create Waypoint
-		ManagedReference<WaypointObject*> waypointObject = ( zone->getZoneServer()->createObject(String("object/waypoint/world_waypoint_blue.iff").hashCode(), 1)).castTo<WaypointObject*>();
+		ManagedReference<WaypointObject*> waypointObject = ( zone->getZoneServer()->createObject(STRING_HASHCODE("object/waypoint/world_waypoint_blue.iff"), 1)).castTo<WaypointObject*>();
 
 		Locker locker(waypointObject);
 
