@@ -497,8 +497,6 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 
 	destructor->removeDefender(destructedObject);
 
-	destructedObject->clearDots();
-
 	ManagedReference<PetControlDevice*> petControlDevice = destructedObject->getControlDevice().get().castTo<PetControlDevice*>();
 
 	if (!destructor->isKiller() && petControlDevice != NULL && petControlDevice->getPetType() == CREATUREPET) {
@@ -548,24 +546,15 @@ uint32 PetManagerImplementation::calculateIncapacitationTimer(AiAgent* pet, int 
 }
 
 void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
-
-	// TODO REMOVE AFTER TESTING
-	bool attackerIsAdmin = false;
-	// END REMOVE
-
 	StringIdChatParameter stringId;
 
 	if (attacker->isPlayerCreature()) {
 		stringId.setStringId("base_player", "prose_target_dead");
 		stringId.setTT(pet->getObjectID());
 		(cast<CreatureObject*>(attacker))->sendSystemMessage(stringId);
-
-		// TODO REMOVE AFTER TESTING
-		//ManagedReference<PlayerObject*> ghost = (cast<CreatureObject*>(attacker))->getPlayerObject();
-		//if (ghost != NULL && ghost->isPrivileged())
-		//	attackerIsAdmin = true;
-		// END REMOVE
 	}
+
+	pet->clearDots();
 
 	pet->setCurrentSpeed(0);
 	pet->clearCombatState(true);
@@ -602,7 +591,7 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 			petControlDevice->destroyObjectFromWorld(true);
 			petControlDevice->destroyObjectFromDatabase(true);
 
-		} else if ( (!attacker->isPlayerCreature() && !attacker->isPet()) || attackerIsAdmin) { // TODO REMOVE attackerIsAdmin AFTER TESTING
+		} else if (!attacker->isPlayerCreature() && !attacker->isPet()) {
 
 			if (pet->getCooldownTimerMap() != NULL && pet->getCooldownTimerMap()->isPast("vitalityLossCooldown")) {
 
