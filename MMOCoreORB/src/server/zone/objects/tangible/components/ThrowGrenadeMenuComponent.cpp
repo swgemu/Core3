@@ -31,7 +31,7 @@ int ThrowGrenadeMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		return 1;
 
 	if(selectedID == 20) {
-		player->sendCommand(String("throwgrenade").hashCode(), String::valueOf(sceneObject->getObjectID()), player->getTargetID());
+		player->sendCommand(STRING_HASHCODE("throwgrenade"), String::valueOf(sceneObject->getObjectID()), player->getTargetID());
 
 		return 1;
 	}

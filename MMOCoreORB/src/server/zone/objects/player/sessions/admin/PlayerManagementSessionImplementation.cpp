@@ -143,7 +143,7 @@ void PlayerManagementSessionImplementation::getPlayerInfo(const int tablevel, co
 		return;
 	}
 
-	admin->sendCommand(String("server").hashCode(), "playerinfo " + firstName);
+	admin->sendCommand(STRING_HASHCODE("server"), "playerinfo " + firstName);
 }
 
 void PlayerManagementSessionImplementation::sendAccountInfo() {

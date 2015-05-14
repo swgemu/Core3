@@ -46,8 +46,8 @@ public:
 		if (!doFormUp(player, group))
 			return GENERALERROR;
 
-		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("formup").hashCode()).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
-			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("formup").hashCode()));
+		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("formup")).isEmpty()==false && creature->checkCooldownRecovery("command_message")) {
+			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(STRING_HASHCODE("formup")));
  	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
  	 	 	creature->updateCooldownTimer("command_message", 30 * 1000);
 		}

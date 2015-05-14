@@ -27,7 +27,7 @@ public:
 		if (creature->isRidingMount()) {
 			mount = cast<CreatureObject*>( creature->getParent());
 
-			creature->executeObjectControllerAction(String("dismount").hashCode());
+			creature->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 		}*/
 
 		return SUCCESS;
