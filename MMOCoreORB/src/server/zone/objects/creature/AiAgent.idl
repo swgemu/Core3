@@ -292,6 +292,9 @@ class AiAgent extends CreatureObject {
 	@preLocked
 	public native boolean validateTarget();
 
+	@preLocked
+	public native boolean validateTarget(SceneObject target);
+
 	@dirty
 	public abstract native boolean isCamouflaged(CreatureObject target) {
 		return isAggressiveTo(target) && (isScentMasked(target) || isConcealed(target));

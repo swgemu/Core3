@@ -52,8 +52,11 @@ public:
 		pet->setCreatureLink(NULL);
 
 		ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
-		if( controlDevice != NULL )
+		if( controlDevice != NULL ) {
 			controlDevice->updateStatus(0);
+			controlDevice->setLastCommandTarget(NULL);
+			controlDevice->setLastCommand(PetManager::FOLLOW);
+		}
 
 
 		CreatureTemplate* creoTemp = pet->getCreatureTemplate();

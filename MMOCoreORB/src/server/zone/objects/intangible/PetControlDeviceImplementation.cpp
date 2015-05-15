@@ -1,5 +1,6 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/intangible/PetControlObserver.h"
+#include "server/zone/objects/intangible/tasks/EnqueuePetCommand.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/managers/creature/PetManager.h"
@@ -245,6 +246,8 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		player->getCooldownTimerMap()->updateToCurrentAndAddMili("petCallOrStoreCooldown", 1000); // 1 sec
 	}
 
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, String("petFollow").toLowerCase().hashCode(), "", player->getObjectID(), 1);
+	enqueueCommand->execute();
 }
 
 int PetControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

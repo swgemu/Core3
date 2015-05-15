@@ -60,6 +60,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getTargetFromMap", &LuaAiAgent::getTargetFromMap },
 		{ "getTargetFromDefenders", &LuaAiAgent::getTargetFromDefenders },
 		{ "validateTarget", &LuaAiAgent::validateTarget },
+		{ "validateFollow", &LuaAiAgent::validateFollow },
 		{ "followHasState", &LuaAiAgent::followHasState },
 		{ "selectWeapon", &LuaAiAgent::selectWeapon },
 		{ "selectDefaultWeapon", &LuaAiAgent::selectDefaultWeapon },
@@ -398,6 +399,16 @@ int LuaAiAgent::getTargetFromDefenders(lua_State* L) {
 }
 
 int LuaAiAgent::validateTarget(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+
+	bool retVal = realObject->validateTarget(obj);
+
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaAiAgent::validateFollow(lua_State* L) {
 	bool retVal = realObject->validateTarget();
 
 	lua_pushboolean(L, retVal);
