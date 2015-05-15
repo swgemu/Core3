@@ -43,6 +43,10 @@ int ObjectVersionUpdateManager::run() {
 		updateCityTreasuryToDouble();
 		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 5);
 		return 0;
+	} else if (version == INITIAL_DATABASE_VERSION + 5) {
+		updateStructurePermissionLists();
+		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 6);
+		return 0;
 	}  else {
 
 		info("database on latest version : " + String::valueOf(version), true);

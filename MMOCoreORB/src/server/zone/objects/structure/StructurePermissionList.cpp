@@ -86,7 +86,7 @@ int StructurePermissionList::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	return 3;
+	return 5;
 }
 
 bool StructurePermissionList::readObjectMember(ObjectInputStream* stream, const String& name) {
