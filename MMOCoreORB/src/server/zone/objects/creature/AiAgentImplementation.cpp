@@ -672,16 +672,20 @@ SceneObject* AiAgentImplementation::getTargetFromDefenders() {
 bool AiAgentImplementation::validateTarget() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject();
 
-	if (followCopy == NULL)
+	return validateTarget(followCopy);
+}
+
+bool AiAgentImplementation::validateTarget(SceneObject* target) {
+	if (target == NULL)
 		return false;
 
-	if (!followCopy->isInRange(_this.get(), 128))
+	if (!target->isInRange(_this.get(), 128))
 		return false;
 
-	if (followCopy->isCreatureObject() && (!followCopy.castTo<CreatureObject*>()->isAttackableBy(_this.get()) || followCopy.castTo<CreatureObject*>()->isDead() || followCopy.castTo<CreatureObject*>()->isIncapacitated()))
+	if (target->isCreatureObject() && (!cast<CreatureObject*>(target)->isAttackableBy(_this.get()) || cast<CreatureObject*>(target)->isDead() || cast<CreatureObject*>(target)->isIncapacitated()))
 		return false;
 
-	if (followCopy->isTangibleObject() && (!followCopy.castTo<TangibleObject*>()->isAttackableBy(_this.get()) || followCopy.castTo<TangibleObject*>()->isDestroyed()))
+	if (target->isTangibleObject() && (!cast<TangibleObject*>(target)->isAttackableBy(_this.get()) || cast<TangibleObject*>(target)->isDestroyed()))
 		return false;
 
 	return true;

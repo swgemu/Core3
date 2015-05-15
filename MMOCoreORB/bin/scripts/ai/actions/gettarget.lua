@@ -31,12 +31,12 @@ function GetTargetBase:doAction(pAgent)
 		--print("1")
 			agent:setFollowObject(pTarget)
 			if (pTarget ~= nil) then agent:setDefender(pTarget) end
-			if (agent:validateTarget()) then
+			if (agent:validateFollow()) then
 				return BEHAVIOR_SUCCESS
 			else
 				agent:removeDefender()
 			end
-		elseif pTarget ~= nil and agent:validateTarget() then
+		elseif pTarget ~= nil and agent:validateFollow() then
 		--print("2")
 			if agent:followHasState(PEACE) and ranLevel == 1 and not agent:isAggressiveTo(pTarget) then
 				agent:clearCombatState(true)
@@ -53,12 +53,12 @@ function GetTargetBase:doAction(pAgent)
 		--print("3")
 			agent:setFollowObject(pTarget)
 			if (pTarget ~= nil) then agent:setDefender(pTarget) end
-			if (agent:validateTarget()) then
+			if (agent:validateFollow()) then
 				return BEHAVIOR_SUCCESS
 			else
 				agent:removeDefender()
 			end
-		elseif pTarget ~= nil and agent:validateTarget() then
+		elseif pTarget ~= nil and agent:validateFollow() then
 		--print("4")
 			if agent:followHasState(PEACE) and ranLevel == 1 and not agent:isAggressiveTo(pTarget) then
 				agent:clearCombatState(true)
@@ -96,13 +96,11 @@ function GetTargetCreaturePet:doAction(pAgent)
 
 		if (command ~= PET_GUARD and command ~= PET_PATROL ) then
 			local pTarget = agent:getLastCommandTarget()
-			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+			if (pTarget ~= nil and pTarget ~= agent:getFollowObject() and agent:validateTarget(pTarget)) then
 				agent:setFollowObject(pTarget)
 				agent:setDefender(pTarget)
-				if (agent:validateTarget()) then
-					return BEHAVIOR_SUCCESS
-				end
-			elseif pTarget ~= nil and agent:validateTarget() then
+				return BEHAVIOR_SUCCESS
+			elseif pTarget ~= nil and agent:validateFollow() then
 				return BEHAVIOR_SUCCESS
 			end
 		end
@@ -111,18 +109,12 @@ function GetTargetCreaturePet:doAction(pAgent)
 
 		local pTarget = agent:getTargetFromMap()
 		--print(pTarget)
-		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+		if (pTarget ~= nil and pTarget ~= agent:getFollowObject() and agent:validateTarget(pTarget)) then
 			--print("2")
 			agent:setFollowObject(pTarget)
 			agent:setDefender(pTarget)
-			if (agent:validateTarget()) then
-				--print("3")
-				return BEHAVIOR_SUCCESS
-			else
-				--print("4")
-				agent:removeDefender()
-			end
-		elseif pTarget ~= nil and agent:validateTarget() then
+			return BEHAVIOR_SUCCESS
+		elseif pTarget ~= nil and agent:validateFollow() then
 			--print("5")
 			return BEHAVIOR_SUCCESS
 		end
@@ -130,18 +122,12 @@ function GetTargetCreaturePet:doAction(pAgent)
 
 		pTarget = agent:getTargetFromDefenders()
 		--print(pTarget)
-		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+		if (pTarget ~= nil and pTarget ~= agent:getFollowObject() and agent:validateTarget(pTarget)) then
 			--print("6")
 			agent:setFollowObject(pTarget)
 			agent:setDefender(pTarget)
-			if (agent:validateTarget()) then
-				--print("7")
-				return BEHAVIOR_SUCCESS
-			else
-				--print("8")
-				agent:removeDefender()
-			end
-		elseif pTarget ~= nil and agent:validateTarget() then
+			return BEHAVIOR_SUCCESS
+		elseif pTarget ~= nil and agent:validateFollow() then
 			--print("9")
 			return BEHAVIOR_SUCCESS
 		end
@@ -170,13 +156,11 @@ function GetTargetDroidPet:doAction(pAgent)
 
 		if (command == PET_ATTACK ) then
 			local pTarget = agent:getLastCommandTarget()
-			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+			if (pTarget ~= nil and pTarget ~= agent:getFollowObject() and agent:validateTarget(pTarget)) then
 				agent:setFollowObject(pTarget)
 				agent:setDefender(pTarget)
-				if (agent:validateTarget()) then
-					return BEHAVIOR_SUCCESS
-				end
-			elseif pTarget ~= nil and agent:validateTarget() then
+				return BEHAVIOR_SUCCESS
+			elseif pTarget ~= nil and agent:validateFollow() then
 				return BEHAVIOR_SUCCESS
 			end
 		end
@@ -185,18 +169,12 @@ function GetTargetDroidPet:doAction(pAgent)
 
 		local pTarget = agent:getTargetFromMap()
 		--print(pTarget)
-		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+		if (pTarget ~= nil and pTarget ~= agent:getFollowObject() and agent:validateTarget(pTarget)) then
 			--print("2")
 			agent:setFollowObject(pTarget)
 			agent:setDefender(pTarget)
-			if (agent:validateTarget()) then
-				--print("3")
-				return BEHAVIOR_SUCCESS
-			else
-				--print("4")
-				agent:removeDefender()
-			end
-		elseif pTarget ~= nil and agent:validateTarget() then
+			return BEHAVIOR_SUCCESS
+		elseif pTarget ~= nil and agent:validateFollow() then
 			--print("5")
 			return BEHAVIOR_SUCCESS
 		end
@@ -204,18 +182,12 @@ function GetTargetDroidPet:doAction(pAgent)
 
 		pTarget = agent:getTargetFromDefenders()
 		--print(pTarget)
-		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+		if (pTarget ~= nil and pTarget ~= agent:getFollowObject() and agent:validateTarget(pTarget)) then
 			--print("6")
 			agent:setFollowObject(pTarget)
 			agent:setDefender(pTarget)
-			if (agent:validateTarget()) then
-				--print("7")
-				return BEHAVIOR_SUCCESS
-			else
-				--print("8")
-				agent:removeDefender()
-			end
-		elseif pTarget ~= nil and agent:validateTarget() then
+			return BEHAVIOR_SUCCESS
+		elseif pTarget ~= nil and agent:validateFollow() then
 			--print("9")
 			return BEHAVIOR_SUCCESS
 		end
@@ -244,13 +216,11 @@ function GetTargetFactionPet:doAction(pAgent)
 
 		if (command == PET_ATTACK) then
 			local pTarget = agent:getLastCommandTarget()
-			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+			if (pTarget ~= nil and pTarget ~= agent:getFollowObject() and agent:validateTarget(pTarget)) then
 				agent:setFollowObject(pTarget)
 				agent:setDefender(pTarget)
-				if (agent:validateTarget()) then
-					return BEHAVIOR_SUCCESS
-				end
-			elseif pTarget ~= nil and agent:validateTarget() then
+				return BEHAVIOR_SUCCESS
+			elseif pTarget ~= nil and agent:validateFollow() then
 				return BEHAVIOR_SUCCESS
 			end
 		end
@@ -259,18 +229,12 @@ function GetTargetFactionPet:doAction(pAgent)
 
 		local pTarget = agent:getTargetFromMap()
 		--print(pTarget)
-		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+		if (pTarget ~= nil and pTarget ~= agent:getFollowObject() and agent:validateTarget(pTarget)) then
 			--print("2")
 			agent:setFollowObject(pTarget)
 			agent:setDefender(pTarget)
-			if (agent:validateTarget()) then
-				--print("3")
-				return BEHAVIOR_SUCCESS
-			else
-				--print("4")
-				agent:removeDefender()
-			end
-		elseif pTarget ~= nil and agent:validateTarget() then
+			return BEHAVIOR_SUCCESS
+		elseif pTarget ~= nil and agent:validateFollow() then
 			--print("5")
 			return BEHAVIOR_SUCCESS
 		end
@@ -278,18 +242,12 @@ function GetTargetFactionPet:doAction(pAgent)
 
 		pTarget = agent:getTargetFromDefenders()
 		--print(pTarget)
-		if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
+		if (pTarget ~= nil and pTarget ~= agent:getFollowObject() and agent:validateTarget(pTarget)) then
 			--print("6")
 			agent:setFollowObject(pTarget)
 			agent:setDefender(pTarget)
-			if (agent:validateTarget()) then
-				--print("7")
-				return BEHAVIOR_SUCCESS
-			else
-				--print("8")
-				agent:removeDefender()
-			end
-		elseif pTarget ~= nil and agent:validateTarget() then
+			return BEHAVIOR_SUCCESS
+		elseif pTarget ~= nil and agent:validateFollow() then
 			--print("9")
 			return BEHAVIOR_SUCCESS
 		end

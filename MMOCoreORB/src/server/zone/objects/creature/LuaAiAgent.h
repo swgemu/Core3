@@ -56,6 +56,7 @@ namespace creature {
 		int getTargetFromMap(lua_State* L);
 		int getTargetFromDefenders(lua_State* L);
 		int validateTarget(lua_State* L);
+		int validateFollow(lua_State* L);
 		int followHasState(lua_State* L);
 		int selectWeapon(lua_State* L);
 		int selectDefaultWeapon(lua_State* L);
