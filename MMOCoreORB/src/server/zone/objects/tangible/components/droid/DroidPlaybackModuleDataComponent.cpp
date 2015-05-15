@@ -75,7 +75,8 @@ void DroidPlaybackModuleDataComponent::doFlourish(int number) {
 
 	PerformanceManager* performanceManager = SkillManager::instance()->getPerformanceManager();
 	Performance* performance = NULL;
-	performance = performanceManager->getSong(getCurrentTrack(), getCurrentInstrument());
+	if (performanceManager != NULL)
+		performance = performanceManager->getSong(getCurrentTrack(), getCurrentInstrument());
 	if(performance == NULL) {
 		return;
 	}
@@ -327,30 +328,40 @@ void DroidPlaybackModuleDataComponent::deactivate() {
 		Core::getTaskManager()->cancelTask(task);
 		droid->removePendingTask( "droid_playback" );
 	}
-	droid->setPerformanceAnimation(performance, false);
-	droid->setPerformanceCounter(0, false);
-	droid->setInstrumentID(0, false);
 
-	CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(droid);
-	dcreo6->updatePerformanceAnimation(performance);
-	dcreo6->updatePerformanceCounter(0);
-	dcreo6->updateInstrumentID(0);
-	dcreo6->close();
-
-	droid->broadcastMessage(dcreo6, true);
-	if (droid->getPosture() == CreaturePosture::SKILLANIMATING)
-		droid->setPosture(CreaturePosture::UPRIGHT);
-	selectedIndex = -1;
 	ManagedReference<PlayerManager*> playerManager = droid->getZoneServer()->getPlayerManager();
 	if (playerManager != NULL) {
 		for(int i=0;i<listeners.size();i++) {
 			ManagedReference<SceneObject*> object = droid->getZoneServer()->getObject(listeners.get(i));
 			CreatureObject* c = cast<CreatureObject*>(object.get());
 			Locker lock(c);
-			if(c->getListenID() == droid->getObjectID())
-				playerManager->stopListen(c,droid->getObjectID());
+			if(c->getListenID() == droid->getObjectID()) // stop all listeners and send packets and force it so mood gets fixed
+				playerManager->stopListen(c,droid->getObjectID(),true,true,false);
 		}
 	}
+
+	SkillManager* skillManager = droid->getZoneServer()->getSkillManager();
+	if (skillManager != NULL) {
+		PerformanceManager* performanceManager = skillManager->getPerformanceManager();
+		if (performanceManager != NULL) {
+			String instrumentAnimation;
+			int instrid = performanceManager->getInstrumentId(performance);
+			instrid += performanceManager->getInstrumentAnimation(getCurrentInstrument(), instrumentAnimation);
+			droid->setPerformanceAnimation(instrumentAnimation, false);
+			droid->setPerformanceCounter(0, false);
+			droid->setInstrumentID(0, false);
+			CreatureObjectDeltaMessage6* dcreo6 = new CreatureObjectDeltaMessage6(droid);
+			dcreo6->updatePerformanceAnimation(instrumentAnimation);
+			dcreo6->updatePerformanceCounter(0);
+			dcreo6->updateInstrumentID(0);
+			dcreo6->close();
+			droid->broadcastMessage(dcreo6, true);
+		}
+	}
+	droid->notifyObservers(ObserverEventType::STOPENTERTAIN, droid);
+	if (droid->getPosture() == CreaturePosture::SKILLANIMATING)
+		droid->setPosture(CreaturePosture::UPRIGHT);
+	selectedIndex = -1;
 
 }
 
