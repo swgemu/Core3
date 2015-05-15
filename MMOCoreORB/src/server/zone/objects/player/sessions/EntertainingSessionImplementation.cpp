@@ -881,7 +881,11 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 			ManagedReference<PerformanceBuff*> focusBuff = new PerformanceBuff(creature, focusBuffCRC, buffStrength, buffDuration * 60, PerformanceBuffType::MUSIC_FOCUS);
 			ManagedReference<PerformanceBuff*> willBuff = new PerformanceBuff(creature, willBuffCRC, buffStrength, buffDuration * 60, PerformanceBuffType::MUSIC_WILLPOWER);
 
+			Locker locker(focusBuff);
 			creature->addBuff(focusBuff);
+			locker.release();
+
+			Locker locker2(willBuff);
 			creature->addBuff(willBuff);
 			break;
 		}
@@ -892,6 +896,8 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 			if (oldBuff != NULL && oldBuff->getBuffStrength() > buffStrength)
 				return;
 			ManagedReference<PerformanceBuff*> mindBuff = new PerformanceBuff(creature, mindBuffCRC, buffStrength, buffDuration * 60, PerformanceBuffType::DANCE_MIND);
+
+			Locker locker(mindBuff);
 			creature->addBuff(mindBuff);
 			break;
 		}
