@@ -60,6 +60,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getTargetFromMap", &LuaAiAgent::getTargetFromMap },
 		{ "getTargetFromDefenders", &LuaAiAgent::getTargetFromDefenders },
 		{ "validateTarget", &LuaAiAgent::validateTarget },
+		{ "validateFollow", &LuaAiAgent::validateFollow },
 		{ "followHasState", &LuaAiAgent::followHasState },
 		{ "selectWeapon", &LuaAiAgent::selectWeapon },
 		{ "selectDefaultWeapon", &LuaAiAgent::selectDefaultWeapon },
@@ -125,6 +126,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "getOwner", &LuaCreatureObject::getOwner },
 		{ "getLastCommand", &LuaAiAgent::getLastCommand },
 		{ "getLastCommandTarget", &LuaAiAgent::getLastCommandTarget },
+		{ "setLastCommandTarget", &LuaAiAgent::setLastCommandTarget },
 		{ "setAlertDuration", &LuaAiAgent::setAlertDuration },
 		{ "alertedTimeIsPast", &LuaAiAgent::alertedTimeIsPast },
 		{ "setLevel", &LuaAiAgent::setLevel },
@@ -398,6 +400,16 @@ int LuaAiAgent::getTargetFromDefenders(lua_State* L) {
 }
 
 int LuaAiAgent::validateTarget(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+
+	bool retVal = realObject->validateTarget(obj);
+
+	lua_pushboolean(L, retVal);
+
+	return 1;
+}
+
+int LuaAiAgent::validateFollow(lua_State* L) {
 	bool retVal = realObject->validateTarget();
 
 	lua_pushboolean(L, retVal);
@@ -892,6 +904,18 @@ int LuaAiAgent::getLastCommandTarget(lua_State* L) {
 		lua_pushlightuserdata(L, target);
 
 	return 1;
+}
+
+int LuaAiAgent::setLastCommandTarget(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+
+	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().castTo<PetControlDevice*>();
+	if (controlDevice == NULL)
+		return 0;
+
+	controlDevice->setLastCommandTarget(obj);
+
+	return 0;
 }
 
 int LuaAiAgent::setAlertDuration(lua_State* L) {

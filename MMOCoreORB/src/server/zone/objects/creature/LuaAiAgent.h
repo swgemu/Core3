@@ -56,6 +56,7 @@ namespace creature {
 		int getTargetFromMap(lua_State* L);
 		int getTargetFromDefenders(lua_State* L);
 		int validateTarget(lua_State* L);
+		int validateFollow(lua_State* L);
 		int followHasState(lua_State* L);
 		int selectWeapon(lua_State* L);
 		int selectDefaultWeapon(lua_State* L);
@@ -119,6 +120,7 @@ namespace creature {
 		int getSocialGroup(lua_State* L);
 		int getLastCommand(lua_State* L);
 		int getLastCommandTarget(lua_State* L);
+		int setLastCommandTarget(lua_State* L);
 		int setAlertDuration(lua_State* L);
 		int alertedTimeIsPast(lua_State* L);
 		int setLevel(lua_State* L);
