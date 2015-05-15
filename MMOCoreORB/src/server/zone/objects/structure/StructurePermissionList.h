@@ -67,6 +67,11 @@ public:
 
 		ownerID = objectID;
 	}
+	inline uint64 getOwner() const {
+		Locker locker(&lock);
+
+		return ownerID;
+	}
 
 	/**
 	 * Checks to see if the specified player name is on the specified permission list.
