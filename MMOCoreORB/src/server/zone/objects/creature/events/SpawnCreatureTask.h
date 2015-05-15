@@ -43,6 +43,9 @@ public:
 
 		if (creature->isAiAgent()) {
 			AiAgent* ai = cast<AiAgent*>(creature);
+
+			Locker locker(ai);
+
 			ai->setRespawnTimer(respawn);
 
 			if (randomRespawn)
