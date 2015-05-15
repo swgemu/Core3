@@ -36,12 +36,35 @@ int ObjectVersionUpdateManager::run() {
 		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 3);
 		return 0;
 	} else if (version == INITIAL_DATABASE_VERSION + 3) {
-		updateStructurePermissionLists();
+		Vector<String> classNames(4);
+		classNames.add(String("BuildingObject"));
+		classNames.add(String("InstallationObject"));
+		classNames.add(String("GarageInstallation"));
+		classNames.add(String("ShuttleInstallation"));
+		updateStructurePermissionLists(classNames);
+
 		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 4);
 		return 0;
 	} else if (version == INITIAL_DATABASE_VERSION + 4) {
 		updateCityTreasuryToDouble();
 		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 5);
+		return 0;
+	} else if (version == INITIAL_DATABASE_VERSION + 5) {
+		Vector<String> classNames(10);
+		classNames.add(String("BuildingObject"));
+		classNames.add(String("HospitalBuildingObject"));
+		classNames.add(String("PoiBuilding"));
+		classNames.add(String("TravelBuildingObject"));
+		classNames.add(String("FactoryObject"));
+		classNames.add(String("InstallationObject"));
+		classNames.add(String("HarvesterObject"));
+		classNames.add(String("ShuttleInstallation"));
+		classNames.add(String("GarageInstallation"));
+		classNames.add(String("GeneratorObject"));
+
+		updateStructurePermissionLists(classNames);
+
+		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 6);
 		return 0;
 	}  else {
 
@@ -265,7 +288,7 @@ void ObjectVersionUpdateManager::updateWeaponsDots() {
 }
 
 
-void ObjectVersionUpdateManager::updateStructurePermissionLists() {
+void ObjectVersionUpdateManager::updateStructurePermissionLists(Vector<String>& classNames) {
 	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("playerstructures", true);
 
 	ObjectDatabaseIterator iterator(database);
@@ -292,7 +315,7 @@ void ObjectVersionUpdateManager::updateStructurePermissionLists() {
 				continue;
 			}
 
-			if (className == "BuildingObject" || className == "InstallationObject" || className == "GarageInstallation" || className == "ShuttleInstallation") {
+			if (classNames.contains(className)) {
 				uint64 ownerID = 0;
 				String ownerName;
 				count ++;

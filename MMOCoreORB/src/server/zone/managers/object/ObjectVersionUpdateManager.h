@@ -32,7 +32,7 @@ public:
 	void setResidence(uint64 buildingID, bool isResidence);
 	void verifyResidenceVariables();
 	void updateWeaponsDots();
-	void updateStructurePermissionLists();
+	void updateStructurePermissionLists(Vector<String>& classNames);
 
 	void updateCityTreasury();
 	void updateCityTreasuryToDouble();
