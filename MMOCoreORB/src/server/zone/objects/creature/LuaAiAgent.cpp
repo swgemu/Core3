@@ -769,6 +769,8 @@ int LuaAiAgent::getBehaviorStatus(lua_State* L) {
 }
 
 int LuaAiAgent::resetBehaviorList(lua_State* L) {
+	Locker locker(realObject);
+
 	realObject->resetBehaviorList();
 	return 0;
 }
