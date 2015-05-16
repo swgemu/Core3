@@ -5,17 +5,15 @@ lifeDayKkatamkConvoHandler = Object:new {}
 function lifeDayKkatamkConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		if readScreenPlayData(pPlayer, "lifeDay", "complete") == "1" then
-			return convoTemplate:getScreen("return_complete")
-		elseif readData(player:getObjectID() .. ":lifeDayState") == 1 then
-			return convoTemplate:getScreen("return_incomplete")
-		elseif player:getSpecies() == 4 then
-			return convoTemplate:getScreen("greetings_wookiee")
-		else
-			return convoTemplate:getScreen("greetings")
-		end
-	end)
+	if readScreenPlayData(pPlayer, "lifeDay", "complete") == "1" then
+		return convoTemplate:getScreen("return_complete")
+	elseif readData(CreatureObject(pPlayer):getObjectID() .. ":lifeDayState") == 1 then
+		return convoTemplate:getScreen("return_incomplete")
+	elseif CreatureObject(pPlayer):getSpecies() == 4 then
+		return convoTemplate:getScreen("greetings_wookiee")
+	else
+		return convoTemplate:getScreen("greetings")
+	end
 end
 
 function lifeDayKkatamkConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)

@@ -5,32 +5,30 @@ lifeDayTebeurraConvoHandler = Object:new {}
 function lifeDayTebeurraConvoHandler:getInitialScreen(pPlayer, npc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	return ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, ghost)
-		if readScreenPlayData(pPlayer, "lifeDay", "complete") == "1" or readData(player:getObjectID() .. ":lifeDayTebeurra") == 1 then
-			return convoTemplate:getScreen("hear_again")
-		elseif readData(player:getObjectID() .. ":lifeDayState") == 2 then
-			return convoTemplate:getScreen("life_day_began")
-		else
-			return convoTemplate:getScreen("elder_first")
-		end
-	end)
+	local playerID = SceneObject(pPlayer):getObjectID()
+	if readScreenPlayData(pPlayer, "lifeDay", "complete") == "1" or readData(playerID .. ":lifeDayTebeurra") == 1 then
+		return convoTemplate:getScreen("hear_again")
+	elseif readData(playerID .. ":lifeDayState") == 2 then
+		return convoTemplate:getScreen("life_day_began")
+	else
+		return convoTemplate:getScreen("elder_first")
+	end
 end
 
 function lifeDayTebeurraConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	return ObjectManager.withCreatureObject(conversingPlayer, function(player)
-		local screen = LuaConversationScreen(conversationScreen)
-		local screenID = screen:getScreenID()
-		local conversationScreen = screen:cloneScreen()
-		local clonedConversation = LuaConversationScreen(conversationScreen)
+	local screen = LuaConversationScreen(conversationScreen)
+	local screenID = screen:getScreenID()
+	local conversationScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(conversationScreen)
 
-		if screenID == "let_others" then
-			writeData(player:getObjectID() .. ":lifeDayTebeurra", 1)
-			if readData(player:getObjectID() .. ":lifeDayAnarra") == 1 and readData(player:getObjectID() .. ":lifeDayRadrrl") == 1 then
-				writeData(player:getObjectID() .. ":lifeDayState", 3)
-			end
+	local playerID = SceneObject(conversingPlayer):getObjectID()
+	if screenID == "let_others" then
+		writeData(playerID .. ":lifeDayTebeurra", 1)
+		if readData(playerID .. ":lifeDayAnarra") == 1 and readData(playerID .. ":lifeDayRadrrl") == 1 then
+			writeData(playerID .. ":lifeDayState", 3)
 		end
-		return conversationScreen
-	end)
+	end
+	return conversationScreen
 end
 
 function lifeDayTebeurraConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
