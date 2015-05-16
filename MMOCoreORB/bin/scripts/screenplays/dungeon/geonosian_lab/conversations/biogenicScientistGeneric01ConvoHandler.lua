@@ -4,10 +4,6 @@ BiogenicScientistGeneric01ConvoHandler = Object:new {
 	}
 
 function BiogenicScientistGeneric01ConvoHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	local screenID = screen:getScreenID()
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-
 	return pConversationScreen
 end
 

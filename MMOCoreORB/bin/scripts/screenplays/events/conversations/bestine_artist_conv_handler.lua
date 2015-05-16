@@ -15,13 +15,10 @@ function BestineArtistConvoHandler:runScreenHandlers(conversationTemplate, conve
 	local clonedConversation = LuaConversationScreen(conversationScreen)
 
 	local screenID = screen:getScreenID()
-	local npcName, talkedPrev
-	ObjectManager.withSceneObject(conversingNPC, function(npc)
-		npcName = npc:getObjectName()
-	end)
-	ObjectManager.withCreatureObject(conversingPlayer, function(player)
-		talkedPrev = readData(player:getObjectID() .. ":bestine_election_" .. npcName)
-	end)
+	local npcName = SceneObject(conversingNPC):getObjectName()
+	local playerID = SceneObject(conversingPlayer):getObjectID()
+	local talkedPrev = readData(playerID .. ":bestine_election_" .. npcName)
+
 	if (npcName == "bestine_artist01") then
 		if (screenID == "init_wonvote") then
 			if (talkedPrev == 1) then
@@ -120,16 +117,16 @@ function BestineArtistConvoHandler:runScreenHandlers(conversationTemplate, conve
 		end
 	end
 
-	if (screenID == "painting_response_curvote" or screenID == "painting_response_curvote_prev" or screenID == "painting_response_wonvote") then		
-			if (screenID == "painting_response_curvote" or screenID == "painting_response_curvote_prev") then
-				local artistId = string.sub(SceneObject(conversingNPC):getObjectName(), 16)
-				
-				if (BestineMuseumScreenPlay:hasTalkedToArtist(conversingPlayer, artistId) == false) then
-					BestineMuseumScreenPlay:writeToTalkedList(conversingPlayer, artistId)
-				end
+	if (screenID == "painting_response_curvote" or screenID == "painting_response_curvote_prev" or screenID == "painting_response_wonvote") then
+		if (screenID == "painting_response_curvote" or screenID == "painting_response_curvote_prev") then
+			local artistId = string.sub(SceneObject(conversingNPC):getObjectName(), 16)
+
+			if (BestineMuseumScreenPlay:hasTalkedToArtist(conversingPlayer, artistId) == false) then
+				BestineMuseumScreenPlay:writeToTalkedList(conversingPlayer, artistId)
 			end
-			
-			writeData(SceneObject(conversingPlayer):getObjectID() .. ":bestine_election_" .. npcName, 1)
+		end
+
+		writeData(playerID .. ":bestine_election_" .. npcName, 1)
 	end
 	return conversationScreen
 end
@@ -137,10 +134,7 @@ end
 
 function BestineArtistConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-	local artistId
-	ObjectManager.withSceneObject(pNpc, function(npc)
-		artistId = string.sub(npc:getObjectName(), 16)
-	end)
+	local artistId = string.sub(SceneObject(pNpc):getObjectName(), 16)
 	local wonVote = BestineMuseumScreenPlay:getWinningArtistID() == artistId
 	local curVote = BestineMuseumScreenPlay:isCurrentArtist(artistId)
 
@@ -154,19 +148,17 @@ function BestineArtistConvoHandler:getInitialScreen(pPlayer, pNpc, pConversation
 end
 
 function BestineArtistConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		local pConversationSession = player:getConversationSession()
-		local pLastConversationScreen = nil
-		if (pConversationSession ~= nil) then
-			local conversationSession = LuaConversationSession(pConversationSession)
-			pLastConversationScreen = conversationSession:getLastConversationScreen()
-		end
-		local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (pLastConversationScreen ~= nil) then
-			local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-			local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-			return conversationTemplate:getScreen(optionLink)
-		end
-		return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-	end)
+	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
+	local pLastConversationScreen = nil
+	if (pConversationSession ~= nil) then
+		local conversationSession = LuaConversationSession(pConversationSession)
+		pLastConversationScreen = conversationSession:getLastConversationScreen()
+	end
+	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
+	if (pLastConversationScreen ~= nil) then
+		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
+		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
+		return conversationTemplate:getScreen(optionLink)
+	end
+	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end
