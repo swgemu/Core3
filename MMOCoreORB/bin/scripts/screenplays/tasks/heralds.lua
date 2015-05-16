@@ -89,16 +89,19 @@ function heraldScreenPlay:createLoc(pPlayer, heraldNum)
 	ObjectManager.withCreatureAndPlayerObject(pPlayer, function(player, playerObject)
 		local heraldData = self.heraldList[heraldNum]
 		local stfFile = "@spawning/static_npc/" .. heraldData.stringFile
+		local playerID = player:getObjectID()
+
 		local waypointID = playerObject:addWaypoint(heraldData.planet, stfFile .. ":waypoint_name_1", stfFile .. ":waypoint_description_1", heraldData.destX, heraldData.destY, WAYPOINT_COLOR_PURPLE, true, true, 0, 0)
-		writeData(player:getObjectID() .. ":herald" .. heraldNum, waypointID)
+		writeData(playerID .. ":herald" .. heraldNum, waypointID)
 
 		local pArea = spawnActiveArea(heraldData.planet, "object/active_area.iff", heraldData.destX, heraldData.z, heraldData.destY, 10, 0)
-		ObjectManager.withActiveArea(pArea, function(activeArea)
+      		if (pArea ~= nil) then
+			local areaID = ActiveArea(pArea):getObjectID()
 			createObserver(ENTEREDAREA, "heraldScreenPlay", "notifyEnteredHeraldArea", pArea)
-			writeData(activeArea:getObjectID() .. ":ownerID", player:getObjectID())
-			writeData(activeArea:getObjectID() .. ":heraldNum", heraldNum)
-			writeData(player:getObjectID() .. ":heraldArea" .. heraldNum, activeArea:getObjectID())
-		end)
+			writeData(areaID .. ":ownerID", playerID)
+			writeData(areaID .. ":heraldNum", heraldNum)
+			writeData(playerID .. ":heraldArea" .. heraldNum, areaID)
+		end
 	end)
 end
 
@@ -106,9 +109,9 @@ function heraldScreenPlay:notifyEnteredHeraldArea(pActiveArea, pPlayer)
 	if (pActiveArea == nil or pPlayer == nil) then
 		return 0
 	end
-	
+
 	if (not SceneObject(pPlayer):isPlayerCreature()) then
-	 return 0
+		return 0
 	end
 
 	local areaID = SceneObject(pActiveArea):getObjectID()

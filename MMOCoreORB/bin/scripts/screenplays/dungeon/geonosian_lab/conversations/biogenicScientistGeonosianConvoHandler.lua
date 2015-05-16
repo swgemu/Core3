@@ -3,10 +3,6 @@ local ObjectManager = require("managers.object.object_manager")
 BiogenicScientistGeonosianConvoHandler = Object:new {	}
 
 function BiogenicScientistGeonosianConvoHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
-	local screen = LuaConversationScreen(pConversationScreen)
-	local screenID = screen:getScreenID()
-	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-
 	return pConversationScreen
 end
 
