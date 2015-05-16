@@ -577,6 +577,10 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 	ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
 	if (petControlDevice != NULL) {
+		Locker locker(petControlDevice);
+
+		petControlDevice->setLastCommandTarget(NULL);
+		petControlDevice->setLastCommand(PetManager::FOLLOW);
 
 		if (petControlDevice->getPetType() == FACTIONPET) {
 			ManagedReference<CreatureObject*> owner = zoneServer->getObject(pet->getCreatureLinkID()).castTo<CreatureObject*>();
@@ -585,8 +589,6 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 				Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(petControlDevice, owner, true);
 				task->execute();
 			}
-
-			Locker locker(petControlDevice);
 
 			petControlDevice->destroyObjectFromWorld(true);
 			petControlDevice->destroyObjectFromDatabase(true);
