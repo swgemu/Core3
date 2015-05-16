@@ -367,6 +367,8 @@ int LuaCreatureObject::hasSkill(lua_State* L) {
 int LuaCreatureObject::removeSkill(lua_State* L) {
 	String value = lua_tostring(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->removeSkill(value, true);
 	return 0;
 }
@@ -460,6 +462,8 @@ int LuaCreatureObject::inflictDamage(lua_State* L) {
 	int damage = lua_tonumber(L, -2);
 	int damageType = lua_tonumber(L, -3);
 	TangibleObject* attacker = (TangibleObject*) lua_touserdata(L, -4);
+
+	Locker locker(realObject);
 
 	realObject->inflictDamage(attacker, damageType, damage, destroy);
 
@@ -575,6 +579,8 @@ int LuaCreatureObject::getCashCredits(lua_State* L) {
 }
 
 int LuaCreatureObject::subtractCashCredits(lua_State* L) {
+	Locker locker(realObject);
+
 	realObject->subtractCashCredits(lua_tointeger(L, -1));
 
 	return 0;
@@ -583,6 +589,9 @@ int LuaCreatureObject::subtractCashCredits(lua_State* L) {
 int LuaCreatureObject::addCashCredits(lua_State* L) {
 	bool notifyClient = lua_toboolean(L, -1);
 	int credits = lua_tonumber(L, -2);
+
+	Locker locker(realObject);
+
 	realObject->addCashCredits(credits, notifyClient);
 
 	return 0;
@@ -654,6 +663,8 @@ int LuaCreatureObject::getGroupSize(lua_State* L) {
 
 int LuaCreatureObject::setOptionsBitmask(lua_State* L) {
 	uint32 bitmask = lua_tointeger(L, -1);
+
+	Locker locker(realObject);
 
 	realObject->setOptionsBitmask(bitmask, true);
 
