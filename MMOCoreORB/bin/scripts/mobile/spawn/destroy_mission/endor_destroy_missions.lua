@@ -211,6 +211,12 @@ endor_destroy_missions = {
 			size = 25,
 		},
 		{
+			lairTemplateName = "endor_mantigrue_deranged_neutral_none_boss_01",
+			minDifficulty = 43,
+			maxDifficulty = 47,
+			size = 25,
+		},
+		{
 			lairTemplateName = "endor_marauder_frenzied_neutral_medium_theater",
 			minDifficulty = 48,
 			maxDifficulty = 52,
