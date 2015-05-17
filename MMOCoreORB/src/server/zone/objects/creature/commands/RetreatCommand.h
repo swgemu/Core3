@@ -84,7 +84,7 @@ public:
 			
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
 
-			if (!isValidGroupAbilityTarget(creature, memberPlayer))
+			if (!isValidGroupAbilityTarget(creature, memberPlayer, false))
 				continue;
 
 			Locker clocker(memberPlayer, player);

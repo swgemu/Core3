@@ -61,9 +61,14 @@ public:
 		return true;
 	}
 
-	bool isValidGroupAbilityTarget(CreatureObject* leader, CreatureObject* target) const {
-		if (!target->isPlayerCreature())
+	bool isValidGroupAbilityTarget(CreatureObject* leader, CreatureObject* target, bool allowPet) const {
+		if (allowPet) {
+			if (!target->isPlayerCreature() && !target->isPet()) {
+				return false;
+			}
+		} else if (!target->isPlayerCreature()) {
 			return false;
+		}
 
 		if (target == leader)
 			return true;
@@ -72,9 +77,23 @@ public:
 			return false;
 
 		PlayerObject* leaderGhost = leader->getPlayerObject();
-		PlayerObject* targetGhost = target->getPlayerObject();
 
-		if (leaderGhost == NULL || targetGhost == NULL)
+		if (leaderGhost == NULL)
+			return false;
+
+		PlayerObject* targetGhost = NULL;
+
+		if (allowPet && target->isPet()) {
+			ManagedReference<CreatureObject*> owner = target->getLinkedCreature().get();
+
+			if (owner != NULL && owner->isPlayerCreature()) {
+				targetGhost = owner->getPlayerObject();
+			}
+		} else {
+			targetGhost = target->getPlayerObject();
+		}
+
+		if (targetGhost == NULL)
 			return false;
 
 		if (targetGhost->getFactionStatus() == FactionStatus::CHANGINGSTATUS || leaderGhost->getFactionStatus() == FactionStatus::CHANGINGSTATUS)
