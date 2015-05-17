@@ -126,7 +126,7 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 		typeString = "attacked_";
 		break;
 	case ReactionManager::BYE:
-		chance = 100;
+		chance = 25;
 		typeString = "bye_";
 		break;
 	case ReactionManager::CALM:
@@ -150,7 +150,7 @@ void ReactionManagerImplementation::sendChatReaction(AiAgent* npc, int type, int
 		typeString = "help_";
 		break;
 	case ReactionManager::HI:
-		chance = 100;
+		chance = 25;
 		typeString = "hi_";
 		break;
 	case ReactionManager::HIT:
