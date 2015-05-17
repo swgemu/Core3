@@ -31,7 +31,9 @@ void BountyHunterDroidMenuComponent::fillObjectMenuResponse(SceneObject* droidOb
 		if (droidIsInPlayerInventory(droidObject, player)) {
 			menuResponse->addRadialMenuItem(138, 3, "@mission/mission_generic:probe_droid_activate"); //Probe Droid Command
 			menuResponse->addRadialMenuItemToRadialID(138, 137, 3, "@mission/mission_generic:probe_droid_find_target"); //Find Bounty Target
-			menuResponse->addRadialMenuItemToRadialID(138, 136, 3, "@mission/mission_generic:probe_droid_track_target"); //Find and Track Target
+
+			if (playerCanUseTrack(player))
+				menuResponse->addRadialMenuItemToRadialID(138, 136, 3, "@mission/mission_generic:probe_droid_track_target"); //Find and Track Target
 		}
 	} else if (droidObject->getObjectTemplate()->getTemplateFileName() == "terminal_mission_bounty" && player->getPlayerObject() != NULL && player->getPlayerObject()->isPrivileged()) {
 		menuResponse->addRadialMenuItem(138, 3, "TEST: register as bounty target"); //Call
@@ -70,11 +72,11 @@ int BountyHunterDroidMenuComponent::handleObjectMenuSelect(SceneObject* droidObj
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(droidObject, player, selectedID);
 }
 
-bool BountyHunterDroidMenuComponent::playerCanUseProbot(CreatureObject* player) {
+bool BountyHunterDroidMenuComponent::playerCanUseTrack(CreatureObject* player) {
 	return player->hasSkill("combat_bountyhunter_investigation_03");
 }
 
-bool BountyHunterDroidMenuComponent::playerCanUseSeeker(CreatureObject* player) {
+bool BountyHunterDroidMenuComponent::playerCanUseDroids(CreatureObject* player) {
 	return player->hasSkill("combat_bountyhunter_investigation_01");
 }
 
@@ -122,8 +124,8 @@ void BountyHunterDroidMenuComponent::performDroidAction(int action, SceneObject*
 		objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 	}
 
-	if (action == BountyHunterDroid::CALLDROID || action == BountyHunterDroid::TRANSMITBIOLOGICALSIGNATURE) {
-		if (playerCanUseProbot(player)) {
+	if (action == BountyHunterDroid::CALLDROID || action == BountyHunterDroid::TRANSMITBIOLOGICALSIGNATURE || action == BountyHunterDroid::FINDTARGET) {
+		if (playerCanUseDroids(player)) {
 			if (objective != NULL) {
 				objective->performDroidAction(action, droidObject, player);
 			} else {
@@ -133,7 +135,7 @@ void BountyHunterDroidMenuComponent::performDroidAction(int action, SceneObject*
 			player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
 		}
 	} else {
-		if (playerCanUseSeeker(player)) {
+		if (playerCanUseTrack(player)) {
 			if (objective != NULL) {
 				objective->performDroidAction(action, droidObject, player);
 			} else {
