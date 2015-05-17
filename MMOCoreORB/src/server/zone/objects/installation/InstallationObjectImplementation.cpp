@@ -462,8 +462,10 @@ void InstallationObjectImplementation::clearResourceHopper() {
 	//lets delete the containers from db
 	for (int i = 0; i < resourceHopper.size(); ++i) {
 		ResourceContainer* container = resourceHopper.get(i);
-
-		container->destroyObjectFromDatabase(true);
+		if (container != NULL) {
+			Locker locker(container);
+			container->destroyObjectFromDatabase(true);
+		}
 	}
 
 	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
