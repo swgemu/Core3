@@ -80,7 +80,9 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		if (player->getParent() != NULL) {
+		ManagedReference<SceneObject*> parent = player->getParent().get();
+
+		if (parent != NULL && parent->isCellObject()) {
 			player->sendSystemMessage("@event_perk:not_inside"); // You cannot deploy a Rental indoors. You must move outside.
 			return 1;
 		}
