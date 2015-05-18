@@ -192,6 +192,7 @@ void DroidStimpackModuleDataComponent::initialize(CreatureObject* droid) {
 		craftingComponents->removeAllContainerObjects();
 		craftingComponents->setSendToClient(false);
 		droidComponent->transferObject(craftingComponents, 4, false);
+		Locker locker(craftingComponents);
 		craftingComponents->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
 		craftingComponents->setContainerDefaultAllowPermission(0);
 		craftingComponents->setContainerDenyPermission("owner", ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
@@ -199,9 +200,11 @@ void DroidStimpackModuleDataComponent::initialize(CreatureObject* droid) {
 		craftingComponents->setContainerAllowPermission("owner", 0);
 		craftingComponents->setContainerAllowPermission("admin", 0);
 		craftingComponents->setContainerInheritPermissionsFromParent(false);
+		locker.release();
 
 		String craftingComponentsSatchelPath = "object/tangible/hopper/crafting_station_hopper/crafting_station_ingredient_hopper_large.iff";
 		craftingComponentsSatchel = droidComponent->getZoneServer()->createObject(craftingComponentsSatchelPath.hashCode(), 1);
+		Locker locker2(craftingComponentsSatchel);
 		craftingComponentsSatchel->setContainerVolumeLimit(capacity);
 		craftingComponentsSatchel->setContainerInheritPermissionsFromParent(false);
 		craftingComponentsSatchel->setContainerDefaultDenyPermission(ContainerPermissions::OPEN + ContainerPermissions::MOVEIN + ContainerPermissions::MOVEOUT + ContainerPermissions::MOVECONTAINER);
