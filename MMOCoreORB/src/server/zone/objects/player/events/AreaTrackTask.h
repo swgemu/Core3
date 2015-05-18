@@ -89,12 +89,12 @@ public:
 				if(type == 0) {
 					if(!creature->isCreature())
 						continue;
+					if (creature->isDroidSpecies() || creature->isWalkerSpecies())
+						continue;
 				} else if(type == 1) {
 					if(!creature->isNonPlayerCreatureObject())
 						continue;
 					if(creature->isVendor()||creature->isJunkDealer())
-						continue;
-					if(!creature->isAttackableBy(player)) // only track people we can attack i.e. ignore white mobs
 						continue;
 				} else if(type == 2) {
 					if(!creature->isPlayerCreature())
