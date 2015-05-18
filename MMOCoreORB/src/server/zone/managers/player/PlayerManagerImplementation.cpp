@@ -1181,6 +1181,9 @@ bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, Arm
 	int actionEncumb = armor->getActionEncumbrance();
 	int mindEncumb = armor->getMindEncumbrance();
 
+	if (healthEncumb <= 0 && actionEncumb <= 0 && mindEncumb <= 0)
+		return true;
+
 	if (healthEncumb >= strength || healthEncumb >= constitution ||
 			actionEncumb >= quickness || actionEncumb >= stamina ||
 			mindEncumb >= focus || mindEncumb >= willpower)
