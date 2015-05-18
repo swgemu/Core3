@@ -3425,8 +3425,10 @@ void PlayerManagerImplementation::fixBuffSkillMods(CreatureObject* player) {
 			GroupManager::instance()->leaveGroup(grp, player);
 
 		Reference<Buff*> buff = player->getBuff(String("squadleader").hashCode());
-		if (buff != NULL)
+		if (buff != NULL) {
+			Locker locker(buff);
 			player->removeBuff(buff);
+		}
 
 		if (player->getSkillModList() == NULL)
 			return;

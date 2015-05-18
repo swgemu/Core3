@@ -384,6 +384,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 		if(currentSpawn == NULL)
 			return;
 
+		Locker locker(currentSpawn);
 		addResourceToHopper(currentSpawn->createResource(0));
 	}
 
