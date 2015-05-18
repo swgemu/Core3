@@ -286,12 +286,16 @@ void DroidHarvestModuleDataComponent::handlePetCommand(String cmd, CreatureObjec
 		Locker dlock(droid);
 		uint64 targetID = speaker->getTargetID();
 		Reference<CreatureObject*> target = droid->getZoneServer()->getObject(targetID, true).castTo<CreatureObject*>();
-		// this check should occur in the pet speaking handling.
-		if(!target->isInRange(droid,64)) {
-			speaker->sendSystemMessage("@pet/droid_modules:corpse_too_far");
-			return;
+
+		if (target != NULL) {
+			// this check should occur in the pet speaking handling.
+			if(!target->isInRange(droid,64)) {
+				speaker->sendSystemMessage("@pet/droid_modules:corpse_too_far");
+				return;
+			}
+
+			harvestTargets.add(targetID);
 		}
-		harvestTargets.add(targetID);
 	}
 }
 void DroidHarvestModuleDataComponent::creatureHarvestCheck(CreatureObject* target) {
