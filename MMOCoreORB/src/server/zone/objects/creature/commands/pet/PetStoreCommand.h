@@ -27,7 +27,7 @@ public:
 			return GENERALERROR;
 		}
 		Locker clocker(player, pet);
-
+		Locker locker(controlDevice);
 		controlDevice->storeObject(player);
 
 		return SUCCESS;

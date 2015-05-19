@@ -19,31 +19,39 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.intangible.VehicleControlObserver;
 
 class VehicleControlDevice extends ControlDevice {
-	
+
 	VehicleControlObserver vehicleControlObserver;
-	
+
 	public VehicleControlDevice() {
 		Logger.setLoggingName("VehicleControlDevice");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
-		
 	}
-	
+
+	@preLocked
+	@arg1preLocked
 	public native void storeObject(CreatureObject player, boolean force = false);
-	
+
+	@preLocked
+	@arg1preLocked
 	public native void generateObject(CreatureObject player);
-	
+
+	@preLocked
+	@arg1preLocked
 	public native void spawnObject(CreatureObject player);
-	
+
+	@arg1preLocked
 	public native void cancelSpawnObject(CreatureObject player);
-	
+
+	@preLocked
+	@arg1preLocked
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		Logger.info("selected call");
-		
+
 		TangibleObject controlledObject = super.controlledObject;
-		
+
 		if (selectedID == RadialOptions.VEHICLE_GENERATE) {
-			
+
 			if (controlledObject == null) {
 				Logger.error("null controlled object in vehicle control device");
 				return 1;
@@ -62,18 +70,19 @@ class VehicleControlDevice extends ControlDevice {
 				}
 			}
 		}
-		
+
 		return 0;
 	}
-	
+
 	/**
 	 * Destroys this object from database
 	 * @pre { this is locked }
 	 * @post { this is locked }
 	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
 	 */
+	@preLocked
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-	
+
 	/**
 	 * Checks if the object can be destroyed
 	 * @pre { this is locked }
@@ -95,11 +104,10 @@ class VehicleControlDevice extends ControlDevice {
 	 */
 	@local
 	@dirty
-	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);	
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 
 	@dirty
 	public boolean isVehicleControlDevice() {
 		return true;
 	}
 }
-

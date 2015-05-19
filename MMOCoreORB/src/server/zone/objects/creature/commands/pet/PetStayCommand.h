@@ -32,6 +32,7 @@ public:
 		pet->setOblivious();
 		pet->storeFollowObject();
 
+		Locker clocker(controlDevice, creature);
 		controlDevice->setLastCommand(PetManager::STAY);
 
 		pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);

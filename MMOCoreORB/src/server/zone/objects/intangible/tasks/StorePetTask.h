@@ -53,6 +53,7 @@ public:
 
 		ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 		if( controlDevice != NULL ) {
+			Locker deviceLocker(controlDevice);
 			controlDevice->updateStatus(0);
 			controlDevice->setLastCommandTarget(NULL);
 			controlDevice->setLastCommand(PetManager::FOLLOW);

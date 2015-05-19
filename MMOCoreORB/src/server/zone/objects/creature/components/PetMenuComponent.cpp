@@ -226,6 +226,8 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 	if (petManager == NULL)
 		return 0;
 
+	Locker locker(petControlDevice);
+
 	// Store
 	if (selectedID == 59) {
 		if (pet->getLinkedCreature() != player) {

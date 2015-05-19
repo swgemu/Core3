@@ -37,6 +37,7 @@ public:
 		if (vehicle == NULL)
 			return;
 
+		Locker locker2(device);
 		Locker clocker(vehicle, player);
 		device->spawnObject(player);
 	}

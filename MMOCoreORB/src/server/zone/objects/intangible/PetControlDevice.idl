@@ -31,12 +31,12 @@ class PetControlDevice extends ControlDevice {
 	protected int petType;
 
 	// Trained command strings <commandid, chatstring>
-	@dereferenced 
+	@dereferenced
 	protected VectorMap<unsigned int, string> trainedCommands;
-	
+
 	// Command to be trained
 	protected unsigned int trainingCommand;
-	
+
 	// Last command issued
 	protected unsigned int lastCommand;
 	@weakReference
@@ -55,7 +55,7 @@ class PetControlDevice extends ControlDevice {
 	protected Time lastGrowth;
 
 	protected boolean trainedAsMount;
-	
+
 	@dereferenced
 	protected Vector<unsigned int> namingCommands;
 
@@ -83,18 +83,29 @@ class PetControlDevice extends ControlDevice {
 		trainedCommands.setNullValue("");
 	}
 
+	@preLocked
+	@arg1preLocked
 	public native void storeObject(CreatureObject player, boolean force = false);
-	
+
+	@preLocked
+	@arg1preLocked
 	public native void callObject(CreatureObject player);
 
+	@preLocked
+	@arg1preLocked
 	public native void spawnObject(CreatureObject player);
-	
+
+	@arg1preLocked
 	public native void cancelSpawnObject(CreatureObject player);
 
+	@preLocked
+	@arg1preLocked
 	public native boolean growPet(CreatureObject player, boolean force = false);
 
+	@preLocked
 	public native void arrestGrowth();
 
+	@preLocked
 	public native void trainAsMount(CreatureObject player);
 
 	@read
@@ -102,14 +113,17 @@ class PetControlDevice extends ControlDevice {
 		return trainedAsMount;
 	}
 
+	@preLocked
+	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
-	
+
 	/**
 	 * Destroys this object from database
 	 * @pre { this is locked }
 	 * @post { this is locked }
 	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
 	 */
+	@preLocked
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 
 	public native void destroyObjectFromWorld(boolean sendSelfDestroy);
@@ -142,14 +156,16 @@ class PetControlDevice extends ControlDevice {
 	 * @post { }
 	 */
 	@local
+	@preLocked
 	public native void setDefaultCommands();	
-	
+
 	/**
 	 * Sets default trained commands and command strings for the pet
 	 * @pre { }
 	 * @post { }
-	 */	
+	 */
 	@local
+	@preLocked
 	public native void setTrainingCommand( unsigned int commandID );
 
 	@read
@@ -185,24 +201,27 @@ class PetControlDevice extends ControlDevice {
 		return trainedCommands.get(command);
 	}
 
+	@preLocked
 	public void addTrainedCommand(unsigned int command, final string message) {
 		trainedCommands.put(command, message);
 	}
-	
+
+	@preLocked
 	public void setLastCommand(unsigned int c) {
 		lastCommand = c;
 	}
-	
+
 	@read
 	public unsigned int getLastCommand() {
 		return lastCommand;
 	}
 
 	@local
+	@preLocked
 	public void setLastCommandTarget(SceneObject target) {
 		lastCommandTarget = target;
 	}
-	
+
 	@dirty
 	@local
 	@weakReference
@@ -215,6 +234,7 @@ class PetControlDevice extends ControlDevice {
 		return futureName;
 	}
 
+	@preLocked
 	public void setFutureName(string name) {
 		futureName = name;
 	}
@@ -224,16 +244,19 @@ class PetControlDevice extends ControlDevice {
 		return namingProgress;
 	}
 
+	@preLocked
 	public void incrementNamingProgress(unsigned int command) {
 		namingProgress++;
 		namingCommands.add(command);
 	}
 
+	@preLocked
 	public void resetNamingProgress() {
 		namingProgress = 0;
 		resetNamingCommands();
 	}
 
+	@preLocked
 	native public void resetNamingCommands();
 
 	@dirty
@@ -251,10 +274,12 @@ class PetControlDevice extends ControlDevice {
 		return maxVitality;
 	}
 
+	@preLocked
 	public void setVitality(int vit) {
 		vitality = vit;
 	}
 
+	@preLocked
 	public void setMaxVitality(int vit) {
 		maxVitality = vit;
 	}
@@ -264,10 +289,12 @@ class PetControlDevice extends ControlDevice {
 		return petType;
 	}
 
+	@preLocked
 	public void setPetType(int type) {
 		petType = type;
 	}
 
+	@preLocked
 	public void setGrowthStage(int stage) {
 		growthStage = stage;
 	}
@@ -289,7 +316,7 @@ class PetControlDevice extends ControlDevice {
 	@local
 	@dereferenced
 	public native PatrolPoint getPatrolPoint(int idx);
-	
+
 	@local
 	public native boolean isValidPet();
 }

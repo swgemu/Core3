@@ -20,9 +20,9 @@ public:
 		if (controlledObject == NULL || !controlledObject->isAiAgent())
 			return;
 
-		Locker locker(controlledObject);
-
-		Locker crossLocker(player, controlledObject);
+		Locker locker(player);
+		Locker locker2(pet);
+		Locker crossLocker(controlledObject, player);
 
 		pet->storeObject(player, force);
 	}

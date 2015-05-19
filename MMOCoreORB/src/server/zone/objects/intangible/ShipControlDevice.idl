@@ -15,16 +15,22 @@ class ShipControlDevice extends ControlDevice {
 	public ShipControlDevice() {
 		Logger.setLoggingName("ShipControlDevice");
 	}
-	
+
+	@preLocked
+	@arg1preLocked
 	public native void storeObject(CreatureObject player, boolean force = false);
-	
+
+	@preLocked
+	@arg1preLocked
 	public native void generateObject(CreatureObject player);
-	
+
+	@preLocked
+	@arg1preLocked
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		Logger.info("selected call");
-		
+
 		if (selectedID == RadialOptions.VEHICLE_GENERATE) {
-			
+
 			if (super.controlledObject == null) {
 				Logger.error("null controlled object in vehicle control device");
 				return 1;
@@ -43,10 +49,10 @@ class ShipControlDevice extends ControlDevice {
 				}
 			}
 		}
-		
+
 		return 0;
 	}
-	
+
 	/**
 	 * Fills the radial options, needs to be overriden
 	 * @pre { this object is locked }
