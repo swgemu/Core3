@@ -296,6 +296,11 @@ void DroidHarvestModuleDataComponent::handlePetCommand(String cmd, CreatureObjec
 
 			harvestTargets.add(targetID);
 		}
+		for(int i=0;i<harvestTargets.size();i++){
+			if (harvestTargets.get(i) == targetID)
+				return;
+		}
+		harvestTargets.add(targetID);
 	}
 }
 void DroidHarvestModuleDataComponent::creatureHarvestCheck(CreatureObject* target) {
@@ -311,8 +316,13 @@ void DroidHarvestModuleDataComponent::creatureHarvestCheck(CreatureObject* targe
 	if(!target->isCreature()) {
 		return;
 	}
+	uint64 targetID = target->getObjectID();
 	// add to target list, call command
-	harvestTargets.add(target->getObjectID());
+	for(int i=0;i<harvestTargets.size();i++){
+		if (harvestTargets.get(i) == targetID)
+			return;
+	}
+	harvestTargets.add(targetID);
 }
 void DroidHarvestModuleDataComponent::harvestDestinationReached() {
 	// No-Op

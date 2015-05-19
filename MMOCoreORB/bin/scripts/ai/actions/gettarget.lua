@@ -11,6 +11,7 @@ function GetTargetBase:checkConditions(pAgent)
 			local agent = AiAgent(pAgent)
 			agent:clearCombatState(true)
 			agent:setOblivious()
+			agent:info("check conditions target for skipped dead target")
 			return false
 		end
 

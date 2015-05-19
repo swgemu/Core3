@@ -38,7 +38,7 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 		msg->insertAttribute("customization_cnt", paintCount);
 	}
 	// only the owner should see module stats. AiAgent will fill in normal stuff
-	if (getLinkedCreature().get() == object) {
+	if (getLinkedCreature().get() == object || getLinkedCreature().get() == NULL || object == NULL) {
 		for( int i=0; i<modules.size(); i++){
 			BaseDroidModuleComponent* module = modules.get(i);
 			if( module != NULL ){

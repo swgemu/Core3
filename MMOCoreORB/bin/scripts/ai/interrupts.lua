@@ -51,7 +51,20 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 	local creoAgent = CreatureObject1(pAgent)
 	local aiAgent = AiAgent1(pAgent)
 
-	if tanoAgent:getPvpStatusBitmask() == NONE or creoAgent:isDead() or creoAgent:isIncapacitated() then return false end
+	if tanoAgent:getPvpStatusBitmask() == NONE or creoAgent:isDead() or creoAgent:isIncapacitated() then
+	 if creoAgent:isDead() then 
+	   --AiAgent(pAgent):info("Creo is dead ")
+	   return false 
+	 end
+	 if creoAgent:isIncapacitated() then 
+	   --AiAgent(pAgent):info("Creo is incapped ")
+	   return false 	 
+	 end
+	 if tanoAgent:getPvpStatusBitmask() == NONE and creoAgent:isDroidPet() == false then 
+	   --AiAgent(pAgent):info("Not bitmask ")
+	   return false 
+	 end
+	end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed self bitmask checks") end
 	if aiAgent:getNumberOfPlayersInRange() <= 0  or aiAgent:isRetreating() or aiAgent:isFleeing() or aiAgent:isInCombat() then return false	end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed playersInRange, retreat, flee, and inCombat checks") end
@@ -89,7 +102,10 @@ function DefaultInterrupt:doAwarenessCheck(pAgent, pObject)
 
 	local tanoObject = TangibleObject2(pObject)
 
-	if tanoObject:getPvpStatusBitmask() == NONE or creoObject:isDead() or creoObject:isIncapacitated() then return false end
+	if tanoObject:getPvpStatusBitmask() == NONE or creoObject:isDead() or creoObject:isIncapacitated() then 
+	   -- need a case here for harvet droids
+	   return false 
+	end
 	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target bitmask checks") end
 
 	-- if not in combat, ignore creatures in different cells
@@ -354,7 +370,6 @@ function DroidPetInterrupt:startCombatInterrupt(pAgent, pObject)
 	local agent = AiAgent(pAgent)
 	if agent:getOwner() ~= pObject then return end -- this is where the friend checks will go
 	DefaultInterrupt:startCombatInterrupt(pAgent, pObject)
-
 	--recover our pointer to agent
 	agent = AiAgent(pAgent)
 	agent:setBehaviorStatus(BEHAVIOR_SUSPEND)

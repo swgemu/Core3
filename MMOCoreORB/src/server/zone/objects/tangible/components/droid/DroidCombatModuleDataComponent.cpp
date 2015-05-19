@@ -40,7 +40,7 @@ void DroidCombatModuleDataComponent::fillAttributeList(AttributeListMessage* alm
 		return;
 	}
 	// lets make a pcd
-	int maxHam = droid->getMaxHAM(0);
+	int maxHam = droid->getMaximumHAM();
 	int damageMin = droid->getDamageMin();
 	int damageMax = droid->getDamageMax();
 	float chanceHit = droid->getChanceHit();

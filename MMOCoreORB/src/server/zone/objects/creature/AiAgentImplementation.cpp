@@ -1740,12 +1740,10 @@ float AiAgentImplementation::getMaxDistance() {
 int AiAgentImplementation::setDestination() {
 	ManagedReference<SceneObject*> followCopy = getFollowObject();
 	unsigned int stateCopy = getFollowState();
-
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
 		if (followCopy != NULL)
 			setOblivious();
-
 		clearPatrolPoints();
 
 		if (!homeLocation.isInRange(_this.get(), 1.5)) {
@@ -1806,7 +1804,6 @@ int AiAgentImplementation::setDestination() {
 		}
 
 		clearPatrolPoints();
-
 		setNextPosition(followCopy->getPositionX(), followCopy->getPositionZ(), followCopy->getPositionY(), followCopy->getParent().get());
 		break;
 	default:
@@ -2948,7 +2945,6 @@ void AiAgentImplementation::restoreFollowObject() {
 	Locker locker(&targetMutex);
 	ManagedReference<SceneObject*> obj = followStore.get();
 	locker.release();
-
 	if (obj == NULL) {
 		setOblivious();
 	} else if (getCloseObjects() != NULL && !getCloseObjects()->contains(obj.get())) {
