@@ -19,21 +19,21 @@ include server.zone.objects.scene.variables.ContainerPermissions;
 class ControlDevice extends IntangibleObject {
 	@weakReference
 	protected TangibleObject controlledObject;
-	
+
 	public ControlDevice() {
 		controlledObject = null;
-		
+
 		Logger.setLoggingName("ControlDevice");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
-		
+
 		super.getContainerPermissions().setInheritPermissionsFromParent(true);
 
 		ContainerPermissions permissions = super.getContainerPermissions();
 		permissions.clearDefaultDenyPermission(ContainerPermissions.MOVECONTAINER);
 		permissions.clearDenyPermission("owner", ContainerPermissions.MOVECONTAINER);
 	}
-	
+
 	/**
 	 * Updates this object to database (calls updatesToDatabaseAllObjects())
 	 * @pre { this object is locked }
@@ -42,24 +42,24 @@ class ControlDevice extends IntangibleObject {
 	 */
 	public void updateToDatabaseAllObjects(boolean startTask) {
 		TangibleObject obj = controlledObject;
-		
+
 		if (obj != null) {
 			obj.updateToDatabaseWithoutChildren();
-			
+
 			super.updateToDatabaseAllObjects(startTask);
 		} else {
 			super.updateToDatabaseAllObjects(startTask);
 		}
 	}
-	
+
 	public abstract void storeObject(CreatureObject player, boolean force = false) {
 		Logger.error("called storeObject on an abstract method");
 	}
-	
+
 	public abstract void generateObject(CreatureObject player) {
 		Logger.error("called generateObject on an abstract method");
 	}
-	
+
 	public abstract void callObject(CreatureObject player) {
 		Logger.error("called callObject on an abstract method");
 	}
@@ -69,16 +69,17 @@ class ControlDevice extends IntangibleObject {
 		return false;
 	}
 
+	@preLocked
 	public void setControlledObject(TangibleObject object) {
 		controlledObject = object;
 	}
-	
+
 	@dirty
 	public TangibleObject getControlledObject() {
 		TangibleObject obj = controlledObject;
 		return obj;
 	}
-	
+
 	@dirty
 	public boolean isControlDevice() {
 		return true;

@@ -1579,6 +1579,8 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 		return 1;
 	}
 
+	Locker locker(controlDevice);
+
 	ManagedReference<TangibleObject*> controlledObject = NULL;
 	ManagedReference<CreatureObject*> player = (datapad->getParent().get()).castTo<CreatureObject*>();
 
@@ -1601,6 +1603,8 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 			return 1;
 		}
 
+		Locker locker2(controlledObject);
+
 		if (!controlledObject->isAiAgent()) {
 			controlDevice->destroyObjectFromDatabase(true);
 			controlledObject->destroyObjectFromDatabase(true);
@@ -1619,6 +1623,8 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 			lua_pushnil(L);
 			return 1;
 		}
+
+		Locker locker2(controlledObject);
 
 		SharedObjectTemplate* temp = controlledObject->getObjectTemplate();
 		controlledObject->loadTemplateData(temp);

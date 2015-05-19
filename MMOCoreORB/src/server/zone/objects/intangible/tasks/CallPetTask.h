@@ -26,6 +26,7 @@ public:
 		if(player->isInCombat())
 			return;
 
+		Locker locker2(device);
 		Locker clocker(device->getControlledObject(), player);
 		device->spawnObject(player);
 	}

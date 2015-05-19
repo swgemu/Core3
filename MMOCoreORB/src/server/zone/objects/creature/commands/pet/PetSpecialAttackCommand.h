@@ -47,6 +47,8 @@ public:
 		if (attackNumber < 1 || attackNumber > 2)
 			return INVALIDPARAMETERS;
 
+		Locker clocker(controlDevice, creature);
+
 		switch (attackNumber) {
 		case 1:
 			controlDevice->setLastCommand(PetManager::SPECIAL_ATTACK1);
