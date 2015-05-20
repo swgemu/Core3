@@ -518,7 +518,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 		}
 	}
 
-	if (numberOfPlayersInRange.get() > 0) {
+	if (numberOfPlayersInRange.get() > 0 || isPet()) {
 		activateAwarenessEvent();
 	}
 }
@@ -1196,7 +1196,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 					despawnEvent->schedule(30000);
 				}
 
-				if (awarenessEvent != NULL) {
+				if (awarenessEvent != NULL && !isPet()) {
 					awarenessEvent->cancel();
 					awarenessEvent = NULL;
 				}
@@ -1932,12 +1932,15 @@ void AiAgentImplementation::activateMovementEvent() {
 		moveEvent->cancel();
 
 	if ((waitTime < 0 || numberOfPlayersInRange.get() <= 0) && getFollowObject() == NULL && !isRetreating()) {
-		if (moveEvent != NULL) {
-			moveEvent->clearCreatureObject();
-			moveEvent = NULL;
+		if(!isPet()) {
+			// pets getting out of range of thier owner chasing at distance, will cause the pet to stop moving since no players are in range.
+			// this check prevents pets from just stopping at a certain distance from the player.
+			if (moveEvent != NULL) {
+				moveEvent->clearCreatureObject();
+				moveEvent = NULL;
+			}
+			return;
 		}
-
-		return;
 	}
 
 	if (moveEvent == NULL) {
