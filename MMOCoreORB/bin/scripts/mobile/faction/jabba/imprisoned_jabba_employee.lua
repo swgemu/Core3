@@ -38,8 +38,7 @@ imprisoned_jabba_employee = Creature:new {
 				{group = "clothing_attachments", chance = 200000},
 				{group = "armor_attachments", chance = 200000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2500000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_light"},

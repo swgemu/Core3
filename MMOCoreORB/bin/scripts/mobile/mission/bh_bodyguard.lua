@@ -44,7 +44,7 @@ bh_bodyguard = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "wearables_common", chance = 1000000}
 			},
-			lootChance = 4500000
+			lootChance = 3140000
 		}
 	},
 	weapons = {"rebel_weapons_light"},

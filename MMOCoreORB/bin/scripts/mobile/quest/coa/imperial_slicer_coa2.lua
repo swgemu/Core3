@@ -30,7 +30,18 @@ imperial_slicer_coa2 = Creature:new {
 		"object/mobile/dressed_criminal_pirate_human_male_01.iff",
 		"object/mobile/dressed_criminal_slicer_human_female_01.iff"
 	},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+			}
+		}
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(brawlermid,marksmanmid)

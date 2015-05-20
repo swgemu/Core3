@@ -39,8 +39,7 @@ imperial_cadet_squadleader = Creature:new {
 				{group = "clothing_attachments", chance = 50000},
 				{group = "armor_attachments", chance = 50000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2200000
+			}
 		}
 	},
 	weapons = {"ranged_weapons"},
