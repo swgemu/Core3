@@ -1196,7 +1196,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 					despawnEvent->schedule(30000);
 				}
 
-				if (awarenessEvent != NULL) {
+				if (awarenessEvent != NULL && !isPet()) {
 					awarenessEvent->cancel();
 					awarenessEvent = NULL;
 				}
@@ -1936,7 +1936,6 @@ void AiAgentImplementation::activateMovementEvent() {
 			moveEvent->clearCreatureObject();
 			moveEvent = NULL;
 		}
-
 		return;
 	}
 
