@@ -34,7 +34,7 @@ public:
 	}
 
 	void run() {
-		if( module == NULL) {
+		if( module == NULL || player == NULL) {
 			return;
 		}
 
@@ -49,8 +49,8 @@ public:
 		// Check if droid is spawned
 		if( droid->getLocalZone() == NULL ){  // Not outdoors
 
-			ManagedWeakReference<SceneObject*> parent = droid->getParent();
-			if( parent == NULL || !parent.get()->isCellObject() ){ // Not indoors either
+			ManagedReference<SceneObject*> parent = droid->getParent().get();
+			if( parent == NULL || !parent->isCellObject() ){ // Not indoors either
 				droid->removePendingTask("droid_detonation");
 				return;
 			}
@@ -62,7 +62,7 @@ public:
 			return;
 		}
 		// check your the owner of the droid
-		if(droid->getLinkedCreature() != player) {
+		if(droid->getLinkedCreature().get() != player) {
 			player->sendSystemMessage("@pet/droid_modules:must_be_owner_droid_bomb");
 			droid->removePendingTask("droid_detonation");
 			return;
@@ -186,15 +186,15 @@ public:
 					}
 				}
 				droid->removePendingTask("droid_detonation");
+
+				Locker clocker(player, droid);
+
 				// nuke the droid from the world
 				ManagedReference<PetControlDevice*> petControlDevice = droid->getControlDevice().get().castTo<PetControlDevice*>();
 				if (petControlDevice != NULL) {
-					ManagedReference<CreatureObject*> owner = droid->getZoneServer()->getObject(droid->getCreatureLinkID()).castTo<CreatureObject*>();
-					if (owner != NULL) {
-						Locker ownerLocker(owner, droid);
+					Locker deviceLocker(petControlDevice);
 
-						petControlDevice->storeObject(owner, true);
-					}
+					petControlDevice->storeObject(player, true);
 
 					petControlDevice->destroyObjectFromWorld(true);
 					petControlDevice->destroyObjectFromDatabase(true);
