@@ -37,7 +37,7 @@ jawa = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "color_crystals", chance = 200000}
 			},
-			lootChance = 2000000
+			lootChance = 2120000
 		}
 	},
 	weapons = {"rebel_weapons_light"},

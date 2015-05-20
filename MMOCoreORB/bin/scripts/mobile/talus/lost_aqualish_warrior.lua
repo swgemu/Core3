@@ -38,7 +38,7 @@ lost_aqualish_warrior = Creature:new {
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000}
 			},
-			lootChance = 2200000
+			lootChance = 2260000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

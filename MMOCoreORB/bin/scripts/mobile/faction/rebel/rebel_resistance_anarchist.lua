@@ -42,7 +42,7 @@ rebel_resistance_anarchist = Creature:new {
 				{group = "carbines", chance = 1000000},
 				{group = "wearables_common", chance = 1000000}
 			},
-			lootChance = 2200000
+			lootChance = 2180000
 		}
 	},
 	weapons = {"rebel_weapons_light"},

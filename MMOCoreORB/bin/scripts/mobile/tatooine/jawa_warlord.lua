@@ -37,7 +37,7 @@ jawa_warlord = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "color_crystals", chance = 200000}
 			},
-			lootChance = 2900000
+			lootChance = 2240000
 		}
 	},
 	weapons = {"jawa_warlord_weapons"},

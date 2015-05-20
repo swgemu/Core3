@@ -42,7 +42,7 @@ kelvus_criminal = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "wearables_common", chance = 2000000}
 			},
-			lootChance = 2000000
+			lootChance = 2140000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

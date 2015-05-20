@@ -36,7 +36,7 @@ rsf_commando = Creature:new {
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
-			lootChance = 3200000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

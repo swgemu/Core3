@@ -37,7 +37,7 @@ binayre_ruffian = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "binayre_common", chance = 4550000}
 			},
-			lootChance = 2200000
+			lootChance = 2260000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

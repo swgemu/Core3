@@ -37,7 +37,7 @@ rorgungan_commoner = Creature:new {
 				{group = "color_crystals", chance = 250000},
 				{group = "crystals_poor", chance = 250000}
 			},
-			lootChance = 3200000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

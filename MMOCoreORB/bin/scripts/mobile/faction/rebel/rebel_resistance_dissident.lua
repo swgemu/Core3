@@ -42,7 +42,7 @@ rebel_resistance_dissident = Creature:new {
 				{group = "carbines", chance = 1000000},
 				{group = "wearables_common", chance = 1000000}
 			},
-			lootChance = 2100000
+			lootChance = 2120000
 		}
 	},
 	weapons = {"rebel_weapons_light"},

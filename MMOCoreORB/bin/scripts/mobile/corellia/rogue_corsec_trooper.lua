@@ -36,7 +36,7 @@ rogue_corsec_trooper = Creature:new {
 				{group = "corsec_weapons", chance = 2500000},
 				{group = "tailor_components", chance = 1500000}
 			},
-			lootChance = 3000000
+			lootChance = 2140000
 		}
 	},
 	weapons = {"ranged_weapons"},

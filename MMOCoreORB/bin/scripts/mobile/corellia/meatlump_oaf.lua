@@ -49,7 +49,7 @@ meatlump_oaf = Creature:new {
 				{group = "tailor_components", chance = 500000},
 				{group = "meatlump_common", chance = 5000000}
 			},
-			lootChance = 2200000
+			lootChance = 2180000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

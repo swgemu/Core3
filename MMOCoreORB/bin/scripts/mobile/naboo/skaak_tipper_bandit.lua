@@ -37,7 +37,7 @@ skaak_tipper_bandit = Creature:new {
 				{group = "printer_parts", chance = 1000000},
 				{group = "skaak_tipper_common", chance = 1000000},
 			},
-			lootChance = 2200000
+			lootChance = 2160000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

@@ -37,7 +37,7 @@ rorgungan_scout = Creature:new {
 				{group = "color_crystals", chance = 250000},
 				{group = "crystals_poor", chance = 250000}
 			},
-			lootChance = 3200000
+			lootChance = 2240000
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},

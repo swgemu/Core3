@@ -37,7 +37,7 @@ corsec_investigator = Creature:new {
 				{group = "wearables_common", chance = 2000000},
 				{group = "tailor_components", chance = 1500000}
 			},
-			lootChance = 3000000
+			lootChance = 2300000
 		}
 	},
 	weapons = {"corsec_police_weapons"},

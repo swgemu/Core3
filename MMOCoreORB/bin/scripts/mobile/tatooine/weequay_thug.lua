@@ -37,7 +37,7 @@ weequay_thug = Creature:new {
 				{group = "printer_parts", chance = 1000000},
 				{group = "weequay_common", chance = 500000}
 			},
-			lootChance = 2100000
+			lootChance = 2180000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

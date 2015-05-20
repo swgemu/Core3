@@ -35,7 +35,7 @@ gungan_mercenary = Creature:new {
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
-			lootChance = 3200000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"rebel_weapons_medium"},

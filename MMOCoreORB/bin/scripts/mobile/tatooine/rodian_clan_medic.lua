@@ -36,7 +36,7 @@ rodian_clan_medic = Creature:new {
 				{group = "tailor_components", chance = 1000000},
 				{group = "carbines", chance = 2000000}
 			},
-			lootChance = 3000000
+			lootChance = 2140000
 		}
 	},
 	weapons = {"rebel_weapons_medium"},

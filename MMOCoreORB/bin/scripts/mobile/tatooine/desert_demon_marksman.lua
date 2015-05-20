@@ -37,7 +37,7 @@ desert_demon_marksman = Creature:new {
 				{group = "printer_parts", chance = 1000000},
 				{group = "desert_demon_common", chance = 1500000}
 			},
-			lootChance = 2200000
+			lootChance = 2260000
 		}
 	},
 	weapons = {"ranged_weapons"},

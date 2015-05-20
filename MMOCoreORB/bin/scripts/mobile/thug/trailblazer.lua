@@ -41,7 +41,7 @@ trailblazer = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "tailor_components", chance = 1000000},
 			},
-			lootChance = 3000000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"rebel_weapons_medium"},

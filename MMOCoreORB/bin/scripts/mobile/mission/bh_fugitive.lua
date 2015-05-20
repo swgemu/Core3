@@ -36,7 +36,7 @@ bh_fugitive = Creature:new {
 				{group = "tailor_components", chance = 1000000},
 				{group = "pistols", chance = 2000000}
 			},
-			lootChance = 4000000
+			lootChance = 3140000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

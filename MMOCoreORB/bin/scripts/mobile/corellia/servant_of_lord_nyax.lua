@@ -36,7 +36,7 @@ servant_of_lord_nyax = Creature:new {
 				{group = "pistols", chance = 4000000},
 				{group = "rifles", chance = 4000000},
 			},
-			lootChance = 3300000
+			lootChance = 2160000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

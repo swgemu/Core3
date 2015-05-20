@@ -36,7 +36,7 @@ swooper = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "printer_parts", chance = 1000000},
 			},
-			lootChance = 2000000
+			lootChance = 2040000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

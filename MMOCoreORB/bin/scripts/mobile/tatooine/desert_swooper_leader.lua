@@ -36,7 +36,7 @@ desert_swooper_leader = Creature:new {
 				{group = "printer_parts", chance = 1000000},
 				{group = "desert_swooper_common", chance = 2000000}
 			},
-			lootChance = 2200000
+			lootChance = 2140000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

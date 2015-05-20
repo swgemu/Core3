@@ -39,7 +39,7 @@ aakuan_steward = Creature:new {
 				{group = "carbines", chance = 300000},
 				{group = "pistols", chance = 300000}
 			},
-			lootChance = 2200000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"melee_weapons"},

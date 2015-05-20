@@ -41,7 +41,7 @@ imperial_noncom = Creature:new {
 				{group = "armor_attachments", chance = 25000},
 				{group = "wearables_common", chance = 1000000}
 			},
-			lootChance = 2800000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"imperial_weapons_light"},

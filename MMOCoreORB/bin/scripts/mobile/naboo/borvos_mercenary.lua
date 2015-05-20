@@ -38,7 +38,7 @@ borvos_mercenary = Creature:new {
 				{group = "carbines", chance = 500000},
 				{group = "borvos_common", chance = 2800000}
 			},
-			lootChance = 2400000
+			lootChance = 2240000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

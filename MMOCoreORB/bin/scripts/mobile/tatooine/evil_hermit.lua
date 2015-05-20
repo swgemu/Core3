@@ -36,7 +36,7 @@ evil_hermit = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "printer_parts", chance = 1000000},
 			},
-			lootChance = 2200000
+			lootChance = 2120000
 		}
 	},
 	weapons = {"rebel_weapons_light"},

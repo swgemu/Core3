@@ -34,7 +34,7 @@ plasma_thief = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "plasma_thief_common", chance = 1000000},
 			},
-			lootChance = 3200000
+			lootChance = 2060000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

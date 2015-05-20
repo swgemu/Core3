@@ -37,7 +37,7 @@ desert_demon_brawler = Creature:new {
 				{group = "printer_parts", chance = 1000000},
 				{group = "desert_demon_common", chance = 1500000}
 			},
-			lootChance = 2200000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

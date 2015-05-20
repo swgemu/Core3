@@ -37,7 +37,7 @@ valarian_scout = Creature:new {
 				{group = "printer_parts", chance = 1500000},
 				{group = "valarian_common", chance = 1500000}
 			},
-			lootChance = 2200000
+			lootChance = 2180000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

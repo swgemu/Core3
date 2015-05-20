@@ -36,7 +36,7 @@ mauler_acolyte = Creature:new {
 				{group = "carbines", chance = 1000000},
 				{group = "mauler_common", chance = 2000000}
 			},
-			lootChance = 2400000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

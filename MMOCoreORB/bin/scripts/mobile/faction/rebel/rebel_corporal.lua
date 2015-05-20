@@ -46,7 +46,7 @@ rebel_corporal = Creature:new {
 				{group = "armor_attachments", chance = 100000},
 				{group = "wearables_common", chance = 1000000}
 			},
-			lootChance = 2400000
+			lootChance = 2300000
 		}
 	},
 	weapons = {"rebel_weapons_light"},

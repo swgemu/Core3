@@ -33,7 +33,17 @@ warren_imperial_worker = Creature:new {
 		"object/mobile/warren_imperial_worker_s04.iff",
 		"object/mobile/warren_imperial_worker_s05.iff",
 		"object/mobile/warren_imperial_worker_s06.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 3000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
+			},
+			lootChance = 2260000
+		}
+	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = merge(brawlermid,marksmanmid)

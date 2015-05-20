@@ -37,7 +37,7 @@ kobola_smuggler = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "kobola_common", chance = 3600000}
 			},
-			lootChance = 2400000
+			lootChance = 2200000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

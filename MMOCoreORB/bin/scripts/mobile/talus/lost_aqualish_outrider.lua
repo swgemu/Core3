@@ -38,7 +38,7 @@ lost_aqualish_outrider = Creature:new {
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000}
 			},
-			lootChance = 2200000
+			lootChance = 2240000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

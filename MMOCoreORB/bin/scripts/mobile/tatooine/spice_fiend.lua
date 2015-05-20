@@ -35,7 +35,7 @@ spice_fiend = Creature:new {
 				{group = "tailor_components", chance = 1000000},
 				{group = "pistols", chance = 2000000}
 			},
-			lootChance = 3000000
+			lootChance = 2160000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

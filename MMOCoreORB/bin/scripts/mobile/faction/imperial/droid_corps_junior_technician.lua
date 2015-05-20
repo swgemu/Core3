@@ -40,7 +40,7 @@ droid_corps_junior_technician = Creature:new {
 				{group = "armor_attachments", chance = 325000},
 				{group = "wearables_common", chance = 1000000}
 			},
-			lootChance = 2800000
+			lootChance = 2200000
 		}
 	},
 	weapons = {"imperial_weapons_light"},

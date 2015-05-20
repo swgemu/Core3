@@ -34,7 +34,7 @@ bandit = Creature:new {
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
-			lootChance = 2100000
+			lootChance = 2160000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

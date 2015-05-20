@@ -34,7 +34,7 @@ xaan_bandit = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "wearables_common", chance = 1500000}
 			},
-			lootChance = 2100000
+			lootChance = 2160000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

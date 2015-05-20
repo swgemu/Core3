@@ -43,7 +43,7 @@ naboo_pirate_cutthroat = Creature:new {
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
-			lootChance = 3200000
+			lootChance = 2220000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

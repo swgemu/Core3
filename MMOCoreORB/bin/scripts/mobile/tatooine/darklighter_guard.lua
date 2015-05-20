@@ -27,7 +27,18 @@ darklighter_guard = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/darklight_guard.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 2000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000}
+			},
+			lootChance = 2180000
+		}
+	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",

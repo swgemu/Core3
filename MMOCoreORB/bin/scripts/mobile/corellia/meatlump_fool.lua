@@ -49,7 +49,7 @@ meatlump_fool = Creature:new {
 				{group = "tailor_components", chance = 500000},
 				{group = "meatlump_common", chance = 5000000}
 			},
-			lootChance = 2200000
+			lootChance = 2120000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

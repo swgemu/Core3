@@ -36,7 +36,7 @@ wookiee_brawler = Creature:new {
 				{group = "melee_weapons", chance = 1000000},
 				{group = "carbines", chance = 1000000},
 			},
-			lootChance = 2600000
+			lootChance = 2140000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

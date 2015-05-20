@@ -40,7 +40,7 @@ apprentice_creature_handler = Creature:new {
 				{group = "armor_attachments", chance = 100000},
 				{group = "wearables_common", chance = 1000000}
 			},
-			lootChance = 3000000
+			lootChance = 2240000
 		}
 	},
 	weapons = {"rebel_weapons_light"},

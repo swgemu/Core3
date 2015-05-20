@@ -36,7 +36,7 @@ talus_liberation_party_patriot = Creature:new {
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000}
 			},
-			lootChance = 2200000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

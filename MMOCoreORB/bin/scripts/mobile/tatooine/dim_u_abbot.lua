@@ -36,7 +36,7 @@ dim_u_abbot = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "dim_u_common", chance = 500000}
 			},
-			lootChance = 2200000
+			lootChance = 2220000
 		}
 	},
 	weapons = {},

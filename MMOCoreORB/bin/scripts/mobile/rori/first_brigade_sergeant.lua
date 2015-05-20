@@ -39,7 +39,7 @@ first_brigade_sergeant = Creature:new {
 				{group = "pistols", chance = 1000000},
 				{group = "loot_kit_parts", chance = 500000}
 			},
-			lootChance = 3200000
+			lootChance = 2200000
 		}
 	},
 	weapons = {"rebel_weapons_medium"},

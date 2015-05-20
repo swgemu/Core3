@@ -36,7 +36,7 @@ trade_federation_loyalist = Creature:new {
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
-			lootChance = 4800000
+			lootChance = 2240000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

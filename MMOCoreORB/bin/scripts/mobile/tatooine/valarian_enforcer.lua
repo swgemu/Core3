@@ -37,7 +37,7 @@ valarian_enforcer = Creature:new {
 				{group = "printer_parts", chance = 1500000},
 				{group = "valarian_common", chance = 1500000}
 			},
-			lootChance = 2300000
+			lootChance = 2240000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

@@ -35,7 +35,7 @@ rebel_gungan_kaadu_rider = Creature:new {
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
-			lootChance = 3200000
+			lootChance = 2300000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

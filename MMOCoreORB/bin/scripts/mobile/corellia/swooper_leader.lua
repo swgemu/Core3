@@ -37,7 +37,7 @@ swooper_leader = Creature:new {
 				{group = "swooper_common", chance = 2000000}
 
 			},
-			lootChance = 2200000
+			lootChance = 2240000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

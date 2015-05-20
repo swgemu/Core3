@@ -37,7 +37,7 @@ jabba_thief = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "jabba_common", chance = 1500000}
 			},
-			lootChance = 2200000
+			lootChance = 2180000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

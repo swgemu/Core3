@@ -35,7 +35,7 @@ dervish = Creature:new {
 				{group = "tailor_components", chance = 1000000},
 				{group = "carbines", chance = 2000000}
 			},
-			lootChance = 3000000
+			lootChance = 2180000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

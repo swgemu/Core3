@@ -35,7 +35,7 @@ naboo_holy_man = Creature:new {
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
-			lootChance = 3200000
+			lootChance = 2100000
 		}
 	},
 	weapons = {"rebel_weapons_light"},

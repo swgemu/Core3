@@ -38,7 +38,7 @@ comm_operator = Creature:new {
 				{group = "armor_attachments", chance = 150000},
 				{group = "wearables_common", chance = 1000000}
 			},
-			lootChance = 2200000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"imperial_weapons_light"},

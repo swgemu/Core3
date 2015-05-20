@@ -36,7 +36,7 @@ theme_park_rebel_iris = Creature:new {
 				{group = "color_crystals", chance = 100000},
 				{group = "tailor_components", chance = 1500000}
 			},
-			lootChance = 2100000
+			lootChance = 2200000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

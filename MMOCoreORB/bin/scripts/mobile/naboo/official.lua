@@ -34,7 +34,7 @@ official = Creature:new {
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 4000000}
 			},
-			lootChance = 4800000
+			lootChance = 2100000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

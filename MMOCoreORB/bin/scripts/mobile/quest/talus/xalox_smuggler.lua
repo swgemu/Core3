@@ -35,7 +35,7 @@ xalox_smuggler = Creature:new {
 			{group = "melee_weapons", chance = 1000000},
 			{group = "carbines", chance = 1000000},
 		},
-			lootChance = 2100000
+			lootChance = 2280000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

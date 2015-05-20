@@ -40,7 +40,7 @@ sleemo_delinquent = Creature:new {
 				{group = "printer_parts", chance = 1000000},
 				{group = "loot_kit_parts", chance = 1000000},
 			},
-			lootChance = 2200000
+			lootChance = 2140000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

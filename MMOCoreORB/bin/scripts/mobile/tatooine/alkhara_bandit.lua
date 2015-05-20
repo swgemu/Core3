@@ -37,7 +37,7 @@ alkhara_bandit = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "alkhara_common", chance = 450000}
 			},
-			lootChance = 2200000
+			lootChance = 2260000
 		}
 	},
 	weapons = {"ranged_weapons"},

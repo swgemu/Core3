@@ -35,7 +35,7 @@ nomad = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "printer_parts", chance = 1000000},
 			},
-			lootChance = 2000000
+			lootChance = 2100000
 		}
 	},
 	weapons = {"rebel_weapons_light"},

@@ -38,7 +38,7 @@ swooper_gangmember = Creature:new {
 				{group = "printer_parts", chance = 1000000},
 				{group = "swooper_common", chance = 2000000}
 			},
-			lootChance = 2200000
+			lootChance = 2180000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

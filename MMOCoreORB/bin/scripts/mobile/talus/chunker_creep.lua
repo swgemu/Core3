@@ -48,7 +48,7 @@ chunker_creep = Creature:new {
 				{group = "carbines", chance = 700000},
 				{group = "chunker_common", chance = 6000000},
 			},
-			lootChance = 3500000
+			lootChance = 2180000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

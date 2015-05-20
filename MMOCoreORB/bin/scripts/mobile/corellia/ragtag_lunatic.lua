@@ -46,7 +46,7 @@ ragtag_lunatic = Creature:new {
 				{group = "crystals_poor", chance = 500000},
 				{group = "tailor_components", chance = 1000000}
 			},
-			lootChance = 3200000
+			lootChance = 2140000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
