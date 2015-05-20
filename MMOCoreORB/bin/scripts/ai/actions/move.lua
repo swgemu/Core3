@@ -47,11 +47,41 @@ function MoveBase:findNextPosition(pAgent)
 end
 
 Move = createClass(MoveBase, Interrupt)
+MovePetBase = createClass(MoveBase, Interrupt)
+
+function MovePetBase:doAction(pAgent)
+  if (pAgent ~= nil) then
+    local agent = AiAgent1(pAgent)
+    
+    if (agent:getCurrentSpeed() > 0) then 
+      agent:completeMove()
+    end
+    local Ptarget = agent:getFollowObject()
+    
+    if (Ptarget ~= nil and not agent:checkRange(Ptarget,156)) then
+      local scno = SceneObject1(Ptarget)
+      if (scno ~= nil) then
+        SceneObject2(pAgent):teleport(scno:getPositionX(), scno:getPositionZ(), scno:getPositionY(), scno:getParentID())
+        return BEHAVIOR_SUCCESS    
+      end    
+    end
+    
+    if (self:findNextPosition(pAgent)) then
+      return BEHAVIOR_RUNNING
+    else
+      return BEHAVIOR_SUCCESS
+    end
+  end
+  return BEHAVIOR_FAILURE
+end
+
+
+
 MoveDefault = createClass(MoveBase, DefaultInterrupt)
 MovePack = createClass(MoveBase, PackInterrupt)
-MoveCreaturePet = createClass(MoveBase, CreaturePetInterrupt)
-MoveDroidPet = createClass(MoveBase, DroidPetInterrupt)
-MoveFactionPet = createClass(MoveBase, FactionPetInterrupt)
+MoveCreaturePet = createClass(MovePetBase, CreaturePetInterrupt)
+MoveDroidPet = createClass(MovePetBase, DroidPetInterrupt)
+MoveFactionPet = createClass(MovePetBase, FactionPetInterrupt)
 
 function MoveCreaturePet:checkConditions(pAgent)
 	if (pAgent ~= nil) then
@@ -64,6 +94,7 @@ function MoveCreaturePet:checkConditions(pAgent)
 	end
 	return false
 end
+
 
 function MoveDroidPet:checkConditions(pAgent)
 	if (pAgent ~= nil) then
