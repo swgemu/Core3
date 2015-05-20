@@ -34,8 +34,7 @@ mauler_apprentice = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "carbines", chance = 1000000},
 				{group = "mauler_common", chance = 2000000}
-			},
-			lootChance = 2400000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

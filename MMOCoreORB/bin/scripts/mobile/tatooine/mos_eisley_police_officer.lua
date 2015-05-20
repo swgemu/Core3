@@ -42,7 +42,18 @@ mos_eisley_police_officer = Creature:new {
 		"object/mobile/dressed_eisley_officer_twilek_male_01.iff",
 		"object/mobile/dressed_eisley_officer_zabrak_female_01.iff",
 		"object/mobile/dressed_eisley_officer_zabrak_male_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 5000000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "wearables_common", chance = 1000000}
+			}
+		}
+	},
 	weapons = {"imperial_weapons_light"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",

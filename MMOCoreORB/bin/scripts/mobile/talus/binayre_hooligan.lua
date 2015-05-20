@@ -36,8 +36,7 @@ binayre_hooligan = Creature:new {
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "binayre_common", chance = 4550000}
-			},
-			lootChance = 2200000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_light"},

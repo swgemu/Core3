@@ -34,7 +34,7 @@ gondula_cub = Creature:new {
 			groups = {
 				{group = "ewok", chance = 10000000}
 			},
-			lootChance = 3000000
+			lootChance = 1100000
 		}
 	},
 	weapons = {"ewok_weapons"},

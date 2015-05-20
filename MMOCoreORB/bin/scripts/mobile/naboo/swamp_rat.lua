@@ -35,8 +35,7 @@ swamp_rat = Creature:new {
 				{group = "carbines", chance = 1000000},
 				{group = "pistols", chance = 1000000},
 				{group = "loot_kit_parts", chance = 500000}
-			},
-			lootChance = 1900000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

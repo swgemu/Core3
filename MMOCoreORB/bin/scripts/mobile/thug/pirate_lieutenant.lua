@@ -52,8 +52,7 @@ pirate_lieutenant = Creature:new {
 				{group = "wearables_common", chance = 3000000},
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "tailor_components", chance = 1000000},
-			},
-			lootChance = 3000000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

@@ -27,7 +27,16 @@ singing_mountain_clan_slave = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_slave.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 3000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
+			}
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = brawlernovice

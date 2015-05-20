@@ -35,8 +35,7 @@ rodian_clan_captain = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "heavy_weapons", chance = 2000000}
-			},
-			lootChance = 3000000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},

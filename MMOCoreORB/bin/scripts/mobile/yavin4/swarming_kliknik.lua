@@ -33,7 +33,7 @@ swarming_kliknik = Creature:new {
 	        groups = {
 				{group = "kliknik_common", chance = 10000000}
 			},
-			lootChance = 1500000
+			lootChance = 1200000
 		}
 	},
 	weapons = {"creature_spit_small_yellow"},

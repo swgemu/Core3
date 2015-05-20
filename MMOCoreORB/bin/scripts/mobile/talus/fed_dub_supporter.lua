@@ -37,8 +37,7 @@ fed_dub_supporter = Creature:new {
 				{group = "rifles", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000}
-			},
-			lootChance = 2200000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_medium"},

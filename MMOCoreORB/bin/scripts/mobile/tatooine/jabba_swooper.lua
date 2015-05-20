@@ -36,8 +36,7 @@ jabba_swooper = Creature:new {
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "jabba_common", chance = 1500000}
-			},
-			lootChance = 2100000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_light"},

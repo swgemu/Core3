@@ -38,8 +38,7 @@ sleemo_vandal = Creature:new {
 				{group = "carbines", chance = 700000},
 				{group = "printer_parts", chance = 1000000},
 				{group = "loot_kit_parts", chance = 1000000},
-			},
-			lootChance = 2200000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
