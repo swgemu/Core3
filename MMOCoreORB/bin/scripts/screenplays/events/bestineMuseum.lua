@@ -182,7 +182,11 @@ function BestineMuseumScreenPlay:doSchematicPurchase(pPlayer)
 	CreatureObject(pPlayer):subtractCashCredits(48000)
 	CreatureObject(pPlayer):sendSystemMessage("You successfully make a payment of 48000 credits.")
 	self:writeToPurchasedList(pPlayer)
-	local pInventory = player:getSlottedObject("inventory")
+
+	local pInventory
+	ObjectManager.withCreatureObject(pPlayer, function(player)
+		pInventory = player:getSlottedObject("inventory")
+	end)
 
 	if (pInventory ~= nil) then
 		local pItem = giveItem(pInventory, schematic, -1)
