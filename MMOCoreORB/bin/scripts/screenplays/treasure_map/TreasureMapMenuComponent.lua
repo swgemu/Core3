@@ -258,7 +258,7 @@ function TreasureMapMenuComponent:removeTreasureChest(pChest)
 end
 
 function TreasureMapMenuComponent:doReadMap(pObject, pPlayer)
-	if (pObject == nil or pChest == nil) then
+	if (pObject == nil or pPlayer == nil) then
 		return
 	end
 	
