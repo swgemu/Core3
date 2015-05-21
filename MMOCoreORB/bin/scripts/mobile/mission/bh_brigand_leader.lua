@@ -29,25 +29,19 @@ bh_brigand_leader = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "wearables_common", chance = 3000000},
-				{group = "loot_kit_parts", chance = 2000000},
-				{group = "tailor_components", chance = 1000000},
-			},
-			lootChance = 3000000
-		},
-		{
-			groups = {
-				{group = "color_crystals", chance = 1500000},
-				{group = "crystals_poor", chance = 1000000},
-				{group = "crystals_okay", chance = 1000000},
-				{group = "melee_two_handed", chance = 1500000},
-				{group = "carbines", chance = 1500000},
-				{group = "pistols", chance = 1500000},
+				{group = "junk", chance = 2500000},
+				{group = "tailor_components", chance = 500000},
+				{group = "loot_kit_parts", chance = 500000},
+				{group = "color_crystals", chance = 500000},
+				{group = "crystals_poor", chance = 500000},
+				{group = "crystals_okay", chance = 500000},
+				{group = "wearables_all", chance = 1000000},
+				{group = "weapons_all", chance = 1000000},
+				{group = "armor_all", chance = 1000000},
 				{group = "clothing_attachments", chance = 1000000},
 				{group = "armor_attachments", chance = 1000000}
 			},
-			lootChance = 6000000
+			lootChance = 3400000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

@@ -35,8 +35,7 @@ trade_federation_avenger = Creature:new {
 				{group = "melee_weapons", chance = 2000000},
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
-			},
-			lootChance = 4800000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_medium"},

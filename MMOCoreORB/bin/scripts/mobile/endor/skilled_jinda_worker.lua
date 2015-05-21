@@ -39,7 +39,7 @@ skilled_jinda_worker = Creature:new {
 				{group = "armor_attachments", chance = 450000},
 				{group = "clothing_attachments", chance = 450000}
 			},
-			lootChance = 2300000
+			lootChance = 1580000
 		}
 	},
 	weapons = {"ewok_weapons"},

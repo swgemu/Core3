@@ -35,8 +35,7 @@ escaped_nightsister_slave = Creature:new {
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "wearables_common", chance = 1500000}
-			},
-			lootChance = 1500000
+			}
 		}
 	},
 	weapons = {"primitive_weapons"},

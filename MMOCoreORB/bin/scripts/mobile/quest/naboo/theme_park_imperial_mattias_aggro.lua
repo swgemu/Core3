@@ -27,15 +27,14 @@ theme_park_imperial_mattias_aggro = Creature:new {
 
 	templates = {"object/mobile/dressed_mercenary_commander_hum_m.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 5000000},
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2400000
-		}				
+			}
+		}
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",

@@ -45,8 +45,7 @@ rebel_commando = Creature:new {
 				{group = "clothing_attachments", chance = 250000},
 				{group = "armor_attachments", chance = 250000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2800000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},

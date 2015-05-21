@@ -48,8 +48,7 @@ beldonnas_league_enforcer = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "beldonnas_common", chance = 2000000}
-			},
-			lootChance = 3000000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

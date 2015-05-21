@@ -44,8 +44,7 @@ specops_agent = Creature:new {
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 3000000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_light"},

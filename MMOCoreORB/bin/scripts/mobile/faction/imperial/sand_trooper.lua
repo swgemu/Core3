@@ -40,8 +40,7 @@ sand_trooper = Creature:new {
 				{group = "armor_attachments", chance = 25000},
 				{group = "stormtrooper_common", chance = 100000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2800000
+			}
 		}
 	},
 	weapons = {"sandtrooper_weapons"},

@@ -46,8 +46,7 @@ imperial_officer = Creature:new {
 				{group = "armor_attachments", chance = 25000},
 				{group = "imperial_officer_common", chance = 450000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2800000
+			}
 		}
 	},
 	weapons = {"imperial_weapons_medium"},

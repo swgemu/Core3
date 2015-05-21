@@ -34,7 +34,16 @@ rebel_research_guard_coa3 = Creature:new {
 		"object/mobile/dressed_rebel_trooper_twk_female_01.iff",
 		"object/mobile/dressed_rebel_trooper_twk_male_01.iff"
 	},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 3000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
+			}
+		}
+	},
 	weapons = {"rebel_weapons_light"},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster)

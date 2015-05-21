@@ -34,7 +34,7 @@ korga_spiritmaster = Creature:new {
 			groups = {
 				{group = "ewok", chance = 10000000}
 			},
-			lootChance = 2300000
+			lootChance = 1340000
 		}
 	},
 	weapons = {},

@@ -38,9 +38,8 @@ lx_466_rebel_commander = Creature:new {
 				{group = "carbines", chance = 1000000},
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000}
-			},
-			lootChance = 3000000
-		}	
+			}
+		}
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",

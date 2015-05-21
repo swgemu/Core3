@@ -34,7 +34,7 @@ foul_korga_laborer = Creature:new {
 			groups = {
 				{group = "ewok", chance = 10000000}
 			},
-			lootChance = 2300000
+			lootChance = 1400000
 		}
 	},
 	weapons = {},

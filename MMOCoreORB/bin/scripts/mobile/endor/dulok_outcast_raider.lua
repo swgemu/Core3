@@ -29,7 +29,14 @@ dulok_outcast_raider = Creature:new {
 	templates = {
 		"object/mobile/dulok_male.iff",
 		"object/mobile/dulok_female.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "ewok", chance = 10000000}
+			},
+			lootChance = 1400000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = brawlermaster

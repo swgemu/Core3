@@ -26,7 +26,16 @@ wald = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_wald.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 3000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
+			}
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/townperson",

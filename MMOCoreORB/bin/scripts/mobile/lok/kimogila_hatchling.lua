@@ -27,7 +27,14 @@ kimogila_hatchling = Creature:new {
 
 	templates = {"object/mobile/kimogila_hatchling.iff"},
 	scale = 0.5,
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "kimogila_common", chance = 10000000}
+			},
+			lootChance = 1440000
+		}
+	},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

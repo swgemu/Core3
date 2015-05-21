@@ -28,13 +28,12 @@ rhalia_jinsari = Creature:new {
 
 	templates = {"object/mobile/dressed_bounty_hunter_zabrak_female_01.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 7000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000}
-			},
-			lootChance = 2200000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

@@ -42,8 +42,7 @@ stormtrooper_major = Creature:new {
 				{group = "stormtrooper_common", chance = 700000},
 				{group = "wearables_common", chance = 500000},
 				{group = "wearables_uncommon", chance = 500000}
-			},
-			lootChance = 2800000
+			}
 		}
 	},
 	weapons = {"stormtrooper_weapons"},

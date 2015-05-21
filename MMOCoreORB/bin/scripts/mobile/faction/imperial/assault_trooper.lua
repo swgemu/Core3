@@ -40,8 +40,7 @@ assault_trooper = Creature:new {
 				{group = "armor_attachments", chance = 200000},
 				{group = "stormtrooper_common", chance = 700000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2500000
+			}
 		}
 	},
 	weapons = {"st_assault_weapons"},

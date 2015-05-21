@@ -33,7 +33,7 @@ brackaset_male = Creature:new {
 	        groups = {
 				{group = "brackaset_common", chance = 10000000}
 			},
-			lootChance = 2300000
+			lootChance = 1600000
 		}
 	},
 	weapons = {},

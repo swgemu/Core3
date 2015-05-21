@@ -37,8 +37,7 @@ lost_aqualish_captain = Creature:new {
 				{group = "heavy_weapons", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000}
-			},
-			lootChance = 2200000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

@@ -49,8 +49,7 @@ blood_razor_strong_pirate = Creature:new {
 				{group = "clothing_attachments", chance = 300000},
 				{group = "armor_attachments", chance = 300000},
 				{group = "bloodrazor_common", chance = 2000000}
-			},
-			lootChance = 3500000
+			}
 		}
 	},
 	weapons = {"blood_razer_weapons"},
