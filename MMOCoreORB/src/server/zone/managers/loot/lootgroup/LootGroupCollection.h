@@ -18,7 +18,7 @@ public:
 	LootGroupCollection() {
 	}
 
-	void readObject(LuaObject* obj) {
+	void readObject(LuaObject* obj, int level) {
 		if (!obj->isValidTable())
 			return;
 
@@ -30,7 +30,7 @@ public:
 			LuaObject luacollection(L);
 
 			LootGroupCollectionEntry entry;
-			entry.readObject(&luacollection);
+			entry.readObject(&luacollection, level);
 
 			entries.add(entry);
 

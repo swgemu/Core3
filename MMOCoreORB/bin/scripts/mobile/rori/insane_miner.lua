@@ -30,7 +30,17 @@ insane_miner = Creature:new {
 	templates = {"object/mobile/dressed_kobola_miner_human_male_01.iff",
 		"object/mobile/dressed_kobola_miner_human_female_01.iff"
 	},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 2000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "pistols", chance = 2000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000}
+			}
+		}
+	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/slang",

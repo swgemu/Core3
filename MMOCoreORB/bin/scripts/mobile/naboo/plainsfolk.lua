@@ -26,7 +26,16 @@ plainsfolk = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_plainsfolk.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 3000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
+			}
+		}
+	},
 	weapons = {"pirate_weapons_light"},
 	reactionStf = "@npc_reaction/townperson",
 	attacks = merge(marksmannovice,brawlernovice)

@@ -27,7 +27,18 @@ srio = Creature:new {
 
 	templates = {"object/mobile/dressed_mercenary_weak_hum_m.iff",
 			"object/mobile/dressed_mercenary_messanger_sullustan_m.iff" },
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 5000000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "wearables_common", chance = 1000000}
+			}
+		}
+	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = merge(brawlermid,marksmanmid)

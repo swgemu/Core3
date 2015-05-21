@@ -39,8 +39,7 @@ hidden_daggers_activist = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "hidden_dagger_common", chance = 2700000}
-			},
-			lootChance = 3000000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_light"},

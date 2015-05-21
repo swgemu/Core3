@@ -41,7 +41,7 @@ bh_pirate_privateer = Creature:new {
 				{group = "carbines", chance = 1000000},
 				{group = "wearables_common", chance = 1000000}
 			},
-			lootChance = 2600000
+			lootChance = 3200000
 		}
 	},
 	weapons = {"ranged_weapons"},

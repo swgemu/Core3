@@ -46,8 +46,7 @@ mercenary_aggro = Creature:new {
 				{group = "carbines", chance = 1000000},
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000}
-			},
-			lootChance = 2900000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_medium"},

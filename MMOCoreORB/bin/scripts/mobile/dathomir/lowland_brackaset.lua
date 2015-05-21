@@ -30,11 +30,11 @@ lowland_brackaset = Creature:new {
 	controlDeviceTemplate = "object/intangible/pet/brackaset_hue.iff",
 	scale = 0.9,
 	lootGroups = {
-	 {
-	        groups = {
+		{
+			groups = {
 				{group = "brackaset_common", chance = 10000000}
 			},
-			lootChance = 2300000
+			lootChance = 1200000
 		}
 	},
 	weapons = {},

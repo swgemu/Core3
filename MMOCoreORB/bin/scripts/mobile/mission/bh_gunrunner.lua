@@ -36,7 +36,7 @@ bh_gunrunner = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "carbines", chance = 2000000},
 			},
-			lootChance = 4200000
+			lootChance = 3200000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},

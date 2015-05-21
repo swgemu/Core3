@@ -30,7 +30,16 @@ crazed_scientist = Creature:new {
 		"object/mobile/warren_irradiated_worker_s01.iff",
 		"object/mobile/warren_irradiated_worker_s02.iff",
 		"object/mobile/warren_irradiated_worker_s03.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 3000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1000000},
+			}
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = brawlernovice

@@ -42,7 +42,7 @@ bh_naboo_pirate_lieutenant = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "wearables_common", chance = 1000000}
 			},
-			lootChance = 3200000
+			lootChance = 3300000
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

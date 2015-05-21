@@ -32,7 +32,18 @@ rebel_scout = Creature:new {
 		"object/mobile/dressed_rebel_scout_human_male_01.iff",
 		"object/mobile/dressed_rebel_scout_rodian_male_01.iff",
 		"object/mobile/dressed_rebel_scout_zabrak_female_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 5000000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "wearables_common", chance = 1000000}
+			}
+		}
+	},
 	weapons = {"rebel_weapons_light"},
 	reactionStf = "@npc_reaction/military",
 	personalityStf = "@hireling/hireling_military",

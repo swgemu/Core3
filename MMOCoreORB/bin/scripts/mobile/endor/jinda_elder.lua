@@ -38,7 +38,7 @@ jinda_elder = Creature:new {
 				{group = "armor_attachments", chance = 450000},
 				{group = "clothing_attachments", chance = 450000}
 			},
-			lootChance = 1600000
+			lootChance = 1300000
 		}
 	},
 	weapons = {"ewok_weapons"},

@@ -649,7 +649,7 @@ int DirectorManager::createLootFromCollection(lua_State* L) {
 	LuaObject luaObject(L);
 
 	LootGroupCollection lootCollection;
-	lootCollection.readObject(&luaObject);
+	lootCollection.readObject(&luaObject, level);
 
 	luaObject.pop();
 

@@ -51,8 +51,7 @@ sigrix_thug = Creature:new {
 				{group = "melee_weapons", chance = 1000000},
 				{group = "carbines", chance = 1000000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2600000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_light"},
