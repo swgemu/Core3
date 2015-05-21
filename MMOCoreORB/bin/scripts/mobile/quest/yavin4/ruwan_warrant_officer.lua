@@ -33,22 +33,7 @@ ruwan_warrant_officer = Creature:new {
     "object/mobile/dressed_imperial_officer_m_4.iff",
     "object/mobile/dressed_imperial_officer_m_5.iff",
     "object/mobile/dressed_imperial_officer_m_6.iff"},
-  lootGroups = {
-    {
-      groups = {
-        {group = "color_crystals", chance = 100000},
-        {group = "junk", chance = 6650000},
-        {group = "rifles", chance = 550000},
-        {group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
-        {group = "clothing_attachments", chance = 25000},
-        {group = "armor_attachments", chance = 25000},
-        {group = "wearables_common", chance = 1000000}
-      },
-      lootChance = 2800000
-    }           
-  },
+  lootGroups = {},
   weapons = {"imperial_weapons_medium"},
   conversationTemplate = "ruwan_tokai_mission_target_convotemplate",
   attacks = merge(riflemanmaster,carbineermaster)

@@ -37,8 +37,7 @@ kalia_kulmina = Creature:new {
 				{group = "carbines", chance = 1000000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "loot_kit_parts", chance = 1000000}
-			},
-			lootChance = 2300000
+			}
 		}				
 	},
 	weapons = {"pirate_weapons_heavy"},

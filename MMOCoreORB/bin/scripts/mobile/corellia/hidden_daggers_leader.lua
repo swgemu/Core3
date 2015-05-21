@@ -41,8 +41,7 @@ hidden_daggers_leader = Creature:new {
 				{group = "hidden_dagger_common", chance = 2700000},
 				{group = "wearables_all", chance = 1000000},
 
-			},
-			lootChance = 3000000
+			}
 		}
 	},
 	weapons = {"ranged_weapons"},

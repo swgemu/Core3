@@ -37,8 +37,7 @@ corporal_sova = Creature:new {
 				{group = "melee_weapons", chance = 1200000},
 				{group = "clothing_attachments", chance = 150000},
 				{group = "armor_attachments", chance = 150000}
-			},
-			lootChance = 2300000
+			}
 		}
 	},
 	weapons = {"stormtrooper_weapons"},

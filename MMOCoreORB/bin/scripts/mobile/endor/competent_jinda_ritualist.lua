@@ -38,7 +38,7 @@ competent_jinda_ritualist = Creature:new {
 				{group = "armor_attachments", chance = 450000},
 				{group = "clothing_attachments", chance = 450000}
 			},
-			lootChance = 2200000
+			lootChance = 1540000
 		}
 	},
 	weapons = {"ewok_weapons"},

@@ -32,7 +32,7 @@ kliknik_hatchling = Creature:new {
 	        groups = {
 				{group = "kliknik_common", chance = 10000000}
 			},
-			lootChance = 2000000
+			lootChance = 1440000
 		}
 	},
 	weapons = {},

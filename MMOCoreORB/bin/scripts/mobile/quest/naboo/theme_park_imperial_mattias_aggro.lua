@@ -33,8 +33,7 @@ theme_park_imperial_mattias_aggro = Creature:new {
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2400000
+			}
 		}				
 	},
 	weapons = {"pirate_weapons_heavy"},

@@ -27,7 +27,14 @@ domesticated_brackaset = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/brackaset_hue.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "brackaset_common", chance = 10000000}
+			},
+			lootChance = 1460000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

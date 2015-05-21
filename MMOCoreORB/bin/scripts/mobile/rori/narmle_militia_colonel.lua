@@ -37,8 +37,7 @@ narmle_militia_colonel = Creature:new {
 				{group = "rifles", chance = 2000000},
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
-			},
-			lootChance = 3200000
+			}
 		}
 	},
 	weapons = {"ranged_weapons"},

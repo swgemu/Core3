@@ -40,8 +40,7 @@ crackdown_dark_trooper = Creature:new {
 				{group = "clothing_attachments", chance = 25000},
 				{group = "armor_attachments", chance = 25000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2800000
+			}
 		}						
 	},
 	weapons = {"dark_trooper_weapons"},

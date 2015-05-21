@@ -35,7 +35,7 @@ tainted_pubam_dark_shaman = Creature:new {
 				{group = "ewok", chance = 9000000},
 				{group = "wearables_uncommon", chance = 1000000},
 			},
-			lootChance = 2300000
+			lootChance = 1700000
 		}
 	},
 	weapons = {},

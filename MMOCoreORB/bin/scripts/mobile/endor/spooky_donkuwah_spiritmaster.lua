@@ -35,7 +35,7 @@ spooky_donkuwah_spiritmaster = Creature:new {
 				{group = "donkuwah_common", chance = 9000000},
 				{group = "wearables_uncommon", chance = 1000000},
 			},
-			lootChance = 2300000
+			lootChance = 1520000
 		}
 	},
 	weapons = {"donkuwah_weapons"},

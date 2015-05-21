@@ -40,8 +40,7 @@ stormtrooper_squad_leader = Creature:new {
 				{group = "armor_attachments", chance = 250000},
 				{group = "stormtrooper_common", chance = 700000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 2800000
+			}
 		}
 	},
 	weapons = {"stormtrooper_weapons"},

@@ -34,7 +34,7 @@ gondula_worker = Creature:new {
 			groups = {
 				{group = "ewok", chance = 10000000}
 			},
-			lootChance = 3000000
+			lootChance = 1360000
 		}
 	},
 	weapons = {"ewok_weapons"},

@@ -34,7 +34,7 @@ enraged_korga = Creature:new {
 			groups = {
 				{group = "ewok", chance = 10000000}
 			},
-			lootChance = 2300000
+			lootChance = 1640000
 		}
 	},
 	weapons = {},

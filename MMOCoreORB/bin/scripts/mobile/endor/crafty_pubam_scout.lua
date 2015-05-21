@@ -34,7 +34,7 @@ crafty_pubam_scout = Creature:new {
 			groups = {
 				{group = "ewok", chance = 10000000},
 			},
-			lootChance = 2300000
+			lootChance = 1700000
 		}
 	},
 	weapons = {},

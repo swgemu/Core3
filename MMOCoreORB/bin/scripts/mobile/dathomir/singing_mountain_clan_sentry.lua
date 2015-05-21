@@ -40,8 +40,7 @@ singing_mountain_clan_sentry = Creature:new {
 				{group = "pistols", chance = 1000000},
 				{group = "carbines", chance = 1000000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 1400000
+			}
 		}
 	},
 	weapons = {"mixed_force_weapons"},
