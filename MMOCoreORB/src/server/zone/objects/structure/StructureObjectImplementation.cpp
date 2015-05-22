@@ -57,6 +57,10 @@ void StructureObjectImplementation::finalize() {
 void StructureObjectImplementation::notifyLoadFromDatabase() {
 	TangibleObjectImplementation::notifyLoadFromDatabase();
 
+	if (structurePermissionList.getOwner() != getOwnerObjectID()) {
+		structurePermissionList.setOwner(getOwnerObjectID());
+	} 
+
 	if (permissionsFixed == false) {
 		ManagedReference<StructureObject*> structure = _this.get();
 
