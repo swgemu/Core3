@@ -174,8 +174,10 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	// Handle command training
 	if( pcd->getTrainingCommand() > 0 ){
 		bool ownerChat = handleCommandTraining( speaker, pet, message );
-		if (ownerChat)
+		if (ownerChat) {
+			Locker locker(pcd);
 			pcd->setTrainingCommand(0); // no longer training
+		}
 
 		return;
 	}
@@ -338,6 +340,8 @@ bool PetManagerImplementation::handleCommandTraining(CreatureObject* speaker, Ai
 		}
 		return true;
 	}
+
+	Locker locker(pcd);
 
 	unsigned int trainingCommand = pcd->getTrainingCommand();
 	int petType = pcd->getPetType();

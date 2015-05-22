@@ -26,8 +26,10 @@ public:
 
 			ManagedReference<ControlDevice*> controlDevice = child->getControlDevice().get();
 
-			if (controlDevice != NULL)
+			if (controlDevice != NULL) {
+				Locker deviceLocker(controlDevice);
 				controlDevice->storeObject(player, true);
+			}
 		}
 
 	}

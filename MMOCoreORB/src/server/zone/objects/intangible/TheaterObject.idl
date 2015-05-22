@@ -36,6 +36,7 @@ class TheaterObject extends IntangibleObject {
 		return despawnOnNoPlayersInRange;
 	}
 
+	@preLocked
 	public void setDespawnOnNoPlayersInRange(boolean b) {
 		despawnOnNoPlayersInRange = b;
 	}

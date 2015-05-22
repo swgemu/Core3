@@ -28,8 +28,6 @@
 #include "server/chat/ChatManager.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
-	assert(player->isLockedByCurrentThread());
-
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {
 		player->sendSystemMessage("@pet/pet_menu:cant_call"); // You cannot call this pet right now.
 		return;
@@ -239,7 +237,6 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 			return;
 		}
 
-		Locker clocker(controlledObject, player);
 		spawnObject(player);
 
 		// Set cooldown
@@ -298,8 +295,6 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	if (controlledObject == NULL)
 		return;
-
-	assert(player->isLockedByCurrentThread());
 
 	assert(controlledObject->isLockedByCurrentThread());
 
@@ -394,8 +389,6 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 }
 
 void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
-	assert(player->isLockedByCurrentThread());
-
 	Reference<Task*> petTask = player->getPendingTask("call_pet");
 
 	if(petTask != NULL) {
@@ -412,8 +405,6 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 
 	if (controlledObject == NULL || !controlledObject->isAiAgent())
 		return;
-
-	assert(player->isLockedByCurrentThread());
 
 	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
 
@@ -491,8 +482,6 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 	PetManager* petManager = pet->getZoneServer()->getPetManager();
 	if (petManager == NULL)
 		return true;
-
-	assert(player->isLockedByCurrentThread());
 
 	Time currentTime;
 	uint32 timeDelta = currentTime.getTime() - lastGrowth.getTime();
@@ -970,10 +959,10 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 		alm->insertAttribute("pet_command_13", trainedCommands.get(PetManager::REPAIR) ); // Droid Repair really was listed as Trick 2
 	}
 	if( trainedCommands.contains(PetManager::THROWTRAP) ){
-		alm->insertAttribute("pet_command_22", trainedCommands.get(PetManager::THROWTRAP) ); // Droid Repair really was listed as Trick 2
+		alm->insertAttribute("pet_command_22", trainedCommands.get(PetManager::THROWTRAP) );
 	}
 	if( trainedCommands.contains(PetManager::HARVEST) ){
-		alm->insertAttribute("pet_command_21", trainedCommands.get(PetManager::HARVEST) ); // Droid Repair really was listed as Trick 2
+		alm->insertAttribute("pet_command_21", trainedCommands.get(PetManager::HARVEST) );
 	}
 }
 
@@ -1111,6 +1100,8 @@ void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {
 	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
 	if( pet == NULL )
 		return;
+
+	assert(pet->isLockedByCurrentThread());
 
 	trainedAsMount = true;
 	pet->setOptionsBitmask(0x1080);

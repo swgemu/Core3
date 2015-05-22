@@ -123,6 +123,8 @@ public:
 			return;
 		}
 
+		Locker deviceLocker(controlDevice);
+
 		controlDevice->setControlledObject(creature);
 
 		StringId s;
