@@ -39,8 +39,7 @@ tusken_war_master = Creature:new {
 				{group = "clothing_attachments", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "crystals_okay", chance = 500000}
-			},
-			lootChance = 3000000
+			}
 		}	
 	},
 	weapons = {"tusken_weapons"},

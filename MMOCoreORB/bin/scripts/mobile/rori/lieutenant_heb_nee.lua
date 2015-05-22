@@ -34,8 +34,7 @@ lieutenant_heb_nee = Creature:new {
 				{group = "loot_kit_parts", chance = 2000000},
 				{group = "wearables_common", chance = 500000},
 				{group = "wearables_uncommon", chance = 500000}
-			},
-			lootChance = 3200000
+			}
 		}					
 	},
 	weapons = {"lt_heb_nee_weapons"},

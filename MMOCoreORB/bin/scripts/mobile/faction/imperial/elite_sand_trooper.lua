@@ -41,8 +41,7 @@ elite_sand_trooper = Creature:new {
 				{group = "stormtrooper_common", chance = 100000},
 				{group = "wearables_common", chance = 500000},
 				{group = "wearables_uncommon", chance = 500000}
-			},
-			lootChance = 2800000
+			}
 		}
 	},
 	weapons = {"sandtrooper_weapons"},

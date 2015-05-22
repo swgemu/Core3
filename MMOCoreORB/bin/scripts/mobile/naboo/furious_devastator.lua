@@ -33,7 +33,7 @@ furious_devastator = Creature:new {
 	        groups = {
 				{group = "fambaa_common", chance = 10000000}
 			},
-			lootChance = 2700000
+			lootChance = 1760000
 		}
 	},
 	weapons = {},

@@ -40,8 +40,7 @@ novatrooper_cadet = Creature:new {
 				{group = "armor_attachments", chance = 25000},
 				{group = "wearables_common", chance = 500000},
 				{group = "wearables_uncommon", chance = 500000}
-			},
-			lootChance = 2800000
+			}
 		}
 	},
 	weapons = {"stormtrooper_weapons"},

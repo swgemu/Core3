@@ -20,30 +20,14 @@ wallaw_bull_rancor = Creature:new {
   milk = 0,
   tamingChance = 0.01,
   ferocity = 11,
-  pvpBitmask = NONE,
+  pvpBitmask = ATTACKABLE,
   creatureBitmask = NONE,
   optionsBitmask = 136,
   diet = CARNIVORE,
 
   templates = {"object/mobile/bull_rancor.iff"},
   controlDeviceTemplate = "object/intangible/pet/rancor_hue.iff",
-  lootGroups = {
-    {
-      groups = {
-        {group = "rancor_common", chance = 4000000},
-        {group = "pistols", chance = 750000},
-        {group = "heavy_weapons", chance = 500000},
-        {group = "rifles", chance = 750000},
-        {group = "carbines", chance = 500000},
-        {group = "grenades_looted", chance = 500000},
-        {group = "armor_all", chance = 1000000},
-        {group = "melee_unarmed", chance = 1000000},
-        {group = "wearables_common", chance = 500000},
-        {group = "wearables_uncommon", chance = 500000}
-      },
-      lootChance = 2600000
-    }
-  },
+  lootGroups = {},
   weapons = {},
   conversationTemplate = "wallaw_loowobbli_mission_target_convotemplate",
   attacks = {

@@ -32,7 +32,7 @@ woolamander_harrower = Creature:new {
 	        groups = {
 				{group = "harrower_bone", chance = 10000000}
 			},
-			lootChance = 4650000
+			lootChance = 2020000
 		}
 	},
 	weapons = {},

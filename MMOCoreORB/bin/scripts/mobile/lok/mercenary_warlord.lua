@@ -47,8 +47,7 @@ mercenary_warlord = Creature:new {
 				{group = "rifles", chance = 600000},
 				{group = "clothing_attachments", chance = 300000},
 				{group = "armor_attachments", chance = 300000}
-			},
-			lootChance = 3500000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},

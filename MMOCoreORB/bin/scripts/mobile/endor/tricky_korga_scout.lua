@@ -35,7 +35,7 @@ tricky_korga_scout = Creature:new {
 				{group = "ewok", chance = 9000000},
 				{group = "wearables_uncommon", chance = 1000000},
 			},
-			lootChance = 2300000
+			lootChance = 1820000
 		}
 	},
 	weapons = {},
