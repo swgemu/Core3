@@ -45,6 +45,8 @@ public:
 		if (!ghost->hasWaypoint(waypoint->getObjectID()))
 			return GENERALERROR;
 
+		Locker clocker(waypoint, creature);
+
 		if (waypoint->getSpecialTypeID() != 0)
 			waypoint->setSpecialTypeID(0);
 

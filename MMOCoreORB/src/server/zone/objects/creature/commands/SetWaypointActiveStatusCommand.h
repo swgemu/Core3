@@ -38,6 +38,8 @@ public:
 		if (!ghost->hasWaypoint(waypoint->getObjectID()))
 			return GENERALERROR;
 
+		Locker clocker(waypoint, creature);
+
 		waypoint->toggleStatus();
 
 		ghost->updateWaypoint(waypoint->getObjectID());
