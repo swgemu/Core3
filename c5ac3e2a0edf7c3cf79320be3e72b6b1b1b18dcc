@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_e3f8acc6",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/events/bestineMuseum.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1527
+      },
+      "writtenOn": "2015-05-22T04:27:16Z",
+      "side": 1,
+      "message": "Good catch, but try to avoid using the ObjectManager blocks directly unless there are multiple lines needing the same variable. In this case, use CreatureObject(pPlayer):getSlottedObject(\"inventory\") to achieve the same result with less overhead.",
+      "revId": "c5ac3e2a0edf7c3cf79320be3e72b6b1b1b18dcc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
