@@ -39,7 +39,7 @@ jinda_matriarch = Creature:new {
 				{group = "armor_attachments", chance = 450000},
 				{group = "clothing_attachments", chance = 450000}
 			},
-			lootChance = 2600000
+			lootChance = 1820000
 		}
 	},
 	weapons = {"ewok_weapons"},

@@ -31,7 +31,7 @@ sharnaff_bull = Creature:new {
 			groups = {
 				{group = "sharnaff_common", chance = 10000000}
 			},
-			lootChance = 3300000
+			lootChance = 1760000
 		}
 	},
 	weapons = {},

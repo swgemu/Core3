@@ -36,33 +36,35 @@ bh_canyon_corsair_captain = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3150000},
-				{group = "tailor_components", chance = 1000000},
-				{group = "color_crystals", chance = 400000},
-				{group = "crystals_good", chance = 400000},
-				{group = "melee_two_handed", chance = 600000},
-				{group = "carbines", chance = 600000},
-				{group = "pistols", chance = 600000},
-				{group = "clothing_attachments", chance = 450000},
-				{group = "armor_attachments", chance = 450000},
-				{group = "canyon_corsair_common", chance = 1350000},
-				{group = "wearables_common", chance = 500000},
-				{group = "wearables_uncommon", chance = 500000}
-			},
-			lootChance = 4500000
-		},
-		{
-			groups = {
-				{group = "color_crystals", chance = 1500000},
-				{group = "crystals_poor", chance = 1000000},
-				{group = "crystals_good", chance = 1000000},
-				{group = "melee_two_handed", chance = 1500000},
-				{group = "carbines", chance = 1500000},
-				{group = "pistols", chance = 1500000},
+				{group = "junk", chance = 2500000},
+				{group = "tailor_components", chance = 500000},
+				{group = "loot_kit_parts", chance = 500000},
+				{group = "color_crystals", chance = 500000},
+				{group = "crystals_good", chance = 500000},
+				{group = "crystals_okay", chance = 500000},
+				{group = "wearables_all", chance = 1000000},
+				{group = "weapons_all", chance = 1000000},
+				{group = "armor_all", chance = 1000000},
 				{group = "clothing_attachments", chance = 1000000},
 				{group = "armor_attachments", chance = 1000000}
 			},
-			lootChance = 6000000
+			lootChance = 4000000
+		},
+		{
+			groups = {
+				{group = "junk", chance = 2500000},
+				{group = "tailor_components", chance = 500000},
+				{group = "loot_kit_parts", chance = 500000},
+				{group = "color_crystals", chance = 500000},
+				{group = "crystals_good", chance = 500000},
+				{group = "crystals_okay", chance = 500000},
+				{group = "wearables_all", chance = 1000000},
+				{group = "weapons_all", chance = 1000000},
+				{group = "armor_all", chance = 1000000},
+				{group = "clothing_attachments", chance = 1000000},
+				{group = "armor_attachments", chance = 1000000}
+			},
+			lootChance = 4000000
 		}
 	},
 	weapons = {"canyon_corsair_weapons"},

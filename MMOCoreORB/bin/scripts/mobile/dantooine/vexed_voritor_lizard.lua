@@ -32,7 +32,7 @@ vexed_voritor_lizard = Creature:new {
 			groups = {
 				{group = "voritor_lizard_common", chance = 10000000}
 			},
-			lootChance = 2500000
+			lootChance = 2040000
 		}
 	},
 	weapons = {},

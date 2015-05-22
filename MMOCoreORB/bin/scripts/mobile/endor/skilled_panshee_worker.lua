@@ -42,7 +42,7 @@ skilled_panshee_worker = Creature:new {
 				{group = "ewok", chance = 9000000},
 				{group = "wearables_uncommon", chance = 1000000},
 			},
-			lootChance = 3000000
+			lootChance = 1720000
 		}
 	},
 	weapons = {"ewok_weapons"},

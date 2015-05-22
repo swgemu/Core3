@@ -35,7 +35,7 @@ spooky_korga_spiritmaster = Creature:new {
 				{group = "ewok", chance = 9000000},
 				{group = "wearables_all", chance = 1000000},
 			},
-			lootChance = 2300000
+			lootChance = 2000000
 		}
 	},
 	weapons = {},

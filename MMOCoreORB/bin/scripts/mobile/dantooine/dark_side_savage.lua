@@ -39,8 +39,7 @@ dark_side_savage = Creature:new {
 				{group = "clothing_attachments", chance = 1000000},
 				{group = "wearables_common", chance = 500000},
 				{group = "wearables_uncommon", chance = 500000}
-			},
-			lootChance = 3000000
+			}
 		}
 	},
 	weapons = {},

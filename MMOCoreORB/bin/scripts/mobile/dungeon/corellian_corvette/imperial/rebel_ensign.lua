@@ -40,8 +40,7 @@ rebel_ensign = Creature:new {
 				{group = "armor_attachments", chance = 100000},
 				{group = "wearables_common", chance = 500000},
 				{group = "wearables_uncommon", chance = 500000}
-			},
-			lootChance = 3000000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_medium"},

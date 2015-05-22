@@ -26,7 +26,17 @@ bors_teraud = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/warren_bors_teraud.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 5500000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "armor_attachments", chance = 500000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "wearables_common", chance = 2500000}
+			}
+		}
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster)

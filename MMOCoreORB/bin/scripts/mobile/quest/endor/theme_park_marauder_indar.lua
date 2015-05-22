@@ -1,7 +1,7 @@
 theme_park_marauder_indar = Creature:new {
 	objectName = "@npc_name:marauder_base_male",
 	customName = "Indar",
-	socialGroup = "self",
+	socialGroup = "self",
 	faction = "",
 	level = 44,
 	chanceHit = 0.47,
@@ -27,7 +27,24 @@ theme_park_marauder_indar = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_marauder.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "pistols", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "rifles", chance = 1000000},
+				{group = "melee_baton", chance = 1000000},
+				{group = "loot_kit_parts", chance = 1000000},
+				{group = "armor_attachments", chance = 500000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "bone_armor", chance = 800000},
+				{group = "chitin_armor", chance = 800000},
+				{group = "mabari_armor", chance = 800000},
+				{group = "tantel_armor", chance = 800000},
+				{group = "ubese_armor", chance = 800000},
+			}
+		}
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

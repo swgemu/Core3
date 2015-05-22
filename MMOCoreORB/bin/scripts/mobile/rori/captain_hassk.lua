@@ -26,7 +26,17 @@ captain_hassk = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/captain_hassk.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 5000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "wearables_common", chance = 500000},
+				{group = "wearables_uncommon", chance = 500000}
+			}
+		}
+	},
 	weapons = {"captain_hassk_weapons"},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,swordsmanmaster)
