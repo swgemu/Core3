@@ -139,12 +139,17 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 		//Create Waypoint
 		ManagedReference<WaypointObject*> waypointObject = ( zone->getZoneServer()->createObject(String("object/waypoint/world_waypoint_blue.iff").hashCode(), 1)).castTo<WaypointObject*>();
+
+		Locker locker(waypointObject);
+
 		waypointObject->setCustomObjectName(structureObject->getDisplayedName(), false);
 		waypointObject->setActive(true);
 		waypointObject->setPosition(positionX, 0, positionY);
 		waypointObject->setPlanetCRC(zone->getZoneCRC());
 
 		ghost->addWaypoint(waypointObject, false, true);
+
+		locker.release();
 
 		//Create an email.
 		ManagedReference<ChatManager*> chatManager = zone->getZoneServer()->getChatManager();
