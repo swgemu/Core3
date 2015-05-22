@@ -76,6 +76,8 @@ void FindSessionImplementation::addWaypoint(float x, float y, const String& name
 	ManagedReference<WaypointObject*> wpt =
 			( player->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>(); // 0xC456E788 Waypoint
 
+	Locker locker(wpt);
+
 	wpt->setPlanetCRC(planet.hashCode());
 	wpt->setPosition(x, 0, y);
 	wpt->setCustomObjectName(name, false);
