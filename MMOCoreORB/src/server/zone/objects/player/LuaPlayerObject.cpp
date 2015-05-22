@@ -187,6 +187,9 @@ int LuaPlayerObject::addWaypoint(lua_State* L) {
 	}
 
 	ManagedReference<WaypointObject*> waypoint = realObject->getZoneServer()->createObject(0xc456e788, persistence).castTo<WaypointObject*>();
+
+	Locker locker(waypoint);
+
 	waypoint->setPlanetCRC(planet.hashCode());
 	waypoint->setPosition(x, 0, y);
 	waypoint->setSpecialTypeID(specialTypeID);
