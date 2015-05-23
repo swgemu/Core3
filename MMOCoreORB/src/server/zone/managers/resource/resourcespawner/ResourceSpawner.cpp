@@ -1026,6 +1026,8 @@ bool ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 		inventory->broadcastObject(harvestedResource, true);
 		return true;
 	} else {
+          	Locker resLocker(harvestedResource);
+          
 		harvestedResource->destroyObjectFromDatabase(true);
 		return false;
 	}
