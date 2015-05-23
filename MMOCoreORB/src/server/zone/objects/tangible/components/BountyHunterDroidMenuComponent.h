@@ -35,18 +35,18 @@ public:
 
 private:
 	/**
-	 * Checks if the player has the skill to use a probot.
+	 * Checks if the player has the skill to use the track feature.
 	 * @param player the player to check.
 	 * @return true if the player got the required skill.
 	 */
-	bool playerCanUseProbot(CreatureObject* player);
+	bool playerCanUseTrack(CreatureObject* player);
 
 	/**
-	 * Checks if the player has the skill to use a seeker.
+	 * Checks if the player has the skill to use a bounty hunter droid.
 	 * @param player the player to check.
 	 * @return true if the player got the required skill.
 	 */
-	bool playerCanUseSeeker(CreatureObject* player);
+	bool playerCanUseDroids(CreatureObject* player);
 
 	/**
 	 * Checks if the object is a probe droid.
