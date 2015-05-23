@@ -914,6 +914,8 @@ int LuaAiAgent::setLastCommandTarget(lua_State* L) {
 	ManagedReference<PetControlDevice*> controlDevice = realObject->getControlDevice().castTo<PetControlDevice*>();
 	if (controlDevice == NULL)
 		return 0;
+  
+  	Locker locker(controlDevice);
 
 	controlDevice->setLastCommandTarget(obj);
 
