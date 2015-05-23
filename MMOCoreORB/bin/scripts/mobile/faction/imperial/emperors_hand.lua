@@ -42,8 +42,7 @@ emperors_hand = Creature:new {
 				{group = "armor_attachments", chance = 1100000},
 				{group = "clothing_attachments", chance = 1100000},
 				{group = "carbines", chance = 1000000}				
-			},
-			lootChance = 8500000
+			}
 		}
 	},
 	weapons = {"dark_jedi_weapons_gen3"},

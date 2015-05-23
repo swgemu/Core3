@@ -41,7 +41,7 @@ nightsister_enraged_bull_rancor = Creature:new {
 				{group = "wearables_common", chance = 500000},
 				{group = "wearables_uncommon", chance = 500000}
 			},
-			lootChance = 2900000
+			lootChance = 2780000
 		}
 	},
 	weapons = {},

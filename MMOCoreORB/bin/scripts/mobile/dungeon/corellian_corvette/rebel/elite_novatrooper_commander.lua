@@ -40,8 +40,7 @@ elite_novatrooper_commander = Creature:new {
 				{group = "armor_attachments", chance = 25000},
 				{group = "imperial_officer_common", chance = 450000},
 				{group = "wearables_scarce", chance = 1000000}
-			},
-			lootChance = 2800000
+			}
 		}
 	},
 	weapons = {"stormtrooper_weapons"},

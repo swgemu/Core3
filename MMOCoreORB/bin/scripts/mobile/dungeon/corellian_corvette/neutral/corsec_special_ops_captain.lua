@@ -38,8 +38,7 @@ corsec_special_ops_captain = Creature:new {
 				{group = "corsec_weapons", chance = 2500000},
 				{group = "crystals_premium", chance = 650000},
 				{group = "color_crystals", chance = 850000}
-			},
-			lootChance = 3300000
+			}
 		}
 	},
 	weapons = {"corsec_police_weapons"},

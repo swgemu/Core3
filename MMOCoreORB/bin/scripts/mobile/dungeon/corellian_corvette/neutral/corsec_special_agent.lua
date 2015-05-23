@@ -37,8 +37,7 @@ corsec_special_agent = Creature:new {
 				{group = "corsec_weapons", chance = 2500000},
 				{group = "crystals_select", chance = 250000},
 				{group = "color_crystals", chance = 250000}
-			},
-			lootChance = 3300000
+			}
 		}
 	},
 	weapons = {"corsec_police_weapons"},

@@ -38,8 +38,7 @@ black_sun_guard = Creature:new {
 				{group = "jetpack_base", chance = 50000},
 				{group = "wearables_common", chance = 500000},
 				{group = "wearables_uncommon", chance = 500000}
-			},
-			lootChance = 3500000
+			}
 		}
 	},
 	weapons = {"pirate_weapons_heavy"},

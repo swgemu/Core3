@@ -40,8 +40,7 @@ crackdown_sand_trooper_hard = Creature:new {
 				{group = "armor_attachments", chance = 25000},
 				{group = "stormtrooper_common", chance = 100000},
 				{group = "wearables_rare", chance = 1000000}
-			},
-			lootChance = 2800000
+			}
 		}
 	},
 	weapons = {"sandtrooper_weapons"},

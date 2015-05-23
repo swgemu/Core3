@@ -32,7 +32,22 @@ rebel_rear_admiral = Creature:new {
 		"object/mobile/dressed_rebel_high_general_human_female_01.iff",
 		"object/mobile/dressed_rebel_high_general_moncal_male_01.iff"
 	},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 100000},
+				{group = "junk", chance = 4700000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "clothing_attachments", chance = 100000},
+				{group = "armor_attachments", chance = 100000},
+				{group = "wearables_common", chance = 500000},
+				{group = "wearables_uncommon", chance = 500000}
+			}
+		}
+	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
 	reactionStf = "@npc_reaction/military",

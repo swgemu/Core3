@@ -31,20 +31,13 @@ juvenile_canyon_krayt_dragon = Creature:new {
 	lootGroups = {
 		{
 	        groups = {
-				{group = "krayt_tissue_common", chance = 3500000},
-				{group = "krayt_dragon_common", chance = 6500000},
+				{group = "krayt_tissue_common", chance = 2500000},
+				{group = "krayt_dragon_common", chance = 3000000},
+				{group = "armor_all", chance = 1500000},
+				{group = "weapons_all", chance = 1500000},
+				{group = "wearables_all", chance = 1500000},
 			},
-			lootChance = 4000000
-		},
-		{
-	        groups = {
-				{group = "composite_armor", chance = 2000000},
-				{group = "ubese_armor", chance = 2000000},
-				{group = "melee_two_handed", chance = 2000000},
-				{group = "rifles", chance = 2000000},
-				{group = "wearables_all", chance = 2000000},				
-			},
-			lootChance = 2500000
+			lootChance = 3440000
 		}
 	},
 	weapons = {},

@@ -31,7 +31,7 @@ dune_kimogila = Creature:new {
 	        groups = {
 				{group = "kimogila_common", chance = 10000000}
 			},
-			lootChance = 6500000
+			lootChance = 3460000
 		}
 	},
 	weapons = {},

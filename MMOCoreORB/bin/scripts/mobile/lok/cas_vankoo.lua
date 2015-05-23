@@ -37,8 +37,7 @@ cas_vankoo = Creature:new {
 				{group = "clothing_attachments", chance = 800000},
 				{group = "armor_attachments", chance = 800000},
 				{group = "wearables_all", chance = 1000000}
-			},
-			lootChance = 6500000
+			}
 		}
 	},
 	weapons = {"cas_vankoo_weapons"},

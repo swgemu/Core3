@@ -38,8 +38,7 @@ tusken_carnage_champion = Creature:new {
 				{group = "clothing_attachments", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "crystals_select", chance = 500000}
-			},
-			lootChance = 4300000
+			}
 		}	
 	},
 	weapons = {"tusken_weapons"},
