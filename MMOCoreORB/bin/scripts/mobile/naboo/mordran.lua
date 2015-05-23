@@ -36,8 +36,7 @@ mordran = Creature:new {
 				{group = "clothing_attachments", chance = 500000},
 				{group = "armor_attachments", chance = 500000},
 				{group = "wearables_common", chance = 1000000}
-			},
-			lootChance = 4500000
+			}
 		}
 	},
 	weapons = {"mordran_weapons"},

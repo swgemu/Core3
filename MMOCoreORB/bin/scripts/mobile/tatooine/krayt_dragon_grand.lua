@@ -30,19 +30,12 @@ krayt_dragon_grand = Creature:new {
 	lootGroups = {
 		{
 	        groups = {
-				{group = "krayt_tissue_rare", chance = 3300000},
-				{group = "krayt_dragon_common", chance = 3300000},
-				{group = "pearls_flawless", chance = 3400000}				
-			},
-			lootChance = 6500000
-		},
-		{
-	        groups = {
-				{group = "composite_armor", chance = 2000000},
-				{group = "ubese_armor", chance = 2000000},
-				{group = "melee_two_handed", chance = 2000000},
-				{group = "rifles", chance = 2000000},
-				{group = "wearables_all", chance = 2000000},				
+				{group = "krayt_tissue_rare", chance = 2000000},
+				{group = "krayt_dragon_common", chance = 2000000},
+				{group = "pearls_flawless", chance = 1500000},
+				{group = "armor_all", chance = 1500000},
+				{group = "weapons_all", chance = 1500000},
+				{group = "wearables_all", chance = 1500000},
 			},
 			lootChance = 3500000
 		}
@@ -51,10 +44,7 @@ krayt_dragon_grand = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareacombo","stateAccuracyBonus=50"},
-		{"blindattack","stateAccuracyBonus=50"},
-		{"intimidationattack","stateAccuracyBonus=50"},
 		{"creatureareaknockdown","stateAccuracyBonus=50"},
-		{"stunattack","stateAccuracyBonus=50"}
 	}
 }
 

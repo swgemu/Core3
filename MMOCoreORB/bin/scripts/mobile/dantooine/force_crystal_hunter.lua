@@ -39,8 +39,7 @@ force_crystal_hunter = Creature:new {
 				{group = "armor_attachments", chance = 1000000},
 				{group = "clothing_attachments", chance = 1000000},
 				{group = "wearables_all", chance = 1500000}
-			},
-			lootChance = 4500000
+			}
 		}
 	},
 	weapons = {"mixed_force_weapons"},

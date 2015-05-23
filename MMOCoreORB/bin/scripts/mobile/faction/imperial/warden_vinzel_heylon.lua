@@ -39,8 +39,7 @@ warden_vinzel_heylon = Creature:new {
 				{group = "clothing_attachments", chance = 350000},
 				{group = "armor_attachments", chance = 350000},
 				{group = "wearables_all", chance = 1000000}
-			},
-			lootChance = 4800000
+			}
 		}
 	},
 	weapons = {"imperial_weapons_heavy"},

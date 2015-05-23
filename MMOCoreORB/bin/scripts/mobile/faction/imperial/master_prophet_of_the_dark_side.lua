@@ -41,8 +41,7 @@ master_prophet_of_the_dark_side = Creature:new {
 				{group = "armor_attachments", chance = 1100000},
 				{group = "clothing_attachments", chance = 1100000},
 				{group = "carbines", chance = 1500000}
-			},
-			lootChance = 6500000
+			}
 		}
 	},
 	weapons = {"dark_jedi_weapons_gen4"},

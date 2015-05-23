@@ -40,8 +40,7 @@ rebel_commodore = Creature:new {
 				{group = "armor_attachments", chance = 500000},
 				{group = "rebel_officer_common", chance = 450000},
 				{group = "wearables_rare", chance = 500000}
-			},
-			lootChance = 6000000
+			}
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},

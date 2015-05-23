@@ -36,9 +36,14 @@ light_jedi_sentinel = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "holocron_light", chance = 10000000}
-			},
-			lootChance = 500000
+				{group = "holocron_light", chance = 900000},
+				{group = "crystals_premium", chance = 900000},
+				{group = "weapons_all", chance = 2000000},
+				{group = "armor_all", chance = 2000000},
+				{group = "armor_attachments", chance = 1100000},
+				{group = "clothing_attachments", chance = 1100000},
+				{group = "wearables_all", chance = 2000000}
+			}
 		}
 	},
 	weapons = {"light_jedi_weapons"},

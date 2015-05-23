@@ -42,8 +42,7 @@ dark_jedi_master = Creature:new {
 				{group = "clothing_attachments", chance = 1100000},
 				{group = "carbines", chance = 1300000},
 				{group = "wearables_scarce", chance = 800000}
-			},
-			lootChance = 8500000
+			}
 		}
 	},
 	weapons = {"dark_jedi_weapons_gen4"},

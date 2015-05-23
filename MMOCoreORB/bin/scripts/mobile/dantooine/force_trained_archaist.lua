@@ -40,8 +40,7 @@ force_trained_archaist = Creature:new {
 				{group = "clothing_attachments", chance = 1000000},
 				{group = "wearables_common", chance = 750000},
 				{group = "wearables_uncommon", chance = 750000}
-			},
-			lootChance = 4500000
+			}
 		}
 	},
 	weapons = {"mixed_force_weapons"},
