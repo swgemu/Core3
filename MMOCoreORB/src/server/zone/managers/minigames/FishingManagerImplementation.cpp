@@ -152,6 +152,7 @@ void FishingManagerImplementation::stopFishing(CreatureObject* player, uint32 bo
 
 	// stop events
 	if (rem) {
+		Locker locker(marker);
 		removeMarker(player, marker);
 		stopFishingEvent(player);
 
@@ -791,6 +792,9 @@ void FishingManagerImplementation::freeBait(CreatureObject* player) {
 	if (player != NULL) {
 		String bait = "object/tangible/fishing/bait/bait_worm.iff";
 		ManagedReference<SceneObject*> baitObject = player->getZoneServer()->createObject(bait.hashCode(), 0);
+
+		Locker locker(baitObject);
+
 		baitObject->sendTo(player, true);
 
 		ManagedReference<FishingPoleObject*> pole = getPole(player);
@@ -1001,6 +1005,8 @@ SceneObject* FishingManagerImplementation::createMarker(float x, float y, float 
 	if (markerObject == NULL)
 		return NULL;
 
+	Locker locker(markerObject);
+
 	markerObject->initializePosition(x, z, y);
 	//markerObject->insertToZone(zone);
 	zone->transferObject(markerObject, -1, true);
@@ -1017,6 +1023,8 @@ void FishingManagerImplementation::createSplash(float x, float y, float z, Zone*
 		ManagedReference<SceneObject*> splashObject = player->getZoneServer()->createObject(splash.hashCode(), 0);
 
 		if (splashObject != NULL) {
+			Locker locker(splashObject);
+
 			splashObject->initializePosition(x, z + 0.5, y);
 			//splashObject->insertToZone(zone);
 			zone->transferObject(splashObject, -1, true);
