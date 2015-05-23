@@ -33,7 +33,7 @@ public:
 			//player->info("activating command queue action");
 
 			ManagedReference<FishingManager*> manager = player->getZoneProcessServer()->getFishingManager();
-
+			Locker splashLocker(splash);
 			manager->removeSplash(splash);
 
 			//player->info("command queue action activated");
