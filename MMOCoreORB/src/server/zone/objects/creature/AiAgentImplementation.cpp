@@ -510,7 +510,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 			if (target->isVehicleObject() || target->hasRidingCreature())
 				continue;
 
-			Locker crossLocker(target, thisObject);
+			//Locker crossLocker(target, thisObject); lets do dirty reads
 
 			if (current->doAwarenessCheck(target)) {
 				interrupt(target, ObserverEventType::OBJECTINRANGEMOVED);

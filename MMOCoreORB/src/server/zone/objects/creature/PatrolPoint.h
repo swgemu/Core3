@@ -45,6 +45,14 @@ public:
 		addSerializableVariables();
 	}
 
+#ifdef CXX11_COMPILER
+	PatrolPoint(PatrolPoint&& point) : Object(), Serializable(),
+			position(std::move(point.position)), reached(point.reached), estimatedTimeOfArrival(point.estimatedTimeOfArrival) {
+
+		addSerializableVariables();
+	}
+#endif
+
 	PatrolPoint& operator=(const PatrolPoint& p) {
 		if (this == &p)
 			return *this;
@@ -57,6 +65,21 @@ public:
 
 		return *this;
 	}
+
+#ifdef CXX11_COMPILER
+	PatrolPoint& operator=(PatrolPoint&& p) {
+		if (this == &p)
+			return *this;
+
+		position = std::move(p.position);
+
+		reached = p.reached;
+
+		estimatedTimeOfArrival = p.estimatedTimeOfArrival;
+
+		return *this;
+	}
+#endif
 
 	inline void addSerializableVariables() {
 		addSerializableVariable("position", &position);

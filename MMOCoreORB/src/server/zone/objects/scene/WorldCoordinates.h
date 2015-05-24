@@ -35,7 +35,25 @@ public:
 	WorldCoordinates(SceneObject* obj);
 	WorldCoordinates(const Vector3& position, SceneObject* cell);
 
+#ifdef CXX11_COMPILER
+	WorldCoordinates(WorldCoordinates&& c) : Object(), point(c.point), cell(std::move(c.cell)) {
+
+	}
+#endif
+
 	WorldCoordinates& operator=(const WorldCoordinates& c);
+
+#ifdef CXX11_COMPILER
+	WorldCoordinates& operator=(WorldCoordinates&& c) {
+		if (this == &c)
+			return *this;
+
+		point = c.point;
+		cell = std::move(c.cell);
+
+		return *this;
+	}
+#endif
 
 	bool operator==(const WorldCoordinates& c) {
 		return (point == c.point) && (cell == c.cell);

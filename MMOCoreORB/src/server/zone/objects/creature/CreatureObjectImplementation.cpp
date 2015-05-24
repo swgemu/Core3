@@ -3071,7 +3071,7 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 	faction = crc;
 
 	if (isPlayerCreature()) {
-		CreatureObject* player = _this.get().castTo<CreatureObject*>();
+		Reference<CreatureObject*> player = _this.get();
 
 		if (player == NULL)
 			return;
@@ -3115,6 +3115,8 @@ void CreatureObjectImplementation::setFaction(unsigned int crc) {
 					continue;
 				}
 			}
+
+			Locker crossLocker(pet, player);
 
 			pet->setFaction(crc);
 		}
