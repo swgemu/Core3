@@ -156,6 +156,9 @@ private:
 				ZoneServer* zoneServer = ghost->getZoneServer();
 				waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 			}
+
+			Locker locker(waypoint);
+
 			waypoint->setCustomObjectName(UnicodeString("Nearest mission for group"), false);
 			waypoint->setSpecialTypeID(WaypointObject::SPECIALTYPE_NEARESTMISSIONFORGROUP);
 			waypoint->setPlanetCRC(crc);
