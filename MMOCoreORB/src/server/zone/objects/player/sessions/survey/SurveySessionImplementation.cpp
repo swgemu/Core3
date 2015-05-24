@@ -309,6 +309,8 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 		newwaypoint = waypoint.get();
 	}
 
+	Locker locker(newwaypoint);
+
 	// Update new waypoint
 	newwaypoint->setCustomObjectName(UnicodeString("Resource Survey"), false);
 	newwaypoint->setPlanetCRC(surveyer->getZone()->getZoneCRC());
