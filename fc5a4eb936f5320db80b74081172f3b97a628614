@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_63957ce3",
+        "filename": "MMOCoreORB/src/server/zone/managers/jedi/JediManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-05-24T23:35:25Z",
+      "side": 1,
+      "message": "You cant do this because this code is called for each thread, so loadLuaConfig will be called several times on a singleton",
+      "revId": "fc5a4eb936f5320db80b74081172f3b97a628614",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
