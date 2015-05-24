@@ -65,6 +65,10 @@ void DroidObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 
 	SceneObjectImplementation::fillObjectMenuResponse( menuResponse, player ); // PetMenuComponent
 
+	if (getLinkedCreature().get() != player) {
+		return;
+	}
+
 	// Allow modules to add radials
 	PetControlDevice* pcd = getControlDevice().get().castTo<PetControlDevice*>();
 	for( int i=0; i<modules.size(); i++){

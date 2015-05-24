@@ -118,15 +118,17 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 		player->getPlayerObject()->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
 		return 0;
-	}
-	// Handle toggle on/off
-	if (selectedID == HARVEST_PROGRAM_COMMAND) {
+
+	} else if (selectedID == HARVEST_PROGRAM_COMMAND) { // Handle toggle on/off
 		if( controller == NULL )
 			return 0;
+
+		Locker locker(controller);
+
 		controller->setTrainingCommand( PetManager::HARVEST );
 		return 0;
-	}
-	if( selectedID == HARVEST_TOGGLE ){
+
+	} else if ( selectedID == HARVEST_TOGGLE ) {
 
 		ManagedReference<DroidObject*> droid = getDroidObject();
 		if( droid == NULL ){

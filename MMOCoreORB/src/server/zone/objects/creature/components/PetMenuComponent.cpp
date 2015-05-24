@@ -33,7 +33,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 	if (pet->isIncapacitated() && pet->isAttackableBy(player))
 		menuResponse->addRadialMenuItem(6, 3, "@ui_radial:combat_death_blow"); // Death Blow
 
-	if (!player->getPlayerObject()->isPrivileged() && pet->getLinkedCreature() != player) {
+	if (!player->getPlayerObject()->isPrivileged() && pet->getLinkedCreature().get() != player) {
 		return;
 	}
 
