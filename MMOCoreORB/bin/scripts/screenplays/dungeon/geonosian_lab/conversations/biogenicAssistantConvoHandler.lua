@@ -3,33 +3,29 @@ local ObjectManager = require("managers.object.object_manager")
 BiogenicAssistantConvoHandler = Object:new {}
 
 function BiogenicAssistantConvoHandler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNPC, selectedOption, pConversationScreen)
-	return ObjectManager.withCreatureObject(pConversingPlayer, function(player)
-		local screen = LuaConversationScreen(pConversationScreen)
-		local screenID = screen:getScreenID()
-		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if screenID == "init_talk" then
-			writeData(player:getObjectID() .. ":geo_assistant_talked", 1)
-		elseif screenID == "really_fantastic" then
-			GeonosianLabScreenPlay:giveGeoItem(pConversingPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")
-		end
-		return pConversationScreen
-	end)
+	local screen = LuaConversationScreen(pConversationScreen)
+	local screenID = screen:getScreenID()
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	if screenID == "init_talk" then
+		writeData(CreatureObject(pConversingPlayer):getObjectID() .. ":geo_assistant_talked", 1)
+	elseif screenID == "really_fantastic" then
+		GeonosianLabScreenPlay:giveGeoItem(pConversingPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")
+	end
+	return pConversationScreen
 end
 
 function BiogenicAssistantConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		local hasTalked = readData(player:getObjectID() .. ":geo_assistant_talked")
+	local hasTalked = readData(CreatureObject(pPlayer):getObjectID() .. ":geo_assistant_talked")
 
-		if (player:hasScreenPlayState(1, "geonosian_lab_datapad_delivered")) then
-			return convoTemplate:getScreen("thanks_for_delivering")
-		elseif (GeonosianLabScreenPlay:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
-			return convoTemplate:getScreen("please_deliver_codes")
-		elseif (hasTalked ~= nil and hasTalked == 1) then
-			return convoTemplate:getScreen("back_ask_favor")
-		end
-		return convoTemplate:getScreen("init_talk")
-	end)
+	if (CreatureObject(pPlayer):hasScreenPlayState(1, "geonosian_lab_datapad_delivered")) then
+		return convoTemplate:getScreen("thanks_for_delivering")
+	elseif (GeonosianLabScreenPlay:hasGeoItem(pPlayer, "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff")) then
+		return convoTemplate:getScreen("please_deliver_codes")
+	elseif (hasTalked ~= nil and hasTalked == 1) then
+		return convoTemplate:getScreen("back_ask_favor")
+	end
+	return convoTemplate:getScreen("init_talk")
 end
 
 function BiogenicAssistantConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)

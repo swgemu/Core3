@@ -5,8 +5,7 @@ local ChassisDealer = require("screenplays.space.chassis_dealer")
 chassis_dealer_conv_handler = Object:new{ }
 
 function chassis_dealer_conv_handler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	local player = LuaCreatureObject(pPlayer)
-	local pConversationSession = player:getConversationSession()
+	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
 
 	local pLastConversationScreen = nil
 
@@ -17,7 +16,7 @@ function chassis_dealer_conv_handler:getNextConversationScreen(pConversationTemp
 
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
 
-	if (pLastConversationScreen ~= nil) then	
+	if (pLastConversationScreen ~= nil) then
 		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
 		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
 
@@ -31,9 +30,6 @@ function chassis_dealer_conv_handler:runScreenHandlers(pConversationTemplate, pC
 	local screen = LuaConversationScreen(pConversationScreen)
 
 	local screenID = screen:getScreenID()
-
-	Logger:log("Screen ID is " .. screenID, LT_INFO)
-
 
 	if (screenID == "chassis_dealer_buy_chassis") then
 		local suiManager = LuaSuiManager()
@@ -58,56 +54,60 @@ function chassis_dealer_conv_handler:runScreenHandlers(pConversationTemplate, pC
 end
 
 function chassis_dealer_conv_handler:purchaseChassisConfirmation(pCreature, pSui, cancelPressed, arg0)
-	if (not cancelPressed) then
-		local creo = LuaSceneObject(pCreature)
-		local inventory = creo:getSlottedObject("inventory")
-		local suiManager = LuaSuiManager()
-		local selection = arg0 + 1
-
-		-- TODO CHECKS: Too many ships, no money, too many POB ships, inventory full.
-
-		local possibleBlueprints = ChassisDealer.getValidBlueprints(pCreature)
-		local selectedBluePrint = possibleBlueprints[selection]
-		local path = ChassisDealer.getPathByName(selectedBluePrint)
-
-		if (path == nil) then
-			local creature = LuaCreatureObject(pCreature)
-			creature:sendSystemMessage("@chassis_npc:failed")
-		else
-			local pBlueprint = getContainerObjectByTemplate(inventory, path, true)
-			suiManager:sendMessageBox(pBlueprint, pCreature, "@chassis_npc:confirm_transaction", "@chassis_npc:can_use", "@chassis_npc:btn_buy", "chassis_dealer_conv_handler", "purchaseChassis")
-		end
-
-		-- TODO: Add in certs...
+	if (cancelPressed) then
+		return
 	end
+
+	local pInventory = SceneObject(pCreature):getSlottedObject("inventory")
+	local suiManager = LuaSuiManager()
+	local selection = arg0 + 1
+
+	-- TODO CHECKS: Too many ships, no money, too many POB ships, inventory full.
+
+	local possibleBlueprints = ChassisDealer.getValidBlueprints(pCreature)
+	local selectedBluePrint = possibleBlueprints[selection]
+	local path = ChassisDealer.getPathByName(selectedBluePrint)
+
+	if (path == nil or pInventory == nil) then
+		CreatureObject(pCreature):sendSystemMessage("@chassis_npc:failed")
+	else
+		local pBlueprint = getContainerObjectByTemplate(pInventory, path, true)
+		suiManager:sendMessageBox(pBlueprint, pCreature, "@chassis_npc:confirm_transaction", "@chassis_npc:can_use", "@chassis_npc:btn_buy", "chassis_dealer_conv_handler", "purchaseChassis")
+	end
+
+	-- TODO: Add in certs...
 end
 
 function chassis_dealer_conv_handler:purchaseChassis(pCreature, pSui, cancelPressed, arg0)
-	local creo = LuaSceneObject(pCreature)
-	local inventory = creo:getSlottedObject("inventory")
+	if (pCreature == nil or pSui == nil) then
+		return
+	end
+
+	local pInventory = SceneObject(pCreature):getSlottedObject("inventory")
+
+	if (pInventory == nil) then
+		return
+	end
+
 	local suiBox = LuaSuiBox(pSui)
 	local pUsingObject = suiBox:getUsingObject()
-	local usingObject = LuaSceneObject(pUsingObject)
-	local deedPath = usingObject:getTemplateObjectPath()
 
-	local pChassis = ChassisDealer.getChassisFromBlueprint(deedPath)
+	if (pUsingObject == nil) then
+		return
+	end
 
-	Logger:log("Deed path is " .. deedPath, LT_INFO)
+	local deedPath = SceneObject(pUsingObject):getTemplateObjectPath()
+	local chassis = ChassisDealer.getChassisFromBlueprint(deedPath)
 
-	if (pChassis ~= nil) then
-		local chassis = giveItem(inventory, pChassis, -1)
+	if (chassis ~= nil) then
+		local pChassis = giveItem(pInventory, chassis, -1)
 
-		if (chassis ~= nil) then
-			local ochassis = LuaSceneObject(chassis)
-			ochassis:sendTo(pCreature)
-			local creature = LuaCreatureObject(pCreature)
-			creature:sendSystemMessage("@chassis_npc:bought_chassis")
+		if (pChassis ~= nil) then
+			SceneObject(pChassis):sendTo(pCreature)
+			CreatureObject(pCreature):sendSystemMessage("@chassis_npc:bought_chassis")
 		end
 
-		if (usingObject ~= nil) then
-			usingObject:destroyObjectFromWorld()
-			usingObject:destroyObjectFromDatabase()
-		end
-
+		SceneObject(pUsingObject):destroyObjectFromWorld()
+		SceneObject(pUsingObject):destroyObjectFromDatabase()
 	end
 end

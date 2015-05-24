@@ -9,7 +9,7 @@ ships = {
 	blacksun_heavy_s03 = {name = "Rihkxyrk Attack Ship Chassis Blueprints, Style 3", blueprint = "object/tangible/ship/components/chassis/blacksun_heavy_s03_chassis_token.iff", deedObject = "object/tangible/ship/crafted/chassis/blacksun_heavy_s03_deed.iff"},
 	blacksun_heavy_s04 = {name = "Rihkxyrk Attack Ship Chassis Blueprints, Style 4", blueprint = "object/tangible/ship/components/chassis/blacksun_heavy_s04_chassis_token.iff", deedObject = "object/tangible/ship/crafted/chassis/blacksun_heavy_s04_deed.iff"}
 }
-	
+
 ChassisDealer = Object:new {}
 
 function ChassisDealer.playerHasValidBlueprints(pCreatureObject)
@@ -21,52 +21,51 @@ function ChassisDealer.playerHasValidBlueprints(pCreatureObject)
 end
 
 function ChassisDealer.getValidBlueprints(pCreatureObject)
+	if (pCreatureObject == nil) then
+		return {}
+	end
 
-	local creo = LuaSceneObject(pCreatureObject)
-	local inventory = creo:getSlottedObject("inventory")
+	local pInventory = SceneObject(pCreatureObject):getSlottedObject("inventory")
 	local returnBluePrints = {}
 
+	if (pInventory == nil) then
+		return returnBluePrints
+	end
+
 	foreach(ships, function(theShip)
-		local pointer = getContainerObjectByTemplate(inventory, theShip.blueprint, true)
-		if (pointer ~= nil) then
-			local pString = LuaSceneObject(pointer)
-			local string = pString:getCustomObjectName()
-			if (string ~= nil or string ~= "") then
-				Logger:log("They have a " .. string, LT_INFO)
+		local pObject = getContainerObjectByTemplate(pInventory, theShip.blueprint, true)
+		if (pObject ~= nil) then
+			local string = SceneObject(pObject):getCustomObjectName()
+			if (string ~= nil and string ~= "") then
 				table.insert(returnBluePrints, string)
 			end
 		end
 	end)
-	
+
 	return returnBluePrints
-	
 end
 
-function ChassisDealer.getPathByName(pBlueprintObjectName)
+function ChassisDealer.getPathByName(objectName)
 	local returnString = nil
-	
+
 	foreach(ships, function(theShip)
-			local stringOfName = theShip.name
-			if (string.find(pBlueprintObjectName, stringOfName) ~= nil) then
-				returnString = theShip.blueprint
-				Logger:log("Returning " .. returnString, LT_INFO)
-			end
+		if (string.find(objectName, theShip.name) ~= nil) then
+			returnString = theShip.blueprint
+		end
 	end)
-	
+
 	return returnString
-	
 end
 
-function ChassisDealer.getChassisFromBlueprint(pObjectPath)
+function ChassisDealer.getChassisFromBlueprint(objectPath)
 	local returnString = nil
 
 	foreach(ships, function(theShip)
-			local string = theShip.blueprint
-			if (string == pObjectPath) then
-				returnString = theShip.deedObject
-			end
+		if (theShip.blueprint == objectPath) then
+			returnString = theShip.deedObject
+		end
 	end)
-	
+
 	return returnString
 end
 

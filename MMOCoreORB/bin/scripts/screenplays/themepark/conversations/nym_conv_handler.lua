@@ -9,24 +9,25 @@ function NymConvoHandler:setThemePark(themeParkNew)
 end
 
 function NymConvoHandler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-	return ObjectManager.withSceneObject(conversingNPC, function(npcObject)
-		if (npcObject:getCustomObjectName() == "Hacker") then
-			return self:runHackerScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-		elseif (npcObject:getObjectName() == "nym") then
-			return self:runNymScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-		elseif (npcObject:getCustomObjectName() == "Choster (Retired Engineer)") then
-			return self:runChosterScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-		elseif (npcObject:getObjectName() == "jinkins") then
-			return self:runJinkinsScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-		elseif (npcObject:getObjectName() == "kole") then
-			return self:runKoleScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-		elseif (npcObject:getCustomObjectName() == "Berema") then
-			return self:runBeremaScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-		elseif (npcObject:getCustomObjectName() == "Sergeant Moore (Retired)") then
-			return self:runMooreScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
-		end
-		return conversationScreen
-	end)
+	local customName = SceneObject(conversingNPC):getCustomObjectName()
+	local objectName = SceneObject(conversingNPC):getObjectName()
+
+	if (customName == "Hacker") then
+		return self:runHackerScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	elseif (objectName == "nym") then
+		return self:runNymScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	elseif (customName == "Choster (Retired Engineer)") then
+		return self:runChosterScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	elseif (objectName == "jinkins") then
+		return self:runJinkinsScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	elseif (objectName == "kole") then
+		return self:runKoleScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	elseif (customName == "Berema") then
+		return self:runBeremaScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	elseif (customName == "Sergeant Moore (Retired)") then
+		return self:runMooreScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	end
+	return conversationScreen
 end
 
 function NymConvoHandler:runNymScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
@@ -36,6 +37,8 @@ function NymConvoHandler:runNymScreenHandlers(conversationTemplate, conversingPl
 
 	return ObjectManager.withCreatureAndPlayerObject(conversingPlayer, function(player,playerObject)
 		local conversationScreen = screen:cloneScreen()
+
+		local playerID = player:getObjectID()
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		if (screenID == "first_time_hello" or screenID == "yo_es_nym") then
 			if (not player:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc")) or (not player:hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
@@ -44,22 +47,22 @@ function NymConvoHandler:runNymScreenHandlers(conversationTemplate, conversingPl
 				clonedConversation:addOption("@celebrity/nym:tell_me_quest", "quest_info")
 			end
 		elseif (screenID == "go_lab") then
-			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymFacilityWaypointID"))
+			local oldWaypointID = tonumber(getQuestStatus(playerID .. ":nymFacilityWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				removeQuestStatus(player:getObjectID() .. ":nymFacilityWaypointID")
+				removeQuestStatus(playerID .. ":nymFacilityWaypointID")
 			end
 			local waypointID = playerObject:addWaypoint("lok", "Imperial Research Facility", "Imperial Research Facility", ThemeParkNym.waypointMap.researchfacility.x, ThemeParkNym.waypointMap.researchfacility.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
-			setQuestStatus(player:getObjectID() .. ":nymFacilityWaypointID", waypointID)
+			setQuestStatus(playerID .. ":nymFacilityWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_nymNpc")
 		elseif (screenID == "go_to_officer") then
-			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymGamblerWaypointID"))
+			local oldWaypointID = tonumber(getQuestStatus(playerID .. ":nymGamblerWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				removeQuestStatus(player:getObjectID() .. ":nymGamblerWaypointID")
+				removeQuestStatus(playerID .. ":nymGamblerWaypointID")
 			end
 			local waypointID = playerObject:addWaypoint("lok", "Nym's Informant", "Nym's Informant", ThemeParkNym.waypointMap.gambler.x, ThemeParkNym.waypointMap.gambler.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
-			setQuestStatus(player:getObjectID() .. ":nymGamblerWaypointID", waypointID)
+			setQuestStatus(playerID .. ":nymGamblerWaypointID", waypointID)
 			self.themePark:setState(player, 2, "nym_theme_park_nymNpc")
 		end
 		return conversationScreen
@@ -69,43 +72,43 @@ end
 function NymConvoHandler:runChosterScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
-	return ObjectManager.withCreatureAndPlayerObject(conversingPlayer, function(player,playerObject)
-		local conversationScreen = screen:cloneScreen()
-		local clonedConversation = LuaConversationScreen(conversationScreen)
-		if (screenID == "hello") then
-			if (player:hasScreenPlayState(1, "nym_theme_park_chosterNpc")) then
-				clonedConversation:addOption("@celebrity/lok_engineer:who_are_you", "just_a_guy")
-			else
-				clonedConversation:addOption("@celebrity/lok_engineer:who_are_you_2", "go_away_dude")
-			end
+	local conversationScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(conversationScreen)
+	if (screenID == "hello") then
+		if (CreatureObject(conversingPlayer):hasScreenPlayState(1, "nym_theme_park_chosterNpc")) then
+			clonedConversation:addOption("@celebrity/lok_engineer:who_are_you", "just_a_guy")
+		else
+			clonedConversation:addOption("@celebrity/lok_engineer:who_are_you_2", "go_away_dude")
 		end
-		return conversationScreen
-	end)
+	end
+	return conversationScreen
 end
 
 function NymConvoHandler:runJinkinsScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
+
 	return ObjectManager.withCreatureAndPlayerObject(conversingPlayer, function(player,playerObject)
+		local playerID = player:getObjectID()
 		local conversationScreen = screen:cloneScreen()
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		if (screenID == "heres_droid_memory") then
-			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymPirateCaveWaypointID"))
+			local oldWaypointID = tonumber(getQuestStatus(playerID .. ":nymPirateCaveWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				removeQuestStatus(player:getObjectID() .. ":nymPirateCaveWaypointID")
+				removeQuestStatus(playerID .. ":nymPirateCaveWaypointID")
 			end
 			local waypointID = playerObject:addWaypoint("lok", "Sulfur Lake Pirate Hideout", "", ThemeParkNym.waypointMap.piratecave.x, ThemeParkNym.waypointMap.piratecave.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
-			setQuestStatus(player:getObjectID() .. ":nymPirateCaveWaypointID", waypointID)
+			setQuestStatus(playerID .. ":nymPirateCaveWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_jinkinsNpc")
 		elseif (screenID == "heres_the_guy") then
-			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymHermitWaypointID"))
+			local oldWaypointID = tonumber(getQuestStatus(playerID .. ":nymHermitWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				removeQuestStatus(player:getObjectID() .. ":nymHermitWaypointID")
+				removeQuestStatus(playerID .. ":nymHermitWaypointID")
 			end
 			local waypointID = playerObject:addWaypoint("lok", "Hermit", "", ThemeParkNym.waypointMap.choster.x, ThemeParkNym.waypointMap.choster.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
-			setQuestStatus(player:getObjectID() .. ":nymHermitWaypointID", waypointID)
+			setQuestStatus(playerID .. ":nymHermitWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_chosterNpc")
 		elseif (screenID == "good_work" and clonedConversation:getOptionCount() == 0) then
 			if (player:hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
@@ -122,7 +125,9 @@ end
 function NymConvoHandler:runKoleScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
+
 	return ObjectManager.withCreatureAndPlayerObject(conversingPlayer, function(player,playerObject)
+		local playerID = player:getObjectID()
 		local conversationScreen = screen:cloneScreen()
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		if (screenID == "first_time_hello" or screenID == "jinkins_is_friend" or screenID == "im_kole" or screenID == "nym_is_chief") then
@@ -132,22 +137,22 @@ function NymConvoHandler:runKoleScreenHandlers(conversationTemplate, conversingP
 				clonedConversation:addOption("@celebrity/kole:tell_me_quest", "quest_info")
 			end
 		elseif (screenID == "here_is_gas") then
-			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymGasMineWaypointID"))
+			local oldWaypointID = tonumber(getQuestStatus(playerID .. ":nymGasMineWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				removeQuestStatus(player:getObjectID() .. ":nymGasMineWaypointID")
+				removeQuestStatus(playerID .. ":nymGasMineWaypointID")
 			end
 			local waypointID = playerObject:addWaypoint("lok", "Imperial Gas Mine", "", ThemeParkNym.waypointMap.gasmine.x, ThemeParkNym.waypointMap.gasmine.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
-			setQuestStatus(player:getObjectID() .. ":nymGasMineWaypointID", waypointID)
+			setQuestStatus(playerID .. ":nymGasMineWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_koleNpc")
 		elseif (screenID == "here_is_imperial") then
-			local oldWaypointID = tonumber(getQuestStatus(player:getObjectID() .. ":nymBribeWaypointID"))
+			local oldWaypointID = tonumber(getQuestStatus(playerID .. ":nymBribeWaypointID"))
 			if (oldWaypointID ~= 0) then
 				playerObject:removeWaypoint(oldWaypointID, true)
-				removeQuestStatus(player:getObjectID() .. ":nymBribeWaypointID")
+				removeQuestStatus(playerID .. ":nymBribeWaypointID")
 			end
 			local waypointID = playerObject:addWaypoint("lok", "Sergeant Moore", "", ThemeParkNym.waypointMap.imperialbribe.x, ThemeParkNym.waypointMap.imperialbribe.y, WAYPOINT_COLOR_PURPLE, true, true, 0)
-			setQuestStatus(player:getObjectID() .. ":nymBribeWaypointID", waypointID)
+			setQuestStatus(playerID .. ":nymBribeWaypointID", waypointID)
 			self.themePark:setState(player, 1, "nym_theme_park_mooreNpc")
 		end
 		return conversationScreen
@@ -157,52 +162,52 @@ end
 function NymConvoHandler:runMooreScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
-	return ObjectManager.withCreatureObject(conversingPlayer, function(player)
-		local conversationScreen = screen:cloneScreen()
-		local clonedConversation = LuaConversationScreen(conversationScreen)
-		local playerCredits = player:getCashCredits()
-		if (screenID == "leave_me_alone") then
-			if (not player:hasScreenPlayState(1, "nym_theme_park_mooreNpc")) then
-				clonedConversation:addOption("@celebrity/imperial_bribe:who_are_you", "nunya")
-			else
-				clonedConversation:addOption("@celebrity/imperial_bribe:perhaps_bribe", "what_you_got")
-			end
+
+	local conversationScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(conversationScreen)
+	local playerCredits = CreatureObject(conversingPlayer):getCashCredits()
+	if (screenID == "leave_me_alone") then
+		if (not CreatureObject(conversingPlayer):hasScreenPlayState(1, "nym_theme_park_mooreNpc")) then
+			clonedConversation:addOption("@celebrity/imperial_bribe:who_are_you", "nunya")
+		else
+			clonedConversation:addOption("@celebrity/imperial_bribe:perhaps_bribe", "what_you_got")
 		end
-		if (screenID == "what_you_got") then
-			if (playerCredits >= 50) then
-				clonedConversation:addOption("@celebrity/imperial_bribe:give_50", "medium_info")
-			else
-				clonedConversation:addOption("@celebrity/imperial_bribe:give_50", "you_got_nothing")
-			end
-			if (playerCredits >= 100) then
-				clonedConversation:addOption("@celebrity/imperial_bribe:give_100", "the_good_stuff")
-			else
-				clonedConversation:addOption("@celebrity/imperial_bribe:give_100", "you_got_nothing")
-			end
-		elseif (screenID == "medium_info") then
-			player:subtractCashCredits(50)
-		elseif (screenID == "the_good_stuff") then
-			player:subtractCashCredits(100)
-		elseif (screenID == "need_more_cash") then
-			if (playerCredits >= 100) then
-				clonedConversation:addOption("@celebrity/imperial_bribe:add_100_bribe", "end_droideka_info")
-			else
-				clonedConversation:addOption("@celebrity/imperial_bribe:add_100_bribe", "you_got_nothing")
-			end
-		elseif (screenID == "need_more_money") then
-			if (playerCredits >= 100) then
-				clonedConversation:addOption("@celebrity/imperial_bribe:add_100_bribe", "end_base_info")
-			else
-				clonedConversation:addOption("@celebrity/imperial_bribe:add_100_bribe", "you_got_nothing")
-			end
-		elseif ((screenID == "end_base_info") or (screenID == "end_droideka_info")) then
-			player:subtractCashCredits(100)
+	end
+	if (screenID == "what_you_got") then
+		if (playerCredits >= 50) then
+			clonedConversation:addOption("@celebrity/imperial_bribe:give_50", "medium_info")
+		else
+			clonedConversation:addOption("@celebrity/imperial_bribe:give_50", "you_got_nothing")
 		end
-		if (screenID ~= "leave_me_alone" and screenID ~= "what_you_got") then
-			clonedConversation:addOption("@celebrity/imperial_bribe:end_convo", "thats_all")
+		if (playerCredits >= 100) then
+			clonedConversation:addOption("@celebrity/imperial_bribe:give_100", "the_good_stuff")
+		else
+			clonedConversation:addOption("@celebrity/imperial_bribe:give_100", "you_got_nothing")
 		end
-		return conversationScreen
-	end)
+	elseif (screenID == "medium_info") then
+		CreatureObject(conversingPlayer):subtractCashCredits(50)
+	elseif (screenID == "the_good_stuff") then
+		CreatureObject(conversingPlayer):subtractCashCredits(100)
+	elseif (screenID == "need_more_cash") then
+		if (playerCredits >= 100) then
+			clonedConversation:addOption("@celebrity/imperial_bribe:add_100_bribe", "end_droideka_info")
+		else
+			clonedConversation:addOption("@celebrity/imperial_bribe:add_100_bribe", "you_got_nothing")
+		end
+	elseif (screenID == "need_more_money") then
+		if (playerCredits >= 100) then
+			clonedConversation:addOption("@celebrity/imperial_bribe:add_100_bribe", "end_base_info")
+		else
+			clonedConversation:addOption("@celebrity/imperial_bribe:add_100_bribe", "you_got_nothing")
+		end
+	elseif ((screenID == "end_base_info") or (screenID == "end_droideka_info")) then
+		CreatureObject(conversingPlayer):subtractCashCredits(100)
+	end
+	if (screenID ~= "leave_me_alone" and screenID ~= "what_you_got") then
+		clonedConversation:addOption("@celebrity/imperial_bribe:end_convo", "thats_all")
+	end
+
+	return conversationScreen
 end
 
 function NymConvoHandler:runHackerScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
@@ -259,19 +264,18 @@ function NymConvoHandler:runHackerScreenHandlers(conversationTemplate, conversin
 end
 
 function NymConvoHandler:cellPlayerPermissionsObserver(pCreature, pCreature2)
-	return ObjectManager.withSceneObject(pCreature, function(creatureSceneObject)
-		if creatureSceneObject:isCreatureObject() then
-			for i = 1, # self.themePark.permissionMap, 1 do
-				self.themePark:setCellPermissions(self.themePark.permissionMap[i], pCreature)
-			end
+	if SceneObject(pCreature):isCreatureObject() then
+		for i = 1, # self.themePark.permissionMap, 1 do
+			self.themePark:setCellPermissions(self.themePark.permissionMap[i], pCreature)
 		end
-		return 0
-	end)
+	end
+	return 0
 end
 
 function NymConvoHandler:runBeremaScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
 	local screen = LuaConversationScreen(conversationScreen)
 	local screenID = screen:getScreenID()
+
 	return ObjectManager.withCreatureObject(conversingPlayer, function(player)
 		local objectID = player:getObjectID()
 		local conversationScreen = screen:cloneScreen()
@@ -349,36 +353,34 @@ function NymConvoHandler:runBeremaScreenHandlers(conversationTemplate, conversin
 end
 
 function NymConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
-	return ObjectManager.withSceneObject(pNpc, function(npcObject)
-		if (npcObject:getCustomObjectName() == "Hacker") then
-			createObserver(SCREENPLAYSTATECHANGED, self.themePark.className, "cellPlayerPermissionsObserver", pPlayer)
-			return self:getInitialHackerScreen(pPlayer, pNpc, pConversationTemplate)
-		elseif (npcObject:getObjectName() == "nym") then
-			return self:getInitialNymScreen(pPlayer, pNpc, pConversationTemplate)
-		elseif (npcObject:getCustomObjectName() == "Choster (Retired Engineer)") then
-			return self:getInitialChosterScreen(pPlayer, pNpc, pConversationTemplate)
-		elseif (npcObject:getObjectName() == "jinkins") then
-			return self:getInitialJinkinsScreen(pPlayer, pNpc, pConversationTemplate)
-		elseif (npcObject:getObjectName() == "kole") then
-			return self:getInitialKoleScreen(pPlayer, pNpc, pConversationTemplate)
-		elseif (npcObject:getCustomObjectName() == "Berema") then
-			return self:getInitialBeremaScreen(pPlayer, pNpc, pConversationTemplate)
-		elseif (npcObject:getCustomObjectName() == "Sergeant Moore (Retired)") then
-			return self:getInitialMooreScreen(pPlayer, pNpc, pConversationTemplate)
-		end
-		return 0
-	end)
+	local customName = SceneObject(pNpc):getCustomObjectName()
+	local objectName = SceneObject(pNpc):getObjectName()
+
+	if (customName == "Hacker") then
+		createObserver(SCREENPLAYSTATECHANGED, self.themePark.className, "cellPlayerPermissionsObserver", pPlayer)
+		return self:getInitialHackerScreen(pPlayer, pNpc, pConversationTemplate)
+	elseif (objectName == "nym") then
+		return self:getInitialNymScreen(pPlayer, pNpc, pConversationTemplate)
+	elseif (customName == "Choster (Retired Engineer)") then
+		return self:getInitialChosterScreen(pPlayer, pNpc, pConversationTemplate)
+	elseif (objectName == "jinkins") then
+		return self:getInitialJinkinsScreen(pPlayer, pNpc, pConversationTemplate)
+	elseif (objectName == "kole") then
+		return self:getInitialKoleScreen(pPlayer, pNpc, pConversationTemplate)
+	elseif (customName == "Berema") then
+		return self:getInitialBeremaScreen(pPlayer, pNpc, pConversationTemplate)
+	elseif (customName == "Sergeant Moore (Retired)") then
+		return self:getInitialMooreScreen(pPlayer, pNpc, pConversationTemplate)
+	end
 end
 
 function NymConvoHandler:getInitialHackerScreen(pPlayer, pNpc, pConversationTemplate)
-	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
-		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		-- Hacker states: 1= guessed color, 2 = guessed math, 4 = guessed joke, 8 = door opened
-		if (conversingPlayer:hasScreenPlayState(8, "nym_theme_park_hackerNpc")) then
-			return convoTemplate:getScreen("doors_open")
-		end
-		return convoTemplate:getScreen("help_me_hack")
-	end)
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	-- Hacker states: 1= guessed color, 2 = guessed math, 4 = guessed joke, 8 = door opened
+	if (CreatureObject(pPlayer):hasScreenPlayState(8, "nym_theme_park_hackerNpc")) then
+		return convoTemplate:getScreen("doors_open")
+	end
+	return convoTemplate:getScreen("help_me_hack")
 end
 
 function NymConvoHandler:getInitialNymScreen(pPlayer, pNpc, pConversationTemplate)
@@ -401,50 +403,42 @@ function NymConvoHandler:getInitialNymScreen(pPlayer, pNpc, pConversationTemplat
 end
 
 function NymConvoHandler:getInitialChosterScreen(pPlayer, pNpc, pConversationTemplate)
-	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
-		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		-- Choster states: 1 = Sent to talk to choster, 2 = has talked to choster
-		if (conversingPlayer:hasScreenPlayState(2, "nym_theme_park_chosterNpc")) then
-			return convoTemplate:getScreen("more_questions")
-		end
-		return convoTemplate:getScreen("hello")
-	end)
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	-- Choster states: 1 = Sent to talk to choster, 2 = has talked to choster
+	if (CreatureObject(pPlayer):hasScreenPlayState(2, "nym_theme_park_chosterNpc")) then
+		return convoTemplate:getScreen("more_questions")
+	end
+	return convoTemplate:getScreen("hello")
 end
 
 function NymConvoHandler:getInitialJinkinsScreen(pPlayer, pNpc, pConversationTemplate)
-	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
-		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		-- Jinkins states: 1 = started quest, 2 = completed quest
-		if (conversingPlayer:hasScreenPlayState(2, "nym_theme_park_jinkinsNpc")) then
-			return convoTemplate:getScreen("good_work")
-		elseif (conversingPlayer:hasScreenPlayState(1, "nym_theme_park_jinkinsNpc")) then
-			return convoTemplate:getScreen("you_got_memory")
-		end
-		return convoTemplate:getScreen("first_time_hello")
-	end)
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	-- Jinkins states: 1 = started quest, 2 = completed quest
+	if (CreatureObject(pPlayer):hasScreenPlayState(2, "nym_theme_park_jinkinsNpc")) then
+		return convoTemplate:getScreen("good_work")
+	elseif (CreatureObject(pPlayer):hasScreenPlayState(1, "nym_theme_park_jinkinsNpc")) then
+		return convoTemplate:getScreen("you_got_memory")
+	end
+	return convoTemplate:getScreen("first_time_hello")
 end
 
 function NymConvoHandler:getInitialKoleScreen(pPlayer, pNpc, pConversationTemplate)
-	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
-		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		-- Kole states: 1 = started quest, 2 = completed quest
-		if (conversingPlayer:hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
-			return convoTemplate:getScreen("good_work")
-		elseif (conversingPlayer:hasScreenPlayState(1, "nym_theme_park_koleNpc")) then
-			return convoTemplate:getScreen("bring_gas")
-		end
-		return convoTemplate:getScreen("first_time_hello")
-	end)
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	-- Kole states: 1 = started quest, 2 = completed quest
+	if (CreatureObject(pPlayer):hasScreenPlayState(2, "nym_theme_park_koleNpc")) then
+		return convoTemplate:getScreen("good_work")
+	elseif (CreatureObject(pPlayer):hasScreenPlayState(1, "nym_theme_park_koleNpc")) then
+		return convoTemplate:getScreen("bring_gas")
+	end
+	return convoTemplate:getScreen("first_time_hello")
 end
 
 function NymConvoHandler:getInitialBeremaScreen(pPlayer, pNpc, pConversationTemplate)
-	return ObjectManager.withCreatureObject(pPlayer, function(conversingPlayer)
-		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (conversingPlayer:hasScreenPlayState(2, "nym_theme_park_nymNpc") and not conversingPlayer:hasScreenPlayState(16, "nym_theme_park_nymNpc")) then
-			return convoTemplate:getScreen("nym_sent_you")
-		end
-		return convoTemplate:getScreen("play_game")
-	end)
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	if (CreatureObject(pPlayer):hasScreenPlayState(2, "nym_theme_park_nymNpc") and not CreatureObject(pPlayer):hasScreenPlayState(16, "nym_theme_park_nymNpc")) then
+		return convoTemplate:getScreen("nym_sent_you")
+	end
+	return convoTemplate:getScreen("play_game")
 end
 
 function NymConvoHandler:getInitialMooreScreen(pPlayer, pNpc, pConversationTemplate)
@@ -453,21 +447,19 @@ function NymConvoHandler:getInitialMooreScreen(pPlayer, pNpc, pConversationTempl
 end
 
 function NymConvoHandler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
-	return ObjectManager.withCreatureObject(pPlayer, function(player)
-		local pConversationSession = player:getConversationSession()
-		local pLastConversationScreen = nil
-		if (pConversationSession ~= nil) then
-			local conversationSession = LuaConversationSession(pConversationSession)
-			pLastConversationScreen = conversationSession:getLastConversationScreen()
-		end
-		local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (pLastConversationScreen ~= nil) then
-			local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-			local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-			return conversationTemplate:getScreen(optionLink)
-		end
-		return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
-	end)
+	local pConversationSession = CreatureObject(pPlayer):getConversationSession()
+	local pLastConversationScreen = nil
+	if (pConversationSession ~= nil) then
+		local conversationSession = LuaConversationSession(pConversationSession)
+		pLastConversationScreen = conversationSession:getLastConversationScreen()
+	end
+	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
+	if (pLastConversationScreen ~= nil) then
+		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
+		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
+		return conversationTemplate:getScreen(optionLink)
+	end
+	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
 end
 
 function NymConvoHandler:writeObjectData(objectID, key, value, questGiver)

@@ -9,69 +9,63 @@ function record_keeper_conv_handler:setThemePark(keeperNew)
 end
 
 function record_keeper_conv_handler:getNextConversationScreen(pConversationTemplate, pConversingPlayer, selectedOption, pConversingNpc)
-	return ObjectManager.withCreatureObject(pConversingPlayer, function(player)
-		local pConversationSession = player:getConversationSession()
-		local pLastConversationScreen = nil
-		if (pConversationSession ~= nil) then
-			local conversationSession = LuaConversationSession(pConversationSession)
-			pLastConversationScreen = conversationSession:getLastConversationScreen()
-		end
-		local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
-		if (pLastConversationScreen ~= nil) then
-			local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
-			local optionLink = lastConversationScreen:getOptionLink(selectedOption)
-			return conversationTemplate:getScreen(optionLink)
-		end
-		return self:getInitialScreen(pConversingPlayer, pConversationTemplate)
-	end)
+	local pConversationSession = CreatureObject(pConversingPlayer):getConversationSession()
+	local pLastConversationScreen = nil
+	if (pConversationSession ~= nil) then
+		local conversationSession = LuaConversationSession(pConversationSession)
+		pLastConversationScreen = conversationSession:getLastConversationScreen()
+	end
+	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
+	if (pLastConversationScreen ~= nil) then
+		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
+		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
+		return conversationTemplate:getScreen(optionLink)
+	end
+	return self:getInitialScreen(pConversingPlayer, pConversationTemplate)
 end
 
 function record_keeper_conv_handler:getInitialScreen(pConversingPlayer, pConversationTemplate)
-	return ObjectManager.withCreatureObject(pConversingPlayer, function(player)
-		local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-		-- is this a factionol record keeper?
-		if self.keeper == nil then
-			return convoTemplate:getScreen("init")
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+	-- is this a factionol record keeper?
+	if self.keeper == nil then
+		return convoTemplate:getScreen("init")
+	end
+
+	-- has this player used this keeper before?
+	if self.keeper:available(pConversingPlayer) then
+		if self.keeper:needsFaction() then
+			if not self.keeper:hasFaction(self.keeper.faction,pConversingPlayer) then
+				return convoTemplate:getScreen("not_faction")
+			end
 		end
 
-		-- has this player used this keeper before?
-		if self.keeper:available(pConversingPlayer) then
-			if self.keeper:needsFaction() then
-				if not self.keeper:hasFaction(self.keeper.faction,pConversingPlayer) then
-					return convoTemplate:getScreen("not_faction")
-				end
-			end
-
-			if not self.keeper:hasStartedPark(pConversingPlayer) then
-				return convoTemplate:getScreen("not_started")
-			end
-
-			return convoTemplate:getScreen("start")
-		else
-			-- keeper used up
-			return convoTemplate:getScreen("completed")
+		if not self.keeper:hasStartedPark(pConversingPlayer) then
+			return convoTemplate:getScreen("not_started")
 		end
-	end)
+
+		return convoTemplate:getScreen("start")
+	else
+		-- keeper used up
+		return convoTemplate:getScreen("completed")
+	end
 end
 
 function record_keeper_conv_handler:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	local screen = LuaConversationScreen(pConversationScreen)
 	local screenID = screen:getScreenID()
 	local conversationScreen = screen:cloneScreen()
-	
-	return ObjectManager.withCreatureAndPlayerObject(pConversingPlayer, function(player,playerObject)
-		local objectID = player:getObjectID()
-		
-		if screenID == "reset" then
-			self.keeper:wipeQuests(pConversingPlayer)
-			-- goto next screen
-		end
-		
-		if screenID == "continue" then
-			self.keeper:resetQuests(pConversingPlayer)
-			-- goto next screen
-		end
-		
-		return conversationScreen
-	end)	
+
+	local objectID = CreatureObject(pConversingPlayer):getObjectID()
+
+	if screenID == "reset" then
+		self.keeper:wipeQuests(pConversingPlayer)
+		-- goto next screen
+	end
+
+	if screenID == "continue" then
+		self.keeper:resetQuests(pConversingPlayer)
+		-- goto next screen
+	end
+
+	return conversationScreen
 end
