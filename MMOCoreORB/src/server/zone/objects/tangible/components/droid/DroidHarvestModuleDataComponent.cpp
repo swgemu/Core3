@@ -123,6 +123,9 @@ int DroidHarvestModuleDataComponent::handleObjectMenuSelect(CreatureObject* play
 	if (selectedID == HARVEST_PROGRAM_COMMAND) {
 		if( controller == NULL )
 			return 0;
+
+		Locker locker(controller);
+
 		controller->setTrainingCommand( PetManager::HARVEST );
 		return 0;
 	}
