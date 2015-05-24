@@ -50,11 +50,13 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 
 int DroidObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID){
 
-	// Allow modules to handle radials if desired
-	PetControlDevice* pcd = getControlDevice().get().castTo<PetControlDevice*>();
-	for( int i=0; i<modules.size(); i++){
-		BaseDroidModuleComponent* module = modules.get(i);
-		module->handleObjectMenuSelect(player, selectedID, pcd);
+	if (getLinkedCreature().get() == player) {
+		// Allow modules to handle radials if desired
+		PetControlDevice* pcd = getControlDevice().get().castTo<PetControlDevice*>();
+		for( int i=0; i<modules.size(); i++){
+			BaseDroidModuleComponent* module = modules.get(i);
+			module->handleObjectMenuSelect(player, selectedID, pcd);
+		}
 	}
 
 	return SceneObjectImplementation::handleObjectMenuSelect(player, selectedID); // PetMenuComponent
