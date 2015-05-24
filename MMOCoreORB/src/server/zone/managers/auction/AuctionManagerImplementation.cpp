@@ -1619,10 +1619,15 @@ void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item) {
 		float waypointY = vendor->getWorldPositionY();
 
 		ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 0).castTo<WaypointObject*>();
+
+		Locker lockerWaypoint(waypoint);
+
 		waypoint->setPlanetCRC(vendor->getPlanetCRC());
 		waypoint->setPosition(waypointX, 0, waypointY);
 
 		waypoint->setCustomObjectName(vendor->getDisplayedName(), false);
+
+		lockerWaypoint.release();
 
 		String itemName = removeColorCodes(item->getItemName());
 
