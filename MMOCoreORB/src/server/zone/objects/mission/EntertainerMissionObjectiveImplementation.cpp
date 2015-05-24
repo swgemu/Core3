@@ -73,6 +73,8 @@ void EntertainerMissionObjectiveImplementation::activate() {
 	if (waypoint == NULL)
 		waypoint = mission->createWaypoint();
 
+	Locker wplocker(waypoint);
+
 	waypoint->setPlanetCRC(mission->getStartPlanetCRC());
 	waypoint->setPosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 	waypoint->setActive(true);

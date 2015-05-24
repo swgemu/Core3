@@ -91,6 +91,7 @@ public:
 				updateToSpawnableTargetPosition();
 				if (playerPosition.distanceTo(currentPosition) < 500.0f) {
 					move = false;
+					Locker olocker(objectiveRef);
 					objectiveRef->spawnTarget(zoneName);
 				}
 			}

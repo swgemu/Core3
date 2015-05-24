@@ -81,6 +81,8 @@ void DestroyMissionObjectiveImplementation::activate() {
 	if (waypoint == NULL)
 		waypoint = mission->createWaypoint();
 
+	Locker locker(waypoint);
+
 	waypoint->setPlanetCRC(mission->getStartPlanet().hashCode());
 	waypoint->setPosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 	waypoint->setActive(true);
@@ -133,6 +135,8 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 }
 
 void DestroyMissionObjectiveImplementation::spawnLair() {
+	Locker _lock(_this.get());
+
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	ManagedReference<MissionSpawnActiveArea* > spawnActiveArea = this->spawnActiveArea;
@@ -149,11 +153,14 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	spawnActiveArea->destroyObjectFromWorld(true);
 
+	locker.release();
+
 	Vector3 pos = findValidSpawnPosition(zone);
 
 	ManagedReference<WaypointObject*> waypoint = mission->getWaypointToMission();
 
 	if (waypoint == NULL) {
+		Locker clocker(mission, _this.get());
 		waypoint = mission->createWaypoint();
 	}
 
@@ -194,7 +201,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	 		return;
 	 	}
 
-	 	Locker locker(lairObject);
+	 	Locker llocker(lairObject);
 
 	 	lairObject->setFaction(lair->getFaction());
 	 	lairObject->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
@@ -227,6 +234,8 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	}
 
 	if (lairObject != NULL && lairObject->getZone() == NULL) {
+		Locker llocker(lairObject);
+
 		zone->transferObject(lairObject, -1, true);
 	}
 }

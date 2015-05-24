@@ -468,6 +468,8 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 	for (int i = 0; i < bagSize; ++i) {
 		Reference<MissionObject*> mission = missionBag->getContainerObject(i).castTo<MissionObject*>( );
 
+		Locker locker(mission);
+
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
 
@@ -1912,6 +1914,7 @@ void MissionManagerImplementation::deactivateMissions(CreatureObject* player) {
 				//Check if it is target or destination NPC
 				MissionObjective* objective = mission->getMissionObjective();
 				if (objective != NULL) {
+					Locker locker(objective);
 					objective->deactivate();
 				}
 			}

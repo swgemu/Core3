@@ -19,107 +19,116 @@ import engine.util.u3d.Vector3;
 class MissionObjective extends ManagedObject implements Logger {
 	@dereferenced
 	private SortedVector<MissionObserver> observers;
-	
+
 	@weakReference
 	protected MissionObject mission;
-	
+
 	protected unsigned int objectiveType;
-	
+
 	@dereferenced
 	protected Time missionStartTime;
-	
+
 	protected FailMissionAfterCertainTimeTask failTask;
-	
+
 	protected unsigned long timeRemaining;
-	
+
 	protected transient boolean activated;
 
 	public MissionObjective(MissionObject parent) {
 		mission = parent;
-		
+
 		Logger.setLoggingName("MissionObjective");
-		
+
 		//Default time remaining 2 days.
 		timeRemaining = 48 * 60 * 60 * 1000;
-		
+
 		activated = false;
-		
+
 		missionStartTime.updateToCurrentTime();
 	}
-	
+
 	public abstract void initializeTransientMembers() {
 		activated = false;
 	}
-	
+
 	/**
 	 * Destroys this object from database
 	 * @pre { this is locked }
 	 * @post { this is locked }
 	 */
+	@preLocked
 	public abstract native void destroyObjectFromDatabase();
-	
+
 	public abstract int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
 		return 1;
 	}
-	
+
 	public native void addObserver(MissionObserver observer, boolean makePersistent);
-	
+
+	@preLocked
 	public void dropObserver(MissionObserver observer, boolean removeFromDatabase) {
-		if (removeFromDatabase)
-			observer.destroyObjectFromDatabase();
-		
+		if (removeFromDatabase) {
+			synchronized (observer) {
+				observer.destroyObjectFromDatabase();
+			}
+		}
+
 		observers.drop(observer);
 	}
-	
+
 	public int getObserverCount() {
 		return observers.size();
 	}
-	
+
+	@preLocked
 	public void removeAllObservers() {
 		observers.removeAll();
 	}
-	
+
 	@dirty
 	public MissionObserver getObserver(int index) {
 		return observers.get(index);
 	}
-	
+
 	@dirty
 	public boolean hasObservers() {
 		return observers.size() != 0;
 	}
 
+	@preLocked
 	public native abstract void activate();
+	@preLocked
 	public abstract void deactivate() {
 		activated = false;
 	}
-	
+
 	public native abstract void abort();
 
 	public native abstract void complete();
 	public native abstract void fail();
-	
+
 	@weakReference
 	@dirty
 	public MissionObject getMissionObject() {
 		return mission;
 	}
-	
+
 	@read
 	public unsigned int getObjectiveType() {
 		return objectiveType;
 	}
-	
+
 	@weakReference
 	@dirty
 	public native CreatureObject getPlayerOwner();
-	
+
 	public native void awardFactionPoints();
-	
+
 	public native void removeMissionFromPlayer();
-	
+
+	@preLocked
 	public native void awardReward();
-	
+
 	@dereferenced
 	@local
 	@dirty

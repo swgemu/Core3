@@ -27,6 +27,8 @@ void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {
 		MissionObserver* observer = observers.get(i);
 
+		Locker clocker(observer, _this.get());
+
 		observer->destroyObjectFromDatabase();
 	}
 

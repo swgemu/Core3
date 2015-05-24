@@ -185,6 +185,9 @@ void MissionObjectImplementation::setTargetTemplate(SharedObjectTemplate* templa
 
 WaypointObject* MissionObjectImplementation::createWaypoint() {
 	waypointToMission = ( getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
+
+	Locker locker(waypointToMission);
+
 	//obj->setPlanetCRC(planet.hashCode());
 	//obj->setPosition(positionX, 0, positionY);
 	waypointToMission->setActive(false);
@@ -228,11 +231,15 @@ void MissionObjectImplementation::destroyObjectFromDatabase(bool destroyContaine
 	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 
 	if (destroyContainedObjects) {
-		if (waypointToMission != NULL)
+		if (waypointToMission != NULL) {
+			Locker clocker(waypointToMission, _this.get());
 			waypointToMission->destroyObjectFromDatabase(true);
+		}
 
-		if (missionObjective != NULL)
+		if (missionObjective != NULL) {
+			Locker clocker(missionObjective, _this.get());
 			missionObjective->destroyObjectFromDatabase();
+		}
 	}
 
 }

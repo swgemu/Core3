@@ -59,6 +59,8 @@ void ReconMissionObjectiveImplementation::activate() {
 	if (waypoint == NULL)
 		waypoint = mission->createWaypoint();
 
+	Locker locker(waypoint);
+
 	waypoint->setPlanetCRC(mission->getStartPlanetCRC());
 	waypoint->setPosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
 	waypoint->setActive(true);

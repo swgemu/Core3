@@ -79,6 +79,7 @@ class FindTargetTask : public Task, public Logger {
 		}
 
 		if (arakyd) {
+			Locker locker(objective);
 			objective->setArakydDroid(NULL);
 		}
 		state = Completed;
@@ -95,6 +96,7 @@ class FindTargetTask : public Task, public Logger {
 				} else {
 					player->sendSystemMessage("@mission/mission_generic:target_track_lost");
 					if (arakyd) {
+						Locker locker(objective);
 						objective->setArakydDroid(NULL);
 					}
 					state = Completed;
@@ -106,6 +108,7 @@ class FindTargetTask : public Task, public Logger {
 			int randomNumber = System::random(5) + 1;
 			player->sendSystemMessage("@mission/mission_generic:target_not_found_" + String::valueOf(randomNumber));
 			if (arakyd) {
+				Locker locker(objective);
 				objective->setArakydDroid(NULL);
 			}
 			state = Completed;

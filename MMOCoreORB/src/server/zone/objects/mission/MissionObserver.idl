@@ -14,20 +14,20 @@ import engine.log.Logger;
 class MissionObserver extends Observer implements Logger {
 	@weakReference
 	protected MissionObjective missionObjective;
-	
+
 	public MissionObserver(MissionObjective objective) {
 		missionObjective = objective;
-		
+
 		Logger.setLoggingName("MissionObserver");
 	}
-	
+
 	public abstract native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-	
+
 	/**
 	 * Destroys this object from database
 	 * @pre { this is locked }
 	 * @post { this is locked }
 	 */
+	@preLocked
 	public abstract native void destroyObjectFromDatabase();
-
 }

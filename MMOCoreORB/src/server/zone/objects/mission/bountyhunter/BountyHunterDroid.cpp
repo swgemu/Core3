@@ -122,7 +122,11 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 
 	//Temporary set the arakyd droid to the player object. The call task will overwrite it with correct value.
 	//This is needed to prevent the player from launching more than one droid at a time.
+	Locker olocker(objective);
+
 	objective->setArakydDroid(player);
+
+	olocker.release();
 
 	Locker locker(droidObject);
 

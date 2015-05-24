@@ -86,6 +86,7 @@ void BountyMissionObjectiveImplementation::abort() {
 
 	WaypointObject* waypoint = strongRef->getWaypointToMission();
 	if (waypoint != NULL && waypoint->isActive()) {
+		Locker wplocker(waypoint);
 		waypoint->setActive(false);
 	}
 
@@ -221,8 +222,11 @@ void BountyMissionObjectiveImplementation::updateWaypoint() {
 	WaypointObject* waypoint = mission->getWaypointToMission();
 
 	if (waypoint == NULL) {
+		Locker mlocker(mission);
 		waypoint = mission->createWaypoint();
 	}
+
+	Locker wplocker(waypoint);
 
 	waypoint->setPlanetCRC(getTargetZoneName().hashCode());
 	Vector3 position = getTargetPosition();

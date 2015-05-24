@@ -20,9 +20,9 @@ import server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 
 class MissionObject extends IntangibleObject {
 	protected WaypointObject waypointToMission;
-	
+
 	protected MissionObjective missionObjective;
-	
+
 	protected unsigned int typeCRC;
 	protected int difficultyLevel;
 	protected int difficultyDisplay;
@@ -40,34 +40,34 @@ class MissionObject extends IntangibleObject {
 	protected float startPositionX;
 	protected float startPositionY;
 	protected string startPlanet;
-	
+
 	protected float endPositionX;
 	protected float endPositionY;
 	protected string endPlanet;
-	
+
 	protected unsigned long targetObjectId;
-	
+
 	@dereferenced
 	protected StringId missionDescription;
-	
+
 	@dereferenced
 	protected StringId missionTitle;
-	
+
 	protected unsigned int refreshCounter;
-	
+
 	protected string targetName;
 	protected NpcSpawnPoint missionTarget;
 	protected NpcSpawnPoint missionTargetDest;
-	
+
 	protected string templateString1;
 	protected string templateString2;
-	
+
 	//protected unsigned int targetTemplateCRC;
 	@dereferenced
 	protected TemplateReference<SharedObjectTemplate> targetTemplate;
-	
+
 	protected string targetOptionalTemplate;
-	
+
 	// mission type crc's ex: String("destroy").hashCode() = 0x74ef9be3
 	public static final int DESTROY = 0x74EF9BE3; // generic
 	public static final int BOUNTY = 0x2904F372; // bounty
@@ -81,27 +81,27 @@ class MissionObject extends IntangibleObject {
 	public static final int DANCER = 0xF067B37; // entertainer
 	public static final int RECON = 0x34F4C2E4; // scout
 	public static final int SURVEY = 0x19C9FAC1; // artisan
-	
+
 	//Faction types
 	public static final int FACTIONNEUTRAL = 0;
 	public static final int FACTIONIMPERIAL = 0xDB4ACC54;
 	public static final int FACTIONREBEL = 0x16148850;
-	
+
 	public MissionObject() {
 		typeCRC = SURVEY;
-		
+
 		refreshCounter = 0;
-		
+
 		//targetTemplateCRC = 2640304325;
 		//targetTemplate = null;
-		
+
 		missionDescription.setStringId("mission/mission_npc_survey_neutral_easy", "m1o");
 		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
 		targetName = "Testing target name";
 		difficultyLevel = 50;
 		difficultyDisplay = 80;
 		difficulty = 2;
-		
+
 		rewardCredits = 100;
 		rewardFactionPointsRebel = 0;
 		rewardFactionPointsImperial = 0;
@@ -113,24 +113,26 @@ class MissionObject extends IntangibleObject {
 
 		missionTarget = null;
 		missionTargetDest = null;
-		
+
 		targetObjectId = 0;
-		
+
 		faction = FACTIONNEUTRAL;
-		
+
 		Logger.setLoggingName("MissionObject");
 	}
-	
+
+	@preLocked
 	public native WaypointObject createWaypoint();
-	
+
 	/**
 	 * Destroys this object from database
 	 * @pre { this is locked }
 	 * @post { this is locked }
 	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
 	 */
+	@preLocked
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
-	
+
 	/**
 	 * Updates this object and childre objects to database
 	 * @pre { this object is locked }
@@ -138,176 +140,198 @@ class MissionObject extends IntangibleObject {
 	 * @param startTask if true, queues a new update task
 	 */
 	public native void updateToDatabaseAllObjects(boolean startTask);
-	
+
+	@preLocked
 	public native void setRefreshCounter(int ctr, boolean notifyClient = true);
+	@preLocked
 	public native void setTypeCRC(unsigned int crc, boolean notifyClient = true);
-	
+
 	public native void initializeTransientMembers();
 	@dirty
 	public native void sendBaselinesTo(SceneObject player);
-	
+
+	@preLocked
 	public native void setMissionDescription(final string file, final string id, boolean notifyClient = true);
+	@preLocked
 	public native void setMissionTitle(final string file, final string id, boolean notifyClient = true);
+	@preLocked
 	public native void setMissionTargetName(final string target, boolean notifyClient = true);
 	public native void setMissionDifficulty(int diffLevel, boolean notifyClient = true);
+	@preLocked
 	public native void setMissionDifficulty(int diffLevel, int display, int diff, boolean notifyClient = true);
+	@preLocked
 	public native void setRewardCredits(int creds, boolean notifyClient = true);
 	@local
+	@preLocked
 	public native void setTargetTemplate(SharedObjectTemplate templ, boolean notifyClient = true);
+	@preLocked
 	public native void setStartPosition(float posX, float posY, final string planet, boolean notifyClient = true);
 	public native void setStartPosition(float posX, float posY, boolean notifyClient = true);
+	@preLocked
 	public native void setEndPosition(float posX, float posY, final string planet, boolean notifyClient = true);
+	@preLocked
 	public native void setCreatorName(final string name, boolean notifyClient = true);
-	
+
 	@dirty
 	public native unsigned int getStartPlanetCRC();
-	
+
 	public native void updateMissionLocation();
-	
+
 	public void abort() {
 		if (missionObjective != null)
 			missionObjective.abort();
 	}
-	
+
+	@preLocked
 	public void setFaction(final int missionFaction) {
 		faction = missionFaction;
 	}
-	
+
+	@preLocked
 	public void setMissionObjective(MissionObjective obj) {
 		missionObjective = obj;
 	}
-	
+
+	@preLocked
 	public void setStartPlanet(final string planet) {
 		startPlanet = planet;
 	}
-	
+
+	@preLocked
 	public void setRewardFactionPointsRebel(int points) {
 		rewardFactionPointsRebel = points;
 	}
-	
+
+	@preLocked
 	public void setRewardFactionPointsImperial(int points) {
 		rewardFactionPointsImperial = points;
 	}
-	
+
+	@preLocked
 	public void setEndPlanet(string planetName) {
 		endPlanet = planetName;
 	}
 
 	@local
+	@preLocked
 	public void setMissionTarget(NpcSpawnPoint target) {
 		missionTarget = target;
 	}
 
 	@local
+	@preLocked
 	public void setMissionTargetDest(NpcSpawnPoint target) {
 		missionTargetDest = target;
 	}
-	
+
+	@preLocked
 	public void setMissionNumber(int num) {
 		missionNumber = num;
 	}
-	
+
+	@preLocked
 	public void setTargetOptionalTemplate(final string tml) {
 		targetOptionalTemplate = tml;
 	}
-	
+
+	@preLocked
 	public void setTemplateStrings(final string temp1, final string temp2) {
 		templateString1 = temp1;
 		templateString2 = temp2;
 	}
-	
+
 	@dirty
 	public MissionObjective getMissionObjective() {
 		return missionObjective;
 	}
-	
+
 	@read
 	public int getFaction() {
 		return faction;
 	}
-	
+
 	@read
 	public int getRewardFactionPointsRebel() {
 		return rewardFactionPointsRebel;
 	}
-	
+
 	@read
 	public int getRewardFactionPointsImperial() {
 		return rewardFactionPointsImperial;
 	}
-	
+
 	@read
 	public float getStartPositionX() {
 		return startPositionX;
 	}
-	
+
 	@read
 	public float getStartPositionY() {
 		return startPositionY;
 	}
-	
+
 	@read
 	public string getTargetOptionalTemplate() {
 		return targetOptionalTemplate;
 	}
-	
+
 	@read
 	public string getStartPlanet() {
 		return startPlanet;
 	}
-	
+
 	@read
 	public float getEndPositionX() {
 		return endPositionX;
 	}
-	
+
 	@read
 	public float getEndPositionY() {
 		return endPositionY;
 	}
-	
+
 	@read
 	public string getEndPlanet() {
 		return endPlanet;
 	}
-	
+
 	@dirty
 	public WaypointObject getWaypointToMission() {
 		return waypointToMission;
 	}
-	
+
 	@dirty
 	@local
 	public NpcSpawnPoint getMissionTarget() {
 		return missionTarget;
 	}
-	
+
 	@dirty
 	@local
 	public NpcSpawnPoint getMissionTargetDest() {
 		return missionTargetDest;
 	}
-	
+
 	@read
 	public unsigned int getTypeCRC() {
 		return typeCRC;
 	}
-	
+
 	@read
 	public int getRewardCredits() {
 		return rewardCredits;
 	}
-	
+
 	@read
 	public unicode getCreatorName() {
 		return creatorName;
 	}
-	
+
 	@read
 	public int getDifficultyLevel() {
 		return difficultyLevel;
 	}
-	
+
 	@read
 	public int getDifficultyDisplay() {
 		return difficultyDisplay;
@@ -323,18 +347,18 @@ class MissionObject extends IntangibleObject {
 	public StringId getMissionDescription() {
 		return missionDescription;
 	}
-	
+
 	@local
 	@dirty
 	public StringId getMissionTitle() {
 		return missionTitle;
 	}
-	
+
 	@read
 	public string getTargetName() {
 		return targetName;
 	}
-	
+
 	@read
 	public int getRefreshCounter() {
 		return refreshCounter;
@@ -344,48 +368,51 @@ class MissionObject extends IntangibleObject {
 	public int getMissionNumber() {
 		return missionNumber;
 	}
-	
+
 	@local
 	@dirty
 	public native SharedObjectTemplate getTargetTemplate();
-	
+
 	@dirty
 	public boolean isSurveyMission() {
 		return typeCRC == SURVEY;
 	}
-	
+
 	@dirty
 	public boolean isMissionObject() {
 		return true;
 	}
-	
+
 	@read
 	public string getTemplateString1() {
 		return templateString1;
 	}
-	
+
 	@read
 	public string getTemplateString2() {
 		return templateString2;
 	}
-	
+
 	@read
 	public unsigned long getTargetObjectId() {
 		return targetObjectId;
 	}
-	
+
+	@preLocked
 	public void setTargetObjectId(unsigned long id) {
 		targetObjectId = id;
 	}
-	
+
+	@preLocked
 	public void setMissionLevel(int level) {
 		missionLevel = level;
-	} 
-	
+	}
+
 	public int getMissionLevel() {
 		return missionLevel;
 	}
 
+	@preLocked
 	public void setSize(float siz) {
 		size = siz;
 	}

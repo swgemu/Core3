@@ -16,29 +16,31 @@ import server.zone.templates.SharedObjectTemplate;
 
 class HuntingMissionObjective extends MissionObjective {
 	private int targetsKilled;
-	
+
 	public HuntingMissionObjective(MissionObject mission) {
 		super(mission);
-		
+
 		Logger.setLoggingName("HuntingMissionObjective");
 	}
-	
+
 	public native void finalize() {
 		//Logger.info("deleting from memory", true);
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("HuntingMissionObjective");
 	}
-	
+
+	@preLocked
 	public native void activate();
+	@preLocked
 	public native void abort();
 	public native void complete();
-	
+
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-	
+
 	@dereferenced
 	@local
 	@dirty
