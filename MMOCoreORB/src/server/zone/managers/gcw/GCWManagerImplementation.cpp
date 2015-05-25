@@ -2631,8 +2631,12 @@ float GCWManagerImplementation::getGCWDiscount(CreatureObject* creature){
 
 	float discount = 1.0f;
 
-	if(getWinningFaction() != 1 && getWinningFaction() != creature->getFaction() && creature->getFaction() != 0)
-		 discount -= bonusDiscount/100.f;
+	if (getWinningFaction() != 1 && creature->getFaction() != 0 && (
+			(bonusDiscount >= 0 && getWinningFaction() == creature->getFaction()) ||
+			(bonusDiscount <  0 && getWinningFaction() != creature->getFaction())
+	)) {
+		discount -= bonusDiscount/100.f;
+	}
 
 	if(creature->getFaction() == IMPERIALHASH && racialPenaltyEnabled && getRacialPenalty(creature->getSpecies()) > 0)
 		discount *= getRacialPenalty(creature->getSpecies());
