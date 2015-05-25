@@ -359,10 +359,10 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		float maxHam = DroidMechanics::determineHam(overallQuality,species);
 		for (int i = 0; i < 9; ++i) {
 			if (i % 3 == 0) {
-				droid->setMaxHAM(i,maxHam,true);
+				droid->setBaseHAM(i,maxHam,true);
 				droid->setHAM(i,maxHam,true);
 			} else {
-				droid->setMaxHAM(i,maxHam/100,true);
+				droid->setBaseHAM(i,maxHam/100,true);
 				droid->setHAM(i,maxHam/100,true);
 			}
 		}
