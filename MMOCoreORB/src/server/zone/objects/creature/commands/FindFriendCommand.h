@@ -89,6 +89,9 @@ public:
 		}
 
 		ManagedReference<WaypointObject*> obj = ( server->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
+
+		Locker locker(obj);
+
 		obj->setPlanetCRC(planet.hashCode());
 		obj->setPosition(x, z, y);
 		obj->setCustomObjectName(name, false);
