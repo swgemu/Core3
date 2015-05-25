@@ -41,8 +41,10 @@ maxBasesPerPlayer = 3
 -- xp bonus for faction controlling a planet
 bonusXP = 15
 
--- discount percentage for side losing the gcw.  negative value of increase in price.  positive for a decrease
-bonusDiscount = -30
+-- discount percentage for side losing&winning the gcw.  negative value of increase in price (penality).  positive for a decrease (Bonus)
+
+winnerBonus = 0
+loserBonus = -30
 
 -- Spawn turrets and minefields when base is placed 1=true 0=false 
 spawnDefenses = 1
