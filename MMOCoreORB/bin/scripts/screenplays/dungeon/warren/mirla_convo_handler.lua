@@ -26,7 +26,7 @@ function MirlaConversationHandler:getInitialScreen(pPlayer, pNpc, pConversationT
 
 	if (CreatureObject(pPlayer):hasScreenPlayState(WarrenScreenPlay.states.mirla.done, "warren")) then
 		return convoTemplate:getScreen("mirla_done")
-	elseif (CraetureObject(pPlayer):hasScreenPlayState(WarrenScreenPlay.states.mirla.started, "warren")) then
+	elseif (CreatureObject(pPlayer):hasScreenPlayState(WarrenScreenPlay.states.mirla.started, "warren")) then
 		return convoTemplate:getScreen("mirla_get_teraud")
 	end
 
