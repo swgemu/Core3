@@ -69,7 +69,8 @@ int GCWManagerImplementation::reactvationTimer = 300;
 int GCWManagerImplementation::turretAutoFireTimeout = 120;
 int GCWManagerImplementation::maxBasesPerPlayer = 3;
 int GCWManagerImplementation::bonusXP = 15;
-int GCWManagerImplementation::bonusDiscount = 30;
+int GCWManagerImplementation::loserBonus = 0;
+int GCWManagerImplementation::winnerBonus = 30;
 bool GCWManagerImplementation::racialPenaltyEnabled = true;
 bool GCWManagerImplementation::spawnDefenses = true;
 int GCWManagerImplementation::initialVulnerabilityDelay = 0;
@@ -132,7 +133,8 @@ void GCWManagerImplementation::loadLuaConfig(){
 	turretAutoFireTimeout = lua->getGlobalInt("turretAutoFireTimeout");
 	maxBasesPerPlayer = lua->getGlobalInt("maxBasesPerPlayer");
 	bonusXP = lua->getGlobalInt("bonusXP");
-	bonusDiscount = lua->getGlobalInt("bonusDiscount");
+	winnerBonus = lua->getGlobalInt("winnerBonus");
+	loserBonus = lua->getGlobalInt("loserBonus");
 	racialPenaltyEnabled = lua->getGlobalInt("racialPenaltyEnabled");
 	initialVulnerabilityDelay = lua->getGlobalInt("initialVulnerabilityDelay");
 	spawnDefenses = lua->getGlobalInt("spawnDefenses");
@@ -2626,13 +2628,18 @@ void GCWManagerImplementation::awardSlicingXP(CreatureObject* creature,  const S
 
 
 // returns a cost multiplier for faction items
-// includes racial penalty and gcwdiscount
+// includes racial penalty and Bonus&Penality for Loser and Winner side
 float GCWManagerImplementation::getGCWDiscount(CreatureObject* creature){
 
 	float discount = 1.0f;
 
-	if(getWinningFaction() != 1 && getWinningFaction() != creature->getFaction() && creature->getFaction() != 0)
-		 discount -= bonusDiscount/100.f;
+  	if (getWinningFaction() != 1 && creature->getFaction() != 0) {
+  		if (getWinningFaction() == creature->getFaction()){
+  			discount -= winnerBonus /100.f;
+  		}else {
+  			discount -= loserBonus /100.f;
+  		}
+  	}
 
 	if(creature->getFaction() == IMPERIALHASH && racialPenaltyEnabled && getRacialPenalty(creature->getSpecies()) > 0)
 		discount *= getRacialPenalty(creature->getSpecies());
