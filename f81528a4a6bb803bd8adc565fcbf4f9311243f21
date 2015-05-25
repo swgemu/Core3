@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_a3fb8446",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/space/chassis_dealer.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-25T00:52:30Z",
+      "side": 0,
+      "message": "I know it\u0027s not something you did, but shouldn\u0027t that or be an and?",
+      "revId": "f81528a4a6bb803bd8adc565fcbf4f9311243f21",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

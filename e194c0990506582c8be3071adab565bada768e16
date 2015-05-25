@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_c3f8084c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/space/chassis_dealer.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-25T00:52:30Z",
+      "side": 1,
+      "message": "Don\u0027t capitalize the A.",
+      "revId": "e194c0990506582c8be3071adab565bada768e16",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba8cc1f7_239f7405",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/heralds.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-25T00:52:30Z",
+      "side": 1,
+      "message": "Check that pArea is not nil before using.",
+      "revId": "e194c0990506582c8be3071adab565bada768e16",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba8cc1f7_43a4f856",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/conversations/theater_manager_conv_handler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-25T00:52:30Z",
+      "side": 1,
+      "message": "I know it\u0027s not really the point of this patch, but this elseif is exactly the same as the previous and will therefore never be entered.",
+      "revId": "e194c0990506582c8be3071adab565bada768e16",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
