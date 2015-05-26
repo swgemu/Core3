@@ -21,44 +21,44 @@ include server.zone.objects.area.ActiveArea;
 class EntertainerMissionObjective extends MissionObjective {
 	protected boolean inMissionArea;
 	protected boolean isEntertaining;
-	
+
 	protected ActiveArea locationActiveArea;
-	
+
 	protected CompleteMissionAfterCertainTimeTask completeTask;
-	
+
 	public EntertainerMissionObjective(MissionObject mission) {
 		super(mission);
-		
+
 		inMissionArea = false;
 		isEntertaining = false;
 		locationActiveArea = null;
 		completeTask = null;
-		
+
 		Logger.setLoggingName("EntertainerMissionObjective");
 	}
-	
+
 	public native void finalize() {
 		//Logger.info("deleting from memory", true);
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("EntertainerMissionObjective");
 	}
-	
+
 	public native void activate();
 	public native void abort();
 	public native void complete();
-	
-	public native void setIsEntertaining(boolean value); 
-	
+
+	public native void setIsEntertaining(boolean value);
+
 	public native void clearLocationActiveAreaAndObservers();
 
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-	
+
 	public native void startCompleteTask();
-	
+
 	@dereferenced
 	@local
 	@dirty

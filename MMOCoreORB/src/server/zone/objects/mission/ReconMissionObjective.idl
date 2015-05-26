@@ -16,29 +16,30 @@ import server.zone.objects.area.MissionReconActiveArea;
 
 class ReconMissionObjective extends MissionObjective {
 	protected MissionReconActiveArea locationActiveArea;
-	
+
 	public ReconMissionObjective(MissionObject mission) {
 		super(mission);
-		
+
 		Logger.setLoggingName("ReconMissionObjective");
 	}
-	
+
 	public native void finalize() {
 		//Logger.info("deleting from memory", true);
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("ReconMissionObjective");
-		
+
 		activate();
 	}
-	
+
+	@preLocked
 	public native void activate();
 	public native void abort();
 	public native void complete();
-	
+
 	@dereferenced
 	@local
 	@dirty

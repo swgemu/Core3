@@ -1763,6 +1763,7 @@ void PlayerObjectImplementation::activateMissions() {
 				//Check if it is target or destination NPC
 				MissionObjective* objective = mission->getMissionObjective();
 				if (objective != NULL) {
+					Locker locker(objective);
 					objective->activate();
 				}
 			}

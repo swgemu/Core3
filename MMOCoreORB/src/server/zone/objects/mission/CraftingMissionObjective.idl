@@ -11,20 +11,21 @@ import server.zone.objects.creature.CreatureObject;
 class CraftingMissionObjective extends DeliverMissionObjective {
 	public CraftingMissionObjective(MissionObject mission) {
 		super(mission);
-		
+
 		Logger.setLoggingName("CraftingMissionObjective");
 	}
-	
+
 	public native void finalize() {
 		//Logger.info("deleting from memory", true);
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("CraftingMissionObjective");
 	}
-	
+
+	@preLocked
 	public abstract native void updateMissionStatus(CreatureObject player);
 	public abstract native void abort();
 }

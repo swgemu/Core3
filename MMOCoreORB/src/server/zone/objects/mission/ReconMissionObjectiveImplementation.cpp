@@ -56,8 +56,12 @@ void ReconMissionObjectiveImplementation::activate() {
 
 	ManagedReference<WaypointObject*> waypoint = mission->getWaypointToMission();
 
-	if (waypoint == NULL)
+	if (waypoint == NULL) {
+		Locker mlocker(mission);
 		waypoint = mission->createWaypoint();
+	}
+
+	Locker locker(waypoint);
 
 	waypoint->setPlanetCRC(mission->getStartPlanetCRC());
 	waypoint->setPosition(mission->getStartPositionX(), 0, mission->getStartPositionY());

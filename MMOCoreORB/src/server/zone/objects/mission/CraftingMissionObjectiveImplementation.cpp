@@ -39,6 +39,8 @@ void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject*
 		for (int i = 0; i < schematic->getDraftSlotCount(); i++) {
 			ManagedReference<TangibleObject*> item = ( player->getZoneServer()->createObject(schematic->getDraftSlot(i)->getResourceType().replaceFirst("/shared_", "/").hashCode(), 2)).castTo<TangibleObject*>();
 			if (item != NULL) {
+				Locker locker(item);
+
 				if (inventory->transferObject(item, -1, true)) {
 					item->sendTo(player, true);
 				} else {

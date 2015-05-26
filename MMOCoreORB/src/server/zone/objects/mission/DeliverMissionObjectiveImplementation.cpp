@@ -134,8 +134,11 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 		WaypointObject* waypoint = mission->getWaypointToMission();
 
 		if (waypoint == NULL) {
+			Locker mlocker(mission);
 			waypoint = mission->createWaypoint();
 		}
+
+		Locker locker(waypoint);
 
 		waypoint->setPlanetCRC(mission->getStartPlanetCRC());
 		waypoint->setPosition(targetPosition->getX(), 0, targetPosition->getY());
@@ -234,8 +237,11 @@ bool DeliverMissionObjectiveImplementation::updateMissionTarget(CreatureObject* 
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
 	if (waypoint == NULL) {
+		Locker mlocker(mission);
 		waypoint = mission->createWaypoint();
 	}
+
+	Locker locker(waypoint);
 
 	waypoint->setPlanetCRC(mission->getEndPlanet().hashCode());
 	waypoint->setPosition(destinationSpawnPoint->getPosition()->getX(), 0, destinationSpawnPoint->getPosition()->getY());

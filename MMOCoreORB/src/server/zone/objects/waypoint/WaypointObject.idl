@@ -13,14 +13,14 @@ class WaypointObject extends IntangibleObject {
 
 	protected unsigned long unknown;//? cell object id maybe
 	protected unsigned int planetCRC;
-	
+
 	protected string detailedDescription;
 
 	protected byte color;
 	protected byte active;
 
 	protected int specialTypeID;
-	
+
 	public static final byte COLOR_WHITE = 0x00;
 	public static final byte COLOR_BLUE = 0x01;
 	public static final byte COLOR_GREEN = 0x02;
@@ -38,42 +38,48 @@ class WaypointObject extends IntangibleObject {
 	public static final int SPECIALTYPE_RACETRACK = 8;
 	public static final int SPECIALTYPE_NEARESTMISSIONFORGROUP = 9;
 	public static final int SPECIALTYPE_TREASUREMAP = 10;
-	
+
 	public WaypointObject() {
 		Logger.setLoggingName("WaypointObject");
 	}
-	
+
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
-	
+
 	@local
 	public native void insertToMessage(BaseMessage msg);
-	
+
+	@preLocked
 	public void setCellID(unsigned int id) {
 		cellID = id;
 	}
-	
+
+	@preLocked
 	public void setPlanetCRC(unsigned int crc) {
 		planetCRC = crc;
 	}
-	
+
 	@dirty
 	public unsigned int getPlanetCRC() {
 		return planetCRC;
 	}
-		
+
+	@preLocked
 	public void setColor(byte newColor) {
 		color = newColor;
 	}
-	
+
+	@preLocked
 	public void setActive(byte newStatus) {
 		active = newStatus;
 	}
-	
+
+	@preLocked
 	public void setUnknown(unsigned long id) {
 		unknown = id;
 	}
 
+	@preLocked
 	public void setSpecialTypeID(int id) {
 		specialTypeID = id;
 	}
@@ -82,26 +88,27 @@ class WaypointObject extends IntangibleObject {
 	public int getSpecialTypeID() {
 		return specialTypeID;
 	}
-	
+
+	@preLocked
 	public void toggleStatus() {
 		active = !active;
 	}
-	
+
 	@dirty
 	public boolean isActive() {
 		return active;
 	}
-	
+
 	@dirty
 	public byte getColor() {
 		return color;
 	}
-	
+
 	@dirty
 	public native string getDetailedDescription();
-	
+
+	@preLocked
 	public void setDetailedDescription(final string desc) {
 		detailedDescription = desc;
 	}
-	
 }

@@ -20,54 +20,58 @@ include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
 
 class DeliverMissionObjective extends MissionObjective {
 	protected TangibleObject item;
-	
+
 	protected NpcSpawnPoint targetSpawnPoint;
 	protected NpcSpawnPoint destinationSpawnPoint;
-	
+
 	protected int objectiveStatus;
-	
+
 	public static final int INITSTATUS = 0;
 	public static final int PICKEDUPSTATUS = 1;
 	public static final int DELIVEREDSTATUS = 2;
-	
+
 	public DeliverMissionObjective(MissionObject mission) {
 		super(mission);
-		
+
 		objectiveStatus = INITSTATUS;
-		
+
 		Logger.setLoggingName("DeliverMissionObjective");
 	}
-	
+
 	public native void finalize() {
 		//Logger.info("deleting from memory", true);
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("DeliverMissionObjective");
 	}
-	
+
 	@dirty
 	public native TangibleObject getItem() {
 		return item;
 	}
-	
+
 	@read
 	public int getObjectiveStatus() {
 		return objectiveStatus;
 	}
 
+	@preLocked
 	public abstract native void activate();
+	@preLocked
 	public abstract native void deactivate();
+	@preLocked
 	public native boolean activateWithResult();
 	public abstract native void abort();
 	public abstract native void complete();
-	
+
 	public native void despawnNpcs();
-	
+
+	@preLocked
 	public abstract native void updateMissionStatus(CreatureObject player);
-	
+
 	public abstract native boolean updateMissionTarget(CreatureObject player);
 
 	@dirty
@@ -75,7 +79,7 @@ class DeliverMissionObjective extends MissionObjective {
 	public NpcSpawnPoint getTargetSpawnPoint() {
 		return targetSpawnPoint;
 	}
-	
+
 	@dirty
 	@local
 	public NpcSpawnPoint getDestinationSpawnPoint() {

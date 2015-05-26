@@ -71,18 +71,26 @@ public:
 		case 0: {
 				playerRef->sendSystemMessage("@mission/mission_generic:probe_droid_arrival");
 				droid = cast<AiAgent*>(playerRef->getZone()->getCreatureManager()->spawnCreature(String("probot").hashCode(), 0, droidPosition.getX(), droidPosition.getZ(), droidPosition.getY(), 0));
+
+				Locker olocker(objectiveRef);
 				objectiveRef->setArakydDroid(droid);
+				olocker.release();
+
 				droid->activateLoad("stationary");
 				time -= 1;
 				reschedule(300 * 1000);
 		}
 			break;
-		case -1:
+		case -1: {
+			Locker olocker2(objectiveRef);
 			objectiveRef->setArakydDroid(NULL);
+			olocker2.release();
+
 			if (droid != NULL) {
 				Locker clocker(droid, playerRef);
 				droid->destroyObjectFromWorld(true);
 			}
+		}
 			break;
 		default:
 			error("Unknowns state.");

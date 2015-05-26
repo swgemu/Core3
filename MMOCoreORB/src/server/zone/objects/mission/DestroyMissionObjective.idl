@@ -20,14 +20,14 @@ import server.zone.Zone;
 class DestroyMissionObjective extends MissionObjective {
 	@dereferenced
 	protected string lairTemplate;
-	
+
 	protected MissionSpawnActiveArea spawnActiveArea;
-	
+
 	protected LairObject lairObject;
 
 	int difficultyLevel;
 	int difficulty;
-	
+
 	public DestroyMissionObjective(MissionObject mission) {
 		super(mission);
 
@@ -36,44 +36,49 @@ class DestroyMissionObjective extends MissionObjective {
 
 		Logger.setLoggingName("DestroyMissionObjective");
 	}
-	
+
 	public native void finalize() {
 		//Logger.info("deleting from memory", true);
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("DestroyMissionObjective");
 	}
-	
+
+	@preLocked
 	public native void activate();
 	public native void abort();
 	public native void complete();
-	
+
 	public native void spawnLair();
-	
+
 	/**
 	 * Destroys this object from database
 	 * @pre { this is locked }
 	 * @post { this is locked }
 	 */
+	@preLocked
 	public native void destroyObjectFromDatabase();
-	
+
 	@local
 	@dereferenced
 	@dirty
 	public native Vector3 findValidSpawnPosition(Zone zone);
-	
+
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-	
+
 	@local
+	@preLocked
 	public native void setLairTemplateToSpawn(final string sp);
 
+	@preLocked
 	public void setDifficultyLevel(int diff) {
 		difficultyLevel = diff;
 	}
 
+	@preLocked
 	public void setDifficulty(int diff) {
 		difficulty = diff;
 	}

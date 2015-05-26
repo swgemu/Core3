@@ -22,118 +22,126 @@ import system.thread.Mutex;
 class BountyMissionObjective extends MissionObjective {
 	@dereferenced
 	protected TemplateReference<SharedObjectTemplate> npcTemplateToSpawn;
-	
+
 	protected AiAgent npcTarget;
-	
+
 	protected int objectiveStatus;
-	
+
 	protected SceneObject activeDroid;
-	
+
 	protected BountyHunterDroid droid;
-	
+
 	@dereferenced
 	protected FindTargetTaskList droidTasks;
-	
+
 	protected BountyHunterTargetTask targetTask;
-	
+
 	@dereferenced
 	protected transient Mutex syncMutex;
-	
+
 	public static final int INITSTATUS = 0;
 	public static final int HASBIOSIGNATURESTATUS = 1;
 	public static final int HASTALKED = 2;
 	public static final int TARGETELIMINATEDSTATUS = 3;
-	
+
 	public BountyMissionObjective(MissionObject mission) {
 		super(mission);
-		
+
 		objectiveStatus = INITSTATUS;
-		
+
 		activeDroid = null;
 		droid = null;
-		
+
 		Logger.setLoggingName("BountyMissionObjective");
 	}
-	
+
 	public native void finalize() {
 		cancelAllTasks();
 	}
-	
+
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
-		
+
 		Logger.setLoggingName("BountyMissionObjective");
 	}
-	
+
+	@preLocked
 	public native void activate();
+	@preLocked
 	public native void deactivate();
 	public native void abort();
 	public native void complete();
-	
+
+	@preLocked
 	public native void spawnTarget(final string zoneName);
-	
+
 	public native int notifyObserverEvent(MissionObserver observer, unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
-	
+
 	@local
+	@preLocked
 	public native void setNpcTemplateToSpawn(SharedObjectTemplate sp);
-	
+
 	public native void updateMissionStatus(int informantLevel);
-	
+
 	@read
 	public int getObjectiveStatus() {
 		return objectiveStatus;
 	}
-	
+
 	@read
 	public SceneObject getArakydDroid() {
 		return activeDroid;
 	}
-	
+
+	@preLocked
 	public void setArakydDroid(SceneObject droid) {
 		activeDroid = droid;
 	}
-	
+
 	public native void performDroidAction(int action, SceneObject sceneObject, CreatureObject player);
 
 	@dirty
 	public native boolean hasArakydFindTask();
 
 	public native boolean playerHasMissionOfCorrectLevel(int action);
-	
+
 	public native void updateWaypoint();
-	
+
 	@dereferenced
 	@local
 	@dirty
 	public native Vector3 getTargetPosition();
-	
+
 	public native void cancelAllTasks();
 
 	public native void cancelCallArakydTask();
 
 	@dirty
 	public native string getTargetZoneName();
-	
+
 	private native void addToBountyLock();
 	private native void removeFromBountyLock(boolean immediately);
 
+	@preLocked
 	private native void removePlayerTargetObservers();
+	@preLocked
 	private native void removeNpcTargetObservers();
+	@preLocked
 	private native void removeObserver(int observerNumber, unsigned int observerType, CreatureObject creature);
 	private native void addObserverToCreature(unsigned int observerType, CreatureObject creature);
-	
+
 	private native boolean addPlayerTargetObservers();
 	private native void startNpcTargetTask();
-	
+
 	@dirty
 	private native boolean isPlayerTarget();
-	
+
 	private native void handleNpcTargetKilled(ManagedObject arg1);
 	private native int handleNpcTargetReceivesDamage(ManagedObject arg1);
 	private native void handlePlayerKilled(ManagedObject arg1);
 	private native void handleDefenderAdded(ManagedObject arg1);
 	private native void handleDefenderDropped(ManagedObject arg1);
-	
+
 	@dereferenced
 	@local
 	@dirty

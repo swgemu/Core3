@@ -68,10 +68,16 @@ void EntertainerMissionObjectiveImplementation::activate() {
 	addObserver(observer2, true);
 	locationActiveArea->registerObserver(ObserverEventType::EXITEDAREA, observer2);
 
+	locationLocker.release();
+
 	WaypointObject* waypoint = mission->getWaypointToMission();
 
-	if (waypoint == NULL)
+	if (waypoint == NULL) {
+		Locker mlocker(mission);
 		waypoint = mission->createWaypoint();
+	}
+
+	Locker wplocker(waypoint);
 
 	waypoint->setPlanetCRC(mission->getStartPlanetCRC());
 	waypoint->setPosition(mission->getStartPositionX(), 0, mission->getStartPositionY());

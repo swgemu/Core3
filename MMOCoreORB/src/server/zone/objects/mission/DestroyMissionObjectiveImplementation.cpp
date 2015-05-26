@@ -78,8 +78,12 @@ void DestroyMissionObjectiveImplementation::activate() {
 
 	WaypointObject* waypoint = mission->getWaypointToMission();
 
-	if (waypoint == NULL)
+	if (waypoint == NULL) {
+		Locker mlocker(mission);
 		waypoint = mission->createWaypoint();
+	}
+
+	Locker locker(waypoint);
 
 	waypoint->setPlanetCRC(mission->getStartPlanet().hashCode());
 	waypoint->setPosition(mission->getStartPositionX(), 0, mission->getStartPositionY());
@@ -133,6 +137,8 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 }
 
 void DestroyMissionObjectiveImplementation::spawnLair() {
+	Locker _lock(_this.get());
+
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	ManagedReference<MissionSpawnActiveArea* > spawnActiveArea = this->spawnActiveArea;
@@ -149,23 +155,35 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	spawnActiveArea->destroyObjectFromWorld(true);
 
+	locker.release();
+
 	Vector3 pos = findValidSpawnPosition(zone);
 
 	ManagedReference<WaypointObject*> waypoint = mission->getWaypointToMission();
 
 	if (waypoint == NULL) {
+		Locker mlocker(mission);
 		waypoint = mission->createWaypoint();
 	}
 
+	Locker wplocker(waypoint);
+
 	waypoint->setPosition(pos.getX(), 0, pos.getY());
+
+	wplocker.release();
+
 	mission->updateMissionLocation();
+
+	Locker mlocker(mission);
 
 	mission->setStartPosition(pos.getX(), pos.getY());
 
-	//TODO: find correct string id
+	mlocker.release();
+
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
 	if (player != NULL) {
+		//TODO: find correct string id
 		player->sendSystemMessage("Transmission Received: Mission Target has been located.  Mission waypoint has been updated to exact location");
 	}
 
@@ -194,7 +212,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	 		return;
 	 	}
 
-	 	Locker locker(lairObject);
+	 	Locker llocker(lairObject);
 
 	 	lairObject->setFaction(lair->getFaction());
 	 	lairObject->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
@@ -227,6 +245,8 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	}
 
 	if (lairObject != NULL && lairObject->getZone() == NULL) {
+		Locker llocker(lairObject);
+
 		zone->transferObject(lairObject, -1, true);
 	}
 }
