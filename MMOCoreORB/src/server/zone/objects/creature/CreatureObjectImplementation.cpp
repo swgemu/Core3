@@ -1003,7 +1003,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		return 0;
 	}
 
-	if (this->isIncapacitated() || this->isDead())
+	if (this->isIncapacitated() || this->isDead() || damage == 0)
 		return 0;
 
 	int currentValue = hamList.get(damageType);
@@ -1040,9 +1040,6 @@ int CreatureObjectImplementation::healDamage(TangibleObject* healer,
 				"incorrect damage type in CreatureObjectImplementation::healDamage");
 		return 0;
 	}
-
-	/*if (damage < 0 && (isDead() || isIncapacitated()))
-	 return 0;*/
 
 	int returnValue = damage;
 
