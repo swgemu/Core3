@@ -118,7 +118,14 @@ class CurePack extends PharmaceuticalObject {
 			msg.insertAttribute("healing_ability", super.getMedicineUseRequired());
 		}
 	}
-	
+
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+
 	@dirty
 	public int calculatePower(CreatureObject creature) {
 		float modSkill = (float) creature.getSkillMod("healing_wound_treatment");

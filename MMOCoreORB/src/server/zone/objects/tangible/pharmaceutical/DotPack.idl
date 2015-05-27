@@ -153,6 +153,14 @@ class DotPack extends PharmaceuticalObject {
 		}
 
 	}
+
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
+	public native void notifyLoadFromDatabase();
+
 	@dirty
 	public int calculatePower(CreatureObject creature) {
 		float modSkill = (float) creature.getSkillMod("combat_medic_effectiveness");
