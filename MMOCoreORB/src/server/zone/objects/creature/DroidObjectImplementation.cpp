@@ -234,6 +234,8 @@ void DroidObjectImplementation::initDroidModules(bool init){
 			// no modules, so disable some combat stats.
 			setResists(0);
 			setHitChance(0);
+			setMaxDamage(1);
+			setMinDamage(1);
 		}
 	}
 }
