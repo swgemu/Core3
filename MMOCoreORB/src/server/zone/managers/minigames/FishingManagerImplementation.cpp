@@ -390,15 +390,19 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 
 			String loot = rareLoot.get(System::random(i - 1));
 			ManagedReference<SceneObject*> lootObject = player->getZoneServer()->createObject(loot.hashCode(), 2);
-
-			sendReward(player, marker, lootObject);
+			if (lootObject != NULL) {
+				Locker lootLocker(lootObject);
+				sendReward(player, marker, lootObject);
+			}
 		} else { // MISC ITEM WAS CAUGHT!
 			int i = miscLoot.size();
 
 			String loot = miscLoot.get(System::random(i - 1));
 			ManagedReference<SceneObject*> lootObject = player->getZoneServer()->createObject(loot.hashCode(), 2);
-
-			sendReward(player, marker, lootObject);
+			if (lootObject != NULL) {
+				Locker lootLocker(lootObject);
+				sendReward(player, marker, lootObject);
+			}
 		}
 	} else {
 		// 5% chance to toss fish away
@@ -414,6 +418,8 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 			ManagedReference<FishObject*> lootFishObject = player->getZoneServer()->createObject(lootFish.hashCode(), 2).castTo<FishObject*>();
 
 			if (lootFishObject != NULL) {
+				Locker lootLocker(lootFishObject);
+
 				String time = getTime();
 				String name = player->getFirstName() + " " + player->getLastName();
 
@@ -466,12 +472,11 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 				String baitString = "object/tangible/fishing/bait/bait_chum.iff";
 				ManagedReference<TangibleObject*> baitObject = zone->getZoneServer()->createObject(baitString.hashCode(), 2).castTo<TangibleObject*>();
 
-				int useCount = System::random(5);
-				if (useCount > 1)
-					baitObject->setUseCount(useCount,true);
-
-
 				if (baitObject != NULL) {
+					Locker baitLocker(baitObject);
+					int useCount = System::random(5);
+					if (useCount > 1)
+						baitObject->setUseCount(useCount,true);
 					if (lootFishObject->transferObject(baitObject, -1, true)) {
 						baitObject->sendTo(player, true);
 					} else {
@@ -486,6 +491,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 				ManagedReference<SceneObject*> resource = cast<SceneObject*>(resourceManager->harvestResource(player, resourceString, amount));
 
 				if (resource != NULL) {
+					Locker resourceLocker(resource);
 					if (lootFishObject->transferObject(resource, -1, true)) {
 						resource->sendTo(player, true);
 					} else {
@@ -792,7 +798,6 @@ void FishingManagerImplementation::freeBait(CreatureObject* player) {
 	if (player != NULL) {
 		String bait = "object/tangible/fishing/bait/bait_worm.iff";
 		ManagedReference<SceneObject*> baitObject = player->getZoneServer()->createObject(bait.hashCode(), 0);
-
 		Locker locker(baitObject);
 
 		baitObject->sendTo(player, true);
@@ -952,6 +957,8 @@ bool FishingManagerImplementation::loseBait(CreatureObject* player) {
 
 				ManagedReference<FishingBaitObject*> fishBait = cast<FishingBaitObject*>( bait.get());
 
+				Locker fishBaitLocker(fishBait);
+
 				if (fishBait->getUseCount() > 1){
 					fishBait->setUseCount(fishBait->getUseCount() - 1, true);
 					fishBait->setFreshness(FRESH);
@@ -1024,7 +1031,6 @@ void FishingManagerImplementation::createSplash(float x, float y, float z, Zone*
 
 		if (splashObject != NULL) {
 			Locker locker(splashObject);
-
 			splashObject->initializePosition(x, z + 0.5, y);
 			//splashObject->insertToZone(zone);
 			zone->transferObject(splashObject, -1, true);
