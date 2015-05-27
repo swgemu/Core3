@@ -283,7 +283,7 @@ bool BountyMissionObjectiveImplementation::playerHasMissionOfCorrectLevel(int ac
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	int levelNeeded = 2;
-	if (action == BountyHunterDroid::CALLDROID || action == BountyHunterDroid::TRANSMITBIOLOGICALSIGNATURE) {
+	if (action == BountyHunterDroid::FINDANDTRACKTARGET) {
 		levelNeeded = 3;
 	}
 
