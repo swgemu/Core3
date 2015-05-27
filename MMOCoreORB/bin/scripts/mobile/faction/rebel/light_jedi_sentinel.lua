@@ -3,11 +3,11 @@ light_jedi_sentinel = Creature:new {
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "self",
 	faction = "",
-	level = 301,
+	level = 1,
 	chanceHit = 30,
 	damageMin = 2645,
 	damageMax = 5000,
-	baseXp = 26845,
+	baseXp = 45,
 	baseHAM = 1106000,
 	baseHAMmax = 1352000,
 	armor = 3,
@@ -21,7 +21,7 @@ light_jedi_sentinel = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -33,19 +33,7 @@ light_jedi_sentinel = Creature:new {
 		"object/mobile/dressed_jedi_trainer_twilek_female_01.iff",
 		"object/mobile/dressed_tiberus_anderlock.iff",
 		"object/mobile/dressed_neja_bertolo.iff"},
-	lootGroups = {
-		{
-			groups = {
-				{group = "holocron_light", chance = 900000},
-				{group = "crystals_premium", chance = 900000},
-				{group = "weapons_all", chance = 2000000},
-				{group = "armor_all", chance = 2000000},
-				{group = "armor_attachments", chance = 1100000},
-				{group = "clothing_attachments", chance = 1100000},
-				{group = "wearables_all", chance = 2000000}
-			}
-		}
-	},
+	lootGroups = {},
 	weapons = {"light_jedi_weapons"},
 	conversationTemplate = "",
 	attacks = merge(lightsabermaster,forcepowermaster)
