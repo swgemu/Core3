@@ -48,6 +48,7 @@ public:
 		if (controlDevice->getPatrolPointSize() == 0)
 			return GENERALERROR;
 
+		pet->setTargetObject(NULL);
 		pet->setFollowState(AiAgent::PATROLLING);
 		pet->clearSavedPatrolPoints();
 		pet->stopWaiting();
