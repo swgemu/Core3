@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_233bf4ec",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2639,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-27T00:13:39Z",
+      "side": 1,
+      "message": "Rather than restrict it such that the losing side can only have a penalty and the winning side can only have a bonus, I would prefer it if you would change it such that any value is possible for either side.\n\nYou\u0027re probably best off adding another configurable value and renaming bonusDiscount. Maybe \u0027winnerBonus\u0027 and \u0027loserBonus\u0027 or something. Each could be set separately and the appropriate one would apply based on the player\u0027s faction and it\u0027s score.",
+      "revId": "538e5f950ef3ff9aca19afdf2e707780937c7723",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
