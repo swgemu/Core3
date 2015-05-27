@@ -307,6 +307,8 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
 			droid->setResists(0);
 			droid->setHitChance(0);
+			droid->setMinDamage(1);
+			droid->setMaxDamage(1);
 			for(int i = 0; i < modules.size(); ++i) {
 				iterator.getNextKeyAndValue(key, comp);
 				if (comp) {

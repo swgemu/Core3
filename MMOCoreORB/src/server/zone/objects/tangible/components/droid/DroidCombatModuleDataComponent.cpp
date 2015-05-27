@@ -77,7 +77,7 @@ void DroidCombatModuleDataComponent::copy(BaseDroidModuleComponent* other) {
 void DroidCombatModuleDataComponent::initialize(CreatureObject* droid) {
 	// create the weapons and set them on the droid
 	// also change the ham values
-	int maxHam = droid->getMaxHAM(0);
+	int maxHam = droid->getBaseHAM(0);
 	int minDmg = DroidMechanics::determineMinDamage(droid->getSpecies(),rating);
 	int maxDmg = DroidMechanics::determineMaxDamage(droid->getSpecies(),rating);
 	float toHit = DroidMechanics::determineHit(droid->getSpecies(),maxHam);
