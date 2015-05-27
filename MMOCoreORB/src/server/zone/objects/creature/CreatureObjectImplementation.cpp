@@ -3148,15 +3148,19 @@ void CreatureObjectImplementation::destroyPlayerCreatureFromDatabase(bool destro
 	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object = getSlottedObject(i);
 
-		if (destroyedObjects.put(object) != -1)
+		if (destroyedObjects.put(object) != -1) {
+			Locker locker(object);
 			object->destroyObjectFromDatabase(true);
+		}
 	}
 
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		ManagedReference<SceneObject*> object = getContainerObject(j);
 
-		if (destroyedObjects.put(object) != -1)
+		if (destroyedObjects.put(object) != -1) {
+			Locker locker(object);
 			object->destroyObjectFromDatabase(true);
+		}
 	}
 
 	//Remove all child objects from database
@@ -3165,6 +3169,8 @@ void CreatureObjectImplementation::destroyPlayerCreatureFromDatabase(bool destro
 
 		if (child == NULL)
 			continue;
+
+		Locker locker(child);
 
 		child->destroyObjectFromDatabase(true);
 	}
