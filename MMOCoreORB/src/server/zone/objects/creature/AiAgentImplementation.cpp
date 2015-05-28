@@ -170,8 +170,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	creatureBitmask = npcTemplate->getCreatureBitmask();
 	level = getTemplateLevel();
 
-	float minDmg = calculateAttackMinDamage(level);
-	float maxDmg = calculateAttackMaxDamage(level);
+	float minDmg = npcTemplate->getDamageMin();
+	float maxDmg = npcTemplate->getDamageMax();
 	float speed = calculateAttackSpeed(level);
 	bool allowedWeapon = true;
 	if (petDeed != NULL) {
