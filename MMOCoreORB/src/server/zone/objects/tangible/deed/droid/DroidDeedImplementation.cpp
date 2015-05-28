@@ -363,9 +363,11 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			if (i % 3 == 0) {
 				droid->setBaseHAM(i,maxHam,true);
 				droid->setHAM(i,maxHam,true);
+				droid->setMaxHAM(i,maxHam,true);
 			} else {
-				droid->setBaseHAM(i,maxHam/100,true);
-				droid->setHAM(i,maxHam/100,true);
+				droid->setBaseHAM(i,maxHam/10,true);
+				droid->setHAM(i,maxHam/10,true);
+				droid->setMaxHAM(i,maxHam/10,true);
 			}
 		}
 
