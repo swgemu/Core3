@@ -40,6 +40,8 @@
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 
+#include "server/zone/objects/player/FsExperienceTypes.h"
+
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/variables/Skill.h"
@@ -271,6 +273,9 @@ void ZoneServerImplementation::startManagers() {
 	DirectorManager::instance()->loadPersistentEvents();
 	DirectorManager::instance()->loadPersistentStatus();
 	DirectorManager::instance()->startGlobalScreenPlays();
+
+	// Load lua config for FS Experience Types.
+	FsExperienceTypes::instance()->loadLuaConfig();
 
 	auctionManager->initialize();
 }
