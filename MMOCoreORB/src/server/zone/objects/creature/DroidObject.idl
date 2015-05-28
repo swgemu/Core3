@@ -42,12 +42,12 @@ class DroidObject extends AiAgent {
 	/**
 	 * Armor type
 	 */
-	protected unsigned int armor = 0;
+	protected unsigned int armor;
 
 	/**
 	 * Damage resistance (same for all types except lightsaber)
 	 */
-	protected float resist = 0;
+	protected float resist;
 
 	/**
 	 * List of installed droid modules
@@ -58,7 +58,7 @@ class DroidObject extends AiAgent {
 	/**
 	 * Droid hit chance
 	 */
-	protected float hitChance = 0;
+	protected float hitChance;
 
 	/**
 	 * Droid species for Identification
@@ -100,15 +100,11 @@ class DroidObject extends AiAgent {
 		maximumHam = 55;
 		minDamage = 1;
 		maxDamage = 1;	
-		attackSpeed = 2.0;	
+		attackSpeed = 2.0;
+		armor = 0;
+		resist = 0;
+		hitChance = 0.2;
 	}
-
-	/**
-	 * Initializes the transient members of SceneObject, must call the inherited object method first.
-	 * @pre {transient members are not initialized }
-	 * @post { transient members are initialized }
-	 */
-	public native void initializeTransientMembers();
 
 	/**
 	 * Fills the attribute list message options that are sent to player creature
@@ -258,7 +254,7 @@ class DroidObject extends AiAgent {
 	 * Initializes droid modules from crafted_components scenos
 	 */
 	@local
-	public native void initDroidModules(boolean init=false);
+	public native void initDroidModules();
 
 	/**
 	 * Returns a crafting station of the given type if droid has the appropriate module. Returns NULL otherwise.
@@ -511,7 +507,7 @@ class DroidObject extends AiAgent {
 		else
 			return super.getDamageMin();	
 	}
-	
+
 	@dirty
 	public int getDamageMax() {
 		if(isPet())
@@ -519,7 +515,12 @@ class DroidObject extends AiAgent {
 		else	
 			return super.getDamageMax();	
 	}
-	
+
+	@dirty
+	public int getAttackSpeed() {
+		return attackSpeed;	
+	}
+
 	@dirty
 	@preLocked
 	public float calculateAttackSpeed(int level) {

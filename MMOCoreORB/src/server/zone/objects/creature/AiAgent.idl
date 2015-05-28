@@ -967,7 +967,7 @@ class AiAgent extends CreatureObject {
 		}
 
 		if (npcTemplate.get() == null)
-			return false;
+			return 0;
 
 		return npcTemplate.get().getChanceHit();
 	}

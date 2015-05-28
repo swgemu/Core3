@@ -22,11 +22,6 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/creature/conversation/ConversationObserver.h"
 
-void DroidObjectImplementation::initializeTransientMembers() {
-	AiAgentImplementation::initializeTransientMembers();
-	initDroidModules();
-}
-
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
 
 	AiAgentImplementation::fillAttributeList( msg, object );
@@ -207,7 +202,7 @@ bool DroidObjectImplementation::isPowerDroid(){
 		return POWER_DROID == getSpecies();
 }
 
-void DroidObjectImplementation::initDroidModules(bool init){
+void DroidObjectImplementation::initDroidModules(){
 	modules.removeAll();
 	ManagedReference<SceneObject*> container = getSlottedObject("crafted_components");
 	if(container != NULL && container->getContainerObjectsSize() > 0) {
@@ -225,17 +220,8 @@ void DroidObjectImplementation::initDroidModules(bool init){
 				BaseDroidModuleComponent* module = cast<BaseDroidModuleComponent*>(data->get());
 				if( module != NULL ){
 					modules.add(module);
-					if (init) {
-						module->initialize( _this.get());
-					}
 				}
 			}
-		} else {
-			// no modules, so disable some combat stats.
-			setResists(0);
-			setHitChance(0);
-			setMaxDamage(1);
-			setMinDamage(1);
 		}
 	}
 }

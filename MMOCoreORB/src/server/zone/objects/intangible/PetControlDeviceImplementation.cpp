@@ -750,9 +750,9 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 
 		if (droid != NULL) {
 			alm->insertAttribute("challenge_level", droid->getLevel());
-			alm->insertAttribute("creature_health", droid->getHAM(0));
-			alm->insertAttribute("creature_action", droid->getHAM(3));
-			alm->insertAttribute("creature_mind", droid->getHAM(6));
+			alm->insertAttribute("creature_health", droid->getBaseHAM(0));
+			alm->insertAttribute("creature_action", droid->getBaseHAM(3));
+			alm->insertAttribute("creature_mind", droid->getBaseHAM(6));
 
 			droid->fillAttributeList(alm, object);
 		}

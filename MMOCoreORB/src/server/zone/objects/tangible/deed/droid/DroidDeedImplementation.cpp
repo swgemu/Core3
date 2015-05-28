@@ -282,6 +282,8 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		droid->loadTemplateData( creatureTemplate );
 		droid->setCustomObjectName(StringIdManager::instance()->getStringId(*droid->getObjectName()), true);
+		droid->createChildObjects();
+		droid->setControlDevice(controlDevice);
 
 		// Transfer crafting components from deed to droid
 		ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");
@@ -305,10 +307,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			String key;
 			ManagedReference<DroidComponent*> comp = NULL;
 			HashTableIterator<String, ManagedReference<DroidComponent*> > iterator = modules.iterator();
-			droid->setResists(0);
-			droid->setHitChance(0);
-			droid->setMinDamage(1);
-			droid->setMaxDamage(1);
+
 			for(int i = 0; i < modules.size(); ++i) {
 				iterator.getNextKeyAndValue(key, comp);
 				if (comp) {
@@ -324,6 +323,32 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			droid->transferObject(craftingComponents, 4, false);
 			craftingComponents->setSendToClient(false);
 		}
+
+		droid->initDroidModules();
+
+		//Set weapon stats
+		WeaponObject* weapon = droid->getSlottedObject("default_weapon").castTo<WeaponObject*>();
+
+		if (weapon != NULL) {
+			Locker locker(weapon);
+			weapon->setMinDamage(droid->getDamageMin());
+			weapon->setMaxDamage(droid->getDamageMax());
+			weapon->setAttackSpeed(droid->getAttackSpeed());
+		}
+
+		float maxHam = DroidMechanics::determineHam(overallQuality,species);
+		for (int i = 0; i < 9; ++i) {
+			if (i % 3 == 0) {
+				droid->setBaseHAM(i,maxHam,false);
+				droid->setHAM(i,maxHam,false);
+				droid->setMaxHAM(i,maxHam,false);
+			} else {
+				droid->setBaseHAM(i,maxHam/10,false);
+				droid->setHAM(i,maxHam/10,false);
+				droid->setMaxHAM(i,maxHam/10,false);
+			}
+		}
+
 		// Copy color customization from deed to droid
 		CustomizationVariables* customVars = getCustomizationVariables();
 		if( customVars != NULL ){
@@ -345,7 +370,6 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		controlDevice->setPetType(PetManager::DROIDPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
-		droid->createChildObjects();
 		controlDevice->setControlledObject(droid);
 		controlDevice->setDefaultCommands();
 
@@ -357,19 +381,6 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		datapad->broadcastObject(controlDevice, true);
 
 		controlDevice->callObject(player);
-		droid->initDroidModules(true);
-		float maxHam = DroidMechanics::determineHam(overallQuality,species);
-		for (int i = 0; i < 9; ++i) {
-			if (i % 3 == 0) {
-				droid->setBaseHAM(i,maxHam,true);
-				droid->setHAM(i,maxHam,true);
-				droid->setMaxHAM(i,maxHam,true);
-			} else {
-				droid->setBaseHAM(i,maxHam/10,true);
-				droid->setHAM(i,maxHam/10,true);
-				droid->setMaxHAM(i,maxHam/10,true);
-			}
-		}
 
 		//Remove the deed from its container.
 		ManagedReference<SceneObject*> deedContainer = getParent().get();

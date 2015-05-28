@@ -44,7 +44,7 @@ void DroidCombatModuleDataComponent::fillAttributeList(AttributeListMessage* alm
 	int damageMin = droid->getDamageMin();
 	int damageMax = droid->getDamageMax();
 	float chanceHit = droid->getChanceHit();
-	float attackSpeed = droid->calculateAttackSpeed(0);
+	float attackSpeed = droid->getAttackSpeed();
 	StringBuffer attdisplayValue;
 	attdisplayValue << Math::getPrecision(attackSpeed, 2);
 	StringBuffer hitdisplayValue;
@@ -85,29 +85,29 @@ void DroidCombatModuleDataComponent::initialize(CreatureObject* droid) {
 	cast<DroidObject*>(droid)->setHitChance(toHit);
 	cast<DroidObject*>(droid)->setMaxDamage(maxDmg);
 	cast<DroidObject*>(droid)->setMinDamage(maxDmg);
+	cast<DroidObject*>(droid)->setAttackSpeed(speed);
 
 	// load correct weapon
-	String weaponTemplate = "object/weapon/creature/creature_default_weapon.iff";
 	if(droid->getSpecies() == DroidObject::R_SERIES) { // r-series are the ranged one users.
-		weaponTemplate = "object/weapon/ranged/droid/droid_astromech_ranged.iff";
-	}
-	ManagedReference<WeaponObject*> weao = (droid->getZoneServer()->createObject(weaponTemplate.hashCode(), 1)).castTo<WeaponObject*>();
-	if (weao != NULL) {
-		weao->setMinDamage(minDmg);
-		weao->setMaxDamage(maxDmg);
-		weao->setAttackSpeed(speed);
+		String weaponTemplate = "object/weapon/ranged/droid/droid_astromech_ranged.iff";
 
-		WeaponObject* oldWeapon = droid->getSlottedObject("default_weapon").castTo<WeaponObject*>();
+		ManagedReference<WeaponObject*> weao = (droid->getZoneServer()->createObject(weaponTemplate.hashCode(), 1)).castTo<WeaponObject*>();
+		if (weao != NULL) {
+			ManagedReference<WeaponObject*> oldWeapon = droid->getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
-		if (oldWeapon != NULL && oldWeapon->isPersistent()) {
-			oldWeapon->destroyObjectFromDatabase(true);
+			if (oldWeapon != NULL && oldWeapon->isPersistent()) {
+				Locker oldWeaponLocker(oldWeapon);
+				oldWeapon->destroyObjectFromDatabase(true);
+			}
+
+			droid->dropSlottedObject("default_weapon");
+
+			Locker locker(weao);
+
+			if (!droid->transferObject(weao, 4, false)) {
+				weao->destroyObjectFromDatabase(true);
+			}
+
 		}
-
-		droid->dropSlottedObject("default_weapon");
-
-		if (!droid->transferObject(weao, 4, false)) {
-			weao->destroyObjectFromDatabase(true);
-		}
 	}
-
 }
