@@ -79,7 +79,8 @@ class GCWManager extends ManagedService implements Logger {
 	public transient static int turretAutoFireTimeout;
 	public transient static int maxBasesPerPlayer;
 	public transient static int bonusXP;
-	public transient static int bonusDiscount;
+	public transient static int winnerBonus;
+	public transient static int loserBonus;
 	public transient static boolean spawnDefenses;
 	public transient static int initialVulnerabilityDelay;
 	
