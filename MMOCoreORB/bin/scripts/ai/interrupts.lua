@@ -349,8 +349,8 @@ function DroidPetInterrupt:startDamageInterrupt(pAgent,pObject)
 	if pAgent == nil or pObject == nil then return end
 	local agent = AiAgent(pAgent)
 	--print("droid got damage\n")
-	-- starting combat droids should flee if they arent combat capable and they get hit by damage
-	if CreatureObject(pAgent):isCombatDroidPet() then
+	-- droids should flee if they arent combat capable and they get hit by damage
+	if not CreatureObject(pAgent):isCombatDroidPet() then
 		-- if in combat run away if not a combat pet
 		agent:runAway(pObject, 32)
 		agent:stopWaiting()
