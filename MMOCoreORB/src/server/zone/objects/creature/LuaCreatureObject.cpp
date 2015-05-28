@@ -819,8 +819,8 @@ int LuaCreatureObject::isDroidPet(lua_State* L) {
 }
 
 int LuaCreatureObject::isCombatDroidPet(lua_State* L) {
-	bool retVal = realObject->isDroidObject() && realObject->isPet();
-	if (retVal) {
+	bool retVal = false;
+	if (realObject->isDroidObject() && realObject->isPet()) {
 		DroidObject* d = cast<DroidObject*>(realObject);
 		retVal = d->isCombatDroid();
 	}
