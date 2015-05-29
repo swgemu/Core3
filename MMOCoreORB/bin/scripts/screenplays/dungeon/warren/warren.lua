@@ -950,6 +950,9 @@ function DownloadEvidenceMenuComponent:handleObjectMenuSelect(pSceneObject, pPla
 		local pItem = giveItem(pDatapad, WarrenScreenPlay.evidence["evidence_" .. SceneObject(pSceneObject):getObjectID()].item, -1)
 
 		if (pItem ~= nil) then
+			SceneObject(pItem):setContainerInheritPermissionsFromParent(false)
+			SceneObject(pItem):clearContainerDefaultDenyPermission(MOVECONTAINER)
+			SceneObject(pItem):setContainerDefaultAllowPermission(MOVECONTAINER)
 			local suiManager = LuaSuiManager()
 			suiManager:sendMessageBox(pSceneObject, pPlayer, "@sui:swg", "@theme_park/warren/warren_system_messages:download_complete", "@ok", "WarrenScreenPlay", "notifyOkPressed")
 		end

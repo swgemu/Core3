@@ -411,6 +411,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);
 	luaEngine->setGlobalInt("MOVEOUT", ContainerPermissions::MOVEOUT);
 	luaEngine->setGlobalInt("WALKIN", ContainerPermissions::WALKIN);
+	luaEngine->setGlobalInt("MOVECONTAINER", ContainerPermissions::MOVECONTAINER);
 
 	// Transfer Error Codes
 	luaEngine->setGlobalInt("TRANSFERCANADD", TransferErrorCode::SUCCESS);
@@ -1920,6 +1921,7 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 
 		lua_pushlightuserdata(L, object.get());
 	} else {
+		instance()->error("could not spawn template " + script);
 		lua_pushnil(L);
 	}
 
