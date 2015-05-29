@@ -409,10 +409,8 @@ void ReactionManagerImplementation::doReactionFineMailCheck(CreatureObject* play
 	if (playerObject->getReactionFines() == 0)
 		return;
 
-	//int weekLength = 7 * 24 * 60 * 60 * 1000;
-	//int dayLength = 24 * 60 * 60 * 1000;
-	int weekLength = 24 * 60 * 60 * 1000; // 1 day for testing
-	int dayLength = 24 * 60 * 60 * 1000; // 1 day for testing
+	int weekLength = 7 * 24 * 60 * 60 * 1000;
+	int dayLength = 24 * 60 * 60 * 1000;
 
 	Time currentTime;
 
