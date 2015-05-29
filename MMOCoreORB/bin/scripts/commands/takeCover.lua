@@ -43,7 +43,6 @@
 
 TakeCoverCommand = {
         name = "takecover",
-        weaponType = RIFLEWEAPON,
 }
 
 AddCommand(TakeCoverCommand)

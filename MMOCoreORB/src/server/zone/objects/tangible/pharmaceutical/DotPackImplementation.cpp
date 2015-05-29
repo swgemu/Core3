@@ -8,6 +8,6 @@ void DotPackImplementation::notifyLoadFromDatabase() {
 	PharmaceuticalObjectImplementation::notifyLoadFromDatabase();
 
 	if (commandToExecute.beginsWith("/")) {
-		commandToExecute.replaceFirst("/", "");
+		commandToExecute = commandToExecute.replaceFirst("/", "");
 	}
 }
