@@ -285,6 +285,19 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		droid->createChildObjects();
 		droid->setControlDevice(controlDevice);
 
+		float maxHam = DroidMechanics::determineHam(overallQuality,species);
+		for (int i = 0; i < 9; ++i) {
+			if (i % 3 == 0) {
+				droid->setBaseHAM(i,maxHam,false);
+				droid->setHAM(i,maxHam,false);
+				droid->setMaxHAM(i,maxHam,false);
+			} else {
+				droid->setBaseHAM(i,maxHam/10,false);
+				droid->setHAM(i,maxHam/10,false);
+				droid->setMaxHAM(i,maxHam/10,false);
+			}
+		}
+
 		// Transfer crafting components from deed to droid
 		ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");
 		if(craftingComponents != NULL) {
@@ -334,19 +347,6 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			weapon->setMinDamage(droid->getDamageMin());
 			weapon->setMaxDamage(droid->getDamageMax());
 			weapon->setAttackSpeed(droid->getAttackSpeed());
-		}
-
-		float maxHam = DroidMechanics::determineHam(overallQuality,species);
-		for (int i = 0; i < 9; ++i) {
-			if (i % 3 == 0) {
-				droid->setBaseHAM(i,maxHam,false);
-				droid->setHAM(i,maxHam,false);
-				droid->setMaxHAM(i,maxHam,false);
-			} else {
-				droid->setBaseHAM(i,maxHam/10,false);
-				droid->setHAM(i,maxHam/10,false);
-				droid->setMaxHAM(i,maxHam/10,false);
-			}
 		}
 
 		// Copy color customization from deed to droid
