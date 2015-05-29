@@ -505,7 +505,7 @@ class DroidObject extends AiAgent {
 		if (isPet())
 			return minDamage;
 		else
-			return super.getDamageMin();	
+			return super.getDamageMin();
 	}
 
 	@dirty
@@ -513,12 +513,12 @@ class DroidObject extends AiAgent {
 		if(isPet())
 			return maxDamage;
 		else	
-			return super.getDamageMax();	
+			return super.getDamageMax();
 	}
 
 	@dirty
-	public int getAttackSpeed() {
-		return attackSpeed;	
+	public float getAttackSpeed() {
+		return attackSpeed;
 	}
 
 	@dirty

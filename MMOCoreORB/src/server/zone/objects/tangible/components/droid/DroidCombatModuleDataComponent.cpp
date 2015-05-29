@@ -84,7 +84,7 @@ void DroidCombatModuleDataComponent::initialize(CreatureObject* droid) {
 	float speed = DroidMechanics::determineSpeed(droid->getSpecies(),maxHam);
 	cast<DroidObject*>(droid)->setHitChance(toHit);
 	cast<DroidObject*>(droid)->setMaxDamage(maxDmg);
-	cast<DroidObject*>(droid)->setMinDamage(maxDmg);
+	cast<DroidObject*>(droid)->setMinDamage(minDmg);
 	cast<DroidObject*>(droid)->setAttackSpeed(speed);
 
 	// load correct weapon
