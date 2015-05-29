@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_46464625",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManager.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-05-29T01:13:01Z",
+      "side": 1,
+      "message": "It\u0027s a nitpick, but please change looser to loser (lose \u003d opposite of win, loose \u003d opposite of tight).",
+      "revId": "481278fca3cdd678c0408c9a2edf9144c195432b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
