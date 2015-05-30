@@ -498,7 +498,7 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		Locker block(building);
 
 		StringIdChatParameter destroyMessage("@faction/faction_hq/faction_hq_response:terminal_response40"); // COUNTDOWN INITIATED: estimated time to detonation: %DI minutes.
-		int minutesRemaining = ceil(this->destructionTimer/60);
+		int minutesRemaining = (int) ceil((double)this->destructionTimer / (double)60);
 		destroyMessage.setDI(minutesRemaining);
 		broadcastBuilding(building, destroyMessage);
 		baseData->setState(DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE);

@@ -25,6 +25,9 @@ void GarageInstallationImplementation::createChildObjects() {
 
 	ActiveArea* activeArea = cast<ActiveArea*>( obj.get());
 
+	if (activeArea == NULL)
+		return;
+
 	Locker clocker(activeArea, _this.get());
 
 	activeArea->setRadius(64);

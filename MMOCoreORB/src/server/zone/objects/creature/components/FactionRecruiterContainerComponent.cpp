@@ -29,7 +29,7 @@ int FactionRecruiterContainerComponent::canAddObject(SceneObject* sceneObject, S
 		return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 	}
 
-	if (object != NULL && object->getObjectTemplate()->getFullTemplateString() == "object/tangible/encoded_disk/message_assembled_base.iff") {
+	if (object->getObjectTemplate()->getFullTemplateString() == "object/tangible/encoded_disk/message_assembled_base.iff") {
 		CoaMessageDataComponent* data = object->getDataObjectComponent()->castTo<CoaMessageDataComponent*>();
 
 		if (data != NULL) {

@@ -1610,7 +1610,7 @@ void PlayerObjectImplementation::activateForcePowerRegen() {
 
 		float timer = getForcePowerRegen() / 5;
 		float scheduledTime = 10 / timer;
-		uint64 miliTime = scheduledTime * 1000;
+		uint64 miliTime = static_cast<uint64>(scheduledTime * 1000.f);
 		forceRegenerationEvent->schedule(miliTime);
 	}
 }

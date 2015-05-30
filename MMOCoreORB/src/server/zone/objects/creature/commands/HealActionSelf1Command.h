@@ -52,9 +52,7 @@ public:
 
 		uint32 actionHealed = creature->healDamage(creature, CreatureAttribute::ACTION, healAmount);
 
-
-		forceCostDeducted = MIN((actionHealed / 7), forceCost);
-
+		forceCostDeducted = MIN(((float)actionHealed / 7), forceCost);
 
 		// Send system message(s).
 

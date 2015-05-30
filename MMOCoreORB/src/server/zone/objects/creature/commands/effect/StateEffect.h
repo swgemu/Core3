@@ -124,15 +124,15 @@ public:
         return stateStrength;
     }
 
-    void setDefenderExclusionTimers(Vector<String> defenderExclusionTimers) {
+    void setDefenderExclusionTimers(const Vector<String>& defenderExclusionTimers) {
         this->defenderExclusionTimers = defenderExclusionTimers;
     }
 
-    void setDefenderJediStateDefenseModifiers(Vector<String> defenderJediStateDefenseModifiers) {
+    void setDefenderJediStateDefenseModifiers(const Vector<String>& defenderJediStateDefenseModifiers) {
         this->defenderJediStateDefenseModifiers = defenderJediStateDefenseModifiers;
     }
 
-    void setDefenderStateDefenseModifiers(Vector<String> defenderStateDefenseModifiers) {
+    void setDefenderStateDefenseModifiers(const Vector<String>& defenderStateDefenseModifiers) {
         this->defenderStateDefenseModifiers = defenderStateDefenseModifiers;
     }
 

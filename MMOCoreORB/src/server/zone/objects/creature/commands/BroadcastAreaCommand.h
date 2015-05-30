@@ -64,8 +64,7 @@ public:
 					throw Exception("Range must be between 5 and 5000.");
 				}
 				args.getStringToken(messageType);
-			}
-			catch (Exception e) {
+			} catch (Exception& e) {
 				creature->sendSystemMessage(e.getMessage());
 				return INVALIDPARAMETERS;
 			}

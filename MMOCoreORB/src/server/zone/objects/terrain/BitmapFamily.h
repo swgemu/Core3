@@ -19,6 +19,10 @@ class BitMapFamily : public TemplateVariable<'MFAM'> {
 
 	TargaBitmap map;
 public:
+	BitMapFamily() : var1(0) {
+
+	}
+
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
 		iffStream->openChunk('DATA');
 

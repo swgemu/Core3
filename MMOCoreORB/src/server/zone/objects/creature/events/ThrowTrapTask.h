@@ -29,7 +29,7 @@ class ThrowTrapTask : public Task {
 	bool hit;
 public:
 	ThrowTrapTask(CreatureObject* p, CreatureObject* t,
-			Buff* b, StringIdChatParameter m, short po, int d, bool h) : Task(2300) {
+			Buff* b, const StringIdChatParameter& m, short po, int d, bool h) : Task(2300) {
 		player = p;
 		target = t;
 		buff = b;

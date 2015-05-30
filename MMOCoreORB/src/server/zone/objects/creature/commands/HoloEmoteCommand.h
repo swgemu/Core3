@@ -61,7 +61,7 @@ public:
 	void handleEmote( CreatureObject* player, String& arg ) const {
 
 		PlayerObject* ghost = player->getPlayerObject();
-		if( player == NULL )
+		if( ghost == NULL )
 			return;
 
 		Locker gLocker( ghost, player );

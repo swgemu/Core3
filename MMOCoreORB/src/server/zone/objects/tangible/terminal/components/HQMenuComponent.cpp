@@ -52,7 +52,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 
 		menuResponse->addRadialMenuItem(228, 3, "@hq:mnu_defense_status");
 
-		if(gcwMan->isShutdownSequenceStarted(building) && building->getPvpStatusBitmask() && CreatureFlag::OVERT){
+		if(gcwMan->isShutdownSequenceStarted(building) && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)){
 			menuResponse->addRadialMenuItem(231, 3, "@hq:mnu_shutdown");  // Shutdown facility
 		}
 

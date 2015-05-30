@@ -222,7 +222,7 @@ public:
 
 	static String getType(int type);
 
-	inline String getAppearanceFilename() const {
+	inline const String& getAppearanceFilename() const {
 		return appearanceFilename;
 	}
 
@@ -230,7 +230,7 @@ public:
 		return clearFloraRadius;
 	}
 
-	inline String getClientDataFile() const {
+	inline const String& getClientDataFile() const {
 		return clientDataFile;
 	}
 
@@ -266,7 +266,7 @@ public:
 		return containerVolumeLimit;
 	}
 
-	inline String getDetailedDescription() {
+	inline const String& getDetailedDescription() {
 		return detailedDescription.getFullString();
 	}
 
@@ -282,7 +282,7 @@ public:
 		return locationReservationRadius;
 	}
 
-	inline String getLookAtText() const {
+	inline const String& getLookAtText() const {
 		return lookAtText.getFullString();
 	}
 
@@ -290,11 +290,11 @@ public:
 		return noBuildRadius;
 	}
 
-	inline String getObjectName() const {
+	inline const String& getObjectName() const {
 		return objectName.getFullString();
 	}
 
-	inline String getCustomName() const {
+	inline const String& getCustomName() const {
 		return customName;
 	}
 
@@ -302,7 +302,7 @@ public:
 		return onlyVisibleInTools;
 	}
 
-	inline String getPortalLayoutFilename() const {
+	inline const String& getPortalLayoutFilename() const {
 		return portalLayoutFilename;
 	}
 
@@ -359,7 +359,7 @@ public:
 		return surfaceType;
 	}
 
-	inline String getTintPallete() const {
+	inline const String& getTintPallete() const {
 		return tintPallete;
 	}
 
@@ -371,7 +371,7 @@ public:
 		return clientTemplateFileName.hashCode();
 	}
 
-	inline String getClientTemplateFileName() {
+	inline const String& getClientTemplateFileName() {
 		return clientTemplateFileName;
 	}
 
@@ -379,15 +379,15 @@ public:
 		return fullTemplateString.hashCode();
 	}
 
-	inline String getFullTemplateString() {
+	inline const String& getFullTemplateString() {
 		return fullTemplateString;
 	}
 
-	inline String getDataObjectComponent() {
+	inline const String& getDataObjectComponent() {
 		return dataObjectComponent;
 	}
 
-	inline String getTemplateFileName() {
+	inline const String& getTemplateFileName() {
 		return templateFileName;
 	}
 
@@ -395,7 +395,7 @@ public:
 		return containerComponent;
 	}
 
-	inline String getZoneComponent() {
+	inline const String& getZoneComponent() {
 		return zoneComponent;
 	}
 
@@ -403,7 +403,7 @@ public:
 		return objectMenuComponent;
 	}
 
-	inline String getAttributeListComponent() {
+	inline const String& getAttributeListComponent() {
 		return attributeListComponent;
 	}
 

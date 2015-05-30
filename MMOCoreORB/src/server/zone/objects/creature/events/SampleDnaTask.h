@@ -137,7 +137,7 @@ public:
 				} else if ( (35 + rollMod) < sampleRoll) { // failure your roll < 50%
 					result = 2;
 				} else { // success
-					int maxSamples = ceil(skillMod/25);
+					int maxSamples = (int)(ceil((double)skillMod / (double)25));
 					if (creature->getDnaSampleCount() > maxSamples ){
 						creature->setDnaState(CreatureManager::DNASAMPLED);
 						// We took the max samples the shock it too much and kils the creature.

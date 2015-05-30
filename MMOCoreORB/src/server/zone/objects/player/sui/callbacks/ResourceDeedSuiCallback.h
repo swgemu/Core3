@@ -27,10 +27,13 @@ public:
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject();
 
-		if (obj == NULL || !obj->isDeedObject())
+		if (obj == NULL)
 			return;
 
 		ResourceDeed* deed = cast<ResourceDeed*>( obj.get());
+
+		if (deed == NULL)
+			return;
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 

@@ -17,6 +17,9 @@ class MapFamily : public TemplateVariable<'MFAM'> {
 	String var2;
 	MapFractal mfrc;
 public:
+	MapFamily() : var1(0) {
+	}
+
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
 		iffStream->openChunk('DATA');
 
