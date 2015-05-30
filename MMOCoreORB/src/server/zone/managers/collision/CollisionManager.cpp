@@ -447,10 +447,10 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	}
 
 	if (object1->isCreatureObject())
-		heightOrigin = getRayOriginPoint(cast<CreatureObject*>(object1));
+		heightOrigin = getRayOriginPoint(object1->asCreatureObject());
 
 	if (object2->isCreatureObject())
-		heightEnd = getRayOriginPoint(cast<CreatureObject*>(object2));
+		heightEnd = getRayOriginPoint(object2->asCreatureObject());
 
 	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ() + heightOrigin);
 

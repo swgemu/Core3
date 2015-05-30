@@ -119,7 +119,12 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> object = cast<CreatureObject*>(client->getPlayer().get().get());
+		ManagedReference<SceneObject*> sceneObject = client->getPlayer().get();
+
+		if (sceneObject == NULL)
+			return;
+
+		CreatureObject* object = sceneObject->asCreatureObject();
 
 		if (object == NULL)
 			return;
@@ -205,10 +210,15 @@ public:
 		if (newParent == NULL)
 			return;
 
-		if (!newParent->isCellObject() || newParent->getParent() == NULL)
+		if (!newParent->isCellObject())
 			return;
 
-		ManagedReference<BuildingObject*> building = newParent->getParent().castTo<BuildingObject*>();
+		ManagedReference<SceneObject*> parentSceneObject = newParent->getParent();
+
+		if (parentSceneObject == NULL)
+			return;
+
+		BuildingObject* building = parentSceneObject->asBuildingObject();
 
 		if (building == NULL)
 			return;

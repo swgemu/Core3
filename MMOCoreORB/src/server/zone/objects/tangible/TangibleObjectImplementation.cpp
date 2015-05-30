@@ -932,3 +932,11 @@ bool TangibleObjectImplementation::isCityStatue(){
 bool TangibleObjectImplementation::isCityFountain(){
 	return (templateObject != NULL && templateObject->getFullTemplateString().contains("object/tangible/furniture/city/fountain"));
 }
+
+TangibleObject* TangibleObject::asTangibleObject() {
+	return this;
+}
+
+TangibleObject* TangibleObjectImplementation::asTangibleObject() {
+	return _this.getReferenceUnsafeStaticCast();
+}
