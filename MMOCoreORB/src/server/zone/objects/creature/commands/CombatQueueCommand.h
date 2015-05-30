@@ -129,8 +129,16 @@ public:
 			return INVALIDLOCOMOTION;
 
 		if (creature->isPlayerCreature()){
-			if (creature->getPlayerObject() && creature->getPlayerObject()->isAFK()) {
-				return GENERALERROR;
+			PlayerObject* ghost = creature->getPlayerObject();
+
+			if (ghost != NULL) {
+				if (ghost->isOnLoadScreen()) {
+					ghost->setOnLoadScreen(false);
+				}
+
+				if (ghost->isAFK()) {
+					return GENERALERROR;
+				}
 			}
 		}
 

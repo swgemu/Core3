@@ -169,6 +169,9 @@ public:
 		if (ghost->isTeleporting())
 			return;
 
+		if (parsedSpeed > 0.5 && ghost->isOnLoadScreen())
+			ghost->setOnLoadScreen(false);
+
 		/*if (!object->isInQuadTree())
 			return;*/
 

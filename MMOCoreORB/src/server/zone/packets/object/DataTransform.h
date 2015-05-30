@@ -119,8 +119,6 @@ public:
 		if (object->getZone() == NULL)
 			return;
 
-
-
 		int posture = object->getPosture();
 
 		if (!object->hasDizzyEvent() && (posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE
@@ -166,6 +164,9 @@ public:
 
 		if (ghost->isTeleporting())
 			return;
+
+		if (parsedSpeed > 0.5 && ghost->isOnLoadScreen())
+			ghost->setOnLoadScreen(false);
 
 		/*if (!object->isInQuadTree())
 			return;*/
