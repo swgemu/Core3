@@ -378,6 +378,11 @@ class BuildingObject extends StructureObject {
 			updatePaidAccessList();
 		}
 	}
+	
+	@dirty
+	@nativeStub
+	@local
+	public native BuildingObject asBuildingObject();
 
 	@dirty
 	public native int getAccessFeeDelay();

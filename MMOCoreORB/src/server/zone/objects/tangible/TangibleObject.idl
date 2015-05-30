@@ -563,6 +563,11 @@ class TangibleObject extends SceneObject {
 	}
 	
 	@dirty
+	@local
+	@nativeStub
+	public native TangibleObject asTangibleObject();
+	
+	@dirty
 	public boolean isSliceable() {
 		if (sliced)
 			return false;

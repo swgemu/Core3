@@ -27,7 +27,7 @@ public:
 		insertInt(object->getMovementCounter());
 
 		if (object->isCreatureObject())
-			insertByte((int8)cast<CreatureObject*>(object)->getCurrentSpeed());
+			insertByte((int8)object->asCreatureObject()->getCurrentSpeed());
 		else
 			insertByte(0);
 		
@@ -56,7 +56,7 @@ public:
 		insertInt(object->getMovementCounter());
 
 		if (object->isCreatureObject())
-			insertByte((int8)cast<CreatureObject*>(object)->getCurrentSpeed());
+			insertByte((int8)object->asCreatureObject()->getCurrentSpeed());
 		else
 			insertByte(0);
 

@@ -209,7 +209,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 
 	try {
 		if (sceneObject->isTangibleObject()) {
-			TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+			TangibleObject* tano = sceneObject->asTangibleObject();
 
 			zone->updateActiveAreas(tano);
 		}
@@ -217,7 +217,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		bool isInvis = false;
 
 		if (sceneObject->isCreatureObject()) {
-			CreatureObject* creo = cast<CreatureObject*>(sceneObject);
+			CreatureObject* creo = sceneObject->asCreatureObject();
 
 			if(creo->isInvisible())
 				isInvis = true;
@@ -279,7 +279,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 
 			try {
 				if (sceneObject->isTangibleObject()) {
-					TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+					TangibleObject* tano = sceneObject->asTangibleObject();
 					zone->updateActiveAreas(tano);
 				}
 			} catch (Exception& e) {
@@ -315,7 +315,7 @@ void ZoneComponent::updateZoneWithParent(SceneObject* sceneObject, SceneObject* 
 		bool isInvis = false;
 
 		if (sceneObject->isCreatureObject()) {
-			CreatureObject* creo = cast<CreatureObject*>(sceneObject);
+			CreatureObject* creo = sceneObject->asCreatureObject();
 			if(creo->isInvisible())
 				isInvis = true;
 		}
@@ -376,7 +376,7 @@ void ZoneComponent::switchZone(SceneObject* sceneObject, const String& newTerrai
 	sceneObject->destroyObjectFromWorld(false);
 
 	if (toggleInvisibility) {
-		CreatureObject* creo = cast<CreatureObject*>(sceneObject);
+		CreatureObject* creo = sceneObject->asCreatureObject();
 
 		if (creo != NULL) {
 			creo->setInvisible(!creo->isInvisible());
@@ -418,10 +418,10 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 		par->removeObject(sceneObject, NULL, false);
 
 		if (par->isCellObject()) {
-			ManagedReference<BuildingObject*> build = cast<BuildingObject*>(par->getParent().get().get());
+			ManagedReference<BuildingObject*> build = par->getParent().get().castTo<BuildingObject*>();
 
 			if (build != NULL) {
-				CreatureObject* creature = cast<CreatureObject*>(sceneObject);
+				CreatureObject* creature = sceneObject->asCreatureObject();
 
 				if (creature != NULL)
 					build->onExit(creature, parentID);
@@ -518,7 +518,7 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 //		locker.release();
 
 		if (sceneObject->isTangibleObject()) {
-			TangibleObject* tano = cast<TangibleObject*>(sceneObject);
+			TangibleObject* tano = sceneObject->asTangibleObject();
 			Vector<ManagedReference<ActiveArea*> >* activeAreas =  tano->getActiveAreas();
 
 			while (activeAreas->size() > 0) {
