@@ -90,6 +90,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 		ghost->setSavedParentID(0);
 
 		ghost->setTeleporting(true);
+		ghost->setOnLoadScreen(true);
 		ghost->updateLastValidatedPosition();
 		player->setMovementCounter(0);
 		ghost->setClientLastMovementStamp(0);
@@ -101,7 +102,6 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 }
 
 void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX, float newPositionZ, float newPositionY, uint64 parentID) {
-	//sceneObject->setTeleporting(true);
 	CreatureObject* player = NULL;
 
 	if (sceneObject->isPlayerCreature()) {

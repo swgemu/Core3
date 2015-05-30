@@ -82,8 +82,10 @@ class PlayerObject extends IntangibleObject {
 	protected string starterProfession;
 	
 	protected string bankLocation;
-	
+
 	protected boolean teleporting;
+
+	protected boolean onLoadScreen;
 
 	protected boolean muted;
 	protected string mutedReason;
@@ -292,8 +294,9 @@ class PlayerObject extends IntangibleObject {
 		commandMessageStrings.setNoDuplicateInsertPlan();
 		
 		bankLocation = "";
-		
+
 		teleporting = false;
+		onLoadScreen = false;
 
 		muted = false;
 		mutedReason = "";
@@ -1142,11 +1145,15 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native void awardBadge(unsigned int badge);
-	
+
 	public void setTeleporting(boolean val) {
 		teleporting = val;
 	}
-	
+
+	public void setOnLoadScreen(boolean val) {
+		onLoadScreen = val;
+	}
+
 	@dirty
 	public int getNumBadges() {
 		return badges.getNumBadges();
@@ -1349,12 +1356,17 @@ class PlayerObject extends IntangibleObject {
 	public DeltaVector<string> getFriendList() {
 		return friendList;
 	}
-	
+
 	@read
 	public boolean isTeleporting() {
 		return teleporting;
 	}
-	
+
+	@read
+	public boolean isOnLoadScreen() {
+		return onLoadScreen;
+	}
+
 	public void addChatRoom(ChatRoom room) {
 		chatRooms.put(room);
 	}

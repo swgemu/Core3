@@ -120,6 +120,7 @@ public:
 
 			if ((playerParent != NULL && currentParent == NULL) || (currentParent != NULL && currentParent->isCellObject())) {
 				ghost->setTeleporting(true);
+				ghost->setOnLoadScreen(true);
 				player->setMovementCounter(0);
 				ghost->setClientLastMovementStamp(0);
 

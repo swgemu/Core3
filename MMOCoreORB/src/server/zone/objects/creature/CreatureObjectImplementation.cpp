@@ -2726,7 +2726,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	if (ghost == NULL || targetGhost == NULL)
 		return false;
 
-	if (ghost->isTeleporting())
+	if (ghost->isOnLoadScreen())
 		return false;
 
 	if (CombatManager::instance()->areInDuel(object, _this.get()))
@@ -2759,7 +2759,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object) {
 	if(ghost == NULL)
 		return false;
 
-	if (ghost->isTeleporting())
+	if (ghost->isOnLoadScreen())
 		return false;
 
 	if (isDead() || isIncapacitated() || isInvisible())
@@ -2799,7 +2799,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (isPlayerCreature()) {
 		PlayerObject* ghost = getPlayerObject();
 
-		if (ghost != NULL && ghost->isTeleporting()) {
+		if (ghost != NULL && ghost->isOnLoadScreen()) {
 			return false;
 		}
 	}
