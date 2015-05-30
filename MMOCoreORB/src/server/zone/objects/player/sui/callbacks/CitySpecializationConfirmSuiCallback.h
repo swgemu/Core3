@@ -24,7 +24,7 @@ public:
 		if (session == NULL)
 			return;
 
-		if (!suiBox->isMessageBox() || player == NULL || cancelPressed) {
+		if (!suiBox->isMessageBox() || cancelPressed) {
 			session->cancelSession();
 			return;
 		}

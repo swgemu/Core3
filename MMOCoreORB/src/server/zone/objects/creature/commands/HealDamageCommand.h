@@ -245,7 +245,7 @@ public:
 		if (pharma->isRangedStimPack()) {
 			RangedStimPack* rangeStim = cast<RangedStimPack*>( pharma);
 
-			if (pharma == NULL)
+			if (rangeStim == NULL)
 				return;
 
 			uint32 stimPower = rangeStim->calculatePower(creature, targetCreature);

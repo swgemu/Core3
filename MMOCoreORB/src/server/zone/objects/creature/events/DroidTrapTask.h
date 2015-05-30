@@ -26,7 +26,8 @@ class DroidTrapTask : public Task {
 	short pool;
 	bool hit;
 public:
-	DroidTrapTask(CreatureObject* p, CreatureObject* t,	CreatureObject* dr, Buff* b, StringIdChatParameter m, short po, int d, bool h) : Task(2300) {
+	DroidTrapTask(CreatureObject* p, CreatureObject* t,	CreatureObject* dr, Buff* b,
+			const StringIdChatParameter& m, short po, int d, bool h) : Task(2300) {
 		player = p;
 		target = t;
 		droid = dr;

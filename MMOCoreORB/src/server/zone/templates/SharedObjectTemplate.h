@@ -294,7 +294,7 @@ public:
 		return objectName.getFullString();
 	}
 
-	inline String getCustomName() const {
+	inline const String& getCustomName() const {
 		return customName;
 	}
 
@@ -371,7 +371,7 @@ public:
 		return clientTemplateFileName.hashCode();
 	}
 
-	inline String getClientTemplateFileName() {
+	inline const String& getClientTemplateFileName() {
 		return clientTemplateFileName;
 	}
 
@@ -379,15 +379,15 @@ public:
 		return fullTemplateString.hashCode();
 	}
 
-	inline String getFullTemplateString() {
+	inline const String& getFullTemplateString() {
 		return fullTemplateString;
 	}
 
-	inline String getDataObjectComponent() {
+	inline const String& getDataObjectComponent() {
 		return dataObjectComponent;
 	}
 
-	inline String getTemplateFileName() {
+	inline const String& getTemplateFileName() {
 		return templateFileName;
 	}
 
@@ -395,7 +395,7 @@ public:
 		return containerComponent;
 	}
 
-	inline String getZoneComponent() {
+	inline const String& getZoneComponent() {
 		return zoneComponent;
 	}
 
@@ -403,7 +403,7 @@ public:
 		return objectMenuComponent;
 	}
 
-	inline String getAttributeListComponent() {
+	inline const String& getAttributeListComponent() {
 		return attributeListComponent;
 	}
 

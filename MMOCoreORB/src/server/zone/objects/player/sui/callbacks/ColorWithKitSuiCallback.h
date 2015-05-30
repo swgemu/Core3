@@ -21,8 +21,10 @@ public:
 	}
 
 	void run(CreatureObject* creature, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
-
 		SuiColorBox* cBox = cast<SuiColorBox*>( sui);
+
+		if (cBox == NULL)
+			return;
 
 		if(!creature->isPlayerCreature())
 			return;

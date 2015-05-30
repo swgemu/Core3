@@ -20,6 +20,12 @@ HttpSession::HttpSession() {
 	sessionId = generateRandomKey(48);
 	canSetId = true;
 
+	timestamp = 0;
+
+	ip = 0;
+
+	canSetId = false;
+
 	setLoggingName("HttpSession_" + sessionId);
 	setLogging(true);
 	setInfoLogLevel();

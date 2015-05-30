@@ -376,7 +376,7 @@ public:
 		this->stateEffects = stateEffects;
 	}
 
-	void addStateEffect(StateEffect stateEffect) {
+	void addStateEffect(const StateEffect& stateEffect) {
 		stateEffects.put(stateEffect.getEffectType(), stateEffect);
 	}
 

@@ -150,8 +150,7 @@ public:
 								throw Exception("Too many arguments.");
 						}
 					}
-				}
-				catch (Exception e) {
+				} catch (Exception& e) {
 					creature->sendSystemMessage(e.getMessage());
 					return INVALIDPARAMETERS;
 				}

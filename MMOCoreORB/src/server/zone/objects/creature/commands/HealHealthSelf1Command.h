@@ -54,7 +54,7 @@ public:
 		uint32 healthHealed = creature->healDamage(creature, CreatureAttribute::HEALTH, healAmount);
 
 
-		forceCostDeducted = MIN((healthHealed / 7), forceCost);
+		forceCostDeducted = MIN(((float)healthHealed / (float)7), forceCost);
 
 
 		// Send system message(s).

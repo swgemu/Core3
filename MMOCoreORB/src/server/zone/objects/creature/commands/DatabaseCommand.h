@@ -45,7 +45,7 @@ public:
 
 			objectID = tokenizer.getLongToken();
 
-		} catch ( Exception err) {
+		} catch (Exception& err) {
 			creature->sendSystemMessage("Error parsing objectID: " +  err.getMessage());
 			return INVALIDPARAMETERS;
 

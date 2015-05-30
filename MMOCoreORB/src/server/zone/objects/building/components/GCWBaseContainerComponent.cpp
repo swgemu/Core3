@@ -95,10 +95,10 @@ bool GCWBaseContainerComponent::checkPVPPermission(BuildingObject* building, Cre
 		return false;
 	}
 
-	creature->sendSystemMessage("unkown reason for entry denial");
+/*	creature->sendSystemMessage("unkown reason for entry denial");
 
 
-	return false;
+	return false;*/
 }
 
 bool GCWBaseContainerComponent::checkPVEPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage){
@@ -161,9 +161,10 @@ bool GCWBaseContainerComponent::checkPVEPermission(BuildingObject* building, Cre
 
 		return false;
 	}
-	if(sendMessage)
+
+	/*if(sendMessage)
 		creature->sendSystemMessage("unkown reason for entry denial");
 
-	return false;
+	return false;*/
 }
 

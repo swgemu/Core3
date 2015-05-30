@@ -136,7 +136,7 @@ public:
 						}
 					}
 				}
-				catch (Exception e) {
+				catch (Exception& e) {
 					creature->sendSystemMessage(e.getMessage());
 					return INVALIDPARAMETERS;
 				}

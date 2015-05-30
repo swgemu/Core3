@@ -37,13 +37,13 @@ public:
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( obj.get());
 
-		Locker _locker(targetCreature, creature);
-
-		if ( targetCreature == NULL )
-		{
+		if ( targetCreature == NULL ) {
 			sendInvalidParameterMessage(creature);
 			return GENERALERROR;
 		}
+
+		Locker _locker(targetCreature, creature);
+
 		UnicodeTokenizer tokenizer(arguments);
 		tokenizer.setDelimeter(" ");
 
