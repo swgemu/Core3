@@ -502,7 +502,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 		AiAgent* thisObject = _this.get();
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			CreatureObject* target = closeObjects.get(i).castTo<CreatureObject*>();
+			CreatureObject* target = cast<CreatureObject*>(closeObjects.get(i).get());
 
 			if (thisObject == target || target == NULL)
 				continue;
@@ -619,7 +619,7 @@ bool AiAgentImplementation::validateStateAttack() {
 	if (followCopy == NULL || !followCopy->isCreatureObject())
 		return false;
 
-	return validateStateAttack(followCopy.castTo<CreatureObject*>(), nextActionCRC);
+	return validateStateAttack(followCopy->asCreatureObject(), nextActionCRC);
 }
 
 SceneObject* AiAgentImplementation::getTargetFromMap() {
@@ -643,7 +643,7 @@ SceneObject* AiAgentImplementation::getTargetFromDefenders() {
 			SceneObject* tarObj = defenderList.get(i);
 
 			if (tarObj != NULL && tarObj->isCreatureObject()) {
-				CreatureObject* targetCreature = cast<CreatureObject*>(tarObj);
+				CreatureObject* targetCreature = tarObj->asCreatureObject();
 
 				if (!targetCreature->isDead() && !targetCreature->isIncapacitated() && targetCreature->getDistanceTo(_this.get()) < 128.f && targetCreature->isAttackableBy(_this.get())) {
 					target = targetCreature;
@@ -682,10 +682,14 @@ bool AiAgentImplementation::validateTarget(SceneObject* target) {
 	if (!target->isInRange(_this.get(), 128))
 		return false;
 
-	if (target->isCreatureObject() && (!cast<CreatureObject*>(target)->isAttackableBy(_this.get()) || cast<CreatureObject*>(target)->isDead() || cast<CreatureObject*>(target)->isIncapacitated()))
+	CreatureObject* targetCreatureObject = target->asCreatureObject();
+
+	if (targetCreatureObject != NULL && (!targetCreatureObject->isAttackableBy(_this.getReferenceUnsafeStaticCast()) || targetCreatureObject->isDead() || targetCreatureObject->isIncapacitated()))
 		return false;
 
-	if (target->isTangibleObject() && (!cast<TangibleObject*>(target)->isAttackableBy(_this.get()) || cast<TangibleObject*>(target)->isDestroyed()))
+	TangibleObject* targetTangibleObject = target->asTangibleObject();
+
+	if (targetTangibleObject != NULL && (!targetTangibleObject->isAttackableBy(_this.getReferenceUnsafeStaticCast()) || targetTangibleObject->isDestroyed()))
 		return false;
 
 	return true;
@@ -928,7 +932,7 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 		setFollowObject(defender);
 		if (defender->isCreatureObject() && threatMap != NULL)
-			threatMap->addAggro(cast<CreatureObject*>(defender), 1);
+			threatMap->addAggro(defender->asCreatureObject(), 1);
 	} else if (stateCopy <= STALKING) {
 		setFollowState(AiAgent::FOLLOWING);
 	}
@@ -945,7 +949,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 		return;
 
 	if (defender->isCreatureObject())
-		getThreatMap()->dropDamage(cast<CreatureObject*>(defender));
+		getThreatMap()->dropDamage(defender->asCreatureObject());
 
 	if (getFollowObject() == defender) {
 		CreatureObject* target = getThreatMap()->getHighestThreatCreature();
@@ -953,7 +957,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 		if (target == NULL && defenderList.size() > 0) {
 			SceneObject* tarObj = defenderList.get(0);
 			if (tarObj != NULL && tarObj->isCreatureObject())
-				target = cast<CreatureObject*>(tarObj);
+				target = tarObj->asCreatureObject();
 		}
 
 		if (target != NULL)
@@ -984,13 +988,13 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
 	SceneObject* scno = cast<SceneObject*>( entry);
 
-	if (scno == _this.get())
+	if (scno == _this.getReferenceUnsafeStaticCast())
 		return;
 
-	if (scno == NULL || !scno->isCreatureObject())
+	if (scno == NULL)
 		return;
 
-	CreatureObject* creo = cast<CreatureObject*>(scno);
+	CreatureObject* creo = scno->asCreatureObject();
 	if (creo != NULL && !creo->isInvisible() && creo->isPlayerCreature()) {
 		int newValue = (int) numberOfPlayersInRange.increment();
 		activateMovementEvent();
@@ -1083,14 +1087,14 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 
 	for (int i = 0; i < movementMarkers.size(); ++i) {
 		ManagedReference<SceneObject*> marker = movementMarkers.get(i);
-		Locker clocker(marker, _this.get());
+		Locker clocker(marker, _this.getReferenceUnsafeStaticCast());
 		marker->destroyObjectFromWorld(false);
 	}
 
 	SceneObject* creatureInventory = getSlottedObject("inventory");
 
 	if (creatureInventory != NULL) {
-		Locker clocker(creatureInventory, _this.get());
+		Locker clocker(creatureInventory, _this.getReferenceUnsafeStaticCast());
 		creatureInventory->setContainerOwnerID(0);
 	}
 
@@ -1153,7 +1157,7 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		respawn = System::random(respawn) + (respawn / 2.f);
 	}
 
-	Reference<Task*> task = new RespawnCreatureTask(_this.get(), zone, level);
+	Reference<Task*> task = new RespawnCreatureTask(_this.getReferenceUnsafeStaticCast(), zone, level);
 	task->schedule(respawn);
 }
 
@@ -2036,7 +2040,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 	activateRecovery();
 	
 	if (attacker->isCreatureObject()) {
-		CreatureObject* creature = cast<CreatureObject*>( attacker);
+		CreatureObject* creature = attacker->asCreatureObject();
 
 		if (damage > 0) {
 			getThreatMap()->addDamage(creature, damage);
@@ -2052,7 +2056,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 	activateRecovery();
 
 	if (attacker->isCreatureObject()) {
-		CreatureObject* creature = cast<CreatureObject*>( attacker);
+		CreatureObject* creature = attacker->asCreatureObject();
 
 		if (damage > 0) {
 			getThreatMap()->addDamage(creature, damage, xp);
@@ -2949,7 +2953,7 @@ void AiAgentImplementation::restoreFollowObject() {
 		setOblivious();
 	} else if (getCloseObjects() != NULL && !getCloseObjects()->contains(obj.get())) {
 		setOblivious();
-	} else if (obj->isCreatureObject() && cast<CreatureObject*>(obj.get())->isInvisible()) {
+	} else if (obj->isCreatureObject() && obj->asCreatureObject()->isInvisible()) {
 		setOblivious();
 	} else {
 		setFollowObject(obj);

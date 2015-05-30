@@ -986,7 +986,7 @@ void CreatureObjectImplementation::setHAM(int type, int value,
 
 int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
 	if (attacker->isCreatureObject()) {
-		CreatureObject* creature = cast<CreatureObject*>( attacker);
+		CreatureObject* creature = attacker->asCreatureObject();
 
 		if (damage > 0) {
 			getThreatMap()->addDamage(creature, damage, xp);
@@ -2747,7 +2747,7 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 
 bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object) {
 	if(object->isCreatureObject())
-		return isAttackableBy(cast<CreatureObject*>(object));
+		return isAttackableBy(object->asCreatureObject());
 
 	// TODO (dannuic): this will prevent TANOs from attacking mobs (turrets, minefields, etc)
 	if(this->isAiAgent()) {
@@ -3274,4 +3274,12 @@ void CreatureObjectImplementation::updateVehiclePosition(bool sendPackets) {
 	}
 
 	TangibleObjectImplementation::updateVehiclePosition(sendPackets);
+}
+
+CreatureObject* CreatureObjectImplementation::asCreatureObject() {
+	return _this.getReferenceUnsafeStaticCast();
+}
+
+CreatureObject* CreatureObject::asCreatureObject() {
+	return this;
 }

@@ -58,7 +58,7 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (!defender->isAttackableBy(attacker))
 		return false;
 
-	if (defender->isCreatureObject() && (cast<CreatureObject*>(defender))->isIncapacitated())
+	if (defender->isCreatureObject() && defender->asCreatureObject()->isIncapacitated())
 		return false;
 
 	if (attacker->isPlayerCreature() && attacker->getPlayerObject()->isAFK())
@@ -91,7 +91,7 @@ bool CombatManager::attemptPeace(CreatureObject* attacker) {
 			if (defender->hasDefender(attacker)) {
 
 				if (defender->isCreatureObject()) {
-					CreatureObject* creature = cast<CreatureObject*>(defender);
+					CreatureObject* creature = defender->asCreatureObject();
 
 					if (creature->getMainDefender() != attacker || creature->hasState(CreatureState::PEACE) || creature->isDead() || attacker->isDead() || !creature->isInRange(attacker, 128.f)) {
 						attacker->removeDefender(defender);
@@ -226,7 +226,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	tano->addDefender(attacker);
 
 	if (tano->isCreatureObject()) {
-		CreatureObject* defender = cast<CreatureObject*>( tano);
+		CreatureObject* defender = tano->asCreatureObject();
 
 		if (defender->getWeapon() == NULL)
 			return 0;
@@ -357,7 +357,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	Locker clocker(tano, attacker);
 
 	if (tano->isCreatureObject()) {
-		CreatureObject* defenderObject = cast<CreatureObject*>( tano);
+		CreatureObject* defenderObject = tano->asCreatureObject();
 
 		if (defenderObject->getWeapon() != NULL)
 			damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
@@ -1388,7 +1388,7 @@ int CombatManager::getHitChance(TangibleObject* attacker, CreatureObject* target
 	CreatureObject* creoAttacker = NULL;
 
 	if (attacker->isCreatureObject()) {
-		creoAttacker = cast<CreatureObject*>(attacker);
+		creoAttacker = attacker->asCreatureObject();
 	}
 
 	//info("Calculating hit chance for " + attacker->getDisplayedName(), true);
@@ -1800,7 +1800,7 @@ int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, C
 
 	// This method can be called multiple times for area attacks.  Let the calling method decrease the powerup once
 	if (!data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction() && attacker->isCreatureObject()) {
-		weapon->decreasePowerupUses(cast<CreatureObject*>(attacker));
+		weapon->decreasePowerupUses(attacker->asCreatureObject());
 	}
 
 	return (int) (healthDamage + actionDamage + mindDamage);
@@ -1954,7 +1954,7 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 	}
 
 	if (defenderObject->isCreatureObject())
-		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit, data.getTrails(), weapon->getObjectID());
+		combatAction = new CombatAction(attacker, defenderObject->asCreatureObject(), animationCRC, hit, data.getTrails(), weapon->getObjectID());
 	else
 		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit, data.getTrails(), weapon->getObjectID());
 
@@ -2269,7 +2269,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 				continue;
 			}
 
-			TangibleObject* tano = cast<TangibleObject*>(object.get());
+			TangibleObject* tano = object->asTangibleObject();
 
 			if (object == attacker) {
 				//error("object is attacker");
@@ -2291,7 +2291,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 					continue;
 			}
 
-			if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
+			if (tano->isCreatureObject() && tano->asCreatureObject()->isIncapacitated()) {
 				//error("object is incapacitated");
 				continue;
 			}
@@ -2401,7 +2401,7 @@ int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* we
 				continue;
 			}
 
-			if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
+			if (tano->isCreatureObject() && tano->asCreatureObject()->isIncapacitated()) {
 				//error("object is incapacitated");
 				continue;
 			}

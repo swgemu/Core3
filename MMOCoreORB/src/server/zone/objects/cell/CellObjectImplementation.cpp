@@ -89,9 +89,9 @@ void CellObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 
 	if (player->isCreatureObject() && strongParent != NULL && strongParent->isBuildingObject()) {
-		ManagedReference<CreatureObject*> creature = cast<CreatureObject*>( player);
+		CreatureObject* creature = player->asCreatureObject();
 
-		allowEntry = (cast<BuildingObject*>(strongParent.get()))->isAllowedEntry(creature);
+		allowEntry = strongParent->asBuildingObject()->isAllowedEntry(creature);
 	}
 
 	BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);
@@ -102,7 +102,7 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 	ManagedReference<SceneObject*> strongParent = getParent().get();
 
 	if (strongParent != NULL && strongParent->isBuildingObject()) {
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( strongParent.get());
+		BuildingObject* building = strongParent->asBuildingObject();
 
 		int count = 1;
 
@@ -148,8 +148,8 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 	}
 
 	if (oldParent == NULL) {
-		BuildingObject* building = cast<BuildingObject*>(parent.get().get());
-		CreatureObject* creo = cast<CreatureObject*>(object);
+		ManagedReference<BuildingObject*> building = parent.get().castTo<BuildingObject*>();
+		CreatureObject* creo = object->asCreatureObject();
 
 		if (building != NULL && creo != NULL)
 			building->onEnter(creo);

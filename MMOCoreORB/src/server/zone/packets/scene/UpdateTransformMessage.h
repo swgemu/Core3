@@ -26,7 +26,7 @@ public:
 		insertInt(scno->getMovementCounter());
 
 		if (scno->isCreatureObject())
-			insertByte((int8)cast<CreatureObject*>(scno)->getCurrentSpeed());
+			insertByte((int8)scno->asCreatureObject()->getCurrentSpeed());
 		else
 			insertByte(0);
 
@@ -48,7 +48,7 @@ public:
 		insertInt(scno->getMovementCounter());
 
 		if (scno->isCreatureObject())
-			insertByte((int8)cast<CreatureObject*>(scno)->getCurrentSpeed());
+			insertByte((int8)scno->asCreatureObject()->getCurrentSpeed());
 		else
 			insertByte(0);
 

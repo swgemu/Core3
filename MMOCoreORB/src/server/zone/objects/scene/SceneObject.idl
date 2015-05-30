@@ -59,6 +59,7 @@ import engine.util.u3d.Matrix4;
 import system.thread.ReadWriteLock;
 import system.thread.Mutex;
 include server.zone.objects.scene.variables.ContainerObjectsMap;
+import server.zone.objects.tangible.TangibleObject;
 
 @mock
 class SceneObject extends QuadTreeEntry implements Logger {
@@ -1361,6 +1362,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@dirty
+	@local
+	public abstract CreatureObject asCreatureObject() {
+		return null;
+	}
+	
+	@dirty
 	public abstract boolean isAiAgent() {
 		return false;
 	}
@@ -1393,6 +1400,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public abstract boolean isBuildingObject() {
 		return false;
+	}
+	
+	@dirty
+	@local
+	public abstract BuildingObject asBuildingObject() {
+		return null;
 	}
 	
 	@dirty
@@ -1453,6 +1466,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public abstract boolean isTangibleObject() {
 		return false;
+	}
+	
+	@dirty
+	@local
+	public abstract TangibleObject asTangibleObject() {
+		return null;
 	}
 	
 	@dirty
