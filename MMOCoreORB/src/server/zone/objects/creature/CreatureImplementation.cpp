@@ -462,7 +462,7 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 		defaultWeapon->setMaxDamage(maxDmg);
 	}
 
-	int ham;
+	int ham = 0;
 
 	for (int i = 0; i < 9; ++i) {
 		if (i % 3 == 0) {

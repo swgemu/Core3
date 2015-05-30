@@ -1135,8 +1135,10 @@ NpcSpawnPoint* MissionManagerImplementation::getRandomFreeNpcSpawnPoint(unsigned
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 
 	//Try to find a free NPC spawn point in a circle with a radius of max.
+	Vector3 pos(x, y, 0);
+
 	while (max <= 1600.0f) {
-		Reference<NpcSpawnPoint* > npc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetCRC, new Vector3(x, y, 0), spawnType, min, max);
+		Reference<NpcSpawnPoint* > npc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetCRC, &pos, spawnType, min, max);
 		if (npc != NULL) {
 			return npc;
 		} else {

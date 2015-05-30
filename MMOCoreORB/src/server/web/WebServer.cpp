@@ -313,10 +313,9 @@ HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_r
 				activeSessions.drop(request_info->remote_ip);
 				delete sessionList;
 			}
-		}
-
-		if(session != NULL)
+		} else if (session != NULL) {
 			session->update(conn, request_info);
+		}
 
 	}
 

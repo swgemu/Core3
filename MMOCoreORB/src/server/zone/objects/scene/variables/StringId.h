@@ -27,6 +27,10 @@ public:
 	StringId(const String& fullPath);
 	StringId(const String& fil, const String& stringId);
 
+#ifdef CXX11_COMPILER
+	StringId(StringId&& id);
+#endif
+
 	StringId& operator=(const StringId& id) {
 		if (&id == this)
 			return *this;
@@ -37,6 +41,20 @@ public:
 
 		return *this;
 	}
+
+#ifdef CXX11_COMPILER
+	StringId& operator=(StringId&& id) {
+		if (&id == this)
+			return *this;
+
+		file = std::move(id.file);
+		stringID = std::move(id.stringID);
+		filler = id.filler;
+
+		return *this;
+	}
+#endif
+
 
 	bool operator==(const StringId& id) const {
 		if (&id == this)

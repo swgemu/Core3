@@ -61,7 +61,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 		//menuResponse->addRadialMenuItemToRadialID(37, 225, 3,  "@hq:mnu_donate_money"); // Donate MOney
 		menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // donate defense
 
-		if(building->getOwnerCreatureObject() == player && building->getPvpStatusBitmask() & CreatureFlag::OVERT){
+		if((building->getOwnerCreatureObject() == player) && (building->getPvpStatusBitmask() & CreatureFlag::OVERT)){
 			menuResponse->addRadialMenuItem(38, 3, "@hq:mnu_reset_vulnerability"); // Reset Vulnerability
 		}
 

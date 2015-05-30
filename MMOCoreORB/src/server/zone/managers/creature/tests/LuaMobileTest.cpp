@@ -79,10 +79,7 @@ public:
 
 				if (stream->size() > 4) {
 					StringFile stringFile;
-					if (!stringFile.load(stream)) {
-						delete stream;
-
-					} else {
+					if (stringFile.load(stream)) {
 						file = file.replaceFirst("string/en/","");
 						file = file.replaceFirst(".stf","");
 

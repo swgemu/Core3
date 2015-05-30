@@ -15,6 +15,15 @@ StringIdParameter::StringIdParameter(const StringIdParameter& par) : Object(), S
 	customName = par.customName;
 }
 
+#ifdef CXX11_COMPILER
+StringIdParameter::StringIdParameter(StringIdParameter&& par) : Object(), Serializable(),
+		pointerParameter(par.pointerParameter), stringID(std::move(par.stringID)),
+		customName(std::move(par.customName)) {
+	addSerializableVariables();
+}
+#endif
+
+
 void StringIdParameter::set(SceneObject* obj) {
 	clear();
 

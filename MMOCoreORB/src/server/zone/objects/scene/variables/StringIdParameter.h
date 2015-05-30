@@ -46,6 +46,10 @@ private:
 public:
 	StringIdParameter(const StringIdParameter& par);
 
+#ifdef CXX11_COMPILER
+	StringIdParameter(StringIdParameter&& par);
+#endif
+
 	StringIdParameter& operator=(const StringIdParameter& par) {
 		if (this == &par)
 			return *this;
@@ -56,6 +60,19 @@ public:
 
 		return *this;
 	}
+
+#ifdef CXX11_COMPILER
+	StringIdParameter& operator=(StringIdParameter&& par) {
+		if (this == &par)
+			return *this;
+
+		pointerParameter = par.pointerParameter;
+		stringID = std::move(par.stringID);
+		customName = std::move(par.customName);
+
+		return *this;
+	}
+#endif
 
 	void set(SceneObject* obj);
 	void set(StringId* sid);
