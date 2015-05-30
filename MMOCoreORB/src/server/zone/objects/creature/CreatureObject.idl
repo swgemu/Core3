@@ -1827,6 +1827,11 @@ class CreatureObject extends TangibleObject {
 	public boolean isCreatureObject() {
 		return true;
 	}
+	
+	@dirty
+	@nativeStub
+	@local
+	public native CreatureObject asCreatureObject();
 
 	@dirty
 	public boolean isNextActionPast() {
