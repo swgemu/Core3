@@ -2761,6 +2761,9 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 			lastValidatedPosition->setParent(0);
 
 		ghost->updateServerLastMovementStamp();
+
+		if (ghost->isOnLoadScreen())
+			ghost->setOnLoadScreen(false);
 	}
 
 	return ret;
