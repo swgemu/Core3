@@ -68,7 +68,7 @@ object_draft_schematic_weapon_rifle_light_blaster_e11_carbine = object_draft_sch
    resourceTypes = {"iron_plumbum", "metal_ferrous", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {40, 20, 9, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
-   ingredientAppearance = {"", "", "", "", "muzzle", "scope", "stock"},
+   ingredientAppearance = {"", "", "", "", "muzzle", "scope", ""},
 
 
    targetTemplate = "object/weapon/ranged/carbine/carbine_e11.iff",

@@ -68,6 +68,7 @@ object_draft_schematic_weapon_rifle_disrupter_dxr6 = object_draft_schematic_weap
    resourceTypes = {"aluminum_titanium", "copper_platinite", "metal", "object/tangible/component/weapon/shared_blaster_power_handler.iff", "object/tangible/component/weapon/shared_blaster_rifle_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff", "object/tangible/component/weapon/shared_stock.iff"},
    resourceQuantities = {65, 25, 10, 5, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},
+   ingredientAppearance = {"", "", "", "", "", "scope", "stock"},
 
 
    targetTemplate = "object/weapon/ranged/carbine/carbine_dxr6.iff",
