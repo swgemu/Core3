@@ -38,5 +38,5 @@ void SignObjectImplementation::initializeChildObject(SceneObject* controllerObje
 	attachedObject = controllerObject;
 
 	if (controllerObject->isBuildingObject())
-		(cast<BuildingObject*>(controllerObject))->setSignObject(_this.get());
+		(cast<BuildingObject*>(controllerObject))->setSignObject(_this.getReferenceUnsafeStaticCast());
 }

@@ -62,7 +62,7 @@ void StructureObjectImplementation::notifyLoadFromDatabase() {
 	} 
 
 	if (permissionsFixed == false) {
-		ManagedReference<StructureObject*> structure = _this.get();
+		ManagedReference<StructureObject*> structure = _this.getReferenceUnsafeStaticCast();
 
 		EXECUTE_TASK_1(structure, {
 				ZoneServer* zoneServer = structure_p->getZoneServer();
@@ -196,7 +196,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 
 		float cityTax = 0.f;
 
-		ManagedReference<CityRegion*> city = _this.get()->getCityRegion();
+		ManagedReference<CityRegion*> city = _this.getReferenceUnsafeStaticCast()->getCityRegion();
 
 		if(city != NULL) {
 			cityTax = city->getPropertyTax();
@@ -246,7 +246,7 @@ void StructureObjectImplementation::scheduleMaintenanceTask(int timeFromNow) {
 	}
 
 	if (structureMaintenanceTask == NULL) {
-		structureMaintenanceTask = new StructureMaintenanceTask(_this.get());
+		structureMaintenanceTask = new StructureMaintenanceTask(_this.getReferenceUnsafeStaticCast());
 	}
 
 	if (structureMaintenanceTask->isScheduled()) {

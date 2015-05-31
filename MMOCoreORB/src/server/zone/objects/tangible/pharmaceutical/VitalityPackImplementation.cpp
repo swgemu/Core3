@@ -54,7 +54,7 @@ int VitalityPackImplementation::handleObjectMenuSelect(CreatureObject* player, b
 		return 0;
 
 	// Check pet type
-	Locker crossLock(controlDevice, _this.get() );
+	Locker crossLock(controlDevice, _this.getReferenceUnsafeStaticCast() );
 	if( controlDevice->getPetType() == PetManager::FACTIONPET ){
 		player->sendSystemMessage("You cannot use this to restore vitality to that type of pet");
 		return 0;

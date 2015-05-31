@@ -235,7 +235,7 @@ SceneObject* CreatureManagerImplementation::spawnDynamicSpawn(unsigned int lairT
 }
 
 void CreatureManagerImplementation::spawnRandomCreature(int number, float x, float z, float y, uint64 parentID) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if (reservePool.size() != 0) {
 		int id = System::random(reservePool.size() - 1);

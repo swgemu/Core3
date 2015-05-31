@@ -28,7 +28,7 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 	Reference<LairAggroTask*> task = NULL;
 	SceneObject* sourceObject = cast<SceneObject*>(arg1);
 	AiAgent* agent = NULL;
-	ManagedReference<LairObserver*> lairObserver = _this.get();
+	ManagedReference<LairObserver*> lairObserver = _this.getReferenceUnsafeStaticCast();
 	ManagedReference<TangibleObject*> lair = cast<TangibleObject*>(observable);
 	ManagedReference<TangibleObject*> attacker = cast<TangibleObject*>(arg1);
 
@@ -44,7 +44,7 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 	case ObserverEventType::DAMAGERECEIVED:
 		// if there are living creatures, make them aggro
 		if(getLivingCreatureCount() > 0 ){
-			task = new LairAggroTask(lair, attacker.get(), _this.get(), false);
+			task = new LairAggroTask(lair, attacker.get(), _this.getReferenceUnsafeStaticCast(), false);
 			task->execute();
 		}
 
@@ -149,7 +149,7 @@ void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObje
 		return;
 
 	if (healLairEvent == NULL) {
-		healLairEvent = new HealLairObserverEvent(lair, attacker, _this.get());
+		healLairEvent = new HealLairObserverEvent(lair, attacker, _this.getReferenceUnsafeStaticCast());
 		healLairEvent->schedule(1000);
 	} else if (!healLairEvent->isScheduled()) {
 		healLairEvent->schedule(1000);
@@ -334,7 +334,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 	}
 
 	if (spawnNumber == 4) {
-		Reference<LairAggroTask*> task = new LairAggroTask(lair, attacker, _this.get(), true);
+		Reference<LairAggroTask*> task = new LairAggroTask(lair, attacker, _this.getReferenceUnsafeStaticCast(), true);
 		task->schedule(1000);
 	}
 

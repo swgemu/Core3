@@ -1092,6 +1092,11 @@ class AiAgent extends CreatureObject {
 	public boolean isAiAgent() {
 		return true;
 	}
+	
+	@dirty
+	@nativeStub
+	@local
+	public native AiAgent asAiAgent();
 
 	@local
 	@dirty
@@ -1307,7 +1312,7 @@ class AiAgent extends CreatureObject {
 	public native float getEffectiveResist();
 
 	@dirty
-	public native string getPersonalityStf();
+	public abstract native string getPersonalityStf();
 
 	@read
 	public int getReactionRank() {

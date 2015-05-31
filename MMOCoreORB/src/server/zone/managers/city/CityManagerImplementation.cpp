@@ -224,7 +224,7 @@ bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte 
 	byte maxAtRank = citiesAllowed->get(rank - 1);
 	byte totalAtRank = 0;
 
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < cities.size(); ++i) {
 		CityRegion* city = cities.get(i);
@@ -245,7 +245,7 @@ bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte 
 }
 
 void CityManagerImplementation::sendCityReport(CreatureObject* creature, const String& planetName, byte rank) {
-	Locker _lock(_this.get(),creature);
+	Locker _lock(_this.getReferenceUnsafeStaticCast(),creature);
 
 	Vector < byte > *citiesAllowed = &citiesAllowedPerRank.get(planetName.toLowerCase());
 
@@ -347,7 +347,7 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 bool CityManagerImplementation::validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y) {
 	Vector3 testPosition(x, y, 0);
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < cities.size(); ++i) {
 		CityRegion* city = cities.get(i);
@@ -375,7 +375,7 @@ bool CityManagerImplementation::validateCityInRange(CreatureObject* creature, Zo
 }
 
 bool CityManagerImplementation::validateCityName(const String& name) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if (cities.contains(name) || cities.contains(name.toLowerCase()))
 		return false;
@@ -716,8 +716,8 @@ void CityManagerImplementation::assessCitizens(CityRegion* city) {
 void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	info("Processing city update: " + city->getRegionName(), true);
 
-	int cityRank;
-	float radius;
+	int cityRank = 0;
+	float radius = 0;
 
 	try {
 		cityRank = city->getCityRank();
@@ -726,46 +726,49 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 			return; //It's a client region.
 
 		radius = city->getRadius();
+
+		city->cleanupCitizens();
+
+		ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
+
+		if (mayor != NULL && mayor->isPlayerCreature()) {
+			Reference<PlayerObject*> ghost = mayor->getSlottedObject("ghost").castTo<PlayerObject*> ();
+			ghost->addExperience("political", 750, true);
+		}
+
+		updateCityVoting(city);
+
+		int citizens = city->getCitizenCount();
+
+		if (cityRank - 1 >= citizensPerRank.size())
+			return;
+
+		int maintainCitizens = citizensPerRank.get(cityRank - 1);
+
+		if (citizens < maintainCitizens) {
+			contractCity(city);
+		} else if (cityRank < METROPOLIS) {
+			int advanceCitizens = citizensPerRank.get(cityRank);
+
+			if (citizens >= advanceCitizens) {
+				expandCity(city);
+			} else {
+				city->destroyAllStructuresForRank(uint8(cityRank + 1), true);
+			}
+		}
+
+		city->rescheduleUpdateEvent(cityUpdateInterval * 60);
+
+		processIncomeTax(city);
+
+		deductCityMaintenance(city);
+
 	} catch (Exception& e) {
 		error(e.getMessage() + "in CityManagerImplementation::processCityUpdate");
+		e.printStackTrace();
 		return;
 	}
 
-	city->cleanupCitizens();
-
-	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
-
-	if (mayor != NULL && mayor->isPlayerCreature()) {
-		Reference<PlayerObject*> ghost = mayor->getSlottedObject("ghost").castTo<PlayerObject*> ();
-		ghost->addExperience("political", 750, true);
-	}
-
-	updateCityVoting(city);
-
-	int citizens = city->getCitizenCount();
-
-	if (cityRank - 1 >= citizensPerRank.size())
-		return;
-
-	int maintainCitizens = citizensPerRank.get(cityRank - 1);
-
-	if (citizens < maintainCitizens) {
-		contractCity(city);
-	} else if (cityRank < METROPOLIS) {
-		int advanceCitizens = citizensPerRank.get(cityRank);
-
-		if (citizens >= advanceCitizens) {
-			expandCity(city);
-		} else {
-			city->destroyAllStructuresForRank(uint8(cityRank + 1), true);
-		}
-	}
-
-	city->rescheduleUpdateEvent(cityUpdateInterval * 60);
-
-	processIncomeTax(city);
-
-	deductCityMaintenance(city);
 }
 
 void CityManagerImplementation::processIncomeTax(CityRegion* city) {
@@ -1319,7 +1322,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 void CityManagerImplementation::destroyCity(CityRegion* city) {
 	info("Destroying city: " + city->getRegionDisplayedName(), true);
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	cities.drop(city->getRegionName());
 

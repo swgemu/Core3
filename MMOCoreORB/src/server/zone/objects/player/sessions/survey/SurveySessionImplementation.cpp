@@ -43,7 +43,7 @@ int SurveySessionImplementation::startSession() {
 		return false;
 	}
 
-	surveyer->addActiveSession(SessionFacadeType::SURVEY, _this.get());
+	surveyer->addActiveSession(SessionFacadeType::SURVEY, _this.getReferenceUnsafeStaticCast());
 
 	return true;
 }

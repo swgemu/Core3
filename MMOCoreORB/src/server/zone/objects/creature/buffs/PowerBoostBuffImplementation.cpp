@@ -17,7 +17,7 @@ void PowerBoostBuffImplementation::initializeTransientMembers() {
 void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 	if(creature.get() != NULL) {
 		Locker locker(creature.get());
-		Locker lockerX(_this.get(),creature.get());
+		Locker lockerX(_this.getReferenceUnsafeStaticCast(),creature.get());
 		if (creature.get()->isIncapacitated() || creature.get()->isDead()) {
 			// if the target is dead/incapped but the tick is happening before we de-active, then ignore the event
 			return;
@@ -33,7 +33,7 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 			counter++;
 			Reference<PowerBoostBuffDurationEvent*> boostCheck = creature.get()->getPendingTask("powerBoostTick").castTo<PowerBoostBuffDurationEvent*>();
 			if (boostCheck == NULL) {
-				pbBuffEvent = new PowerBoostBuffDurationEvent(creature.get(), _this.get());
+				pbBuffEvent = new PowerBoostBuffDurationEvent(creature.get(), _this.getReferenceUnsafeStaticCast());
 				creature.get()->addPendingTask("powerBoostTick", pbBuffEvent, 3000);
 			}else {
 				return; // Shouldn't be here
@@ -72,7 +72,7 @@ void PowerBoostBuffImplementation::activate(bool applyModifiers) {
 void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
 	if(creature.get() != NULL) {
 		Locker locker(creature.get());
-		Locker lockerX(_this.get(),creature.get());
+		Locker lockerX(_this.getReferenceUnsafeStaticCast(),creature.get());
 		if(counter <= 41) {
 			activate(false);
 		} else if(counter >= 45 && counter < 65) {
@@ -89,7 +89,7 @@ void PowerBoostBuffImplementation::deactivate(bool removeModifiers) {
 
 void PowerBoostBuffImplementation::doHealthAndActionTick(bool up) {
 	Locker locker(creature.get());
-	Locker lockerX(_this.get(),creature.get());
+	Locker lockerX(_this.getReferenceUnsafeStaticCast(),creature.get());
 	if (!creature.get()->isIncapacitated() && !creature.get()->isDead()) {
 		if(up) {
 			creature.get()->addMaxHAM(CreatureAttribute::HEALTH, pbTick ,true);
@@ -105,7 +105,7 @@ void PowerBoostBuffImplementation::doHealthAndActionTick(bool up) {
 
 void PowerBoostBuffImplementation::doMindTick(bool up) {
 	Locker locker(creature.get());
-	Locker lockerX(_this.get(),creature.get());
+	Locker lockerX(_this.getReferenceUnsafeStaticCast(),creature.get());
 	if (!creature.get()->isIncapacitated() && !creature.get()->isDead()) {
 		if(up) {
 			creature.get()->addMaxHAM(CreatureAttribute::MIND, pbTick ,true);
@@ -119,7 +119,7 @@ void PowerBoostBuffImplementation::doMindTick(bool up) {
 
 void PowerBoostBuffImplementation::clearBuffEvent() {
 	Locker locker(creature.get());
-	Locker lockerX(_this.get(),creature.get());
+	Locker lockerX(_this.getReferenceUnsafeStaticCast(),creature.get());
 	if (pbBuffEvent != NULL) {
 		creature.get()->removePendingTask("powerBoostTick");
 	}

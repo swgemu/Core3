@@ -120,7 +120,7 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 		return;
 
 	Locker playerLocker(player);
-	Locker forageAreasLocker(_this.get());
+	Locker forageAreasLocker(_this.getReferenceUnsafeStaticCast());
 
 	player->removePendingTask("foraging");
 

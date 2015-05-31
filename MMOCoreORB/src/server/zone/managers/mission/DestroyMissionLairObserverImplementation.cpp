@@ -165,7 +165,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 	}
 
 	if (spawnNumber == 4) {
-		Reference<LairAggroTask*> task = new LairAggroTask(lair, attacker, _this.get(), true);
+		Reference<LairAggroTask*> task = new LairAggroTask(lair, attacker, _this.getReferenceUnsafeStaticCast(), true);
 		task->schedule(1000);
 	}
 

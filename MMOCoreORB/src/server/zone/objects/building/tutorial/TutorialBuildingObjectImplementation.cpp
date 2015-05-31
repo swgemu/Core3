@@ -7,7 +7,7 @@
 #include "server/zone/objects/cell/CellObject.h"
 
 void TutorialBuildingObjectImplementation::enqueueUnloadEvent() {
-	unloadTask = new UnloadBuildingTask(_this.get());
+	unloadTask = new UnloadBuildingTask(_this.getReferenceUnsafeStaticCast());
 	unloadTask->schedule(1000);
 }
 
