@@ -23,7 +23,7 @@ public:
 		if (!checkInvalidLocomotions(player))
 			return INVALIDLOCOMOTION;
 
-		if( player == NULL || !player->isPlayerCreature() )
+		if(!player->isPlayerCreature())
 			return GENERALERROR;
 
 		PlayerObject* playerGhost = player->getPlayerObject();

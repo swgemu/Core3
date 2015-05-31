@@ -145,7 +145,7 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 		}
 	}
 
-	if (creo != NULL && object->isTangibleObject()) {
+	if (object->isTangibleObject()) {
 		ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
 		tano->addTemplateSkillMods(creo);
 	}
@@ -194,7 +194,7 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 		}
 	}
 
-	if (creo != NULL && object->isTangibleObject()) {
+	if (object->isTangibleObject()) {
 		ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
 		tano->removeTemplateSkillMods(creo);
 	}

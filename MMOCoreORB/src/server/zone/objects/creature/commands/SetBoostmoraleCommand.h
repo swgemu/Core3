@@ -22,9 +22,6 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
-
-		if (creature == NULL)
-			return GENERALERROR;
 			
 		if (!creature->hasSkill("outdoors_squadleader_defense_04")) {
 //			StringIdChatParameter params("@error_message:prose_nsf_skill_cmd"); //You lack sufficient skill to use the %TO command.	

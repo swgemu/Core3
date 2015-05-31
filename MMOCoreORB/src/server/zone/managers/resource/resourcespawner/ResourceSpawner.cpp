@@ -735,8 +735,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 
 	ManagedReference<SurveyTool*> surveyTool = session->getActiveSurveyTool();
 
-	if (surveyTool == NULL || !resourceMap->contains(resname.toLowerCase()) || player == NULL
-			|| player->getZone() == NULL)
+	if (surveyTool == NULL || !resourceMap->contains(resname.toLowerCase()) || player->getZone() == NULL)
 		return;
 
 	String zoneName = player->getZone()->getZoneName();

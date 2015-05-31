@@ -30,7 +30,7 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
-	if(sceneObject == NULL || !sceneObject->isMinefield() || target == NULL){
+	if(!sceneObject->isMinefield() || target == NULL){
 		return;
 	}
 

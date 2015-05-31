@@ -25,7 +25,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if(creature == NULL || !creature->isPlayerCreature())
+		if(!creature->isPlayerCreature())
 			return INVALIDTARGET;
 
 		Reference<CraftingSession*> session = creature->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();

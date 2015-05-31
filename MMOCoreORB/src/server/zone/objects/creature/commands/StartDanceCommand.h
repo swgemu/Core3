@@ -57,10 +57,8 @@ public:
 			}
 		}
 
-		if (ghost != NULL) {
-			ghost->addSuiBox(sui);
-			player->sendMessage(sui->generateMessage());
-		}
+		ghost->addSuiBox(sui);
+		player->sendMessage(sui->generateMessage());
 
 		return;
 	}
@@ -100,6 +98,9 @@ public:
 		Reference<PlayerObject*> ghost =
 				creature->getSlottedObject(
 						"ghost").castTo<PlayerObject*> ();
+
+		if (ghost == NULL)
+			return GENERALERROR;
 
 		String args = arguments.toString();
 

@@ -24,7 +24,7 @@ public:
 		if (session == NULL)
 			return;
 
-		if (!suiBox->isTransferBox() || player == NULL || cancelPressed || args->size() <= 1) {
+		if (!suiBox->isTransferBox() || cancelPressed || args->size() <= 1) {
 			session->cancelSession();
 			return;
 		}

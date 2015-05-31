@@ -645,12 +645,8 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 
 		StringIdChatParameter stringId;
 
-		if (destructor != NULL) {
-			stringId.setStringId("base_player", "prose_victim_incap");
-			stringId.setTT(destructor->getObjectID());
-		} else {
-			stringId.setStringId("base_player", "victim_incapacitated");
-		}
+		stringId.setStringId("base_player", "prose_victim_incap");
+		stringId.setTT(destructor->getObjectID());
 
 		playerCreature->sendSystemMessage(stringId);
 
@@ -1082,10 +1078,10 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		uint32 entryTotalDamage = entry->getTotalDamage();
 
 		CreatureObject* attacker = threatMap->elementAt(i).getKey();
-		if (!attacker->isPlayerCreature())
+		if (attacker == NULL || !attacker->isPlayerCreature())
 			continue;
 
-		if (attacker == NULL || (attacker->isPlayerCreature() && !destructedObject->isInRange(attacker, 80)))
+		if (!destructedObject->isInRange(attacker, 80))
 			continue;
 
 		ManagedReference<GroupObject*> group = attacker->getGroup();

@@ -23,9 +23,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		if ( creature == NULL)
-			return GENERALERROR;
-
 		UnicodeTokenizer tokenizer(arguments);
 		tokenizer.setDelimeter(" ");
 

@@ -26,9 +26,6 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		if (creature == NULL)
-			return GENERALERROR;
-
 		PlayerObject* ghost = creature->getPlayerObject();
 
 		if (ghost == NULL)

@@ -2313,10 +2313,8 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 
 		block.release();
 
-		if(deed != NULL) {
-			Locker clock(deed, creature);
-			deed->destroyObjectFromWorld(true);
-		}
+		Locker clock(deed, creature);
+		deed->destroyObjectFromWorld(true);
 	}
 }
 
@@ -2384,10 +2382,8 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 		verifyTurrets(building);
 		block.release();
 
-		if(turretDeed != NULL) {
-			Locker clock(turretDeed, creature);
-			turretDeed->destroyObjectFromWorld(true);
-		}
+		Locker clock(turretDeed, creature);
+		turretDeed->destroyObjectFromWorld(true);
 	}
 }
 

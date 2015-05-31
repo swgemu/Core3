@@ -186,7 +186,7 @@ public:
 			return;
 		}
 
-		if (!suiBox->isInputBox() || player == NULL || cancelPressed || args->size() <= 0) {
+		if (!suiBox->isInputBox() || cancelPressed || args->size() <= 0) {
 			session->sendAccountInfo();
 			return;
 		}
@@ -209,7 +209,7 @@ public:
 			return;
 		}
 
-		if (!suiBox->isInputBox() || player == NULL || cancelPressed || args->size() <= 0) {
+		if (!suiBox->isInputBox() || cancelPressed || args->size() <= 0) {
 			session->sendAccountInfo();
 			return;
 		}
