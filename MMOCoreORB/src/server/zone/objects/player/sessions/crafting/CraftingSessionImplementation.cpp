@@ -711,9 +711,13 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 		// we know that we can only have one component per hardpoint slot, so don't worry about checking them
 		if (visSlot > 0) {
-			uint32 id = ComponentMap::instance()->getVisibleCRC(tanoCRC, visSlot);
-			if (id > 0)
-				prototype->addVisibleComponent(id, false);
+			Vector<uint32> ids = ComponentMap::instance()->getVisibleCRC(tanoCRC, visSlot);
+			int size = ids.size();
+
+			if (size > 0) {
+				int index = System::random(size - 1);
+				prototype->addVisibleComponent(ids.get(index), false);
+			}
 		}
 	}
 

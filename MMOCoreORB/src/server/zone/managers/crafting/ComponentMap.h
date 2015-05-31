@@ -81,7 +81,7 @@ public:
 };
 
 class ComponentMap : public VectorMap<uint32, ComponentMapEntry>, public Singleton<ComponentMap>, public Logger {
-	VectorMap<uint32, VectorMap<uint32, uint32> > visibleComponentMap;
+	VectorMap<uint32, VectorMap<uint32, Vector<uint32> > > visibleComponentMap;
 
 public:
 	ComponentMap() {
@@ -132,12 +132,16 @@ public:
 		Lua luaInstance;
 		luaInstance.init();
 
-		luaInstance.runFile("scripts/managers/crafting/visible_components.lua");
+		if (!luaInstance.runFile("scripts/managers/crafting/visible_components.lua"))
+			return;
 
 		// Read and create all the items in the config unless they
 		// were already loaded from database.
 
 		LuaObject componentList = luaInstance.getGlobalObject("visibleComponents");
+
+		if (!componentList.isValidTable())
+			return;
 
 		int size = componentList.getTableSize();
 		int count = 0;
@@ -151,30 +155,59 @@ public:
 			LuaObject luaObject(L);
 
 			uint32 tempCRC = luaObject.getStringField("template").hashCode();
-			uint32 muzzleCRC = luaObject.getStringField("muzzle").hashCode();
-			uint32 scopeCRC = luaObject.getStringField("scope").hashCode();
-			uint32 stockCRC = luaObject.getStringField("stock").hashCode();
+
+			LuaObject muzzles = luaObject.getObjectField("muzzle");
+			Vector<uint32> muzzleVector;
+
+			for (int j = 1; j <= muzzles.getTableSize(); ++j) {
+				uint32 muzzle = muzzles.getStringAt(j).hashCode();
+				muzzleVector.add(muzzle);
+			}
+
+			muzzles.pop();
+
+			LuaObject scopes = luaObject.getObjectField("scope");
+			Vector<uint32> scopeVector;
+
+			for (int j = 1; j <= scopes.getTableSize(); ++j) {
+				uint32 scope = scopes.getStringAt(j).hashCode();
+				scopeVector.add(scope);
+			}
+
+			scopes.pop();
+
+			LuaObject stocks = luaObject.getObjectField("stock");
+			Vector<uint32> stockVector;
+
+			for (int j = 1; j <= stocks.getTableSize(); ++j) {
+				uint32 stock = stocks.getStringAt(j).hashCode();
+				stockVector.add(stock);
+			}
+
+			stocks.pop();
 
 			luaObject.pop();
 
 			if (tempCRC == 0)
 				continue;
 
-			VectorMap<uint32, uint32> visibleMap;
+			VectorMap<uint32, Vector<uint32> > visibleMap;
 
-			visibleMap.put(muzzleTitle, muzzleCRC);
-			visibleMap.put(scopeTitle, scopeCRC);
-			visibleMap.put(stockTitle, stockCRC);
+			visibleMap.put(muzzleTitle, muzzleVector);
+			visibleMap.put(scopeTitle, scopeVector);
+			visibleMap.put(stockTitle, stockVector);
 
 			visibleComponentMap.put(tempCRC, visibleMap);
 
 			count++;
 		}
 
-		Logger::info("Loaded " + String::valueOf(count) + " visible components from scripts", true);
+		componentList.pop();
+
+		Logger::info("Loaded visible components from scripts for " + String::valueOf(count) + " weapons.", true);
 	}
 
-	uint32 getVisibleCRC(uint32 tempCRC, uint32 slotCRC) {
+	Vector<uint32> getVisibleCRC(uint32 tempCRC, uint32 slotCRC) {
 		return visibleComponentMap.get(tempCRC).get(slotCRC);
 	}
 };

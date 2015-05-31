@@ -68,7 +68,6 @@ object_draft_schematic_weapon_pistol_flechette_fwg5_quest = object_draft_schemat
    resourceTypes = {"iron_axidite", "steel_ditanium", "aluminum_linksteel", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
    resourceQuantities = {25, 10, 5, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
-   ingredientAppearance = {"", "", "", "", "muzzle", ""},
 
 
    targetTemplate = "object/weapon/ranged/pistol/pistol_fwg5_quest.iff",

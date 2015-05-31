@@ -68,7 +68,7 @@ object_draft_schematic_weapon_pistol_projectile_striker = object_draft_schematic
    resourceTypes = {"iron", "steel", "metal", "object/tangible/component/weapon/shared_projectile_feed_mechanism.iff", "object/tangible/component/weapon/shared_projectile_pistol_barrel.iff", "object/tangible/component/weapon/shared_scope_weapon.iff"},
    resourceQuantities = {30, 15, 6, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100},
-   ingredientAppearance = {"", "", "", "", "muzzle", ""},
+   ingredientAppearance = {"", "", "", "", "", "scope"},
 
 
    targetTemplate = "object/weapon/ranged/pistol/pistol_striker.iff",
