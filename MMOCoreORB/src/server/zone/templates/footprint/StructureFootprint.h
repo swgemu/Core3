@@ -93,7 +93,7 @@ public:
 		iffStream->closeForm('FOOT');
 	}
 
-	String toString() const {
+	String toString() {
 		StringBuffer str;
 		str << "{rowSize=" << rowSize << ";colSize=" << colSize << ";centerX=" << centerX << ";centerY=" << centerY << ";rowChunkSize=" << rowChunkSize << ";colChunkSize=" << colChunkSize << "}";
 

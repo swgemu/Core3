@@ -14,7 +14,7 @@
 #include "server/zone/templates/TemplateReference.h"
 
 class TemplateCRCMap : public HashTable<uint32, TemplateReference<SharedObjectTemplate*> > {
-	int hash(const uint32& k) {
+	int hash(const uint32& k) const {
 		return k;
 	}
 
@@ -25,7 +25,7 @@ public:
 };
 
 class ClientTemplateCRCMap : public HashTable<uint32, String> {
-	int hash(const uint32& k) {
+	int hash(const uint32& k) const {
 		return k;
 	}
 

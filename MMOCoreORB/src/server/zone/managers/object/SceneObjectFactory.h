@@ -23,7 +23,7 @@ namespace server {
 
    template <typename TypeId, typename Value>
    class ObjectCreatorMap : public HashTable<TypeId, Value> {
-	   int hash(const TypeId& k) {
+	   int hash(const TypeId& k) const {
 		   return (int)k;
 	   }
 

@@ -68,7 +68,7 @@ public:
 			if (position.squaredDistanceTo(playerPosition) > 5.f)
 				return GENERALERROR;
 
-			creature->teleport(x,y,z, creature->getParentID());
+			creature->teleport(position.getX(), position.getZ(), position.getY(), creature->getParentID());
 			//creature->setDirection()
 			creature->setState(CreatureState::SITTINGONCHAIR);
 			//no longer needed: creature->setPosture(CreaturePosture::SITTING);

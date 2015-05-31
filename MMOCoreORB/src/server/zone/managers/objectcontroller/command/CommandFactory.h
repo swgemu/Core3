@@ -20,9 +20,9 @@ namespace command {
 
 template <typename id, typename val>
 class CommandCreatorMap : public HashTable<id, val> {
-int hash(const id& k) {
-	 return (int)k.hashCode();
-}
+	int hash(const id& k) const {
+		return (int)k.hashCode();
+	}
 
 public:
 	 CommandCreatorMap() {

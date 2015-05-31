@@ -310,7 +310,7 @@ void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedO
 	}
 }
 
-uint64 SceneObjectImplementation::getObjectID() const {
+uint64 SceneObjectImplementation::getObjectID() {
 	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
 }
 
