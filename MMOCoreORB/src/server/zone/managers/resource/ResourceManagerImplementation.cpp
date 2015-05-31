@@ -362,7 +362,7 @@ void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCre
 	if(inventory != NULL && !inventory->hasFullContainerObjects()) {
 		Locker locker(spawn);
 
-		ResourceContainer* newResource = spawn->createResource(quantity);
+		Reference<ResourceContainer*> newResource = spawn->createResource(quantity);
 
 		if(newResource != NULL) {
 			spawn->extractResource("", quantity);

@@ -74,7 +74,7 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 
 			Locker locker(spawnObject);
 
-			ResourceContainer* harvestedResource = spawnObject->createResource(newStackSize);
+			Reference<ResourceContainer*> harvestedResource = spawnObject->createResource(newStackSize);
 
 			locker.release();
 

@@ -308,6 +308,7 @@ HttpSession* WebServer::getSession(struct mg_connection *conn, const struct mg_r
 		if(session != NULL && session->hasExpired()) {
 			sessionList->drop(session->getSessionId());
 			delete session;
+			session = NULL;
 
 			if(sessionList->isEmpty()) {
 				activeSessions.drop(request_info->remote_ip);
