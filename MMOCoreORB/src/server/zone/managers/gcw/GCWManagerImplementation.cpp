@@ -346,8 +346,8 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building){
 // back up to date.  usually after a long server down or something
 void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* building){
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
-
-	if(baseData == NULL){
+	if (baseData == NULL){
+		error("ERROR:  could not get base data for base");
 		return;
 	}
 
@@ -389,11 +389,6 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 		Time nStartTime(thisStartTime);
 		nStartTime.addMiliTime(vulnerabilityFrequency*1000);
 		baseData->setNextVulnerableTime(nStartTime);
-
-		if(baseData == NULL){
-			error("ERROR:  could not get base data for base");
-			return;
-		}
 
 		this->initializeNewVulnerability(baseData);
 		bool wasDropped = gcwStartTasks.drop(building->getObjectID());
@@ -1734,15 +1729,12 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 void GCWManagerImplementation::processDNASample(CreatureObject* creature, TangibleObject* overrideTerminal, const String& sampleChain, const int indx){
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(overrideTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
-	if (building == NULL)
+	if (building == NULL || creature == NULL)
 		return;
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
-	if(creature==NULL || baseData == NULL)
-			return;
-
-	if(baseData == NULL){
+	if (baseData == NULL) {
 		error("ERROR:  could not get base data for base");
 		return;
 	}

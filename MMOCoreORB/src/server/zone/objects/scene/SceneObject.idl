@@ -727,8 +727,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 			return pendingTasks;
 		}
-		
-		return pendingTasks;
 	}
 	
 	/**

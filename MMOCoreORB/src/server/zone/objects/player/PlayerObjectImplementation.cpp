@@ -1829,18 +1829,20 @@ void PlayerObjectImplementation::doForceRegen() {
 	if (creature == NULL || creature->isIncapacitated() || creature->isDead())
 		return;
 
-	uint32 tick = 5;
+	const static uint32 tick = 5;
 
 	uint32 modifier = 1;
 
 	// TODO: Re-factor Force Meditate so TKA meditate doesn't effect.
 	if (creature->isMeditating())
-		modifier = 3.f;
+		modifier = 3;
 
 	uint32 forceTick = tick * modifier;
 
-	if (forceTick < 1)
+	//forceTick cant be <1 as per above code, tick is always positive and modifier as well
+	/*if (forceTick < 1)
 		forceTick = 1;
+		*/
 
 	if (forceTick > getForcePowerMax() - getForcePower()){   // If the player's Force Power is going to regen again and it's close to max,
 		setForcePower(getForcePowerMax());             // Set it to max, so it doesn't go over max.
