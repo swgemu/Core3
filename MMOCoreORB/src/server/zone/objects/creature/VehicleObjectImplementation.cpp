@@ -122,7 +122,7 @@ void VehicleObjectImplementation::notifyInsertToZone(Zone* zone) {
 }
 
 bool VehicleObjectImplementation::checkInRangeGarage() {
-	Reference<SceneObject*> garage = StructureManager::instance()->getInRangeParkingGarage(_this.get());
+	Reference<SceneObject*> garage = StructureManager::instance()->getInRangeParkingGarage(_this.getReferenceUnsafeStaticCast());
 
 	if (garage == NULL)
 		return false;
@@ -200,7 +200,7 @@ void VehicleObjectImplementation::sendRepairConfirmTo(CreatureObject* player) {
     listbox->setCallback(new RepairVehicleSuiCallback(server->getZoneServer()));
 	listbox->setPromptTitle("@pet/pet_menu:confirm_repairs_t"); //Confirm Vehicle Repairs
 	listbox->setPromptText("@pet/pet_menu:vehicle_repair_d"); //You have chosen to repair your vehicle. Please review the listed details and confirm your selection.
-	listbox->setUsingObject(_this.get());
+	listbox->setUsingObject(_this.getReferenceUnsafeStaticCast());
 	listbox->setCancelButton(true, "@cancel");
 
 	int repairCost = calculateRepairCost(player);
@@ -247,7 +247,7 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 	if (linkedCreature != NULL) {
 		linkedCreature->sendSystemMessage("@pet/pet_menu:veh_disabled");
 
-		ManagedReference<VehicleObject*> vehicle = _this.get();
+		ManagedReference<VehicleObject*> vehicle = _this.getReferenceUnsafeStaticCast();
 		String vehicleName = vehicle->getDisplayedName();
 		if (!vehicleName.beginsWith("(disabled)"))
 		{
@@ -256,7 +256,7 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 		}
 
 		try {
-			if (attacker != _this.get()) {
+			if (attacker != _this.getReferenceUnsafeStaticCast()) {
 				Locker clocker(linkedCreature, attacker);
 
 				linkedCreature->updateCooldownTimer("mount_dismount", 0);
@@ -274,7 +274,7 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 		}
 	}
 
-	if (attacker != _this.get())
+	if (attacker != _this.getReferenceUnsafeStaticCast())
 		wlock(attacker);
 	else
 		wlock();
@@ -285,7 +285,7 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 void VehicleObjectImplementation::sendMessage(BasePacket* msg) {
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
 
-	if (linkedCreature != NULL && linkedCreature->getParent().get() == _this.get())
+	if (linkedCreature != NULL && linkedCreature->getParent().get() == _this.getReferenceUnsafeStaticCast())
 		linkedCreature->sendMessage(msg);
 	else
 		delete msg;

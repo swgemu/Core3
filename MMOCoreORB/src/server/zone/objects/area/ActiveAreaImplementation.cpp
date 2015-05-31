@@ -23,7 +23,7 @@ void ActiveAreaImplementation::enqueueEnterEvent(SceneObject* obj) {
 #ifdef WITH_STM
 	notifyEnter(obj);
 #else
-	Reference<Task*> task = new ActiveAreaEvent(_this.get(), obj, ActiveAreaEvent::ENTEREVENT);
+	Reference<Task*> task = new ActiveAreaEvent(_this.getReferenceUnsafeStaticCast(), obj, ActiveAreaEvent::ENTEREVENT);
 	obj->executeOrderedTask(task);
 
 #endif
@@ -33,7 +33,7 @@ void ActiveAreaImplementation::enqueueExitEvent(SceneObject* obj) {
 #ifdef WITH_STM
 	notifyExit(obj);
 #else
-	Reference<Task*> task = new ActiveAreaEvent(_this.get(), obj, ActiveAreaEvent::EXITEVENT);
+	Reference<Task*> task = new ActiveAreaEvent(_this.getReferenceUnsafeStaticCast(), obj, ActiveAreaEvent::EXITEVENT);
 	obj->executeOrderedTask(task);
 
 #endif

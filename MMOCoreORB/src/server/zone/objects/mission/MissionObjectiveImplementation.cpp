@@ -27,12 +27,12 @@ void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {
 		MissionObserver* observer = observers.get(i);
 
-		Locker clocker(observer, _this.get());
+		Locker clocker(observer, _this.getReferenceUnsafeStaticCast());
 
 		observer->destroyObjectFromDatabase();
 	}
 
-	ObjectManager::instance()->destroyObjectFromDatabase(_this.get()->_getObjectID());
+	ObjectManager::instance()->destroyObjectFromDatabase(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 }
 
 ManagedWeakReference<CreatureObject*> MissionObjectiveImplementation::getPlayerOwner() {
@@ -54,13 +54,13 @@ void MissionObjectiveImplementation::activate() {
 			timeRemaining = 1;
 		}
 
-		failTask = new FailMissionAfterCertainTimeTask(_this.get());
+		failTask = new FailMissionAfterCertainTimeTask(_this.getReferenceUnsafeStaticCast());
 		failTask->schedule(timeRemaining);
 	}
 }
 
 void MissionObjectiveImplementation::complete() {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
@@ -69,7 +69,7 @@ void MissionObjectiveImplementation::complete() {
 
 	_lock.release();
 
-	Reference<CompleteMissionObjectiveTask*> task = new CompleteMissionObjectiveTask(_this.get());
+	Reference<CompleteMissionObjectiveTask*> task = new CompleteMissionObjectiveTask(_this.getReferenceUnsafeStaticCast());
 	task->execute();
 
 	if (player->isGrouped() && player->getGroup() != NULL) {
@@ -86,7 +86,7 @@ void MissionObjectiveImplementation::complete() {
 }
 
 void MissionObjectiveImplementation::addObserver(MissionObserver* observer, bool makePersistent) {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	if (makePersistent) {
 		ObjectManager::instance()->persistObject(observer, 1, "missionobservers");
@@ -171,7 +171,7 @@ void MissionObjectiveImplementation::awardReward() {
 	ManagedReference<GroupObject*> group = owner->getGroup();
 
 	if (group != NULL) {
-		Locker lockerGroup(group, _this.get());
+		Locker lockerGroup(group, _this.getReferenceUnsafeStaticCast());
 
 		for(int i = 0; i < group->getGroupSize(); i++) {
 			Reference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? (group->getGroupMember(i)).castTo<CreatureObject*>() : NULL;
@@ -207,7 +207,7 @@ void MissionObjectiveImplementation::awardReward() {
 		stringId.setDI(dividedReward);
 		player->sendSystemMessage(stringId);
 
-		Locker lockerPl(player, _this.get());
+		Locker lockerPl(player, _this.getReferenceUnsafeStaticCast());
 		player->addBankCredits(dividedReward, true);
 	}
 

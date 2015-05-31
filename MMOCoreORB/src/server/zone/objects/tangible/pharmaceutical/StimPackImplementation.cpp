@@ -27,9 +27,9 @@ bool StimPackImplementation::isClassE() {
 }
 StimPack* StimPackImplementation::split(int charges) {
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	ObjectManager* objectManager = ObjectManager::instance();
-	ManagedReference<StimPack*> protoclone = cast<StimPack*>( objectManager->cloneObject(_this.get()));
+	ManagedReference<StimPack*> protoclone = cast<StimPack*>( objectManager->cloneObject(_this.getReferenceUnsafeStaticCast()));
 	if (protoclone != NULL) {
 		protoclone->setParent(NULL);
 		protoclone->setUseCount(charges);

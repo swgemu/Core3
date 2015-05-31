@@ -38,11 +38,11 @@ void BuffImplementation::loadBuffDurationEvent(CreatureObject* creo) {
 	}
 
 	if (nextExecutionTime.isPast()) {
-		buffEvent = new BuffDurationEvent(creo, _this.get());
+		buffEvent = new BuffDurationEvent(creo, _this.getReferenceUnsafeStaticCast());
 		buffEvent->execute();
 		//info("nextExeutionTime.isPast()", true);
 	} else {
-		buffEvent = new BuffDurationEvent(creo, _this.get());
+		buffEvent = new BuffDurationEvent(creo, _this.getReferenceUnsafeStaticCast());
 		buffEvent->schedule(nextExecutionTime);
 
 		//info("scheduling buffEvent with nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
@@ -216,7 +216,7 @@ String BuffImplementation::getSkillModifierString() {
 }
 
 void BuffImplementation::scheduleBuffEvent() {
-	buffEvent = new BuffDurationEvent(creature.get(), _this.get());
+	buffEvent = new BuffDurationEvent(creature.get(), _this.getReferenceUnsafeStaticCast());
 	buffEvent->schedule((int) (buffDuration * 1000));
 	Core::getTaskManager()->getNextExecutionTime(buffEvent, nextExecutionTime);
 }

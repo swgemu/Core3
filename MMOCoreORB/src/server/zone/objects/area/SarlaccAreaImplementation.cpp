@@ -27,7 +27,7 @@ void SarlaccAreaImplementation::notifyEnter(SceneObject* object) {
 		PlayClientEffectLoc* effectLoc = new PlayClientEffectLoc("clienteffect/cr_sarlacc_erupt.cef", "tatooine", getPositionX(), getPositionZ(), getPositionY(), 0, 3);
 		player->broadcastMessage(effectLoc, true);
 
-		Reference<Task*> task = new SarlaccEruptTask(_this.get());
+		Reference<Task*> task = new SarlaccEruptTask(_this.getReferenceUnsafeStaticCast());
 		task->execute();
 
 		updateEruptTime();

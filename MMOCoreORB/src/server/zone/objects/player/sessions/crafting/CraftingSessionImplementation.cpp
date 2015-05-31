@@ -37,8 +37,8 @@ int CraftingSessionImplementation::initializeSession(CraftingTool* tool, Craftin
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 
-	crafter->addActiveSession(SessionFacadeType::CRAFTING, _this.get());
-	craftingTool->addActiveSession(SessionFacadeType::CRAFTING, _this.get());
+	crafter->addActiveSession(SessionFacadeType::CRAFTING, _this.getReferenceUnsafeStaticCast());
+	craftingTool->addActiveSession(SessionFacadeType::CRAFTING, _this.getReferenceUnsafeStaticCast());
 
 	craftingTool->setCountdownTimer(0, true);
 
@@ -157,7 +157,7 @@ int CraftingSessionImplementation::cancelSession() {
 }
 
 int CraftingSessionImplementation::clearSession() {
-	Locker slocker(_this.get());
+	Locker slocker(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();

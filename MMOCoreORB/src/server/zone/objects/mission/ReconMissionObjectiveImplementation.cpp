@@ -32,7 +32,7 @@ void ReconMissionObjectiveImplementation::activate() {
 	if (locationActiveArea == NULL) {
 		locationActiveArea = ( zoneServer->createObject(STRING_HASHCODE("object/mission_recon_area.iff"), 1)).castTo<MissionReconActiveArea*>();
 		Locker locker(locationActiveArea);
-		locationActiveArea->setMissionObjective(_this.get());
+		locationActiveArea->setMissionObjective(_this.getReferenceUnsafeStaticCast());
 	}
 
 	if (!locationActiveArea->isInQuadTree()) {

@@ -50,7 +50,7 @@ void LoginServerImplementation::initializeTransientMembers() {
 }
 
 void LoginServerImplementation::initialize() {
-	processor = new LoginProcessServerImplementation(_this.get());
+	processor = new LoginProcessServerImplementation(_this.getReferenceUnsafeStaticCast());
 	processor->initialize();
 
 	phandler = new BasePacketHandler("LoginServer", loginHandler);
@@ -69,7 +69,7 @@ void LoginServerImplementation::initialize() {
 void LoginServerImplementation::startManagers() {
 	info("loading managers..");
 
-	accountManager = new AccountManager(_this.get());
+	accountManager = new AccountManager(_this.getReferenceUnsafeStaticCast());
 	accountManager->setAutoRegistrationEnabled(configManager->getAutoReg());
 	accountManager->setRequiredVersion(configManager->getLoginRequiredVersion());
 	accountManager->setMaxOnlineCharacters(configManager->getZoneOnlineCharactersPerAccount());
@@ -77,7 +77,7 @@ void LoginServerImplementation::startManagers() {
 }
 
 void LoginServerImplementation::start(int p, int mconn) {
-	loginHandler->setLoginSerrver(_this.get());
+	loginHandler->setLoginSerrver(_this.getReferenceUnsafeStaticCast());
 
 	datagramService->start(p, mconn);
 }

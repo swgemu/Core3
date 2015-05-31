@@ -28,7 +28,7 @@ void GarageInstallationImplementation::createChildObjects() {
 	if (activeArea == NULL)
 		return;
 
-	Locker clocker(activeArea, _this.get());
+	Locker clocker(activeArea, _this.getReferenceUnsafeStaticCast());
 
 	activeArea->setRadius(64);
 	activeArea->initializePosition(getPositionX(), getPositionZ(), getPositionY());

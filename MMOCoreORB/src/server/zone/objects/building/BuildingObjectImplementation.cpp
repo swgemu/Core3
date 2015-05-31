@@ -150,7 +150,7 @@ void BuildingObjectImplementation::createCellObjects() {
 
 		Reference<SceneObject*> newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
 
-		Locker clocker(newCell, _this.get());
+		Locker clocker(newCell, _this.getReferenceUnsafeStaticCast());
 
 		if (!transferObject(newCell, -1))
 			error("could not add cell");
@@ -346,10 +346,10 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//send buios here
 	//info("sending building baselines",true);
 
-	BaseMessage* buio3 = new TangibleObjectMessage3(_this.get());
+	BaseMessage* buio3 = new TangibleObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(buio3);
 
-	BaseMessage* buio6 = new TangibleObjectMessage6(_this.get());
+	BaseMessage* buio6 = new TangibleObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(buio6);
 }
 
@@ -444,7 +444,7 @@ void BuildingObjectImplementation::notifyObjectInsertedToZone(SceneObject* objec
 	notifyInsert(object);
 
 	if (object->getCloseObjects() != NULL)
-		object->addInRangeObject(_this.get(), false);
+		object->addInRangeObject(_this.getReferenceUnsafeStaticCast(), false);
 
 	addInRangeObject(object, false);
 
@@ -466,7 +466,7 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 	//return;
 
 	SceneObject* scno = cast<SceneObject*>( obj);
-	bool objectInThisBuilding = scno->getRootParent() == _this.get();
+	bool objectInThisBuilding = scno->getRootParent() == _this.getReferenceUnsafeStaticCast();
 
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
@@ -672,7 +672,7 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 void BuildingObjectImplementation::broadcastCellPermissions(uint64 objectid) {
 	ManagedReference<SceneObject*> obj = getZoneServer()->getObject(objectid);
 
-	if (obj == NULL || !obj->isCellObject() || obj->getParent() != _this.get())
+	if (obj == NULL || !obj->isCellObject() || obj->getParent() != _this.getReferenceUnsafeStaticCast())
 		return;
 
 	CellObject* cell = obj.castTo<CellObject*>();
@@ -703,7 +703,7 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 	bool allowEntry = isAllowedEntry(creature);
 
 	//If they are inside, and aren't allowed to be, then kick them out!
-	if (!allowEntry && creature->getRootParent() == _this.get()) {
+	if (!allowEntry && creature->getRootParent() == _this.getReferenceUnsafeStaticCast()) {
 		ejectObject(creature);
 	}
 
@@ -795,7 +795,7 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 			uint64 ownerOid = getOwnerObjectID();
 
 			if (ownerOid == player->getObjectID()) {
-					StructureManager::instance()->promptPayUncondemnMaintenance(player, _this.get());
+					StructureManager::instance()->promptPayUncondemnMaintenance(player, _this.getReferenceUnsafeStaticCast());
 			} else {
 				//Other player than the owner trying to enter the building.
 				StringIdChatParameter message("@player_structure:structure_condemned_not_owner");
@@ -861,7 +861,7 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 			object->addInRangeObject(object, false);
 		//info("SceneObjectImplementation::insertToBuilding");
 
-		//parent->transferObject(_this.get(), 0xFFFFFFFF);
+		//parent->transferObject(_this.getReferenceUnsafeStaticCast(), 0xFFFFFFFF);
 
 		if (object->getParent().get()->isCellObject()) {
 
@@ -1033,11 +1033,11 @@ void BuildingObjectImplementation::registerProfessional(CreatureObject* player) 
 			return;
 		}
 
-		if (getZone()->isObjectRegisteredWithPlanetaryMap(_this.get())) {
+		if (getZone()->isObjectRegisteredWithPlanetaryMap(_this.getReferenceUnsafeStaticCast())) {
 
 			// Update the planetary map icon if needed
 			if (registeredPlayerIdList.size() == 0) {
-				getZone()->updatePlanetaryMapIcon(_this.get(), 2);
+				getZone()->updatePlanetaryMapIcon(_this.getReferenceUnsafeStaticCast(), 2);
 			}
 
 			registeredPlayerIdList.put(player->getObjectID());
@@ -1063,9 +1063,9 @@ void BuildingObjectImplementation::unregisterProfessional(CreatureObject* player
 
 	if (registeredPlayerIdList.drop(player->getObjectID())) {
 		if (registeredPlayerIdList.size() == 0) {
-			if (getZone()->isObjectRegisteredWithPlanetaryMap(_this.get())) {
+			if (getZone()->isObjectRegisteredWithPlanetaryMap(_this.getReferenceUnsafeStaticCast())) {
 				// Last Entertainer/Doctor out, set icon from star to a moon.
-				getZone()->updatePlanetaryMapIcon(_this.get(), 1);
+				getZone()->updatePlanetaryMapIcon(_this.getReferenceUnsafeStaticCast(), 1);
 			}
 		}
 
@@ -1086,7 +1086,7 @@ void BuildingObjectImplementation::promptPayAccessFee(CreatureObject* player) {
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::STRUCTURE_CONSENT_PAY_ACCESS_FEE);
 	box->setPromptTitle("@player_structure:access_fee_t");
 	box->setPromptText("You must pay a fee of " + String::valueOf(accessFee) + " credits to enter this building");
-	box->setUsingObject(_this.get());
+	box->setUsingObject(_this.getReferenceUnsafeStaticCast());
 	box->setForceCloseDistance(30.f);
 	box->setCallback(new StructurePayAccessFeeSuiCallback(server->getZoneServer()));
 
@@ -1179,7 +1179,7 @@ void BuildingObjectImplementation::updatePaidAccessList() {
 	{
 		paidAccessList.drop(ejectList.get(i));
 		ManagedReference<CreatureObject*> creature = server->getZoneServer()->getObject(ejectList.get(i)).castTo<CreatureObject*>();
-		if(creature != NULL && creature->getRootParent() == _this.get()) {
+		if(creature != NULL && creature->getRootParent() == _this.getReferenceUnsafeStaticCast()) {
 			creature->sendSystemMessage("@player_structure:turnstile_expire"); // You have been ejected because your access expired
 			ejectObject(creature);
 		}
@@ -1198,7 +1198,7 @@ void BuildingObjectImplementation::updatePaidAccessList() {
 	int timeToSchedule = (nextExpirationTime - time(0)) * 1000;
 
 	if(pendingTask == NULL) {
-		pendingTask = new RevokePaidAccessTask(_this.get());
+		pendingTask = new RevokePaidAccessTask(_this.getReferenceUnsafeStaticCast());
 		addPendingTask("revokepaidstructureaccess", pendingTask, timeToSchedule);
 	} else {
 		pendingTask->reschedule(timeToSchedule);
@@ -1251,7 +1251,7 @@ void BuildingObjectImplementation::createChildObjects(){
 			if (obj == NULL )
 				continue;
 
-			Locker crossLocker(obj, _this.get());
+			Locker crossLocker(obj, _this.getReferenceUnsafeStaticCast());
 
 			if(obj->isCreatureObject()) {
 				obj->destroyObjectFromDatabase(true);
@@ -1262,7 +1262,7 @@ void BuildingObjectImplementation::createChildObjects(){
 			childObjects.put(obj);
 			obj->initializePosition(childPosition.getX(), childPosition.getZ(), childPosition.getY());
 			obj->setDirection(child->getDirection());
-			obj->initializeChildObject(_this.get());
+			obj->initializeChildObject(_this.getReferenceUnsafeStaticCast());
 
 
 			// if it's inside
@@ -1291,11 +1291,11 @@ void BuildingObjectImplementation::createChildObjects(){
 				if( (obj->isTurret() || obj->isMinefield() || obj->isDetector()) && gcwMan != NULL && !gcwMan->shouldSpawnDefenses() ){
 
 					if(obj->isTurret())
-						gcwMan->addTurret(_this.get(),NULL);
+						gcwMan->addTurret(_this.getReferenceUnsafeStaticCast(),NULL);
 					else if (obj->isMinefield())
-						gcwMan->addMinefield(_this.get(),NULL);
+						gcwMan->addMinefield(_this.getReferenceUnsafeStaticCast(),NULL);
 					else if (obj->isDetector())
-						gcwMan->addScanner(_this.get(), NULL);
+						gcwMan->addScanner(_this.getReferenceUnsafeStaticCast(), NULL);
 
 					obj->destroyObjectFromDatabase(true);
 					continue;
@@ -1363,11 +1363,11 @@ void BuildingObjectImplementation::createChildObjects(){
 
 				if(gcwMan != NULL){
 					if(obj->isTurret())
-						gcwMan->addTurret(_this.get(),obj);
+						gcwMan->addTurret(_this.getReferenceUnsafeStaticCast(),obj);
 					else if (obj->isMinefield())
-						gcwMan->addMinefield(_this.get(),obj);
+						gcwMan->addMinefield(_this.getReferenceUnsafeStaticCast(),obj);
 					else if (obj->isDetector())
-						gcwMan->addScanner(_this.get(),obj);
+						gcwMan->addScanner(_this.getReferenceUnsafeStaticCast(),obj);
 
 				} else {
 					info("ERROR: Unable to add faction installation to gCWmanager",true);
@@ -1390,7 +1390,7 @@ void BuildingObjectImplementation::spawnChildSceneObject(String& templatePath, f
 	if(zoneServer == NULL)
 		return;
 
-	Zone* zone = _this.get()->getZone();
+	Zone* zone = _this.getReferenceUnsafeStaticCast()->getZone();
 
 	if (zone == NULL)
 		return;
@@ -1486,7 +1486,7 @@ void BuildingObjectImplementation::spawnChildCreaturesFromTemplate(){
 			if(creature == NULL)
 				continue;
 
-			Locker clocker(creature, _this.get());
+			Locker clocker(creature, _this.getReferenceUnsafeStaticCast());
 
 			creature->updateDirection(child->getHeading());
 
@@ -1511,7 +1511,7 @@ void BuildingObjectImplementation::spawnChildCreature(String& mobile, int respaw
 	if(creature == NULL)
 		return;
 
-	Locker clocker(creature, _this.get());
+	Locker clocker(creature, _this.getReferenceUnsafeStaticCast());
 
 	creature->updateDirection(Math::deg2rad(heading));
 
@@ -1542,7 +1542,7 @@ void BuildingObjectImplementation::destroyChildObjects() {
 		if (child == NULL)
 			continue;
 
-		Locker clocker(child, _this.get());
+		Locker clocker(child, _this.getReferenceUnsafeStaticCast());
 
 		childObjects.drop(child);
 		child->destroyObjectFromDatabase(true);
@@ -1557,7 +1557,7 @@ void BuildingObjectImplementation::destroyChildObjects() {
 		if (child == NULL)
 			continue;
 
-		Locker clocker(child, _this.get());
+		Locker clocker(child, _this.getReferenceUnsafeStaticCast());
 
 		if (child->isAiAgent()) {
 			AiAgent* ai = cast<AiAgent*>(child.get());
@@ -1594,7 +1594,7 @@ void BuildingObjectImplementation::changeSign( SignTemplate* signConfig ){
 		return;
 	}
 
-	Locker clocker(signObject, _this.get());
+	Locker clocker(signObject, _this.getReferenceUnsafeStaticCast());
 
 	Vector3 signPosition = signConfig->getPosition();
 	childObjects.put(signSceno);
@@ -1638,7 +1638,7 @@ void BuildingObjectImplementation::changeSign( SignTemplate* signConfig ){
 	if( oldSign != NULL ){
 		signName = oldSign->getCustomObjectName();
 
-		Locker clock( oldSign, _this.get() );
+		Locker clock( oldSign, _this.getReferenceUnsafeStaticCast() );
 		if( childObjects.contains(oldSign) ){
 			childObjects.removeElement(oldSign);
 		}
@@ -1647,10 +1647,10 @@ void BuildingObjectImplementation::changeSign( SignTemplate* signConfig ){
 
 	}
 
-	Locker clocker2(signObject, _this.get());
+	Locker clocker2(signObject, _this.getReferenceUnsafeStaticCast());
 
 	// Finish initializing new sign
-	signObject->initializeChildObject(_this.get());  // should call BuildingObject::setSignObject
+	signObject->initializeChildObject(_this.getReferenceUnsafeStaticCast());  // should call BuildingObject::setSignObject
 
 	// Set to old sign name
 	setCustomObjectName( signName, true );

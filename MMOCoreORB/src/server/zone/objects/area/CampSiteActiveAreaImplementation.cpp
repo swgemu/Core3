@@ -31,7 +31,7 @@ void CampSiteActiveAreaImplementation::startTasks() {
 	Locker locker(&taskMutex);
 
 	if(despawnTask == NULL) {
-		despawnTask = new CampDespawnTask(_this.get());
+		despawnTask = new CampDespawnTask(_this.getReferenceUnsafeStaticCast());
 	} else {
 		if(despawnTask->isScheduled())
 			despawnTask->cancel();
@@ -39,7 +39,7 @@ void CampSiteActiveAreaImplementation::startTasks() {
 
 
 	if(abandonTask == NULL) {
-		abandonTask = new CampAbandonTask(_this.get());
+		abandonTask = new CampAbandonTask(_this.getReferenceUnsafeStaticCast());
 	} else {
 		if(abandonTask->isScheduled())
 			abandonTask->cancel();
@@ -66,7 +66,7 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 		camp->addTemplateSkillMods(player);
 
 	if (campObserver == NULL) {
-		campObserver = new CampSiteObserver(_this.get());
+		campObserver = new CampSiteObserver(_this.getReferenceUnsafeStaticCast());
 		campObserver->deploy();
 	}
 
@@ -132,7 +132,7 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 }
 
 int CampSiteActiveAreaImplementation::notifyHealEvent(int64 quantity) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	// Increase XP Pool for heals
 	currentXp += (campStructureData->getExperience() / 180);
@@ -147,7 +147,7 @@ int CampSiteActiveAreaImplementation::notifyCombatEvent() {
 			abandonTask->cancel();
 
 	} else {
-		abandonTask = new CampAbandonTask(_this.get());
+		abandonTask = new CampAbandonTask(_this.getReferenceUnsafeStaticCast());
 	}
 
 	abandonTask->execute();
@@ -171,7 +171,7 @@ void CampSiteActiveAreaImplementation::abandonCamp() {
 	}
 
 	if(terminal != NULL) {
-		Locker clocker(terminal, _this.get());
+		Locker clocker(terminal, _this.getReferenceUnsafeStaticCast());
 		terminal->setCustomObjectName("Abandoned Camp", true);
 	}
 
@@ -182,7 +182,7 @@ void CampSiteActiveAreaImplementation::abandonCamp() {
 }
 
 bool CampSiteActiveAreaImplementation::despawnCamp() {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if(!abandoned && campOwner != NULL && campOwner->getZoneServer() != NULL) {
 		/// Get Player Manager
@@ -265,7 +265,7 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 		}
 	}
 
-	Locker clocker(campOwner, _this.get());
+	Locker clocker(campOwner, _this.getReferenceUnsafeStaticCast());
 
 	PlayerObject* ownerGhost = campOwner->getPlayerObject();
 
@@ -290,7 +290,7 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 			visitors.add(scno->getObjectID());
 	}
 
-	Locker clocker2(player, _this.get());
+	Locker clocker2(player, _this.getReferenceUnsafeStaticCast());
 
 	playerGhost->addOwnedStructure(camp);
 
@@ -321,6 +321,6 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 void CampSiteActiveAreaImplementation::setOwner(CreatureObject* player) {
 	campOwner = player;
 
-	Locker clocker(camp, _this.get());
+	Locker clocker(camp, _this.getReferenceUnsafeStaticCast());
 	camp->setOwner(player->getObjectID());
 }
