@@ -53,7 +53,7 @@ int SpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Observa
 	if (sceno == NULL)
 		return 1;
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	uint32 lairTemplate = spawnTypes.remove(sceno->getObjectID());
 
@@ -117,7 +117,7 @@ void SpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (object->getCityRegion() != NULL)
 		return;
 
-	ManagedReference<SpawnArea*> spawnArea = _this.get();
+	ManagedReference<SpawnArea*> spawnArea = _this.getReferenceUnsafeStaticCast();
 	ManagedReference<SceneObject*> obj = object;
 
 	EXECUTE_TASK_2(spawnArea, obj, {
@@ -144,7 +144,7 @@ void SpawnAreaImplementation::notifyPositionUpdate(QuadTreeEntry* obj) {
 		return;
 
 	if (System::random(25) == 1) {
-		ManagedReference<SpawnArea*> spawnArea = _this.get();
+		ManagedReference<SpawnArea*> spawnArea = _this.getReferenceUnsafeStaticCast();
 		ManagedReference<SceneObject*> object = cast<SceneObject*>(obj);
 
 		EXECUTE_TASK_2(spawnArea, object, {
@@ -159,7 +159,7 @@ void SpawnAreaImplementation::notifyExit(SceneObject* object) {
 }
 
 int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	if (spawnGroup == NULL && spawnGroupTemplateCRC != 0)
 		spawnGroup = CreatureTemplateManager::instance()->getSpawnGroup(spawnGroupTemplateCRC);
@@ -269,16 +269,16 @@ int SpawnAreaImplementation::tryToSpawn(SceneObject* object) {
 		return 11;
 	}
 
-	Locker _locker2(_this.get());
+	Locker _locker2(_this.getReferenceUnsafeStaticCast());
 
 	if (exitObserver == NULL) {
-		exitObserver = new SpawnAreaObserver(_this.get());
+		exitObserver = new SpawnAreaObserver(_this.getReferenceUnsafeStaticCast());
 		exitObserver->deploy();
 	}
 
 	spawnTypes.put(obj->getObjectID(), lairHashCode);
 
-	Locker clocker(obj, _this.get());
+	Locker clocker(obj, _this.getReferenceUnsafeStaticCast());
 
 	obj->registerObserver(ObserverEventType::OBJECTREMOVEDFROMZONE, exitObserver);
 

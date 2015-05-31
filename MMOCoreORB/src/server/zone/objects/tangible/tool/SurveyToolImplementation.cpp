@@ -60,15 +60,15 @@ int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 				return 0;
 			}
 
-			Locker locker(_this.get());
+			Locker locker(_this.getReferenceUnsafeStaticCast());
 
 			ManagedReference<SurveySession*> session = player->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 			if(session == NULL) {
 				session = new SurveySession(player);
-				session->initializeSession(_this.get());
+				session->initializeSession(_this.getReferenceUnsafeStaticCast());
 			}
 
-			session->setOpenSurveyTool(_this.get());
+			session->setOpenSurveyTool(_this.getReferenceUnsafeStaticCast());
 
 			ManagedReference<ResourceManager*> resourceManager = cast<ResourceManager*>(server->getZoneServer()->getResourceManager());
 			if(resourceManager == NULL) {
@@ -128,7 +128,7 @@ void SurveyToolImplementation::sendRangeSui(CreatureObject* player) {
 	if (surveyMod >= 125)
 		suiToolRangeBox->addMenuItem("1024m x 1024m", 8);
 
-	suiToolRangeBox->setUsingObject(_this.get());
+	suiToolRangeBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
 	suiToolRangeBox->setCallback(new SurveyToolSetRangeSuiCallback(server->getZoneServer()));
 	player->getPlayerObject()->addSuiBox(suiToolRangeBox);
 	player->sendMessage(suiToolRangeBox->generateMessage());
@@ -198,7 +198,7 @@ void SurveyToolImplementation::sendRadioactiveWarning(CreatureObject* player) {
 	messageBox->setCancelButton(true, "");
 
 	messageBox->setCallback(new SurveyToolApproveRadioactiveSuiCallback(server->getZoneServer()));
-	messageBox->setUsingObject(_this.get());
+	messageBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
 
 	player->getPlayerObject()->addSuiBox(messageBox);
 

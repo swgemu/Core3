@@ -31,10 +31,10 @@ void ResourceContainerImplementation::fillAttributeList(AttributeListMessage* al
 void ResourceContainerImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending rnco baselines");
 
-	BaseMessage* rnco3 = new ResourceContainerObjectMessage3(_this.get());
+	BaseMessage* rnco3 = new ResourceContainerObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(rnco3);
 
-	BaseMessage* rnco6 = new ResourceContainerObjectMessage6(_this.get());
+	BaseMessage* rnco6 = new ResourceContainerObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(rnco6);
 }
 
@@ -43,15 +43,15 @@ void ResourceContainerImplementation::setUseCount(uint32 newQuantity, bool notif
 }
 
 void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify, bool ignoreMax) {
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 	ManagedReference<SceneObject*> parent = getParent().get();
 	stackQuantity = quantity;
 
 	if(stackQuantity < 1) {
 
 		if(parent != NULL) {
-			/*parent->broadcastDestroy(_this.get(), true);
-			parent->removeObject(_this.get(), false);*/
+			/*parent->broadcastDestroy(_this.getReferenceUnsafeStaticCast(), true);
+			parent->removeObject(_this.getReferenceUnsafeStaticCast(), false);*/
 			//setParent(NULL);
 
 			destroyObjectFromWorld(true);
@@ -78,7 +78,7 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 
 			locker.release();
 
-			Locker clocker(harvestedResource, _this.get());
+			Locker clocker(harvestedResource, _this.getReferenceUnsafeStaticCast());
 
 			if (parent->transferObject(harvestedResource, -1, true)) {
 				parent->broadcastObject(harvestedResource, true);
@@ -92,7 +92,7 @@ void ResourceContainerImplementation::setQuantity(uint32 quantity, bool doNotify
 		return;
 
 	ResourceContainerObjectDeltaMessage3* rcnod3 =
-			new ResourceContainerObjectDeltaMessage3(_this.get());
+			new ResourceContainerObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
 
 	rcnod3->updateQuantity();
 	rcnod3->close();
@@ -175,8 +175,8 @@ void ResourceContainerImplementation::split(int newStackSize, CreatureObject* pl
 }
 
 void ResourceContainerImplementation::combine(ResourceContainer* fromContainer) {
-	Locker _locker(_this.get());
-	Locker clocker(fromContainer, _this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
+	Locker clocker(fromContainer, _this.getReferenceUnsafeStaticCast());
 
 	setQuantity(getQuantity() + fromContainer->getQuantity());
 	fromContainer->setQuantity(0);

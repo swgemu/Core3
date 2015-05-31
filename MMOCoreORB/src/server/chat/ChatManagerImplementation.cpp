@@ -264,7 +264,7 @@ ChatRoom* ChatManagerImplementation::getChatRoomByFullPath(const String& path) {
 
 
 void ChatManagerImplementation::destroyRooms() {
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	HashTableIterator<unsigned int, ManagedReference<ChatRoom* > > iter = roomMap->iterator();
 
@@ -463,14 +463,14 @@ void ChatManagerImplementation::sendRoomList(CreatureObject* player) {
 }
 
 void ChatManagerImplementation::addPlayer(CreatureObject* player) {
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	String name = player->getFirstName().toLowerCase();
 	playerMap->put(name, player, false);
 }
 
 CreatureObject* ChatManagerImplementation::getPlayer(const String& name) {
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	CreatureObject* player = NULL;
 
@@ -487,7 +487,7 @@ CreatureObject* ChatManagerImplementation::getPlayer(const String& name) {
 }
 
 CreatureObject* ChatManagerImplementation::removePlayer(const String& name) {
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	String lName = name.toLowerCase();
 
@@ -497,7 +497,7 @@ CreatureObject* ChatManagerImplementation::removePlayer(const String& name) {
 }
 
 void ChatManagerImplementation::broadcastGalaxy(const String& message, const String& faction) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	playerMap->resetIterator(false);
 
@@ -520,7 +520,7 @@ void ChatManagerImplementation::broadcastGalaxy(CreatureObject* player, const St
 	StringBuffer fullMessage;
 	fullMessage << "[" << firstName << "] " << message;
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	//playerMap->lock();
 
 	playerMap->resetIterator(false);
@@ -533,7 +533,7 @@ void ChatManagerImplementation::broadcastGalaxy(CreatureObject* player, const St
 }
 
 void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	playerMap->resetIterator(false);
 
@@ -928,7 +928,7 @@ ChatRoom* ChatManagerImplementation::createGroupRoom(uint64 groupID, CreatureObj
 }
 
 void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	ChatOnDestroyRoom* msg = new ChatOnDestroyRoom("SWG", server->getGalaxyName(), room->getRoomID());
 	room->broadcastMessage(msg);

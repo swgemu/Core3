@@ -84,7 +84,7 @@ void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	if (checkContainerPermission(player, ContainerPermissions::MOVECONTAINER && getParent().get() != NULL &&
-			getParent().get()->checkContainerPermission(player, ContainerPermissions::MOVEOUT) && !(_this.get()->isRecycleToolObject()) && !(_this.get()->isAntiDecayKitObject())))
+			getParent().get()->checkContainerPermission(player, ContainerPermissions::MOVEOUT) && !(_this.getReferenceUnsafeStaticCast()->isRecycleToolObject()) && !(_this.getReferenceUnsafeStaticCast()->isAntiDecayKitObject())))
 
 		menuResponse->addRadialMenuItem(50, 3, "@base_player:set_name"); //Set Name
 
@@ -101,7 +101,7 @@ int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 			inputBox->setPromptTitle("@sui:set_name_title");
 			inputBox->setPromptText("@sui:set_name_prompt");
-			inputBox->setUsingObject(_this.get());
+			inputBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
 			inputBox->setMaxInputSize(255);
 
 			inputBox->setDefaultInput(getCustomObjectName().toString());
@@ -123,7 +123,7 @@ int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		//Create Session
 		session = new SlicingSession(player);
-		session->initalizeSlicingMenu(player, _this.get());
+		session->initalizeSlicingMenu(player, _this.getReferenceUnsafeStaticCast());
 
 		return 0;
 
@@ -208,7 +208,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 		} else {
 			// There's no parent that's a wearable container. Check if this is
 			if (gameObjectType == SceneObjectType::WEARABLECONTAINER) {
-				WearableContainerObject* pack = cast<WearableContainerObject*>(_this.get().get());
+				WearableContainerObject* pack = cast<WearableContainerObject*>(_this.getReferenceUnsafeStaticCast());
 
 				if (pack != NULL && !pack->isEquipped()) {
 				// This is a wearable container, and it's not equipped.

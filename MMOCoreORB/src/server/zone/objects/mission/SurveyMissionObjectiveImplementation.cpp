@@ -24,7 +24,7 @@ void SurveyMissionObjectiveImplementation::activate() {
 
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 	if (player != NULL) {
-		ManagedReference<MissionObserver*> observer = new MissionObserver(_this.get());
+		ManagedReference<MissionObserver*> observer = new MissionObserver(_this.getReferenceUnsafeStaticCast());
 		addObserver(observer, true);
 
 		player->registerObserver(ObserverEventType::SURVEY, observer);

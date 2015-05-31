@@ -101,7 +101,7 @@ int LightsaberCrystalComponentImplementation::handleObjectMenuSelect(CreatureObj
 			suiMessageBox->setPromptTitle("@jedi_spam:confirm_tune_title");
 			suiMessageBox->setPromptText("@jedi_spam:confirm_tune_prompt");
 			suiMessageBox->setCancelButton(true, "Cancel");
-			suiMessageBox->setUsingObject(_this.get());
+			suiMessageBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
 			suiMessageBox->setCallback(new LightsaberCrystalTuneSuiCallback(player->getZoneServer()));
 
 			player->getPlayerObject()->addSuiBox(suiMessageBox);
@@ -215,7 +215,7 @@ int LightsaberCrystalComponentImplementation::inflictDamage(TangibleObject* atta
 	TangibleObjectImplementation::inflictDamage(attacker, damageType, damage, destroy, notifyClient);
 
 	if (isDestroyed()) {
-		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(_this.get()->getParent().get()->getParent().get().get());
+		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(_this.getReferenceUnsafeStaticCast()->getParent().get()->getParent().get().get());
 
 		if (weapon != NULL) {
 			if (getColor() == 31) {
