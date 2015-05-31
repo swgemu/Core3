@@ -34,7 +34,7 @@ namespace server {
 using namespace server::zone::objects::creature;
 
 class BannedNameSet : public HashSet<String> {
-	int hash(const String& str) {
+	int hash(const String& str) const {
 		return str.hashCode();
 	}
 

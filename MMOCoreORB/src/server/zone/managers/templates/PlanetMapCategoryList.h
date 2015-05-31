@@ -13,7 +13,7 @@
 class PlanetMapCategory;
 
 class PlanetMapCategoryList : public HashTable<int, Reference<PlanetMapCategory*> >, public HashTableIterator<int, Reference<PlanetMapCategory*> > {
-	int hash(const int& key) {
+	int hash(const int& key) const {
 		return Integer::hashCode(key);
 	}
 

@@ -72,7 +72,7 @@ public:
 		return GENERALERROR;
 	}
 
-	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) {
+	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) const {
 		StringTokenizer tokenizer(arguments.toString());
 		uint64 weaponID = tokenizer.getLongToken();
 		ManagedReference<WeaponObject*> weapon = server->getZoneServer()->getObject(weaponID).castTo<WeaponObject*>();

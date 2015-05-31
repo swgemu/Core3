@@ -81,7 +81,7 @@ public:
 			return SUCCESS;
 		}
 
-	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) {
+	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) const {
 		return defaultTime * speed;
 	}
 

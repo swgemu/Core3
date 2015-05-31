@@ -89,7 +89,7 @@ public:
 		return totalAttributes;
 	}
 
-	String toString() const {
+	String toString() {
 		StringBuffer str;
 
 		for (int i = 0; i < minAttributes.size(); ++i)

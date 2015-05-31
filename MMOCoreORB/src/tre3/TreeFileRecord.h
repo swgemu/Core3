@@ -134,7 +134,7 @@ public:
 		return buffer;
 	}
 
-	String toString() const {
+	String toString() {
 		StringBuffer str;
 		str << "Checksum: " << checksum;
 		str << " UncompressedSize: " << uncompressedSize;

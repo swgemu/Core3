@@ -880,7 +880,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return zone.get();
 	}
 
-	@read
+	@dirty
 	public native unsigned long getObjectID();
 	
 	@local
