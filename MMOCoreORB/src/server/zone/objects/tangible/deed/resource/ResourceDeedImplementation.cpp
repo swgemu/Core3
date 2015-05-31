@@ -53,7 +53,7 @@ int ResourceDeedImplementation::useObject(CreatureObject* creature) {
 	ManagedReference<ResourceManager*> resourceManager = server->getZoneServer()->getResourceManager();
 
 	ManagedReference<SuiListBox*> sui = new SuiListBox(creature, SuiWindowType::FREE_RESOURCE);
-	sui->setUsingObject(_this.get());
+	sui->setUsingObject(_this.getReferenceUnsafeStaticCast());
 	sui->setCallback(new ResourceDeedSuiCallback(server->getZoneServer(), "Resource"));
 	sui->setPromptTitle("@veteran:resource_title"); //Resources
 	sui->setPromptText("@veteran:choose_class"); //Choose resource class
@@ -71,8 +71,8 @@ int ResourceDeedImplementation::useObject(CreatureObject* creature) {
 
 void ResourceDeedImplementation::destroyDeed() {
 	if (parent.get() != NULL) {
-		/*getParent()->removeObject(_this.get(), true);
-		broadcastDestroy(_this.get(), false);*/
+		/*getParent()->removeObject(_this.getReferenceUnsafeStaticCast(), true);
+		broadcastDestroy(_this.getReferenceUnsafeStaticCast(), false);*/
 		destroyObjectFromWorld(true);
 	}
 

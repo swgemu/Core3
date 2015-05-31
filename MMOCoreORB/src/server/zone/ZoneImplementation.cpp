@@ -61,16 +61,16 @@ void ZoneImplementation::createContainerComponent() {
 
 void ZoneImplementation::initializePrivateData() {
 	if (zoneName.contains("space_")) {
-		planetManager = new SpaceManager(_this.get(), processor);
+		planetManager = new SpaceManager(_this.getReferenceUnsafeStaticCast(), processor);
 	} else {
-		planetManager = new PlanetManager(_this.get(), processor);
+		planetManager = new PlanetManager(_this.getReferenceUnsafeStaticCast(), processor);
 	}
 
-	creatureManager = new CreatureManager(_this.get());
+	creatureManager = new CreatureManager(_this.getReferenceUnsafeStaticCast());
 	creatureManager->deploy("CreatureManager " + zoneName);
 	creatureManager->setZoneProcessor(processor);
 
-	gcwManager = new GCWManager(_this.get());
+	gcwManager = new GCWManager(_this.getReferenceUnsafeStaticCast());
 }
 
 void ZoneImplementation::finalize() {
@@ -130,20 +130,20 @@ float ZoneImplementation::getHeight(float x, float y) {
 }
 
 void ZoneImplementation::insert(QuadTreeEntry* entry) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	quadTree->insert(entry);
 }
 
 void ZoneImplementation::remove(QuadTreeEntry* entry) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if (entry->isInQuadTree())
 		quadTree->remove(entry);
 }
 
 void ZoneImplementation::update(QuadTreeEntry* entry) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	quadTree->update(entry);
 }
@@ -153,13 +153,13 @@ void ZoneImplementation::inRange(QuadTreeEntry* entry, float range) {
 }
 
 int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedVector<ManagedReference<QuadTreeEntry*> >* objects, bool readLockZone) {
-	//Locker locker(_this.get());
+	//Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	bool readlock = readLockZone && !_this.get()->isLockedByCurrentThread();
+	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
 
 	Vector<ManagedReference<QuadTreeEntry*> > buildingObjects;
 
-//	_this.get()->rlock(readlock);
+//	_this.getReferenceUnsafeStaticCast()->rlock(readlock);
 
 	try {
 		_this.getReferenceUnsafeStaticCast()->rlock(readlock);
@@ -202,7 +202,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 			}
 		}
 
-	//_this.get()->runlock(readlock);
+	//_this.getReferenceUnsafeStaticCast()->runlock(readlock);
 
 	for (int i = 0; i < buildingObjects.size(); ++i)
 		objects->put(buildingObjects.get(i));
@@ -211,11 +211,11 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 }
 
 int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<ManagedReference<ActiveArea*> >* objects, bool readLockZone) {
-	//Locker locker(_this.get());
+	//Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	bool readlock = readLockZone && !_this.get()->isLockedByCurrentThread();
+	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
 
-	//_this.get()->rlock(readlock);
+	//_this.getReferenceUnsafeStaticCast()->rlock(readlock);
 
 	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
 
@@ -233,22 +233,22 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 			objects->put(obj);
 		}
 	}catch (...) {
-//		_this.get()->runlock(readlock);
+//		_this.getReferenceUnsafeStaticCast()->runlock(readlock);
 
 		throw;
 	}
 
-//	_this.get()->runlock(readlock);
+//	_this.getReferenceUnsafeStaticCast()->runlock(readlock);
 
 	return objects->size();
 }
 
 int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, SortedVector<ManagedReference<ActiveArea*> >* objects, bool readLockZone) {
-	//Locker locker(_this.get());
+	//Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	bool readlock = readLockZone && !_this.get()->isLockedByCurrentThread();
+	bool readlock = readLockZone && !_this.getReferenceUnsafeStaticCast()->isLockedByCurrentThread();
 
-	//_this.get()->rlock(readlock);
+	//_this.getReferenceUnsafeStaticCast()->rlock(readlock);
 	
 	Zone* thisZone = _this.getReferenceUnsafeStaticCast();
 
@@ -266,18 +266,18 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, float range, Sor
 			objects->put(obj);
 		}
 	}catch (...) {
-//		_this.get()->runlock(readlock);
+//		_this.getReferenceUnsafeStaticCast()->runlock(readlock);
 
 		throw;
 	}
 
-//	_this.get()->runlock(readlock);
+//	_this.getReferenceUnsafeStaticCast()->runlock(readlock);
 
 	return objects->size();
 }
 
 void ZoneImplementation::updateActiveAreas(TangibleObject* tano) {
-	//Locker locker(_this.get());
+	//Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	Locker _alocker(tano->getContainerLock());
 

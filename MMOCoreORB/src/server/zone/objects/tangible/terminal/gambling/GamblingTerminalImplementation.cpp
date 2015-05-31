@@ -52,7 +52,7 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 				textPlayer.setTT(getMachineTypeText());
 				player->sendSystemMessage(textPlayer);
 
-			} else if (!player->isInRange(_this.get(), 20.0)) {
+			} else if (!player->isInRange(_this.getReferenceUnsafeStaticCast(), 20.0)) {
 				returnValue = false;
 
 				StringIdChatParameter textPlayer("ui","radial_out_of_range_prose");
@@ -79,7 +79,7 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 				textPlayer.setTT(getMachineTypeText());
 				player->sendSystemMessage(textPlayer);
 
-			} else if (!player->isInRange(_this.get(), 20.0)) {
+			} else if (!player->isInRange(_this.getReferenceUnsafeStaticCast(), 20.0)) {
 				returnValue = false;
 
 				StringIdChatParameter textPlayer("ui","radial_out_of_range_prose");
@@ -103,7 +103,7 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 				textPlayer.setTT(getMachineTypeText());
 				player->sendSystemMessage(textPlayer);
 
-			} else if (!player->isInRange(_this.get(), 20.0)) {
+			} else if (!player->isInRange(_this.getReferenceUnsafeStaticCast(), 20.0)) {
 				returnValue = false;
 
 				StringIdChatParameter textPlayer("ui","radial_out_of_range_prose");
@@ -121,7 +121,7 @@ bool GamblingTerminalImplementation::checkJoin(CreatureObject* player) {
 void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
 
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 	switch (machineType) {
 		case SLOTMACHINE: {
 			if (state == SLOTGAMEENDED) {//begin new round
@@ -139,9 +139,9 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 					setState(GAMESTARTING);
 					incGameCount();
 
-					gamblingManager->registerPlayer(_this.get(), player);
+					gamblingManager->registerPlayer(_this.getReferenceUnsafeStaticCast(), player);
 
-					playersWindows.put(player, gamblingManager->createWindow(_this.get(), player));
+					playersWindows.put(player, gamblingManager->createWindow(_this.getReferenceUnsafeStaticCast(), player));
 
 					statusUpdate(player, JOINTERMINAL);
 
@@ -155,9 +155,9 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 
 				winnings.put(player, 0);
 
-				gamblingManager->registerPlayer(_this.get(), player);
+				gamblingManager->registerPlayer(_this.getReferenceUnsafeStaticCast(), player);
 
-				playersWindows.put(player, gamblingManager->createWindow(_this.get(), player));
+				playersWindows.put(player, gamblingManager->createWindow(_this.getReferenceUnsafeStaticCast(), player));
 
 				statusUpdate(player, JOINTERMINAL);
 
@@ -165,7 +165,7 @@ void GamblingTerminalImplementation::joinTerminal(CreatureObject* player) {
 					setState(GAMESTARTING);
 					incGameCount();
 
-					gamblingManager->startGame(_this.get());
+					gamblingManager->startGame(_this.getReferenceUnsafeStaticCast());
 				}
 
 			}
@@ -243,7 +243,7 @@ void GamblingTerminalImplementation::closeAllMenus() {
 void GamblingTerminalImplementation::leaveTerminal(CreatureObject* player) {
 	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
 
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 	switch (machineType) {
 		case SLOTMACHINE: {
 
@@ -252,7 +252,7 @@ void GamblingTerminalImplementation::leaveTerminal(CreatureObject* player) {
 			statusUpdate(player, LEAVETERMINAL);
 
 			playersWindows.drop(player);
-			gamblingManager->stopGame(_this.get(), true);
+			gamblingManager->stopGame(_this.getReferenceUnsafeStaticCast(), true);
 
 			break;
 		}
@@ -267,7 +267,7 @@ void GamblingTerminalImplementation::leaveTerminal(CreatureObject* player) {
 			winnings.drop(player);
 
 			if (playersWindows.size() == 0) {
-				gamblingManager->stopGame(_this.get(), true);
+				gamblingManager->stopGame(_this.getReferenceUnsafeStaticCast(), true);
 			}
 
 			break;
@@ -329,7 +329,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					break;
 				}
 				case TWOLEFT: {
-					//Locker _locker(_this.get()); Unnecessary, called from continue which locks
+					//Locker _locker(_this.getReferenceUnsafeStaticCast()); Unnecessary, called from continue which locks
 					first = System::random(7);
 
 					if (player != NULL) {
@@ -340,7 +340,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					break;
 				}
 				case ONELEFT: {
-					//Locker _locker(_this.get());
+					//Locker _locker(_this.getReferenceUnsafeStaticCast());
 					second = System::random(7);
 
 					if (player != NULL) {
@@ -351,7 +351,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					break;
 				}
 				case END: {
-					//Locker _locker(_this.get());
+					//Locker _locker(_this.getReferenceUnsafeStaticCast());
 					third = System::random(7);
 
 					if (player != NULL) {
@@ -494,7 +494,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 				}
 				case WHEELSLOW: {
 					// wheel slows down, seems to be.
-					//Locker _locker(_this.get());
+					//Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 					first = System::random(37);
 
@@ -502,7 +502,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 					body.setTT(String::valueOf(first));
 
 					String terminalName;
-					_this.get()->getObjectName()->getFullPath(terminalName);
+					_this.getReferenceUnsafeStaticCast()->getObjectName()->getFullPath(terminalName);
 					body.setTO(terminalName);
 
 					notifyAll(&body);
@@ -520,7 +520,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 						body.setTT(String::valueOf(first));
 
 						String terminalName;
-						_this.get()->getObjectName()->getFullPath(terminalName);
+						_this.getReferenceUnsafeStaticCast()->getObjectName()->getFullPath(terminalName);
 
 						body.setTO(terminalName);
 
@@ -534,7 +534,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 						body.setTT(String::valueOf(first));
 
 						String terminalName;
-						_this.get()->getObjectName()->getFullPath(terminalName);
+						_this.getReferenceUnsafeStaticCast()->getObjectName()->getFullPath(terminalName);
 
 						body.setTO(terminalName);
 

@@ -72,7 +72,7 @@ void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClos
 	sendContainerObjectsTo(player);
 
 	if(doClose) {
-		BaseMessage* msg = new SceneObjectCloseMessage(_this.get());
+		BaseMessage* msg = new SceneObjectCloseMessage(_this.getReferenceUnsafeStaticCast());
 		player->sendMessage(msg);
 	}
 
@@ -89,7 +89,7 @@ void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
 	ManufactureSchematicObjectMessage3* msco3;
 
 	if(prototype != NULL)
-		msco3 = new ManufactureSchematicObjectMessage3(_this.get(), playerCreature->getFirstName());
+		msco3 = new ManufactureSchematicObjectMessage3(_this.getReferenceUnsafeStaticCast(), playerCreature->getFirstName());
 	 else
 		msco3 = new ManufactureSchematicObjectMessage3(getObjectID(), complexity, playerCreature->getFirstName());
 
@@ -122,7 +122,7 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 		return;
 
 	Reference<CraftingSession*> session = player->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
-	if(session == NULL || session->getSchematic() != _this.get()) {
+	if(session == NULL || session->getSchematic() != _this.getReferenceUnsafeStaticCast()) {
 		return;
 	}
 
@@ -140,7 +140,7 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 
 void ManufactureSchematicImplementation::sendMsco7(SceneObject* player) {
 
-	ManufactureSchematicObjectMessage7* mcso7 = new ManufactureSchematicObjectMessage7(_this.get());
+	ManufactureSchematicObjectMessage7* mcso7 = new ManufactureSchematicObjectMessage7(_this.getReferenceUnsafeStaticCast());
 
 	/// Slot names
 	ingredientNames.insertToMessage(mcso7);
@@ -261,7 +261,7 @@ void ManufactureSchematicImplementation::synchronizedUIStopListen(SceneObject* p
 
 void ManufactureSchematicImplementation::initializeIngredientSlots() {
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if(draftSchematic == NULL || initialized)
 		return;
@@ -362,7 +362,7 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 
 		// DMSCO6 ***************************************************
 		ManufactureSchematicObjectDeltaMessage6* dMsco6 =
-				new ManufactureSchematicObjectDeltaMessage6(_this.get());
+				new ManufactureSchematicObjectDeltaMessage6(_this.getReferenceUnsafeStaticCast());
 
 		dMsco6->insertToResourceSlot(slot);
 		dMsco6->close();
@@ -388,7 +388,7 @@ int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* play
 	// Start DMSCO3 ***********************************************************
 	// Updates the Complexity
 	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
-				new ManufactureSchematicObjectDeltaMessage3(_this.get());
+				new ManufactureSchematicObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
 	dMsco3->updateComplexity(getComplexity());
 	dMsco3->close();
 
@@ -417,7 +417,7 @@ int ManufactureSchematicImplementation::removeIngredientFromSlot(CreatureObject*
 	// Start DMSCO3 ***********************************************************
 	// Updates the Complexity
 	ManufactureSchematicObjectDeltaMessage3* dMsco3 =
-			new ManufactureSchematicObjectDeltaMessage3(_this.get());
+			new ManufactureSchematicObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
 	dMsco3->updateComplexity(getComplexity());
 	dMsco3->close();
 
@@ -430,7 +430,7 @@ int ManufactureSchematicImplementation::removeIngredientFromSlot(CreatureObject*
 void ManufactureSchematicImplementation::sendDelta7(IngredientSlot* ingredientSlot, int slot, CreatureObject* player) {
 	// DMSCO7 ***************************************************
 
-	ManufactureSchematicObjectDeltaMessage7* dmcso7 = new ManufactureSchematicObjectDeltaMessage7(_this.get());
+	ManufactureSchematicObjectDeltaMessage7* dmcso7 = new ManufactureSchematicObjectDeltaMessage7(_this.getReferenceUnsafeStaticCast());
 
 	/// Update slot type
 	int type = ingredientSlot->getClientSlotType();
@@ -473,7 +473,7 @@ void ManufactureSchematicImplementation::sendDelta7(IngredientSlot* ingredientSl
 
 void ManufactureSchematicImplementation::cleanupIngredientSlots(CreatureObject* player) {
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	while (ingredientSlots.size() > 0) {
 		Reference<IngredientSlot*>  slot = ingredientSlots.remove(0);
@@ -552,7 +552,7 @@ void ManufactureSchematicImplementation::setPrototype(TangibleObject* tano) {
 	/// This is where the schematic gets sent to the datapad, so wee need
 	/// To initialize all the values
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	prototype = tano;
 	crafter = NULL;

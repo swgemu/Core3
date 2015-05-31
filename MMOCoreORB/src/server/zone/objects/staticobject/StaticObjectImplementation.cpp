@@ -10,9 +10,9 @@
 #include "server/zone/packets/static/StaticObjectMessage6.h"
 
 void StaticObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	BaseMessage* stao3 = new StaticObjectMessage3(_this.get());
+	BaseMessage* stao3 = new StaticObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(stao3);
 
-	BaseMessage* stao6 = new StaticObjectMessage6(_this.get());
+	BaseMessage* stao6 = new StaticObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(stao6);
 }

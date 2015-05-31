@@ -130,7 +130,7 @@ void ZoneServerImplementation::initialize() {
 
 	loadGalaxyName();
 
-	processor = new ZoneProcessServer(_this.get());
+	processor = new ZoneProcessServer(_this.getReferenceUnsafeStaticCast());
 	processor->deploy("ZoneProcessServer");
 	processor->initialize();
 
@@ -142,7 +142,7 @@ void ZoneServerImplementation::initialize() {
 
 	stringIdManager = StringIdManager::instance();
 
-	reactionManager = new ReactionManager(_this.get());
+	reactionManager = new ReactionManager(_this.getReferenceUnsafeStaticCast());
 	reactionManager->loadLuaConfig();
 
 	creatureTemplateManager = CreatureTemplateManager::instance();
@@ -156,11 +156,11 @@ void ZoneServerImplementation::initialize() {
 
 	info("Initializing chat manager...", true);
 
-	chatManager = new ChatManager(_this.get(), 10000);
+	chatManager = new ChatManager(_this.getReferenceUnsafeStaticCast(), 10000);
 	chatManager->deploy("ChatManager");
 	chatManager->initiateRooms();
 
-	playerManager = new PlayerManager(_this.get(), processor);
+	playerManager = new PlayerManager(_this.getReferenceUnsafeStaticCast(), processor);
 	playerManager->deploy("PlayerManager");
 
 	chatManager->setPlayerManager(playerManager);
@@ -170,24 +170,24 @@ void ZoneServerImplementation::initialize() {
 	craftingManager->setZoneProcessor(processor);
 	craftingManager->initialize();
 
-	lootManager = new LootManager(craftingManager, objectManager, _this.get());
+	lootManager = new LootManager(craftingManager, objectManager, _this.getReferenceUnsafeStaticCast());
 	lootManager->deploy("LootManager");
 	lootManager->initialize();
 
-	resourceManager = new ResourceManager(_this.get(), processor, objectManager);
+	resourceManager = new ResourceManager(_this.getReferenceUnsafeStaticCast(), processor, objectManager);
 	resourceManager->deploy("ResourceManager");
 
-	cityManager = new CityManager(_this.get());
+	cityManager = new CityManager(_this.getReferenceUnsafeStaticCast());
 	cityManager->deploy("CityManager");
 	cityManager->loadLuaConfig();
 
-	auctionManager = new AuctionManager(_this.get());
+	auctionManager = new AuctionManager(_this.getReferenceUnsafeStaticCast());
 	auctionManager->deploy();
 
-	missionManager = new MissionManager(_this.get(), processor);
+	missionManager = new MissionManager(_this.getReferenceUnsafeStaticCast(), processor);
 	missionManager->deploy("MissionManager");
 
-	petManager = new PetManager(_this.get());
+	petManager = new PetManager(_this.getReferenceUnsafeStaticCast());
 	petManager->initialize();
 
 	startZones();
@@ -206,7 +206,7 @@ void ZoneServerImplementation::startZones() {
 	SortedVector<String>* enabledZones = configManager->getEnabledZones();
 
 	StructureManager* structureManager = StructureManager::instance();
-	structureManager->setZoneServer(_this.get());
+	structureManager->setZoneServer(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < enabledZones->size(); ++i) {
 		String zoneName = enabledZones->get(i);
@@ -226,7 +226,7 @@ void ZoneServerImplementation::startZones() {
 	for (int i = 0; i < zones->size(); ++i) {
 		Zone* zone = zones->get(i);
 		if (zone != NULL) {
-			ZoneLoadManagersTask* task = new ZoneLoadManagersTask(_this.get(), zone);
+			ZoneLoadManagersTask* task = new ZoneLoadManagersTask(_this.getReferenceUnsafeStaticCast(), zone);
 			task->execute();
 		}
 	}
@@ -244,10 +244,10 @@ void ZoneServerImplementation::startZones() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
-	radialManager = new RadialManager(_this.get());
+	radialManager = new RadialManager(_this.getReferenceUnsafeStaticCast());
 	radialManager->deploy("RadialManager");
 
-	guildManager = new GuildManager(_this.get(), processor);
+	guildManager = new GuildManager(_this.getReferenceUnsafeStaticCast(), processor);
 	guildManager->deploy("GuildManager");
 	guildManager->setChatManager(chatManager);
 	guildManager->loadLuaConfig();
@@ -276,7 +276,7 @@ void ZoneServerImplementation::startManagers() {
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
-	zoneHandler = new ZoneHandler(_this.get());
+	zoneHandler = new ZoneHandler(_this.getReferenceUnsafeStaticCast());
 
 	datagramService->setHandler(zoneHandler);
 
@@ -293,7 +293,7 @@ void ZoneServerImplementation::stop() {
 }
 
 void ZoneServerImplementation::timedShutdown(int minutes) {
-	Reference<Task*> task = new ShutdownTask(_this.get(), minutes);
+	Reference<Task*> task = new ShutdownTask(_this.getReferenceUnsafeStaticCast(), minutes);
 	task->schedule(60 * 1000);
 
 	String str = "Server will shutdown in " + String::valueOf(minutes) + " minutes";
@@ -679,7 +679,7 @@ void ZoneServerImplementation::unlock(bool doLock) {
 }
 
 void ZoneServerImplementation::setServerStateLocked() {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	serverState = LOCKED;
 
@@ -689,7 +689,7 @@ void ZoneServerImplementation::setServerStateLocked() {
 }
 
 void ZoneServerImplementation::setServerStateOnline() {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	serverState = ONLINE;
 
@@ -703,7 +703,7 @@ String ZoneServerImplementation::getLoginMessage() {
 }
 
 void ZoneServerImplementation::loadLoginMessage() {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	File* file;
 	FileReader* reader;
@@ -728,7 +728,7 @@ void ZoneServerImplementation::loadLoginMessage() {
 }
 
 void ZoneServerImplementation::changeLoginMessage(const String& motd) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	File* file;
 	FileWriter* writer;

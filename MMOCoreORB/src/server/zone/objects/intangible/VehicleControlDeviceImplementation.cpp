@@ -81,7 +81,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 
 	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
 
-		Reference<CallMountTask*> callMount = new CallMountTask(_this.get(), player, "call_mount");
+		Reference<CallMountTask*> callMount = new CallMountTask(_this.getReferenceUnsafeStaticCast(), player, "call_mount");
 
 		StringIdChatParameter message("pet/pet_menu", "call_vehicle_delay");
 		message.setDI(15);
@@ -90,7 +90,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 		player->addPendingTask("call_mount", callMount, 15 * 1000);
 
 		if (vehicleControlObserver == NULL) {
-			vehicleControlObserver = new VehicleControlObserver(_this.get());
+			vehicleControlObserver = new VehicleControlObserver(_this.getReferenceUnsafeStaticCast());
 			vehicleControlObserver->deploy();
 		}
 
@@ -134,7 +134,7 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	
 		vehicle = cast<CreatureObject*>(controlledObject.get());
 		vehicle->setCreatureLink(player);
-		vehicle->setControlDevice(_this.get());
+		vehicle->setControlDevice(_this.getReferenceUnsafeStaticCast());
 		if (vehicle->isDestroyed())
 		{
 			String vehicleName = vehicle->getDisplayedName();

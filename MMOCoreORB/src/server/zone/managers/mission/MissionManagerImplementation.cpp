@@ -1887,7 +1887,7 @@ void MissionManagerImplementation::allocateMissionNpcs(NpcSpawnPoint* target, Np
 void MissionManagerImplementation::freeMissionNpc(NpcSpawnPoint* npc) {
 	//Lock mission spawn points.
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
-	npc->freeNpc(_this.get());
+	npc->freeNpc(_this.getReferenceUnsafeStaticCast());
 }
 
 void MissionManagerImplementation::despawnMissionNpc(NpcSpawnPoint* npc) {

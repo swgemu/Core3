@@ -57,10 +57,10 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 	if (zone == NULL)
 		return;
 
-	zone->addCityRegionToUpdate(_this.get());
+	zone->addCityRegionToUpdate(_this.getReferenceUnsafeStaticCast());
 
 	if (isRegistered())
-		zone->getPlanetManager()->addRegion(_this.get());
+		zone->getPlanetManager()->addRegion(_this.getReferenceUnsafeStaticCast());
 
 	//Add taxes if they dont exist.
 	if (taxes.size() <= 0) {
@@ -124,10 +124,10 @@ Region* CityRegionImplementation::addRegion(float x, float y, float radius, bool
 		return NULL;
 	}
 	
-	Locker clocker(obj, _this.get());
+	Locker clocker(obj, _this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<Region*> region = cast<Region*>(obj.get());
-	region->setCityRegion(_this.get());
+	region->setCityRegion(_this.getReferenceUnsafeStaticCast());
 	region->setRadius(radius);
 	region->initializePosition(x, 0, y);
 	region->setObjectName(regionName);
@@ -147,7 +147,7 @@ void CityRegionImplementation::rescheduleUpdateEvent(uint32 seconds) {
 		return;
 
 	if (cityUpdateEvent == NULL) {
-		cityUpdateEvent = new CityUpdateEvent(_this.get(), ServerCore::getZoneServer());
+		cityUpdateEvent = new CityUpdateEvent(_this.getReferenceUnsafeStaticCast(), ServerCore::getZoneServer());
 	} else if (cityUpdateEvent->isScheduled()) {
 		cityUpdateEvent->cancel();
 	}
@@ -161,7 +161,7 @@ void CityRegionImplementation::scheduleCitizenAssessment(uint32 seconds) {
 
 
 	if (citizenAssessmentEvent == NULL) {
-		citizenAssessmentEvent = new CitizenAssessmentEvent(_this.get(), ServerCore::getZoneServer());
+		citizenAssessmentEvent = new CitizenAssessmentEvent(_this.getReferenceUnsafeStaticCast(), ServerCore::getZoneServer());
 	} else if (citizenAssessmentEvent->isScheduled()) {
 		citizenAssessmentEvent->cancel();
 	}
@@ -176,10 +176,10 @@ int CityRegionImplementation::getTimeToUpdate() {
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
-	if (object->getCityRegion().get() != _this.get() && object->isPlayerCreature())
+	if (object->getCityRegion().get() != _this.getReferenceUnsafeStaticCast() && object->isPlayerCreature())
 		currentPlayers.increment();
 
-	object->setCityRegion(_this.get());
+	object->setCityRegion(_this.getReferenceUnsafeStaticCast());
 
 	if (object->isBazaarTerminal() || object->isVendor()) {
 
@@ -226,7 +226,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		Locker slocker(&structureListMutex);
 
 		if (isLoaded() && !completeStructureList.contains(structure->getObjectID()) && structure->getBaseMaintenanceRate() > 0) {
-			cityManager->sendAddStructureMails(_this.get(), structure);
+			cityManager->sendAddStructureMails(_this.getReferenceUnsafeStaticCast(), structure);
 		}
 
 		if (structure->isBuildingObject()) {
@@ -237,7 +237,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 			ManagedReference<CreatureObject*> owner = zone->getZoneServer()->getObject(ownerID).castTo<CreatureObject*>();
 
 			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && !isCitizen(ownerID)) {
-				cityManager->registerCitizen(_this.get(), owner);
+				cityManager->registerCitizen(_this.getReferenceUnsafeStaticCast(), owner);
 			}
 		 }
 
@@ -279,7 +279,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 			object->setCityRegion(city);
 
-			if (city == _this.get()) // if its the same city we wait till the object exits the last region
+			if (city == _this.getReferenceUnsafeStaticCast()) // if its the same city we wait till the object exits the last region
 				return;
 		} else {
 			object->setCityRegion(NULL);
@@ -337,7 +337,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 			if(owner != NULL && owner->isPlayerCreature() && building->isResidence() && isCitizen(ownerID)) {
 				CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
-				cityManager->unregisterCitizen(_this.get(), owner);
+				cityManager->unregisterCitizen(_this.getReferenceUnsafeStaticCast(), owner);
 			}
 		}
 
@@ -436,7 +436,7 @@ void CityRegionImplementation::setRadius(float rad) {
 
 	ManagedReference<Region*> newRegion = addRegion(oldRegion->getPositionX(), oldRegion->getPositionY(), rad, true);
 
-	Locker locker(oldRegion, _this.get());
+	Locker locker(oldRegion, _this.getReferenceUnsafeStaticCast());
 
 	zone->removeObject(oldRegion, NULL, false);
 	regions.drop(oldRegion);
@@ -457,7 +457,7 @@ void CityRegionImplementation::destroyActiveAreas() {
 		ManagedReference<Region*> aa = regions.get(i);
 
 		if (aa != NULL) {
-			Locker clocker(aa, _this.get());
+			Locker clocker(aa, _this.getReferenceUnsafeStaticCast());
 			aa->destroyObjectFromWorld(false);
 			aa->destroyObjectFromDatabase(true);
 		}
@@ -497,7 +497,7 @@ String CityRegionImplementation::getRegionDisplayedName() {
 }
 
 bool CityRegionImplementation::hasUniqueStructure(uint32 crc) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < structures.size(); ++i) {
 		ManagedReference<StructureObject*> structure = structures.get(i);
@@ -510,7 +510,7 @@ bool CityRegionImplementation::hasUniqueStructure(uint32 crc) {
 }
 
 void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank, bool sendMail) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if (zone == NULL)
 		return;
@@ -528,7 +528,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank, bool send
 
 		sendDestroyObjectMail(structure);
 
-		Locker _clocker(structure, _this.get());
+		Locker _clocker(structure, _this.getReferenceUnsafeStaticCast());
 
 		structureManager->destroyStructure(structure);
 
@@ -550,7 +550,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank, bool send
 
 		sendDestroyObjectMail(structure);
 
-		Locker _clocker(structure, _this.get());
+		Locker _clocker(structure, _this.getReferenceUnsafeStaticCast());
 
 		structureManager->destroyStructure(structure);
 
@@ -647,7 +647,7 @@ void CityRegionImplementation::applySpecializationModifiers(CreatureObject* crea
 	}
 
 	Reference<CreatureObject*> creatureReference = creature;
-	Reference<CityRegion*> city = _this.get();
+	Reference<CityRegion*> city = _this.getReferenceUnsafeStaticCast();
 
 	typedef VectorMap<String, int> SkillMods;
 	typedef VectorMapEntry<String, int> SkillModsEntry;
@@ -753,7 +753,7 @@ void CityRegionImplementation::transferCivicStructuresToMayor() {
 			PlayerObject* oldMayor = creature->getPlayerObject();
 
 			if (oldMayor != NULL) {
-				Locker clocker(creature, _this.get());
+				Locker clocker(creature, _this.getReferenceUnsafeStaticCast());
 
 				oldMayor->setDeclaredResidence(NULL);
 
@@ -767,14 +767,14 @@ void CityRegionImplementation::transferCivicStructuresToMayor() {
 			ManagedReference<BuildingObject*> oldResidence = server->getObject(oldResidenceID).castTo<BuildingObject*>();
 
 			if (oldResidence != NULL) {
-				Locker olocker(oldResidence, _this.get());
+				Locker olocker(oldResidence, _this.getReferenceUnsafeStaticCast());
 
 				oldResidence->setResidence(false);
 
 				olocker.release();
 			}
 
-			Locker clock(newMayor, _this.get());
+			Locker clock(newMayor, _this.getReferenceUnsafeStaticCast());
 
 			mayorPlayer->setDeclaredResidence(cityBuilding);
 		}
@@ -840,7 +840,7 @@ void CityRegionImplementation::removeDecorationsOutsideCity(int newRadius) {
 				structureManager->destroyStructure(obj.castTo<StructureObject*>());
 			} else {
 
-				Locker clock(obj, _this.get());
+				Locker clock(obj, _this.getReferenceUnsafeStaticCast());
 				obj->destroyObjectFromWorld(true);
 				obj->destroyObjectFromDatabase(true);
 			}
@@ -862,7 +862,7 @@ void CityRegionImplementation::removeTrainersOutsideCity(int newRadius) {
 			removeSkillTrainers(obj);
 			sendDestroyOutsideObjectMail(obj);
 
-			Locker clock(obj, _this.get());
+			Locker clock(obj, _this.getReferenceUnsafeStaticCast());
 			obj->destroyObjectFromWorld(true);
 			obj->destroyObjectFromDatabase(true);
 		}
@@ -881,7 +881,7 @@ void CityRegionImplementation::removeTerminalsOutsideCity(int newRadius) {
 			removeMissionTerminal(obj);
 			sendDestroyOutsideObjectMail(obj);
 
-			Locker clock(obj, _this.get());
+			Locker clock(obj, _this.getReferenceUnsafeStaticCast());
 			obj->destroyObjectFromWorld(true);
 			obj->destroyObjectFromDatabase(true);
 		}
@@ -1060,7 +1060,7 @@ void CityRegionImplementation::cleanupDecorations(int limit) {
 				structureManager->destroyStructure(cast<StructureObject*>(dec));
 
 			} else {
-				Locker clock(dec, _this.get());
+				Locker clock(dec, _this.getReferenceUnsafeStaticCast());
 				dec->destroyObjectFromWorld(true);
 				dec->destroyObjectFromDatabase(true);
 			}
@@ -1084,7 +1084,7 @@ void CityRegionImplementation::cleanupTrainers(int limit) {
 
 			sendDestroyObjectMail(trainer);
 
-			Locker clock(trainer, _this.get());
+			Locker clock(trainer, _this.getReferenceUnsafeStaticCast());
 			trainer->destroyObjectFromWorld(true);
 			trainer->destroyObjectFromDatabase(true);
 
@@ -1107,7 +1107,7 @@ void CityRegionImplementation::cleanupMissionTerminals(int limit) {
 
 			sendDestroyObjectMail(terminal);
 
-			Locker clock(terminal, _this.get());
+			Locker clock(terminal, _this.getReferenceUnsafeStaticCast());
 			terminal->destroyObjectFromWorld(true);
 			terminal->destroyObjectFromDatabase(true);
 
@@ -1117,6 +1117,6 @@ void CityRegionImplementation::cleanupMissionTerminals(int limit) {
 }
 
 uint64 CityRegionImplementation::getObjectID() {
-	return _this.get()->_getObjectID();
+	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
 }
 

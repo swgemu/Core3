@@ -20,7 +20,7 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 void EntertainerMissionObjectiveImplementation::activate() {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
@@ -60,11 +60,11 @@ void EntertainerMissionObjectiveImplementation::activate() {
 
 	Locker locationLocker(locationActiveArea);
 
-	ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this.get());
+	ManagedReference<MissionObserver*> observer1 = new MissionObserver(_this.getReferenceUnsafeStaticCast());
 	addObserver(observer1, true);
 	locationActiveArea->registerObserver(ObserverEventType::ENTEREDAREA, observer1);
 
-	ManagedReference<MissionObserver*> observer2 = new MissionObserver(_this.get());
+	ManagedReference<MissionObserver*> observer2 = new MissionObserver(_this.getReferenceUnsafeStaticCast());
 	addObserver(observer2, true);
 	locationActiveArea->registerObserver(ObserverEventType::EXITEDAREA, observer2);
 
@@ -87,7 +87,7 @@ void EntertainerMissionObjectiveImplementation::activate() {
 }
 
 void EntertainerMissionObjectiveImplementation::abort() {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	MissionObjectiveImplementation::abort();
 
@@ -95,10 +95,10 @@ void EntertainerMissionObjectiveImplementation::abort() {
 }
 
 void EntertainerMissionObjectiveImplementation::clearLocationActiveAreaAndObservers() {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	if (locationActiveArea != NULL) {
-		Locker locationLocker(locationActiveArea, _this.get());
+		Locker locationLocker(locationActiveArea, _this.getReferenceUnsafeStaticCast());
 
 		for (int i = 0; i < getObserverCount(); i++) {
 			ManagedReference<MissionObserver*> observer = getObserver(i);
@@ -124,7 +124,7 @@ void EntertainerMissionObjectiveImplementation::complete() {
 }
 
 void EntertainerMissionObjectiveImplementation::setIsEntertaining(bool value) {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	if (isEntertaining == value) {
 		return;
@@ -137,7 +137,7 @@ void EntertainerMissionObjectiveImplementation::setIsEntertaining(bool value) {
 
 void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 	//Is entertaining in mission area inside a building.
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<CreatureObject*> object = getPlayerOwner();
 
@@ -146,7 +146,7 @@ void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 
 	if (isEntertaining && inMissionArea && object != NULL && object->getParentID() != 0) {
 		if (completeTask == NULL) {
-			completeTask = new CompleteMissionAfterCertainTimeTask(_this.get());
+			completeTask = new CompleteMissionAfterCertainTimeTask(_this.getReferenceUnsafeStaticCast());
 		}
 
 		if (completeTask->isScheduled()) {
@@ -174,7 +174,7 @@ int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserv
 		return 0;
 	}
 
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	if (eventType == ObserverEventType::ENTEREDAREA) {
 		inMissionArea = true;

@@ -51,10 +51,10 @@ void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* te
 void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//send buios here
 
-	BaseMessage* buio3 = new InstallationObjectMessage3(_this.get());
+	BaseMessage* buio3 = new InstallationObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(buio3);
 
-	BaseMessage* buio6 = new InstallationObjectMessage6(_this.get());
+	BaseMessage* buio6 = new InstallationObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(buio6);
 
 
@@ -101,7 +101,7 @@ void InstallationObjectImplementation::broadcastMessage(BasePacket* message, boo
 	for (int i = 0; i < closeSceneObjects.size(); ++i) {
 		ManagedReference<SceneObject*> scno = cast<SceneObject*>( closeSceneObjects.get(i).get());
 
-		if (!sendSelf && scno == _this.get())
+		if (!sendSelf && scno == _this.getReferenceUnsafeStaticCast())
 			continue;
 
 		if(!scno->isPlayerCreature())
@@ -165,12 +165,12 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 		lastStopTime.updateToCurrentTime();
 	}
 
-	InstallationObjectDeltaMessage3* delta = new InstallationObjectDeltaMessage3(_this.get());
+	InstallationObjectDeltaMessage3* delta = new InstallationObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
 	delta->updateOperating(value);
 	delta->updateOptionsBitmask();
 	delta->close();
 
-	InstallationObjectDeltaMessage7* delta7 = new InstallationObjectDeltaMessage7(_this.get());
+	InstallationObjectDeltaMessage7* delta7 = new InstallationObjectDeltaMessage7(_this.getReferenceUnsafeStaticCast());
 	delta7->updateOperating(value);
 	delta7->close();
 
@@ -184,7 +184,7 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 		resourceHopperTimestamp.updateToCurrentTime();
 	}
 
-	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
+	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.getReferenceUnsafeStaticCast());
 	inso7->updateExtractionRate(getActualRate());
 	inso7->close();
 
@@ -216,7 +216,7 @@ void InstallationObjectImplementation::setActiveResource(ResourceContainer* cont
 
 			ManagedReference<ResourceContainer*> oldEntry = resourceHopper.get(0);
 
-			InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
+			InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.getReferenceUnsafeStaticCast());
 			inso7->updateHopper();
 			inso7->startUpdate(0x0D);
 
@@ -244,7 +244,7 @@ void InstallationObjectImplementation::handleStructureAddEnergy(CreatureObject* 
 		StringBuffer sstext, ssTotalEnergy;
 
 		ManagedReference<SuiTransferBox*> energyBox = new SuiTransferBox(player, SuiWindowType::STRUCTURE_ADD_ENERGY);
-		energyBox->setUsingObject(_this.get());
+		energyBox->setUsingObject(_this.getReferenceUnsafeStaticCast());
 		energyBox->setPromptTitle("@player_structure:add_power");
 
 		sstext	<< "@player_structure:select_power_amount"
@@ -368,7 +368,7 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shutdownAfterUpdate) {
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	
 	if (getZone() == NULL)
 		return;
@@ -440,7 +440,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	if (shutdownAfterUpdate)
 		setOperating(false);
 
-	/*InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
+	/*InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.getReferenceUnsafeStaticCast());
 	inso7->startUpdate(0x0D);
 	resourceHopper.set(0, container, inso7, 1);
 	inso7->updateHopperSize(getHopperSize());
@@ -469,7 +469,7 @@ void InstallationObjectImplementation::clearResourceHopper() {
 		}
 	}
 
-	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
+	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.getReferenceUnsafeStaticCast());
 	inso7->updateHopper();
 	inso7->startUpdate(0x0D);
 
@@ -490,7 +490,7 @@ void InstallationObjectImplementation::addResourceToHopper(ResourceContainer* co
 
 	Time timeToWorkTill;
 
-	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
+	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.getReferenceUnsafeStaticCast());
 	inso7->updateHopper();
 	inso7->startUpdate(0x0D);
 
@@ -538,7 +538,7 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 		setActiveResource(container);
 	}
 
-	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
+	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.getReferenceUnsafeStaticCast());
 	inso7->updateExtractionRate(getActualRate());
 	inso7->updateActiveResourceSpawn(getActiveResourceSpawnID());
 	inso7->close();
@@ -562,7 +562,7 @@ void InstallationObjectImplementation::activateUiSync() {
 	try {
 
 		if (syncUiTask == NULL)
-			syncUiTask = new SyncrhonizedUiListenInstallationTask(_this.get());
+			syncUiTask = new SyncrhonizedUiListenInstallationTask(_this.getReferenceUnsafeStaticCast());
 
 		if (!syncUiTask->isScheduled())
 			syncUiTask->schedule(5000);
@@ -620,7 +620,7 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 		ResourceContainer* cont = resourceHopper.get(i);
 
 		if (cont == container) {
-			InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
+			InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.getReferenceUnsafeStaticCast());
 			inso7->updateHopper();
 			inso7->startUpdate(0x0D);
 			if(container->getQuantity() == 0 && (!isOperating() || (isOperating() && i != 0)))
@@ -641,7 +641,7 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 	if(resourceHopper.size() == 0)
 		setOperating(false);
 
-	//broadcastToOperators(new InstallationObjectDeltaMessage7(_this.get()));
+	//broadcastToOperators(new InstallationObjectDeltaMessage7(_this.getReferenceUnsafeStaticCast()));
 }
 
 uint64 InstallationObjectImplementation::getActiveResourceSpawnID() {
