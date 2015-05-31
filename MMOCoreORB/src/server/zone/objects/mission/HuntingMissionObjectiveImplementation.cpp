@@ -31,7 +31,7 @@ void HuntingMissionObjectiveImplementation::activate() {
 
 	ManagedReference<CreatureObject*> player = getPlayerOwner();
 
-	ManagedReference<MissionObserver*> observer = new MissionObserver(_this.get());
+	ManagedReference<MissionObserver*> observer = new MissionObserver(_this.getReferenceUnsafeStaticCast());
 	addObserver(observer, true);
 
 	Locker locker(player);

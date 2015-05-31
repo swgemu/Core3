@@ -44,7 +44,7 @@ void HarvesterObjectImplementation::synchronizedUIListen(SceneObject* player, in
 
 	updateInstallationWork();
 
-	HarvesterObjectMessage7* msg = new HarvesterObjectMessage7(_this.get());
+	HarvesterObjectMessage7* msg = new HarvesterObjectMessage7(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(msg);
 
 	/// Have to send the spawns of items no in shift, or the dont show
@@ -61,7 +61,7 @@ void HarvesterObjectImplementation::synchronizedUIListen(SceneObject* player, in
 }
 
 void HarvesterObjectImplementation::updateOperators() {
-	HarvesterObjectMessage7* msg = new HarvesterObjectMessage7(_this.get());
+	HarvesterObjectMessage7* msg = new HarvesterObjectMessage7(_this.getReferenceUnsafeStaticCast());
 	broadcastToOperators(msg);
 }
 

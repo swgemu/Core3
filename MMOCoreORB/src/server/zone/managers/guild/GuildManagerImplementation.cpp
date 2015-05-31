@@ -81,7 +81,7 @@ void GuildManagerImplementation::loadLuaConfig() {
 }
 
 void GuildManagerImplementation::loadGuilds() {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	ObjectDatabase* guildsDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("guilds", true);
 
@@ -196,7 +196,7 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 }
 
 void GuildManagerImplementation::destroyGuild(GuildObject* guild, StringIdChatParameter& mailbody) {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
 
@@ -273,10 +273,10 @@ void GuildManagerImplementation::destroyGuild(GuildObject* guild, StringIdChatPa
 		}
 	}
 
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	if (guildList.contains(guild->getGuildKey())) {
-		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
+		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 		gildd3->startUpdate(0x04);
 		guildList.drop(guild->getGuildKey(), gildd3);
 		gildd3->close();
@@ -358,7 +358,7 @@ bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const
 }
 
 bool GuildManagerImplementation::guildNameExists(const String& guildName) {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < guildList.size(); ++i) {
 		ManagedReference<GuildObject*> guild = guildList.get(guildList.getKeyAt(i));
@@ -374,7 +374,7 @@ bool GuildManagerImplementation::guildNameExists(const String& guildName) {
 }
 
 bool GuildManagerImplementation::guildAbbrevExists(const String& guildAbbrev) {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < guildList.size(); ++i) {
 		ManagedReference<GuildObject*> guild = guildList.get(guildList.getKeyAt(i));
@@ -482,10 +482,10 @@ void GuildManagerImplementation::renameGuild(GuildObject* guild) {
 		return;
 	}
 
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	if (guildList.contains(guild->getGuildKey())) {
-		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
+		GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 		gildd3->startUpdate(0x04);
 		guildList.drop(guild->getGuildKey(), gildd3);
 		gildd3->close();
@@ -498,9 +498,9 @@ void GuildManagerImplementation::renameGuild(GuildObject* guild) {
 	guild->setGuildName(newName);
 	guild->setGuildAbbrev(newAbbrev);
 
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
-	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
+	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 	gildd3->startUpdate(0x04);
 	guildList.add(guild->getGuildKey(), guild, gildd3);
 	gildd3->close();
@@ -904,20 +904,20 @@ void GuildManagerImplementation::sendGuildSponsorTo(CreatureObject* player, Guil
 }
 
 void GuildManagerImplementation::sendBaselinesTo(CreatureObject* player) {
-	SceneObjectCreateMessage* create = new SceneObjectCreateMessage(_this.get()->_getObjectID(), 0x7D40E2E6);
+	SceneObjectCreateMessage* create = new SceneObjectCreateMessage(_this.getReferenceUnsafeStaticCast()->_getObjectID(), 0x7D40E2E6);
 	player->sendMessage(create);
 
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
-	GuildObjectMessage3* gild3 = new GuildObjectMessage3(&guildList, _this.get()->_getObjectID());
+	GuildObjectMessage3* gild3 = new GuildObjectMessage3(&guildList, _this.getReferenceUnsafeStaticCast()->_getObjectID());
 	player->sendMessage(gild3);
 
 	_lock.release();
 
-	GuildObjectMessage6* gild6 = new GuildObjectMessage6(_this.get()->_getObjectID());
+	GuildObjectMessage6* gild6 = new GuildObjectMessage6(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 	player->sendMessage(gild6);
 
-	SceneObjectCloseMessage* close = new SceneObjectCloseMessage(_this.get()->_getObjectID());
+	SceneObjectCloseMessage* close = new SceneObjectCloseMessage(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 	player->sendMessage(close);
 
 
@@ -961,7 +961,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, con
 		return NULL;
 	}
 
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	uint64 playerID = player->getObjectID();
 
@@ -993,7 +993,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, con
 
 	player->setGuildObject(guild);
 
-	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.get()->_getObjectID());
+	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 	gildd3->startUpdate(0x04);
 	guildList.add(guild->getGuildKey(), guild, gildd3);
 	gildd3->close();
@@ -1410,7 +1410,7 @@ void GuildManagerImplementation::sendGuildListTo(CreatureObject* player, const S
 		return;
 	}
 
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::ADMIN_GUILDLIST);
 	listBox->setCallback(new ListGuildsResponseSuiCallback(server));
@@ -1454,7 +1454,7 @@ void GuildManagerImplementation::sendAdminGuildInfoTo(CreatureObject* player, Gu
 	if (!player->getPlayerObject()->isPrivileged())
 		return;
 
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, 0);
 
@@ -1758,7 +1758,7 @@ void GuildManagerImplementation::declareWarByName(CreatureObject* creature, Guil
 
 	if (waringGuild == NULL) {
 		//Might have entered an abbreviation, so now, we gotta search every fucking guild
-		Locker _lock(_this.get());
+		Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 		for (int i = 0; i < guildList.size(); ++i) {
 			ManagedReference<GuildObject*> g = guildList.getValueAt(i);
@@ -1766,7 +1766,7 @@ void GuildManagerImplementation::declareWarByName(CreatureObject* creature, Guil
 			if (g == NULL)
 				continue;
 
-			Locker clocker(g, _this.get());
+			Locker clocker(g, _this.getReferenceUnsafeStaticCast());
 
 //			g->rlock();
 
@@ -1796,7 +1796,7 @@ void GuildManagerImplementation::updateWarStatusToWaringGuild(GuildObject* guild
 }
 
 GuildObject* GuildManagerImplementation::getGuildFromAbbrev(const String& guildAbbrev) {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
 	for (int i = 0; i < guildList.size(); ++i) {
 		ManagedReference<GuildObject*> guild = guildList.getValueAt(i);
@@ -1804,7 +1804,7 @@ GuildObject* GuildManagerImplementation::getGuildFromAbbrev(const String& guildA
 		if (guild == NULL)
 			continue;
 
-		Locker clocker(guild, _this.get());
+		Locker clocker(guild, _this.getReferenceUnsafeStaticCast());
 
 		if (guild->getGuildAbbrev() == guildAbbrev)
 			return guild;

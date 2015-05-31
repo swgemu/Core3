@@ -160,7 +160,7 @@ void CraftingToolImplementation::disperseItems() {
 	if(!isReady())
 		return;
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<SceneObject*> craftedComponents = getSlottedObject("crafted_components");
 	ManagedReference<SceneObject*> prototype = NULL;
@@ -190,12 +190,12 @@ void CraftingToolImplementation::disperseItems() {
 	}
 
 	if(craftedComponents != NULL) {
-		Locker clocker(craftedComponents, _this.get());
+		Locker clocker(craftedComponents, _this.getReferenceUnsafeStaticCast());
 		craftedComponents->destroyObjectFromWorld(true);
 	}
 
 	if(prototype != NULL) {
-		Locker clocker(prototype, _this.get());
+		Locker clocker(prototype, _this.getReferenceUnsafeStaticCast());
 		prototype->destroyObjectFromWorld(true);
 	}
 }

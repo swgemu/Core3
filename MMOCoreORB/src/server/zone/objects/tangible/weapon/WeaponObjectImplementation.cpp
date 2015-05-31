@@ -139,7 +139,7 @@ void WeaponObjectImplementation::createChildObjects() {
 
 			childObjects.put(obj);
 
-			obj->initializeChildObject(_this.get());
+			obj->initializeChildObject(_this.getReferenceUnsafeStaticCast());
 		}
 
 }
@@ -147,14 +147,14 @@ void WeaponObjectImplementation::createChildObjects() {
 void WeaponObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending weapon object baselines");
 
-	BaseMessage* weao3 = new WeaponObjectMessage3(_this.get());
+	BaseMessage* weao3 = new WeaponObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(weao3);
 
-	BaseMessage* weao6 = new WeaponObjectMessage6(_this.get());
+	BaseMessage* weao6 = new WeaponObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(weao6);
 
 	if (player->isCreatureObject()) {
-		BaseMessage* ranges = new WeaponRanges(cast<CreatureObject*>(player), _this.get());
+		BaseMessage* ranges = new WeaponRanges(cast<CreatureObject*>(player), _this.getReferenceUnsafeStaticCast());
 		player->sendMessage(ranges);
 	}
 }
@@ -435,7 +435,7 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 		}
 
 	if(hasPowerup())
-		powerupObject->fillWeaponAttributeList(alm, _this.get());
+		powerupObject->fillWeaponAttributeList(alm, _this.getReferenceUnsafeStaticCast());
 
 	if (sliced == 1)
 		alm->insertAttribute("wpn_attr", "@obj_attr_n:hacked1");
@@ -620,7 +620,7 @@ void WeaponObjectImplementation::updateCraftingValues(CraftingValues* values, bo
 
 	//value = craftingValues->getCurrentValue("roundsused");
 	//if(value != DraftSchematicValuesImplementation::VALUENOTFOUND)
-		//_this.get()->set_______(value);
+		//_this.getReferenceUnsafeStaticCast()->set_______(value);
 
 	value = values->getCurrentValue("zerorangemod");
 	if(value != CraftingValues::VALUENOTFOUND)
@@ -676,7 +676,7 @@ void WeaponObjectImplementation::decreasePowerupUses(CreatureObject* player) {
 	if (hasPowerup()) {
 		powerupObject->decreaseUses();
 		if (powerupObject->getUses() < 1) {
-			Locker locker(_this.get());
+			Locker locker(_this.getReferenceUnsafeStaticCast());
 			StringIdChatParameter message("powerup", "prose_pup_expire"); //The powerup on your %TT has expired.
 			message.setTT(getDisplayedName());
 
@@ -714,7 +714,7 @@ String WeaponObjectImplementation::repairAttempt(int repairChance) {
 }
 
 void WeaponObjectImplementation::decay(CreatureObject* user) {
-	if (_this.get() == user->getSlottedObject("default_weapon") || user->isAiAgent() || hasAntiDecayKit()) {
+	if (_this.getReferenceUnsafeStaticCast() == user->getSlottedObject("default_weapon") || user->isAiAgent() || hasAntiDecayKit()) {
 		return;
 	}
 
@@ -731,7 +731,7 @@ void WeaponObjectImplementation::decay(CreatureObject* user) {
 				}
 			}
 		} else {
-			inflictDamage(_this.get(), 0, 1, true, true);
+			inflictDamage(_this.getReferenceUnsafeStaticCast(), 0, 1, true, true);
 
 			if (((float)conditionDamage - 1 / (float)maxCondition < 0.75) && ((float)conditionDamage / (float)maxCondition > 0.75))
 				user->sendSystemMessage("@combat_effects:weapon_quarter");

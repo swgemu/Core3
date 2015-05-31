@@ -996,7 +996,7 @@ void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	notifyObservers(ObserverEventType::OBJECTINRANGEMOVED, entry);
 	//#else
 
-	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this.get(), entry));
+	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this.getReferenceUnsafeStaticCast(), entry));
 	//#endif
 
 	zoneComponent->notifyPositionUpdate(_this.getReferenceUnsafeStaticCast(), entry);

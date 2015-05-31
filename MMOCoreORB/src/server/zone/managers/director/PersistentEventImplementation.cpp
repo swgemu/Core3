@@ -19,7 +19,7 @@ void PersistentEventImplementation::loadTransientTask() {
 	int64 remTime = (timeStamp + curTime) - currentTime;
 
 	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play);
-	task->setPersistentEvent(_this.get());
+	task->setPersistentEvent(_this.getReferenceUnsafeStaticCast());
 
 	if (remTime > 0) { // If there is still time left before it should be triggered, schedule for that amount of time
 		task->schedule(remTime);

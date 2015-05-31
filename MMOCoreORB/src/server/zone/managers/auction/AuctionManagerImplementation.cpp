@@ -38,7 +38,7 @@
 
 void AuctionManagerImplementation::initialize() {
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	auctionMap = new AuctionsMap();
 
@@ -88,7 +88,7 @@ void AuctionManagerImplementation::initialize() {
 			auctionMap->addToCommodityLimit(auctionItem);
 
 		if(auctionItem->isAuction()) {
-			Reference<Task*> newTask = new ExpireAuctionTask(_this.get(), auctionItem);
+			Reference<Task*> newTask = new ExpireAuctionTask(_this.getReferenceUnsafeStaticCast(), auctionItem);
 			newTask->schedule((auctionItem->getExpireTime() - time(0)) * 1000);
 
 			Locker locker(&auctionEvents);
@@ -108,7 +108,7 @@ void AuctionManagerImplementation::initialize() {
 			auctionItem->setVendorID(defaultBazaar->getObjectID());
 
 			if(auctionItem->isAuction()) {
-				Reference<Task*> newTask = new ExpireAuctionTask(_this.get(), auctionItem);
+				Reference<Task*> newTask = new ExpireAuctionTask(_this.getReferenceUnsafeStaticCast(), auctionItem);
 				newTask->schedule((auctionItem->getExpireTime() - time(0)) * 1000);
 
 				Locker locker(&auctionEvents);
@@ -146,7 +146,7 @@ void AuctionManagerImplementation::checkVendorItems() {
 
 void AuctionManagerImplementation::checkAuctions() {
 
-	Reference<CheckAuctionsTask*> task = new CheckAuctionsTask(_this.get());
+	Reference<CheckAuctionsTask*> task = new CheckAuctionsTask(_this.getReferenceUnsafeStaticCast());
 	task->schedule(CHECKEVERY * 60 * 1000);
 
 	TerminalListVector items = auctionMap->getBazaarTerminalData("", "", 0);
@@ -363,7 +363,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	item->setPersistent(1);
 
 	if(item->isAuction()) {
-		Reference<Task*> newTask = new ExpireAuctionTask(_this.get(), item);
+		Reference<Task*> newTask = new ExpireAuctionTask(_this.getReferenceUnsafeStaticCast(), item);
 		newTask->schedule((item->getExpireTime() - time(0)) * 1000);
 
 		Locker locker(&auctionEvents);
