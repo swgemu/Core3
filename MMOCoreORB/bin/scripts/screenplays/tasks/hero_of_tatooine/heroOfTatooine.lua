@@ -34,7 +34,13 @@ HeroOfTatooineScreenPlay = ScreenPlay:new {
 		rancher = {{-6.6, 0.03, -1.8, 4005941}},
 		trooper1 = {{-7.86, -3.97, -8.18, 4005942}, {-6.1, 0.03, -4.2, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
 		trooper2 = {{-5.53, -3.97, -8.51, 4005942}, {-6.20, 0.57, 10.92, 4005939}}
-	}
+	},
+	
+	spawnTimers = {
+		initial = { 20, 30 }, -- Time in minutes for first spawn after server start
+		respawn = { 60, 180 }, -- Time in minutes before respawning after despawn
+		life = { 15, 60 }, -- Time in minutes to keep mob in world before despawn
+	} 
 }
 
 registerScreenPlay("HeroOfTatooineScreenPlay", true)
@@ -59,8 +65,14 @@ function HeroOfTatooineScreenPlay:spawnMobiles()
 	writeData("hero_of_tat:hermit_id", SceneObject(pHermit):getObjectID())
 end
 
-function HeroOfTatooineScreenPlay:getEventChangeTime()
-	return getRandomNumber(20, 30) * 60 * 1000 -- 20-30 minutes
+function HeroOfTatooineScreenPlay:getEventTimer(event)
+	local timer = self.spawnTimers[event]
+	
+	if (timer == nil) then
+		return getRandomNumber(20, 30) * 60 * 1000
+	else
+		return getRandomNumber(timer[1], timer[2]) * 60 * 1000
+	end
 end
 
 function HeroOfTatooineScreenPlay:spawnAltruismObjects()
@@ -97,33 +109,33 @@ end
 
 function HeroOfTatooineScreenPlay:initEvents()
 	if (not hasServerEvent("HeroOfTatCourage")) then
-		self:createCourageEvent()
+		self:createCourageEvent("initial")
 	end
 	if (not hasServerEvent("HeroOfTatAltruism")) then
-		self:createAltruismEvent()
+		self:createAltruismEvent("initial")
 	end
 	if (not hasServerEvent("HeroOfTatIntellect")) then
-		self:createIntellectEvent()
+		self:createIntellectEvent("initial")
 	end
 	if (not hasServerEvent("HeroOfTatHonor")) then
-		self:createHonorEvent()
+		self:createHonorEvent("initial")
 	end
 end
 
-function HeroOfTatooineScreenPlay:createCourageEvent()
-	createServerEvent(self:getEventChangeTime(), "HeroOfTatooineScreenPlay", "doCourageChange", "HeroOfTatCourage")
+function HeroOfTatooineScreenPlay:createCourageEvent(event)
+	createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doCourageChange", "HeroOfTatCourage")
 end
 
-function HeroOfTatooineScreenPlay:createAltruismEvent()
-	createServerEvent(self:getEventChangeTime(), "HeroOfTatooineScreenPlay", "doAltruismChange", "HeroOfTatAltruism")
+function HeroOfTatooineScreenPlay:createAltruismEvent(event)
+	createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doAltruismChange", "HeroOfTatAltruism")
 end
 
-function HeroOfTatooineScreenPlay:createIntellectEvent()
-	createServerEvent(self:getEventChangeTime(), "HeroOfTatooineScreenPlay", "doIntellectSpawn", "HeroOfTatIntellect")
+function HeroOfTatooineScreenPlay:createIntellectEvent(event)
+	createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doIntellectSpawn", "HeroOfTatIntellect")
 end
 
-function HeroOfTatooineScreenPlay:createHonorEvent()
-	createServerEvent(self:getEventChangeTime(), "HeroOfTatooineScreenPlay", "doHonorChange", "HeroOfTatHonor")
+function HeroOfTatooineScreenPlay:createHonorEvent(event)
+	createServerEvent(self:getEventTimer(event), "HeroOfTatooineScreenPlay", "doHonorChange", "HeroOfTatHonor")
 end
 
 function HeroOfTatooineScreenPlay:doCourageChange()
@@ -149,10 +161,12 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 
 	-- Reschedule respawn if boar is in combat or dead
 	if (pCourageMob ~= nil and (AiAgent(pCourageMob):isInCombat() or CreatureObject(pCourageMob):isDead())) then
-		self:createCourageEvent()
+		self:createCourageEvent("life")
 		return 0
 	elseif (pCourageMob ~= nil) then
 		SceneObject(pCourageMob):destroyObjectFromWorld()
+		self:createCourageEvent("respawn")
+		return 0
 	end
 
 	local newLoc = getRandomNumber(1, table.getn(self.courageSpawns))
@@ -177,7 +191,7 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 		printf("Error in HeroOfTatooineScreenPlay:doCourageChange, unable to spawn boar.\n")
 	end
 
-	self:createCourageEvent()
+	self:createCourageEvent("life")
 end
 
 function HeroOfTatooineScreenPlay:notifyDefeatedBoar(pVictim, pAttacker)
@@ -261,6 +275,8 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 
 	if (pFarmer ~= nil) then
 		SceneObject(pFarmer):destroyObjectFromWorld()
+		self:createAltruismEvent("respawn")
+		return 0
 	end
 
 	local newLoc = getRandomNumber(1, table.getn(self.altruismSpawns))
@@ -285,7 +301,7 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 		printf("Error in HeroOfTatooineScreenPlay:doAltruismChange, unable to spawn farmer.\n")
 	end
 
-	self:createAltruismEvent()
+	self:createAltruismEvent("life")
 end
 
 function HeroOfTatooineScreenPlay:doIntellectSpawn()
@@ -753,12 +769,8 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 
 	-- Reschedule respawn if leader or pirates are in combat
 	if ((pLeader ~= nil and AiAgent(pLeader):isInCombat()) or (pPirate1 ~= nil and AiAgent(pPirate1):isInCombat()) or (pPirate2 ~= nil and AiAgent(pPirate2):isInCombat())) then
-		self:createHonorEvent()
+		self:createHonorEvent("life")
 		return
-	end
-
-	if (pLeader ~= nil) then
-		SceneObject(pLeader):destroyObjectFromWorld()
 	end
 
 	if (pPirate1 ~= nil) then
@@ -767,6 +779,12 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 
 	if (pPirate2 ~= nil) then
 		SceneObject(pPirate2):destroyObjectFromWorld()
+	end
+	
+	if (pLeader ~= nil) then
+		SceneObject(pLeader):destroyObjectFromWorld()
+		self:createHonorEvent("respawn")
+		return
 	end
 
 	local newLoc = getRandomNumber(1, table.getn(self.honorSpawns))
@@ -812,7 +830,7 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 
 	createObserver(DAMAGERECEIVED, "HeroOfTatooineScreenPlay", "pirateLeaderDamage", pLeader)
 
-	self:createHonorEvent()
+	self:createHonorEvent("life")
 end
 
 
