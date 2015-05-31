@@ -18,11 +18,10 @@ public:
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		if (!suiBox->isListBox() || cancelPressed)
-				return;
-
-		if (args->size() < 1)
+		if (!suiBox->isListBox())
 			return;
+
+
 
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::FIND);
 		ManagedReference<FindSession*> session = dynamic_cast<FindSession*>(facade.get());
@@ -37,6 +36,12 @@ public:
 
 		if (cancelPressed) {
 			session->cancelSession();
+			return;
+		}
+
+		if (args->size() < 1) {
+			session->cancelSession();
+
 			return;
 		}
 

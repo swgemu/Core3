@@ -79,7 +79,7 @@ public:
 					continue;
 
 				// Determine damage bonus (15% of average damage)
-				int damageBonus = ((pet->getDamageMin() + pet->getDamageMax())/2) * 0.15;
+				int damageBonus = (int) ((((float)pet->getDamageMin() + (float)pet->getDamageMax())/2) * 0.15);
 
 				// Determine damage susceptibility (half of damage bonus)
 				int damageSusceptibility = damageBonus / 2;

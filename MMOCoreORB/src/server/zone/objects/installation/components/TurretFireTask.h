@@ -59,8 +59,8 @@ public:
 			}
 
 			ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
-			String commandString = (isManual) ? "turretfire" : "turretfire";
-			QueueCommand* command = objectController->getQueueCommand(commandString.hashCode());
+
+			QueueCommand* command = objectController->getQueueCommand(STRING_HASHCODE("turretfire"));
 
 			if(command != NULL){
 

@@ -959,7 +959,7 @@ int CityManagerImplementation::collectCivicStructureMaintenance(StructureObject*
 
 				if(currentDecay > 0 && amountOwed > 0) {
 					int availableFunds = city->getCityTreasury();
-					float costPerUnitCondition = amountOwed / currentDecay;
+					float costPerUnitCondition = (float) amountOwed / (float) currentDecay;
 					int pointsBack = availableFunds / costPerUnitCondition;
 
 					currentDecay -= pointsBack;

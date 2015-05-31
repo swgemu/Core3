@@ -733,9 +733,9 @@ void WeaponObjectImplementation::decay(CreatureObject* user) {
 		} else {
 			inflictDamage(_this.get(), 0, 1, true, true);
 
-			if ((conditionDamage - 1 / maxCondition < 0.75) && (conditionDamage / maxCondition > 0.75))
+			if (((float)conditionDamage - 1 / (float)maxCondition < 0.75) && ((float)conditionDamage / (float)maxCondition > 0.75))
 				user->sendSystemMessage("@combat_effects:weapon_quarter");
-			if ((conditionDamage - 1 / maxCondition < 0.50) && (conditionDamage / maxCondition > 0.50))
+			if (((float)conditionDamage - 1 / (float)maxCondition < 0.50) && ((float)conditionDamage / (float)maxCondition > 0.50))
 				user->sendSystemMessage("@combat_effects:weapon_half");
 		}
 	}

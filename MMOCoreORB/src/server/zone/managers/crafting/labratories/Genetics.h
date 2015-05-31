@@ -263,15 +263,15 @@ public:
 		int min = 0.1;
 		int max = 9.3;
 		int base = 0;
-		int level = 0;
+		double level = 0;
 		if (diet != CreatureFlag::HERBIVORE) {
 			level = 8/1.701;
 		} else {
 			level = 7.0;
 		}
-		if (level == 0 ){
+		/*if (level == 0 ){ //cant be 0 as per above code
 			level = 1.0;
-		}
+		}*/
 		base = round(((level-0.1)/(9.2)) * 1000.0);
 		return randomizeValue(base,quality);
 	}

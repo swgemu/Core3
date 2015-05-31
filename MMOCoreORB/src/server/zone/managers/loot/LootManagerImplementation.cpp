@@ -283,7 +283,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 			excMod = legendaryModifier;
 
 			prototype->addMagicBit(false);
-	} else if (level >= 50 && System::random(exceptionalChance) >= exceptionalChance - floor((level-50)/2 + 0.5)) {
+	} else if (level >= 50 && System::random(exceptionalChance) >= exceptionalChance - (int) floor(((float)level-50)/2.f + 0.5)) {
 		UnicodeString newName = prototype->getDisplayedName() + " (Exceptional)";
 		prototype->setCustomObjectName(newName, false);
 
