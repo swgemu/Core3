@@ -27,7 +27,7 @@ bool JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj)
 		return false;
 
 	CreatureObject* player = cast<CreatureObject*>( obj);
-	int dealerType = _this.get()->getJunkDealerConversationType();
+	int dealerType = _this.getReferenceUnsafeStaticCast()->getJunkDealerConversationType();
 	if (dealerType == JUNKCONVJAWAARMS || dealerType == JUNKCONVJAWAFINARY || dealerType == JUNKCONVJAWAGENERIC || dealerType == JUNKCONVJAWATUSKEN){
 		if (player->hasSkill("combat_smuggler_underworld_01")){
 			StringIdChatParameter msg;
@@ -53,7 +53,7 @@ bool JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj)
 
 
 void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player) {
-	int dealerConversationType= _this.get()->getJunkDealerConversationType();
+	int dealerConversationType= _this.getReferenceUnsafeStaticCast()->getJunkDealerConversationType();
 	String stffile = getConversationString(dealerConversationType);
 	String stfname = "s_bef51e38";
 	switch (dealerConversationType){
@@ -142,7 +142,7 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 
 void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player) {
 	StringList* slist = new StringList(player);
-	int dealerConversationType= _this.get()->getJunkDealerConversationType();
+	int dealerConversationType= _this.getReferenceUnsafeStaticCast()->getJunkDealerConversationType();
 	String sOptionsMsg ="junkdealer_options";
 	switch (dealerConversationType){
 		case JUNKCONVARMS:{
@@ -260,10 +260,10 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 
 	if (ghost->getLastNpcConvStr() != getObjectNameStringIdName())
 		return;
-	if (_this.get()->getJunkDealerConversationType()>JUNKCONVJAWATUSKEN) {
+	if (_this.getReferenceUnsafeStaticCast()->getJunkDealerConversationType()>JUNKCONVJAWATUSKEN) {
 		return;
 	}
-	String stffile = getConversationString(_this.get()->getJunkDealerConversationType());
+	String stffile = getConversationString(_this.getReferenceUnsafeStaticCast()->getJunkDealerConversationType());
 	String choice;
 	if (ghost->countLastNpcConvOptions() > 0) {
 		if (ghost->getLastNpcConvMessStr() == "junkdealer_kit5")
@@ -559,7 +559,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 	}else if (ghost->getLastNpcConvMessStr() == "dealer_specific-4") {
 		switch (option){
 			case 0:{
-				switch (_this.get()->getJunkDealerConversationType()) {
+				switch (_this.getReferenceUnsafeStaticCast()->getJunkDealerConversationType()) {
 					case JUNKCONVNATHANTAIKE:{ //I am sorry but I don't have anything you would be interested in.
 						sendConversationTerminate(player,stffile,"s_33db8b80");
 						createSellJunkLootSelection(player);
@@ -574,7 +574,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				break;
 			}
 			case 1:{
-				switch (_this.get()->getJunkDealerConversationType()) {
+				switch (_this.getReferenceUnsafeStaticCast()->getJunkDealerConversationType()) {
 					case JUNKCONVNATHANTAIKE:{ //Bah! I should have figured that a stranger wouldn't understand the extent of the problem.
 						sendConversationTerminate(player,stffile,"s_2d363db3");
 						break;
@@ -710,11 +710,11 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(CreatureObjec
 	if (player == NULL)
 		return;
 
-	if (_this.get()->getJunkDealerConversationType()==0){
+	if (_this.getReferenceUnsafeStaticCast()->getJunkDealerConversationType()==0){
 		player->sendSystemMessage("Junk Dealer Not Configured at this time :(");
 		player->sendMessage(new StopNpcConversation(player, getObjectID()));
 	}else{
-		int dealerType= _this.get()->getJunkDealerBuyerType();
+		int dealerType= _this.getReferenceUnsafeStaticCast()->getJunkDealerBuyerType();
 		bool bHaveStuffToSell = false;
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
@@ -746,7 +746,7 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(CreatureObjec
 					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "] " + itemName, inventory->getContainerObject(i)->getObjectID());
 			}
 
-			box->setUsingObject(_this.get());
+			box->setUsingObject(_this.getReferenceUnsafeStaticCast());
 			player->getPlayerObject()->addSuiBox(box);
 			player->sendMessage(box->generateMessage());
 		}else{

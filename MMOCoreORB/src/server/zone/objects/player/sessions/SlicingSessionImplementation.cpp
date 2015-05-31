@@ -106,8 +106,8 @@ void SlicingSessionImplementation::initalizeSlicingMenu(CreatureObject* pl, Tang
 
 	player->getPlayerObject()->addSuiBox(slicingSuiBox);
 
-	player->addActiveSession(SessionFacadeType::SLICING, _this.get());
-	tangibleObject->addActiveSession(SessionFacadeType::SLICING, _this.get());
+	player->addActiveSession(SessionFacadeType::SLICING, _this.getReferenceUnsafeStaticCast());
+	tangibleObject->addActiveSession(SessionFacadeType::SLICING, _this.getReferenceUnsafeStaticCast());
 
 }
 

@@ -50,7 +50,7 @@ bool RingAreaShapeImplementation::intersectsWith(AreaShape* areaShape) {
 
 	if (areaShape->isRectangularAreaShape()) {
 		ManagedReference<RectangularAreaShape*> rectangle = cast<RectangularAreaShape*>(areaShape);
-		return rectangle->intersectsWith(_this.get());
+		return rectangle->intersectsWith(_this.getReferenceUnsafeStaticCast());
 	} else if (areaShape->isCircularAreaShape()) {
 		ManagedReference<CircularAreaShape*> circle = cast<CircularAreaShape*>(areaShape);
 		return intersectsWithCircle(circle);

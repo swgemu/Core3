@@ -59,10 +59,10 @@ bool CircularAreaShapeImplementation::intersectsWith(AreaShape* areaShape) {
 		return intersectsWithCircle(circle);
 	} else if (areaShape->isRectangularAreaShape()) {
 		ManagedReference<RectangularAreaShape*> rectangle = cast<RectangularAreaShape*>(areaShape);
-		return rectangle->intersectsWith(_this.get());
+		return rectangle->intersectsWith(_this.getReferenceUnsafeStaticCast());
 	} else if (areaShape->isRingAreaShape()) {
 		ManagedReference<RingAreaShape*> ring = cast<RingAreaShape*>(areaShape);
-		return ring->intersectsWith(_this.get());
+		return ring->intersectsWith(_this.getReferenceUnsafeStaticCast());
 	} else {
 		return false;
 	}

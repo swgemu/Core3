@@ -18,10 +18,10 @@ void IntangibleObjectImplementation::initializeTransientMembers() {
 void IntangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending intangible object baselines");
 
-	BaseMessage* itno3 = new IntangibleObjectMessage3(_this.get());
+	BaseMessage* itno3 = new IntangibleObjectMessage3(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(itno3);
 
-	BaseMessage* itno6 = new IntangibleObjectMessage6(_this.get());
+	BaseMessage* itno6 = new IntangibleObjectMessage6(_this.getReferenceUnsafeStaticCast());
 	player->sendMessage(itno6);
 }
 
@@ -43,7 +43,7 @@ void IntangibleObjectImplementation::updateStatus(int newStatus, bool notifyClie
 	if (player == NULL)
 		return;
 
-	IntangibleObjectDeltaMessage3* delta = new IntangibleObjectDeltaMessage3(_this.get());
+	IntangibleObjectDeltaMessage3* delta = new IntangibleObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
 	delta->updateStatus(newStatus);
 	delta->close();
 	player->sendMessage(delta);
@@ -55,7 +55,7 @@ void IntangibleObjectImplementation::setCustomObjectName(const UnicodeString& na
 	if (!notifyClient)
 		return;
 
-	IntangibleObjectDeltaMessage3* ditno3 = new IntangibleObjectDeltaMessage3(_this.get());
+	IntangibleObjectDeltaMessage3* ditno3 = new IntangibleObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast());
 	ditno3->updateName(name);
 	ditno3->close();
 

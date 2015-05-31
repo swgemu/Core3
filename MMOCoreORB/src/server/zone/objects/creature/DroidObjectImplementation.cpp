@@ -70,7 +70,7 @@ void DroidObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 	PetControlDevice* pcd = getControlDevice().get().castTo<PetControlDevice*>();
 	for( int i=0; i<modules.size(); i++){
 		BaseDroidModuleComponent* module = modules.get(i);
-		module->fillObjectMenuResponse( _this.get(), menuResponse, player );
+		module->fillObjectMenuResponse( _this.getReferenceUnsafeStaticCast(), menuResponse, player );
 	}
 
 }
