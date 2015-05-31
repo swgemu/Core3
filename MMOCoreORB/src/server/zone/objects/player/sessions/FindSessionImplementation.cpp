@@ -58,7 +58,7 @@ void FindSessionImplementation::initalizeFindMenu() {
 
 	player->getPlayerObject()->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
-	player->addActiveSession(SessionFacadeType::FIND, _this.get());
+	player->addActiveSession(SessionFacadeType::FIND, _this.getReferenceUnsafeStaticCast());
 }
 
 void FindSessionImplementation::addWaypoint(float x, float y, const String& name) {

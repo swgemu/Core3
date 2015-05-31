@@ -10,17 +10,17 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 
 int PersistentMessageImplementation::getMailID() {
-	return Long::hashCode(_this.get()->_getObjectID());
+	return Long::hashCode(_this.getReferenceUnsafeStaticCast()->_getObjectID());
 }
 
 uint64 PersistentMessageImplementation::getObjectID() {
-	return _this.get()->_getObjectID();
+	return _this.getReferenceUnsafeStaticCast()->_getObjectID();
 }
 
 void PersistentMessageImplementation::sendTo(CreatureObject* player, bool sendBody) {
-	Locker _lock(_this.get());
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
 
-	ChatPersistentMessageToClient* mail = new ChatPersistentMessageToClient(_this.get(), sendBody);
+	ChatPersistentMessageToClient* mail = new ChatPersistentMessageToClient(_this.getReferenceUnsafeStaticCast(), sendBody);
 	player->sendMessage(mail);
 }
 

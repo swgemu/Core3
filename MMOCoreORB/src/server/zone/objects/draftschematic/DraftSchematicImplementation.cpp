@@ -107,7 +107,7 @@ Reference<SceneObject*> DraftSchematicImplementation::createManufactureSchematic
 
 	manuSchematic->createChildObjects();
 
-	manuSchematic->setDraftSchematic(_this.get());
+	manuSchematic->setDraftSchematic(_this.getReferenceUnsafeStaticCast());
 
 	return Reference<SceneObject*>(manuSchematic.get());
 }

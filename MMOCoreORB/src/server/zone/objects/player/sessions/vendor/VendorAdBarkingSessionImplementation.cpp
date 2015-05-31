@@ -21,7 +21,7 @@ int VendorAdBarkingSessionImplementation::initializeSession() {
 
 	advertisingMod = player->getSkillMod("advertising");
 
-	owner->addActiveSession(SessionFacadeType::VENDORADBARKING, _this.get());
+	owner->addActiveSession(SessionFacadeType::VENDORADBARKING, _this.getReferenceUnsafeStaticCast());
 
 	sendPhraseOptions();
 

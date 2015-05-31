@@ -37,7 +37,7 @@ int AuctionsMapImplementation::addItem(CreatureObject* player, SceneObject* vend
 }
 
 int AuctionsMapImplementation::addVendorItem(CreatureObject* player, const String& planet, const String& region, SceneObject* vendor, AuctionItem* item) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if(allItems.contains(item->getAuctionedItemObjectID()))
 		return ItemSoldMessage::ALREADYFORSALE;
@@ -75,7 +75,7 @@ int AuctionsMapImplementation::addVendorItem(CreatureObject* player, const Strin
 }
 
 int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const String& planet, const String& region, SceneObject* vendor, AuctionItem* item) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if(allItems.contains(item->getAuctionedItemObjectID()))
 		return ItemSoldMessage::ALREADYFORSALE;
@@ -100,7 +100,7 @@ int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const Strin
 
 void AuctionsMapImplementation::deleteItem(SceneObject* vendor, AuctionItem* item) {
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if(vendor != NULL) {
 		if(vendor->isBazaarTerminal())
@@ -114,7 +114,7 @@ void AuctionsMapImplementation::deleteItem(SceneObject* vendor, AuctionItem* ite
 }
 
 void AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem* item) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 		
 	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.get(vendor->getObjectID());
 
@@ -133,7 +133,7 @@ void AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionIte
 }
 
 void AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionItem* item) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 		
 	Reference<TerminalItemList*> bazaarItems = bazaarItemsForSale.get(vendor->getObjectID());
 
@@ -151,13 +151,13 @@ void AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionIt
 }
 
 TerminalListVector AuctionsMapImplementation::getVendorTerminalData(const String& planet, const String& region, SceneObject* vendor) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	
 	return vendorItemsForSale.getTerminalData(planet, region, vendor);
 }
 
 TerminalListVector AuctionsMapImplementation::getBazaarTerminalData(const String& planet, const String& region, SceneObject* vendor) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	
 	return bazaarItemsForSale.getTerminalData(planet, region, vendor);
 }
@@ -180,7 +180,7 @@ int AuctionsMapImplementation::getPlayerItemCount(CreatureObject* player) {
 }
 
 int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor, bool forSaleOnly) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	
 	if(vendor == NULL) {
 		logger.error("null vendor in AuctionsMapImplementation::getVendorItemCount");
@@ -220,7 +220,7 @@ void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
 		return;
 	}
 
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.get(vendor->getObjectID());
 
@@ -236,7 +236,7 @@ void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
 }
 
 void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	
 	if (vendor == NULL) {
 		logger.error("NULL vendor while updating UID  Vendor Is Bazaar: " + String::valueOf(vendor->isBazaarTerminal()));
@@ -264,7 +264,7 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 }
 
 void AuctionsMapImplementation::updateVendorSearch(SceneObject* vendor, bool enabled) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	
 	if (vendor == NULL)
 		return;

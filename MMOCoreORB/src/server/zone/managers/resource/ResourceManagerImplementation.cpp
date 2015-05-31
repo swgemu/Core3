@@ -162,20 +162,20 @@ void ResourceManagerImplementation::stop() {
 }
 
 void ResourceManagerImplementation::startResourceSpawner() {
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	resourceSpawner->start();
 
-	Reference<ResourceShiftTask*> resourceShift = new ResourceShiftTask(_this.get().get());
+	Reference<ResourceShiftTask*> resourceShift = new ResourceShiftTask(_this.getReferenceUnsafeStaticCast());
 	resourceShift->schedule(shiftInterval);
 }
 
 void ResourceManagerImplementation::shiftResources() {
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	resourceSpawner->shiftResources();
 
-	Reference<ResourceShiftTask*> resourceShift = new ResourceShiftTask(_this.get().get());
+	Reference<ResourceShiftTask*> resourceShift = new ResourceShiftTask(_this.getReferenceUnsafeStaticCast());
 	resourceShift->schedule(shiftInterval);
 }
 
@@ -184,7 +184,7 @@ int ResourceManagerImplementation::getResourceRecycleType(ResourceSpawn* resourc
 }
 
 void ResourceManagerImplementation::sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType) {
-	ReadLocker locker(_this.get());
+	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
 	resourceSpawner->sendResourceListForSurvey(playerCreature, toolType, surveyType);
 }
@@ -203,11 +203,11 @@ void ResourceManagerImplementation::sendSurvey(CreatureObject* playerCreature, c
 void ResourceManagerImplementation::sendSample(CreatureObject* playerCreature, const String& resname, const String& sampleAnimation) {
 	resourceSpawner->sendSample(playerCreature, resname, sampleAnimation);
 
-	playerCreature->registerObserver(ObserverEventType::POSTURECHANGED, _this.get());
+	playerCreature->registerObserver(ObserverEventType::POSTURECHANGED, _this.getReferenceUnsafeStaticCast());
 }
 
 void ResourceManagerImplementation::createResourceSpawn(CreatureObject* playerCreature, const String& restype) {
-	Locker _locker(_this.get());
+	Locker _locker(_this.getReferenceUnsafeStaticCast());
 
 	ResourceSpawn* resourceSpawn = resourceSpawner->manualCreateResourceSpawn(restype);
 
@@ -225,7 +225,7 @@ void ResourceManagerImplementation::createResourceSpawn(CreatureObject* playerCr
 ResourceSpawn* ResourceManagerImplementation::getResourceSpawn(const String& spawnName) {
 	ResourceSpawn* spawn = NULL;
 
-	ReadLocker locker(_this.get());
+	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
 	ResourceMap* resourceMap = resourceSpawner->getResourceMap();
 
@@ -241,7 +241,7 @@ ResourceSpawn* ResourceManagerImplementation::getCurrentSpawn(const String& rest
 void ResourceManagerImplementation::getResourceListByType(Vector<ManagedReference<ResourceSpawn*> >& list, int type, const String& zoneName) {
 	list.removeAll();
 
-	ReadLocker locker(_this.get());
+	ReadLocker locker(_this.getReferenceUnsafeStaticCast());
 
 	ManagedReference<ResourceSpawn*> resourceSpawn;
 
@@ -402,7 +402,7 @@ String ResourceManagerImplementation::addParentNodeToListBox(SuiListBox* sui, co
 }
 
 void ResourceManagerImplementation::listResourcesForPlanetOnScreen(CreatureObject* creature, const String& planet) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	resourceSpawner->listResourcesForPlanetOnScreen(creature, planet);
 }
@@ -412,7 +412,7 @@ String ResourceManagerImplementation::healthCheck() {
 }
 
 String ResourceManagerImplementation::dumpResources() {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	return resourceSpawner->dumpResources();
 }

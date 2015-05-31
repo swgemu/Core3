@@ -55,14 +55,14 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 
 		//Create Session
 		ManagedReference<SlicingSession*> session = new SlicingSession(player);
-		session->initalizeSlicingMenu(player, _this.get());
+		session->initalizeSlicingMenu(player, _this.getReferenceUnsafeStaticCast());
 
 		return 0;
 
 	} else if (selectedID == 72) {
 
 		if (city != NULL && city->isMayor(player->getObjectID())) {
-			CityRemoveAmenityTask* task = new CityRemoveAmenityTask(_this.get(), city);
+			CityRemoveAmenityTask* task = new CityRemoveAmenityTask(_this.getReferenceUnsafeStaticCast(), city);
 			task->execute();
 
 			player->sendSystemMessage("@city/city:mt_removed"); // The object has been removed from the city.
@@ -73,7 +73,7 @@ int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player
 	} else if (selectedID == 74 || selectedID == 75 || selectedID == 76 || selectedID == 77) {
 
 		CityManager* cityManager = getZoneServer()->getCityManager();
-		cityManager->alignAmenity(city, player, _this.get(), selectedID - 74);
+		cityManager->alignAmenity(city, player, _this.getReferenceUnsafeStaticCast(), selectedID - 74);
 
 		return 0;
 	}

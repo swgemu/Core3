@@ -318,9 +318,9 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 			return 1;
 		}
 
-		Locker clocker(_this.get());
+		Locker clocker(_this.getReferenceUnsafeStaticCast());
 
-		ManagedReference<SampleDeedTask*> task = new SampleDeedTask(_this.get(), player);
+		ManagedReference<SampleDeedTask*> task = new SampleDeedTask(_this.getReferenceUnsafeStaticCast(), player);
 		player->addPendingTask("sampledeed",task,0);
 		return 0;
 	}
@@ -449,7 +449,7 @@ int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 		}
 
 		ObjectManager* objectManager = server->getZoneServer()->getObjectManager();
-		pet->setPetDeed(_this.get());
+		pet->setPetDeed(_this.getReferenceUnsafeStaticCast());
 		pet->loadTemplateData( petTemplate );
 		pet->setCustomObjectName(StringIdManager::instance()->getStringId(*pet->getObjectName()), true);
 		pet->createChildObjects();

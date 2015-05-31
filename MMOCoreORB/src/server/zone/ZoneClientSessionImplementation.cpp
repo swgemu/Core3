@@ -47,7 +47,7 @@ void ZoneClientSessionImplementation::sendMessage(BasePacket* msg) {
 
 //this needs to be run in a different thread
 void ZoneClientSessionImplementation::disconnect(bool doLock) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	if (disconnecting) {
 		return;
@@ -60,9 +60,9 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	if (session->hasError() || !session->isClientDisconnected()) {
 		if (player != NULL) {
 
-			if (player->getClient() == _this.get().get()) {
+			if (player->getClient() == _this.getReferenceUnsafeStaticCast()) {
 				//((CreatureObject*)player.get())->disconnect(false, true);
-				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this.get(), DisconnectClientEvent::DISCONNECT);
+				Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this.getReferenceUnsafeStaticCast(), DisconnectClientEvent::DISCONNECT);
 				Core::getTaskManager()->executeTask(task);
 			}
 		}
@@ -71,18 +71,18 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	} else if (player != NULL) {
 		Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-		if (ghost->isLoggingOut() && player->getClient() == _this.get().get()) {
+		if (ghost->isLoggingOut() && player->getClient() == _this.getReferenceUnsafeStaticCast()) {
 			//((CreatureObject*)player.get())->logout(true);
-			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this.get(), DisconnectClientEvent::LOGOUT);
+			Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this.getReferenceUnsafeStaticCast(), DisconnectClientEvent::LOGOUT);
 			Core::getTaskManager()->executeTask(task);
 		}
 		else {
 			try {
 				//player->wlock();
 
-				if (player->getClient() == _this.get()) {
+				if (player->getClient() == _this.getReferenceUnsafeStaticCast()) {
 					//((CreatureObject*)player.get())->setLinkDead();
-					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this.get(), DisconnectClientEvent::SETLINKDEAD);
+					Reference<DisconnectClientEvent*> task = new DisconnectClientEvent(cast<CreatureObject*>(player.get()), _this.getReferenceUnsafeStaticCast(), DisconnectClientEvent::SETLINKDEAD);
 					Core::getTaskManager()->executeTask(task);
 				}
 
@@ -96,8 +96,8 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 	}
 	
 
-	/*info("references left " + String::valueOf(_this.get()->getReferenceCount()), true);
-	_this.get()->printReferenceHolders();*/
+	/*info("references left " + String::valueOf(_this.getReferenceUnsafeStaticCast()->getReferenceCount()), true);
+	_this.getReferenceUnsafeStaticCast()->printReferenceHolders();*/
 }
 
 void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
@@ -111,7 +111,7 @@ void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
 			if (zoneServer != NULL) {
 				zoneServer->decreaseOnlinePlayers();
 
-				zoneServer->getPlayerManager()->decreaseOnlineCharCount(_this.get());
+				zoneServer->getPlayerManager()->decreaseOnlineCharCount(_this.getReferenceUnsafeStaticCast());
 
 			}
 		} else if (playerCreature != NULL) {
@@ -129,7 +129,7 @@ void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
 
 
 void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLock) {
-	Locker locker(_this.get());
+	Locker locker(_this.getReferenceUnsafeStaticCast());
 	Reference<BaseClientProxy* > session = this->session;
 
 	if (session == NULL)
@@ -143,7 +143,7 @@ void ZoneClientSessionImplementation::closeConnection(bool lockPlayer, bool doLo
 	if (play != NULL) {
 		server = play->getZoneServer();
 
-		Reference<ClearClientEvent*> task = new ClearClientEvent(play, _this.get());
+		Reference<ClearClientEvent*> task = new ClearClientEvent(play, _this.getReferenceUnsafeStaticCast());
 		Core::getTaskManager()->executeTask(task);
 
 		setPlayer(NULL); // we must call setPlayer to increase/decrease online player counter

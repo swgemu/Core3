@@ -91,7 +91,7 @@ int CreateVendorSessionImplementation::initializeSession() {
 	player->getPlayerObject()->addSuiBox(suiSelectVendor);
 	player->sendMessage(suiSelectVendor->generateMessage());
 
-	player->addActiveSession(SessionFacadeType::CREATEVENDOR, _this.get());
+	player->addActiveSession(SessionFacadeType::CREATEVENDOR, _this.getReferenceUnsafeStaticCast());
 
 	return 0;
 }

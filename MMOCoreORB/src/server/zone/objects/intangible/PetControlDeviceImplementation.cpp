@@ -198,20 +198,20 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	}
 	if (!isValidPet() && petType == PetManager::CREATUREPET) {
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player,SuiWindowType::PET_FIX_DIALOG);
-		box->setCallback(new PetFixSuiCallback(player->getZoneServer(), _this.get()));
+		box->setCallback(new PetFixSuiCallback(player->getZoneServer(), _this.getReferenceUnsafeStaticCast()));
 		box->setPromptText("@bio_engineer:pet_sui_text");
 		box->setPromptTitle("@bio_engineer:pet_sui_title");
 		box->setOkButton(true,"@bio_engineer:pet_sui_fix_stats");
 		box->setCancelButton(true,"@bio_engineer:pet_sui_abort");
 		box->setOtherButton(true,"@bio_engineer:pet_sui_fix_level");
-		box->setUsingObject(_this.get());
+		box->setUsingObject(_this.getReferenceUnsafeStaticCast());
 		player->getPlayerObject()->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
 		return;
 	}
 	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
 
-		Reference<CallPetTask*> callPet = new CallPetTask(_this.get(), player, "call_pet");
+		Reference<CallPetTask*> callPet = new CallPetTask(_this.getReferenceUnsafeStaticCast(), player, "call_pet");
 
 		StringIdChatParameter message("pet/pet_menu", "call_pet_delay"); // Calling pet in %DI seconds. Combat will terminate pet call.
 		message.setDI(15);
@@ -220,7 +220,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		player->addPendingTask("call_pet", callPet, 15 * 1000);
 
 		if (petControlObserver == NULL) {
-			petControlObserver = new PetControlObserver(_this.get());
+			petControlObserver = new PetControlObserver(_this.getReferenceUnsafeStaticCast());
 			petControlObserver->deploy();
 		}
 
@@ -313,7 +313,7 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (controlledObject->isCreatureObject()) {
 		creature = cast<CreatureObject*>(controlledObject.get());
 		creature->setCreatureLink(player);
-		creature->setControlDevice(_this.get());
+		creature->setControlDevice(_this.getReferenceUnsafeStaticCast());
 		creature->setFaction(player->getFaction());
 		creature->setObjectMenuComponent("PetMenuComponent");
 
@@ -500,8 +500,8 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 
 	float newHeight = creatureTemplate->getScale() * (0.46 + ((float)newStage * 0.06));
 
-	short preEligibility = petManager->checkMountEligibility(_this.get());
-	short postEligibility = petManager->checkMountEligibility(_this.get(), newHeight);
+	short preEligibility = petManager->checkMountEligibility(_this.getReferenceUnsafeStaticCast());
+	short postEligibility = petManager->checkMountEligibility(_this.getReferenceUnsafeStaticCast(), newHeight);
 
 	assert(pet->isLockedByCurrentThread());
 
@@ -520,11 +520,11 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::MOUNT_GROWTH_ARREST);
 		box->setPromptTitle("@pet/pet_menu:mount_growth_title"); // Pet Growth Arrest
 		box->setPromptText("@pet/pet_menu:mount_growth_prompt"); // Your pet could be trained as a mount, but is about to grow too large to serve as one. If you ever plan on training this pet as a mount you must arrest it's growth now. Stop pet's growth?
-		box->setUsingObject(_this.get());
+		box->setUsingObject(_this.getReferenceUnsafeStaticCast());
 		box->setCancelButton(true, "@cancel");
 		box->setOkButton(true, "@yes");
 		box->setOtherButton(true, "@no");
-		box->setCallback(new MountGrowthArrestSuiCallback(player->getZoneServer(), _this.get()));
+		box->setCallback(new MountGrowthArrestSuiCallback(player->getZoneServer(), _this.getReferenceUnsafeStaticCast()));
 
 		ghost->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
@@ -567,7 +567,7 @@ void PetControlDeviceImplementation::arrestGrowth() {
 	for (int i = (growthStage + 1); i < 11; i++) {
 		float newHeight = creatureTemplate->getScale() * (0.46 + ((float)i * 0.06));
 
-		short mountEligibility = petManager->checkMountEligibility(_this.get(), newHeight);
+		short mountEligibility = petManager->checkMountEligibility(_this.getReferenceUnsafeStaticCast(), newHeight);
 
 		if (mountEligibility == PetManager::TOOLARGE)
 			break;
@@ -1090,7 +1090,7 @@ void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {
 	if (petManager == NULL)
 		return;
 
-	if (petManager->checkMountEligibility(_this.get()) != PetManager::CANBEMOUNTTRAINED)
+	if (petManager->checkMountEligibility(_this.getReferenceUnsafeStaticCast()) != PetManager::CANBEMOUNTTRAINED)
 		return;
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();

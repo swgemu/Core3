@@ -60,6 +60,7 @@ import system.thread.ReadWriteLock;
 import system.thread.Mutex;
 include server.zone.objects.scene.variables.ContainerObjectsMap;
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.creature.AiAgent;
 
 @mock
 class SceneObject extends QuadTreeEntry implements Logger {
@@ -1368,6 +1369,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public abstract boolean isAiAgent() {
 		return false;
+	}
+	
+	@dirty
+	@local
+	public abstract AiAgent asAiAgent() {
+		return null;
 	}
 
 	@dirty
