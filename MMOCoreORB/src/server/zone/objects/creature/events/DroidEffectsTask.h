@@ -68,7 +68,7 @@ public:
 		droid->playEffect( module->getCurrentAnimation() );
 
 		// Reschedule task if next effect is valid
-		uint64 delay = module->getCurrentDelay() * 1000;
+		uint64 delay = (uint64)module->getCurrentDelay() * 1000;
 		if( delay > 0 && module->nextEffect() ){
 			reschedule( delay );
 		}

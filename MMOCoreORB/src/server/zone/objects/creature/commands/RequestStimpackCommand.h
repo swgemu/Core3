@@ -50,7 +50,7 @@ public:
 						// find it in 20 meter range
 						String search = droidName.subString(1,droidName.length()-1);
 						GroupObject* group = creature->getGroup();
-						DroidObject* target = NULL;
+						DroidObject* targetDroid = NULL;
 						if(group != NULL) {
 							// find it in the group
 							Locker locker(group);
@@ -63,10 +63,10 @@ public:
 									for(int j=0;j<x;j++) {
 										AiAgent* agent = memberPlayer->getActivePet(j);
 										if(agent->isDroidObject() && agent->getDisplayedName() == search) {
-											target = cast<DroidObject*>(agent);
-											if(target != NULL ) {
-												Reference<Task*> task = new DroidStimpackTask( target,creature,target->getDisplayedName());
-												target->addPendingTask("droid_request_stimpack", task, 1);
+											targetDroid = cast<DroidObject*>(agent);
+											if(targetDroid != NULL ) {
+												Reference<Task*> task = new DroidStimpackTask( targetDroid,creature,targetDroid->getDisplayedName());
+												targetDroid->addPendingTask("droid_request_stimpack", task, 1);
 												return SUCCESS;
 											}
 										}
@@ -76,7 +76,7 @@ public:
 									if(memberDroid->getDisplayedName() == search) {
 										locker.release();
 										Reference<Task*> task = new DroidStimpackTask( memberDroid,creature,memberDroid->getDisplayedName());
-										target->addPendingTask("droid_request_stimpack", task, 1);
+										memberDroid->addPendingTask("droid_request_stimpack", task, 1);
 										return SUCCESS;
 									}
 								}
@@ -88,10 +88,10 @@ public:
 							for(int i=0;i<activeDroids;i++) {
 								AiAgent* agent = creature->getPlayerObject()->getActivePet(i);
 								if(agent->isDroidObject() && agent->getDisplayedName() == search) {
-									target = cast<DroidObject*>(agent);
-									if(target != NULL ) {
-										Reference<Task*> task = new DroidStimpackTask( target,creature,target->getDisplayedName());
-										target->addPendingTask("droid_request_stimpack", task, 1);
+									targetDroid = cast<DroidObject*>(agent);
+									if(targetDroid != NULL ) {
+										Reference<Task*> task = new DroidStimpackTask( targetDroid,creature,targetDroid->getDisplayedName());
+										targetDroid->addPendingTask("droid_request_stimpack", task, 1);
 										return SUCCESS;
 									}
 								}

@@ -114,7 +114,7 @@ void ZoneClientSessionImplementation::setPlayer(SceneObject* playerCreature) {
 				zoneServer->getPlayerManager()->decreaseOnlineCharCount(_this.get());
 
 			}
-		} else if (playerCreature != player) {
+		} else if (playerCreature != NULL) {
 			// TODO: find a proper way to acqure zone server
 			ZoneServer* zoneServer = playerCreature->getZoneServer();
 

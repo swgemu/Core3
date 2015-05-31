@@ -196,7 +196,7 @@ void DroidTrapModuleDataComponent::handlePetCommand(String cmd, CreatureObject* 
 
 void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, TangibleObject* input) {
 	// we need to send the invlid stimpack message just wher eis a good question
-	if (player != NULL && (!player->hasSkill("outdoors_scout_novice") || !compatibleTrap(player,input->getServerObjectCRC())) ) {
+	if (!player->hasSkill("outdoors_scout_novice") || !compatibleTrap(player,input->getServerObjectCRC()) ) {
 		player->sendSystemMessage("@pet/droid_modules:insufficient_skill");
 		return;
 	}

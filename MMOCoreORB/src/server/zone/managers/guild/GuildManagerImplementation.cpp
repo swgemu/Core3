@@ -729,9 +729,13 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 			gmiOldLeader->setPermissions(GuildObject::PERMISSION_NONE);
 		}
 	}
+
 	glock.release();
 
-	oldLeader->sendSystemMessage("@guild:ml_success");  // PA leadership transferred.  YOu are now a normal member of the PA.
+	if (oldLeader != NULL) {
+		oldLeader->sendSystemMessage("@guild:ml_success");  // PA leadership transferred.  YOu are now a normal member of the PA.
+	}
+
 	newLeader->sendSystemMessage("@guild:ml_you_are_leader"); // You have been made leader of your PA
 
 	// Send emails to guild

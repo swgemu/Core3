@@ -9,6 +9,13 @@
 #include "../objects/GalaxyBanEntry.h"
 
 AccountImplementation::AccountImplementation() {
+	active = false;
+	accountID = 0;
+	stationID = 0;
+	adminLevel = 0;
+	created = 0;
+	banExpires = 0;
+	banAdmin = 0;
 }
 
 void AccountImplementation::updateFromDatabase() {

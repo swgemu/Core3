@@ -125,18 +125,23 @@ public:
 	}
 
 	String getTargetName(SceneObject* target){
-
 		String strName;
+
+		if (target == NULL) {
+			return strName;
+		}
+
 		CreatureObject* creature = NULL;
 
-		if(target != NULL && target->isPlayerCreature()){
+		if(target->isPlayerCreature()){
 			creature = cast<CreatureObject*>(target);
 			if(creature == NULL)
 				strName = target->getObjectNameStringIdName();
 			else
 				strName = creature->getFirstName();
-		} else
+		} else {
 			strName = target->getObjectNameStringIdName();
+		}
 
 		return strName;
 	}

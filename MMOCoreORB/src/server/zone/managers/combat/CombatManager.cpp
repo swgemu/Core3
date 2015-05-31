@@ -518,14 +518,12 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 	float smallMod = 7;
 	float bigMod = 7;
 
-	if (weapon != NULL) {
-		minRange = (float) weapon->getPointBlankRange();
-		idealRange = (float) weapon->getIdealRange();
-		maxRange = (float) weapon->getMaxRange();
+	minRange = (float) weapon->getPointBlankRange();
+	idealRange = (float) weapon->getIdealRange();
+	maxRange = (float) weapon->getMaxRange();
 
-		smallMod = (float) weapon->getPointBlankAccuracy();
-		bigMod = (float) weapon->getIdealAccuracy();
-	}
+	smallMod = (float) weapon->getPointBlankAccuracy();
+	bigMod = (float) weapon->getIdealAccuracy();
 
 	if (currentRange >= maxRange)
 		return (float) weapon->getMaxRangeAccuracy();
@@ -539,10 +537,8 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 
 	// check that assumption and correct if it's not true
 	if (currentRange > idealRange) {
-		if (weapon != NULL) {
-			smallMod = (float) weapon->getIdealAccuracy();
-			bigMod = (float) weapon->getMaxRangeAccuracy();
-		} // else retain mod values = 7
+		smallMod = (float) weapon->getIdealAccuracy();
+		bigMod = (float) weapon->getMaxRangeAccuracy();
 
 		smallRange = idealRange;
 		bigRange = maxRange;

@@ -10,7 +10,7 @@ void PlayerCreatureTemplate::parseVariableData(const String& varName, LuaObject*
 	if (varName == "defaultLanguage")
 		defaultLanguage = Lua::getIntParameter(state);
 	else if (varName == "startingSkills") {
-		startingItems->removeAll();
+		startingSkills->removeAll();
 
 		LuaObject skills(state);
 

@@ -2995,7 +2995,7 @@ float AiAgentImplementation::getEffectiveResist() {
 	if (!isSpecialProtection(WeaponObject::ENERGY) && getEnergy() > 0)
 		return getEnergy();
 	if (!isSpecialProtection(WeaponObject::HEAT) && getHeat() > 0)
-		return getLightSaber();
+		return getHeat();
 	if (!isSpecialProtection(WeaponObject::KINETIC) && getKinetic() > 0)
 		return getKinetic();
 	if (!isSpecialProtection(WeaponObject::LIGHTSABER) && getLightSaber() > 0)

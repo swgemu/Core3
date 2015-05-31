@@ -868,14 +868,18 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		CreatureTemplate* creoTemplate = CreatureTemplateManager::instance()->getTemplate(mission->getTargetOptionalTemplate());
 
 		int reward = 1000;
+		int creoLevel = 1;
 
 		if (creoTemplate != NULL) {
-			reward = creoTemplate->getLevel() * (200 + System::random(200));
-			if (level == 3) {
-				reward = creoTemplate->getLevel() * (300 + System::random(300));
-			} else if (level == 2) {
-				reward = creoTemplate->getLevel() * (250 + System::random(250));
-			}
+			creoLevel = creoTemplate->getLevel();
+		}
+
+		if (level == 1) {
+			reward = creoLevel * (200 + System::random(200));
+		} else if (level == 2) {
+			reward = creoLevel * (250 + System::random(250));
+		} else if (level == 3) {
+			reward = creoLevel * (300 + System::random(300));
 		}
 
 		mission->setRewardCredits(reward);
@@ -905,7 +909,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		}
 
 		mission->setMissionNumber(randTexts);
-		mission->setMissionDifficulty(3 * creoTemplate->getLevel() + 7);
+		mission->setMissionDifficulty(3 * creoLevel + 7);
 
 		UnicodeString possibleCreatorName = StringIdManager::instance()->getStringId(String::hashCode("@" + stfFile + diffString + ":" + "m" + String::valueOf(randTexts) + "o"));
 		String creatorName = "";

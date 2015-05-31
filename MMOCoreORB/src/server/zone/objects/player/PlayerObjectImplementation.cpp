@@ -307,7 +307,7 @@ void PlayerObjectImplementation::notifySceneReady() {
 
 	ZoneServer* zoneServer = getZoneServer();
 
-	if (zoneServer != NULL && zoneServer->isServerLoading())
+	if (zoneServer == NULL || zoneServer->isServerLoading())
 		return;
 
 	// Leave all planet chat rooms

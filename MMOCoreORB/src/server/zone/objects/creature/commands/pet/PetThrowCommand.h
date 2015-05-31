@@ -135,7 +135,7 @@ public:
 
 			int targetDefense = target->getSkillMod(trapData->getDefenseMod());
 			Time* cooldown = droid->getCooldownTime("throwtrap");
-			if((cooldown != NULL && !cooldown->isPast()) || 	droid->getPendingTask("throwtrap") != NULL) {
+			if(!cooldown->isPast() || droid->getPendingTask("throwtrap") != NULL) {
 				StringIdChatParameter msg;
 				msg.setStringId("@pet/droid_modules:cant_throw_yet");
 				Time now;

@@ -1288,7 +1288,7 @@ void BuildingObjectImplementation::createChildObjects(){
 
 			} else {
 
-				if( (obj->isTurret() || obj->isMinefield() || obj->isDetector()) && !gcwMan->shouldSpawnDefenses() ){
+				if( (obj->isTurret() || obj->isMinefield() || obj->isDetector()) && gcwMan != NULL && !gcwMan->shouldSpawnDefenses() ){
 
 					if(obj->isTurret())
 						gcwMan->addTurret(_this.get(),NULL);

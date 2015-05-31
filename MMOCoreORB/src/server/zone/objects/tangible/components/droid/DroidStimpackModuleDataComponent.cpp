@@ -356,11 +356,16 @@ StimPack* DroidStimpackModuleDataComponent::findStimPack() {
 
 
 void DroidStimpackModuleDataComponent::handleInsertStimpack(CreatureObject* player, StimPack* pack) {
-	// we need to send the invlid stimpack message just wher eis a good question
+	// we need to send the invalid stimpack message just where is a good question
 	countUses();
-	if (player != NULL && !player->hasSkill("science_medic_ability_04")) {
+
+	if (player == NULL)
+		return;
+
+	if (!player->hasSkill("science_medic_ability_04")) {
 		return;
 	}
+
 	ManagedReference<DroidObject*> droid = getDroidObject();
 	if (droid == NULL) {
 		return;

@@ -243,14 +243,16 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 		return;
 	}
 
-	if (vendor->getZone() == NULL) {
+	Zone* zone = vendor->getZone();
+
+	if (zone == NULL) {
 		logger.error("NULL zone while updating UID  Vendor Is Bazaar: " + String::valueOf(vendor->isBazaarTerminal()));
 		return;
 	}
 
-	String planet = vendor->getZone()->getZoneName();
+	String planet = zone->getZoneName();
 
-	String region = "@planet_n:" + vendor->getZone()->getZoneName();
+	String region = "@planet_n:" + planet;
 	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
 	if(cityRegion != NULL)
 		region = cityRegion->getRegionName();

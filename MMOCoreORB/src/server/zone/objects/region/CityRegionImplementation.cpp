@@ -619,7 +619,7 @@ bool CityRegionImplementation::isVotingLocked() {
 	rightnow.updateToCurrentTime();
 
 	int lockedCycles = CityManagerImplementation::cityVotingCycles - CityManagerImplementation::cityVotingCyclesUntilLocked;
-	int64 minimumDifference = CityManagerImplementation::cityUpdateInterval * lockedCycles * 60000;
+	int64 minimumDifference = (int64)CityManagerImplementation::cityUpdateInterval * lockedCycles * 60000;
 
 	int64 dif = rightnow.miliDifference(nextInauguration);
 

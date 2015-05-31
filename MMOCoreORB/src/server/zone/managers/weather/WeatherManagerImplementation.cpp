@@ -262,7 +262,6 @@ int WeatherManagerImplementation::calculateSandstormProtection(CreatureObject* p
 
 		ManagedReference<SceneObject*> pants2 = player->getSlottedObject("pants2");
 		if (pants2 != NULL) {
-			crc = pants2->getServerObjectCRC();
 			if (pants2->isArmorObject())
 				protection += 1;
 		}

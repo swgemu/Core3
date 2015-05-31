@@ -194,11 +194,11 @@ void ServerCore::initialize() {
 
 		info("initialized", true);
 		
-		if(arguments.contains("playercleanup")){
+		if(arguments.contains("playercleanup") && zoneServer != NULL){
 			zoneServer->getPlayerManager()->cleanupCharacters();
 		}
 
-		if(arguments.contains("playercleanupstats")){
+		if(arguments.contains("playercleanupstats") && zoneServer != NULL){
 			zoneServer->getPlayerManager()->getCleanupCharacterCount();
 		}
 		

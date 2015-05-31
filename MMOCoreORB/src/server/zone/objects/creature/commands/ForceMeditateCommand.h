@@ -34,32 +34,29 @@ public:
 		if (creature->isInCombat()) {
 			creature->sendSystemMessage("@jedi_spam:not_while_in_combat");
 			return GENERALERROR;
-		}		
-
-		// Meditate
-		CreatureObject* player = creature;
+		}
 
 		if (creature->isMeditating()) {
-			player->sendSystemMessage("@jedi_spam:already_in_meditative_state");
+			creature->sendSystemMessage("@jedi_spam:already_in_meditative_state");
 			return GENERALERROR;
 		}
 
 		// Play Client Effect once.
 
-		player->playEffect("clienteffect/pl_force_meditate_self.cef", "");
+		creature->playEffect("clienteffect/pl_force_meditate_self.cef", "");
 
 		// Force Meditate Task
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		
 		creature->sendSystemMessage("@teraskasi:med_begin");
-		Reference<ForceMeditateTask*> fmeditateTask = new ForceMeditateTask(player);
-		fmeditateTask->setMoodString(player->getMoodString());
-		player->addPendingTask("forcemeditate", fmeditateTask, 3500);
+		Reference<ForceMeditateTask*> fmeditateTask = new ForceMeditateTask(creature);
+		fmeditateTask->setMoodString(creature->getMoodString());
+		creature->addPendingTask("forcemeditate", fmeditateTask, 3500);
 
-		player->setMeditateState();
+		creature->setMeditateState();
 
 		PlayerManager* playermgr = server->getZoneServer()->getPlayerManager();	
-		player->registerObserver(ObserverEventType::POSTURECHANGED, playermgr);
+		creature->registerObserver(ObserverEventType::POSTURECHANGED, playermgr);
 
 		return SUCCESS;
 
