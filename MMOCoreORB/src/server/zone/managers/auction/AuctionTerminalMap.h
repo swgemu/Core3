@@ -120,7 +120,7 @@ public:
 			if(item == NULL)
 				continue;
 
-			//Locker locker(item);
+			Locker locker(item);
 			item->setVendorUID(newVuid);
 		}
 
