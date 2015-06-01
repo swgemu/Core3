@@ -11,7 +11,7 @@ VillageJediManagerHolocron = ScreenPlay:new {}
 -- @return true if the player can use the holocron.
 function VillageJediManagerHolocron.canUseHolocron(pCreatureObject)
 	return ObjectManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
-		return playerObject:isJedi() and not creatureObject:checkCooldownRecovery(USEDHOLOCRON)
+		return playerObject:isJedi() and creatureObject:checkCooldownRecovery(USEDHOLOCRON)
 	end)
 end
 
