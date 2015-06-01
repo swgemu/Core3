@@ -1,6 +1,7 @@
 local ObjectManager = require("managers.object.object_manager")
 local OldManEncounter = require("managers.jedi.village.old_man_encounter")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
+local OldManEncounterOutro = require("managers.jedi.village.old_man_encounter_outro")
 
 Glowing = Object:new {}
 
@@ -184,18 +185,42 @@ function Glowing:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, bad
 	return 0
 end
 
--- Register observer on the player for observing badge awards.
+-- Event handler for the screenplaystatechanged event.
+function Glowing:stateChangedEventHandler(pCreatureObject, pNull, pZero)
+	if (pCreatureObject == nil) then
+		return 0
+	elseif (pCreatureObject ~= nil and VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE)) then
+		OldManEncounterOutro:start(pCreatureObject)
+		return 0	
+	end
+
+	return 0
+end
+
+-- Register observer on the player for observing.
 -- @param pCreatureObject pointer to the creature object of the player to register observers on.
-function Glowing:registerObservers(pCreatureObject)
+-- @param type the type of observer used.
+function Glowing:registerObservers(pCreatureObject, type)
+	if (pCreatureObject == nil) then
+		return
+	end
+	
+	if (type == 1) then
 	createObserver(BADGEAWARDED, "Glowing", "badgeAwardedEventHandler", pCreatureObject)
+	elseif (type == 2) then
+	createObserver(SCREENPLAYSTATECHANGED, "Glowing", "stateChangedEventHandler", pCreatureObject)
+	end
 end
 
 -- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
 -- @param pCreatureObject pointer to the creature object of the player who logged in.
 function Glowing:onPlayerLoggedIn(pCreatureObject)
 	if not self:isGlowing(pCreatureObject) then
-		self:registerObservers(pCreatureObject)
+		self:registerObservers(pCreatureObject, 1)
+	elseif not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE) then
+		self:registerObservers(pCreatureObject, 2)
 	end
+	
 end
 
 -- Get the jedi progression status for the player
