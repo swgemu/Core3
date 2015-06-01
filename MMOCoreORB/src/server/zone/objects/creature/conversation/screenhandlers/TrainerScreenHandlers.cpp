@@ -87,7 +87,7 @@ ConversationScreen* TrainerTrainableSkillsScreenHandler::handleScreen(CreatureOb
 
 	PlayerObject* ghost = conversingPlayer->getPlayerObject();
 
-	if (ghost != NULL) {
+	if (ghost != NULL && conversingNPC->getObjectNameStringIdName().contains("trainer_fs")) {
 		Vector<String>* fsBranches = ghost->getForceSensitiveElegibleBranches();
 		for (int i = 0; i < fsBranches->size(); i++) {
 			Skill* skill = SkillManager::instance()->getSkill(fsBranches->get(i));
@@ -335,6 +335,25 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 		StringIdChatParameter systemMessageSkillLearned("@skill_teacher:prose_skill_learned");
 		systemMessageSkillLearned.setTO("@skl_n:" + skill->getSkillName());
 		conversingPlayer->sendSystemMessage(systemMessageSkillLearned);
+
+		// Check to see if they trained 6 FS trees.
+		if (ghost != NULL && conversingNPC->getObjectNameStringIdName().contains("trainer_fs")) {
+			Vector<String>* fsBranches = ghost->getForceSensitiveElegibleBranches();
+			// Only continue if they have unlocked AND trained AT LEAST six (6) trees.
+			// Lets make sure they are all trained.
+			int trees = 0;
+			for (int i = 0; i < fsBranches->size(); i++) {
+				Skill* skill = SkillManager::instance()->getSkill(fsBranches->get(i));
+				if (conversingPlayer->hasSkill(skill->getSkillName())) {
+					trees += 1;
+				}
+			}
+
+			if (trees >= 6) {
+				// They finished the village. Variables match up with village jedi manager common lua script.
+				conversingPlayer->setScreenPlayState("VillageJediProgression", 8);
+			}
+		}
 
 		//Return correct conversation screen.
 		if (skill->getSkillName() == session->getMasterSkill()) {
