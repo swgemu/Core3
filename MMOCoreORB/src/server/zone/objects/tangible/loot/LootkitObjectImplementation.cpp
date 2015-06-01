@@ -118,6 +118,7 @@ void LootkitObjectImplementation::createItem() {
 
 		if (inventory->transferObject(rewardObject, -1, true)) {
 			rewardObject->sendTo(player, true);
+			Locker locker(_this.getReferenceUnsafeStaticCast());
 			destroyObjectFromWorld(true);
 
 			if (isPersistent())
