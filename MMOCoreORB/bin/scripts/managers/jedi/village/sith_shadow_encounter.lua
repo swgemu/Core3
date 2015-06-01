@@ -4,6 +4,7 @@ local ObjectManager = require("managers.object.object_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
 local Logger = require("utils.logger")
 local SithShadowIntroTheater = require("managers.jedi.village.sith_shadow_intro_theater")
+local OldManEncounter = require("managers.jedi.village.old_man_encounter")
 
 SITH_SHADOW_THREATEN_STRING = "@quest/force_sensitive/intro:military_threaten"
 SITH_SHADOW_MILITARY_TAKE_CRYSTAL = "@quest/force_sensitive/intro:military_take_crystal"
@@ -146,7 +147,7 @@ function SithShadowEncounter:isEncounterFinished(pCreatureObject)
 		return false
 	end
 
-	return not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
+	return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 end
 
 -- Handling of the activation of the looted datapad.
