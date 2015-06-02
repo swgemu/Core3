@@ -105,10 +105,10 @@ public:
 					int arrangementGroupToUse = -1;
 
 					for (int i = 0; i < arrangementSize && arrangementGroupToUse == -1; ++i) {
-						Vector<String> descriptors = objectToTransfer->getArrangementDescriptor(i);
+						const Vector<String>* descriptors = objectToTransfer->getArrangementDescriptor(i);
 
-						for (int j = 0; j < descriptors.size(); ++j) {
-							String descriptor = descriptors.get(j);
+						for (int j = 0; j < descriptors->size(); ++j) {
+							const String& descriptor = descriptors->get(j);
 
 							if (destinationObject->getSlottedObject(descriptor) == NULL && arrangementGroupToUse == -1) {
 								arrangementGroupToUse = i;
@@ -122,7 +122,7 @@ public:
 					if (arrangementGroupToUse != -1) {
 						transferType += arrangementGroupToUse;
 					} else {
-						String childArrangement = objectToTransfer->getArrangementDescriptor(0).get(0);
+						const String& childArrangement = objectToTransfer->getArrangementDescriptor(0)->get(0);
 
 						ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
 

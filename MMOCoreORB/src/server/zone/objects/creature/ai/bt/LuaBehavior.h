@@ -28,7 +28,7 @@ namespace bt {
 class LuaBehavior : public Object {
 public:
 
-	LuaBehavior(String name);
+	LuaBehavior(const String& name);
 	virtual ~LuaBehavior();
 
 	LuaBehavior(const LuaBehavior& b) : Object() {

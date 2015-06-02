@@ -103,7 +103,7 @@ public:
 				int arrangementSize = objectToTransfer->getArrangementDescriptorSize();
 
 				if (arrangementSize > 0) {
-					String childArrangement = objectToTransfer->getArrangementDescriptor(0).get(0);
+					const String& childArrangement = objectToTransfer->getArrangementDescriptor(0)->get(0);
 
 					ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
 

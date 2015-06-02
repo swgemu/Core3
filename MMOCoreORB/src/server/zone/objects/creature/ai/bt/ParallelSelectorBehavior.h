@@ -19,7 +19,7 @@ namespace bt {
 
 class ParallelSelectorBehavior : public ParallelBehavior {
 public:
-	ParallelSelectorBehavior(AiAgent* _agent, String className);
+	ParallelSelectorBehavior(AiAgent* _agent, const String& className);
 	void finish();
 };
 

@@ -152,17 +152,16 @@ public:
 
 				ManagedReference<SceneObject*> object = zserv->getObject(oid);
 
-				if (object == NULL)
-				{
+				if (object == NULL) {
 					creature->sendSystemMessage("Error: Trying to delete invalid oid.");
 					return GENERALERROR;
 				}
 
 				for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
-					Vector<String> descriptors = object->getArrangementDescriptor(i);
+					const Vector<String>* descriptors = object->getArrangementDescriptor(i);
 
-					for (int j = 0; j < descriptors.size(); ++j) {
-						String descriptor = descriptors.get(j);
+					for (int j = 0; j < descriptors->size(); ++j) {
+						const String& descriptor = descriptors->get(j);
 
 						if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
 							|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")

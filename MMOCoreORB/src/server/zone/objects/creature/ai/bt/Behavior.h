@@ -42,7 +42,7 @@ public:
 	 * Creates a new instance of the Behavior class
 	 * @param _agent Reference to the AI agent (as a blackboard)
 	 */
-	Behavior(AiAgent* _agent, String className);
+	Behavior(AiAgent* _agent, const String& className);
 
 	Behavior(const Behavior& b) {
 		agent = b.agent;

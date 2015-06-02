@@ -7,7 +7,7 @@
 
 #include "ParallelSelectorBehavior.h"
 
-ParallelSelectorBehavior::ParallelSelectorBehavior(AiAgent* _agent, String className) : ParallelBehavior(_agent, className) {
+ParallelSelectorBehavior::ParallelSelectorBehavior(AiAgent* _agent, const String& className) : ParallelBehavior(_agent, className) {
 }
 
 void ParallelSelectorBehavior::finish() {
