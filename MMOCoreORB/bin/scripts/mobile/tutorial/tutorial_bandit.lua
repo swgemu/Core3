@@ -1,7 +1,7 @@
-bandit_tutorial_1 = Creature:new {
+tutorial_bandit = Creature:new {
 	objectName = "@mob/creature_names:bandit",
-	socialGroup = "imperial",
-	faction = "",--dont change this
+	socialGroup = "",
+	faction = "",
 	level = 1,
 	chanceHit = 0.390000,
 	damageMin = 5,
@@ -20,17 +20,23 @@ bandit_tutorial_1 = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = ATTACKABLE + ENEMY,
+	optionsBitmask = 128,
 	creatureBitmask = NONE,
 	diet = NONE,
 
 	templates = {"object/mobile/dressed_cobral_bandit_bith_male_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "tutorial_pirate", chance = 10000000}
+			},
+			lootChance = 10000000
+		}
+	},
 	weapons = {"tutorial_bandit"},--dont change this
 	attacks = {{"defaultattack", ""}},
 	conversationTemplate = "",
-	reactionStf = "@npc_reaction/slang",
-	optionsBitmask = 0
 }
 
-CreatureTemplates:addCreatureTemplate(bandit_tutorial_1, "bandit_tutorial_1")
+CreatureTemplates:addCreatureTemplate(tutorial_bandit, "tutorial_bandit")

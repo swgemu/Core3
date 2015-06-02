@@ -1,4 +1,4 @@
-tutorial_commoner = Creature:new {
+tutorial_commoner_noconverse = Creature:new {
 	objectName = "@mob/creature_names:commoner",
 	randomNameType = NAME_GENERIC_TAG,
 	socialGroup = "townsperson",
@@ -23,7 +23,7 @@ tutorial_commoner = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
-	optionsBitmask = 264,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {
@@ -39,7 +39,7 @@ tutorial_commoner = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	attacks = merge(marksmannovice,brawlernovice),
-	conversationTemplate = "tutorialCommonerConvoTemplate",
+	conversationTemplate = "",
 }
 
-CreatureTemplates:addCreatureTemplate(tutorial_commoner, "tutorial_commoner")
+CreatureTemplates:addCreatureTemplate(tutorial_commoner_noconverse, "tutorial_commoner_noconverse")
