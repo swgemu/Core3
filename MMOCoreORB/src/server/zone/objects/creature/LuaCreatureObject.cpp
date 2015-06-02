@@ -91,7 +91,9 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getGroupSize", &LuaCreatureObject::getGroupSize},
 		{ "getGroupMember", &LuaCreatureObject::getGroupMember},
 		{ "setOptionsBitmask", &LuaCreatureObject::setOptionsBitmask},
-		{ "setPvpStatusBitmask", &LuaCreatureObject::setPvpStatusBitmask},
+		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask},
+		{ "setPvpStatusBit", &LuaTangibleObject::setPvpStatusBit},
+		{ "isChangingFactionStatus", &LuaTangibleObject::isChangingFactionStatus },
 		{ "addDotState", &LuaCreatureObject::addDotState},
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject},
 		{ "checkCooldownRecovery", &LuaCreatureObject::checkCooldownRecovery},
@@ -115,7 +117,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ 0, 0 }
 };
 
-LuaCreatureObject::LuaCreatureObject(lua_State *L) : LuaSceneObject(L) {
+LuaCreatureObject::LuaCreatureObject(lua_State *L) : LuaTangibleObject(L) {
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<CreatureObject*>(_getRealSceneObject());
 
@@ -129,7 +131,7 @@ LuaCreatureObject::~LuaCreatureObject(){
 }
 
 int LuaCreatureObject::_setObject(lua_State* L) {
-	LuaSceneObject::_setObject(L);
+	LuaTangibleObject::_setObject(L);
 
 #ifdef DYNAMIC_CAST_LUAOBJECTS
 	realObject = dynamic_cast<CreatureObject*>(_getRealSceneObject());
@@ -198,13 +200,6 @@ int LuaCreatureObject::setMoodString(lua_State* L) {
 	Locker locker(realObject);
 
 	realObject->setMoodString(value);
-
-	return 0;
-}
-
-int LuaCreatureObject::setPvpStatusBitmask(lua_State* L) {
-	int bitmask = lua_tonumber(L, -1);
-	realObject->setPvpStatusBitmask(bitmask, true);
 
 	return 0;
 }

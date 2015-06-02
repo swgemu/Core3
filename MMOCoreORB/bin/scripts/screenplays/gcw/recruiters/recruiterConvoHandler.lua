@@ -52,7 +52,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 			playerObject:setFactionStatus(1)
 
 		elseif (screenID == "accepted_go_overt") then
-			playerObject:setFactionStatus(3)
+			player:setPvpStatusBit(CHANGEFACTIONSTATUS)
 			writeData(player:getObjectID() .. ":changingFactionStatus", 1)
 			createEvent(30000, "recruiterScreenplay", "handleGoOvert", conversingPlayer)
 
@@ -60,7 +60,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 			if (player:hasSkill("force_title_jedi_rank_03")) then
 				return
 			end
-			playerObject:setFactionStatus(3)
+			player:setPvpStatusBit(CHANGEFACTIONSTATUS)
 			writeData(player:getObjectID() .. ":changingFactionStatus", 1)
 			createEvent(300000, "recruiterScreenplay", "handleGoCovert", conversingPlayer)
 
@@ -69,7 +69,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 			if (player:hasSkill("force_title_jedi_rank_03")) then
 				return
 			end
-			playerObject:setFactionStatus(3)
+			player:setPvpStatusBit(CHANGEFACTIONSTATUS)
 			writeData(player:getObjectID() .. ":changingFactionStatus", 1)
 			createEvent(300000, "recruiterScreenplay", "handleGoOnLeave", conversingPlayer)
 
@@ -79,7 +79,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 			end
 
 			if (playerObject:isOvert()) then
-				playerObject:setFactionStatus(3)
+				player:setPvpStatusBit(CHANGEFACTIONSTATUS)
 				writeData(player:getObjectID() .. ":changingFactionStatus", 1)
 				createEvent(300000, "recruiterScreenplay", "handleResign", conversingPlayer)
 				return conversationScreen
@@ -87,7 +87,7 @@ function RecruiterConvoHandler:runScreenHandlers(conversationTemplate, conversin
 			recruiterScreenplay:handleResign(conversingPlayer)
 
 		elseif (screenID == "accepted_resume_duties") then
-			playerObject:setFactionStatus(3)
+			player:setPvpStatusBit(CHANGEFACTIONSTATUS)
 			createEvent(30000, "recruiterScreenplay", "handleGoCovert", conversingPlayer)
 			writeData(player:getObjectID() .. ":changingFactionStatus", 1)
 
@@ -143,7 +143,7 @@ function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, conversationTempl
 		local faction = player:getFaction()
 		local factionStanding = playerObject:getFactionStanding(recruiterScreenplay:getRecruiterFaction(pNpc))
 		
-		if (playerObject:isChangingFactionStatus() and readData(player:getObjectID() .. ":changingFactionStatus") ~= 1) then
+		if (player:isChangingFactionStatus() and readData(player:getObjectID() .. ":changingFactionStatus") ~= 1) then
 			recruiterScreenplay:handleGoCovert(pPlayer)
 		end
 
@@ -151,7 +151,7 @@ function RecruiterConvoHandler:getInitialScreen(pPlayer, pNpc, conversationTempl
 			return convoTemplate:getScreen("greet_enemy")
 		elseif factionStanding < -200 and playerObject:getFactionStanding(recruiterScreenplay:getRecruiterEnemyFaction(pNpc)) > 0 then
 			return convoTemplate:getScreen("greet_hated")
-		elseif (playerObject:isChangingFactionStatus()) then
+		elseif (player:isChangingFactionStatus()) then
 			return convoTemplate:getScreen("greet_changing_status")
 		elseif (faction == recruiterScreenplay:getRecruiterFactionHashCode(pNpc)) then
 			if (playerObject:isOnLeave()) then

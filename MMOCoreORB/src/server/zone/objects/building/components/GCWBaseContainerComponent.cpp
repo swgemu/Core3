@@ -115,21 +115,6 @@ bool GCWBaseContainerComponent::checkPVEPermission(BuildingObject* building, Cre
 		return false;
 	}
 
-
-	// if changing status from overt, they have access
-	if(player->getFactionStatus() == FactionStatus::CHANGINGSTATUS){
-		if(creature->getPvpStatusBitmask() & CreatureFlag::OVERT){
-			return true;
-		} else {
-
-			if(sendMessage)
-				creature->sendSystemMessage("You must be at least a combatatant");
-
-			return false;
-		}
-
-	}
-
 	if((player->getFactionStatus() != FactionStatus::COVERT && player->getFactionStatus() != FactionStatus::OVERT)){
 
 		if(sendMessage)

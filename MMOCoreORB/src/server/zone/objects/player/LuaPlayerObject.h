@@ -29,7 +29,6 @@ public:
 	int isOvert(lua_State* L);
 	int isCovert(lua_State* L);
 	int setFactionStatus(lua_State* L);
-	int isChangingFactionStatus(lua_State* L);
 	int increaseFactionStanding(lua_State* L);
 	int decreaseFactionStanding(lua_State* L);
 	int addWaypoint(lua_State* L);

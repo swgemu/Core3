@@ -96,9 +96,6 @@ public:
 		if (targetGhost == NULL)
 			return false;
 
-		if (targetGhost->getFactionStatus() == FactionStatus::CHANGINGSTATUS || leaderGhost->getFactionStatus() == FactionStatus::CHANGINGSTATUS)
-			return false;
-
 		if (leader->getFaction() != 0 && target->getFaction() != 0) {
 			if (leader->getFaction() != target->getFaction() && targetGhost->getFactionStatus() != FactionStatus::ONLEAVE)
 				return false;
