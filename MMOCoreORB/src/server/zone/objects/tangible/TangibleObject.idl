@@ -609,7 +609,7 @@ class TangibleObject extends SceneObject {
 		customizationVariables.parseFromClientString(vars);
 	}
 	
-	public native void setPvpStatusBitmask(int bitmask, boolean notifyClient = true);
+	public native void setPvpStatusBitmask(unsigned int bitmask, boolean notifyClient = true);
 
 	public native void setPvpStatusBit(unsigned int pvpStatus, boolean notifyClient = true);
 	public native void clearPvpStatusBit(unsigned int pvpStatus, boolean notifyClient = true);

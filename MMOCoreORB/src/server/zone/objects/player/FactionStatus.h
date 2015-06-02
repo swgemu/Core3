@@ -10,7 +10,6 @@
 
 class FactionStatus {
 public:
-	const static int CHANGINGSTATUS = 3;
 	const static int OVERT = 2;
 	const static int COVERT = 1;
 	const static int ONLEAVE = 0;

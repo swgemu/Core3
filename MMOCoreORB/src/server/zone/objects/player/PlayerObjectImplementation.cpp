@@ -460,15 +460,12 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 			pvpStatusBitmask -= CreatureFlag::BLINK_GREEN;*/
 
 		creature->setPvpStatusBitmask(pvpStatusBitmask);
-	} else if (factionStatus == FactionStatus::CHANGINGSTATUS) {
-		creature->setPvpStatusBitmask(pvpStatusBitmask | CreatureFlag::CHANGEFACTIONSTATUS);
 	} else if (factionStatus == FactionStatus::OVERT) {
 
-		if(!(pvpStatusBitmask & CreatureFlag::OVERT))
+		if(!(pvpStatusBitmask & CreatureFlag::OVERT)) {
 			creature->addCooldown("declare_overt_cooldown",GCWManagerImplementation::overtCooldown*1000);
-
-		if (!(pvpStatusBitmask & CreatureFlag::OVERT))
 			pvpStatusBitmask |= CreatureFlag::OVERT;
+		}
 
 		if (pvpStatusBitmask & CreatureFlag::CHANGEFACTIONSTATUS)
 			pvpStatusBitmask -= CreatureFlag::CHANGEFACTIONSTATUS;

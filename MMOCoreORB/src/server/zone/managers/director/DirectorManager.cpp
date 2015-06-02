@@ -388,6 +388,16 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("BLEEDING", CreatureState::BLEEDING);
 	luaEngine->setGlobalInt("PEACE", CreatureState::PEACE);
 
+	luaEngine->setGlobalInt("NONE", CreatureFlag::NONE);
+	luaEngine->setGlobalInt("ATTACKABLE", CreatureFlag::ATTACKABLE);
+	luaEngine->setGlobalInt("AGGRESSIVE", CreatureFlag::AGGRESSIVE);
+	luaEngine->setGlobalInt("OVERT", CreatureFlag::OVERT);
+	luaEngine->setGlobalInt("TEF", CreatureFlag::TEF);
+	luaEngine->setGlobalInt("PLAYER", CreatureFlag::PLAYER);
+	luaEngine->setGlobalInt("ENEMY", CreatureFlag::ENEMY);
+	luaEngine->setGlobalInt("CHANGEFACTIONSTATUS", CreatureFlag::CHANGEFACTIONSTATUS);
+	luaEngine->setGlobalInt("BLINK_GREEN", CreatureFlag::BLINK_GREEN);
+
 	luaEngine->setGlobalInt("OPEN", ContainerPermissions::OPEN);
 	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);
 	luaEngine->setGlobalInt("MOVEOUT", ContainerPermissions::MOVEOUT);
