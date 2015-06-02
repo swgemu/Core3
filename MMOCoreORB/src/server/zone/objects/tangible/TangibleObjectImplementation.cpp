@@ -153,7 +153,7 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 	}
 }
 
-void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyClient) {
+void TangibleObjectImplementation::setPvpStatusBitmask(uint32 bitmask, bool notifyClient) {
 	pvpStatusBitmask = bitmask;
 
 	broadcastPvpStatusBitmask();

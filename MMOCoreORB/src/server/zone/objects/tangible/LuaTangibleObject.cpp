@@ -7,6 +7,7 @@
 
 #include "LuaTangibleObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/templates/params/PaletteColorCustomizationVariable.h"
 #include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
 #include "server/zone/templates/appearance/PaletteTemplate.h"
@@ -18,7 +19,9 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "_getObject", &LuaSceneObject::_getObject },
 		{ "setOptionsBitmask", &LuaTangibleObject::setOptionsBitmask },
 		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask },
+		{ "setPvpStatusBit", &LuaTangibleObject::setPvpStatusBit },
 		{ "getPvpStatusBitmask", &LuaTangibleObject::getPvpStatusBitmask },
+		{ "isChangingFactionStatus", &LuaTangibleObject::isChangingFactionStatus },
 		{ "setCustomizationVariable", &LuaTangibleObject::setCustomizationVariable },
 		{ "getPaletteColorCount", &LuaTangibleObject::getPaletteColorCount },
 		{ "setConditionDamage", &LuaTangibleObject::setConditionDamage },
@@ -120,10 +123,24 @@ int LuaTangibleObject::setPvpStatusBitmask(lua_State* L) {
 	return 0;
 }
 
+int LuaTangibleObject::setPvpStatusBit(lua_State* L) {
+	uint32 bit = lua_tointeger(L, -1);
+
+	realObject->setPvpStatusBit(bit, true);
+
+	return 0;
+}
+
 int LuaTangibleObject::getPvpStatusBitmask(lua_State* L) {
 	uint32 bitmask = realObject->getPvpStatusBitmask();
 
 	lua_pushinteger(L, bitmask);
+
+	return 1;
+}
+
+int LuaTangibleObject::isChangingFactionStatus(lua_State* L) {
+	lua_pushboolean(L, realObject->getPvpStatusBitmask() & CreatureFlag::CHANGEFACTIONSTATUS);
 
 	return 1;
 }
