@@ -19,7 +19,7 @@ namespace bt {
 
 class SelectorBehavior : public virtual CompositeBehavior {
 public:
-	SelectorBehavior(AiAgent* _agent, String className);
+	SelectorBehavior(AiAgent* _agent, const String& className);
 	void childSucceeded();
 	void childFailed();
 };

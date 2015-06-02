@@ -123,22 +123,22 @@ public:
 		return behaviors.size();
 	}
 
-	void putTemplate(String name, Reference<AiTemplate*> ait) {
+	void putTemplate(const String& name, Reference<AiTemplate*> ait) {
 		aiMap.put(name, ait);
 	}
 
-	Reference<AiTemplate*> getTemplate(String name) {
+	Reference<AiTemplate*> getTemplate(const String& name) {
 		if (name == "none")
 			return NULL;
 
 		return aiMap.get(name);
 	}
 
-	void putBehavior(String name, Reference<LuaBehavior*> b) {
+	void putBehavior(const String& name, Reference<LuaBehavior*> b) {
 		behaviors.put(name, b);
 	}
 
-	Reference<LuaBehavior*> getBehavior(String name) {
+	Reference<LuaBehavior*> getBehavior(const String& name) {
 		return behaviors.get(name);
 	}
 

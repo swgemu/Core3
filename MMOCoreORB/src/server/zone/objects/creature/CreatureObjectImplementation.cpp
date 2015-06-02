@@ -235,7 +235,7 @@ void CreatureObjectImplementation::loadTemplateData(
 		walkAcceleration = 0;
 	}
 
-	Vector<FloatParam> speedTempl = creoData->getSpeed();
+	const Vector<FloatParam>& speedTempl = creoData->getSpeed();
 
 	if (speedTempl.size() > 0) {
 		runSpeed = speedTempl.get(0);
@@ -285,11 +285,15 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 	} else
 		sendTo(asCreatureObject(), doClose);
 
-	SortedVector < ManagedReference<QuadTreeEntry*> > *closeObjects
-	= getCloseObjects();
+	CloseObjectsVector* vec = (CloseObjectsVector*) getCloseObjects();
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* obj = cast<SceneObject*> (closeObjects->get(i).get());
+	assert(vec != NULL);
+
+	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	vec->safeCopyTo(closeObjects);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* obj = cast<SceneObject*> (closeObjects.get(i).get());
 
 		if (obj != asCreatureObject()) {
 			if (obj != grandParent) {
@@ -353,29 +357,26 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 
 	try {
 		for (int i = 0; i < getSlottedObjectsSize(); ++i) {
-			SceneObject* object = getSlottedObject(i);
+			Reference<SceneObject*> object = getSlottedObject(i);
 
 			int arrangementSize = object->getArrangementDescriptorSize();
 
 			bool sendWithoutContents = false;
 
 			if (arrangementSize > 0) {
-				Vector<String> descriptors = object->getArrangementDescriptor(0);
+				const Vector<String>* descriptors = object->getArrangementDescriptor(0);
 
-				if (descriptors.size() > 0) {
-					String childArrangement = descriptors.get(0);
+				if (descriptors->size() > 0) {
+					const String& childArrangement = descriptors->get(0);
 
 					if (player != asCreatureObject() && ((childArrangement == "bank")
 							|| (childArrangement == "inventory") || (childArrangement
 									== "datapad") || (childArrangement == "mission_bag"))) {
 
 						sendWithoutContents = true;
-
 					}
 				}
 			}
-
-
 
 			if (objects.put(object) != -1) {
 				if (sendWithoutContents)
@@ -385,7 +386,8 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 			}
 		}
 	} catch (Exception& e) {
-
+		error(e.getMessage());
+		e.printStackTrace();
 	}
 }
 
@@ -420,17 +422,6 @@ void CreatureObjectImplementation::sendNewbieTutorialEnableHudElement(
 			new NewbieTutorialEnableHudElement(ui, enable, blinkCount);
 	sendMessage(message);
 }
-
-//void CreatureObjectImplementation::sendSystemMessage(const String& file,
-//		const String& stringid) {
-//	if (!isPlayerCreature())
-//		return;
-//
-//	UnicodeString message("@" + file + ":" + stringid);
-//
-//	ChatSystemMessage* msg = new ChatSystemMessage(message);
-//	sendMessage(msg);
-//}
 
 void CreatureObjectImplementation::sendSystemMessage(
 		StringIdChatParameter& message) {
@@ -641,7 +632,7 @@ void CreatureObjectImplementation::addMountedCombatSlow() {
 			SharedCreatureObjectTemplate* playerTemplate = dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
 
 			if (playerTemplate != NULL) {
-				Vector<FloatParam> speedTempl = playerTemplate->getSpeed();
+				const Vector<FloatParam>& speedTempl = playerTemplate->getSpeed();
 				newSpeed = speedTempl.get(0);
 			}
 
@@ -2515,37 +2506,6 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 
 
 	activatePassiveWoundRegeneration();
-
-	/*//TODO: Refactor this with event handlers
-	 if (isMeditating()) {
-	 int meditateMod = getSkillMod("meditate");
-	 float meditateBonus = 1 + ((float)meditateMod / 100);
-	 healthTick *= (int)meditateBonus;
-	 actionTick *= (int)meditateBonus;
-	 mindTick *= (int)meditateBonus;
-	 doMeditateHeals();
-	 }
-
-	 //TODO: Refactor this into an event handler
-	 if (isPlayer()) {
-	 Player* player = cast<Player*>(asCreatureObject());
-	 if (player->getPowerboosted() && pbMind != 0) {
-	 doPowerboostTick(player);
-	 }
-	 }
-
-	 //TODO: Refactor this into an event handler
-	 if (isPlayer()) {
-	 Player* player = cast<Player*>(asCreatureObject());
-	 if (channelForceHAM != 0) {
-	 doChannelForceTick(player);
-	 }
-	 }i
-
-	 if(!returningHome)
-	 changeHAMBars(healthTick, actionTick, mindTick, true);
-	 else if(returningHome)
-	 changeHAMBars(healthTick * 20, actionTick * 20, mindTick * 20, true);*/
 }
 
 void CreatureObjectImplementation::activatePassiveWoundRegeneration() {

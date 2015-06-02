@@ -137,16 +137,16 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
 	creo->broadcastMessage(msg6, true, true);*/
 
-	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0).size() != 0) {
-		String arrangement = object->getArrangementDescriptor(0).get(0);
+	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0)->size() != 0) {
+		const String& arrangement = object->getArrangementDescriptor(0)->get(0);
 
 		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
-			creo->addWearableObject(cast<TangibleObject*>(object), true);
+			creo->addWearableObject(object->asTangibleObject(), true);
 		}
 	}
 
 	if (object->isTangibleObject()) {
-		ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
+		ManagedReference<TangibleObject*> tano = object->asTangibleObject();
 		tano->addTemplateSkillMods(creo);
 	}
 
@@ -186,16 +186,16 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
 	creo->broadcastMessage(msg6, true, true);*/
 
-	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0).size() != 0) {
-		String arrangement = object->getArrangementDescriptor(0).get(0); //CHK
+	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0)->size() != 0) {
+		const String& arrangement = object->getArrangementDescriptor(0)->get(0); //CHK
 
 		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
-			creo->removeWearableObject(cast<TangibleObject*>(object), true);
+			creo->removeWearableObject(object->asTangibleObject(), true);
 		}
 	}
 
 	if (object->isTangibleObject()) {
-		ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
+		ManagedReference<TangibleObject*> tano = object->asTangibleObject();
 		tano->removeTemplateSkillMods(creo);
 	}
 
