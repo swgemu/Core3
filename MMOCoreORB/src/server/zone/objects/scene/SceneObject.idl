@@ -977,10 +977,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	public native int getArrangementDescriptorSize();
  	
-	@dereferenced
 	@local
-	public native Vector<string> getArrangementDescriptor(int idx);
-
+	public native final Vector<string> getArrangementDescriptor(int idx);
 
 	@dirty
 	public string getSlotDescriptor(int idx) {

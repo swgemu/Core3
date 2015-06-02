@@ -40,7 +40,7 @@ public:
 		children.removeAll();
 	}
 
-	CompositeBehavior(AiAgent* _agent, String className);
+	CompositeBehavior(AiAgent* _agent, const String& className);
 
 	CompositeBehavior(const CompositeBehavior& b);
 
