@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_a96125d5",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-02T08:04:13Z",
+      "side": 1,
+      "message": "Don\u0027t add these null checks back in. I just removed them and added the one before the lock above.",
+      "revId": "f109d0843b4ad391fc13e288151f42c33283fb1d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
