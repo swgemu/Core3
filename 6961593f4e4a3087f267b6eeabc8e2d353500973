@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_2920b59a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgent.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-02T04:01:49Z",
+      "side": 1,
+      "message": "You need to initialize this in the default constructor or existing pets will have messed up values.",
+      "revId": "6961593f4e4a3087f267b6eeabc8e2d353500973",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
