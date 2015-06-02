@@ -40,7 +40,7 @@ public:
 	~VectorParam() {
 	}
 
-	Vector<Data> get() const {
+	const Vector<Data>& get() const {
 		return vectorData;
 	}
 

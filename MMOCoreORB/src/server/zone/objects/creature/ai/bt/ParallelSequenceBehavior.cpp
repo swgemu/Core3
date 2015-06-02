@@ -8,7 +8,7 @@
 
 #include "ParallelSequenceBehavior.h"
 
-ParallelSequenceBehavior::ParallelSequenceBehavior(AiAgent* _agent, String className) : ParallelBehavior(_agent, className) {
+ParallelSequenceBehavior::ParallelSequenceBehavior(AiAgent* _agent, const String& className) : ParallelBehavior(_agent, className) {
 }
 
 void ParallelSequenceBehavior::finish() {

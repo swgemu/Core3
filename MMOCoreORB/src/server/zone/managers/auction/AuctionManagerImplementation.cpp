@@ -449,8 +449,20 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 
 	}
 
-	if(object->isIntangibleObject() && !object->isManufactureSchematic())
+	if (object->isIntangibleObject() && !object->isManufactureSchematic())
 		return ItemSoldMessage::INVALIDITEM;
+
+	for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
+		const Vector<String>* descriptors = object->getArrangementDescriptor(i);
+
+		for (int j = 0; j < descriptors->size(); ++j) {
+			const String& descriptor = descriptors->get(j);
+
+			if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
+					|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
+				return ItemSoldMessage::INVALIDITEM;
+		}
+	}
 
 	return 0;
 }

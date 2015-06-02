@@ -124,14 +124,12 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	player->sendMessage(pvp);
 }
 
-void TangibleObjectImplementation::broadcastPvpStatusBitmask(){
+void TangibleObjectImplementation::broadcastPvpStatusBitmask() {
 	if (getZone() == NULL)
 			return;
 
 	if (closeobjects != NULL) {
 		Zone* zone = getZone();
-
-		//Locker locker(zone);
 
 		CreatureObject* thisCreo = asCreatureObject();
 
@@ -159,7 +157,6 @@ void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyC
 	pvpStatusBitmask = bitmask;
 
 	broadcastPvpStatusBitmask();
-
 }
 
 void TangibleObjectImplementation::setPvpStatusBit(uint32 pvpStatus, bool notifyClient) {

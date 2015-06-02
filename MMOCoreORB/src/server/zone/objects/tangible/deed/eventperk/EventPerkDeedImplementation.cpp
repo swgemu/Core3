@@ -121,15 +121,18 @@ int EventPerkDeedImplementation::handleObjectMenuSelect(CreatureObject* player, 
 			return 1;
 		}
 
-		SortedVector<ManagedReference<QuadTreeEntry* > >* closeObjects = player->getCloseObjects();
+		CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
 
-		if (closeObjects == NULL) {
+		if (vec == NULL) {
 			error("Player has NULL closeObjectsVector in EventPerkDeedImplementation::handleObjectMenuSelect");
 			return 1;
 		}
 
-		for (int i = 0; i < closeObjects->size(); ++i) {
-			SceneObject* obj = cast<SceneObject*>(closeObjects->get(i).get());
+		SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+		vec->safeCopyTo(closeObjects);
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
 
 			if (obj == NULL) {
 				continue;

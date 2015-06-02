@@ -276,7 +276,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	float excMod = 1.0;
 
-	if (level >= 50 && System::random(legendaryChance) >= legendaryChance - floor((level-50)/2 + 0.5)) {
+	if (level >= 50 && System::random(legendaryChance) >= legendaryChance - (int) floor(((float)level - 50.f) / 2.f + 0.5)) {
 			UnicodeString newName = prototype->getDisplayedName() + " (Legendary)";
 			prototype->setCustomObjectName(newName, false);
 

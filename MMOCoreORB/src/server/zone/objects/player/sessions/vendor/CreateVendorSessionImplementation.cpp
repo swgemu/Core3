@@ -268,10 +268,10 @@ void CreateVendorSessionImplementation::randomizeVendorClothing(CreatureObject* 
 			continue;
 
 		for (int j = 0; j < obj->getArrangementDescriptorSize(); ++j) {
-			Vector<String> descriptors = obj->getArrangementDescriptor(j);
+			const Vector<String>* descriptors = obj->getArrangementDescriptor(j);
 
-			for (int k = 0; k < descriptors.size(); ++k) {
-				ManagedReference<SceneObject*> slot = vendor->getSlottedObject(descriptors.get(k));
+			for (int k = 0; k < descriptors->size(); ++k) {
+				ManagedReference<SceneObject*> slot = vendor->getSlottedObject(descriptors->get(k));
 
 				if (slot != NULL) {
 					slot->destroyObjectFromWorld(true);
@@ -297,7 +297,7 @@ void CreateVendorSessionImplementation::randomizeVendorHair(CreatureObject* vend
 		Reference<TangibleObject*> hair = player->getZoneServer()->createObject(hairFile.hashCode(), 1).castTo<TangibleObject*>();
 
 		if (hair != NULL) {
-			if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0).get(0) != "hair") {
+			if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0)->get(0) != "hair") {
 				hair->destroyObjectFromDatabase(true);
 				return;
 			}
