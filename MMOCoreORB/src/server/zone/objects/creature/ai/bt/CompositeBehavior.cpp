@@ -9,7 +9,7 @@
 #include "Behavior.h"
 #include "server/zone/managers/creature/AiMap.h"
 
-CompositeBehavior::CompositeBehavior(AiAgent* _agent, String className) : Behavior(_agent, className) {
+CompositeBehavior::CompositeBehavior(AiAgent* _agent, const String& className) : Behavior(_agent, className) {
 	currentPos = 0;
 }
 

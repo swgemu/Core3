@@ -19,7 +19,7 @@ namespace bt {
 
 class SequenceBehavior : public virtual CompositeBehavior {
 public:
-	SequenceBehavior(AiAgent* _agent, String className);
+	SequenceBehavior(AiAgent* _agent, const String& className);
 	void childSucceeded();
 	void childFailed();
 };

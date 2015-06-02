@@ -24,7 +24,7 @@ protected:
 	uint16 numSucceeded;
 
 public:
-	ParallelBehavior(AiAgent* _agent, String className);
+	ParallelBehavior(AiAgent* _agent, const String& className);
 	void start();
 	void end();
 	void doAction(bool directlyExecuted = false);

@@ -19,7 +19,7 @@ namespace bt {
 
 class NonDeterministicBehavior : public virtual CompositeBehavior {
 public:
-	NonDeterministicBehavior(AiAgent* _agent, String className);
+	NonDeterministicBehavior(AiAgent* _agent, const String& className);
 	void start();
 };
 

@@ -7,7 +7,7 @@
 
 #include "ParallelBehavior.h"
 
-ParallelBehavior::ParallelBehavior(AiAgent* _agent, String className) : CompositeBehavior(_agent, className) {
+ParallelBehavior::ParallelBehavior(AiAgent* _agent, const String& className) : CompositeBehavior(_agent, className) {
 	numFailed = 0;
 	numSucceeded = 0;
 }

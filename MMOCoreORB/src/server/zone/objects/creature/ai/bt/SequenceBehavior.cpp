@@ -8,7 +8,7 @@
 #include "SequenceBehavior.h"
 #include "server/zone/managers/creature/AiMap.h"
 
-SequenceBehavior::SequenceBehavior(AiAgent* _agent, String className) : CompositeBehavior(_agent, className) {
+SequenceBehavior::SequenceBehavior(AiAgent* _agent, const String& className) : CompositeBehavior(_agent, className) {
 
 }
 
