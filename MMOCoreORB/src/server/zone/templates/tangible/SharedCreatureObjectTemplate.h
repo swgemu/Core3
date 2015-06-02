@@ -129,7 +129,7 @@ public:
 		return species;
 	}
 
-	inline Vector<FloatParam> getSpeed() const {
+	inline const Vector<FloatParam>& getSpeed() const {
 		return speed.get();
 	}
 

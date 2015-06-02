@@ -121,7 +121,7 @@ public:
 				rollMod /= 2;
 				// We have the players roll. NOW to determine if success of failure;
 				if (sampleRoll > 75) { // adjust great success ot 75% and above
-					int maxSamples = ceil(skillMod/25);
+					int maxSamples = (int) ceil((float) skillMod / 25.f);
 					if (creature->getDnaSampleCount() > maxSamples ){
 						creature->setDnaState(CreatureManager::DNASAMPLED);
 						// We took the max samples the shock it too much and kils the creature.

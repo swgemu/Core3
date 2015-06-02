@@ -20,7 +20,7 @@ namespace bt {
 
 class NonDeterministicSelectorBehavior : public SelectorBehavior, public NonDeterministicBehavior {
 public:
-	NonDeterministicSelectorBehavior(AiAgent* _agent, String className) : CompositeBehavior(_agent, className), SelectorBehavior(_agent, className), NonDeterministicBehavior(_agent, className) {
+	NonDeterministicSelectorBehavior(AiAgent* _agent, const String& className) : CompositeBehavior(_agent, className), SelectorBehavior(_agent, className), NonDeterministicBehavior(_agent, className) {
 	}
 };
 
