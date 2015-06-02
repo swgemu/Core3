@@ -353,6 +353,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("CONTAINERCONTENTSCHANGED", ObserverEventType::CONTAINERCONTENTSCHANGED);
 	luaEngine->setGlobalInt("WASLISTENEDTO", ObserverEventType::WASLISTENEDTO);
 	luaEngine->setGlobalInt("WASWATCHED", ObserverEventType::WASWATCHED);
+	luaEngine->setGlobalInt("PARENTCHANGED", ObserverEventType::PARENTCHANGED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);
@@ -1182,7 +1183,7 @@ int DirectorManager::spatialChat(lua_State* L) {
 }
 
 int DirectorManager::spatialMoodChat(lua_State* L) {
-	if (checkArgumentCount(L, 3) == 1) {
+	if (checkArgumentCount(L, 4) == 1) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::spatialMoodChat");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
@@ -1191,22 +1192,23 @@ int DirectorManager::spatialMoodChat(lua_State* L) {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	ChatManager* chatManager = zoneServer->getChatManager();
 
-	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -3);
-	int mood = lua_tonumber(L, -1);
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -4);
+	int moodType = lua_tonumber(L, -2);
+	int chatType = lua_tonumber(L, -1);
 
 	if (creature == NULL)
 		return 0;
 
 	Locker locker(creature);
 
-	if (lua_isuserdata(L, -2)) {
-		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -2);
+	if (lua_isuserdata(L, -3)) {
+		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -3);
 
-		chatManager->broadcastMessage(creature, *message, 0, 0, mood);
+		chatManager->broadcastMessage(creature, *message, 0, moodType, chatType);
 	} else {
-		String message = lua_tostring(L, -2);
+		String message = lua_tostring(L, -3);
 
-		chatManager->broadcastMessage(creature, message, 0, 0, mood);
+		chatManager->broadcastMessage(creature, message, 0, moodType, chatType);
 	}
 
 	return 0;
