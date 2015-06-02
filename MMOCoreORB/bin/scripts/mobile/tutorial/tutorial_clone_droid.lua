@@ -1,7 +1,7 @@
-stormtrooper_filler_tutorial = Creature:new {
-	objectName = "@mob/creature_names:stormtrooper",
+tutorial_clone_droid = Creature:new {
+	objectName = "@newbie_tutorial/system_messages:droid_name",
 	socialGroup = "imperial",
-	faction = "imperial",
+	faction = "",
 	level = 30,
 	chanceHit = 0.390000,
 	damageMin = 290,
@@ -20,16 +20,16 @@ stormtrooper_filler_tutorial = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
+	templates = {"object/mobile/3po_protocol_droid_silver.iff"},
 	lootGroups = {},
 	weapons = {},
-	attacks = {},
-	conversationTemplate = "stormtrooper_filler_convotemplate",--dont change this
-	optionsBitmask = 264
+	attacks = merge(marksmannovice,brawlernovice),
+	conversationTemplate = "tutorialCloneDroidConvoTemplate",
 }
 
-CreatureTemplates:addCreatureTemplate(stormtrooper_filler_tutorial, "stormtrooper_filler_tutorial")
+CreatureTemplates:addCreatureTemplate(tutorial_clone_droid, "tutorial_clone_droid")
