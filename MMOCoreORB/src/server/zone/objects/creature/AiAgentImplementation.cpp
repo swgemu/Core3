@@ -96,17 +96,6 @@
 #include "events/RespawnCreatureTask.h"
 #include "PatrolPoint.h"
 #include "PatrolPointsVector.h"
-//#include "server/zone/managers/loot/LootManager.h"
-//#include "server/zone/managers/templates/TemplateManager.h"
-//#include "server/zone/objects/creature/ai/bt/Behavior.h"
-//#include "server/zone/objects/creature/CreatureObject.h"
-//#include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
-//#include "server/zone/packets/object/NpcConversationMessage.h"
-//#include "server/zone/packets/object/StopNpcConversation.h"
-//#include "server/zone/packets/object/StringList.h"
-//#include "server/zone/packets/ui/CreateClientPathMessage.h"
-//#include "server/zone/templates/appearance/FloorMesh.h"
-//#include "server/zone/templates/appearance/PortalLayout.h"
 #include "variables/CreatureAttackMap.h"
 #include "variables/CreatureTemplateReference.h"
 #include "variables/CurrentFoundPath.h"
@@ -986,7 +975,7 @@ void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 }
 
 void AiAgentImplementation::notifyInsert(QuadTreeEntry* entry) {
-	SceneObject* scno = cast<SceneObject*>( entry);
+	SceneObject* scno = static_cast<SceneObject*>( entry);
 
 	if (scno == asAiAgent())
 		return;
@@ -1175,7 +1164,7 @@ void AiAgentImplementation::scheduleDespawn(int timeToDespawn) {
 }
 
 void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
-	SceneObject* scno = cast<SceneObject*>( entry);
+	SceneObject* scno = static_cast<SceneObject*>( entry);
 
 	if (scno == asAiAgent())
 		return;
@@ -1195,7 +1184,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	}
 
 	if (scno->isPlayerCreature()) {
-		CreatureObject* creo = cast<CreatureObject*>(scno);
+		CreatureObject* creo = scno->asCreatureObject();
 		if (!creo->isInvisible()) {
 			int32 newValue = (int32) numberOfPlayersInRange.decrement();
 
@@ -2377,166 +2366,9 @@ bool AiAgentImplementation::hasLoot(){
 }
 
 void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
-	/*if (!player->isPlayerCreature())
-		return;
-
-	faceObject(player);
-
-	PatrolPoint current(coordinates.getPosition(), getParent());
-
-	broadcastNextPositionUpdate(&current);
-
-	CreatureObject* playerCreature = cast<CreatureObject*>( player);
-
-	ManagedReference<PlayerObject*> ghost = playerCreature->getPlayerObject();
-
-	if (npcTemplate != NULL) {
-		uint32 convoTemplate = npcTemplate->getConversationTemplate();
-
-		Reference<ConversationTemplate*> convo = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
-
-		if (convo != NULL) {
-			Reference<ConversationScreen*> initialScreen = convo->getInitialScreen();
-
-			if (initialScreen == NULL)
-				return;
-
-			//ghost->setLastNpcConvMessStr(root->getID());
-
-			StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
-			player->sendMessage(conv);
-
-			initialScreen->sendTo(playerCreature);
-
-			return;
-		}
-	}
-
-	//player->setLastNpcConvStr(("npc_" + getFu().toString()));
-	ghost->setLastNpcConvMessStr("0,init");
-
-	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
-	player->sendMessage(conv);
-
-	String responseFile, responseAttitude;
-
-	if (responseFile == "") {
-		if (isImperial()) {
-			responseFile = "npc_reaction/stormtrooper";
-		} else if (isRebel()) {
-			responseFile = "npc_reaction/military";
-		} else {
-			short file = System::random(2);
-			if (file == 0)
-				responseFile = "npc_reaction/fancy";
-			else if (file == 1)
-				responseFile = "npc_reaction/slang";
-			else
-				responseFile = "npc_reaction/townperson";
-		}
-	}
-
-	if (responseAttitude == "") {
-		short type = System::random(2);
-		if (type == 0)
-			responseAttitude = "mean";
-		else if (type == 1)
-			responseAttitude = "mid";
-		else
-			responseAttitude = "nice";
-	}
-
-	StringBuffer convoChoice;
-	convoChoice << "hi_" <<  responseAttitude << "_" << (System::random(15) + 1);
-
-	//TODO: Revisit NPC Conversation
-	//NpcConversationMessage* initial = new NpcConversationMessage(
-	//		playerCreature, responseFile, convoChoice.toString());
-	//player->sendMessage(initial);
-
-	// Parse and send the options:
-	//StringList* slist = new StringList(playerCreature);
-
-	//String test = "I'm looking for work";
-	//slist->insertOption(test);
-
-	//player->sendMessage(slist);
-
-	//playerCreature->setLastNpcConvMessStr("chitchat");*/
 }
 
 void AiAgentImplementation::selectConversationOption(int option, SceneObject* obj) {
-	/*if (!obj->isCreatureObject())
-		return;
-
-	CreatureObject* player = cast<CreatureObject*>( obj);
-
-	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-
-	if (ghost == NULL)
-		return;
-
-	String chk = ghost->getLastNpcConvMessStr();
-
-	if (npcTemplate != NULL) {
-			uint32 convoTemplate = npcTemplate->getConversationTemplate(); //TODO: Consider storing reference to the convo on the template?
-
-			Reference<ConversationTemplate*> convo = CreatureTemplateManager::instance()->getConversationTemplate(convoTemplate);
-
-			if (convo != NULL) {
-				Reference<ConversationScreen*> lastScreen = convo->getScreen(chk);
-
-				if (lastScreen == NULL)
-					lastScreen = convo->getInitialScreen();
-
-				Reference<ConversationOption*> convoOption = lastScreen->getOption(option);
-
-				if (convoOption == NULL || !convoOption->isLinked())
-					return; //Stop Conversation if no option exists or this option isn't linked to another option.
-
-				Reference<ConversationScreen*> nextScreen = convo->getScreen(convoOption->getLinkedScreenID());
-
-				if (nextScreen == NULL)
-					return; //Couldn't find the linked screen in this conversation template.
-
-				nextScreen->sendTo(player);
-
-				return;
-			}
-	}
-
-	if (chk != "chitchat") {
-		return;
-	}
-
-	UnicodeString saying = "";
-	switch(System::random(5)) {
-	case 0:
-		saying = "Why the heck would you want to work when welfare is free.";
-		break;
-	case 1:
-		saying = "Pfft, work in this economy?  I'm waiting for the government to bail me out.";
-		break;
-	case 2:
-		saying = "Check the missions terminals, they are overflowing with work.";
-		break;
-	case 3:
-		saying = "Huh, work?  Whats that?";
-		break;
-	case 4:
-		saying = "Did you check the mission terminals?";
-		break;
-	case 5:
-		saying = "Me too.";
-		break;
-	}
-
-	NpcConversationMessage* response = new NpcConversationMessage(player, saying);
-	player->sendMessage(response);
-
-	// Parse and send the options:
-	StringList* slist = new StringList(player);
-	player->sendMessage(slist);*/
 }
 
 bool AiAgentImplementation::isEventMob() {

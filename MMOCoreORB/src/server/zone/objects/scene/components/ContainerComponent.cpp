@@ -66,10 +66,10 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 		int arrangementGroup = containmentType - 4;
 
 		if (object->getArrangementDescriptorSize() > arrangementGroup) {
-			Vector<String> descriptors = object->getArrangementDescriptor(arrangementGroup);
+			const Vector<String>* descriptors = object->getArrangementDescriptor(arrangementGroup);
 
-			for (int i = 0; i < descriptors.size(); ++i){
-				String childArrangement = descriptors.get(i);
+			for (int i = 0; i < descriptors->size(); ++i){
+				const String& childArrangement = descriptors->get(i);
 
 				if (slottedObjects->contains(childArrangement)) {
 					errorDescription = "@container_error_message:container04"; //This slot is already occupied.
@@ -183,17 +183,17 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		int arrangementGroup = containmentType - 4;
 
 		if (object->getArrangementDescriptorSize() > arrangementGroup) {
-			Vector<String> descriptors = object->getArrangementDescriptor(arrangementGroup);
+			const Vector<String>* descriptors = object->getArrangementDescriptor(arrangementGroup);
 
-			for (int i = 0; i < descriptors.size(); ++i){
-				String childArrangement = descriptors.get(i);
+			for (int i = 0; i < descriptors->size(); ++i){
+				const String& childArrangement = descriptors->get(i);
 				if (slottedObjects->contains(childArrangement)) {
 					return false;
 				}
 			}
 
-			for (int i = 0; i < descriptors.size(); ++i)	{
-				 slottedObjects->put(descriptors.get(i), object);
+			for (int i = 0; i < descriptors->size(); ++i)	{
+				 slottedObjects->put(descriptors->get(i), object);
 			}
 		} else {
 			return false;
@@ -281,10 +281,10 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	if (object->getArrangementDescriptorSize() > arrangementGroup) {
 		bool removeFromSlot = false;
 
-		Vector<String> descriptors = object->getArrangementDescriptor(arrangementGroup);
+		const Vector<String>* descriptors = object->getArrangementDescriptor(arrangementGroup);
 
-		for (int i = 0; i < descriptors.size(); ++i){
-			String childArrangement = descriptors.get(i);
+		for (int i = 0; i < descriptors->size(); ++i){
+			const String& childArrangement = descriptors->get(i);
 
 			ManagedReference<SceneObject*> obj = slottedObjects->get(childArrangement);
 
@@ -295,8 +295,8 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 		}
 
 		if (removeFromSlot) {
-			for (int i = 0; i < descriptors.size(); ++i)
-				slottedObjects->drop(descriptors.get(i));
+			for (int i = 0; i < descriptors->size(); ++i)
+				slottedObjects->drop(descriptors->get(i));
 		}
 	}
 

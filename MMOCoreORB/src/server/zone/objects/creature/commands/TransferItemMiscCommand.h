@@ -82,9 +82,9 @@ public:
 		}
 
 		for (int i = 0; i < objectToTransfer->getArrangementDescriptorSize(); ++i) {
-			Vector<String> descriptors = objectToTransfer->getArrangementDescriptor(i);
-			for (int j = 0; j < descriptors.size(); ++j) {
-				String descriptor = descriptors.get(j);
+			const Vector<String>* descriptors = objectToTransfer->getArrangementDescriptor(i);
+			for (int j = 0; j < descriptors->size(); ++j) {
+				const String& descriptor = descriptors->get(j);
 
 				if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
 						|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair"){

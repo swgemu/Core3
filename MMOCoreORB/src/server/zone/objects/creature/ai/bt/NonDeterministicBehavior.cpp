@@ -7,7 +7,7 @@
 
 #include "NonDeterministicBehavior.h"
 
-NonDeterministicBehavior::NonDeterministicBehavior(AiAgent* _agent, String className) : CompositeBehavior(_agent, className) {
+NonDeterministicBehavior::NonDeterministicBehavior(AiAgent* _agent, const String& className) : CompositeBehavior(_agent, className) {
 
 }
 

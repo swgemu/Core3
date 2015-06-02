@@ -309,11 +309,12 @@ public:
 	PortalLayout* getPortalLayout();
 	AppearanceTemplate* getAppearanceTemplate();
 
-	Vector < Vector<String> > getArrangementDescriptors() {
-		if (arrangementDescriptors == NULL)
-			return Vector < Vector<String> >();
-		else
-			return arrangementDescriptors->getArrangementSlots();
+	const Vector < Vector<String> >* getArrangementDescriptors() const {
+		if (arrangementDescriptors == NULL) {
+			const static Vector < Vector<String> > EMPTY_DESCRIPTORS;
+			return &EMPTY_DESCRIPTORS;
+		} else
+			return &arrangementDescriptors->getArrangementSlots();
 	}
 
 	/*inline Vector<float>* getScale() {
