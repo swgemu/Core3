@@ -6,7 +6,6 @@ TODO:
 - Figure out greeter1 functionality (see greeter1_bark strings)
 - After tutorial completion, move any items in player bank to inventory and reset bank location
 - Any additional 'flair' stuff that may still be missing
-- What needs to be saved as screenplay states in case player logs out in tutorial and returns after server restart?
 
 ]]
 
@@ -453,50 +452,52 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 end
 
 -- Triggered any time a player changes between cells, sets previous room complete as they move to a new one
-function TutorialScreenPlay:changedRoomEvent(pPlayer)
-	if (pPlayer == nil) then
+function TutorialScreenPlay:changedRoomEvent(pPlayer, pNewParent)
+	if (pPlayer == nil or pNewParent == nil or SceneObject(pNewParent):getObjectID() == 0) then
 		return 1
 	end
 
-	if (self:isInRoom(pPlayer, "r2")) then
+	if (self:isInRoom(pPlayer, "r2") and not self:isRoomComplete(pPlayer, "r2")) then
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_2")
 		self:markRoomComplete(pPlayer, "r1")
 		createEvent(3000, "TutorialScreenPlay", "handleRoomTwo", pPlayer)
-	elseif (self:isInRoom(pPlayer, "r3")) then
+	elseif (self:isInRoom(pPlayer, "r3") and not self:isRoomComplete(pPlayer, "r3")) then
+		self:givePermission(pPlayer, "RoomTwoItemDrum")
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_3")
 		self:markRoomComplete(pPlayer, "r2")
 		createEvent(1000, "TutorialScreenPlay", "handleRoomThree", pPlayer)
-	elseif (self:isInRoom(pPlayer, "r4")) then
+	elseif (self:isInRoom(pPlayer, "r4") and not self:isRoomComplete(pPlayer, "r4")) then
 		createEvent(500, "TutorialScreenPlay", "handleRoomFour", pPlayer)
 		self:markRoomComplete(pPlayer, "r3")
-	elseif (self:isInRoom(pPlayer, "r5")) then
+	elseif (self:isInRoom(pPlayer, "r5") and not self:isRoomComplete(pPlayer, "r5")) then
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_4")
 		createEvent(500, "TutorialScreenPlay", "handleRoomFive", pPlayer)
 		self:markRoomComplete(pPlayer, "r4")
-	elseif (self:isInRoom(pPlayer, "r6")) then
+	elseif (self:isInRoom(pPlayer, "r6") and not self:isRoomComplete(pPlayer, "r6")) then
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_5")
 		createEvent(100, "TutorialScreenPlay", "handleRoomSix", pPlayer)
 		self:markRoomComplete(pPlayer, "r5")
-	elseif (self:isInRoom(pPlayer, "r7")) then
+	elseif (self:isInRoom(pPlayer, "r7") and not self:isRoomComplete(pPlayer, "r7")) then
 		createEvent(500, "TutorialScreenPlay", "handleRoomSeven", pPlayer)
 		self:markRoomComplete(pPlayer, "r6")
-	elseif (self:isInRoom(pPlayer, "r14")) then
-		createEvent(500, "TutorialScreenPlay", "handleRoomFourteen", pPlayer)
-	elseif (self:isInRoom(pPlayer, "r8")) then
-		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_6")
+	elseif (self:isInRoom(pPlayer, "r14") and not self:isRoomComplete(pPlayer, "r14")) then
 		if (readData(SceneObject(pPlayer):getObjectID() .. ":tutorial:givenWeapon") == 1) then
 			self:markRoomComplete(pPlayer, "r7")
 		end
+		createEvent(500, "TutorialScreenPlay", "handleRoomFourteen", pPlayer)
+	elseif (self:isInRoom(pPlayer, "r8") and not self:isRoomComplete(pPlayer, "r8")) then
+		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_6")
+		self:markRoomComplete(pPlayer, "r14")
 		createEvent(500, "TutorialScreenPlay", "handleRoomEight", pPlayer)
-	elseif (self:isInRoom(pPlayer, "r9")) then
+	elseif (self:isInRoom(pPlayer, "r9") and not self:isRoomComplete(pPlayer, "r9")) then
 		self:markRoomComplete(pPlayer, "r8")
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_7")
 		createEvent(500, "TutorialScreenPlay", "handleRoomNine", pPlayer)
-	elseif (self:isInRoom(pPlayer, "r10")) then
+	elseif (self:isInRoom(pPlayer, "r10") and not self:isRoomComplete(pPlayer, "r10")) then
 		self:markRoomComplete(pPlayer, "r9")
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_8")
 		createEvent(500, "TutorialScreenPlay", "handleRoomTen", pPlayer)
-	elseif (self:isInRoom(pPlayer, "r11")) then
+	elseif (self:isInRoom(pPlayer, "r11") and not self:isRoomComplete(pPlayer, "r11")) then
 		self:markRoomComplete(pPlayer, "r10")
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_9")
 		createEvent(500, "TutorialScreenPlay", "handleRoomEleven", pPlayer)
@@ -1947,7 +1948,7 @@ function TutorialScreenPlay:markRoomComplete(pPlayer, roomName)
 		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("all", 1, 0)
 	end
 
-	writeData(SceneObject(pPlayer):getObjectID() .. ":tutorial:roomComplete:" .. roomName, 1)
+	writeScreenPlayData(pPlayer, "tutorial", roomName .. "Complete", 1)
 end
 
 -- Checks if room is complete
@@ -1956,7 +1957,7 @@ function TutorialScreenPlay:isRoomComplete(pPlayer, roomName)
 		return false
 	end
 
-	return readData(SceneObject(pPlayer):getObjectID() .. ":tutorial:roomComplete:" .. roomName) == 1
+	return readScreenPlayData(pPlayer, "tutorial", roomName .. "Complete") == 1
 end
 
 -- Checks if player is in a room
