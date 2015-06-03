@@ -1192,7 +1192,12 @@ int DirectorManager::spatialMoodChat(lua_State* L) {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	ChatManager* chatManager = zoneServer->getChatManager();
 
-	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -4);
+	SceneObject* scene = (SceneObject*)lua_touserdata(L, -4);
+
+	CreatureObject* creature = dynamic_cast<CreatureObject*>(scene);
+
+	assert(creature);
+
 	int moodType = lua_tonumber(L, -2);
 	int chatType = lua_tonumber(L, -1);
 

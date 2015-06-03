@@ -1201,7 +1201,7 @@ void GCWManagerImplementation::sendStatus(BuildingObject* building, CreatureObje
 	if(creature==NULL || baseData == NULL)
 		return;
 
-	uint64 dif = 0;
+	double dif = 0;
 
 	if(isBaseVulnerable(building)) {
 		dif = baseData->getVulnerabilityEndTime().getTime() - time(0);
@@ -1209,11 +1209,11 @@ void GCWManagerImplementation::sendStatus(BuildingObject* building, CreatureObje
 		dif = baseData->getNextVulnerableTime().getTime() - time(0);
 	}
 
-	int days = floor(dif/86400);
+	int days = (int) floor(dif / 86400.f);
 	dif = dif - (days*86400);
-	int hours = floor(dif/3600);
-	dif = dif - (hours*3600);
-	int minutes = ceil(dif/60);
+	int hours = (int) floor(dif / 3600.f);
+	dif = dif - (hours * 3600);
+	int minutes = (int) ceil(dif / 60.f);
 
 	if(!(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
 		creature->sendSystemMessage("PvE base is always vulnerable");

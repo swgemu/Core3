@@ -172,8 +172,8 @@ void PlayerZoneComponent::removeFromBuilding(SceneObject* sceneObject, BuildingO
 void PlayerZoneComponent::notifySelfPositionUpdate(SceneObject* sceneObject) {
 	ZoneComponent::notifySelfPositionUpdate(sceneObject);
 
-	if (sceneObject->getZone() == NULL)
-		return;
+	/*if (sceneObject->getZone() == NULL)
+		return;*/
 
 	/*if (activeAreas.size() != 0) {
 		info(String::valueOf(activeAreas.size()) + " areas", true);
