@@ -127,6 +127,7 @@ namespace creature {
 		int hasReactionChatMessages(lua_State* L);
 		int sendReactionChat(lua_State* L);
 		int addPatrolPoint(lua_State* L);
+		int setConvoTemplate(lua_State* L);
 	private:
 		AiAgent* realObject;
 	};
