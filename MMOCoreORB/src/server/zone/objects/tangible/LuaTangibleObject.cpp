@@ -64,6 +64,8 @@ int LuaTangibleObject::setCustomizationVariable(lua_State* L) {
 	String type = lua_tostring(L, -2);
 	int value = lua_tonumber(L, -1);
 
+	Locker locker(realObject);
+
 	realObject->setCustomizationVariable(type, value, true);
 
 	return 0;
