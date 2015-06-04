@@ -209,7 +209,7 @@ void ReactionManagerImplementation::emoteReaction(CreatureObject* emoteUser, AiA
 
 	Zone* zone = emoteUser->getZone();
 
-	if (zone == NULL)
+	if (zone == NULL || zone->getZoneName() == "tutorial")
 		return;
 
 	if (emoteTarget->isIncapacitated() || emoteTarget->isDead() || emoteTarget->isInCombat())
