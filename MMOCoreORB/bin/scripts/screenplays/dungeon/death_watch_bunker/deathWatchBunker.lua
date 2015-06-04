@@ -1429,20 +1429,22 @@ function DeathWatchBunkerScreenPlay:stopCraftingProcess(pCreature, pTerm, succes
 	writeData(playerID .. ":dwb:terminal", 0)
 	writeData(terminalID .. ":dwb:user", 0)
 	writeData(terminalID .. ":dwb:targetitemindex", 0)
+	
+	local droidID = readData(terminalID .. ":dwb:droid")
 
 
 	if number == 4 then
-		writeData(terminalID .. ":dwb:alummineral", 0)
-		writeData(terminalID .. ":dwb:jetpackbase", 0)
-		writeData(terminalID .. ":dwb:jetpackstabilizer", 0)
-		writeData(terminalID .. ":dwb:ductedfan", 0)
-		writeData(terminalID .. ":dwb:injectortank", 0)
-		writeData(terminalID .. ":dwb:dispersionunit", 0)
+		writeData(droidID .. ":dwb:alummineral", 0)
+		writeData(droidID .. ":dwb:jetpackbase", 0)
+		writeData(droidID .. ":dwb:jetpackstabilizer", 0)
+		writeData(droidID .. ":dwb:ductedfan", 0)
+		writeData(droidID .. ":dwb:injectortank", 0)
+		writeData(droidID .. ":dwb:dispersionunit", 0)
 	else
-		writeData(terminalID .. ":dwb:alummineral", 0)
-		writeData(terminalID .. ":dwb:binary", 0)
-		writeData(terminalID .. ":dwb:protective", 0)
-		writeData(terminalID .. ":dwb:bharmorpart", 0)
+		writeData(droidID .. ":dwb:alummineral", 0)
+		writeData(droidID .. ":dwb:binary", 0)
+		writeData(droidID .. ":dwb:protective", 0)
+		writeData(droidID .. ":dwb:bharmorpart", 0)
 	end
 
 	if teleport == true then
