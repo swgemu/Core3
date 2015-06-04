@@ -467,9 +467,16 @@ int LuaCreatureObject::inflictDamage(lua_State* L) {
 	int destroy = lua_tonumber(L, -1);
 	int damage = lua_tonumber(L, -2);
 	int damageType = lua_tonumber(L, -3);
-	TangibleObject* attacker = (TangibleObject*) lua_touserdata(L, -4);
+
+	SceneObject* scene = (SceneObject*) lua_touserdata(L, -4);
+
+	TangibleObject* attacker = cast<TangibleObject*>(scene);
+
+	assert(attacker);
 
 	Locker locker(realObject);
+
+	Locker crossLocker(attacker, realObject);
 
 	realObject->inflictDamage(attacker, damageType, damage, destroy);
 

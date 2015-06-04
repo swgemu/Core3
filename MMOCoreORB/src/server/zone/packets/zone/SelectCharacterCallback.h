@@ -116,6 +116,14 @@ public:
 			ManagedReference<SceneObject*> playerParent = zoneServer->getObject(savedParentID, true);
 
 			Zone* zone = zoneServer->getZone(zoneName);
+
+			if (zone == NULL) {
+				ErrorMessage* errMsg = new ErrorMessage("Login Error", "The planet where your character was stored is disabled!", 0x0);
+				client->sendMessage(errMsg);
+
+				return;
+			}
+
 			ManagedReference<SceneObject*> currentParent = player->getParent();
 
 			if ((playerParent != NULL && currentParent == NULL) || (currentParent != NULL && currentParent->isCellObject())) {
