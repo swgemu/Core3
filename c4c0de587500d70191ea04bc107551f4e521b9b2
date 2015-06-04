@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_e9a2cd99",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-04T04:05:20Z",
+      "side": 0,
+      "message": "You\u0027re getting the term\u0027s objectID 3 times in this function. May as well just do it once and store it locally.",
+      "revId": "c4c0de587500d70191ea04bc107551f4e521b9b2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

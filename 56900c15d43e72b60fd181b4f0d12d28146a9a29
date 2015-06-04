@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_e97bad27",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-04T04:05:20Z",
+      "side": 1,
+      "message": "I would instead use the following:\n\nif not SceneObject(pCreature):isPlayerCreature() then",
+      "revId": "56900c15d43e72b60fd181b4f0d12d28146a9a29",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba8cc1f7_c9726949",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-04T04:05:20Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "56900c15d43e72b60fd181b4f0d12d28146a9a29",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba8cc1f7_698f9d24",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-04T04:05:20Z",
+      "side": 1,
+      "message": "This is redundant. Why not use isCrafting or remove isCrafting and leave this as is?",
+      "revId": "56900c15d43e72b60fd181b4f0d12d28146a9a29",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba8cc1f7_89946138",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-04T04:05:20Z",
+      "side": 1,
+      "message": "pMobile not spawnPointer",
+      "revId": "56900c15d43e72b60fd181b4f0d12d28146a9a29",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba8cc1f7_2999956e",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-04T04:05:20Z",
+      "side": 1,
+      "message": "I would instead do the following:\n\nif not SceneObject(pPlayer):isPlayerCreature() then",
+      "revId": "56900c15d43e72b60fd181b4f0d12d28146a9a29",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba8cc1f7_499e5958",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-04T04:05:20Z",
+      "side": 1,
+      "message": "same here.",
+      "revId": "56900c15d43e72b60fd181b4f0d12d28146a9a29",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
