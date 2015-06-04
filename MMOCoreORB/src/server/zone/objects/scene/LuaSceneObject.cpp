@@ -129,8 +129,9 @@ int LuaSceneObject::setCustomObjectName(lua_State* L) {
 		String key = lua_tostring(L, -1);
 		String fullPath = "@" + file + ":" + key;
 		value = StringIdManager::instance()->getStringId(fullPath.hashCode()).toString();
-	} else
+	} else {
 		value = lua_tostring(L, -1);
+	}
 
 	realObject->setCustomObjectName(value, true);
 

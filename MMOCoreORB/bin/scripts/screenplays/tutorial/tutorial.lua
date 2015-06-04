@@ -1975,12 +1975,16 @@ function TutorialScreenPlay:isInRoom(pPlayer, roomName)
 	local pBuilding = self:getTutorialBuilding(pPlayer)
 
 	if (pBuilding == nil) then
-		return
+		return false
 	end
 
 	local pCellByName = BuildingObject(pBuilding):getNamedCell(roomName)
+	
+	if (pCellByName == nil) then
+	  return false
+	end
 
-	return pCellByName ~= nil and SceneObject(pCellByName):getObjectID() == playerCellID
+	return (SceneObject(pCellByName):getObjectID() == playerCellID)
 end
 
 -- Gives a player permission to a group
