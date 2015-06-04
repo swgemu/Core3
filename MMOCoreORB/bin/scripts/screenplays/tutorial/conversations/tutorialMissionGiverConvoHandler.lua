@@ -12,7 +12,10 @@ function tutorialMissionGiverConvoHandler:runScreenHandlers(conversationTemplate
 		local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
 		local quartermasterID = readData(playerID .. ":tutorial:roomElevenQuartermaster")
 		local pQuartermaster = getSceneObject(quartermasterID)
-		if pGhost ~= nil and pQuartermaster ~= nil then
+		
+		local waypointID = readData(playerID .. ":tutorial:releaseDocsWaypointID")
+		
+		if pGhost ~= nil and pQuartermaster ~= nil and waypointID == 0 then
 			local waypointID = PlayerObject(pGhost):addWaypoint("default", "@newbie_tutorial/system_messages:release_docs", "", SceneObject(pQuartermaster):getWorldPositionX(), SceneObject(pQuartermaster):getWorldPositionY(), WAYPOINTBLUE, true, true, 0, 0)
 			writeData(playerID .. ":tutorial:releaseDocsWaypointID", waypointID)
 		end
