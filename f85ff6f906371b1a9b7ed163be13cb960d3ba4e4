@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_89bb01c4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/death_watch_bunker/deathWatchBunker.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 1560,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-04T05:36:13Z",
+      "side": 1,
+      "message": "typo",
+      "revId": "f85ff6f906371b1a9b7ed163be13cb960d3ba4e4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
