@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8cc1f7_2982f500",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-04T02:55:09Z",
+      "side": 1,
+      "message": "Observer event functions should have 3 arguments.",
+      "revId": "48e88a58c9ce57fea07448af3f23bcb6c65fef73",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
