@@ -51,7 +51,7 @@ public:
 		if (!vehicle->isInRange(creature, 5))
 			return GENERALERROR;
 
-		if (creature->getParent() != NULL)
+		if (creature->getParent() != NULL || vehicle->getParent() != NULL)
 			return GENERALERROR;
 
 		if (vehicle->isDestroyed()) {
