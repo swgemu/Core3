@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_bf19577b",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/singing_mountain_clan_guardian.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-04T21:08:48Z",
+      "side": 1,
+      "message": "According to the screenshots in the mantis report, you\u0027re setting these backwards. You have energy and blast set as special protections and the rest (besides lightsaber) set as effectiveness.",
+      "revId": "ae6e1ac9911adb0584d66cf58ad6be450bf136ad",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
