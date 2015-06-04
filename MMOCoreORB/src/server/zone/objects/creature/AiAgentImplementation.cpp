@@ -390,7 +390,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 }
 
 void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
-	if (lvl == 0)
+	if (lvl <= 0)
 		return;
 
 	CreatureObjectImplementation::setLevel(lvl);

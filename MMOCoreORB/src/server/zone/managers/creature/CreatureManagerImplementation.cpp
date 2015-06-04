@@ -369,7 +369,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templa
 	return creo;
 }
 
-CreatureObject* CreatureManagerImplementation::spawnCreatureAsEventMob(uint32 templateCRC, float x, float z, float y, uint64 parentID) {
+CreatureObject* CreatureManagerImplementation::spawnCreatureAsEventMob(uint32 templateCRC, int level, float x, float z, float y, uint64 parentID) {
 	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
 
 	if (creoTempl == NULL)
@@ -384,12 +384,18 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureAsEventMob(uint32 te
 
 	if (creo != NULL && creo->isAiAgent()) {
 		AiAgent* creature = cast<AiAgent*>(creo);
+
+		Locker locker(creature);
+
 		creature->loadTemplateData(creoTempl);
 
 		UnicodeString eventName;
 		eventName = creature->getDisplayedName() + " (event)";
 		creature->setCustomObjectName(eventName, false);
 
+		if (level > 0 && creature->getLevel() != level) {
+			creature->setLevel(level);
+		}
 	} else if (creo == NULL) {
 		error("could not spawn template " + templateToSpawn);
 	}

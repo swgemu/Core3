@@ -39,6 +39,7 @@ public:
 		bool baby = false;
 		String aiTemplate = "";
 		bool event = false;
+		int level = -1;
 
 		if (!arguments.isEmpty()) {
 			UnicodeTokenizer tokenizer(arguments);
@@ -65,18 +66,27 @@ public:
 			if (!objName.isEmpty() && objName == "baby")
 				baby = true;
 
-			if (!objName.isEmpty() && objName == "event")
+			if (!objName.isEmpty() && objName == "event") {
 				event = true;
+
+				if (tokenizer.hasMoreTokens()) {
+					level = tokenizer.getIntToken();
+
+					if (level > 500)
+						level = 500;
+				}
+			}
 
 			if (!objName.isEmpty() && objName.indexOf("object") == -1 && !baby && !event) {
 				if (objName.length() < 6)
 					posX = Float::valueOf(objName);
 				else
 					aiTemplate = objName;
+
 				objName = "";
-			} else
-				if (tokenizer.hasMoreTokens())
+			} else if (tokenizer.hasMoreTokens()) {
 					posX = tokenizer.getFloatToken();
+			}
 
 			if (tokenizer.hasMoreTokens())
 				posZ = tokenizer.getFloatToken();
@@ -91,6 +101,9 @@ public:
 
 			if (tokenizer.hasMoreTokens())
 				parID = tokenizer.getLongToken();
+		} else {
+			creature->sendSystemMessage("Usage: /createCreature <template> [object template | ai template | baby | event [level] ] [X] [Z] [Y] [planet] [cellID]");
+			return GENERALERROR;
 		}
 
 		CreatureManager* creatureManager = zone->getCreatureManager();
@@ -102,7 +115,7 @@ public:
 		if (baby)
 			npc = cast<AiAgent*>(creatureManager->spawnCreatureAsBaby(templ, posX, posZ, posY, parID));
 		else if (event)
-			npc = cast<AiAgent*>(creatureManager->spawnCreatureAsEventMob(templ, posX, posZ, posY, parID));
+			npc = cast<AiAgent*>(creatureManager->spawnCreatureAsEventMob(templ, level, posX, posZ, posY, parID));
 		else if (tempName.indexOf(".iff") != -1)
 			npc = cast<AiAgent*>(creatureManager->spawnCreatureWithAi(templ, posX, posZ, posY, parID));
 		else {
