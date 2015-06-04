@@ -74,7 +74,13 @@ int LuaBuildingObject::getCell(lua_State* L) {
 int LuaBuildingObject::getNamedCell(lua_State* L) {
 	String name = lua_tostring(L, -1);
 
-	lua_pushlightuserdata(L, realObject->getCell(name));
+	CellObject* cell = realObject->getCell(name);
+
+	if (cell == NULL) {
+		lua_pushnil(L);
+	} else {
+		lua_pushlightuserdata(L, cell);
+	}
 
 	return 1;
 }
