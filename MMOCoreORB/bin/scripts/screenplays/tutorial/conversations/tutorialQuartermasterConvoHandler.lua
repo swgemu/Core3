@@ -8,14 +8,16 @@ function tutorialQuartermasterConvoHandler:runScreenHandlers(conversationTemplat
 
 	if (screenID == "you_may_leave") then
 		ObjectManager.withCreatureAndPlayerObject(conversingPlayer, function(player, playerObject)
-			local waypointID = readData(player:getObjectID() .. ":tutorial:releaseDocsWaypointID")
+			local playerID = player:getObjectID()
+			local waypointID = readData(playerID .. ":tutorial:releaseDocsWaypointID")
 			if (waypointID ~= 0) then
 				playerObject:removeWaypoint(waypointID, true)
+				deleteData(playerID .. ":tutorial:releaseDocsWaypointID")
 			end
 
-			writeData(player:getObjectID() .. ":tutorial:hasTurnedInDocs", 1)
+			writeData(playerID .. ":tutorial:hasTurnedInDocs", 1)
 
-			local terminalID = readData(player:getObjectID() .. ":tutorial:travelTerminal")
+			local terminalID = readData(playerID .. ":tutorial:travelTerminal")
 			local pTerminal = getSceneObject(terminalID)
 			if (pTerminal ~= nil) then
 				setAuthorizationState(pTerminal, true)

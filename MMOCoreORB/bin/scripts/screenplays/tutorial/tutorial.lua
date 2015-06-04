@@ -40,21 +40,22 @@ function TutorialScreenPlay:start(pPlayer)
 	if (pBuilding == nil or BuildingObject(pBuilding):getServerObjectCRC() ~= 3369536646) then
 		return
 	end
-	
+
+	self:initializeHudElements(pPlayer)
+
 	self:spawnObjects(pPlayer)
 
 	-- Lock door to room 9
-	local pCell = BuildingObject(pBuilding):getNamedCell("r9")
-	
-	if (pCell ~= nil) then
-		updateCellPermission(pCell, 0, pPlayer)
+	if (not self:isRoomComplete(pPlayer, "r8")) then
+		local pCell = BuildingObject(pBuilding):getNamedCell("r9")
+
+		if (pCell ~= nil) then
+			updateCellPermission(pCell, 0, pPlayer)
+		end
 	end
 
 	-- Monitor player cell changes
 	createObserver(PARENTCHANGED, "TutorialScreenPlay", "changedRoomEvent", pPlayer)
-
-	-- Enable the player
-	CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("all", 0, 0)
 
 	writeData(playerID .. ":tutorialStarted", 1)
 	createEvent(2000, "TutorialScreenPlay", "handleRoomOne", pPlayer)
@@ -293,7 +294,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 	-- ** ROOM EIGHT **
 	pCell = BuildingObject(pBuilding):getNamedCell("r8")
 
-	if (pCell ~= nil) then
+	if (pCell ~= nil and not self:isRoomComplete(pPlayer, "r8")) then
 		cellID = SceneObject(pCell):getObjectID()
 
 		-- Pirate, initates combat at 12m, blows himself up with grenade after 10-15 secs, lootable
@@ -507,6 +508,29 @@ function TutorialScreenPlay:changedRoomEvent(pPlayer, pNewParent)
 	return 0
 end
 
+-- Enable hud elements if player zones into tutorial partially completed
+function TutorialScreenPlay:initializeHudElements(pPlayer)
+	if (pPlayer == nil or self:isRoomComplete(pPlayer, "r8")) then
+		return
+	end
+	
+	CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("all", 0, 0)
+	CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("buttonbar", 1, 0)
+
+	if (self:isRoomComplete(pPlayer, "r1")) then
+		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("chatbox", 1, 3)
+	end
+
+	if (self:isRoomComplete(pPlayer, "r2")) then
+		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("toolbar", 1, 3)
+	end
+
+	if (self:isRoomComplete(pPlayer, "r6")) then
+		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("radar", 1, 3)
+	end
+
+end
+
 -- ROOM ONE
 -- Welcome / Movement and Camera Controls / Chat / Holocron
 function TutorialScreenPlay:handleRoomOne(pPlayer)
@@ -577,14 +601,13 @@ function TutorialScreenPlay:doMoveToItemRoomReminder(pPlayer)
 		return
 	end
 
-	if (self:isRoomComplete(pPlayer, "r1")) then
+	if (self:isRoomComplete(pPlayer, "r1") or not self:isInRoom(pPlayer, "r1")) then
 		return
 	end
 
 	CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:repeat_item_room_prompt")
 	CreatureObject(pPlayer):playMusicMessage("sound/tut_07_comeon.snd")
 
-	createEvent(15000, "TutorialScreenPlay", "doMoveToItemRoomReminder", pPlayer)
 end
 
 -- Event triggered when player sends chat, used when tutorial is explaining chatbox
@@ -597,7 +620,7 @@ function TutorialScreenPlay:chatEvent(pPlayer, chatMessage)
 
 	if (readData(playerID .. ":tutorial:waitingOnChat") == 1) then
 		deleteData(playerID .. ":tutorial:waitingOnChat")
-		createEvent(5000, "TutorialScreenPlay", "handleRoomOne", pPlayer)
+		createEvent(2000, "TutorialScreenPlay", "handleRoomOne", pPlayer)
 	end
 
 	return 1
@@ -1661,7 +1684,7 @@ function TutorialScreenPlay:doCelebSpeak(pCeleb)
 	if (pPlayer == nil or self:isRoomComplete(pPlayer, "r9")) then
 		return
 	end
-	
+
 	-- Throttle messages so they dont always occur every iteration
 	if (self:isInRoom(pPlayer, "r9") and getRandomNumber(1,20) > 10) then
 		spatialChat(pCeleb, "@newbie_tutorial/newbie_convo:celeb_guy" .. getRandomNumber(1,5))
@@ -1698,7 +1721,6 @@ function TutorialScreenPlay:finishedTrainingRoomOfficerConvo(pOfficer, pPlayer)
 	if (readData(playerID .. ":tutorial:spokeToTrainingRoomOfficer") == 1) then
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_49")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_49_skilltrainer.snd")
-		CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("buttonbar", 1, 0)
 
 		local trainerID = readData(playerID .. ":tutorial:roomNineTrainer")
 		local pTrainer = getSceneObject(trainerID)
@@ -1979,9 +2001,9 @@ function TutorialScreenPlay:isInRoom(pPlayer, roomName)
 	end
 
 	local pCellByName = BuildingObject(pBuilding):getNamedCell(roomName)
-	
+
 	if (pCellByName == nil) then
-	  return false
+		return false
 	end
 
 	return (SceneObject(pCellByName):getObjectID() == playerCellID)
