@@ -17,9 +17,12 @@ function deathWatchJetpackCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 		return TRANSFERCANTADD
 	end
 
+	local number = readData(SceneObject(pDroid):getObjectID() .. ":dwb:craftingterminal")
+	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
+
 	return ObjectManager.withCreatureObject(pParent, function(creature)
 		local template = SceneObject(pIngredient):getTemplateObjectPath()
-		local userid = readData(SceneObject(pDroid):getObjectID() .. ":dwb:user")
+		local userid = readData(statusPrefix .. "user")
 
 		if userid ~= 0 and userid ~= creature:getObjectID() then
 			creature:sendSystemMessage("@dungeon/death_watch:same_user_only")
@@ -33,12 +36,12 @@ function deathWatchJetpackCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 
 		local droidId = SceneObject(pDroid):getObjectID()
 
-		local hasMineral = readData(droidId .. ":dwb:alummineral")
-		local hasJetpackBase = readData(droidId .. ":dwb:jetpackbase")
-		local hasJetpackStabilizer = readData(droidId .. ":dwb:jetpackstabilizer")
-		local hasDuctedFan = readData(droidId .. ":dwb:ductedfan")
-		local hasInjectorTank = readData(droidId .. ":dwb:injectortank")
-		local hasDispersionUnit = readData(droidId .. ":dwb:dispersionunit")
+		local hasMineral = readData(statusPrefix .. "alummineral")
+		local hasJetpackBase = readData(statusPrefix .. "jetpackbase")
+		local hasJetpackStabilizer = readData(statusPrefix .. "jetpackstabilizer")
+		local hasDuctedFan = readData(statusPrefix .. "ductedfan")
+		local hasInjectorTank = readData(statusPrefix .. "injectortank")
+		local hasDispersionUnit = readData(statusPrefix .. "dispersionunit")
 
 		if template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackBase then
 			if hasJetpackBase == 0 then
@@ -93,41 +96,43 @@ function deathWatchJetpackCraftingDroid:transferObject(pDroid, pIngredient, slot
 	local pParent = DeathWatchBunkerScreenPlay:getObjOwner(pIngredient)
 
 	local template = SceneObject(pIngredient):getTemplateObjectPath()
-	local terminalId = SceneObject(pDroid):getObjectID()
+
+	local number = readData(SceneObject(pDroid):getObjectID() .. ":dwb:craftingterminal")
+	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
 
 	if template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackBase then
-		writeData(terminalId .. ":dwb:jetpackbase", 1)
+		writeData(statusPrefix .. "jetpackbase", 1)
 	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.jetPackStabilizer then
-		writeData(terminalId .. ":dwb:jetpackstabilizer", 1)
+		writeData(statusPrefix .. "jetpackstabilizer", 1)
 	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.ductedFan then
-		writeData(terminalId .. ":dwb:ductedfan", 1)
+		writeData(statusPrefix .. "ductedfan", 1)
 	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.injectorTank then
-		writeData(terminalId .. ":dwb:injectortank", 1)
+		writeData(statusPrefix .. "injectortank", 1)
 	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.dispersionUnit then
-		writeData(terminalId .. ":dwb:dispersionunit", 1)
+		writeData(statusPrefix .. "dispersionunit", 1)
 	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.alumMineral then
-		writeData(terminalId .. ":dwb:alummineral", 1)
+		writeData(statusPrefix .. "alummineral", 1)
 	end
 
 	createEvent(100, "DeathWatchBunkerScreenPlay", "destroyIngredient", pIngredient)
 
-	local hasMineral = readData(terminalId .. ":dwb:alummineral")
-	local hasJetpackBase = readData(terminalId .. ":dwb:jetpackbase")
-	local hasJetpackStabilizer = readData(terminalId .. ":dwb:jetpackstabilizer")
-	local hasDuctedFan = readData(terminalId .. ":dwb:ductedfan")
-	local hasInjectorTank = readData(terminalId .. ":dwb:injectortank")
-	local hasDispersionUnit = readData(terminalId .. ":dwb:dispersionunit")
+	local hasMineral = readData(statusPrefix .. "alummineral")
+	local hasJetpackBase = readData(statusPrefix .. "jetpackbase")
+	local hasJetpackStabilizer = readData(statusPrefix .. "jetpackstabilizer")
+	local hasDuctedFan = readData(statusPrefix .. "ductedfan")
+	local hasInjectorTank = readData(statusPrefix .. "injectortank")
+	local hasDispersionUnit = readData(statusPrefix .. "dispersionunit")
 
-	local userid = readData(terminalId .. ":dwb:user")
+	local userid = readData(statusPrefix .. "user")
 	if userid == 0 then
-		writeData(terminalId .. ":dwb:user", CreatureObject(pParent):getObjectID())
-		writeData(CreatureObject(pParent):getObjectID() .. ":dwb:terminal", terminalId)
+		writeData(statusPrefix .. "user", CreatureObject(pParent):getObjectID())
+		writeData(CreatureObject(pParent):getObjectID() .. ":dwb:terminal", number)
 	end
 
 	if (hasMineral == 1 and hasJetpackBase == 1 and hasJetpackStabilizer == 1 and hasDuctedFan == 1 and hasInjectorTank == 1 and hasDispersionUnit == 1) then
 		CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:starting_to_craft")
-		writeData(terminalId .. ":dwb:currentlycrafting", 1)
-		writeData(terminalId .. ":dwb:targetitemindex", 1)
+		writeData(statusPrefix .. "currentlycrafting", 1)
+		writeData(statusPrefix .. "targetitemindex", 1)
 
 		local spawn = deathWatchSpecialSpawns["jetpackattack1"]
 		spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
@@ -200,7 +205,9 @@ function deathWatchCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 	end
 
 	local terminalId = SceneObject(pDroid):getObjectID()
+
 	local number = readData(terminalId .. ":dwb:craftingterminal")
+	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
 
 	if (number == 0) then
 		CreatureObject(pParent):sendSystemMessage("Error determining crafting terminal ID. Please file a bug report.")
@@ -208,7 +215,7 @@ function deathWatchCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 
 	local template = SceneObject(pIngredient):getTemplateObjectPath()
 
-	local userid = readData(terminalId .. ":dwb:user")
+	local userid = readData(statusPrefix .. "user")
 
 	if userid ~= 0 and userid ~= CreatureObject(pParent):getObjectID() then
 		CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:same_user_only")
@@ -220,10 +227,10 @@ function deathWatchCraftingDroid:canAddObject(pDroid, pIngredient, slot)
 		return TRANSFERCANTADD
 	end
 
-	local hasMineral = readData(terminalId .. ":dwb:alummineral")
-	local hasBL = readData(terminalId .. ":dwb:binary")
-	local hasPLC = readData(terminalId .. ":dwb:protective")
-	local hasArmorPart = readData(terminalId .. ":dwb:bharmorpart")
+	local hasMineral = readData(statusPrefix .. "alummineral")
+	local hasBL = readData(statusPrefix .. "binary")
+	local hasPLC = readData(statusPrefix .. "protective")
+	local hasArmorPart = readData(statusPrefix .. "bharmorpart")
 
 	if template == DeathWatchBunkerScreenPlay.bunkerItems.binaryLiquid then
 		if hasBL == 0 then
@@ -271,43 +278,45 @@ function deathWatchCraftingDroid:transferObject(pDroid, pIngredient, slot)
 	local template = SceneObject(pIngredient):getTemplateObjectPath()
 
 	local terminalId = SceneObject(pDroid):getObjectID()
+
 	local number = readData(terminalId .. ":dwb:craftingterminal")
+	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
 
 	if template == DeathWatchBunkerScreenPlay.bunkerItems.binaryLiquid then
-		writeData(terminalId .. ":dwb:binary", 1)
+		writeData(statusPrefix .. "binary", 1)
 	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.protectiveLiquid then
-		writeData(terminalId .. ":dwb:protective", 1)
+		writeData(statusPrefix .. "protective", 1)
 	elseif template == DeathWatchBunkerScreenPlay.bunkerItems.alumMineral then
-		writeData(terminalId .. ":dwb:alummineral", 1)
+		writeData(statusPrefix .. "alummineral", 1)
 	else
 		local table = DeathWatchBunkerScreenPlay.requiredDoorItems[number + 4]
 		for i,v in ipairs(table) do
 			if template == v then
-				writeData(terminalId .. ":dwb:bharmorpart", 1)
-				writeData(terminalId .. ":dwb:targetitemindex", i)
+				writeData(statusPrefix .. "bharmorpart", 1)
+				writeData(statusPrefix .. "targetitemindex", i)
 			end
 		end
-		if (readData(terminalId .. ":dwb:bharmorpart") ~= 1) then
+		if (readData(statusPrefix .. "bharmorpart") ~= 1) then
 			return TRANSFERFAIL
 		end
 	end
 
 	createEvent(100, "DeathWatchBunkerScreenPlay", "destroyIngredient", pIngredient)
 
-	local hasMineral = readData(terminalId .. ":dwb:alummineral")
-	local hasBL = readData(terminalId .. ":dwb:binary")
-	local hasPLC = readData(terminalId .. ":dwb:protective")
-	local hasArmorPart = readData(terminalId .. ":dwb:bharmorpart")
+	local hasMineral = readData(statusPrefix .. "alummineral")
+	local hasBL = readData(statusPrefix .. "binary")
+	local hasPLC = readData(statusPrefix .. "protective")
+	local hasArmorPart = readData(statusPrefix .. "bharmorpart")
 
-	local userid = readData(terminalId .. ":dwb:user")
+	local userid = readData(statusPrefix .. "user")
 	if userid == 0 then
-		writeData(terminalId .. ":dwb:user", CreatureObject(pParent):getObjectID())
-		writeData(CreatureObject(pParent):getObjectID() .. ":dwb:terminal", terminalId)
+		writeData(statusPrefix .. "user", CreatureObject(pParent):getObjectID())
+		writeData(CreatureObject(pParent):getObjectID() .. ":dwb:terminal", number)
 	end
 
 	if (hasMineral == 1 and hasBL == 1 and hasPLC == 1 and hasArmorPart == 1) then
 		CreatureObject(pParent):sendSystemMessage("@dungeon/death_watch:starting_to_craft")
-		writeData(terminalId .. ":dwb:currentlycrafting", 1)
+		writeData(statusPrefix .. "currentlycrafting", 1)
 		if number == 1 then
 			local spawn = deathWatchSpecialSpawns["armorattack1"]
 			spawnMobile("endor", spawn[1], spawn[2], spawn[3], spawn[4], spawn[5], spawn[6], spawn[7])
