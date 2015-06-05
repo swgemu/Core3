@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_bf47174b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialMissionGiverConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-05T01:50:45Z",
+      "side": 0,
+      "message": "You could remove the local here and just reuse waypointID instead of instantiating a new one.",
+      "revId": "050aeec8cb85751646d5edfc375c0ae2c5291aaa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_5f74cb9b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialQuartermasterConvoHandler.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-05T01:50:45Z",
+      "side": 0,
+      "message": "You could use playerID here as well.",
+      "revId": "050aeec8cb85751646d5edfc375c0ae2c5291aaa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

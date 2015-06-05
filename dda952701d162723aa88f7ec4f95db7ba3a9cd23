@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_7f798f92",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-05T01:50:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this call be below line 62? As it is, you\u0027ll enable some and then just disable them again. Why not just move line 61 and 62 into enablePriorHudElements (and maybe rename it to initializeHudElements or something).",
+      "revId": "dda952701d162723aa88f7ec4f95db7ba3a9cd23",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
