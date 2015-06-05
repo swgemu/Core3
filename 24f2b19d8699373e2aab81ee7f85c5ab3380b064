@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_5f9b6bc9",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/tutorial.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-05T02:13:30Z",
+      "side": 1,
+      "message": "I would put this check right after the null check. If you\u0027re going to enable all, no need to send any of the other packets. You could then return or encapsulate the rest within an else.",
+      "revId": "24f2b19d8699373e2aab81ee7f85c5ab3380b064",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
