@@ -131,8 +131,8 @@ class CityRegion extends ManagedObject implements Logger {
 	public static final byte RANK_CITY = 4;
 	public static final byte RANK_METROPOLIS = 5;
 
-	public static final byte TAX_PROPERTY = 0;
-	public static final byte TAX_INCOME = 1;
+	public static final byte TAX_INCOME = 0;
+	public static final byte TAX_PROPERTY = 1;
 	public static final byte TAX_SALES = 2;
 	public static final byte TAX_TRAVEL = 3;
 	public static final byte TAX_GARAGE = 4;
@@ -142,8 +142,8 @@ class CityRegion extends ManagedObject implements Logger {
 
 		initialize();
 
-		taxes.add(0); //Property Tax
 		taxes.add(0); //Income Tax
+		taxes.add(0); //Property Tax
 		taxes.add(0); //Sales Tax
 		taxes.add(0); //Travel Fee
 		taxes.add(0); //Garage Fee
