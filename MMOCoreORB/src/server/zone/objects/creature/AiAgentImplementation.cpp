@@ -557,7 +557,7 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 		return false;
 
 	if (pObject->isAiAgent()) {
-		AiAgent* agentObject = asAiAgent();
+		AiAgent* agentObject = pObject->asAiAgent();
 
 		if (!agentObject->isAttackableBy(asAiAgent()))
 			return false;
