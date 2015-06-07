@@ -1016,6 +1016,13 @@ void PlanetManagerImplementation::removePlayerCityTravelPoint(const String& city
 void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle, int shuttleType) {
 	Locker clocket(_this.getReferenceUnsafeStaticCast(), shuttle);
 
+	const uint64 oid = shuttle->getObjectID();
+
+	if (shuttleMap.contains(oid)) {
+		// this shuttle is already known, no need for a 2nd task
+		return;
+	}
+
 	shuttle->setPosture(CreaturePosture::UPRIGHT);
 
 	ShuttleDepartureTask* task = new ShuttleDepartureTask(shuttle);
@@ -1035,5 +1042,5 @@ void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle, int s
 
 	task->schedule((task->getLandedTime() + task->getLandingTime()) * 1000);
 
-	shuttleMap.put(shuttle->getObjectID(), task);
+	shuttleMap.put(oid, task);
 }
