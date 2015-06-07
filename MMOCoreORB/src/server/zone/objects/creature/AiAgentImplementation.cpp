@@ -474,6 +474,170 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
 }
 
+bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
+	if (pObject == NULL)
+		return false;
+
+	if (asAiAgent() == pObject)
+		return false;
+
+	if (getPvpStatusBitmask() == 0 || isDead() || isIncapacitated()) {
+		if (isDead())
+			return false;
+
+		if (isIncapacitated())
+			return false;
+
+		if (getPvpStatusBitmask() == 0 && !(isDroidObject() && isPet()))
+			return false;
+	}
+
+	if (getNumberOfPlayersInRange() <= 0 || isRetreating() || isFleeing() || isInCombat())
+		return false;
+
+	if (!pObject->isCreatureObject())
+		return false;
+
+	CreatureObject* creoObject = pObject->asCreatureObject();
+
+	if (creoObject->isInvisible())
+		return false;
+
+//	then return false end
+//	--if SceneObject(pObject):isAiAgent() then AiAgent(pAgent):info("Passed target invisible check") end
+
+	checkForReactionChat(pObject);
+
+	Reference<SceneObject*> follow = getFollowObject();
+
+	if (follow != NULL && follow != pObject)
+		return false;
+
+	int radius = getAggroRadius();
+
+	if (radius == 0)
+		radius = DEFAULTAGGRORADIUS;
+
+	if (pObject->isPlayerCreature())
+		radius = radius * 2;
+
+	if (!isInRange(creoObject, radius * 1.2))
+		return false;
+
+	if (pObject->getPvpStatusBitmask() == CreatureFlag::NONE || creoObject->isDead() || creoObject->isIncapacitated())
+		return false;
+
+	//-- if not in combat, ignore creatures in different cells
+
+
+	//uint64 agentParentID = getBuildingParentID();
+
+	//local targetParentID = creoObject:getBuildingParentID()
+
+	Reference<SceneObject*> root = getRootParent();
+
+	Reference<SceneObject*> rootObject = pObject->getRootParent();
+
+	uint64 agentParentID = 0;
+	uint64 targetParentID = 0;
+
+	if (root != NULL && root->isBuildingObject()) {
+		agentParentID = root->getObject();
+	}
+
+	if (rootObject != NULL && rootObject->isBuildingObject()) {
+		targetParentID = rootObject->getObjectID();
+	}
+
+	if (agentParentID != targetParentID)
+		return false;
+
+
+	if (isCamouflaged(creoObject) || !isAttackableBy(creoObject) || !creoObject->isAttackableBy(asAiAgent()))
+		return false;
+
+	if (pObject->isAiAgent()) {
+		AiAgent* agentObject = asAiAgent();
+
+		if (!agentObject->isAttackableBy(asAiAgent()))
+			return false;
+
+		uint32 creatureFaction = getFaction();
+		uint32 creatureTargetFaction = creoObject->getFaction();
+
+		if (((creatureFaction != 0) && (creatureTargetFaction == 0))
+				|| ((creatureFaction == 0) && (creatureTargetFaction != 0)))
+			return false;
+	}
+
+	return true;
+}
+
+int AiAgentImplementation::checkForReactionChat(SceneObject* pObject) {
+	if (!pObject->isPlayerCreature())
+		return 1;
+
+	CreatureObject* creoObject = pObject->asCreatureObject();
+
+	if (!(creoObject->getCurrentSpeed() > 0.5 * creoObject->getWalkSpeed()))
+		return 2;
+
+	if (!hasReactionChatMessages())
+		return 3;
+
+	if (getParent() != pObject->getParent())
+		return 4;
+
+	float dist = getDistanceTo(pObject);
+
+	if (dist > 35 || dist < 30)
+		return 5;
+
+	if (!checkCooldownRecovery("reaction_chat"))
+		return 6;
+
+	if (!CollisionManager::checkLineOfSight(asAiAgent(), pObject))
+		return 7;
+
+	String factionString = getFactionString();
+	uint32 aiFaction = getFaction();
+	uint32 targetFaction = creoObject->getFaction();
+
+	int state = 0;
+
+	if (aiFaction != 0) {
+		if (targetFaction == aiFaction)
+			state = ReactionManager::REACTION_NICE;
+		else if (targetFaction == 0)
+			state = ReactionManager::REACTION_MID;
+		else {
+			state = ReactionManager::REACTION_MEAN;
+		}
+	} else if (!factionString.isEmpty()) {
+		PlayerObject* pGhost = creoObject->getPlayerObject();
+
+		if (pGhost != NULL) {
+			int standing = pGhost->getFactionStanding(factionString);
+			if (standing >= 3000)
+				state = ReactionManager::REACTION_NICE;
+			else if (standing <= -3000)
+				state = ReactionManager::REACTION_MEAN;
+			else
+				state = ReactionManager::REACTION_MID;
+		}
+	} else
+		state = ReactionManager::REACTION_MID;
+
+	faceObject(pObject);
+
+	if (!isFacingObject(pObject))
+		sendReactionChat(ReactionManager::REACTION_HI, state);
+	else
+		sendReactionChat(ReactionManager::REACTION_BYE, state);
+
+	return 0;
+}
+
 void AiAgentImplementation::doAwarenessCheck() {
 	if (numberOfPlayersInRange.get() <= 0)
 		return;
@@ -491,7 +655,9 @@ void AiAgentImplementation::doAwarenessCheck() {
 		AiAgent* thisObject = asAiAgent();
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			CreatureObject* target = cast<CreatureObject*>(closeObjects.get(i).get());
+			SceneObject* scene = static_cast<SceneObject*>(closeObjects.get(i));
+
+			CreatureObject* target = scene->asCreatureObject();
 
 			if (thisObject == target || target == NULL)
 				continue;

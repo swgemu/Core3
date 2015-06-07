@@ -133,6 +133,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "hasReactionChatMessages", &LuaAiAgent::hasReactionChatMessages },
 		{ "sendReactionChat", &LuaAiAgent::sendReactionChat },
 		{ "addPatrolPoint", &LuaAiAgent::addPatrolPoint },
+		{ "runAwarenessLogicCheck", &LuaAiAgent::runAwarenessLogicCheck },
 		{ 0, 0 }
 };
 
@@ -973,4 +974,14 @@ int LuaAiAgent::addPatrolPoint(lua_State* L) {
 	realObject->addPatrolPoint(newPoint);
 
 	return 0;
+}
+
+int LuaAiAgent::runAwarenessLogicCheck(lua_State* L) {
+	SceneObject* target = static_cast<SceneObject*>(lua_touserdata(L, -1));
+
+	bool ret = realObject->runAwarenessLogicCheck(target);
+
+	lua_pushboolean(L, ret);
+
+	return 1;
 }
