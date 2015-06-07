@@ -58,7 +58,7 @@ PointBlankArea1Command = {
 
 	combatSpam = "pointblankblast",
 	
-	weaponType = PISTOLWEAPON,
+	weaponType = RANGEDWEAPON,
 
 	range = 12
 }
