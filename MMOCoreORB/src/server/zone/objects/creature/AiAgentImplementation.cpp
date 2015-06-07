@@ -2170,6 +2170,8 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 }
 
 int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
+	sendReactionChat(ReactionManager::DEATH);
+
 	if (isPet()) {
 		PetManager* petManager = server->getZoneServer()->getPetManager();
 
@@ -2182,8 +2184,6 @@ int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* atta
 			creatureManager->notifyDestruction(attacker, asAiAgent(), condition);
 		}
 	}
-
-	sendReactionChat(ReactionManager::DEATH);
 
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);
 }
