@@ -494,8 +494,18 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 		Reference<CreatureObject*> rider = destructedObject->getSlottedObject("rider").castTo<CreatureObject*>();
 
 		if (rider != NULL) {
+			// pre-cond is that both destructor and destructedObject are locked
+			// so do not lock if the rider is the destructor or the destructed object
+			const uint64 riderOID = rider->getObjectID();
+			const bool doLock = (riderOID != destructor->getObjectID() && riderOID != destructedObject->getObjectID());
+			if (doLock)
+				rider->acquire();
+
 			rider->updateCooldownTimer("mount_dismount", 0);
 			rider->executeObjectControllerAction(STRING_HASHCODE("dismount"));
+
+			if (doLock)
+				rider->release();
 		}
 	}
 
