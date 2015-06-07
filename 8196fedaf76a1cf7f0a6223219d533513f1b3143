@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_bfff17aa",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/PetManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-06-07T23:03:40Z",
+      "side": 1,
+      "message": "acquire() increments the strong ref counting of the object, it doesnt lock the mutex, those are wlock()/unlock(), etc..",
+      "revId": "8196fedaf76a1cf7f0a6223219d533513f1b3143",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
