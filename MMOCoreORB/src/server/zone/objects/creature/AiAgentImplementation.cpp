@@ -534,9 +534,9 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 
 	//local targetParentID = creoObject:getBuildingParentID()
 
-	Reference<SceneObject*> root = getRootParent();
+	ManagedReference<SceneObject*> root = getRootParent();
 
-	Reference<SceneObject*> rootObject = pObject->getRootParent();
+	ManagedReference<SceneObject*> rootObject = pObject->getRootParent();
 
 	uint64 agentParentID = 0;
 	uint64 targetParentID = 0;
