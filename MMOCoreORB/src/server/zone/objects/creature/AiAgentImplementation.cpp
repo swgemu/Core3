@@ -524,7 +524,7 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 	if (!isInRange(creoObject, radius * 1.2))
 		return false;
 
-	if (pObject->getPvpStatusBitmask() == CreatureFlag::NONE || creoObject->isDead() || creoObject->isIncapacitated())
+	if (creoObject->getPvpStatusBitmask() == CreatureFlag::NONE || creoObject->isDead() || creoObject->isIncapacitated())
 		return false;
 
 	//-- if not in combat, ignore creatures in different cells
@@ -607,11 +607,11 @@ int AiAgentImplementation::checkForReactionChat(SceneObject* pObject) {
 
 	if (aiFaction != 0) {
 		if (targetFaction == aiFaction)
-			state = ReactionManager::REACTION_NICE;
+			state = ReactionManager::NICE;
 		else if (targetFaction == 0)
-			state = ReactionManager::REACTION_MID;
+			state = ReactionManager::MID;
 		else {
-			state = ReactionManager::REACTION_MEAN;
+			state = ReactionManager::MEAN;
 		}
 	} else if (!factionString.isEmpty()) {
 		PlayerObject* pGhost = creoObject->getPlayerObject();
@@ -619,21 +619,21 @@ int AiAgentImplementation::checkForReactionChat(SceneObject* pObject) {
 		if (pGhost != NULL) {
 			int standing = pGhost->getFactionStanding(factionString);
 			if (standing >= 3000)
-				state = ReactionManager::REACTION_NICE;
+				state = ReactionManager::NICE;
 			else if (standing <= -3000)
-				state = ReactionManager::REACTION_MEAN;
+				state = ReactionManager::MEAN;
 			else
-				state = ReactionManager::REACTION_MID;
+				state = ReactionManager::MID;
 		}
 	} else
-		state = ReactionManager::REACTION_MID;
+		state = ReactionManager::MID;
 
 	faceObject(pObject);
 
 	if (!isFacingObject(pObject))
-		sendReactionChat(ReactionManager::REACTION_HI, state);
+		sendReactionChat(ReactionManager::HI, state);
 	else
-		sendReactionChat(ReactionManager::REACTION_BYE, state);
+		sendReactionChat(ReactionManager::BYE, state);
 
 	return 0;
 }
