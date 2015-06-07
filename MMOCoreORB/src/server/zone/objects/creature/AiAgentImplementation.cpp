@@ -542,7 +542,7 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 	uint64 targetParentID = 0;
 
 	if (root != NULL && root->isBuildingObject()) {
-		agentParentID = root->getObject();
+		agentParentID = root->getObjectID();
 	}
 
 	if (rootObject != NULL && rootObject->isBuildingObject()) {
@@ -655,7 +655,7 @@ void AiAgentImplementation::doAwarenessCheck() {
 		AiAgent* thisObject = asAiAgent();
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* scene = static_cast<SceneObject*>(closeObjects.get(i));
+			SceneObject* scene = static_cast<SceneObject*>(closeObjects.get(i).get());
 
 			CreatureObject* target = scene->asCreatureObject();
 
