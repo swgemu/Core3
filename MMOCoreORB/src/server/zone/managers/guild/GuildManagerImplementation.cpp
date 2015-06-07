@@ -179,7 +179,7 @@ void GuildManagerImplementation::processGuildUpdate(GuildObject* guild) {
 
 		destroyGuild(guild, params);
 
-		Locker locker(guild);
+		guild->lock();
 
 		info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> was destroyed due to lack of members.", true);
 		return;
