@@ -71,6 +71,23 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 		taxes.add(0);
 		taxes.add(0);
 	}
+
+	CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
+
+	if (cityManager == NULL)
+		return;
+
+	//Reset any tax rates that are over max
+	for (int i = 0; i < taxes.size(); i++) {
+		CityTax* cityTax = cityManager->getCityTax(i);
+
+		if (cityTax == NULL)
+			continue;
+
+		if (taxes.get(i) > cityTax->getMaxValue()) {
+			taxes.set(i, 0);
+		}
+	}
 }
 
 void CityRegionImplementation::initialize() {
