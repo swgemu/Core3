@@ -310,7 +310,9 @@ function deathWatchCraftingDroid:transferObject(pDroid, pIngredient, slot)
 
 	local userid = readData(statusPrefix .. "user")
 	if userid == 0 then
-		writeData(statusPrefix .. "user", CreatureObject(pParent):getObjectID())
+		local playerID = CreatureObject(pParent):getObjectID()
+		writeData(statusPrefix .. "user", playerID)
+		writeData(playerID .. ":dwb:currentlycrafting", 1)
 		writeData(CreatureObject(pParent):getObjectID() .. ":dwb:terminal", number)
 	end
 
