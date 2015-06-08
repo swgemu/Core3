@@ -31,7 +31,7 @@ void ThreatMapEntry::addDamage(String xp, uint32 damage) {
 }
 
 void ThreatMapEntry::setThreatState(uint64 state) {
-	if(!threatBitmask & state)
+	if(!(threatBitmask & state))
 		threatBitmask |= state;
 
 }
