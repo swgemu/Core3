@@ -529,4 +529,5 @@ class DroidObject extends AiAgent {
 		else
 			return super.calculateAttackSpeed(level);
 	}
+	
 }

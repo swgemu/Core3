@@ -26,6 +26,7 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "tasks/StorePetTask.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/tangible/components/droid/DroidPersonalityModuleDataComponent.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {
@@ -1022,7 +1023,12 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 		ManagedReference<DroidObject*> droid = this->controlledObject.get().castTo<DroidObject*>();
 		if (droid == NULL)
 			return;
-
+		BaseDroidModuleComponent* module = droid->getModule("personality_chip");
+		if (module != NULL) {
+			DroidPersonalityModuleDataComponent* m = cast<DroidPersonalityModuleDataComponent*>(module);
+			if (m->getPersonalityConversationTemplate() > 0)
+				droid->setOptionBit(OptionBitmask::CONVERSE,true);
+		}
 		// Check power on droids
 		if( !droid->hasPower() ){
 			droid->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"

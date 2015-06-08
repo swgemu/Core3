@@ -3015,3 +3015,7 @@ AiAgent* AiAgent::asAiAgent() {
 	return this;
 }
 
+void AiAgentImplementation::reloadTemplate() {
+	loadTemplateData(npcTemplate);
+}
+

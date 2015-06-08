@@ -53,7 +53,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 	// DROIDS
 	if( controlDevice->getPetType() == PetManager::DROIDPET ){
 		ManagedReference<DroidObject*> droidObject = dynamic_cast<DroidObject*>(controlDevice->getControlledObject());
-		bool conversingDroid = (pet->getOptionsBitmask() & OptionBitmask::CONVERSE);
+		bool conversingDroid = droidObject->getModule("personality_chip") != NULL;
 		if(conversingDroid) {
 			menuResponse->addRadialMenuItem(132, 3, "@pet/pet_menu:droid_options"); // SERVER_ITEM_OPTIONS
 			menuResponse->addRadialMenuItemToRadialID(132, 234, 3, "@pet/pet_menu:menu_recharge" ); // PET_FEED
