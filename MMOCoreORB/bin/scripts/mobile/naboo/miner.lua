@@ -21,7 +21,7 @@ miner = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = 0,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -37,11 +37,19 @@ miner = Creature:new {
 		"object/mobile/dressed_commoner_tatooine_trandoshan_female_01.iff",
 		"object/mobile/dressed_commoner_naboo_moncal_male_02.iff",
 		"object/mobile/dressed_commoner_tatooine_nikto_male_02.iff"},
-	lootGroups = {},
-	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "pistols", chance = 1000000},
+				{group = "tailor_components", chance = 1500000},
+				{group = "loot_kit_parts", chance = 1500000}
+			}
+		}
+	},
+	weapons = {"pirate_weapons_light"},
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(miner, "miner")
