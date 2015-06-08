@@ -897,6 +897,9 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 	if (ghost->getFactionStatus() != FactionStatus::ONLEAVE)
 		ghost->setFactionStatus(FactionStatus::ONLEAVE);
 
+	if (ghost->hasPvpTef())
+		ghost->schedulePvpTefRemovalTask(true);
+
 	// Decay
 	if (typeofdeath == 0) {
 		SortedVector<ManagedReference<SceneObject*> > insurableItems = getInsurableItems(player, false);

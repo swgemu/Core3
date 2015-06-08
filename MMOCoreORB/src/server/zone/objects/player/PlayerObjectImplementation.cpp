@@ -1955,7 +1955,7 @@ bool PlayerObjectImplementation::hasPvpTef() {
 	return !lastPvpCombatActionTimestamp.isPast();
 }
 
-void PlayerObjectImplementation::schedulePvpTefRemovalTask() {
+void PlayerObjectImplementation::schedulePvpTefRemovalTask(bool removeNow) {
 	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
 
 	if (parent == NULL)
@@ -1965,7 +1965,16 @@ void PlayerObjectImplementation::schedulePvpTefRemovalTask() {
 		pvpTefTask = new PvpTefRemovalTask(parent);
 	}
 
-	if (!pvpTefTask->isScheduled()) {
+	if (removeNow) {
+		lastPvpCombatActionTimestamp.updateToCurrentTime();
+
+		if (pvpTefTask->isScheduled()) {
+			pvpTefTask->cancel();
+		}
+
+		pvpTefTask->execute();
+
+	} else if (!pvpTefTask->isScheduled()) {
 		if (hasPvpTef()) {
 			pvpTefTask->schedule(llabs(getLastPvpCombatActionTimestamp().miliDifference()));
 		} else {
