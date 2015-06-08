@@ -21,7 +21,7 @@ bothan_information_broker = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -31,11 +31,20 @@ bothan_information_broker = Creature:new {
 		"object/mobile/dressed_eisley_officer_bothan_female_01.iff",
 		"object/mobile/dressed_eisley_officer_bothan_male_01.iff"
 	},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4000000},
+				{group = "wearables_common", chance = 2000000},
+				{group = "pistols", chance = 1000000},
+				{group = "tailor_components", chance = 1500000},
+				{group = "loot_kit_parts", chance = 1500000}
+			}
+		}
+	},
 	conversationTemplate = "",
-	attacks = {
-	}
+	weapons = {"pirate_weapons_light"},
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(bothan_information_broker, "bothan_information_broker")
