@@ -470,11 +470,12 @@ function DeathWatchBunkerScreenPlay:diedWhileCrafting(pCreature, pAttacker, long
 	if readData(creatureID .. ":dwb:currentlycrafting") ~= 0 then
 		local termNumber = readData(creatureID .. ":dwb:terminal")
 		local terminalID = readData("dwb:craftingTerminal" .. termNumber .. ":terminalID")
+
 		if terminalID ~= 0 then
 			local pTerminal = getSceneObject(terminalID)
 			if pTerminal ~= nil then
 				CreatureObject(pCreature):sendSystemMessage("@dungeon/death_watch:died_during_crafting")
-				self:stopCraftingProcess(pCreature, pTerminal, false, false)
+				self:stopCraftingProcess(pCreature, pTerminal, false, true)
 			end
 		end
 	end
@@ -596,6 +597,20 @@ end
 function DeathWatchBunkerScreenPlay:removeFromBunker(pCreature)
 	if (pCreature == nil) then
 		return 0
+	end
+
+	local playerID = SceneObject(pCreature):getObjectID()
+
+	if readData(playerID .. ":dwb:currentlycrafting") ~= 0 then
+		local termNumber = readData(playerID .. ":dwb:terminal")
+		local terminalID = readData("dwb:craftingTerminal" .. termNumber .. ":terminalID")
+
+		if terminalID ~= 0 then
+			local pTerminal = getSceneObject(terminalID)
+			if pTerminal ~= nil then
+				self:stopCraftingProcess(pCreature, pTerminal, false, false)
+			end
+		end
 	end
 
 	if (CreatureObject(pCreature):isGrouped()) then
@@ -1395,8 +1410,20 @@ function DeathWatchBunkerScreenPlay:stopCraftingProcess(pCreature, pTerm, succes
 	local target = readData(statusPrefix .. "targetitemindex")
 
 	writeData(playerID .. ":dwb:currentlycrafting", 0)
+	writeData(playerID .. ":dwb:terminal", 0)
 	writeData(statusPrefix .. "currentlycrafting", 0)
 	writeData(statusPrefix .. "stepStartTime", 0)
+	writeData(statusPrefix .. "user", 0)
+	writeData(statusPrefix .. "targetitemindex", 0)
+	writeData(statusPrefix .. "alummineral", 0)
+	writeData(statusPrefix .. "jetpackbase", 0)
+	writeData(statusPrefix .. "jetpackstabilizer", 0)
+	writeData(statusPrefix .. "ductedfan", 0)
+	writeData(statusPrefix .. "injectortank", 0)
+	writeData(statusPrefix .. "dispersionunit", 0)
+	writeData(statusPrefix .. "binary", 0)
+	writeData(statusPrefix .. "protective", 0)
+	writeData(statusPrefix .. "bharmorpart", 0)
 
 	if successful == true then
 		local pInventory = SceneObject(pCreature):getSlottedObject("inventory")
@@ -1420,25 +1447,6 @@ function DeathWatchBunkerScreenPlay:stopCraftingProcess(pCreature, pTerm, succes
 			TangibleObject(pReward):setCustomizationVariable("/private/index_color_1", self.primaryArmorColors[getRandomNumber(1,8)])
 			TangibleObject(pReward):setCustomizationVariable("/private/index_color_2", self.secondaryArmorColors[getRandomNumber(1,8)])
 		end
-	end
-
-
-	writeData(playerID .. ":dwb:terminal", 0)
-	writeData(statusPrefix .. "user", 0)
-	writeData(statusPrefix .. "targetitemindex", 0)
-
-	if number == 4 then
-		writeData(statusPrefix .. "alummineral", 0)
-		writeData(statusPrefix .. "jetpackbase", 0)
-		writeData(statusPrefix .. "jetpackstabilizer", 0)
-		writeData(statusPrefix .. "ductedfan", 0)
-		writeData(statusPrefix .. "injectortank", 0)
-		writeData(statusPrefix .. "dispersionunit", 0)
-	else
-		writeData(statusPrefix .. "alummineral", 0)
-		writeData(statusPrefix .. "binary", 0)
-		writeData(statusPrefix .. "protective", 0)
-		writeData(statusPrefix .. "bharmorpart", 0)
 	end
 
 	if teleport == true then
@@ -1535,13 +1543,15 @@ function DeathWatchBunkerScreenPlay:startCraftingProcess(pCreature, pTerminal)
 		return
 	end
 
+	local playerID = CreatureObject(pCreature):getObjectID()
 	local number = readData(SceneObject(pTerminal):getObjectID() .. ":dwb:craftingterminal")
 	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
 
 	writeData(statusPrefix .. "stepStartTime", os.time())
 	createEvent(1000 * 30, "DeathWatchBunkerScreenPlay", "cancelCrafting", pTerminal)
 	createEvent(1000, "DeathWatchBunkerScreenPlay", "sendUseTerminalMessage", pCreature)
-	writeData(CreatureObject(pCreature):getObjectID() .. ":dwb:currentlycrafting", 1)
+	writeData(playerID .. ":dwb:currentlycrafting", 1)
+	writeData(playerID .. ":dwb:terminal", number)
 	writeData(statusPrefix .. "currentlycrafting", 1)
 	createObserver(OBJECTDESTRUCTION, "DeathWatchBunkerScreenPlay", "diedWhileCrafting", pCreature)
 end
