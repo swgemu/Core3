@@ -1622,7 +1622,7 @@ class PlayerObject extends IntangibleObject {
 
 	public native boolean hasPvpTef();
 
-	public native void schedulePvpTefRemovalTask();
+	public native void schedulePvpTefRemovalTask(boolean removeNow = false);
 
 	public void addVendor(SceneObject vendor) {
 		ownedVendors.add(vendor.getObjectID());
