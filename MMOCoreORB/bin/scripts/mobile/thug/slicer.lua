@@ -21,7 +21,7 @@ slicer = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = 0,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = STALKER,
 	diet = HERBIVORE,
 

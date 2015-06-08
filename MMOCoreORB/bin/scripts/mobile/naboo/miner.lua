@@ -21,7 +21,7 @@ miner = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = 0,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -38,10 +38,8 @@ miner = Creature:new {
 		"object/mobile/dressed_commoner_naboo_moncal_male_02.iff",
 		"object/mobile/dressed_commoner_tatooine_nikto_male_02.iff"},
 	lootGroups = {},
-	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	weapons = {"pirate_weapons_light"},
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(miner, "miner")
