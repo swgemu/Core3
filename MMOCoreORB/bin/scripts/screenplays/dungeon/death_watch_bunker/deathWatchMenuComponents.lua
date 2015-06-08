@@ -157,7 +157,7 @@ function deathWatchWaterValve:handleObjectMenuSelect(pSceneObject, pPlayer, sele
 		local terminalNumber = readData(SceneObject(pSceneObject):getObjectID() .. ":dwb:terminal")
 
 		DeathWatchBunkerScreenPlay:doValveSwitch(pPlayer, terminalNumber)
-		
+
 		return 0
 	end)
 end
@@ -176,14 +176,19 @@ function deathWatchMandalorianCraftingTerminal:handleObjectMenuSelect(pSceneObje
 		return 0
 	end
 
-	local pTerminal = getSceneObject(readData(SceneObject(pSceneObject):getObjectID() .. ":dwb:droid"))
+	local number = readData(SceneObject(pSceneObject):getObjectID() .. ":dwb:craftingterminal")
+	local statusPrefix = "dwb:craftingTerminal" .. number .. ":"
 
-	if pTerminal == nil then
+	local terminalID = readData(statusPrefix .. "terminalID")
+
+	local pTerminal = getSceneObject(terminalID)
+
+	if (pTerminal == nil) then
 		return 0
 	end
 
-	local isCrafting = readData(SceneObject(pTerminal):getObjectID() .. ":dwb:currentlycrafting")
-	local userId = readData(SceneObject(pTerminal):getObjectID() .. ":dwb:user")
+	local isCrafting = readData(statusPrefix .. "currentlycrafting")
+	local userId = readData(statusPrefix .. "user")
 
 	if isCrafting < 1 then
 		return 0
