@@ -36,6 +36,8 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.region.CityRegion;
 
+import system.thread.atomic.AtomicInteger;
+
 @mock
 class Zone extends SceneObject {
 	private string zoneName;
