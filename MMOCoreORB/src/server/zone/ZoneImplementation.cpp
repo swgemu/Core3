@@ -390,6 +390,8 @@ void ZoneImplementation::addSceneObject(SceneObject* object) {
 			if (structure->isCivicStructure())
 				return;
 		}
+	} else if (object->isAiAgent()) {
+		spawnedAiAgents.increment();
 	}
 	
 	registerObjectWithPlanetaryMap(object);
@@ -427,6 +429,10 @@ void ZoneImplementation::updatePlanetaryMapIcon(SceneObject* object, byte icon) 
 void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 	objectMap->remove(object->getObjectID());
 	unregisterObjectWithPlanetaryMap(object);
+
+	if (object->isAiAgent()) {
+		spawnedAiAgents.decrement();
+	}
 }
 
 void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
