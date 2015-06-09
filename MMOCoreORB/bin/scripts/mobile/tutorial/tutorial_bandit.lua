@@ -34,8 +34,8 @@ tutorial_bandit = Creature:new {
 			lootChance = 10000000
 		}
 	},
-	weapons = {"tutorial_bandit"},--dont change this
-	attacks = {{"defaultattack", ""}},
+	weapons = {"tutorial_bandit"},
+	attacks = merge(brawlernovice,marksmannovice),
 	conversationTemplate = "",
 }
 

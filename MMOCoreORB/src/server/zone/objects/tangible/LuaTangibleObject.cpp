@@ -25,6 +25,7 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "setCustomizationVariable", &LuaTangibleObject::setCustomizationVariable },
 		{ "getPaletteColorCount", &LuaTangibleObject::getPaletteColorCount },
 		{ "setConditionDamage", &LuaTangibleObject::setConditionDamage },
+		{ "setMaxCondition", &LuaTangibleObject::setMaxCondition },
 		{ "setFaction", &LuaTangibleObject::setFaction },
 		{ "getFaction", &LuaTangibleObject::getFaction },
 		{ "isImperial", &LuaTangibleObject::isImperial },
@@ -151,6 +152,14 @@ int LuaTangibleObject::setConditionDamage(lua_State* L) {
 	float damage = lua_tonumber(L, -1);
 
 	realObject->setConditionDamage(damage, true);
+
+	return 0;
+}
+
+int LuaTangibleObject::setMaxCondition(lua_State* L) {
+	float damage = lua_tonumber(L, -1);
+
+	realObject->setMaxCondition(damage, true);
 
 	return 0;
 }

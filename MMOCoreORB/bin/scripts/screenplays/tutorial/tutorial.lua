@@ -45,13 +45,11 @@ function TutorialScreenPlay:start(pPlayer)
 
 	self:spawnObjects(pPlayer)
 
-	-- Lock door to room 9
-	if (not self:isRoomComplete(pPlayer, "r8")) then
-		local pCell = BuildingObject(pBuilding):getNamedCell("r9")
+	-- Remove their novice skill so that they can use the skill trainer in R9 and re-learn it
+	local playerProfession = self:getPlayerProfession(pPlayer)
 
-		if (pCell ~= nil) then
-			updateCellPermission(pCell, 0, pPlayer)
-		end
+	if (playerProfession ~= "") then
+		CreatureObject(pPlayer):surrenderSkill(playerProfession .. "_novice")
 	end
 
 	-- Monitor player cell changes
@@ -288,7 +286,11 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 
 		-- Destroyable debris blocking hallway
 		local pDebris = spawnSceneObject("tutorial", "object/tangible/newbie_tutorial/debris.iff", 77, -4, -109, cellID, 0, 0, 0, 0)
-		createObserver(OBJECTDESTRUCTION, "TutorialScreenPlay", "debrisDestroyed", pDebris)
+
+		if (pDebris ~= nil) then
+			createObserver(OBJECTDESTRUCTION, "TutorialScreenPlay", "debrisDestroyed", pDebris)
+			TangibleObject(pDebris):setMaxCondition(50)
+		end
 	end
 
 	-- ** ROOM EIGHT **
@@ -307,7 +309,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 			createObserver(DEFENDERADDED, "TutorialScreenPlay", "pirateDefenderAdded", pMobile)
 			createObserver(OBJECTDESTRUCTION, "TutorialScreenPlay", "pirateKilled", pMobile)
 
-			local pActiveArea = spawnActiveArea("tutorial", "object/active_area.iff", SceneObject(pMobile):getWorldPositionX(), -7, SceneObject(pMobile):getWorldPositionY(), 12, cellID)
+			local pActiveArea = spawnActiveArea("tutorial", "object/active_area.iff", SceneObject(pMobile):getWorldPositionX(), -7, SceneObject(pMobile):getWorldPositionY(), 20, cellID)
 			if pActiveArea ~= nil then
 				createObserver(ENTEREDAREA, "TutorialScreenPlay", "notifyEnteredPirateArea", pActiveArea)
 			end
@@ -369,7 +371,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 			SceneObject(pMissionTerm):setObjectMenuComponent("tutorialMissionTerminal")
 		end
 
-		-- Mission giver, gives player waypoint that acts as release documents, sends player to next room
+		-- Mission giver, gives player release documents, sends player to next room
 		pMobile = spawnMobile("tutorial", "tutorial_mission_giver", 0, 19.5, -4.2, -145.35, 0, cellID)
 
 		if (pMobile ~= nil) then
@@ -394,7 +396,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 	if (pCell ~= nil) then
 		cellID = SceneObject(pCell):getObjectID()
 
-		-- Warp terminal, gives player ability to choose starting city, only accessable after speaking to quartermaster with release documents waypoint
+		-- Warp terminal, gives player ability to choose starting city, only accessable after speaking to quartermaster with release documents
 		local pTravelTerm = spawnSceneObject("tutorial", "object/tangible/beta/beta_terminal_warp.iff", 27.55, -3.5, -167.8, cellID, 0, 0, 0, 0)
 
 		if (pTravelTerm ~= nil) then
@@ -402,7 +404,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 			writeData(playerID .. ":tutorial:travelTerminal", SceneObject(pTravelTerm):getObjectID())
 		end
 
-		-- Quartermaster, conversable, gives player access to warp terminal if they have release documents waypoint
+		-- Quartermaster, conversable, gives player access to warp terminal if they have release documents
 		pMobile = spawnMobile("tutorial", "tutorial_quartermaster", 0, 25.4, -4.2, -158.3, 92, cellID)
 
 		if (pMobile ~= nil) then
@@ -487,6 +489,16 @@ function TutorialScreenPlay:changedRoomEvent(pPlayer, pNewParent)
 		end
 		createEvent(500, "TutorialScreenPlay", "handleRoomFourteen", pPlayer)
 	elseif (self:isInRoom(pPlayer, "r8") and not self:isRoomComplete(pPlayer, "r8")) then
+		-- Lock door to room 9
+		local pBuilding = self:getTutorialBuilding(pPlayer)
+
+		if (pBuilding ~= nil) then
+			local pCell = BuildingObject(pBuilding):getNamedCell("r9")
+
+			if (pCell ~= nil) then
+				updateCellPermission(pCell, false, pPlayer)
+			end
+		end
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:part_6")
 		self:markRoomComplete(pPlayer, "r14")
 		createEvent(500, "TutorialScreenPlay", "handleRoomEight", pPlayer)
@@ -513,7 +525,7 @@ function TutorialScreenPlay:initializeHudElements(pPlayer)
 	if (pPlayer == nil or self:isRoomComplete(pPlayer, "r8")) then
 		return
 	end
-	
+
 	CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("all", 0, 0)
 	CreatureObject(pPlayer):sendNewbieTutorialEnableHudElement("buttonbar", 1, 0)
 
@@ -1554,7 +1566,6 @@ function TutorialScreenPlay:handlePirateGrenade(pPlayer)
 	elseif (grenadeStep == 1) then -- Faulty grenade, schedules explosion
 		spatialMoodChat(pPirate, "@newbie_tutorial/newbie_convo:pirate_taunt4", 4, 0)
 		createEvent(2000, "TutorialScreenPlay", "doGrenadeExplode", pPirate)
-		createEvent(2500, "TutorialScreenPlay", "pirateCongrats", pPlayer)
 	end
 end
 
@@ -1626,7 +1637,11 @@ function TutorialScreenPlay:pirateCongrats(pPlayer)
 		return 1
 	end
 
-	updateCellPermission(BuildingObject(pBuilding):getNamedCell("r9"), 1, pPlayer)
+	local pCell = BuildingObject(pBuilding):getNamedCell("r9")
+
+	if (pCell ~= nil) then
+		updateCellPermission(pCell, true, pPlayer)
+	end
 
 	return 1
 end
@@ -1647,9 +1662,6 @@ function TutorialScreenPlay:handleRoomNine(pPlayer)
 	local curStep = readData(playerID .. ":tutorial:currentStep:r9")
 
 	if (curStep == 0) then
-		-- Remove their novice skill so that they can use the skill trainer and re-learn it
-		CreatureObject(pPlayer):surrenderSkill(self:getPlayerProfession(pPlayer) .. "_novice")
-
 		local playerID = SceneObject(pPlayer):getObjectID()
 
 		for i = 1, 2, 1 do
@@ -1663,7 +1675,7 @@ function TutorialScreenPlay:handleRoomNine(pPlayer)
 
 	elseif (curStep == 1) then -- Explains character sheet
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_51")
-		CreatureObject(pPlayer):playMusicMessage("sound/tut_50_charactersheet.snd")
+		CreatureObject(pPlayer):playMusicMessage("sound/tut_51_charactersheet.snd")
 		createEvent(10000, "TutorialScreenPlay", "handleRoomNine", pPlayer)
 	elseif (curStep == 2) then -- Advises to move to next room
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:visit_commerce_room") -- Not actually commerce room, but only string that matches sound
@@ -1773,11 +1785,7 @@ function TutorialScreenPlay:handleRoomTen(pPlayer)
 	elseif (curStep == 1) then -- Explain npc missions
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_54")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_54_npcmission.snd")
-	elseif (curStep == 2) then -- Explain waypoints
-		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_55_waypoints")
-		CreatureObject(pPlayer):playMusicMessage("sound/tut_55_waypoints.snd")
-		createEvent(10000, "TutorialScreenPlay", "handleRoomTen", pPlayer)
-	elseif (curStep == 3) then -- Advise player to move to quartermaster
+	elseif (curStep == 2) then -- Advise player to move to quartermaster
 		CreatureObject(pPlayer):sendSystemMessage("@newbie_tutorial/system_messages:tut_56")
 		CreatureObject(pPlayer):playMusicMessage("sound/tut_56_quartermaster.snd")
 	end
