@@ -57,6 +57,26 @@ public:
 				creature->sendSystemMessage("Current number of scheduled AiAwarenessEvents: " + String::valueOf(AiMap::instance()->scheduledAwarenessEvents.get()));
 				creature->sendSystemMessage("Current number of AiRecoveryEvents: " + String::valueOf(AiMap::instance()->activeRecoveryEvents.get()));
 				creature->sendSystemMessage("Current number of AiWaitEvents: " + String::valueOf(AiMap::instance()->activeWaitEvents.get()));
+
+				ZoneServer* server = creature->getZoneServer();
+
+				for (int i = 0; i < server->getZoneCount(); ++i) {
+					Zone* zone = server->getZone(i);
+
+					if (zone == NULL)
+						continue;
+
+					int num = zone->getSpawnedAiAgents();
+
+					if (num == 0)
+						continue;
+
+					StringBuffer message;
+					message << "Current number of AiAgents in " << zone->getZoneName() << ": " << num;
+
+					creature->sendSystemMessage(message.toString());
+				}
+
 				return SUCCESS;
 			}
 

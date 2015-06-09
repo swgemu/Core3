@@ -70,6 +70,9 @@ class Zone extends SceneObject {
 
 	@transactional
 	private transient MapLocationTable mapLocations;
+	
+	@dereferenced
+	protected AtomicInteger spawnedAiAgents;
 
 	private transient boolean managersStarted;
 
@@ -81,7 +84,7 @@ class Zone extends SceneObject {
 	public native SceneObject getNearestPlanetaryObject(SceneObject object, final string mapObjectLocationType);
 
 	public native void initializePrivateData();
-
+	
 	@local
 	public QuadTree getRegionTree() {
 		return regionTree.get();
@@ -162,6 +165,10 @@ class Zone extends SceneObject {
 
 	public boolean hasManagersStarted() {
 		return managersStarted;
+	}
+	
+	public int getSpawnedAiAgents() {
+		return spawnedAiAgents.get();
 	}
 
 	/**
