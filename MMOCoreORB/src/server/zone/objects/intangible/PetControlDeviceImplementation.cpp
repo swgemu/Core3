@@ -838,29 +838,31 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 
 			if (petType == PetManager::CREATUREPET) {
 				CreatureAttackMap* attMap = pet->getAttackMap();
-				if (attMap != NULL) {
-					if (attMap->size() > 0) {
-						String cmd = attMap->getCommand(0);
-						if (cmd.isEmpty()) {
-							alm->insertAttribute("spec_atk_1", " ---");
-						} else {
-							String str = StringIdManager::instance()->getStringId(("@combat_effects:" + cmd).hashCode()).toString();
-							alm->insertAttribute("spec_atk_1", str);
-						}
-					} else
-						alm->insertAttribute("spec_atk_1", " ---");
 
-					if (attMap->size() > 1) {
-						String cmd = attMap->getCommand(1);
-						if (cmd.isEmpty()) {
-							alm->insertAttribute("spec_atk_1", " ---");
-						} else {
-							String str = StringIdManager::instance()->getStringId(("@combat_effects:" + cmd).hashCode()).toString();
-							alm->insertAttribute("spec_atk_2", str);
-						}
-					} else
-						alm->insertAttribute("spec_atk_2", " ---");
+				if (attMap != NULL && attMap->size() > 0) {
+					String cmd = attMap->getCommand(0);
+					if (cmd.isEmpty()) {
+						alm->insertAttribute("spec_atk_1", " ---");
+					} else {
+						String str = StringIdManager::instance()->getStringId(("@combat_effects:" + cmd).hashCode()).toString();
+						alm->insertAttribute("spec_atk_1", str);
+					}
+				} else {
+					alm->insertAttribute("spec_atk_1", " ---");
 				}
+
+				if (attMap != NULL && attMap->size() > 1) {
+					String cmd = attMap->getCommand(1);
+					if (cmd.isEmpty()) {
+						alm->insertAttribute("spec_atk_1", " ---");
+					} else {
+						String str = StringIdManager::instance()->getStringId(("@combat_effects:" + cmd).hashCode()).toString();
+						alm->insertAttribute("spec_atk_2", str);
+					}
+				} else {
+					alm->insertAttribute("spec_atk_2", " ---");
+				}
+
 				// TODO set this up to check for the actual ranged weapon
 				if (pet->hasRangedWeapon())
 					alm->insertAttribute("dna_comp_ranged_attack", "Yes");
