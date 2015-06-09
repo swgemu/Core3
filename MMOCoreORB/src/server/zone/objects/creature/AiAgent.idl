@@ -417,6 +417,9 @@ class AiAgent extends CreatureObject {
 	@local
 	public native void loadTemplateData(CreatureTemplate templateData);
 
+	@local
+	public native void setupAttackMaps();
+
 	/**
 	 * Inflicts damage into the object
 	 * @pre { this object is locked }
@@ -1053,10 +1056,11 @@ class AiAgent extends CreatureObject {
 
 	@local
 	public CreatureAttackMap getAttackMap() {
-		if (getWeapon() == readyWeapon)
+		if (getWeapon() == readyWeapon) {
 			return attackMap;
-		else
+		} else {
 			return defaultAttackMap;
+		}
 	}
 
 	@local

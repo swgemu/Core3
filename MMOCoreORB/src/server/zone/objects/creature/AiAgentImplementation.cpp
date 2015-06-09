@@ -219,46 +219,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		}
 	}
 
-
-
-	CreatureAttackMap* fullAttackMap;
-	if (petDeed != NULL)
-		fullAttackMap = petDeed->getAttacks();
-	else
-		fullAttackMap = npcTemplate->getAttacks();
-
-	ZoneServer* zoneServer;
-	ObjectController* objectController;
-	if ((zoneServer = getZoneServer()) != NULL && (objectController = zoneServer->getObjectController()) != NULL) {
-		attackMap = new CreatureAttackMap();
-		defaultAttackMap = new CreatureAttackMap();
-
-		for (int i = 0; i < fullAttackMap->size(); i++) {
-			CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(fullAttackMap->getCommand(i)));
-			if (attack == NULL)
-				continue;
-
-			if (readyWeapon != NULL && (attack->getWeaponType() & readyWeapon->getWeaponBitmask())) {
-				attackMap->add(fullAttackMap->get(i));
-
-			}
-
-			if (defaultWeapon != NULL && (attack->getWeaponType() & defaultWeapon->getWeaponBitmask())) {
-				defaultAttackMap->add(fullAttackMap->get(i));
-			}
-		}
-
-		// if we didn't get any attacks or the weapon is NULL, drop the reference to the attack maps
-		if (attackMap->isEmpty())
-			attackMap = NULL;
-
-		if (defaultAttackMap->isEmpty())
-			defaultAttackMap = NULL;
-
-	} else {
-		attackMap = NULL;
-		defaultAttackMap = NULL;
-	}
+	setupAttackMaps();
 
 	int ham;
 	baseHAM.removeAll();
@@ -389,6 +350,49 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	}
 }
 
+void AiAgentImplementation::setupAttackMaps() {
+	CreatureAttackMap* fullAttackMap;
+	if (petDeed != NULL)
+		fullAttackMap = petDeed->getAttacks();
+	else
+		fullAttackMap = npcTemplate->getAttacks();
+
+	ZoneServer* zoneServer;
+	ObjectController* objectController;
+	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
+
+	if ((zoneServer = getZoneServer()) != NULL && (objectController = zoneServer->getObjectController()) != NULL) {
+		attackMap = new CreatureAttackMap();
+		defaultAttackMap = new CreatureAttackMap();
+
+		for (int i = 0; i < fullAttackMap->size(); i++) {
+			CombatQueueCommand* attack = cast<CombatQueueCommand*>(objectController->getQueueCommand(fullAttackMap->getCommand(i)));
+			if (attack == NULL)
+				continue;
+
+			if (readyWeapon != NULL && (attack->getWeaponType() & readyWeapon->getWeaponBitmask())) {
+				attackMap->add(fullAttackMap->get(i));
+
+			}
+
+			if (defaultWeapon != NULL && (attack->getWeaponType() & defaultWeapon->getWeaponBitmask())) {
+				defaultAttackMap->add(fullAttackMap->get(i));
+			}
+		}
+
+		// if we didn't get any attacks or the weapon is NULL, drop the reference to the attack maps
+		if (attackMap->isEmpty())
+			attackMap = NULL;
+
+		if (defaultAttackMap->isEmpty())
+			defaultAttackMap = NULL;
+
+	} else {
+		attackMap = NULL;
+		defaultAttackMap = NULL;
+	}
+}
+
 void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 	if (lvl <= 0)
 		return;
@@ -466,6 +470,9 @@ void AiAgentImplementation::setLevel(int lvl, bool randomHam) {
 
 void AiAgentImplementation::initializeTransientMembers() {
 	CreatureObjectImplementation::initializeTransientMembers();
+
+	if (npcTemplate != NULL)
+		setupAttackMaps();
 
 	rescheduleTrackingTask();
 }
