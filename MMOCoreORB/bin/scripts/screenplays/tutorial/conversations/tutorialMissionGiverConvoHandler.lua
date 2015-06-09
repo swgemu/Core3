@@ -12,12 +12,21 @@ function tutorialMissionGiverConvoHandler:runScreenHandlers(conversationTemplate
 		local pGhost = CreatureObject(conversingPlayer):getPlayerObject()
 		local quartermasterID = readData(playerID .. ":tutorial:roomElevenQuartermaster")
 		local pQuartermaster = getSceneObject(quartermasterID)
-		
-		local waypointID = readData(playerID .. ":tutorial:releaseDocsWaypointID")
-		
-		if pGhost ~= nil and pQuartermaster ~= nil and waypointID == 0 then
-			waypointID = PlayerObject(pGhost):addWaypoint("default", "@newbie_tutorial/system_messages:release_docs", "", SceneObject(pQuartermaster):getWorldPositionX(), SceneObject(pQuartermaster):getWorldPositionY(), WAYPOINTBLUE, true, true, 0, 0)
-			writeData(playerID .. ":tutorial:releaseDocsWaypointID", waypointID)
+
+		local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+
+		if pInventory == nil then
+			return conversationScreen
+		end
+
+		local pInvItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/dungeon/death_watch_bunker/viewscreen_s2.iff", false)
+
+		if pGhost ~= nil and pQuartermaster ~= nil and pInvItem == nil then
+			local pItem = giveItem(pInventory, "object/tangible/loot/dungeon/death_watch_bunker/viewscreen_s2.iff", -1)
+			
+			if (pItem ~= nil) then
+				SceneObject(pItem):setCustomObjectName("Release Documents")
+			end
 		end
 		TutorialScreenPlay:handleRoomTen(conversingPlayer)
 	end

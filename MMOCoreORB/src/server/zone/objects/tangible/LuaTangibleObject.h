@@ -35,6 +35,7 @@ namespace tangible {
 		int setCustomizationVariable(lua_State *L);
 		int getPaletteColorCount(lua_State *L);
 		int setConditionDamage(lua_State *L);
+		int setMaxCondition(lua_State *L);
 		int setFaction(lua_State *L);
 		int getFaction(lua_State *L);
 		int isImperial(lua_State *L);
