@@ -194,7 +194,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 	if (damage > 0) {
 		attacker->updateLastSuccessfulCombatAction();
 
-		if (attacker->isPlayerCreature())
+		if (attacker->isPlayerCreature() && data.getCommandCRC() != STRING_HASHCODE("attack"))
 			weapon->decay(attacker);
 	}
 
