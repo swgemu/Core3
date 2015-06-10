@@ -164,6 +164,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	float speed = calculateAttackSpeed(level);
 	bool allowedWeapon = true;
 	if (petDeed != NULL) {
+		minDmg = petDeed->getMinDamage();
+		maxDmg = petDeed->getMaxDamage();
 		allowedWeapon = petDeed->getRanged();
 	}
 
@@ -3020,5 +3022,10 @@ AiAgent* AiAgentImplementation::asAiAgent() {
 
 AiAgent* AiAgent::asAiAgent() {
 	return this;
+}
+
+void AiAgentImplementation::reloadTemplate() {
+	clearBuffs(false);
+	loadTemplateData(npcTemplate);
 }
 
