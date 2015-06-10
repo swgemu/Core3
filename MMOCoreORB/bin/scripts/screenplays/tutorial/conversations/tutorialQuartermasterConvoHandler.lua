@@ -9,10 +9,18 @@ function tutorialQuartermasterConvoHandler:runScreenHandlers(conversationTemplat
 	if (screenID == "you_may_leave") then
 		ObjectManager.withCreatureAndPlayerObject(conversingPlayer, function(player, playerObject)
 			local playerID = player:getObjectID()
-			local waypointID = readData(playerID .. ":tutorial:releaseDocsWaypointID")
-			if (waypointID ~= 0) then
-				playerObject:removeWaypoint(waypointID, true)
-				deleteData(playerID .. ":tutorial:releaseDocsWaypointID")
+
+			local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+
+			if pInventory == nil then
+				return conversationScreen
+			end
+
+			local pInvItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/dungeon/death_watch_bunker/viewscreen_s2.iff", false)
+
+			if (pInvItem ~= nil) then
+				SceneObject(pInvItem):destroyObjectFromWorld()
+				SceneObject(pInvItem):destroyObjectFromDatabase()
 			end
 
 			writeData(playerID .. ":tutorial:hasTurnedInDocs", 1)
@@ -30,10 +38,16 @@ end
 
 function tutorialQuartermasterConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
-	local waypointID = readData(SceneObject(pPlayer):getObjectID() .. ":tutorial:releaseDocsWaypointID")
-	local pWaypoint = getSceneObject(waypointID)
+	
+	local pInventory = CreatureObject(pPlayer):getSlottedObject("inventory")
 
-	if (pWaypoint == nil) then
+	if pInventory == nil then
+		return convoTemplate:getScreen("intro_nodocs")
+	end
+
+	local pInvItem = getContainerObjectByTemplate(pInventory, "object/tangible/loot/dungeon/death_watch_bunker/viewscreen_s2.iff", false)
+
+	if (pInvItem == nil) then
 		return convoTemplate:getScreen("intro_nodocs")
 	else
 		return convoTemplate:getScreen("intro")

@@ -1380,7 +1380,7 @@ int DirectorManager::updateCellPermission(lua_State* L) {
 	}
 
 	SceneObject* sco = (SceneObject*)lua_touserdata(L, -3);
-	int allowEntry = lua_tonumber(L, -2);
+	bool allowEntry = lua_toboolean(L, -2);
 	CreatureObject* obj = (CreatureObject*)lua_touserdata(L, -1);
 
 	//sco->info("allowentry:" + String::valueOf(allowEntry), true);
