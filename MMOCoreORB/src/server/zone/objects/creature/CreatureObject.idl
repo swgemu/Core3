@@ -2102,4 +2102,8 @@ class CreatureObject extends TangibleObject {
 	public abstract native void destroyPlayerCreatureFromDatabase(boolean destroyContainedObjects = false);
 
 	public native float getTemplateRadius();
+
+	@preLocked
+	public abstract void reloadTemplate() {
+	}
 }

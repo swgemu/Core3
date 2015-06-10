@@ -522,7 +522,7 @@ void PetDeedImplementation::adjustPetLevel(CreatureObject* player, CreatureObjec
 		return;
 	}
 	level = newLevel;
-	pet->setLevel(newLevel);
+	pet->reloadTemplate();
 	player->sendSystemMessage("@bio_engineer:pet_sui_level_fixed");
 }
 void PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObject *pet) {
@@ -531,23 +531,54 @@ void PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObjec
 		player->sendSystemMessage("@bio_engineer:pet_sui_fix_error");
 		return;
 	}
-	health = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel);
-	action = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel);
-	regen = DnaManager::instance()->valueForLevel(DnaManager::REG_LEVEL,oldLevel);
-	float dps = DnaManager::instance()->valueForLevel(DnaManager::DPS_LEVEL,oldLevel);
+
+	if (oldLevel > 75) {
+		oldLevel = 75;
+	}
+
+	health = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel-1);
+	action = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel-1);
+	regen = DnaManager::instance()->valueForLevel(DnaManager::REG_LEVEL,oldLevel-1);
+	float dps = DnaManager::instance()->valueForLevel(DnaManager::DPS_LEVEL,oldLevel-1);
 	damageMin = round((dps * 2.0) * 0.5);
 	attackSpeed = 2.0;
 	damageMax = round((dps * 2.0) * 1.5);
-	chanceHit = DnaManager::instance()->valueForLevel(DnaManager::HIT_LEVEL,oldLevel);
+	chanceHit = DnaManager::instance()->valueForLevel(DnaManager::HIT_LEVEL,oldLevel-1);
+
 	// Adjust Armor Now
-	fortitude = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,oldLevel);
-	// Recalculate the level now we should be good to go now.
+	fortitude = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,oldLevel-1);
+	armor = fortitude/500;
+	float effectiveness = (int)(((fortitude - (armor * 500)) / 50) * 5);
+	if (!isSpecialResist(WeaponObject::KINETIC) && kinResist > 0)
+		kinResist = effectiveness;
+	if(!isSpecialResist(WeaponObject::ACID) && acidResist > 0)
+		acidResist = effectiveness;
+	if(!isSpecialResist(WeaponObject::BLAST) && blastResist > 0)
+		blastResist = effectiveness;
+	if(!isSpecialResist(WeaponObject::COLD) && coldResist > 0)
+		coldResist = effectiveness;
+	if(!isSpecialResist(WeaponObject::ELECTRICITY) && elecResist > 0)
+		elecResist = effectiveness;
+	if(!isSpecialResist(WeaponObject::ENERGY) && energyResist > 0)
+		energyResist = effectiveness;
+	if(!isSpecialResist(WeaponObject::HEAT) && heatResist > 0)
+		heatResist = effectiveness;
+	if(!isSpecialResist(WeaponObject::LIGHTSABER) && saberResist > 0)
+		saberResist = effectiveness;
+	if(!isSpecialResist(WeaponObject::STUN) && stunResist > 0)
+		stunResist = effectiveness;
+
+	// Recalculate the level now we should be good to go now. if we didnt we have a bug in our action logic
 	int newLevel = calculatePetLevel();
 	level = newLevel;
+
 	if (newLevel > 75) {
 		player->sendSystemMessage("@bio_engineer:pet_sui_fix_error");
 		return;
 	}
+
+	pet->reloadTemplate();
+
 	// ensure the stats are set
 	player->sendSystemMessage("@bio_engineer:pet_sui_stats_fixed");
 	return;

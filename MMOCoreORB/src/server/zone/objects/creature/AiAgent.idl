@@ -1344,5 +1344,12 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public int getHamBase() {
 		return npcTemplate.get().getBaseHAM();
-	}	
+	}
+
+	/**
+	 * Reset the aiagent back to it's initial creation state.
+	 * this resets the HAM, Damage, Size and Weapons of the AiAgent. Used for Pet adjustments.
+	 */
+	@preLocked
+	public native void reloadTemplate();
 }
