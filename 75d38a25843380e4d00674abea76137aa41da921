@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_02658ce0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialMissionGiverConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-10T13:22:01Z",
+      "side": 1,
+      "message": "You need to return a convo screen here",
+      "revId": "75d38a25843380e4d00674abea76137aa41da921",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a91bd0f_c25ec412",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tutorial/conversations/tutorialQuartermasterConvoHandler.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-10T13:22:01Z",
+      "side": 1,
+      "message": "You need to return a convo screen here",
+      "revId": "75d38a25843380e4d00674abea76137aa41da921",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
