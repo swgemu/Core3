@@ -34,13 +34,21 @@ public:
 		if( droid == NULL )
 			return GENERALERROR;
 
+		// we nee the owner
+		ManagedReference<CreatureObject*> owner = droid->getLinkedCreature();
+
+		if (owner == NULL)
+			return GENERALERROR;
+
+		Locker olock(owner, creature);
+
 		DroidTrapModuleDataComponent* module = cast<DroidTrapModuleDataComponent*>(droid->getModule("trap_module"));
 		if(module == NULL) {
 			return GENERALERROR;
 		}
 
 		// trap must be a trap
-		TangibleObject* trap = module->getTrap();
+		ManagedReference<TangibleObject*> trap = module->getTrap();
 		if (!trap->isTrapObject()) {
 			droid->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 			return GENERALERROR;
@@ -73,8 +81,8 @@ public:
 
 		// check droid state
 		if( droid->getLocalZone() == NULL ){  // Not outdoors
-			ManagedWeakReference<SceneObject*> parent = droid->getParent();
-			if( parent == NULL || !parent.get()->isCellObject() ){ // Not indoors either
+			ManagedReference<SceneObject*> parent = droid->getParent();
+			if( parent == NULL || !parent->isCellObject() ){ // Not indoors either
 				return GENERALERROR;
 			}
 		}
@@ -103,9 +111,7 @@ public:
 			error("No TrapTemplate for: " + String::valueOf(trap->getServerObjectCRC()));
 			return GENERALERROR;
 		}
-		// we nee the owner
-		ManagedReference<CreatureObject*> owner = droid->getLinkedCreature();
-		Locker olock(owner);
+
 		try {
 			int effectType = 0;
 
@@ -135,7 +141,7 @@ public:
 
 			int targetDefense = target->getSkillMod(trapData->getDefenseMod());
 			Time* cooldown = droid->getCooldownTime("throwtrap");
-			if(!cooldown->isPast() || droid->getPendingTask("throwtrap") != NULL) {
+			if((cooldown != NULL && !cooldown->isPast()) || (droid->getPendingTask("throwtrap") != NULL)) {
 				StringIdChatParameter msg;
 				msg.setStringId("@pet/droid_modules:cant_throw_yet");
 				Time now;
@@ -160,7 +166,7 @@ public:
 			bool hit = roll < hitChance && (state == 0 || (state != 0 && !target->hasState(state)));
 
 			String animation = trapData->getAnimation();
-			uint32 crc = String(animation).hashCode();
+			uint32 crc = animation.hashCode();
 			CombatAction* action = new CombatAction(droid, target, crc, hit, 0L);
 			creature->broadcastMessage(action, true);
 			creature->addCooldown("throwtrap", 5000); // 5s cooldown on droid throwing traps
@@ -225,8 +231,9 @@ public:
 			return SUCCESS;
 
 		} catch (Exception& e) {
-
+			creature->error(e.getMessage());
 		}
+
 		return GENERALERROR;
 	}
 
