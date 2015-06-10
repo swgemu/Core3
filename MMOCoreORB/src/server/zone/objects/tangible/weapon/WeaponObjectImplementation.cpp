@@ -718,9 +718,13 @@ void WeaponObjectImplementation::decay(CreatureObject* user) {
 		return;
 	}
 
-	int chance = System::random(100);
+	int roll = System::random(100);
+	int chance = 5;
 
-	if (chance < 5 || ((isSliced() || hasPowerup()) && chance < 15)) {
+	if (hasPowerup())
+		chance += 10;
+
+	if (roll < chance) {
 		if (isJediWeapon()) {
 			ManagedReference<SceneObject*> saberInv = getSlottedObject("saber_inv");
 
