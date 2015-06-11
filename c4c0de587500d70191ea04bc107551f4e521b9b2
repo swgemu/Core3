@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_625ed8eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/LuaAiAgent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-11T05:52:20Z",
+      "side": 1,
+      "message": "Locker locker(realObject);",
+      "revId": "c4c0de587500d70191ea04bc107551f4e521b9b2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
