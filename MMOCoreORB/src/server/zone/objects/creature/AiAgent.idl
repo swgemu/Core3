@@ -88,6 +88,8 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected CreatureTemplateReference npcTemplate;
 
+	protected unsigned int convoTemplateCRC;
+
 	protected SceneObject homeObject;
 
 	//DEBUG
@@ -171,6 +173,8 @@ class AiAgent extends CreatureObject {
 		nextMovementInterval = UPDATEMOVEMENTINTERVAL;
 
 		reactionRank = 0;
+
+		convoTemplateCRC = 0;
 
 		showNextMovementPosition = true;
 
@@ -1352,4 +1356,12 @@ class AiAgent extends CreatureObject {
 	 */
 	@preLocked
 	public native void reloadTemplate();
+
+	@read
+	public unsigned int getConvoTemplateCRC() {
+		return convoTemplateCRC;
+	}
+
+	@preLocked
+	public native void setConvoTemplate(final string templateString);
 }
