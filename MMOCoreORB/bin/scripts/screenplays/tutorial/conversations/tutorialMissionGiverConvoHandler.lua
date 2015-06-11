@@ -28,6 +28,7 @@ function tutorialMissionGiverConvoHandler:runScreenHandlers(conversationTemplate
 				SceneObject(pItem):setCustomObjectName("Release Documents")
 			end
 		end
+		CreatureObject(conversingNPC):setOptionsBitmask(128)
 		TutorialScreenPlay:handleRoomTen(conversingPlayer)
 	end
 
@@ -36,6 +37,7 @@ end
 
 function tutorialMissionGiverConvoHandler:getInitialScreen(pPlayer, pNpc, pConversationTemplate)
 	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+
 	return convoTemplate:getScreen("intro")
 end
 
