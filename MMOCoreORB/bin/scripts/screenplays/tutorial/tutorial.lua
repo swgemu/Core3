@@ -289,7 +289,7 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 
 		if (pDebris ~= nil) then
 			createObserver(OBJECTDESTRUCTION, "TutorialScreenPlay", "debrisDestroyed", pDebris)
-			TangibleObject(pDebris):setMaxCondition(50)
+			TangibleObject(pDebris):setMaxCondition(100)
 		end
 	end
 
@@ -375,6 +375,9 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 		pMobile = spawnMobile("tutorial", "tutorial_mission_giver", 0, 19.5, -4.2, -145.35, 0, cellID)
 
 		if (pMobile ~= nil) then
+			if (self:isRoomComplete(pPlayer, "r10")) then
+				CreatureObject(pMobile):setOptionsBitmask(128)
+			end
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 			writeData(playerID .. ":tutorial:roomTenMissionGiver", SceneObject(pMobile):getObjectID())
 		end
@@ -400,7 +403,9 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 		local pTravelTerm = spawnSceneObject("tutorial", "object/tangible/beta/beta_terminal_warp.iff", 27.55, -3.5, -167.8, cellID, 0, 0, 0, 0)
 
 		if (pTravelTerm ~= nil) then
-			setAuthorizationState(pTravelTerm, false)
+			if (not self:isRoomComplete(pPlayer, "r11")) then
+				setAuthorizationState(pTravelTerm, false)
+			end
 			writeData(playerID .. ":tutorial:travelTerminal", SceneObject(pTravelTerm):getObjectID())
 		end
 
@@ -408,6 +413,9 @@ function TutorialScreenPlay:spawnObjects(pPlayer)
 		pMobile = spawnMobile("tutorial", "tutorial_quartermaster", 0, 25.4, -4.2, -158.3, 92, cellID)
 
 		if (pMobile ~= nil) then
+			if (self:isRoomComplete(pPlayer, "r11")) then
+				CreatureObject(pMobile):setOptionsBitmask(128)
+			end
 			CreatureObject(pMobile):setPvpStatusBitmask(0)
 			writeData(playerID .. ":tutorial:roomElevenQuartermaster", SceneObject(pMobile):getObjectID())
 		end

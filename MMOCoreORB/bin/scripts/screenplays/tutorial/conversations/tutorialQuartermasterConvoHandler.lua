@@ -10,7 +10,7 @@ function tutorialQuartermasterConvoHandler:runScreenHandlers(conversationTemplat
 		ObjectManager.withCreatureAndPlayerObject(conversingPlayer, function(player, playerObject)
 			local playerID = player:getObjectID()
 
-			local pInventory = CreatureObject(conversingPlayer):getSlottedObject("inventory")
+			local pInventory = player:getSlottedObject("inventory")
 
 			if pInventory == nil then
 				return conversationScreen
@@ -23,14 +23,14 @@ function tutorialQuartermasterConvoHandler:runScreenHandlers(conversationTemplat
 				SceneObject(pInvItem):destroyObjectFromDatabase()
 			end
 
-			writeData(playerID .. ":tutorial:hasTurnedInDocs", 1)
-
 			local terminalID = readData(playerID .. ":tutorial:travelTerminal")
 			local pTerminal = getSceneObject(terminalID)
 			if (pTerminal ~= nil) then
 				setAuthorizationState(pTerminal, true)
+				TutorialScreenPlay:markRoomComplete(conversingPlayer, "r11")
 			end
 		end)
+		CreatureObject(conversingNPC):setOptionsBitmask(128)
 	end
 
 	return conversationScreen
