@@ -1552,8 +1552,7 @@ function TutorialScreenPlay:handlePirateGrenade(pPlayer)
 	local pirateID = readData(SceneObject(pPlayer):getObjectID() .. ":tutorial:roomEightPirate")
 	local pPirate = getSceneObject(pirateID)
 
-
-	if (pPirate == nil or CreatureObject(pPirate):isDead() or not AiAgent(pPirate):isInCombat()) then
+	if (pPirate == nil or CreatureObject(pPirate):isDead()) then
 		return
 	end
 
