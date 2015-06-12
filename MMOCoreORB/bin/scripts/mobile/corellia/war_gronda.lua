@@ -23,7 +23,7 @@ war_gronda = Creature:new {
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	optionsBitmask = 0,
-	diet = NONE,
+	diet = HERBIVORE,
 
 	templates = {"object/mobile/war_gronda.iff"},
 	controlDeviceTemplate = "object/intangible/pet/gronda_hue.iff",
