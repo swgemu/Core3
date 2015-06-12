@@ -266,7 +266,7 @@ barada_missions =
 			},
 			secondarySpawns =
 			{
-				{ npcTemplate = "weak_mercenary", planetName = "tatooine", npcName = "Weak Mercenary" },
+				{ npcTemplate = "theme_park_jabba_weak_mercenary", planetName = "tatooine", npcName = "Weak Mercenary" },
 
 			},
 			itemSpawns = {
