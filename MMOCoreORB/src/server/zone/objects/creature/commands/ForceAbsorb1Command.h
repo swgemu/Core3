@@ -5,19 +5,28 @@
 #ifndef FORCEABSORB1COMMAND_H_
 #define FORCEABSORB1COMMAND_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/buffs/SingleUseBuff.h"
+#include "JediQueueCommand.h"
 
-class ForceAbsorb1Command : public QueueCommand {
+class ForceAbsorb1Command : public JediQueueCommand {
 public:
 
 	ForceAbsorb1Command(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: JediQueueCommand(name, server) {
+		// BuffCRC's, first one is used.
+		buffCRCs.add(BuffCRC::JEDI_FORCE_ABSORB_1);
+		buffCRCs.add(BuffCRC::JEDI_FORCE_ABSORB_2);
+
+		// Skill mods.
+		skillMods.put("force_absorb", 1);
+
+		// Event Types.
+		eventTypes.add(ObserverEventType::FORCEBUFFHIT);
 
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
+<<<<<<< HEAD
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -75,6 +84,10 @@ public:
 		creature->playEffect("clienteffect/pl_force_absorb_self.cef", "");
 
 		return SUCCESS;
+=======
+		// Return.
+		return doJediSelfBuffCommand(creature);
+>>>>>>> refs/heads/change/3376/6
 	}
 
 	void handleBuff(SceneObject* creature, ManagedObject* object, int64 param) {
