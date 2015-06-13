@@ -439,6 +439,8 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 		return;
 	}
 
+	clearBuffs(false);
+
 	int baseLevel = getTemplateLevel();
 
 	float minDmg = calculateAttackMinDamage(baseLevel);
