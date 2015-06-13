@@ -461,7 +461,7 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 	player->getCooldownTimerMap()->updateToCurrentAndAddMili("petCallOrStoreCooldown", 1000); // 1 sec
 }
 
-bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force) {
+bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force, bool adult) {
 	if (petType != PetManager::CREATUREPET)
 		return true;
 
@@ -486,6 +486,9 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 	Time currentTime;
 	uint32 timeDelta = currentTime.getTime() - lastGrowth.getTime();
 	int stagesToGrow = timeDelta / 43200; // 12 hour
+
+	if (adult)
+		stagesToGrow = 10;
 
 	if (stagesToGrow == 0 && !force)
 		return true;
@@ -530,7 +533,12 @@ bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force)
 		player->sendMessage(box->generateMessage());
 		return false;
 	}
-	pet->setHeight(newHeight, false);
+
+	if (adult)
+		pet->setHeight(newHeight, true);
+	else
+		pet->setHeight(newHeight, false);
+
 	pet->setPetLevel(newLevel);
 
 	growthStage = newStage;

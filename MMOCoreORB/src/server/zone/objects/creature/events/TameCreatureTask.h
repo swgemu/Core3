@@ -19,14 +19,16 @@ private:
 	ManagedReference<Creature*> creature;
 	ManagedReference<CreatureObject*> player;
 	bool force;
+	bool adult;
 
 public:
-	TameCreatureTask(Creature* cre, CreatureObject* playo, int pvpMask, bool forced) : Task() {
+	TameCreatureTask(Creature* cre, CreatureObject* playo, int pvpMask, bool forced, bool adults) : Task() {
 		currentPhase = INITIAL;
 		creature = cre;
 		player = playo;
 		originalMask = pvpMask;
 		force = forced;
+		adult = adults;
 	}
 
 	void run() {
@@ -37,7 +39,7 @@ public:
 		player->removePendingTask("tame_pet");
 
 		if (force) {
-			success();
+			success(adult);
 			return;
 		}
 
@@ -82,7 +84,7 @@ public:
 			float tamingChance = creature->getChanceToTame(player);
 
 			if (tamingChance > System::random(100))
-				success();
+				success(false);
 			else {
 				player->sendSystemMessage("@hireling/hireling:taming_fail"); // You fail to tame the creature.
 				creature->showFlyText("npc_reaction/flytext","fail", 204, 0, 0);  // You fail to tame the creature.
@@ -101,7 +103,7 @@ public:
 		return;
 	}
 
-	void success() {
+	void success(bool adult) {
 		ZoneServer* zoneServer = player->getZoneServer();
 
 		String objectString = creature->getControlDeviceTemplate();
@@ -146,6 +148,10 @@ public:
 		}
 
 		objectManager->persistSceneObjectsRecursively(creature, 1);
+
+		if (adult) {
+			controlDevice->growPet(player, true, true);
+		}
 
 		creature->setControlDevice(controlDevice);
 		creature->setObjectMenuComponent("PetMenuComponent");

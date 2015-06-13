@@ -990,7 +990,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	}
 }
 
-void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* player, bool force) {
+void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* player, bool force, bool adult) {
 	Zone* zone = creature->getZone();
 
 	if (zone == NULL || !creature->isCreature())
@@ -1108,7 +1108,7 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 		agent->activateLoad("wait");
 	}
 
-	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force);
+	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force, adult);
 
 	player->addPendingTask("tame_pet", task, 8000);
 }

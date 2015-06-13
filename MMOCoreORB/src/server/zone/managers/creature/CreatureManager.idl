@@ -124,7 +124,7 @@ class CreatureManager extends ZoneManager {
 	
 	public native void droidHarvest(Creature creature, CreatureObject droid, int selectedID, int bonus);
 	
-	public native void tame(Creature creature, CreatureObject player, boolean force = false);
+	public native void tame(Creature creature, CreatureObject player, boolean force = false, boolean adult = false);
 
 	public native void milk(Creature creature, CreatureObject player);
 	

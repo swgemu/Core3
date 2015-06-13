@@ -100,7 +100,7 @@ class PetControlDevice extends ControlDevice {
 
 	@preLocked
 	@arg1preLocked
-	public native boolean growPet(CreatureObject player, boolean force = false);
+	public native boolean growPet(CreatureObject player, boolean force = false, boolean adult = false);
 
 	@preLocked
 	public native void arrestGrowth();

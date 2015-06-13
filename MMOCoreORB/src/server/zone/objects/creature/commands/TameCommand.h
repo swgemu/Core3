@@ -42,10 +42,14 @@ public:
 		}
 
 		bool force = false;
+		bool adult = false;
 
 		UnicodeTokenizer args(arguments);
 
 		if (args.hasMoreTokens()) {
+			UnicodeString arg;
+			args.getUnicodeToken(arg);
+
 			if (creature->isPlayerCreature()) {
 				PlayerObject* ghost = creature->getPlayerObject();
 
@@ -54,6 +58,9 @@ public:
 
 				if (ghost->hasAbility("admin")) {
 					force = true;
+
+					if (arg == "adult")
+						adult = true;
 				}
 			}
 		}
@@ -61,7 +68,7 @@ public:
 		Locker clocker(baby, creature);
 
 		ManagedReference<CreatureManager*> manager = creature->getZone()->getCreatureManager();
-		manager->tame(baby, creature, force);
+		manager->tame(baby, creature, force, adult);
 
 		return SUCCESS;
 	}
