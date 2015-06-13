@@ -78,11 +78,11 @@ public:
 			Task::schedule(delay);
 
 			if (strongRef != NULL) {
-				if (strongRef->getFollowObject() != NULL && !hasFollowObject) {
+				if (strongRef->getFollowObject().get() != NULL && !hasFollowObject) {
 					AiMap::instance()->moveEventsWithFollowObject.increment();
 
 					hasFollowObject = true;
-				} else if (strongRef->getFollowObject() == NULL && hasFollowObject) {
+				} else if (strongRef->getFollowObject().get() == NULL && hasFollowObject) {
 					AiMap::instance()->moveEventsWithFollowObject.decrement();
 
 					hasFollowObject = false;

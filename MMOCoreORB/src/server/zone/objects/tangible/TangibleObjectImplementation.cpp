@@ -896,7 +896,7 @@ bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	} else if (object->isAiAgent()) {
 		AiAgent* ai = object->asAiAgent();
 
-		if (ai->getHomeObject() == asTangibleObject()) {
+		if (ai->getHomeObject().get() == asTangibleObject()) {
 			return false;
 		}
 

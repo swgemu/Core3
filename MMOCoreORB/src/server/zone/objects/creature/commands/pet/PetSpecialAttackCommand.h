@@ -62,7 +62,7 @@ public:
 
 		if (!pet->isInCombat()) {
 			pet->activateInterrupt(pet->getLinkedCreature().get(), ObserverEventType::STARTCOMBAT);
-		} else if (targetTano != pet->getFollowObject()) {
+		} else if (targetTano != pet->getFollowObject().get()) {
 			pet->setDefender(targetTano);
 		}
 
