@@ -101,12 +101,19 @@ public:
 			return;
 		}
 
+		Locker pOneLocker(partOne);
+		Locker pTwoLocker(partTwo);
+		Locker pThreeLocker(partThree);
+		Locker pFourLocker(partFour);
+
 		String fullTemplate = "object/tangible/encoded_disk/message_assembled_base.iff";
 		ManagedReference<TangibleObject*> assembledMessage = server->createObject(fullTemplate.hashCode(), 1).castTo<TangibleObject*>();
 
 		if (assembledMessage == NULL) {
 			return;
 		}
+
+		Locker assembledMessageLocker(assembledMessage);
 
 		CoaMessageDataComponent* data = assembledMessage->getDataObjectComponent()->castTo<CoaMessageDataComponent*>();
 
