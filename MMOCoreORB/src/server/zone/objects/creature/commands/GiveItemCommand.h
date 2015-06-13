@@ -169,6 +169,7 @@ public:
 				}
 				else if (sceno->isCreatureObject()) {
 					String err;
+					Locker objLocker(object);
 					if (sceno->canAddObject(object, -1, err) == 0) {
 						sceno->transferObject(object, -1, true);
 					}
