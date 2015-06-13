@@ -682,7 +682,13 @@ void WeaponObjectImplementation::decreasePowerupUses(CreatureObject* player) {
 
 			player->sendSystemMessage(message);
 
-			powerupObject = NULL;
+			ManagedReference<PowerupObject*> pup = removePowerup();
+			if(pup != NULL) {
+				Locker plocker(pup);
+
+				pup->destroyObjectFromWorld( true );
+				pup->destroyObjectFromDatabase( true );
+			}
 		}
 		sendAttributeListTo(player);
 	}

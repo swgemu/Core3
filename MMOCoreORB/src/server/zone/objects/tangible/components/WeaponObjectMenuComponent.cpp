@@ -83,6 +83,8 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 			if(pup == NULL)
 				return 1;
 
+			Locker locker(pup);
+
 			pup->destroyObjectFromWorld( true );
 			pup->destroyObjectFromDatabase( true );
 
