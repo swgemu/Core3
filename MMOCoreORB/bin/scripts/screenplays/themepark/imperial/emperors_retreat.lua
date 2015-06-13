@@ -33,7 +33,7 @@ end
 
 function EmperorElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
 	ObjectManager.withCreatureObject(pPlayer, function(creature)
-		if (selectedID ~= 198) or (not creature:hasScreenPlayState(32, "imperial_theme_park")) then
+		if (selectedID ~= 198) or (not creature:hasScreenPlayState(16, "imperial_theme_park")) then
 			creature:sendSystemMessage("@theme_park_imperial/warning:emperor")
 			return 0
 		end
