@@ -200,7 +200,7 @@ int LuaAiAgent::setStalkObject(lua_State* L) {
 }
 
 int LuaAiAgent::getFollowObject(lua_State* L) {
-	SceneObject* followObject = realObject->getFollowObject();
+	SceneObject* followObject = realObject->getFollowObject().get();
 
 	if (followObject == NULL)
 		lua_pushnil(L);
@@ -221,7 +221,7 @@ int LuaAiAgent::restoreFollowObject(lua_State* L) {
 }
 
 int LuaAiAgent::getTargetOfTargetID(lua_State* L) {
-	SceneObject* target = realObject->getFollowObject();
+	SceneObject* target = realObject->getFollowObject().get();
 	if (target == NULL || !target->isCreatureObject()) {
 		lua_pushnil(L);
 		return 1;
@@ -420,7 +420,7 @@ int LuaAiAgent::validateFollow(lua_State* L) {
 }
 
 int LuaAiAgent::followHasState(lua_State* L) {
-	SceneObject* follow = realObject->getFollowObject();
+	SceneObject* follow = realObject->getFollowObject().get();
 
 	if (follow == NULL || !follow->isCreatureObject()) {
 		lua_pushboolean(L, false);
@@ -474,7 +474,7 @@ int LuaAiAgent::validateStateAttack(lua_State* L) {
 int LuaAiAgent::removeDefender(lua_State* L) {
 	Locker locker(realObject);
 
-	realObject->removeDefender(realObject->getFollowObject());
+	realObject->removeDefender(realObject->getFollowObject().get());
 
 	return 0;
 }
@@ -693,7 +693,7 @@ int LuaAiAgent::shouldRetreat(lua_State* L) {
 	PatrolPoint* homeLocation = realObject->getHomeLocation();
 
 	bool retVal;
-	SceneObject* target = realObject->getFollowObject();
+	SceneObject* target = realObject->getFollowObject().get();
 
 	if (realObject->isRetreating())
 		retVal = false;
@@ -843,7 +843,7 @@ int LuaAiAgent::assist(lua_State* L) {
 	if (agent == NULL)
 		return 0;
 
-	SceneObject* target = agent->getFollowObject();
+	SceneObject* target = agent->getFollowObject().get();
 	if (target == NULL)
 		return 0;
 

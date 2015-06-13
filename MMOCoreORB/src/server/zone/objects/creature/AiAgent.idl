@@ -90,6 +90,7 @@ class AiAgent extends CreatureObject {
 
 	protected unsigned int convoTemplateCRC;
 
+	@weakReference
 	protected SceneObject homeObject;
 
 	//DEBUG
@@ -99,6 +100,7 @@ class AiAgent extends CreatureObject {
 
 	protected boolean despawnOnNoPlayerInRange;
 
+	@weakReference
 	private SceneObject followObject;
 	@weakReference
 	private SceneObject followStore;
@@ -686,6 +688,7 @@ class AiAgent extends CreatureObject {
 
 	public native boolean generatePatrol(int num, float dist);
 
+	@weakReference
 	public SceneObject getFollowObject() {
 		synchronized (targetMutex) {
 			return followObject;
@@ -1247,6 +1250,8 @@ class AiAgent extends CreatureObject {
 	}
 
 	@dirty
+	@local
+	@weakReference
 	public SceneObject getHomeObject() {
 		return homeObject;
 	}

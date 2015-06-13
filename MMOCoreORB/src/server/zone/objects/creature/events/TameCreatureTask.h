@@ -171,7 +171,7 @@ public:
 
 			float respawn = agent->getRespawnTimer() * 1000;
 
-			if (respawn > 0 && agent->getHomeObject() == NULL) {
+			if (respawn > 0 && agent->getHomeObject().get() == NULL) {
 
 				if (agent->getRandomRespawn()) {
 					respawn = System::random(respawn) + (respawn / 2.f);

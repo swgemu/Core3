@@ -520,7 +520,7 @@ bool AiAgentImplementation::runAwarenessLogicCheck(SceneObject* pObject) {
 
 	checkForReactionChat(pObject);
 
-	Reference<SceneObject*> follow = getFollowObject();
+	Reference<SceneObject*> follow = getFollowObject().get();
 
 	if (follow != NULL && follow != pObject)
 		return false;
@@ -749,7 +749,7 @@ void AiAgentImplementation::selectSpecialAttack(int attackNum) {
 			}
 
 			QueueCommand* queueCommand = getZoneServer()->getObjectController()->getQueueCommand(nextActionCRC);
-			ManagedReference<SceneObject*> followCopy = getFollowObject();
+			ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 			if (queueCommand == NULL || followCopy == NULL
 					|| (queueCommand->getMaxRange() > 0 && !followCopy->isInRange(asAiAgent(), queueCommand->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))
 					|| (queueCommand->getMaxRange() <= 0 && !followCopy->isInRange(asAiAgent(), getWeapon()->getMaxRange() + getTemplateRadius() + followCopy->getTemplateRadius()))) {
@@ -771,7 +771,7 @@ void AiAgentImplementation::selectDefaultAttack() {
 }
 
 void AiAgentImplementation::enqueueAttack(int priority) {
-	ManagedReference<SceneObject*> followCopy = getFollowObject();
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 
 	if (followCopy != NULL) {
 		enqueueCommand(nextActionCRC, 0, followCopy->getObjectID(), nextActionArgs, priority);
@@ -781,7 +781,7 @@ void AiAgentImplementation::enqueueAttack(int priority) {
 }
 
 bool AiAgentImplementation::validateStateAttack() {
-	ManagedReference<SceneObject*> followCopy = getFollowObject();
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 
 	if (followCopy == NULL || !followCopy->isCreatureObject())
 		return false;
@@ -837,7 +837,7 @@ SceneObject* AiAgentImplementation::getTargetFromDefenders() {
 }
 
 bool AiAgentImplementation::validateTarget() {
-	ManagedReference<SceneObject*> followCopy = getFollowObject();
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 
 	return validateTarget(followCopy);
 }
@@ -890,7 +890,7 @@ int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 }
 
 void AiAgentImplementation::selectWeapon() {
-	ManagedReference<SceneObject*> followCopy = getFollowObject();
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	float dist = 5.f;
 
 	if (followCopy != NULL)
@@ -1025,7 +1025,7 @@ void AiAgentImplementation::setDespawnOnNoPlayerInRange(bool val) {
 }
 
 void AiAgentImplementation::runAway(CreatureObject* target, float range) {
-	ManagedReference<SceneObject*> followCopy = getFollowObject();
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	if (target == NULL || getZone() == NULL || followCopy == NULL) {
 		setOblivious();
 		return;
@@ -1095,7 +1095,7 @@ void AiAgentImplementation::queueDizzyFallEvent() {
 void AiAgentImplementation::addDefender(SceneObject* defender) {
 	unsigned int stateCopy = getFollowState();
 
-	if ((defenderList.size() == 0 || getFollowObject() == NULL) && defender != NULL) {
+	if ((defenderList.size() == 0 || getFollowObject().get() == NULL) && defender != NULL) {
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 		setFollowObject(defender);
 		if (defender->isCreatureObject() && threatMap != NULL)
@@ -1118,7 +1118,7 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 	if (defender->isCreatureObject())
 		getThreatMap()->dropDamage(defender->asCreatureObject());
 
-	if (getFollowObject() == defender) {
+	if (getFollowObject().get() == defender) {
 		CreatureObject* target = getThreatMap()->getHighestThreatCreature();
 
 		if (target == NULL && defenderList.size() > 0) {
@@ -1187,8 +1187,10 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 		int chance = 2000;
 		int babiesSpawned = 0;
 
-		if (homeObject != NULL) {
-			SortedVector<ManagedReference<Observer*> > observers = homeObject->getObservers(ObserverEventType::CREATUREDESPAWNED);
+		ManagedReference<SceneObject*> home = homeObject.get();
+
+		if (home != NULL) {
+			SortedVector<ManagedReference<Observer*> > observers = home->getObservers(ObserverEventType::CREATUREDESPAWNED);
 			DynamicSpawnObserver* observer = NULL;
 
 			for (int i = 0; i < observers.size(); i++) {
@@ -1313,8 +1315,10 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 
 	//printf("%d ref count\n", asAiAgent()->getReferenceCount());
 
-	if (homeObject != NULL) {
-		homeObject->notifyObservers(ObserverEventType::CREATUREDESPAWNED, asAiAgent());
+	ManagedReference<SceneObject*> home = homeObject.get();
+
+	if (home != NULL) {
+		home->notifyObservers(ObserverEventType::CREATUREDESPAWNED, asAiAgent());
 		return;
 	}
 
@@ -1347,7 +1351,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 	if (scno == asAiAgent())
 		return;
 
-	if (scno == getFollowObject()) {
+	if (scno == getFollowObject().get()) {
 			ManagedReference<AiAgent*> ai = asAiAgent();
 			ManagedReference<SceneObject*> sceno = scno;
 
@@ -1355,7 +1359,7 @@ void AiAgentImplementation::notifyDissapear(QuadTreeEntry* entry) {
 				Locker locker(ai_p);
 				Locker clocker(sceno_p, ai_p);
 
-				if (sceno_p == ai_p->getFollowObject()) {
+				if (sceno_p == ai_p->getFollowObject().get()) {
 					ai_p->restoreFollowObject();
 				}
 			});
@@ -1448,7 +1452,7 @@ void AiAgentImplementation::updateCurrentPosition(PatrolPoint* pos) {
 
 
 void AiAgentImplementation::checkNewAngle() {
-	ManagedReference<SceneObject*> followCopy = getFollowObject();
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	if (followCopy == NULL)
 		return;
 
@@ -1754,7 +1758,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 		if (getFollowState() == AiAgent::PATROLLING)
 			savedPatrolPoints.add(oldPoint);
 
-		ManagedReference<SceneObject*> followCopy = getFollowObject();
+		ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 		if (followCopy == NULL)
 			notifyObservers(ObserverEventType::DESTINATIONREACHED);
 
@@ -1881,7 +1885,7 @@ float AiAgentImplementation::getMaxDistance() {
 	if (isRetreating() || isFleeing())
 		return 0.1f;
 
-	ManagedReference<SceneObject*> followCopy = getFollowObject();
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	unsigned int stateCopy = getFollowState();
 
 	switch (stateCopy) {
@@ -1914,7 +1918,7 @@ float AiAgentImplementation::getMaxDistance() {
 }
 
 int AiAgentImplementation::setDestination() {
-	ManagedReference<SceneObject*> followCopy = getFollowObject();
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	unsigned int stateCopy = getFollowState();
 	switch (stateCopy) {
 	case AiAgent::OBLIVIOUS:
@@ -2107,7 +2111,7 @@ void AiAgentImplementation::activateMovementEvent() {
 	if (isWaiting() && moveEvent != NULL)
 		moveEvent->cancel();
 
-	if ((waitTime < 0 || numberOfPlayersInRange.get() <= 0) && getFollowObject() == NULL && !isRetreating()) {
+	if ((waitTime < 0 || numberOfPlayersInRange.get() <= 0) && getFollowObject().get() == NULL && !isRetreating()) {
 		if (moveEvent != NULL) {
 			moveEvent->clearCreatureObject();
 			moveEvent = NULL;
@@ -2405,16 +2409,18 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 	}
 
 	if (player->getPlayerObject() && player->getPlayerObject()->isPrivileged()) {
-		if (homeObject != NULL) {
+		ManagedReference<SceneObject*> home = homeObject.get();
+
+		if (home != NULL) {
 			int type = 0;
-			if (homeObject->getObserverCount(ObserverEventType::OBJECTDESTRUCTION) > 0)
+			if (home->getObserverCount(ObserverEventType::OBJECTDESTRUCTION) > 0)
 				type = ObserverEventType::OBJECTDESTRUCTION;
-			else if (homeObject->getObserverCount(ObserverEventType::CREATUREDESPAWNED) > 0)
+			else if (home->getObserverCount(ObserverEventType::CREATUREDESPAWNED) > 0)
 				type = ObserverEventType::CREATUREDESPAWNED;
 
 			if (type != 0) {
 				ManagedReference<SpawnObserver*> spawnObserver = NULL;
-				SortedVector<ManagedReference<Observer*> > observers = homeObject->getObservers(type);
+				SortedVector<ManagedReference<Observer*> > observers = home->getObservers(type);
 
 				for (int i = 0; i < observers.size(); i++) {
 					spawnObserver = cast<SpawnObserver*>(observers.get(i).get());
@@ -2825,10 +2831,12 @@ void AiAgentImplementation::broadcastInterrupt(int64 msg) {
 void AiAgentImplementation::setCombatState() {
 	CreatureObjectImplementation::setCombatState();
 
-	if (homeObject != NULL)
-		homeObject->notifyObservers(ObserverEventType::AIMESSAGE, asAiAgent(), ObserverEventType::STARTCOMBAT);
+	ManagedReference<SceneObject*> home = homeObject.get();
 
-	ManagedReference<SceneObject*> followCopy = getFollowObject();
+	if (home != NULL)
+		home->notifyObservers(ObserverEventType::AIMESSAGE, asAiAgent(), ObserverEventType::STARTCOMBAT);
+
+	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
 	if (followCopy != NULL && followCopy->isTangibleObject()) {
 		ManagedReference<TangibleObject*> target = cast<TangibleObject*>(followCopy.get());
 		ManagedReference<AiAgent*> ai = asAiAgent();
