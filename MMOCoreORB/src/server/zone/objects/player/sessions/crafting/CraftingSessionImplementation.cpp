@@ -611,7 +611,7 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 		return;
 	}
 
-	if (prototype == NULL) {
+	if (prototype == NULL || !checkPrototype()) {
 		sendSlotMessage(clientCounter, IngredientSlot::PROTOTYPENOTFOUND);
 		return;
 	}
@@ -905,7 +905,7 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 		return;
 	}
 
-	if (prototype == NULL) {
+	if (prototype == NULL || !checkPrototype()) {
 		sendSlotMessage(0, IngredientSlot::PROTOTYPENOTFOUND);
 		return;
 	}
@@ -1047,7 +1047,7 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 		return;
 	}
 
-	if (prototype == NULL) {
+	if (prototype == NULL || !checkPrototype()) {
 		sendSlotMessage(0, IngredientSlot::PROTOTYPENOTFOUND);
 		return;
 	}
@@ -1209,7 +1209,7 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool crea
 		return;
 	}
 
-	if (prototype == NULL) {
+	if (prototype == NULL || !checkPrototype()) {
 		sendSlotMessage(clientCounter, IngredientSlot::PROTOTYPENOTFOUND);
 		return;
 	}
@@ -1306,7 +1306,7 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 		return;
 	}
 
-	if (prototype == NULL) {
+	if (prototype == NULL || !checkPrototype()) {
 		sendSlotMessage(0, IngredientSlot::PROTOTYPENOTFOUND);
 		return;
 	}
@@ -1416,4 +1416,23 @@ void CraftingSessionImplementation::addWeaponDots() {
 
 		}
 	}
+}
+
+bool CraftingSessionImplementation::checkPrototype() {
+	ManagedReference<TangibleObject*> prototype = this->prototype.get();
+
+	if (prototype == NULL)
+		return false;
+
+	if (prototype->isSliced() || prototype->hasAntiDecayKit())
+		return false;
+
+	if (prototype->isWeaponObject()) {
+		WeaponObject* weapon = prototype.castTo<WeaponObject*>();
+
+		if (weapon->hasPowerup())
+			return false;
+	}
+
+	return true;
 }

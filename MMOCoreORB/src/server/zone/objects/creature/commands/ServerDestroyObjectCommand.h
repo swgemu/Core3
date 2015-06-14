@@ -8,6 +8,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
 
 
 class ServerDestroyObjectCommand : public QueueCommand {
@@ -89,12 +90,22 @@ public:
 						return GENERALERROR;
 					}
 
-					ManagedReference<SceneObject*> adk = tano->removeAntiDecayKit();
+					ManagedReference<SceneObject*> adkSceno = tano->removeAntiDecayKit();
+
+					if(adkSceno == NULL){
+						creature->sendSystemMessage("@veteran_new:failed_kit_create"); // "This item has Anti Decay applied to it but there was a failure to recreate the Anti Decay Kit."
+						return GENERALERROR;
+					}
+
+					AntiDecayKit* adk = adkSceno.castTo<AntiDecayKit*>();
 
 					if(adk == NULL){
 						creature->sendSystemMessage("@veteran_new:failed_kit_create"); // "This item has Anti Decay applied to it but there was a failure to recreate the Anti Decay Kit."
 						return GENERALERROR;
 					}
+
+					Locker adkLocker(adk);
+					adk->setUsed(false);
 
 					inventory->transferObject(adk, -1, false);
 					adk->sendTo(creature, true);

@@ -207,4 +207,6 @@ class CraftingSession extends Facade {
 	private native void addSkillMods();
 
 	private native void addWeaponDots();
+
+	private native boolean checkPrototype();
 }
