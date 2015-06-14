@@ -32,8 +32,13 @@ void OrderedTaskExecutioner::run() {
 	if (task != NULL) {
 		try {
 			task->run();
-		} catch (...) {
+		} catch (Exception& exc) {
+			strongReference->error("exception in OrderedTaskExecutioner::run");
+			strongReference->error(exc.getMessage());
 
+			exc.printStackTrace();
+		} catch (...) {
+			strongReference->error("uncaught exception in OrderedTaskExecutioner::run");
 		}
 
 		pendingTasks->runMoreOrderedTasks(strongReference);

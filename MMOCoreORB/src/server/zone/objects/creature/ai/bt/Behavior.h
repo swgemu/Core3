@@ -31,7 +31,7 @@ class CompositeBehavior;
 
 class Behavior {
 protected:
-	ManagedReference<AiAgent*> agent; // this is like the blackboard
+	WeakReference<AiAgent*> agent; // this is like the blackboard
 	uint8 result;
 	Behavior* parent; // the parent must be a composite
 	Reference<LuaBehavior*> interface;
@@ -91,8 +91,13 @@ public:
 	 * @return true if we can update, false if not
 	 */
 	virtual bool checkConditions() {
-		if (interface != NULL)
-			return interface->checkConditions(agent);
+		if (interface != NULL) {
+			Reference<AiAgent*> strongReference = agent.get();
+
+			if (strongReference != NULL) {
+				return interface->checkConditions(strongReference);
+			}
+		}
 
 		return false;
 	}
@@ -120,15 +125,20 @@ public:
 	virtual void doAction(bool directlyExecuted = false);
 
 	virtual int interrupt(SceneObject* source, int64 msg) {
-		return interface->interrupt(agent.get(), source, msg);
+		Reference<AiAgent*> strongReference = agent.get();
+
+		return interface->interrupt(strongReference, source, msg);
 	}
 
 	/**
 	 * Virtual to ensure that we should do an awareness check
 	 */
 	virtual bool doAwarenessCheck(SceneObject* target) {
-		if (interface != NULL)
-			return interface->doAwarenessCheck(agent.get(), target);
+		if (interface != NULL) {
+			Reference<AiAgent*> strongReference = agent.get();
+
+			return interface->doAwarenessCheck(strongReference, target);
+		}
 
 		return false;
 	}
