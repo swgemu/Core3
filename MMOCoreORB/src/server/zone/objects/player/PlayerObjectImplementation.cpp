@@ -521,26 +521,7 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 	StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creature, petsToStore);
 	task->execute();
 
-	ManagedReference<SceneObject*> parent = getParent().get();
-
-	Zone* zone = parent->getZone();
-
-	if (zone == NULL)
-		return;
-
-	CloseObjectsVector* vec = (CloseObjectsVector*) parent->getCloseObjects();
-
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
-	vec->safeCopyTo(closeObjects);
-
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		BuildingObject* building = closeObjects.get(i).castTo<BuildingObject*>();
-
-		if (building != NULL) {
-			building->updateCellPermissionsTo(creature);
-		}
-	}
-
+	updateInRangeBuildingPermissions();
 }
 
 int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {

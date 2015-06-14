@@ -270,6 +270,12 @@ void GuildManagerImplementation::destroyGuild(GuildObject* guild, StringIdChatPa
 			creod6->close();
 
 			member->broadcastMessage(creod6, true);
+
+			PlayerObject* memberGhost = member->getPlayerObject();
+
+			if (memberGhost != NULL) {
+				memberGhost->updateInRangeBuildingPermissions();
+			}
 		}
 	}
 
@@ -1178,6 +1184,12 @@ void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, u
 			guildChat->sendTo(target);
 			guildChat->addPlayer(target);
 		}
+
+		PlayerObject* targetGhost = target->getPlayerObject();
+
+		if (targetGhost != NULL) {
+			targetGhost->updateInRangeBuildingPermissions();
+		}
 	}
 
 	params.setStringId("@guildmail:accept_target_text"); //%TU has accepted you into %TT as a member.
@@ -1266,6 +1278,12 @@ void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObje
 		if (guildChat != NULL) {
 			guildChat->removePlayer(target);
 			guildChat->sendDestroyTo(target);
+		}
+
+		PlayerObject* targetGhost = target->getPlayerObject();
+
+		if (targetGhost != NULL) {
+			targetGhost->updateInRangeBuildingPermissions();
 		}
 	}
 
@@ -1616,6 +1634,12 @@ void GuildManagerImplementation::leaveGuild(CreatureObject* player, GuildObject*
 	if (guildChat != NULL) {
 		guildChat->removePlayer(player);
 		guildChat->sendDestroyTo(player);
+	}
+
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost != NULL) {
+		ghost->updateInRangeBuildingPermissions();
 	}
 
 	params.setStringId("@guildmail:leave_text"); //%TU has removed themselves from the guild.
