@@ -23,7 +23,7 @@ wormed_vrobal = Creature:new {
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = NONE,
 	optionsBitmask = 0,
-	diet = NONE,
+	diet = CARNIVORE,
 
 	templates = {"object/mobile/vrobal.iff"},
 	controlDeviceTemplate = "object/intangible/pet/roba_hue.iff",

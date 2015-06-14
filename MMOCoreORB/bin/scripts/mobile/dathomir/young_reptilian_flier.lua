@@ -23,7 +23,7 @@ young_reptilian_flier = Creature:new {
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 0,
-	diet = NONE,
+	diet = CARNIVORE,
 
 	templates = {"object/mobile/young_reptilian_flier.iff"},
 	scale = 0.8,

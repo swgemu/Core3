@@ -348,6 +348,12 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 		float tamingChance = creature->getTame();
 		EXPECT_TRUE( tamingChance >= 0 && tamingChance <= 1 ) << "Taming chance is not a valid value on mobile: " << templateName;
 
+		// Verify diet on creatures
+		if (boneMax > 0 || hideMax > 0 || meatMax > 0 || milkMax > 0 || tamingChance > 0) {
+			uint32 diet = creature->getDiet();
+			EXPECT_TRUE( diet != 0 ) << "Diet is NONE on creature type mobile " << templateName;
+		}
+
 		// Verify scale
 		float scale = creature->getScale();
 		EXPECT_TRUE( scale > 0 ) << "Scale is not a positive value on mobile: " << templateName;
