@@ -16,7 +16,9 @@ void DestroyMissionLairObserverImplementation::checkForHeal(TangibleObject* lair
 }
 
 bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {
-	if (lair->getZone() == NULL)
+	Zone* zone = lair->getZone();
+
+	if (zone == NULL)
 		return false;
 
 	int spawnLimitAdjustment = 0;
@@ -125,13 +127,15 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 
 		float tamingChance = creatureTemplate->getTame();
 
-		CreatureManager* creatureManager = lair->getZone()->getCreatureManager();
+		CreatureManager* creatureManager = zone->getCreatureManager();
 
 		for (int j = 0; j < numberToSpawn; j++) {
+			if (lair->getZone() == NULL)
+				break;
 
 			float x = lair->getPositionX() + (size - System::random(size * 20) / 10.0f);
 			float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
-			float z = lair->getZone()->getHeight(x, y);
+			float z = zone->getHeight(x, y);
 
 			ManagedReference<CreatureObject*> creo = NULL;
 
