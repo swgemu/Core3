@@ -78,15 +78,12 @@ function CorellianCorvetteScreenPlay:activate(pPlayer, faction, questType)
 		end
 
 		if corvetteId ~= 0 then
+			writeData(SceneObject(pPlayer):getObjectID() .. "corvetteId", corvetteId)
+			writeStringData(SceneObject(pPlayer):getObjectID() .. "questType", questType)
+			createEvent(1000, "CorellianCorvetteScreenPlay", "transportPlayer", pPlayer)
+			--TODO prompt nearby group members for travel
+			return 1
 
-			local pCorvette = getSceneObject(corvetteId)
-			ObjectManager.withBuildingObject(pCorvette, function(corvette)
-				self:startQuest(pCorvette, questType)
-				local cellId = SceneObject(corvette:getCell(1)):getObjectID()
-				SceneObject(pPlayer):switchZone("dungeon1", -42.9, 0, 0.1, cellId)
-				--TODO prompt nearby group members for travel
-				return 1
-			end)
 		else
 			CreatureObject(pPlayer):sendSystemMessage("@dungeon/space_dungeon:corellian_corvette_travel_fail") -- The Corellian corvette is currently out of transport range making transportation impossible.
 			return 0
@@ -95,6 +92,22 @@ function CorellianCorvetteScreenPlay:activate(pPlayer, faction, questType)
 		CreatureObject(pPlayer):sendSystemMessage("@dungeon/space_dungeon:unable_to_find_dungeon") -- That area is currently unavailable. Please try again later.
 		return 0
 	end
+end
+
+function CorellianCorvetteScreenPlay:transportPlayer(pPlayer)
+	if pPlayer == nil then
+		return
+	end
+
+	local questType = readStringData(SceneObject(pPlayer):getObjectID() .. "questType")
+	local corvetteId = readData(SceneObject(pPlayer):getObjectID() .. "corvetteId")
+	local pCorvette = getSceneObject(corvetteId)
+
+	ObjectManager.withBuildingObject(pCorvette, function(corvette)
+		self:startQuest(pCorvette, questType)
+		local cellId = SceneObject(corvette:getCell(1)):getObjectID()
+		SceneObject(pPlayer):switchZone("dungeon1", -42.9, 0, 0.1, cellId)
+	end)
 end
 
 function CorellianCorvetteScreenPlay:startQuest(pCorvette, questType)
@@ -178,12 +191,16 @@ function CorellianCorvetteScreenPlay:ejectAllPlayers(pCorvette)
 
 		for i = 1, #playersToEject, 1 do
 			local pObject = playersToEject[i]
-			self:ejectPlayer(pObject)
+			createEvent(1000, "CorellianCorvetteScreenPlay", "ejectPlayer", pObject)
 		end
 	end)
 end
 
 function CorellianCorvetteScreenPlay:ejectPlayer(pPlayer)
+	if pPlayer == nil then
+		return 0
+	end
+
 	local point = nil
 
 	local pCorvette = SceneObject(SceneObject(pPlayer):getParent()):getParent()
