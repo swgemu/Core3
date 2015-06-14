@@ -15,7 +15,11 @@ import server.zone.Zone;
 
 class AntiDecayKit extends Container {
 
+	boolean used;
+
 	public AntiDecayKit() {
+		used = false;
+
 		Logger.setLoggingName("AntiDecayKit");
 	}
 	
@@ -24,12 +28,28 @@ class AntiDecayKit extends Container {
 	@local
 	@dirty
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
-	
+
+	@preLocked
+	@arg1preLocked
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 
 	public native int canAddObject(SceneObject object, int containmentType, string errorDescription);
 
+	@preLocked
+	@arg1preLocked
 	public native void doApplyAntiDecay(CreatureObject player);
 
+	@preLocked
+	@arg1preLocked
 	public native void doRetrieveItem(CreatureObject player);
+
+	@read
+	public boolean isUsed() {
+		return used;
+	}
+
+	@preLocked
+	public void setUsed(boolean use) {
+		used = use;
+	}
 }

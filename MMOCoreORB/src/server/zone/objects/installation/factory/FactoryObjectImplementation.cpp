@@ -36,6 +36,7 @@
 
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
 
@@ -409,6 +410,24 @@ bool FactoryObjectImplementation::startFactory() {
 	}
 
 	ManagedReference<ManufactureSchematic* > schematic = getContainerObject(0).castTo<ManufactureSchematic*>();
+
+	if (schematic == NULL)
+		return false;
+
+	ManagedReference<TangibleObject*> prototype = schematic->getPrototype();
+
+	if (prototype == NULL)
+		return false;
+
+	if (prototype->isSliced() || prototype->hasAntiDecayKit())
+		return false;
+
+	if (prototype->isWeaponObject()) {
+		WeaponObject* weapon = prototype.castTo<WeaponObject*>();
+
+		if (weapon->hasPowerup())
+			return false;
+	}
 
 	timer = ((int)schematic->getComplexity()) * 2;
 

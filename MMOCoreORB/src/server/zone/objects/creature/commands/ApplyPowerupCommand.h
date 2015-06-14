@@ -45,12 +45,20 @@ public:
 		if (!pup->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
 			return GENERALERROR;
 
-		if (!weapon->isASubChildOf(creature))
-			return GENERALERROR;
-
 		if (!pup->isASubChildOf(creature))
 			return GENERALERROR;
-			
+
+		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
+
+		if (inventory == NULL)
+			return GENERALERROR;
+
+		if (!inventory->hasObjectInContainer(weapon->getObjectID()) && weapon->getParent().get() != creature)
+			return GENERALERROR;
+
+		if (creature->getSlottedObject("default_weapon") == weapon)
+			return GENERALERROR;
+
 		if (weapon->isJediWeapon())
 			return GENERALERROR;			
 

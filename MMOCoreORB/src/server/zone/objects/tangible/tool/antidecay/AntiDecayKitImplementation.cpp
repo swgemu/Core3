@@ -70,6 +70,8 @@ void AntiDecayKitImplementation::doApplyAntiDecay(CreatureObject* player)
 	inventory->transferObject(tano, -1, false);
 	tano->sendTo(player, true);
 
+	setUsed(true);
+
 	player->sendSystemMessage("@veteran_new:successfully_used_anti_decay_kit"); // You have successfully used the Anti Decay Kit. The item you used this Anti Decay Kit on will no longer require insurance nor will decay from use.
 }
 
@@ -95,9 +97,20 @@ void AntiDecayKitImplementation::doRetrieveItem(CreatureObject* player)
 }
 
 int AntiDecayKitImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	if (used) {
+		errorDescription = "@veteran_new:error_kit_already_used"; // This Anti Decay Kit has already been used and can not be used again.
+		return TransferErrorCode::CANTADD;
+	}
+
 	ManagedReference<SceneObject*> parent = getParentRecursively(SceneObjectType::PLAYERCREATURE).get();
 
 	if (parent == NULL){
+		errorDescription = "@veteran_new:error_kit_not_in_player_inventory"; // This Anti Decay Kit can only be used when it is in your inventory.
+		return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
+	}
+
+	SceneObject* inventory = parent->getSlottedObject("inventory");
+	if (inventory == NULL || !inventory->hasObjectInContainer(getObjectID())){
 		errorDescription = "@veteran_new:error_kit_not_in_player_inventory"; // This Anti Decay Kit can only be used when it is in your inventory.
 		return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 	}
@@ -107,7 +120,7 @@ int AntiDecayKitImplementation::canAddObject(SceneObject* object, int containmen
 		return TransferErrorCode::CONTAINERFULL;
 	}
 
-	if (parent != object->getParentRecursively(SceneObjectType::PLAYERCREATURE).get()){
+	if (!inventory->hasObjectInContainer(object->getObjectID())){
 		errorDescription = "@veteran_new:error_item_not_in_player_inventory"; // You can only use the Anti Decay Kit on an item that is in your inventory.
 		return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 	}
