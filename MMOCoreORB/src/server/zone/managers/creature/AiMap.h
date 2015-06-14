@@ -302,7 +302,7 @@ private:
 	}
 
 public:
-	static Behavior* createNewInstance(AiAgent* _agent, String _name, uint16 _type) {
+	static Behavior* createNewInstance(AiAgent* _agent, const String& _name, uint16 _type) {
 		Behavior* newBehavior;
 
 		switch (_type) {
