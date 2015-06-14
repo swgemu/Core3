@@ -759,18 +759,20 @@ class TangibleObject extends SceneObject {
 	public boolean hasAntiDecayKit() {
 		return antiDecayKitObject != null;
 	}
-	
+
+	@preLocked
 	public void applyAntiDecayKit(CreatureObject player, SceneObject adk) {
 		if(!hasAntiDecayKit()) {
 			antiDecayKitObject = adk;
-			
+
 			if(adk.getParent() != null)
 				adk.destroyObjectFromWorld(true);
-		
+
 			sendAttributeListTo(player);
 		}
 	}
-	
+
+	@preLocked
 	public SceneObject removeAntiDecayKit() {
 		if(hasAntiDecayKit()) {
 			SceneObject adk = antiDecayKitObject;

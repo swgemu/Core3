@@ -161,6 +161,17 @@ void SlicingSessionImplementation::handleMenuSelect(CreatureObject* pl, byte men
 	if (tangibleObject == NULL || player == NULL || player != pl)
 		return;
 
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+	if (inventory == NULL)
+		return;
+
+	if(!isBaseSlice() && tangibleObject->getGameObjectType() != SceneObjectType::STATICLOOTCONTAINER && tangibleObject->getGameObjectType() != SceneObjectType::MISSIONTERMINAL){
+		if (!inventory->hasObjectInContainer(tangibleObject->getObjectID())) {
+			player->sendSystemMessage("The object must be in your inventory in order to perform the slice.");
+			return;
+		}
+	}
+
 	uint8 progress = getProgress();
 
 	if (progress == 0) {

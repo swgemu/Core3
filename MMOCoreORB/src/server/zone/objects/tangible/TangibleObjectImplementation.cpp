@@ -36,6 +36,7 @@
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/objects/tangible/tool/antidecay/AntiDecayKit.h"
 #include "engine/engine.h"
 
 
@@ -83,6 +84,16 @@ void TangibleObjectImplementation::notifyLoadFromDatabase() {
 	}
 
 	activeAreas.removeAll();
+
+	if (hasAntiDecayKit()) {
+		AntiDecayKit* adk = antiDecayKitObject.castTo<AntiDecayKit*>();
+
+		if (adk != NULL && !adk->isUsed()) {
+			Locker locker(adk);
+
+			adk->setUsed(true);
+		}
+	}
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
