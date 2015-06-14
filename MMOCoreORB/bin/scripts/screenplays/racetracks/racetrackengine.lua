@@ -40,8 +40,6 @@ function RaceTrack:processWaypoint(pActiveArea, pObject)
 			else
 				self:actuallyProcessWaypoint(pObject,index)
 			end
-
-			return 1
 		end
 	end
 

@@ -4,7 +4,7 @@ RaceTrack = require("screenplays.racetracks.racetrackengine")
 
 narmle_racetrack_screenplay = RaceTrack:new {
 	trackConfig={
-		debugMode=1, -- 0 = off, 1 = print debug messages
+		debugMode = 0, -- 0 = off, 1 = print debug messages
 		planetName = "rori", -- The planet the Track is on
 		badgeToAward=BDG_RACING_NARMLE_MEMORIAL,  -- Badge to be awarded for best daily time
 		trackName="NARMLERT",  -- Internal trackname , should be unique to the track
