@@ -29,16 +29,24 @@ void Behavior::start() {
 
 	result = AiMap::RUNNING;
 
-	if (interface != NULL)
-		interface->start(agent);
+	if (interface != NULL) {
+		Reference<AiAgent*> strongReference = agent.get();
+
+		interface->start(strongReference);
+	}
 }
 
 void Behavior::end() {
-	if (interface != NULL)
-		interface->end(agent);
+	if (interface != NULL) {
+		Reference<AiAgent*> strongReference = agent.get();
+
+		interface->end(strongReference);
+	}
 }
 
 void Behavior::doAction(bool directlyExecuted) {
+	Reference<AiAgent*> agent = this->agent.get();
+
 	if (agent->isDead() || agent->isIncapacitated() || (agent->getZone() == NULL)) {
 		agent->setFollowObject(NULL);
 		return;
@@ -51,6 +59,8 @@ void Behavior::doAction(bool directlyExecuted) {
 		this->start();
 	else if (!this->checkConditions())
 		endWithFailure();
+
+	agent = this->agent.get();
 
 	if (finished()) {
 		if (parent == NULL) {
