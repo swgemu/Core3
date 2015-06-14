@@ -4,7 +4,7 @@ RaceTrackManager = require("screenplays.racetracks.racetrackengine")
 
 agrilatswamp_racetrack_screenplay = RaceTrack:new {
 	trackConfig={
-		debugMode=1, -- 0 = off, 1 = print debug messages
+		debugMode = 0, -- 0 = off, 1 = print debug messages
 		planetName = "corellia", -- The planet the Track is on
 		badgeToAward=BDG_RACING_AGRILAT_SWAMP,  -- Badge to be awarded for best daily time
 		trackName="AGSWRT",  -- Internal trackname , should be unique to the track

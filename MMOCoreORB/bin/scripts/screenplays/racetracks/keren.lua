@@ -4,7 +4,7 @@ RaceTrack = require("screenplays.racetracks.racetrackengine")
 
 keren_racetrack_screenplay = RaceTrack:new {
 	trackConfig={
-		debugMode=1, -- 0 = off, 1 = print debug messages
+		debugMode = 0, -- 0 = off, 1 = print debug messages
 		planetName = "naboo", -- The planet the Track is on
 		badgeToAward=BDG_RACING_KEREN_CITY,  -- Badge to be awarded for best daily time
 		trackName="KERENRT",  -- Internal trackname , should be unique to the track

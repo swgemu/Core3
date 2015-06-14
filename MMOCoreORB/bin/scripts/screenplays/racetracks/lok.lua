@@ -4,7 +4,7 @@ RaceTrack = require("screenplays.racetracks.racetrackengine")
 
 lok_racetrack_screenplay = RaceTrack:new {
 	trackConfig={
-		debugMode=1, -- 0 = off, 1 = print debug messages
+		debugMode = 0, -- 0 = off, 1 = print debug messages
 		planetName = "lok", -- The planet the Track is on
 		badgeToAward=BDG_RACING_LOK_MARATHON,  -- Badge to be awarded for best daily time
 		trackName="LOKRT",  -- Internal trackname , should be unique to the track

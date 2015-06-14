@@ -4,7 +4,7 @@ RaceTrack = require("screenplays.racetracks.racetrackengine")
 
 nashal_racetrack_screenplay = RaceTrack:new {
 	trackConfig={
-		debugMode=1, -- 0 = off, 1 = print debug messages
+		debugMode = 0, -- 0 = off, 1 = print debug messages
 		planetName = "talus", -- The planet the Track is on
 		badgeToAward=BDG_RACING_NASHAL_RIVER,  -- Badge to be awarded for best daily time
 		trackName="NASHALRT",  -- Internal trackname , should be unique to the track

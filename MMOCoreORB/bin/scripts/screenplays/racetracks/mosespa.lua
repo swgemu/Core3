@@ -4,7 +4,7 @@ RaceTrackManager = require("screenplays.racetracks.racetrackengine")
 
 mosespa_racetrack_screenplay = RaceTrack:new {
 	trackConfig={
-		debugMode=1, -- 0 = off, 1 = print debug messages
+		debugMode = 0, -- 0 = off, 1 = print debug messages
 		planetName = "tatooine", -- The planet the Track is on
 		badgeToAward=BDG_RACING_MOS_ESPA,  -- Badge to be awarded for best daily time
 		trackName="MESPART",  -- Internal trackname , should be unique to the track
