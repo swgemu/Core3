@@ -35,12 +35,12 @@ HeroOfTatooineScreenPlay = ScreenPlay:new {
 		trooper1 = {{-7.86, -3.97, -8.18, 4005942}, {-6.1, 0.03, -4.2, 4005941}, {-6.20, 0.57, 10.92, 4005939}},
 		trooper2 = {{-5.53, -3.97, -8.51, 4005942}, {-6.20, 0.57, 10.92, 4005939}}
 	},
-	
+
 	spawnTimers = {
 		initial = { 20, 30 }, -- Time in minutes for first spawn after server start
 		respawn = { 60, 180 }, -- Time in minutes before respawning after despawn
 		life = { 15, 60 }, -- Time in minutes to keep mob in world before despawn
-	} 
+	}
 }
 
 registerScreenPlay("HeroOfTatooineScreenPlay", true)
@@ -67,7 +67,7 @@ end
 
 function HeroOfTatooineScreenPlay:getEventTimer(event)
 	local timer = self.spawnTimers[event]
-	
+
 	if (timer == nil) then
 		return getRandomNumber(20, 30) * 60 * 1000
 	else
@@ -165,6 +165,7 @@ function HeroOfTatooineScreenPlay:doCourageChange()
 		return 0
 	elseif (pCourageMob ~= nil) then
 		SceneObject(pCourageMob):destroyObjectFromWorld()
+		deleteData("hero_of_tat:courage_mob_id")
 		self:createCourageEvent("respawn")
 		return 0
 	end
@@ -275,6 +276,7 @@ function HeroOfTatooineScreenPlay:doAltruismChange()
 
 	if (pFarmer ~= nil) then
 		SceneObject(pFarmer):destroyObjectFromWorld()
+		deleteData("hero_of_tat:altruism_mob_id")
 		self:createAltruismEvent("respawn")
 		return 0
 	end
@@ -775,14 +777,17 @@ function HeroOfTatooineScreenPlay:doHonorChange()
 
 	if (pPirate1 ~= nil) then
 		SceneObject(pPirate1):destroyObjectFromWorld()
+		deleteData("hero_of_tat:honor_pirate_1_id")
 	end
 
 	if (pPirate2 ~= nil) then
 		SceneObject(pPirate2):destroyObjectFromWorld()
+		deleteData("hero_of_tat:honor_pirate_2_id")
 	end
-	
+
 	if (pLeader ~= nil) then
 		SceneObject(pLeader):destroyObjectFromWorld()
+		deleteData("hero_of_tat:honor_leader_id")
 		self:createHonorEvent("respawn")
 		return
 	end
