@@ -57,6 +57,7 @@ int DroidRepairModuleDataComponent::handleObjectMenuSelect(CreatureObject* playe
 		if( controller == NULL )
 			return 0;
 
+		Locker controllerLocker(controller);
 		controller->setTrainingCommand( PetManager::REPAIR );
 
 	}
