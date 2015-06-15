@@ -288,7 +288,7 @@ int DnaManager::levelForScore(int type, float value) {
 		case HIT_LEVEL:
 			for (int i=0;i<dnaHit.size();i++) {
 				float lv = dnaHit.get(i);
-				if(lv == value) {
+				if(lv + 0.005 >= value && lv - 0.005 <= value) {
 					rc = i;
 				}
 			}
@@ -296,7 +296,7 @@ int DnaManager::levelForScore(int type, float value) {
 		case DPS_LEVEL:
 			for (int i=0;i<dnaDPS.size();i++) {
 				float lv = dnaDPS.get(i);
-				if(lv == value || lv +1 == value || lv -1 == value) {
+				if(lv + 1.5 >= value && lv - 1.5 <= value) {
 					rc = i;
 				}
 			}
