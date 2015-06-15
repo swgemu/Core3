@@ -287,41 +287,91 @@ int DnaManager::levelForScore(int type, float value) {
 	switch(type) {
 		case HIT_LEVEL:
 			for (int i=0;i<dnaHit.size();i++) {
+				float lvminus = 0, lvplus = 3;
+
+				if (i > 0)
+					lvminus = dnaHit.get(i - 1);
+
+				if (i < (dnaHit.size() - 1))
+					lvplus = dnaHit.get(i + 1);
+
 				float lv = dnaHit.get(i);
-				if(lv == value) {
+
+				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
 					rc = i;
+					break;
 				}
 			}
 			break;
 		case DPS_LEVEL:
 			for (int i=0;i<dnaDPS.size();i++) {
+				float lvminus = 0, lvplus = 1000;
+
+				if (i > 0)
+					lvminus = dnaDPS.get(i - 1);
+
+				if (i < (dnaDPS.size() - 1))
+					lvplus = dnaDPS.get(i + 1);
+
 				float lv = dnaDPS.get(i);
-				if(lv == value || lv +1 == value || lv -1 == value) {
+
+				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
 					rc = i;
+					break;
 				}
 			}
 			break;
 		case HAM_LEVEL:
 			for (int i=0;i<dnaHam.size();i++) {
+				float lvminus = 0, lvplus = 500000;
+
+				if (i > 0)
+					lvminus = dnaHam.get(i - 1);
+
+				if (i < (dnaHam.size() - 1))
+					lvplus = dnaHam.get(i + 1);
+
 				float lv = dnaHam.get(i);
-				if(lv == value) {
+
+				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
 					rc = i;
+					break;
 				}
 			}
 			break;
 		case ARM_LEVEL:
 			for (int i=0;i<dnaArmor.size();i++) {
+				float lvminus = 0, lvplus = 2000;
+
+				if (i > 0)
+					lvminus = dnaArmor.get(i - 1);
+
+				if (i < (dnaArmor.size() - 1))
+					lvplus = dnaArmor.get(i + 1);
+
 				float lv = dnaArmor.get(i);
-				if(lv == value) {
+
+				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
 					rc = i;
+					break;
 				}
 			}
 			break;
 		case REG_LEVEL:
 			for (int i=0;i<dnaRegen.size();i++) {
+				float lvminus = 0, lvplus = 50000;
+
+				if (i > 0)
+					lvminus = dnaRegen.get(i - 1);
+
+				if (i < (dnaRegen.size() - 1))
+					lvplus = dnaRegen.get(i + 1);
+
 				float lv = dnaRegen.get(i);
-				if(lv == value) {
+
+				if(value >= (lvminus + lv) / 2.0 && value <= (lvplus + lv) / 2.0) {
 					rc = i;
+					break;
 				}
 			}
 			break;
