@@ -737,6 +737,7 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 
 		CreatureObjectDeltaMessage3* dcreo3 = new CreatureObjectDeltaMessage3(
 				asCreatureObject());
+		dcreo3->updateCreatureBitmask(getOptionsBitmask());
 		dcreo3->updateState();
 		dcreo3->close();
 
