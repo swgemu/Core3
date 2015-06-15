@@ -377,6 +377,9 @@ bool DroidObjectImplementation::sendConversationStartTo(SceneObject* player) {
 	if (!player->isPlayerCreature() || isDead())
 		return false;
 
+	if (player != getLinkedCreature().get())
+		return false;
+
 	BaseDroidModuleComponent* m = getModule("personality_chip");
 	if (m == NULL) {
 		return false;
