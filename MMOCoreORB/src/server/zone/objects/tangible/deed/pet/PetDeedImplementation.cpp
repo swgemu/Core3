@@ -207,7 +207,7 @@ int PetDeedImplementation::calculatePetLevel() {
 	if (regen == 0) {
 		regen = (dexterity*15)     + (endurance * 3);
 	}
-	return Genetics::calculateAgentLevel(health, (damageMax + damageMin)/2, chanceHit, regen, armor, effective, kinResist, energyResist, blastResist, heatResist, coldResist, elecResist, acidResist, stunResist);
+	return Genetics::calculateAgentLevel(health, ((damageMax + damageMin)/2.0f)/attackSpeed, chanceHit, regen, armor, effective, kinResist, energyResist, blastResist, heatResist, coldResist, elecResist, acidResist, stunResist);
 }
 void PetDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ManagedReference<ManufactureSchematic*> manufact = values->getManufactureSchematic();
