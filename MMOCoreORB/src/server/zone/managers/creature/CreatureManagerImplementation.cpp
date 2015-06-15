@@ -765,9 +765,6 @@ void CreatureManagerImplementation::droidHarvest(Creature* creature, CreatureObj
 		modifier = owner->getGroup()->getGroupHarvestModifier(owner);
 
 		quantityExtracted = (int)(quantityExtracted * modifier);
-		if (owner->getGroup()->getGroupSize() > 2 ) {
-			quantityExtracted -= quantityExtracted * 0.3; // 30% reduction
-		}
 	}
 
 	if (creature->getParent().get() != NULL)
