@@ -146,11 +146,24 @@ void DroidMaintenanceSessionImplementation::addCreditsToCurrentStructure(int amo
 void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
     // launch the task and set droid cooldown.
 	ManagedReference<CreatureObject*> creature = this->player.get();
+
 	if (maintenance.size() == 0) {
 		creature->sendSystemMessage("@pet/droid_modules:droid_maint_empty_maint_run");
 		sendMaintanceRunBox();
 		return;
 	}
+
+	Reference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
+	ManagedReference<DroidObject*> droid = module->getDroidObject();
+
+	Locker locker(creature);
+	Locker droidLock(droid, creature);
+
+	Zone* zone = droid->getZone();
+
+	if (zone == NULL)
+		return;
+
 	// pay all structures
 	long totalCosts = 0;
 	long totalFees = 0;
@@ -168,9 +181,8 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
 		return;
 	}
 	// he had enough credits, so lets perform the run .
-	ManagedReference<DroidMaintenanceModuleDataComponent*> module = this->maintModule.get();
-	ManagedReference<DroidObject*> droid = module->getDroidObject();
-	long time = module->calculateRunTime(maintenance);
+
+	long time = module->calculateRunTime(maintenance, zone->getZoneName(), droid);
 	long powerCost = time/1000/60/15;
 	// check for power now as it may hit zero while we are in the menu
 	if (!droid->hasPower()) {
@@ -189,7 +201,6 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
 		creature->subtractBankCredits(totalFees - payedSoFar);
 	}
 	// now the structures.
-	Locker clock(creature);
 	module->payStructures(creature,maintenance);
 	// calculate time
 	// we got milliseconds convert to minutes
@@ -211,8 +222,6 @@ void DroidMaintenanceSessionImplementation::performMaintenanceRun(){
 	}
 
 	creature->sendSystemMessage(str.toString());
-
-	Locker droidLock(droid, creature);
 
 	// store the pet off and set the call cooldown.
 	droid->getCooldownTimerMap()->updateToCurrentAndAddMili("call_cooldown",time);

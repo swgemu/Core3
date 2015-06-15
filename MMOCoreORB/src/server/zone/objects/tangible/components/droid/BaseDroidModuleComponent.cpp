@@ -54,7 +54,7 @@ void BaseDroidModuleComponent::onCall() {
 void BaseDroidModuleComponent::onStore() {
 }
 ManagedReference<DroidObject*> BaseDroidModuleComponent::getDroidObject() {
-	ManagedReference<DroidObject*> droid = cast<DroidObject*>(getParent()->getParentRecursively(SceneObjectType::DROIDCREATURE).get().get());
+	ManagedReference<DroidObject*> droid = getParent()->getParentRecursively(SceneObjectType::DROIDCREATURE).get().castTo<DroidObject*>();
 	return droid;
 }
 

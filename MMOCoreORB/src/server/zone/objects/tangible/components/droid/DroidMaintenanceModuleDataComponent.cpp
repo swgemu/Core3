@@ -265,10 +265,8 @@ void DroidMaintenanceModuleDataComponent::payStructures(CreatureObject* player, 
 		}
 	}
 }
-long DroidMaintenanceModuleDataComponent::calculateRunTime(VectorMap<unsigned long long, int> assignments) {
+long DroidMaintenanceModuleDataComponent::calculateRunTime(const VectorMap<unsigned long long, int>& assignments, const String& localPlanet, DroidObject* droid) {
 	long duration = 0;
-	ManagedReference<DroidObject*> droid = getDroidObject();
-	String localPlanet = droid->getZone()->getZoneName();
 	ManagedReference<SceneObject*> primeStructure;
 	for(int i=0;i< assignments.size();i++) {
 		uint64 objectID = assignments.elementAt(i).getKey();
