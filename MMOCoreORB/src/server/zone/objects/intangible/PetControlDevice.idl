@@ -318,5 +318,5 @@ class PetControlDevice extends ControlDevice {
 	public native PatrolPoint getPatrolPoint(int idx);
 
 	@local
-	public native boolean isValidPet();
+	public native boolean isValidPet(AiAgent pet);
 }
