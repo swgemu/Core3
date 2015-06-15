@@ -98,6 +98,8 @@ function GetTargetCreaturePet:doAction(pAgent)
 					agent:setFollowObject(pTarget)
 					agent:setDefender(pTarget)
 					return BEHAVIOR_SUCCESS
+				else
+					agent:setLastCommandTarget(nil)
 				end
 			elseif pTarget ~= nil and agent:validateFollow() then
 				return BEHAVIOR_SUCCESS
@@ -166,6 +168,8 @@ function GetTargetDroidPet:doAction(pAgent)
 					agent:setFollowObject(pTarget)
 					agent:setDefender(pTarget)
 					return BEHAVIOR_SUCCESS
+				else
+					agent:setLastCommandTarget(nil)
 				end
 			elseif pTarget ~= nil and agent:validateFollow() then
 				return BEHAVIOR_SUCCESS
@@ -234,6 +238,8 @@ function GetTargetFactionPet:doAction(pAgent)
 					agent:setFollowObject(pTarget)
 					agent:setDefender(pTarget)
 					return BEHAVIOR_SUCCESS
+				else
+					agent:setLastCommandTarget(nil)
 				end
 			elseif pTarget ~= nil and agent:validateFollow() then
 				return BEHAVIOR_SUCCESS
