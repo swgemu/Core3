@@ -67,6 +67,8 @@ public:
 	static void getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector = NULL);
 
 	static void getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, const SortedVector<ManagedReference<QuadTreeEntry*> >& inRangeObjects);
+	static void getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, const Vector<QuadTreeEntry* >& inRangeObjects);
+
 	static Vector<float>* getCellFloorCollision(float x, float y, CellObject* cellObject);
 
 	//static bool

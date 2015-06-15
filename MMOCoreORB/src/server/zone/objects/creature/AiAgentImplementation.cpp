@@ -1782,24 +1782,36 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, bool walk) {
 }
 
 float AiAgentImplementation::getWorldZ(const Vector3& position) {
+	float ret = 0.f;
+
 	Zone* zone = getZone();
 	if (zone == NULL)
-		return 0.f;
+		return ret;
 
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	IntersectionResults intersections;
 
 	if (closeobjects != NULL) {
+		Vector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
+
 		closeobjects->safeCopyTo(closeObjects);
+
+		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
+
+		ret = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, NULL);
 	} else {
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
 		zone->info("Null closeobjects vector in AiAgentImplementation::getWorldZ", true);
 
 		Vector3 worldPosition = getWorldPosition();
 		zone->getInRangeObjects(worldPosition.getX(), worldPosition.getY(), 128, &closeObjects, true);
+
+		CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
+
+		ret = zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, NULL);
 	}
 
-	IntersectionResults intersections;
-	CollisionManager::getWorldFloorCollisions(position.getX(), position.getY(), zone, &intersections, closeObjects);
-	return zone->getPlanetManager()->findClosestWorldFloor(position.getX(), position.getY(), position.getZ(), getSwimHeight(), &intersections, NULL);
+	return ret;
 }
 
 // TODO (dannuic): All of the AI goes into the movement cycle, the recovery cycle is only for HAM/status recovery

@@ -365,16 +365,19 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 }
 
 void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector) {
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
-
 	if (closeObjectsVector != NULL) {
+		Vector<QuadTreeEntry*> closeObjects(closeObjectsVector->size(), 10);
 		closeObjectsVector->safeCopyTo(closeObjects);
+
+		getWorldFloorCollisions(x, y, zone, result, closeObjects);
 	} else {
 		zone->info("Null closeobjects vector in CollisionManager::getWorldFloorCollisions", true);
-		zone->getInRangeObjects(x, y, 128, &closeObjects, true);
-	}
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
-	getWorldFloorCollisions(x, y, zone, result, closeObjects);
+		zone->getInRangeObjects(x, y, 128, &closeObjects, true);
+
+		getWorldFloorCollisions(x, y, zone, result, closeObjects);
+	}
 }
 
 void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, const SortedVector<ManagedReference<QuadTreeEntry*> >& inRangeObjects) {
@@ -382,10 +385,7 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, Sor
 	Vector3 rayEnd(x, -16384.f, y);
 
 	for (int i = 0; i < inRangeObjects.size(); ++i) {
-		SceneObject* sceno = dynamic_cast<SceneObject*>(inRangeObjects.get(i).get());
-
-		if (sceno == NULL)
-			continue;
+		SceneObject* sceno = static_cast<SceneObject*>(inRangeObjects.get(i).get());
 
 		AABBTree* aabbTree = getAABBTree(sceno, 255);
 
@@ -397,6 +397,25 @@ void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, Sor
 		aabbTree->intersects(ray, 16384 * 2, *result);
 	}
 }
+
+void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, SortedVector<IntersectionResult>* result, const Vector<QuadTreeEntry*>& inRangeObjects) {
+	Vector3 rayStart(x, 16384.f, y);
+	Vector3 rayEnd(x, -16384.f, y);
+
+	for (int i = 0; i < inRangeObjects.size(); ++i) {
+		SceneObject* sceno = static_cast<SceneObject*>(inRangeObjects.get(i));
+
+		AABBTree* aabbTree = getAABBTree(sceno, 255);
+
+		if (aabbTree == NULL)
+			continue;
+
+		Ray ray = convertToModelSpace(rayStart, rayEnd, sceno);
+
+		aabbTree->intersects(ray, 16384 * 2, *result);
+	}
+}
+
 
 bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
 	Zone* zone = object1->getZone();
@@ -461,8 +480,6 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	float intersectionDistance;
 	Triangle* triangle = NULL;
 
-//	zone->rlock();
-
 	try {
 		for (int i = 0; i < closeObjects->size(); ++i) {
 			AABBTree* aabbTree = NULL;
@@ -477,30 +494,17 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 
 			} catch (Exception& e) {
 				aabbTree = NULL;
-			} catch (...) {
-//				zone->runlock();
-
-				throw;
 			}
 
 			if (aabbTree != NULL) {
 				//moving ray to model space
-//				zone->runlock();
+				Ray ray = convertToModelSpace(rayOrigin, rayEnd, scno);
 
-				try {
-					Ray ray = convertToModelSpace(rayOrigin, rayEnd, scno);
+				//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
 
-					//structure->info("checking ray with building dir" + String::valueOf(structure->getDirectionAngle()), true);
-
-					if (aabbTree->intersects(ray, dist, intersectionDistance, triangle, true)) {
-						return false;
-					}
-				} catch (...) {
-					throw;
+				if (aabbTree->intersects(ray, dist, intersectionDistance, triangle, true)) {
+					return false;
 				}
-
-//				zone->rlock();
-
 			}
 		}
 	} catch (Exception& e) {

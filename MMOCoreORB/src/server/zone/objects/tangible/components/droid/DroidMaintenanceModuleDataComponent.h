@@ -48,7 +48,7 @@ public:
 	bool isAssignedTo(uint64 structure);
 	void getStructureList(Vector<ManagedReference<StructureObject* > >* list, ZoneServer* srv,uint32 planet);
 	void payStructures(CreatureObject* player,VectorMap<unsigned long long, int> assignments);
-	long calculateRunTime(VectorMap<unsigned long long, int> assignments);
+	long calculateRunTime(const VectorMap<unsigned long long, int>& assignments, const String& localPlanet, DroidObject* droid);
 private:
 	void validateStructures();
 	bool isValidStructure(uint64 objectID);
