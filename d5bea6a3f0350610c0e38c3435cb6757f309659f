@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_82367c02",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/corellian_corvette/corellianCorvette.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1518
+      },
+      "writtenOn": "2015-06-15T03:04:18Z",
+      "side": 1,
+      "message": "missing \"",
+      "revId": "d5bea6a3f0350610c0e38c3435cb6757f309659f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
