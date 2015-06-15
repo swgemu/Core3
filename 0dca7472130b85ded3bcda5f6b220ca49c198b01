@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a91bd0f_c547ae4a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GiveItemCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-15T06:16:59Z",
+      "side": 1,
+      "message": "sceno is already locked here (on line 79).",
+      "revId": "0dca7472130b85ded3bcda5f6b220ca49c198b01",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
