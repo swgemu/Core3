@@ -55,6 +55,7 @@ public:
 			deed->adjustPetStats(player,pet);
 		}
 
+		device->sendAttributeListTo(player);
 	}
 };
 
