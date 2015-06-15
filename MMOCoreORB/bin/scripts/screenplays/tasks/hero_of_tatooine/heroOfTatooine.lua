@@ -76,6 +76,8 @@ function HeroOfTatooineScreenPlay:getEventTimer(event)
 end
 
 function HeroOfTatooineScreenPlay:spawnAltruismObjects()
+	self:despawnAltruismObjects()
+	
 	local pCrate = spawnSceneObject("tatooine", "object/tangible/item/quest/hero_of_tatooine/explosives_crate.iff", 76.87,-46.24,-136.9, 5995575, .985, 0, .1714, 0)
 
 	if (pCrate ~= nil) then
@@ -105,6 +107,18 @@ function HeroOfTatooineScreenPlay:spawnAltruismObjects()
 	local pDaughter = spawnMobile("tatooine", "hero_of_tat_farmers_child", 0, 192.1, -66.8, -105.9, -70, 5995573)
 	CreatureObject(pDaughter):setPvpStatusBitmask(0)
 	writeData("hero_of_tat:farmerChildId", SceneObject(pDaughter):getObjectID())
+	
+	createEvent(30 * 60 * 1000, "HeroOfTatooineScreenPlay", "validateAltruismCave", nil)
+end
+
+function HeroOfTatooineScreenPlay:validateAltruismCave()
+	local count = self:getCavePlayerWithQuestCount()
+	
+	if (count == 0) then
+		self:despawnAltruismObjects()
+	else
+		createEvent(30 * 60 * 1000, "HeroOfTatooineScreenPlay", "validateAltruismCave", nil)
+	end
 end
 
 function HeroOfTatooineScreenPlay:initEvents()
@@ -523,7 +537,8 @@ function HeroOfTatooineScreenPlay:onExitedAltruismCave(pCave, pCreature)
 		return 0
 	end
 
-	local count = self:getCavePlayerCount()
+	local count = self:getCavePlayerWithQuestCount()
+	
 	if (count == 0) then
 		self:despawnAltruismObjects()
 	end
@@ -536,10 +551,12 @@ function HeroOfTatooineScreenPlay:despawnAltruismObjects()
 		readData("hero_of_tat:farmerWifeId"), readData("hero_of_tat:farmerChildId"), readData("hero_of_tat:altruismCrate") }
 
 	for i = 1, #objectIDs, 1 do
-		local pObject = getSceneObject(objectIDs[i])
+		if (objectIDs[i] ~= 0) then
+			local pObject = getSceneObject(objectIDs[i])
 
-		if (pObject ~= nil) then
-			SceneObject(pObject):destroyObjectFromWorld()
+			if (pObject ~= nil) then
+				SceneObject(pObject):destroyObjectFromWorld()
+			end
 		end
 	end
 	deleteData("hero_of_tat:altruismWall")
@@ -549,24 +566,6 @@ function HeroOfTatooineScreenPlay:despawnAltruismObjects()
 	deleteData("hero_of_tat:altruismCrate")
 	writeData("hero_of_tat:altruismEscorterID", 0) -- No escorter
 	writeData("hero_of_tat:altruismEscortStatus", 0) -- No one doing escort
-end
-
-function HeroOfTatooineScreenPlay:getCavePlayerCount()
-	local playerCount = 0
-	for i = 5995565, 5995575, 1 do
-		local pCell = getSceneObject(i)
-		if pCell ~= nil then
-			local cellSize = SceneObject(pCell):getContainerObjectsSize()
-			for j = 0, cellSize - 1, 1 do
-				local pObject = SceneObject(pCell):getContainerObject(j)
-
-				if pObject ~= nil and SceneObject(pObject):isPlayerCreature() then
-					playerCount = playerCount + 1
-				end
-			end
-		end
-	end
-	return playerCount
 end
 
 function HeroOfTatooineScreenPlay:getCavePlayerWithQuestCount()
