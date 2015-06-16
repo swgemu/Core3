@@ -494,6 +494,7 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 		Reference<CreatureObject*> rider = destructedObject->getSlottedObject("rider").castTo<CreatureObject*>();
 
 		if (rider != NULL) {
+			Locker locker(rider);
 			rider->updateCooldownTimer("mount_dismount", 0);
 			rider->executeObjectControllerAction(STRING_HASHCODE("dismount"));
 		}
