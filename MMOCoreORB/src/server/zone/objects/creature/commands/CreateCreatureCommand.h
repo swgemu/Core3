@@ -60,6 +60,8 @@ public:
 
 				ZoneServer* server = creature->getZoneServer();
 
+				int totalSpawned = 0;
+
 				for (int i = 0; i < server->getZoneCount(); ++i) {
 					Zone* zone = server->getZone(i);
 
@@ -71,11 +73,16 @@ public:
 					if (num == 0)
 						continue;
 
+					totalSpawned += num;
+
 					StringBuffer message;
 					message << "Current number of AiAgents in " << zone->getZoneName() << ": " << num;
-
 					creature->sendSystemMessage(message.toString());
 				}
+
+				StringBuffer msg2;
+				msg2 << "Total number of AiAgents spawned in galaxy: " << totalSpawned;
+				creature->sendSystemMessage(msg2.toString());
 
 				return SUCCESS;
 			}
