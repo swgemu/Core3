@@ -50,7 +50,7 @@ FastBlastCommand = {
 	actionCostMultiplier = 1,
 	mindCostMultiplier = 1,
 
-	poolsToDamage = HEALTH_ATTRIBUTE,
+	poolsToDamage = RANDOM_ATTRIBUTE,
 
 	animationCRC = hashCode("fire_5_special_single_light"),
 
