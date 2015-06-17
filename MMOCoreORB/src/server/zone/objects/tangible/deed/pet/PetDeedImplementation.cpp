@@ -538,17 +538,22 @@ void PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObjec
 		oldLevel = 75;
 	}
 
-	health = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel-1);
-	action = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel-1);
-	regen = DnaManager::instance()->valueForLevel(DnaManager::REG_LEVEL,oldLevel-1);
-	float dps = DnaManager::instance()->valueForLevel(DnaManager::DPS_LEVEL,oldLevel-1);
+	if (oldLevel > 1)
+		oldLevel -= 1;
+
+	int ham = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel);
+	health = ham;
+	action = ham;
+	mind = ham;
+	regen = DnaManager::instance()->valueForLevel(DnaManager::REG_LEVEL,oldLevel);
+	float dps = DnaManager::instance()->valueForLevel(DnaManager::DPS_LEVEL,oldLevel);
 	damageMin = round((dps * 2.0) * 0.5);
 	attackSpeed = 2.0;
 	damageMax = round((dps * 2.0) * 1.5);
-	chanceHit = DnaManager::instance()->valueForLevel(DnaManager::HIT_LEVEL,oldLevel-1);
+	chanceHit = DnaManager::instance()->valueForLevel(DnaManager::HIT_LEVEL,oldLevel);
 
 	// Adjust Armor Now
-	fortitude = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,oldLevel-1);
+	fortitude = DnaManager::instance()->valueForLevel(DnaManager::ARM_LEVEL,oldLevel);
 	armor = fortitude/500;
 	float effectiveness = (int)(((fortitude - (armor * 500)) / 50) * 5);
 	if (!isSpecialResist(WeaponObject::KINETIC) && kinResist > 0)
