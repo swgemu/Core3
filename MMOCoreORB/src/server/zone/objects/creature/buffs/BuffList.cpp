@@ -180,14 +180,22 @@ void BuffList::clearBuffs(bool updateclient) {
 
 		buffList.remove(0);
 
-		//Already null checked the buff.
-		if (buff->isSpiceBuff())
-			buff->deactivate(false); // this wont create the downer
-		else
-			buff->deactivate();
+		mutex.unlock();
 
-		if (buff->isPersistent())
-			ObjectManager::instance()->destroyObjectFromDatabase(buff->_getObjectID());
+		try {
+			//Already null checked the buff.
+			if (buff->isSpiceBuff())
+				buff->deactivate(false); // this wont create the downer
+			else
+				buff->deactivate();
+
+			if (buff->isPersistent())
+				ObjectManager::instance()->destroyObjectFromDatabase(buff->_getObjectID());
+		} catch (...) {
+
+		}
+
+		mutex.lock();
 	}
 
 	spiceActive = false;
