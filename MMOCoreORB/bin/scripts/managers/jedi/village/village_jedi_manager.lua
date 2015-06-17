@@ -1,10 +1,10 @@
 JediManager = require("managers.jedi.jedi_manager")
 require("managers.jedi.village.village_jedi_manager_holocron")
-require("managers.jedi.village.old_man_conv_handler")
-local Glowing = require("managers.jedi.village.glowing")
+require("managers.jedi.village.intro.old_man_conv_handler")
+local Glowing = require("managers.jedi.village.intro.glowing")
 local Logger = require("utils.logger")
-local SithShadowEncounter = require("managers.jedi.village.sith_shadow_encounter")
-local SithShadowIntroTheater = require("managers.jedi.village.sith_shadow_intro_theater")
+local SithShadowEncounter = require("managers.jedi.village.intro.sith_shadow_encounter")
+local SithShadowIntroTheater = require("managers.jedi.village.intro.sith_shadow_intro_theater")
 require("managers.jedi.village.village_jedi_manager_township")
 
 jediManagerName = "VillageJediManager"

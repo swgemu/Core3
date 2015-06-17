@@ -1,5 +1,5 @@
 local ObjectManager = require("managers.object.object_manager")
-local OldManEncounter = require("managers.jedi.village.old_man_encounter")
+local OldManEncounter = require("managers.jedi.village.intro.old_man_encounter")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 
 Glowing = Object:new {}

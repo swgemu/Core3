@@ -1,6 +1,8 @@
 local ObjectManager = require("managers.object.object_manager")
 local ScreenPlay = require("screenplays.screenplay")
 
+require("screenplays.village.village_spawn_table")
+
 -- Utils.
 local Logger = require("utils.logger")
 require("utils.helpers")
@@ -13,24 +15,11 @@ VILLAGE_PHASE_ONE = 1
 VILLAGE_PHASE_TWO = 2
 VILLAGE_PHASE_THREE = 3
 VILLAGE_PHASE_FOUR = 4
-VILLAGE_TOTAL_NUMBER_OF_PHASES = 4
+VILLAGE_TOTAL_NUMBER_OF_PHASES = 1 -- Temporarily set to 1 for testing until other phases begin development
 
 local VILLAGE_PHASE_CHANGE_TIME = 24 * 60 * 60 * 1000 -- Testing value.
+--local VILLAGE_PHASE_CHANGE_TIME = 5 * 60 * 1000
 --local VILLAGE_PHASE_CHANGE_TIME = 3 * 7 * 24 * 60 * 60 * 1000 -- Three Weeks.
-
--- Key is the mobile name, value is the spawn parameters.
-VillagerMobilesPhaseOne = {
-	quharek = {name="quharek",respawn=60, x=5373, z=78, y=-4181, header=0, cellid=0},
-	whip = {name="whip",respawn=60, x=5283, z=78, y=-4226, header=0, cellid=0},
-	captain_sarguillo = {name="captain_sarguillo",respawn=60, x=5313, z=78,y= -4161, header=0, cellid=0},
-	sivarra_mechaux = {name="sivarra_mechaux",respawn=60, x=5391, z=78, y=-4075, header=0, cellid=0}
-}
-
-VillagerMobiles = {
-	paemos = {name="paemos",respawn=60, x=5289, z=78, y=-4149, header=240, cellid=0},
-	noldan = {name="noldan",respawn=60, x=5243, z=78, y=-4224, header=0, cellid=0},
-	rohak = {name="rohak_village_elder",respawn=60, x=5306, z=78, y=-4145, header=0, cellid=0}
-}
 
 -- Set the current Village Phase for the first time.
 function VillageJediManagerTownship.setCurrentPhaseInit()
@@ -47,12 +36,19 @@ function VillageJediManagerTownship.setCurrentPhase(nextPhase)
 end
 
 function VillageJediManagerTownship.getCurrentPhase()
-	return getQuestStatus("Village:CurrentPhase")
+	local curPhase = tonumber(getQuestStatus("Village:CurrentPhase"))
+
+	if (curPhase == nil) then
+		return 1
+	end
+
+	return curPhase
 end
 
 function VillageJediManagerTownship:switchToNextPhase()
 	local currentPhase = VillageJediManagerTownship.getCurrentPhase()
 	VillageJediManagerTownship:despawnMobiles(currentPhase)
+	VillageJediManagerTownship:despawnSceneObjects(currentPhase)
 
 	currentPhase = currentPhase + 1
 	if currentPhase > VILLAGE_TOTAL_NUMBER_OF_PHASES then
@@ -61,6 +57,7 @@ function VillageJediManagerTownship:switchToNextPhase()
 
 	VillageJediManagerTownship.setCurrentPhase(currentPhase)
 	VillageJediManagerTownship:spawnMobiles(currentPhase, false)
+	VillageJediManagerTownship:spawnSceneObjects(currentPhase, false)
 	Logger:log("Switching village phase to " .. currentPhase, LT_INFO)
 
 	-- Schedule another persistent event.
@@ -74,6 +71,7 @@ function VillageJediManagerTownship:start()
 		Logger:log("Starting the Village Township Screenplay.", LT_INFO)
 		VillageJediManagerTownship.setCurrentPhaseInit()
 		VillageJediManagerTownship:spawnMobiles(VillageJediManagerTownship.getCurrentPhase(), true)
+		VillageJediManagerTownship:spawnSceneObjects(VillageJediManagerTownship.getCurrentPhase(), true)
 	end
 end
 
@@ -81,42 +79,154 @@ end
 
 function VillageJediManagerTownship:spawnMobiles(currentPhase, spawnStaticMobs)
 	if (spawnStaticMobs == true) then
-		foreach(VillagerMobiles, function(mobile)
-			local pMobile = spawnMobile("dathomir", mobile.name, mobile.respawn, mobile.x, mobile.z, mobile.y, mobile.header, mobile.cellid)
-			Logger:log("Spawning a Village Static NPC at " .. mobile.x .. " - " .. mobile.y, LT_INFO)
+		local mobileTable = villageMobileSpawns[0]
+
+		for i = 1, table.getn(mobileTable), 1 do
+			local mobile = mobileTable[i]
+			local pMobile = spawnMobile("dathomir", mobile[1], 0, mobile[2], mobile[3], mobile[4], mobile[5], 0)
 			if (pMobile ~= nil) then
-				local mobileID = SceneObject(pMobile):getObjectID()
-				writeData("village:npc:oid:" .. mobile.name, mobileID)
-				Logger:log("Saving a Village Static NPC with a objectID of " .. mobileID, LT_INFO)
+				CreatureObject(pMobile):setPvpStatusBitmask(0)
+				if (mobile[6] ~= "") then
+					self[mobile[6]](pMobile)
+				end
+				if (mobile[7] ~= "") then
+					CreatureObject(pMobile):setOptionsBitmask(136)
+					AiAgent(pMobile):setConvoTemplate(mobile[7])
+				end
 			end
-		end)
+		end
 	end
 
-	if (currentPhase == VILLAGE_PHASE_ONE) then
-		foreach(VillagerMobilesPhaseOne, function(mobile)
-			local pMobile = spawnMobile("dathomir", mobile.name, mobile.respawn, mobile.x, mobile.z, mobile.y, mobile.header, mobile.cellid)
-			Logger:log("Spawning a Village Phase One NPC at " .. mobile.x .. " - " .. mobile.y, LT_INFO)
-			if (pMobile ~= nil) then
-				local mobileID = SceneObject(pMobile):getObjectID()
-				writeData("village:npc:oid:" .. mobile.name, mobileID)
-				Logger:log("Saving a Village Phase One NPC with a objectID of " .. mobileID, LT_INFO)
+	local mobileTable = villageMobileSpawns[currentPhase]
+
+	for i = 1, table.getn(mobileTable), 1 do
+		local mobile = mobileTable[i]
+		local pMobile = spawnMobile("dathomir", mobile[1], 0, mobile[2], mobile[3], mobile[4], mobile[5], 0)
+
+		if (pMobile ~= nil) then
+			CreatureObject(pMobile):setPvpStatusBitmask(0)
+			if (mobile[6] ~= "") then
+				self[mobile[6]](pMobile)
 			end
-		end)
+			if (mobile[7] ~= "") then
+				CreatureObject(pMobile):setOptionsBitmask(136)
+				AiAgent(pMobile):setConvoTemplate(mobile[7])
+			end
+			local mobileID = SceneObject(pMobile):getObjectID()
+			writeData("village:npc:object:" .. i, mobileID)
+		end
 	end
 end
 
--- Despawn and cleanup all possible mobiles.
-function VillageJediManagerTownship:despawnMobiles(pCurrentPhase)
-	foreach(VillagerMobilesPhaseOne, function(mobile)
-		local objectID = readData("village:npc:oid:" .. mobile.name)
+-- Despawn and cleanup current phase mobiles.
+function VillageJediManagerTownship:despawnMobiles(currentPhase)
+	local mobileTable = villageMobileSpawns[currentPhase]
+	for i = 1, table.getn(mobileTable), 1 do
+		local objectID = readData("village:npc:object:" .. i)
 		local pMobile = getSceneObject(objectID)
 
 		if (pMobile ~= nil) then
 			SceneObject(pMobile):destroyObjectFromWorld()
-			deleteData("village:npc:oid:" .. mobile.name)
-			Logger:log("Despawning " .. mobile.name, LT_INFO)
+			deleteData("village:npc:object:" .. i)
 		end
-	end)
+	end
+end
+
+function VillageJediManagerTownship:spawnSceneObjects(currentPhase, spawnStaticObjects)
+	if (spawnStaticObjects == true) then
+		local objectTable = villageObjectSpawns[0]
+		foreach(objectTable, function(sceneObject)
+			spawnSceneObject("dathomir", sceneObject[1], sceneObject[2], sceneObject[3], sceneObject[4], 0, sceneObject[5])
+		end)
+	end
+
+	local objectTable = villageObjectSpawns[currentPhase]
+	for i = 1, table.getn(objectTable), 1 do
+		local sceneObject = objectTable[i]
+		local pObject = spawnSceneObject("dathomir", sceneObject[1], sceneObject[2], sceneObject[3], sceneObject[4], 0, sceneObject[5])
+
+		if (pObject ~= nil) then
+			local objectID = SceneObject(pObject):getObjectID()
+			writeData("village:scene:object:" .. i, objectID)
+		end
+	end
+end
+
+-- Despawn and cleanup current phase scene objects.
+function VillageJediManagerTownship:despawnSceneObjects(currentPhase)
+	local objectTable = villageObjectSpawns[currentPhase]
+	for i = 1, table.getn(objectTable), 1 do
+		local objectID = readData("village:scene:object:" .. i)
+		local pObject = getSceneObject(objectID)
+
+		if (pObject ~= nil) then
+			SceneObject(pObject):destroyObjectFromWorld()
+			deleteData("village:npc:object:" .. i)
+		end
+	end
+end
+
+function VillageJediManagerTownship.initPukingVillager(pNpc)
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPukingVillager", pNpc) -- 2-5 minute initial delay
+end
+
+function VillageJediManagerTownship:doPukingVillager(pNpc)
+	if (pNpc == nil) then
+		return
+	end
+
+	CreatureObject(pNpc):doAnimation("heavy_cough_vomit")
+
+	spatialChat(pNpc, "@quest/force_sensitive/fs_sick:fs_response" .. getRandomNumber(1,7))
+
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPukingVillager", pNpc) -- 2-5 minute delay
+end
+
+function VillageJediManagerTownship.initPanickedVillager(pNpc)
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPanickedVillager", pNpc) -- 2-5 minute initial delay
+end
+
+function VillageJediManagerTownship:doPanickedVillager(pNpc)
+	if (pNpc == nil) then
+		return
+	end
+
+	local rand = getRandomNumber(1,20)
+
+	CreatureObject(pNpc):doAnimation("weeping")
+
+	if (rand < 10) then
+		spatialChat(pNpc, "@quest/force_sensitive/fs_panicked:fs_response0" .. rand)
+	else
+		spatialChat(pNpc, "@quest/force_sensitive/fs_panicked:fs_response" .. rand)
+	end
+
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPanickedVillager", pNpc) -- 2-5 minute delay
+end
+
+function VillageJediManagerTownship.initWoundedVillager(pNpc)
+	if (pNpc == nil) then
+		return
+	end
+
+	CreatureObject(pNpc):setPosture(KNOCKEDDOWN)
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doWoundedVillager", pNpc) -- 2-5 minute initial delay
+end
+
+function VillageJediManagerTownship:doWoundedVillager(pNpc)
+	if (pNpc == nil) then
+		return
+	end
+
+	local rand = getRandomNumber(1,10)
+
+	if (rand < 10) then
+		spatialChat(pNpc, "@quest/force_sensitive/fs_lamentations:fs_response0" .. rand)
+	else
+		spatialChat(pNpc, "@quest/force_sensitive/fs_lamentations:fs_response" .. rand)
+	end
+
+	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doWoundedVillager", pNpc) -- 2-5 minute delay
 end
 
 registerScreenPlay("VillageJediManagerTownship", true)
