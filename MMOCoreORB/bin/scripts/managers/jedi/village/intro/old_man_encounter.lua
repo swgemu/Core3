@@ -3,7 +3,7 @@ local QuestManager = require("managers.quest.quest_manager")
 local ObjectManager = require("managers.object.object_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
-local SithShadowEncounter = require("managers.jedi.village.sith_shadow_encounter")
+local SithShadowEncounter = require("managers.jedi.village.intro.sith_shadow_encounter")
 
 local OLD_MAN_GREETING_STRING = "@quest/force_sensitive/intro:oldman_greeting"
 local OLD_MAN_DESPAWN_TIME = 10 * 1000
