@@ -68,7 +68,8 @@ includeFile("dungeon/corellian_corvette/lt_lance.lua")
 -- Village
 includeFile("village/fs_experience_converter_conv_handler.lua")
 includeFile("village/convos/elder_conv_handler.lua")
-
+includeFile("village/convos/fs_village_convo6_m_conv_handler.lua")
+includeFile("village/convos/fs_village_convo7_conv_handler.lua")
 -- Events
 includeFile("events/conversations/bestine_artist_conv_handler.lua")
 includeFile("events/conversations/life_day_anarra_conv_handler.lua")
