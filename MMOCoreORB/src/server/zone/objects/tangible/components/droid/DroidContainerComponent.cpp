@@ -40,10 +40,17 @@ int DroidContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject*
 		errorDescription = "@container_error_message:container12";
 		return TransferErrorCode::INVALIDTYPE;
 	}
+
 	if (object->isControlDevice() || object->isInstallationObject() || object->isBuildingObject() || object->isCraftingStation()) {
 		errorDescription = "@container_error_message:container12";
 		return TransferErrorCode::INVALIDTYPE;
 	}
+
+	if (object->isNoTrade() || object->containsNoTradeObjectRecursive()) {
+		errorDescription = "@container_error_message:container28";
+		return TransferErrorCode::CANTADD;
+	}
+
 	ManagedReference<SceneObject*> p = sceneObject->getParent();
 	if (p) {
 		DroidObject* droid = p.castTo<DroidObject*>();
