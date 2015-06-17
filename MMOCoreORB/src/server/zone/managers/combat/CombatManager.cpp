@@ -1044,11 +1044,10 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 	ManagedReference<ArmorObject*> psg = getPSGArmor(defender);
 
 	if (psg != NULL && !psg->isVulnerable(weapon->getDamageType())) {
-		float armorPiercing = getArmorPiercing(psg, weapon);
 		float armorReduction =  getArmorObjectReduction(weapon, psg);
 		float dmgAbsorbed = damage;
 
-        if (armorPiercing <= 1 && armorReduction > 0) damage *= armorPiercing*(1.f - (armorReduction / 100.f));
+        if (armorReduction > 0) damage *= 1.f - (armorReduction / 100.f);
 
 		dmgAbsorbed -= damage;
 		if (dmgAbsorbed > 0)
