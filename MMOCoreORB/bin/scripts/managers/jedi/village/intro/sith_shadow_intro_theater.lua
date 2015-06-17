@@ -3,7 +3,7 @@ local ObjectManager = require("managers.object.object_manager")
 local QuestManager = require("managers.quest.quest_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
 require("utils.helpers")
-local GoToDathomir = require("managers.jedi.village.go_to_dathomir")
+local GoToDathomir = require("managers.jedi.village.intro.go_to_dathomir")
 local READ_DISK_2_STRING = "@quest/force_sensitive/intro:read_disk2"
 local READ_DISK_ERROR_STRING = "@quest/force_sensitive/intro:read_disk_error"
 
