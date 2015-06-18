@@ -1,7 +1,7 @@
 --Copyright (C) 2010 <SWGEmu>
 
 
---This File is part of Core3.
+--This File is part of Core3. 
 
 --This program is free software; you can redistribute 
 --it and/or modify it under the terms of the GNU Lesser 
@@ -61,7 +61,7 @@ object_tangible_food_spice_spice_droid_lube = object_tangible_food_spice_shared_
 
 	modifiers = { "health" , 250, "strength" , 250, "constitution", 250 },
 
-	buffName = "driod_lube",
+	buffName = "droid_lube",
 	buffCRC = 0,
 	speciesRestriction = "",
 
