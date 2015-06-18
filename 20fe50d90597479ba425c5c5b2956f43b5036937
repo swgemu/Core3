@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_3e7309b3",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-18T05:53:03Z",
+      "side": 1,
+      "message": "You need to keep the skill required check (here and in notifyObjectRemoved below). There are some non-jedi robes that are the same object type.",
+      "revId": "20fe50d90597479ba425c5c5b2956f43b5036937",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_de6785e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-18T05:53:03Z",
+      "side": 1,
+      "message": "You need to also check when equipping or unequipping a weapon if they have a robe equipped and add/remove the mods as appropriate. Otherwise, one could equip their saber, equip their robe (and get the mods), then unequip their saber and retain the mods.",
+      "revId": "20fe50d90597479ba425c5c5b2956f43b5036937",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
