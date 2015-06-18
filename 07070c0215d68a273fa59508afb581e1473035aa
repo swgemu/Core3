@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_1e096d2c",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-18T03:32:24Z",
+      "side": 1,
+      "message": "Is there a reason we need to log the spawning and despawning of the mobiles and sceneObjects?",
+      "revId": "07070c0215d68a273fa59508afb581e1473035aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_7e043115",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-18T03:32:24Z",
+      "side": 1,
+      "message": "I see no reason for this.",
+      "revId": "07070c0215d68a273fa59508afb581e1473035aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_de122558",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-18T03:32:24Z",
+      "side": 1,
+      "message": "No reason to instantiate a local var if you don\u0027t use it afterwards.",
+      "revId": "07070c0215d68a273fa59508afb581e1473035aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_3e0ea935",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-18T03:32:24Z",
+      "side": 1,
+      "message": "Calling this pMobile is a bit misleading.",
+      "revId": "07070c0215d68a273fa59508afb581e1473035aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_fe0fe12c",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-18T03:32:24Z",
+      "side": 1,
+      "message": "This is unneeded.",
+      "revId": "07070c0215d68a273fa59508afb581e1473035aa",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
