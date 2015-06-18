@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_de40e537",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/village_jedi_manager_township.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-18T04:49:24Z",
+      "side": 1,
+      "message": "I would call this objectID",
+      "revId": "483c60f52585b685700c4b59372dc8ea008ede42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_3e5c6925",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_spawn_table.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-18T04:49:24Z",
+      "side": 1,
+      "message": "You should remove cellid from this comment.",
+      "revId": "483c60f52585b685700c4b59372dc8ea008ede42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_1e572d04",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/village_spawn_table.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-18T04:49:24Z",
+      "side": 1,
+      "message": "You have an extra entry here.",
+      "revId": "483c60f52585b685700c4b59372dc8ea008ede42",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
