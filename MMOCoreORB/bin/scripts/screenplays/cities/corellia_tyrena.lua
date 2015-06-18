@@ -278,7 +278,7 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	--{"stormtrooper_squad_leader",400,-5613.85,21,-2584,33.2059,0, "npc_imperial", ""},
 	--{"stormtrooper_squad_leader",400,-5103.81,21,-2266.4,126.218,0, "npc_imperial", ""},
 
-	--Misc Outside
+	--Misc Outside 
 	spawnMobile("corellia", "eg6_power_droid", 60,-5605.25,21,-2721.9,155.92,0)
 	spawnMobile("corellia", "eg6_power_droid", 60,-5295.6,21,-2396.69,237.183,0)
 	--{"entertainer",60,-5539.77,21,-2683.65,0,0, "conversation", ""},
@@ -368,7 +368,6 @@ function CorelliaTyrenaScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "trainer_doctor", 0,-5002,21,-2459,180,0)
 	spawnMobile("corellia", "trainer_entertainer", 0,-5661,21.6,-2599.57,14,0)
 	spawnMobile("corellia", "trainer_entertainer", 0,-5062,21,-2291,124,0)
-	spawnMobile("corellia", "trainer_marksman", 0,6770,21,-5714,180,0)
 	spawnMobile("corellia", "trainer_marksman", 0,-5041,21,-2324,91,0)
 	spawnMobile("corellia", "trainer_marksman", 0,-5249,21,-2306,180,0)
 	spawnMobile("corellia", "trainer_medic", 0,-5027,21,-2311,266,0)

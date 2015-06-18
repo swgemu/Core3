@@ -17,9 +17,9 @@ heraldScreenPlay = ScreenPlay:new {
 
 		{ planet = "dathomir", template = "herald_commoner", x = 611.09, z = 6, y = 3084, angle = 359.8, cell = 0, destX = 5689, destY = 1955,  stringFile = "herald_dathomir_crashed_civilian_transport" },
 		{ planet = "dathomir", template = "herald_escaped_nightsister_slave", x = 595.5, z = 6, y = 3045.4, angle = -5, cell = 0, destX = 2427, destY = -1700,  stringFile = "herald_dathomir_nightsister_forcedlabor_camp" },
-		{ planet = "dathomir", template = "herald_nightsister_rancor_tamer", x = -4157, z = 121, y = 82.6, angle = 160, cell = 0, destX = -4227, destY = -2089,  stringFile = "herald_dathomir_mutant_rancor_cave" },
+		{ planet = "dathomir", template = "herald_nightsister_rancor_tamer", x = -4157, z = 134, y = 82.6, angle = 160, cell = 0, destX = -4227, destY = -2089,  stringFile = "herald_dathomir_mutant_rancor_cave" },
 		{ planet = "dathomir", template = "herald_nightsister_protector", x = -3999.9, z = 118.9, y = -65.3, angle = -130, cell = 0, destX = -2451, destY = 1522,  stringFile = "herald_dathomir_singing_vs_nightsister" },
-		-- These require returning to the herald and will need to be handled by the themepark logic
+		-- These require returning to the herald and will need to be handled by the themepark logic 
 		--{ planet = "dathomir", template = "herald_dathomir_olof", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "herald_dathomir_nsister_cave_olof" },
 		--{ planet = "dathomir", template = "herald_dathomir_azzenaj", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "herald_dathomir_nsister_cave_azzenaj" },
 		--{ planet = "dathomir", template = "herald_dathomir_leandra", x = 0, z = 0, y = 0, angle = 0, cell = 0, destX = 0, destY = 0,  stringFile = "herald_dathomir_nsister_cave_leandra" },
