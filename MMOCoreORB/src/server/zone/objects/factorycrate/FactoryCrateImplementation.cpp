@@ -152,6 +152,11 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 	ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype));
 
 	if (protoclone != NULL) {
+
+		if(protoclone->hasAntiDecayKit()){
+			protoclone->removeAntiDecayKit();
+		}
+
 		protoclone->setParent(NULL);
 
 		String errorDescription;
@@ -202,6 +207,10 @@ Reference<TangibleObject*> FactoryCrateImplementation::extractObject(int count) 
 
 	if(protoclone != NULL) {
 		Locker protoLocker(protoclone);
+
+		if(protoclone->hasAntiDecayKit()){
+			protoclone->removeAntiDecayKit();
+		}
 
 		protoclone->setParent(NULL);
 		protoclone->setUseCount(count, false);
