@@ -32,7 +32,7 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 	int spawnLimit = lairTemplate->getSpawnLimit() + spawnLimitAdjustment;
 
 	if (forceSpawn) {
-		spawnNumber++;
+		spawnNumber.increment();
 	} else if (getMobType() == LairTemplate::NPC) {
 		return false;
 	} else {
@@ -44,25 +44,25 @@ bool DestroyMissionLairObserverImplementation::checkForNewSpawns(TangibleObject*
 
 		switch (spawnNumber) {
 		case 0:
-			spawnNumber++;
+			spawnNumber.increment();
 			break;
 		case 1:
 			if (conditionDamage > (maxCondition / 10)) {
-				spawnNumber++;
+				spawnNumber.increment();
 			} else {
 				return false;
 			}
 			break;
 		case 2:
 			if (conditionDamage > (maxCondition / 2)) {
-				spawnNumber++;
+				spawnNumber.increment();
 			} else {
 				return false;
 			}
 			break;
 		case 3:
 			if (lairTemplate->hasBossMobs() && conditionDamage > ((maxCondition * 9) / 10)) {
-				spawnNumber++;
+				spawnNumber.increment();
 			} else {
 				return false;
 			}
