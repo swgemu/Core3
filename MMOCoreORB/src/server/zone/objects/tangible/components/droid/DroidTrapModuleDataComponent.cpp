@@ -229,6 +229,11 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 			ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(input));
 			if (protoclone != NULL) {
 				Locker cloneLocker(protoclone);
+
+				if (protoclone->hasAntiDecayKit()) {
+					protoclone->removeAntiDecayKit();
+				}
+
 				protoclone->setParent(NULL);
 				protoclone->setUseCount(input->getUseCount());
 				trap = protoclone;
@@ -244,6 +249,11 @@ void DroidTrapModuleDataComponent::handleInsertTrap(CreatureObject* player, Tang
 			ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(input));
 			if (protoclone != NULL) {
 				Locker cloneLocker(protoclone);
+
+				if (protoclone->hasAntiDecayKit()) {
+					protoclone->removeAntiDecayKit();
+				}
+
 				protoclone->setParent(NULL);
 				protoclone->setUseCount(allowed);
 				input->setUseCount(input->getUseCount() - allowed);

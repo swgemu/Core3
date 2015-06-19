@@ -33,6 +33,8 @@ public:
 		if (firework == NULL || !firework->isFireworkObject())
 			return;
 
+		Locker clocker(firework, player);
+
 		ManagedReference<SceneObject*> fireworkShow = suiBox->getUsingObject();
 
 		if (fireworkShow == NULL || !fireworkShow->isFireworkObject())
@@ -53,6 +55,12 @@ public:
 			if(clone == NULL)
 				return;
 
+			Locker locker(clone);
+
+			if (clone->hasAntiDecayKit()) {
+				clone->removeAntiDecayKit();
+			}
+
 			clone->setParent(NULL);
 			clone->setUseCount(1, false);
 			firework->decreaseUseCount();
@@ -68,8 +76,10 @@ public:
 
 		ManagedReference<TangibleObject*> fireworkShowObject = fireworkShow.castTo<TangibleObject*>();
 
-		if (fireworkShowObject != NULL )
+		if (fireworkShowObject != NULL ) {
+			Locker locker(fireworkShowObject);
 			fireworkShowObject->setUseCount(fireworkShowObject->getUseCount() + 1, true);
+		}
 
 		FireworkShowMenuComponent* showMenu = cast<FireworkShowMenuComponent*>(fireworkShow->getObjectMenuComponent());
 		showMenu->addEvent(player, fireworkShow.castTo<FireworkObject*>());

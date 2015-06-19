@@ -118,6 +118,10 @@ public:
 
 			Locker ilocker(itemToUse);
 
+			if (itemToUse->hasAntiDecayKit()) {
+				itemToUse->removeAntiDecayKit();
+			}
+
 			itemToUse->setUseCount(slotNeeds, false);
 			itemToUse->setParent(NULL);
 			itemToUse->sendAttributeListTo(player);
@@ -135,6 +139,10 @@ public:
 			ManagedReference<TangibleObject*> newTano = cast<TangibleObject*>( objectManager->cloneObject(itemToUse));
 
 			Locker ilocker(newTano);
+
+			if (newTano->hasAntiDecayKit()) {
+				newTano->removeAntiDecayKit();
+			}
 
 			newTano->setParent(NULL);
 			newTano->setUseCount(1, false);

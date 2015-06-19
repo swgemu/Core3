@@ -104,12 +104,22 @@ public:
 						return GENERALERROR;
 					}
 
-					Locker adkLocker(adk);
-					adk->setUsed(false);
+					if (adk->getParent().get() == NULL) {
+						AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
 
-					inventory->transferObject(adk, -1, false);
-					adk->sendTo(creature, true);
-					creature->sendSystemMessage("@veteran_new:kit_created"); // "This item had Anti Decay applied to it. A new Anti Decay Kit has been placed in your inventory."
+						if (auctionManager != NULL) {
+							AuctionsMap* auctionsMap = auctionManager->getAuctionMap();
+
+							if (auctionsMap != NULL && !auctionsMap->containsItem(adk->getObjectID())) {
+								Locker adkLocker(adk);
+								adk->setUsed(false);
+
+								inventory->transferObject(adk, -1, false);
+								adk->sendTo(creature, true);
+								creature->sendSystemMessage("@veteran_new:kit_created"); // "This item had Anti Decay applied to it. A new Anti Decay Kit has been placed in your inventory."
+							}
+						}
+					}
 				}
 			}
 
