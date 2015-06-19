@@ -196,14 +196,16 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 }
 
 bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, TangibleObject* attacker, bool forceSpawn) {
-	if (lair->getZone() == NULL)
+	Zone* zone = lair->getZone();
+
+	if (zone == NULL)
 		return false;
 
 	if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit() && !lairTemplate->hasBossMobs())
 		return false;
 
 	if (forceSpawn) {
-		spawnNumber++;
+		spawnNumber.increment();
 	} else if (getMobType() == LairTemplate::NPC) {
 		return false;
 	} else {
@@ -212,25 +214,25 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 
 		switch (spawnNumber) {
 		case 0:
-			spawnNumber++;
+			spawnNumber.increment();
 			break;
 		case 1:
 			if (conditionDamage > (maxCondition / 10)) {
-				spawnNumber++;
+				spawnNumber.increment();
 			} else {
 				return false;
 			}
 			break;
 		case 2:
 			if (conditionDamage > (maxCondition / 2)) {
-				spawnNumber++;
+				spawnNumber.increment();
 			} else {
 				return false;
 			}
 			break;
 		case 3:
 			if (lairTemplate->hasBossMobs() && conditionDamage > ((maxCondition * 9) / 10)) {
-				spawnNumber++;
+				spawnNumber.increment();
 			} else {
 				return false;
 			}
@@ -295,13 +297,13 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, Tangibl
 
 		float tamingChance = creatureTemplate->getTame();
 
-		CreatureManager* creatureManager = lair->getZone()->getCreatureManager();
+		CreatureManager* creatureManager = zone->getCreatureManager();
 
 		for (int j = 0; j < numberToSpawn; j++) {
 
 			float x = lair->getPositionX() + (size - System::random(size * 20) / 10.0f);
 			float y = lair->getPositionY() + (size - System::random(size * 20) / 10.0f);
-			float z = lair->getZone()->getHeight(x, y);
+			float z = zone->getHeight(x, y);
 
 			ManagedReference<CreatureObject*> creo = NULL;
 
