@@ -48,6 +48,8 @@ public:
 
 		Locker lock(pet, player);
 
+		Locker locker(device);
+
 		if (otherPressed)
 			device->growPet(player, true);
 		else
