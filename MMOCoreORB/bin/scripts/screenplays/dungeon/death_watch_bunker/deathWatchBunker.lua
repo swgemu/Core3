@@ -1355,6 +1355,11 @@ function DeathWatchBunkerScreenPlay:checkTime(pCreature)
 
 	local currentTime = os.time()
 	local receivedTime = readScreenPlayData(pCreature, "DeathWatchBunkerScreenPlay", "time")
+	
+	-- Fix for people who had done the quest prior to Publish 7
+	if (receivedTime == "") then
+		receivedTime = readScreenPlayData(pCreature, "DWB", "time")
+	end
 
 	if receivedTime == "" then
 		return false
