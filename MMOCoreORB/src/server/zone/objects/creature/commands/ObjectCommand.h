@@ -198,12 +198,21 @@ public:
 						tlock.release();
 					}
 				}
+			} else if (commandType.beginsWith("checklooted")) {
+				ManagedReference<LootManager*> lootManager = creature->getZoneServer()->getLootManager();
+				if (lootManager == NULL)
+					return INVALIDPARAMETERS;
+
+				creature->sendSystemMessage("Number of Legendaries Looted: " + String::valueOf(lootManager->getLegendaryLooted()));
+				creature->sendSystemMessage("Number of Exceptionals Looted: " + String::valueOf(lootManager->getExceptionalLooted()));
+				creature->sendSystemMessage("Number of Magical Looted: " + String::valueOf(lootManager->getYellowLooted()));
 			}
 		} catch (Exception& e) {
 			creature->sendSystemMessage("SYNTAX: /object createitem <objectTemplatePath> [<quantity>]");
 			creature->sendSystemMessage("SYNTAX: /object createresource <resourceName> [<quantity>]");
 			creature->sendSystemMessage("SYNTAX: /object createloot <loottemplate> [<level>]");
 			creature->sendSystemMessage("SYNTAX: /object createarealoot <loottemplate> [<range>] [<level>]");
+			creature->sendSystemMessage("SYNTAX: /object checklooted");
 
 			return INVALIDPARAMETERS;
 		}

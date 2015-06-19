@@ -946,5 +946,5 @@ TangibleObject* TangibleObject::asTangibleObject() {
 }
 
 TangibleObject* TangibleObjectImplementation::asTangibleObject() {
-	return _this.getReferenceUnsafeStaticCast();;
+	return _this.getReferenceUnsafeStaticCast();
 }

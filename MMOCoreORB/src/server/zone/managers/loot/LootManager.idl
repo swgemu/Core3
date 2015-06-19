@@ -7,6 +7,7 @@ package server.zone.managers.loot;
 import system.util.VectorMap;
 import system.util.SortedVector;
 import engine.core.ManagedService;
+import system.thread.atomic.AtomicInteger;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.AiAgent;
@@ -38,6 +39,13 @@ class LootManager extends ManagedService implements Logger {
 	
 	private transient float legendaryChance;
 	private transient float legendaryModifier;
+
+	@dereferenced
+	private transient AtomicInteger yellowLooted;
+	@dereferenced
+	private transient AtomicInteger exceptionalLooted;
+	@dereferenced
+	private transient AtomicInteger legendaryLooted;
 
 	private transient float skillModChance;
 	
@@ -162,5 +170,17 @@ class LootManager extends ManagedService implements Logger {
 	public native boolean createLoot(SceneObject container, final string lootGroup, int level = -1, boolean maxCondition = false);
 	
 	//public native void generateStats(final string lootTemplate, CraftingValues)
+	
+	public unsigned int getYellowLooted() {
+		return yellowLooted.get();
+	}
+	
+	public unsigned int getExceptionalLooted() {
+		return exceptionalLooted.get();
+	}
+	
+	public unsigned int getLegendaryLooted() {
+		return legendaryLooted.get();
+	}
 
 }

@@ -35,7 +35,7 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream) {
 		stream->writeInt(updateCounter);
 
-		return set.toBinaryStream(stream);;
+		return set.toBinaryStream(stream);
 	}
 
 	bool parseFromBinaryStream(ObjectInputStream* stream) {
