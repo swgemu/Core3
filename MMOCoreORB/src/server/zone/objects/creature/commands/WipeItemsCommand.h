@@ -64,7 +64,7 @@ public:
 			while (inventory->getContainerObjectsSize() > 0)
 			{
 				ManagedReference<SceneObject*> object = inventory->getContainerObject(0);
-
+				Locker sceneObjectLocker(object);
 				object->destroyObjectFromWorld(true);
 				object->destroyObjectFromDatabase(true);
 			}
