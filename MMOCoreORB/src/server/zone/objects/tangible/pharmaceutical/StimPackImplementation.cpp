@@ -31,6 +31,12 @@ StimPack* StimPackImplementation::split(int charges) {
 	ObjectManager* objectManager = ObjectManager::instance();
 	ManagedReference<StimPack*> protoclone = cast<StimPack*>( objectManager->cloneObject(_this.getReferenceUnsafeStaticCast()));
 	if (protoclone != NULL) {
+		Locker cloneLocker(protoclone);
+
+		if(protoclone->hasAntiDecayKit()){
+			protoclone->removeAntiDecayKit();
+		}
+
 		protoclone->setParent(NULL);
 		protoclone->setUseCount(charges);
 		setUseCount(getUseCount() - charges);
