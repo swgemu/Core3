@@ -405,6 +405,7 @@ void ZoneComponent::notifyRemoveFromZone(SceneObject* sceneObject) {
 
 void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy) {
 	ManagedReference<SceneObject*> par = sceneObject->getParent();
+	Locker sceneObjectLocker(sceneObject);
 
 	if (!sceneObject->isActiveArea()) {
 		sceneObject->broadcastDestroy(sceneObject, sendSelfDestroy);
@@ -435,7 +436,6 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 
 	if (rootZone != NULL) {
 		Locker locker(rootZone);
-
 		rootZone->dropSceneObject(sceneObject);
 
 		if (sceneObject->isActiveArea()) {
