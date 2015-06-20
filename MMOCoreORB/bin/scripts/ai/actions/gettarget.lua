@@ -91,7 +91,19 @@ function GetTargetCreaturePet:doAction(pAgent)
 			return BEHAVIOR_FAILURE	
 		end
 
-		if (command ~= PET_GUARD and command ~= PET_PATROL ) then
+		if (command == PET_GUARD) then
+			local pTarget = agent:getLastCommandTarget()
+			if (pTarget ~= nil and pTarget == agent:getFollowObject()) then
+				local pNewTarget = agent:getTargetFromTargetsDefenders()
+				if agent:validateTarget(pNewTarget) then
+					agent:setFollowObject(pNewTarget)
+					agent:setDefender(pNewTarget)
+					return BEHAVIOR_SUCCESS
+				end
+			elseif agent:validateFollow() then
+				return BEHAVIOR_SUCCESS
+			end
+		elseif (command ~= PET_PATROL ) then
 			local pTarget = agent:getLastCommandTarget()
 			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
 				if agent:validateTarget(pTarget) then
@@ -161,7 +173,19 @@ function GetTargetDroidPet:doAction(pAgent)
 			return BEHAVIOR_FAILURE	
 		end
 
-		if (command == PET_ATTACK ) then
+		if (command == PET_GUARD) then
+			local pTarget = agent:getLastCommandTarget()
+			if (pTarget ~= nil and pTarget == agent:getFollowObject()) then
+				local pNewTarget = agent:getTargetFromTargetsDefenders()
+				if agent:validateTarget(pNewTarget) then
+					agent:setFollowObject(pNewTarget)
+					agent:setDefender(pNewTarget)
+					return BEHAVIOR_SUCCESS
+				end
+			elseif agent:validateFollow() then
+				return BEHAVIOR_SUCCESS
+			end
+		elseif (command == PET_ATTACK ) then
 			local pTarget = agent:getLastCommandTarget()
 			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
 				if agent:validateTarget(pTarget) then
@@ -231,7 +255,19 @@ function GetTargetFactionPet:doAction(pAgent)
 			return BEHAVIOR_FAILURE	
 		end
 
-		if (command == PET_ATTACK) then
+		if (command == PET_GUARD) then
+			local pTarget = agent:getLastCommandTarget()
+			if (pTarget ~= nil and pTarget == agent:getFollowObject()) then
+				local pNewTarget = agent:getTargetFromTargetsDefenders()
+				if agent:validateTarget(pNewTarget) then
+					agent:setFollowObject(pNewTarget)
+					agent:setDefender(pNewTarget)
+					return BEHAVIOR_SUCCESS
+				end
+			elseif agent:validateFollow() then
+				return BEHAVIOR_SUCCESS
+			end
+		elseif (command == PET_ATTACK) then
 			local pTarget = agent:getLastCommandTarget()
 			if (pTarget ~= nil and pTarget ~= agent:getFollowObject()) then
 				if agent:validateTarget(pTarget) then

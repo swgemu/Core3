@@ -55,6 +55,7 @@ namespace creature {
 		int setCurrentSpeed(lua_State* L);
 		int getTargetFromMap(lua_State* L);
 		int getTargetFromDefenders(lua_State* L);
+		int getTargetFromTargetsDefenders(lua_State* L);
 		int validateTarget(lua_State* L);
 		int validateFollow(lua_State* L);
 		int followHasState(lua_State* L);

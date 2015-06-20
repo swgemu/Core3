@@ -59,6 +59,7 @@ Luna<LuaAiAgent>::RegType LuaAiAgent::Register[] = {
 		{ "setCurrentSpeed", &LuaAiAgent::setCurrentSpeed },
 		{ "getTargetFromMap", &LuaAiAgent::getTargetFromMap },
 		{ "getTargetFromDefenders", &LuaAiAgent::getTargetFromDefenders },
+		{ "getTargetFromTargetsDefenders", &LuaAiAgent::getTargetFromTargetsDefenders },
 		{ "validateTarget", &LuaAiAgent::validateTarget },
 		{ "validateFollow", &LuaAiAgent::validateFollow },
 		{ "followHasState", &LuaAiAgent::followHasState },
@@ -392,6 +393,19 @@ int LuaAiAgent::getTargetFromDefenders(lua_State* L) {
 	Locker locker(realObject);
 
 	SceneObject* retVal = realObject->getTargetFromDefenders();
+
+	if (retVal == NULL)
+		lua_pushnil(L);
+	else
+		lua_pushlightuserdata(L, retVal);
+
+	return 1;
+}
+
+int LuaAiAgent::getTargetFromTargetsDefenders(lua_State* L) {
+	Locker locker(realObject);
+
+	SceneObject* retVal = realObject->getTargetFromTargetsDefenders();
 
 	if (retVal == NULL)
 		lua_pushnil(L);

@@ -216,7 +216,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		enqueuePetCommand(speaker, pet, String("petAttack").toLowerCase().hashCode(), "");
 	}
 	else if( isTrainedCommand( pcd, GUARD, message ) ){
-		speaker->sendSystemMessage("GUARD pet command is not yet implemented.");
+		enqueuePetCommand(speaker, pet, String("petGuard").toLowerCase().hashCode(), "", true);
 	}
 	else if( isTrainedCommand( pcd, FRIEND, message ) ){
 		speaker->sendSystemMessage("FRIEND pet command is not yet implemented.");

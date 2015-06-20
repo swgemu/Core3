@@ -821,7 +821,7 @@ SceneObject* AiAgentImplementation::getTargetFromDefenders() {
 					removeDefender(targetCreature);
 				}
 			} else if (tarObj != NULL && tarObj->isTangibleObject()) {
-				TangibleObject* targetTano = cast<TangibleObject*>(tarObj);
+				TangibleObject* targetTano = tarObj->asTangibleObject();
 
 				if (!targetTano->isDestroyed() && targetTano->getDistanceTo(asAiAgent()) < 128.f && targetTano->isAttackableBy(asAiAgent())) {
 					target = targetTano;
@@ -834,6 +834,43 @@ SceneObject* AiAgentImplementation::getTargetFromDefenders() {
 	}
 
 	return target;
+}
+
+SceneObject* AiAgentImplementation::getTargetFromTargetsDefenders() {
+	SceneObject* newTarget = NULL;
+	ManagedReference<CreatureObject*> followCopy = getFollowObject().get().castTo<CreatureObject*>();
+
+	if (followCopy == NULL)
+		return NULL;
+
+	Locker clocker(followCopy, asAiAgent());
+
+	DeltaVector<ManagedReference<SceneObject*> >* defenders = followCopy->getDefenderList();
+
+	if (defenders->size() > 0) {
+		for (int i = 0; i < defenders->size(); ++i) {
+			SceneObject* tarObj = defenders->get(i);
+
+			if (tarObj != NULL && tarObj->isCreatureObject()) {
+				CreatureObject* targetCreature = tarObj->asCreatureObject();
+
+				if (!targetCreature->isDead() && !targetCreature->isIncapacitated() && targetCreature->getDistanceTo(asAiAgent()) < 128.f && targetCreature->isAttackableBy(asAiAgent())) {
+					newTarget = targetCreature;
+
+					break;
+				}
+			} else if (tarObj != NULL && tarObj->isTangibleObject()) {
+				TangibleObject* targetTano = tarObj->asTangibleObject();
+
+				if (!targetTano->isDestroyed() && targetTano->getDistanceTo(asAiAgent()) < 128.f && targetTano->isAttackableBy(asAiAgent())) {
+					newTarget = targetTano;
+					break;
+				}
+			}
+		}
+	}
+
+	return newTarget;
 }
 
 bool AiAgentImplementation::validateTarget() {
