@@ -109,7 +109,7 @@ void FireworkShowMenuComponent::addEvent(CreatureObject* player, FireworkObject*
 	if (playerObject == NULL)
 		return;
 
-	if (curFireworks == showCapacity && !playerObject->isPrivileged()) {
+	if (curFireworks >= showCapacity && !playerObject->isPrivileged()) {
 		player->sendSystemMessage("This firework show is at full capacity.");
 		return;
 	}

@@ -73,9 +73,6 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 		menuResponse->addRadialMenuItemToRadialID(70, 71, 3, "@player_structure:vendor_status");
 
-		if (playerObject->isPrivileged())
-			menuResponse->addRadialMenuItemToRadialID(70, 72, 3, "@player_structure:change_name");
-
 		menuResponse->addRadialMenuItemToRadialID(70, 73, 3, "@player_structure:pay_vendor_t");
 		menuResponse->addRadialMenuItemToRadialID(70, 74, 3, "@player_structure:withdraw_vendor_t");
 
@@ -125,9 +122,14 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	bool owner = vendorData->getOwnerId() == player->getObjectID();
 
 	if(!owner) {
-		if (player->getPlayerObject()->isPrivileged() && selectedID == 71) {
-			VendorManager::instance()->handleDisplayStatus(player, vendor);
-			return 0;
+		if (player->getPlayerObject()->isPrivileged()) {
+			if (selectedID == 71) {
+				VendorManager::instance()->handleDisplayStatus(player, vendor);
+				return 0;
+			} else if (selectedID == 72) {
+				VendorManager::instance()->promptRenameVendorTo(player, vendor);
+				return 0;
+			}
 		}
 
 		return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
@@ -136,10 +138,6 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	switch (selectedID) {
 	case 71: {
 		VendorManager::instance()->handleDisplayStatus(player, vendor);
-		return 0;
-	}
-	case 72: {
-		VendorManager::instance()->promptRenameVendorTo(player, vendor);
 		return 0;
 	}
 

@@ -63,10 +63,11 @@ public:
 		ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
 		if(targetGhost != NULL) {
 			int targetPermissionLevel = targetGhost->getAdminLevel();
-			if(param == "on" && targetGhost->getAdminLevel() > 0) {
+
+			if(param == "on" && targetPermissionLevel > 0) {
 				skillManager->addAbility(targetGhost, "admin");
 				playerManager->updatePermissionName(targetPlayer, targetPermissionLevel);
-			} else if(param == "off" && targetGhost->getAdminLevel() > 0) {
+			} else if(param == "off" && targetPermissionLevel > 0) {
 				skillManager->removeAbility(targetGhost, "admin");
 				playerManager->updatePermissionName(targetPlayer, targetPermissionLevel);
 			} else  {

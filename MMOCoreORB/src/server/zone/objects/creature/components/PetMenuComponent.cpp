@@ -211,8 +211,9 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 		return 0;
 
 	AiAgent* pet = cast<AiAgent*>(sceneObject);
+	ManagedReference<CreatureObject*> owner = pet->getLinkedCreature().get();
 
-	if (!player->getPlayerObject()->isPrivileged() && pet->getLinkedCreature().get() != player)
+	if (!player->getPlayerObject()->isPrivileged() && owner != player)
 		return 0;
 
 	Locker crossLocker(pet, player);
@@ -230,19 +231,16 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 
 	// Store
 	if (selectedID == 59) {
-		if (pet->getLinkedCreature() != player) {
-			ManagedReference<CreatureObject*> owner = pet->getLinkedCreature().get();
-			if (owner != NULL) {
-				Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(petControlDevice, owner, true);
-				task->execute();
-			}
+		if (owner != player && owner != NULL) {
+			Reference<PetControlDeviceStoreObjectTask*> task = new PetControlDeviceStoreObjectTask(petControlDevice, owner, true);
+			task->execute();
 		} else {
 			petControlDevice->storeObject(player);
 		}
 		return 0;
 	}
 
-	if (pet->getLinkedCreature().get() != player)
+	if (owner != player)
 		return 0;
 
 	switch(selectedID) {

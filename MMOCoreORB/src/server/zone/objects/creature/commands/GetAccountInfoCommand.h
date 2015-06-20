@@ -31,11 +31,6 @@ public:
 		if(admin == NULL || !admin->isPrivileged())
 			return INVALIDTARGET;
 
-		if (admin->getAdminLevel() == 13) {
-			creature->sendSystemMessage("QAs cant use this command");
-			return GENERALERROR;
-		}
-
 		ManagedReference<PlayerManagementSession*> session = NULL;
 		ManagedReference<CreatureObject* > targetCreature = NULL;
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
