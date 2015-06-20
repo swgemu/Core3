@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_fe504160",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/elder_conv_handler.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-20T11:31:00Z",
+      "side": 1,
+      "message": "creature isn\u0027t defined here.",
+      "revId": "b4d872ff1686e7b3a176947793dba582d7525e6b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
