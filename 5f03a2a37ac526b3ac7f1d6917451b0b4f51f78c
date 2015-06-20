@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_5e7935fb",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-20T10:39:38Z",
+      "side": 1,
+      "message": "I think we can optimize this a bit. There\u0027s no point in going through the for loop below if the jedi state is 2. Put the getJediState \u003d\u003d 2 check first with it\u0027s awardExp call inside and then follow it with an else if (getJediState \u003e 2)",
+      "revId": "5f03a2a37ac526b3ac7f1d6917451b0b4f51f78c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_7e7e71e6",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-20T10:39:38Z",
+      "side": 1,
+      "message": "I think we can also optimize this part. Instead of five ints just use one. Call it something like highestLevel and initialize it to -1.",
+      "revId": "5f03a2a37ac526b3ac7f1d6917451b0b4f51f78c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_1e83adcd",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-20T10:39:38Z",
+      "side": 1,
+      "message": "Invert the order of these checks. If there\u0027s a 4th level skill, set highestLevel to 4 and break. The first else if can check for 3rd tier skills and set to highestLevel to 3 if true. Put a highestLevel \u003c 3 check first, though, because int comparisons are faster than string comparisons. Do the same for the remaining checks.",
+      "revId": "5f03a2a37ac526b3ac7f1d6917451b0b4f51f78c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_3e88e9e6",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-20T10:39:38Z",
+      "side": 1,
+      "message": "Change this block to a switch case block.",
+      "revId": "5f03a2a37ac526b3ac7f1d6917451b0b4f51f78c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
