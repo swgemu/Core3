@@ -2477,20 +2477,22 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 	float modifier = 1.f;// (isInCombat()) ? 1.f : 1.f;
 
 	if (isKneeling())
-		modifier *= (1.5);
+		modifier *= 1.25f;
 	else if (isSitting())
-		modifier *= (2);
+		modifier *= 1.75f;
 
 	if (!isPlayerCreature() && isInCombat())
 		return;
 
+	if (!isPlayerCreature())
+		modifier *= 3.f;
+
 	uint32 healthTick = (uint32) ceil((float) MAX(0, getHAM(
-			CreatureAttribute::CONSTITUTION)) * 13.0f / 1200.0f * 3.0f
-			* modifier);
+			CreatureAttribute::CONSTITUTION)) * 13.0f / 2100.0f * modifier);
 	uint32 actionTick = (uint32) ceil((float) MAX(0, getHAM(
-			CreatureAttribute::STAMINA)) * 13.0f / 1200.0f * 3.0f * modifier);
+			CreatureAttribute::STAMINA)) * 13.0f / 2100.0f * modifier);
 	uint32 mindTick = (uint32) ceil((float) MAX(0, getHAM(
-			CreatureAttribute::WILLPOWER)) * 13.0f / 1200.0f * 3.0f * modifier);
+			CreatureAttribute::WILLPOWER)) * 13.0f / 2100.0f * modifier);
 
 	if (healthTick < 1)
 		healthTick = 1;
