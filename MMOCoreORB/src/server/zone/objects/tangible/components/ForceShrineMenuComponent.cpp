@@ -39,10 +39,7 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 	if (ghost == NULL)
 		return 0;
 
-	if (ghost->getAdminLevel() < 15)
-		return 0;
-
-	if (creature->hasSkill("force_title_jedi_novice") && !creature->hasSkill("force_title_jedi_rank_02")){
+	if (creature->hasSkill("force_title_jedi_novice") && !creature->hasSkill("force_title_jedi_rank_02")) {
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::NONE);
 		box->setPromptTitle("@jedi_trials:padawan_trials_title"); // Jedi Trials
 		box->setPromptText("@jedi_trials:padawan_trials_completed");
@@ -97,9 +94,8 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 		} else {
 			padawanRobe->destroyObjectFromDatabase(true);
 		}
-	}
 
-	else if (!creature->hasSkill("force_title_jedi_novice")){
+	} else if (!creature->hasSkill("force_title_jedi_novice")) {
 
 		int rand = System::random(14) + 1;
 
@@ -109,9 +105,7 @@ int ForceShrineMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 
 		creature->sendSystemMessage(sysmsg.toString());
 
-	}
-
-	else if (creature->hasSkill("force_title_jedi_rank_02")){
+	} else if (creature->hasSkill("force_title_jedi_rank_02")) {
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
