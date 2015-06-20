@@ -30,6 +30,8 @@ public:
 				UnicodeString name = tano->getCustomObjectName();
 				UnicodeString tag = PermissionLevelList::instance()->getPermissionTag(ghost->getAdminLevel());
 				insertUnicode(name + " \\#ffff00[" + tag + "]\\#.");
+			} else {
+				insertUnicode(tano->getCustomObjectName());
 			}
 
 		} else {
