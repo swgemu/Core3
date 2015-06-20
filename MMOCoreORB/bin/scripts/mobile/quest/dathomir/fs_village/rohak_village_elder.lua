@@ -22,13 +22,13 @@ rohak_village_elder = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
-	optionsBitmask = 264,
+	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_fs_village_elder.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "elder_convo_template",
+	conversationTemplate = "",
 	attacks = {
 	}
 }

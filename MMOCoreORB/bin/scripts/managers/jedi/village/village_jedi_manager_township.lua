@@ -177,7 +177,7 @@ function VillageJediManagerTownship:doPukingVillager(pNpc)
 
 	CreatureObject(pNpc):doAnimation("heavy_cough_vomit")
 
-	spatialChat(pNpc, "@quest/force_sensitive/fs_sick:fs_response" .. getRandomNumber(1,7))
+	spatialChat(pNpc, "@quest/force_sensitive/fs_sick:fs_response0" .. getRandomNumber(1,7))
 
 	createEvent(getRandomNumber(120, 300) * 1000, "VillageJediManagerTownship", "doPukingVillager", pNpc) -- 2-5 minute delay
 end
