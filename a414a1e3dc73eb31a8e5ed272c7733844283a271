@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_5e605535",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-20T11:09:12Z",
+      "side": 1,
+      "message": "Try to minimize the number of casts. Rearrange things a bit to avoid casting so many times.",
+      "revId": "a414a1e3dc73eb31a8e5ed272c7733844283a271",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
