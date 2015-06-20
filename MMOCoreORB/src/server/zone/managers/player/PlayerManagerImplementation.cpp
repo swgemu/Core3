@@ -931,9 +931,59 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	player->notifyObservers(ObserverEventType::PLAYERCLONED, player, 0);
 
+
 	// Jedi experience loss.
-	if (ghost->getJediState() > 1)
-		awardExperience(player, "jedi_general", -200000, true);
+	if (ghost->getJediState() > 1) {
+		SkillList* skillList = player->getSkillList();
+		int totalNoviceSkills = 0;
+		int totalLevel1Skills = 0;
+		int totalLevel2Skills = 0;
+		int totalLevel3Skills = 0;
+		int totalLevel4Skills = 0;
+
+		for(int i=0;i < skillList->size(); ++i) {
+			Skill* skill = skillList->get(i);
+			String skillName = skill->getSkillName();
+
+			if(skillName.contains("force_discipline") == true && skillName.contains("novice") == true) {
+				totalNoviceSkills++;
+			} else if(skillName.contains("force_discipline") && skillName.contains("1")) {
+				totalLevel1Skills++;
+			} else if(skillName.contains("force_discipline") && skillName.contains("2")) {
+				totalLevel2Skills++;
+			} else if(skillName.contains("force_discipline") && skillName.contains("3")) {
+				totalLevel3Skills++;
+			}else if(skillName.contains("force_discipline") && skillName.contains("4")) {
+				totalLevel4Skills++;
+			}
+
+		}
+
+		// If player is a Jedi Initiate
+		if(ghost->getJediState() == 2 ) {
+			awardExperience(player, "jedi_general", -4500, true);
+		// If player has any level 4 boxes (a full branch) in any discipline
+		} else if(totalLevel4Skills > 0) {
+			awardExperience(player, "jedi_general", -200000, true);
+		// If player has any level 3 boxes in any Jedi discipline
+		} else if (totalLevel3Skills > 0) {
+			awardExperience(player, "jedi_general", -100000, true);
+		// If player has any level 2 boxes in any Jedi discipline
+		} else if(totalLevel2Skills > 0) {
+			awardExperience(player, "jedi_general", -50000, true);
+		// If player has any level 1 boxes in any Jedi discipline
+		} else if(totalLevel1Skills > 0) {
+			awardExperience(player, "jedi_general", -30000, true);
+		// If player has any novice boxes in any Jedi discipline
+		} else if(totalNoviceSkills > 0) {
+			awardExperience(player, "jedi_general", -15000, true);
+		// Otherwise, the player has no novice boxes (new Padawan)
+		} else {
+			awardExperience(player, "jedi_general", -5000, true);
+		}
+
+		player->sendSystemMessage("You have lost Jedi Experience due to cloning.");
+	}
 }
 
 void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player) {
