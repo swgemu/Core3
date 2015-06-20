@@ -1202,7 +1202,7 @@ void GuildManagerImplementation::sendGuildKickPromptTo(CreatureObject* player, C
 	suiBox->setPromptTitle("@guild:kick_title"); //Kick From Guild
 	suiBox->setPromptText("@guild:kick_prompt"); //Are you sure you want to kick %TU out of the guild?
 	suiBox->setUsingObject(target);
-	suiBox->setForceCloseDistance(32);
+	suiBox->setForceCloseDisabled();
 	suiBox->setCancelButton(true, "@no");
 	suiBox->setOkButton(true, "@yes");
 
