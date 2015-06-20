@@ -931,9 +931,63 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	player->notifyObservers(ObserverEventType::PLAYERCLONED, player, 0);
 
+
 	// Jedi experience loss.
-	if (ghost->getJediState() > 1)
-		awardExperience(player, "jedi_general", -200000, true);
+	// If player is a Jedi Initiate
+	if(ghost->getJediState()  == 2) {
+		awardExperience(player, "jedi_general", -4500, true);
+	} else if (ghost->getJediState() > 2) {
+		SkillList* skillList = player->getSkillList();
+		int highestLevel = -1;
+
+
+		for(int i=0;i < skillList->size(); ++i) {
+			Skill* skill = skillList->get(i);
+			String skillName = skill->getSkillName();
+
+			if(skillName.contains("force_discipline") && skillName.contains("4")) {
+				highestLevel = 4;
+				break;
+			} else if(highestLevel < 3 && (skillName.contains("force_discipline") && skillName.contains("3"))) {
+				highestLevel = 3;
+			} else if(highestLevel < 2 && (skillName.contains("force_discipline") && skillName.contains("2"))) {
+				highestLevel = 2;
+			} else if(highestLevel < 1 && (skillName.contains("force_discipline") && skillName.contains("1"))) {
+				highestLevel = 1;
+			} else if(highestLevel < 0 && (skillName.contains("force_discipline") && skillName.contains("novice"))) {
+				highestLevel = 0;
+			}
+
+		}
+
+		switch(highestLevel) {
+		// If player has any level 4 box in any discipline
+		case 4:
+			awardExperience(player, "jedi_general", -200000, true);
+			break;
+		// If player has any level 3 box in any discipline
+		case 3:
+			awardExperience(player, "jedi_general", -100000, true);
+			break;
+		// If player has any level 2 box in any discipline
+		case 2:
+			awardExperience(player, "jedi_general", -50000, true);
+			break;
+		// If player has any level 1 box in any discipline
+		case 1:
+			awardExperience(player, "jedi_general", -30000, true);
+			break;
+		// If player has any novice box in any discipline
+		case 0:
+			awardExperience(player, "jedi_general", -15000, true);
+			break;
+		// If player has no novice boxes (new Padawan)
+		case -1:
+			awardExperience(player, "jedi_general", -5000, true);
+			break;
+		}
+		player->sendSystemMessage("You have lost Jedi Experience due to cloning.");
+	}
 }
 
 void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player) {
