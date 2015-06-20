@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_9e76dd05",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/village/phase1/elder_phase1_conv.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-20T11:05:27Z",
+      "side": 1,
+      "message": "Not that it matters much inside a comment, but if you\u0027re planning to leave this here and to avoid confusion you may want to replace repelled_an_attack with an actual screen that\u0027s used.",
+      "revId": "6e8fa00970c650f7240f5120f65b0b5072a3d996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_fe692126",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/village/convos/elder_conv_handler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-20T11:05:27Z",
+      "side": 1,
+      "message": "You should probably check for full inventory as well.",
+      "revId": "6e8fa00970c650f7240f5120f65b0b5072a3d996",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
