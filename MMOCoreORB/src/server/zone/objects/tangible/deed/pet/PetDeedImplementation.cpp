@@ -512,17 +512,13 @@ void PetDeedImplementation::setSpecialResist(int type) {
 	specialResists |= type;
 }
 void PetDeedImplementation::adjustPetLevel(CreatureObject* player, CreatureObject* pet) {
-	int oldLevel = pet->getLevel();
 	int newLevel = calculatePetLevel();
-	if (newLevel < 1) {
+
+	if (newLevel < 1 || newLevel > 75) {
 		player->sendSystemMessage("@bio_engineer:pet_sui_fix_error");
 		return;
 	}
-	if (newLevel > 75) {
-		player->sendSystemMessage("@bio_engineer:pet_sui_level_too_high");
-		adjustPetStats(player,pet);
-		return;
-	}
+
 	level = newLevel;
 	pet->reloadTemplate();
 	player->sendSystemMessage("@bio_engineer:pet_sui_level_fixed");
@@ -537,9 +533,6 @@ void PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObjec
 	if (oldLevel > 75) {
 		oldLevel = 75;
 	}
-
-	if (oldLevel > 1)
-		oldLevel -= 1;
 
 	int ham = DnaManager::instance()->valueForLevel(DnaManager::HAM_LEVEL,oldLevel);
 	health = ham;
@@ -575,18 +568,9 @@ void PetDeedImplementation::adjustPetStats(CreatureObject* player, CreatureObjec
 	if(!isSpecialResist(WeaponObject::STUN) && stunResist > 0)
 		stunResist = effectiveness;
 
-	// Recalculate the level now we should be good to go now. if we didnt we have a bug in our action logic
-	int newLevel = calculatePetLevel();
-	level = newLevel;
-
-	if (newLevel > 75) {
-		player->sendSystemMessage("@bio_engineer:pet_sui_fix_error");
-		return;
-	}
-
+	// ensure the stats are set
 	pet->reloadTemplate();
 
-	// ensure the stats are set
 	player->sendSystemMessage("@bio_engineer:pet_sui_stats_fixed");
 	return;
 }
