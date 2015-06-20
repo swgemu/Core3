@@ -26,7 +26,7 @@ class LairObserver extends SpawnObserver {
 		Logger.setLoggingName("LairObserver");
 
 		healLairEvent = null;
-		spawnNumber = 0;
+		spawnNumber.set(0);
 	}
 
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
@@ -50,6 +50,6 @@ class LairObserver extends SpawnObserver {
 	}
 
 	public int getSpawnNumber() {
-		return spawnNumber;
+		return spawnNumber.get();
 	}
 }
