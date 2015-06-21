@@ -51,6 +51,24 @@
       "revId": "929ce0cdf0ba14994cb7e6cd72508baf77f37092",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_de0b052a",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-21T01:39:30Z",
+      "side": 1,
+      "message": "Go ahead and change it. I\u0027d like something more than hearsay before hard coding a string when a suitable client string exists.",
+      "parentUuid": "7a96c907_1e12cd62",
+      "revId": "929ce0cdf0ba14994cb7e6cd72508baf77f37092",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
