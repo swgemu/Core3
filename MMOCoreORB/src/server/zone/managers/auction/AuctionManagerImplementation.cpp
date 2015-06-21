@@ -995,6 +995,7 @@ void AuctionManagerImplementation::refundAuction(AuctionItem* item) {
 	buyerBody.setTT(item->getOwnerName());
 
 	if (bidder != NULL) {
+		Locker locker(bidder);
 		int bankCredits = bidder->getBankCredits();
 		bidder->setBankCredits(bankCredits + item->getPrice());
 		bidder->sendSystemMessage(buyerBody);
