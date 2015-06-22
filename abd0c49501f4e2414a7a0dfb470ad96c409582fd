@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a96c907_21f3e80b",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-22T10:51:33Z",
+      "side": 1,
+      "message": "You\u0027re making this more complicated than it needs to be. All you need is\n\nghost-\u003esetForcePowerMax(ghost-\u003egetForcePowerMax() + robeObject-\u003egetTemplateSkillMods()-\u003eget(\"jedi_force_power_max\"));\n\nVectorMap has a get(key) that will find it for you and return it\u0027s value.",
+      "revId": "abd0c49501f4e2414a7a0dfb470ad96c409582fd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a96c907_41f874e5",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/components/PlayerContainerComponent.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2015-06-22T10:51:33Z",
+      "side": 1,
+      "message": "Do we need to loop through all of the slotted objects? Are all robeObjects not equipped to the same slot? Can we not just get it based on the slot name?",
+      "revId": "abd0c49501f4e2414a7a0dfb470ad96c409582fd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
