@@ -121,11 +121,32 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 		tano->applySkillModsTo(creo);
 	}
 
+	// Jedi stuff below.
 	PlayerObject* ghost = creo->getPlayerObject();
 
 	if (ghost && ghost->isJedi()) {
-		if ((object->isRobeObject() && cast<RobeObject*>( object)->getSkillRequired() != "") || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon())) {
-			VisibilityManager::instance()->increaseVisibility(creo);
+		if (object->isRobeObject()) {
+			RobeObject* robeObject = cast<RobeObject*>(object);
+			if (robeObject->getSkillRequired() != "") {
+				VisibilityManager::instance()->increaseVisibility(creo);
+				if (creo->getWeapon()->isJediWeapon()) {
+					ghost->setForcePowerMax(ghost->getForcePowerMax() + robeObject->getTemplateSkillMods()->get("jedi_force_power_max"));
+					ghost->setForcePowerRegen(ghost->getForcePowerRegen() + robeObject->getTemplateSkillMods()->get("jedi_force_power_regen"));
+				}
+			}
+		} else if (object->isWeaponObject()) {
+			WeaponObject* weaponObject = cast<WeaponObject*>(object);
+			if (weaponObject->isJediWeapon()) {
+					SceneObject* item = creo->getSlottedObject("chest1");
+					if (item != NULL && item->isRobeObject()) {
+						RobeObject* robeObject = cast<RobeObject*>(item);
+						if (robeObject->getSkillRequired() != "") {
+							ghost->setForcePowerMax(ghost->getForcePowerMax() + robeObject->getTemplateSkillMods()->get("jedi_force_power_max"));
+							ghost->setForcePowerRegen(ghost->getForcePowerRegen() + robeObject->getTemplateSkillMods()->get("jedi_force_power_regen"));
+						}
+					}
+				VisibilityManager::instance()->increaseVisibility(creo);
+			}
 		}
 	}
 
@@ -175,9 +196,32 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 			creo->stopEntertaining();
 	}
 
-	if (creo->getPlayerObject().get() != NULL && creo->getPlayerObject()->isJedi()) {
-		if ((object->isRobeObject() && cast<RobeObject*>( object)->getSkillRequired() != "") || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon())) {
-			VisibilityManager::instance()->increaseVisibility(creo);
+	// Jedi stuff below.
+	PlayerObject* ghost = creo->getPlayerObject();
+
+	if (ghost && ghost->isJedi()) {
+		if (object->isRobeObject()) {
+			RobeObject* robeObject = cast<RobeObject*>(object);
+			if (robeObject->getSkillRequired() != "") {
+				VisibilityManager::instance()->increaseVisibility(creo);
+				if (creo->getWeapon()->isJediWeapon()) {
+					ghost->setForcePowerMax(ghost->getForcePowerMax() - robeObject->getTemplateSkillMods()->get("jedi_force_power_max"));
+					ghost->setForcePowerRegen(ghost->getForcePowerRegen() - robeObject->getTemplateSkillMods()->get("jedi_force_power_regen"));
+				}
+			}
+		} else if (object->isWeaponObject()) {
+			WeaponObject* weaponObject = cast<WeaponObject*>(object);
+			if (weaponObject->isJediWeapon()) {
+					SceneObject* item = creo->getSlottedObject("chest1");
+					if (item != NULL && item->isRobeObject()) {
+						RobeObject* robeObject = cast<RobeObject*>(item);
+						if (robeObject->getSkillRequired() != "") {
+							ghost->setForcePowerMax(ghost->getForcePowerMax() - robeObject->getTemplateSkillMods()->get("jedi_force_power_max"));
+							ghost->setForcePowerRegen(ghost->getForcePowerRegen() - robeObject->getTemplateSkillMods()->get("jedi_force_power_regen"));
+						}
+					}
+				VisibilityManager::instance()->increaseVisibility(creo);
+			}
 		}
 	}
 
