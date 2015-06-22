@@ -520,13 +520,16 @@ int LuaAiAgent::isFleeing(lua_State* L) {
 }
 
 int LuaAiAgent::runAway(lua_State* L) {
-	CreatureObject* target = static_cast<CreatureObject*>(lua_touserdata(L, -2));
+	SceneObject* scene = static_cast<CreatureObject*>(lua_touserdata(L, -2));
+	Reference<CreatureObject*> target = dynamic_cast<CreatureObject*>(scene);
 	float range = lua_tonumber(L, -1);
 
 	if (target != NULL) {
-		Locker locker(realObject);
+		EXECUTE_TASK_3(target, range, realObject, {
+				Locker locker(realObject_p);
 
-		realObject->runAway(target, range);
+				realObject_p->runAway(target_p, range_p);
+		});
 	}
 
 	return 0;
