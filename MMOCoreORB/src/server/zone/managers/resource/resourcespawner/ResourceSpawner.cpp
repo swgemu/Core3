@@ -724,7 +724,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	}*/
 
 	//Adjust cost based upon player's focus
-	int mindCost = player->calculateCostAdjustment(CreatureAttribute::FOCUS, 100);
+	int mindCost = 100 - (int)(player->getHAM(CreatureAttribute::FOCUS)/15.f);
 
 	player->inflictDamage(player, CreatureAttribute::MIND, mindCost, false, true);
 
@@ -837,9 +837,11 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 	}*/
 
 	//Adjust cost based upon player's quickness
-	int actionCost = player->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 200);
+	int actionCost = 124 - (int)(player->getHAM(CreatureAttribute::QUICKNESS)/12.5f);
+	int mindCost = 124 - (int)(player->getHAM(CreatureAttribute::FOCUS)/12.5f);
 
 	player->inflictDamage(player, CreatureAttribute::ACTION, actionCost, false, true);
+	player->inflictDamage(player, CreatureAttribute::MIND, mindCost, false, true);
 
 	PlayClientEffectLoc* effect = new PlayClientEffectLoc(sampleAnimation,
 			player->getZone()->getZoneName(), player->getPositionX(),
