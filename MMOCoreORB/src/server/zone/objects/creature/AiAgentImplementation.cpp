@@ -927,29 +927,38 @@ int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte s
 }
 
 void AiAgentImplementation::selectWeapon() {
-	ManagedReference<SceneObject*> followCopy = getFollowObject().get();
-	float dist = 5.f;
-
-	if (followCopy != NULL)
-		dist = getDistanceTo(followCopy) - followCopy->getTemplateRadius() - getTemplateRadius();
-
 	WeaponObject* finalWeap = NULL;
 	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
-	float readyWeaponRangeDiff = -1.f;
-	float defaultWeaponRangeDiff = 100.f;
+	if (getUseRanged()) {
+		if (readyWeapon != NULL && readyWeapon->isRangedWeapon()) {
+			finalWeap = readyWeapon;
+		} else if (defaultWeapon != NULL && defaultWeapon->isRangedWeapon()) {
+			finalWeap = defaultWeapon;
+		}
 
-	if (readyWeapon != NULL) {
-		finalWeap = readyWeapon;
-		readyWeaponRangeDiff = fabs(readyWeapon->getIdealRange() - dist);
+	} else {
+		ManagedReference<SceneObject*> followCopy = getFollowObject().get();
+		float dist = 5.f;
+
+		if (followCopy != NULL)
+			dist = getDistanceTo(followCopy) - followCopy->getTemplateRadius() - getTemplateRadius();
+
+		float readyWeaponRangeDiff = -1.f;
+		float defaultWeaponRangeDiff = 100.f;
+
+		if (readyWeapon != NULL) {
+			finalWeap = readyWeapon;
+			readyWeaponRangeDiff = fabs(readyWeapon->getIdealRange() - dist);
+		}
+
+		if (defaultWeapon != NULL && defaultWeapon->getMaxRange() >= dist) {
+			defaultWeaponRangeDiff = fabs(defaultWeapon->getIdealRange() - dist);
+		}
+
+		if (finalWeap == NULL || readyWeaponRangeDiff > defaultWeaponRangeDiff)
+			finalWeap = defaultWeapon;
 	}
-
-	if (defaultWeapon != NULL && defaultWeapon->getMaxRange() >= dist) {
-		defaultWeaponRangeDiff = fabs(defaultWeapon->getIdealRange() - dist);
-	}
-
-	if (finalWeap == NULL || readyWeaponRangeDiff > defaultWeaponRangeDiff)
-		finalWeap = defaultWeapon;
 
 	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
 
@@ -2919,6 +2928,18 @@ bool AiAgentImplementation::hasRangedWeapon() {
 	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	return (defaultWeapon != NULL && defaultWeapon->isRangedWeapon()) || (readyWeapon != NULL && readyWeapon->isRangedWeapon());
+}
+
+bool AiAgentImplementation::getUseRanged() {
+	if (isPet()) {
+		ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (pcd != NULL && pcd->getUseRanged()) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool AiAgentImplementation::hasSpecialAttack(int num) {

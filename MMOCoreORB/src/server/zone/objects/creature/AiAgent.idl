@@ -1309,6 +1309,8 @@ class AiAgent extends CreatureObject {
 	@dirty
 	public native boolean hasRangedWeapon();
 
+	public native boolean getUseRanged();
+
 	@dirty
 	public native boolean hasSpecialAttack(int num);
 

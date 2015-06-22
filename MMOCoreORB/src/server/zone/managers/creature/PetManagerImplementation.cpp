@@ -252,7 +252,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		enqueuePetCommand(speaker, pet, String("petSpecialAttack").toLowerCase().hashCode(), "2");
 	}
 	else if( isTrainedCommand( pcd, RANGED_ATTACK, message ) ){
-		speaker->sendSystemMessage("RANGED_ATTACK pet command is not yet implemented.");
+		enqueuePetCommand(speaker, pet, String("petRangedAttack").toLowerCase().hashCode(), "", true);
 	}
 	else if( isTrainedCommand( pcd, GROUP, message ) ){
 		enqueueOwnerOnlyPetCommand(speaker, pet, String("petGroup").toLowerCase().hashCode(), "");
