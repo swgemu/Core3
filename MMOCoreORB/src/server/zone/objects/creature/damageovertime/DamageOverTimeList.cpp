@@ -43,9 +43,13 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 			if (!dot->isPast()) {
 				states |= dot->getType();
 			} else {
-				if (i < size()) {
-					vector->remove(j);
-					--j;
+				vector->remove(j);
+				--j;
+
+				// Since the vector only seems to ever be of size one, this should always be true
+				if (vector->size() == 0) {
+					remove(i);
+					--i;
 				}
 			}
 		}
@@ -148,6 +152,8 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, CreatureObject* attack
 		Vector<DamageOverTime>* vector = &get(key);
 		Vector<DamageOverTime> newVec;
 
+		// This seems to only ever put one value in the DOT vector. This needs to remain a vector to
+		// maintain the integrity of the db.
 		for (int i = 0; i < vector->size(); ++i) {
 			DamageOverTime dot = vector->get(i);
 
