@@ -995,10 +995,14 @@ void AuctionManagerImplementation::refundAuction(AuctionItem* item) {
 	buyerBody.setTT(item->getOwnerName());
 
 	if (bidder != NULL) {
-		Locker locker(bidder);
-		int bankCredits = bidder->getBankCredits();
-		bidder->setBankCredits(bankCredits + item->getPrice());
-		bidder->sendSystemMessage(buyerBody);
+		int itemPrice = item->getPrice();
+
+		EXECUTE_TASK_3(bidder, itemPrice, buyerBody, {
+				Locker locker(bidder_p);
+
+				bidder_p->addBankCredits(itemPrice_p);
+				bidder_p->sendSystemMessage(buyerBody_p);
+		});
 	}
 	String sender = "SWG." + zoneServer->getGalaxyName() + ".auctioner";
 	cman->sendMail(sender, buyerSubject, buyerBody, item->getBidderName());
