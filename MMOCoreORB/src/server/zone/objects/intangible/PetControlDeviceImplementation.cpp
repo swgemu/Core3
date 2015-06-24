@@ -438,6 +438,9 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 	// Not training any commands
 	trainingCommand = 0;
 
+	//clear friend list
+	friends.removeAll();
+
 	Reference<StorePetTask*> task = new StorePetTask(player, pet);
 
 	// Store non-faction pets immediately.  Store faction pets after 60sec delay.

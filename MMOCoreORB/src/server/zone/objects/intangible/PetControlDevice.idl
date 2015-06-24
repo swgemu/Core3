@@ -64,6 +64,9 @@ class PetControlDevice extends ControlDevice {
 
 	protected boolean useRanged;
 
+	@dereferenced
+	protected transient Vector<unsigned long> friends;
+
 	public PetControlDevice() {
 		Logger.setLoggingName("PetControlDevice");
 		Logger.setLogging(false);
@@ -331,5 +334,18 @@ class PetControlDevice extends ControlDevice {
 	@read
 	public boolean getUseRanged() {
 		return useRanged;
+	}
+
+	@dirty
+	public boolean isFriend(unsigned long playerID) {
+		return friends.contains(playerID);
+	}
+
+	public void toggleFriend(unsigned long playerID) {
+		if (friends.contains(playerID)) {
+			friends.removeElement(playerID);
+		} else {
+			friends.add(playerID);
+		}
 	}
 }

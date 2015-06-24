@@ -12,6 +12,7 @@
 #include "server/zone/objects/creature/commands/pet/PetEmoteCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetFeedCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetFollowCommand.h"
+#include "server/zone/objects/creature/commands/pet/PetFriendCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetGroupCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetGuardCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetRangedAttackCommand.h"
@@ -323,6 +324,7 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("petEmote").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petFeed").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petFollow").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("petFriend").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petGroup").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petGuard").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petRangedAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
@@ -1531,6 +1533,7 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<PetEmoteCommand>(String("petEmote").toLowerCase());
 	commandFactory.registerCommand<PetFeedCommand>(String("petFeed").toLowerCase());
 	commandFactory.registerCommand<PetFollowCommand>(String("petFollow").toLowerCase());
+	commandFactory.registerCommand<PetFriendCommand>(String("petFriend").toLowerCase());
 	commandFactory.registerCommand<PetGroupCommand>(String("petGroup").toLowerCase());
 	commandFactory.registerCommand<PetGuardCommand>(String("petGuard").toLowerCase());
 	commandFactory.registerCommand<PetRangedAttackCommand>(String("petRangedAttack").toLowerCase());

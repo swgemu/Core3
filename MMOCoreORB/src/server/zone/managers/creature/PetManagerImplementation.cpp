@@ -187,8 +187,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		return;
 
 	// Check if speaker has permission to command pet
-	// TODO: Add check for players other than owner that are on pet's friend list
-	if( linkedCreature != speaker)
+	if( linkedCreature != speaker && !pcd->isFriend(speaker->getObjectID()))
 		return;
 
 	ManagedWeakReference<SceneObject*> speakerParent = speaker->getRootParent();
@@ -219,7 +218,7 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		enqueuePetCommand(speaker, pet, String("petGuard").toLowerCase().hashCode(), "", true);
 	}
 	else if( isTrainedCommand( pcd, FRIEND, message ) ){
-		speaker->sendSystemMessage("FRIEND pet command is not yet implemented.");
+		enqueueOwnerOnlyPetCommand(speaker, pet, String("petFriend").toLowerCase().hashCode(), "");
 	}
 	else if( isTrainedCommand( pcd, FOLLOWOTHER, message ) ){
 		enqueuePetCommand(speaker, pet, String("petFollow").toLowerCase().hashCode(), "");
