@@ -203,40 +203,40 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 
 	// Handle trained command
 	if( isTrainedCommand( pcd, STAY, message ) ){
-		enqueuePetCommand(speaker, pet, String("petStay").toLowerCase().hashCode(), "");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petstay"), "");
 	}
 	else if( isTrainedCommand( pcd, FOLLOW, message ) ){
-		enqueuePetCommand(speaker, pet, String("petFollow").toLowerCase().hashCode(), "", true);
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petfollow"), "", true);
 	}
 	else if( isTrainedCommand( pcd, STORE, message ) ){
-		enqueueOwnerOnlyPetCommand(speaker, pet, String("petStore").toLowerCase().hashCode(), "");
+		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("petstore"), "");
 	}
 	else if( isTrainedCommand( pcd, ATTACK, message ) ){
-		enqueuePetCommand(speaker, pet, String("petAttack").toLowerCase().hashCode(), "");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petattack"), "");
 	}
 	else if( isTrainedCommand( pcd, GUARD, message ) ){
-		enqueuePetCommand(speaker, pet, String("petGuard").toLowerCase().hashCode(), "", true);
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petguard"), "", true);
 	}
 	else if( isTrainedCommand( pcd, FRIEND, message ) ){
-		enqueueOwnerOnlyPetCommand(speaker, pet, String("petFriend").toLowerCase().hashCode(), "");
+		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("petfriend"), "");
 	}
 	else if( isTrainedCommand( pcd, FOLLOWOTHER, message ) ){
-		enqueuePetCommand(speaker, pet, String("petFollow").toLowerCase().hashCode(), "");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petfollow"), "");
 	}
 	else if( isTrainedCommand( pcd, TRICK1, message ) ){
-		enqueuePetCommand(speaker, pet, String("petTrick").toLowerCase().hashCode(), "1", true);
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("pettrick"), "1", true);
 	}
 	else if( isTrainedCommand( pcd, TRICK2, message ) ){
-		enqueuePetCommand(speaker, pet, String("petTrick").toLowerCase().hashCode(), "2", true);
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("pettrick"), "2", true);
 	}
 	else if( isTrainedCommand( pcd, PATROL, message ) ){
-		enqueuePetCommand(speaker, pet, String("petPatrol").toLowerCase().hashCode(), "");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petpatrol"), "");
 	}
 	else if( isTrainedCommand( pcd, GETPATROLPOINT, message ) ){
-		enqueuePetCommand(speaker, pet, String("petGetPatrolPoint").toLowerCase().hashCode(), "", true);
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petgetpatrolpoint"), "", true);
 	}
 	else if( isTrainedCommand( pcd, CLEARPATROLPOINTS, message ) ){
-		enqueuePetCommand(speaker, pet, String("petClearPatrolPoints").toLowerCase().hashCode(), "", true);
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petclearpatrolpoints"), "", true);
 	}
 	else if( isTrainedCommand( pcd, FORMATION1, message ) ){
 		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
@@ -245,22 +245,22 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
 	}
 	else if( isTrainedCommand( pcd, SPECIAL_ATTACK1, message ) ){
-		enqueuePetCommand(speaker, pet, String("petSpecialAttack").toLowerCase().hashCode(), "1");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petspecialattack"), "1");
 	}
 	else if( isTrainedCommand( pcd, SPECIAL_ATTACK2, message ) ){
-		enqueuePetCommand(speaker, pet, String("petSpecialAttack").toLowerCase().hashCode(), "2");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petspecialattack"), "2");
 	}
 	else if( isTrainedCommand( pcd, RANGED_ATTACK, message ) ){
-		enqueuePetCommand(speaker, pet, String("petRangedAttack").toLowerCase().hashCode(), "", true);
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petrangedattack"), "", true);
 	}
 	else if( isTrainedCommand( pcd, GROUP, message ) ){
-		enqueueOwnerOnlyPetCommand(speaker, pet, String("petGroup").toLowerCase().hashCode(), "");
+		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("petgroup"), "");
 	}
 	else if( isTrainedCommand( pcd, RECHARGEOTHER, message ) ){
-		enqueuePetCommand(speaker, pet, String("petRechargeOther").toLowerCase().hashCode(), "");
+		enqueuePetCommand(speaker, pet, STRING_HASHCODE("petrechargeother"), "");
 	}
 	else if( isTrainedCommand( pcd, TRANSFER, message ) ){
-		enqueueOwnerOnlyPetCommand(speaker, pet, String("petTransfer").toLowerCase().hashCode(), "");
+		enqueueOwnerOnlyPetCommand(speaker, pet, STRING_HASHCODE("pettransfer"), "");
 	}
 
 	// Hand off to droid modules for handling

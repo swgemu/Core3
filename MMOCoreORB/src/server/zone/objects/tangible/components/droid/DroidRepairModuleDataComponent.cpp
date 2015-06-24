@@ -84,7 +84,7 @@ void DroidRepairModuleDataComponent::handlePetCommand(String cmd, CreatureObject
 		return;
 
 	if( petManager->isTrainedCommand( pcd, PetManager::REPAIR, cmd ) ){
-		petManager->enqueuePetCommand(speaker, droid, String("petRepair").toLowerCase().hashCode(), "");
+		petManager->enqueuePetCommand(speaker, droid, STRING_HASHCODE("petrepair"), "");
 	}
 }
 
