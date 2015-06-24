@@ -130,7 +130,7 @@ public:
 						if (petManager == NULL)
 							return GENERALERROR;
 
-						petManager->enqueueOwnerOnlyPetCommand(creature, aiAgent,String("petFeed").toLowerCase().hashCode(), String::valueOf( object->getObjectID() ) );
+						petManager->enqueueOwnerOnlyPetCommand(creature, aiAgent, STRING_HASHCODE("petfeed"), String::valueOf( object->getObjectID() ) );
 
 					}
 

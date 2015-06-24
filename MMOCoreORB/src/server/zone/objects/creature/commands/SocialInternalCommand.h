@@ -58,7 +58,7 @@ public:
 			if (petManager == NULL)
 				return GENERALERROR;
 
-			petManager->enqueueOwnerOnlyPetCommand(creature, aiAgent,String("petEmote").toLowerCase().hashCode(), arguments.toString() );
+			petManager->enqueueOwnerOnlyPetCommand(creature, aiAgent, STRING_HASHCODE("petemote"), arguments.toString() );
 
 		} else {
 
