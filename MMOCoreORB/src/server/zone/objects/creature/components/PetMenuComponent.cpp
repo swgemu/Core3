@@ -302,7 +302,7 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 		petControlDevice->setTrainingCommand( PetManager::FOLLOWOTHER );
 		break;
 	case 166: // Incapacitation Recovery
-		petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petRecover").toLowerCase().hashCode(), "");
+		petManager->enqueueOwnerOnlyPetCommand(player, pet, STRING_HASHCODE("petrecover"), "");
 		break;
 	case 207: // Train Pet As A Mount
 		if (petControlDevice->getPetType() != PetManager::CREATUREPET) {
@@ -312,9 +312,9 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 		break;
 	case 234: // Recharge/Feed
 		if (petControlDevice->getPetType() == PetManager::DROIDPET) {
-			petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petRecharge").toLowerCase().hashCode(), "");
+			petManager->enqueueOwnerOnlyPetCommand(player, pet, STRING_HASHCODE("petrecharge"), "");
 		} else if (petControlDevice->getPetType() == PetManager::CREATUREPET) {
-			petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petFeed").toLowerCase().hashCode(), "");
+			petManager->enqueueOwnerOnlyPetCommand(player, pet, STRING_HASHCODE("petfeed"), "");
 		}
 		break;
 	case 235: // Train Command: Recharge Other

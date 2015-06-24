@@ -189,7 +189,7 @@ void DroidTrapModuleDataComponent::handlePetCommand(String cmd, CreatureObject* 
 			speaker->sendSystemMessage("@pet/droid_modules:no_trap_loaded");
 			return;
 		}
-		petManager->enqueuePetCommand(speaker, droid, String("petThrow").toLowerCase().hashCode(), "");
+		petManager->enqueuePetCommand(speaker, droid, STRING_HASHCODE("petthrow"), "");
 	}
 }
 
