@@ -634,52 +634,69 @@ void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, Gui
 }
 
 void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* sceoTerminal){
-	if(player->getFirstName().toLowerCase() == newOwnerName.toLowerCase())	{
-		player->sendSystemMessage("Cannot transfer guild to yourself");
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>( sceoTerminal->getParentRecursively(SceneObjectType::BUILDING).get().get());
+	if (building == NULL) {
 		return;
 	}
 
-	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
-	ManagedReference<CreatureObject*> target = playerManager->getPlayer(newOwnerName);
-
-	if (target == NULL) {
-		player->sendSystemMessage("@guild:ml_fail"); // unable to find a member of the PA with that name
+	ManagedReference<CreatureObject*> owner = building->getOwnerCreatureObject();
+	if (owner == NULL || !owner->isPlayerCreature()) {
 		return;
 	}
 
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
+	ManagedReference<GuildObject*> guild = owner->getGuildObject().get();
 
 	if (guild == NULL)
 		return;
 
 	Locker _lock(guild);
 
-	// make sure target is in the guild
-	if ( !guild->hasMember(target->getObjectID())) {
+	if (!(guild->getGuildLeaderID() == player->getObjectID() && player == owner) && !player->getPlayerObject()->isPrivileged())
+		return;
+
+	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+	ManagedReference<CreatureObject*> target = playerManager->getPlayer(newOwnerName);
+
+	if (target == NULL) {
 		player->sendSystemMessage("@ui_community:friend_location_failed_noname"); // no player with that name exists
 		return;
 	}
-	_lock.release();
 
-	Locker _clocker(target, player);
+	if(target->getObjectID() == guild->getGuildLeaderID()) {
+		player->sendSystemMessage("@guild:already_leader"); // You are already the guild leader.
+		return;
+	}
+
+	// make sure target is in the guild
+	if ( !guild->hasMember(target->getObjectID())) {
+		player->sendSystemMessage("@guild:ml_fail"); // unable to find a member of the PA with that name
+		return;
+	}
 
 	// make sure player transferring to is nearby
-	if (!target->isOnline() || !player->isInRange(target, 32)) {
-		StringIdChatParameter params("@cmd_err:target_range_prose");  // your target is too far away to %TO
-		params.setTO("Transfer PA Leadership");
+	if (!target->isOnline() || !target->isInRange(sceoTerminal, 32)) {
+		StringIdChatParameter params("@guild:ml_not_loaded");  // That person is not loaded or is too far away.
 		player->sendSystemMessage(params);
 		return;
 	}
 
-	if ( !target->getPlayerObject()->hasLotsRemaining(5) )
-		target->sendSystemMessage("@guild:ml_no_lots_free");  // That person does not have enough free lots to own the PA hall.  PA hall ownership is a requiement be guild leader
+	if ( !target->getPlayerObject()->hasLotsRemaining(5) ) {
+		target->sendSystemMessage("@guild:ml_no_lots_free");  // That person does not have enough free lots to own the PA hall.  PA hall ownership is a requirement be guild leader
+		return;
+	}
+
+	guild->setTransferPending(true);
+
+	_lock.release();
+
+	Locker _clocker(target, player);
 
 	if ( !target->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::GUILD_TRANSFER_LEADER_CONFIRM) ) {
 		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_TRANSFER_LEADER_CONFIRM);
 		suiBox->setCallback(new GuildTransferLeaderAckSuiCallback(server));
-		suiBox->setPromptTitle("@guild:make_leader_p"); //Transfer PA leadership
-		suiBox->setPromptText("@guild:make_leader_p");  // the lead of this PA wants to transfer leadership to you.  Do you accept?
-		suiBox->setUsingObject(sceoTerminal);  // maybe can remove this
+		suiBox->setPromptTitle("@guild:make_leader_t"); //Transfer PA leadership
+		suiBox->setPromptText("@guild:make_leader_p");  // The leader of this PA wants to transfer leadership to you. Do you accept?
+		suiBox->setUsingObject(sceoTerminal);
 		suiBox->setForceCloseDistance(32);
 		suiBox->setCancelButton(true, "@no");
 		suiBox->setOkButton(true, "@yes");
@@ -712,13 +729,12 @@ void GuildManagerImplementation::sendAcceptLotsTo(CreatureObject* newOwner, Guil
 	}
 }
 
-
-// pre: guild is locked
 void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, CreatureObject* oldLeader, SceneObject* sceoTerminal){
 	GuildObject* guild = newLeader->getGuildObject();
 
 	Locker glock(guild);
 	guild->setGuildLeaderID(newLeader->getObjectID());
+	guild->setTransferPending(false);
 
 	// change admin privs for old and new leader
 	GuildMemberInfo* gmiLeader = guild->getMember(newLeader->getObjectID());
@@ -753,42 +769,38 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 }
 
 // pre: newOwner locked ... old owner not locked
-void GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, SceneObject* sceoTerminal) {
+bool GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, SceneObject* sceoTerminal) {
 	if (sceoTerminal == NULL || !sceoTerminal->isTerminal())
-		return;
+		return false;
 
 	Terminal* terminal = cast<Terminal*>( sceoTerminal);
 
 	if (!terminal->isGuildTerminal())
-		return;
+		return false;
 
 	GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
 
 	if ( guildTerminal == NULL )
-		return;
+		return false;
 
 	ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( guildTerminal->getParentRecursively(SceneObjectType::BUILDING).get().get());
 
 
 	if ( buildingObject != NULL ) {
 
-			ManagedReference<CreatureObject*> oldOwner = NULL;
-
-			if ( buildingObject!= NULL)
-				oldOwner = buildingObject->getOwnerCreatureObject();
-			else
-				return;
+			ManagedReference<CreatureObject*> oldOwner = buildingObject->getOwnerCreatureObject();
 
 			if ( oldOwner != NULL && oldOwner != newOwner ) {
-
-				newOwner->unlock();
-
-				TransferstructureCommand::doTransferStructure(oldOwner, newOwner, buildingObject, true);
+				if (TransferstructureCommand::doTransferStructure(oldOwner, newOwner, buildingObject, true) == QueueCommand::SUCCESS) {
+					return true;
+				}
 
 			} else {
 				newOwner->sendSystemMessage("@player_structure:already_owner"); //You are already the owner.
 			}
 		}
+
+	return false;
 }
 
 

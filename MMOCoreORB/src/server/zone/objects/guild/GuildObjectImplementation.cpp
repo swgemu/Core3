@@ -14,6 +14,12 @@
 #include "server/zone/objects/guild/RenameGuildTask.h"
 #include "server/zone/objects/guild/GuildUpdateEvent.h"
 
+void GuildObjectImplementation::initializeTransientMembers() {
+	SceneObjectImplementation::initializeTransientMembers();
+
+	transferPending = false;
+}
+
 void GuildObjectImplementation::rescheduleUpdateEvent(uint32 seconds) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
