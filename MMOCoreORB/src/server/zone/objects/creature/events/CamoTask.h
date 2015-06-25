@@ -19,13 +19,15 @@ class CamoTask : public Task {
 	ManagedWeakReference<CreatureObject*> targ;
 	bool success;
 	bool maskScent;
+	bool awardXp;
 
 public:
-	CamoTask(CreatureObject* cr, CreatureObject* tar, bool ms, bool succ) : Task(){
+	CamoTask(CreatureObject* cr, CreatureObject* tar, bool ms, bool succ, bool award) : Task(){
 		creo = cr;
 		targ = tar;
 		success = succ;
 		maskScent = ms;
+		awardXp = award;
 	}
 
 	void run() {
@@ -55,9 +57,9 @@ public:
 
 		if(!success) {
 			// on failure 50% chance to aggro animal if aggressive and within 40 meters
-			if (System::random(100) > 50 && target->isAggressiveTo(creature) && target->isInRange(creature,40.0f)) {
+			if (System::random(100) > 50 && target->isAggressiveTo(creature) && target->isInRange(creature,40.0f))
 				CombatManager::instance()->startCombat(target,creature,true);
-			}
+
 			return;
 		}
 
@@ -73,8 +75,13 @@ public:
 
 			creature->sendSystemMessage(success);
 		}
-		ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
-		playerManager->awardExperience(creature, "scout", (target->getLevel() * 2), true);
+
+		if (awardXp) {
+			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+			playerManager->awardExperience(creature, "scout", (target->getLevel() * 2), true);
+		}
+
+		target->getCooldownTimerMap()->updateToCurrentAndAddMili("camo_" + String::valueOf(creature->getObjectID()), 300000); // 5 minute cooldown
 	}
 };
 

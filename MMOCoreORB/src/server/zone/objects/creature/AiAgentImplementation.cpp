@@ -2063,22 +2063,31 @@ bool AiAgentImplementation::completeMove() {
 bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	Locker locker(&targetMutex);
 	CreatureObject* effectiveTarget = target;
+
 	// Check masked scent
 	if (target->isVehicleObject() || target->isMount()) {
 		effectiveTarget = target->getLinkedCreature().get();
 	}
-	if (effectiveTarget == NULL) {
+
+	if (effectiveTarget == NULL)
 		return false;
-	}
+
 	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
-		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
+		if (camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
+		getCooldownTimerMap()->updateToCurrentTime("camo_" + String::valueOf(effectiveTarget->getObjectID()));
 		return false;
 	}
+
 	if (isNonPlayerCreatureObject() || isDroidObject())
 		return false;
 
+	// Don't check more than once every 5 minutes
+	if (camouflagedObjects.contains(effectiveTarget) && !checkCooldownRecovery("camo_" + String::valueOf(effectiveTarget->getObjectID())))
+		return true;
+
 	// Step 1. Check for break
 	bool success = false;
+	bool awardXp = !camouflagedObjects.contains(effectiveTarget);
 	int camoSkill = effectiveTarget->getSkillMod("mask_scent");
 	int creatureLevel = getLevel();
 
@@ -2090,19 +2099,17 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	if (effectiveTarget->isRunning() || effectiveTarget->isRidingMount() )
 		mod -= 35;
 
-	if (System::random(100) <= (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + mod) {
-		success = true;
-	}
+	success = System::random(100) <= mod - (float)creatureLevel / ((float)camoSkill / 100.0f) / 20.f;
+
 	// first time through we award, second time on same mob if successful we dont
 	if (success && camouflagedObjects.contains(effectiveTarget))
 		return true;
-	else if (success){
+	else if (success)
 		camouflagedObjects.add(effectiveTarget); // add to award
-	} else {
+	else
 		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
-	}
 
-	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), true, success);
+	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), true, success, awardXp);
 	ct->execute();
 
 	return success;
@@ -2111,22 +2118,30 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 	Locker locker(&targetMutex);
 	CreatureObject* effectiveTarget = target;
+
 	// Check masked scent
 	if (target->isVehicleObject() || target->isMount()) {
 		effectiveTarget = target->getLinkedCreature().get();
 	}
-	if (effectiveTarget == NULL) {
+
+	if (effectiveTarget == NULL)
 		return false;
-	}
 
 	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent"))) {
 		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
+		getCooldownTimerMap()->updateToCurrentTime("camo_" + String::valueOf(effectiveTarget->getObjectID()));
 		return false;
 	}
+
 	if (isDroidObject())
 		return false;
 
+	// Don't check more than once every 5 minutes
+	if (camouflagedObjects.contains(effectiveTarget) && !checkCooldownRecovery("camo_" + String::valueOf(effectiveTarget->getObjectID())))
+		return true;
+
 	bool success = false;
+	bool awardXp = !camouflagedObjects.contains(effectiveTarget);
 	int camoSkill = effectiveTarget->getSkillMod("private_conceal");
 	int creatureLevel = getLevel();
 
@@ -2142,9 +2157,7 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 	if (!isCreature())
 		creatureLevel *= 2;
 
-	if (System::random(100) <= (-1 * (1 / ((camoSkill / 100.0f) * 20)) * creatureLevel) + mod) {
-		success = true;
-	}
+	success = System::random(100) <= mod - (float)creatureLevel / ((float)camoSkill / 100.0f) / 20.f;
 
 	if (success && camouflagedObjects.contains(effectiveTarget))
 		return true;
@@ -2154,7 +2167,7 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
 	}
 
-	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), false, success);
+	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), false, success, awardXp);
 	ct->execute();
 
 	return success;
