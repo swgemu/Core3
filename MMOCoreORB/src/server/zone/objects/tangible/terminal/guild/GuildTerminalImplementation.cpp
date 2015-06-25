@@ -74,7 +74,7 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 
 	menuResponse->addRadialMenuItemToRadialID(194, 190, 3, "@guild:menu_sponsor"); //Sponsor for Membership
 
-	if (guildObject->getGuildLeaderID() == playerID || player->getPlayerObject()->isPrivileged())
+	if ((guildObject->getGuildLeaderID() == playerID && player == owner) || player->getPlayerObject()->isPrivileged())
 		menuResponse->addRadialMenuItemToRadialID(194, 69, 3, "@guild:menu_leader_change"); //Transfer PA Leadership
 
 	return;
@@ -108,7 +108,7 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 	switch (selectedID) {
 	case 69:
-		if (guildObject != NULL && (guildObject->getGuildLeaderID() == playerID || player->getPlayerObject()->isPrivileged())) {
+		if (guildObject != NULL && ((guildObject->getGuildLeaderID() == playerID && player == owner) || player->getPlayerObject()->isPrivileged())) {
 			guildManager->sendGuildTransferTo(player, _this.getReferenceUnsafeStaticCast());
 		}
 		break;

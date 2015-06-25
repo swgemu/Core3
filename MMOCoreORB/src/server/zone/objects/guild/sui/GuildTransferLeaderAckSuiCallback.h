@@ -9,6 +9,8 @@
 #define GUILDTRANSFERLEADERACKSUICALLBACK_H_
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/objects/player/sui/SuiCallback.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/tangible/terminal/guild/GuildTerminal.h"
 
 
 class GuildTransferLeaderAckSuiCallback : public SuiCallback {
@@ -18,39 +20,57 @@ public:
 	}
 
 	void run(CreatureObject* newLeader, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		GuildObject* guild = newLeader->getGuildObject();
-
-		if ( guild == NULL)
+		ManagedReference<SceneObject*> sceoTerminal = suiBox->getUsingObject().get();
+		if (sceoTerminal == NULL || !sceoTerminal->isTerminal())
 			return;
 
-		// get the guild leader
-		uint64 leaderID = guild->getGuildLeaderID();
+		Terminal* terminal = sceoTerminal.castTo<Terminal*>();
+		if (!terminal->isGuildTerminal())
+			return;
 
-		ManagedReference<SceneObject*> sceo = server->getObject(leaderID);
+		GuildTerminal* guildTerminal = cast<GuildTerminal*>(terminal);
+		if (guildTerminal == NULL)
+			return;
 
-		ManagedReference<CreatureObject*> currentLeader = NULL;
+		ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( guildTerminal->getParentRecursively(SceneObjectType::BUILDING).get().get());
+		if (buildingObject == NULL)
+			return;
 
-		if (sceo != NULL && sceo->isCreatureObject()) {
-			currentLeader = cast<CreatureObject*>(sceo.get());
+		ManagedReference<CreatureObject*> owner = buildingObject->getOwnerCreatureObject();
+		if (owner == NULL || !owner->isPlayerCreature()) {
+			return;
 		}
 
-		if ( cancelPressed )
-		{
-			if ( currentLeader != NULL )
-				currentLeader->sendSystemMessage("@guild:ml_rejected"); // That player does not want to become guild leader
+		ManagedReference<GuildObject*> guild = owner->getGuildObject().get();
+		if (guild == NULL || !guild->isTransferPending())
+			return;
 
+		Locker clocker(guild, newLeader);
+
+		if (guild->getGuildLeaderID() != owner->getObjectID() || guild != newLeader->getGuildObject()) {
+			guild->setTransferPending(false);
+			return;
+		}
+
+		if ( cancelPressed ) {
+			guild->setTransferPending(false);
+			owner->sendSystemMessage("@guild:ml_rejected"); // That player does not want to become guild leader
 			return;
 		}
 
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
-		if ( guildManager != NULL )
-		{
-			// change leadership of guild
-			guildManager->transferLeadership(newLeader, currentLeader, suiBox->getUsingObject().get());
+		if ( guildManager != NULL ) {
+			ManagedReference<CreatureObject*> newOwner = newLeader;
 
-			// transfer structure to new leader ..pass the guild terminal back transferGuildHall
-			guildManager->transferGuildHall(newLeader, suiBox->getUsingObject().get());
+			EXECUTE_TASK_4(newOwner, owner, sceoTerminal, guildManager, {
+				// transfer structure to new leader
+				if (guildManager_p->transferGuildHall(newOwner_p, sceoTerminal_p)) {
+					// change leadership of guild
+					guildManager_p->transferLeadership(newOwner_p, owner_p, sceoTerminal_p);
+				}
+			});
+
 		}
 
 	}

@@ -38,6 +38,8 @@ class GuildObject extends SceneObject {
 	protected boolean renamePending;
 	protected unsigned long renamerID;
 
+	protected transient boolean transferPending;
+
 	@dereferenced
 	protected Time nextUpdateTime;
 
@@ -79,6 +81,13 @@ class GuildObject extends SceneObject {
 		guildMembers.setNoDuplicateInsertPlan();
 		nextUpdateTime.addMiliTime((3600 + System.random(601200)) * 1000); // 1 hour to 1 week
 	}
+
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
 
 	public native void rescheduleUpdateEvent(unsigned int seconds);
 
@@ -318,4 +327,14 @@ class GuildObject extends SceneObject {
 	public native boolean hasTitlePermission(unsigned long playerID);
 	@dirty
 	public native boolean hasWarPermission(unsigned long playerID);
+
+	@preLocked
+	public void setTransferPending(boolean transfer) {
+		transferPending = transfer;
+	}
+
+	@read
+	public boolean isTransferPending() {
+		return transferPending;
+	}
 }
