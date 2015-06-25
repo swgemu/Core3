@@ -2072,9 +2072,11 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	if (effectiveTarget == NULL)
 		return false;
 
+	uint64 effectiveTargetID = effectiveTarget->getObjectID();
+
 	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent_self"))) {
-		if (camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
-		getCooldownTimerMap()->updateToCurrentTime("camo_" + String::valueOf(effectiveTarget->getObjectID()));
+		if (camouflagedObjects.contains(effectiveTargetID)) camouflagedObjects.removeElement(effectiveTargetID);
+		getCooldownTimerMap()->updateToCurrentTime("camo_" + String::valueOf(effectiveTargetID));
 		return false;
 	}
 
@@ -2082,12 +2084,12 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 		return false;
 
 	// Don't check more than once every 5 minutes
-	if (camouflagedObjects.contains(effectiveTarget) && !checkCooldownRecovery("camo_" + String::valueOf(effectiveTarget->getObjectID())))
+	if (camouflagedObjects.contains(effectiveTargetID) && !checkCooldownRecovery("camo_" + String::valueOf(effectiveTargetID)))
 		return true;
 
 	// Step 1. Check for break
 	bool success = false;
-	bool awardXp = !camouflagedObjects.contains(effectiveTarget);
+	bool awardXp = !camouflagedObjects.contains(effectiveTargetID);
 	int camoSkill = effectiveTarget->getSkillMod("mask_scent");
 	int creatureLevel = getLevel();
 
@@ -2102,12 +2104,12 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 	success = System::random(100) <= mod - (float)creatureLevel / ((float)camoSkill / 100.0f) / 20.f;
 
 	// first time through we award, second time on same mob if successful we dont
-	if (success && camouflagedObjects.contains(effectiveTarget))
+	if (success && camouflagedObjects.contains(effectiveTargetID))
 		return true;
 	else if (success)
-		camouflagedObjects.add(effectiveTarget); // add to award
+		camouflagedObjects.add(effectiveTargetID); // add to award
 	else
-		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
+		if(camouflagedObjects.contains(effectiveTargetID)) camouflagedObjects.removeElement(effectiveTargetID);
 
 	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), true, success, awardXp);
 	ct->execute();
@@ -2127,9 +2129,11 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 	if (effectiveTarget == NULL)
 		return false;
 
+	uint64 effectiveTargetID = effectiveTarget->getObjectID();
+
 	if (!effectiveTarget->hasBuff(STRING_HASHCODE("skill_buff_mask_scent"))) {
-		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
-		getCooldownTimerMap()->updateToCurrentTime("camo_" + String::valueOf(effectiveTarget->getObjectID()));
+		if(camouflagedObjects.contains(effectiveTargetID)) camouflagedObjects.removeElement(effectiveTargetID);
+		getCooldownTimerMap()->updateToCurrentTime("camo_" + String::valueOf(effectiveTargetID));
 		return false;
 	}
 
@@ -2137,11 +2141,11 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 		return false;
 
 	// Don't check more than once every 5 minutes
-	if (camouflagedObjects.contains(effectiveTarget) && !checkCooldownRecovery("camo_" + String::valueOf(effectiveTarget->getObjectID())))
+	if (camouflagedObjects.contains(effectiveTargetID) && !checkCooldownRecovery("camo_" + String::valueOf(effectiveTargetID)))
 		return true;
 
 	bool success = false;
-	bool awardXp = !camouflagedObjects.contains(effectiveTarget);
+	bool awardXp = !camouflagedObjects.contains(effectiveTargetID);
 	int camoSkill = effectiveTarget->getSkillMod("private_conceal");
 	int creatureLevel = getLevel();
 
@@ -2159,12 +2163,12 @@ bool AiAgentImplementation::isConcealed(CreatureObject* target) {
 
 	success = System::random(100) <= mod - (float)creatureLevel / ((float)camoSkill / 100.0f) / 20.f;
 
-	if (success && camouflagedObjects.contains(effectiveTarget))
+	if (success && camouflagedObjects.contains(effectiveTargetID))
 		return true;
 	else if (success){
-		camouflagedObjects.add(effectiveTarget); // add to award
+		camouflagedObjects.add(effectiveTargetID); // add to award
 	} else {
-		if(camouflagedObjects.contains(effectiveTarget)) camouflagedObjects.removeElement(effectiveTarget);
+		if(camouflagedObjects.contains(effectiveTargetID)) camouflagedObjects.removeElement(effectiveTargetID);
 	}
 
 	Reference<Task*> ct = new CamoTask(effectiveTarget, asAiAgent(), false, success, awardXp);

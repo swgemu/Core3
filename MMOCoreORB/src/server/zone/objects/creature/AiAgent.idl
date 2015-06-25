@@ -83,7 +83,7 @@ class AiAgent extends CreatureObject {
 	protected CreatureAttackMap defaultAttackMap;
 
 	@dereferenced 
-	protected Vector<SceneObject> camouflagedObjects;
+	protected transient Vector<unsigned long> camouflagedObjects;
 
 	@dereferenced
 	protected CreatureTemplateReference npcTemplate;
@@ -147,7 +147,7 @@ class AiAgent extends CreatureObject {
 	@dereferenced
 	protected transient Time alertedTime;
 
-	protected AiTrackingTask trackingTask;
+	protected transient AiTrackingTask trackingTask;
 
 	protected unsigned int nextActionCRC;
 	protected string nextActionArgs;
