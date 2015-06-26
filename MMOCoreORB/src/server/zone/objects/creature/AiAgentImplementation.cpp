@@ -3125,6 +3125,10 @@ AiAgent* AiAgent::asAiAgent() {
 void AiAgentImplementation::reloadTemplate() {
 	clearBuffs(false);
 	loadTemplateData(npcTemplate);
+
+	if (isMount()) {
+		setOptionBit(0x1000);
+	}
 }
 
 void AiAgentImplementation::setConvoTemplate(const String& templateString) {

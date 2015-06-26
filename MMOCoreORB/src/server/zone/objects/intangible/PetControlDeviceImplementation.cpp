@@ -323,6 +323,10 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 			creature->setPvpStatusBitmask(player->getPvpStatusBitmask() - CreatureFlag::PLAYER, true);
 		else
 			creature->setPvpStatusBitmask(player->getPvpStatusBitmask(), true);
+
+		if (trainedAsMount && (creature->getOptionsBitmask() ^ 0x1000)) {
+			creature->setOptionBit(0x1000);
+		}
 	}
 
 	Zone* zone = player->getZone();
@@ -1119,7 +1123,7 @@ void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {
 	assert(pet->isLockedByCurrentThread());
 
 	trainedAsMount = true;
-	pet->setOptionsBitmask(0x1080);
+	pet->setOptionBit(0x1000);
 }
 
 void PetControlDeviceImplementation::resetNamingCommands() {
