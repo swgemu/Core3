@@ -28,6 +28,12 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 		return;
 	}
 
+	ManagedReference<PlayerObject*> ownerGhost = owner->getPlayerObject().get();
+	ManagedReference<PlayerObject*> playerGhost = player->getPlayerObject().get();
+
+	if (ownerGhost == NULL || playerGhost == NULL)
+		return;
+
 	ManagedReference<GuildObject*> guildObject = owner->getGuildObject().get();
 
 	if (guildObject == NULL) {
@@ -47,7 +53,7 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 	uint64 playerID = player->getObjectID();
 
 	//Only members have access.
-	if (!guildObject->hasMember(playerID) && !player->getPlayerObject()->isPrivileged())
+	if (!guildObject->hasMember(playerID) && !playerGhost->isPrivileged())
 		return;
 
 	//Guild exists -> display these functions.
@@ -55,13 +61,10 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 	menuResponse->addRadialMenuItemToRadialID(193, 186, 3, "@guild:menu_info"); //Guild Information
 	menuResponse->addRadialMenuItemToRadialID(193, 189, 3, "@guild:menu_enemies"); //Guild Enemies
 
-	if ( guildObject->getGuildLeaderID() == playerID )
-		menuResponse->addRadialMenuItemToRadialID(193, 195, 3, "@guild:accept_hall"); // Accept
-
 	if (guildObject->hasDisbandPermission(playerID))
 		menuResponse->addRadialMenuItemToRadialID(193, 191, 3, "@guild:menu_disband"); //Disband Guild
 
-	if (guildObject->hasNamePermission(playerID) || player->getPlayerObject()->isPrivileged())
+	if (guildObject->hasNamePermission(playerID) || playerGhost->isPrivileged())
 		menuResponse->addRadialMenuItemToRadialID(193, 192, 3, "@guild:menu_namechange"); //Change Guild Name
 
 	menuResponse->addRadialMenuItemToRadialID(193, 68, 3, "@guild:menu_enable_elections"); //Enable/Disable Elections
@@ -74,8 +77,11 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 
 	menuResponse->addRadialMenuItemToRadialID(194, 190, 3, "@guild:menu_sponsor"); //Sponsor for Membership
 
-	if ((guildObject->getGuildLeaderID() == playerID && player == owner) || player->getPlayerObject()->isPrivileged())
+	if ((guildObject->getGuildLeaderID() == playerID && player == owner) || playerGhost->isPrivileged())
 		menuResponse->addRadialMenuItemToRadialID(194, 69, 3, "@guild:menu_leader_change"); //Transfer PA Leadership
+
+	if (guildObject->getGuildLeaderID() == playerID && !ownerGhost->isOnline() && ownerGhost->getDaysSinceLastLogout() >= 28)
+		menuResponse->addRadialMenuItemToRadialID(194, 195, 3, "@guild:accept_hall"); // Transfer PA Hall Lots to Myself
 
 	return;
 }
@@ -98,6 +104,12 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		return 1;
 	}
 
+	ManagedReference<PlayerObject*> ownerGhost = owner->getPlayerObject().get();
+	ManagedReference<PlayerObject*> playerGhost = player->getPlayerObject().get();
+
+	if (ownerGhost == NULL || playerGhost == NULL)
+		return 1;
+
 	ManagedReference<GuildObject*> guildObject = owner->getGuildObject().get();
 
 	uint64 playerID = player->getObjectID();
@@ -108,7 +120,7 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 
 	switch (selectedID) {
 	case 69:
-		if (guildObject != NULL && ((guildObject->getGuildLeaderID() == playerID && player == owner) || player->getPlayerObject()->isPrivileged())) {
+		if (guildObject != NULL && ((guildObject->getGuildLeaderID() == playerID && player == owner) || playerGhost->isPrivileged())) {
 			guildManager->sendGuildTransferTo(player, _this.getReferenceUnsafeStaticCast());
 		}
 		break;
@@ -118,13 +130,13 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		}
 		break;
 	case 189:
-		if (guildObject != NULL && (isMember || player->getPlayerObject()->isPrivileged())) {
+		if (guildObject != NULL && (isMember || playerGhost->isPrivileged())) {
 			guildManager->sendGuildWarStatusTo(player, guildObject, _this.getReferenceUnsafeStaticCast());
 		}
 		break;
 	case 193:
 	case 186:
-		if (guildObject != NULL && (isMember || player->getPlayerObject()->isPrivileged())) {
+		if (guildObject != NULL && (isMember || playerGhost->isPrivileged())) {
 			guildManager->sendGuildInformationTo(player, guildObject, _this.getReferenceUnsafeStaticCast());
 		}
 		break;
@@ -135,17 +147,17 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		break;
 	case 194:
 	case 187:
-		if (guildObject != NULL && (isMember || player->getPlayerObject()->isPrivileged())) {
+		if (guildObject != NULL && (isMember || playerGhost->isPrivileged())) {
 			guildManager->sendGuildMemberListTo(player, guildObject, _this.getReferenceUnsafeStaticCast());
 		}
 		break;
 	case 188:
-		if (guildObject != NULL && (isMember || player->getPlayerObject()->isPrivileged())) {
+		if (guildObject != NULL && (isMember || playerGhost->isPrivileged())) {
 			guildManager->sendGuildSponsoredListTo(player, guildObject, _this.getReferenceUnsafeStaticCast());
 		}
 		break;
 	case 190:
-		if (guildObject != NULL && (isMember || player->getPlayerObject()->isPrivileged())) {
+		if (guildObject != NULL && (isMember || playerGhost->isPrivileged())) {
 			guildManager->sendGuildSponsorTo(player, guildObject, _this.getReferenceUnsafeStaticCast());
 		}
 		break;
@@ -155,7 +167,7 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		}
 		break;
 	case 195:
-		if (guildObject != NULL && (guildObject->getGuildLeaderID() == playerID) ) {
+		if (guildObject != NULL && guildObject->getGuildLeaderID() == playerID && !ownerGhost->isOnline() && ownerGhost->getDaysSinceLastLogout() >= 28) {
 			guildManager->sendAcceptLotsTo(player, _this.getReferenceUnsafeStaticCast());
 		}
 		break;

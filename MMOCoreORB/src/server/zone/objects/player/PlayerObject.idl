@@ -1237,12 +1237,12 @@ class PlayerObject extends IntangibleObject {
 	public boolean isCSR() {
 		return adminLevel == CSR;
 	}
-	
+
 	@dirty
 	public boolean isPrivileged() {
 		return (adminLevel > 0 && hasAbility("admin"));
 	}
-	
+
 	public void setCharacterBitmask(unsigned int bitmask) {
 		characterBitmask = bitmask;
 	}
@@ -1455,6 +1455,11 @@ class PlayerObject extends IntangibleObject {
 	@local
 	public Time getLastLogout() {
 		return logoutTimeStamp;
+	}
+
+	@local
+	public int getDaysSinceLastLogout() {
+		return (int)(logoutTimeStamp.miliDifference() / 1000 / 60 / 60 / 24);
 	}
 
 	public void setSkillPoints(int points) {

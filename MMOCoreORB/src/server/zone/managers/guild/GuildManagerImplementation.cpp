@@ -379,22 +379,6 @@ bool GuildManagerImplementation::guildNameExists(const String& guildName) {
 	return false;
 }
 
-bool GuildManagerImplementation::guildAbbrevExists(const String& guildAbbrev) {
-	Locker _lock(_this.getReferenceUnsafeStaticCast());
-
-	for (int i = 0; i < guildList.size(); ++i) {
-		ManagedReference<GuildObject*> guild = guildList.get(guildList.getKeyAt(i));
-
-		if (guild == NULL)
-			continue;
-
-		if (guild->getGuildAbbrev() == guildAbbrev)
-			return true;
-	}
-
-	return false;
-}
-
 void GuildManagerImplementation::sendGuildCreateAbbrevTo(CreatureObject* player, GuildTerminal* terminal) {
 	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(player, SuiWindowType::GUILD_CREATE_ABBREV);
 	inputBox->setCallback(new GuildCreateAbbrevResponseSuiCallback(server));
@@ -443,6 +427,99 @@ bool GuildManagerImplementation::validateGuildAbbrev(CreatureObject* player, con
 	}
 
 	return true;
+}
+
+bool GuildManagerImplementation::guildAbbrevExists(const String& guildAbbrev) {
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
+
+	for (int i = 0; i < guildList.size(); ++i) {
+		ManagedReference<GuildObject*> guild = guildList.get(guildList.getKeyAt(i));
+
+		if (guild == NULL)
+			continue;
+
+		if (guild->getGuildAbbrev() == guildAbbrev)
+			return true;
+	}
+
+	return false;
+}
+
+GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, const String& guildName, const String& guildAbbrev) {
+	if (player->isInGuild()) {
+		player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
+		return NULL;
+	}
+
+	Locker _lock(_this.getReferenceUnsafeStaticCast());
+
+	uint64 playerID = player->getObjectID();
+
+	if (isCreatingGuild(playerID))
+		removePendingGuild(playerID);
+	// Strip out any errant escaped newlines from the guild name and tags and any errant color code starts
+	String tmp = guildName.replaceAll("\n|\r|#","");
+	String tabbrev = guildAbbrev.replaceAll("\n|\r|#","");
+
+	ManagedReference<GuildObject*> guild = cast<GuildObject*>( ObjectManager::instance()->createObject(0xD6888614, 1, "guilds")); //object/guild/guild_object.iff
+
+	Locker clocker(guild, player);
+
+	guild->setGuildLeaderID(playerID);
+	guild->setGuildID(Long::hashCode(guild->getObjectID()));
+	guild->setGuildName(tmp);
+	guild->setGuildAbbrev(tabbrev);
+	guild->addMember(playerID);
+	guild->rescheduleUpdateEvent(guildUpdateInterval * 60);
+
+	ManagedReference<ChatRoom*> guildChat = createGuildChannels(guild);
+
+	guildChat->sendTo(player);
+	guildChat->addPlayer(player);
+
+	//Handle setting of the guild leader.
+	GuildMemberInfo* gmi = guild->getMember(playerID);
+	gmi->setPermissions(GuildObject::PERMISSION_ALL);
+
+	player->setGuildObject(guild);
+
+	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast()->_getObjectID());
+	gildd3->startUpdate(0x04);
+	guildList.add(guild->getGuildKey(), guild, gildd3);
+	gildd3->close();
+
+	_lock.release();
+
+	//Send the delta to everyone currently online!
+	chatManager->broadcastMessage(gildd3);
+
+	CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(player);
+	creod6->updateGuildID();
+	creod6->close();
+	player->broadcastMessage(creod6, true);
+
+	info("Guild " + tmp + " <" + tabbrev + "> created.", true);
+
+	return guild;
+}
+
+ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
+	ManagedReference<ChatRoom*> guildRoom = chatManager->getGuildRoom();
+
+	ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(String::valueOf(guild->getGuildID()), guildRoom);
+	guildLobby->setPrivate();
+	guildRoom->addSubRoom(guildLobby);
+
+	ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
+	guildChat->setPrivate();
+	guildChat->setTitle(String::valueOf(guild->getGuildID()));
+	guildLobby->addSubRoom(guildChat);
+
+	Locker locker(guild);
+
+	guild->setChatRoom(guildChat);
+
+	return guildChat;
 }
 
 void GuildManagerImplementation::setupGuildRename(CreatureObject* player, GuildObject* guild) {
@@ -580,40 +657,25 @@ void GuildManagerImplementation::sendGuildDisbandConfirmTo(CreatureObject* playe
 	player->sendMessage(suiBox->generateMessage());
 }
 
-void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player, GuildObject* guild, uint64 memberID, GuildTerminal* guildTerminal) {
+bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObject* guild) {
+
 	if (guild == NULL)
-		return;
+		return false;
 
-	Locker _locker(player);
-	Locker _lock(guild, player);
+	if (!guild->hasDisbandPermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return false;
+	}
 
-	GuildMemberList* memberList = guild->getGuildMemberList();
+	StringIdChatParameter params;
+	params.setStringId("@guildmail:disband_text"); //The guild has been disbanded by %TU
+	params.setTU(player->getFirstName());
 
-	if (memberList == NULL)
-		return;
+	destroyGuild(guild, params);
 
-	if (!memberList->contains(player->getObjectID()))
-		return;
+	info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> disbanded.", true);
 
-	GuildMemberInfo* gmi = &memberList->get(player->getObjectID());
-
-	if (gmi == NULL)
-		return;
-
-	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_OPTIONS);
-	suiBox->setCallback(new GuildMemberOptionsSuiCallback(server));
-	suiBox->setPromptTitle("@guild:member_options_title"); //Guild Member Options
-	suiBox->setPromptText("@guild:member_options_prompt");
-	suiBox->setUsingObject(guildTerminal);
-	suiBox->setForceCloseDistance(32);
-	suiBox->setCancelButton(true, "@cancel");
-
-	suiBox->addMenuItem("@guild:kick", memberID); //Kick
-	suiBox->addMenuItem("@guild:title", memberID); //Set Title
-	suiBox->addMenuItem("@guild:permissions", memberID); //Change Permissions
-
-	player->getPlayerObject()->addSuiBox(suiBox);
-	player->sendMessage(suiBox->generateMessage());
+	return true;
 }
 
 void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, GuildTerminal* guildTerminal) {
@@ -709,26 +771,6 @@ void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const
 	}
 }
 
-void GuildManagerImplementation::sendAcceptLotsTo(CreatureObject* newOwner, GuildTerminal* guildTerminal) {
-
-	if ( !newOwner->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::GUILD_TAKE_LOTS)) {
-		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(newOwner, SuiWindowType::GUILD_TAKE_LOTS);
-		suiBox->setCallback(new GuildTransferLotsSuiCallback(server));
-		suiBox->setPromptTitle("@guild:accept_pa_hall_t"); //Accept PA Hall LOts
-		suiBox->setPromptText("@guild:need_accept_hall"); // YOu are the PA leader, but you do not own the PA Hall.
-														 // You must accept ownership of the PA hall before you or your PA
-    													 // members can use the management terminal.
-
-		suiBox->setUsingObject(guildTerminal);
-		suiBox->setForceCloseDistance(32);
-		suiBox->setOkButton(true,"@guild:accept_pa_hall_t");
-		suiBox->setCancelButton(true, "@cancel");
-		newOwner->getPlayerObject()->addSuiBox(suiBox);
-		newOwner->sendMessage(suiBox->generateMessage());
-
-	}
-}
-
 void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, CreatureObject* oldLeader, SceneObject* sceoTerminal){
 	GuildObject* guild = newLeader->getGuildObject();
 
@@ -768,12 +810,11 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 	sendGuildMail("@guildmail:leaderchange_subject", params, guild);
 }
 
-// pre: newOwner locked ... old owner not locked
 bool GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, SceneObject* sceoTerminal) {
 	if (sceoTerminal == NULL || !sceoTerminal->isTerminal())
 		return false;
 
-	Terminal* terminal = cast<Terminal*>( sceoTerminal);
+	Terminal* terminal = cast<Terminal*>(sceoTerminal);
 
 	if (!terminal->isGuildTerminal())
 		return false;
@@ -803,6 +844,21 @@ bool GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, Sce
 	return false;
 }
 
+void GuildManagerImplementation::sendAcceptLotsTo(CreatureObject* newOwner, GuildTerminal* guildTerminal) {
+
+	if ( !newOwner->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::GUILD_TAKE_LOTS)) {
+		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(newOwner, SuiWindowType::GUILD_TAKE_LOTS);
+		suiBox->setCallback(new GuildTransferLotsSuiCallback(server));
+		suiBox->setPromptTitle("@guild:accept_pa_hall_t"); //Accept PA Hall LOts
+		suiBox->setPromptText("@guild:accept_pa_hall_p"); // The current owner of this PA hall has not logged in for 28 days. As guild leader, you may transfer ownership of the PA hall to yourself. You must have enough lots free to accept PA Hall ownership. Once you own the PA hall you may transfer it to another owner if you so desire.
+		suiBox->setUsingObject(guildTerminal);
+		suiBox->setForceCloseDistance(32);
+		suiBox->setCancelButton(true, "@cancel");
+		newOwner->getPlayerObject()->addSuiBox(suiBox);
+		newOwner->sendMessage(suiBox->generateMessage());
+
+	}
+}
 
 void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
 	if (guild == NULL)
@@ -836,6 +892,42 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 	}
 
 	suiBox->setCancelButton(true, "@cancel");
+	player->getPlayerObject()->addSuiBox(suiBox);
+	player->sendMessage(suiBox->generateMessage());
+}
+
+void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player, GuildObject* guild, uint64 memberID, GuildTerminal* guildTerminal) {
+	if (guild == NULL)
+		return;
+
+	Locker _locker(player);
+	Locker _lock(guild, player);
+
+	GuildMemberList* memberList = guild->getGuildMemberList();
+
+	if (memberList == NULL)
+		return;
+
+	if (!memberList->contains(player->getObjectID()))
+		return;
+
+	GuildMemberInfo* gmi = &memberList->get(player->getObjectID());
+
+	if (gmi == NULL)
+		return;
+
+	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_OPTIONS);
+	suiBox->setCallback(new GuildMemberOptionsSuiCallback(server));
+	suiBox->setPromptTitle("@guild:member_options_title"); //Guild Member Options
+	suiBox->setPromptText("@guild:member_options_prompt");
+	suiBox->setUsingObject(guildTerminal);
+	suiBox->setForceCloseDistance(32);
+	suiBox->setCancelButton(true, "@cancel");
+
+	suiBox->addMenuItem("@guild:kick", memberID); //Kick
+	suiBox->addMenuItem("@guild:title", memberID); //Set Title
+	suiBox->addMenuItem("@guild:permissions", memberID); //Change Permissions
+
 	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
@@ -952,104 +1044,6 @@ void GuildManagerImplementation::sendBaselinesTo(CreatureObject* player) {
 
 	guildChat->sendTo(player);
 	guildChat->addPlayer(player);*/
-}
-
-ChatRoom* GuildManagerImplementation::createGuildChannels(GuildObject* guild) {
-	ManagedReference<ChatRoom*> guildRoom = chatManager->getGuildRoom();
-
-	ManagedReference<ChatRoom*> guildLobby = chatManager->createRoom(String::valueOf(guild->getGuildID()), guildRoom);
-	guildLobby->setPrivate();
-	guildRoom->addSubRoom(guildLobby);
-
-	ManagedReference<ChatRoom*> guildChat = chatManager->createRoom("GuildChat", guildLobby);
-	guildChat->setPrivate();
-	guildChat->setTitle(String::valueOf(guild->getGuildID()));
-	guildLobby->addSubRoom(guildChat);
-
-	Locker locker(guild);
-
-	guild->setChatRoom(guildChat);
-
-	return guildChat;
-}
-
-GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, const String& guildName, const String& guildAbbrev) {
-	if (player->isInGuild()) {
-		player->sendSystemMessage("@guild:create_fail_in_guild"); //You cannot create a guild while already in a guild.
-		return NULL;
-	}
-
-	Locker _lock(_this.getReferenceUnsafeStaticCast());
-
-	uint64 playerID = player->getObjectID();
-
-	if (isCreatingGuild(playerID))
-		removePendingGuild(playerID);
-	// Strip out any errant escaped newlines from the guild name and tags and any errant color code starts
-	String tmp = guildName.replaceAll("\n|\r|#","");
-	String tabbrev = guildAbbrev.replaceAll("\n|\r|#","");
-
-	ManagedReference<GuildObject*> guild = cast<GuildObject*>( ObjectManager::instance()->createObject(0xD6888614, 1, "guilds")); //object/guild/guild_object.iff
-
-	Locker clocker(guild, player);
-
-	guild->setGuildLeaderID(playerID);
-	guild->setGuildID(Long::hashCode(guild->getObjectID()));
-	guild->setGuildName(tmp);
-	guild->setGuildAbbrev(tabbrev);
-	guild->addMember(playerID);
-	guild->rescheduleUpdateEvent(guildUpdateInterval * 60);
-
-	ManagedReference<ChatRoom*> guildChat = createGuildChannels(guild);
-
-	guildChat->sendTo(player);
-	guildChat->addPlayer(player);
-
-	//Handle setting of the guild leader.
-	GuildMemberInfo* gmi = guild->getMember(playerID);
-	gmi->setPermissions(GuildObject::PERMISSION_ALL);
-
-	player->setGuildObject(guild);
-
-	GuildObjectDeltaMessage3* gildd3 = new GuildObjectDeltaMessage3(_this.getReferenceUnsafeStaticCast()->_getObjectID());
-	gildd3->startUpdate(0x04);
-	guildList.add(guild->getGuildKey(), guild, gildd3);
-	gildd3->close();
-
-	_lock.release();
-
-	//Send the delta to everyone currently online!
-	chatManager->broadcastMessage(gildd3);
-
-	CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(player);
-	creod6->updateGuildID();
-	creod6->close();
-	player->broadcastMessage(creod6, true);
-
-	info("Guild " + tmp + " <" + tabbrev + "> created.", true);
-
-	return guild;
-}
-
-bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObject* guild) {
-
-	if (guild == NULL)
-		return false;
-
-	if (!guild->hasDisbandPermission(player->getObjectID())) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
-		return false;
-	}
-
-	StringIdChatParameter params;
-	params.setStringId("@guildmail:disband_text"); //The guild has been disbanded by %TU
-	params.setTU(player->getFirstName());
-
-	destroyGuild(guild, params);
-
-	info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> disbanded.", true);
-
-	return true;
 }
 
 void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, const String& playerName) {

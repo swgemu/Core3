@@ -26,9 +26,33 @@ public:
 		ManagedReference<GuildManager*> guildManager = server->getGuildManager();
 
 		ManagedReference<SceneObject*> usingObject = suiBox->getUsingObject();
+		if (usingObject == NULL)
+			return;
 
-		if ( usingObject != NULL)
+		Terminal* terminal = usingObject.castTo<Terminal*>();
+		if (terminal == NULL || !terminal->isGuildTerminal())
+			return;
+
+		GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
+		if (guildTerminal == NULL)
+			return;
+
+		ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( guildTerminal->getParentRecursively(SceneObjectType::BUILDING).get().get());
+		if (buildingObject == NULL)
+			return;
+
+		ManagedReference<CreatureObject*> owner = buildingObject->getOwnerCreatureObject();
+		if (owner == NULL || !owner->isPlayerCreature())
+			return;
+
+		ManagedReference<PlayerObject*> ownerGhost = owner->getPlayerObject().get();
+		ManagedReference<GuildObject*> guildObject = owner->getGuildObject().get();
+		if (ownerGhost == NULL || guildObject == NULL)
+			return;
+
+		if (guildObject->getGuildLeaderID() == player->getObjectID() && !ownerGhost->isOnline() && ownerGhost->getDaysSinceLastLogout() >= 28) {
 			guildManager->transferGuildHall(player, usingObject);
+		}
 
 	}
 
