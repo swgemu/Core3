@@ -49,8 +49,10 @@ public:
 		uint64 memberID = listBox->getMenuObjectID(index);
 
 		ManagedReference<GuildObject*> guild = player->getGuildObject();
+		if (guild == NULL)
+			return;
 
-		if (guild == NULL || !guild->hasMember(memberID)) {
+		if (!guild->hasMember(player->getObjectID()) && !player->getPlayerObject()->isPrivileged()) {
 			player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
 			return;
 		}

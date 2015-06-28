@@ -110,6 +110,8 @@ class GuildObject extends SceneObject {
 	 * @param player The player's objectid to add
 	 */
 	public native void addMember(unsigned long playerID);
+
+	@preLocked
 	public native void removeMember(unsigned long playerID);
 
 	@dirty
@@ -117,10 +119,16 @@ class GuildObject extends SceneObject {
 
 	@local
 	@dirty
+	@preLocked
 	public native GuildMemberInfo getMember(unsigned long playerID);
 
 	@dirty
 	public native unsigned long getMember(int index);
+
+	@preLocked
+	public native void setGuildMemberTitle(unsigned long playerID, final string title);
+
+	public native string getGuildMemberTitle(unsigned long playerID);
 
 	public synchronized void addSponsoredPlayer(unsigned long playerID) {
 		sponsoredPlayers.put(playerID);
@@ -327,6 +335,9 @@ class GuildObject extends SceneObject {
 	public native boolean hasTitlePermission(unsigned long playerID);
 	@dirty
 	public native boolean hasWarPermission(unsigned long playerID);
+
+	@preLocked
+	public native void toggleMemberPermission(unsigned long playerID, byte permission);
 
 	@preLocked
 	public void setTransferPending(boolean transfer) {

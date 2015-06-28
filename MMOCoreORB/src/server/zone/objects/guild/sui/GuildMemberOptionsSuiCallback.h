@@ -64,11 +64,11 @@ public:
 		CreatureObject* target = cast<CreatureObject*>( playObj.get());
 
 		switch (index) {
-		case 0: //Kick
-			guildManager->sendGuildKickPromptTo(player, target);
-			break;
-		case 1: //Set Title
+		case 0: //Set Title
 			guildManager->sendGuildSetTitleTo(player, target);
+			break;
+		case 1: //Kick
+			guildManager->sendGuildKickPromptTo(player, target);
 			break;
 		case 2: //Change Permissions
 			guildManager->sendMemberPermissionsTo(player, memberID, guildTerminal);

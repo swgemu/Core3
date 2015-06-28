@@ -8,7 +8,6 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/guild/GuildObject.h"
-#include "server/zone/objects/guild/GuildMemberInfo.h"
 
 class GuildstatusCommand : public QueueCommand {
 public:
@@ -74,12 +73,10 @@ public:
 		if (guild == NULL)
 			return GENERALERROR;
 
-		GuildMemberInfo* gmi = guild->getMember(objid);
-
-		if (gmi == NULL)
+		if (!guild->hasMember(objid))
 			return GENERALERROR;
 
-		String guildTitle = gmi->getGuildTitle();
+		String guildTitle = guild->getGuildMemberTitle(objid);
 		params.setTT(guild->getGuildName());
 
 		StringBuffer stringid;

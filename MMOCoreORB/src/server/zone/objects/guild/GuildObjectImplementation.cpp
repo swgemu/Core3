@@ -51,8 +51,6 @@ void GuildObjectImplementation::addMember(uint64 playerID) {
 }
 
 void GuildObjectImplementation::removeMember(uint64 playerID) {
-	Locker locker(_this.getReferenceUnsafeStaticCast());
-
 	guildMembers.drop(playerID);
 }
 
@@ -60,6 +58,32 @@ bool GuildObjectImplementation::hasMember(uint64 playerID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
 	return guildMembers.contains(playerID);
+}
+
+uint64 GuildObjectImplementation::getMember(int index) {
+	return guildMembers.get(index).getPlayerID();
+}
+
+GuildMemberInfo* GuildObjectImplementation::getMember(uint64 playerID) {
+	return &guildMembers.get(playerID);
+}
+
+void GuildObjectImplementation::setGuildMemberTitle(uint64 playerID, const String& title) {
+	GuildMemberInfo* gmi = getMember(playerID);
+	if (gmi == NULL)
+		return;
+
+	gmi->setGuildTitle(title);
+}
+
+String GuildObjectImplementation::getGuildMemberTitle(uint64 playerID) {
+	Locker locker(_this.getReferenceUnsafeStaticCast());
+
+	GuildMemberInfo* gmi = getMember(playerID);
+	if (gmi == NULL)
+		return "";
+
+	return gmi->getGuildTitle();
 }
 
 bool GuildObjectImplementation::isInWaringGuild(CreatureObject* creature) {
@@ -90,34 +114,24 @@ bool GuildObjectImplementation::isAtWarWith(unsigned long long guildoid) {
 	return res;
 }
 
-uint64 GuildObjectImplementation::getMember(int index) {
-	return guildMembers.get(index).getPlayerID();
-}
-
-GuildMemberInfo* GuildObjectImplementation::getMember(uint64 playerID) {
-	Locker locker(_this.getReferenceUnsafeStaticCast());
-
-	return &guildMembers.get(playerID);
-}
-
 bool GuildObjectImplementation::hasMailPermission(uint64 playerID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (!guildMembers.contains(playerID))
+	if (!hasMember(playerID))
 		return false;
 
-	GuildMemberInfo gmi = guildMembers.get(playerID);
+	GuildMemberInfo* gmi = getMember(playerID);
 
-	return gmi.hasPermission(GuildObject::PERMISSION_MAIL);
+	return gmi->hasPermission(GuildObject::PERMISSION_MAIL);
 }
 
 bool GuildObjectImplementation::hasSponsorPermission(uint64 playerID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (!guildMembers.contains(playerID))
+	if (!hasMember(playerID))
 		return false;
 
-	GuildMemberInfo* gmi = &guildMembers.get(playerID);
+	GuildMemberInfo* gmi = getMember(playerID);
 
 	return gmi->hasPermission(GuildObject::PERMISSION_SPONSOR);
 }
@@ -125,10 +139,10 @@ bool GuildObjectImplementation::hasSponsorPermission(uint64 playerID) {
 bool GuildObjectImplementation::hasAcceptPermission(uint64 playerID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (!guildMembers.contains(playerID))
+	if (!hasMember(playerID))
 		return false;
 
-	GuildMemberInfo* gmi = &guildMembers.get(playerID);
+	GuildMemberInfo* gmi = getMember(playerID);
 
 	return gmi->hasPermission(GuildObject::PERMISSION_ACCEPT);
 }
@@ -136,10 +150,10 @@ bool GuildObjectImplementation::hasAcceptPermission(uint64 playerID) {
 bool GuildObjectImplementation::hasKickPermission(uint64 playerID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (!guildMembers.contains(playerID))
+	if (!hasMember(playerID))
 		return false;
 
-	GuildMemberInfo* gmi = &guildMembers.get(playerID);
+	GuildMemberInfo* gmi = getMember(playerID);
 
 	return gmi->hasPermission(GuildObject::PERMISSION_KICK);
 }
@@ -147,10 +161,10 @@ bool GuildObjectImplementation::hasKickPermission(uint64 playerID) {
 bool GuildObjectImplementation::hasDisbandPermission(uint64 playerID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (!guildMembers.contains(playerID))
+	if (!hasMember(playerID))
 		return false;
 
-	GuildMemberInfo* gmi = &guildMembers.get(playerID);
+	GuildMemberInfo* gmi = getMember(playerID);
 
 	return gmi->hasPermission(GuildObject::PERMISSION_DISBAND);
 }
@@ -158,10 +172,10 @@ bool GuildObjectImplementation::hasDisbandPermission(uint64 playerID) {
 bool GuildObjectImplementation::hasNamePermission(uint64 playerID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (!guildMembers.contains(playerID))
+	if (!hasMember(playerID))
 		return false;
 
-	GuildMemberInfo* gmi = &guildMembers.get(playerID);
+	GuildMemberInfo* gmi = getMember(playerID);
 
 	return gmi->hasPermission(GuildObject::PERMISSION_NAME);
 }
@@ -169,10 +183,10 @@ bool GuildObjectImplementation::hasNamePermission(uint64 playerID) {
 bool GuildObjectImplementation::hasTitlePermission(uint64 playerID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (!guildMembers.contains(playerID))
+	if (!hasMember(playerID))
 		return false;
 
-	GuildMemberInfo* gmi = &guildMembers.get(playerID);
+	GuildMemberInfo* gmi = getMember(playerID);
 
 	return gmi->hasPermission(GuildObject::PERMISSION_TITLE);
 }
@@ -180,10 +194,18 @@ bool GuildObjectImplementation::hasTitlePermission(uint64 playerID) {
 bool GuildObjectImplementation::hasWarPermission(uint64 playerID) {
 	Locker locker(_this.getReferenceUnsafeStaticCast());
 
-	if (!guildMembers.contains(playerID))
+	if (!hasMember(playerID))
 		return false;
 
-	GuildMemberInfo* gmi = &guildMembers.get(playerID);
+	GuildMemberInfo* gmi = getMember(playerID);
 
 	return gmi->hasPermission(GuildObject::PERMISSION_WAR);
+}
+
+void GuildObjectImplementation::toggleMemberPermission(uint64 playerID, uint8 permission) {
+	GuildMemberInfo* gmi = getMember(playerID);
+	if (gmi == NULL)
+		return;
+
+	gmi->togglePermission(permission);
 }

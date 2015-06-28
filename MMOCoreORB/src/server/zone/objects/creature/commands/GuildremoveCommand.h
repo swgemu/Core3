@@ -56,10 +56,12 @@ public:
 			playerToKick = playerManager->getPlayer(lowerNamedTarget);
 		} else if(targetedObject != NULL && targetedObject->isPlayerCreature()) {
 			playerToKick = cast<CreatureObject*>( targetedObject.get());
+		} else {
+			playerToKick = player;
 		}
 
-		if(playerToKick == NULL || !playerToKick->isInGuild() || guild->getMember(playerToKick->getObjectID()) == NULL) {
-			player->sendSystemMessage("You can only remove members of your guild.");
+		if(playerToKick == NULL || !playerToKick->isInGuild() || !guild->hasMember(playerToKick->getObjectID())) {
+			player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
 			return GENERALERROR;
 		}
 
@@ -69,9 +71,8 @@ public:
 				return GENERALERROR;
 			}
 			guildManager->sendGuildKickPromptTo(player, playerToKick);
-		}
-		else
-		{
+
+		} else {
 			// TODO: Allow leader to leave guild once guild elections are enabled
 			if(guild->getGuildLeaderID() == player->getObjectID())
 				player->sendSystemMessage("Guild leader cannot leave the guild");

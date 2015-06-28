@@ -869,8 +869,8 @@ void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, G
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_LIST);
 	suiBox->setCallback(new GuildMemberListSuiCallback(server));
-	suiBox->setPromptTitle("@guild:members_title"); //Guild Members
-	suiBox->setPromptText("@guild:members_prompt");
+	suiBox->setPromptTitle("@guild:members_title"); // Guild Members
+	suiBox->setPromptText("@guild:members_prompt"); // These are the current members of the guild. To perform an operation on a guild member, select them in the list and press Ok.
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setForceCloseDistance(32);
 
@@ -919,18 +919,240 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player
 
 	ManagedReference<SuiListBox*> suiBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_OPTIONS);
 	suiBox->setCallback(new GuildMemberOptionsSuiCallback(server));
-	suiBox->setPromptTitle("@guild:member_options_title"); //Guild Member Options
-	suiBox->setPromptText("@guild:member_options_prompt");
+	suiBox->setPromptTitle("@guild:member_options_title"); // Member Options
+	suiBox->setPromptText("@guild:member_options_prompt"); // Select an operation from the list to perform on %TU and press Ok.
 	suiBox->setUsingObject(guildTerminal);
 	suiBox->setForceCloseDistance(32);
 	suiBox->setCancelButton(true, "@cancel");
 
-	suiBox->addMenuItem("@guild:kick", memberID); //Kick
-	suiBox->addMenuItem("@guild:title", memberID); //Set Title
-	suiBox->addMenuItem("@guild:permissions", memberID); //Change Permissions
+	suiBox->addMenuItem("@guild:title", memberID); // Set Title
+	suiBox->addMenuItem("@guild:kick", memberID); // Kick
+	suiBox->addMenuItem("@guild:permissions", memberID); // Change Permissions
 
 	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
+}
+
+void GuildManagerImplementation::sendGuildSetTitleTo(CreatureObject* player, CreatureObject* target) {
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL || !guild->hasTitlePermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
+		return;
+	}
+
+	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_MEMBER_TITLE);
+	suiBox->setCallback(new GuildTitleResponseSuiCallback(server));
+	suiBox->setPromptTitle("@guild:title_title"); // Guild Member Title
+	suiBox->setPromptText("@guild:title_prompt"); // Enter a title to set for %TU.
+	suiBox->setUsingObject(target);
+	suiBox->setForceCloseDistance(32);
+	suiBox->setMaxInputSize(24);
+	suiBox->setCancelButton(true, "@cancel");
+
+	player->getPlayerObject()->addSuiBox(suiBox);
+	player->sendMessage(suiBox->generateMessage());
+}
+
+void GuildManagerImplementation::setMemberTitle(CreatureObject* player, CreatureObject* target, const String& title) {
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL || !guild->hasTitlePermission(player->getObjectID())) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
+		return;
+	}
+
+	NameManager* nameManager = processor->getNameManager();
+
+	int validate = nameManager->validateGuildName(title, NameManagerType::GUILD_TITLE);
+
+	if (validate != NameManagerResult::ACCEPTED) {
+		if (validate == NameManagerResult::DECLINED_GUILD_LENGTH)
+			player->sendSystemMessage("@guild:title_fail_bad_length"); // Guild member titles may be at most 25 characters in length.
+		else
+			player->sendSystemMessage("@guild:title_fail_not_allowed"); // That title is not allowed.
+
+		return;
+	}
+
+	Locker clocker(guild, player);
+
+	uint64 targetID = target->getObjectID();
+
+	if (!guild->hasMember(targetID))
+			return;
+
+	guild->setGuildMemberTitle(targetID, title);
+
+	StringIdChatParameter params;
+	params.setStringId("@guild:title_self"); // You set %TU's guild title to '%TT'.
+	params.setTU(target->getDisplayedName());
+	params.setTT(title);
+	player->sendSystemMessage(params);
+
+	if (target->isOnline()) {
+		params.setStringId("@guild:title_target"); // %TU has set your guild title to '%TT'.
+		params.setTU(player->getDisplayedName());
+		target->sendSystemMessage(params);
+	}
+
+}
+
+void GuildManagerImplementation::sendGuildKickPromptTo(CreatureObject* player, CreatureObject* target) {
+	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_MEMBER_REMOVE);
+	suiBox->setCallback(new GuildMemberRemoveSuiCallback(server));
+	suiBox->setPromptTitle("@guild:kick_title"); // Kick From Guild
+	suiBox->setPromptText("@guild:kick_prompt"); // Are you sure you want to kick %TU out of the guild?
+	suiBox->setUsingObject(target);
+	suiBox->setForceCloseDisabled();
+	suiBox->setCancelButton(true, "@no");
+	suiBox->setOkButton(true, "@yes");
+
+	player->getPlayerObject()->addSuiBox(suiBox);
+	player->sendMessage(suiBox->generateMessage());
+}
+
+void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObject* target) {
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	uint64 targetID = target->getObjectID();
+
+	if (guild == NULL || !guild->hasKickPermission(player->getObjectID()) || guild->getGuildLeaderID() == targetID) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); // You do not have permission to perform that operation.
+		return;
+	}
+
+	Locker glocker(guild, player);
+
+	if (!guild->hasMember(targetID)) {
+		//Isn't in this guild...
+		return;
+	}
+
+	guild->removeMember(targetID);
+
+	glocker.release();
+
+	Locker clocker(target, player);
+
+	target->setGuildObject(NULL);
+
+	StringIdChatParameter params;
+	params.setStringId("@guild:kick_self"); // You remove %TU from %TT.
+	params.setTU(target->getDisplayedName());
+	params.setTT(guild->getGuildName());
+	player->sendSystemMessage(params);
+
+	if (target->isOnline()) {
+		params.setStringId("@guild:kick_target"); // %TU has removed you from %TT.
+		params.setTU(player->getDisplayedName());
+		target->sendSystemMessage(params);
+
+		CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(target);
+		creod6->updateGuildID();
+		creod6->close();
+		target->broadcastMessage(creod6, true);
+
+		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
+
+		if (guildChat != NULL) {
+			guildChat->removePlayer(target);
+			guildChat->sendDestroyTo(target);
+		}
+
+		PlayerObject* targetGhost = target->getPlayerObject();
+
+		if (targetGhost != NULL) {
+			targetGhost->updateInRangeBuildingPermissions();
+		}
+	}
+
+	String subject = "@guildmail:kick_subject";
+	params.setStringId("@guildmail:kick_text"); //%TU has removed %TT from the guild.
+	params.setTU(player->getDisplayedName());
+	params.setTT(target->getDisplayedName());
+	sendGuildMail(subject, params, guild);
+
+	chatManager->sendMail(guild->getGuildName(), subject, params, target->getFirstName());
+}
+
+void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player, uint64 targetID, GuildTerminal* guildTerminal) {
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL || !guild->isGuildLeader(player)) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return;
+	}
+
+	if (!guild->hasMember(targetID))
+		return;
+
+	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_PERMISSIONS);
+	listBox->setCallback(new GuildMemberPermissionsResponseSuiCallback(server));
+	listBox->setPromptTitle("@guild:permissions_title"); // Guild Member Permissions
+	listBox->setPromptText("@guild:permissions_prompt"); // These are the current permissions set for %TU. Permissions preceded by '+' are currently allowed, and those preceded by '-' are not. Select a permission and press Ok to toggle it.
+	listBox->setUsingObject(guildTerminal);
+	listBox->setForceCloseDistance(32);
+	listBox->setCancelButton(true, "@cancel");
+
+	listBox->addMenuItem(String("@guild:permission_mail_") + (guild->hasMailPermission(targetID) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_sponsor_") + (guild->hasSponsorPermission(targetID) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_title_") + (guild->hasTitlePermission(targetID) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_accept_") + (guild->hasAcceptPermission(targetID) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_kick_") + (guild->hasKickPermission(targetID) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_war_") + (guild->hasWarPermission(targetID) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_namechange_") + (guild->hasNamePermission(targetID) ? "yes" : "no"), targetID);
+	listBox->addMenuItem(String("@guild:permission_disband_") + (guild->hasDisbandPermission(targetID) ? "yes" : "no"), targetID);
+
+	player->getPlayerObject()->addSuiBox(listBox);
+	player->sendMessage(listBox->generateMessage());
+}
+
+void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, uint64 targetID, int permissionIndex, GuildTerminal* guildTerminal) {
+
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL || !guild->isGuildLeader(player) || player->getObjectID() == targetID) {
+		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
+		return;
+	}
+
+	Locker clocker(guild, player);
+
+	if (!guild->hasMember(targetID))
+		return;
+
+	switch (permissionIndex) {
+	case 0: //mail
+		guild->toggleMemberPermission(targetID, GuildObject::PERMISSION_MAIL);
+		break;
+	case 1: //sponsor
+		guild->toggleMemberPermission(targetID, GuildObject::PERMISSION_SPONSOR);
+		break;
+	case 2: //title
+		guild->toggleMemberPermission(targetID, GuildObject::PERMISSION_TITLE);
+		break;
+	case 3: //accept
+		guild->toggleMemberPermission(targetID, GuildObject::PERMISSION_ACCEPT);
+		break;
+	case 4: //kick
+		guild->toggleMemberPermission(targetID, GuildObject::PERMISSION_KICK);
+		break;
+	case 5: //war
+		guild->toggleMemberPermission(targetID, GuildObject::PERMISSION_WAR);
+		break;
+	case 6: //namechange
+		guild->toggleMemberPermission(targetID, GuildObject::PERMISSION_NAME);
+		break;
+	case 7: //disband
+		guild->toggleMemberPermission(targetID, GuildObject::PERMISSION_DISBAND);
+		break;
+	default:
+		return;
+	}
+
+	//Resend the permissions sui
+	sendMemberPermissionsTo(player, targetID, guildTerminal);
 }
 
 void GuildManagerImplementation::sendGuildSponsoredOptionsTo(CreatureObject* player, GuildObject* guild, uint64 playerID, GuildTerminal* guildTerminal) {
@@ -1203,232 +1425,6 @@ void GuildManagerImplementation::acceptSponsoredPlayer(CreatureObject* player, u
 	chatManager->sendMail(guild->getGuildName(), "@guildmail:accept_target_subject", params, target->getFirstName());
 }
 
-void GuildManagerImplementation::sendGuildKickPromptTo(CreatureObject* player, CreatureObject* target) {
-	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_MEMBER_REMOVE);
-	suiBox->setCallback(new GuildMemberRemoveSuiCallback(server));
-	suiBox->setPromptTitle("@guild:kick_title"); //Kick From Guild
-	suiBox->setPromptText("@guild:kick_prompt"); //Are you sure you want to kick %TU out of the guild?
-	suiBox->setUsingObject(target);
-	suiBox->setForceCloseDisabled();
-	suiBox->setCancelButton(true, "@no");
-	suiBox->setOkButton(true, "@yes");
-
-	player->getPlayerObject()->addSuiBox(suiBox);
-	player->sendMessage(suiBox->generateMessage());
-}
-
-void GuildManagerImplementation::sendGuildSetTitleTo(CreatureObject* player, CreatureObject* target) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
-
-	if (guild == NULL || !guild->hasTitlePermission(player->getObjectID())) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
-		return;
-	}
-
-	ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_MEMBER_TITLE);
-	suiBox->setCallback(new GuildTitleResponseSuiCallback(server));
-	suiBox->setPromptTitle("@guild:title_title"); //Set Title
-	suiBox->setPromptText("@guild:title_prompt"); //Enter a title to set for %TU.
-	suiBox->setUsingObject(target);
-	suiBox->setForceCloseDistance(32);
-	suiBox->setMaxInputSize(24);
-	suiBox->setCancelButton(true, "@cancel");
-
-	player->getPlayerObject()->addSuiBox(suiBox);
-	player->sendMessage(suiBox->generateMessage());
-}
-
-void GuildManagerImplementation::kickMember(CreatureObject* player, CreatureObject* target) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
-
-	if (guild == NULL || !guild->hasKickPermission(player->getObjectID())) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
-		return;
-	}
-
-	uint64 targetID = target->getObjectID();
-
-	if(guild->getGuildLeaderID() == targetID) {
-		player->sendSystemMessage("Guild leader cannot be kicked from the guild");
-		return;
-	}
-
-	if (!guild->hasMember(targetID)) {
-		//Isn't in this guild...
-		return;
-	}
-
-	guild->removeMember(targetID);
-
-	Locker clocker(target, player);
-
-	target->setGuildObject(NULL);
-
-	StringIdChatParameter params;
-	params.setStringId("@guild:kick_self"); //You remove %TU from %TT.
-	params.setTU(target->getDisplayedName());
-	params.setTT(guild->getGuildName());
-	player->sendSystemMessage(params);
-
-	if (target->isOnline()) {
-		params.setStringId("@guild:kick_target"); //%TU has removed you from %TT.
-		params.setTU(player->getDisplayedName());
-		target->sendSystemMessage(params);
-
-		CreatureObjectDeltaMessage6* creod6 = new CreatureObjectDeltaMessage6(target);
-		creod6->updateGuildID();
-		creod6->close();
-		target->broadcastMessage(creod6, true);
-
-		ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
-
-		if (guildChat != NULL) {
-			guildChat->removePlayer(target);
-			guildChat->sendDestroyTo(target);
-		}
-
-		PlayerObject* targetGhost = target->getPlayerObject();
-
-		if (targetGhost != NULL) {
-			targetGhost->updateInRangeBuildingPermissions();
-		}
-	}
-
-	params.setStringId("@guildmail:kick_text"); //%TU has removed %TT from the guild.
-	params.setTU(player->getDisplayedName());
-	params.setTT(target->getDisplayedName());
-	sendGuildMail("@guildmail:kick_subject", params, guild);
-}
-
-void GuildManagerImplementation::setMemberTitle(CreatureObject* player, CreatureObject* target, const String& title) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
-
-	if (guild == NULL || !guild->hasTitlePermission(player->getObjectID())) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
-		return;
-	}
-
-	NameManager* nameManager = processor->getNameManager();
-
-	int validate = nameManager->validateGuildName(title, NameManagerType::GUILD_TITLE);
-
-	if (validate != NameManagerResult::ACCEPTED) {
-		if (validate == NameManagerResult::DECLINED_GUILD_LENGTH)
-			player->sendSystemMessage("@guild:title_fail_bad_length"); //Guild member titles may be at most 25 characters in length.
-		else
-			player->sendSystemMessage("@guild:title_fail_not_allowed"); //That title is not allowed.
-
-		return;
-	}
-
-	GuildMemberInfo* gmi = guild->getMember(target->getObjectID());
-	gmi->setGuildTitle(title);
-
-	StringIdChatParameter params;
-	params.setStringId("@guild:title_self"); //You set %TU's guild title to '%TT'.
-	params.setTU(target->getDisplayedName());
-	params.setTT(title);
-	player->sendSystemMessage(params);
-
-	if (target->isOnline()) {
-		params.setStringId("@guild:title_target"); //%TU has set your guild title to '%TT'.
-		params.setTU(player->getDisplayedName());
-		target->sendSystemMessage(params);
-	}
-
-}
-
-void GuildManagerImplementation::sendMemberPermissionsTo(CreatureObject* player, uint64 targetID, GuildTerminal* guildTerminal) {
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
-
-	if (guild == NULL || !guild->isGuildLeader(player)) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
-		return;
-	}
-
-	if (!guild->hasMember(targetID))
-		return;
-
-	GuildMemberInfo* gmi = guild->getMember(targetID);
-
-	if (gmi == NULL)
-		return;
-
-	ManagedReference<SuiListBox*> listBox = new SuiListBox(player, SuiWindowType::GUILD_MEMBER_PERMISSIONS);
-	listBox->setCallback(new GuildMemberPermissionsResponseSuiCallback(server));
-	listBox->setPromptTitle("@guild:permissions_title"); //Guild Member Permissions
-	listBox->setPromptText("@guild:permissions_prompt");
-	listBox->setUsingObject(guildTerminal);
-	listBox->setForceCloseDistance(32);
-	listBox->setCancelButton(true, "@cancel");
-
-	listBox->addMenuItem(String("@guild:permission_mail_") + (gmi->hasPermission(GuildObject::PERMISSION_MAIL) ? "yes" : "no"), targetID);
-	listBox->addMenuItem(String("@guild:permission_sponsor_") + (gmi->hasPermission(GuildObject::PERMISSION_SPONSOR) ? "yes" : "no"), targetID);
-	listBox->addMenuItem(String("@guild:permission_title_") + (gmi->hasPermission(GuildObject::PERMISSION_TITLE) ? "yes" : "no"), targetID);
-	listBox->addMenuItem(String("@guild:permission_accept_") + (gmi->hasPermission(GuildObject::PERMISSION_ACCEPT) ? "yes" : "no"), targetID);
-	listBox->addMenuItem(String("@guild:permission_kick_") + (gmi->hasPermission(GuildObject::PERMISSION_KICK) ? "yes" : "no"), targetID);
-	listBox->addMenuItem(String("@guild:permission_war_") + (gmi->hasPermission(GuildObject::PERMISSION_WAR) ? "yes" : "no"), targetID);
-	listBox->addMenuItem(String("@guild:permission_namechange_") + (gmi->hasPermission(GuildObject::PERMISSION_NAME) ? "yes" : "no"), targetID);
-	listBox->addMenuItem(String("@guild:permission_disband_") + (gmi->hasPermission(GuildObject::PERMISSION_DISBAND) ? "yes" : "no"), targetID);
-
-	player->getPlayerObject()->addSuiBox(listBox);
-	player->sendMessage(listBox->generateMessage());
-}
-
-void GuildManagerImplementation::toggleGuildPermission(CreatureObject* player, uint64 targetID, int permissionIndex, GuildTerminal* guildTerminal) {
-
-	ManagedReference<GuildObject*> guild = player->getGuildObject();
-
-	if (guild == NULL || !guild->isGuildLeader(player)) {
-		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
-		return;
-	}
-
-	//Can't change your own permissions
-	if (player->getObjectID() == targetID)
-		return;
-
-	if (!guild->hasMember(targetID))
-		return;
-
-	GuildMemberInfo* gmi = guild->getMember(targetID);
-
-	if (gmi == NULL)
-		return;
-
-	switch (permissionIndex) {
-	case 0: //mail
-		gmi->togglePermission(GuildObject::PERMISSION_MAIL);
-		break;
-	case 1: //sponsor
-		gmi->togglePermission(GuildObject::PERMISSION_SPONSOR);
-		break;
-	case 2: //title
-		gmi->togglePermission(GuildObject::PERMISSION_TITLE);
-		break;
-	case 3: //accept
-		gmi->togglePermission(GuildObject::PERMISSION_ACCEPT);
-		break;
-	case 4: //kick
-		gmi->togglePermission(GuildObject::PERMISSION_KICK);
-		break;
-	case 5: //war
-		gmi->togglePermission(GuildObject::PERMISSION_WAR);
-		break;
-	case 6: //namechange
-		gmi->togglePermission(GuildObject::PERMISSION_NAME);
-		break;
-	case 7: //disband
-		gmi->togglePermission(GuildObject::PERMISSION_DISBAND);
-		break;
-	default:
-		return;
-	}
-
-	//Resend the permissions sui
-	sendMemberPermissionsTo(player, targetID, guildTerminal);
-}
-
 void GuildManagerImplementation::sendGuildListTo(CreatureObject* player, const String& guildFilter) {
 	if (guildFilter.isEmpty()) {
 		player->sendSystemMessage("Please provide a guild filter as an argument to minimize the search results.");
@@ -1480,6 +1476,8 @@ void GuildManagerImplementation::sendAdminGuildInfoTo(CreatureObject* player, Gu
 		return;
 
 	Locker _lock(_this.getReferenceUnsafeStaticCast());
+
+	Locker locker(guild);
 
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, 0);
 
@@ -1622,6 +1620,8 @@ void GuildManagerImplementation::addPermsToAdminGuildInfo(uint8 perms, StringBuf
 void GuildManagerImplementation::leaveGuild(CreatureObject* player, GuildObject* guild) {
 	if (guild == NULL)
 		return;
+
+	Locker clocker(guild, player);
 
 	StringIdChatParameter params;
 	params.setStringId("@guild:leave_self"); //You leave %TU.
