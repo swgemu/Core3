@@ -18,8 +18,6 @@ public:
 
 	}
 
-
-
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) const {
 
 		if (!checkStateMask(creature))
@@ -224,7 +222,7 @@ public:
 				buildingObject->updateCellPermissionsTo(creature);
 		}
 
-		if (creature != NULL) {
+		if (creature != NULL && !bForceTransfer) {
 			StringIdChatParameter params("@player_structure:ownership_transferred_in"); //%TT has transfered ownership of the structure to you
 			params.setTT(creature->getFirstName());
 			targetCreature->sendSystemMessage(params);
