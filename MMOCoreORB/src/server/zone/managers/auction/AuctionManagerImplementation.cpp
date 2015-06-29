@@ -1396,6 +1396,7 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 			float waypointY = vendor->getWorldPositionY();
 
 			ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 0).castTo<WaypointObject*>();
+			Locker waypointLocker(waypoint);
 			waypoint->setPlanetCRC(vendor->getPlanetCRC());
 			waypoint->setPosition(waypointX, 0, waypointY);
 
